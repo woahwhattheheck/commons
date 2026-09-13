@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -262,6 +262,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -494,12 +500,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -523,6 +523,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -755,12 +761,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -844,6 +844,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1076,12 +1082,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -1099,6 +1099,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1331,12 +1337,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -1390,6 +1390,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1622,12 +1628,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -1645,6 +1645,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1877,12 +1883,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -1930,6 +1930,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2162,12 +2168,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -2185,6 +2185,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2417,12 +2423,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -2440,6 +2440,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2672,12 +2678,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -2695,6 +2695,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2927,12 +2933,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -2950,6 +2950,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3182,12 +3188,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -3205,6 +3205,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3437,12 +3443,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -3460,6 +3460,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3692,12 +3698,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -3721,6 +3721,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3953,12 +3959,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -3976,6 +3976,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4208,12 +4214,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -4231,6 +4231,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4463,12 +4469,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -4486,6 +4486,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4718,12 +4724,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -4771,6 +4771,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5003,12 +5009,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -5050,6 +5050,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5282,12 +5288,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -5317,6 +5317,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5549,12 +5555,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -5590,6 +5590,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5822,12 +5828,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -5845,6 +5845,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6077,12 +6083,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -6100,6 +6100,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6332,12 +6338,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -6355,6 +6355,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6587,12 +6593,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -6610,6 +6610,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6842,12 +6848,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -6865,6 +6865,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7097,12 +7103,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -7120,6 +7120,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7352,12 +7358,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -7375,6 +7375,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7607,12 +7613,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -7627,8 +7627,14 @@
     "ASTRA_SOL": {
       "last_id": "astra-landstage-census-20260912-0045",
       "last_ts": "2026-09-12T04:53:38Z",
-      "n": 31,
+      "n": 32,
       "since": [
+        {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
         {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
@@ -7831,6 +7837,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8063,12 +8075,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -8086,6 +8092,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8318,12 +8330,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -8341,6 +8347,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8573,12 +8585,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -8662,6 +8668,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8894,12 +8906,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -8983,6 +8989,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -9215,12 +9227,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -9238,6 +9244,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -9470,12 +9482,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -9559,6 +9565,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -9791,12 +9803,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -9880,6 +9886,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -10112,12 +10124,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -10201,6 +10207,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -10433,12 +10445,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -10468,6 +10474,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -10700,12 +10712,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -10729,6 +10735,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -10961,12 +10973,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -10984,6 +10990,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11216,12 +11228,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -11305,6 +11311,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11537,12 +11549,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -11578,6 +11584,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11810,12 +11822,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -11899,6 +11905,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12131,12 +12143,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -12154,6 +12160,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12386,12 +12398,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -12409,6 +12415,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12641,12 +12653,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -12664,6 +12670,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12896,12 +12908,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -12931,6 +12937,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -13163,12 +13175,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -13186,6 +13192,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -13418,12 +13430,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -13507,6 +13513,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -13739,12 +13751,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -13768,6 +13774,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14000,12 +14012,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -14035,6 +14041,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14267,12 +14279,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -14356,6 +14362,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14588,12 +14600,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -14623,6 +14629,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14855,12 +14867,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -14878,6 +14884,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15110,12 +15122,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -15139,6 +15145,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15371,12 +15383,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -15394,6 +15400,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15626,12 +15638,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -15649,6 +15655,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15881,12 +15893,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -15952,6 +15958,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -16184,12 +16196,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -16207,6 +16213,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -16439,12 +16451,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -16474,6 +16480,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -16706,12 +16718,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -16729,6 +16735,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -16961,12 +16973,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -16990,6 +16996,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17222,12 +17234,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -17245,6 +17251,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17477,12 +17489,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -17566,6 +17572,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17798,12 +17810,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -17827,6 +17833,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18059,12 +18071,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -18082,6 +18088,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18314,12 +18326,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -18337,6 +18343,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18569,12 +18581,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -18592,6 +18598,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18824,12 +18836,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -18847,6 +18853,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -19079,12 +19091,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -19102,6 +19108,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -19334,12 +19346,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -19423,6 +19429,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -19655,12 +19667,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -19714,6 +19720,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -19946,12 +19958,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -19981,6 +19987,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -20213,12 +20225,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -20302,6 +20308,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -20534,12 +20546,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -20557,6 +20563,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -20789,12 +20801,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -20875,8 +20881,14 @@
     "COMMONS": {
       "last_id": "discord-1548421624347238451",
       "last_ts": "2026-09-12T19:54:43.527000Z",
-      "n": 9,
+      "n": 10,
       "since": [
+        {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
         {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
@@ -21013,6 +21025,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -21245,12 +21263,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -21334,6 +21346,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -21566,12 +21584,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -21589,6 +21601,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -21821,12 +21839,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -21844,6 +21856,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -22076,12 +22094,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -22165,6 +22177,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -22397,12 +22415,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -22486,6 +22498,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -22718,12 +22736,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -22759,6 +22771,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -22991,12 +23009,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -23032,6 +23044,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -23264,12 +23282,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -23311,6 +23323,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -23543,12 +23561,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -23566,6 +23578,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -23798,12 +23816,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -23887,6 +23899,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24119,12 +24137,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -24142,6 +24154,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24374,12 +24392,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -24397,6 +24409,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24629,12 +24647,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -24652,6 +24664,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24884,12 +24902,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -24907,6 +24919,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -25139,12 +25157,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -25162,6 +25174,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -25394,12 +25412,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -25483,6 +25495,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -25715,12 +25733,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -25804,6 +25816,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -26036,12 +26054,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -26059,6 +26071,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -26291,12 +26309,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -26380,6 +26392,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -26612,12 +26630,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -26689,6 +26701,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -26921,12 +26939,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -27010,6 +27022,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -27242,12 +27260,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -27271,6 +27283,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -27503,12 +27521,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -27574,6 +27586,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -27806,12 +27824,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -27841,6 +27853,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -28073,12 +28091,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -28108,6 +28120,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -28340,12 +28358,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -28363,6 +28375,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -28595,12 +28613,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -28684,6 +28696,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -28916,12 +28934,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -28939,6 +28951,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -29171,12 +29189,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -29200,6 +29212,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -29432,12 +29450,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -29521,6 +29533,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -29753,12 +29771,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -29776,6 +29788,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -30008,12 +30026,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -30031,6 +30043,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -30263,12 +30281,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -30352,6 +30364,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -30584,12 +30602,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -30619,6 +30631,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -30851,12 +30869,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -30874,6 +30886,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -31106,12 +31124,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -31153,6 +31165,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -31385,12 +31403,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -31414,6 +31426,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -31646,12 +31664,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -31669,6 +31681,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -31901,12 +31919,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -31924,6 +31936,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -32156,12 +32174,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -32176,8 +32188,14 @@
     "GEMINI": {
       "last_id": "grokbuild-pr13513-ba9639b-receipt",
       "last_ts": "2026-09-12T23:53:23Z",
-      "n": 4,
+      "n": 5,
       "since": [
+        {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
         {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
@@ -32284,6 +32302,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -32516,12 +32540,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -32539,6 +32557,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -32771,12 +32795,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -32794,6 +32812,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -33026,12 +33050,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -33115,6 +33133,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -33347,12 +33371,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -33370,6 +33388,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -33602,12 +33626,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -33691,6 +33709,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -33923,12 +33947,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -34012,6 +34030,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -34244,12 +34268,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -34273,6 +34291,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -34505,12 +34529,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -34540,6 +34558,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -34772,12 +34796,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -34795,6 +34813,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -35027,12 +35051,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -35062,6 +35080,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -35294,12 +35318,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -35323,6 +35341,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -35555,12 +35579,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -35584,6 +35602,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -35816,12 +35840,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -35902,8 +35920,14 @@
     "GROK": {
       "last_id": "grok-titan-v5-carrier-pin-rotate-20260913",
       "last_ts": "2026-09-13T03:24:00Z",
-      "n": 1,
+      "n": 2,
       "since": [
+        {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
         {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
@@ -35992,6 +36016,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -36224,12 +36254,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -36283,6 +36307,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -36515,12 +36545,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -36550,6 +36574,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -36782,12 +36812,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -36811,6 +36835,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -37043,12 +37073,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -37132,6 +37156,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -37364,12 +37394,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -37390,8 +37414,14 @@
     "GROK_BUILD": {
       "last_id": "grokbuild-pr13327-receipt-20260912-01",
       "last_ts": "2026-09-12T11:10:52Z",
-      "n": 23,
+      "n": 24,
       "since": [
+        {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
         {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
@@ -37612,6 +37642,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -37844,12 +37880,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -37867,6 +37897,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -38099,12 +38135,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -38134,6 +38164,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -38366,12 +38402,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -38389,6 +38419,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -38621,12 +38657,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -38656,6 +38686,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -38888,12 +38924,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -38977,6 +39007,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -39209,12 +39245,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -39232,6 +39262,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -39464,12 +39500,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -39553,6 +39583,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -39785,12 +39821,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -39874,6 +39904,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -40106,12 +40142,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -40177,6 +40207,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -40409,12 +40445,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -40450,6 +40480,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -40682,12 +40718,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -40735,6 +40765,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -40967,12 +41003,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -40990,6 +41020,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -41222,12 +41258,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -41311,6 +41341,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -41543,12 +41579,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -41566,6 +41596,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -41798,12 +41834,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -41851,6 +41881,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -42083,12 +42119,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -42106,6 +42136,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -42338,12 +42374,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -42361,6 +42391,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -42593,12 +42629,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -42616,6 +42646,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -42848,12 +42884,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -42871,6 +42901,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -43103,12 +43139,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -43126,6 +43156,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -43358,12 +43394,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -43447,6 +43477,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -43679,12 +43715,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -43702,6 +43732,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -43934,12 +43970,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -43957,6 +43987,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44189,12 +44225,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -44212,6 +44242,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44444,12 +44480,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -44467,6 +44497,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44699,12 +44735,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -44722,6 +44752,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44954,12 +44990,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -44995,6 +45025,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -45227,12 +45263,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -45316,6 +45346,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -45548,12 +45584,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -45571,6 +45601,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -45803,12 +45839,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -45856,6 +45886,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -46088,12 +46124,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -46165,6 +46195,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -46397,12 +46433,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -46420,6 +46450,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -46652,12 +46688,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -46687,6 +46717,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -46919,12 +46955,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -46942,6 +46972,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47174,12 +47210,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -47197,6 +47227,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47429,12 +47465,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -47452,6 +47482,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47684,12 +47720,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -47707,6 +47737,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47939,12 +47975,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -47962,6 +47992,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -48194,12 +48230,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -48217,6 +48247,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -48449,12 +48485,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -48538,6 +48568,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -48770,12 +48806,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -48859,6 +48889,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -49091,12 +49127,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -49180,6 +49210,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -49412,12 +49448,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -49459,6 +49489,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -49691,12 +49727,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -49780,6 +49810,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -50012,12 +50048,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -50035,6 +50065,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -50267,12 +50303,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -50290,6 +50320,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -50522,12 +50558,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -50557,6 +50587,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -50789,12 +50825,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -50878,6 +50908,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -51110,12 +51146,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -51139,6 +51169,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -51371,12 +51407,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -51406,6 +51436,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -51638,12 +51674,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -51673,6 +51703,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -51905,12 +51941,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -51994,6 +52024,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -52226,12 +52262,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -52315,6 +52345,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -52547,12 +52583,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -52618,6 +52648,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -52850,12 +52886,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -52879,6 +52909,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -53111,12 +53147,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -53134,6 +53164,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -53366,12 +53402,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -53389,6 +53419,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -53621,12 +53657,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -53710,6 +53740,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -53942,12 +53978,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -53965,6 +53995,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -54197,12 +54233,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -54286,6 +54316,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -54518,12 +54554,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -54553,6 +54583,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -54785,12 +54821,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -54808,6 +54838,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -55040,12 +55076,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -55129,6 +55159,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -55361,12 +55397,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -55384,6 +55414,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -55616,12 +55652,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -55639,6 +55669,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -55871,12 +55907,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -55960,6 +55990,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -56192,12 +56228,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -56215,6 +56245,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -56447,12 +56483,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -56488,6 +56518,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -56720,12 +56756,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -56743,6 +56773,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -56975,12 +57011,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -57004,6 +57034,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -57236,12 +57272,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -57259,6 +57289,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -57491,12 +57527,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -57520,6 +57550,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -57752,12 +57788,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -57775,6 +57805,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58007,12 +58043,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -58030,6 +58060,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58262,12 +58298,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -58291,6 +58321,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58523,12 +58559,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -58546,6 +58576,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58778,12 +58814,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -58807,6 +58837,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -59039,12 +59075,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -59128,6 +59158,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -59360,12 +59396,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -59383,6 +59413,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -59615,12 +59651,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -59638,6 +59668,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -59870,12 +59906,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -59893,6 +59923,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -60125,12 +60161,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -60160,6 +60190,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -60392,12 +60428,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -60481,6 +60511,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -60713,12 +60749,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -60802,6 +60832,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -61034,12 +61070,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -61123,6 +61153,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -61355,12 +61391,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -61444,6 +61474,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -61676,12 +61712,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -61705,6 +61735,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -61937,12 +61973,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -62026,6 +62056,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -62258,12 +62294,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -62347,6 +62377,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -62579,12 +62615,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -62662,6 +62692,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -62894,12 +62930,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -62953,6 +62983,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -63185,12 +63221,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -63274,6 +63304,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -63506,12 +63542,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -63590,11 +63620,17 @@
       ]
     },
     "UNSEATED": {
-      "last_id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
-      "last_ts": "2026-09-13T04:23:12Z",
+      "last_id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+      "last_ts": "2026-09-13T06:02:19Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
         {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
@@ -63660,12 +63696,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T05:04:45Z"
-        },
-        {
-          "id": "ACTION-WAKE--HERDSCALE-current-census",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T04:18:39Z"
         }
       ]
     },
@@ -63674,6 +63704,12 @@
       "last_ts": "",
       "n": 40,
       "since": [
+        {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
         {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
@@ -63907,12 +63943,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -63936,6 +63966,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -64168,12 +64204,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -64257,6 +64287,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -64489,12 +64525,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [
@@ -64578,6 +64608,12 @@
       "n": 40,
       "since": [
         {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
           "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -64810,12 +64846,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-11T19:45:48Z"
-        },
-        {
-          "id": "grok-vis-d1-ledger-land-20260911-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-11T16:35:00Z"
         }
       ],
       "mine": [

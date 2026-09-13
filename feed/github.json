@@ -1,9 +1,9 @@
 {
   "counts": {
     "open_issues": 6,
-    "open_pull_requests": 13,
-    "runs_in_progress": 8,
-    "runs_queued": 143
+    "open_pull_requests": 12,
+    "runs_in_progress": 2,
+    "runs_queued": 220
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -45,37 +45,81 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "gpt/titan-v5-v217-probe-corrective-20260912",
-      "created_at": "2026-09-12T23:38:48Z",
+      "branch": "astra-zeta/shared-holding-future-heartbeat-20260912",
+      "created_at": "2026-09-13T00:07:29Z",
       "draft": false,
-      "head_sha": "a1610c08237a28e4a15fac2498f1c9ac18651dd2",
-      "number": 13502,
-      "title": "TITAN V5: correct V217 engagement evidence gate",
-      "updated_at": "2026-09-13T02:29:00Z"
+      "head_sha": "4d1d4a4e113e987746f48cda1625b53827eaf8ba",
+      "number": 13528,
+      "title": "coordination: fail closed on shared holding clock skew",
+      "updated_at": "2026-09-13T06:10:10Z"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "astra-zeta/shared-holding-future-heartbeat-20260912",
-      "created_at": "2026-09-13T00:07:29Z",
+      "branch": "codex/command-center-deathstar-cooldown-20260912",
+      "created_at": "2026-09-13T00:51:33Z",
       "draft": false,
-      "head_sha": "14b6bcbf1e9dca10a881ebdee261198d17cc5439",
-      "number": 13528,
-      "title": "coordination: fail closed on shared holding clock skew",
-      "updated_at": "2026-09-13T02:17:16Z"
+      "head_sha": "b9db151337b931479fde8a76d87253acaa4b5737",
+      "number": 13531,
+      "title": "Deathstar email tracker and shared operation telemetry",
+      "updated_at": "2026-09-13T01:51:17Z"
     }
   ],
   "newest_pulls": [
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "astra/titan-fix-lazy-offers-floored-slots-20260913",
-      "created_at": "2026-09-13T05:00:22Z",
+      "branch": "zeta-forge/cirrus-absence-invariant-20260913",
+      "created_at": "2026-09-13T06:09:44Z",
       "draft": false,
-      "head_sha": "9eaf12635120bf0216ed543acded429ae6c82fe2",
-      "number": 13557,
-      "title": "TITAN: align test_full_slots_keep_no_admission_fallback with floored market orders",
-      "updated_at": "2026-09-13T05:04:06Z"
+      "head_sha": "6697f5446b47c9db3d8c0cfa02fd0962dff64f3f",
+      "number": 13571,
+      "title": "ci: remove retired Cirrus config marker",
+      "updated_at": "2026-09-13T06:10:34Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zeta-forge/openkylin-compare-convergence-20260913",
+      "created_at": "2026-09-13T06:09:03Z",
+      "draft": false,
+      "head_sha": "c0b09e6f2c60646de826a3c75cf8bdecd714389b",
+      "number": 13570,
+      "title": "openkylin: converge fail-closed comparison contract",
+      "updated_at": "2026-09-13T06:09:03Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z-kestrel/ci-battery-clean-evidence-rejoin-20260913",
+      "created_at": "2026-09-13T06:08:45Z",
+      "draft": false,
+      "head_sha": "187a04c71a64402247c2f9cf85a8d85b332de260",
+      "number": 13569,
+      "title": "ci: fail dirty battery evidence closed",
+      "updated_at": "2026-09-13T06:08:45Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "ariadne-z/open-door-business-status-20260913",
+      "created_at": "2026-09-13T06:07:26Z",
+      "draft": false,
+      "head_sha": "98432e69624282b1bef2e36ec818f2215a4c18ff",
+      "number": 13568,
+      "title": "open-door: allow isolated procurement status denials",
+      "updated_at": "2026-09-13T06:07:26Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "swarm-z-solstice/openkylin-compare-contract-20260913",
+      "created_at": "2026-09-13T06:00:47Z",
+      "draft": false,
+      "head_sha": "125961222bf0f5df03fd0ac3ae8b671f874dcfa7",
+      "number": 13563,
+      "title": "openkylin bench: reject invalid comparison sets",
+      "updated_at": "2026-09-13T06:08:03Z"
     },
     {
       "author": "woahwhattheheck",
@@ -83,54 +127,10 @@
       "branch": "ariadne-z881/business-pack-malformed-ledger-rejoin",
       "created_at": "2026-09-13T04:32:00Z",
       "draft": false,
-      "head_sha": "59b7fa65fb3c963dc31ce515c443cafced1c793f",
+      "head_sha": "5c49be5984f0f61bcef919e56d5b4b729bdfdd8b",
       "number": 13553,
       "title": "Return validation errors for malformed KEEP vs SELL numerics",
-      "updated_at": "2026-09-13T04:44:27Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "somnus-z614/openkylin-memory-benchmark-20260913",
-      "created_at": "2026-09-13T04:31:45Z",
-      "draft": false,
-      "head_sha": "b06c5cb32320d9eaf5af7e047bf0577fd0673d96",
-      "number": 13552,
-      "title": "revenue: add openKylin long-term memory benchmark baseline",
-      "updated_at": "2026-09-13T04:31:45Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-keystone/cwpd-website-qualification-20260913",
-      "created_at": "2026-09-13T04:27:40Z",
-      "draft": false,
-      "head_sha": "b46d856aafd9d650963b83f8b55607ae526ed7bc",
-      "number": 13549,
-      "title": "docs(revenue): qualify CWPD website redesign RFP",
-      "updated_at": "2026-09-13T04:27:40Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "ariadne-z/volvo-capacity-rss-failclosed-20260913",
-      "created_at": "2026-09-13T04:26:55Z",
-      "draft": false,
-      "head_sha": "afc38e11cc48355d5a7b38c5c5fcf1ae70ecd249",
-      "number": 13548,
-      "title": "product: fail closed on unknown capacity RSS",
-      "updated_at": "2026-09-13T04:26:55Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "pascal-z812/nysed-rfp144-qualification-20260913",
-      "created_at": "2026-09-13T04:24:38Z",
-      "draft": false,
-      "head_sha": "54cb50ad0557fd31b5cc5a97cad7731ebde73e03",
-      "number": 13547,
-      "title": "revenue: qualify NYSED OCUE modernization RFP",
-      "updated_at": "2026-09-13T04:24:38Z"
+      "updated_at": "2026-09-13T06:08:50Z"
     },
     {
       "author": "woahwhattheheck",
@@ -141,7 +141,7 @@
       "head_sha": "73e73de79cb62cf2f58005efab027138ded6f282",
       "number": 13533,
       "title": "coordination: clean successor for exact-head execution evidence gate",
-      "updated_at": "2026-09-13T04:18:10Z"
+      "updated_at": "2026-09-13T06:09:21Z"
     },
     {
       "author": "woahwhattheheck",
@@ -160,42 +160,195 @@
       "branch": "astra-zeta/shared-holding-future-heartbeat-20260912",
       "created_at": "2026-09-13T00:07:29Z",
       "draft": false,
-      "head_sha": "14b6bcbf1e9dca10a881ebdee261198d17cc5439",
+      "head_sha": "4d1d4a4e113e987746f48cda1625b53827eaf8ba",
       "number": 13528,
       "title": "coordination: fail closed on shared holding clock skew",
-      "updated_at": "2026-09-13T02:17:16Z"
+      "updated_at": "2026-09-13T06:10:10Z"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "gpt/titan-v5-v217-probe-corrective-20260912",
-      "created_at": "2026-09-12T23:38:48Z",
-      "draft": false,
-      "head_sha": "a1610c08237a28e4a15fac2498f1c9ac18651dd2",
-      "number": 13502,
-      "title": "TITAN V5: correct V217 engagement evidence gate",
-      "updated_at": "2026-09-13T02:29:00Z"
+      "branch": "astra/v5-production-v3-action-witness-20260912",
+      "created_at": "2026-09-12T22:29:12Z",
+      "draft": true,
+      "head_sha": "91d17d19e2a762318d79058b042be10c63c6743a",
+      "number": 13471,
+      "title": "TITAN V5: witness first production-v3 action divergence",
+      "updated_at": "2026-09-12T23:37:06Z"
     }
   ],
   "open_heads": {
     "13400": "2ef189e832881ae38111bf9318ee7bba80b204cb",
     "13415": "813c9d49d5a423561c6db35fdca5bdfe44418d14",
     "13471": "91d17d19e2a762318d79058b042be10c63c6743a",
-    "13502": "a1610c08237a28e4a15fac2498f1c9ac18651dd2",
-    "13528": "14b6bcbf1e9dca10a881ebdee261198d17cc5439",
+    "13528": "4d1d4a4e113e987746f48cda1625b53827eaf8ba",
     "13531": "b9db151337b931479fde8a76d87253acaa4b5737",
     "13533": "73e73de79cb62cf2f58005efab027138ded6f282",
-    "13547": "54cb50ad0557fd31b5cc5a97cad7731ebde73e03",
-    "13548": "afc38e11cc48355d5a7b38c5c5fcf1ae70ecd249",
-    "13549": "b46d856aafd9d650963b83f8b55607ae526ed7bc",
-    "13552": "b06c5cb32320d9eaf5af7e047bf0577fd0673d96",
-    "13553": "59b7fa65fb3c963dc31ce515c443cafced1c793f",
-    "13557": "9eaf12635120bf0216ed543acded429ae6c82fe2"
+    "13553": "5c49be5984f0f61bcef919e56d5b4b729bdfdd8b",
+    "13563": "125961222bf0f5df03fd0ac3ae8b671f874dcfa7",
+    "13568": "98432e69624282b1bef2e36ec818f2215a4c18ff",
+    "13569": "187a04c71a64402247c2f9cf85a8d85b332de260",
+    "13570": "c0b09e6f2c60646de826a3c75cf8bdecd714389b",
+    "13571": "6697f5446b47c9db3d8c0cfa02fd0962dff64f3f"
   },
-  "pulls_listed": 13,
+  "pulls_listed": 12,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 17.9,
+  "queue_depth_per_runner": 110.0,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "ariadne-z/volvo-capacity-rss-failclosed-20260913",
+      "closed_at": "2026-09-13T06:05:31Z",
+      "head_sha": "974944fb0cc05feed598f22a5942b56d1a82a7d7",
+      "merged_at": "2026-09-13T06:05:31Z",
+      "number": 13548,
+      "state": "MERGED",
+      "title": "product: fail closed on unknown capacity RSS"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z-foundry/cirrus-shutdown-postmerge-repair-20260913",
+      "closed_at": "2026-09-13T06:04:41Z",
+      "head_sha": "5bc4cb0b714c72228c62947fa69bcca2acc2b384",
+      "merged_at": null,
+      "number": 13567,
+      "state": "CLOSED",
+      "title": "ci: retire shut-down Cirrus provider"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zephyr/openkylin-compare-failclosed-20260913",
+      "closed_at": "2026-09-13T06:04:36Z",
+      "head_sha": "3c5350509adb73aed074a8798b0433172a17824f",
+      "merged_at": null,
+      "number": 13565,
+      "state": "CLOSED",
+      "title": "Superseded by #13563: fail closed on unsafe benchmark comparisons"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z-sol/cirrus-dead-road-repair-20260913",
+      "closed_at": "2026-09-13T06:03:59Z",
+      "head_sha": "f36e92df6364c00c0965849a3f7e6c12f1cace10",
+      "merged_at": "2026-09-13T06:03:59Z",
+      "number": 13566,
+      "state": "MERGED",
+      "title": "Retire the dead Cirrus hosted CI road"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "somnus-z614/openkylin-memory-benchmark-20260913",
+      "closed_at": "2026-09-13T05:57:24Z",
+      "head_sha": "b06c5cb32320d9eaf5af7e047bf0577fd0673d96",
+      "merged_at": "2026-09-13T05:57:24Z",
+      "number": 13552,
+      "state": "MERGED",
+      "title": "revenue: add openKylin long-term memory benchmark baseline"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "ci/actions-independent-battery-20260913",
+      "closed_at": "2026-09-13T05:57:19Z",
+      "head_sha": "18ab811201e9b1568478d8f815f7f0fb998b28b8",
+      "merged_at": "2026-09-13T05:57:18Z",
+      "number": 13561,
+      "state": "MERGED",
+      "title": "Run Commons CI without Actions and prepare Cirrus execution"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "ariadne-z/pazhou-titanmcp-bp-20260913",
+      "closed_at": "2026-09-13T05:55:35Z",
+      "head_sha": "e76d693649a3c9e35b33074d22ce3b40e69b3760",
+      "merged_at": "2026-09-13T05:55:35Z",
+      "number": 13562,
+      "state": "MERGED",
+      "title": "docs: preserve Pazhou titanmcp business plan outside frozen submission repo"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z-keystone/cwpd-website-qualification-20260913",
+      "closed_at": "2026-09-13T05:54:01Z",
+      "head_sha": "8dbcacbe05d3395b18f1cdfc9f82db4f94eeecb3",
+      "merged_at": "2026-09-13T05:54:01Z",
+      "number": 13549,
+      "state": "MERGED",
+      "title": "docs(revenue): qualify CWPD website redesign RFP"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "digit/1gpa-27-08pv-open-door-guard-20260913",
+      "closed_at": "2026-09-13T05:50:41Z",
+      "head_sha": "97124523c4dbfc18052a6b11497ed17c7c5325ae",
+      "merged_at": "2026-09-13T05:50:41Z",
+      "number": 13558,
+      "state": "MERGED",
+      "title": "revenue: remove open-door-guard trip in 1GPA 27-08PV note"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "pascal-z812/nysed-rfp144-qualification-20260913",
+      "closed_at": "2026-09-13T05:49:37Z",
+      "head_sha": "54cb50ad0557fd31b5cc5a97cad7731ebde73e03",
+      "merged_at": "2026-09-13T05:49:37Z",
+      "number": 13547,
+      "state": "MERGED",
+      "title": "revenue: qualify NYSED OCUE modernization RFP"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z-helix/hive029-integrity-dedup-20260913-01",
+      "closed_at": "2026-09-13T05:42:57Z",
+      "head_sha": "73e87af5a244f6def852d4c03abdf989c943f36b",
+      "merged_at": "2026-09-13T05:42:57Z",
+      "number": 13560,
+      "state": "MERGED",
+      "title": "Fieldnote: retire redundant stale-preview integrity wrapper"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z-helix/hive029-stale-preview-integration-20260913-01",
+      "closed_at": "2026-09-13T05:37:40Z",
+      "head_sha": "1671dc45cd419d701e2dddaaf3d484b1be4fc28d",
+      "merged_at": "2026-09-13T05:37:40Z",
+      "number": 13559,
+      "state": "MERGED",
+      "title": "Fieldnote: land reviewed stale-preview guard on fresh main"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "gpt/titan-v5-v217-probe-corrective-20260912",
+      "closed_at": "2026-09-13T05:10:44Z",
+      "head_sha": "f5a3304661bed30860c65c528317d5f6f70f5e05",
+      "merged_at": "2026-09-13T05:10:44Z",
+      "number": 13502,
+      "state": "MERGED",
+      "title": "TITAN V5: correct V217 engagement evidence gate"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "astra/titan-fix-lazy-offers-floored-slots-20260913",
+      "closed_at": "2026-09-13T05:08:59Z",
+      "head_sha": "9eaf12635120bf0216ed543acded429ae6c82fe2",
+      "merged_at": "2026-09-13T05:08:59Z",
+      "number": 13557,
+      "state": "MERGED",
+      "title": "TITAN: align test_full_slots_keep_no_admission_fallback with floored market orders"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -206,164 +359,10 @@
       "number": 13512,
       "state": "MERGED",
       "title": "TITAN V5: bind exporter overlap custody to authenticated staging receipts"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "astra/v5-p04-committed-evidence-authority-20260912",
-      "closed_at": "2026-09-13T04:58:42Z",
-      "head_sha": "11d67a55c4d5c7665fecdc54807722b08167efa8",
-      "merged_at": "2026-09-13T04:58:42Z",
-      "number": 13529,
-      "state": "MERGED",
-      "title": "TITAN V5 P04: authenticate selector evidence from canonical main rows"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "sol-bastion/titan-p11-strict-nested-fields-20260909-01",
-      "closed_at": "2026-09-13T04:56:08Z",
-      "head_sha": "332dde8ebc051338154aa53acbead9b70ea4655b",
-      "merged_at": "2026-09-13T04:56:08Z",
-      "number": 11642,
-      "state": "MERGED",
-      "title": "TITAN P11: fail closed on unknown nested fields"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "totem-z6172/r-s03-aquantia-lead-invoice-20260913",
-      "closed_at": "2026-09-13T04:37:35Z",
-      "head_sha": "d03ceefb00c01fbe84a47d3cb427bb8e75015db5",
-      "merged_at": "2026-09-13T04:37:35Z",
-      "number": 13556,
-      "state": "MERGED",
-      "title": "revenue: qualify Aquantia lead-to-invoice workflow"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "fischer/sdcounty-bpm013259-dms-qualification-20260913",
-      "closed_at": "2026-09-13T04:35:28Z",
-      "head_sha": "dd584cdbbc3012cfa53309b049c58c49dcf74e43",
-      "merged_at": "2026-09-13T04:35:28Z",
-      "number": 13555,
-      "state": "MERGED",
-      "title": "revenue: qualify San Diego County DMS RFP"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "noether-z6049/usac-it-26-139-qualification-successor-20260913",
-      "closed_at": "2026-09-13T04:32:55Z",
-      "head_sha": "e93d2a2e1b354a8b989beba5857fbabae9189027",
-      "merged_at": "2026-09-13T04:32:55Z",
-      "number": 13554,
-      "state": "MERGED",
-      "title": "revenue: qualify USAC IT-26-139 AI consulting RFP (clean successor)"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "noether-z6049/usac-it-26-139-qualification-20260913",
-      "closed_at": "2026-09-13T04:32:00Z",
-      "head_sha": "9665382435bc66ef6f274e5e397a80aa18469adc",
-      "merged_at": null,
-      "number": 13550,
-      "state": "CLOSED",
-      "title": "revenue: qualify USAC IT-26-139 AI consulting RFP"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "fischer/fsu-itn6769-4-ai-systems-qualification-20260913",
-      "closed_at": "2026-09-13T04:31:58Z",
-      "head_sha": "74705d9e983711d10b0cd709c2f7da8769e1b4f0",
-      "merged_at": "2026-09-13T04:31:58Z",
-      "number": 13551,
-      "state": "MERGED",
-      "title": "revenue: qualify FSU AI systems cooperative ITN"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-keystone/roadef-restart-budget-20260913",
-      "closed_at": "2026-09-13T04:25:30Z",
-      "head_sha": "bbee50066aa27f94653b795df92d1f76c018fb26",
-      "merged_at": "2026-09-13T04:25:30Z",
-      "number": 13543,
-      "state": "MERGED",
-      "title": "feat(roadef): separate rank sweep and restart budgets"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "noether-z6049/1gpa-27-08pv-qualification-20260913",
-      "closed_at": "2026-09-13T04:21:56Z",
-      "head_sha": "2a9d7e0ad1fc0a468086e42a34998455b9769a5c",
-      "merged_at": "2026-09-13T04:21:56Z",
-      "number": 13545,
-      "state": "MERGED",
-      "title": "revenue: qualify 1GPA 27-08PV technology RFP"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "fischer/lackawanna-property-data-qualification-20260913",
-      "closed_at": "2026-09-13T04:17:58Z",
-      "head_sha": "e1f3dddc53edcec555770a4a38e5ce9317882cba",
-      "merged_at": "2026-09-13T04:17:58Z",
-      "number": 13544,
-      "state": "MERGED",
-      "title": "revenue: qualify Lackawanna property-data RFP"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "codex/osff-firmware-sbom-grant-resource-20260913-01",
-      "closed_at": "2026-09-13T04:12:59Z",
-      "head_sha": "218f92a2583ddfda65f44b19eb1d28d7d799580e",
-      "merged_at": "2026-09-13T04:12:59Z",
-      "number": 13542,
-      "state": "MERGED",
-      "title": "resources: activate OSFF firmware SBOM grant packet"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "astra/osff-firmware-sbom-grant-20260912",
-      "closed_at": "2026-09-13T03:30:54Z",
-      "head_sha": "c8e711dfced98065ca0ae55ce8f578a8c5465d05",
-      "merged_at": "2026-09-13T03:30:53Z",
-      "number": 13541,
-      "state": "MERGED",
-      "title": "revenue: OSFF firmware SBOM conformance grant packet"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "grok/titan-v5-current-carrier-pin-rotate-20260913",
-      "closed_at": "2026-09-13T03:21:57Z",
-      "head_sha": "4d9a2caa278db142fdc73d507951a2c37d994b16",
-      "merged_at": "2026-09-13T03:21:57Z",
-      "number": 13540,
-      "state": "MERGED",
-      "title": "TITAN V5: rotate current-carrot pins onto live parent and helper blobs"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "grokbuild-odg-34726510598-blockb-snapshot-paths-20260913",
-      "closed_at": "2026-09-13T03:20:25Z",
-      "head_sha": "10edc0a96e5c12cec1413f8cea9fcaa08139b800",
-      "merged_at": "2026-09-13T03:20:25Z",
-      "number": 13539,
-      "state": "MERGED",
-      "title": "Split BLOCK-B snapshot paths so open-door-guard passes"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-13T05:05:28Z",
+  "unchanged_since": "2026-09-13T06:10:54Z",
   "undatable_pulls": []
 }
