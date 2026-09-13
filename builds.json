@@ -359,7 +359,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/13471",
    "base_freshness": {
     "base_sha": "1f947f809df669fbc40dd095e8bf4d806157b448",
-    "main_sha": "c93907c2117d9e4ad2abc55b92ef2aaa4864d72a",
+    "main_sha": "b6de319992d8a5826a8eaa1e0e4243f95d3fea56",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -375,7 +375,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/13400",
    "base_freshness": {
     "base_sha": "145a007a64e0cade1424db27e7be55f308edde1d",
-    "main_sha": "c93907c2117d9e4ad2abc55b92ef2aaa4864d72a",
+    "main_sha": "b6de319992d8a5826a8eaa1e0e4243f95d3fea56",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -391,23 +391,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/13533",
    "base_freshness": {
     "base_sha": "bfddf33e924ee684cf76964b770eafbc51f89ebb",
-    "main_sha": "c93907c2117d9e4ad2abc55b92ef2aaa4864d72a",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 13568,
-   "author": "woahwhattheheck",
-   "title": "open-door: allow isolated procurement status denials",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/13568",
-   "base_freshness": {
-    "base_sha": "ec453b791a7fed490d9e3e5dec125e92ab978603",
-    "main_sha": "c93907c2117d9e4ad2abc55b92ef2aaa4864d72a",
+    "main_sha": "b6de319992d8a5826a8eaa1e0e4243f95d3fea56",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -423,23 +407,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/13553",
    "base_freshness": {
     "base_sha": "99887c69d461b60c6f5f860184f573623ddb6556",
-    "main_sha": "c93907c2117d9e4ad2abc55b92ef2aaa4864d72a",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 13584,
-   "author": "woahwhattheheck",
-   "title": "openkylin: fail closed on unsafe report filenames",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/13584",
-   "base_freshness": {
-    "base_sha": "afc17b9fae7cfa3c4cc508a156b2656ce5903136",
-    "main_sha": "c93907c2117d9e4ad2abc55b92ef2aaa4864d72a",
+    "main_sha": "b6de319992d8a5826a8eaa1e0e4243f95d3fea56",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -455,7 +423,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/13585",
    "base_freshness": {
     "base_sha": "afc17b9fae7cfa3c4cc508a156b2656ce5903136",
-    "main_sha": "c93907c2117d9e4ad2abc55b92ef2aaa4864d72a",
+    "main_sha": "b6de319992d8a5826a8eaa1e0e4243f95d3fea56",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -471,71 +439,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/13587",
    "base_freshness": {
     "base_sha": "82457b4fbc99a64a5fa10203814ab6c3729c9de3",
-    "main_sha": "c93907c2117d9e4ad2abc55b92ef2aaa4864d72a",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 13588,
-   "author": "woahwhattheheck",
-   "title": "host: add fail-closed custody collision preflight",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/13588",
-   "base_freshness": {
-    "base_sha": "82457b4fbc99a64a5fa10203814ab6c3729c9de3",
-    "main_sha": "c93907c2117d9e4ad2abc55b92ef2aaa4864d72a",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 13415,
-   "author": "woahwhattheheck",
-   "title": "TITAN V5: reduce exact V3.1/V4 gauntlet into repair hotspots",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/13415",
-   "base_freshness": {
-    "base_sha": "6ce2f6e256c6eeca7e14d217327bb2c6d9a6787b",
-    "main_sha": "c93907c2117d9e4ad2abc55b92ef2aaa4864d72a",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "CANDIDATE",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 13581,
-   "author": "woahwhattheheck",
-   "title": "checkout: bind dedicated landing pages to canonical rails",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/13581",
-   "base_freshness": {
-    "base_sha": "92d84d613a6756e6f42e903e7178a61ffd2ba122",
-    "main_sha": "c93907c2117d9e4ad2abc55b92ef2aaa4864d72a",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 13577,
-   "author": "woahwhattheheck",
-   "title": "tools: add LeRobot v2.1 multimodal quality inspector",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/13577",
-   "base_freshness": {
-    "base_sha": "b5b7020bcf33c67fa69fbf2f80aff6d4fb55b771",
-    "main_sha": "c93907c2117d9e4ad2abc55b92ef2aaa4864d72a",
+    "main_sha": "b6de319992d8a5826a8eaa1e0e4243f95d3fea56",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -551,26 +455,58 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/13595",
    "base_freshness": {
     "base_sha": "c93907c2117d9e4ad2abc55b92ef2aaa4864d72a",
-    "main_sha": "c93907c2117d9e4ad2abc55b92ef2aaa4864d72a",
+    "main_sha": "b6de319992d8a5826a8eaa1e0e4243f95d3fea56",
     "ahead_by": null,
     "behind_by": null,
-    "label": "FRESH"
+    "label": "STALE_BASE"
    },
    "status": "PR_OPEN",
    "road": "pr",
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
   {
-   "number": 13596,
+   "number": 13568,
    "author": "woahwhattheheck",
-   "title": "command-center: recover Deathstar email telemetry on fresh main",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/13596",
+   "title": "open-door: allow isolated procurement status denials",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/13568",
    "base_freshness": {
-    "base_sha": "c93907c2117d9e4ad2abc55b92ef2aaa4864d72a",
-    "main_sha": "c93907c2117d9e4ad2abc55b92ef2aaa4864d72a",
+    "base_sha": "ec453b791a7fed490d9e3e5dec125e92ab978603",
+    "main_sha": "b6de319992d8a5826a8eaa1e0e4243f95d3fea56",
     "ahead_by": null,
     "behind_by": null,
-    "label": "FRESH"
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 13415,
+   "author": "woahwhattheheck",
+   "title": "TITAN V5: reduce exact V3.1/V4 gauntlet into repair hotspots",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/13415",
+   "base_freshness": {
+    "base_sha": "6ce2f6e256c6eeca7e14d217327bb2c6d9a6787b",
+    "main_sha": "b6de319992d8a5826a8eaa1e0e4243f95d3fea56",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "CANDIDATE",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 13584,
+   "author": "woahwhattheheck",
+   "title": "openkylin: fail closed on unsafe report filenames",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/13584",
+   "base_freshness": {
+    "base_sha": "7e3d6996315e62f5747fb59ebd6c5ce41c924c53",
+    "main_sha": "b6de319992d8a5826a8eaa1e0e4243f95d3fea56",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
    },
    "status": "PR_OPEN",
    "road": "pr",
@@ -579,43 +515,11 @@
   {
    "number": 13591,
    "author": "woahwhattheheck",
-   "title": "funded-work: compose sponsor discovery fence with DNS-pinned transport",
+   "title": "funded-work: harden paid-work evidence and network boundaries",
    "html_url": "https://github.com/woahwhattheheck/commons/pull/13591",
    "base_freshness": {
-    "base_sha": "c93907c2117d9e4ad2abc55b92ef2aaa4864d72a",
-    "main_sha": "c93907c2117d9e4ad2abc55b92ef2aaa4864d72a",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "FRESH"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 13598,
-   "author": "woahwhattheheck",
-   "title": "mcp: follow discovery pagination to completion",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/13598",
-   "base_freshness": {
-    "base_sha": "c93907c2117d9e4ad2abc55b92ef2aaa4864d72a",
-    "main_sha": "c93907c2117d9e4ad2abc55b92ef2aaa4864d72a",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "FRESH"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 13583,
-   "author": "woahwhattheheck",
-   "title": "ci: bind battery execution to committed sources",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/13583",
-   "base_freshness": {
-    "base_sha": "afc17b9fae7cfa3c4cc508a156b2656ce5903136",
-    "main_sha": "c93907c2117d9e4ad2abc55b92ef2aaa4864d72a",
+    "base_sha": "488ad4f843651ddce0a8da4c1c0195a442d35cc1",
+    "main_sha": "b6de319992d8a5826a8eaa1e0e4243f95d3fea56",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -625,13 +529,13 @@
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
   {
-   "number": 13589,
+   "number": 13621,
    "author": "woahwhattheheck",
-   "title": "tools: add multi-key swarm preclaim custody fence",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/13589",
+   "title": "creator desk: gate operator controls with workspace capability",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/13621",
    "base_freshness": {
-    "base_sha": "82457b4fbc99a64a5fa10203814ab6c3729c9de3",
-    "main_sha": "c93907c2117d9e4ad2abc55b92ef2aaa4864d72a",
+    "base_sha": "7e3d6996315e62f5747fb59ebd6c5ce41c924c53",
+    "main_sha": "b6de319992d8a5826a8eaa1e0e4243f95d3fea56",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -641,13 +545,109 @@
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
   {
-   "number": 13597,
+   "number": 13639,
    "author": "woahwhattheheck",
-   "title": "docs: add INPRS partner technical workstream",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/13597",
+   "title": "Revenue: add fail-closed inbound reply custody router",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/13639",
    "base_freshness": {
-    "base_sha": "c93907c2117d9e4ad2abc55b92ef2aaa4864d72a",
-    "main_sha": "c93907c2117d9e4ad2abc55b92ef2aaa4864d72a",
+    "base_sha": "d8cf6fb9dc74a306b14e0bb010836a2c150e3d0c",
+    "main_sha": "b6de319992d8a5826a8eaa1e0e4243f95d3fea56",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 13649,
+   "author": "woahwhattheheck",
+   "title": "Revenue: add carrier-safe parallel-agent landing core",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/13649",
+   "base_freshness": {
+    "base_sha": "113a3adeef85dbcae2b893181989533c38629af2",
+    "main_sha": "b6de319992d8a5826a8eaa1e0e4243f95d3fea56",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 13644,
+   "author": "woahwhattheheck",
+   "title": "revenue: add Mermail RFQ companion skill",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/13644",
+   "base_freshness": {
+    "base_sha": "b6de319992d8a5826a8eaa1e0e4243f95d3fea56",
+    "main_sha": "b6de319992d8a5826a8eaa1e0e4243f95d3fea56",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "FRESH"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 13611,
+   "author": "woahwhattheheck",
+   "title": "hive: add Fleetline commercial booking terms",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/13611",
+   "base_freshness": {
+    "base_sha": "2f4290907fe088157768fc7acd7b69e99f573753",
+    "main_sha": "b6de319992d8a5826a8eaa1e0e4243f95d3fea56",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 13654,
+   "author": "woahwhattheheck",
+   "title": "ci: make Actions evidence classification-only",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/13654",
+   "base_freshness": {
+    "base_sha": "b6de319992d8a5826a8eaa1e0e4243f95d3fea56",
+    "main_sha": "b6de319992d8a5826a8eaa1e0e4243f95d3fea56",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "FRESH"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 13602,
+   "author": "woahwhattheheck",
+   "title": "revenue: add INPRS CLM migration/public-release evidence gate",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/13602",
+   "base_freshness": {
+    "base_sha": "22b0eb006549b6455197dbcc43649b1fa9f6923a",
+    "main_sha": "b6de319992d8a5826a8eaa1e0e4243f95d3fea56",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 13651,
+   "author": "woahwhattheheck",
+   "title": "fix(revenue): expire replayed fulfillment release receipts",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/13651",
+   "base_freshness": {
+    "base_sha": "b6de319992d8a5826a8eaa1e0e4243f95d3fea56",
+    "main_sha": "b6de319992d8a5826a8eaa1e0e4243f95d3fea56",
     "ahead_by": null,
     "behind_by": null,
     "label": "FRESH"
