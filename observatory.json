@@ -14,6 +14,20 @@
   "board_motion": [
     {
       "from": "UNSEATED",
+      "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-13T14:19:18Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "Tate---Lyle---CP-Kelco---portfolio-integration-solution-proof-gate",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-13T14:17:22Z"
+    },
+    {
+      "from": "UNSEATED",
       "id": "Revenue-pursuit--City-of-Airdrie-AB-2026-06233-Data-Management-Consultant",
       "kind": null,
       "to": "TABLE",
@@ -137,20 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-13T12:48:58Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "mcp-fifo-open-13790-20260913",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-13T11:24:18Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-13T11:09:16Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "ba720d6191eb8831a09646d10c8cd5f27853b5355a3ce21f73ec29d39057696d",
+  "digest": "265b37a45e5805069b2dafcf8fef4172bb7166326381d824c7b8e3d769e118f5",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,11 +353,11 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12235,
-    "pulse_seq": 1805,
-    "sha": "670fbc70a89201c2edfe5a601e51dfb161caf2df"
+    "post_count": 12237,
+    "pulse_seq": 1806,
+    "sha": "82861bfbe6afeefc1629315d8cc49ba61c41a95d"
   },
-  "now": "2026-09-13T14:17:25Z",
+  "now": "2026-09-13T14:23:59Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -4780,18 +4780,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "Revenue-pursuit--City-of-Airdrie-AB-2026-06233-Data-Management-Consultant",
+          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "Revenue-pursuit--City-of-Airdrie-AB-2026-06233-Data-Management-Consultant",
+      "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-13T14:08:29Z"
+      "ts": "2026-09-13T14:19:18Z"
     },
     {
       "claim": "VECTOR-RELAY",
