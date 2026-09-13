@@ -34,31 +34,18 @@ Per-file timeouts record exit 124, stop the Linux child process group, and keep
 running the remaining tests. GitHub's existing workflow uses this same runner
 and retains its checkout-linked report upload.
 
-### Automatic execution on Cirrus
+### Cirrus shutdown record
 
-The existing `.cirrus.yml` now includes four independent battery shards in
-addition to header census. Source-change filters avoid board-post-only runs;
-superseded PR tasks cancel automatically. Each shard has a 90-minute ceiling,
-a 15-minute per-file timeout, and retained raw/JSON results. The provider uses
-Node 22 and Debian Python; additional dependencies required by a particular
-test still need to exist on that worker. This configuration has not yet been
-executed on Cirrus, so provider runtime parity is unverified.
+Cirrus Labs announced on April 7, 2026 that Cirrus CI would shut down effective
+Monday, June 1, 2026. The hosted service is therefore not an available CI road:
+no repository app installation, quota, task, or future check is expected. The
+former `.cirrus.yml` activation configuration was removed from this tree.
+Historical Cirrus documentation or configuration is not execution authority.
 
-One connection is required: install the
-[Cirrus CI GitHub App](https://github.com/apps/cirrus-ci/installations/new) for
-`woahwhattheheck/commons` using its free public-repository plan. Then push a
-relevant change or open a PR and require all four `commons-battery` tasks to
-finish successfully. GitHub reports Cirrus task checks independently of Actions.
-Do not retire the existing Actions check until the replacement has a successful
-run and any required-check configuration has been migrated.
-
-Cirrus's documented free allowance is 50 compute credits per month; it is a
-finite provider quota whose CPU-minute conversion may change with pricing and
-resource class. No paid plan, compute purchase, provider installation, or
-always-on worker is created by this commit. The direct cloud-worker command
-remains usable when a hosted CI pool is empty.
-Provider setup: [official quick start](https://github.com/cirruslabs/cirrus-ci-docs/blob/master/docs/guide/quick-start.md).
-Limits: [official FAQ](https://github.com/cirruslabs/cirrus-ci-docs/blob/master/docs/faq.md).
+The portable runner above remains usable on an available cloud worker, and
+GitHub Actions continues to call the same runner. A replacement hosted provider
+must be currently operating and produce a real run before it can be marked live.
+Official shutdown: [Cirrus Labs to join OpenAI](https://cirruslabs.org/).
 
 The muhlnickel is the computer. These files are host-side offload so the 8 GB
 laptop does zero while peers header-walk checked-in `MUHL_READERS` layouts.
@@ -69,12 +56,13 @@ Shared walk: `host_offload/header_census.py` — headers only, not DEPTH, not
 | pipe | config | state | cap to encode |
 | --- | --- | --- | --- |
 | GitHub Actions | `.github/workflows/header-census.yml` | LIVE | public standard runners free; larger runners bill |
-| Cirrus | `.cirrus.yml` | UNMEASURED | 50 credits/month; finite provider quota; not unlimited |
+| Cirrus | — | DEAD/EXCLUDED | hosted service shut down 2026-06-01; no quota or install path |
 | GitLab | `.gitlab-ci.yml` | UNMEASURED | 400 compute-min/month unless Open Source Program |
 | Codeberg/Woodpecker | `.woodpecker.yml` | UNMEASURED/ONBOARDING | linux/amd64, reasonable use, may need approval |
 
 Machine-readable cards: `ci/provider_quotas.json`. A config file is not a
-measured run. Oracle / D1 / GPU stay unclaimed until a receipt exists.
+measured run, and dead-provider rows are historical records only. Oracle / D1 /
+GPU stay unclaimed until a receipt exists.
 
 ## Repair duty
 
