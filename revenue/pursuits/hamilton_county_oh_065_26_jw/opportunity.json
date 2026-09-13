@@ -1,0 +1,53 @@
+{
+  "schema": "hamilton-oh-065-26-jw-pursuit/v1",
+  "opportunity": {
+    "buyer": "Hamilton County, Ohio",
+    "solicitation_id": "065-26/JW",
+    "title": "Data Integration Hub"
+  },
+  "sources": [
+    {
+      "id": "county-gob2g-portal",
+      "authority": "CONTROLLING_OFFICIAL",
+      "url": "https://hamiltoncountyohio.gob2g.com/",
+      "status": "BLOCKED",
+      "retrieved_at": "2026-09-13T10:23:00-04:00",
+      "sha256": null
+    },
+    {
+      "id": "highergov-mirror",
+      "authority": "SECONDARY_MIRROR",
+      "url": "https://www.highergov.com/sl/contract-opportunity/oh-rfp-065-26-jw-data-integration-hub-73774927/",
+      "status": "AVAILABLE",
+      "retrieved_at": "2026-09-13T10:23:00-04:00",
+      "sha256": null
+    }
+  ],
+  "requirements": [
+    {"key":"response_deadline","status":"UNRESOLVED","value":"2026-10-14","evidence_source_ids":["highergov-mirror"],"note":"2026-10-14 appears in current public mirrors only; controlling official evidence is not recovered."},
+    {"key":"submission_mechanics","status":"UNRESOLVED","value":null,"evidence_source_ids":[],"note":"Official packet unresolved."},
+    {"key":"question_deadline_and_process","status":"UNRESOLVED","value":null,"evidence_source_ids":[],"note":"Official packet unresolved."},
+    {"key":"addenda_complete","status":"UNRESOLVED","value":null,"evidence_source_ids":[],"note":"Official packet and addenda unresolved."},
+    {"key":"scope_and_deliverables","status":"UNRESOLVED","value":{"discovery_summary":"Data Integration Hub; justice-data integration themes appear in public discovery material only."},"evidence_source_ids":["highergov-mirror"],"note":"Discovery hypothesis only; do not quote as a mandatory County requirement until the official packet is recovered."},
+    {"key":"interfaces_and_connectivity","status":"UNRESOLVED","value":null,"evidence_source_ids":[],"note":"Official packet unresolved."},
+    {"key":"data_standards_and_schemas","status":"UNRESOLVED","value":null,"evidence_source_ids":[],"note":"Official packet unresolved."},
+    {"key":"security_identity_and_access","status":"UNRESOLVED","value":null,"evidence_source_ids":[],"note":"Official packet unresolved."},
+    {"key":"audit_logging_and_retention","status":"UNRESOLVED","value":null,"evidence_source_ids":[],"note":"Official packet unresolved."},
+    {"key":"data_quality_and_validation","status":"UNRESOLVED","value":null,"evidence_source_ids":[],"note":"Official packet unresolved."},
+    {"key":"monitoring_alerting_and_operations","status":"UNRESOLVED","value":null,"evidence_source_ids":[],"note":"Official packet unresolved."},
+    {"key":"migration_cutover_and_acceptance","status":"UNRESOLVED","value":null,"evidence_source_ids":[],"note":"Official packet unresolved."},
+    {"key":"availability_backup_and_disaster_recovery","status":"UNRESOLVED","value":null,"evidence_source_ids":[],"note":"Official packet unresolved."},
+    {"key":"privacy_records_and_justice_data","status":"UNRESOLVED","value":null,"evidence_source_ids":[],"note":"Official packet unresolved."},
+    {"key":"implementation_support_and_slas","status":"UNRESOLVED","value":null,"evidence_source_ids":[],"note":"Official packet unresolved."},
+    {"key":"mandatory_qualifications_and_references","status":"UNRESOLVED","value":null,"evidence_source_ids":[],"note":"Official packet unresolved."},
+    {"key":"insurance_legal_and_contract_terms","status":"UNRESOLVED","value":null,"evidence_source_ids":[],"note":"Official packet unresolved."},
+    {"key":"pricing_structure","status":"UNRESOLVED","value":null,"evidence_source_ids":[],"note":"Official packet unresolved."},
+    {"key":"teaming_and_subcontracting_rules","status":"UNRESOLVED","value":null,"evidence_source_ids":[],"note":"Official packet unresolved."}
+  ],
+  "capability_fit": {
+    "prime": "UNKNOWN",
+    "teaming": "UNKNOWN",
+    "evidence_source_ids": [],
+    "note": "Candidate specialist seams exist in integration architecture, adapters, schema mediation, validation, observability, auditability, and migration planning, but this carrier binds no unsupported deployment/certification/reference claim."
+  }
+}
