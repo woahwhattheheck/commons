@@ -1,7 +1,8 @@
 [
   {
     "actor_file_sha256": "0470acd36864497605730f120baf97ee64cdaedf6c9ca4bb128a1bebcf8840d6",
-    "actor_path": "/workspace/scratch/e67ff728c8fb/native-block-b/R05/snapshots/actor-v3mbbo9b.jsonl",
+    "snapshot_dir": "/workspace/scratch/e67ff728c8fb/native-block-b/R05/snapshots",
+    "snapshot_name": "actor-v3mbbo9b.jsonl",
     "forced_plan": 5,
     "opponent": "apex_v7",
     "p04_row_sha256": "44d65f8f9bfc80e2cde8e7e11910a88d2fe8e4282c3558464a0a8a136740ea53",
@@ -16,7 +17,8 @@
   },
   {
     "actor_file_sha256": "6eec68963f370610041fb8291fffa32f94daa41a59b8d205d98eab377501191c",
-    "actor_path": "/workspace/scratch/e67ff728c8fb/native-block-b/R05/snapshots/actor-htj8b7nl.jsonl",
+    "snapshot_dir": "/workspace/scratch/e67ff728c8fb/native-block-b/R05/snapshots",
+    "snapshot_name": "actor-htj8b7nl.jsonl",
     "forced_plan": 5,
     "opponent": "apex_v7",
     "p04_row_sha256": "a8b403169d15d7a6deaf1ac0ec067f311d6a2644d58f8bb955393bc8e75480f9",
@@ -31,7 +33,8 @@
   },
   {
     "actor_file_sha256": "150bdf3e482fd6ec0b0bdf36a927f4bae14f725f28ea0079ea3d963f41dba710",
-    "actor_path": "/workspace/scratch/e67ff728c8fb/native-block-b/R05/snapshots/actor-z4nk92p0.jsonl",
+    "snapshot_dir": "/workspace/scratch/e67ff728c8fb/native-block-b/R05/snapshots",
+    "snapshot_name": "actor-z4nk92p0.jsonl",
     "forced_plan": 5,
     "opponent": "apex_v7",
     "p04_row_sha256": "7f4707013957a6265660aa19736a00161d4dd0216c95543bcf7fffa68a95b269",
@@ -46,7 +49,8 @@
   },
   {
     "actor_file_sha256": "10ac1d29251bd39376bf1e42ddfcb3d7fc4bbbc557c9bd931040a6eb7590c724",
-    "actor_path": "/workspace/scratch/e67ff728c8fb/native-block-b/R05/snapshots/actor-a62t9yta.jsonl",
+    "snapshot_dir": "/workspace/scratch/e67ff728c8fb/native-block-b/R05/snapshots",
+    "snapshot_name": "actor-a62t9yta.jsonl",
     "forced_plan": 5,
     "opponent": "apex_v7",
     "p04_row_sha256": "d18df1eb7ab81127b7bb006915fd9f6f65e0c16c00530cf2018b4a8541313538",
@@ -61,7 +65,8 @@
   },
   {
     "actor_file_sha256": "7fcb793ece4f563156009a1cbb6a5da99f37e556ed692a0361c9d64b75f9f456",
-    "actor_path": "/workspace/scratch/e67ff728c8fb/native-block-b/R05/snapshots/actor-lz8u1_9b.jsonl",
+    "snapshot_dir": "/workspace/scratch/e67ff728c8fb/native-block-b/R05/snapshots",
+    "snapshot_name": "actor-lz8u1_9b.jsonl",
     "forced_plan": 5,
     "opponent": "arlene_v14",
     "p04_row_sha256": "0bb442a2de9529c5bdd3a247458d234670c0836650f1f2ed5e59f47abcde116e",
@@ -76,7 +81,8 @@
   },
   {
     "actor_file_sha256": "2eac52d1ba857fb7e8415ac3f2683f343d26cb24fe01a94298aca8c2082d48e3",
-    "actor_path": "/workspace/scratch/e67ff728c8fb/native-block-b/R05/snapshots/actor-bezmamgt.jsonl",
+    "snapshot_dir": "/workspace/scratch/e67ff728c8fb/native-block-b/R05/snapshots",
+    "snapshot_name": "actor-bezmamgt.jsonl",
     "forced_plan": 5,
     "opponent": "arlene_v14",
     "p04_row_sha256": "27b5312401683c1a3fc2bf136f04f13ffe378a7247fca39853a5894d9e7cb57c",
@@ -91,7 +97,8 @@
   },
   {
     "actor_file_sha256": "6870ac94b670aac7b091fdd9c4bf3b8849f5912f59abe8159c1000234d8bd66f",
-    "actor_path": "/workspace/scratch/e67ff728c8fb/native-block-b/R05/snapshots/actor-raj48dzr.jsonl",
+    "snapshot_dir": "/workspace/scratch/e67ff728c8fb/native-block-b/R05/snapshots",
+    "snapshot_name": "actor-raj48dzr.jsonl",
     "forced_plan": 5,
     "opponent": "arlene_v14",
     "p04_row_sha256": "a99441862b40d7336b7feb66c0387a5ebe94a3723eab0f0b6206084b4603d017",
@@ -106,7 +113,8 @@
   },
   {
     "actor_file_sha256": "ad7b83fe53f2cb4fc110a33260e52bfd50f3fe0eb417efb5074abdb47ee44564",
-    "actor_path": "/workspace/scratch/e67ff728c8fb/native-block-b/R05/snapshots/actor-cuee2wfg.jsonl",
+    "snapshot_dir": "/workspace/scratch/e67ff728c8fb/native-block-b/R05/snapshots",
+    "snapshot_name": "actor-cuee2wfg.jsonl",
     "forced_plan": 5,
     "opponent": "arlene_v14",
     "p04_row_sha256": "1f464482654003015f76452c665d8f4ba9132551ca6c6cea262ad8cf7578c723",
@@ -121,7 +129,8 @@
   },
   {
     "actor_file_sha256": "eaab48dab409d583675ad698fe2a2b4c95a8a3f907465cdbc12f94ebced4bbb0",
-    "actor_path": "/workspace/scratch/e67ff728c8fb/native-block-b/R06/snapshots/actor-i0bw3hqe.jsonl",
+    "snapshot_dir": "/workspace/scratch/e67ff728c8fb/native-block-b/R06/snapshots",
+    "snapshot_name": "actor-i0bw3hqe.jsonl",
     "forced_plan": 6,
     "opponent": "apex_v7",
     "p04_row_sha256": "4e8bd087f63bb95027f636a4aea100deb38f7886a854490b697d3e8605f62b9b",
@@ -136,7 +145,8 @@
   },
   {
     "actor_file_sha256": "8b4f84f63cc0abea7cde8f0a998b51f1b944db702ff0a77bddee01205502eb17",
-    "actor_path": "/workspace/scratch/e67ff728c8fb/native-block-b/R06/snapshots/actor-4jo9ow66.jsonl",
+    "snapshot_dir": "/workspace/scratch/e67ff728c8fb/native-block-b/R06/snapshots",
+    "snapshot_name": "actor-4jo9ow66.jsonl",
     "forced_plan": 6,
     "opponent": "apex_v7",
     "p04_row_sha256": "54ac22d8793d6530d3cf480cf9cc6dc2402bc1c6b4ff98ebf3b37f2ec8003ba2",
@@ -151,7 +161,8 @@
   },
   {
     "actor_file_sha256": "728ba6f9ba48582399598b287fc06f0948e3fb00318bc1ab8222ac94ee714bb0",
-    "actor_path": "/workspace/scratch/e67ff728c8fb/native-block-b/R06/snapshots/actor-m9_i4rsg.jsonl",
+    "snapshot_dir": "/workspace/scratch/e67ff728c8fb/native-block-b/R06/snapshots",
+    "snapshot_name": "actor-m9_i4rsg.jsonl",
     "forced_plan": 6,
     "opponent": "apex_v7",
     "p04_row_sha256": "eed0a0b68be7b72a499a965409be1dd19b0c5c2dd9c57002eee631d1971668cf",
@@ -166,7 +177,8 @@
   },
   {
     "actor_file_sha256": "e7cdf4ef3ce2d76b826e533d365c4b821c3abe3fe3117523e1e086bb8c29eb5c",
-    "actor_path": "/workspace/scratch/e67ff728c8fb/native-block-b/R06/snapshots/actor-esqcnk7v.jsonl",
+    "snapshot_dir": "/workspace/scratch/e67ff728c8fb/native-block-b/R06/snapshots",
+    "snapshot_name": "actor-esqcnk7v.jsonl",
     "forced_plan": 6,
     "opponent": "apex_v7",
     "p04_row_sha256": "e12a0e0f8ab3c508321941417cb1702cb9dcd8771a5800030ca7e74a9b8fe238",
@@ -181,7 +193,8 @@
   },
   {
     "actor_file_sha256": "67ff9d28c3c8484eae09a99f684ae979a4d267f0afe2cbe3119aa69f94d5f04d",
-    "actor_path": "/workspace/scratch/e67ff728c8fb/native-block-b/R06/snapshots/actor-9t734atj.jsonl",
+    "snapshot_dir": "/workspace/scratch/e67ff728c8fb/native-block-b/R06/snapshots",
+    "snapshot_name": "actor-9t734atj.jsonl",
     "forced_plan": 6,
     "opponent": "arlene_v14",
     "p04_row_sha256": "8011c52537ebfca8688c240292a273048bf3b6581d03a88346f5618e22c05cea",
@@ -196,7 +209,8 @@
   },
   {
     "actor_file_sha256": "826b10ff63cb318e157aaceb2e65cffd8147972b9b1ba18c0712feff973be752",
-    "actor_path": "/workspace/scratch/e67ff728c8fb/native-block-b/R06/snapshots/actor-i30mrm35.jsonl",
+    "snapshot_dir": "/workspace/scratch/e67ff728c8fb/native-block-b/R06/snapshots",
+    "snapshot_name": "actor-i30mrm35.jsonl",
     "forced_plan": 6,
     "opponent": "arlene_v14",
     "p04_row_sha256": "99246794f61cb605ab822371a4fe11120e73485aa2e11ba156d874f84ebd1eeb",
@@ -211,7 +225,8 @@
   },
   {
     "actor_file_sha256": "6cf8c271ce8526741e1ad1845ff9d987e07db24f817d068360ee6c6747fde960",
-    "actor_path": "/workspace/scratch/e67ff728c8fb/native-block-b/R06/snapshots/actor-99iq4frd.jsonl",
+    "snapshot_dir": "/workspace/scratch/e67ff728c8fb/native-block-b/R06/snapshots",
+    "snapshot_name": "actor-99iq4frd.jsonl",
     "forced_plan": 6,
     "opponent": "arlene_v14",
     "p04_row_sha256": "fcb174d881158bdadd579f78deec018122f47b15a3d9e003e694bb48115d5efa",
@@ -226,7 +241,8 @@
   },
   {
     "actor_file_sha256": "3701a41218c2effff07ea2c1855eb94a17674792854e0b6d1393ff21b558df4e",
-    "actor_path": "/workspace/scratch/e67ff728c8fb/native-block-b/R06/snapshots/actor-grtm49ye.jsonl",
+    "snapshot_dir": "/workspace/scratch/e67ff728c8fb/native-block-b/R06/snapshots",
+    "snapshot_name": "actor-grtm49ye.jsonl",
     "forced_plan": 6,
     "opponent": "arlene_v14",
     "p04_row_sha256": "101ec91f7c3fd6a63ec1e7d038392421fc8cf2a914802111f4c3365eaaa9b278",
@@ -241,7 +257,8 @@
   },
   {
     "actor_file_sha256": "d7b2c647caf06d7d76af57d8198b044d0823da1127158b5be981d95c3ba9c214",
-    "actor_path": "/workspace/scratch/e67ff728c8fb/native-block-b/R07/snapshots/actor-flc7za_m.jsonl",
+    "snapshot_dir": "/workspace/scratch/e67ff728c8fb/native-block-b/R07/snapshots",
+    "snapshot_name": "actor-flc7za_m.jsonl",
     "forced_plan": 7,
     "opponent": "apex_v7",
     "p04_row_sha256": "1fffe2ab40868cb6bede3779825a070b4f6bba7234702a6ee4df852c7077f61c",
@@ -256,7 +273,8 @@
   },
   {
     "actor_file_sha256": "814a56389a73387bdf2609db82535660649f58f41f1305ee34b231d100d9a981",
-    "actor_path": "/workspace/scratch/e67ff728c8fb/native-block-b/R07/snapshots/actor-qq6cd13w.jsonl",
+    "snapshot_dir": "/workspace/scratch/e67ff728c8fb/native-block-b/R07/snapshots",
+    "snapshot_name": "actor-qq6cd13w.jsonl",
     "forced_plan": 7,
     "opponent": "apex_v7",
     "p04_row_sha256": "bf126681d1006c40ed35a0cf50542672012e0e42f8b049da11e8ac25ddf37b3b",
@@ -271,7 +289,8 @@
   },
   {
     "actor_file_sha256": "2da6bf3d8a7aab37443908ef25c4cc37484e4f81ff5e4f81b10bec23063fb7b1",
-    "actor_path": "/workspace/scratch/e67ff728c8fb/native-block-b/R07/snapshots/actor-bkicrg34.jsonl",
+    "snapshot_dir": "/workspace/scratch/e67ff728c8fb/native-block-b/R07/snapshots",
+    "snapshot_name": "actor-bkicrg34.jsonl",
     "forced_plan": 7,
     "opponent": "apex_v7",
     "p04_row_sha256": "cc4ff63efaf5459be38d1930da61d8c415024c139cb50a2d3cc8f9b5111d4259",
@@ -286,7 +305,8 @@
   },
   {
     "actor_file_sha256": "87a38abfd0f9f40e65e9d884141a37dd6358073b22f20c678b31f716f86b167a",
-    "actor_path": "/workspace/scratch/e67ff728c8fb/native-block-b/R07/snapshots/actor-u6ln3sko.jsonl",
+    "snapshot_dir": "/workspace/scratch/e67ff728c8fb/native-block-b/R07/snapshots",
+    "snapshot_name": "actor-u6ln3sko.jsonl",
     "forced_plan": 7,
     "opponent": "apex_v7",
     "p04_row_sha256": "2053ed627d581ef816ffcd76ecfc63cb7d4ac2d85081d9eb7ec0e833073c19a5",
@@ -301,7 +321,8 @@
   },
   {
     "actor_file_sha256": "c33bf0dc52cd87bf7d6ad93a0b6a22db108aead032453799c8f46e45f9801871",
-    "actor_path": "/workspace/scratch/e67ff728c8fb/native-block-b/R07/snapshots/actor-889mzme0.jsonl",
+    "snapshot_dir": "/workspace/scratch/e67ff728c8fb/native-block-b/R07/snapshots",
+    "snapshot_name": "actor-889mzme0.jsonl",
     "forced_plan": 7,
     "opponent": "arlene_v14",
     "p04_row_sha256": "2ac6baba5b22a67f83ba867849fd40601557ce03c797f8a7972efbb6fc5a1dd7",
@@ -316,7 +337,8 @@
   },
   {
     "actor_file_sha256": "cfad952d3f6c05ceba194b52fab54c4f775d0b47f186f273416bfe3f38a7d5d6",
-    "actor_path": "/workspace/scratch/e67ff728c8fb/native-block-b/R07/snapshots/actor-l5k1ktko.jsonl",
+    "snapshot_dir": "/workspace/scratch/e67ff728c8fb/native-block-b/R07/snapshots",
+    "snapshot_name": "actor-l5k1ktko.jsonl",
     "forced_plan": 7,
     "opponent": "arlene_v14",
     "p04_row_sha256": "3a968c6073e00ba4dda4c552b4da71477c0776a39b8ef33c6399cacc86d8c88c",
@@ -331,7 +353,8 @@
   },
   {
     "actor_file_sha256": "0231d5330aeb0c63163faeaf41b0d578b3e7331c2ab33102a8ba1a714fe8979a",
-    "actor_path": "/workspace/scratch/e67ff728c8fb/native-block-b/R07/snapshots/actor-ba4syh75.jsonl",
+    "snapshot_dir": "/workspace/scratch/e67ff728c8fb/native-block-b/R07/snapshots",
+    "snapshot_name": "actor-ba4syh75.jsonl",
     "forced_plan": 7,
     "opponent": "arlene_v14",
     "p04_row_sha256": "f86e30272b94e623611f130d5de2dad33b47a605d989cf4168a9d38d7fab024a",
@@ -346,7 +369,8 @@
   },
   {
     "actor_file_sha256": "68f5c3499ac846741fd15865db0ba5dcfc89989ecb8082f250565afe1f855ca0",
-    "actor_path": "/workspace/scratch/e67ff728c8fb/native-block-b/R07/snapshots/actor-zj1bim_s.jsonl",
+    "snapshot_dir": "/workspace/scratch/e67ff728c8fb/native-block-b/R07/snapshots",
+    "snapshot_name": "actor-zj1bim_s.jsonl",
     "forced_plan": 7,
     "opponent": "arlene_v14",
     "p04_row_sha256": "3ac37819b06a6aba39c8f448341f071bdcd7ee48704c9f6dcd5a309bc6ef26c3",
@@ -361,7 +385,8 @@
   },
   {
     "actor_file_sha256": "f9ca2b8231cadf806a912554c183cd7412b8b63a747ac749a39ae232924d1dd4",
-    "actor_path": "/workspace/scratch/e67ff728c8fb/native-block-b/R08/snapshots/actor-yy96qxsq.jsonl",
+    "snapshot_dir": "/workspace/scratch/e67ff728c8fb/native-block-b/R08/snapshots",
+    "snapshot_name": "actor-yy96qxsq.jsonl",
     "forced_plan": 8,
     "opponent": "apex_v7",
     "p04_row_sha256": "a359c04b92845a167315d24902901c5c42a8679a9252a42c184885f0d36fe7c2",
@@ -376,7 +401,8 @@
   },
   {
     "actor_file_sha256": "207c4a953163eff71abbfa1493695b9755b431704a71d7c4c18e8e5c2c65816e",
-    "actor_path": "/workspace/scratch/e67ff728c8fb/native-block-b/R08/snapshots/actor-f6g02msq.jsonl",
+    "snapshot_dir": "/workspace/scratch/e67ff728c8fb/native-block-b/R08/snapshots",
+    "snapshot_name": "actor-f6g02msq.jsonl",
     "forced_plan": 8,
     "opponent": "apex_v7",
     "p04_row_sha256": "3a83ae44d6629f716ae21961c62ccf67b8addfbd4844d9656bb1aa17b40d2639",
@@ -391,7 +417,8 @@
   },
   {
     "actor_file_sha256": "2264c4aa2ede642522468e4daf19047fa7556e32169758ce551bbc939e940645",
-    "actor_path": "/workspace/scratch/e67ff728c8fb/native-block-b/R08/snapshots/actor-xi_qbrc9.jsonl",
+    "snapshot_dir": "/workspace/scratch/e67ff728c8fb/native-block-b/R08/snapshots",
+    "snapshot_name": "actor-xi_qbrc9.jsonl",
     "forced_plan": 8,
     "opponent": "apex_v7",
     "p04_row_sha256": "a7e75c28bd30a63439a7ca85eb88344c73e0cd962c64d6fa7d9a64101059d3d3",
@@ -406,7 +433,8 @@
   },
   {
     "actor_file_sha256": "183d135a71d596e17f95387b615d92178aa01894db83f10285b6f441e8343792",
-    "actor_path": "/workspace/scratch/e67ff728c8fb/native-block-b/R08/snapshots/actor-n14mmxyy.jsonl",
+    "snapshot_dir": "/workspace/scratch/e67ff728c8fb/native-block-b/R08/snapshots",
+    "snapshot_name": "actor-n14mmxyy.jsonl",
     "forced_plan": 8,
     "opponent": "apex_v7",
     "p04_row_sha256": "b20078002d5244159312047712d5dd5eb7ead027bc066e2c2c2e6610dbae078d",
@@ -421,7 +449,8 @@
   },
   {
     "actor_file_sha256": "48787656e1e475d1e8169cd2040bf07b72bd1cd52deb58dec43f2eca1efe4413",
-    "actor_path": "/workspace/scratch/e67ff728c8fb/native-block-b/R08/snapshots/actor-m7m13r4g.jsonl",
+    "snapshot_dir": "/workspace/scratch/e67ff728c8fb/native-block-b/R08/snapshots",
+    "snapshot_name": "actor-m7m13r4g.jsonl",
     "forced_plan": 8,
     "opponent": "arlene_v14",
     "p04_row_sha256": "aabf475b23e66de31a6f0e02c23f9716c1cde1595d80adb1c33da7c35e9ead53",
@@ -436,7 +465,8 @@
   },
   {
     "actor_file_sha256": "bb834b4febd41724dc365199f85c7a9c274bba8caa02ae77d288639d3c9c1b22",
-    "actor_path": "/workspace/scratch/e67ff728c8fb/native-block-b/R08/snapshots/actor-69laedky.jsonl",
+    "snapshot_dir": "/workspace/scratch/e67ff728c8fb/native-block-b/R08/snapshots",
+    "snapshot_name": "actor-69laedky.jsonl",
     "forced_plan": 8,
     "opponent": "arlene_v14",
     "p04_row_sha256": "35844077b6f50f1c3a731c3161b8dc2001b6a919ac7ed3208793c7a0b2ed7e85",
@@ -451,7 +481,8 @@
   },
   {
     "actor_file_sha256": "6e02cc17c56199fc1a2dadfa26ca323701e828cbf1a48e395ecabaa67b4621a1",
-    "actor_path": "/workspace/scratch/e67ff728c8fb/native-block-b/R08/snapshots/actor-5vcw1fnc.jsonl",
+    "snapshot_dir": "/workspace/scratch/e67ff728c8fb/native-block-b/R08/snapshots",
+    "snapshot_name": "actor-5vcw1fnc.jsonl",
     "forced_plan": 8,
     "opponent": "arlene_v14",
     "p04_row_sha256": "e4e228172408123d72edb2d279fe5c4b7b7f8809c8f52869feebda0e9ba04687",
@@ -466,7 +497,8 @@
   },
   {
     "actor_file_sha256": "d0f41be085ffec532aeaa126c57007cd54b7948ed53bd1a3a378a19fd40faf31",
-    "actor_path": "/workspace/scratch/e67ff728c8fb/native-block-b/R08/snapshots/actor-ekytht6s.jsonl",
+    "snapshot_dir": "/workspace/scratch/e67ff728c8fb/native-block-b/R08/snapshots",
+    "snapshot_name": "actor-ekytht6s.jsonl",
     "forced_plan": 8,
     "opponent": "arlene_v14",
     "p04_row_sha256": "27c73208051b580bf7135f2cd7226020b7ce3866b59ef8269b4cbe63ef93db3d",

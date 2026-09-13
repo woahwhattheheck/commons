@@ -4,6 +4,7 @@ import subprocess
 import tempfile
 import unittest
 from pathlib import Path
+from unittest import mock
 
 import p04_route_ranker as ranker
 import p04_preregistered_selector as s
@@ -137,6 +138,8 @@ def committed_evidence(rows):
     git(root, "add", path)
     git(root, "commit", "-m", "committed route evidence")
     commit = git(root, "rev-parse", "HEAD")
+    git(root, "remote", "add", "origin", "https://github.com/woahwhattheheck/commons.git")
+    git(root, "update-ref", s.TRUSTED_MAIN_REF, commit)
     return temp, root, path, commit
 
 
@@ -150,6 +153,7 @@ class TestPreregisteredSelector(unittest.TestCase):
         self.assertEqual(reg["discovery_universe_sha256"], s.DISCOVERY_UNIVERSE_SHA256)
         self.assertEqual(len(reg["discovery_universe"]["group_keys"]), 8)
         self.assertEqual(reg["accepted_evidence"]["schema"], s.EVIDENCE_SCHEMA)
+        self.assertEqual(reg["accepted_evidence"]["trusted_main_ref"], s.TRUSTED_MAIN_REF)
 
     def test_safe_global_override_is_nominated_but_not_policy_ready(self):
         out = s._fit_reduced_report(report(full_groups()))
@@ -178,10 +182,7 @@ class TestPreregisteredSelector(unittest.TestCase):
         reduced = report(groups)
         out = s._fit_reduced_report(reduced)
         self.assertTrue(out["selected"] is None or out["selected"]["rule"]["override_plan"] != 3)
-        plan3 = s.evaluate_rule(
-            s.validate_discovery_report(reduced),
-            {"predicate": None, "override_plan": 3},
-        )
+        plan3 = s.evaluate_rule(s.validate_discovery_report(reduced), {"predicate": None, "override_plan": 3})
         self.assertFalse(plan3["qualified"])
         self.assertEqual(plan3["candidate_failure_groups"], 0)
         self.assertEqual(plan3["incumbent_failure_groups"], 1)
@@ -287,23 +288,32 @@ class TestPreregisteredSelector(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "caller-authored reduced reports are not evidence authority"):
             s.fit_selector(forged)
 
-    def test_committed_main_ancestry_rows_are_reduced_internally(self):
+    def test_private_repo_seam_reduces_canonical_origin_rows_internally(self):
         temp, root, path, commit = committed_evidence(raw_rows())
         self.addCleanup(temp.cleanup)
-        out = s.fit_selector_from_committed_evidence(root, commit, [path])
+        out = s._fit_selector_from_repo(root, commit, [path], trusted_main_commit=commit)
         self.assertEqual(out["selected"]["rule"], {"predicate": None, "override_plan": 3})
         self.assertEqual(out["evidence"]["commit"], commit)
+        self.assertEqual(out["evidence"]["trusted_main_commit"], commit)
         self.assertEqual(out["evidence"]["rows"], 104)
         self.assertEqual(out["evidence"]["members"][0]["path"], path)
         self.assertFalse(out["policy_ready"])
         self.assertFalse(out["composer_ready"])
 
+    def test_public_api_derives_repository_root_instead_of_accepting_one(self):
+        temp, root, path, commit = committed_evidence(raw_rows())
+        self.addCleanup(temp.cleanup)
+        with mock.patch.object(s, "_canonical_repo_root", return_value=root):
+            out = s.fit_selector_from_committed_evidence(commit, [path], trusted_main_commit=commit)
+        self.assertEqual(out["evidence"]["commit"], commit)
+        self.assertEqual(out["selected"]["rule"], {"predicate": None, "override_plan": 3})
+
     def test_working_tree_tamper_cannot_change_committed_evidence(self):
         temp, root, path, commit = committed_evidence(raw_rows())
         self.addCleanup(temp.cleanup)
-        before = s.fit_selector_from_committed_evidence(root, commit, [path])
+        before = s._fit_selector_from_repo(root, commit, [path], trusted_main_commit=commit)
         (root / path).write_text("{\"forged\":true}\n", encoding="utf-8")
-        after = s.fit_selector_from_committed_evidence(root, commit, [path])
+        after = s._fit_selector_from_repo(root, commit, [path], trusted_main_commit=commit)
         self.assertEqual(before["selected"], after["selected"])
         self.assertEqual(before["evidence"]["members"], after["evidence"]["members"])
 
@@ -318,13 +328,142 @@ class TestPreregisteredSelector(unittest.TestCase):
         untrusted = git(root, "rev-parse", "HEAD")
         self.assertNotEqual(commit, untrusted)
         with self.assertRaisesRegex(ValueError, "not an ancestor of canonical main"):
-            s.fit_selector_from_committed_evidence(root, untrusted, [path])
+            s._fit_selector_from_repo(root, untrusted, [path], trusted_main_commit=commit)
+
+    def test_noncanonical_origin_is_rejected_even_with_matching_local_history(self):
+        temp, root, path, commit = committed_evidence(raw_rows())
+        self.addCleanup(temp.cleanup)
+        git(root, "remote", "set-url", "origin", "https://example.invalid/attacker/commons.git")
+        with self.assertRaisesRegex(ValueError, "not the canonical"):
+            s._fit_selector_from_repo(root, commit, [path], trusted_main_commit=commit)
+
+    def test_local_main_cannot_substitute_for_missing_origin_main(self):
+        temp, root, path, commit = committed_evidence(raw_rows())
+        self.addCleanup(temp.cleanup)
+        git(root, "update-ref", "-d", s.TRUSTED_MAIN_REF)
+        with self.assertRaisesRegex(ValueError, "origin/main ref is unavailable"):
+            s._fit_selector_from_repo(root, commit, [path], trusted_main_commit=commit)
 
     def test_evidence_path_must_stay_in_canonical_native_namespace(self):
         temp, root, path, commit = committed_evidence(raw_rows())
         self.addCleanup(temp.cleanup)
         with self.assertRaisesRegex(ValueError, "route-matrix-native JSONL"):
-            s.load_committed_rows(root, commit, ["tmp/forged.jsonl"])
+            s.load_committed_rows(root, commit, ["tmp/forged.jsonl"], trusted_main_commit=commit)
+
+    def test_ls_remote_authenticates_trusted_main_tip_when_no_provider_commit_given(self):
+        temp, root, path, commit = committed_evidence(raw_rows())
+        self.addCleanup(temp.cleanup)
+        real_git = s._git
+        def mock_ls(r, *a, **kw):
+            if a and a[0] == "ls-remote":
+                return subprocess.CompletedProcess(
+                    ["git", *a], returncode=0, stdout=f"{commit}\trefs/heads/main\n".encode(), stderr=b""
+                )
+            return real_git(r, *a, **kw)
+
+        with mock.patch.object(s, "_git", side_effect=mock_ls):
+            out = s._fit_selector_from_repo(root, commit, [path])
+        self.assertEqual(out["selected"]["rule"], {"predicate": None, "override_plan": 3})
+        self.assertEqual(out["evidence"]["commit"], commit)
+        self.assertEqual(out["evidence"]["trusted_main_commit"], commit)
+
+    def test_ls_remote_failure_fails_closed(self):
+        temp, root, path, commit = committed_evidence(raw_rows())
+        self.addCleanup(temp.cleanup)
+        real_git = s._git
+        def mock_ls_fail(r, *a, **kw):
+            if a and a[0] == "ls-remote":
+                return subprocess.CompletedProcess(
+                    ["git", *a], returncode=128, stdout=b"", stderr=b"fatal: unable to connect"
+                )
+            return real_git(r, *a, **kw)
+
+        with mock.patch.object(s, "_git", side_effect=mock_ls_fail):
+            with self.assertRaisesRegex(ValueError, "cannot authenticate trusted main tip via origin ls-remote"):
+                s._fit_selector_from_repo(root, commit, [path])
+
+    def test_fake_local_origin_main_cannot_manufacture_authority(self):
+        temp, root, path, commit = committed_evidence(raw_rows())
+        self.addCleanup(temp.cleanup)
+        git(root, "checkout", "-b", "attacker")
+        fake_path = s.EVIDENCE_PREFIX + "TEST/fake.jsonl"
+        fake_target = root / fake_path
+        fake_target.write_text("{\"fake\":true}\n", encoding="utf-8")
+        git(root, "add", fake_path)
+        git(root, "commit", "-m", "fake commit")
+        attacker_commit = git(root, "rev-parse", "HEAD")
+
+        # Attacker tampers with local refs/remotes/origin/main to point to unmerged attacker_commit
+        git(root, "update-ref", s.TRUSTED_MAIN_REF, attacker_commit)
+
+        # 1. Provider tip supplied (genuine commit): local origin/main diverged, rejected
+        with self.assertRaisesRegex(ValueError, "not an ancestor of authenticated main tip"):
+            s._fit_selector_from_repo(root, attacker_commit, [fake_path], trusted_main_commit=commit)
+
+        # 2. Local ref restored to genuine commit, but attacker tries to pass attacker_commit as evidence
+        git(root, "update-ref", s.TRUSTED_MAIN_REF, commit)
+        with self.assertRaisesRegex(ValueError, "not an ancestor of canonical main"):
+            s._fit_selector_from_repo(root, attacker_commit, [fake_path], trusted_main_commit=commit)
+
+        # 3. Authenticated remote ls-remote observation rejects tampered local ref
+        git(root, "update-ref", s.TRUSTED_MAIN_REF, attacker_commit)
+        real_git = s._git
+        def mock_ls(r, *a, **kw):
+            if a and a[0] == "ls-remote":
+                return subprocess.CompletedProcess(
+                    ["git", *a], returncode=0, stdout=f"{commit}\trefs/heads/main\n".encode(), stderr=b""
+                )
+            return real_git(r, *a, **kw)
+
+        with mock.patch.object(s, "_git", side_effect=mock_ls):
+            with self.assertRaisesRegex(ValueError, "not an ancestor of authenticated main tip"):
+                s._fit_selector_from_repo(root, commit, [path])
+
+    def test_ambient_git_env_cannot_redirect_repository_or_objects(self):
+        temp, root, path, commit = committed_evidence(raw_rows())
+        self.addCleanup(temp.cleanup)
+        hostile_env = {
+            "GIT_DIR": str(root / "nonexistent_git_dir"),
+            "GIT_WORK_TREE": str(root / "nonexistent_work_tree"),
+            "GIT_INDEX_FILE": str(root / "nonexistent_index"),
+            "GIT_OBJECT_DIRECTORY": str(root / "nonexistent_objects"),
+        }
+        with mock.patch.dict("os.environ", hostile_env):
+            out = s._fit_selector_from_repo(root, commit, [path], trusted_main_commit=commit)
+            self.assertEqual(out["selected"]["rule"], {"predicate": None, "override_plan": 3})
+            self.assertEqual(out["evidence"]["commit"], commit)
+
+            res = s._git(root, "rev-parse", "HEAD")
+            self.assertEqual(res.stdout.decode().strip(), commit)
+
+    def test_git_replace_refs_cannot_tamper_with_committed_evidence(self):
+        temp, root, path, commit = committed_evidence(raw_rows())
+        self.addCleanup(temp.cleanup)
+        git(root, "checkout", "-b", "tampered")
+        target = root / path
+        target.write_text("{\"tampered\":true}\n", encoding="utf-8")
+        git(root, "add", path)
+        git(root, "commit", "-m", "tampered commit")
+        tampered_commit = git(root, "rev-parse", "HEAD")
+        git(root, "checkout", "main")
+
+        git(root, "replace", commit, tampered_commit)
+
+        unprotected_show = subprocess.run(
+            ["git", "show", f"{commit}:{path}"],
+            cwd=root,
+            capture_output=True,
+            text=True,
+        ).stdout
+        self.assertIn("tampered", unprotected_show)
+
+        protected_show = s._git(root, "show", f"{commit}:{path}").stdout.decode("utf-8")
+        self.assertNotIn("tampered", protected_show)
+
+        out = s._fit_selector_from_repo(root, commit, [path], trusted_main_commit=commit)
+        self.assertEqual(out["selected"]["rule"], {"predicate": None, "override_plan": 3})
+        self.assertEqual(out["evidence"]["commit"], commit)
+        self.assertEqual(out["evidence"]["rows"], 104)
 
 
 if __name__ == "__main__":

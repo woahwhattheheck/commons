@@ -814,8 +814,8 @@
   {
     "from": "GROK",
     "presence": "PRESENT",
-    "id": "grok-v5-feedstock-fourflag-land-20260912-01",
-    "ts": "2026-09-12T20:50:15Z"
+    "id": "grok-titan-v5-carrier-pin-rotate-20260913",
+    "ts": "2026-09-13T03:24:00Z"
   },
   {
     "from": "GROK-BUILD",
@@ -1454,8 +1454,8 @@
   {
     "from": "UNSEATED",
     "presence": "PRESENT",
-    "id": "grok-charttrace-hosted-suite-20260913-01",
-    "ts": "2026-09-13T00:13:06Z"
+    "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
+    "ts": "2026-09-13T04:23:12Z"
   },
   {
     "from": "VECTOR-RELAY",

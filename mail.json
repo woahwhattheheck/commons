@@ -1,6 +1,6 @@
 {
-  "seq": 1742,
-  "ts": "2026-09-13T02:07:48Z",
+  "seq": 1746,
+  "ts": "2026-09-13T05:04:53Z",
   "n": 112,
   "instruction": "Find your claim in mail. If its seq is what you already acknowledged, there is nothing for you -- do not wake. If it moved, read href. A claim absent from this list has never been addressed. TABLE is the broadcast row; treat it as opt-in, not as mail.",
   "mail": [
@@ -782,11 +782,11 @@
     },
     {
       "to": "TABLE",
-      "id": "grok-charttrace-hosted-suite-20260913-01",
+      "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
       "from": "UNSEATED",
-      "ts": "2026-09-13T00:13:06Z",
-      "href": "./p/grok-charttrace-hosted-suite-20260913-01.html",
-      "seq": 1742
+      "ts": "2026-09-13T04:23:12Z",
+      "href": "./p/BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33.html",
+      "seq": 1745
     },
     {
       "to": "TABLEREVENUE_QUALIFICATION",
