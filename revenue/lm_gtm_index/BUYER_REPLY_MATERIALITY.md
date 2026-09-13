@@ -2,6 +2,8 @@
 
 Operation: `GTM-BUYER-REPLY-MATERIALITY-AUTHORITY-ZRTP5V8-20260913`
 
+Provenance fix-forward: `GTM-BUYER-REPLY-OBSERVATION-PROVENANCE-ZRTP5V8-20260913`
+
 Mailbox transport evidence and commercial semantics are separate trust layers.
 
 ## Evidence levels
@@ -13,6 +15,8 @@ This means only that the mailbox verifier observed an inbound message labelled a
 It does **not** establish that the sender is a verified human decision-maker, that the message is commercially material, that the buyer wants to proceed, that scope or terms are accepted, that an award exists, or that payment occurred. It is deliberately not a HOT GTM lane.
 
 The hermetic verifier may persist this only as evidentiary-only relationship `STATUS` data with `observation=BUYER_REPLY_OBSERVED`. That record intentionally omits every handoff control field: `decision`, `dnr`, `live`, `due`, `route_kind`, `route_ref`, and `next_action`. The handoff can therefore learn that a reply arrived without dissolving an existing owner hold, weakening a DNR, changing a route/due date, or replacing the current next action.
+
+Pinning also reacquires the observation from the repository's canonical current hermetic fixture. A caller-supplied verifier result is compatibility input only: it must canonically equal the reacquired result, and the persisted source message IDs come from the reacquired result. The evidence-output `paths` argument cannot select a different mailbox verification root. This prevents a forged `BUYER_REPLY_OBSERVED` object from asserting reply provenance for a `NO_BUYER_REPLY` target or inventing arbitrary Gmail source IDs.
 
 Human classification is required before any material-reply or commercial-state claim, but the raw observation itself does not overwrite the relationship's authoritative next action.
 
@@ -28,6 +32,8 @@ Historical `MATERIAL_REPLY` evidence remains readable for compatibility. Consume
 - Fixture direction/role is coherent: outbound messages are seller-role anchors and inbound messages are buyer-role observations.
 - Inbound chronology is bound to the first outbound anchor in the same thread, not to an unrelated older outbound in another thread.
 - The same inbound provider message cannot be reminted under multiple `BUYER_REPLY_OBSERVED` evidence IDs.
+- A pin operation recomputes the canonical current verification for its target subject; caller-supplied verification data must match exactly.
+- Evidence-destination path overrides do not override the canonical verification root.
 - Legacy `--pin-material-reply` remains as a compatibility surface but always refuses.
 - Auto-acks, support tickets, out-of-office replies, routing mail, unknown replies, and other inbound existence evidence cannot become material buyer interest merely because a message arrived.
 - Raw arrival cannot alter decision, DNR/contact authority, owner-hold authority, live state, route, due date, or next action.
