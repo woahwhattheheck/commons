@@ -14,6 +14,13 @@
   "board_motion": [
     {
       "from": "UNSEATED",
+      "id": "feat--embed-exact-Git-source-capsules-in-context-dispatch-packets",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-13T13:15:39Z"
+    },
+    {
+      "from": "UNSEATED",
       "id": "Revenue--recover-Utility-Safety-Partners-data-modernization---AI-RFP",
       "kind": null,
       "to": "TABLE",
@@ -144,13 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-13T10:15:00Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "Hive-product--field-service-quote-to-job-customer-workspace",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-13T10:13:30Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "23d7c5f94de00c195f8e8d178d3317ae18e6ef933f08bb55eea97d393ece928c",
+  "digest": "72f13ab2b7a7aebaa01455bf35bdd4e9c12e1d53841aa78ddc82416cfb494e0a",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,11 +353,11 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12224,
-    "pulse_seq": 1790,
-    "sha": "156ce6ad3106f716bf606d80129f8879b1d4ff42"
+    "post_count": 12225,
+    "pulse_seq": 1791,
+    "sha": "2b271abf7438128b6319eb31b9adc27aa9ab840f"
   },
-  "now": "2026-09-13T13:18:51Z",
+  "now": "2026-09-13T13:21:03Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -4780,18 +4780,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "Revenue--recover-Utility-Safety-Partners-data-modernization---AI-RFP",
+          "id": "feat--embed-exact-Git-source-capsules-in-context-dispatch-packets",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "Revenue--recover-Utility-Safety-Partners-data-modernization---AI-RFP",
+      "id": "feat--embed-exact-Git-source-capsules-in-context-dispatch-packets",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-13T13:14:04Z"
+      "ts": "2026-09-13T13:15:39Z"
     },
     {
       "claim": "VECTOR-RELAY",

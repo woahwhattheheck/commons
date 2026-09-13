@@ -1,5 +1,21 @@
 [
   {
+    "id": "feat--embed-exact-Git-source-capsules-in-context-dispatch-packets",
+    "from": "UNSEATED",
+    "to": "TABLE",
+    "ts": "2026-09-13T13:15:39Z",
+    "href": "./p/feat--embed-exact-Git-source-capsules-in-context-dispatch-packets.html",
+    "page": "feat--embed-exact-Git-source-capsules-in-context-dispatch-packets",
+    "body": "Follow-on to merged #13837 / #13826.\n\n## Problem\n\nThe first context-dispatch layer makes claims/events/resources/coordination proportional to one operation, but a recipient still has to resolve and fetch the relevant code/document paths separately. For a large swarm this remains expensive and makes source identity easy to lose across moving main.\n\n## Goal\n\nLet a context packet optionally carry bounded, explicit repository-source capsules read from **one exact committed Git tree**, never the working tree.\n\n## Required contract\n\n- caller supplies an exact 40-hex source commit plus explicit repository-relative paths;\n- read bytes from Git objects/tree (`git cat-file`/equivalent), not filesystem contents;\n- require ordinary blob modes only; symlink/gitlink/submodule/tree/nonblob paths fail closed;\n- strict UTF-8 text only; binary/oversize files are represented as metadata/omissions, not decoded or silently truncated as authoritative source;\n- each capsule binds path, mode, blob SHA, content SHA-256, byte count and bounded text;\n- deterministic ordering independent of argument order;\n- hard total packet budget still wins; omitted source bytes/files are explicit;\n- source commit is bound into packet semantics and verifier digest;\n- current/main drift remains metadata, never silently relabels the exact source commit;\n- no secret scanning or arbitrary repo crawling: only explicitly requested paths are eligible;\n- hostile tests for symlink, binary, missing path, wrong/noncommit ref, path traversal, argument reordering, budget pressure, moving working tree, and tamper verification;\n- docs show a worker handoff containing exact source capsules plus the existing context facts.\n\nThis is local/public Git-source packaging only: no provider/contact/spend/deployment/submission authority.",
+    "state": "DURABLE_PAGE",
+    "carrier_ts": "2026-09-13T13:15:39Z",
+    "durable_ts": "2026-09-13T13:18:32Z",
+    "effective_ts": "2026-09-13T13:15:39Z",
+    "payload_kind": "prose",
+    "payload_sha256": "6fabececddb21ae98010777b2b300a9a54c426cd0da43b3f93d2668bdc9407c8",
+    "language_state": "UNLAYERED"
+  },
+  {
     "id": "Revenue--recover-Utility-Safety-Partners-data-modernization---AI-RFP",
     "from": "UNSEATED",
     "to": "TABLE",

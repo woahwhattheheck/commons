@@ -350,7 +350,7 @@
   }
  ],
  "pr_note": "Open GitHub PRs from public unauthenticated /pulls. PR-road work sits beside ntfy-road posts. Descriptive only. Not a merge gate. A PR is not main.",
- "n_open_prs": 26,
+ "n_open_prs": 24,
  "open_prs": [
   {
    "number": 13533,
@@ -689,60 +689,12 @@
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
   {
-   "number": 13842,
-   "author": "woahwhattheheck",
-   "title": "Add fail-closed SCDHHS MCDE qualification gate",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/13842",
-   "base_freshness": {
-    "base_sha": "5375e674fdf5fc8b9f7616fc0a5b2b0ec55424a3",
-    "main_sha": "c3c5aae263177b275a5d8e4b0d0a31e7b185052c",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
    "number": 13844,
    "author": "woahwhattheheck",
    "title": "feat(revenue): evidence-bound teaming conversion control",
    "html_url": "https://github.com/woahwhattheheck/commons/pull/13844",
    "base_freshness": {
     "base_sha": "19830aa7e34e9ffe3e2156ee1878bdd179e5a3f6",
-    "main_sha": "c3c5aae263177b275a5d8e4b0d0a31e7b185052c",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 13855,
-   "author": "woahwhattheheck",
-   "title": "fix(afh): fail closed on invalid demo video proof",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/13855",
-   "base_freshness": {
-    "base_sha": "75bb2007eb58967743be09045bd9ba23bd55838d",
-    "main_sha": "c3c5aae263177b275a5d8e4b0d0a31e7b185052c",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 13853,
-   "author": "woahwhattheheck",
-   "title": "Resources: activate bounded context dispatch compiler",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/13853",
-   "base_freshness": {
-    "base_sha": "4e4523304a27aafc16f03d43951f9c7c47e8fd9e",
     "main_sha": "c3c5aae263177b275a5d8e4b0d0a31e7b185052c",
     "ahead_by": null,
     "behind_by": null,
@@ -763,6 +715,22 @@
     "ahead_by": null,
     "behind_by": null,
     "label": "FRESH"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 13842,
+   "author": "woahwhattheheck",
+   "title": "Add fail-closed SCDHHS MCDE qualification gate",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/13842",
+   "base_freshness": {
+    "base_sha": "5375e674fdf5fc8b9f7616fc0a5b2b0ec55424a3",
+    "main_sha": "c3c5aae263177b275a5d8e4b0d0a31e7b185052c",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
    },
    "status": "PR_OPEN",
    "road": "pr",
