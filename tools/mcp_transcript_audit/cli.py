@@ -2,14 +2,46 @@ from __future__ import annotations
 
 import argparse
 import os
+import stat
 import sys
 from pathlib import Path
 
-from .audit import audit_transcript, canonical_json_bytes, verify_receipt
+from .audit import (
+    MAX_CAPTURE_BYTES,
+    audit_transcript,
+    canonical_json_bytes,
+    verify_receipt,
+)
+
+MAX_RECEIPT_BYTES = 32 * 1024 * 1024
 
 
-def _read_bytes(path: str) -> bytes:
-    return Path(path).read_bytes()
+def _read_bounded(path: str, *, max_bytes: int, label: str) -> bytes:
+    flags = os.O_RDONLY
+    if hasattr(os, "O_CLOEXEC"):
+        flags |= os.O_CLOEXEC
+    if hasattr(os, "O_NOFOLLOW"):
+        flags |= os.O_NOFOLLOW
+    fd = os.open(path, flags)
+    try:
+        file_stat = os.fstat(fd)
+        if not stat.S_ISREG(file_stat.st_mode):
+            raise ValueError(f"{label} input must be a regular file")
+        if file_stat.st_size > max_bytes:
+            raise ValueError(f"{label} exceeds {max_bytes} byte limit")
+
+        data = bytearray()
+        while True:
+            remaining = max_bytes + 1 - len(data)
+            chunk = os.read(fd, min(64 * 1024, remaining))
+            if not chunk:
+                break
+            data.extend(chunk)
+            if len(data) > max_bytes:
+                raise ValueError(f"{label} exceeds {max_bytes} byte limit")
+        return bytes(data)
+    finally:
+        os.close(fd)
 
 
 def _write_exclusive(path: str, data: bytes) -> None:
@@ -63,12 +95,12 @@ def _parser() -> argparse.ArgumentParser:
 def main(argv: list[str] | None = None) -> int:
     args = _parser().parse_args(argv)
     try:
-        source = _read_bytes(args.capture)
+        source = _read_bounded(args.capture, max_bytes=MAX_CAPTURE_BYTES, label="capture")
         if args.command == "audit":
             result = audit_transcript(source)
             _emit(result, args.output)
             return 0 if result["status"] == "PASS" else 3
-        receipt = _read_bytes(args.receipt)
+        receipt = _read_bounded(args.receipt, max_bytes=MAX_RECEIPT_BYTES, label="receipt")
         result = verify_receipt(source, receipt)
         _emit(result, args.output)
         return 0 if result["valid"] else 3
