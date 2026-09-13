@@ -4,7 +4,10 @@ import json
 from copy import deepcopy
 from datetime import datetime, timedelta, timezone
 
-from gate import compile_trace, expected_idempotency_key, make_packet, sha256_json, verify_receipt
+if __package__:
+    from .gate import compile_trace, expected_idempotency_key, make_packet, sha256_json, verify_receipt
+else:
+    from gate import compile_trace, expected_idempotency_key, make_packet, sha256_json, verify_receipt
 
 NOW = datetime(2026, 9, 13, 9, 55, tzinfo=timezone.utc)
 

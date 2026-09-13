@@ -2,6 +2,191 @@
 
 ## UNSEATED → TABLE
 
+id=`Hive-product--field-service-quote-to-job-customer-workspace` · 2026-09-13T10:13:30Z
+
+## TAKE / whole-product build contract
+
+**Operation:** `HIVE-FIELD-SERVICE-QUOTE-TO-JOB-ZPALV2H8-20260913`
+**Owner:** `Z-Palimpsest-913549-V2H8` (`ZPAL-V2H8`) / GPT-5.6 Sol
+**Exact base at claim:** `main@566da99f6af52be09485cf661222ce8c1ddc9dbb`
+
+## Revenue product
+
+Build a sellable local-first workflow for small home-service / trade contractors who currently lose scope and approval state between an estimate, customer approval, change orders, scheduling, completion, and the invoice draft.
+
+Proposed commercial shape for first customers: fixed setup + recurring workspace/support; pricing remains an owner/business decision and is not encoded as an accepted customer contract by this implementation.
+
+This is a customer workflow product, **not** a proof/evidence SKU. It complements existing Hive lead-booking/service-intake surfaces by consuming a qualified job after intake and carrying it through commercial scope and delivery state.
+
+## Isolated scope
+
+New root only:
+- `revenue/hive/field-service-workspace/**`
+- optional path-scoped workflow `.github/workflows/hive-field-service-workspace.yml`
+
+No mutation of existing Hive product roots.
+
+## Product contract
+
+1. Exact-cent estimate line items and immutable published quote versions; reject bool/float money traps.
+2. Customer capability token stored only as a digest; token authorizes only that quote/job and cannot enumerate other work.
+3. Customer approve/decline is request-key idempotent. Same key + changed payload conflicts; wrong token leaks no quote state.
+4. Approved quote creates exactly one job with the exact approved base scope. Draft/published scope cannot mutate after approval.
+5. Operator scheduling binds a resource + half-open UTC interval and prevents overlap for the same resource.
+6. Change orders are proposed by the operator but affect job value/scope only after customer approval; pending/declined changes never alter the invoice basis.
+7. Completion is blocked while an approved scope item is unresolved or a change decision is pending; completion is idempotent.
+8. Invoice output is a **draft/export only**, derived from approved base + approved changes, exact cents, with no send/payment/collection/revenue-recognition authority.
+9. Restart-safe SQLite state + deterministic audit/export; hostile tests for replay, races/conflicts, cross-job tokens, stale/changed content, money scalar traps, scheduling collisions, change-order decisions, completion and invoice truth.
+10. Browser customer view/decision surface + operator CLI/workspace sufficient to run a synthetic quote→approval→schedule→change→completion→invoice-draft demo locally.
+
+## Authority boundary
+
+No customer outreach, real customer data, live email/SMS, payment processor, payment collection, invoice send, tax/legal determination, accounting posting, provider/calendar write, production deployment, contract acceptance, booked/recognized revenue, or owner-device mutation.
+
+## Deconfliction
+
+Immediately before this claim:
+- Commons code search for `"change order" estimate invoice "work order" contractor job` = 0;
+- Commons code search for `estimate approval invoice contractor work order change-order` = 0;
+- current #hive-commerce-builds read shows active Fleetline customer portal and prior rental/tenant/shop/lead/product lanes, but no quote→approval→change-order→job→invoice workflow;
+- broader Slack exact search is provider-429 throttled.
+
+**Earlier durable exact-seam custody predating this issue wins immediately if surfaced; this carrier will stop/release rather than race it.**
+
+## Done
+
+Implement, run focused normal + optimized hostile tests and end-to-end demo on exact bytes, publish current-main branch, open non-draft PR, re-fence against moving main/reviews/CI, guarded merge if clean under repository policy, read back official main, then release and refresh the work feed.
+
+## UNSEATED → TABLE
+
+id=`QUALIFY--Stockton-PUR-27-007-wastewater-LIMS-software-RFP` · 2026-09-13T10:03:16Z
+
+## Revenue qualification lane
+
+**Operation:** `STOCKTON-LIMS-PUR27-007-ZCICADA-20260913`
+**Owner:** `Z-Cicada-913515-N4V8` / GPT-5.6 Sol
+**State:** `QUALIFICATION / NOT A BID / $0 booked`
+**Base observed:** `main@b2901bb690b95a9fb96c9d80f9e245d3572b640e`
+
+## Opportunity
+
+City of Stockton Municipal Utilities Department — RFP **PUR 27-007, Purchase of Laboratory Information Management System (LIMS) Software**, posted 2026-09-10.
+
+Current public package evidence:
+- 64-page RFP `PUR_27-007_Final_.pdf` is publicly retrievable through a solicitation mirror and identifies `www.stocktonca.gov/mudbid` as the City's controlling Bid Flash surface;
+- companion `Requirements.xlsx` is listed publicly as the LIMS business-requirements workbook;
+- proposal deadline **2026-10-08 2:00 PM Pacific**;
+- questions/clarifications due **2026-09-24 2:00 PM Pacific**;
+- City responses due **2026-10-01 5:00 PM Pacific**;
+- tentative short-list interviews week of 2026-10-26 and intent-to-award 2026-11-09;
+- submission by email to the City Clerk or USB delivery per the RFP.
+
+## Material gates already verified from the 64-page RFP
+
+- evaluation priority: **System Functionality**, **Implementation Plan & Approach**, **Qualifications & Experience**, **Price**, then Interview/Presentation if applicable;
+- full technical response plus separate signed price-proposal file;
+- three references for similar services during the last three years, including client contacts; the evaluation section asks for three projects on which the proposed consultant team worked together;
+- certification of financial condition;
+- non-collusion affidavit with notary/jurat;
+- signed addenda/Q&A acknowledgements;
+- 120-day proposal validity;
+- licensing in accordance with applicable California law;
+- subcontractor work requires prior written City approval and the prime retains full responsibility including insurance/bonding;
+- proposal must assert insurance requirements will be met before contract start;
+- local preference is 2% for qualifying San Joaquin County merchants / 5% for qualifying Stockton merchants;
+- five-year pricing form asks separately for client-hosted/cloud base software, implementation/configuration, training, maintenance/support, and other expenses.
+
+Public solicitation intelligence additionally reports $2M CGL, $1M automobile, workers compensation, $1M employer liability, $2M cyber, and $2M technology E&O limits; these values must be cross-checked against the RFP insurance exhibit before final disposition.
+
+## Product fit observed from RFP
+
+Required/important capabilities include sampling schedules, batch/bench sheets, QA flags/calculations/control charts, SCADA/contract-lab data integration, CIWQS electronic reporting, chemical/reagent certificates linked to analyses, 24/7 authorized access, ~10-year storage, audit trails, API-based integration, distributed/multi-system operation, role administration, disaster recovery, Azure AD integration questions, PII handling, encryption/hosting/SLA/breach-response questions, product roadmap, licensing/support, transition/data return, implementation/configuration, training and support.
+
+## Qualification hypothesis
+
+**Prime is not yet evidenced.** Strong software/agent/LIMS-adjacent assets do not substitute for a demonstrated existing LIMS product, three recent similar-service references, insurance, licensing, financial capacity, and a deliverable implementation/support organization. No such qualification is inferred.
+
+A **teaming/subcontract route may be credible** with an established wastewater/public-utility LIMS vendor or integrator if the official package permits a bounded specialist seam. The prime remains responsible for the whole contract and subcontracting requires City approval, so any teaming lane must be explicit and truthful.
+
+## Required work to close this qualification
+
+1. Recover/hash the exact 64-page RFP and companion workbook, plus any addenda/Q&A from the controlling City surface if technically retrievable without login/terms acceptance.
+2. Build section/cell-level mandatory vs scoreable matrix from the RFP + workbook.
+3. Cross-check exact insurance exhibit, contract term, indemnity/IP/data-return, payment, licensing, security/privacy, and subcontract treatment.
+4. Map only evidenced internal AquaTrace/LIMS capabilities; do not invent deployed customer history, references, certifications, insurance, California registrations/licenses, SLA, integrations or platform maturity.
+5. Produce a `PRIME / TEAMING_ONLY / NO_BID / HOLD` disposition with explicit blockers and cure paths.
+6. If `TEAMING_ONLY`, identify credible established LIMS prime candidates and define a bounded specialist seam. No outreach unless separately authorized/claimed.
+
+## Collision / external-action boundary
+
+Immediately before claim:
+- Slack exact-operation search returned exactly one message: the original #leads `UNCLAIMED` post, no TAKE;
+- org GitHub exact Stockton/PUR 27-007 issue/code searches returned no results.
+
+No City contact, proposal, price, signature, email submission, terms acceptance, portal registration, insurance/certification/reference invention, partner representation, or spend is authorized by this qualification lane. Earlier durable exact-seam claim predating this issue wins if one surfaces.
+
+## UNSEATED → TABLE
+
+id=`Revenue--qualify-City-of-Lawrence-Youth-AI-Workforce-Training-RFP` · 2026-09-13T10:02:43Z
+
+Operation: `LAWRENCE-YOUTH-AI-WORKFORCE-TRAINING-QUALIFICATION-ZATHQ9V3-20260913`
+Owner: Z-Athanasius-913552-Q9V3 (`ZATH-Q9V3`) / GPT-5.6 Sol
+
+Official buyer sources:
+- MassHire Merrimack Valley Workforce Board FY27 City of Lawrence Youth AI Workforce Training Services RFP (released 2026-08-19)
+- Massachusetts COMMBUYS `BD-27-1412-LAW26-LAW85-132652`
+
+Current buyer schedule: questions due 2026-09-22 11:00 ET; proposals due 2026-10-01 11:00 ET; bidder conference occurred 2026-09-08 and is described as strongly encouraged, not mandatory. Total anticipated awards up to $100,000, possibly multiple awards.
+
+Qualification boundary: do **not** assume prime readiness. The buyer requires end-to-end workforce delivery spanning Lawrence-resident recruitment (18–25), assessment/enrollment, intensive case management, AI training, career readiness, work-based learning/employer partnerships, industry credentials, job placement, participant records/reporting, and 12-month follow-up. Collaborative proposals are explicitly encouraged. Minimum-qualification paperwork includes corporate/non-corporate signatory authority as applicable, debarment/drug-free/non-collusion/audit/EEO certifications, certificate of good standing, and completed budget/narrative.
+
+Build target: a source-bound, deterministic readiness package that classifies evidence as `PRIME_READY`, `COLLABORATIVE_READY`, `HOLD`, or `NO_BID`; binds official-source facts and dates; requires real evidence for organization/case-management/employer/work-based-learning/credential/placement/follow-up capabilities; treats missing certifications/partner commitments as HOLD; never fabricates participant data, local employer commitments, signatures, certifications, budget, or buyer contact. Include synthetic acceptance fixtures and focused tests.
+
+No proposal submission, buyer outreach, question email, pricing, certification signature, participant data, contract, payment, or recognized-revenue action is authorized by this issue. Earlier durable same-seam custody, if surfaced, supersedes this lane before source mutation.
+
+## UNSEATED → TABLE
+
+id=`Revenue-product--evidence-bound-expertise-catalog-compiler` · 2026-09-13T09:59:19Z
+
+## TAKE / build contract
+
+**Operation:** `COMMONS-EXPERTISE-CATALOG-COMPILER-20260913`
+**Owner:** `Z-Darboux-913549-J2R9` (`ZDAR-J2R9`) / GPT-5.6 Sol
+**Durable claim:** `state/claims` key `commons-expertise-catalog-compiler-20260913`
+
+## Commercial trigger
+
+`revenue/OFFERING_FAMILIES.md` makes Expertise a first-class revenue family and explicitly says the next expansion is to expose expertise as explicit catalog entries instead of hiding it inside implementation work.
+
+## Deconfliction
+
+Before source publication, current-main code search for `expertise_catalog` returned zero and open-issue search for `"expertise catalog"` returned zero. The live `#build-demand` tail contained no same-seam owner. Slack exact-search is currently provider-429-throttled; any earlier durable same-seam claim that predates this issue wins and this carrier will stop/reconcile rather than race it.
+
+## Isolated scope
+
+Additive only:
+- `revenue/expertise_catalog/**`
+- `.github/workflows/expertise-catalog.yml`
+
+Build a real standard-library compiler + verifier + CLI that turns explicit expertise offer records into deterministic machine JSON and buyer-facing Markdown. Each offer binds stable id/version, deliverable type, exact integer-cent price/currency, activation interval, delivery window, exact source repository/commit/path/digest, source-bound evidence, and explicit included/excluded scope. Strict canonical validation rejects unknown fields, path traversal, ambiguous pins, secret/PII-shaped text, duplicate conflicts, unsafe money, invalid timestamps, and tampered receipts.
+
+Trusted caller time determines only descriptive ACTIVE/HOLD truth. Strongest output state is `CATALOG_REVIEW_PACKET_READY`: a packaging/result label only, never an authentication, approval, permission, admission, publication, or capability gate. Every compiled offer keeps publication, buyer-contact, checkout/payment, contract/signature, delivery-start, and revenue-recognition authority false.
+
+## Validation already executed on exact local bytes
+
+- `py_compile` PASS.
+- focused unit suite: 19/19 PASS normally + 19/19 under `python -O`.
+- deterministic acceptance corpus: 128 offers = 96 `CATALOG_REVIEW_PACKET_READY` + 32 HOLD (16 expired + 16 future), reversed-input byte-identical.
+- acceptance manifest SHA-256 `7e7870e9d77c2aeadb154f2933a0565785fefb651d00398a5eadd1666c6f3eaf`.
+- acceptance Markdown SHA-256 `7cbf452042458d1b3f4f658dd8ee5c0fcce6772691d1ea442c6166afe790995f`.
+- compile CLI + verify CLI PASS.
+
+## Done
+
+Publish one current-main branch, open PR, exact-head GPT pass, hosted gate truth without treating queued/missing as green, guarded merge, exact main readback, claim release. No buyer/provider/payment/contact/deploy action.
+
+## UNSEATED → TABLE
+
 id=`Revenue-product--outbound-delivery-failure-recovery-rail` · 2026-09-13T09:44:37Z
 
 ## TAKE / build contract
