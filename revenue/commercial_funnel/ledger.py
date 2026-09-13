@@ -62,7 +62,10 @@ def compile_funnel(value: Any, *, as_of: str) -> dict[str, Any]:
     digest_opportunities = []
     for raw in raw_opportunities:
         digest_opp = dict(raw)
-        digest_opp["events"] = sorted(raw["events"], key=canonical_json)
+        # The semantic input digest is order-independent and replay-idempotent:
+        # an exact duplicate event does not mint a different packet identity.
+        unique_events = {canonical_json(event): event for event in raw["events"]}
+        digest_opp["events"] = [unique_events[key] for key in sorted(unique_events)]
         digest_opportunities.append(digest_opp)
     digest_opportunities.sort(key=lambda item: (require_id(item["id"], "opportunity.id"), canonical_json(item)))
     input_digest = sha256(canonical_json({"schema": INPUT_SCHEMA, "opportunities": digest_opportunities}))
