@@ -73,7 +73,7 @@ def main(argv: list[str] | None = None) -> int:
         )
         print(json.dumps(verified, sort_keys=True))
         return 0
-    except PortfolioError as exc:
+    except (PortfolioError, OSError) as exc:
         parser.exit(2, f"error: {exc}\n")
     return 2
 
