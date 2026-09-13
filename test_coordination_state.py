@@ -298,6 +298,62 @@ class Holdings(unittest.TestCase):
         self.assertEqual(lost["held_by"], "OPUS")
         self.assertGreaterEqual(calls["n"], 2)
 
+    def test_future_heartbeat_is_live_and_blocks_take(self):
+        future = self.t0 + dt.timedelta(seconds=60)
+        first = cs.holding_write(self.a, "lane-future", "OPUS", "take", ttl_s=600, now=future)
+        self.assertTrue(first["ok"])
+        blocked = cs.holding_write(self.b, "lane-future", "ASTRA", "take", ttl_s=600, now=self.t0)
+        self.assertFalse(blocked["ok"])
+        self.assertEqual(blocked["held_by"], "OPUS")
+        listing = cs.holdings_list(self.b, now=self.t0)
+        row = [r for r in listing["holdings"] if r["key"] == "lane-future"][0]
+        self.assertTrue(row["live"])
+
+    def test_same_holder_backward_clock_keeps_heartbeat_monotonic_and_renews_ttl(self):
+        future = self.t0 + dt.timedelta(seconds=60)
+        first = cs.holding_write(self.a, "lane-renew", "OPUS", "take", ttl_s=600, now=future)
+        self.assertTrue(first["ok"])
+        renewed = cs.holding_write(self.a, "lane-renew", "OPUS", "renew", ttl_s=1200, now=self.t0)
+        self.assertTrue(renewed["ok"])
+        self.assertEqual(renewed["record"]["heartbeat_at"], cs._iso(future))
+        self.assertEqual(renewed["record"]["ttl_s"], 1200)
+
+    def test_nff_retry_with_older_clock_preserves_future_winner(self):
+        base = cs.holding_write(self.a, "seed-skew", "OPUS", "take", now=self.t0)
+        self.assertTrue(base["ok"])
+        stale_tip = base["commit"]
+        won = cs.holding_write(self.a, "lane-skew", "OPUS", "take",
+                               now=self.t0 + dt.timedelta(seconds=10))
+        self.assertTrue(won["ok"])
+        real = cs._remote_tip
+        calls = {"n": 0}
+
+        def stale_then_real(git, branch, remote="origin"):
+            calls["n"] += 1
+            return stale_tip if calls["n"] == 1 else real(git, branch, remote)
+
+        cs._remote_tip = stale_then_real
+        try:
+            lost = cs.holding_write(self.b, "lane-skew", "ASTRA", "take",
+                                    now=self.t0 + dt.timedelta(seconds=5))
+        finally:
+            cs._remote_tip = real
+        self.assertFalse(lost["ok"])
+        self.assertEqual(lost["held_by"], "OPUS")
+        self.assertGreaterEqual(calls["n"], 2)
+
+    def test_holding_liveness_keeps_invalid_expired_and_released_non_live(self):
+        future = cs._iso(self.t0 + dt.timedelta(seconds=60))
+        valid = {"state": "HELD", "heartbeat_at": future, "ttl_s": 600}
+        self.assertTrue(cs._holding_live(valid, self.t0))
+        expired = {"state": "HELD", "heartbeat_at": cs._iso(self.t0 - dt.timedelta(seconds=601)),
+                   "ttl_s": 600}
+        self.assertFalse(cs._holding_live(expired, self.t0))
+        self.assertFalse(cs._holding_live({"state": "HELD", "heartbeat_at": "bogus", "ttl_s": 600}, self.t0))
+        self.assertFalse(cs._holding_live({"state": "HELD", "heartbeat_at": future, "ttl_s": True}, self.t0))
+        self.assertFalse(cs._holding_live({"state": "HELD", "heartbeat_at": future, "ttl_s": 7201}, self.t0))
+        self.assertFalse(cs._holding_live({"state": "RELEASED", "heartbeat_at": future, "ttl_s": 600}, self.t0))
+
 
 class FakeGitHub:
     """Canned replies keyed by what the producer asks for."""
