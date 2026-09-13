@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
-"""Run the Commons CI battery on a cloud worker without GitHub Actions.
+"""Run the Commons CI battery on a clean cloud-worker checkout.
 
 The default discovery is shared with tests.yml: root test_*.py, recursive
 infra/test_*.py, then root test_*.js. Every selected file runs after failures.
 Use --output-dir for portable JSON evidence, or --results for the existing
-Actions NUL stream. No provider API, Docker daemon, or new credentials needed.
+Actions NUL stream. Dirty worktrees fail closed before any test executes.
+No provider API, Docker daemon, or new credentials are needed.
 """
 from __future__ import annotations
 
@@ -112,7 +113,7 @@ def main(argv: list[str] | None = None) -> int:
     inputs = {root / path for _, path in selected}
     if results in inputs or report_path in inputs:
         parser.error("output paths must differ from selected test paths")
-    results.parent.mkdir(parents=True, exist_ok=True)
+
     outcome = "success"
     code = 0
     file_hashes = {}
@@ -122,43 +123,66 @@ def main(argv: list[str] | None = None) -> int:
     if args.shard_count > 1:
         scope["kind"] = "selected-shard" if requested else "shard"
     dirty = None
+    preflight_error = None
+
     try:
+        # Measure checkout state before creating any output inside the repository.
+        # Otherwise a clean run using an in-repo output directory can mark itself
+        # dirty and weaken the starting-state claim.
+        sha = subprocess.run(["git", "-C", str(root), "rev-parse", "--verify", "HEAD^{commit}"],
+                             check=True, capture_output=True, text=True).stdout.strip()
+        dirty = bool(subprocess.run(
+            ["git", "-C", str(root), "status", "--porcelain", "--untracked-files=all"],
+            check=True, capture_output=True,
+        ).stdout)
+        results.parent.mkdir(parents=True, exist_ok=True)
         with results.open("wb") as handle:
-            sha = subprocess.run(["git", "-C", str(root), "rev-parse", "--verify", "HEAD^{commit}"],
-                                 check=True, capture_output=True, text=True).stdout.strip()
-            dirty = bool(subprocess.run(["git", "-C", str(root), "status", "--porcelain"],
-                                        check=True, capture_output=True).stdout)
             record(handle, "checkout_sha", sha, "")
-            for command, path in selected:
-                try:
-                    file_hashes[path] = hashlib.sha256((root / path).read_bytes()).hexdigest()
-                except OSError:
-                    file_hashes[path] = None
-                rc = execute(root, command, path, args.timeout or None)
-                record(handle, command, "./" + path, rc)
-                code = int(bool(code or rc))
-                print(("ok   " if rc == 0 else "FAIL ") + json.dumps(path), flush=True)
-            record(handle, "battery_complete", "", code)
-            outcome = "failure" if code else "success"
-            if not selected:
-                print("no tests matched; no passing battery evidence", file=sys.stderr)
-                code = 1
+            if dirty:
+                preflight_error = "dirty_worktree"
+                outcome, code = "failure", 2
+                print("refusing to execute battery from a dirty worktree", file=sys.stderr)
+            else:
+                for command, path in selected:
+                    try:
+                        file_hashes[path] = hashlib.sha256((root / path).read_bytes()).hexdigest()
+                    except OSError:
+                        file_hashes[path] = None
+                    rc = execute(root, command, path, args.timeout or None)
+                    record(handle, command, "./" + path, rc)
+                    code = int(bool(code or rc))
+                    print(("ok   " if rc == 0 else "FAIL ") + json.dumps(path), flush=True)
+                record(handle, "battery_complete", "", code)
+                outcome = "failure" if code else "success"
+                if not selected:
+                    print("no tests matched; no passing battery evidence", file=sys.stderr)
+                    code = 1
     except KeyboardInterrupt:
         outcome, code = "cancelled", 130
     except (OSError, subprocess.CalledProcessError):
         print("battery could not read its checkout or write results", file=sys.stderr)
         outcome, code = "failure", 2
+
     if report_path:
-        raw = results.read_bytes() if results.exists() else None
-        report = battery_report.build_report(root, raw, outcome, os.environ)
-        report["scope"] = scope
-        report["execution"] = {"kind": "direct-process", "python_version": sys.version.split()[0],
-                               "worktree_dirty_at_start": dirty, "test_file_sha256": file_hashes}
-        report_path.parent.mkdir(parents=True, exist_ok=True)
-        report_path.write_text(json.dumps(report, indent=2, ensure_ascii=True) + "\n", encoding="utf-8")
-        print(report["conclusion"] + ": " + str(report_path), flush=True)
-        if report["conclusion"] != "PASSED" and code == 0:
-            code = 1
+        try:
+            raw = results.read_bytes() if results.exists() else None
+            report = battery_report.build_report(root, raw, outcome, os.environ)
+            report["scope"] = scope
+            report["execution"] = {
+                "kind": "direct-process",
+                "python_version": sys.version.split()[0],
+                "worktree_dirty_at_start": dirty,
+                "preflight_error": preflight_error,
+                "test_file_sha256": file_hashes,
+            }
+            report_path.parent.mkdir(parents=True, exist_ok=True)
+            report_path.write_text(json.dumps(report, indent=2, ensure_ascii=True) + "\n", encoding="utf-8")
+            print(report["conclusion"] + ": " + str(report_path), flush=True)
+            if report["conclusion"] != "PASSED" and code == 0:
+                code = 1
+        except OSError:
+            print("battery report could not read or write its local result files", file=sys.stderr)
+            return code or 2
     return code
 
 
