@@ -1,0 +1,29 @@
+{
+  "package": "dynamic-automotive-dropoff-diagnostic-intake-core",
+  "schema_version": 1,
+  "commercial_offer_usd": 4000,
+  "commercial_offer_status": "SENT_NOT_ACCEPTED",
+  "delivery_window_days": 7,
+  "runtime": "static-browser-plus-dependency-free-es-modules",
+  "network_required": false,
+  "production_integration": false,
+  "buyer_data_included": false,
+  "attachment_bytes_persisted": false,
+  "authority": {
+    "diagnose_vehicle": false,
+    "authorize_repair": false,
+    "approve_estimate": false,
+    "initiate_charge": false,
+    "contact_customer": false
+  },
+  "acceptance": {
+    "source_key_idempotence": true,
+    "vehicle_bound_arrival": true,
+    "missing_information_visible": true,
+    "attachment_sha256_custody": true,
+    "queue_states": ["NEEDS_CLARIFICATION", "AWAITING_ARRIVAL", "ARRIVED", "DIAGNOSIS", "ESTIMATE_READY"],
+    "append_only_history": true,
+    "deterministic_export_receipt": true,
+    "mobile_first_static_ui": true
+  }
+}
