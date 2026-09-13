@@ -284,6 +284,18 @@ def _history_band(advertised: Decimal, paid_total: Decimal, award_count: int) ->
     return Decimal("0.15"), Decimal("0.50"), "repeated_realized_payout_history"
 
 
+def _conservative_history_band(
+    advertised: Decimal, latest: Sequence[Mapping[str, Any]]
+) -> tuple[Decimal, Decimal, str]:
+    """Combine source-local bands without inventing a cross-source payout snapshot."""
+    bands = [_history_band(advertised, row["paid_total"], row["award_count"]) for row in latest]
+    low = min(band[0] for band in bands)
+    high = min(band[1] for band in bands)
+    bases = {band[2] for band in bands}
+    basis = next(iter(bases)) if len(bases) == 1 else "conservative_multi_source_history"
+    return low, high, basis
+
+
 def underwrite(
     packet: Mapping[str, Any], *, observed_at: datetime | None = None, config: Config | None = None
 ) -> dict[str, Any]:
@@ -334,8 +346,9 @@ def underwrite(
         reasons.append("payout_history_in_future")
         hard_reject = True
 
-    # Multiple evidence sources frequently mirror the same sponsor ledger. Taking maxima
-    # avoids double-counting money while still preserving every latest observation below.
+    # Keep maxima as descriptive evidence only. Planning is composed from coherent
+    # source-local snapshots below so independent fields can never form a synthetic
+    # payout history that no source actually reported.
     paid_total = max((row["paid_total"] for row in latest), default=Decimal("0"))
     award_count = max((row["award_count"] for row in latest), default=0)
     completed_count = max((row["completed_count"] for row in latest), default=0)
@@ -344,11 +357,14 @@ def underwrite(
     visible_claims = freshness["visible_claims"]
     active_prs = freshness["active_competing_prs"]
     competitors = visible_claims + active_prs
-    if paid_total == 0 and competitors >= config.zero_paid_reject_competitors:
+    if (
+        any(row["paid_total"] == 0 for row in latest)
+        and competitors >= config.zero_paid_reject_competitors
+    ):
         reasons.append("zero_paid_high_competition_pool")
         hard_reject = True
 
-    history_low, history_high, history_basis = _history_band(advertised, paid_total, award_count)
+    history_low, history_high, history_basis = _conservative_history_band(advertised, latest)
     dilution = Decimal(1) / Decimal(1 + competitors)
     lower = advertised * history_low * dilution
     upper = advertised * history_high * dilution
