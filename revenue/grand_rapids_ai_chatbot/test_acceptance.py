@@ -159,6 +159,12 @@ class AcceptanceTests(unittest.TestCase):
         r2 = result("b", canonical_case_id="a", route="different")
         self.assertFail(cases, [r1, r2])
 
+    def test_replay_changed_effect_count_fails(self):
+        cases = [case("a"), case("b", replay_of="a")]
+        r1 = result("a", canonical_case_id="a", logical_effects=0)
+        r2 = result("b", canonical_case_id="a", logical_effects=1)
+        self.assertFail(cases, [r1, r2])
+
     def test_invalid_disposition_fails(self):
         self.assertFail([case()], [result(disposition="MAYBE")])
 

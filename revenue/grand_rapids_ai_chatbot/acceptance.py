@@ -23,6 +23,7 @@ def _sig(result: dict[str, Any]) -> str:
         "citations": result.get("citations"),
         "canonical_case_id": result.get("canonical_case_id"),
         "effect_status": result.get("effect_status"),
+        "logical_effects": result.get("logical_effects"),
         "model_version": result.get("model_version"),
         "rule_version": result.get("rule_version"),
     }
