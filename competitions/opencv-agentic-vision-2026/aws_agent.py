@@ -1,9 +1,10 @@
 """AWS orchestration for ProofLens.
 
-An S3 ObjectCreated event for current/<name> invokes this Lambda. The current
-object MUST carry user metadata `baseline-version-id` naming the exact retained
-version of baseline/<name>. The function emits only a metadata review request;
-it never performs a high-authority external action.
+An S3 ObjectCreated event for current/<name> invokes this Lambda. The event MUST
+name the exact current-object version, and that object MUST carry user metadata
+`baseline-version-id` naming the exact retained version of baseline/<name>.
+The function emits only a metadata review request; it never performs a
+high-authority external action.
 """
 from __future__ import annotations
 
@@ -30,7 +31,7 @@ def _required_env(name: str) -> str:
     return value
 
 
-def _parse_s3_event(event: Any, allowed_bucket: str) -> tuple[str, str, str | None]:
+def _parse_s3_event(event: Any, allowed_bucket: str) -> tuple[str, str, str]:
     if type(event) is not dict or "Records" not in event:
         raise ContractError("expected S3 event object")
     records = event["Records"]
@@ -43,25 +44,24 @@ def _parse_s3_event(event: Any, allowed_bucket: str) -> tuple[str, str, str | No
         bucket = record["s3"]["bucket"]["name"]
         obj = record["s3"]["object"]
         key = unquote_plus(obj["key"])
-        version_id = obj.get("versionId")
+        version_id = obj["versionId"]
     except (KeyError, TypeError) as exc:
-        raise ContractError("malformed S3 event") from exc
+        raise ContractError("malformed S3 event; exact object versionId is required") from exc
     if bucket != allowed_bucket:
         raise ContractError("event bucket does not match configured bucket")
     if type(key) is not str or not key.startswith("current/") or len(key) <= len("current/"):
         raise ContractError("only current/<name> objects are accepted")
     if key.endswith("/") or "\x00" in key:
         raise ContractError("invalid current object key")
-    if version_id is not None and (type(version_id) is not str or not version_id):
-        raise ContractError("invalid current object version")
+    if type(version_id) is not str or not version_id:
+        raise ContractError("exact current object versionId is required")
     return bucket, key, version_id
 
 
-def _read_object(s3: Any, *, bucket: str, key: str, version_id: str | None) -> dict[str, Any]:
-    request = {"Bucket": bucket, "Key": key}
-    if version_id is not None:
-        request["VersionId"] = version_id
-    response = s3.get_object(**request)
+def _read_object(s3: Any, *, bucket: str, key: str, version_id: str) -> dict[str, Any]:
+    if type(version_id) is not str or not version_id:
+        raise ContractError("exact object versionId is required")
+    response = s3.get_object(Bucket=bucket, Key=key, VersionId=version_id)
     length = response.get("ContentLength")
     if type(length) is not int or length < 1 or length > MAX_IMAGE_BYTES:
         raise ContractError(f"{key} has invalid ContentLength")
@@ -69,8 +69,8 @@ def _read_object(s3: Any, *, bucket: str, key: str, version_id: str | None) -> d
     if type(data) is not bytes or len(data) != length or len(data) > MAX_IMAGE_BYTES:
         raise ContractError(f"{key} body length mismatch")
     resolved_version = response.get("VersionId")
-    if type(resolved_version) is not str or not resolved_version:
-        raise ContractError("bucket versioning is required and object VersionId must be present")
+    if resolved_version != version_id:
+        raise ContractError("S3 response version does not match requested version")
     etag = response.get("ETag")
     if type(etag) is not str or not etag:
         raise ContractError("object ETag is required")
