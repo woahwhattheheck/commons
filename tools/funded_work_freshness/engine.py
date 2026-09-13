@@ -9,7 +9,7 @@ from constants import ACCEPTANCE_RE, GITHUB_ITEM_RE, SECURITY_RE, SPONSOR_RE
 from errors import EvidenceError, PreflightInputError
 from evaluation import (
     active_competing_prs,
-    amount_supported,
+    authoritative_amount_state,
     authoritative_funding_state,
     canonical_text,
     descriptive_issue_text,
@@ -118,9 +118,13 @@ def preflight(
         )
         authority_text = canonical_text(issue, comments)
         sponsor_present = bool(SPONSOR_RE.search(authority_text))
-        amount_present = amount_supported(
-            authority_text, candidate.advertised_amount, candidate.currency
+        amount_state = authoritative_amount_state(
+            issue,
+            comments,
+            candidate.advertised_amount,
+            candidate.currency,
         )
+        amount_present = bool(amount_state["matches_advertised"])
         acceptance_reachable = bool(ACCEPTANCE_RE.search(authority_text))
         funding_state = authoritative_funding_state(
             issue,
@@ -166,6 +170,9 @@ def preflight(
             "max_age_days": candidate.max_age_days,
             "sponsor_mechanism_present": sponsor_present,
             "advertised_amount_supported_by_canonical_evidence": amount_present,
+            "authoritative_amount_state": amount_state["status"],
+            "canonical_current_reward_currency": amount_state["currency"],
+            "canonical_current_reward_amount": amount_state["amount"],
             "acceptance_criteria_reachable": acceptance_reachable,
             "authoritative_funding_state": funding_state,
             "security_sensitive": security_sensitive,
@@ -203,9 +210,15 @@ def preflight(
         elif not sponsor_present:
             status = "ambiguous"
             reasons.append("canonical_sponsor_mechanism_not_found")
+        elif amount_state["status"] == "ambiguous":
+            status = "ambiguous"
+            reasons.append("canonical_reward_amount_ambiguous")
         elif not amount_present:
             status = "ambiguous"
-            reasons.append("advertised_amount_not_supported_by_canonical_evidence")
+            if amount_state["status"] == "resolved":
+                reasons.append("advertised_amount_superseded_by_newer_canonical_evidence")
+            else:
+                reasons.append("advertised_amount_not_supported_by_canonical_evidence")
         elif not acceptance_reachable:
             status = "ambiguous"
             reasons.append("acceptance_criteria_not_reachable")
