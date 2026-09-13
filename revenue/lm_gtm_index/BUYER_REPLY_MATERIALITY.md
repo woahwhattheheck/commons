@@ -12,7 +12,9 @@ This means only that the mailbox verifier observed an inbound message labelled a
 
 It does **not** establish that the sender is a verified human decision-maker, that the message is commercially material, that the buyer wants to proceed, that scope or terms are accepted, that an award exists, or that payment occurred. It is deliberately not a HOT GTM lane.
 
-The hermetic verifier may persist this state only as relationship `STATUS` evidence with `decision=BUYER_REPLY_OBSERVED` and `HUMAN_CLASSIFICATION_REQUIRED` as the next action. That raw observation record intentionally omits `dnr`: mailbox arrival alone cannot add, remove, or weaken existing contact/no-resend authority.
+The hermetic verifier may persist this only as evidentiary-only relationship `STATUS` data with `observation=BUYER_REPLY_OBSERVED`. That record intentionally omits every handoff control field: `decision`, `dnr`, `live`, `due`, `route_kind`, `route_ref`, and `next_action`. The handoff can therefore learn that a reply arrived without dissolving an existing owner hold, weakening a DNR, changing a route/due date, or replacing the current next action.
+
+Human classification is required before any material-reply or commercial-state claim, but the raw observation itself does not overwrite the relationship's authoritative next action.
 
 ### `MATERIAL_REPLY`
 
@@ -28,12 +30,12 @@ Historical `MATERIAL_REPLY` evidence remains readable for compatibility. Consume
 - The same inbound provider message cannot be reminted under multiple `BUYER_REPLY_OBSERVED` evidence IDs.
 - Legacy `--pin-material-reply` remains as a compatibility surface but always refuses.
 - Auto-acks, support tickets, out-of-office replies, routing mail, unknown replies, and other inbound existence evidence cannot become material buyer interest merely because a message arrived.
-- Raw arrival cannot lift an existing DNR/no-resend hold or create contact authority.
+- Raw arrival cannot alter decision, DNR/contact authority, owner-hold authority, live state, route, due date, or next action.
 - No mailbox send, CRM remint, acceptance, contract, payment, award, or revenue-recognition authority is added by this repair.
 
 ## CLI
 
-Observe and optionally persist neutral relationship evidence:
+Observe and optionally persist evidentiary-only relationship data:
 
 ```sh
 python3 host/lm_gtm_mailbox_buyer_reply_verify.py SUBJECT
