@@ -24,7 +24,7 @@ RELIABILITY = "ground/SWARM_RELIABILITY.json"
 GPT = "gpt"
 SHA = re.compile(r"^[0-9a-f]{40}$")
 DOC_ONLY_SUFFIXES = frozenset({".md", ".rst", ".adoc"})
-REGULAR_FILE_MODES = frozenset({"100644", "100755"})
+DOC_ONLY_FILE_MODES = frozenset({"100644"})
 
 
 def block(text, fence):
@@ -84,7 +84,7 @@ def evidence_pass(items):
 
 
 def execution_required(changes):
-    """Only inert regular-file documentation changes may omit execution evidence."""
+    """Only inert non-executable documentation changes may omit execution evidence."""
     paths = [change[1] for change in changes if len(change) > 1]
     if not paths or risk(paths) == "critical":
         return True
@@ -95,7 +95,7 @@ def execution_required(changes):
         if Path(path).suffix.lower() not in DOC_ONLY_SUFFIXES:
             return True
         for mode in (old_mode, new_mode):
-            if mode != "000000" and mode not in REGULAR_FILE_MODES:
+            if mode != "000000" and mode not in DOC_ONLY_FILE_MODES:
                 return True
     return False
 
