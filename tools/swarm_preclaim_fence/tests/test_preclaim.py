@@ -26,23 +26,27 @@ def request(**overrides):
     return value
 
 
-def slice_(hits=None, complete=True):
-    return {"complete": complete, "hits": list(hits or [])}
+def slice_(query, hits=None, complete=True):
+    return {"query": query, "complete": complete, "hits": list(hits or [])}
 
 
 def evidence():
     return {
         "slack": {
-            "stable_id": slice_(),
-            "upstream_ref": slice_(),
+            "stable_id": slice_("TARSNAP-836-FOO"),
+            "upstream_ref": slice_("Tarsnap/tarsnap#836"),
             "candidate_paths": {
-                "lib/foo.c": slice_(),
-                "tests/foo_test.sh": slice_(),
+                "lib/foo.c": slice_("lib/foo.c"),
+                "tests/foo_test.sh": slice_("tests/foo_test.sh"),
             },
-            "semantic_phrases": {"foo resync": slice_()},
+            "semantic_phrases": {"foo resync": slice_("foo resync")},
         },
         "github": {
-            "owner_open_prs": slice_(),
+            "scope": {
+                "owner_fork": "woahwhattheheck/tarsnap",
+                "upstream_ref": "Tarsnap/tarsnap#836",
+            },
+            "owner_open_prs": slice_("owner-fork-open-prs:woahwhattheheck/tarsnap"),
             "paths": {
                 "lib/foo.c": {
                     "complete": True,
@@ -65,7 +69,8 @@ class PreclaimFenceTests(unittest.TestCase):
     def test_stable_id_empty_but_exact_pr_number_hit_is_owned(self):
         ev = evidence()
         ev["slack"]["upstream_ref"] = slice_(
-            [{"id": "1789.1", "channel_id": "C1", "ts": "1789.1"}]
+            "Tarsnap/tarsnap#836",
+            [{"id": "1789.1", "channel_id": "C1", "ts": "1789.1"}],
         )
         got = evaluate_preclaim(request(), ev)
         self.assertEqual(got["decision"], "OWNED")
@@ -86,7 +91,8 @@ class PreclaimFenceTests(unittest.TestCase):
         for row in ev["github"]["paths"].values():
             row["owner_default_sha"] = row["upstream_head_sha"]
         ev["github"]["owner_open_prs"] = slice_(
-            [{"id": "pr-15", "repo": "woahwhattheheck/tarsnap", "number": 15}]
+            "owner-fork-open-prs:woahwhattheheck/tarsnap",
+            [{"id": "pr-15", "repo": "woahwhattheheck/tarsnap", "number": 15}],
         )
         got = evaluate_preclaim(request(), ev)
         self.assertEqual(got["decision"], "ALREADY_ABSORBED")
@@ -115,6 +121,7 @@ class PreclaimFenceTests(unittest.TestCase):
     def test_owner_open_pr_hit_is_owned(self):
         ev = evidence()
         ev["github"]["owner_open_prs"] = slice_(
+            "owner-fork-open-prs:woahwhattheheck/tarsnap",
             [{
                 "id": "owner-pr-22",
                 "url": "https://github.com/woahwhattheheck/tarsnap/pull/22",
@@ -130,7 +137,7 @@ class PreclaimFenceTests(unittest.TestCase):
     def test_candidate_path_slack_hit_is_owned(self):
         ev = evidence()
         ev["slack"]["candidate_paths"]["lib/foo.c"] = slice_(
-            [{"id": "m-1", "channel_id": "C0", "ts": "1.0"}]
+            "lib/foo.c", [{"id": "m-1", "channel_id": "C0", "ts": "1.0"}]
         )
         got = evaluate_preclaim(request(), ev)
         self.assertEqual(got["decision"], "OWNED")
@@ -139,7 +146,7 @@ class PreclaimFenceTests(unittest.TestCase):
     def test_semantic_phrase_slack_hit_is_owned(self):
         ev = evidence()
         ev["slack"]["semantic_phrases"]["foo resync"] = slice_(
-            [{"id": "m-2", "channel_id": "C0", "ts": "2.0"}]
+            "foo resync", [{"id": "m-2", "channel_id": "C0", "ts": "2.0"}]
         )
         got = evaluate_preclaim(request(), ev)
         self.assertEqual(got["decision"], "OWNED")
@@ -155,8 +162,20 @@ class PreclaimFenceTests(unittest.TestCase):
     def test_raw_slack_text_is_rejected_from_receipt(self):
         ev = evidence()
         ev["slack"]["upstream_ref"] = slice_(
-            [{"id": "m-3", "text": "workspace secret-ish body"}]
+            "Tarsnap/tarsnap#836", [{"id": "m-3", "text": "workspace secret-ish body"}]
         )
+        with self.assertRaises(PreclaimInputError):
+            evaluate_preclaim(request(), ev)
+
+    def test_cross_wired_slack_query_is_rejected(self):
+        ev = evidence()
+        ev["slack"]["upstream_ref"]["query"] = "Other/repo#99"
+        with self.assertRaises(PreclaimInputError):
+            evaluate_preclaim(request(), ev)
+
+    def test_cross_wired_github_scope_is_rejected(self):
+        ev = evidence()
+        ev["github"]["scope"]["upstream_ref"] = "Other/repo#99"
         with self.assertRaises(PreclaimInputError):
             evaluate_preclaim(request(), ev)
 
@@ -192,7 +211,7 @@ class PreclaimFenceTests(unittest.TestCase):
     def test_cli_returns_nonzero_for_non_safe_decision(self):
         req = request()
         ev = evidence()
-        ev["slack"]["upstream_ref"] = slice_([{"id": "owned"}])
+        ev["slack"]["upstream_ref"] = slice_("Tarsnap/tarsnap#836", [{"id": "owned"}])
         with tempfile.TemporaryDirectory() as td:
             req_path = Path(td) / "request.json"
             ev_path = Path(td) / "evidence.json"
