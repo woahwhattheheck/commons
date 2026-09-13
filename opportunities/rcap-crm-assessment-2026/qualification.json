@@ -1,0 +1,43 @@
+{
+  "schema": "RCAP_CRM_ASSESSMENT_QUALIFICATION_V1",
+  "opportunity": {
+    "official_url": "https://www.rcap.org/careers/rfp-assessment-strategic-planning-services/",
+    "release_date": "2026-09-04",
+    "questions_due": "2026-09-13",
+    "proposals_due": "2026-10-04",
+    "revalidated_date": "2026-09-13"
+  },
+  "evaluation": {
+    "comparable_assessment": 30,
+    "approach_methodology": 25,
+    "nonprofit_or_similar": 20,
+    "delivery_model": 15,
+    "cost_value": 10
+  },
+  "organization": {
+    "primary_place_of_business_country": null,
+    "professional_indemnity_coi": "UNKNOWN"
+  },
+  "qualification": {
+    "desired_experience": {
+      "crm_or_enterprise_assessment": "UNKNOWN",
+      "nonprofit_or_network_experience": "UNKNOWN",
+      "stakeholder_discovery": "UNKNOWN",
+      "modernization_integration_data_security_governance": "UNKNOWN",
+      "vendor_neutral_recommendations": "UNKNOWN"
+    },
+    "comparable_examples_or_references": []
+  },
+  "proposal": {
+    "firm_overview_ready": false,
+    "approach_ready": false,
+    "deliverable_description_ready": false,
+    "schedule_ready": false,
+    "delivery_model_ready": false,
+    "discovery_meetings_included": null,
+    "fixed_fee_usd": null,
+    "optional_services_separated": false,
+    "deadline_time_revalidated": false,
+    "owner_submission_authorized": false
+  }
+}
