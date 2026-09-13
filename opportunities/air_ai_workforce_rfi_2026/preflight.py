@@ -33,6 +33,30 @@ SHA256_RE = re.compile(r"[0-9a-f]{64}")
 UTC_RE = re.compile(r"\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z")
 URL_RE = re.compile(r"https://[^\s]+")
 SECRET_RE = re.compile(r"(?:sk-[A-Za-z0-9_-]{12,}|api[_-]?key|password|bearer\s+[A-Za-z0-9._-]+)", re.I)
+AIR_URL_PREFIX = "https://www.air.org/"
+EXPECTED_PROMPT_NAMES = {
+    1: "Project Title",
+    2: "Contact Information",
+    3: "Organizational Background",
+    4: "Overview of AI-Enabled Workforce Innovation",
+    5: "Workforce Challenge",
+    6: "Key Learning Questions",
+    7: "Population(s) of Focus",
+    8: "Technical Approach, Models, and Data",
+    9: "Maturity Level",
+    10: "Early Results or Evidence",
+    11: "Responsible AI and Safeguards",
+    12: "Opportunities for Partnership with AIR",
+}
+EXPECTED_REVIEW_CRITERIA = [
+    "fit with AIR focus areas",
+    "clarity of workforce challenge and AI use case",
+    "potential to improve workforce outcomes or expand opportunity",
+    "feasibility of producing useful evidence",
+    "responsible AI approach",
+    "meaningful role for AIR partnership",
+]
+TRACK_RECORD_CHARACTERISTIC = "established track record supporting career readiness/job entry among youth and/or adult upskilling/reskilling/lifelong learning"
 
 AUTHORITY = {
     "air_contact_authorized": False,
@@ -141,6 +165,13 @@ def _text(value: Any) -> bool:
 def _digest(value: Any) -> bool:
     return isinstance(value, str) and bool(SHA256_RE.fullmatch(value))
 
+def _word_count(value: str) -> int:
+    return len(value.split())
+
+def _word_limit(value: Any, limit: int, code: str, blockers: list[str]) -> None:
+    if _text(value) and _word_count(value) > limit:
+        blockers.append(f"WORD_LIMIT_EXCEEDED:{code}:{_word_count(value)}>{limit}")
+
 def _date(value: Any, label: str) -> datetime:
     if not isinstance(value, str):
         raise PreflightError(f"{label} must be YYYY-MM-DD")
@@ -189,6 +220,8 @@ def _source(source: dict) -> None:
         _expect_keys(row, {"class","url","label"}, f"official_sources[{i}]")
         if row["class"] != "OFFICIAL" or not isinstance(row["url"], str) or not URL_RE.fullmatch(row["url"]):
             raise PreflightError(f"official source {i} is not an official HTTPS record")
+        if not row["url"].startswith(AIR_URL_PREFIX):
+            raise PreflightError(f"official source {i} must be on AIR's www.air.org origin")
         if not _text(row["label"]):
             raise PreflightError(f"official source {i} label malformed")
     focus = source["focus_areas"]
@@ -197,6 +230,10 @@ def _source(source: dict) -> None:
     maturity = source["maturity_choices"]
     if maturity != ["Concept","Prototype","Pilot","Deployed solution"]:
         raise PreflightError("source maturity choices drift")
+    if "technology providers" not in source["eligible_respondent_types"]:
+        raise PreflightError("technology-provider eligibility drift")
+    if TRACK_RECORD_CHARACTERISTIC not in source["respondent_characteristics"]:
+        raise PreflightError("workforce track-record characteristic drift")
     prompts = source["prompts"]
     if not isinstance(prompts, list) or len(prompts) != 12:
         raise PreflightError("source must contain all 12 prompts")
@@ -210,6 +247,8 @@ def _source(source: dict) -> None:
             raise PreflightError("prompt number malformed")
         if not _text(row["name"]):
             raise PreflightError("prompt name malformed")
+        if row["name"] != EXPECTED_PROMPT_NAMES[row["number"]]:
+            raise PreflightError(f"prompt {row['number']} name drift")
         wl = row["word_limit"]
         if wl is not None and (type(wl) is not int or wl <= 0):
             raise PreflightError("prompt word limit malformed")
@@ -220,8 +259,8 @@ def _source(source: dict) -> None:
     for n, limit in expected_limits.items():
         if limits[n] != limit:
             raise PreflightError(f"prompt {n} word limit drift")
-    if not isinstance(source["review_criteria"], list) or len(source["review_criteria"]) != 6:
-        raise PreflightError("review criteria malformed")
+    if source["review_criteria"] != EXPECTED_REVIEW_CRITERIA:
+        raise PreflightError("review criteria drift")
     if source["authority"] != AUTHORITY:
         raise PreflightError("source authority ceiling drift")
 
@@ -352,6 +391,18 @@ def evaluate(source: dict, owner: dict, *, trusted_now: datetime) -> dict:
     size = inv["population_size_2027_2028"]
     if type(size) is not int or size <= 0 or size > MAX_SAFE_INT:
         blockers.append("POSITIVE_2027_2028_POPULATION_SIZE_REQUIRED")
+
+    _word_limit(org["background"], 200, "ORGANIZATIONAL_BACKGROUND", blockers)
+    _word_limit(inv["summary"], 300, "AI_ENABLED_WORKFORCE_INNOVATION", blockers)
+    _word_limit(inv["workforce_challenge"], 200, "WORKFORCE_CHALLENGE", blockers)
+    if isinstance(questions, list) and all(isinstance(x, str) for x in questions):
+        _word_limit(" ".join(questions), 200, "KEY_LEARNING_QUESTIONS", blockers)
+    _word_limit(inv["population_description"], 100, "POPULATION_OF_FOCUS", blockers)
+    _word_limit(inv["technical_approach"], 300, "TECHNICAL_APPROACH_MODELS_DATA", blockers)
+    if inv["early_results"] != "NO_EARLY_RESULTS_CLAIMED":
+        _word_limit(inv["early_results"], 200, "EARLY_RESULTS_EVIDENCE", blockers)
+    _word_limit(inv["safeguards"], 200, "RESPONSIBLE_AI_SAFEGUARDS", blockers)
+    _word_limit(inv["air_partnership"], 150, "AIR_PARTNERSHIP", blockers)
 
     design = owner["evidence_design"]
     for key in ("worker_voice","comparison_design","instrumentation","privacy_plan","fairness_plan","human_oversight","air_independent_evaluation_role"):
