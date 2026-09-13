@@ -1,0 +1,90 @@
+{
+  "buyer_review_criteria": [
+    "relevance to one or more RFI focus areas",
+    "clarity and specificity of the workforce challenge and AI use case",
+    "potential to improve workforce outcomes or expand opportunity for a specific population",
+    "feasibility of generating useful evidence or learning",
+    "attention to responsible AI considerations",
+    "potential for a meaningful research or partnership opportunity with AIR"
+  ],
+  "gates": [
+    {
+      "current": "MISSING",
+      "effect": "blocks READY",
+      "evidence": "exact official PDF bytes + SHA-256",
+      "id": "SOURCE-RAW-PDF",
+      "kind": "mandatory_internal"
+    },
+    {
+      "current": "NOT_PROVEN_BY_CARRIER",
+      "effect": "DIRECT_RFI requires proof; otherwise PARTNER_REQUIRED",
+      "evidence": "owner-verified direct or committed partner workforce-delivery history",
+      "id": "TRACK-RECORD",
+      "kind": "buyer_characteristic"
+    },
+    {
+      "current": "OWNER_INPUT_REQUIRED",
+      "effect": "blocks READY",
+      "evidence": "specific 2027-2028 population description + positive estimated size + evidence reference",
+      "id": "POPULATION",
+      "kind": "buyer_prompt"
+    },
+    {
+      "current": "OWNER_INPUT_REQUIRED",
+      "effect": "blocks READY",
+      "evidence": "at least one exact AIR focus area",
+      "id": "FOCUS",
+      "kind": "buyer_prompt"
+    },
+    {
+      "current": "OWNER_INPUT_REQUIRED",
+      "effect": "blocks READY",
+      "evidence": "specific evaluable questions + worker/learner voice + field-learning plan",
+      "id": "LEARNING",
+      "kind": "review_criterion"
+    },
+    {
+      "current": "DRAFTED_CONCEPT_ONLY",
+      "effect": "owner must bind actual implementation",
+      "evidence": "models/tools/data sources and feasible instrumentation",
+      "id": "TECHNICAL",
+      "kind": "buyer_prompt"
+    },
+    {
+      "current": "DRAFTED_CONCEPT_ONLY",
+      "effect": "owner must bind partner/data feasibility",
+      "evidence": "outcomes/comparison/instrumentation/independent evaluation design",
+      "id": "EVIDENCE",
+      "kind": "review_criterion"
+    },
+    {
+      "current": "DRAFTED_CONCEPT_ONLY",
+      "effect": "owner must bind actual controls",
+      "evidence": "fairness,bias,transparency,privacy,governance safeguards",
+      "id": "RESPONSIBLE-AI",
+      "kind": "buyer_prompt"
+    },
+    {
+      "current": "PREFLIGHT_ENFORCED",
+      "effect": "blocks READY on violation",
+      "evidence": "all nine substantive responses within AIR limits",
+      "id": "WORD-LIMITS",
+      "kind": "submission"
+    },
+    {
+      "current": "CAPTURED",
+      "effect": "deadline passage blocks READY",
+      "evidence": "official due time 2026-10-02 12:00 PM ET",
+      "id": "DEADLINE",
+      "kind": "submission"
+    },
+    {
+      "current": "RETAINED_BY_OWNER",
+      "effect": "tool never submits",
+      "evidence": "human owner submission decision",
+      "id": "AUTHORITY",
+      "kind": "internal"
+    }
+  ],
+  "schema": "air.workforce_ai_rfi.requirement_matrix/v1"
+}

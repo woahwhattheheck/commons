@@ -1,0 +1,87 @@
+{
+  "allowed_maturity_levels": [
+    "Concept",
+    "Prototype",
+    "Pilot",
+    "Deployed solution"
+  ],
+  "authority": {
+    "award_assertion_authorized": false,
+    "contact_authorized": false,
+    "future_funding_assertion_authorized": false,
+    "participant_data_access_authorized": false,
+    "submission_authorized": false
+  },
+  "checked_at": "2026-09-13T10:46:00Z",
+  "due_at_utc": "2026-10-02T16:00:00Z",
+  "due_label": "October 2, 2026 at 12:00 PM ET",
+  "focus_areas": [
+    "Skill Training and Development",
+    "Career Navigation and Job Placement",
+    "Basic Needs",
+    "Personalized Support"
+  ],
+  "future_funding_guaranteed": false,
+  "issuer": "American Institutes for Research",
+  "no_award_at_rfi_stage": true,
+  "notification_label": "Week of October 26, 2026",
+  "official_urls": [
+    "https://www.air.org/sites/default/files/2026-08/AIR-RFI-Building-an-Evidence-Network-for-AI-in-Workforce-Systems.pdf",
+    "https://www.air.org/resource/blog-post/we-want-hear-you-how-can-ai-help-workers-prepare-adapt-and-thrive",
+    "https://www.air.org/artificial-intelligence-air"
+  ],
+  "possible_next_steps": [
+    "invitation-only RFP",
+    "follow-up research discussion",
+    "partnership exploration",
+    "future work outside the RFP path"
+  ],
+  "prompt_word_limits": {
+    "air_partnership": 150,
+    "early_results": 200,
+    "innovation_overview": 300,
+    "learning_questions": 200,
+    "organizational_background": 200,
+    "population_of_focus": 100,
+    "responsible_ai": 200,
+    "technical_approach": 300,
+    "workforce_challenge": 200
+  },
+  "release_date": "2026-09-04",
+  "required_non_word_limited_fields": [
+    "project title",
+    "contact name/title/organization/email/phone",
+    "maturity level"
+  ],
+  "respondent_characteristics": [
+    "Established track record supporting career readiness, job entry, upskilling, reskilling, or lifelong learning for youth or adult workers.",
+    "Clear learning questions with learner or worker voice integrated into what the project learns and how it learns.",
+    "Commitment to timely evidence-to-action deliverables and field learning, with attention to systems serving people at scale."
+  ],
+  "responsible_ai_dimensions": [
+    "fairness",
+    "bias",
+    "transparency",
+    "privacy",
+    "governance"
+  ],
+  "review_criteria": [
+    "relevance to one or more RFI focus areas",
+    "clarity and specificity of the workforce challenge and AI use case",
+    "potential to improve workforce outcomes or expand opportunity for a specific population",
+    "feasibility of generating useful evidence or learning",
+    "attention to responsible AI considerations",
+    "potential for a meaningful research or partnership opportunity with AIR"
+  ],
+  "rfi_pdf_bytes_acquired": false,
+  "rfi_pdf_custody_note": "The controlling PDF was read from AIR's official URL through the web retrieval surface, including all ten pages, but this runtime could not obtain raw binary bytes. No raw-PDF digest is asserted; preflight therefore cannot reach READY until exact PDF bytes are independently captured and hashed.",
+  "rfi_pdf_sha256": null,
+  "rfi_title": "Building an Evidence Network for Artificial Intelligence (AI) in Workforce Systems",
+  "schema": "air.workforce_ai_rfi.source_snapshot/v1",
+  "source_extraction_receipt": {
+    "information_requested_pages": "PDF pages 5-7 (document pages 5-7 after front matter)",
+    "raw_byte_hash_available": false,
+    "web_pdf_pages_observed": 10
+  },
+  "submission_method": "Submittable"
+}

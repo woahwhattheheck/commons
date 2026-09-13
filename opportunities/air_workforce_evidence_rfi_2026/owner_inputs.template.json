@@ -1,0 +1,59 @@
+{
+  "contact": {
+    "email": "OWNER_INPUT_REQUIRED",
+    "name": "OWNER_INPUT_REQUIRED",
+    "organization": "OWNER_INPUT_REQUIRED",
+    "phone": "OWNER_INPUT_REQUIRED",
+    "title": "OWNER_INPUT_REQUIRED"
+  },
+  "direct_workforce_track_record": [],
+  "drafts": {
+    "air_partnership": "OWNER_INPUT_REQUIRED",
+    "early_results": "OWNER_INPUT_REQUIRED",
+    "innovation_overview": "OWNER_INPUT_REQUIRED",
+    "learning_questions": "OWNER_INPUT_REQUIRED",
+    "organizational_background": "OWNER_INPUT_REQUIRED",
+    "population_of_focus": "OWNER_INPUT_REQUIRED",
+    "responsible_ai": "OWNER_INPUT_REQUIRED",
+    "technical_approach": "OWNER_INPUT_REQUIRED",
+    "workforce_challenge": "OWNER_INPUT_REQUIRED"
+  },
+  "early_results_claimed": false,
+  "early_results_evidence": [],
+  "evidence_design": {
+    "comparison_design": "OWNER_INPUT_REQUIRED",
+    "data_minimization": "OWNER_INPUT_REQUIRED",
+    "failure_modes": "OWNER_INPUT_REQUIRED",
+    "human_oversight": "OWNER_INPUT_REQUIRED",
+    "independent_evaluation_fit": "OWNER_INPUT_REQUIRED",
+    "instrumentation": "OWNER_INPUT_REQUIRED",
+    "interim_learning": "OWNER_INPUT_REQUIRED",
+    "outcomes": "OWNER_INPUT_REQUIRED",
+    "worker_voice": "OWNER_INPUT_REQUIRED"
+  },
+  "focus_areas": [],
+  "maturity": "OWNER_INPUT_REQUIRED",
+  "partner": {
+    "commitment_evidence_ref": "PARTNER_INPUT_REQUIRED",
+    "organization": "PARTNER_INPUT_REQUIRED",
+    "role": "PARTNER_INPUT_REQUIRED",
+    "workforce_track_record": []
+  },
+  "population": {
+    "description": "OWNER_INPUT_REQUIRED",
+    "estimated_size_2027_2028": 0,
+    "evidence_ref": "OWNER_INPUT_REQUIRED"
+  },
+  "project_title": "OWNER_INPUT_REQUIRED",
+  "responsible_ai_controls": {
+    "bias": "OWNER_INPUT_REQUIRED",
+    "fairness": "OWNER_INPUT_REQUIRED",
+    "governance": "OWNER_INPUT_REQUIRED",
+    "privacy": "OWNER_INPUT_REQUIRED",
+    "transparency": "OWNER_INPUT_REQUIRED"
+  },
+  "route": "UNDECIDED",
+  "schema": "air.workforce_ai_rfi.owner_inputs/v1",
+  "source_refresh_reviewed": false,
+  "submission_boundary_reviewed": false
+}
