@@ -31,17 +31,24 @@ CHANNELS = ("dialogue", "memory", "actions", "files")
 ASSERTION_TYPES = ("contains", "not_contains", "latest_equals", "ordered_contains")
 
 
-def _read_json(path: Path) -> Any:
+def _read_json_with_sha(path: Path) -> tuple[Any, str]:
     try:
-        return json.loads(path.read_text(encoding="utf-8"))
+        raw = path.read_bytes()
+        payload = json.loads(raw.decode("utf-8"))
     except (OSError, UnicodeError, json.JSONDecodeError) as exc:
         raise ValueError(f"cannot read JSON {path}: {exc}") from exc
+    return payload, hashlib.sha256(raw).hexdigest()
 
 
-def _read_dataset(path: Path) -> list[dict[str, Any]]:
+def _read_json(path: Path) -> Any:
+    return _read_json_with_sha(path)[0]
+
+
+def _read_dataset_with_sha(path: Path) -> tuple[list[dict[str, Any]], str]:
     scenarios: list[dict[str, Any]] = []
     try:
-        lines = path.read_text(encoding="utf-8").splitlines()
+        file_bytes = path.read_bytes()
+        lines = file_bytes.decode("utf-8").splitlines()
     except (OSError, UnicodeError) as exc:
         raise ValueError(f"cannot read dataset {path}: {exc}") from exc
     for line_no, raw in enumerate(lines, 1):
@@ -55,7 +62,11 @@ def _read_dataset(path: Path) -> list[dict[str, Any]]:
             raise ValueError(f"dataset line {line_no}: scenario must be an object")
         scenarios.append(row)
     validate_dataset(scenarios)
-    return scenarios
+    return scenarios, hashlib.sha256(file_bytes).hexdigest()
+
+
+def _read_dataset(path: Path) -> list[dict[str, Any]]:
+    return _read_dataset_with_sha(path)[0]
 
 
 def _sha256(path: Path) -> str:
@@ -310,10 +321,14 @@ def _write_report(out_dir: Path, report: dict[str, Any]) -> None:
     (out_dir / f"{slug}.report.md").write_text(_markdown(report), encoding="utf-8")
 
 
-def _load_evidence(path: Path, scenario_ids: set[str]) -> dict[str, Any]:
-    payload = _read_json(path)
+def _load_evidence_with_sha(path: Path, scenario_ids: set[str]) -> tuple[dict[str, Any], str]:
+    payload, digest = _read_json_with_sha(path)
     validate_evidence(payload, scenario_ids)
-    return payload
+    return payload, digest
+
+
+def _load_evidence(path: Path, scenario_ids: set[str]) -> dict[str, Any]:
+    return _load_evidence_with_sha(path, scenario_ids)[0]
 
 
 def _parser() -> argparse.ArgumentParser:
@@ -336,7 +351,7 @@ def _parser() -> argparse.ArgumentParser:
 def main(argv: list[str] | None = None) -> int:
     args = _parser().parse_args(argv)
     try:
-        scenarios = _read_dataset(args.dataset)
+        scenarios, dataset_sha256 = _read_dataset_with_sha(args.dataset)
         ids = {row["id"] for row in scenarios}
         if args.command == "validate":
             for path in args.evidence:
@@ -344,11 +359,11 @@ def main(argv: list[str] | None = None) -> int:
             print(f"VALID dataset={len(scenarios)} scenarios evidence={len(args.evidence)}")
             return 0
         if args.command == "score":
-            evidence = _load_evidence(args.evidence, ids)
+            evidence, evidence_sha256 = _load_evidence_with_sha(args.evidence, ids)
             report = score(scenarios, evidence)
             report["provenance"] = {
-                "dataset_sha256": _sha256(args.dataset),
-                "evidence_sha256": _sha256(args.evidence),
+                "dataset_sha256": dataset_sha256,
+                "evidence_sha256": evidence_sha256,
             }
             _write_report(args.out_dir, report)
             (args.out_dir / "radar.svg").write_text(_radar_svg([report]), encoding="utf-8")
@@ -356,22 +371,23 @@ def main(argv: list[str] | None = None) -> int:
             return 0
         if len(args.evidence) < 2:
             raise ValueError("compare requires at least two evidence bundles")
-        loaded = [(path, _load_evidence(path, ids)) for path in args.evidence]
-        names = [evidence["agent"] for _, evidence in loaded]
+        loaded = [(path, *_load_evidence_with_sha(path, ids)) for path in args.evidence]
+        names = [evidence["agent"] for _, evidence, _ in loaded]
         if len(set(names)) != len(names):
             raise ValueError("compare agent names must be unique")
         slug_keys = [_report_slug(name).casefold() for name in names]
         if len(set(slug_keys)) != len(slug_keys):
             raise ValueError("compare agent output names collide after sanitization")
         reports = []
-        for path, evidence in loaded:
+        for path, evidence, evidence_sha256 in loaded:
             report = score(scenarios, evidence)
             report["provenance"] = {
-                "dataset_sha256": _sha256(args.dataset),
-                "evidence_sha256": _sha256(path),
+                "dataset_sha256": dataset_sha256,
+                "evidence_sha256": evidence_sha256,
             }
-            _write_report(args.out_dir, report)
             reports.append(report)
+        for report in reports:
+            _write_report(args.out_dir, report)
         args.out_dir.mkdir(parents=True, exist_ok=True)
         (args.out_dir / "comparison.json").write_text(json.dumps(reports, indent=2) + "\n", encoding="utf-8")
         (args.out_dir / "radar.svg").write_text(_radar_svg(reports), encoding="utf-8")
