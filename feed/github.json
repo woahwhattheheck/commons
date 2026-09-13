@@ -1,9 +1,9 @@
 {
   "counts": {
-    "open_issues": 36,
+    "open_issues": 37,
     "open_pull_requests": 29,
     "runs_in_progress": 20,
-    "runs_queued": 789
+    "runs_queued": 793
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -72,10 +72,10 @@
       "branch": "zzh/context-git-source-capsules-13854",
       "created_at": "2026-09-13T13:29:53Z",
       "draft": false,
-      "head_sha": "f4a163341d61089d3d81e2cda98c8087cf7b22d0",
+      "head_sha": "5aacbcdccc555fd40a9ed5b9ddc5dbf3dff4ec39",
       "number": 13865,
       "title": "feat: embed exact Git source capsules in context dispatch packets",
-      "updated_at": "2026-09-13T13:35:15Z"
+      "updated_at": "2026-09-13T13:38:18Z"
     },
     {
       "author": "woahwhattheheck",
@@ -105,10 +105,10 @@
       "branch": "z-cassinianvil/funded-work-amount-precedence-20260913",
       "created_at": "2026-09-13T13:25:37Z",
       "draft": false,
-      "head_sha": "e6a5d1285db23cb11c5df52423f056ef19b8984d",
+      "head_sha": "bcba1a61da864ce0bc96789f2467c2dd4012047b",
       "number": 13862,
       "title": "funded-work: resolve latest authoritative reward amount",
-      "updated_at": "2026-09-13T13:36:21Z"
+      "updated_at": "2026-09-13T13:38:09Z"
     },
     {
       "author": "woahwhattheheck",
@@ -203,14 +203,14 @@
     "13844": "51a23e49c939f3090aedd852539fa2f1806ae630",
     "13857": "a1dde557acac3aa3531b7a5541e11f95b035f3bf",
     "13858": "df9ff9fd0ee645c8a7b16bd38297bd5d254f2508",
-    "13862": "e6a5d1285db23cb11c5df52423f056ef19b8984d",
+    "13862": "bcba1a61da864ce0bc96789f2467c2dd4012047b",
     "13863": "ae949f0a623b1eb8af94fe76427cb93169f55d91",
     "13864": "8fe905a0a9cb03b79f916fd8e97585b50da745a7",
-    "13865": "f4a163341d61089d3d81e2cda98c8087cf7b22d0"
+    "13865": "5aacbcdccc555fd40a9ed5b9ddc5dbf3dff4ec39"
   },
   "pulls_listed": 29,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 39.5,
+  "queue_depth_per_runner": 39.6,
   "recently_closed": [
     {
       "author": "woahwhattheheck",
@@ -380,6 +380,6 @@
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-13T13:36:55Z",
+  "unchanged_since": "2026-09-13T13:38:36Z",
   "undatable_pulls": []
 }
