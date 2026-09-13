@@ -40,6 +40,12 @@ current-readiness conclusion, an independent operator must reacquire the live
 State source and confirm the current generation/deadline. No caller-supplied
 JSON can promote this carrier to live-current authority.
 
+Negative conclusions are equally snapshot-relative. Missing retained Amendment-1
+evidence emits `SNAPSHOT_MANDATORY_EVIDENCE_GAP`, never a current `NO_GO`;
+proposal-readiness evidence gaps emit `SNAPSHOT_PROPOSAL_EVIDENCE_GAP`. A later
+buyer amendment could relax or replace retained requirements, so only a trusted
+live-source review may make a current bid/no-bid conclusion.
+
 No buyer file bytes were persisted in this repository, so
 `buyer_bytes_captured=false` and `buyer_file_sha256=null`; the package never
 invents a buyer-file digest.
