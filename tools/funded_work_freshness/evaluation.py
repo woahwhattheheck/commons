@@ -69,10 +69,7 @@ def funding_authority(user: Mapping[str, Any], association: Any) -> bool:
 
     login = str(user.get("login") or "").lower()
     normalized_association = str(association or "").upper()
-    return (
-        normalized_association in TRUSTED_ASSOCIATIONS
-        or login in TRUSTED_SPONSOR_BOTS
-    )
+    return normalized_association in TRUSTED_ASSOCIATIONS or login in TRUSTED_SPONSOR_BOTS
 
 
 def trusted_comment(
@@ -157,20 +154,26 @@ def _money_tokens(text: str) -> list[tuple[int, int, str, str]]:
 def _commercial_amount_event(text: str) -> dict[str, str | None]:
     """Resolve one authority event's explicit reward/bounty/funding amount.
 
-    A line/semicolon clause must grammatically bind the amount to ``reward``,
-    ``bounty``, or ``funding``. Multiple distinct amounts are ambiguous unless an
+    Each line/semicolon clause is trimmed to its first commercial noun before
+    monetary parsing. This prevents unrelated leading money from hiding a later
+    reward transition while preserving fail-closed treatment of money after the
+    commercial statement. Multiple distinct amounts are ambiguous unless an
     exactly two-amount transition binds the second token as the destination.
     """
 
     event_values: list[tuple[str, str]] = []
     event_ambiguous = False
-    for segment in re.split(r"[\n;]+", text):
+    for raw_segment in re.split(r"[\n;]+", text):
+        raw_nouns = list(_COMMERCIAL_NOUN_RE.finditer(raw_segment))
+        if not raw_nouns:
+            continue
+        segment = raw_segment[raw_nouns[0].start() :]
         nouns = list(_COMMERCIAL_NOUN_RE.finditer(segment))
         monies = _money_tokens(segment)
-        if not nouns or not monies:
+        if not monies:
             continue
 
-        first_noun = min(noun.start() for noun in nouns)
+        first_noun = nouns[0].start()
         if len(monies) >= 2 and first_noun < monies[0][0]:
             before_source = segment[: monies[0][0]]
             between_first_second = segment[monies[0][1] : monies[1][0]]
