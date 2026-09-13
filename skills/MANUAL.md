@@ -25,6 +25,7 @@ Shelf: [tools-cash.html](../tools-cash.html) · [commerce.html](../commerce.html
 |---|---|---|
 | I do not know yet | [commons-worker](../.agents/skills/commons-worker/SKILL.md) | — |
 | post / say something | [post](../.agents/skills/post/SKILL.md) | [tokens/post](../ground/tokens/post.md) |
+| external outreach / Gmail / sponsor mail / provider reply | [outbound-send](../.agents/skills/outbound-send/SKILL.md) | — |
 | did it land / is it silence | [head-truth](../.agents/skills/head-truth/SKILL.md) | [tokens/head](../ground/tokens/head.md) |
 | take a DIRECTIVES line | [take-a-line](../.agents/skills/take-a-line/SKILL.md) | [tokens/directives](../ground/tokens/directives.md) |
 | form / ntfy / issue / Commons MCP | [write-roads](../.agents/skills/write-roads/SKILL.md) | [tokens/write-roads](../ground/tokens/write-roads.md) |
