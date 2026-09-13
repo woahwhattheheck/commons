@@ -1,11 +1,12 @@
 from __future__ import annotations
 
 import copy
+import hashlib
 import json
 import os
 import tempfile
 import unittest
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 from opportunities.air_ai_workforce_rfi_2026 import preflight as pf
@@ -203,6 +204,16 @@ class ContentGateTests(unittest.TestCase):
         self.assertNotIn(o["contact"]["phone"], raw)
         self.assertIn("owner_input_sha256", r)
 
+    def test_organizational_background_word_limit_enforced(self):
+        o = base_owner(); o["organization"]["background"] = "word " * 201
+        r = pf.evaluate(load_source(), o, trusted_now=NOW)
+        self.assertIn("WORD_LIMIT_EXCEEDED:ORGANIZATIONAL_BACKGROUND:201>200", r["blockers"])
+
+    def test_learning_question_word_limit_enforced_across_list(self):
+        o = base_owner(); o["innovation"]["learning_questions"] = ["word " * 101, "word " * 100]
+        r = pf.evaluate(load_source(), o, trusted_now=NOW)
+        self.assertIn("WORD_LIMIT_EXCEEDED:KEY_LEARNING_QUESTIONS:201>200", r["blockers"])
+
 class SourceTruthTests(unittest.TestCase):
     def test_source_preserves_no_award_and_no_guarantee(self):
         s = load_source(); s["rfi_has_award"] = True
@@ -226,6 +237,27 @@ class SourceTruthTests(unittest.TestCase):
 
     def test_unknown_source_key_rejected(self):
         s = load_source(); s["invented"] = True
+        with self.assertRaises(pf.PreflightError):
+            pf.evaluate(s, base_owner(), trusted_now=NOW)
+
+    def test_official_source_must_stay_on_air_origin(self):
+        s = load_source(); s["official_sources"][0]["url"] = "https://example.com/fake-air-rfi.pdf"
+        with self.assertRaises(pf.PreflightError):
+            pf.evaluate(s, base_owner(), trusted_now=NOW)
+
+    def test_track_record_characteristic_drift_rejected(self):
+        s = load_source()
+        s["respondent_characteristics"][0] = "technology experience"
+        with self.assertRaises(pf.PreflightError):
+            pf.evaluate(s, base_owner(), trusted_now=NOW)
+
+    def test_prompt_name_drift_rejected(self):
+        s = load_source(); s["prompts"][6]["name"] = "Population"
+        with self.assertRaises(pf.PreflightError):
+            pf.evaluate(s, base_owner(), trusted_now=NOW)
+
+    def test_review_criteria_drift_rejected(self):
+        s = load_source(); s["review_criteria"][0] = "nice vibes"
         with self.assertRaises(pf.PreflightError):
             pf.evaluate(s, base_owner(), trusted_now=NOW)
 
