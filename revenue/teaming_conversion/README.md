@@ -12,11 +12,11 @@ The input packet (`teaming-conversion-input/v1`) binds:
 
 - one opaque opportunity, counterparty and thread identity;
 - retained inbound observations with exact message/content digests and an **owner-reviewed** interpretation enum (`POSITIVE_CONTINUE`, `REQUESTED_MORE_INFO`, `CONDITIONAL_INTEREST`, `DECLINED`, `AMBIGUOUS`);
-- candidate follow-up assets, exact digests/versions, preparation state, and one of four release classes;
+- candidate follow-up assets, exact digests/versions, preparation state, release-class claims, and proposed prospect-visible snippets;
 - independent owner release records for `OWNER_APPROVAL_REQUIRED` assets;
 - qualification gates and optional commercial commitments.
 
-The policy (`teaming-conversion-policy/v1`) owns reply/source freshness, future skew, required assets, and gates that must be exactly `CLEAR`.
+The policy (`teaming-conversion-policy/v1`) is the independent owner authority. In addition to reply/source freshness, future skew, required assets, and gates that must be exactly `CLEAR`, it carries `asset_rules` that bind each governed asset's ID, version, content SHA-256, release class, and a projection SHA-256 over the exact prospect-visible title/snippets plus bound metadata. A packet cannot make itself prospect-safe by relabeling an asset or changing customer-visible copy: any policy mismatch yields `HOLD` and the mismatched asset is not projected.
 
 The compiler never performs NLP or sentiment analysis. Caller text cannot mint a positive state; the retained observation must already contain the explicit owner-reviewed interpretation.
 
@@ -29,7 +29,7 @@ Release classes are:
 - `OWNER_APPROVAL_REQUIRED`
 - `INTERNAL_ONLY`
 
-`INTERNAL_ONLY` assets are never projected into the prospect-safe brief. `OWNER_APPROVAL_REQUIRED` assets are projected only when a retained release record exactly binds current asset ID, version and SHA-256. This prevents a prepared internal methodology, template, code artifact, or stale prior version from silently becoming customer-facing material.
+`INTERNAL_ONLY` assets are never projected into the prospect-safe brief. Any non-internal projection must first match an independent policy `asset_rule` on current asset ID, version, content digest, release class, and projection digest. `OWNER_APPROVAL_REQUIRED` assets then require an additional retained release record that exactly binds current asset ID, version and SHA-256. This prevents a prepared internal methodology, template, code artifact, stale prior version, or packet-mutated prospect copy from silently becoming customer-facing material.
 
 ## Dispositions
 
@@ -46,7 +46,7 @@ A source/reply conflict takes precedence over all commercial dispositions. An ex
 
 ## Byte custody and verifier
 
-`compile_bytes()` strict-parses the exact input and policy bytes, rejects duplicate JSON keys and non-finite numbers, and records SHA-256 for those exact byte streams (`custody_mode=exact_json_bytes`). The verifier recompiles from the same bytes at the receipt's exact trusted evaluation timestamp and requires byte-identical canonical receipt output.
+`compile_bytes()` strict-parses the exact input and owner-policy bytes, rejects duplicate JSON keys, duplicate durable IDs/rules, and non-finite numbers, and records SHA-256 for those exact byte streams (`custody_mode=exact_json_bytes`). The verifier recompiles from the same bytes at the receipt's exact trusted evaluation timestamp and requires byte-identical canonical receipt output, so later policy/classification/projection drift is detectable rather than silently reinterpreted.
 
 The object API is explicit about weaker `canonical_objects` custody and has a separate verifier. This prevents a library caller from representing Python objects as exact consumed source bytes.
 
