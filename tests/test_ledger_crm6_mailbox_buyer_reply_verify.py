@@ -3,7 +3,7 @@
 
 A provider-observed reply is relationship evidence, not proof of human identity
 or commercial materiality. Raw mailbox observation must never mint the hottest
-MATERIAL_REPLY lane by itself.
+MATERIAL_REPLY lane by itself or silently change contact authority.
 """
 from __future__ import annotations
 
@@ -54,6 +54,7 @@ class TestLedgerCrm6MailboxBuyerReplyVerify(unittest.TestCase):
         self.assertFalse(result["verified_human_yes"])
         self.assertFalse(result["material_reply_verified"])
         self.assertTrue(result["invent_guard"]["never_mint_material_reply_from_arrival"])
+        self.assertTrue(result["invent_guard"]["never_change_contact_authority_from_arrival"])
 
     def test_thread_specific_chronology_blocks_pre_anchor_reply(self):
         subject = "thread-anchor-hostile-01"
@@ -89,6 +90,33 @@ class TestLedgerCrm6MailboxBuyerReplyVerify(unittest.TestCase):
         result = self.mod.verify_mailbox_buyer_reply(subject, fixture=fixture)
         self.assertEqual(result["status"], self.mod.STATUS_NO)
         self.assertEqual(result["inbound_buyer_message_ids"], [])
+
+    def test_direction_role_mismatch_fails_closed(self):
+        subject = "direction-role-hostile-01"
+        fixture = {
+            "schema_version": self.mod.idx.SCHEMA_VERSION,
+            "kind": self.mod.KIND_FIXTURE,
+            "subject_id": subject,
+            "cash_usd": 0,
+            "messages": [
+                {
+                    "id": "forged-anchor",
+                    "direction": "outbound",
+                    "thread_id": "thread-a",
+                    "ts": "2026-09-13T10:00:00Z",
+                    "role": "buyer",
+                },
+                {
+                    "id": "inbound",
+                    "direction": "inbound",
+                    "thread_id": "thread-a",
+                    "ts": "2026-09-13T11:00:00Z",
+                    "role": "buyer",
+                },
+            ],
+        }
+        with self.assertRaises(self.mod.idx.IndexError_):
+            self.mod.verify_mailbox_buyer_reply(subject, fixture=fixture)
 
     def test_duplicate_message_ids_fail_closed(self):
         subject = "duplicate-message-hostile-01"
@@ -137,7 +165,7 @@ class TestLedgerCrm6MailboxBuyerReplyVerify(unittest.TestCase):
             self.assertIn("does not verify human identity or commercial materiality", str(caught.exception))
             self.assertEqual(self.mod.idx.load_jsonl(evidence_path), [])
 
-    def test_observed_reply_pins_neutral_status_not_hot_lane(self):
+    def test_observed_reply_pins_neutral_status_without_contact_authority(self):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
             evidence = root / "revenue" / "lm_gtm_index"
@@ -156,10 +184,11 @@ class TestLedgerCrm6MailboxBuyerReplyVerify(unittest.TestCase):
             )
             self.assertEqual(pinned["type"], "STATUS")
             self.assertEqual(pinned["decision"], self.mod.DECISION_OBSERVED)
-            self.assertFalse(pinned["dnr"])
+            self.assertNotIn("dnr", pinned)
             self.assertEqual(pinned["cash_usd"], 0)
             self.assertEqual(pinned["transport"], "NONE")
             self.assertIn("HUMAN_CLASSIFICATION_REQUIRED", pinned["next_action"])
+            self.assertIn("contact/no-resend authority is unchanged", pinned["next_action"])
             rows = self.mod.idx.load_jsonl(evidence_path)
             self.assertEqual(rows, [pinned])
 
