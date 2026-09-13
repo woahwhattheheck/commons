@@ -14,6 +14,27 @@
   "board_motion": [
     {
       "from": "UNSEATED",
+      "id": "Revenue-pursuit--City-of-Airdrie-AB-2026-06233-Data-Management-Consultant",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-13T14:08:29Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "Revenue-fulfillment--Banner-SaaS-student-record-parity-gate",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-13T14:05:11Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-13T14:03:37Z"
+    },
+    {
+      "from": "UNSEATED",
       "id": "Revenue--Legal-Aid-Chicago-Copilot-Agents-training---AI-architecture-response-la",
       "kind": null,
       "to": "TABLE",
@@ -130,27 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-13T11:09:16Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-13T11:08:18Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-13T11:05:45Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-13T10:57:31Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "e08948547a687ff77e3991e981f749cef3c62c653e58f10f8b8f43e6b676b50e",
+  "digest": "a38272392808ec330c7244b72b2ad7b78927f9e23a897b23e04d4662471ee81e",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,11 +353,11 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12232,
-    "pulse_seq": 1802,
-    "sha": "2f62ac516cd8e63f809929fa1a0421f13c913105"
+    "post_count": 12235,
+    "pulse_seq": 1803,
+    "sha": "c8f77728f5328c46ebffd7998c0c77f44212ca3b"
   },
-  "now": "2026-09-13T14:04:55Z",
+  "now": "2026-09-13T14:13:33Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -4780,18 +4780,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "Revenue--Legal-Aid-Chicago-Copilot-Agents-training---AI-architecture-response-la",
+          "id": "Revenue-pursuit--City-of-Airdrie-AB-2026-06233-Data-Management-Consultant",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "Revenue--Legal-Aid-Chicago-Copilot-Agents-training---AI-architecture-response-la",
+      "id": "Revenue-pursuit--City-of-Airdrie-AB-2026-06233-Data-Management-Consultant",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-13T13:59:20Z"
+      "ts": "2026-09-13T14:08:29Z"
     },
     {
       "claim": "VECTOR-RELAY",
