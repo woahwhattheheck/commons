@@ -1,0 +1,19 @@
+{
+  "schema_version": "mmsd.ai-governance.qualification/v1",
+  "opportunity_id": "MMSD-AI-GOVERNANCE-RFP-20260913",
+  "compiled_at": "2026-09-13T10:20:00Z",
+  "gates": {
+    "official_pdf_obtained": {"status":"UNKNOWN","evidence_ref":"indexed-document-name-only","evidence_digest":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","note":"Official landing page names the bid document, but source PDF bytes were not retrievable in the current research harness."},
+    "submission_items_verified": {"status":"UNKNOWN","evidence_ref":"public-index-five-items-hidden","evidence_digest":"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb","note":"Public index reports five required submission items but does not expose them."},
+    "evaluation_criteria_verified": {"status":"UNKNOWN","evidence_ref":"pending-official-pdf","evidence_digest":"cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc","note":"Weights and scoring are not present on the public landing page."},
+    "references_requirement_verified": {"status":"UNKNOWN","evidence_ref":"pending-official-pdf","evidence_digest":"dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd","note":"Reference requirement is not yet verified."},
+    "references_satisfied": {"status":"UNKNOWN","evidence_ref":"owner-evidence-required","evidence_digest":"eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee","note":"No client reference is asserted by this packet."},
+    "insurance_requirement_verified": {"status":"UNKNOWN","evidence_ref":"pending-official-pdf","evidence_digest":"ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff","note":"Insurance requirement is not yet verified."},
+    "insurance_satisfied_or_bindable": {"status":"UNKNOWN","evidence_ref":"owner-evidence-required","evidence_digest":"1111111111111111111111111111111111111111111111111111111111111111","note":"No insurance coverage or bindability is asserted by this packet."},
+    "prime_team_rules_verified": {"status":"UNKNOWN","evidence_ref":"buyer-clarification-candidate","evidence_digest":"2222222222222222222222222222222222222222222222222222222222222222","note":"Need to confirm whether team or subcontractor credentials may support prime qualification."},
+    "public_record_sanitization_complete": {"status":"CONFIRMED","evidence_ref":"response-plan-public-record-boundary","evidence_digest":"3333333333333333333333333333333333333333333333333333333333333333","note":"Response plan contains no credentials, secrets, private client data, or confidential implementation detail."},
+    "technical_scope_supported": {"status":"CONFIRMED","evidence_ref":"response-plan-v1","evidence_digest":"4444444444444444444444444444444444444444444444444444444444444444","note":"Technical method covers known published scope without claiming buyer-specific findings."},
+    "delivery_capacity_supported": {"status":"UNKNOWN","evidence_ref":"owner-staffing-evidence-required","evidence_digest":"5555555555555555555555555555555555555555555555555555555555555555","note":"Named personnel availability for a six-month engagement is not asserted by this packet."},
+    "price_authorized": {"status":"UNKNOWN","evidence_ref":"owner-commercial-approval-required","evidence_digest":"6666666666666666666666666666666666666666666666666666666666666666","note":"No proposal price has been approved or represented."}
+  }
+}
