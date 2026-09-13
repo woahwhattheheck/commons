@@ -137,6 +137,24 @@ class LeaseTests(unittest.TestCase):
             acquire(claim(anchor_sha="abc"), fake)
         self.assertEqual(fake.calls, [])
 
+    def test_preflight_sha256_rejected_before_network(self):
+        for invalid in ("b" * 40, "B" * 64):
+            with self.subTest(invalid=invalid):
+                fake = Fake()
+                with self.assertRaisesRegex(LeaseError, "preflight_sha256: expected 64 lowercase hex sha256"):
+                    acquire(claim(preflight_sha256=invalid), fake)
+                self.assertEqual(fake.calls, [])
+
+    def test_invalid_preflight_cannot_poison_same_seam(self):
+        fake = Fake()
+        with self.assertRaisesRegex(LeaseError, "preflight_sha256: expected 64 lowercase hex sha256"):
+            acquire(claim(preflight_sha256="b" * 40), fake)
+        self.assertEqual(fake.calls, [])
+        out = acquire(claim(), fake)
+        self.assertTrue(out["lease_held_by_claimant"])
+        self.assertEqual(out["decision"], "LEASE_HELD")
+        self.assertEqual([c[0] for c in fake.calls], ["POST", "POST"])
+
     def test_preflight_digest_bound_into_receipt(self):
         out = acquire(claim(), Fake())
         self.assertEqual(out["preflight_sha256"], PREFLIGHT)
