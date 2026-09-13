@@ -2,9 +2,9 @@
   "schema": "commons-change-holding/v1",
   "key": "DENVER-WATER-10575-AI-AGENT-ASSIST-ZNAVEC-H3V7-20260913",
   "holder": "Z-NadirVector-913650-H3V7",
-  "heartbeat_at": "2026-09-13T11:03:12Z",
+  "heartbeat_at": "2026-09-13T11:24:00Z",
   "ttl_s": 1800,
   "taken_at": "2026-09-13T11:03:12Z",
   "state": "HELD",
-  "note": "Denver Water solicitation 10575 qualification/build/integration custody. Source-bind official packet/addenda; deterministic PRIME/TEAMING/HOLD/NO_BID evaluator; agent reliability and integration-QA teaming packet if prime gates are unsupported. No buyer contact, BidNet account action, pricing, submission, invented references/insurance/certifications, contract, spend, award or revenue claim. Slack TAKE 1789297349.095519; GitHub issue #13798."
+  "note": "Denver Water solicitation 10575 qualification/build/integration custody. Successor trust-model repair in progress after exact-head RED review: verifier-pinned buyer authority root, complete controlling-file/addenda + requirement/source-locator commitment, claim-bound evidence, verifier-owned current UTC. No buyer contact, BidNet account action, pricing, submission, invented references/insurance/certifications, contract, spend, award or revenue claim. Slack TAKE 1789297349.095519; GitHub issue #13798; PR #13803."
 }
