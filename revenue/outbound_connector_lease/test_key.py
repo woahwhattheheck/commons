@@ -1,10 +1,22 @@
 from __future__ import annotations
 
+import contextlib
 import hashlib
+import io
 import json
 import unittest
 
-from revenue.outbound_connector_lease.key import BRANCH_PREFIX, LeaseKeyError, _parse_json, compile_document, compile_key
+from revenue.outbound_connector_lease.key import (
+    BRANCH_PREFIX,
+    REPLY_BRANCH_PREFIX,
+    REPLY_SCHEMA,
+    LeaseKeyError,
+    _parse_json,
+    compile_document,
+    compile_key,
+    compile_reply_key,
+    main,
+)
 
 
 def cold():
@@ -20,7 +32,7 @@ def reply(provider="gmail", event_id="1a09b2e381d7fa0e"):
 
 
 class LeaseKeyTests(unittest.TestCase):
-    def test_deterministic_known_workday_external_seam(self):
+    def test_deterministic_known_workday_external_seam_unchanged(self):
         result = compile_key("workday.com", external())
         canonical = json.dumps(
             {
@@ -32,6 +44,7 @@ class LeaseKeyTests(unittest.TestCase):
         expected = hashlib.sha256(canonical).hexdigest()
         self.assertEqual(result["seam_sha256"], expected)
         self.assertEqual(result["branch"], BRANCH_PREFIX + expected)
+        self.assertEqual(result["schema"], "outbound-connector-lease/v1")
 
     def test_domain_and_external_authority_normalization(self):
         a = compile_key("ExAmPle.COM.", external("Issuer.EXAMPLE.", "RFP-04254"))
@@ -57,12 +70,62 @@ class LeaseKeyTests(unittest.TestCase):
         with self.assertRaises(LeaseKeyError):
             compile_key("example.com", {"kind": "cold", "campaign": "x"})
 
-    def test_reply_binds_provider_event_only(self):
-        a = compile_key("example.com", reply("GMAIL", "ABC123"))
-        b = compile_key("EXAMPLE.COM", reply("gmail", "abc123"))
-        self.assertEqual(a, b)
+    def test_reply_v2_binds_provider_event_only_across_buyer_aliases(self):
+        direct = compile_reply_key("GMAIL", "ABC123")
+        via_a = compile_key("uwo.ca", reply("gmail", "abc123"))
+        via_b = compile_key("westernu.ca", reply("GMAIL", "ABC123"))
+        self.assertEqual(direct, via_a)
+        self.assertEqual(via_a, via_b)
+        self.assertEqual(via_a["schema"], REPLY_SCHEMA)
+        self.assertNotIn("buyer_scope", via_a)
+        self.assertEqual(via_a["branch"], REPLY_BRANCH_PREFIX + via_a["seam_sha256"])
+
+    def test_reply_v2_distinguishes_provider_or_event(self):
+        base = compile_reply_key("gmail", "abc123")
+        self.assertNotEqual(base["branch"], compile_reply_key("gmail", "abc124")["branch"])
+        self.assertNotEqual(base["branch"], compile_reply_key("slack", "abc123")["branch"])
+
+    def test_reply_schema_rejects_contact_route_and_buyer_fields(self):
+        base = reply()
+        for field in ("recipient", "route", "draft", "subject", "buyer_scope"):
+            with self.subTest(field=field), self.assertRaises(LeaseKeyError):
+                compile_key("example.com", {**base, field: "variant"})
+        doc = {"schema": REPLY_SCHEMA, "provider": "gmail", "event_id": "abc123", "buyer_scope": "example.com"}
         with self.assertRaises(LeaseKeyError):
-            compile_key("example.com", {**reply(), "recipient": "other@example.com"})
+            compile_document(doc)
+
+    def test_legacy_v1_reply_document_migrates_to_reply_v2(self):
+        legacy = {
+            "schema": "outbound-connector-lease/v1",
+            "buyer_scope": "example.com",
+            "opportunity": reply("gmail", "abc123"),
+        }
+        self.assertEqual(compile_document(legacy), compile_reply_key("gmail", "abc123"))
+
+    def test_reply_v2_document_exact_fields(self):
+        doc = {"schema": REPLY_SCHEMA, "provider": "gmail", "event_id": "abc123"}
+        self.assertEqual(compile_document(doc), compile_reply_key("gmail", "abc123"))
+        with self.assertRaises(LeaseKeyError):
+            compile_document({**doc, "extra": 1})
+
+    def test_reply_cli_does_not_accept_buyer_scope(self):
+        err = io.StringIO()
+        with contextlib.redirect_stderr(err):
+            rc = main([
+                "--buyer-scope", "example.com",
+                "--reply-provider", "gmail",
+                "--reply-event-id", "abc123",
+            ])
+        self.assertEqual(rc, 2)
+        self.assertIn("buyer-scope is forbidden for reply mode", err.getvalue())
+
+    def test_reply_cli_without_buyer_scope_emits_v2(self):
+        out = io.StringIO()
+        with contextlib.redirect_stdout(out):
+            rc = main(["--reply-provider", "gmail", "--reply-event-id", "abc123"])
+        self.assertEqual(rc, 0)
+        payload = json.loads(out.getvalue())
+        self.assertEqual(payload, compile_reply_key("gmail", "abc123"))
 
     def test_url_and_email_are_rejected_as_domains(self):
         for value in ("https://example.com", "person@example.com", "example.com/path", "localhost"):
@@ -87,10 +150,10 @@ class LeaseKeyTests(unittest.TestCase):
         with self.assertRaises(LeaseKeyError): compile_key("example.com", {"kind": "reply", "provider": "gmail"})
         with self.assertRaises(LeaseKeyError): compile_key("example.com", {"kind": "unknown"})
 
-    def test_document_schema_and_exact_fields(self):
+    def test_v1_document_schema_and_exact_fields(self):
         doc = {"schema": "outbound-connector-lease/v1", "buyer_scope": "example.com", "opportunity": cold()}
         self.assertEqual(compile_document(doc), compile_key("example.com", cold()))
-        for mutation in ({**doc, "extra": 1}, {**doc, "schema": "v2"}, {"buyer_scope": "example.com", "opportunity": cold()}):
+        for mutation in ({**doc, "extra": 1}, {**doc, "schema": "not-a-schema"}, {"buyer_scope": "example.com", "opportunity": cold()}):
             with self.assertRaises(LeaseKeyError): compile_document(mutation)
 
     def test_strict_json_duplicate_and_nonfinite_rejected(self):
@@ -102,6 +165,8 @@ class LeaseKeyTests(unittest.TestCase):
     def test_bool_and_nonstring_rejected(self):
         for buyer, opportunity in ((True, cold()), (1, cold()), ("example.com", True), ("example.com", {"kind": True})):
             with self.assertRaises(LeaseKeyError): compile_key(buyer, opportunity)
+        for provider, event_id in ((True, "abc"), ("gmail", True), ("", "abc"), ("gmail", "")):
+            with self.assertRaises(LeaseKeyError): compile_reply_key(provider, event_id)
 
 
 if __name__ == "__main__":
