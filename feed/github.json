@@ -1,9 +1,9 @@
 {
   "counts": {
-    "open_issues": 14,
-    "open_pull_requests": 21,
-    "runs_in_progress": 19,
-    "runs_queued": 623
+    "open_issues": 15,
+    "open_pull_requests": 19,
+    "runs_in_progress": 17,
+    "runs_queued": 653
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -69,13 +69,24 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "ariadne-z/open-door-positive-business-context-fix3-20260913",
-      "created_at": "2026-09-13T10:11:46Z",
+      "branch": "z-noether-d7q4/scope-delivery-trusted-time-20260913",
+      "created_at": "2026-09-13T10:14:07Z",
       "draft": false,
-      "head_sha": "b9e4a4cdba4048f631f6dd1c9cddfedbaaeef8ee",
-      "number": 13733,
-      "title": "open-door: bind business-status exception to positive owner context",
-      "updated_at": "2026-09-13T10:11:46Z"
+      "head_sha": "06ddd941be42656f94ff7ad3a5b43a7bc8c4c50b",
+      "number": 13739,
+      "title": "fix(revenue): fence scope-to-delivery with trusted time",
+      "updated_at": "2026-09-13T10:14:07Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "ariadne-z/cwpd-owner-send-status-20260913",
+      "created_at": "2026-09-13T10:12:52Z",
+      "draft": false,
+      "head_sha": "76ca15f9c7ce949b3a855b4451053166e0c0b3fa",
+      "number": 13735,
+      "title": "docs(revenue): make CWPD send status unambiguous",
+      "updated_at": "2026-09-13T10:12:52Z"
     },
     {
       "author": "woahwhattheheck",
@@ -86,40 +97,7 @@
       "head_sha": "f6b90a9a3079d93fe3f737edc5fc31a1a4adea3d",
       "number": 13732,
       "title": "fix(revenue): make reconciliation field equality JSON-type-stable",
-      "updated_at": "2026-09-13T10:11:26Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "ariadne-z/open-door-business-status-final3-20260913",
-      "created_at": "2026-09-13T10:11:26Z",
-      "draft": false,
-      "head_sha": "54fc3a0b214191c91cf5a791e1768991566b0a52",
-      "number": 13731,
-      "title": "open-door: positively bind revenue business-status denials",
-      "updated_at": "2026-09-13T10:11:26Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "ariadne-z/open-door-business-status-final-20260913",
-      "created_at": "2026-09-13T10:07:57Z",
-      "draft": false,
-      "head_sha": "2df03b175264d3de8b430612c00926d68f7327ca",
-      "number": 13727,
-      "title": "open-door: positively bind revenue status exception",
-      "updated_at": "2026-09-13T10:12:06Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zvf-r7k3/expertise-catalog-20260913",
-      "created_at": "2026-09-13T10:05:47Z",
-      "draft": false,
-      "head_sha": "0d92ded9f35517639717fa94e8b3adbf26b8332e",
-      "number": 13723,
-      "title": "revenue: expose expertise as explicit catalog entries",
-      "updated_at": "2026-09-13T10:11:29Z"
+      "updated_at": "2026-09-13T10:13:25Z"
     },
     {
       "author": "woahwhattheheck",
@@ -175,6 +153,28 @@
       "number": 13695,
       "title": "competition: add Wuhu LeRobot trajectory QC engine",
       "updated_at": "2026-09-13T09:42:49Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z-eames/v5-plainfile-custody-final-20260913",
+      "created_at": "2026-09-13T09:41:10Z",
+      "draft": false,
+      "head_sha": "c2df4039c06d34123e9aaa31ff0a04c405760c62",
+      "number": 13692,
+      "title": "TITAN V5: exact-head reject symlinked champion evidence inputs",
+      "updated_at": "2026-09-13T09:42:26Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zax/ohsu-digital-pathology-evidence-20260913",
+      "created_at": "2026-09-13T09:33:58Z",
+      "draft": false,
+      "head_sha": "d7d6a0a0dacf3d832fc62d6e0b1a39b15a985b54",
+      "number": 13683,
+      "title": "revenue: add OHSU digital pathology qualification evidence gate",
+      "updated_at": "2026-09-13T09:33:58Z"
     }
   ],
   "open_heads": {
@@ -194,16 +194,91 @@
     "13702": "2b6598f90c107dfacc4ec2a975e070f5073f8952",
     "13704": "43a89c97cee946e3d6cfa7e665c92b31586b08cc",
     "13712": "e5d13ab500ff195dd85df2728f85794dab2fe048",
-    "13723": "0d92ded9f35517639717fa94e8b3adbf26b8332e",
-    "13727": "2df03b175264d3de8b430612c00926d68f7327ca",
-    "13731": "54fc3a0b214191c91cf5a791e1768991566b0a52",
     "13732": "f6b90a9a3079d93fe3f737edc5fc31a1a4adea3d",
-    "13733": "b9e4a4cdba4048f631f6dd1c9cddfedbaaeef8ee"
+    "13735": "76ca15f9c7ce949b3a855b4451053166e0c0b3fa",
+    "13739": "06ddd941be42656f94ff7ad3a5b43a7bc8c4c50b"
   },
-  "pulls_listed": 21,
+  "pulls_listed": 19,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 32.8,
+  "queue_depth_per_runner": 38.4,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zvf-r7k3/expertise-catalog-rejoin-20260913",
+      "closed_at": "2026-09-13T10:14:46Z",
+      "head_sha": "486dbcdb45e9fb9c7a55076bad2e168034ee6d9c",
+      "merged_at": null,
+      "number": 13736,
+      "state": "CLOSED",
+      "title": "revenue: expose expertise as explicit catalog entries"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zvf-r7k3/expertise-catalog-20260913",
+      "closed_at": "2026-09-13T10:14:38Z",
+      "head_sha": "0d92ded9f35517639717fa94e8b3adbf26b8332e",
+      "merged_at": null,
+      "number": 13723,
+      "state": "CLOSED",
+      "title": "revenue: expose expertise as explicit catalog entries"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zhyp-a7k2/offering-bundle-composer-20260913",
+      "closed_at": "2026-09-13T10:14:19Z",
+      "head_sha": "5f149eec9d3b95e3cecf1a7335365b3999db0f43",
+      "merged_at": "2026-09-13T10:14:19Z",
+      "number": 13738,
+      "state": "MERGED",
+      "title": "revenue: compose cross-family offering bundles"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "ariadne-z/open-door-positive-business-context-fix3-20260913",
+      "closed_at": "2026-09-13T10:14:06Z",
+      "head_sha": "b9e4a4cdba4048f631f6dd1c9cddfedbaaeef8ee",
+      "merged_at": null,
+      "number": 13733,
+      "state": "CLOSED",
+      "title": "superseded by safer source fix #13735"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "ariadne-z/open-door-business-status-final3-20260913",
+      "closed_at": "2026-09-13T10:14:01Z",
+      "head_sha": "54fc3a0b214191c91cf5a791e1768991566b0a52",
+      "merged_at": null,
+      "number": 13731,
+      "state": "CLOSED",
+      "title": "superseded by safer source fix #13735"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "znav-q4t8/commercial-reply-guard-20260913",
+      "closed_at": "2026-09-13T10:12:37Z",
+      "head_sha": "d87b57bfab20b93ece9f77e6cc6e6129e410a350",
+      "merged_at": "2026-09-13T10:12:37Z",
+      "number": 13734,
+      "state": "MERGED",
+      "title": "revenue: add commercial reply action guard"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "ariadne-z/open-door-business-status-final-20260913",
+      "closed_at": "2026-09-13T10:12:13Z",
+      "head_sha": "2df03b175264d3de8b430612c00926d68f7327ca",
+      "merged_at": null,
+      "number": 13727,
+      "state": "CLOSED",
+      "title": "superseded by safer source fix #13735"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -235,7 +310,7 @@
       "merged_at": null,
       "number": 13728,
       "state": "CLOSED",
-      "title": "open-door: positively bind revenue business-status denials"
+      "title": "superseded by safer source fix #13735"
     },
     {
       "author": "woahwhattheheck",
@@ -291,87 +366,10 @@
       "number": 13725,
       "state": "MERGED",
       "title": "fix: make NASPO acceptance package import-safe"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "astra/v5-c02-deferred-replacement-20260913",
-      "closed_at": "2026-09-13T10:06:48Z",
-      "head_sha": "8f93b293ad18a01eb1f42b43e17385bb2a2a2cc2",
-      "merged_at": "2026-09-13T10:06:48Z",
-      "number": 13722,
-      "state": "MERGED",
-      "title": "kaggriculture: admit WF1+C02 as held V5 local leader"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zpyr-c9m7/lawrence-youth-ai-training-core-20260913",
-      "closed_at": "2026-09-13T10:06:05Z",
-      "head_sha": "9d3a7bee87dbc7c796e0667d89bdc0f3a08520c6",
-      "merged_at": "2026-09-13T10:06:05Z",
-      "number": 13720,
-      "state": "MERGED",
-      "title": "Add Lawrence Youth AI technical training evidence core"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zkg-r9/revenue-opportunity-portfolio-20260913",
-      "closed_at": "2026-09-13T10:05:59Z",
-      "head_sha": "69194aa758cdc29063a67ef43ee0429a44af0448",
-      "merged_at": "2026-09-13T10:05:59Z",
-      "number": 13721,
-      "state": "MERGED",
-      "title": "revenue: add evidence-bound opportunity portfolio allocator"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zorb-h4/commercial-offer-contract-20260913",
-      "closed_at": "2026-09-13T10:05:19Z",
-      "head_sha": "bc7836e2ab47a633be26b7c8e3f2c2574077a1c3",
-      "merged_at": "2026-09-13T10:05:19Z",
-      "number": 13717,
-      "state": "MERGED",
-      "title": "revenue: add commercial offer contract rail"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "ariadne-z/business-pack-malformed-ledger-final-20260913",
-      "closed_at": "2026-09-13T10:04:13Z",
-      "head_sha": "d8885995091ab1dba67f8de7086d17b8b69879c0",
-      "merged_at": "2026-09-13T10:04:13Z",
-      "number": 13713,
-      "state": "MERGED",
-      "title": "fix(business-packs): rejoin exponent-safe ledger validation on live main"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "ariadne-z/rejoin-business-pack-malformed-ledger-20260913",
-      "closed_at": "2026-09-13T10:03:58Z",
-      "head_sha": "17d81cee5f7ec8c89a2ff23abe0d3a37a325bfd0",
-      "merged_at": null,
-      "number": 13705,
-      "state": "CLOSED",
-      "title": "superseded: fixed blobs already landed on main"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zpal-v2h8/naspo-sw1045-agent-workflow-acceptance-20260913",
-      "closed_at": "2026-09-13T10:03:29Z",
-      "head_sha": "787988e482485f35a171b177f11730ccc3c63d46",
-      "merged_at": "2026-09-13T10:03:29Z",
-      "number": 13710,
-      "state": "MERGED",
-      "title": "revenue: add NASPO SW1045 agent workflow acceptance core"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-13T10:12:08Z",
+  "unchanged_since": "2026-09-13T10:15:05Z",
   "undatable_pulls": []
 }
