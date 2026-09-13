@@ -102,7 +102,7 @@ def infer_recurrences(
             # streams separate by description so one employer can end without erasing the
             # other.
             if e.category == "salary":
-                groups[f"credit:salary:{e.description.lower().strip()}"] .append(e)
+                groups[f"credit:salary:{e.description.lower().strip()}"].append(e)
             continue
         # Stable commitments keep their description. High-frequency living expenses
         # deliberately pool merchant wording at the category level.
