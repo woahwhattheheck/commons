@@ -66,8 +66,6 @@ def _custody(hit, exact=False):
     if hit.get("custody") is not None:
         return bool(hit["custody"])
     text = str(hit.get("text") or "")
-    # Mixed TAKE+RELEASE prose is ambiguous; fail closed as custody rather than
-    # letting a stray release word erase a positive ownership marker.
     if CUSTODY_RE.search(text):
         return True
     if RELEASE_RE.search(text):
@@ -118,8 +116,6 @@ def decide(report):
         ):
             return ABSORBED
 
-    # Path or semantic overlap is not proof of same semantics; it is a hard
-    # composition-review stop, never SAFE.
     if hits:
         return MANUAL
 
@@ -412,20 +408,32 @@ def collect_github(github, owner_fork, target, candidate_paths):
                 )
         for item in relevant:
             path, status = item.get("path"), item.get("status")
+            previous_path = item.get("previous_path") if status == "renamed" else None
             owner_oid = owner_blobs.get(path)
+            previous_owner_oid = owner_blobs.get(previous_path) if previous_path else None
             donor_oid = None if status == "removed" else item.get("blob_oid")
-            match = (
-                owner_oid is None
-                if status == "removed"
-                else bool(donor_oid) and donor_oid == owner_oid
-            )
+            if status == "removed":
+                comparable = True
+                match = owner_oid is None
+            elif status == "renamed":
+                comparable = bool(donor_oid) and bool(previous_path)
+                match = (
+                    comparable
+                    and donor_oid == owner_oid
+                    and previous_owner_oid is None
+                )
+            else:
+                comparable = bool(donor_oid)
+                match = comparable and donor_oid == owner_oid
             comparisons.append(
                 {
                     "path": path,
+                    "previous_path": previous_path,
                     "upstream_status": status,
                     "upstream_blob_oid": donor_oid,
                     "owner_blob_oid": owner_oid,
-                    "comparable": status == "removed" or bool(donor_oid),
+                    "previous_owner_blob_oid": previous_owner_oid,
+                    "comparable": bool(comparable),
                     "match": bool(match),
                 }
             )

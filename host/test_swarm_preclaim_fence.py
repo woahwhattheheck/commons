@@ -303,6 +303,95 @@ class CollectorTests(unittest.TestCase):
         self.assertEqual(census["hits"][0]["strength"], "exact")
         self.assertIn("exact_target", census["hits"][0]["reasons"])
 
+    def test_rename_half_absorbed_is_not_already_absorbed(self):
+        class FakeGitHub:
+            def rest(self, path, params=None):
+                if path == "/repos/owner/repo":
+                    return {"default_branch": "main"}
+                if path == "/repos/owner/repo/branches/main":
+                    return {
+                        "commit": {
+                            "sha": "owner-head",
+                            "commit": {"tree": {"sha": "owner-tree"}},
+                        }
+                    }
+                if path == "/repos/owner/repo/git/trees/owner-tree":
+                    return {
+                        "truncated": False,
+                        "tree": [
+                            {"path": "old.py", "type": "blob", "sha": "old-blob"},
+                            {"path": "new.py", "type": "blob", "sha": "donor-blob"},
+                        ],
+                    }
+                if path == "/repos/up/repo/pulls/842":
+                    return {
+                        "state": "open", "title": "rename", "html_url": "u",
+                        "head": {"sha": "donor-head"}, "base": {"sha": "base"},
+                    }
+                if path == "/repos/up/repo/pulls/842/files":
+                    return [{
+                        "filename": "new.py", "previous_filename": "old.py",
+                        "status": "renamed", "sha": "donor-blob",
+                    }]
+                raise AssertionError((path, params))
+
+        _, _, comparisons = fence.collect_github(
+            FakeGitHub(),
+            "owner/repo",
+            {"repo": "up/repo", "number": 842, "kind": "pull"},
+            [],
+        )
+        self.assertEqual(comparisons[0]["previous_owner_blob_oid"], "old-blob")
+        self.assertFalse(comparisons[0]["match"])
+        self.assertEqual(
+            fence.finalize(report(comparisons=comparisons))["decision"],
+            fence.NEEDS_MANUAL_DIFF,
+        )
+
+    def test_rename_fully_absorbed_requires_old_path_absent(self):
+        class FakeGitHub:
+            def rest(self, path, params=None):
+                if path == "/repos/owner/repo":
+                    return {"default_branch": "main"}
+                if path == "/repos/owner/repo/branches/main":
+                    return {
+                        "commit": {
+                            "sha": "owner-head",
+                            "commit": {"tree": {"sha": "owner-tree"}},
+                        }
+                    }
+                if path == "/repos/owner/repo/git/trees/owner-tree":
+                    return {
+                        "truncated": False,
+                        "tree": [
+                            {"path": "new.py", "type": "blob", "sha": "donor-blob"},
+                        ],
+                    }
+                if path == "/repos/up/repo/pulls/842":
+                    return {
+                        "state": "open", "title": "rename", "html_url": "u",
+                        "head": {"sha": "donor-head"}, "base": {"sha": "base"},
+                    }
+                if path == "/repos/up/repo/pulls/842/files":
+                    return [{
+                        "filename": "new.py", "previous_filename": "old.py",
+                        "status": "renamed", "sha": "donor-blob",
+                    }]
+                raise AssertionError((path, params))
+
+        _, _, comparisons = fence.collect_github(
+            FakeGitHub(),
+            "owner/repo",
+            {"repo": "up/repo", "number": 842, "kind": "pull"},
+            [],
+        )
+        self.assertIsNone(comparisons[0]["previous_owner_blob_oid"])
+        self.assertTrue(comparisons[0]["match"])
+        self.assertEqual(
+            fence.finalize(report(comparisons=comparisons))["decision"],
+            fence.ALREADY_ABSORBED,
+        )
+
 
 if __name__ == "__main__":
     unittest.main()
