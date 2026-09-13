@@ -1,10 +1,10 @@
 {
-  "as_of": "2026-09-13T09:13:24Z",
+  "as_of": "2026-09-13T15:34:33Z",
   "blockers": [
     {
-      "condition": "A chargeable buyer path and processor receipt are independently evidenced.",
+      "condition": "A current Commons offer records its own chargeable buyer payment receipt.",
       "current": "NOT_LANDED",
-      "id": "LIVE_PAYMENT_EVIDENCE",
+      "id": "DIRECT_OFFER_PAYMENT_EVIDENCE",
       "owner": "FOUNDER_OR_CONNECTED_PROCESSOR_LANE",
       "rank": 1
     },
@@ -177,6 +177,7 @@
     "cash_claimed": false,
     "collected_cash_usd": 0,
     "next_stage": "PURCHASE_INTENT",
+    "offer_id": "gguf-diagnostic-10d-12k",
     "processor_payment": "NOT_LANDED",
     "receipt_id": "rr-intent-awaiting-buyer",
     "stage": "PURCHASE_INTENT",
@@ -187,7 +188,7 @@
     "NOW": "A buyer can start the qualification path immediately and Commons can deliver the bounded outcome in seven days or less.",
     "SOON": "One buyer conversation, private input, legal document, or customer-specific invoice is needed before delivery."
   },
-  "schema_version": "commons-right-now-control/v2",
+  "schema_version": "commons-right-now-control/v3",
   "settled_awards": {
     "as_of": "2026-09-13T09:13:24Z",
     "awards": [
@@ -225,10 +226,36 @@
     "usd_equivalent": null,
     "withdrawability_asserted": false
   },
+  "settled_cash": {
+    "as_of": "2026-09-13T15:34:33Z",
+    "bank_availability_asserted": false,
+    "receipts": [
+      {
+        "amount_usd": "1",
+        "bank_availability_state": "NOT_ASSERTED",
+        "bounty_number": 120,
+        "cash_id": "frantic-120-sourcey-pylon-1423",
+        "claimant": "woahwhattheheck",
+        "collection_action": "NONE_DO_NOT_RESEND",
+        "evidenced_at": "2026-09-13T15:34:33Z",
+        "payment_state": "PAID",
+        "program": "Frantic bounty #120 / Sourcey Pylon",
+        "provider": "Frantic",
+        "provider_receipt_id": "r/ef2f247c",
+        "provider_url": "https://gofrantic.com/",
+        "result_url": "https://github.com/sourcey/startup-credits/pull/1423",
+        "withdrawability_state": "NOT_ASSERTED"
+      }
+    ],
+    "schema_version": "commons-settled-cash-summary/v1",
+    "settled_receipts": 1,
+    "settled_usd": "1",
+    "withdrawability_asserted": false
+  },
   "source_receipts": [
     {
       "path": "revenue/right_now/catalog.json",
-      "sha256": "699f40fbf9d95720e6469c886e133dbf1b58a65bd01947511117a581d1c27b4d"
+      "sha256": "58aa2987feca960ecc683a12b7fae7f6c493c495a07a2ab024ed48aa8be157f5"
     },
     {
       "path": "revenue/right_now/diagnostic_offer.json",
@@ -241,6 +268,10 @@
     {
       "path": "revenue/right_now/settled_awards.json",
       "sha256": "7284b37369d4734cee9402cce494d17e7af99a3a5d576e6f8181a88a9848f6dd"
+    },
+    {
+      "path": "revenue/right_now/settled_cash.json",
+      "sha256": "fb1c890bc17b660e575acc95c5781c79406caa222846f3199a2052af7087c279"
     },
     {
       "path": "revenue/smart_outreach/candidates.json",
@@ -264,7 +295,9 @@
     "active_chargeable_checkout": true,
     "award_bank_availability_asserted": false,
     "award_withdrawability_asserted": false,
-    "collected_cash_usd": 0,
+    "cash_bank_availability_asserted": false,
+    "cash_withdrawability_asserted": false,
+    "collected_cash_usd": 1,
     "paid_awards": 1,
     "prospects_evaluated": 4,
     "ready_to_draft": 0,
@@ -274,6 +307,8 @@
         "currency": "RTC"
       }
     ],
+    "settled_cash_receipts": 1,
+    "settled_cash_usd": "1",
     "transport_actions": 0,
     "usd_conversion_asserted": false,
     "verified_positive_replies": 0
