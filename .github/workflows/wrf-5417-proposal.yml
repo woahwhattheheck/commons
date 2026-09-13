@@ -1,0 +1,37 @@
+name: wrf-5417-proposal
+
+on:
+  pull_request:
+    paths:
+      - 'revenue/wrf_5417_camera_ai/**'
+      - 'test_wrf_5417_proposal.py'
+      - '.github/workflows/wrf-5417-proposal.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'revenue/wrf_5417_camera_ai/**'
+      - 'test_wrf_5417_proposal.py'
+      - '.github/workflows/wrf-5417-proposal.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.9', '3.13']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Compile proposal validator and tests
+        run: python -m py_compile revenue/wrf_5417_camera_ai/validate.py test_wrf_5417_proposal.py
+      - name: Validate proposal gates and privacy boundary
+        run: python revenue/wrf_5417_camera_ai/validate.py
+      - name: Run proposal gate tests
+        run: python -m unittest -v test_wrf_5417_proposal.py
+      - name: Run optimized-mode tests
+        run: python -O -m unittest -v test_wrf_5417_proposal.py
