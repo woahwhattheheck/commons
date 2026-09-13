@@ -25,6 +25,15 @@ def tree(label: str) -> str:
     return hashlib.sha256(f"tree:{label}".encode()).hexdigest()
 
 
+def redigest(plan: dict) -> None:
+    body = {key: value for key, value in plan.items() if key != "receipt_sha256"}
+    plan["receipt_sha256"] = hashlib.sha256(
+        json.dumps(
+            body, sort_keys=True, separators=(",", ":"), ensure_ascii=True
+        ).encode()
+    ).hexdigest()
+
+
 def six_branch_fixture() -> dict:
     return {
         "schema_version": 1,
@@ -89,7 +98,6 @@ def six_branch_fixture() -> dict:
 class CarrierLandingAcceptanceTests(unittest.TestCase):
     def test_six_branch_fixture_lands_exactly_two_in_declared_order(self):
         plan = build_plan(six_branch_fixture())
-
         self.assertEqual(plan["landing_order"], ["valid-alpha", "valid-omega"])
         dispositions = {
             item["branch_id"]: (item["disposition"], item["reason_codes"])
@@ -100,8 +108,7 @@ class CarrierLandingAcceptanceTests(unittest.TestCase):
         self.assertEqual(dispositions["forbidden-path"], ("HOLD", ["FORBIDDEN_PATH"]))
         self.assertEqual(dispositions["stale-base"], ("HOLD", ["STALE_BASE"]))
         self.assertEqual(
-            dispositions["manifest-mismatch"],
-            ("HOLD", ["MANIFEST_MISMATCH"]),
+            dispositions["manifest-mismatch"], ("HOLD", ["MANIFEST_MISMATCH"])
         )
         self.assertEqual(dispositions["test-failure"], ("HOLD", ["TEST_FAILURE"]))
 
@@ -128,7 +135,6 @@ class CarrierLandingAcceptanceTests(unittest.TestCase):
     def test_apply_keeps_main_green_after_each_landing_and_replay_is_zero_merge(self):
         plan = build_plan(six_branch_fixture())
         first = apply_plan(plan, empty_state())
-
         self.assertEqual(first.new_merges, 2)
         self.assertEqual(
             [event["branch_id"] for event in first.merge_events],
@@ -159,27 +165,65 @@ class CarrierLandingAcceptanceTests(unittest.TestCase):
         plan = build_plan(six_branch_fixture())
         tampered = copy.deepcopy(plan)
         tampered["provider_intents"][0]["delete_branch"] = True
-        body = {key: value for key, value in tampered.items() if key != "receipt_sha256"}
-        tampered["receipt_sha256"] = hashlib.sha256(
-            json.dumps(body, sort_keys=True, separators=(",", ":"), ensure_ascii=True).encode()
-        ).hexdigest()
-        with self.assertRaisesRegex(LandingInputError, "non-destructive MERGE intent"):
+        redigest(tampered)
+        with self.assertRaisesRegex(LandingInputError, "canonical landing order"):
+            verify_plan(tampered)
+
+    def test_redigesting_a_held_branch_into_landing_order_still_fails_closed(self):
+        plan = build_plan(six_branch_fixture())
+        tampered = copy.deepcopy(plan)
+        forbidden = next(
+            row for row in tampered["branches"] if row["branch_id"] == "forbidden-path"
+        )
+        forbidden["disposition"] = "LAND"
+        forbidden["reason_codes"] = []
+        tampered["landing_order"].insert(1, "forbidden-path")
+        tampered["provider_intents"].insert(
+            1,
+            {
+                "operation": "MERGE",
+                "branch_id": "forbidden-path",
+                "force": False,
+                "delete_branch": False,
+            },
+        )
+        redigest(tampered)
+        with self.assertRaisesRegex(LandingInputError, "escapes the carrier prefix"):
+            verify_plan(tampered)
+
+    def test_redigesting_unknown_branch_into_provider_intent_fails_closed(self):
+        plan = build_plan(six_branch_fixture())
+        tampered = copy.deepcopy(plan)
+        tampered["landing_order"].append("forged-branch")
+        tampered["provider_intents"].append(
+            {
+                "operation": "MERGE",
+                "branch_id": "forged-branch",
+                "force": False,
+                "delete_branch": False,
+            }
+        )
+        redigest(tampered)
+        with self.assertRaisesRegex(LandingInputError, "does not match LAND dispositions"):
             verify_plan(tampered)
 
     def test_overlapping_valid_carrier_is_held(self):
         payload = six_branch_fixture()
-        overlap = make_branch(
-            branch_id="valid-but-colliding",
-            order=15,
-            base_sha=BASE,
-            paths=["carrier/alpha/adapter.py"],
-            purpose="collision",
-            candidate_tree_sha=tree("collision"),
+        payload["branches"].append(
+            make_branch(
+                branch_id="valid-but-colliding",
+                order=15,
+                base_sha=BASE,
+                paths=["carrier/alpha/adapter.py"],
+                purpose="collision",
+                candidate_tree_sha=tree("collision"),
+            )
         )
-        payload["branches"].append(overlap)
         plan = build_plan(payload)
         item = next(
-            branch for branch in plan["branches"] if branch["branch_id"] == "valid-but-colliding"
+            branch
+            for branch in plan["branches"]
+            if branch["branch_id"] == "valid-but-colliding"
         )
         self.assertEqual(item["disposition"], "HOLD")
         self.assertEqual(item["reason_codes"], ["OWNERSHIP_COLLISION"])
@@ -190,10 +234,22 @@ class CarrierLandingAcceptanceTests(unittest.TestCase):
         with self.assertRaisesRegex(LandingInputError, "unknown fields"):
             build_plan(payload)
 
+    def test_missing_fields_fail_closed(self):
+        payload = six_branch_fixture()
+        del payload["branches"][0]["candidate_tree_sha"]
+        with self.assertRaisesRegex(LandingInputError, "missing fields"):
+            build_plan(payload)
+
     def test_unsafe_paths_fail_closed_before_planning(self):
         payload = six_branch_fixture()
         payload["branches"][0]["manifest"]["paths"][0] = "carrier/alpha/../payments.py"
         with self.assertRaisesRegex(LandingInputError, "unsafe path segment"):
+            build_plan(payload)
+
+    def test_uppercase_digest_is_rejected_instead_of_silently_normalized(self):
+        payload = six_branch_fixture()
+        payload["base_sha"] = BASE.upper()
+        with self.assertRaisesRegex(LandingInputError, "lowercase SHA-256"):
             build_plan(payload)
 
     def test_non_boolean_main_state_cannot_pass_truthiness(self):
@@ -208,6 +264,13 @@ class CarrierLandingAcceptanceTests(unittest.TestCase):
         state = empty_state()
         state["landed_branches"] = ["valid-alpha"]
         with self.assertRaisesRegex(LandingInputError, "already landed outside this receipt"):
+            apply_plan(plan, state)
+
+    def test_duplicate_state_entries_fail_closed(self):
+        plan = build_plan(six_branch_fixture())
+        state = empty_state()
+        state["landed_branches"] = ["old", "old"]
+        with self.assertRaisesRegex(LandingInputError, "must not contain duplicates"):
             apply_plan(plan, state)
 
     def test_plan_contains_no_clock_or_provider_generated_state(self):
