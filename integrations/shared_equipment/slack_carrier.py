@@ -64,9 +64,16 @@ def terminal_delivery_rejection(delivery: dict) -> bool:
 
 
 def _catalog_json(value) -> str:
-    """Lossless JSON for a code-rendered schema, including embedded fences/tags."""
-    return (json.dumps(value, ensure_ascii=False)
-            .replace("`", "\\u0060").replace("<", "\\u003c"))
+    """Lossless JSON that legacy per-part ``strip()`` consumers cannot corrupt.
+
+    Catalog replies are split into bounded Slack messages. Older consumers strip
+    each part before joining it, so a literal whitespace character on a chunk
+    boundary would be deleted. Compact JSON plus ASCII escaping leaves no
+    literal whitespace in the transport while ``json.loads`` restores the exact
+    schema text, including spaces, Unicode, embedded fences, and tags.
+    """
+    return (json.dumps(value, ensure_ascii=True, separators=(",", ":"))
+            .replace(" ", "\\u0020").replace("`", "\\u0060").replace("<", "\\u003c"))
 
 
 class SlackEquipmentCarrier:
