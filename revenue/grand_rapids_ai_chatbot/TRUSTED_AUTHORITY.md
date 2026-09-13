@@ -1,7 +1,7 @@
 # Trusted preflight authority — 920-45-269
 
-Issue: `#13884`  
-Operation: `GRANDRAPIDS-PREFLIGHT-INDEPENDENT-AUTHORITY-ZLFW3H7-20260913`
+Issue: `#13884` / `#13918`  
+Operation: `GRANDRAPIDS-RELEASE-SUBJECT-BIND-ZPAF3N8-20260913`
 
 ## Why this exists
 
@@ -48,7 +48,9 @@ The host digest covers exactly:
 
 Every object has an exact key set. Generation uses a strict built-in integer (booleans are rejected). Digests are lowercase 64-hex. Addenda are strictly sorted with unique canonical IDs. Evidence IDs are unique and bounded. Each gate has one fixed evidence kind. Every evidence row must bind the same exact packet/addenda source-generation digest; changing packet or addenda invalidates stale evidence mechanically.
 
-The `controlling_packet_acquired` evidence digest must equal the exact `packet_sha256`. `owner_release_to_submit` accepts only an evidence row whose gate is exactly `owner_release_to_submit` and whose kind is exactly `OWNER_RELEASE`, bound to the current source generation.
+The `controlling_packet_acquired` evidence digest must equal the exact `packet_sha256`. The `packet_sha256_verified` / `PACKET_SHA256_VERIFICATION` evidence digest must also equal that exact current `packet_sha256`; an unrelated 64-hex digest is rejected.
+
+`owner_release_to_submit` accepts only an evidence row whose gate is exactly `owner_release_to_submit` and whose kind is exactly `OWNER_RELEASE`. That row's digest must equal the **release-subject digest**: SHA-256 of the exact solicitation id, the current packet/addenda source-generation digest, the canonical required-gate universe, and the complete non-release evidence projection (id/gate/kind/sha256/source_generation, sorted by id). Changing any non-release evidence id, digest, type, or gate, adding or removing a non-release row, or changing packet/addenda invalidates a carried-forward OWNER_RELEASE.
 
 ## Rotation / anti-rollback procedure
 
@@ -57,12 +59,13 @@ When the controlling packet, any addendum, or any trusted evidence changes:
 1. Build a **new** authority material generation from retained bytes/evidence.
 2. Increment `generation`.
 3. Recompute the packet/addenda source-generation digest and bind every carried-forward evidence row to it only after re-verification.
-4. Compute the canonical authority SHA-256 with `trusted_authority.authority_sha256(...)`.
-5. Persist the exact authority document.
-6. Atomically advance the validation host's pinned `GENERATION` + `AUTHORITY_SHA256` root.
-7. Update proposal state to reference that exact generation+authority digest.
+4. Recompute the release-subject digest and bind `OWNER_RELEASE` to that exact digest.
+5. Compute the canonical authority SHA-256 with `trusted_authority.authority_sha256(...)`.
+6. Persist the exact authority document.
+7. Atomically advance the validation host's pinned `GENERATION` + `AUTHORITY_SHA256` root.
+8. Update proposal state to reference that exact generation+authority digest.
 
-An old previously approved document will fail because its generation does not match the host root. A fork at the current generation will fail because its authority digest does not match the host root.
+An old previously approved document will fail because its generation does not match the host root. A fork at the current generation will fail because its authority digest does not match the host root. A carried-forward OWNER_RELEASE after non-release evidence change will fail because it does not match the current release-subject digest.
 
 ## State semantics
 

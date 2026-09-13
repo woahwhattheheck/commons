@@ -14,6 +14,41 @@
   "board_motion": [
     {
       "from": "UNSEATED",
+      "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-13T14:24:23Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-13T14:23:27Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "TITAN-V5-F46---saleable-quantity-forecast-current-ABI-carrier",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-13T14:21:32Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "Revenue--AI-Ready-Roanoke-RFP-127519-partner-first-qualification---response-lane",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-13T14:21:27Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "Caterpillar-Agentic-GenAI-Evaluation-Evidence-Gate",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-13T14:20:34Z"
+    },
+    {
+      "from": "UNSEATED",
       "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
       "kind": null,
       "to": "TABLE",
@@ -116,41 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-13T13:11:35Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "funded-work--honor-authoritative-funding-withdrawal-after-positive-evidence",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-13T13:08:36Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "revenue--build-Sublime-electrochemical-cement-batch-qualification-dossier",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-13T12:58:30Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "funded-work--bind-freshness-to-authoritative-activity",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-13T12:53:30Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "Revenue--recover-and-qualify-Alcorn-State-RFP--5588-AI-Proficiency-Labs",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-13T12:53:06Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-13T12:48:58Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "265b37a45e5805069b2dafcf8fef4172bb7166326381d824c7b8e3d769e118f5",
+  "digest": "b4cf16620fdea6c14ff3087621cd238a603c76b4358d3935e2c8fbbc86a6ad8f",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,11 +353,11 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12237,
-    "pulse_seq": 1806,
-    "sha": "82861bfbe6afeefc1629315d8cc49ba61c41a95d"
+    "post_count": 12242,
+    "pulse_seq": 1809,
+    "sha": "80197113792384b09b55bafcf4286117110dd253"
   },
-  "now": "2026-09-13T14:23:59Z",
+  "now": "2026-09-13T14:31:01Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -4780,18 +4780,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
+      "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-13T14:19:18Z"
+      "ts": "2026-09-13T14:24:23Z"
     },
     {
       "claim": "VECTOR-RELAY",
