@@ -145,6 +145,23 @@ class ProbeTests(unittest.TestCase):
                 self.assertEqual(report['coverage_certified'], 1)
                 self.assertEqual(report['counterfactual_plan'], 0)
 
+    def test_malformed_future_wheat_reservation_fails_closed(self):
+        for qty in (True, 1.0, -1, '1'):
+            with self.subTest(qty=qty):
+                ns, policy = loaded_module()
+                tiles = [[None for _ in range(5)] for _ in range(5)]
+                tiles[1][1] = {'animal': 'SHEEP', 'fed_today': False, 'consecutive_unfed': 1}
+                tiles[3][3] = {'animal': 'COW', 'fed_today': False, 'consecutive_unfed': 1}
+                tape = tape_with_future_feed()
+                tape[41]['hands'] = [['PICKUP', 'WHEAT', qty]]
+                policy.tapes = [tape]
+                view = View([[2, 2], [3, 3]], tiles)
+                action = {'farmer': ['PASS'], 'hands': [['PASS']], 'market': []}
+                self.assertIsNone(ns['_v217_plan'](view, {'plan': 0}, 40, action, []))
+                report = ns['_V217_PROBE_REPORT']
+                self.assertEqual(report['coverage_certified'], 1)
+                self.assertEqual(report['counterfactual_plan'], 0)
+
     def test_pickup_with_same_turn_wheat_market_fails_closed(self):
         ns, policy = loaded_module()
         tiles = [[None for _ in range(5)] for _ in range(5)]
