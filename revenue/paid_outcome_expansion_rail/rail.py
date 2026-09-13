@@ -227,6 +227,7 @@ def evaluate(record: Any) -> dict[str, Any]:
 
         settlement = _mapping(top.get("settlement"), "settlement")
         settlement_id = _string(settlement.get("evidence_id"), "settlement.evidence_id", max_len=160)
+        settlement_account_id = _string(settlement.get("account_id"), "settlement.account_id", max_len=120)
         settlement_offer_id = _string(settlement.get("offer_id"), "settlement.offer_id", max_len=120)
         settlement_version = _string(settlement.get("offer_version"), "settlement.offer_version", max_len=64)
         settlement_currency = _string(settlement.get("currency"), "settlement.currency", max_len=12).upper()
@@ -236,6 +237,8 @@ def evaluate(record: Any) -> dict[str, Any]:
         settlement_status = _string(settlement.get("status"), "settlement.status", max_len=32).upper()
         settled_at = _timestamp(settlement.get("settled_at"), "settlement.settled_at")
         captured_at = _timestamp(settlement.get("captured_at"), "settlement.captured_at")
+        if settlement_account_id != account_id:
+            holds.add("SETTLEMENT_ACCOUNT_MISMATCH")
         if settlement_offer_id != offer_id or settlement_version != offer_version:
             holds.add("SETTLEMENT_OFFER_MISMATCH")
         if settlement_currency != offer_currency:
@@ -257,12 +260,15 @@ def evaluate(record: Any) -> dict[str, Any]:
 
         acceptance = _mapping(top.get("delivery_acceptance"), "delivery_acceptance")
         acceptance_id = _string(acceptance.get("evidence_id"), "delivery_acceptance.evidence_id", max_len=160)
+        acceptance_account_id = _string(acceptance.get("account_id"), "delivery_acceptance.account_id", max_len=120)
         acceptance_offer_id = _string(acceptance.get("offer_id"), "delivery_acceptance.offer_id", max_len=120)
         acceptance_version = _string(acceptance.get("offer_version"), "delivery_acceptance.offer_version", max_len=64)
         acceptance_scope = _hex64(acceptance.get("scope_digest"), "delivery_acceptance.scope_digest")
         acceptance_status = _string(acceptance.get("status"), "delivery_acceptance.status", max_len=32).upper()
         acceptance_class = _string(acceptance.get("accepted_by_class"), "delivery_acceptance.accepted_by_class", max_len=48).upper()
         accepted_at = _timestamp(acceptance.get("accepted_at"), "delivery_acceptance.accepted_at")
+        if acceptance_account_id != account_id:
+            holds.add("ACCEPTANCE_ACCOUNT_MISMATCH")
         if acceptance_offer_id != offer_id or acceptance_version != offer_version:
             holds.add("ACCEPTANCE_OFFER_MISMATCH")
         if acceptance_scope != scope_digest:
@@ -278,6 +284,7 @@ def evaluate(record: Any) -> dict[str, Any]:
 
         signal = _mapping(top.get("buyer_signal"), "buyer_signal")
         signal_id = _string(signal.get("evidence_id"), "buyer_signal.evidence_id", max_len=160)
+        signal_account_id = _string(signal.get("account_id"), "buyer_signal.account_id", max_len=120)
         signal_kind = _string(signal.get("kind"), "buyer_signal.kind", max_len=32).upper()
         signal_source = _string(signal.get("source_class"), "buyer_signal.source_class", max_len=48).upper()
         signal_offer_id = _string(signal.get("offer_id"), "buyer_signal.offer_id", max_len=120)
@@ -288,6 +295,8 @@ def evaluate(record: Any) -> dict[str, Any]:
         ]
         if len(set(requested_catalog_ids)) != len(requested_catalog_ids) or not requested_catalog_ids:
             holds.add("BUYER_SIGNAL_CATALOG_INVALID")
+        if signal_account_id != account_id:
+            holds.add("BUYER_SIGNAL_ACCOUNT_MISMATCH")
         if signal_kind not in ALLOWED_SIGNAL_KINDS:
             holds.add("BUYER_SIGNAL_KIND_INVALID")
         if signal_source != "BUYER_AUTHORED":
@@ -303,6 +312,7 @@ def evaluate(record: Any) -> dict[str, Any]:
 
         approval = _mapping(top.get("owner_approval"), "owner_approval")
         approval_id = _string(approval.get("evidence_id"), "owner_approval.evidence_id", max_len=160)
+        approval_account_id = _string(approval.get("account_id"), "owner_approval.account_id", max_len=120)
         approval_class = _string(approval.get("approver_class"), "owner_approval.approver_class", max_len=48).upper()
         approval_at = _timestamp(approval.get("approved_at"), "owner_approval.approved_at")
         approved_catalog_bindings: dict[str, tuple[str, str]] = {}
@@ -321,6 +331,8 @@ def evaluate(record: Any) -> dict[str, Any]:
                 holds.add("OWNER_APPROVAL_ENTRY_DUPLICATE")
             else:
                 holds.add("OWNER_APPROVAL_ENTRY_CONFLICT")
+        if approval_account_id != account_id:
+            holds.add("OWNER_APPROVAL_ACCOUNT_MISMATCH")
         if approval_class != "OWNER_HUMAN":
             holds.add("OWNER_APPROVAL_NOT_HUMAN")
         if approval_at > as_of + timedelta(minutes=5):
