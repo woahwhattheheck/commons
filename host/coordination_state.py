@@ -87,6 +87,7 @@ import time
 import urllib.error
 import urllib.parse
 import urllib.request
+from collections import Counter
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -899,6 +900,8 @@ def _publishable(payload):
             "hosted": _slim_hosted(row.get("hosted") or {}),
             "verdicts": _slim_verdicts(row.get("verdicts") or {}),
         }
+        if row.get("swarm"):
+            slim["swarm"] = row["swarm"]
         if row.get("links"):
             slim["links"] = row["links"][:6]
         if row.get("markers"):
@@ -953,7 +956,7 @@ def _dump_rows(value, row_keys=("prs", "lanes", "recent_closed")):
 
 
 def build(git, github, now=None, closed_hours=36, closed_limit=400, open_limit=1000,
-          producer="", composed=False):
+          producer="", composed=False, review_capacity=None):
     now = now or _now()
     degraded, notes = [], []
     try:
@@ -1011,7 +1014,13 @@ def build(git, github, now=None, closed_hours=36, closed_limit=400, open_limit=1
         hosted = hosted_state(pull)
         hosted_counts[hosted["rollup"]] = hosted_counts.get(hosted["rollup"], 0) + 1
         verdicts = pull_verdicts(pull, head)
-        rows.append(_pull_row(pull, "OPEN", drift, hosted, verdicts))
+        row = _pull_row(pull, "OPEN", drift, hosted, verdicts)
+        try:
+            from host.swarm_review import annotate
+        except ImportError:
+            from swarm_review import annotate
+        row["swarm"] = annotate(git, tip, pull)
+        rows.append(row)
     closed_rows = []
     for pull in closed:
         head = pull.get("headRefOid") or UNKNOWN
@@ -1057,6 +1066,22 @@ def build(git, github, now=None, closed_hours=36, closed_limit=400, open_limit=1
         "degraded": sorted(set(degraded)),
         "notes": notes,
     }
+    try:
+        from host.swarm_review import batches, RELIABILITY
+    except ImportError:
+        from swarm_review import batches, RELIABILITY
+    try:
+        outcomes = json.loads(git.out("show", main_sha + ":" + RELIABILITY)).get("outcomes", [])
+    except (GitError, ValueError):
+        outcomes = []
+    review_rows = [dict(r["swarm"], number=r["number"], created_at=r["created_at"],
+                        paths=r["drift"].get("paths", [])) for r in rows]
+    payload["swarm"] = {
+        "schema": "commons-swarm-queue/v1", "policy": "ground/SWARM_ORDER.md",
+        "capacity": review_capacity, "capacity_note": "available review batches at observation time; unknown is not unlimited",
+        "counts": dict(Counter(r["review"]["state"] for r in review_rows)),
+        "batches": batches(review_rows, outcomes, capacity=review_capacity),
+    }
     return payload
 
 
@@ -1073,6 +1098,9 @@ def head_tier(payload):
         "files": {"full": STATE_FILE, "branch": STATE_BRANCH},
         "degraded": payload.get("degraded", []),
     }
+    if payload.get("swarm"):
+        head["swarm"] = {"counts": payload["swarm"]["counts"],
+                         "batches": len(payload["swarm"]["batches"]), "capacity": payload["swarm"].get("capacity")}
     while len(_compact(head).encode("utf-8")) > HEAD_LIMIT and head["several_open"]:
         head["several_open"].pop()
     return head
@@ -1245,8 +1273,10 @@ def _holding_live(record, now):
         return False
     beat = _parse_ts(record.get("heartbeat_at") or record.get("taken_at"))
     ttl = record.get("ttl_s")
-    if beat is None or not isinstance(ttl, int):
+    if beat is None or type(ttl) is not int or not 1 <= ttl <= 7200:
         return False
+    # Clock skew is not expiry evidence. A syntactically valid future beat is
+    # fail-closed as live until this observer advances beyond beat + TTL.
     return (now - beat).total_seconds() <= ttl
 
 
@@ -1276,15 +1306,16 @@ def _holdings_commit(git, parent, holdings, message, when):
 def holding_write(git, key, holder, action, ttl_s=1800, note="", now=None,
                   remote="origin", branch=HOLDINGS_BRANCH, push=True, attempts=3):
     """take / renew / release one change key. Returns what the branch now says."""
-    now = now or _now()
+    fixed_now = now
     for _ in range(attempts):
         tip = _remote_tip(git, branch, remote)
         if tip:
             git.fetch([tip], remote)
         holdings = _read_holdings(git, tip)
+        observed_now = fixed_now if fixed_now is not None else _now()
         path = _holding_path(key)
         current = holdings.get(path)
-        live = _holding_live(current, now)
+        live = _holding_live(current, observed_now)
         if action == "take" and live and current.get("holder") != holder:
             return {"ok": False, "key": key, "held_by": current.get("holder"),
                     "heartbeat_at": current.get("heartbeat_at"), "ttl_s": current.get("ttl_s"),
@@ -1292,7 +1323,13 @@ def holding_write(git, key, holder, action, ttl_s=1800, note="", now=None,
         if action in ("renew", "release") and (not current or current.get("holder") != holder):
             return {"ok": False, "key": key, "held_by": (current or {}).get("holder"),
                     "reason": "not the current holder", "tip": tip}
-        stamp = _iso(now)
+        stamp_moment = observed_now
+        if (current or {}).get("holder") == holder:
+            for prior_text in ((current or {}).get("heartbeat_at"), (current or {}).get("taken_at")):
+                prior = _parse_ts(prior_text)
+                if prior is not None and prior > stamp_moment:
+                    stamp_moment = prior
+        stamp = _iso(stamp_moment)
         record = dict(current or {})
         record.update({"schema": HOLDING_SCHEMA, "key": key, "holder": holder,
                        "heartbeat_at": stamp, "ttl_s": int(ttl_s)})
@@ -1305,7 +1342,7 @@ def holding_write(git, key, holder, action, ttl_s=1800, note="", now=None,
             record["note"] = note[:300]
         holdings[path] = record
         message = "%s %s by %s" % (action, key, holder)
-        commit = _holdings_commit(git, tip, holdings, message, now)
+        commit = _holdings_commit(git, tip, holdings, message, stamp_moment)
         if not push:
             return {"ok": True, "key": key, "commit": commit, "pushed": False,
                     "push_line": "git -C %s push %s %s:refs/heads/%s" % (git.root, remote, commit, branch)}
@@ -1314,7 +1351,7 @@ def holding_write(git, key, holder, action, ttl_s=1800, note="", now=None,
             return {"ok": True, "key": key, "commit": commit, "pushed": True, "record": record}
         if "non-fast-forward" not in done.stderr and "fetch first" not in done.stderr:
             return {"ok": False, "key": key, "reason": done.stderr.strip()[-300:]}
-        # Someone else wrote first; re-read and decide again.
+        # Someone else wrote first; re-read and decide again with a fresh runtime clock.
     return {"ok": False, "key": key, "reason": "branch kept moving; retry"}
 
 
@@ -1350,11 +1387,13 @@ def main(argv=None):
     b = sub.add_parser("build", help="compute state and write the two files")
     b.add_argument("--out", default=os.path.join(tempfile.gettempdir(), "coordination-state"))
     b.add_argument("--closed-hours", type=int, default=36)
+    b.add_argument("--review-capacity", type=int, default=None, help="observed available GPT review batches; 0 means exhausted")
     b.add_argument("--composed-trees", action="store_true",
                    help="also write the composed tree for every disjoint pull request")
     p = sub.add_parser("publish", help="build and commit to the state/coordination branch")
     p.add_argument("--out", default=os.path.join(tempfile.gettempdir(), "coordination-state"))
     p.add_argument("--closed-hours", type=int, default=36)
+    p.add_argument("--review-capacity", type=int, default=None)
     p.add_argument("--composed-trees", action="store_true")
     p.add_argument("--no-push", action="store_true", help="commit locally and print the push line")
     p.add_argument("--from", dest="from_dir", default="",
@@ -1418,7 +1457,8 @@ def main(argv=None):
         cert["base_ref"] = base_ref
         print(json.dumps(cert, indent=1))
         return 0
-    payload = build(git, github, closed_hours=args.closed_hours, composed=args.composed_trees)
+    payload = build(git, github, closed_hours=args.closed_hours, composed=args.composed_trees,
+                    review_capacity=args.review_capacity)
     head = write_outputs(payload, args.out)
     if args.cmd == "build":
         print(json.dumps(head, indent=1))

@@ -2,6 +2,7 @@ import json
 import tempfile
 import unittest
 from pathlib import Path
+from unittest import mock
 
 import host.experience_compiler as compiler
 
@@ -9,8 +10,11 @@ import host.experience_compiler as compiler
 class ExperienceCompilerTests(unittest.TestCase):
     def test_seed_record_is_valid_and_evidence_backed(self):
         records = compiler.load_records()
-        self.assertEqual(["ai-village-discovery-4945"], [r["id"] for r in records])
-        commit = next(item for item in records[0]["evidence"] if item["kind"] == "commit")
+        by_id = {r["id"]: r for r in records}
+        self.assertEqual(len(records), len(by_id))
+        self.assertIn("ai-village-discovery-4945", by_id)
+        commit = next(item for item in by_id["ai-village-discovery-4945"]["evidence"]
+                      if item["kind"] == "commit")
         self.assertRegex(commit["value"], r"^[0-9a-f]{40}$")
 
     def test_compilation_is_deterministic(self):
@@ -28,7 +32,7 @@ class ExperienceCompilerTests(unittest.TestCase):
         outputs = compiler.compile_outputs(compiler.load_records())
         page = outputs[compiler.PATTERN_DIR / "publish-discovery-before-interaction.md"]
         self.assertIn("experience/raw/ai-village-discovery-4945.json", page)
-        self.assertIn("Success observations: 1", page)
+        self.assertRegex(page, r"Success observations: [1-9][0-9]*")
 
     def test_invalid_commit_evidence_is_rejected(self):
         record = json.loads(
@@ -65,6 +69,24 @@ class ExperienceCompilerTests(unittest.TestCase):
         pattern_path = compiler.PATTERN_DIR / "publish-discovery-before-interaction.md"
         self.assertEqual(index_path.read_text(encoding="utf-8"), outputs[index_path])
         self.assertEqual(pattern_path.read_text(encoding="utf-8"), outputs[pattern_path])
+
+    def test_compile_removes_only_stale_generated_pattern_pages(self):
+        with tempfile.TemporaryDirectory() as directory:
+            pattern_dir = Path(directory) / "patterns"
+            pattern_dir.mkdir()
+            stale = pattern_dir / "stale.md"
+            keep = pattern_dir / "keep.md"
+            unrelated = pattern_dir / "notes.txt"
+            stale.write_text("obsolete\n", encoding="utf-8")
+            unrelated.write_text("manual\n", encoding="utf-8")
+            outputs = {keep: "fresh\n"}
+
+            with mock.patch.object(compiler, "PATTERN_DIR", pattern_dir):
+                compiler.compile_to_disk(outputs)
+
+            self.assertEqual("fresh\n", keep.read_text(encoding="utf-8"))
+            self.assertFalse(stale.exists())
+            self.assertEqual("manual\n", unrelated.read_text(encoding="utf-8"))
 
 
 if __name__ == "__main__":

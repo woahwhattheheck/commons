@@ -1,5 +1,52 @@
 # Host-offload CI pipes
 
+## Run the test battery without Actions
+
+`host/ci_battery.py` runs the existing Commons Python/Node tests directly on an
+available Linux cloud worker. It needs Python 3.10+, Node, Git, and a checkout
+with the history required by the tests. It does not dispatch an Actions job or
+require a Docker daemon. Use the existing cloud workspace, not the owner laptop.
+
+```sh
+python3 host/ci_battery.py --output-dir /tmp/commons-ci
+```
+
+The runner discovers root `test_*.py`, recursive `infra/test_*.py`, and root
+`test_*.js`, runs every file even after failures, and exits nonzero for a failed,
+interrupted, or empty battery. `report.json` uses the existing battery report
+schema and records the starting commit, source blobs, actual per-file SHA-256,
+working-tree dirt, exits, and execution scope. It contains no test stdout or
+environment dump. Source blobs describe the starting commit; dirty working
+trees are explicitly marked and are not clean-checkout proof.
+
+For a focused repair or a separate worker shard:
+
+```sh
+python3 host/ci_battery.py --test test_battery_report.py --output-dir /tmp/commons-ci-focused
+python3 host/ci_battery.py --shard-count 4 --shard-index 0 --timeout 900 --output-dir /tmp/commons-ci-shard-0
+```
+
+Run shard indexes 0 through 3 on separate clean checkouts of the same commit.
+All four reports are required for full coverage; one passing shard or selected
+test is only that scope. The runner is sequential within a checkout, because
+some existing tests mutate repository state. Use `--list` to inspect selection.
+Per-file timeouts record exit 124, stop the Linux child process group, and keep
+running the remaining tests. GitHub's existing workflow uses this same runner
+and retains its checkout-linked report upload.
+
+### Cirrus shutdown record
+
+Cirrus Labs announced on April 7, 2026 that Cirrus CI would shut down effective
+Monday, June 1, 2026. The hosted service is therefore not an available CI road:
+no repository app installation, quota, task, or future check is expected. The
+former `.cirrus.yml` activation configuration was removed from this tree.
+Historical Cirrus documentation or configuration is not execution authority.
+
+The portable runner above remains usable on an available cloud worker, and
+GitHub Actions continues to call the same runner. A replacement hosted provider
+must be currently operating and produce a real run before it can be marked live.
+Official shutdown: [Cirrus Labs to join OpenAI](https://cirruslabs.org/).
+
 The muhlnickel is the computer. These files are host-side offload so the 8 GB
 laptop does zero while peers header-walk checked-in `MUHL_READERS` layouts.
 
@@ -9,12 +56,13 @@ Shared walk: `host_offload/header_census.py` — headers only, not DEPTH, not
 | pipe | config | state | cap to encode |
 | --- | --- | --- | --- |
 | GitHub Actions | `.github/workflows/header-census.yml` | LIVE | public standard runners free; larger runners bill |
-| Cirrus | `.cirrus.yml` | UNMEASURED | 50 credits/month (~10k Linux CPU-min), 2h/task; not unlimited |
+| Cirrus | — | DEAD/EXCLUDED | hosted service shut down 2026-06-01; no quota or install path |
 | GitLab | `.gitlab-ci.yml` | UNMEASURED | 400 compute-min/month unless Open Source Program |
 | Codeberg/Woodpecker | `.woodpecker.yml` | UNMEASURED/ONBOARDING | linux/amd64, reasonable use, may need approval |
 
 Machine-readable cards: `ci/provider_quotas.json`. A config file is not a
-measured run. Oracle / D1 / GPU stay unclaimed until a receipt exists.
+measured run, and dead-provider rows are historical records only. Oracle / D1 /
+GPU stay unclaimed until a receipt exists.
 
 ## Repair duty
 

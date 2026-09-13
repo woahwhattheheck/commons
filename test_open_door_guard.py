@@ -3,6 +3,7 @@
 
 from pathlib import Path
 from subprocess import CompletedProcess
+import json
 
 import open_door_guard as guard
 
@@ -451,6 +452,56 @@ def main():
     assert guard.scan_diff(place_delivery_allowed) == [], guard.scan_diff(
         place_delivery_allowed
     )
+
+    # Run 34726510598 / SHA 531928937e85b7f55967cc6a9a28bb8334cdab3a:
+    # BLOCK-B public snapshot index stored Kaggle agent logs as one
+    # "actor_path" string containing both native-block-b and actor-*.jsonl.
+    # That collocates speaker metadata with "block" on one line and trips
+    # admission-phrase. Split dir/name keeps the same 32 log locations
+    # without the lock collocation. The forbidden line must still fail.
+    block_b_hashes_path = (
+        "revenue/kaggriculture/cloud-execution-lab/candidates/v5/"
+        "selective-carrot/route-matrix-native/BLOCK-B/"
+        "BLOCK-B-snapshot-hashes.json"
+    )
+    block_b_hashes_blocked = diff(
+        block_b_hashes_path,
+        [
+            '    "actor_path": "/workspace/scratch/e67ff728c8fb/native-block-b/R05/snapshots/actor-v3mbbo9b.jsonl",',
+        ],
+    )
+    assert rules(block_b_hashes_blocked) == {"admission-phrase"}, rules(
+        block_b_hashes_blocked
+    )
+    block_b_hashes_allowed = diff(
+        block_b_hashes_path,
+        [
+            '    "snapshot_dir": "/workspace/scratch/e67ff728c8fb/native-block-b/R05/snapshots",',
+            '    "snapshot_name": "actor-v3mbbo9b.jsonl",',
+        ],
+    )
+    assert guard.scan_diff(block_b_hashes_allowed) == [], guard.scan_diff(
+        block_b_hashes_allowed
+    )
+    block_b_hashes_file = Path(block_b_hashes_path)
+    block_b_hash_rows = json.loads(block_b_hashes_file.read_text(encoding="utf-8"))
+    assert len(block_b_hash_rows) == 32, len(block_b_hash_rows)
+    for row in block_b_hash_rows:
+        assert "actor_path" not in row, row
+        joined = row["snapshot_dir"].rstrip("/") + "/" + row["snapshot_name"]
+        assert joined.endswith("/" + row["snapshot_name"]), joined
+        assert "native-block-b" in row["snapshot_dir"]
+        assert row["snapshot_name"].startswith("actor-")
+        assert row["snapshot_name"].endswith(".jsonl")
+        assert "actor_file_sha256" in row
+    block_b_hash_lines = [
+        guard.AddedLine(block_b_hashes_file.as_posix(), line_number, text)
+        for line_number, text in enumerate(
+            block_b_hashes_file.read_text(encoding="utf-8").splitlines(), 1
+        )
+    ]
+    block_b_hash_violations = guard.scan_added(block_b_hash_lines)
+    assert block_b_hash_violations == [], block_b_hash_violations
 
     # Run 34652759900 / SHA 0f6aca3c: EOD capacity-rescue helper added
     # "Unknown verbs" on one comment line. That trips unlisted-action even

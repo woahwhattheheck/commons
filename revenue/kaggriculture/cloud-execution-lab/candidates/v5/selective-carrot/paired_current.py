@@ -19,7 +19,7 @@ import types
 
 
 ARMS = ("control", "cap4", "cap12")
-EXPECTED_SHARED_HELPER_GIT_BLOB = "fbc5e320b8a2ee63af11dc9856c956a679823409"
+EXPECTED_SHARED_HELPER_GIT_BLOB = "719e3514d72bc7ea4c3e505836d16fcddae11019"
 
 
 def sha256_bytes(data: bytes) -> str:

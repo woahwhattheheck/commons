@@ -1,21 +1,21 @@
 #!/usr/bin/env python3
 # SPDX-License-Identifier: Apache-2.0
-"""Factorial ablation of the four production features added between submitted V3.1 and V4.
+"""Factorial self-ablation of four selected production features in submitted V4.
 
 Every experimental arm is derived from the exact submitted V4 archive and may change
 only TITAN-CONFIG.json. Runtime, policy, engine, opponent, and evaluator bytes are
-otherwise shared and authenticated.
+otherwise shared and authenticated. This experiment does not reconstruct V3.1.
 """
 from __future__ import annotations
 
 import argparse
 import hashlib
-import importlib.util
 import json
 import math
 import os
 from pathlib import Path
 import platform
+import shutil
 import statistics
 import sys
 import tempfile
@@ -24,16 +24,15 @@ import types
 
 BASELINE_SHA256 = "4d9601552b5e25d02d8a33961c0bed54ed92d032dbcd4a72f6ab8e03515ed21b"
 V4_CONFIG_SHA256 = "ba18563683125fd89d5473ddb8a5c3e9431db1787a3046f618a9e03af2cb44af"
-V31_SOURCE = "a90d888f03987ef0b35cfd20ec3519c6144db08a"
 V4_SOURCE = "4af1113154e78c662780e6658cd920daac7902e3"
-HELPER_GIT_BLOB = "fbc5e320b8a2ee63af11dc9856c956a679823409"
+HELPER_GIT_BLOB = "719e3514d72bc7ea4c3e505836d16fcddae11019"
 HELPER = "cloud-execution-lab/candidates/v5/joint-liquidity-bench/paired.py"
 FEATURES = ("idle_fertilizer", "crop_release", "early_capital", "town_procurement")
-SCHEMA = "astra.v5.v4-added-features-factorial.v1"
+SCHEMA = "astra.v5.v4-added-features-factorial.v3"
 
 SCREEN_ARMS = (
     "v4",
-    "v31_flags",
+    "all_four_off",
     "off_idle_fertilizer",
     "off_crop_release",
     "off_early_capital",
@@ -41,22 +40,11 @@ SCREEN_ARMS = (
 )
 
 
-def load_path(path: Path, name: str):
-    """Load a file that is already inside an authenticated immutable snapshot."""
-    spec = importlib.util.spec_from_file_location(name, path)
-    if spec is None or spec.loader is None:
-        raise ImportError(str(path))
-    module = importlib.util.module_from_spec(spec)
-    sys.modules[name] = module
-    spec.loader.exec_module(module)
-    return module
-
-
 def load_captured(raw: bytes, origin: Path, name: str):
     """Execute exactly the bytes already authenticated by the caller.
 
     This deliberately never reopens ``origin``. A moving checkout therefore cannot
-    pass the helper blob check and then substitute different helper bytes at import.
+    pass a source hash check and then substitute different executable bytes.
     """
     if type(raw) is not bytes:
         raise TypeError("captured module source must be bytes")
@@ -91,6 +79,47 @@ def capture_authenticated(path: Path, expected_git_blob: str) -> bytes:
     return raw
 
 
+def capture_sha256(path: Path, expected_sha256: str, label: str = "Snapshot member") -> bytes:
+    """Capture one ordinary file once and authenticate exactly those bytes."""
+    path = Path(path)
+    if not path.is_file() or path.is_symlink():
+        raise ValueError(f"{label} must be an ordinary file: {path}")
+    raw = path.read_bytes()
+    actual = sha256_bytes(raw)
+    if actual != expected_sha256:
+        raise ValueError(f"{label} SHA256 mismatch; expected {expected_sha256}, got {actual}")
+    return raw
+
+
+def write_private_runtime_bytes(raw: bytes, path: Path, expected_sha256: str) -> Path:
+    """Publish already-authenticated bytes only into a private runtime location."""
+    if type(raw) is not bytes or sha256_bytes(raw) != expected_sha256:
+        raise ValueError("Private runtime bytes do not match authenticated SHA256")
+    path = Path(path)
+    path.parent.mkdir(parents=True, exist_ok=True)
+    if path.exists() or path.is_symlink():
+        raise FileExistsError(path)
+    path.write_bytes(raw)
+    if sha256_bytes(path.read_bytes()) != expected_sha256:
+        raise ValueError("Private runtime publication changed authenticated bytes")
+    return path
+
+
+def archive_members_captured(helper, raw: bytes) -> dict[str, bytes]:
+    """Parse only the exact baseline bytes authenticated by the caller."""
+    if type(raw) is not bytes:
+        raise TypeError("captured archive must be bytes")
+    with tempfile.TemporaryDirectory(prefix="v4-factorial-baseline-") as temp:
+        snapshot = Path(temp) / "submitted-v4.tar.gz"
+        with snapshot.open("xb") as stream:
+            stream.write(raw)
+            stream.flush()
+            os.fsync(stream.fileno())
+        if snapshot.is_symlink() or not snapshot.is_file():
+            raise ValueError("Private baseline snapshot is not an ordinary file")
+        return helper.archive_members(snapshot)
+
+
 def exact_v4_config(raw: bytes) -> dict:
     if sha256_bytes(raw) != V4_CONFIG_SHA256:
         raise ValueError("TITAN-CONFIG.json is not the exact submitted V4 config")
@@ -103,10 +132,16 @@ def exact_v4_config(raw: bytes) -> dict:
     return value
 
 
+def canonical_arm(name: str) -> str:
+    """Map deprecated input spellings to the canonical experiment identity."""
+    return "all_four_off" if name == "v31_flags" else name
+
+
 def feature_vector(name: str) -> dict[str, bool]:
+    name = canonical_arm(name)
     if name == "v4":
         return {feature: True for feature in FEATURES}
-    if name == "v31_flags":
+    if name == "all_four_off":
         return {feature: False for feature in FEATURES}
     if name.startswith("off_"):
         target = name[4:]
@@ -224,8 +259,9 @@ def main() -> int:
     seeds = [int(value) for value in args.seeds.split(",") if value]
     seats = [int(value) for value in args.seats.split(",") if value]
     opponents = [value for value in args.opponents.split(",") if value]
-    arms = ([value for value in args.arms.split(",") if value]
-            if args.arms else design_arms(args.design))
+    raw_arms = ([value for value in args.arms.split(",") if value]
+                if args.arms else design_arms(args.design))
+    arms = [canonical_arm(value) for value in raw_arms]
     if (not seeds or len(seeds) != len(set(seeds))
             or not seats or len(seats) != len(set(seats)) or not set(seats) <= {0, 1}
             or not opponents or len(opponents) != len(set(opponents))
@@ -242,12 +278,13 @@ def main() -> int:
 
     root = args.kg_root.resolve(strict=True)
     engine_dir = args.engine_dir.resolve(strict=True)
-    baseline_path = args.baseline.resolve(strict=True)
+    baseline_path = Path(args.baseline)
     output = args.output.resolve()
     if output.exists():
         raise FileExistsError(output)
-    if sha256_bytes(baseline_path.read_bytes()) != BASELINE_SHA256:
-        raise ValueError("Baseline is not exact submitted V4 archive")
+    baseline_raw = capture_sha256(
+        baseline_path, BASELINE_SHA256, "Baseline archive"
+    )
 
     helper_path = root / HELPER
     helper_raw = capture_authenticated(helper_path, HELPER_GIT_BLOB)
@@ -255,7 +292,7 @@ def main() -> int:
     if helper.BASELINE_SHA256 != BASELINE_SHA256:
         raise ValueError("Helper baseline authority disagrees with this harness")
 
-    baseline = helper.archive_members(baseline_path)
+    baseline = archive_members_captured(helper, baseline_raw)
     exact_v4_config(baseline["TITAN-CONFIG.json"])
     arm_payloads = {arm: arm_members(baseline, arm) for arm in arms}
     arm_ids = {arm: arm_identity(payload) for arm, payload in arm_payloads.items()}
@@ -264,145 +301,207 @@ def main() -> int:
     )
 
     output_parent = output.parent.resolve(strict=True)
-    with tempfile.TemporaryDirectory(prefix="v4-factorial-snapshot-", dir=output_parent) as temp:
-        staged = Path(temp) / "kg"
-        harness = helper.snapshot_harness(root, staged, opponents)
+
+    # Keep authenticated execution authorities private for the entire panel.
+    # The caller-visible snapshot is a copy for evidence only and is never imported.
+    with tempfile.TemporaryDirectory(
+        prefix="v4-factorial-private-runtime-", dir=output_parent
+    ) as temp:
+        private_root = Path(temp)
+        runtime_snapshot = private_root / "kg"
+        harness = helper.snapshot_harness(root, runtime_snapshot, opponents)
+
+        evaluator_rel = helper.EVALUATOR
+        pack_rel = "cloud-pack/pack.py"
+        bridge_rel = helper.BANK + "/reference_policies.py"
+        loader_rel = "20260907-offline-agent/evaluate.py"
+
+        evaluator_raw = capture_sha256(
+            runtime_snapshot / evaluator_rel,
+            harness["repository_files"][evaluator_rel]["sha256"],
+            "Evaluator",
+        )
+        pack_raw = capture_sha256(
+            runtime_snapshot / pack_rel,
+            harness["repository_files"][pack_rel]["sha256"],
+            "Packer",
+        )
+        bridge_raw = capture_sha256(
+            runtime_snapshot / bridge_rel,
+            harness["repository_files"][bridge_rel]["sha256"],
+            "Reference-policy bridge",
+        )
+        loader_expected = harness["repository_files"][loader_rel]["sha256"]
+        loader_raw = capture_sha256(
+            runtime_snapshot / loader_rel, loader_expected, "Candidate loader"
+        )
+        loader = write_private_runtime_bytes(
+            loader_raw, private_root / "candidate-loader" / "evaluate.py", loader_expected
+        )
+
+        evaluator = load_captured(
+            evaluator_raw, runtime_snapshot / evaluator_rel, "v4_factorial_evaluator"
+        )
+        pack = load_captured(
+            pack_raw, runtime_snapshot / pack_rel, "v4_factorial_pack"
+        )
+        bridge = load_captured(
+            bridge_raw, runtime_snapshot / bridge_rel, "v4_factorial_reference_bank"
+        )
+        engine_hashes = evaluator.verify_sources(engine_dir)
+
         output.mkdir(parents=False, exist_ok=False)
         snapshot_root = output / ".harness-snapshot"
-        os.replace(staged, snapshot_root)
+        shutil.copytree(runtime_snapshot, snapshot_root)
 
-    evaluator = load_path(snapshot_root / helper.EVALUATOR, "v4_factorial_evaluator")
-    pack = load_path(snapshot_root / "cloud-pack/pack.py", "v4_factorial_pack")
-    bridge = load_path(snapshot_root / helper.BANK / "reference_policies.py",
-                       "v4_factorial_reference_bank")
-    loader = snapshot_root / "20260907-offline-agent/evaluate.py"
-    engine_hashes = evaluator.verify_sources(engine_dir)
+        runtime = {}
+        opponent_receipts = {}
+        expected_bridge = harness["repository_files"][
+            helper.BANK + "/reference_policies.py"]["sha256"]
+        expected_registry = harness["repository_files"][
+            helper.BANK + "/REFERENCE-POLICIES.json"]["sha256"]
+        for opponent in opponents:
+            runtime[opponent] = output / "opponents" / opponent
+            receipt = bridge.prepare(opponent, runtime_snapshot, runtime[opponent])
+            if (receipt.get("bridge_sha256") != expected_bridge
+                    or receipt.get("source_registry_sha256") != expected_registry
+                    or receipt.get("support_files") != harness["opponent_support_sha256"]):
+                raise ValueError(f"Opponent escaped authenticated harness: {opponent}")
+            if Path(receipt.get("support_root", "")).resolve(strict=True) != runtime_snapshot:
+                raise ValueError(
+                    f"Opponent did not bind private runtime snapshot: {opponent}"
+                )
+            opponent_receipts[opponent] = receipt
 
-    runtime = {}
-    opponent_receipts = {}
-    expected_bridge = harness["repository_files"][
-        helper.BANK + "/reference_policies.py"]["sha256"]
-    expected_registry = harness["repository_files"][
-        helper.BANK + "/REFERENCE-POLICIES.json"]["sha256"]
-    for opponent in opponents:
-        runtime[opponent] = output / "opponents" / opponent
-        receipt = bridge.prepare(opponent, snapshot_root, runtime[opponent])
-        if (receipt.get("bridge_sha256") != expected_bridge
-                or receipt.get("source_registry_sha256") != expected_registry
-                or receipt.get("support_files") != harness["opponent_support_sha256"]):
-            raise ValueError(f"Opponent escaped authenticated harness: {opponent}")
-        if Path(receipt.get("support_root", "")).resolve(strict=True) != snapshot_root:
-            raise ValueError(f"Opponent did not bind snapshot root: {opponent}")
-        opponent_receipts[opponent] = receipt
+        run = {
+            "schema": SCHEMA,
+            "created_utc": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
+            "v4_source": V4_SOURCE,
+            "baseline_archive_sha256": BASELINE_SHA256,
+            "baseline_config_sha256": V4_CONFIG_SHA256,
+            "baseline_execution": (
+                "single-read SHA256-authenticated captured bytes via private snapshot"
+            ),
+            "changed_member_contract": ["TITAN-CONFIG.json"],
+            "factor_features": list(FEATURES),
+            "design": args.design,
+            "arms": arm_ids,
+            "baseline_arm": baseline_arm,
+            "seeds": seeds,
+            "seats": seats,
+            "opponents": opponents,
+            "engine": engine_hashes,
+            "helper_git_blob": HELPER_GIT_BLOB,
+            "helper_sha256": sha256_bytes(helper_raw),
+            "helper_execution": "single-read authenticated captured bytes",
+            "harness_execution": {
+                "mode": "captured core modules + private authenticated runtime snapshot",
+                "evaluator_sha256": sha256_bytes(evaluator_raw),
+                "pack_sha256": sha256_bytes(pack_raw),
+                "bridge_sha256": sha256_bytes(bridge_raw),
+                "loader_sha256": sha256_bytes(loader_raw),
+                "public_snapshot": ".harness-snapshot (evidence only; never executed)",
+            },
+            "harness": harness,
+            "opponent_receipts": opponent_receipts,
+            "python": sys.version,
+            "platform": platform.platform(),
+            "method": (
+                "Every arm is extracted from one single-read SHA256-authenticated capture of "
+                "the exact submitted V4 archive, parsed through a private snapshot. Only "
+                "TITAN-CONFIG.json may differ, and only four selected submitted-V4 boolean "
+                "mechanisms may change. all_four_off is a V4 self-ablation and is NOT a "
+                "behavioral reconstruction or approximation of submitted V3.1; exact V3.1 "
+                "comparison belongs to archive-version-bridge/gauntlet and R04 recovery evidence. "
+                "The shared helper executes from its single authenticated captured byte snapshot. "
+                "Evaluator, packer and reference bank execute from captured authenticated bytes; "
+                "the candidate loader executes from a separate private runtime-only copy of its "
+                "captured authenticated bytes; opponent support binds the private authenticated "
+                "snapshot. The public .harness-snapshot is evidence only and never execution "
+                "authority. Each arm gets a fresh persistent agent process and private payload; "
+                "arm order rotates by cell."
+            ),
+        }
+        helper.write_json(output / "run.json", run)
 
-    run = {
-        "schema": SCHEMA,
-        "created_utc": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
-        "v31_source": V31_SOURCE,
-        "v4_source": V4_SOURCE,
-        "baseline_archive_sha256": BASELINE_SHA256,
-        "baseline_config_sha256": V4_CONFIG_SHA256,
-        "changed_member_contract": ["TITAN-CONFIG.json"],
-        "factor_features": list(FEATURES),
-        "design": args.design,
-        "arms": arm_ids,
-        "baseline_arm": baseline_arm,
-        "seeds": seeds,
-        "seats": seats,
-        "opponents": opponents,
-        "engine": engine_hashes,
-        "helper_git_blob": HELPER_GIT_BLOB,
-        "helper_sha256": sha256_bytes(helper_raw),
-        "helper_execution": "single-read authenticated captured bytes",
-        "harness": harness,
-        "opponent_receipts": opponent_receipts,
-        "python": sys.version,
-        "platform": platform.platform(),
-        "method": (
-            "Every arm is extracted fresh from the exact submitted V4 archive. "
-            "Only TITAN-CONFIG.json may differ, and only the four booleans that were "
-            "added/enabled in V4 versus submitted V3.1 may change. The shared helper "
-            "executes from its single authenticated captured byte snapshot; evaluator, "
-            "loader, packer, reference bank and opponent support execute from the "
-            "authenticated snapshot inherited from joint-liquidity-bench. Each arm gets "
-            "a fresh persistent agent process and private payload; arm order rotates by cell."
-        ),
-    }
-    helper.write_json(output / "run.json", run)
-
-    cells = []
-    for opponent in opponents:
-        for seed in seeds:
-            for seat in seats:
-                rotate = len(cells) % len(arms)
-                order = arms[rotate:] + arms[:rotate]
-                cell_id = f"{opponent}-s{seed}-p{seat}"
-                cell = {
-                    "schema": SCHEMA,
-                    "cell_id": cell_id,
-                    "opponent": opponent,
-                    "seed": seed,
-                    "seat": seat,
-                    "execution_order": order,
-                    "games": {},
-                    "margins": {},
-                    "margin_delta": {},
-                }
-                for arm in order:
-                    with tempfile.TemporaryDirectory(
-                        prefix=f"{cell_id}-{arm}-", dir=output
-                    ) as temp:
-                        directory = Path(temp)
-                        payload = directory / "payload"
-                        helper.extract_members(arm_payloads[arm], payload)
-                        adapter = directory / "adapter.py"
-                        pack.write_adapter(adapter, payload / "main.py")
-                        rival = str(runtime[opponent] / "adapter.py")
-                        specs = [str(adapter), rival] if seat == 0 else [rival, str(adapter)]
-                        engine, _ = evaluator.get_engine(engine_dir, loader)
-                        game = evaluator.play(
-                            engine, specs, engine_dir, loader, seed, seat,
-                            args.rng_seed, args.action_timeout,
-                            args.startup_timeout, args.game_timeout,
-                        )
-                    game["arm"] = arm
-                    game["arm_config_sha256"] = arm_ids[arm]["config_sha256"]
-                    game["opponent"] = opponent
-                    cell["games"][arm] = game
-                    cell["margins"][arm] = margin(game, seat)
-                    helper.write_json(output / f"{cell_id}-{arm}.json", game)
-                    print(json.dumps({
+        cells = []
+        for opponent in opponents:
+            for seed in seeds:
+                for seat in seats:
+                    rotate = len(cells) % len(arms)
+                    order = arms[rotate:] + arms[:rotate]
+                    cell_id = f"{opponent}-s{seed}-p{seat}"
+                    cell = {
+                        "schema": SCHEMA,
                         "cell_id": cell_id,
-                        "arm": arm,
-                        "status": game.get("status"),
-                        "steps": game.get("steps"),
-                        "scores": game.get("scores"),
-                        "failure": game.get("failure"),
+                        "opponent": opponent,
+                        "seed": seed,
+                        "seat": seat,
+                        "execution_order": order,
+                        "games": {},
+                        "margins": {},
+                        "margin_delta": {},
+                    }
+                    for arm in order:
+                        with tempfile.TemporaryDirectory(
+                            prefix=f"{cell_id}-{arm}-", dir=output
+                        ) as arm_temp:
+                            directory = Path(arm_temp)
+                            payload = directory / "payload"
+                            helper.extract_members(arm_payloads[arm], payload)
+                            adapter = directory / "adapter.py"
+                            pack.write_adapter(adapter, payload / "main.py")
+                            rival = str(runtime[opponent] / "adapter.py")
+                            specs = (
+                                [str(adapter), rival] if seat == 0
+                                else [rival, str(adapter)]
+                            )
+                            engine, _ = evaluator.get_engine(engine_dir, loader)
+                            game = evaluator.play(
+                                engine, specs, engine_dir, loader, seed, seat,
+                                args.rng_seed, args.action_timeout,
+                                args.startup_timeout, args.game_timeout,
+                            )
+                        game["arm"] = arm
+                        game["arm_config_sha256"] = arm_ids[arm]["config_sha256"]
+                        game["opponent"] = opponent
+                        cell["games"][arm] = game
+                        cell["margins"][arm] = margin(game, seat)
+                        helper.write_json(output / f"{cell_id}-{arm}.json", game)
+                        print(json.dumps({
+                            "cell_id": cell_id,
+                            "arm": arm,
+                            "status": game.get("status"),
+                            "steps": game.get("steps"),
+                            "scores": game.get("scores"),
+                            "failure": game.get("failure"),
+                        }), flush=True)
+
+                    baseline_margin = cell["margins"][baseline_arm]
+                    for arm in arms:
+                        value = cell["margins"][arm]
+                        cell["margin_delta"][arm] = (
+                            value - baseline_margin
+                            if value is not None and baseline_margin is not None else None
+                        )
+                    complete = all(cell["margins"][arm] is not None for arm in arms)
+                    cell["status"] = (
+                        "complete_cell" if complete else "incomplete_cell"
+                    )
+                    helper.write_json(output / f"{cell_id}.json", cell)
+                    cells.append(cell)
+                    helper.write_json(output / "report.json", {
+                        "run": run,
+                        "summary": summarize(cells, arms),
+                        "cells": cells,
+                    })
+                    print("CELL " + json.dumps({
+                        key: value for key, value in cell.items() if key != "games"
                     }), flush=True)
 
-                baseline_margin = cell["margins"][baseline_arm]
-                for arm in arms:
-                    value = cell["margins"][arm]
-                    cell["margin_delta"][arm] = (
-                        value - baseline_margin
-                        if value is not None and baseline_margin is not None else None
-                    )
-                complete = all(cell["margins"][arm] is not None for arm in arms)
-                cell["status"] = "complete_cell" if complete else "incomplete_cell"
-                helper.write_json(output / f"{cell_id}.json", cell)
-                cells.append(cell)
-                helper.write_json(output / "report.json", {
-                    "run": run,
-                    "summary": summarize(cells, arms),
-                    "cells": cells,
-                })
-                print("CELL " + json.dumps({
-                    key: value for key, value in cell.items() if key != "games"
-                }), flush=True)
-
-    summary = summarize(cells, arms)
-    print("SUMMARY " + json.dumps(summary), flush=True)
-    return int(any(cell["status"] != "complete_cell" for cell in cells))
+        summary = summarize(cells, arms)
+        print("SUMMARY " + json.dumps(summary), flush=True)
+        return int(any(cell["status"] != "complete_cell" for cell in cells))
 
 
 if __name__ == "__main__":

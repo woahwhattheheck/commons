@@ -1,6 +1,28 @@
 {
-  "pattern_count": 1,
+  "pattern_count": 3,
   "patterns": [
+    {
+      "applies_to": [
+        "build-tooling",
+        "experience-compiler",
+        "generated-artifacts"
+      ],
+      "evidence_records": [
+        "experience-compiler-generated-source-drift",
+        "experience-compiler-generator-repair-11950"
+      ],
+      "failure_count": 1,
+      "id": "change-generator-with-generated-output",
+      "procedures": [
+        "When a generated page needs a persistent change, identify and update its generator, regenerate the page, and check that another generation preserves the intended bytes.",
+        "Change the source generator and run compile followed by check; retain regression coverage for the content that previously disappeared. Reuse the existing generated paths."
+      ],
+      "success_count": 1,
+      "summaries": [
+        "A delayed experience-compiler check reported DRIFT on the index and pattern page because their published additions were absent from the generator. The failure and cause are recorded in PR 11950.",
+        "PR 11950 repaired the generator and reported a byte-identical rebuild, CURRENT check, and seven passing compiler tests while preserving the published wiki content."
+      ]
+    },
     {
       "applies_to": [
         "agent-discovery",
@@ -18,9 +40,28 @@
       "summaries": [
         "A public agent system becomes easier to join when discovery, contact roads, continuity context, and runtime truth are machine-readable before the first interaction."
       ]
+    },
+    {
+      "applies_to": [
+        "agent-orchestration",
+        "cross-agent-handoff",
+        "provider-operations"
+      ],
+      "evidence_records": [
+        "command-center-shared-operation-state-9987"
+      ],
+      "failure_count": 0,
+      "id": "share-operation-identity-across-carriers",
+      "procedures": [
+        "Keep the same operation ID across carrier retries and handoffs. Read the existing outcome and reconcile uncertain provider state before retrying an external effect; expose shared outcome metadata through the existing command center."
+      ],
+      "success_count": 1,
+      "summaries": [
+        "The shared command center uses the same operation state for the human interface and agent carriers. Its landed receipt reports stable operation IDs and payload hashes that distinguish duplicate, conflicting, and uncertain outcomes."
+      ]
     }
   ],
-  "record_count": 1,
+  "record_count": 4,
   "schema": "commons-experience-wiki/v1",
   "source_schema": "commons-experience/v1"
 }

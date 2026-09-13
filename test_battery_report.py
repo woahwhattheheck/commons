@@ -6,6 +6,7 @@ import json
 import os
 from pathlib import Path
 import shutil
+import shlex
 import subprocess
 import sys
 import tempfile
@@ -29,7 +30,8 @@ def battery_script():
         if line and not line.startswith("          "):
             break
         lines.append(line[10:] if line else "")
-    return "\n".join(lines) + "\n"
+    script = "\n".join(lines) + "\n"
+    return script.replace("python3 host/ci_battery.py", shlex.join([sys.executable, str(ROOT / "host/ci_battery.py")]))
 
 
 class BatteryReportTests(unittest.TestCase):
@@ -159,11 +161,14 @@ class BatteryReportTests(unittest.TestCase):
         (self.root / "test_node_pass.js").write_text("process.exit(0);\n", encoding="utf-8")
         (self.root / "test_node_fail.js").write_text("process.exit(4);\n", encoding="utf-8")
         self.commit()
-        env = dict(os.environ, RUNNER_TEMP=str(self.root))
+        runner_temp = Path(str(self.root) + "-runner-temp")
+        runner_temp.mkdir()
+        self.addCleanup(shutil.rmtree, runner_temp, True)
+        env = dict(os.environ, RUNNER_TEMP=str(runner_temp))
         process = subprocess.run(["bash", "--noprofile", "--norc", "-eo", "pipefail", "-c", battery_script()],
                                  cwd=self.root, env=env, capture_output=True, text=True, timeout=30)
         self.assertEqual(process.returncode, 1)
-        path = self.root / "commons-battery-results.nul"
+        path = runner_temp / "commons-battery-results.nul"
         self.assertTrue(path.is_file(), "workflow emitted no structured result stream")
         data = self.build(path.read_bytes(), "failure")
         self.assertTrue(data["complete"])
@@ -178,15 +183,18 @@ class BatteryReportTests(unittest.TestCase):
     def test_real_workflow_success_and_empty_discovery(self):
         (self.root / "infra/test_beta.py").write_text("pass\n", encoding="utf-8")
         self.commit()
-        env = dict(os.environ, RUNNER_TEMP=str(self.root))
+        runner_temp = Path(str(self.root) + "-runner-temp")
+        runner_temp.mkdir()
+        self.addCleanup(shutil.rmtree, runner_temp, True)
+        env = dict(os.environ, RUNNER_TEMP=str(runner_temp))
         for expected_count, conclusion in ((2, "PASSED"), (0, "NO_TESTS")):
             with self.subTest(completed_files=expected_count):
                 process = subprocess.run(
                     ["bash", "--noprofile", "--norc", "-eo", "pipefail", "-c", battery_script()],
                     cwd=self.root, env=env, capture_output=True, text=True, timeout=30,
                 )
-                self.assertEqual(process.returncode, 0)
-                raw = (self.root / "commons-battery-results.nul").read_bytes()
+                self.assertEqual(process.returncode, 0 if expected_count else 1, process.stderr)
+                raw = (runner_temp / "commons-battery-results.nul").read_bytes()
                 data = self.build(raw)
                 self.assertTrue(data["complete"])
                 self.assertEqual(data["conclusion"], conclusion)
@@ -194,6 +202,8 @@ class BatteryReportTests(unittest.TestCase):
                 self.assertEqual(data["counts"]["failed_files"], 0)
             for path in self.files:
                 (self.root / path).unlink(missing_ok=True)
+            if expected_count:
+                self.commit()
 
     def test_workflow_uploads_report_even_when_battery_fails(self):
         text = (ROOT / ".github/workflows/tests.yml").read_text(encoding="utf-8")
