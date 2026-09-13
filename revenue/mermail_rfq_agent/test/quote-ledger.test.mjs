@@ -8,8 +8,8 @@ const ledger = () => new RFQLedger({
   requestedQuantity: 1000,
   createdAt: '2026-09-13T08:30:00Z',
 });
-const vendor = (l, id = 'alpha', email = 'quotes@alpha.example', threadId = 'thread-alpha') =>
-  l.registerVendor({ vendorId: id, email, threadId, solicitedAt: '2026-09-13T08:31:00Z' });
+const vendor = (l, id = 'alpha', email = 'quotes@alpha.example', threadId = 'thread-alpha', solicitedAt = '2026-09-13T08:31:00Z') =>
+  l.registerVendor({ vendorId: id, email, threadId, solicitedAt });
 const quote = (overrides = {}) => ({
   vendorId: 'alpha', senderEmail: 'quotes@alpha.example', threadId: 'thread-alpha', quoteId: 'q-alpha-v1', version: 1,
   currency: 'USD', unitPrice: 4.25, totalPrice: 4250, minimumOrderQuantity: 500, leadTimeDays: 14,
@@ -31,6 +31,17 @@ test('hashes nested requirements independent of object key order', () => {
   assert.equal(a.round.requirementsDigest, b.round.requirementsDigest);
 });
 
+test('rejects vendor solicitation that predates the RFQ round', () => {
+  const l = ledger();
+  rejects(() => vendor(l, 'alpha', 'quotes@alpha.example', 'thread-alpha', '2026-09-13T08:29:59Z'), 'solicitation_before_round');
+});
+
+test('allows vendor solicitation exactly at RFQ creation time', () => {
+  const l = ledger();
+  const registered = vendor(l, 'alpha', 'quotes@alpha.example', 'thread-alpha', '2026-09-13T08:30:00Z');
+  assert.equal(registered.solicitedAt, '2026-09-13T08:30:00.000Z');
+});
+
 test('rejects string booleans instead of coercing commercial terms', () => {
   const l = ledger(); vendor(l);
   rejects(() => l.recordQuote(quote({ shippingIncluded: 'false' })), 'invalid_boolean');
@@ -49,6 +60,17 @@ test('rejects spoofed sender identity', () => {
 test('rejects thread drift even from the expected email', () => {
   const l = ledger(); vendor(l);
   rejects(() => l.recordQuote(quote({ threadId: 'thread-other' })), 'thread_mismatch');
+});
+
+test('rejects quote evidence that predates the vendor solicitation', () => {
+  const l = ledger(); vendor(l);
+  rejects(() => l.recordQuote(quote({ receivedAt: '2026-09-13T08:30:59Z' })), 'quote_before_solicitation');
+});
+
+test('allows quote evidence exactly at the vendor solicitation boundary', () => {
+  const l = ledger(); vendor(l);
+  const accepted = l.recordQuote(quote({ receivedAt: '2026-09-13T08:31:00Z' }));
+  assert.equal(accepted.receivedAt, '2026-09-13T08:31:00.000Z');
 });
 
 test('never infers a missing price', () => {
@@ -80,6 +102,26 @@ test('accepts a same-thread higher-version amendment and supersedes it for compa
   const report = l.comparison({ at: '2026-09-14T00:00:00Z' });
   assert.equal(report.rows[0].version, 2);
   assert.equal(report.rows[0].unitPrice, 4.10);
+});
+
+test('backdated comparison excludes quote evidence received in the future', () => {
+  const l = ledger(); vendor(l); l.recordQuote(quote());
+  const report = l.comparison({ at: '2026-09-13T08:59:59Z' });
+  assert.equal(report.rows[0].status, 'no_quote');
+  assert.equal(report.rows[0].quoteId, undefined);
+  assert.deepEqual(report.ranking, []);
+});
+
+test('backdated comparison uses the newest amendment observed by that instant', () => {
+  const l = ledger(); vendor(l); l.recordQuote(quote());
+  l.recordQuote(quote({ quoteId: 'q-alpha-v2', version: 2, unitPrice: 4.10, totalPrice: 4100, receivedAt: '2026-09-13T10:00:00Z', sourceEmailId: 'email-alpha-v2' }));
+  const before = l.comparison({ at: '2026-09-13T09:59:59Z' });
+  assert.equal(before.rows[0].version, 1);
+  assert.equal(before.rows[0].unitPrice, 4.25);
+  const boundary = l.comparison({ at: '2026-09-13T10:00:00Z' });
+  assert.equal(boundary.rows[0].version, 2);
+  assert.equal(boundary.rows[0].unitPrice, 4.10);
+  assert.equal(boundary.rows[0].receivedAt, '2026-09-13T10:00:00.000Z');
 });
 
 test('marks expired quotes instead of ranking them', () => {
