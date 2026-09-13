@@ -366,6 +366,12 @@ def _cmd_list(args: argparse.Namespace) -> int:
 
 def _cmd_record(args: argparse.Namespace) -> int:
     ledger = load_ledger(args.ledger)
+    errors = validate_ledger(ledger)
+    if errors:
+        print("INVALID")
+        for err in errors:
+            print(err)
+        return 1
     record_decision(
         ledger,
         pack_id=args.id,
@@ -387,6 +393,12 @@ def _cmd_record(args: argparse.Namespace) -> int:
 
 def _cmd_set_checkout(args: argparse.Namespace) -> int:
     ledger = load_ledger(args.ledger)
+    errors = validate_ledger(ledger)
+    if errors:
+        print("INVALID")
+        for err in errors:
+            print(err)
+        return 1
     set_checkout(ledger, pack_id=args.id, url=args.url, owner_pasted=args.owner_pasted)
     errors = validate_ledger(ledger)
     if errors:
