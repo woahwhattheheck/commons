@@ -18,7 +18,7 @@ import json
 import re
 import sys
 import tempfile
-from decimal import Decimal
+from decimal import Decimal, InvalidOperation
 from pathlib import Path
 from typing import Any
 
@@ -73,6 +73,28 @@ def _pack_map(ledger: dict[str, Any]) -> dict[str, dict[str, Any]]:
     return rows
 
 
+def _finite_decimal(value: Any) -> Decimal | None:
+    """Parse one finite JSON-style number without leaking decimal errors."""
+    if isinstance(value, bool):
+        return None
+    try:
+        parsed = Decimal(str(value))
+    except (InvalidOperation, TypeError, ValueError):
+        return None
+    return parsed if parsed.is_finite() else None
+
+
+def _integral_value(value: Any) -> int | None:
+    """Return an exact finite integer; fractional and boolean values are invalid."""
+    parsed = _finite_decimal(value)
+    if parsed is None or parsed != parsed.to_integral_value():
+        return None
+    try:
+        return int(parsed)
+    except (OverflowError, ValueError):
+        return None
+
+
 def checkout_is_live_payment_link(url: str) -> bool:
     text = str(url or "").strip()
     if not text:
@@ -112,9 +134,17 @@ def validate_ledger(ledger: dict[str, Any]) -> list[str]:
     channel = ledger.get("slack_channel") or {}
     if not isinstance(channel, dict) or channel.get("id") != SLACK_CHANNEL_ID:
         errors.append("slack_channel.id must be %s" % SLACK_CHANNEL_ID)
-    if Decimal(str(ledger.get("cash_usd") or "0")) != Decimal("0.00"):
+    cash_raw = ledger.get("cash_usd")
+    cash = _finite_decimal("0" if cash_raw in (None, "") else cash_raw)
+    if cash is None:
+        errors.append("cash_usd must be a finite decimal")
+    elif cash != Decimal("0.00"):
         errors.append("cash_usd must stay 0.00 without BANK_AVAILABLE")
-    if int(ledger.get("buyers") or 0) != 0:
+    buyers_raw = ledger.get("buyers")
+    buyers = _integral_value(0 if buyers_raw in (None, "") else buyers_raw)
+    if buyers is None:
+        errors.append("buyers must be an integer")
+    elif buyers != 0:
         errors.append("buyers must stay 0 without a receipt")
     honesty = ledger.get("honesty") or {}
     if not isinstance(honesty, dict):
@@ -124,7 +154,13 @@ def validate_ledger(ledger: dict[str, Any]) -> list[str]:
             if honesty.get(flag) is not True:
                 errors.append("honesty.%s must be true" % flag)
     seen = set()
-    for item in ledger.get("packs") or []:
+    packs = ledger.get("packs")
+    if packs is None:
+        packs = []
+    elif not isinstance(packs, list):
+        errors.append("packs must be a list")
+        packs = []
+    for item in packs:
         if not isinstance(item, dict):
             errors.append("pack row is not an object")
             continue
@@ -142,8 +178,12 @@ def validate_ledger(ledger: dict[str, Any]) -> list[str]:
         if not title:
             errors.append("%s needs a title" % pack_id)
         tier = item.get("tier_usd")
-        if tier not in (None, "") and int(tier) not in TIERS_USD:
-            errors.append("%s tier_usd must be one of %s" % (pack_id, TIERS_USD))
+        if tier not in (None, ""):
+            parsed_tier = _integral_value(tier)
+            if parsed_tier is None:
+                errors.append("%s tier_usd must be an integer" % pack_id)
+            elif parsed_tier not in TIERS_USD:
+                errors.append("%s tier_usd must be one of %s" % (pack_id, TIERS_USD))
         url = str(item.get("checkout_url") or "").strip()
         if url:
             if item.get("owner_pasted") is not True:
