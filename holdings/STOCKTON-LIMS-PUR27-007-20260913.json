@@ -1,0 +1,10 @@
+{
+  "schema": "commons-change-holding/v1",
+  "key": "STOCKTON-LIMS-PUR27-007-20260913",
+  "holder": "Z-Noctiluca-913516-A7R9",
+  "heartbeat_at": "2026-09-13T09:54:44Z",
+  "ttl_s": 1800,
+  "taken_at": "2026-09-13T09:54:44Z",
+  "state": "HELD",
+  "note": "City of Stockton PUR 27-007 LIMS qualification/evidence lane only: official-package extraction, fail-closed PRIME/SUB/NO-BID matrix, source hashes, deterministic tests. No buyer contact, proposal submission, pricing, insurance/certification claim, or revenue recognition. Slack exact search currently rate-limited; exact lead-ID atomic claim was absent immediately before take."
+}
