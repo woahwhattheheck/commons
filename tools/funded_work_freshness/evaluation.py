@@ -38,6 +38,11 @@ _FROM_TO_RE = re.compile(
     r"(?i)\b(?:changed|updated|increased|decreased|raised|reduced)\b.*\bfrom\b.*\bto\b"
 )
 _CURRENT_TRANSITION_RE = re.compile(r"(?i)\bnow\b")
+_CHANGE_FROM_PREFIX_RE = re.compile(
+    r"(?i)\b(?:changed|updated|increased|decreased|raised|reduced)\b[^;\n]{0,120}\bfrom\b[\s:=,()\-]*$"
+)
+_TO_DESTINATION_RE = re.compile(r"(?i)\bto\b[\s:=,()\-]*$")
+_NOW_DESTINATION_RE = re.compile(r"(?i)\bnow\b[\s:=,()\-]*(?:is\b[\s:=,()\-]*)?$")
 _SYMBOL_CURRENCY = {"$": "USD", "€": "EUR", "£": "GBP"}
 
 
@@ -151,8 +156,8 @@ def _commercial_amount_event(text: str) -> dict[str, str | None]:
     """Resolve one authority event's explicit reward/bounty/funding amount.
 
     A line/semicolon clause must grammatically bind the amount to ``reward``,
-    ``bounty``, or ``funding``. Multiple distinct amounts are ambiguous unless the
-    clause has an explicit transition such as ``from X to Y`` or ``X, now Y``.
+    ``bounty``, or ``funding``. Multiple distinct amounts are ambiguous unless an
+    exactly two-amount transition binds the second token as the destination.
     """
 
     event_values: list[tuple[str, str]] = []
@@ -165,9 +170,24 @@ def _commercial_amount_event(text: str) -> dict[str, str | None]:
 
         first_noun = min(noun.start() for noun in nouns)
         if len(monies) >= 2 and first_noun < monies[0][0]:
-            transition_text = segment[monies[0][1] : monies[-1][0]]
-            if _FROM_TO_RE.search(segment) or _CURRENT_TRANSITION_RE.search(transition_text):
-                event_values.append((monies[-1][2], monies[-1][3]))
+            before_source = segment[: monies[0][0]]
+            between_first_second = segment[monies[0][1] : monies[1][0]]
+            after_first = segment[monies[0][1] :]
+            broad_from_to = bool(_FROM_TO_RE.search(segment))
+            broad_now = bool(_CURRENT_TRANSITION_RE.search(after_first))
+            if broad_from_to or broad_now:
+                from_to_destination = bool(
+                    broad_from_to
+                    and _CHANGE_FROM_PREFIX_RE.search(before_source)
+                    and _TO_DESTINATION_RE.search(between_first_second)
+                )
+                now_destination = bool(
+                    broad_now and _NOW_DESTINATION_RE.search(between_first_second)
+                )
+                if len(monies) == 2 and (from_to_destination or now_destination):
+                    event_values.append((monies[1][2], monies[1][3]))
+                else:
+                    event_ambiguous = True
                 continue
 
         direct_values: list[tuple[str, str]] = []
