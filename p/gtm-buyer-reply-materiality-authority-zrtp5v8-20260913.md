@@ -16,9 +16,11 @@ That crossed an authority boundary: provider arrival/thread chronology is not se
 
 - preserve `BUYER_REPLY_OBSERVED` as useful relationship evidence;
 - persist raw reply observation only as neutral `STATUS` evidence with `decision=BUYER_REPLY_OBSERVED`;
+- omit `dnr` entirely from raw observation evidence so existing contact/no-resend authority is preserved rather than silently lifted;
 - require `HUMAN_CLASSIFICATION_REQUIRED` before any materiality claim;
 - make legacy raw mailbox `--pin-material-reply` mechanically refuse;
 - bind chronology to the first outbound in the same provider thread;
+- require outbound/seller and inbound/buyer fixture role-direction consistency;
 - reject duplicate provider message IDs;
 - reject reminting the same observed inbound message under a second evidence ID;
 - retain historical `MATERIAL_REPLY` readability without granting this verifier authority to create new ones.
@@ -27,7 +29,7 @@ No customer contact, mailbox send, second CRM, acceptance, contract, award, paym
 
 ## Validation truth
 
-Before publication, a local hermetic candidate harness passed **9/9** focused tests and Python compile. That harness used a minimal local stub for the index primitives needed by the isolated verifier; therefore it is evidence for the authored logic only, not a substitute for repository integration CI.
+Current authored candidate: local hermetic harness **10/10 PASS** plus Python compile. The harness uses a minimal local stub for the index primitives needed by the isolated verifier; therefore it is evidence for the authored logic only, not a substitute for repository integration CI.
 
 The branch-scoped repository workflow runs the real Commons modules and the focused mailbox + relationship-handoff tests on Python 3.11 and 3.12. Queued/unexecuted hosted jobs are never represented as green.
 
