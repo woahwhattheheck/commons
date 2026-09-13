@@ -2,8 +2,8 @@
   "counts": {
     "open_issues": 67,
     "open_pull_requests": 42,
-    "runs_in_progress": 20,
-    "runs_queued": 1222
+    "runs_in_progress": 19,
+    "runs_queued": 1237
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -69,13 +69,13 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "zlm-g7p2/agents-for-humans-tenderproof-20260913",
-      "created_at": "2026-09-13T16:27:10Z",
+      "branch": "zmh/nci-ods-reuseledger-20260913",
+      "created_at": "2026-09-13T16:28:14Z",
       "draft": false,
-      "head_sha": "f0846f252362b987f6784c414416f06b2189a181",
-      "number": 14068,
-      "title": "feat: add TenderProof Strands RFP professional agent",
-      "updated_at": "2026-09-13T16:27:10Z"
+      "head_sha": "635c246d4407650a8a361a81835614c6722f5339",
+      "number": 14069,
+      "title": "NCI ODS Impact Prize: build ReuseLedger Track-1 carrier",
+      "updated_at": "2026-09-13T16:28:14Z"
     },
     {
       "author": "woahwhattheheck",
@@ -219,12 +219,34 @@
     "14057": "05f6f1775a5762ffa18c5c19da1d94d35bc45bb0",
     "14066": "533c121abc2a8ea4d2ba90439400d46594b94cf1",
     "14067": "3c4edc0085becd50e6200eaf596d14b4eb0de2b7",
-    "14068": "f0846f252362b987f6784c414416f06b2189a181"
+    "14069": "635c246d4407650a8a361a81835614c6722f5339"
   },
   "pulls_listed": 42,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 61.1,
+  "queue_depth_per_runner": 65.1,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zlm-g7p2/agents-for-humans-tenderproof-20260913",
+      "closed_at": "2026-09-13T16:29:59Z",
+      "head_sha": "f0846f252362b987f6784c414416f06b2189a181",
+      "merged_at": "2026-09-13T16:29:59Z",
+      "number": 14068,
+      "state": "MERGED",
+      "title": "feat: add TenderProof Strands RFP professional agent"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zkp-h7v2/commercial-deal-room",
+      "closed_at": "2026-09-13T16:29:32Z",
+      "head_sha": "99a569a2b63119bcf6985c9d05efacf3623d306d",
+      "merged_at": "2026-09-13T16:29:32Z",
+      "number": 14070,
+      "state": "MERGED",
+      "title": "Add commercial deal-room lifecycle compiler"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -367,32 +389,10 @@
       "number": 13876,
       "state": "MERGED",
       "title": "feat(revenue): add agent capability constraint registry"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zsolstice/grandrapids-920-45-269-20260913",
-      "closed_at": "2026-09-13T13:51:24Z",
-      "head_sha": "8a42aa3f05a418d554477ce92efba03217978b75",
-      "merged_at": "2026-09-13T13:51:24Z",
-      "number": 13875,
-      "state": "MERGED",
-      "title": "revenue: Grand Rapids 920-45-269 AI chatbot proposal carrier"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zsh/stl-print-mail-api-2027bid000033",
-      "closed_at": "2026-09-13T13:44:05Z",
-      "head_sha": "4578e0e6c35e057f7044fa88072eb6845ffe0634",
-      "merged_at": "2026-09-13T13:44:05Z",
-      "number": 13873,
-      "state": "MERGED",
-      "title": "feat(revenue): add St. Louis print/mail API acceptance rail"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-13T16:28:13Z",
+  "unchanged_since": "2026-09-13T16:30:53Z",
   "undatable_pulls": []
 }
