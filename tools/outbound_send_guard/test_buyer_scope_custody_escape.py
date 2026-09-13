@@ -47,6 +47,22 @@ class BuyerScopeCustodyEscapeTests(unittest.TestCase):
             ],
         }
 
+    def assert_custody_mismatch(self, intent, evidence, scope, raw_scope=None, raw_evidence=None):
+        with self.assertRaisesRegex(
+            buyer_scope.ScopeError,
+            "raw-byte custody does not match evaluated source objects",
+        ):
+            buyer_scope._evaluate(
+                intent,
+                evidence,
+                scope,
+                raw_bytes=(
+                    self.encoded(intent),
+                    self.encoded(raw_evidence if raw_evidence is not None else evidence),
+                    self.encoded(raw_scope if raw_scope is not None else scope),
+                ),
+            )
+
     def test_internal_custody_path_reparses_and_rejects_mismatched_bytes(self):
         intent = self.intent()
         evidence = self.evidence()
@@ -66,26 +82,36 @@ class BuyerScopeCustodyEscapeTests(unittest.TestCase):
                 ),
             )
 
-    def test_internal_custody_path_rejects_json_scalar_type_aliases(self):
+    def test_internal_custody_path_rejects_true_vs_one_alias(self):
         intent = self.intent()
         evidence = self.evidence()
         scope = self.scope()
         forged_scope = self.scope()
         forged_scope["members"][0]["mailbox_complete"] = 1
-        with self.assertRaisesRegex(
-            buyer_scope.ScopeError,
-            "raw-byte custody does not match evaluated source objects",
-        ):
-            buyer_scope._evaluate(
-                intent,
-                evidence,
-                scope,
-                raw_bytes=(
-                    self.encoded(intent),
-                    self.encoded(evidence),
-                    self.encoded(forged_scope),
-                ),
-            )
+        self.assert_custody_mismatch(intent, evidence, scope, raw_scope=forged_scope)
+
+    def test_internal_custody_path_rejects_false_vs_zero_alias(self):
+        intent = self.intent()
+        evidence = self.evidence()
+        scope = self.scope()
+        scope["members"][0]["slack_complete"] = False
+        forged_scope = self.scope()
+        forged_scope["members"][0]["slack_complete"] = 0
+        self.assert_custody_mismatch(intent, evidence, scope, raw_scope=forged_scope)
+
+    def test_internal_custody_path_rejects_integer_vs_float_alias(self):
+        intent = self.intent()
+        evidence = self.evidence()
+        evidence["policy"] = {"cross_offer_cooldown_days": 1}
+        scope = self.scope()
+        forged_evidence = self.evidence()
+        forged_evidence["policy"] = {"cross_offer_cooldown_days": 1.0}
+        self.assert_custody_mismatch(
+            intent,
+            evidence,
+            scope,
+            raw_evidence=forged_evidence,
+        )
 
     def test_internal_custody_path_rejects_digest_like_strings(self):
         with self.assertRaisesRegex(
