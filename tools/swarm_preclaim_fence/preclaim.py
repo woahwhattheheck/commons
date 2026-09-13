@@ -146,11 +146,18 @@ def _sha(value: Any, field: str) -> str | None:
     return value
 
 
-def _hits(slice_: Any, field: str) -> tuple[bool, list[dict[str, Any]]]:
+def _hits(
+    slice_: Any, field: str, *, expected_query: str
+) -> tuple[bool, list[dict[str, Any]]]:
     if not isinstance(slice_, dict):
         raise PreclaimInputError(f"{field} must be an object")
-    if set(slice_) - {"complete", "hits", "query"}:
-        raise PreclaimInputError(f"{field} has unknown fields")
+    if set(slice_) != {"complete", "hits", "query"}:
+        raise PreclaimInputError(f"{field} must contain exactly complete, hits, and query")
+    query = _bounded_string(slice_.get("query"), f"{field}.query", max_len=500)
+    if query != expected_query:
+        raise PreclaimInputError(
+            f"{field}.query does not match the requested evidence scope"
+        )
     complete = slice_.get("complete")
     if type(complete) is not bool:
         raise PreclaimInputError(f"{field}.complete must be boolean")
@@ -209,7 +216,9 @@ def _named_slices(
     complete = True
     hits: dict[str, list[dict[str, Any]]] = {}
     for name in expected:
-        item_complete, item_hits = _hits(payload[name], f"{field}[{name!r}]")
+        item_complete, item_hits = _hits(
+            payload[name], f"{field}[{name!r}]", expected_query=name
+        )
         complete = complete and item_complete
         hits[name] = item_hits
     return complete, hits
@@ -270,12 +279,18 @@ def evaluate_preclaim(request: Any, evidence: Any) -> dict[str, Any]:
     complete = True
     slack_hits: dict[str, Any] = {}
 
-    upstream_complete, upstream_hits = _hits(slack["upstream_ref"], "slack.upstream_ref")
+    upstream_complete, upstream_hits = _hits(
+        slack["upstream_ref"],
+        "slack.upstream_ref",
+        expected_query=req["canonical_upstream_ref"],
+    )
     complete = complete and upstream_complete
     slack_hits["upstream_ref"] = upstream_hits
 
     if req["stable_id"] is not None:
-        stable_complete, stable_hits = _hits(slack["stable_id"], "slack.stable_id")
+        stable_complete, stable_hits = _hits(
+            slack["stable_id"], "slack.stable_id", expected_query=req["stable_id"]
+        )
         complete = complete and stable_complete
         slack_hits["stable_id"] = stable_hits
     else:
@@ -291,9 +306,24 @@ def evaluate_preclaim(request: Any, evidence: Any) -> dict[str, Any]:
     slack_hits["candidate_paths"] = path_hits
     slack_hits["semantic_phrases"] = phrase_hits
 
-    if set(github) != {"owner_open_prs", "paths"}:
-        raise PreclaimInputError("github evidence must contain owner_open_prs and paths")
-    prs_complete, owner_pr_hits = _hits(github["owner_open_prs"], "github.owner_open_prs")
+    if set(github) != {"scope", "owner_open_prs", "paths"}:
+        raise PreclaimInputError(
+            "github evidence must contain scope, owner_open_prs, and paths"
+        )
+    scope = github["scope"]
+    expected_scope = {
+        "owner_fork": req["owner_fork"],
+        "upstream_ref": req["canonical_upstream_ref"],
+    }
+    if scope != expected_scope:
+        raise PreclaimInputError(
+            "github.scope does not match the requested owner fork and upstream ref"
+        )
+    prs_complete, owner_pr_hits = _hits(
+        github["owner_open_prs"],
+        "github.owner_open_prs",
+        expected_query=f"owner-fork-open-prs:{req['owner_fork']}",
+    )
     complete = complete and prs_complete
 
     raw_paths = github["paths"]
