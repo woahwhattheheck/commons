@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-09-05T09:50:00Z",
+  "as_of": "2026-09-13T09:13:24Z",
   "blockers": [
     {
       "condition": "A chargeable buyer path and processor receipt are independently evidenced.",
@@ -187,7 +187,44 @@
     "NOW": "A buyer can start the qualification path immediately and Commons can deliver the bounded outcome in seven days or less.",
     "SOON": "One buyer conversation, private input, legal document, or customer-specific invoice is needed before delivery."
   },
-  "schema_version": "commons-right-now-control/v1",
+  "schema_version": "commons-right-now-control/v2",
+  "settled_awards": {
+    "as_of": "2026-09-13T09:13:24Z",
+    "awards": [
+      {
+        "amount": "25",
+        "award_id": "rustchain-2819-bounded-coin-selection",
+        "claimant": "woahwhattheheck",
+        "collection_action": "NONE_DO_NOT_RESEND",
+        "currency": "RTC",
+        "destination_kind": "HOSTED_HANDLE",
+        "destination_reference": "woahwhattheheck",
+        "hold": {
+          "availability_state": "NOT_ASSERTED",
+          "hours": 24,
+          "kind": "SPONSOR_STATED_DURATION"
+        },
+        "paid_at": "2026-09-11",
+        "payment_state": "PAID",
+        "program": "RustChain",
+        "public_receipt_id": "rustchain-2819-paid-20260911-v1",
+        "result_url": "https://github.com/Scottcjn/Rustchain/issues/8395",
+        "task_url": "https://github.com/Scottcjn/rustchain-bounties/issues/2819"
+      }
+    ],
+    "bank_availability_asserted": false,
+    "paid_awards": 1,
+    "schema_version": "commons-settled-awards-summary/v1",
+    "totals_by_currency": [
+      {
+        "amount": "25",
+        "currency": "RTC"
+      }
+    ],
+    "usd_conversion_asserted": false,
+    "usd_equivalent": null,
+    "withdrawability_asserted": false
+  },
   "source_receipts": [
     {
       "path": "revenue/right_now/catalog.json",
@@ -200,6 +237,10 @@
     {
       "path": "revenue/right_now/autopsy_offer.json",
       "sha256": "1803396c0851b0eda5996f0d6c5cb802c91ff431eeb9d8f71ceb20422f77990f"
+    },
+    {
+      "path": "revenue/right_now/settled_awards.json",
+      "sha256": "7284b37369d4734cee9402cce494d17e7af99a3a5d576e6f8181a88a9848f6dd"
     },
     {
       "path": "revenue/smart_outreach/candidates.json",
@@ -221,10 +262,20 @@
   "truth": {
     "accepted_scopes": 0,
     "active_chargeable_checkout": true,
+    "award_bank_availability_asserted": false,
+    "award_withdrawability_asserted": false,
     "collected_cash_usd": 0,
+    "paid_awards": 1,
     "prospects_evaluated": 4,
     "ready_to_draft": 0,
+    "settled_amounts_by_currency": [
+      {
+        "amount": "25",
+        "currency": "RTC"
+      }
+    ],
     "transport_actions": 0,
+    "usd_conversion_asserted": false,
     "verified_positive_replies": 0
   }
 }
