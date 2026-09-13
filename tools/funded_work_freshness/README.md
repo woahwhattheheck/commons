@@ -122,3 +122,10 @@ owners, members, collaborators, or recognized sponsor bots; merely creating the 
 does not grant funding authority. External issue text remains visible to security
 classification and occupancy logic, but cannot manufacture sponsor, amount, or
 acceptance evidence.
+
+Freshness uses the same authority boundary after creation. The immutable canonical
+issue `created_at` value is the baseline; issue `updated_at` is deliberately not a
+freshness clock because GitHub advances it for ordinary comment activity. Only comments
+from repository owners, members, collaborators, or recognized sponsor bots may refresh
+the qualification timestamp. External comments still participate in claim/occupancy
+and security checks, but cannot resurrect an old funded item merely by adding chatter.
