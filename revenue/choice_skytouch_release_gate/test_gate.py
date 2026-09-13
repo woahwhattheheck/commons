@@ -9,6 +9,7 @@ from .gate import (
     evaluate,
     load_strict_json,
     plan_effect_replay,
+    snapshot_sha256,
     verify_receipt,
 )
 
@@ -160,6 +161,20 @@ class ReleaseEvidenceGateTests(unittest.TestCase):
         state["effects"][key] = "f" * 64
         with self.assertRaisesRegex(ReleaseEvidenceError, "EFFECT_REPLAY_CONFLICT"):
             plan_effect_replay(receipt, state)
+
+    def test_same_release_id_plan_drift_conflicts_with_prior_effect_state(self) -> None:
+        first_receipt = evaluate(self.bundle).receipt
+        first_plan = plan_effect_replay(first_receipt)
+
+        drifted = deepcopy(self.bundle)
+        drifted["baseline"]["config"]["integration.crm.retry_limit"] = 4
+        drifted["changes"][0]["before"] = 4
+        drifted["base_snapshot_sha256"] = snapshot_sha256(drifted["baseline"])
+        second_receipt = evaluate(drifted).receipt
+        self.assertEqual("PASS", second_receipt["status"])
+
+        with self.assertRaisesRegex(ReleaseEvidenceError, "EFFECT_REPLAY_CONFLICT"):
+            plan_effect_replay(second_receipt, first_plan["effect_state"])
 
     def test_hold_receipt_cannot_be_planned(self) -> None:
         bundle = deepcopy(self.bundle)
