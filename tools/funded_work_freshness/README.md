@@ -76,6 +76,16 @@ by `--max-cache-entries`; a corrupt cache file is ignored rather than trusted.
 `--cache-ttl-seconds 0` disables persistent-cache reads while retaining in-batch
 HTTP memoization.
 
+When file paths are used, `--input`, `--output`, and `--cache` must name distinct
+filesystem objects. Direct, symlink, and existing hardlink aliases fail before any
+canonical network read, and output/cache symlinks are rejected rather than silently
+replaced. A file report and cache are staged and fsynced before publication; if a
+normal in-process replacement fails partway through, already-replaced targets are
+rolled back to their exact pre-existing files (or removed if they were newly
+created), so the command does not leave a mixed old/new report-cache pair. Stdout
+cannot participate in filesystem rollback, so when `--output -` is used an optional
+cache file is committed before the report is emitted.
+
 Batch exit code is `0` when the report completed successfully even when individual
 rows are occupied/stale/ambiguous; each row carries its own authoritative status.
 Invalid batch input exits `2` before qualification.
