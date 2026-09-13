@@ -145,6 +145,37 @@ def source_generation_sha256(material: Mapping[str, Any]) -> str:
     ).hexdigest()
 
 
+def release_subject_sha256(
+    *,
+    solicitation_id: str,
+    source_generation: str,
+    evidence: tuple[EvidenceRecord, ...] | list[EvidenceRecord],
+) -> str:
+    """Digest of solicitation + packet/addenda generation + non-release evidence."""
+    projection = [
+        {
+            "id": row.id,
+            "gate": row.gate,
+            "kind": row.kind,
+            "sha256": row.sha256,
+            "source_generation_sha256": row.source_generation_sha256,
+        }
+        for row in evidence
+        if row.gate != "owner_release_to_submit" and row.kind != "OWNER_RELEASE"
+    ]
+    projection.sort(key=lambda row: row["id"])
+    return hashlib.sha256(
+        canonical_json(
+            {
+                "solicitation_id": solicitation_id,
+                "source_generation_sha256": source_generation,
+                "required_gates": list(REQUIRED_GATES),
+                "evidence": projection,
+            }
+        )
+    ).hexdigest()
+
+
 def _validated_material(
     value: Any,
 ) -> tuple[dict[str, Any], tuple[EvidenceRecord, ...], str]:
@@ -191,7 +222,22 @@ def _validated_material(
             raise AuthorityError(f"evidence {ident!r} is bound to a stale source generation")
         if gate == "controlling_packet_acquired" and digest != packet_sha:
             raise AuthorityError("CONTROLLING_PACKET evidence digest must equal packet_sha256")
+        if gate == "packet_sha256_verified" and digest != packet_sha:
+            raise AuthorityError(
+                "PACKET_SHA256_VERIFICATION evidence digest must equal packet_sha256"
+            )
         records.append(EvidenceRecord(ident, gate, kind, digest, row_source))
+
+    subject = release_subject_sha256(
+        solicitation_id=SOLICITATION_ID,
+        source_generation=source_digest,
+        evidence=tuple(records),
+    )
+    for row in records:
+        if row.gate == "owner_release_to_submit" and row.sha256 != subject:
+            raise AuthorityError(
+                "OWNER_RELEASE evidence digest must equal the current release-subject digest"
+            )
 
     detached = json.loads(canonical_json(value))
     return detached, tuple(records), source_digest
