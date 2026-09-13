@@ -16,6 +16,7 @@ from trusted_authority import (
     AuthorityError,
     authority_sha256,
     load_current_authority,
+    release_subject_sha256,
     source_generation_sha256,
 )
 
@@ -40,7 +41,11 @@ def authority_material(generation: int = 7) -> dict:
     }
     source = source_generation_sha256(material)
     for gate in REQUIRED_GATES:
-        digest = material["packet_sha256"] if gate == "controlling_packet_acquired" else h(f"{gate}:{generation}")
+        digest = (
+            material["packet_sha256"]
+            if gate in {"controlling_packet_acquired", "packet_sha256_verified"}
+            else h(f"{gate}:{generation}")
+        )
         material["evidence"].append(
             {
                 "id": f"ev:{gate}",
@@ -50,7 +55,20 @@ def authority_material(generation: int = 7) -> dict:
                 "source_generation_sha256": source,
             }
         )
+    owner = next(
+        row for row in material["evidence"]
+        if row["gate"] == "owner_release_to_submit"
+    )
+    owner["sha256"] = release_subject_sha256(material)
     return material
+
+
+def rebind_owner_release(material: dict) -> None:
+    owner = next(
+        row for row in material["evidence"]
+        if row["gate"] == "owner_release_to_submit"
+    )
+    owner["sha256"] = release_subject_sha256(material)
 
 
 def ready_state(material: dict) -> dict:
@@ -81,7 +99,6 @@ def load_pinned(material: dict):
         }
         with mock.patch.dict(os.environ, env, clear=False):
             return load_current_authority(path), json.loads(json.dumps(material))
-
 
 
 class PreflightTests(unittest.TestCase):
@@ -151,7 +168,12 @@ class PreflightTests(unittest.TestCase):
     def test_self_minted_authority_not_matching_host_root_is_rejected(self):
         approved = authority_material()
         attacker = copy.deepcopy(approved)
-        attacker["evidence"][-1]["sha256"] = h("attacker-owner-release")
+        pricing = next(
+            row for row in attacker["evidence"]
+            if row["gate"] == "pricing_form_complete"
+        )
+        pricing["sha256"] = h("attacker-pricing")
+        rebind_owner_release(attacker)
         with tempfile.TemporaryDirectory() as td:
             path = Path(td) / "authority.json"
             path.write_text(json.dumps(attacker), encoding="utf-8")
@@ -180,7 +202,12 @@ class PreflightTests(unittest.TestCase):
     def test_same_generation_fork_cannot_replace_host_pinned_digest(self):
         material = authority_material(generation=7)
         fork = copy.deepcopy(material)
-        fork["evidence"][-1]["sha256"] = h("forked-owner-release")
+        narrative = next(
+            row for row in fork["evidence"]
+            if row["gate"] == "technical_narrative_complete"
+        )
+        narrative["sha256"] = h("forked-narrative")
+        rebind_owner_release(fork)
         with tempfile.TemporaryDirectory() as td:
             path = Path(td) / "authority.json"
             path.write_text(json.dumps(fork), encoding="utf-8")
@@ -223,6 +250,87 @@ class PreflightTests(unittest.TestCase):
         packet["sha256"] = h("different-packet")
         with self.assertRaisesRegex(AuthorityError, "must equal packet_sha256"):
             authority_sha256(material)
+
+    def test_packet_verification_must_bind_exact_packet_digest(self):
+        material = authority_material()
+        verification = next(
+            row for row in material["evidence"]
+            if row["gate"] == "packet_sha256_verified"
+        )
+        verification["sha256"] = h("unrelated-verification-subject")
+        with self.assertRaisesRegex(AuthorityError, "PACKET_SHA256_VERIFICATION"):
+            authority_sha256(material)
+
+    def test_owner_release_must_bind_current_release_subject(self):
+        material = authority_material()
+        owner = next(
+            row for row in material["evidence"]
+            if row["gate"] == "owner_release_to_submit"
+        )
+        self.assertEqual(release_subject_sha256(material), owner["sha256"])
+        owner["sha256"] = h("unrelated-owner-release")
+        with self.assertRaisesRegex(AuthorityError, "current release-subject"):
+            authority_sha256(material)
+
+    def test_old_owner_release_fails_after_pricing_change(self):
+        material = authority_material()
+        pricing = next(
+            row for row in material["evidence"]
+            if row["gate"] == "pricing_form_complete"
+        )
+        pricing["sha256"] = h("repriced-offer")
+        with self.assertRaisesRegex(AuthorityError, "current release-subject"):
+            authority_sha256(material)
+
+    def test_old_owner_release_fails_after_evidence_identity_change(self):
+        material = authority_material()
+        reference = next(
+            row for row in material["evidence"]
+            if row["gate"] == "references_resolved"
+        )
+        reference["id"] = "ev:references_resolved:v2"
+        with self.assertRaisesRegex(AuthorityError, "current release-subject"):
+            authority_sha256(material)
+
+    def test_old_owner_release_fails_after_evidence_added(self):
+        material = authority_material()
+        source = source_generation_sha256(material)
+        material["evidence"].append(
+            {
+                "id": "ev:references_resolved:secondary",
+                "gate": "references_resolved",
+                "kind": GATE_EVIDENCE_KIND["references_resolved"],
+                "sha256": h("secondary-reference"),
+                "source_generation_sha256": source,
+            }
+        )
+        with self.assertRaisesRegex(AuthorityError, "current release-subject"):
+            authority_sha256(material)
+
+    def test_old_owner_release_fails_after_evidence_removed(self):
+        material = authority_material()
+        material["evidence"] = [
+            row for row in material["evidence"]
+            if row["gate"] != "technical_narrative_complete"
+        ]
+        with self.assertRaisesRegex(AuthorityError, "current release-subject"):
+            authority_sha256(material)
+
+    def test_release_subject_projection_is_evidence_order_independent(self):
+        material = authority_material()
+        expected = release_subject_sha256(material)
+        material["evidence"] = list(reversed(material["evidence"]))
+        self.assertEqual(expected, release_subject_sha256(material))
+
+    def test_rebound_owner_release_accepts_changed_evidence(self):
+        material = authority_material()
+        pricing = next(
+            row for row in material["evidence"]
+            if row["gate"] == "pricing_form_complete"
+        )
+        pricing["sha256"] = h("repriced-offer")
+        rebind_owner_release(material)
+        self.assertRegex(authority_sha256(material), r"^[0-9a-f]{64}$")
 
     def test_state_stale_generation_cannot_use_current_authority(self):
         material = authority_material()
