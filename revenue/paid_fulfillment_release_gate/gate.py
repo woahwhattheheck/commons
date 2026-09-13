@@ -1,11 +1,18 @@
 #!/usr/bin/env python3
-"""Deterministic, read-only paid-fulfillment release decision gate."""
+"""Deterministic, read-only paid-fulfillment release decision gate.
+
+A release decision is only current for a short, fixed authority window.  Source
+freshness is evaluated at ``snapshot_at``; release authority is separately bound
+to trusted evaluation/consumption time so an old internally coherent snapshot
+cannot be replayed indefinitely.
+"""
 
 from __future__ import annotations
 
 import argparse
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 import hashlib
+import hmac
 import json
 import os
 from pathlib import Path
@@ -17,6 +24,7 @@ SCHEMA_VERSION = 1
 MAX_EVENTS = 10_000
 MAX_AMOUNT_MINOR = 10**15
 MAX_FRESHNESS_SECONDS = 7 * 24 * 60 * 60
+RELEASE_RECEIPT_TTL_SECONDS = 5 * 60
 REQUIRED_SOURCES = (
     "PAYMENT_PROVIDER",
     "OPERATIONS_SYSTEM",
@@ -34,7 +42,10 @@ SOURCE_FOR_KIND = {
 }
 ID_RE = re.compile(r"^[A-Za-z0-9][A-Za-z0-9._:/-]{0,127}$")
 CURRENCY_RE = re.compile(r"^[A-Z]{3}$")
-RFC3339_RE = re.compile(r"^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d{1,6})?(?:Z|[+-]\d{2}:\d{2})$")
+RFC3339_RE = re.compile(
+    r"^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d{1,6})?(?:Z|[+-]\d{2}:\d{2})$"
+)
+SHA256_RE = re.compile(r"^[0-9a-f]{64}$")
 
 
 class GateInputError(ValueError):
@@ -107,21 +118,39 @@ def _time(value: Any, where: str) -> datetime:
     return parsed.astimezone(timezone.utc)
 
 
+def _trusted_time(value: datetime | None, where: str) -> datetime:
+    if value is None:
+        value = _utcnow()
+    if not isinstance(value, datetime) or value.tzinfo is None or value.utcoffset() is None:
+        raise GateInputError(f"{where} must be a timezone-aware datetime")
+    return value.astimezone(timezone.utc)
+
+
+def _utcnow() -> datetime:
+    return datetime.now(timezone.utc)
+
+
 def _ftime(value: datetime) -> str:
     return value.astimezone(timezone.utc).isoformat(timespec="microseconds").replace("+00:00", "Z")
 
 
 def _digest(value: Any) -> str:
-    encoded = json.dumps(value, sort_keys=True, separators=(",", ":"), ensure_ascii=False).encode("utf-8")
+    encoded = json.dumps(
+        value, sort_keys=True, separators=(",", ":"), ensure_ascii=False
+    ).encode("utf-8")
     return hashlib.sha256(encoded).hexdigest()
 
 
-def _source_states(raw: Any, snapshot_at: datetime, freshness: int) -> tuple[dict[str, dict[str, Any]], list[str]]:
+def _source_states(
+    raw: Any, snapshot_at: datetime, freshness: int
+) -> tuple[dict[str, dict[str, Any]], list[str]]:
     source_obj = _exact(raw, set(REQUIRED_SOURCES), "sources")
     states: dict[str, dict[str, Any]] = {}
     blockers: list[str] = []
     for source in REQUIRED_SOURCES:
-        item = _exact(source_obj[source], {"complete", "observed_at"}, f"sources.{source}")
+        item = _exact(
+            source_obj[source], {"complete", "observed_at"}, f"sources.{source}"
+        )
         if not isinstance(item["complete"], bool):
             raise GateInputError(f"sources.{source}.complete must be boolean")
         observed = _time(item["observed_at"], f"sources.{source}.observed_at")
@@ -132,7 +161,11 @@ def _source_states(raw: Any, snapshot_at: datetime, freshness: int) -> tuple[dic
             blockers.append(f"SOURCE_INCOMPLETE:{source}")
         if age > freshness:
             blockers.append(f"SOURCE_STALE:{source}")
-        states[source] = {"complete": item["complete"], "observed": observed, "age": age}
+        states[source] = {
+            "complete": item["complete"],
+            "observed": observed,
+            "age": age,
+        }
     return states, blockers
 
 
@@ -152,7 +185,12 @@ def _event_keys(kind: str) -> set[str]:
     return common | extras[kind]
 
 
-def _parse_event(raw: Any, index: int, order_id: str, sources: dict[str, dict[str, Any]]) -> dict[str, Any]:
+def _parse_event(
+    raw: Any,
+    index: int,
+    order_id: str,
+    sources: dict[str, dict[str, Any]],
+) -> dict[str, Any]:
     where = f"events[{index}]"
     if not isinstance(raw, dict):
         raise GateInputError(f"{where} must be an object")
@@ -163,7 +201,9 @@ def _parse_event(raw: Any, index: int, order_id: str, sources: dict[str, dict[st
     event_id = _stable_id(item["event_id"], f"{where}.event_id")
     source = item["source"]
     if source != SOURCE_FOR_KIND[kind]:
-        raise GateInputError(f"{where}.source must be {SOURCE_FOR_KIND[kind]} for {kind}")
+        raise GateInputError(
+            f"{where}.source must be {SOURCE_FOR_KIND[kind]} for {kind}"
+        )
     if _stable_id(item["order_id"], f"{where}.order_id") != order_id:
         raise GateInputError(f"{where}.order_id does not match order.order_id")
     occurred = _time(item["occurred_at"], f"{where}.occurred_at")
@@ -172,13 +212,21 @@ def _parse_event(raw: Any, index: int, order_id: str, sources: dict[str, dict[st
 
     data = dict(item)
     data["occurred_at"] = _ftime(occurred)
-    for key in ("payment_id", "refund_id", "chargeback_id", "cancellation_id", "release_id"):
+    for key in (
+        "payment_id",
+        "refund_id",
+        "chargeback_id",
+        "cancellation_id",
+        "release_id",
+    ):
         if key in data:
             data[key] = _stable_id(data[key], f"{where}.{key}")
     if "currency" in data:
         data["currency"] = _currency(data["currency"], f"{where}.currency")
     if "amount_minor" in data:
-        data["amount_minor"] = _integer(data["amount_minor"], f"{where}.amount_minor", 1, MAX_AMOUNT_MINOR)
+        data["amount_minor"] = _integer(
+            data["amount_minor"], f"{where}.amount_minor", 1, MAX_AMOUNT_MINOR
+        )
     return {"id": event_id, "kind": kind, "occurred": occurred, "data": data}
 
 
@@ -190,14 +238,22 @@ def _dedupe(events: list[dict[str, Any]]) -> tuple[list[dict[str, Any]], int]:
         if prior is None:
             by_id[event["id"]] = event
         elif prior["data"] != event["data"]:
-            raise GateInputError(f"event_id reused with different content: {event['id']}")
+            raise GateInputError(
+                f"event_id reused with different content: {event['id']}"
+            )
         else:
             duplicates += 1
     return sorted(by_id.values(), key=lambda e: (e["occurred"], e["id"])), duplicates
 
 
-def _readiness(events: list[dict[str, Any]], at: datetime | None = None) -> tuple[str, str | None, datetime | None, bool]:
-    candidates = [e for e in events if e["kind"] in {"FULFILLMENT_READY", "FULFILLMENT_NOT_READY"}]
+def _readiness(
+    events: list[dict[str, Any]], at: datetime | None = None
+) -> tuple[str, str | None, datetime | None, bool]:
+    candidates = [
+        e
+        for e in events
+        if e["kind"] in {"FULFILLMENT_READY", "FULFILLMENT_NOT_READY"}
+    ]
     if at is not None:
         candidates = [e for e in candidates if e["occurred"] <= at]
     if not candidates:
@@ -212,29 +268,71 @@ def _readiness(events: list[dict[str, Any]], at: datetime | None = None) -> tupl
     return state, chosen["id"], latest_time, False
 
 
-def evaluate(payload: dict[str, Any]) -> dict[str, Any]:
+def evaluate(
+    payload: dict[str, Any], *, evaluated_at: datetime | None = None
+) -> dict[str, Any]:
+    """Evaluate one release snapshot against trusted current time.
+
+    ``evaluated_at`` is an out-of-band authority for deterministic tests and
+    trusted adapters. It is never read from the untrusted snapshot payload.
+    Production callers should omit it so UTC wall-clock time is used.
+    """
+
     top = _exact(
         payload,
-        {"schema_version", "decision_id", "snapshot_at", "freshness_window_seconds", "order", "sources", "events"},
+        {
+            "schema_version",
+            "decision_id",
+            "snapshot_at",
+            "freshness_window_seconds",
+            "order",
+            "sources",
+            "events",
+        },
         "top-level",
     )
     if top["schema_version"] != SCHEMA_VERSION:
         raise GateInputError(f"schema_version must be {SCHEMA_VERSION}")
     decision_id = _stable_id(top["decision_id"], "decision_id")
     snapshot_at = _time(top["snapshot_at"], "snapshot_at")
-    freshness = _integer(top["freshness_window_seconds"], "freshness_window_seconds", 1, MAX_FRESHNESS_SECONDS)
+    evaluation_time = _trusted_time(evaluated_at, "evaluated_at")
+    if snapshot_at > evaluation_time:
+        raise GateInputError("snapshot_at is after trusted evaluation time")
+    authority_expires_at = snapshot_at + timedelta(seconds=RELEASE_RECEIPT_TTL_SECONDS)
+    snapshot_age = (evaluation_time - snapshot_at).total_seconds()
+    authority_expired = evaluation_time >= authority_expires_at
 
-    order = _exact(top["order"], {"order_id", "currency", "required_amount_minor"}, "order")
+    freshness = _integer(
+        top["freshness_window_seconds"],
+        "freshness_window_seconds",
+        1,
+        MAX_FRESHNESS_SECONDS,
+    )
+    order = _exact(
+        top["order"],
+        {"order_id", "currency", "required_amount_minor"},
+        "order",
+    )
     order_id = _stable_id(order["order_id"], "order.order_id")
     currency = _currency(order["currency"], "order.currency")
-    required = _integer(order["required_amount_minor"], "order.required_amount_minor", 1, MAX_AMOUNT_MINOR)
+    required = _integer(
+        order["required_amount_minor"],
+        "order.required_amount_minor",
+        1,
+        MAX_AMOUNT_MINOR,
+    )
     sources, blockers = _source_states(top["sources"], snapshot_at, freshness)
+    if authority_expired:
+        blockers.append("SNAPSHOT_EXPIRED")
 
     if not isinstance(top["events"], list):
         raise GateInputError("events must be an array")
     if len(top["events"]) > MAX_EVENTS:
         raise GateInputError(f"events exceeds maximum of {MAX_EVENTS}")
-    parsed = [_parse_event(raw, i, order_id, sources) for i, raw in enumerate(top["events"])]
+    parsed = [
+        _parse_event(raw, i, order_id, sources)
+        for i, raw in enumerate(top["events"])
+    ]
     events, duplicate_count = _dedupe(parsed)
 
     exceptions: list[str] = []
@@ -250,9 +348,16 @@ def evaluate(payload: dict[str, Any]) -> dict[str, Any]:
             if data["currency"] != currency:
                 exceptions.append(f"PAYMENT_CURRENCY_MISMATCH:{event['id']}")
                 continue
-            candidate = {"amount": data["amount_minor"], "currency": data["currency"], "occurred": event["occurred"]}
+            candidate = {
+                "amount": data["amount_minor"],
+                "currency": data["currency"],
+                "occurred": event["occurred"],
+            }
             prior = captures.get(data["payment_id"])
-            if prior and (prior["amount"], prior["currency"]) != (candidate["amount"], candidate["currency"]):
+            if prior and (prior["amount"], prior["currency"]) != (
+                candidate["amount"],
+                candidate["currency"],
+            ):
                 exceptions.append(f"PAYMENT_ID_CONFLICT:{data['payment_id']}")
             elif not prior:
                 captures[data["payment_id"]] = candidate
@@ -260,16 +365,31 @@ def evaluate(payload: dict[str, Any]) -> dict[str, Any]:
             if data["currency"] != currency:
                 exceptions.append(f"REFUND_CURRENCY_MISMATCH:{event['id']}")
                 continue
-            candidate = {"payment_id": data["payment_id"], "amount": data["amount_minor"], "currency": data["currency"], "occurred": event["occurred"]}
+            candidate = {
+                "payment_id": data["payment_id"],
+                "amount": data["amount_minor"],
+                "currency": data["currency"],
+                "occurred": event["occurred"],
+            }
             prior = refunds.get(data["refund_id"])
-            if prior and (prior["payment_id"], prior["amount"], prior["currency"]) != (candidate["payment_id"], candidate["amount"], candidate["currency"]):
+            if prior and (
+                prior["payment_id"],
+                prior["amount"],
+                prior["currency"],
+            ) != (
+                candidate["payment_id"],
+                candidate["amount"],
+                candidate["currency"],
+            ):
                 exceptions.append(f"REFUND_ID_CONFLICT:{data['refund_id']}")
             elif not prior:
                 refunds[data["refund_id"]] = candidate
         elif kind == "PAYMENT_CHARGEBACK":
             prior = chargebacks.get(data["chargeback_id"])
             if prior and prior != data["payment_id"]:
-                exceptions.append(f"CHARGEBACK_ID_CONFLICT:{data['chargeback_id']}")
+                exceptions.append(
+                    f"CHARGEBACK_ID_CONFLICT:{data['chargeback_id']}"
+                )
             else:
                 chargebacks[data["chargeback_id"]] = data["payment_id"]
         elif kind == "ORDER_CANCELLED":
@@ -284,7 +404,11 @@ def evaluate(payload: dict[str, Any]) -> dict[str, Any]:
         if payment_id not in captures:
             exceptions.append(f"CHARGEBACK_WITHOUT_CAPTURE:{chargeback_id}")
     for payment_id in captures:
-        refunded = sum(r["amount"] for r in refunds.values() if r["payment_id"] == payment_id)
+        refunded = sum(
+            r["amount"]
+            for r in refunds.values()
+            if r["payment_id"] == payment_id
+        )
         if refunded > captures[payment_id]["amount"]:
             exceptions.append(f"REFUND_EXCEEDS_CAPTURE:{payment_id}")
 
@@ -307,17 +431,33 @@ def evaluate(payload: dict[str, Any]) -> dict[str, Any]:
         exceptions.append("ORDER_CANCELLED")
 
     if release_at is not None:
-        paid_at_release = sum(c["amount"] for c in captures.values() if c["occurred"] <= release_at)
-        paid_at_release -= sum(r["amount"] for r in refunds.values() if r["occurred"] <= release_at)
+        paid_at_release = sum(
+            c["amount"] for c in captures.values() if c["occurred"] <= release_at
+        )
+        paid_at_release -= sum(
+            r["amount"] for r in refunds.values() if r["occurred"] <= release_at
+        )
         if paid_at_release < required:
             exceptions.append("RELEASE_WITHOUT_FULL_PAYMENT")
-        release_readiness, _, _, release_readiness_conflict = _readiness(events, release_at)
+        release_readiness, _, _, release_readiness_conflict = _readiness(
+            events, release_at
+        )
         if release_readiness_conflict or release_readiness != "READY":
             exceptions.append("RELEASE_WITHOUT_READY_STATE")
-        reversed_after = any(r["occurred"] > release_at for r in refunds.values())
-        reversed_after |= any(e["occurred"] > release_at for e in cancellations)
-        reversed_after |= any(e["kind"] == "FULFILLMENT_NOT_READY" and e["occurred"] > release_at for e in events)
-        reversed_after |= any(e["kind"] == "PAYMENT_CHARGEBACK" and e["occurred"] > release_at for e in events)
+        reversed_after = any(
+            r["occurred"] > release_at for r in refunds.values()
+        )
+        reversed_after |= any(
+            e["occurred"] > release_at for e in cancellations
+        )
+        reversed_after |= any(
+            e["kind"] == "FULFILLMENT_NOT_READY" and e["occurred"] > release_at
+            for e in events
+        )
+        reversed_after |= any(
+            e["kind"] == "PAYMENT_CHARGEBACK" and e["occurred"] > release_at
+            for e in events
+        )
         if reversed_after:
             exceptions.append("POST_RELEASE_REVERSAL")
 
@@ -331,13 +471,25 @@ def evaluate(payload: dict[str, Any]) -> dict[str, Any]:
 
     exceptions, blockers = sorted(set(exceptions)), sorted(set(blockers))
     if exceptions:
-        decision, release_authorized, reasons = "EXCEPTION", False, exceptions + blockers
+        decision, release_authorized, reasons = (
+            "EXCEPTION",
+            False,
+            exceptions + blockers,
+        )
     elif release_ids:
-        decision, release_authorized, reasons = "ALREADY_RELEASED", False, blockers or ["RELEASE_ALREADY_RECORDED"]
+        decision, release_authorized, reasons = (
+            "ALREADY_RELEASED",
+            False,
+            blockers or ["RELEASE_ALREADY_RECORDED"],
+        )
     elif blockers:
         decision, release_authorized, reasons = "HOLD", False, blockers
     else:
-        decision, release_authorized, reasons = "RELEASE", True, ["FULL_PAYMENT_AND_READINESS_PROVEN"]
+        decision, release_authorized, reasons = (
+            "RELEASE",
+            True,
+            ["FULL_PAYMENT_AND_READINESS_PROVEN"],
+        )
 
     normalized_events = [e["data"] for e in events]
     receipt: dict[str, Any] = {
@@ -345,6 +497,13 @@ def evaluate(payload: dict[str, Any]) -> dict[str, Any]:
         "decision_id": decision_id,
         "order_id": order_id,
         "snapshot_at": _ftime(snapshot_at),
+        "evaluated_at": _ftime(evaluation_time),
+        "authorization": {
+            "ttl_seconds": RELEASE_RECEIPT_TTL_SECONDS,
+            "expires_at": _ftime(authority_expires_at),
+            "snapshot_age_seconds": round(snapshot_age, 6),
+            "expired": authority_expired,
+        },
         "decision": decision,
         "release_authorized": release_authorized,
         "reasons": reasons,
@@ -356,10 +515,21 @@ def evaluate(payload: dict[str, Any]) -> dict[str, Any]:
             "net_paid_amount_minor": net_paid,
             "payment_ids": sorted(captures),
         },
-        "readiness": {"state": readiness, "event_id": readiness_id, "occurred_at": _ftime(readiness_at) if readiness_at else None},
-        "release_history": {"release_ids": release_ids, "first_release_at": _ftime(release_at) if release_at else None},
+        "readiness": {
+            "state": readiness,
+            "event_id": readiness_id,
+            "occurred_at": _ftime(readiness_at) if readiness_at else None,
+        },
+        "release_history": {
+            "release_ids": release_ids,
+            "first_release_at": _ftime(release_at) if release_at else None,
+        },
         "sources": {
-            name: {"complete": state["complete"], "observed_at": _ftime(state["observed"]), "age_seconds": round(state["age"], 6)}
+            name: {
+                "complete": state["complete"],
+                "observed_at": _ftime(state["observed"]),
+                "age_seconds": round(state["age"], 6),
+            }
             for name, state in sorted(sources.items())
         },
         "events": {
@@ -373,20 +543,79 @@ def evaluate(payload: dict[str, Any]) -> dict[str, Any]:
     return receipt
 
 
-def _write_atomic(output: Path, receipt: dict[str, Any], input_path: Path | None = None) -> None:
+def verify_release_receipt(
+    receipt: dict[str, Any], *, consumed_at: datetime | None = None
+) -> bool:
+    """Fail closed unless a trusted gate receipt is still usable for release.
+
+    The SHA-256 field detects accidental/tampered byte-level changes inside a
+    trusted channel; it is not a signature and does not authenticate receipt
+    origin. Integrations must establish provenance separately and call this
+    immediately before the physical fulfillment side effect.
+    """
+
+    if not isinstance(receipt, dict):
+        raise GateInputError("receipt must be an object")
+    expected_digest = receipt.get("receipt_sha256")
+    if not isinstance(expected_digest, str) or not SHA256_RE.fullmatch(expected_digest):
+        raise GateInputError("receipt_sha256 must be a lowercase SHA-256 digest")
+    unsigned = dict(receipt)
+    unsigned.pop("receipt_sha256", None)
+    if not hmac.compare_digest(_digest(unsigned), expected_digest):
+        raise GateInputError("receipt_sha256 does not match receipt content")
+    if receipt.get("decision") != "RELEASE" or receipt.get("release_authorized") is not True:
+        raise GateInputError("receipt does not authorize release")
+
+    authorization = _exact(
+        receipt.get("authorization"),
+        {"ttl_seconds", "expires_at", "snapshot_age_seconds", "expired"},
+        "receipt.authorization",
+    )
+    ttl = _integer(
+        authorization["ttl_seconds"],
+        "receipt.authorization.ttl_seconds",
+        RELEASE_RECEIPT_TTL_SECONDS,
+        RELEASE_RECEIPT_TTL_SECONDS,
+    )
+    if authorization["expired"] is not False:
+        raise GateInputError("receipt authority was already expired at evaluation")
+    snapshot_at = _time(receipt.get("snapshot_at"), "receipt.snapshot_at")
+    evaluated = _time(receipt.get("evaluated_at"), "receipt.evaluated_at")
+    expires = _time(
+        authorization["expires_at"], "receipt.authorization.expires_at"
+    )
+    if expires != snapshot_at + timedelta(seconds=ttl):
+        raise GateInputError("receipt expiry does not match snapshot authority horizon")
+    if evaluated >= expires:
+        raise GateInputError("receipt authority was already expired at evaluation")
+    consume_time = _trusted_time(consumed_at, "consumed_at")
+    if consume_time < evaluated:
+        raise GateInputError("consumed_at is before receipt evaluated_at")
+    if consume_time >= expires:
+        raise GateInputError("release receipt has expired; re-evaluate current state")
+    return True
+
+
+def _write_atomic(
+    output: Path, receipt: dict[str, Any], input_path: Path | None = None
+) -> None:
     if output.exists() and output.is_symlink():
         raise GateInputError("output path must not be a symlink")
     output.parent.mkdir(parents=True, exist_ok=True)
     if input_path is not None:
         try:
             aliases = output.exists() and os.path.samefile(input_path, output)
-            aliases = aliases or (not output.exists() and input_path.resolve() == output.resolve())
+            aliases = aliases or (
+                not output.exists() and input_path.resolve() == output.resolve()
+            )
             if aliases:
                 raise GateInputError("input and output must be different files")
         except FileNotFoundError:
             pass
     encoded = json.dumps(receipt, sort_keys=True, indent=2, ensure_ascii=False) + "\n"
-    fd, temp_name = tempfile.mkstemp(prefix=f".{output.name}.", dir=str(output.parent), text=True)
+    fd, temp_name = tempfile.mkstemp(
+        prefix=f".{output.name}.", dir=str(output.parent), text=True
+    )
     try:
         with os.fdopen(fd, "w", encoding="utf-8") as handle:
             handle.write(encoded)
@@ -402,16 +631,22 @@ def _write_atomic(output: Path, receipt: dict[str, Any], input_path: Path | None
 
 
 def main(argv: list[str] | None = None) -> int:
-    parser = argparse.ArgumentParser(description="Evaluate a paid-fulfillment release snapshot")
+    parser = argparse.ArgumentParser(
+        description="Evaluate a paid-fulfillment release snapshot"
+    )
     parser.add_argument("input", type=Path)
-    parser.add_argument("--output", type=Path, help="atomically write the receipt instead of stdout")
+    parser.add_argument(
+        "--output", type=Path, help="atomically write the receipt instead of stdout"
+    )
     args = parser.parse_args(argv)
     try:
         receipt = evaluate(load_json(args.input))
         if args.output:
             _write_atomic(args.output, receipt, args.input)
         else:
-            print(json.dumps(receipt, sort_keys=True, indent=2, ensure_ascii=False))
+            print(
+                json.dumps(receipt, sort_keys=True, indent=2, ensure_ascii=False)
+            )
     except GateInputError as exc:
         parser.exit(2, f"paid-fulfillment-release-gate: {exc}\n")
     return 0
