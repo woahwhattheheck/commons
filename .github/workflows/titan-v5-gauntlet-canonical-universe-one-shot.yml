@@ -23,7 +23,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           ref: ${{ github.sha }}
-          fetch-depth: 256
+          fetch-depth: 1024
 
       - name: Assert exact staging head and capture fresh main
         env:
@@ -31,7 +31,7 @@ jobs:
         run: |
           set -euo pipefail
           test "$(git rev-parse HEAD)" = "${{ github.sha }}"
-          git fetch --no-tags --depth=256 origin main "$BRANCH"
+          git fetch --no-tags --depth=1024 origin main "$BRANCH"
           test "$(git rev-parse origin/$BRANCH)" = "${{ github.sha }}"
           git merge-base origin/main HEAD >/dev/null
           echo "MERGED_MAIN=$(git rev-parse origin/main)" >> "$GITHUB_ENV"
@@ -169,7 +169,7 @@ jobs:
           BRANCH: astra/v5-v31-v4-gauntlet-reducer-20260912
         run: |
           set -euo pipefail
-          git fetch --no-tags --depth=256 origin main "$BRANCH"
+          git fetch --no-tags --depth=1024 origin main "$BRANCH"
           test "$(git rev-parse origin/$BRANCH)" = "${{ github.sha }}"
           git rm .github/workflows/titan-v5-gauntlet-canonical-universe-one-shot.yml
           git rm -f revenue/kaggriculture/cloud-execution-lab/candidates/v5/archive-version-bridge/apply_canonical_universe_v4.py

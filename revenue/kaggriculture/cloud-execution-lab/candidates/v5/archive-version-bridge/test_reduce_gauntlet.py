@@ -342,6 +342,51 @@ class ReduceGauntletTests(unittest.TestCase):
                     with self.assertRaises(rg.ReductionError):
                         rg.reduce_roots([a], [b], index=index)
 
+    def test_cell_metadata_type_mismatch_fails(self):
+        with tempfile.TemporaryDirectory() as td:
+            index, rows = self.index(td, 1)
+            type_violations = (
+                ("candidate_seat", False),
+                ("candidate_seat", True),
+                ("adaptive", 0),
+                ("recorded_orientation", 1),
+                ("seed", float(rows[0]["seed"])),
+            )
+            for idx, (field, wrong) in enumerate(type_violations):
+                with self.subTest(field=field, wrong=wrong):
+                    a = self.root(
+                        td,
+                        "v31",
+                        index,
+                        suffix=f"-{idx}-type-a",
+                    )
+                    b = self.root(
+                        td,
+                        "v4",
+                        index,
+                        suffix=f"-{idx}-type-b",
+                    )
+                    self.game(
+                        a,
+                        "v31",
+                        rows[0],
+                        0,
+                        [100, 100],
+                        **{field: wrong},
+                    )
+                    with self.assertRaises(rg.ReductionError):
+                        rg.reduce_roots([a], [b], index=index)
+
+    def test_cross_version_metadata_type_mismatch_fails(self):
+        with tempfile.TemporaryDirectory() as td:
+            index, rows = self.index(td, 1)
+            a = self.root(td, "v31", index)
+            b = self.root(td, "v4", index)
+            self.game(a, "v31", rows[0], 0, [100, 100], adaptive=False)
+            self.game(b, "v4", rows[0], 0, [100, 100], adaptive=0)
+            with self.assertRaises(rg.ReductionError):
+                rg.reduce_roots([a], [b], index=index)
+
     def test_cross_version_index_identity_mismatch_fails(self):
         with tempfile.TemporaryDirectory() as td:
             index, _rows = self.index(td, 1)
@@ -525,7 +570,12 @@ class ReduceGauntletTests(unittest.TestCase):
             target = a / f"{rows[0]['id']}-p0.json"
             real = a / "real.json"
             target.rename(real)
-            target.symlink_to(real.name)
+            try:
+                target.symlink_to(real.name)
+            except OSError as exc:
+                if getattr(exc, "winerror", None) == 1314:
+                    self.skipTest("symlink privilege not held on Windows")
+                raise
             with self.assertRaises(rg.ReductionError):
                 rg.reduce_roots([a], [b], index=index)
 

@@ -45,7 +45,7 @@ def _reject_constant(token: str) -> None:
 
 def _read_regular_bytes(path: Path) -> bytes:
     path = Path(path)
-    flags = os.O_RDONLY
+    flags = os.O_RDONLY | getattr(os, "O_BINARY", 0)
     if hasattr(os, "O_CLOEXEC"):
         flags |= os.O_CLOEXEC
     if hasattr(os, "O_NOFOLLOW"):
@@ -249,7 +249,8 @@ def _validate_cell_against_index(
         == expected["candidate_seat_for_recorded_orientation"],
     }
     for field, value in exact.items():
-        if record.get(field) != value:
+        actual = record.get(field)
+        if type(actual) is not type(value) or actual != value:
             raise ReductionError(
                 f"cell/index authority mismatch for {path}: {field}"
             )
@@ -624,7 +625,9 @@ def _same_authority(
         "recorded_orientation",
         "memberships",
     ):
-        if left.get(field) != right.get(field):
+        left_val = left.get(field)
+        right_val = right.get(field)
+        if type(left_val) is not type(right_val) or left_val != right_val:
             raise ReductionError(
                 f"cross-version metadata mismatch for {key!r}: "
                 f"{field}"
