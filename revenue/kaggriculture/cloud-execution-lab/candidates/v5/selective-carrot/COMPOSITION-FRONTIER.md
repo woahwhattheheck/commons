@@ -11,6 +11,7 @@ separate promotion gate is satisfied.
 | Candidate | Exact production-v3 carrier | Current evidence | Composer disposition |
 | --- | --- | --- | --- |
 | Future own supply | Yes: `components/future-own-supply-v1/COMPONENT.json` | Five matched development cells, 5/5 positive, mean margin delta +19; no native timing or broad rating conclusion | Composable seller-layer component; retain as a held interaction arm |
+| C02 deferred replacement | Yes: `components/c02-deferred-replacement-v1/COMPONENT.json` | Twelve matched local cells over six mirrored-seat worlds; six engaged cells positive, six inert, mean margin delta +75.5; timers disabled | Composable delivery layer component; run the posted native Apex/Arlene split before cumulative promotion |
 | P05 weed queue PASS catch-up | Yes: deterministic component materializer | Source and contract tests only; native engagement and economics are unmeasured | Eligible for a standalone screen; owns `r04_full_router.py` |
 | P02 goose capacity economy | Yes: deterministic exact-archive builder | Source and contract tests only; natural placement, EGG realization, and economics are unmeasured | Eligible for a standalone screen; owns `main.py` |
 | WF1 wheat/fertilize | Partial: source and adapter carrier, but no production-v3 postimage | Retained 8-cell receipt is positive in every cell with +143.25 mean margin, but it is bound to the older donor/runtime rather than the exact production-v3 archive | High-priority exact-current re-gate; do not treat the historical receipt as a V5 win |
@@ -101,3 +102,11 @@ onto production-v3 deterministically reconstructs candidate archive SHA256
 `ca8ca6f5d1ffb5ad828db5d924ed27d4d3c2f35b3a54ebd1f4cb311d7cdea9e1`.
 That exact reconstruction establishes custody and composability; its five-cell
 development result is not sufficient promotion evidence.
+
+`c02-deferred-replacement-v1` is the second concrete intake artifact. It
+reconstructs candidate SHA256
+`8c294b6dbe296c6b822eaeccab8e3ecb3fbfc7854b50d6f584d9bd6da26e6d61`
+and composes with future-own-supply in either order to SHA256
+`3bd665c3a88425964b396703f3531a93d68b9e67680b3fbff812a2d2fa9f3778`.
+The C02-only local screen is positive but small; the combined archive has no
+economics yet and remains a held interaction arm.

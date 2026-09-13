@@ -19,6 +19,17 @@ class LandedStagingComponentTests(unittest.TestCase):
         )
         self.assertEqual(set(component["additions"]), {"future_own_supply.py"})
 
+    def test_c02_component_is_self_authenticating_and_isolated(self):
+        root = Path(__file__).with_name("components") / "c02-deferred-replacement-v1"
+        component = sc.load_component(root / "COMPONENT.json")
+
+        self.assertEqual(component["component_id"], "c02-deferred-replacement-v1")
+        self.assertEqual(component["depends_on"], [])
+        self.assertEqual(component["conflicts_with"], [])
+        self.assertEqual(component["overlap_after"], {})
+        self.assertEqual(set(component["replacements"]), {"delivery_choice.py"})
+        self.assertEqual(component["additions"], {})
+
 
 if __name__ == "__main__":
     unittest.main()
