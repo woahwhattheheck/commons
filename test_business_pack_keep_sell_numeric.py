@@ -184,7 +184,7 @@ class NumericValidationTests(unittest.TestCase):
         )
 
     def test_cli_set_checkout_rejects_malformed_packs_without_write(self):
-        self._assert_mutating_cli_rejects_malformed_packs_without_write(
+        self._assert_mutating_cli_rejects_malformed_packs(
             [
                 "set-checkout",
                 "--id",
