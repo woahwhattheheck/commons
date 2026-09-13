@@ -1,9 +1,9 @@
 {
   "counts": {
-    "open_issues": 20,
-    "open_pull_requests": 21,
-    "runs_in_progress": 11,
-    "runs_queued": 967
+    "open_issues": 21,
+    "open_pull_requests": 22,
+    "runs_in_progress": 16,
+    "runs_queued": 969
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -69,6 +69,17 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
+      "branch": "zbra-h8n5/bss-mcp-transcript-audit-20260913",
+      "created_at": "2026-09-13T10:52:53Z",
+      "draft": false,
+      "head_sha": "1c21c17267cdaa8fffe1c6893560b7b9176c2637",
+      "number": 13790,
+      "title": "mcp: add byte-bound 2025-11-25 transcript audit + verifier",
+      "updated_at": "2026-09-13T10:52:53Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
       "branch": "zkg-n7q/commercial-funnel-postmerge-authority-20260913",
       "created_at": "2026-09-13T10:42:02Z",
       "draft": false,
@@ -94,10 +105,10 @@
       "branch": "zpk-r4v8/zindi-bias-discovery-v2-20260913",
       "created_at": "2026-09-13T10:35:15Z",
       "draft": false,
-      "head_sha": "ff7805e599b768c3855791535dfb528f40480cb1",
+      "head_sha": "f245f2d6be424b01c3338a3d001b1611ab0c8f7e",
       "number": 13769,
       "title": "Zindi: add robust bias-discovery evidence engine",
-      "updated_at": "2026-09-13T10:50:05Z"
+      "updated_at": "2026-09-13T10:53:40Z"
     },
     {
       "author": "woahwhattheheck",
@@ -116,10 +127,10 @@
       "branch": "zkal-v7n3/opportunity-qualifier-20260913",
       "created_at": "2026-09-13T10:15:25Z",
       "draft": false,
-      "head_sha": "bbb79c260a676c6cdf378ace2934c30c52115ff5",
+      "head_sha": "233642dbbf5dc85ef443a2e34d2bdb9406163b21",
       "number": 13741,
       "title": "revenue: add evidence-bound opportunity qualifier",
-      "updated_at": "2026-09-13T10:49:43Z"
+      "updated_at": "2026-09-13T10:52:38Z"
     },
     {
       "author": "woahwhattheheck",
@@ -164,17 +175,6 @@
       "number": 13701,
       "title": "revenue: add CAS actuarial LLM benchmark reproducibility core",
       "updated_at": "2026-09-13T09:54:04Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zram/wuhu-lerobot-qc-20260913",
-      "created_at": "2026-09-13T09:42:49Z",
-      "draft": false,
-      "head_sha": "80c722fbe7ab7dd711ce01987bea50c900ad673e",
-      "number": 13695,
-      "title": "competition: add Wuhu LeRobot trajectory QC engine",
-      "updated_at": "2026-09-13T09:42:49Z"
     }
   ],
   "open_heads": {
@@ -194,15 +194,16 @@
     "13702": "2b6598f90c107dfacc4ec2a975e070f5073f8952",
     "13712": "e5d13ab500ff195dd85df2728f85794dab2fe048",
     "13740": "dc8de234ed4da90cdbaece2e1d06b9c6925cdf2e",
-    "13741": "bbb79c260a676c6cdf378ace2934c30c52115ff5",
+    "13741": "233642dbbf5dc85ef443a2e34d2bdb9406163b21",
     "13756": "f0db7219f3c214269cb33ea57315d5350f276d47",
-    "13769": "ff7805e599b768c3855791535dfb528f40480cb1",
+    "13769": "f245f2d6be424b01c3338a3d001b1611ab0c8f7e",
     "13779": "de08c8c7c51e665489c52dbec5e2aef2e18b11cc",
-    "13782": "1553dd65151766b6c3a195fa87689f9505f1de29"
+    "13782": "1553dd65151766b6c3a195fa87689f9505f1de29",
+    "13790": "1c21c17267cdaa8fffe1c6893560b7b9176c2637"
   },
-  "pulls_listed": 21,
+  "pulls_listed": 22,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 87.9,
+  "queue_depth_per_runner": 60.6,
   "recently_closed": [
     {
       "author": "woahwhattheheck",
@@ -372,6 +373,6 @@
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-13T10:50:49Z",
+  "unchanged_since": "2026-09-13T10:53:57Z",
   "undatable_pulls": []
 }
