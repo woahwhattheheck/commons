@@ -81,6 +81,30 @@ class RailTests(unittest.TestCase):
         self.record["owner_approval"]["approved_catalog_rows"] = []
         self.assertIn("CATALOG_NOT_OWNER_APPROVED", self.decision()["hold_codes"])
 
+    def test_cross_account_relabel_holds_all_authority_evidence(self):
+        self.record["account_id"] = "acct-other"
+        codes = self.decision()["hold_codes"]
+        self.assertIn("SETTLEMENT_ACCOUNT_MISMATCH", codes)
+        self.assertIn("ACCEPTANCE_ACCOUNT_MISMATCH", codes)
+        self.assertIn("BUYER_SIGNAL_ACCOUNT_MISMATCH", codes)
+        self.assertIn("OWNER_APPROVAL_ACCOUNT_MISMATCH", codes)
+
+    def test_settlement_cross_account_splice_holds(self):
+        self.record["settlement"]["account_id"] = "acct-other"
+        self.assertIn("SETTLEMENT_ACCOUNT_MISMATCH", self.decision()["hold_codes"])
+
+    def test_acceptance_cross_account_splice_holds(self):
+        self.record["delivery_acceptance"]["account_id"] = "acct-other"
+        self.assertIn("ACCEPTANCE_ACCOUNT_MISMATCH", self.decision()["hold_codes"])
+
+    def test_buyer_signal_cross_account_splice_holds(self):
+        self.record["buyer_signal"]["account_id"] = "acct-other"
+        self.assertIn("BUYER_SIGNAL_ACCOUNT_MISMATCH", self.decision()["hold_codes"])
+
+    def test_owner_approval_cross_account_splice_holds(self):
+        self.record["owner_approval"]["account_id"] = "acct-other"
+        self.assertIn("OWNER_APPROVAL_ACCOUNT_MISMATCH", self.decision()["hold_codes"])
+
     def test_missing_catalog_holds(self):
         self.record["catalog"] = []
         self.assertIn("CATALOG_ITEM_MISSING", self.decision()["hold_codes"])
