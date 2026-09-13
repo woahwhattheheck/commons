@@ -1,46 +1,23 @@
-# Evidence-bound expertise catalog
+# Commons expertise catalog
 
-`commons.expertise-catalog/v1` turns bounded, source-evidenced expertise offers into deterministic machine JSON plus a buyer-facing Markdown review packet. It directly implements the Commons offering-family directive that expertise should be explicit catalog entries rather than hidden inside implementation work.
+This is the explicit catalog for the **expertise** offering family: judgment, diagnosis, design, review, and teaching sold independently of a software transfer.
 
-## What it proves
+The machine contract is [`catalog.json`](./catalog.json), validated by [`host/expertise_catalog.py`](../../host/expertise_catalog.py) and rendered as the public buyer surface [`expertise.html`](../../expertise.html).
 
-A compiled offer binds an exact repository commit, path and SHA-256 digest; one or more exact evidence artifacts; an explicit included/excluded scope; exact integer-cent price and currency; canonical UTC validity; a bounded delivery window; and one deterministic offer digest. Input ordering does not affect catalog ordering. Exact duplicate versions collapse; changed duplicates fail closed. Secret-shaped strings, email-shaped PII, path traversal, unpinned commits, unsafe money, malformed timestamps, conflicting evidence IDs, and ambiguous scope all fail closed.
+Commercial truth is fail-closed:
 
-The strongest descriptive state is `CATALOG_REVIEW_PACKET_READY`; it is a packaging/result label only, never an approval, permission, admission, or publication gate. `HOLD` is emitted for an otherwise-valid offer that is not yet active or has expired against the caller-supplied trusted `--as-of` clock.
+- `LIVE_EXISTING_SKU` may only reuse terms already proven by a canonical source artifact. The initial live entry is the existing White Box hour at `$250.00/hour`; its checkout remains owned by the existing commerce/Stripe path and is **not reminted here**.
+- `QUOTE_ONLY` entries have `amount_usd=null`, `unit=null`, and `checkout_reference=null`. A buyer can ask for a scope, but the catalog does not invent a price or checkout.
+- A catalog row is not evidence of a buyer, acceptance, delivery, settlement, payout, or cash.
 
-## Authority ceiling
+The expert-network provider intake under `revenue/expert_networks/` is separate. It records provider workflow metadata; this catalog defines Commons buyer-facing expertise offers.
 
-The compiler never publishes a listing, contacts a buyer, creates a checkout, charges/refunds money, signs/amends a contract, schedules or starts delivery, infers buyer acceptance, or recognizes revenue. Every compiled offer and the catalog envelope set those authority flags to `false`.
-
-## CLI
-
-```bash
-python -m revenue.expertise_catalog.cli compile \
-  --input offers.json \
-  --as-of 2026-09-13T10:00:00Z \
-  --out-json expertise-catalog.json \
-  --out-md expertise-catalog.md
-
-python -m revenue.expertise_catalog.cli verify \
-  --manifest expertise-catalog.json \
-  --markdown expertise-catalog.md \
-  --expected-catalog-digest <independently-retained-sha256>
-```
-
-The verifier always recompiles the normalized offer material and checks the exact schema, derived states, counts, ordering, authority ceilings, and canonical digests. Self-contained hashes establish internal integrity, not external authenticity: when detecting a coherently rewritten catalog matters, pass an independently retained `--expected-catalog-digest`.
-
-The compile input is exactly:
-
-```json
-{"offers": [ ... ]}
-```
-
-Each source/evidence reference is `repository + full 40-hex commit + repository-relative path + sha256`. The compiler intentionally accepts no floating-point money and no provider/network credentials.
-
-## Validation
+Validation:
 
 ```bash
-python -m py_compile revenue/expertise_catalog/catalog.py revenue/expertise_catalog/cli.py revenue/expertise_catalog/test_catalog.py
-python -m unittest revenue.expertise_catalog.test_catalog -v
-python -O -m unittest revenue.expertise_catalog.test_catalog -v
+python3 host/expertise_catalog.py validate
+python3 host/expertise_catalog.py list
+python3 host/expertise_catalog.py show expertise-agent-architecture-review
+python3 host/expertise_catalog.py --self-test
+python3 -m unittest -v test_expertise_catalog.py
 ```
