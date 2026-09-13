@@ -47,12 +47,13 @@ Explicitly excluded: vendor or County contact, bid submission, pricing, complian
 
 ```bash
 cd revenue/sd13365_partner_readiness
-python -m unittest -v test_matrix.py
-python -O -m unittest -v test_matrix.py
+python assemble_requirements.py
+python -m unittest -v test_matrix.py test_assembly.py
+python -O -m unittest -v test_matrix.py test_assembly.py
 python matrix.py requirements.json --output /tmp/sd13365-receipt.json
 ```
 
-The CLI rejects duplicate JSON keys, non-finite values, missing or duplicate controls, untrusted/insecure evidence URLs, optimistic status promotion without direct evidence, contradictory classifications, changed opportunity identity, authority escalation, and weakened subcontract boundaries. The receipt is canonical and content-addressed by SHA-256.
+The bounded source payload materializes only after exact SHA-256 and semantic validation. The CLI rejects duplicate JSON keys, non-finite values, missing or duplicate controls, untrusted/insecure evidence URLs, optimistic status promotion without direct evidence, contradictory classifications, changed opportunity identity, authority escalation, and weakened subcontract boundaries. The receipt is canonical and content-addressed by SHA-256.
 
 ## Primary sources
 
