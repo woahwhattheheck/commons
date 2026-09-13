@@ -70,6 +70,25 @@ def execute(root: Path, command: str, path: str, timeout: float | None) -> int:
     return min(255, 128 - rc) if rc < 0 else min(255, rc)
 
 
+def tracked_regular_files(root: Path, sha: str, paths: list[str]) -> set[str]:
+    """Return selected paths that are tracked regular files at sha."""
+    if not paths:
+        return set()
+    raw = subprocess.run(
+        ["git", "-C", str(root), "ls-tree", "-z", "--full-tree", sha, "--", *paths],
+        check=True, capture_output=True,
+    ).stdout
+    tracked = set()
+    for entry in raw.split(b"\0"):
+        if not entry:
+            continue
+        metadata, path = entry.split(b"\t", 1)
+        mode, kind, _blob = metadata.split()
+        if kind == b"blob" and mode in (b"100644", b"100755"):
+            tracked.add(path.decode("utf-8", "surrogateescape"))
+    return tracked
+
+
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--root", type=Path, default=Path.cwd())
@@ -122,18 +141,35 @@ def main(argv: list[str] | None = None) -> int:
     if args.shard_count > 1:
         scope["kind"] = "selected-shard" if requested else "shard"
     dirty = None
+    preflight_error = None
     try:
+        # Drop stale evidence before Git preflight so a missing checkout cannot
+        # reuse a previous success. Measure dirt before creating new outputs.
+        results.unlink(missing_ok=True)
+        if report_path:
+            report_path.parent.mkdir(parents=True, exist_ok=True)
+            report_path.unlink(missing_ok=True)
+        sha = subprocess.run(["git", "-C", str(root), "rev-parse", "--verify", "HEAD^{commit}"],
+                             check=True, capture_output=True, text=True).stdout.strip()
+        dirty = bool(subprocess.run(["git", "-C", str(root), "status", "--porcelain"],
+                                    check=True, capture_output=True).stdout)
+        selected_paths = [path for _, path in selected]
+        tracked = tracked_regular_files(root, sha, selected_paths)
+        unbound = [path for path in selected_paths
+                   if path not in tracked or (root / path).is_symlink() or not (root / path).is_file()]
         with results.open("wb") as handle:
-            sha = subprocess.run(["git", "-C", str(root), "rev-parse", "--verify", "HEAD^{commit}"],
-                                 check=True, capture_output=True, text=True).stdout.strip()
-            dirty = bool(subprocess.run(["git", "-C", str(root), "status", "--porcelain"],
-                                        check=True, capture_output=True).stdout)
             record(handle, "checkout_sha", sha, "")
             if dirty:
                 print("checkout is dirty; refusing source-linked passing evidence",
                       file=sys.stderr, flush=True)
                 record(handle, "battery_complete", "", 0)
-                outcome, code = "failure", 2
+                outcome, code, preflight_error = "failure", 2, "dirty_worktree"
+            elif unbound:
+                print("selected tests are not tracked regular files at HEAD; "
+                      "refusing source-linked passing evidence",
+                      file=sys.stderr, flush=True)
+                record(handle, "battery_complete", "", 0)
+                outcome, code, preflight_error = "failure", 2, "selected_not_tracked_regular"
             else:
                 for command, path in selected:
                     try:
@@ -159,7 +195,8 @@ def main(argv: list[str] | None = None) -> int:
         report = battery_report.build_report(root, raw, outcome, os.environ)
         report["scope"] = scope
         report["execution"] = {"kind": "direct-process", "python_version": sys.version.split()[0],
-                               "worktree_dirty_at_start": dirty, "test_file_sha256": file_hashes}
+                               "worktree_dirty_at_start": dirty, "preflight_error": preflight_error,
+                               "test_file_sha256": file_hashes}
         report_path.parent.mkdir(parents=True, exist_ok=True)
         report_path.write_text(json.dumps(report, indent=2, ensure_ascii=True) + "\n", encoding="utf-8")
         print(report["conclusion"] + ": " + str(report_path), flush=True)
