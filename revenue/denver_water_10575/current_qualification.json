@@ -1,0 +1,104 @@
+{
+  "schema": "denver-water-10575-qualification/v1",
+  "opportunity": {
+    "id": "denver-water-10575",
+    "solicitation_id": "10575",
+    "title": "Customer Experience AI Chatbot",
+    "as_of": "2026-09-13T11:03:12Z",
+    "proposal_deadline": "2026-09-30T20:00:00Z"
+  },
+  "sources": [
+    {
+      "id": "denver-water-current-opportunities",
+      "class": "OFFICIAL_NOTICE",
+      "state": "OBSERVED",
+      "url": "https://www.denverwater.org/contractors/bid-and-contract-opportunities/current-opportunities",
+      "captured_at": "2026-09-13T10:58:00Z",
+      "sha256": null,
+      "label": "Denver Water current opportunities: solicitation 10575"
+    },
+    {
+      "id": "bidnet-denver-water",
+      "class": "OFFICIAL_NOTICE",
+      "state": "OBSERVED",
+      "url": "https://www.bidnetdirect.com/colorado/denver-water-purchasing",
+      "captured_at": "2026-09-13T10:59:00Z",
+      "sha256": null,
+      "label": "Buyer-linked procurement download route; package not acquired in this harness"
+    },
+    {
+      "id": "bidscope-discovery-1e595d1b",
+      "class": "SECONDARY",
+      "state": "OBSERVED",
+      "url": "https://bidscopeai.com/opportunities/1e595d1b-3794-4770-b21c-4a71f6519668",
+      "captured_at": "2026-09-13T11:00:00Z",
+      "sha256": null,
+      "label": "Secondary discovery summary of reported requirements; cannot prove mandatory gates"
+    }
+  ],
+  "gates": [
+    {
+      "id": "agent-assist-runtime",
+      "title": "Internal agent-assist runtime and implementation capability",
+      "route": "BOTH",
+      "mandatory": true,
+      "cure": "PARTNER_CURABLE",
+      "requirement_source_id": "bidscope-discovery-1e595d1b",
+      "evidence": {"id": "ev-agent-assist-runtime", "state": "UNKNOWN", "observed_at": "2026-09-13T11:00:00Z", "sha256": null, "ref": null}
+    },
+    {
+      "id": "genesys-ccb-sharepoint-integration",
+      "title": "Genesys, CC&B and SharePoint integration delivery",
+      "route": "PRIME",
+      "mandatory": true,
+      "cure": "PARTNER_CURABLE",
+      "requirement_source_id": "bidscope-discovery-1e595d1b",
+      "evidence": {"id": "ev-enterprise-integration", "state": "UNKNOWN", "observed_at": "2026-09-13T11:00:00Z", "sha256": null, "ref": null}
+    },
+    {
+      "id": "recent-references",
+      "title": "Reported minimum recent customer references",
+      "route": "PRIME",
+      "mandatory": true,
+      "cure": "PARTNER_CURABLE",
+      "requirement_source_id": "bidscope-discovery-1e595d1b",
+      "evidence": {"id": "ev-recent-references", "state": "UNKNOWN", "observed_at": "2026-09-13T11:00:00Z", "sha256": null, "ref": null}
+    },
+    {
+      "id": "insurance",
+      "title": "Reported professional liability and technology E&O/cyber insurance",
+      "route": "PRIME",
+      "mandatory": true,
+      "cure": "PARTNER_CURABLE",
+      "requirement_source_id": "bidscope-discovery-1e595d1b",
+      "evidence": {"id": "ev-insurance", "state": "UNKNOWN", "observed_at": "2026-09-13T11:00:00Z", "sha256": null, "ref": null}
+    },
+    {
+      "id": "security-privacy-accessibility-governance",
+      "title": "Security, privacy, accessibility, records and AI governance controls",
+      "route": "BOTH",
+      "mandatory": true,
+      "cure": "PARTNER_CURABLE",
+      "requirement_source_id": "bidscope-discovery-1e595d1b",
+      "evidence": {"id": "ev-security-governance", "state": "UNKNOWN", "observed_at": "2026-09-13T11:00:00Z", "sha256": null, "ref": null}
+    },
+    {
+      "id": "human-reviewed-writeback",
+      "title": "Human-reviewed systems-of-record write-back authority boundary",
+      "route": "TEAMING",
+      "mandatory": true,
+      "cure": "OWNER_CURABLE",
+      "requirement_source_id": "bidscope-discovery-1e595d1b",
+      "evidence": {"id": "ev-human-writeback", "state": "UNKNOWN", "observed_at": "2026-09-13T11:00:00Z", "sha256": null, "ref": null}
+    },
+    {
+      "id": "agent-reliability-qa",
+      "title": "Grounding, citation, replay, regression and audit-evidence QA seam",
+      "route": "TEAMING",
+      "mandatory": true,
+      "cure": "OWNER_CURABLE",
+      "requirement_source_id": "bidscope-discovery-1e595d1b",
+      "evidence": {"id": "ev-agent-reliability", "state": "UNKNOWN", "observed_at": "2026-09-13T11:00:00Z", "sha256": null, "ref": null}
+    }
+  ]
+}
