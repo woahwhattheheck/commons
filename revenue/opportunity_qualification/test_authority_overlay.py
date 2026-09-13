@@ -2,12 +2,17 @@ import copy
 import unittest
 
 from engine import HOLD, compile_qualification
-from test_engine import AS_OF, PACKET
+from test_engine import AS_OF, PACKET, TRUSTED_COMPLETENESS, TRUSTED_COMPLETENESS_SHA256
 
 
 class AuthorityOverlayTests(unittest.TestCase):
     def compile(self, packet):
-        return compile_qualification(copy.deepcopy(packet), trusted_as_of=AS_OF)
+        return compile_qualification(
+            copy.deepcopy(packet),
+            trusted_as_of=AS_OF,
+            trusted_completeness=copy.deepcopy(TRUSTED_COMPLETENESS),
+            trusted_completeness_sha256=TRUSTED_COMPLETENESS_SHA256,
+        )
 
     def test_secondary_expired_deadline_cannot_force_no_bid(self):
         packet = copy.deepcopy(PACKET)
