@@ -59,9 +59,11 @@ def _builder_url(value: object, label: str) -> tuple[str, str]:
     try:
         parsed = urlsplit(raw)
         port = parsed.port
+        hostname = parsed.hostname
     except ValueError as exc:
         raise BonusManifestError(f"{label} is not a valid URL") from exc
-    host = (parsed.hostname or "").lower().rstrip(".")
+
+    host = (hostname or "").lower()
     if parsed.scheme != "https" or host != "builder.aws.com":
         raise BonusManifestError(f"{label} must be an HTTPS builder.aws.com URL")
     if port not in {None, 443}:
@@ -69,15 +71,29 @@ def _builder_url(value: object, label: str) -> tuple[str, str]:
     if parsed.username is not None or parsed.password is not None:
         raise BonusManifestError(f"{label} must not contain URL credentials")
 
-    decoded_path = unquote(parsed.path)
-    parts = [part for part in decoded_path.split("/") if part]
-    if len(parts) < 2 or parts[0] != "content" or parts[1] in {".", ".."}:
+    decoded_parts: list[str] = []
+    for raw_part in (part for part in parsed.path.split("/") if part):
+        decoded = unquote(raw_part)
+        if decoded in {".", ".."}:
+            raise BonusManifestError(f"{label} path must not contain dot segments")
+        if "/" in decoded or "\\" in decoded:
+            raise BonusManifestError(f"{label} path segments must not encode separators")
+        decoded_parts.append(decoded)
+
+    if len(decoded_parts) < 2 or decoded_parts[0] != "content":
         raise BonusManifestError(f"{label} must identify a specific public builder.aws content post")
+
+    content_id = decoded_parts[1]
+    if not content_id or any(
+        character.isspace() or ord(character) < 0x20 or ord(character) == 0x7F
+        for character in content_id
+    ):
+        raise BonusManifestError(f"{label} must contain a stable opaque content ID")
 
     # The opaque content ID, not the cosmetic slug/query/fragment, identifies a
     # builder.aws post. This prevents one publication from being counted more
     # than once via URL aliases.
-    post_identity = f"{host}/content/{parts[1]}"
+    post_identity = f"{host}/content/{content_id}"
     return raw, post_identity
 
 
