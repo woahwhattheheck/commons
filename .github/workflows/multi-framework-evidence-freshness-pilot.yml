@@ -1,0 +1,35 @@
+name: Multi-Framework Evidence Freshness Pilot
+on:
+  pull_request:
+    paths:
+      - 'revenue/multi_framework_evidence_freshness/**'
+      - 'revenue/multi_framework_evidence_freshness_pilot/**'
+      - 'tests/test_multi_framework_evidence_freshness.py'
+      - 'tests/test_multi_framework_evidence_freshness_pilot.py'
+      - '.github/workflows/multi-framework-evidence-freshness.yml'
+      - '.github/workflows/multi-framework-evidence-freshness-pilot.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'revenue/multi_framework_evidence_freshness/**'
+      - 'revenue/multi_framework_evidence_freshness_pilot/**'
+      - 'tests/test_multi_framework_evidence_freshness.py'
+      - 'tests/test_multi_framework_evidence_freshness_pilot.py'
+      - '.github/workflows/multi-framework-evidence-freshness.yml'
+      - '.github/workflows/multi-framework-evidence-freshness-pilot.yml'
+permissions:
+  contents: read
+jobs:
+  contract:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python: ['3.11', '3.13']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - run: python -m py_compile revenue/multi_framework_evidence_freshness/gate.py revenue/multi_framework_evidence_freshness_pilot/pilot.py tests/test_multi_framework_evidence_freshness.py tests/test_multi_framework_evidence_freshness_pilot.py
+      - run: python -m unittest -v tests.test_multi_framework_evidence_freshness tests.test_multi_framework_evidence_freshness_pilot
+      - run: python -O -m unittest -v tests.test_multi_framework_evidence_freshness tests.test_multi_framework_evidence_freshness_pilot
