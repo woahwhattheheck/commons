@@ -1,0 +1,12 @@
+[project]
+name = "buywait-agent"
+version = "0.1.0"
+description = "Deterministic-first HackerRank Orchestrate Buy or Wait financial decision agent"
+requires-python = ">=3.11"
+dependencies = []
+
+[project.scripts]
+buywait = "buywait.cli:main"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
