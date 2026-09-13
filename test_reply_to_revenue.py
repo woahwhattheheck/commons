@@ -72,6 +72,10 @@ class ReplyToRevenueTests(unittest.TestCase):
         self.assertIn("message blocked", verdict["matched_markers"])
         self.assertIn("address not found", verdict["matched_markers"])
 
+    def test_delivery_failure_cannot_be_operator_requested_without_marker(self) -> None:
+        with self.assertRaises(r2r.ReplyRevenueError):
+            r2r.classify_signals(["operator note only"], "DELIVERY_FAILURE")
+
     def test_explicit_scope_language_without_auto_ack_is_positive(self) -> None:
         verdict = r2r.classify_signals(["please invoice", "we accept the scope"])
         self.assertEqual(verdict["classification"], "POSITIVE_SCOPE")
@@ -171,6 +175,7 @@ class ReplyToRevenueTests(unittest.TestCase):
         self.assertEqual(funnel["truth"]["resends"], 0)
         self.assertEqual(funnel["truth"]["transport_actions"], 0)
         self.assertEqual(funnel["truth"]["human_positive"], 0)
+        self.assertEqual(funnel["truth"]["delivery_failures"], 0)
         self.assertEqual(funnel["truth"]["scope_acceptances"], 0)
         self.assertEqual(funnel["truth"]["inbound_recorded"], 4)
         self.assertEqual(funnel["truth"]["auto_acks"], 4)
@@ -216,6 +221,7 @@ class ReplyToRevenueTests(unittest.TestCase):
         first = subprocess.run(command, cwd=ROOT, check=True, capture_output=True, text=True).stdout
         second = subprocess.run(command, cwd=ROOT, check=True, capture_output=True, text=True).stdout
         self.assertEqual(first, second)
+        self.assertIn("0 delivery-failures", first)
         self.assertIn("0 resends", first)
         self.assertIn("USD 0 cash", first)
         classify = subprocess.run(
