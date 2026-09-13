@@ -1,5 +1,5 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "operation_id": "JERSEY-CDR-OPENEHR-DN827803-ZVHJ7P4-20260913",
   "notice_id": "DN827803",
   "buyer": "Government / States of Jersey",
@@ -7,7 +7,7 @@
   "checked_at": "2026-09-13T11:15:00Z",
   "public_expression_start": "2026-08-28T14:00:00+01:00",
   "response_deadline": "2026-09-29T23:30:00+01:00",
-  "response_deadline_basis": "ProContract public opportunity listing; confirm against controlling tender pack before any response action",
+  "response_deadline_basis": "ProContract public opportunity listing; future READY additionally requires the deadline to be bound to the retained buyer-pack extraction",
   "public_contract_term": "5 years with option to extend by up to 2 years",
   "tender_pack": {
     "acquired": false,

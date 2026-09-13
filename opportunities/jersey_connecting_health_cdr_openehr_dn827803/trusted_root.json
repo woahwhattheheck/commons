@@ -1,0 +1,12 @@
+{
+  "schema_version": 2,
+  "notice_id": "DN827803",
+  "retained_at": "2026-09-13T14:35:00Z",
+  "source_ledger_sha256": "5e2a26f1ff4888fcf8e4217ca4f8b9b76b2bf9ec58d1dccf31997f11a65d1e98",
+  "source_checked_at": "2026-09-13T11:15:00Z",
+  "response_deadline": "2026-09-29T22:30:00Z",
+  "max_source_age_seconds": 86400,
+  "tender_pack_sha256": null,
+  "extraction_sha256": null,
+  "evidence_bundle_sha256": null
+}
