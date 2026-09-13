@@ -1,9 +1,9 @@
 {
   "counts": {
-    "open_issues": 32,
-    "open_pull_requests": 24,
+    "open_issues": 33,
+    "open_pull_requests": 25,
     "runs_in_progress": 18,
-    "runs_queued": 766
+    "runs_queued": 776
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -69,13 +69,24 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "zow-l9c2/outbound-reconcile-temporal-coverage-20260913",
-      "created_at": "2026-09-13T13:14:58Z",
+      "branch": "revenue/wrf-5417-camera-ai-proposal",
+      "created_at": "2026-09-13T13:19:55Z",
       "draft": false,
-      "head_sha": "0448952e5f0eb9a6e327fd95fcbda21ece404b85",
-      "number": 13851,
-      "title": "revenue: bind outbound reconciliation to temporal coverage",
-      "updated_at": "2026-09-13T13:19:06Z"
+      "head_sha": "26cecec0a2dd98431d5fbd6943343c6b4025b2ba",
+      "number": 13858,
+      "title": "revenue: package WRF 5417 camera-AI proposal readiness carrier",
+      "updated_at": "2026-09-13T13:19:55Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zarg-c7w5/afh-video-evidence-gate-20260913",
+      "created_at": "2026-09-13T13:19:09Z",
+      "draft": false,
+      "head_sha": "a1dde557acac3aa3531b7a5541e11f95b035f3bf",
+      "number": 13857,
+      "title": "fix(afh): fail closed on invalid demo video proof",
+      "updated_at": "2026-09-13T13:19:09Z"
     },
     {
       "author": "woahwhattheheck",
@@ -94,10 +105,10 @@
       "branch": "zsw-c6r8/scdhhs-5400030026-qualification",
       "created_at": "2026-09-13T13:06:31Z",
       "draft": false,
-      "head_sha": "3ef7f983fc34a690319434809d418255569ffd9d",
+      "head_sha": "b97dbdc14851c4978dd2c3580f2af8c6d37a625b",
       "number": 13842,
       "title": "Add fail-closed SCDHHS MCDE qualification gate",
-      "updated_at": "2026-09-13T13:18:40Z"
+      "updated_at": "2026-09-13T13:20:19Z"
     },
     {
       "author": "woahwhattheheck",
@@ -164,17 +175,6 @@
       "number": 13792,
       "title": "fix(revenue): hold cumulative invoice exposure above PO total",
       "updated_at": "2026-09-13T12:51:41Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zkg-n7q/commercial-funnel-postmerge-authority-20260913",
-      "created_at": "2026-09-13T10:42:02Z",
-      "draft": false,
-      "head_sha": "1553dd65151766b6c3a195fa87689f9505f1de29",
-      "number": 13782,
-      "title": "Revenue: fix commercial-funnel evidence and time authority",
-      "updated_at": "2026-09-13T10:47:39Z"
     }
   ],
   "open_heads": {
@@ -199,14 +199,26 @@
     "13818": "ebf95fdc8fe223e14d9f2fc51ab71916cead16dd",
     "13821": "237d9963fc7424cfabb3910dd5968ae3544e8d5a",
     "13824": "bc094b424ea740395eebc599e6ced2a270b40cde",
-    "13842": "3ef7f983fc34a690319434809d418255569ffd9d",
+    "13842": "b97dbdc14851c4978dd2c3580f2af8c6d37a625b",
     "13844": "87abb2dfc66178066a47e96013c95ad5bd6fb259",
-    "13851": "0448952e5f0eb9a6e327fd95fcbda21ece404b85"
+    "13857": "a1dde557acac3aa3531b7a5541e11f95b035f3bf",
+    "13858": "26cecec0a2dd98431d5fbd6943343c6b4025b2ba"
   },
-  "pulls_listed": 24,
+  "pulls_listed": 25,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 42.6,
+  "queue_depth_per_runner": 43.1,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zow-l9c2/outbound-reconcile-temporal-coverage-20260913",
+      "closed_at": "2026-09-13T13:20:19Z",
+      "head_sha": "0448952e5f0eb9a6e327fd95fcbda21ece404b85",
+      "merged_at": "2026-09-13T13:20:19Z",
+      "number": 13851,
+      "state": "MERGED",
+      "title": "revenue: bind outbound reconciliation to temporal coverage"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -360,21 +372,10 @@
       "number": 13753,
       "state": "CLOSED",
       "title": "fix(revenue): make reconciliation field equality JSON-type-stable"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "codex/cross-family-offering-bundle-composer-resource-20260913-01",
-      "closed_at": "2026-09-13T10:32:57Z",
-      "head_sha": "8325d2272b1e938320de17ea46525d4ad9c353c6",
-      "merged_at": "2026-09-13T10:32:57Z",
-      "number": 13763,
-      "state": "MERGED",
-      "title": "resources: activate cross-family offering bundle composer"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-13T13:19:08Z",
+  "unchanged_since": "2026-09-13T13:21:19Z",
   "undatable_pulls": []
 }
