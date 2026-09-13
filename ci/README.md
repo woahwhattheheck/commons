@@ -3,9 +3,10 @@
 ## Run the test battery without Actions
 
 `host/ci_battery.py` runs the existing Commons Python/Node tests directly on an
-available Linux cloud worker. It needs Python 3.10+, Node, Git, and a checkout
-with the history required by the tests. It does not dispatch an Actions job or
-require a Docker daemon. Use the existing cloud workspace, not the owner laptop.
+available Linux cloud worker. It needs Python 3.10+, Node, Git, and a clean
+checkout with the history required by the tests. It does not dispatch an Actions
+job or require a Docker daemon. Use the existing cloud workspace, not the owner
+laptop.
 
 ```sh
 python3 host/ci_battery.py --output-dir /tmp/commons-ci
@@ -13,11 +14,17 @@ python3 host/ci_battery.py --output-dir /tmp/commons-ci
 
 The runner discovers root `test_*.py`, recursive `infra/test_*.py`, and root
 `test_*.js`, runs every file even after failures, and exits nonzero for a failed,
-interrupted, or empty battery. `report.json` uses the existing battery report
-schema and records the starting commit, source blobs, actual per-file SHA-256,
-working-tree dirt, exits, and execution scope. It contains no test stdout or
-environment dump. Source blobs describe the starting commit; dirty working
-trees are explicitly marked and are not clean-checkout proof.
+interrupted, empty, or dirty battery. `report.json` uses the existing battery
+report schema and records the starting commit, source blobs, actual per-file
+SHA-256, starting worktree state, exits, and execution scope. It contains no
+test stdout or environment dump.
+
+A dirty checkout fails closed before any test process starts, because executing
+working-tree bytes while citing the clean `HEAD` commit is not authoritative
+evidence. Commit, stash, or remove local changes before running the battery.
+Results and reports must also live outside the checkout, so the evidence writer
+cannot perturb tests that inspect repository state. `/tmp/commons-ci` and the
+Actions runner's `$RUNNER_TEMP` satisfy both requirements.
 
 For a focused repair or a separate worker shard:
 
