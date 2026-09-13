@@ -1,0 +1,37 @@
+{
+  "claims": {
+    "accessibility_track_record_claimed": false,
+    "budget_known": false,
+    "municipal_or_park_experience_claimed": false,
+    "prior_recdesk_integration_claimed": false,
+    "submission_authorized": false
+  },
+  "deadlines": {
+    "proposal": "2026-10-12T16:30:00-04:00",
+    "questions": "2026-09-18"
+  },
+  "external_actions_performed": {
+    "buyer_contact": false,
+    "proposal_sent": false,
+    "questions_sent": false,
+    "registration": false,
+    "spend": false
+  },
+  "official_rfp": "https://cwpd.org/2026/09/01/public-notice-request-for-proposals-6/",
+  "operation": "CWPD-WEBSITE-QUALIFICATION-ZKEYSTONE-20260913",
+  "recdesk_public_integration_background": "https://recdesk.com/partnerships-and-integrations/",
+  "required_before_external_submission": [
+    "LEGAL_NAME",
+    "CONTACT",
+    "PRICING",
+    "PORTFOLIO",
+    "PERSONNEL",
+    "ACCESSIBILITY_HISTORY",
+    "RECDESK_HISTORY",
+    "REFERENCES",
+    "review_of_any_buyer_q_and_a_or_addenda",
+    "explicit_send_authorization"
+  ],
+  "schema": "cwpd.website-redesign.qualification-receipt.v1",
+  "status": "HOLD_EVIDENCE_INCOMPLETE"
+}
