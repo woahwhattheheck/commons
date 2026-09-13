@@ -1,17 +1,23 @@
 #!/usr/bin/env python3
-"""Hermetic mailbox-only buyer-reply verify pin (CRM6).
+"""Hermetic mailbox-only buyer-reply observation pin (CRM6).
 
-CLAIM ledger-crm6-mailbox-buyer-reply-verify-20260905-01
-Slack C0BU51F1PL3 ts 1788653647.048429
+A mailbox reply is evidence that mail arrived after an outbound SENT anchor.
+It is NOT, by itself, evidence that the sender is a decision-maker, that the
+reply is human, that its contents are commercially material, or that scope,
+terms, payment, award, or consent were accepted.
 
-Returns NO_BUYER_REPLY | BUYER_REPLY_OBSERVED from mailbox fixtures only.
-Live Gmail is out of scope for this slice. Never invents VERIFIED_HUMAN_YES.
-Does not remint INDEX.jsonl / events.jsonl. Hands off #8802.
+This module therefore exposes two different concepts:
+
+* BUYER_REPLY_OBSERVED: provider/thread/chronology evidence only.
+* MATERIAL_REPLY: a separately evidenced semantic decision that this mailbox
+  verifier is not authorized to mint.
 
 Entry:
   python3 host/lm_gtm_mailbox_buyer_reply_verify.py SUBJECT
-  python3 host/lm_gtm_mailbox_buyer_reply_verify.py city-of-billings-bid-1421
-  --send exits 3 (never transports mail; claim ledger-crm6-mailbox-send-refuse-state-contract-20260906-01)
+  python3 host/lm_gtm_mailbox_buyer_reply_verify.py SUBJECT --pin-buyer-reply-observed --organization ORG
+
+Legacy --pin-material-reply is retained only as a fail-closed compatibility
+surface. --send exits 3.
 """
 from __future__ import annotations
 
@@ -37,6 +43,7 @@ KIND_FIXTURE = "LM_GTM_MAILBOX_FIXTURE"
 KIND_RELATIONSHIP_EVIDENCE = "LM_GTM_RELATIONSHIP_EVIDENCE"
 STATUS_NO = "NO_BUYER_REPLY"
 STATUS_OBSERVED = "BUYER_REPLY_OBSERVED"
+DECISION_OBSERVED = "BUYER_REPLY_OBSERVED"
 MODE_HERMETIC = "HERMETIC"
 FIXTURE_REL = "revenue/lm_gtm_index/mailbox_buyer_reply_fixtures"
 EVIDENCE_REL = "revenue/lm_gtm_index/relationship_handoff_evidence.jsonl"
@@ -82,6 +89,7 @@ def load_mailbox_fixture(
     if not isinstance(messages, list) or not messages:
         raise idx.IndexError_(f"mailbox fixture {subject_id!r} missing messages")
     cleaned: list[dict[str, Any]] = []
+    seen_ids: set[str] = set()
     for i, raw in enumerate(messages):
         if not isinstance(raw, dict):
             raise idx.IndexError_(f"mailbox fixture {subject_id!r} message {i} not object")
@@ -92,6 +100,12 @@ def load_mailbox_fixture(
         role = raw.get("role")
         if not isinstance(mid, str) or not mid.strip():
             raise idx.IndexError_(f"mailbox fixture {subject_id!r} message {i} missing id")
+        mid = mid.strip()
+        if mid in seen_ids:
+            raise idx.IndexError_(
+                f"mailbox fixture {subject_id!r} repeats message id {mid!r}"
+            )
+        seen_ids.add(mid)
         if direction not in DIRECTIONS:
             raise idx.IndexError_(
                 f"mailbox fixture {subject_id!r} message {i} bad direction {direction!r}"
@@ -106,7 +120,7 @@ def load_mailbox_fixture(
             )
         idx.parse_time(str(ts))
         item = {
-            "id": mid.strip(),
+            "id": mid,
             "direction": direction,
             "thread_id": thread_id.strip(),
             "ts": str(ts),
@@ -126,7 +140,11 @@ def verify_mailbox_buyer_reply(
     *,
     fixture: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
-    """Hermetic pin: inbound buyer mail after outbound → BUYER_REPLY_OBSERVED."""
+    """Observe inbound buyer-labelled mail after an outbound in the SAME thread.
+
+    This proves arrival/thread chronology only. The fixture role is an input to
+    the hermetic verifier, not independent proof of human identity or materiality.
+    """
     if not isinstance(subject_id, str) or not idx.SUBJECT_RE.fullmatch(subject_id):
         raise idx.IndexError_(f"illegal subject id: {subject_id!r}")
     paths = paths or idx.default_paths()
@@ -139,19 +157,26 @@ def verify_mailbox_buyer_reply(
         raise idx.IndexError_(
             f"mailbox fixture {subject_id!r} has no outbound SENT anchors"
         )
-    first_out = idx.parse_time(str(outbound[0]["ts"]))
-    out_threads = {m["thread_id"] for m in outbound}
+
+    first_outbound_by_thread: dict[str, dt.datetime] = {}
+    for message in outbound:
+        stamp = idx.parse_time(str(message["ts"]))
+        thread = message["thread_id"]
+        prior = first_outbound_by_thread.get(thread)
+        if prior is None or stamp < prior:
+            first_outbound_by_thread[thread] = stamp
+
     inbound_hits: list[dict[str, Any]] = []
     for msg in messages:
-        if msg["direction"] != "inbound":
+        if msg["direction"] != "inbound" or msg["role"] != "buyer":
             continue
-        if msg["role"] != "buyer":
+        anchor = first_outbound_by_thread.get(msg["thread_id"])
+        if anchor is None:
             continue
-        if msg["thread_id"] not in out_threads:
-            continue
-        if idx.parse_time(str(msg["ts"])) < first_out:
+        if idx.parse_time(str(msg["ts"])) < anchor:
             continue
         inbound_hits.append(msg)
+
     status = STATUS_OBSERVED if inbound_hits else STATUS_NO
     result = {
         "schema_version": idx.SCHEMA_VERSION,
@@ -162,13 +187,15 @@ def verify_mailbox_buyer_reply(
         "fixture_path": FIXTURE_REL + f"/{subject_id}.json",
         "outbound_message_ids": [m["id"] for m in outbound],
         "inbound_buyer_message_ids": [m["id"] for m in inbound_hits],
-        "thread_ids": sorted(out_threads),
+        "thread_ids": sorted(first_outbound_by_thread),
         "verified_human_yes": False,
+        "material_reply_verified": False,
         "cash_usd": 0,
         "transport": "NONE",
         "canonical_crm": idx.CANONICAL_CRM,
         "invent_guard": {
             "never_invent_verified_human_yes": True,
+            "never_mint_material_reply_from_arrival": True,
             "hermetic_only": True,
             "no_index_remint": True,
             "no_cheri_contact": True,
@@ -177,6 +204,112 @@ def verify_mailbox_buyer_reply(
     }
     idx._assert_no_pii_in_index_blob(json.dumps(result, sort_keys=True))
     return result
+
+
+def _evidence_path(paths: dict[str, Path]) -> Path:
+    return Path(paths["root"]) / EVIDENCE_REL
+
+
+def _append_unique_evidence(
+    record: dict[str, Any],
+    paths: dict[str, Path],
+    *,
+    observed_inbound_ids: set[str] | None = None,
+) -> dict[str, Any]:
+    evidence_path = _evidence_path(paths)
+    existing = idx.load_jsonl(evidence_path)
+    event_id = str(record["id"])
+    if any(item.get("id") == event_id for item in existing):
+        raise idx.IndexError_(f"relationship evidence remint refused: {event_id}")
+    if observed_inbound_ids:
+        for item in existing:
+            if (
+                item.get("type") == "STATUS"
+                and item.get("decision") == DECISION_OBSERVED
+            ):
+                prior_paths = {
+                    value
+                    for value in (item.get("source_paths") or [])
+                    if isinstance(value, str)
+                }
+                if prior_paths & observed_inbound_ids:
+                    raise idx.IndexError_(
+                        "buyer reply observation remint refused for already-pinned Gmail message"
+                    )
+    existing.append(record)
+    idx.write_jsonl(evidence_path, existing)
+    return record
+
+
+def pin_buyer_reply_observed_evidence(
+    subject_id: str,
+    verify_result: dict[str, Any],
+    paths: dict[str, Path] | None = None,
+    *,
+    event_id: str | None = None,
+    organization: str,
+    ts: str | None = None,
+) -> dict[str, Any]:
+    """Append neutral reply-arrival STATUS evidence; never MATERIAL_REPLY."""
+    paths = paths or idx.default_paths()
+    if verify_result.get("status") != STATUS_OBSERVED:
+        raise idx.IndexError_(
+            "BUYER_REPLY_OBSERVED pin refused: mailbox status is not BUYER_REPLY_OBSERVED"
+        )
+    if verify_result.get("verified_human_yes") is True:
+        raise idx.IndexError_(
+            "BUYER_REPLY_OBSERVED pin refused: mailbox verifier cannot assert VERIFIED_HUMAN_YES"
+        )
+    if verify_result.get("material_reply_verified") is True:
+        raise idx.IndexError_(
+            "BUYER_REPLY_OBSERVED pin refused: mailbox verifier cannot assert materiality"
+        )
+    inbound_ids = list(verify_result.get("inbound_buyer_message_ids") or [])
+    outbound_ids = list(verify_result.get("outbound_message_ids") or [])
+    if not inbound_ids:
+        raise idx.IndexError_("BUYER_REPLY_OBSERVED pin refused: no inbound buyer ids")
+    if not isinstance(organization, str) or not organization.strip():
+        raise idx.IndexError_("BUYER_REPLY_OBSERVED pin requires organization")
+    stamp = ts or idx.iso_z(dt.datetime.now(dt.timezone.utc))
+    idx.parse_time(stamp)
+    eid = event_id or (
+        f"crm6-mailbox-reply-observed-{subject_id}-"
+        f"{stamp.replace('-', '').replace(':', '')}"
+    )
+    eid = eid[:80]
+    if not idx.EVENT_ID_RE.fullmatch(eid):
+        raise idx.IndexError_(f"illegal relationship evidence id: {eid!r}")
+
+    source_paths = outbound_ids + inbound_ids
+    record = {
+        "schema_version": idx.SCHEMA_VERSION,
+        "kind": KIND_RELATIONSHIP_EVIDENCE,
+        "id": eid,
+        "subject_id": subject_id,
+        "type": "STATUS",
+        "organization": organization.strip(),
+        "ts": stamp,
+        "from": "FORGE",
+        "body": (
+            "Buyer reply arrival observed after a prior SENT anchor in the same thread. "
+            "Human identity, commercial materiality, acceptance, award, and payment remain unverified."
+        ),
+        "decision": DECISION_OBSERVED,
+        "dnr": False,
+        "next_action": (
+            "HUMAN_CLASSIFICATION_REQUIRED; inspect the source message before any "
+            "material-reply, scope, acceptance, or commercial-state claim."
+        ),
+        "source_paths": source_paths,
+        "cash_usd": 0,
+        "transport": "NONE",
+    }
+    idx._assert_no_pii_in_index_blob(json.dumps(record, sort_keys=True))
+    return _append_unique_evidence(
+        record,
+        paths,
+        observed_inbound_ids=set(inbound_ids),
+    )
 
 
 def pin_material_reply_evidence(
@@ -190,69 +323,32 @@ def pin_material_reply_evidence(
     body: str | None = None,
     ts: str | None = None,
 ) -> dict[str, Any]:
-    """Optional: append MATERIAL_REPLY pointer to relationship_handoff_evidence only.
-
-    Refuses unless status is BUYER_REPLY_OBSERVED. Never mutates INDEX/events.
-    Never invents VERIFIED_HUMAN_YES.
-    """
-    paths = paths or idx.default_paths()
-    if verify_result.get("status") != STATUS_OBSERVED:
-        raise idx.IndexError_(
-            "MATERIAL_REPLY pin refused: mailbox status is not BUYER_REPLY_OBSERVED"
-        )
-    if verify_result.get("verified_human_yes") is True:
-        raise idx.IndexError_("MATERIAL_REPLY pin refused: VERIFIED_HUMAN_YES invent")
-    inbound_ids = list(verify_result.get("inbound_buyer_message_ids") or [])
-    outbound_ids = list(verify_result.get("outbound_message_ids") or [])
-    if not inbound_ids:
-        raise idx.IndexError_("MATERIAL_REPLY pin refused: no inbound buyer ids")
-    stamp = ts or idx.iso_z(dt.datetime.now(dt.timezone.utc))
-    idx.parse_time(stamp)
-    eid = event_id or f"crm6-mailbox-material-reply-{subject_id}-{stamp.replace('-', '').replace(':', '')}"
-    eid = eid[:80]
-    if not idx.EVENT_ID_RE.fullmatch(eid):
-        raise idx.IndexError_(f"illegal relationship evidence id: {eid!r}")
-    if role not in idx.LIVE_ROLES:
-        raise idx.IndexError_(f"illegal role for MATERIAL_REPLY pin: {role!r}")
-    text = (body or "Buyer reply observed in hermetic mailbox fixture after outbound SENT.").strip()
-    source_paths = outbound_ids + inbound_ids
-    record = {
-        "schema_version": idx.SCHEMA_VERSION,
-        "kind": KIND_RELATIONSHIP_EVIDENCE,
-        "id": eid,
-        "subject_id": subject_id,
-        "type": "MATERIAL_REPLY",
-        "role": role,
-        "organization": organization,
-        "ts": stamp,
-        "from": "FORGE",
-        "body": text,
-        "source_paths": source_paths,
-        "cash_usd": 0,
-        "transport": "NONE",
-    }
-    idx._assert_no_pii_in_index_blob(json.dumps(record, sort_keys=True))
-    evidence_path = Path(paths["root"]) / EVIDENCE_REL
-    existing = idx.load_jsonl(evidence_path)
-    if any(item.get("id") == eid for item in existing):
-        raise idx.IndexError_(f"relationship evidence remint refused: {eid}")
-    existing.append(record)
-    idx.write_jsonl(evidence_path, existing)
-    return record
+    """Legacy API: always refuse raw mailbox-observation -> MATERIAL_REPLY."""
+    del subject_id, verify_result, paths, event_id, organization, role, body, ts
+    raise idx.IndexError_(
+        "MATERIAL_REPLY pin refused: mailbox arrival/thread chronology does not "
+        "verify human identity or commercial materiality. Pin BUYER_REPLY_OBSERVED "
+        "and use separately evidenced semantic review for any MATERIAL_REPLY state."
+    )
 
 
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("subject", help="existing subject id")
     parser.add_argument(
+        "--pin-buyer-reply-observed",
+        action="store_true",
+        help="when BUYER_REPLY_OBSERVED, append neutral STATUS evidence only",
+    )
+    parser.add_argument(
         "--pin-material-reply",
         action="store_true",
-        help="when BUYER_REPLY_OBSERVED, append MATERIAL_REPLY to relationship_handoff_evidence only",
+        help="legacy compatibility flag; always refused",
     )
     parser.add_argument(
         "--organization",
         default="",
-        help="required with --pin-material-reply",
+        help="required with --pin-buyer-reply-observed",
     )
     parser.add_argument("--jsonl", action="store_true")
     return parser
@@ -267,18 +363,29 @@ def main(argv: list[str] | None = None) -> int:
         return 3
     args = build_parser().parse_args(argv)
     try:
+        if args.pin_material_reply and args.pin_buyer_reply_observed:
+            raise idx.IndexError_(
+                "choose one pin mode; MATERIAL_REPLY mode is legacy-refused"
+            )
         result = verify_mailbox_buyer_reply(args.subject)
-        pinned = None
         if args.pin_material_reply:
+            pin_material_reply_evidence(
+                args.subject,
+                result,
+                organization=args.organization.strip() or "UNSPECIFIED",
+            )
+        if args.pin_buyer_reply_observed:
             if not args.organization.strip():
-                raise idx.IndexError_("--pin-material-reply requires --organization")
-            pinned = pin_material_reply_evidence(
+                raise idx.IndexError_(
+                    "--pin-buyer-reply-observed requires --organization"
+                )
+            pinned = pin_buyer_reply_observed_evidence(
                 args.subject,
                 result,
                 organization=args.organization.strip(),
             )
             result = dict(result)
-            result["material_reply_pinned"] = pinned["id"]
+            result["buyer_reply_observed_pinned"] = pinned["id"]
         if args.jsonl:
             sys.stdout.write(json.dumps(result, sort_keys=True, ensure_ascii=False) + "\n")
         else:
