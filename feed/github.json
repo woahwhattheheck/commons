@@ -2,8 +2,8 @@
   "counts": {
     "open_issues": 25,
     "open_pull_requests": 24,
-    "runs_in_progress": 18,
-    "runs_queued": 992
+    "runs_in_progress": 15,
+    "runs_queued": 986
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -69,13 +69,13 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "zsol-p3v9/outbound-buyer-scope-dedupe-20260913",
-      "created_at": "2026-09-13T11:08:50Z",
+      "branch": "znav-h3v7/denver-water-10575-20260913",
+      "created_at": "2026-09-13T11:11:02Z",
       "draft": false,
-      "head_sha": "5b0d724a363414597081ce4a7d849b04db3bb902",
-      "number": 13801,
-      "title": "revenue: fence outbound sends across explicit buyer aliases",
-      "updated_at": "2026-09-13T11:08:50Z"
+      "head_sha": "41b44cd423e6d1e5838a8d1ad0c85384040dd7fc",
+      "number": 13803,
+      "title": "revenue: qualify Denver Water 10575 AI agent opportunity",
+      "updated_at": "2026-09-13T11:14:05Z"
     },
     {
       "author": "woahwhattheheck",
@@ -108,7 +108,7 @@
       "head_sha": "be36dc8a26f94cffa4fb9e43829e76417e86714b",
       "number": 13790,
       "title": "mcp: add byte-bound 2025-11-25 transcript audit + verifier",
-      "updated_at": "2026-09-13T11:09:10Z"
+      "updated_at": "2026-09-13T11:12:14Z"
     },
     {
       "author": "woahwhattheheck",
@@ -201,12 +201,34 @@
     "13790": "be36dc8a26f94cffa4fb9e43829e76417e86714b",
     "13792": "8f12b7a8867f82efb6ec3768fc7ee6a89b494964",
     "13795": "835f70caecd4d91f29eb4ccb8874bea0f48b157c",
-    "13801": "5b0d724a363414597081ce4a7d849b04db3bb902"
+    "13803": "41b44cd423e6d1e5838a8d1ad0c85384040dd7fc"
   },
   "pulls_listed": 24,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 55.1,
+  "queue_depth_per_runner": 65.7,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zsol-p3v9/outbound-buyer-scope-dedupe-20260913",
+      "closed_at": "2026-09-13T11:14:02Z",
+      "head_sha": "513595955a049b120306759b05b0fca205a9d997",
+      "merged_at": "2026-09-13T11:14:02Z",
+      "number": 13801,
+      "state": "MERGED",
+      "title": "revenue: fence outbound sends across explicit buyer aliases"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zvh-j7p4/nwlp-swlp-lims-pme-080252-20260913",
+      "closed_at": "2026-09-13T11:13:16Z",
+      "head_sha": "ffee042c4564afabd8959d5ab046f347593d2e06",
+      "merged_at": "2026-09-13T11:13:16Z",
+      "number": 13805,
+      "state": "MERGED",
+      "title": "Revenue: qualify NWLP + SWLP \u00a328M Pathology LIMS market engagement"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -320,17 +342,6 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "zarch-w4k9/lifecycle-ingestion-ci-final2-20260913",
-      "closed_at": "2026-09-13T10:40:34Z",
-      "head_sha": "19011865cbd554cd1911981092a90555b90874fd",
-      "merged_at": "2026-09-13T10:40:33Z",
-      "number": 13780,
-      "state": "MERGED",
-      "title": "ci(revenue): gate lifecycle ingestion hardening"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
       "branch": "zarch-w4k9/lifecycle-ingestion-ci-20260913",
       "closed_at": "2026-09-13T10:39:58Z",
       "head_sha": "19011865cbd554cd1911981092a90555b90874fd",
@@ -338,17 +349,6 @@
       "number": 13775,
       "state": "CLOSED",
       "title": "ci(revenue): gate commercial lifecycle ingestion hardening"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zhyp-c9v3/commercial-lifecycle-late-duplicate-idempotency-13755",
-      "closed_at": "2026-09-13T10:37:24Z",
-      "head_sha": "76495359d301d116d21bc5de3eaef4ab02dad577",
-      "merged_at": null,
-      "number": 13760,
-      "state": "CLOSED",
-      "title": "fix(revenue): make delayed lifecycle retries idempotent"
     },
     {
       "author": "woahwhattheheck",
@@ -364,17 +364,17 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "zsec-m2k6/sapio-elain-provenance-gate-20260913",
-      "closed_at": "2026-09-13T09:40:59Z",
-      "head_sha": "eddca43e96957286171f5204700ae0bbf33958e1",
-      "merged_at": "2026-09-13T09:40:59Z",
-      "number": 13690,
-      "state": "MERGED",
-      "title": "revenue: add Sapio ELaiN provenance validation gate"
+      "branch": "zvoronoi913507/reconciliation-proof-20260913",
+      "closed_at": "2026-09-13T09:44:10Z",
+      "head_sha": "f2af248f0d52b5475072ff566219f50b49edfa79",
+      "merged_at": null,
+      "number": 13680,
+      "state": "CLOSED",
+      "title": "revenue: add deterministic reconciliation proof engine"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-13T11:10:34Z",
+  "unchanged_since": "2026-09-13T11:14:52Z",
   "undatable_pulls": []
 }
