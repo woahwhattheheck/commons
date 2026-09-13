@@ -16,12 +16,13 @@ jobs:
     runs-on: ubuntu-22.04
     timeout-minutes: 120
     container:
-      image: ghcr.io/dragonminded/libdragon:latest
+      image: ghcr.io/dragonminded/libdragon@sha256:1f208e26f7ca4da57755525555a2f72553701a578ddd925db88de1e9fe850d94
     env:
       TARGET_SHA: ed807ee64964851984ca9d0e9eab65dfc43d17ad
       DGB_SHA: 64207bb8e7e7673b896af11336a805fec1becfcd
       DGB_RUN_ID: '34719960431'
       DGB_ZIP_SHA256: 80c74c4f2fb42ab7800e988348b6fb44f796211d9324591c0053fff447877b7a
+      LIBDRAGON_IMAGE_DIGEST: sha256:1f208e26f7ca4da57755525555a2f72553701a578ddd925db88de1e9fe850d94
       N64_INST: /n64_toolchain
     steps:
       - name: Install runtime dependencies
@@ -36,14 +37,15 @@ jobs:
             libdrm2 libgbm1 libwayland-client0 libwayland-cursor0 libxkbcommon0 \
             mesa-vulkan-drivers libvulkan1
 
-      - name: Install libdragon into pinned toolchain image
+      - name: Verify pinned libdragon toolchain image
         shell: bash
         run: |
           set -euxo pipefail
-          git clone --depth=1 --branch=trunk https://github.com/DragonMinded/libdragon.git /tmp/libdragon
-          git -C /tmp/libdragon rev-parse HEAD | tee /tmp/libdragon.sha
-          JOBS=2 /tmp/libdragon/build.sh
           test -f "$N64_INST/n64.mk"
+          command -v mips64-elf-gcc
+          printf '%s\n' "$LIBDRAGON_IMAGE_DIGEST" | tee /tmp/libdragon-image-digest.txt
+          mips64-elf-gcc --version | tee /tmp/mips64-gcc-version.txt
+          sha256sum "$N64_INST/n64.mk" | tee /tmp/n64mk_sha256.txt
 
       - name: Checkout exact Legend of Elya revision
         shell: bash
@@ -178,11 +180,15 @@ jobs:
         run: |
           set -euxo pipefail
           mkdir -p /evidence
-          cp /tmp/libdragon.sha /tmp/rom_sha256.txt /tmp/dgb_help.txt /evidence/ 2>/dev/null || true
-          cp /tmp/*_dgb.log /tmp/*_console.txt /evidence/ 2>/dev/null || true
-          cp /tmp/run_dgb_rate.py /evidence/
-          cp /tmp/*_rate_probe.z64 /evidence/ 2>/dev/null || true
-          printf 'target_sha=%s\ndgb_sha=%s\ndgb_run_id=%s\n' "$TARGET_SHA" "$DGB_SHA" "$DGB_RUN_ID" > /evidence/versions.txt
+          for f in \
+            /tmp/libdragon-image-digest.txt /tmp/mips64-gcc-version.txt /tmp/n64mk_sha256.txt \
+            /tmp/rom_sha256.txt /tmp/dgb_help.txt /tmp/run_dgb_rate.py \
+            /tmp/scalar_dgb.log /tmp/rsp_dgb.log /tmp/scalar_console.txt /tmp/rsp_console.txt \
+            /tmp/scalar_rate_probe.z64 /tmp/rsp_rate_probe.z64; do
+            [ -f "$f" ] && cp "$f" /evidence/
+          done
+          printf 'target_sha=%s\ndgb_sha=%s\ndgb_run_id=%s\nlibdragon_image=%s\n' \
+            "$TARGET_SHA" "$DGB_SHA" "$DGB_RUN_ID" "$LIBDRAGON_IMAGE_DIGEST" > /evidence/versions.txt
           for f in /tmp/scalar_dgb.log /tmp/rsp_dgb.log; do
             [ -f "$f" ] || continue
             echo "===== $f ====="
