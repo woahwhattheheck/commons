@@ -1,8 +1,8 @@
 """Deterministic, read-only requisition-to-specimen evidence gate.
 
-This module evaluates deidentified/synthetic operational evidence only.
-It never decides patient eligibility, specimen disposition, clinical meaning,
-database locks, or laboratory release.
+Candidate packet bytes are observations only. Authoritative comparison values live in a
+separate reference-set generation whose SHA-256 must be supplied independently by the
+trusted host. A digest carried beside candidate bytes is not external provenance.
 """
 from __future__ import annotations
 
@@ -15,7 +15,8 @@ import re
 from datetime import datetime, timezone
 from typing import Any, Iterable, Mapping
 
-SCHEMA = "iqvia-site-lab-requisition-specimen-evidence-gate/v1"
+SCHEMA = "iqvia-site-lab-requisition-specimen-evidence-gate/v2"
+REFERENCE_SCHEMA = "iqvia-site-lab-requisition-specimen-reference-set/v1"
 AUTHORITY = "EVIDENCE_ONLY_HUMAN_SITE_LAB_RESOLUTION"
 STATUS_READY = "SPECIMEN_READY"
 STATUS_HOLD = "HOLD"
@@ -39,31 +40,48 @@ SOURCE_KEYS = (
     "method",
     "queries",
 )
+REFERENCE_SOURCE_KEYS = (
+    "protocol",
+    "requisition",
+    "kit",
+    "collection_policy",
+    "courier_policy",
+    "method",
+    "query_policy",
+)
 
 PACKET_KEYS = {
     "schema",
     "packet_id",
     "protocol_id",
-    "expected_protocol_id",
-    "expected_visit_id",
     "requisition_protocol_id",
     "requisition_visit_id",
     "requisition_version",
     "kit_lot",
-    "kit_expires_at",
     "collection_at",
-    "collection_window_start",
-    "collection_window_end",
     "courier_scan_id",
     "courier_temperature_c",
-    "courier_min_c",
-    "courier_max_c",
     "accession_id",
     "sample_type",
+    "method_id",
+    "queries",
+    "source_refs",
+}
+REFERENCE_KEYS = {
+    "schema",
+    "generation_id",
+    "protocol_id",
+    "visit_id",
+    "requisition_version",
+    "kit_expiry_by_lot",
+    "collection_window_start",
+    "collection_window_end",
+    "courier_min_c",
+    "courier_max_c",
     "required_sample_type",
     "method_id",
     "method_allowed_sample_types",
-    "queries",
+    "require_resolved_queries",
     "source_refs",
 }
 
@@ -129,6 +147,8 @@ def _time(value: Any, field: str) -> datetime:
         parsed = datetime.fromisoformat(text[:-1] + "+00:00")
     except ValueError as exc:
         raise EvidenceError(f"{field} must be RFC3339") from exc
+    if parsed.utcoffset() != timezone.utc.utcoffset(parsed):
+        raise EvidenceError(f"{field} must be UTC")
     return parsed.astimezone(timezone.utc)
 
 
@@ -158,12 +178,20 @@ def _source_refs(value: Any) -> dict[str, str]:
     return {key: _hash(obj[key], f"source_refs.{key}") for key in SOURCE_KEYS}
 
 
-def _sample_types(value: Any) -> list[str]:
+def _reference_source_refs(value: Any) -> dict[str, str]:
+    obj = _exact_mapping(value, set(REFERENCE_SOURCE_KEYS), "reference.source_refs")
+    return {
+        key: _hash(obj[key], f"reference.source_refs.{key}")
+        for key in REFERENCE_SOURCE_KEYS
+    }
+
+
+def _sample_types(value: Any, field: str = "method_allowed_sample_types") -> list[str]:
     if not isinstance(value, list) or not 1 <= len(value) <= 32:
-        raise EvidenceError("method_allowed_sample_types must be a bounded non-empty list")
-    items = [_identifier(item, "method_allowed_sample_types[]") for item in value]
+        raise EvidenceError(f"{field} must be a bounded non-empty list")
+    items = [_identifier(item, f"{field}[]") for item in value]
     if len(items) != len(set(items)):
-        raise EvidenceError("method_allowed_sample_types contains duplicates")
+        raise EvidenceError(f"{field} contains duplicates")
     return sorted(items)
 
 
@@ -200,109 +228,183 @@ def _queries(value: Any) -> list[dict[str, Any]]:
     return sorted(out, key=lambda row: row["query_id"])
 
 
+def _kit_expiry_by_lot(value: Any) -> dict[str, str]:
+    if not isinstance(value, Mapping) or not 1 <= len(value) <= 128:
+        raise EvidenceError("reference.kit_expiry_by_lot must be a bounded non-empty mapping")
+    out: dict[str, str] = {}
+    for raw_lot, raw_expiry in value.items():
+        lot = _identifier(raw_lot, "reference.kit_expiry_by_lot key")
+        if lot in out:
+            raise EvidenceError("reference.kit_expiry_by_lot contains duplicate lot")
+        expiry = _time(raw_expiry, f"reference.kit_expiry_by_lot.{lot}")
+        out[lot] = expiry.isoformat().replace("+00:00", "Z")
+    return {key: out[key] for key in sorted(out)}
+
+
 def normalize_packet(raw: Mapping[str, Any]) -> dict[str, Any]:
     obj = _exact_mapping(raw, PACKET_KEYS, "packet")
     if obj["schema"] != SCHEMA:
         raise EvidenceError("unsupported packet schema")
-
-    protocol_id = _identifier(obj["protocol_id"], "protocol_id")
-    expected_protocol_id = _identifier(obj["expected_protocol_id"], "expected_protocol_id")
-    expected_visit_id = _identifier(obj["expected_visit_id"], "expected_visit_id")
-    requisition_protocol_id = _identifier(obj["requisition_protocol_id"], "requisition_protocol_id")
-    requisition_visit_id = _identifier(obj["requisition_visit_id"], "requisition_visit_id")
-
     collection_at = _time(obj["collection_at"], "collection_at")
-    window_start = _time(obj["collection_window_start"], "collection_window_start")
-    window_end = _time(obj["collection_window_end"], "collection_window_end")
-    kit_expires = _time(obj["kit_expires_at"], "kit_expires_at")
-    if window_end < window_start:
-        raise EvidenceError("collection window is inverted")
-
-    courier_min = _number(obj["courier_min_c"], "courier_min_c", -100.0, 100.0)
-    courier_max = _number(obj["courier_max_c"], "courier_max_c", -100.0, 100.0)
-    if courier_max < courier_min:
-        raise EvidenceError("courier temperature range is inverted")
-    courier_temp = _optional_number(
-        obj["courier_temperature_c"], "courier_temperature_c", -100.0, 100.0
-    )
-
     return {
         "schema": SCHEMA,
         "packet_id": _identifier(obj["packet_id"], "packet_id"),
-        "protocol_id": protocol_id,
-        "expected_protocol_id": expected_protocol_id,
-        "expected_visit_id": expected_visit_id,
-        "requisition_protocol_id": requisition_protocol_id,
-        "requisition_visit_id": requisition_visit_id,
+        "protocol_id": _identifier(obj["protocol_id"], "protocol_id"),
+        "requisition_protocol_id": _identifier(
+            obj["requisition_protocol_id"], "requisition_protocol_id"
+        ),
+        "requisition_visit_id": _identifier(
+            obj["requisition_visit_id"], "requisition_visit_id"
+        ),
         "requisition_version": _identifier(obj["requisition_version"], "requisition_version"),
         "kit_lot": _identifier(obj["kit_lot"], "kit_lot"),
-        "kit_expires_at": kit_expires.isoformat().replace("+00:00", "Z"),
         "collection_at": collection_at.isoformat().replace("+00:00", "Z"),
-        "collection_window_start": window_start.isoformat().replace("+00:00", "Z"),
-        "collection_window_end": window_end.isoformat().replace("+00:00", "Z"),
         "courier_scan_id": _optional_id(obj["courier_scan_id"], "courier_scan_id"),
-        "courier_temperature_c": courier_temp,
-        "courier_min_c": courier_min,
-        "courier_max_c": courier_max,
+        "courier_temperature_c": _optional_number(
+            obj["courier_temperature_c"], "courier_temperature_c", -100.0, 100.0
+        ),
         "accession_id": _identifier(obj["accession_id"], "accession_id"),
         "sample_type": _identifier(obj["sample_type"], "sample_type"),
-        "required_sample_type": _identifier(obj["required_sample_type"], "required_sample_type"),
         "method_id": _identifier(obj["method_id"], "method_id"),
-        "method_allowed_sample_types": _sample_types(obj["method_allowed_sample_types"]),
         "queries": _queries(obj["queries"]),
         "source_refs": _source_refs(obj["source_refs"]),
     }
 
 
-def evaluate_packet(raw: Mapping[str, Any]) -> dict[str, Any]:
-    p = normalize_packet(raw)
+def normalize_reference_set(
+    raw: Mapping[str, Any],
+    trusted_reference_sha256: str,
+) -> tuple[dict[str, Any], str]:
+    """Validate one reference generation against an independently retained host pin.
+
+    The caller supplying ``trusted_reference_sha256`` is the trust boundary. This package
+    validates equality but does not authenticate where that pin came from.
+    """
+    trusted_digest = _hash(trusted_reference_sha256, "trusted_reference_sha256")
+    obj = _exact_mapping(raw, REFERENCE_KEYS, "reference")
+    if obj["schema"] != REFERENCE_SCHEMA:
+        raise EvidenceError("unsupported reference schema")
+    window_start = _time(obj["collection_window_start"], "reference.collection_window_start")
+    window_end = _time(obj["collection_window_end"], "reference.collection_window_end")
+    if window_end < window_start:
+        raise EvidenceError("reference collection window is inverted")
+    courier_min = _number(obj["courier_min_c"], "reference.courier_min_c", -100.0, 100.0)
+    courier_max = _number(obj["courier_max_c"], "reference.courier_max_c", -100.0, 100.0)
+    if courier_max < courier_min:
+        raise EvidenceError("reference courier temperature range is inverted")
+    require_resolved = obj["require_resolved_queries"]
+    if type(require_resolved) is not bool:
+        raise EvidenceError("reference.require_resolved_queries must be bool")
+
+    normalized = {
+        "schema": REFERENCE_SCHEMA,
+        "generation_id": _identifier(obj["generation_id"], "reference.generation_id"),
+        "protocol_id": _identifier(obj["protocol_id"], "reference.protocol_id"),
+        "visit_id": _identifier(obj["visit_id"], "reference.visit_id"),
+        "requisition_version": _identifier(
+            obj["requisition_version"], "reference.requisition_version"
+        ),
+        "kit_expiry_by_lot": _kit_expiry_by_lot(obj["kit_expiry_by_lot"]),
+        "collection_window_start": window_start.isoformat().replace("+00:00", "Z"),
+        "collection_window_end": window_end.isoformat().replace("+00:00", "Z"),
+        "courier_min_c": courier_min,
+        "courier_max_c": courier_max,
+        "required_sample_type": _identifier(
+            obj["required_sample_type"], "reference.required_sample_type"
+        ),
+        "method_id": _identifier(obj["method_id"], "reference.method_id"),
+        "method_allowed_sample_types": _sample_types(
+            obj["method_allowed_sample_types"], "reference.method_allowed_sample_types"
+        ),
+        "require_resolved_queries": require_resolved,
+        "source_refs": _reference_source_refs(obj["source_refs"]),
+    }
+    digest = sha256_value(normalized)
+    if digest != trusted_digest:
+        raise EvidenceError("reference generation does not match trusted host digest")
+    return normalized, digest
+
+
+def _evaluate_normalized(
+    p: Mapping[str, Any],
+    ref: Mapping[str, Any],
+    reference_digest: str,
+) -> dict[str, Any]:
     collection = _time(p["collection_at"], "collection_at")
     reasons: list[dict[str, Any]] = []
 
-    def hold(code: str, sources: Iterable[str]) -> None:
-        refs = {key: p["source_refs"][key] for key in sorted(set(sources))}
-        reasons.append({"code": code, "source_refs": refs})
+    def hold(code: str, observation_sources: Iterable[str], reference_sources: Iterable[str]) -> None:
+        observed = {
+            key: p["source_refs"][key]
+            for key in sorted(set(observation_sources))
+        }
+        authority_refs = {
+            key: ref["source_refs"][key]
+            for key in sorted(set(reference_sources))
+        }
+        reasons.append(
+            {
+                "code": code,
+                "observation_source_refs": observed,
+                "reference_source_refs": authority_refs,
+            }
+        )
 
     if (
-        p["protocol_id"] != p["expected_protocol_id"]
-        or p["requisition_protocol_id"] != p["expected_protocol_id"]
-        or p["requisition_visit_id"] != p["expected_visit_id"]
+        p["protocol_id"] != ref["protocol_id"]
+        or p["requisition_protocol_id"] != ref["protocol_id"]
+        or p["requisition_visit_id"] != ref["visit_id"]
+        or p["requisition_version"] != ref["requisition_version"]
     ):
-        hold("PROTOCOL_VISIT_MISMATCH", ("protocol", "requisition"))
+        hold(
+            "PROTOCOL_VISIT_MISMATCH",
+            ("protocol", "requisition"),
+            ("protocol", "requisition"),
+        )
 
-    if collection > _time(p["kit_expires_at"], "kit_expires_at"):
-        hold("KIT_EXPIRED", ("kit", "collection"))
+    expiry_text = ref["kit_expiry_by_lot"].get(p["kit_lot"])
+    if expiry_text is None or collection > _time(expiry_text, "reference.kit_expiry"):
+        hold("KIT_EXPIRED", ("kit", "collection"), ("kit",))
 
     if not (
-        _time(p["collection_window_start"], "collection_window_start")
+        _time(ref["collection_window_start"], "reference.collection_window_start")
         <= collection
-        <= _time(p["collection_window_end"], "collection_window_end")
+        <= _time(ref["collection_window_end"], "reference.collection_window_end")
     ):
-        hold("COLLECTION_WINDOW_BREACH", ("collection", "requisition"))
+        hold(
+            "COLLECTION_WINDOW_BREACH",
+            ("collection", "requisition"),
+            ("collection_policy", "requisition"),
+        )
 
     if (
         p["courier_scan_id"] is None
         or p["courier_temperature_c"] is None
-        or not (p["courier_min_c"] <= p["courier_temperature_c"] <= p["courier_max_c"])
+        or not (ref["courier_min_c"] <= p["courier_temperature_c"] <= ref["courier_max_c"])
     ):
-        hold("MISSING_COURIER_TEMPERATURE", ("courier",))
+        hold("MISSING_COURIER_TEMPERATURE", ("courier",), ("courier_policy",))
 
     if (
-        p["sample_type"] != p["required_sample_type"]
-        or p["sample_type"] not in p["method_allowed_sample_types"]
+        p["sample_type"] != ref["required_sample_type"]
+        or p["method_id"] != ref["method_id"]
+        or p["sample_type"] not in ref["method_allowed_sample_types"]
     ):
-        hold("ACCESSION_METHOD_INCOMPATIBLE", ("accession", "method", "requisition"))
+        hold(
+            "ACCESSION_METHOD_INCOMPATIBLE",
+            ("accession", "method", "requisition"),
+            ("method", "requisition"),
+        )
 
     unresolved = [
-        q for q in p["queries"]
+        q
+        for q in p["queries"]
         if q["status"] != "RESOLVED" or not q["resolution_evidence_hash"]
     ]
-    if unresolved:
-        hold("UNRESOLVED_QUERY", ("queries",))
+    if ref["require_resolved_queries"] and unresolved:
+        hold("UNRESOLVED_QUERY", ("queries",), ("query_policy",))
 
     reasons = sorted(reasons, key=lambda item: item["code"])
     status = STATUS_READY if not reasons else STATUS_HOLD
-    evidence_digest = sha256_value(p)
     return {
         "schema": SCHEMA,
         "authority": AUTHORITY,
@@ -312,23 +414,45 @@ def evaluate_packet(raw: Mapping[str, Any]) -> dict[str, Any]:
         "reasons": reasons,
         "source_refs": p["source_refs"],
         "source_digest": sha256_value(p["source_refs"]),
-        "evidence_digest": evidence_digest,
+        "evidence_digest": sha256_value(p),
+        "reference_generation_id": ref["generation_id"],
+        "reference_sha256": reference_digest,
+        "reference_source_refs": ref["source_refs"],
     }
 
 
-def evaluate_batch(packets: Iterable[Mapping[str, Any]]) -> dict[str, Any]:
+def evaluate_packet(
+    raw: Mapping[str, Any],
+    reference_set: Mapping[str, Any],
+    trusted_reference_sha256: str,
+) -> dict[str, Any]:
+    p = normalize_packet(raw)
+    ref, reference_digest = normalize_reference_set(
+        reference_set, trusted_reference_sha256
+    )
+    return _evaluate_normalized(p, ref, reference_digest)
+
+
+def evaluate_batch(
+    packets: Iterable[Mapping[str, Any]],
+    reference_set: Mapping[str, Any],
+    trusted_reference_sha256: str,
+) -> dict[str, Any]:
     rows = list(packets)
     if not 1 <= len(rows) <= 10000:
         raise EvidenceError("batch must contain 1..10000 packets")
+    ref, reference_digest = normalize_reference_set(
+        reference_set, trusted_reference_sha256
+    )
     normalized_ids: set[str] = set()
     results: list[dict[str, Any]] = []
     for raw in rows:
-        result = evaluate_packet(raw)
-        packet_id = result["packet_id"]
+        p = normalize_packet(raw)
+        packet_id = p["packet_id"]
         if packet_id in normalized_ids:
             raise EvidenceError(f"duplicate packet_id: {packet_id}")
         normalized_ids.add(packet_id)
-        results.append(result)
+        results.append(_evaluate_normalized(p, ref, reference_digest))
     results.sort(key=lambda row: row["packet_id"])
     counts = {STATUS_READY: 0, STATUS_HOLD: 0}
     reason_counts = {code: 0 for code in CODES}
@@ -339,12 +463,29 @@ def evaluate_batch(packets: Iterable[Mapping[str, Any]]) -> dict[str, Any]:
     core = {
         "schema": SCHEMA,
         "authority": AUTHORITY,
+        "reference_generation_id": ref["generation_id"],
+        "reference_sha256": reference_digest,
+        "reference_source_refs": ref["source_refs"],
         "packet_count": len(results),
         "status_counts": counts,
         "reason_counts": reason_counts,
         "results": results,
     }
     return {**core, "batch_digest": sha256_value(core)}
+
+
+def verify_batch(
+    report: Mapping[str, Any],
+    packets: Iterable[Mapping[str, Any]],
+    reference_set: Mapping[str, Any],
+    trusted_reference_sha256: str,
+) -> bool:
+    """Recompile under the same trusted reference generation and compare exact semantics."""
+    try:
+        expected = evaluate_batch(packets, reference_set, trusted_reference_sha256)
+        return canonical_bytes(report) == canonical_bytes(expected)
+    except (EvidenceError, TypeError, ValueError):
+        return False
 
 
 def render_json(report: Mapping[str, Any]) -> bytes:
@@ -357,6 +498,9 @@ def render_csv(report: Mapping[str, Any]) -> bytes:
         {
             "schema",
             "authority",
+            "reference_generation_id",
+            "reference_sha256",
+            "reference_source_refs",
             "packet_count",
             "status_counts",
             "reason_counts",
@@ -374,7 +518,10 @@ def render_csv(report: Mapping[str, Any]) -> bytes:
             "reason_codes",
             "source_digest",
             "evidence_digest",
+            "reference_generation_id",
+            "reference_sha256",
             "source_refs_json",
+            "reference_source_refs_json",
         ]
     )
     for row in obj["results"]:
@@ -385,7 +532,10 @@ def render_csv(report: Mapping[str, Any]) -> bytes:
                 "|".join(row["reason_codes"]),
                 row["source_digest"],
                 row["evidence_digest"],
+                row["reference_generation_id"],
+                row["reference_sha256"],
                 canonical_bytes(row["source_refs"]).decode("utf-8"),
+                canonical_bytes(row["reference_source_refs"]).decode("utf-8"),
             ]
         )
     return sink.getvalue().encode("utf-8")
@@ -397,6 +547,8 @@ def output_manifest(report: Mapping[str, Any]) -> dict[str, Any]:
     return {
         "schema": SCHEMA,
         "authority": AUTHORITY,
+        "reference_generation_id": report["reference_generation_id"],
+        "reference_sha256": report["reference_sha256"],
         "packet_count": report["packet_count"],
         "batch_digest": report["batch_digest"],
         "json_sha256": hashlib.sha256(json_bytes).hexdigest(),
