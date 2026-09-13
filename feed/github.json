@@ -1,8 +1,8 @@
 {
   "counts": {
     "open_issues": 20,
-    "open_pull_requests": 23,
-    "runs_in_progress": 16,
+    "open_pull_requests": 22,
+    "runs_in_progress": 14,
     "runs_queued": 915
   },
   "counts_source": "graphql",
@@ -72,10 +72,10 @@
       "branch": "vector/reconciliation-type-stability-current-main-20260913",
       "created_at": "2026-09-13T10:40:29Z",
       "draft": false,
-      "head_sha": "148080ea5840ae6917a68fbe872a470c0862655a",
+      "head_sha": "dd5c08bc3ef744ccddbabf6fbcecc02ea0b295ac",
       "number": 13781,
       "title": "fix(revenue): current-main reconciliation type-stability successor",
-      "updated_at": "2026-09-13T10:40:29Z"
+      "updated_at": "2026-09-13T10:41:28Z"
     },
     {
       "author": "woahwhattheheck",
@@ -83,21 +83,10 @@
       "branch": "zcan/raw-byte-provenance-current-20260913",
       "created_at": "2026-09-13T10:39:37Z",
       "draft": false,
-      "head_sha": "3f14f58d1ade42ed6f462d988b63ff237d00b8e5",
+      "head_sha": "de08c8c7c51e665489c52dbec5e2aef2e18b11cc",
       "number": 13779,
       "title": "fix(revenue): bind scope time authority to exact raw bytes",
-      "updated_at": "2026-09-13T10:39:37Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zcan/raw-byte-provenance-20260913",
-      "created_at": "2026-09-13T10:37:38Z",
-      "draft": false,
-      "head_sha": "3f14f58d1ade42ed6f462d988b63ff237d00b8e5",
-      "number": 13776,
-      "title": "fix(revenue): bind scope time authority to exact raw bytes",
-      "updated_at": "2026-09-13T10:39:16Z"
+      "updated_at": "2026-09-13T10:40:49Z"
     },
     {
       "author": "woahwhattheheck",
@@ -175,6 +164,17 @@
       "number": 13702,
       "title": "fix(outbound): bind lease receipts to live provider authority",
       "updated_at": "2026-09-13T09:55:08Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z-lagrange-913500/cas-actuarial-llm-benchmark-repro-20260913",
+      "created_at": "2026-09-13T09:46:23Z",
+      "draft": false,
+      "head_sha": "437f3e033ae351d825dc7761432a11a78e528b03",
+      "number": 13701,
+      "title": "revenue: add CAS actuarial LLM benchmark reproducibility core",
+      "updated_at": "2026-09-13T09:54:04Z"
     }
   ],
   "open_heads": {
@@ -198,14 +198,24 @@
     "13753": "8872e641cb2efe959b9236e1f56252b43915eadb",
     "13756": "f0db7219f3c214269cb33ea57315d5350f276d47",
     "13769": "4edb0d3a51f62a28645e5d256d5d51f2a452a2b6",
-    "13776": "3f14f58d1ade42ed6f462d988b63ff237d00b8e5",
-    "13779": "3f14f58d1ade42ed6f462d988b63ff237d00b8e5",
-    "13781": "148080ea5840ae6917a68fbe872a470c0862655a"
+    "13779": "de08c8c7c51e665489c52dbec5e2aef2e18b11cc",
+    "13781": "dd5c08bc3ef744ccddbabf6fbcecc02ea0b295ac"
   },
-  "pulls_listed": 23,
+  "pulls_listed": 22,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 57.2,
+  "queue_depth_per_runner": 65.4,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zcan/raw-byte-provenance-20260913",
+      "closed_at": "2026-09-13T10:41:23Z",
+      "head_sha": "3f14f58d1ade42ed6f462d988b63ff237d00b8e5",
+      "merged_at": null,
+      "number": 13776,
+      "state": "CLOSED",
+      "title": "fix(revenue): bind scope time authority to exact raw bytes"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -359,21 +369,10 @@
       "number": 13762,
       "state": "MERGED",
       "title": "revenue: harden commercial lifecycle ledger ingestion"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "znav-q4t8/afh-submission-finalizer-20260913",
-      "closed_at": "2026-09-13T10:27:39Z",
-      "head_sha": "f9ec51c588316c502d8623f84fee0aecde5ffd0c",
-      "merged_at": "2026-09-13T10:27:39Z",
-      "number": 13759,
-      "state": "MERGED",
-      "title": "hackathon: finalize Agents for Humans submission packet"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-13T10:40:50Z",
+  "unchanged_since": "2026-09-13T10:41:45Z",
   "undatable_pulls": []
 }
