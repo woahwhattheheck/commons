@@ -52,3 +52,17 @@ SECURITY_RE = re.compile(
     r"(?i)\b(?:security|vulnerabilit(?:y|ies)|cve-\d{4}-\d+|exploit|rce|xss|csrf|ssrf|sql injection)\b"
 )
 LINK_NEXT_RE = re.compile(r'<([^>]+)>;\s*rel="next"')
+KNOWN_CURRENCIES = {"USD", "EUR", "GBP", "CAD", "AUD", "USDC", "DAI", "USDT", "BTC", "ETH"}
+CURRENCY_SYMBOLS = {"$": "USD", "€": "EUR", "£": "GBP"}
+AMOUNT_TOKEN_RE_STR = r"(?:[\$€£]\s*\d+(?:,\d{3})*(?:\.\d+)?(?:\s*(?:USD|EUR|GBP|[A-Za-z]{3}))?|\d+(?:,\d{3})*(?:\.\d+)?\s*(?:USD|EUR|GBP|[A-Za-z]{3}))"
+AMOUNT_TRANSITION_RE = re.compile(
+    rf"(?i)\b(?:(?:bounty|reward|funding)\s+)?(?:changed|updated|increased|reduced|lowered|raised|moved)\s+from\s+({AMOUNT_TOKEN_RE_STR})\s+to\s+({AMOUNT_TOKEN_RE_STR})\b"
+)
+AMOUNT_AMBIGUOUS_RE = re.compile(
+    rf"(?i)\b(?:bounty|reward|funding)\b[^\n.!?]{{0,50}}?({AMOUNT_TOKEN_RE_STR})\s+or\s+({AMOUNT_TOKEN_RE_STR})\b"
+)
+AMOUNT_DIRECT_PATTERNS = [
+    re.compile(rf"(?i)\b(?:bounty|reward|funding)\b[^\n.!?]{{0,40}}?({AMOUNT_TOKEN_RE_STR})\b"),
+    re.compile(rf"(?i)\[(?:bounty|reward|funding)\s+({AMOUNT_TOKEN_RE_STR})\]"),
+    re.compile(rf"(?i)({AMOUNT_TOKEN_RE_STR})\s+(?:bounty|reward|funding)\b"),
+]

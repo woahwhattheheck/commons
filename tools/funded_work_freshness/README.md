@@ -138,3 +138,15 @@ withdrawal, a later trusted restoration must restate sponsor mechanism, exact ad
 amount, and acceptance evidence in the restoration event itself; phrases such as
 "restored, same terms as before" do not silently reactivate stale pre-withdrawal terms.
 The resolved state is exposed as `checks.authoritative_funding_state`.
+
+Authoritative reward amounts follow chronological precedence across trusted events rather
+than accepting cumulative historical amounts. The issue body establishes initial funding terms
+only when the issue author has funding authority. Processed chronologically, newer explicit
+trusted amount declarations supersede older reward evidence, including currency changes
+(without FX inference). Outsider amount chatter cannot alter canonical amounts, and unrelated
+monetary prose (such as "test budget is $200; bounty remains available") is never parsed as a
+reward directive. Explicit transition prose (`changed from X to Y`) resolves to the destination
+amount, while ambiguous multiple-amount declarations fail closed.
+The resolved status, canonical amount, and canonical currency are exposed as
+`checks.resolved_amount_status`, `checks.current_canonical_amount`, and
+`checks.current_canonical_currency`.

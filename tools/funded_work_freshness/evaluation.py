@@ -8,9 +8,14 @@ from typing import Any, Mapping, Sequence
 
 from constants import (
     ACCEPTANCE_RE,
+    AMOUNT_AMBIGUOUS_RE,
+    AMOUNT_DIRECT_PATTERNS,
+    AMOUNT_TRANSITION_RE,
+    CURRENCY_SYMBOLS,
     FUNDING_RESTORATION_RE,
     FUNDING_WITHDRAWAL_RE,
     GITHUB_ITEM_RE,
+    KNOWN_CURRENCIES,
     SPONSOR_RE,
     STRICT_CLAIM_RE,
     TRUSTED_ASSOCIATIONS,
@@ -166,6 +171,129 @@ def authoritative_funding_state(
                 state = "not_withdrawn"
 
     return state
+
+
+def parse_amount_token(raw: str) -> tuple[Decimal, str] | None:
+    raw = raw.strip()
+    curr = None
+    for s, c in CURRENCY_SYMBOLS.items():
+        if s in raw:
+            curr = c
+            raw = raw.replace(s, "").strip()
+            break
+
+    m = re.search(r"\b([A-Za-z]{3,4})\b", raw)
+    if m and m.group(1).upper() in KNOWN_CURRENCIES:
+        curr = m.group(1).upper()
+        raw = re.sub(rf"\b{m.group(1)}\b", "", raw).strip()
+
+    if curr is None:
+        curr = "USD"
+
+    m_num = re.search(r"(\d+(?:,\d{3})*(?:\.\d+)?)", raw)
+    if not m_num:
+        return None
+    try:
+        val = Decimal(m_num.group(1).replace(",", ""))
+        return val, curr
+    except Exception:
+        return None
+
+
+def format_amount_str(val: Decimal) -> str:
+    s = f"{val:f}"
+    if "." in s:
+        s = s.rstrip("0").rstrip(".")
+    return s
+
+
+def extract_commercial_amount_directive(text: str) -> tuple[str, Decimal | None, str | None]:
+    """Parse explicit commercial reward/bounty/funding amount directives from text.
+
+    Returns:
+        (status, amount, currency)
+        status: "none" (no directive found), "resolved" (single unambiguous directive), or "ambiguous" (conflicting/unclear)
+    """
+    if AMOUNT_AMBIGUOUS_RE.search(text):
+        return "ambiguous", None, None
+
+    change_m = AMOUNT_TRANSITION_RE.search(text)
+    if change_m:
+        to_token = change_m.group(2)
+        parsed = parse_amount_token(to_token)
+        if parsed:
+            return "resolved", parsed[0], parsed[1]
+        return "ambiguous", None, None
+
+    found: set[tuple[Decimal, str]] = set()
+    for pat in AMOUNT_DIRECT_PATTERNS:
+        for m in pat.finditer(text):
+            tok = m.group(1)
+            parsed = parse_amount_token(tok)
+            if parsed:
+                found.add(parsed)
+
+    if not found:
+        return "none", None, None
+
+    if len(found) == 1:
+        val, curr = next(iter(found))
+        return "resolved", val, curr
+
+    return "ambiguous", None, None
+
+
+def authoritative_commercial_amount(
+    issue: Mapping[str, Any],
+    comments: Sequence[Mapping[str, Any]],
+) -> tuple[str, str | None, str | None]:
+    """Resolve current authoritative reward amount and currency across chronological events.
+
+    Returns:
+        (resolved_status, canonical_amount, canonical_currency)
+        resolved_status: "resolved", "unfunded", "ambiguous"
+    """
+    amount_status = "unfunded"
+    current_amount: str | None = None
+    current_currency: str | None = None
+
+    issue_user = issue.get("user") if isinstance(issue.get("user"), Mapping) else {}
+    if funding_authority(issue_user, issue.get("author_association")):
+        issue_text = "\n".join(
+            (str(issue.get("title") or ""), str(issue.get("body") or ""))
+        )
+        directive_status, amt, curr = extract_commercial_amount_directive(issue_text)
+        if directive_status == "resolved" and amt is not None:
+            current_amount = format_amount_str(amt)
+            current_currency = curr
+            amount_status = "resolved"
+        elif directive_status == "ambiguous":
+            amount_status = "ambiguous"
+
+    far_future = datetime.max.replace(tzinfo=timezone.utc)
+    events: list[tuple[datetime, int, str]] = []
+    for index, comment in enumerate(comments):
+        if not trusted_comment(comment):
+            continue
+        stamp = (
+            parse_timestamp(comment.get("updated_at"))
+            or parse_timestamp(comment.get("created_at"))
+            or far_future
+        )
+        events.append((stamp, index, str(comment.get("body") or "")))
+
+    for _, _, text in sorted(events, key=lambda row: (row[0], row[1])):
+        directive_status, amt, curr = extract_commercial_amount_directive(text)
+        if directive_status == "resolved" and amt is not None:
+            current_amount = format_amount_str(amt)
+            current_currency = curr
+            amount_status = "resolved"
+        elif directive_status == "ambiguous":
+            current_amount = None
+            current_currency = None
+            amount_status = "ambiguous"
+
+    return amount_status, current_amount, current_currency
 
 
 def visible_claimants(comments: Sequence[Mapping[str, Any]]) -> list[str]:

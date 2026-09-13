@@ -59,6 +59,7 @@ class PreflightEvidenceTests(unittest.TestCase):
     def test_future_activity_timestamp_is_ambiguous(self):
         gh = "https://github.com/acme/widget/issues/12"
         issue = open_issue(gh)
+        issue["created_at"] = "2026-09-14T05:00:00Z"
         issue["updated_at"] = "2026-09-14T05:00:00Z"
         routes = evidence_routes("acme", "widget", 12, issue)
         receipt = preflight(candidate(gh, canonical_url=gh), FakeTransport(routes), observed_at=NOW)

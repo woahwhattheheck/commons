@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 from datetime import datetime, timedelta, timezone
+from decimal import Decimal
 from typing import Any, Mapping
 from urllib.parse import quote
 
@@ -10,6 +11,7 @@ from errors import EvidenceError, PreflightInputError
 from evaluation import (
     active_competing_prs,
     amount_supported,
+    authoritative_commercial_amount,
     authoritative_funding_state,
     canonical_text,
     descriptive_issue_text,
@@ -118,9 +120,21 @@ def preflight(
         )
         authority_text = canonical_text(issue, comments)
         sponsor_present = bool(SPONSOR_RE.search(authority_text))
-        amount_present = amount_supported(
-            authority_text, candidate.advertised_amount, candidate.currency
+        resolved_amount_status, current_canonical_amount, current_canonical_currency = (
+            authoritative_commercial_amount(issue, comments)
         )
+        if resolved_amount_status == "resolved" and current_canonical_amount is not None:
+            try:
+                cand_target = Decimal(candidate.advertised_amount)
+                canon_target = Decimal(current_canonical_amount)
+                amount_present = (
+                    cand_target == canon_target
+                    and candidate.currency.upper() == (current_canonical_currency or "").upper()
+                )
+            except Exception:
+                amount_present = False
+        else:
+            amount_present = False
         acceptance_reachable = bool(ACCEPTANCE_RE.search(authority_text))
         funding_state = authoritative_funding_state(
             issue,
@@ -165,6 +179,9 @@ def preflight(
             "activity_timestamp_in_future": activity_in_future,
             "max_age_days": candidate.max_age_days,
             "sponsor_mechanism_present": sponsor_present,
+            "resolved_amount_status": resolved_amount_status,
+            "current_canonical_amount": current_canonical_amount,
+            "current_canonical_currency": current_canonical_currency,
             "advertised_amount_supported_by_canonical_evidence": amount_present,
             "acceptance_criteria_reachable": acceptance_reachable,
             "authoritative_funding_state": funding_state,
@@ -203,6 +220,9 @@ def preflight(
         elif not sponsor_present:
             status = "ambiguous"
             reasons.append("canonical_sponsor_mechanism_not_found")
+        elif resolved_amount_status == "ambiguous":
+            status = "ambiguous"
+            reasons.append("canonical_amount_ambiguous")
         elif not amount_present:
             status = "ambiguous"
             reasons.append("advertised_amount_not_supported_by_canonical_evidence")

@@ -7,6 +7,13 @@ from publication import publish_text_bundle, require_distinct_artifacts
 
 
 class PublicationAncestorSymlinkTests(unittest.TestCase):
+    def setUp(self):
+        with tempfile.TemporaryDirectory() as td:
+            try:
+                (Path(td) / "probe").symlink_to(Path(td), target_is_directory=True)
+            except OSError:
+                raise unittest.SkipTest("Symlinks not supported on this platform/privilege")
+
     def test_output_under_symlinked_parent_rejected_before_write(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)

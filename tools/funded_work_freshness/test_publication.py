@@ -21,7 +21,10 @@ class PublicationTests(unittest.TestCase):
             source = root / "source.jsonl"
             alias = root / "report.json"
             source.write_text("input\n", encoding="utf-8")
-            alias.symlink_to(source.name)
+            try:
+                alias.symlink_to(source.name)
+            except OSError:
+                self.skipTest("Symlinks not supported on this platform/privilege")
             self.assertTrue(paths_alias(source, alias))
             with self.assertRaises(PreflightInputError):
                 require_distinct_artifacts({"input": source, "output": alias})
@@ -43,7 +46,10 @@ class PublicationTests(unittest.TestCase):
             destination = root / "real.json"
             target = root / "report.json"
             destination.write_text("old\n", encoding="utf-8")
-            target.symlink_to(destination.name)
+            try:
+                target.symlink_to(destination.name)
+            except OSError:
+                self.skipTest("Symlinks not supported on this platform/privilege")
             with self.assertRaises(PreflightInputError):
                 publish_text_bundle({target: "new\n"})
             self.assertEqual("old\n", destination.read_text(encoding="utf-8"))
