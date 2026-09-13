@@ -100,6 +100,19 @@ class PackageIntegrityTests(unittest.TestCase):
                 (self.package / name).write_bytes(original)
                 launcher.verify_package(self.package)
 
+
+    def test_verified_workflow_generation_is_not_reopened(self):
+        _, launcher = self.build_unpack()
+        config, verified = launcher.verify_package(self.package, include_bytes=True)
+        original = verified['workflow.py']
+        (self.package / 'workflow.py').write_text(
+            "raise RuntimeError('replacement must not execute')\n",
+            encoding='utf-8',
+        )
+        module = launcher._load_workflow_bytes(original, self.package / 'workflow.py')
+        self.assertTrue(callable(module.main))
+        self.assertEqual(config['agency'], 'Synthetic Agency')
+
     def test_operator_config_remains_editable(self):
         _, launcher = self.build_unpack()
         (self.package / 'config.local.json').write_text(
