@@ -84,6 +84,9 @@
       if (!response.ok) throw new Error('HTTP ' + response.status);
       const data = await response.json();
       if (!Array.isArray(data.threads) || !data.pagination || !data.counts) throw new Error('Invalid shared mail response');
+      // A request completed for a filter that is no longer selected. The newer
+      // filter read is already queued; never expose obsolete rows or actions.
+      if (requestedFilterVersion !== filterVersion) return;
       render(data);
     } catch (error) {
       // An older failed read must not undo a newer queued filter reset.
