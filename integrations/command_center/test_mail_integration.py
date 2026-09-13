@@ -41,7 +41,7 @@ class MailIntegration(unittest.TestCase):
                 store.ingest({**batch, "operation_id": "mail-next", "items": [
                     {**batch["items"][0], "id": "four", "refs": {"gmail_message_id": "four", "gmail_thread_id": "four", "mailbox": "owner@example.test"}}]})
                 self.assertEqual(4, center.work_mail()["counts"]["threads"])
-                for args in ({"limit": 0}, {"limit": True}, {"offset": -1}, {"mode": "sent"}, {"query": "x" * 241}):
+                for args in ({"limit": 0}, {"limit": True}, {"offset": -1}, {"mode": "sent"}, {"mode": []}, {"mode": {}}, {"query": "x" * 241}):
                     with self.assertRaises(CoreError):
                         center.work_mail(**args)
 

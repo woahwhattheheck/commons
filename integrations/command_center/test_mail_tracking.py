@@ -346,9 +346,11 @@ class MailTrackingTests(unittest.TestCase):
                 message("three", at="2026-09-12T19:00:00.100Z")]
         row = project(work(rows), NOW)["threads"][0]
         self.assertEqual(row["last_inbound_at"], "2026-09-12T19:00:00.900000Z")
-        for item in rows:
-            item["labels"], item["status"] = ["SENT"], "sent"
-        row = project(work(rows), NOW)["threads"][0]
+        # Build actual outbound envelopes; changing only SENT would leave
+        # the mailbox as sole recipient and exercise self-mail, not outbound.
+        outbound = [message(str(n), at=item["metadata"]["email_ts"], sent=True)
+                    for n, item in enumerate(rows)]
+        row = project(work(outbound), NOW)["threads"][0]
         self.assertEqual(row["last_outbound_at"], "2026-09-12T19:00:00.900000Z")
 
 

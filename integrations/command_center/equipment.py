@@ -13,6 +13,7 @@ class CommandCenterEquipment:
             self._center = CommandCenter(state, gateway_url=os.environ.get("COMMONS_COMMAND_CENTER_GATEWAY", "http://127.0.0.1:8878"))
         return self._center
     def tools(self):
+        from .context_view import INPUT_SCHEMA
         session_schema = {
             "type": "object", "required": ["id"], "additionalProperties": False,
             "properties": {
@@ -60,6 +61,8 @@ class CommandCenterEquipment:
             }, "additionalProperties": False,
         }
         specs = [
+            ("context", "Read selective cached context, not the full feed. Filter first, page 20 by default, reuse unchanged revisions; exact underlying items remain reachable to every peer. owner means provider-reported label.", INPUT_SCHEMA["properties"], []),
+            ("context_item", "Read one exact stored normalized observation by source_id and item_id. No provider requests or mutations; independent of context filters.", {"source_id": {"type": "string", "minLength": 1, "maxLength": 2000}, "item_id": {"type": "string", "minLength": 1, "maxLength": 2000}}, ["source_id", "item_id"]),
             ("mail", "Read cached mail threads, last-observed waiting state, priority and next action, explicit deadlines, and sync coverage. No inference, provider reads, or sending.", {"limit": {"type": "integer", "minimum": 1, "maximum": 200}, "offset": {"type": "integer", "minimum": 0}, "query": {"type": "string", "maxLength": 240}, "mode": {"type": "string", "enum": ["all", "waiting_on_us", "waiting_on_them", "unknown", "unread", "overdue"]}}, []),
             ("summary", "Compact Deathstar observation: cache-only work, freshness, coverage debt, lower-bound merge throughput, payment states and provider cooldowns. Never triggers provider calls.", {}, []),
             ("swarm_state", "Read the existing PR queue and GPT review batches before building or integrating. Includes stale-state warnings. Ground/SWARM_ORDER.md: GPTs build and lead; non-GPT work needs an exact-change GPT pass. This read is recorded in command-center usage state.", {"refresh": {"type": "boolean"}}, []),
@@ -78,7 +81,7 @@ class CommandCenterEquipment:
         ]
         result = []
         for name, description, properties, required in specs:
-            if name not in {"state", "work_state", "refresh_work", "swarm_state", "summary", "mail"}:
+            if name not in {"state", "work_state", "refresh_work", "swarm_state", "summary", "mail", "context", "context_item"}:
                 properties = {"operation_id": {"type": "string", "description": "Stable ID; repeat exact payload on retry."}, **properties}
                 required = ["operation_id"] + required
             result.append({"name": "command_center_" + name, "description": description, "inputSchema": {"type": "object", "properties": properties, "required": required, "additionalProperties": False}})
@@ -88,6 +91,10 @@ class CommandCenterEquipment:
                     {"required": ["hidden"]}, {"required": ["action"]}]
         return result
     def call(self, name, arguments):
+        if name == "command_center_context":
+            return self.center.work_context(**arguments)
+        if name == "command_center_context_item":
+            return self.center.work_context_item(arguments.get("source_id"), arguments.get("item_id"))
         if name == "command_center_mail":
             return self.center.work_mail(arguments.get("limit", 100), arguments.get("offset", 0), arguments.get("query", ""), arguments.get("mode", "all"))
         if name == "command_center_summary":
