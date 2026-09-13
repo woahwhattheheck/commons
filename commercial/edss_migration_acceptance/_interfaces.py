@@ -32,12 +32,27 @@ def _interface_results(events: list[dict[str, Any]], expected_events: list[dict[
             unique_for_sequence.append(event)
     last_sequence: dict[str, int] = {}
     out_of_order_keys: set[tuple[Any, ...]] = set()
+    receive_buckets: dict[tuple[str, str], list[tuple[Any, ...]]] = {}
     for event in unique_for_sequence:
         interface_id = event["interface_id"]
         sequence = event["source_sequence"]
+        receive_buckets.setdefault((interface_id, event["received_at"]), []).append(_event_key(event))
         if interface_id in last_sequence and sequence <= last_sequence[interface_id]:
             out_of_order_keys.add(_event_key(event))
         last_sequence[interface_id] = max(sequence, last_sequence.get(interface_id, sequence))
+    ambiguous_receive_keys: set[tuple[Any, ...]] = set()
+    for keys in receive_buckets.values():
+        if len(set(keys)) > 1:
+            ambiguous_receive_keys.update(keys)
+
+    ack_owners: dict[str, set[tuple[Any, ...]]] = {}
+    for event in events:
+        for ack in event["acknowledgements"]:
+            ack_owners.setdefault(ack["ack_id"], set()).add(_event_key(event))
+    conflicting_ack_keys: set[tuple[Any, ...]] = set()
+    for owners in ack_owners.values():
+        if len(owners) > 1:
+            conflicting_ack_keys.update(owners)
 
     for event in events:
         key = _event_key(event)
@@ -64,9 +79,11 @@ def _interface_results(events: list[dict[str, Any]], expected_events: list[dict[
             status = "UNEXPECTED_LOGICAL_RECORD"
         elif key not in expected_keys:
             status = "UNEXPECTED_EVENT"
+        elif key in ambiguous_receive_keys:
+            status = "RECEIVE_TIME_AMBIGUOUS"
         elif key in out_of_order_keys:
             status = "OUT_OF_ORDER"
-        elif len(set(ack_ids)) != len(ack_ids):
+        elif len(set(ack_ids)) != len(ack_ids) or key in conflicting_ack_keys:
             status = "DUPLICATE_ACK_ID"
         elif len(event["acknowledgements"]) == 0:
             status = "MISSING_ACK"

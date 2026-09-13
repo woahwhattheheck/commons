@@ -20,7 +20,7 @@ def _validate_packet(raw: Any, policy: dict[str, Any]) -> dict[str, Any]:
     if type(events_raw) is not list or not events_raw or len(events_raw) > policy["max_events"]:
         raise EdssAcceptanceError("packet.interface_events must be a nonempty bounded list")
     events = [_validate_observed_event(value, where=f"packet.interface_events[{i}]", policy=policy) for i, value in enumerate(events_raw)]
-    events = sorted(events, key=lambda event: (event["received_at"], event["interface_id"], event["source_sequence"], event["message_id"], event["payload_sha256"]))
+    events = sorted(events, key=lambda event: (event["received_at"], event["interface_id"], event["message_id"], event["payload_sha256"]))
     return {
         "schema": PACKET_SCHEMA,
         "engagement_ref": _safe_id(obj["engagement_ref"], where="packet.engagement_ref", maximum=policy["max_id_chars"]),
