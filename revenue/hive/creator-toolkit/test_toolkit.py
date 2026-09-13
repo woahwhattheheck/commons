@@ -324,7 +324,7 @@ class HTTPTests(unittest.TestCase):
         q = self.request(r)
         inquiry = self.change('inquiry', dict(member_id=q['member_id'], body='A question'))
         first = self.store.dashboard()['outbox'][0]
-        for authorization in (None, 'Bearer wrong', 'Basic anything', 'Bearer ' + 'x' * 300, 'Bearer \ud800'):
+        for authorization in (None, 'Bearer wrong', 'Basic anything', 'Bearer ' + 'x' * 300, 'Bearer ÿ'):
             with self.subTest(authorization=repr(authorization)):
                 self.assertEqual(self.call('/api/operator', authorization=authorization)[0], 403)
                 self.assertEqual(self.call('/api/dashboard', authorization=authorization)[0], 403)
@@ -333,7 +333,9 @@ class HTTPTests(unittest.TestCase):
                 status = self.call('/api/change', dict(action='inquiry.close', operation_id=uuid.uuid4().hex,
                                                        payload={'id': inquiry['id']}), authorization=authorization)[0]
                 self.assertEqual(status, 403)
-        self.assertEqual(self.call('/api/operator', operator=True), (200, self.call('/api/operator', operator=True)[1], b'{"operator": true}'))
+        status, _, body = self.call('/api/operator', operator=True)
+        self.assertEqual(status, 200)
+        self.assertEqual(json.loads(body), {'operator': True})
         self.assertEqual(self.store.dashboard()['inquiries'][0]['state'], 'open')
 
     def test_public_member_mutations_do_not_require_operator_key(self):
@@ -344,6 +346,14 @@ class HTTPTests(unittest.TestCase):
         inquiry = self.change('inquiry', dict(member_id=member['id'], body='Public member request'), operator=False)
         self.assertEqual(inquiry['state'], 'open')
         self.assertFalse(json.loads(self.call('/api/member?id=' + member['id'])[2])['opted_in'])
+
+    def test_authorized_backup_keeps_plaintext_operator_key_out_of_snapshot(self):
+        self.resource()
+        status, headers, body = self.call('/workspace.sqlite3', operator=True)
+        self.assertEqual(status, 200)
+        self.assertEqual(headers['Content-Type'], 'application/octet-stream')
+        self.assertNotIn(self.operator_key.encode(), body)
+        self.assertEqual(headers['X-Content-SHA256'], hashlib.sha256(body).hexdigest())
 
     def test_bad_json_missing_ids_and_content_type(self):
         self.assertEqual(self.call('/api/member')[0], 400)
