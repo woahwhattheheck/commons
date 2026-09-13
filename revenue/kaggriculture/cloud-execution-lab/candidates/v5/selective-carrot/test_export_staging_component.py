@@ -227,13 +227,13 @@ class ExportContractTests(unittest.TestCase):
         with self.assertRaisesRegex(exp.ExportError, "baseline-owned"):
             self.derive(
                 [("a", b"A")], [("a", b"B")],
-                overlap_after={"a": "first"}, depends_on=["first"])
+                overlap_after={"a": "first"})
 
     def test_overlap_cannot_name_addition(self):
         with self.assertRaisesRegex(exp.ExportError, "non-replacement"):
             self.derive(
                 [("a", b"A")], [("a", b"A"), ("new.py", b"N")],
-                overlap_after={"new.py": "first"}, depends_on=["first"])
+                overlap_after={"new.py": "first"})
 
     def test_current_digest_is_required_when_current_is_not_baseline(self):
         baseline = packed([("a", b"A")])
