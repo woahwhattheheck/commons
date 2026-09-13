@@ -6,6 +6,7 @@ on:
       - 'tools/mcp_transcript_audit/**'
       - 'test_mcp_transcript_audit.py'
       - 'test_mcp_transcript_audit_cli_bounds.py'
+      - 'test_mcp_transcript_audit_numeric_parser.py'
       - '.github/workflows/mcp-transcript-audit.yml'
   push:
     branches: [main]
@@ -13,6 +14,7 @@ on:
       - 'tools/mcp_transcript_audit/**'
       - 'test_mcp_transcript_audit.py'
       - 'test_mcp_transcript_audit_cli_bounds.py'
+      - 'test_mcp_transcript_audit_numeric_parser.py'
       - '.github/workflows/mcp-transcript-audit.yml'
 
 permissions:
@@ -28,11 +30,11 @@ jobs:
         with:
           python-version: '3.13'
       - name: Compile
-        run: python -m py_compile tools/mcp_transcript_audit/*.py test_mcp_transcript_audit.py test_mcp_transcript_audit_cli_bounds.py
+        run: python -m py_compile tools/mcp_transcript_audit/*.py test_mcp_transcript_audit.py test_mcp_transcript_audit_cli_bounds.py test_mcp_transcript_audit_numeric_parser.py
       - name: Unit and hostile tests
-        run: python -m unittest -v test_mcp_transcript_audit.py test_mcp_transcript_audit_cli_bounds.py
+        run: python -m unittest -v test_mcp_transcript_audit.py test_mcp_transcript_audit_cli_bounds.py test_mcp_transcript_audit_numeric_parser.py
       - name: Optimized-mode hostile tests
-        run: python -O -m unittest -v test_mcp_transcript_audit.py test_mcp_transcript_audit_cli_bounds.py
+        run: python -O -m unittest -v test_mcp_transcript_audit.py test_mcp_transcript_audit_cli_bounds.py test_mcp_transcript_audit_numeric_parser.py
       - name: Example audit and independent verification
         run: |
           tmpdir="$(mktemp -d)"
