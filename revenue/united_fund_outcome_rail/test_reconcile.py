@@ -162,6 +162,55 @@ class ReconcileTests(unittest.TestCase):
         out = reconcile(p)
         self.assertIn("DISBURSEMENT_EXCEEDS_AWARD", out["summary"]["holds"])
 
+    def test_fully_paid_award_with_pending_commitment_holds(self):
+        p = synthetic_payload()
+        award = p["awards"][0]
+        award["disbursements"].append({
+            "event_id": "pending-over-fully-paid",
+            "amount_cents": 1,
+            "status": "pending",
+            "evidence_sha256": H,
+        })
+        out = reconcile(p)
+        result_award = next(a for a in out["awards"] if a["award_id"] == award["award_id"])
+        self.assertIn("COMMITTED_DISBURSEMENT_EXCEEDS_AWARD", result_award["holds"])
+        self.assertNotIn("DISBURSEMENT_EXCEEDS_AWARD", result_award["holds"])
+        self.assertEqual(result_award["status"], "HOLD")
+        self.assertEqual(out["summary"]["status"], "HOLD")
+
+    def test_partial_paid_plus_pending_over_award_holds(self):
+        p = synthetic_payload()
+        award = p["awards"][0]
+        award["disbursements"][0]["amount_cents"] = award["award_cents"] - 1
+        award["disbursements"].append({
+            "event_id": "pending-over-partial-paid",
+            "amount_cents": 2,
+            "status": "pending",
+            "evidence_sha256": H,
+        })
+        out = reconcile(p)
+        result_award = next(a for a in out["awards"] if a["award_id"] == award["award_id"])
+        self.assertIn("COMMITTED_DISBURSEMENT_EXCEEDS_AWARD", result_award["holds"])
+        self.assertIn("AWARD_NOT_FULLY_DISBURSED", result_award["holds"])
+        self.assertNotIn("DISBURSEMENT_EXCEEDS_AWARD", result_award["holds"])
+
+    def test_paid_plus_pending_exact_award_boundary_passes(self):
+        p = synthetic_payload()
+        p["require_full_disbursement"] = False
+        award = p["awards"][0]
+        award["disbursements"][0]["amount_cents"] = award["award_cents"] - 1
+        award["disbursements"].append({
+            "event_id": "pending-exact-boundary",
+            "amount_cents": 1,
+            "status": "pending",
+            "evidence_sha256": H,
+        })
+        out = reconcile(p)
+        result_award = next(a for a in out["awards"] if a["award_id"] == award["award_id"])
+        self.assertNotIn("COMMITTED_DISBURSEMENT_EXCEEDS_AWARD", result_award["holds"])
+        self.assertEqual(result_award["status"], "PASS")
+        self.assertEqual(out["summary"]["status"], "PASS")
+
     def test_full_disbursement_shortfall_holds(self):
         p = synthetic_payload()
         p["awards"][0]["disbursements"][0]["amount_cents"] -= 1
