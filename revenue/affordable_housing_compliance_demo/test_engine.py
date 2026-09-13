@@ -155,6 +155,14 @@ class EvidenceTests(unittest.TestCase):
         with self.assertRaises(EvidenceError):
             compile_receipt(req)
 
+    def test_empty_gold_set_rejected(self):
+        req = base_request()
+        req["gold_findings"] = []
+        req["candidate_findings"] = []
+        req["threshold_policy"].update({"approved": True, "approval_ref": "P", "approval_sha256": h("p")})
+        with self.assertRaises(EvidenceError):
+            compile_receipt(req)
+
     def test_duplicate_candidate_rejected(self):
         req = base_request()
         req["candidate_findings"].append(copy.deepcopy(req["candidate_findings"][0]))

@@ -6,7 +6,7 @@ import json
 import math
 import os
 import stat
-from collections import Counter, defaultdict
+from collections import defaultdict
 from pathlib import Path
 from typing import Any
 
@@ -46,10 +46,6 @@ class EvidenceError(ValueError):
 
 def _is_int(value: Any) -> bool:
     return type(value) is int
-
-
-def _sha256_text(value: str) -> str:
-    return hashlib.sha256(value.encode("utf-8")).hexdigest()
 
 
 def canonical_bytes(value: Any) -> bytes:
@@ -212,8 +208,8 @@ def _validate_request(request: dict[str, Any]) -> None:
         if not _valid_sha(req["statement_sha256"]):
             raise EvidenceError(f"invalid statement sha256: {rid}")
 
-    if type(request["gold_findings"]) is not list:
-        raise EvidenceError("gold_findings must be a list")
+    if type(request["gold_findings"]) is not list or not request["gold_findings"]:
+        raise EvidenceError("gold_findings must be a non-empty list")
     seen_gold: set[tuple[str, str]] = set()
     for i, row in enumerate(request["gold_findings"]):
         _exact_keys(row, {"case_id", "finding_code", "requirement_id"}, f"gold_findings[{i}]")
