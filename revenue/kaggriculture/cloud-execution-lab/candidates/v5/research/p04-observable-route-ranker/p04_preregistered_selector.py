@@ -13,6 +13,7 @@ import argparse
 import hashlib
 import json
 import math
+import os
 import re
 import statistics
 import subprocess
@@ -436,11 +437,20 @@ def fit_selector(report: Any) -> dict[str, Any]:
     )
 
 
-def _git(repo_root: Path, *args: str, check: bool = True) -> subprocess.CompletedProcess[bytes]:
+def _git(
+    repo_root: Path,
+    *args: str,
+    check: bool = True,
+    env: dict[str, str] | None = None,
+) -> subprocess.CompletedProcess[bytes]:
+    clean_env = {k: v for k, v in os.environ.items() if not k.startswith("GIT_")}
+    if env:
+        clean_env.update(env)
     try:
         proc = subprocess.run(
-            ["git", *args],
+            ["git", "--no-replace-objects", *args],
             cwd=repo_root,
+            env=clean_env,
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE,
             check=False,
@@ -460,6 +470,57 @@ def _validate_canonical_checkout(repo_root: Path) -> str:
     if _git(repo_root, "rev-parse", "--verify", "--quiet", TRUSTED_MAIN_REF, check=False).returncode != 0:
         raise ValueError("canonical origin/main ref is unavailable; fetch origin/main before fitting evidence")
     return TRUSTED_MAIN_REF
+
+
+def _resolve_trusted_main_commit(
+    repo_root: Path,
+    trusted_main_commit: str | None = None,
+) -> str:
+    """Resolve and authenticate the trusted main commit tip.
+
+    Authority requires an authenticated remote observation (e.g. via git ls-remote)
+    or an explicit provider-supplied SHA. An attacker-mutable local ref alone
+    cannot manufacture authority.
+    """
+    if trusted_main_commit is not None:
+        if not isinstance(trusted_main_commit, str) or not re.fullmatch(r"[0-9a-f]{40}", trusted_main_commit):
+            raise ValueError("trusted_main_commit must be one full lowercase 40-hex commit SHA")
+        resolved = _git(
+            repo_root, "rev-parse", "--verify", "--quiet", f"{trusted_main_commit}^{{commit}}", check=False
+        )
+        if resolved.returncode != 0 or resolved.stdout.decode().strip() != trusted_main_commit:
+            raise ValueError(f"trusted_main_commit {trusted_main_commit} does not resolve to a commit in repository")
+        trusted_tip = trusted_main_commit
+    else:
+        ls_proc = _git(repo_root, "ls-remote", "--heads", "origin", "refs/heads/main", check=False)
+        if ls_proc.returncode != 0:
+            detail = ls_proc.stderr.decode("utf-8", errors="replace").strip()
+            raise ValueError(
+                f"cannot authenticate trusted main tip via origin ls-remote: {detail}; "
+                "supply trusted_main_commit or connect to canonical remote"
+            )
+        stdout_text = ls_proc.stdout.decode("utf-8", errors="strict").strip()
+        match = re.search(r"^([0-9a-f]{40})\s+refs/heads/main$", stdout_text, re.MULTILINE)
+        if not match:
+            raise ValueError("authenticated remote origin/main tip not found in ls-remote output")
+        remote_tip = match.group(1)
+        check_local = _git(repo_root, "rev-parse", "--verify", "--quiet", f"{remote_tip}^{{commit}}", check=False)
+        if check_local.returncode != 0:
+            raise ValueError(
+                f"authenticated remote main tip {remote_tip} is not present in local repository; run git fetch origin"
+            )
+        trusted_tip = remote_tip
+
+    local_origin_main = _git(repo_root, "rev-parse", "--verify", "--quiet", TRUSTED_MAIN_REF, check=False)
+    if local_origin_main.returncode == 0:
+        local_sha = local_origin_main.stdout.decode().strip()
+        if local_sha != trusted_tip:
+            if _git(repo_root, "merge-base", "--is-ancestor", local_sha, trusted_tip, check=False).returncode != 0:
+                raise ValueError(
+                    f"local {TRUSTED_MAIN_REF} ({local_sha}) is not an ancestor of authenticated main tip ({trusted_tip})"
+                )
+
+    return trusted_tip
 
 
 def _canonical_repo_root() -> Path:
@@ -487,18 +548,21 @@ def load_committed_rows(
     repo_root: Path,
     evidence_commit: str,
     evidence_paths: Iterable[str],
+    *,
+    trusted_main_commit: str | None = None,
 ) -> tuple[list[Any], dict[str, Any]]:
     repo_root = Path(repo_root).resolve()
     if not repo_root.is_dir():
         raise ValueError("repo_root must be an existing directory")
     trusted_ref = _validate_canonical_checkout(repo_root)
+    trusted_commit = _resolve_trusted_main_commit(repo_root, trusted_main_commit=trusted_main_commit)
     if not isinstance(evidence_commit, str) or not re.fullmatch(r"[0-9a-f]{40}", evidence_commit):
         raise ValueError("evidence_commit must be one full lowercase 40-hex commit SHA")
     resolved = _git(repo_root, "rev-parse", "--verify", f"{evidence_commit}^{{commit}}").stdout.decode().strip()
     if resolved != evidence_commit:
         raise ValueError("evidence_commit did not resolve to the exact requested commit")
-    if _git(repo_root, "merge-base", "--is-ancestor", evidence_commit, trusted_ref, check=False).returncode != 0:
-        raise ValueError(f"evidence commit is not an ancestor of canonical main ref {trusted_ref}")
+    if _git(repo_root, "merge-base", "--is-ancestor", evidence_commit, trusted_commit, check=False).returncode != 0:
+        raise ValueError(f"evidence commit is not an ancestor of canonical main tip {trusted_commit}")
 
     paths = [_canonical_evidence_path(path) for path in evidence_paths]
     if not paths or len(paths) != len(set(paths)):
@@ -533,6 +597,7 @@ def load_committed_rows(
         "schema": EVIDENCE_SCHEMA,
         "commit": evidence_commit,
         "trusted_main_ref": trusted_ref,
+        "trusted_main_commit": trusted_commit,
         "members": members,
         "rows": len(rows),
     }
@@ -542,8 +607,15 @@ def _fit_selector_from_repo(
     repo_root: Path,
     evidence_commit: str,
     evidence_paths: Iterable[str],
+    *,
+    trusted_main_commit: str | None = None,
 ) -> dict[str, Any]:
-    rows, evidence = load_committed_rows(repo_root, evidence_commit, evidence_paths)
+    rows, evidence = load_committed_rows(
+        repo_root,
+        evidence_commit,
+        evidence_paths,
+        trusted_main_commit=trusted_main_commit,
+    )
     report = reduce_matrix(rows)
     result = _fit_reduced_report(report)
     result["evidence"] = {**evidence, "reduced_report_sha256": _sha256(report)}
@@ -553,15 +625,23 @@ def _fit_selector_from_repo(
 def fit_selector_from_committed_evidence(
     evidence_commit: str,
     evidence_paths: Iterable[str],
+    *,
+    trusted_main_commit: str | None = None,
 ) -> dict[str, Any]:
     """Fit only from committed evidence in the canonical checkout containing this module."""
-    return _fit_selector_from_repo(_canonical_repo_root(), evidence_commit, evidence_paths)
+    return _fit_selector_from_repo(
+        _canonical_repo_root(),
+        evidence_commit,
+        evidence_paths,
+        trusted_main_commit=trusted_main_commit,
+    )
 
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--evidence-commit")
     parser.add_argument("--evidence-path", action="append", default=[])
+    parser.add_argument("--trusted-main-commit")
     parser.add_argument("--output", type=Path)
     parser.add_argument("--print-preregistration", action="store_true")
     args = parser.parse_args()
@@ -570,7 +650,11 @@ def main() -> None:
     else:
         if args.evidence_commit is None or not args.evidence_path:
             parser.error("--evidence-commit and at least one --evidence-path are required")
-        payload = fit_selector_from_committed_evidence(args.evidence_commit, args.evidence_path)
+        payload = fit_selector_from_committed_evidence(
+            args.evidence_commit,
+            args.evidence_path,
+            trusted_main_commit=args.trusted_main_commit,
+        )
     encoded = json.dumps(payload, sort_keys=True, indent=2) + "\n"
     if args.output:
         with args.output.open("x", encoding="utf-8") as handle:
