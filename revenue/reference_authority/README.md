@@ -29,9 +29,9 @@ Top-level keys are exact; unknown fields and duplicate JSON keys fail closed.
 - `opportunity`: exact `opportunity_id` and public-safe title
 - `requirements[]`: exact opportunity/requirement id, bounded label, `required_count`
 - `evidence[]`: immutable evidence id, engagement kind, public-safe subject/performer, source URL/SHA-256, observed result, limitations, disclosure-safe summary
-- `disclosure_authorities[]`: exact canonical normalized evidence digest + opportunity + use class + status + observed time/expiry + authority evidence ref/hash
-- `reference_permissions[]`: exact canonical normalized evidence digest + opportunity + requirement + status + observed time/expiry + permission evidence ref/hash
-- `comparability_authorities[]`: exact canonical normalized evidence digest + opportunity + requirement + COMPARABLE/NOT_COMPARABLE + assessment time/expiry + evidence ref/hash
+- `disclosure_authorities[]`: exact canonical normalized evidence digest + exact normalized opportunity-generation digest + use class + status + observed time/expiry + authority evidence ref/hash
+- `reference_permissions[]`: exact canonical normalized evidence digest + exact normalized opportunity-generation digest + exact normalized requirement-generation digest + status + observed time/expiry + permission evidence ref/hash
+- `comparability_authorities[]`: exact canonical normalized evidence digest + exact normalized opportunity-generation digest + exact normalized requirement-generation digest + COMPARABLE/NOT_COMPARABLE + assessment time/expiry + evidence ref/hash
 
 Supported engagement kinds deliberately separate:
 
@@ -41,7 +41,7 @@ Supported engagement kinds deliberately separate:
 - `EXTERNAL_REVIEW_PROGRAM`
 - `PROCUREMENT_PURSUIT`
 
-Only `CLIENT_ENGAGEMENT` can ever reach reference-ready-for-owner-review. Authority producers should use the exported `evidence_digest()` helper; it hashes the normalized evidence record so harmless input-list ordering cannot change authority identity.
+Only `CLIENT_ENGAGEMENT` can ever reach reference-ready-for-owner-review. Authority producers should use the exported `evidence_digest()`, `opportunity_digest()`, and `requirement_digest()` helpers. These helpers commit normalized record generations rather than presentation order. Reusing a stable opportunity or requirement ID after changing its normalized title, label, or required count therefore invalidates the older authority instead of replaying it into the changed generation.
 
 ## Time and replay semantics
 
@@ -66,4 +66,4 @@ The compile command uses create-exclusive output files; it will not overwrite an
 
 The implementation rejects duplicate IDs/JSON keys, unknown fields, bool-as-int integers, malformed digests/timestamps/URLs, embedded credentials, email- or phone-shaped contact PII, private/path-shaped public text, unknown evidence/requirement links, unsupported enums, and authority escalation.
 
-Reference promotion also HOLDs on missing permission/comparability/disclosure authority; non-client engagement kind; wrong disclosure class; digest mismatch; future authority; revocation/not-comparable status; expiry; or insufficient exact references for the requirement count.
+Reference promotion also HOLDs on missing permission/comparability/disclosure authority; non-client engagement kind; wrong disclosure class; evidence, opportunity-generation, or requirement-generation digest mismatch; future authority; revocation/not-comparable status; expiry; or insufficient exact references for the requirement count. In particular, an authority issued for one requirement generation cannot survive a same-ID rewrite of the requirement label/count, and disclosure authority cannot survive a same-ID rewrite of the opportunity title.
