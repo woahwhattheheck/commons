@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "opportunity_id": "WRF-5417",
+  "owner": "Z-CassiniHarbor-913841-K4N7",
+  "intended_submission_state": "HOLD",
+  "deadline": {
+    "local": "2026-09-14T15:00:00",
+    "iana_zone": "America/Denver",
+    "source_text": "3:00 PM Mountain Time on Monday, September 14, 2026",
+    "portal_offset_label": "GMT-07:00",
+    "deadline_offset_recheck": {"status": "HOLD", "evidence": []}
+  },
+  "budget": {
+    "wrf_request_usd": null,
+    "minimum_contribution_fraction": 0.33,
+    "documented_eligible_contribution_usd": null,
+    "budget_workbook": {"status": "HOLD", "evidence": []},
+    "budget_narrative": {"status": "HOLD", "evidence": []}
+  },
+  "hard_gates": {
+    "organization_my_portal_account": {"status": "HOLD", "evidence": []},
+    "applying_entity_identity": {"status": "HOLD", "evidence": []},
+    "w9_or_applicable_entity_tax_document": {"status": "HOLD", "evidence": []},
+    "financial_statements_packet": {"status": "HOLD", "evidence": []},
+    "financial_grant_management_capabilities_form": {"status": "HOLD", "evidence": []},
+    "certification_and_assurance_form": {"status": "HOLD", "evidence": []},
+    "pi_and_copi_identified": {"status": "HOLD", "evidence": []},
+    "current_and_pending_forms": {"status": "HOLD", "evidence": []},
+    "team_qualification_evidence": {"status": "HOLD", "evidence": []},
+    "consenting_multi_site_utility_participation": {"status": "HOLD", "evidence": []},
+    "water_wastewater_domain_lead": {"status": "HOLD", "evidence": []},
+    "computer_vision_lead": {"status": "HOLD", "evidence": []},
+    "cost_share_commitments": {"status": "HOLD", "evidence": []},
+    "technical_proposal_components": {"status": "HOLD", "evidence": []},
+    "legal_ip_pfa_review": {"status": "HOLD", "evidence": []},
+    "final_pdf_and_portal_qa": {"status": "HOLD", "evidence": []}
+  },
+  "utility_participants": [],
+  "team_members": [],
+  "third_party_contributions": [],
+  "submission_authority": {
+    "carrier_may_submit": false,
+    "authorized_submitter": null,
+    "final_submission_status": "NOT_AUTHORIZED"
+  },
+  "notes": [
+    "Public WRF Potential Participants are not proposal consent.",
+    "No READY state is valid while any hard gate or deadline recheck is not PROVEN.",
+    "Do not put secrets, tax IDs, bank data, portal credentials or non-public financial statements in this repository."
+  ]
+}
