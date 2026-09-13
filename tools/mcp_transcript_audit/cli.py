@@ -16,13 +16,21 @@ from .audit import (
 MAX_RECEIPT_BYTES = 32 * 1024 * 1024
 
 
-def _read_bounded(path: str, *, max_bytes: int, label: str) -> bytes:
+def _open_flags() -> int:
     flags = os.O_RDONLY
     if hasattr(os, "O_CLOEXEC"):
         flags |= os.O_CLOEXEC
     if hasattr(os, "O_NOFOLLOW"):
         flags |= os.O_NOFOLLOW
-    fd = os.open(path, flags)
+    # Avoid blocking forever on FIFOs/special files before S_ISREG.
+    # Platforms without O_NONBLOCK keep the prior open path.
+    if hasattr(os, "O_NONBLOCK"):
+        flags |= os.O_NONBLOCK
+    return flags
+
+
+def _read_bounded(path: str, *, max_bytes: int, label: str) -> bytes:
+    fd = os.open(path, _open_flags())
     try:
         file_stat = os.fstat(fd)
         if not stat.S_ISREG(file_stat.st_mode):
