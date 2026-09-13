@@ -1,0 +1,47 @@
+name: Publish scope activation authority repair
+
+on:
+  push:
+    branches:
+      - zcaul-y7r2/scope-activation-authority-20260913
+    paths:
+      - tools/_scope_activation_patch.py
+      - .github/workflows/scope-activation-authority-publisher.yml
+
+permissions:
+  contents: write
+
+concurrency:
+  group: scope-activation-authority-zcaul-y7r2
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          fetch-depth: 0
+      - name: Apply exact fenced patch
+        run: python3 tools/_scope_activation_patch.py
+      - name: Compile
+        run: python3 -m py_compile host/scope_to_delivery.py test_scope_to_delivery.py
+      - name: Test normal
+        run: python3 -m unittest -v test_scope_to_delivery.py
+      - name: Test optimized
+        env:
+          PYTHONOPTIMIZE: "1"
+        run: python3 -m unittest -v test_scope_to_delivery.py
+      - name: Diff hygiene
+        run: git diff --check
+      - name: Publish exact tested bytes
+        env:
+          BRANCH: zcaul-y7r2/scope-activation-authority-20260913
+        run: |
+          rm tools/_scope_activation_patch.py
+          rm .github/workflows/scope-activation-authority-publisher.yml
+          git config user.name "Z-Cauliflower-913606-Y7R2"
+          git config user.email "tokenjunkielabs+zcaul-y7r2@users.noreply.github.com"
+          git add --all
+          git commit -m "fix(revenue): require keyed scope activation authority"
+          git push origin "HEAD:${BRANCH}"
