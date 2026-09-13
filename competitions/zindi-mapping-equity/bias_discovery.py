@@ -8,6 +8,7 @@ from typing import Optional,Sequence
 
 DEFAULT_EXCLUDED_PREFIXES=("svi_","cvi_","ruca_","rucc_","nchs_","tribal_","usdm_","usfs_","mtbs_","heat_","wildfire_","drought_")
 SCHEMA_VERSION="bias-discovery-evidence/v2"
+COMPONENT_PROVENANCE_COLUMNS=("transport_gap","transport_defined","building_gap","building_defined","poi_gap","poi_defined")
 
 def numeric(value:Optional[str])->Optional[float]:
     if value is None or value.strip()=="": return None
@@ -15,12 +16,16 @@ def numeric(value:Optional[str])->Optional[float]:
     except (TypeError,ValueError): return None
     return n if math.isfinite(n) else None
 
-def load_scores(path:Path)->dict[str,float]:
+def load_scores(path:Path,*,require_components:bool=False)->dict[str,float]:
     out={}
     with path.open(newline="",encoding="utf-8") as h:
         r=csv.DictReader(h)
         if not r.fieldnames or not {"GEOID","coverage_gap_score"}<=set(r.fieldnames):
             raise ValueError("score CSV must contain GEOID and coverage_gap_score")
+        if require_components:
+            missing=[name for name in COMPONENT_PROVENANCE_COLUMNS if name not in r.fieldnames]
+            if missing:
+                raise ValueError("components CSV is missing derived diagnostic columns: "+", ".join(missing))
         for row in r:
             g=(row.get("GEOID") or "").strip(); s=numeric(row.get("coverage_gap_score"))
             if not(len(g)==11 and g.isdigit()) or s is None: continue
@@ -121,6 +126,10 @@ def analyze(scores:dict[str,float],strata_path:Path,min_rows:int,prefixes:tuple[
         if len(set(r.fieldnames))!=len(r.fieldnames): raise ValueError("duplicate strata CSV header")
         fields=list(r.fieldnames); rows=list(r)
     if not rows: raise ValueError("empty strata CSV")
+    for field in fields:
+        normalized=field.lower().replace("-","_").replace(" ","_")
+        if "coverage_gap" in normalized:
+            raise ValueError(f"strata CSV contains target-like coverage-gap field: {field}")
     seen_geoids=set()
     for row in rows:
         g=(row.get("GEOID") or "").strip()
@@ -189,7 +198,7 @@ def main(argv=None)->int:
     p.add_argument("--permutations",type=int,default=2000); p.add_argument("--seed",type=int,default=20260913)
     p.add_argument("--include-fixed-scorecard-families",action="store_true"); a=p.parse_args(argv)
     prefixes=() if a.include_fixed_scorecard_families else DEFAULT_EXCLUDED_PREFIXES
-    candidates=analyze(load_scores(a.components_csv),a.strata_csv,a.min_rows,prefixes,
+    candidates=analyze(load_scores(a.components_csv,require_components=True),a.strata_csv,a.min_rows,prefixes,
         bootstrap_iterations=a.bootstrap_iterations,permutations=a.permutations,seed=a.seed)
     packet=build_evidence_packet(a.components_csv,a.strata_csv,candidates,min_rows=a.min_rows,
         bootstrap_iterations=a.bootstrap_iterations,permutations=a.permutations,seed=a.seed,excluded_prefixes=prefixes)
