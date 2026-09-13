@@ -32,6 +32,8 @@ class SettledCashTests(unittest.TestCase):
         self.assertIs(summary["withdrawability_asserted"], False)
         receipt = summary["receipts"][0]
         self.assertEqual(receipt["payment_state"], "PAID")
+        self.assertEqual(receipt["provider_url"], "https://gofrantic.com/")
+        self.assertEqual(receipt["bounty_number"], 120)
         self.assertEqual(receipt["provider_receipt_id"], "r/ef2f247c")
         self.assertEqual(receipt["collection_action"], "NONE_DO_NOT_RESEND")
         self.assertNotIn("idempotency_key", receipt)
@@ -87,19 +89,35 @@ class SettledCashTests(unittest.TestCase):
         with self.assertRaisesRegex(settled.CashSettlementError, "NONE_DO_NOT_RESEND"):
             settled.validate_ledger(value)
 
-    def test_urls_are_allowlisted_and_clean(self):
-        cases = (
-            ("bounty_url", "http://gofrantic.com/bounties/120"),
-            ("bounty_url", "https://example.com/bounties/120"),
-            ("bounty_url", "https://gofrantic.com/bounties/120?secret=x"),
-            ("result_url", "https://github.com/sourcey/startup-credits/issues/1423"),
-            ("result_url", "https://github.com/sourcey/startup-credits/pull/1423#x"),
-        )
-        for field, url in cases:
-            with self.subTest(field=field, url=url):
+    def test_provider_root_and_result_url_are_allowlisted(self):
+        for url in (
+            "http://gofrantic.com/",
+            "https://example.com/",
+            "https://gofrantic.com/bounties/120",
+            "https://gofrantic.com/?secret=x",
+        ):
+            with self.subTest(url=url):
                 value = self.ledger()
-                value["receipts"][0][field] = url
+                value["receipts"][0]["provider_url"] = url
+                with self.assertRaisesRegex(settled.CashSettlementError, "canonical Frantic root"):
+                    settled.validate_ledger(value)
+        for url in (
+            "https://github.com/sourcey/startup-credits/issues/1423",
+            "https://github.com/sourcey/startup-credits/pull/1423#x",
+            "http://github.com/sourcey/startup-credits/pull/1423",
+        ):
+            with self.subTest(url=url):
+                value = self.ledger()
+                value["receipts"][0]["result_url"] = url
                 with self.assertRaisesRegex(settled.CashSettlementError, "clean public HTTPS URL"):
+                    settled.validate_ledger(value)
+
+    def test_bounty_number_must_be_positive_integer(self):
+        for number in (0, -1, "120", True, 1.5):
+            with self.subTest(number=number):
+                value = self.ledger()
+                value["receipts"][0]["bounty_number"] = number
+                with self.assertRaisesRegex(settled.CashSettlementError, "positive integer"):
                     settled.validate_ledger(value)
 
     def test_evidence_time_cannot_be_future_of_ledger(self):
