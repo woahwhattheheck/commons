@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "product": "service_change_order_desk",
+  "runtime": "python-standard-library",
+  "network_access": false,
+  "provider_writes": false,
+  "source_authority_verified": false,
+  "entrypoint": "python -m revenue.service_change_order_desk.cli",
+  "test_commands": [
+    "python -m py_compile revenue/service_change_order_desk/*.py",
+    "python -m unittest revenue.service_change_order_desk.test_desk -v",
+    "python -O -m unittest revenue.service_change_order_desk.test_desk -v"
+  ],
+  "authority_ceiling": {
+    "send_authorized": false,
+    "signature_authorized": false,
+    "contract_amendment_authorized": false,
+    "buyer_acceptance_inferred": false,
+    "checkout_authorized": false,
+    "payment_authorized": false,
+    "provider_write_authorized": false,
+    "scheduling_authorized": false,
+    "dispatch_authorized": false,
+    "fulfillment_authorized": false,
+    "deployment_authorized": false,
+    "cash_recognized": false,
+    "revenue_recognized": false
+  }
+}
