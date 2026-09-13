@@ -105,6 +105,73 @@ class DriveWrapperTests(unittest.TestCase):
 
         self.assertFalse(dispatched)
 
+    def test_malformed_optional_legacy_field_holds_before_any_dispatch(self):
+        for field, bad_value in (("purpose", {}), ("owner_ok", True)):
+            with self.subTest(field=field):
+                namespace = {"CMD_ROOT": "X"}
+                dispatched = []
+
+                def legacy_main():
+                    local = namespace["load_local_commands"]()
+                    remote = namespace["load_github_commands"]()
+                    commands = dict(local)
+                    commands.update(remote)
+                    for command_id in sorted(commands):
+                        dispatched.append(command_id)
+                    return 0
+
+                namespace["main"] = legacy_main
+                commands = {
+                    "a-valid": {"id": "a-valid"},
+                    "z-bad": {"id": "z-bad", field: bad_value},
+                }
+                with mock.patch.object(
+                    drive, "_load_legacy_namespace", return_value=namespace
+                ), mock.patch.object(
+                    snapshot, "load_local_commands", return_value=commands
+                ), mock.patch.object(
+                    snapshot,
+                    "load_github_commands",
+                    return_value=({}, "a" * 40),
+                ):
+                    self.assertEqual(drive.main(), 2)
+
+                self.assertEqual(dispatched, [])
+
+    def test_local_remote_id_collision_holds_before_any_dispatch(self):
+        namespace = {"CMD_ROOT": "X"}
+        dispatched = []
+
+        def legacy_main():
+            local = namespace["load_local_commands"]()
+            remote = namespace["load_github_commands"]()
+            commands = dict(local)
+            commands.update(remote)
+            dispatched.extend(sorted(commands))
+            return 0
+
+        namespace["main"] = legacy_main
+        with mock.patch.object(drive, "_load_legacy_namespace", return_value=namespace), \
+             mock.patch.object(
+                 snapshot,
+                 "load_local_commands",
+                 return_value={"same-id": {"id": "same-id"}},
+             ), \
+             mock.patch.object(
+                 snapshot,
+                 "load_github_commands",
+                 return_value=({"same-id": {"id": "same-id"}}, "a" * 40),
+             ):
+            self.assertEqual(drive.main(), 2)
+
+        self.assertEqual(dispatched, [])
+
+    def test_schema_closure_rejects_mapping_key_id_mismatch(self):
+        with self.assertRaisesRegex(snapshot.SnapshotError, "map key/id mismatch"):
+            drive._close_legacy_schema(
+                {"map-id": {"id": "different-id"}}, source="test"
+            )
+
 
 if __name__ == "__main__":
     unittest.main()

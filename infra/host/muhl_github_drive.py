@@ -26,6 +26,23 @@ LEGACY_GIT_BLOB = "c491d09c762b9f8683d5e0bdd071104298c721ab"
 REPO = "woahwhattheheck/kite-mouth-help"
 REPO_API = "https://api.github.com/repos/" + REPO + "/"
 MAX_API_BYTES = 2 * 1024 * 1024
+# Every command field the pinned legacy engine reads as text. The snapshot
+# parser closes required/per-kind fields; this second fence closes optional
+# legacy-consumed fields before the legacy loop can dispatch any command.
+LEGACY_STRING_FIELDS = frozenset({
+    "id",
+    "kind",
+    "approved",
+    "claimed_from",
+    "authenticated_player",
+    "purpose",
+    "path",
+    "from",
+    "to",
+    "body",
+    "owner_ok",
+    "_source",
+})
 
 
 def _load_legacy_namespace() -> dict[str, Any]:
@@ -68,18 +85,55 @@ def _github_json(endpoint: str, token: str | None) -> Any:
         raise snapshot.SnapshotError("GitHub command snapshot response is invalid JSON") from exc
 
 
+def _close_legacy_schema(
+    commands: dict[str, dict[str, Any]], *, source: str
+) -> dict[str, dict[str, Any]]:
+    """Type-close every field the pinned legacy engine consumes as text."""
+    if not isinstance(commands, dict):
+        raise snapshot.SnapshotError(f"{source}: command snapshot must be a mapping")
+    for command_id, command in commands.items():
+        if not isinstance(command_id, str):
+            raise snapshot.SnapshotError(f"{source}: command map key must be a string")
+        if not isinstance(command, dict):
+            raise snapshot.SnapshotError(f"{source}:{command_id}: command must be an object")
+        for key in LEGACY_STRING_FIELDS:
+            if key in command and not isinstance(command[key], str):
+                raise snapshot.SnapshotError(
+                    f"{source}:{command_id}: {key} must be a string before legacy dispatch"
+                )
+        declared_id = command.get("id")
+        if declared_id is not None and declared_id != command_id:
+            raise snapshot.SnapshotError(
+                f"{source}:{command_id}: command map key/id mismatch {declared_id!r}"
+            )
+    return commands
+
+
 def _install_snapshot_loaders(namespace: dict[str, Any]) -> None:
     command_root = namespace.get("CMD_ROOT")
     if not isinstance(command_root, str) or not command_root:
         raise snapshot.SnapshotError("legacy drive command root is invalid")
 
+    local_ids: set[str] = set()
+
     def load_local_commands() -> dict[str, dict[str, Any]]:
-        return snapshot.load_local_commands(command_root)
+        commands = _close_legacy_schema(
+            snapshot.load_local_commands(command_root), source="local-snapshot"
+        )
+        local_ids.clear()
+        local_ids.update(commands)
+        return commands
 
     def load_github_commands(token: str | None = None) -> dict[str, dict[str, Any]]:
         commands, commit_sha = snapshot.load_github_commands(
             lambda endpoint: _github_json(endpoint, token)
         )
+        commands = _close_legacy_schema(commands, source=f"github-snapshot@{commit_sha}")
+        duplicates = sorted(local_ids.intersection(commands))
+        if duplicates:
+            raise snapshot.SnapshotError(
+                "local/GitHub command id collision(s): " + ", ".join(duplicates)
+            )
         print("DRIVE snapshot github", commit_sha, "ids", len(commands))
         return commands
 
