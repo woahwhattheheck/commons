@@ -26,15 +26,25 @@ and a deterministic 94-member candidate archive SHA256
 `7c9126d961915acbe1c69930d7cebc4938641233fe50323f2fb043c08334ac3d`.
 Those hashes establish source and package identity only.
 
-The component also composes without overlap after `future-own-supply-v1`.
-That two-component structural proof has 95 members and archive SHA256
+The generated component is checked in at
+`../selective-carrot/components/wf1-production20f-v1/COMPONENT.json`. It also
+composes without overlap after `future-own-supply-v1`. That two-component
+structural proof has 95 members and archive SHA256
 `db605e8db69d1a8392c9bc448d50abed165d024096b749d75aa91b921df3353f`.
-It is an unmeasured interaction candidate.
+The two-component interaction remains unmeasured.
 
 The source is authenticated against the existing canonical donor blob `b35a30431f64c1d6b40d1d599190338a9d50b555`, adapter blob `5b8f4c0144ce43ae449373a6a188ce03409a16ee`, and retained field-receipt blob `e703d88cd40bb5af96aabaaa4327c1b7a81380aa`.
 
 That retained paired field receipt completed 8/8 cells with zero failures and positive margin in every cell. Mean margin delta was +143.25 and mean own-score delta was +132.375. This package does not change canonical defaults or authorize activation; it makes the measured component reproducible against an explicitly identified V5 baseline.
 
-The retained receipt remains historical motivation. The new standard-entry
-component is unmeasured and must run both seats with natural WF1 engagement and
-paired current economics before it can enter a cumulative V5 candidate.
+`LOCAL-SCREEN.json` records the exact-current development screen against the
+pinned production-v3 archive and responsive Arlene. All 12 matched cells across
+six seeds and both mirrored seats engaged and improved paired margin: mean
+`+385.5`, median `+353`, range `+314` to `+479`, zero failures, and no
+win-to-loss conversion. The six distinct worlds were also 6/6 positive. Mean
+own-cash delta was `+354.83`; mean rival-cash delta was `-30.67`.
+
+This result admits the exact component to the held composition intake. It does
+not establish hosted rating or broad-opponent performance: mirrored seats are
+correlated, local timers were disabled, and the opponent was Arlene only. The
+native Apex/Arlene and top-30-union gates remain required before promotion.
