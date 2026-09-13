@@ -35,7 +35,8 @@ TECHNICAL_REQUIREMENTS = {
 }
 SAFE_ID = re.compile(r"^[A-Za-z0-9][A-Za-z0-9._:+#/-]{0,159}$")
 SHA256 = re.compile(r"^[0-9a-f]{64}$")
-SAFE_CLAIM = re.compile(r"^[A-Za-z0-9][A-Za-z0-9 .,:;()_+/#\'-]{0,599}$")
+SAFE_CLAIM = re.compile(r"^[A-Za-z0-9][A-Za-z0-9 .,:;()_+/#'-]{0,599}$")
+TRUST_RECORD_KEYS = {"source_sha256", "source_kind", "observed_state", "source_ref"}
 
 
 class DossierError(ValueError):
@@ -129,16 +130,31 @@ def _validate_policy(policy: Any) -> dict[str, Any]:
     }
 
 
-def _validate_trusted_commercial_receipts(value: Any) -> dict[str, str]:
+def _validate_trusted_commercial_receipts(value: Any) -> dict[str, dict[str, str]]:
     if value is None:
         return {}
     if not isinstance(value, dict) or len(value) > 2000:
         raise DossierError("trusted_commercial_receipts must be object")
-    clean: dict[str, str] = {}
-    for raw_id, raw_digest in value.items():
+    clean: dict[str, dict[str, str]] = {}
+    for raw_id, raw_record in value.items():
         source_id = _string(raw_id, "trusted_commercial_receipts.source_id", max_len=120, pattern=SAFE_ID)
-        receipt_digest = _string(raw_digest, f"trusted_commercial_receipts[{source_id}]", max_len=64, pattern=SHA256)
-        clean[source_id] = receipt_digest
+        if isinstance(raw_record, str):
+            raise DossierError(f"trusted_commercial_receipts[{source_id}]: digest-only trust is untyped")
+        if not isinstance(raw_record, dict):
+            raise DossierError(f"trusted_commercial_receipts[{source_id}] must be object")
+        _exact_keys(raw_record, TRUST_RECORD_KEYS, f"trusted_commercial_receipts[{source_id}]")
+        record = {
+            "source_sha256": _string(raw_record["source_sha256"], f"trusted_commercial_receipts[{source_id}].source_sha256", max_len=64, pattern=SHA256),
+            "source_kind": _string(raw_record["source_kind"], f"trusted_commercial_receipts[{source_id}].source_kind", max_len=32),
+            "observed_state": _string(raw_record["observed_state"], f"trusted_commercial_receipts[{source_id}].observed_state", max_len=32),
+            "source_ref": _string(raw_record["source_ref"], f"trusted_commercial_receipts[{source_id}].source_ref", max_len=160, pattern=SAFE_ID),
+        }
+        if record["observed_state"] not in TRUSTED_COMMERCIAL_STATES:
+            raise DossierError(f"trusted_commercial_receipts[{source_id}]: observed_state not independently bindable")
+        expected_kind = COMMERCIAL_REQUIREMENTS[record["observed_state"]]
+        if record["source_kind"] != expected_kind:
+            raise DossierError(f"trusted_commercial_receipts[{source_id}]: {record['observed_state']} requires {expected_kind}")
+        clean[source_id] = record
     return dict(sorted(clean.items()))
 
 
@@ -179,7 +195,7 @@ def _validate_row(raw: Any, idx: int) -> dict[str, Any]:
     return row
 
 
-def _row_class(row: dict[str, Any], as_of: datetime, policy: dict[str, Any], trusted: dict[str, str]) -> tuple[str, list[str]]:
+def _row_class(row: dict[str, Any], as_of: datetime, policy: dict[str, Any], trusted: dict[str, dict[str, str]]) -> tuple[str, list[str]]:
     reasons: list[str] = []
     observed = _time(row["observed_at"], "observed_at")
     if observed > as_of:
@@ -193,11 +209,17 @@ def _row_class(row: dict[str, Any], as_of: datetime, policy: dict[str, Any], tru
     elif row["prospect_class"] == "OWNER_APPROVAL_REQUIRED":
         reasons.append("OWNER_APPROVAL_REQUIRED")
     if row["observed_state"] in TRUSTED_COMMERCIAL_STATES:
-        trusted_digest = trusted.get(row["source_id"])
-        if trusted_digest is None:
+        record = trusted.get(row["source_id"])
+        if record is None:
             reasons.append("UNTRUSTED_COMMERCIAL_RECEIPT")
-        elif trusted_digest != row["source_sha256"]:
+        elif record["source_sha256"] != row["source_sha256"]:
             reasons.append("COMMERCIAL_RECEIPT_DIGEST_MISMATCH")
+        elif (
+            record["source_kind"] != row["source_kind"]
+            or record["observed_state"] != row["observed_state"]
+            or record["source_ref"] != row["source_ref"]
+        ):
+            reasons.append("COMMERCIAL_RECEIPT_ROLE_MISMATCH")
     if reasons:
         return ("HELD" if row["required"] else "LIMITED"), reasons
     if row["observed_state"] in {"LANDED_VERIFIED", "TESTED_LOCAL", "BUYER_ACCEPTED", "PAID", "REVENUE_RECOGNIZED"}:
