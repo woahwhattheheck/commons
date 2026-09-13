@@ -24,6 +24,7 @@ RELIABILITY = "ground/SWARM_RELIABILITY.json"
 GPT = "gpt"
 SHA = re.compile(r"^[0-9a-f]{40}$")
 DOC_ONLY_SUFFIXES = frozenset({".md", ".rst", ".adoc"})
+REGULAR_FILE_MODES = frozenset({"100644", "100755"})
 
 
 def block(text, fence):
@@ -82,9 +83,21 @@ def evidence_pass(items):
                     for e in items))
 
 
-def execution_required(paths):
-    """Only pure documentation changes may merge without an execution receipt."""
-    return any(Path(path).suffix.lower() not in DOC_ONLY_SUFFIXES for path in paths)
+def execution_required(changes):
+    """Only inert regular-file documentation changes may omit execution evidence."""
+    paths = [change[1] for change in changes if len(change) > 1]
+    if not paths or risk(paths) == "critical":
+        return True
+    for change in changes:
+        if len(change) < 4:
+            return True
+        _, path, old_mode, new_mode = change[:4]
+        if Path(path).suffix.lower() not in DOC_ONLY_SUFFIXES:
+            return True
+        for mode in (old_mode, new_mode):
+            if mode != "000000" and mode not in REGULAR_FILE_MODES:
+                return True
+    return False
 
 
 def exact_execution_pass(items, head):
@@ -116,6 +129,7 @@ def change(git, main, pull):
     return {
         "number": pull["number"], "head": head, "main": main, "merge_base": base,
         "content_key": key, "paths": paths, "risk": risk(paths), "work": metadata,
+        "execution_required": execution_required(changes),
         "read_set": {p: object_at(git, main, p) for p in reads},
         "base_ref": base_ref,
         "draft": bool(pull.get("isDraft", pull.get("draft", False))),
@@ -130,7 +144,7 @@ def review_template(subject):
             "operation": subject["work"].get("operation"),
             "work_sha256": work_digest(subject["work"]),
             "risk": subject["risk"], "read_set": subject["read_set"],
-            "execution_required": execution_required(subject["paths"]),
+            "execution_required": subject["execution_required"],
             "reviewer": {"seat": "", "family": GPT, "session_ref": ""},
             "summary": "", "evidence": []}
 
@@ -191,9 +205,9 @@ def decision(git, subject, reviews):
             return result("HOLD", "review subject changed: " + field)
     if not evidence_pass(receipt.get("evidence")):
         return result("HOLD", "GPT receipt lacks passing verification evidence")
-    needs_execution = execution_required(subject["paths"])
+    needs_execution = subject["execution_required"]
     if receipt.get("execution_required", needs_execution) != needs_execution:
-        return result("HOLD", "review execution requirement does not match changed paths")
+        return result("HOLD", "review execution requirement does not match changed objects")
     if needs_execution and not exact_execution_pass(receipt.get("evidence"), subject["head"]):
         return result("HOLD", "non-document change lacks exact-head execution evidence")
     tier = scrutiny(work["seat"], read_outcomes(git, subject["main"]))
