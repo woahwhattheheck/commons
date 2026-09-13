@@ -122,8 +122,8 @@ def _classify_message(message: Any) -> tuple[str, str | None, Any | None]:
         method = message["method"]
         if not isinstance(method, str) or not method:
             raise ValueError("method must be a non-empty string")
-        if "params" in message and not isinstance(message["params"], (dict, list)):
-            raise ValueError("params must be an object or array when present")
+        if "params" in message and not isinstance(message["params"], dict):
+            raise ValueError("params must be an object when present")
         if has_id:
             _typed_id_key(message["id"])
             return "request", method, message["id"]
@@ -137,6 +137,8 @@ def _classify_message(message: Any) -> tuple[str, str | None, Any | None]:
     _typed_id_key(message["id"])
     if has_result == has_error:
         raise ValueError("response must contain exactly one of result or error")
+    if has_result and not isinstance(message["result"], dict):
+        raise ValueError("result must be an object")
     if has_error:
         _validate_error_object(message["error"])
     return "response", None, message["id"]
@@ -162,6 +164,8 @@ def _decode_capture_line(raw_line: bytes, line_number: int) -> tuple[str, bytes,
         payload = base64.b64decode(encoded.encode("ascii"), validate=True)
     except (UnicodeEncodeError, binascii.Error, ValueError) as exc:
         raise ValueError("payload_base64 is not canonical base64 data") from exc
+    if base64.b64encode(payload).decode("ascii") != encoded:
+        raise ValueError("payload_base64 is not canonical base64 data")
     if not payload or len(payload) > MAX_PAYLOAD_BYTES:
         raise ValueError("decoded payload is empty or exceeds size limit")
     try:
@@ -186,6 +190,9 @@ def _validate_initialize_request(message: dict[str, Any]) -> str:
         raise ValueError("initialize capabilities must be an object")
     if not isinstance(params["clientInfo"], dict):
         raise ValueError("initialize clientInfo must be an object")
+    client_info = params["clientInfo"]
+    if not isinstance(client_info.get("name"), str) or not isinstance(client_info.get("version"), str):
+        raise ValueError("initialize clientInfo must contain string name/version")
     return protocol
 
 
@@ -203,6 +210,9 @@ def _validate_initialize_result(message: dict[str, Any]) -> str:
         raise ValueError("initialize result capabilities must be an object")
     if not isinstance(result["serverInfo"], dict):
         raise ValueError("initialize result serverInfo must be an object")
+    server_info = result["serverInfo"]
+    if not isinstance(server_info.get("name"), str) or not isinstance(server_info.get("version"), str):
+        raise ValueError("initialize result serverInfo must contain string name/version")
     return protocol
 
 
