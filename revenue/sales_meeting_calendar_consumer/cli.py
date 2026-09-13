@@ -1,18 +1,22 @@
-"""CLI for the read-only sales-meeting calendar consumer."""
+"""Non-authorizing historical audit CLI for the sales-meeting Calendar consumer.
+
+Current READY compilation is intentionally *not* exposed through a file/JSON CLI:
+it requires an in-process independent authority-store implementation and verifier-
+owned current time.  The CLI exists only to replay retained bytes for audit, whose
+wrapper state is permanently HISTORICAL_REPLAY_ONLY.
+"""
 
 from __future__ import annotations
 
 import argparse
-from datetime import datetime, timezone
+from datetime import datetime
 import json
 from pathlib import Path
 import sys
 
 from .calendar_consumer import (
     CalendarConsumerError,
-    build_google_availability_plan,
-    compile_calendar_consumer,
-    google_tool_args,
+    compile_calendar_consumer_historical,
     render_markdown,
     strict_json_loads,
 )
@@ -22,51 +26,41 @@ def _read_json(path: str):
     return strict_json_loads(Path(path).read_bytes())
 
 
-def _emit(value):
-    sys.stdout.write(json.dumps(value, sort_keys=True, indent=2, ensure_ascii=False) + "\n")
+def _parse_as_of(value: str) -> datetime:
+    try:
+        dt = datetime.fromisoformat(value.replace("Z", "+00:00"))
+    except ValueError as exc:
+        raise CalendarConsumerError("--as-of must be an offset-aware RFC3339 timestamp") from exc
+    if dt.tzinfo is None:
+        raise CalendarConsumerError("--as-of must include timezone")
+    return dt
 
 
 def main(argv=None) -> int:
     parser = argparse.ArgumentParser(
-        description="Plan/compile Google Calendar free-busy evidence for sales meeting owner review."
+        description="Historical/non-authorizing audit replay for sales meeting Calendar evidence."
     )
-    sub = parser.add_subparsers(dest="command", required=True)
-
-    plan = sub.add_parser("plan", help="emit exact read-only Google Calendar get_availability args")
-    plan.add_argument("--trigger", required=True)
-    plan.add_argument("--human-authority-sha256", required=True)
-    plan.add_argument("--full-plan", action="store_true", help="emit retained plan instead of tool args")
-
-    compile_p = sub.add_parser("compile", help="compile a retained capture through landed meeting readiness")
-    compile_p.add_argument("--trigger", required=True)
-    compile_p.add_argument("--capture", required=True)
-    compile_p.add_argument("--human-authority-sha256", required=True)
-    compile_p.add_argument("--calendar-capture-sha256", required=True)
-    compile_p.add_argument("--markdown", action="store_true")
-
+    parser.add_argument("--trigger", required=True)
+    parser.add_argument("--human-authority", required=True)
+    parser.add_argument("--capture", required=True)
+    parser.add_argument("--as-of", required=True,
+                        help="historical verifier instant; output remains HISTORICAL_REPLAY_ONLY")
+    parser.add_argument("--markdown", action="store_true")
     args = parser.parse_args(argv)
     try:
-        if args.command == "plan":
-            retained = build_google_availability_plan(
-                _read_json(args.trigger),
-                expected_human_authority_sha256=args.human_authority_sha256,
-            )
-            _emit(retained if args.full_plan else google_tool_args(retained))
-            return 0
-
-        receipt = compile_calendar_consumer(
+        receipt = compile_calendar_consumer_historical(
             _read_json(args.trigger),
+            _read_json(args.human_authority),
             _read_json(args.capture),
-            expected_human_authority_sha256=args.human_authority_sha256,
-            expected_calendar_capture_sha256=args.calendar_capture_sha256,
-            as_of=datetime.now(timezone.utc),
+            as_of=_parse_as_of(args.as_of),
         )
         if args.markdown:
-            sys.stdout.write(render_markdown(receipt))
-            if not render_markdown(receipt).endswith("\n"):
+            text = render_markdown(receipt)
+            sys.stdout.write(text)
+            if not text.endswith("\n"):
                 sys.stdout.write("\n")
         else:
-            _emit(receipt)
+            sys.stdout.write(json.dumps(receipt, sort_keys=True, indent=2, ensure_ascii=False) + "\n")
         return 0
     except (CalendarConsumerError, OSError, ValueError) as exc:
         sys.stderr.write(f"sales-meeting-calendar-consumer: {exc}\n")
