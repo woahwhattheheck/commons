@@ -1,9 +1,9 @@
 {
   "counts": {
-    "open_issues": 77,
-    "open_pull_requests": 45,
-    "runs_in_progress": 18,
-    "runs_queued": 1472
+    "open_issues": 76,
+    "open_pull_requests": 44,
+    "runs_in_progress": 19,
+    "runs_queued": 1470
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -94,21 +94,10 @@
       "branch": "zpf-l7t2/commercial-lifecycle-evidence-identity-20260913",
       "created_at": "2026-09-13T14:57:49Z",
       "draft": false,
-      "head_sha": "0186e65b94003577daaf88423d5c726c602bc44d",
+      "head_sha": "16a5a0bc56ba2f9fbc4f8a9f9fa4db7914d75ec5",
       "number": 14037,
       "title": "revenue: reserve commercial lifecycle evidence identities",
-      "updated_at": "2026-09-13T15:00:36Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zsol-1023/iqvia-reference-authority",
-      "created_at": "2026-09-13T14:57:42Z",
-      "draft": false,
-      "head_sha": "daaf801efbb312e3f8321e8bdfabc7605cac043d",
-      "number": 14036,
-      "title": "fix(iqvia): bind specimen gate to pinned reference authority",
-      "updated_at": "2026-09-13T14:57:42Z"
+      "updated_at": "2026-09-13T15:01:49Z"
     },
     {
       "author": "woahwhattheheck",
@@ -175,6 +164,17 @@
       "number": 13999,
       "title": "CALL-E RouteScout: approval-gated procurement routing agent",
       "updated_at": "2026-09-13T14:55:42Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zpf-x6v2/diversey-proof-clean-rbp-eis-r2",
+      "created_at": "2026-09-13T14:46:25Z",
+      "draft": false,
+      "head_sha": "a112441153ab11b7140d7b10b58967936c83edb8",
+      "number": 13997,
+      "title": "Add Diversey rapid proof-of-clean submission carrier",
+      "updated_at": "2026-09-13T14:52:25Z"
     }
   ],
   "open_heads": {
@@ -219,15 +219,25 @@
     "14027": "aaf4a76a55bc33f2078c2e324a67bc3e9d2de3ec",
     "14029": "b0891bfd0f7297499b372337b5356f62dab18fee",
     "14031": "48e9fb830fb1216e3f9af1a8c5034390ee91cb35",
-    "14036": "daaf801efbb312e3f8321e8bdfabc7605cac043d",
-    "14037": "0186e65b94003577daaf88423d5c726c602bc44d",
+    "14037": "16a5a0bc56ba2f9fbc4f8a9f9fa4db7914d75ec5",
     "14042": "4bda788c31c2f4a7096c4931c0b1bdfa46c66826",
     "14045": "2c28187f0449a0c14cccff129ca00568f8bb3fb5"
   },
-  "pulls_listed": 45,
+  "pulls_listed": 44,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 81.8,
+  "queue_depth_per_runner": 77.4,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zsol-1023/iqvia-reference-authority",
+      "closed_at": "2026-09-13T15:01:31Z",
+      "head_sha": "daaf801efbb312e3f8321e8bdfabc7605cac043d",
+      "merged_at": null,
+      "number": 14036,
+      "state": "CLOSED",
+      "title": "[SUPERSEDED BY EARLIER #14002/#14042] fix(iqvia): bind specimen gate to pinned reference authority"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -381,21 +391,10 @@
       "number": 14007,
       "state": "MERGED",
       "title": "revenue: forward-port WRF 5417 proposal carrier onto current main"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zhr-cas-collision-revert-20260913",
-      "closed_at": "2026-09-13T14:51:28Z",
-      "head_sha": "16616f0ec317fa0da9ebd2585ad0a6d06ae4f973",
-      "merged_at": "2026-09-13T14:51:28Z",
-      "number": 14011,
-      "state": "MERGED",
-      "title": "revert(revenue): clear duplicate CAS carrier for canonical #13701"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-13T15:01:22Z",
+  "unchanged_since": "2026-09-13T15:02:04Z",
   "undatable_pulls": []
 }
