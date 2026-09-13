@@ -172,9 +172,23 @@ class LifecycleHostileTests(unittest.TestCase):
         events[0] = (CLIENT, bad)
         self.assert_holds(events, "INVALID_INITIALIZE_REQUEST")
 
+    def test_initialize_client_info_requires_name_and_version_strings(self):
+        bad = initialize()
+        bad["params"]["clientInfo"] = {"name": "client"}
+        events = valid_events()
+        events[0] = (CLIENT, bad)
+        self.assert_holds(events, "INVALID_INITIALIZE_REQUEST")
+
     def test_initialize_response_must_be_success_with_required_fields(self):
         events = valid_events()
         events[1] = (SERVER, {"jsonrpc": "2.0", "id": 1, "error": {"code": -1, "message": "no"}})
+        self.assert_holds(events, "INVALID_INITIALIZE_RESPONSE")
+
+    def test_initialize_server_info_requires_name_and_version_strings(self):
+        bad = initialize_result()
+        bad["result"]["serverInfo"] = {"name": "server"}
+        events = valid_events()
+        events[1] = (SERVER, bad)
         self.assert_holds(events, "INVALID_INITIALIZE_RESPONSE")
 
     def test_initialized_cannot_precede_initialize_response(self):
@@ -259,6 +273,16 @@ class CorrelationHostileTests(unittest.TestCase):
         events[4] = (SERVER, {"jsonrpc": "2.0", "id": "tools-1", "result": {}, "error": {"code": -1, "message": "x"}})
         self.assertIn("INVALID_CAPTURE_EVENT", reason_codes(audit_transcript(capture(events))))
 
+    def test_array_params_rejected_by_mcp_schema(self):
+        events = valid_events()
+        events[3] = (CLIENT, {"jsonrpc": "2.0", "id": "tools-1", "method": "tools/list", "params": []})
+        self.assertIn("INVALID_CAPTURE_EVENT", reason_codes(audit_transcript(capture(events))))
+
+    def test_non_object_result_rejected_by_mcp_schema(self):
+        events = valid_events()
+        events[4] = (SERVER, {"jsonrpc": "2.0", "id": "tools-1", "result": []})
+        self.assertIn("INVALID_CAPTURE_EVENT", reason_codes(audit_transcript(capture(events))))
+
 
 class StrictInputHostileTests(unittest.TestCase):
     def test_duplicate_capture_key_rejected(self):
@@ -290,6 +314,12 @@ class StrictInputHostileTests(unittest.TestCase):
 
     def test_invalid_base64_rejected(self):
         line = canonical_json_bytes({"direction": CLIENT, "payload_base64": "%%%"})
+        self.assertIn("INVALID_CAPTURE_EVENT", reason_codes(audit_transcript(line + b"\n")))
+
+    def test_noncanonical_base64_rejected(self):
+        payload = canonical_json_bytes(initialize())
+        canonical = base64.b64encode(payload).decode("ascii")
+        line = canonical_json_bytes({"direction": CLIENT, "payload_base64": canonical + "="})
         self.assertIn("INVALID_CAPTURE_EVENT", reason_codes(audit_transcript(line + b"\n")))
 
     def test_empty_capture_holds(self):
