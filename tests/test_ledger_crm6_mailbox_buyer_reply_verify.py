@@ -3,7 +3,7 @@
 
 A provider-observed reply is relationship evidence, not proof of human identity
 or commercial materiality. Raw mailbox observation must never mint the hottest
-MATERIAL_REPLY lane by itself or silently change contact authority.
+MATERIAL_REPLY lane by itself or silently change relationship/contact authority.
 """
 from __future__ import annotations
 
@@ -15,6 +15,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 MOD_PATH = ROOT / "host" / "lm_gtm_mailbox_buyer_reply_verify.py"
+HANDOFF_PATH = ROOT / "host" / "lm_gtm_relationship_handoff.py"
 RECEIPT = ROOT / "p" / "ledger-crm6-mailbox-buyer-reply-verify-20260905-01.md"
 BILLINGS = "city-of-billings-bid-1421"
 YES_SUBJECT = "hermetic-buyer-reply-yes-01"
@@ -28,10 +29,19 @@ def _load():
     return mod
 
 
+def _load_handoff():
+    spec = importlib.util.spec_from_file_location("lm_gtm_relationship_handoff_test", HANDOFF_PATH)
+    assert spec and spec.loader
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    return mod
+
+
 class TestLedgerCrm6MailboxBuyerReplyVerify(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.mod = _load()
+        cls.handoff = _load_handoff()
 
     def test_billings_default_is_no_buyer_reply(self):
         result = self.mod.verify_mailbox_buyer_reply(BILLINGS)
@@ -54,7 +64,7 @@ class TestLedgerCrm6MailboxBuyerReplyVerify(unittest.TestCase):
         self.assertFalse(result["verified_human_yes"])
         self.assertFalse(result["material_reply_verified"])
         self.assertTrue(result["invent_guard"]["never_mint_material_reply_from_arrival"])
-        self.assertTrue(result["invent_guard"]["never_change_contact_authority_from_arrival"])
+        self.assertTrue(result["invent_guard"]["never_change_relationship_authority_from_arrival"])
 
     def test_thread_specific_chronology_blocks_pre_anchor_reply(self):
         subject = "thread-anchor-hostile-01"
@@ -165,7 +175,7 @@ class TestLedgerCrm6MailboxBuyerReplyVerify(unittest.TestCase):
             self.assertIn("does not verify human identity or commercial materiality", str(caught.exception))
             self.assertEqual(self.mod.idx.load_jsonl(evidence_path), [])
 
-    def test_observed_reply_pins_neutral_status_without_contact_authority(self):
+    def test_observed_reply_pin_is_evidentiary_only(self):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
             evidence = root / "revenue" / "lm_gtm_index"
@@ -183,24 +193,67 @@ class TestLedgerCrm6MailboxBuyerReplyVerify(unittest.TestCase):
                 ts="2026-09-13T14:00:00Z",
             )
             self.assertEqual(pinned["type"], "STATUS")
-            self.assertEqual(pinned["decision"], self.mod.DECISION_OBSERVED)
-            self.assertNotIn("dnr", pinned)
+            self.assertEqual(pinned["observation"], self.mod.OBSERVATION_KIND)
+            for forbidden in (
+                "decision",
+                "dnr",
+                "live",
+                "due",
+                "route_kind",
+                "route_ref",
+                "next_action",
+            ):
+                self.assertNotIn(forbidden, pinned)
             self.assertEqual(pinned["cash_usd"], 0)
             self.assertEqual(pinned["transport"], "NONE")
-            self.assertIn("HUMAN_CLASSIFICATION_REQUIRED", pinned["next_action"])
-            self.assertIn("contact/no-resend authority is unchanged", pinned["next_action"])
+            self.assertIn("Human classification is required", pinned["body"])
             rows = self.mod.idx.load_jsonl(evidence_path)
             self.assertEqual(rows, [pinned])
 
-            neutral_row = {
+    def test_observation_status_preserves_owner_hold_and_all_control_fields(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            evidence = root / "revenue" / "lm_gtm_index"
+            evidence.mkdir(parents=True)
+            (evidence / "relationship_handoff_evidence.jsonl").write_text("", encoding="utf-8")
+            observed = self.mod.verify_mailbox_buyer_reply(YES_SUBJECT)
+            pinned = self.mod.pin_buyer_reply_observed_evidence(
+                YES_SUBJECT,
+                observed,
+                {"root": root},
+                organization="Hermetic Buyer Fixture",
+                event_id="crm6-mailbox-reply-observed-owner-hold-01",
+                ts="2026-09-13T14:00:00Z",
+            )
+            event = dict(pinned)
+            event[self.handoff._INTERNAL_SOURCE] = self.handoff.SOURCE_RELATIONSHIP_EVIDENCE
+            row = {
+                "id": YES_SUBJECT,
                 "role": "external_prospect",
-                "live": True,
-                "decision": self.mod.DECISION_OBSERVED,
+                "source_paths": ["base:owner-hold"],
+                "overlay_event_ids": [],
+                "decision": "OWNER_HOLD",
                 "dnr": False,
+                "live": True,
+                "due": "2026-09-20",
+                "route_kind": "EXISTING_CRM_RECORD",
+                "route_ref": "airtable:owner-hold",
+                "next_action": "OWNER_DECISION_REQUIRED",
             }
-            self.assertIsNone(self.mod.idx.hot_class(neutral_row))
-            material_row = dict(neutral_row, decision="MATERIAL_REPLY")
-            self.assertEqual(self.mod.idx.hot_class(material_row), "material_reply")
+            effective, relationship_ids = self.handoff._apply_relationship_evidence(row, [event])
+            self.assertEqual(relationship_ids, [pinned["id"]])
+            for field in (
+                "decision",
+                "dnr",
+                "live",
+                "due",
+                "route_kind",
+                "route_ref",
+                "next_action",
+            ):
+                self.assertEqual(effective[field], row[field], field)
+            self.assertIn("gmail:hermetic-in-001", effective["source_paths"])
+            self.assertIsNone(self.mod.idx.hot_class(effective))
 
     def test_same_inbound_message_cannot_be_reminted_under_new_event_id(self):
         with tempfile.TemporaryDirectory() as tmp:
