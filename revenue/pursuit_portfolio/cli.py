@@ -5,12 +5,8 @@ import argparse
 import json
 
 from .core import PortfolioError
-from .host import (
-    compile_current,
-    load_candidate_json,
-    publish_current,
-    verify_current_directory,
-)
+from .host import compile_current, load_candidate_json
+from .host_io import publish_current, verify_current_directory
 
 
 def main(argv: list[str] | None = None) -> int:
