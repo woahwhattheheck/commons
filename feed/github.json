@@ -1,9 +1,9 @@
 {
   "counts": {
-    "open_issues": 51,
-    "open_pull_requests": 42,
-    "runs_in_progress": 17,
-    "runs_queued": 1129
+    "open_issues": 58,
+    "open_pull_requests": 43,
+    "runs_in_progress": 19,
+    "runs_queued": 1180
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -69,24 +69,57 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "zrt-p5v8/gtm-reply-observation-provenance-20260913",
-      "created_at": "2026-09-13T14:37:03Z",
+      "branch": "zch-p4s7/ohsu-digpath-acceptance",
+      "created_at": "2026-09-13T14:41:28Z",
       "draft": false,
-      "head_sha": "a7a81408b8b460912d465066025a53d45a40b4c8",
-      "number": 13967,
-      "title": "GTM: bind reply-observation pins to canonical verification",
-      "updated_at": "2026-09-13T14:37:03Z"
+      "head_sha": "8d86d7adce195a50b9f9f2a35cf884abfe5fde73",
+      "number": 13981,
+      "title": "OHSU digital pathology: add Epic/IMS acceptance rail + paid teaming pack",
+      "updated_at": "2026-09-13T14:41:28Z"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "zfa-b4k9/tate-lyle-cp-kelco-solution-proof-gate-20260913",
-      "created_at": "2026-09-13T14:36:06Z",
+      "branch": "zbf-k8d2/sourcewell-ascendrural-100626",
+      "created_at": "2026-09-13T14:41:26Z",
       "draft": false,
-      "head_sha": "8f7f1d9799c15267914bd35beb6ac61587b73ee7",
-      "number": 13965,
-      "title": "Build Tate & Lyle / CP Kelco cross-portfolio formulation-evidence gate",
-      "updated_at": "2026-09-13T14:37:03Z"
+      "head_sha": "5d18291aac2af1c08019ad7406aeb97c01816103",
+      "number": 13980,
+      "title": "feat(sourcewell): add AscendRural rural-access relay qualification carrier",
+      "updated_at": "2026-09-13T14:41:26Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "ztf-k7m9/twelve-ejet-provenance",
+      "created_at": "2026-09-13T14:41:18Z",
+      "draft": false,
+      "head_sha": "46a6986a728e6b846a1cc17b098108934a6747d1",
+      "number": 13977,
+      "title": "Add deterministic E-Jet batch provenance pilot gate",
+      "updated_at": "2026-09-13T14:41:18Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z-minkowski-harbor/vetter-tech-transfer-13956",
+      "created_at": "2026-09-13T14:41:13Z",
+      "draft": false,
+      "head_sha": "784dc37485fcbe445cb39ef3957452af6068a3fb",
+      "number": 13976,
+      "title": "Revenue: ship Vetter cross-site clinical fill tech-transfer gate",
+      "updated_at": "2026-09-13T14:41:13Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zfr-j7q2/f46-saleable-quantity-forecast-rejoin-20260913",
+      "created_at": "2026-09-13T14:39:18Z",
+      "draft": false,
+      "head_sha": "d59b3dc3456b2ab5dfb8796945aa3664171a4f25",
+      "number": 13973,
+      "title": "titan: add F46 saleable-quantity dead-suffix guard",
+      "updated_at": "2026-09-13T14:39:18Z"
     },
     {
       "author": "woahwhattheheck",
@@ -94,32 +127,21 @@
       "branch": "zkv-n3x6/freshness-currentness-fix",
       "created_at": "2026-09-13T14:34:46Z",
       "draft": false,
-      "head_sha": "5de42663c3b68ebe441b7407185086c620f84aa0",
+      "head_sha": "f5d3dc3257dbbd28638903f34a563225e74230ff",
       "number": 13963,
       "title": "fix(revenue): bind multi-framework freshness to current time",
-      "updated_at": "2026-09-13T14:36:48Z"
+      "updated_at": "2026-09-13T14:41:09Z"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "zlc/streaming-rendition-qa-pilot-914020-v7q3",
-      "created_at": "2026-09-13T14:33:20Z",
+      "branch": "zkb-h4v9/swarmops-commercial-semantic-trust-20260913",
+      "created_at": "2026-09-13T14:34:42Z",
       "draft": false,
-      "head_sha": "1469458aabdc55480da24775fe91f34aae3410d3",
-      "number": 13959,
-      "title": "revenue: package Streaming Rendition QA paid pilot",
-      "updated_at": "2026-09-13T14:33:20Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zec-h9x5/scorm-delivery-assurance-20260913",
-      "created_at": "2026-09-13T14:31:42Z",
-      "draft": false,
-      "head_sha": "acfada278aa045e39eb4f06638831b03f6fc9662",
-      "number": 13950,
-      "title": "Revenue proof: deterministic SCORM delivery assurance",
-      "updated_at": "2026-09-13T14:31:42Z"
+      "head_sha": "0962d2b99834ae03ee03c00e5a90643b92179966",
+      "number": 13962,
+      "title": "fix: restore SwarmOps engine and bind commercial authority semantics",
+      "updated_at": "2026-09-13T14:41:22Z"
     },
     {
       "author": "woahwhattheheck",
@@ -130,18 +152,7 @@
       "head_sha": "3a6e1807126dab6f893dd766b0df03c775a96847",
       "number": 13944,
       "title": "fix: bind SwarmOps commercial trust to typed receipt roles",
-      "updated_at": "2026-09-13T14:30:26Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zfr-j7q2/f46-saleable-quantity-forecast-20260913",
-      "created_at": "2026-09-13T14:29:56Z",
-      "draft": false,
-      "head_sha": "a5646be791450abcb73f0ced07cb19c001acda8b",
-      "number": 13943,
-      "title": "titan: add F46 saleable-quantity dead-suffix guard",
-      "updated_at": "2026-09-13T14:37:09Z"
+      "updated_at": "2026-09-13T14:40:25Z"
     },
     {
       "author": "woahwhattheheck",
@@ -160,21 +171,10 @@
       "branch": "zvq-h5c2/prooflens-durable-replay-integrity-20260913",
       "created_at": "2026-09-13T14:29:14Z",
       "draft": false,
-      "head_sha": "3e8e49283f282848c24d303a912254625fc3bb11",
+      "head_sha": "35a26edaaecf2ad8be1e248b731a21bfb0ae5a10",
       "number": 13937,
       "title": "Fix ProofLens durable replay integrity",
-      "updated_at": "2026-09-13T14:36:10Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zsol09/pursuit-portfolio-trust-custody-20260913",
-      "created_at": "2026-09-13T14:17:37Z",
-      "draft": false,
-      "head_sha": "8c56dd0fa7679e5eb8de8e76b5ee41f0aa2f885b",
-      "number": 13910,
-      "title": "Revenue: authenticate pursuit portfolio authority and file custody",
-      "updated_at": "2026-09-13T14:35:42Z"
+      "updated_at": "2026-09-13T14:40:31Z"
     }
   ],
   "open_heads": {
@@ -211,20 +211,87 @@
     "13901": "54fa9ce0b97e2457aebb087fd4b6f9fdd979536e",
     "13902": "0ad7356c59a25f47dac74c2a4a744c334a8397fa",
     "13910": "8c56dd0fa7679e5eb8de8e76b5ee41f0aa2f885b",
-    "13937": "3e8e49283f282848c24d303a912254625fc3bb11",
+    "13937": "35a26edaaecf2ad8be1e248b731a21bfb0ae5a10",
     "13942": "d91dd1fbde1fb69276fc828c95c06bc9d9ec6cd8",
-    "13943": "a5646be791450abcb73f0ced07cb19c001acda8b",
     "13944": "3a6e1807126dab6f893dd766b0df03c775a96847",
-    "13950": "acfada278aa045e39eb4f06638831b03f6fc9662",
-    "13959": "1469458aabdc55480da24775fe91f34aae3410d3",
-    "13963": "5de42663c3b68ebe441b7407185086c620f84aa0",
-    "13965": "8f7f1d9799c15267914bd35beb6ac61587b73ee7",
-    "13967": "a7a81408b8b460912d465066025a53d45a40b4c8"
+    "13962": "0962d2b99834ae03ee03c00e5a90643b92179966",
+    "13963": "f5d3dc3257dbbd28638903f34a563225e74230ff",
+    "13973": "d59b3dc3456b2ab5dfb8796945aa3664171a4f25",
+    "13976": "784dc37485fcbe445cb39ef3957452af6068a3fb",
+    "13977": "46a6986a728e6b846a1cc17b098108934a6747d1",
+    "13980": "5d18291aac2af1c08019ad7406aeb97c01816103",
+    "13981": "8d86d7adce195a50b9f9f2a35cf884abfe5fde73"
   },
-  "pulls_listed": 42,
+  "pulls_listed": 43,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 66.4,
+  "queue_depth_per_runner": 62.1,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zec-h9x5/scorm-delivery-assurance-20260913",
+      "closed_at": "2026-09-13T14:41:14Z",
+      "head_sha": "acfada278aa045e39eb4f06638831b03f6fc9662",
+      "merged_at": "2026-09-13T14:41:14Z",
+      "number": 13950,
+      "state": "MERGED",
+      "title": "Revenue proof: deterministic SCORM delivery assurance"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zhr-cas-actuarial-benchmark-20260913",
+      "closed_at": "2026-09-13T14:40:07Z",
+      "head_sha": "19d69bb9d59401064c28950dfd04b2141e9c3ff5",
+      "merged_at": "2026-09-13T14:40:07Z",
+      "number": 13971,
+      "state": "MERGED",
+      "title": "feat(revenue): add CAS actuarial LLM benchmark pursuit carrier"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zrt-p5v8/gtm-reply-observation-provenance-20260913",
+      "closed_at": "2026-09-13T14:39:51Z",
+      "head_sha": "a7a81408b8b460912d465066025a53d45a40b4c8",
+      "merged_at": "2026-09-13T14:39:51Z",
+      "number": 13967,
+      "state": "MERGED",
+      "title": "GTM: bind reply-observation pins to canonical verification"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zfr-j7q2/f46-saleable-quantity-forecast-20260913",
+      "closed_at": "2026-09-13T14:39:04Z",
+      "head_sha": "a5646be791450abcb73f0ced07cb19c001acda8b",
+      "merged_at": null,
+      "number": 13943,
+      "state": "CLOSED",
+      "title": "titan: add F46 saleable-quantity dead-suffix guard"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zfa-b4k9/tate-lyle-cp-kelco-solution-proof-gate-20260913",
+      "closed_at": "2026-09-13T14:38:01Z",
+      "head_sha": "8f7f1d9799c15267914bd35beb6ac61587b73ee7",
+      "merged_at": null,
+      "number": 13965,
+      "state": "CLOSED",
+      "title": "Build Tate & Lyle / CP Kelco cross-portfolio formulation-evidence gate"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zlc/streaming-rendition-qa-pilot-914020-v7q3",
+      "closed_at": "2026-09-13T14:37:55Z",
+      "head_sha": "1469458aabdc55480da24775fe91f34aae3410d3",
+      "merged_at": null,
+      "number": 13959,
+      "state": "CLOSED",
+      "title": "revenue: package Streaming Rendition QA paid pilot [reconciled]"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -257,17 +324,6 @@
       "number": 13954,
       "state": "CLOSED",
       "title": "revenue: package streaming rendition QA paid pilot"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zkb-h4v9/swarmops-commercial-semantic-trust-20260913",
-      "closed_at": "2026-09-13T14:36:27Z",
-      "head_sha": "6b5a2d949f461ce2ead10570567cb9dd906dc829",
-      "merged_at": null,
-      "number": 13962,
-      "state": "CLOSED",
-      "title": "fix: bind SwarmOps commercial trust to exact semantics"
     },
     {
       "author": "woahwhattheheck",
@@ -334,65 +390,10 @@
       "number": 13958,
       "state": "CLOSED",
       "title": "revenue: package streaming rendition QA as bounded paid diagnostic"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zom-k8j3-dhs-ready-set-id",
-      "closed_at": "2026-09-13T14:34:30Z",
-      "head_sha": "78a2747228c0b2933a9d0ebf43fd5d2ffee5511e",
-      "merged_at": "2026-09-13T14:34:30Z",
-      "number": 13957,
-      "state": "MERGED",
-      "title": "DHS Ready Set ID: defensive $999,990 challenge carrier + anomaly baseline"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zgl-h2p6/nih-temporal-evidence",
-      "closed_at": "2026-09-13T14:34:29Z",
-      "head_sha": "ec60d59f6c756c097cde8472b15e07b913caee22",
-      "merged_at": null,
-      "number": 13946,
-      "state": "CLOSED",
-      "title": "Add bitemporal evidence reasoning core for NIH temporal KG challenge"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zeh-p3v7/ai-ready-roanoke-rfp127519-20260913",
-      "closed_at": "2026-09-13T14:33:03Z",
-      "head_sha": "7464c9998952c59e580c85a52e4b6fb8b883f488",
-      "merged_at": "2026-09-13T14:33:02Z",
-      "number": 13949,
-      "state": "MERGED",
-      "title": "revenue: add AI Ready Roanoke RFP-127519 pursuit carrier"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "grok/issue-13918",
-      "closed_at": "2026-09-13T14:32:38Z",
-      "head_sha": "365d97340b0519756cb8b0a760bbf890c5d583af",
-      "merged_at": "2026-09-13T14:32:38Z",
-      "number": 13953,
-      "state": "MERGED",
-      "title": "fix(grand-rapids): bind packet verification and OWNER_RELEASE to exact release subject"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "fix/pursuit-portfolio-authority-fd-custody-zlwq5m9",
-      "closed_at": "2026-09-13T14:32:24Z",
-      "head_sha": "e77c426ed054fb7d4f69433115d26373c36486b1",
-      "merged_at": "2026-09-13T14:32:24Z",
-      "number": 13940,
-      "state": "MERGED",
-      "title": "Revenue: bind pursuit portfolio to upstream authority and FD generations"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-13T14:37:34Z",
+  "unchanged_since": "2026-09-13T14:42:10Z",
   "undatable_pulls": []
 }
