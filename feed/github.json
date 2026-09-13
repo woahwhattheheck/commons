@@ -1,9 +1,9 @@
 {
   "counts": {
     "open_issues": 6,
-    "open_pull_requests": 12,
-    "runs_in_progress": 2,
-    "runs_queued": 220
+    "open_pull_requests": 19,
+    "runs_in_progress": 17,
+    "runs_queued": 103
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -26,10 +26,10 @@
       "branch": "astra/v5-v31-v4-gauntlet-reducer-20260912",
       "created_at": "2026-09-12T19:46:29Z",
       "draft": true,
-      "head_sha": "813c9d49d5a423561c6db35fdca5bdfe44418d14",
+      "head_sha": "6c2142b3c61463c6c34a055f6bdc2704307930fd",
       "number": 13415,
       "title": "TITAN V5: reduce exact V3.1/V4 gauntlet into repair hotspots",
-      "updated_at": "2026-09-13T04:57:44Z"
+      "updated_at": "2026-09-13T06:57:36Z"
     },
     {
       "author": "woahwhattheheck",
@@ -41,96 +41,6 @@
       "number": 13471,
       "title": "TITAN V5: witness first production-v3 action divergence",
       "updated_at": "2026-09-12T23:37:06Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "astra-zeta/shared-holding-future-heartbeat-20260912",
-      "created_at": "2026-09-13T00:07:29Z",
-      "draft": false,
-      "head_sha": "4d1d4a4e113e987746f48cda1625b53827eaf8ba",
-      "number": 13528,
-      "title": "coordination: fail closed on shared holding clock skew",
-      "updated_at": "2026-09-13T06:10:10Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "codex/command-center-deathstar-cooldown-20260912",
-      "created_at": "2026-09-13T00:51:33Z",
-      "draft": false,
-      "head_sha": "b9db151337b931479fde8a76d87253acaa4b5737",
-      "number": 13531,
-      "title": "Deathstar email tracker and shared operation telemetry",
-      "updated_at": "2026-09-13T01:51:17Z"
-    }
-  ],
-  "newest_pulls": [
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zeta-forge/cirrus-absence-invariant-20260913",
-      "created_at": "2026-09-13T06:09:44Z",
-      "draft": false,
-      "head_sha": "6697f5446b47c9db3d8c0cfa02fd0962dff64f3f",
-      "number": 13571,
-      "title": "ci: remove retired Cirrus config marker",
-      "updated_at": "2026-09-13T06:10:34Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zeta-forge/openkylin-compare-convergence-20260913",
-      "created_at": "2026-09-13T06:09:03Z",
-      "draft": false,
-      "head_sha": "c0b09e6f2c60646de826a3c75cf8bdecd714389b",
-      "number": 13570,
-      "title": "openkylin: converge fail-closed comparison contract",
-      "updated_at": "2026-09-13T06:09:03Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-kestrel/ci-battery-clean-evidence-rejoin-20260913",
-      "created_at": "2026-09-13T06:08:45Z",
-      "draft": false,
-      "head_sha": "187a04c71a64402247c2f9cf85a8d85b332de260",
-      "number": 13569,
-      "title": "ci: fail dirty battery evidence closed",
-      "updated_at": "2026-09-13T06:08:45Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "ariadne-z/open-door-business-status-20260913",
-      "created_at": "2026-09-13T06:07:26Z",
-      "draft": false,
-      "head_sha": "98432e69624282b1bef2e36ec818f2215a4c18ff",
-      "number": 13568,
-      "title": "open-door: allow isolated procurement status denials",
-      "updated_at": "2026-09-13T06:07:26Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "swarm-z-solstice/openkylin-compare-contract-20260913",
-      "created_at": "2026-09-13T06:00:47Z",
-      "draft": false,
-      "head_sha": "125961222bf0f5df03fd0ac3ae8b671f874dcfa7",
-      "number": 13563,
-      "title": "openkylin bench: reject invalid comparison sets",
-      "updated_at": "2026-09-13T06:08:03Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "ariadne-z881/business-pack-malformed-ledger-rejoin",
-      "created_at": "2026-09-13T04:32:00Z",
-      "draft": false,
-      "head_sha": "5c49be5984f0f61bcef919e56d5b4b729bdfdd8b",
-      "number": 13553,
-      "title": "Return validation errors for malformed KEEP vs SELL numerics",
-      "updated_at": "2026-09-13T06:08:50Z"
     },
     {
       "author": "woahwhattheheck",
@@ -141,228 +51,325 @@
       "head_sha": "73e73de79cb62cf2f58005efab027138ded6f282",
       "number": 13533,
       "title": "coordination: clean successor for exact-head execution evidence gate",
-      "updated_at": "2026-09-13T06:09:21Z"
+      "updated_at": "2026-09-13T06:18:05Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "ariadne-z881/business-pack-malformed-ledger-rejoin",
+      "created_at": "2026-09-13T04:32:00Z",
+      "draft": false,
+      "head_sha": "3eddbdd2ca9f9bf9a1cf5cf8b929c817b056d57b",
+      "number": 13553,
+      "title": "Return validation errors for malformed KEEP vs SELL numerics",
+      "updated_at": "2026-09-13T06:18:10Z"
+    }
+  ],
+  "newest_pulls": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z-ariadne-913/revenue-underwriter-20260913",
+      "created_at": "2026-09-13T07:31:47Z",
+      "draft": false,
+      "head_sha": "c08cb1b86207ecee88dd7ccdf16f80c3f5da72b6",
+      "number": 13599,
+      "title": "revenue: underwrite funded work by realized payout evidence",
+      "updated_at": "2026-09-13T07:31:47Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zt913/mcp-conformance-pagination-20260913",
+      "created_at": "2026-09-13T07:29:29Z",
+      "draft": false,
+      "head_sha": "d0290295d72e1cf8445624efb40f5ae85282c8c1",
+      "number": 13598,
+      "title": "mcp: follow discovery pagination to completion",
+      "updated_at": "2026-09-13T07:29:29Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zm913/inprs-26-04-partner-workstream",
+      "created_at": "2026-09-13T07:28:43Z",
+      "draft": false,
+      "head_sha": "3ca69c761b5c7a14ac3319080528ea9fbd17c6ae",
+      "number": 13597,
+      "title": "docs: add INPRS partner technical workstream",
+      "updated_at": "2026-09-13T07:30:45Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "ariadne/recover-deathstar-mail-telemetry",
+      "created_at": "2026-09-13T07:27:17Z",
+      "draft": false,
+      "head_sha": "ce549b6556043f4bf8be56b073b5b33b360867e5",
+      "number": 13596,
+      "title": "command-center: recover Deathstar email telemetry on fresh main",
+      "updated_at": "2026-09-13T07:27:17Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zar913/champion-ratchet-plain-file-custody-20260913",
+      "created_at": "2026-09-13T07:25:45Z",
+      "draft": false,
+      "head_sha": "4d491a211bf1797d89f7af76af4d3d51fa5b660e",
+      "number": 13595,
+      "title": "TITAN V5: reject symlinked champion evidence inputs",
+      "updated_at": "2026-09-13T07:25:45Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "funded-work-freshness-ssrf-fence-20260913",
+      "created_at": "2026-09-13T07:16:18Z",
+      "draft": false,
+      "head_sha": "c158a41adfd592f6308bdae5006c3cfd236a28cc",
+      "number": 13591,
+      "title": "funded-work: compose sponsor discovery fence with DNS-pinned transport",
+      "updated_at": "2026-09-13T07:27:58Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zeta-forge/swarm-custody-multikey-fence-20260913",
+      "created_at": "2026-09-13T06:42:02Z",
+      "draft": false,
+      "head_sha": "7592522f281162f4de588191cc940834b80aa97b",
+      "number": 13589,
+      "title": "tools: add multi-key swarm preclaim custody fence",
+      "updated_at": "2026-09-13T07:31:28Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z-vector/custody-collision-preflight-20260913",
+      "created_at": "2026-09-13T06:41:28Z",
+      "draft": false,
+      "head_sha": "015927aac19e30eb21075818b9eabd9a82b22cf2",
+      "number": 13588,
+      "title": "host: add fail-closed custody collision preflight",
+      "updated_at": "2026-09-13T06:41:28Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z-kestrel/ci-ignored-input-fence-current-20260913",
+      "created_at": "2026-09-13T06:40:39Z",
+      "draft": false,
+      "head_sha": "842d302b4c6ab001df5457c6b25309b301d53827",
+      "number": 13587,
+      "title": "ci: reject ignored runtime inputs before battery execution",
+      "updated_at": "2026-09-13T06:40:39Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "swarm-z/wuhu-lerobot-quality-20260913",
+      "created_at": "2026-09-13T06:28:49Z",
+      "draft": false,
+      "head_sha": "c03d798cf6a9ea31bc0df02692856343c78435eb",
+      "number": 13585,
+      "title": "revenue: add Wuhu LeRobot v2.1 quality inspector",
+      "updated_at": "2026-09-13T06:29:36Z"
+    }
+  ],
+  "open_heads": {
+    "13400": "2ef189e832881ae38111bf9318ee7bba80b204cb",
+    "13415": "6c2142b3c61463c6c34a055f6bdc2704307930fd",
+    "13471": "91d17d19e2a762318d79058b042be10c63c6743a",
+    "13533": "73e73de79cb62cf2f58005efab027138ded6f282",
+    "13553": "3eddbdd2ca9f9bf9a1cf5cf8b929c817b056d57b",
+    "13568": "98432e69624282b1bef2e36ec818f2215a4c18ff",
+    "13581": "f1963acbb14c6f5f614ee9a0949b4d3b8a284913",
+    "13583": "a0e177bb296d0e85183af16e7cf476e8d5ec520b",
+    "13584": "93d9348060a73171f07091a22f5441b65ba7ac86",
+    "13585": "c03d798cf6a9ea31bc0df02692856343c78435eb",
+    "13587": "842d302b4c6ab001df5457c6b25309b301d53827",
+    "13588": "015927aac19e30eb21075818b9eabd9a82b22cf2",
+    "13589": "7592522f281162f4de588191cc940834b80aa97b",
+    "13591": "c158a41adfd592f6308bdae5006c3cfd236a28cc",
+    "13595": "4d491a211bf1797d89f7af76af4d3d51fa5b660e",
+    "13596": "ce549b6556043f4bf8be56b073b5b33b360867e5",
+    "13597": "3ca69c761b5c7a14ac3319080528ea9fbd17c6ae",
+    "13598": "d0290295d72e1cf8445624efb40f5ae85282c8c1",
+    "13599": "c08cb1b86207ecee88dd7ccdf16f80c3f5da72b6"
+  },
+  "pulls_listed": 19,
+  "pulls_listing": "COMPLETE",
+  "queue_depth_per_runner": 6.1,
+  "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z-kiln/wuhu-lerobot-v21-quality-20260913",
+      "closed_at": "2026-09-13T07:31:46Z",
+      "head_sha": "201f443780e0248d2c443f0d65e78f71517e5847",
+      "merged_at": null,
+      "number": 13577,
+      "state": "CLOSED",
+      "title": "tools: add LeRobot v2.1 multimodal quality inspector"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
       "branch": "codex/command-center-deathstar-cooldown-20260912",
-      "created_at": "2026-09-13T00:51:33Z",
-      "draft": false,
+      "closed_at": "2026-09-13T07:27:39Z",
       "head_sha": "b9db151337b931479fde8a76d87253acaa4b5737",
+      "merged_at": null,
       "number": 13531,
-      "title": "Deathstar email tracker and shared operation telemetry",
-      "updated_at": "2026-09-13T01:51:17Z"
+      "state": "CLOSED",
+      "title": "Deathstar email tracker and shared operation telemetry"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zeta-forge/funded-work-freshness-fence-20260913",
+      "closed_at": "2026-09-13T07:19:19Z",
+      "head_sha": "5df8a5b488676a73c35eff476e28b66c209f5d8c",
+      "merged_at": "2026-09-13T07:19:19Z",
+      "number": 13590,
+      "state": "MERGED",
+      "title": "tools: fail closed on stale funded-work listings"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "morpheusz/exact-sha-alt-verifier-20260913",
+      "closed_at": "2026-09-13T06:35:00Z",
+      "head_sha": "67a5172574db3c600e736f8877251748e42a7d9d",
+      "merged_at": "2026-09-13T06:35:00Z",
+      "number": 13586,
+      "state": "MERGED",
+      "title": "tools: add exact-SHA alternate verifier"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z-kestrel/ci-battery-clean-evidence-rejoin-20260913",
+      "closed_at": "2026-09-13T06:27:25Z",
+      "head_sha": "d2fb84a0377abc0dd95a9867efbeafc6ca473c27",
+      "merged_at": null,
+      "number": 13569,
+      "state": "CLOSED",
+      "title": "ci: fail dirty battery evidence closed"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "commons/pr-13572-selected-source-bind-20260913",
+      "closed_at": "2026-09-13T06:25:10Z",
+      "head_sha": "51c9ad4600665d7a970b64e9df209e4743b5bafb",
+      "merged_at": "2026-09-13T06:25:10Z",
+      "number": 13582,
+      "state": "MERGED",
+      "title": "ci: bind battery selected tests to tracked HEAD blobs"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "morpheusz/hive-045-recruiting-coordination-20260913",
+      "closed_at": "2026-09-13T06:20:30Z",
+      "head_sha": "faab8a5b326ec428678fde74e83f3f2e990ae61c",
+      "merged_at": "2026-09-13T06:20:30Z",
+      "number": 13580,
+      "state": "MERGED",
+      "title": "Ship Hive #045 recruiting coordination service"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zeta-forge/openkylin-provenance-test-convergence-20260913",
+      "closed_at": "2026-09-13T06:19:36Z",
+      "head_sha": "56aa2d2a1aa8b76ed0ff39d2858137f5f4058375",
+      "merged_at": "2026-09-13T06:19:36Z",
+      "number": 13579,
+      "state": "MERGED",
+      "title": "test(openkylin): converge provenance regressions"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "ariadne-z/openkylin-contract-provenance-20260913",
+      "closed_at": "2026-09-13T06:18:40Z",
+      "head_sha": "cb0a21d307ac74d5c7148c27f0aa9a1347cf0930",
+      "merged_at": null,
+      "number": 13574,
+      "state": "CLOSED",
+      "title": "Consumed by merged #13578 and #13579: openKylin provenance donor"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zeta-forge/openkylin-provenance-single-read-20260913",
+      "closed_at": "2026-09-13T06:18:16Z",
+      "head_sha": "d34092569a97e7b40ad49b8019b9eb81aa5bf1cb",
+      "merged_at": "2026-09-13T06:18:16Z",
+      "number": 13578,
+      "state": "MERGED",
+      "title": "Superseded by canonical #13574: openKylin provenance"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "swarm-z-solstice/openkylin-compare-contract-20260913",
+      "closed_at": "2026-09-13T06:17:02Z",
+      "head_sha": "125961222bf0f5df03fd0ac3ae8b671f874dcfa7",
+      "merged_at": null,
+      "number": 13563,
+      "state": "CLOSED",
+      "title": "openkylin bench: reject invalid comparison sets"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zeta-forge/openkylin-compare-convergence-v2-20260913",
+      "closed_at": "2026-09-13T06:15:41Z",
+      "head_sha": "4612f27ce21d176013b1798c8041717e36435b67",
+      "merged_at": null,
+      "number": 13575,
+      "state": "CLOSED",
+      "title": "Superseded by merged #13573: openKylin comparison convergence"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "swarm-z-solstice/openkylin-bench-hardening-20260913",
+      "closed_at": "2026-09-13T06:15:26Z",
+      "head_sha": "9f5d4e8a1f29edb24b02b8fa217ceaabeb70a4b9",
+      "merged_at": "2026-09-13T06:15:25Z",
+      "number": 13573,
+      "state": "MERGED",
+      "title": "openkylin bench: harden comparison outputs and demo contract"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
       "branch": "astra-zeta/shared-holding-future-heartbeat-20260912",
-      "created_at": "2026-09-13T00:07:29Z",
-      "draft": false,
+      "closed_at": "2026-09-13T06:15:22Z",
       "head_sha": "4d1d4a4e113e987746f48cda1625b53827eaf8ba",
+      "merged_at": "2026-09-13T06:15:22Z",
       "number": 13528,
-      "title": "coordination: fail closed on shared holding clock skew",
-      "updated_at": "2026-09-13T06:10:10Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "astra/v5-production-v3-action-witness-20260912",
-      "created_at": "2026-09-12T22:29:12Z",
-      "draft": true,
-      "head_sha": "91d17d19e2a762318d79058b042be10c63c6743a",
-      "number": 13471,
-      "title": "TITAN V5: witness first production-v3 action divergence",
-      "updated_at": "2026-09-12T23:37:06Z"
-    }
-  ],
-  "open_heads": {
-    "13400": "2ef189e832881ae38111bf9318ee7bba80b204cb",
-    "13415": "813c9d49d5a423561c6db35fdca5bdfe44418d14",
-    "13471": "91d17d19e2a762318d79058b042be10c63c6743a",
-    "13528": "4d1d4a4e113e987746f48cda1625b53827eaf8ba",
-    "13531": "b9db151337b931479fde8a76d87253acaa4b5737",
-    "13533": "73e73de79cb62cf2f58005efab027138ded6f282",
-    "13553": "5c49be5984f0f61bcef919e56d5b4b729bdfdd8b",
-    "13563": "125961222bf0f5df03fd0ac3ae8b671f874dcfa7",
-    "13568": "98432e69624282b1bef2e36ec818f2215a4c18ff",
-    "13569": "187a04c71a64402247c2f9cf85a8d85b332de260",
-    "13570": "c0b09e6f2c60646de826a3c75cf8bdecd714389b",
-    "13571": "6697f5446b47c9db3d8c0cfa02fd0962dff64f3f"
-  },
-  "pulls_listed": 12,
-  "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 110.0,
-  "recently_closed": [
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "ariadne-z/volvo-capacity-rss-failclosed-20260913",
-      "closed_at": "2026-09-13T06:05:31Z",
-      "head_sha": "974944fb0cc05feed598f22a5942b56d1a82a7d7",
-      "merged_at": "2026-09-13T06:05:31Z",
-      "number": 13548,
       "state": "MERGED",
-      "title": "product: fail closed on unknown capacity RSS"
+      "title": "coordination: fail closed on shared holding clock skew"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "z-foundry/cirrus-shutdown-postmerge-repair-20260913",
-      "closed_at": "2026-09-13T06:04:41Z",
-      "head_sha": "5bc4cb0b714c72228c62947fa69bcca2acc2b384",
-      "merged_at": null,
-      "number": 13567,
-      "state": "CLOSED",
-      "title": "ci: retire shut-down Cirrus provider"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zephyr/openkylin-compare-failclosed-20260913",
-      "closed_at": "2026-09-13T06:04:36Z",
-      "head_sha": "3c5350509adb73aed074a8798b0433172a17824f",
-      "merged_at": null,
-      "number": 13565,
-      "state": "CLOSED",
-      "title": "Superseded by #13563: fail closed on unsafe benchmark comparisons"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-sol/cirrus-dead-road-repair-20260913",
-      "closed_at": "2026-09-13T06:03:59Z",
-      "head_sha": "f36e92df6364c00c0965849a3f7e6c12f1cace10",
-      "merged_at": "2026-09-13T06:03:59Z",
-      "number": 13566,
+      "branch": "kepler-z/wuhu-lerobot-quality-20260913",
+      "closed_at": "2026-09-13T06:14:18Z",
+      "head_sha": "8246c5883681021d3510886f55b0f938980dfc9f",
+      "merged_at": "2026-09-13T06:14:18Z",
+      "number": 13576,
       "state": "MERGED",
-      "title": "Retire the dead Cirrus hosted CI road"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "somnus-z614/openkylin-memory-benchmark-20260913",
-      "closed_at": "2026-09-13T05:57:24Z",
-      "head_sha": "b06c5cb32320d9eaf5af7e047bf0577fd0673d96",
-      "merged_at": "2026-09-13T05:57:24Z",
-      "number": 13552,
-      "state": "MERGED",
-      "title": "revenue: add openKylin long-term memory benchmark baseline"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "ci/actions-independent-battery-20260913",
-      "closed_at": "2026-09-13T05:57:19Z",
-      "head_sha": "18ab811201e9b1568478d8f815f7f0fb998b28b8",
-      "merged_at": "2026-09-13T05:57:18Z",
-      "number": 13561,
-      "state": "MERGED",
-      "title": "Run Commons CI without Actions and prepare Cirrus execution"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "ariadne-z/pazhou-titanmcp-bp-20260913",
-      "closed_at": "2026-09-13T05:55:35Z",
-      "head_sha": "e76d693649a3c9e35b33074d22ce3b40e69b3760",
-      "merged_at": "2026-09-13T05:55:35Z",
-      "number": 13562,
-      "state": "MERGED",
-      "title": "docs: preserve Pazhou titanmcp business plan outside frozen submission repo"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-keystone/cwpd-website-qualification-20260913",
-      "closed_at": "2026-09-13T05:54:01Z",
-      "head_sha": "8dbcacbe05d3395b18f1cdfc9f82db4f94eeecb3",
-      "merged_at": "2026-09-13T05:54:01Z",
-      "number": 13549,
-      "state": "MERGED",
-      "title": "docs(revenue): qualify CWPD website redesign RFP"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "digit/1gpa-27-08pv-open-door-guard-20260913",
-      "closed_at": "2026-09-13T05:50:41Z",
-      "head_sha": "97124523c4dbfc18052a6b11497ed17c7c5325ae",
-      "merged_at": "2026-09-13T05:50:41Z",
-      "number": 13558,
-      "state": "MERGED",
-      "title": "revenue: remove open-door-guard trip in 1GPA 27-08PV note"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "pascal-z812/nysed-rfp144-qualification-20260913",
-      "closed_at": "2026-09-13T05:49:37Z",
-      "head_sha": "54cb50ad0557fd31b5cc5a97cad7731ebde73e03",
-      "merged_at": "2026-09-13T05:49:37Z",
-      "number": 13547,
-      "state": "MERGED",
-      "title": "revenue: qualify NYSED OCUE modernization RFP"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-helix/hive029-integrity-dedup-20260913-01",
-      "closed_at": "2026-09-13T05:42:57Z",
-      "head_sha": "73e87af5a244f6def852d4c03abdf989c943f36b",
-      "merged_at": "2026-09-13T05:42:57Z",
-      "number": 13560,
-      "state": "MERGED",
-      "title": "Fieldnote: retire redundant stale-preview integrity wrapper"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-helix/hive029-stale-preview-integration-20260913-01",
-      "closed_at": "2026-09-13T05:37:40Z",
-      "head_sha": "1671dc45cd419d701e2dddaaf3d484b1be4fc28d",
-      "merged_at": "2026-09-13T05:37:40Z",
-      "number": 13559,
-      "state": "MERGED",
-      "title": "Fieldnote: land reviewed stale-preview guard on fresh main"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "gpt/titan-v5-v217-probe-corrective-20260912",
-      "closed_at": "2026-09-13T05:10:44Z",
-      "head_sha": "f5a3304661bed30860c65c528317d5f6f70f5e05",
-      "merged_at": "2026-09-13T05:10:44Z",
-      "number": 13502,
-      "state": "MERGED",
-      "title": "TITAN V5: correct V217 engagement evidence gate"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "astra/titan-fix-lazy-offers-floored-slots-20260913",
-      "closed_at": "2026-09-13T05:08:59Z",
-      "head_sha": "9eaf12635120bf0216ed543acded429ae6c82fe2",
-      "merged_at": "2026-09-13T05:08:59Z",
-      "number": 13557,
-      "state": "MERGED",
-      "title": "TITAN: align test_full_slots_keep_no_admission_fallback with floored market orders"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "astra/titan-v5-component-handoff-exporter-20260912",
-      "closed_at": "2026-09-13T04:58:49Z",
-      "head_sha": "6b919c4ef0aaa29d7f50be60d7b9855021c2a7fb",
-      "merged_at": "2026-09-13T04:58:49Z",
-      "number": 13512,
-      "state": "MERGED",
-      "title": "TITAN V5: bind exporter overlap custody to authenticated staging receipts"
+      "title": "revenue: add Wuhu LeRobot v2.1 data-quality auditor"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-13T06:10:54Z",
+  "unchanged_since": "2026-09-13T07:31:55Z",
   "undatable_pulls": []
 }
