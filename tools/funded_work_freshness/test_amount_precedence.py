@@ -35,7 +35,12 @@ class AmountPrecedenceTests(unittest.TestCase):
 
     def test_newer_trusted_amount_supersedes_stale_board_amount(self):
         receipt = self._receipt(
-            [authority_comment("Reward: $200 via Algora. Effective immediately.", "2026-09-13T04:00:00Z")]
+            [
+                authority_comment(
+                    "Reward: $200 via Algora. Effective immediately.",
+                    "2026-09-13T04:00:00Z",
+                )
+            ]
         )
         self.assertEqual(receipt["freshness_status"], "ambiguous")
         self.assertEqual(receipt["route"], "reject")
@@ -52,7 +57,12 @@ class AmountPrecedenceTests(unittest.TestCase):
 
     def test_candidate_matching_newer_trusted_amount_is_actionable(self):
         receipt = self._receipt(
-            [authority_comment("Reward: $200 via Algora. Effective immediately.", "2026-09-13T04:00:00Z")],
+            [
+                authority_comment(
+                    "Reward: $200 via Algora. Effective immediately.",
+                    "2026-09-13T04:00:00Z",
+                )
+            ],
             amount="200",
         )
         self.assertEqual(receipt["freshness_status"], "actionable")
@@ -203,6 +213,51 @@ class AmountPrecedenceTests(unittest.TestCase):
                 )
             ],
             amount="50",
+        )
+        self.assertEqual(receipt["freshness_status"], "ambiguous")
+        self.assertEqual(receipt["checks"]["authoritative_amount_state"], "ambiguous")
+        self.assertIsNone(receipt["checks"]["canonical_current_reward_amount"])
+        self.assertEqual(receipt["reasons"], ["canonical_reward_amount_ambiguous"])
+
+    def test_unrelated_now_subject_does_not_invent_reward_transition(self):
+        receipt = self._receipt(
+            [
+                authority_comment(
+                    "Reward was $500, test budget now $200.",
+                    "2026-09-13T04:00:00Z",
+                )
+            ],
+            amount="200",
+        )
+        self.assertEqual(receipt["freshness_status"], "ambiguous")
+        self.assertEqual(receipt["checks"]["authoritative_amount_state"], "ambiguous")
+        self.assertIsNone(receipt["checks"]["canonical_current_reward_amount"])
+        self.assertEqual(receipt["reasons"], ["canonical_reward_amount_ambiguous"])
+
+    def test_failed_from_to_cannot_be_rescued_by_unrelated_now(self):
+        receipt = self._receipt(
+            [
+                authority_comment(
+                    "Reward changed from $500 to TBD. CI budget is now $200.",
+                    "2026-09-13T04:00:00Z",
+                )
+            ],
+            amount="200",
+        )
+        self.assertEqual(receipt["freshness_status"], "ambiguous")
+        self.assertEqual(receipt["checks"]["authoritative_amount_state"], "ambiguous")
+        self.assertIsNone(receipt["checks"]["canonical_current_reward_amount"])
+        self.assertEqual(receipt["reasons"], ["canonical_reward_amount_ambiguous"])
+
+    def test_unrelated_to_subject_does_not_invent_reward_transition(self):
+        receipt = self._receipt(
+            [
+                authority_comment(
+                    "Reward changed from $500, CI budget goes to $200.",
+                    "2026-09-13T04:00:00Z",
+                )
+            ],
+            amount="200",
         )
         self.assertEqual(receipt["freshness_status"], "ambiguous")
         self.assertEqual(receipt["checks"]["authoritative_amount_state"], "ambiguous")
