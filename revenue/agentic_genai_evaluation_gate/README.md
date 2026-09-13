@@ -19,17 +19,18 @@ Every compile binds:
 - exact agent ID/version/build SHA-256;
 - exact rubric ID/generation/digest and minimum score;
 - per-scenario category, trace digest, result digest, and observation time;
-- automated score and PASS/FAIL result;
-- human-review decision bound back to the exact build, rubric, and trace;
-- safety result bound to the exact build and trace;
-- observability pointer bound to the exact trace;
+- automated score and PASS/FAIL result, bound to scenario/trace/result by a canonical automated-evidence digest;
+- human-review decision bound back to the exact build, rubric, trace, and result digest;
+- safety result bound to the exact build, trace, and result digest;
+- observability pointer bound to the exact trace and result digest;
 - tool-call ID/tool/action/effect/result and exact trace binding;
 - verifier-owned evaluation instant;
 - canonical packet SHA-256 and self-verifying receipt SHA-256.
 
-Unknown schema fields, Python bool/int aliases, floats where integer basis points
-are required, non-canonical timestamps, duplicate IDs, future evidence, stale
-evidence, trace/result transplantation, and receipt drift fail closed.
+Unknown schema fields, duplicate JSON object keys, Python bool/int aliases, floats where
+integer basis points are required, non-canonical timestamps, duplicate IDs, future
+evidence, stale evidence, trace/result transplantation, changing file generations,
+and receipt drift fail closed.
 
 ## Decision semantics
 
@@ -43,6 +44,8 @@ release authority.
 - `AGENT_BUILD_MISMATCH`
 - `RUBRIC_MISMATCH`
 - `TRACE_BINDING_MISMATCH`
+- `AUTOMATED_RESULT_BINDING_MISMATCH`
+- `RESULT_BINDING_MISMATCH`
 - `FUTURE_EVIDENCE`
 - `STALE_EVIDENCE`
 - `AUTOMATED_SCORE_BELOW_THRESHOLD`
@@ -81,16 +84,20 @@ python -m revenue.agentic_genai_evaluation_gate.cli compile \
   evaluation.json receipt.json --markdown-out receipt.md
 ```
 
-Verify an existing receipt against the exact packet:
+Verify an existing receipt against the exact packet. Verification first proves the
+historical receipt bytes, then re-evaluates freshness at the verifier-owned current
+UTC instant; an old receipt whose evidence is now stale returns `CURRENT_EVIDENCE_HOLD`:
 
 ```bash
 python -m revenue.agentic_genai_evaluation_gate.cli verify \
   evaluation.json receipt.json
 ```
 
-Input is bounded to 8 MiB, strict UTF-8/JSON, regular-file only, and opened with
-no-follow semantics when the host supports them. Output uses create-exclusive
-publication and never overwrites an existing artifact.
+Input is bounded to 8 MiB, duplicate-key-strict UTF-8/JSON, regular-file only, and
+opened with no-follow semantics when the host supports them. The retained descriptor
+is read twice with stable identity/size/mtime/ctime and byte equality before semantic
+compilation. Output uses create-exclusive publication and never overwrites an existing
+artifact.
 
 ## Authority ceiling
 
