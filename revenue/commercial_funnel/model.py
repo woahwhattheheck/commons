@@ -51,12 +51,14 @@ def normalize_opportunity(raw: Any, field: str, as_of: datetime) -> tuple[dict[s
         "version": require_id(offer["version"], f"{field}.offer.version"),
         "source": validate_source(offer["source"], f"{field}.offer.source"),
     }
+    offer_source = source_key(offer_out["source"])
     raw_events = opp["events"]
     if not isinstance(raw_events, list) or len(raw_events) > MAX_EVENTS_PER_OPPORTUNITY:
         raise FunnelError(f"{field}.events must be array <= {MAX_EVENTS_PER_OPPORTUNITY}")
 
     event_by_id: dict[str, dict[str, Any]] = {}
     event_reasons: dict[str, list[str]] = defaultdict(list)
+    event_source_owner: dict[tuple[str, str, str, str], str] = {}
     evidence_usage: dict[tuple[str, str, str, str], set[str]] = defaultdict(set)
     for i, raw_event in enumerate(raw_events):
         normalized, reasons = validate_event(raw_event, f"{field}.events[{i}]", as_of)
@@ -68,9 +70,22 @@ def normalize_opportunity(raw: Any, field: str, as_of: datetime) -> tuple[dict[s
             else:
                 event_reasons[event_id].extend(reasons)
             continue
+
         event_by_id[event_id] = normalized
         event_reasons[event_id].extend(reasons)
-        evidence_usage[source_key(normalized["evidence"])].add(opp_id)
+        key = source_key(normalized["evidence"])
+        prior_event_id = event_source_owner.get(key)
+        if prior_event_id is not None and prior_event_id != event_id:
+            # One immutable object cannot silently become two independent facts.
+            # A single stronger event can still prove prior stages explicitly via
+            # its `proves` list.
+            event_reasons[prior_event_id].append("EVIDENCE_REUSED_WITHIN_OPPORTUNITY")
+            event_reasons[event_id].append("EVIDENCE_REUSED_WITHIN_OPPORTUNITY")
+        else:
+            event_source_owner[key] = event_id
+        if key == offer_source:
+            event_reasons[event_id].append("EVIDENCE_ROLE_CONFLICT")
+        evidence_usage[key].add(opp_id)
 
     events = sorted(event_by_id.values(), key=lambda e: (e["observed_at"], e["stage"], e["id"]))
     reasons = sorted({reason for rs in event_reasons.values() for reason in rs})
