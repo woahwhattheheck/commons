@@ -13,15 +13,30 @@ import re
 import stat
 import statistics
 import sys
+import tempfile
 import uuid
 from typing import Any, Iterable
 
-SCHEMA = "titan.v5.v31-v4-gauntlet-reduction/v3"
+SCHEMA = "titan.v5.v31-v4-gauntlet-reduction/v4"
 EXPECTED_CALLBACKS = 719
 EXACT = {
     "v31": "5db3921f85efbc7596e5a1e7e198fc5f4644ceea43d8e8323c74ded7b4ba4361",
     "v4": "4d9601552b5e25d02d8a33961c0bed54ed92d032dbcd4a72f6ab8e03515ed21b",
 }
+CANONICAL_MANIFEST_SHA256 = "510ca5c5438fb65d29755f2009f07bb85bbf3e8963054b88c4abe3ec3737924e"
+CANONICAL_MATERIALIZER_GIT_BLOB = "2384453aa3b3bbab3a299ca2aa693dd6215276ae"
+CANONICAL_UNIQUE_SUBMISSIONS = 41
+CANONICAL_FIXTURE_COUNT = 123
+CANONICAL_REPLAYS_PER_SUBMISSION = 3
+CANONICAL_MANIFEST_SCHEMA = "titan.gauntlet.top30-union.v1"
+CANONICAL_INDEX_SCHEMA = "titan.gauntlet.recorded-opponents.v1"
+CANONICAL_PROVENANCE = "public_recorded_actions"
+CANONICAL_INTERPRETATION = (
+    "Counterfactual recorded-action opponent; seat swap or new seed is a synthetic stress case."
+)
+CANONICAL_PACKAGE = Path(__file__).resolve().parent.parent / "gauntlet-top30-union"
+CANONICAL_MANIFEST_PATH = Path(__file__).resolve().parent / "canonical-manifest-510ca5c5438fb65d.json"
+CANONICAL_MATERIALIZER_PATH = CANONICAL_PACKAGE / "corpus.py"
 _CELL_RE = re.compile(r"^(?P<opponent>.+)-p(?P<seat>[01])\.json$")
 _SHA256_RE = re.compile(r"^[0-9a-f]{64}$")
 
@@ -139,8 +154,330 @@ def _engine_map(value: Any, field: str) -> dict[str, str]:
     return out
 
 
+def _git_blob_id(raw: bytes) -> str:
+    return hashlib.sha1(
+        b"blob " + str(len(raw)).encode() + b"\0" + raw
+    ).hexdigest()
+
+
+def _captured_materializer():
+    raw = _read_regular_bytes(CANONICAL_MATERIALIZER_PATH)
+    actual = _git_blob_id(raw)
+    if actual != CANONICAL_MATERIALIZER_GIT_BLOB:
+        raise ReductionError(
+            "canonical corpus materializer Git blob drifted: "
+            f"{actual} != {CANONICAL_MATERIALIZER_GIT_BLOB}"
+        )
+    namespace: dict[str, Any] = {
+        "__name__": "_titan_v5_gauntlet_corpus_authority",
+        "__file__": str(CANONICAL_MATERIALIZER_PATH),
+    }
+    try:
+        exec(
+            compile(raw, str(CANONICAL_MATERIALIZER_PATH), "exec"),
+            namespace,
+        )
+    except Exception as exc:
+        raise ReductionError(
+            f"cannot load captured canonical materializer: {exc}"
+        ) from exc
+    materialize = namespace.get("materialize")
+    if not callable(materialize):
+        raise ReductionError("canonical corpus materializer lacks materialize()")
+    return materialize
+
+
+def _runtime_row_projection(
+    row: Any,
+    source_pos: int,
+) -> dict[str, Any]:
+    if type(row) is not dict:
+        raise ReductionError(
+            f"index opponent {source_pos} must be an object"
+        )
+    required = {
+        "id",
+        "kind",
+        "provenance",
+        "executable",
+        "family",
+        "submission_id",
+        "team_id",
+        "team_name",
+        "memberships",
+        "episode_id",
+        "seed",
+        "recorded_opponent_seat",
+        "candidate_seat_for_recorded_orientation",
+        "entry",
+        "entry_sha256",
+        "actions_sha256",
+        "replay_sha256",
+        "decisions",
+        "adaptive",
+        "interpretation",
+    }
+    if set(row) != required:
+        raise ReductionError(
+            f"index opponent {source_pos} fields differ from canonical materializer"
+        )
+    opponent = row.get("id")
+    if not isinstance(opponent, str) or not opponent:
+        raise ReductionError(f"index opponent {source_pos} has invalid id")
+    if row.get("kind") != "recorded_trace":
+        raise ReductionError(f"index.{opponent}.kind must be recorded_trace")
+    if row.get("provenance") != CANONICAL_PROVENANCE:
+        raise ReductionError(
+            f"index.{opponent}.provenance differs from canonical corpus"
+        )
+    if row.get("adaptive") is not False or row.get("executable") is not False:
+        raise ReductionError(
+            f"index.{opponent} must be non-adaptive and non-executable"
+        )
+    submission_id = _plain_int(
+        row.get("submission_id"),
+        f"index.{opponent}.submission_id",
+        1,
+    )
+    team_id = _plain_int(
+        row.get("team_id"),
+        f"index.{opponent}.team_id",
+        1,
+    )
+    team_name = row.get("team_name")
+    family = row.get("family")
+    memberships = row.get("memberships")
+    episode_id = _plain_int(
+        row.get("episode_id"),
+        f"index.{opponent}.episode_id",
+        1,
+    )
+    seed = _plain_int(row.get("seed"), f"index.{opponent}.seed")
+    recorded_seat = row.get("recorded_opponent_seat")
+    candidate_seat = row.get("candidate_seat_for_recorded_orientation")
+    if not isinstance(team_name, str) or not team_name:
+        raise ReductionError(f"index.{opponent}.team_name must be nonempty")
+    if family != f"recorded-submission:{submission_id}":
+        raise ReductionError(f"index.{opponent}.family is not canonical")
+    if not isinstance(memberships, list):
+        raise ReductionError(f"index.{opponent}.memberships must be a list")
+    if type(recorded_seat) is not int or recorded_seat not in (0, 1):
+        raise ReductionError(
+            f"index.{opponent}.recorded_opponent_seat must be 0 or 1"
+        )
+    if candidate_seat != 1 - recorded_seat:
+        raise ReductionError(
+            f"index.{opponent}.candidate seat is not the recorded-seat complement"
+        )
+    entry = row.get("entry")
+    if (
+        not isinstance(entry, str)
+        or not entry
+        or not Path(entry).is_absolute()
+    ):
+        raise ReductionError(f"index.{opponent}.entry must be an absolute path")
+    entry_sha256 = _sha256(
+        row.get("entry_sha256"),
+        f"index.{opponent}.entry_sha256",
+    )
+    actions_sha256 = _sha256(
+        row.get("actions_sha256"),
+        f"index.{opponent}.actions_sha256",
+    )
+    replay_sha256 = _sha256(
+        row.get("replay_sha256"),
+        f"index.{opponent}.replay_sha256",
+    )
+    decisions = _plain_int(
+        row.get("decisions"),
+        f"index.{opponent}.decisions",
+        1,
+    )
+    if decisions != EXPECTED_CALLBACKS:
+        raise ReductionError(
+            f"index.{opponent}.decisions must be {EXPECTED_CALLBACKS}"
+        )
+    if row.get("interpretation") != CANONICAL_INTERPRETATION:
+        raise ReductionError(
+            f"index.{opponent}.interpretation differs from canonical materializer"
+        )
+    return {
+        "id": opponent,
+        "kind": "recorded_trace",
+        "provenance": CANONICAL_PROVENANCE,
+        "executable": False,
+        "family": family,
+        "submission_id": submission_id,
+        "team_id": team_id,
+        "team_name": team_name,
+        "memberships": memberships,
+        "episode_id": episode_id,
+        "seed": seed,
+        "recorded_opponent_seat": recorded_seat,
+        "candidate_seat_for_recorded_orientation": candidate_seat,
+        "entry_sha256": entry_sha256,
+        "actions_sha256": actions_sha256,
+        "replay_sha256": replay_sha256,
+        "decisions": decisions,
+        "adaptive": False,
+        "interpretation": CANONICAL_INTERPRETATION,
+        "recorded_index": source_pos,
+    }
+
+
+def _canonical_materialization(
+    corpus: Path | None,
+) -> tuple[
+    list[dict[str, Any]],
+    dict[str, dict[str, Any]],
+    dict[str, Any],
+]:
+    if corpus is None:
+        raise ReductionError(
+            "canonical corpus root is required for authorizing reduction"
+        )
+    root = Path(corpus).resolve(strict=True)
+    if not root.is_dir():
+        raise ReductionError("canonical corpus root must be a directory")
+    manifest_path = CANONICAL_MANIFEST_PATH.resolve(strict=True)
+    manifest_raw = _read_regular_bytes(manifest_path)
+    manifest_sha256 = hashlib.sha256(manifest_raw).hexdigest()
+    if manifest_sha256 != CANONICAL_MANIFEST_SHA256:
+        raise ReductionError(
+            "canonical corpus manifest SHA256 drifted: "
+            f"{manifest_sha256} != {CANONICAL_MANIFEST_SHA256}"
+        )
+    manifest = _parse_json_bytes(manifest_raw, str(manifest_path))
+    if type(manifest) is not dict:
+        raise ReductionError("canonical corpus manifest must be an object")
+    if manifest.get("schema") != CANONICAL_MANIFEST_SCHEMA:
+        raise ReductionError("canonical corpus manifest schema drifted")
+    if manifest.get("submission_hold") is not True:
+        raise ReductionError("canonical corpus manifest lost submission hold")
+    if (
+        _plain_int(
+            manifest.get("unique_submission_targets"),
+            "canonical unique_submission_targets",
+            1,
+        )
+        != CANONICAL_UNIQUE_SUBMISSIONS
+    ):
+        raise ReductionError("canonical corpus target count drifted")
+    targets = manifest.get("targets")
+    if type(targets) is not list or len(targets) != CANONICAL_UNIQUE_SUBMISSIONS:
+        raise ReductionError("canonical corpus targets are incomplete")
+
+    materialize = _captured_materializer()
+    seen_replays: set[Path] = set()
+    fixture_count = 0
+    with tempfile.TemporaryDirectory(
+        prefix="titan-v5-gauntlet-authority-"
+    ) as temporary:
+        private_root = Path(temporary) / "corpus"
+        private_root.mkdir()
+        (private_root / "manifest.json").write_bytes(manifest_raw)
+        for target_pos, target in enumerate(targets):
+            if type(target) is not dict or target.get("status") != "complete":
+                raise ReductionError(
+                    f"canonical target {target_pos} is incomplete"
+                )
+            replays = target.get("replays")
+            if (
+                type(replays) is not list
+                or len(replays) != CANONICAL_REPLAYS_PER_SUBMISSION
+            ):
+                raise ReductionError(
+                    f"canonical target {target_pos} lacks three replays"
+                )
+            for replay_pos, fixture in enumerate(replays):
+                if type(fixture) is not dict:
+                    raise ReductionError(
+                        f"canonical replay {target_pos}/{replay_pos} is not an object"
+                    )
+                rel_text = fixture.get("path")
+                if not isinstance(rel_text, str) or not rel_text:
+                    raise ReductionError("canonical replay path is invalid")
+                rel = Path(rel_text)
+                if rel.is_absolute() or ".." in rel.parts:
+                    raise ReductionError("canonical replay path escapes corpus root")
+                source = (root / rel).resolve(strict=True)
+                if not source.is_relative_to(root):
+                    raise ReductionError("canonical replay resolved outside corpus root")
+                if source in seen_replays:
+                    raise ReductionError("canonical replay path is duplicated")
+                seen_replays.add(source)
+                raw = _read_regular_bytes(source)
+                expected_sha = _sha256(
+                    fixture.get("sha256"),
+                    f"canonical replay {target_pos}/{replay_pos} sha256",
+                )
+                actual_sha = hashlib.sha256(raw).hexdigest()
+                if actual_sha != expected_sha:
+                    raise ReductionError(
+                        "canonical replay digest differs from manifest: "
+                        f"{rel_text}"
+                    )
+                destination = private_root.joinpath(*rel.parts)
+                destination.parent.mkdir(parents=True, exist_ok=True)
+                destination.write_bytes(raw)
+                fixture_count += 1
+        if fixture_count != CANONICAL_FIXTURE_COUNT:
+            raise ReductionError(
+                f"canonical corpus has {fixture_count} fixtures; "
+                f"expected {CANONICAL_FIXTURE_COUNT}"
+            )
+        output = Path(temporary) / "materialized"
+        try:
+            result = materialize(private_root, output)
+        except Exception as exc:
+            raise ReductionError(
+                f"captured canonical materialization failed: {exc}"
+            ) from exc
+        if type(result) is not dict:
+            raise ReductionError("canonical materializer returned a non-object")
+        if set(result) != {
+            "schema",
+            "source_manifest_sha256",
+            "submission_hold",
+            "opponents",
+            "targets",
+        }:
+            raise ReductionError("canonical materializer result fields drifted")
+        if result.get("schema") != CANONICAL_INDEX_SCHEMA:
+            raise ReductionError("canonical materializer index schema drifted")
+        if result.get("source_manifest_sha256") != CANONICAL_MANIFEST_SHA256:
+            raise ReductionError("canonical materializer lost manifest binding")
+        if result.get("submission_hold") is not True:
+            raise ReductionError("canonical materializer lost submission hold")
+        if result.get("targets") != CANONICAL_UNIQUE_SUBMISSIONS:
+            raise ReductionError("canonical materializer target count drifted")
+        opponents = result.get("opponents")
+        if type(opponents) is not list or len(opponents) != CANONICAL_FIXTURE_COUNT:
+            raise ReductionError("canonical materializer fixture count drifted")
+        rows = [
+            _runtime_row_projection(row, source_pos)
+            for source_pos, row in enumerate(opponents)
+        ]
+    by_id = {row["id"]: row for row in rows}
+    if len(by_id) != len(rows):
+        raise ReductionError("canonical materializer produced duplicate fixture IDs")
+    materialization_sha256 = _digest(rows)
+    authority = {
+        "source_manifest_sha256": CANONICAL_MANIFEST_SHA256,
+        "materializer_git_blob": CANONICAL_MATERIALIZER_GIT_BLOB,
+        "unique_submission_targets": CANONICAL_UNIQUE_SUBMISSIONS,
+        "recorded_fixture_count": CANONICAL_FIXTURE_COUNT,
+        "fixtures_per_submission": CANONICAL_REPLAYS_PER_SUBMISSION,
+        "materialization_manifest_sha256": materialization_sha256,
+        "captured_replay_count": fixture_count,
+    }
+    return rows, by_id, authority
+
+
 def _load_index(
     path: Path,
+    canonical_rows: list[dict[str, Any]],
+    canonical_authority: dict[str, Any],
 ) -> tuple[
     str,
     list[dict[str, Any]],
@@ -148,74 +485,150 @@ def _load_index(
     dict[str, Any],
 ]:
     index, _raw, index_sha256 = _read_json(path)
-    if type(index) is not dict or not isinstance(index.get("opponents"), list):
-        raise ReductionError("corpus index must contain an opponents list")
+    if type(index) is not dict or set(index) != {
+        "schema",
+        "source_manifest_sha256",
+        "submission_hold",
+        "opponents",
+        "targets",
+    }:
+        raise ReductionError(
+            "runtime corpus index fields differ from canonical materializer"
+        )
+    if index.get("schema") != CANONICAL_INDEX_SCHEMA:
+        raise ReductionError("runtime corpus index schema drifted")
+    if (
+        index.get("source_manifest_sha256")
+        != canonical_authority["source_manifest_sha256"]
+    ):
+        raise ReductionError(
+            "runtime corpus index does not bind the canonical source manifest"
+        )
+    if index.get("submission_hold") is not True:
+        raise ReductionError("runtime corpus index lost submission hold")
+    if (
+        index.get("targets")
+        != canonical_authority["unique_submission_targets"]
+    ):
+        raise ReductionError("runtime corpus index target count drifted")
+    opponents = index.get("opponents")
+    if type(opponents) is not list:
+        raise ReductionError("runtime corpus index must contain opponents list")
+    if len(opponents) != canonical_authority["recorded_fixture_count"]:
+        raise ReductionError(
+            f"runtime corpus index has {len(opponents)} fixtures; "
+            "canonical universe requires "
+            f"{canonical_authority['recorded_fixture_count']}"
+        )
     rows: list[dict[str, Any]] = []
     by_id: dict[str, dict[str, Any]] = {}
-    for source_pos, row in enumerate(index["opponents"]):
-        if type(row) is not dict:
+    entry_paths: list[str] = []
+    for source_pos, (row, canonical) in enumerate(
+        zip(opponents, canonical_rows, strict=True)
+    ):
+        projection = _runtime_row_projection(row, source_pos)
+        if projection != canonical:
             raise ReductionError(
-                f"index opponent {source_pos} must be an object"
+                "runtime corpus index differs from canonical materialization at "
+                f"fixture {source_pos}: {projection['id']}"
             )
-        if row.get("kind") != "recorded_trace":
-            continue
-        opponent = row.get("id")
-        if not isinstance(opponent, str) or not opponent:
-            raise ReductionError(
-                f"index opponent {source_pos} has invalid id"
-            )
+        opponent = projection["id"]
         if opponent in by_id:
             raise ReductionError(
-                f"duplicate recorded opponent id in index: {opponent}"
+                f"duplicate recorded opponent id in runtime index: {opponent}"
             )
-        submission_id = _plain_int(
-            row.get("submission_id"),
-            f"index.{opponent}.submission_id",
-            1,
-        )
-        seed = _plain_int(
-            row.get("seed"),
-            f"index.{opponent}.seed",
-        )
-        family = row.get("family")
-        memberships = row.get("memberships")
-        candidate_seat = row.get(
-            "candidate_seat_for_recorded_orientation"
-        )
-        if not isinstance(family, str) or not family:
-            raise ReductionError(
-                f"index.{opponent}.family must be nonempty"
-            )
-        if not isinstance(memberships, list):
-            raise ReductionError(
-                f"index.{opponent}.memberships must be a list"
-            )
-        if type(candidate_seat) is not int or candidate_seat not in (0, 1):
-            raise ReductionError(
-                f"index.{opponent}.candidate_seat_for_recorded_orientation "
-                "must be 0 or 1"
-            )
-        expected = {
-            "id": opponent,
-            "submission_id": submission_id,
-            "seed": seed,
-            "family": family,
-            "memberships": memberships,
-            "candidate_seat_for_recorded_orientation": candidate_seat,
-            "recorded_index": len(rows),
-        }
-        rows.append(expected)
-        by_id[opponent] = expected
-    if not rows:
+        rows.append(projection)
+        by_id[opponent] = projection
+        entry_paths.append(row["entry"])
+    materialization_sha256 = _digest(rows)
+    if (
+        materialization_sha256
+        != canonical_authority["materialization_manifest_sha256"]
+    ):
         raise ReductionError(
-            "corpus index contains no recorded_trace opponents"
+            "runtime corpus materialization digest differs from canonical corpus"
         )
     authority = {
         "index_sha256": index_sha256,
+        "source_manifest_sha256": canonical_authority[
+            "source_manifest_sha256"
+        ],
         "recorded_fixture_count": len(rows),
-        "recorded_fixture_manifest_sha256": _digest(rows),
+        "materialization_manifest_sha256": materialization_sha256,
+        "entry_paths_sha256": _digest(entry_paths),
     }
     return index_sha256, rows, by_id, authority
+
+
+def _load_indexes(
+    index: Path | Iterable[Path],
+    *,
+    corpus: Path | None,
+) -> tuple[
+    dict[str, dict[str, Any]],
+    dict[str, Any],
+]:
+    canonical_rows, _canonical_by_id, canonical_authority = (
+        _canonical_materialization(corpus)
+    )
+    if isinstance(index, (str, Path)):
+        paths = [Path(index)]
+    else:
+        paths = [Path(path) for path in index]
+    if not paths:
+        raise ReductionError("at least one runtime corpus index is required")
+    seen_paths: set[Path] = set()
+    by_sha: dict[str, dict[str, Any]] = {}
+    for path in paths:
+        key = path.absolute()
+        if key in seen_paths:
+            raise ReductionError(f"duplicate runtime corpus index path: {path}")
+        seen_paths.add(key)
+        index_sha256, rows, by_id, authority = _load_index(
+            path,
+            canonical_rows,
+            canonical_authority,
+        )
+        binding = {
+            "rows": rows,
+            "by_id": by_id,
+            "authority": authority,
+        }
+        prior = by_sha.get(index_sha256)
+        if prior is not None:
+            if prior["authority"] != authority:
+                raise ReductionError(
+                    "identical runtime index SHA produced inconsistent authority"
+                )
+            continue
+        by_sha[index_sha256] = binding
+    materialization_values = {
+        binding["authority"]["materialization_manifest_sha256"]
+        for binding in by_sha.values()
+    }
+    if materialization_values != {
+        canonical_authority["materialization_manifest_sha256"]
+    }:
+        raise ReductionError(
+            "runtime indexes disagree on canonical materialization authority"
+        )
+    authority = {
+        **canonical_authority,
+        "runtime_index_count": len(by_sha),
+        "runtime_indexes": sorted(
+            (
+                {
+                    "index_sha256": sha,
+                    "entry_paths_sha256": binding["authority"][
+                        "entry_paths_sha256"
+                    ],
+                }
+                for sha, binding in by_sha.items()
+            ),
+            key=lambda row: row["index_sha256"],
+        ),
+    }
+    return by_sha, authority
 
 
 def _expected_rows_for_shard(
@@ -259,9 +672,7 @@ def _validate_cell_against_index(
 def _scan_roots(
     label: str,
     roots: Iterable[Path],
-    index_sha256: str,
-    index_rows: list[dict[str, Any]],
-    index_by_id: dict[str, dict[str, Any]],
+    indexes_by_sha: dict[str, dict[str, Any]],
 ) -> tuple[
     dict[tuple[str, int], dict[str, Any]],
     list[dict[str, Any]],
@@ -299,11 +710,14 @@ def _scan_roots(
             run.get("index_sha256"),
             f"{root}.index_sha256",
         )
-        if declared_index != index_sha256:
+        index_binding = indexes_by_sha.get(declared_index)
+        if index_binding is None:
             raise ReductionError(
-                f"{label} run index differs from supplied "
-                f"authenticated index: {root}"
+                f"{label} run references an unsupplied runtime index: {root}"
             )
+        index_rows = index_binding["rows"]
+        index_by_id = index_binding["by_id"]
+        index_authority = index_binding["authority"]
         engine = _engine_map(run.get("engine"), f"{root}.engine")
         evaluator_sha256 = _sha256(
             run.get("evaluator_sha256"),
@@ -433,6 +847,12 @@ def _scan_roots(
                 for opponent, seat in missing_keys
             ],
             "index_sha256": declared_index,
+            "index_materialization_sha256": index_authority[
+                "materialization_manifest_sha256"
+            ],
+            "canonical_manifest_sha256": index_authority[
+                "source_manifest_sha256"
+            ],
             "evaluator_sha256": evaluator_sha256,
             "loader_sha256": loader_sha256,
             "engine": engine,
@@ -469,15 +889,25 @@ def _panel_topology(
             )
         declared = next(iter(shard_totals))
         by_shard: dict[int, dict[str, Any]] = {}
-        index_values = {row["index_sha256"] for row in runs}
+        raw_index_values = {row["index_sha256"] for row in runs}
+        materialization_values = {
+            row["index_materialization_sha256"] for row in runs
+        }
+        canonical_manifest_values = {
+            row["canonical_manifest_sha256"] for row in runs
+        }
         evaluator_values = {
             row["evaluator_sha256"] for row in runs
         }
         loader_values = {row["loader_sha256"] for row in runs}
         engine_values = {_digest(row["engine"]) for row in runs}
-        if len(index_values) != 1:
+        if len(materialization_values) != 1:
             raise ReductionError(
-                f"{label} roots disagree on corpus index identity"
+                f"{label} roots disagree on semantic corpus materialization"
+            )
+        if len(canonical_manifest_values) != 1:
+            raise ReductionError(
+                f"{label} roots disagree on canonical corpus manifest"
             )
         if len(evaluator_values) != 1:
             raise ReductionError(
@@ -510,7 +940,13 @@ def _panel_topology(
             "selected_fixtures_observed": sum(
                 row["selected_fixtures"] for row in runs
             ),
-            "index_sha256": next(iter(index_values)),
+            "index_sha256s": sorted(raw_index_values),
+            "index_materialization_sha256": next(
+                iter(materialization_values)
+            ),
+            "canonical_manifest_sha256": next(
+                iter(canonical_manifest_values)
+            ),
             "evaluator_sha256": next(iter(evaluator_values)),
             "loader_sha256": next(iter(loader_values)),
             "engine_digest": next(iter(engine_values)),
@@ -520,35 +956,45 @@ def _panel_topology(
     left = inspect("v31", v31_runs)
     right = inspect("v4", v4_runs)
     if left["declared_shards"] != right["declared_shards"]:
+        raise ReductionError("V3.1/V4 declared shard counts differ")
+    if (
+        left["index_materialization_sha256"]
+        != right["index_materialization_sha256"]
+    ):
         raise ReductionError(
-            "V3.1/V4 declared shard counts differ"
+            "V3.1/V4 semantic corpus materializations differ"
         )
-    if left["index_sha256"] != right["index_sha256"]:
+    if (
+        left["index_materialization_sha256"]
+        != index_authority["materialization_manifest_sha256"]
+    ):
         raise ReductionError(
-            "V3.1/V4 corpus index identities differ"
+            "run receipts do not match canonical corpus materialization"
         )
-    if left["index_sha256"] != index_authority["index_sha256"]:
+    if (
+        left["canonical_manifest_sha256"]
+        != right["canonical_manifest_sha256"]
+        or left["canonical_manifest_sha256"]
+        != index_authority["source_manifest_sha256"]
+    ):
         raise ReductionError(
-            "run receipts do not match supplied corpus index"
+            "run receipts do not share canonical manifest authority"
         )
     if left["evaluator_sha256"] != right["evaluator_sha256"]:
-        raise ReductionError(
-            "V3.1/V4 evaluator identities differ"
-        )
+        raise ReductionError("V3.1/V4 evaluator identities differ")
     if left["loader_sha256"] != right["loader_sha256"]:
-        raise ReductionError(
-            "V3.1/V4 loader identities differ"
-        )
+        raise ReductionError("V3.1/V4 loader identities differ")
     if left["engine_digest"] != right["engine_digest"]:
-        raise ReductionError(
-            "V3.1/V4 engine identities differ"
-        )
-    shared_shards = set(left["by_shard"]) & set(
-        right["by_shard"]
-    )
+        raise ReductionError("V3.1/V4 engine identities differ")
+    shared_shards = set(left["by_shard"]) & set(right["by_shard"])
     for shard in shared_shards:
         left_run = left["by_shard"][shard]
         right_run = right["by_shard"][shard]
+        if left_run["index_sha256"] != right_run["index_sha256"]:
+            raise ReductionError(
+                "V3.1/V4 shard used different workspace indexes for "
+                f"shard {shard}"
+            )
         if (
             left_run["selected_fixtures"]
             != right_run["selected_fixtures"]
@@ -575,9 +1021,8 @@ def _panel_topology(
         )
         if expected_cells_override != expected_cells:
             raise ReductionError(
-                "expected_cells override disagrees with authenticated "
-                f"corpus index: {expected_cells_override} != "
-                f"{expected_cells}"
+                "expected_cells override disagrees with canonical corpus: "
+                f"{expected_cells_override} != {expected_cells}"
             )
 
     complete_topology = (
@@ -591,14 +1036,10 @@ def _panel_topology(
         == index_authority["recorded_fixture_count"]
     )
     public_left = {
-        key: value
-        for key, value in left.items()
-        if key != "by_shard"
+        key: value for key, value in left.items() if key != "by_shard"
     }
     public_right = {
-        key: value
-        for key, value in right.items()
-        if key != "by_shard"
+        key: value for key, value in right.items() if key != "by_shard"
     }
     return {
         "index_authority": index_authority,
@@ -662,29 +1103,32 @@ def reduce_roots(
     v31_roots: Iterable[Path],
     v4_roots: Iterable[Path],
     *,
-    index: Path,
+    index: Path | Iterable[Path],
+    corpus: Path | None = None,
     expected_cells: int | None = None,
 ) -> dict[str, Any]:
-    (
-        index_sha256,
-        index_rows,
-        index_by_id,
-        index_authority,
-    ) = _load_index(index)
+    indexes_by_sha, index_authority = _load_indexes(
+        index,
+        corpus=corpus,
+    )
     v31, v31_runs = _scan_roots(
         "v31",
         v31_roots,
-        index_sha256,
-        index_rows,
-        index_by_id,
+        indexes_by_sha,
     )
     v4, v4_runs = _scan_roots(
         "v4",
         v4_roots,
-        index_sha256,
-        index_rows,
-        index_by_id,
+        indexes_by_sha,
     )
+    used_indexes = {
+        row["index_sha256"] for row in v31_runs + v4_runs
+    }
+    supplied_indexes = set(indexes_by_sha)
+    if used_indexes != supplied_indexes:
+        raise ReductionError(
+            "supplied runtime index set must exactly equal run-referenced indexes"
+        )
     topology, expected_cells = _panel_topology(
         v31_runs,
         v4_runs,
@@ -873,10 +1317,21 @@ def main(argv: list[str] | None = None) -> int:
     )
     parser.add_argument(
         "--index",
+        action="append",
         type=Path,
         required=True,
         help=(
-            "Exact top30-union corpus index used by the gauntlet runners."
+            "Exact workspace-local recorded-opponents.json used by a consumed "
+            "shard. Repeat once per distinct raw index SHA."
+        ),
+    )
+    parser.add_argument(
+        "--corpus",
+        type=Path,
+        required=True,
+        help=(
+            "Extracted canonical top30-union corpus. The reducer privately "
+            "recaptures all 123 replay bytes and re-materializes action tapes."
         ),
     )
     parser.add_argument(
@@ -895,6 +1350,7 @@ def main(argv: list[str] | None = None) -> int:
             args.v31_root,
             args.v4_root,
             index=args.index,
+            corpus=args.corpus,
             expected_cells=args.expected_cells,
         )
         _atomic_write(args.output, report)

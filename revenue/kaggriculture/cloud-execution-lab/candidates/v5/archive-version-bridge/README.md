@@ -65,3 +65,28 @@ python3 -O -B -m unittest -v test_bridge.py test_reduce_gauntlet.py
 ```
 
 Reducer predecessors cover hotspot ranking, 123-fixture → 246-cell derivation, incomplete shard non-authorization, favorable-subset override rejection, `--limit` truncation, extra corpus IDs, candidate/index/engine/evaluator/loader drift, fixture seed and candidate-seat mismatch, mirrored p0/p1 metadata corruption, duplicate shard receipts, 719-callback enforcement, parse/hash same-capture custody, post-read cell mutation, score-cell tamper changing authority, symlink rejection, and partial CLI publication.
+
+
+## Canonical corpus + workspace-index authority (v4)
+
+The reducer no longer lets a caller-provided runtime index define the universe.
+Authorizing reduction requires `--corpus` pointing at the extracted canonical
+Top30-union corpus. The reducer single-reads and pins manifest SHA256
+`510ca5c5...`, captures all 123 replay files by the manifest SHA256s into a
+private temporary corpus, captured-loads the pinned `corpus.py` Git blob, and
+re-materializes the 41 x 3 recorded-action fixtures itself. Runtime index rows
+must exactly equal that canonical materialization on fixture identity,
+provenance, orientation, replay SHA, action-tape SHA, adapter SHA, and decision
+count.
+
+`corpus.py` intentionally records an absolute adapter path, so independent
+shard workspaces have different raw `recorded-opponents.json` bytes. `--index`
+is therefore repeatable. Each run is bound to the exact raw index SHA it used;
+V3.1 and V4 for the same shard must share that raw index, while different
+shards may use different raw SHA256s only when their canonical materialization
+digest is identical. This preserves every already-running shard without
+normalizing or rewriting its evidence.
+
+### Frozen corpus authority
+
+The reducer binds the historical shard panel to immutable `canonical-manifest-510ca5c5438fb65d.json` (SHA256 `510ca5c5438fb65d29755f2009f07bb85bbf3e8963054b88c4abe3ec3737924e`). The live `gauntlet-top30-union/manifest.json` is leaderboard-derived and may advance independently. `--corpus` supplies the pinned materializer plus replay bytes; it cannot redefine the 41-submission / 123-fixture universe.

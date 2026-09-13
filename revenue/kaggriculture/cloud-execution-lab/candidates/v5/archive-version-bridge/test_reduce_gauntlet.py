@@ -13,20 +13,84 @@ def write_json(path, value):
 
 
 class ReduceGauntletTests(unittest.TestCase):
+    def setUp(self):
+        self._canonical_rows = None
+        self._canonical_authority = None
+        patcher = mock.patch.object(
+            rg,
+            "_canonical_materialization",
+            side_effect=self._fake_canonical_materialization,
+        )
+        patcher.start()
+        self.addCleanup(patcher.stop)
+
+    def _fake_canonical_materialization(self, _corpus):
+        if self._canonical_rows is None or self._canonical_authority is None:
+            raise rg.ReductionError("synthetic canonical authority was not initialized")
+        rows = json.loads(json.dumps(self._canonical_rows))
+        return (
+            rows,
+            {row["id"]: row for row in rows},
+            json.loads(json.dumps(self._canonical_authority)),
+        )
+
     def index(self, base, count=2):
         path = Path(base) / "index.json"
         opponents = []
+        source_manifest_sha256 = hashlib.sha256(
+            f"synthetic-canonical-manifest-{count}".encode()
+        ).hexdigest()
         for i in range(count):
+            submission_id = i + 1
+            episode_id = 100000 + i
+            recorded_seat = 1 - (i % 2)
             opponents.append({
                 "id": f"opp{i:03d}",
-                "submission_id": i + 1,
-                "seed": 1909000000 + i,
-                "family": "A" if i % 2 == 0 else "B",
                 "kind": "recorded_trace",
+                "provenance": rg.CANONICAL_PROVENANCE,
+                "executable": False,
+                "family": f"recorded-submission:{submission_id}",
+                "submission_id": submission_id,
+                "team_id": 200000 + i,
+                "team_name": f"team-{i}",
                 "memberships": [{"group": "current_top30"}],
-                "candidate_seat_for_recorded_orientation": i % 2,
+                "episode_id": episode_id,
+                "seed": 1909000000 + i,
+                "recorded_opponent_seat": recorded_seat,
+                "candidate_seat_for_recorded_orientation": 1 - recorded_seat,
+                "entry": str((Path(base) / f"opp{i:03d}" / "main.py").absolute()),
+                "entry_sha256": hashlib.sha256(b"canonical-adapter").hexdigest(),
+                "actions_sha256": hashlib.sha256(
+                    f"actions-{i}".encode()
+                ).hexdigest(),
+                "replay_sha256": hashlib.sha256(
+                    f"replay-{i}".encode()
+                ).hexdigest(),
+                "decisions": rg.EXPECTED_CALLBACKS,
+                "adaptive": False,
+                "interpretation": rg.CANONICAL_INTERPRETATION,
             })
-        write_json(path, {"opponents": opponents})
+        write_json(path, {
+            "schema": rg.CANONICAL_INDEX_SCHEMA,
+            "source_manifest_sha256": source_manifest_sha256,
+            "submission_hold": True,
+            "opponents": opponents,
+            "targets": count,
+        })
+        self._canonical_rows = [
+            rg._runtime_row_projection(row, i)
+            for i, row in enumerate(opponents)
+        ]
+        materialization_sha256 = rg._digest(self._canonical_rows)
+        self._canonical_authority = {
+            "source_manifest_sha256": source_manifest_sha256,
+            "materializer_git_blob": "f" * 40,
+            "unique_submission_targets": count,
+            "recorded_fixture_count": count,
+            "fixtures_per_submission": 1,
+            "materialization_manifest_sha256": materialization_sha256,
+            "captured_replay_count": count,
+        }
         return path, opponents
 
     def expected_count(self, count, shard, shards):
@@ -166,7 +230,7 @@ class ReduceGauntletTests(unittest.TestCase):
             )
             self.assertEqual(
                 [r["family"] for r in report["by_family"]],
-                ["B", "A"],
+                ["recorded-submission:2", "recorded-submission:1"],
             )
 
     def test_123_recorded_fixtures_infer_246_cells(self):
@@ -594,6 +658,8 @@ class ReduceGauntletTests(unittest.TestCase):
                 str(b),
                 "--index",
                 str(index),
+                "--corpus",
+                str(Path(td) / "synthetic-corpus"),
                 "--output",
                 str(out),
             ])
@@ -602,6 +668,84 @@ class ReduceGauntletTests(unittest.TestCase):
             report = json.loads(out.read_text())
             self.assertEqual(report["expected_cells"], 2)
             self.assertFalse(report["panel_complete"])
+
+    def test_self_consistent_smaller_runtime_index_cannot_redefine_universe(self):
+        with tempfile.TemporaryDirectory() as td:
+            index, _rows = self.index(td, 2)
+            smaller = Path(td) / "smaller-index.json"
+            payload = json.loads(Path(index).read_text())
+            payload["opponents"] = payload["opponents"][:1]
+            payload["targets"] = 1
+            write_json(smaller, payload)
+            with self.assertRaisesRegex(
+                rg.ReductionError,
+                "target count|canonical universe",
+            ):
+                rg.reduce_roots([], [], index=smaller)
+
+    def test_semantic_substitute_index_rejects_even_with_spoofed_manifest_sha(self):
+        with tempfile.TemporaryDirectory() as td:
+            index, _rows = self.index(td, 2)
+            substitute = Path(td) / "substitute-index.json"
+            payload = json.loads(Path(index).read_text())
+            payload["opponents"][1]["seed"] += 1
+            write_json(substitute, payload)
+            with self.assertRaisesRegex(
+                rg.ReductionError,
+                "differs from canonical materialization",
+            ):
+                rg.reduce_roots([], [], index=substitute)
+
+    def test_equivalent_workspace_indexes_with_distinct_absolute_paths_assemble(self):
+        with tempfile.TemporaryDirectory() as td:
+            index_a, rows = self.index(td, 2)
+            index_b = Path(td) / "index-b.json"
+            payload = json.loads(Path(index_a).read_text())
+            for row in payload["opponents"]:
+                row["entry"] = str(
+                    (Path(td) / "other-workspace" / row["id"] / "main.py").absolute()
+                )
+            write_json(index_b, payload)
+            self.assertNotEqual(
+                hashlib.sha256(Path(index_a).read_bytes()).hexdigest(),
+                hashlib.sha256(index_b.read_bytes()).hexdigest(),
+            )
+            a0 = self.root(td, "v31", index_a, shard=0, shards=2)
+            a1 = self.root(td, "v31", index_b, shard=1, shards=2)
+            b0 = self.root(td, "v4", index_a, shard=0, shards=2)
+            b1 = self.root(td, "v4", index_b, shard=1, shards=2)
+            self.fill_root(a0, "v31", rows, 0, 2, score_bias=10)
+            self.fill_root(a1, "v31", rows, 1, 2, score_bias=10)
+            self.fill_root(b0, "v4", rows, 0, 2)
+            self.fill_root(b1, "v4", rows, 1, 2)
+            report = rg.reduce_roots(
+                [a0, a1],
+                [b0, b1],
+                index=[index_a, index_b],
+            )
+            self.assertTrue(report["panel_complete"])
+            authority = report["authority"]["panel_topology"]["index_authority"]
+            self.assertEqual(authority["runtime_index_count"], 2)
+            self.assertEqual(len(authority["runtime_indexes"]), 2)
+
+    def test_cross_version_shard_must_bind_same_raw_workspace_index(self):
+        with tempfile.TemporaryDirectory() as td:
+            index_a, rows = self.index(td, 1)
+            index_b = Path(td) / "index-b.json"
+            payload = json.loads(Path(index_a).read_text())
+            payload["opponents"][0]["entry"] = str(
+                (Path(td) / "other" / "opp000" / "main.py").absolute()
+            )
+            write_json(index_b, payload)
+            a = self.root(td, "v31", index_a)
+            b = self.root(td, "v4", index_b)
+            self.fill_root(a, "v31", rows, 0, 1)
+            self.fill_root(b, "v4", rows, 0, 1)
+            with self.assertRaisesRegex(
+                rg.ReductionError,
+                "different workspace indexes",
+            ):
+                rg.reduce_roots([a], [b], index=[index_a, index_b])
 
 
 if __name__ == "__main__":
