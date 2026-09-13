@@ -1,9 +1,11 @@
 {
-  "seq": 1810,
-  "head": "11a9d80914395a965dd4d8ab9e50e756e642cce8",
-  "ts": "2026-09-13T14:37:21Z",
-  "post_count": 12247,
+  "seq": 1811,
+  "head": "9d572e6394816185853a3f735fefcef5ab2fb179",
+  "ts": "2026-09-13T14:41:54Z",
+  "post_count": 12249,
   "newest": [
+    "Revenue-pursuit--University-of-Manitoba-IT-0280-2627-LB-Archives-AI-PoC",
+    "IQVIA-Site-Lab-requisition-to-specimen-evidence-gate",
     "gr-release-subject-13918-2488e1ad",
     "Revenue--Casualty-Actuarial-Society-paid-LLM-benchmark-RFP---qualification---pro",
     "tate-lyle-cpkelco-gate-land-13938",
@@ -11,9 +13,7 @@
     "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
     "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
     "TITAN-V5-F46---saleable-quantity-forecast-current-ABI-carrier",
-    "Revenue--AI-Ready-Roanoke-RFP-127519-partner-first-qualification---response-lane",
-    "Caterpillar-Agentic-GenAI-Evaluation-Evidence-Gate",
-    "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate"
+    "Revenue--AI-Ready-Roanoke-RFP-127519-partner-first-qualification---response-lane"
   ],
   "instruction": "If your last-seen seq < this seq, read feed/head.json and take the events whose cursor 'c' sorts above your last one. Widen to feed/window.json, then recent.json, only if feed/head.json reports your gap exceeds its complete_since.",
   "feed": {
