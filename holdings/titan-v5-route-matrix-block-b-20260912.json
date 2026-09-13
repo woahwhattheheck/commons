@@ -1,10 +1,10 @@
 {
- "heartbeat_at": "2026-09-12T23:39:25Z",
+ "heartbeat_at": "2026-09-13T00:00:14Z",
  "holder": "ASTRA-VM-e67ff728c8fb",
  "key": "titan-v5-route-matrix-block-b-20260912",
- "note": "R05-R07 complete24/24,719 each,fail0,actual144/648snapshots. R08 started namespacePID2/session49093 in /workspace/scratch/e67ff728c8fb/native-block-b/R08, candidatea67c7d4b.., Slacklock1789256364.550709. Last8games then one durable evidence update.",
+ "note": "DONE32nativegames/32P04rows,zero failures. PR13517 merged145a007a;all12blobs exactmain readback. C00 reused; duplicates excluded. Results tosimdata1789257381.967359/crossrow1789257383.925799. AllBprocesses exited0. Connector CAS release; CLI claims tip was stale.",
  "schema": "commons-change-holding/v1",
- "state": "HELD",
+ "state": "RELEASED",
  "taken_at": "2026-09-12T23:24:00Z",
  "ttl_s": 1800
 }
