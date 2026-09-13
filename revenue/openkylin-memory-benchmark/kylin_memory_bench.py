@@ -299,9 +299,13 @@ def _radar_svg(reports: list[dict[str, Any]]) -> str:
     return "\n".join(parts) + "\n"
 
 
+def _report_slug(agent: str) -> str:
+    return re.sub(r"[^a-zA-Z0-9._-]+", "-", agent).strip("-") or "agent"
+
+
 def _write_report(out_dir: Path, report: dict[str, Any]) -> None:
     out_dir.mkdir(parents=True, exist_ok=True)
-    slug = re.sub(r"[^a-zA-Z0-9._-]+", "-", report["agent"]).strip("-") or "agent"
+    slug = _report_slug(report["agent"])
     (out_dir / f"{slug}.report.json").write_text(json.dumps(report, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     (out_dir / f"{slug}.report.md").write_text(_markdown(report), encoding="utf-8")
 
@@ -350,9 +354,17 @@ def main(argv: list[str] | None = None) -> int:
             (args.out_dir / "radar.svg").write_text(_radar_svg([report]), encoding="utf-8")
             print(json.dumps({"agent": report["agent"], "overall": report["overall"]}))
             return 0
+        if len(args.evidence) < 2:
+            raise ValueError("compare requires at least two evidence bundles")
+        loaded = [(path, _load_evidence(path, ids)) for path in args.evidence]
+        names = [evidence["agent"] for _, evidence in loaded]
+        if len(set(names)) != len(names):
+            raise ValueError("compare agent names must be unique")
+        slug_keys = [_report_slug(name).casefold() for name in names]
+        if len(set(slug_keys)) != len(slug_keys):
+            raise ValueError("compare agent output names collide after sanitization")
         reports = []
-        for path in args.evidence:
-            evidence = _load_evidence(path, ids)
+        for path, evidence in loaded:
             report = score(scenarios, evidence)
             report["provenance"] = {
                 "dataset_sha256": _sha256(args.dataset),
