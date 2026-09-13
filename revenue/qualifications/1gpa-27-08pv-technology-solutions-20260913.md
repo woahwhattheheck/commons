@@ -85,7 +85,7 @@ Tier 1 establishes a strong lead and amendment signal. It does not replace the b
 - observability, execution receipts and bounded credential handling;
 - custom integration, prototype acceleration and implementation services.
 
-### Not established by technical capability alone
+### Not established by technical skill alone
 
 The following are **commercial qualification questions**, not coding tasks:
 
@@ -94,14 +94,14 @@ The following are **commercial qualification questions**, not coding tasks:
 3. Does it have the requested insurance coverage and financial capacity?
 4. Are any required certifications, reseller/OEM authorizations or professional credentials already held?
 5. Can it support public-sector contracting, invoicing, reporting, warranties and support SLAs at the required scale?
-6. Does 1GPA require an existing generally available commercial product/catalog rather than custom development capability?
+6. Does 1GPA require an existing generally available commercial product/catalog rather than custom development work?
 7. Is an active contract-marketing/sales program mandatory, and can the bidder resource it?
 
 Do not convert software sophistication into unsupported answers to these questions.
 
 ## Category strategy
 
-A full-line technology bid is likely a poor default for this organization because hardware, A/V and master-clock categories introduce OEM, inventory, logistics, warranty, installation and reseller obligations that are unrelated to the strongest capability base.
+A full-line technology bid is likely a poor default for this organization because hardware, A/V and master-clock categories introduce OEM, inventory, logistics, warranty, installation and reseller obligations that are unrelated to the strongest delivery base.
 
 If the official packet permits category-level or partial awards, investigate a narrow posture around:
 
@@ -146,7 +146,7 @@ If the packet requires a broad catalog, established reseller authorizations, lar
 
 ### PARTNER-FIRST if
 
-The technical AI/software capability is compelling but the prime bidder lacks required public-sector references, commercial catalog maturity, reseller status, insurance scale, nationwide support or contract-marketing capacity. In that case, qualify an established prime or channel partner and position Commons/Titan capability as an AI/agent/integration delivery component only after the solicitation's teaming/subcontracting rules are confirmed.
+The technical AI/software fit is strong but the prime bidder lacks required public-sector references, commercial catalog maturity, reseller status, insurance scale, nationwide support or contract-marketing capacity. In that case, qualify an established prime or channel partner and position Commons/Titan work as an AI/agent/integration delivery component only after the solicitation's teaming/subcontracting rules are confirmed.
 
 ### NO-BID if
 
@@ -160,7 +160,7 @@ A mandatory requirement cannot be truthfully satisfied by closing, including ent
 
 1. **1GPA-27-08PV-SOURCE-MANIFEST** — recover base RFP, Amendment #1, attachments, forms, pricing files, Q&A and current portal metadata; record canonical URLs, timestamps, byte sizes and SHA-256 hashes.
 2. **1GPA-27-08PV-MANDATORY-GATES** — extract exact legal/entity, reference, insurance, certification, security/privacy and commercial-history requirements.
-3. **1GPA-27-08PV-CATEGORY-MAP** — map only the eligible AI/software/SaaS/services categories to evidenced Commons/Titan capabilities and explicit gaps.
+3. **1GPA-27-08PV-CATEGORY-MAP** — map only the eligible AI/software/SaaS/services categories to evidenced Commons/Titan delivery and explicit gaps.
 4. **1GPA-27-08PV-PARTNER-GATE** — determine whether category, reseller, teaming or subcontracting rules make partner-first materially stronger than direct prime.
 5. **1GPA-27-08PV-COMMERCIAL-MODEL** — only after packet recovery, model actual fee/discount/reporting/support obligations and scenario revenue without treating cooperative usage as guaranteed spend.
 6. **1GPA-27-08PV-SUBMISSION-CALENDAR** — only after Amendment #1 is authoritative, bind the closing timestamp, owner reviews, forms and portal steps.
