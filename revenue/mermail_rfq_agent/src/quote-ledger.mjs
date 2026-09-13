@@ -89,12 +89,16 @@ export class RFQLedger {
   registerVendor({ vendorId, email, threadId, displayName = null, solicitedAt }) {
     const id = text(vendorId, 'vendorId');
     if (this.#vendors.has(id)) throw new RFQError('duplicate_vendor', `vendor ${id} already exists`);
+    const solicitationTime = isoInstant(solicitedAt, 'solicitedAt');
+    if (Date.parse(solicitationTime) < Date.parse(this.#round.createdAt)) {
+      throw new RFQError('solicitation_before_round', 'vendor solicitation cannot predate the RFQ round');
+    }
     const record = Object.freeze({
       vendorId: id,
       email: canonicalEmail(email),
       threadId: text(threadId, 'threadId'),
       displayName: nullableText(displayName, 'displayName'),
-      solicitedAt: isoInstant(solicitedAt, 'solicitedAt'),
+      solicitedAt: solicitationTime,
     });
     for (const existing of this.#vendors.values()) {
       if (existing.threadId === record.threadId) throw new RFQError('duplicate_thread', 'each vendor must have an isolated Mermail thread');
@@ -130,6 +134,9 @@ export class RFQLedger {
       receivedAt: isoInstant(input.receivedAt, 'receivedAt'),
       sourceEmailId: text(input.sourceEmailId, 'sourceEmailId'),
     });
+    if (Date.parse(quote.receivedAt) < Date.parse(vendor.solicitedAt)) {
+      throw new RFQError('quote_before_solicitation', 'quote evidence cannot predate the vendor solicitation');
+    }
     if (quote.unitPrice == null && quote.totalPrice == null) {
       throw new RFQError('missing_price', 'a quote must state unitPrice or totalPrice; never infer a price');
     }
@@ -156,10 +163,18 @@ export class RFQLedger {
   }
 
   comparison({ at }) {
-    const now = Date.parse(isoInstant(at, 'at'));
+    const comparedAt = isoInstant(at, 'at');
+    const now = Date.parse(comparedAt);
     const rows = [];
     for (const [vendorId, vendor] of this.#vendors.entries()) {
-      const quote = this.#quotes.get(vendorId).at(-1) ?? null;
+      const history = this.#quotes.get(vendorId);
+      let quote = null;
+      for (let index = history.length - 1; index >= 0; index -= 1) {
+        if (Date.parse(history[index].receivedAt) <= now) {
+          quote = history[index];
+          break;
+        }
+      }
       if (!quote) {
         rows.push({ vendorId, vendorEmail: vendor.email, status: 'no_quote', missingTerms: ['quote'] });
         continue;
@@ -189,6 +204,7 @@ export class RFQLedger {
         incoterm: quote.incoterm,
         taxIncluded: quote.taxIncluded,
         warranty: quote.warranty,
+        receivedAt: quote.receivedAt,
         sourceEmailId: quote.sourceEmailId,
         status: expired ? 'expired' : quantityConflict ? 'quantity_mismatch' : 'active',
         missingTerms,
@@ -206,7 +222,7 @@ export class RFQLedger {
     return {
       rfqId: this.#round.rfqId,
       requirementsDigest: this.#round.requirementsDigest,
-      comparedAt: new Date(now).toISOString(),
+      comparedAt,
       rows,
       ranking,
       rankingBasis: rankable ? 'explicit_unit_price_same_currency_only' : 'not_rankable_without_same_currency_explicit_unit_prices',
