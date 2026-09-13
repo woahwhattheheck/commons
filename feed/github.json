@@ -1,9 +1,9 @@
 {
   "counts": {
     "open_issues": 44,
-    "open_pull_requests": 36,
-    "runs_in_progress": 17,
-    "runs_queued": 849
+    "open_pull_requests": 37,
+    "runs_in_progress": 15,
+    "runs_queued": 857
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -69,13 +69,24 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
+      "branch": "z-kilncipher/oregon-oda-crm-qualification",
+      "created_at": "2026-09-13T14:14:26Z",
+      "draft": false,
+      "head_sha": "48883a576b5e16bcd15c3baf0e49c3fea43ddb5b",
+      "number": 13907,
+      "title": "Revenue: qualify Oregon ODA CRM as partner lane",
+      "updated_at": "2026-09-13T14:14:26Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
       "branch": "z-minkowski-harbor/banner-saas-parity-13894",
       "created_at": "2026-09-13T14:13:16Z",
       "draft": false,
-      "head_sha": "a4ae52d5d798c7ff3115993b1326b64069755de4",
+      "head_sha": "577015414bc94d300d00c8407eddf60dd49453a4",
       "number": 13906,
       "title": "Revenue: ship Banner SaaS student-record parity gate",
-      "updated_at": "2026-09-13T14:13:16Z"
+      "updated_at": "2026-09-13T14:13:59Z"
     },
     {
       "author": "woahwhattheheck",
@@ -83,10 +94,10 @@
       "branch": "zlf-w3h7/grandrapids-preflight-authority-20260913",
       "created_at": "2026-09-13T14:13:01Z",
       "draft": false,
-      "head_sha": "1b02d0a77811ed4913f25f717701727d91a7ecd6",
+      "head_sha": "fc7380d38d6ec41ef7a778e62de585a3ae708e02",
       "number": 13905,
       "title": "revenue: bind Grand Rapids preflight to independent current authority",
-      "updated_at": "2026-09-13T14:13:01Z"
+      "updated_at": "2026-09-13T14:14:43Z"
     },
     {
       "author": "woahwhattheheck",
@@ -164,17 +175,6 @@
       "number": 13865,
       "title": "feat: embed exact Git source capsules in context dispatch packets",
       "updated_at": "2026-09-13T13:55:53Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zmg-n4v7/f45-productive-harvest-collect-20260913",
-      "created_at": "2026-09-13T13:25:49Z",
-      "draft": false,
-      "head_sha": "ae949f0a623b1eb8af94fe76427cb93169f55d91",
-      "number": 13863,
-      "title": "titan: add F45 productive HARVEST/COLLECT protection",
-      "updated_at": "2026-09-13T13:25:49Z"
     }
   ],
   "open_heads": {
@@ -212,12 +212,13 @@
     "13901": "796abbc7a9ee433f2b679232be55fd17b6baa1cc",
     "13902": "39f4038554555e363bd62a5f445adb9d86444e65",
     "13904": "0da09ccaed24a10268e254c7eb1675ecc26b2587",
-    "13905": "1b02d0a77811ed4913f25f717701727d91a7ecd6",
-    "13906": "a4ae52d5d798c7ff3115993b1326b64069755de4"
+    "13905": "fc7380d38d6ec41ef7a778e62de585a3ae708e02",
+    "13906": "577015414bc94d300d00c8407eddf60dd49453a4",
+    "13907": "48883a576b5e16bcd15c3baf0e49c3fea43ddb5b"
   },
-  "pulls_listed": 36,
+  "pulls_listed": 37,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 49.9,
+  "queue_depth_per_runner": 57.1,
   "recently_closed": [
     {
       "author": "woahwhattheheck",
@@ -387,6 +388,6 @@
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-13T14:13:47Z",
+  "unchanged_since": "2026-09-13T14:14:54Z",
   "undatable_pulls": []
 }
