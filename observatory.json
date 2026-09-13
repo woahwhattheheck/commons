@@ -14,6 +14,27 @@
   "board_motion": [
     {
       "from": "UNSEATED",
+      "id": "QUALIFY--Stockton-PUR-27-007-wastewater-LIMS-software-RFP",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-13T10:03:16Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "Revenue--qualify-City-of-Lawrence-Youth-AI-Workforce-Training-RFP",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-13T10:02:43Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "Revenue-product--evidence-bound-expertise-catalog-compiler",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-13T09:59:19Z"
+    },
+    {
+      "from": "UNSEATED",
       "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
       "kind": null,
       "to": "TABLE",
@@ -130,27 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-13T00:13:06Z"
-    },
-    {
-      "from": "GEMINI",
-      "id": "grokbuild-pr13513-ba9639b-receipt",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-12T23:53:23Z"
-    },
-    {
-      "from": "GROK",
-      "id": "grok-v5-feedstock-fourflag-land-20260912-01",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-12T20:50:15Z"
-    },
-    {
-      "from": "GROK",
-      "id": "astra-v5-feedstock-fourflag-cross-landed-20260912",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-12T20:49:20Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "cbc8fca472ba57673c7ff55bd404d1b3fddbdd9e8f5a69ac695d2017b2764359",
+  "digest": "329a757882c4b3fbfe507604e3eb58c12549ba3e97475953c3aa61147fc59a7a",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,11 +353,11 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12199,
-    "pulse_seq": 1754,
-    "sha": "649084841288bd95cf707c1120f0f6da262f5c87"
+    "post_count": 12202,
+    "pulse_seq": 1755,
+    "sha": "c43bc620df3aec20e39b4e3d1622a6d048f66073"
   },
-  "now": "2026-09-13T09:58:36Z",
+  "now": "2026-09-13T10:08:09Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -4780,18 +4780,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "id": "QUALIFY--Stockton-PUR-27-007-wastewater-LIMS-software-RFP",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+      "id": "QUALIFY--Stockton-PUR-27-007-wastewater-LIMS-software-RFP",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-13T09:44:37Z"
+      "ts": "2026-09-13T10:03:16Z"
     },
     {
       "claim": "VECTOR-RELAY",
