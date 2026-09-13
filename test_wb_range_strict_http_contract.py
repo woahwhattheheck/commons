@@ -51,8 +51,7 @@ class StrictHttpRangeContractTests(unittest.TestCase):
 
     def _read_with(self, reader: wb_range.RangeReader, response: _FakeResponse,
                    *, offset: int = 2, length: int = 4) -> bytes:
-        with mock.patch.object(wb_range.urllib.request, "urlopen",
-                               return_value=response):
+        with mock.patch.object(reader, "_open_response", return_value=response):
             return reader.read(offset, length)
 
     def test_valid_206_exact_interval_is_cached(self):
@@ -115,7 +114,17 @@ class StrictHttpRangeContractTests(unittest.TestCase):
                     )
                 self._assert_cache_empty(reader)
 
-    def test_https_to_http_redirect_is_rejected_even_for_localhost(self):
+    def test_https_downgrade_is_rejected_before_redirect_follow(self):
+        request = wb_range.urllib.request.Request(
+            "https://example.test/model.bin")
+        handler = wb_range._StrictRedirectHandler()
+        with self.assertRaisesRegex(wb_range.WbRangeError,
+                                    "before redirect follow"):
+            handler.redirect_request(
+                request, None, 302, "Found", {},
+                "http://127.0.0.1:8765/model.bin")
+
+    def test_final_url_defense_in_depth_rejects_https_downgrade(self):
         with tempfile.TemporaryDirectory() as tmp:
             reader = self._reader(Path(tmp))
             with self.assertRaisesRegex(wb_range.WbRangeError,
@@ -149,13 +158,12 @@ class StrictHttpRangeContractTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp:
             reader = self._reader(Path(tmp))
             good = _FakeResponse(body=b"a", content_range="bytes 0-0/10")
-            with mock.patch.object(wb_range.urllib.request, "urlopen",
-                                   return_value=good):
+            with mock.patch.object(reader, "_open_response", return_value=good):
                 self.assertEqual(10, reader.remote_size())
 
             bad_status = _FakeResponse(body=b"a", status=200,
                                        content_range="bytes 0-0/10")
-            with mock.patch.object(wb_range.urllib.request, "urlopen",
+            with mock.patch.object(reader, "_open_response",
                                    return_value=bad_status):
                 with self.assertRaisesRegex(wb_range.WbRangeError,
                                             "HTTP status 200"):
@@ -163,7 +171,7 @@ class StrictHttpRangeContractTests(unittest.TestCase):
 
             wrong_interval = _FakeResponse(body=b"a",
                                            content_range="bytes 1-1/10")
-            with mock.patch.object(wb_range.urllib.request, "urlopen",
+            with mock.patch.object(reader, "_open_response",
                                    return_value=wrong_interval):
                 with self.assertRaisesRegex(wb_range.WbRangeError,
                                             "Content-Range"):
@@ -171,14 +179,14 @@ class StrictHttpRangeContractTests(unittest.TestCase):
 
             encoded = _FakeResponse(body=b"a", content_range="bytes 0-0/10",
                                     content_encoding="gzip")
-            with mock.patch.object(wb_range.urllib.request, "urlopen",
+            with mock.patch.object(reader, "_open_response",
                                    return_value=encoded):
                 with self.assertRaisesRegex(wb_range.WbRangeError,
                                             "Content-Encoding"):
                     reader.remote_size()
 
             overlong = _FakeResponse(body=b"ab", content_range="bytes 0-0/10")
-            with mock.patch.object(wb_range.urllib.request, "urlopen",
+            with mock.patch.object(reader, "_open_response",
                                    return_value=overlong):
                 with self.assertRaisesRegex(wb_range.WbRangeError,
                                             "range body"):

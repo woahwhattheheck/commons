@@ -19,7 +19,7 @@ except ImportError:  # direct ``python host/wb_range.py`` execution
     import _wb_range_core as _core
 
 
-# Re-export the existing WB-RANGE API before replacing RangeReader.  Functions
+# Re-export the existing WB-RANGE API before replacing RangeReader. Functions
 # defined in the core resolve ``RangeReader`` from the core module at call time;
 # rebinding ``_core.RangeReader`` below therefore hardens every existing path.
 for _name, _value in vars(_core).items():
@@ -47,6 +47,20 @@ def _validate_transport_url(url: str) -> None:
     )
 
 
+class _StrictRedirectHandler(_core.urllib.request.HTTPRedirectHandler):
+    """Reject transport downgrades before urllib follows a redirect."""
+
+    def redirect_request(self, req, fp, code, msg, headers, newurl):
+        source_scheme = _urlsplit(req.full_url).scheme.lower()
+        target_scheme = _urlsplit(newurl).scheme.lower()
+        if source_scheme == "https" and target_scheme != "https":
+            raise WbRangeError(
+                "HTTPS downgrade rejected before redirect follow: %s" % newurl
+            )
+        _validate_transport_url(newurl)
+        return super().redirect_request(req, fp, code, msg, headers, newurl)
+
+
 class RangeReader(_core.RangeReader):
     """HTTP Range reader that fails closed on ambiguous transport responses."""
 
@@ -63,6 +77,11 @@ class RangeReader(_core.RangeReader):
         self.manifest_path = self.cache_dir / "cache_manifest.json"
         self.manifest = self._load_manifest()
 
+    @staticmethod
+    def _open_response(request, timeout: int):
+        opener = _core.urllib.request.build_opener(_StrictRedirectHandler())
+        return opener.open(request, timeout=timeout)
+
     def _validate_range_response(self, response, offset: int, length: int) -> int:
         status = getattr(response, "status", None)
         if status is None:
@@ -78,6 +97,8 @@ class RangeReader(_core.RangeReader):
         source_scheme = _urlsplit(self.url).scheme.lower()
         final_scheme = _urlsplit(final_url).scheme.lower()
         if source_scheme == "https" and final_scheme != "https":
+            # Defense in depth for custom handlers/test doubles. The normal
+            # urllib path rejects this before a downgraded request is followed.
             raise WbRangeError(
                 "HTTPS downgrade rejected: final response URL is %s" % final_url
             )
@@ -133,7 +154,7 @@ class RangeReader(_core.RangeReader):
             },
         )
         try:
-            with _core.urllib.request.urlopen(request, timeout=120) as response:
+            with self._open_response(request, timeout=120) as response:
                 self._validate_range_response(response, offset, length)
                 data = response.read(length + 1)
         except _core.urllib.error.HTTPError as exc:
@@ -155,7 +176,7 @@ class RangeReader(_core.RangeReader):
             },
         )
         try:
-            with _core.urllib.request.urlopen(request, timeout=60) as response:
+            with self._open_response(request, timeout=60) as response:
                 total = self._validate_range_response(response, offset, length)
                 data = response.read(length + 1)
         except _core.urllib.error.HTTPError as exc:
