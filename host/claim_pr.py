@@ -1,15 +1,9 @@
 #!/usr/bin/env python3
 """Claim one pull-request work unit through Commons' atomic claim ledger.
 
-This is a thin PR-specific adapter over ``host.coordination_state``. It keeps
-review/merge drains on the canonical ``pr-N`` key so concurrent seats cannot
-accidentally avoid collision detection by inventing different marker names for
-the same pull request.
-
-The legacy single-key writer owns one fast-forward attempt at a time here.
-Runtime retries refresh their clock before re-reading the claims branch, so a
-winner that lands after an earlier attempt cannot look "from the future" and be
-mistaken for an expired holding.
+PR review/merge drains use one canonical ``pr-N`` key. This adapter owns the
+single-key retry loop so a stale writer cannot overwrite a later winner after a
+non-fast-forward race or because of clock skew between workers.
 """
 
 from __future__ import annotations
@@ -31,6 +25,29 @@ def pr_key(pr: int) -> str:
     return cs.change_key(pr=pr)
 
 
+def _heartbeat(record):
+    if not isinstance(record, dict):
+        return None
+    return cs._parse_ts(record.get("heartbeat_at") or record.get("taken_at"))
+
+
+def _pr_holding_live(record, observed_now) -> bool:
+    """Fail closed on a well-formed future heartbeat.
+
+    ``coordination_state._holding_live`` requires a non-negative age. For a
+    distributed PR claim, a newer heartbeat is evidence of a winner or clock
+    skew, never evidence that the claim expired. Treat it as live so an older
+    observer cannot steal the PR without an actual expiry proof.
+    """
+    if cs._holding_live(record, observed_now):
+        return True
+    if not isinstance(record, dict) or record.get("state") != "HELD":
+        return False
+    beat = _heartbeat(record)
+    ttl = record.get("ttl_s")
+    return beat is not None and type(ttl) is int and 1 <= ttl <= 7200 and beat > observed_now
+
+
 def write_pr_holding(
     git: cs.Git,
     pr: int,
@@ -44,12 +61,12 @@ def write_pr_holding(
     push: bool = True,
     attempts: int = 3,
 ) -> dict:
-    """Take, renew, or release the canonical ``pr-N`` holding.
+    """Take, renew, or release the canonical ``pr-N`` holding safely.
 
-    Each outer iteration delegates exactly one fast-forward attempt to the
-    legacy writer. In production (``now is None``) a fresh clock value is
-    captured before every retry; explicitly injected test time stays fixed.
-    Only the legacy writer's precise NFF exhaustion result is retryable.
+    Each retry re-reads ``state/claims`` and, unless a deterministic ``now`` was
+    injected by a caller/test, observes a fresh clock *after* that read. A
+    non-fast-forward therefore cannot reuse a time that predates the winner it
+    just discovered. Future well-formed heartbeats are fail-closed as live.
     """
     if action not in {"take", "renew", "release"}:
         raise ValueError("action must be take, renew, or release")
@@ -60,33 +77,125 @@ def write_pr_holding(
     if type(attempts) is not int or not 1 <= attempts <= 10:
         raise ValueError("attempts must be between 1 and 10")
 
-    key = pr_key(pr)
     holder = holder.strip()
-    last = None
+    key = pr_key(pr)
+    path = cs._holding_path(key)
+
     for _ in range(attempts):
-        attempt_now = now if now is not None else cs._now()
-        result = cs.holding_write(
-            git,
-            key,
-            holder,
-            action,
-            ttl_s=ttl_s,
-            note=note,
-            now=attempt_now,
-            remote=remote,
-            push=push,
-            attempts=1,
+        tip = cs._remote_tip(git, cs.HOLDINGS_BRANCH, remote)
+        if tip:
+            git.fetch([tip], remote)
+        holdings = cs._read_holdings(git, tip)
+        current = holdings.get(path)
+        observed_now = now if now is not None else cs._now()
+        live = _pr_holding_live(current, observed_now)
+
+        if action == "take" and live and current.get("holder") != holder:
+            return {
+                "pr": pr,
+                "action": action,
+                "ok": False,
+                "key": key,
+                "held_by": current.get("holder"),
+                "heartbeat_at": current.get("heartbeat_at"),
+                "ttl_s": current.get("ttl_s"),
+                "tip": tip,
+            }
+        if action in ("renew", "release") and (
+            not current or current.get("holder") != holder
+        ):
+            return {
+                "pr": pr,
+                "action": action,
+                "ok": False,
+                "key": key,
+                "held_by": (current or {}).get("holder"),
+                "reason": "not the current holder",
+                "tip": tip,
+            }
+
+        # A same-holder clock that moved backwards must not regress the durable
+        # heartbeat. Keep the later observed winner time while still allowing a
+        # TTL/note/state update.
+        beat = _heartbeat(current)
+        write_now = (
+            beat
+            if live
+            and current
+            and current.get("holder") == holder
+            and beat is not None
+            and beat > observed_now
+            else observed_now
         )
-        decorated = {"pr": pr, "action": action, **result}
-        if result.get("ok"):
-            return decorated
-        if result.get("reason") != "branch kept moving; retry":
-            return decorated
-        last = decorated
-    return last or {
-        "ok": False,
+        stamp = cs._iso(write_now)
+        record = dict(current or {})
+        record.update(
+            {
+                "schema": cs.HOLDING_SCHEMA,
+                "key": key,
+                "holder": holder,
+                "heartbeat_at": stamp,
+                "ttl_s": ttl_s,
+            }
+        )
+        if action == "take" and (
+            not live or (current or {}).get("holder") != holder
+        ):
+            record["taken_at"] = stamp
+            if current and current.get("holder") and current.get("holder") != holder:
+                record["previous_holder"] = current.get("holder")
+        record["state"] = "RELEASED" if action == "release" else "HELD"
+        if note:
+            record["note"] = note[:300]
+        holdings[path] = record
+
+        commit = cs._holdings_commit(
+            git, tip, holdings, "%s %s by %s" % (action, key, holder), write_now
+        )
+        if not push:
+            return {
+                "pr": pr,
+                "action": action,
+                "ok": True,
+                "key": key,
+                "commit": commit,
+                "pushed": False,
+                "record": record,
+                "push_line": "git -C %s push %s %s:refs/heads/%s"
+                % (git.root, remote, commit, cs.HOLDINGS_BRANCH),
+            }
+
+        done = git.run(
+            "push",
+            remote,
+            "%s:refs/heads/%s" % (commit, cs.HOLDINGS_BRANCH),
+            check=False,
+        )
+        if done.returncode == 0:
+            return {
+                "pr": pr,
+                "action": action,
+                "ok": True,
+                "key": key,
+                "commit": commit,
+                "pushed": True,
+                "record": record,
+            }
+        if "non-fast-forward" not in done.stderr and "fetch first" not in done.stderr:
+            return {
+                "pr": pr,
+                "action": action,
+                "ok": False,
+                "key": key,
+                "reason": done.stderr.strip()[-300:],
+            }
+        # Another writer won. Loop from its tip and observe a fresh production
+        # time before deciding whether that new record is live.
+
+    return {
         "pr": pr,
         "action": action,
+        "ok": False,
         "key": key,
         "reason": "branch kept moving; retry",
     }
