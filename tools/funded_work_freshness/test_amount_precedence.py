@@ -179,6 +179,36 @@ class AmountPrecedenceTests(unittest.TestCase):
         self.assertEqual(receipt["checks"]["authoritative_amount_state"], "ambiguous")
         self.assertEqual(receipt["reasons"], ["canonical_reward_amount_ambiguous"])
 
+    def test_from_to_transition_with_third_amount_fails_closed(self):
+        receipt = self._receipt(
+            [
+                authority_comment(
+                    "Reward changed from $500 to $200, with $50 allocated for CI costs.",
+                    "2026-09-13T04:00:00Z",
+                )
+            ],
+            amount="50",
+        )
+        self.assertEqual(receipt["freshness_status"], "ambiguous")
+        self.assertEqual(receipt["checks"]["authoritative_amount_state"], "ambiguous")
+        self.assertIsNone(receipt["checks"]["canonical_current_reward_amount"])
+        self.assertEqual(receipt["reasons"], ["canonical_reward_amount_ambiguous"])
+
+    def test_now_transition_with_third_amount_fails_closed(self):
+        receipt = self._receipt(
+            [
+                authority_comment(
+                    "Reward was $500, now $200, with $50 allocated for CI costs.",
+                    "2026-09-13T04:00:00Z",
+                )
+            ],
+            amount="50",
+        )
+        self.assertEqual(receipt["freshness_status"], "ambiguous")
+        self.assertEqual(receipt["checks"]["authoritative_amount_state"], "ambiguous")
+        self.assertIsNone(receipt["checks"]["canonical_current_reward_amount"])
+        self.assertEqual(receipt["reasons"], ["canonical_reward_amount_ambiguous"])
+
     def test_multiple_current_amounts_without_transition_fail_closed(self):
         receipt = self._receipt(
             [
