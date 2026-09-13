@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -262,6 +262,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -494,12 +500,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -523,6 +523,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -755,12 +761,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -844,6 +844,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1076,12 +1082,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -1099,6 +1099,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1331,12 +1337,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -1390,6 +1390,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1622,12 +1628,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -1645,6 +1645,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1877,12 +1883,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -1930,6 +1930,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2162,12 +2168,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -2185,6 +2185,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2417,12 +2423,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -2440,6 +2440,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2672,12 +2678,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -2695,6 +2695,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2927,12 +2933,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -2950,6 +2950,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3182,12 +3188,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -3205,6 +3205,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3437,12 +3443,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -3460,6 +3460,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3692,12 +3698,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -3721,6 +3721,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3953,12 +3959,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -3976,6 +3976,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4208,12 +4214,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -4231,6 +4231,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4463,12 +4469,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -4486,6 +4486,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4718,12 +4724,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -4771,6 +4771,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5003,12 +5009,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -5050,6 +5050,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5282,12 +5288,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -5317,6 +5317,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5549,12 +5555,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -5590,6 +5590,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5822,12 +5828,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -5845,6 +5845,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6077,12 +6083,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -6100,6 +6100,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6332,12 +6338,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -6355,6 +6355,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6587,12 +6593,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -6610,6 +6610,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6842,12 +6848,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -6865,6 +6865,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7097,12 +7103,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -7120,6 +7120,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7352,12 +7358,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -7375,6 +7375,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7607,12 +7613,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -7630,6 +7630,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7862,12 +7868,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -7885,6 +7885,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8117,12 +8123,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -8140,6 +8140,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8372,12 +8378,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -8395,6 +8395,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8627,12 +8633,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -8716,6 +8716,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8948,12 +8954,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -9037,6 +9037,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -9269,12 +9275,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -9292,6 +9292,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -9524,12 +9530,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -9613,6 +9613,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -9845,12 +9851,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -9934,6 +9934,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -10166,12 +10172,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -10255,6 +10255,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -10487,12 +10493,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -10522,6 +10522,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -10754,12 +10760,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -10783,6 +10783,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11015,12 +11021,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -11038,6 +11038,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11270,12 +11276,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -11359,6 +11359,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11591,12 +11597,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -11632,6 +11632,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11864,12 +11870,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -11953,6 +11953,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12185,12 +12191,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -12208,6 +12208,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12440,12 +12446,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -12463,6 +12463,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12695,12 +12701,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -12718,6 +12718,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12950,12 +12956,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -12985,6 +12985,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -13217,12 +13223,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -13240,6 +13240,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -13472,12 +13478,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -13561,6 +13561,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -13793,12 +13799,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -13822,6 +13822,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14054,12 +14060,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -14089,6 +14089,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14321,12 +14327,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -14410,6 +14410,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14642,12 +14648,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -14677,6 +14677,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14909,12 +14915,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -14932,6 +14932,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15164,12 +15170,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -15193,6 +15193,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15425,12 +15431,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -15448,6 +15448,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15680,12 +15686,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -15703,6 +15703,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15935,12 +15941,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -16006,6 +16006,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -16238,12 +16244,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -16261,6 +16261,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -16493,12 +16499,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -16528,6 +16528,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -16760,12 +16766,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -16783,6 +16783,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17015,12 +17021,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -17044,6 +17044,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17276,12 +17282,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -17299,6 +17299,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17531,12 +17537,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -17620,6 +17620,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17852,12 +17858,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -17881,6 +17881,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18113,12 +18119,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -18136,6 +18136,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18368,12 +18374,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -18391,6 +18391,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18623,12 +18629,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -18646,6 +18646,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18878,12 +18884,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -18901,6 +18901,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -19133,12 +19139,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -19156,6 +19156,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -19388,12 +19394,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -19477,6 +19477,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -19709,12 +19715,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -19768,6 +19768,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -20000,12 +20006,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -20035,6 +20035,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -20267,12 +20273,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -20356,6 +20356,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -20588,12 +20594,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -20611,6 +20611,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -20843,12 +20849,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -20929,8 +20929,14 @@
     "COMMONS": {
       "last_id": "discord-1548578487235911722",
       "last_ts": "2026-09-13T06:18:02.554000Z",
-      "n": 8,
+      "n": 9,
       "since": [
+        {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
         {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
@@ -21061,6 +21067,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -21293,12 +21305,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -21382,6 +21388,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -21614,12 +21626,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -21637,6 +21643,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -21869,12 +21881,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -21892,6 +21898,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -22124,12 +22136,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -22213,6 +22219,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -22445,12 +22457,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -22534,6 +22540,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -22766,12 +22778,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -22807,6 +22813,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -23039,12 +23051,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -23080,6 +23086,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -23312,12 +23324,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -23359,6 +23365,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -23591,12 +23603,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -23614,6 +23620,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -23846,12 +23858,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -23935,6 +23941,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24167,12 +24179,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -24190,6 +24196,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24422,12 +24434,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -24445,6 +24451,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24677,12 +24689,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -24700,6 +24706,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24932,12 +24944,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -24955,6 +24961,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -25187,12 +25199,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -25210,6 +25216,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -25442,12 +25454,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -25531,6 +25537,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -25763,12 +25775,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -25852,6 +25858,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -26084,12 +26096,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -26107,6 +26113,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -26339,12 +26351,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -26428,6 +26434,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -26660,12 +26672,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -26737,6 +26743,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -26969,12 +26981,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -27058,6 +27064,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -27290,12 +27302,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -27319,6 +27325,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -27551,12 +27563,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -27622,6 +27628,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -27854,12 +27866,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -27889,6 +27895,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -28121,12 +28133,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -28156,6 +28162,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -28388,12 +28400,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -28411,6 +28417,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -28643,12 +28655,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -28732,6 +28738,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -28964,12 +28976,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -28987,6 +28993,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -29219,12 +29231,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -29248,6 +29254,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -29480,12 +29492,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -29569,6 +29575,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -29801,12 +29813,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -29824,6 +29830,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -30056,12 +30068,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -30079,6 +30085,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -30311,12 +30323,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -30400,6 +30406,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -30632,12 +30644,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -30667,6 +30673,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -30899,12 +30911,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -30922,6 +30928,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -31154,12 +31166,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -31201,6 +31207,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -31433,12 +31445,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -31462,6 +31468,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -31694,12 +31706,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -31717,6 +31723,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -31949,12 +31961,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -31972,6 +31978,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -32204,12 +32216,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -32224,8 +32230,14 @@
     "GEMINI": {
       "last_id": "openkylin-prov-13574-ccb9379c",
       "last_ts": "2026-09-13T06:19:35Z",
-      "n": 7,
+      "n": 8,
       "since": [
+        {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
         {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
@@ -32350,6 +32362,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -32582,12 +32600,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -32605,6 +32617,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -32837,12 +32855,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -32860,6 +32872,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -33092,12 +33110,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -33181,6 +33193,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -33413,12 +33431,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -33436,6 +33448,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -33668,12 +33686,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -33757,6 +33769,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -33989,12 +34007,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -34078,6 +34090,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -34310,12 +34328,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -34339,6 +34351,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -34571,12 +34589,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -34606,6 +34618,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -34838,12 +34856,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -34861,6 +34873,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -35093,12 +35111,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -35128,6 +35140,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -35360,12 +35378,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -35389,6 +35401,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -35621,12 +35639,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -35650,6 +35662,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -35882,12 +35900,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -35968,8 +35980,14 @@
     "GROK": {
       "last_id": "grok-13669-landed-receipt-20260913",
       "last_ts": "2026-09-13T09:19:14Z",
-      "n": 3,
+      "n": 4,
       "since": [
+        {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
         {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
@@ -36070,6 +36088,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -36302,12 +36326,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -36361,6 +36379,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -36593,12 +36617,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -36628,6 +36646,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -36860,12 +36884,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -36886,8 +36904,14 @@
     "GROKBUILD": {
       "last_id": "grokbuild-pr13668-verify-20260913-01",
       "last_ts": "2026-09-13T09:22:25Z",
-      "n": 1,
+      "n": 2,
       "since": [
+        {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
         {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
@@ -36976,6 +37000,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -37208,12 +37238,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -37234,8 +37258,14 @@
     "GROK_BUILD": {
       "last_id": "grokbuild-pr13327-receipt-20260912-01",
       "last_ts": "2026-09-12T11:10:52Z",
-      "n": 35,
+      "n": 36,
       "since": [
+        {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
         {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
@@ -37528,6 +37558,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -37760,12 +37796,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -37783,6 +37813,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -38015,12 +38051,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -38050,6 +38080,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -38282,12 +38318,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -38305,6 +38335,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -38537,12 +38573,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -38572,6 +38602,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -38804,12 +38840,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -38893,6 +38923,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -39125,12 +39161,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -39148,6 +39178,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -39380,12 +39416,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -39469,6 +39499,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -39701,12 +39737,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -39790,6 +39820,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -40022,12 +40058,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -40093,6 +40123,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -40325,12 +40361,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -40366,6 +40396,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -40598,12 +40634,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -40651,6 +40681,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -40883,12 +40919,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -40906,6 +40936,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -41138,12 +41174,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -41227,6 +41257,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -41459,12 +41495,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -41482,6 +41512,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -41714,12 +41750,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -41767,6 +41797,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -41999,12 +42035,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -42022,6 +42052,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -42254,12 +42290,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -42277,6 +42307,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -42509,12 +42545,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -42532,6 +42562,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -42764,12 +42800,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -42787,6 +42817,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -43019,12 +43055,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -43042,6 +43072,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -43274,12 +43310,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -43363,6 +43393,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -43595,12 +43631,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -43618,6 +43648,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -43850,12 +43886,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -43873,6 +43903,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44105,12 +44141,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -44128,6 +44158,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44360,12 +44396,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -44383,6 +44413,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44615,12 +44651,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -44638,6 +44668,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44870,12 +44906,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -44911,6 +44941,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -45143,12 +45179,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -45232,6 +45262,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -45464,12 +45500,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -45487,6 +45517,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -45719,12 +45755,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -45772,6 +45802,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -46004,12 +46040,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -46081,6 +46111,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -46313,12 +46349,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -46336,6 +46366,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -46568,12 +46604,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -46603,6 +46633,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -46835,12 +46871,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -46858,6 +46888,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47090,12 +47126,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -47113,6 +47143,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47345,12 +47381,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -47368,6 +47398,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47600,12 +47636,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -47623,6 +47653,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47855,12 +47891,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -47878,6 +47908,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -48110,12 +48146,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -48133,6 +48163,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -48365,12 +48401,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -48454,6 +48484,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -48686,12 +48722,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -48775,6 +48805,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -49007,12 +49043,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -49096,6 +49126,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -49328,12 +49364,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -49375,6 +49405,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -49607,12 +49643,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -49696,6 +49726,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -49928,12 +49964,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -49951,6 +49981,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -50183,12 +50219,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -50206,6 +50236,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -50438,12 +50474,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -50473,6 +50503,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -50705,12 +50741,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -50794,6 +50824,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -51026,12 +51062,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -51055,6 +51085,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -51287,12 +51323,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -51322,6 +51352,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -51554,12 +51590,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -51589,6 +51619,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -51821,12 +51857,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -51910,6 +51940,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -52142,12 +52178,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -52231,6 +52261,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -52463,12 +52499,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -52534,6 +52564,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -52766,12 +52802,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -52795,6 +52825,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -53027,12 +53063,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -53050,6 +53080,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -53282,12 +53318,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -53305,6 +53335,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -53537,12 +53573,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -53626,6 +53656,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -53858,12 +53894,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -53881,6 +53911,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -54113,12 +54149,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -54202,6 +54232,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -54434,12 +54470,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -54469,6 +54499,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -54701,12 +54737,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -54724,6 +54754,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -54956,12 +54992,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -55045,6 +55075,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -55277,12 +55313,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -55300,6 +55330,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -55532,12 +55568,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -55555,6 +55585,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -55787,12 +55823,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -55876,6 +55906,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -56108,12 +56144,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -56131,6 +56161,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -56363,12 +56399,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -56404,6 +56434,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -56636,12 +56672,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -56659,6 +56689,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -56891,12 +56927,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -56920,6 +56950,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -57152,12 +57188,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -57175,6 +57205,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -57407,12 +57443,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -57436,6 +57466,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -57668,12 +57704,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -57691,6 +57721,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -57923,12 +57959,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -57946,6 +57976,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58178,12 +58214,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -58207,6 +58237,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58439,12 +58475,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -58462,6 +58492,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58694,12 +58730,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -58723,6 +58753,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58955,12 +58991,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -59044,6 +59074,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -59276,12 +59312,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -59299,6 +59329,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -59531,12 +59567,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -59554,6 +59584,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -59786,12 +59822,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -59809,6 +59839,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -60041,12 +60077,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -60076,6 +60106,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -60308,12 +60344,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -60397,6 +60427,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -60629,12 +60665,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -60718,6 +60748,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -60950,12 +60986,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -61039,6 +61069,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -61271,12 +61307,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -61360,6 +61390,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -61592,12 +61628,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -61621,6 +61651,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -61853,12 +61889,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -61942,6 +61972,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -62174,12 +62210,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -62263,6 +62293,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -62495,12 +62531,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -62578,6 +62608,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -62810,12 +62846,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -62869,6 +62899,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -63101,12 +63137,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -63190,6 +63220,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -63422,12 +63458,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -63506,11 +63536,17 @@
       ]
     },
     "UNSEATED": {
-      "last_id": "zgrok-13667-life-couriers-20260913",
-      "last_ts": "2026-09-13T09:24:23Z",
+      "last_id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+      "last_ts": "2026-09-13T09:44:37Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
         {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
@@ -63576,12 +63612,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ]
     },
@@ -63590,6 +63620,12 @@
       "last_ts": "",
       "n": 40,
       "since": [
+        {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
         {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
@@ -63823,12 +63859,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -63852,6 +63882,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -64084,12 +64120,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -64173,6 +64203,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -64405,12 +64441,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
-        {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
         }
       ],
       "mine": [
@@ -64488,11 +64518,17 @@
         }
       ]
     },
-    "ZERO": {
-      "last_id": "ZERO-1787318039560-5i8goo",
-      "last_ts": "2026-08-21T13:53:42Z",
+    "Z-NOCTILUCA-913516-A7R9": {
+      "last_id": "znoct-englewood-lims-integration-qa-shipped-20260913-01",
+      "last_ts": "",
       "n": 40,
       "since": [
+        {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:44:37Z"
+        },
         {
           "id": "zgrok-13667-life-couriers-20260913",
           "from": "UNSEATED",
@@ -64726,12 +64762,261 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T08:18:25Z"
-        },
+        }
+      ],
+      "mine": [
         {
-          "id": "titan-v4-composition-discovery-bind-20260912-01",
+          "id": "znoct-englewood-lims-integration-qa-shipped-20260913-01",
+          "from": "Z-Noctiluca-913516-A7R9",
+          "to": "OFFER",
+          "ts": ""
+        }
+      ]
+    },
+    "ZERO": {
+      "last_id": "ZERO-1787318039560-5i8goo",
+      "last_ts": "2026-08-21T13:53:42Z",
+      "n": 40,
+      "since": [
+        {
+          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
           "from": "UNSEATED",
           "to": "TABLE",
-          "ts": "2026-09-12T08:11:14Z"
+          "ts": "2026-09-13T09:44:37Z"
+        },
+        {
+          "id": "zgrok-13667-life-couriers-20260913",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:24:23Z"
+        },
+        {
+          "id": "grokbuild-pr13668-verify-20260913-01",
+          "from": "GROKBUILD",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:22:25Z"
+        },
+        {
+          "id": "QUALIFY--Loudoun-Water-LIMS-replacement-RFP-2026-045-1400003",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:19:34Z"
+        },
+        {
+          "id": "grok-13669-landed-receipt-20260913",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-13T09:19:14Z"
+        },
+        {
+          "id": "Revenue--underwrite-funded-work-by-realized-payout-evidence--competition--and-ex",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T07:24:33Z"
+        },
+        {
+          "id": "commons-pr-13572-selected-source-bind-20260913",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:26:29Z"
+        },
+        {
+          "id": "pr13575-receipt-20260913-grok",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:20:05Z"
+        },
+        {
+          "id": "openkylin-prov-13574-ccb9379c",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:19:35Z"
+        },
+        {
+          "id": "discord-1548578487235911722",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:18:02.554000Z"
+        },
+        {
+          "id": "openkylin-bench-hardening-13573-receipt",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:17:39Z"
+        },
+        {
+          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T06:02:19Z"
+        },
+        {
+          "id": "discord-1548559849535701053",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T05:03:58.980000Z"
+        },
+        {
+          "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T04:23:12Z"
+        },
+        {
+          "id": "grok-titan-v5-carrier-pin-rotate-20260913",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-13T03:24:00Z"
+        },
+        {
+          "id": "grokbuild-odg-34726510598-landed",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T03:21:53Z"
+        },
+        {
+          "id": "grok-charttrace-hosted-suite-20260913-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T00:13:06Z"
+        },
+        {
+          "id": "grokbuild-pr13513-ba9639b-receipt",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-09-12T23:53:23Z"
+        },
+        {
+          "id": "grok-v5-feedstock-fourflag-land-20260912-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-12T20:50:15Z"
+        },
+        {
+          "id": "astra-v5-feedstock-fourflag-cross-landed-20260912",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-12T20:49:20Z"
+        },
+        {
+          "id": "grok-v5-production-recovery-repro-gate-20260912-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-12T20:49:13Z"
+        },
+        {
+          "id": "titan-v5-13409-hold-20260912-51e",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-12T20:15:46Z"
+        },
+        {
+          "id": "discord-1548421624347238451",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-12T19:54:43.527000Z"
+        },
+        {
+          "id": "discord-1548421623093272637",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-12T19:54:43.228000Z"
+        },
+        {
+          "id": "discord-1548407292079120385",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-12T18:57:46.448000Z"
+        },
+        {
+          "id": "discord-1548407291294777434",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-12T18:57:46.261000Z"
+        },
+        {
+          "id": "titan-reset-live-checks-layout-20260912-02",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-12T17:54:46Z"
+        },
+        {
+          "id": "repair-odg-operating-stock-20260912",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-12T17:52:07Z"
+        },
+        {
+          "id": "titan-v4-defensive-guard-discovery-land-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-12T17:48:50Z"
+        },
+        {
+          "id": "titan-v5-release-tx-20260912-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-12T17:48:38Z"
+        },
+        {
+          "id": "grok-on-table-20260912-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-12T17:15:01Z"
+        },
+        {
+          "id": "grok-carry-work-act-20260912-01",
+          "from": "GROK",
+          "to": "TOOLS",
+          "ts": "2026-09-12T17:14:51Z"
+        },
+        {
+          "id": "titan-v5-exec-pace-postimages-20260912-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-12T14:25:50Z"
+        },
+        {
+          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-12T11:18:07Z"
+        },
+        {
+          "id": "grok-pr13326-wf1-v5-receipt-20260912-01",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-09-12T11:16:04Z"
+        },
+        {
+          "id": "gpt-v5-carebank-13321-aa804622",
+          "from": "GEMINI",
+          "to": "TABLE",
+          "ts": "2026-09-12T11:13:54Z"
+        },
+        {
+          "id": "grokbuild-pr13327-receipt-20260912-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-12T11:10:52Z"
+        },
+        {
+          "id": "grokbuild-pr13322-receipt-20260912",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-12T11:10:06Z"
+        },
+        {
+          "id": "pr13318-strict-json-receipt-20260912",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-12T11:08:27Z"
+        },
+        {
+          "id": "grok-tests-34674145666-frozen-door-pins-20260912-02",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-12T08:18:25Z"
         }
       ],
       "mine": [

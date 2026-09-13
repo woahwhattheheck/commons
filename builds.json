@@ -350,7 +350,7 @@
   }
  ],
  "pr_note": "Open GitHub PRs from public unauthenticated /pulls. PR-road work sits beside ntfy-road posts. Descriptive only. Not a merge gate. A PR is not main.",
- "n_open_prs": 13,
+ "n_open_prs": 18,
  "open_prs": [
   {
    "number": 13471,
@@ -359,7 +359,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/13471",
    "base_freshness": {
     "base_sha": "1f947f809df669fbc40dd095e8bf4d806157b448",
-    "main_sha": "fcea630e86548acc336380424f613cd971e5e660",
+    "main_sha": "29c2f99ba22cce122199a3987c155d14700dd3c8",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -375,7 +375,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/13400",
    "base_freshness": {
     "base_sha": "145a007a64e0cade1424db27e7be55f308edde1d",
-    "main_sha": "fcea630e86548acc336380424f613cd971e5e660",
+    "main_sha": "29c2f99ba22cce122199a3987c155d14700dd3c8",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -391,7 +391,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/13533",
    "base_freshness": {
     "base_sha": "bfddf33e924ee684cf76964b770eafbc51f89ebb",
-    "main_sha": "fcea630e86548acc336380424f613cd971e5e660",
+    "main_sha": "29c2f99ba22cce122199a3987c155d14700dd3c8",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -407,23 +407,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/13587",
    "base_freshness": {
     "base_sha": "82457b4fbc99a64a5fa10203814ab6c3729c9de3",
-    "main_sha": "fcea630e86548acc336380424f613cd971e5e660",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 13595,
-   "author": "woahwhattheheck",
-   "title": "TITAN V5: reject symlinked champion evidence inputs",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/13595",
-   "base_freshness": {
-    "base_sha": "c93907c2117d9e4ad2abc55b92ef2aaa4864d72a",
-    "main_sha": "fcea630e86548acc336380424f613cd971e5e660",
+    "main_sha": "29c2f99ba22cce122199a3987c155d14700dd3c8",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -439,7 +423,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/13568",
    "base_freshness": {
     "base_sha": "ec453b791a7fed490d9e3e5dec125e92ab978603",
-    "main_sha": "fcea630e86548acc336380424f613cd971e5e660",
+    "main_sha": "29c2f99ba22cce122199a3987c155d14700dd3c8",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -455,7 +439,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/13415",
    "base_freshness": {
     "base_sha": "6ce2f6e256c6eeca7e14d217327bb2c6d9a6787b",
-    "main_sha": "fcea630e86548acc336380424f613cd971e5e660",
+    "main_sha": "29c2f99ba22cce122199a3987c155d14700dd3c8",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -471,7 +455,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/13553",
    "base_freshness": {
     "base_sha": "99887c69d461b60c6f5f860184f573623ddb6556",
-    "main_sha": "fcea630e86548acc336380424f613cd971e5e660",
+    "main_sha": "29c2f99ba22cce122199a3987c155d14700dd3c8",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -487,7 +471,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/13585",
    "base_freshness": {
     "base_sha": "afc17b9fae7cfa3c4cc508a156b2656ce5903136",
-    "main_sha": "fcea630e86548acc336380424f613cd971e5e660",
+    "main_sha": "29c2f99ba22cce122199a3987c155d14700dd3c8",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -503,39 +487,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/13654",
    "base_freshness": {
     "base_sha": "4a350f4791e56aae75a33b70c13595763e790ed2",
-    "main_sha": "fcea630e86548acc336380424f613cd971e5e660",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 13657,
-   "author": "woahwhattheheck",
-   "title": "revenue: add commercial acceptance evidence bridge",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/13657",
-   "base_freshness": {
-    "base_sha": "2551c4e07f16f92acc5f83f2126213ae4977a539",
-    "main_sha": "fcea630e86548acc336380424f613cd971e5e660",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 13677,
-   "author": "woahwhattheheck",
-   "title": "revenue: add evidence-only agentic GxP lineage gate",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/13677",
-   "base_freshness": {
-    "base_sha": "5080da9ec1e02169c0c8580f0f128d4af92c4014",
-    "main_sha": "fcea630e86548acc336380424f613cd971e5e660",
+    "main_sha": "29c2f99ba22cce122199a3987c155d14700dd3c8",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -551,7 +503,135 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/13676",
    "base_freshness": {
     "base_sha": "5080da9ec1e02169c0c8580f0f128d4af92c4014",
-    "main_sha": "fcea630e86548acc336380424f613cd971e5e660",
+    "main_sha": "29c2f99ba22cce122199a3987c155d14700dd3c8",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 13683,
+   "author": "woahwhattheheck",
+   "title": "revenue: add OHSU digital pathology qualification evidence gate",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/13683",
+   "base_freshness": {
+    "base_sha": "0d8b723377c2d626ae63207d1409830e6c5220ed",
+    "main_sha": "29c2f99ba22cce122199a3987c155d14700dd3c8",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 13595,
+   "author": "woahwhattheheck",
+   "title": "TITAN V5: reject symlinked champion evidence inputs",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/13595",
+   "base_freshness": {
+    "base_sha": "c93907c2117d9e4ad2abc55b92ef2aaa4864d72a",
+    "main_sha": "29c2f99ba22cce122199a3987c155d14700dd3c8",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 13657,
+   "author": "woahwhattheheck",
+   "title": "revenue: add commercial acceptance evidence bridge",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/13657",
+   "base_freshness": {
+    "base_sha": "2551c4e07f16f92acc5f83f2126213ae4977a539",
+    "main_sha": "29c2f99ba22cce122199a3987c155d14700dd3c8",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 13692,
+   "author": "woahwhattheheck",
+   "title": "TITAN V5: exact-head reject symlinked champion evidence inputs",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/13692",
+   "base_freshness": {
+    "base_sha": "dc2868f8c6ae7520b53c36934eef7ff84e3873c7",
+    "main_sha": "29c2f99ba22cce122199a3987c155d14700dd3c8",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 13695,
+   "author": "woahwhattheheck",
+   "title": "competition: add Wuhu LeRobot trajectory QC engine",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/13695",
+   "base_freshness": {
+    "base_sha": "c0df613c6df75a8ab967e2b193f2e0cedeaa9911",
+    "main_sha": "29c2f99ba22cce122199a3987c155d14700dd3c8",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 13699,
+   "author": "woahwhattheheck",
+   "title": "fix(revenue): preserve JSON types in reconciliation proof",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/13699",
+   "base_freshness": {
+    "base_sha": "e47283122bdbfefcb3468e4c8c3cb964f7c55c00",
+    "main_sha": "29c2f99ba22cce122199a3987c155d14700dd3c8",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 13701,
+   "author": "woahwhattheheck",
+   "title": "revenue: add CAS actuarial LLM benchmark reproducibility core",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/13701",
+   "base_freshness": {
+    "base_sha": "aaa67ddc9c4f4cfd4d8d68f9a77de5b3b1cb8107",
+    "main_sha": "29c2f99ba22cce122199a3987c155d14700dd3c8",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 13702,
+   "author": "woahwhattheheck",
+   "title": "fix(outbound): bind lease receipts to live provider authority",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/13702",
+   "base_freshness": {
+    "base_sha": "aaa67ddc9c4f4cfd4d8d68f9a77de5b3b1cb8107",
+    "main_sha": "29c2f99ba22cce122199a3987c155d14700dd3c8",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"

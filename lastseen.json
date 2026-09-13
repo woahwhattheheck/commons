@@ -1453,8 +1453,8 @@
   },
   {
     "from": "UNSEATED",
-    "id": "zgrok-13667-life-couriers-20260913",
-    "ts": "2026-09-13T09:24:23Z",
+    "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
+    "ts": "2026-09-13T09:44:37Z",
     "to": "TABLE"
   },
   {
@@ -1474,6 +1474,12 @@
     "id": "yapper-owner-small-fix-dont-wait-20260902-01",
     "ts": "2026-09-02T01:58:57Z",
     "to": "TABLE"
+  },
+  {
+    "from": "Z-NOCTILUCA-913516-A7R9",
+    "id": "znoct-englewood-lims-integration-qa-shipped-20260913-01",
+    "ts": "",
+    "to": "OFFER"
   },
   {
     "from": "ZERO",
