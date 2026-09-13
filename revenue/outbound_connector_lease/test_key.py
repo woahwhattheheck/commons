@@ -4,7 +4,14 @@ import hashlib
 import json
 import unittest
 
-from revenue.outbound_connector_lease.key import BRANCH_PREFIX, LeaseKeyError, _parse_json, compile_document, compile_key
+from revenue.outbound_connector_lease.key import (
+    BRANCH_PREFIX,
+    SUPPORTED_REPLY_PROVIDERS,
+    LeaseKeyError,
+    _parse_json,
+    compile_document,
+    compile_key,
+)
 
 
 def cold():
@@ -63,6 +70,40 @@ class LeaseKeyTests(unittest.TestCase):
         self.assertEqual(a, b)
         with self.assertRaises(LeaseKeyError):
             compile_key("example.com", {**reply(), "recipient": "other@example.com"})
+
+    def test_known_gmail_reply_hash_remains_backward_compatible(self):
+        result = compile_key("example.com", reply("gmail", "abc123"))
+        canonical = json.dumps(
+            {
+                "schema": "outbound-connector-lease/v1",
+                "buyer_scope": "example.com",
+                "opportunity": {"kind": "reply", "provider": "gmail", "event_id": "abc123"},
+            }, sort_keys=True, separators=(",", ":")
+        ).encode("ascii")
+        expected = hashlib.sha256(canonical).hexdigest()
+        self.assertEqual(expected, result["seam_sha256"])
+        self.assertEqual(BRANCH_PREFIX + expected, result["branch"])
+
+    def test_canonical_reply_provider_registry_is_closed(self):
+        for provider in sorted(SUPPORTED_REPLY_PROVIDERS):
+            with self.subTest(provider=provider):
+                result = compile_key("example.com", reply(provider, "event-1"))
+                self.assertEqual(provider, result["opportunity"]["provider"])
+        for alias in (
+            "email",
+            "gmail-api",
+            "googlemail",
+            "google-mail",
+            "github-api",
+            "github.com",
+            "slack-api",
+            "webform",
+            "unknown",
+        ):
+            with self.subTest(alias=alias), self.assertRaisesRegex(
+                LeaseKeyError, "canonical providers"
+            ):
+                compile_key("example.com", reply(alias, "event-1"))
 
     def test_url_and_email_are_rejected_as_domains(self):
         for value in ("https://example.com", "person@example.com", "example.com/path", "localhost"):
