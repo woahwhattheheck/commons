@@ -196,7 +196,11 @@ def _evaluate(
             guard.parse_json_bytes(raw_bytes[1], "evidence byte custody"),
             guard.parse_json_bytes(raw_bytes[2], "buyer scope byte custody"),
         )
-        if parsed_sources != (intent_raw, evidence_raw, scope_raw):
+        evaluated_sources = (intent_raw, evidence_raw, scope_raw)
+        if any(
+            guard.canonical_bytes(parsed) != guard.canonical_bytes(evaluated)
+            for parsed, evaluated in zip(parsed_sources, evaluated_sources)
+        ):
             raise ScopeError("raw-byte custody does not match evaluated source objects")
         byte_custody = {
             "mode": "exact_consumed_bytes",
