@@ -46,22 +46,28 @@ class StoreTests(unittest.TestCase):
         self.assertNotIn("host_key", self.store.listing()[0])
         with self.store.connect() as db:
             stored = db.execute("SELECT host_hash FROM events WHERE id=?", (self.event,)).fetchone()[0]
+            dump = "\n".join(db.iterdump())
         self.assertNotEqual(stored, self.host_key)
         self.assertEqual(len(stored), 64)
+        self.assertNotIn(self.host_key, dump)
         self.assertEqual(self.store.verify_host(self.event, self.host_key), {"host": True, "legacy": False})
-        self.error(403, lambda: self.store.verify_host(self.event, "wrong"))
-        self.error(403, lambda: self.store.verify_host(self.event, None))
+        for hostile in ("wrong", None, "x" * 257, "\ud800"):
+            with self.subTest(hostile=repr(hostile)):
+                self.error(403, lambda hostile=hostile: self.store.verify_host(self.event, hostile))
 
-    def test_legacy_database_migrates_without_locking_existing_events(self):
-        legacy_path = Path(self.temp.name) / "legacy.sqlite3"
-        with sqlite3.connect(legacy_path) as db:
+    def make_legacy_database(self, path, identifier="legacy"):
+        with sqlite3.connect(path) as db:
             db.execute("""CREATE TABLE events (
                 id TEXT PRIMARY KEY, title TEXT NOT NULL, room TEXT NOT NULL,
                 opens REAL NOT NULL, ends REAL NOT NULL, closed INTEGER NOT NULL DEFAULT 0,
                 questions TEXT NOT NULL, created REAL NOT NULL)""")
             db.execute("INSERT INTO events VALUES(?,?,?,?,?,?,?,?)",
-                       ("legacy", "Old round", "Old room", 1000, 2000, 0,
+                       (identifier, "Old round", "Old room", 1000, 2000, 0,
                         json.dumps(payload()["questions"]), 900))
+
+    def test_legacy_database_migrates_without_locking_existing_events(self):
+        legacy_path = Path(self.temp.name) / "legacy.sqlite3"
+        self.make_legacy_database(legacy_path)
         reopened = Store(legacy_path, lambda: self.now)
         with reopened.connect() as db:
             columns = {row["name"] for row in db.execute("PRAGMA table_info(events)")}
@@ -70,6 +76,18 @@ class StoreTests(unittest.TestCase):
         self.assertIsNone(row["host_hash"])
         self.assertEqual(reopened.verify_host("legacy", None), {"host": True, "legacy": True})
         self.assertEqual(reopened.finish("legacy"), {"finished": True})
+
+    def test_parallel_legacy_schema_migration_converges(self):
+        legacy_path = Path(self.temp.name) / "legacy-race.sqlite3"
+        self.make_legacy_database(legacy_path)
+        def open_store(_):
+            return Store(legacy_path, lambda: self.now).state("legacy")["host_protected"]
+        with concurrent.futures.ThreadPoolExecutor(max_workers=4) as pool:
+            self.assertEqual(list(pool.map(open_store, range(4))), [False] * 4)
+        reopened = Store(legacy_path, lambda: self.now)
+        with reopened.connect() as db:
+            names = [row["name"] for row in db.execute("PRAGMA table_info(events)")]
+        self.assertEqual(names.count("host_hash"), 1)
 
     def test_schedule_hides_questions_and_prevents_early_answers(self):
         self.now = 999
@@ -241,10 +259,12 @@ class HTTPTests(unittest.TestCase):
         self.assertEqual(self.request(base+'/finish', {'host_key': event['host_key']})[0], 200)
         self.assertEqual(self.request(base)[1]['leaderboard'][0]['points'], 100)
 
-    def test_http_finish_and_host_verify_reject_missing_or_wrong_capability(self):
+    def test_http_finish_and_host_verify_reject_missing_wrong_and_hostile_capabilities(self):
         _, event = self.request('/api/events', payload())
         base = '/api/events/'+event['id']
-        self.assertEqual(self.request(base+'/host/verify', {'host_key': 'wrong'})[0], 403)
+        for hostile in ('wrong', None, 'x' * 257, '\ud800'):
+            with self.subTest(hostile=repr(hostile)):
+                self.assertEqual(self.request(base+'/host/verify', {'host_key': hostile})[0], 403)
         self.assertEqual(self.request(base+'/finish', {})[0], 403)
         self.assertEqual(self.request(base+'/finish', {'host_key': 'wrong'})[0], 403)
         self.assertEqual(self.request(base)[1]['phase'], 'open')
