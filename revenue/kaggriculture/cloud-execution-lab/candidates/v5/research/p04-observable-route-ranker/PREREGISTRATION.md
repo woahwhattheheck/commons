@@ -12,18 +12,35 @@ This is the **pre-declared consumer** of the merged #13478 route-matrix reducer.
 - discovery-universe source: #titan-kaggriculture `C0C0Z8AHGP2` message TS `1789253666.394169`, published before any R00–R12 terminal outcomes
 - selection boundary: step 144; existing forced terminal plan2 at step 648 remains unchanged.
 
-`p04_preregistered_selector.py --print-preregistration` emits both the exact frozen fitting contract and the pre-outcome experiment-universe commitment. Import fails if either commitment object drifts from its recorded hash.
+`p04_preregistered_selector.py --print-preregistration` emits the exact frozen fitting contract, the pre-outcome experiment-universe commitment, and the accepted evidence boundary. The rule SPEC and universe commitments remain unchanged by later evidence-custody hardening.
+
+## Evidence authority: committed raw rows, never caller-authored summaries
+
+Independent review found that exact universe keys alone did not authenticate the outcome payload: a caller could preserve all eight legal `(seed, opponent, seat)` keys while forging feature values and plan deltas in a hand-authored reduced report. That interface is now explicitly fail-closed.
+
+The public fitting path accepts only canonical P04 JSONL row files that are already immutable in repository history:
+
+1. every evidence path must live under `revenue/kaggriculture/cloud-execution-lab/candidates/v5/selective-carrot/route-matrix-native/` and end in `.jsonl`;
+2. the caller supplies a full 40-hex evidence commit;
+3. the fitter resolves that exact commit and requires it to be an ancestor of canonical `origin/main` (or local `main` when no remote-main ref exists);
+4. JSONL bytes are loaded with `git show <commit>:<path>`, never from the mutable working tree;
+5. each committed file's byte SHA256 and row count are recorded in the output evidence receipt; and
+6. the merged #13478 `reduce_matrix()` is called internally on those raw rows before the frozen selector sees features or deltas.
+
+The old `fit_selector(reduced_report)` entry point now always raises. A forged eight-group summary therefore has no accepted authority path. Working-tree replacement after commit cannot change fitting bytes, and a side-branch-only evidence commit cannot become authority merely by being supplied as an argument.
+
+This does not claim that Git history manufactures native truth. Native executors still own capture and publication quality. The selector's trust boundary is narrower and auditable: **only evidence that reviewers have already allowed onto canonical main can be fitted, and the selector recomputes the reducer output from those exact committed row bytes.** This also means the currently RED/open #13486 private-snapshot wrapper is not silently treated as authority; already-merged evidence packages such as #13517 are valid only to the extent their exact P04 JSONL bytes are on canonical main.
 
 ## Pre-outcome universe binding
 
-Independent review found that the first draft could accept a cherry-picked subset because its coverage floor was derived from whatever groups a caller supplied. The repair does **not** change the rule grammar, scoring thresholds, tie-breaking, or promotion boundary. Instead it binds discovery input to the route board that already existed before outcomes:
+Independent review also found that the first draft could accept a cherry-picked subset because its coverage floor was derived from whatever groups a caller supplied. The repair does **not** change the rule grammar, scoring thresholds, tie-breaking, or promotion boundary. Instead it binds discovery input to the route board that already existed before outcomes:
 
 - seeds `1209131101` and `1209131102`;
 - opponents `apex_v7` and `arlene_v14`;
 - seats `0` and `1`;
 - exact Cartesian product = eight `(seed, opponent, seat)` groups.
 
-`validate_discovery_report()` now requires exact set equality with those eight keys after duplicate rejection. Missing groups, extra groups, substituted seeds/opponents/seats, or a two-positive-cell cherry-pick fail closed before any rule is enumerated or scored. This closes the subset-selection attack while preserving the original preregistered rule-spec SHA.
+After #13478 reduction, `validate_discovery_report()` requires exact set equality with those eight keys after duplicate rejection. Missing groups, extra groups, substituted seeds/opponents/seats, or a two-positive-cell cherry-pick fail closed before any rule is enumerated or scored.
 
 ## Rule class
 
@@ -50,7 +67,7 @@ This is deliberately stricter than picking the best mean route from the discover
 
 ## Held-out / convergence contract
 
-Any nomination remains `policy_ready=false`, `composer_ready=false`, and default-OFF. A separate native owner must run **fresh held-out** cells using the exact nominated rule bytes/spec hash/universe hash. The rule, feature set, thresholds, tie-breaking, and fallback may not be changed after discovery results are observed; changing them creates a new experiment, not a reinterpretation of this one.
+Any nomination remains `policy_ready=false`, `composer_ready=false`, and default-OFF. A separate native owner must run **fresh held-out** cells using the exact nominated rule bytes/spec hash/universe hash plus the committed-evidence receipt. The rule, feature set, thresholds, tie-breaking, and fallback may not be changed after discovery results are observed; changing them creates a new experiment, not a reinterpretation of this one.
 
 Only a held-out winner may be converted into a staging component against the single production-v3/V5 line. No CURRENT/default/release/Kaggle mutation is authorized here.
 
@@ -65,4 +82,4 @@ python -O -B -m unittest -v test_p04_preregistered_selector.py
 python -B p04_preregistered_selector.py --print-preregistration
 ```
 
-Author-side reconstructed exact-API gate after both review hardenings: 16/16 normal, 16/16 optimized, plus `py_compile` clean. Hostiles include the two-positive-group subset attack, an unexpected extra-group substitution, and a clean positive candidate compared against a failed incumbent control. Independent exact-head repo execution remains the final source gate before merge.
+The focused suite now contains 21 methods. In addition to the earlier universe and incumbent-control hostiles, it covers forged reduced-summary rejection, exact committed-main row fitting, working-tree tamper irrelevance, non-main commit rejection, and evidence-namespace confinement. Exact-head repo execution remains the final source gate before merge.
