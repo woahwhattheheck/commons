@@ -2,8 +2,8 @@
   "counts": {
     "open_issues": 68,
     "open_pull_requests": 42,
-    "runs_in_progress": 17,
-    "runs_queued": 453
+    "runs_in_progress": 10,
+    "runs_queued": 70
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -130,7 +130,7 @@
       "head_sha": "1980d5a6cd6ef5188832c6b48de7ee4a29501d85",
       "number": 14054,
       "title": "revenue: land $2,500 hotel room-turn evidence pilot fulfillment",
-      "updated_at": "2026-09-13T15:37:10Z"
+      "updated_at": "2026-09-13T19:36:09Z"
     },
     {
       "author": "woahwhattheheck",
@@ -223,176 +223,176 @@
   },
   "pulls_listed": 42,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 26.6,
+  "queue_depth_per_runner": 7.0,
   "recently_closed": [
     {
-      "author": "AURELIAN-AUTO",
+      "author": "woahwhattheheck",
       "base": "main",
-      "branch": "aurelian/fix-issue-13856",
-      "closed_at": "2026-09-13T16:11:07Z",
-      "head_sha": "6603cfcd38e155abc0d5f30ffa0cca6be4e5af35",
+      "branch": "zlm-g7p2/arc3-sage-effects-20260913",
+      "closed_at": "2026-09-13T17:08:01Z",
+      "head_sha": "1afbd096f83873d11e2c7c0b1e924780786aff04",
+      "merged_at": "2026-09-13T17:08:01Z",
+      "number": 14093,
+      "state": "MERGED",
+      "title": "ARC3 SAGE: add causal visual-effect factorizer"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zak-v5n9/sales-meeting-calendar-prep-consumer",
+      "closed_at": "2026-09-13T17:05:43Z",
+      "head_sha": "a3760de2a226a2e7748b38ab67af9a0e9e9b46dd",
+      "merged_at": "2026-09-13T17:05:43Z",
+      "number": 14080,
+      "state": "MERGED",
+      "title": "Integrate live Calendar free/busy into sales meeting readiness"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zfa-v5k2/quantiphy-main-20260913",
+      "closed_at": "2026-09-13T16:53:33Z",
+      "head_sha": "abc4221105cf5163246ac98e88d0d9b522d61151",
+      "merged_at": "2026-09-13T16:53:33Z",
+      "number": 14090,
+      "state": "MERGED",
+      "title": "QuantiPhy Main: hybrid inference, calibration & evidence harness"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zlm-g7p2/tenderproof-paid-intake-20260913",
+      "closed_at": "2026-09-13T16:51:59Z",
+      "head_sha": "59c9992be28f72691b4db77e84bd9f3168db4bc6",
+      "merged_at": "2026-09-13T16:51:59Z",
+      "number": 14088,
+      "state": "MERGED",
+      "title": "revenue: gate TenderProof delivery on accepted funded scope"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zmf-s3p8/gosim-agentic-cosmos-current-20260913",
+      "closed_at": "2026-09-13T16:49:51Z",
+      "head_sha": "ecc88086ffd2c0c16aa4132aeef660b4b93a0efd",
+      "merged_at": "2026-09-13T16:49:51Z",
+      "number": 14087,
+      "state": "MERGED",
+      "title": "feat: add causal Agentic Cosmos 900s observer foundation"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zkd-p3f7/arc3-sage-20260913",
+      "closed_at": "2026-09-13T16:48:38Z",
+      "head_sha": "4fd7e1a6b64791948217d7e7d0d5fd88185f891a",
+      "merged_at": "2026-09-13T16:48:38Z",
+      "number": 14085,
+      "state": "MERGED",
+      "title": "ARC3 SAGE: ship action-efficient world-model and skill engine"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "znh-k8m3/paid-pilot-rollout-desk-20260913",
+      "closed_at": "2026-09-13T16:44:59Z",
+      "head_sha": "5fa3e247d51b2de49bba947e5ef7db54e6f60f15",
+      "merged_at": "2026-09-13T16:44:59Z",
+      "number": 14084,
+      "state": "MERGED",
+      "title": "Revenue: add paid-pilot to rollout conversion desk"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zeta-sol/ohsu-erp-provider-truth-12500-20260913",
+      "closed_at": "2026-09-13T16:43:26Z",
+      "head_sha": "c24d2a201653511c83861a008f9f5a4222df3c4a",
+      "merged_at": "2026-09-13T16:43:26Z",
+      "number": 14083,
+      "state": "MERGED",
+      "title": "OHSU ERP: align workshare to provider-truth $12.5k offer"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zdr-p6x4/gatewayhacks-static-demo-20260913",
+      "closed_at": "2026-09-13T16:42:38Z",
+      "head_sha": "3bd7b9df59a70ae66e7b2d1f9b6997c76aa47a80",
+      "merged_at": "2026-09-13T16:42:38Z",
+      "number": 14082,
+      "state": "MERGED",
+      "title": "GatewayHacks: publish Civic Action Ledger live demo"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zeta-sol/ohsu-erp-rfp-2027-0005-20260913",
+      "closed_at": "2026-09-13T16:37:16Z",
+      "head_sha": "49756ad6861c0ae3649fafdf35a17351efff9ac3",
+      "merged_at": "2026-09-13T16:37:16Z",
+      "number": 14077,
+      "state": "MERGED",
+      "title": "OHSU ERP RFP: add qualification and paid-workshare carrier"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "ztq-x3n7/prime-teaming-targeter-20260913",
+      "closed_at": "2026-09-13T16:35:41Z",
+      "head_sha": "4455808d83e128aac79ba9e0575b4671de7ecc10",
+      "merged_at": "2026-09-13T16:35:41Z",
+      "number": 14074,
+      "state": "MERGED",
+      "title": "Add evidence-bound prime / teaming targeter"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zdr-p6x4/gatewayhacks-civic-ledger-20260913",
+      "closed_at": "2026-09-13T16:34:29Z",
+      "head_sha": "118e44f9cf8e20a9b83ef213539560487271c328",
+      "merged_at": "2026-09-13T16:34:29Z",
+      "number": 14075,
+      "state": "MERGED",
+      "title": "GatewayHacks: ship evidence-bound Civic Action Ledger"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zlm-q3r7/opencv-gaugeproof-20260913",
+      "closed_at": "2026-09-13T16:34:25Z",
+      "head_sha": "cbf8232e9e1277c6b9cde9f9b19bdcd7b6797dc7",
+      "merged_at": "2026-09-13T16:34:25Z",
+      "number": 14073,
+      "state": "MERGED",
+      "title": "Build GaugeProof evidence-first OpenCV inspection carrier"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zts-x9p4/firetv-spoilershield-main-rejoin-20260913",
+      "closed_at": "2026-09-13T16:33:18Z",
+      "head_sha": "249669315e05386014ee92c80a653f1273c45965",
       "merged_at": null,
-      "number": 14047,
+      "number": 14071,
       "state": "CLOSED",
-      "title": "funded-work: resolve authoritative reward amount precedence (#13856)"
+      "title": "feat: add Fire TV SpoilerShield competition carrier"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "zlck8v4/uiowa-authority-currentness",
-      "closed_at": "2026-09-13T15:40:20Z",
-      "head_sha": "3e36cfb91a13e5c2275904c282a5be073b6eae7f",
-      "merged_at": "2026-09-13T15:40:20Z",
-      "number": 14048,
+      "branch": "zmh/nci-ods-reuseledger-20260913",
+      "closed_at": "2026-09-13T16:32:49Z",
+      "head_sha": "680ccd32a624806617ccbc226c6cb3a29f9e938e",
+      "merged_at": "2026-09-13T16:32:49Z",
+      "number": 14069,
       "state": "MERGED",
-      "title": "fix(uiowa): bind evidence authority and currentness"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zchq-q7n4/route-quarantine-20260913",
-      "closed_at": "2026-09-13T15:38:29Z",
-      "head_sha": "9751d884a8780ee5ccdf83f66112b3bf9caf65af",
-      "merged_at": "2026-09-13T15:38:29Z",
-      "number": 14052,
-      "state": "MERGED",
-      "title": "feat(outbound): quarantine failed delivery routes before resend"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zet-v7q4/gosim-pareto-task-generation-20260913",
-      "closed_at": "2026-09-13T15:37:10Z",
-      "head_sha": "cec85bd487b43e1dd2175983837771480d2e30b0",
-      "merged_at": "2026-09-13T15:37:10Z",
-      "number": 14050,
-      "state": "MERGED",
-      "title": "GOSIM: fence Pareto comparisons by exact task generation"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-furnace/gosim-agentic-factory-harness-20260913",
-      "closed_at": "2026-09-13T15:09:59Z",
-      "head_sha": "4e07b600a1d0d48c40ee7125eb6503eb5d69e90c",
-      "merged_at": "2026-09-13T15:09:59Z",
-      "number": 14029,
-      "state": "MERGED",
-      "title": "Add deterministic GOSIM Agentic Factory readiness harness"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zafu-j6r8/usac-it-26-139-qualification-20260913",
-      "closed_at": "2026-09-13T15:08:14Z",
-      "head_sha": "11bbcbf342032b2c1c076fcf2a2e3742ccfb39ac",
-      "merged_at": "2026-09-13T15:08:14Z",
-      "number": 14027,
-      "state": "MERGED",
-      "title": "revenue: add USAC IT-26-139 qualification carrier"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zvc-q7m4/agentic-genai-evaluation-gate",
-      "closed_at": "2026-09-13T15:06:37Z",
-      "head_sha": "f96b5658af640030d949efc7e567dc135b4a4d07",
-      "merged_at": "2026-09-13T15:06:37Z",
-      "number": 13942,
-      "state": "MERGED",
-      "title": "Add agentic GenAI evaluation evidence gate"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zom-k8j3-lacsd-04254-evidence-sprint",
-      "closed_at": "2026-09-13T15:04:23Z",
-      "head_sha": "13793a016245b1fd54f7afdc71bd8ad81991e535",
-      "merged_at": "2026-09-13T15:04:23Z",
-      "number": 14031,
-      "state": "MERGED",
-      "title": "LACSD 04254: ship $5,000 AI/ML validation/evidence sprint"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zpf-l7t2/commercial-lifecycle-evidence-identity-20260913",
-      "closed_at": "2026-09-13T15:03:04Z",
-      "head_sha": "16a5a0bc56ba2f9fbc4f8a9f9fa4db7914d75ec5",
-      "merged_at": "2026-09-13T15:03:04Z",
-      "number": 14037,
-      "state": "MERGED",
-      "title": "revenue: reserve commercial lifecycle evidence identities"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zbf-r8v5/iqvia-source-provenance-v2-20260913",
-      "closed_at": "2026-09-13T15:02:30Z",
-      "head_sha": "4bda788c31c2f4a7096c4931c0b1bdfa46c66826",
-      "merged_at": "2026-09-13T15:02:30Z",
-      "number": 14042,
-      "state": "MERGED",
-      "title": "fix(iqvia): bind specimen gate semantics to exact source projections"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zva-k6n8/swarmops-fd-ingress-custody-20260913",
-      "closed_at": "2026-09-13T15:02:24Z",
-      "head_sha": "2c28187f0449a0c14cccff129ca00568f8bb3fb5",
-      "merged_at": "2026-09-13T15:02:24Z",
-      "number": 14045,
-      "state": "MERGED",
-      "title": "Bind SwarmOps CLI reads to the opened file generation"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zbf-k8d2/prooflens-review-durable-generation",
-      "closed_at": "2026-09-13T15:00:01Z",
-      "head_sha": "930102db00ca5cf856b879343ada793b4af6c84f",
-      "merged_at": "2026-09-13T15:00:01Z",
-      "number": 14035,
-      "state": "MERGED",
-      "title": "Fix ProofLens review delivery durable-row custody"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zzf-m4r8/gtm-reply-chronology-generation-20260913",
-      "closed_at": "2026-09-13T14:59:13Z",
-      "head_sha": "28b9c44004f4d21246e2da1414c0be42969a89ba",
-      "merged_at": "2026-09-13T14:59:13Z",
-      "number": 14008,
-      "state": "MERGED",
-      "title": "GTM: make buyer-reply observation chronology and generation fail closed"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "competition/afh-builder-bonus-zpaf3n8",
-      "closed_at": "2026-09-13T14:58:05Z",
-      "head_sha": "d9e465230401fb01abca456ea9d03c06926501db",
-      "merged_at": "2026-09-13T14:58:05Z",
-      "number": 14014,
-      "state": "MERGED",
-      "title": "competition(afh): package maximum builder.aws bonus path"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zdc-j8t2/scorm-assurance-hardening-20260913",
-      "closed_at": "2026-09-13T14:57:51Z",
-      "head_sha": "cd832e7a35c41e90df42b7fd6db2797dd5afc6e8",
-      "merged_at": "2026-09-13T14:57:51Z",
-      "number": 14019,
-      "state": "MERGED",
-      "title": "Fix-forward: harden SCORM manifest authority and file custody"
+      "title": "NCI ODS Impact Prize: build ReuseLedger Track-1 carrier"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-13T19:12:21Z",
+  "unchanged_since": "2026-09-13T20:28:23Z",
   "undatable_pulls": []
 }
