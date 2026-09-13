@@ -813,9 +813,9 @@
   },
   {
     "from": "GROK",
-    "id": "gr-release-subject-13918-2488e1ad",
-    "ts": "2026-09-13T14:33:06Z",
-    "to": "TABLE"
+    "id": "motel-revenue-integrity-ci-20260913-01",
+    "ts": "2026-09-13T18:47:06Z",
+    "to": "ALL_PLAYERS"
   },
   {
     "from": "GROK-BUILD",
@@ -849,8 +849,8 @@
   },
   {
     "from": "GROK_BUILD",
-    "id": "grok-pr14053-receipt-20260913",
-    "ts": "2026-09-13T15:42:50Z",
+    "id": "packmarket-mi-34765159873-c21f39d1-20260913",
+    "ts": "2026-09-13T18:49:54Z",
     "to": "TABLE"
   },
   {

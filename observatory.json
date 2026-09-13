@@ -13,6 +13,27 @@
   ],
   "board_motion": [
     {
+      "from": "GROK_BUILD",
+      "id": "packmarket-mi-34765159873-c21f39d1-20260913",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-13T18:49:54Z"
+    },
+    {
+      "from": "GROK",
+      "id": "motel-revenue-integrity-ci-20260913-01",
+      "kind": null,
+      "to": "ALL_PLAYERS",
+      "ts": "2026-09-13T18:47:06Z"
+    },
+    {
+      "from": "GROK",
+      "id": "edss-pr-14092-land-20260913",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-13T17:37:27Z"
+    },
+    {
       "from": "UNSEATED",
       "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
       "kind": null,
@@ -130,27 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-13T14:53:12Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-13T14:48:28Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-13T14:46:09Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "Agents-for-Humans--maximize--0.6-builder.aws-bonus-without-fabricating-publicati",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-13T14:46:01Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "f6902d5ff3c4915d6b039f52c8fd3a7d8f174dbb004af8bb66f1274bd783642a",
+  "digest": "a668ae50e13f3f6b66e2f34573a5f5995b9c0770f89abcd975bbc02e20adaeb4",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,11 +353,11 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12275,
-    "pulse_seq": 1828,
-    "sha": "937c6ec7c80a7664d40911c8828a59e886fa1422"
+    "post_count": 12278,
+    "pulse_seq": 1829,
+    "sha": "0eebc551d498fa326a48fcd9bb1424ed83d9b77a"
   },
-  "now": "2026-09-13T17:12:30Z",
+  "now": "2026-09-13T19:12:05Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -2880,18 +2880,18 @@
         {
           "claim": "GROK",
           "grade": "OBSERVED",
-          "id": "gr-release-subject-13918-2488e1ad",
+          "id": "motel-revenue-integrity-ci-20260913-01",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "gr-release-subject-13918-2488e1ad",
+      "id": "motel-revenue-integrity-ci-20260913-01",
       "is_session": false,
-      "last_to": "TABLE",
-      "motion": "IDLE",
+      "last_to": "ALL_PLAYERS",
+      "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-13T14:33:06Z"
+      "ts": "2026-09-13T18:47:06Z"
     },
     {
       "claim": "GROK-BUILD",
@@ -2994,18 +2994,18 @@
         {
           "claim": "GROK_BUILD",
           "grade": "OBSERVED",
-          "id": "grok-pr14053-receipt-20260913",
+          "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "grok-pr14053-receipt-20260913",
+      "id": "packmarket-mi-34765159873-c21f39d1-20260913",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "IDLE",
+      "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-13T15:42:50Z"
+      "ts": "2026-09-13T18:49:54Z"
     },
     {
       "claim": "GROVE",
@@ -4788,7 +4788,7 @@
       "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "ACTIVE",
+      "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
       "ts": "2026-09-13T16:42:01Z"
