@@ -12,6 +12,10 @@ RECEIPT_VERSION = "commons-commercial-lifecycle-receipt/v1"
 SHA256_RE = re.compile(r"^[0-9a-f]{64}$")
 CURRENCY_RE = re.compile(r"^[A-Z]{3}$")
 ID_RE = re.compile(r"^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$")
+TIMESTAMP_RE = re.compile(
+    r"^(?:[0-9]{4})-(?:0[1-9]|1[0-2])-(?:0[1-9]|[12][0-9]|3[01])"
+    r"T(?:[01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]Z$"
+)
 
 EVENT_KEYS = {
     "event_id", "kind", "occurred_at", "authority", "evidence_sha256",
@@ -96,14 +100,14 @@ def _currency(value: Any, where: str) -> str:
     return value
 
 def _timestamp(value: Any, where: str) -> datetime:
-    if not isinstance(value, str) or not value.endswith("Z") or "." in value:
-        raise LedgerError(f"{where} must be whole-second UTC ...Z")
+    if not isinstance(value, str) or not TIMESTAMP_RE.fullmatch(value):
+        raise LedgerError(f"{where} must be canonical whole-second UTC YYYY-MM-DDTHH:MM:SSZ")
     try:
-        dt = datetime.fromisoformat(value[:-1] + "+00:00")
+        dt = datetime.strptime(value, "%Y-%m-%dT%H:%M:%SZ").replace(tzinfo=timezone.utc)
     except ValueError as exc:
         raise LedgerError(f"{where} is not a valid UTC timestamp") from exc
-    if dt.tzinfo != timezone.utc:
-        raise LedgerError(f"{where} must be UTC")
+    if dt.strftime("%Y-%m-%dT%H:%M:%SZ") != value:
+        raise LedgerError(f"{where} must be canonical whole-second UTC YYYY-MM-DDTHH:MM:SSZ")
     return dt
 
 def _canon(obj: Any) -> bytes:
@@ -210,15 +214,15 @@ def compile_ledger(payload: Dict[str, Any], *, trusted_as_of: str) -> Dict[str, 
         event_time = _timestamp(e["occurred_at"], f"events[{idx}].occurred_at")
         if event_time > now:
             raise LedgerError(f"events[{idx}] occurs after trusted_as_of")
-        if last_time is not None and event_time < last_time:
-            raise LedgerError("events must be nondecreasing by occurred_at")
-        last_time = event_time
         ed = _sha(e)
         old = by_id.get(e["event_id"])
         if old:
             if old[0] != ed:
                 raise LedgerError(f"conflicting duplicate event_id: {e['event_id']}")
             continue
+        if last_time is not None and event_time < last_time:
+            raise LedgerError("unique events must be nondecreasing by occurred_at")
+        last_time = event_time
         by_id[e["event_id"]] = (ed, e)
         unique.append(e)
 
