@@ -196,6 +196,16 @@ class OfferContractTests(unittest.TestCase):
         with self.assertRaisesRegex(ContractError, "expired"):
             verify_owner_approval(approved_contract(), SECRET, trusted_now="2026-09-21T00:00:00Z")
 
+    def test_send_authorization_before_owner_approval_rejected(self):
+        with self.assertRaisesRegex(ContractError, "predate owner approval"):
+            authorize_send(
+                approved_contract(),
+                SECRET,
+                destination_sha256=H3,
+                channel="email",
+                authorized_at="2026-09-13T09:59:59Z",
+            )
+
     def test_send_authority_binds_destination_and_channel(self):
         c = send_ready_contract()
         verify_send_authority(c, SECRET, trusted_now="2026-09-13T11:00:00Z")
@@ -236,6 +246,18 @@ class OfferContractTests(unittest.TestCase):
         self.assertFalse(out["authority"]["fulfillment_authorized"])
         self.assertFalse(out["authority"]["payment_collected"])
         self.assertFalse(out["authority"]["revenue_recognized"])
+
+    def test_acceptance_before_send_authorization_rejected(self):
+        c = send_ready_contract()
+        acceptance = {
+            "offer_sha256": c["offer_sha256"],
+            "buyer_ref": c["offer"]["buyer_ref"],
+            "accepted_at": "2026-09-13T10:04:59Z",
+            "evidence_sha256": H4,
+            "identity_verification_sha256": H2,
+        }
+        with self.assertRaisesRegex(ContractError, "predate send authorization"):
+            capture_buyer_acceptance(c, SECRET, acceptance=acceptance, trusted_now="2026-09-13T11:01:00Z")
 
     def test_acceptance_wrong_buyer_rejected(self):
         c = send_ready_contract()
