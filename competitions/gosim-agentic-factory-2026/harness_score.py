@@ -331,6 +331,7 @@ def compile_report(runs_raw: Any, policy_raw: Any, baseline_raw: Any | None = No
     runs = _normalize_runs(runs_raw)
     policy = validate_policy(policy_raw)
     entries = [{"run": run, "metrics": metrics_for_run(run, policy)} for run in runs]
+    _task_generations(entries)
 
     by_task: dict[str, list[dict[str, Any]]] = {}
     for entry in entries:

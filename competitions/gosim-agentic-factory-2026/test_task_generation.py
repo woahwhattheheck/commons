@@ -46,6 +46,22 @@ class TaskGenerationRegressionTests(unittest.TestCase):
                 [run(task="x", trial="base", task_sha=HEX_A)],
             )
 
+    def test_baseline_free_pareto_rejects_different_task_specs(self):
+        candidate = [
+            run(task="x", trial="one", task_sha=HEX_A),
+            run(task="x", trial="two", task_sha=HEX_B),
+        ]
+        with self.assertRaisesRegex(hs.ContractError, "multiple task generations"):
+            hs.compile_report(candidate, policy())
+
+    def test_baseline_free_pareto_rejects_different_test_cardinality(self):
+        candidate = [
+            run(task="x", trial="one", total=10, passed=10, failed=0, task_sha=HEX_A),
+            run(task="x", trial="two", total=20, passed=20, failed=0, task_sha=HEX_A),
+        ]
+        with self.assertRaisesRegex(hs.ContractError, "multiple task generations"):
+            hs.compile_report(candidate, policy())
+
 
 if __name__ == "__main__":
     unittest.main()
