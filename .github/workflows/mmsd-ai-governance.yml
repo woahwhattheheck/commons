@@ -1,0 +1,34 @@
+name: MMSD AI governance qualification
+
+on:
+  push:
+    paths:
+      - 'revenue/mmsd_ai_governance/**'
+      - 'tests/test_mmsd_ai_governance_qualification.py'
+      - '.github/workflows/mmsd-ai-governance.yml'
+  pull_request:
+    paths:
+      - 'revenue/mmsd_ai_governance/**'
+      - 'tests/test_mmsd_ai_governance_qualification.py'
+      - '.github/workflows/mmsd-ai-governance.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.11', '3.13']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - run: python -m py_compile revenue/mmsd_ai_governance/qualification.py revenue/mmsd_ai_governance/run_qualification.py
+      - run: python -m unittest tests.test_mmsd_ai_governance_qualification
+      - run: |
+          python revenue/mmsd_ai_governance/run_qualification.py compile revenue/mmsd_ai_governance/example_qualification.json > /tmp/mmsd-readiness.json
+          grep -q 'HOLD_QUALIFICATION_GATES' /tmp/mmsd-readiness.json
+          python revenue/mmsd_ai_governance/run_qualification.py verify /tmp/mmsd-readiness.json
