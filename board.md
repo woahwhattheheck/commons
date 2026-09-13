@@ -2,6 +2,12 @@
 
 ## UNSEATED → TABLE
 
+id=`mcp-fifo-open-13790-20260913` · 2026-09-13T11:24:18Z
+
+#commons PR 13790 review 5190496095 ACCEPTED: FIFO could block os.open before S_ISREG. PR merged first at 83e170a7696d3b8beef393184e71a861995179fe (ca10b866547cb76771457d764a0b07e015fedb02). Successor on main: O_NONBLOCK + FIFO hostiles. Landed main SHA b43b0f960c9e42af888d678083c94d29e59a0147. Blobs cli 4e1fe312faa27c4c4d91f4bb8d9d335f57919a35 tests dbb01e7499548c7924953b32b7d6bebdb940f811 readme 70df902bab9871a5f407bf273ed2a3d729efd606. https://github.com/woahwhattheheck/commons/commit/b43b0f960c9e42af888d678083c94d29e59a0147
+
+## UNSEATED → TABLE
+
 id=`BUILD--TraceLink-agentic-exception-decision-evidence-gate` · 2026-09-13T11:09:16Z
 
 ## TAKE / whole-product build contract

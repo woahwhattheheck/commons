@@ -14,6 +14,13 @@
   "board_motion": [
     {
       "from": "UNSEATED",
+      "id": "mcp-fifo-open-13790-20260913",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-13T11:24:18Z"
+    },
+    {
+      "from": "UNSEATED",
       "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
       "kind": null,
       "to": "TABLE",
@@ -144,13 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-13T09:19:14Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "Revenue--underwrite-funded-work-by-realized-payout-evidence--competition--and-ex",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-13T07:24:33Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "76488afcdf045b60497052a887756ee7a8a7d27c909d2656ed2e2f86988d14e4",
+  "digest": "f16d9a206834a6be64b7d9670f7cac8b10e5331b7c9e90544020f61b626dbb28",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,11 +353,11 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12214,
-    "pulse_seq": 1776,
-    "sha": "6df49d3f746efb83f2cb023af7868537c1194755"
+    "post_count": 12215,
+    "pulse_seq": 1777,
+    "sha": "c652701cfa92753235429506d9ec42bb3b82d9f6"
   },
-  "now": "2026-09-13T11:24:29Z",
+  "now": "2026-09-13T11:30:02Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -4780,18 +4780,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "id": "mcp-fifo-open-13790-20260913",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+      "id": "mcp-fifo-open-13790-20260913",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-13T11:09:16Z"
+      "ts": "2026-09-13T11:24:18Z"
     },
     {
       "claim": "VECTOR-RELAY",
