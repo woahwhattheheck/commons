@@ -5,7 +5,9 @@ import binascii
 import hashlib
 import io
 import json
+import math
 from collections import Counter
+from decimal import Decimal
 from typing import Any
 
 SCHEMA = "commons-mcp-transcript-audit/v1"
@@ -16,10 +18,14 @@ MAX_CAPTURE_BYTES = 8 * 1024 * 1024
 MAX_LINE_BYTES = 1024 * 1024
 MAX_PAYLOAD_BYTES = 1024 * 1024
 MAX_EVENTS = 10_000
+MAX_JSON_NESTING = 128
 
 CLIENT = "client_to_server"
 SERVER = "server_to_client"
 DIRECTIONS = {CLIENT, SERVER}
+LOGGING_LEVELS = frozenset({
+    "debug", "info", "notice", "warning", "error", "critical", "alert", "emergency"
+})
 
 
 class StrictJSONError(ValueError):
@@ -39,14 +45,40 @@ def _pairs_no_duplicates(pairs: list[tuple[str, Any]]) -> dict[str, Any]:
     return out
 
 
-def strict_json_loads(text: str) -> Any:
+def _check_json_nesting(text: str) -> None:
+    depth = 0
+    in_string = False
+    escaped = False
+    for char in text:
+        if in_string:
+            if escaped:
+                escaped = False
+            elif char == "\\":
+                escaped = True
+            elif char == '"':
+                in_string = False
+            continue
+        if char == '"':
+            in_string = True
+        elif char in "[{":
+            depth += 1
+            if depth > MAX_JSON_NESTING:
+                raise StrictJSONError("JSON nesting exceeds configured limit")
+        elif char in "]}":
+            depth = max(0, depth - 1)
+
+
+def strict_json_loads(text: str, *, exact_numbers: bool = False) -> Any:
+    _check_json_nesting(text)
     try:
-        return json.loads(
-            text,
-            object_pairs_hook=_pairs_no_duplicates,
-            parse_constant=_reject_constant,
-        )
-    except (json.JSONDecodeError, StrictJSONError) as exc:
+        kwargs: dict[str, Any] = {
+            "object_pairs_hook": _pairs_no_duplicates,
+            "parse_constant": _reject_constant,
+        }
+        if exact_numbers:
+            kwargs["parse_float"] = Decimal
+        return json.loads(text, **kwargs)
+    except (ValueError, RecursionError) as exc:
         raise StrictJSONError(str(exc)) from exc
 
 
@@ -64,21 +96,49 @@ def _sha256(data: bytes) -> str:
     return hashlib.sha256(data).hexdigest()
 
 
+def _number_identity(value: int | float | Decimal) -> tuple[int, str, int]:
+    if isinstance(value, bool):
+        raise ValueError("request id must be a string or finite number, not bool/null")
+    if isinstance(value, Decimal):
+        decimal_value = value
+    elif isinstance(value, int):
+        decimal_value = Decimal(value)
+    elif isinstance(value, float):
+        if not math.isfinite(value):
+            raise ValueError("request id number must be finite")
+        decimal_value = Decimal(repr(value))
+    else:
+        raise ValueError("request id must be a string or finite number, not bool/null")
+    if not decimal_value.is_finite():
+        raise ValueError("request id number must be finite")
+    sign, digits_tuple, exponent = decimal_value.as_tuple()
+    digits = list(digits_tuple)
+    while digits and digits[-1] == 0:
+        digits.pop()
+        exponent += 1
+    if not digits:
+        return (0, "0", 0)
+    return (sign, "".join(str(digit) for digit in digits), int(exponent))
+
+
 def _typed_id_key(value: Any) -> tuple[str, Any]:
-    if isinstance(value, bool) or not isinstance(value, (str, int)):
-        raise ValueError("request id must be a string or integer, not bool/null/float")
     if isinstance(value, str):
-        if len(value.encode("utf-8")) > 256:
-            raise ValueError("request id string exceeds 256 UTF-8 bytes")
         return ("string", value)
-    if len(str(value)) > 128:
-        raise ValueError("request id integer exceeds 128 digits/sign characters")
-    return ("integer", value)
+    if isinstance(value, bool) or value is None:
+        raise ValueError("request id must be a string or finite number, not bool/null")
+    if isinstance(value, (int, float, Decimal)):
+        return ("number", _number_identity(value))
+    raise ValueError("request id must be a string or finite number, not bool/null")
 
 
 def _id_hash(value: Any) -> str:
     kind, exact = _typed_id_key(value)
-    return _sha256(_canonical_bytes({"type": kind, "value": exact}))
+    if kind == "string":
+        material = {"type": "string", "value": exact}
+    else:
+        sign, digits, exponent = exact
+        material = {"type": "number", "sign": sign, "digits": digits, "exponent": exponent}
+    return _sha256(_canonical_bytes(material))
 
 
 def _opposite(direction: str) -> str:
@@ -173,7 +233,7 @@ def _decode_capture_line(raw_line: bytes, line_number: int) -> tuple[str, bytes,
         payload_text = payload.decode("utf-8")
     except UnicodeDecodeError as exc:
         raise ValueError("decoded JSON-RPC payload is not valid UTF-8") from exc
-    message = strict_json_loads(payload_text)
+    message = strict_json_loads(payload_text, exact_numbers=True)
     return direction, payload, message
 
 
@@ -217,6 +277,20 @@ def _validate_initialize_result(message: dict[str, Any]) -> str:
     return protocol
 
 
+def _validate_logging_notification(message: dict[str, Any]) -> None:
+    params = message.get("params")
+    if not isinstance(params, dict):
+        raise ValueError("logging notification params must be an object")
+    if "level" not in params or params["level"] not in LOGGING_LEVELS:
+        raise ValueError("logging notification level is missing or invalid")
+    if "data" not in params:
+        raise ValueError("logging notification data is required")
+    if "logger" in params and not isinstance(params["logger"], str):
+        raise ValueError("logging notification logger must be a string")
+    if "_meta" in params and not isinstance(params["_meta"], dict):
+        raise ValueError("logging notification _meta must be an object")
+
+
 def _receipt_with_hash(receipt: dict[str, Any]) -> dict[str, Any]:
     unsigned = dict(receipt)
     unsigned.pop("receipt_sha256", None)
@@ -249,8 +323,8 @@ def audit_transcript(
 
     if not isinstance(source, bytes):
         raise TypeError("source must be bytes")
-    if not isinstance(required_protocol_version, str) or not required_protocol_version:
-        raise ValueError("required_protocol_version must be a non-empty string")
+    if required_protocol_version != REQUIRED_PROTOCOL_VERSION:
+        raise ValueError(f"auditor is pinned to MCP {REQUIRED_PROTOCOL_VERSION}")
 
     oversized_capture = len(source) > MAX_CAPTURE_BYTES
     if oversized_capture:
@@ -314,6 +388,8 @@ def audit_transcript(
                 code = "INVALID_UTF8"
             elif "size limit" in text:
                 code = "EVENT_TOO_LARGE"
+            elif "nesting exceeds" in text:
+                code = "JSON_NESTING_TOO_DEEP"
             reasons.append(_safe_reason(code, line_number))
             evidence.append(line_row)
             stop_semantic_processing = True
@@ -379,10 +455,20 @@ def audit_transcript(
                 if direction == CLIENT and init_response_line is not None and initialized_line is None:
                     initialized_line = line_number
                     initialized = True
-            elif not initialized:
-                # Server logging is the spec's pre-initialized notification exception.
-                if not (direction == SERVER and method == "notifications/message"):
+            elif method == "notifications/message":
+                valid_logging = True
+                if direction != SERVER:
+                    reasons.append(_safe_reason("LOGGING_NOTIFICATION_WRONG_DIRECTION", line_number))
+                    valid_logging = False
+                try:
+                    _validate_logging_notification(message)
+                except ValueError:
+                    reasons.append(_safe_reason("INVALID_LOGGING_NOTIFICATION", line_number))
+                    valid_logging = False
+                if not initialized and not valid_logging:
                     reasons.append(_safe_reason("NOTIFICATION_BEFORE_INITIALIZED", line_number))
+            elif not initialized:
+                reasons.append(_safe_reason("NOTIFICATION_BEFORE_INITIALIZED", line_number))
 
         else:  # response
             assert request_id is not None
@@ -475,6 +561,8 @@ def verify_receipt(
     *,
     required_protocol_version: str = REQUIRED_PROTOCOL_VERSION,
 ) -> dict[str, Any]:
+    if required_protocol_version != REQUIRED_PROTOCOL_VERSION:
+        raise ValueError(f"auditor is pinned to MCP {REQUIRED_PROTOCOL_VERSION}")
     reasons: list[str] = []
     try:
         receipt_text = receipt_bytes.decode("utf-8")
