@@ -1,9 +1,9 @@
 {
   "counts": {
-    "open_issues": 15,
-    "open_pull_requests": 22,
-    "runs_in_progress": 15,
-    "runs_queued": 601
+    "open_issues": 14,
+    "open_pull_requests": 21,
+    "runs_in_progress": 19,
+    "runs_queued": 623
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -69,24 +69,35 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "z-saltation-n4x9/capability-service-catalog-20260913",
-      "created_at": "2026-09-13T10:09:08Z",
+      "branch": "ariadne-z/open-door-positive-business-context-fix3-20260913",
+      "created_at": "2026-09-13T10:11:46Z",
       "draft": false,
-      "head_sha": "3471596946521a80b0ca030bc56515a24084a5c7",
-      "number": 13730,
-      "title": "Revenue: compile demonstrated capabilities into bounded service catalog evidence",
-      "updated_at": "2026-09-13T10:09:43Z"
+      "head_sha": "b9e4a4cdba4048f631f6dd1c9cddfedbaaeef8ee",
+      "number": 13733,
+      "title": "open-door: bind business-status exception to positive owner context",
+      "updated_at": "2026-09-13T10:11:46Z"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "ariadne-z/open-door-business-status-final2-20260913",
-      "created_at": "2026-09-13T10:08:23Z",
+      "branch": "fix/reconciliation-type-stability-main-ariadne-z-20260913",
+      "created_at": "2026-09-13T10:11:26Z",
       "draft": false,
-      "head_sha": "9abf49ef382869f1a7dcfdbfd63cc30e4d2e1d2e",
-      "number": 13728,
+      "head_sha": "f6b90a9a3079d93fe3f737edc5fc31a1a4adea3d",
+      "number": 13732,
+      "title": "fix(revenue): make reconciliation field equality JSON-type-stable",
+      "updated_at": "2026-09-13T10:11:26Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "ariadne-z/open-door-business-status-final3-20260913",
+      "created_at": "2026-09-13T10:11:26Z",
+      "draft": false,
+      "head_sha": "54fc3a0b214191c91cf5a791e1768991566b0a52",
+      "number": 13731,
       "title": "open-door: positively bind revenue business-status denials",
-      "updated_at": "2026-09-13T10:08:23Z"
+      "updated_at": "2026-09-13T10:11:26Z"
     },
     {
       "author": "woahwhattheheck",
@@ -97,7 +108,7 @@
       "head_sha": "2df03b175264d3de8b430612c00926d68f7327ca",
       "number": 13727,
       "title": "open-door: positively bind revenue status exception",
-      "updated_at": "2026-09-13T10:07:57Z"
+      "updated_at": "2026-09-13T10:12:06Z"
     },
     {
       "author": "woahwhattheheck",
@@ -105,21 +116,10 @@
       "branch": "zvf-r7k3/expertise-catalog-20260913",
       "created_at": "2026-09-13T10:05:47Z",
       "draft": false,
-      "head_sha": "0d9cef98cd6166eea3b26ddb89a6076685638522",
+      "head_sha": "0d92ded9f35517639717fa94e8b3adbf26b8332e",
       "number": 13723,
       "title": "revenue: expose expertise as explicit catalog entries",
-      "updated_at": "2026-09-13T10:09:40Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zdar-j2r9/expertise-catalog-20260913",
-      "created_at": "2026-09-13T10:04:48Z",
-      "draft": false,
-      "head_sha": "508d87ac714acfbe04b4638d1d396610ccca10d6",
-      "number": 13719,
-      "title": "revenue: add evidence-bound expertise catalog compiler",
-      "updated_at": "2026-09-13T10:09:14Z"
+      "updated_at": "2026-09-13T10:11:29Z"
     },
     {
       "author": "woahwhattheheck",
@@ -168,13 +168,13 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "z-eames/reconciliation-type-stability-20260913",
-      "created_at": "2026-09-13T09:45:33Z",
+      "branch": "zram/wuhu-lerobot-qc-20260913",
+      "created_at": "2026-09-13T09:42:49Z",
       "draft": false,
-      "head_sha": "6822ef228d35ba6ddc89e1347d24fbf84b6aff89",
-      "number": 13699,
-      "title": "fix(revenue): preserve JSON types in reconciliation proof",
-      "updated_at": "2026-09-13T10:09:08Z"
+      "head_sha": "80c722fbe7ab7dd711ce01987bea50c900ad673e",
+      "number": 13695,
+      "title": "competition: add Wuhu LeRobot trajectory QC engine",
+      "updated_at": "2026-09-13T09:42:49Z"
     }
   ],
   "open_heads": {
@@ -190,21 +190,64 @@
     "13683": "d7d6a0a0dacf3d832fc62d6e0b1a39b15a985b54",
     "13692": "c2df4039c06d34123e9aaa31ff0a04c405760c62",
     "13695": "80c722fbe7ab7dd711ce01987bea50c900ad673e",
-    "13699": "6822ef228d35ba6ddc89e1347d24fbf84b6aff89",
     "13701": "437f3e033ae351d825dc7761432a11a78e528b03",
     "13702": "2b6598f90c107dfacc4ec2a975e070f5073f8952",
     "13704": "43a89c97cee946e3d6cfa7e665c92b31586b08cc",
     "13712": "e5d13ab500ff195dd85df2728f85794dab2fe048",
-    "13719": "508d87ac714acfbe04b4638d1d396610ccca10d6",
-    "13723": "0d9cef98cd6166eea3b26ddb89a6076685638522",
+    "13723": "0d92ded9f35517639717fa94e8b3adbf26b8332e",
     "13727": "2df03b175264d3de8b430612c00926d68f7327ca",
-    "13728": "9abf49ef382869f1a7dcfdbfd63cc30e4d2e1d2e",
-    "13730": "3471596946521a80b0ca030bc56515a24084a5c7"
+    "13731": "54fc3a0b214191c91cf5a791e1768991566b0a52",
+    "13732": "f6b90a9a3079d93fe3f737edc5fc31a1a4adea3d",
+    "13733": "b9e4a4cdba4048f631f6dd1c9cddfedbaaeef8ee"
   },
-  "pulls_listed": 22,
+  "pulls_listed": 21,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 40.1,
+  "queue_depth_per_runner": 32.8,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z-eames/reconciliation-type-stability-20260913",
+      "closed_at": "2026-09-13T10:11:57Z",
+      "head_sha": "6822ef228d35ba6ddc89e1347d24fbf84b6aff89",
+      "merged_at": null,
+      "number": 13699,
+      "state": "CLOSED",
+      "title": "superseded: preserve JSON types in reconciliation proof"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z-saltation-n4x9/capability-service-catalog-20260913",
+      "closed_at": "2026-09-13T10:11:40Z",
+      "head_sha": "0c0742e5342f755ffb9aedc33c906f5731510ee4",
+      "merged_at": "2026-09-13T10:11:40Z",
+      "number": 13730,
+      "state": "MERGED",
+      "title": "Revenue: compile demonstrated capabilities into bounded service catalog evidence"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "ariadne-z/open-door-business-status-final2-20260913",
+      "closed_at": "2026-09-13T10:11:06Z",
+      "head_sha": "9abf49ef382869f1a7dcfdbfd63cc30e4d2e1d2e",
+      "merged_at": null,
+      "number": 13728,
+      "state": "CLOSED",
+      "title": "open-door: positively bind revenue business-status denials"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zdar-j2r9/expertise-catalog-20260913",
+      "closed_at": "2026-09-13T10:10:31Z",
+      "head_sha": "508d87ac714acfbe04b4638d1d396610ccca10d6",
+      "merged_at": "2026-09-13T10:10:31Z",
+      "number": 13719,
+      "state": "MERGED",
+      "title": "revenue: add evidence-bound expertise catalog compiler"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -313,7 +356,7 @@
       "merged_at": null,
       "number": 13705,
       "state": "CLOSED",
-      "title": "fix(business-packs): clean rejoin for malformed ledger validation"
+      "title": "superseded: fixed blobs already landed on main"
     },
     {
       "author": "woahwhattheheck",
@@ -325,54 +368,10 @@
       "number": 13710,
       "state": "MERGED",
       "title": "revenue: add NASPO SW1045 agent workflow acceptance core"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-galois-913456-x731/paid-pilot-authorization-gate-20260913",
-      "closed_at": "2026-09-13T10:00:48Z",
-      "head_sha": "561ccd227df3621444cd1edb3f889ee901ee69ad",
-      "merged_at": "2026-09-13T10:00:48Z",
-      "number": 13707,
-      "state": "MERGED",
-      "title": "revenue: add paid pilot authorization gate"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "ariadne-z/open-door-business-status-20260913",
-      "closed_at": "2026-09-13T10:00:13Z",
-      "head_sha": "70b68d97f2d3d768148eea00689e1393164d29ea",
-      "merged_at": null,
-      "number": 13568,
-      "state": "CLOSED",
-      "title": "open-door: allow isolated procurement status denials"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zker-j4m8/mmsd-ai-governance-rfp-20260913",
-      "closed_at": "2026-09-13T09:55:57Z",
-      "head_sha": "d65e807cbf02e0aca6f907007b0e20216ae99d10",
-      "merged_at": "2026-09-13T09:55:57Z",
-      "number": 13706,
-      "state": "MERGED",
-      "title": "revenue: qualify MMSD AI governance RFP"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "ariadne-z881/business-pack-malformed-ledger-rejoin",
-      "closed_at": "2026-09-13T09:55:44Z",
-      "head_sha": "bcbaeadc4d3034782f35ed660d1e57e400147f50",
-      "merged_at": null,
-      "number": 13553,
-      "state": "CLOSED",
-      "title": "Return validation errors for malformed KEEP vs SELL numerics"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-13T10:09:46Z",
+  "unchanged_since": "2026-09-13T10:12:08Z",
   "undatable_pulls": []
 }
