@@ -1,9 +1,9 @@
 {
   "counts": {
-    "open_issues": 56,
-    "open_pull_requests": 48,
+    "open_issues": 51,
+    "open_pull_requests": 45,
     "runs_in_progress": 19,
-    "runs_queued": 1101
+    "runs_queued": 1118
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -69,6 +69,39 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
+      "branch": "zfa-b4k9/tate-lyle-cp-kelco-solution-proof-gate-20260913",
+      "created_at": "2026-09-13T14:36:06Z",
+      "draft": false,
+      "head_sha": "fb55ed6ec666c609db17d64da9f278df59d5fc4d",
+      "number": 13965,
+      "title": "Build Tate & Lyle / CP Kelco cross-portfolio formulation-evidence gate",
+      "updated_at": "2026-09-13T14:36:06Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zkv-n3x6/freshness-currentness-fix",
+      "created_at": "2026-09-13T14:34:46Z",
+      "draft": false,
+      "head_sha": "5de42663c3b68ebe441b7407185086c620f84aa0",
+      "number": 13963,
+      "title": "fix(revenue): bind multi-framework freshness to current time",
+      "updated_at": "2026-09-13T14:34:46Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zkb-h4v9/swarmops-commercial-semantic-trust-20260913",
+      "created_at": "2026-09-13T14:34:42Z",
+      "draft": false,
+      "head_sha": "1dc2a2dd3e866029032e0dd3f472c82478c78f19",
+      "number": 13962,
+      "title": "fix: bind SwarmOps commercial trust to exact semantics",
+      "updated_at": "2026-09-13T14:34:42Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
       "branch": "zlc/streaming-rendition-qa-pilot-914020-v7q3",
       "created_at": "2026-09-13T14:33:20Z",
       "draft": false,
@@ -80,28 +113,6 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "zvh-k3p8/streaming-rendition-qa-pilot-20260913",
-      "created_at": "2026-09-13T14:32:59Z",
-      "draft": false,
-      "head_sha": "8c683e89357e6457b183c37aa0bea9a18544836e",
-      "number": 13958,
-      "title": "revenue: package streaming rendition QA as bounded paid diagnostic",
-      "updated_at": "2026-09-13T14:32:59Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zom-k8j3-dhs-ready-set-id",
-      "created_at": "2026-09-13T14:32:50Z",
-      "draft": false,
-      "head_sha": "78a2747228c0b2933a9d0ebf43fd5d2ffee5511e",
-      "number": 13957,
-      "title": "DHS Ready Set ID: defensive $999,990 challenge carrier + anomaly baseline",
-      "updated_at": "2026-09-13T14:32:50Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
       "branch": "zfb/streaming-rendition-qa-pilot-20260913",
       "created_at": "2026-09-13T14:32:24Z",
       "draft": false,
@@ -109,28 +120,6 @@
       "number": 13954,
       "title": "revenue: package streaming rendition QA paid pilot",
       "updated_at": "2026-09-13T14:32:24Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zfn-a7/grandrapids-release-subject-13918",
-      "created_at": "2026-09-13T14:31:53Z",
-      "draft": false,
-      "head_sha": "2f3c0ac06dedc07a10417d0e7c533527d165e91c",
-      "number": 13952,
-      "title": "fix: bind Grand Rapids packet verification and owner release subject",
-      "updated_at": "2026-09-13T14:31:53Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "fix/grand-rapids-release-subject-zpaf3n8",
-      "created_at": "2026-09-13T14:31:52Z",
-      "draft": false,
-      "head_sha": "3d91304e5ecf57452447842a8bd875063d466de6",
-      "number": 13951,
-      "title": "fix(grand-rapids): bind owner release to exact evidence subject",
-      "updated_at": "2026-09-13T14:31:52Z"
     },
     {
       "author": "woahwhattheheck",
@@ -149,32 +138,43 @@
       "branch": "z-hilbertquill/streaming-rendition-qa-pilot-1016",
       "created_at": "2026-09-13T14:31:26Z",
       "draft": false,
-      "head_sha": "2ab8e356ae7ef89ecef6d3f0bebdbdb6fbfb5624",
+      "head_sha": "d10c8925b482a227a1d33b9bb287f96c12142c35",
       "number": 13948,
       "title": "revenue: package streaming rendition QA pilot",
-      "updated_at": "2026-09-13T14:31:26Z"
+      "updated_at": "2026-09-13T14:34:25Z"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "zeb-r2k7/cal-maine-batch-evidence-r2",
-      "created_at": "2026-09-13T14:31:07Z",
+      "branch": "zkb-p6v4/swarmops-typed-trust-13914r3",
+      "created_at": "2026-09-13T14:30:26Z",
       "draft": false,
-      "head_sha": "41f4e5c001a97d4624c5fbe2eea76feed427cf95",
-      "number": 13947,
-      "title": "feat(revenue): Cal-Maine pancake-line batch evidence gate",
-      "updated_at": "2026-09-13T14:31:07Z"
+      "head_sha": "3a6e1807126dab6f893dd766b0df03c775a96847",
+      "number": 13944,
+      "title": "fix: bind SwarmOps commercial trust to typed receipt roles",
+      "updated_at": "2026-09-13T14:30:26Z"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "zgl-h2p6/nih-temporal-evidence",
-      "created_at": "2026-09-13T14:30:50Z",
+      "branch": "zfr-j7q2/f46-saleable-quantity-forecast-20260913",
+      "created_at": "2026-09-13T14:29:56Z",
       "draft": false,
-      "head_sha": "ec60d59f6c756c097cde8472b15e07b913caee22",
-      "number": 13946,
-      "title": "Add bitemporal evidence reasoning core for NIH temporal KG challenge",
-      "updated_at": "2026-09-13T14:30:50Z"
+      "head_sha": "7019e8b6a2d6374e81cc7990cb6d62040395cc8c",
+      "number": 13943,
+      "title": "titan: add F46 saleable-quantity dead-suffix guard",
+      "updated_at": "2026-09-13T14:29:56Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zvc-q7m4/agentic-genai-evaluation-gate",
+      "created_at": "2026-09-13T14:29:52Z",
+      "draft": false,
+      "head_sha": "d91dd1fbde1fb69276fc828c95c06bc9d9ec6cd8",
+      "number": 13942,
+      "title": "Add agentic GenAI evaluation evidence gate",
+      "updated_at": "2026-09-13T14:34:21Z"
     }
   ],
   "open_heads": {
@@ -210,27 +210,112 @@
     "13877": "0a86059fec8319f9b3782e833089d76847bc408b",
     "13901": "54fa9ce0b97e2457aebb087fd4b6f9fdd979536e",
     "13902": "0ad7356c59a25f47dac74c2a4a744c334a8397fa",
-    "13910": "188e0d5d864e65044b463b0dd46aa91f0cf0a202",
+    "13910": "8c56dd0fa7679e5eb8de8e76b5ee41f0aa2f885b",
     "13937": "3e8e49283f282848c24d303a912254625fc3bb11",
     "13941": "c3621144f1ae98f97301c46f5c0ec58972979655",
     "13942": "d91dd1fbde1fb69276fc828c95c06bc9d9ec6cd8",
     "13943": "7019e8b6a2d6374e81cc7990cb6d62040395cc8c",
     "13944": "3a6e1807126dab6f893dd766b0df03c775a96847",
-    "13946": "ec60d59f6c756c097cde8472b15e07b913caee22",
-    "13947": "41f4e5c001a97d4624c5fbe2eea76feed427cf95",
-    "13948": "2ab8e356ae7ef89ecef6d3f0bebdbdb6fbfb5624",
+    "13948": "d10c8925b482a227a1d33b9bb287f96c12142c35",
     "13950": "acfada278aa045e39eb4f06638831b03f6fc9662",
-    "13951": "3d91304e5ecf57452447842a8bd875063d466de6",
-    "13952": "2f3c0ac06dedc07a10417d0e7c533527d165e91c",
     "13954": "35c851372836f826ea16354291529e31846cdb72",
-    "13957": "78a2747228c0b2933a9d0ebf43fd5d2ffee5511e",
-    "13958": "8c683e89357e6457b183c37aa0bea9a18544836e",
-    "13959": "1469458aabdc55480da24775fe91f34aae3410d3"
+    "13959": "1469458aabdc55480da24775fe91f34aae3410d3",
+    "13962": "1dc2a2dd3e866029032e0dd3f472c82478c78f19",
+    "13963": "5de42663c3b68ebe441b7407185086c620f84aa0",
+    "13965": "fb55ed6ec666c609db17d64da9f278df59d5fc4d"
   },
-  "pulls_listed": 48,
+  "pulls_listed": 45,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 57.9,
+  "queue_depth_per_runner": 58.8,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zgl-h2p6/nih-temporal-evidence-mainline",
+      "closed_at": "2026-09-13T14:36:09Z",
+      "head_sha": "8c7be82be37bacaed8d01a91afa21a0e0d1e252f",
+      "merged_at": "2026-09-13T14:36:09Z",
+      "number": 13961,
+      "state": "MERGED",
+      "title": "Add bitemporal evidence reasoning core for NIH temporal KG challenge"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zfn-a7/grandrapids-release-subject-13918",
+      "closed_at": "2026-09-13T14:36:00Z",
+      "head_sha": "2f3c0ac06dedc07a10417d0e7c533527d165e91c",
+      "merged_at": null,
+      "number": 13952,
+      "state": "CLOSED",
+      "title": "fix: bind Grand Rapids packet verification and owner release subject"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zeb-r2k7/cal-maine-batch-evidence-r2",
+      "closed_at": "2026-09-13T14:35:49Z",
+      "head_sha": "12ff67f30851e9ddc6f053a7c6edb8ebc8bd18c4",
+      "merged_at": "2026-09-13T14:35:49Z",
+      "number": 13947,
+      "state": "MERGED",
+      "title": "feat(revenue): Cal-Maine pancake-line batch evidence gate"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "fix/grand-rapids-release-subject-zpaf3n8",
+      "closed_at": "2026-09-13T14:35:36Z",
+      "head_sha": "3d91304e5ecf57452447842a8bd875063d466de6",
+      "merged_at": null,
+      "number": 13951,
+      "state": "CLOSED",
+      "title": "fix(grand-rapids): bind owner release to exact evidence subject"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zaster/airdrie-trusted-authority-20260913",
+      "closed_at": "2026-09-13T14:35:30Z",
+      "head_sha": "483d6ae95da8f01f41664ecc0b68e5911a11b104",
+      "merged_at": "2026-09-13T14:35:30Z",
+      "number": 13960,
+      "state": "MERGED",
+      "title": "fix: authenticate Airdrie controlling-source generations"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zvh-k3p8/streaming-rendition-qa-pilot-20260913",
+      "closed_at": "2026-09-13T14:34:48Z",
+      "head_sha": "8c683e89357e6457b183c37aa0bea9a18544836e",
+      "merged_at": null,
+      "number": 13958,
+      "state": "CLOSED",
+      "title": "revenue: package streaming rendition QA as bounded paid diagnostic"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zom-k8j3-dhs-ready-set-id",
+      "closed_at": "2026-09-13T14:34:30Z",
+      "head_sha": "78a2747228c0b2933a9d0ebf43fd5d2ffee5511e",
+      "merged_at": "2026-09-13T14:34:30Z",
+      "number": 13957,
+      "state": "MERGED",
+      "title": "DHS Ready Set ID: defensive $999,990 challenge carrier + anomaly baseline"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zgl-h2p6/nih-temporal-evidence",
+      "closed_at": "2026-09-13T14:34:29Z",
+      "head_sha": "ec60d59f6c756c097cde8472b15e07b913caee22",
+      "merged_at": null,
+      "number": 13946,
+      "state": "CLOSED",
+      "title": "Add bitemporal evidence reasoning core for NIH temporal KG challenge"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -307,98 +392,10 @@
       "number": 13938,
       "state": "MERGED",
       "title": "Tate & Lyle / CP Kelco portfolio integration solution-proof gate"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zrt-p5v8/gtm-buyer-reply-materiality-20260913",
-      "closed_at": "2026-09-13T14:28:18Z",
-      "head_sha": "7f596709cf446d513fe394deb6eb317a2d8c6f28",
-      "merged_at": "2026-09-13T14:28:18Z",
-      "number": 13904,
-      "state": "MERGED",
-      "title": "GTM: separate buyer-reply arrival from commercial materiality"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-minkowski-harbor/del-monte-cutover-13911",
-      "closed_at": "2026-09-13T14:27:08Z",
-      "head_sha": "cb2182dcf47d892eed7fd5b9feb8fcb3d3ce2037",
-      "merged_at": "2026-09-13T14:27:08Z",
-      "number": 13930,
-      "state": "MERGED",
-      "title": "Revenue: ship Del Monte acquired-asset quality-master cutover gate"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zbf-q4r7/prooflens-readme-truth-fix-v2",
-      "closed_at": "2026-09-13T14:24:56Z",
-      "head_sha": "62d2e7fd7fde893e1854c2139c32339900a64a49",
-      "merged_at": "2026-09-13T14:24:56Z",
-      "number": 13925,
-      "state": "MERGED",
-      "title": "docs: reconcile ProofLens README with shipped S3 architecture"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zbf-q4r7/prooflens-readme-truth-fix",
-      "closed_at": "2026-09-13T14:23:47Z",
-      "head_sha": "5b65ad283f0334540572971e3f54405c59ee1ab5",
-      "merged_at": null,
-      "number": 13921,
-      "state": "CLOSED",
-      "title": "docs: reconcile ProofLens README with shipped S3 architecture"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "znc-p7w2/airdrie-data-management-qualification-20260913",
-      "closed_at": "2026-09-13T14:23:12Z",
-      "head_sha": "eeabeb57e26803b18828b10c505dcadc9c4d6916",
-      "merged_at": "2026-09-13T14:23:12Z",
-      "number": 13912,
-      "state": "MERGED",
-      "title": "feat: add Airdrie data-management qualification carrier"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zbk-p6v4/swarmops-commercial-trust-13903-r2",
-      "closed_at": "2026-09-13T14:22:12Z",
-      "head_sha": "028cf5cfe5ceacb5a5e133afdf44135ccb3bbf49",
-      "merged_at": "2026-09-13T14:22:12Z",
-      "number": 13914,
-      "state": "MERGED",
-      "title": "fix: bind SwarmOps commercial truth to independent receipts"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zbf-q4r7/opencv-agentic-vision-20260913",
-      "closed_at": "2026-09-13T14:21:52Z",
-      "head_sha": "f9897cbc059627bc5b1bcdf9268eceec62934d0b",
-      "merged_at": "2026-09-13T14:21:52Z",
-      "number": 13913,
-      "state": "MERGED",
-      "title": "feat: add ProofLens OpenCV 5 agentic vision competition carrier"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zaf-m7q2/multi-framework-evidence-freshness",
-      "closed_at": "2026-09-13T14:20:02Z",
-      "head_sha": "db51cf25eae8cda8b7226b13995131f203d99ade",
-      "merged_at": "2026-09-13T14:20:02Z",
-      "number": 13908,
-      "state": "MERGED",
-      "title": "Add multi-framework evidence freshness gate"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-13T14:34:00Z",
+  "unchanged_since": "2026-09-13T14:36:24Z",
   "undatable_pulls": []
 }
