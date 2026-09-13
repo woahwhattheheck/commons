@@ -1,9 +1,9 @@
 {
   "counts": {
     "open_issues": 15,
-    "open_pull_requests": 19,
-    "runs_in_progress": 17,
-    "runs_queued": 653
+    "open_pull_requests": 20,
+    "runs_in_progress": 19,
+    "runs_queued": 657
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -66,6 +66,17 @@
     }
   ],
   "newest_pulls": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zath-q9v3/lawrence-youth-ai-qualification-20260913",
+      "created_at": "2026-09-13T10:15:07Z",
+      "draft": false,
+      "head_sha": "f32c5757a5ec64b075899e23b26f68cce5c7e4b5",
+      "number": 13740,
+      "title": "revenue: add Lawrence Youth AI qualification gate",
+      "updated_at": "2026-09-13T10:15:07Z"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -164,17 +175,6 @@
       "number": 13692,
       "title": "TITAN V5: exact-head reject symlinked champion evidence inputs",
       "updated_at": "2026-09-13T09:42:26Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zax/ohsu-digital-pathology-evidence-20260913",
-      "created_at": "2026-09-13T09:33:58Z",
-      "draft": false,
-      "head_sha": "d7d6a0a0dacf3d832fc62d6e0b1a39b15a985b54",
-      "number": 13683,
-      "title": "revenue: add OHSU digital pathology qualification evidence gate",
-      "updated_at": "2026-09-13T09:33:58Z"
     }
   ],
   "open_heads": {
@@ -196,11 +196,12 @@
     "13712": "e5d13ab500ff195dd85df2728f85794dab2fe048",
     "13732": "f6b90a9a3079d93fe3f737edc5fc31a1a4adea3d",
     "13735": "76ca15f9c7ce949b3a855b4451053166e0c0b3fa",
-    "13739": "06ddd941be42656f94ff7ad3a5b43a7bc8c4c50b"
+    "13739": "06ddd941be42656f94ff7ad3a5b43a7bc8c4c50b",
+    "13740": "f32c5757a5ec64b075899e23b26f68cce5c7e4b5"
   },
-  "pulls_listed": 19,
+  "pulls_listed": 20,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 38.4,
+  "queue_depth_per_runner": 34.6,
   "recently_closed": [
     {
       "author": "woahwhattheheck",
@@ -370,6 +371,6 @@
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-13T10:15:05Z",
+  "unchanged_since": "2026-09-13T10:15:16Z",
   "undatable_pulls": []
 }
