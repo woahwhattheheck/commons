@@ -72,12 +72,26 @@ class ReviewGit(unittest.TestCase):
         self.assertEqual("HOLD", verdict["state"])
         self.assertIn("exact-head execution", verdict["reason"])
 
-    def test_execution_requirement_is_path_derived(self):
-        self.assertTrue(sr.execution_required(["module.py"]))
-        self.assertTrue(sr.execution_required(["config/policy.json"]))
-        self.assertTrue(sr.execution_required(["web/control.html"]))
-        self.assertTrue(sr.execution_required(["requirements.txt"]))
-        self.assertFalse(sr.execution_required(["README.md", "docs/guide.rst", "docs/guide.adoc"]))
+    def test_execution_requirement_is_change_object_derived(self):
+        def changed(path, old_mode="100644", new_mode="100644", status="M"):
+            return (status, path, old_mode, new_mode, "a" * 40, "b" * 40)
+
+        self.assertTrue(sr.execution_required([changed("module.py")]))
+        self.assertTrue(sr.execution_required([changed("config/policy.json")]))
+        self.assertTrue(sr.execution_required([changed("web/control.html")]))
+        self.assertTrue(sr.execution_required([changed("requirements.txt")]))
+        self.assertFalse(sr.execution_required([
+            changed("README.md"), changed("docs/guide.rst"), changed("docs/guide.adoc")
+        ]))
+        self.assertFalse(sr.execution_required([
+            changed("docs/new.md", old_mode="000000", status="A"),
+            changed("docs/old.rst", new_mode="000000", status="D"),
+        ]))
+        self.assertTrue(sr.execution_required([changed("AGENTS.md")]))
+        self.assertTrue(sr.execution_required([changed(sr.POLICY)]))
+        self.assertTrue(sr.execution_required([changed(".github/review-notes.md")]))
+        self.assertTrue(sr.execution_required([changed("docs/link.md", "120000", "120000")]))
+        self.assertTrue(sr.execution_required([changed("docs/module.adoc", "160000", "160000")]))
 
     def test_unrelated_main_advance_reuses_review(self):
         self.write("unrelated.py", "another builder"); new = self.commit("unrelated")
