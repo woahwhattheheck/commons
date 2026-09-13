@@ -38,7 +38,7 @@ const document = {
 };
 const context = {
   document, URLSearchParams, location: {search: '', href: 'https://lantern.invalid/'},
-  history: {replaceState() {}}, localStorage: {getItem() {return null}, setItem() {}},
+  history: {replaceState() {}}, localStorage: {getItem() {return null}, setItem() {}, removeItem() {}},
   fetch: async () => ({ok: true, json: async () => []}),
   setInterval: () => 0, confirm: () => false, fixture: input.state
 };
@@ -62,6 +62,7 @@ class ResultsDownloadTests(unittest.TestCase):
         self.addCleanup(self.temp.cleanup)
         self.database = Path(self.temp.name) / 'native events.sqlite3'
         self.process = None
+        self.host_keys = {}
         self.start_server()
         self.addCleanup(self.stop_server)
 
@@ -121,7 +122,9 @@ class ResultsDownloadTests(unittest.TestCase):
                    'ends': now+3600, 'questions': [
                        {'prompt': 'Select A', 'choices': ['A', 'B'], 'correct': 0, 'points': 250}]}
         payload.update(changes)
-        return self.api('/api/events', payload, expected=201)['id']
+        created = self.api('/api/events', payload, expected=201)
+        self.host_keys[created['id']] = created['host_key']
+        return created['id']
 
     def player(self, event, name, choice=None):
         member = self.api(f'/api/events/{event}/join', {'name': name})['id']
@@ -130,7 +133,7 @@ class ResultsDownloadTests(unittest.TestCase):
         return member
 
     def finish(self, event):
-        return self.api(f'/api/events/{event}/finish', {})
+        return self.api(f'/api/events/{event}/finish', {'host_key': self.host_keys[event]})
 
     def download(self, event, format='json'):
         status, headers, body = self.request(f'/api/events/{event}/results.{format}')

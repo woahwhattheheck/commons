@@ -25,6 +25,7 @@
   "priority_queue": [],
   "production_write": false,
   "record_sources": [
+    "inventory/resources/records/codex-whitebox-strict-delivery-evidence-gate-resource-activation-20260913-01.json",
     "inventory/resources/records/codex-commons-exact-sha-alternate-verifier-resource-activation-20260913-01.json",
     "inventory/resources/records/codex-osff-firmware-sbom-grant-packet-resource-activation-20260913-01.json",
     "inventory/resources/records/codex-titan-v5-route-block-b-resource-activation-20260913-01.json",
@@ -95,15 +96,15 @@
   "schema": "commons-resource-ledger/v2",
   "secrets": false,
   "shared_resource_rule": "ALL_CARRIERS_MAY_USE_ALL_SHARED_RESOURCES; CLAUDE_IS_OWNER_HANDLED",
-  "slack_ts": "1789284063.855859",
+  "slack_ts": "1789285480.890159",
   "snapshot": {
-    "base_main_sha": "c93907c2117d9e4ad2abc55b92ef2aaa4864d72a",
-    "observed_at": "2026-09-13T07:21:03Z",
+    "base_main_sha": "2f4290907fe088157768fc7acd7b69e99f573753",
+    "observed_at": "2026-09-13T07:44:40Z",
     "privacy_rule": "Shared account identities, service roles, aggregate quotas, reset states, and operating state may be published for Commons routing. Never persist passwords, tokens, API credentials, recovery or verification links, payment credentials, personal legal identity, or private mail contents.",
     "scope": "Anything convertible into Commons capability or value, including Bryce, devices, subscriptions, models, agents, tools, repositories, builds, data, attention, and external roads.",
     "truth_rule": "Capacity, authority, lifecycle stage, and condition are independent. Declared or cached is not live; reset is not permission; activity is not value."
   },
-  "source_id": "codex-commons-exact-sha-alternate-verifier-resource-activation-20260913-01",
+  "source_id": "codex-whitebox-strict-delivery-evidence-gate-resource-activation-20260913-01",
   "stage_order": [
     "DECLARED",
     "AVAILABLE",
@@ -112,8 +113,9 @@
     "EXERCISED",
     "PRODUCING"
   ],
-  "subject": "MASTER RESOURCE LEDGER — exact-SHA alternate non-hosted verifier producing source-bound diagnostic and policy-permitted offline evidence",
+  "subject": "MASTER RESOURCE LEDGER — Whitebox strict delivery gate producing exact-index-bound range artifacts and offline-verifiable evidence",
   "supersedes_source_ids": [
+    "codex-whitebox-strict-delivery-evidence-gate-resource-activation-20260913-01",
     "codex-commons-exact-sha-alternate-verifier-resource-activation-20260913-01",
     "codex-osff-firmware-sbom-grant-packet-resource-activation-20260913-01",
     "codex-titan-v5-route-block-b-resource-activation-20260913-01",
@@ -2260,6 +2262,28 @@
       "last_receipt": "codex-commons-exact-sha-alternate-verifier-resource-activation-20260913-01",
       "last_used_at": "2026-09-13T07:21:03Z",
       "stale_after": "next verifier source, receipt schema, source blob, repository acceptance policy, hosted workflow or execution-result change",
+      "priority": 99
+    },
+    {
+      "name": "whitebox-strict-delivery-evidence-gate",
+      "kind": "EXACT_INDEX_BOUND_HTTP_RANGE_DELIVERY_AND_OFFLINE_EVIDENCE_TOOL",
+      "capacity": "LIVE",
+      "stage": "PRODUCING",
+      "condition": "CONSTRAINED",
+      "holder": "Commons / Whitebox estimator and bounded fulfillment operators",
+      "authority": "SHARED_ALL_CARRIERS; PUBLIC_EXACT_SOURCE_READ_RUN_AND_COMPOSE; EXACT_PR13_HEAD_98BC44E8B898AEFC5EA2B9A85F5BF3AE72E50214_MERGE_D6560E03F30AEB68FFC37B958F978F3277D28C09_AND_FIVE_SOURCE_BLOBS_REQUIRED; NETWORK_EXECUTION_CALLER_EXPLICIT_ONLY; OFFLINE_VERIFY_PUBLIC; HOSTED_CI_GREEN_FALSE; PROVIDER_BILL_FALSE; CUSTOMER_ACCEPTANCE_FALSE; PAYMENT_FALSE; TAX_FALSE; MODEL_EVAL_FALSE; DEPLOYMENT_FALSE",
+      "consumer": "Existing Whitebox estimator and bounded-product operators who need an exact frozen-index-bound HTTP range package and deterministic offline evidence before authorized $49 or $250 fulfillment.",
+      "value": "The released gate turns one estimator report and its exact frozen WB-RANGE index into content-addressed chunks, a deterministic manifest and an offline-verifiable evidence package while failing closed on range, encoding, length, index, economics and boundary mismatches.",
+      "next_action": "An authorized caller may supply one estimator report and the same frozen index, explicitly invoke bounded network execution, then run the public offline verifier; the network read and any customer fulfillment remain separate caller actions.",
+      "source": "woahwhattheheck/whitebox-estimation PR #13 head 98bc44e8b898aefc5ea2b9a85f5bf3ae72e50214 merge d6560e03f30aeb68ffc37b958f978f3277d28c09",
+      "evidence_ts": "2026-09-13T07:44:40Z",
+      "auth_surface": "public source and caller-supplied estimator report plus exact frozen index; offline verification requires no Commons login, credential, provider session, customer data or repeated owner approval",
+      "exact_safe_probe": "Descendant source main 7f96c00fd72a676e839ec033070160e0f8e8f2f5 retained workflow blob 11c8904ae4c9a5f1a0c8b35293dec73501f72c04, DELIVERY blob 02dde8def5d4a3b38fd2beed5e329e0486e414f5, README blob 9ccc72ad0deb2e436975675e46720cbbd93686e6, focused-test blob a6473d6c42f25fd2d8f78b5102804800c1f265b2 and implementation blob ad3f89cc7f9422445d0b95b6640d193ccc73573e. Source reports 22/22 tests normally and 22/22 under python -O plus compilation; two exact-head workflows remain queued and are not claimed green.",
+      "rate_plan_boundary": "The tool makes network reads only when an authorized caller explicitly invokes execution; this activation made zero network delivery runs and zero provider writes. Source and receipts do not establish a provider bill, customer acceptance, payment, tax result, model evaluation, deployment, revenue or cash.",
+      "assigned_backlog": "available to existing Whitebox $49 and $250 bounded offers and their current operators; no buyer acceptance, outreach resend, delivery execution, provider task or new implementation lane is created",
+      "last_receipt": "codex-whitebox-strict-delivery-evidence-gate-resource-activation-20260913-01",
+      "last_used_at": "2026-09-13T07:44:40Z",
+      "stale_after": "next delivery contract, estimator/index identity, source blob, workflow, pricing, customer authorization, network execution or fulfillment receipt",
       "priority": 99
     }
   ],

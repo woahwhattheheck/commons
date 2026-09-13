@@ -150,7 +150,7 @@ class HTTPTests(unittest.TestCase):
         self.assertFalse(self.request(base+"/answers", answer)[1]["replayed"])
         self.assertTrue(self.request(base+"/answers", answer)[1]["replayed"])
         self.assertEqual(self.request(base+"?member="+member["id"])[1]["answers"][0]["choice"], 0)
-        self.assertEqual(self.request(base+"/finish", {})[0], 200)
+        self.assertEqual(self.request(base+"/finish", {"host_key": created["host_key"]})[0], 200)
         finished = self.request(base)[1]
         self.assertEqual(finished["leaderboard"][0]["points"], 100)
         self.assertEqual(finished["questions"][0]["correct"], 0)

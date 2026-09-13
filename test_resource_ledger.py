@@ -145,10 +145,14 @@ class TestResourceLedger(unittest.TestCase):
             text = handle.read()
         catalog = load_catalog(text)
         raw = json.loads(text)
-        self.assertEqual(catalog["slack_ts"], "1789284063.855859")
+        self.assertEqual(catalog["slack_ts"], "1789285480.890159")
         self.assertEqual(
             catalog["source_id"],
-            "codex-commons-exact-sha-alternate-verifier-resource-activation-20260913-01",
+            "codex-whitebox-strict-delivery-evidence-gate-resource-activation-20260913-01",
+        )
+        self.assertIn(
+            "codex-whitebox-strict-delivery-evidence-gate-resource-activation-20260913-01",
+            raw.get("supersedes_source_ids") or [],
         )
         self.assertIn(
             "codex-commons-exact-sha-alternate-verifier-resource-activation-20260913-01",
@@ -339,10 +343,10 @@ class TestResourceLedger(unittest.TestCase):
             "inventory",
             "resources",
             "records",
-            "codex-commons-exact-sha-alternate-verifier-resource-activation-20260913-01.json",
+            "codex-whitebox-strict-delivery-evidence-gate-resource-activation-20260913-01.json",
         )
         self.assertIn(
-            "inventory/resources/records/codex-commons-exact-sha-alternate-verifier-resource-activation-20260913-01.json",
+            "inventory/resources/records/codex-whitebox-strict-delivery-evidence-gate-resource-activation-20260913-01.json",
             raw.get("record_sources") or [],
         )
         with open(current_activation_path, encoding="utf-8") as handle:
@@ -354,52 +358,56 @@ class TestResourceLedger(unittest.TestCase):
         )
         self.assertEqual(
             current_activation["selected_resource"],
-            "commons-exact-sha-alternate-verifier",
+            "whitebox-strict-delivery-evidence-gate",
         )
-        self.assertEqual(current_activation["projection"]["resources"], 96)
-        self.assertEqual(current_activation["projection"]["producing"], 68)
-        self.assertEqual(current_activation["projection"]["inventory_records"], 58)
-        self.assertEqual(current_activation["production_truth"]["source_pr"], 13586)
+        self.assertEqual(current_activation["projection"]["resources"], 97)
+        self.assertEqual(current_activation["projection"]["producing"], 69)
+        self.assertEqual(current_activation["projection"]["inventory_records"], 59)
+        self.assertEqual(
+            current_activation["production_truth"]["source_repository"],
+            "woahwhattheheck/whitebox-estimation",
+        )
+        self.assertEqual(current_activation["production_truth"]["source_pr"], 13)
         self.assertEqual(
             current_activation["production_truth"]["source_merge_sha"],
-            "82457b4fbc99a64a5fa10203814ab6c3729c9de3",
+            "d6560e03f30aeb68ffc37b958f978f3277d28c09",
         )
         self.assertEqual(
             current_activation["production_truth"]["source_head_sha"],
-            "67a5172574db3c600e736f8877251748e42a7d9d",
+            "98bc44e8b898aefc5ea2b9a85f5bf3ae72e50214",
         )
         self.assertEqual(
             set(current_activation["production_truth"]["source_paths"]),
             {
-                "tools/exact_sha_alt_verifier/README.md",
-                "tools/exact_sha_alt_verifier/exact_sha_alt_verifier.py",
-                "tools/exact_sha_alt_verifier/test_exact_sha_alt_verifier.py",
+                ".github/workflows/delivery-contract.yml",
+                "DELIVERY.md",
+                "README.md",
+                "test_whitebox_delivery.py",
+                "whitebox_delivery.py",
             },
         )
         self.assertEqual(
             current_activation["production_truth"]["source_paths"]
-            ["tools/exact_sha_alt_verifier/exact_sha_alt_verifier.py"]["git_blob"],
-            "839dc8a9f61bf1d4d781a0a85d7c5f7ac66f254b",
-        )
-        self.assertEqual(
-            current_activation["production_truth"]["source_paths"]
-            ["tools/exact_sha_alt_verifier/exact_sha_alt_verifier.py"]["sha256"],
-            "7c5d56e08af816a267586cc30f4bc6ace324bbcf63ec3f3121c78f87ba6d944b",
-        )
-        self.assertEqual(
-            current_activation["production_truth"]["verification_kind"],
-            "alternate_nonhosted",
+            ["whitebox_delivery.py"]["git_blob"],
+            "ad3f89cc7f9422445d0b95b6640d193ccc73573e",
         )
         self.assertFalse(current_activation["production_truth"]["hosted_ci_green"])
-        self.assertFalse(
-            current_activation["production_truth"]["overrides_required_checks"]
+        self.assertTrue(current_activation["production_truth"]["exact_index_binding"])
+        self.assertTrue(
+            current_activation["production_truth"]["strict_http_206_and_content_range"]
         )
-        self.assertFalse(current_activation["production_truth"]["merge_authority"])
-        self.assertFalse(current_activation["production_truth"]["credentials_inherited"])
-        self.assertFalse(
-            current_activation["production_truth"]["network_sandbox_claimed"]
+        self.assertTrue(current_activation["production_truth"]["offline_verification"])
+        self.assertEqual(
+            current_activation["production_truth"]["network_delivery_runs_by_activation"],
+            0,
         )
         self.assertEqual(current_activation["production_truth"]["provider_writes"], 0)
+        self.assertFalse(current_activation["production_truth"]["provider_bill"])
+        self.assertFalse(current_activation["production_truth"]["customer_acceptance"])
+        self.assertFalse(current_activation["production_truth"]["payment"])
+        self.assertFalse(current_activation["production_truth"]["tax_result"])
+        self.assertFalse(current_activation["production_truth"]["model_evaluation"])
+        self.assertFalse(current_activation["production_truth"]["deployment"])
         self.assertEqual(
             set(current_activation["production_truth"]["source_head_workflows"].values()),
             {"QUEUED"},
@@ -530,6 +538,25 @@ class TestResourceLedger(unittest.TestCase):
         self.assertIn("MERGE_AUTHORITY_FALSE", rows["commons-exact-sha-alternate-verifier"]["authority"])
         self.assertIn("839dc8a9f61bf1d4d781a0a85d7c5f7ac66f254b", rows["commons-exact-sha-alternate-verifier"]["exact_safe_probe"])
         self.assertIn("does not prove hosted ci", rows["commons-exact-sha-alternate-verifier"]["rate_plan_boundary"].lower())
+        self.assertEqual(rows["whitebox-strict-delivery-evidence-gate"]["capacity"], "LIVE")
+        self.assertEqual(rows["whitebox-strict-delivery-evidence-gate"]["stage"], "PRODUCING")
+        self.assertEqual(rows["whitebox-strict-delivery-evidence-gate"]["condition"], "CONSTRAINED")
+        self.assertIn(
+            "NETWORK_EXECUTION_CALLER_EXPLICIT_ONLY",
+            rows["whitebox-strict-delivery-evidence-gate"]["authority"],
+        )
+        self.assertIn(
+            "HOSTED_CI_GREEN_FALSE",
+            rows["whitebox-strict-delivery-evidence-gate"]["authority"],
+        )
+        self.assertIn(
+            "ad3f89cc7f9422445d0b95b6640d193ccc73573e",
+            rows["whitebox-strict-delivery-evidence-gate"]["exact_safe_probe"],
+        )
+        self.assertIn(
+            "zero network delivery runs",
+            rows["whitebox-strict-delivery-evidence-gate"]["rate_plan_boundary"].lower(),
+        )
         self.assertIn("September 7 global reset", rows["gpt-6-astra-codex-carrier"]["next_action"])
         self.assertEqual(rows["google-ai-mode-browser-mesh"]["capacity"], "LIVE")
         self.assertEqual(rows["google-ai-mode-browser-mesh"]["stage"], "PRODUCING")
