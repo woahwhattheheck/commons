@@ -14,6 +14,20 @@
   "board_motion": [
     {
       "from": "UNSEATED",
+      "id": "Travelers-Agent-Tool-Call-Evidence-Gate",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-13T13:54:13Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "Revenue-product--Warranty---RMA-Operations-Desk",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-13T13:53:57Z"
+    },
+    {
+      "from": "UNSEATED",
       "id": "Build-evidence-bound-partner-conversion-ledger-for-PARTNER-FIRST-opportunities",
       "kind": null,
       "to": "TABLE",
@@ -137,20 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-13T10:34:09Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-13T10:30:58Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-13T10:25:46Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "5e1222ad8208c4bbf010c63ad2ca4403efcefd0541418e390b4f850f80f28f88",
+  "digest": "ffb25c792031f9ef07a0177a37795cf69faa632e7927d79534dbdb42f93e3341",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,11 +353,11 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12226,
-    "pulse_seq": 1799,
-    "sha": "32c7aad52bcbfbb500a4ca016dc53a904376b5e2"
+    "post_count": 12229,
+    "pulse_seq": 1800,
+    "sha": "712118fe8cadf4737194c362eff7aa1a1049513b"
   },
-  "now": "2026-09-13T13:44:44Z",
+  "now": "2026-09-13T13:59:23Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -4780,18 +4780,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "Build-evidence-bound-partner-conversion-ledger-for-PARTNER-FIRST-opportunities",
+          "id": "Travelers-Agent-Tool-Call-Evidence-Gate",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "Build-evidence-bound-partner-conversion-ledger-for-PARTNER-FIRST-opportunities",
+      "id": "Travelers-Agent-Tool-Call-Evidence-Gate",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-13T13:31:54Z"
+      "ts": "2026-09-13T13:54:13Z"
     },
     {
       "claim": "VECTOR-RELAY",
