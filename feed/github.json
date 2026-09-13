@@ -1,9 +1,9 @@
 {
   "counts": {
-    "open_issues": 45,
+    "open_issues": 44,
     "open_pull_requests": 32,
-    "runs_in_progress": 18,
-    "runs_queued": 790
+    "runs_in_progress": 20,
+    "runs_queued": 794
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -83,10 +83,10 @@
       "branch": "zfa/commercial-terms-lineage-20260913",
       "created_at": "2026-09-13T13:52:52Z",
       "draft": false,
-      "head_sha": "48d687e63d5b0f9daab2d9be9b734a482a1012f6",
+      "head_sha": "87da5ee83ac913ec4dadf2b85697ec5e4ba26264",
       "number": 13877,
       "title": "revenue: add source-bound commercial terms exception lineage",
-      "updated_at": "2026-09-13T13:58:54Z"
+      "updated_at": "2026-09-13T14:02:57Z"
     },
     {
       "author": "woahwhattheheck",
@@ -174,7 +174,7 @@
       "head_sha": "51a23e49c939f3090aedd852539fa2f1806ae630",
       "number": 13844,
       "title": "feat(revenue): evidence-bound teaming conversion control",
-      "updated_at": "2026-09-13T13:29:31Z"
+      "updated_at": "2026-09-13T14:01:56Z"
     }
   ],
   "open_heads": {
@@ -208,12 +208,12 @@
     "13864": "8fe905a0a9cb03b79f916fd8e97585b50da745a7",
     "13865": "d729342fc448e21e25a7d432b7c5453e4a9774d9",
     "13874": "a93869989cf7dff65ffa16e08264119ced7979b6",
-    "13877": "48d687e63d5b0f9daab2d9be9b734a482a1012f6",
+    "13877": "87da5ee83ac913ec4dadf2b85697ec5e4ba26264",
     "13890": "48d1cbee636ecf156bc86f8deae3d47aa3daa927"
   },
   "pulls_listed": 32,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 43.9,
+  "queue_depth_per_runner": 39.7,
   "recently_closed": [
     {
       "author": "woahwhattheheck",
@@ -383,6 +383,6 @@
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-13T14:01:54Z",
+  "unchanged_since": "2026-09-13T14:03:11Z",
   "undatable_pulls": []
 }
