@@ -117,22 +117,32 @@ def _evidence(x,i):
 
 def evidence_digest(record): return record_digest(_evidence(record,0))
 
+def _opportunity(x):
+    x=_obj(x,"opportunity"); _keys(x,{"opportunity_id","title"},"opportunity")
+    return {"opportunity_id":_id(x["opportunity_id"],"opportunity.opportunity_id"),"title":_text(x["title"],"opportunity.title",240)}
+
+def opportunity_digest(record): return record_digest(_opportunity(record))
+
 def _requirement(x,i,opp):
     w=f"requirements[{i}]"; x=_obj(x,w); _keys(x,{"requirement_id","opportunity_id","label","required_count"},w)
     oid=_id(x["opportunity_id"],f"{w}.opportunity_id")
     if oid!=opp: raise ReferenceAuthorityError(f"{w}.opportunity_id does not match packet opportunity")
     return {"requirement_id":_id(x["requirement_id"],f"{w}.requirement_id"),"opportunity_id":oid,"label":_text(x["label"],f"{w}.label",200),"required_count":_int(x["required_count"],f"{w}.required_count",1,100)}
 
+def requirement_digest(record):
+    x=_obj(record,"requirement"); oid=_id(x.get("opportunity_id"),"requirement.opportunity_id")
+    return record_digest(_requirement(x,0,oid))
+
 def _authority(x,i,opp,kind,reqs):
     # kind: disclosure / permission / comparison
     w={"d":"disclosure_authorities","p":"reference_permissions","c":"comparability_authorities"}[kind]+f"[{i}]"; x=_obj(x,w)
-    common={"evidence_id","evidence_digest","opportunity_id","expires_at"}
+    common={"evidence_id","evidence_digest","opportunity_id","opportunity_digest","expires_at"}
     if kind=="d": names=common|{"authority_id","use_class","status","observed_at","authority_ref","authority_sha256"}
-    elif kind=="p": names=common|{"permission_id","requirement_id","status","observed_at","permission_ref","permission_sha256"}
-    else: names=common|{"assessment_id","requirement_id","status","assessed_at","assessment_ref","assessment_sha256"}
+    elif kind=="p": names=common|{"permission_id","requirement_id","requirement_digest","status","observed_at","permission_ref","permission_sha256"}
+    else: names=common|{"assessment_id","requirement_id","requirement_digest","status","assessed_at","assessment_ref","assessment_sha256"}
     _keys(x,names,w); oid=_id(x["opportunity_id"],f"{w}.opportunity_id")
     if oid!=opp: raise ReferenceAuthorityError(f"{w}.opportunity_id does not match packet opportunity")
-    out={"evidence_id":_id(x["evidence_id"],f"{w}.evidence_id"),"evidence_digest":_sha(x["evidence_digest"],f"{w}.evidence_digest"),"opportunity_id":oid,"expires_at":_ots(x["expires_at"],f"{w}.expires_at")}
+    out={"evidence_id":_id(x["evidence_id"],f"{w}.evidence_id"),"evidence_digest":_sha(x["evidence_digest"],f"{w}.evidence_digest"),"opportunity_id":oid,"opportunity_digest":_sha(x["opportunity_digest"],f"{w}.opportunity_digest"),"expires_at":_ots(x["expires_at"],f"{w}.expires_at")}
     if kind=="d":
         use=_text(x["use_class"],f"{w}.use_class",32); status=_text(x["status"],f"{w}.status",16)
         if use not in DISCLOSURE_USE_CLASSES or status not in AUTHORITY_STATUSES: raise ReferenceAuthorityError(f"{w} unsupported use/status")
@@ -141,6 +151,7 @@ def _authority(x,i,opp,kind,reqs):
         rid=_id(x["requirement_id"],f"{w}.requirement_id")
         if rid not in reqs: raise ReferenceAuthorityError(f"{w}.requirement_id unknown")
         out["requirement_id"]=rid
+        out["requirement_digest"]=_sha(x["requirement_digest"],f"{w}.requirement_digest")
         if kind=="p":
             status=_text(x["status"],f"{w}.status",16)
             if status not in AUTHORITY_STATUSES: raise ReferenceAuthorityError(f"{w}.status unsupported")
@@ -154,7 +165,7 @@ def _authority(x,i,opp,kind,reqs):
 def normalize_packet(packet):
     p=_obj(packet,"packet"); _keys(p,{"schema_version","opportunity","requirements","evidence","disclosure_authorities","reference_permissions","comparability_authorities"},"packet")
     if p["schema_version"]!=SCHEMA_VERSION: raise ReferenceAuthorityError(f"unsupported schema_version: {p['schema_version']!r}")
-    o=_obj(p["opportunity"],"opportunity"); _keys(o,{"opportunity_id","title"},"opportunity"); opp=_id(o["opportunity_id"],"opportunity.opportunity_id")
+    o=_opportunity(p["opportunity"]); opp=o["opportunity_id"]
     req=[_requirement(x,i,opp) for i,x in enumerate(_arr(p["requirements"],"requirements"))]
     ev=[_evidence(x,i) for i,x in enumerate(_arr(p["evidence"],"evidence"))]
     if not req or not ev: raise ReferenceAuthorityError("requirements and evidence must not be empty")
@@ -166,33 +177,35 @@ def normalize_packet(packet):
     for rows,name in ((ds,"disclosure authority"),(ps,"reference permission"),(cs,"comparability authority")):
         for r in rows:
             if r["evidence_id"] not in eids: raise ReferenceAuthorityError(f"{name} references unknown evidence_id {r['evidence_id']}")
-    return {"schema_version":SCHEMA_VERSION,"opportunity":{"opportunity_id":opp,"title":_text(o["title"],"opportunity.title",240)},"requirements":sorted(req,key=lambda x:x["requirement_id"]),"evidence":sorted(ev,key=lambda x:x["evidence_id"]),"disclosure_authorities":sorted(ds,key=lambda x:x["authority_id"]),"reference_permissions":sorted(ps,key=lambda x:x["permission_id"]),"comparability_authorities":sorted(cs,key=lambda x:x["assessment_id"])}
+    return {"schema_version":SCHEMA_VERSION,"opportunity":o,"requirements":sorted(req,key=lambda x:x["requirement_id"]),"evidence":sorted(ev,key=lambda x:x["evidence_id"]),"disclosure_authorities":sorted(ds,key=lambda x:x["authority_id"]),"reference_permissions":sorted(ps,key=lambda x:x["permission_id"]),"comparability_authorities":sorted(cs,key=lambda x:x["assessment_id"])}
 
 def _now(v=None):
     d=v if v is not None else datetime.now(timezone.utc)
     if not isinstance(d,datetime) or d.tzinfo is None: raise ReferenceAuthorityError("trusted_now must be timezone-aware datetime")
     return d.astimezone(timezone.utc).replace(microsecond=0)
 
-def _resolve(rows,digest,now,timef,statusf,good,idf,prefix):
+def _resolve(rows,digest,now,timef,statusf,good,idf,prefix,opportunity_generation,requirement_generation=None):
     if not rows: return None,f"MISSING_{prefix}"
     if any(_dt(x[timef])>now for x in rows): return None,f"FUTURE_{prefix}"
     rows=sorted(rows,key=lambda x:(_dt(x[timef]),x[idf])); t=_dt(rows[-1][timef]); tied=[x for x in rows if _dt(x[timef])==t]
     if len(tied)>1 and len({canonical_bytes(x) for x in tied})>1: return None,f"AMBIGUOUS_{prefix}"
     x=rows[-1]
     if x["evidence_digest"]!=digest: return None,f"{prefix}_EVIDENCE_DIGEST_MISMATCH"
+    if x["opportunity_digest"]!=opportunity_generation: return None,f"{prefix}_OPPORTUNITY_DIGEST_MISMATCH"
+    if requirement_generation is not None and x["requirement_digest"]!=requirement_generation: return None,f"{prefix}_REQUIREMENT_DIGEST_MISMATCH"
     if x[statusf]!=good: return None,f"{prefix}_{x[statusf]}"
     if x["expires_at"] is not None and _dt(x["expires_at"])<=now: return None,f"EXPIRED_{prefix}"
     return x,None
 
 def compile_registry(packet,*,trusted_now=None):
-    p=normalize_packet(packet); now=_now(trusted_now); opp=p["opportunity"]["opportunity_id"]; ev={x["evidence_id"]:x for x in p["evidence"]}; digs={k:record_digest(v) for k,v in ev.items()}
+    p=normalize_packet(packet); now=_now(trusted_now); opp=p["opportunity"]["opportunity_id"]; oppdig=record_digest(p["opportunity"]); reqdigs={x["requirement_id"]:record_digest(x) for x in p["requirements"]}; ev={x["evidence_id"]:x for x in p["evidence"]}; digs={k:record_digest(v) for k,v in ev.items()}
     ds={k:[] for k in ev}; ps={}; cs={}
     for x in p["disclosure_authorities"]: ds[x["evidence_id"]].append(x)
     for x in p["reference_permissions"]: ps.setdefault((x["evidence_id"],x["requirement_id"]),[]).append(x)
     for x in p["comparability_authorities"]: cs.setdefault((x["evidence_id"],x["requirement_id"]),[]).append(x)
     dstate={}; caps=[]
     for eid,e in sorted(ev.items()):
-        d,why=_resolve(ds[eid],digs[eid],now,"observed_at","status","AUTHORIZED","authority_id","DISCLOSURE_AUTHORITY"); dstate[eid]=(d,why)
+        d,why=_resolve(ds[eid],digs[eid],now,"observed_at","status","AUTHORIZED","authority_id","DISCLOSURE_AUTHORITY",oppdig); dstate[eid]=(d,why)
         if d and d["use_class"] in {"CAPABILITY_NARRATIVE","PROPOSAL_CAPABILITY"}: caps.append({"evidence_id":eid,"engagement_kind":e["engagement_kind"],"subject":e["subject"],"observed_result":e["observed_result"],"limitations":e["limitations"],"disclosure_summary":e["disclosure_summary"],"use_class":d["use_class"],"disclosure_authority_id":d["authority_id"]})
     states=[]; reqout=[]
     for r in p["requirements"]:
@@ -202,8 +215,8 @@ def compile_registry(packet,*,trusted_now=None):
             if e["engagement_kind"]!="CLIENT_ENGAGEMENT": reasons.append("NOT_CLIENT_ENGAGEMENT")
             if not d: reasons.append(dwhy or "MISSING_DISCLOSURE_AUTHORITY")
             elif d["use_class"]!="PROPOSAL_CAPABILITY": reasons.append("DISCLOSURE_NOT_PROPOSAL_CAPABILITY")
-            perm,pwhy=_resolve(ps.get((eid,rid),[]),digs[eid],now,"observed_at","status","AUTHORIZED","permission_id","REFERENCE_PERMISSION")
-            comp,cwhy=_resolve(cs.get((eid,rid),[]),digs[eid],now,"assessed_at","status","COMPARABLE","assessment_id","COMPARABILITY_AUTHORITY")
+            perm,pwhy=_resolve(ps.get((eid,rid),[]),digs[eid],now,"observed_at","status","AUTHORIZED","permission_id","REFERENCE_PERMISSION",oppdig,reqdigs[rid])
+            comp,cwhy=_resolve(cs.get((eid,rid),[]),digs[eid],now,"assessed_at","status","COMPARABLE","assessment_id","COMPARABILITY_AUTHORITY",oppdig,reqdigs[rid])
             if not perm: reasons.append(pwhy or "MISSING_REFERENCE_PERMISSION")
             if not comp: reasons.append(cwhy or "MISSING_COMPARABILITY_AUTHORITY")
             reasons=sorted(set(reasons)); status="REFERENCE_READY_FOR_OWNER_REVIEW" if not reasons else "HOLD"
