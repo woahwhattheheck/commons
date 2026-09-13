@@ -1,0 +1,51 @@
+name: Jersey DN827803 authority v2
+
+on:
+  pull_request:
+    paths:
+      - 'opportunities/jersey_connecting_health_cdr_openehr_dn827803/**'
+      - '.github/workflows/jersey-dn827803-authority.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'opportunities/jersey_connecting_health_cdr_openehr_dn827803/**'
+      - '.github/workflows/jersey-dn827803-authority.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    defaults:
+      run:
+        working-directory: opportunities/jersey_connecting_health_cdr_openehr_dn827803
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Compile authority engine and hostile suite
+        run: python -m py_compile qualify.py tests/test_qualify.py
+      - name: Authority hostile suite
+        run: python -m unittest discover -s tests -v
+      - name: Optimized-mode authority hostile suite
+        run: python -O -m unittest discover -s tests -v
+      - name: Public fixture remains fail-closed HOLD
+        shell: bash
+        run: |
+          set +e
+          python qualify.py fixtures/public_hold.json > /tmp/jersey-public-hold.json
+          rc=$?
+          set -e
+          test "$rc" -eq 3
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          receipt = json.loads(Path('/tmp/jersey-public-hold.json').read_text())
+          assert receipt['state'] == 'HOLD_TENDER_PACK_REQUIRED', receipt
+          assert receipt['authority'] == 'INTERNAL_QUALIFICATION_ONLY', receipt
+          assert receipt['tender_submission_authorized'] is False, receipt
+          assert receipt['authority_mode'] == 'CURRENT_TRUSTED_UTC', receipt
+          PY
