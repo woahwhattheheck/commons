@@ -18,8 +18,8 @@ The v1 contract provides:
 - an explicit hold when an approved source is silently missing from a supposedly complete snapshot;
 - source-to-report lineage and per-lineage digest;
 - deterministic report, exception-ledger, snapshot, policy, and receipt digests;
-- trusted-time snapshot freshness and future-time fences;
-- a verifier that rejects changed policy, source snapshot, report, exception ledger, receipt, or added receipt authority fields, including a self-consistent rehashed forgery.
+- trusted-time snapshot freshness and future-time fences, including exact fractional-second lease boundaries;
+- a verifier that requires the caller's current trusted evaluation time, rejects a receipt that tries to choose a different clock, and rejects changed policy, source snapshot, report, exception ledger, receipt, or added receipt authority fields, including self-consistent rehashed forgeries.
 
 A `PASS` is **evidence only**. The receipt hard-codes `authority = EVIDENCE_ONLY_NO_OPERATIONAL_RELEASE`. It does not authorize ingestion into production, customer-facing publication, operational release, payment, proposal submission, buyer acceptance, or revenue recognition.
 
@@ -64,18 +64,19 @@ Snapshot:
 }
 ```
 
-Run it from Python:
+Run it from Python. Verification must receive its trusted evaluation time from the verifier/integration boundary; a historical receipt cannot supply its own freshness clock:
 
 ```python
 from revenue.port_data_qc_gate.gate import evaluate, verify
 
-result = evaluate(policy, snapshot, evaluated_at="2026-09-13T09:00:00Z")
-assert verify(result, policy=policy, snapshot=snapshot)
+trusted_now = "2026-09-13T09:00:00Z"
+result = evaluate(policy, snapshot, evaluated_at=trusted_now)
+assert verify(result, policy=policy, snapshot=snapshot, evaluated_at=trusted_now)
 ```
 
 ## Acceptance boundary
 
-The test suite exercises reordered events, exact duplicates, conflicting duplicate identities, missing predecessors, branching histories, business-key drift, incomplete and stale snapshots, missing approved sources, unknown source/schema/fields, required-field absence, nested/float payload refusal, future timestamps, and report/receipt/policy/snapshot tampering.
+The test suite exercises reordered events, exact duplicates, conflicting duplicate identities, missing predecessors, branching histories, business-key drift, incomplete and stale snapshots, fractional-second expiry, trusted-time rollback attempts, missing approved sources, unknown source/schema/fields, required-field absence, nested/float payload refusal, future timestamps, and report/receipt/policy/snapshot tampering.
 
 Run:
 
