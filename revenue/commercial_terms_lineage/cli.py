@@ -2,30 +2,15 @@
 from __future__ import annotations
 
 import argparse
-from datetime import datetime, timezone
 import json
 import sys
 
 try:
-    from .lineage import (
-        TermsLineageError,
-        canonical_bytes,
-        compile_review,
-        read_json_file,
-        render_markdown,
-        verify_review,
-        write_exclusive,
-    )
+    from .lineage import TermsLineageError, canonical_bytes, render_markdown
+    from .runtime import compile_current, read_json_file, verify_current, write_exclusive
 except ImportError:  # direct script execution from the package directory
-    from lineage import (  # type: ignore
-        TermsLineageError,
-        canonical_bytes,
-        compile_review,
-        read_json_file,
-        render_markdown,
-        verify_review,
-        write_exclusive,
-    )
+    from lineage import TermsLineageError, canonical_bytes, render_markdown  # type: ignore
+    from runtime import compile_current, read_json_file, verify_current, write_exclusive  # type: ignore
 
 
 def _parser() -> argparse.ArgumentParser:
@@ -54,10 +39,9 @@ def main(argv: list[str] | None = None) -> int:
         review = read_json_file(args.review)
         previous = read_json_file(args.previous_authority) if args.previous_authority else None
         if args.command == "compile-current":
-            receipt = compile_review(
+            receipt = compile_current(
                 authority,
                 review,
-                as_of=datetime.now(timezone.utc),
                 previous_authority=previous,
             )
             json_text = canonical_bytes(receipt).decode("utf-8") + "\n"
@@ -67,12 +51,11 @@ def main(argv: list[str] | None = None) -> int:
             print(json.dumps({"state": receipt["state"], "receipt_sha256": receipt["receipt_sha256"]}, sort_keys=True))
             return 0
         receipt = read_json_file(args.receipt)
-        verified = verify_review(
+        verified = verify_current(
             authority,
             review,
             receipt,
             previous_authority=previous,
-            trusted_now=datetime.now(timezone.utc),
         )
         print(json.dumps({"verified": True, "state": verified["state"], "receipt_sha256": verified["receipt_sha256"]}, sort_keys=True))
         return 0
