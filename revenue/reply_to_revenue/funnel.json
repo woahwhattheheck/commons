@@ -214,6 +214,7 @@
   "limits": [
     "ingest each inbound event_ref once; collision on same ref with different payload hash",
     "automated acknowledgements are not buyer interest",
+    "delivery failures require owner review of an alternate route; they never auto-resend",
     "HARD DNR and completed sends are never resent",
     "stale or silent contacts are monitored without a follow-up send",
     "POSITIVE_SCOPE stops at NEEDS_ACCEPTANCE; this tool does not accept, invoice, or collect",
