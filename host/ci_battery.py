@@ -138,11 +138,13 @@ def main(argv: list[str] | None = None) -> int:
 
     try:
         # Outputs are outside the checkout, so clear old evidence before Git
-        # preflight. A failed preflight must never reuse a prior passing stream.
+        # preflight. Unlink before opening so an external hardlink cannot
+        # truncate tracked checkout bytes through an alias.
         if report_path:
             report_path.parent.mkdir(parents=True, exist_ok=True)
             report_path.unlink(missing_ok=True)
         results.parent.mkdir(parents=True, exist_ok=True)
+        results.unlink(missing_ok=True)
         with results.open("wb") as handle:
             sha = subprocess.run(
                 ["git", "-C", str(root), "rev-parse", "--verify", "HEAD^{commit}"],
