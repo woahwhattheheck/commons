@@ -6,7 +6,7 @@
 
 Optional final-readout support, if separately authorized: **$4,000**.
 
-The workshare is deliberately large enough to remove real production load from a prime rather than selling a token diagnostic. It covers the technical evidence register, 12-cell maturity/gap matrix, draft finding and phased-roadmap production support, and deterministic reproducibility/consistency receipts.
+The workshare is deliberately large enough to remove real production load from a prime rather than selling a token diagnostic. It covers the technical evidence register, 12-cell maturity/gap matrix, draft finding and phased-roadmap production support, and deterministic reproducibility/currentness receipts.
 
 ### Payment hypothesis
 
@@ -18,12 +18,25 @@ The workshare is deliberately large enough to remove real production load from a
 
 ## Acceptance boundary
 
-TJLabs accepts responsibility for producing the agreed technical artifacts from evidence supplied/authorized for the engagement. The prime remains responsible for the University relationship, proposal and submission, references, insurance, contracting, final professional judgments, benchmarking conclusions, final recommendations, staffing promises, and any onsite commitments.
+TJLabs accepts responsibility for producing agreed technical artifacts from evidence supplied and authorized for the engagement. The prime remains responsible for the University relationship, proposal and submission, references, insurance, contracting, final professional judgments, benchmarking conclusions, final recommendations, staffing promises, and any onsite commitments.
 
-## Evidence standard
+## Evidence-authority standard
 
-A finding can only be emitted when its evidence is fresh, scope-bound, internally consistent, and receipt-verifiable. Missing, stale, or conflicting evidence is surfaced as a HOLD for the prime to resolve rather than silently filled with a guess.
+A current finding can be emitted only when all of the following are true:
 
-## Status
+- candidate bytes contain references and commercial terms, not caller-authored scores;
+- every source record is bound to the exact solicitation, prospective prime, authority generation, AIS group, dimension, source identity and source-content digest;
+- the complete authority bundle matches an expected root retained independently by the trusted host;
+- verifier-owned process UTC says the evidence is fresh;
+- rooted maturity evidence is non-conflicting;
+- a semantic recompile exactly matches the report.
+
+A caller who supplies both authority bytes and a matching digest has not established independent provenance. The public CLI therefore cannot emit current READY, and historical replay is always marked non-current.
+
+Missing, stale, conflicting, unrooted, transplanted, or mutated evidence is surfaced as a HOLD rather than silently filled with a guess.
+
+## Status and authority ceiling
 
 **PROPOSED / NOT ACCEPTED.** This file is a teaming discussion artifact. It is not a contract, award, invoice, payment record, or revenue-recognition event.
+
+No source code or receipt in this directory authorizes buyer contact, University submission, signature, contract/award acceptance, staffing/travel commitments, invoice/payment requests, cash claims, or recognized revenue.
