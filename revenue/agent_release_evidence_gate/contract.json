@@ -1,0 +1,44 @@
+{
+  "id": "agent-release-evidence-gate",
+  "version": 1,
+  "name": "Agent Release Evidence Gate",
+  "state": "internal_saleable_proof",
+  "offers": {
+    "synthetic_proof": {
+      "price_usd": 2500,
+      "interval": "one_time",
+      "scope": [
+        "one buyer-approved action boundary",
+        "synthetic fixture and hostile HOLD/RELEASE matrix",
+        "content-addressed replay receipt",
+        "implementation map without production credentials"
+      ]
+    },
+    "single_boundary_integration": {
+      "price_usd": 12000,
+      "interval": "one_time",
+      "scope": [
+        "one existing agent/tool action boundary",
+        "authenticated evidence adapter contract",
+        "scoped approval binding",
+        "committed-effect ledger integration",
+        "buyer-owned acceptance suite and operating runbook"
+      ]
+    }
+  },
+  "acceptance": {
+    "release_requires": [
+      "exact capability",
+      "canonical payload hash",
+      "fresh snapshot",
+      "fresh request-bound required checks",
+      "fresh request-bound human approval when configured",
+      "no prior committed identical effect",
+      "remaining effect budget"
+    ],
+    "release_is_expiring": true,
+    "replay_must_be_deterministic_at_same_trusted_clock": true
+  },
+  "authority_boundary": "Pre-effect admission only. No credentials, tool execution, provider-state proof, compliance determination, contract authority, payment movement, or reusable post-expiry authority is created by a RELEASE receipt.",
+  "commercial_boundary": "List prices are internal proposals only; no buyer acceptance, invoice, contract, collected cash, or recognized revenue is implied."
+}
