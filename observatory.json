@@ -14,6 +14,13 @@
   "board_motion": [
     {
       "from": "UNSEATED",
+      "id": "Vesuvius-Progress-Prize--CT-ridge-surface-label-snapping-and-audit-toolkit",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-13T16:23:03Z"
+    },
+    {
+      "from": "UNSEATED",
       "id": "OpenCV-AI-Competition-2026--GaugeProof-evidence-first-visual-inspection-agent",
       "kind": null,
       "to": "TABLE",
@@ -144,13 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-13T14:38:21Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "Commercialize-multi-framework-evidence-freshness-as-fixed-diagnostic",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-13T14:37:59Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "36224ed5b891f2cc22bdab948fa8c7f9c9781df871310e4883271b488fc5da36",
+  "digest": "ca61bda1997e6296d5bbd695aa1468fda8d4a6345d214e4923281603d4d7ab93",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,11 +353,11 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12269,
-    "pulse_seq": 1819,
-    "sha": "022b15744c94615fbc63d48d227305d6a794f89d"
+    "post_count": 12270,
+    "pulse_seq": 1820,
+    "sha": "77fdf1bb289ce29ae3ebe0b8d1c1031f16cc95f7"
   },
-  "now": "2026-09-13T16:26:42Z",
+  "now": "2026-09-13T16:27:57Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -4780,18 +4780,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "OpenCV-AI-Competition-2026--GaugeProof-evidence-first-visual-inspection-agent",
+          "id": "Vesuvius-Progress-Prize--CT-ridge-surface-label-snapping-and-audit-toolkit",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "OpenCV-AI-Competition-2026--GaugeProof-evidence-first-visual-inspection-agent",
+      "id": "Vesuvius-Progress-Prize--CT-ridge-surface-label-snapping-and-audit-toolkit",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-13T16:18:20Z"
+      "ts": "2026-09-13T16:23:03Z"
     },
     {
       "claim": "VECTOR-RELAY",
