@@ -259,6 +259,67 @@ def _production_lims_human_release_exception(
     return bool(release_context) and not bool(admission_context)
 
 
+_MARKDOWN_BUSINESS_STATUS_CELL = re.compile(
+    r"(\|\s*(?:\*{1,2})?)(?:not authorized|not permitted)((?:\*{1,2})?\s*\|)",
+    re.IGNORECASE,
+)
+_MARKDOWN_BUSINESS_STATUS_VALUE = re.compile(
+    r"^(?:\*{1,2})?(?:not authorized|not permitted)(?:\*{1,2})?$",
+    re.IGNORECASE,
+)
+_MARKDOWN_SUBMISSION_DEADLINE = re.compile(
+    r"^submission\s+by\s+(?:(?:jan(?:uary)?|feb(?:ruary)?|mar(?:ch)?|apr(?:il)?|"
+    r"may|jun(?:e)?|jul(?:y)?|aug(?:ust)?|sep(?:t(?:ember)?)?|oct(?:ober)?|"
+    r"nov(?:ember)?|dec(?:ember)?)\s+\d{1,2}\b|"
+    r"\d{4}-\d{2}-\d{2}\b|\d{1,2}[/-]\d{1,2}(?:[/-]\d{2,4})?\b)",
+    re.IGNORECASE,
+)
+_MARKDOWN_OWNER_FINAL_SEND = re.compile(
+    r"^owner[- ]controlled\s+final\s+send\s+only\s+after\s+"
+    r"evidence/readiness\s+review$",
+    re.IGNORECASE,
+)
+_MARKDOWN_ADMISSION_CONTEXT = re.compile(
+    r"\b(?:action\s+pad|commons|post(?:ing)?|board|admission|authentication|"
+    r"authorization|permissions?|identity|claim|seat|memory|"
+    r"capability(?:\s+declaration)?|actor(?:_id)?|sender|verb|action|access|"
+    r"contributors?|users?|agents?|bots?|models?|members?|participants?|"
+    r"principals?|peers?|workers?|callers?|requesters?|operators?|guests?|"
+    r"admins?|administrators?|staff|employees?|humans?|people|persons?|roles?)\b",
+    re.IGNORECASE,
+)
+
+
+def _explicit_denial_candidate(path: str, text: str) -> str:
+    """Mask only the known owner-controlled external-submission status shape.
+
+    This is structural proof, not a subject blacklist: the row must be exactly a
+    three-cell revenue Markdown status row, with a dated ``Submission by ...``
+    label, the exact owner-controlled final-send readiness marker in the adjacent
+    cell, and the denial phrase as the final status value.  Any extra cell,
+    generic business prose, unrecognized deadline shape, or admission vocabulary
+    fails closed.  The admission vocabulary remains defense in depth only.
+    """
+    normalized = normalize_path(path).lower()
+    if not normalized.startswith("revenue/") or not normalized.endswith(".md"):
+        return text
+    if _MARKDOWN_ADMISSION_CONTEXT.search(text):
+        return text
+
+    stripped = text.strip()
+    parts = stripped.split("|")
+    if len(parts) != 5 or parts[0].strip() or parts[-1].strip():
+        return text
+    cells = [part.strip() for part in parts[1:-1]]
+    if not _MARKDOWN_SUBMISSION_DEADLINE.search(cells[0]):
+        return text
+    if not _MARKDOWN_OWNER_FINAL_SEND.fullmatch(cells[1]):
+        return text
+    if not _MARKDOWN_BUSINESS_STATUS_VALUE.fullmatch(cells[2]):
+        return text
+    return _MARKDOWN_BUSINESS_STATUS_CELL.sub(r"\1business status pending\2", text, count=1)
+
+
 def scan_added(lines: Iterable[AddedLine]) -> list[Violation]:
     by_path: dict[str, list[AddedLine]] = {}
     for line in lines:
@@ -285,8 +346,12 @@ def scan_added(lines: Iterable[AddedLine]) -> list[Violation]:
             for rule in LINE_RULES:
                 if rule.name in HARD_LINE_RULES:
                     continue
-                contexts = (_admission_contexts(path, line.text)
-                            if rule.name == "admission-phrase" else [line.text])
+                if rule.name == "explicit-denial":
+                    contexts = [_explicit_denial_candidate(path, line.text)]
+                elif rule.name == "admission-phrase":
+                    contexts = _admission_contexts(path, line.text)
+                else:
+                    contexts = [line.text]
                 if any(rule.pattern.search(context) for context in contexts):
                     item = Violation(path, line.line_number, rule.name, rule.explanation, line.text.strip())
                     found[(path, line.line_number, rule.name)] = item
