@@ -82,7 +82,9 @@ class ReleaseGateTests(unittest.TestCase):
         self.assertEqual(150000, receipt["money"]["net_paid_amount_minor"])
         self.assertEqual(ts(180).replace("Z", ".000000Z"), receipt["evaluated_at"])
         self.assertEqual(300, receipt["authorization"]["ttl_seconds"])
-        self.assertEqual(ts(420).replace("Z", ".000000Z"), receipt["authorization"]["expires_at"])
+        # Source evidence was observed at t=110 with a 300s freshness window,
+        # so it expires at t=410 before the snapshot max-TTL boundary at t=420.
+        self.assertEqual(ts(410).replace("Z", ".000000Z"), receipt["authorization"]["expires_at"])
         self.assertFalse(receipt["authorization"]["expired"])
 
     def test_old_internally_fresh_snapshot_cannot_replay_release(self):
@@ -108,6 +110,46 @@ class ReleaseGateTests(unittest.TestCase):
             receipt["evaluated_at"],
         )
 
+    def test_source_freshness_is_checked_at_evaluation_time(self):
+        payload = base_payload()
+        payload["freshness_window_seconds"] = 60
+        receipt = _ORIGINAL_EVALUATE(
+            payload,
+            evaluated_at=BASE_TIME + timedelta(seconds=180),
+        )
+        self.assertEqual("HOLD", receipt["decision"])
+        self.assertFalse(receipt["release_authorized"])
+        self.assertIn("SOURCE_STALE:PAYMENT_PROVIDER", receipt["reasons"])
+        self.assertEqual(10.0, receipt["sources"]["PAYMENT_PROVIDER"]["age_seconds"])
+        self.assertEqual(
+            70.0,
+            receipt["sources"]["PAYMENT_PROVIDER"]["evaluation_age_seconds"],
+        )
+
+    def test_receipt_expiry_is_capped_by_source_freshness(self):
+        payload = base_payload()
+        payload["freshness_window_seconds"] = 100
+        receipt = _ORIGINAL_EVALUATE(
+            payload,
+            evaluated_at=BASE_TIME + timedelta(seconds=180),
+        )
+        self.assertEqual("RELEASE", receipt["decision"])
+        self.assertEqual(
+            ts(210).replace("Z", ".000000Z"),
+            receipt["authorization"]["expires_at"],
+        )
+        self.assertTrue(
+            gate.verify_release_receipt(
+                receipt,
+                consumed_at=BASE_TIME + timedelta(seconds=209),
+            )
+        )
+        with self.assertRaisesRegex(gate.GateInputError, "has expired"):
+            gate.verify_release_receipt(
+                receipt,
+                consumed_at=BASE_TIME + timedelta(seconds=210),
+            )
+
     def test_future_snapshot_is_rejected_against_trusted_time(self):
         with self.assertRaisesRegex(
             gate.GateInputError, "after trusted evaluation time"
@@ -125,13 +167,13 @@ class ReleaseGateTests(unittest.TestCase):
         self.assertTrue(
             gate.verify_release_receipt(
                 receipt,
-                consumed_at=BASE_TIME + timedelta(seconds=419),
+                consumed_at=BASE_TIME + timedelta(seconds=409),
             )
         )
         with self.assertRaisesRegex(gate.GateInputError, "has expired"):
             gate.verify_release_receipt(
                 receipt,
-                consumed_at=BASE_TIME + timedelta(seconds=420),
+                consumed_at=BASE_TIME + timedelta(seconds=410),
             )
 
     def test_release_receipt_consumer_rejects_tampering(self):
