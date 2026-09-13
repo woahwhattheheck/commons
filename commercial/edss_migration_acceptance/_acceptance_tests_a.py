@@ -130,3 +130,21 @@ class AcceptanceTestsA(AcceptanceTestBase):
     def test_multiple_acks(self):
         p = ready_packet(); ack = deepcopy(p["interface_events"][0]["acknowledgements"][0]); ack["ack_id"] = "ack.second"; p["interface_events"][0]["acknowledgements"].append(ack)
         r = self.compile(p); self.assertEqual(r["state"], INTERFACE_MISMATCH); self.assertEqual(r["interface_counts"]["MULTIPLE_ACKS"], 1)
+
+    def test_equal_receive_time_same_interface_fails_closed(self):
+        p = ready_packet()
+        a, b = p["interface_events"][0], p["interface_events"][1]
+        tied = "2026-09-13T16:11:00Z"
+        a["received_at"] = tied; b["received_at"] = tied
+        a["acknowledgements"][0]["ack_at"] = tied; b["acknowledgements"][0]["ack_at"] = tied
+        p["interface_events"] = [b, a] + p["interface_events"][2:]
+        r = self.compile(p)
+        self.assertEqual(r["state"], INTERFACE_MISMATCH)
+        self.assertGreaterEqual(r["interface_counts"].get("RECEIVE_TIME_AMBIGUOUS", 0), 2)
+
+    def test_ack_id_reuse_across_messages_fails(self):
+        p = ready_packet()
+        p["interface_events"][1]["acknowledgements"][0]["ack_id"] = p["interface_events"][0]["acknowledgements"][0]["ack_id"]
+        r = self.compile(p)
+        self.assertEqual(r["state"], INTERFACE_MISMATCH)
+        self.assertGreaterEqual(r["interface_counts"].get("DUPLICATE_ACK_ID", 0), 2)
