@@ -7,7 +7,7 @@ import io
 import json
 import math
 from collections import Counter
-from decimal import Decimal
+from decimal import Decimal, DecimalException
 from typing import Any
 
 SCHEMA = "commons-mcp-transcript-audit/v1"
@@ -78,7 +78,7 @@ def strict_json_loads(text: str, *, exact_numbers: bool = False) -> Any:
         if exact_numbers:
             kwargs["parse_float"] = Decimal
         return json.loads(text, **kwargs)
-    except (ValueError, RecursionError) as exc:
+    except (ValueError, RecursionError, DecimalException) as exc:
         raise StrictJSONError(str(exc)) from exc
 
 
