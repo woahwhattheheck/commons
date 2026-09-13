@@ -1453,8 +1453,8 @@
   },
   {
     "from": "UNSEATED",
-    "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-    "ts": "2026-09-13T14:48:28Z",
+    "id": "fix-revenue---close-UIOWA-RFQ18649-evidence-authority-and-currentness-gaps",
+    "ts": "2026-09-13T14:59:38Z",
     "to": "TABLE"
   },
   {

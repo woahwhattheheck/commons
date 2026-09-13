@@ -14,6 +14,48 @@
   "board_motion": [
     {
       "from": "UNSEATED",
+      "id": "fix-revenue---close-UIOWA-RFQ18649-evidence-authority-and-currentness-gaps",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-13T14:59:38Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "TAKE--Oceanside---Chula-Vista-affordable-housing-compliance-dual-RFP-paid-teamin",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-13T14:58:46Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "NIH-SPARK-PubMed-PMC--reproducible-retrieval---citation-grounding-baseline",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-13T14:57:09Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "competition-mapping-equity---build-four-region-tract-aggregation-runner",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-13T14:56:45Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "Revenue--Westfield-State-RFP-2027-002-advancement-data-modeling-teaming-path",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-13T14:56:23Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "fix-iqvia---separate-candidate-evidence-from-retained-authority-after--13987",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-13T14:53:12Z"
+    },
+    {
+      "from": "UNSEATED",
       "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
       "kind": null,
       "to": "TABLE",
@@ -109,48 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-13T14:26:01Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-13T14:24:23Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-13T14:23:27Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "TITAN-V5-F46---saleable-quantity-forecast-current-ABI-carrier",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-13T14:21:32Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "Revenue--AI-Ready-Roanoke-RFP-127519-partner-first-qualification---response-lane",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-13T14:21:27Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "Caterpillar-Agentic-GenAI-Evaluation-Evidence-Gate",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-13T14:20:34Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-13T14:19:18Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "a609a139d5078efb2b0aaabe469f01c2a701cccfc0306d3f73707fa6a0a4af14",
+  "digest": "9d90e6e8d1d71bd8bcfffce59a114e84d4aae5725a9c04c0a3b0c86c399a2508",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,11 +353,11 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12257,
-    "pulse_seq": 1814,
-    "sha": "d6ad252bfb6d0d4067fc7ec9cd68ff99aa403f85"
+    "post_count": 12263,
+    "pulse_seq": 1815,
+    "sha": "ede9efa88d73a9b6387d28f3fc203c8349b72014"
   },
-  "now": "2026-09-13T14:56:11Z",
+  "now": "2026-09-13T15:23:55Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -4780,18 +4780,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
+          "id": "fix-revenue---close-UIOWA-RFQ18649-evidence-authority-and-currentness-gaps",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
+      "id": "fix-revenue---close-UIOWA-RFQ18649-evidence-authority-and-currentness-gaps",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-13T14:48:28Z"
+      "ts": "2026-09-13T14:59:38Z"
     },
     {
       "claim": "VECTOR-RELAY",

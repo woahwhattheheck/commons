@@ -9,7 +9,7 @@ from __future__ import annotations
 
 import json
 from pathlib import Path
-from urllib.parse import urlparse
+from urllib.parse import unquote, urlsplit
 
 SCHEMA = "commercial-decision-relay-blog-bonus/v1"
 EXPECTED_COMPETITION = "Agents for Humans Hackathon"
@@ -52,18 +52,33 @@ def _safe_draft(root: Path, value: object, label: str) -> Path:
     return resolved
 
 
-def _builder_url(value: object, label: str) -> str:
+def _builder_url(value: object, label: str) -> tuple[str, str]:
     if not isinstance(value, str) or not value.strip():
         raise BonusManifestError(f"{label} must be a non-empty URL")
-    parsed = urlparse(value.strip())
+    raw = value.strip()
+    try:
+        parsed = urlsplit(raw)
+        port = parsed.port
+    except ValueError as exc:
+        raise BonusManifestError(f"{label} is not a valid URL") from exc
     host = (parsed.hostname or "").lower().rstrip(".")
-    if parsed.scheme != "https" or not (host == "builder.aws.com" or host.endswith(".builder.aws.com")):
+    if parsed.scheme != "https" or host != "builder.aws.com":
         raise BonusManifestError(f"{label} must be an HTTPS builder.aws.com URL")
-    if not [part for part in parsed.path.split("/") if part]:
-        raise BonusManifestError(f"{label} must identify a specific public post")
+    if port not in {None, 443}:
+        raise BonusManifestError(f"{label} must use the standard HTTPS port")
     if parsed.username is not None or parsed.password is not None:
         raise BonusManifestError(f"{label} must not contain URL credentials")
-    return value.strip()
+
+    decoded_path = unquote(parsed.path)
+    parts = [part for part in decoded_path.split("/") if part]
+    if len(parts) < 2 or parts[0] != "content" or parts[1] in {".", ".."}:
+        raise BonusManifestError(f"{label} must identify a specific public builder.aws content post")
+
+    # The opaque content ID, not the cosmetic slug/query/fragment, identifies a
+    # builder.aws post. This prevents one publication from being counted more
+    # than once via URL aliases.
+    post_identity = f"{host}/content/{parts[1]}"
+    return raw, post_identity
 
 
 def validate(manifest: object, root: Path) -> dict:
@@ -96,7 +111,7 @@ def validate(manifest: object, root: Path) -> dict:
 
     seen_ids: set[str] = set()
     seen_titles: set[str] = set()
-    seen_urls: set[str] = set()
+    seen_post_identities: set[str] = set()
     recorded = 0
     for index, post in enumerate(posts):
         label = f"posts[{index}]"
@@ -119,10 +134,10 @@ def validate(manifest: object, root: Path) -> dict:
             if post["public_url"] is not None:
                 raise BonusManifestError(f"{label} DRAFT_READY must not carry a public URL")
         else:
-            url = _builder_url(post["public_url"], f"{label}.public_url")
-            if url in seen_urls:
-                raise BonusManifestError("public bonus URLs must be distinct")
-            seen_urls.add(url)
+            _, post_identity = _builder_url(post["public_url"], f"{label}.public_url")
+            if post_identity in seen_post_identities:
+                raise BonusManifestError("public bonus posts must be distinct")
+            seen_post_identities.add(post_identity)
             recorded += 1
 
     return {

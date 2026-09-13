@@ -9,20 +9,67 @@ from pathlib import Path
 from .engine import DossierError, canonical_bytes, compile_dossier, render_markdown, strict_json_loads, verify_dossier
 
 MAX_INPUT = 1_048_576
+_READ_CHUNK = 64 * 1024
+
+
+def _timestamp_ns(st: os.stat_result, name: str) -> int:
+    ns_name = f"st_{name}_ns"
+    if hasattr(st, ns_name):
+        return int(getattr(st, ns_name))
+    return int(getattr(st, f"st_{name}") * 1_000_000_000)
+
+
+def _generation_fingerprint(st: os.stat_result) -> tuple[int, int, int, int, int, int]:
+    return (
+        int(st.st_dev),
+        int(st.st_ino),
+        int(stat.S_IFMT(st.st_mode)),
+        int(st.st_size),
+        _timestamp_ns(st, "mtime"),
+        _timestamp_ns(st, "ctime"),
+    )
 
 
 def read_regular(path: str) -> str:
     p = Path(path)
-    st = os.lstat(p)
-    if not stat.S_ISREG(st.st_mode):
+    inspected = os.lstat(p)
+    if not stat.S_ISREG(inspected.st_mode):
         raise DossierError(f"not a regular input file: {path}")
-    if st.st_size > MAX_INPUT:
+    if inspected.st_size > MAX_INPUT:
         raise DossierError(f"input too large: {path}")
-    fd = os.open(p, os.O_RDONLY | getattr(os, "O_NOFOLLOW", 0))
+
+    flags = os.O_RDONLY | getattr(os, "O_NONBLOCK", 0) | getattr(os, "O_CLOEXEC", 0)
+    nofollow = getattr(os, "O_NOFOLLOW", None)
+    if nofollow is None:
+        raise DossierError("platform does not provide O_NOFOLLOW for safe input reads")
+    fd = os.open(p, flags | nofollow)
     try:
-        data = os.read(fd, MAX_INPUT + 1)
-        if len(data) > MAX_INPUT or os.read(fd, 1):
+        opened = os.fstat(fd)
+        if not stat.S_ISREG(opened.st_mode):
+            raise DossierError(f"not a regular input file: {path}")
+        if opened.st_size > MAX_INPUT:
             raise DossierError(f"input too large: {path}")
+        opened_generation = _generation_fingerprint(opened)
+        if _generation_fingerprint(inspected) != opened_generation:
+            raise DossierError(f"input changed before open: {path}")
+
+        chunks: list[bytes] = []
+        total = 0
+        while True:
+            chunk = os.read(fd, min(_READ_CHUNK, MAX_INPUT + 1 - total))
+            if not chunk:
+                break
+            total += len(chunk)
+            if total > MAX_INPUT:
+                raise DossierError(f"input too large: {path}")
+            chunks.append(chunk)
+
+        finished = os.fstat(fd)
+        if _generation_fingerprint(finished) != opened_generation:
+            raise DossierError(f"input changed during read: {path}")
+        data = b"".join(chunks)
+        if len(data) != opened.st_size:
+            raise DossierError(f"input changed during read: {path}")
     finally:
         os.close(fd)
     return data.decode("utf-8")

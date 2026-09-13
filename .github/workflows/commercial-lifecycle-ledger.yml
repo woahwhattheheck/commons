@@ -37,16 +37,19 @@ jobs:
             revenue/commercial_lifecycle_ledger/lifecycle.py \
             revenue/commercial_lifecycle_ledger/test_lifecycle.py \
             revenue/commercial_lifecycle_ledger/test_lifecycle_financial_edges.py \
-            revenue/commercial_lifecycle_ledger/test_ingestion_hardening.py
+            revenue/commercial_lifecycle_ledger/test_ingestion_hardening.py \
+            revenue/commercial_lifecycle_ledger/test_evidence_identity.py
       - name: Run lifecycle and ingestion regressions
         run: |
           python -m unittest -v \
             revenue.commercial_lifecycle_ledger.test_lifecycle \
             revenue.commercial_lifecycle_ledger.test_lifecycle_financial_edges \
-            revenue.commercial_lifecycle_ledger.test_ingestion_hardening
+            revenue.commercial_lifecycle_ledger.test_ingestion_hardening \
+            revenue.commercial_lifecycle_ledger.test_evidence_identity
       - name: Run optimized lifecycle and ingestion regressions
         run: |
           python -O -m unittest -v \
             revenue.commercial_lifecycle_ledger.test_lifecycle \
             revenue.commercial_lifecycle_ledger.test_lifecycle_financial_edges \
-            revenue.commercial_lifecycle_ledger.test_ingestion_hardening
+            revenue.commercial_lifecycle_ledger.test_ingestion_hardening \
+            revenue.commercial_lifecycle_ledger.test_evidence_identity

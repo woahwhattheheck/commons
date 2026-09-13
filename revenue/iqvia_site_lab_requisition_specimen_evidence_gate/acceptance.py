@@ -1,4 +1,4 @@
-"""Executable acceptance contract for the frozen 180-packet fixture."""
+"""Executable acceptance contract for the frozen v2 180-packet fixture."""
 from __future__ import annotations
 
 import hashlib
@@ -12,6 +12,7 @@ from .gate import (
     output_manifest,
     render_csv,
     render_json,
+    verify_report,
 )
 
 
@@ -24,12 +25,14 @@ def run_acceptance() -> dict[str, object]:
 
     if report_a["packet_count"] != 180:
         raise AssertionError("acceptance requires exactly 180 packets")
-    if report_a["status_counts"] != {STATUS_READY: 150, STATUS_HOLD: 30}:
-        raise AssertionError("acceptance requires 150 ready / 30 hold")
+    if report_a["status_counts"] != {STATUS_READY: 145, STATUS_HOLD: 35}:
+        raise AssertionError("acceptance requires 145 evidence-consistent / 35 hold")
     if report_a["reason_counts"] != {code: 5 for code in CODES}:
         raise AssertionError("acceptance requires exactly five holds per reason family")
     if json_a != json_b or csv_a != csv_b:
         raise AssertionError("acceptance outputs must be byte-identical on rerun")
+    if not verify_report(frozen_packets(), report_a):
+        raise AssertionError("acceptance report must fully recompile")
 
     rows = {row["packet_id"]: row for row in report_a["results"]}
     expected = expected_holds()
@@ -42,20 +45,20 @@ def run_acceptance() -> dict[str, object]:
             if rows[packet_id]["reason_codes"] != [code]:
                 raise AssertionError(f"{packet_id} must emit only {code}")
 
-    for i in range(1, 151):
+    for i in range(1, 146):
         row = rows[f"SLR-{i:04d}"]
         if row["status"] != STATUS_READY or row["reason_codes"]:
-            raise AssertionError(f"SLR-{i:04d} must be ready with no reason code")
+            raise AssertionError(f"SLR-{i:04d} must be evidence-consistent with no reason code")
 
-    if held_ids != {f"SLR-{i:04d}" for i in range(151, 181)}:
+    if held_ids != {f"SLR-{i:04d}" for i in range(146, 181)}:
         raise AssertionError("held packet IDs do not match the frozen contract")
 
     manifest = output_manifest(report_a)
     return {
         "status": "PASS",
         "packets": 180,
-        "ready": 150,
-        "hold": 30,
+        "ready": 145,
+        "hold": 35,
         "reason_counts": report_a["reason_counts"],
         "batch_digest": report_a["batch_digest"],
         "json_sha256": hashlib.sha256(json_a).hexdigest(),

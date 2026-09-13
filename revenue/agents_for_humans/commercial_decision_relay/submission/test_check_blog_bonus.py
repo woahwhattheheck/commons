@@ -30,7 +30,7 @@ class BlogBonusTests(unittest.TestCase):
     def test_three_distinct_builder_urls_record_urls_without_awarding_points(self):
         manifest = load_manifest()
         for i in range(3):
-            published(manifest, i, f"https://builder.aws.com/content/post-{i}")
+            published(manifest, i, f"https://builder.aws.com/content/post-{i}/slug-{i}")
         result = check.validate(manifest, FIXTURE_ROOT)
         self.assertEqual("PUBLICATION_URLS_RECORDED", result["state"])
         self.assertEqual(3, result["public_urls_recorded"])
@@ -40,32 +40,57 @@ class BlogBonusTests(unittest.TestCase):
 
     def test_wrong_host_is_rejected(self):
         manifest = load_manifest()
-        published(manifest, 0, "https://example.com/post")
+        published(manifest, 0, "https://example.com/content/post/slug")
+        with self.assertRaisesRegex(check.BonusManifestError, "builder.aws.com"):
+            check.validate(manifest, FIXTURE_ROOT)
+
+    def test_builder_subdomain_is_rejected(self):
+        manifest = load_manifest()
+        published(manifest, 0, "https://fake.builder.aws.com/content/post/slug")
         with self.assertRaisesRegex(check.BonusManifestError, "builder.aws.com"):
             check.validate(manifest, FIXTURE_ROOT)
 
     def test_host_suffix_spoof_is_rejected(self):
         manifest = load_manifest()
-        published(manifest, 0, "https://builder.aws.com.evil.example/post")
+        published(manifest, 0, "https://builder.aws.com.evil.example/content/post/slug")
         with self.assertRaisesRegex(check.BonusManifestError, "builder.aws.com"):
             check.validate(manifest, FIXTURE_ROOT)
 
     def test_builder_root_is_not_a_post(self):
         manifest = load_manifest()
         published(manifest, 0, "https://builder.aws.com/")
-        with self.assertRaisesRegex(check.BonusManifestError, "specific public post"):
+        with self.assertRaisesRegex(check.BonusManifestError, "specific public"):
+            check.validate(manifest, FIXTURE_ROOT)
+
+    def test_builder_non_content_path_is_not_a_post(self):
+        manifest = load_manifest()
+        published(manifest, 0, "https://builder.aws.com/connect/space/example")
+        with self.assertRaisesRegex(check.BonusManifestError, "specific public"):
             check.validate(manifest, FIXTURE_ROOT)
 
     def test_duplicate_public_urls_are_rejected(self):
         manifest = load_manifest()
-        published(manifest, 0, "https://builder.aws.com/content/same")
-        published(manifest, 1, "https://builder.aws.com/content/same")
+        published(manifest, 0, "https://builder.aws.com/content/same/slug")
+        published(manifest, 1, "https://builder.aws.com/content/same/slug")
         with self.assertRaisesRegex(check.BonusManifestError, "must be distinct"):
+            check.validate(manifest, FIXTURE_ROOT)
+
+    def test_same_post_aliases_are_rejected(self):
+        manifest = load_manifest()
+        published(manifest, 0, "https://builder.aws.com/content/same/original-slug?trk=one")
+        published(manifest, 1, "https://builder.aws.com/content/same/different-slug/#fragment")
+        with self.assertRaisesRegex(check.BonusManifestError, "must be distinct"):
+            check.validate(manifest, FIXTURE_ROOT)
+
+    def test_nonstandard_https_port_is_rejected(self):
+        manifest = load_manifest()
+        published(manifest, 0, "https://builder.aws.com:444/content/post/slug")
+        with self.assertRaisesRegex(check.BonusManifestError, "standard HTTPS port"):
             check.validate(manifest, FIXTURE_ROOT)
 
     def test_draft_status_cannot_carry_public_url(self):
         manifest = load_manifest()
-        manifest["posts"][0]["public_url"] = "https://builder.aws.com/content/fake"
+        manifest["posts"][0]["public_url"] = "https://builder.aws.com/content/fake/slug"
         with self.assertRaisesRegex(check.BonusManifestError, "must not carry"):
             check.validate(manifest, FIXTURE_ROOT)
 
