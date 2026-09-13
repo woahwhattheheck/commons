@@ -1,6 +1,5 @@
 import copy
 import hashlib
-import json
 import math
 import pathlib
 import sys
@@ -86,6 +85,12 @@ class DecisionTests(unittest.TestCase):
         packet = evidence(changed_fraction=0.20)
         receipt = decide(packet, seen_event_ids={packet["event_id"]})
         self.assertEqual(receipt.decision, "REPLAY_IGNORED")
+        self.assertTrue(verify_receipt(packet, receipt.to_dict(), seen_event_ids={packet["event_id"]}))
+        self.assertFalse(verify_receipt(packet, receipt.to_dict()))
+
+    def test_seen_event_id_must_be_canonical_hex(self):
+        with self.assertRaises(ValueError):
+            decide(evidence(), seen_event_ids={"z" * 64})
 
     def test_policy_changes_receipt_identity(self):
         packet = evidence(changed_fraction=0.02)
@@ -107,6 +112,17 @@ class DecisionTests(unittest.TestCase):
         raw = decide(packet).to_dict()
         raw["reason_codes"] = ["MADE_UP_REASON"]
         self.assertFalse(verify_receipt(packet, raw))
+
+    def test_receipt_verifier_rejects_resealed_wrong_decision(self):
+        packet = evidence(changed_fraction=0.20, edge_delta=0.10, mean_delta=50.0)
+        forged = decide(packet).to_dict()
+        forged["decision"] = "NO_ACTION"
+        forged["reason_codes"] = ["BELOW_REVIEW_THRESHOLDS"]
+        unsigned = {k: forged[k] for k in (
+            "decision", "reason_codes", "event_id", "policy_id", "external_action_authorized"
+        )}
+        forged["receipt_sha256"] = sha256_json(unsigned)
+        self.assertFalse(verify_receipt(packet, forged))
 
 
 if __name__ == "__main__":
