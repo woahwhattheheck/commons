@@ -8,8 +8,6 @@ import tempfile
 import types
 import unittest
 
-# The production module composes with host/coordination_state.py. These pure
-# decision tests stub only that import so they remain fully offline.
 stub = types.ModuleType("coordination_state")
 class _GitHub: pass
 class _GitHubError(RuntimeError): pass
@@ -24,16 +22,31 @@ fence = importlib.util.module_from_spec(SPEC)
 SPEC.loader.exec_module(fence)
 
 
-def report(*, stable=None, exact=None, paths=None, comparisons=None, kind="pull", errors=None):
+def report(*, stable=None, exact=None, paths=None, comparisons=None, kind="pull",
+           errors=None, census=None, stable_id="OP-1", candidate_paths=None,
+           semantic_tokens=None):
     return {
-        "input": {},
+        "input": {
+            "stable_id": stable_id,
+            "candidate_paths": list(candidate_paths or []),
+            "semantic_tokens": list(semantic_tokens or []),
+        },
         "slack": {
             "stable_id_hits": stable or [],
             "exact_target_hits": exact or [],
             "path_semantic_hits": paths or [],
         },
-        "owner": {"repo": "owner/repo", "default_branch": "main", "head_sha": "owner", "tree_sha": "tree"},
-        "upstream": {"kind": kind, "repo": "upstream/repo", "number": 842, "head_sha": "donor", "changed_files": []},
+        "owner": {
+            "repo": "owner/repo", "default_branch": "main",
+            "head_sha": "owner", "tree_sha": "tree",
+        },
+        "upstream": {
+            "kind": kind, "repo": "upstream/repo", "number": 842,
+            "head_sha": "donor", "changed_files": [],
+        },
+        "owner_pr_census": census if census is not None else {
+            "complete": True, "open_pr_count": 0, "hits": []
+        },
         "blob_comparisons": comparisons or [],
         "errors": errors or [],
     }
@@ -82,11 +95,62 @@ class DecisionFixtures(unittest.TestCase):
         self.assertFalse(out["branch_write_allowed"])
         self.assertEqual(out["exit_code"], 22)
 
-    def test_issue_without_custody_hit_is_safe_to_bind(self):
-        out = fence.finalize(report(kind="issue"))
+    def test_issue_without_custody_hit_is_safe_to_bind_after_complete_census(self):
+        out = fence.finalize(report(kind="issue", stable_id="ISSUE-OP"))
         self.assertEqual(out["decision"], fence.SAFE_TO_BIND_BRANCH)
         self.assertTrue(out["branch_write_allowed"])
         self.assertEqual(out["exit_code"], 0)
+
+    def test_issue_without_any_identity_key_fails_closed(self):
+        out = fence.finalize(report(
+            kind="issue", stable_id=None, candidate_paths=[], semantic_tokens=[]
+        ))
+        self.assertEqual(out["decision"], fence.NEEDS_MANUAL_DIFF)
+
+    def test_incomplete_owner_pr_census_fails_closed(self):
+        out = fence.finalize(report(
+            kind="issue",
+            census={"complete": False, "open_pr_count": None, "hits": []},
+        ))
+        self.assertEqual(out["decision"], fence.NEEDS_MANUAL_DIFF)
+        self.assertFalse(out["branch_write_allowed"])
+
+    def test_owner_pr_exact_target_blocks_without_slack_hit(self):
+        out = fence.finalize(report(
+            kind="issue",
+            census={
+                "complete": True,
+                "open_pr_count": 1,
+                "hits": [{
+                    "number": 77, "strength": "exact",
+                    "reasons": ["exact_target"],
+                }],
+            },
+        ))
+        self.assertEqual(out["decision"], fence.OWNED)
+        self.assertEqual(out["exit_code"], 20)
+
+    def test_owner_pr_path_overlap_requires_manual_diff(self):
+        out = fence.finalize(report(
+            kind="issue",
+            candidate_paths=["src/x.py"],
+            census={
+                "complete": True,
+                "open_pr_count": 1,
+                "hits": [{
+                    "number": 77, "strength": "overlap",
+                    "reasons": ["path_overlap"], "shared_paths": ["src/x.py"],
+                }],
+            },
+        ))
+        self.assertEqual(out["decision"], fence.NEEDS_MANUAL_DIFF)
+
+    def test_mixed_take_release_text_fails_closed_as_owned(self):
+        out = fence.finalize(report(
+            kind="issue",
+            exact=[{"text": "RELEASE old lane; TAKE SOURCE+MERGE upstream/repo#842"}],
+        ))
+        self.assertEqual(out["decision"], fence.OWNED)
 
     def test_evidence_reader_error_fails_closed(self):
         out = fence.finalize(report(kind="issue", errors=["slack: rate_limited"]))
@@ -120,7 +184,9 @@ class DecisionFixtures(unittest.TestCase):
         with tempfile.TemporaryDirectory() as td:
             path = pathlib.Path(td) / "report.json"
             path.write_text(json.dumps(payload), encoding="utf-8")
-            self.assertEqual(fence.main(["--offline-report", str(path), "--json"]), 21)
+            self.assertEqual(
+                fence.main(["--offline-report", str(path), "--json"]), 21
+            )
 
 
 class CollectorTests(unittest.TestCase):
@@ -140,14 +206,25 @@ class CollectorTests(unittest.TestCase):
                 if path == "/repos/owner/repo":
                     return {"default_branch": "main"}
                 if path == "/repos/owner/repo/branches/main":
-                    return {"commit": {"sha": "owner-head", "commit": {"tree": {"sha": "owner-tree"}}}}
+                    return {
+                        "commit": {
+                            "sha": "owner-head",
+                            "commit": {"tree": {"sha": "owner-tree"}},
+                        }
+                    }
                 if path == "/repos/owner/repo/git/trees/owner-tree":
-                    return {"truncated": False, "tree": [
-                        {"path": "same.py", "type": "blob", "sha": "abc"},
-                        {"path": "different.py", "type": "blob", "sha": "owner-def"},
-                    ]}
+                    return {
+                        "truncated": False,
+                        "tree": [
+                            {"path": "same.py", "type": "blob", "sha": "abc"},
+                            {"path": "different.py", "type": "blob", "sha": "owner-def"},
+                        ],
+                    }
                 if path == "/repos/up/repo/pulls/842":
-                    return {"state": "open", "title": "x", "html_url": "u", "head": {"sha": "donor-head"}, "base": {"sha": "base"}}
+                    return {
+                        "state": "open", "title": "x", "html_url": "u",
+                        "head": {"sha": "donor-head"}, "base": {"sha": "base"},
+                    }
                 if path == "/repos/up/repo/pulls/842/files":
                     return [
                         {"filename": "same.py", "status": "modified", "sha": "abc"},
@@ -156,12 +233,75 @@ class CollectorTests(unittest.TestCase):
                 raise AssertionError((path, params))
 
         owner, upstream, comparisons = fence.collect_github(
-            FakeGitHub(), "owner/repo", {"repo": "up/repo", "number": 842, "kind": "pull"}, []
+            FakeGitHub(),
+            "owner/repo",
+            {"repo": "up/repo", "number": 842, "kind": "pull"},
+            [],
         )
         self.assertEqual(owner["head_sha"], "owner-head")
         self.assertEqual(upstream["head_sha"], "donor-head")
         self.assertEqual([c["match"] for c in comparisons], [True, False])
-        self.assertEqual(fence.finalize(report(comparisons=comparisons))["decision"], fence.NEEDS_MANUAL_DIFF)
+        self.assertEqual(
+            fence.finalize(report(comparisons=comparisons))["decision"],
+            fence.NEEDS_MANUAL_DIFF,
+        )
+
+    def test_owner_pr_census_finds_exact_target_and_path_overlap(self):
+        class FakeGitHub:
+            def rest(self, path, params=None):
+                if path == "/repos/owner/repo/pulls":
+                    return [{
+                        "number": 9,
+                        "title": "carrier",
+                        "body": "Implements upstream/repo#842",
+                        "html_url": "https://github.com/owner/repo/pull/9",
+                        "head": {"sha": "head9"},
+                    }]
+                if path == "/repos/owner/repo/pulls/9/files":
+                    return [{"filename": "src/x.py", "status": "added", "sha": "abc"}]
+                raise AssertionError((path, params))
+
+        census = fence.collect_owner_pr_census(
+            FakeGitHub(),
+            "owner/repo",
+            {"repo": "upstream/repo", "number": 842, "kind": "issue"},
+            "OP-842",
+            ["src/x.py"],
+            [],
+            {"cross_referenced_prs": []},
+        )
+        self.assertTrue(census["complete"])
+        self.assertEqual(census["open_pr_count"], 1)
+        self.assertEqual(census["hits"][0]["strength"], "exact")
+        self.assertIn("exact_target", census["hits"][0]["reasons"])
+        self.assertIn("path_overlap", census["hits"][0]["reasons"])
+
+    def test_issue_timeline_cross_reference_marks_owner_pr_exact(self):
+        class FakeGitHub:
+            def rest(self, path, params=None):
+                if path == "/repos/owner/repo/pulls":
+                    return [{
+                        "number": 44, "title": "carrier", "body": "",
+                        "html_url": "https://github.com/owner/repo/pull/44",
+                        "head": {"sha": "head44"},
+                    }]
+                raise AssertionError((path, params))
+
+        census = fence.collect_owner_pr_census(
+            FakeGitHub(),
+            "owner/repo",
+            {"repo": "up/repo", "number": 12, "kind": "issue"},
+            "OP-12",
+            [],
+            [],
+            {
+                "cross_referenced_prs": [{
+                    "repo": "owner/repo", "number": 44, "state": "open"
+                }]
+            },
+        )
+        self.assertEqual(census["hits"][0]["strength"], "exact")
+        self.assertIn("exact_target", census["hits"][0]["reasons"])
 
 
 if __name__ == "__main__":
