@@ -1,0 +1,46 @@
+{
+  "package": "port_tacoma_data_consolidation_qa",
+  "schema_version": 1,
+  "status": "SYNTHETIC_PROVIDER_FREE_DELIVERY_CORE",
+  "commercial_lane": "Port of Tacoma / NWSA 072026-1047 data consolidation assessment specialist QA",
+  "capabilities": [
+    "synthetic_edi_api_file_inventory",
+    "source_and_batch_schema_lineage",
+    "content_addressed_batch_trust",
+    "exact_event_replay_collapse",
+    "changed_event_replay_quarantine",
+    "source_to_canonical_field_mapping",
+    "source_entity_completeness_metrics",
+    "cross_source_canonical_reconciliation",
+    "entity_candidate_or_hold_reason_codes",
+    "field_and_record_lineage",
+    "content_addressed_assessment_receipts",
+    "offline_receipt_verification_cli"
+  ],
+  "acceptance": {
+    "synthetic_sources": 3,
+    "synthetic_batches": 6,
+    "synthetic_entities": 200,
+    "input_records": 604,
+    "effective_records": 600,
+    "trusted_records": 600,
+    "exact_replays_collapsed": 4,
+    "migration_candidates": 200,
+    "source_entity_completeness_ppm": 1000000,
+    "hostile_classes": [
+      "EVENT_REPLAY_CONFLICT",
+      "BATCH_CONTENT_MISMATCH",
+      "BATCH_RECORD_COUNT_MISMATCH",
+      "SOURCE_ENTITY_MISSING",
+      "CANONICAL_FIELD_CONFLICT"
+    ]
+  },
+  "uses_port_nwsa_data": false,
+  "uses_port_nwsa_credentials": false,
+  "provider_calls": false,
+  "migration_authority": false,
+  "procurement_submission": false,
+  "buyer_acceptance_claimed": false,
+  "contract_award_claimed": false,
+  "revenue_claimed": false
+}
