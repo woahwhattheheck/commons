@@ -6,9 +6,11 @@ import re
 from datetime import datetime, timezone
 from typing import Any
 
-INPUT_SCHEMA = "commons-actions-evidence/v1"
-OUTPUT_SCHEMA = "commons-actions-authority/v1"
+INPUT_SCHEMA = "commons-actions-evidence/v2"
+OUTPUT_SCHEMA = "commons-actions-classification/v2"
+POLICY_SCHEMA = "commons-actions-policy/v1"
 SHA_RE = re.compile(r"^[0-9a-f]{40}$")
+SHA256_RE = re.compile(r"^sha256:[0-9a-f]{64}$")
 REPO_RE = re.compile(r"^[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+$")
 RUN_STATUSES = {"requested", "waiting", "pending", "queued", "in_progress", "completed"}
 CONCLUSIONS = {
@@ -17,7 +19,9 @@ CONCLUSIONS = {
 }
 RED_CONCLUSIONS = {"failure", "timed_out", "action_required", "stale", "startup_failure"}
 ZERO_STEP_WAIT_STATUSES = {"requested", "waiting", "pending", "queued"}
+POLICY_SOURCE_KINDS = {"branch_protection", "ruleset", "repository_manifest"}
 MAX_REQUIRED_WORKFLOWS = 64
+MAX_RUNS = 512
 MAX_JOBS_PER_RUN = 512
 MAX_STEPS_PER_JOB = 512
 
@@ -97,6 +101,12 @@ def _optional_text(value: Any, label: str, *, maximum: int = 256) -> str | None:
 def _require_int(value: Any, label: str, *, minimum: int = 0) -> int:
     if type(value) is not int or value < minimum:
         raise EvidenceError(f"{label} must be an integer >= {minimum}")
+    return value
+
+
+def _require_bool(value: Any, label: str) -> bool:
+    if type(value) is not bool:
+        raise EvidenceError(f"{label} must be a boolean")
     return value
 
 

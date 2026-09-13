@@ -1,35 +1,60 @@
-# Exact-head Actions authority
+# Policy-bound exact-head Actions classification
 
-`actions_authority` is an offline, fail-closed reducer for GitHub Actions evidence. It exists because queued, cancelled, and runner-starved checks are not the same thing as green CI.
+`actions_authority` is an offline, fail-closed classifier for GitHub Actions evidence. It distinguishes real terminal results from runner-starved zero-step jobs without pretending that a caller-selected workflow list is repository merge authority.
 
-## Contract
+## Security correction in v2
 
-Input schema `commons-actions-evidence/v1` binds one fresh evidence snapshot to a repository, an exact 40-hex head SHA, required workflow names, and one explicitly selected exact-head run for each workflow. Each run includes status/conclusion/timestamps and job evidence (runner, start/completion time, and steps).
+Version 1 accepted workflow display names and one caller-selected run per name, then set `merge_authorized=true` when those rows were green. That was not an authority boundary:
 
-The reducer emits `commons-actions-authority/v1` with a canonical evidence digest and a stable receipt digest (the informational `evaluated_at` timestamp is excluded from that digest). It never calls GitHub or mutates a repository. `side_effects_authorized` is always false.
+- the caller could omit a failing required workflow;
+- two workflow files can share or change a display name;
+- an older green run could be selected while a newer exact-head attempt was red.
 
-Decisions:
+Input schema `commons-actions-evidence/v2` therefore requires two explicit, digest-bound descriptors:
 
-- `TERMINAL_GREEN`: every required workflow is completed-success with successful job evidence. This is the **only** state where `merge_authorized=true`.
-- `TERMINAL_RED`: a required workflow failed, timed out, needs action, went stale, or had startup failure.
-- `WAIT_RUNNER_BACKLOG`: every non-green required workflow is positively zero-step and unassigned. This may set `runner_exception_candidate=true`; it still **never** authorizes merge.
-- `WAIT_EXECUTION`: a required workflow is executing or has incomplete non-backlog evidence.
-- `WAIT_MISSING`: required exact-head evidence is absent.
-- `HOLD`: contradictory/unsafe terminal evidence (for example a successful run with a failed job, skipped required workflow, or cancellation after runner execution).
+1. a policy descriptor (`commons-actions-policy/v1`) with source kind/locator/digest, base ref/SHA, capture time, and required workflows identified by numeric workflow ID + canonical workflow path + display name; and
+2. an inventory contract declaring a fully paginated exact-head Actions run set with `total_count`, `pages`, and `next_url=null`.
 
-Zero-step backlog requires no runner name, no job start, and null/empty steps. A queued/waiting/pending/requested job may qualify; a cancelled job qualifies only if it still satisfies those zero-execution facts. Cancellation after a runner started is `HOLD`.
+The classifier rejects workflow ID/path/name alias collisions, duplicate run numbers, internally incomplete inventory contracts, wrong-head runs, and malformed policy descriptors. For each required workflow identity it selects the greatest `run_number` from the complete inventory and binds that run's `run_attempt`; older exact-head runs are audit-only. Display names never substitute for ID/path identity.
+
+## Classification is not merge permission
+
+Even a digest-bound offline snapshot does not independently prove that the supplied policy or inventory is complete, that either came from the live repository, or that the caller has permission to merge. Therefore every valid receipt has:
+
+```json
+{
+  "authorization_scope": "CLASSIFICATION_ONLY",
+  "merge_authorized": false,
+  "side_effects_authorized": false
+}
+```
+
+`declared_policy_green=true` means only that the latest runs for every workflow in the bound policy snapshot are terminal green. A separate trusted online component must verify the live repository policy, head/base/review state, and merge permission immediately before dispatch.
+
+Version-1 evidence is rejected rather than silently retaining unsafe caller-curated authority.
+
+## Decisions
+
+- `TERMINAL_GREEN`: latest exact-head run for every declared required workflow is completed-success with successful job evidence.
+- `TERMINAL_RED`: a latest required run failed, timed out, needs action, went stale, or had startup failure.
+- `WAIT_RUNNER_BACKLOG`: every non-green latest required run is positively zero-step and unassigned. This may set `runner_exception_candidate=true`; it never authorizes merge.
+- `WAIT_EXECUTION`: a latest required run is executing or has incomplete non-backlog evidence.
+- `WAIT_MISSING`: the complete inventory contains no exact-head run for a declared required workflow.
+- `HOLD`: contradictory or unsafe terminal evidence.
+
+Zero-step backlog requires no runner name, no job start, and null/empty steps. A cancelled run qualifies only if every job still proves zero execution.
 
 ## Fail-closed parsing
 
-The tool rejects duplicate JSON keys, unknown fields, non-finite values, wrong-head runs, duplicate run IDs, multiple attempts for one required workflow, stale/future snapshots, run/job timestamps after the capture window, unsupported states, and inconsistent completion semantics. Extra non-required workflows are ignored for authority but listed in the receipt.
+The tool rejects duplicate JSON keys, unknown fields, non-finite values, noncanonical refs/workflow paths, malformed source digests, duplicate identities, duplicate run IDs/numbers, inventory count mismatches, stale/future captures, run/job timestamps after capture, unsupported states, and inconsistent completion semantics. Extra workflows are ignored for declared-policy classification but listed by stable identity in the receipt.
 
-The CLI reads only an ordinary non-symlink input, rejects input/output aliases, and publishes its receipt create-exclusively through a staged + fsynced file.
+The CLI reads only an ordinary non-symlink input, rejects input/output aliases, and publishes create-exclusively through a staged + fsynced file.
 
 ```sh
-python -m tools.actions_authority.cli evidence.json --out authority.json
+python -m tools.actions_authority.cli evidence.json --out classification.json
 ```
 
-Exit codes: `0` only for `TERMINAL_GREEN`; `3` for valid but non-authorizing evidence; `2` for malformed/stale evidence or publication failure. `--now` supports deterministic offline replay.
+Exit code `3` means a valid classification receipt was emitted; `2` means malformed/stale evidence or publication failure. The CLI intentionally has no merge-authorized exit code. `--now` supports deterministic offline replay.
 
 ## Verification
 
@@ -39,6 +64,4 @@ python -B -m unittest -v tools.actions_authority.test_authority
 python -O -B -m unittest -v tools.actions_authority.test_authority
 ```
 
-Coverage includes terminal green/red, queued and cancelled zero-step backlog, cancellation after execution, missing/in-progress evidence, contradictory success, skipped required workflows, exact-head/freshness/single-attempt fences, duplicate keys/unknown fields, ignored optional workflows, deterministic digests, create-exclusive output, and symlink rejection.
-
-A `runner_exception_candidate` receipt is classification evidence only. It does not waive a repository's merge policy and cannot self-authorize this tool's own merge.
+Coverage includes old-green/new-red selection, run-attempt binding, ID/path/name substitution, complete-inventory pagination, policy/source digest binding, terminal green/red, zero-step backlog, cancellation after execution, missing/in-progress evidence, exact-head/freshness fences, deterministic digests, create-exclusive output, and symlink rejection.

@@ -4,10 +4,54 @@ from datetime import timedelta
 from typing import Any
 
 from .common import (
-    CONCLUSIONS, MAX_JOBS_PER_RUN, MAX_STEPS_PER_JOB, RUN_STATUSES, EvidenceError,
-    _optional_text, _optional_time, _require_dict, _require_int, _require_list,
-    _require_text, _time, _validate_exact_fields,
+    CONCLUSIONS,
+    MAX_JOBS_PER_RUN,
+    MAX_REQUIRED_WORKFLOWS,
+    MAX_STEPS_PER_JOB,
+    POLICY_SCHEMA,
+    POLICY_SOURCE_KINDS,
+    RUN_STATUSES,
+    SHA256_RE,
+    SHA_RE,
+    EvidenceError,
+    _optional_text,
+    _optional_time,
+    _require_bool,
+    _require_dict,
+    _require_int,
+    _require_list,
+    _require_text,
+    _time,
+    _validate_exact_fields,
 )
+
+
+def _workflow_path(value: Any, label: str) -> str:
+    path = _require_text(value, label, maximum=256)
+    if not path.startswith(".github/workflows/"):
+        raise EvidenceError(f"{label} must be under .github/workflows/")
+    if path.endswith("/") or "\\" in path or "//" in path or "%" in path:
+        raise EvidenceError(f"{label} is not a canonical workflow path")
+    parts = path.split("/")
+    if any(part in {"", ".", ".."} for part in parts):
+        raise EvidenceError(f"{label} is not a canonical workflow path")
+    if not path.endswith((".yml", ".yaml")):
+        raise EvidenceError(f"{label} must end in .yml or .yaml")
+    return path
+
+
+def _base_ref(value: Any, label: str) -> str:
+    ref = _require_text(value, label, maximum=256)
+    prefix = "refs/heads/"
+    if not ref.startswith(prefix):
+        raise EvidenceError(f"{label} must be a refs/heads/* ref")
+    suffix = ref[len(prefix):]
+    if not suffix or suffix.startswith("/") or suffix.endswith("/"):
+        raise EvidenceError(f"{label} is not canonical")
+    if ".." in suffix or "//" in suffix or "\\" in suffix or any(ch.isspace() for ch in suffix):
+        raise EvidenceError(f"{label} is not canonical")
+    return ref
+
 
 def _parse_steps(value: Any, label: str) -> list[dict[str, Any]] | None:
     if value is None:
@@ -75,11 +119,18 @@ def _parse_run(raw: Any, label: str, expected_head: str) -> dict[str, Any]:
     run = _require_dict(raw, label)
     _validate_exact_fields(
         run,
-        {"run_id", "workflow", "head_sha", "status", "conclusion", "created_at", "started_at", "completed_at", "jobs"},
+        {
+            "run_id", "run_number", "run_attempt", "workflow_id", "workflow_path", "workflow_name",
+            "head_sha", "status", "conclusion", "created_at", "started_at", "completed_at", "jobs",
+        },
         label,
     )
     run_id = _require_int(run.get("run_id"), f"{label}.run_id", minimum=1)
-    workflow = _require_text(run.get("workflow"), f"{label}.workflow")
+    run_number = _require_int(run.get("run_number"), f"{label}.run_number", minimum=1)
+    run_attempt = _require_int(run.get("run_attempt"), f"{label}.run_attempt", minimum=1)
+    workflow_id = _require_int(run.get("workflow_id"), f"{label}.workflow_id", minimum=1)
+    workflow_path = _workflow_path(run.get("workflow_path"), f"{label}.workflow_path")
+    workflow_name = _require_text(run.get("workflow_name"), f"{label}.workflow_name")
     head_sha = _require_text(run.get("head_sha"), f"{label}.head_sha", maximum=40).lower()
     if head_sha != expected_head:
         raise EvidenceError(f"{label}.head_sha does not match exact evidence head")
@@ -109,7 +160,11 @@ def _parse_run(raw: Any, label: str, expected_head: str) -> dict[str, Any]:
         raise EvidenceError(f"{label}.started_at materially precedes created_at")
     return {
         "run_id": run_id,
-        "workflow": workflow,
+        "run_number": run_number,
+        "run_attempt": run_attempt,
+        "workflow_id": workflow_id,
+        "workflow_path": workflow_path,
+        "workflow_name": workflow_name,
         "head_sha": head_sha,
         "status": status,
         "conclusion": conclusion,
@@ -117,4 +172,85 @@ def _parse_run(raw: Any, label: str, expected_head: str) -> dict[str, Any]:
         "started_at": started_at,
         "completed_at": completed_at,
         "jobs": jobs,
+    }
+
+
+def _parse_policy(raw: Any, label: str = "policy") -> dict[str, Any]:
+    policy = _require_dict(raw, label)
+    _validate_exact_fields(
+        policy,
+        {"schema_version", "source", "base_ref", "base_sha", "captured_at", "required_workflows"},
+        label,
+    )
+    if policy.get("schema_version") != POLICY_SCHEMA:
+        raise EvidenceError(f"{label}.schema_version must equal {POLICY_SCHEMA}")
+
+    source_raw = _require_dict(policy.get("source"), f"{label}.source")
+    _validate_exact_fields(source_raw, {"kind", "locator", "source_sha256"}, f"{label}.source")
+    source_kind = _require_text(source_raw.get("kind"), f"{label}.source.kind")
+    if source_kind not in POLICY_SOURCE_KINDS:
+        raise EvidenceError(f"{label}.source.kind is unsupported: {source_kind}")
+    source_locator = _require_text(source_raw.get("locator"), f"{label}.source.locator", maximum=512)
+    source_sha256 = _require_text(source_raw.get("source_sha256"), f"{label}.source.source_sha256", maximum=71).lower()
+    if not SHA256_RE.fullmatch(source_sha256):
+        raise EvidenceError(f"{label}.source.source_sha256 must be sha256:<64 lowercase hex>")
+
+    base_ref = _base_ref(policy.get("base_ref"), f"{label}.base_ref")
+    base_sha = _require_text(policy.get("base_sha"), f"{label}.base_sha", maximum=40).lower()
+    if not SHA_RE.fullmatch(base_sha):
+        raise EvidenceError(f"{label}.base_sha must be exactly 40 lowercase hex characters")
+    captured_at = _time(policy.get("captured_at"), f"{label}.captured_at")
+
+    rows = _require_list(
+        policy.get("required_workflows"),
+        f"{label}.required_workflows",
+        maximum=MAX_REQUIRED_WORKFLOWS,
+    )
+    if not rows:
+        raise EvidenceError(f"{label}.required_workflows must not be empty")
+    required: list[dict[str, Any]] = []
+    for index, row_raw in enumerate(rows):
+        row_label = f"{label}.required_workflows[{index}]"
+        row = _require_dict(row_raw, row_label)
+        _validate_exact_fields(row, {"workflow_id", "workflow_path", "workflow_name"}, row_label)
+        required.append({
+            "workflow_id": _require_int(row.get("workflow_id"), f"{row_label}.workflow_id", minimum=1),
+            "workflow_path": _workflow_path(row.get("workflow_path"), f"{row_label}.workflow_path"),
+            "workflow_name": _require_text(row.get("workflow_name"), f"{row_label}.workflow_name"),
+        })
+
+    for field in ("workflow_id", "workflow_path", "workflow_name"):
+        values = [row[field] for row in required]
+        if len(values) != len(set(values)):
+            raise EvidenceError(f"{label}.required_workflows contains duplicate {field}")
+
+    return {
+        "schema_version": POLICY_SCHEMA,
+        "source": {"kind": source_kind, "locator": source_locator, "source_sha256": source_sha256},
+        "base_ref": base_ref,
+        "base_sha": base_sha,
+        "captured_at": captured_at,
+        "required_workflows": required,
+    }
+
+
+def _parse_inventory(raw: Any, label: str = "inventory") -> dict[str, Any]:
+    inventory = _require_dict(raw, label)
+    _validate_exact_fields(inventory, {"source", "complete", "total_count", "pages", "next_url"}, label)
+    source = _require_text(inventory.get("source"), f"{label}.source")
+    if source != "github-actions-runs":
+        raise EvidenceError(f"{label}.source must equal github-actions-runs")
+    complete = _require_bool(inventory.get("complete"), f"{label}.complete")
+    if not complete:
+        raise EvidenceError(f"{label}.complete must be true")
+    total_count = _require_int(inventory.get("total_count"), f"{label}.total_count", minimum=0)
+    pages = _require_int(inventory.get("pages"), f"{label}.pages", minimum=1)
+    if inventory.get("next_url") is not None:
+        raise EvidenceError(f"{label}.next_url must be null for a complete inventory")
+    return {
+        "source": source,
+        "complete": complete,
+        "total_count": total_count,
+        "pages": pages,
+        "next_url": None,
     }

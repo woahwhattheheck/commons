@@ -8,6 +8,7 @@ from pathlib import Path
 from .authority import classify
 from .common import EvidenceError, _canonical_bytes, _time, parse_json_bytes
 
+
 def _same_existing_file(left: Path, right: Path) -> bool:
     try:
         return os.path.samefile(left, right)
@@ -54,7 +55,9 @@ def _publish_create_exclusive(path: Path, raw: bytes) -> None:
 
 
 def main(argv: list[str] | None = None) -> int:
-    parser = argparse.ArgumentParser(description="Classify exact-head GitHub Actions evidence without calling GitHub.")
+    parser = argparse.ArgumentParser(
+        description="Classify policy-bound exact-head GitHub Actions evidence without calling GitHub."
+    )
     parser.add_argument("input", type=Path)
     parser.add_argument("--out", required=True, type=Path)
     parser.add_argument("--max-age-seconds", type=int, default=1800)
@@ -78,7 +81,7 @@ def main(argv: list[str] | None = None) -> int:
             max_future_skew_seconds=args.max_future_skew_seconds,
         )
         _publish_create_exclusive(output_path, _canonical_bytes(receipt))
-        return 0 if receipt["merge_authorized"] else 3
+        return 3
     except (EvidenceError, OSError) as exc:
         print(f"ACTIONS_AUTHORITY_ERROR: {exc}", file=os.sys.stderr)
         return 2
