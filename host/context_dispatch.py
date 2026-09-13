@@ -13,8 +13,10 @@ from typing import Any
 
 try:
     from host.context_packet import PacketError, compile_packet, markdown, verify_packet
+    from host.git_source_capsules import verify_git_source
 except ModuleNotFoundError:
     from context_packet import PacketError, compile_packet, markdown, verify_packet
+    from git_source_capsules import verify_git_source
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -34,7 +36,8 @@ def _claims(path: Path | None) -> tuple[list[dict[str, Any]], list[tuple[str, by
     if path.is_dir():
         rows, raws = [], []
         for item in sorted(path.glob("*.json")):
-            value, raw = _load(item); raws.append((str(item), raw))
+            value, raw = _load(item)
+            raws.append((str(item), raw))
             if isinstance(value, Mapping):
                 rows.append(dict(value))
         return rows, raws
@@ -73,61 +76,127 @@ def _compile(args: argparse.Namespace) -> dict[str, Any]:
         path, raw = claim_raws[0]
         provenance.append({"source":"claims","path":path,"sha256":hashlib.sha256(raw).hexdigest(),"bytes":len(raw)})
     elif claim_raws:
-        manifest = "\n".join(f"{path}\t{hashlib.sha256(raw).hexdigest()}\t{len(raw)}" for path,raw in claim_raws).encode()
-        provenance.append({"source":"claims","path":str(args.claims),"sha256":hashlib.sha256(manifest).hexdigest(),"files":len(claim_raws),"bytes":sum(len(raw) for _,raw in claim_raws)})
+        manifest = "\n".join(
+            f"{path}\t{hashlib.sha256(raw).hexdigest()}\t{len(raw)}" for path,raw in claim_raws
+        ).encode()
+        provenance.append({
+            "source":"claims",
+            "path":str(args.claims),
+            "sha256":hashlib.sha256(manifest).hexdigest(),
+            "files":len(claim_raws),
+            "bytes":sum(len(raw) for _,raw in claim_raws),
+        })
+
+    source_requested = bool(args.source_commit or args.source_path)
+    if source_requested and not (args.source_commit and args.source_path):
+        raise PacketError("--source-commit and at least one --source-path are required together")
+
     return compile_packet(
-        operation=args.operation, objective=args.objective, pulse=pulse,
-        recent=[x for x in recent if isinstance(x, Mapping)], ledger=ledger,
-        claims=claims, coordination=coordination, explicit_terms=args.term,
-        paths=args.path, requested_main_head=args.main_head, provenance=provenance,
-        max_chars=args.max_chars, max_events=args.max_events,
-        max_resources=args.max_resources, max_claims=args.max_claims,
+        operation=args.operation,
+        objective=args.objective,
+        pulse=pulse,
+        recent=[x for x in recent if isinstance(x, Mapping)],
+        ledger=ledger,
+        claims=claims,
+        coordination=coordination,
+        explicit_terms=args.term,
+        paths=args.path,
+        requested_main_head=args.main_head,
+        provenance=provenance,
+        git_repository=args.git_repo if source_requested else None,
+        source_commit=args.source_commit,
+        source_paths=args.source_path,
+        max_source_file_bytes=args.max_source_file_bytes,
+        max_chars=args.max_chars,
+        max_events=args.max_events,
+        max_resources=args.max_resources,
+        max_claims=args.max_claims,
         max_coordination=args.max_coordination,
     )
 
 
 def _write(text: str, out: Path | None) -> None:
     if out is None:
-        sys.stdout.write(text); return
+        sys.stdout.write(text)
+        return
     if out.exists():
         raise PacketError(f"refusing to overwrite {out}")
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(text, encoding="utf-8")
 
 
+def _validate_packet(value: Mapping[str, Any], git_repo: Path) -> tuple[bool, str]:
+    ok, reason = verify_packet(value)
+    if not ok:
+        return ok, reason
+    if value.get("git_source") is not None:
+        return verify_git_source(dict(value["git_source"]), git_repo)
+    return True, "ok"
+
+
 def main(argv: Sequence[str] | None = None) -> int:
     parser = argparse.ArgumentParser()
     sub = parser.add_subparsers(dest="command", required=True)
+
     packet = sub.add_parser("packet")
-    packet.add_argument("--operation", required=True); packet.add_argument("--objective", required=True)
-    packet.add_argument("--term", action="append", default=[]); packet.add_argument("--path", action="append", default=[])
+    packet.add_argument("--operation", required=True)
+    packet.add_argument("--objective", required=True)
+    packet.add_argument("--term", action="append", default=[])
+    packet.add_argument("--path", action="append", default=[])
     packet.add_argument("--pulse", type=Path, default=ROOT/"pulse.json")
     packet.add_argument("--recent", type=Path, default=ROOT/"recent.json")
     packet.add_argument("--ledger", type=Path, default=ROOT/"ground"/"RESOURCE_LEDGER.json")
-    packet.add_argument("--coordination", type=Path); packet.add_argument("--claims", type=Path); packet.add_argument("--main-head")
-    packet.add_argument("--max-chars", type=int, default=12000); packet.add_argument("--max-events", type=int, default=12)
-    packet.add_argument("--max-resources", type=int, default=12); packet.add_argument("--max-claims", type=int, default=6)
+    packet.add_argument("--coordination", type=Path)
+    packet.add_argument("--claims", type=Path)
+    packet.add_argument("--main-head")
+    packet.add_argument("--git-repo", type=Path, default=ROOT)
+    packet.add_argument("--source-commit")
+    packet.add_argument("--source-path", action="append", default=[])
+    packet.add_argument("--max-source-file-bytes", type=int, default=16384)
+    packet.add_argument("--max-chars", type=int, default=12000)
+    packet.add_argument("--max-events", type=int, default=12)
+    packet.add_argument("--max-resources", type=int, default=12)
+    packet.add_argument("--max-claims", type=int, default=6)
     packet.add_argument("--max-coordination", type=int, default=8)
-    packet.add_argument("--format", choices=("json","markdown"), default="json"); packet.add_argument("--out", type=Path)
-    verify = sub.add_parser("verify"); verify.add_argument("packet", type=Path)
-    render = sub.add_parser("render"); render.add_argument("packet", type=Path); render.add_argument("--out", type=Path)
+    packet.add_argument("--format", choices=("json","markdown"), default="json")
+    packet.add_argument("--out", type=Path)
+
+    verify = sub.add_parser("verify")
+    verify.add_argument("packet", type=Path)
+    verify.add_argument("--git-repo", type=Path, default=ROOT)
+
+    render = sub.add_parser("render")
+    render.add_argument("packet", type=Path)
+    render.add_argument("--git-repo", type=Path, default=ROOT)
+    render.add_argument("--out", type=Path)
+
     args = parser.parse_args(argv)
     try:
         if args.command == "packet":
             result = _compile(args)
-            _write(json.dumps(result, ensure_ascii=False, sort_keys=True, indent=2) + "\n" if args.format == "json" else markdown(result), args.out)
+            text = (
+                json.dumps(result, ensure_ascii=False, sort_keys=True, indent=2) + "\n"
+                if args.format == "json"
+                else markdown(result)
+            )
+            _write(text, args.out)
             return 0
+
         value, _ = _load(args.packet)
         if not isinstance(value, Mapping):
             raise PacketError("packet must be an object")
-        ok, reason = verify_packet(value)
+        ok, reason = _validate_packet(value, args.git_repo)
         if not ok:
-            sys.stderr.write(f"INVALID {reason}\n"); return 2
+            sys.stderr.write(f"INVALID {reason}\n")
+            return 2
         if args.command == "render":
-            _write(markdown(value), args.out); return 0
-        sys.stdout.write(f"VALID {value['schema']} {value['semantic_sha256']}\n"); return 0
-    except (OSError, json.JSONDecodeError, PacketError) as exc:
-        sys.stderr.write(f"ERROR {exc}\n"); return 2
+            _write(markdown(value), args.out)
+            return 0
+        sys.stdout.write(f"VALID {value['schema']} {value['semantic_sha256']}\n")
+        return 0
+    except (OSError, json.JSONDecodeError, PacketError, ValueError) as exc:
+        sys.stderr.write(f"ERROR {exc}\n")
+        return 2
 
 
 if __name__ == "__main__":
