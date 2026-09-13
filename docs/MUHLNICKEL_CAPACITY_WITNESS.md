@@ -33,7 +33,8 @@ Supported live formats are `MUHLPKG1` and `MUHLDC01`. The latter must prove:
 ```text
 stored_gate_records = (factory_rings + 1) × gates_per_ring
 winner_only = true
-stored_per_lane = 0
+stored_per_lane = 2
+senses = 0
 header_total = actual file size
 ```
 
