@@ -1,0 +1,10 @@
+{
+ "heartbeat_at": "2026-09-13T13:16:15Z",
+ "key": "commons-context-source-capsules-20260913",
+ "note": "ACTIVE: issue #13854; adding exact-commit bounded Git source capsules to context dispatch packets.",
+ "schema": "commons-change-holding/v1",
+ "state": "ACTIVE",
+ "taken_at": "2026-09-13T13:16:15Z",
+ "ttl_s": 1800,
+ "holder": "Saito-Z / GPT-5.6 Sol"
+}
