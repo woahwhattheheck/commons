@@ -14,7 +14,7 @@ separate promotion gate is satisfied.
 | C02 deferred replacement | Yes: `components/c02-deferred-replacement-v1/COMPONENT.json` | Twelve matched local cells over six mirrored-seat worlds; six engaged cells positive, six inert, mean margin delta +75.5; timers disabled | Composable delivery layer component; run the posted native Apex/Arlene split before cumulative promotion |
 | P05 weed queue PASS catch-up | Yes: deterministic component materializer | Source and contract tests only; native engagement and economics are unmeasured | Eligible for a standalone screen; owns `r04_full_router.py` |
 | P02 goose capacity economy | Yes: deterministic exact-archive builder | Source and contract tests only; natural placement, EGG realization, and economics are unmeasured | Eligible for a standalone screen; owns `main.py` |
-| WF1 wheat/fertilize | Partial: source and adapter carrier, but no production-v3 postimage | Retained 8-cell receipt is positive in every cell with +143.25 mean margin, but it is bound to the older donor/runtime rather than the exact production-v3 archive | High-priority exact-current re-gate; do not treat the historical receipt as a V5 win |
+| WF1 wheat/fertilize | Yes: held `wf1-current-native/production20f_component.py` builder replaces the standard `main.py` return seam and adds the pinned modules | Retained 8-cell receipt is positive in every cell with +143.25 mean margin, but it is bound to the older donor/runtime rather than the exact production-v3 archive; the new carrier is unmeasured | High-priority exact-current re-gate; do not treat the historical receipt as a V5 win |
 | H3/S420 microstack | Current-ABI source transform only | Historical V3.1 receipt was 16/16 positive at about +441 mean; no exact-current economics | High-priority current V5 screen, then export only a measured winner |
 | Fertilizer hand | Current-ABI theorem only | Historical V3.1 receipt reports +261.6 cash/game across 1,920 games; no exact-current economics | High-priority current V5 screen; likely a `main.py` integration owner |
 | P04 route rows R05-R08 | Exact native experiments | All four blanket rows have negative mean margin versus C00 and the receipt marks them discovery-only | Exclude from composition; conditional-route research may continue separately |
@@ -24,8 +24,15 @@ The future-own-supply figures come from `FUTURE-SUPPLY-RESULTS.json`. WF1,
 H3/S420, fertilizer-hand, P02, and P05 explicitly label their retained or
 missing evidence in their local README files. P04 status and deltas come from
 `route-matrix-native/BLOCK-B/SUMMARY.json`. These are experiment results and
-proposals; only the first row currently has an exact checked-in staging
-component.
+proposals; only the first row currently has a checked-in component instance.
+WF1 now has an exact component builder, while its generated component remains
+outside the intake directory until matched current evidence exists. Its exact
+dry materialization is a 94-member candidate with SHA256
+`7c9126d961915acbe1c69930d7cebc4938641233fe50323f2fb043c08334ac3d`.
+Composing the checked-in future-supply component followed by this WF1 component
+also succeeds without overlap and yields a 95-member held archive SHA256
+`db605e8db69d1a8392c9bc448d50abed165d024096b749d75aa91b921df3353f`.
+That is a structural result, not an economics result.
 
 ## One writer per boundary
 
