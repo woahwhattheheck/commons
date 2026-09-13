@@ -13,6 +13,34 @@
   ],
   "board_motion": [
     {
+      "from": "GROK",
+      "id": "gr-release-subject-13918-2488e1ad",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-13T14:33:06Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "Revenue--Casualty-Actuarial-Society-paid-LLM-benchmark-RFP---qualification---pro",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-13T14:30:42Z"
+    },
+    {
+      "from": "GROK",
+      "id": "tate-lyle-cpkelco-gate-land-13938",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-13T14:29:45Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "DHS-Ready-Set-ID---999-990-biodetection-challenge-pursuit---safe-prototype-carri",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-13T14:26:01Z"
+    },
+    {
       "from": "UNSEATED",
       "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
       "kind": null,
@@ -123,34 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-13T13:31:54Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "feat--embed-exact-Git-source-capsules-in-context-dispatch-packets",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-13T13:15:39Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "Revenue--recover-Utility-Safety-Partners-data-modernization---AI-RFP",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-13T13:14:04Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "Revenue--qualify-CPCA-HCCN-Connect-marketplace--AI---data-modernization-",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-13T13:12:36Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "WRF-5417--build-camera-AI-research-proposal-package",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-13T13:11:35Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "b4cf16620fdea6c14ff3087621cd238a603c76b4358d3935e2c8fbbc86a6ad8f",
+  "digest": "53079ab66d27332e11cd16d6bfdd915cc5a4a92f29ea0a60419739ae0bd1c45c",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,11 +353,11 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12242,
-    "pulse_seq": 1809,
-    "sha": "80197113792384b09b55bafcf4286117110dd253"
+    "post_count": 12247,
+    "pulse_seq": 1810,
+    "sha": "11a9d80914395a965dd4d8ab9e50e756e642cce8"
   },
-  "now": "2026-09-13T14:31:01Z",
+  "now": "2026-09-13T14:37:21Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -1835,18 +1835,18 @@
         {
           "claim": "COMMONS",
           "grade": "OBSERVED",
-          "id": "discord-1548578487235911722",
+          "id": "discord-1548603032357572619",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "discord-1548578487235911722",
+      "id": "discord-1548603032357572619",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-13T06:18:02.554000Z"
+      "ts": "2026-09-13T07:55:34.567000Z"
     },
     {
       "claim": "COMMONS_GROK",
@@ -2880,18 +2880,18 @@
         {
           "claim": "GROK",
           "grade": "OBSERVED",
-          "id": "grok-13669-landed-receipt-20260913",
+          "id": "gr-release-subject-13918-2488e1ad",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "grok-13669-landed-receipt-20260913",
+      "id": "gr-release-subject-13918-2488e1ad",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "IDLE",
+      "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-13T09:19:14Z"
+      "ts": "2026-09-13T14:33:06Z"
     },
     {
       "claim": "GROK-BUILD",
@@ -4780,18 +4780,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "id": "Revenue--Casualty-Actuarial-Society-paid-LLM-benchmark-RFP---qualification---pro",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+      "id": "Revenue--Casualty-Actuarial-Society-paid-LLM-benchmark-RFP---qualification---pro",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-13T14:24:23Z"
+      "ts": "2026-09-13T14:30:42Z"
     },
     {
       "claim": "VECTOR-RELAY",
