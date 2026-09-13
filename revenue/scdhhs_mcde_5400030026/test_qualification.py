@@ -1,9 +1,7 @@
 from __future__ import annotations
 
 import copy
-import json
 import unittest
-from pathlib import Path
 
 from revenue.scdhhs_mcde_5400030026.qualification import (
     QualificationError,
@@ -53,6 +51,24 @@ def implementation(lives=1_000_000):
     }
 
 
+def subcontractor(*, triggered=True, qualification_refs=None):
+    return {
+        "business_name": "Evidence Subcontractor",
+        "business_address": "owner-private:address-record",
+        "phone": "owner-private:phone-record",
+        "point_of_contact": "owner-private:poc-record",
+        "taxpayer_id_evidence_ref": "owner-private:taxpayer-id-record",
+        "taxpayer_id_evidence_sha256": "2" * 64,
+        "identification_evidence_refs": ["owner-private:complete-subcontractor-id-packet"],
+        "scope": "ADT platform and interoperability",
+        "cost_share_percent": 15 if triggered else 5,
+        "government_information_access": triggered,
+        "critical_services": triggered,
+        "relationship_explained": True,
+        "qualification_evidence_refs": list(qualification_refs or []),
+    }
+
+
 def prime_packet():
     return {
         "route": "prime_offeror",
@@ -77,26 +93,36 @@ def prime_packet():
 
 
 class QualificationTests(unittest.TestCase):
-    def test_control_prime_candidate_is_non_authoritative(self):
+    def test_matching_snapshot_never_asserts_live_currentness(self):
         receipt = compile_qualification(prime_packet(), source_observation=source_observation())
-        self.assertEqual(receipt["decision"], "PRIME_QUALIFICATION_CANDIDATE")
-        self.assertTrue(receipt["prime_qualification_candidate"])
+        self.assertEqual(receipt["decision"], "PRIME_EVIDENCE_READY_FOR_LIVE_SOURCE_REVIEW")
+        self.assertTrue(receipt["source_snapshot_match"])
+        self.assertFalse(receipt["source_current"])
+        self.assertTrue(receipt["live_source_review_required"])
+        self.assertEqual(receipt["deadline_status"], "NOT_EVALUATED")
+        self.assertTrue(receipt["prime_evidence_ready"])
+        self.assertFalse(receipt["prime_qualification_candidate"])
         self.assertIsNone(receipt["teaming_prime_legal_name"])
         self.assertFalse(receipt["submission_authorized"])
         self.assertTrue(all(value is False for value in receipt["authority"].values()))
-        self.assertTrue(verify_receipt(prime_packet(), source_observation=source_observation(), receipt=receipt))
+        self.assertTrue(
+            verify_receipt(
+                prime_packet(), source_observation=source_observation(), receipt=receipt
+            )
+        )
 
-    def test_original_rfp_cannot_replace_amendment_one(self):
+    def test_original_rfp_cannot_replace_amendment_one_snapshot(self):
         obs = source_observation()
         obs["controlling_document"] = {
             "name": "_MCDE RFP.pdf",
             "posted_at": "2026-07-31T17:34:53-04:00",
         }
         receipt = compile_qualification(prime_packet(), source_observation=obs)
-        self.assertEqual(receipt["decision"], "HOLD_SOURCE_NOT_CURRENT")
-        self.assertIn("SOURCE_CONTROLLING_DOCUMENT_MISMATCH", receipt["reasons"])
+        self.assertEqual(receipt["decision"], "HOLD_SOURCE_SNAPSHOT_MISMATCH")
+        self.assertIn("SOURCE_SNAPSHOT_CONTROLLING_DOCUMENT_MISMATCH", receipt["reasons"])
+        self.assertFalse(receipt["source_current"])
 
-    def test_new_or_missing_attachment_fails_closed(self):
+    def test_new_or_missing_attachment_fails_snapshot_match(self):
         for mutate in ("missing", "extra"):
             with self.subTest(mutate=mutate):
                 obs = source_observation()
@@ -108,8 +134,9 @@ class QualificationTests(unittest.TestCase):
                     )
                 obs["attachment_count"] = len(obs["attachments"])
                 receipt = compile_qualification(prime_packet(), source_observation=obs)
-                self.assertEqual(receipt["decision"], "HOLD_SOURCE_NOT_CURRENT")
-                self.assertIn("SOURCE_ATTACHMENT_MANIFEST_MISMATCH", receipt["reasons"])
+                self.assertEqual(receipt["decision"], "HOLD_SOURCE_SNAPSHOT_MISMATCH")
+                self.assertIn("SOURCE_SNAPSHOT_ATTACHMENT_MANIFEST_MISMATCH", receipt["reasons"])
+                self.assertFalse(receipt["source_current"])
 
     def test_candidate_threshold_override_is_bound_but_has_no_authority(self):
         packet = prime_packet()
@@ -148,50 +175,41 @@ class QualificationTests(unittest.TestCase):
         packet = prime_packet()
         packet["offeror"]["prime_contractor_months"] = 0
         packet["subcontractors"] = [
-            {
-                "business_name": "Highly Qualified Partner",
-                "scope": "ADT platform and interoperability",
-                "cost_share_percent": 60,
-                "government_information_access": True,
-                "critical_services": True,
-                "identification_complete": True,
-                "relationship_explained": True,
-                "evidence_refs": ["partner:many-prime-contracts", "partner:million-lives"],
-            }
+            subcontractor(qualification_refs=["partner:many-prime-contracts", "partner:million-lives"])
         ]
         receipt = compile_qualification(packet, source_observation=source_observation())
         self.assertEqual(receipt["decision"], "PRIME_NO_GO_MANDATORY_EXPERIENCE")
         self.assertFalse(receipt["prime_qualification_candidate"])
+        self.assertFalse(receipt["prime_evidence_ready"])
 
-    def test_team_route_never_asserts_prime_qualification(self):
+    def test_team_route_arbitrary_prime_labels_never_mint_team_ready(self):
         packet = prime_packet()
         packet["route"] = "subcontractor_to_qualified_prime"
-        packet["offeror"]["prime_contractor_months"] = 0
-        packet["offeror"]["similar_healthcare_entities"] = []
-        packet["offeror"]["realtime_adt_months"] = 0
-        packet["offeror"]["healthcare_adt_months"] = 0
-        packet["offeror"]["adt_implementations"] = []
         packet["teaming"] = {
-            "qualified_prime_legal_name": "Qualified Prime Candidate",
+            "prospective_prime_legal_name": "Qualified Prime Candidate",
             "relationship_explained": True,
-            "prime_qualification_evidence_refs": ["prime:qualification-matrix"],
-        }
-        receipt = compile_qualification(packet, source_observation=source_observation())
-        self.assertEqual(receipt["decision"], "TEAM_AS_SUBCONTRACTOR")
-        self.assertEqual(receipt["teaming_prime_legal_name"], "Qualified Prime Candidate")
-        self.assertFalse(receipt["prime_qualification_candidate"])
-        self.assertFalse(receipt["submission_authorized"])
-
-    def test_team_route_requires_relationship_and_prime_evidence(self):
-        packet = prime_packet()
-        packet["route"] = "subcontractor_to_qualified_prime"
-        packet["teaming"] = {
-            "qualified_prime_legal_name": "Partner",
-            "relationship_explained": False,
-            "prime_qualification_evidence_refs": [],
+            "prime_review_evidence_refs": ["prime:qualification-matrix"],
         }
         receipt = compile_qualification(packet, source_observation=source_observation())
         self.assertEqual(receipt["decision"], "TEAMING_DISCOVERY")
+        self.assertEqual(receipt["teaming_prime_legal_name"], "Qualified Prime Candidate")
+        self.assertIn("QUALIFIED_PRIME_REVIEW_REQUIRED", receipt["reasons"])
+        self.assertTrue(receipt["teaming_evidence_candidate"])
+        self.assertFalse(receipt["prime_qualification_candidate"])
+        self.assertFalse(receipt["submission_authorized"])
+
+    def test_team_route_requires_relationship_and_prime_review_evidence(self):
+        packet = prime_packet()
+        packet["route"] = "subcontractor_to_qualified_prime"
+        packet["teaming"] = {
+            "prospective_prime_legal_name": "Partner",
+            "relationship_explained": False,
+            "prime_review_evidence_refs": [],
+        }
+        receipt = compile_qualification(packet, source_observation=source_observation())
+        self.assertEqual(receipt["decision"], "TEAMING_DISCOVERY")
+        self.assertIn("TEAMING_PRIME_EVIDENCE_OR_RELATIONSHIP_INCOMPLETE", receipt["reasons"])
+        self.assertFalse(receipt["teaming_evidence_candidate"])
 
     def test_proposal_readiness_is_separate_from_mandatory_minimums(self):
         packet = prime_packet()
@@ -214,43 +232,79 @@ class QualificationTests(unittest.TestCase):
 
     def test_subcontractor_relationship_needed_only_when_qualification_evidence_relied_on(self):
         packet = prime_packet()
-        packet["subcontractors"] = [
+        sub = subcontractor(triggered=False)
+        sub.update(
             {
-                "business_name": "Non-qualification Sub",
-                "scope": "Ancillary implementation support",
-                "cost_share_percent": 5,
-                "government_information_access": False,
-                "critical_services": False,
-                "identification_complete": False,
+                "business_address": None,
+                "phone": None,
+                "point_of_contact": None,
+                "taxpayer_id_evidence_ref": None,
+                "taxpayer_id_evidence_sha256": None,
+                "identification_evidence_refs": [],
                 "relationship_explained": False,
-                "evidence_refs": [],
             }
-        ]
+        )
+        packet["subcontractors"] = [sub]
         receipt = compile_qualification(packet, source_observation=source_observation())
-        self.assertEqual(receipt["decision"], "PRIME_QUALIFICATION_CANDIDATE")
+        self.assertEqual(receipt["decision"], "PRIME_EVIDENCE_READY_FOR_LIVE_SOURCE_REVIEW")
 
-        packet["subcontractors"][0]["evidence_refs"] = ["sub:qualification-evidence"]
+        packet["subcontractors"][0]["qualification_evidence_refs"] = ["sub:qualification-evidence"]
         receipt = compile_qualification(packet, source_observation=source_observation())
         self.assertEqual(receipt["decision"], "HOLD_PROPOSAL_READINESS")
         self.assertIn("SUBCONTRACTOR_RELATIONSHIP_UNEXPLAINED", receipt["reasons"])
 
-    def test_subcontractor_identification_rule_is_fail_closed(self):
+    def test_subcontractor_identification_bare_boolean_cannot_clear_gate(self):
         packet = prime_packet()
-        packet["subcontractors"] = [
-            {
-                "business_name": "Critical Sub",
-                "scope": "Critical exchange service",
-                "cost_share_percent": 5,
-                "government_information_access": False,
-                "critical_services": True,
-                "identification_complete": False,
-                "relationship_explained": True,
-                "evidence_refs": [],
-            }
-        ]
+        sub = subcontractor()
+        for key in (
+            "business_address",
+            "phone",
+            "point_of_contact",
+            "taxpayer_id_evidence_ref",
+            "taxpayer_id_evidence_sha256",
+        ):
+            sub[key] = None
+        sub["identification_evidence_refs"] = []
+        sub["identification_complete"] = True
+        packet["subcontractors"] = [sub]
         receipt = compile_qualification(packet, source_observation=source_observation())
         self.assertEqual(receipt["decision"], "HOLD_PROPOSAL_READINESS")
         self.assertIn("SUBCONTRACTOR_IDENTIFICATION_INCOMPLETE", receipt["reasons"])
+
+    def test_each_required_subcontractor_identity_component_is_fail_closed(self):
+        missing_cases = {
+            "business_address": None,
+            "phone": None,
+            "point_of_contact": None,
+            "taxpayer_id_evidence_ref": None,
+            "taxpayer_id_evidence_sha256": None,
+            "identification_evidence_refs": [],
+        }
+        for field, missing in missing_cases.items():
+            with self.subTest(field=field):
+                packet = prime_packet()
+                sub = subcontractor()
+                sub[field] = missing
+                packet["subcontractors"] = [sub]
+                receipt = compile_qualification(packet, source_observation=source_observation())
+                self.assertEqual(receipt["decision"], "HOLD_PROPOSAL_READINESS")
+                self.assertIn("SUBCONTRACTOR_IDENTIFICATION_INCOMPLETE", receipt["reasons"])
+
+    def test_complete_privacy_safe_subcontractor_identity_packet_still_requires_trusted_review(self):
+        packet = prime_packet()
+        packet["subcontractors"] = [subcontractor()]
+        receipt = compile_qualification(packet, source_observation=source_observation())
+        self.assertEqual(receipt["decision"], "HOLD_PROPOSAL_READINESS")
+        self.assertNotIn("SUBCONTRACTOR_IDENTIFICATION_INCOMPLETE", receipt["reasons"])
+        self.assertIn("SUBCONTRACTOR_IDENTIFICATION_REVIEW_REQUIRED", receipt["reasons"])
+
+    def test_taxpayer_evidence_digest_is_strict(self):
+        packet = prime_packet()
+        sub = subcontractor()
+        sub["taxpayer_id_evidence_sha256"] = "not-a-digest"
+        packet["subcontractors"] = [sub]
+        with self.assertRaises(QualificationError):
+            compile_qualification(packet, source_observation=source_observation())
 
     def test_strict_types_reject_bool_as_months_and_string_boolean(self):
         packet = prime_packet()
@@ -263,12 +317,12 @@ class QualificationTests(unittest.TestCase):
         with self.assertRaises(QualificationError):
             compile_qualification(packet, source_observation=source_observation())
 
-    def test_duplicate_source_attachment_name_holds(self):
+    def test_duplicate_source_attachment_name_holds_snapshot(self):
         obs = source_observation()
         obs["attachments"][1] = copy.deepcopy(obs["attachments"][0])
         receipt = compile_qualification(prime_packet(), source_observation=obs)
-        self.assertEqual(receipt["decision"], "HOLD_SOURCE_NOT_CURRENT")
-        self.assertIn("SOURCE_DUPLICATE_ATTACHMENT_NAME", receipt["reasons"])
+        self.assertEqual(receipt["decision"], "HOLD_SOURCE_SNAPSHOT_MISMATCH")
+        self.assertIn("SOURCE_SNAPSHOT_DUPLICATE_ATTACHMENT_NAME", receipt["reasons"])
 
     def test_receipt_is_deterministic_and_tamper_evident(self):
         packet = prime_packet()
@@ -278,7 +332,7 @@ class QualificationTests(unittest.TestCase):
         self.assertEqual(first, second)
 
         tampered = copy.deepcopy(first)
-        tampered["decision"] = "PRIME_QUALIFICATION_CANDIDATE"
+        tampered["source_current"] = True
         tampered["submission_authorized"] = True
         self.assertFalse(verify_receipt(packet, source_observation=obs, receipt=tampered))
 
