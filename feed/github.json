@@ -2,8 +2,8 @@
   "counts": {
     "open_issues": 57,
     "open_pull_requests": 35,
-    "runs_in_progress": 18,
-    "runs_queued": 981
+    "runs_in_progress": 19,
+    "runs_queued": 980
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -75,7 +75,7 @@
       "head_sha": "3c7687ca4ce7fcf6c9d05b2d28a587818e3e92e9",
       "number": 13933,
       "title": "fix: remove self-authenticating commercial trust from SwarmOps CLI",
-      "updated_at": "2026-09-13T14:25:54Z"
+      "updated_at": "2026-09-13T14:28:00Z"
     },
     {
       "author": "woahwhattheheck",
@@ -216,7 +216,7 @@
   },
   "pulls_listed": 35,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 54.5,
+  "queue_depth_per_runner": 51.6,
   "recently_closed": [
     {
       "author": "woahwhattheheck",
@@ -386,6 +386,6 @@
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-13T14:27:22Z",
+  "unchanged_since": "2026-09-13T14:28:05Z",
   "undatable_pulls": []
 }
