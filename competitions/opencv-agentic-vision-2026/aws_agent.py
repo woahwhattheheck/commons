@@ -31,7 +31,7 @@ def _required_env(name: str) -> str:
 
 
 def _parse_s3_event(event: Any, allowed_bucket: str) -> tuple[str, str, str | None]:
-    if type(event) is not dict or set(event) < {"Records"}:
+    if type(event) is not dict or "Records" not in event:
         raise ContractError("expected S3 event object")
     records = event["Records"]
     if type(records) is not list or len(records) != 1 or type(records[0]) is not dict:
@@ -127,8 +127,8 @@ def _record_once(ddb: Any, table: str, evidence: dict[str, Any], receipt: dict[s
         raise
 
 
-def _queue_review(sqs: Any, ddb: Any, *, queue_url: str, table: str, evidence: dict[str, Any], receipt: dict[str, Any]) -> None:
-    body = {
+def _review_body(evidence: dict[str, Any], receipt: dict[str, Any]) -> dict[str, Any]:
+    return {
         "schema": "prooflens-human-review/v1",
         "event_id": evidence["event_id"],
         "source_ref": evidence["source_ref"],
@@ -137,30 +137,46 @@ def _queue_review(sqs: Any, ddb: Any, *, queue_url: str, table: str, evidence: d
         "receipt_sha256": receipt["receipt_sha256"],
         "external_action_authorized": False,
     }
+
+
+def _deliver_review(sqs: Any, ddb: Any, *, queue_url: str, table: str, evidence: dict[str, Any], receipt: dict[str, Any]) -> None:
+    body = _review_body(evidence, receipt)
     sqs.send_message(
         QueueUrl=queue_url,
         MessageBody=json.dumps(body, sort_keys=True, separators=(",", ":"), allow_nan=False),
         MessageGroupId="prooflens-human-review",
         MessageDeduplicationId=evidence["event_id"],
     )
-    ddb.update_item(
-        TableName=table,
-        Key={"event_id": {"S": evidence["event_id"]}},
-        UpdateExpression="SET delivery = :delivery",
-        ExpressionAttributeValues={":delivery": {"S": "REVIEW_QUEUED"}},
-        ConditionExpression="delivery = :recorded",
-        ExpressionAttributeValuesAdditional=None,
-    )
+    try:
+        ddb.update_item(
+            TableName=table,
+            Key={"event_id": {"S": evidence["event_id"]}},
+            UpdateExpression="SET delivery = :queued",
+            ConditionExpression="delivery = :recorded",
+            ExpressionAttributeValues={":queued": {"S": "REVIEW_QUEUED"}, ":recorded": {"S": "RECORDED"}},
+        )
+    except ClientError as exc:
+        if exc.response.get("Error", {}).get("Code") != "ConditionalCheckFailedException":
+            raise
+        # Another invocation already advanced the durable delivery state. The
+        # FIFO event_id also deduplicates concurrent review messages.
 
 
-def _mark_review_queued(ddb: Any, table: str, event_id: str) -> None:
-    ddb.update_item(
-        TableName=table,
-        Key={"event_id": {"S": event_id}},
-        UpdateExpression="SET delivery = :queued",
-        ConditionExpression="delivery = :recorded",
-        ExpressionAttributeValues={":queued": {"S": "REVIEW_QUEUED"}, ":recorded": {"S": "RECORDED"}},
-    )
+def _recover_pending_review(prior: dict[str, Any], *, sqs: Any, ddb: Any, queue_url: str, table: str) -> dict[str, Any]:
+    if prior["receipt"].get("decision") == "REQUEST_HUMAN_REVIEW" and prior["delivery"] == "RECORDED":
+        _deliver_review(
+            sqs,
+            ddb,
+            queue_url=queue_url,
+            table=table,
+            evidence=prior["evidence"],
+            receipt=prior["receipt"],
+        )
+        refreshed = _existing(ddb, table, prior["evidence"]["event_id"])
+        if refreshed is None:
+            raise RuntimeError("review delivery recovered but durable row disappeared")
+        return refreshed
+    return prior
 
 
 def lambda_handler(event: Any, context: Any) -> dict[str, Any]:
@@ -188,7 +204,7 @@ def lambda_handler(event: Any, context: Any) -> dict[str, Any]:
     )
     prior = _existing(ddb, table, evidence["event_id"])
     if prior is not None:
-        return prior
+        return _recover_pending_review(prior, sqs=sqs, ddb=ddb, queue_url=queue_url, table=table)
 
     receipt = decide(evidence).to_dict()
     created = _record_once(ddb, table, evidence, receipt)
@@ -196,26 +212,11 @@ def lambda_handler(event: Any, context: Any) -> dict[str, Any]:
         raced = _existing(ddb, table, evidence["event_id"])
         if raced is None:
             raise RuntimeError("event race lost but durable row is unavailable")
-        return raced
+        return _recover_pending_review(raced, sqs=sqs, ddb=ddb, queue_url=queue_url, table=table)
 
     delivery = "RECORDED"
     if receipt["decision"] == "REQUEST_HUMAN_REVIEW":
-        body = {
-            "schema": "prooflens-human-review/v1",
-            "event_id": evidence["event_id"],
-            "source_ref": evidence["source_ref"],
-            "decision": receipt["decision"],
-            "reason_codes": receipt["reason_codes"],
-            "receipt_sha256": receipt["receipt_sha256"],
-            "external_action_authorized": False,
-        }
-        sqs.send_message(
-            QueueUrl=queue_url,
-            MessageBody=json.dumps(body, sort_keys=True, separators=(",", ":"), allow_nan=False),
-            MessageGroupId="prooflens-human-review",
-            MessageDeduplicationId=evidence["event_id"],
-        )
-        _mark_review_queued(ddb, table, evidence["event_id"])
+        _deliver_review(sqs, ddb, queue_url=queue_url, table=table, evidence=evidence, receipt=receipt)
         delivery = "REVIEW_QUEUED"
 
     return {"evidence": evidence, "receipt": receipt, "delivery": delivery, "replay": False}
