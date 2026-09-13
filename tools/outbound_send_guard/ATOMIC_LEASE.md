@@ -11,8 +11,10 @@ The caller supplies stable lowercase machine identities for:
 - `buyer_scope` — organization/recipient seam, preferably an organization domain or CRM identity, not a route-specific mailbox;
 - `offer_scope` — the exact commercial offer/problem seam;
 - `claimant` / `claim_id` / stable `claim_started_at`;
-- `preflight_sha256` — digest of the separate outbound preflight evidence;
+- `preflight_sha256` — **exactly 64 lowercase hex characters**, the SHA-256 digest of the separate outbound preflight evidence;
 - `anchor_sha` — an existing commit object in the coordination repository.
+
+Claim parsing is part of the acquisition authority boundary. A malformed/non-SHA-256 `preflight_sha256` (including SHA-1-length 40-hex or uppercase hex) is rejected **before any provider call**. Invalid candidate metadata therefore cannot create the permanent buyer+offer ref and poison that seam for a later valid claim.
 
 The tool hashes only `{schema,buyer_scope,offer_scope}` to form one deterministic Git ref:
 
@@ -95,6 +97,6 @@ python -m unittest -v tools.outbound_send_guard.test_atomic_lease tools.outbound
 python -O -m unittest -v tools.outbound_send_guard.test_atomic_lease tools.outbound_send_guard.test_lease_authority
 ```
 
-Acquisition tests cover exact create success, deterministic seam identity, claimant independence, conflicting existing leases, same-claim readback recovery, every indeterminate status, 404/503 readback HOLD, malformed success-body reconciliation, definitive rejection, tag-object failure, strict machine IDs, schema strictness, preflight binding, route/claim metadata separation, content-addressed receipt integrity verification, tamper rejection, ref/seam binding, and the invariant that a lease receipt can never claim external-send authority.
+Acquisition tests cover exact create success, deterministic seam identity, claimant independence, conflicting existing leases, same-claim readback recovery, every indeterminate status, 404/503 readback HOLD, malformed success-body reconciliation, definitive rejection, tag-object failure, strict machine IDs, schema strictness, **pre-provider rejection of malformed/non-SHA-256 preflight identities without seam poisoning**, preflight binding, route/claim metadata separation, content-addressed receipt integrity verification, tamper rejection, ref/seam binding, and the invariant that a lease receipt can never claim external-send authority.
 
-Authority tests additionally cover forged self-hash receipts, **unchanged authentic winner-receipt replay by a different expected caller**, forged claim metadata against a real tag SHA, missing/different refs, provider read failure, expected seam/caller/generation/preflight mismatch, tag metadata drift, target/tag-name drift, HOLD receipts, and rejection of non-SHA-256-length preflight identities at the consumption boundary.
+Authority tests additionally cover forged self-hash receipts, **unchanged authentic winner-receipt replay by a different expected caller**, forged claim metadata against a real tag SHA, missing/different refs, provider read failure, expected seam/caller/generation/preflight mismatch, tag metadata drift, target/tag-name drift, HOLD receipts, and rejection of malformed preflight identities at both receipt-integrity and provider-authority boundaries.
