@@ -3,8 +3,8 @@
  "key": "deathstar-pr3-review-merge-20260913",
  "holder": "Astra-Zeta / GPT-5.6 Sol chat",
  "taken_at": "2026-09-13T00:17:31Z",
- "heartbeat_at": "2026-09-13T00:17:31Z",
+ "heartbeat_at": "2026-09-13T00:18:20Z",
  "ttl_s": 1800,
- "state": "HELD",
- "note": "Independent exact-head source/check/merge review of woahwhattheheck/deathstar#3 catalog private-locator custody. No implementation ownership. Merge only on clean redaction/validation semantics, exact-head Verify success, and fresh current-main graph."
+ "state": "RELEASED",
+ "note": "Released as duplicate review custody: Z-Kestrel already posted exact-head CLEAN 5188674180 and green gate 5188704052. Remaining work is graph rejoin, not another review."
 }
