@@ -9,6 +9,8 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from bias_discovery import (
     COMPONENT_PROVENANCE_COLUMNS,
+    MIN_STRONG_BOOTSTRAP_ITERATIONS,
+    MIN_STRONG_PERMUTATIONS,
     DEFAULT_EXCLUDED_PREFIXES,
     analyze,
     build_evidence_packet,
@@ -83,8 +85,8 @@ class BiasDiscoveryTests(unittest.TestCase):
                 strata_path,
                 min_rows=40,
                 prefixes=("svi_",),
-                bootstrap_iterations=120,
-                permutations=199,
+                bootstrap_iterations=MIN_STRONG_BOOTSTRAP_ITERATIONS,
+                permutations=MIN_STRONG_PERMUTATIONS,
                 seed=7,
             )
         by_field = {item["field"]: item for item in results}
@@ -97,6 +99,7 @@ class BiasDiscoveryTests(unittest.TestCase):
         self.assertLessEqual(signal["fdr_q"], 0.05)
         self.assertEqual(signal["threshold_stability"]["sign_agreement"], 1.0)
         self.assertEqual(signal["county_jackknife"]["counties"], 2)
+        self.assertTrue(signal["production_resampling_budget"])
         self.assertEqual(signal["screening_strength"], "strong")
 
     def test_results_are_deterministic_for_seed_and_include_missingness(self):
@@ -227,6 +230,8 @@ class BiasDiscoveryTests(unittest.TestCase):
         self.assertTrue(packet["writeup_gate"])
         self.assertEqual(packet["candidates"][0]["field"], "broadband_metric")
         self.assertEqual(packet["method"]["excluded_prefixes"], list(DEFAULT_EXCLUDED_PREFIXES))
+        self.assertEqual(packet["population"]["strata_missing_scores"], 0)
+        self.assertEqual(packet["method"]["strong_gate"]["minimum_permutations"], MIN_STRONG_PERMUTATIONS)
 
     def test_county_jackknife_exposes_single_county_dependency(self):
         with tempfile.TemporaryDirectory() as tmp:
@@ -323,6 +328,42 @@ class BiasDiscoveryTests(unittest.TestCase):
             self.write_strata(strata_path, ["GEOID", "candidate", "organizer_coverage_gap"], target_strata)
             with self.assertRaisesRegex(ValueError, "target-like coverage-gap field"):
                 main([str(scores_path), str(strata_path), str(output_path), "--min-rows", "8", "--bootstrap-iterations", "40", "--permutations", "40"])
+
+
+    def test_cli_rejects_invalid_or_missing_derived_outcomes(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            scores_path = root / "components.csv"
+            strata_path = root / "strata.csv"
+            output_path = root / "evidence.json"
+            rows = [{"GEOID": geoid(i), "coverage_gap_score": i / 15} for i in range(16)]
+            strata = [{"GEOID": geoid(i), "candidate": i} for i in range(16)]
+            self.write_strata(strata_path, ["GEOID", "candidate"], strata)
+
+            bad = list(rows)
+            bad[0] = {"GEOID": geoid(0), "coverage_gap_score": "NaN"}
+            self.write_components(scores_path, bad)
+            with self.assertRaisesRegex(ValueError, "missing or non-finite derived score"):
+                main([str(scores_path), str(strata_path), str(output_path), "--min-rows", "8", "--bootstrap-iterations", "40", "--permutations", "40"])
+
+            self.write_components(scores_path, rows[:-1])
+            with self.assertRaisesRegex(ValueError, "missing 1 strata GEOIDs"):
+                main([str(scores_path), str(strata_path), str(output_path), "--min-rows", "8", "--bootstrap-iterations", "40", "--permutations", "40"])
+
+    def test_development_resampling_budget_cannot_be_strong(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            scores_path = root / "scores.csv"
+            strata_path = root / "strata.csv"
+            rows = [{"GEOID": geoid(i), "coverage_gap_score": i / 63} for i in range(64)]
+            strata = [{"GEOID": geoid(i), "candidate": i} for i in range(64)]
+            self.write_scores(scores_path, rows)
+            self.write_strata(strata_path, ["GEOID", "candidate"], strata)
+            result = analyze(load_scores(scores_path), strata_path, min_rows=32, prefixes=(), bootstrap_iterations=40, permutations=40, seed=5)[0]
+        self.assertTrue(result["bootstrap_excludes_zero"])
+        self.assertFalse(result["production_resampling_budget"])
+        self.assertEqual(result["screening_strength"], "exploratory")
+
 
 
 if __name__ == "__main__":
