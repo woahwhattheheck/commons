@@ -360,8 +360,8 @@ def main(argv: list[str] | None = None) -> int:
         names = [evidence["agent"] for _, evidence in loaded]
         if len(set(names)) != len(names):
             raise ValueError("compare agent names must be unique")
-        slugs = [_report_slug(name) for name in names]
-        if len(set(slugs)) != len(slugs):
+        slug_keys = [_report_slug(name).casefold() for name in names]
+        if len(set(slug_keys)) != len(slug_keys):
             raise ValueError("compare agent output names collide after sanitization")
         reports = []
         for path, evidence in loaded:
