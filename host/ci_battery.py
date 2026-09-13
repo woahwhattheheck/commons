@@ -137,17 +137,21 @@ def main(argv: list[str] | None = None) -> int:
     preflight_error = None
 
     try:
-        # Measure checkout state before creating output. The output contract keeps
-        # result artifacts outside the repository so tests observe the exact
-        # clean checkout that this report names.
-        sha = subprocess.run(["git", "-C", str(root), "rev-parse", "--verify", "HEAD^{commit}"],
-                             check=True, capture_output=True, text=True).stdout.strip()
-        dirty = bool(subprocess.run(
-            ["git", "-C", str(root), "status", "--porcelain", "--untracked-files=all"],
-            check=True, capture_output=True,
-        ).stdout)
+        # Outputs are outside the checkout, so clear old evidence before Git
+        # preflight. A failed preflight must never reuse a prior passing stream.
+        if report_path:
+            report_path.parent.mkdir(parents=True, exist_ok=True)
+            report_path.unlink(missing_ok=True)
         results.parent.mkdir(parents=True, exist_ok=True)
         with results.open("wb") as handle:
+            sha = subprocess.run(
+                ["git", "-C", str(root), "rev-parse", "--verify", "HEAD^{commit}"],
+                check=True, capture_output=True, text=True,
+            ).stdout.strip()
+            dirty = bool(subprocess.run(
+                ["git", "-C", str(root), "status", "--porcelain", "--untracked-files=all"],
+                check=True, capture_output=True,
+            ).stdout)
             record(handle, "checkout_sha", sha, "")
             if dirty:
                 preflight_error = "dirty_worktree"
