@@ -185,7 +185,7 @@
       "Applicable laws and information-security requirements, pages 87-90 of 95"
     ]
   },
-  "schema_version": 1,
+  "schema_version": 2,
   "solicitation": {
     "agency": "South Carolina Department of Health and Human Services",
     "number": "5400030026",
@@ -193,6 +193,12 @@
     "official_listing_url": "https://scbo.sc.gov/online-edition?c=7-2026-08-29",
     "submission_deadline": "2026-10-15T11:00:00-04:00",
     "title": "MEDICAID CLINICAL DATA EXCHANGE"
+  },
+  "source_snapshot_semantics": {
+    "captured_repository_snapshot_only": true,
+    "deadline_status_authority": false,
+    "live_currentness_authority": false,
+    "positive_decision_requires_separate_live_source_review": true
   },
   "subcontractor_rule": {
     "identify_if_cost_share_percent_gt": 10,
