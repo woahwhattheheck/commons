@@ -16,6 +16,8 @@ from typing import Any, Mapping, Sequence
 
 SCHEMA = "outbound-connector-lease/v1"
 BRANCH_PREFIX = "outbound-connector-lease/v1/"
+REPLY_SCHEMA = "outbound-connector-reply-lease/v2"
+REPLY_BRANCH_PREFIX = "outbound-connector-reply-lease/v2/"
 _TOKEN_RE = re.compile(r"^[a-z0-9][a-z0-9._:/+\-]{0,190}$")
 _PROVIDER_RE = re.compile(r"^[a-z0-9][a-z0-9._+\-]{0,63}$")
 
@@ -122,14 +124,7 @@ def _normalize_opportunity(raw: Any) -> dict[str, str]:
     raise LeaseKeyError("opportunity.kind must be one of: cold, external, reply")
 
 
-def compile_key(buyer_scope: Any, opportunity: Any) -> dict[str, Any]:
-    buyer = _normalize_domain(buyer_scope, "buyer_scope")
-    normalized_opportunity = _normalize_opportunity(opportunity)
-    seam = {
-        "schema": SCHEMA,
-        "buyer_scope": buyer,
-        "opportunity": normalized_opportunity,
-    }
+def _compile_seam(seam: Mapping[str, Any], prefix: str) -> dict[str, Any]:
     canonical = json.dumps(
         seam,
         sort_keys=True,
@@ -138,20 +133,58 @@ def compile_key(buyer_scope: Any, opportunity: Any) -> dict[str, Any]:
         allow_nan=False,
     ).encode("ascii")
     digest = hashlib.sha256(canonical).hexdigest()
-    return {**seam, "seam_sha256": digest, "branch": BRANCH_PREFIX + digest}
+    return {**seam, "seam_sha256": digest, "branch": prefix + digest}
+
+
+def compile_reply_key(provider: Any, event_id: Any) -> dict[str, Any]:
+    """Compile one global mutex for one durable inbound provider event.
+
+    Reply identity deliberately excludes buyer/contact/domain classification. The
+    provider plus exact durable event ID already names the event that may be
+    answered once; adding caller-classified organization data would let parallel
+    workers mint distinct locks for the same human message.
+    """
+    seam = {
+        "schema": REPLY_SCHEMA,
+        "provider": _provider_token(provider, "provider"),
+        "event_id": _machine_token(event_id, "event_id"),
+    }
+    return _compile_seam(seam, REPLY_BRANCH_PREFIX)
+
+
+def compile_key(buyer_scope: Any, opportunity: Any) -> dict[str, Any]:
+    buyer = _normalize_domain(buyer_scope, "buyer_scope")
+    normalized_opportunity = _normalize_opportunity(opportunity)
+    if normalized_opportunity["kind"] == "reply":
+        return compile_reply_key(
+            normalized_opportunity["provider"], normalized_opportunity["event_id"]
+        )
+    seam = {
+        "schema": SCHEMA,
+        "buyer_scope": buyer,
+        "opportunity": normalized_opportunity,
+    }
+    return _compile_seam(seam, BRANCH_PREFIX)
 
 
 def compile_document(raw: Mapping[str, Any]) -> dict[str, Any]:
-    if type(raw) is not dict or set(raw) != {"schema", "buyer_scope", "opportunity"}:
-        raise LeaseKeyError("input requires exact schema,buyer_scope,opportunity fields")
-    if raw["schema"] != SCHEMA:
-        raise LeaseKeyError(f"schema must be {SCHEMA}")
-    return compile_key(raw["buyer_scope"], raw["opportunity"])
+    if type(raw) is not dict:
+        raise LeaseKeyError("input must be an object")
+    schema = raw.get("schema")
+    if schema == SCHEMA:
+        if set(raw) != {"schema", "buyer_scope", "opportunity"}:
+            raise LeaseKeyError("v1 input requires exact schema,buyer_scope,opportunity fields")
+        return compile_key(raw["buyer_scope"], raw["opportunity"])
+    if schema == REPLY_SCHEMA:
+        if set(raw) != {"schema", "provider", "event_id"}:
+            raise LeaseKeyError("reply-v2 input requires exact schema,provider,event_id fields")
+        return compile_reply_key(raw["provider"], raw["event_id"])
+    raise LeaseKeyError(f"schema must be {SCHEMA} or {REPLY_SCHEMA}")
 
 
 def main(argv: Sequence[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description="Compile a connector-native outbound seam branch")
-    parser.add_argument("--buyer-scope", help="canonical organization primary domain")
+    parser.add_argument("--buyer-scope", help="canonical organization primary domain (cold/external only)")
     parser.add_argument("--cold", action="store_true", help="one organization-level unsolicited outreach seam")
     parser.add_argument("--external-authority", help="domain of authoritative opportunity issuer/source")
     parser.add_argument("--external-id", help="stable external procurement/project/issue ID")
@@ -165,22 +198,27 @@ def main(argv: Sequence[str] | None = None) -> int:
                 raise LeaseKeyError("use either --json or scope flags")
             result = compile_document(_parse_json(args.json_text))
         else:
-            if args.buyer_scope is None:
-                raise LeaseKeyError("--buyer-scope is required")
-            modes = int(args.cold) + int(args.external_authority is not None or args.external_id is not None) + int(args.reply_provider is not None or args.reply_event_id is not None)
+            external_mode = args.external_authority is not None or args.external_id is not None
+            reply_mode = args.reply_provider is not None or args.reply_event_id is not None
+            modes = int(args.cold) + int(external_mode) + int(reply_mode)
             if modes != 1:
                 raise LeaseKeyError("choose exactly one opportunity mode: --cold, external pair, or reply pair")
-            if args.cold:
-                opportunity = {"kind": "cold"}
-            elif args.external_authority is not None or args.external_id is not None:
-                if args.external_authority is None or args.external_id is None:
-                    raise LeaseKeyError("external mode requires --external-authority and --external-id")
-                opportunity = {"kind": "external", "authority": args.external_authority, "id": args.external_id}
-            else:
+            if reply_mode:
+                if args.buyer_scope is not None:
+                    raise LeaseKeyError("--buyer-scope is forbidden for reply mode; provider event identity is global")
                 if args.reply_provider is None or args.reply_event_id is None:
                     raise LeaseKeyError("reply mode requires --reply-provider and --reply-event-id")
-                opportunity = {"kind": "reply", "provider": args.reply_provider, "event_id": args.reply_event_id}
-            result = compile_key(args.buyer_scope, opportunity)
+                result = compile_reply_key(args.reply_provider, args.reply_event_id)
+            else:
+                if args.buyer_scope is None:
+                    raise LeaseKeyError("--buyer-scope is required for cold/external mode")
+                if args.cold:
+                    opportunity = {"kind": "cold"}
+                else:
+                    if args.external_authority is None or args.external_id is None:
+                        raise LeaseKeyError("external mode requires --external-authority and --external-id")
+                    opportunity = {"kind": "external", "authority": args.external_authority, "id": args.external_id}
+                result = compile_key(args.buyer_scope, opportunity)
     except LeaseKeyError as exc:
         print(f"HOLD: {exc}", file=sys.stderr)
         return 2
