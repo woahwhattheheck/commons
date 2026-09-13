@@ -1,0 +1,97 @@
+{
+  "canonical_proof": {
+    "fault_assets": {
+      "CAPTION_AUDIO_ALIGNMENT_GAP": [
+        "asset-152",
+        "asset-153",
+        "asset-154",
+        "asset-155"
+      ],
+      "CHECKSUM_ORPHAN_ARTIFACT": [
+        "asset-160",
+        "asset-161",
+        "asset-162",
+        "asset-163"
+      ],
+      "CODEC_PROFILE_MISMATCH": [
+        "asset-144",
+        "asset-145",
+        "asset-146",
+        "asset-147"
+      ],
+      "DRM_REFERENCE_MISMATCH": [
+        "asset-156",
+        "asset-157",
+        "asset-158",
+        "asset-159"
+      ],
+      "MISSING_RENDITION": [
+        "asset-140",
+        "asset-141",
+        "asset-142",
+        "asset-143"
+      ],
+      "PUBLICATION_WINDOW_CONFLICT": [
+        "asset-164",
+        "asset-165",
+        "asset-166",
+        "asset-167"
+      ],
+      "SEGMENT_DISCONTINUITY": [
+        "asset-148",
+        "asset-149",
+        "asset-150",
+        "asset-151"
+      ]
+    },
+    "fault_counts": {
+      "CAPTION_AUDIO_ALIGNMENT_GAP": 4,
+      "CHECKSUM_ORPHAN_ARTIFACT": 4,
+      "CODEC_PROFILE_MISMATCH": 4,
+      "DRM_REFERENCE_MISMATCH": 4,
+      "MISSING_RENDITION": 4,
+      "PUBLICATION_WINDOW_CONFLICT": 4,
+      "SEGMENT_DISCONTINUITY": 4
+    },
+    "fixture_sha256": "27d34cc0574f3210e3e42c575f3615be9bd6d056f6f51576271bc7b6ecc79441",
+    "hold": 28,
+    "projection_sha256": "e510ed89458a54d32a6cda0da425d92612ed40783fb311c2db86d3ad33f889c2",
+    "release_ready": 140,
+    "total": 168
+  },
+  "commercial_terms": {
+    "diagnostic": {
+      "currency": "USD",
+      "fixed_price_cents": 250000,
+      "input": "one sanitized metadata export",
+      "max_asset_packets": 250,
+      "output": "deterministic RELEASE_READY/HOLD diagnostic with stable reason codes and proof receipt"
+    },
+    "integration_expansion": {
+      "currency": "USD",
+      "fixed_price_cents": 750000,
+      "gate": "only after a completed paid diagnostic proves value and adapter scope is known"
+    }
+  },
+  "external_authority": {
+    "buyer_acceptance": false,
+    "cdn_mutation": false,
+    "content_editing": false,
+    "drm_secret_access": false,
+    "media_release_authority": false,
+    "payment_authentication": false,
+    "production_access": false,
+    "publishing": false,
+    "revenue_recognition": false,
+    "rights_determination": false,
+    "transcoding": false
+  },
+  "receipt_sha256": "3478ab0d27fcb3293d31d50074561d3b7e1efe912ffdcad0c474927e99d042a8",
+  "schema": "streaming-rendition-qa-pilot-proof/v1",
+  "source": {
+    "gate_schema": "streaming-rendition-release-gate/v1",
+    "merge_sha": "fed79e71c0c94c92568e5b555f50d2ad34ad0658",
+    "pull_request": 13885,
+    "repository": "woahwhattheheck/commons"
+  }
+}

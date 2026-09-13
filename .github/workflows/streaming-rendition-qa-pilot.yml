@@ -1,0 +1,44 @@
+name: Streaming rendition QA pilot
+
+on:
+  pull_request:
+    paths:
+      - 'revenue/streaming_rendition_qa_pilot/**'
+      - 'revenue/streaming_rendition_release_gate/**'
+      - 'test_streaming_rendition_qa_pilot.py'
+      - '.github/workflows/streaming-rendition-qa-pilot.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'revenue/streaming_rendition_qa_pilot/**'
+      - 'revenue/streaming_rendition_release_gate/**'
+      - 'test_streaming_rendition_qa_pilot.py'
+      - '.github/workflows/streaming-rendition-qa-pilot.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    strategy:
+      matrix:
+        python: ['3.11', '3.13']
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Syntax
+        run: python -m py_compile revenue/streaming_rendition_qa_pilot/*.py test_streaming_rendition_qa_pilot.py
+      - name: Exact source tests
+        run: python test_streaming_rendition_qa_pilot.py
+      - name: Optimized source tests
+        run: python -O test_streaming_rendition_qa_pilot.py
+      - name: Real bundle smoke
+        run: |
+          python -m revenue.streaming_rendition_qa_pilot.pilot "$RUNNER_TEMP/streaming-qa-pilot"
+          test -f "$RUNNER_TEMP/streaming-qa-pilot/synthetic-diagnostic.md"
+          test -f "$RUNNER_TEMP/streaming-qa-pilot/scope-and-price.md"
+          test -f "$RUNNER_TEMP/streaming-qa-pilot/proof-receipt.json"
+          test -f "$RUNNER_TEMP/streaming-qa-pilot/bundle-manifest.json"
