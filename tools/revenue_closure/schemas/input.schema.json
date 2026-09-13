@@ -1,0 +1,69 @@
+{
+  "$id": "https://github.com/woahwhattheheck/commons/tools/revenue_closure/schemas/input.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "evidence_generated_at": {
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$",
+      "type": "string"
+    },
+    "max_age_seconds": {
+      "maximum": 2678400,
+      "minimum": 60,
+      "type": "integer"
+    },
+    "opportunities": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "commercial": {
+            "additionalProperties": false,
+            "properties": {
+              "collection": {"enum": ["NONE", "READY", "ACTIVE"]},
+              "delivery": {"enum": ["NOT_READY", "READY", "DELIVERED", "ACCEPTED", "REJECTED"]},
+              "offer": {"enum": ["NONE", "DRAFT", "SENT", "ACCEPTED", "REJECTED", "EXPIRED"]},
+              "payment": {"enum": ["NONE", "PENDING", "AUTHORIZED", "SETTLED", "FAILED", "REFUNDED"]},
+              "settlement": {"enum": ["NOT_EARNED", "EARNED", "SETTLED", "REVERSED"]}
+            },
+            "required": ["offer", "collection", "payment", "delivery", "settlement"],
+            "type": "object"
+          },
+          "contact": {
+            "additionalProperties": false,
+            "properties": {
+              "do_not_resend": {"type": "boolean"},
+              "followup_not_before": {"oneOf": [{"type": "null"}, {"pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$", "type": "string"}]},
+              "last_contact_at": {"oneOf": [{"type": "null"}, {"pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$", "type": "string"}]},
+              "state": {"enum": ["NEVER_CONTACTED", "SENT_NO_RESPONSE", "REPLIED", "BOUNCED", "DO_NOT_CONTACT"]}
+            },
+            "required": ["state", "do_not_resend"],
+            "type": "object"
+          },
+          "currency": {"pattern": "^[A-Z]{3}$", "type": "string"},
+          "deadline_at": {"oneOf": [{"type": "null"}, {"pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$", "type": "string"}]},
+          "expected_value_cents": {"maximum": 1000000000000000, "minimum": 0, "type": "integer"},
+          "opportunity_id": {"pattern": "^[A-Za-z0-9][A-Za-z0-9._:/-]{0,127}$", "type": "string"},
+          "policy": {
+            "additionalProperties": false,
+            "properties": {
+              "followup_cooldown_seconds": {"maximum": 2678400, "minimum": 0, "type": "integer"},
+              "payment_timing": {"enum": ["BEFORE_DELIVERY", "AFTER_DELIVERY"]},
+              "requires_delivery_acceptance": {"type": "boolean"}
+            },
+            "required": ["followup_cooldown_seconds", "payment_timing", "requires_delivery_acceptance"],
+            "type": "object"
+          },
+          "qualification": {"enum": ["ACTIONABLE", "HOLD", "REJECT"]}
+        },
+        "required": ["opportunity_id", "expected_value_cents", "currency", "qualification", "contact", "commercial", "policy"],
+        "type": "object"
+      },
+      "maxItems": 10000,
+      "type": "array"
+    },
+    "schema_version": {"const": 1}
+  },
+  "required": ["schema_version", "evidence_generated_at", "max_age_seconds", "opportunities"],
+  "title": "Revenue Closure Evidence Input",
+  "type": "object"
+}
