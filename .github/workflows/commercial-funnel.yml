@@ -30,18 +30,21 @@ jobs:
         run: |
           python -m unittest -v revenue.commercial_funnel.test_ledger revenue.commercial_funnel.test_cli revenue.commercial_funnel.test_review_regressions
           python -O -m unittest -v revenue.commercial_funnel.test_ledger revenue.commercial_funnel.test_cli revenue.commercial_funnel.test_review_regressions
-      - name: Example compile and independent artifact verification
+      - name: Deterministic historical library replay
         run: |
-          out="$RUNNER_TEMP/commercial-funnel-example"
-          python -m revenue.commercial_funnel.cli compile \
-            revenue/commercial_funnel/example_input.json \
-            --as-of 2026-09-13T10:10:00Z \
-            --out-dir "$out"
-          python -m revenue.commercial_funnel.cli verify \
-            revenue/commercial_funnel/example_input.json \
-            --as-of 2026-09-13T10:10:00Z \
-            --packet "$out/packet.json" \
-            --receipt "$out/receipt.json" \
-            --report-json "$out/report.json" \
-            --report-csv "$out/report.csv" \
-            --report-md "$out/report.md"
+          python - <<'PY'
+          from pathlib import Path
+          from revenue.commercial_funnel import compile_funnel, strict_loads, verify_artifacts
+
+          source = strict_loads(Path("revenue/commercial_funnel/example_input.json").read_text(encoding="utf-8"))
+          result = compile_funnel(source, as_of="2026-09-13T10:10:00Z")
+          assert verify_artifacts(
+              source,
+              as_of="2026-09-13T10:10:00Z",
+              packet=result["packet"],
+              receipt=result["receipt"],
+              report_json=result["json"],
+              report_csv=result["csv"],
+              report_markdown=result["markdown"],
+          )
+          PY
