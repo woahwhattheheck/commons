@@ -48,6 +48,9 @@ CLASS_TO_NEXT = {
     "POSITIVE_SCOPE": "NEEDS_ACCEPTANCE",
     "NEEDS_HUMAN": "ESCALATE_ONLY_IF_BUYER_REQUESTS_BRYCE",
 }
+HUMAN_STATE_CLASSIFICATIONS = frozenset(
+    {"OPT_OUT", "NEGATIVE", "QUESTION", "POSITIVE_SCOPE", "NEEDS_HUMAN"}
+)
 DELIVERY_FAILURE_MARKERS = (
     "mailer-daemon",
     "delivery status notification (failure)",
@@ -377,6 +380,108 @@ def load_observations(path: Path = OBSERVATIONS_PATH) -> dict[str, Any]:
     return value
 
 
+def _latest_event(events: list[dict[str, Any]]) -> dict[str, Any]:
+    """Return the latest event by normalized UTC time, with deterministic ref tie-break."""
+    if not events:
+        raise ReplyRevenueError("cannot select the latest event from an empty set")
+    return max(
+        events,
+        key=lambda item: (
+            parse_time(str(item["received_at"])),
+            str(item.get("event_ref") or ""),
+        ),
+    )
+
+
+def _reduce_contact_state(events: list[dict[str, Any]]) -> dict[str, Any]:
+    """Reduce recorded inbound evidence into one chronology-safe contact lane.
+
+    Human-semantic observations are ordered by normalized UTC time. Conflicting
+    semantic classifications at the same latest instant cannot establish an
+    ordering and therefore fail closed to NEEDS_HUMAN. Machine-only observations
+    never mint or revoke human intent: without human semantics, a delivery failure
+    outranks an ordinary auto-ack; after human semantics exist, machine noise does
+    not rewrite that human state.
+    """
+    if not events:
+        return {
+            "classification": None,
+            "lane": "NO_RESPONSE",
+            "next_action": "MONITOR_NO_RESEND",
+            "handoff": None,
+            "effective_event": None,
+        }
+
+    known = HUMAN_STATE_CLASSIFICATIONS | {"DELIVERY_FAILURE", "AUTO_RESPONSE"}
+    unknown = sorted(
+        {
+            str(event.get("classification"))
+            for event in events
+            if event.get("classification") not in known
+        }
+    )
+    if unknown:
+        raise ReplyRevenueError(f"contact state contains unknown classifications: {unknown}")
+
+    semantic = [
+        event for event in events if event["classification"] in HUMAN_STATE_CLASSIFICATIONS
+    ]
+    effective_event: dict[str, Any] | None
+    if semantic:
+        stamped = [(parse_time(str(event["received_at"])), event) for event in semantic]
+        latest_time = max(stamp for stamp, _ in stamped)
+        latest_semantic = [event for stamp, event in stamped if stamp == latest_time]
+        latest_classes = {event["classification"] for event in latest_semantic}
+        if len(latest_classes) != 1:
+            classification = "NEEDS_HUMAN"
+            effective_event = None
+        else:
+            classification = next(iter(latest_classes))
+            effective_event = min(
+                latest_semantic,
+                key=lambda item: str(item.get("event_ref") or ""),
+            )
+    else:
+        failures = [event for event in events if event["classification"] == "DELIVERY_FAILURE"]
+        if failures:
+            classification = "DELIVERY_FAILURE"
+            effective_event = _latest_event(failures)
+        else:
+            auto = [event for event in events if event["classification"] == "AUTO_RESPONSE"]
+            classification = "AUTO_RESPONSE"
+            effective_event = _latest_event(auto)
+
+    if classification == "POSITIVE_SCOPE":
+        lane, next_action, handoff = "HUMAN_POSITIVE", "NEEDS_ACCEPTANCE", ACCEPTANCE_TOOL
+    elif classification == "QUESTION":
+        lane, next_action, handoff = "HUMAN_QUESTION", "DRAFT_REPLY", REPLY_INTAKE_TOOL
+    elif classification == "OPT_OUT":
+        lane, next_action, handoff = "CLOSED", "DNC/CLOSE", None
+    elif classification == "NEGATIVE":
+        lane, next_action, handoff = "CLOSED", "CLOSE", None
+    elif classification == "DELIVERY_FAILURE":
+        lane, next_action, handoff = (
+            "DELIVERY_FAILURE",
+            "RECOVER_ROUTE_OWNER_REVIEW",
+            ROUTE_RECOVERY_TOOL,
+        )
+    elif classification == "AUTO_RESPONSE":
+        lane, next_action, handoff = "AUTO_ACK_WAIT", "WAIT_FOR_HUMAN_REPLY", None
+    else:
+        lane, next_action, handoff = (
+            "NEEDS_HUMAN",
+            "ESCALATE_ONLY_IF_BUYER_REQUESTS_BRYCE",
+            None,
+        )
+    return {
+        "classification": classification,
+        "lane": lane,
+        "next_action": next_action,
+        "handoff": handoff,
+        "effective_event": effective_event,
+    }
+
+
 def _contact_rows(receipts: list[dict[str, Any]], inbound: list[dict[str, Any]]) -> list[dict[str, Any]]:
     grouped: dict[str, dict[str, Any]] = {}
     for receipt in receipts:
@@ -391,7 +496,7 @@ def _contact_rows(receipts: list[dict[str, Any]], inbound: list[dict[str, Any]])
                 "receipt_paths": [],
                 "cash_usd": 0,
                 "inbound_event_refs": [],
-                "classifications": [],
+                "events": [],
             },
         )
         row["hard_dnr"] = row["hard_dnr"] or receipt["hard_dnr"]
@@ -416,49 +521,21 @@ def _contact_rows(receipts: list[dict[str, Any]], inbound: list[dict[str, Any]])
                 "receipt_paths": [],
                 "cash_usd": 0,
                 "inbound_event_refs": [],
-                "classifications": [],
+                "events": [],
             }
         grouped[key]["inbound_event_refs"].append(event["event_ref"])
-        grouped[key]["classifications"].append(event["classification"])
+        grouped[key]["events"].append(event)
     rows = []
     for key, row in grouped.items():
-        classes = row["classifications"]
-        if "POSITIVE_SCOPE" in classes:
-            lane = "HUMAN_POSITIVE"
-            next_action = "NEEDS_ACCEPTANCE"
-            handoff = ACCEPTANCE_TOOL
-        elif "QUESTION" in classes:
-            lane = "HUMAN_QUESTION"
-            next_action = "DRAFT_REPLY"
-            handoff = REPLY_INTAKE_TOOL
-        elif "OPT_OUT" in classes or "NEGATIVE" in classes:
-            lane = "CLOSED"
-            next_action = "DNC/CLOSE" if "OPT_OUT" in classes else "CLOSE"
-            handoff = None
-        elif "DELIVERY_FAILURE" in classes:
-            lane = "DELIVERY_FAILURE"
-            next_action = "RECOVER_ROUTE_OWNER_REVIEW"
-            handoff = ROUTE_RECOVERY_TOOL
-        elif "AUTO_RESPONSE" in classes:
-            lane = "AUTO_ACK_WAIT"
-            next_action = "WAIT_FOR_HUMAN_REPLY"
-            handoff = None
-        elif "NEEDS_HUMAN" in classes:
-            lane = "NEEDS_HUMAN"
-            next_action = "ESCALATE_ONLY_IF_BUYER_REQUESTS_BRYCE"
-            handoff = None
-        else:
-            lane = "NO_RESPONSE"
-            next_action = "MONITOR_NO_RESEND"
-            handoff = None
+        state = _reduce_contact_state(row["events"])
         rows.append(
             {
                 "prospect_key": row["prospect_key"],
                 "organization": row["organization"],
                 "hard_dnr": True if row["hard_dnr"] or row["receipt_ids"] else row["hard_dnr"],
-                "lane": lane,
-                "next_action": next_action,
-                "handoff": handoff,
+                "lane": state["lane"],
+                "next_action": state["next_action"],
+                "handoff": state["handoff"],
                 "receipt_count": len(row["receipt_ids"]),
                 "inbound_count": len(row["inbound_event_refs"]),
                 "cash_usd": row["cash_usd"],
@@ -478,13 +555,22 @@ def surface_positives(contacts: list[dict[str, Any]], inbound: list[dict[str, An
         if contact["lane"] != "HUMAN_POSITIVE":
             continue
         events = inbound_by_key.get(contact["prospect_key"], [])
-        latest = max(events, key=lambda item: item["received_at"]) if events else None
+        state = _reduce_contact_state(events)
+        latest = state["effective_event"]
+        if state["lane"] != "HUMAN_POSITIVE" or latest is None:
+            raise ReplyRevenueError(
+                f"positive contact {contact['prospect_key']} lacks an effective POSITIVE_SCOPE event"
+            )
+        if latest.get("classification") != "POSITIVE_SCOPE":
+            raise ReplyRevenueError(
+                f"positive contact {contact['prospect_key']} resolved to non-positive evidence"
+            )
         positives.append(
             {
                 "prospect_key": contact["prospect_key"],
                 "organization": contact["organization"],
-                "event_ref": None if latest is None else latest["event_ref"],
-                "received_at": None if latest is None else latest["received_at"],
+                "event_ref": latest["event_ref"],
+                "received_at": latest["received_at"],
                 "next_action": "NEEDS_ACCEPTANCE",
                 "handoff": ACCEPTANCE_TOOL,
                 "context": "human inbound classified POSITIVE_SCOPE; delivery-failure and auto-ack markers were absent",
@@ -511,7 +597,7 @@ def surface_route_recovery(
             for event in inbound_by_key.get(contact["prospect_key"], [])
             if event.get("classification") == "DELIVERY_FAILURE"
         ]
-        latest = max(failures, key=lambda item: item["received_at"]) if failures else None
+        latest = _latest_event(failures) if failures else None
         items.append(
             {
                 "prospect_key": contact["prospect_key"],
