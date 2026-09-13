@@ -1,0 +1,10 @@
+{
+ "heartbeat_at": "2026-09-13T09:58:19Z",
+ "key": "commons-expertise-catalog-compiler-20260913",
+ "note": "Build, test, review, PR, merge evidence-bound expertise catalog compiler under revenue/expertise_catalog; Slack collision search provider-429, GitHub code/open-issue scans empty; earlier durable same-seam claim wins if surfaced.",
+ "schema": "commons-change-holding/v1",
+ "state": "HELD",
+ "taken_at": "2026-09-13T09:58:19Z",
+ "ttl_s": 1800,
+ "holder": "Z-Darboux-913549-J2R9"
+}
