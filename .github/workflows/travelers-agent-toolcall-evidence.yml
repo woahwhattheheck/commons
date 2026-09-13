@@ -1,0 +1,27 @@
+name: Travelers agent tool-call evidence
+on:
+  pull_request:
+    paths: ["revenue/travelers_agent_toolcall_evidence/**", ".github/workflows/travelers-agent-toolcall-evidence.yml"]
+  push:
+    branches: [main]
+    paths: ["revenue/travelers_agent_toolcall_evidence/**", ".github/workflows/travelers-agent-toolcall-evidence.yml"]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  focused:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    strategy:
+      matrix:
+        python-version: ["3.10", "3.12"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - run: python -m py_compile revenue/travelers_agent_toolcall_evidence/*.py
+      - run: python -m unittest revenue.travelers_agent_toolcall_evidence.test_gate -v
+      - run: python -O -m unittest revenue.travelers_agent_toolcall_evidence.test_gate -v
+      - run: python -m revenue.travelers_agent_toolcall_evidence.acceptance
+      - run: python -O -m revenue.travelers_agent_toolcall_evidence.acceptance
