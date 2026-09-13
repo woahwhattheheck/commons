@@ -1,50 +1,69 @@
 # Agentic GenAI Evaluation Evidence Gate
 
-A deterministic, read-only pre-release evidence control for agentic GenAI systems.
+A deterministic, read-only pre-release evidence control for agentic GenAI
+systems. It compiles a closed-schema evaluation portfolio into one canonical
+`RELEASE_CANDIDATE` or `HOLD` receipt and can later verify both:
 
-This product compiles a **versioned evaluation portfolio** into one canonical
-`RELEASE_CANDIDATE` or `HOLD` receipt. It is designed for teams that need to
-show exactly which agent build, evaluation-set generation, rubric, traces,
-tool-call observations, automated scores, human decisions, safety results, and
-observability evidence supported a release review.
+1. whether the historical receipt still matches the exact packet and compile
+   instant; and
+2. whether that same evidence remains fit **now** under its freshness policy.
 
-The gate does **not** deploy a model, execute a tool, access customer data, or
-make an insurance/financial/compliance decision.
+The second check is intentionally separate. A byte-perfect historical release
+receipt can have `integrity_valid: true` while returning `valid: false`,
+`current_valid: false`, and `CURRENT_EVIDENCE_HOLD` after its evidence expires.
 
-## What it binds
+This module does not deploy a model, execute a tool, access customer data, send
+a message, or make a financial, insurance, compliance, or production-release
+decision.
 
-Every compile binds:
+## Bound evidence
+
+Schema version 2 binds:
 
 - exact evaluation-set ID, generation, digest, and required scenario universe;
-- exact agent ID/version/build SHA-256;
+- exact agent ID/version/build digest;
 - exact rubric ID/generation/digest and minimum score;
-- per-scenario category, trace digest, result digest, and observation time;
-- automated score and PASS/FAIL result, bound to scenario/trace/result by a canonical automated-evidence digest;
-- human-review decision bound back to the exact build, rubric, trace, and result digest;
-- safety result bound to the exact build, trace, and result digest;
-- observability pointer bound to the exact trace and result digest;
-- tool-call ID/tool/action/effect/result and exact trace binding;
-- verifier-owned evaluation instant;
-- canonical packet SHA-256 and self-verifying receipt SHA-256.
+- scenario category, trace digest, result digest, and evidence time;
+- an automated-result object binding scenario identity, score, status,
+  evaluator digest, build, rubric, trace, and result generation;
+- human review binding scenario identity, decision, build, rubric, trace, and
+  result generation;
+- safety evidence binding scenario identity, build, trace, and result generation;
+- observability evidence binding scenario identity, trace, and result generation;
+- every tool-call observation binding scenario identity, trace, and result
+  generation;
+- verifier-owned compile and verification instants;
+- canonical packet and self-verifying receipt digests.
 
-Unknown schema fields, duplicate JSON object keys, Python bool/int aliases, floats where
-integer basis points are required, non-canonical timestamps, duplicate IDs, future
-evidence, stale evidence, trace/result transplantation, changing file generations,
+A fresh compile therefore rejects a transplanted or arbitrary
+`result_sha256` unless every evidence layer that interprets that result names
+the same digest. This is a consistency guarantee, not proof that the
+caller-supplied digest came from an independently authenticated producer.
+
+Unknown fields, bool/int aliasing, floating-point basis-point scores,
+non-canonical timestamps, duplicate IDs, missing scenarios, future/stale
+evidence, cross-build/rubric/trace/result bindings, unsafe or unknown outcomes,
 and receipt drift fail closed.
 
 ## Decision semantics
 
-`RELEASE_CANDIDATE` means only that the supplied evaluation evidence satisfies
-the declared gate policy at the verifier-owned instant. It is **not** production
-release authority.
+`RELEASE_CANDIDATE` means only that the supplied evidence satisfies the declared
+policy at the receipt's verifier-owned instant. It is not production release
+authority.
 
-`HOLD` includes stable reason codes such as:
+`verify_receipt()` first reconstructs the historical receipt at its claimed
+instant. Only an exact canonical match has `integrity_valid: true`. It then
+recompiles at `verified_at`. Current-use `valid` is true only when both the
+historical and current decisions are `RELEASE_CANDIDATE`; a historical `HOLD`
+never silently promotes without a new receipt.
+
+Stable reason codes include:
 
 - `SCENARIO_UNIVERSE_MISMATCH`
+- `SCENARIO_BINDING_MISMATCH`
 - `AGENT_BUILD_MISMATCH`
 - `RUBRIC_MISMATCH`
 - `TRACE_BINDING_MISMATCH`
-- `AUTOMATED_RESULT_BINDING_MISMATCH`
 - `RESULT_BINDING_MISMATCH`
 - `FUTURE_EVIDENCE`
 - `STALE_EVIDENCE`
@@ -57,62 +76,74 @@ release authority.
 
 Malformed schema is rejected rather than interpreted.
 
-## 180-scenario acceptance portfolio
+## Strict file custody
+
+The CLI's JSON ingress:
+
+- opens with no-follow semantics where supported;
+- requires a regular file bounded to 8 MiB;
+- reads twice through one retained descriptor;
+- requires stable device, inode, mode, size, mtime, and ctime across both reads;
+- requires the two byte sequences to match;
+- decodes strict UTF-8 and rejects non-finite constants;
+- rejects duplicate object keys at every nesting level.
+
+Publication is create-exclusive and descriptor-relative. Every requested output
+is preflighted before the first create; symlinked parent components and occupied
+or symlink final names are rejected. Files and retained parent directories are
+fsynced, then the visible lexical parent and basename are revalidated against
+the retained descriptors. Failure never triggers pathname rollback, so an
+unowned replacement is not deleted.
+
+Output parent directories must already exist. A host without descriptor-relative
+`O_DIRECTORY` / `O_NOFOLLOW` publication support fails closed.
+
+## Synthetic acceptance portfolio
 
 `golden.py` deterministically generates 180 synthetic scenarios:
 
 - 45 normal;
 - 45 tool-using;
 - 45 adversarial;
-- 45 degraded-observability *challenge cases* whose retained observation evidence
-  is still complete.
+- 45 degraded-observability challenge cases whose retained observations remain
+  complete.
 
-The clean portfolio compiles to `RELEASE_CANDIDATE`. Any missing required
-scenario or a mismatched/stale/unsafe evidence element produces `HOLD`. Two
-compiles at the same evaluation instant are byte-identical after canonical JSON
-serialization.
-
-The fixture is synthetic. It contains no Caterpillar or other customer data.
+The fixture contains no buyer or production data.
 
 ## CLI
 
-Compile using the host's current UTC time (there is deliberately no caller
-`--as-of` override):
+Compile using host current UTC:
 
 ```bash
 python -m revenue.agentic_genai_evaluation_gate.cli compile \
   evaluation.json receipt.json --markdown-out receipt.md
 ```
 
-Verify an existing receipt against the exact packet. Verification first proves the
-historical receipt bytes, then re-evaluates freshness at the verifier-owned current
-UTC instant; an old receipt whose evidence is now stale returns `CURRENT_EVIDENCE_HOLD`:
+Verify historical integrity and current fitness:
 
 ```bash
 python -m revenue.agentic_genai_evaluation_gate.cli verify \
   evaluation.json receipt.json
 ```
 
-Input is bounded to 8 MiB, duplicate-key-strict UTF-8/JSON, regular-file only, and
-opened with no-follow semantics when the host supports them. The retained descriptor
-is read twice with stable identity/size/mtime/ctime and byte equality before semantic
-compilation. Output uses create-exclusive publication and never overwrites an existing
-artifact.
+Exit codes are `0` for current release validity, `2` for a compiled `HOLD`, `3`
+for a receipt that is not currently valid, and `4` for malformed evidence or
+file-custody failure.
 
-## Authority ceiling
+## Test contract
 
-The receipt always records these authorities as false:
+```bash
+python -m py_compile \
+  revenue/agentic_genai_evaluation_gate/*.py \
+  tests/_agentic_gate_*.py \
+  tests/test_agentic_genai_evaluation_gate.py
+python -m unittest -v tests.test_agentic_genai_evaluation_gate
+python -O -m unittest -v tests.test_agentic_genai_evaluation_gate
+```
 
-- model deployment;
-- tool execution;
-- provider mutation;
-- customer-data access;
-- compliance certification;
-- payment;
-- external contact;
-- revenue recognition.
-
-A buyer can use this as a bounded synthetic/non-production pilot or integrate it
-behind its own independently authenticated evaluation-data collection and
-release-approval systems. Those upstream/downstream authorities are explicitly
-outside this module.
+The focused hostile suite covers current-time expiry, historical HOLD
+non-promotion, whole-object scenario transplantation, every result-binding
+layer, global review/tool ID uniqueness, cross-build/rubric/trace evidence,
+duplicate-key JSON, same-inode rewrite with restored mtime, bounded/no-follow
+input, global multi-output preflight, symlinked parents/final names, short-write
+draining, deterministic ordering, receipt tamper, and the authority ceiling.
