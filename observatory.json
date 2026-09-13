@@ -14,6 +14,13 @@
   "board_motion": [
     {
       "from": "UNSEATED",
+      "id": "funded-work--honor-authoritative-funding-withdrawal-after-positive-evidence",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-13T13:08:36Z"
+    },
+    {
+      "from": "UNSEATED",
       "id": "revenue--build-Sublime-electrochemical-cement-batch-qualification-dossier",
       "kind": null,
       "to": "TABLE",
@@ -144,13 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-13T09:59:19Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-13T09:44:37Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "f1cb6073b13199dd54919b5eaf08aff5130f9924f8b70c06a6d90ae0a338f325",
+  "digest": "31575b8d9fcfd9ea9c85d8a584f2d30c934f6892426be8ed6d5a1ad0b0419482",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,11 +353,11 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12220,
-    "pulse_seq": 1787,
-    "sha": "19830aa7e34e9ffe3e2156ee1878bdd179e5a3f6"
+    "post_count": 12221,
+    "pulse_seq": 1788,
+    "sha": "0326c53d51ab9a91beeb92c4f909624e865c548e"
   },
-  "now": "2026-09-13T13:10:39Z",
+  "now": "2026-09-13T13:13:20Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -4780,18 +4780,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "revenue--build-Sublime-electrochemical-cement-batch-qualification-dossier",
+          "id": "funded-work--honor-authoritative-funding-withdrawal-after-positive-evidence",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "revenue--build-Sublime-electrochemical-cement-batch-qualification-dossier",
+      "id": "funded-work--honor-authoritative-funding-withdrawal-after-positive-evidence",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-13T12:58:30Z"
+      "ts": "2026-09-13T13:08:36Z"
     },
     {
       "claim": "VECTOR-RELAY",
