@@ -52,18 +52,44 @@ Artifacts: per-region aggregates, `all-aggregates.csv`, Zindi-shaped `submission
 
 ## Best Bias Discovery workflow
 
-`bias_discovery.py` is separate from scored prediction. It joins our produced score/components file to a challenge strata CSV and ranks numeric candidate dimensions by upper-vs-lower-quartile coverage-gap difference. Fixed scorecard families are excluded by default.
+`bias_discovery.py` is deliberately separate from scored prediction. It joins our produced `components.csv` to a challenge strata CSV and screens numeric dimensions outside the fixed scorecard families. The v2 evidence engine does more than rank a raw quartile difference:
+
+- primary contrast: upper-versus-lower quartile mean derived coverage gap;
+- deterministic percentile bootstrap 95% interval for that effect;
+- two-sided empirical permutation test with a +1 correction;
+- Benjamini–Hochberg FDR across all screened candidate fields;
+- 20/80, 25/75 and 33/67 threshold sign stability;
+- leave-one-county-out sign stability when the data supports it;
+- candidate missingness rate and missing-vs-observed gap difference;
+- high/low exemplar tracts plus county-concentration diagnostics;
+- SHA-256 commitments for both input files and the exact screening parameters.
+
+The output is a versioned `bias-discovery-evidence/v2` object, not a bare ranking. A `strong` screening label requires a bootstrap interval excluding zero, FDR `q <= 0.10`, perfect threshold-direction agreement, and at least 80% county-jackknife direction agreement when that jackknife is evaluable. Anything else remains `exploratory`.
 
 ```bash
-python bias_discovery.py build/centroid/components.csv south-central-tx-strata-tract-table.csv build/centroid/bias-candidates.json
+python bias_discovery.py \
+  build/centroid/components.csv \
+  south-central-tx-strata-tract-table.csv \
+  build/centroid/bias-evidence.json
 ```
 
-A ranked field is **not a discovery claim**. Before any writeup, inspect source semantics, map/names of affected tracts, quantify uncertainty, verify the pattern is outside the automated scorecard, and explain a concrete emergency-dispatch / evacuation / disaster-relief consequence. Additional public data is allowed only for this special-prize analysis, never the scored CSV; document URL, license and retrieval date.
+For a fast deterministic development check, the resampling budgets are configurable:
+
+```bash
+python bias_discovery.py components.csv strata.csv bias.json \
+  --bootstrap-iterations 200 --permutations 500 --seed 20260913
+```
+
+A ranked or `strong` field is **not** a causal claim, a population-significance claim, an organizer validation, or a prize result. Before any writeup: verify field semantics/source/license; inspect mapped/named exemplar tracts; quantify threshold, county and missingness sensitivity; show the pattern is outside the automated scorecard; and explain a concrete emergency-dispatch, evacuation or disaster-relief consequence. Additional public data is allowed only for this special-prize analysis, never the scored CSV; document URL, license and retrieval date.
 
 ## Acceptance gates
 
-Tests kill overcoverage errors, zero-reference errors, fixed-divisor mistakes, wrong POI half weighting, leading-zero GEOID loss, non-finite/negative inputs, all-undefined rows, category drift, silent axis-order bugs, target-label reads, point-boundary double counts and hidden building-assignment policy.
+Scoring/build tests kill overcoverage errors, zero-reference errors, fixed-divisor mistakes, wrong POI half weighting, leading-zero GEOID loss, non-finite/negative inputs, all-undefined rows, category drift, silent axis-order bugs, target-label reads, point-boundary double counts and hidden building-assignment policy.
+
+Bias-discovery tests additionally fail closed on duplicate GEOIDs and out-of-range derived scores, verify deterministic resampling, fixed-family exclusion, multiplicity-adjusted strong-signal detection, missingness evidence, county-instability demotion, and versioned input-digest provenance.
 
 ## Remaining external validation
 
-This lane proves scoring math and query construction locally. It cannot honestly prove multi-GB remote queries or leaderboard RMSE in a runtime with no network/DuckDB. Before any competition submission, run the four-region build on a networked machine, inspect row counts against authoritative sample files, check all scores are finite in `[0,1]`, and preserve hashes of `submission.csv`, aggregate files, code commit, DuckDB version and building-assignment policy.
+This lane proves scoring math, query construction, and bias-screening mechanics locally. It cannot honestly prove multi-GB remote queries, real-data bias findings, leaderboard RMSE or organizer acceptance in a runtime without the competition data/network/account. Before any competition submission, run the four-region build on a networked machine, inspect row counts against authoritative sample files, check all scores are finite in `[0,1]`, and preserve hashes of `submission.csv`, aggregate files, code commit, DuckDB version and building-assignment policy.
+
+Before any Best Bias Discovery writeup, run the v2 evidence engine on the actual challenge strata, preserve the evidence JSON and input hashes, manually verify the leading field's semantics and spatial context, and keep causal/prize language out unless independently supported.
