@@ -26,7 +26,7 @@ def base():
     }
 
 
-def ev(payload, n, kind, authority, when, *, amount=None, currency=None):
+def ev(payload, n, kind, authority, when, *, amount=None, currency=None, reversal=None):
     return {
         "event_id": f"i{n:02d}",
         "kind": kind,
@@ -36,7 +36,7 @@ def ev(payload, n, kind, authority, when, *, amount=None, currency=None):
         "subject_sha256": subject_commitment(payload),
         "amount_minor": amount,
         "currency": currency,
-        "reversal_of": None,
+        "reversal_of": reversal,
     }
 
 
@@ -53,8 +53,54 @@ def staged_payload():
     return p
 
 
+def completed_payload():
+    p = staged_payload()
+    p["events"] += [
+        ev(p, 6, "EXECUTION_STARTED", "owner", "2026-09-13T10:05:00Z"),
+        ev(p, 7, "FULFILLMENT_ACCEPTED", "buyer", "2026-09-13T10:06:00Z"),
+        ev(p, 8, "PAYMENT_SETTLED", "payment", "2026-09-13T10:07:00Z",
+           amount=250000, currency="USD"),
+        ev(p, 9, "REVENUE_RECOGNIZED", "finance", "2026-09-13T10:08:00Z",
+           amount=250000, currency="USD"),
+    ]
+    return p
+
+
+def fully_reversed_payload():
+    p = completed_payload()
+    p["events"] += [
+        ev(p, 10, "REFUND_SETTLED", "payment", "2026-09-13T10:09:00Z",
+           amount=250000, currency="USD", reversal="i08"),
+        ev(p, 11, "REVENUE_REVERSED", "finance", "2026-09-13T10:10:00Z",
+           amount=250000, currency="USD", reversal="i10"),
+    ]
+    return p
+
+
 class IngestionHardeningTests(unittest.TestCase):
     ASOF = "2026-09-13T11:00:00Z"
+    EFFECTIVE_RECEIPT_KEYS = (
+        "state",
+        "subject_sha256",
+        "normalized_input_sha256",
+        "event_chain_head_sha256",
+        "currency",
+        "contract_amount_minor",
+        "funding_evidenced_minor",
+        "settled_amount_minor",
+        "refunded_amount_minor",
+        "reported_recognized_amount_minor",
+        "reversed_recognition_amount_minor",
+        "net_cash_evidenced_minor",
+        "net_recognized_evidenced_minor",
+        "recognition_reversal_pending_minor",
+        "unique_event_count",
+        "authority",
+    )
+
+    def assert_effective_receipt_equal(self, baseline, replayed):
+        for key in self.EFFECTIVE_RECEIPT_KEYS:
+            self.assertEqual(replayed[key], baseline[key], key)
 
     def test_delayed_exact_retry_collapses_before_chronology(self):
         p = staged_payload()
@@ -67,6 +113,53 @@ class IngestionHardeningTests(unittest.TestCase):
         self.assertEqual(replayed["event_chain_head_sha256"], baseline["event_chain_head_sha256"])
         self.assertEqual(replayed["normalized_input_sha256"], baseline["normalized_input_sha256"])
         self.assertTrue(verify_receipt(p, replayed, trusted_as_of=self.ASOF))
+
+    def test_terminal_stream_retry_matrix_is_effectively_idempotent(self):
+        baseline_payload = completed_payload()
+        baseline = compile_ledger(copy.deepcopy(baseline_payload), trusted_as_of=self.ASOF)
+        self.assertEqual(baseline["state"], "REVENUE_RECOGNITION_EVIDENCED")
+
+        for retry_index, original in enumerate(baseline_payload["events"]):
+            with self.subTest(event_id=original["event_id"], kind=original["kind"]):
+                candidate = copy.deepcopy(baseline_payload)
+                candidate["events"].append(copy.deepcopy(candidate["events"][retry_index]))
+                replayed = compile_ledger(candidate, trusted_as_of=self.ASOF)
+
+                self.assert_effective_receipt_equal(baseline, replayed)
+                self.assertEqual(
+                    replayed["input_event_count"],
+                    baseline["input_event_count"] + 1,
+                )
+                self.assertTrue(verify_receipt(candidate, replayed, trusted_as_of=self.ASOF))
+
+    def test_reversal_stream_retry_matrix_cannot_double_money(self):
+        baseline_payload = fully_reversed_payload()
+        baseline = compile_ledger(copy.deepcopy(baseline_payload), trusted_as_of=self.ASOF)
+        self.assertEqual(baseline["state"], "FULLY_REVERSED_EVIDENCE_ONLY")
+        self.assertEqual(baseline["net_cash_evidenced_minor"], 0)
+        self.assertEqual(baseline["net_recognized_evidenced_minor"], 0)
+
+        for retry_index, original in enumerate(baseline_payload["events"]):
+            with self.subTest(event_id=original["event_id"], kind=original["kind"]):
+                candidate = copy.deepcopy(baseline_payload)
+                candidate["events"].append(copy.deepcopy(candidate["events"][retry_index]))
+                replayed = compile_ledger(candidate, trusted_as_of=self.ASOF)
+
+                self.assert_effective_receipt_equal(baseline, replayed)
+                self.assertEqual(
+                    replayed["input_event_count"],
+                    baseline["input_event_count"] + 1,
+                )
+                self.assertTrue(verify_receipt(candidate, replayed, trusted_as_of=self.ASOF))
+
+    def test_delayed_conflicting_financial_retry_still_fails_closed(self):
+        p = completed_payload()
+        duplicate_payment = copy.deepcopy(p["events"][7])
+        duplicate_payment["amount_minor"] = 249999
+        p["events"].append(duplicate_payment)
+
+        with self.assertRaisesRegex(LedgerError, "conflicting duplicate event_id: i08"):
+            compile_ledger(p, trusted_as_of=self.ASOF)
 
     def test_delayed_conflicting_retry_still_fails_closed(self):
         p = staged_payload()
