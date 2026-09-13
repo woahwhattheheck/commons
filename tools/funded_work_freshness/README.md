@@ -28,13 +28,22 @@ python3 funded_work_freshness.py \
   --platform example \
   --amount 500 \
   --currency USD \
+  --canonical-url 'https://github.com/owner/repo/issues/123' \
   --observed-at 2026-09-13T06:30:00Z \
   --output receipt.json
 ```
 
-For a board that does not expose a unique GitHub link in its HTML, provide the
-explicit target with `--canonical-url`. A `GITHUB_TOKEN` or `GH_TOKEN` is used
-only for authenticated read requests when present.
+Direct GitHub issue/PR URLs require no separate canonical argument. Automatic
+candidate-page discovery is deliberately restricted to recognized sponsor-owned
+host suffixes (`algora.io`, `opire.dev`, `polar.sh`, `issuehunt.io`, and
+`gitcoin.co`). Arbitrary marketplace/aggregator URLs remain supported, but must
+supply `--canonical-url` so untrusted board hostnames are never fetched merely to
+discover their GitHub target. This closes the DNS-rebinding TOCTOU that would
+exist if an untrusted hostname were pre-resolved for a public-address check and
+then resolved again by the HTTP stack when opening the socket.
+
+A `GITHUB_TOKEN` or `GH_TOKEN` is used only for authenticated GitHub API read
+requests when present.
 
 Exit codes: `0` actionable, `3` occupied, `4` stale, `5` ambiguous, `2` invalid
 CLI input. The tool never comments, claims, contacts a sponsor, mutates a payment
