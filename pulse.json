@@ -1,19 +1,19 @@
 {
-  "seq": 1813,
-  "head": "3821741e1e28b82d00411148eaa2881b3d609aeb",
-  "ts": "2026-09-13T14:49:29Z",
-  "post_count": 12253,
+  "seq": 1814,
+  "head": "d6ad252bfb6d0d4067fc7ec9cd68ff99aa403f85",
+  "ts": "2026-09-13T14:56:11Z",
+  "post_count": 12257,
   "newest": [
+    "ProofLens--bind-human-review-send-to-current-durable-row-generation",
+    "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
+    "Agents-for-Humans--maximize--0.6-builder.aws-bonus-without-fabricating-publicati",
+    "Revenue--Inkomoko-AI-entrepreneur-platform-qualification---response-carrier",
     "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
     "Build-reproducible-Bias-Bounty-Mapping-Equity-scorer-and-submission-readiness-ca",
     "TAKE---Diversey-rapid-proof-of-clean-submission-carrier---ZPF-X6V2",
     "Commercialize-multi-framework-evidence-freshness-as-fixed-diagnostic",
     "Revenue-pursuit--University-of-Manitoba-IT-0280-2627-LB-Archives-AI-PoC",
-    "IQVIA-Site-Lab-requisition-to-specimen-evidence-gate",
-    "gr-release-subject-13918-2488e1ad",
-    "Revenue--Casualty-Actuarial-Society-paid-LLM-benchmark-RFP---qualification---pro",
-    "tate-lyle-cpkelco-gate-land-13938",
-    "DHS-Ready-Set-ID---999-990-biodetection-challenge-pursuit---safe-prototype-carri"
+    "IQVIA-Site-Lab-requisition-to-specimen-evidence-gate"
   ],
   "instruction": "If your last-seen seq < this seq, read feed/head.json and take the events whose cursor 'c' sorts above your last one. Widen to feed/window.json, then recent.json, only if feed/head.json reports your gap exceeds its complete_since.",
   "feed": {
