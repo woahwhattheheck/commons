@@ -1,91 +1,85 @@
 # Revenue proof settlement ledger
 
-`revenue_proof_ledger` is a deterministic, read-only reducer for receipts that
-already exist. It does not query Slack, GitHub, payment providers, customers, or
-banking systems and it cannot initiate a payment. Its purpose is to keep four
-money states separate:
+`revenue_proof_ledger` is a deterministic, read-only reducer over already-produced
+opportunity, delivery, settlement, and lookup receipts. It never queries or mutates
+Slack, GitHub, payment providers, customers, invoices, accounts, or credentials.
+
+Its four money states remain deliberately separate:
 
 - **pipeline_expected** — canonical advertised/contracted opportunity amount;
-- **earned_unsettled** — accepted current delivery value not yet backed by
-  complete settlement evidence;
-- **cash_settled** — net settled payment authorized only by complete evidence;
-- **reversed_or_disputed** — settled refunds/reversals/disputes that back cash
-  out without deleting delivery history.
+- **earned_unsettled** — accepted current delivery value not yet backed by complete settlement evidence;
+- **cash_settled** — net settled payment authorized only by complete, snapshot-bound evidence;
+- **reversed_or_disputed** — settled refunds/reversals/disputes that back cash out without erasing delivery history.
 
-Operation: `REVENUE-PROOF-SETTLEMENT-LEDGER-20260913`.
+Successor operation: `REVENUE-PROOF-LOOKUP-SNAPSHOT-BINDING-ZMASTHEAD913A-20260913`.
 
-## Input
+## Input v2
 
-The input schema is `commons-revenue-proof-input/v1` with one `receipts` array.
-Every receipt carries:
+The required schema is `commons-revenue-proof-input/v2`. Every receipt carries
+`kind`, canonical `opportunity_id`, `source`, `authority`, and an immutable lowercase
+`sha256:<64 hex>` `evidence_digest`. Unknown fields are rejected and money is accepted
+only as plain non-negative decimal strings.
 
-- `kind`: `opportunity`, `delivery`, `settlement`, or `lookup`;
-- canonical `opportunity_id`;
-- `source` reader/receipt identity;
-- `authority`: `complete`, `partial`, or `unknown`;
-- immutable lowercase `sha256:<64 hex>` `evidence_digest`.
+Opportunity, delivery, and settlement semantics are unchanged from v1: canonical
+opportunity terms must agree; one current accepted delivery establishes earned value;
+settlement IDs are globally deduplicated; settled payments add cash while settled
+refunds/reversals/disputes subtract it.
 
-Unknown fields are rejected. Money is accepted only as plain non-negative
-decimal **strings**; binary floats are never used.
+### Snapshot-bound lookup receipts
 
-### Opportunity receipt
+A v2 lookup is no longer a bare assertion that a reader was "complete". It must bind
+that assertion to one exact inventory snapshot:
 
 ```json
 {
-  "kind": "opportunity",
+  "kind": "lookup",
   "opportunity_id": "github:acme/widget#42",
-  "source": "github:issue",
+  "source": "payment-reader:stripe",
   "authority": "complete",
   "evidence_digest": "sha256:...",
-  "identity_status": "canonical",
-  "currency": "USD",
-  "expected_amount": "500.00"
+  "scope": "settlement",
+  "snapshot_id": "stripe-account-snapshot-20260913T073000Z",
+  "observed_at": "2026-09-13T07:30:00Z",
+  "inventory_ids": ["stripe:pi_1", "stripe:re_1"],
+  "inventory_digest": "sha256:..."
 }
 ```
 
-Multiple Slack/GitHub/market receipts with the same canonical opportunity ID
-are deduplicated. Currency or amount disagreement, or
-`identity_status="ambiguous"`, makes the opportunity authority `unknown`.
+`inventory_digest` is SHA-256 over canonical JSON containing `scope`, `snapshot_id`,
+UTC-normalized `observed_at`, and sorted `inventory_ids`. Duplicate inventory IDs are
+invalid.
 
-### Delivery receipt
+For each opportunity and scope (`delivery` or `settlement`), only the latest observed
+snapshot controls lookup authority. Multiple receipts at that exact latest timestamp
+must describe the same snapshot identity and inventory or authority becomes `unknown`.
+An older partial/unknown lookup does not poison a later coherent complete snapshot; a
+newer partial/unknown lookup correctly supersedes an older complete one.
 
-An accepted delivery supplies `delivery_id`, `state="accepted"`, `current`,
-`currency`, and `earned_amount`. `credit` keeps `source_authors`, `reviewers`,
-and `mergers` as separate lineages; later review/merge evidence cannot remint
-source authorship. Multiple current accepted deliveries are ambiguous.
+Most importantly, a **complete** lookup inventory must exactly equal the deduplicated
+delivery or settlement IDs supplied to the reducer. If a paid event is present but the
+complete snapshot omitted it, or the snapshot lists a refund/reversal whose receipt is
+missing, the ledger fails closed and authorizes zero `cash_settled`.
 
-### Settlement receipt
+The emitted row includes the effective lookup snapshot ID, normalized observation
+time, inventory digest, and count. This is explicit **as-of evidence**: the reducer
+proves consistency with the supplied snapshot; it does not claim that no event can
+occur after that observation time.
 
-A settlement has a globally unique `settlement_id`, `delivery_id`, `movement`
-(`payment`, `refund`, `reversal`, or `dispute`), provider `state` (`settled`,
-`pending`, `failed`), currency, and amount. Identical cross-source copies of the
-same settlement ID count once. Reusing one settlement ID for different semantic
-facts makes the affected opportunity unknown and authorizes zero settled cash.
-Only `state="settled"` changes observed cash.
+## Fail-closed authority
 
-### Lookup receipt
+Settled cash is nonzero only when all of these are true:
 
-A `lookup` receipt explicitly states whether the reader had complete evidence
-for `scope="delivery"` or `scope="settlement"`. This is important: **absence of
-a payment row is not proof of no payment.** Missing/partial/unknown lookup
-authority cannot mint `cash_settled`.
+- canonical opportunity amount/currency/identity are coherent;
+- exactly one accepted delivery is current;
+- the effective delivery and settlement lookup snapshots are both `complete`;
+- each complete lookup inventory exactly matches the supplied receipts for that scope;
+- all counted receipt authorities are complete;
+- settlement IDs, delivery binding, currency, amount, and reversal arithmetic are coherent.
 
-## Fail-closed rules
-
-The ledger authorizes settled cash only when the opportunity has one current
-accepted delivery, canonical terms agree, delivery and settlement lookups are
-complete, all relevant receipt authorities are complete, settlement IDs are
-consistent, currency/amount arithmetic is coherent, and every counted
-settlement points at the current delivery. Explicitly partial evidence remains
-`authority=partial`; missing, ambiguous, conflicting, or otherwise unknowable
-evidence becomes `authority=unknown`. Either non-complete state forces
-`cash_settled=0` while retaining observed evidence and delivery history.
-Superseded delivery heads, duplicate-ID conflicts, overpayment,
-refund-underflow, and semantic mismatches therefore cannot mint settled cash.
-
-Partial multi-payment arithmetic is exact. Settled refunds/reversals/disputes
-subtract from net cash and increase the remaining earned-unsettled amount; they
-do not erase authorship or acceptance history.
+Explicit `partial` evidence remains partial. Missing, conflicting, inventory-mismatched,
+or otherwise unknowable evidence becomes `unknown`. In either case `cash_settled=0`
+while observed evidence, accepted delivery value, authorship lineage, and reversal
+history remain visible.
 
 ## CLI
 
@@ -95,27 +89,29 @@ python -m tools.revenue_proof_ledger.ledger receipts.json \
   --summary-out revenue-ledger.md
 ```
 
-Both outputs are create-exclusive. The JSON includes a deterministic
-`ledger_digest` over its canonical content. Exit status is `0` only when the
-resulting ledger authority is `complete`; partial/unknown authority or any I/O
-/input failure returns `2`.
+Both outputs are create-exclusive. JSON includes a deterministic `ledger_digest`.
+Exit status is `0` only when resulting ledger authority is complete; partial/unknown
+authority and input/I/O failure return `2`.
 
 ## Verification
 
 ```sh
-python -m unittest -v \
+python -B -m unittest -v \
   tools.revenue_proof_ledger.test_ledger \
   tools.revenue_proof_ledger.test_partial_authority
+
+python -O -B -m unittest -v \
+  tools.revenue_proof_ledger.test_ledger \
+  tools.revenue_proof_ledger.test_partial_authority
+
 python -m py_compile \
   tools/revenue_proof_ledger/ledger.py \
   tools/revenue_proof_ledger/test_ledger.py \
   tools/revenue_proof_ledger/test_partial_authority.py
 ```
 
-The focused suite covers cross-source opportunity dedupe, accepted-without-
-payment, identical settlement dedupe, partial/multi-payment arithmetic,
-explicit partial-authority zero-mint behavior, refund/reversal accounting,
-incomplete lookup zero-mint behavior, source-credit lineage, reused settlement
-IDs, superseded delivery settlements, ambiguous opportunity identity, amount
-mismatch, input permutation determinism, content hash binding, unknown-field
-rejection, and create-exclusive output behavior.
+The suite retains the v1 arithmetic/identity/credit/output coverage and adds hostile
+proofs for omitted refunds, snapshot-listed-but-missing receipts, delivery inventory
+mismatch, digest tampering, duplicate inventory IDs, conflicting latest snapshots,
+partial→complete and complete→partial snapshot succession, timestamp normalization,
+and deterministic input permutation.
