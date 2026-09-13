@@ -172,7 +172,9 @@ def _normalize_event(raw: Any, idx: int, subject: str, deal_currency: str) -> Di
         raise LedgerError(f"{kind} must not carry reversal_of")
     return dict(e)
 
-def _stage_state(stage: int, settled: int, recognized: int, refunded: int, reversed_amt: int, cancelled: bool) -> str:
+def _stage_state(stage: int, settled: int, recognized: int, refunded: int, reversed_amt: int, cancelled: bool, reversal_pending: int) -> str:
+    if reversal_pending:
+        return "RECOGNITION_REVERSAL_REQUIRED_EVIDENCE_ONLY"
     if cancelled:
         if refunded or reversed_amt:
             return "CANCELLED_WITH_REVERSAL_EVIDENCE_ONLY"
@@ -184,6 +186,8 @@ def _stage_state(stage: int, settled: int, recognized: int, refunded: int, rever
     if recognized:
         return "REVENUE_RECOGNITION_EVIDENCED"
     if settled:
+        if stage < 7:
+            return "PREPAID_CASH_EVIDENCE_ONLY"
         return "PAYMENT_SETTLED_EVIDENCE_ONLY"
     return STAGE_STATE[stage]
 
@@ -242,14 +246,14 @@ def compile_ledger(payload: Dict[str, Any], *, trusted_as_of: str) -> Dict[str, 
                 if _timestamp(e["occurred_at"], "occurred_at") > expires:
                     raise LedgerError(f"{kind} occurred after offer expiry")
             if kind == "FUNDING_VERIFIED":
-                if e["amount_minor"] < payload["contract_amount_minor"]:
-                    raise LedgerError("funding evidence is below contract amount")
+                if e["amount_minor"] != payload["contract_amount_minor"]:
+                    raise LedgerError("funding evidence must equal contract amount")
                 funded = e["amount_minor"]
             stage = target
 
         elif kind == "PAYMENT_SETTLED":
-            if stage < 7:
-                raise LedgerError("payment settlement requires fulfillment acceptance")
+            if stage < 5:
+                raise LedgerError("payment settlement requires buyer acceptance and funding evidence")
             amount = e["amount_minor"]
             if settled + amount > payload["contract_amount_minor"]:
                 raise LedgerError("settled payments exceed contract amount")
@@ -294,8 +298,7 @@ def compile_ledger(payload: Dict[str, Any], *, trusted_as_of: str) -> Dict[str, 
 
     net_cash = settled - refunded
     net_recognized = recognized - reversed_amt
-    if net_recognized > net_cash:
-        raise LedgerError("net recognized amount exceeds net settled cash")
+    reversal_pending = max(0, net_recognized - net_cash)
 
     normalized_input = {**static, "events": unique}
     receipt: Dict[str, Any] = {
@@ -304,7 +307,7 @@ def compile_ledger(payload: Dict[str, Any], *, trusted_as_of: str) -> Dict[str, 
         "subject_sha256": subject,
         "normalized_input_sha256": _sha(normalized_input),
         "trusted_as_of": trusted_as_of,
-        "state": _stage_state(stage, settled, recognized, refunded, reversed_amt, cancelled),
+        "state": _stage_state(stage, settled, recognized, refunded, reversed_amt, cancelled, reversal_pending),
         "currency": payload["currency"],
         "contract_amount_minor": payload["contract_amount_minor"],
         "funding_evidenced_minor": funded,
@@ -314,6 +317,7 @@ def compile_ledger(payload: Dict[str, Any], *, trusted_as_of: str) -> Dict[str, 
         "reversed_recognition_amount_minor": reversed_amt,
         "net_cash_evidenced_minor": net_cash,
         "net_recognized_evidenced_minor": net_recognized,
+        "recognition_reversal_pending_minor": reversal_pending,
         "unique_event_count": len(unique),
         "input_event_count": len(payload["events"]),
         "event_chain_head_sha256": event_chain,

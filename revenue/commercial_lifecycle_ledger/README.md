@@ -22,7 +22,7 @@ Each ledger binds one immutable commercial subject:
 
 `subject_commitment()` hashes those immutable terms. Every event must carry that digest, preventing an acceptance/payment/finance event from being replayed onto another buyer, offer, scope, amount, or currency.
 
-Events use exact schemas and named evidence authorities:
+Events use exact schemas and named evidence-authority classes supplied by the upstream verifier:
 
 | Event | Required evidence authority |
 |---|---|
@@ -39,20 +39,23 @@ Events use exact schemas and named evidence authorities:
 | `REFUND_SETTLED` | `payment` |
 | `REVENUE_REVERSED` | `finance` |
 
+This package validates the event contract and bound evidence digests; it is not an identity/signature verifier. The upstream integration remains responsible for authenticating the evidence source before assigning an authority class.
+
 Forward lifecycle stages cannot be skipped or repeated. Offer approval/send/acceptance must occur before the bound offer expiry. Evaluation time is supplied out of band as `trusted_as_of`; payloads cannot choose their own current time.
 
 ## Money and reversals
 
 Money is integer minor units only; booleans, floats, decimal strings, coercion, and cross-currency events are rejected.
 
-- funding evidence must cover the exact contract amount;
-- settlement can be installment-based but cannot exceed the contract amount;
-- finance-recognition evidence cannot exceed net settled cash evidence;
+- funding evidence must equal the exact contract amount;
+- settled cash may arrive after buyer acceptance + funding, including legitimate prepayment before fulfillment;
+- installment settlement is supported but total settlement cannot exceed the contract amount;
+- finance-recognition evidence requires fulfillment and cannot exceed the then-current net settled cash evidence;
 - refunds must reference a specific prior settlement event and cannot exceed its residual;
 - recognition reversals must reference a specific refund and cannot exceed either that refund or recognized amount;
-- net recognized evidence may never exceed net settled cash evidence.
+- if a refund settles after revenue was already recognized, the ledger preserves both facts and emits `RECOGNITION_REVERSAL_REQUIRED_EVIDENCE_ONLY` with `recognition_reversal_pending_minor` until matching finance evidence arrives.
 
-The receipt exposes both gross and net evidence totals. It does **not** convert those totals into authority.
+The receipt exposes gross/net evidence totals. It does **not** convert those totals into authority.
 
 ## Idempotency and tamper evidence
 
@@ -65,6 +68,7 @@ The output binds:
 - chained event SHA-256;
 - exact trusted evaluation time;
 - gross/net cash and reported-recognition evidence;
+- pending recognition-reversal amount when applicable;
 - unique/input event counts;
 - canonical receipt SHA-256.
 
@@ -78,10 +82,13 @@ From repository root:
 
 ```bash
 python -m unittest -v revenue.commercial_lifecycle_ledger.test_lifecycle
+python -m unittest -v revenue.commercial_lifecycle_ledger.test_lifecycle_financial_edges
 python -O -m unittest -v revenue.commercial_lifecycle_ledger.test_lifecycle
+python -O -m unittest -v revenue.commercial_lifecycle_ledger.test_lifecycle_financial_edges
 python -m py_compile \
   revenue/commercial_lifecycle_ledger/lifecycle.py \
-  revenue/commercial_lifecycle_ledger/test_lifecycle.py
+  revenue/commercial_lifecycle_ledger/test_lifecycle.py \
+  revenue/commercial_lifecycle_ledger/test_lifecycle_financial_edges.py
 ```
 
-The hostile suite covers lifecycle skips/repeats, cross-deal replay, wrong authority, future/out-of-order events, offer expiry, funding shortfall, money coercion, overpayment, premature recognition, refund/reversal reference integrity, duplicate IDs, schema drift, duplicate JSON keys, non-finite JSON, receipt tampering, and trusted-time replay.
+The hostile suite covers lifecycle skips/repeats, cross-deal replay, wrong authority, future/out-of-order events, offer expiry, exact funding binding, legitimate prepayment, money coercion, overpayment, premature recognition, refund-before-finance-reversal handling, refund/reversal reference integrity, duplicate IDs, schema drift, duplicate JSON keys, non-finite JSON, receipt tampering, and trusted-time replay.
