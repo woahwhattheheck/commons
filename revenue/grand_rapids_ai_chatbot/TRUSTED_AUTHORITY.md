@@ -1,7 +1,8 @@
 # Trusted preflight authority — 920-45-269
 
-Issue: `#13884`  
-Operation: `GRANDRAPIDS-PREFLIGHT-INDEPENDENT-AUTHORITY-ZLFW3H7-20260913`
+Issues: `#13884`, `#13918`  
+Original authority operation: `GRANDRAPIDS-PREFLIGHT-INDEPENDENT-AUTHORITY-ZLFW3H7-20260913`  
+Release-subject repair: `GRANDRAPIDS-RELEASE-SUBJECT-BIND-ZPAF3N8-20260913`
 
 ## Why this exists
 
@@ -48,21 +49,36 @@ The host digest covers exactly:
 
 Every object has an exact key set. Generation uses a strict built-in integer (booleans are rejected). Digests are lowercase 64-hex. Addenda are strictly sorted with unique canonical IDs. Evidence IDs are unique and bounded. Each gate has one fixed evidence kind. Every evidence row must bind the same exact packet/addenda source-generation digest; changing packet or addenda invalidates stale evidence mechanically.
 
-The `controlling_packet_acquired` evidence digest must equal the exact `packet_sha256`. `owner_release_to_submit` accepts only an evidence row whose gate is exactly `owner_release_to_submit` and whose kind is exactly `OWNER_RELEASE`, bound to the current source generation.
+Both `CONTROLLING_PACKET` and `PACKET_SHA256_VERIFICATION` evidence digests must equal the exact current `packet_sha256`. A syntactically valid but unrelated verification digest is not evidence that the controlling packet was verified.
+
+## Exact owner release subject
+
+`OWNER_RELEASE` does not merely bind the packet/addenda generation. Its evidence `sha256` must equal `trusted_authority.release_subject_sha256(material)` for the authority generation being approved.
+
+The release-subject digest is domain-separated by `grand-rapids-920-45-269-release-subject/v1` and canonically covers:
+
+- the exact solicitation ID;
+- the exact packet/addenda source-generation SHA-256;
+- the canonical required gate universe excluding `owner_release_to_submit`; and
+- **every non-OWNER_RELEASE evidence row**, projected as exact evidence ID, gate, kind, evidence SHA-256, and source-generation SHA-256, sorted by evidence ID.
+
+OWNER_RELEASE rows themselves are excluded from that projection to avoid a circular self-digest. As a result, changing pricing, forms, references, certifications, narrative, security/acceptance evidence, evidence IDs, evidence membership, packet bytes, or addenda makes an earlier owner release stale. A new authority document must carry a newly computed release-subject digest only after the owner has reviewed that exact evidence subject.
 
 ## Rotation / anti-rollback procedure
 
-When the controlling packet, any addendum, or any trusted evidence changes:
+When the controlling packet, any addendum, or any trusted non-release evidence changes:
 
 1. Build a **new** authority material generation from retained bytes/evidence.
 2. Increment `generation`.
 3. Recompute the packet/addenda source-generation digest and bind every carried-forward evidence row to it only after re-verification.
-4. Compute the canonical authority SHA-256 with `trusted_authority.authority_sha256(...)`.
-5. Persist the exact authority document.
-6. Atomically advance the validation host's pinned `GENERATION` + `AUTHORITY_SHA256` root.
-7. Update proposal state to reference that exact generation+authority digest.
+4. Set both packet-custody and packet-verification evidence SHA-256 values to the exact current `packet_sha256`.
+5. Compute `trusted_authority.release_subject_sha256(material)` and, only after owner review of that exact subject, bind `OWNER_RELEASE.sha256` to that digest.
+6. Compute the canonical authority SHA-256 with `trusted_authority.authority_sha256(...)`.
+7. Persist the exact authority document.
+8. Atomically advance the validation host's pinned `GENERATION` + `AUTHORITY_SHA256` root.
+9. Update proposal state to reference that exact generation+authority digest.
 
-An old previously approved document will fail because its generation does not match the host root. A fork at the current generation will fail because its authority digest does not match the host root.
+An old previously approved document will fail because its generation does not match the host root. A fork at the current generation will fail because its authority digest does not match the host root. A carried-forward OWNER_RELEASE fails earlier whenever its exact release subject has changed.
 
 ## State semantics
 
