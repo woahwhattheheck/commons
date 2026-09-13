@@ -5,11 +5,57 @@ import copy
 import hashlib
 from typing import Any
 
-from .gate import CODES, SCHEMA
+from .gate import CODES, REFERENCE_SCHEMA, SCHEMA, sha256_value
 
 
 def _h(text: str) -> str:
     return hashlib.sha256(text.encode("utf-8")).hexdigest()
+
+
+def frozen_reference_set() -> dict[str, Any]:
+    """Synthetic reference generation; production pins must come from the trusted host."""
+    expiries = {
+        f"KIT-{index:02d}": "2026-10-01T00:00:00Z"
+        for index in range(1, 8)
+    }
+    expiries["KIT-EXPIRED"] = "2026-09-12T23:59:59Z"
+    return {
+        "schema": REFERENCE_SCHEMA,
+        "generation_id": "REF-2026-09-13-A",
+        "protocol_id": "PROTO-ALPHA",
+        "visit_id": "VISIT-02",
+        "requisition_version": "REQ-v3",
+        "kit_expiry_by_lot": expiries,
+        "collection_window_start": "2026-09-13T08:00:00Z",
+        "collection_window_end": "2026-09-13T16:00:00Z",
+        "courier_min_c": 2.0,
+        "courier_max_c": 8.0,
+        "required_sample_type": "SERUM",
+        "method_id": "METHOD-CHEM-7",
+        "method_allowed_sample_types": ["PLASMA", "SERUM"],
+        "require_resolved_queries": True,
+        "source_refs": {
+            key: _h(f"reference-set-v1:{key}")
+            for key in (
+                "protocol",
+                "requisition",
+                "kit",
+                "collection_policy",
+                "courier_policy",
+                "method",
+                "query_policy",
+            )
+        },
+    }
+
+
+def frozen_reference_sha256() -> str:
+    """Expected digest for the synthetic fixture only.
+
+    Tests intentionally retain this outside candidate packets. Production callers must
+    retain their expected digest independently of both candidate and reference bytes.
+    """
+    return sha256_value(frozen_reference_set())
 
 
 def _base(index: int) -> dict[str, Any]:
@@ -31,25 +77,16 @@ def _base(index: int) -> dict[str, Any]:
         "schema": SCHEMA,
         "packet_id": packet_id,
         "protocol_id": "PROTO-ALPHA",
-        "expected_protocol_id": "PROTO-ALPHA",
-        "expected_visit_id": "VISIT-02",
         "requisition_protocol_id": "PROTO-ALPHA",
         "requisition_visit_id": "VISIT-02",
         "requisition_version": "REQ-v3",
         "kit_lot": f"KIT-{(index % 7) + 1:02d}",
-        "kit_expires_at": "2026-10-01T00:00:00Z",
         "collection_at": "2026-09-13T12:00:00Z",
-        "collection_window_start": "2026-09-13T08:00:00Z",
-        "collection_window_end": "2026-09-13T16:00:00Z",
         "courier_scan_id": f"COURIER-{index:04d}",
         "courier_temperature_c": 4.0,
-        "courier_min_c": 2.0,
-        "courier_max_c": 8.0,
         "accession_id": f"ACC-{index:04d}",
         "sample_type": "SERUM",
-        "required_sample_type": "SERUM",
         "method_id": "METHOD-CHEM-7",
-        "method_allowed_sample_types": ["PLASMA", "SERUM"],
         "queries": [
             {
                 "query_id": f"Q-{index:04d}-1",
@@ -68,7 +105,7 @@ def frozen_packets() -> list[dict[str, Any]]:
         packet["requisition_visit_id"] = "VISIT-03"
 
     for packet in packets[155:160]:
-        packet["kit_expires_at"] = "2026-09-12T23:59:59Z"
+        packet["kit_lot"] = "KIT-EXPIRED"
 
     for packet in packets[160:165]:
         packet["collection_at"] = "2026-09-13T17:00:00Z"
