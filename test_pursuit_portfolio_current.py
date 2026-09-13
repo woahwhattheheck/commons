@@ -7,6 +7,7 @@ import os
 import tempfile
 import unittest
 from pathlib import Path
+from types import SimpleNamespace
 from unittest import mock
 
 from revenue.pursuit_portfolio.core import INPUT_SCHEMA, POLICY_SCHEMA, PortfolioError, normalize_input
@@ -103,10 +104,7 @@ class CurrentAuthorityTests(unittest.TestCase):
         value = source()
         compiled = _compile_authorized_at(value, authority_for(value), KEY, NOW)
         self.assertEqual(compiled.compiled.result["selected_opportunity_ids"], ["alpha"])
-        self.assertEqual(
-            compiled.compiled.result["opportunities"][0]["allocation_state"],
-            "ALLOCATED_READY",
-        )
+        self.assertEqual(compiled.compiled.result["opportunities"][0]["allocation_state"], "ALLOCATED_READY")
         self.assertEqual(compiled.current_receipt["authority_key_id"], KEY.key_id)
 
     def test_caller_minted_ready_without_host_hmac_fails(self):
@@ -213,7 +211,7 @@ class CustodyTests(unittest.TestCase):
             out = Path(tmp) / "out"
             out.mkdir(mode=0o700)
             import revenue.pursuit_portfolio.publisher as publisher
-            original = publisher._write_relative
+            original = publisher._write_owned_relative
             calls = {"count": 0}
 
             def fail_second(dir_fd, name, data):
@@ -222,11 +220,33 @@ class CustodyTests(unittest.TestCase):
                     raise PortfolioError("injected second-write failure")
                 return original(dir_fd, name, data)
 
-            with mock.patch.object(publisher, "_write_relative", side_effect=fail_second):
+            with mock.patch.object(publisher, "_write_owned_relative", side_effect=fail_second):
                 with self.assertRaisesRegex(PortfolioError, "already-published files: portfolio.json"):
                     publisher.publish_authorized(compiled, out)
             self.assertEqual((out / "portfolio.json").read_bytes(), compiled.compiled.result_bytes)
             self.assertFalse((out / "portfolio.md").exists())
+
+    def test_visible_output_ownership_mismatch_fails_without_cleanup(self):
+        value = source(max_age=86400 * 5)
+        compiled = _compile_authorized_at(value, authority_for(value), KEY, NOW)
+        with tempfile.TemporaryDirectory() as tmp:
+            out = Path(tmp) / "out"
+            out.mkdir(mode=0o700)
+            import revenue.pursuit_portfolio.publisher as publisher
+            real_stat = publisher.os.stat
+            injected = {"done": False}
+
+            def mismatched_stat(path, *args, **kwargs):
+                info = real_stat(path, *args, **kwargs)
+                if path == "portfolio.json" and kwargs.get("dir_fd") is not None and not injected["done"]:
+                    injected["done"] = True
+                    return SimpleNamespace(st_dev=info.st_dev, st_ino=info.st_ino + 1, st_mode=info.st_mode)
+                return info
+
+            with mock.patch.object(publisher.os, "stat", side_effect=mismatched_stat):
+                with self.assertRaisesRegex(PortfolioError, "already-published files: none"):
+                    publisher.publish_authorized(compiled, out)
+            self.assertTrue((out / "portfolio.json").exists())
 
 
 if __name__ == "__main__":
