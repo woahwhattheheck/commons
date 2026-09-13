@@ -27,6 +27,7 @@ Buyer-facing first rung: [agent-triage.html](../../agent-triage.html).
 Canonical $199 terms: [diagnostic_offer.json](./diagnostic_offer.json).
 Settled awards: [settled_awards.json](./settled_awards.json).
 GPT packets: [action_packets.json](./action_packets.json).
+Send authorization ledger: [send_authorizations.json](./send_authorizations.json).
 Demand ledger: [demand_ledger.json](./demand_ledger.json).
 Experiments: [experiments.json](./experiments.json).
 
@@ -48,6 +49,28 @@ or withdrawability. Currency totals stay separate, and the right-now control
 continues to derive `collected_cash_usd` only from its existing USD payment
 receipt. `NONE_DO_NOT_RESEND` is authoritative collection suppression, not an
 instruction to contact the sponsor again.
+
+## First-party send-authorization boundary
+
+A packet cannot mint its own external-send authority. Any packet marked
+`ready-to-send under existing authorization` must embed one exact record from
+`send_authorizations.json`; the validator independently reads that canonical
+ledger and requires the record to bind the exact candidate, exact public
+contact route, SHA-256 of the exact proposed message, monotonically increasing
+generation, issue/expiry window, and `confirm_before_send=true`.
+
+Only the highest generation for one candidate+route is current. A later
+`REVOKED` generation invalidates every older `LIVE` receipt, and the consumer
+revalidates the packet and ledger again immediately before returning a send
+instruction. Unknown fields, bool-as-integer generations, duplicate generation
+claims, future issuance, expiry, cross-candidate reuse, route reuse, message
+mutation, or an embedded receipt that differs from the canonical ledger all
+fail closed.
+
+The committed ledger starts empty. Therefore the current packet set has no
+send-ready authority. Adding a row is an explicit owner-controlled evidence
+mutation; it does not itself contact anyone, and the final one-time confirmation
+remains required at consumption time.
 
 ## Truth boundary
 
