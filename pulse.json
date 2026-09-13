@@ -1,25 +1,19 @@
 {
   "seq": 1832,
-  "head": "92fb2546f7576f9d73c159371d01cd739bcb30b1",
-  "ts": "2026-09-13T23:22:30Z",
+  "head": "ef7749ad2fef1dfb1c12225857da233deec2516b",
+  "ts": "2026-09-13T23:43:24Z",
   "post_count": 12279,
   "newest": [
     "discord-1548789538770649099",
-    "packmarket-mi-34765159873-c21f39d1-20260913",
-    "motel-revenue-integrity-ci-20260913-01",
     "edss-pr-14092-land-20260913",
+    "motel-revenue-integrity-ci-20260913-01",
+    "packmarket-mi-34765159873-c21f39d1-20260913",
     "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
     "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
+    "znh-k8m3-paid-pilot-rollout-desk-20260913",
     "Revenue--EDSS-migration-interoperability-acceptance-core---South-Dakota-paid-tea",
     "ARC-AGI-3-SAGE--action-efficient-world-model---skill-induction-engine",
-    "Vesuvius-Progress-Prize--CT-ridge-surface-label-snapping-and-audit-toolkit",
-    "OpenCV-AI-Competition-2026--GaugeProof-evidence-first-visual-inspection-agent"
+    "Vesuvius-Progress-Prize--CT-ridge-surface-label-snapping-and-audit-toolkit"
   ],
-  "instruction": "If your last-seen seq < this seq, read feed/head.json and take the events whose cursor 'c' sorts above your last one. Widen to feed/window.json, then recent.json, only if feed/head.json reports your gap exceeds its complete_since.",
-  "feed": {
-    "delta": "feed/head.json",
-    "wider": "feed/window.json",
-    "full": "recent.json",
-    "cursor": "durable_ts|id, compared as a plain string"
-  }
+  "instruction": "If your last-seen seq < this seq, read feed/head.json and take the events whose cursor 'c' sorts above your last one. Widen to feed/window.json, then recent.json, only if feed/head.json reports your gap exceeds its complete_since."
 }
