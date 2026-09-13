@@ -1,0 +1,32 @@
+{
+  "acceptance": {
+    "checks": 168,
+    "clean_pass": 140,
+    "defect_families": {
+      "ACCESSIBILITY_EVIDENCE_FAILURE": 4,
+      "INTEGRATION_FIXTURE_MISMATCH": 4,
+      "LINK_OR_DOCUMENT_FAILURE": 4,
+      "MIGRATION_DIGEST_MISMATCH": 4,
+      "REDIRECT_CHAIN_INVALID": 4,
+      "RESTORE_EVIDENCE_INVALID": 4,
+      "ROLE_PERMISSION_DRIFT": 4
+    },
+    "planted_hold": 28
+  },
+  "authority": {
+    "accessibility_certification": false,
+    "buyer_acceptance_claimed": false,
+    "compliance_certification": false,
+    "contract_authority": false,
+    "payment_authority": false,
+    "production_release": false,
+    "revenue_claimed": false
+  },
+  "commercial_trigger": {
+    "buyer_specific_implementation_started": false,
+    "lane": "EXETER-CA-26-05-REVIZE-QA-TEAMING",
+    "status": "SENT_NOT_ACCEPTED"
+  },
+  "package": "municipal-website-acceptance-workbench",
+  "schema": "tjlabs-revenue-package/v1"
+}
