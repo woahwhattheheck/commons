@@ -2,9 +2,9 @@
   "health_contract": "recompute source and projection digests at exact current HEAD",
   "pages_deployment": "UNVERIFIED",
   "projection": {
-    "bytes": 186507571,
+    "bytes": 186842411,
     "files": 16420,
-    "sha256": "63b75853cf1b810ddb90bf75f0bf3822f24747f53241186cec1ed3cbcac3bd95"
+    "sha256": "76ebe29d439459b420b92ba21e4ef727604a93740e69b5c20610af537c736dd1"
   },
   "protocol": "v1",
   "schema": "commons-projection-v1",
