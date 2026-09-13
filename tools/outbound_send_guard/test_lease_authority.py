@@ -213,12 +213,28 @@ class LeaseAuthorityTests(unittest.TestCase):
         self.assertFalse(authoritative(store, receipt))
         self.assertEqual(store.calls, [])
 
-    def test_sha1_length_preflight_is_never_authoritative(self):
+    def test_invalid_preflight_fails_before_provider_and_does_not_poison_seam(self):
+        for bad in ("b" * 40, "B" * 64):
+            with self.subTest(length=len(bad), uppercase=bad != bad.lower()):
+                store = Store()
+                with self.assertRaisesRegex(LeaseError, "64 lowercase hex"):
+                    acquire(claim(preflight_sha256=bad), store)
+                self.assertEqual(store.calls, [])
+
         store = Store()
-        receipt = acquire(claim(preflight_sha256="b" * 40), store)
-        store.calls.clear()
+        receipt = acquire(claim(), store)
+        self.assertTrue(receipt["lease_held_by_claimant"])
+        self.assertEqual(receipt["preflight_sha256"], PREFLIGHT)
+        self.assertEqual([call[0] for call in store.calls], ["POST", "POST"])
+
+    def test_sha1_length_preflight_receipt_fails_integrity_validation(self):
+        store, receipt = self.make()
+        malformed = copy.deepcopy(receipt)
+        malformed["preflight_sha256"] = "b" * 40
+        resign(malformed)
         with self.assertRaisesRegex(LeaseError, "64 lowercase hex"):
-            authoritative(store, receipt, preflight_sha256="b" * 40)
+            verify_receipt(malformed)
+        self.assertEqual(store.calls, [])
 
 
 if __name__ == "__main__":
