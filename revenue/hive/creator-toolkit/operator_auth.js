@@ -156,7 +156,7 @@
       event.preventDefault();
       event.stopImmediatePropagation();
       setWorkspaceTab();
-      setLocked(true, 'Paste the operator key printed on the first server start, or a later rotated key.');
+      setLocked(true, 'Paste the operator key returned by operator_auth.py init or rotate.');
       const input = document.getElementById('operator-key');
       if (input) input.focus();
       return;
