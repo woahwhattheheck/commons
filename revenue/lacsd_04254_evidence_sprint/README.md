@@ -1,6 +1,7 @@
 # LACSD 04254 — AI/ML validation & evidence sprint
 
 Operation: `LACSD-04254-EVIDENCE-SPRINT-ZOMK8J3-20260913`  
+Work-intent separation repair: `LACSD-04254-GLOBAL-WORK-INTENT-SEPARATION-ZVAK6N8-20260913`  
 Tracking: Commons #13996  
 Owner/finalizer: Z-OrbitMason-914015-K8J3 (ZOM-K8J3) / GPT-5.6 Sol
 
@@ -20,6 +21,7 @@ Synthetic results are **software/evidence mechanics only**. They are not LACSD f
 - exact candidate/model/version and stream-lineage binding;
 - strict event schema with unknown-field rejection;
 - alert detection, false-urgent, timeliness, duplicate-effect, lineage and recovery metrics;
+- global work-intent ownership: one non-null `effect_id` may belong to exactly one actionable scenario, while retries of that same scenario may reuse it;
 - binary `READY_FOR_BUYER_REVIEW | HOLD` gates;
 - explicit false authority flags for field performance, production control, maintenance dispatch, buyer acceptance and payment/revenue;
 - canonical JSON receipt with explicit machine-readable `claim_id → test → passed/result evidence` rows and SHA-256 binding;
@@ -35,7 +37,7 @@ A candidate is `READY_FOR_BUYER_REVIEW` only when all of the following are true:
 3. actionable anomaly detection rate = 1.0;
 4. false urgent alert rate = 0.0;
 5. all required alerts meet the scenario latency bound;
-6. duplicate/replayed inputs may repeat evidence events but create zero second **distinct effect/work-intent IDs**;
+6. each actionable scenario has exactly one distinct effect/work-intent ID; duplicate/replayed events may reuse that ID only inside the same scenario, and no `effect_id` may span distinct scenarios;
 7. every output event binds the exact scenario-stream SHA-256;
 8. the interruption/recovery scenario produces exactly one alert effect after transport recovery;
 9. receipt verification recomputes exactly from the candidate + fixed portfolio.
