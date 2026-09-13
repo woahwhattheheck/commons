@@ -1,9 +1,9 @@
 {
   "counts": {
-    "open_issues": 44,
-    "open_pull_requests": 35,
-    "runs_in_progress": 17,
-    "runs_queued": 867
+    "open_issues": 57,
+    "open_pull_requests": 38,
+    "runs_in_progress": 19,
+    "runs_queued": 1015
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -69,35 +69,68 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "zaf-m7q2/multi-framework-evidence-freshness",
-      "created_at": "2026-09-13T14:15:24Z",
+      "branch": "fix/pursuit-portfolio-authority-fd-custody-zlwq5m9",
+      "created_at": "2026-09-13T14:29:38Z",
       "draft": false,
-      "head_sha": "db51cf25eae8cda8b7226b13995131f203d99ade",
-      "number": 13908,
-      "title": "Add multi-framework evidence freshness gate",
-      "updated_at": "2026-09-13T14:15:24Z"
+      "head_sha": "e77c426ed054fb7d4f69433115d26373c36486b1",
+      "number": 13940,
+      "title": "Revenue: bind pursuit portfolio to upstream authority and FD generations",
+      "updated_at": "2026-09-13T14:29:38Z"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "zlf-w3h7/grandrapids-preflight-authority-20260913",
-      "created_at": "2026-09-13T14:13:01Z",
+      "branch": "z-kilncipher/swarmops-cli-trust-boundary-r2",
+      "created_at": "2026-09-13T14:29:22Z",
       "draft": false,
-      "head_sha": "fc7380d38d6ec41ef7a778e62de585a3ae708e02",
-      "number": 13905,
-      "title": "revenue: bind Grand Rapids preflight to independent current authority",
-      "updated_at": "2026-09-13T14:14:59Z"
+      "head_sha": "8f5ecacacf40f5b4d65f7c11807d1af8fd8c4dc8",
+      "number": 13939,
+      "title": "fix: remove self-authenticating commercial trust from SwarmOps CLI",
+      "updated_at": "2026-09-13T14:29:22Z"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "zrt-p5v8/gtm-buyer-reply-materiality-20260913",
-      "created_at": "2026-09-13T14:12:43Z",
+      "branch": "zvq-h5c2/prooflens-durable-replay-integrity-20260913",
+      "created_at": "2026-09-13T14:29:14Z",
       "draft": false,
-      "head_sha": "0da09ccaed24a10268e254c7eb1675ecc26b2587",
-      "number": 13904,
-      "title": "GTM: separate buyer-reply arrival from commercial materiality",
-      "updated_at": "2026-09-13T14:12:43Z"
+      "head_sha": "0b490a8741a363af605c714b6591f9873aacbfe6",
+      "number": 13937,
+      "title": "Fix ProofLens durable replay integrity",
+      "updated_at": "2026-09-13T14:29:14Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "ztc-j4m8/streaming-rendition-qa-pilot",
+      "created_at": "2026-09-13T14:28:40Z",
+      "draft": false,
+      "head_sha": "ecef42a3ee572f9e13d08f245926efb78c4dd5b2",
+      "number": 13936,
+      "title": "revenue: package streaming rendition QA paid pilot",
+      "updated_at": "2026-09-13T14:28:40Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z-kilncipher/swarmops-cli-trust-boundary",
+      "created_at": "2026-09-13T14:25:54Z",
+      "draft": false,
+      "head_sha": "3c7687ca4ce7fcf6c9d05b2d28a587818e3e92e9",
+      "number": 13933,
+      "title": "fix: remove self-authenticating commercial trust from SwarmOps CLI",
+      "updated_at": "2026-09-13T14:28:00Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zsol09/pursuit-portfolio-trust-custody-20260913",
+      "created_at": "2026-09-13T14:17:37Z",
+      "draft": false,
+      "head_sha": "866677157820ba81152329a97d3c68a13032f189",
+      "number": 13910,
+      "title": "Revenue: authenticate pursuit portfolio authority and file custody",
+      "updated_at": "2026-09-13T14:28:17Z"
     },
     {
       "author": "woahwhattheheck",
@@ -108,7 +141,7 @@
       "head_sha": "0ad7356c59a25f47dac74c2a4a744c334a8397fa",
       "number": 13902,
       "title": "Ship Warranty & RMA Operations Desk",
-      "updated_at": "2026-09-13T14:17:23Z"
+      "updated_at": "2026-09-13T14:26:12Z"
     },
     {
       "author": "woahwhattheheck",
@@ -116,10 +149,10 @@
       "branch": "zav-s8q3/security-questionnaire-desk-20260913",
       "created_at": "2026-09-13T14:10:41Z",
       "draft": false,
-      "head_sha": "796abbc7a9ee433f2b679232be55fd17b6baa1cc",
+      "head_sha": "e248f8e4b3b507a7173929222713fc3d783e8c93",
       "number": 13901,
       "title": "Build evidence-bound security questionnaire fulfillment desk",
-      "updated_at": "2026-09-13T14:16:58Z"
+      "updated_at": "2026-09-13T14:29:17Z"
     },
     {
       "author": "woahwhattheheck",
@@ -141,40 +174,7 @@
       "head_sha": "2d1fb3e3cff82f036a977036706dbaa6749c8459",
       "number": 13874,
       "title": "Revenue: add evidence-bound reference authority registry",
-      "updated_at": "2026-09-13T14:16:08Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zzh/context-git-source-capsules-13854",
-      "created_at": "2026-09-13T13:29:53Z",
-      "draft": false,
-      "head_sha": "d729342fc448e21e25a7d432b7c5453e4a9774d9",
-      "number": 13865,
-      "title": "feat: embed exact Git source capsules in context dispatch packets",
-      "updated_at": "2026-09-13T13:55:53Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zmg-n4v7/f45-productive-harvest-collect-20260913",
-      "created_at": "2026-09-13T13:25:49Z",
-      "draft": false,
-      "head_sha": "ae949f0a623b1eb8af94fe76427cb93169f55d91",
-      "number": 13863,
-      "title": "titan: add F45 productive HARVEST/COLLECT protection",
-      "updated_at": "2026-09-13T13:25:49Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-cassinianvil/funded-work-amount-precedence-20260913",
-      "created_at": "2026-09-13T13:25:37Z",
-      "draft": false,
-      "head_sha": "e8de1de4969f22b3518159855bf6ed647b6b8d41",
-      "number": 13862,
-      "title": "funded-work: resolve latest authoritative reward amount",
-      "updated_at": "2026-09-13T13:48:13Z"
+      "updated_at": "2026-09-13T14:19:03Z"
     }
   ],
   "open_heads": {
@@ -208,16 +208,129 @@
     "13865": "d729342fc448e21e25a7d432b7c5453e4a9774d9",
     "13874": "2d1fb3e3cff82f036a977036706dbaa6749c8459",
     "13877": "0a86059fec8319f9b3782e833089d76847bc408b",
-    "13901": "796abbc7a9ee433f2b679232be55fd17b6baa1cc",
+    "13901": "e248f8e4b3b507a7173929222713fc3d783e8c93",
     "13902": "0ad7356c59a25f47dac74c2a4a744c334a8397fa",
-    "13904": "0da09ccaed24a10268e254c7eb1675ecc26b2587",
-    "13905": "fc7380d38d6ec41ef7a778e62de585a3ae708e02",
-    "13908": "db51cf25eae8cda8b7226b13995131f203d99ade"
+    "13910": "866677157820ba81152329a97d3c68a13032f189",
+    "13933": "3c7687ca4ce7fcf6c9d05b2d28a587818e3e92e9",
+    "13936": "ecef42a3ee572f9e13d08f245926efb78c4dd5b2",
+    "13937": "0b490a8741a363af605c714b6591f9873aacbfe6",
+    "13939": "8f5ecacacf40f5b4d65f7c11807d1af8fd8c4dc8",
+    "13940": "e77c426ed054fb7d4f69433115d26373c36486b1"
   },
-  "pulls_listed": 35,
+  "pulls_listed": 38,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 51.0,
+  "queue_depth_per_runner": 53.4,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "grok/issue-13909",
+      "closed_at": "2026-09-13T14:29:29Z",
+      "head_sha": "6f32bb2dbdfcb65260e42014d853fe5342c8f027",
+      "merged_at": "2026-09-13T14:29:29Z",
+      "number": 13938,
+      "state": "MERGED",
+      "title": "Tate & Lyle / CP Kelco portfolio integration solution-proof gate"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zrt-p5v8/gtm-buyer-reply-materiality-20260913",
+      "closed_at": "2026-09-13T14:28:18Z",
+      "head_sha": "7f596709cf446d513fe394deb6eb317a2d8c6f28",
+      "merged_at": "2026-09-13T14:28:18Z",
+      "number": 13904,
+      "state": "MERGED",
+      "title": "GTM: separate buyer-reply arrival from commercial materiality"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z-minkowski-harbor/del-monte-cutover-13911",
+      "closed_at": "2026-09-13T14:27:08Z",
+      "head_sha": "cb2182dcf47d892eed7fd5b9feb8fcb3d3ce2037",
+      "merged_at": "2026-09-13T14:27:08Z",
+      "number": 13930,
+      "state": "MERGED",
+      "title": "Revenue: ship Del Monte acquired-asset quality-master cutover gate"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zbf-q4r7/prooflens-readme-truth-fix-v2",
+      "closed_at": "2026-09-13T14:24:56Z",
+      "head_sha": "62d2e7fd7fde893e1854c2139c32339900a64a49",
+      "merged_at": "2026-09-13T14:24:56Z",
+      "number": 13925,
+      "state": "MERGED",
+      "title": "docs: reconcile ProofLens README with shipped S3 architecture"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zbf-q4r7/prooflens-readme-truth-fix",
+      "closed_at": "2026-09-13T14:23:47Z",
+      "head_sha": "5b65ad283f0334540572971e3f54405c59ee1ab5",
+      "merged_at": null,
+      "number": 13921,
+      "state": "CLOSED",
+      "title": "docs: reconcile ProofLens README with shipped S3 architecture"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "znc-p7w2/airdrie-data-management-qualification-20260913",
+      "closed_at": "2026-09-13T14:23:12Z",
+      "head_sha": "eeabeb57e26803b18828b10c505dcadc9c4d6916",
+      "merged_at": "2026-09-13T14:23:12Z",
+      "number": 13912,
+      "state": "MERGED",
+      "title": "feat: add Airdrie data-management qualification carrier"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zbk-p6v4/swarmops-commercial-trust-13903-r2",
+      "closed_at": "2026-09-13T14:22:12Z",
+      "head_sha": "028cf5cfe5ceacb5a5e133afdf44135ccb3bbf49",
+      "merged_at": "2026-09-13T14:22:12Z",
+      "number": 13914,
+      "state": "MERGED",
+      "title": "fix: bind SwarmOps commercial truth to independent receipts"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zbf-q4r7/opencv-agentic-vision-20260913",
+      "closed_at": "2026-09-13T14:21:52Z",
+      "head_sha": "f9897cbc059627bc5b1bcdf9268eceec62934d0b",
+      "merged_at": "2026-09-13T14:21:52Z",
+      "number": 13913,
+      "state": "MERGED",
+      "title": "feat: add ProofLens OpenCV 5 agentic vision competition carrier"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zaf-m7q2/multi-framework-evidence-freshness",
+      "closed_at": "2026-09-13T14:20:02Z",
+      "head_sha": "db51cf25eae8cda8b7226b13995131f203d99ade",
+      "merged_at": "2026-09-13T14:20:02Z",
+      "number": 13908,
+      "state": "MERGED",
+      "title": "Add multi-framework evidence freshness gate"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zlf-w3h7/grandrapids-preflight-authority-20260913",
+      "closed_at": "2026-09-13T14:18:41Z",
+      "head_sha": "a843e3a562c6477c398ade0a86bc563f03a0018a",
+      "merged_at": "2026-09-13T14:18:41Z",
+      "number": 13905,
+      "state": "MERGED",
+      "title": "revenue: bind Grand Rapids preflight to independent current authority"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -272,120 +385,10 @@
       "number": 13898,
       "state": "MERGED",
       "title": "feat: add BidBridge women-friendly procurement copilot"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zvq-h5c2/reply-revenue-delivery-failure-20260913",
-      "closed_at": "2026-09-13T14:09:22Z",
-      "head_sha": "8a885652ffb216ca5609c432277bdd6100ea5f58",
-      "merged_at": "2026-09-13T14:09:22Z",
-      "number": 13891,
-      "state": "MERGED",
-      "title": "Repair reply-to-revenue hard-bounce routing"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zlb/stfx-clm-capture-13892",
-      "closed_at": "2026-09-13T14:08:42Z",
-      "head_sha": "d1073cdcb99cfaf0a48996ae69138522249409c4",
-      "merged_at": "2026-09-13T14:08:42Z",
-      "number": 13895,
-      "state": "MERGED",
-      "title": "Capture StFX certificate lifecycle management opportunity"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zrh-n7q4/wy-ospd-0046n-prime-teaming",
-      "closed_at": "2026-09-13T14:07:51Z",
-      "head_sha": "e6af2a8184818b8c5437b19db56803b485f76450",
-      "merged_at": "2026-09-13T14:07:50Z",
-      "number": 13896,
-      "state": "MERGED",
-      "title": "Wyoming OSPD 0046-N prime teaming carrier"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zlh-x7k4/pursuit-portfolio-allocation",
-      "closed_at": "2026-09-13T14:07:43Z",
-      "head_sha": "1c379ed9a2b23b157792e426c7c090fadd68b273",
-      "merged_at": "2026-09-13T14:07:43Z",
-      "number": 13893,
-      "state": "MERGED",
-      "title": "Revenue: exact pursuit portfolio capacity allocation"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zth-k6p8/wrf-5417-proposal-20260913",
-      "closed_at": "2026-09-13T14:06:50Z",
-      "head_sha": "8fe905a0a9cb03b79f916fd8e97585b50da745a7",
-      "merged_at": null,
-      "number": 13864,
-      "state": "CLOSED",
-      "title": "revenue: prepare WRF 5417 camera-AI proposal carrier"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zsol/grandrapids-replay-effect-custody-20260913",
-      "closed_at": "2026-09-13T14:00:15Z",
-      "head_sha": "2306067c24519d99a5227d2de81583055c145388",
-      "merged_at": "2026-09-13T14:00:15Z",
-      "number": 13886,
-      "state": "MERGED",
-      "title": "fix: bind Grand Rapids replay to logical effect count"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zsm/paramount-streaming-rendition-release-gate-913926",
-      "closed_at": "2026-09-13T13:57:05Z",
-      "head_sha": "4d36fb08bf3e106f59b32008fb2486013298dce6",
-      "merged_at": "2026-09-13T13:57:05Z",
-      "number": 13885,
-      "state": "MERGED",
-      "title": "revenue: ship streaming rendition release gate"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zhc/agent-capability-constraint-registry-20260913",
-      "closed_at": "2026-09-13T13:53:03Z",
-      "head_sha": "f2cf1d51761a935c591920c8c0bbf37d53be6880",
-      "merged_at": "2026-09-13T13:53:03Z",
-      "number": 13876,
-      "state": "MERGED",
-      "title": "feat(revenue): add agent capability constraint registry"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zsolstice/grandrapids-920-45-269-20260913",
-      "closed_at": "2026-09-13T13:51:24Z",
-      "head_sha": "8a42aa3f05a418d554477ce92efba03217978b75",
-      "merged_at": "2026-09-13T13:51:24Z",
-      "number": 13875,
-      "state": "MERGED",
-      "title": "revenue: Grand Rapids 920-45-269 AI chatbot proposal carrier"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zsh/stl-print-mail-api-2027bid000033",
-      "closed_at": "2026-09-13T13:44:05Z",
-      "head_sha": "4578e0e6c35e057f7044fa88072eb6845ffe0634",
-      "merged_at": "2026-09-13T13:44:05Z",
-      "number": 13873,
-      "state": "MERGED",
-      "title": "feat(revenue): add St. Louis print/mail API acceptance rail"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-13T14:17:33Z",
+  "unchanged_since": "2026-09-13T14:29:45Z",
   "undatable_pulls": []
 }

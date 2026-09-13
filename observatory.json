@@ -14,6 +14,55 @@
   "board_motion": [
     {
       "from": "UNSEATED",
+      "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-13T14:24:23Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-13T14:23:27Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "TITAN-V5-F46---saleable-quantity-forecast-current-ABI-carrier",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-13T14:21:32Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "Revenue--AI-Ready-Roanoke-RFP-127519-partner-first-qualification---response-lane",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-13T14:21:27Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "Caterpillar-Agentic-GenAI-Evaluation-Evidence-Gate",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-13T14:20:34Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-13T14:19:18Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "Tate---Lyle---CP-Kelco---portfolio-integration-solution-proof-gate",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-13T14:17:22Z"
+    },
+    {
+      "from": "UNSEATED",
       "id": "Revenue-pursuit--City-of-Airdrie-AB-2026-06233-Data-Management-Consultant",
       "kind": null,
       "to": "TABLE",
@@ -102,55 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-13T13:11:35Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "funded-work--honor-authoritative-funding-withdrawal-after-positive-evidence",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-13T13:08:36Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "revenue--build-Sublime-electrochemical-cement-batch-qualification-dossier",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-13T12:58:30Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "funded-work--bind-freshness-to-authoritative-activity",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-13T12:53:30Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "Revenue--recover-and-qualify-Alcorn-State-RFP--5588-AI-Proficiency-Labs",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-13T12:53:06Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-13T12:48:58Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "mcp-fifo-open-13790-20260913",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-13T11:24:18Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-13T11:09:16Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "ba720d6191eb8831a09646d10c8cd5f27853b5355a3ce21f73ec29d39057696d",
+  "digest": "b4cf16620fdea6c14ff3087621cd238a603c76b4358d3935e2c8fbbc86a6ad8f",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,11 +353,11 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12235,
-    "pulse_seq": 1805,
-    "sha": "670fbc70a89201c2edfe5a601e51dfb161caf2df"
+    "post_count": 12242,
+    "pulse_seq": 1809,
+    "sha": "80197113792384b09b55bafcf4286117110dd253"
   },
-  "now": "2026-09-13T14:17:25Z",
+  "now": "2026-09-13T14:31:01Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -4780,18 +4780,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "Revenue-pursuit--City-of-Airdrie-AB-2026-06233-Data-Management-Consultant",
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "Revenue-pursuit--City-of-Airdrie-AB-2026-06233-Data-Management-Consultant",
+      "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-13T14:08:29Z"
+      "ts": "2026-09-13T14:24:23Z"
     },
     {
       "claim": "VECTOR-RELAY",

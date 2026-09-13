@@ -18,13 +18,10 @@ def read_regular(path: str) -> str:
         raise DossierError(f"not a regular input file: {path}")
     if st.st_size > MAX_INPUT:
         raise DossierError(f"input too large: {path}")
-    flags = os.O_RDONLY | getattr(os, "O_NOFOLLOW", 0)
-    fd = os.open(p, flags)
+    fd = os.open(p, os.O_RDONLY | getattr(os, "O_NOFOLLOW", 0))
     try:
         data = os.read(fd, MAX_INPUT + 1)
-        if len(data) > MAX_INPUT:
-            raise DossierError(f"input too large: {path}")
-        if os.read(fd, 1):
+        if len(data) > MAX_INPUT or os.read(fd, 1):
             raise DossierError(f"input too large: {path}")
     finally:
         os.close(fd)
@@ -32,8 +29,7 @@ def read_regular(path: str) -> str:
 
 
 def write_new(path: str, data: bytes) -> None:
-    flags = os.O_WRONLY | os.O_CREAT | os.O_EXCL | getattr(os, "O_NOFOLLOW", 0)
-    fd = os.open(path, flags, 0o600)
+    fd = os.open(path, os.O_WRONLY | os.O_CREAT | os.O_EXCL | getattr(os, "O_NOFOLLOW", 0), 0o600)
     try:
         view = memoryview(data)
         while view:
@@ -44,6 +40,13 @@ def write_new(path: str, data: bytes) -> None:
 
 
 def main(argv: list[str] | None = None) -> int:
+    """Compile/verify the unprivileged prospect-safe surface.
+
+    Deliberately no CLI flag accepts commercial-truth authority. A pathname supplied by
+    the same CLI caller is not independent buyer/payment/accounting provenance. Hosts
+    that have independently authenticated those provider facts must call the engine API
+    with their retained trust map; this CLI always compiles/verifies with an empty map.
+    """
     ap = argparse.ArgumentParser(description="Compile and verify prospect-safe Commons SwarmOps evidence dossiers")
     sub = ap.add_subparsers(dest="cmd", required=True)
     cp = sub.add_parser("compile")
@@ -62,12 +65,12 @@ def main(argv: list[str] | None = None) -> int:
         packet = strict_json_loads(read_regular(ns.packet))
         policy = strict_json_loads(read_regular(ns.policy))
         if ns.cmd == "compile":
-            dossier = compile_dossier(packet, policy, ns.as_of)
+            dossier = compile_dossier(packet, policy, ns.as_of, {})
             write_new(ns.json_out, canonical_bytes(dossier) + b"\n")
             write_new(ns.markdown_out, render_markdown(dossier).encode("utf-8"))
             return 0 if dossier["status"] == "READY_FOR_OWNER_REVIEW" else 2
         candidate = strict_json_loads(read_regular(ns.candidate))
-        return 0 if verify_dossier(packet, policy, ns.as_of, candidate) else 3
+        return 0 if verify_dossier(packet, policy, ns.as_of, candidate, {}) else 3
     except (DossierError, OSError, UnicodeError, json.JSONDecodeError) as exc:
         print(f"ERROR: {exc}", file=__import__("sys").stderr)
         return 4
