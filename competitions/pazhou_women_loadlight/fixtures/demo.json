@@ -1,0 +1,20 @@
+{
+  "schema": "loadlight-intake/v1",
+  "household_id": "synthetic-household-001",
+  "actors": ["Alex", "Jordan"],
+  "items": [
+    {"id":"1","task":"school field trip","text":"Remember the field trip form is due Friday","actor":"Alex","effort_minutes":8,"stage":"anticipate","domain":"care","due_at":"2026-09-18T17:00:00-04:00"},
+    {"id":"2","task":"school field trip","text":"Compare the two pickup arrangements and plan coverage","actor":"Alex","effort_minutes":18,"stage":"plan","domain":"schedule","due_at":"2026-09-18T17:00:00-04:00"},
+    {"id":"3","task":"school field trip","text":"Follow up with school because confirmation has not arrived","actor":"Alex","effort_minutes":10,"stage":"monitor","domain":"care","due_at":"2026-09-18T17:00:00-04:00"},
+    {"id":"4","task":"school field trip","text":"Submit the completed field trip form","actor":"Jordan","effort_minutes":5,"stage":"execute","domain":"social_admin","due_at":"2026-09-18T17:00:00-04:00"},
+    {"id":"5","task":"weekly meals","text":"Plan meals for the week and make the grocery list","actor":"Alex","effort_minutes":25,"stage":"plan","domain":"food"},
+    {"id":"6","task":"weekly meals","text":"Check the pantry before we run out of staples","actor":"Alex","effort_minutes":10,"stage":"anticipate","domain":"food"},
+    {"id":"7","task":"weekly meals","text":"Buy the groceries on the list","actor":"Jordan","effort_minutes":40,"stage":"execute","domain":"food"},
+    {"id":"8","task":"washing machine repair","text":"Research repair options and compare appointment windows","actor":"Jordan","effort_minutes":20,"stage":"plan","domain":"home"},
+    {"id":"9","task":"washing machine repair","text":"Pick which repair quote we are using","actor":"Jordan","effort_minutes":7,"stage":"decide","domain":"home"},
+    {"id":"10","task":"washing machine repair","text":"Check that the technician confirmed tomorrow","actor":"Jordan","effort_minutes":5,"stage":"monitor","domain":"schedule"},
+    {"id":"11","task":"washing machine repair","text":"Meet the technician and let them in","actor":"Alex","effort_minutes":20,"stage":"execute","domain":"home"},
+    {"id":"12","task":"birthday admin","text":"Remember to confirm the guest list by Tuesday","actor":"Alex","effort_minutes":10,"due_at":"2026-09-15T18:00:00-04:00"},
+    {"id":"13","task":"birthday admin","text":"Buy the gift after work","actor":"Jordan","effort_minutes":20}
+  ]
+}
