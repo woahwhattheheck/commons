@@ -1,9 +1,9 @@
 {
   "counts": {
-    "open_issues": 26,
-    "open_pull_requests": 24,
-    "runs_in_progress": 18,
-    "runs_queued": 1001
+    "open_issues": 27,
+    "open_pull_requests": 26,
+    "runs_in_progress": 15,
+    "runs_queued": 1007
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -69,6 +69,28 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
+      "branch": "zaf-m8q6/ci-fleet-20260913",
+      "created_at": "2026-09-13T11:20:08Z",
+      "draft": false,
+      "head_sha": "a83247dec3883b6ef67c3c1ad8579698b57f103d",
+      "number": 13812,
+      "title": "ci: add source-bound portable CI fleet coordinator",
+      "updated_at": "2026-09-13T11:20:08Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zcw-q2v6/pci-readiness-completeness-trusted-time-20260913",
+      "created_at": "2026-09-13T11:20:01Z",
+      "draft": false,
+      "head_sha": "fae41b20ec102e4b1907135d5730f51ab4da4a6d",
+      "number": 13811,
+      "title": "fix: bind PCI readiness to complete trusted evidence",
+      "updated_at": "2026-09-13T11:20:01Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
       "branch": "znav-h3v7/denver-water-10575-20260913",
       "created_at": "2026-09-13T11:11:02Z",
       "draft": false,
@@ -83,10 +105,10 @@
       "branch": "zcheb-v5p2/fsu-itn-6769-4-20260913",
       "created_at": "2026-09-13T11:01:21Z",
       "draft": false,
-      "head_sha": "a84d586b1dbe15963a5046acdfcde8fa497c84b0",
+      "head_sha": "b8f486a623e7f6e7711b348a662fa301ffc55241",
       "number": 13795,
       "title": "revenue: build FSU ITN 6769-4 qualification carrier",
-      "updated_at": "2026-09-13T11:16:27Z"
+      "updated_at": "2026-09-13T11:17:30Z"
     },
     {
       "author": "woahwhattheheck",
@@ -108,7 +130,7 @@
       "head_sha": "83e170a7696d3b8beef393184e71a861995179fe",
       "number": 13790,
       "title": "mcp: add byte-bound 2025-11-25 transcript audit + verifier",
-      "updated_at": "2026-09-13T11:16:23Z"
+      "updated_at": "2026-09-13T11:19:17Z"
     },
     {
       "author": "woahwhattheheck",
@@ -153,28 +175,6 @@
       "number": 13741,
       "title": "revenue: add evidence-bound opportunity qualifier",
       "updated_at": "2026-09-13T11:05:48Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zath-q9v3/lawrence-youth-ai-qualification-20260913",
-      "created_at": "2026-09-13T10:15:07Z",
-      "draft": false,
-      "head_sha": "dc8de234ed4da90cdbaece2e1d06b9c6925cdf2e",
-      "number": 13740,
-      "title": "revenue: add Lawrence Youth AI qualification gate",
-      "updated_at": "2026-09-13T10:45:26Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zanv-p7/sd13365-partner-readiness-20260913",
-      "created_at": "2026-09-13T10:03:07Z",
-      "draft": false,
-      "head_sha": "e5d13ab500ff195dd85df2728f85794dab2fe048",
-      "number": 13712,
-      "title": "revenue: add San Diego RFP 13365 partner-readiness gate",
-      "updated_at": "2026-09-13T10:50:03Z"
     }
   ],
   "open_heads": {
@@ -200,13 +200,26 @@
     "13782": "1553dd65151766b6c3a195fa87689f9505f1de29",
     "13790": "83e170a7696d3b8beef393184e71a861995179fe",
     "13792": "8f12b7a8867f82efb6ec3768fc7ee6a89b494964",
-    "13795": "a84d586b1dbe15963a5046acdfcde8fa497c84b0",
-    "13803": "41b44cd423e6d1e5838a8d1ad0c85384040dd7fc"
+    "13795": "b8f486a623e7f6e7711b348a662fa301ffc55241",
+    "13803": "41b44cd423e6d1e5838a8d1ad0c85384040dd7fc",
+    "13811": "fae41b20ec102e4b1907135d5730f51ab4da4a6d",
+    "13812": "a83247dec3883b6ef67c3c1ad8579698b57f103d"
   },
-  "pulls_listed": 24,
+  "pulls_listed": 26,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 55.6,
+  "queue_depth_per_runner": 67.1,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zfb-s4j7/tracelink-agentic-exception-evidence-20260913",
+      "closed_at": "2026-09-13T11:18:05Z",
+      "head_sha": "95bacf666c9983975f25d4c7ceb54b30155bfed5",
+      "merged_at": "2026-09-13T11:18:05Z",
+      "number": 13807,
+      "state": "MERGED",
+      "title": "feat: add TraceLink agentic exception decision-evidence gate"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -331,17 +344,6 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "zarch-w4k9/lifecycle-ingestion-ci-20260913",
-      "closed_at": "2026-09-13T10:39:58Z",
-      "head_sha": "19011865cbd554cd1911981092a90555b90874fd",
-      "merged_at": null,
-      "number": 13775,
-      "state": "CLOSED",
-      "title": "ci(revenue): gate commercial lifecycle ingestion hardening"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
       "branch": "astra/v5-c02-deferred-replacement-20260913",
       "closed_at": "2026-09-13T10:06:48Z",
       "head_sha": "8f93b293ad18a01eb1f42b43e17385bb2a2a2cc2",
@@ -375,6 +377,6 @@
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-13T11:16:47Z",
+  "unchanged_since": "2026-09-13T11:20:26Z",
   "undatable_pulls": []
 }
