@@ -2,15 +2,15 @@
 
 **Status:** internal commercial hypothesis / `PROPOSED_NOT_ACCEPTED`.
 
-**Ask to a qualified ERP advisory prime:** a fixed **$15,000** paid technical workshare, delivered in **10 business days**, scoped to evidence production rather than prime program leadership.
+**Ask to a qualified ERP advisory prime:** a fixed **$12,500** paid evidence/traceability workshare, scoped to specialist evidence engineering rather than prime ERP strategy leadership. Delivery timing and milestone structure are `TO_NEGOTIATE`.
 
 ## Deliverables
 
-1. Current-state ERP dependency inventory: system, interface, owner, source, dependency, unresolved gap.
-2. Future-state requirement traceability matrix: requirement -> source -> owner -> evidence -> validation -> gap.
-3. Data/integration migration risk register: reconciliation, cutover, dependency, and validation obligations.
-4. Modernization option/TCO sensitivity model with assumptions called out rather than hidden.
-5. Roadmap evidence register tying recommendations to assumptions, risks, dependencies, and validation actions.
+1. Source-bound requirement register across interviews, current-state artifacts, controls, and future-state needs.
+2. Requirement → evidence → owner → gap/risk traceability with orphan detection.
+3. Deterministic coverage and contradiction reports across finance, HR, supply-chain, and administrative workflows.
+4. Decision receipts separating observed current-state evidence, stakeholder assertions, and consultant recommendations.
+5. AI/automation opportunity entries with explicit human approval, source provenance, and control requirements.
 
 ## Acceptance boundary for the workshare
 
