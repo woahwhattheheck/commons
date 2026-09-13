@@ -22,14 +22,14 @@
     {
       "road": "Cirrus CI",
       "job_class": "CPU CI/validation",
-      "state": "UNMEASURED",
-      "free_quota": "50 compute credits/month; finite provider quota whose CPU-minute conversion depends on pricing/resource class",
-      "runtime": "Linux container; macOS/Windows/FreeBSD available",
-      "per_job_ceiling": "2h max free task; CPU-intensive work may be blocked",
-      "prerequisites": "Cirrus GitHub App on the public repo",
+      "state": "DEAD/EXCLUDED",
+      "free_quota": "none; hosted Cirrus CI shut down effective 2026-06-01",
+      "runtime": "retired hosted service; no execution runtime",
+      "per_job_ceiling": "not applicable",
+      "prerequisites": "none; do not install or reactivate the retired GitHub App",
       "config": ".cirrus.yml",
-      "invoke": "python3 host_offload/header_census.py",
-      "terms": "https://cirrus-ci.org/faq/#are-there-any-limits"
+      "invoke": null,
+      "terms": "https://cirruslabs.org/"
     },
     {
       "road": "GitLab CI",
