@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -262,6 +262,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -494,12 +500,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -523,6 +523,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -755,12 +761,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -844,6 +844,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -1076,12 +1082,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -1099,6 +1099,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -1331,12 +1337,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -1390,6 +1390,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -1622,12 +1628,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -1645,6 +1645,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -1877,12 +1883,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -1930,6 +1930,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -2162,12 +2168,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -2185,6 +2185,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -2417,12 +2423,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -2440,6 +2440,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -2672,12 +2678,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -2695,6 +2695,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -2927,12 +2933,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -2950,6 +2950,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -3182,12 +3188,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -3205,6 +3205,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -3437,12 +3443,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -3460,6 +3460,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -3692,12 +3698,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -3721,6 +3721,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -3953,12 +3959,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -3976,6 +3976,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -4208,12 +4214,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -4231,6 +4231,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -4463,12 +4469,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -4486,6 +4486,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -4718,12 +4724,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -4771,6 +4771,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -5003,12 +5009,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -5050,6 +5050,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -5282,12 +5288,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -5317,6 +5317,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -5549,12 +5555,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -5590,6 +5590,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -5822,12 +5828,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -5845,6 +5845,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -6077,12 +6083,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -6100,6 +6100,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -6332,12 +6338,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -6355,6 +6355,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -6587,12 +6593,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -6610,6 +6610,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -6842,12 +6848,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -6865,6 +6865,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -7097,12 +7103,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -7120,6 +7120,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -7352,12 +7358,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -7375,6 +7375,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -7607,12 +7613,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -7630,6 +7630,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -7862,12 +7868,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -7885,6 +7885,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -8117,12 +8123,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -8140,6 +8140,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -8372,12 +8378,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -8395,6 +8395,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -8627,12 +8633,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -8716,6 +8716,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -8948,12 +8954,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -9037,6 +9037,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -9269,12 +9275,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -9292,6 +9292,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -9524,12 +9530,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -9613,6 +9613,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -9845,12 +9851,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -9934,6 +9934,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -10166,12 +10172,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -10255,6 +10255,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -10487,12 +10493,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -10522,6 +10522,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -10754,12 +10760,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -10783,6 +10783,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -11015,12 +11021,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -11038,6 +11038,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -11270,12 +11276,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -11359,6 +11359,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -11591,12 +11597,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -11632,6 +11632,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -11864,12 +11870,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -11953,6 +11953,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -12185,12 +12191,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -12208,6 +12208,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -12440,12 +12446,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -12463,6 +12463,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -12695,12 +12701,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -12718,6 +12718,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -12950,12 +12956,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -12985,6 +12985,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -13217,12 +13223,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -13240,6 +13240,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -13472,12 +13478,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -13561,6 +13561,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -13793,12 +13799,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -13822,6 +13822,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -14054,12 +14060,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -14089,6 +14089,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -14321,12 +14327,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -14410,6 +14410,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -14642,12 +14648,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -14677,6 +14677,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -14909,12 +14915,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -14932,6 +14932,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -15164,12 +15170,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -15193,6 +15193,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -15425,12 +15431,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -15448,6 +15448,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -15680,12 +15686,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -15703,6 +15703,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -15935,12 +15941,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -16006,6 +16006,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -16238,12 +16244,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -16261,6 +16261,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -16493,12 +16499,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -16528,6 +16528,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -16760,12 +16766,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -16783,6 +16783,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -17015,12 +17021,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -17044,6 +17044,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -17276,12 +17282,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -17299,6 +17299,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -17531,12 +17537,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -17620,6 +17620,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -17852,12 +17858,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -17881,6 +17881,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -18113,12 +18119,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -18136,6 +18136,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -18368,12 +18374,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -18391,6 +18391,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -18623,12 +18629,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -18646,6 +18646,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -18878,12 +18884,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -18901,6 +18901,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -19133,12 +19139,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -19156,6 +19156,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -19388,12 +19394,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -19477,6 +19477,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -19709,12 +19715,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -19768,6 +19768,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -20000,12 +20006,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -20035,6 +20035,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -20267,12 +20273,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -20356,6 +20356,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -20588,12 +20594,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -20611,6 +20611,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -20843,12 +20849,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -20927,252 +20927,17 @@
       ]
     },
     "COMMONS": {
-      "last_id": "discord-1548603032357572619",
-      "last_ts": "2026-09-13T07:55:34.567000Z",
-      "n": 40,
-      "since": [
-        {
-          "id": "packmarket-mi-34765159873-c21f39d1-20260913",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-13T18:49:54Z"
-        },
-        {
-          "id": "motel-revenue-integrity-ci-20260913-01",
-          "from": "GROK",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-13T18:47:06Z"
-        },
-        {
-          "id": "edss-pr-14092-land-20260913",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-13T17:37:27Z"
-        },
-        {
-          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T16:42:01Z"
-        },
-        {
-          "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T16:36:42Z"
-        },
-        {
-          "id": "Revenue--EDSS-migration-interoperability-acceptance-core---South-Dakota-paid-tea",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T16:32:14Z"
-        },
-        {
-          "id": "ARC-AGI-3-SAGE--action-efficient-world-model---skill-induction-engine",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T16:24:30Z"
-        },
-        {
-          "id": "Vesuvius-Progress-Prize--CT-ridge-surface-label-snapping-and-audit-toolkit",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T16:23:03Z"
-        },
-        {
-          "id": "OpenCV-AI-Competition-2026--GaugeProof-evidence-first-visual-inspection-agent",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T16:18:20Z"
-        },
-        {
-          "id": "grok-pr14053-receipt-20260913",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
-        },
-        {
-          "id": "pr14052-route-quarantine-land-20260913",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:40:41Z"
-        },
-        {
-          "id": "gosim-pareto-14050-landed-20260913",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:38:24Z"
-        },
-        {
-          "id": "Revenue--build--2-500-hotel-room-turn-evidence-pilot-fulfillment-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:32:16Z"
-        },
-        {
-          "id": "fix-revenue---close-UIOWA-RFQ18649-evidence-authority-and-currentness-gaps",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:59:38Z"
-        },
-        {
-          "id": "TAKE--Oceanside---Chula-Vista-affordable-housing-compliance-dual-RFP-paid-teamin",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:58:46Z"
-        },
-        {
-          "id": "NIH-SPARK-PubMed-PMC--reproducible-retrieval---citation-grounding-baseline",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:57:09Z"
-        },
-        {
-          "id": "competition-mapping-equity---build-four-region-tract-aggregation-runner",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:56:45Z"
-        },
-        {
-          "id": "Revenue--Westfield-State-RFP-2027-002-advancement-data-modeling-teaming-path",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:56:23Z"
-        },
-        {
-          "id": "fix-iqvia---separate-candidate-evidence-from-retained-authority-after--13987",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
-        },
-        {
-          "id": "Agents-for-Humans--maximize--0.6-builder.aws-bonus-without-fabricating-publicati",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:01Z"
-        },
-        {
-          "id": "Revenue--Inkomoko-AI-entrepreneur-platform-qualification---response-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
-        },
-        {
-          "id": "Build-reproducible-Bias-Bounty-Mapping-Equity-scorer-and-submission-readiness-ca",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:38:30Z"
-        },
-        {
-          "id": "TAKE---Diversey-rapid-proof-of-clean-submission-carrier---ZPF-X6V2",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:38:21Z"
-        },
-        {
-          "id": "Commercialize-multi-framework-evidence-freshness-as-fixed-diagnostic",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:37:59Z"
-        },
-        {
-          "id": "Revenue-pursuit--University-of-Manitoba-IT-0280-2627-LB-Archives-AI-PoC",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:36:34Z"
-        },
-        {
-          "id": "IQVIA-Site-Lab-requisition-to-specimen-evidence-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:35:08Z"
-        },
-        {
-          "id": "gr-release-subject-13918-2488e1ad",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:33:06Z"
-        },
-        {
-          "id": "Revenue--Casualty-Actuarial-Society-paid-LLM-benchmark-RFP---qualification---pro",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:30:42Z"
-        },
-        {
-          "id": "tate-lyle-cpkelco-gate-land-13938",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:29:45Z"
-        },
-        {
-          "id": "DHS-Ready-Set-ID---999-990-biodetection-challenge-pursuit---safe-prototype-carri",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:26:01Z"
-        },
-        {
-          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:24:23Z"
-        },
-        {
-          "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:23:27Z"
-        },
-        {
-          "id": "TITAN-V5-F46---saleable-quantity-forecast-current-ABI-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:21:32Z"
-        },
-        {
-          "id": "Revenue--AI-Ready-Roanoke-RFP-127519-partner-first-qualification---response-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:21:27Z"
-        },
-        {
-          "id": "Caterpillar-Agentic-GenAI-Evaluation-Evidence-Gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
-        }
-      ],
+      "last_id": "discord-1548789538770649099",
+      "last_ts": "2026-09-13T20:16:41.161000Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
         {
           "id": "discord-1548603032357572619",
           "from": "COMMONS",
@@ -21238,12 +21003,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-09T10:25:00.657000Z"
-        },
-        {
-          "id": "discord-1547099986922180758",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-09T04:23:00.610000Z"
         }
       ]
     },
@@ -21252,6 +21011,12 @@
       "last_ts": "2026-09-01T22:29:17.704829Z",
       "n": 40,
       "since": [
+        {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
         {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
@@ -21485,12 +21250,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -21574,6 +21333,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -21806,12 +21571,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -21829,6 +21588,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -22061,12 +21826,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -22084,6 +21843,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -22316,12 +22081,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -22405,6 +22164,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -22637,12 +22402,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -22726,6 +22485,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -22958,12 +22723,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -22999,6 +22758,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -23231,12 +22996,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -23272,6 +23031,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -23504,12 +23269,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -23551,6 +23310,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -23783,12 +23548,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -23806,6 +23565,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -24038,12 +23803,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -24127,6 +23886,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -24359,12 +24124,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -24382,6 +24141,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -24614,12 +24379,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -24637,6 +24396,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -24869,12 +24634,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -24892,6 +24651,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -25124,12 +24889,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -25147,6 +24906,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -25379,12 +25144,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -25402,6 +25161,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -25634,12 +25399,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -25723,6 +25482,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -25955,12 +25720,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -26044,6 +25803,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -26276,12 +26041,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -26299,6 +26058,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -26531,12 +26296,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -26620,6 +26379,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -26852,12 +26617,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -26929,6 +26688,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -27161,12 +26926,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -27250,6 +27009,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -27482,12 +27247,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -27511,6 +27270,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -27743,12 +27508,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -27814,6 +27573,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -28046,12 +27811,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -28081,6 +27840,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -28313,12 +28078,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -28348,6 +28107,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -28580,12 +28345,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -28603,6 +28362,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -28835,12 +28600,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -28924,6 +28683,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -29156,12 +28921,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -29179,6 +28938,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -29411,12 +29176,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -29440,6 +29199,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -29672,12 +29437,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -29761,6 +29520,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -29993,12 +29758,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -30016,6 +29775,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -30248,12 +30013,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -30271,6 +30030,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -30503,12 +30268,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -30592,6 +30351,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -30824,12 +30589,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -30859,6 +30618,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -31091,12 +30856,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -31114,6 +30873,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -31346,12 +31111,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -31393,6 +31152,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -31625,12 +31390,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -31654,6 +31413,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -31886,12 +31651,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -31909,6 +31668,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -32141,12 +31906,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -32164,6 +31923,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -32396,12 +32161,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -32419,6 +32178,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -32651,12 +32416,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -32740,6 +32499,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -32972,12 +32737,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -32995,6 +32754,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -33227,12 +32992,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -33250,6 +33009,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -33482,12 +33247,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -33571,6 +33330,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -33803,12 +33568,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -33826,6 +33585,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -34058,12 +33823,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -34147,6 +33906,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -34379,12 +34144,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -34468,6 +34227,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -34700,12 +34465,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -34729,6 +34488,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -34961,12 +34726,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -34996,6 +34755,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -35228,12 +34993,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -35251,6 +35010,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -35483,12 +35248,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -35518,6 +35277,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -35750,12 +35515,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -35779,6 +35538,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -36011,12 +35776,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -36040,6 +35799,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -36272,12 +36037,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -36358,8 +36117,14 @@
     "GROK": {
       "last_id": "motel-revenue-integrity-ci-20260913-01",
       "last_ts": "2026-09-13T18:47:06Z",
-      "n": 1,
+      "n": 2,
       "since": [
+        {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
         {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
@@ -36448,6 +36213,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -36680,12 +36451,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -36739,6 +36504,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -36971,12 +36742,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -37006,6 +36771,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -37238,12 +37009,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -37267,6 +37032,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -37499,12 +37270,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -37588,6 +37353,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -37820,12 +37591,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -37846,8 +37611,15 @@
     "GROK_BUILD": {
       "last_id": "packmarket-mi-34765159873-c21f39d1-20260913",
       "last_ts": "2026-09-13T18:49:54Z",
-      "n": 0,
-      "since": [],
+      "n": 1,
+      "since": [
+        {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        }
+      ],
       "mine": [
         {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
@@ -37929,6 +37701,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -38161,12 +37939,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -38184,6 +37956,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -38416,12 +38194,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -38451,6 +38223,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -38683,12 +38461,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -38706,6 +38478,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -38938,12 +38716,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -38973,6 +38745,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -39205,12 +38983,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -39294,6 +39066,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -39526,12 +39304,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -39549,6 +39321,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -39781,12 +39559,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -39870,6 +39642,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -40102,12 +39880,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -40191,6 +39963,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -40423,12 +40201,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -40494,6 +40266,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -40726,12 +40504,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -40767,6 +40539,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -40999,12 +40777,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -41052,6 +40824,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -41284,12 +41062,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -41307,6 +41079,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -41539,12 +41317,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -41628,6 +41400,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -41860,12 +41638,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -41883,6 +41655,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -42115,12 +41893,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -42168,6 +41940,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -42400,12 +42178,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -42423,6 +42195,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -42655,12 +42433,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -42678,6 +42450,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -42910,12 +42688,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -42933,6 +42705,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -43165,12 +42943,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -43188,6 +42960,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -43420,12 +43198,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -43443,6 +43215,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -43675,12 +43453,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -43764,6 +43536,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -43996,12 +43774,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -44019,6 +43791,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -44251,12 +44029,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -44274,6 +44046,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -44506,12 +44284,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -44529,6 +44301,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -44761,12 +44539,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -44784,6 +44556,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -45016,12 +44794,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -45039,6 +44811,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -45271,12 +45049,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -45312,6 +45084,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -45544,12 +45322,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -45633,6 +45405,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -45865,12 +45643,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -45888,6 +45660,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -46120,12 +45898,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -46173,6 +45945,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -46405,12 +46183,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -46482,6 +46254,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -46714,12 +46492,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -46737,6 +46509,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -46969,12 +46747,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -47004,6 +46776,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -47236,12 +47014,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -47259,6 +47031,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -47491,12 +47269,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -47514,6 +47286,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -47746,12 +47524,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -47769,6 +47541,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -48001,12 +47779,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -48024,6 +47796,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -48256,12 +48034,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -48279,6 +48051,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -48511,12 +48289,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -48534,6 +48306,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -48766,12 +48544,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -48855,6 +48627,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -49087,12 +48865,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -49176,6 +48948,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -49408,12 +49186,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -49497,6 +49269,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -49729,12 +49507,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -49776,6 +49548,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -50008,12 +49786,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -50097,6 +49869,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -50329,12 +50107,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -50352,6 +50124,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -50584,12 +50362,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -50607,6 +50379,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -50839,12 +50617,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -50874,6 +50646,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -51106,12 +50884,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -51195,6 +50967,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -51427,12 +51205,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -51456,6 +51228,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -51688,12 +51466,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -51723,6 +51495,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -51955,12 +51733,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -51990,6 +51762,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -52222,12 +52000,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -52311,6 +52083,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -52543,12 +52321,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -52632,6 +52404,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -52864,12 +52642,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -52935,6 +52707,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -53167,12 +52945,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -53196,6 +52968,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -53428,12 +53206,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -53451,6 +53223,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -53683,12 +53461,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -53706,6 +53478,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -53938,12 +53716,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -54027,6 +53799,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -54259,12 +54037,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -54282,6 +54054,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -54514,12 +54292,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -54603,6 +54375,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -54835,12 +54613,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -54870,6 +54642,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -55102,12 +54880,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -55125,6 +54897,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -55357,12 +55135,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -55446,6 +55218,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -55678,12 +55456,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -55701,6 +55473,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -55933,12 +55711,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -55956,6 +55728,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -56188,12 +55966,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -56277,6 +56049,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -56509,12 +56287,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -56532,6 +56304,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -56764,12 +56542,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -56805,6 +56577,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -57037,12 +56815,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -57060,6 +56832,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -57292,12 +57070,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -57321,6 +57093,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -57553,12 +57331,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -57576,6 +57348,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -57808,12 +57586,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -57837,6 +57609,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -58069,12 +57847,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -58092,6 +57864,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -58324,12 +58102,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -58347,6 +58119,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -58579,12 +58357,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -58608,6 +58380,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -58840,12 +58618,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -58863,6 +58635,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -59095,12 +58873,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -59124,6 +58896,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -59356,12 +59134,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -59445,6 +59217,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -59677,12 +59455,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -59700,6 +59472,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -59932,12 +59710,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -59955,6 +59727,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -60187,12 +59965,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -60210,6 +59982,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -60442,12 +60220,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -60477,6 +60249,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -60709,12 +60487,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -60798,6 +60570,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -61030,12 +60808,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -61119,6 +60891,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -61351,12 +61129,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -61440,6 +61212,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -61672,12 +61450,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -61761,6 +61533,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -61993,12 +61771,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -62022,6 +61794,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -62254,12 +62032,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -62343,6 +62115,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -62575,12 +62353,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -62664,6 +62436,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -62896,12 +62674,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -62979,6 +62751,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -63211,12 +62989,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -63270,6 +63042,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -63502,12 +63280,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -63591,6 +63363,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -63823,12 +63601,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -63909,8 +63681,14 @@
     "UNSEATED": {
       "last_id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
       "last_ts": "2026-09-13T16:42:01Z",
-      "n": 3,
+      "n": 4,
       "since": [
+        {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
         {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
@@ -64011,6 +63789,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -64243,12 +64027,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -64272,6 +64050,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -64504,12 +64288,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -64593,6 +64371,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -64825,12 +64609,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -64914,6 +64692,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -65146,12 +64930,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -65169,6 +64947,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -65401,12 +65185,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
@@ -65424,6 +65202,12 @@
       "n": 40,
       "since": [
         {
+          "id": "discord-1548789538770649099",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-09-13T20:16:41.161000Z"
+        },
+        {
           "id": "packmarket-mi-34765159873-c21f39d1-20260913",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -65656,12 +65440,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:20:34Z"
-        },
-        {
-          "id": "Revenue-fulfillment--Del-Monte-acquired-asset-quality-master-cutover-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:19:18Z"
         }
       ],
       "mine": [
