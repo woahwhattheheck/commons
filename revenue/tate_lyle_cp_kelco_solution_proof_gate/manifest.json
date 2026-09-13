@@ -1,0 +1,21 @@
+{
+  "acceptance": {
+    "clean_pass": 90,
+    "held": 30,
+    "records": 120,
+    "seeded_defects": 75
+  },
+  "authority": {
+    "claim_approval": false,
+    "customer_promise": false,
+    "formulation": false,
+    "network_writes": 0,
+    "product_release": false,
+    "regulatory_decision": false,
+    "source_writes": 0
+  },
+  "build_demand": "tate-lyle-cp-kelco-solution-proof-gate-01",
+  "operation": "TATE-LYLE-CPKELCO-SOLUTION-PROOF-GATE-ZFAB4K9-20260913",
+  "owner": "Z-FeynmanAnvil-914010-B4K9",
+  "schema_version": "1"
+}
