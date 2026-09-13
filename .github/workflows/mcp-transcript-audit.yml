@@ -5,12 +5,14 @@ on:
     paths:
       - 'tools/mcp_transcript_audit/**'
       - 'test_mcp_transcript_audit.py'
+      - 'test_mcp_transcript_audit_cli_bounds.py'
       - '.github/workflows/mcp-transcript-audit.yml'
   push:
     branches: [main]
     paths:
       - 'tools/mcp_transcript_audit/**'
       - 'test_mcp_transcript_audit.py'
+      - 'test_mcp_transcript_audit_cli_bounds.py'
       - '.github/workflows/mcp-transcript-audit.yml'
 
 permissions:
@@ -26,11 +28,11 @@ jobs:
         with:
           python-version: '3.13'
       - name: Compile
-        run: python -m py_compile tools/mcp_transcript_audit/*.py test_mcp_transcript_audit.py
+        run: python -m py_compile tools/mcp_transcript_audit/*.py test_mcp_transcript_audit.py test_mcp_transcript_audit_cli_bounds.py
       - name: Unit and hostile tests
-        run: python -m unittest -v test_mcp_transcript_audit.py
+        run: python -m unittest -v test_mcp_transcript_audit.py test_mcp_transcript_audit_cli_bounds.py
       - name: Optimized-mode hostile tests
-        run: python -O -m unittest -v test_mcp_transcript_audit.py
+        run: python -O -m unittest -v test_mcp_transcript_audit.py test_mcp_transcript_audit_cli_bounds.py
       - name: Example audit and independent verification
         run: |
           tmpdir="$(mktemp -d)"
