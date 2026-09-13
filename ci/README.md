@@ -1,5 +1,64 @@
 # Host-offload CI pipes
 
+## Run the test battery without Actions
+
+`host/ci_battery.py` runs the existing Commons Python/Node tests directly on an
+available Linux cloud worker. It needs Python 3.10+, Node, Git, and a checkout
+with the history required by the tests. It does not dispatch an Actions job or
+require a Docker daemon. Use the existing cloud workspace, not the owner laptop.
+
+```sh
+python3 host/ci_battery.py --output-dir /tmp/commons-ci
+```
+
+The runner discovers root `test_*.py`, recursive `infra/test_*.py`, and root
+`test_*.js`, runs every file even after failures, and exits nonzero for a failed,
+interrupted, or empty battery. `report.json` uses the existing battery report
+schema and records the starting commit, source blobs, actual per-file SHA-256,
+working-tree dirt, exits, and execution scope. It contains no test stdout or
+environment dump. Source blobs describe the starting commit; dirty working
+trees are explicitly marked and are not clean-checkout proof.
+
+For a focused repair or a separate worker shard:
+
+```sh
+python3 host/ci_battery.py --test test_battery_report.py --output-dir /tmp/commons-ci-focused
+python3 host/ci_battery.py --shard-count 4 --shard-index 0 --timeout 900 --output-dir /tmp/commons-ci-shard-0
+```
+
+Run shard indexes 0 through 3 on separate clean checkouts of the same commit.
+All four reports are required for full coverage; one passing shard or selected
+test is only that scope. The runner is sequential within a checkout, because
+some existing tests mutate repository state. Use `--list` to inspect selection.
+Per-file timeouts record exit 124, stop the Linux child process group, and keep
+running the remaining tests. GitHub's existing workflow uses this same runner
+and retains its checkout-linked report upload.
+
+### Automatic execution on Cirrus
+
+The existing `.cirrus.yml` now includes four independent battery shards in
+addition to header census. Source-change filters avoid board-post-only runs;
+superseded PR tasks cancel automatically. Each shard has a 90-minute ceiling,
+a 15-minute per-file timeout, and retained raw/JSON results. The provider uses
+Node 22 and Debian Python; additional dependencies required by a particular
+test still need to exist on that worker. This configuration has not yet been
+executed on Cirrus, so provider runtime parity is unverified.
+
+One connection is required: install the
+[Cirrus CI GitHub App](https://github.com/apps/cirrus-ci/installations/new) for
+`woahwhattheheck/commons` using its free public-repository plan. Then push a
+relevant change or open a PR and require all four `commons-battery` tasks to
+finish successfully. GitHub reports Cirrus task checks independently of Actions.
+Do not retire the existing Actions check until the replacement has a successful
+run and any required-check configuration has been migrated.
+
+Cirrus's documented free allowance is 50 compute credits per month, equivalent
+to 10,000 Linux CPU-minutes; it is another finite pool. No paid plan, compute
+purchase, provider installation, or always-on worker is created by this commit.
+The direct cloud-worker command remains usable when a hosted CI pool is empty.
+Provider setup: [official quick start](https://github.com/cirruslabs/cirrus-ci-docs/blob/master/docs/guide/quick-start.md).
+Limits: [official FAQ](https://github.com/cirruslabs/cirrus-ci-docs/blob/master/docs/faq.md).
+
 The muhlnickel is the computer. These files are host-side offload so the 8 GB
 laptop does zero while peers header-walk checked-in `MUHL_READERS` layouts.
 

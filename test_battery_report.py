@@ -6,6 +6,7 @@ import json
 import os
 from pathlib import Path
 import shutil
+import shlex
 import subprocess
 import sys
 import tempfile
@@ -29,7 +30,8 @@ def battery_script():
         if line and not line.startswith("          "):
             break
         lines.append(line[10:] if line else "")
-    return "\n".join(lines) + "\n"
+    script = "\n".join(lines) + "\n"
+    return script.replace("python3 host/ci_battery.py", shlex.join([sys.executable, str(ROOT / "host/ci_battery.py")]))
 
 
 class BatteryReportTests(unittest.TestCase):
@@ -185,7 +187,7 @@ class BatteryReportTests(unittest.TestCase):
                     ["bash", "--noprofile", "--norc", "-eo", "pipefail", "-c", battery_script()],
                     cwd=self.root, env=env, capture_output=True, text=True, timeout=30,
                 )
-                self.assertEqual(process.returncode, 0)
+                self.assertEqual(process.returncode, 0 if expected_count else 1)
                 raw = (self.root / "commons-battery-results.nul").read_bytes()
                 data = self.build(raw)
                 self.assertTrue(data["complete"])

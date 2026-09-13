@@ -6,6 +6,8 @@ import re
 import unittest
 from pathlib import Path
 
+from host.ci_battery import discover
+
 
 ROOT = Path(__file__).resolve().parent
 README = ROOT / "infra" / "README.md"
@@ -39,7 +41,8 @@ class InfraCiTest(unittest.TestCase):
         nested = ROOT / "infra" / "discord" / "test_commons_discord_bridge.py"
         self.assertTrue(nested.is_file())
         self.assertEqual(workflow.count("- 'infra/**'"), 2)
-        self.assertIn("find infra -type f -name 'test_*.py' -print0", workflow)
+        self.assertIn("python3 host/ci_battery.py --results", workflow)
+        self.assertIn(("python3", "infra/discord/test_commons_discord_bridge.py"), discover(ROOT))
 
     def test_historical_classifier_is_not_current_policy(self):
         notice = (ROOT / "infra" / "OUT_OF_SPEC_NOT_INCLUDED.txt").read_text(
