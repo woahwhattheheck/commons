@@ -23,7 +23,7 @@ POLICY = "ground/SWARM_ORDER.md"
 RELIABILITY = "ground/SWARM_RELIABILITY.json"
 GPT = "gpt"
 SHA = re.compile(r"^[0-9a-f]{40}$")
-DOC_ONLY_SUFFIXES = frozenset({".md", ".rst", ".txt", ".adoc"})
+DOC_ONLY_SUFFIXES = frozenset({".md", ".rst", ".adoc"})
 
 
 def block(text, fence):
