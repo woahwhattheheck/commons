@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import math
 import re
 from datetime import date, datetime, timezone
 from typing import Any
@@ -143,8 +144,13 @@ def evaluate_bundle(bundle: dict[str, Any], *, input_sha256: str | None = None) 
         allowed_kinds={"partner_reply", "signed_letter"},
     )
     years = partner["relevant_experience_years"]
-    if isinstance(years, bool) or not isinstance(years, (int, float)) or years < 0:
-        raise EvidenceError("partner.relevant_experience_years must be a non-negative number")
+    if (
+        isinstance(years, bool)
+        or not isinstance(years, (int, float))
+        or not math.isfinite(float(years))
+        or years < 0
+    ):
+        raise EvidenceError("partner.relevant_experience_years must be a finite non-negative number")
     experience_receipt = _validate_receipt(
         partner["experience_evidence"],
         "partner.experience_evidence",
@@ -152,6 +158,7 @@ def evaluate_bundle(bundle: dict[str, Any], *, input_sha256: str | None = None) 
     )
 
     references = []
+    seen_reference_contacts: set[str] = set()
     for idx, raw in enumerate(require_list(bundle["references"], "references")):
         path = f"references[{idx}]"
         obj = require_object(raw, path)
@@ -172,6 +179,12 @@ def evaluate_bundle(bundle: dict[str, Any], *, input_sha256: str | None = None) 
         permission = require_text(obj["permission_status"], f"{path}.permission_status")
         if permission not in {"pending", "confirmed", "declined"}:
             raise EvidenceError(f"{path}.permission_status must be pending, confirmed, or declined")
+        if completed > evaluated_on:
+            raise EvidenceError(f"{path}.completed_on cannot be after evaluated_on")
+        contact_id = require_text(obj["contact_id"], f"{path}.contact_id")
+        if contact_id in seen_reference_contacts:
+            raise EvidenceError(f"{path}.contact_id duplicates another reference")
+        seen_reference_contacts.add(contact_id)
         references.append(
             {
                 "client_label": require_text(obj["client_label"], f"{path}.client_label"),
@@ -179,7 +192,7 @@ def evaluate_bundle(bundle: dict[str, Any], *, input_sha256: str | None = None) 
                 "completed_on": completed,
                 "attributable_party": require_text(obj["attributable_party"], f"{path}.attributable_party"),
                 "permission_status": permission,
-                "contact_id": require_text(obj["contact_id"], f"{path}.contact_id"),
+                "contact_id": contact_id,
                 "evidence": _validate_receipt(
                     obj["evidence"],
                     f"{path}.evidence",
