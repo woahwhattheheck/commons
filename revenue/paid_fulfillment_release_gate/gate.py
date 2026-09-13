@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
 """Deterministic, read-only paid-fulfillment release decision gate.
 
-A release decision is only current for a short, fixed authority window.  Source
-freshness is evaluated at ``snapshot_at``; release authority is separately bound
-to trusted evaluation/consumption time so an old internally coherent snapshot
-cannot be replayed indefinitely.
+A release decision is only current for a bounded authority window. Source
+freshness is checked against trusted evaluation time, while the release receipt
+expires at the earliest of the snapshot TTL or any source freshness deadline.
+This prevents an internally coherent historical snapshot from being replayed as
+current authority.
 """
 
 from __future__ import annotations
@@ -142,7 +143,10 @@ def _digest(value: Any) -> str:
 
 
 def _source_states(
-    raw: Any, snapshot_at: datetime, freshness: int
+    raw: Any,
+    snapshot_at: datetime,
+    evaluated_at: datetime,
+    freshness: int,
 ) -> tuple[dict[str, dict[str, Any]], list[str]]:
     source_obj = _exact(raw, set(REQUIRED_SOURCES), "sources")
     states: dict[str, dict[str, Any]] = {}
@@ -156,15 +160,17 @@ def _source_states(
         observed = _time(item["observed_at"], f"sources.{source}.observed_at")
         if observed > snapshot_at:
             raise GateInputError(f"sources.{source}.observed_at is after snapshot_at")
-        age = (snapshot_at - observed).total_seconds()
+        snapshot_age = (snapshot_at - observed).total_seconds()
+        evaluation_age = (evaluated_at - observed).total_seconds()
         if not item["complete"]:
             blockers.append(f"SOURCE_INCOMPLETE:{source}")
-        if age > freshness:
+        if evaluation_age >= freshness:
             blockers.append(f"SOURCE_STALE:{source}")
         states[source] = {
             "complete": item["complete"],
             "observed": observed,
-            "age": age,
+            "age": snapshot_age,
+            "evaluation_age": evaluation_age,
         }
     return states, blockers
 
@@ -298,9 +304,11 @@ def evaluate(
     evaluation_time = _trusted_time(evaluated_at, "evaluated_at")
     if snapshot_at > evaluation_time:
         raise GateInputError("snapshot_at is after trusted evaluation time")
-    authority_expires_at = snapshot_at + timedelta(seconds=RELEASE_RECEIPT_TTL_SECONDS)
+    snapshot_authority_expires_at = snapshot_at + timedelta(
+        seconds=RELEASE_RECEIPT_TTL_SECONDS
+    )
     snapshot_age = (evaluation_time - snapshot_at).total_seconds()
-    authority_expired = evaluation_time >= authority_expires_at
+    snapshot_expired = evaluation_time >= snapshot_authority_expires_at
 
     freshness = _integer(
         top["freshness_window_seconds"],
@@ -321,8 +329,18 @@ def evaluate(
         1,
         MAX_AMOUNT_MINOR,
     )
-    sources, blockers = _source_states(top["sources"], snapshot_at, freshness)
-    if authority_expired:
+    sources, blockers = _source_states(
+        top["sources"], snapshot_at, evaluation_time, freshness
+    )
+    source_authority_expires_at = min(
+        state["observed"] + timedelta(seconds=freshness)
+        for state in sources.values()
+    )
+    authority_expires_at = min(
+        snapshot_authority_expires_at, source_authority_expires_at
+    )
+    authority_expired = evaluation_time >= authority_expires_at
+    if snapshot_expired:
         blockers.append("SNAPSHOT_EXPIRED")
 
     if not isinstance(top["events"], list):
@@ -447,9 +465,7 @@ def evaluate(
         reversed_after = any(
             r["occurred"] > release_at for r in refunds.values()
         )
-        reversed_after |= any(
-            e["occurred"] > release_at for e in cancellations
-        )
+        reversed_after |= any(e["occurred"] > release_at for e in cancellations)
         reversed_after |= any(
             e["kind"] == "FULFILLMENT_NOT_READY" and e["occurred"] > release_at
             for e in events
@@ -529,6 +545,7 @@ def evaluate(
                 "complete": state["complete"],
                 "observed_at": _ftime(state["observed"]),
                 "age_seconds": round(state["age"], 6),
+                "evaluation_age_seconds": round(state["evaluation_age"], 6),
             }
             for name, state in sorted(sources.items())
         },
@@ -584,8 +601,10 @@ def verify_release_receipt(
     expires = _time(
         authorization["expires_at"], "receipt.authorization.expires_at"
     )
-    if expires != snapshot_at + timedelta(seconds=ttl):
-        raise GateInputError("receipt expiry does not match snapshot authority horizon")
+    if expires > snapshot_at + timedelta(seconds=ttl):
+        raise GateInputError("receipt expiry exceeds maximum snapshot authority horizon")
+    if expires <= snapshot_at:
+        raise GateInputError("receipt expiry is not after snapshot_at")
     if evaluated >= expires:
         raise GateInputError("receipt authority was already expired at evaluation")
     consume_time = _trusted_time(consumed_at, "consumed_at")
