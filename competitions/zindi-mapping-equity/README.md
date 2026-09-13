@@ -64,7 +64,9 @@ Artifacts: per-region aggregates, `all-aggregates.csv`, Zindi-shaped `submission
 - high/low exemplar tracts plus county-concentration diagnostics;
 - SHA-256 commitments for both input files and the exact screening parameters.
 
-The output is a versioned `bias-discovery-evidence/v2` object, not a bare ranking. A `strong` screening label requires a bootstrap interval excluding zero, FDR `q <= 0.10`, perfect threshold-direction agreement, and at least 80% county-jackknife direction agreement when that jackknife is evaluable. Anything else remains `exploratory`.
+The CLI is intentionally stricter than the reusable analysis helpers. It accepts only the diagnostic `components.csv` schema, requires every component row to have a canonical 11-digit GEOID and a finite derived score in `[0,1]`, rejects target-like `coverage gap` fields in strata, and requires every strata GEOID to have a derived component score. This prevents silent selection on a missing/malformed outcome and makes accidental organizer-label substitution fail closed.
+
+The output is a versioned `bias-discovery-evidence/v2` object, not a bare ranking. A `strong` screening label requires **production resampling budgets of at least 1,000 bootstrap draws and 2,000 permutations**, a bootstrap interval excluding zero, FDR `q <= 0.10`, perfect threshold-direction agreement, and at least 80% county-jackknife direction agreement when that jackknife is evaluable. Anything else remains `exploratory`.
 
 ```bash
 python bias_discovery.py \
@@ -73,7 +75,7 @@ python bias_discovery.py \
   build/centroid/bias-evidence.json
 ```
 
-For a fast deterministic development check, the resampling budgets are configurable:
+For a fast deterministic development check, the resampling budgets are configurable. Development-budget runs can inspect mechanics and rankings but **cannot** emit `screening_strength="strong"`:
 
 ```bash
 python bias_discovery.py components.csv strata.csv bias.json \
@@ -86,7 +88,7 @@ A ranked or `strong` field is **not** a causal claim, a population-significance 
 
 Scoring/build tests kill overcoverage errors, zero-reference errors, fixed-divisor mistakes, wrong POI half weighting, leading-zero GEOID loss, non-finite/negative inputs, all-undefined rows, category drift, silent axis-order bugs, target-label reads, point-boundary double counts and hidden building-assignment policy.
 
-Bias-discovery tests additionally fail closed on duplicate GEOIDs and out-of-range derived scores, verify deterministic resampling, fixed-family exclusion, multiplicity-adjusted strong-signal detection, missingness evidence, county-instability demotion, and versioned input-digest provenance.
+Bias-discovery tests additionally fail closed on duplicate score/strata GEOIDs, malformed or non-finite CLI outcomes, missing strata outcomes, target-like strata fields, out-of-range derived scores and tied extreme groups; verify deterministic resampling, case-insensitive fixed-family exclusion, multiplicity-adjusted strong-signal detection, production-budget gating, missingness evidence, county-instability demotion, and versioned input-digest/population provenance.
 
 ## Remaining external validation
 
