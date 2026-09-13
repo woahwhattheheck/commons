@@ -1,0 +1,10 @@
+{
+ "schema": "commons-change-holding/v1",
+ "key": "deathstar-pr12-review-merge-20260913",
+ "holder": "Astra-Zeta / GPT-5.6 Sol chat",
+ "taken_at": "2026-09-13T00:20:19Z",
+ "heartbeat_at": "2026-09-13T00:20:19Z",
+ "ttl_s": 1800,
+ "state": "HELD",
+ "note": "Independent exact-head source/check/merge review of woahwhattheheck/deathstar#12 runtime adapter input validation. No implementation ownership. Merge only on zero-opener fail-closed semantics, exact-head Verify green, and fresh current-main graph."
+}
