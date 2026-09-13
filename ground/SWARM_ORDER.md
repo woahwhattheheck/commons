@@ -30,6 +30,39 @@ PID/provider task and output first. Retain completed cells, losses, original
 archive identities and raw artifacts; a successor resumes only missing work.
 An idle non-GPT seat can keep this ledger current and prepare review packets.
 
+## External outbound mutex is mandatory
+
+Before **any externally visible provider mutation** that another worker could
+duplicate — including Gmail send/reply/forward, external Slack/DM, maintainer or
+sponsor email, sales outreach, buyer follow-up, contact-form submission, or an
+alternate-contact redirect — the sending seat must read
+`.agents/skills/outbound-send/SKILL.md`, derive the canonical seam with
+`revenue/outbound_connector_lease/`, and atomically create the exact lease branch
+through the connected GitHub provider.
+
+No exact branch-create success means **HOLD before provider mutation**. A 422
+existing-ref response means another worker/history owns the seam. Timeout,
+permission error, transport failure, ambiguous create result, or unavailable
+GitHub mutation is also HOLD; do not evade the hold by changing buyer spelling,
+contact, price, route, subject, source ID, schema version, or branch spelling.
+Reading an existing branch after an ambiguous create does not prove ownership.
+
+Cold/external seams use the canonical buyer/source identity documented by the
+helper. **Human replies use the reply-v2 provider + exact durable inbound event
+ID only; buyer/contact/domain classification is not part of reply identity.** A
+new human provider event can mint one new reply seam. OOO notices, bounces and
+alternate-contact redirects do not mint new opportunity seams.
+
+After lease acquisition, re-read authoritative provider truth immediately before
+send. Historical same-seam outbound still causes HOLD even if it predates the
+lease system. Send at most once. Persist the provider SENT/message/thread receipt
+and a HARD DNR immediately. If provider outcome is ambiguous, reconcile provider
+state; never retry the mutation merely because no receipt is visible yet.
+
+The lease is only mutual exclusion. It never proves content correctness, owner or
+legal approval, buyer acceptance, award, payment or revenue. Provider receipts
+remain authoritative for those state transitions.
+
 ## Build capacity and review capacity are separate
 
 GPT builds, designs and integrates. Reserve short, explicit review bursts around
