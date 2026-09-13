@@ -115,6 +115,12 @@ on:
 permissions:
   contents: read
 
+concurrency:
+  # Supersede only an older guard run for this PR. Push and manual runs keep
+  # their own group, and other PRs never cancel each other's evidence.
+  group: "${{ github.workflow }}-${{ github.event_name }}-${{ github.event_name == 'pull_request' && github.event.pull_request.number || github.run_id }}"
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
 jobs:
   reject-added-locks:
     runs-on: ubuntu-latest

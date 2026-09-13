@@ -21,6 +21,12 @@ on:
 permissions:
   contents: read
 
+concurrency:
+  # Supersede only an older observation for this PR. Manual runs keep their
+  # own group, and other PRs never cancel each other's evidence.
+  group: "${{ github.workflow }}-${{ github.event_name }}-${{ github.event_name == 'pull_request' && github.event.pull_request.number || github.run_id }}"
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
 jobs:
   observe:
     runs-on: ubuntu-latest
