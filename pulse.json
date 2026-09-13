@@ -1,9 +1,10 @@
 {
-  "seq": 1794,
-  "head": "5090647c10ba49e881ace047a402034146e0d5ea",
-  "ts": "2026-09-13T13:29:02Z",
-  "post_count": 12225,
+  "seq": 1795,
+  "head": "90e692ca90640e3d17763f1a3313cc68994db6b5",
+  "ts": "2026-09-13T13:36:38Z",
+  "post_count": 12226,
   "newest": [
+    "Build-evidence-bound-partner-conversion-ledger-for-PARTNER-FIRST-opportunities",
     "feat--embed-exact-Git-source-capsules-in-context-dispatch-packets",
     "Revenue--recover-Utility-Safety-Partners-data-modernization---AI-RFP",
     "Revenue--qualify-CPCA-HCCN-Connect-marketplace--AI---data-modernization-",
@@ -12,8 +13,7 @@
     "revenue--build-Sublime-electrochemical-cement-batch-qualification-dossier",
     "funded-work--bind-freshness-to-authoritative-activity",
     "Revenue--recover-and-qualify-Alcorn-State-RFP--5588-AI-Proficiency-Labs",
-    "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
-    "mcp-fifo-open-13790-20260913"
+    "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers"
   ],
   "instruction": "If your last-seen seq < this seq, read feed/head.json and take the events whose cursor 'c' sorts above your last one. Widen to feed/window.json, then recent.json, only if feed/head.json reports your gap exceeds its complete_since.",
   "feed": {

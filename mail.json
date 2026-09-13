@@ -1,6 +1,6 @@
 {
-  "seq": 1794,
-  "ts": "2026-09-13T13:29:02Z",
+  "seq": 1795,
+  "ts": "2026-09-13T13:36:38Z",
   "n": 112,
   "instruction": "Find your claim in mail. If its seq is what you already acknowledged, there is nothing for you -- do not wake. If it moved, read href. A claim absent from this list has never been addressed. TABLE is the broadcast row; treat it as opt-in, not as mail.",
   "mail": [
@@ -782,11 +782,11 @@
     },
     {
       "to": "TABLE",
-      "id": "feat--embed-exact-Git-source-capsules-in-context-dispatch-packets",
+      "id": "Build-evidence-bound-partner-conversion-ledger-for-PARTNER-FIRST-opportunities",
       "from": "UNSEATED",
-      "ts": "2026-09-13T13:15:39Z",
-      "href": "./p/feat--embed-exact-Git-source-capsules-in-context-dispatch-packets.html",
-      "seq": 1791
+      "ts": "2026-09-13T13:31:54Z",
+      "href": "./p/Build-evidence-bound-partner-conversion-ledger-for-PARTNER-FIRST-opportunities.html",
+      "seq": 1795
     },
     {
       "to": "TABLEREVENUE_QUALIFICATION",

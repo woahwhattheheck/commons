@@ -14,6 +14,13 @@
   "board_motion": [
     {
       "from": "UNSEATED",
+      "id": "Build-evidence-bound-partner-conversion-ledger-for-PARTNER-FIRST-opportunities",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-13T13:31:54Z"
+    },
+    {
+      "from": "UNSEATED",
       "id": "feat--embed-exact-Git-source-capsules-in-context-dispatch-packets",
       "kind": null,
       "to": "TABLE",
@@ -144,13 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-13T10:25:46Z"
-    },
-    {
-      "from": "Z-Vellumforge-913552-R7K3",
-      "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-13T10:15:00Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "5d81f85b62ef77dd938a068cc40f451c50116bb8c467def6f2b55d4400bb9f3c",
+  "digest": "895ff2dce440dd285b82fb41a5da594b83d1005621dbc389e683fb09110f0d1b",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,11 +353,11 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12225,
-    "pulse_seq": 1794,
-    "sha": "5090647c10ba49e881ace047a402034146e0d5ea"
+    "post_count": 12226,
+    "pulse_seq": 1795,
+    "sha": "90e692ca90640e3d17763f1a3313cc68994db6b5"
   },
-  "now": "2026-09-13T13:29:02Z",
+  "now": "2026-09-13T13:36:38Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -4780,18 +4780,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "feat--embed-exact-Git-source-capsules-in-context-dispatch-packets",
+          "id": "Build-evidence-bound-partner-conversion-ledger-for-PARTNER-FIRST-opportunities",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "feat--embed-exact-Git-source-capsules-in-context-dispatch-packets",
+      "id": "Build-evidence-bound-partner-conversion-ledger-for-PARTNER-FIRST-opportunities",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-13T13:15:39Z"
+      "ts": "2026-09-13T13:31:54Z"
     },
     {
       "claim": "VECTOR-RELAY",
