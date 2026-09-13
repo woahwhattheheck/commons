@@ -15,9 +15,10 @@ That crossed an authority boundary: provider arrival/thread chronology is not se
 ## Repair
 
 - preserve `BUYER_REPLY_OBSERVED` as useful relationship evidence;
-- persist raw reply observation only as neutral `STATUS` evidence with `decision=BUYER_REPLY_OBSERVED`;
-- omit `dnr` entirely from raw observation evidence so existing contact/no-resend authority is preserved rather than silently lifted;
-- require `HUMAN_CLASSIFICATION_REQUIRED` before any materiality claim;
+- persist raw reply observation only as evidentiary-only `STATUS` data carrying `observation=BUYER_REPLY_OBSERVED`;
+- omit every relationship-control field from that raw event: `decision`, `dnr`, `live`, `due`, `route_kind`, `route_ref`, and `next_action`;
+- thereby preserve existing DNR/contact authority, owner holds, live state, route, due date, decision, and current next action exactly;
+- record the human-classification requirement in the observation body rather than replacing the authoritative next action;
 - make legacy raw mailbox `--pin-material-reply` mechanically refuse;
 - bind chronology to the first outbound in the same provider thread;
 - require outbound/seller and inbound/buyer fixture role-direction consistency;
@@ -27,11 +28,17 @@ That crossed an authority boundary: provider arrival/thread chronology is not se
 
 No customer contact, mailbox send, second CRM, acceptance, contract, award, payment, cash, or revenue-recognition authority is added.
 
+## Self-review correction
+
+A predecessor candidate encoded the raw observation as `STATUS decision=BUYER_REPLY_OBSERVED`. Although it omitted `dnr`, exact handoff inspection showed that `STATUS.decision` overwrites the effective row decision. An `OWNER_HOLD` row with `dnr=false` could therefore have lost its hold merely because a reply arrived. That predecessor head is obsolete and must not be merged or reviewed as current.
+
+The successor removes `decision` and all other mutable relationship-control fields from the observation event. A focused hostile now projects the event through `_apply_relationship_evidence()` over an `OWNER_HOLD` row and requires decision/DNR/live/due/route/next-action equality before versus after.
+
 ## Validation truth
 
-Current authored candidate: local hermetic harness **10/10 PASS** plus Python compile. The harness uses a minimal local stub for the index primitives needed by the isolated verifier; therefore it is evidence for the authored logic only, not a substitute for repository integration CI.
+The earlier authored candidate's local hermetic result (**10/10 PASS** + Python compile) is historical and superseded by the hold-preservation correction above; it is not claimed as validation of the current head.
 
-The branch-scoped repository workflow runs the real Commons modules and the focused mailbox + relationship-handoff tests on Python 3.11 and 3.12. Queued/unexecuted hosted jobs are never represented as green.
+The branch-scoped repository workflow runs the real Commons modules and the focused mailbox + relationship-handoff tests on Python 3.11 and 3.12. Exact-current-head hosted results are the integration authority; queued/unexecuted jobs are never represented as green.
 
 ## Files
 
