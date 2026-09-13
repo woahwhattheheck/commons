@@ -178,35 +178,33 @@ class EngineTests(unittest.TestCase):
         self.policy["required_capabilities"].append("not-present")
         self.assertEqual(self.compile()["status"], "HOLD")
 
-    def test_cli_requires_separate_trust_file_for_paid(self):
+    def test_cli_cannot_self_mint_paid_and_rejects_trust_flag(self):
         self.packet["evidence"].append(commercial())
         trusted = {"payment-1": h("pay")}
         with tempfile.TemporaryDirectory() as td:
             packet = Path(td, "packet.json"); policy = Path(td, "policy.json"); trust = Path(td, "trust.json")
             out = Path(td, "out.json"); md = Path(td, "out.md")
             packet.write_text(json.dumps(self.packet)); policy.write_text(json.dumps(self.policy)); trust.write_text(json.dumps(trusted))
-            self.assertEqual(cli_main(["compile", str(packet), str(policy), "--as-of", AS_OF, "--trusted-commercial-receipts", str(trust), "--json-out", str(out), "--markdown-out", str(md)]), 0)
-            compiled = json.loads(out.read_text())
-            self.assertTrue(compiled["external_truth"]["paid"])
-            self.assertEqual(cli_main(["verify", str(packet), str(policy), str(out), "--as-of", AS_OF]), 3)
-            self.assertEqual(cli_main(["verify", str(packet), str(policy), str(out), "--as-of", AS_OF, "--trusted-commercial-receipts", str(trust)]), 0)
+            self.assertEqual(cli_main(["compile", str(packet), str(policy), "--as-of", AS_OF, "--json-out", str(out), "--markdown-out", str(md)]), 0)
+            self.assertFalse(json.loads(out.read_text())["external_truth"]["paid"])
+            with self.assertRaises(SystemExit):
+                cli_main(["compile", str(packet), str(policy), "--as-of", AS_OF, "--trusted-commercial-receipts", str(trust), "--json-out", str(Path(td, "evil.json")), "--markdown-out", str(Path(td, "evil.md"))])
 
-    def test_cli_no_trust_keeps_fake_payment_false_and_no_overwrite(self):
+    def test_cli_cannot_verify_programmatic_paid_truth(self):
         self.packet["evidence"].append(commercial())
+        paid = compile_dossier(self.packet, self.policy, AS_OF, {"payment-1": h("pay")})
+        self.assertTrue(paid["external_truth"]["paid"])
+        with tempfile.TemporaryDirectory() as td:
+            packet = Path(td, "packet.json"); policy = Path(td, "policy.json"); candidate = Path(td, "paid.json")
+            packet.write_text(json.dumps(self.packet)); policy.write_text(json.dumps(self.policy)); candidate.write_text(json.dumps(paid))
+            self.assertEqual(cli_main(["verify", str(packet), str(policy), str(candidate), "--as-of", AS_OF]), 3)
+
+    def test_cli_no_overwrite(self):
         with tempfile.TemporaryDirectory() as td:
             packet = Path(td, "packet.json"); policy = Path(td, "policy.json"); out = Path(td, "out.json"); md = Path(td, "out.md")
             packet.write_text(json.dumps(self.packet)); policy.write_text(json.dumps(self.policy))
             self.assertEqual(cli_main(["compile", str(packet), str(policy), "--as-of", AS_OF, "--json-out", str(out), "--markdown-out", str(md)]), 0)
-            self.assertFalse(json.loads(out.read_text())["external_truth"]["paid"])
             self.assertEqual(cli_main(["compile", str(packet), str(policy), "--as-of", AS_OF, "--json-out", str(out), "--markdown-out", str(Path(td, "other.md"))]), 4)
-
-    def test_cli_rejects_duplicate_keys_in_trust_file(self):
-        self.packet["evidence"].append(commercial())
-        with tempfile.TemporaryDirectory() as td:
-            packet = Path(td, "p"); policy = Path(td, "q"); trust = Path(td, "t"); out = Path(td, "o"); md = Path(td, "m")
-            packet.write_text(json.dumps(self.packet)); policy.write_text(json.dumps(self.policy))
-            trust.write_text('{"payment-1":"' + h("pay") + '","payment-1":"' + h("pay") + '"}')
-            self.assertEqual(cli_main(["compile", str(packet), str(policy), "--as-of", AS_OF, "--trusted-commercial-receipts", str(trust), "--json-out", str(out), "--markdown-out", str(md)]), 4)
 
     def test_cli_rejects_symlink_input(self):
         if not hasattr(os, "symlink"):

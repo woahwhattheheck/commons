@@ -15,6 +15,8 @@ Commercial truth has a separate trust root:
 
 A packet cannot authenticate its own commercial receipt. Without an exact out-of-band source-ID → SHA-256 match, a commercial row is limited and external commercial truth remains false. Wrong digests stay limited; unused or malformed trust entries fail closed. The output v2 receipt binds `trusted_commercial_receipts_sha256`, so verification under a substituted authority map fails.
 
+**A file supplied by the same CLI caller is not out-of-band authority.** The public CLI therefore exposes no commercial-trust option and always compiles/verifies with an empty commercial trust map. Commercial truth can be promoted only by a host that has independently authenticated buyer/payment/accounting evidence and calls the engine API with its retained trust map. `compile_dossier(..., trusted_commercial_receipts=...)` and `verify_dossier(..., trusted_commercial_receipts=...)` are authority-injection boundaries; this package does not authenticate provider/accounting systems by itself.
+
 No state implies another. A merged PR cannot imply payment; a checkout cannot imply payment; a provider send cannot imply buyer acceptance; queued/running CI cannot become green.
 
 ## Prospect boundary
@@ -23,7 +25,7 @@ No state implies another. A merged PR cannot imply payment; a checkout cannot im
 
 ## Determinism and verification
 
-The output contains canonical JSON, a content-addressed v2 receipt, deterministic Markdown, exact packet/policy digests, and the trusted-commercial authority digest. The offline verifier recompiles from the original packet + policy + trusted `as_of` time + the independently supplied trusted-commercial receipt map. Input JSON rejects duplicate keys and non-finite numbers. CLI input must be a bounded regular file; outputs are create-exclusive and will not overwrite an existing file.
+The output contains canonical JSON, a content-addressed v2 receipt, deterministic Markdown, exact packet/policy digests, and the trusted-commercial authority digest. The engine verifier recompiles from the original packet + policy + trusted `as_of` time + the independently supplied trusted-commercial receipt map. Input JSON rejects duplicate keys and non-finite numbers. CLI input must be a bounded regular file; outputs are create-exclusive and will not overwrite an existing file.
 
 ## Run
 
@@ -33,7 +35,7 @@ python -m unittest revenue.swarmops_dossier.test_engine
 python -O -m unittest revenue.swarmops_dossier.test_engine
 ```
 
-Compile and verify without commercial authority (commercial truth remains false):
+The CLI is deliberately **unprivileged**: commercial truth remains false even if the packet labels a row `BUYER_ACCEPTED`, `PAID`, or `REVENUE_RECOGNIZED`.
 
 ```bash
 python -m revenue.swarmops_dossier.cli compile packet.json policy.json \
@@ -42,15 +44,7 @@ python -m revenue.swarmops_dossier.cli verify packet.json policy.json dossier.js
   --as-of 2026-09-13T14:00:00Z
 ```
 
-To permit a commercial state to become demonstrated, supply a **separate** strict JSON object such as `{"payment-source-id":"<sha256>"}` from the validation host on both compile and verify:
-
-```bash
-python -m revenue.swarmops_dossier.cli compile packet.json policy.json \
-  --as-of 2026-09-13T14:00:00Z --trusted-commercial-receipts trusted.json \
-  --json-out dossier.json --markdown-out dossier.md
-python -m revenue.swarmops_dossier.cli verify packet.json policy.json dossier.json \
-  --as-of 2026-09-13T14:00:00Z --trusted-commercial-receipts trusted.json
-```
+There is intentionally no `--trusted-commercial-receipts` CLI flag. A validating host that truly owns an independently authenticated provider/buyer/accounting readback must inject that retained map through the engine API after establishing that trust outside this package; merely writing a second JSON file beside the candidate packet is not authentication.
 
 ## Authority ceiling
 
