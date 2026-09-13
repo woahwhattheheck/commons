@@ -21,10 +21,10 @@ test stdout or environment dump.
 
 A dirty checkout fails closed before any test process starts, because executing
 working-tree bytes while citing the clean `HEAD` commit is not authoritative
-evidence. Commit, stash, or remove local changes before running the battery. The
-starting-state check happens before output files are created, so a previously
-absent output directory may live inside the checkout without falsely making its
-own run dirty. A later run must remove or ignore that output first.
+evidence. Commit, stash, or remove local changes before running the battery.
+Results and reports must also live outside the checkout, so the evidence writer
+cannot perturb tests that inspect repository state. `/tmp/commons-ci` and the
+Actions runner's `$RUNNER_TEMP` satisfy both requirements.
 
 For a focused repair or a separate worker shard:
 
