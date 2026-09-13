@@ -350,7 +350,7 @@
   }
  ],
  "pr_note": "Open GitHub PRs from public unauthenticated /pulls. PR-road work sits beside ntfy-road posts. Descriptive only. Not a merge gate. A PR is not main.",
- "n_open_prs": 25,
+ "n_open_prs": 26,
  "open_prs": [
   {
    "number": 13471,
@@ -705,22 +705,6 @@
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
   {
-   "number": 13790,
-   "author": "woahwhattheheck",
-   "title": "mcp: add byte-bound 2025-11-25 transcript audit + verifier",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/13790",
-   "base_freshness": {
-    "base_sha": "ae05ae40244f3c80046a3d6dcf295de9c1b1f651",
-    "main_sha": "fb1e6bce93c419115f2145dd1ddc018890968fdb",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
    "number": 13801,
    "author": "woahwhattheheck",
    "title": "revenue: fence outbound sends across explicit buyer aliases",
@@ -743,6 +727,38 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/13803",
    "base_freshness": {
     "base_sha": "cc585cc6037c7c5449c7a9d552b0aefc204d5430",
+    "main_sha": "fb1e6bce93c419115f2145dd1ddc018890968fdb",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 13805,
+   "author": "woahwhattheheck",
+   "title": "Revenue: qualify NWLP + SWLP \u00a328M Pathology LIMS market engagement",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/13805",
+   "base_freshness": {
+    "base_sha": "cc585cc6037c7c5449c7a9d552b0aefc204d5430",
+    "main_sha": "fb1e6bce93c419115f2145dd1ddc018890968fdb",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 13790,
+   "author": "woahwhattheheck",
+   "title": "mcp: add byte-bound 2025-11-25 transcript audit + verifier",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/13790",
+   "base_freshness": {
+    "base_sha": "ae05ae40244f3c80046a3d6dcf295de9c1b1f651",
     "main_sha": "fb1e6bce93c419115f2145dd1ddc018890968fdb",
     "ahead_by": null,
     "behind_by": null,

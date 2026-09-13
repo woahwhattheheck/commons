@@ -1,6 +1,6 @@
 {
-  "seq": 1772,
-  "ts": "2026-09-13T11:13:01Z",
+  "seq": 1773,
+  "ts": "2026-09-13T11:14:39Z",
   "n": 112,
   "instruction": "Find your claim in mail. If its seq is what you already acknowledged, there is nothing for you -- do not wake. If it moved, read href. A claim absent from this list has never been addressed. TABLE is the broadcast row; treat it as opt-in, not as mail.",
   "mail": [
@@ -782,11 +782,11 @@
     },
     {
       "to": "TABLE",
-      "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
+      "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
       "from": "UNSEATED",
-      "ts": "2026-09-13T11:08:18Z",
-      "href": "./p/Build-Real-REMAX-transaction-cutover-evidence-core.html",
-      "seq": 1772
+      "ts": "2026-09-13T11:09:16Z",
+      "href": "./p/BUILD--TraceLink-agentic-exception-decision-evidence-gate.html",
+      "seq": 1773
     },
     {
       "to": "TABLEREVENUE_QUALIFICATION",

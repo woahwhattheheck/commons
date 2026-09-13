@@ -14,6 +14,13 @@
   "board_motion": [
     {
       "from": "UNSEATED",
+      "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-13T11:09:16Z"
+    },
+    {
+      "from": "UNSEATED",
       "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
       "kind": null,
       "to": "TABLE",
@@ -144,13 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-13T07:24:33Z"
-    },
-    {
-      "from": "GROK",
-      "id": "commons-pr-13572-selected-source-bind-20260913",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-13T06:26:29Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "28b27b43820039b4f8c6ab1146812ecc7439dcea3c63a58f76c4a48970bf0ff2",
+  "digest": "640803ad9e3183f9277f4f0058f03f053464e56cf7b2c23f75f573452bec4368",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,11 +353,11 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12213,
-    "pulse_seq": 1772,
-    "sha": "15d1640c85d7f1a719fa5dbb7402149a63320e96"
+    "post_count": 12214,
+    "pulse_seq": 1773,
+    "sha": "fb63f2b11764ba7a4e54259fbd84160d6143e973"
   },
-  "now": "2026-09-13T11:13:01Z",
+  "now": "2026-09-13T11:14:39Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -4780,18 +4780,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
+      "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-13T11:08:18Z"
+      "ts": "2026-09-13T11:09:16Z"
     },
     {
       "claim": "VECTOR-RELAY",

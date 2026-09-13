@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -262,6 +262,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -494,12 +500,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -523,6 +523,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -755,12 +761,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -844,6 +844,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1076,12 +1082,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -1099,6 +1099,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1331,12 +1337,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -1390,6 +1390,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1622,12 +1628,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -1645,6 +1645,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1877,12 +1883,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -1930,6 +1930,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2162,12 +2168,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -2185,6 +2185,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2417,12 +2423,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -2440,6 +2440,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2672,12 +2678,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -2695,6 +2695,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2927,12 +2933,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -2950,6 +2950,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3182,12 +3188,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -3205,6 +3205,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3437,12 +3443,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -3460,6 +3460,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3692,12 +3698,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -3721,6 +3721,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3953,12 +3959,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -3976,6 +3976,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4208,12 +4214,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -4231,6 +4231,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4463,12 +4469,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -4486,6 +4486,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4718,12 +4724,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -4771,6 +4771,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5003,12 +5009,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -5050,6 +5050,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5282,12 +5288,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -5317,6 +5317,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5549,12 +5555,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -5590,6 +5590,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5822,12 +5828,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -5845,6 +5845,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6077,12 +6083,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -6100,6 +6100,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6332,12 +6338,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -6355,6 +6355,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6587,12 +6593,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -6610,6 +6610,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6842,12 +6848,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -6865,6 +6865,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7097,12 +7103,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -7120,6 +7120,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7352,12 +7358,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -7375,6 +7375,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7607,12 +7613,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -7630,6 +7630,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7862,12 +7868,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -7885,6 +7885,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8117,12 +8123,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -8140,6 +8140,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8372,12 +8378,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -8395,6 +8395,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8627,12 +8633,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -8716,6 +8716,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8948,12 +8954,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -9037,6 +9037,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -9269,12 +9275,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -9292,6 +9292,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -9524,12 +9530,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -9613,6 +9613,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -9845,12 +9851,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -9934,6 +9934,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -10166,12 +10172,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -10255,6 +10255,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -10487,12 +10493,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -10522,6 +10522,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -10754,12 +10760,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -10783,6 +10783,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11015,12 +11021,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -11038,6 +11038,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11270,12 +11276,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -11359,6 +11359,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11591,12 +11597,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -11632,6 +11632,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11864,12 +11870,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -11953,6 +11953,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12185,12 +12191,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -12208,6 +12208,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12440,12 +12446,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -12463,6 +12463,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12695,12 +12701,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -12718,6 +12718,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12950,12 +12956,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -12985,6 +12985,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -13217,12 +13223,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -13240,6 +13240,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -13472,12 +13478,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -13561,6 +13561,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -13793,12 +13799,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -13822,6 +13822,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14054,12 +14060,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -14089,6 +14089,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14321,12 +14327,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -14410,6 +14410,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14642,12 +14648,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -14677,6 +14677,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14909,12 +14915,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -14932,6 +14932,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15164,12 +15170,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -15193,6 +15193,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15425,12 +15431,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -15448,6 +15448,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15680,12 +15686,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -15703,6 +15703,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15935,12 +15941,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -16006,6 +16006,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -16238,12 +16244,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -16261,6 +16261,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -16493,12 +16499,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -16528,6 +16528,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -16760,12 +16766,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -16783,6 +16783,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17015,12 +17021,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -17044,6 +17044,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17276,12 +17282,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -17299,6 +17299,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17531,12 +17537,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -17620,6 +17620,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17852,12 +17858,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -17881,6 +17881,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18113,12 +18119,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -18136,6 +18136,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18368,12 +18374,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -18391,6 +18391,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18623,12 +18629,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -18646,6 +18646,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18878,12 +18884,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -18901,6 +18901,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -19133,12 +19139,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -19156,6 +19156,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -19388,12 +19394,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -19477,6 +19477,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -19709,12 +19715,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -19768,6 +19768,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -20000,12 +20006,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -20035,6 +20035,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -20267,12 +20273,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -20356,6 +20356,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -20588,12 +20594,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -20611,6 +20611,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -20843,12 +20849,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -20929,8 +20929,14 @@
     "COMMONS": {
       "last_id": "discord-1548578487235911722",
       "last_ts": "2026-09-13T06:18:02.554000Z",
-      "n": 22,
+      "n": 23,
       "since": [
+        {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
         {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
@@ -21145,6 +21151,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -21377,12 +21389,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -21466,6 +21472,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -21698,12 +21710,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -21721,6 +21727,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -21953,12 +21965,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -21976,6 +21982,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -22208,12 +22220,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -22297,6 +22303,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -22529,12 +22541,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -22618,6 +22624,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -22850,12 +22862,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -22891,6 +22897,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -23123,12 +23135,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -23164,6 +23170,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -23396,12 +23408,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -23443,6 +23449,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -23675,12 +23687,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -23698,6 +23704,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -23930,12 +23942,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -24019,6 +24025,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24251,12 +24263,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -24274,6 +24280,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24506,12 +24518,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -24529,6 +24535,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24761,12 +24773,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -24784,6 +24790,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -25016,12 +25028,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -25039,6 +25045,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -25271,12 +25283,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -25294,6 +25300,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -25526,12 +25538,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -25615,6 +25621,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -25847,12 +25859,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -25936,6 +25942,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -26168,12 +26180,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -26191,6 +26197,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -26423,12 +26435,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -26512,6 +26518,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -26744,12 +26756,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -26821,6 +26827,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -27053,12 +27065,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -27142,6 +27148,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -27374,12 +27386,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -27403,6 +27409,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -27635,12 +27647,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -27706,6 +27712,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -27938,12 +27950,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -27973,6 +27979,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -28205,12 +28217,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -28240,6 +28246,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -28472,12 +28484,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -28495,6 +28501,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -28727,12 +28739,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -28816,6 +28822,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -29048,12 +29060,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -29071,6 +29077,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -29303,12 +29315,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -29332,6 +29338,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -29564,12 +29576,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -29653,6 +29659,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -29885,12 +29897,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -29908,6 +29914,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -30140,12 +30152,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -30163,6 +30169,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -30395,12 +30407,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -30484,6 +30490,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -30716,12 +30728,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -30751,6 +30757,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -30983,12 +30995,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -31006,6 +31012,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -31238,12 +31250,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -31285,6 +31291,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -31517,12 +31529,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -31546,6 +31552,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -31778,12 +31790,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -31801,6 +31807,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -32033,12 +32045,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -32056,6 +32062,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -32288,12 +32300,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -32308,8 +32314,14 @@
     "GEMINI": {
       "last_id": "openkylin-prov-13574-ccb9379c",
       "last_ts": "2026-09-13T06:19:35Z",
-      "n": 21,
+      "n": 22,
       "since": [
+        {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
         {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
@@ -32518,6 +32530,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -32750,12 +32768,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -32773,6 +32785,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -33005,12 +33023,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -33028,6 +33040,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -33260,12 +33278,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -33349,6 +33361,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -33581,12 +33599,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -33604,6 +33616,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -33836,12 +33854,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -33925,6 +33937,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -34157,12 +34175,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -34246,6 +34258,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -34478,12 +34496,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -34507,6 +34519,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -34739,12 +34757,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -34774,6 +34786,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -35006,12 +35024,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -35029,6 +35041,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -35261,12 +35279,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -35296,6 +35308,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -35528,12 +35546,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -35557,6 +35569,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -35789,12 +35807,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -35818,6 +35830,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -36050,12 +36068,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -36136,8 +36148,14 @@
     "GROK": {
       "last_id": "grok-13669-landed-receipt-20260913",
       "last_ts": "2026-09-13T09:19:14Z",
-      "n": 17,
+      "n": 18,
       "since": [
+        {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
         {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
@@ -36322,6 +36340,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -36554,12 +36578,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -36613,6 +36631,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -36845,12 +36869,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -36880,6 +36898,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -37112,12 +37136,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -37138,8 +37156,14 @@
     "GROKBUILD": {
       "last_id": "grokbuild-pr13668-verify-20260913-01",
       "last_ts": "2026-09-13T09:22:25Z",
-      "n": 15,
+      "n": 16,
       "since": [
+        {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
         {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
@@ -37312,6 +37336,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -37544,12 +37574,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -37573,6 +37597,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -37805,12 +37835,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -37894,6 +37918,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -38126,12 +38156,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -38149,6 +38173,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -38381,12 +38411,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -38416,6 +38440,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -38648,12 +38678,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -38671,6 +38695,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -38903,12 +38933,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -38938,6 +38962,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -39170,12 +39200,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -39259,6 +39283,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -39491,12 +39521,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -39514,6 +39538,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -39746,12 +39776,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -39835,6 +39859,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -40067,12 +40097,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -40156,6 +40180,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -40388,12 +40418,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -40459,6 +40483,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -40691,12 +40721,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -40732,6 +40756,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -40964,12 +40994,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -41017,6 +41041,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -41249,12 +41279,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -41272,6 +41296,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -41504,12 +41534,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -41593,6 +41617,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -41825,12 +41855,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -41848,6 +41872,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -42080,12 +42110,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -42133,6 +42157,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -42365,12 +42395,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -42388,6 +42412,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -42620,12 +42650,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -42643,6 +42667,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -42875,12 +42905,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -42898,6 +42922,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -43130,12 +43160,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -43153,6 +43177,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -43385,12 +43415,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -43408,6 +43432,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -43640,12 +43670,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -43729,6 +43753,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -43961,12 +43991,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -43984,6 +44008,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44216,12 +44246,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -44239,6 +44263,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44471,12 +44501,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -44494,6 +44518,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44726,12 +44756,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -44749,6 +44773,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44981,12 +45011,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -45004,6 +45028,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -45236,12 +45266,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -45277,6 +45301,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -45509,12 +45539,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -45598,6 +45622,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -45830,12 +45860,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -45853,6 +45877,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -46085,12 +46115,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -46138,6 +46162,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -46370,12 +46400,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -46447,6 +46471,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -46679,12 +46709,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -46702,6 +46726,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -46934,12 +46964,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -46969,6 +46993,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47201,12 +47231,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -47224,6 +47248,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47456,12 +47486,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -47479,6 +47503,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47711,12 +47741,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -47734,6 +47758,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47966,12 +47996,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -47989,6 +48013,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -48221,12 +48251,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -48244,6 +48268,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -48476,12 +48506,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -48499,6 +48523,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -48731,12 +48761,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -48820,6 +48844,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -49052,12 +49082,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -49141,6 +49165,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -49373,12 +49403,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -49462,6 +49486,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -49694,12 +49724,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -49741,6 +49765,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -49973,12 +50003,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -50062,6 +50086,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -50294,12 +50324,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -50317,6 +50341,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -50549,12 +50579,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -50572,6 +50596,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -50804,12 +50834,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -50839,6 +50863,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -51071,12 +51101,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -51160,6 +51184,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -51392,12 +51422,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -51421,6 +51445,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -51653,12 +51683,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -51688,6 +51712,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -51920,12 +51950,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -51955,6 +51979,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -52187,12 +52217,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -52276,6 +52300,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -52508,12 +52538,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -52597,6 +52621,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -52829,12 +52859,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -52900,6 +52924,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -53132,12 +53162,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -53161,6 +53185,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -53393,12 +53423,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -53416,6 +53440,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -53648,12 +53678,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -53671,6 +53695,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -53903,12 +53933,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -53992,6 +54016,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -54224,12 +54254,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -54247,6 +54271,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -54479,12 +54509,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -54568,6 +54592,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -54800,12 +54830,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -54835,6 +54859,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -55067,12 +55097,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -55090,6 +55114,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -55322,12 +55352,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -55411,6 +55435,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -55643,12 +55673,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -55666,6 +55690,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -55898,12 +55928,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -55921,6 +55945,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -56153,12 +56183,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -56242,6 +56266,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -56474,12 +56504,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -56497,6 +56521,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -56729,12 +56759,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -56770,6 +56794,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -57002,12 +57032,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -57025,6 +57049,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -57257,12 +57287,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -57286,6 +57310,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -57518,12 +57548,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -57541,6 +57565,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -57773,12 +57803,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -57802,6 +57826,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58034,12 +58064,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -58057,6 +58081,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58289,12 +58319,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -58312,6 +58336,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58544,12 +58574,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -58573,6 +58597,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58805,12 +58835,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -58828,6 +58852,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -59060,12 +59090,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -59089,6 +59113,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -59321,12 +59351,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -59410,6 +59434,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -59642,12 +59672,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -59665,6 +59689,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -59897,12 +59927,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -59920,6 +59944,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -60152,12 +60182,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -60175,6 +60199,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -60407,12 +60437,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -60442,6 +60466,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -60674,12 +60704,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -60763,6 +60787,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -60995,12 +61025,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -61084,6 +61108,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -61316,12 +61346,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -61405,6 +61429,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -61637,12 +61667,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -61726,6 +61750,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -61958,12 +61988,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -61987,6 +62011,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -62219,12 +62249,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -62308,6 +62332,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -62540,12 +62570,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -62629,6 +62653,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -62861,12 +62891,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -62944,6 +62968,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -63176,12 +63206,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -63235,6 +63259,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -63467,12 +63497,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -63556,6 +63580,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -63788,12 +63818,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -63872,11 +63896,17 @@
       ]
     },
     "UNSEATED": {
-      "last_id": "Build-Real-REMAX-transaction-cutover-evidence-core",
-      "last_ts": "2026-09-13T11:08:18Z",
+      "last_id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+      "last_ts": "2026-09-13T11:09:16Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
         {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
@@ -63942,12 +63972,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T10:02:43Z"
-        },
-        {
-          "id": "Revenue-product--evidence-bound-expertise-catalog-compiler",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:59:19Z"
         }
       ]
     },
@@ -63956,6 +63980,12 @@
       "last_ts": "",
       "n": 40,
       "since": [
+        {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
         {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
@@ -64189,12 +64219,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -64218,6 +64242,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -64450,12 +64480,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -64539,6 +64563,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -64771,12 +64801,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -64860,6 +64884,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -65092,12 +65122,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
@@ -65112,8 +65136,14 @@
     "Z-VELLUMFORGE-913552-R7K3": {
       "last_id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
       "last_ts": "2026-09-13T10:15:00Z",
-      "n": 8,
+      "n": 9,
       "since": [
+        {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
         {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
@@ -65178,6 +65208,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T11:09:16Z"
+        },
+        {
           "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -65410,12 +65446,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T18:57:46.261000Z"
-        },
-        {
-          "id": "titan-reset-live-checks-layout-20260912-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:54:46Z"
         }
       ],
       "mine": [
