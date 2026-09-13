@@ -145,7 +145,10 @@ text. The gate starts from an authoritative issue body's explicit `reward`, `bou
 explicit amount supersedes the old one, including a currency change; the gate never
 performs FX conversion. External comments and unrelated monetary prose such as test
 budgets do not change the reward amount. `from X to Y` and `X, now Y` transitions resolve
-to the destination; multiple irreconcilable current amounts fail closed. Receipts expose
+to the destination only when the commercial bridge is unambiguous; additional or
+cross-subject monetary prose fails closed. Conflicting adjacent symbol/code notation
+such as `$200 CAD`, `CAD $200`, or `€200 USD` is ambiguous, while consistent forms such
+as `$200 USD` and `USD $200` remain valid. Receipts expose
 `checks.authoritative_amount_state`, `checks.canonical_current_reward_currency`, and
 `checks.canonical_current_reward_amount`; a stale aggregator amount is rejected as
 `advertised_amount_superseded_by_newer_canonical_evidence`.
