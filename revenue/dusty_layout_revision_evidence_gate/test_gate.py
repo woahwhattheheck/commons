@@ -88,6 +88,16 @@ class DustyGateTests(unittest.TestCase):
             with self.assertRaises(gate.GateInputError):
                 gate.write_atomic(source, receipt, input_path=source)
 
+    def test_boolean_schema_version_rejected(self):
+        with self.assertRaises(gate.GateInputError):
+            gate.evaluate({"schema_version": True, "jobs": [fixture.clean_job(1)]})
+
+    def test_nonfinite_scale_rejected(self):
+        job = fixture.clean_job(1)
+        job["prejob"]["layout"]["scale"] = float("nan")
+        with self.assertRaises(gate.GateInputError):
+            gate.evaluate({"schema_version": 1, "jobs": [job]})
+
     def test_unexpected_keys_fail_closed(self):
         job = fixture.clean_job(1)
         job["prejob"]["robot_command"] = "PRINT"

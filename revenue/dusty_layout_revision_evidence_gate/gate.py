@@ -10,6 +10,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import math
 import os
 from pathlib import Path
 import re
@@ -93,7 +94,7 @@ def _bool(value: Any, where: str) -> bool:
 def _scale(value: Any, where: str) -> float | int:
     if isinstance(value, bool) or not isinstance(value, (int, float)):
         raise GateInputError(f"{where} must be numeric")
-    if value <= 0 or value > 1_000_000:
+    if not math.isfinite(float(value)) or value <= 0 or value > 1_000_000:
         raise GateInputError(f"{where} must be > 0 and <= 1000000")
     return value
 
@@ -253,7 +254,7 @@ def _reasons(job: dict[str, Any]) -> list[str]:
 
 def evaluate(payload: Any) -> dict[str, Any]:
     root = _object(payload, "input", {"schema_version", "jobs"})
-    if root["schema_version"] != SCHEMA_VERSION:
+    if type(root["schema_version"]) is not int or root["schema_version"] != SCHEMA_VERSION:
         raise GateInputError(f"schema_version must be {SCHEMA_VERSION}")
     jobs_raw = root["jobs"]
     if not isinstance(jobs_raw, list) or not jobs_raw or len(jobs_raw) > MAX_JOBS:
