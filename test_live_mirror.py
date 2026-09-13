@@ -27,6 +27,18 @@ FAILED_SOURCE_REF_PUSH = (
     "without `workflows` permission)\n"
     "error: failed to push some refs to 'https://github.com/woahwhattheheck/commons-backup.git'\n"
 )
+FAILED_TAG_PUSH = (
+    "To https://github.com/woahwhattheheck/commons-backup.git\n"
+    " ! [remote rejected]       commons-apk-debug-20260827 -> "
+    "commons-apk-debug-20260827 (refusing to allow a GitHub App to create or "
+    "update workflow `.github/workflows/capability-entrypoints.yml` without "
+    "`workflows` permission)\n"
+    " ! [remote rejected]       titan-kaggriculture-gauntlet-20260912 -> "
+    "titan-kaggriculture-gauntlet-20260912 (refusing to allow a GitHub App to "
+    "create or update workflow `.github/workflows/astra-kag-study.yml` without "
+    "`workflows` permission)\n"
+    "error: failed to push some refs to 'https://github.com/woahwhattheheck/commons-backup.git'\n"
+)
 
 
 def git(repo: Path, *args: str, check: bool = True) -> str:
@@ -492,6 +504,66 @@ class LiveMirrorTests(unittest.TestCase):
             capture_output=True,
         )
         self.assertEqual(json.loads(read.stdout)["src_sha"], first)
+
+    def test_classify_failed_run_34785478675_tags(self) -> None:
+        self.assertEqual(live_mirror.classify_push_error(FAILED_TAG_PUSH), "WORKFLOWS_PERMISSION")
+
+    def test_push_tags_skips_workflows_rejected_tags(self) -> None:
+        src = self.root / "src"
+        dest = self.root / "dest.git"
+        init_repo(src)
+        first = commit_tree(src, {"readme.md": "one\n"}, "first")
+        git(src, "tag", "safe-tag")
+        git(
+            src,
+            "tag",
+            "commons-apk-debug-20260827",
+        )
+        git(src, "clone", "--bare", str(src), str(dest))
+        git(dest, "symbolic-ref", "HEAD", "refs/heads/main")
+        original_namespace = live_mirror._push_tag_namespace
+        original_push = live_mirror._push
+
+        def reject_namespace(git_dir: str, dest_url: str):
+            return _FakeReject(FAILED_TAG_PUSH)
+
+        def fake_push(git_dir: str, url: str, refspec: str):
+            spec = refspec[1:] if refspec.startswith("+") else refspec
+            if spec.endswith(":refs/tags/commons-apk-debug-20260827"):
+                return _FakeReject(FAILED_TAG_PUSH)
+            return original_push(git_dir, url, refspec)
+
+        live_mirror._push_tag_namespace = reject_namespace  # type: ignore[method-assign]
+        live_mirror._push = fake_push  # type: ignore[method-assign]
+        try:
+            result = live_mirror.push_tags(str(src / ".git"), str(dest))
+        finally:
+            live_mirror._push_tag_namespace = original_namespace  # type: ignore[method-assign]
+            live_mirror._push = original_push  # type: ignore[method-assign]
+        self.assertEqual(result["state"], "TAGS_WORKFLOWS_SKIPPED")
+        self.assertIn("refs/tags/safe-tag", result["pushed"])
+        skipped_refs = [row["ref"] for row in result["skipped"]]
+        self.assertEqual(skipped_refs, ["refs/tags/commons-apk-debug-20260827"])
+        self.assertEqual(git(dest, "rev-parse", "refs/tags/safe-tag"), first)
+
+    def test_push_tags_other_error_fail_closed(self) -> None:
+        src = self.root / "src"
+        dest = self.root / "dest.git"
+        init_repo(src)
+        commit_tree(src, {"readme.md": "one\n"}, "first")
+        git(src, "tag", "safe-tag")
+        git(src, "clone", "--bare", str(src), str(dest))
+
+        def reject_namespace(git_dir: str, dest_url: str):
+            return _FakeReject("error: failed to push some refs (remote hung up)\n")
+
+        original = live_mirror._push_tag_namespace
+        live_mirror._push_tag_namespace = reject_namespace  # type: ignore[method-assign]
+        try:
+            with self.assertRaises(live_mirror.MirrorError):
+                live_mirror.push_tags(str(src / ".git"), str(dest))
+        finally:
+            live_mirror._push_tag_namespace = original  # type: ignore[method-assign]
 
 
 if __name__ == "__main__":

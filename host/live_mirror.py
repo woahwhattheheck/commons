@@ -12,6 +12,8 @@ is attempted first. On the measured GitHub App workflows rejection, dest
 corpus still moves. Source SHA is recorded at refs/backup/source-main.
 When that ref itself is rejected because the source commit introduces a
 workflow file, a workflow-free receipt commit stores the SHA instead.
+Tag namespace updates use the same classifier: tags GitHub refuses for
+workflow files are skipped; other tag errors stay fail-closed.
 
 Does not remint host/repo_backup.py or host/moving_main_mirror.py.
 """
@@ -438,6 +440,71 @@ def push_mirror(
     }
 
 
+def _list_tag_refs(git_dir: str) -> list[str]:
+    completed = _run(["for-each-ref", "--format=%(refname)", "refs/tags"], git_dir=git_dir)
+    return [
+        line.strip()
+        for line in completed.stdout.decode("ascii").splitlines()
+        if line.strip().startswith("refs/tags/")
+    ]
+
+
+def _remote_tag_refs(dest_url: str) -> list[str]:
+    completed = _run(["ls-remote", dest_url, "refs/tags/*"], check=False)
+    refs: list[str] = []
+    for line in completed.stdout.decode("ascii").splitlines():
+        if not line.strip():
+            continue
+        _sha, ref = line.split("\t", 1)
+        refs.append(ref.strip())
+    return refs
+
+
+def _push_tag_namespace(git_dir: str, dest_url: str) -> subprocess.CompletedProcess[bytes]:
+    return _run(
+        ["push", "--force", "--prune", dest_url, "refs/tags/*:refs/tags/*"],
+        git_dir=git_dir,
+        check=False,
+    )
+
+
+def push_tags(git_dir: str, dest_url: str) -> dict[str, Any]:
+    """Mirror refs/tags/*. On workflows rejection, push remaining tags one by one."""
+    combined = _push_tag_namespace(git_dir, dest_url)
+    if combined.returncode == 0:
+        return {"schema_version": SCHEMA_VERSION, "state": "EXACT_TAGS", "skipped": []}
+    stderr = (combined.stderr or combined.stdout).decode("utf-8", "replace")
+    if classify_push_error(stderr) != "WORKFLOWS_PERMISSION":
+        raise MirrorError(f"tag namespace push failed: {stderr.strip()}")
+    skipped: list[dict[str, str]] = []
+    pushed: list[str] = []
+    for ref in _list_tag_refs(git_dir):
+        one = _push(git_dir, dest_url, f"{ref}:{ref}")
+        if one.returncode == 0:
+            pushed.append(ref)
+            continue
+        err = (one.stderr or one.stdout).decode("utf-8", "replace")
+        if classify_push_error(err) == "WORKFLOWS_PERMISSION":
+            skipped.append({"ref": ref, "error": _last_error_line(err)})
+            continue
+        raise MirrorError(f"tag push {ref} failed: {err.strip()}")
+    local = set(_list_tag_refs(git_dir))
+    for remote in _remote_tag_refs(dest_url):
+        if remote in local:
+            continue
+        deleted = _run(["push", dest_url, f":{remote}"], git_dir=git_dir, check=False)
+        if deleted.returncode:
+            detail = (deleted.stderr or deleted.stdout).decode("utf-8", "replace").strip()
+            raise MirrorError(f"tag prune {remote} failed: {detail}")
+    return {
+        "schema_version": SCHEMA_VERSION,
+        "state": "TAGS_WORKFLOWS_SKIPPED" if skipped else "EXACT_TAGS",
+        "pushed": pushed,
+        "skipped": skipped,
+        "first_error": _last_error_line(stderr),
+    }
+
+
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     commands = parser.add_subparsers(dest="command", required=True)
@@ -472,6 +539,10 @@ def main(argv: list[str] | None = None) -> int:
     record.add_argument("--dst", required=True)
     record.add_argument("--dest-url", required=True)
 
+    tags = commands.add_parser("push-tags")
+    tags.add_argument("--git-dir", required=True)
+    tags.add_argument("--dest-url", required=True)
+
     args = parser.parse_args(argv)
     try:
         if args.command == "classify-error":
@@ -487,6 +558,8 @@ def main(argv: list[str] | None = None) -> int:
             payload = {"src_sha": read_source_receipt(args.git_dir, args.ref)}
         elif args.command == "record-receipts":
             payload = record_receipts(args.git_dir, args.dest_url, args.src, args.dst)
+        elif args.command == "push-tags":
+            payload = push_tags(args.git_dir, args.dest_url)
         else:
             payload = push_mirror(args.git_dir, args.src_ref, args.dest_url, args.dst_ref)
         print(json.dumps(payload, sort_keys=True))
