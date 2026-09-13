@@ -26,10 +26,7 @@ See [docs/architecture.md](docs/architecture.md). The repository includes:
 - `fixtures/demo-batch.json` — synthetic judge fixture
 - `tests/` — hostile custody, replay, time, identity, authority, and verification cases
 - `docs/demo-script.md` — <=5 minute demo plan
-- `docs/judge-quickstart.md` — direct public source links + fastest judge path
-- `docs/video-runbook.md` — 3:45 capture plan with privacy/claim checks
-- `docs/submission-final.md` — paste-ready Devpost packet + remaining blockers
-- `submission/manifest.json` + `submission/check_submission.py` — fail-closed submission-state truth
+- `docs/submission-draft.md` — submission narrative + prior-work disclosure
 
 ## Quick start: deterministic path
 
@@ -113,23 +110,6 @@ The project deliberately has no tools for:
 
 `HUMAN_CLOSING_READY` means: *reviewed response exactly matches the current offer and a human now has a closing decision.* It does **not** mean the agent closed a deal.
 
-## Submission finalization
-
-Public code repository: https://github.com/woahwhattheheck/commons
-
-Direct project source: https://github.com/woahwhattheheck/commons/tree/main/revenue/agents_for_humans/commercial_decision_relay
-
-Run the repository-side submission truth check with:
-
-```bash
-python submission/check_submission.py
-python -m unittest -v submission.test_check_submission
-python -O -m unittest -v submission.test_check_submission
-```
-
-Until the authenticated external steps are actually completed, the expected
-state is `INTERNAL_READY_EXTERNAL_PENDING`, not submitted/accepted/awarded.
-
 ## Hackathon submission checklist
 
 - [x] New Strands-based project created during the submission period
@@ -139,7 +119,7 @@ state is `INTERNAL_READY_EXTERNAL_PENDING`, not submitted/accepted/awarded.
 - [x] Synthetic free judge fixture
 - [x] Demo script <=5 minutes
 - [x] Prior-work/open-source disclosure draft
-- [x] Public repository URL (`woahwhattheheck/commons`; direct project tree above)
+- [ ] Public repository URL
 - [ ] AWS Builder ID entered on Devpost
 - [ ] Public YouTube/Vimeo demo video
 - [ ] Optional live demo deployment
