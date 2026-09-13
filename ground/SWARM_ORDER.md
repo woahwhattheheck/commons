@@ -69,9 +69,9 @@ does not replace local, exact-change verification.
 
 Source/semantic review and execution authority are different facts. A source-only
 `PASS` may clear a semantic RED, but it does not authorize a code/config merge.
-For every review subject that changes anything other than pure `.md`, `.rst`,
-`.txt` or `.adoc` documentation, the exact-head GPT receipt must contain at
-least one passing execution record shaped like
+For every review subject that changes anything other than pure `.md`, `.rst` or
+`.adoc` documentation, the exact-head GPT receipt must contain at least one
+passing execution record shaped like
 `{"result":"PASS","kind":"execution","head":"<40-hex reviewed head>","reference":"<exact command + receipt>"}`.
 A record bound to another head, a source-only PASS, queued hosted checks, or an
 unrun command does not satisfy merge authority. Documentation-only changes still
