@@ -17,7 +17,11 @@ import boto3
 from botocore.exceptions import ClientError
 
 from opencv_perception import MAX_IMAGE_BYTES, analyze_pair
-from prooflens import decide
+from prooflens import decide, validate_evidence, verify_receipt
+
+
+STORED_ROW_KEYS = {"event_id", "evidence_json", "receipt_json", "delivery"}
+DELIVERY_STATES = {"RECORDED", "REVIEW_QUEUED"}
 
 
 class ContractError(ValueError):
@@ -92,30 +96,103 @@ def _source_ref(bucket: str, baseline_key: str, baseline: dict[str, Any], curren
     )
 
 
-def _decode_stored(item: dict[str, Any]) -> dict[str, Any]:
+def _canonical_storage_json(value: Any) -> str:
+    return json.dumps(value, sort_keys=True, separators=(",", ":"), allow_nan=False)
+
+
+def _ddb_string(item: dict[str, Any], name: str) -> str:
+    attribute = item.get(name)
+    if type(attribute) is not dict or set(attribute) != {"S"} or type(attribute.get("S")) is not str:
+        raise RuntimeError(f"stored evidence row field {name} must be one DynamoDB string AttributeValue")
+    return attribute["S"]
+
+
+def _validate_stored_semantics(
+    evidence: Any,
+    receipt: Any,
+    delivery: Any,
+    *,
+    expected_event_id: str,
+) -> dict[str, Any]:
+    if type(delivery) is not str or delivery not in DELIVERY_STATES:
+        raise RuntimeError("stored evidence row has invalid delivery state")
+    if type(evidence) is not dict or type(receipt) is not dict:
+        raise RuntimeError("stored evidence row JSON payloads must be objects")
     try:
-        evidence = json.loads(item["evidence_json"]["S"])
-        receipt = json.loads(item["receipt_json"]["S"])
-        delivery = item["delivery"]["S"]
-    except (KeyError, TypeError, json.JSONDecodeError) as exc:
-        raise RuntimeError("stored evidence row is malformed") from exc
-    return {"evidence": evidence, "receipt": receipt, "delivery": delivery, "replay": True}
+        validated = validate_evidence(evidence)
+    except ValueError as exc:
+        raise RuntimeError("stored evidence row has invalid evidence") from exc
+    if validated["event_id"] != expected_event_id:
+        raise RuntimeError("stored evidence event_id does not match queried DynamoDB key")
+    if not verify_receipt(validated, receipt):
+        raise RuntimeError("stored evidence row receipt does not recompile under current policy")
+    expected_receipt = decide(validated).to_dict()
+    if _canonical_storage_json(receipt) != _canonical_storage_json(expected_receipt):
+        raise RuntimeError("stored evidence row receipt differs from exact writer form")
+    if expected_receipt["event_id"] != expected_event_id:
+        raise RuntimeError("stored receipt event_id does not match queried DynamoDB key")
+    if expected_receipt["external_action_authorized"] is not False:
+        raise RuntimeError("stored receipt attempted external-action authority")
+    decision = expected_receipt["decision"]
+    if delivery == "REVIEW_QUEUED" and decision != "REQUEST_HUMAN_REVIEW":
+        raise RuntimeError("REVIEW_QUEUED requires REQUEST_HUMAN_REVIEW receipt")
+    return {"evidence": validated, "receipt": expected_receipt, "delivery": delivery, "replay": True}
+
+
+def _decode_stored(item: dict[str, Any], *, expected_event_id: str) -> dict[str, Any]:
+    if type(item) is not dict or set(item) != STORED_ROW_KEYS:
+        raise RuntimeError("stored evidence row keys are malformed")
+    stored_event_id = _ddb_string(item, "event_id")
+    if stored_event_id != expected_event_id:
+        raise RuntimeError("stored DynamoDB partition key does not match queried event_id")
+    evidence_text = _ddb_string(item, "evidence_json")
+    receipt_text = _ddb_string(item, "receipt_json")
+    delivery = _ddb_string(item, "delivery")
+    try:
+        evidence = json.loads(evidence_text)
+        receipt = json.loads(receipt_text)
+    except json.JSONDecodeError as exc:
+        raise RuntimeError("stored evidence row JSON is malformed") from exc
+    try:
+        if _canonical_storage_json(evidence) != evidence_text or _canonical_storage_json(receipt) != receipt_text:
+            raise RuntimeError("stored evidence row JSON is not canonical")
+    except (TypeError, ValueError) as exc:
+        raise RuntimeError("stored evidence row JSON cannot be canonicalized") from exc
+    validated = _validate_stored_semantics(
+        evidence,
+        receipt,
+        delivery,
+        expected_event_id=expected_event_id,
+    )
+    if _canonical_storage_json(validated["evidence"]) != evidence_text:
+        raise RuntimeError("stored evidence row differs from normalized writer form")
+    if _canonical_storage_json(validated["receipt"]) != receipt_text:
+        raise RuntimeError("stored receipt row differs from verified writer form")
+    return validated
 
 
 def _existing(ddb: Any, table: str, event_id: str) -> dict[str, Any] | None:
     result = ddb.get_item(TableName=table, Key={"event_id": {"S": event_id}}, ConsistentRead=True)
     item = result.get("Item")
-    return _decode_stored(item) if item else None
+    return _decode_stored(item, expected_event_id=event_id) if item else None
 
 
 def _record_once(ddb: Any, table: str, evidence: dict[str, Any], receipt: dict[str, Any]) -> bool:
+    validated = _validate_stored_semantics(
+        evidence,
+        receipt,
+        "RECORDED",
+        expected_event_id=evidence.get("event_id") if type(evidence) is dict else "",
+    )
+    canonical_evidence = validated["evidence"]
+    canonical_receipt = validated["receipt"]
     try:
         ddb.put_item(
             TableName=table,
             Item={
-                "event_id": {"S": evidence["event_id"]},
-                "evidence_json": {"S": json.dumps(evidence, sort_keys=True, separators=(",", ":"), allow_nan=False)},
-                "receipt_json": {"S": json.dumps(receipt, sort_keys=True, separators=(",", ":"), allow_nan=False)},
+                "event_id": {"S": canonical_evidence["event_id"]},
+                "evidence_json": {"S": _canonical_storage_json(canonical_evidence)},
+                "receipt_json": {"S": _canonical_storage_json(canonical_receipt)},
                 "delivery": {"S": "RECORDED"},
             },
             ConditionExpression="attribute_not_exists(event_id)",
@@ -140,10 +217,20 @@ def _review_body(evidence: dict[str, Any], receipt: dict[str, Any]) -> dict[str,
 
 
 def _deliver_review(sqs: Any, ddb: Any, *, queue_url: str, table: str, evidence: dict[str, Any], receipt: dict[str, Any]) -> None:
+    validated = _validate_stored_semantics(
+        evidence,
+        receipt,
+        "RECORDED",
+        expected_event_id=evidence.get("event_id") if type(evidence) is dict else "",
+    )
+    if validated["receipt"]["decision"] != "REQUEST_HUMAN_REVIEW":
+        raise RuntimeError("only REQUEST_HUMAN_REVIEW receipts may be queued")
+    evidence = validated["evidence"]
+    receipt = validated["receipt"]
     body = _review_body(evidence, receipt)
     sqs.send_message(
         QueueUrl=queue_url,
-        MessageBody=json.dumps(body, sort_keys=True, separators=(",", ":"), allow_nan=False),
+        MessageBody=_canonical_storage_json(body),
         MessageGroupId="prooflens-human-review",
         MessageDeduplicationId=evidence["event_id"],
     )
@@ -158,12 +245,33 @@ def _deliver_review(sqs: Any, ddb: Any, *, queue_url: str, table: str, evidence:
     except ClientError as exc:
         if exc.response.get("Error", {}).get("Code") != "ConditionalCheckFailedException":
             raise
-        # Another invocation already advanced the durable delivery state. The
-        # FIFO event_id also deduplicates concurrent review messages.
+        # A concurrent invocation may already have advanced the progress marker.
+        # The queue send above still uses event_id as its FIFO dedupe key.
 
 
-def _recover_pending_review(prior: dict[str, Any], *, sqs: Any, ddb: Any, queue_url: str, table: str) -> dict[str, Any]:
-    if prior["receipt"].get("decision") == "REQUEST_HUMAN_REVIEW" and prior["delivery"] == "RECORDED":
+def _recover_pending_review(
+    prior: dict[str, Any],
+    *,
+    expected_event_id: str,
+    sqs: Any,
+    ddb: Any,
+    queue_url: str,
+    table: str,
+) -> dict[str, Any]:
+    if type(prior) is not dict or set(prior) != {"evidence", "receipt", "delivery", "replay"} or prior.get("replay") is not True:
+        raise RuntimeError("pending replay row is malformed")
+    prior = _validate_stored_semantics(
+        prior["evidence"],
+        prior["receipt"],
+        prior["delivery"],
+        expected_event_id=expected_event_id,
+    )
+    if prior["receipt"]["decision"] == "REQUEST_HUMAN_REVIEW":
+        # `delivery` is only a progress marker, never proof that SQS accepted a
+        # message. Reissue the same event_id FIFO message on every valid review
+        # replay so a poisoned/stale REVIEW_QUEUED bit cannot suppress recovery.
+        # Downstream consumers must preserve event_id idempotency beyond SQS's
+        # finite deduplication window.
         _deliver_review(
             sqs,
             ddb,
@@ -172,7 +280,7 @@ def _recover_pending_review(prior: dict[str, Any], *, sqs: Any, ddb: Any, queue_
             evidence=prior["evidence"],
             receipt=prior["receipt"],
         )
-        refreshed = _existing(ddb, table, prior["evidence"]["event_id"])
+        refreshed = _existing(ddb, table, expected_event_id)
         if refreshed is None:
             raise RuntimeError("review delivery recovered but durable row disappeared")
         return refreshed
@@ -202,17 +310,32 @@ def lambda_handler(event: Any, context: Any) -> dict[str, Any]:
         current["bytes"],
         source_ref=_source_ref(event_bucket, baseline_key, baseline, current_key, current),
     )
-    prior = _existing(ddb, table, evidence["event_id"])
+    event_id = evidence["event_id"]
+    prior = _existing(ddb, table, event_id)
     if prior is not None:
-        return _recover_pending_review(prior, sqs=sqs, ddb=ddb, queue_url=queue_url, table=table)
+        return _recover_pending_review(
+            prior,
+            expected_event_id=event_id,
+            sqs=sqs,
+            ddb=ddb,
+            queue_url=queue_url,
+            table=table,
+        )
 
     receipt = decide(evidence).to_dict()
     created = _record_once(ddb, table, evidence, receipt)
     if not created:
-        raced = _existing(ddb, table, evidence["event_id"])
+        raced = _existing(ddb, table, event_id)
         if raced is None:
             raise RuntimeError("event race lost but durable row is unavailable")
-        return _recover_pending_review(raced, sqs=sqs, ddb=ddb, queue_url=queue_url, table=table)
+        return _recover_pending_review(
+            raced,
+            expected_event_id=event_id,
+            sqs=sqs,
+            ddb=ddb,
+            queue_url=queue_url,
+            table=table,
+        )
 
     delivery = "RECORDED"
     if receipt["decision"] == "REQUEST_HUMAN_REVIEW":
