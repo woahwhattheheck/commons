@@ -1,9 +1,9 @@
 {
   "counts": {
-    "open_issues": 37,
+    "open_issues": 38,
     "open_pull_requests": 29,
-    "runs_in_progress": 20,
-    "runs_queued": 793
+    "runs_in_progress": 19,
+    "runs_queued": 790
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -72,10 +72,10 @@
       "branch": "zzh/context-git-source-capsules-13854",
       "created_at": "2026-09-13T13:29:53Z",
       "draft": false,
-      "head_sha": "5aacbcdccc555fd40a9ed5b9ddc5dbf3dff4ec39",
+      "head_sha": "a21922c17e9310840534d773250cde109cb5bcaf",
       "number": 13865,
       "title": "feat: embed exact Git source capsules in context dispatch packets",
-      "updated_at": "2026-09-13T13:38:18Z"
+      "updated_at": "2026-09-13T13:39:14Z"
     },
     {
       "author": "woahwhattheheck",
@@ -206,11 +206,11 @@
     "13862": "bcba1a61da864ce0bc96789f2467c2dd4012047b",
     "13863": "ae949f0a623b1eb8af94fe76427cb93169f55d91",
     "13864": "8fe905a0a9cb03b79f916fd8e97585b50da745a7",
-    "13865": "5aacbcdccc555fd40a9ed5b9ddc5dbf3dff4ec39"
+    "13865": "a21922c17e9310840534d773250cde109cb5bcaf"
   },
   "pulls_listed": 29,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 39.6,
+  "queue_depth_per_runner": 41.6,
   "recently_closed": [
     {
       "author": "woahwhattheheck",
@@ -380,6 +380,6 @@
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-13T13:38:36Z",
+  "unchanged_since": "2026-09-13T13:39:38Z",
   "undatable_pulls": []
 }
