@@ -57,10 +57,13 @@ def _object_type(repo: Path, oid: str) -> str:
 
 
 def _commit_tree(repo: Path, commit: str) -> str:
-    raw = _run(repo, ["cat-file", "-p", commit]).decode("utf-8", "strict")
-    for line in raw.splitlines():
-        if line.startswith("tree "):
-            tree = line[5:]
+    raw = _run(repo, ["cat-file", "-p", commit])
+    for line in raw.split(b"\n"):
+        if line.startswith(b"tree "):
+            try:
+                tree = line[5:].decode("ascii", "strict")
+            except UnicodeDecodeError as exc:
+                raise GitSourceError("commit has malformed tree header") from exc
             if HEX40.fullmatch(tree):
                 return tree
             break
@@ -135,7 +138,8 @@ def _blob(repo: Path, oid: str, expected_size: int, collect_limit: int) -> tuple
 def _text_status(raw: bytes | None, *, oversized: bool) -> tuple[str | None, str | None]:
     if oversized:
         return None, "FILE_TOO_LARGE"
-    assert raw is not None
+    if raw is None:
+        raise GitSourceError("blob bytes unavailable below collection limit")
     try:
         text = raw.decode("utf-8", "strict")
     except UnicodeDecodeError:
