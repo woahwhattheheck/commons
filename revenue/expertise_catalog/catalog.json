@@ -12,8 +12,16 @@
     "cash_claimed": false,
     "rule": "A catalog entry is an offer definition, not evidence of a buyer, acceptance, delivery, settlement, payout, or cash. Only source-backed existing SKU terms may be marked LIVE_EXISTING_SKU."
   },
-  "commercial_modes": ["LIVE_EXISTING_SKU", "QUOTE_ONLY"],
-  "formats": ["advisory_hour", "written_assessment", "design_review", "embedded_engagement"],
+  "commercial_modes": [
+    "LIVE_EXISTING_SKU",
+    "QUOTE_ONLY"
+  ],
+  "formats": [
+    "advisory_hour",
+    "written_assessment",
+    "design_review",
+    "embedded_engagement"
+  ],
   "entries": [
     {
       "id": "expertise-whitebox-hour",
@@ -22,11 +30,31 @@
       "summary": "One dated White Box / dests hour for a bounded model, GGUF, agent, or systems diagnosis question.",
       "buyer_job": "Get a senior technical read on one sharply bounded White Box question without buying a larger implementation engagement.",
       "formats": ["advisory_hour"],
-      "inputs": ["One bounded technical question", "Sanitized evidence sufficient to discuss the question", "Desired decision or next action"],
-      "deliverables": ["One dated White Box / dests hour", "A public land/session-YYYYMMDD.md receipt describing destinations, receipts, and what ran"],
-      "acceptance": ["The scheduled hour is delivered for the bounded question", "The dated session receipt exists at the promised public path"],
-      "commercial": {"mode": "LIVE_EXISTING_SKU", "amount_usd": "250.00", "unit": "hour", "checkout_reference": "land/sku-whitebox-hour-20260826.md", "buyer_route": "commerce.html#sku-whitebox-hour-20260826"},
-      "source_evidence": ["land/sku-whitebox-hour-20260826.md", "land/stripe-payment-links-20260826.md", "revenue/OFFERING_FAMILIES.md"]
+      "inputs": [
+        "One bounded technical question",
+        "Sanitized evidence sufficient to discuss the question",
+        "Desired decision or next action"
+      ],
+      "deliverables": [
+        "One dated White Box / dests hour",
+        "A public land/session-YYYYMMDD.md receipt describing destinations, receipts, and what ran"
+      ],
+      "acceptance": [
+        "The scheduled hour is delivered for the bounded question",
+        "The dated session receipt exists at the promised public path"
+      ],
+      "commercial": {
+        "mode": "LIVE_EXISTING_SKU",
+        "amount_usd": "250.00",
+        "unit": "hour",
+        "checkout_reference": "land/sku-whitebox-hour-20260826.md",
+        "buyer_route": "commerce.html#sku-whitebox-hour-20260826"
+      },
+      "source_evidence": [
+        "land/sku-whitebox-hour-20260826.md",
+        "land/stripe-payment-links-20260826.md",
+        "revenue/OFFERING_FAMILIES.md"
+      ]
     },
     {
       "id": "expertise-agent-architecture-review",
