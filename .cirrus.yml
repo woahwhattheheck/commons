@@ -1,46 +1,5 @@
-# Provider-redundant OSS pipe. Not GitHub. Not unlimited:
-# 50 compute credits/month (finite provider quota), 2h max free task.
-# Header census plus the same portable battery used by tests.yml.
-# Activate the Cirrus GitHub App for this repository; config is not a live run.
-container:
-  image: python:3.12-bookworm
-
-header_census_task:
-  name: header-census
-  timeout_in: 20m
-  script:
-    - python3 test_header_census.py
-    - python3 host_offload/header_census.py
-
-commons_battery_task:
-  name: commons-battery-$BATTERY_SHARD
-  only_if: ($CIRRUS_PR != '' && $CIRRUS_BASE_BRANCH == 'main') || ($CIRRUS_PR == '' && $CIRRUS_BRANCH == 'main')
-  skip: "!changesInclude('.cirrus.yml', '.github/workflows/tests.yml', '*.py', '*.js', 'host/**', 'infra/**', 'integrations/**', 'ground/**', 'AGENTS.md')"
-  auto_cancellation: $CIRRUS_PR != ''
-  timeout_in: 90m
-  container:
-    image: node:22-bookworm
-    cpu: 2
-    memory: 4G
-  env:
-    # Historical source-object tests require full history, just like Actions.
-    CIRRUS_CLONE_DEPTH: '0'
-    matrix:
-      - BATTERY_SHARD: '0'
-      - BATTERY_SHARD: '1'
-      - BATTERY_SHARD: '2'
-      - BATTERY_SHARD: '3'
-  setup_script:
-    - apt-get update
-    - apt-get install -y --no-install-recommends python3
-    - python3 --version
-    - node --version
-  test_script:
-    - python3 host/ci_battery.py --shard-count 4 --shard-index "$BATTERY_SHARD" --timeout 900 --output-dir "/tmp/commons-ci-$BATTERY_SHARD"
-  always:
-    collect_script:
-      - mkdir -p ci-results
-      - cp /tmp/commons-ci-"$BATTERY_SHARD"/results.nul ci-results/ 2>/dev/null || true
-      - cp /tmp/commons-ci-"$BATTERY_SHARD"/report.json ci-results/ 2>/dev/null || true
-    battery_artifacts:
-      path: ci-results/*
+# RETIRED PROVIDER — historical marker only.
+# Cirrus Labs announced the hosted Cirrus CI shutdown on 2026-04-07,
+# effective 2026-06-01: https://cirruslabs.org/
+# This file intentionally defines no tasks. Do not install or reactivate the
+# retired GitHub App, require Cirrus checks, or treat this marker as a run.
