@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import copy
+import json
 import unittest
 
 from tools.outbound_send_guard import buyer_scope
@@ -82,6 +83,9 @@ class BuyerScopeGuardTests(unittest.TestCase):
             "offer_id": offer_id,
             "provider_message_id": None,
         }
+
+    def encoded(self, value, *, indent=None):
+        return json.dumps(value, sort_keys=True, indent=indent).encode("utf-8") + b"\n"
 
     def test_same_offer_outbound_on_alias_blocks_net_new(self):
         result = buyer_scope.evaluate(
@@ -182,22 +186,102 @@ class BuyerScopeGuardTests(unittest.TestCase):
         self.assertEqual(evidence, evidence_before)
         self.assertEqual(scope, scope_before)
 
-    def test_receipt_is_deterministic_and_binds_source_plus_scoped_evidence(self):
+    def test_object_receipt_is_deterministic_and_truthfully_object_bound(self):
         intent = self.intent()
         evidence = self.evidence(messages=[self.outbound()])
         scope = self.scope()
         first = buyer_scope.evaluate(intent, evidence, scope)
         second = buyer_scope.evaluate(intent, evidence, scope)
         self.assertEqual(first, second)
+        self.assertEqual(first["payload"]["schema_version"], "outbound-send-buyer-scope-receipt/v2")
         self.assertFalse(first["payload"]["side_effects_authorized"])
+        source = first["payload"]["source"]
+        self.assertEqual(source["custody_mode"], "canonical_objects")
+        self.assertIsNone(source["byte_custody"])
+        self.assertEqual(source["intent_object_sha256"], buyer_scope.guard.digest_object(intent))
+        self.assertEqual(source["evidence_object_sha256"], buyer_scope.guard.digest_object(evidence))
+        self.assertEqual(source["scope_object_sha256"], buyer_scope.guard.digest_object(scope))
         self.assertNotEqual(
-            first["payload"]["source"]["evidence_sha256"],
-            first["payload"]["source"]["scoped_evidence_sha256"],
+            source["evidence_object_sha256"],
+            source["scoped_evidence_object_sha256"],
         )
         self.assertEqual(
             first["payload"]["core_receipt_sha256"],
             buyer_scope.guard.digest_object(first["payload"]["core"]),
         )
+
+    def test_public_object_api_has_no_caller_digest_override(self):
+        with self.assertRaises(TypeError):
+            buyer_scope.evaluate(
+                self.intent(),
+                self.evidence(),
+                self.scope(),
+                intent_sha256="0" * 64,
+            )
+
+    def test_exact_byte_api_hashes_the_bytes_it_parses(self):
+        intent = self.intent()
+        evidence = self.evidence(messages=[self.outbound()])
+        scope = self.scope()
+        intent_bytes = self.encoded(intent, indent=2)
+        evidence_bytes = self.encoded(evidence, indent=1)
+        scope_bytes = self.encoded(scope, indent=4)
+        result = buyer_scope.evaluate_bytes(intent_bytes, evidence_bytes, scope_bytes)
+        source = result["payload"]["source"]
+        self.assertEqual(source["custody_mode"], "exact_consumed_bytes")
+        self.assertEqual(
+            source["byte_custody"],
+            {
+                "mode": "exact_consumed_bytes",
+                "intent_sha256": buyer_scope.guard.digest_bytes(intent_bytes),
+                "evidence_sha256": buyer_scope.guard.digest_bytes(evidence_bytes),
+                "scope_sha256": buyer_scope.guard.digest_bytes(scope_bytes),
+            },
+        )
+        self.assertEqual(source["intent_object_sha256"], buyer_scope.guard.digest_object(intent))
+        self.assertEqual(source["evidence_object_sha256"], buyer_scope.guard.digest_object(evidence))
+        self.assertEqual(source["scope_object_sha256"], buyer_scope.guard.digest_object(scope))
+
+    def test_byte_custody_distinguishes_whitespace_equivalent_sources(self):
+        intent = self.intent()
+        evidence = self.evidence()
+        scope = self.scope()
+        compact = buyer_scope.evaluate_bytes(
+            self.encoded(intent),
+            self.encoded(evidence),
+            self.encoded(scope),
+        )
+        pretty = buyer_scope.evaluate_bytes(
+            self.encoded(intent, indent=2),
+            self.encoded(evidence, indent=2),
+            self.encoded(scope, indent=2),
+        )
+        self.assertEqual(
+            compact["payload"]["source"]["intent_object_sha256"],
+            pretty["payload"]["source"]["intent_object_sha256"],
+        )
+        self.assertNotEqual(
+            compact["payload"]["source"]["byte_custody"]["intent_sha256"],
+            pretty["payload"]["source"]["byte_custody"]["intent_sha256"],
+        )
+        self.assertNotEqual(compact["receipt_sha256"], pretty["receipt_sha256"])
+
+    def test_exact_byte_api_rejects_duplicate_json_keys(self):
+        bad_scope = b'{"schema_version":"outbound-send-buyer-scope/v1","scope_id":"buyer-1","scope_id":"buyer-2","members":[]}\n'
+        with self.assertRaises(buyer_scope.guard.DuplicateKeyError):
+            buyer_scope.evaluate_bytes(
+                self.encoded(self.intent()),
+                self.encoded(self.evidence()),
+                bad_scope,
+            )
+
+    def test_exact_byte_api_rejects_non_bytes(self):
+        with self.assertRaisesRegex(buyer_scope.ScopeError, "intent bytes must be bytes"):
+            buyer_scope.evaluate_bytes(
+                self.encoded(self.intent()).decode(),
+                self.encoded(self.evidence()),
+                self.encoded(self.scope()),
+            )
 
     def test_member_order_does_not_change_decision_or_sorted_member_projection(self):
         scope_a = self.scope()
@@ -211,8 +295,8 @@ class BuyerScopeGuardTests(unittest.TestCase):
             second["payload"]["buyer_scope"]["members"],
         )
         self.assertNotEqual(
-            first["payload"]["buyer_scope"]["scope_sha256"],
-            second["payload"]["buyer_scope"]["scope_sha256"],
+            first["payload"]["source"]["scope_object_sha256"],
+            second["payload"]["source"]["scope_object_sha256"],
         )
 
 
