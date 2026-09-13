@@ -37,10 +37,15 @@ def h(text: str) -> str:
     return hashlib.sha256(text.encode()).hexdigest()
 
 
+def oid(label: str) -> str:
+    """Durable identifier token: SHA-256 of a local synthetic label. Label stays out of packets."""
+    return h(f"edss-opaque:{label}")
+
+
 def row(record_id: str, **fields: str):
     return {
-        "record_id": record_id,
-        "fields": [{"field_id": key, "value_sha256": h(value)} for key, value in sorted(fields.items())],
+        "record_id": oid(record_id),
+        "fields": [{"field_id": oid(key), "value_sha256": h(value)} for key, value in sorted(fields.items())],
     }
 
 
@@ -60,7 +65,7 @@ def observed_from_expected(event, *, received_at=None, ack=True, rejected=False)
     acks = []
     if ack:
         acks = [{
-            "ack_id": f"ack.{event['message_id']}",
+            "ack_id": oid(f"ack.{event['message_id']}"),
             "ack_at": received_at,
             "outcome": "REJECTED" if rejected else "ACKED",
         }]
@@ -89,15 +94,15 @@ def ready_packet():
     ]
     target_rows = deepcopy(source_rows)
     expected = [
-        expected_event("iface.lab.synthetic", "msg.001", "rec.001", 1, "2026-09-13T16:05:00Z", "payload-001"),
-        expected_event("iface.lab.synthetic", "msg.002", "rec.002", 2, "2026-09-13T16:06:00Z", "payload-002"),
-        expected_event("iface.case.synthetic", "msg.003", "rec.003", 1, "2026-09-13T16:07:00Z", "payload-003"),
+        expected_event(oid("iface.lab.synthetic"), oid("msg.001"), oid("rec.001"), 1, "2026-09-13T16:05:00Z", "payload-001"),
+        expected_event(oid("iface.lab.synthetic"), oid("msg.002"), oid("rec.002"), 2, "2026-09-13T16:06:00Z", "payload-002"),
+        expected_event(oid("iface.case.synthetic"), oid("msg.003"), oid("rec.003"), 1, "2026-09-13T16:07:00Z", "payload-003"),
     ]
-    source = snapshot("snap.source.synthetic.001", "SOURCE", source_rows)
-    target = snapshot("snap.target.synthetic.001", "TARGET", target_rows, captured_at="2026-09-13T16:30:00Z")
+    source = snapshot(oid("snap.source.synthetic.001"), "SOURCE", source_rows, revision=oid("schema.synthetic.v1"))
+    target = snapshot(oid("snap.target.synthetic.001"), "TARGET", target_rows, captured_at="2026-09-13T16:30:00Z", revision=oid("schema.synthetic.v1"))
     ids = sorted(r["record_id"] for r in source_rows)
     expectation = {
-        "observation_id": "expectation.synthetic.001",
+        "observation_id": oid("expectation.synthetic.001"),
         "captured_at": "2026-09-13T16:21:00Z",
         "source_snapshot_id": source["snapshot_id"],
         "source_rows_sha256": source["rows_sha256"],
@@ -108,12 +113,12 @@ def ready_packet():
     }
     return {
         "schema": "edss-migration-acceptance/v1",
-        "engagement_ref": "engagement.synthetic.edss.001",
+        "engagement_ref": oid("engagement.synthetic.edss.001"),
         "source_snapshot": source,
         "target_snapshot": target,
         "expectation": expectation,
         "interface_events": [observed_from_expected(event, received_at=f"2026-09-13T16:{10+i:02d}:00Z") for i, event in enumerate(expected)],
-        "cutover": {"window_id": "cutover.synthetic.001", "start": "2026-09-13T16:00:00Z", "end": "2026-09-13T16:30:00Z"},
+        "cutover": {"window_id": oid("cutover.synthetic.001"), "start": "2026-09-13T16:00:00Z", "end": "2026-09-13T16:30:00Z"},
     }
 
 
