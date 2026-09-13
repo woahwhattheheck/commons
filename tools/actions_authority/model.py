@@ -76,11 +76,14 @@ def _parse_steps(value: Any, label: str) -> list[dict[str, Any]] | None:
 
 def _parse_job(raw: Any, label: str) -> dict[str, Any]:
     job = _require_dict(raw, label)
-    _validate_exact_fields(
-        job,
-        {"job_id", "name", "status", "conclusion", "runner_name", "started_at", "completed_at", "steps"},
-        label,
-    )
+    job_fields = {
+        "job_id", "name", "status", "conclusion", "runner_id", "runner_name",
+        "started_at", "completed_at", "steps",
+    }
+    _validate_exact_fields(job, job_fields, label)
+    missing = job_fields - set(job)
+    if missing:
+        raise EvidenceError(f"{label} is missing fields: {', '.join(sorted(missing))}")
     job_id = _require_int(job.get("job_id"), f"{label}.job_id", minimum=1)
     name = _require_text(job.get("name"), f"{label}.name")
     status = _require_text(job.get("status"), f"{label}.status").lower()
@@ -91,6 +94,8 @@ def _parse_job(raw: Any, label: str) -> dict[str, Any]:
         conclusion = conclusion.lower()
         if conclusion not in CONCLUSIONS:
             raise EvidenceError(f"{label}.conclusion is unsupported: {conclusion}")
+    runner_id_raw = job.get("runner_id")
+    runner_id = None if runner_id_raw is None else _require_int(runner_id_raw, f"{label}.runner_id", minimum=1)
     runner_name = _optional_text(job.get("runner_name"), f"{label}.runner_name")
     started_at = _optional_time(job.get("started_at"), f"{label}.started_at")
     completed_at = _optional_time(job.get("completed_at"), f"{label}.completed_at")
@@ -108,6 +113,7 @@ def _parse_job(raw: Any, label: str) -> dict[str, Any]:
         "name": name,
         "status": status,
         "conclusion": conclusion,
+        "runner_id": runner_id,
         "runner_name": runner_name,
         "started_at": started_at,
         "completed_at": completed_at,

@@ -42,7 +42,7 @@ Version-1 evidence is rejected rather than silently retaining unsafe caller-cura
 - `WAIT_MISSING`: the complete inventory contains no exact-head run for a declared required workflow.
 - `HOLD`: contradictory or unsafe terminal evidence.
 
-Zero-step backlog requires no runner name, no job start, and null/empty steps. A cancelled run qualifies only if every job still proves zero execution.
+Zero-step backlog requires no runner ID/name and null/empty steps. GitHub may populate a queued job's `started_at` with its queue timestamp before any runner is assigned, so that timestamp alone is not execution evidence. A cancelled run qualifies only if every job still proves zero execution.
 
 ## Fail-closed parsing
 

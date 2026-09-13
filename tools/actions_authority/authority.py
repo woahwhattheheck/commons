@@ -24,8 +24,8 @@ from .model import _parse_inventory, _parse_policy, _parse_run
 
 def _job_zero_step_unassigned(job: dict[str, Any]) -> bool:
     return (
-        job["runner_name"] is None
-        and job["started_at"] is None
+        job["runner_id"] is None
+        and job["runner_name"] is None
         and job["steps"] in (None, [])
         and (
             job["status"] in ZERO_STEP_WAIT_STATUSES

@@ -45,7 +45,7 @@ def inventory(total_count):
     }
 
 
-def job(status="completed", conclusion="success", runner="GitHub Actions 1", started="2026-09-13T08:20:02Z", steps=None, job_id=11):
+def job(status="completed", conclusion="success", runner="GitHub Actions 1", runner_id=701, started="2026-09-13T08:20:02Z", steps=None, job_id=11):
     if steps is None and status == "completed" and conclusion == "success":
         steps = [{"name": "test", "status": "completed", "conclusion": "success"}]
     return {
@@ -53,6 +53,7 @@ def job(status="completed", conclusion="success", runner="GitHub Actions 1", sta
         "name": "test",
         "status": status,
         "conclusion": conclusion,
+        "runner_id": runner_id,
         "runner_name": runner,
         "started_at": started,
         "completed_at": "2026-09-13T08:21:00Z" if status == "completed" else None,
@@ -203,7 +204,14 @@ class AuthorityTests(unittest.TestCase):
     def test_queued_and_cancelled_zero_step_are_backlog_candidates(self):
         for status, conclusion in [("queued", None), ("completed", "cancelled")]:
             with self.subTest(status=status):
-                z = job(status=status, conclusion=conclusion, runner=None, started=None, steps=None)
+                z = job(
+                    status=status,
+                    conclusion=conclusion,
+                    runner=None,
+                    runner_id=None,
+                    started="2026-09-13T08:20:00Z",
+                    steps=None,
+                )
                 evidence = payload(run(status=status, conclusion=conclusion, jobs=[z]))
                 receipt = classify(evidence, now=NOW)
                 self.assertEqual(receipt["decision"], "WAIT_RUNNER_BACKLOG")
@@ -211,7 +219,14 @@ class AuthorityTests(unittest.TestCase):
                 self.assertFalse(receipt["merge_authorized"])
 
     def test_cancelled_after_runner_start_is_hold(self):
-        z = job(status="completed", conclusion="cancelled", runner="runner-1", started="2026-09-13T08:20:05Z", steps=[])
+        z = job(
+            status="completed",
+            conclusion="cancelled",
+            runner="runner-1",
+            runner_id=42,
+            started="2026-09-13T08:20:05Z",
+            steps=[],
+        )
         receipt = classify(payload(run(conclusion="cancelled", jobs=[z])), now=NOW)
         self.assertEqual(receipt["decision"], "HOLD")
 
@@ -219,14 +234,21 @@ class AuthorityTests(unittest.TestCase):
         delivery = workflow(202, ".github/workflows/delivery.yml", "Delivery")
         missing = classify(payload(run(), required=[workflow(), delivery]), now=NOW)
         self.assertEqual(missing["decision"], "WAIT_MISSING")
-        active = job(status="in_progress", conclusion=None, runner="runner-1", started="2026-09-13T08:20:05Z", steps=[])
+        active = job(
+            status="in_progress",
+            conclusion=None,
+            runner="runner-1",
+            runner_id=42,
+            started="2026-09-13T08:20:05Z",
+            steps=[],
+        )
         waiting = classify(payload(run(status="in_progress", conclusion=None, jobs=[active])), now=NOW)
         self.assertEqual(waiting["decision"], "WAIT_EXECUTION")
 
     def test_conflicting_success_or_skipped_required_holds(self):
         failed = job(conclusion="failure", steps=[{"name": "test", "status": "completed", "conclusion": "failure"}])
         self.assertEqual(classify(payload(run(jobs=[failed])), now=NOW)["decision"], "HOLD")
-        skipped = job(conclusion="skipped", runner=None, started=None, steps=[])
+        skipped = job(conclusion="skipped", runner=None, runner_id=None, started=None, steps=[])
         self.assertEqual(classify(payload(run(conclusion="skipped", jobs=[skipped])), now=NOW)["decision"], "HOLD")
 
     def test_exact_head_fresh_snapshot_and_policy_capture_required(self):
@@ -242,7 +264,11 @@ class AuthorityTests(unittest.TestCase):
                     classify(evidence, now=NOW)
 
     def test_snapshot_rejects_run_or_job_times_after_capture(self):
-        late = run(status="queued", conclusion=None, jobs=[job(status="queued", conclusion=None, runner=None, started=None, steps=None)])
+        late = run(
+            status="queued",
+            conclusion=None,
+            jobs=[job(status="queued", conclusion=None, runner=None, runner_id=None, started=None, steps=None)],
+        )
         late["created_at"] = "2026-09-13T08:31:00Z"
         with self.assertRaisesRegex(EvidenceError, "after the evidence capture"):
             classify(payload(late), now=NOW)
@@ -269,6 +295,10 @@ class AuthorityTests(unittest.TestCase):
             classify(evidence, now=NOW)
         evidence = payload(run()); evidence["runs"][0]["workflow_path"] = ".github/workflows/../evil.yml"
         with self.assertRaises(EvidenceError):
+            classify(evidence, now=NOW)
+        evidence = payload(run())
+        del evidence["runs"][0]["jobs"][0]["runner_id"]
+        with self.assertRaisesRegex(EvidenceError, "missing fields: runner_id"):
             classify(evidence, now=NOW)
 
     def test_cli_is_classification_only_create_exclusive_and_symlink_safe(self):
