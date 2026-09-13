@@ -60,6 +60,7 @@ def make_record(index: int, kind: str = "EXPANSION_REQUEST") -> dict[str, Any]:
         },
         "settlement": {
             "evidence_id": f"settlement-{index:03d}",
+            "account_id": account,
             "offer_id": offer,
             "offer_version": "v1",
             "currency": "USD",
@@ -72,6 +73,7 @@ def make_record(index: int, kind: str = "EXPANSION_REQUEST") -> dict[str, Any]:
         },
         "delivery_acceptance": {
             "evidence_id": f"acceptance-{index:03d}",
+            "account_id": account,
             "offer_id": offer,
             "offer_version": "v1",
             "scope_digest": SCOPE,
@@ -81,6 +83,7 @@ def make_record(index: int, kind: str = "EXPANSION_REQUEST") -> dict[str, Any]:
         },
         "buyer_signal": {
             "evidence_id": f"signal-{index:03d}",
+            "account_id": account,
             "kind": kind,
             "source_class": "BUYER_AUTHORED",
             "offer_id": offer,
@@ -89,6 +92,7 @@ def make_record(index: int, kind: str = "EXPANSION_REQUEST") -> dict[str, Any]:
         },
         "owner_approval": {
             "evidence_id": f"approval-{index:03d}",
+            "account_id": account,
             "approver_class": "OWNER_HUMAN",
             "approved_at": _ts(signal + timedelta(hours=1)),
             "approved_catalog_rows": [approved_row],
