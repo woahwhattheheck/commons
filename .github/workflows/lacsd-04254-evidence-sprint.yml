@@ -25,13 +25,13 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
       - name: Compile
-        run: python -m py_compile revenue/lacsd_04254_evidence_sprint/evidence_core.py revenue/lacsd_04254_evidence_sprint/evidence_sprint.py revenue/lacsd_04254_evidence_sprint/test_evidence_sprint.py
+        run: python -m py_compile revenue/lacsd_04254_evidence_sprint/evidence_core.py revenue/lacsd_04254_evidence_sprint/evidence_sprint.py revenue/lacsd_04254_evidence_sprint/test_evidence_sprint.py revenue/lacsd_04254_evidence_sprint/test_effect_lineage.py
       - name: Tests
         working-directory: revenue/lacsd_04254_evidence_sprint
-        run: python -m unittest -v test_evidence_sprint.py
+        run: python -m unittest -v test_evidence_sprint.py test_effect_lineage.py
       - name: Optimized tests
         working-directory: revenue/lacsd_04254_evidence_sprint
-        run: python -O -m unittest -v test_evidence_sprint.py
+        run: python -O -m unittest -v test_evidence_sprint.py test_effect_lineage.py
       - name: Demo receipt
         working-directory: revenue/lacsd_04254_evidence_sprint
         run: python evidence_sprint.py demo > /tmp/lacsd-04254-demo.json
