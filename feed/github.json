@@ -1,16 +1,82 @@
 {
   "counts": {
-    "open_issues": 21,
-    "open_pull_requests": 25,
-    "runs_in_progress": 18,
-    "runs_queued": 896
+    "open_issues": 20,
+    "open_pull_requests": 23,
+    "runs_in_progress": 16,
+    "runs_queued": 915
   },
   "counts_source": "graphql",
-  "degraded": [
-    "pulls-partial"
-  ],
+  "degraded": [],
   "drafts": 3,
+  "longest_open": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "astra/titan-v5-eod-capacity-rescue-20260912",
+      "created_at": "2026-09-12T18:39:38Z",
+      "draft": true,
+      "head_sha": "2ef189e832881ae38111bf9318ee7bba80b204cb",
+      "number": 13400,
+      "title": "TITAN V5: converge EOD shed-capacity rescue",
+      "updated_at": "2026-09-12T23:58:40Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "astra/v5-v31-v4-gauntlet-reducer-20260912",
+      "created_at": "2026-09-12T19:46:29Z",
+      "draft": true,
+      "head_sha": "6c2142b3c61463c6c34a055f6bdc2704307930fd",
+      "number": 13415,
+      "title": "TITAN V5: reduce exact V3.1/V4 gauntlet into repair hotspots",
+      "updated_at": "2026-09-13T09:58:00Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "astra/v5-production-v3-action-witness-20260912",
+      "created_at": "2026-09-12T22:29:12Z",
+      "draft": true,
+      "head_sha": "91d17d19e2a762318d79058b042be10c63c6743a",
+      "number": 13471,
+      "title": "TITAN V5: witness first production-v3 action divergence",
+      "updated_at": "2026-09-12T23:37:06Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "mombasa/swarm-review-execution-evidence-clean-20260912",
+      "created_at": "2026-09-13T01:48:07Z",
+      "draft": false,
+      "head_sha": "73e73de79cb62cf2f58005efab027138ded6f282",
+      "number": 13533,
+      "title": "coordination: clean successor for exact-head execution evidence gate",
+      "updated_at": "2026-09-13T06:18:05Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "swarm-z/wuhu-lerobot-quality-20260913",
+      "created_at": "2026-09-13T06:28:49Z",
+      "draft": false,
+      "head_sha": "c03d798cf6a9ea31bc0df02692856343c78435eb",
+      "number": 13585,
+      "title": "revenue: add Wuhu LeRobot v2.1 quality inspector",
+      "updated_at": "2026-09-13T09:08:33Z"
+    }
+  ],
   "newest_pulls": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "vector/reconciliation-type-stability-current-main-20260913",
+      "created_at": "2026-09-13T10:40:29Z",
+      "draft": false,
+      "head_sha": "148080ea5840ae6917a68fbe872a470c0862655a",
+      "number": 13781,
+      "title": "fix(revenue): current-main reconciliation type-stability successor",
+      "updated_at": "2026-09-13T10:40:29Z"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -21,17 +87,6 @@
       "number": 13779,
       "title": "fix(revenue): bind scope time authority to exact raw bytes",
       "updated_at": "2026-09-13T10:39:37Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "astraz/exact-scope-terms-v2-20260913",
-      "created_at": "2026-09-13T10:38:36Z",
-      "draft": false,
-      "head_sha": "d644223e79bc86c0440d0095548a51f66bc04cb9",
-      "number": 13778,
-      "title": "revenue: require buyer acceptance of exact downstream scope terms",
-      "updated_at": "2026-09-13T10:39:36Z"
     },
     {
       "author": "woahwhattheheck",
@@ -47,24 +102,13 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "zarch-w4k9/lifecycle-ingestion-ci-20260913",
-      "created_at": "2026-09-13T10:37:02Z",
-      "draft": false,
-      "head_sha": "19011865cbd554cd1911981092a90555b90874fd",
-      "number": 13775,
-      "title": "ci(revenue): gate commercial lifecycle ingestion hardening",
-      "updated_at": "2026-09-13T10:39:37Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
       "branch": "zpk-r4v8/zindi-bias-discovery-v2-20260913",
       "created_at": "2026-09-13T10:35:15Z",
       "draft": false,
-      "head_sha": "8a306bd79409d5d066fd8f5c4c833daf5fc44b92",
+      "head_sha": "4edb0d3a51f62a28645e5d256d5d51f2a452a2b6",
       "number": 13769,
       "title": "Zindi: add robust bias-discovery evidence engine",
-      "updated_at": "2026-09-13T10:36:12Z"
+      "updated_at": "2026-09-13T10:40:48Z"
     },
     {
       "author": "woahwhattheheck",
@@ -97,7 +141,7 @@
       "head_sha": "deea95594e6d9944821830c264dcb2037e0e7ab5",
       "number": 13741,
       "title": "revenue: add evidence-bound opportunity qualifier",
-      "updated_at": "2026-09-13T10:34:00Z"
+      "updated_at": "2026-09-13T10:40:14Z"
     },
     {
       "author": "woahwhattheheck",
@@ -120,6 +164,17 @@
       "number": 13712,
       "title": "revenue: add San Diego RFP 13365 partner-readiness gate",
       "updated_at": "2026-09-13T10:03:07Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zherm-c7v/outbound-lease-authority-fence-20260913",
+      "created_at": "2026-09-13T09:46:37Z",
+      "draft": false,
+      "head_sha": "2b6598f90c107dfacc4ec2a975e070f5073f8952",
+      "number": 13702,
+      "title": "fix(outbound): bind lease receipts to live provider authority",
+      "updated_at": "2026-09-13T09:55:08Z"
     }
   ],
   "open_heads": {
@@ -142,16 +197,48 @@
     "13741": "deea95594e6d9944821830c264dcb2037e0e7ab5",
     "13753": "8872e641cb2efe959b9236e1f56252b43915eadb",
     "13756": "f0db7219f3c214269cb33ea57315d5350f276d47",
-    "13769": "8a306bd79409d5d066fd8f5c4c833daf5fc44b92",
-    "13775": "19011865cbd554cd1911981092a90555b90874fd",
+    "13769": "4edb0d3a51f62a28645e5d256d5d51f2a452a2b6",
     "13776": "3f14f58d1ade42ed6f462d988b63ff237d00b8e5",
-    "13778": "d644223e79bc86c0440d0095548a51f66bc04cb9",
-    "13779": "3f14f58d1ade42ed6f462d988b63ff237d00b8e5"
+    "13779": "3f14f58d1ade42ed6f462d988b63ff237d00b8e5",
+    "13781": "148080ea5840ae6917a68fbe872a470c0862655a"
   },
-  "pulls_listed": 24,
-  "pulls_listing": "PARTIAL",
-  "queue_depth_per_runner": 49.8,
+  "pulls_listed": 23,
+  "pulls_listing": "COMPLETE",
+  "queue_depth_per_runner": 57.2,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zarch-w4k9/lifecycle-ingestion-ci-final2-20260913",
+      "closed_at": "2026-09-13T10:40:34Z",
+      "head_sha": "19011865cbd554cd1911981092a90555b90874fd",
+      "merged_at": "2026-09-13T10:40:33Z",
+      "number": 13780,
+      "state": "MERGED",
+      "title": "ci(revenue): gate lifecycle ingestion hardening"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "astraz/exact-scope-terms-v2-20260913",
+      "closed_at": "2026-09-13T10:39:58Z",
+      "head_sha": "d644223e79bc86c0440d0095548a51f66bc04cb9",
+      "merged_at": "2026-09-13T10:39:58Z",
+      "number": 13778,
+      "state": "MERGED",
+      "title": "revenue: require buyer acceptance of exact downstream scope terms"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zarch-w4k9/lifecycle-ingestion-ci-20260913",
+      "closed_at": "2026-09-13T10:39:58Z",
+      "head_sha": "19011865cbd554cd1911981092a90555b90874fd",
+      "merged_at": null,
+      "number": 13775,
+      "state": "CLOSED",
+      "title": "ci(revenue): gate commercial lifecycle ingestion hardening"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -283,43 +370,10 @@
       "number": 13759,
       "state": "MERGED",
       "title": "hackathon: finalize Agents for Humans submission packet"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "fix/reconciliation-type-stability-main-ariadne-z-20260913",
-      "closed_at": "2026-09-13T10:23:53Z",
-      "head_sha": "f6b90a9a3079d93fe3f737edc5fc31a1a4adea3d",
-      "merged_at": null,
-      "number": 13732,
-      "state": "CLOSED",
-      "title": "superseded: reconciliation JSON type-stability repair"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zpyr-c9m7/mmsd-ai-governance-policy-core-20260913",
-      "closed_at": "2026-09-13T10:23:13Z",
-      "head_sha": "0c47d8c5e600d15f2381e40a2094aa16150bda6c",
-      "merged_at": "2026-09-13T10:23:12Z",
-      "number": 13752,
-      "state": "MERGED",
-      "title": "Add MMSD AI governance policy assessment core"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-noether-d7q4/scope-delivery-trusted-time-20260913",
-      "closed_at": "2026-09-13T10:22:37Z",
-      "head_sha": "33d1d977fd3064e9e1fc1e2794428b32b84886a6",
-      "merged_at": "2026-09-13T10:22:36Z",
-      "number": 13739,
-      "state": "MERGED",
-      "title": "fix(revenue): fence scope-to-delivery with trusted time"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-13T10:39:48Z",
+  "unchanged_since": "2026-09-13T10:40:50Z",
   "undatable_pulls": []
 }
