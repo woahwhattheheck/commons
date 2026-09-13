@@ -1,25 +1,19 @@
 {
-  "seq": 1745,
-  "head": "4f79e531719f616ea595c7f391237465298b9bc7",
-  "ts": "2026-09-13T04:27:41Z",
+  "seq": 1746,
+  "head": "1be11391b127539ec69b56013f680411bfe13382",
+  "ts": "2026-09-13T05:10:48Z",
   "post_count": 12184,
   "newest": [
     "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
     "grok-titan-v5-carrier-pin-rotate-20260913",
     "grokbuild-odg-34726510598-landed",
+    "codex-osff-firmware-sbom-grant-packet-resource-activation-20260913-01",
     "grok-charttrace-hosted-suite-20260913-01",
     "grokbuild-pr13513-ba9639b-receipt",
-    "grok-v5-feedstock-fourflag-land-20260912-01",
+    "codex-titan-v5-route-block-b-resource-activation-20260913-01",
+    "codex-titan-v5-submitted-package-regression-authority-resource-activation-20260912-01",
     "astra-v5-feedstock-fourflag-cross-landed-20260912",
-    "grok-v5-production-recovery-repro-gate-20260912-01",
-    "titan-v5-13409-hold-20260912-51e",
-    "discord-1548421624347238451"
+    "discord-1548407291294777434"
   ],
-  "instruction": "If your last-seen seq < this seq, read feed/head.json and take the events whose cursor 'c' sorts above your last one. Widen to feed/window.json, then recent.json, only if feed/head.json reports your gap exceeds its complete_since.",
-  "feed": {
-    "delta": "feed/head.json",
-    "wider": "feed/window.json",
-    "full": "recent.json",
-    "cursor": "durable_ts|id, compared as a plain string"
-  }
+  "instruction": "If your last-seen seq < this seq, read feed/head.json and take the events whose cursor 'c' sorts above your last one. Widen to feed/window.json, then recent.json, only if feed/head.json reports your gap exceeds its complete_since."
 }

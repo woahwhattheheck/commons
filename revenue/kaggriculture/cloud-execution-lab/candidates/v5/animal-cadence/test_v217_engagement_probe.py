@@ -1,3 +1,4 @@
+import json
 from pathlib import Path
 import unittest
 
@@ -84,6 +85,97 @@ class ProbeTests(unittest.TestCase):
         self.assertEqual(report['coverage_certified'], 1)
         self.assertEqual(report['counterfactual_plan'], 0)
 
+    def test_locked_rescue_path_fails_closed(self):
+        ns, policy = loaded_module()
+        tiles = [[None for _ in range(5)] for _ in range(5)]
+        tiles[2][0] = {'animal': 'SHEEP', 'fed_today': False, 'consecutive_unfed': 1}
+        tiles[2][1] = 'LOCKED'
+        tiles[3][3] = {'animal': 'COW', 'fed_today': False, 'consecutive_unfed': 1}
+        policy.tapes = [tape_with_future_feed()]
+        view = View([[2, 2], [3, 3]], tiles)
+        action = {'farmer': ['PASS'], 'hands': [['PASS']], 'market': []}
+        self.assertIsNone(ns['_v217_plan'](view, {'plan': 0}, 40, action, []))
+        report = ns['_V217_PROBE_REPORT']
+        self.assertEqual(report['coverage_certified'], 1)
+        self.assertEqual(report['counterfactual_plan'], 0)
+
+    def test_weed_rescue_path_fails_closed(self):
+        ns, policy = loaded_module()
+        tiles = [[None for _ in range(5)] for _ in range(5)]
+        tiles[2][0] = {'animal': 'SHEEP', 'fed_today': False, 'consecutive_unfed': 1}
+        tiles[2][1] = {'kind': 'WEED'}
+        tiles[3][3] = {'animal': 'COW', 'fed_today': False, 'consecutive_unfed': 1}
+        policy.tapes = [tape_with_future_feed()]
+        view = View([[2, 2], [3, 3]], tiles)
+        action = {'farmer': ['PASS'], 'hands': [['PASS']], 'market': []}
+        self.assertIsNone(ns['_v217_plan'](view, {'plan': 0}, 40, action, []))
+        report = ns['_V217_PROBE_REPORT']
+        self.assertEqual(report['coverage_certified'], 1)
+        self.assertEqual(report['counterfactual_plan'], 0)
+
+    def test_malformed_starvation_state_fails_closed_across_all_own_animals(self):
+        for strikes in (True, 1.0, -1):
+            with self.subTest(strikes=strikes):
+                ns, policy = loaded_module()
+                tiles = [[None for _ in range(5)] for _ in range(5)]
+                tiles[1][1] = {'animal': 'SHEEP', 'fed_today': False, 'consecutive_unfed': 1}
+                tiles[3][3] = {'animal': 'COW', 'fed_today': False, 'consecutive_unfed': 1}
+                tiles[4][4] = {'animal': 'GOOSE', 'fed_today': False,
+                               'consecutive_unfed': strikes}
+                policy.tapes = [tape_with_future_feed()]
+                view = View([[2, 2], [3, 3]], tiles)
+                action = {'farmer': ['PASS'], 'hands': [['PASS']], 'market': []}
+                self.assertIsNone(ns['_v217_plan'](view, {'plan': 0}, 40, action, []))
+                report = ns['_V217_PROBE_REPORT']
+                self.assertEqual(report['coverage_certified'], 1)
+                self.assertEqual(report['counterfactual_plan'], 0)
+
+    def test_malformed_farmer_wheat_fails_closed(self):
+        for wheat in (True, 1.0, -1):
+            with self.subTest(wheat=wheat):
+                ns, policy = loaded_module()
+                tiles = [[None for _ in range(5)] for _ in range(5)]
+                tiles[1][1] = {'animal': 'SHEEP', 'fed_today': False, 'consecutive_unfed': 1}
+                tiles[3][3] = {'animal': 'COW', 'fed_today': False, 'consecutive_unfed': 1}
+                policy.tapes = [tape_with_future_feed()]
+                view = View([[2, 2], [3, 3]], tiles, wheat=wheat)
+                action = {'farmer': ['PASS'], 'hands': [['PASS']], 'market': []}
+                self.assertIsNone(ns['_v217_plan'](view, {'plan': 0}, 40, action, []))
+                report = ns['_V217_PROBE_REPORT']
+                self.assertEqual(report['coverage_certified'], 1)
+                self.assertEqual(report['counterfactual_plan'], 0)
+
+    def test_malformed_future_wheat_reservation_fails_closed(self):
+        for qty in (True, 1.0, -1, '1'):
+            with self.subTest(qty=qty):
+                ns, policy = loaded_module()
+                tiles = [[None for _ in range(5)] for _ in range(5)]
+                tiles[1][1] = {'animal': 'SHEEP', 'fed_today': False, 'consecutive_unfed': 1}
+                tiles[3][3] = {'animal': 'COW', 'fed_today': False, 'consecutive_unfed': 1}
+                tape = tape_with_future_feed()
+                tape[41]['hands'] = [['PICKUP', 'WHEAT', qty]]
+                policy.tapes = [tape]
+                view = View([[2, 2], [3, 3]], tiles)
+                action = {'farmer': ['PASS'], 'hands': [['PASS']], 'market': []}
+                self.assertIsNone(ns['_v217_plan'](view, {'plan': 0}, 40, action, []))
+                report = ns['_V217_PROBE_REPORT']
+                self.assertEqual(report['coverage_certified'], 1)
+                self.assertEqual(report['counterfactual_plan'], 0)
+
+    def test_pickup_with_same_turn_wheat_market_fails_closed(self):
+        ns, policy = loaded_module()
+        tiles = [[None for _ in range(5)] for _ in range(5)]
+        tiles[1][1] = {'animal': 'SHEEP', 'fed_today': False, 'consecutive_unfed': 1}
+        tiles[3][3] = {'animal': 'COW', 'fed_today': False, 'consecutive_unfed': 1}
+        policy.tapes = [tape_with_future_feed()]
+        view = View([[2, 2], [3, 3]], tiles, wheat=0)
+        action = {'farmer': ['PASS'], 'hands': [['PASS']],
+                  'market': [['BUY_PRODUCT', 'WHEAT', 1]]}
+        self.assertIsNone(ns['_v217_plan'](view, {'plan': 0}, 40, action, []))
+        report = ns['_V217_PROBE_REPORT']
+        self.assertEqual(report['coverage_certified'], 1)
+        self.assertEqual(report['counterfactual_plan'], 0)
+
     def test_any_delayed_queue_fails_closed_even_without_feed(self):
         ns, policy = loaded_module()
         tiles = [[None for _ in range(5)] for _ in range(5)]
@@ -134,16 +226,27 @@ class ProbeTests(unittest.TestCase):
         files = {'b.py': b'b', 'a.py': b'a'}
         self.assertEqual(probe.archive_bytes(files), probe.archive_bytes(files))
 
-    def test_exact_repo_sources_are_pinned_and_transform_compile(self):
-        router_path = HERE.parent.parent / 'v3' / 'overlay' / 'r04_full_router.py'
-        evaluator_path = HERE.parents[3] / 'cloud-eval' / 'evaluate.py'
+    def test_checked_in_authorities_bind_production_router_evaluator_and_publisher(self):
+        manifest_path = HERE.parent / 'selective-carrot' / 'PRODUCTION-V3-PACKAGE-MANIFEST.json'
+        manifest = json.loads(manifest_path.read_text())
+        self.assertEqual(manifest['candidate_archive_sha256'], probe.PRODUCTION_SHA)
+        self.assertEqual(manifest['files'][probe.ROUTER], probe.ROUTER_SHA)
+        self.assertEqual(len(manifest['files']), probe.PRODUCTION_MEMBERS)
+
+        router_path = HERE.parent.parent / 'v4' / 'donor' / 'overlay' / probe.ROUTER
         router = router_path.read_bytes()
-        evaluator = evaluator_path.read_bytes()
         self.assertEqual(probe.digest(router), probe.ROUTER_SHA)
-        self.assertEqual(probe.digest(evaluator), probe.EVALUATOR_SHA)
         compile(probe.instrument_router(router), str(router_path), 'exec')
+
+        evaluator_path = HERE.parents[3] / 'cloud-eval' / 'evaluate.py'
+        evaluator = evaluator_path.read_bytes()
+        self.assertEqual(probe.digest(evaluator), probe.EVALUATOR_SHA)
         compile(probe.instrument_evaluator(evaluator), str(evaluator_path), 'exec')
-        self.assertTrue((HERE.parent / 'selective-carrot' / 'publication_custody.py').is_file())
+
+        publisher = HERE.parent / 'selective-carrot' / 'publication_custody.py'
+        self.assertTrue(publisher.is_file())
+        verifier = HERE / 'verify_v217_engagement_probe_exact.py'
+        self.assertTrue(verifier.is_file())
 
 
 if __name__ == '__main__':

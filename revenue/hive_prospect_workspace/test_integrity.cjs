@@ -72,17 +72,14 @@ test('present empty-string localStorage is corrupt, write-blocked, and left unto
   assert.equal(backing.value(), '');
 });
 
-test('a preview is invalidated by any later state mutation', () => {
-  const api = makeBaseApi(); integrity.install(api, globalThis);
+test('install leaves stale-preview ownership with the app controller', () => {
+  const api = makeBaseApi();
+  const originalCreateController = api.createController;
+  integrity.install(api, globalThis);
+  assert.equal(api.createController, originalCreateController);
   const controller = api.createController(makeModel(), { storage: makeStorage() });
-  const stale = controller.preview('csv', 'before.csv');
-  controller.saveSegment('Keep me', { q: 'acme' });
-  assert.throws(() => controller.commit(stale), /Preview is stale/i);
-  assert.equal(controller.getState().segments[0].name, 'Keep me');
-  assert.equal(controller.getState().accounts.length, 0);
-  const fresh = controller.preview('csv', 'after.csv');
-  controller.commit(fresh);
-  assert.equal(controller.getState().accounts.length, 1);
+  assert.equal(Object.prototype.hasOwnProperty.call(controller, 'integrityRevision'), false);
+  assert.equal(Object.prototype.hasOwnProperty.call(integrity, 'decorateController'), false);
 });
 
 function fakeSelect(value = '') {
