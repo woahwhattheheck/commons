@@ -372,7 +372,10 @@ def authorize_send(
     channel = _text(channel, "channel", max_len=32)
     if channel not in CHANNELS:
         _fail("unsupported send channel")
-    authorized_at = _timestamp(authorized_at, "authorized_at")[0]
+    authorized_at, authorized_dt = _timestamp(authorized_at, "authorized_at")
+    _, approved_dt = _timestamp(approved["owner_approval"]["approved_at"], "owner_approval.approved_at")
+    if authorized_dt < approved_dt:
+        _fail("send authorization cannot predate owner approval")
     payload = {
         "offer_sha256": approved["offer_sha256"],
         "owner_approval_hmac": approved["owner_approval"]["hmac_sha256"],
@@ -399,12 +402,17 @@ def verify_send_authority(contract: Mapping[str, Any], secret: bytes, *, trusted
     channel = _text(receipt["channel"], "send_authority.channel", max_len=32)
     if channel not in CHANNELS:
         _fail("unsupported send channel")
+    authorized_at, authorized_dt = _timestamp(receipt["authorized_at"], "send_authority.authorized_at")
+    _, approved_dt = _timestamp(contract["owner_approval"]["approved_at"], "owner_approval.approved_at")
+    _, valid_dt = _timestamp(contract["offer"]["valid_until"], "offer.valid_until")
+    if authorized_dt < approved_dt or authorized_dt > valid_dt:
+        _fail("send authorization timestamp outside authorized offer window")
     payload = {
         "offer_sha256": _sha256(receipt["offer_sha256"], "send_authority.offer_sha256"),
         "owner_approval_hmac": _sha256(receipt["owner_approval_hmac"], "send_authority.owner_approval_hmac"),
         "destination_sha256": _sha256(receipt["destination_sha256"], "send_authority.destination_sha256"),
         "channel": channel,
-        "authorized_at": _timestamp(receipt["authorized_at"], "send_authority.authorized_at")[0],
+        "authorized_at": authorized_at,
     }
     if payload["offer_sha256"] != contract["offer_sha256"]:
         _fail("send authority is bound to a different offer")
@@ -439,8 +447,11 @@ def capture_buyer_acceptance(
     _, created_dt = _timestamp(offer["created_at"], "offer.created_at")
     _, valid_dt = _timestamp(offer["valid_until"], "offer.valid_until")
     _, now_dt = _timestamp(trusted_now, "trusted_now")
+    _, authorized_dt = _timestamp(sent_authorized["send_authority"]["authorized_at"], "send_authority.authorized_at")
     if accepted_dt < created_dt or accepted_dt > valid_dt:
         _fail("buyer acceptance timestamp outside offer validity")
+    if accepted_dt < authorized_dt:
+        _fail("buyer acceptance cannot predate send authorization")
     if accepted_dt > now_dt:
         _fail("buyer acceptance is in the future relative to trusted_now")
     evidence = {
