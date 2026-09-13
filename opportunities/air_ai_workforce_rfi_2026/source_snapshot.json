@@ -1,0 +1,89 @@
+{
+  "authority": {
+    "air_contact_authorized": false,
+    "award_or_revenue_claim_authorized": false,
+    "participant_data_access_authorized": false,
+    "partner_contact_authorized": false,
+    "pricing_or_contract_commitment_authorized": false,
+    "submittable_submission_authorized": false
+  },
+  "buyer": "American Institutes for Research",
+  "checked_at": "2026-09-13T10:45:00Z",
+  "eligible_respondent_types": [
+    "community-based organizations",
+    "workforce intermediaries",
+    "postsecondary and training providers",
+    "employers",
+    "public agencies",
+    "technology providers",
+    "other workforce stakeholders"
+  ],
+  "focus_areas": [
+    "Skill Training & Development",
+    "Career Navigation & Job Placement",
+    "Basic Needs",
+    "Personalized Support"
+  ],
+  "future_funding_or_invitation_guaranteed": false,
+  "information_due_at": "2026-10-02T16:00:00Z",
+  "maturity_choices": [
+    "Concept",
+    "Prototype",
+    "Pilot",
+    "Deployed solution"
+  ],
+  "notification_window": "week of 2026-10-26",
+  "official_sources": [
+    {
+      "class": "OFFICIAL",
+      "label": "AIR RFI PDF",
+      "url": "https://www.air.org/sites/default/files/2026-08/AIR-RFI-Building-an-Evidence-Network-for-AI-in-Workforce-Systems.pdf"
+    },
+    {
+      "class": "OFFICIAL",
+      "label": "AIR artificial intelligence program page",
+      "url": "https://www.air.org/artificial-intelligence-air"
+    },
+    {
+      "class": "OFFICIAL",
+      "label": "AIR RFI announcement",
+      "url": "https://www.air.org/resource/blog-post/we-want-hear-you-how-can-ai-help-workers-prepare-adapt-and-thrive"
+    }
+  ],
+  "opportunity_id": "AIR-AI-WORKFORCE-EVIDENCE-NETWORK-RFI-2026",
+  "prompts": [
+    {"name": "Project Title", "number": 1, "word_limit": null},
+    {"name": "Contact Information", "number": 2, "word_limit": null},
+    {"name": "Organizational Background", "number": 3, "word_limit": 200},
+    {"name": "Overview of AI-Enabled Workforce Innovation", "number": 4, "word_limit": 300},
+    {"name": "Workforce Challenge", "number": 5, "word_limit": 200},
+    {"name": "Key Learning Questions", "number": 6, "word_limit": 200},
+    {"name": "Population(s) of Focus", "number": 7, "word_limit": 100},
+    {"name": "Technical Approach, Models, and Data", "number": 8, "word_limit": 300},
+    {"name": "Maturity Level", "number": 9, "word_limit": null},
+    {"name": "Early Results or Evidence", "number": 10, "word_limit": 200},
+    {"name": "Responsible AI and Safeguards", "number": 11, "word_limit": 200},
+    {"name": "Opportunities for Partnership with AIR", "number": 12, "word_limit": 150}
+  ],
+  "release_date": "2026-09-04",
+  "respondent_characteristics": [
+    "established track record supporting career readiness/job entry among youth and/or adult upskilling/reskilling/lifelong learning",
+    "clear learning questions",
+    "meaningful worker voice",
+    "timely evidence-to-action potential"
+  ],
+  "review_criteria": [
+    "fit with AIR focus areas",
+    "clarity of workforce challenge and AI use case",
+    "potential to improve workforce outcomes or expand opportunity",
+    "feasibility of producing useful evidence",
+    "responsible AI approach",
+    "meaningful role for AIR partnership"
+  ],
+  "rfi_has_award": false,
+  "rfp_pdf_bytes_locally_acquired": false,
+  "rfp_pdf_sha256": null,
+  "schema": "air.ai_workforce_rfi.source_snapshot/v1",
+  "submission_channel": "Submittable",
+  "title": "Building an Evidence Network for Artificial Intelligence (AI) in Workforce Systems"
+}
