@@ -20,19 +20,20 @@ ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-from host import settled_awards, smart_outreach  # noqa: E402
+from host import settled_awards, settled_cash, smart_outreach  # noqa: E402
 
 
 CATALOG_PATH = ROOT / "revenue" / "right_now" / "catalog.json"
 DIAGNOSTIC_PATH = ROOT / "revenue" / "right_now" / "diagnostic_offer.json"
 AUTOPSY_PATH = ROOT / "revenue" / "right_now" / "autopsy_offer.json"
 SETTLED_AWARDS_PATH = ROOT / "revenue" / "right_now" / "settled_awards.json"
+SETTLED_CASH_PATH = ROOT / "revenue" / "right_now" / "settled_cash.json"
 OUTREACH_PATH = ROOT / "revenue" / "smart_outreach" / "candidates.json"
 PAYMENT_PATH = ROOT / "revenue" / "payment_ready" / "current_receipt.json"
 HUMAN_PATH = ROOT / "revenue" / "human_outcomes" / "offers.json"
 SURVIVAL_PATH = ROOT / "revenue" / "production_survival" / "offer.json"
 RECEIPTS_PATH = ROOT / "revenue" / "payment_ready" / "outreach_receipts"
-SCHEMA_VERSION = "commons-right-now-control/v2"
+SCHEMA_VERSION = "commons-right-now-control/v3"
 DECISION_PRIORITY = {
     "READY_TO_DRAFT": 0,
     "RESEARCH_REQUIRED": 1,
@@ -225,6 +226,7 @@ def validate_catalog(catalog: dict[str, Any]) -> dict[str, Any]:
 
 
 def payment_truth(value: dict[str, Any]) -> dict[str, Any]:
+    """Project one offer-specific payment receipt without making it global cash truth."""
     facts = value.get("facts")
     if not isinstance(facts, dict):
         raise ControlError("payment receipt facts must be an object")
@@ -234,9 +236,12 @@ def payment_truth(value: dict[str, Any]) -> dict[str, Any]:
     cash_claimed = value.get("cash_claimed")
     if type(cash_claimed) is not bool:
         raise ControlError("payment receipt cash_claimed must be boolean")
+    if cash_claimed != (cash > 0):
+        raise ControlError("offer-specific payment receipt cash claim is inconsistent")
     processor = facts.get("processor_payment")
     return {
         "receipt_id": value.get("receipt_id"),
+        "offer_id": value.get("offer_id"),
         "stage": value.get("stage"),
         "state": value.get("state"),
         "next_stage": value.get("next_stage"),
@@ -252,14 +257,15 @@ def build_control() -> dict[str, Any]:
     awards = settled_awards.summarize_ledger(
         settled_awards.read_ledger(SETTLED_AWARDS_PATH)
     )
+    cash = settled_cash.summarize_ledger(
+        settled_cash.read_ledger(SETTLED_CASH_PATH)
+    )
     outreach = smart_outreach.build_plan(
         smart_outreach.read_object(OUTREACH_PATH), RECEIPTS_PATH
     )
     catalog_cash = catalog["truth"]["collected_cash_usd"]
-    if catalog_cash != payment["collected_cash_usd"]:
-        raise ControlError("cash truth differs between catalog and payment receipt")
-    if payment["cash_claimed"] != (catalog_cash > 0):
-        raise ControlError("cash claim is inconsistent with collected cash")
+    if cash["settled_usd"] != str(catalog_cash):
+        raise ControlError("global cash truth differs from the settled-cash ledger")
 
     offers = []
     for row in catalog["offers"]:
@@ -304,9 +310,9 @@ def build_control() -> dict[str, Any]:
     blockers = [
         {
             "rank": 1,
-            "id": "LIVE_PAYMENT_EVIDENCE",
+            "id": "DIRECT_OFFER_PAYMENT_EVIDENCE",
             "owner": "FOUNDER_OR_CONNECTED_PROCESSOR_LANE",
-            "condition": "A chargeable buyer path and processor receipt are independently evidenced.",
+            "condition": "A current Commons offer records its own chargeable buyer payment receipt.",
             "current": payment["processor_payment"],
         },
         {
@@ -330,6 +336,7 @@ def build_control() -> dict[str, Any]:
         DIAGNOSTIC_PATH,
         AUTOPSY_PATH,
         SETTLED_AWARDS_PATH,
+        SETTLED_CASH_PATH,
         OUTREACH_PATH,
         PAYMENT_PATH,
         HUMAN_PATH,
@@ -342,7 +349,7 @@ def build_control() -> dict[str, Any]:
     return {
         "schema_version": SCHEMA_VERSION,
         "kind": "RIGHT_NOW_REVENUE_CONTROL",
-        "as_of": _latest_as_of(catalog["as_of"], awards["as_of"]),
+        "as_of": _latest_as_of(catalog["as_of"], awards["as_of"], cash["as_of"]),
         "truth": {
             "collected_cash_usd": catalog_cash,
             "verified_positive_replies": catalog["truth"]["verified_positive_replies"],
@@ -351,6 +358,10 @@ def build_control() -> dict[str, Any]:
             "prospects_evaluated": outreach["truth"]["prospects_evaluated"],
             "ready_to_draft": counts["READY_TO_DRAFT"],
             "transport_actions": outreach["truth"]["transport_actions"],
+            "settled_cash_receipts": cash["settled_receipts"],
+            "settled_cash_usd": cash["settled_usd"],
+            "cash_bank_availability_asserted": cash["bank_availability_asserted"],
+            "cash_withdrawability_asserted": cash["withdrawability_asserted"],
             "paid_awards": awards["paid_awards"],
             "settled_amounts_by_currency": awards["totals_by_currency"],
             "usd_conversion_asserted": awards["usd_conversion_asserted"],
@@ -358,6 +369,7 @@ def build_control() -> dict[str, Any]:
             "award_withdrawability_asserted": awards["withdrawability_asserted"],
         },
         "payment": payment,
+        "settled_cash": cash,
         "settled_awards": awards,
         "offers": offers,
         "execution_queue": queue,
@@ -398,11 +410,13 @@ def main() -> int:
                 f"{len(control['execution_queue'])} opportunities "
                 f"{control['truth']['transport_actions']} transports "
                 f"USD {control['truth']['collected_cash_usd']} cash · "
+                f"{control['truth']['settled_cash_receipts']} provider receipt · "
                 f"{control['truth']['paid_awards']} paid award · {totals} settled"
             )
     except (
         ControlError,
         settled_awards.SettlementError,
+        settled_cash.CashSettlementError,
         smart_outreach.OutreachError,
     ) as error:
         print(f"INVALID: {error}", file=sys.stderr)
