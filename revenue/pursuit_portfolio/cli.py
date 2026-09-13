@@ -5,14 +5,9 @@ import argparse
 import json
 
 from .core import PortfolioError, load_json_bytes
-from .current import (
-    MAX_AUTHORITY_BYTES,
-    load_current_input,
-    read_published_authorized,
-    read_regular_bytes,
-)
+from .current import MAX_AUTHORITY_BYTES, load_current_input, read_regular_bytes
 from .host import compile_current, verify_current
-from .publisher import publish_authorized
+from .publisher import publish_current, read_current
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -21,7 +16,7 @@ def main(argv: list[str] | None = None) -> int:
 
     compile_p = sub.add_parser(
         "compile",
-        help="compile a current owner-review portfolio from authenticated upstream authority",
+        help="compile a fixed-host-authenticated current owner-review portfolio",
     )
     compile_p.add_argument("input")
     compile_p.add_argument("authority")
@@ -29,7 +24,7 @@ def main(argv: list[str] | None = None) -> int:
 
     verify_p = sub.add_parser(
         "verify",
-        help="verify historical integrity plus fresh-current allocation semantics",
+        help="verify host seal, historical integrity, and fresh-current semantics",
     )
     verify_p.add_argument("output_dir")
 
@@ -42,17 +37,19 @@ def main(argv: list[str] | None = None) -> int:
             )
             authority = load_json_bytes(authority_raw, "upstream authority")
             value = compile_current(source, authority)
-            publish_authorized(value, args.output_dir)
+            publish_current(value, args.output_dir)
+            authorized = value.authorized
             print(
                 json.dumps(
                     {
-                        "authority_sha256": value.current_receipt["authority_sha256"],
-                        "current_receipt_sha256": value.current_receipt["receipt_sha256"],
+                        "authority_sha256": authorized.current_receipt["authority_sha256"],
+                        "current_receipt_sha256": authorized.current_receipt["receipt_sha256"],
+                        "host_seal_sha256": value.host_seal["hmac_sha256"],
                         "output_dir": args.output_dir,
-                        "selected_opportunity_ids": value.compiled.result[
+                        "selected_opportunity_ids": authorized.compiled.result[
                             "selected_opportunity_ids"
                         ],
-                        "selected_priority_units": value.compiled.result[
+                        "selected_priority_units": authorized.compiled.result[
                             "selected_priority_units"
                         ],
                     },
@@ -61,7 +58,7 @@ def main(argv: list[str] | None = None) -> int:
             )
             return 0
 
-        result, markdown, receipt, authority, current_receipt = read_published_authorized(
+        result, markdown, receipt, authority, current_receipt, host_seal = read_current(
             args.output_dir
         )
         verified = verify_current(
@@ -70,6 +67,7 @@ def main(argv: list[str] | None = None) -> int:
             receipt,
             authority,
             current_receipt,
+            host_seal,
         )
         print(json.dumps(verified, sort_keys=True))
         return 0
