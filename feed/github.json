@@ -1,13 +1,13 @@
 {
   "counts": {
-    "open_issues": 3,
-    "open_pull_requests": 12,
-    "runs_in_progress": 15,
-    "runs_queued": 1090
+    "open_issues": 4,
+    "open_pull_requests": 9,
+    "runs_in_progress": 13,
+    "runs_queued": 739
   },
   "counts_source": "graphql",
   "degraded": [],
-  "drafts": 4,
+  "drafts": 3,
   "longest_open": [
     {
       "author": "woahwhattheheck",
@@ -15,10 +15,10 @@
       "branch": "astra/titan-v5-eod-capacity-rescue-20260912",
       "created_at": "2026-09-12T18:39:38Z",
       "draft": true,
-      "head_sha": "9cbc5857b32cbeae5fd6237579d56bb9c0670674",
+      "head_sha": "2ef189e832881ae38111bf9318ee7bba80b204cb",
       "number": 13400,
       "title": "TITAN V5: converge EOD shed-capacity rescue",
-      "updated_at": "2026-09-12T23:43:34Z"
+      "updated_at": "2026-09-12T23:58:40Z"
     },
     {
       "author": "woahwhattheheck",
@@ -29,7 +29,7 @@
       "head_sha": "813c9d49d5a423561c6db35fdca5bdfe44418d14",
       "number": 13415,
       "title": "TITAN V5: reduce exact V3.1/V4 gauntlet into repair hotspots",
-      "updated_at": "2026-09-12T23:27:20Z"
+      "updated_at": "2026-09-13T00:06:12Z"
     },
     {
       "author": "woahwhattheheck",
@@ -41,74 +41,6 @@
       "number": 13471,
       "title": "TITAN V5: witness first production-v3 action divergence",
       "updated_at": "2026-09-12T23:37:06Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "gpt/titan-v5-p02-goose-capacity-economy-20260912",
-      "created_at": "2026-09-12T23:14:59Z",
-      "draft": false,
-      "head_sha": "2d29e49f3fe5b5943668b8cbe8551f41cf8111ae",
-      "number": 13485,
-      "title": "TITAN V5 P02: bounded extra-goose capacity/economy carrier",
-      "updated_at": "2026-09-12T23:43:28Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "gpt/titan-v5-route-matrix-row-receipt-20260912",
-      "created_at": "2026-09-12T23:15:34Z",
-      "draft": false,
-      "head_sha": "48d7b19ab36e2df080982937965d66c0e1588245",
-      "number": 13486,
-      "title": "TITAN V5: bind route-matrix native rows to public step-144 snapshots",
-      "updated_at": "2026-09-12T23:42:17Z"
-    }
-  ],
-  "newest_pulls": [
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "astra/titan-v5-v217-probe-postmerge-corrective-20260912",
-      "created_at": "2026-09-12T23:43:09Z",
-      "draft": false,
-      "head_sha": "16d394dd2f1dc98e5f5946081d40f514f8b9d33e",
-      "number": 13510,
-      "title": "TITAN V5: fail-close V217 engagement probe routes",
-      "updated_at": "2026-09-12T23:43:09Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "astra/commons-canonical-pr-claims-20260912",
-      "created_at": "2026-09-12T23:42:22Z",
-      "draft": false,
-      "head_sha": "b9bdd871a7c4b581532b22988e8d28aaa49bf070",
-      "number": 13509,
-      "title": "coordination: canonicalize PR review claims before Slack TAKE",
-      "updated_at": "2026-09-12T23:43:27Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-helix/commons-canonical-claim-aliases-20260912",
-      "created_at": "2026-09-12T23:39:36Z",
-      "draft": false,
-      "head_sha": "a24c3006734e788ead1db228c045e742e462dbb4",
-      "number": 13505,
-      "title": "Commons: make PR claim aliases atomic",
-      "updated_at": "2026-09-12T23:43:23Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "astra-z/experience-retrieval-schema-custody-20260912",
-      "created_at": "2026-09-12T23:38:48Z",
-      "draft": false,
-      "head_sha": "7169dd9a996ff9f15775a024d7d9ed446da218c6",
-      "number": 13503,
-      "title": "Harden Commons experience retrieval schema custody",
-      "updated_at": "2026-09-12T23:43:09Z"
     },
     {
       "author": "woahwhattheheck",
@@ -116,54 +48,89 @@
       "branch": "gpt/titan-v5-v217-probe-corrective-20260912",
       "created_at": "2026-09-12T23:38:48Z",
       "draft": false,
-      "head_sha": "7ecd91b91242743723c94c83e3f6bbc2e49604ca",
+      "head_sha": "41d05b2e6e5824fcb1b598b3bf36003cfcaba2f5",
       "number": 13502,
       "title": "TITAN V5: correct V217 engagement evidence gate",
-      "updated_at": "2026-09-12T23:42:31Z"
+      "updated_at": "2026-09-13T02:03:05Z"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "astra/v5-p04-preregistered-route-selector-20260912",
-      "created_at": "2026-09-12T23:38:21Z",
-      "draft": true,
-      "head_sha": "d99271068218fb2dbede690883df9d07123d00fb",
-      "number": 13501,
-      "title": "TITAN V5 P04: preregister held-out route selector protocol",
-      "updated_at": "2026-09-12T23:42:55Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "gpt/titan-v5-p01-productive-expansion-20260912",
-      "created_at": "2026-09-12T23:30:22Z",
+      "branch": "astra/titan-v5-component-handoff-exporter-20260912",
+      "created_at": "2026-09-12T23:44:20Z",
       "draft": false,
-      "head_sha": "f94995b818b0395b88d4ed9a08adbaaed0c09a4c",
-      "number": 13490,
-      "title": "TITAN V5 P01: reject-safe post-merge corrective",
-      "updated_at": "2026-09-12T23:43:30Z"
+      "head_sha": "1c40486e14d7212d82c9941412ca7a96db6aec45",
+      "number": 13512,
+      "title": "TITAN V5: bind exporter overlap custody to authenticated staging receipts",
+      "updated_at": "2026-09-13T01:45:42Z"
+    }
+  ],
+  "newest_pulls": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "mombasa/swarm-review-execution-evidence-clean-20260912",
+      "created_at": "2026-09-13T01:48:07Z",
+      "draft": false,
+      "head_sha": "fb036b365808e157aef909fc8f34f79180361c11",
+      "number": 13533,
+      "title": "coordination: clean successor for exact-head execution evidence gate",
+      "updated_at": "2026-09-13T01:51:40Z"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "gpt/titan-v5-route-matrix-row-receipt-20260912",
-      "created_at": "2026-09-12T23:15:34Z",
+      "branch": "codex/command-center-deathstar-cooldown-20260912",
+      "created_at": "2026-09-13T00:51:33Z",
       "draft": false,
-      "head_sha": "48d7b19ab36e2df080982937965d66c0e1588245",
-      "number": 13486,
-      "title": "TITAN V5: bind route-matrix native rows to public step-144 snapshots",
-      "updated_at": "2026-09-12T23:42:17Z"
+      "head_sha": "b9db151337b931479fde8a76d87253acaa4b5737",
+      "number": 13531,
+      "title": "Deathstar email tracker and shared operation telemetry",
+      "updated_at": "2026-09-13T01:51:17Z"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "gpt/titan-v5-p02-goose-capacity-economy-20260912",
-      "created_at": "2026-09-12T23:14:59Z",
+      "branch": "astra/v5-p04-committed-evidence-authority-20260912",
+      "created_at": "2026-09-13T00:09:59Z",
       "draft": false,
-      "head_sha": "2d29e49f3fe5b5943668b8cbe8551f41cf8111ae",
-      "number": 13485,
-      "title": "TITAN V5 P02: bounded extra-goose capacity/economy carrier",
-      "updated_at": "2026-09-12T23:43:28Z"
+      "head_sha": "ba6fff0f638768602d9c32e3f8bdf70f2481e636",
+      "number": 13529,
+      "title": "TITAN V5 P04: authenticate selector evidence from canonical main rows",
+      "updated_at": "2026-09-13T00:15:01Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "astra-zeta/shared-holding-future-heartbeat-20260912",
+      "created_at": "2026-09-13T00:07:29Z",
+      "draft": false,
+      "head_sha": "6a5e85067908c7f4b138ce068eb26ab8ed93fd5c",
+      "number": 13528,
+      "title": "coordination: fail closed on shared holding clock skew",
+      "updated_at": "2026-09-13T00:11:09Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "astra/titan-v5-component-handoff-exporter-20260912",
+      "created_at": "2026-09-12T23:44:20Z",
+      "draft": false,
+      "head_sha": "1c40486e14d7212d82c9941412ca7a96db6aec45",
+      "number": 13512,
+      "title": "TITAN V5: bind exporter overlap custody to authenticated staging receipts",
+      "updated_at": "2026-09-13T01:45:42Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "gpt/titan-v5-v217-probe-corrective-20260912",
+      "created_at": "2026-09-12T23:38:48Z",
+      "draft": false,
+      "head_sha": "41d05b2e6e5824fcb1b598b3bf36003cfcaba2f5",
+      "number": 13502,
+      "title": "TITAN V5: correct V217 engagement evidence gate",
+      "updated_at": "2026-09-13T02:03:05Z"
     },
     {
       "author": "woahwhattheheck",
@@ -175,194 +142,213 @@
       "number": 13471,
       "title": "TITAN V5: witness first production-v3 action divergence",
       "updated_at": "2026-09-12T23:37:06Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "astra/v5-v31-v4-gauntlet-reducer-20260912",
+      "created_at": "2026-09-12T19:46:29Z",
+      "draft": true,
+      "head_sha": "813c9d49d5a423561c6db35fdca5bdfe44418d14",
+      "number": 13415,
+      "title": "TITAN V5: reduce exact V3.1/V4 gauntlet into repair hotspots",
+      "updated_at": "2026-09-13T00:06:12Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "astra/titan-v5-eod-capacity-rescue-20260912",
+      "created_at": "2026-09-12T18:39:38Z",
+      "draft": true,
+      "head_sha": "2ef189e832881ae38111bf9318ee7bba80b204cb",
+      "number": 13400,
+      "title": "TITAN V5: converge EOD shed-capacity rescue",
+      "updated_at": "2026-09-12T23:58:40Z"
     }
   ],
   "open_heads": {
-    "13400": "9cbc5857b32cbeae5fd6237579d56bb9c0670674",
+    "13400": "2ef189e832881ae38111bf9318ee7bba80b204cb",
     "13415": "813c9d49d5a423561c6db35fdca5bdfe44418d14",
     "13471": "91d17d19e2a762318d79058b042be10c63c6743a",
-    "13485": "2d29e49f3fe5b5943668b8cbe8551f41cf8111ae",
-    "13486": "48d7b19ab36e2df080982937965d66c0e1588245",
-    "13490": "f94995b818b0395b88d4ed9a08adbaaed0c09a4c",
-    "13501": "d99271068218fb2dbede690883df9d07123d00fb",
-    "13502": "7ecd91b91242743723c94c83e3f6bbc2e49604ca",
-    "13503": "7169dd9a996ff9f15775a024d7d9ed446da218c6",
-    "13505": "a24c3006734e788ead1db228c045e742e462dbb4",
-    "13509": "b9bdd871a7c4b581532b22988e8d28aaa49bf070",
-    "13510": "16d394dd2f1dc98e5f5946081d40f514f8b9d33e"
+    "13502": "41d05b2e6e5824fcb1b598b3bf36003cfcaba2f5",
+    "13512": "1c40486e14d7212d82c9941412ca7a96db6aec45",
+    "13528": "6a5e85067908c7f4b138ce068eb26ab8ed93fd5c",
+    "13529": "ba6fff0f638768602d9c32e3f8bdf70f2481e636",
+    "13531": "b9db151337b931479fde8a76d87253acaa4b5737",
+    "13533": "fb036b365808e157aef909fc8f34f79180361c11"
   },
-  "pulls_listed": 12,
+  "pulls_listed": 9,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 72.7,
+  "queue_depth_per_runner": 56.8,
   "recently_closed": [
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "ariadne-z/actions-queue-triage-20260912",
-      "closed_at": "2026-09-12T23:42:31Z",
-      "head_sha": "c2bf4fb569e17d50c57ff0283471aa73e0b698f5",
-      "merged_at": "2026-09-12T23:42:31Z",
-      "number": 13508,
-      "state": "MERGED",
-      "title": "Add fail-closed Actions queue triage tool"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "astra/v5-v217-probe-authority-fix-20260912",
-      "closed_at": "2026-09-12T23:41:51Z",
-      "head_sha": "19cc55ae1d7756caead6ddd967b29ce66be6708b",
+      "branch": "fischer/futo-portable-roads-20260912",
+      "closed_at": "2026-09-13T02:07:57Z",
+      "head_sha": "d9b9fc9ca30c687766a8782e368a9f3af229f32b",
       "merged_at": null,
-      "number": 13507,
+      "number": 13535,
       "state": "CLOSED",
-      "title": "TITAN V5: fix V217 exact-source authority gate"
+      "title": "docs(revenue): add FUTO portable roads microgrant packet"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "z-ariadne/v5-composer-shared-publication-custody-20260912",
-      "closed_at": "2026-09-12T23:41:14Z",
-      "head_sha": "9b1c20d498d965016885c8e1e0f3326e2d43939c",
-      "merged_at": "2026-09-12T23:41:14Z",
-      "number": 13496,
-      "state": "MERGED",
-      "title": "TITAN V5: converge staging composer on shared publication custody"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "daedalus/v217-probe-path-postmerge-20260912",
-      "closed_at": "2026-09-12T23:40:16Z",
-      "head_sha": "40a754348fa0e06ace01377adc9b02fc60369b59",
+      "branch": "ariadne-z/swarm-review-execution-evidence-20260912",
+      "closed_at": "2026-09-13T01:51:46Z",
+      "head_sha": "0d46e36f693bfa84e17d76bf286b06a8e2ba0be8",
       "merged_at": null,
-      "number": 13506,
+      "number": 13526,
       "state": "CLOSED",
-      "title": "Fix V217 engagement probe exact router source path"
+      "title": "coordination: require exact-head execution evidence for code merges [superseded by #13533]"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "astra-zeta/experience-compiler-prune-stale-patterns-20260912",
-      "closed_at": "2026-09-12T23:39:51Z",
-      "head_sha": "d88596c51a0e73ae251925870dbe5c3a1b770a85",
-      "merged_at": "2026-09-12T23:39:51Z",
-      "number": 13504,
+      "branch": "gpt/p01-seed-completion-telemetry-20260912",
+      "closed_at": "2026-09-13T01:43:51Z",
+      "head_sha": "838ba773a414e038a134834e35c203267cdedd26",
+      "merged_at": "2026-09-13T01:43:51Z",
+      "number": 13527,
       "state": "MERGED",
-      "title": "Prune stale generated experience pattern pages"
+      "title": "TITAN V5 P01: neutralize reject authority without full seed completion proof"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "astra/p05-weed-queue-pass-catchup-20260912",
-      "closed_at": "2026-09-12T23:39:42Z",
-      "head_sha": "e83c95ff42badda07e3f3cc5e23f7e226cd3bb6c",
-      "merged_at": "2026-09-12T23:39:42Z",
-      "number": 13498,
+      "branch": "codex/titan-v5-route-block-b-resource-20260913-01",
+      "closed_at": "2026-09-13T01:15:45Z",
+      "head_sha": "d071a573661f1abba7bd0cd3730ef9568331037b",
+      "merged_at": "2026-09-13T01:15:45Z",
+      "number": 13532,
       "state": "MERGED",
-      "title": "TITAN V5 P05: repay weed queue debt in authored PASS slots"
+      "title": "Resource activation: TITAN V5 route Block-B evidence"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "astra/v5-single-staging-composer-20260912",
-      "closed_at": "2026-09-12T23:39:33Z",
-      "head_sha": "fcc086e967c5eec2a9b5ec995c440a1c79e9822c",
-      "merged_at": null,
-      "number": 13500,
-      "state": "CLOSED",
-      "title": "TITAN V5: delegate staging composer publication custody"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "astra/titan-v5-component-handoff-exporter-20260912",
-      "closed_at": "2026-09-12T23:39:00Z",
-      "head_sha": "9efe1c18ab4e5705705b66f6c07fb76d49d2d7b0",
-      "merged_at": "2026-09-12T23:39:00Z",
-      "number": 13494,
+      "branch": "gpt/titan-v5-p01-productive-expansion-20260912",
+      "closed_at": "2026-09-12T23:45:09Z",
+      "head_sha": "ced49e918c4945de50b4fbbeae9a2185446fee2f",
+      "merged_at": "2026-09-12T23:45:08Z",
+      "number": 13490,
       "state": "MERGED",
-      "title": "TITAN V5: export measured winners into the single staging composer"
+      "title": "TITAN V5 P01: reject-safe post-merge corrective"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "gpt/titan-v5-prod-recovery-shared-custody-20260912",
-      "closed_at": "2026-09-12T23:37:50Z",
-      "head_sha": "e5dedb4d3ccfc85489ef05b7c0f59893b0c71831",
-      "merged_at": "2026-09-12T23:37:50Z",
-      "number": 13499,
+      "branch": "astra/v5-production-v3-attribution-native-9901-20260912",
+      "closed_at": "2026-09-12T23:29:11Z",
+      "head_sha": "8671faab5dc4fa5f1bcb13b3e436108bccfd2bd0",
+      "merged_at": "2026-09-12T23:29:11Z",
+      "number": 13489,
       "state": "MERGED",
-      "title": "TITAN V5: converge production recovery on shared publication custody"
+      "title": "TITAN V5: land completed consumer pair and shared C00 controls"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "astra-zephyr/experience-retrieval-local-gate-20260912",
-      "closed_at": "2026-09-12T23:37:14Z",
-      "head_sha": "43a335d5fb43b62a497b531cbc2cd29f0bbad443",
-      "merged_at": "2026-09-12T23:37:14Z",
-      "number": 13497,
+      "branch": "gpt/titan-v5-p01-productive-expansion-20260912",
+      "closed_at": "2026-09-12T23:22:39Z",
+      "head_sha": "f24dc9134f9e714035702682b97105587dd154c3",
+      "merged_at": "2026-09-12T23:22:39Z",
+      "number": 13479,
       "state": "MERGED",
-      "title": "docs: run retrieval tests in experience compiler local gate"
+      "title": "TITAN V5 P01: gate V219 tomato expansion on route payback"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "astra/titan-frontier-research-20260912",
-      "closed_at": "2026-09-12T23:36:43Z",
-      "head_sha": "e304a523b07c934b73e14c8b405e2bfb388713a0",
-      "merged_at": "2026-09-12T23:36:43Z",
-      "number": 13495,
+      "branch": "gpt/titan-v5-prod-recovery-pair-custody-20260912",
+      "closed_at": "2026-09-12T23:19:30Z",
+      "head_sha": "5e58e248d2ed163b127f93c1ca0f33d843c6d4d4",
+      "merged_at": "2026-09-12T23:19:30Z",
+      "number": 13488,
       "state": "MERGED",
-      "title": "Record TITAN production and route experiment evidence"
+      "title": "TITAN V5: make production-recovery publication pair-safe"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "astra/commons-cross-project-experience-20260912",
-      "closed_at": "2026-09-12T23:33:49Z",
-      "head_sha": "acd920125d3e2438e8ed8a287fff83e5376033ef",
-      "merged_at": "2026-09-12T23:33:49Z",
-      "number": 13492,
+      "branch": "astra/v5-mirror-sell-publication-custody-postmerge-20260912",
+      "closed_at": "2026-09-12T23:18:41Z",
+      "head_sha": "dc30532cf09308f2684b5b7d814339bd4363f600",
+      "merged_at": "2026-09-12T23:18:41Z",
+      "number": 13484,
       "state": "MERGED",
-      "title": "Make Commons experience reusable across workloads"
+      "title": "TITAN V5: harden merged mirror SELL artifact publication"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "gpt/titan-v5-v217-engagement-probe-20260912",
-      "closed_at": "2026-09-12T23:32:51Z",
-      "head_sha": "67151c442c460c863a1f2b807635be5223921828",
-      "merged_at": "2026-09-12T23:32:51Z",
-      "number": 13493,
+      "branch": "astra/v5-r04-samestep-state-custody-20260912",
+      "closed_at": "2026-09-12T23:18:26Z",
+      "head_sha": "8ffaf368c711ff04a9ebbfee71acfdb015ba83eb",
+      "merged_at": "2026-09-12T23:18:26Z",
+      "number": 13481,
       "state": "MERGED",
-      "title": "TITAN V5: add observation-only V217 starvation engagement probe"
+      "title": "TITAN V5: make R04 same-step retries state-safe"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "gpt/titan-v5-v31-v4-semantic-delta-map-20260912",
-      "closed_at": "2026-09-12T23:32:11Z",
-      "head_sha": "1cde7b4002079802114833d7a5bb92388a9dd5ca",
-      "merged_at": "2026-09-12T23:32:11Z",
-      "number": 13491,
+      "branch": "astra/v5-v4-funding-policy-ablation-20260912",
+      "closed_at": "2026-09-12T23:17:29Z",
+      "head_sha": "99b5872c43c50d93bd23b3a56e60cd522c9ad5cc",
+      "merged_at": "2026-09-12T23:17:29Z",
+      "number": 13438,
       "state": "MERGED",
-      "title": "TITAN V5: map exact V3.1\u2192V4 semantic deltas into one V5"
+      "title": "TITAN V5: isolate submitted-V4 funding-policy regression"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "astra/v5-single-staging-composer-20260912",
-      "closed_at": "2026-09-12T23:31:36Z",
-      "head_sha": "c2d3087bb3c6c362ddee5e7d464da30f17184efd",
-      "merged_at": "2026-09-12T23:31:36Z",
-      "number": 13482,
+      "branch": "astra/v5-production-v3-mirror-sell-queue-20260912",
+      "closed_at": "2026-09-12T23:11:34Z",
+      "head_sha": "14f53ffebfbb91c23e446725573c46b79e17824f",
+      "merged_at": "2026-09-12T23:11:34Z",
+      "number": 13474,
       "state": "MERGED",
-      "title": "TITAN V5: converge proven components through one staging composer"
+      "title": "TITAN V5: materialize exact mirror SELL queue assignment"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "gpt/titan-v5-route-matrix-shared-20260912",
+      "closed_at": "2026-09-12T23:10:17Z",
+      "head_sha": "b4f4feb273ee117dec76f4f586040e1e4c307eb0",
+      "merged_at": "2026-09-12T23:10:17Z",
+      "number": 13475,
+      "state": "MERGED",
+      "title": "TITAN V5: one shared R04 route-matrix carrier"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "gpt/titan-v5-animal-cadence-targeted-rescue-20260912",
+      "closed_at": "2026-09-12T23:10:05Z",
+      "head_sha": "c32966d5d82dfd9485803a202ac18caeb25a3d61",
+      "merged_at": "2026-09-12T23:10:05Z",
+      "number": 13483,
+      "state": "MERGED",
+      "title": "TITAN V5: target-aware V217 starvation rescue planner"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "gpt/titan-v5-route-matrix-shared-20260912",
+      "branch": "astra/v5-terminal-route-shared-extension-20260912",
+      "closed_at": "2026-09-12T23:07:38Z",
+      "head_sha": "4cd43bc0bde175452f8c365ab107e37bfaf56527",
+      "merged_at": "2026-09-12T23:07:38Z",
+      "number": 13480,
+      "state": "MERGED",
+      "title": "TITAN V5: extend shared R04 route matrix to terminal step 648"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-12T23:43:39Z",
+  "unchanged_since": "2026-09-13T02:08:03Z",
   "undatable_pulls": []
 }
