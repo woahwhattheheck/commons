@@ -1,0 +1,43 @@
+name: hotel-room-turn-evidence
+
+on:
+  pull_request:
+    paths:
+      - "revenue/hotel_room_turn_evidence/**"
+      - ".github/workflows/hotel-room-turn-evidence.yml"
+  push:
+    branches: [main]
+    paths:
+      - "revenue/hotel_room_turn_evidence/**"
+      - ".github/workflows/hotel-room-turn-evidence.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  contract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Parse source
+        run: python -m py_compile revenue/hotel_room_turn_evidence/compiler.py revenue/hotel_room_turn_evidence/test_compiler.py
+      - name: Hostile suite
+        run: python -m unittest -v revenue.hotel_room_turn_evidence.test_compiler
+      - name: Optimized interpreter
+        run: python -O -m unittest -v revenue.hotel_room_turn_evidence.test_compiler
+      - name: Production CLI compile / retained-receipt verify / render
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd revenue/hotel_room_turn_evidence
+          POLICY_SHA=8a301398647177ce4a9e9575270979041a7c7cd0a83eb9b3d7ab45e6eaf17a14
+          REPORT_SHA="$(python compiler.py compile --policy fixtures/policy.json --evidence fixtures/evidence.json --expected-policy-sha256 "$POLICY_SHA" --out /tmp/hotel-room-turn-report.json)"
+          python compiler.py verify --report /tmp/hotel-room-turn-report.json --expected-policy-sha256 "$POLICY_SHA" --expected-report-sha256 "$REPORT_SHA"
+          python compiler.py render --report /tmp/hotel-room-turn-report.json --expected-policy-sha256 "$POLICY_SHA" --expected-report-sha256 "$REPORT_SHA" --out /tmp/hotel-room-turn-acceptance.md
+          test -s /tmp/hotel-room-turn-report.json
+          test -s /tmp/hotel-room-turn-acceptance.md
