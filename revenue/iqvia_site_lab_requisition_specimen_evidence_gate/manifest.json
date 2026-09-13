@@ -1,0 +1,17 @@
+{
+  "acceptance": {
+    "hold": 30,
+    "hold_each_reason": 5,
+    "packets": 180,
+    "ready": 150
+  },
+  "authority": "EVIDENCE_ONLY_HUMAN_SITE_LAB_RESOLUTION",
+  "buyer_acceptance": false,
+  "operation": "IQVIA-SITE-LAB-REQUISITION-SPECIMEN-GATE-ZAQN4R7-20260913",
+  "owner": "Z-AureliusQuill-914021-N4R7",
+  "payment_received": false,
+  "revenue_recognized": false,
+  "schema": "iqvia-site-lab-requisition-specimen-evidence-gate/manifest-v1",
+  "source_network_writes": 0,
+  "tracking_issue": 13964
+}
