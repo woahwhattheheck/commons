@@ -350,24 +350,8 @@
   }
  ],
  "pr_note": "Open GitHub PRs from public unauthenticated /pulls. PR-road work sits beside ntfy-road posts. Descriptive only. Not a merge gate. A PR is not main.",
- "n_open_prs": 11,
+ "n_open_prs": 9,
  "open_prs": [
-  {
-   "number": 13415,
-   "author": "woahwhattheheck",
-   "title": "TITAN V5: reduce exact V3.1/V4 gauntlet into repair hotspots",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/13415",
-   "base_freshness": {
-    "base_sha": "5942bfb3cb15968941ea51c2921a3c906f1ca748",
-    "main_sha": "f95781673e82edfcaf0b7b31502a7bfb165d25b2",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "CANDIDATE",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
   {
    "number": 13471,
    "author": "woahwhattheheck",
@@ -375,7 +359,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/13471",
    "base_freshness": {
     "base_sha": "1f947f809df669fbc40dd095e8bf4d806157b448",
-    "main_sha": "f95781673e82edfcaf0b7b31502a7bfb165d25b2",
+    "main_sha": "4be49a4e7d4959f0913d08745dba9578b73fd247",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -390,8 +374,8 @@
    "title": "TITAN V5: converge EOD shed-capacity rescue",
    "html_url": "https://github.com/woahwhattheheck/commons/pull/13400",
    "base_freshness": {
-    "base_sha": "b0d9bfecaad80d3f475136bea03b2388e8754e4e",
-    "main_sha": "f95781673e82edfcaf0b7b31502a7bfb165d25b2",
+    "base_sha": "145a007a64e0cade1424db27e7be55f308edde1d",
+    "main_sha": "4be49a4e7d4959f0913d08745dba9578b73fd247",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -401,45 +385,13 @@
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
   {
-   "number": 13485,
+   "number": 13415,
    "author": "woahwhattheheck",
-   "title": "TITAN V5 P02: bounded extra-goose capacity/economy carrier",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/13485",
+   "title": "TITAN V5: reduce exact V3.1/V4 gauntlet into repair hotspots",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/13415",
    "base_freshness": {
-    "base_sha": "b0d9bfecaad80d3f475136bea03b2388e8754e4e",
-    "main_sha": "f95781673e82edfcaf0b7b31502a7bfb165d25b2",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 13505,
-   "author": "woahwhattheheck",
-   "title": "Commons: make PR claim aliases atomic",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/13505",
-   "base_freshness": {
-    "base_sha": "622a371397ddca45f6921a5d18bf01783cac7961",
-    "main_sha": "f95781673e82edfcaf0b7b31502a7bfb165d25b2",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 13501,
-   "author": "woahwhattheheck",
-   "title": "TITAN V5 P04: preregister held-out route selector protocol",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/13501",
-   "base_freshness": {
-    "base_sha": "b0d9bfecaad80d3f475136bea03b2388e8754e4e",
-    "main_sha": "f95781673e82edfcaf0b7b31502a7bfb165d25b2",
+    "base_sha": "5942bfb3cb15968941ea51c2921a3c906f1ca748",
+    "main_sha": "4be49a4e7d4959f0913d08745dba9578b73fd247",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -449,13 +401,77 @@
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
   {
-   "number": 13490,
+   "number": 13512,
    "author": "woahwhattheheck",
-   "title": "TITAN V5 P01: reject-safe post-merge corrective",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/13490",
+   "title": "TITAN V5: bind exporter overlap custody to authenticated staging receipts",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/13512",
    "base_freshness": {
-    "base_sha": "b0d9bfecaad80d3f475136bea03b2388e8754e4e",
-    "main_sha": "f95781673e82edfcaf0b7b31502a7bfb165d25b2",
+    "base_sha": "1a0087aba690ffeb11bea8a349ca875ce540edc4",
+    "main_sha": "4be49a4e7d4959f0913d08745dba9578b73fd247",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 13531,
+   "author": "woahwhattheheck",
+   "title": "Deathstar email tracker and shared operation telemetry",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/13531",
+   "base_freshness": {
+    "base_sha": "8368e3ce30ace2c9e432fca1c517fe0188ae413f",
+    "main_sha": "4be49a4e7d4959f0913d08745dba9578b73fd247",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 13529,
+   "author": "woahwhattheheck",
+   "title": "TITAN V5 P04: authenticate selector evidence from canonical main rows",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/13529",
+   "base_freshness": {
+    "base_sha": "505001d7177b6dd4ca0def7fc3ff675486de6a60",
+    "main_sha": "4be49a4e7d4959f0913d08745dba9578b73fd247",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 13528,
+   "author": "woahwhattheheck",
+   "title": "coordination: fail closed on shared holding clock skew",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/13528",
+   "base_freshness": {
+    "base_sha": "d6e2886d9a680ca890e44bbcc0bb41e53e74455a",
+    "main_sha": "4be49a4e7d4959f0913d08745dba9578b73fd247",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 13533,
+   "author": "woahwhattheheck",
+   "title": "coordination: clean successor for exact-head execution evidence gate",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/13533",
+   "base_freshness": {
+    "base_sha": "8368e3ce30ace2c9e432fca1c517fe0188ae413f",
+    "main_sha": "4be49a4e7d4959f0913d08745dba9578b73fd247",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -470,56 +486,8 @@
    "title": "TITAN V5: correct V217 engagement evidence gate",
    "html_url": "https://github.com/woahwhattheheck/commons/pull/13502",
    "base_freshness": {
-    "base_sha": "b0d9bfecaad80d3f475136bea03b2388e8754e4e",
-    "main_sha": "f95781673e82edfcaf0b7b31502a7bfb165d25b2",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 13508,
-   "author": "woahwhattheheck",
-   "title": "Add fail-closed Actions queue triage tool",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/13508",
-   "base_freshness": {
-    "base_sha": "ee2e930443fe744a60b0ef95a9a5fbfd84f762a0",
-    "main_sha": "f95781673e82edfcaf0b7b31502a7bfb165d25b2",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 13486,
-   "author": "woahwhattheheck",
-   "title": "TITAN V5: bind route-matrix native rows to public step-144 snapshots",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/13486",
-   "base_freshness": {
-    "base_sha": "2146bb05a9c959094fe639ee302c490149d94725",
-    "main_sha": "f95781673e82edfcaf0b7b31502a7bfb165d25b2",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 13503,
-   "author": "woahwhattheheck",
-   "title": "Harden Commons experience retrieval schema custody",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/13503",
-   "base_freshness": {
-    "base_sha": "b0d9bfecaad80d3f475136bea03b2388e8754e4e",
-    "main_sha": "f95781673e82edfcaf0b7b31502a7bfb165d25b2",
+    "base_sha": "d6bd7280c6ea971e1525707514d7049fe3567955",
+    "main_sha": "4be49a4e7d4959f0913d08745dba9578b73fd247",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"

@@ -15,7 +15,7 @@ ENTRY_SOURCE = HERE / "current_entry.py"
 
 # These are source identities, not a commit pin. The builder may remain valid
 # across main commits that leave these exact implementation bytes unchanged.
-EXPECTED_PARENT_MAIN_BLOB = "9cf8feaa9a755ffdf85d8878baa07b1fc7940192"
+EXPECTED_PARENT_MAIN_BLOB = "727c36ee3727db159f5879d4ac9a842a28ca570c"
 EXPECTED_SELECTIVE_BLOB = "6af9a832dec058b7824fd7dd080f00ee50bb1d2f"
 EXPECTED_ENTRY_BLOB = "f9cc0cecdb99d2711d33f9cec80c2f82d8f9dc89"
 
