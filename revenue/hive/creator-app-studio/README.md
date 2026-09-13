@@ -48,6 +48,20 @@ range from zero to 100 percent. Resource bounds are 1â€“1,000,000 attendees, 1â€
 materials, six decimal places per input and 10,000 saved plans. Suggested usage
 targets remain advisory; reaching a pricing-plan target does not lock the app.
 
+## Source-backed mixed resource workflow
+
+The later Hive016 creator research identified a real planning boundary that the
+original synthetic reference did not model: workshop planning may distinguish
+rostered headcount from expected attendance, while many resources are shared or
+reusable instead of being multiplied by attendee count.
+
+Open `resource_planner.html` for that workflow. It keeps rostered headcount as a
+reference, uses expected attendance only for rows marked `Per attendee consumable`,
+and keeps `Shared / reusable` quantities fixed as attendance changes. It supports
+named-plan save/reopen, CSV export, and JSON backup/restore without network calls.
+The default quantities are editable examples, not sourced purchase requirements.
+See `RESOURCE_PLANNER.md` for the exact semantics and acceptance fixture.
+
 ## Persistence and privacy
 
 The studio database stores brief revisions, not end users' saved workshop plans.
@@ -71,11 +85,14 @@ a real support route and a target user's acceptance remain commercial next steps
 python -B -m unittest discover -v
 ```
 
-The shipped suite has 26 methods: real temporary SQLite files, restart and revision
-history, threaded competing writes, live HTTP endpoints, packages/checksums,
-input-shape handling, shipped JavaScript parsing and 500 deterministic JavaScript
-arithmetic cases compared with Python Decimal. Node is required for the seven
-JavaScript test methods; those are explicitly skipped when Node is absent.
+The original shipped suite has 26 methods: real temporary SQLite files, restart
+and revision history, threaded competing writes, live HTTP endpoints,
+packages/checksums, input-shape handling, shipped JavaScript parsing and 500
+deterministic JavaScript arithmetic cases compared with Python Decimal. The mixed
+resource workflow adds 8 focused Node-backed contract tests for shared-resource
+invariance, expected-attendance scaling, roster reference semantics, exact pack
+arithmetic, backup mode persistence, fail-closed modes, formula-safe CSV, and
+script parsing. Node is required for the JavaScript contract tests.
 
 Optional complete browser check:
 
@@ -85,16 +102,18 @@ python -m playwright install --with-deps chromium
 python -B browser_check.py --output browser-results
 ```
 
-This check exercises the real studio, saved-plan reload, CSV/JSON downloads,
-retry-safe import, and the actual exported standalone app. It writes screenshots
+This check exercises the original studio, saved-plan reload, CSV/JSON downloads,
+retry-safe import, and the original exported standalone app. It writes screenshots
 and a result JSON. Existing Chromium can be selected with `--chromium PATH`.
 
-Development execution on September 8, 2026: **26/26 methods passed, zero skips**.
+Development execution on September 8, 2026: **26/26 original methods passed, zero skips**.
 The provided container's Chromium rejected local navigation with
 `ERR_BLOCKED_BY_ADMINISTRATOR` before any browser check ran. That is not a browser
 pass. No browser policy or host controls were changed. The included narrowly
-path-scoped `.github/workflows/hive-creator-app-studio.yml` runs the same suite and
-browser check through normal GitHub Actions and retains its actual result.
+path-scoped `.github/workflows/hive-creator-app-studio.yml` runs unittest discovery,
+so the mixed resource tests are included automatically; browser acceptance remains
+for the original studio/export path unless a dedicated mixed-planner browser check
+is added later.
 
 The browser CI setup follows the Playwright Python browser-installation guide:
 https://playwright.dev/python/docs/browsers . It is a test dependency only.
