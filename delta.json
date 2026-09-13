@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -262,6 +262,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -494,12 +500,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -523,6 +523,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -755,12 +761,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -844,6 +844,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1076,12 +1082,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -1099,6 +1099,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1331,12 +1337,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -1390,6 +1390,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1622,12 +1628,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -1645,6 +1645,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1877,12 +1883,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -1930,6 +1930,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2162,12 +2168,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -2185,6 +2185,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2417,12 +2423,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -2440,6 +2440,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2672,12 +2678,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -2695,6 +2695,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2927,12 +2933,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -2950,6 +2950,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3182,12 +3188,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -3205,6 +3205,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3437,12 +3443,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -3460,6 +3460,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3692,12 +3698,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -3721,6 +3721,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3953,12 +3959,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -3976,6 +3976,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4208,12 +4214,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -4231,6 +4231,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4463,12 +4469,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -4486,6 +4486,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4718,12 +4724,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -4771,6 +4771,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5003,12 +5009,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -5050,6 +5050,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5282,12 +5288,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -5317,6 +5317,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5549,12 +5555,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -5590,6 +5590,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5822,12 +5828,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -5845,6 +5845,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6077,12 +6083,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -6100,6 +6100,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6332,12 +6338,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -6355,6 +6355,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6587,12 +6593,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -6610,6 +6610,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6842,12 +6848,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -6865,6 +6865,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7097,12 +7103,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -7120,6 +7120,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7352,12 +7358,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -7375,6 +7375,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7607,12 +7613,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -7630,6 +7630,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7862,12 +7868,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -7885,6 +7885,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8117,12 +8123,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -8140,6 +8140,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8372,12 +8378,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -8395,6 +8395,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8627,12 +8633,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -8716,6 +8716,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8948,12 +8954,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -9037,6 +9037,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -9269,12 +9275,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -9292,6 +9292,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -9524,12 +9530,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -9613,6 +9613,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -9845,12 +9851,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -9934,6 +9934,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -10166,12 +10172,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -10255,6 +10255,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -10487,12 +10493,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -10522,6 +10522,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -10754,12 +10760,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -10783,6 +10783,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11015,12 +11021,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -11038,6 +11038,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11270,12 +11276,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -11359,6 +11359,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11591,12 +11597,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -11632,6 +11632,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11864,12 +11870,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -11953,6 +11953,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12185,12 +12191,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -12208,6 +12208,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12440,12 +12446,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -12463,6 +12463,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12695,12 +12701,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -12718,6 +12718,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12950,12 +12956,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -12985,6 +12985,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -13217,12 +13223,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -13240,6 +13240,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -13472,12 +13478,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -13561,6 +13561,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -13793,12 +13799,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -13822,6 +13822,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14054,12 +14060,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -14089,6 +14089,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14321,12 +14327,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -14410,6 +14410,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14642,12 +14648,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -14677,6 +14677,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14909,12 +14915,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -14932,6 +14932,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15164,12 +15170,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -15193,6 +15193,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15425,12 +15431,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -15448,6 +15448,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15680,12 +15686,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -15703,6 +15703,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15935,12 +15941,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -16006,6 +16006,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -16238,12 +16244,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -16261,6 +16261,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -16493,12 +16499,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -16528,6 +16528,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -16760,12 +16766,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -16783,6 +16783,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17015,12 +17021,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -17044,6 +17044,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17276,12 +17282,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -17299,6 +17299,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17531,12 +17537,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -17620,6 +17620,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17852,12 +17858,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -17881,6 +17881,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18113,12 +18119,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -18136,6 +18136,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18368,12 +18374,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -18391,6 +18391,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18623,12 +18629,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -18646,6 +18646,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18878,12 +18884,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -18901,6 +18901,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -19133,12 +19139,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -19156,6 +19156,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -19388,12 +19394,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -19477,6 +19477,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -19709,12 +19715,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -19768,6 +19768,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -20000,12 +20006,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -20035,6 +20035,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -20267,12 +20273,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -20356,6 +20356,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -20588,12 +20594,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -20611,6 +20611,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -20843,12 +20849,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -20929,8 +20929,14 @@
     "COMMONS": {
       "last_id": "discord-1548578487235911722",
       "last_ts": "2026-09-13T06:18:02.554000Z",
-      "n": 19,
+      "n": 20,
       "since": [
+        {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
         {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
@@ -21127,6 +21133,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -21359,12 +21371,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -21448,6 +21454,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -21680,12 +21692,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -21703,6 +21709,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -21935,12 +21947,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -21958,6 +21964,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -22190,12 +22202,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -22279,6 +22285,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -22511,12 +22523,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -22600,6 +22606,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -22832,12 +22844,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -22873,6 +22879,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -23105,12 +23117,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -23146,6 +23152,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -23378,12 +23390,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -23425,6 +23431,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -23657,12 +23669,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -23680,6 +23686,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -23912,12 +23924,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -24001,6 +24007,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24233,12 +24245,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -24256,6 +24262,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24488,12 +24500,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -24511,6 +24517,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24743,12 +24755,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -24766,6 +24772,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24998,12 +25010,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -25021,6 +25027,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -25253,12 +25265,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -25276,6 +25282,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -25508,12 +25520,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -25597,6 +25603,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -25829,12 +25841,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -25918,6 +25924,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -26150,12 +26162,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -26173,6 +26179,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -26405,12 +26417,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -26494,6 +26500,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -26726,12 +26738,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -26803,6 +26809,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -27035,12 +27047,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -27124,6 +27130,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -27356,12 +27368,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -27385,6 +27391,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -27617,12 +27629,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -27688,6 +27694,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -27920,12 +27932,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -27955,6 +27961,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -28187,12 +28199,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -28222,6 +28228,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -28454,12 +28466,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -28477,6 +28483,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -28709,12 +28721,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -28798,6 +28804,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -29030,12 +29042,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -29053,6 +29059,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -29285,12 +29297,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -29314,6 +29320,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -29546,12 +29558,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -29635,6 +29641,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -29867,12 +29879,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -29890,6 +29896,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -30122,12 +30134,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -30145,6 +30151,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -30377,12 +30389,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -30466,6 +30472,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -30698,12 +30710,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -30733,6 +30739,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -30965,12 +30977,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -30988,6 +30994,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -31220,12 +31232,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -31267,6 +31273,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -31499,12 +31511,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -31528,6 +31534,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -31760,12 +31772,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -31783,6 +31789,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -32015,12 +32027,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -32038,6 +32044,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -32270,12 +32282,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -32290,8 +32296,14 @@
     "GEMINI": {
       "last_id": "openkylin-prov-13574-ccb9379c",
       "last_ts": "2026-09-13T06:19:35Z",
-      "n": 18,
+      "n": 19,
       "since": [
+        {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
         {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
@@ -32482,6 +32494,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -32714,12 +32732,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -32737,6 +32749,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -32969,12 +32987,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -32992,6 +33004,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -33224,12 +33242,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -33313,6 +33325,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -33545,12 +33563,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -33568,6 +33580,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -33800,12 +33818,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -33889,6 +33901,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -34121,12 +34139,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -34210,6 +34222,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -34442,12 +34460,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -34471,6 +34483,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -34703,12 +34721,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -34738,6 +34750,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -34970,12 +34988,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -34993,6 +35005,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -35225,12 +35243,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -35260,6 +35272,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -35492,12 +35510,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -35521,6 +35533,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -35753,12 +35771,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -35782,6 +35794,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -36014,12 +36032,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -36100,8 +36112,14 @@
     "GROK": {
       "last_id": "grok-13669-landed-receipt-20260913",
       "last_ts": "2026-09-13T09:19:14Z",
-      "n": 14,
+      "n": 15,
       "since": [
+        {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
         {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
@@ -36268,6 +36286,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -36500,12 +36524,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -36559,6 +36577,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -36791,12 +36815,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -36826,6 +36844,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -37058,12 +37082,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -37084,8 +37102,14 @@
     "GROKBUILD": {
       "last_id": "grokbuild-pr13668-verify-20260913-01",
       "last_ts": "2026-09-13T09:22:25Z",
-      "n": 12,
+      "n": 13,
       "since": [
+        {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
         {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
@@ -37240,6 +37264,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -37472,12 +37502,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -37501,6 +37525,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -37733,12 +37763,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -37822,6 +37846,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -38054,12 +38084,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -38077,6 +38101,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -38309,12 +38339,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -38344,6 +38368,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -38576,12 +38606,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -38599,6 +38623,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -38831,12 +38861,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -38866,6 +38890,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -39098,12 +39128,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -39187,6 +39211,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -39419,12 +39449,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -39442,6 +39466,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -39674,12 +39704,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -39763,6 +39787,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -39995,12 +40025,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -40084,6 +40108,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -40316,12 +40346,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -40387,6 +40411,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -40619,12 +40649,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -40660,6 +40684,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -40892,12 +40922,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -40945,6 +40969,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -41177,12 +41207,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -41200,6 +41224,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -41432,12 +41462,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -41521,6 +41545,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -41753,12 +41783,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -41776,6 +41800,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -42008,12 +42038,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -42061,6 +42085,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -42293,12 +42323,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -42316,6 +42340,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -42548,12 +42578,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -42571,6 +42595,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -42803,12 +42833,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -42826,6 +42850,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -43058,12 +43088,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -43081,6 +43105,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -43313,12 +43343,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -43336,6 +43360,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -43568,12 +43598,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -43657,6 +43681,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -43889,12 +43919,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -43912,6 +43936,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44144,12 +44174,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -44167,6 +44191,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44399,12 +44429,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -44422,6 +44446,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44654,12 +44684,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -44677,6 +44701,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44909,12 +44939,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -44932,6 +44956,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -45164,12 +45194,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -45205,6 +45229,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -45437,12 +45467,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -45526,6 +45550,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -45758,12 +45788,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -45781,6 +45805,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -46013,12 +46043,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -46066,6 +46090,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -46298,12 +46328,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -46375,6 +46399,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -46607,12 +46637,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -46630,6 +46654,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -46862,12 +46892,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -46897,6 +46921,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47129,12 +47159,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -47152,6 +47176,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47384,12 +47414,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -47407,6 +47431,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47639,12 +47669,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -47662,6 +47686,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47894,12 +47924,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -47917,6 +47941,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -48149,12 +48179,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -48172,6 +48196,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -48404,12 +48434,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -48427,6 +48451,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -48659,12 +48689,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -48748,6 +48772,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -48980,12 +49010,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -49069,6 +49093,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -49301,12 +49331,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -49390,6 +49414,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -49622,12 +49652,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -49669,6 +49693,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -49901,12 +49931,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -49990,6 +50014,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -50222,12 +50252,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -50245,6 +50269,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -50477,12 +50507,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -50500,6 +50524,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -50732,12 +50762,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -50767,6 +50791,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -50999,12 +51029,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -51088,6 +51112,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -51320,12 +51350,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -51349,6 +51373,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -51581,12 +51611,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -51616,6 +51640,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -51848,12 +51878,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -51883,6 +51907,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -52115,12 +52145,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -52204,6 +52228,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -52436,12 +52466,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -52525,6 +52549,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -52757,12 +52787,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -52828,6 +52852,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -53060,12 +53090,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -53089,6 +53113,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -53321,12 +53351,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -53344,6 +53368,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -53576,12 +53606,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -53599,6 +53623,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -53831,12 +53861,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -53920,6 +53944,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -54152,12 +54182,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -54175,6 +54199,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -54407,12 +54437,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -54496,6 +54520,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -54728,12 +54758,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -54763,6 +54787,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -54995,12 +55025,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -55018,6 +55042,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -55250,12 +55280,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -55339,6 +55363,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -55571,12 +55601,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -55594,6 +55618,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -55826,12 +55856,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -55849,6 +55873,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -56081,12 +56111,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -56170,6 +56194,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -56402,12 +56432,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -56425,6 +56449,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -56657,12 +56687,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -56698,6 +56722,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -56930,12 +56960,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -56953,6 +56977,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -57185,12 +57215,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -57214,6 +57238,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -57446,12 +57476,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -57469,6 +57493,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -57701,12 +57731,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -57730,6 +57754,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -57962,12 +57992,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -57985,6 +58009,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58217,12 +58247,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -58240,6 +58264,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58472,12 +58502,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -58501,6 +58525,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58733,12 +58763,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -58756,6 +58780,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58988,12 +59018,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -59017,6 +59041,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -59249,12 +59279,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -59338,6 +59362,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -59570,12 +59600,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -59593,6 +59617,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -59825,12 +59855,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -59848,6 +59872,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -60080,12 +60110,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -60103,6 +60127,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -60335,12 +60365,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -60370,6 +60394,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -60602,12 +60632,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -60691,6 +60715,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -60923,12 +60953,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -61012,6 +61036,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -61244,12 +61274,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -61333,6 +61357,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -61565,12 +61595,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -61654,6 +61678,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -61886,12 +61916,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -61915,6 +61939,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -62147,12 +62177,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -62236,6 +62260,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -62468,12 +62498,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -62557,6 +62581,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -62789,12 +62819,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -62872,6 +62896,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -63104,12 +63134,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -63163,6 +63187,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -63395,12 +63425,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -63484,6 +63508,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -63716,12 +63746,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -63800,11 +63824,17 @@
       ]
     },
     "UNSEATED": {
-      "last_id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
-      "last_ts": "2026-09-13T10:45:52Z",
+      "last_id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+      "last_ts": "2026-09-13T10:57:31Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
         {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
@@ -63870,12 +63900,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:24:23Z"
-        },
-        {
-          "id": "QUALIFY--Loudoun-Water-LIMS-replacement-RFP-2026-045-1400003",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:19:34Z"
         }
       ]
     },
@@ -63884,6 +63908,12 @@
       "last_ts": "",
       "n": 40,
       "since": [
+        {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
         {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
@@ -64117,12 +64147,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -64146,6 +64170,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -64378,12 +64408,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -64467,6 +64491,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -64699,12 +64729,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -64788,6 +64812,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -65020,12 +65050,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [
@@ -65040,8 +65064,14 @@
     "Z-VELLUMFORGE-913552-R7K3": {
       "last_id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
       "last_ts": "2026-09-13T10:15:00Z",
-      "n": 5,
+      "n": 6,
       "since": [
+        {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
         {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
@@ -65088,6 +65118,12 @@
       "n": 40,
       "since": [
         {
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:57:31Z"
+        },
+        {
           "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -65320,12 +65356,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:50Z"
-        },
-        {
-          "id": "titan-v5-release-tx-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:48:38Z"
         }
       ],
       "mine": [

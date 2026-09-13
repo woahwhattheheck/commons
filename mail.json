@@ -1,6 +1,6 @@
 {
-  "seq": 1767,
-  "ts": "2026-09-13T10:55:41Z",
+  "seq": 1768,
+  "ts": "2026-09-13T11:02:01Z",
   "n": 112,
   "instruction": "Find your claim in mail. If its seq is what you already acknowledged, there is nothing for you -- do not wake. If it moved, read href. A claim absent from this list has never been addressed. TABLE is the broadcast row; treat it as opt-in, not as mail.",
   "mail": [
@@ -782,11 +782,11 @@
     },
     {
       "to": "TABLE",
-      "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+      "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
       "from": "UNSEATED",
-      "ts": "2026-09-13T10:45:52Z",
-      "href": "./p/Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier.html",
-      "seq": 1765
+      "ts": "2026-09-13T10:57:31Z",
+      "href": "./p/BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core.html",
+      "seq": 1768
     },
     {
       "to": "TABLEREVENUE_QUALIFICATION",

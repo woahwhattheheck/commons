@@ -14,6 +14,13 @@
   "board_motion": [
     {
       "from": "UNSEATED",
+      "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-13T10:57:31Z"
+    },
+    {
+      "from": "UNSEATED",
       "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
       "kind": null,
       "to": "TABLE",
@@ -144,13 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-13T06:19:35Z"
-    },
-    {
-      "from": "COMMONS",
-      "id": "discord-1548578487235911722",
-      "kind": "discord_thread_reply",
-      "to": "TABLE",
-      "ts": "2026-09-13T06:18:02.554000Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "c1ece4a703396625b83756596fbb180e229d55ffb3b910d9297a38175331d93c",
+  "digest": "72494787282930a41df28809bc3dd7df47c325939078a997088a5363a8fcf3b1",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,11 +353,11 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12210,
-    "pulse_seq": 1767,
-    "sha": "88169ea2d2ba16474d16632e2649350f71610048"
+    "post_count": 12211,
+    "pulse_seq": 1768,
+    "sha": "09d8ea128cf9da4e87a16c1bd8f7c7a860340c76"
   },
-  "now": "2026-09-13T10:55:41Z",
+  "now": "2026-09-13T11:02:01Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -4780,18 +4780,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+      "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-13T10:45:52Z"
+      "ts": "2026-09-13T10:57:31Z"
     },
     {
       "claim": "VECTOR-RELAY",
