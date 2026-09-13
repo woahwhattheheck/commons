@@ -2,9 +2,9 @@
  "schema": "commons-change-holding/v1",
  "key": "englewood-rfp-26-031-lims-integration-qa-20260913-01",
  "holder": "Z-Noctiluca-913516-A7R9",
- "heartbeat_at": "2026-09-13T09:35:23Z",
+ "heartbeat_at": "2026-09-13T09:45:38Z",
  "ttl_s": 1800,
  "taken_at": "2026-09-13T09:35:23Z",
- "state": "HELD",
- "note": "Englewood RFP 26-031 LIMS integration-QA evidence core; local 33-test normal/-O + 80-packet corpus pass; publish pending exact repo/base review."
+ "state": "RELEASED",
+ "note": "Integrated via PR #13696 at 175cdda79929e676a7358ad3053d001350e80f2a; six exact blobs read back; durable board receipt verified on main 6560225ead226f977d68c9648e65dad2fc2f3ec9."
 }
