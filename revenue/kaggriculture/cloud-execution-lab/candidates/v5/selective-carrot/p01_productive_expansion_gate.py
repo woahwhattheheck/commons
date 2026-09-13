@@ -1,108 +1,126 @@
 # SPDX-License-Identifier: Apache-2.0
-"""Observation-only payback gate for V219's late tomato expansion.
+"""Reject-safe public-evidence gate for V219's late tomato expansion.
 
-The gate does not add a new strategy. It only decides whether the existing V219
-investment is allowed to start at day 18.  Its labor model follows the exact
-R04 request mechanics: HIRE pricing resets each day, authored parent HIREs on
-that day consume the early Fibonacci indices, and V219's appended HIREs start
-only after them.  Future authored HIREs are treated as successful when costing
-V219, which is a conservative upper bound on V219's incremental hire spend.
+This module never prices HIREs from standing hand count. The authenticated R04
+parent prices HIREs from the same-day ``hires_today`` ordinal, with parent
+same-action HIREs shifting later appended HIREs. At the day-18 admission point
+future same-day ordinals are not observable yet, so the rejection theorem uses
+only mechanically unavoidable commitment cost: if V219 ever produces revenue,
+its day-18 commitment must first buy land+seed and request two appended HIREs.
+The already-observed ``hires_today`` is a lower bound on the ordinal at any
+later same-day commitment; unknown same-action parent HIREs are zero in the
+lower bound because successful parent HIREs can only increase appended HIRE
+cost. Later-day V219 HIREs are conditional and therefore contribute zero to
+reject authority.
+
+The decision is deliberately one-sided. It rejects only when a source-valid
+optimistic gross-revenue upper bound is already below the unavoidable cost
+lower bound. The gross ceiling includes worst-case future town-driven TOMATO
+scarcity through the end of day 29. Otherwise ``decision=None`` preserves the
+exact parent.
 """
 
-FIXED_LAND_AND_SEED = 4500       # SE land 4000 + ten TOMATO seed at 50.
-FERTILIZER_RESERVE = 700         # two bounded 10-unit buys, V219 budgets price+5 <= 35.
-MAX_OWN_UNITS = 80               # ten plants * four dates * at most two units fertilized.
+FIXED_LAND_AND_SEED = 4500
+MODELED_FERTILIZER_RESERVE = 700  # telemetry only; not guaranteed spend.
+MAX_OWN_UNITS = 80
+START_DAY = 18
 TERMINAL_DAY = 29
+TURNS_PER_DAY = 24
+# Fail-safe per-step TOMATO drain bound from the pinned engine: at most eight
+# shop instances * at most two units each + one town-center unit. TOMATO shops
+# actually consume less, but 17 avoids depending on shop composition.
+MAX_TOMATO_TOWN_DRAIN_PER_STEP = 17
 
 
 def _extra_workers(day):
     if day in (19, 20, 21, 22, 23, 25):
         return 1
     if day in (26, 27, 28):
-        return 3 + int(day == 27)  # dedicated fertilizer worker only on day 27.
-    return 2  # day 18, 24, 29
+        return 3 + int(day == 27)
+    return 2
 
 
-def _hire_count(action):
-    return sum(bool(order) and order[0] == 'HIRE'
-               for order in action.get('market', []))
+def incremental_hire_cost(hires_today, parent_hires, count, fib):
+    """Exact cost of ``count`` appended HIREs after same-day parent HIREs."""
+    values = (hires_today, parent_hires, count)
+    if any(type(value) is not int or value < 0 for value in values):
+        raise ValueError("HIRE ordinals/counts must be nonnegative integers")
+    start = hires_today + parent_hires
+    costs = []
+    for index in range(start, start + count):
+        cost = fib(index)
+        if type(cost) is not int or cost < 0:
+            raise ValueError("Fibonacci HIRE cost must be a nonnegative integer")
+        costs.append(cost)
+    return sum(costs)
 
 
-def authored_hire_context(planned):
-    """Return (hires_before_request_action, hires_in_request_action).
+def route_labor_cost_floor(observation, native, native_day, fib):
+    """Unavoidable V219 commitment HIRE cost under exact same-day pricing.
 
-    `_v219_request()` can act only in offsets 0..3 and refuses while any later
-    authored HIRE remains.  The engine resets `hires_today` at dawn, so only
-    HIRE orders in this one day contribute to the Fibonacci index.  We model
-    every authored parent HIRE as successful: if a parent HIRE actually fails,
-    V219's own request either fails its worker-topology guard or starts at a
-    lower Fibonacci index, so this is an upper bound on V219's added hire cost.
+    Reject authority intentionally includes only the two day-18 commitment
+    HIREs. Every later V219 request can be skipped by runtime guards, so those
+    future HIREs are conditional route spend rather than a lower bound.
+    ``native_day`` is consulted only at day 18 as a fail-closed source-shape
+    check; the exact parent qualification already owns the full route scan.
     """
+    player = observation.get("player")
+    farms = observation.get("farms") or []
+    if type(player) is not int or player < 0 or player >= len(farms):
+        raise ValueError("missing candidate farm")
+    farm = farms[player]
+    if not isinstance(farm, dict):
+        raise ValueError("candidate farm must be an object")
+    step = observation.get("step")
+    if type(step) is not int or step < 0 or step // TURNS_PER_DAY != START_DAY:
+        raise ValueError("V219 payback gate requires the day-18 admission boundary")
+    current_hires = farm.get("hires_today")
+    if type(current_hires) is not int or current_hires < 0:
+        raise ValueError("candidate hires_today must be a nonnegative integer")
+    planned = native_day(native, START_DAY)
     if not planned:
-        raise ValueError('V219 payback gate requires a non-empty authored day')
-    hire_offsets = [(offset, _hire_count(action))
-                    for offset, action in enumerate(planned)
-                    if _hire_count(action)]
-    if not hire_offsets:
-        return 0, 0
-    last_offset, parent_hires = hire_offsets[-1]
-    if last_offset > 3:
-        raise ValueError('V219 cannot request before the last authored HIRE')
-    prior_hires = sum(count for offset, count in hire_offsets if offset < last_offset)
-    return prior_hires, parent_hires
+        raise ValueError("V219 payback gate requires a day-18 parent route")
+
+    count = _extra_workers(START_DAY)
+    cost = incremental_hire_cost(current_hires, 0, count, fib)
+    return cost, {START_DAY: cost}
 
 
-def incremental_hire_cost(prior_hires, parent_hires, extra_hires, fib):
-    """Price only V219-added HIREs after same-action parent HIREs.
+def rival_tomato_field_projection(observation):
+    """Project TOMATO units visible on the rival field through day 29.
 
-    This mirrors `_v219_request()` / engine ordering: with `hires_today` equal
-    to `prior_hires` on entry, parent HIREs execute first in the market list,
-    then V219's first incremental worker is Fibonacci index
-    `prior_hires + parent_hires`.
+    This is diagnostic only. Rival private shed/carried inventory is not public,
+    so this value is never used as a bound in the rejection decision.
     """
-    start = int(prior_hires) + int(parent_hires)
-    count = int(extra_hires)
-    if min(start, count) < 0:
-        raise ValueError('HIRE counts must be non-negative')
-    return sum(fib(index) for index in range(start, start + count))
-
-
-def route_labor_cost(native, native_day, fib):
-    """Conservative full-route upper bound on V219's incremental HIRE spend."""
-    total = 0
-    for day in range(18, 30):
-        planned = native_day(native, day)
-        if not planned:
-            raise ValueError('V219 payback gate requires a complete day 18..29 route')
-        prior_hires, parent_hires = authored_hire_context(planned)
-        total += incremental_hire_cost(
-            prior_hires, parent_hires, _extra_workers(day), fib)
-    return total
-
-
-def visible_rival_field_supply_bound(observation):
-    """Upper bound on *visible-field* rival TOMATO units through day 29.
-
-    Existing visible tile yield is counted directly. Every not-yet-realized
-    production date is counted at the fertilized two-unit maximum. This does
-    NOT claim to bound private rival shed/carried TOMATO, which is unavailable
-    to the policy; the value is only an observable market-pressure adjustment.
-    """
-    player = int(observation['player'])
-    farms = observation.get('farms') or []
-    if len(farms) < 2:
+    player = observation.get("player")
+    farms = observation.get("farms") or []
+    if type(player) is not int or player < 0 or player >= len(farms) or len(farms) < 2:
         return 0
-    rival = farms[1 - player]
-    day = int(observation['step']) // 24
+    rival_index = (
+        1 - player
+        if player in (0, 1) and len(farms) == 2
+        else next((index for index in range(len(farms)) if index != player), None)
+    )
+    if rival_index is None:
+        return 0
+    rival = farms[rival_index]
+    if not isinstance(rival, dict):
+        return 0
+    step = observation.get("step")
+    if type(step) is not int or step < 0:
+        return 0
+    day = step // TURNS_PER_DAY
     units = 0
-    for row in rival.get('tiles', []):
+    for row in rival.get("tiles", []):
+        if not isinstance(row, list):
+            continue
         for tile in row:
-            if not isinstance(tile, dict) or tile.get('crop') != 'TOMATO':
+            if not isinstance(tile, dict) or tile.get("crop") != "TOMATO":
                 continue
-            units += max(0, int(tile.get('yield_units', 0) or 0))
-            planted = tile.get('planted_day')
+            units += max(0, int(tile.get("yield_units", 0) or 0))
+            planted = tile.get("planted_day")
             if not isinstance(planted, int):
-                units += 8  # four possible future production dates * two units.
+                units += 8
                 continue
             for production_day in range(planted + 8, planted + 12):
                 if day < production_day <= TERMINAL_DAY:
@@ -111,44 +129,81 @@ def visible_rival_field_supply_bound(observation):
 
 
 def evaluate(observation, native, native_day, fib, market_price):
-    """Return a transparent research admission record.
+    """Return a reject-safe admission record; ``decision=None`` preserves parent."""
+    market = observation.get("market") or {}
+    prices = market.get("prices") or {}
+    inventory = market.get("inventory") or {}
+    if "TOMATO" not in prices or "TOMATO" not in inventory:
+        return {"decision": None, "reason": "missing_market"}
+    # The pinned engine publishes resolved market params only when configuration
+    # overrides are active. The proof below relies on the exact default monotone
+    # `_ro_price` source carried by the authenticated R04 router.
+    if "params" in market:
+        return {"decision": None, "reason": "custom_market_params"}
+    try:
+        current_inventory = int(inventory["TOMATO"])
+        observed_quote = int(prices["TOMATO"])
+    except (TypeError, ValueError):
+        return {"decision": None, "reason": "invalid_market"}
+    if current_inventory < 0 or observed_quote < 0:
+        return {"decision": None, "reason": "invalid_market"}
 
-    `decision=None` preserves the parent. The projection deliberately gives no
-    credit for future town consumption or future shop unlocks and applies only
-    when the observed TOMATO quote matches the pinned market curve.  It is a
-    conservative experiment gate, not a proof of universal profitability: the
-    labor/fertilizer side is an upper-bound full-execution cost while 80 units
-    is an optimistic production ceiling. Native matched games remain the
-    economic authority before any activation.
-    """
-    market = observation.get('market') or {}
-    prices = market.get('prices') or {}
-    inventory = market.get('inventory') or {}
-    if 'TOMATO' not in prices or 'TOMATO' not in inventory:
-        return {'decision': None, 'reason': 'missing_market'}
-    current_inventory = int(inventory['TOMATO'])
-    observed_quote = int(prices['TOMATO'])
-    if int(market_price('TOMATO', current_inventory)) != observed_quote:
-        return {'decision': None, 'reason': 'custom_market_curve'}
+    step = observation.get("step")
+    if type(step) is not int or step < 0:
+        return {"decision": None, "reason": "unsupported_route_state"}
+    remaining_steps = max(0, (TERMINAL_DAY + 1) * TURNS_PER_DAY - step)
+    future_inventory_floor = (
+        current_inventory - MAX_TOMATO_TOWN_DRAIN_PER_STEP * remaining_steps
+    )
+    try:
+        current_curve_quote = int(market_price("TOMATO", current_inventory))
+        future_quote_ceiling = int(market_price("TOMATO", future_inventory_floor))
+    except (TypeError, ValueError, OverflowError):
+        return {"decision": None, "reason": "unsupported_market_curve"}
+    if current_curve_quote != observed_quote:
+        return {"decision": None, "reason": "custom_market_curve"}
+    if future_quote_ceiling < observed_quote or future_quote_ceiling < 0:
+        return {"decision": None, "reason": "unsupported_market_curve"}
 
-    labor = route_labor_cost(native, native_day, fib)
-    visible_rival_supply = visible_rival_field_supply_bound(observation)
-    start_inventory = current_inventory + visible_rival_supply
-    projected_gross = sum(int(market_price('TOMATO', start_inventory + sold))
-                          for sold in range(MAX_OWN_UNITS))
-    modeled_cost_ceiling = FIXED_LAND_AND_SEED + FERTILIZER_RESERVE + labor
-    decision = projected_gross >= modeled_cost_ceiling
+    try:
+        labor_floor, labor_floor_by_day = route_labor_cost_floor(
+            observation, native, native_day, fib
+        )
+    except (TypeError, ValueError, KeyError):
+        return {"decision": None, "reason": "unsupported_route_state"}
+
+    unavoidable_cost_floor = FIXED_LAND_AND_SEED + labor_floor
+    gross_upper_bound = MAX_OWN_UNITS * future_quote_ceiling
+
+    visible_field = rival_tomato_field_projection(observation)
+    modeled_start_inventory = current_inventory + visible_field
+    try:
+        modeled_gross_visible_field = sum(
+            int(market_price("TOMATO", modeled_start_inventory + sold))
+            for sold in range(MAX_OWN_UNITS)
+        )
+    except (TypeError, ValueError, OverflowError):
+        modeled_gross_visible_field = None
+
+    proven_negative = gross_upper_bound < unavoidable_cost_floor
     return {
-        'decision': decision,
-        'reason': 'modeled_break_even' if decision else 'modeled_negative_headroom',
-        'incremental_labor_cost_ceiling': labor,
-        'fixed_cost': FIXED_LAND_AND_SEED,
-        'fertilizer_reserve_ceiling': FERTILIZER_RESERVE,
-        'modeled_cost_ceiling': modeled_cost_ceiling,
-        'max_own_units': MAX_OWN_UNITS,
-        'visible_rival_field_supply_bound': visible_rival_supply,
-        'projected_gross_ceiling': projected_gross,
-        'modeled_headroom': projected_gross - modeled_cost_ceiling,
-        'observed_tomato_quote': observed_quote,
-        'starting_market_inventory': current_inventory,
+        "decision": False if proven_negative else None,
+        "reason": (
+            "proven_negative_payback"
+            if proven_negative
+            else "negative_payback_not_proven"
+        ),
+        "labor_cost_floor": labor_floor,
+        "labor_cost_floor_by_day": labor_floor_by_day,
+        "fixed_cost_floor": FIXED_LAND_AND_SEED,
+        "modeled_fertilizer_reserve": MODELED_FERTILIZER_RESERVE,
+        "unavoidable_cost_floor": unavoidable_cost_floor,
+        "max_own_units": MAX_OWN_UNITS,
+        "gross_revenue_upper_bound": gross_upper_bound,
+        "future_inventory_floor": future_inventory_floor,
+        "future_tomato_quote_ceiling": future_quote_ceiling,
+        "observed_tomato_quote": observed_quote,
+        "starting_market_inventory": current_inventory,
+        "visible_rival_field_projection": visible_field,
+        "modeled_gross_visible_field": modeled_gross_visible_field,
     }

@@ -19,8 +19,31 @@ You are one job. Not the librarian.
 
 1. Treat speaker and capability fields as optional context. Blank `from=` lands as `UNSEATED`; if you supply a claim, describe the source window without presenting another player's name as yours.
 2. Open [skills/MANUAL.md](../../../skills/MANUAL.md). Match your assignment to **one** row.
-3. Open that `SKILL.md`. Follow it. Stop.
+3. Open that `SKILL.md` and finish the assigned work.
 4. If you still do not know: [take-a-line](../take-a-line/SKILL.md) or [post](../post/SKILL.md). Deciding is work.
+
+For PR review or merge-drain work, acquire the canonical PR holding **before**
+posting a Slack `TAKE`:
+
+```sh
+python host/claim_pr.py take 12345 --holder "SEAT / MODEL" --note "review + merge drain"
+```
+
+Proceed only when the result says `"ok": true`; then post the visible Slack
+`TAKE`. If it says `"held_by": ...`, yield that PR and route to another work
+unit. Use the same command with `renew` during long work and `release` at the
+handoff or terminal result. Slack search is useful visibility but is not the
+atomic claim: `host/claim_pr.py` always maps a PR to the shared `pr-N` key on
+`state/claims`, so parallel seats cannot evade collision detection with different
+marker spellings.
+
+When completed work adds a reusable procedure or a new failure worth remembering,
+use [experience-compiler](../experience-compiler/SKILL.md) to capture its concise
+outcome and durable evidence. Reuse an existing pattern ID where it fits; keep
+failed interventions alongside successful repairs. This applies to every Commons
+workload. Skip duplicate receipts and routine repetitions that add no knowledge.
+Workers execute the active skill; accumulated wiki evidence is for the separate
+skill-improvement step, which tests a procedural change before retaining it.
 
 ## Do not
 

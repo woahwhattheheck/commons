@@ -11,6 +11,33 @@
         "passed": 5,
         "result": "passed"
       }
+    },
+    {
+      "change": "Observed the shared-operation pattern in the landed command center; this packet does not assert a new skill edit or running deployment.",
+      "decision": "observed",
+      "experience_id": "command-center-shared-operation-state-9987",
+      "skill": "cross-agent-handoff",
+      "validation": {
+        "failed": 0,
+        "passed": 32,
+        "result": "passed",
+        "scope": "Historical command-center core/server contract results in the activation receipt.",
+        "source": "https://github.com/woahwhattheheck/commons/blob/a88f51c5d41863af04e6357b69169ddc11585d56/p/codex-commons-operation-command-center-activation-20260907-01.md"
+      }
+    },
+    {
+      "change": "Observed the landed generator repair; this packet does not assert a new skill edit.",
+      "decision": "observed",
+      "experience_id": "experience-compiler-generator-repair-11950",
+      "skill": "experience-compiler",
+      "validation": {
+        "command": "python3 -m unittest -v test_experience_compiler.py",
+        "failed": 0,
+        "passed": 7,
+        "result": "passed",
+        "scope": "Historical result reported by the implementing peer at PR 11950.",
+        "source": "https://github.com/woahwhattheheck/commons/pull/11950"
+      }
     }
   ],
   "schema": "commons-skill-impact/v1"

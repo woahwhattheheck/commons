@@ -6,8 +6,10 @@ import json
 import os
 from pathlib import Path
 import shutil
+import stat
 
 from build_delivery import archive_bytes, digest, members
+from publication_custody import publish_exclusive
 
 V31_SHA = '5db3921f85efbc7596e5a1e7e198fc5f4644ceea43d8e8323c74ded7b4ba4361'
 DELIVERY_SHA = '0d42ee5fabb089745fa0064207654bfdf5df9466ba6499d91b6e685d4880cab1'
@@ -96,49 +98,18 @@ def _validate_publication_paths(out, tar_path, receipt_path):
         raise ValueError('archive and manifest must not be inside the output directory')
 
 
-def _reserve(path):
-    path = Path(path)
-    path.parent.mkdir(parents=True, exist_ok=True)
-    flags = os.O_WRONLY | os.O_CREAT | os.O_EXCL
-    if hasattr(os, 'O_NOFOLLOW'):
-        flags |= os.O_NOFOLLOW
-    fd = os.open(path, flags, 0o644)
-    st = os.fstat(fd)
-    return fd, (st.st_dev, st.st_ino)
-
-
-def _write_reserved(fd, payload):
-    view = memoryview(payload)
-    while view:
-        written = os.write(fd, view)
-        if written <= 0:
-            raise OSError('short write while publishing production-recovery artifact')
-        view = view[written:]
-    os.fsync(fd)
-
-
-def _unlink_if_owned(path, identity):
-    path = Path(path)
-    try:
-        st = path.stat(follow_symlinks=False)
-    except FileNotFoundError:
-        return
-    if (st.st_dev, st.st_ino) == identity:
-        path.unlink()
-
-
 def _rmtree_if_owned(path, identity):
     path = Path(path)
     try:
-        st = path.stat(follow_symlinks=False)
+        st = os.lstat(path)
     except FileNotFoundError:
         return
-    if (st.st_dev, st.st_ino) == identity and path.is_dir():
+    if (st.st_dev, st.st_ino) == identity and stat.S_ISDIR(st.st_mode):
         shutil.rmtree(path)
 
 
 def _publish(files, packed, receipt, out, tar_path, receipt_path):
-    """Publish extracted files plus create-exclusive archive/manifest finals."""
+    """Publish extracted files plus an audited create-exclusive archive/manifest pair."""
     out = Path(out)
     tar_path = Path(tar_path)
     receipt_path = Path(receipt_path)
@@ -147,42 +118,31 @@ def _publish(files, packed, receipt, out, tar_path, receipt_path):
         raise FileExistsError('output directory already exists')
 
     receipt_bytes = (json.dumps(receipt, indent=2) + '\n').encode('utf-8')
-    tar_fd = None
-    receipt_fd = None
-    owned_finals = []
+    out_fd = None
     out_identity = None
     try:
-        tar_fd, tar_identity = _reserve(tar_path)
-        owned_finals.append((tar_path, tar_identity))
-        receipt_fd, receipt_identity = _reserve(receipt_path)
-        owned_finals.append((receipt_path, receipt_identity))
-
         out.mkdir(parents=True)
-        out_stat = out.stat(follow_symlinks=False)
+        flags = os.O_RDONLY | getattr(os, 'O_DIRECTORY', 0) | getattr(os, 'O_NOFOLLOW', 0)
+        out_fd = os.open(out, flags)
+        out_stat = os.fstat(out_fd)
+        if not stat.S_ISDIR(out_stat.st_mode):
+            raise OSError('output path is not a directory')
         out_identity = (out_stat.st_dev, out_stat.st_ino)
         for name, body in files.items():
             path = out / name
             path.parent.mkdir(parents=True, exist_ok=True)
             path.write_bytes(body)
 
-        _write_reserved(tar_fd, packed)
-        _write_reserved(receipt_fd, receipt_bytes)
-        os.close(tar_fd)
-        tar_fd = None
-        os.close(receipt_fd)
-        receipt_fd = None
+        # Keep only extracted-tree ownership local. The related final files use
+        # the single shared V5 reserve/write/verify/fsync/rollback authority.
+        publish_exclusive([(tar_path, packed), (receipt_path, receipt_bytes)])
     except BaseException:
-        for fd in (tar_fd, receipt_fd):
-            if fd is not None:
-                try:
-                    os.close(fd)
-                except OSError:
-                    pass
         if out_identity is not None:
             _rmtree_if_owned(out, out_identity)
-        for path, identity in reversed(owned_finals):
-            _unlink_if_owned(path, identity)
         raise
+    finally:
+        if out_fd is not None:
+            os.close(out_fd)
 
 
 def main():
