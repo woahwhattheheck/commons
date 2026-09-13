@@ -325,6 +325,32 @@ class StrictInputHostileTests(unittest.TestCase):
     def test_empty_capture_holds(self):
         self.assertIn("EMPTY_CAPTURE", reason_codes(audit_transcript(b"\n\n")))
 
+    def test_oversized_capture_holds_without_event_scan(self):
+        from tools.mcp_transcript_audit.audit import MAX_CAPTURE_BYTES
+        source = b"x" * (MAX_CAPTURE_BYTES + 1)
+        receipt = audit_transcript(source)
+        self.assertEqual(receipt["status"], "HOLD")
+        self.assertIn("CAPTURE_TOO_LARGE", reason_codes(receipt))
+        self.assertEqual(receipt["event_count"], 0)
+        self.assertEqual(receipt["evidence"], [])
+
+    def test_event_count_limit_stops_scan_at_first_overflow(self):
+        from tools.mcp_transcript_audit.audit import MAX_EVENTS
+        event = encode_capture_event(CLIENT, {"jsonrpc": "2.0", "method": "ping"})
+        source = (event + b"\n") * (MAX_EVENTS + 1)
+        receipt = audit_transcript(source)
+        self.assertEqual(receipt["status"], "HOLD")
+        self.assertIn("TOO_MANY_EVENTS", reason_codes(receipt))
+        self.assertEqual(receipt["event_count"], MAX_EVENTS + 1)
+
+    def test_single_line_size_limit_holds_before_payload_decode(self):
+        from tools.mcp_transcript_audit.audit import MAX_LINE_BYTES
+        source = b"x" * (MAX_LINE_BYTES + 1)
+        receipt = audit_transcript(source)
+        self.assertEqual(receipt["status"], "HOLD")
+        self.assertIn("EVENT_TOO_LARGE", reason_codes(receipt))
+        self.assertEqual(receipt["evidence"], [])
+
     def test_source_byte_change_changes_source_and_receipt_hash(self):
         one = capture()
         two = one + b"\n"
