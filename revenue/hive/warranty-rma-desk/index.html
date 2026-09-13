@@ -159,7 +159,7 @@ function renderOperatorCase(d){
  field(c,"Product",d.sku+" — "+d.model);field(c,"Serial",d.serial||"—");field(c,"Purchase",d.purchase_ref+" · "+d.purchase_date);field(c,"Issue",d.issue);
  field(c,"Policy",d.policy.policy_id+" · "+d.policy.warranty_days+" days");field(c,"Policy instructions",d.policy.instructions);
  if(d.rma_ref)field(c,"RMA",d.rma_ref);if(d.receive_ref)field(c,"Receive",d.receive_ref);if(d.inspection)field(c,"Inspection",d.inspection);if(d.resolution)field(c,"Resolution",d.resolution);
- add(c,"h4","Operator action");const form=add(c,"form");const select=add(form,"select");["REQUEST_INFO","APPROVE_RMA","DENY","RECEIVE","INSPECT_OK","INSPECT_DEFECT_CONFIRMED","INSPECT_NO_FAULT_FOUND","RESOLVE_REPAIR","RESOLVE_REPLACEMENT","RESOLVE_REFUND","RESOLVE_RETURN_AS_IS","CLOSE"].forEach(v=>{const o=document.createElement("option");o.value=v;o.textContent=v;select.appendChild(o)});
+ add(c,"h4","Operator action");const form=add(c,"form");const select=add(form,"select");["REQUEST_INFO","APPROVE_RMA","DENY","RECEIVE","INSPECT_FAULT_CONFIRMED","INSPECT_NO_FAULT_FOUND","INSPECT_DAMAGE_REVIEW","INSPECT_UNDETERMINED","RESOLVE_REPAIR","RESOLVE_REPLACEMENT","RESOLVE_REFUND","RESOLVE_RETURN_AS_IS","CLOSE"].forEach(v=>{const o=document.createElement("option");o.value=v;o.textContent=v;select.appendChild(o)});
  const pub=add(form,"textarea");pub.placeholder="Public-safe message";pub.required=true;const note=add(form,"textarea");note.placeholder="Internal note (never exposed to customer)";
  const extra=add(form,"input");extra.placeholder="Receive/completion reference when required";const btn=add(form,"button","Apply operator action");btn.type="submit";
  form.addEventListener("submit",async ev=>{ev.preventDefault();try{
