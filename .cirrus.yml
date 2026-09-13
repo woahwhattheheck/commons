@@ -1,5 +1,5 @@
 # Provider-redundant OSS pipe. Not GitHub. Not unlimited:
-# 50 compute credits/month (~10,000 Linux CPU-min), 2h max free task.
+# 50 compute credits/month (finite provider quota), 2h max free task.
 # Header census plus the same portable battery used by tests.yml.
 # Activate the Cirrus GitHub App for this repository; config is not a live run.
 container:
