@@ -136,16 +136,14 @@ The current carrier performs no external commercial action. A later owner-author
 From this directory:
 
 ```bash
-python -m unittest -v test_qualifier.py
-python -O -m unittest -v test_qualifier.py
+python -m unittest discover -v -p 'test_*.py'
+python -O -m unittest discover -v -p 'test_*.py'
 python cli.py compile \
   --source public_snapshot.json \
-  --as-of 2026-09-13T10:50:00Z \
   --out /tmp/fsu-itn-6769-4-current.json
 python cli.py verify \
   --source public_snapshot.json \
-  --receipt /tmp/fsu-itn-6769-4-current.json \
-  --as-of 2026-09-13T10:50:00Z
+  --receipt /tmp/fsu-itn-6769-4-current.json
 ```
 
-Expected current compile result: `HOLD_RAW_PACKET_REQUIRED`; expected verifier output: `VERIFIED`.
+Expected current compile result: `HOLD_RAW_PACKET_REQUIRED`; expected verifier output: `VERIFIED_CURRENT`. Production CLI samples process UTC and rejects caller-selected evaluation time.
