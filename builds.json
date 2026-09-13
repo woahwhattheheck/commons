@@ -350,7 +350,7 @@
   }
  ],
  "pr_note": "Open GitHub PRs from public unauthenticated /pulls. PR-road work sits beside ntfy-road posts. Descriptive only. Not a merge gate. A PR is not main.",
- "n_open_prs": 13,
+ "n_open_prs": 11,
  "open_prs": [
   {
    "number": 13471,
@@ -359,7 +359,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/13471",
    "base_freshness": {
     "base_sha": "1f947f809df669fbc40dd095e8bf4d806157b448",
-    "main_sha": "570501a04b0ab6a4b36927e0450848d9969e456c",
+    "main_sha": "0da4c9e8d3a75b38d9312dd1e2c4ff222d7da609",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -375,7 +375,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/13400",
    "base_freshness": {
     "base_sha": "145a007a64e0cade1424db27e7be55f308edde1d",
-    "main_sha": "570501a04b0ab6a4b36927e0450848d9969e456c",
+    "main_sha": "0da4c9e8d3a75b38d9312dd1e2c4ff222d7da609",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -391,39 +391,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/13531",
    "base_freshness": {
     "base_sha": "8368e3ce30ace2c9e432fca1c517fe0188ae413f",
-    "main_sha": "570501a04b0ab6a4b36927e0450848d9969e456c",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 13528,
-   "author": "woahwhattheheck",
-   "title": "coordination: fail closed on shared holding clock skew",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/13528",
-   "base_freshness": {
-    "base_sha": "d6e2886d9a680ca890e44bbcc0bb41e53e74455a",
-    "main_sha": "570501a04b0ab6a4b36927e0450848d9969e456c",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 13502,
-   "author": "woahwhattheheck",
-   "title": "TITAN V5: correct V217 engagement evidence gate",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/13502",
-   "base_freshness": {
-    "base_sha": "d6bd7280c6ea971e1525707514d7049fe3567955",
-    "main_sha": "570501a04b0ab6a4b36927e0450848d9969e456c",
+    "main_sha": "0da4c9e8d3a75b38d9312dd1e2c4ff222d7da609",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -439,87 +407,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/13533",
    "base_freshness": {
     "base_sha": "bfddf33e924ee684cf76964b770eafbc51f89ebb",
-    "main_sha": "570501a04b0ab6a4b36927e0450848d9969e456c",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 13547,
-   "author": "woahwhattheheck",
-   "title": "revenue: qualify NYSED OCUE modernization RFP",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/13547",
-   "base_freshness": {
-    "base_sha": "c78e2cabe5d6219c6033860d59e714a23d84d04f",
-    "main_sha": "570501a04b0ab6a4b36927e0450848d9969e456c",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 13548,
-   "author": "woahwhattheheck",
-   "title": "product: fail closed on unknown capacity RSS",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/13548",
-   "base_freshness": {
-    "base_sha": "7adea046677023c985634c873fc4048049ea6ec3",
-    "main_sha": "570501a04b0ab6a4b36927e0450848d9969e456c",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 13549,
-   "author": "woahwhattheheck",
-   "title": "docs(revenue): qualify CWPD website redesign RFP",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/13549",
-   "base_freshness": {
-    "base_sha": "4f79e531719f616ea595c7f391237465298b9bc7",
-    "main_sha": "570501a04b0ab6a4b36927e0450848d9969e456c",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 13552,
-   "author": "woahwhattheheck",
-   "title": "revenue: add openKylin long-term memory benchmark baseline",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/13552",
-   "base_freshness": {
-    "base_sha": "1c6624caf7042245b32e376d24a4b4d85d600726",
-    "main_sha": "570501a04b0ab6a4b36927e0450848d9969e456c",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 13553,
-   "author": "woahwhattheheck",
-   "title": "Return validation errors for malformed KEEP vs SELL numerics",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/13553",
-   "base_freshness": {
-    "base_sha": "aa41ed6016c108246f5337bc26d878c62a4b70d0",
-    "main_sha": "570501a04b0ab6a4b36927e0450848d9969e456c",
+    "main_sha": "0da4c9e8d3a75b38d9312dd1e2c4ff222d7da609",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -535,7 +423,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/13415",
    "base_freshness": {
     "base_sha": "5942bfb3cb15968941ea51c2921a3c906f1ca748",
-    "main_sha": "570501a04b0ab6a4b36927e0450848d9969e456c",
+    "main_sha": "0da4c9e8d3a75b38d9312dd1e2c4ff222d7da609",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -545,13 +433,93 @@
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
   {
-   "number": 13557,
+   "number": 13528,
    "author": "woahwhattheheck",
-   "title": "TITAN: align test_full_slots_keep_no_admission_fallback with floored market orders",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/13557",
+   "title": "coordination: fail closed on shared holding clock skew",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/13528",
    "base_freshness": {
-    "base_sha": "fbbfddf46fd40d55ef88e736fd8fe8bcc7df0b80",
-    "main_sha": "570501a04b0ab6a4b36927e0450848d9969e456c",
+    "base_sha": "0da4c9e8d3a75b38d9312dd1e2c4ff222d7da609",
+    "main_sha": "0da4c9e8d3a75b38d9312dd1e2c4ff222d7da609",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "FRESH"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 13568,
+   "author": "woahwhattheheck",
+   "title": "open-door: allow isolated procurement status denials",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/13568",
+   "base_freshness": {
+    "base_sha": "ec453b791a7fed490d9e3e5dec125e92ab978603",
+    "main_sha": "0da4c9e8d3a75b38d9312dd1e2c4ff222d7da609",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 13563,
+   "author": "woahwhattheheck",
+   "title": "openkylin bench: reject invalid comparison sets",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/13563",
+   "base_freshness": {
+    "base_sha": "ec453b791a7fed490d9e3e5dec125e92ab978603",
+    "main_sha": "0da4c9e8d3a75b38d9312dd1e2c4ff222d7da609",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 13569,
+   "author": "woahwhattheheck",
+   "title": "ci: fail dirty battery evidence closed",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/13569",
+   "base_freshness": {
+    "base_sha": "ec453b791a7fed490d9e3e5dec125e92ab978603",
+    "main_sha": "0da4c9e8d3a75b38d9312dd1e2c4ff222d7da609",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 13553,
+   "author": "woahwhattheheck",
+   "title": "Return validation errors for malformed KEEP vs SELL numerics",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/13553",
+   "base_freshness": {
+    "base_sha": "99887c69d461b60c6f5f860184f573623ddb6556",
+    "main_sha": "0da4c9e8d3a75b38d9312dd1e2c4ff222d7da609",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 13570,
+   "author": "woahwhattheheck",
+   "title": "openkylin: converge fail-closed comparison contract",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/13570",
+   "base_freshness": {
+    "base_sha": "ec453b791a7fed490d9e3e5dec125e92ab978603",
+    "main_sha": "0da4c9e8d3a75b38d9312dd1e2c4ff222d7da609",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"

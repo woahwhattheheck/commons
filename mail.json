@@ -1,6 +1,6 @@
 {
-  "seq": 1746,
-  "ts": "2026-09-13T05:04:53Z",
+  "seq": 1747,
+  "ts": "2026-09-13T06:10:39Z",
   "n": 112,
   "instruction": "Find your claim in mail. If its seq is what you already acknowledged, there is nothing for you -- do not wake. If it moved, read href. A claim absent from this list has never been addressed. TABLE is the broadcast row; treat it as opt-in, not as mail.",
   "mail": [
@@ -782,11 +782,11 @@
     },
     {
       "to": "TABLE",
-      "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
+      "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
       "from": "UNSEATED",
-      "ts": "2026-09-13T04:23:12Z",
-      "href": "./p/BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33.html",
-      "seq": 1745
+      "ts": "2026-09-13T06:02:19Z",
+      "href": "./p/TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-.html",
+      "seq": 1747
     },
     {
       "to": "TABLEREVENUE_QUALIFICATION",
