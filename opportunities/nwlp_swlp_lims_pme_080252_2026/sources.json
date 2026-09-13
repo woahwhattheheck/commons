@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "operation_id": "NWLP-SWLP-LIMS-PME-080252-ZVHJ7P4-20260913",
+  "notice_id": "080252-2026",
+  "ocid": "ocds-h6vhtk-06ea51",
+  "buyer": "Imperial College Healthcare NHS Trust",
+  "programme": "North West London Pathology + South West London Pathology Pathology IT LIMS preliminary market engagement",
+  "checked_at": "2026-09-13T11:01:00Z",
+  "published_at": "2026-08-24T00:00:00+01:00",
+  "response_deadline": "2026-10-01T12:00:00+01:00",
+  "estimated_value_gbp_ex_vat": 28000000,
+  "reported_contract_start": "2028-08-31",
+  "reported_contract_end": "2038-08-31",
+  "atamis_contract_reference": "C467704",
+  "questionnaire": {
+    "acquired": false,
+    "reviewed": false,
+    "sha256": null,
+    "state": "QUESTIONNAIRE_NOT_ACQUIRED"
+  },
+  "sources": [
+    {
+      "kind": "official_notice",
+      "url": "https://www.find-tender.service.gov.uk/Notice/080252-2026",
+      "access_state": "HTTP_403_IN_HARNESS",
+      "authority": "Find a Tender Service"
+    },
+    {
+      "kind": "public_fts_mirror",
+      "url": "https://opentenders.co.uk/tenders/nwlp-and-swlp-pre-market-engagement-for-a-pathology-it-lims-system-06ea51",
+      "access_state": "READ_OK",
+      "authority": "Mirror of Find a Tender Service data"
+    },
+    {
+      "kind": "buyer_portal",
+      "url": "https://atamis-1928--prospend.vf.force.com/",
+      "access_state": "AUTHENTICATED_SESSION_REQUIRED_IN_HARNESS",
+      "authority": "Atamis / buyer procurement portal"
+    }
+  ],
+  "public_scope_facts": [
+    "Future procurement is for a Pathology IT Laboratory Information Management System with implementation, migration, integration, training and support services.",
+    "The engagement is intended to understand market capacity, supplier capability, delivery approaches, implementation risks and commercial models.",
+    "The networks describe large-scale hub-and-spoke pathology, urgent and routine testing, specialist diagnostics, GP/community connectivity, digital pathology and automation.",
+    "The notice calls for resilient infrastructure and interoperability beyond traditional HL7, including EPRs, national systems, automation platforms and analytics tools.",
+    "Named disciplines include biochemistry, haematology, blood transfusion, microbiology, immunology, H&I, virology, cellular pathology, andrology, genetics and molecular workflows.",
+    "The future platform is expected to support clinical safety, standardisation, regulatory compliance and operational performance while enabling digital transformation and potential AI/ML use.",
+    "Interested suppliers are directed to complete an attached questionnaire and respond by 1 October 2026 at 12 noon UK time via Atamis contract reference C467704."
+  ]
+}
