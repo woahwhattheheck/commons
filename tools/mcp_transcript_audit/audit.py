@@ -3,6 +3,7 @@ from __future__ import annotations
 import base64
 import binascii
 import hashlib
+import io
 import json
 from collections import Counter
 from typing import Any
@@ -251,17 +252,40 @@ def audit_transcript(
     if not isinstance(required_protocol_version, str) or not required_protocol_version:
         raise ValueError("required_protocol_version must be a non-empty string")
 
-    if len(source) > MAX_CAPTURE_BYTES:
+    oversized_capture = len(source) > MAX_CAPTURE_BYTES
+    if oversized_capture:
         reasons.append(_safe_reason("CAPTURE_TOO_LARGE"))
-    if b"\x00" in source:
-        reasons.append(_safe_reason("NUL_BYTE_IN_CAPTURE"))
 
-    raw_lines = source.splitlines()
-    nonempty = [(i + 1, line) for i, line in enumerate(raw_lines) if line.strip()]
-    if not nonempty:
-        reasons.append(_safe_reason("EMPTY_CAPTURE"))
-    if len(nonempty) > MAX_EVENTS:
-        reasons.append(_safe_reason("TOO_MANY_EVENTS"))
+    nonempty: list[tuple[int, bytes]] = []
+    if not oversized_capture:
+        if b"\x00" in source:
+            reasons.append(_safe_reason("NUL_BYTE_IN_CAPTURE"))
+        stream = io.BytesIO(source)
+        line_number = 0
+        while True:
+            raw = stream.readline(MAX_LINE_BYTES + 2)
+            if raw == b"":
+                break
+            line_number += 1
+            has_lf = raw.endswith(b"\n")
+            if has_lf:
+                raw = raw[:-1]
+                if raw.endswith(b"\r"):
+                    raw = raw[:-1]
+            elif len(raw) > MAX_LINE_BYTES:
+                reasons.append(_safe_reason("EVENT_TOO_LARGE", line_number))
+                break
+            if len(raw) > MAX_LINE_BYTES:
+                reasons.append(_safe_reason("EVENT_TOO_LARGE", line_number))
+                break
+            if raw.strip():
+                nonempty.append((line_number, raw))
+                if len(nonempty) > MAX_EVENTS:
+                    reasons.append(_safe_reason("TOO_MANY_EVENTS"))
+                    break
+
+        if not nonempty and not reasons:
+            reasons.append(_safe_reason("EMPTY_CAPTURE"))
 
     stop_semantic_processing = bool(reasons)
 
