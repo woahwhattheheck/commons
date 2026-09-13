@@ -57,11 +57,11 @@ def _load(path: Path) -> dict[str, Any]:
 def _nonempty_strings(value: Any, field: str) -> list[str]:
     if not isinstance(value, list) or not value:
         raise CatalogError(f"{field} must be a non-empty array")
-    if len(value) != len(set(value)):
-        raise CatalogError(f"{field} must not contain duplicates")
     for item in value:
         if not isinstance(item, str) or len(item.strip()) < 3:
             raise CatalogError(f"{field} entries must be non-empty strings")
+    if len(value) != len(set(value)):
+        raise CatalogError(f"{field} must not contain duplicates")
     return value
 
 
