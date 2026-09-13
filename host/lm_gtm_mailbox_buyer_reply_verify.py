@@ -43,7 +43,7 @@ KIND_FIXTURE = "LM_GTM_MAILBOX_FIXTURE"
 KIND_RELATIONSHIP_EVIDENCE = "LM_GTM_RELATIONSHIP_EVIDENCE"
 STATUS_NO = "NO_BUYER_REPLY"
 STATUS_OBSERVED = "BUYER_REPLY_OBSERVED"
-DECISION_OBSERVED = "BUYER_REPLY_OBSERVED"
+OBSERVATION_KIND = "BUYER_REPLY_OBSERVED"
 MODE_HERMETIC = "HERMETIC"
 FIXTURE_REL = "revenue/lm_gtm_index/mailbox_buyer_reply_fixtures"
 EVIDENCE_REL = "revenue/lm_gtm_index/relationship_handoff_evidence.jsonl"
@@ -201,7 +201,7 @@ def verify_mailbox_buyer_reply(
         "invent_guard": {
             "never_invent_verified_human_yes": True,
             "never_mint_material_reply_from_arrival": True,
-            "never_change_contact_authority_from_arrival": True,
+            "never_change_relationship_authority_from_arrival": True,
             "hermetic_only": True,
             "no_index_remint": True,
             "no_cheri_contact": True,
@@ -231,7 +231,7 @@ def _append_unique_evidence(
         for item in existing:
             if (
                 item.get("type") == "STATUS"
-                and item.get("decision") == DECISION_OBSERVED
+                and item.get("observation") == OBSERVATION_KIND
             ):
                 prior_paths = {
                     value
@@ -256,10 +256,11 @@ def pin_buyer_reply_observed_evidence(
     organization: str,
     ts: str | None = None,
 ) -> dict[str, Any]:
-    """Append neutral reply-arrival STATUS evidence; never MATERIAL_REPLY.
+    """Append evidentiary-only reply-arrival STATUS without state authority.
 
-    The record intentionally omits ``dnr`` so the relationship handoff retains
-    whatever contact/no-resend authority the existing row already had.
+    The record intentionally omits decision, dnr, live, due, route, and
+    next_action fields. Relationship handoff therefore learns the observation
+    but preserves every existing relationship/contact/owner decision.
     """
     paths = paths or idx.default_paths()
     if verify_result.get("status") != STATUS_OBSERVED:
@@ -301,15 +302,13 @@ def pin_buyer_reply_observed_evidence(
         "ts": stamp,
         "from": "FORGE",
         "body": (
-            "Buyer reply arrival observed after a prior SENT anchor in the same thread. "
-            "Human identity, commercial materiality, acceptance, award, and payment remain unverified."
+            "BUYER_REPLY_OBSERVED: reply arrival observed after a prior SENT anchor "
+            "in the same thread. Human identity, commercial materiality, acceptance, "
+            "award, and payment remain unverified. Human classification is required "
+            "before any material-reply or commercial-state claim. Existing relationship, "
+            "contact, owner-hold, route, due, and next-action authority is unchanged."
         ),
-        "decision": DECISION_OBSERVED,
-        "next_action": (
-            "HUMAN_CLASSIFICATION_REQUIRED; inspect the source message before any "
-            "material-reply, scope, acceptance, or commercial-state claim. Existing "
-            "contact/no-resend authority is unchanged by this observation."
-        ),
+        "observation": OBSERVATION_KIND,
         "source_paths": source_paths,
         "cash_usd": 0,
         "transport": "NONE",
@@ -348,7 +347,7 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument(
         "--pin-buyer-reply-observed",
         action="store_true",
-        help="when BUYER_REPLY_OBSERVED, append neutral STATUS evidence only",
+        help="when BUYER_REPLY_OBSERVED, append evidentiary-only STATUS",
     )
     parser.add_argument(
         "--pin-material-reply",
