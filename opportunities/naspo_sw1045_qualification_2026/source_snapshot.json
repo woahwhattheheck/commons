@@ -1,0 +1,57 @@
+{
+  "alternate_event_id": "EV00000871",
+  "authority": {
+    "agency_contact_authorized": false,
+    "certification_or_signature_authorized": false,
+    "contract_acceptance_authorized": false,
+    "named_person_commitment_authorized": false,
+    "naspo_contact_authorized": false,
+    "past_performance_representation_authorized": false,
+    "portal_login_authorized": false,
+    "pricing_commitment_authorized": false,
+    "prime_contact_authorized": false,
+    "proposal_submission_authorized": false,
+    "revenue_recognition_authorized": false,
+    "spend_authorized": false,
+    "supplier_registration_authorized": false
+  },
+  "award_status": "NO_AWARD_YET",
+  "checked_at": "2026-09-13T11:09:00Z",
+  "close_at": "2026-10-15T20:00:00Z",
+  "eligible_use": "State governments, institutions of higher education, political subdivisions, the District of Columbia, U.S. territories, and other eligible entities subject to local approval and law.",
+  "lead_state": "Oklahoma",
+  "mirror_sources": [
+    {
+      "authority": "PUBLIC_MIRROR_DISCOVERY",
+      "label": "HigherGov Oklahoma SW1045 mirror",
+      "url": "https://www.highergov.com/sl/contract-opportunity/ok-sw1045-emerging-technologies-72518757/"
+    }
+  ],
+  "official_sources": [
+    {
+      "authority": "OFFICIAL_SUMMARY",
+      "label": "NASPO ValuePoint SW1045 solicitation page",
+      "url": "https://www.naspovaluepoint.org/solicitations/sw1045/"
+    },
+    {
+      "authority": "OFFICIAL_INDEX",
+      "label": "NASPO ValuePoint open solicitations index",
+      "url": "https://www.naspovaluepoint.org/solicitations/"
+    }
+  ],
+  "opportunity_id": "NASPO-SW1045-2026",
+  "packet_access": {
+    "observation": "NASPO's View RFP path redirected this research seat into Oklahoma PeopleSoft cookie/sign-in handling; exact controlling attachment bytes were not acquired.",
+    "official_addenda_inventory_confirmed": false,
+    "official_packet_acquired": false,
+    "official_packet_attachment_count": null,
+    "official_packet_sha256": null
+  },
+  "phase": "Public Posting Activities",
+  "purpose": "Establish Master Agreements with qualified bidders for Emerging Technologies Consulting and Services through NASPO ValuePoint cooperative purchasing.",
+  "release_date": "2026-08-14",
+  "schema": "naspo.sw1045.source_snapshot/v1",
+  "solicitation_number": "SW1045",
+  "status": "OPEN",
+  "title": "Emerging Technologies Consulting and Services"
+}
