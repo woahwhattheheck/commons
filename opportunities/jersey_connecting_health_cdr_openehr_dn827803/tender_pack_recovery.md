@@ -16,16 +16,28 @@ An operator who already has authority to access the procurement portal should:
 1. Open the exact `DN827803` opportunity without creating a new supplier account unless separately authorized.
 2. Download every current tender document, schedule, response workbook/form, contract, security schedule, architecture appendix, pricing sheet and amendment.
 3. Preserve each filename and byte sequence exactly and record portal version/timestamp metadata where shown.
-4. Identify which file or archive is controlling; if multiple files collectively control the response, archive them deterministically and hash that archive.
-5. Compute SHA-256 over the exact controlling bytes.
-6. Review all mandatory requirements, exclusions, evaluation gates, response limits, declarations, deadlines and portal mechanics.
-7. Update `sources.json` only after the bytes exist:
+4. Build a deterministic inventory of every controlling file/addendum, with stable source IDs, kinds, exact SHA-256 values and portal/version coordinates.
+5. Identify which file or deterministic archive is the tender-pack byte object consumed by `qualify.py`, and compute SHA-256 over those exact bytes.
+6. Review **all** mandatory requirements, exclusions, evaluation gates, response limits, declarations, deadlines and portal mechanics. Assign each extracted requirement a stable ID and bind its mandatory flag, route/cure semantics, exact buyer source ID + SHA-256 and description SHA-256.
+7. Review every capability-evidence item proposed for `PROVEN`. Retain a stable evidence ID, claim/capability ID, `PRIME` or `PARTNER` subject, immutable source SHA-256, HTTPS source reference and SHA-256 of the exact reviewed claim statement.
+8. Update `sources.json` only after the bytes exist:
    - `acquired=true`;
-   - exact lowercase SHA-256;
+   - exact lowercase tender-pack SHA-256;
    - `reviewed=false`, state `TENDER_PACK_ACQUIRED_UNREVIEWED` until full review;
    - after complete review, `reviewed=true`, state `TENDER_PACK_ACQUIRED_REVIEWED`.
-8. Recompute SHA-256 of the complete updated `sources.json` bytes and bind it into the manifest.
-9. Run `qualify.py ... --tender-pack ACTUAL_FILE_OR_ARCHIVE` so the actual bytes must match the declared digest.
+9. Recompute SHA-256 of the complete updated `sources.json` bytes.
+10. Create a `jersey-dn827803-trusted-qualification/v2` commitment containing:
+    - exact source-ledger and tender-pack SHA-256 values;
+    - extraction time and `addenda_checked_through` time;
+    - buyer-source-bound response deadline and deadline source ID;
+    - `complete=true` only after the complete current package was reviewed;
+    - canonical buyer-source set + set digest;
+    - canonical complete requirement set + set digest; and
+    - canonical approved-evidence set + set digest.
+11. Normalize that trusted commitment with the same v2 schema and retain its canonical SHA-256 **separately from the file presented to the evaluator**. This separately retained digest is the verifier trust root. Do not recompute the expected root from a newly presented trusted-qualification file during consumption.
+12. Run `qualify.py ... --tender-pack ACTUAL_FILE_OR_ARCHIVE --trusted-qualification REVIEWED_TRUST.json --trusted-qualification-sha256 RETAINED_ROOT` so both the actual bytes and the independently retained extraction commitment must match.
+
+The trusted extraction/addenda inventory is current-work evidence, not a permanent certification. The v2 evaluator fails closed once `addenda_checked_through` is more than 24 hours behind trusted current UTC. Refresh the controlling inventory and retain a new reviewed root rather than rolling the evaluation clock backward.
 
 ## Extract before any commercial recommendation
 
