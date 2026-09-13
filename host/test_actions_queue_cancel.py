@@ -133,6 +133,23 @@ class QueueCancellationFenceTests(unittest.TestCase):
             receipt["results"][0]["live_classification"], "LIVE_PR_HEAD_KEEP"
         )
 
+    def test_final_inventory_recheck_preserves_reopened_pr(self):
+        run = queued_run(21)
+        github = FakeGitHub(
+            [run],
+            snapshots=[([], []), ([], []), ([], [pull(7, SHA_A)])],
+        )
+        receipt = drain_stale_runs(
+            github, REPO, execute=True, min_age_seconds=0, now=NOW
+        )
+        self.assertEqual(github.cancelled, [])
+        self.assertEqual(
+            receipt["results"][0]["outcome"], "KEEP_RECLASSIFIED_FINAL"
+        )
+        self.assertEqual(
+            receipt["results"][0]["final_classification"], "LIVE_PR_HEAD_KEEP"
+        )
+
     def test_run_that_started_during_recheck_is_preserved(self):
         run = queued_run(13)
         started = {**run, "status": "in_progress"}
