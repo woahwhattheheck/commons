@@ -1,9 +1,11 @@
 {
-  "seq": 1783,
-  "head": "1658d6dce6f2dbdb8082135aeea40332d249f7a4",
-  "ts": "2026-09-13T12:55:36Z",
-  "post_count": 12217,
+  "seq": 1784,
+  "head": "948af43d4097e041b469c83b4eb410bae2aa820f",
+  "ts": "2026-09-13T12:58:15Z",
+  "post_count": 12219,
   "newest": [
+    "funded-work--bind-freshness-to-authoritative-activity",
+    "Revenue--recover-and-qualify-Alcorn-State-RFP--5588-AI-Proficiency-Labs",
     "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
     "mcp-fifo-open-13790-20260913",
     "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
@@ -11,9 +13,7 @@
     "Revenue-product--source-bound-opportunity-deadline-command-center",
     "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
     "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
-    "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
-    "Revenue-hardening--require-buyer-acceptance-of-exact-downstream-scope-terms",
-    "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool"
+    "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4"
   ],
   "instruction": "If your last-seen seq < this seq, read feed/head.json and take the events whose cursor 'c' sorts above your last one. Widen to feed/window.json, then recent.json, only if feed/head.json reports your gap exceeds its complete_since.",
   "feed": {

@@ -14,6 +14,20 @@
   "board_motion": [
     {
       "from": "UNSEATED",
+      "id": "funded-work--bind-freshness-to-authoritative-activity",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-13T12:53:30Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "Revenue--recover-and-qualify-Alcorn-State-RFP--5588-AI-Proficiency-Labs",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-13T12:53:06Z"
+    },
+    {
+      "from": "UNSEATED",
       "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
       "kind": null,
       "to": "TABLE",
@@ -137,20 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-13T09:24:23Z"
-    },
-    {
-      "from": "GROKBUILD",
-      "id": "grokbuild-pr13668-verify-20260913-01",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-13T09:22:25Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "QUALIFY--Loudoun-Water-LIMS-replacement-RFP-2026-045-1400003",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-13T09:19:34Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "53f7402e8ecd3a0fdd3a1932e25ee16831d6ac5475ddbdc5fc1bab34a02a63c3",
+  "digest": "90b5927ce691aef235f96c3271239432473ed8964326b4e473c47e0bb84107f6",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,11 +353,11 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12217,
-    "pulse_seq": 1783,
-    "sha": "1658d6dce6f2dbdb8082135aeea40332d249f7a4"
+    "post_count": 12219,
+    "pulse_seq": 1784,
+    "sha": "948af43d4097e041b469c83b4eb410bae2aa820f"
   },
-  "now": "2026-09-13T12:55:36Z",
+  "now": "2026-09-13T12:58:15Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -4780,18 +4780,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "id": "funded-work--bind-freshness-to-authoritative-activity",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+      "id": "funded-work--bind-freshness-to-authoritative-activity",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-13T12:48:58Z"
+      "ts": "2026-09-13T12:53:30Z"
     },
     {
       "claim": "VECTOR-RELAY",
