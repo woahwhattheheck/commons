@@ -84,15 +84,12 @@ def _finite_decimal(value: Any) -> Decimal | None:
     return parsed if parsed.is_finite() else None
 
 
-def _integral_value(value: Any) -> int | None:
-    """Return an exact finite integer; fractional and boolean values are invalid."""
+def _integral_value(value: Any) -> Decimal | None:
+    """Return an exact finite integral Decimal without allocating a Python int."""
     parsed = _finite_decimal(value)
     if parsed is None or parsed != parsed.to_integral_value():
         return None
-    try:
-        return int(parsed)
-    except (OverflowError, ValueError):
-        return None
+    return parsed
 
 
 def checkout_is_live_payment_link(url: str) -> bool:
