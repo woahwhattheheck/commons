@@ -24,7 +24,10 @@ Those are separate authorities. This rail binds 1–5 and explicitly keeps 6 fal
 
 ## Input contract
 
-Each packet is a JSON object with `schema_version: "1"` and:
+Each packet is a JSON object with `schema_version: "1"` and a top-level `account_id`.
+Every authority-bearing evidence object (`settlement`, `delivery_acceptance`,
+`buyer_signal`, and `owner_approval`) must repeat that exact account identity;
+cross-account relabeling or splicing fails closed. The packet also carries:
 
 - `offer`: immutable offer/version, currency, exact expected cents, exact
   scope SHA-256, issue/expiry window.
