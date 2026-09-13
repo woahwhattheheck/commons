@@ -48,7 +48,7 @@ def validate_intake(intake: Any) -> dict[str, Any]:
     _ref(intake["pilot_id"], "intake.pilot_id")
     _ref(intake["customer_ref"], "intake.customer_ref")
     tier = intake["tier"]
-    if tier not in TIERS:
+    if not isinstance(tier, str) or tier not in TIERS:
         raise IntakeError(f"intake.tier: expected one of {sorted(TIERS)}")
     packets = intake["packets"]
     if not isinstance(packets, list) or not packets:

@@ -79,9 +79,15 @@ class StreamingRenditionQaPilotTest(unittest.TestCase):
         with self.assertRaises(IntakeError):
             compile_pilot(intake)
 
-    def test_unknown_tier_fails_closed(self) -> None:
+    def test_unknown_string_tier_fails_closed(self) -> None:
         intake = build_demo_intake()
         intake["tier"] = "FREE"
+        with self.assertRaises(IntakeError):
+            compile_pilot(intake)
+
+    def test_unhashable_tier_fails_closed(self) -> None:
+        intake = build_demo_intake()
+        intake["tier"] = {"name": "DIAGNOSTIC"}
         with self.assertRaises(IntakeError):
             compile_pilot(intake)
 
