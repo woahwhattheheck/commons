@@ -27,6 +27,7 @@ RECEIPT_SCHEMA = "commons.fsu-itn-6769-4-receipt/v1"
 OPPORTUNITY_ID = "FSU-ITN-6769-4"
 MAX_TEXT = 512
 SAFE_INT = 2**53 - 1
+PACKAGE_INVENTORY_MAX_AGE_SECONDS = 24 * 60 * 60
 SHA256_RE = re.compile(r"^[0-9a-f]{64}$")
 ID_RE = re.compile(r"^[A-Za-z0-9][A-Za-z0-9._:/+-]{0,127}$")
 ALLOWED_SOURCE_KINDS = {
@@ -216,8 +217,8 @@ def normalize_source_packet(packet: Any, *, as_of: str) -> dict[str, Any]:
     now = parse_utc(as_of, "as_of")
     keys = {
         "schema", "opportunityId", "buyer", "solicitationId", "title",
-        "openAt", "closeAt", "sources", "packetManifest", "serviceCategories",
-        "mandatoryGates", "notes",
+        "openAt", "closeAt", "deadlineSourceId", "sources", "packetManifest",
+        "serviceCategories", "mandatoryGates", "notes",
     }
     _expect_exact_keys(packet, keys, "packet")
     if packet["schema"] != SOURCE_SCHEMA:
@@ -235,6 +236,9 @@ def normalize_source_packet(packet: Any, *, as_of: str) -> dict[str, Any]:
     if len({x["id"] for x in sources}) != len(sources):
         raise QualificationError("duplicate source id")
     source_ids = {x["id"] for x in sources}
+    deadline_source_id = _id(packet["deadlineSourceId"], "deadlineSourceId")
+    if deadline_source_id not in source_ids:
+        raise QualificationError("deadlineSourceId unknown")
 
     manifest = packet["packetManifest"]
     _expect_exact_keys(manifest, {"complete", "files", "addendaCheckedThrough", "authRequiredForFullPacket"}, "packetManifest")
@@ -283,6 +287,7 @@ def normalize_source_packet(packet: Any, *, as_of: str) -> dict[str, Any]:
         "title": _text(packet["title"], "title", max_len=200),
         "openAt": packet["openAt"],
         "closeAt": packet["closeAt"],
+        "deadlineSourceId": deadline_source_id,
         "sources": sorted(sources, key=lambda x: x["id"]),
         "packetManifest": {
             "complete": complete,
@@ -319,12 +324,20 @@ def _packet_authoritative(packet: dict[str, Any]) -> tuple[bool, list[str]]:
     for source in packet["sources"]:
         if source["controlling"] and source["id"] not in manifest_source_ids:
             reasons.append(f"CONTROLLING_SOURCE_NOT_IN_MANIFEST:{source['id']}")
+    deadline_source = sources_by_id[packet["deadlineSourceId"]]
+    if deadline_source["kind"] not in CONTROLLING_KINDS or not deadline_source["controlling"]:
+        reasons.append("DEADLINE_NOT_BOUND_TO_CONTROLLING_SOURCE")
     for gate in packet["mandatoryGates"]:
         source = sources_by_id[gate["sourceId"]]
         if source["kind"] not in CONTROLLING_KINDS or not source["controlling"]:
             reasons.append(f"GATE_NOT_BOUND_TO_CONTROLLING_SOURCE:{gate['id']}")
     return not reasons, sorted(set(reasons))
 
+
+def _package_inventory_fresh(packet: dict[str, Any], now: datetime) -> bool:
+    checked = parse_utc(packet["packetManifest"]["addendaCheckedThrough"], "packetManifest.addendaCheckedThrough")
+    age_seconds = int((now - checked).total_seconds())
+    return 0 <= age_seconds <= PACKAGE_INVENTORY_MAX_AGE_SECONDS
 
 def compile_qualification(
     packet: Any,
@@ -344,16 +357,26 @@ def compile_qualification(
     disposition = "HOLD_RAW_PACKET_REQUIRED"
     reasons = list(authority_reasons)
 
-    if now >= close_at:
-        disposition = "NO_BID_DEADLINE_CLOSED"
-        reasons = ["PROPOSAL_DEADLINE_REACHED"]
-    elif authoritative and expected_source_packet_sha256 is None:
+    # Ordering is authority-significant. A caller-authored deadline must never mint
+    # a hard NO_BID before the complete packet is structurally authoritative, its
+    # exact normalized digest is trusted out of band, and the addenda inventory is
+    # current. This also prevents stale packets from asserting a deadline after a
+    # possible unobserved extension.
+    if not authoritative:
+        pass
+    elif expected_source_packet_sha256 is None:
         disposition = "HOLD_SOURCE_PACKET_TRUST_ROOT_REQUIRED"
         reasons = ["EXPECTED_SOURCE_PACKET_SHA256_REQUIRED_OUT_OF_BAND"]
-    elif authoritative and expected_source_packet_sha256 != source_digest:
+    elif expected_source_packet_sha256 != source_digest:
         disposition = "HOLD_SOURCE_PACKET_TRUST_ROOT_MISMATCH"
         reasons = ["EXPECTED_SOURCE_PACKET_SHA256_MISMATCH"]
-    elif authoritative:
+    elif not _package_inventory_fresh(normalized, now):
+        disposition = "HOLD_PACKAGE_INVENTORY_STALE"
+        reasons = ["ADDENDA_CHECK_EXCEEDS_24H_POLICY"]
+    elif now >= close_at:
+        disposition = "NO_BID_DEADLINE_CLOSED"
+        reasons = ["TRUSTED_CURRENT_PACKET_PROPOSAL_DEADLINE_REACHED"]
+    else:
         gates = normalized["mandatoryGates"]
         if not gates:
             disposition = "HOLD_MANDATORY_GATE_MATRIX_EMPTY"
@@ -401,12 +424,12 @@ def compile_qualification(
         "reasons": sorted(reasons),
         "serviceCategories": normalized["serviceCategories"],
         "counts": counts,
+        "policy": {"packageInventoryMaxAgeSeconds": PACKAGE_INVENTORY_MAX_AGE_SECONDS},
         "authority": AUTHORITY_CEILING,
     }
     receipt = dict(receipt_core)
     receipt["receiptSha256"] = sha256_hex(canonical_bytes(receipt_core))
     return {"schema": SCHEMA, "sourcePacket": normalized, "receipt": receipt}
-
 
 def verify_qualification(
     packet: Any,
@@ -423,3 +446,48 @@ def verify_qualification(
     if type(receipt) is not dict:
         return False
     return canonical_bytes(compiled["receipt"]) == canonical_bytes(receipt)
+
+
+def verify_current_qualification(
+    packet: Any,
+    receipt: Any,
+    *,
+    current_as_of: str,
+    expected_source_packet_sha256: str | None = None,
+) -> bool:
+    """Verify the original receipt, then re-evaluate current time-sensitive state.
+
+    Historical replay remains available through ``verify_qualification`` for tests
+    and audit. This function is the current-work boundary: it refuses time travel
+    and requires the disposition/reasons/policy to remain valid at trusted now.
+    """
+    if type(receipt) is not dict:
+        return False
+    evaluated_at = receipt.get("evaluatedAt")
+    if type(evaluated_at) is not str:
+        return False
+    try:
+        evaluated_dt = parse_utc(evaluated_at, "receipt.evaluatedAt")
+        current_dt = parse_utc(current_as_of, "current_as_of")
+    except QualificationError:
+        return False
+    if current_dt < evaluated_dt:
+        return False
+    if not verify_qualification(
+        packet,
+        receipt,
+        as_of=evaluated_at,
+        expected_source_packet_sha256=expected_source_packet_sha256,
+    ):
+        return False
+    current = compile_qualification(
+        packet,
+        as_of=current_as_of,
+        expected_source_packet_sha256=expected_source_packet_sha256,
+    )["receipt"]
+    semantic_keys = (
+        "schema", "opportunityId", "sourcePacketSha256",
+        "trustedSourcePacketSha256", "disposition", "reasons",
+        "serviceCategories", "counts", "policy", "authority",
+    )
+    return all(receipt.get(key) == current.get(key) for key in semantic_keys)
