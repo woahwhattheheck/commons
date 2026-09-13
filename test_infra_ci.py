@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import json
 import re
 import unittest
 from pathlib import Path
@@ -12,6 +13,7 @@ from host.ci_battery import discover
 ROOT = Path(__file__).resolve().parent
 README = ROOT / "infra" / "README.md"
 WORKFLOW = ROOT / ".github" / "workflows" / "tests.yml"
+PROVIDERS = ROOT / "ci" / "provider_quotas.json"
 
 
 def file_count(relative: str) -> int:
@@ -43,6 +45,18 @@ class InfraCiTest(unittest.TestCase):
         self.assertEqual(workflow.count("- 'infra/**'"), 2)
         self.assertIn("python3 host/ci_battery.py --results", workflow)
         self.assertIn(("python3", "infra/discord/test_commons_discord_bridge.py"), discover(ROOT))
+
+    def test_retired_cirrus_provider_cannot_look_executable(self):
+        inventory = json.loads(PROVIDERS.read_text(encoding="utf-8"))
+        matches = [row for row in inventory["roads"] if row["road"] == "Cirrus CI"]
+        self.assertEqual(len(matches), 1)
+        cirrus = matches[0]
+        self.assertEqual(cirrus["job_class"], "excluded")
+        self.assertEqual(cirrus["state"], "DEAD/EXCLUDED")
+        self.assertIsNone(cirrus["config"])
+        self.assertIsNone(cirrus["invoke"])
+        self.assertIn("2026-06-01", cirrus["free_quota"])
+        self.assertFalse((ROOT / ".cirrus.yml").exists())
 
     def test_historical_classifier_is_not_current_policy(self):
         notice = (ROOT / "infra" / "OUT_OF_SPEC_NOT_INCLUDED.txt").read_text(
