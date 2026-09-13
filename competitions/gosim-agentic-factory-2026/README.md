@@ -26,12 +26,14 @@ The digest fields are evidence references. This harness never invents benchmark 
 
 Regression gates are intentionally stronger than one aggregate number:
 
+- each baseline task is comparable only to the same `task_id`, exact `task_spec_sha256`, and test cardinality; a same-name task with a changed generation fails the gate;
+- a candidate or baseline that mixes multiple task generations under one `task_id` is rejected as ambiguous;
 - correctness regressions fail before token/time savings are considered;
 - when correctness is equal, token growth beyond the policy tolerance fails;
 - when correctness is equal, wall-time growth beyond the policy tolerance fails;
 - missing candidate tasks fail.
 
-A cheaper/faster candidate cannot hide a correctness loss inside the aggregate.
+A cheaper/faster candidate cannot hide a correctness loss or substitute an easier same-name task inside the aggregate.
 
 ## Outputs
 
@@ -41,7 +43,7 @@ A cheaper/faster candidate cannot hide a correctness loss inside the aggregate.
 - raw public-axis metrics;
 - the internal readiness score;
 - per-task Pareto status (maximize correctness, minimize tokens and time);
-- median/worst summaries per harness/model configuration;
+- median/worst summaries per structurally keyed harness/model configuration;
 - optional baseline regression-gate results;
 - a SHA-256 receipt covering policy, exact run evidence, optional baseline evidence, and report core.
 
