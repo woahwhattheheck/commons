@@ -11,6 +11,12 @@ It deliberately recomputes both receipts from source evidence. A caller cannot
 supply a claimed route receipt and have it trusted. DSN rows inside route
 lifecycle evidence remain subject to the existing dsn_authority source-binding
 contract before insertion into that evidence.
+
+Until route snapshots are independently generated and retained by a trusted
+provider-backed authority, caller-supplied nonblocking lifecycle results are
+descriptive only: DELIVERED and UNCONFIRMED cannot satisfy a send-capable route
+requirement. Blocking/holding evidence may still demote because doing so cannot
+grant outbound authority.
 """
 from __future__ import annotations
 
@@ -27,6 +33,7 @@ from tools.outbound_send_guard import guard, route_lifecycle
 
 SCHEMA = "outbound-send-route-composed-receipt/v1"
 SEND_CAPABLE = frozenset({"ALLOW_NEW", "REPLY_ONLY"})
+NONBLOCKING_ROUTE_DECISIONS = frozenset({"DELIVERED", "UNCONFIRMED"})
 
 
 class ComposeError(guard.GuardError):
@@ -150,6 +157,11 @@ def evaluate(
     mandatory for the latest logical outbound selected by the base guard. Its
     ``as_of`` must equal the base evidence ``generated_at``, preventing a stale
     pre-DSN lookup from being reused against a fresher guard snapshot.
+
+    Caller-supplied route bytes are not independent completeness authority.
+    Therefore DELIVERED/UNCONFIRMED cannot satisfy a required route check until
+    a provider-backed retained snapshot authority is added. BLOCK_ROUTE and
+    HOLD_ROUTE remain safe demotions because they cannot create send authority.
     """
     if type(intent_raw) is not dict or type(evidence_raw) is not dict:
         raise ComposeError("intent and evidence must be objects")
@@ -240,7 +252,17 @@ def evaluate(
     elif route_required and route_status != "PROVIDER_MESSAGE_UNAVAILABLE":
         reasons.append("route-lifecycle evidence is required for the latest prior outbound")
 
-    if route_required and route_receipt is None:
+    nonblocking_untrusted = (
+        route_required
+        and route_receipt is not None
+        and route_decision in NONBLOCKING_ROUTE_DECISIONS
+    )
+    if nonblocking_untrusted:
+        reasons.append(
+            "caller-supplied nonblocking route evidence lacks independent complete-snapshot authority"
+        )
+
+    if route_required and (route_receipt is None or nonblocking_untrusted):
         final_decision = "HOLD"
     else:
         final_decision = _compose_decision(base_decision, route_decision)
@@ -248,7 +270,7 @@ def evaluate(
     authority = base_payload["authority"]
     if route_receipt is not None and route_receipt["payload"]["authority"] == "unknown":
         authority = "unknown"
-    if route_required and route_receipt is None and authority == "complete":
+    if route_required and (route_receipt is None or nonblocking_untrusted) and authority == "complete":
         authority = "partial"
 
     payload = {
