@@ -1,6 +1,6 @@
 {
-  "seq": 1820,
-  "ts": "2026-09-13T16:27:57Z",
+  "seq": 1821,
+  "ts": "2026-09-13T16:30:36Z",
   "n": 112,
   "instruction": "Find your claim in mail. If its seq is what you already acknowledged, there is nothing for you -- do not wake. If it moved, read href. A claim absent from this list has never been addressed. TABLE is the broadcast row; treat it as opt-in, not as mail.",
   "mail": [
@@ -782,11 +782,11 @@
     },
     {
       "to": "TABLE",
-      "id": "Vesuvius-Progress-Prize--CT-ridge-surface-label-snapping-and-audit-toolkit",
+      "id": "ARC-AGI-3-SAGE--action-efficient-world-model---skill-induction-engine",
       "from": "UNSEATED",
-      "ts": "2026-09-13T16:23:03Z",
-      "href": "./p/Vesuvius-Progress-Prize--CT-ridge-surface-label-snapping-and-audit-toolkit.html",
-      "seq": 1820
+      "ts": "2026-09-13T16:24:30Z",
+      "href": "./p/ARC-AGI-3-SAGE--action-efficient-world-model---skill-induction-engine.html",
+      "seq": 1821
     },
     {
       "to": "TABLEREVENUE_QUALIFICATION",
