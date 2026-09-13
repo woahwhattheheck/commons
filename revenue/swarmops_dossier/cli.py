@@ -39,18 +39,20 @@ def write_new(path: str, data: bytes) -> None:
         os.close(fd)
 
 
-def _trusted(path: str | None):
-    return {} if path is None else strict_json_loads(read_regular(path))
-
-
 def main(argv: list[str] | None = None) -> int:
+    """Compile/verify the unprivileged prospect-safe surface.
+
+    Deliberately no CLI flag accepts commercial-truth authority. A pathname supplied by
+    the same CLI caller is not independent buyer/payment/accounting provenance. Hosts
+    that have independently authenticated those provider facts must call the engine API
+    with their retained trust map; this CLI always compiles/verifies with an empty map.
+    """
     ap = argparse.ArgumentParser(description="Compile and verify prospect-safe Commons SwarmOps evidence dossiers")
     sub = ap.add_subparsers(dest="cmd", required=True)
     cp = sub.add_parser("compile")
     cp.add_argument("packet")
     cp.add_argument("policy")
     cp.add_argument("--as-of", required=True)
-    cp.add_argument("--trusted-commercial-receipts")
     cp.add_argument("--json-out", required=True)
     cp.add_argument("--markdown-out", required=True)
     vp = sub.add_parser("verify")
@@ -58,19 +60,17 @@ def main(argv: list[str] | None = None) -> int:
     vp.add_argument("policy")
     vp.add_argument("candidate")
     vp.add_argument("--as-of", required=True)
-    vp.add_argument("--trusted-commercial-receipts")
     ns = ap.parse_args(argv)
     try:
         packet = strict_json_loads(read_regular(ns.packet))
         policy = strict_json_loads(read_regular(ns.policy))
-        trusted = _trusted(ns.trusted_commercial_receipts)
         if ns.cmd == "compile":
-            dossier = compile_dossier(packet, policy, ns.as_of, trusted)
+            dossier = compile_dossier(packet, policy, ns.as_of, {})
             write_new(ns.json_out, canonical_bytes(dossier) + b"\n")
             write_new(ns.markdown_out, render_markdown(dossier).encode("utf-8"))
             return 0 if dossier["status"] == "READY_FOR_OWNER_REVIEW" else 2
         candidate = strict_json_loads(read_regular(ns.candidate))
-        return 0 if verify_dossier(packet, policy, ns.as_of, candidate, trusted) else 3
+        return 0 if verify_dossier(packet, policy, ns.as_of, candidate, {}) else 3
     except (DossierError, OSError, UnicodeError, json.JSONDecodeError) as exc:
         print(f"ERROR: {exc}", file=__import__("sys").stderr)
         return 4
