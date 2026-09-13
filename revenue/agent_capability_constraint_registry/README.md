@@ -6,7 +6,7 @@ The commercial trigger was a release-gated multi-partner agent-capability census
 
 ## What it does
 
-Each source record binds an `agent_id` + integer `revision` to a workstream, provider/model-or-harness declaration, measured capabilities with exact evidence references + SHA-256 hashes, declared constraints, required and available tools, owner-decision state, and explicit blocking reasons.
+Each source record binds an `agent_id` + integer `revision` to a workstream, provider/model-or-harness declaration, measured capabilities with exact evidence references + SHA-256 hashes, declared constraints with source references/hashes/timestamps, required and available tools, owner-decision state, and explicit blocking reasons. The top-level `evidence_max_age_seconds` binds an explicit freshness window against `generated_at`; future or stale capability/constraint evidence fails closed.
 
 Compilation produces exactly one status per record:
 
@@ -19,7 +19,7 @@ Compilation produces exactly one status per record:
 
 ## Fail-closed input contract
 
-The loader rejects duplicate JSON keys, UTF-8 BOMs, floats, NaN/Infinity, unknown/missing fields, bool-as-int revisions/minutes, malformed hashes/timestamps, duplicate agent+revision identities, duplicate capability/constraint names, incomplete evidence provenance and invalid enum values.
+The loader rejects duplicate JSON keys, UTF-8 BOMs, floats, NaN/Infinity, unknown/missing fields, bool-as-int revisions/minutes/freshness windows, malformed hashes/timestamps, future or stale evidence, duplicate agent+revision identities, duplicate capability/constraint names, incomplete evidence provenance and invalid enum values.
 
 The compiler canonicalizes ordering, emits byte-stable `registry.json` + `registry.md`, and emits `receipt.json` binding the normalized input, JSON projection and Markdown projection. Verification recompiles from source and requires all three output files to match byte-for-byte.
 
