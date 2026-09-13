@@ -1,0 +1,12 @@
+{
+  "schema": "streaming-rendition-qa-pilot-manifest/v1",
+  "operation": "STREAMING-RENDITION-QA-PILOT-PACK-ZVHK3P8-20260913",
+  "owner": "Z-VandermondeHarbor-913944-K3P8",
+  "upstream_operation": "paramount-streaming-rendition-release-gate-01",
+  "upstream_pr": 13885,
+  "diagnostic_reference_price_cents": 250000,
+  "diagnostic_max_assets": 250,
+  "integration_reference_price_cents": 750000,
+  "integration_stage": "OPTIONAL_AFTER_PAID_DIAGNOSTIC",
+  "external_authority": false
+}
