@@ -3,13 +3,18 @@
 
 Discovery records can establish that a pursuit exists; they cannot establish
 controlling bid requirements. The production CLI intentionally has no way to
-supply trusted controlling-source authority.
+supply trusted controlling-source authority. The trusted-host integration path
+requires a host-retained HMAC capability loaded from process configuration;
+that capability is never accepted from packet bytes, caller source claims, or
+CLI arguments.
 """
 from __future__ import annotations
 
 import argparse
 import hashlib
+import hmac
 import json
+import os
 import re
 from datetime import datetime, timezone
 from pathlib import Path
@@ -22,6 +27,10 @@ REPORTED_DEADLINE_LOCAL = "2026-10-06 20:00 (timezone unverified)"
 ALLOWED_CLASSIFICATIONS = {"MANDATORY", "EVALUATED", "INFORMATIONAL"}
 ALLOWED_EVIDENCE_STATES = {"PROVEN", "UNKNOWN", "MISSING", "OWNER_ATTESTATION_REQUIRED"}
 TRUSTED_AUTHORITY = "CITY_OR_OFFICIAL_PROCUREMENT_PORTAL"
+AUTHORITY_SCHEMA = "airdrie-controlling-source-authority/v1"
+AUTHORITY_KEY_ID = "airdrie-host-v1"
+AUTHORITY_KEY_ENV = "AIRDRIE_CONTROLLING_AUTHORITY_KEY_HEX"
+MIN_AUTHORITY_KEY_BYTES = 32
 HEX64 = re.compile(r"^[0-9a-f]{64}$")
 
 
@@ -45,9 +54,12 @@ def _parse_utc(value: str) -> datetime:
     return parsed
 
 
+def _canonical_json_bytes(obj: Any) -> bytes:
+    return json.dumps(obj, sort_keys=True, separators=(",", ":"), ensure_ascii=False).encode("utf-8")
+
+
 def _sha256_json(obj: Any) -> str:
-    raw = json.dumps(obj, sort_keys=True, separators=(",", ":"), ensure_ascii=False).encode("utf-8")
-    return hashlib.sha256(raw).hexdigest()
+    return hashlib.sha256(_canonical_json_bytes(obj)).hexdigest()
 
 
 def _require_str(obj: dict[str, Any], key: str) -> str:
@@ -87,9 +99,22 @@ def _validate_trusted_sources(trusted_sources: Any) -> dict[str, dict[str, Any]]
         raise QualificationError("trusted_sources must be a non-empty list")
     by_id: dict[str, dict[str, Any]] = {}
     current_complete_solicitations = 0
+    allowed_keys = {
+        "source_id",
+        "sha256",
+        "authority",
+        "current",
+        "scope_complete",
+        "deadline_utc",
+        "kind",
+        "supersedes",
+    }
     for source in trusted_sources:
         if not isinstance(source, dict):
             raise QualificationError("trusted source must be an object")
+        unknown = set(source) - allowed_keys
+        if unknown:
+            raise QualificationError(f"trusted source has unknown field(s): {sorted(unknown)}")
         sid = _require_str(source, "source_id")
         if sid in by_id:
             raise QualificationError(f"duplicate trusted source_id: {sid}")
@@ -97,10 +122,10 @@ def _validate_trusted_sources(trusted_sources: Any) -> dict[str, dict[str, Any]]
         if not HEX64.fullmatch(sha):
             raise QualificationError(f"{sid}: sha256 must be lowercase 64-hex")
         if source.get("authority") != TRUSTED_AUTHORITY:
-            raise QualificationError(f"{sid}: untrusted authority")
+            raise QualificationError(f"{sid}: untrusted authority claim")
         current = source.get("current")
         complete = source.get("scope_complete")
-        if not isinstance(current, bool) or not isinstance(complete, bool):
+        if type(current) is not bool or type(complete) is not bool:
             raise QualificationError(f"{sid}: current/scope_complete must be booleans")
         kind = _require_str(source, "kind")
         supersedes = source.get("supersedes", [])
@@ -108,6 +133,11 @@ def _validate_trusted_sources(trusted_sources: Any) -> dict[str, dict[str, Any]]
             raise QualificationError(f"{sid}: supersedes must be string list")
         if len(set(supersedes)) != len(supersedes):
             raise QualificationError(f"{sid}: duplicate supersedes")
+        deadline = source.get("deadline_utc")
+        if deadline is not None:
+            _parse_utc(deadline)
+        if kind == "SOLICITATION" and deadline is None:
+            raise QualificationError(f"{sid}: SOLICITATION requires deadline_utc")
         if current and complete and kind == "SOLICITATION":
             current_complete_solicitations += 1
         by_id[sid] = source
@@ -120,6 +150,104 @@ def _validate_trusted_sources(trusted_sources: Any) -> dict[str, dict[str, Any]]
     if current_complete_solicitations != 1:
         raise QualificationError("exactly one current scope-complete SOLICITATION source is required")
     return by_id
+
+
+def _source_authority_projection(source: dict[str, Any]) -> dict[str, Any]:
+    """Canonical semantics authenticated by the host capability."""
+    return {
+        "authority": source["authority"],
+        "current": source["current"],
+        "deadline_utc": source.get("deadline_utc"),
+        "kind": source["kind"],
+        "scope_complete": source["scope_complete"],
+        "sha256": source["sha256"],
+        "source_id": source["source_id"],
+        "supersedes": sorted(source.get("supersedes", [])),
+    }
+
+
+def _authority_payload(trusted: dict[str, dict[str, Any]], issued_at: str) -> dict[str, Any]:
+    return {
+        "schema": AUTHORITY_SCHEMA,
+        "key_id": AUTHORITY_KEY_ID,
+        "solicitation_id": SOLICITATION_ID,
+        "issued_at": issued_at,
+        "sources": [
+            _source_authority_projection(trusted[sid])
+            for sid in sorted(trusted)
+        ],
+    }
+
+
+def _load_host_authority_key() -> bytes:
+    raw = os.environ.get(AUTHORITY_KEY_ENV)
+    if raw is None:
+        raise QualificationError("host controlling-source authority capability is not provisioned")
+    if not isinstance(raw, str) or len(raw) % 2:
+        raise QualificationError("host authority capability must be lowercase hex")
+    try:
+        key = bytes.fromhex(raw)
+    except ValueError as exc:
+        raise QualificationError("host authority capability must be lowercase hex") from exc
+    if raw != raw.lower() or key.hex() != raw:
+        raise QualificationError("host authority capability must be canonical lowercase hex")
+    if len(key) < MIN_AUTHORITY_KEY_BYTES:
+        raise QualificationError(f"host authority capability must be at least {MIN_AUTHORITY_KEY_BYTES} bytes")
+    return key
+
+
+def issue_host_authority_set(
+    trusted_sources: list[dict[str, Any]],
+    *,
+    issued_at: str,
+) -> dict[str, Any]:
+    """Trusted-host helper.
+
+    This function can only mint an authority set when the host process has the
+    out-of-band capability in ``AIRDRIE_CONTROLLING_AUTHORITY_KEY_HEX``. The
+    key is not accepted through the packet, source list, authority document, or
+    CLI. Treat code/process access that can read this capability as trusted-host
+    authority; untrusted request data must never control that environment.
+    """
+    trusted = _validate_trusted_sources(trusted_sources)
+    issued = _parse_utc(issued_at)
+    if issued > _utc_now():
+        raise QualificationError("host authority issued_at cannot be in the future")
+    payload = _authority_payload(trusted, issued_at)
+    key = _load_host_authority_key()
+    mac = hmac.new(key, _canonical_json_bytes(payload), hashlib.sha256).hexdigest()
+    return {**payload, "mac_sha256": mac}
+
+
+def _verify_host_authority_set(
+    authority_set: Any,
+    trusted: dict[str, dict[str, Any]],
+) -> str:
+    if not isinstance(authority_set, dict):
+        raise QualificationError("authority_set must be an object")
+    expected_fields = {"schema", "key_id", "solicitation_id", "issued_at", "sources", "mac_sha256"}
+    if set(authority_set) != expected_fields:
+        raise QualificationError("authority_set fields do not match the v1 schema")
+    if authority_set.get("schema") != AUTHORITY_SCHEMA:
+        raise QualificationError("unsupported authority_set schema")
+    if authority_set.get("key_id") != AUTHORITY_KEY_ID:
+        raise QualificationError("unexpected authority key_id")
+    if authority_set.get("solicitation_id") != SOLICITATION_ID:
+        raise QualificationError("authority_set solicitation_id mismatch")
+    issued_at = _require_str(authority_set, "issued_at")
+    if _parse_utc(issued_at) > _utc_now():
+        raise QualificationError("authority_set issued_at cannot be in the future")
+    expected_payload = _authority_payload(trusted, issued_at)
+    if authority_set.get("sources") != expected_payload["sources"]:
+        raise QualificationError("authority_set does not bind the exact trusted-source generation")
+    supplied_mac = _require_str(authority_set, "mac_sha256")
+    if not HEX64.fullmatch(supplied_mac):
+        raise QualificationError("authority_set mac_sha256 must be lowercase 64-hex")
+    key = _load_host_authority_key()
+    expected_mac = hmac.new(key, _canonical_json_bytes(expected_payload), hashlib.sha256).hexdigest()
+    if not hmac.compare_digest(supplied_mac, expected_mac):
+        raise QualificationError("authority_set MAC verification failed")
+    return _sha256_json(authority_set)
 
 
 def _validate_evidence(evidence: Any) -> dict[str, dict[str, Any]]:
@@ -217,16 +345,19 @@ def evaluate_discovery(packet: dict[str, Any]) -> dict[str, Any]:
 def evaluate_with_trusted_sources(
     packet: dict[str, Any],
     trusted_sources: list[dict[str, Any]],
+    authority_set: dict[str, Any],
 ) -> dict[str, Any]:
-    """Trusted-host API.
+    """Trusted-host API with an out-of-band capability boundary.
 
-    `trusted_sources` is an authority boundary: callers must acquire these records
-    independently from the City or official procurement portal. The CLI does not
-    expose this parameter.
+    Callers may supply source *claims* and a candidate authority document, but
+    neither can establish trust. Promotion requires an HMAC over the exact
+    canonical source generation under a host-retained capability loaded from
+    process configuration. The public CLI never loads or exposes this path.
     """
     try:
         _validate_notice(packet.get("notice"))
         trusted = _validate_trusted_sources(trusted_sources)
+        authority_sha = _verify_host_authority_set(authority_set, trusted)
         current_solicitation = next(
             source for source in trusted.values()
             if source.get("current") is True
@@ -234,11 +365,18 @@ def evaluate_with_trusted_sources(
             and source.get("kind") == "SOLICITATION"
         )
         deadline_utc = _require_str(current_solicitation, "deadline_utc")
+        authority_extra = {
+            "trusted_authority_schema": AUTHORITY_SCHEMA,
+            "trusted_authority_key_id": AUTHORITY_KEY_ID,
+            "trusted_authority_sha256": authority_sha,
+            "trusted_authority_issued_at": authority_set["issued_at"],
+        }
         if _utc_now() >= _parse_utc(deadline_utc):
             return _receipt(
                 "HOLD_DEADLINE_REVERIFY",
                 packet,
                 ["controlling solicitation deadline reached; reverify amendment/currentness before proceeding"],
+                **authority_extra,
             )
         evidence = _validate_evidence(packet.get("evidence"))
         requirements = _validate_requirements(packet.get("requirements"), trusted, evidence)
@@ -251,6 +389,7 @@ def evaluate_with_trusted_sources(
             packet,
             ["trusted solicitation recovered but no sourced requirements have been extracted"],
             trusted_source_count=len(trusted),
+            **authority_extra,
         )
 
     mandatory = [r for r in requirements if r["classification"] == "MANDATORY"]
@@ -273,6 +412,7 @@ def evaluate_with_trusted_sources(
             [f"{len(gaps)} mandatory requirement(s) lack proven evidence"],
             mandatory_gaps=gaps,
             requirement_count=len(requirements),
+            **authority_extra,
         )
 
     return _receipt(
@@ -283,6 +423,7 @@ def evaluate_with_trusted_sources(
         mandatory_requirement_count=len(mandatory),
         evaluated_requirement_count=sum(r["classification"] == "EVALUATED" for r in requirements),
         submission_authorized=False,
+        **authority_extra,
     )
 
 
