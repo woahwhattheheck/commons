@@ -1,0 +1,12 @@
+{
+  "competition_submission_performed": false,
+  "manifest_sha256": "2cd48dbf195f11e3a3d8d2b56cfd86e8b2a97af3daae09d5f6554774d9af638f",
+  "notes": "Engine validated on synthetic hostile trajectories/videos; organizer Baidu dataset not mountable from this runtime.",
+  "operation": "WUHU-LEROBOT-QC-ZRAM913455-20260913",
+  "organizer_dataset_mounted": false,
+  "prize_claimed": false,
+  "validation": {
+    "compileall": "PASS",
+    "unittest": "10/10 PASS"
+  }
+}

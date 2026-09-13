@@ -1,0 +1,43 @@
+{
+  "files": [
+    {
+      "bytes": 3255,
+      "path": "README.md",
+      "sha256": "92bb4d519e78a49ef536c92437b42724439f54c7d6930d5b4493e8645dec4a1e"
+    },
+    {
+      "bytes": 64,
+      "path": "requirements.txt",
+      "sha256": "88c5666408085f913bf7e406ce0f004d0c9238ed429d8424e26230ff8c6700ab"
+    },
+    {
+      "bytes": 4628,
+      "path": "tests/test_core.py",
+      "sha256": "d4b74b036cdfc4915375b9c6b40017b0cd4ab5f6d9a263e29d0ccf22f11192db"
+    },
+    {
+      "bytes": 244,
+      "path": "wuhu_qc/__init__.py",
+      "sha256": "c51d571f6c0474f4360c45be758d0598dda7320114af28c3dfd4a766f23c940f"
+    },
+    {
+      "bytes": 1446,
+      "path": "wuhu_qc/cli.py",
+      "sha256": "9ec72073cb24d9b40f75528a87d87da0a9191e8523eef360d2ff20b9b9442cdb"
+    },
+    {
+      "bytes": 19360,
+      "path": "wuhu_qc/core.py",
+      "sha256": "e4195f93466f9daec77c19180105eedef6eff299f974833adff193f647f82b03"
+    },
+    {
+      "bytes": 4001,
+      "path": "wuhu_qc/lerobot_v21.py",
+      "sha256": "3507f751ce920b81ac58a1001ce720e5239538eeda81e8365b12cd31fb77e399"
+    }
+  ],
+  "format": "LeRobot v2.1",
+  "manifest_sha256": "2cd48dbf195f11e3a3d8d2b56cfd86e8b2a97af3daae09d5f6554774d9af638f",
+  "operation": "WUHU-LEROBOT-QC-ZRAM913455-20260913",
+  "test_cohort_statistics_used": false
+}
