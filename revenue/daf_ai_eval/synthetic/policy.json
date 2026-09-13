@@ -1,0 +1,1 @@
+{"max_drift_drop_bp":5000,"max_p95_latency_ms":100,"min_accuracy_bp":8000,"min_explainability_bp":10000,"min_reliability_bp":10000,"min_robustness_bp":10000,"policy_id":"phase1.synthetic.thresholds","schema":"daf-ai-eval-policy/v1"}

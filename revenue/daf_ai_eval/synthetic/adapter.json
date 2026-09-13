@@ -1,0 +1,1 @@
+{"adapter_id":"research.sim.adapter","claims_government_simulator_access":false,"provider_class":"SYNTHETIC","schema":"daf-ai-eval-adapter-record/v1","source_ref":"fixture.synthetic","source_sha256":"1111111111111111111111111111111111111111111111111111111111111111","synthetic_or_research_owned":true}

@@ -1,0 +1,33 @@
+name: DAF AI evaluation proof
+on:
+  pull_request:
+    paths:
+      - 'revenue/daf_ai_eval/**'
+      - '.github/workflows/daf-ai-eval-proof.yml'
+  push:
+    paths:
+      - 'revenue/daf_ai_eval/**'
+      - '.github/workflows/daf-ai-eval-proof.yml'
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.11', '3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Normal and optimized hostile suites
+        working-directory: revenue/daf_ai_eval
+        run: |
+          python -m unittest -v test_evaluator.py
+          python -O -m unittest -v test_evaluator.py
+          python -m py_compile evaluator.py cli.py test_evaluator.py
+      - name: Deterministic compile and verify
+        working-directory: revenue/daf_ai_eval
+        run: |
+          rm -f /tmp/daf-ai-eval-report.json
+          python cli.py compile --scenarios synthetic/scenarios.json --policy synthetic/policy.json --adapter synthetic/adapter.json --report /tmp/daf-ai-eval-report.json --trusted-now 2026-09-13T15:00:00Z
+          python cli.py verify --scenarios synthetic/scenarios.json --policy synthetic/policy.json --adapter synthetic/adapter.json --report /tmp/daf-ai-eval-report.json --trusted-now 2026-09-13T15:00:00Z
