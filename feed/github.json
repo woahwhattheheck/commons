@@ -1,9 +1,9 @@
 {
   "counts": {
-    "open_issues": 73,
-    "open_pull_requests": 41,
+    "open_issues": 72,
+    "open_pull_requests": 40,
     "runs_in_progress": 19,
-    "runs_queued": 1493
+    "runs_queued": 1499
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -69,24 +69,13 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "zom-k8j3-lacsd-04254-evidence-sprint",
-      "created_at": "2026-09-13T14:56:39Z",
-      "draft": false,
-      "head_sha": "d6614ecb935fb1a1920adf384759d057892d36f3",
-      "number": 14031,
-      "title": "LACSD 04254: ship $5,000 AI/ML validation/evidence sprint",
-      "updated_at": "2026-09-13T15:03:08Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
       "branch": "z-furnace/gosim-agentic-factory-harness-20260913",
       "created_at": "2026-09-13T14:56:19Z",
       "draft": false,
       "head_sha": "4e07b600a1d0d48c40ee7125eb6503eb5d69e90c",
       "number": 14029,
       "title": "Add deterministic GOSIM Agentic Factory readiness harness",
-      "updated_at": "2026-09-13T15:03:57Z"
+      "updated_at": "2026-09-13T15:04:20Z"
     },
     {
       "author": "woahwhattheheck",
@@ -175,6 +164,17 @@
       "number": 13910,
       "title": "Revenue: authenticate pursuit portfolio authority and file custody",
       "updated_at": "2026-09-13T14:38:24Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zmbq5t8/warranty-rma-ops-20260913",
+      "created_at": "2026-09-13T14:11:49Z",
+      "draft": false,
+      "head_sha": "0ad7356c59a25f47dac74c2a4a744c334a8397fa",
+      "number": 13902,
+      "title": "Ship Warranty & RMA Operations Desk",
+      "updated_at": "2026-09-13T14:26:12Z"
     }
   ],
   "open_heads": {
@@ -217,13 +217,23 @@
     "14009": "fb7442166c2f8caff7e2b95b8cc86e478b79594f",
     "14010": "1c4d592328b17d72cc31f8f38b1ba54b98dd2586",
     "14027": "11bbcbf342032b2c1c076fcf2a2e3742ccfb39ac",
-    "14029": "4e07b600a1d0d48c40ee7125eb6503eb5d69e90c",
-    "14031": "d6614ecb935fb1a1920adf384759d057892d36f3"
+    "14029": "4e07b600a1d0d48c40ee7125eb6503eb5d69e90c"
   },
-  "pulls_listed": 41,
+  "pulls_listed": 40,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 78.6,
+  "queue_depth_per_runner": 78.9,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zom-k8j3-lacsd-04254-evidence-sprint",
+      "closed_at": "2026-09-13T15:04:23Z",
+      "head_sha": "13793a016245b1fd54f7afdc71bd8ad81991e535",
+      "merged_at": "2026-09-13T15:04:23Z",
+      "number": 14031,
+      "state": "MERGED",
+      "title": "LACSD 04254: ship $5,000 AI/ML validation/evidence sprint"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -377,21 +387,10 @@
       "number": 14016,
       "state": "MERGED",
       "title": "revenue: add NHDES water infrastructure dashboard RFP carrier"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zfa-b4k9/tate-reference-authority-repair-20260913",
-      "closed_at": "2026-09-13T14:53:11Z",
-      "head_sha": "0b055309361992e8723bd22c53c7d2a5c6d5936f",
-      "merged_at": "2026-09-13T14:53:11Z",
-      "number": 14015,
-      "state": "MERGED",
-      "title": "Fix Tate & Lyle gate self-authenticated reference authority"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-13T15:04:16Z",
+  "unchanged_since": "2026-09-13T15:04:38Z",
   "undatable_pulls": []
 }
