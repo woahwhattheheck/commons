@@ -29,7 +29,7 @@ _MONEY_RE = re.compile(
 _COMMERCIAL_NOUN_RE = re.compile(r"(?i)\b(?:reward|bounty|funding)(?:\s+amount)?\b")
 _DIRECT_AMOUNT_LINK_RE = re.compile(
     r"(?i)^[\s:=,()\-]*"
-    r"(?:(?:amount|is|was|has|been|now|currently|set|updated|changed|increased|decreased|raised|reduced|to|at|of|worth|totals?|equals?)\b[\s:=,()\-]*){0,6}$"
+    r"(?:(?:(?-i:[A-Z]{3})|amount|is|was|has|been|now|currently|set|updated|changed|increased|decreased|raised|reduced|to|at|of|worth|totals?|equals?)\b[\s:=,()\-]*){0,6}$"
 )
 _REVERSE_AMOUNT_LINK_RE = re.compile(
     r"(?i)^\s*(?:as\s+(?:the\s+)?)?(?:reward|bounty|funding)\b"
@@ -46,6 +46,12 @@ _NOW_DESTINATION_RE = re.compile(
     r"(?i)^[\s:=,()\-]*now\b[\s:=,()\-]*(?:is\b[\s:=,()\-]*)?$"
 )
 _SYMBOL_CURRENCY = {"$": "USD", "€": "EUR", "£": "GBP"}
+_SYMBOL_CODE_RE = re.compile(
+    r"(?:"
+    r"(?P<prefix>[A-Z]{3})\s*(?P<prefix_symbol>[$€£])\s*\d+(?:,\d{3})*(?:\.\d+)?"
+    r"|(?P<suffix_symbol>[$€£])\s*\d+(?:,\d{3})*(?:\.\d+)?\s*(?P<suffix>[A-Z]{3})(?![A-Z])"
+    r")"
+)
 
 
 def parse_timestamp(value: Any) -> datetime | None:
@@ -151,14 +157,30 @@ def _money_tokens(text: str) -> list[tuple[int, int, str, str]]:
     return tokens
 
 
+def _has_conflicting_symbol_code(text: str) -> bool:
+    """Fail closed when a currency symbol and adjacent uppercase code disagree."""
+
+    for match in _SYMBOL_CODE_RE.finditer(text):
+        if match.group("prefix") is not None:
+            code = str(match.group("prefix"))
+            symbol = str(match.group("prefix_symbol"))
+        else:
+            code = str(match.group("suffix"))
+            symbol = str(match.group("suffix_symbol"))
+        if code != _SYMBOL_CURRENCY[symbol]:
+            return True
+    return False
+
+
 def _commercial_amount_event(text: str) -> dict[str, str | None]:
     """Resolve one authority event's explicit reward/bounty/funding amount.
 
     Each line/semicolon clause is trimmed to its first commercial noun before
     monetary parsing. This prevents unrelated leading money from hiding a later
     reward transition while preserving fail-closed treatment of money after the
-    commercial statement. Multiple distinct amounts are ambiguous unless an
-    exactly two-amount transition binds the second token as the destination.
+    commercial statement. Conflicting symbol/code notation is ambiguous. Multiple
+    distinct amounts are ambiguous unless an exactly two-amount transition binds
+    the second token as the destination.
     """
 
     event_values: list[tuple[str, str]] = []
@@ -168,6 +190,9 @@ def _commercial_amount_event(text: str) -> dict[str, str | None]:
         if not raw_nouns:
             continue
         segment = raw_segment[raw_nouns[0].start() :]
+        if _has_conflicting_symbol_code(segment):
+            event_ambiguous = True
+            continue
         nouns = list(_COMMERCIAL_NOUN_RE.finditer(segment))
         monies = _money_tokens(segment)
         if not monies:
