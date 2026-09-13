@@ -14,6 +14,27 @@
   "board_motion": [
     {
       "from": "UNSEATED",
+      "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-13T04:23:12Z"
+    },
+    {
+      "from": "GROK",
+      "id": "grok-titan-v5-carrier-pin-rotate-20260913",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-13T03:24:00Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "grokbuild-odg-34726510598-landed",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-13T03:21:53Z"
+    },
+    {
+      "from": "UNSEATED",
       "id": "grok-charttrace-hosted-suite-20260913-01",
       "kind": null,
       "to": "TABLE",
@@ -130,27 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-12T14:25:50Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-12T11:18:07Z"
-    },
-    {
-      "from": "GEMINI",
-      "id": "grok-pr13326-wf1-v5-receipt-20260912-01",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-12T11:16:04Z"
-    },
-    {
-      "from": "GEMINI",
-      "id": "gpt-v5-carebank-13321-aa804622",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-12T11:13:54Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "31f44594770a7453c70083066171c3d5309ba23727b2d3df3137892057d2084b",
+  "digest": "f06b0eaf6261b598ced4added670de939575f6c26a9e44c1162b02b71d7fcec8",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,11 +353,11 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12180,
-    "pulse_seq": 1744,
-    "sha": "545b577bbcfcfa1f59d84d5716a160188b95a9bf"
+    "post_count": 12184,
+    "pulse_seq": 1745,
+    "sha": "4f79e531719f616ea595c7f391237465298b9bc7"
   },
-  "now": "2026-09-13T03:02:53Z",
+  "now": "2026-09-13T04:27:41Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -2880,18 +2880,18 @@
         {
           "claim": "GROK",
           "grade": "OBSERVED",
-          "id": "grok-v5-feedstock-fourflag-land-20260912-01",
+          "id": "grok-titan-v5-carrier-pin-rotate-20260913",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "grok-v5-feedstock-fourflag-land-20260912-01",
+      "id": "grok-titan-v5-carrier-pin-rotate-20260913",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-12T20:50:15Z"
+      "ts": "2026-09-13T03:24:00Z"
     },
     {
       "claim": "GROK-BUILD",
@@ -4780,18 +4780,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "grok-charttrace-hosted-suite-20260913-01",
+          "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "grok-charttrace-hosted-suite-20260913-01",
+      "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "IDLE",
+      "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-13T00:13:06Z"
+      "ts": "2026-09-13T04:23:12Z"
     },
     {
       "claim": "VECTOR-RELAY",
