@@ -5,9 +5,10 @@ import os
 import subprocess
 import tempfile
 import unittest
+import sys
 from pathlib import Path
 
-from host.context_packet import DIGEST_KEY, PacketError, canonical, compile_packet, verify_packet
+from host.context_packet import DIGEST_KEY, PacketError, canonical, compile_packet, markdown, verify_packet
 from host.git_source_capsules import GitSourceError, collect_git_source, verify_git_source
 
 
@@ -148,6 +149,57 @@ class GitSourceCapsuleTests(unittest.TestCase):
         bad[DIGEST_KEY] = hashlib.sha256(canonical(semantic).encode()).hexdigest()
         self.assertTrue(verify_packet(bad)[0])
         self.assertEqual(verify_git_source(bad["git_source"], self.repo), (False,"git-source-content-sha256"))
+
+
+    def test_direct_cli_from_arbitrary_cwd_compiles_and_verifies(self):
+        (self.repo/"pulse.json").write_text(json.dumps({"seq":1,"head":self.commit}), encoding="utf-8")
+        (self.repo/"recent.json").write_text("[]", encoding="utf-8")
+        (self.repo/"ledger.json").write_text(json.dumps({"surfaces":[]}), encoding="utf-8")
+        packet_path = self.repo/"packet.json"
+        script = Path(__file__).resolve().parents[1]/"host"/"context_dispatch.py"
+        compile_proc = subprocess.run(
+            [
+                sys.executable, str(script), "packet",
+                "--operation", "cli-capsule",
+                "--objective", "arbitrary cwd",
+                "--pulse", str(self.repo/"pulse.json"),
+                "--recent", str(self.repo/"recent.json"),
+                "--ledger", str(self.repo/"ledger.json"),
+                "--git-repo", str(self.repo),
+                "--source-commit", self.commit,
+                "--source-path", "alpha.txt",
+                "--out", str(packet_path),
+            ],
+            cwd=self.repo.parent,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            text=True,
+        )
+        self.assertEqual(compile_proc.returncode, 0, compile_proc.stderr)
+        verify_proc = subprocess.run(
+            [sys.executable, str(script), "verify", str(packet_path), "--git-repo", str(self.repo)],
+            cwd=self.repo.parent,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            text=True,
+        )
+        self.assertEqual(verify_proc.returncode, 0, verify_proc.stderr)
+        self.assertIn("VALID commons-context-packet/v1", verify_proc.stdout)
+
+    def test_markdown_source_fence_cannot_be_closed_by_committed_text(self):
+        raw = "before\n```\n# not a heading\n```\nafter\n"
+        (self.repo/"fence.md").write_text(raw, encoding="utf-8")
+        run(self.repo, "add", "fence.md"); run(self.repo, "commit", "-q", "-m", "fence")
+        commit = run(self.repo, "rev-parse", "HEAD").decode().strip()
+        packet = compile_packet(
+            operation="capsule-op", objective="render", pulse={"head":commit}, recent=[], ledger={"surfaces":[]},
+            git_repository=self.repo, source_commit=commit, source_paths=["fence.md"],
+            max_chars=5000, max_events=0, max_resources=0, max_claims=0, max_coordination=0,
+        )
+        rendered = markdown(packet)
+        self.assertIn("````text", rendered)
+        self.assertIn(raw, rendered)
+        self.assertIn("\n````\n", rendered)
 
     def test_source_argument_triad_is_fail_closed(self):
         with self.assertRaises(PacketError):
