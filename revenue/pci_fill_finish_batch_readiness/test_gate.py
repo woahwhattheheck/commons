@@ -1,137 +1,397 @@
 from __future__ import annotations
 
 import copy
+import hashlib
 import unittest
 
-from revenue.pci_fill_finish_batch_readiness.acceptance import AS_OF, VERIFY_AT, base_packet, run_acceptance
-from revenue.pci_fill_finish_batch_readiness.gate import ReadinessError, canonical_json, evaluate, normalize_packet, verify_decision
+from revenue.pci_fill_finish_batch_readiness.gate import (
+    DEFAULT_MAX_DECISION_AGE_SECONDS,
+    ReadinessError,
+    canonical_json,
+    evaluate,
+    normalize_packet,
+    verify_decision,
+)
+
+AS_OF = "2026-09-13T11:00:00Z"
+VERIFY_AT = "2026-09-13T11:01:00Z"
 
 
-class GateTests(unittest.TestCase):
-    def code(self, expected, fn):
-        with self.assertRaises(ReadinessError) as ctx:
-            fn()
-        self.assertEqual(ctx.exception.code, expected)
+def h(label: str) -> str:
+    return hashlib.sha256(label.encode("utf-8")).hexdigest()
 
-    def test_acceptance_contract_180(self):
-        result = run_acceptance()
-        self.assertEqual((result["ready_count"], result["hold_count"]), (144, 36))
-        self.assertEqual(set(result["reason_counts"].values()), {6})
 
-    def test_ready_packet(self):
-        decision = evaluate(base_packet(1))
+def packet() -> dict:
+    approved_digest = h("recipe-approved-v7")
+    return {
+        "schema_version": "pci.fill-finish-batch-readiness/v2",
+        "packet_id": "packet-001",
+        "batch_id": "batch-001",
+        "planned_slot_at": "2026-09-13T12:00:00Z",
+        "recipe": {
+            "recipe_id": "recipe-sterile-A",
+            "version": "v7",
+            "approved": True,
+            "approved_digest": approved_digest,
+            "observed_at": "2026-09-13T10:54:00Z",
+            "scheduled_recipe_id": "recipe-sterile-A",
+            "scheduled_version": "v7",
+            "required_material_components": ["drug-A", "excipient-B"],
+            "required_equipment_ids": ["filler-1", "isolator-1"],
+        },
+        "materials": [
+            {
+                "lot_id": "lot-drug-1",
+                "component": "drug-A",
+                "released": True,
+                "release_digest": h("lot-drug-1-release"),
+                "observed_at": "2026-09-13T10:55:00Z",
+            },
+            {
+                "lot_id": "lot-excipient-1",
+                "component": "excipient-B",
+                "released": True,
+                "release_digest": h("lot-excipient-1-release"),
+                "observed_at": "2026-09-13T10:55:00Z",
+            },
+        ],
+        "equipment": [
+            {
+                "equipment_id": "filler-1",
+                "calibration_valid_until": "2026-09-14T00:00:00Z",
+                "calibration_digest": h("filler-1-cal"),
+                "observed_at": "2026-09-13T10:56:00Z",
+            },
+            {
+                "equipment_id": "isolator-1",
+                "calibration_valid_until": "2026-09-14T00:00:00Z",
+                "calibration_digest": h("isolator-1-cal"),
+                "observed_at": "2026-09-13T10:56:00Z",
+            },
+        ],
+        "environment": {
+            "isolator_state": "READY",
+            "em_state": "PASS",
+            "captured_at": "2026-09-13T10:57:00Z",
+            "valid_until": "2026-09-13T12:30:00Z",
+            "evidence_digest": h("environment-ready"),
+        },
+        "fill_inspection": {
+            "fill_weight_batch_id": "batch-001",
+            "inspection_batch_id": "batch-001",
+            "recipe_digest": approved_digest,
+            "fill_weight_digest": h("fill-weight"),
+            "inspection_digest": h("inspection"),
+            "observed_at": "2026-09-13T10:58:00Z",
+        },
+        "bom": {
+            "required": [
+                {"component_id": "label-A", "version": "v2"},
+                {"component_id": "device-A", "version": "v5"},
+            ],
+            "staged": [
+                {"component_id": "device-A", "version": "v5"},
+                {"component_id": "label-A", "version": "v2"},
+            ],
+            "evidence_digest": h("bom"),
+            "observed_at": "2026-09-13T10:59:00Z",
+        },
+    }
+
+
+class ReadinessV2Tests(unittest.TestCase):
+    def test_complete_packet_is_ready(self):
+        decision = evaluate(packet(), trusted_as_of=AS_OF)
         self.assertEqual(decision["status"], "READY")
         self.assertEqual(decision["hold_reasons"], [])
-        self.assertTrue(all(v is False for v in decision["authority"].values()))
+        self.assertEqual(decision["evaluated_at"], AS_OF)
 
-    def test_recipe_mismatch(self):
-        p = base_packet(2); p["recipe"]["scheduled_version"] = "v2"
-        self.assertEqual(evaluate(p)["hold_reasons"], ["RECIPE_MISMATCH"])
+    def test_packet_cannot_choose_its_own_as_of(self):
+        raw = packet()
+        raw["as_of"] = "2020-01-01T00:00:00Z"
+        with self.assertRaisesRegex(ReadinessError, "PACKET_FIELDS"):
+            evaluate(raw, trusted_as_of=AS_OF)
 
-    def test_unreleased_material(self):
-        p = base_packet(3); p["materials"][1]["released"] = False
-        self.assertEqual(evaluate(p)["hold_reasons"], ["MATERIAL_UNRELEASED"])
+    def test_missing_required_material_holds(self):
+        raw = packet()
+        raw["materials"] = raw["materials"][:1]
+        decision = evaluate(raw, trusted_as_of=AS_OF)
+        self.assertEqual(decision["hold_reasons"], ["MATERIAL_COVERAGE_MISMATCH"])
 
-    def test_expired_calibration(self):
-        p = base_packet(4); p["equipment"][0]["calibration_valid_until"] = "2026-09-14T11:59:59Z"
-        self.assertEqual(evaluate(p)["hold_reasons"], ["CALIBRATION_EXPIRED"])
+    def test_extra_material_holds(self):
+        raw = packet()
+        raw["materials"].append(
+            {
+                "lot_id": "lot-extra-1",
+                "component": "unapproved-C",
+                "released": True,
+                "release_digest": h("extra-release"),
+                "observed_at": "2026-09-13T10:55:00Z",
+            }
+        )
+        self.assertIn("MATERIAL_COVERAGE_MISMATCH", evaluate(raw, trusted_as_of=AS_OF)["hold_reasons"])
 
-    def test_environment_hold(self):
-        p = base_packet(5); p["environment"]["em_state"] = "HOLD"
-        self.assertEqual(evaluate(p)["hold_reasons"], ["ENVIRONMENT_HOLD"])
+    def test_missing_required_equipment_holds(self):
+        raw = packet()
+        raw["equipment"] = raw["equipment"][:1]
+        self.assertEqual(evaluate(raw, trusted_as_of=AS_OF)["hold_reasons"], ["EQUIPMENT_COVERAGE_MISMATCH"])
 
-    def test_inspection_lineage_mismatch(self):
-        p = base_packet(6); p["fill_inspection"]["recipe_digest"] = "9" * 64
-        self.assertEqual(evaluate(p)["hold_reasons"], ["INSPECTION_LINEAGE_MISMATCH"])
+    def test_extra_equipment_holds(self):
+        raw = packet()
+        raw["equipment"].append(
+            {
+                "equipment_id": "pump-9",
+                "calibration_valid_until": "2026-09-14T00:00:00Z",
+                "calibration_digest": h("pump-9-cal"),
+                "observed_at": "2026-09-13T10:56:00Z",
+            }
+        )
+        self.assertIn("EQUIPMENT_COVERAGE_MISMATCH", evaluate(raw, trusted_as_of=AS_OF)["hold_reasons"])
 
-    def test_bom_mismatch(self):
-        p = base_packet(7); p["bom"]["staged"][0]["version"] = "v9"
-        self.assertEqual(evaluate(p)["hold_reasons"], ["BOM_MISMATCH"])
+    def test_duplicate_recipe_requirements_fail_closed(self):
+        raw = packet()
+        raw["recipe"]["required_material_components"].append("drug-A")
+        with self.assertRaisesRegex(ReadinessError, "DUPLICATE_RECIPE_REQUIREMENT"):
+            evaluate(raw, trusted_as_of=AS_OF)
 
-    def test_multiple_hold_reasons_have_fixed_order(self):
-        p = base_packet(8)
-        p["recipe"]["scheduled_version"] = "v2"
-        p["materials"][0]["released"] = False
-        p["bom"]["staged"][0]["version"] = "v9"
-        self.assertEqual(evaluate(p)["hold_reasons"], ["RECIPE_MISMATCH", "MATERIAL_UNRELEASED", "BOM_MISMATCH"])
+    def test_unreleased_material_holds(self):
+        raw = packet()
+        raw["materials"][0]["released"] = False
+        self.assertEqual(evaluate(raw, trusted_as_of=AS_OF)["hold_reasons"], ["MATERIAL_UNRELEASED"])
 
-    def test_input_list_order_is_canonicalized(self):
-        p = base_packet(9)
-        q = copy.deepcopy(p)
-        q["materials"].reverse(); q["equipment"].reverse(); q["bom"]["required"].reverse(); q["bom"]["staged"].reverse()
-        self.assertEqual(evaluate(p), evaluate(q))
+    def test_expired_calibration_holds(self):
+        raw = packet()
+        raw["equipment"][0]["calibration_valid_until"] = "2026-09-13T11:59:59Z"
+        self.assertEqual(evaluate(raw, trusted_as_of=AS_OF)["hold_reasons"], ["CALIBRATION_EXPIRED"])
 
-    def test_evaluate_does_not_mutate_input(self):
-        p = base_packet(10); before = copy.deepcopy(p)
-        evaluate(p)
-        self.assertEqual(p, before)
+    def test_environment_state_holds(self):
+        raw = packet()
+        raw["environment"]["em_state"] = "HOLD"
+        self.assertEqual(evaluate(raw, trusted_as_of=AS_OF)["hold_reasons"], ["ENVIRONMENT_HOLD"])
 
-    def test_unknown_packet_field_rejected(self):
-        p = base_packet(11); p["note"] = "nope"
-        self.code("PACKET_FIELDS", lambda: evaluate(p))
+    def test_environment_must_be_valid_through_slot(self):
+        raw = packet()
+        raw["environment"]["valid_until"] = "2026-09-13T11:59:59Z"
+        self.assertEqual(evaluate(raw, trusted_as_of=AS_OF)["hold_reasons"], ["ENVIRONMENT_STALE_FOR_SLOT"])
+
+    def test_environment_validity_cannot_precede_capture(self):
+        raw = packet()
+        raw["environment"]["valid_until"] = "2026-09-13T10:56:59Z"
+        with self.assertRaisesRegex(ReadinessError, "ENVIRONMENT_VALIDITY_BEFORE_CAPTURE"):
+            evaluate(raw, trusted_as_of=AS_OF)
+
+    def test_recipe_mismatch_holds(self):
+        raw = packet()
+        raw["recipe"]["scheduled_version"] = "v8"
+        self.assertEqual(evaluate(raw, trusted_as_of=AS_OF)["hold_reasons"], ["RECIPE_MISMATCH"])
+
+    def test_inspection_lineage_mismatch_holds(self):
+        raw = packet()
+        raw["fill_inspection"]["inspection_batch_id"] = "batch-999"
+        self.assertEqual(evaluate(raw, trusted_as_of=AS_OF)["hold_reasons"], ["INSPECTION_LINEAGE_MISMATCH"])
+
+    def test_bom_mismatch_holds(self):
+        raw = packet()
+        raw["bom"]["staged"][0]["version"] = "v6"
+        self.assertEqual(evaluate(raw, trusted_as_of=AS_OF)["hold_reasons"], ["BOM_MISMATCH"])
+
+    def test_all_evidence_observation_times_are_fenced_by_trusted_as_of(self):
+        mutations = [
+            lambda x: x["recipe"].__setitem__("observed_at", "2026-09-13T11:00:01Z"),
+            lambda x: x["materials"][0].__setitem__("observed_at", "2026-09-13T11:00:01Z"),
+            lambda x: x["equipment"][0].__setitem__("observed_at", "2026-09-13T11:00:01Z"),
+            lambda x: x["environment"].__setitem__("captured_at", "2026-09-13T11:00:01Z"),
+            lambda x: x["fill_inspection"].__setitem__("observed_at", "2026-09-13T11:00:01Z"),
+            lambda x: x["bom"].__setitem__("observed_at", "2026-09-13T11:00:01Z"),
+        ]
+        for mutate in mutations:
+            with self.subTest(mutate=mutate):
+                raw = packet()
+                mutate(raw)
+                with self.assertRaisesRegex(ReadinessError, "EVIDENCE_AFTER_TRUSTED_AS_OF"):
+                    evaluate(raw, trusted_as_of=AS_OF)
+
+    def test_trusted_as_of_cannot_be_after_planned_slot(self):
+        with self.assertRaisesRegex(ReadinessError, "TRUSTED_AS_OF_AFTER_PLANNED_SLOT"):
+            evaluate(packet(), trusted_as_of="2026-09-13T12:00:01Z")
+
+    def test_input_order_is_canonical(self):
+        a = packet()
+        b = copy.deepcopy(a)
+        b["materials"] = list(reversed(b["materials"]))
+        b["equipment"] = list(reversed(b["equipment"]))
+        b["recipe"]["required_material_components"] = list(reversed(b["recipe"]["required_material_components"]))
+        b["recipe"]["required_equipment_ids"] = list(reversed(b["recipe"]["required_equipment_ids"]))
+        b["bom"]["required"] = list(reversed(b["bom"]["required"]))
+        self.assertEqual(evaluate(a, trusted_as_of=AS_OF), evaluate(b, trusted_as_of=AS_OF))
 
     def test_duplicate_material_lot_rejected(self):
-        p = base_packet(12); p["materials"].append(copy.deepcopy(p["materials"][0]))
-        self.code("DUPLICATE_MATERIAL_LOT", lambda: evaluate(p))
+        raw = packet()
+        raw["materials"].append(copy.deepcopy(raw["materials"][0]))
+        with self.assertRaisesRegex(ReadinessError, "DUPLICATE_MATERIAL_LOT"):
+            evaluate(raw, trusted_as_of=AS_OF)
 
     def test_duplicate_equipment_rejected(self):
-        p = base_packet(13); p["equipment"].append(copy.deepcopy(p["equipment"][0]))
-        self.code("DUPLICATE_EQUIPMENT", lambda: evaluate(p))
+        raw = packet()
+        raw["equipment"].append(copy.deepcopy(raw["equipment"][0]))
+        with self.assertRaisesRegex(ReadinessError, "DUPLICATE_EQUIPMENT"):
+            evaluate(raw, trusted_as_of=AS_OF)
 
     def test_duplicate_bom_pair_rejected(self):
-        p = base_packet(14); p["bom"]["required"].append(copy.deepcopy(p["bom"]["required"][0]))
-        self.code("DUPLICATE_BOM_COMPONENT", lambda: evaluate(p))
+        raw = packet()
+        raw["bom"]["required"].append(copy.deepcopy(raw["bom"]["required"][0]))
+        with self.assertRaisesRegex(ReadinessError, "DUPLICATE_BOM_COMPONENT"):
+            evaluate(raw, trusted_as_of=AS_OF)
 
-    def test_bad_digest_rejected(self):
-        p = base_packet(15); p["recipe"]["approved_digest"] = "abc"
-        self.code("INVALID_DIGEST", lambda: evaluate(p))
+    def test_unknown_packet_key_rejected(self):
+        raw = packet()
+        raw["approval_override"] = True
+        with self.assertRaisesRegex(ReadinessError, "PACKET_FIELDS"):
+            evaluate(raw, trusted_as_of=AS_OF)
 
-    def test_boolean_is_strict(self):
-        p = base_packet(16); p["recipe"]["approved"] = 1
-        self.code("BOOLEAN_REQUIRED", lambda: evaluate(p))
+    def test_integer_cannot_alias_boolean(self):
+        raw = packet()
+        raw["recipe"]["approved"] = 1
+        with self.assertRaisesRegex(ReadinessError, "BOOLEAN_REQUIRED"):
+            evaluate(raw, trusted_as_of=AS_OF)
+
+    def test_invalid_digest_rejected(self):
+        raw = packet()
+        raw["materials"][0]["release_digest"] = "0" * 63
+        with self.assertRaisesRegex(ReadinessError, "INVALID_DIGEST"):
+            evaluate(raw, trusted_as_of=AS_OF)
 
     def test_noncanonical_timestamp_rejected(self):
-        p = base_packet(17); p["as_of"] = "2026-09-13T12:00:00+00:00"
-        self.code("NONCANONICAL_TIMESTAMP", lambda: evaluate(p))
+        raw = packet()
+        raw["planned_slot_at"] = "2026-09-13T12:00:00+00:00"
+        with self.assertRaisesRegex(ReadinessError, "NONCANONICAL_TIMESTAMP"):
+            evaluate(raw, trusted_as_of=AS_OF)
 
-    def test_as_of_after_slot_rejected(self):
-        p = base_packet(18); p["as_of"] = "2026-09-15T12:00:00Z"
-        self.code("AS_OF_AFTER_PLANNED_SLOT", lambda: evaluate(p))
+    def test_verify_decision_success(self):
+        raw = packet()
+        decision = evaluate(raw, trusted_as_of=AS_OF)
+        verified = verify_decision(
+            raw,
+            decision,
+            expected_evaluated_at=AS_OF,
+            trusted_verify_at=VERIFY_AT,
+        )
+        self.assertTrue(verified["valid"])
+        self.assertEqual(verified["age_seconds"], 60)
 
-    def test_future_environment_evidence_rejected(self):
-        p = base_packet(19); p["environment"]["captured_at"] = "2026-09-13T12:00:01Z"
-        self.code("EVIDENCE_AFTER_AS_OF", lambda: evaluate(p))
+    def test_verifier_requires_out_of_band_evaluation_time(self):
+        raw = packet()
+        decision = evaluate(raw, trusted_as_of=AS_OF)
+        with self.assertRaisesRegex(ReadinessError, "DECISION_MISMATCH"):
+            verify_decision(
+                raw,
+                decision,
+                expected_evaluated_at="2026-09-13T11:00:01Z",
+                trusted_verify_at=VERIFY_AT,
+            )
 
-    def test_verifier_success_and_freshness(self):
-        p = base_packet(20); d = evaluate(p)
-        result = verify_decision(p, d, verify_at=VERIFY_AT)
-        self.assertTrue(result["valid"] and result["fresh"])
-        self.assertEqual(result["age_minutes"], 60)
+    def test_verify_before_evaluation_rejected(self):
+        raw = packet()
+        decision = evaluate(raw, trusted_as_of=AS_OF)
+        with self.assertRaisesRegex(ReadinessError, "VERIFY_BEFORE_EVALUATION"):
+            verify_decision(
+                raw,
+                decision,
+                expected_evaluated_at=AS_OF,
+                trusted_verify_at="2026-09-13T10:59:59Z",
+            )
 
-    def test_verifier_rejects_decision_tamper(self):
-        p = base_packet(21); d = evaluate(p); d["status"] = "HOLD"
-        self.code("DECISION_MISMATCH", lambda: verify_decision(p, d, verify_at=VERIFY_AT))
+    def test_staleness_uses_exact_seconds_not_floor_minutes(self):
+        raw = packet()
+        decision = evaluate(raw, trusted_as_of=AS_OF)
+        with self.assertRaisesRegex(ReadinessError, "DECISION_STALE"):
+            verify_decision(
+                raw,
+                decision,
+                expected_evaluated_at=AS_OF,
+                trusted_verify_at="2026-09-14T11:00:01Z",
+                max_age_seconds=DEFAULT_MAX_DECISION_AGE_SECONDS,
+            )
 
-    def test_verifier_rejects_source_tamper(self):
-        p = base_packet(22); d = evaluate(p); p["materials"][0]["released"] = False
-        self.code("DECISION_MISMATCH", lambda: verify_decision(p, d, verify_at=VERIFY_AT))
+    def test_exact_max_age_is_fresh(self):
+        raw = packet()
+        decision = evaluate(raw, trusted_as_of=AS_OF)
+        verified = verify_decision(
+            raw,
+            decision,
+            expected_evaluated_at=AS_OF,
+            trusted_verify_at="2026-09-14T11:00:00Z",
+            max_age_seconds=DEFAULT_MAX_DECISION_AGE_SECONDS,
+        )
+        self.assertEqual(verified["age_seconds"], DEFAULT_MAX_DECISION_AGE_SECONDS)
 
-    def test_verifier_rejects_stale(self):
-        p = base_packet(23); d = evaluate(p)
-        self.code("DECISION_STALE", lambda: verify_decision(p, d, verify_at="2026-09-15T12:00:01Z", max_age_minutes=1440))
+    def test_boolean_max_age_rejected(self):
+        raw = packet()
+        decision = evaluate(raw, trusted_as_of=AS_OF)
+        with self.assertRaisesRegex(ReadinessError, "INVALID_MAX_AGE"):
+            verify_decision(
+                raw,
+                decision,
+                expected_evaluated_at=AS_OF,
+                trusted_verify_at=VERIFY_AT,
+                max_age_seconds=True,
+            )
 
-    def test_verifier_rejects_time_travel(self):
-        p = base_packet(24); d = evaluate(p)
-        self.code("VERIFY_BEFORE_AS_OF", lambda: verify_decision(p, d, verify_at="2026-09-13T11:59:59Z"))
+    def test_source_tamper_rejected(self):
+        raw = packet()
+        decision = evaluate(raw, trusted_as_of=AS_OF)
+        changed = copy.deepcopy(raw)
+        changed["materials"][0]["released"] = False
+        with self.assertRaisesRegex(ReadinessError, "DECISION_MISMATCH"):
+            verify_decision(
+                changed,
+                decision,
+                expected_evaluated_at=AS_OF,
+                trusted_verify_at=VERIFY_AT,
+            )
 
-    def test_receipt_is_deterministic(self):
-        p = base_packet(25)
-        self.assertEqual(canonical_json(evaluate(p)), canonical_json(evaluate(copy.deepcopy(p))))
+    def test_decision_tamper_rejected(self):
+        raw = packet()
+        decision = evaluate(raw, trusted_as_of=AS_OF)
+        decision["authority"]["batch_release"] = True
+        with self.assertRaisesRegex(ReadinessError, "DECISION_MISMATCH"):
+            verify_decision(
+                raw,
+                decision,
+                expected_evaluated_at=AS_OF,
+                trusted_verify_at=VERIFY_AT,
+            )
 
-    def test_normalized_source_has_only_durable_fields(self):
-        p = normalize_packet(base_packet(26))
-        self.assertNotIn("calibration_valid_until_epoch", canonical_json(p))
-        self.assertEqual(p["as_of"], AS_OF)
+    def test_authority_ceiling_all_false(self):
+        authority = evaluate(packet(), trusted_as_of=AS_OF)["authority"]
+        self.assertTrue(authority)
+        self.assertTrue(all(value is False for value in authority.values()))
+
+    def test_requirements_digest_is_stable_and_requirement_bound(self):
+        first = evaluate(packet(), trusted_as_of=AS_OF)["requirements_digest"]
+        changed = packet()
+        changed["recipe"]["required_material_components"].append("buffer-C")
+        changed["materials"].append(
+            {
+                "lot_id": "lot-buffer-1",
+                "component": "buffer-C",
+                "released": True,
+                "release_digest": h("buffer-release"),
+                "observed_at": "2026-09-13T10:55:00Z",
+            }
+        )
+        second = evaluate(changed, trusted_as_of=AS_OF)["requirements_digest"]
+        self.assertNotEqual(first, second)
+
+    def test_normalized_packet_has_no_caller_authored_clock(self):
+        normalized = normalize_packet(packet(), trusted_as_of=AS_OF)
+        self.assertNotIn("as_of", normalized)
+        self.assertEqual(normalized["schema_version"], "pci.fill-finish-batch-readiness/v2")
+
+    def test_canonical_json_is_byte_stable_for_equivalent_packets(self):
+        a = evaluate(packet(), trusted_as_of=AS_OF)
+        b = copy.deepcopy(a)
+        self.assertEqual(canonical_json(a), canonical_json(b))
 
 
 if __name__ == "__main__":

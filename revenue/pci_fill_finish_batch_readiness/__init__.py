@@ -1,6 +1,5 @@
 from .gate import (
-    DECISION_SCHEMA,
-    SCHEMA,
+    DEFAULT_MAX_DECISION_AGE_SECONDS,
     ReadinessError,
     canonical_json,
     evaluate,
@@ -10,8 +9,7 @@ from .gate import (
 )
 
 __all__ = [
-    "DECISION_SCHEMA",
-    "SCHEMA",
+    "DEFAULT_MAX_DECISION_AGE_SECONDS",
     "ReadinessError",
     "canonical_json",
     "evaluate",
