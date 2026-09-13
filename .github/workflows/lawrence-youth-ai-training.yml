@@ -36,6 +36,7 @@ jobs:
         run: |
           python -m py_compile \
             revenue/lawrence_youth_ai_training/__init__.py \
+            revenue/lawrence_youth_ai_training/_gate_base.py \
             revenue/lawrence_youth_ai_training/gate.py \
             revenue/lawrence_youth_ai_training/cli.py \
             revenue/lawrence_youth_ai_training/test_gate.py

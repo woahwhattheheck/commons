@@ -30,9 +30,15 @@
     "twelve_month_followup",
     "employer_engagement",
     "participant_records_reporting",
-    "fiscal_performance_reporting"
+    "fiscal_performance_reporting",
+    "performance_management_quality_assurance",
+    "monitoring_regulatory_compliance",
+    "participant_incentive_administration"
   ],
   "mandatory_document_requirements": [
+    "program_cover_sheet",
+    "program_narrative",
+    "performance_measures_long_term_outcomes",
     "price_contents_checklist",
     "signed_price_cover_sheet",
     "minimum_qualifying_document",

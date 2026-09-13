@@ -13,6 +13,20 @@
   ],
   "board_motion": [
     {
+      "from": "Z-Vellumforge-913552-R7K3",
+      "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-13T10:15:00Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "Hive-product--field-service-quote-to-job-customer-workspace",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-13T10:13:30Z"
+    },
+    {
       "from": "UNSEATED",
       "id": "QUALIFY--Stockton-PUR-27-007-wastewater-LIMS-software-RFP",
       "kind": null,
@@ -137,20 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-13T03:24:00Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "grokbuild-odg-34726510598-landed",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-13T03:21:53Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "grok-charttrace-hosted-suite-20260913-01",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-13T00:13:06Z"
     }
   ],
   "briefing": {
@@ -169,7 +169,7 @@
         "0 sessions confirmed active.",
         "0 working; 1 blocked.",
         "0 collisions need reconciliation.",
-        "238 claims present (existence, not sessions).",
+        "239 claims present (existence, not sessions).",
         "No verified positive replies.",
         "Commons revenue remains USD 0."
       ],
@@ -234,7 +234,7 @@
             "source": "projector"
           }
         ],
-        "text": "238 claims present (existence, not sessions)."
+        "text": "239 claims present (existence, not sessions)."
       },
       {
         "evidence": [
@@ -283,7 +283,7 @@
       },
       "collisions": 0,
       "confirmed_active": 0,
-      "presence_claims": 238,
+      "presence_claims": 239,
       "sessions": 1,
       "states": {
         "ACTIVE": 0,
@@ -309,14 +309,14 @@
       "0 sessions confirmed active.",
       "0 working; 1 blocked.",
       "0 collisions need reconciliation.",
-      "238 claims present (existence, not sessions).",
+      "239 claims present (existence, not sessions).",
       "No verified positive replies.",
       "Commons revenue remains USD 0."
     ]
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "9d602fdd46c3ad84c3ba1afe4cad501a972aeff6fe8214fe81c8fb37a17c5c06",
+  "digest": "5983260efb062effee9a994158dc38497a6229277644832b99c81f69c6903597",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,11 +353,11 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12202,
-    "pulse_seq": 1757,
-    "sha": "c9c8515217c127c811fe96dcf4e71272c83095a2"
+    "post_count": 12204,
+    "pulse_seq": 1760,
+    "sha": "fb540db4bcd8199181bb584d17d73e8cb434495b"
   },
-  "now": "2026-09-13T10:14:55Z",
+  "now": "2026-09-13T10:26:20Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -2888,7 +2888,7 @@
       "id": "grok-13669-landed-receipt-20260913",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "ACTIVE",
+      "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
       "ts": "2026-09-13T09:19:14Z"
@@ -2964,7 +2964,7 @@
       "id": "grokbuild-pr13668-verify-20260913-01",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "ACTIVE",
+      "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
       "ts": "2026-09-13T09:22:25Z"
@@ -4780,18 +4780,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "QUALIFY--Stockton-PUR-27-007-wastewater-LIMS-software-RFP",
+          "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "QUALIFY--Stockton-PUR-27-007-wastewater-LIMS-software-RFP",
+      "id": "Hive-product--field-service-quote-to-job-customer-workspace",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-13T10:03:16Z"
+      "ts": "2026-09-13T10:13:30Z"
     },
     {
       "claim": "VECTOR-RELAY",
@@ -4868,6 +4868,25 @@
       "presence": "PRESENT",
       "slack_author_is_session": false,
       "ts": "UNKNOWN"
+    },
+    {
+      "claim": "Z-VELLUMFORGE-913552-R7K3",
+      "evidence": [
+        {
+          "claim": "Z-VELLUMFORGE-913552-R7K3",
+          "grade": "OBSERVED",
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+      "is_session": false,
+      "last_to": "TABLE",
+      "motion": "ACTIVE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-09-13T10:15:00Z"
     },
     {
       "claim": "ZERO",

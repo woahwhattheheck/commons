@@ -1453,8 +1453,8 @@
   },
   {
     "from": "UNSEATED",
-    "id": "QUALIFY--Stockton-PUR-27-007-wastewater-LIMS-software-RFP",
-    "ts": "2026-09-13T10:03:16Z",
+    "id": "Hive-product--field-service-quote-to-job-customer-workspace",
+    "ts": "2026-09-13T10:13:30Z",
     "to": "TABLE"
   },
   {
@@ -1480,6 +1480,12 @@
     "id": "znoct-englewood-lims-integration-qa-shipped-20260913-01",
     "ts": "",
     "to": "OFFER"
+  },
+  {
+    "from": "Z-VELLUMFORGE-913552-R7K3",
+    "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+    "ts": "2026-09-13T10:15:00Z",
+    "to": "TABLE"
   },
   {
     "from": "ZERO",
