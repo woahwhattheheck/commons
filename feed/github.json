@@ -1,9 +1,9 @@
 {
   "counts": {
-    "open_issues": 68,
+    "open_issues": 69,
     "open_pull_requests": 43,
-    "runs_in_progress": 19,
-    "runs_queued": 1278
+    "runs_in_progress": 18,
+    "runs_queued": 1257
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -83,10 +83,10 @@
       "branch": "zak-v5n9/sales-meeting-calendar-prep-consumer",
       "created_at": "2026-09-13T16:39:41Z",
       "draft": false,
-      "head_sha": "e15295cc5c814807b74bd702e3f067651be91d35",
+      "head_sha": "a3760de2a226a2e7748b38ab67af9a0e9e9b46dd",
       "number": 14080,
       "title": "Integrate live Calendar free/busy into sales meeting readiness",
-      "updated_at": "2026-09-13T16:43:54Z"
+      "updated_at": "2026-09-13T17:02:07Z"
     },
     {
       "author": "woahwhattheheck",
@@ -219,12 +219,12 @@
     "14057": "05f6f1775a5762ffa18c5c19da1d94d35bc45bb0",
     "14066": "533c121abc2a8ea4d2ba90439400d46594b94cf1",
     "14076": "13097f7581280415461458584c34e590761afa89",
-    "14080": "e15295cc5c814807b74bd702e3f067651be91d35",
+    "14080": "a3760de2a226a2e7748b38ab67af9a0e9e9b46dd",
     "14086": "4c8e4df0e5a085565937ee85e34f464f76fcdc11"
   },
   "pulls_listed": 43,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 67.3,
+  "queue_depth_per_runner": 69.8,
   "recently_closed": [
     {
       "author": "woahwhattheheck",
@@ -361,39 +361,39 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "zmh/nci-ods-reuseledger-20260913",
-      "closed_at": "2026-09-13T16:32:49Z",
-      "head_sha": "680ccd32a624806617ccbc226c6cb3a29f9e938e",
-      "merged_at": "2026-09-13T16:32:49Z",
-      "number": 14069,
+      "branch": "z-minkowski-harbor/del-monte-cutover-13911",
+      "closed_at": "2026-09-13T14:27:08Z",
+      "head_sha": "cb2182dcf47d892eed7fd5b9feb8fcb3d3ce2037",
+      "merged_at": "2026-09-13T14:27:08Z",
+      "number": 13930,
       "state": "MERGED",
-      "title": "NCI ODS Impact Prize: build ReuseLedger Track-1 carrier"
+      "title": "Revenue: ship Del Monte acquired-asset quality-master cutover gate"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "zsol/frantic-sourcey-usd-cash-proof-20260913",
-      "closed_at": "2026-09-13T16:31:53Z",
-      "head_sha": "8bd65e23699cbc9d72e249b7b2b7b4fdda3163b8",
-      "merged_at": "2026-09-13T16:31:53Z",
-      "number": 14067,
+      "branch": "zbf-q4r7/prooflens-readme-truth-fix-v2",
+      "closed_at": "2026-09-13T14:24:56Z",
+      "head_sha": "62d2e7fd7fde893e1854c2139c32339900a64a49",
+      "merged_at": "2026-09-13T14:24:56Z",
+      "number": 13925,
       "state": "MERGED",
-      "title": "Bind first verified USD payout into right-now revenue truth"
+      "title": "docs: reconcile ProofLens README with shipped S3 architecture"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "zlm-g7p2/agents-for-humans-tenderproof-20260913",
-      "closed_at": "2026-09-13T16:29:59Z",
-      "head_sha": "f0846f252362b987f6784c414416f06b2189a181",
-      "merged_at": "2026-09-13T16:29:59Z",
-      "number": 14068,
+      "branch": "znc-p7w2/airdrie-data-management-qualification-20260913",
+      "closed_at": "2026-09-13T14:23:12Z",
+      "head_sha": "eeabeb57e26803b18828b10c505dcadc9c4d6916",
+      "merged_at": "2026-09-13T14:23:12Z",
+      "number": 13912,
       "state": "MERGED",
-      "title": "feat: add TenderProof Strands RFP professional agent"
+      "title": "feat: add Airdrie data-management qualification carrier"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-13T16:56:48Z",
+  "unchanged_since": "2026-09-13T17:03:11Z",
   "undatable_pulls": []
 }
