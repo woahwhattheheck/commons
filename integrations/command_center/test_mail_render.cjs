@@ -279,7 +279,6 @@ test('manage dispatches the exact directive or fallback source/item without maki
   h.assertReadOnly();
 });
 
-
 test('an old failed poll cannot overwrite a newer queued mode or search reset', async () => {
   for (const control of ['mode', 'search']) {
     const h = harness(page(0, 100)); await h.ready();
@@ -303,6 +302,43 @@ test('an old failed poll cannot overwrite a newer queued mode or search reset', 
       q: control === 'search' ? 'new matching thread' : '',
       mode: control === 'mode' ? 'unread' : 'all'});
     assert.match(h.rows.textContent, /First matching result/);
+    assert.equal(h.back.disabled, true); assert.equal(h.next.disabled, true);
+    assert.doesNotMatch(h.status.textContent, /unavailable/);
+    h.assertReadOnly();
+  }
+});
+
+test('an old successful poll cannot render after a newer mode or search reset', async () => {
+  for (const control of ['mode', 'search']) {
+    const h = harness(page(0, 100, 'Stable last-good result')); await h.ready();
+    let resolveOld;
+    h.queue({promise: new Promise(resolve => { resolveOld = resolve; })});
+    await h.poll();
+    assert.equal(h.requests.length, 2);
+    if (control === 'mode') await h.change('unread');
+    else await h.submit('new matching thread');
+    assert.equal(h.requests.length, 2, 'The new filter is queued behind the in-flight read');
+
+    let resolveFiltered;
+    h.queue({promise: new Promise(resolve => { resolveFiltered = resolve; })});
+    const obsolete = page(0, 100, 'OBSOLETE successful response');
+    resolveOld({ok: true, status: 200, json: async () => clone(obsolete)});
+    await h.ready();
+    assert.equal(h.requests.length, 3, 'Exactly one queued filter read starts after the stale success');
+    assert.deepEqual(h.params(), {limit: '100', offset: '0',
+      q: control === 'search' ? 'new matching thread' : '',
+      mode: control === 'mode' ? 'unread' : 'all'});
+    assert.match(h.rows.textContent, /Stable last-good result/);
+    assert.doesNotMatch(h.rows.textContent, /OBSOLETE successful response/,
+      'An obsolete successful payload must never replace the displayed rows');
+
+    const filtered = snapshot({threads: [thread({title: 'Current filtered result'})],
+      pagination: {offset: 0, next_offset: null, matching_threads: 1},
+      counts: {messages: 1, duplicate_records: 0}});
+    resolveFiltered({ok: true, status: 200, json: async () => clone(filtered)});
+    await h.ready();
+    assert.match(h.rows.textContent, /Current filtered result/);
+    assert.doesNotMatch(h.rows.textContent, /OBSOLETE successful response/);
     assert.equal(h.back.disabled, true); assert.equal(h.next.disabled, true);
     assert.doesNotMatch(h.status.textContent, /unavailable/);
     h.assertReadOnly();
