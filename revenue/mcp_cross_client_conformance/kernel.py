@@ -15,6 +15,11 @@ SCHEMA = "mcp-cross-client-conformance/v1"
 REPORT_SCHEMA = "mcp-cross-client-conformance-report/v1"
 HEX64 = set("0123456789abcdef")
 ALLOWED_DISPOSITIONS = {"PASS", "HOLD", "REJECT", "UNVERIFIED"}
+EVIDENCE_BINDING_FAILURES = {
+    "SERVER_BUILD_MISMATCH",
+    "FIXTURE_MISMATCH",
+    "UNKNOWN_CLIENT",
+}
 
 
 class ConformanceError(ValueError):
@@ -360,6 +365,11 @@ def evaluate(manifest: Mapping[str, Any], observations: Sequence[Mapping[str, An
     for _, observation in [unique[k] for k in sorted(unique)]:
         assessment = assess_observation(manifest, observation)
         assessments.append(assessment)
+        for reason in assessment["reasons"]:
+            if reason in EVIDENCE_BINDING_FAILURES:
+                global_reasons.append(
+                    f"EVIDENCE_BINDING_FAILURE:{assessment['observation_id']}:{reason}"
+                )
         if observation["case"] == "clean" and observation["client_id"] in clean_by_client:
             clean_by_client[observation["client_id"]].append(observation)
         elif observation["case"] in hostile_seen:
