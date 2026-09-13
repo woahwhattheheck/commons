@@ -1,9 +1,9 @@
 {
   "counts": {
-    "open_issues": 44,
-    "open_pull_requests": 32,
-    "runs_in_progress": 20,
-    "runs_queued": 794
+    "open_issues": 45,
+    "open_pull_requests": 34,
+    "runs_in_progress": 15,
+    "runs_queued": 812
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -69,13 +69,35 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
+      "branch": "zlh-x7k4/pursuit-portfolio-allocation",
+      "created_at": "2026-09-13T14:04:09Z",
+      "draft": false,
+      "head_sha": "4912c2ee057e8f5ed9cf81849a7c108f76c459c6",
+      "number": 13893,
+      "title": "Revenue: exact pursuit portfolio capacity allocation",
+      "updated_at": "2026-09-13T14:04:09Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zvq-h5c2/reply-revenue-delivery-failure-20260913",
+      "created_at": "2026-09-13T14:03:16Z",
+      "draft": false,
+      "head_sha": "fcf5626712de03bfb3dfa4972674928a827dd97d",
+      "number": 13891,
+      "title": "Repair reply-to-revenue hard-bounce routing",
+      "updated_at": "2026-09-13T14:03:16Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
       "branch": "zzv-r7m4/muhl-command-consumer-snapshot-bind-20260913",
       "created_at": "2026-09-13T13:59:39Z",
       "draft": false,
-      "head_sha": "48d1cbee636ecf156bc86f8deae3d47aa3daa927",
+      "head_sha": "55a1474d2b6cb9e02497b4c3f372511d1d96fbd1",
       "number": 13890,
       "title": "fix: freeze and validate command snapshots inside --go",
-      "updated_at": "2026-09-13T13:59:39Z"
+      "updated_at": "2026-09-13T14:04:23Z"
     },
     {
       "author": "woahwhattheheck",
@@ -83,10 +105,10 @@
       "branch": "zfa/commercial-terms-lineage-20260913",
       "created_at": "2026-09-13T13:52:52Z",
       "draft": false,
-      "head_sha": "87da5ee83ac913ec4dadf2b85697ec5e4ba26264",
+      "head_sha": "0a86059fec8319f9b3782e833089d76847bc408b",
       "number": 13877,
       "title": "revenue: add source-bound commercial terms exception lineage",
-      "updated_at": "2026-09-13T14:02:57Z"
+      "updated_at": "2026-09-13T14:05:02Z"
     },
     {
       "author": "woahwhattheheck",
@@ -97,7 +119,7 @@
       "head_sha": "a93869989cf7dff65ffa16e08264119ced7979b6",
       "number": 13874,
       "title": "Revenue: add evidence-bound reference authority registry",
-      "updated_at": "2026-09-13T13:56:56Z"
+      "updated_at": "2026-09-13T14:04:50Z"
     },
     {
       "author": "woahwhattheheck",
@@ -153,28 +175,6 @@
       "number": 13858,
       "title": "revenue: package WRF 5417 camera-AI proposal readiness carrier",
       "updated_at": "2026-09-13T13:25:58Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zarg-c7w5/afh-video-evidence-gate-20260913",
-      "created_at": "2026-09-13T13:19:09Z",
-      "draft": false,
-      "head_sha": "a1dde557acac3aa3531b7a5541e11f95b035f3bf",
-      "number": 13857,
-      "title": "fix(afh): fail closed on invalid demo video proof",
-      "updated_at": "2026-09-13T13:19:09Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-kh-h6q2/teaming-conversion-control-20260913",
-      "created_at": "2026-09-13T13:09:59Z",
-      "draft": false,
-      "head_sha": "51a23e49c939f3090aedd852539fa2f1806ae630",
-      "number": 13844,
-      "title": "feat(revenue): evidence-bound teaming conversion control",
-      "updated_at": "2026-09-13T14:01:56Z"
     }
   ],
   "open_heads": {
@@ -208,12 +208,14 @@
     "13864": "8fe905a0a9cb03b79f916fd8e97585b50da745a7",
     "13865": "d729342fc448e21e25a7d432b7c5453e4a9774d9",
     "13874": "a93869989cf7dff65ffa16e08264119ced7979b6",
-    "13877": "87da5ee83ac913ec4dadf2b85697ec5e4ba26264",
-    "13890": "48d1cbee636ecf156bc86f8deae3d47aa3daa927"
+    "13877": "0a86059fec8319f9b3782e833089d76847bc408b",
+    "13890": "55a1474d2b6cb9e02497b4c3f372511d1d96fbd1",
+    "13891": "fcf5626712de03bfb3dfa4972674928a827dd97d",
+    "13893": "4912c2ee057e8f5ed9cf81849a7c108f76c459c6"
   },
-  "pulls_listed": 32,
+  "pulls_listed": 34,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 39.7,
+  "queue_depth_per_runner": 54.1,
   "recently_closed": [
     {
       "author": "woahwhattheheck",
@@ -383,6 +385,6 @@
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-13T14:03:11Z",
+  "unchanged_since": "2026-09-13T14:05:12Z",
   "undatable_pulls": []
 }
