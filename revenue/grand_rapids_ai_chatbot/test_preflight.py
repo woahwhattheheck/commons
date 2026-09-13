@@ -16,13 +16,20 @@ from trusted_authority import (
     AuthorityError,
     authority_sha256,
     load_current_authority,
+    release_subject_sha256,
     source_generation_sha256,
 )
 
 HERE = Path(__file__).resolve().parent
 
+
 def h(label: str) -> str:
     return hashlib.sha256(label.encode("utf-8")).hexdigest()
+
+
+def _rebind_owner_release(material: dict) -> None:
+    owner = next(row for row in material["evidence"] if row["gate"] == "owner_release_to_submit")
+    owner["sha256"] = release_subject_sha256(material)
 
 
 def authority_material(generation: int = 7) -> dict:
@@ -40,7 +47,11 @@ def authority_material(generation: int = 7) -> dict:
     }
     source = source_generation_sha256(material)
     for gate in REQUIRED_GATES:
-        digest = material["packet_sha256"] if gate == "controlling_packet_acquired" else h(f"{gate}:{generation}")
+        digest = (
+            material["packet_sha256"]
+            if gate in {"controlling_packet_acquired", "packet_sha256_verified"}
+            else h(f"{gate}:{generation}")
+        )
         material["evidence"].append(
             {
                 "id": f"ev:{gate}",
@@ -50,6 +61,7 @@ def authority_material(generation: int = 7) -> dict:
                 "source_generation_sha256": source,
             }
         )
+    _rebind_owner_release(material)
     return material
 
 
@@ -81,7 +93,6 @@ def load_pinned(material: dict):
         }
         with mock.patch.dict(os.environ, env, clear=False):
             return load_current_authority(path), json.loads(json.dumps(material))
-
 
 
 class PreflightTests(unittest.TestCase):
@@ -151,7 +162,9 @@ class PreflightTests(unittest.TestCase):
     def test_self_minted_authority_not_matching_host_root_is_rejected(self):
         approved = authority_material()
         attacker = copy.deepcopy(approved)
-        attacker["evidence"][-1]["sha256"] = h("attacker-owner-release")
+        pricing = next(row for row in attacker["evidence"] if row["gate"] == "pricing_form_complete")
+        pricing["sha256"] = h("attacker-pricing")
+        _rebind_owner_release(attacker)
         with tempfile.TemporaryDirectory() as td:
             path = Path(td) / "authority.json"
             path.write_text(json.dumps(attacker), encoding="utf-8")
@@ -180,7 +193,9 @@ class PreflightTests(unittest.TestCase):
     def test_same_generation_fork_cannot_replace_host_pinned_digest(self):
         material = authority_material(generation=7)
         fork = copy.deepcopy(material)
-        fork["evidence"][-1]["sha256"] = h("forked-owner-release")
+        refs = next(row for row in fork["evidence"] if row["gate"] == "references_resolved")
+        refs["sha256"] = h("forked-references")
+        _rebind_owner_release(fork)
         with tempfile.TemporaryDirectory() as td:
             path = Path(td) / "authority.json"
             path.write_text(json.dumps(fork), encoding="utf-8")
@@ -223,6 +238,53 @@ class PreflightTests(unittest.TestCase):
         packet["sha256"] = h("different-packet")
         with self.assertRaisesRegex(AuthorityError, "must equal packet_sha256"):
             authority_sha256(material)
+
+    def test_packet_verification_must_bind_exact_packet_digest(self):
+        material = authority_material()
+        verified = next(row for row in material["evidence"] if row["gate"] == "packet_sha256_verified")
+        verified["sha256"] = h("unrelated-verification")
+        with self.assertRaisesRegex(AuthorityError, "PACKET_SHA256_VERIFICATION.*packet_sha256"):
+            authority_sha256(material)
+
+    def test_old_owner_release_dies_when_pricing_evidence_changes(self):
+        material = authority_material()
+        old_release = next(row for row in material["evidence"] if row["gate"] == "owner_release_to_submit")["sha256"]
+        pricing = next(row for row in material["evidence"] if row["gate"] == "pricing_form_complete")
+        pricing["sha256"] = h("changed-pricing")
+        self.assertEqual(old_release, next(row for row in material["evidence"] if row["gate"] == "owner_release_to_submit")["sha256"])
+        with self.assertRaisesRegex(AuthorityError, "OWNER_RELEASE.*release-subject"):
+            authority_sha256(material)
+
+    def test_old_owner_release_dies_when_reference_evidence_identity_changes(self):
+        material = authority_material()
+        reference = next(row for row in material["evidence"] if row["gate"] == "references_resolved")
+        reference["id"] = "ev:references-resolved-v2"
+        with self.assertRaisesRegex(AuthorityError, "OWNER_RELEASE.*release-subject"):
+            authority_sha256(material)
+
+    def test_rebinding_owner_release_restores_valid_changed_subject(self):
+        material = authority_material()
+        reference = next(row for row in material["evidence"] if row["gate"] == "references_resolved")
+        reference["sha256"] = h("current-reference-set")
+        with self.assertRaisesRegex(AuthorityError, "OWNER_RELEASE"):
+            authority_sha256(material)
+        _rebind_owner_release(material)
+        self.assertRegex(authority_sha256(material), r"^[0-9a-f]{64}$")
+
+    def test_release_subject_is_evidence_order_invariant(self):
+        material = authority_material()
+        expected = release_subject_sha256(material)
+        material["evidence"] = list(reversed(material["evidence"]))
+        self.assertEqual(expected, release_subject_sha256(material))
+        self.assertRegex(authority_sha256(material), r"^[0-9a-f]{64}$")
+
+    def test_generation_advance_requires_new_owner_release(self):
+        material = authority_material(generation=7)
+        material["generation"] = 8
+        with self.assertRaisesRegex(AuthorityError, "OWNER_RELEASE.*release-subject"):
+            authority_sha256(material)
+        _rebind_owner_release(material)
+        self.assertRegex(authority_sha256(material), r"^[0-9a-f]{64}$")
 
     def test_state_stale_generation_cannot_use_current_authority(self):
         material = authority_material()
