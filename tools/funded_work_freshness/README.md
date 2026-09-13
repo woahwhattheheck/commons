@@ -129,3 +129,12 @@ freshness clock because GitHub advances it for ordinary comment activity. Only c
 from repository owners, members, collaborators, or recognized sponsor bots may refresh
 the qualification timestamp. External comments still participate in claim/occupancy
 and security checks, but cannot resurrect an old funded item merely by adding chatter.
+
+Funding state also follows authoritative chronology. An explicit trusted statement that
+a bounty, reward, or funding has been withdrawn/revoked/cancelled makes the candidate
+fail closed even if older authoritative prose still contains a matching sponsor, amount,
+and acceptance criteria. External cancellation chatter cannot revoke funding. After a
+withdrawal, a later trusted restoration must restate sponsor mechanism, exact advertised
+amount, and acceptance evidence in the restoration event itself; phrases such as
+"restored, same terms as before" do not silently reactivate stale pre-withdrawal terms.
+The resolved state is exposed as `checks.authoritative_funding_state`.

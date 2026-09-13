@@ -6,7 +6,16 @@ from decimal import Decimal
 import re
 from typing import Any, Mapping, Sequence
 
-from constants import GITHUB_ITEM_RE, STRICT_CLAIM_RE, TRUSTED_ASSOCIATIONS, TRUSTED_SPONSOR_BOTS
+from constants import (
+    ACCEPTANCE_RE,
+    FUNDING_RESTORATION_RE,
+    FUNDING_WITHDRAWAL_RE,
+    GITHUB_ITEM_RE,
+    SPONSOR_RE,
+    STRICT_CLAIM_RE,
+    TRUSTED_ASSOCIATIONS,
+    TRUSTED_SPONSOR_BOTS,
+)
 from models import validate_github_item_url
 
 
@@ -88,6 +97,75 @@ def amount_supported(text: str, amount: str, currency: str) -> bool:
                 if found == target:
                     return True
     return False
+
+
+def _funding_directive(text: str) -> str | None:
+    """Return the last explicit commercial-state directive in one authority event."""
+
+    directives = [
+        *((match.start(), "withdrawn") for match in FUNDING_WITHDRAWAL_RE.finditer(text)),
+        *((match.start(), "restored") for match in FUNDING_RESTORATION_RE.finditer(text)),
+    ]
+    return max(directives, default=(0, None), key=lambda row: row[0])[1]
+
+
+def authoritative_funding_state(
+    issue: Mapping[str, Any],
+    comments: Sequence[Mapping[str, Any]],
+    amount: str,
+    currency: str,
+) -> str:
+    """Resolve explicit funding withdrawal/restoration in authority-event order.
+
+    Positive evidence remains cumulative for normal qualification, but an explicit
+    trusted withdrawal blocks it. A later restoration can clear that block only
+    when the same restoration event restates sponsor, exact amount, and acceptance
+    evidence, preventing stale pre-withdrawal terms from silently reactivating.
+    """
+
+    state = "not_withdrawn"
+
+    issue_user = issue.get("user") if isinstance(issue.get("user"), Mapping) else {}
+    if funding_authority(issue_user, issue.get("author_association")):
+        issue_text = "\n".join(
+            (str(issue.get("title") or ""), str(issue.get("body") or ""))
+        )
+        directive = _funding_directive(issue_text)
+        if directive == "withdrawn":
+            state = "withdrawn"
+        elif directive == "restored" and state == "withdrawn":
+            if (
+                SPONSOR_RE.search(issue_text)
+                and amount_supported(issue_text, amount, currency)
+                and ACCEPTANCE_RE.search(issue_text)
+            ):
+                state = "not_withdrawn"
+
+    far_future = datetime.max.replace(tzinfo=timezone.utc)
+    events: list[tuple[datetime, int, str]] = []
+    for index, comment in enumerate(comments):
+        if not trusted_comment(comment):
+            continue
+        stamp = (
+            parse_timestamp(comment.get("updated_at"))
+            or parse_timestamp(comment.get("created_at"))
+            or far_future
+        )
+        events.append((stamp, index, str(comment.get("body") or "")))
+
+    for _, _, text in sorted(events, key=lambda row: (row[0], row[1])):
+        directive = _funding_directive(text)
+        if directive == "withdrawn":
+            state = "withdrawn"
+        elif directive == "restored" and state == "withdrawn":
+            if (
+                SPONSOR_RE.search(text)
+                and amount_supported(text, amount, currency)
+                and ACCEPTANCE_RE.search(text)
+            ):
+                state = "not_withdrawn"
+
+    return state
 
 
 def visible_claimants(comments: Sequence[Mapping[str, Any]]) -> list[str]:
