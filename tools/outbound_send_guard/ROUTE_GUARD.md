@@ -9,13 +9,16 @@ The purpose is adoption, not another classifier. A hard delivery failure must no
 
 ## Fail-closed composition
 
-The composer first recomputes the ordinary outbound guard receipt from the supplied intent/evidence. It then binds route evidence to the **latest provider-mailbox outbound for the same normalized recipient**.
+The composer first recomputes the ordinary outbound guard receipt from the supplied intent/evidence. It then mirrors the base guard's exact outbound ordering across mailbox and Slack rows: `(observed_at, source_ref)`.
+
+When the winning base-guard outbound is a mailbox row, its message id is the route target directly. When the winning row is a Slack `sent` event, that event must carry an explicit `provider_message_id` that resolves to a same-recipient outbound mailbox row. This prevents equal-time or delayed-Slack evidence from borrowing the route lifecycle of a different send.
 
 When the base guard is send-capable (`ALLOW_NEW` or `REPLY_ONLY`) and there is a prior outbound:
 
 - route evidence is mandatory;
-- the latest base outbound must have an exact provider-mailbox message id, otherwise the result is `HOLD`;
-- route `recipient`, `provider_message_id`, and `sent_at` must match that exact mailbox row;
+- the latest logical outbound must resolve to an exact provider-mailbox message id, otherwise the result is `HOLD`;
+- route `recipient`, `provider_message_id`, and `sent_at` must match that provider row;
+- the route `sent_at` binds to provider-mailbox send time even when a source-linked Slack receipt was recorded later;
 - route `as_of` must equal the base guard `generated_at`, preventing an older pre-DSN lookup from being reused against a fresher outbound snapshot.
 
 Decision composition is monotone:
@@ -27,9 +30,9 @@ Decision composition is monotone:
 | `ALLOW_NEW` / `REPLY_ONLY` | `DELIVERED` / `UNCONFIRMED` | unchanged base decision |
 | `HOLD` / `DO_NOT_RESEND` | any | never promoted |
 
-Missing required route evidence returns `HOLD`, not `ALLOW_NEW`. A Slack-only latest `sent` row with no matching provider-mailbox message also returns `HOLD`, because no source-bound route lifecycle can be attached to it.
+Missing required route evidence returns `HOLD`, not `ALLOW_NEW`. A latest Slack `sent` row without a source-linked provider-mailbox message also returns `HOLD`, because no source-bound route lifecycle can be attached to it.
 
-The final receipt always sets `side_effects_authorized=false`. It is evidence for a separately authorized sender, never an email-send capability.
+The composed receipt exposes the exact `latest_outbound_ref` and `latest_outbound_source` used for that binding. The final receipt always sets `side_effects_authorized=false`. It is evidence for a separately authorized sender, never an email-send capability.
 
 ## DSN authority boundary
 
@@ -80,4 +83,4 @@ python -m unittest -v tools.outbound_send_guard.test_route_guard
 python -O -m unittest -v tools.outbound_send_guard.test_route_guard
 ```
 
-The focused suite covers hard `5.1.1`, non-allowlisted permanent `5.4.1`, temporary `4.2.2`, delivered/unconfirmed controls, missing route evidence, Slack-only latest sends, exact provider-message binding, route-recipient/time/snapshot mismatches, latest-of-two provider sends, reply-only demotion, no-promotion invariants, deterministic receipts, input immutability, and CLI exit behavior.
+The focused suite covers hard `5.1.1`, non-allowlisted permanent `5.4.1`, temporary `4.2.2`, delivered/unconfirmed controls, missing route evidence, Slack-only latest sends, unresolved Slack provider ids, same-time Slack/mail identity collisions, delayed source-linked Slack receipts, exact provider-message binding, route-recipient/time/snapshot mismatches, latest-of-two provider sends, reply-only demotion, no-promotion invariants, deterministic receipts, input immutability, and CLI exit behavior.
