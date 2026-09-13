@@ -34,7 +34,6 @@ KIND = "REPLY_TO_REVENUE_FUNNEL"
 CLASSIFICATIONS = {
     "OPT_OUT",
     "AUTO_RESPONSE",
-    "DELIVERY_FAILURE",
     "NEGATIVE",
     "QUESTION",
     "POSITIVE_SCOPE",
@@ -229,7 +228,7 @@ def classify_signals(
             "next_action": CLASS_TO_NEXT[requested],
             "buyer_interest": requested == "POSITIVE_SCOPE",
             "auto_ack": False,
-            "delivery_failure": requested == "DELIVERY_FAILURE",
+            "delivery_failure": False,
             "matched_markers": [],
             "reason": "operator classification with no delivery-failure or auto-ack markers",
         }
@@ -488,7 +487,7 @@ def surface_positives(contacts: list[dict[str, Any]], inbound: list[dict[str, An
                 "received_at": None if latest is None else latest["received_at"],
                 "next_action": "NEEDS_ACCEPTANCE",
                 "handoff": ACCEPTANCE_TOOL,
-                "context": "human inbound classified POSITIVE_SCOPE; auto-ack markers were absent",
+                "context": "human inbound classified POSITIVE_SCOPE; delivery-failure and auto-ack markers were absent",
                 "buyer_interest": True,
             }
         )
@@ -561,6 +560,7 @@ def build_funnel(
         "hard_dnr_contacts": sum(1 for contact in contacts if contact["hard_dnr"]),
         "inbound_recorded": len(inbound),
         "auto_acks": sum(1 for event in inbound if event["auto_ack"]),
+        "delivery_failures": sum(1 for event in inbound if event.get("delivery_failure") is True),
         "human_positive": sum(1 for contact in contacts if contact["lane"] == "HUMAN_POSITIVE"),
         "human_question": sum(1 for contact in contacts if contact["lane"] == "HUMAN_QUESTION"),
         "no_response": sum(1 for contact in contacts if contact["lane"] == "NO_RESPONSE"),
@@ -575,6 +575,7 @@ def build_funnel(
         {"id": "HARD_DNR", "count": counts["hard_dnr_contacts"]},
         {"id": "INBOUND_RECORDED", "count": counts["inbound_recorded"]},
         {"id": "AUTO_ACK", "count": counts["auto_acks"]},
+        {"id": "DELIVERY_FAILURE", "count": counts["delivery_failures"]},
         {"id": "HUMAN_POSITIVE", "count": counts["human_positive"]},
         {"id": "NEEDS_ACCEPTANCE", "count": counts["human_positive"]},
         {"id": "SCOPE_ACCEPTANCE", "count": 0},
@@ -675,6 +676,7 @@ def main(argv: list[str] | None = None) -> int:
                 f"{truth['distinct_contacts']} contacts "
                 f"{truth['inbound_recorded']} inbound "
                 f"{truth['auto_acks']} auto-acks "
+                f"{truth['delivery_failures']} delivery-failures "
                 f"{truth['human_positive']} human-positive "
                 f"{truth['resends']} resends "
                 f"USD {truth['cash_usd']} cash"
