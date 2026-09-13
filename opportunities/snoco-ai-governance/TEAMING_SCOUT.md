@@ -32,6 +32,9 @@ Public notice:
 
 A public solicitation synopsis describes a broad technical spine including AI / Shadow-AI discovery, policy-to-control enforcement, public-records/audit-ready evidence, M365 government controls, continuous monitoring, training, governance, and implementation roadmap. That synopsis is useful for scouting only; authenticated County documents remain the submission authority.
 
+Public synopsis used only for scouting:
+- https://usesettle.com/rfp-hunter/ai-governance-solution-2337708
+
 ## Microsoft Government partner baseline
 
 Microsoft's current Government licensing guidance lists **Planet Technologies, Daymark Solutions, and Summit 7 Systems** among Agreement for Online Services – Government (AOS-G) partners for GCC/GCC High. This is useful independent evidence that all three operate inside Microsoft's government-cloud partner channel; it does not establish County eligibility or willingness to team.
