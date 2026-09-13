@@ -1,9 +1,9 @@
 {
   "counts": {
-    "open_issues": 65,
+    "open_issues": 66,
     "open_pull_requests": 39,
-    "runs_in_progress": 19,
-    "runs_queued": 1243
+    "runs_in_progress": 20,
+    "runs_queued": 1215
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -75,7 +75,7 @@
       "head_sha": "05f6f1775a5762ffa18c5c19da1d94d35bc45bb0",
       "number": 14057,
       "title": "Make reply-to-revenue contact state chronology-safe",
-      "updated_at": "2026-09-13T15:44:47Z"
+      "updated_at": "2026-09-13T16:18:09Z"
     },
     {
       "author": "woahwhattheheck",
@@ -220,8 +220,30 @@
   },
   "pulls_listed": 39,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 65.4,
+  "queue_depth_per_runner": 60.8,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z-spectralforge-f9m2/sales-meeting-readiness",
+      "closed_at": "2026-09-13T16:21:25Z",
+      "head_sha": "5d5770b3d5943b8193590e4de2662303322a2611",
+      "merged_at": "2026-09-13T16:21:25Z",
+      "number": 14062,
+      "state": "MERGED",
+      "title": "Add calendar-verified sales meeting readiness"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z-solcascade-14056-route-authority",
+      "closed_at": "2026-09-13T16:17:34Z",
+      "head_sha": "8e40356286f392d03125585f9cf4932882670653",
+      "merged_at": "2026-09-13T16:17:34Z",
+      "number": 14060,
+      "state": "MERGED",
+      "title": "Fail closed on untrusted nonblocking route snapshots"
+    },
     {
       "author": "AURELIAN-AUTO",
       "base": "main",
@@ -289,15 +311,26 @@
       "title": "GOSIM: fence Pareto comparisons by exact task generation"
     },
     {
-      "author": "AURELIAN-AUTO",
+      "author": "woahwhattheheck",
       "base": "main",
-      "branch": "aurelian/fix-issue-14033",
-      "closed_at": "2026-09-13T15:18:36Z",
-      "head_sha": "f506c75d6b993c76fc3be63c2178f0001d190b8b",
-      "merged_at": null,
-      "number": 14046,
-      "state": "CLOSED",
-      "title": "Add deterministic tract aggregation runner with machine-readable receipts"
+      "branch": "zrh-n7q4/wy-ospd-0046n-prime-teaming",
+      "closed_at": "2026-09-13T14:07:51Z",
+      "head_sha": "e6af2a8184818b8c5437b19db56803b485f76450",
+      "merged_at": "2026-09-13T14:07:50Z",
+      "number": 13896,
+      "state": "MERGED",
+      "title": "Wyoming OSPD 0046-N prime teaming carrier"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zlh-x7k4/pursuit-portfolio-allocation",
+      "closed_at": "2026-09-13T14:07:43Z",
+      "head_sha": "1c379ed9a2b23b157792e426c7c090fadd68b273",
+      "merged_at": "2026-09-13T14:07:43Z",
+      "number": 13893,
+      "state": "MERGED",
+      "title": "Revenue: exact pursuit portfolio capacity allocation"
     },
     {
       "author": "woahwhattheheck",
@@ -353,43 +386,10 @@
       "number": 13873,
       "state": "MERGED",
       "title": "feat(revenue): add St. Louis print/mail API acceptance rail"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zcf-q8n3/vericodegen-refactor-20260913",
-      "closed_at": "2026-09-13T13:33:53Z",
-      "head_sha": "184fb2d983efae5eb74c56345a95f4c725481df2",
-      "merged_at": "2026-09-13T13:33:52Z",
-      "number": 13867,
-      "state": "MERGED",
-      "title": "feat(revenue): add VeriCodeGen Lean refactor evidence harness"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zca/mcp-conformance-binding-13859",
-      "closed_at": "2026-09-13T13:25:40Z",
-      "head_sha": "690713b1ea31777b1b00564e398323fd4f6047b5",
-      "merged_at": "2026-09-13T13:25:40Z",
-      "number": 13861,
-      "state": "MERGED",
-      "title": "Fix aggregate MCP evidence-binding escape"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zow-l9c2/outbound-reconcile-temporal-coverage-20260913",
-      "closed_at": "2026-09-13T13:20:19Z",
-      "head_sha": "0448952e5f0eb9a6e327fd95fcbda21ece404b85",
-      "merged_at": "2026-09-13T13:20:19Z",
-      "number": 13851,
-      "state": "MERGED",
-      "title": "revenue: bind outbound reconciliation to temporal coverage"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-13T16:13:54Z",
+  "unchanged_since": "2026-09-13T16:23:14Z",
   "undatable_pulls": []
 }
