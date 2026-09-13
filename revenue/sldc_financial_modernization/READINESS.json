@@ -1,0 +1,21 @@
+{
+  "schema":"sldc-financial-modernization-readiness/v1",
+  "checked_at":"2026-09-13",
+  "status":"BLOCKED",
+  "gates":{
+    "official_rfp_rechecked":false,
+    "qualified_prime_identified":false,
+    "three_similar_references_verified":false,
+    "stlouis_business_license_verified":false,
+    "missouri_good_standing_verified":false,
+    "paid_workshare_terms_owner_approved":false,
+    "human_substantive_proposal_review":false,
+    "external_partner_or_buyer_contact_authorized":false,
+    "external_submission_authorized":false
+  },
+  "notes":[
+    "The checked-in SLDC profile is intentionally HOLD because no buyer current-state process/report evidence has been supplied.",
+    "The $15,000 / 10-business-day workshare is a commercial hypothesis marked PROPOSED_NOT_ACCEPTED.",
+    "No qualification, business-license, reference, partner, proposal, contract, payment, or revenue status is inferred."
+  ]
+}
