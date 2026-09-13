@@ -92,6 +92,12 @@ class ReviewGit(unittest.TestCase):
         self.assertTrue(sr.execution_required([changed(".github/review-notes.md")]))
         self.assertTrue(sr.execution_required([changed("docs/link.md", "120000", "120000")]))
         self.assertTrue(sr.execution_required([changed("docs/module.adoc", "160000", "160000")]))
+        self.assertTrue(sr.execution_required([changed("docs/tool.md", "100755", "100755")]))
+        self.assertTrue(sr.execution_required([changed("docs/tool.md", "100644", "100755")]))
+        self.assertTrue(sr.execution_required([changed("docs/tool.md", "100755", "100644")]))
+        self.assertTrue(sr.execution_required([
+            changed("docs/new-tool.md", old_mode="000000", new_mode="100755", status="A")
+        ]))
 
     def test_unrelated_main_advance_reuses_review(self):
         self.write("unrelated.py", "another builder"); new = self.commit("unrelated")
