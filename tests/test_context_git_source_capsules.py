@@ -129,6 +129,20 @@ class GitSourceCapsuleTests(unittest.TestCase):
         with self.assertRaises(GitSourceError): collect_git_source(self.repo, blob, ["alpha.txt"])
         with self.assertRaises(GitSourceError): collect_git_source(self.repo, "a"*40, ["alpha.txt"])
 
+    def test_non_utf8_commit_message_does_not_block_exact_tree_read(self):
+        tree = run(self.repo, "rev-parse", f"{self.commit}^{{tree}}").decode().strip()
+        raw = (
+            f"tree {tree}\n"
+            "author Capsule Tests <capsules@example.invalid> 1789300000 +0000\n"
+            "committer Capsule Tests <capsules@example.invalid> 1789300000 +0000\n"
+            "\n"
+        ).encode("ascii") + b"message-\xff\n"
+        commit = run(self.repo, "hash-object", "-t", "commit", "-w", "--stdin", input_bytes=raw).decode().strip()
+        bundle = collect_git_source(self.repo, commit, ["alpha.txt"])
+        self.assertEqual(bundle["commit"], commit)
+        self.assertEqual(bundle["tree_sha"], tree)
+        self.assertEqual(bundle["capsules"][0]["text"], "alpha committed\nline two\n")
+
     def test_main_drift_is_metadata_not_relabel(self):
         first = self.packet(paths=("alpha.txt",))
         (self.repo/"later.txt").write_text("later\n", encoding="utf-8")
