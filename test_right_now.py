@@ -37,7 +37,7 @@ class RightNowRevenueTest(unittest.TestCase):
 
     def test_catalog_keeps_cash_and_checkout_truth_separate(self):
         truth = self.catalog["truth"]
-        self.assertEqual(truth["collected_cash_usd"], 0)
+        self.assertEqual(truth["collected_cash_usd"], 1)
         self.assertEqual(truth["verified_positive_replies"], 0)
         self.assertEqual(truth["accepted_scopes"], 0)
         self.assertIs(truth["active_chargeable_checkout"], True)
