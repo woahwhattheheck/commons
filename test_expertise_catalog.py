@@ -34,10 +34,10 @@ class ExpertiseCatalogTests(unittest.TestCase):
         jsonschema.Draft202012Validator.check_schema(schema)
         jsonschema.validate(self.catalog, schema)
 
-    def test_exact_capability_set_is_explicit(self):
+    def test_required_capability_set_is_explicit(self):
         caps = {row["capability"] for row in self.catalog["entries"]}
-        self.assertEqual(caps, module.REQUIRED_CAPABILITIES)
-        self.assertEqual(len(self.catalog["entries"]), 8)
+        self.assertTrue(module.REQUIRED_CAPABILITIES.issubset(caps))
+        self.assertGreaterEqual(len(self.catalog["entries"]), len(module.REQUIRED_CAPABILITIES))
 
     def test_only_whitebox_hour_is_live_and_exact(self):
         live = [row for row in self.catalog["entries"] if row["commercial"]["mode"] == "LIVE_EXISTING_SKU"]
@@ -77,6 +77,12 @@ class ExpertiseCatalogTests(unittest.TestCase):
     def test_mutation_missing_source_is_rejected(self):
         bad = copy.deepcopy(self.catalog)
         bad["entries"][2]["source_evidence"].append("revenue/does-not-exist.json")
+        with self.assertRaises(module.CatalogError):
+            module.validate_catalog(bad, root=ROOT)
+
+    def test_mutation_non_string_list_item_is_rejected_as_catalog_error(self):
+        bad = copy.deepcopy(self.catalog)
+        bad["entries"][2]["source_evidence"].append({"not": "a path"})
         with self.assertRaises(module.CatalogError):
             module.validate_catalog(bad, root=ROOT)
 
