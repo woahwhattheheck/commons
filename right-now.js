@@ -21,13 +21,15 @@
   function render(control) {
     target.replaceChildren();
     var truth = control.truth;
+    var cash = control.settled_cash;
     var settled = control.settled_awards;
     var summary = document.createElement("div");
     summary.className = "metrics";
     [
       ["USD cash", "USD " + truth.collected_cash_usd],
+      ["Provider cash receipts", truth.settled_cash_receipts],
       ["Paid awards", truth.paid_awards],
-      ["Settled value", formatTotals(truth.settled_amounts_by_currency)],
+      ["Settled award value", formatTotals(truth.settled_amounts_by_currency)],
       ["Offers", control.offers.length],
       ["Opportunities", truth.prospects_evaluated],
       ["Ready to draft", truth.ready_to_draft],
@@ -40,6 +42,32 @@
       summary.append(metric);
     });
     target.append(summary);
+
+    target.append(text("h3", "Verified provider cash"));
+    var cashList = document.createElement("ol");
+    cashList.className = "queue";
+    cash.receipts.forEach(function (receipt) {
+      var row = document.createElement("li");
+      row.append(text(
+        "strong",
+        receipt.program + " — USD " + receipt.amount_usd + " PAID"
+      ));
+      row.append(text(
+        "span",
+        "Evidence " + receipt.provider_receipt_id + " · " +
+          receipt.evidenced_at + ". Collection: do not resend."
+      ));
+      cashList.append(row);
+    });
+    if (!cash.receipts.length) {
+      cashList.append(text("li", "No provider-confirmed USD cash receipts are recorded."));
+    }
+    target.append(cashList);
+    target.append(text(
+      "p",
+      "Provider-paid cash is counted only from PAID receipts. Bank availability and withdrawability are not asserted.",
+      "note"
+    ));
 
     target.append(text("h3", "Verified paid awards"));
     var awardList = document.createElement("ol");
