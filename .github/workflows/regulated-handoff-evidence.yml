@@ -1,0 +1,37 @@
+name: regulated-handoff-evidence
+
+on:
+  pull_request:
+    paths:
+      - 'revenue/regulated_handoff_evidence/**'
+      - 'test_regulated_handoff_evidence.py'
+      - '.github/workflows/regulated-handoff-evidence.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'revenue/regulated_handoff_evidence/**'
+      - 'test_regulated_handoff_evidence.py'
+      - '.github/workflows/regulated-handoff-evidence.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  focused:
+    strategy:
+      matrix:
+        python: ['3.11', '3.12', '3.13']
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Compile
+        run: python -m py_compile revenue/regulated_handoff_evidence/gate.py test_regulated_handoff_evidence.py
+      - name: Test normal
+        run: python -m unittest -v test_regulated_handoff_evidence.py
+      - name: Test optimized
+        run: python -O -m unittest -v test_regulated_handoff_evidence.py
+      - name: Golden receipt
+        run: python revenue/regulated_handoff_evidence/gate.py revenue/regulated_handoff_evidence/fixtures/golden_bundle.json > /tmp/receipt.json
