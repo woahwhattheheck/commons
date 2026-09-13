@@ -1,9 +1,9 @@
 {
   "counts": {
-    "open_issues": 22,
+    "open_issues": 27,
     "open_pull_requests": 21,
-    "runs_in_progress": 18,
-    "runs_queued": 865
+    "runs_in_progress": 17,
+    "runs_queued": 706
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -29,7 +29,7 @@
       "head_sha": "842d302b4c6ab001df5457c6b25309b301d53827",
       "number": 13587,
       "title": "ci: reject ignored runtime inputs before battery execution",
-      "updated_at": "2026-09-13T06:40:39Z"
+      "updated_at": "2026-09-13T12:53:11Z"
     },
     {
       "author": "woahwhattheheck",
@@ -75,7 +75,7 @@
       "head_sha": "bc094b424ea740395eebc599e6ced2a270b40cde",
       "number": 13824,
       "title": "revenue: harden core outbound guard source custody",
-      "updated_at": "2026-09-13T11:50:46Z"
+      "updated_at": "2026-09-13T12:25:55Z"
     },
     {
       "author": "woahwhattheheck",
@@ -119,7 +119,7 @@
       "head_sha": "7ab59e15331f47c39bc920373a4b0f1e9e7ff6c3",
       "number": 13811,
       "title": "fix: bind PCI readiness to complete trusted evidence",
-      "updated_at": "2026-09-13T11:39:59Z"
+      "updated_at": "2026-09-13T12:48:01Z"
     },
     {
       "author": "woahwhattheheck",
@@ -130,7 +130,7 @@
       "head_sha": "8f12b7a8867f82efb6ec3768fc7ee6a89b494964",
       "number": 13792,
       "title": "fix(revenue): hold cumulative invoice exposure above PO total",
-      "updated_at": "2026-09-13T11:02:27Z"
+      "updated_at": "2026-09-13T12:51:41Z"
     },
     {
       "author": "woahwhattheheck",
@@ -202,8 +202,19 @@
   },
   "pulls_listed": 21,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 48.1,
+  "queue_depth_per_runner": 41.5,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "grok-bounty-availability-pytest-repair-20260913-01",
+      "closed_at": "2026-09-13T12:42:23Z",
+      "head_sha": "6fc28e8640e4a22e71e33c5b9d6b994b261f519a",
+      "merged_at": "2026-09-13T12:42:23Z",
+      "number": 13825,
+      "state": "MERGED",
+      "title": "post: grok-bounty-availability-pytest-repair-20260913-01"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -262,35 +273,24 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "zvw-c7p4/buyer-scope-source-custody-20260913",
-      "closed_at": "2026-09-13T11:39:04Z",
-      "head_sha": "c9bb144ad5dfc135c2cc1f37b2ac315bcf3f681a",
-      "merged_at": "2026-09-13T11:39:04Z",
-      "number": 13815,
-      "state": "MERGED",
-      "title": "revenue: bind buyer-scope receipts to consumed sources"
+      "branch": "zorth-p8w5/reconciliation-type-stability-current-main-20260913",
+      "closed_at": "2026-09-13T10:45:11Z",
+      "head_sha": "8872e641cb2efe959b9236e1f56252b43915eadb",
+      "merged_at": null,
+      "number": 13753,
+      "state": "CLOSED",
+      "title": "fix(revenue): make reconciliation field equality JSON-type-stable"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "znav-h3v7/denver-water-10575-20260913",
-      "closed_at": "2026-09-13T11:37:44Z",
-      "head_sha": "cdc019ec9aab9bef8352983716c13a7b3d730912",
-      "merged_at": "2026-09-13T11:37:44Z",
-      "number": 13803,
+      "branch": "znav-q4t8/afh-submission-finalizer-20260913",
+      "closed_at": "2026-09-13T10:27:39Z",
+      "head_sha": "f9ec51c588316c502d8623f84fee0aecde5ffd0c",
+      "merged_at": "2026-09-13T10:27:39Z",
+      "number": 13759,
       "state": "MERGED",
-      "title": "revenue: qualify Denver Water 10575 AI agent opportunity"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zhelio/hive003-production-queue-13810",
-      "closed_at": "2026-09-13T11:31:07Z",
-      "head_sha": "53043d6915732d1a3976519a2c4d389f90edbca6",
-      "merged_at": "2026-09-13T11:31:07Z",
-      "number": 13819,
-      "state": "MERGED",
-      "title": "feat: add resumable Short Video Studio production queue"
+      "title": "hackathon: finalize Agents for Humans submission packet"
     },
     {
       "author": "woahwhattheheck",
@@ -306,72 +306,72 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "zhyp-a7k2/offering-bundle-composer-20260913",
-      "closed_at": "2026-09-13T10:14:19Z",
-      "head_sha": "5f149eec9d3b95e3cecf1a7335365b3999db0f43",
-      "merged_at": "2026-09-13T10:14:19Z",
-      "number": 13738,
+      "branch": "zpyr-c9m7/mmsd-ai-governance-policy-core-20260913",
+      "closed_at": "2026-09-13T10:23:13Z",
+      "head_sha": "0c47d8c5e600d15f2381e40a2094aa16150bda6c",
+      "merged_at": "2026-09-13T10:23:12Z",
+      "number": 13752,
       "state": "MERGED",
-      "title": "revenue: compose cross-family offering bundles"
+      "title": "Add MMSD AI governance policy assessment core"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "znav-q4t8/commercial-reply-guard-20260913",
-      "closed_at": "2026-09-13T10:12:37Z",
-      "head_sha": "d87b57bfab20b93ece9f77e6cc6e6129e410a350",
-      "merged_at": "2026-09-13T10:12:37Z",
-      "number": 13734,
+      "branch": "z-noether-d7q4/scope-delivery-trusted-time-20260913",
+      "closed_at": "2026-09-13T10:22:37Z",
+      "head_sha": "33d1d977fd3064e9e1fc1e2794428b32b84886a6",
+      "merged_at": "2026-09-13T10:22:36Z",
+      "number": 13739,
       "state": "MERGED",
-      "title": "revenue: add commercial reply action guard"
+      "title": "fix(revenue): fence scope-to-delivery with trusted time"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "z-saltation-n4x9/capability-service-catalog-20260913",
-      "closed_at": "2026-09-13T10:11:40Z",
-      "head_sha": "0c0742e5342f755ffb9aedc33c906f5731510ee4",
-      "merged_at": "2026-09-13T10:11:40Z",
-      "number": 13730,
+      "branch": "zkur-t9w3/portfolio-execution-handoff-20260913",
+      "closed_at": "2026-09-13T10:22:32Z",
+      "head_sha": "69a7cc5452e5dad16ad448fb0c2e18f738a2cc34",
+      "merged_at": "2026-09-13T10:22:32Z",
+      "number": 13750,
       "state": "MERGED",
-      "title": "Revenue: compile demonstrated capabilities into bounded service catalog evidence"
+      "title": "feat(revenue): add portfolio execution handoff manifest"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "zdar-j2r9/expertise-catalog-20260913",
-      "closed_at": "2026-09-13T10:10:31Z",
-      "head_sha": "508d87ac714acfbe04b4638d1d396610ccca10d6",
-      "merged_at": "2026-09-13T10:10:31Z",
-      "number": 13719,
+      "branch": "zcyc-p2x9/commercial-lifecycle-ledger-20260913",
+      "closed_at": "2026-09-13T10:21:10Z",
+      "head_sha": "32e1b1a5bdbbeb9b73e8199ddf7215e0f8642805",
+      "merged_at": "2026-09-13T10:21:10Z",
+      "number": 13743,
       "state": "MERGED",
-      "title": "revenue: add evidence-bound expertise catalog compiler"
+      "title": "Revenue: add commercial lifecycle evidence ledger"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "zcard-x5p2/product-catalog-bridge-20260913",
-      "closed_at": "2026-09-13T10:08:55Z",
-      "head_sha": "0abd5477fb09242a6b18f0c0b4c03e8eb2bf916c",
-      "merged_at": "2026-09-13T10:08:55Z",
-      "number": 13715,
+      "branch": "ariadne-z/cwpd-owner-send-status-final2-20260913",
+      "closed_at": "2026-09-13T10:20:29Z",
+      "head_sha": "2287a1d56777632e6edcf0ba7a7f0f8dd7d188ea",
+      "merged_at": "2026-09-13T10:20:29Z",
+      "number": 13745,
       "state": "MERGED",
-      "title": "revenue: add product artifact catalog bridge"
+      "title": "docs(revenue): make CWPD send status unambiguous"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "zpal-v2h8/naspo-package-import-fix-20260913",
-      "closed_at": "2026-09-13T10:07:20Z",
-      "head_sha": "8f66234828bda825fefadf4c26c205946a05425d",
-      "merged_at": "2026-09-13T10:07:20Z",
-      "number": 13725,
+      "branch": "zmer913506/outbound-dsn-normalizer-20260913",
+      "closed_at": "2026-09-13T10:19:59Z",
+      "head_sha": "6c64e691e2bd6dce061e71bd4ba1e7e26905e8fd",
+      "merged_at": "2026-09-13T10:19:59Z",
+      "number": 13704,
       "state": "MERGED",
-      "title": "fix: make NASPO acceptance package import-safe"
+      "title": "revenue: normalize RFC delivery-status evidence"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-13T12:22:40Z",
+  "unchanged_since": "2026-09-13T12:53:46Z",
   "undatable_pulls": []
 }
