@@ -169,3 +169,26 @@ test('hidden tabs make no polling requests and resume one poll when visible', as
   assert.ok(h.requests.every(r => r.url === '/api/summary'));
 });
 
+
+test('malformed status metadata cannot replace last-good summary rows', async () => {
+  const h = harness(snapshot({work: {open: {fresh: 1, retained: 0, stale: 0, unknown: 0},
+    top_attention: [{id: 'keep', title: 'Keep the last-good summary', freshness: 'fresh',
+      status: 'open', next_action: 'Read the existing receipt'}]}}));
+  await h.ready();
+  const children = [...h.body.children], previous = h.body.textContent;
+  for (const missing of ['cache', 'telemetry']) {
+    const malformed = snapshot();
+    delete malformed[missing];
+    h.queue({body: malformed}); await h.click();
+    assert.match(h.status.textContent, /unavailable/i);
+    assert.match(h.status.textContent, /Prior displayed observations are retained/i);
+    assert.equal(h.body.textContent, previous);
+    assert.equal(h.body.children.length, children.length);
+    children.forEach((node, index) => assert.equal(h.body.children[index], node,
+      'Invalid status metadata must fail before any visible body replacement'));
+    assert.equal(h.button.disabled, false);
+  }
+  h.queue({body: snapshot()}); await h.click();
+  assert.match(h.status.textContent, /^Shared snapshot/);
+  assert.doesNotMatch(h.body.textContent, /Keep the last-good summary/);
+});

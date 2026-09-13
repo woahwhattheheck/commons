@@ -25,7 +25,7 @@
   const back = el('button', 'Previous', 'text-button'), next = el('button', 'Next', 'text-button');
   back.type = next.type = 'button'; pages.append(back, next);
   card.append(title, help, form, status, coverage, rows, pages); view.prepend(card);
-  let offset = 0, displayedOffset = 0, nextOffset = null, busy = false, timer, queued = false;
+  let offset = 0, displayedOffset = 0, nextOffset = null, busy = false, timer, queued = false, filterVersion = 0;
   const stamp = value => value ? new Date(value).toLocaleString() : 'unknown';
   const line = (label, value) => {
     const p = el('p', null, 'work-next'); p.append(el('strong', label + ' '), document.createTextNode(String(value))); return p;
@@ -76,6 +76,7 @@
     if (document.visibilityState === 'hidden') return;
     if (busy) { queued = true; return; }
     busy = true; refresh.disabled = true; back.disabled = next.disabled = true;
+    const requestedFilterVersion = filterVersion;
     const controller = new AbortController(), timeout = setTimeout(() => controller.abort(), 10000);
     try {
       const params = new URLSearchParams({limit:'100', offset:String(offset), q:search.value, mode:mode.value});
@@ -85,7 +86,8 @@
       if (!Array.isArray(data.threads) || !data.pagination || !data.counts) throw new Error('Invalid shared mail response');
       render(data);
     } catch (error) {
-      offset = displayedOffset;
+      // An older failed read must not undo a newer queued filter reset.
+      if (requestedFilterVersion === filterVersion) offset = displayedOffset;
       status.textContent = 'Email view unavailable (' + error.message + '). Last displayed observations retained; sync freshness is not advanced.';
     } finally {
       clearTimeout(timeout); busy = false; refresh.disabled = false;
@@ -94,8 +96,8 @@
       if (queued) { queued = false; load(); } else { timer = setTimeout(load, 30000); }
     }
   }
-  form.addEventListener('submit', event => {event.preventDefault(); offset = 0; load();});
-  mode.addEventListener('change', () => {offset = 0; load();});
+  form.addEventListener('submit', event => {event.preventDefault(); filterVersion++; offset = 0; load();});
+  mode.addEventListener('change', () => {filterVersion++; offset = 0; load();});
   back.addEventListener('click', () => {offset = Math.max(0, offset - 100); load();});
   next.addEventListener('click', () => {if (nextOffset != null) {offset = nextOffset; load();}});
   document.addEventListener('visibilitychange', () => {if (document.visibilityState !== 'hidden') load();});

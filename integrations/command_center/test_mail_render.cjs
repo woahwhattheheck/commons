@@ -279,3 +279,32 @@ test('manage dispatches the exact directive or fallback source/item without maki
   h.assertReadOnly();
 });
 
+
+test('an old failed poll cannot overwrite a newer queued mode or search reset', async () => {
+  for (const control of ['mode', 'search']) {
+    const h = harness(page(0, 100)); await h.ready();
+    h.queue({body: page(100, 200)}); await h.click(h.next);
+    let rejectOld;
+    h.queue({promise: new Promise((_resolve, reject) => { rejectOld = reject; })});
+    await h.poll();
+    assert.equal(h.requests.length, 3);
+    assert.equal(h.params().offset, '100');
+    if (control === 'mode') await h.change('unread');
+    else await h.submit('new matching thread');
+    assert.equal(h.requests.length, 3, 'The new filter is queued behind the in-flight read');
+    const filtered = snapshot({threads: [thread({title: 'First matching result'})],
+      pagination: {offset: 0, next_offset: null, matching_threads: 1},
+      counts: {messages: 1, duplicate_records: 0}});
+    h.queue({body: filtered});
+    rejectOld(new Error('The old page poll failed'));
+    await h.ready();
+    assert.equal(h.requests.length, 4, 'Exactly one queued filter read starts');
+    assert.deepEqual(h.params(), {limit: '100', offset: '0',
+      q: control === 'search' ? 'new matching thread' : '',
+      mode: control === 'mode' ? 'unread' : 'all'});
+    assert.match(h.rows.textContent, /First matching result/);
+    assert.equal(h.back.disabled, true); assert.equal(h.next.disabled, true);
+    assert.doesNotMatch(h.status.textContent, /unavailable/);
+    h.assertReadOnly();
+  }
+});

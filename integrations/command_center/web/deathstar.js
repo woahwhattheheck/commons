@@ -36,8 +36,9 @@
       const rows = s.work.top_attention || [];
       for (const row of rows.slice(0, 4))
         nextBody.append(line(row.title || row.id, row.freshness + ' · ' + row.status + ' · ' + (row.next_action || 'No next action recorded')));
+      const nextStatus = 'Shared snapshot ' + new Date(s.generated_at).toLocaleTimeString() + ' · no provider requests for this view · ' + (s.cache.hit ? 'cache hit' : s.telemetry.projection_ms + 'ms projection');
       body.replaceChildren(...nextBody.children);
-      status.textContent = 'Shared snapshot ' + new Date(s.generated_at).toLocaleTimeString() + ' · no provider requests for this view · ' + (s.cache.hit ? 'cache hit' : s.telemetry.projection_ms + 'ms projection');
+      status.textContent = nextStatus;
     } catch (error) {
       status.textContent = 'Shared view unavailable (' + error.message + '). Prior displayed observations are retained.';
     } finally {
