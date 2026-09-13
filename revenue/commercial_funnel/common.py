@@ -84,6 +84,7 @@ def exact_keys(value: Any, *, required: Iterable[str], optional: Iterable[str] =
 def require_id(value: Any, field: str) -> str:
     if not isinstance(value, str) or not ID_RE.fullmatch(value):
         raise FunnelError(f"{field} invalid")
+    safe_text(value, field)
     return value
 
 
@@ -108,9 +109,10 @@ def safe_text(value: str, field: str) -> None:
 
 
 def validate_json_scalars(value: Any, path: str = "$") -> None:
+    # Generic traversal enforces JSON type safety and blocked field names only.
+    # Field-aware validators scan human text/identifiers for secret/PII shapes;
+    # opaque cryptographic digests are intentionally exempt from heuristic scans.
     if value is None or type(value) in (str, bool, int):
-        if isinstance(value, str):
-            safe_text(value, path)
         return
     if isinstance(value, float):
         raise FunnelError(f"{path} floats are not allowed")
@@ -136,6 +138,7 @@ def validate_source(value: Any, field: str) -> dict[str, str]:
     repository = source["repository"]
     if not isinstance(repository, str) or not REPO_RE.fullmatch(repository):
         raise FunnelError(f"{field}.repository invalid")
+    safe_text(repository, f"{field}.repository")
     commit = source["commit"]
     if not isinstance(commit, str) or not HEX40.fullmatch(commit):
         raise FunnelError(f"{field}.commit must be immutable lowercase 40-hex commit")
