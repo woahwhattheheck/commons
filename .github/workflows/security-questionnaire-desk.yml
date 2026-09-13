@@ -1,0 +1,41 @@
+name: Security Questionnaire Desk
+
+on:
+  pull_request:
+    paths:
+      - 'revenue/security_questionnaire_desk/**'
+      - '.github/workflows/security-questionnaire-desk.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'revenue/security_questionnaire_desk/**'
+      - '.github/workflows/security-questionnaire-desk.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  hostile:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        optimized: [false, true]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Compile
+        run: >-
+          python -m py_compile
+          revenue/security_questionnaire_desk/security_questionnaire_desk.py
+          revenue/security_questionnaire_desk/test_security_questionnaire_desk.py
+      - name: Hostile suite
+        shell: bash
+        run: |
+          if [[ "${{ matrix.optimized }}" == "true" ]]; then
+            python -O -m unittest -v revenue/security_questionnaire_desk/test_security_questionnaire_desk.py
+          else
+            python -m unittest -v revenue/security_questionnaire_desk/test_security_questionnaire_desk.py
+          fi
