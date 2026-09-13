@@ -12,7 +12,7 @@
     "condition": "CONSTRAINED",
     "authority": "SHARED_ALL_CARRIERS; PUBLIC_CURRENT_MAIN_READ_COMPILE_VERIFY_AND_COMPOSE; EXACT_PR13738_HEAD_5F149EEC9D3B95E3CECF1A7335365B3999DB0F43_MERGE_C9C8515217C127C811FE96DCF4E71272C83095A2_AND_SEVEN_SOURCE_BLOBS_REQUIRED; READY_FOR_HUMAN_BUNDLE_REVIEW_MAXIMUM; BUYER_CONTACT_FALSE; EXTERNAL_SEND_FALSE; CONTRACT_EXECUTION_FALSE; BUYER_ACCEPTANCE_FALSE; CHECKOUT_PAYMENT_FALSE; FULFILLMENT_FALSE; REVENUE_RECOGNITION_FALSE; DEPLOYMENT_FALSE",
     "holder": "Commons / product, service, expertise and data catalog operators",
-    "activation_base_main_sha": "cb553c1692fada76b72f69b72ab5509860182013"
+    "activation_base_main_sha": "c445e112cca02e63e086c98f598ce8963b915871"
   },
   "concrete_consumer": "Product, service, expertise and data catalog owners plus human offer reviewers need one deterministic cross-family packet before buyer-specific action.",
   "measurable_outcome": "The released compiler is separately routable in the canonical graph with seven exact source blobs, deterministic normal/optimized acceptance output, offline verification and explicit external-authority denial.",
@@ -23,7 +23,7 @@
     "source_branch": "zhyp-a7k2/offering-bundle-composer-20260913",
     "source_head_sha": "5f149eec9d3b95e3cecf1a7335365b3999db0f43",
     "source_merge_sha": "c9c8515217c127c811fe96dcf4e71272c83095a2",
-    "source_descendant_main_sha": "cb553c1692fada76b72f69b72ab5509860182013",
+    "source_descendant_main_sha": "c445e112cca02e63e086c98f598ce8963b915871",
     "source_paths": {
       ".github/workflows/offering-bundle-composer.yml": "b369a17a3cd4b3312fa00e3d006c39eff0b80086",
       "revenue/offering_bundle_composer/README.md": "0d9ff04674049215eb27d081085aaf699ff5c911",
@@ -49,15 +49,15 @@
   "delta": {
     "prior_terminal_main_sha": "918a81035d5110d56aa8cfcf36d4bd2fe41b9828",
     "main_sha_at_claim": "d834d7abe537f7813dd08a2753c97f9d766828f0",
-    "activation_base_main_sha": "cb553c1692fada76b72f69b72ab5509860182013",
-    "commits_in_delta": 404,
-    "changed_paths_in_delta": 675,
+    "activation_base_main_sha": "c445e112cca02e63e086c98f598ce8963b915871",
+    "commits_in_delta": 429,
+    "changed_paths_in_delta": 707,
     "remote_branches_observed": 3181,
     "prior_remote_branches_observed": 3052,
     "remote_branch_identity_boundary": "The connector exposed 3,181 current names across 34 pages, 129 more than the prior count; name enumeration does not prove branch-tip movement.",
     "prior_terminal_slack_ts": "1789285972.241729",
     "commons_claim_slack_ts": "1789295046.683799",
-    "github_state": "Source PR #13738 was merged at c9c8515217c127c811fe96dcf4e71272c83095a2; all seven source-head blobs remained exact on descendant main cb553c1692fada76b72f69b72ab5509860182013.",
+    "github_state": "Source PR #13738 was merged at c9c8515217c127c811fe96dcf4e71272c83095a2; all seven source-head blobs remained exact on descendant main c445e112cca02e63e086c98f598ce8963b915871. Twenty-five disjoint main commits landed after initial publication and were reconciled without force push.",
     "delegations_state": "Post-watermark implementation lanes were owned, shipped or blocked by their existing custody; no nonduplicate unowned build gap survived.",
     "todo_state": "No post-watermark todo receipt created a distinct unheld build lane.",
     "shipped_builds_state": "New shipped receipts retained their own consumers and owners; no deployment, acceptance, payment or cash was inferred.",
@@ -89,13 +89,13 @@
     "observed_at": "2026-09-13T10:25:07Z",
     "prior_terminal_main_sha": "918a81035d5110d56aa8cfcf36d4bd2fe41b9828",
     "main_sha_at_claim": "d834d7abe537f7813dd08a2753c97f9d766828f0",
-    "activation_base_main_sha": "cb553c1692fada76b72f69b72ab5509860182013",
+    "activation_base_main_sha": "c445e112cca02e63e086c98f598ce8963b915871",
     "prior_terminal_slack_ts": "1789285972.241729",
     "latest_delta_slack_ts": "1789295046.683799",
     "commons_claim_slack_ts": "1789295046.683799",
     "source_prs": [13738],
     "latest_source_merge_sha": "c9c8515217c127c811fe96dcf4e71272c83095a2",
-    "source_descendant_main_sha": "cb553c1692fada76b72f69b72ab5509860182013",
+    "source_descendant_main_sha": "c445e112cca02e63e086c98f598ce8963b915871",
     "remote_branches_observed": 3181,
     "automations": "29 observed; 24 paused; 1 completed; no lifecycle mutation by this wake",
     "openai_reset": "No newly verified reset; current meter not directly observed and no banked reset activated."
@@ -104,7 +104,7 @@
   "evidence": {
     "slack_claim": "https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1789295046683799",
     "source_pr": "https://github.com/woahwhattheheck/commons/pull/13738",
-    "source_descendant_tree": "https://github.com/woahwhattheheck/commons/tree/cb553c1692fada76b72f69b72ab5509860182013",
+    "source_descendant_tree": "https://github.com/woahwhattheheck/commons/tree/c445e112cca02e63e086c98f598ce8963b915871",
     "official_banked_reset_help": "https://help.openai.com/en/articles/20001498-how-banked-codex-resets-work",
     "official_release_notes": "https://help.openai.com/en/articles/6825453-chatgpt-release-notes",
     "prior_terminal_receipt": "p/codex-whitebox-strict-delivery-evidence-gate-resource-activation-20260913-01.md"

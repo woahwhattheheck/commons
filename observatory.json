@@ -14,6 +14,20 @@
   "board_motion": [
     {
       "from": "UNSEATED",
+      "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-13T10:25:46Z"
+    },
+    {
+      "from": "Z-Vellumforge-913552-R7K3",
+      "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-13T10:15:00Z"
+    },
+    {
+      "from": "UNSEATED",
       "id": "Hive-product--field-service-quote-to-job-customer-workspace",
       "kind": null,
       "to": "TABLE",
@@ -137,20 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-13T04:23:12Z"
-    },
-    {
-      "from": "GROK",
-      "id": "grok-titan-v5-carrier-pin-rotate-20260913",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-13T03:24:00Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "grokbuild-odg-34726510598-landed",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-13T03:21:53Z"
     }
   ],
   "briefing": {
@@ -169,7 +169,7 @@
         "0 sessions confirmed active.",
         "0 working; 1 blocked.",
         "0 collisions need reconciliation.",
-        "238 claims present (existence, not sessions).",
+        "239 claims present (existence, not sessions).",
         "No verified positive replies.",
         "Commons revenue remains USD 0."
       ],
@@ -234,7 +234,7 @@
             "source": "projector"
           }
         ],
-        "text": "238 claims present (existence, not sessions)."
+        "text": "239 claims present (existence, not sessions)."
       },
       {
         "evidence": [
@@ -283,7 +283,7 @@
       },
       "collisions": 0,
       "confirmed_active": 0,
-      "presence_claims": 238,
+      "presence_claims": 239,
       "sessions": 1,
       "states": {
         "ACTIVE": 0,
@@ -309,14 +309,14 @@
       "0 sessions confirmed active.",
       "0 working; 1 blocked.",
       "0 collisions need reconciliation.",
-      "238 claims present (existence, not sessions).",
+      "239 claims present (existence, not sessions).",
       "No verified positive replies.",
       "Commons revenue remains USD 0."
     ]
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "e4452bc5140c236ecabecdae951d21d876f06295035406156af89e8a6d507087",
+  "digest": "a308899e2da39db50c8d81f10e460c95d5784d2b7d4090825dab4c610f6b9416",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,11 +353,11 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12203,
-    "pulse_seq": 1758,
-    "sha": "d834d7abe537f7813dd08a2753c97f9d766828f0"
+    "post_count": 12205,
+    "pulse_seq": 1762,
+    "sha": "be78f5014b3a84e12acecf34365c0b980320767d"
   },
-  "now": "2026-09-13T10:18:04Z",
+  "now": "2026-09-13T10:30:28Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -2888,7 +2888,7 @@
       "id": "grok-13669-landed-receipt-20260913",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "ACTIVE",
+      "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
       "ts": "2026-09-13T09:19:14Z"
@@ -2964,7 +2964,7 @@
       "id": "grokbuild-pr13668-verify-20260913-01",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "ACTIVE",
+      "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
       "ts": "2026-09-13T09:22:25Z"
@@ -4780,18 +4780,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "Hive-product--field-service-quote-to-job-customer-workspace",
+          "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "Hive-product--field-service-quote-to-job-customer-workspace",
+      "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-13T10:13:30Z"
+      "ts": "2026-09-13T10:25:46Z"
     },
     {
       "claim": "VECTOR-RELAY",
@@ -4868,6 +4868,25 @@
       "presence": "PRESENT",
       "slack_author_is_session": false,
       "ts": "UNKNOWN"
+    },
+    {
+      "claim": "Z-VELLUMFORGE-913552-R7K3",
+      "evidence": [
+        {
+          "claim": "Z-VELLUMFORGE-913552-R7K3",
+          "grade": "OBSERVED",
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+      "is_session": false,
+      "last_to": "TABLE",
+      "motion": "ACTIVE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-09-13T10:15:00Z"
     },
     {
       "claim": "ZERO",
