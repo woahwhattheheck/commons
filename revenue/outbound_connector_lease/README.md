@@ -71,6 +71,14 @@ Use one durable inbound provider event:
 }
 ```
 
+`provider` is a closed canonical identity, not a caller-chosen transport label.
+The v1 registry is exactly `devpost`, `gmail`, `github`, `slack`, and `web-form`.
+Aliases and implementation names such as `email`, `googlemail`, `gmail-api`,
+`github-api`, `slack-api`, or `webform` are invalid and force HOLD. Supporting a
+new provider requires a reviewed source change; callers must never mint a new
+spelling to evade an existing reply lease. Existing canonical provider values
+retain their original v1 branch hashes.
+
 This lets multiple workers race to answer a new human message while only one can
 own that exact event. Automatic OOO/redirect messages do **not** become a new
 reply opportunity; stay on the original external/cold seam.
@@ -93,7 +101,8 @@ reply opportunity; stay on the original external/cold seam.
 
 Branches are permanent one-touch state. Recovery from an abandoned lease
 requires an explicit owner/fleet override tied to the original seam; workers
-must not mint `v2`, alter source authority/ID, or switch contacts to evade it.
+must not mint `v2`, alter source authority/ID, switch contacts, or substitute a
+provider alias to evade it.
 
 ## CLI
 
@@ -132,7 +141,8 @@ python -O -m unittest -v revenue.outbound_connector_lease.test_key
 
 The helper rejects URLs/emails as organization/source domains, normalizes domain
 case/trailing dot/IDNA, rejects duplicate/non-finite JSON, uses exact field sets
-for each opportunity kind, and rejects price/contact/route/draft/subject fields
-inside the external-opportunity schema. Determining the organization's actual
-primary domain and the authoritative source ID is still a workflow evidence task;
-the `outbound-send` skill requires provider/source readback before acquisition.
+for each opportunity kind, rejects price/contact/route/draft/subject fields
+inside the external-opportunity schema, and rejects unregistered reply-provider
+spellings. Determining the organization's actual primary domain and the
+authoritative source ID is still a workflow evidence task; the `outbound-send`
+skill requires provider/source readback before acquisition.
