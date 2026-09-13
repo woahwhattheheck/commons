@@ -3,8 +3,9 @@
 
 Inbound from existing outreach roads is ingested once, classified truthfully,
 and projected into a public funnel. Automated acknowledgements are never
-buyer interest. Positive humans are surfaced with exact context and next
-action. Stale contacts are monitored without resend. HARD DNR is absolute.
+buyer interest. Delivery failures are never treated as a route that can still
+produce a human reply. Positive humans are surfaced with exact context and
+next action. Stale contacts are monitored without resend. HARD DNR is absolute.
 Cash stays USD 0 without payment evidence. This tool never sends mail,
 never opens a second CRM, and never changes commercial state.
 """
@@ -27,11 +28,13 @@ OBSERVATIONS_PATH = ROOT / "revenue" / "reply_to_revenue" / "observations.json"
 FUNNEL_PATH = ROOT / "revenue" / "reply_to_revenue" / "funnel.json"
 ACCEPTANCE_TOOL = "revenue/production_survival/acceptance.py"
 REPLY_INTAKE_TOOL = "revenue/production_survival/reply_intake.py"
+ROUTE_RECOVERY_TOOL = "revenue/reply_to_revenue/DELIVERY_FAILURE_RECOVERY.md"
 SCHEMA_VERSION = "commons-reply-to-revenue/v1"
 KIND = "REPLY_TO_REVENUE_FUNNEL"
 CLASSIFICATIONS = {
     "OPT_OUT",
     "AUTO_RESPONSE",
+    "DELIVERY_FAILURE",
     "NEGATIVE",
     "QUESTION",
     "POSITIVE_SCOPE",
@@ -40,11 +43,25 @@ CLASSIFICATIONS = {
 CLASS_TO_NEXT = {
     "OPT_OUT": "DNC/CLOSE",
     "AUTO_RESPONSE": "WAIT_FOR_HUMAN_REPLY",
+    "DELIVERY_FAILURE": "RECOVER_ROUTE_OWNER_REVIEW",
     "NEGATIVE": "CLOSE",
     "QUESTION": "DRAFT_REPLY",
     "POSITIVE_SCOPE": "NEEDS_ACCEPTANCE",
     "NEEDS_HUMAN": "ESCALATE_ONLY_IF_BUYER_REQUESTS_BRYCE",
 }
+DELIVERY_FAILURE_MARKERS = (
+    "mailer-daemon",
+    "delivery status notification (failure)",
+    "delivery failure",
+    "message blocked",
+    "address not found",
+    "undeliverable",
+    "couldn't be delivered",
+    "could not be delivered",
+    "recipient address rejected",
+    "user unknown",
+    "mail system error",
+)
 AUTO_ACK_MARKERS = (
     "auto-submitted",
     "automatic reply",
@@ -54,7 +71,6 @@ AUTO_ACK_MARKERS = (
     "out of office",
     "out-of-office",
     "vacation responder",
-    "mailer-daemon",
     "noreply",
     "no-reply",
     "do-not-reply",
@@ -93,6 +109,7 @@ FORBIDDEN_CLAIM_RE = re.compile(
 PUBLIC_LIMITS = [
     "ingest each inbound event_ref once; collision on same ref with different payload hash",
     "automated acknowledgements are not buyer interest",
+    "delivery failures require owner review of an alternate route; they never auto-resend",
     "HARD DNR and completed sends are never resent",
     "stale or silent contacts are monitored without a follow-up send",
     "POSITIVE_SCOPE stops at NEEDS_ACCEPTANCE; this tool does not accept, invoice, or collect",
@@ -174,6 +191,21 @@ def classify_signals(
     if not isinstance(markers, list) or not all(isinstance(item, str) and item.strip() for item in markers):
         raise ReplyRevenueError("markers must be nonempty strings")
     blob = " ".join(item.casefold() for item in markers)
+    matched_failure = [marker for marker in DELIVERY_FAILURE_MARKERS if marker in blob]
+    if matched_failure:
+        if requested in {"POSITIVE_SCOPE", "QUESTION", "NEEDS_HUMAN"}:
+            reason = "delivery-failure markers override a human-response claim"
+        else:
+            reason = "delivery failed; owner must review an alternate route before any new contact"
+        return {
+            "classification": "DELIVERY_FAILURE",
+            "next_action": CLASS_TO_NEXT["DELIVERY_FAILURE"],
+            "buyer_interest": False,
+            "auto_ack": False,
+            "delivery_failure": True,
+            "matched_markers": matched_failure,
+            "reason": reason,
+        }
     matched_auto = [marker for marker in AUTO_ACK_MARKERS if marker in blob]
     if matched_auto:
         if requested in {"POSITIVE_SCOPE", "QUESTION"}:
@@ -185,6 +217,7 @@ def classify_signals(
             "next_action": CLASS_TO_NEXT["AUTO_RESPONSE"],
             "buyer_interest": False,
             "auto_ack": True,
+            "delivery_failure": False,
             "matched_markers": matched_auto,
             "reason": reason,
         }
@@ -196,8 +229,9 @@ def classify_signals(
             "next_action": CLASS_TO_NEXT[requested],
             "buyer_interest": requested == "POSITIVE_SCOPE",
             "auto_ack": False,
+            "delivery_failure": requested == "DELIVERY_FAILURE",
             "matched_markers": [],
-            "reason": "operator classification with no auto-ack markers",
+            "reason": "operator classification with no delivery-failure or auto-ack markers",
         }
     matched_positive = [marker for marker in POSITIVE_MARKERS if marker in blob]
     if matched_positive:
@@ -206,16 +240,18 @@ def classify_signals(
             "next_action": CLASS_TO_NEXT["POSITIVE_SCOPE"],
             "buyer_interest": True,
             "auto_ack": False,
+            "delivery_failure": False,
             "matched_markers": matched_positive,
-            "reason": "explicit buyer-scope language with no auto-ack markers",
+            "reason": "explicit buyer-scope language with no delivery-failure or auto-ack markers",
         }
     return {
         "classification": "NEEDS_HUMAN",
         "next_action": CLASS_TO_NEXT["NEEDS_HUMAN"],
         "buyer_interest": False,
         "auto_ack": False,
+        "delivery_failure": False,
         "matched_markers": [],
-        "reason": "no auto-ack and no explicit buyer-scope language",
+        "reason": "no delivery-failure, auto-ack, or explicit buyer-scope language",
     }
 
 
@@ -400,6 +436,10 @@ def _contact_rows(receipts: list[dict[str, Any]], inbound: list[dict[str, Any]])
             lane = "CLOSED"
             next_action = "DNC/CLOSE" if "OPT_OUT" in classes else "CLOSE"
             handoff = None
+        elif "DELIVERY_FAILURE" in classes:
+            lane = "DELIVERY_FAILURE"
+            next_action = "RECOVER_ROUTE_OWNER_REVIEW"
+            handoff = ROUTE_RECOVERY_TOOL
         elif "AUTO_RESPONSE" in classes:
             lane = "AUTO_ACK_WAIT"
             next_action = "WAIT_FOR_HUMAN_REPLY"
@@ -454,6 +494,47 @@ def surface_positives(contacts: list[dict[str, Any]], inbound: list[dict[str, An
         )
     positives.sort(key=lambda item: item["prospect_key"])
     return positives
+
+
+def surface_route_recovery(
+    contacts: list[dict[str, Any]], inbound: list[dict[str, Any]]
+) -> dict[str, Any]:
+    """Build a zero-send owner-review queue for contacts whose route failed."""
+    inbound_by_key: dict[str, list[dict[str, Any]]] = {}
+    for event in inbound:
+        inbound_by_key.setdefault(event["prospect_key"], []).append(event)
+    items: list[dict[str, Any]] = []
+    for contact in contacts:
+        if contact["lane"] != "DELIVERY_FAILURE":
+            continue
+        failures = [
+            event
+            for event in inbound_by_key.get(contact["prospect_key"], [])
+            if event.get("classification") == "DELIVERY_FAILURE"
+        ]
+        latest = max(failures, key=lambda item: item["received_at"]) if failures else None
+        items.append(
+            {
+                "prospect_key": contact["prospect_key"],
+                "organization": contact["organization"],
+                "event_ref": None if latest is None else latest["event_ref"],
+                "received_at": None if latest is None else latest["received_at"],
+                "next_action": "RECOVER_ROUTE_OWNER_REVIEW",
+                "handoff": ROUTE_RECOVERY_TOOL,
+                "buyer_interest": False,
+                "resend": False,
+                "authority": "OWNER_REVIEW_ONLY",
+            }
+        )
+    items.sort(key=lambda item: item["prospect_key"])
+    return {
+        "classification": "DELIVERY_FAILURE",
+        "count": len(items),
+        "items": items,
+        "transport_actions": 0,
+        "resends": 0,
+        "authority": "OWNER_REVIEW_ONLY",
+    }
 
 
 def build_funnel(
@@ -569,6 +650,7 @@ def build_parser() -> argparse.ArgumentParser:
     snap.add_argument("--output", type=Path)
     subparsers.add_parser("validate")
     subparsers.add_parser("surface")
+    subparsers.add_parser("recover")
     classify = subparsers.add_parser("classify")
     classify.add_argument("--markers", required=True, help="comma-separated public-safe markers")
     classify.add_argument("--requested", choices=sorted(CLASSIFICATIONS))
@@ -600,6 +682,9 @@ def main(argv: list[str] | None = None) -> int:
             return 0
         if args.command == "surface":
             print(canonical_text(funnel["surfaces"]), end="")
+            return 0
+        if args.command == "recover":
+            print(canonical_text(surface_route_recovery(funnel["contacts"], funnel["inbound"])), end="")
             return 0
         if args.command == "monitor":
             assert_no_resend(funnel, send=args.send)
