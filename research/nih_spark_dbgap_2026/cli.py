@@ -15,14 +15,7 @@ from .baseline import (
     track1_predict,
     track2_rank,
 )
-
-
-def _write_new(path: Path, value: object) -> None:
-    data = canonical_bytes(value) + b"\n"
-    flags = "xb"
-    with path.open(flags) as fh:
-        fh.write(data)
-        fh.flush()
+from .publication import PairPublicationError, publish_pair
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -44,8 +37,16 @@ def main(argv: list[str] | None = None) -> int:
         corpus = Corpus.from_obj(corpus_obj)
         resources = ResourceManifest.from_obj(resources_obj)
         if args.track == 1:
-            output = track1_predict(corpus, input_obj, abstain_coverage_bp=args.abstain_coverage_bp, top_k=args.top_k)
-            policy = {"top_k": args.top_k, "abstain_coverage_bp": args.abstain_coverage_bp}
+            output = track1_predict(
+                corpus,
+                input_obj,
+                abstain_coverage_bp=args.abstain_coverage_bp,
+                top_k=args.top_k,
+            )
+            policy = {
+                "top_k": args.top_k,
+                "abstain_coverage_bp": args.abstain_coverage_bp,
+            }
         else:
             output = track2_rank(corpus, input_obj, top_k=args.top_k)
             policy = {"top_k": args.top_k}
@@ -58,12 +59,40 @@ def main(argv: list[str] | None = None) -> int:
             source_version=args.source_version,
             policy=policy,
         )
-        _write_new(Path(args.output), output)
-        _write_new(Path(args.receipt), receipt)
+        publication = publish_pair(
+            Path(args.output),
+            canonical_bytes(output) + b"\n",
+            Path(args.receipt),
+            canonical_bytes(receipt) + b"\n",
+        )
+    except PairPublicationError as exc:
+        print(
+            json.dumps(
+                {
+                    "ok": False,
+                    "error": str(exc),
+                    "publication_status": exc.status,
+                },
+                sort_keys=True,
+            ),
+            file=sys.stderr,
+        )
+        return 2
     except (ContractError, OSError, ValueError) as exc:
         print(json.dumps({"ok": False, "error": str(exc)}, sort_keys=True), file=sys.stderr)
         return 2
-    print(json.dumps({"ok": True, "track": args.track, "output": args.output, "receipt": args.receipt}, sort_keys=True))
+    print(
+        json.dumps(
+            {
+                "ok": True,
+                "track": args.track,
+                "output": args.output,
+                "receipt": args.receipt,
+                "publication": publication,
+            },
+            sort_keys=True,
+        )
+    )
     return 0
 
 

@@ -21,6 +21,9 @@ _ID_RE = re.compile(r"^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$")
 _TOKEN_RE = re.compile(r"[A-Za-z0-9]+")
 _CONTROL_RE = re.compile(r"[\x00-\x08\x0b\x0c\x0e-\x1f\x7f]")
 _ALLOWED_RESOURCE_KINDS = {"ONTOLOGY", "VOCABULARY", "PUBLIC_CORPUS", "SOFTWARE"}
+_MAX_INPUT_BYTES = 16 * 1024 * 1024
+_SUPPORTS_OPEN_DIRFD = os.open in os.supports_dir_fd
+_SUPPORTS_STAT_DIRFD = os.stat in os.supports_dir_fd
 
 
 class ContractError(ValueError):
@@ -37,7 +40,7 @@ def _reject_pairs(pairs: list[tuple[str, Any]]) -> dict[str, Any]:
 
 
 def load_json_strict_bytes(data: bytes) -> Any:
-    if len(data) > 16 * 1024 * 1024:
+    if len(data) > _MAX_INPUT_BYTES:
         raise ContractError("input exceeds 16 MiB")
     try:
         text = data.decode("utf-8")
@@ -54,50 +57,133 @@ def load_json_strict_bytes(data: bytes) -> Any:
     return value
 
 
-def load_json_strict(path: str | Path) -> Any:
-    p = Path(path)
-    try:
-        before = p.lstat()
-    except OSError as exc:
-        raise ContractError(f"cannot stat input: {exc}") from exc
-    if not stat.S_ISREG(before.st_mode):
-        raise ContractError("input must be an ordinary non-symlink file")
-    if before.st_size > 16 * 1024 * 1024:
-        raise ContractError("input exceeds 16 MiB")
+def _same_inode(left: os.stat_result, right: os.stat_result) -> bool:
+    return (left.st_dev, left.st_ino) == (right.st_dev, right.st_ino)
 
-    flags = os.O_RDONLY | getattr(os, "O_BINARY", 0)
-    if hasattr(os, "O_NOFOLLOW"):
-        flags |= os.O_NOFOLLOW
+
+def _file_generation(value: os.stat_result) -> tuple[int, int, int, int, int, int, int]:
+    return (
+        value.st_dev,
+        value.st_ino,
+        value.st_mode,
+        value.st_size,
+        value.st_mtime_ns,
+        value.st_ctime_ns,
+        value.st_nlink,
+    )
+
+
+def _directory_open_flags() -> int:
+    if (
+        not hasattr(os, "O_NOFOLLOW")
+        or not hasattr(os, "O_DIRECTORY")
+        or not _SUPPORTS_OPEN_DIRFD
+        or not _SUPPORTS_STAT_DIRFD
+    ):
+        raise ContractError("platform lacks descriptor-relative no-follow filesystem support")
+    return os.O_RDONLY | os.O_DIRECTORY | os.O_NOFOLLOW | getattr(os, "O_CLOEXEC", 0)
+
+
+def _open_parent_nofollow(path: str | Path) -> tuple[int, os.stat_result, str, str]:
+    """Open every lexical ancestor without following symlinks and retain the parent fd."""
+    raw = os.fspath(path)
+    if not raw:
+        raise ContractError("path must not be empty")
+    absolute = os.path.abspath(raw)
+    parent_path, name = os.path.split(absolute)
+    if not name or name in (".", ".."):
+        raise ContractError("path must name a file")
+    flags = _directory_open_flags()
     try:
-        fd = os.open(p, flags)
+        fd = os.open(os.path.sep, flags)
     except OSError as exc:
-        raise ContractError(f"cannot open input safely: {exc}") from exc
+        raise ContractError(f"cannot open filesystem root safely: {exc}") from exc
     try:
-        opened = os.fstat(fd)
-        if not stat.S_ISREG(opened.st_mode):
-            raise ContractError("input must remain an ordinary file")
-        if (before.st_dev, before.st_ino) != (opened.st_dev, opened.st_ino):
-            raise ContractError("input generation changed before open")
-        if opened.st_size > 16 * 1024 * 1024:
-            raise ContractError("input exceeds 16 MiB")
-        chunks: list[bytes] = []
-        total = 0
-        while True:
-            chunk = os.read(fd, min(1024 * 1024, 16 * 1024 * 1024 + 1 - total))
-            if not chunk:
-                break
-            chunks.append(chunk)
-            total += len(chunk)
-            if total > 16 * 1024 * 1024:
-                raise ContractError("input exceeds 16 MiB")
-        after = os.fstat(fd)
-        if (opened.st_dev, opened.st_ino, opened.st_size, opened.st_mtime_ns) != (after.st_dev, after.st_ino, after.st_size, after.st_mtime_ns):
-            raise ContractError("input generation changed during read")
-        if total != after.st_size:
-            raise ContractError("input byte count changed during read")
-        return load_json_strict_bytes(b"".join(chunks))
-    finally:
+        relative_parent = os.path.relpath(parent_path, os.path.sep)
+        if relative_parent != ".":
+            for component in relative_parent.split(os.path.sep):
+                if component in ("", ".", ".."):
+                    raise ContractError("path contains invalid ancestor component")
+                try:
+                    child_fd = os.open(component, flags, dir_fd=fd)
+                except OSError as exc:
+                    raise ContractError(f"cannot open path ancestor safely: {exc}") from exc
+                os.close(fd)
+                fd = child_fd
+        parent_state = os.fstat(fd)
+        if not stat.S_ISDIR(parent_state.st_mode):
+            raise ContractError("retained parent is not a directory")
+        return fd, parent_state, parent_path, name
+    except Exception:
         os.close(fd)
+        raise
+
+
+def _reopen_same_parent(parent_path: str, expected: os.stat_result) -> int:
+    probe = os.path.join(parent_path, ".__spark_parent_probe__")
+    fd, current, _, _ = _open_parent_nofollow(probe)
+    if not _same_inode(current, expected):
+        os.close(fd)
+        raise ContractError("parent directory generation changed")
+    return fd
+
+
+def _read_bounded_fd(fd: int, *, limit: int = _MAX_INPUT_BYTES) -> bytes:
+    os.lseek(fd, 0, os.SEEK_SET)
+    chunks: list[bytes] = []
+    total = 0
+    while True:
+        chunk = os.read(fd, min(1024 * 1024, limit + 1 - total))
+        if not chunk:
+            break
+        chunks.append(chunk)
+        total += len(chunk)
+        if total > limit:
+            raise ContractError("input exceeds 16 MiB")
+    return b"".join(chunks)
+
+
+def load_json_strict(path: str | Path) -> Any:
+    """Read exact JSON bytes from a descriptor-bound, generation-stable lexical path."""
+    parent_fd, parent_state, parent_path, name = _open_parent_nofollow(path)
+    fd: int | None = None
+    try:
+        flags = os.O_RDONLY | os.O_NOFOLLOW | getattr(os, "O_CLOEXEC", 0)
+        try:
+            fd = os.open(name, flags, dir_fd=parent_fd)
+        except OSError as exc:
+            raise ContractError(f"cannot open input safely: {exc}") from exc
+        before = os.fstat(fd)
+        if not stat.S_ISREG(before.st_mode):
+            raise ContractError("input must remain an ordinary file")
+        if before.st_size > _MAX_INPUT_BYTES:
+            raise ContractError("input exceeds 16 MiB")
+
+        first = _read_bounded_fd(fd)
+        middle = os.fstat(fd)
+        if _file_generation(before) != _file_generation(middle) or len(first) != middle.st_size:
+            raise ContractError("input generation changed during read")
+
+        second = _read_bounded_fd(fd)
+        after = os.fstat(fd)
+        if _file_generation(middle) != _file_generation(after) or second != first:
+            raise ContractError("input generation changed during verification")
+
+        check_fd = _reopen_same_parent(parent_path, parent_state)
+        try:
+            try:
+                visible = os.stat(name, dir_fd=check_fd, follow_symlinks=False)
+            except OSError as exc:
+                raise ContractError(f"cannot re-stat input safely: {exc}") from exc
+            if _file_generation(visible) != _file_generation(after):
+                raise ContractError("input path generation changed after read")
+        finally:
+            os.close(check_fd)
+        return load_json_strict_bytes(first)
+    finally:
+        if fd is not None:
+            os.close(fd)
+        os.close(parent_fd)
 
 
 def canonical_bytes(value: Any) -> bytes:
@@ -174,4 +260,3 @@ def normalized_tokens(text: str) -> tuple[str, ...]:
 
 def text_digest(text: str) -> str:
     return sha256_bytes(text.encode("utf-8"))
-

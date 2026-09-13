@@ -18,14 +18,21 @@ Source of controlling public facts: NIH challenge page, `https://www.nih.gov/cha
 
 The runtime is dependency-free and deterministic:
 
-- `core.py`: strict duplicate-key-rejecting JSON ingress, bounded retained-file-generation reads, canonical serialization/hashing, exact scalar/schema primitives;
+- `core.py`: strict duplicate-key-rejecting JSON ingress, bounded double-read generation checks, descriptor-bound no-follow lexical ancestry, canonical serialization/hashing, exact scalar/schema primitives;
 - `contracts.py`: canonical public study/variable/concept corpus with exact text digests and an explicit external-resource manifest carrying versions/licenses/provenance/digests;
 - `track1.py`: transparent lexical concept ranking with stable tie-breaking, policy-bound `ONT_NONE` abstention, and per-class precision/recall/F1 plus macro-F1;
 - `track2.py`: study-level lexical ranking with transparent term-frequency/rarity contributions, intersection-coverage bonus, and CG/DCG/IDCG/NDCG evaluation;
 - `baseline.py`: content-addressed run receipts binding corpus, resources, input, output, policy and source version, with all authority facts false, plus an anti-hardcoding scanner;
-- `cli.py`: offline `python -m research.nih_spark_dbgap_2026.cli` runner using create-exclusive output files.
+- `publication.py`: retained-parent, create-exclusive two-file publisher that stages both selected outputs before commit, verifies exact bytes/generations, rolls back only exact owned inodes, and reports ambiguity instead of deleting foreign replacements;
+- `cli.py`: offline `python -m research.nih_spark_dbgap_2026.cli` runner using the pair publisher for output + receipt.
 
 `fixtures/` and `test_baseline.py` use **synthetic dbGaP-like metadata and synthetic concepts only**. They are not NIH/dbGaP data, UMLS/OBO content, a hidden validation set, or evidence of challenge performance. CI executes both track CLIs against those fixtures on Python 3.11–3.13 in addition to the hostile unit suite.
+
+### Filesystem truth boundary
+
+The local runner is intentionally Linux/POSIX-oriented: safe ingress and publication require descriptor-relative directory operations and no-follow opens. It refuses a platform that cannot provide those primitives rather than silently weakening the custody contract.
+
+Two independent filesystem names cannot become visible in one portable namespace operation. The pair publisher therefore does **not** claim crash-atomic visibility. It guarantees that both payloads are staged before either selected destination is committed; in-process failures roll back only when retained inode identity proves cleanup is safe. If another actor replaces a selected path or cleanup cannot be proven, the run fails with an explicit ambiguous-inspect status and preserves foreign bytes.
 
 ## Intentional limitations
 
