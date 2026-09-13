@@ -11,18 +11,17 @@ import tempfile
 from dataclasses import dataclass
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
-from typing import Any, Iterable
+from typing import Any
 
 INTENT_SCHEMA = "outbound-send-intent/v1"
 EVIDENCE_SCHEMA = "outbound-send-evidence/v1"
-RECEIPT_SCHEMA = "outbound-send-guard-receipt/v1"
+RECEIPT_SCHEMA = "outbound-send-guard-receipt/v2"
 DECISIONS = {"ALLOW_NEW", "REPLY_ONLY", "HOLD", "DO_NOT_RESEND"}
 DEFAULT_CROSS_OFFER_COOLDOWN_DAYS = 30
 DEFAULT_MAX_EVIDENCE_AGE_SECONDS = 900
 DEFAULT_MAX_FUTURE_SKEW_SECONDS = 300
 MAX_EVIDENCE_ROWS = 10_000
 _EMAIL_RE = re.compile(r"^[^\s@<>(),;:]+@[^\s@<>(),;:]+$")
-_HEX64_RE = re.compile(r"^[0-9a-f]{64}$")
 
 
 class GuardError(ValueError):
@@ -157,12 +156,20 @@ def digest_object(value: Any) -> str:
 
 
 def parse_json_bytes(raw: bytes, label: str) -> dict[str, Any]:
+    if type(raw) is not bytes:
+        raise GuardError(f"{label} bytes must be bytes")
     try:
         text = raw.decode("utf-8", errors="strict")
     except UnicodeDecodeError as exc:
         raise GuardError(f"{label} must be UTF-8 JSON") from exc
     try:
-        value = json.loads(text, object_pairs_hook=_strict_object, parse_constant=lambda x: (_ for _ in ()).throw(GuardError(f"{label} contains non-finite number {x}")))
+        value = json.loads(
+            text,
+            object_pairs_hook=_strict_object,
+            parse_constant=lambda x: (_ for _ in ()).throw(
+                GuardError(f"{label} contains non-finite number {x}")
+            ),
+        )
     except DuplicateKeyError:
         raise
     except GuardError:
@@ -181,9 +188,24 @@ def _parse_policy(raw: Any) -> Policy:
     if unknown:
         raise GuardError(f"evidence.policy has unknown fields: {', '.join(sorted(unknown))}")
     return Policy(
-        cross_offer_cooldown_days=_require_int(obj.get("cross_offer_cooldown_days", DEFAULT_CROSS_OFFER_COOLDOWN_DAYS), "evidence.policy.cross_offer_cooldown_days", minimum=0, maximum=3650),
-        max_evidence_age_seconds=_require_int(obj.get("max_evidence_age_seconds", DEFAULT_MAX_EVIDENCE_AGE_SECONDS), "evidence.policy.max_evidence_age_seconds", minimum=0, maximum=604800),
-        max_future_skew_seconds=_require_int(obj.get("max_future_skew_seconds", DEFAULT_MAX_FUTURE_SKEW_SECONDS), "evidence.policy.max_future_skew_seconds", minimum=0, maximum=86400),
+        cross_offer_cooldown_days=_require_int(
+            obj.get("cross_offer_cooldown_days", DEFAULT_CROSS_OFFER_COOLDOWN_DAYS),
+            "evidence.policy.cross_offer_cooldown_days",
+            minimum=0,
+            maximum=3650,
+        ),
+        max_evidence_age_seconds=_require_int(
+            obj.get("max_evidence_age_seconds", DEFAULT_MAX_EVIDENCE_AGE_SECONDS),
+            "evidence.policy.max_evidence_age_seconds",
+            minimum=0,
+            maximum=604800,
+        ),
+        max_future_skew_seconds=_require_int(
+            obj.get("max_future_skew_seconds", DEFAULT_MAX_FUTURE_SKEW_SECONDS),
+            "evidence.policy.max_future_skew_seconds",
+            minimum=0,
+            maximum=86400,
+        ),
     )
 
 
@@ -298,12 +320,33 @@ def _row_ref(kind: str, row_id: str) -> str:
     return f"{kind}:{row_id}"
 
 
-def evaluate(intent_raw: dict[str, Any], evidence_raw: dict[str, Any], *, intent_sha256: str | None = None, evidence_sha256: str | None = None) -> dict[str, Any]:
+def _evaluate(
+    intent_raw: dict[str, Any],
+    evidence_raw: dict[str, Any],
+    *,
+    raw_bytes: tuple[bytes, bytes] | None,
+) -> dict[str, Any]:
+    intent_raw = _require_dict(intent_raw, "intent")
+    evidence_raw = _require_dict(evidence_raw, "evidence")
     intent = _parse_intent(intent_raw)
     generated_at, policy, mail_complete, mail_query_id, mail_rows, slack_complete, slack_query_id, slack_rows, conflicts = _parse_evidence(evidence_raw)
     recipient = intent["recipient"]
     offer_id = intent["offer_id"]
     requested_at = intent["requested_at"]
+
+    byte_custody = None
+    if raw_bytes is not None:
+        if type(raw_bytes) is not tuple or len(raw_bytes) != 2 or any(type(item) is not bytes for item in raw_bytes):
+            raise GuardError("internal raw-byte custody must contain exactly two byte strings")
+        reparsed_intent = parse_json_bytes(raw_bytes[0], "intent byte custody")
+        reparsed_evidence = parse_json_bytes(raw_bytes[1], "evidence byte custody")
+        if canonical_bytes(reparsed_intent) != canonical_bytes(intent_raw) or canonical_bytes(reparsed_evidence) != canonical_bytes(evidence_raw):
+            raise GuardError("raw-byte custody does not match evaluated source objects")
+        byte_custody = {
+            "mode": "exact_consumed_bytes",
+            "intent_sha256": digest_bytes(raw_bytes[0]),
+            "evidence_sha256": digest_bytes(raw_bytes[1]),
+        }
 
     reasons: list[str] = []
     matched_refs: list[str] = []
@@ -337,7 +380,10 @@ def evaluate(intent_raw: dict[str, Any], evidence_raw: dict[str, Any], *, intent
     relevant_mail = [row for row in mail_rows if row.counterparty == recipient and row.observed_at <= generated_at]
     relevant_slack = [row for row in slack_rows if row.recipient == recipient and row.observed_at <= generated_at]
 
-    hard_dnr = sorted((row for row in relevant_slack if row.kind == "hard_dnr"), key=lambda row: (row.observed_at, row.event_id))
+    hard_dnr = sorted(
+        (row for row in relevant_slack if row.kind == "hard_dnr"),
+        key=lambda row: (row.observed_at, row.event_id),
+    )
     if hard_dnr:
         reasons.append("hard do-not-resend evidence exists for this recipient")
         matched_refs.extend(_row_ref("slack", row.event_id) for row in hard_dnr)
@@ -356,7 +402,9 @@ def evaluate(intent_raw: dict[str, Any], evidence_raw: dict[str, Any], *, intent
 
     latest_outbound = outbound_points[-1] if outbound_points else None
     latest_inbound = inbound_mail[-1] if inbound_mail else None
-    newer_inbound = bool(latest_inbound and (latest_outbound is None or latest_inbound.observed_at > latest_outbound[0]))
+    newer_inbound = bool(
+        latest_inbound and (latest_outbound is None or latest_inbound.observed_at > latest_outbound[0])
+    )
 
     same_offer = [point for point in outbound_points if point[2] == offer_id]
     if same_offer:
@@ -366,7 +414,6 @@ def evaluate(intent_raw: dict[str, Any], evidence_raw: dict[str, Any], *, intent
     if latest_inbound is not None:
         matched_refs.append(_row_ref("mail", latest_inbound.message_id))
 
-    # Decision precedence deliberately keeps hard DNR and evidence-integrity failures above all send authority.
     if hard_dnr:
         decision = "DO_NOT_RESEND"
     elif authority != "complete" or reasons:
@@ -389,8 +436,11 @@ def evaluate(intent_raw: dict[str, Any], evidence_raw: dict[str, Any], *, intent
         decision = "ALLOW_NEW"
         reasons.append("complete evidence contains no prior outbound to this recipient")
 
-    assert decision in DECISIONS
+    if decision not in DECISIONS:
+        raise GuardError("internal decision is unsupported")
     refs = sorted(set(matched_refs))
+    intent_object_sha = digest_object(intent_raw)
+    evidence_object_sha = digest_object(evidence_raw)
     payload = {
         "schema_version": RECEIPT_SCHEMA,
         "intent": {
@@ -400,14 +450,20 @@ def evaluate(intent_raw: dict[str, Any], evidence_raw: dict[str, Any], *, intent
             "requested_at": format_time(requested_at),
             "route_kind": "email",
         },
+        "source": {
+            "custody_mode": "exact_consumed_bytes" if byte_custody is not None else "canonical_objects",
+            "intent_object_sha256": intent_object_sha,
+            "evidence_object_sha256": evidence_object_sha,
+            "byte_custody": byte_custody,
+        },
         "evidence": {
             "generated_at": format_time(generated_at),
             "mailbox_complete": mail_complete,
             "mailbox_query_id": mail_query_id,
             "slack_complete": slack_complete,
             "slack_query_id": slack_query_id,
-            "intent_sha256": intent_sha256 or digest_object(intent_raw),
-            "evidence_sha256": evidence_sha256 or digest_object(evidence_raw),
+            "intent_sha256": intent_object_sha,
+            "evidence_sha256": evidence_object_sha,
             "matched_refs": refs,
         },
         "policy": {
@@ -424,6 +480,22 @@ def evaluate(intent_raw: dict[str, Any], evidence_raw: dict[str, Any], *, intent
         "side_effects_authorized": False,
     }
     return {"payload": payload, "receipt_sha256": digest_object(payload)}
+
+
+def evaluate(intent_raw: dict[str, Any], evidence_raw: dict[str, Any]) -> dict[str, Any]:
+    """Evaluate parsed objects with canonical-object integrity only."""
+    return _evaluate(intent_raw, evidence_raw, raw_bytes=None)
+
+
+def evaluate_bytes(intent_bytes: bytes, evidence_bytes: bytes) -> dict[str, Any]:
+    """Strict-parse and evaluate the exact bytes whose hashes enter byte custody."""
+    if type(intent_bytes) is not bytes:
+        raise GuardError("intent bytes must be bytes")
+    if type(evidence_bytes) is not bytes:
+        raise GuardError("evidence bytes must be bytes")
+    intent_obj = parse_json_bytes(intent_bytes, "intent")
+    evidence_obj = parse_json_bytes(evidence_bytes, "evidence")
+    return _evaluate(intent_obj, evidence_obj, raw_bytes=(intent_bytes, evidence_bytes))
 
 
 def _same_file_or_alias(a: Path, b: Path) -> bool:
@@ -467,12 +539,11 @@ def _atomic_write(path: Path, raw: bytes) -> None:
             raise GuardError(f"cannot publish output {path}: {exc}") from exc
 
 
-def _load_raw(path: Path, label: str) -> tuple[bytes, dict[str, Any]]:
+def _load_raw(path: Path, label: str) -> bytes:
     try:
-        raw = path.read_bytes()
+        return path.read_bytes()
     except OSError as exc:
         raise GuardError(f"cannot read {label} {path}: {exc}") from exc
-    return raw, parse_json_bytes(raw, label)
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -487,9 +558,9 @@ def main(argv: list[str] | None = None) -> int:
         if args.out is not None:
             if _same_file_or_alias(args.out, args.intent) or _same_file_or_alias(args.out, args.evidence):
                 raise GuardError("output must not alias an input")
-        intent_raw, intent_obj = _load_raw(args.intent, "intent")
-        evidence_raw, evidence_obj = _load_raw(args.evidence, "evidence")
-        receipt = evaluate(intent_obj, evidence_obj, intent_sha256=digest_bytes(intent_raw), evidence_sha256=digest_bytes(evidence_raw))
+        intent_raw = _load_raw(args.intent, "intent")
+        evidence_raw = _load_raw(args.evidence, "evidence")
+        receipt = evaluate_bytes(intent_raw, evidence_raw)
         encoded = json.dumps(receipt, ensure_ascii=False, sort_keys=True, indent=2).encode("utf-8") + b"\n"
         if args.out is None:
             sys.stdout.buffer.write(encoded)
