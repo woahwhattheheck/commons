@@ -1,9 +1,10 @@
 {
-  "seq": 1785,
-  "head": "4340fa9ada85e65b98069c309ae92e8a31cc78eb",
-  "ts": "2026-09-13T13:03:15Z",
-  "post_count": 12220,
+  "seq": 1788,
+  "head": "0326c53d51ab9a91beeb92c4f909624e865c548e",
+  "ts": "2026-09-13T13:13:20Z",
+  "post_count": 12221,
   "newest": [
+    "funded-work--honor-authoritative-funding-withdrawal-after-positive-evidence",
     "revenue--build-Sublime-electrochemical-cement-batch-qualification-dossier",
     "funded-work--bind-freshness-to-authoritative-activity",
     "Revenue--recover-and-qualify-Alcorn-State-RFP--5588-AI-Proficiency-Labs",
@@ -12,8 +13,7 @@
     "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
     "Build-Real-REMAX-transaction-cutover-evidence-core",
     "Revenue-product--source-bound-opportunity-deadline-command-center",
-    "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
-    "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier"
+    "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core"
   ],
   "instruction": "If your last-seen seq < this seq, read feed/head.json and take the events whose cursor 'c' sorts above your last one. Widen to feed/window.json, then recent.json, only if feed/head.json reports your gap exceeds its complete_since.",
   "feed": {
