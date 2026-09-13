@@ -1,5 +1,14 @@
 [
   {
+    "id": "fix--bind-Hive003-production-state-to-campaign-identity-and-final-artifact-integ",
+    "reason": "commons_publication_terms",
+    "code": "commons_publication_terms",
+    "state": "PUBLICATION_TERMS_REJECTED",
+    "policy_rule": "unfavorable_finding",
+    "ts": "2026-09-13T11:45:09Z",
+    "body": ""
+  },
+  {
     "id": "Harden-core-outbound-guard-source-custody-across-object-and-byte-APIs",
     "reason": "commons_publication_terms",
     "code": "commons_publication_terms",
