@@ -38,14 +38,17 @@ _POLICY_KEYS = {"max_evidence_age_seconds", "require_human_review", "require_com
 _SCENARIO_KEYS = {
     "scenario_id", "category", "agent_build_sha256", "rubric_sha256",
     "trace_sha256", "result_sha256", "evidence_at", "automated_score_bps",
-    "automated_status", "human_review", "safety", "observability", "tool_calls",
+    "automated_status", "automated_evidence_sha256", "human_review", "safety", "observability", "tool_calls",
 }
 _REVIEW_KEYS = {
     "review_id", "reviewer_role", "decision", "decided_at",
-    "agent_build_sha256", "rubric_sha256", "trace_sha256",
+    "agent_build_sha256", "rubric_sha256", "trace_sha256", "result_sha256",
 }
-_SAFETY_KEYS = {"status", "checks_sha256", "observed_at", "agent_build_sha256", "trace_sha256"}
-_OBS_KEYS = {"status", "pointer_sha256", "observed_at", "trace_sha256"}
+_SAFETY_KEYS = {
+    "status", "checks_sha256", "observed_at", "agent_build_sha256",
+    "trace_sha256", "result_sha256",
+}
+_OBS_KEYS = {"status", "pointer_sha256", "observed_at", "trace_sha256", "result_sha256"}
 _TOOL_KEYS = {"call_id", "tool", "action", "effect_class", "result_status", "trace_sha256"}
 
 _REASON_ORDER = [
@@ -61,8 +64,10 @@ _REASON_ORDER = [
     "AGENT_BUILD_MISMATCH",
     "RUBRIC_MISMATCH",
     "TRACE_BINDING_MISMATCH",
+    "RESULT_BINDING_MISMATCH",
     "FUTURE_EVIDENCE",
     "STALE_EVIDENCE",
+    "AUTOMATED_RESULT_BINDING_MISMATCH",
     "AUTOMATED_SCORE_BELOW_THRESHOLD",
     "AUTOMATED_EVALUATION_FAILED",
     "HUMAN_REVIEW_MISSING",
@@ -141,6 +146,7 @@ def _parse_utc(value: Any, *, name: str) -> datetime:
         raise EvidenceError(f"{name}: invalid timestamp") from exc
     if dt.tzinfo != timezone.utc:
         raise EvidenceError(f"{name}: must be UTC")
+    # Canonical second precision only.
     canonical = dt.replace(microsecond=0).isoformat().replace("+00:00", "Z")
     if text != canonical:
         raise EvidenceError(f"{name}: non-canonical timestamp")
@@ -220,7 +226,7 @@ def _validate_scenario(
     scenario_build = _require_sha(scenario["agent_build_sha256"], name="scenario agent_build_sha256")
     scenario_rubric = _require_sha(scenario["rubric_sha256"], name="scenario rubric_sha256")
     trace_sha = _require_sha(scenario["trace_sha256"], name="scenario trace_sha256")
-    _require_sha(scenario["result_sha256"], name="scenario result_sha256")
+    result_sha = _require_sha(scenario["result_sha256"], name="scenario result_sha256")
     max_age = policy["max_evidence_age_seconds"]
     _validate_time(
         scenario["evidence_at"],
@@ -245,6 +251,21 @@ def _validate_scenario(
         name=f"scenario[{scenario_id}].automated_status",
         allowed=_ALLOWED_PASSFAIL,
     )
+    automated_binding = _require_sha(
+        scenario["automated_evidence_sha256"],
+        name=f"scenario[{scenario_id}].automated_evidence_sha256",
+    )
+    expected_automated_binding = sha256_object(
+        {
+            "scenario_id": scenario_id,
+            "trace_sha256": trace_sha,
+            "result_sha256": result_sha,
+            "automated_score_bps": score,
+            "automated_status": automated,
+        }
+    )
+    if automated_binding != expected_automated_binding:
+        reasons.add("AUTOMATED_RESULT_BINDING_MISMATCH")
     if score < minimum_score_bps:
         reasons.add("AUTOMATED_SCORE_BELOW_THRESHOLD")
     if automated != "PASS":
@@ -273,6 +294,8 @@ def _validate_scenario(
             reasons.add("RUBRIC_MISMATCH")
         if _require_sha(review["trace_sha256"], name="review trace_sha256") != trace_sha:
             reasons.add("TRACE_BINDING_MISMATCH")
+        if _require_sha(review["result_sha256"], name="review result_sha256") != result_sha:
+            reasons.add("RESULT_BINDING_MISMATCH")
         if decision != "PASS":
             reasons.add("HUMAN_REVIEW_FAILED")
 
@@ -290,6 +313,8 @@ def _validate_scenario(
         reasons.add("AGENT_BUILD_MISMATCH")
     if _require_sha(safety["trace_sha256"], name="safety trace_sha256") != trace_sha:
         reasons.add("TRACE_BINDING_MISMATCH")
+    if _require_sha(safety["result_sha256"], name="safety result_sha256") != result_sha:
+        reasons.add("RESULT_BINDING_MISMATCH")
     if safety_status == "UNKNOWN":
         reasons.add("SAFETY_UNKNOWN")
     elif safety_status == "FAIL":
@@ -311,6 +336,8 @@ def _validate_scenario(
     )
     if _require_sha(observability["trace_sha256"], name="observability trace_sha256") != trace_sha:
         reasons.add("TRACE_BINDING_MISMATCH")
+    if _require_sha(observability["result_sha256"], name="observability result_sha256") != result_sha:
+        reasons.add("RESULT_BINDING_MISMATCH")
     if policy["require_complete_observability"] and obs_status != "COMPLETE":
         reasons.add("OBSERVABILITY_INCOMPLETE")
 
@@ -448,7 +475,7 @@ def compile_receipt(packet: Any, *, evaluated_at: datetime) -> dict[str, Any]:
 
 
 def verify_receipt(packet: Any, receipt: Any, *, verified_at: datetime) -> dict[str, Any]:
-    """Recompile a receipt and verify exact content/hash/current-time integrity."""
+    """Verify receipt integrity and reassess release truth at verifier-owned current time."""
     if type(receipt) is not dict:
         return {"valid": False, "reason": "RECEIPT_NOT_OBJECT"}
     try:
@@ -457,17 +484,33 @@ def verify_receipt(packet: Any, receipt: Any, *, verified_at: datetime) -> dict[
         verifier_now = _parse_utc(verified_text, name="verified_at")
         if claimed_at > verifier_now:
             return {"valid": False, "reason": "RECEIPT_FROM_FUTURE"}
-        rebuilt = compile_receipt(packet, evaluated_at=claimed_at)
+        historical = compile_receipt(packet, evaluated_at=claimed_at)
     except EvidenceError as exc:
         return {"valid": False, "reason": "MALFORMED_EVIDENCE", "detail": str(exc)}
 
-    if _canonical_bytes(receipt) != _canonical_bytes(rebuilt):
+    if _canonical_bytes(receipt) != _canonical_bytes(historical):
         return {"valid": False, "reason": "RECEIPT_MISMATCH"}
+
+    try:
+        current = compile_receipt(packet, evaluated_at=verifier_now)
+    except EvidenceError as exc:
+        return {"valid": False, "reason": "MALFORMED_EVIDENCE", "detail": str(exc)}
+
+    if current["decision"] != DECISION_RELEASE:
+        return {
+            "valid": False,
+            "reason": "CURRENT_EVIDENCE_HOLD",
+            "decision": DECISION_HOLD,
+            "reason_codes": current["reason_codes"],
+            "receipt_sha256": historical["receipt_sha256"],
+            "verified_at": verified_text,
+        }
     return {
         "valid": True,
         "reason": "VERIFIED",
-        "decision": rebuilt["decision"],
-        "receipt_sha256": rebuilt["receipt_sha256"],
+        "decision": DECISION_RELEASE,
+        "receipt_sha256": historical["receipt_sha256"],
+        "verified_at": verified_text,
     }
 
 
