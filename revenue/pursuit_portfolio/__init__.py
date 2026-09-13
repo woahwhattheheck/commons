@@ -1,27 +1,19 @@
 """Evidence-bound pursuit portfolio allocation.
 
-Top-level package exports are the authenticated current-use path.  Deterministic
-engine/replay helpers remain available from ``revenue.pursuit_portfolio.core``
-for tests and historical integrity work, but they are not an authority boundary.
+Top-level package exports are the fixed-host authenticated current-use path.
+Deterministic engine/replay helpers and explicit-key test machinery remain in
+``core`` and ``current``; they are not production authority roots.
 """
 from .core import PortfolioError
-from .current import (
-    AuthorityKey,
-    compile_authorized_current,
-    load_authority_key,
-    load_current_input,
-    read_published_authorized,
-    verify_authorized_current,
-)
+from .host import compile_current, verify_current
+from .current import load_current_input, read_published_authorized
 from .publisher import publish_authorized
 
 __all__ = [
-    "AuthorityKey",
     "PortfolioError",
-    "compile_authorized_current",
-    "load_authority_key",
+    "compile_current",
     "load_current_input",
     "publish_authorized",
     "read_published_authorized",
-    "verify_authorized_current",
+    "verify_current",
 ]
