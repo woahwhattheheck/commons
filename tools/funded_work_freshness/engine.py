@@ -10,6 +10,7 @@ from errors import EvidenceError, PreflightInputError
 from evaluation import (
     active_competing_prs,
     amount_supported,
+    authoritative_funding_state,
     canonical_text,
     descriptive_issue_text,
     iso,
@@ -121,6 +122,12 @@ def preflight(
             authority_text, candidate.advertised_amount, candidate.currency
         )
         acceptance_reachable = bool(ACCEPTANCE_RE.search(authority_text))
+        funding_state = authoritative_funding_state(
+            issue,
+            comments,
+            candidate.advertised_amount,
+            candidate.currency,
+        )
         security_text = descriptive_issue_text(issue) + "\n" + authority_text
         security_sensitive = bool(
             SECURITY_RE.search(security_text + "\n" + "\n".join(label_names))
@@ -160,6 +167,7 @@ def preflight(
             "sponsor_mechanism_present": sponsor_present,
             "advertised_amount_supported_by_canonical_evidence": amount_present,
             "acceptance_criteria_reachable": acceptance_reachable,
+            "authoritative_funding_state": funding_state,
             "security_sensitive": security_sensitive,
         }
 
@@ -177,6 +185,9 @@ def preflight(
         elif age_days is not None and age_days > candidate.max_age_days:
             status = "stale"
             reasons.append("canonical_activity_too_old")
+        elif funding_state == "withdrawn":
+            status = "ambiguous"
+            reasons.append("canonical_funding_authoritatively_withdrawn")
         elif security_sensitive:
             status = "ambiguous"
             route = "research_only"

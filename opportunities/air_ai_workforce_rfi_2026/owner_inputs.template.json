@@ -1,0 +1,59 @@
+{
+  "claims": [],
+  "contact": {
+    "email": "OWNER_INPUT_REQUIRED",
+    "name": "OWNER_INPUT_REQUIRED",
+    "phone": "OWNER_INPUT_REQUIRED",
+    "title": "OWNER_INPUT_REQUIRED"
+  },
+  "evidence_design": {
+    "air_independent_evaluation_role": "OWNER_INPUT_REQUIRED",
+    "comparison_design": "OWNER_INPUT_REQUIRED",
+    "failure_modes": [
+      "OWNER_INPUT_REQUIRED"
+    ],
+    "fairness_plan": "OWNER_INPUT_REQUIRED",
+    "human_oversight": "OWNER_INPUT_REQUIRED",
+    "instrumentation": "OWNER_INPUT_REQUIRED",
+    "primary_outcomes": [
+      "OWNER_INPUT_REQUIRED"
+    ],
+    "privacy_plan": "OWNER_INPUT_REQUIRED",
+    "worker_voice": "OWNER_INPUT_REQUIRED"
+  },
+  "innovation": {
+    "air_partnership": "OWNER_INPUT_REQUIRED",
+    "early_results": "NO_EARLY_RESULTS_CLAIMED",
+    "focus_areas": [
+      "Career Navigation & Job Placement",
+      "Skill Training & Development"
+    ],
+    "learning_questions": [
+      "OWNER_INPUT_REQUIRED"
+    ],
+    "maturity": "Concept",
+    "population_description": "OWNER_INPUT_REQUIRED",
+    "population_size_2027_2028": 0,
+    "project_title": "Evidence-Bound AI Career Navigation & Readiness Lab",
+    "safeguards": "OWNER_INPUT_REQUIRED",
+    "summary": "OWNER_INPUT_REQUIRED",
+    "technical_approach": "OWNER_INPUT_REQUIRED",
+    "workforce_challenge": "OWNER_INPUT_REQUIRED"
+  },
+  "organization": {
+    "background": "OWNER_INPUT_REQUIRED",
+    "organization_type": "technology provider",
+    "public_name": "OWNER_INPUT_REQUIRED",
+    "website": "OWNER_INPUT_REQUIRED"
+  },
+  "partner": {
+    "evidence_ref": "",
+    "evidence_sha256": "",
+    "organization_ref": "",
+    "population_delivery_role": "",
+    "status": "NONE",
+    "workforce_track_record": []
+  },
+  "schema": "air.ai_workforce_rfi.owner_inputs/v1",
+  "workforce_track_record": []
+}

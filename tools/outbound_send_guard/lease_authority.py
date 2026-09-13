@@ -79,15 +79,20 @@ def verify_authoritative_receipt(
     repo: str,
     buyer_scope: str,
     offer_scope: str,
+    claimant: str,
+    claim_id: str,
+    claim_started_at: str,
+    anchor_sha: str,
     preflight_sha256: str,
     transport: Transport,
 ) -> bool:
-    """Prove that a held receipt still matches authoritative GitHub state.
+    """Prove that this caller's held receipt matches authoritative GitHub state.
 
-    The expected coordination repo, seam and preflight digest are supplied
-    out-of-band by the consumer. A self-consistent receipt is insufficient:
-    this function also re-reads the deterministic ref and its annotated tag
-    object and requires both to bind the exact expected claim metadata.
+    The expected coordination repo, seam, durable caller identity/generation,
+    and preflight digest are supplied out-of-band by the consumer. A copied
+    winner receipt is insufficient: this function first binds the receipt to
+    those expected caller facts, then re-reads the deterministic ref and its
+    annotated tag object and requires both to bind the same facts.
 
     Provider/readback uncertainty fails closed as ``False``. Structurally
     invalid caller inputs or receipts raise ``LeaseError``.
@@ -96,11 +101,21 @@ def verify_authoritative_receipt(
     expected_repo = _validate_repo(repo)
     expected_buyer = _machine_token(buyer_scope, "buyer_scope")
     expected_offer = _machine_token(offer_scope, "offer_scope")
+    expected_claimant = _display_token(claimant, "claimant")
+    expected_claim_id = _machine_token(claim_id, "claim_id")
+    expected_started = _rfc3339(claim_started_at, "claim_started_at")
+    expected_anchor = _validate_sha(anchor_sha, "anchor_sha")
     expected_preflight = _sha256_digest(preflight_sha256, "preflight_sha256")
 
     if raw["lease_held_by_claimant"] is not True:
         return False
     if raw["external_send_authorized"] is not False:
+        return False
+    if (
+        raw["claimant"] != expected_claimant
+        or raw["claim_id"] != expected_claim_id
+        or _rfc3339(raw["claim_started_at"], "receipt claim_started_at") != expected_started
+    ):
         return False
 
     expected_seam = _canonical_sha256(
@@ -169,11 +184,12 @@ def verify_authoritative_receipt(
         meta_repo != expected_repo
         or meta_buyer != expected_buyer
         or meta_offer != expected_offer
+        or meta_claimant != expected_claimant
+        or meta_claim_id != expected_claim_id
+        or meta_started != expected_started
+        or meta_anchor != expected_anchor
         or meta_preflight != expected_preflight
         or meta_seam != expected_seam
-        or meta_claimant != raw["claimant"]
-        or meta_claim_id != raw["claim_id"]
-        or meta_started != _rfc3339(raw["claim_started_at"], "receipt claim_started_at")
     ):
         return False
 
@@ -190,7 +206,7 @@ def verify_authoritative_receipt(
     expected_tag_name = (
         "outbound-claim-v1-"
         f"{expected_seam[:16]}-"
-        f"{hashlib.sha256(meta_claimant.encode('ascii')).hexdigest()[:16]}"
+        f"{hashlib.sha256(expected_claimant.encode('ascii')).hexdigest()[:16]}"
     )
     if tag_body.get("tag") != expected_tag_name:
         return False
@@ -204,7 +220,7 @@ def verify_authoritative_receipt(
         object_sha = _validate_sha(obj.get("sha"), "tag object target sha")
     except LeaseError:
         return False
-    if object_sha != meta_anchor:
+    if object_sha != expected_anchor:
         return False
 
     tagger = tag_body.get("tagger")
@@ -218,7 +234,7 @@ def verify_authoritative_receipt(
         tagger_date = _rfc3339(tagger.get("date"), "tagger date")
     except LeaseError:
         return False
-    if tagger_date != meta_started:
+    if tagger_date != expected_started:
         return False
 
     return True

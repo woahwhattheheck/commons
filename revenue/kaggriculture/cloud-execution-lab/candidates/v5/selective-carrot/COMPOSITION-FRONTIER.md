@@ -10,11 +10,11 @@ separate promotion gate is satisfied.
 
 | Candidate | Exact production-v3 carrier | Current evidence | Composer disposition |
 | --- | --- | --- | --- |
-| Future own supply | Yes: `components/future-own-supply-v1/COMPONENT.json` | Five matched development cells, 5/5 positive, mean margin delta +19; no native timing or broad rating conclusion | Composable seller-layer component; retain as a held interaction arm |
-| C02 deferred replacement | Yes: `components/c02-deferred-replacement-v1/COMPONENT.json` | Twelve matched local cells over six mirrored-seat worlds; six engaged cells positive, six inert, mean margin delta +75.5; timers disabled | Composable delivery layer component; run the posted native Apex/Arlene split before cumulative promotion |
+| Future own supply | Yes: `components/future-own-supply-v1/COMPONENT.json` | Standalone: five development cells positive, mean +19. After WF1+C02: three of six worlds regress, mean only +5.33 and worst -10 | Retain as a standalone research arm; exclude from the held local leader |
+| C02 deferred replacement | Yes: `components/c02-deferred-replacement-v1/COMPONENT.json` | Standalone: six engaged matched cells positive and six inert, mean +75.5. Incremental after WF1: six engaged positive and six inert, mean +67.33, no negatives; timers disabled | Retain after WF1 in the held local leader; run the posted native Apex/Arlene and union gates |
 | P05 weed queue PASS catch-up | Yes: deterministic component materializer | Source and contract tests only; native engagement and economics are unmeasured | Eligible for a standalone screen; owns `r04_full_router.py` |
 | P02 goose capacity economy | Yes: deterministic exact-archive builder | Source and contract tests only; natural placement, EGG realization, and economics are unmeasured | Eligible for a standalone screen; owns `main.py` |
-| WF1 wheat/fertilize | Yes: held `wf1-current-native/production20f_component.py` builder replaces the standard `main.py` return seam and adds the pinned modules | Retained 8-cell receipt is positive in every cell with +143.25 mean margin, but it is bound to the older donor/runtime rather than the exact production-v3 archive; the new carrier is unmeasured | High-priority exact-current re-gate; do not treat the historical receipt as a V5 win |
+| WF1 wheat/fertilize | Yes: `components/wf1-production20f-v1/COMPONENT.json` replaces the standard `main.py` return seam and adds the pinned modules | Exact-current local screen: 12/12 matched cells positive over six mirrored-seat worlds, mean margin +385.5, median +353, worst +314, zero failures; responsive Arlene with timers disabled | Admitted to held intake; run native Apex/Arlene and top-30-union gates before promotion |
 | H3/S420 microstack | Current-ABI source transform only | Historical V3.1 receipt was 16/16 positive at about +441 mean; no exact-current economics | High-priority current V5 screen, then export only a measured winner |
 | Fertilizer hand | Current-ABI theorem only | Historical V3.1 receipt reports +261.6 cash/game across 1,920 games; no exact-current economics | High-priority current V5 screen; likely a `main.py` integration owner |
 | P04 route rows R05-R08 | Exact native experiments | All four blanket rows have negative mean margin versus C00 and the receipt marks them discovery-only | Exclude from composition; conditional-route research may continue separately |
@@ -24,15 +24,15 @@ The future-own-supply figures come from `FUTURE-SUPPLY-RESULTS.json`. WF1,
 H3/S420, fertilizer-hand, P02, and P05 explicitly label their retained or
 missing evidence in their local README files. P04 status and deltas come from
 `route-matrix-native/BLOCK-B/SUMMARY.json`. These are experiment results and
-proposals; only the first row currently has a checked-in component instance.
-WF1 now has an exact component builder, while its generated component remains
-outside the intake directory until matched current evidence exists. Its exact
-dry materialization is a 94-member candidate with SHA256
+proposals. Future-own-supply, C02, and WF1 have checked-in component instances.
+WF1's exact-current development receipt is
+`../wf1-current-native/LOCAL-SCREEN.json`; its 94-member candidate has SHA256
 `7c9126d961915acbe1c69930d7cebc4938641233fe50323f2fb043c08334ac3d`.
 Composing the checked-in future-supply component followed by this WF1 component
 also succeeds without overlap and yields a 95-member held archive SHA256
 `db605e8db69d1a8392c9bc448d50abed165d024096b749d75aa91b921df3353f`.
-That is a structural result, not an economics result.
+That two-component result is structural; its interaction economics are still
+unmeasured.
 
 ## One writer per boundary
 
@@ -87,8 +87,9 @@ measured as its own experiment, then exported with explicit `depends_on` and
 
 The first practical sequence is:
 
-1. Re-gate WF1 and H3/S420 on exact production-v3 because their historical
-   receipts show the largest already-observed upside.
+1. Run the admitted WF1+C02 local leader through native Apex/Arlene and the
+   union top-30 gate. Re-gate H3/S420 separately because its historical receipt
+   shows the largest remaining untested upside.
 2. Run P05 and P02 engagement screens in parallel because they own independent
    files. Keep only variants with real trigger evidence and positive matched
    economics.
@@ -115,5 +116,26 @@ reconstructs candidate SHA256
 `8c294b6dbe296c6b822eaeccab8e3ecb3fbfc7854b50d6f584d9bd6da26e6d61`
 and composes with future-own-supply in either order to SHA256
 `3bd665c3a88425964b396703f3531a93d68b9e67680b3fbff812a2d2fa9f3778`.
-The C02-only local screen is positive but small; the combined archive has no
-economics yet and remains a held interaction arm.
+The C02-only local screen is positive but small; its future-supply interaction
+archive still has no economics.
+
+`wf1-production20f-v1` is the third concrete intake artifact. Applying WF1 and
+then C02 produces the 94-member held local leader SHA256
+`8b4b074012fe3bd731c218a4956f85ce8dadd74d5afe81a3e04c2795a2a533ee`.
+`WF1-C02-COMPOSER-RECEIPT.json` records exact composition custody. In
+`WF1-C02-LOCAL-SCREEN.json`, C02 adds mean paired margin `+67.33` over WF1:
+six engaged cells improve, six are exact identity, none regress, and all 12
+finish. Relative to production-v3, the six distinct-world deltas are `+754`,
+`+505`, `+358`, `+412`, `+348`, and `+340` (mean `+452.83`, median `+385`).
+This is the strongest exact-current local candidate so far. Native timing,
+opponent diversity, the union gauntlet, and fresh holdouts remain open, so the
+archive stays held from CURRENT, release, and Kaggle.
+
+The attempted next addition, `future-own-supply-v1`, produces the 95-member
+archive SHA256
+`e6cf2ee6495304b0b0ed73782b341402b983954e87e9486f1be293829483ef22`.
+`FUTURE-WF1-C02-COMPOSER-RECEIPT.json` records its custody and
+`FUTURE-WF1-C02-LOCAL-SCREEN.json` records its incremental result. All six
+worlds engage, but the deltas are `+26`, `+6`, `-10`, `-2`, `+15`, and `-3`.
+The mean is only `+5.33`, three worlds regress, and the worst is `-10`, so the
+triple is excluded from the leader before native or union compute is spent.

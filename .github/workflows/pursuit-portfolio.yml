@@ -1,0 +1,24 @@
+name: pursuit-portfolio
+on:
+  pull_request:
+    paths:
+      - "revenue/pursuit_portfolio/**"
+      - "test_pursuit_portfolio.py"
+      - ".github/workflows/pursuit-portfolio.yml"
+  push:
+    branches: [main]
+    paths:
+      - "revenue/pursuit_portfolio/**"
+      - "test_pursuit_portfolio.py"
+      - ".github/workflows/pursuit-portfolio.yml"
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m unittest -v test_pursuit_portfolio.py
+      - run: python -O -m unittest -v test_pursuit_portfolio.py
+      - run: python -m py_compile revenue/pursuit_portfolio/core.py revenue/pursuit_portfolio/core_v2.py revenue/pursuit_portfolio/cli.py test_pursuit_portfolio.py

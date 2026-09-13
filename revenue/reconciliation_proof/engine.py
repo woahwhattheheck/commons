@@ -155,7 +155,7 @@ def build_proof(
                 reasons.append("EVIDENCE_MISMATCH")
             comparable = sorted((set(lfields) | set(rfields)) - ignored)
             for field in comparable:
-                if field not in lfields or field not in rfields or lfields.get(field) != rfields.get(field):
+                if field not in lfields or field not in rfields or _sha(lfields[field]) != _sha(rfields[field]):
                     mismatch_fields.append(field)
             if mismatch_fields:
                 reasons.append("FIELD_MISMATCH")

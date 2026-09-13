@@ -29,17 +29,18 @@ The permanent buyer+offer ref is intentional one-touch state. Route repair must 
 
 ## Verification boundary — provider readback is mandatory
 
-`atomic_lease.verify_receipt()` is **integrity-only**. It checks schema, internal field consistency, and a caller-recomputable content digest. It does **not** prove that the deterministic Git ref exists, that it points to the receipt’s tag object, or that the tag object binds the expected claimant and preflight. Therefore `verify_receipt()` by itself must never satisfy the mutual-exclusion prerequisite.
+`atomic_lease.verify_receipt()` is **integrity-only**. It checks schema, internal field consistency, and a caller-recomputable content digest. It does **not** prove that the deterministic Git ref exists, that it points to the receipt’s tag object, or that the tag object binds the expected caller. Therefore `verify_receipt()` by itself must never satisfy the mutual-exclusion prerequisite.
 
-Before a downstream send pipeline treats `LEASE_HELD` as a valid prerequisite, it must call `lease_authority.verify_authoritative_receipt()` with the expected coordination repository, buyer scope, offer scope, and exact 64-hex preflight SHA-256 supplied out-of-band. The authoritative verifier:
+Before a downstream send pipeline treats `LEASE_HELD` as a valid prerequisite, it must call `lease_authority.verify_authoritative_receipt()` with all expected authority supplied **out of band**: coordination repository, buyer scope, offer scope, caller `claimant`, caller `claim_id`, stable `claim_started_at`, exact `anchor_sha`, and exact 64-hex preflight SHA-256. The authoritative verifier:
 
 1. performs the integrity-only receipt checks;
-2. recomputes the expected buyer+offer seam and deterministic ref;
-3. performs one provider read of that exact ref and requires the live ref to point at the receipt’s tag object;
-4. reads that annotated tag object and validates its exact repo/seam/claim/preflight metadata, target commit, deterministic tag name, and tagger binding;
-5. fails closed on absent/unreadable/drifted/malformed provider state or any metadata mismatch.
+2. validates and binds the receipt to the expected caller identity/generation before provider I/O;
+3. recomputes the expected buyer+offer seam and deterministic ref;
+4. performs one provider read of that exact ref and requires the live ref to point at the receipt’s tag object;
+5. reads that annotated tag object and requires its repo/seam/caller/generation/preflight metadata, target commit, deterministic tag name, and tagger binding to equal the independently supplied expected values;
+6. fails closed on absent/unreadable/drifted/malformed provider state or any metadata mismatch.
 
-A fabricated receipt with a freshly recomputed `receipt_sha256` therefore cannot prove lease authority. Likewise, copying a real tag object SHA into a receipt with different claimant, claim ID, seam, or preflight metadata fails closed.
+A fabricated receipt with a freshly recomputed `receipt_sha256` cannot prove lease authority. More importantly, a losing worker cannot copy the winner’s **unchanged authentic receipt** and become authoritative: the consumer must supply its own durable claim identity/generation out of band, and those values must match both the receipt and the live annotated tag.
 
 Example consumption boundary:
 
@@ -52,6 +53,10 @@ lease_is_live = verify_authoritative_receipt(
     repo=claim["repo"],
     buyer_scope=claim["buyer_scope"],
     offer_scope=claim["offer_scope"],
+    claimant=claim["claimant"],
+    claim_id=claim["claim_id"],
+    claim_started_at=claim["claim_started_at"],
+    anchor_sha=claim["anchor_sha"],
     preflight_sha256=claim["preflight_sha256"],
     transport=GitHubTransport(token),
 )
@@ -92,4 +97,4 @@ python -O -m unittest -v tools.outbound_send_guard.test_atomic_lease tools.outbo
 
 Acquisition tests cover exact create success, deterministic seam identity, claimant independence, conflicting existing leases, same-claim readback recovery, every indeterminate status, 404/503 readback HOLD, malformed success-body reconciliation, definitive rejection, tag-object failure, strict machine IDs, schema strictness, preflight binding, route/claim metadata separation, content-addressed receipt integrity verification, tamper rejection, ref/seam binding, and the invariant that a lease receipt can never claim external-send authority.
 
-Authority tests additionally cover forged self-hash receipts, forged claim metadata against a real tag SHA, missing/different refs, provider read failure, expected seam/preflight mismatch before network use, tag metadata drift, target/tag-name drift, HOLD receipts, and rejection of non-SHA-256-length preflight identities at the consumption boundary.
+Authority tests additionally cover forged self-hash receipts, **unchanged authentic winner-receipt replay by a different expected caller**, forged claim metadata against a real tag SHA, missing/different refs, provider read failure, expected seam/caller/generation/preflight mismatch, tag metadata drift, target/tag-name drift, HOLD receipts, and rejection of non-SHA-256-length preflight identities at the consumption boundary.

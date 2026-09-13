@@ -72,7 +72,10 @@ class Store:
                 "sha": self.tag_sha,
                 "tag": self.tag_payload["tag"],
                 "message": self.tag_payload["message"],
-                "object": copy.deepcopy(self.tag_payload["object"]),
+                "object": {
+                    "type": self.tag_payload["type"],
+                    "sha": self.tag_payload["object"],
+                },
                 "tagger": copy.deepcopy(self.tag_payload["tagger"]),
             }
             payload.update(copy.deepcopy(self.tag_overrides))
@@ -85,6 +88,10 @@ def authoritative(store, receipt, **updates):
         "repo": "woahwhattheheck/commons",
         "buyer_scope": "atlab.com",
         "offer_scope": "englewood-rfp-26-031-lims-teaming",
+        "claimant": "Z-Meridian-913506-L91",
+        "claim_id": "atl-englewood-zmer-20260913",
+        "claim_started_at": "2026-09-13T09:26:20Z",
+        "anchor_sha": ANCHOR,
         "preflight_sha256": PREFLIGHT,
         "transport": store,
     }
@@ -104,6 +111,23 @@ class LeaseAuthorityTests(unittest.TestCase):
         self.assertTrue(authoritative(store, receipt))
         self.assertEqual([call[0] for call in store.calls], ["GET", "GET"])
 
+    def test_authentic_winner_receipt_replayed_by_other_claimant_fails_before_network(self):
+        store, receipt = self.make()
+        self.assertFalse(authoritative(store, receipt, claimant="Z-Losing-Worker-914000-X1"))
+        self.assertEqual(store.calls, [])
+
+    def test_authentic_winner_receipt_replayed_by_other_claim_id_fails_before_network(self):
+        store, receipt = self.make()
+        self.assertFalse(authoritative(store, receipt, claim_id="other-worker-claim-20260913"))
+        self.assertEqual(store.calls, [])
+
+    def test_authentic_winner_receipt_replayed_with_other_claim_generation_fails(self):
+        store, receipt = self.make()
+        self.assertFalse(authoritative(store, receipt, claim_started_at="2026-09-13T09:26:21Z"))
+        self.assertEqual(store.calls, [])
+        self.assertFalse(authoritative(store, receipt, anchor_sha=OTHER))
+        self.assertEqual([call[0] for call in store.calls], ["GET", "GET"])
+
     def test_self_hash_forgery_passes_integrity_but_fails_authority(self):
         store, receipt = self.make()
         forged = copy.deepcopy(receipt)
@@ -111,6 +135,7 @@ class LeaseAuthorityTests(unittest.TestCase):
         resign(forged)
         self.assertTrue(verify_receipt(forged))
         self.assertFalse(authoritative(store, forged))
+        self.assertEqual(store.calls, [])
 
     def test_forged_claim_id_against_real_tag_fails(self):
         store, receipt = self.make()
@@ -119,6 +144,7 @@ class LeaseAuthorityTests(unittest.TestCase):
         resign(forged)
         self.assertTrue(verify_receipt(forged))
         self.assertFalse(authoritative(store, forged))
+        self.assertEqual(store.calls, [])
 
     def test_missing_ref_fails_closed_without_tag_read(self):
         store, receipt = self.make()
