@@ -290,19 +290,22 @@ def compile_packet(packet: Any, *, as_of: str) -> dict[str, Any]:
     po_ix = _index_unique(pos, "po_id", "$.purchase_orders")
     inv_ix = _index_unique(invoices, "invoice_id", "$.invoices")
 
-    # Repeated vendor/source/amount/date is a duplicate invoice even if invoice_id differs.
-    semantic_seen: dict[tuple[str, str, str, str], str] = {}
-    semantic_dupes: set[str] = set()
+    # Repeated vendor/source/amount/date is duplicate evidence even if invoice_id differs.
+    semantic_groups: dict[tuple[str, str, str, str], list[dict[str, Any]]] = {}
     for inv in invoices:
         semantic_key = (inv["vendor_id"], inv["source_ref"], inv["amount"], inv["invoice_date"])
-        prior = semantic_seen.get(semantic_key)
-        if prior is None:
-            semantic_seen[semantic_key] = inv["invoice_id"]
-        else:
-            semantic_dupes.add(prior)
-            semantic_dupes.add(inv["invoice_id"])
+        semantic_groups.setdefault(semantic_key, []).append(inv)
+    semantic_dupes = {
+        inv["invoice_id"]
+        for group in semantic_groups.values()
+        if len(group) > 1
+        for inv in group
+    }
 
-    decisions: list[Decision] = []
+    # First apply every existing row-level gate.  Cumulative PO utilization is a
+    # second-stage constraint over rows that would otherwise be READY: a row already
+    # held for bad/missing/duplicate evidence is not treated as authorized spend.
+    evaluated: dict[str, tuple[dict[str, Any], dict[str, Any] | None, dict[str, Any] | None, list[str]]] = {}
     for invoice_id in sorted(inv_ix):
         inv = inv_ix[invoice_id]
         reasons: list[str] = []
@@ -333,6 +336,31 @@ def compile_packet(packet: Any, *, as_of: str) -> dict[str, Any]:
                 reasons.append("INVOICE_PREDATES_PO")
         if _parse_date(inv["due_date"], "invoice.due_date") < _parse_date(inv["invoice_date"], "invoice.invoice_date"):
             reasons.append("DUE_DATE_PRECEDES_INVOICE")
+
+        evaluated[invoice_id] = (inv, vendor, po, sorted(set(reasons)))
+
+    candidate_exposure_by_po: dict[str, Decimal] = {}
+    for inv, _vendor, po, reasons in evaluated.values():
+        if reasons or po is None:
+            continue
+        po_id = inv["po_id"]
+        candidate_exposure_by_po[po_id] = (
+            candidate_exposure_by_po.get(po_id, Decimal("0.00"))
+            + _money(inv["amount"], "invoice.amount")
+        )
+
+    cumulative_overrun_pos = {
+        po_id
+        for po_id, exposure in candidate_exposure_by_po.items()
+        if exposure > _money(po_ix[po_id]["total"], "po.total")
+    }
+
+    decisions: list[Decision] = []
+    for invoice_id in sorted(inv_ix):
+        inv, vendor, po, base_reasons = evaluated[invoice_id]
+        reasons = list(base_reasons)
+        if not reasons and inv["po_id"] in cumulative_overrun_pos:
+            reasons.append("PO_CUMULATIVE_AMOUNT_EXCEEDED")
 
         decisions.append(
             Decision(
