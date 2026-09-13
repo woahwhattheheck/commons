@@ -1,0 +1,34 @@
+{
+  "offer_id": "streaming-rendition-qa-pilot-20260913",
+  "currency": "USD",
+  "tiers": {
+    "DIAGNOSTIC": {
+      "fixed_price": 2500,
+      "buyer_asset_window": "20-500 representative metadata packets",
+      "deliverables": [
+        "normalization guidance",
+        "deterministic batch QA",
+        "reason-coded findings",
+        "hash-bound report",
+        "remediation handoff"
+      ]
+    },
+    "INTEGRATION": {
+      "fixed_price": 7500,
+      "deliverables": [
+        "all Diagnostic deliverables",
+        "one buyer handoff-path integration",
+        "deterministic acceptance fixture",
+        "operator runbook"
+      ]
+    }
+  },
+  "payment_expectation": "paid kickoff via seller-approved invoice or payment link",
+  "excluded_authority": [
+    "rights determination",
+    "DRM-secret retrieval",
+    "transcoding",
+    "CDN mutation",
+    "publishing"
+  ]
+}
