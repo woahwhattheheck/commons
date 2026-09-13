@@ -1,9 +1,9 @@
 {
   "counts": {
-    "open_issues": 70,
-    "open_pull_requests": 39,
+    "open_issues": 73,
+    "open_pull_requests": 46,
     "runs_in_progress": 20,
-    "runs_queued": 1222
+    "runs_queued": 1266
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -69,6 +69,83 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
+      "branch": "ztq-c8m6/jersey-dn827803-authority-v2",
+      "created_at": "2026-09-13T14:49:35Z",
+      "draft": false,
+      "head_sha": "c2aeecfc5ea99574284ab49dbc8e2a5d9aaf8dd0",
+      "number": 14010,
+      "title": "fix(revenue): harden Jersey DN827803 qualification authority v2",
+      "updated_at": "2026-09-13T14:49:35Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zasl3v9/atomic-send-authority-20260913",
+      "created_at": "2026-09-13T14:49:26Z",
+      "draft": false,
+      "head_sha": "fb7442166c2f8caff7e2b95b8cc86e478b79594f",
+      "number": 14009,
+      "title": "revenue: add atomic pre-send authority receipt",
+      "updated_at": "2026-09-13T14:49:26Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zzf-m4r8/gtm-reply-chronology-generation-20260913",
+      "created_at": "2026-09-13T14:49:24Z",
+      "draft": false,
+      "head_sha": "ec03d8e5e31da0be20a658e5a071ec8ca63780c9",
+      "number": 14008,
+      "title": "GTM: make buyer-reply observation chronology and generation fail closed",
+      "updated_at": "2026-09-13T14:49:24Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z-sol-01/wrf-5417-fixforward-20260913",
+      "created_at": "2026-09-13T14:48:59Z",
+      "draft": false,
+      "head_sha": "cd0bec29935f2c15ac6bbfc0766d992120811113",
+      "number": 14007,
+      "title": "revenue: forward-port WRF 5417 proposal carrier onto current main",
+      "updated_at": "2026-09-13T14:48:59Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zsa-d6p2/mapping-equity-carrier-20260913",
+      "created_at": "2026-09-13T14:48:55Z",
+      "draft": false,
+      "head_sha": "4ce66b1700fe14bda4808d92bbc90f66498a73d4",
+      "number": 14006,
+      "title": "Add reproducible Mapping Equity coverage-gap carrier",
+      "updated_at": "2026-09-13T14:48:55Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zva-k6n8/grandrapids-host-root-separation-20260913",
+      "created_at": "2026-09-13T14:48:12Z",
+      "draft": false,
+      "head_sha": "28af76cbefd3b8ff596f6627a7e5437906c9c227",
+      "number": 14001,
+      "title": "Fix Grand Rapids public preflight trust-root self-authentication",
+      "updated_at": "2026-09-13T14:48:12Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "znc-p7w2/manitoba-archives-ai-poc-20260913",
+      "created_at": "2026-09-13T14:48:12Z",
+      "draft": false,
+      "head_sha": "3db0a017769158bc3331baced6153ce50733ebc3",
+      "number": 14000,
+      "title": "feat: add Manitoba Archives AI PoC pursuit carrier",
+      "updated_at": "2026-09-13T14:49:21Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
       "branch": "zck-m6v2/call-e-routescout-20260913",
       "created_at": "2026-09-13T14:46:36Z",
       "draft": false,
@@ -97,84 +174,7 @@
       "head_sha": "31405f2935f1a352f1e06e582d7a3a4008e8eb7f",
       "number": 13976,
       "title": "Revenue: ship Vetter cross-site clinical fill tech-transfer gate",
-      "updated_at": "2026-09-13T14:45:49Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zkb-h4v9/swarmops-commercial-semantic-trust-20260913",
-      "created_at": "2026-09-13T14:34:42Z",
-      "draft": false,
-      "head_sha": "ccbf015daab0e0b4f2b69cbb1f82215df7307b15",
-      "number": 13962,
-      "title": "fix: restore SwarmOps engine and bind commercial authority semantics",
-      "updated_at": "2026-09-13T14:46:40Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zkb-p6v4/swarmops-typed-trust-13914r3",
-      "created_at": "2026-09-13T14:30:26Z",
-      "draft": false,
-      "head_sha": "3a6e1807126dab6f893dd766b0df03c775a96847",
-      "number": 13944,
-      "title": "fix: bind SwarmOps commercial trust to typed receipt roles",
-      "updated_at": "2026-09-13T14:46:00Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zvc-q7m4/agentic-genai-evaluation-gate",
-      "created_at": "2026-09-13T14:29:52Z",
-      "draft": false,
-      "head_sha": "d91dd1fbde1fb69276fc828c95c06bc9d9ec6cd8",
-      "number": 13942,
-      "title": "Add agentic GenAI evaluation evidence gate",
-      "updated_at": "2026-09-13T14:34:21Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zsol09/pursuit-portfolio-trust-custody-20260913",
-      "created_at": "2026-09-13T14:17:37Z",
-      "draft": false,
-      "head_sha": "8c56dd0fa7679e5eb8de8e76b5ee41f0aa2f885b",
-      "number": 13910,
-      "title": "Revenue: authenticate pursuit portfolio authority and file custody",
-      "updated_at": "2026-09-13T14:38:24Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zmbq5t8/warranty-rma-ops-20260913",
-      "created_at": "2026-09-13T14:11:49Z",
-      "draft": false,
-      "head_sha": "0ad7356c59a25f47dac74c2a4a744c334a8397fa",
-      "number": 13902,
-      "title": "Ship Warranty & RMA Operations Desk",
-      "updated_at": "2026-09-13T14:26:12Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zav-s8q3/security-questionnaire-desk-20260913",
-      "created_at": "2026-09-13T14:10:41Z",
-      "draft": false,
-      "head_sha": "54fa9ce0b97e2457aebb087fd4b6f9fdd979536e",
-      "number": 13901,
-      "title": "Build evidence-bound security questionnaire fulfillment desk",
-      "updated_at": "2026-09-13T14:43:24Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zfa/commercial-terms-lineage-20260913",
-      "created_at": "2026-09-13T13:52:52Z",
-      "draft": false,
-      "head_sha": "0a86059fec8319f9b3782e833089d76847bc408b",
-      "number": 13877,
-      "title": "revenue: add source-bound commercial terms exception lineage",
-      "updated_at": "2026-09-13T14:09:05Z"
+      "updated_at": "2026-09-13T14:47:32Z"
     }
   ],
   "open_heads": {
@@ -216,12 +216,30 @@
     "13962": "ccbf015daab0e0b4f2b69cbb1f82215df7307b15",
     "13976": "31405f2935f1a352f1e06e582d7a3a4008e8eb7f",
     "13997": "a112441153ab11b7140d7b10b58967936c83edb8",
-    "13999": "2182d07cd8750087a73f2aea2455890d75daf251"
+    "13999": "2182d07cd8750087a73f2aea2455890d75daf251",
+    "14000": "3db0a017769158bc3331baced6153ce50733ebc3",
+    "14001": "28af76cbefd3b8ff596f6627a7e5437906c9c227",
+    "14006": "4ce66b1700fe14bda4808d92bbc90f66498a73d4",
+    "14007": "cd0bec29935f2c15ac6bbfc0766d992120811113",
+    "14008": "ec03d8e5e31da0be20a658e5a071ec8ca63780c9",
+    "14009": "fb7442166c2f8caff7e2b95b8cc86e478b79594f",
+    "14010": "c2aeecfc5ea99574284ab49dbc8e2a5d9aaf8dd0"
   },
-  "pulls_listed": 39,
+  "pulls_listed": 46,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 61.1,
+  "queue_depth_per_runner": 63.3,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "ztf-k7m9/twelve-ejet-acceptance-v2",
+      "closed_at": "2026-09-13T14:48:50Z",
+      "head_sha": "9c4a5c630085968fc5b8c026de046224daced6ea",
+      "merged_at": "2026-09-13T14:48:50Z",
+      "number": 14003,
+      "state": "MERGED",
+      "title": "Complete E-Jet 100-batch acceptance contract"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -375,21 +393,10 @@
       "number": 13941,
       "state": "CLOSED",
       "title": "[SUPERSEDED by #13953] Grand Rapids: bind packet verification and owner release subject"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-hilbertquill/streaming-rendition-qa-pilot-1016",
-      "closed_at": "2026-09-13T14:36:39Z",
-      "head_sha": "d10c8925b482a227a1d33b9bb287f96c12142c35",
-      "merged_at": null,
-      "number": 13948,
-      "state": "CLOSED",
-      "title": "revenue: package streaming rendition QA pilot"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-13T14:47:31Z",
+  "unchanged_since": "2026-09-13T14:49:38Z",
   "undatable_pulls": []
 }
