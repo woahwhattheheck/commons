@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "opportunity": "27-87809",
+  "event_id": "000610000087809",
+  "procurement_state": "market_research_rfi",
+  "direct_state_submission_authorized": false,
+  "customer_prime_decision_authority_retained": true,
+  "erp_product_selection_in_scope": false,
+  "qualification_evidence": {
+    "indiana_customer_relationship_verified": false,
+    "public_sector_erp_past_performance_verified": false,
+    "prime_bidder_authority_verified": false
+  },
+  "evidence_rules": {
+    "observations_require_source_ids": true,
+    "unknowns_may_be_promoted_to_observations": false,
+    "assumptions_require_owner_and_status": true,
+    "dependencies_require_source_ids": true,
+    "options_require_evidence_or_assumption_refs": true,
+    "risks_require_basis_and_owner": true,
+    "cost_ranges_require_basis_currency_exclusions": true,
+    "recommendations_require_evidence_and_assumption_refs": true,
+    "source_changes_require_impact_recalculation": true
+  },
+  "required_record_types": [
+    {
+      "type": "source",
+      "required_fields": ["id", "kind", "title", "date", "owner", "provenance"]
+    },
+    {
+      "type": "observation",
+      "required_fields": ["id", "statement", "source_ids"]
+    },
+    {
+      "type": "assumption",
+      "required_fields": ["id", "statement", "owner", "status", "confidence"]
+    },
+    {
+      "type": "dependency",
+      "required_fields": ["id", "from", "to", "kind", "source_ids"]
+    },
+    {
+      "type": "option",
+      "required_fields": ["id", "statement", "criteria", "evidence_refs", "assumption_refs"]
+    },
+    {
+      "type": "risk",
+      "required_fields": ["id", "statement", "trigger", "impact", "mitigation", "owner", "basis_refs"]
+    },
+    {
+      "type": "cost_range",
+      "required_fields": ["id", "minimum", "maximum", "currency", "basis_refs", "assumption_refs", "exclusions"]
+    },
+    {
+      "type": "recommendation",
+      "required_fields": ["id", "statement", "evidence_refs", "assumption_refs", "decision_owner"]
+    }
+  ],
+  "forbidden_claims": [
+    "indiana_endorsement_or_engagement",
+    "verified_public_sector_erp_past_performance_without_evidence",
+    "direct_submission_authority_without_owner_approval",
+    "unknown_current_state_fact_as_observation",
+    "cost_estimate_without_basis",
+    "recommendation_without_traceability",
+    "product_selection_by_bounded_workstream"
+  ]
+}
