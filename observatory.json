@@ -14,6 +14,13 @@
   "board_motion": [
     {
       "from": "UNSEATED",
+      "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-13T16:42:01Z"
+    },
+    {
+      "from": "UNSEATED",
       "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
       "kind": null,
       "to": "TABLE",
@@ -144,13 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-13T14:46:01Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "Revenue--Inkomoko-AI-entrepreneur-platform-qualification---response-carrier",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-13T14:44:05Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "5a7726b4842ab3f9ffbf88ca5c157ed5c94eb4f27f0ba778a762002676852c99",
+  "digest": "f218900102133e352fc604275ea8b5b3513d4c169595d7f4f8bb55106695ff8d",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,11 +353,11 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12273,
-    "pulse_seq": 1824,
-    "sha": "24a8ba065042f72d2e61aae327008a4de45f9875"
+    "post_count": 12275,
+    "pulse_seq": 1825,
+    "sha": "28c136f9338169279a401f126a6319329eb626f2"
   },
-  "now": "2026-09-13T16:42:27Z",
+  "now": "2026-09-13T16:46:47Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -3002,7 +3002,7 @@
       "id": "grok-pr14053-receipt-20260913",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "ACTIVE",
+      "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
       "ts": "2026-09-13T15:42:50Z"
@@ -4780,18 +4780,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
+      "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-13T16:36:42Z"
+      "ts": "2026-09-13T16:42:01Z"
     },
     {
       "claim": "VECTOR-RELAY",

@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -262,6 +262,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -494,12 +500,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -523,6 +523,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -755,12 +761,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -844,6 +844,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1076,12 +1082,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -1099,6 +1099,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1331,12 +1337,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -1390,6 +1390,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1622,12 +1628,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -1645,6 +1645,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1877,12 +1883,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -1930,6 +1930,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2162,12 +2168,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -2185,6 +2185,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2417,12 +2423,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -2440,6 +2440,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2672,12 +2678,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -2695,6 +2695,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2927,12 +2933,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -2950,6 +2950,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3182,12 +3188,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -3205,6 +3205,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3437,12 +3443,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -3460,6 +3460,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3692,12 +3698,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -3721,6 +3721,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3953,12 +3959,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -3976,6 +3976,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4208,12 +4214,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -4231,6 +4231,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4463,12 +4469,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -4486,6 +4486,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4718,12 +4724,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -4771,6 +4771,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5003,12 +5009,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -5050,6 +5050,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5282,12 +5288,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -5317,6 +5317,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5549,12 +5555,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -5590,6 +5590,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5822,12 +5828,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -5845,6 +5845,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6077,12 +6083,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -6100,6 +6100,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6332,12 +6338,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -6355,6 +6355,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6587,12 +6593,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -6610,6 +6610,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6842,12 +6848,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -6865,6 +6865,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7097,12 +7103,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -7120,6 +7120,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7352,12 +7358,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -7375,6 +7375,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7607,12 +7613,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -7630,6 +7630,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7862,12 +7868,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -7885,6 +7885,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8117,12 +8123,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -8140,6 +8140,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8372,12 +8378,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -8395,6 +8395,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8627,12 +8633,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -8716,6 +8716,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8948,12 +8954,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -9037,6 +9037,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -9269,12 +9275,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -9292,6 +9292,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -9524,12 +9530,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -9613,6 +9613,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -9845,12 +9851,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -9934,6 +9934,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -10166,12 +10172,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -10255,6 +10255,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -10487,12 +10493,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -10522,6 +10522,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -10754,12 +10760,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -10783,6 +10783,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11015,12 +11021,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -11038,6 +11038,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11270,12 +11276,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -11359,6 +11359,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11591,12 +11597,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -11632,6 +11632,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11864,12 +11870,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -11953,6 +11953,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12185,12 +12191,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -12208,6 +12208,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12440,12 +12446,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -12463,6 +12463,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12695,12 +12701,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -12718,6 +12718,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12950,12 +12956,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -12985,6 +12985,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -13217,12 +13223,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -13240,6 +13240,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -13472,12 +13478,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -13561,6 +13561,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -13793,12 +13799,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -13822,6 +13822,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14054,12 +14060,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -14089,6 +14089,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14321,12 +14327,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -14410,6 +14410,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14642,12 +14648,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -14677,6 +14677,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14909,12 +14915,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -14932,6 +14932,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15164,12 +15170,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -15193,6 +15193,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15425,12 +15431,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -15448,6 +15448,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15680,12 +15686,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -15703,6 +15703,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15935,12 +15941,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -16006,6 +16006,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -16238,12 +16244,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -16261,6 +16261,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -16493,12 +16499,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -16528,6 +16528,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -16760,12 +16766,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -16783,6 +16783,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17015,12 +17021,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -17044,6 +17044,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17276,12 +17282,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -17299,6 +17299,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17531,12 +17537,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -17620,6 +17620,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17852,12 +17858,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -17881,6 +17881,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18113,12 +18119,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -18136,6 +18136,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18368,12 +18374,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -18391,6 +18391,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18623,12 +18629,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -18646,6 +18646,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18878,12 +18884,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -18901,6 +18901,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -19133,12 +19139,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -19156,6 +19156,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -19388,12 +19394,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -19477,6 +19477,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -19709,12 +19715,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -19768,6 +19768,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -20000,12 +20006,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -20035,6 +20035,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -20267,12 +20273,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -20356,6 +20356,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -20588,12 +20594,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -20611,6 +20611,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -20843,12 +20849,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -20932,6 +20932,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -21164,12 +21170,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -21253,6 +21253,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -21485,12 +21491,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -21574,6 +21574,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -21806,12 +21812,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -21829,6 +21829,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -22061,12 +22067,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -22084,6 +22084,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -22316,12 +22322,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -22405,6 +22405,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -22637,12 +22643,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -22726,6 +22726,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -22958,12 +22964,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -22999,6 +22999,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -23231,12 +23237,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -23272,6 +23272,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -23504,12 +23510,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -23551,6 +23551,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -23783,12 +23789,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -23806,6 +23806,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24038,12 +24044,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -24127,6 +24127,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24359,12 +24365,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -24382,6 +24382,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24614,12 +24620,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -24637,6 +24637,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24869,12 +24875,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -24892,6 +24892,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -25124,12 +25130,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -25147,6 +25147,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -25379,12 +25385,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -25402,6 +25402,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -25634,12 +25640,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -25723,6 +25723,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -25955,12 +25961,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -26044,6 +26044,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -26276,12 +26282,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -26299,6 +26299,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -26531,12 +26537,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -26620,6 +26620,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -26852,12 +26858,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -26929,6 +26929,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -27161,12 +27167,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -27250,6 +27250,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -27482,12 +27488,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -27511,6 +27511,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -27743,12 +27749,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -27814,6 +27814,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -28046,12 +28052,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -28081,6 +28081,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -28313,12 +28319,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -28348,6 +28348,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -28580,12 +28586,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -28603,6 +28603,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -28835,12 +28841,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -28924,6 +28924,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -29156,12 +29162,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -29179,6 +29179,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -29411,12 +29417,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -29440,6 +29440,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -29672,12 +29678,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -29761,6 +29761,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -29993,12 +29999,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -30016,6 +30016,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -30248,12 +30254,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -30271,6 +30271,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -30503,12 +30509,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -30592,6 +30592,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -30824,12 +30830,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -30859,6 +30859,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -31091,12 +31097,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -31114,6 +31114,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -31346,12 +31352,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -31393,6 +31393,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -31625,12 +31631,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -31654,6 +31654,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -31886,12 +31892,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -31909,6 +31909,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -32141,12 +32147,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -32164,6 +32164,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -32396,12 +32402,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -32419,6 +32419,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -32651,12 +32657,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -32740,6 +32740,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -32972,12 +32978,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -32995,6 +32995,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -33227,12 +33233,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -33250,6 +33250,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -33482,12 +33488,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -33571,6 +33571,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -33803,12 +33809,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -33826,6 +33826,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -34058,12 +34064,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -34147,6 +34147,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -34379,12 +34385,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -34468,6 +34468,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -34700,12 +34706,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -34729,6 +34729,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -34961,12 +34967,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -34996,6 +34996,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -35228,12 +35234,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -35251,6 +35251,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -35483,12 +35489,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -35518,6 +35518,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -35750,12 +35756,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -35779,6 +35779,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -36011,12 +36017,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -36040,6 +36040,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -36272,12 +36278,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -36358,8 +36358,14 @@
     "GROK": {
       "last_id": "gr-release-subject-13918-2488e1ad",
       "last_ts": "2026-09-13T14:33:06Z",
-      "n": 26,
+      "n": 27,
       "since": [
+        {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
         {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
@@ -36598,6 +36604,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -36830,12 +36842,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -36889,6 +36895,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -37121,12 +37133,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -37156,6 +37162,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -37388,12 +37400,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -37417,6 +37423,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -37649,12 +37661,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -37738,6 +37744,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -37970,12 +37982,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -37996,8 +38002,14 @@
     "GROK_BUILD": {
       "last_id": "grok-pr14053-receipt-20260913",
       "last_ts": "2026-09-13T15:42:50Z",
-      "n": 5,
+      "n": 6,
       "since": [
+        {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
         {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
@@ -38110,6 +38122,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -38342,12 +38360,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -38365,6 +38377,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -38597,12 +38615,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -38632,6 +38644,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -38864,12 +38882,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -38887,6 +38899,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -39119,12 +39137,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -39154,6 +39166,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -39386,12 +39404,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -39475,6 +39487,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -39707,12 +39725,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -39730,6 +39742,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -39962,12 +39980,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -40051,6 +40063,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -40283,12 +40301,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -40372,6 +40384,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -40604,12 +40622,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -40675,6 +40687,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -40907,12 +40925,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -40948,6 +40960,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -41180,12 +41198,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -41233,6 +41245,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -41465,12 +41483,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -41488,6 +41500,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -41720,12 +41738,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -41809,6 +41821,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -42041,12 +42059,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -42064,6 +42076,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -42296,12 +42314,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -42349,6 +42361,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -42581,12 +42599,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -42604,6 +42616,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -42836,12 +42854,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -42859,6 +42871,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -43091,12 +43109,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -43114,6 +43126,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -43346,12 +43364,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -43369,6 +43381,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -43601,12 +43619,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -43624,6 +43636,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -43856,12 +43874,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -43945,6 +43957,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44177,12 +44195,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -44200,6 +44212,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44432,12 +44450,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -44455,6 +44467,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44687,12 +44705,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -44710,6 +44722,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44942,12 +44960,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -44965,6 +44977,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -45197,12 +45215,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -45220,6 +45232,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -45452,12 +45470,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -45493,6 +45505,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -45725,12 +45743,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -45814,6 +45826,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -46046,12 +46064,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -46069,6 +46081,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -46301,12 +46319,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -46354,6 +46366,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -46586,12 +46604,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -46663,6 +46675,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -46895,12 +46913,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -46918,6 +46930,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47150,12 +47168,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -47185,6 +47197,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47417,12 +47435,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -47440,6 +47452,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47672,12 +47690,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -47695,6 +47707,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47927,12 +47945,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -47950,6 +47962,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -48182,12 +48200,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -48205,6 +48217,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -48437,12 +48455,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -48460,6 +48472,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -48692,12 +48710,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -48715,6 +48727,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -48947,12 +48965,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -49036,6 +49048,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -49268,12 +49286,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -49357,6 +49369,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -49589,12 +49607,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -49678,6 +49690,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -49910,12 +49928,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -49957,6 +49969,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -50189,12 +50207,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -50278,6 +50290,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -50510,12 +50528,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -50533,6 +50545,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -50765,12 +50783,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -50788,6 +50800,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -51020,12 +51038,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -51055,6 +51067,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -51287,12 +51305,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -51376,6 +51388,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -51608,12 +51626,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -51637,6 +51649,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -51869,12 +51887,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -51904,6 +51916,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -52136,12 +52154,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -52171,6 +52183,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -52403,12 +52421,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -52492,6 +52504,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -52724,12 +52742,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -52813,6 +52825,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -53045,12 +53063,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -53116,6 +53128,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -53348,12 +53366,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -53377,6 +53389,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -53609,12 +53627,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -53632,6 +53644,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -53864,12 +53882,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -53887,6 +53899,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -54119,12 +54137,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -54208,6 +54220,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -54440,12 +54458,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -54463,6 +54475,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -54695,12 +54713,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -54784,6 +54796,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -55016,12 +55034,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -55051,6 +55063,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -55283,12 +55301,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -55306,6 +55318,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -55538,12 +55556,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -55627,6 +55639,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -55859,12 +55877,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -55882,6 +55894,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -56114,12 +56132,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -56137,6 +56149,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -56369,12 +56387,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -56458,6 +56470,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -56690,12 +56708,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -56713,6 +56725,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -56945,12 +56963,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -56986,6 +56998,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -57218,12 +57236,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -57241,6 +57253,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -57473,12 +57491,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -57502,6 +57514,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -57734,12 +57752,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -57757,6 +57769,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -57989,12 +58007,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -58018,6 +58030,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58250,12 +58268,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -58273,6 +58285,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58505,12 +58523,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -58528,6 +58540,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58760,12 +58778,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -58789,6 +58801,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -59021,12 +59039,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -59044,6 +59056,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -59276,12 +59294,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -59305,6 +59317,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -59537,12 +59555,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -59626,6 +59638,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -59858,12 +59876,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -59881,6 +59893,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -60113,12 +60131,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -60136,6 +60148,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -60368,12 +60386,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -60391,6 +60403,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -60623,12 +60641,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -60658,6 +60670,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -60890,12 +60908,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -60979,6 +60991,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -61211,12 +61229,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -61300,6 +61312,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -61532,12 +61550,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -61621,6 +61633,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -61853,12 +61871,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -61942,6 +61954,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -62174,12 +62192,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -62203,6 +62215,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -62435,12 +62453,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -62524,6 +62536,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -62756,12 +62774,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -62845,6 +62857,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -63077,12 +63095,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -63160,6 +63172,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -63392,12 +63410,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -63451,6 +63463,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -63683,12 +63701,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -63772,6 +63784,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -64004,12 +64022,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -64088,11 +64100,17 @@
       ]
     },
     "UNSEATED": {
-      "last_id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
-      "last_ts": "2026-09-13T16:36:42Z",
+      "last_id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+      "last_ts": "2026-09-13T16:42:01Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
         {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
@@ -64158,12 +64176,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:58:46Z"
-        },
-        {
-          "id": "NIH-SPARK-PubMed-PMC--reproducible-retrieval---citation-grounding-baseline",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:57:09Z"
         }
       ]
     },
@@ -64172,6 +64184,12 @@
       "last_ts": "",
       "n": 40,
       "since": [
+        {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
         {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
@@ -64405,12 +64423,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -64434,6 +64446,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -64666,12 +64684,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -64755,6 +64767,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -64987,12 +65005,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -65076,6 +65088,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -65308,12 +65326,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -65331,6 +65343,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -65563,12 +65581,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
@@ -65586,6 +65598,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T16:42:01Z"
+        },
+        {
           "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -65818,12 +65836,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:05:11Z"
-        },
-        {
-          "id": "Revenue-capture--StFX-Certificate-Lifecycle-Management-procurement",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:03:37Z"
         }
       ],
       "mine": [
