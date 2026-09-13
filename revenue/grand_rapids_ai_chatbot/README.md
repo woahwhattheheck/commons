@@ -2,7 +2,8 @@
 
 Original operation: `GRANDRAPIDS-920-45-269-AI-CHATBOT-ZSOLSTICE-20260913`  
 Post-merge authority repair: `GRANDRAPIDS-PREFLIGHT-INDEPENDENT-AUTHORITY-ZLFW3H7-20260913`  
-GitHub issues: `#13870`, `#13884`
+Host-root separation repair: `GRANDRAPIDS-PREFLIGHT-HOST-ROOT-SEPARATION-ZVAK6N8-20260913`  
+GitHub issues: `#13870`, `#13884`, `#13918`, `#13972`
 
 This directory is a fail-closed production carrier for the City of Grand Rapids RFP 920-45-269 opportunity. It deliberately separates public/official-source context, proposal-state claims, and **independently authenticated retained authority**.
 
@@ -10,9 +11,9 @@ This directory is a fail-closed production carrier for the City of Grand Rapids 
 
 - `requirements.json` — claim/source ledger with `CONFIRMED_OFFICIAL`, `CORROBORATED`, `PACKET_REQUIRED`, and `OWNER_REQUIRED` states.
 - `submission_state.json` — untrusted current readiness claims. It remains HOLD and does not pretend the packet, certifications, references, pricing form, registrations, or owner release exist.
-- `trusted_authority.py` — host-authenticated, anti-rollback authority envelope for the exact solicitation, controlling packet/addenda generation, canonical gate universe, typed evidence records, and owner release.
-- `preflight.py` — deterministic fail-closed readiness receipt. A PASS claim cannot contribute to READY unless its evidence IDs resolve against the **host-pinned current** authority generation.
-- `TRUSTED_AUTHORITY.md` — trust boundary, envelope schema, host-root rotation, and operator procedure.
+- `trusted_authority.py` — strict authority-envelope verifier. It never acquires a trust root itself; trusted host code must inject an independently authenticated generation+digest explicitly.
+- `preflight.py` — deterministic fail-closed readiness receipt. The public CLI is deliberately unprivileged and never loads authority bytes or root material, so it cannot produce READY.
+- `TRUSTED_AUTHORITY.md` — trust boundary, envelope schema, trusted-host integration, rotation, and operator procedure.
 - `acceptance.py` — executable UAT invariant checker for grounding, routing, source freshness/conflict, high-risk holds, duplicate/retry semantics, timeout reconciliation, and replay.
 - `proposal_scaffold.md` — technical/administrative proposal carrier with packet insertion points.
 - `questions.md` — packet-first clarification ledger and do-not-duplicate access inquiry record.
@@ -24,7 +25,9 @@ The controlling RFP/addenda are not held by this lane. Official City Purchasing 
 
 A single access-only email was sent to the named buyer on 2026-09-13 after a provider-level Gmail dedupe returned zero prior Grand Rapids/solicitation/buyer traffic. That email asked only for the authoritative packet/access path and permitted question channel. No reply is claimed.
 
-The landed v1 preflight previously treated non-placeholder strings inside `submission_state.json` as sufficient PASS evidence. That meant the same caller could author packet custody, certifications, pricing, references, and even owner release. v2 removes that authority: proposal state is untrusted, and READY additionally requires a separately retained authority document whose exact current generation + canonical SHA-256 are pinned by the validation host outside proposal bytes.
+The landed v1 preflight previously treated non-placeholder strings inside `submission_state.json` as sufficient PASS evidence. v2 removed that state-local authority, but a later implementation still let the public CLI authenticate an authority document against generation/digest values inherited from the same caller-controlled process environment. A caller could therefore fabricate an internally consistent authority, set matching environment values, and collapse the supposed host boundary.
+
+The current design removes ambient trust acquisition entirely. The package does not read a root from environment or CLI. Trusted host integration may call the library only after it has independently authenticated the current authority root. The public CLI never enters that path.
 
 ## Verify current state
 
@@ -34,13 +37,10 @@ python -O -m unittest discover -s revenue/grand_rapids_ai_chatbot -p 'test_*.py'
 python revenue/grand_rapids_ai_chatbot/preflight.py revenue/grand_rapids_ai_chatbot/submission_state.json
 ```
 
-Expected current preflight status: `HOLD`.
+Expected current public-CLI status: `HOLD`.
 
-A future authenticated evaluation may add `--authority /trusted/path/authority.json`. The CLI deliberately has **no generation or root-digest flags**. Those current-root values are host-provisioned only:
+The public CLI has **no `--authority` option**. Legacy environment names such as `GRAND_RAPIDS_PREFLIGHT_AUTHORITY_GENERATION` and `GRAND_RAPIDS_PREFLIGHT_AUTHORITY_SHA256` have no authority effect in this package.
 
-- `GRAND_RAPIDS_PREFLIGHT_AUTHORITY_GENERATION`
-- `GRAND_RAPIDS_PREFLIGHT_AUTHORITY_SHA256`
+A future authenticated evaluation must happen through trusted host integration that supplies an independently authenticated generation+authority digest explicitly to `trusted_authority.load_current_authority(...)`, then passes the resulting `VerifiedAuthority` to `preflight.evaluate(...)`. See `TRUSTED_AUTHORITY.md`.
 
-Do not let proposal-state authors control those host values. See `TRUSTED_AUTHORITY.md`.
-
-`READY` means only that every canonical gate resolved to typed evidence in the host-authenticated current authority generation. It never contacts the buyer, signs, submits, spends, awards, invoices, recognizes revenue, or moves money.
+`READY` is therefore a trusted-host library state, not a portable claim created by proposal bytes or shell environment. It never contacts the buyer, signs, submits, spends, awards, invoices, recognizes revenue, or moves money.
