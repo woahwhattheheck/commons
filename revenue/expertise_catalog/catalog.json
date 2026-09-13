@@ -1,0 +1,123 @@
+{
+  "schema_version": "commons-expertise-catalog/v1",
+  "kind": "EXPERTISE_CATALOG",
+  "family": "expertise",
+  "canonical_page": "expertise.html",
+  "truth_boundary": {
+    "buyer_claimed": false,
+    "acceptance_claimed": false,
+    "delivery_claimed": false,
+    "settlement_claimed": false,
+    "payout_claimed": false,
+    "cash_claimed": false,
+    "rule": "A catalog entry is an offer definition, not evidence of a buyer, acceptance, delivery, settlement, payout, or cash. Only source-backed existing SKU terms may be marked LIVE_EXISTING_SKU."
+  },
+  "commercial_modes": ["LIVE_EXISTING_SKU", "QUOTE_ONLY"],
+  "formats": ["advisory_hour", "written_assessment", "design_review", "embedded_engagement"],
+  "entries": [
+    {
+      "id": "expertise-whitebox-hour",
+      "capability": "model_gguf_diagnosis",
+      "title": "White Box technical hour",
+      "summary": "One dated White Box / dests hour for a bounded model, GGUF, agent, or systems diagnosis question.",
+      "buyer_job": "Get a senior technical read on one sharply bounded White Box question without buying a larger implementation engagement.",
+      "formats": ["advisory_hour"],
+      "inputs": ["One bounded technical question", "Sanitized evidence sufficient to discuss the question", "Desired decision or next action"],
+      "deliverables": ["One dated White Box / dests hour", "A public land/session-YYYYMMDD.md receipt describing destinations, receipts, and what ran"],
+      "acceptance": ["The scheduled hour is delivered for the bounded question", "The dated session receipt exists at the promised public path"],
+      "commercial": {"mode": "LIVE_EXISTING_SKU", "amount_usd": "250.00", "unit": "hour", "checkout_reference": "land/sku-whitebox-hour-20260826.md", "buyer_route": "commerce.html#sku-whitebox-hour-20260826"},
+      "source_evidence": ["land/sku-whitebox-hour-20260826.md", "land/stripe-payment-links-20260826.md", "revenue/OFFERING_FAMILIES.md"]
+    },
+    {
+      "id": "expertise-agent-architecture-review",
+      "capability": "agent_architecture_review",
+      "title": "Agent architecture review",
+      "summary": "A bounded review of an agent workflow's state, tools, retries, effects, receipts, and failure boundaries.",
+      "buyer_job": "Turn an agent design into a decision-ready architecture with explicit failure and recovery boundaries before more implementation spend.",
+      "formats": ["written_assessment", "design_review", "embedded_engagement"],
+      "inputs": ["Sanitized workflow description or diagram", "Known tools and external effects", "Target reliability or operating constraint"],
+      "deliverables": ["Architecture findings ranked by operational consequence", "Recommended state, retry, idempotency, and receipt boundaries", "Concrete next-build decisions and unresolved risks"],
+      "acceptance": ["Each material finding is tied to supplied evidence or marked as an assumption", "Every recommendation names the system boundary it changes", "Unknowns remain explicitly UNKNOWN"],
+      "commercial": {"mode": "QUOTE_ONLY", "amount_usd": null, "unit": null, "checkout_reference": null, "buyer_route": "mailto:tokenjunkielabs@gmail.com?subject=Agent%20architecture%20review"},
+      "source_evidence": ["revenue/OFFERING_FAMILIES.md"]
+    },
+    {
+      "id": "expertise-failure-recovery-analysis",
+      "capability": "failure_recovery_analysis",
+      "title": "Failure and recovery analysis",
+      "summary": "A technical analysis of how one workflow fails, resumes, retries, rolls back, and proves exactly-once external effects.",
+      "buyer_job": "Find the recovery seam that prevents a recurring automation failure from becoming duplicate work, lost state, or an unverifiable outcome.",
+      "formats": ["written_assessment", "design_review", "embedded_engagement"],
+      "inputs": ["One bounded workflow", "Sanitized failure evidence", "Expected stop, resume, rollback, or effect behavior"],
+      "deliverables": ["Failure chain", "Recovery-state model", "Retry/idempotency recommendations", "Binary replay or prevention test plan"],
+      "acceptance": ["Primary and contributing causes are separated", "Recovery recommendations identify state and effect boundaries", "The proposed verification has a binary pass/fail result"],
+      "commercial": {"mode": "QUOTE_ONLY", "amount_usd": null, "unit": null, "checkout_reference": null, "buyer_route": "mailto:tokenjunkielabs@gmail.com?subject=Failure%20and%20recovery%20analysis"},
+      "source_evidence": ["revenue/OFFERING_FAMILIES.md", "revenue/agent_failure_autopsy/offer.json"]
+    },
+    {
+      "id": "expertise-computer-use-design-review",
+      "capability": "computer_use_design",
+      "title": "Computer-use design review",
+      "summary": "A review of a browser or desktop automation design with explicit observation, action, confirmation, recovery, and human-boundary semantics.",
+      "buyer_job": "Make a computer-use workflow safer and more deterministic before it is trusted with consequential UI actions.",
+      "formats": ["written_assessment", "design_review", "embedded_engagement"],
+      "inputs": ["Sanitized task flow", "Target applications or UI surfaces", "Actions that require confirmation or human control"],
+      "deliverables": ["Observation/action boundary map", "Confirmation and recovery rules", "Suggested deterministic checks for consequential actions"],
+      "acceptance": ["Consequential actions are distinguished from reversible navigation", "Confirmation and unknown-effect states are explicit", "Recovery checks are tied to observable UI or external evidence"],
+      "commercial": {"mode": "QUOTE_ONLY", "amount_usd": null, "unit": null, "checkout_reference": null, "buyer_route": "mailto:tokenjunkielabs@gmail.com?subject=Computer-use%20design%20review"},
+      "source_evidence": ["revenue/OFFERING_FAMILIES.md"]
+    },
+    {
+      "id": "expertise-reproducibility-review",
+      "capability": "reproducibility_review",
+      "title": "Reproducibility review",
+      "summary": "A review of whether a result can be reproduced from pinned inputs, versions, hashes, commands, and acceptance evidence.",
+      "buyer_job": "Convert a one-off technical result into a repeatable evidence package another operator can verify.",
+      "formats": ["written_assessment", "design_review"],
+      "inputs": ["Claim or result to reproduce", "Available source/version pins", "Current run commands and artifacts"],
+      "deliverables": ["Reproducibility gap list", "Required pins, hashes, and commands", "Minimal independent verification procedure"],
+      "acceptance": ["Every required dependency is pinned or marked unresolved", "The verification procedure states exact expected evidence", "No unavailable artifact is represented as reproduced"],
+      "commercial": {"mode": "QUOTE_ONLY", "amount_usd": null, "unit": null, "checkout_reference": null, "buyer_route": "mailto:tokenjunkielabs@gmail.com?subject=Reproducibility%20review"},
+      "source_evidence": ["revenue/OFFERING_FAMILIES.md"]
+    },
+    {
+      "id": "expertise-evidence-architecture-review",
+      "capability": "evidence_architecture",
+      "title": "Evidence architecture review",
+      "summary": "Design review for receipts, provenance, state transitions, and claims so operational truth remains auditable across systems.",
+      "buyer_job": "Know exactly what evidence must exist before a workflow can safely claim sent, accepted, delivered, paid, settled, or complete.",
+      "formats": ["written_assessment", "design_review", "embedded_engagement"],
+      "inputs": ["Current states and claims", "Systems that emit relevant evidence", "Required downstream audit or operator decisions"],
+      "deliverables": ["Evidence/state matrix", "Source-of-truth and receipt boundaries", "Fail-closed rules for missing or contradictory evidence"],
+      "acceptance": ["Each consequential claim names its required evidence", "Unknown and unknown-effect states are representable", "No state transition depends only on self-reported success text"],
+      "commercial": {"mode": "QUOTE_ONLY", "amount_usd": null, "unit": null, "checkout_reference": null, "buyer_route": "mailto:tokenjunkielabs@gmail.com?subject=Evidence%20architecture%20review"},
+      "source_evidence": ["revenue/OFFERING_FAMILIES.md"]
+    },
+    {
+      "id": "expertise-carrier-resource-routing-review",
+      "capability": "carrier_resource_routing",
+      "title": "Carrier and resource routing review",
+      "summary": "A review of how work, credentials, receipts, and resources cross agents, connectors, runtimes, and human handoffs.",
+      "buyer_job": "Reduce brittle handoffs and duplicated work in a multi-agent or multi-tool operating system.",
+      "formats": ["written_assessment", "design_review", "embedded_engagement"],
+      "inputs": ["Current agent/tool topology", "Allowed carriers and trust boundaries", "One or more known routing failures or bottlenecks"],
+      "deliverables": ["Routing topology and ownership map", "Handoff and deconfliction rules", "Recommendations for receipt, credential, and retry boundaries"],
+      "acceptance": ["Ownership is explicit at each handoff", "Credential material is separated from public routing metadata", "Duplicate or stale work has a deterministic resolution rule"],
+      "commercial": {"mode": "QUOTE_ONLY", "amount_usd": null, "unit": null, "checkout_reference": null, "buyer_route": "mailto:tokenjunkielabs@gmail.com?subject=Carrier%20and%20resource%20routing%20review"},
+      "source_evidence": ["revenue/OFFERING_FAMILIES.md"]
+    },
+    {
+      "id": "expertise-muhlnickel-titan-consultation",
+      "capability": "muhlnickel_titan_technical_consultation",
+      "title": "Muhlnickel / Titan technical consultation",
+      "summary": "A bounded technical consultation on Muhlnickel/Titan architecture, evaluation, machine boundaries, and keep-or-build decisions; this does not reuse the separate $45,000 build SKU as an hourly price.",
+      "buyer_job": "Get a decision-ready technical consultation before deciding whether a larger Muhlnickel/Titan build engagement is justified.",
+      "formats": ["advisory_hour", "written_assessment", "design_review"],
+      "inputs": ["Bounded technical objective", "Relevant sanitized architecture or evaluation context", "Decision that must follow the consultation"],
+      "deliverables": ["Technical assessment tied to supplied context", "Keep/build/measure recommendations", "Explicit unresolved assumptions and next evidence to gather"],
+      "acceptance": ["Recommendations are separated from unknowns", "The larger Titan build SKU is not represented as purchased or included", "No implementation or transfer is implied unless separately scoped"],
+      "commercial": {"mode": "QUOTE_ONLY", "amount_usd": null, "unit": null, "checkout_reference": null, "buyer_route": "mailto:tokenjunkielabs@gmail.com?subject=Muhlnickel%20Titan%20technical%20consultation"},
+      "source_evidence": ["revenue/OFFERING_FAMILIES.md", "land/sku-muhlnickel-titan-20260826.md"]
+    }
+  ]
+}
