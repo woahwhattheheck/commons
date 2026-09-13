@@ -263,11 +263,11 @@ def validate_bundle(bundle: Any) -> dict[str, Any]:
         if source is None:
             errors.append(_err("PUBLIC_SOURCE_MISSING", cid))
             continue
-        action = source.get("public_action")
-        if action == "withhold":
+        public_release_mode = source.get("public_action")
+        if public_release_mode == "withhold":
             errors.append(_err("WITHHELD_RECORD_PUBLISHED", cid))
             continue
-        if action not in {"publish_full", "publish_redacted"}:
+        if public_release_mode not in {"publish_full", "publish_redacted"}:
             continue
 
         for field in (
@@ -282,7 +282,7 @@ def validate_bundle(bundle: Any) -> dict[str, Any]:
             if row.get(field) != source.get(field):
                 errors.append(_err("PUBLIC_METADATA_MISMATCH", cid, field))
 
-        expected_redacted = action == "publish_redacted"
+        expected_redacted = public_release_mode == "publish_redacted"
         if row.get("redacted") is not expected_redacted:
             errors.append(_err("PUBLIC_REDACTION_FLAG_MISMATCH", cid))
         expected_hash = source.get("public_document_sha256") if expected_redacted else source.get("target_sha256")
@@ -295,8 +295,8 @@ def validate_bundle(bundle: Any) -> dict[str, Any]:
             errors.append(_err("PUBLIC_SEARCH_TERMS_MISMATCH", cid))
 
     for cid, source in sorted(contracts.items()):
-        action = source.get("public_action")
-        if action in {"publish_full", "publish_redacted"} and cid not in public_by_id:
+        public_release_mode = source.get("public_action")
+        if public_release_mode in {"publish_full", "publish_redacted"} and cid not in public_by_id:
             errors.append(_err("PUBLIC_RECORD_MISSING", cid))
 
     raw_vendor_docs = bundle.get("vendor_documents")
