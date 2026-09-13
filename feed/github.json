@@ -1,9 +1,9 @@
 {
   "counts": {
-    "open_issues": 63,
-    "open_pull_requests": 37,
+    "open_issues": 64,
+    "open_pull_requests": 41,
     "runs_in_progress": 17,
-    "runs_queued": 1447
+    "runs_queued": 1431
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -67,6 +67,50 @@
   ],
   "newest_pulls": [
     {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zkfp7c2/hotel-room-turn-evidence-pilot",
+      "created_at": "2026-09-13T15:37:10Z",
+      "draft": false,
+      "head_sha": "1980d5a6cd6ef5188832c6b48de7ee4a29501d85",
+      "number": 14054,
+      "title": "revenue: land $2,500 hotel room-turn evidence pilot fulfillment",
+      "updated_at": "2026-09-13T15:37:10Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zcb-h8n6/outbound-route-guard-compose-20260913",
+      "created_at": "2026-09-13T15:35:22Z",
+      "draft": false,
+      "head_sha": "b4421f8666b75046934645c7d8cdbe6d7c8ea5af",
+      "number": 14053,
+      "title": "Compose route lifecycle into the outbound send guard",
+      "updated_at": "2026-09-13T15:37:52Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zchq-q7n4/route-quarantine-20260913",
+      "created_at": "2026-09-13T15:32:41Z",
+      "draft": false,
+      "head_sha": "9751d884a8780ee5ccdf83f66112b3bf9caf65af",
+      "number": 14052,
+      "title": "feat(outbound): quarantine failed delivery routes before resend",
+      "updated_at": "2026-09-13T15:37:36Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zlck8v4/uiowa-authority-currentness",
+      "created_at": "2026-09-13T15:32:05Z",
+      "draft": false,
+      "head_sha": "2d8d7706be5ca0115e1749fd5a2cb5bd73e143a8",
+      "number": 14048,
+      "title": "fix(uiowa): bind evidence authority and currentness",
+      "updated_at": "2026-09-13T15:32:05Z"
+    },
+    {
       "author": "AURELIAN-AUTO",
       "base": "main",
       "branch": "aurelian/fix-issue-13856",
@@ -86,7 +130,7 @@
       "head_sha": "457ffa2ce5eacf467c603e1d05d6e2a0bf6bda11",
       "number": 14010,
       "title": "fix(revenue): harden Jersey DN827803 qualification authority v2",
-      "updated_at": "2026-09-13T15:06:41Z"
+      "updated_at": "2026-09-13T15:34:12Z"
     },
     {
       "author": "woahwhattheheck",
@@ -131,50 +175,6 @@
       "number": 13910,
       "title": "Revenue: authenticate pursuit portfolio authority and file custody",
       "updated_at": "2026-09-13T14:38:24Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zmbq5t8/warranty-rma-ops-20260913",
-      "created_at": "2026-09-13T14:11:49Z",
-      "draft": false,
-      "head_sha": "0ad7356c59a25f47dac74c2a4a744c334a8397fa",
-      "number": 13902,
-      "title": "Ship Warranty & RMA Operations Desk",
-      "updated_at": "2026-09-13T14:26:12Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zav-s8q3/security-questionnaire-desk-20260913",
-      "created_at": "2026-09-13T14:10:41Z",
-      "draft": false,
-      "head_sha": "54fa9ce0b97e2457aebb087fd4b6f9fdd979536e",
-      "number": 13901,
-      "title": "Build evidence-bound security questionnaire fulfillment desk",
-      "updated_at": "2026-09-13T14:43:24Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zfa/commercial-terms-lineage-20260913",
-      "created_at": "2026-09-13T13:52:52Z",
-      "draft": false,
-      "head_sha": "0a86059fec8319f9b3782e833089d76847bc408b",
-      "number": 13877,
-      "title": "revenue: add source-bound commercial terms exception lineage",
-      "updated_at": "2026-09-13T14:09:05Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zmt/reference-authority-20260913-j8q5",
-      "created_at": "2026-09-13T13:46:22Z",
-      "draft": false,
-      "head_sha": "2d1fb3e3cff82f036a977036706dbaa6749c8459",
-      "number": 13874,
-      "title": "Revenue: add evidence-bound reference authority registry",
-      "updated_at": "2026-09-13T14:19:03Z"
     }
   ],
   "open_heads": {
@@ -186,7 +186,7 @@
     "13692": "c2df4039c06d34123e9aaa31ff0a04c405760c62",
     "13695": "80c722fbe7ab7dd711ce01987bea50c900ad673e",
     "13701": "437f3e033ae351d825dc7761432a11a78e528b03",
-    "13702": "fc0496de6800ccf2532663074e165f1b43127f0e",
+    "13702": "61ec59511def6e18abafe404a07f12eae05170d4",
     "13712": "e5d13ab500ff195dd85df2728f85794dab2fe048",
     "13740": "dc8de234ed4da90cdbaece2e1d06b9c6925cdf2e",
     "13741": "233642dbbf5dc85ef443a2e34d2bdb9406163b21",
@@ -214,12 +214,27 @@
     "13997": "a112441153ab11b7140d7b10b58967936c83edb8",
     "13999": "2182d07cd8750087a73f2aea2455890d75daf251",
     "14010": "457ffa2ce5eacf467c603e1d05d6e2a0bf6bda11",
-    "14047": "6603cfcd38e155abc0d5f30ffa0cca6be4e5af35"
+    "14047": "6603cfcd38e155abc0d5f30ffa0cca6be4e5af35",
+    "14048": "2d8d7706be5ca0115e1749fd5a2cb5bd73e143a8",
+    "14052": "9751d884a8780ee5ccdf83f66112b3bf9caf65af",
+    "14053": "b4421f8666b75046934645c7d8cdbe6d7c8ea5af",
+    "14054": "1980d5a6cd6ef5188832c6b48de7ee4a29501d85"
   },
-  "pulls_listed": 37,
+  "pulls_listed": 41,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 85.1,
+  "queue_depth_per_runner": 84.2,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zet-v7q4/gosim-pareto-task-generation-20260913",
+      "closed_at": "2026-09-13T15:37:10Z",
+      "head_sha": "cec85bd487b43e1dd2175983837771480d2e30b0",
+      "merged_at": "2026-09-13T15:37:10Z",
+      "number": 14050,
+      "state": "MERGED",
+      "title": "GOSIM: fence Pareto comparisons by exact task generation"
+    },
     {
       "author": "AURELIAN-AUTO",
       "base": "main",
@@ -366,28 +381,17 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "zdc-j8t2/scorm-assurance-hardening-20260913",
-      "closed_at": "2026-09-13T14:57:51Z",
-      "head_sha": "cd832e7a35c41e90df42b7fd6db2797dd5afc6e8",
-      "merged_at": "2026-09-13T14:57:51Z",
-      "number": 14019,
+      "branch": "codex/commons-context-dispatch-compiler-resource-20260913-01",
+      "closed_at": "2026-09-13T13:17:50Z",
+      "head_sha": "65563ce53fe262337d02e0b62ffceb440fa2d6f2",
+      "merged_at": "2026-09-13T13:17:49Z",
+      "number": 13853,
       "state": "MERGED",
-      "title": "Fix-forward: harden SCORM manifest authority and file custody"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zsol13/uiowa-rfq18649-paid-workshare-clean",
-      "closed_at": "2026-09-13T14:57:19Z",
-      "head_sha": "45c2e419dab33ee807cb0f6d35e65005fc7a565a",
-      "merged_at": "2026-09-13T14:57:19Z",
-      "number": 14032,
-      "state": "MERGED",
-      "title": "revenue: land University of Iowa RFQ 18649 paid technical workshare"
+      "title": "Resources: activate bounded context dispatch compiler"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-13T15:24:13Z",
+  "unchanged_since": "2026-09-13T15:38:00Z",
   "undatable_pulls": []
 }
