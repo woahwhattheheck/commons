@@ -10,11 +10,11 @@ The compiler accepts one strict JSON object containing:
 
 - one opaque questionnaire identity, source ref, and SHA-256;
 - exact question rows (`BOOLEAN`, `TEXT`, `ENUM`, or `MULTI`) with immutable source refs/digests and an explicit `GENERAL` or `CERTIFICATION` assurance kind;
-- an evidence library with immutable evidence IDs, claim key/value, statement, evidence kind, `PUBLIC` / `NON_PUBLIC` disclosure, source ref/digest, capture time, and freshness window;
+- an evidence library with immutable evidence IDs, an explicit supported question ID plus exact question source-row SHA-256, claim key/value, statement, evidence kind, `PUBLIC` / `NON_PUBLIC` disclosure, source ref/digest, capture time, and freshness window;
 - exactly one proposed answer per question; and
 - optional owner dispositions bound to the exact compiled `answer_generation_sha256`.
 
-A `SUPPORTED_PROPOSED_ANSWER` requires current cited evidence. Evidence with the same claim key but conflicting claim values makes the answer `HOLD`. A `CERTIFICATION` question cannot be supported unless at least one current cited row is explicitly `CERTIFICATION_REFERENCE`; otherwise it `HOLD`s instead of minting a certification from generic documents or owner prose. Future/stale evidence cannot support a measured answer.
+A `SUPPORTED_PROPOSED_ANSWER` requires current cited evidence scoped to that exact question ID and question source-row SHA-256; unrelated evidence forces `HOLD` with `EVIDENCE_SCOPE_MISMATCH`. Evidence with the same claim key but conflicting claim values makes the answer `HOLD`. A `CERTIFICATION` question cannot be supported unless at least one current cited row is explicitly `CERTIFICATION_REFERENCE`; otherwise it `HOLD`s instead of minting a certification from generic documents or owner prose. Future/stale evidence cannot support a measured answer.
 
 `NON_PUBLIC` evidence may appear in the internal owner-review packet. The generated `public-safe.json` strips all non-public statements/source refs and degrades a supported answer that depends on private evidence to `UNMEASURED`. The public-safe artifact is not a buyer-send action; it is only a leak-resistant projection.
 
@@ -72,8 +72,8 @@ python -m py_compile \
   revenue/security_questionnaire_desk/test_security_questionnaire_desk.py
 ```
 
-Coverage includes deterministic replay/order invariance, unsupported certification, stale/future/conflicting evidence, exact owner-generation binding, changed evidence/question input, packet receipt tamper, evidence expiry at verify time, duplicate JSON keys, bool/int and float traps, secret/PII-shaped material, private-evidence public-export stripping, create-exclusive publication, final symlink refusal, descriptor-bound input, and absence of a caller-controlled production clock.
+Coverage includes deterministic replay/order invariance, cross-question evidence rejection, unsupported certification, stale/future/conflicting evidence, exact owner-generation binding, changed evidence/question input, packet receipt tamper, evidence expiry at verify time, duplicate JSON keys, bool/int and float traps, secret/PII-shaped material, private-evidence public-export stripping, create-exclusive publication, final symlink refusal, descriptor-bound input, and absence of a caller-controlled production clock.
 
 ## Authority ceiling
 
-This product has **no authority** to contact a buyer/customer, send a questionnaire, access a CRM/provider/account, run a security scanner, create a certification/compliance claim, sign a contract, publish/promote the catalog candidate, create checkout, charge/refund/move money, or recognize revenue. The existing candidate price/status are read-only catalog facts and are not promoted by this carrier.
+This product has **no authority** to contact a buyer/customer, send a questionnaire, access a CRM/provider/account, run a security scanner, create a certification/compliance claim, sign a contract, publish/promote the catalog candidate, create checkout, charge/refund/move money, or recognize revenue. The existing candidate price/status are read-only catalog facts.

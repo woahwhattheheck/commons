@@ -66,6 +66,8 @@ def fixture():
         "evidence": [
             {
                 "evidence_id": "ev-access",
+                "supports_question_id": "q-access",
+                "supports_question_source_sha256": SHA_B,
                 "claim_key": "access.policy",
                 "claim_value": "yes",
                 "statement": "The public policy documents restricted administrative access.",
@@ -78,6 +80,8 @@ def fixture():
             },
             {
                 "evidence_id": "ev-retention-private",
+                "supports_question_id": "q-retention",
+                "supports_question_source_sha256": SHA_D,
                 "claim_key": "data.retention",
                 "claim_value": "documented",
                 "statement": "Owner-attested retention practice is documented internally.",
@@ -222,6 +226,8 @@ class DeskTests(unittest.TestCase):
         data = fixture()
         data["evidence"].append({
             "evidence_id": "ev-cert",
+            "supports_question_id": "q-cert",
+            "supports_question_source_sha256": SHA_C,
             "claim_key": "cert.requested",
             "claim_value": "yes",
             "statement": "A current third-party report reference explicitly records the certification.",
@@ -258,6 +264,14 @@ class DeskTests(unittest.TestCase):
         data["proposed_answers"][0]["evidence_ids"].append("ev-access-no")
         packet = sq.compile_packet(data, NOW)
         self.assertIn("CONFLICTING_EVIDENCE:access.policy", row(packet, "q-access")["reasons"])
+
+    def test_cross_question_evidence_scope_holds(self):
+        data = fixture()
+        data["proposed_answers"][2]["evidence_ids"] = ["ev-access"]
+        packet = sq.compile_packet(data, NOW)
+        retention = row(packet, "q-retention")
+        self.assertEqual(retention["state"], "HOLD")
+        self.assertIn("EVIDENCE_SCOPE_MISMATCH:ev-access", retention["reasons"])
 
     def test_cross_question_unknown_evidence_rejected(self):
         data = fixture()

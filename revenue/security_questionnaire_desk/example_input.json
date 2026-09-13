@@ -41,6 +41,8 @@
   "evidence": [
     {
       "evidence_id": "ev-access",
+      "supports_question_id": "q-access",
+      "supports_question_source_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
       "claim_key": "access.policy",
       "claim_value": "yes",
       "statement": "The public policy documents restricted administrative access.",
@@ -53,6 +55,8 @@
     },
     {
       "evidence_id": "ev-retention-private",
+      "supports_question_id": "q-retention",
+      "supports_question_source_sha256": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
       "claim_key": "data.retention",
       "claim_value": "documented",
       "statement": "Owner-attested retention practice is documented internally.",
@@ -69,7 +73,9 @@
       "question_id": "q-access",
       "answer": "YES",
       "state": "SUPPORTED_PROPOSED_ANSWER",
-      "evidence_ids": ["ev-access"]
+      "evidence_ids": [
+        "ev-access"
+      ]
     },
     {
       "question_id": "q-cert",
@@ -81,7 +87,9 @@
       "question_id": "q-retention",
       "answer": "A retention practice is documented for owner review.",
       "state": "SUPPORTED_PROPOSED_ANSWER",
-      "evidence_ids": ["ev-retention-private"]
+      "evidence_ids": [
+        "ev-retention-private"
+      ]
     }
   ],
   "owner_dispositions": []

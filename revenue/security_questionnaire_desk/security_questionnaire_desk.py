@@ -279,6 +279,8 @@ class Question:
 @dataclass(frozen=True)
 class Evidence:
     evidence_id: str
+    supports_question_id: str
+    supports_question_source_sha256: str
     claim_key: str
     claim_value: str
     statement: str
@@ -340,9 +342,11 @@ def _normalize_question(obj: Any, index: int) -> Question:
 def _normalize_evidence(obj: Any, index: int) -> Evidence:
     where = f"evidence[{index}]"
     row = _expect_dict(obj, where)
-    expected = {"evidence_id", "claim_key", "claim_value", "statement", "kind", "disclosure", "source_ref", "source_sha256", "captured_at", "fresh_for_days"}
+    expected = {"evidence_id", "supports_question_id", "supports_question_source_sha256", "claim_key", "claim_value", "statement", "kind", "disclosure", "source_ref", "source_sha256", "captured_at", "fresh_for_days"}
     _expect_exact_keys(row, expected, where)
     eid = _expect_text(row["evidence_id"], f"{where}.evidence_id", max_len=MAX_SHORT, id_like=True)
+    supports_qid = _expect_text(row["supports_question_id"], f"{where}.supports_question_id", max_len=MAX_SHORT, id_like=True)
+    supports_qsha = _expect_sha(row["supports_question_source_sha256"], f"{where}.supports_question_source_sha256")
     claim_key = _expect_text(row["claim_key"], f"{where}.claim_key", max_len=120, claim_key=True)
     claim_value = _expect_text(row["claim_value"], f"{where}.claim_value", max_len=MAX_TEXT)
     statement = _expect_text(row["statement"], f"{where}.statement", max_len=MAX_TEXT)
@@ -356,8 +360,8 @@ def _normalize_evidence(obj: Any, index: int) -> Evidence:
     source_sha = _expect_sha(row["source_sha256"], f"{where}.source_sha256")
     captured_at = _parse_utc(row["captured_at"], f"{where}.captured_at")
     fresh_days = _expect_int(row["fresh_for_days"], f"{where}.fresh_for_days", min_value=0, max_value=3650)
-    normalized = {"evidence_id": eid, "claim_key": claim_key, "claim_value": claim_value, "statement": statement, "kind": kind, "disclosure": disclosure, "source_ref": source_ref, "source_sha256": source_sha, "captured_at": _format_utc(captured_at), "fresh_for_days": fresh_days}
-    return Evidence(eid, claim_key, claim_value, statement, kind, disclosure, source_ref, source_sha, captured_at, fresh_days, sha256_hex(canonical_bytes(normalized)))
+    normalized = {"evidence_id": eid, "supports_question_id": supports_qid, "supports_question_source_sha256": supports_qsha, "claim_key": claim_key, "claim_value": claim_value, "statement": statement, "kind": kind, "disclosure": disclosure, "source_ref": source_ref, "source_sha256": source_sha, "captured_at": _format_utc(captured_at), "fresh_for_days": fresh_days}
+    return Evidence(eid, supports_qid, supports_qsha, claim_key, claim_value, statement, kind, disclosure, source_ref, source_sha, captured_at, fresh_days, sha256_hex(canonical_bytes(normalized)))
 
 
 def _normalize_answer(obj: Any, index: int) -> ProposedAnswer:
@@ -484,7 +488,12 @@ def compile_packet(raw: Any, as_of: datetime) -> dict[str, Any]:
         cited = [evidence_map[eid] for eid in proposed.evidence_ids]
         reasons: list[str] = []
         current_rows: list[Evidence] = []
+        scoped_rows: list[Evidence] = []
         for ev in cited:
+            if ev.supports_question_id != question.question_id or ev.supports_question_source_sha256 != question.source_sha256:
+                reasons.append(f"EVIDENCE_SCOPE_MISMATCH:{ev.evidence_id}")
+                continue
+            scoped_rows.append(ev)
             current, reason = _is_current(ev, as_of)
             if current:
                 current_rows.append(ev)
@@ -493,7 +502,7 @@ def compile_packet(raw: Any, as_of: datetime) -> dict[str, Any]:
 
         effective = proposed.requested_state
         if proposed.requested_state == "SUPPORTED_PROPOSED_ANSWER":
-            if not current_rows or len(current_rows) != len(cited):
+            if not current_rows or len(current_rows) != len(cited) or len(scoped_rows) != len(cited):
                 effective = "HOLD"
             claim_values: dict[str, set[str]] = {}
             for ev in current_rows:
@@ -529,11 +538,11 @@ def compile_packet(raw: Any, as_of: datetime) -> dict[str, Any]:
                 if question.required and disposition.disposition == "APPROVED_FOR_RETURN":
                     approved_required += 1
 
-        evidence_projection = [{"evidence_id": ev.evidence_id, "evidence_sha256": ev.digest, "claim_key": ev.claim_key, "claim_value": ev.claim_value, "statement": ev.statement, "kind": ev.kind, "disclosure": ev.disclosure, "source_ref": ev.source_ref, "source_sha256": ev.source_sha256, "captured_at": _format_utc(ev.captured_at), "fresh_for_days": ev.fresh_for_days, "current_at_compile": _is_current(ev, as_of)[0]} for ev in sorted(cited, key=lambda e: e.evidence_id)]
+        evidence_projection = [{"evidence_id": ev.evidence_id, "evidence_sha256": ev.digest, "supports_question_id": ev.supports_question_id, "supports_question_source_sha256": ev.supports_question_source_sha256, "claim_key": ev.claim_key, "claim_value": ev.claim_value, "statement": ev.statement, "kind": ev.kind, "disclosure": ev.disclosure, "source_ref": ev.source_ref, "source_sha256": ev.source_sha256, "captured_at": _format_utc(ev.captured_at), "fresh_for_days": ev.fresh_for_days, "current_at_compile": _is_current(ev, as_of)[0]} for ev in sorted(cited, key=lambda e: e.evidence_id)]
         row = {"question_id": question.question_id, "question_sha256": question.digest, "section": question.section, "prompt": question.prompt, "mode": question.mode, "assurance_kind": question.assurance_kind, "required": question.required, "allowed_values": list(question.allowed_values), "source_ref": question.source_ref, "source_sha256": question.source_sha256, "answer": proposed.answer, "requested_state": proposed.requested_state, "state": effective, "reasons": sorted(set(reasons)), "evidence": evidence_projection, "answer_generation_sha256": generation, "owner_disposition": disposition_value, "owner_disposition_status": disposition_state}
         rows.append(row)
 
-        public_evidence = [{"evidence_id": ev.evidence_id, "kind": ev.kind, "source_ref": ev.source_ref, "source_sha256": ev.source_sha256, "evidence_sha256": ev.digest} for ev in sorted(current_rows, key=lambda e: e.evidence_id) if ev.disclosure == "PUBLIC"]
+        public_evidence = [{"evidence_id": ev.evidence_id, "supports_question_id": ev.supports_question_id, "supports_question_source_sha256": ev.supports_question_source_sha256, "kind": ev.kind, "source_ref": ev.source_ref, "source_sha256": ev.source_sha256, "evidence_sha256": ev.digest} for ev in sorted(current_rows, key=lambda e: e.evidence_id) if ev.disclosure == "PUBLIC"]
         private_dependency = any(ev.disclosure == "NON_PUBLIC" for ev in cited)
         public_answer = proposed.answer
         public_state = effective
