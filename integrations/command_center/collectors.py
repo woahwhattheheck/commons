@@ -16,6 +16,8 @@ from datetime import datetime, timedelta, timezone
 from time import monotonic
 from urllib.parse import quote, urlencode
 
+from .request_budget import RequestBudget, RequestDeferred
+
 REPO = re.compile(r"^[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+$")
 HOUSEKEEPING = {"channel_join", "channel_leave", "channel_topic", "channel_purpose",
                 "channel_name", "channel_archive", "channel_unarchive"}
@@ -53,8 +55,9 @@ def link(url):
 
 
 class SourceFailure(RuntimeError):
-    def __init__(self, code):
+    def __init__(self, code, metadata=None):
         self.code = re.sub(r"[^A-Za-z0-9_.:-]", "_", str(code))[:120]
+        self.metadata = metadata or {}
         super().__init__(self.code)
 
 
@@ -77,6 +80,8 @@ class LiveCollectors:
         self.max_workers = self._bound(self.config.get("max_workers", 4), 1, 4)
         self.refresh_deadline_seconds = self._bound(self.config.get("refresh_deadline_seconds", 180), 1, 600)
         self.cancel_event, self.deadline = cancel_event, None
+        self.request_budget = RequestBudget(getattr(store, "state_dir", None),
+            fallback_seconds=self.config.get("rate_limit_fallback_seconds", 60))
         self.lookback_days = self._bound(self.github_config.get("lookback_days", 14), 1, 90)
         if equipment is None:
             from integrations.shared_equipment.provider_io import GitHubSlackEquipment
@@ -117,15 +122,44 @@ class LiveCollectors:
         try:
             self._check_deadline()
             return reader()
+        except RequestDeferred as exc:
+            # This read was deferred. Preserve the last source snapshot.
+            return {"deferred": {"source_id": source["id"], "provider": source["provider"],
+                    "scope": exc.scope, "reason": exc.reason,
+                    "retry_not_before": exc.retry_not_before}}
         except Exception as exc:
             # Provider messages may contain private request data; retain fixed codes.
-            return self._batch(source, [], complete=False,
-                               error=getattr(exc, "code", type(exc).__name__),
+            extra = getattr(exc, "metadata", {}) if isinstance(exc, SourceFailure) else {}
+            return self._batch({**source, "metadata": {"request_budget": extra}} if extra else source,
+                               [], complete=False, error=getattr(exc, "code", type(exc).__name__),
                                notes=["Read failed; retain previous source items and last good activity."])
 
     def _github(self, endpoint):
         self._check_deadline()
-        return self.equipment.github(endpoint, method="GET")
+        scope = "github:GET"
+        self.request_budget.acquire(scope)
+        try:
+            return self.equipment.github(endpoint, method="GET")
+        except Exception as exc:
+            if getattr(exc, "http_status", None) == 429 or getattr(exc, "code", None) == "github_rate_limited":
+                reset = getattr(exc, "rate_limit_reset", None) if getattr(exc, "rate_limit_remaining", None) == 0 else None
+                retry = self.request_budget.rate_limited(scope, getattr(exc, "retry_after", None), reset_at=reset)
+                raise SourceFailure("github_rate_limited", {"http_status": getattr(exc, "http_status", None),
+                    "rate_limit_remaining": getattr(exc, "rate_limit_remaining", None),
+                    "rate_limit_reset": reset, **retry}) from None
+            raise
+
+    def _slack_read(self, method, payload):
+        self._check_deadline()
+        scope = "slack:" + method
+        self.request_budget.acquire(scope)
+        response = self.equipment.slack(method, payload)
+        if isinstance(response, dict) and response.get("ok") is not True:
+            if response.get("status") == 429 or response.get("error") == "ratelimited":
+                retry = self.request_budget.rate_limited(scope, response.get("retry_after"))
+                raise SourceFailure("slack_rate_limited", {"http_status": response.get("status"),
+                    **retry}) from None
+        return response
 
     def _pages(self, endpoint, key=None):
         result, total, incomplete, seen_ids = [], None, False, set()
@@ -205,10 +239,13 @@ class LiveCollectors:
             items.append({"id": "github:pr:" + repo + "#" + str(number), "kind": "pull_request",
                 "title": text(row.get("title"), 500), "status": status,
                 "owner": row.get("user", {}).get("login"), "project": repo,
+                "created_at": timestamp(row.get("created_at")),
                 "updated_at": timestamp(row.get("updated_at")),
                 "activity_observed_at": timestamp(row.get("updated_at")), "url": url,
                 "summary": text(row.get("body")), "next_action": None,
                 "refs": {"repository": repo, "number": number, "draft": row.get("draft"),
+                         "merged_at": timestamp(row.get("pull_request", {}).get("merged_at")),
+                         "closed_at": timestamp(row.get("closed_at")),
                          "assignees": [x.get("login") for x in row.get("assignees", [])],
                          "labels": [x.get("name") for x in row.get("labels", [])]},
                 "actions": link(url)})
@@ -250,7 +287,7 @@ class LiveCollectors:
             if cursor:
                 payload["cursor"] = cursor
             self._check_deadline()
-            response = self.equipment.slack("conversations.history", payload)
+            response = self._slack_read("conversations.history", payload)
             if not isinstance(response, dict) or response.get("ok") is not True:
                 raise SourceFailure(response.get("error", "slack_response_shape") if isinstance(response, dict) else "slack_response_shape")
             # Missing/malformed history is unknown, not a complete empty source.
@@ -360,7 +397,7 @@ class LiveCollectors:
         # Cooperative deadline: in-flight provider reads finish under their own
         # timeout, and the executor is joined before the caller releases its lock.
         self.deadline = monotonic() + self.refresh_deadline_seconds
-        results, tasks = [], []
+        results, tasks, deferred = [], [], []
         if self.github_config.get("enabled", True):
             identity_source = self._source("github:identity", "GitHub", "Existing GitHub account", {})
             try:
@@ -374,10 +411,14 @@ class LiveCollectors:
                                    lambda: self._repository_batch(login))
                 prs = self._safe(self._source("github:prs", "GitHub", "Pull requests", {"author_or_owner": login}),
                                  lambda: self._pull_requests(login))
-                results.extend([repos, prs])
+                for batch in (repos, prs):
+                    if "deferred" in batch:
+                        deferred.append(batch["deferred"])
+                    else:
+                        results.append(batch)
                 candidates = {}
                 cutoff = (datetime.now(UTC) - timedelta(days=self.lookback_days)).isoformat().replace("+00:00", "Z")
-                for item in repos["items"] + prs["items"]:
+                for item in repos.get("items", []) + prs.get("items", []):
                     if item.get("updated_at") and item["updated_at"] >= cutoff:
                         candidates[item["project"]] = max(candidates.get(item["project"], ""), item["updated_at"])
                 explicit = [self._repository(repo) for repo in self.github_config.get("working_repositories", [])]
@@ -386,14 +427,22 @@ class LiveCollectors:
                 for repo in selected[:cap]:
                     source = self._source("github:actions:" + repo, "GitHub", repo + " builds", {"repository": repo})
                     tasks.append((source, lambda repo=repo: self._actions(repo)))
-                repos["source"]["metadata"] = {"action_repositories_selected": selected[:cap],
-                                                "action_repositories_pending": selected[cap:cap + 100],
-                                                "action_repositories_pending_count": max(0, len(selected) - cap)}
-                if selected[cap:]:
-                    repos["source"]["coverage"]["notes"].append(
-                        str(len(selected[cap:])) + " additional working repositories exceed the Actions collection cap.")
+                if "source" in repos:
+                    repos["source"].setdefault("metadata", {}).update({
+                        "action_repositories_selected": selected[:cap],
+                        "action_repositories_pending": selected[cap:cap + 100],
+                        "action_repositories_pending_count": max(0, len(selected) - cap)})
+                    if selected[cap:]:
+                        repos["source"]["coverage"]["notes"].append(
+                            str(len(selected[cap:])) + " additional working repositories exceed the Actions collection cap.")
+            except RequestDeferred as exc:
+                deferred.append({"source_id": identity_source["id"], "provider": "GitHub",
+                    "scope": exc.scope, "reason": exc.reason,
+                    "retry_not_before": exc.retry_not_before})
             except Exception as exc:
-                results.append(self._batch(identity_source, [], False, error=getattr(exc, "code", type(exc).__name__)))
+                extra = getattr(exc, "metadata", {}) if isinstance(exc, SourceFailure) else {}
+                results.append(self._batch({**identity_source, "metadata": {"request_budget": extra}}
+                    if extra else identity_source, [], False, error=getattr(exc, "code", type(exc).__name__)))
         for channel in self.slack_config.get("channels", []):
             if not isinstance(channel, dict) or not re.fullmatch(r"[CG][A-Z0-9]+", str(channel.get("id", ""))):
                 raise ValueError("Slack channels need an existing provider id.")
@@ -414,7 +463,11 @@ class LiveCollectors:
                     continue
                 futures.append(executor.submit(self._safe, source, reader))
             for future in as_completed(futures):
-                results.append(future.result())
+                batch = future.result()
+                if "deferred" in batch:
+                    deferred.append(batch["deferred"])
+                else:
+                    results.append(batch)
         # Serialize writes; provider concurrency never shares a Store transaction.
         for batch in results:
             payload = {key: value for key, value in batch.items() if key != "operation_id"}
@@ -422,4 +475,6 @@ class LiveCollectors:
                 json.dumps(payload, sort_keys=True, default=str).encode()).hexdigest()
         receipts = [self.store.ingest(batch) for batch in results]
         return {"observed_at": self.clock(), "sources": [batch["source"] for batch in results],
-                "items_observed": sum(len(batch["items"]) for batch in results), "receipts": receipts}
+                "items_observed": sum(len(batch["items"]) for batch in results), "receipts": receipts,
+                "deferred_sources": sorted(deferred, key=lambda row: row["source_id"]),
+                "request_budget": self.request_budget.metrics()}

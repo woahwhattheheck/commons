@@ -42,7 +42,11 @@
   filters.marketing.tab='deal';
   const sources=()=>list(snapshot&&snapshot.sources), items=()=>list(snapshot&&snapshot.items);
   const source=i=>sources().find(s=>s.id===i.source_id)||{};
-  const stale=s=>s.stale===true||!s.observed_at||!Number.isFinite(Date.parse(s.observed_at))||(typeof s.stale_after_seconds==='number'&&Date.now()-Date.parse(s.observed_at)>s.stale_after_seconds*1000);
+  const sourceRead=s=>s.last_good_observed_at;
+  const stale=s=>s.stale===true||s.data_stale===true||!!s.error||s.retained_last_good===true||!sourceRead(s)||!Number.isFinite(Date.parse(sourceRead(s)))||Date.parse(sourceRead(s))-Date.now()>300000||s.stale_after_seconds===null||(typeof s.stale_after_seconds==='number'&&Date.now()-Date.parse(sourceRead(s))>s.stale_after_seconds*1000);
+  const latestIngest=i=>typeof i.last_seen_at==='string'&&i.last_seen_at!==''&&i.last_seen_at===source(i).last_success_at;
+  const currentObservation=i=>latestIngest(i)&&!stale(source(i));
+  const observationLabel=i=>currentObservation(i)?'current observation':'retained / stale observation';
   const provider=i=>text(first(i.provider,source(i).provider,'Unknown provider'));
   const project=i=>text(first(i.project,'Unassigned project'));
   const failed=i=>i.needs_attention===true||/failed|failure|error|blocked|uncertain|needs_attention|rejected/i.test(text(i.status));
@@ -92,11 +96,11 @@
     if(view==='inbox'){fillSelect('inbox-filter-channel',all.filter(i=>i.kind==='slack_thread').map(i=>text(first(field(i,'channel'),field(i,'channel_name'),source(i).label))),f.channel,'All Slack channels');document.querySelectorAll('[data-inbox-tab]').forEach(b=>{b.classList.toggle('active',b.dataset.inboxTab===f.tab);b.setAttribute('aria-pressed',String(b.dataset.inboxTab===f.tab));});}
     if(view==='marketing')document.querySelectorAll('[data-marketing-tab]').forEach(b=>{b.classList.toggle('active',b.dataset.marketingTab===f.tab);b.setAttribute('aria-pressed',String(b.dataset.marketingTab===f.tab));});
     const found=all.filter(i=>(view!=='marketing'||f.tab==='all'||i.kind===f.tab)&&(f.project==='all'||project(i)===f.project)&&(f.provider==='all'||provider(i)===f.provider)&&(f.status==='all'||text(i.status||'unknown')===f.status)&&(view!=='inbox'||(f.tab==='all'||i.kind===f.tab)&&(f.channel==='all'||i.kind==='slack_thread'&&text(first(field(i,'channel'),field(i,'channel_name'),source(i).label))===f.channel))&&[i.title,i.summary,next(i),owner(i),i.id].map(text).join(' ').toLowerCase().includes(f.q));
-    found.sort((a,b)=>(Date.parse(activity(b))||0)-(Date.parse(activity(a))||0));
+    found.sort((a,b)=>Number(currentObservation(b))-Number(currentObservation(a))||(Date.parse(activity(b))||0)-(Date.parse(activity(a))||0));
     $(view+'-note').textContent=error?'Refresh failed: '+error+'. Previous work retained.':!snapshot?'Loading connected work…':found.length+' of '+all.length+' source records · '+(snapshot.refresh?'Collector '+text(snapshot.refresh.status||'unknown')+' · ':'')+'open a row for evidence and actions.';
     const panel=$(view+'-rows');panel.replaceChildren();
     if(!found.length)panel.append(empty(snapshot?'No matching records from the returned sources. Check coverage below.':'Waiting for the work source response.'));
-    else {const table=node('table','work-table'),head=node('thead'),tr=node('tr');['Work / next action','State','Owner / project','Activity',''].forEach(t=>tr.append(node('th','',t)));head.append(tr);table.append(head);const body=node('tbody');found.slice(0,200).forEach(i=>{const r=node('tr'),title=node('td'),openButton=btn(i.title||i.id,()=>showDetail(i),'work-title');append(title,openButton,node('span','work-row-sub',provider(i)+' · '+text(i.kind).replace(/_/g,' ')),node('p','work-next',next(i)));const st=node('td');st.append(phase(i.status));if(first(owned(i).priority,i.priority)!==null)st.append(node('small','work-row-sub','Priority '+text(first(owned(i).priority,i.priority))));const own=node('td');append(own,node('span','',owner(i)),node('small','work-row-sub',project(i)));const at=node('td','work-activity',date(activity(i)));const action=node('td');action.append(btn('Inspect',()=>showDetail(i),'text-button'));append(r,title,st,own,at,action);body.append(r);});table.append(body);panel.append(table);if(found.length>200)panel.append(empty('Showing 200 matching records. Narrow the filters to inspect the rest.'));}
+    else {const table=node('table','work-table'),head=node('thead'),tr=node('tr');['Work / next action','State','Owner / project','Activity',''].forEach(t=>tr.append(node('th','',t)));head.append(tr);table.append(head);const body=node('tbody');found.slice(0,200).forEach(i=>{const r=node('tr'),title=node('td'),openButton=btn(i.title||i.id,()=>showDetail(i),'work-title');append(title,openButton,node('span','work-row-sub',provider(i)+' · '+text(i.kind).replace(/_/g,' ')),node('p','work-next',next(i)));const st=node('td');st.append(phase(i.status),phase(observationLabel(i)));if(first(owned(i).priority,i.priority)!==null)st.append(node('small','work-row-sub','Priority '+text(first(owned(i).priority,i.priority))));const own=node('td');append(own,node('span','',owner(i)),node('small','work-row-sub',project(i)));const at=node('td','work-activity',date(activity(i)));const action=node('td');action.append(btn('Inspect',()=>showDetail(i),'text-button'));append(r,title,st,own,at,action);body.append(r);});table.append(body);panel.append(table);if(found.length>200)panel.append(empty('Showing 200 matching records. Narrow the filters to inspect the rest.'));}
     renderStages(view,view==='marketing'?all.filter(i=>f.tab==='all'||i.kind===f.tab):all);renderCoverage(view);
   }
   function renderStages(view,rows){
@@ -109,7 +113,7 @@
   function renderCoverage(view){
     const root=$(view+'-coverage');root.replaceChildren();const heading=node('div','section-heading');append(heading,node('h2','','Connected source coverage'),node('span','small muted','Read time and underlying activity stay separate'));root.append(heading);
     const rows=sources();if(!rows.length){root.append(empty('No source coverage reported yet.'));return;}
-    const grid=node('div','work-source-grid');rows.forEach(s=>{const card=node('article','source-card'),head=node('div','card-top');append(head,node('h3','',s.label||s.id),phase(stale(s)?'stale / unknown read':s.status));card.append(head);const c=s.coverage||{};append(card,metadata([['Provider',s.provider],['Read',date(s.observed_at,'No successful read time')],['Activity as of',date(s.activity_as_of)],['Sync',s.sync_mode],['Coverage',c.complete===true?'Complete for stated scope':c.complete===false?'Partial':'Unknown'],['More pages',c.pagination_remaining===true?'Yes':c.pagination_remaining===false?'No':c.pagination_remaining]]));if(s.error)card.append(node('p','source-error',text(s.error)));if(s.retained_last_good)card.append(node('p','field-help','Last good observations retained.'));if(c.notes)card.append(node('p','field-help',text(c.notes)));grid.append(card);});root.append(grid);
+    const grid=node('div','work-source-grid');rows.forEach(s=>{const card=node('article','source-card'),head=node('div','card-top');append(head,node('h3','',s.label||s.id),phase(stale(s)?'stale / unknown read':s.status));card.append(head);const c=s.coverage||{};append(card,metadata([['Provider',s.provider],['Read',date(sourceRead(s),'No successful read time')],['Activity as of',date(s.activity_as_of)],['Sync',s.sync_mode],['Coverage',c.complete===true?'Complete for stated scope':c.complete===false?'Partial':'Unknown'],['More pages',c.pagination_remaining===true?'Yes':c.pagination_remaining===false?'No':c.pagination_remaining]]));if(s.error)card.append(node('p','source-error',text(s.error)));if(s.retained_last_good)card.append(node('p','field-help','Last good observations retained.'));if(c.notes)card.append(node('p','field-help',text(c.notes)));grid.append(card);});root.append(grid);
   }
   function packet(i){
     return JSON.stringify({work_id:i.id,source_id:i.source_id,title:i.title,project:i.project,owner:owner(i),objective:first(owned(i).job,i.objective,i.summary,i.title),next_action:next(i),priority:first(owned(i).priority,i.priority),prepared_job:owned(i).job??null,status:i.status,source_url:i.url,refs:i.refs,activity_observed_at:activity(i),request:"Continue this exact work from its source and latest receipt. Return an operation ID, artifacts, and actual outcome; reconcile existing work before repeating an effect."},null,2);
@@ -122,14 +126,14 @@
   }
   const controlKey=n=>JSON.stringify([n.tagName,n.id||'',n.getAttribute('href')||'',n.textContent]);
   function showDetail(i){
-    const s0=source(i),key=JSON.stringify([i.source_id,i.id,detailValue(safe(i)),s0.provider,s0.observed_at,api.getTools().map(t=>[t.name,t.runtime_id]).sort()]);
+    const s0=source(i),key=JSON.stringify([i.source_id,i.id,detailValue(safe(i)),s0.provider,s0.observed_at,s0.last_success_at,s0.last_good_observed_at,currentObservation(i),api.getTools().map(t=>[t.name,t.runtime_id]).sort()]);
     const same=detail.open&&selected&&selected.id===i.id&&selected.source_id===i.source_id;
     selected=i;if(same&&key===displayedKey)return;
     const scroll=[detail.scrollTop,detail.scrollLeft],expanded=new Set(),positions=new Map();
     const focused=same&&detail.contains(document.activeElement)?controlKey(document.activeElement):null;
     if(same)detail.querySelectorAll('details').forEach(n=>{const k=n.querySelector('summary').textContent;if(n.open)expanded.add(k);positions.set(k,[n.scrollTop,n.scrollLeft]);});
-    displayedKey=key;detail.replaceChildren();const h=node('div','dialog-heading');append(h,node('h2','',i.title||i.id),btn('×',()=>detail.close(),'icon-button'));detail.append(h,phase(i.status));
-    const s=source(i);append(detail,metadata([['Owner',owner(i)],['Project',project(i)],['Kind',i.kind],['Provider',provider(i)],['Record ID',i.id],['Priority',first(owned(i).priority,i.priority)],['Activity',date(activity(i))],['Source read',date(nativeTask(i)?nativeRead(i):s.observed_at,'Unknown read time')]]));
+    displayedKey=key;detail.replaceChildren();const h=node('div','dialog-heading');append(h,node('h2','',i.title||i.id),btn('×',()=>detail.close(),'icon-button'));detail.append(h,phase(i.status),phase(observationLabel(i)));
+    const s=source(i);append(detail,metadata([['Owner',owner(i)],['Project',project(i)],['Kind',i.kind],['Provider',provider(i)],['Record ID',i.id],['Priority',first(owned(i).priority,i.priority)],['Activity',date(activity(i))],['Source read',date(nativeTask(i)?nativeRead(i):sourceRead(s),'Unknown read time')]]));
     if(nativeTask(i))detail.append(metadata([['Conversation metadata updated',date(i.updated_at,'Unknown metadata time')]]));
     if(i.summary)append(detail,node('h3','','Source summary'),node('p','work-detail-copy',i.summary));append(detail,node('h3','','Next action'),node('p','work-detail-copy',next(i)));
     const links=node('div','button-row');append(links,anchor('Open original ↗',i.url));
@@ -155,7 +159,7 @@
   function currentWork(rows){
     const priority=i=>{const p=owned(i).priority;return (typeof p==='number'||typeof p==='string'&&p.trim()!=='')&&Number.isFinite(Number(p))&&Number(p)>=0?Number(p):Infinity;};
     return rows.filter(i=>i.countable!==false&&(failed(i)||((open(i)||(i.kind==='email'&&/^(unread|received)$/i.test(text(i.status))))&&(!['email','slack_thread','feature'].includes(i.kind)||Number.isFinite(priority(i))))))
-      .sort((a,b)=>priority(a)-priority(b)||Number(failed(b))-Number(failed(a))).slice(0,6);
+      .sort((a,b)=>priority(a)-priority(b)||Number(currentObservation(b))-Number(currentObservation(a))||Number(failed(b))-Number(failed(a))).slice(0,6);
   }
   function renderOverview(){
     if(!snapshot){
@@ -165,14 +169,14 @@
       return;
     }
     const rows=items(),exceptions=rows.filter(failed),active=rows.filter(i=>open(i)&&!['email','slack_thread','feature'].includes(i.kind)),partial=sources().filter(s=>s.error||stale(s)||s.coverage?.complete!==true);
-    const stats=[['Open work records',active.length,'From connected source states','☷'],['Needs attention',exceptions.length,'Failures, blocked, or uncertain','◎'],['Source coverage',sources().length-partial.length+' / '+sources().length,'Fresh, complete sources','◉'],['Conversation records',rows.filter(i=>['email','slack_thread'].includes(i.kind)).length,'Returned email and Slack records','✉']];
+    const stats=[['Open work records',active.filter(currentObservation).length+' / '+active.length,'Current / total · '+active.filter(i=>!currentObservation(i)).length+' retained or stale','☷'],['Needs attention',exceptions.length,'Failures, blocked, or uncertain','◎'],['Source coverage',sources().length-partial.length+' / '+sources().length,'Fresh, complete sources','◉'],['Conversation records',rows.filter(i=>['email','slack_thread'].includes(i.kind)).length,'Returned email and Slack records','✉']];
     $('focus-stats').replaceChildren(...stats.map(([title,value,note,symbol])=>{const c=node('div','stat-card'),top=node('div','stat-top');append(top,node('span','',title),node('span','stat-symbol',symbol));append(c,top,node('div','stat-value',value),node('div','stat-note',note));return c;}));
     let card=$('focus-current-work');if(!card){card=node('article','panel');card.id='focus-current-work';$('view-focus').querySelector('.main-column').insertBefore(card,$('recent-operations').parentElement);}
     card.replaceChildren();const h=node('div','panel-heading');append(h,node('h2','','Current work'),btn('Open work →',()=>api.navigate('work'),'text-button'));card.append(h);
-    card.append(node('p','field-help','Nonnegative numeric owner priority: 0 is highest; lower numbers come first. Unprioritized blocked work precedes other active work. Noncountable records remain in Work and source views.'));
+    card.append(node('p','field-help','Nonnegative numeric owner priority: 0 is highest; lower numbers come first. Unprioritized current observations precede retained or stale records, with blocked work first within each group. Noncountable records remain in Work and source views.'));
     const chosen=currentWork(rows);
     if(!chosen.length)card.append(empty('No open work in returned observations. Source coverage below may be partial.'));
-    chosen.forEach(i=>{const r=node('div','overview-work');append(r,btn(i.title||i.id,()=>showDetail(i),'work-title'),phase(i.status),node('p','work-next',owner(i)+' · '+next(i)));card.append(r);});
+    chosen.forEach(i=>{const r=node('div','overview-work');append(r,btn(i.title||i.id,()=>showDetail(i),'work-title'),phase(i.status),phase(observationLabel(i)),node('p','work-next',owner(i)+' · '+next(i)));card.append(r);});
     let cv=$('focus-work-coverage');if(!cv){cv=node('article','panel');cv.id='focus-work-coverage';$('view-focus').querySelector('.side-column').append(cv);}
     cv.replaceChildren(node('h2','','Coverage to resolve'));if(snapshot.refresh)cv.append(node('p','field-help','Collector '+text(snapshot.refresh.status||'unknown')+'. Source observations refresh independently.'));if(error)cv.append(node('p','source-error','Work refresh failed: '+error+'. Prior observations retained.'));if(!partial.length&&!error)cv.append(node('p','field-help','Returned sources report complete current coverage for their stated scopes.'));
     partial.slice(0,8).forEach(s=>append(cv,node('p','work-next',(s.label||s.id)+' · '+text(first(s.error,stale(s)?'stale or unknown read time':null,s.coverage?.notes,'coverage incomplete')))));
@@ -282,6 +286,11 @@
       else{detail.close();selected=null;}
     }
   }
+  window.addEventListener('commons-open-work',event=>{
+    const ref=event.detail||{};
+    const record=items().find(i=>i.id===ref.item_id&&i.source_id===ref.source_id);
+    if(record)showDetail(record);
+  });
   window.addEventListener('commons-state',renderAll);
   $('refresh-button').addEventListener('click',()=>refresh(true));
   setInterval(()=>{if(!document.hidden)autoRefresh();},30000);

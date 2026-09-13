@@ -243,3 +243,27 @@ test('manual refresh when idle and ordinary refresh after completion keep their 
   const h=harness();await h.ui.refresh(true);await h.ui.refresh();
   assert.deepEqual(h.requests,['/api/work?refresh=1','/api/work']);
 });
+
+
+test('current observations outrank retained claims while owner zero remains first',async()=>{
+  const seen=new Date().toISOString(), older=new Date(Date.now()-7200000).toISOString();
+  const sourceRows=[{id:'s',last_success_at:seen,last_good_observed_at:seen,observed_at:seen,
+    stale_after_seconds:3600,coverage:{complete:true}}];
+  const records=[
+    {id:'old',title:'Retained blocked',source_id:'s',kind:'task',status:'blocked',last_seen_at:older},
+    {id:'current',title:'Current open',source_id:'s',kind:'task',status:'open',last_seen_at:seen},
+    {id:'zero',title:'Owner zero',source_id:'s',kind:'task',status:'open',last_seen_at:older,owner_work:{priority:'0'}}
+  ];
+  const before=JSON.stringify(records), h=harness(records,[],sourceRows);
+  await h.ui.refresh(); h.ui.overview();
+  const card=h.document.getElementById('focus-current-work');
+  assert.deepEqual(walk(card).filter(n=>n.className==='work-title').map(n=>n.textContent),
+    ['Owner zero','Current open','Retained blocked']);
+  assert.match(content(h.document.getElementById('focus-stats').children[0]),/1 \/ 3/);
+  assert.match(content(card),/retained \/ stale observation/);
+  assert.equal(JSON.stringify(records),before);
+  sourceRows[0].last_good_observed_at=older;
+  sourceRows[0].observed_at=new Date().toISOString(); sourceRows[0].error='Fixture failed refresh';
+  await h.ui.refresh(); h.ui.overview();
+  assert.match(content(h.document.getElementById('focus-stats').children[0]),/0 \/ 3/);
+});

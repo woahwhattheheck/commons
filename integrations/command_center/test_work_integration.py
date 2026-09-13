@@ -315,7 +315,7 @@ class WorkHTTPIntegrationTest(unittest.TestCase):
                 self.assertIn(mime, response.headers["Content-Type"])
                 self.assertGreater(len(response.read()), 0)
         tools = {row["name"]: row for row in CommandCenterEquipment(self.center).tools()}
-        self.assertEqual(len(tools), 12)
+        self.assertEqual(len(tools), 17)
         self.assertIn("operation_id", tools["command_center_ingest"]["inputSchema"]["required"])
         self.assertNotIn("operation_id", tools["command_center_refresh_work"]["inputSchema"]["required"])
 
