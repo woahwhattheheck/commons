@@ -8,7 +8,10 @@ import hmac
 import json
 import re
 from collections.abc import Iterable, Mapping, Sequence
+from pathlib import Path
 from typing import Any
+
+from host.git_source_capsules import GitSourceError, collect_git_source
 
 SCHEMA = "commons-context-packet/v1"
 DIGEST_KEY = "semantic_sha256"
@@ -49,6 +52,7 @@ def _bounded(value: Any, depth: int = 0) -> Any:
         return {"text": text, "truncated": True} if cut else text
     return value if value is None or isinstance(value, (bool, int, float)) else str(value)
 
+
 def _terms(operation: str, terms: Sequence[str], paths: Sequence[str]) -> list[str]:
     found = set()
     for raw in (operation, *terms, *paths):
@@ -82,7 +86,13 @@ def _sort(rows: Iterable[dict[str, Any] | None]) -> list[dict[str, Any]]:
     return rows
 
 
-def _pick(row: Mapping[str, Any], fields: Sequence[str], operation: str, terms: Sequence[str], text_field: str | None = None) -> dict[str, Any] | None:
+def _pick(
+    row: Mapping[str, Any],
+    fields: Sequence[str],
+    operation: str,
+    terms: Sequence[str],
+    text_field: str | None = None,
+) -> dict[str, Any] | None:
     score = _score(row, operation, terms)
     if score <= 0:
         return None
@@ -106,6 +116,36 @@ def _coord_rows(value: Any) -> Iterable[Mapping[str, Any]]:
             yield from (row for row in rows.values() if isinstance(row, Mapping))
 
 
+def _source_shell(bundle: Mapping[str, Any]) -> tuple[dict[str, Any], list[dict[str, Any]]]:
+    source = {
+        "commit": bundle["commit"],
+        "tree_sha": bundle["tree_sha"],
+        "observed_main_head": bundle.get("observed_main_head"),
+        "source_commit_matches_observed_main": bundle.get("source_commit_matches_observed_main"),
+        "max_file_bytes": bundle["max_file_bytes"],
+        "requested_paths": list(bundle["requested_paths"]),
+        "capsules": [],
+    }
+    candidates: list[dict[str, Any]] = []
+    for raw in bundle["capsules"]:
+        meta = {
+            "path": raw["path"],
+            "mode": raw["mode"],
+            "blob_sha": raw["blob_sha"],
+            "content_sha256": raw["content_sha256"],
+            "bytes": raw["bytes"],
+        }
+        if raw.get("text") is None:
+            meta["text_included"] = False
+            meta["omission_reason"] = raw.get("source_omission_reason") or "NON_TEXT"
+        else:
+            meta["text_included"] = False
+            meta["omission_reason"] = "PACKET_BUDGET"
+            candidates.append({"meta": meta, "text": raw["text"]})
+        source["capsules"].append(meta)
+    return source, candidates
+
+
 def compile_packet(
     *,
     operation: str,
@@ -119,6 +159,10 @@ def compile_packet(
     paths: Sequence[str] = (),
     requested_main_head: str | None = None,
     provenance: Sequence[Mapping[str, Any]] = (),
+    git_repository: str | Path | None = None,
+    source_commit: str | None = None,
+    source_paths: Sequence[str] = (),
+    max_source_file_bytes: int = 16_384,
     max_chars: int = 12_000,
     max_events: int = 12,
     max_resources: int = 12,
@@ -131,11 +175,13 @@ def compile_packet(
     objective, objective_cut = _text(objective, 1800)
     if not objective:
         raise PacketError("objective is required")
-    if max_chars < 2048:
+    if type(max_chars) is not int or max_chars < 2048:
         raise PacketError("max_chars must be >= 2048")
     limits = {
-        "max_chars": int(max_chars), "max_events": max(0, int(max_events)),
-        "max_resources": max(0, int(max_resources)), "max_claims": max(0, int(max_claims)),
+        "max_chars": max_chars,
+        "max_events": max(0, int(max_events)),
+        "max_resources": max(0, int(max_resources)),
+        "max_claims": max(0, int(max_claims)),
         "max_coordination": max(0, int(max_coordination)),
     }
     if any(v > 256 for k, v in limits.items() if k != "max_chars"):
@@ -147,10 +193,30 @@ def compile_packet(
     observed = str(pulse.get("head") or "")
     match = None if not (requested_main_head and observed) else hmac.compare_digest(str(requested_main_head), observed)
 
+    source_requested = bool(git_repository is not None or source_commit is not None or source_paths)
+    source_bundle: dict[str, Any] | None = None
+    source_candidates: list[dict[str, Any]] = []
+    if source_requested:
+        if git_repository is None or source_commit is None or not source_paths:
+            raise PacketError("git_repository, source_commit and source_paths are required together")
+        try:
+            raw_bundle = collect_git_source(
+                git_repository,
+                source_commit,
+                source_paths,
+                max_file_bytes=max_source_file_bytes,
+            )
+        except GitSourceError as exc:
+            raise PacketError(f"git source: {exc}") from exc
+        source_bundle, source_candidates = _source_shell(raw_bundle)
+
     event_fields = ("id","from","to","ts","durable_ts","state","kind","lane","href","body")
     resource_fields = ("name","kind","stage","condition","consumer","next_action","last_used_at","stale_after","href","url")
     claim_fields = ("key","holder","state","taken_at","heartbeat_at","ttl_s","note")
-    coord_fields = ("operation","id","number","title","url","state","status","head_sha","head","base_sha","base","content_key","next_action","holder","updated_at","drift","verdicts","hosted")
+    coord_fields = (
+        "operation","id","number","title","url","state","status","head_sha","head","base_sha","base",
+        "content_key","next_action","holder","updated_at","drift","verdicts","hosted"
+    )
 
     pools = {
         "claims": _sort(_pick(r, claim_fields, operation, terms, "note") for r in claims if isinstance(r, Mapping)),
@@ -158,9 +224,16 @@ def compile_packet(
         "recent": _sort(_pick(r, event_fields, operation, terms, "body") for r in recent if isinstance(r, Mapping)),
         "resources": _sort(_pick(r, resource_fields, operation, terms) for r in (ledger.get("surfaces") or []) if isinstance(r, Mapping)),
     }
-    caps = {"claims": limits["max_claims"], "coordination": limits["max_coordination"], "recent": limits["max_events"], "resources": limits["max_resources"]}
-    packet = {
-        "schema": SCHEMA, "operation": operation, "objective": objective,
+    caps = {
+        "claims": limits["max_claims"],
+        "coordination": limits["max_coordination"],
+        "recent": limits["max_events"],
+        "resources": limits["max_resources"],
+    }
+    packet: dict[str, Any] = {
+        "schema": SCHEMA,
+        "operation": operation,
+        "objective": objective,
         "selection": {"terms": terms, "paths": paths},
         "source_fence": {
             "pulse_head": pulse_clean.get("head") if isinstance(pulse_clean, Mapping) else None,
@@ -169,29 +242,75 @@ def compile_packet(
             "requested_main_head": requested_main_head,
             "pulse_matches_requested_main": match,
         },
-        "claims": [], "coordination": [], "recent": [], "resources": [],
-        "omitted": {}, "limits": limits, "provenance": clean_prov,
+        "claims": [],
+        "coordination": [],
+        "recent": [],
+        "resources": [],
+        "omitted": {},
+        "limits": limits,
+        "provenance": clean_prov,
     }
+    if source_bundle is not None:
+        packet["git_source"] = source_bundle
     if objective_cut:
         packet["objective_truncated"] = True
 
     def refresh() -> None:
-        packet["omitted"] = {name: max(0, len(pools[name]) - len(packet[name])) for name in pools}
+        omitted: dict[str, int] = {
+            name: max(0, len(pools[name]) - len(packet[name])) for name in pools
+        }
+        if source_bundle is not None:
+            omitted_files = 0
+            omitted_bytes = 0
+            for row in source_bundle["capsules"]:
+                if not row.get("text_included"):
+                    omitted_files += 1
+                    omitted_bytes += int(row["bytes"])
+            omitted["git_source_text_files"] = omitted_files
+            omitted["git_source_text_bytes"] = omitted_bytes
+        packet["omitted"] = omitted
 
     def size() -> int:
-        probe = copy.deepcopy(packet); probe[DIGEST_KEY] = "0" * 64
+        probe = copy.deepcopy(packet)
+        probe[DIGEST_KEY] = "0" * 64
         return len(canonical(probe))
+
+    def append_rows(name: str) -> None:
+        for row in pools[name][:caps[name]]:
+            clean = _bounded({k:v for k,v in row.items() if not k.startswith("_")})
+            packet[name].append(clean)
+            refresh()
+            if size() > max_chars:
+                packet[name].pop()
+                refresh()
 
     refresh()
     if size() > max_chars:
-        raise PacketError("max_chars is too small for packet metadata/provenance")
-    for name in ("claims","coordination","recent","resources"):
-        for row in pools[name][:caps[name]]:
-            row = {k:v for k,v in row.items() if not k.startswith("_")}
-            clean = _bounded(row)
-            packet[name].append(clean); refresh()
+        raise PacketError("max_chars is too small for packet metadata/provenance/source metadata")
+
+    # Ownership and active coordination remain highest priority. Source bytes are next,
+    # then less-authoritative recent/resource context. Every omitted source stays explicit.
+    append_rows("claims")
+    append_rows("coordination")
+
+    if source_bundle is not None:
+        by_path = {row["path"]: row for row in source_bundle["capsules"]}
+        for candidate in sorted(source_candidates, key=lambda row: row["meta"]["path"]):
+            row = by_path[candidate["meta"]["path"]]
+            old_reason = row["omission_reason"]
+            row["text"] = candidate["text"]
+            row["text_included"] = True
+            row.pop("omission_reason", None)
+            refresh()
             if size() > max_chars:
-                packet[name].pop(); refresh()
+                row.pop("text", None)
+                row["text_included"] = False
+                row["omission_reason"] = old_reason
+                refresh()
+
+    append_rows("recent")
+    append_rows("resources")
+
     packet[DIGEST_KEY] = digest(packet)
     if len(canonical(packet)) > max_chars:
         raise PacketError("packet exceeded max_chars after digest")
@@ -208,8 +327,32 @@ def verify_packet(packet: Mapping[str, Any]) -> tuple[bool, str]:
     if not hmac.compare_digest(supplied, digest(semantic)):
         return False, "digest-mismatch"
     max_chars = (packet.get("limits") or {}).get("max_chars")
-    if not isinstance(max_chars, int) or len(canonical(packet)) > max_chars:
+    if type(max_chars) is not int or len(canonical(packet)) > max_chars:
         return False, "budget"
+    source = packet.get("git_source")
+    if source is not None:
+        if not isinstance(source, Mapping):
+            return False, "git-source-shape"
+        required = {"commit","tree_sha","observed_main_head","source_commit_matches_observed_main","max_file_bytes","requested_paths","capsules"}
+        if set(source) != required:
+            return False, "git-source-shape"
+        if not isinstance(source.get("requested_paths"), list) or not isinstance(source.get("capsules"), list):
+            return False, "git-source-shape"
+        if len(source["requested_paths"]) != len(source["capsules"]):
+            return False, "git-source-count"
+        if [row.get("path") for row in source["capsules"] if isinstance(row, Mapping)] != source["requested_paths"]:
+            return False, "git-source-order"
+        for row in source["capsules"]:
+            if not isinstance(row, Mapping):
+                return False, "git-source-capsule-shape"
+            if row.get("text_included") is True:
+                if not isinstance(row.get("text"), str) or "omission_reason" in row:
+                    return False, "git-source-text-shape"
+            elif row.get("text_included") is False:
+                if "text" in row or not isinstance(row.get("omission_reason"), str):
+                    return False, "git-source-omission-shape"
+            else:
+                return False, "git-source-inclusion-flag"
     return True, "ok"
 
 
@@ -219,18 +362,32 @@ def markdown(packet: Mapping[str, Any]) -> str:
         raise PacketError(f"cannot render invalid packet: {reason}")
     fence = packet.get("source_fence") or {}
     lines = [
-        "# Commons context packet", "",
+        "# Commons context packet",
+        "",
         f"- **Operation:** `{packet.get('operation','')}`",
         f"- **Digest:** `{packet.get(DIGEST_KEY,'')}`",
         f"- **Pulse:** seq `{fence.get('pulse_seq')}` · head `{fence.get('pulse_head')}`",
     ]
     if fence.get("requested_main_head"):
-        lines.append(f"- **Requested main:** `{fence.get('requested_main_head')}` · pulse match `{fence.get('pulse_matches_requested_main')}`")
+        lines.append(
+            f"- **Requested main:** `{fence.get('requested_main_head')}` · "
+            f"pulse match `{fence.get('pulse_matches_requested_main')}`"
+        )
+    source = packet.get("git_source")
+    if isinstance(source, Mapping):
+        lines += [
+            f"- **Git source commit:** `{source.get('commit','')}`",
+            f"- **Observed local main:** `{source.get('observed_main_head')}` · "
+            f"same as source `{source.get('source_commit_matches_observed_main')}`",
+        ]
     lines += ["", "## Objective", "", str(packet.get("objective") or "")]
     if packet.get("claims"):
         lines += ["", "## Ownership / claims", ""]
         for row in packet["claims"]:
-            lines.append(f"- `{row.get('key','')}` · holder `{row.get('holder','')}` · state `{row.get('state','')}` · heartbeat `{row.get('heartbeat_at','')}`")
+            lines.append(
+                f"- `{row.get('key','')}` · holder `{row.get('holder','')}` · "
+                f"state `{row.get('state','')}` · heartbeat `{row.get('heartbeat_at','')}`"
+            )
             if row.get("note"):
                 lines.append(f"  - {row['note']}")
     if packet.get("coordination"):
@@ -238,14 +395,29 @@ def markdown(packet: Mapping[str, Any]) -> str:
         for row in packet["coordination"]:
             ident = row.get("operation") or row.get("id") or row.get("number") or row.get("title") or "row"
             lines.append(f"- **{ident}** — `{canonical(row)}`")
+    if isinstance(source, Mapping):
+        lines += ["", "## Exact Git source capsules", ""]
+        for row in source.get("capsules") or []:
+            status = "included" if row.get("text_included") else f"omitted:{row.get('omission_reason')}"
+            lines.append(
+                f"- `{row.get('path','')}` · mode `{row.get('mode','')}` · blob `{row.get('blob_sha','')}` · "
+                f"sha256 `{row.get('content_sha256','')}` · bytes `{row.get('bytes')}` · {status}"
+            )
+            if row.get("text_included"):
+                lines += ["", "```text", row.get("text", ""), "```"]
     if packet.get("recent"):
         lines += ["", "## Relevant durable events", ""]
         for row in packet["recent"]:
-            lines.append(f"- `{row.get('id','')}` · {row.get('durable_ts') or row.get('ts') or ''} · {row.get('from','')}: {row.get('body','')}")
+            lines.append(
+                f"- `{row.get('id','')}` · {row.get('durable_ts') or row.get('ts') or ''} · "
+                f"{row.get('from','')}: {row.get('body','')}"
+            )
     if packet.get("resources"):
         lines += ["", "## Relevant resources", ""]
         for row in packet["resources"]:
-            detail = " · ".join(str(row.get(k)) for k in ("kind","stage","condition") if row.get(k) not in (None,""))
+            detail = " · ".join(
+                str(row.get(k)) for k in ("kind","stage","condition") if row.get(k) not in (None,"")
+            )
             lines.append(f"- **{row.get('name','')}**{(' · ' + detail) if detail else ''}")
             if row.get("next_action"):
                 lines.append(f"  - next: {row['next_action']}")
