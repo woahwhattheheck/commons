@@ -197,6 +197,7 @@ def classify(
             "selected_run_id": selected["run_id"] if selected else None,
             "selected_run_number": selected["run_number"] if selected else None,
             "selected_run_attempt": selected["run_attempt"] if selected else None,
+            "selected_jobs_inventory": selected["jobs_inventory"] if selected else None,
             "older_exact_head_run_ids": older_ids,
             "state": state,
             "reason": reason,
@@ -227,6 +228,7 @@ def classify(
             "latest_run_id": latest["run_id"],
             "latest_run_number": latest["run_number"],
             "latest_run_attempt": latest["run_attempt"],
+            "latest_jobs_inventory": latest["jobs_inventory"],
             "older_exact_head_run_ids": older_ids,
         })
 

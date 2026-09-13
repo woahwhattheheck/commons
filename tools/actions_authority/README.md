@@ -10,12 +10,13 @@ Version 1 accepted workflow display names and one caller-selected run per name, 
 - two workflow files can share or change a display name;
 - an older green run could be selected while a newer exact-head attempt was red.
 
-Input schema `commons-actions-evidence/v2` therefore requires two explicit, digest-bound descriptors:
+Input schema `commons-actions-evidence/v2` therefore requires explicit, digest-bound capture layers:
 
-1. a policy descriptor (`commons-actions-policy/v1`) with source kind/locator/digest, base ref/SHA, capture time, and required workflows identified by numeric workflow ID + canonical workflow path + display name; and
-2. an inventory contract declaring a fully paginated exact-head Actions run set with `total_count`, `pages`, and `next_url=null`.
+1. a policy descriptor (`commons-actions-policy/v1`) with source kind/locator/digest, base ref/SHA, capture time, and required workflows identified by numeric workflow ID + canonical workflow path + display name;
+2. an inventory contract declaring a fully paginated exact-head Actions run set with `total_count`, `pages`, and `next_url=null`; and
+3. a complete jobs inventory on every run, independently binding the jobs endpoint's `total_count`, pagination state, and supplied job rows.
 
-The classifier rejects workflow ID/path/name alias collisions, duplicate run numbers, internally incomplete inventory contracts, wrong-head runs, and malformed policy descriptors. For each required workflow identity it selects the greatest `run_number` from the complete inventory and binds that run's `run_attempt`; older exact-head runs are audit-only. Display names never substitute for ID/path identity.
+The classifier rejects workflow ID/path/name alias collisions, duplicate run numbers, internally incomplete run or job inventories, wrong-head runs, and malformed policy descriptors. For each required workflow identity it selects the greatest `run_number` from the complete inventory and binds that run's `run_attempt`; older exact-head runs are audit-only. Display names never substitute for ID/path identity. A caller cannot omit an assigned/executed job while retaining a zero-step backlog classification because the per-run job count and pagination contract must reconcile exactly.
 
 ## Classification is not merge permission
 
@@ -42,11 +43,11 @@ Version-1 evidence is rejected rather than silently retaining unsafe caller-cura
 - `WAIT_MISSING`: the complete inventory contains no exact-head run for a declared required workflow.
 - `HOLD`: contradictory or unsafe terminal evidence.
 
-Zero-step backlog requires no runner ID/name and null/empty steps. GitHub may populate a queued job's `started_at` with its queue timestamp before any runner is assigned, so that timestamp alone is not execution evidence. A cancelled run qualifies only if every job still proves zero execution.
+Zero-step backlog requires a complete jobs inventory, no assigned runner ID/name, and null/empty steps. GitHub provider payloads may encode an unassigned runner as either null values or `runner_id=0` plus `runner_name=""`; both normalize to unassigned. GitHub may also populate a queued job's `started_at` with its queue timestamp before any runner is assigned, so that timestamp alone is not execution evidence. A cancelled run qualifies only if every job in the complete inventory still proves zero execution.
 
 ## Fail-closed parsing
 
-The tool rejects duplicate JSON keys, unknown fields, non-finite values, noncanonical refs/workflow paths, malformed source digests, duplicate identities, duplicate run IDs/numbers, inventory count mismatches, stale/future captures, run/job timestamps after capture, unsupported states, and inconsistent completion semantics. Extra workflows are ignored for declared-policy classification but listed by stable identity in the receipt.
+The tool rejects duplicate JSON keys, unknown or omitted job-evidence fields, non-finite values, noncanonical refs/workflow paths, malformed source digests, duplicate identities, duplicate run IDs/numbers, run/job inventory count or pagination mismatches, stale/future captures, run/job timestamps after capture, unsupported states, and inconsistent completion semantics. Extra workflows are ignored for declared-policy classification but listed by stable identity in the receipt.
 
 The CLI reads only an ordinary non-symlink input, rejects input/output aliases, and publishes create-exclusively through a staged + fsynced file.
 
@@ -64,4 +65,4 @@ python -B -m unittest -v tools.actions_authority.test_authority
 python -O -B -m unittest -v tools.actions_authority.test_authority
 ```
 
-Coverage includes old-green/new-red selection, run-attempt binding, ID/path/name substitution, complete-inventory pagination, policy/source digest binding, terminal green/red, zero-step backlog, cancellation after execution, missing/in-progress evidence, exact-head/freshness fences, deterministic digests, create-exclusive output, and symlink rejection.
+Coverage includes old-green/new-red selection, run-attempt binding, ID/path/name substitution, complete run and per-run job inventories, omitted-job attacks, provider `runner_id=0`/empty-name queue shapes, policy/source digest binding, terminal green/red, zero-step backlog, cancellation after execution, missing/in-progress evidence, exact-head/freshness fences, deterministic digests, create-exclusive output, and symlink rejection.

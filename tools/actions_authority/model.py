@@ -95,8 +95,14 @@ def _parse_job(raw: Any, label: str) -> dict[str, Any]:
         if conclusion not in CONCLUSIONS:
             raise EvidenceError(f"{label}.conclusion is unsupported: {conclusion}")
     runner_id_raw = job.get("runner_id")
-    runner_id = None if runner_id_raw is None else _require_int(runner_id_raw, f"{label}.runner_id", minimum=1)
-    runner_name = _optional_text(job.get("runner_name"), f"{label}.runner_name")
+    if runner_id_raw is None or (type(runner_id_raw) is int and runner_id_raw == 0):
+        runner_id = None
+    else:
+        runner_id = _require_int(runner_id_raw, f"{label}.runner_id", minimum=1)
+    runner_name_raw = job.get("runner_name")
+    runner_name = None if runner_name_raw in (None, "") else _require_text(
+        runner_name_raw, f"{label}.runner_name"
+    )
     started_at = _optional_time(job.get("started_at"), f"{label}.started_at")
     completed_at = _optional_time(job.get("completed_at"), f"{label}.completed_at")
     steps = _parse_steps(job.get("steps"), f"{label}.steps")
@@ -127,7 +133,8 @@ def _parse_run(raw: Any, label: str, expected_head: str) -> dict[str, Any]:
         run,
         {
             "run_id", "run_number", "run_attempt", "workflow_id", "workflow_path", "workflow_name",
-            "head_sha", "status", "conclusion", "created_at", "started_at", "completed_at", "jobs",
+            "head_sha", "status", "conclusion", "created_at", "started_at", "completed_at",
+            "jobs_inventory", "jobs",
         },
         label,
     )
@@ -151,7 +158,10 @@ def _parse_run(raw: Any, label: str, expected_head: str) -> dict[str, Any]:
     created_at = _time(run.get("created_at"), f"{label}.created_at")
     started_at = _optional_time(run.get("started_at"), f"{label}.started_at")
     completed_at = _optional_time(run.get("completed_at"), f"{label}.completed_at")
+    jobs_inventory = _parse_jobs_inventory(run.get("jobs_inventory"), f"{label}.jobs_inventory")
     jobs_raw = _require_list(run.get("jobs"), f"{label}.jobs", maximum=MAX_JOBS_PER_RUN)
+    if jobs_inventory["total_count"] != len(jobs_raw):
+        raise EvidenceError(f"{label}.jobs_inventory.total_count does not match supplied complete job inventory")
     jobs = [_parse_job(row, f"{label}.jobs[{index}]") for index, row in enumerate(jobs_raw)]
     ids = [job["job_id"] for job in jobs]
     if len(ids) != len(set(ids)):
@@ -177,6 +187,7 @@ def _parse_run(raw: Any, label: str, expected_head: str) -> dict[str, Any]:
         "created_at": created_at,
         "started_at": started_at,
         "completed_at": completed_at,
+        "jobs_inventory": jobs_inventory,
         "jobs": jobs,
     }
 
@@ -240,12 +251,16 @@ def _parse_policy(raw: Any, label: str = "policy") -> dict[str, Any]:
     }
 
 
-def _parse_inventory(raw: Any, label: str = "inventory") -> dict[str, Any]:
+def _parse_complete_inventory(raw: Any, label: str, expected_source: str) -> dict[str, Any]:
     inventory = _require_dict(raw, label)
-    _validate_exact_fields(inventory, {"source", "complete", "total_count", "pages", "next_url"}, label)
+    fields = {"source", "complete", "total_count", "pages", "next_url"}
+    _validate_exact_fields(inventory, fields, label)
+    missing = fields - set(inventory)
+    if missing:
+        raise EvidenceError(f"{label} is missing fields: {', '.join(sorted(missing))}")
     source = _require_text(inventory.get("source"), f"{label}.source")
-    if source != "github-actions-runs":
-        raise EvidenceError(f"{label}.source must equal github-actions-runs")
+    if source != expected_source:
+        raise EvidenceError(f"{label}.source must equal {expected_source}")
     complete = _require_bool(inventory.get("complete"), f"{label}.complete")
     if not complete:
         raise EvidenceError(f"{label}.complete must be true")
@@ -260,3 +275,11 @@ def _parse_inventory(raw: Any, label: str = "inventory") -> dict[str, Any]:
         "pages": pages,
         "next_url": None,
     }
+
+
+def _parse_inventory(raw: Any, label: str = "inventory") -> dict[str, Any]:
+    return _parse_complete_inventory(raw, label, "github-actions-runs")
+
+
+def _parse_jobs_inventory(raw: Any, label: str) -> dict[str, Any]:
+    return _parse_complete_inventory(raw, label, "github-actions-jobs")
