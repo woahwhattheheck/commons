@@ -149,16 +149,25 @@ class QualificationTests(unittest.TestCase):
         packet["offeror"]["similar_healthcare_entities"] = [entity("A")]
         packet["offeror"]["adt_implementations"] = [implementation(1)]
         receipt = compile_qualification(packet, source_observation=source_observation())
-        self.assertEqual(receipt["decision"], "PRIME_NO_GO_MANDATORY_EXPERIENCE")
+        self.assertEqual(receipt["decision"], "SNAPSHOT_MANDATORY_EVIDENCE_GAP")
         self.assertIn("MANDATORY_PRIME_CONTRACTOR_EXPERIENCE", receipt["reasons"])
         self.assertIn("MANDATORY_THREE_SIMILAR_HEALTHCARE_ENTITIES", receipt["reasons"])
         self.assertIn("MANDATORY_SUCCESSFUL_ONE_MILLION_LIVES_ADT", receipt["reasons"])
+
+    def test_snapshot_gap_never_emits_current_no_go(self):
+        packet = prime_packet()
+        packet["offeror"]["prime_contractor_months"] = 0
+        receipt = compile_qualification(packet, source_observation=source_observation())
+        self.assertFalse(receipt["source_current"])
+        self.assertTrue(receipt["live_source_review_required"])
+        self.assertEqual(receipt["decision"], "SNAPSHOT_MANDATORY_EVIDENCE_GAP")
+        self.assertNotIn("NO_GO", receipt["decision"])
 
     def test_three_entities_must_each_be_prime_contracts(self):
         packet = prime_packet()
         packet["offeror"]["similar_healthcare_entities"][2]["as_prime_contractor"] = False
         receipt = compile_qualification(packet, source_observation=source_observation())
-        self.assertEqual(receipt["decision"], "PRIME_NO_GO_MANDATORY_EXPERIENCE")
+        self.assertEqual(receipt["decision"], "SNAPSHOT_MANDATORY_EVIDENCE_GAP")
         self.assertIn("MANDATORY_THREE_SIMILAR_HEALTHCARE_ENTITIES", receipt["reasons"])
 
     def test_claimed_months_without_evidence_do_not_pass(self):
@@ -166,7 +175,7 @@ class QualificationTests(unittest.TestCase):
         packet["offeror"]["prime_experience_evidence_refs"] = []
         packet["offeror"]["adt_experience_evidence_refs"] = []
         receipt = compile_qualification(packet, source_observation=source_observation())
-        self.assertEqual(receipt["decision"], "PRIME_NO_GO_MANDATORY_EXPERIENCE")
+        self.assertEqual(receipt["decision"], "SNAPSHOT_MANDATORY_EVIDENCE_GAP")
         self.assertIn("MANDATORY_PRIME_CONTRACTOR_EXPERIENCE", receipt["reasons"])
         self.assertIn("MANDATORY_REALTIME_ADT_EXPERIENCE", receipt["reasons"])
         self.assertIn("MANDATORY_HEALTHCARE_ADT_EXPERIENCE", receipt["reasons"])
@@ -178,7 +187,7 @@ class QualificationTests(unittest.TestCase):
             subcontractor(qualification_refs=["partner:many-prime-contracts", "partner:million-lives"])
         ]
         receipt = compile_qualification(packet, source_observation=source_observation())
-        self.assertEqual(receipt["decision"], "PRIME_NO_GO_MANDATORY_EXPERIENCE")
+        self.assertEqual(receipt["decision"], "SNAPSHOT_MANDATORY_EVIDENCE_GAP")
         self.assertFalse(receipt["prime_qualification_candidate"])
         self.assertFalse(receipt["prime_evidence_ready"])
 
@@ -219,7 +228,7 @@ class QualificationTests(unittest.TestCase):
             "evidence_refs": [],
         }
         receipt = compile_qualification(packet, source_observation=source_observation())
-        self.assertEqual(receipt["decision"], "HOLD_PROPOSAL_READINESS")
+        self.assertEqual(receipt["decision"], "SNAPSHOT_PROPOSAL_EVIDENCE_GAP")
         self.assertIn("READINESS_PROJECT_MANAGER_MCDE_EXPERIENCE", receipt["reasons"])
         self.assertIn("READINESS_SECURITY_HIPAA_BAA", receipt["reasons"])
 
@@ -227,7 +236,7 @@ class QualificationTests(unittest.TestCase):
         packet = prime_packet()
         packet["proposal_readiness"]["security_controls"]["hipaa_compliance"]["evidence_refs"] = []
         receipt = compile_qualification(packet, source_observation=source_observation())
-        self.assertEqual(receipt["decision"], "HOLD_PROPOSAL_READINESS")
+        self.assertEqual(receipt["decision"], "SNAPSHOT_PROPOSAL_EVIDENCE_GAP")
         self.assertIn("READINESS_SECURITY_HIPAA_COMPLIANCE", receipt["reasons"])
 
     def test_subcontractor_relationship_needed_only_when_qualification_evidence_relied_on(self):
@@ -250,7 +259,7 @@ class QualificationTests(unittest.TestCase):
 
         packet["subcontractors"][0]["qualification_evidence_refs"] = ["sub:qualification-evidence"]
         receipt = compile_qualification(packet, source_observation=source_observation())
-        self.assertEqual(receipt["decision"], "HOLD_PROPOSAL_READINESS")
+        self.assertEqual(receipt["decision"], "SNAPSHOT_PROPOSAL_EVIDENCE_GAP")
         self.assertIn("SUBCONTRACTOR_RELATIONSHIP_UNEXPLAINED", receipt["reasons"])
 
     def test_subcontractor_identification_bare_boolean_cannot_clear_gate(self):
@@ -265,10 +274,10 @@ class QualificationTests(unittest.TestCase):
         ):
             sub[key] = None
         sub["identification_evidence_refs"] = []
-        sub["identification_complete"] = True
+        sub["identification_complete"] = True  # legacy self-attestation must have no authority
         packet["subcontractors"] = [sub]
         receipt = compile_qualification(packet, source_observation=source_observation())
-        self.assertEqual(receipt["decision"], "HOLD_PROPOSAL_READINESS")
+        self.assertEqual(receipt["decision"], "SNAPSHOT_PROPOSAL_EVIDENCE_GAP")
         self.assertIn("SUBCONTRACTOR_IDENTIFICATION_INCOMPLETE", receipt["reasons"])
 
     def test_each_required_subcontractor_identity_component_is_fail_closed(self):
@@ -287,14 +296,14 @@ class QualificationTests(unittest.TestCase):
                 sub[field] = missing
                 packet["subcontractors"] = [sub]
                 receipt = compile_qualification(packet, source_observation=source_observation())
-                self.assertEqual(receipt["decision"], "HOLD_PROPOSAL_READINESS")
+                self.assertEqual(receipt["decision"], "SNAPSHOT_PROPOSAL_EVIDENCE_GAP")
                 self.assertIn("SUBCONTRACTOR_IDENTIFICATION_INCOMPLETE", receipt["reasons"])
 
     def test_complete_privacy_safe_subcontractor_identity_packet_still_requires_trusted_review(self):
         packet = prime_packet()
         packet["subcontractors"] = [subcontractor()]
         receipt = compile_qualification(packet, source_observation=source_observation())
-        self.assertEqual(receipt["decision"], "HOLD_PROPOSAL_READINESS")
+        self.assertEqual(receipt["decision"], "SNAPSHOT_PROPOSAL_EVIDENCE_GAP")
         self.assertNotIn("SUBCONTRACTOR_IDENTIFICATION_INCOMPLETE", receipt["reasons"])
         self.assertIn("SUBCONTRACTOR_IDENTIFICATION_REVIEW_REQUIRED", receipt["reasons"])
 
