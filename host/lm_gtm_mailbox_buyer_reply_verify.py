@@ -216,6 +216,41 @@ def _evidence_path(paths: dict[str, Path]) -> Path:
     return Path(paths["root"]) / EVIDENCE_REL
 
 
+def _result_canonical_text(value: dict[str, Any]) -> str:
+    try:
+        return json.dumps(
+            value,
+            sort_keys=True,
+            ensure_ascii=False,
+            separators=(",", ":"),
+            allow_nan=False,
+        )
+    except (TypeError, ValueError) as error:
+        raise idx.IndexError_("mailbox verification result is not canonical JSON") from error
+
+
+def _reacquire_canonical_verification(
+    subject_id: str,
+    verify_result: dict[str, Any],
+) -> dict[str, Any]:
+    """Recompute authority from the repository's canonical hermetic fixture.
+
+    ``paths`` on the pin function controls only where relationship evidence is
+    written. It is deliberately not a caller-selectable mailbox verification
+    root. A caller-supplied verification object is compatibility input only and
+    must exactly match the result we reacquire here.
+    """
+    if not isinstance(verify_result, dict):
+        raise idx.IndexError_("mailbox verification result must be an object")
+    canonical = verify_mailbox_buyer_reply(subject_id)
+    if _result_canonical_text(verify_result) != _result_canonical_text(canonical):
+        raise idx.IndexError_(
+            "BUYER_REPLY_OBSERVED pin refused: supplied mailbox verification does not "
+            "match the canonical current hermetic fixture"
+        )
+    return canonical
+
+
 def _append_unique_evidence(
     record: dict[str, Any],
     paths: dict[str, Path],
@@ -258,25 +293,31 @@ def pin_buyer_reply_observed_evidence(
 ) -> dict[str, Any]:
     """Append evidentiary-only reply-arrival STATUS without state authority.
 
+    The mailbox observation is reacquired from the canonical repository fixture
+    at pin time. The caller-supplied ``verify_result`` is accepted only if it is
+    byte-canonically equivalent to that reacquired result. ``paths`` controls the
+    evidence destination only; it cannot select a different verification root.
+
     The record intentionally omits decision, dnr, live, due, route, and
     next_action fields. Relationship handoff therefore learns the observation
     but preserves every existing relationship/contact/owner decision.
     """
     paths = paths or idx.default_paths()
-    if verify_result.get("status") != STATUS_OBSERVED:
+    canonical_result = _reacquire_canonical_verification(subject_id, verify_result)
+    if canonical_result.get("status") != STATUS_OBSERVED:
         raise idx.IndexError_(
             "BUYER_REPLY_OBSERVED pin refused: mailbox status is not BUYER_REPLY_OBSERVED"
         )
-    if verify_result.get("verified_human_yes") is True:
+    if canonical_result.get("verified_human_yes") is True:
         raise idx.IndexError_(
             "BUYER_REPLY_OBSERVED pin refused: mailbox verifier cannot assert VERIFIED_HUMAN_YES"
         )
-    if verify_result.get("material_reply_verified") is True:
+    if canonical_result.get("material_reply_verified") is True:
         raise idx.IndexError_(
             "BUYER_REPLY_OBSERVED pin refused: mailbox verifier cannot assert materiality"
         )
-    inbound_ids = list(verify_result.get("inbound_buyer_message_ids") or [])
-    outbound_ids = list(verify_result.get("outbound_message_ids") or [])
+    inbound_ids = list(canonical_result.get("inbound_buyer_message_ids") or [])
+    outbound_ids = list(canonical_result.get("outbound_message_ids") or [])
     if not inbound_ids:
         raise idx.IndexError_("BUYER_REPLY_OBSERVED pin refused: no inbound buyer ids")
     if not isinstance(organization, str) or not organization.strip():
