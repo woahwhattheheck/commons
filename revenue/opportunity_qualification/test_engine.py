@@ -1,6 +1,7 @@
 import copy
 import json
 import unittest
+from pathlib import Path
 
 from engine import (
     COMPLETENESS_CONTRACT,
@@ -150,9 +151,17 @@ PACKET = {
     ],
 }
 
+_FIXTURE_DIR = Path(__file__).resolve().parent
+TRUSTED_COMPLETENESS = loads_strict(
+    (_FIXTURE_DIR / "completeness_fixture.json").read_text(encoding="utf-8")
+)
+TRUSTED_COMPLETENESS_SHA256 = (
+    (_FIXTURE_DIR / "completeness_fixture.sha256").read_text(encoding="utf-8").split()[0]
+)
+
 
 def completeness_for(packet):
-    """Test-fixture helper only; production trust must never be derived from packet."""
+    """Test-only generator for tests that intentionally alter the package model."""
     sources = {source["source_id"]: source for source in packet["sources"]}
     gates = []
     for requirement in packet["requirements"]:
@@ -171,7 +180,7 @@ def completeness_for(packet):
         )
     gates.sort(key=lambda gate: gate["gate_id"])
     controlling_id = packet["opportunity"]["controlling_source_id"]
-    return {
+    manifest = {
         "contract": COMPLETENESS_CONTRACT,
         "opportunity_id": packet["opportunity"]["opportunity_id"],
         "controlling_source_id": controlling_id,
@@ -183,30 +192,37 @@ def completeness_for(packet):
         "gate_set_sha256": digest(gates),
         "gates": gates,
     }
-
-
-TRUSTED_COMPLETENESS = completeness_for(PACKET)
+    return manifest, digest(manifest)
 
 
 class QualificationTests(unittest.TestCase):
-    def compile(self, packet=None, as_of=AS_OF, completeness="AUTO"):
+    def compile(self, packet=None, as_of=AS_OF, trust="RETAINED"):
         packet = copy.deepcopy(PACKET if packet is None else packet)
-        if completeness == "AUTO":
-            try:
-                completeness = completeness_for(packet)
-            except (KeyError, TypeError):
-                completeness = copy.deepcopy(TRUSTED_COMPLETENESS)
+        if trust == "RETAINED":
+            completeness = copy.deepcopy(TRUSTED_COMPLETENESS)
+            root = TRUSTED_COMPLETENESS_SHA256
+        elif trust == "AUTO":
+            completeness, root = completeness_for(packet)
+        elif trust is None:
+            completeness, root = None, None
+        else:
+            completeness, root = trust
         return compile_qualification(
             packet,
             trusted_as_of=as_of,
             trusted_completeness=copy.deepcopy(completeness),
+            trusted_completeness_sha256=root,
         )
+
+    def test_retained_fixture_root_matches_manifest(self):
+        self.assertEqual(digest(TRUSTED_COMPLETENESS), TRUSTED_COMPLETENESS_SHA256)
 
     def test_prime_ready(self):
         receipt = self.compile()
         self.assertEqual(receipt["disposition"], PRIME_READY)
         self.assertTrue(receipt["prime"]["ready"])
         self.assertTrue(receipt["completeness"]["verified"])
+        self.assertEqual(receipt["completeness"]["manifest_digest"], TRUSTED_COMPLETENESS_SHA256)
         self.assertTrue(verify_receipt(receipt))
         self.assertTrue(all(value is False for value in receipt["authority"].values()))
 
@@ -231,7 +247,7 @@ class QualificationTests(unittest.TestCase):
         gate["team_evidence_ids"] = ["team-reference"]
         gate["category"] = "REFERENCE"
         packet["evidence"][3]["category"] = "REFERENCE"
-        receipt = self.compile(packet)
+        receipt = self.compile(packet, trust="AUTO")
         self.assertEqual(receipt["disposition"], TEAMING_READY)
         self.assertFalse(receipt["prime"]["ready"])
         self.assertTrue(receipt["team"]["ready"])
@@ -242,7 +258,7 @@ class QualificationTests(unittest.TestCase):
         gate["cure"] = "PARTNER"
         gate["prime_state"] = "MISSING"
         gate["prime_evidence_ids"] = []
-        receipt = self.compile(packet)
+        receipt = self.compile(packet, trust="AUTO")
         self.assertEqual(receipt["disposition"], HOLD)
 
     def test_noncurable_prime_failure_no_bid_when_team_cannot_cure(self):
@@ -264,7 +280,7 @@ class QualificationTests(unittest.TestCase):
         gate["team_state"] = "PASS"
         gate["team_evidence_ids"] = ["team-reference"]
         gate["category"] = "REFERENCE"
-        receipt = self.compile(packet)
+        receipt = self.compile(packet, trust="AUTO")
         self.assertEqual(receipt["disposition"], HOLD)
         self.assertIn("TEAMING_PROHIBITED", receipt["team"]["reasons"])
 
@@ -314,7 +330,7 @@ class QualificationTests(unittest.TestCase):
             }
         )
         packet["requirements"][0]["buyer_source_id"] = "buyer-mirror"
-        receipt = self.compile(packet)
+        receipt = self.compile(packet, trust="AUTO")
         self.assertEqual(receipt["disposition"], HOLD)
         self.assertIn("technical-fit:MANDATORY_SOURCE_NOT_OFFICIAL", receipt["reasons"])
 
@@ -474,7 +490,7 @@ class QualificationTests(unittest.TestCase):
         gate["team_evidence_ids"] = ["team-reference"]
         gate["category"] = "REFERENCE"
         packet["evidence"][1]["category"] = "REFERENCE"
-        receipt = self.compile(packet)
+        receipt = self.compile(packet, trust="AUTO")
         self.assertEqual(receipt["disposition"], PRIME_READY)
         self.assertTrue(receipt["team"]["ready"])
 
@@ -495,7 +511,7 @@ class QualificationTests(unittest.TestCase):
                 "team_evidence_ids": [],
             }
         )
-        receipt = self.compile(packet)
+        receipt = self.compile(packet, trust="AUTO")
         self.assertEqual(receipt["disposition"], PRIME_READY)
 
     def test_tampered_receipt_fails_verification(self):
@@ -546,10 +562,32 @@ class QualificationTests(unittest.TestCase):
         self.assertTrue(receipt["prime"]["requirements_ready"])
         self.assertIn("PACKAGE_COMPLETENESS_NOT_PROVIDED", receipt["reasons"])
 
+    def test_manifest_without_retained_root_cannot_mint_ready(self):
+        receipt = compile_qualification(
+            copy.deepcopy(PACKET),
+            trusted_as_of=AS_OF,
+            trusted_completeness=copy.deepcopy(TRUSTED_COMPLETENESS),
+        )
+        self.assertEqual(receipt["disposition"], HOLD)
+        self.assertIn("COMPLETENESS_TRUST_ROOT_NOT_PROVIDED", receipt["reasons"])
+
+    def test_attacker_recomputed_manifest_cannot_replace_retained_root(self):
+        packet = copy.deepcopy(PACKET)
+        packet["requirements"] = [r for r in packet["requirements"] if r["gate_id"] != "registration"]
+        attacker_manifest, _attacker_digest = completeness_for(packet)
+        receipt = compile_qualification(
+            packet,
+            trusted_as_of=AS_OF,
+            trusted_completeness=attacker_manifest,
+            trusted_completeness_sha256=TRUSTED_COMPLETENESS_SHA256,
+        )
+        self.assertEqual(receipt["disposition"], HOLD)
+        self.assertIn("COMPLETENESS_TRUST_ROOT_MISMATCH", receipt["reasons"])
+
     def test_frozen_manifest_rejects_removed_mandatory_gate(self):
         packet = copy.deepcopy(PACKET)
         packet["requirements"] = [r for r in packet["requirements"] if r["gate_id"] != "registration"]
-        receipt = self.compile(packet, completeness=TRUSTED_COMPLETENESS)
+        receipt = self.compile(packet)
         self.assertEqual(receipt["disposition"], HOLD)
         self.assertIn("PACKAGE_GATE_SET_MISMATCH", receipt["reasons"])
         self.assertFalse(receipt["prime"]["ready"])
@@ -557,7 +595,7 @@ class QualificationTests(unittest.TestCase):
     def test_frozen_manifest_rejects_removed_scoreable_category(self):
         packet = copy.deepcopy(PACKET)
         packet["requirements"] = [r for r in packet["requirements"] if r["category"] != "EXPERIENCE"]
-        receipt = self.compile(packet, completeness=TRUSTED_COMPLETENESS)
+        receipt = self.compile(packet)
         self.assertEqual(receipt["disposition"], HOLD)
         self.assertIn("PACKAGE_GATE_SET_MISMATCH", receipt["reasons"])
 
@@ -590,9 +628,9 @@ class QualificationTests(unittest.TestCase):
             }
         )
         packet["evidence"][1]["category"] = "OTHER"
-        manifest = completeness_for(packet)
+        manifest, root = completeness_for(packet)
         packet["requirements"] = [r for r in packet["requirements"] if r["gate_id"] != "addendum-certification"]
-        receipt = self.compile(packet, completeness=manifest)
+        receipt = self.compile(packet, trust=(manifest, root))
         self.assertEqual(receipt["disposition"], HOLD)
         self.assertIn("PACKAGE_GATE_SET_MISMATCH", receipt["reasons"])
 
@@ -604,21 +642,21 @@ class QualificationTests(unittest.TestCase):
         packet["requirements"][0]["team_state"] = "PASS"
         packet["requirements"][0]["team_evidence_ids"] = ["team-experience"]
         packet["requirements"][0]["category"] = "EXPERIENCE"
-        receipt = self.compile(packet, completeness=TRUSTED_COMPLETENESS)
+        receipt = self.compile(packet)
         self.assertEqual(receipt["disposition"], HOLD)
         self.assertIn("PACKAGE_GATE_SET_MISMATCH", receipt["completeness"]["reasons"])
 
     def test_controlling_source_digest_mismatch_holds(self):
         manifest = copy.deepcopy(TRUSTED_COMPLETENESS)
         manifest["controlling_source_sha256"] = "f" * 64
-        receipt = self.compile(completeness=manifest)
+        receipt = self.compile(trust=(manifest, digest(manifest)))
         self.assertEqual(receipt["disposition"], HOLD)
         self.assertIn("COMPLETENESS_CONTROLLING_SOURCE_MISMATCH", receipt["reasons"])
 
     def test_incomplete_extraction_holds(self):
         manifest = copy.deepcopy(TRUSTED_COMPLETENESS)
         manifest["complete"] = False
-        receipt = self.compile(completeness=manifest)
+        receipt = self.compile(trust=(manifest, digest(manifest)))
         self.assertEqual(receipt["disposition"], HOLD)
         self.assertIn("PACKAGE_EXTRACTION_INCOMPLETE", receipt["reasons"])
 
@@ -626,19 +664,23 @@ class QualificationTests(unittest.TestCase):
         manifest = copy.deepcopy(TRUSTED_COMPLETENESS)
         manifest["gates"][0]["route"] = "TEAM"
         with self.assertRaises(QualificationError):
-            self.compile(completeness=manifest)
+            self.compile(trust=(manifest, TRUSTED_COMPLETENESS_SHA256))
 
     def test_manifest_future_extraction_rejected(self):
         manifest = copy.deepcopy(TRUSTED_COMPLETENESS)
         manifest["extracted_at"] = "2026-09-14T09:30:00Z"
         with self.assertRaises(QualificationError):
-            self.compile(completeness=manifest)
+            self.compile(trust=(manifest, digest(manifest)))
 
     def test_manifest_gate_count_bool_rejected(self):
         manifest = copy.deepcopy(TRUSTED_COMPLETENESS)
         manifest["gate_count"] = True
         with self.assertRaises(QualificationError):
-            self.compile(completeness=manifest)
+            self.compile(trust=(manifest, digest(manifest)))
+
+    def test_trust_root_shape_rejected(self):
+        with self.assertRaises(QualificationError):
+            self.compile(trust=(TRUSTED_COMPLETENESS, "ABC"))
 
     def test_gate_derived_no_bid_without_completeness_holds(self):
         packet = copy.deepcopy(PACKET)
@@ -656,23 +698,23 @@ class QualificationTests(unittest.TestCase):
         self.assertEqual(receipt["reasons"], ["PROPOSAL_DEADLINE_EXPIRED"])
 
     def test_receipt_can_be_reverified_against_trust_inputs(self):
-        receipt = self.compile(completeness=TRUSTED_COMPLETENESS)
+        receipt = self.compile()
         self.assertTrue(
             verify_receipt_against_inputs(
                 receipt,
                 copy.deepcopy(PACKET),
                 trusted_as_of=AS_OF,
                 trusted_completeness=copy.deepcopy(TRUSTED_COMPLETENESS),
+                trusted_completeness_sha256=TRUSTED_COMPLETENESS_SHA256,
             )
         )
-        wrong = copy.deepcopy(TRUSTED_COMPLETENESS)
-        wrong["controlling_source_sha256"] = "f" * 64
         self.assertFalse(
             verify_receipt_against_inputs(
                 receipt,
                 copy.deepcopy(PACKET),
                 trusted_as_of=AS_OF,
-                trusted_completeness=wrong,
+                trusted_completeness=copy.deepcopy(TRUSTED_COMPLETENESS),
+                trusted_completeness_sha256="f" * 64,
             )
         )
 
