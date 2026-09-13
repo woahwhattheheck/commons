@@ -12,8 +12,14 @@ import os
 from pathlib import Path
 import stat
 
-from .core import PortfolioError
-from .current import AuthorizedPortfolio, _open_dir_chain
+from .core import MAX_FILE_BYTES, PortfolioError
+from .current import (
+    MAX_AUTHORITY_BYTES,
+    AuthorizedPortfolio,
+    _open_dir_chain,
+    _read_relative,
+)
+from .host import HostAuthorizedPortfolio
 
 
 def _write_owned_relative(dir_fd: int, name: str, data: bytes) -> None:
@@ -46,17 +52,10 @@ def _write_owned_relative(dir_fd: int, name: str, data: bytes) -> None:
         os.close(fd)
 
 
-def publish_authorized(value: AuthorizedPortfolio, out_dir: str | Path) -> None:
+def _publish_files(out_dir: str | Path, files: tuple[tuple[str, bytes], ...]) -> None:
     dir_fd = _open_dir_chain(out_dir)
     published: list[str] = []
     try:
-        files = (
-            ("portfolio.json", value.compiled.result_bytes),
-            ("portfolio.md", value.compiled.markdown_bytes),
-            ("receipt.json", value.compiled.receipt_bytes),
-            ("upstream-authority.json", value.authority_bytes),
-            ("current-receipt.json", value.current_receipt_bytes),
-        )
         for filename, raw in files:
             try:
                 _write_owned_relative(dir_fd, filename, raw)
@@ -67,5 +66,51 @@ def publish_authorized(value: AuthorizedPortfolio, out_dir: str | Path) -> None:
                 ) from exc
             published.append(filename)
         os.fsync(dir_fd)
+    finally:
+        os.close(dir_fd)
+
+
+def publish_authorized(value: AuthorizedPortfolio, out_dir: str | Path) -> None:
+    """Internal explicit-key publisher used by focused current-layer tests."""
+    _publish_files(
+        out_dir,
+        (
+            ("portfolio.json", value.compiled.result_bytes),
+            ("portfolio.md", value.compiled.markdown_bytes),
+            ("receipt.json", value.compiled.receipt_bytes),
+            ("upstream-authority.json", value.authority_bytes),
+            ("current-receipt.json", value.current_receipt_bytes),
+        ),
+    )
+
+
+def publish_current(value: HostAuthorizedPortfolio, out_dir: str | Path) -> None:
+    """Production publisher: includes the fixed-host HMAC seal."""
+    authorized = value.authorized
+    _publish_files(
+        out_dir,
+        (
+            ("portfolio.json", authorized.compiled.result_bytes),
+            ("portfolio.md", authorized.compiled.markdown_bytes),
+            ("receipt.json", authorized.compiled.receipt_bytes),
+            ("upstream-authority.json", authorized.authority_bytes),
+            ("current-receipt.json", authorized.current_receipt_bytes),
+            ("host-seal.json", value.host_seal_bytes),
+        ),
+    )
+
+
+def read_current(out_dir: str | Path) -> tuple[bytes, bytes, bytes, bytes, bytes, bytes]:
+    """Read one retained production package generation."""
+    dir_fd = _open_dir_chain(out_dir)
+    try:
+        return (
+            _read_relative(dir_fd, "portfolio.json", MAX_FILE_BYTES, "portfolio.json"),
+            _read_relative(dir_fd, "portfolio.md", MAX_FILE_BYTES, "portfolio.md"),
+            _read_relative(dir_fd, "receipt.json", MAX_FILE_BYTES, "receipt.json"),
+            _read_relative(dir_fd, "upstream-authority.json", MAX_AUTHORITY_BYTES, "upstream-authority.json"),
+            _read_relative(dir_fd, "current-receipt.json", MAX_AUTHORITY_BYTES, "current-receipt.json"),
+            _read_relative(dir_fd, "host-seal.json", MAX_AUTHORITY_BYTES, "host-seal.json"),
+        )
     finally:
         os.close(dir_fd)
