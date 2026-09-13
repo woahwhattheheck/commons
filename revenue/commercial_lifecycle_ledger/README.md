@@ -43,6 +43,8 @@ This package validates the event contract and bound evidence digests; it is not 
 
 Forward lifecycle stages cannot be skipped or repeated. Offer approval/send/acceptance must occur before the bound offer expiry. Evaluation time is supplied out of band as `trusted_as_of`; payloads cannot choose their own current time.
 
+All timestamps are canonical whole-second UTC strings in exact `YYYY-MM-DDTHH:MM:SSZ` form. Equivalent alternate ISO spellings are rejected because raw timestamp strings participate in subject/event commitments.
+
 ## Money and reversals
 
 Money is integer minor units only; booleans, floats, decimal strings, coercion, and cross-currency events are rejected.
@@ -59,7 +61,7 @@ The receipt exposes gross/net evidence totals. It does **not** convert those tot
 
 ## Idempotency and tamper evidence
 
-Event IDs are idempotency keys. An identical duplicate event is safely collapsed; a conflicting reuse of the same event ID fails closed.
+Event IDs are idempotency keys. An identical duplicate event is safely collapsed even when a retry appears after newer unique evidence; a conflicting reuse of the same event ID fails closed. Chronology is enforced across the first-seen unique events after exact duplicate collapse.
 
 The output binds:
 
@@ -83,12 +85,15 @@ From repository root:
 ```bash
 python -m unittest -v revenue.commercial_lifecycle_ledger.test_lifecycle
 python -m unittest -v revenue.commercial_lifecycle_ledger.test_lifecycle_financial_edges
+python -m unittest -v revenue.commercial_lifecycle_ledger.test_ingestion_hardening
 python -O -m unittest -v revenue.commercial_lifecycle_ledger.test_lifecycle
 python -O -m unittest -v revenue.commercial_lifecycle_ledger.test_lifecycle_financial_edges
+python -O -m unittest -v revenue.commercial_lifecycle_ledger.test_ingestion_hardening
 python -m py_compile \
   revenue/commercial_lifecycle_ledger/lifecycle.py \
   revenue/commercial_lifecycle_ledger/test_lifecycle.py \
-  revenue/commercial_lifecycle_ledger/test_lifecycle_financial_edges.py
+  revenue/commercial_lifecycle_ledger/test_lifecycle_financial_edges.py \
+  revenue/commercial_lifecycle_ledger/test_ingestion_hardening.py
 ```
 
-The hostile suite covers lifecycle skips/repeats, cross-deal replay, wrong authority, future/out-of-order events, offer expiry, exact funding binding, legitimate prepayment, money coercion, overpayment, premature recognition, refund-before-finance-reversal handling, refund/reversal reference integrity, duplicate IDs, schema drift, duplicate JSON keys, non-finite JSON, receipt tampering, and trusted-time replay.
+The hostile suites cover lifecycle skips/repeats, cross-deal replay, wrong authority, future/out-of-order unique events, delayed idempotent retries, canonical timestamp aliases, offer expiry, exact funding binding, legitimate prepayment, money coercion, overpayment, premature recognition, refund-before-finance-reversal handling, refund/reversal reference integrity, duplicate IDs, schema drift, duplicate JSON keys, non-finite JSON, receipt tampering, and trusted-time replay.

@@ -1,9 +1,9 @@
 {
   "counts": {
-    "open_issues": 15,
-    "open_pull_requests": 20,
+    "open_issues": 18,
+    "open_pull_requests": 23,
     "runs_in_progress": 19,
-    "runs_queued": 657
+    "runs_queued": 802
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -69,46 +69,90 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
+      "branch": "codex/cross-family-offering-bundle-composer-resource-20260913-01",
+      "created_at": "2026-09-13T10:30:13Z",
+      "draft": false,
+      "head_sha": "4941390d6d8af74694d909215b068491b17e862e",
+      "number": 13763,
+      "title": "resources: activate cross-family offering bundle composer",
+      "updated_at": "2026-09-13T10:30:13Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zhyp-c9v3/commercial-lifecycle-late-duplicate-idempotency-13755",
+      "created_at": "2026-09-13T10:27:20Z",
+      "draft": false,
+      "head_sha": "4d5e07796c8375c361b63bed8f10c75d951f6cdb",
+      "number": 13760,
+      "title": "fix(revenue): make delayed lifecycle retries idempotent",
+      "updated_at": "2026-09-13T10:29:27Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zpas-h4n9/cdr-postmerge-hardening-20260913",
+      "created_at": "2026-09-13T10:24:57Z",
+      "draft": false,
+      "head_sha": "f0db7219f3c214269cb33ea57315d5350f276d47",
+      "number": 13756,
+      "title": "Harden Commercial Decision Relay trust boundaries",
+      "updated_at": "2026-09-13T10:29:57Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zcard-x5p2/catalog-currentness-20260913",
+      "created_at": "2026-09-13T10:24:07Z",
+      "draft": false,
+      "head_sha": "e193112296cf0642f7be604dac5c9d2c3cf746a1",
+      "number": 13754,
+      "title": "revenue: add cross-family catalog currentness auditor",
+      "updated_at": "2026-09-13T10:30:21Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zorth-p8w5/reconciliation-type-stability-current-main-20260913",
+      "created_at": "2026-09-13T10:23:22Z",
+      "draft": false,
+      "head_sha": "8872e641cb2efe959b9236e1f56252b43915eadb",
+      "number": 13753,
+      "title": "fix(revenue): make reconciliation field equality JSON-type-stable",
+      "updated_at": "2026-09-13T10:25:41Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z-fou/commercial-funnel-20260913",
+      "created_at": "2026-09-13T10:20:42Z",
+      "draft": false,
+      "head_sha": "a8b6bc11c6c361f874d8a8b9b10c846a4d99a5dd",
+      "number": 13748,
+      "title": "Revenue: add evidence-bound cross-family commercial funnel ledger",
+      "updated_at": "2026-09-13T10:30:01Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zkal-v7n3/opportunity-qualifier-20260913",
+      "created_at": "2026-09-13T10:15:25Z",
+      "draft": false,
+      "head_sha": "deea95594e6d9944821830c264dcb2037e0e7ab5",
+      "number": 13741,
+      "title": "revenue: add evidence-bound opportunity qualifier",
+      "updated_at": "2026-09-13T10:24:26Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
       "branch": "zath-q9v3/lawrence-youth-ai-qualification-20260913",
       "created_at": "2026-09-13T10:15:07Z",
       "draft": false,
-      "head_sha": "f32c5757a5ec64b075899e23b26f68cce5c7e4b5",
+      "head_sha": "53ce9dafb13ca852d42e15168a2000320d8bd318",
       "number": 13740,
       "title": "revenue: add Lawrence Youth AI qualification gate",
-      "updated_at": "2026-09-13T10:15:07Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-noether-d7q4/scope-delivery-trusted-time-20260913",
-      "created_at": "2026-09-13T10:14:07Z",
-      "draft": false,
-      "head_sha": "06ddd941be42656f94ff7ad3a5b43a7bc8c4c50b",
-      "number": 13739,
-      "title": "fix(revenue): fence scope-to-delivery with trusted time",
-      "updated_at": "2026-09-13T10:14:07Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "ariadne-z/cwpd-owner-send-status-20260913",
-      "created_at": "2026-09-13T10:12:52Z",
-      "draft": false,
-      "head_sha": "76ca15f9c7ce949b3a855b4451053166e0c0b3fa",
-      "number": 13735,
-      "title": "docs(revenue): make CWPD send status unambiguous",
-      "updated_at": "2026-09-13T10:12:52Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "fix/reconciliation-type-stability-main-ariadne-z-20260913",
-      "created_at": "2026-09-13T10:11:26Z",
-      "draft": false,
-      "head_sha": "f6b90a9a3079d93fe3f737edc5fc31a1a4adea3d",
-      "number": 13732,
-      "title": "fix(revenue): make reconciliation field equality JSON-type-stable",
-      "updated_at": "2026-09-13T10:13:25Z"
+      "updated_at": "2026-09-13T10:29:20Z"
     },
     {
       "author": "woahwhattheheck",
@@ -124,17 +168,6 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "zmer913506/outbound-dsn-normalizer-20260913",
-      "created_at": "2026-09-13T09:48:34Z",
-      "draft": false,
-      "head_sha": "43a89c97cee946e3d6cfa7e665c92b31586b08cc",
-      "number": 13704,
-      "title": "revenue: normalize RFC delivery-status evidence",
-      "updated_at": "2026-09-13T09:55:35Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
       "branch": "zherm-c7v/outbound-lease-authority-fence-20260913",
       "created_at": "2026-09-13T09:46:37Z",
       "draft": false,
@@ -142,39 +175,6 @@
       "number": 13702,
       "title": "fix(outbound): bind lease receipts to live provider authority",
       "updated_at": "2026-09-13T09:55:08Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-lagrange-913500/cas-actuarial-llm-benchmark-repro-20260913",
-      "created_at": "2026-09-13T09:46:23Z",
-      "draft": false,
-      "head_sha": "437f3e033ae351d825dc7761432a11a78e528b03",
-      "number": 13701,
-      "title": "revenue: add CAS actuarial LLM benchmark reproducibility core",
-      "updated_at": "2026-09-13T09:54:04Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zram/wuhu-lerobot-qc-20260913",
-      "created_at": "2026-09-13T09:42:49Z",
-      "draft": false,
-      "head_sha": "80c722fbe7ab7dd711ce01987bea50c900ad673e",
-      "number": 13695,
-      "title": "competition: add Wuhu LeRobot trajectory QC engine",
-      "updated_at": "2026-09-13T09:42:49Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-eames/v5-plainfile-custody-final-20260913",
-      "created_at": "2026-09-13T09:41:10Z",
-      "draft": false,
-      "head_sha": "c2df4039c06d34123e9aaa31ff0a04c405760c62",
-      "number": 13692,
-      "title": "TITAN V5: exact-head reject symlinked champion evidence inputs",
-      "updated_at": "2026-09-13T09:42:26Z"
     }
   ],
   "open_heads": {
@@ -192,185 +192,188 @@
     "13695": "80c722fbe7ab7dd711ce01987bea50c900ad673e",
     "13701": "437f3e033ae351d825dc7761432a11a78e528b03",
     "13702": "2b6598f90c107dfacc4ec2a975e070f5073f8952",
-    "13704": "43a89c97cee946e3d6cfa7e665c92b31586b08cc",
     "13712": "e5d13ab500ff195dd85df2728f85794dab2fe048",
-    "13732": "f6b90a9a3079d93fe3f737edc5fc31a1a4adea3d",
-    "13735": "76ca15f9c7ce949b3a855b4451053166e0c0b3fa",
-    "13739": "06ddd941be42656f94ff7ad3a5b43a7bc8c4c50b",
-    "13740": "f32c5757a5ec64b075899e23b26f68cce5c7e4b5"
+    "13740": "53ce9dafb13ca852d42e15168a2000320d8bd318",
+    "13741": "deea95594e6d9944821830c264dcb2037e0e7ab5",
+    "13748": "a8b6bc11c6c361f874d8a8b9b10c846a4d99a5dd",
+    "13753": "8872e641cb2efe959b9236e1f56252b43915eadb",
+    "13754": "e193112296cf0642f7be604dac5c9d2c3cf746a1",
+    "13756": "f0db7219f3c214269cb33ea57315d5350f276d47",
+    "13760": "4d5e07796c8375c361b63bed8f10c75d951f6cdb",
+    "13763": "4941390d6d8af74694d909215b068491b17e862e"
   },
-  "pulls_listed": 20,
+  "pulls_listed": 23,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 34.6,
+  "queue_depth_per_runner": 42.2,
   "recently_closed": [
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "zvf-r7k3/expertise-catalog-rejoin-20260913",
-      "closed_at": "2026-09-13T10:14:46Z",
-      "head_sha": "486dbcdb45e9fb9c7a55076bad2e168034ee6d9c",
-      "merged_at": null,
-      "number": 13736,
-      "state": "CLOSED",
-      "title": "revenue: expose expertise as explicit catalog entries"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zvf-r7k3/expertise-catalog-20260913",
-      "closed_at": "2026-09-13T10:14:38Z",
-      "head_sha": "0d92ded9f35517639717fa94e8b3adbf26b8332e",
-      "merged_at": null,
-      "number": 13723,
-      "state": "CLOSED",
-      "title": "revenue: expose expertise as explicit catalog entries"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zhyp-a7k2/offering-bundle-composer-20260913",
-      "closed_at": "2026-09-13T10:14:19Z",
-      "head_sha": "5f149eec9d3b95e3cecf1a7335365b3999db0f43",
-      "merged_at": "2026-09-13T10:14:19Z",
-      "number": 13738,
+      "branch": "astraz/offer-to-delivery-acceptance-gate-20260913",
+      "closed_at": "2026-09-13T10:28:48Z",
+      "head_sha": "05be1c3556e7e1299ca30f1e1547e7dff031ebf4",
+      "merged_at": "2026-09-13T10:28:48Z",
+      "number": 13758,
       "state": "MERGED",
-      "title": "revenue: compose cross-family offering bundles"
+      "title": "revenue: bridge verified commercial offers into delivery scope"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "ariadne-z/open-door-positive-business-context-fix3-20260913",
-      "closed_at": "2026-09-13T10:14:06Z",
-      "head_sha": "b9e4a4cdba4048f631f6dd1c9cddfedbaaeef8ee",
-      "merged_at": null,
-      "number": 13733,
-      "state": "CLOSED",
-      "title": "superseded by safer source fix #13735"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "ariadne-z/open-door-business-status-final3-20260913",
-      "closed_at": "2026-09-13T10:14:01Z",
-      "head_sha": "54fc3a0b214191c91cf5a791e1768991566b0a52",
-      "merged_at": null,
-      "number": 13731,
-      "state": "CLOSED",
-      "title": "superseded by safer source fix #13735"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "znav-q4t8/commercial-reply-guard-20260913",
-      "closed_at": "2026-09-13T10:12:37Z",
-      "head_sha": "d87b57bfab20b93ece9f77e6cc6e6129e410a350",
-      "merged_at": "2026-09-13T10:12:37Z",
-      "number": 13734,
+      "branch": "zvf-r7k3/commercial-ledger-ingestion-hardening-20260913",
+      "closed_at": "2026-09-13T10:28:45Z",
+      "head_sha": "00c0175cd51ff17b32be8a4d1c7dfb169a646427",
+      "merged_at": "2026-09-13T10:28:45Z",
+      "number": 13762,
       "state": "MERGED",
-      "title": "revenue: add commercial reply action guard"
+      "title": "revenue: harden commercial lifecycle ledger ingestion"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "ariadne-z/open-door-business-status-final-20260913",
-      "closed_at": "2026-09-13T10:12:13Z",
-      "head_sha": "2df03b175264d3de8b430612c00926d68f7327ca",
-      "merged_at": null,
-      "number": 13727,
-      "state": "CLOSED",
-      "title": "superseded by safer source fix #13735"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-eames/reconciliation-type-stability-20260913",
-      "closed_at": "2026-09-13T10:11:57Z",
-      "head_sha": "6822ef228d35ba6ddc89e1347d24fbf84b6aff89",
-      "merged_at": null,
-      "number": 13699,
-      "state": "CLOSED",
-      "title": "superseded: preserve JSON types in reconciliation proof"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-saltation-n4x9/capability-service-catalog-20260913",
-      "closed_at": "2026-09-13T10:11:40Z",
-      "head_sha": "0c0742e5342f755ffb9aedc33c906f5731510ee4",
-      "merged_at": "2026-09-13T10:11:40Z",
-      "number": 13730,
+      "branch": "znav-q4t8/afh-submission-finalizer-20260913",
+      "closed_at": "2026-09-13T10:27:39Z",
+      "head_sha": "f9ec51c588316c502d8623f84fee0aecde5ffd0c",
+      "merged_at": "2026-09-13T10:27:39Z",
+      "number": 13759,
       "state": "MERGED",
-      "title": "Revenue: compile demonstrated capabilities into bounded service catalog evidence"
+      "title": "hackathon: finalize Agents for Humans submission packet"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "ariadne-z/open-door-business-status-final2-20260913",
-      "closed_at": "2026-09-13T10:11:06Z",
-      "head_sha": "9abf49ef382869f1a7dcfdbfd63cc30e4d2e1d2e",
+      "branch": "fix/reconciliation-type-stability-main-ariadne-z-20260913",
+      "closed_at": "2026-09-13T10:23:53Z",
+      "head_sha": "f6b90a9a3079d93fe3f737edc5fc31a1a4adea3d",
       "merged_at": null,
-      "number": 13728,
+      "number": 13732,
       "state": "CLOSED",
-      "title": "superseded by safer source fix #13735"
+      "title": "superseded: reconciliation JSON type-stability repair"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "zdar-j2r9/expertise-catalog-20260913",
-      "closed_at": "2026-09-13T10:10:31Z",
-      "head_sha": "508d87ac714acfbe04b4638d1d396610ccca10d6",
-      "merged_at": "2026-09-13T10:10:31Z",
-      "number": 13719,
+      "branch": "zpyr-c9m7/mmsd-ai-governance-policy-core-20260913",
+      "closed_at": "2026-09-13T10:23:13Z",
+      "head_sha": "0c47d8c5e600d15f2381e40a2094aa16150bda6c",
+      "merged_at": "2026-09-13T10:23:12Z",
+      "number": 13752,
       "state": "MERGED",
-      "title": "revenue: add evidence-bound expertise catalog compiler"
+      "title": "Add MMSD AI governance policy assessment core"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "ariadne-z/rejoin-business-pack-malformed-ledger-fix2-20260913",
-      "closed_at": "2026-09-13T10:09:09Z",
-      "head_sha": "2fa63fde5a022b51d40cea01823c5558ab3379e1",
+      "branch": "z-noether-d7q4/scope-delivery-trusted-time-20260913",
+      "closed_at": "2026-09-13T10:22:37Z",
+      "head_sha": "33d1d977fd3064e9e1fc1e2794428b32b84886a6",
+      "merged_at": "2026-09-13T10:22:36Z",
+      "number": 13739,
+      "state": "MERGED",
+      "title": "fix(revenue): fence scope-to-delivery with trusted time"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zkur-t9w3/portfolio-execution-handoff-20260913",
+      "closed_at": "2026-09-13T10:22:32Z",
+      "head_sha": "69a7cc5452e5dad16ad448fb0c2e18f738a2cc34",
+      "merged_at": "2026-09-13T10:22:32Z",
+      "number": 13750,
+      "state": "MERGED",
+      "title": "feat(revenue): add portfolio execution handoff manifest"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zpyr-c9m7/mmsd-ai-governance-policy-core-20260913",
+      "closed_at": "2026-09-13T10:22:01Z",
+      "head_sha": "16eaec3db87249265ac31f47a746981761668de3",
       "merged_at": null,
-      "number": 13718,
+      "number": 13747,
       "state": "CLOSED",
-      "title": "fix(business-packs): rejoin bounded malformed-ledger validation"
+      "title": "Add MMSD AI governance policy assessment core"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "zcard-x5p2/product-catalog-bridge-20260913",
-      "closed_at": "2026-09-13T10:08:55Z",
-      "head_sha": "0abd5477fb09242a6b18f0c0b4c03e8eb2bf916c",
-      "merged_at": "2026-09-13T10:08:55Z",
-      "number": 13715,
+      "branch": "zcyc-p2x9/commercial-lifecycle-ledger-20260913",
+      "closed_at": "2026-09-13T10:21:10Z",
+      "head_sha": "32e1b1a5bdbbeb9b73e8199ddf7215e0f8642805",
+      "merged_at": "2026-09-13T10:21:10Z",
+      "number": 13743,
       "state": "MERGED",
-      "title": "revenue: add product artifact catalog bridge"
+      "title": "Revenue: add commercial lifecycle evidence ledger"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "ariadne-z/open-door-business-status-fix2-20260913",
-      "closed_at": "2026-09-13T10:08:04Z",
-      "head_sha": "d76ac8a3ef31113542a5b8281be71a25a1242dfd",
+      "branch": "ariadne-z/cwpd-owner-send-status-final2-20260913",
+      "closed_at": "2026-09-13T10:20:29Z",
+      "head_sha": "2287a1d56777632e6edcf0ba7a7f0f8dd7d188ea",
+      "merged_at": "2026-09-13T10:20:29Z",
+      "number": 13745,
+      "state": "MERGED",
+      "title": "docs(revenue): make CWPD send status unambiguous"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zmer913506/outbound-dsn-normalizer-20260913",
+      "closed_at": "2026-09-13T10:19:59Z",
+      "head_sha": "6c64e691e2bd6dce061e71bd4ba1e7e26905e8fd",
+      "merged_at": "2026-09-13T10:19:59Z",
+      "number": 13704,
+      "state": "MERGED",
+      "title": "revenue: normalize RFC delivery-status evidence"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zvf-r7k3/expertise-buyer-surface-20260913",
+      "closed_at": "2026-09-13T10:18:15Z",
+      "head_sha": "e695f53757aa9b24cc6ca4f1d075c9055322a69d",
+      "merged_at": "2026-09-13T10:18:15Z",
+      "number": 13746,
+      "state": "MERGED",
+      "title": "revenue: add expertise buyer surface over canonical compiler"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "ariadne-z/open-door-structural-proof-fix4-20260913",
+      "closed_at": "2026-09-13T10:17:30Z",
+      "head_sha": "3ae78910a3dedda36d716632014917abb07fa5bb",
       "merged_at": null,
-      "number": 13708,
+      "number": 13742,
       "state": "CLOSED",
-      "title": "superseded by clean current-main #13727"
+      "title": "open-door: prove procurement denial exception by cell structure"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "zpal-v2h8/naspo-package-import-fix-20260913",
-      "closed_at": "2026-09-13T10:07:20Z",
-      "head_sha": "8f66234828bda825fefadf4c26c205946a05425d",
-      "merged_at": "2026-09-13T10:07:20Z",
-      "number": 13725,
+      "branch": "ariadne-z/cwpd-owner-send-status-20260913",
+      "closed_at": "2026-09-13T10:17:27Z",
+      "head_sha": "76ca15f9c7ce949b3a855b4451053166e0c0b3fa",
+      "merged_at": null,
+      "number": 13735,
+      "state": "CLOSED",
+      "title": "superseded by current-main #13745"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zlov-p9x4/fleetline-customer-request-portal-20260913",
+      "closed_at": "2026-09-13T10:17:20Z",
+      "head_sha": "cf788228f744c7235d3ad81a062ad8b6960dad7e",
+      "merged_at": "2026-09-13T10:17:20Z",
+      "number": 13744,
       "state": "MERGED",
-      "title": "fix: make NASPO acceptance package import-safe"
+      "title": "hive: add Fleetline customer request portal"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-13T10:15:16Z",
+  "unchanged_since": "2026-09-13T10:30:44Z",
   "undatable_pulls": []
 }
