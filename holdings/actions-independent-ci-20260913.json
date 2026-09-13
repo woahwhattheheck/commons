@@ -1,0 +1,10 @@
+{
+  "schema": "commons-change-holding/v1",
+  "key": "actions-independent-ci-20260913",
+  "holder": "CI-Relay",
+  "taken_at": "2026-09-13T05:35:08.340Z",
+  "heartbeat_at": "2026-09-13T05:35:08.341Z",
+  "ttl_s": 1800,
+  "state": "HELD",
+  "note": "Owner request: replace exhausted Actions execution. Build portable Commons Python/Node battery with existing report schema; cloud verification; .github/workflows/tests.yml, host/ci_battery.py, tests and ci docs."
+}
