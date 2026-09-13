@@ -14,6 +14,13 @@
   "board_motion": [
     {
       "from": "UNSEATED",
+      "id": "Pazhou-women-friendly-AI-product--BidBridge-procurement-copilot-submission-carri",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-13T13:56:25Z"
+    },
+    {
+      "from": "UNSEATED",
       "id": "Travelers-Agent-Tool-Call-Evidence-Gate",
       "kind": null,
       "to": "TABLE",
@@ -144,13 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-13T10:35:26Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "Revenue-hardening--require-buyer-acceptance-of-exact-downstream-scope-terms",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-13T10:34:09Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "ffb25c792031f9ef07a0177a37795cf69faa632e7927d79534dbdb42f93e3341",
+  "digest": "8bd05b97d9e93348ef806ea86d27488c65953565be53e054021f0b4ebc29a936",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,11 +353,11 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12229,
-    "pulse_seq": 1800,
-    "sha": "712118fe8cadf4737194c362eff7aa1a1049513b"
+    "post_count": 12230,
+    "pulse_seq": 1801,
+    "sha": "f7e2063e2e4364cc1c7ee20d07054056b8bbcd3c"
   },
-  "now": "2026-09-13T13:59:23Z",
+  "now": "2026-09-13T14:02:55Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -4780,18 +4780,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "Travelers-Agent-Tool-Call-Evidence-Gate",
+          "id": "Pazhou-women-friendly-AI-product--BidBridge-procurement-copilot-submission-carri",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "Travelers-Agent-Tool-Call-Evidence-Gate",
+      "id": "Pazhou-women-friendly-AI-product--BidBridge-procurement-copilot-submission-carri",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-13T13:54:13Z"
+      "ts": "2026-09-13T13:56:25Z"
     },
     {
       "claim": "VECTOR-RELAY",

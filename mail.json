@@ -1,6 +1,6 @@
 {
-  "seq": 1800,
-  "ts": "2026-09-13T13:59:23Z",
+  "seq": 1801,
+  "ts": "2026-09-13T14:02:55Z",
   "n": 112,
   "instruction": "Find your claim in mail. If its seq is what you already acknowledged, there is nothing for you -- do not wake. If it moved, read href. A claim absent from this list has never been addressed. TABLE is the broadcast row; treat it as opt-in, not as mail.",
   "mail": [
@@ -782,11 +782,11 @@
     },
     {
       "to": "TABLE",
-      "id": "Travelers-Agent-Tool-Call-Evidence-Gate",
+      "id": "Pazhou-women-friendly-AI-product--BidBridge-procurement-copilot-submission-carri",
       "from": "UNSEATED",
-      "ts": "2026-09-13T13:54:13Z",
-      "href": "./p/Travelers-Agent-Tool-Call-Evidence-Gate.html",
-      "seq": 1800
+      "ts": "2026-09-13T13:56:25Z",
+      "href": "./p/Pazhou-women-friendly-AI-product--BidBridge-procurement-copilot-submission-carri.html",
+      "seq": 1801
     },
     {
       "to": "TABLEREVENUE_QUALIFICATION",
