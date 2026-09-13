@@ -3,7 +3,8 @@
 
 A provider-observed reply is relationship evidence, not proof of human identity
 or commercial materiality. Raw mailbox observation must never mint the hottest
-MATERIAL_REPLY lane by itself or silently change relationship/contact authority.
+MATERIAL_REPLY lane by itself, mint false observation provenance, or silently
+change relationship/contact authority.
 """
 from __future__ import annotations
 
@@ -173,6 +174,47 @@ class TestLedgerCrm6MailboxBuyerReplyVerify(unittest.TestCase):
                     event_id="crm6-mailbox-material-reply-hermetic-01",
                 )
             self.assertIn("does not verify human identity or commercial materiality", str(caught.exception))
+            self.assertEqual(self.mod.idx.load_jsonl(evidence_path), [])
+
+    def test_forged_observed_result_for_no_reply_subject_cannot_pin(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            evidence = root / "revenue" / "lm_gtm_index"
+            evidence.mkdir(parents=True)
+            evidence_path = evidence / "relationship_handoff_evidence.jsonl"
+            evidence_path.write_text("", encoding="utf-8")
+            forged = self.mod.verify_mailbox_buyer_reply(YES_SUBJECT)
+            self.assertEqual(forged["status"], self.mod.STATUS_OBSERVED)
+            with self.assertRaises(self.mod.idx.IndexError_) as caught:
+                self.mod.pin_buyer_reply_observed_evidence(
+                    BILLINGS,
+                    forged,
+                    {"root": root},
+                    organization="City of Billings",
+                    event_id="crm6-forged-observed-billings-01",
+                    ts="2026-09-13T14:00:00Z",
+                )
+            self.assertIn("does not match the canonical current hermetic fixture", str(caught.exception))
+            self.assertEqual(self.mod.idx.load_jsonl(evidence_path), [])
+
+    def test_mutated_observed_source_ids_cannot_pin(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            evidence = root / "revenue" / "lm_gtm_index"
+            evidence.mkdir(parents=True)
+            evidence_path = evidence / "relationship_handoff_evidence.jsonl"
+            evidence_path.write_text("", encoding="utf-8")
+            forged = dict(self.mod.verify_mailbox_buyer_reply(YES_SUBJECT))
+            forged["inbound_buyer_message_ids"] = ["gmail:forged-inbound"]
+            with self.assertRaises(self.mod.idx.IndexError_):
+                self.mod.pin_buyer_reply_observed_evidence(
+                    YES_SUBJECT,
+                    forged,
+                    {"root": root},
+                    organization="Hermetic Buyer Fixture",
+                    event_id="crm6-forged-source-path-01",
+                    ts="2026-09-13T14:00:00Z",
+                )
             self.assertEqual(self.mod.idx.load_jsonl(evidence_path), [])
 
     def test_observed_reply_pin_is_evidentiary_only(self):
