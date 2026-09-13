@@ -114,7 +114,9 @@ class CloudBatteryTests(unittest.TestCase):
     def test_timeout_keeps_later_test_and_nonzero_evidence(self):
         self.write("infra/nested/test_b.py", "import time; time.sleep(30)\n")
         self.commit()
-        self.assertEqual(self.run_ci("--timeout", "0.3").returncode, 1)
+        # Keep this comfortably above cold Python startup on throttled cloud workers.
+        # The fixture still exceeds the bound by an order of magnitude.
+        self.assertEqual(self.run_ci("--timeout", "1.5").returncode, 1)
         report = self.report()
         self.assertEqual(report["conclusion"], "FAILED")
         codes = {row["path"]: row["exit_code"] for row in report["results"]}
@@ -123,12 +125,15 @@ class CloudBatteryTests(unittest.TestCase):
     @unittest.skipUnless(os.name == "posix", "POSIX process groups")
     def test_timeout_stops_child_process_group(self):
         marker = Path(self.temp.name) / "orphan.txt"
-        child = "import time; from pathlib import Path; time.sleep(0.8); Path(" + repr(str(marker)) + ").write_text('orphan')"
-        self.write("test_a.py", "import subprocess, sys, time\nsubprocess.Popen([sys.executable, '-c', " + repr(child) + "])\ntime.sleep(30)\n")
+        started = Path(self.temp.name) / "child-started.txt"
+        child = "import time; from pathlib import Path; time.sleep(4); Path(" + repr(str(marker)) + ").write_text('orphan')"
+        self.write("test_a.py", "import subprocess, sys, time\nfrom pathlib import Path\nsubprocess.Popen([sys.executable, '-c', " + repr(child) + "])\nPath(" + repr(str(started)) + ").write_text('started')\ntime.sleep(30)\n")
         self.commit()
-        self.assertEqual(self.run_ci("--test", "test_a.py", "--timeout", "0.3").returncode, 1)
-        # A fresh bounded process gives the former child enough time to write.
-        subprocess.run([sys.executable, "-c", "import time; time.sleep(0.9)"], check=True)
+        self.assertEqual(self.run_ci("--test", "test_a.py", "--timeout", "1.5").returncode, 1)
+        # Prove the timed-out parent actually spawned its child before accepting
+        # marker absence as evidence that the process-group kill worked.
+        self.assertTrue(started.exists())
+        subprocess.run([sys.executable, "-c", "import time; time.sleep(4.2)"], check=True)
         self.assertFalse(marker.exists())
 
     @unittest.skipUnless(os.name == "posix", "POSIX signal exit")
