@@ -2,8 +2,8 @@
   "counts": {
     "open_issues": 5,
     "open_pull_requests": 9,
-    "runs_in_progress": 13,
-    "runs_queued": 642
+    "runs_in_progress": 18,
+    "runs_queued": 434
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -179,8 +179,19 @@
   },
   "pulls_listed": 9,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 49.4,
+  "queue_depth_per_runner": 24.1,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "ariadne-z991/r-c07-ddva-event-platform-20260912",
+      "closed_at": "2026-09-13T02:40:34Z",
+      "head_sha": "3e4ef1c98bc828632df962566c675e350f7ea82d",
+      "merged_at": "2026-09-13T02:40:34Z",
+      "number": 13538,
+      "state": "MERGED",
+      "title": "Revenue: fail-close DDVA event-platform qualification"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -250,6 +261,83 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
+      "branch": "astra/v5-v217-probe-authority-fix-20260912",
+      "closed_at": "2026-09-12T23:41:51Z",
+      "head_sha": "19cc55ae1d7756caead6ddd967b29ce66be6708b",
+      "merged_at": null,
+      "number": 13507,
+      "state": "CLOSED",
+      "title": "TITAN V5: fix V217 exact-source authority gate"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "daedalus/v217-probe-path-postmerge-20260912",
+      "closed_at": "2026-09-12T23:40:16Z",
+      "head_sha": "40a754348fa0e06ace01377adc9b02fc60369b59",
+      "merged_at": null,
+      "number": 13506,
+      "state": "CLOSED",
+      "title": "Fix V217 engagement probe exact router source path"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "astra/titan-v5-component-handoff-exporter-20260912",
+      "closed_at": "2026-09-12T23:39:00Z",
+      "head_sha": "9efe1c18ab4e5705705b66f6c07fb76d49d2d7b0",
+      "merged_at": "2026-09-12T23:39:00Z",
+      "number": 13494,
+      "state": "MERGED",
+      "title": "TITAN V5: export measured winners into the single staging composer"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "gpt/titan-v5-prod-recovery-shared-custody-20260912",
+      "closed_at": "2026-09-12T23:37:50Z",
+      "head_sha": "e5dedb4d3ccfc85489ef05b7c0f59893b0c71831",
+      "merged_at": "2026-09-12T23:37:50Z",
+      "number": 13499,
+      "state": "MERGED",
+      "title": "TITAN V5: converge production recovery on shared publication custody"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "astra-zephyr/experience-retrieval-local-gate-20260912",
+      "closed_at": "2026-09-12T23:37:14Z",
+      "head_sha": "43a335d5fb43b62a497b531cbc2cd29f0bbad443",
+      "merged_at": "2026-09-12T23:37:14Z",
+      "number": 13497,
+      "state": "MERGED",
+      "title": "docs: run retrieval tests in experience compiler local gate"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "astra/titan-frontier-research-20260912",
+      "closed_at": "2026-09-12T23:36:43Z",
+      "head_sha": "e304a523b07c934b73e14c8b405e2bfb388713a0",
+      "merged_at": "2026-09-12T23:36:43Z",
+      "number": 13495,
+      "state": "MERGED",
+      "title": "Record TITAN production and route experiment evidence"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "astra/commons-cross-project-experience-20260912",
+      "closed_at": "2026-09-12T23:33:49Z",
+      "head_sha": "acd920125d3e2438e8ed8a287fff83e5376033ef",
+      "merged_at": "2026-09-12T23:33:49Z",
+      "number": 13492,
+      "state": "MERGED",
+      "title": "Make Commons experience reusable across workloads"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
       "branch": "gpt/titan-v5-v217-engagement-probe-20260912",
       "closed_at": "2026-09-12T23:32:51Z",
       "head_sha": "67151c442c460c863a1f2b807635be5223921828",
@@ -257,98 +345,10 @@
       "number": 13493,
       "state": "MERGED",
       "title": "TITAN V5: add observation-only V217 starvation engagement probe"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "astra/v5-production-v3-attribution-native-9901-20260912",
-      "closed_at": "2026-09-12T23:29:11Z",
-      "head_sha": "8671faab5dc4fa5f1bcb13b3e436108bccfd2bd0",
-      "merged_at": "2026-09-12T23:29:11Z",
-      "number": 13489,
-      "state": "MERGED",
-      "title": "TITAN V5: land completed consumer pair and shared C00 controls"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "gpt/titan-v5-p01-productive-expansion-20260912",
-      "closed_at": "2026-09-12T23:22:39Z",
-      "head_sha": "f24dc9134f9e714035702682b97105587dd154c3",
-      "merged_at": "2026-09-12T23:22:39Z",
-      "number": 13479,
-      "state": "MERGED",
-      "title": "TITAN V5 P01: gate V219 tomato expansion on route payback"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "gpt/titan-v5-prod-recovery-pair-custody-20260912",
-      "closed_at": "2026-09-12T23:19:30Z",
-      "head_sha": "5e58e248d2ed163b127f93c1ca0f33d843c6d4d4",
-      "merged_at": "2026-09-12T23:19:30Z",
-      "number": 13488,
-      "state": "MERGED",
-      "title": "TITAN V5: make production-recovery publication pair-safe"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "astra/v5-mirror-sell-publication-custody-postmerge-20260912",
-      "closed_at": "2026-09-12T23:18:41Z",
-      "head_sha": "dc30532cf09308f2684b5b7d814339bd4363f600",
-      "merged_at": "2026-09-12T23:18:41Z",
-      "number": 13484,
-      "state": "MERGED",
-      "title": "TITAN V5: harden merged mirror SELL artifact publication"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "astra/v5-r04-samestep-state-custody-20260912",
-      "closed_at": "2026-09-12T23:18:26Z",
-      "head_sha": "8ffaf368c711ff04a9ebbfee71acfdb015ba83eb",
-      "merged_at": "2026-09-12T23:18:26Z",
-      "number": 13481,
-      "state": "MERGED",
-      "title": "TITAN V5: make R04 same-step retries state-safe"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "astra/v5-v4-funding-policy-ablation-20260912",
-      "closed_at": "2026-09-12T23:17:29Z",
-      "head_sha": "99b5872c43c50d93bd23b3a56e60cd522c9ad5cc",
-      "merged_at": "2026-09-12T23:17:29Z",
-      "number": 13438,
-      "state": "MERGED",
-      "title": "TITAN V5: isolate submitted-V4 funding-policy regression"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "astra/v5-production-v3-mirror-sell-queue-20260912",
-      "closed_at": "2026-09-12T23:11:34Z",
-      "head_sha": "14f53ffebfbb91c23e446725573c46b79e17824f",
-      "merged_at": "2026-09-12T23:11:34Z",
-      "number": 13474,
-      "state": "MERGED",
-      "title": "TITAN V5: materialize exact mirror SELL queue assignment"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "gpt/titan-v5-route-matrix-shared-20260912",
-      "closed_at": "2026-09-12T23:10:17Z",
-      "head_sha": "b4f4feb273ee117dec76f4f586040e1e4c307eb0",
-      "merged_at": "2026-09-12T23:10:17Z",
-      "number": 13475,
-      "state": "MERGED",
-      "title": "TITAN V5: one shared R04 route-matrix carrier"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-13T02:37:54Z",
+  "unchanged_since": "2026-09-13T03:03:31Z",
   "undatable_pulls": []
 }
