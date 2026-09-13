@@ -314,9 +314,34 @@ def _report_slug(agent: str) -> str:
     return re.sub(r"[^a-zA-Z0-9._-]+", "-", agent).strip("-") or "agent"
 
 
+_REPORT_SUFFIXES = (".report.json", ".report.md")
+_MAX_REPORT_COMPONENT_BYTES = 255
+_MAX_REPORT_SLUG_BYTES = _MAX_REPORT_COMPONENT_BYTES - max(
+    len(suffix.encode("ascii")) for suffix in _REPORT_SUFFIXES
+)
+_WINDOWS_RESERVED_REPORT_BASENAMES = frozenset(
+    {"CON", "PRN", "AUX", "NUL"}
+    | {f"COM{index}" for index in range(1, 10)}
+    | {f"LPT{index}" for index in range(1, 10)}
+)
+
+
+def _validated_report_slug(agent: str) -> str:
+    slug = _report_slug(agent)
+    if len(slug.encode("ascii")) > _MAX_REPORT_SLUG_BYTES:
+        raise ValueError(
+            "agent report name exceeds "
+            f"{_MAX_REPORT_SLUG_BYTES} ASCII bytes after sanitization"
+        )
+    device_base = slug.split(".", 1)[0].rstrip(" .").upper()
+    if device_base in _WINDOWS_RESERVED_REPORT_BASENAMES:
+        raise ValueError(f"agent report name is reserved on Windows: {slug!r}")
+    return slug
+
+
 def _write_report(out_dir: Path, report: dict[str, Any]) -> None:
+    slug = _validated_report_slug(report["agent"])
     out_dir.mkdir(parents=True, exist_ok=True)
-    slug = _report_slug(report["agent"])
     (out_dir / f"{slug}.report.json").write_text(json.dumps(report, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     (out_dir / f"{slug}.report.md").write_text(_markdown(report), encoding="utf-8")
 
@@ -375,7 +400,8 @@ def main(argv: list[str] | None = None) -> int:
         names = [evidence["agent"] for _, evidence, _ in loaded]
         if len(set(names)) != len(names):
             raise ValueError("compare agent names must be unique")
-        slug_keys = [_report_slug(name).casefold() for name in names]
+        report_slugs = [_validated_report_slug(name) for name in names]
+        slug_keys = [slug.casefold() for slug in report_slugs]
         if len(set(slug_keys)) != len(slug_keys):
             raise ValueError("compare agent output names collide after sanitization")
         reports = []
