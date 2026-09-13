@@ -48,6 +48,9 @@ DEFAULT_POLICY = {
 }
 
 _ID_RE = re.compile(r"^[A-Za-z0-9][A-Za-z0-9._:/-]{0,127}$")
+_OPAQUE_ID_RE = re.compile(
+    r"^(?:[0-9a-f]{32}|[0-9a-f]{64}|[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12})$"
+)
 _SHA_RE = re.compile(r"^[0-9a-f]{64}$")
 _EMAIL_RE = re.compile(r"(?i)\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\b")
 _PHONE_RE = re.compile(r"(?<!\d)(?:\+?1[ .-]?)?(?:\(?\d{3}\)?[ .-]?)\d{3}[ .-]?\d{4}(?!\d)")
@@ -109,6 +112,8 @@ def _safe_id(value: Any, *, where: str, maximum: int = 128) -> str:
     text = _string(value, where=where, maximum=maximum)
     if not _ID_RE.fullmatch(text):
         raise EdssAcceptanceError(f"{where} must be an opaque identifier")
+    if not _OPAQUE_ID_RE.fullmatch(text):
+        raise EdssAcceptanceError(f"{where} must be a generated opaque token (UUID or hex digest), not a semantic label")
     if _EMAIL_RE.search(text) or _PHONE_RE.search(text) or _SECRET_RE.search(text):
         raise EdssAcceptanceError(f"{where} contains direct contact/secret-shaped material")
     return text
@@ -126,7 +131,7 @@ def _integer(value: Any, *, where: str, minimum: int, maximum: int) -> int:
         raise EdssAcceptanceError(f"{where} must be an integer")
     if value < minimum or value > maximum:
         raise EdssAcceptanceError(f"{where} outside bounds")
-    return value
+    return text
 
 
 def _boolean(value: Any, *, where: str) -> bool:
