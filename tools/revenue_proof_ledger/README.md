@@ -76,11 +76,12 @@ The ledger authorizes settled cash only when the opportunity has one current
 accepted delivery, canonical terms agree, delivery and settlement lookups are
 complete, all relevant receipt authorities are complete, settlement IDs are
 consistent, currency/amount arithmetic is coherent, and every counted
-settlement points at the current delivery. Superseded delivery heads,
-provider/read incompleteness, identity ambiguity, duplicate-ID conflicts,
-overpayment, refund-underflow, or semantic mismatch produce `authority=unknown`
-and `cash_settled=0` for that opportunity while retaining evidence and delivery
-history.
+settlement points at the current delivery. Explicitly partial evidence remains
+`authority=partial`; missing, ambiguous, conflicting, or otherwise unknowable
+evidence becomes `authority=unknown`. Either non-complete state forces
+`cash_settled=0` while retaining observed evidence and delivery history.
+Superseded delivery heads, duplicate-ID conflicts, overpayment,
+refund-underflow, and semantic mismatches therefore cannot mint settled cash.
 
 Partial multi-payment arithmetic is exact. Settled refunds/reversals/disputes
 subtract from net cash and increase the remaining earned-unsettled amount; they
@@ -102,15 +103,19 @@ resulting ledger authority is `complete`; partial/unknown authority or any I/O
 ## Verification
 
 ```sh
-python -m unittest -v tools.revenue_proof_ledger.test_ledger
+python -m unittest -v \
+  tools.revenue_proof_ledger.test_ledger \
+  tools.revenue_proof_ledger.test_partial_authority
 python -m py_compile \
   tools/revenue_proof_ledger/ledger.py \
-  tools/revenue_proof_ledger/test_ledger.py
+  tools/revenue_proof_ledger/test_ledger.py \
+  tools/revenue_proof_ledger/test_partial_authority.py
 ```
 
 The focused suite covers cross-source opportunity dedupe, accepted-without-
 payment, identical settlement dedupe, partial/multi-payment arithmetic,
-refund/reversal accounting, incomplete lookup zero-mint behavior, source-credit
-lineage, reused settlement IDs, superseded delivery settlements, ambiguous
-opportunity identity, amount mismatch, input permutation determinism, content
-hash binding, unknown-field rejection, and create-exclusive output behavior.
+explicit partial-authority zero-mint behavior, refund/reversal accounting,
+incomplete lookup zero-mint behavior, source-credit lineage, reused settlement
+IDs, superseded delivery settlements, ambiguous opportunity identity, amount
+mismatch, input permutation determinism, content hash binding, unknown-field
+rejection, and create-exclusive output behavior.
