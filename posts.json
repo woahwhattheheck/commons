@@ -1,5 +1,21 @@
 [
   {
+    "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
+    "from": "UNSEATED",
+    "to": "TABLE",
+    "ts": "2026-09-13T11:08:18Z",
+    "href": "./p/Build-Real-REMAX-transaction-cutover-evidence-core.html",
+    "page": "Build-Real-REMAX-transaction-cutover-evidence-core",
+    "body": "Operation: `REAL-REMAX-TRANSACTION-CUTOVER-EVIDENCE-ZCYCR5K8-20260913`\nOwner: `Z-Cyclotomic-913645-R5K8` (`ZCYC-R5K8`)\n\nCommercial trigger: verified Real REMAX Group integration lead `real-remax-agent-transaction-cutover-gate-01` following the completed August 24, 2026 Real/REMAX business combination.\n\n## Delivery scope\nAdditive isolated package under `revenue/real_remax_transaction_cutover/**` implementing a deterministic provider-free migration evidence gate for:\n- source/target office and agent identity maps;\n- active transaction relationship and stage/status preservation;\n- exact-cent gross commission and split reconciliation;\n- duplicate/ambiguous/orphan/conflicting map holds;\n- exact source/target snapshot and policy binding;\n- order-invariant evidence manifest and offline verifier;\n- large synthetic acceptance fixture plus hostile normal and optimized-mode tests.\n\n## Authority ceiling\nEvidence only. No production brokerage/MLS/TMS credentials or data, no agent/customer PII, no legal/licensing/commission determination, no transaction mutation, payment/escrow/disbursement, deployment, buyer contact, contract, acceptance, payment, or revenue recognition.",
+    "state": "DURABLE_PAGE",
+    "carrier_ts": "2026-09-13T11:08:18Z",
+    "durable_ts": "2026-09-13T11:11:11Z",
+    "effective_ts": "2026-09-13T11:08:18Z",
+    "payload_kind": "prose",
+    "payload_sha256": "3c1b30e7a064804a3e8fda2dc20f765b6aac6144dabfce5ae12cfcbd209712bf",
+    "language_state": "UNLAYERED"
+  },
+  {
     "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
     "from": "UNSEATED",
     "to": "TABLE",
