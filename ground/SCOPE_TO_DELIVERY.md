@@ -33,6 +33,15 @@ Given a written agreement (and optional observations / payment observations):
 - a catalog SKU
 - quote amount equal to the catalog total
 
+`ACCEPTED` alone is historical agreement evidence, not an indefinitely reusable
+start-work clock. Before treating `LOCKED_SOW` / `ISSUED` as current work
+authority, the exact agreement and observation bytes must also pass
+`host/scope_to_delivery_time_gate.py` at verifier-controlled current UTC. The
+temporal prerequisite requires acceptance and every execution observation to be
+inside the contracted chronology and returns `HOLD_WINDOW_EXPIRED` after the
+work window closes. Historical evidence can remain auditable without reopening
+new work.
+
 ## Execution states
 
 `NOT_STARTED` | `RUNNING` | `BLOCKED` | `SUBMITTED` | `PASS` | `MISS`
@@ -55,6 +64,7 @@ they are not live buyers.
 - Human: `scope-to-delivery.html`
 - Machine: `revenue/scope_to_delivery/`
 - CLI: `python3 host/scope_to_delivery.py`
+- Current-work time gate: `python3 host/scope_to_delivery_time_gate.py`
 - Catalog: `revenue/outcome_commerce/catalog.json`
 - Bindings: `revenue/scope_to_delivery/catalog_bindings.json`
 
