@@ -1,26 +1,27 @@
 # SPDX-License-Identifier: Apache-2.0
-"""Reject-safe public-evidence gate for V219's late tomato expansion.
+"""Telemetry-only public-evidence accounting for V219's late tomato expansion.
 
 This module never prices HIREs from standing hand count. The authenticated R04
-parent prices HIREs from the same-day ``hires_today`` ordinal, with parent
-same-action HIREs shifting later appended HIREs. At the day-18 admission point
-future same-day ordinals are not observable yet, so the rejection theorem uses
-only mechanically unavoidable commitment cost: if V219 ever produces revenue,
-its day-18 commitment must first buy land+seed and request two appended HIREs.
-The already-observed ``hires_today`` is a lower bound on the ordinal at any
-later same-day commitment; unknown same-action parent HIREs are zero in the
-lower bound because successful parent HIREs can only increase appended HIRE
-cost. Later-day V219 HIREs are conditional and therefore contribute zero to
-reject authority.
+parent prices HIREs from the same-day ``hires_today`` ordinal. At the day-18
+admission point the only mechanically required appended labor is the two HIREs
+requested by that commitment; later V219 HIREs remain conditional and therefore
+contribute zero to the cost-floor telemetry.
 
-The decision is deliberately one-sided. It rejects only when a source-valid
-optimistic gross-revenue upper bound is already below the unavoidable cost
-lower bound. The gross ceiling includes worst-case future town-driven TOMATO
-scarcity through the end of day 29. Otherwise ``decision=None`` preserves the
+A later source audit invalidated P01's previous reject theorem. ``BUY_SEED``
+executes per unit under the available budget, so observing V219 revenue proves
+that land, at least one TOMATO seed, and the day-18 HIRE commitment executed, but
+it does not prove that all ten requested seeds were bought. Until a full-seed
+completion receipt/invariant is authenticated, the mechanically proven cost
+floor below is diagnostic only and this gate has no reject or accept authority.
+Every supported record therefore returns ``decision=None`` and preserves the
 exact parent.
 """
 
-FIXED_LAND_AND_SEED = 4500
+PROVEN_LAND_COST_FLOOR = 4000
+PROVEN_MIN_SEED_COST_FLOOR = 50
+MECHANICALLY_PROVEN_FIXED_COST_FLOOR = (
+    PROVEN_LAND_COST_FLOOR + PROVEN_MIN_SEED_COST_FLOOR
+)
 MODELED_FERTILIZER_RESERVE = 700  # telemetry only; not guaranteed spend.
 MAX_OWN_UNITS = 80
 START_DAY = 18
@@ -56,13 +57,13 @@ def incremental_hire_cost(hires_today, parent_hires, count, fib):
 
 
 def route_labor_cost_floor(observation, native, native_day, fib):
-    """Unavoidable V219 commitment HIRE cost under exact same-day pricing.
+    """Mechanically required V219 day-18 HIRE cost under exact pricing.
 
-    Reject authority intentionally includes only the two day-18 commitment
-    HIREs. Every later V219 request can be skipped by runtime guards, so those
-    future HIREs are conditional route spend rather than a lower bound.
-    ``native_day`` is consulted only at day 18 as a fail-closed source-shape
-    check; the exact parent qualification already owns the full route scan.
+    Telemetry intentionally includes only the two day-18 commitment HIREs.
+    Every later V219 request can be skipped by runtime guards, so future HIREs
+    are conditional route spend. ``native_day`` is consulted only at day 18 as
+    a fail-closed source-shape check; the parent qualification owns the full
+    route scan.
     """
     player = observation.get("player")
     farms = observation.get("farms") or []
@@ -73,13 +74,13 @@ def route_labor_cost_floor(observation, native, native_day, fib):
         raise ValueError("candidate farm must be an object")
     step = observation.get("step")
     if type(step) is not int or step < 0 or step // TURNS_PER_DAY != START_DAY:
-        raise ValueError("V219 payback gate requires the day-18 admission boundary")
+        raise ValueError("V219 telemetry requires the day-18 admission boundary")
     current_hires = farm.get("hires_today")
     if type(current_hires) is not int or current_hires < 0:
         raise ValueError("candidate hires_today must be a nonnegative integer")
     planned = native_day(native, START_DAY)
     if not planned:
-        raise ValueError("V219 payback gate requires a day-18 parent route")
+        raise ValueError("V219 telemetry requires a day-18 parent route")
 
     count = _extra_workers(START_DAY)
     cost = incremental_hire_cost(current_hires, 0, count, fib)
@@ -90,7 +91,7 @@ def rival_tomato_field_projection(observation):
     """Project TOMATO units visible on the rival field through day 29.
 
     This is diagnostic only. Rival private shed/carried inventory is not public,
-    so this value is never used as a bound in the rejection decision.
+    so this value is never used as authority over the parent decision.
     """
     player = observation.get("player")
     farms = observation.get("farms") or []
@@ -129,15 +130,15 @@ def rival_tomato_field_projection(observation):
 
 
 def evaluate(observation, native, native_day, fib, market_price):
-    """Return a reject-safe admission record; ``decision=None`` preserves parent."""
+    """Return telemetry only; ``decision=None`` always preserves the parent."""
     market = observation.get("market") or {}
     prices = market.get("prices") or {}
     inventory = market.get("inventory") or {}
     if "TOMATO" not in prices or "TOMATO" not in inventory:
         return {"decision": None, "reason": "missing_market"}
     # The pinned engine publishes resolved market params only when configuration
-    # overrides are active. The proof below relies on the exact default monotone
-    # `_ro_price` source carried by the authenticated R04 router.
+    # overrides are active. Price telemetry below relies on the exact default
+    # monotone `_ro_price` source carried by the authenticated R04 router.
     if "params" in market:
         return {"decision": None, "reason": "custom_market_params"}
     try:
@@ -172,7 +173,9 @@ def evaluate(observation, native, native_day, fib, market_price):
     except (TypeError, ValueError, KeyError):
         return {"decision": None, "reason": "unsupported_route_state"}
 
-    unavoidable_cost_floor = FIXED_LAND_AND_SEED + labor_floor
+    mechanically_proven_cost_floor = (
+        MECHANICALLY_PROVEN_FIXED_COST_FLOOR + labor_floor
+    )
     gross_upper_bound = MAX_OWN_UNITS * future_quote_ceiling
 
     visible_field = rival_tomato_field_projection(observation)
@@ -185,19 +188,21 @@ def evaluate(observation, native, native_day, fib, market_price):
     except (TypeError, ValueError, OverflowError):
         modeled_gross_visible_field = None
 
-    proven_negative = gross_upper_bound < unavoidable_cost_floor
+    # Diagnostic only. A true value does not authorize rejection because full
+    # execution of the requested ten-seed purchase is not authenticated.
+    negative_payback_telemetry = gross_upper_bound < mechanically_proven_cost_floor
     return {
-        "decision": False if proven_negative else None,
-        "reason": (
-            "proven_negative_payback"
-            if proven_negative
-            else "negative_payback_not_proven"
-        ),
+        "decision": None,
+        "reason": "seed_purchase_completion_unproven",
+        "full_seed_purchase_authenticated": False,
+        "negative_payback_telemetry": negative_payback_telemetry,
         "labor_cost_floor": labor_floor,
         "labor_cost_floor_by_day": labor_floor_by_day,
-        "fixed_cost_floor": FIXED_LAND_AND_SEED,
+        "fixed_cost_floor": MECHANICALLY_PROVEN_FIXED_COST_FLOOR,
+        "proven_land_cost_floor": PROVEN_LAND_COST_FLOOR,
+        "proven_min_seed_cost_floor": PROVEN_MIN_SEED_COST_FLOOR,
         "modeled_fertilizer_reserve": MODELED_FERTILIZER_RESERVE,
-        "unavoidable_cost_floor": unavoidable_cost_floor,
+        "unavoidable_cost_floor": mechanically_proven_cost_floor,
         "max_own_units": MAX_OWN_UNITS,
         "gross_revenue_upper_bound": gross_upper_bound,
         "future_inventory_floor": future_inventory_floor,
