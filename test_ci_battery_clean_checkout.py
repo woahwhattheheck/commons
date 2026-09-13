@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import os
 from pathlib import Path
 import subprocess
 import sys
@@ -84,6 +85,23 @@ class CleanCheckoutBatteryTests(unittest.TestCase):
         self.assertIn("output paths must be outside", result.stderr)
         self.assertFalse(output.exists())
         self.assertEqual(self.git("status", "--porcelain"), "")
+
+    def test_external_hardlink_result_cannot_truncate_tracked_test(self):
+        output = Path(self.temp.name) / "hardlink-output"
+        output.mkdir()
+        try:
+            os.link(self.test_file, output / "results.nul")
+        except OSError as exc:
+            self.skipTest(f"hard links unavailable: {exc}")
+
+        result = self.run_battery(output)
+
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertEqual(self.test_file.read_text(encoding="utf-8"), "pass\n")
+        self.assertEqual(self.git("status", "--porcelain"), "")
+        report = self.report(output)
+        self.assertEqual(report["conclusion"], "PASSED")
+        self.assertEqual(report["counts"]["completed_files"], 1)
 
 
 if __name__ == "__main__":
