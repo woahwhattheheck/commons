@@ -139,7 +139,7 @@ def generate_fixture() -> dict[str, Any]:
 
 def check_acceptance(payload: dict[str, Any] | None = None) -> dict[str, Any]:
     batch = deepcopy(payload) if payload is not None else generate_fixture()
-    manifest = reconcile(batch)
+    manifest = reconcile(batch, evaluated_at=batch["snapshot_at"])
     failures: list[str] = []
     if manifest["input_records"] != 125:
         failures.append(f"input_records {manifest['input_records']} != 125")
@@ -170,10 +170,15 @@ def check_acceptance(payload: dict[str, Any] | None = None) -> dict[str, Any]:
         failures.append(
             f"fixture receipt drift: {manifest['receipt_sha256']} != {EXPECTED_FIXTURE_RECEIPT_SHA256}"
         )
-    if not verify_receipt(manifest, EXPECTED_FIXTURE_RECEIPT_SHA256):
-        failures.append("receipt failed trusted-commitment verification")
+    if not verify_receipt(
+        manifest,
+        EXPECTED_FIXTURE_RECEIPT_SHA256,
+        batch,
+        evaluated_at=batch["snapshot_at"],
+    ):
+        failures.append("receipt failed trusted commitment/source/time verification")
     reversed_batch = {**batch, "events": list(reversed(batch["events"]))}
-    if reconcile(reversed_batch)["receipt_sha256"] != manifest["receipt_sha256"]:
+    if reconcile(reversed_batch, evaluated_at=batch["snapshot_at"])["receipt_sha256"] != manifest["receipt_sha256"]:
         failures.append("receipt changed under reversed input order")
     return {"status": "PASS" if not failures else "FAIL", "failures": failures, "manifest": manifest}
 
@@ -181,7 +186,9 @@ def check_acceptance(payload: dict[str, Any] | None = None) -> dict[str, Any]:
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--write-receipt", type=Path)
+    parser.add_argument("--write-source-batch", type=Path)
     parser.add_argument("--verify-receipt", type=Path)
+    parser.add_argument("--source-batch", type=Path)
     parser.add_argument(
         "--expected-receipt-sha256",
         help="trusted out-of-band receipt SHA-256 required with --verify-receipt",
@@ -190,16 +197,27 @@ def main(argv: list[str] | None = None) -> int:
     if args.verify_receipt:
         if not args.expected_receipt_sha256:
             parser.error("--verify-receipt requires --expected-receipt-sha256 from a trusted out-of-band source")
+        if not args.source_batch:
+            parser.error("--verify-receipt requires --source-batch from a trusted source channel")
         payload = json.loads(args.verify_receipt.read_text(encoding="utf-8"))
         manifest = payload.get("manifest", payload)
-        valid = verify_receipt(manifest, args.expected_receipt_sha256)
+        source_batch = json.loads(args.source_batch.read_text(encoding="utf-8"))
+        valid = verify_receipt(manifest, args.expected_receipt_sha256, source_batch)
         print(json.dumps({"valid": valid}, sort_keys=True))
         return 0 if valid else 2
-    if args.expected_receipt_sha256:
-        parser.error("--expected-receipt-sha256 is only valid with --verify-receipt")
-    result = check_acceptance()
+    if args.expected_receipt_sha256 or args.source_batch:
+        parser.error("--expected-receipt-sha256 and --source-batch are only valid with --verify-receipt")
+
+    fixture = generate_fixture()
+    result = check_acceptance(fixture)
+    if args.write_reciept:
+        pass
+    if args.write_reciept:
+        pass
     if args.write_receipt:
         args.write_receipt.write_text(canonical_json(result) + "\n", encoding="utf-8")
+    if args.write_source_batch:
+        args.write_source_batch.write_text(canonical_json(fixture) + "\n", encoding="utf-8")
     manifest = result["manifest"]
     print(canonical_json({
         "status": result["status"],
