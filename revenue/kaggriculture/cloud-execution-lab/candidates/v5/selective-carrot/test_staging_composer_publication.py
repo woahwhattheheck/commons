@@ -1,3 +1,4 @@
+import os
 from pathlib import Path
 import tempfile
 import unittest
@@ -78,18 +79,20 @@ class PublicationCustodyTests(unittest.TestCase):
     def test_shared_custody_preserves_foreign_replacement(self):
         out = self.root / "candidate.tar.gz"
         receipt = self.root / "receipt.json"
-        real_write = pc._write_all
-        writes = 0
+        real_verify = pc._verify_final
+        verifies = 0
 
-        def replace_after_second_write(fd, payload):
-            nonlocal writes
-            writes += 1
-            real_write(fd, payload)
-            if writes == 2:
-                out.unlink()
-                out.write_bytes(b"foreign-sentinel")
+        def replace_before_first_verify(item):
+            nonlocal verifies
+            verifies += 1
+            if verifies == 1:
+                if os.name == "nt":
+                    os.close(item.fd)
+                item.path.unlink()
+                item.path.write_bytes(b"foreign-sentinel")
+            return real_verify(item)
 
-        with patch.object(pc, "_write_all", side_effect=replace_after_second_write):
+        with patch.object(pc, "_verify_final", side_effect=replace_before_first_verify):
             with self.assertRaisesRegex(OSError, "identity changed"):
                 sc.publish_pair(out, receipt, b"archive", b"receipt")
         self.assertEqual(out.read_bytes(), b"foreign-sentinel")

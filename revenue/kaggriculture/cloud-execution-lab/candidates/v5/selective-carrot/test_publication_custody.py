@@ -13,9 +13,34 @@ class PublicationCustodyTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as td:
             root = Path(td)
             a, b = root/'candidate.tar.gz', root/'candidate.json'
-            pc.publish_exclusive([(a, b'archive'), (b, b'{"ok":true}\n')])
-            self.assertEqual(a.read_bytes(), b'archive')
-            self.assertEqual(b.read_bytes(), b'{"ok":true}\n')
+            archive = b'archive-prefix\x1aarchive-after-dos-eof\x00\xff\n'
+            receipt = b'{"ok":true}\n'
+            pc.publish_exclusive([(a, archive), (b, receipt)])
+            self.assertEqual(a.read_bytes(), archive)
+            self.assertEqual(b.read_bytes(), receipt)
+
+    def test_success_publishes_paths_beyond_windows_max_path(self):
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td) / ('component-' + 'x' * 120)
+            a = root / ('a' * 120 + '.bin')
+            b = root / ('b' * 120 + '.json')
+            self.assertGreater(len(str(a.resolve(strict=False))), 260)
+            pc.publish_exclusive([(a, b'A\x1aB'), (b, b'{}\n')])
+            observed = []
+            for path in (a, b):
+                fd = os.open(
+                    pc._os_path(path),
+                    os.O_RDONLY | getattr(os, 'O_BINARY', 0),
+                )
+                try:
+                    observed.append(os.read(fd, 1024))
+                finally:
+                    os.close(fd)
+            self.assertEqual(observed, [b'A\x1aB', b'{}\n'])
+            # Standard-library TemporaryDirectory cleanup on Windows cannot
+            # address the long final names, so remove those exact paths first.
+            for path in (a, b):
+                os.unlink(pc._os_path(path))
 
     def test_alias_rejected_before_creation(self):
         with tempfile.TemporaryDirectory() as td:
@@ -84,7 +109,10 @@ class PublicationCustodyTests(unittest.TestCase):
                     mock.patch.object(pc, '_unlink_if_owned', side_effect=inspect_live_fd):
                 with self.assertRaisesRegex(OSError, 'injected'):
                     pc.publish_exclusive([(a, b'archive'), (b, b'receipt')])
-            self.assertEqual(rollback_fd_live, [True, True])
+            self.assertEqual(
+                rollback_fd_live,
+                [False, False] if os.name == 'nt' else [True, True],
+            )
             self.assertFalse(a.exists())
             self.assertFalse(b.exists())
 
@@ -128,6 +156,10 @@ class PublicationCustodyTests(unittest.TestCase):
                 nonlocal calls
                 calls += 1
                 if calls == 1:
+                    if os.name == 'nt':
+                        # Windows normally locks an open reservation against
+                        # replacement. Close it to inject the foreign-path case.
+                        os.close(item.fd)
                     item.path.unlink()
                     item.path.write_bytes(b'foreign')
                 return original(item)

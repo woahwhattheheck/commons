@@ -79,6 +79,13 @@ class ExportContractTests(unittest.TestCase):
                 **kwargs,
             )
 
+    def test_read_regular_preserves_ctrl_z_and_following_binary_bytes(self):
+        raw = b"gzip-prefix\x1aarchive-bytes-after-dos-eof\x00\xff"
+        with tempfile.TemporaryDirectory() as td:
+            path = Path(td) / "candidate.tar.gz"
+            path.write_bytes(raw)
+            self.assertEqual(exp.read_regular(path), raw)
+
     def test_replacement_and_addition_match_composer_v1(self):
         manifest, payloads = self.derive(
             [("a.py", b"A"), ("dir/b.py", b"B")],
