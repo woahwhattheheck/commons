@@ -38,8 +38,12 @@ Choose exactly one opportunity mode:
 2. **Cold:** exactly `{"kind":"cold"}` for unsolicited organization-level
    outreach with no external opportunity. Do not create product-specific cold
    aliases.
-3. **Reply:** provider + exact durable inbound message/event ID for one human
-   reply that should be answered once.
+3. **Reply:** canonical provider + exact durable inbound message/event ID for one
+   human reply that should be answered once. The v1 provider ID must be exactly
+   one of `devpost`, `gmail`, `github`, `slack`, or `web-form`. Do not substitute
+   aliases such as `email`, `googlemail`, `gmail-api`, `github-api`, `slack-api`,
+   or `webform`; an unregistered provider spelling is HOLD until reviewed into
+   the source registry.
 
 The helper's exact-field schemas deliberately have no price, recipient, route,
 subject, or draft fields. Do not encode those facts into the source ID.
@@ -65,7 +69,8 @@ python -m revenue.outbound_connector_lease.key \
 ```
 
 If this harness cannot run shell Python, reproduce the exact canonical JSON
-schema and SHA-256. Do not invent a different encoding or a free-form seam key.
+schema and SHA-256. Do not invent a different encoding, provider alias, or a
+free-form seam key.
 
 ## 2. Acquire through the connected GitHub provider
 
@@ -80,9 +85,9 @@ Interpret the create result strictly:
 - **422 / Reference already exists** -> `HOLD`; another worker/history owns it.
 - **any other error, timeout, missing permission, or ambiguity** -> `HOLD`.
 
-Do not retry under a new spelling, source authority, source ID, contact, or price.
-Do not read an existing branch and decide it must be yours after an ambiguous
-create.
+Do not retry under a new spelling, source authority, source ID, contact, price,
+or provider alias. Do not read an existing branch and decide it must be yours
+after an ambiguous create.
 
 Post the acquired branch hash and semantic source identity to the relevant Slack
 work thread as a TAKE. Slack visibility is not the atomic claim; GitHub create is.
@@ -107,7 +112,8 @@ failure is authoritative.
 ## 4. Replies and redirects
 
 A real human inbound message can create one `reply` event seam using its exact
-provider message/event ID. Reply in the existing provider thread.
+provider message/event ID and canonical provider ID. Reply in the existing
+provider thread.
 
 An automatic OOO, bounce redirect, or alternate-contact suggestion does **not**
 mint a new opportunity. Stay on the original external/cold seam. This prevents
@@ -131,6 +137,7 @@ Before any external send, make these questions boringly answerable:
 - Would another contact at the same organization derive the same buyer scope?
 - Is the opportunity sourced from the same issuer domain + exact authoritative ID?
 - Can a different price/route/draft alter any lease field? (It must not.)
+- Is the reply provider one exact reviewed canonical ID rather than an alias?
 - Would an automatic redirect stay on the original opportunity seam?
 - If two workers call create simultaneously, can only one observe exact success?
 - If branch create is ambiguous, do we HOLD rather than mint a variant?
