@@ -115,6 +115,47 @@ class NumericValidationTests(unittest.TestCase):
         self.assertTrue(output.getvalue().startswith("INVALID\n"))
         self.assertIn("cash_usd must be a finite decimal", output.getvalue())
 
+    def _assert_mutating_cli_rejects_malformed_packs(self, command):
+        ledger = self.ledger()
+        ledger["packs"] = 7
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "ledger.json"
+            path.write_text(json.dumps(ledger), encoding="utf-8")
+            before = path.read_text(encoding="utf-8")
+            output = io.StringIO()
+            with redirect_stdout(output):
+                code = MOD.main(["--ledger", str(path), *command])
+            after = path.read_text(encoding="utf-8")
+        self.assertEqual(code, 1)
+        self.assertTrue(output.getvalue().startswith("INVALID\n"))
+        self.assertIn("packs must be a list", output.getvalue())
+        self.assertEqual(after, before)
+
+    def test_cli_record_rejects_malformed_packs_without_write(self):
+        self._assert_mutating_cli_rejects_malformed_packs(
+            [
+                "record",
+                "--id",
+                "cli-pack-20260913",
+                "--decision",
+                "KEEP",
+                "--title",
+                "CLI pack",
+            ]
+        )
+
+    def test_cli_set_checkout_rejects_malformed_packs_without_write(self):
+        self._assert_mutating_cli_rejects_malformed_packs(
+            [
+                "set-checkout",
+                "--id",
+                "missing-pack-20260913",
+                "--url",
+                "https://buy.stripe.com/14kQexample",
+                "--owner-pasted",
+            ]
+        )
+
     def test_valid_current_ledger_and_mutation_isolation(self):
         ledger = self.ledger()
         before = deepcopy(ledger)
