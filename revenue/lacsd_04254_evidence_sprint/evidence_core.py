@@ -1,22 +1,22 @@
 """Deterministic evidence sprint for AI/ML sewer-collection decision logs.
 
-The package evaluates *candidate outputs* against an abstract synthetic portfolio.
-It does not operate sewer infrastructure, dispatch maintenance, or claim field performance.
+The package evaluates candidate outputs against an abstract synthetic portfolio.
+It does not operate sewer infrastructure, dispatch maintenance, or claim field
+performance.
 """
 from __future__ import annotations
 
-from dataclasses import dataclass, asdict
-import argparse
+from dataclasses import dataclass
 import hashlib
 import json
 import math
-from pathlib import Path
-from typing import Any, Iterable, Mapping, Sequence
+from typing import Any, Mapping, Sequence
 
 PORTFOLIO_SCHEMA = "lacsd-04254.synthetic-portfolio.v1"
-CANDIDATE_SCHEMA = "lacsd-04254.candidate-log.v1"
-RECEIPT_SCHEMA = "lacsd-04254.evidence-receipt.v1"
-EVENT_SCHEMA = "lacsd-04254.candidate-event.v1"
+CANDIDATE_SCHEMA = "lacsd-04254.candidate-log.v2"
+CANDIDATE_BUILD_SCHEMA = "lacsd-04254.candidate-build.v1"
+RECEIPT_SCHEMA = "lacsd-04254.evidence-receipt.v2"
+EVENT_SCHEMA = "lacsd-04254.candidate-event.v2"
 ALLOWED_DISPOSITIONS = {"ALERT", "CLEAR", "NO_DATA"}
 
 
@@ -110,7 +110,6 @@ def _scenario(
     interruption_end_s: int | None = None,
 ) -> Scenario:
     packets = _packets(values)
-    stream_sha = canonical_sha256(list(packets))
     return Scenario(
         scenario_id=scenario_id,
         fault_class=fault_class,
@@ -119,7 +118,7 @@ def _scenario(
         max_alert_latency_s=max_alert_latency_s,
         interruption_end_s=interruption_end_s,
         packets=packets,
-        stream_sha256=stream_sha,
+        stream_sha256=canonical_sha256(list(packets)),
     )
 
 
@@ -183,29 +182,75 @@ def build_portfolio() -> dict[str, Any]:
     return data
 
 
+def candidate_build_record(
+    *, candidate_id: str, model_id: str, model_version: str, artifact_sha256: str
+) -> dict[str, str]:
+    """Return the canonical build-identity object committed by every event."""
+    return {
+        "schema": CANDIDATE_BUILD_SCHEMA,
+        "candidate_id": candidate_id,
+        "model_id": model_id,
+        "model_version": model_version,
+        "artifact_sha256": artifact_sha256,
+    }
+
+
+def candidate_build_sha256(
+    *, candidate_id: str, model_id: str, model_version: str, artifact_sha256: str
+) -> str:
+    return canonical_sha256(
+        candidate_build_record(
+            candidate_id=candidate_id,
+            model_id=model_id,
+            model_version=model_version,
+            artifact_sha256=artifact_sha256,
+        )
+    )
+
+
 def _validate_candidate(candidate: Mapping[str, Any], portfolio: Mapping[str, Any]) -> dict[str, Any]:
     if not isinstance(candidate, Mapping):
         raise ValidationError("candidate must be an object")
-    required = {"schema", "candidate_id", "model_id", "model_version", "portfolio_sha256", "events"}
+    required = {
+        "schema", "candidate_id", "model_id", "model_version",
+        "artifact_sha256", "candidate_build_sha256", "portfolio_sha256", "events",
+    }
     _strict_keys(candidate, required, label="candidate")
     if candidate["schema"] != CANDIDATE_SCHEMA:
         raise ValidationError("unsupported candidate schema")
+
     candidate_id = _str(candidate["candidate_id"], label="candidate_id")
     model_id = _str(candidate["model_id"], label="model_id")
     model_version = _str(candidate["model_version"], label="model_version")
+    artifact_sha = _hex64(candidate["artifact_sha256"], label="artifact_sha256")
+    supplied_build_sha = _hex64(candidate["candidate_build_sha256"], label="candidate_build_sha256")
+    expected_build_sha = candidate_build_sha256(
+        candidate_id=candidate_id,
+        model_id=model_id,
+        model_version=model_version,
+        artifact_sha256=artifact_sha,
+    )
+    if supplied_build_sha != expected_build_sha:
+        raise ValidationError("candidate_build_sha256 does not match exact candidate/model/artifact identity")
+
     portfolio_sha = _hex64(candidate["portfolio_sha256"], label="portfolio_sha256")
     if portfolio_sha != portfolio["portfolio_sha256"]:
         raise ValidationError("candidate portfolio_sha256 does not match exact synthetic portfolio")
     events = candidate["events"]
     if not isinstance(events, list):
         raise ValidationError("events must be a list")
+
     scenarios = {row["scenario_id"]: row for row in portfolio["scenarios"]}
     normalized_events: list[dict[str, Any]] = []
     event_ids: set[str] = set()
+    effect_bindings: dict[str, tuple[str, str, str]] = {}
     for idx, raw in enumerate(events):
         if not isinstance(raw, Mapping):
             raise ValidationError(f"event[{idx}] must be an object")
-        keys = {"schema", "event_id", "scenario_id", "source_packet_id", "observed_at_s", "disposition", "effect_id", "input_sha256"}
+        keys = {
+            "schema", "event_id", "scenario_id", "source_packet_id", "observed_at_s",
+            "disposition", "effect_id", "input_sha256", "candidate_build_sha256",
+        }
         _strict_keys(raw, keys, label=f"event[{idx}]")
         if raw["schema"] != EVENT_SCHEMA:
             raise ValidationError(f"event[{idx}] unsupported schema")
@@ -213,33 +258,52 @@ def _validate_candidate(candidate: Mapping[str, Any], portfolio: Mapping[str, An
         if event_id in event_ids:
             raise ValidationError(f"duplicate event_id: {event_id}")
         event_ids.add(event_id)
+
+        event_build_sha = _hex64(
+            raw["candidate_build_sha256"], label=f"event[{idx}].candidate_build_sha256"
+        )
+        if event_build_sha != expected_build_sha:
+            raise ValidationError(f"event[{idx}] candidate build identity mismatch")
+
         scenario_id = _str(raw["scenario_id"], label=f"event[{idx}].scenario_id")
         if scenario_id not in scenarios:
             raise ValidationError(f"event[{idx}] unknown scenario_id: {scenario_id}")
         scenario = scenarios[scenario_id]
         packet_id = _str(raw["source_packet_id"], label=f"event[{idx}].source_packet_id")
-        packet_occurrences = [packet for packet in scenario["packets"] if packet["packet_id"] == packet_id]
+        packet_occurrences = [p for p in scenario["packets"] if p["packet_id"] == packet_id]
         if not packet_occurrences:
             raise ValidationError(f"event[{idx}] source_packet_id not present in scenario stream")
         observed = _number(raw["observed_at_s"], label=f"event[{idx}].observed_at_s")
         if observed < 0:
             raise ValidationError(f"event[{idx}].observed_at_s must be >= 0")
-        exact_occurrences = [packet for packet in packet_occurrences if float(packet["observed_at_s"]) == observed]
+        exact_occurrences = [p for p in packet_occurrences if float(p["observed_at_s"]) == observed]
         if not exact_occurrences:
-            raise ValidationError(f"event[{idx}] observed_at_s must equal an occurrence time for source_packet_id")
+            raise ValidationError(
+                f"event[{idx}] observed_at_s must equal an occurrence time for source_packet_id"
+            )
+
         disposition = _str(raw["disposition"], label=f"event[{idx}].disposition")
         if disposition not in ALLOWED_DISPOSITIONS:
             raise ValidationError(f"event[{idx}] invalid disposition: {disposition}")
-        if disposition == "NO_DATA" and not any(not packet["transport_available"] for packet in exact_occurrences):
+        if disposition == "NO_DATA" and not any(not p["transport_available"] for p in exact_occurrences):
             raise ValidationError(f"event[{idx}] NO_DATA must bind an unavailable packet occurrence")
-        if disposition in {"ALERT", "CLEAR"} and not any(packet["transport_available"] for packet in exact_occurrences):
+        if disposition in {"ALERT", "CLEAR"} and not any(p["transport_available"] for p in exact_occurrences):
             raise ValidationError(f"event[{idx}] {disposition} must bind an available packet occurrence")
+
+        input_sha = _hex64(raw["input_sha256"], label=f"event[{idx}].input_sha256")
         effect_id = raw["effect_id"]
         if disposition == "ALERT":
             effect_id = _str(effect_id, label=f"event[{idx}].effect_id")
+            binding = (event_build_sha, scenario_id, input_sha)
+            previous = effect_bindings.get(effect_id)
+            if previous is not None and previous != binding:
+                raise ValidationError(
+                    f"effect_id {effect_id!r} reused across distinct build/scenario/input binding"
+                )
+            effect_bindings[effect_id] = binding
         elif effect_id is not None:
             raise ValidationError(f"event[{idx}] non-ALERT effect_id must be null")
-        input_sha = _hex64(raw["input_sha256"], label=f"event[{idx}].input_sha256")
+
         normalized_events.append({
             "schema": EVENT_SCHEMA,
             "event_id": event_id,
@@ -249,13 +313,17 @@ def _validate_candidate(candidate: Mapping[str, Any], portfolio: Mapping[str, An
             "disposition": disposition,
             "effect_id": effect_id,
             "input_sha256": input_sha,
+            "candidate_build_sha256": event_build_sha,
         })
-    normalized_events.sort(key=lambda event: (event["scenario_id"], event["observed_at_s"], event["event_id"]))
+
+    normalized_events.sort(key=lambda e: (e["scenario_id"], e["observed_at_s"], e["event_id"]))
     return {
         "schema": CANDIDATE_SCHEMA,
         "candidate_id": candidate_id,
         "model_id": model_id,
         "model_version": model_version,
+        "artifact_sha256": artifact_sha,
+        "candidate_build_sha256": expected_build_sha,
         "portfolio_sha256": portfolio_sha,
         "events": normalized_events,
     }

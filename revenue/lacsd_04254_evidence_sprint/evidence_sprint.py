@@ -1,9 +1,13 @@
-"""Evaluate candidate AI/ML sewer-collection decision evidence against the fixed synthetic portfolio."""
+"""Evaluate candidate sewer-collection decision evidence against a fixed synthetic portfolio."""
 from __future__ import annotations
 
 import argparse
+import errno
+import hashlib
 import json
+import os
 from pathlib import Path
+import stat
 from typing import Any, Mapping, Sequence
 
 from evidence_core import (
@@ -15,14 +19,21 @@ from evidence_core import (
     _strict_keys,
     _validate_candidate,
     build_portfolio,
+    candidate_build_sha256,
     canonical_json,
     canonical_sha256,
 )
 
+MAX_JSON_BYTES = 2 * 1024 * 1024
+_READ_CHUNK_BYTES = 64 * 1024
+
+
 def evaluate_candidate(candidate: Mapping[str, Any]) -> dict[str, Any]:
     portfolio = build_portfolio()
     normalized = _validate_candidate(candidate, portfolio)
-    events_by_scenario: dict[str, list[dict[str, Any]]] = {row["scenario_id"]: [] for row in portfolio["scenarios"]}
+    events_by_scenario: dict[str, list[dict[str, Any]]] = {
+        row["scenario_id"]: [] for row in portfolio["scenarios"]
+    }
     for event in normalized["events"]:
         events_by_scenario[event["scenario_id"]].append(event)
 
@@ -44,9 +55,14 @@ def evaluate_candidate(candidate: Mapping[str, Any]) -> dict[str, Any]:
         events = events_by_scenario[sid]
         dispositions = [event["disposition"] for event in events]
         effects = sorted({event["effect_id"] for event in events if event["effect_id"] is not None})
-        lineage_ok = all(event["input_sha256"] == scenario["stream_sha256"] for event in events) if events else False
+        lineage_ok = (
+            all(event["input_sha256"] == scenario["stream_sha256"] for event in events)
+            if events else False
+        )
         lineage_events += len(events)
-        lineage_pass_events += sum(event["input_sha256"] == scenario["stream_sha256"] for event in events)
+        lineage_pass_events += sum(
+            event["input_sha256"] == scenario["stream_sha256"] for event in events
+        )
 
         if expected == "ALERT":
             alert_expected_count += 1
@@ -54,7 +70,9 @@ def evaluate_candidate(candidate: Mapping[str, Any]) -> dict[str, Any]:
             if detected:
                 alert_detected_count += 1
             duplicate_effect_count += max(0, len(effects) - 1)
-            alert_times = [event["observed_at_s"] for event in events if event["disposition"] == "ALERT"]
+            alert_times = [
+                event["observed_at_s"] for event in events if event["disposition"] == "ALERT"
+            ]
             first_alert = min(alert_times) if alert_times else None
             deadline = scenario["onset_s"] + scenario["max_alert_latency_s"]
             timely = first_alert is not None and scenario["onset_s"] <= first_alert <= deadline
@@ -145,7 +163,7 @@ def evaluate_candidate(candidate: Mapping[str, Any]) -> dict[str, Any]:
         },
         {
             "claim_id": "synthetic.exactly-once-work-intent",
-            "test": "retries/replays never mint a second distinct effect/work-intent ID for one actionable scenario",
+            "test": "one global effect identity is bound to one exact build/scenario/input generation",
             "passed": gates["duplicate_effect_count_0"],
             "evidence": {"duplicate_effect_count": duplicate_effect_count},
         },
@@ -166,6 +184,8 @@ def evaluate_candidate(candidate: Mapping[str, Any]) -> dict[str, Any]:
     result = {
         "portfolio_sha256": portfolio["portfolio_sha256"],
         "candidate_sha256": canonical_sha256(normalized),
+        "candidate_build_sha256": normalized["candidate_build_sha256"],
+        "artifact_sha256": normalized["artifact_sha256"],
         "candidate_id": normalized["candidate_id"],
         "model_id": normalized["model_id"],
         "model_version": normalized["model_version"],
@@ -208,7 +228,11 @@ def compile_receipt(candidate: Mapping[str, Any]) -> dict[str, Any]:
 def verify_receipt(receipt: Mapping[str, Any], candidate: Mapping[str, Any]) -> dict[str, Any]:
     if not isinstance(receipt, Mapping):
         raise ValidationError("receipt must be an object")
-    _strict_keys(receipt, {"schema", "evaluation", "evaluation_sha256", "receipt_sha256"}, label="receipt")
+    _strict_keys(
+        receipt,
+        {"schema", "evaluation", "evaluation_sha256", "receipt_sha256"},
+        label="receipt",
+    )
     if receipt["schema"] != RECEIPT_SCHEMA:
         raise ValidationError("unsupported receipt schema")
     _hex64(receipt["evaluation_sha256"], label="evaluation_sha256")
@@ -220,16 +244,27 @@ def verify_receipt(receipt: Mapping[str, Any], candidate: Mapping[str, Any]) -> 
 
 
 def reference_candidate() -> dict[str, Any]:
-    """Return a deterministic demonstration candidate that satisfies the synthetic contract."""
+    """Return a deterministic demonstration candidate satisfying the synthetic contract."""
     portfolio = build_portfolio()
+    candidate_id = "reference-synthetic-candidate"
+    model_id = "demo-only"
+    model_version = "v2"
+    artifact_sha = hashlib.sha256(b"lacsd-04254-demo-only-artifact-v2\n").hexdigest()
+    build_sha = candidate_build_sha256(
+        candidate_id=candidate_id,
+        model_id=model_id,
+        model_version=model_version,
+        artifact_sha256=artifact_sha,
+    )
     events: list[dict[str, Any]] = []
     for scenario in portfolio["scenarios"]:
         expected = scenario["expected_disposition"]
         if expected == "ALERT":
-            if scenario["interruption_end_s"] is not None:
-                observed = scenario["interruption_end_s"]
-            else:
-                observed = scenario["onset_s"]
+            observed = (
+                scenario["interruption_end_s"]
+                if scenario["interruption_end_s"] is not None
+                else scenario["onset_s"]
+            )
             packet = min(
                 scenario["packets"],
                 key=lambda p: (abs(p["observed_at_s"] - observed), p["observed_at_s"]),
@@ -248,19 +283,100 @@ def reference_candidate() -> dict[str, Any]:
             "disposition": expected,
             "effect_id": effect_id,
             "input_sha256": scenario["stream_sha256"],
+            "candidate_build_sha256": build_sha,
         })
     return {
         "schema": CANDIDATE_SCHEMA,
-        "candidate_id": "reference-synthetic-candidate",
-        "model_id": "demo-only",
-        "model_version": "v1",
+        "candidate_id": candidate_id,
+        "model_id": model_id,
+        "model_version": model_version,
+        "artifact_sha256": artifact_sha,
+        "candidate_build_sha256": build_sha,
         "portfolio_sha256": portfolio["portfolio_sha256"],
         "events": events,
     }
 
 
+def _fingerprint(st: os.stat_result) -> tuple[int, int, int, int, int, int]:
+    return (
+        st.st_dev,
+        st.st_ino,
+        stat.S_IFMT(st.st_mode),
+        st.st_size,
+        st.st_mtime_ns,
+        st.st_ctime_ns,
+    )
+
+
+def _lstat(path: Path, *, label: str) -> os.stat_result:
+    try:
+        return os.lstat(path)
+    except OSError as exc:
+        raise ValidationError(f"{label} cannot be inspected: {exc.strerror or exc}") from exc
+
+
+def _read_bounded_regular(path: Path) -> bytes:
+    """Retain one bounded regular-file generation without following the final symlink."""
+    path = Path(path)
+    before = _lstat(path, label=str(path))
+    if not stat.S_ISREG(before.st_mode):
+        raise ValidationError("JSON input must be an ordinary regular file, not a symlink/device/FIFO/directory")
+    if before.st_size > MAX_JSON_BYTES:
+        raise ValidationError(f"JSON input exceeds {MAX_JSON_BYTES} bytes")
+    if not hasattr(os, "O_NOFOLLOW") or not hasattr(os, "O_NONBLOCK"):
+        raise ValidationError("safe no-follow/nonblocking file ingress is unsupported on this platform")
+
+    flags = os.O_RDONLY | os.O_NOFOLLOW | os.O_NONBLOCK | getattr(os, "O_CLOEXEC", 0)
+    try:
+        fd = os.open(path, flags)
+    except OSError as exc:
+        if exc.errno in {errno.ELOOP, errno.ENXIO, errno.ENODEV, errno.EISDIR}:
+            raise ValidationError("JSON input is not a stable ordinary regular file") from exc
+        raise ValidationError(f"JSON input cannot be opened safely: {exc.strerror or exc}") from exc
+
+    try:
+        opened = os.fstat(fd)
+        if not stat.S_ISREG(opened.st_mode):
+            raise ValidationError("opened JSON input is not an ordinary regular file")
+        if _fingerprint(opened) != _fingerprint(before):
+            raise ValidationError("JSON input generation changed between path inspection and open")
+        if opened.st_size > MAX_JSON_BYTES:
+            raise ValidationError(f"JSON input exceeds {MAX_JSON_BYTES} bytes")
+
+        target = opened.st_size
+        read_limit = min(MAX_JSON_BYTES + 1, target + 1)
+        data = bytearray()
+        while len(data) < read_limit:
+            try:
+                chunk = os.read(fd, min(_READ_CHUNK_BYTES, read_limit - len(data)))
+            except BlockingIOError as exc:
+                raise ValidationError("JSON input would block during bounded read") from exc
+            if not chunk:
+                break
+            data.extend(chunk)
+        if len(data) > target:
+            raise ValidationError("JSON input grew during bounded read")
+        if len(data) != target:
+            raise ValidationError("JSON input was truncated during bounded read")
+        after = os.fstat(fd)
+        if _fingerprint(after) != _fingerprint(opened):
+            raise ValidationError("JSON input descriptor generation changed during read")
+    finally:
+        os.close(fd)
+
+    visible = _lstat(path, label=str(path))
+    if _fingerprint(visible) != _fingerprint(opened):
+        raise ValidationError("JSON input pathname no longer names the retained file generation")
+    return bytes(data)
+
+
 def _load_strict_json(path: Path) -> Any:
-    text = path.read_text(encoding="utf-8")
+    raw = _read_bounded_regular(path)
+    try:
+        text = raw.decode("utf-8", errors="strict")
+    except UnicodeDecodeError as exc:
+        raise ValidationError("JSON input must be strict UTF-8") from exc
+
     def pairs_hook(pairs: list[tuple[str, Any]]) -> dict[str, Any]:
         result: dict[str, Any] = {}
         for key, value in pairs:
@@ -268,10 +384,14 @@ def _load_strict_json(path: Path) -> Any:
                 raise ValidationError(f"duplicate JSON key: {key}")
             result[key] = value
         return result
+
+    def bad_constant(value: str) -> Any:
+        raise ValidationError(f"non-finite JSON number: {value}")
+
     try:
-        return json.loads(text, object_pairs_hook=pairs_hook)
+        return json.loads(text, object_pairs_hook=pairs_hook, parse_constant=bad_constant)
     except json.JSONDecodeError as exc:
-        raise ValidationError(f"invalid JSON: {exc}") from exc
+        raise ValidationError(f"invalid JSON: {exc.msg}") from exc
 
 
 def _main(argv: Sequence[str] | None = None) -> int:
