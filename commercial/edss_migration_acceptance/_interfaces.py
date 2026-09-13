@@ -46,6 +46,15 @@ def _interface_results(events: list[dict[str, Any]], expected_events: list[dict[
             out_of_order_keys.add(_event_key(event))
         last_sequence[interface_id] = max(sequence, last_sequence.get(interface_id, sequence))
 
+    ack_owners: dict[str, set[tuple[Any, ...]]] = {}
+    for event in events:
+        for ack in event["acknowledgements"]:
+            ack_owners.setdefault(ack["ack_id"], set()).add(_event_key(event))
+    conflicting_ack_keys: set[tuple[Any, ...]] = set()
+    for owners in ack_owners.values():
+        if len(owners) > 1:
+            conflicting_ack_keys.update(owners)
+
     for event in events:
         key = _event_key(event)
         if key in expected_keys:
@@ -75,7 +84,7 @@ def _interface_results(events: list[dict[str, Any]], expected_events: list[dict[
             status = "RECEIVE_TIME_AMBIGUOUS"
         elif key in out_of_order_keys:
             status = "OUT_OF_ORDER"
-        elif len(set(ack_ids)) != len(ack_ids):
+        elif len(set(ack_ids)) != len(ack_ids) or key in conflicting_ack_keys:
             status = "DUPLICATE_ACK_ID"
         elif len(event["acknowledgements"]) == 0:
             status = "MISSING_ACK"
