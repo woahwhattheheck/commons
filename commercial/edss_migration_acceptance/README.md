@@ -4,7 +4,7 @@
 
 Its job is narrower and commercially useful: given synthetic/deidentified or separately approved **opaque IDs and hashes**, prove whether a declared source export, target export, and interface-event set reconcile exactly enough for a human implementation team to review migration/cutover evidence.
 
-The public package never needs patient names, DOBs, addresses, diagnoses, conditions, lab results, clinical notes, or raw HL7/FHIR payloads. Rows contain only stable synthetic/opaque record IDs, field IDs, and value hashes. Interface evidence contains only envelope identifiers, sequence numbers, timestamps, payload hashes, and acknowledgement metadata.
+The public package never needs patient names, DOBs, addresses, diagnoses, conditions, lab results, clinical notes, or raw HL7/FHIR payloads. Rows contain only caller-supplied identifiers, field IDs, and value hashes. The compiler rejects email/phone-shaped IDs and unknown payload keys; it does not prove identifiers are deidentified. Callers remain responsible for supplying synthetic or previously deidentified opaque IDs. Interface evidence contains only envelope identifiers, sequence numbers, timestamps, payload hashes, and acknowledgement metadata.
 
 ## What it checks
 
@@ -60,8 +60,9 @@ The compiler detects:
 - unexpected or missing expected events;
 - event references to unexpected logical records;
 - non-monotone source sequence in receive order;
+- equal receive timestamps on distinct same-interface events (fail closed; source sequence is not a receive-order tie-break);
 - missing acknowledgements;
-- duplicate acknowledgement IDs;
+- duplicate acknowledgement IDs within one event or reused across events/messages;
 - multiple acknowledgements where the acceptance contract expects one;
 - rejected acknowledgements;
 - impossible receive/ack chronology;
