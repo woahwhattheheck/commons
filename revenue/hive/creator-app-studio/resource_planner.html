@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mixed Workshop Resource Planner</title>
+<style>
+:root{font-family:system-ui,sans-serif;color:#172f36;background:#f3f6f4}
+*{box-sizing:border-box}body{margin:0}main{max-width:1180px;margin:auto;padding:28px}
+header{border-bottom:3px solid #b1cbad;margin-bottom:24px}h1{font-size:clamp(28px,5vw,44px);margin:.3em 0}
+section{background:white;border:1px solid #dce4df;border-radius:12px;padding:22px;margin:18px 0}
+p{line-height:1.6}.eyebrow{font-size:12px;font-weight:bold;text-transform:uppercase;letter-spacing:2px}
+.grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:16px}.scroll{overflow:auto}
+table{width:100%;border-collapse:collapse;font-size:14px}th,td{text-align:left;padding:8px;border-bottom:1px solid #dde5e0;vertical-align:top}
+input,select,button{font:inherit;border-radius:6px;border:1px solid #a9b8b0;padding:9px}
+input,select{width:100%;background:white;color:#172f36}button{cursor:pointer;background:#244e43;color:white}
+button.secondary{background:#edf3ef;color:#244e43}.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+.status{padding:10px;border-left:4px solid #659373;min-height:42px;white-space:pre-wrap}.error{border-color:#a64135;color:#8b3026}
+.hint{font-size:13px;color:#51635b}caption{text-align:left;margin:10px 0;color:#50615b}
+button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #d59429;outline-offset:2px}
+@media(max-width:700px){main{padding:14px}.grid{grid-template-columns:1fr}section{padding:14px}}
+</style>
+</head>
+<body><main>
+<header>
+<p class="eyebrow">Creator App Studio · source-backed workshop workflow</p>
+<h1>Mixed Workshop Resource Planner</h1>
+<p>Plan per-attendee consumables separately from shared/reusable tools. Expected attendance drives only consumables; rostered headcount stays as a planning reference.</p>
+<p class="hint">The workflow distinction is source-backed; the example quantities below are editable planning examples, not quoted creator requirements or purchase recommendations.</p>
+</header>
+
+<section>
+<h2>Workshop plan</h2>
+<div class="grid">
+<label>Plan name<input id="plan-name" maxlength="100" value="Ceramics class"></label>
+<label>Rostered headcount<input id="rostered" type="number" min="1" max="1000000" step="1" value="35"></label>
+<label>Expected attendees<input id="expected" type="number" min="1" max="1000000" step="1" value="28"></label>
+</div>
+<p class="hint">Changing rostered headcount alone never changes quantities. Changing expected attendees changes only rows marked “Per attendee consumable.”</p>
+<div class="scroll">
+<table>
+<caption>Shared/reusable quantity means a fixed workshop quantity. Per-attendee quantity is multiplied by expected attendees. Reserve applies to either mode; purchase rounds up to whole packs.</caption>
+<thead><tr><th>Resource</th><th>Unit</th><th>Mode</th><th>Quantity</th><th>Pack size</th><th>Reserve %</th><th>Remove</th></tr></thead>
+<tbody id="resources"></tbody>
+</table>
+</div>
+<div class="actions">
+<button id="add" class="secondary" type="button">Add resource</button>
+<button id="calculate" type="button">Calculate</button>
+<button id="save" type="button">Save plan</button>
+<button id="new" class="secondary" type="button">New plan</button>
+</div>
+<p id="status" class="status" role="status" aria-live="polite">Ready. Nothing is sent to a server.</p>
+<div class="scroll">
+<table id="results">
+<caption>Calculated quantities</caption>
+<thead><tr><th>Resource</th><th>Mode</th><th>Required with reserve</th><th>Packs</th><th>Purchase quantity</th></tr></thead>
+<tbody></tbody>
+</table>
+</div>
+<div class="actions">
+<button id="csv" class="secondary" type="button">Export current plan CSV</button>
+<button id="backup" class="secondary" type="button">Export saved plans JSON</button>
+<label>Restore JSON backup<input id="restore" type="file" accept="application/json,.json"></label>
+</div>
+</section>
+
+<section>
+<h2>Saved plans</h2>
+<label>Select a saved plan<select id="saved"><option value="">Choose a plan</option></select></label>
+<div class="actions"><button id="load" class="secondary" type="button">Open selected plan</button><button id="delete" class="secondary" type="button">Delete selected plan</button></div>
+<p class="hint" id="saved-count"></p>
+</section>
+
+<section>
+<h2>Interpretation boundary</h2>
+<p><strong>Per attendee consumable:</strong> the entered quantity is multiplied by expected attendance. <strong>Shared/reusable:</strong> the entered quantity is fixed for the workshop and does not scale with attendance.</p>
+<p class="hint">This planner does not infer inventory on hand, tool-sharing ratios, procurement lead times, prices, or replacement rates. Enter those quantities deliberately. No checkout, messages, analytics, or external requests are connected.</p>
+</section>
+
+</main>
+<script>
+'use strict';
+// BEGIN RESOURCE PLANNER PURE
+const SCALE=1000000n;
+const MODES=new Set(['per_attendee_consumable','shared_reusable']);
+function decimal(value,label,minimum=0n,maximum=1000000n*SCALE){
+  const s=String(value).trim();
+  if(!/^(?:\d+(?:\.\d{0,6})?|\.\d{1,6})$/.test(s))throw Error(label+' needs a nonnegative number with at most six decimal places.');
+  const [a,b='']=s.split('.');
+  const n=BigInt(a||'0')*SCALE+BigInt(b.padEnd(6,'0'));
+  if(n<minimum||n>maximum)throw Error(label+' is outside the supported range.');
+  return n;
+}
+function fixed(n,places){
+  let s=n.toString().padStart(places+1,'0');
+  return places ? (s.slice(0,-places)+'.'+s.slice(-places)).replace(/\.?0+$/,'') : s;
+}
+function normalizeResource(row){
+  if(!row||typeof row!=='object'||Array.isArray(row))throw Error('Resource must be an object.');
+  if(typeof row.name!=='string'||!row.name.trim()||row.name.length>100)throw Error('Every resource needs a name of 1–100 characters.');
+  if(typeof row.unit!=='string'||!row.unit.trim()||row.unit.length>40)throw Error('Every resource needs a unit of 1–40 characters.');
+  const mode=row.mode||'per_attendee_consumable';
+  if(!MODES.has(mode))throw Error('Resource mode must be per_attendee_consumable or shared_reusable.');
+  decimal(row.quantity,'Quantity');
+  decimal(row.pack_size,'Pack size',1n);
+  decimal(row.buffer_percent??'0','Reserve',0n,100n*SCALE);
+  return {name:row.name.trim(),unit:row.unit.trim(),mode,quantity:String(row.quantity),pack_size:String(row.pack_size),buffer_percent:String(row.buffer_percent??'0')};
+}
+function validatePlan(plan){
+  if(!plan||typeof plan!=='object'||Array.isArray(plan))throw Error('Plan must be an object.');
+  if(typeof plan.name!=='string'||!plan.name.trim()||plan.name.length>100)throw Error('Enter a plan name of 1–100 characters.');
+  if(!Number.isInteger(plan.rostered)||plan.rostered<1||plan.rostered>1000000)throw Error('Rostered headcount must be a whole number from 1 to 1,000,000.');
+  if(!Number.isInteger(plan.expected)||plan.expected<1||plan.expected>1000000)throw Error('Expected attendees must be a whole number from 1 to 1,000,000.');
+  if(!Array.isArray(plan.resources)||plan.resources.length<1||plan.resources.length>50)throw Error('Use 1–50 resources.');
+  return {name:plan.name.trim(),rostered:plan.rostered,expected:plan.expected,resources:plan.resources.map(normalizeResource)};
+}
+function calculate(plan){
+  const p=validatePlan(plan);
+  return p.resources.map(row=>{
+    const quantity=decimal(row.quantity,'Quantity');
+    const pack=decimal(row.pack_size,'Pack size',1n);
+    const buffer=decimal(row.buffer_percent,'Reserve',0n,100n*SCALE);
+    const base=row.mode==='per_attendee_consumable' ? quantity*BigInt(p.expected) : quantity;
+    const numerator=base*(100n*SCALE+buffer);
+    const packDenominator=pack*100n*SCALE;
+    const packs=(numerator+packDenominator-1n)/packDenominator;
+    return {name:row.name,unit:row.unit,mode:row.mode,required:fixed(numerator,14),packs:packs.toString(),purchase:fixed(packs*pack,6)};
+  });
+}
+const csvCell=value=>{let s=String(value);if(/^[\s]*[=+@-]/.test(s))s="'"+s;return '"'+s.replaceAll('"','""')+'"';};
+function validateBackup(data){
+  if(!data||data.schema!==1||!Array.isArray(data.plans)||data.plans.length>10000)throw Error('Use a version-1 mixed-resource backup with up to 10,000 plans.');
+  const seen=new Set();
+  return data.plans.map(p=>{
+    if(!p||typeof p.id!=='string'||!/^[a-zA-Z0-9_-]{1,100}$/.test(p.id)||seen.has(p.id))throw Error('Invalid or duplicate plan ID.');
+    seen.add(p.id); return {id:p.id,...validatePlan(p)};
+  });
+}
+// END RESOURCE PLANNER PURE
+const $=id=>document.getElementById(id);
+const MODE_LABELS={per_attendee_consumable:'Per attendee consumable',shared_reusable:'Shared / reusable'};
+const storageKey='creator-mixed-resource-planner-v1';
+let plans=[],activeId=null,storageHealthy=true;
+const starterResources=[
+  {name:'Banding wheels',unit:'wheels',mode:'shared_reusable',quantity:'4',pack_size:'1',buffer_percent:'0'},
+  {name:'Stylus tools',unit:'tools',mode:'shared_reusable',quantity:'15',pack_size:'1',buffer_percent:'0'},
+  {name:'Consumable material',unit:'units',mode:'per_attendee_consumable',quantity:'1',pack_size:'10',buffer_percent:'10'}
+];
+function status(message,error=false){$('status').textContent=message;$('status').classList.toggle('error',error);}
+function run(action){try{action();}catch(e){status(e.message,true);}}
+function clone(value){return JSON.parse(JSON.stringify(value));}
+function packagePlans(rows){return {schema:1,plans:rows};}
+function readStorage(){
+  try{const raw=localStorage.getItem(storageKey);plans=raw?validateBackup(JSON.parse(raw)):[];}
+  catch(e){storageHealthy=false;plans=[];status('Saved storage could not be read. It has NOT been overwritten: '+e.message,true);}
+}
+function writeStorage(rows){
+  if(!storageHealthy)throw Error('Existing storage needs recovery; it has not been overwritten. Use a fresh browser or restore only after recovering it.');
+  localStorage.setItem(storageKey,JSON.stringify(packagePlans(rows))); plans=rows;
+}
+function renderResources(rows){
+  const body=$('resources'); body.replaceChildren();
+  rows.forEach((source,index)=>{
+    const row={...source,mode:source.mode||'per_attendee_consumable'};
+    const tr=document.createElement('tr');
+    for(const key of ['name','unit']){
+      const td=document.createElement('td'),input=document.createElement('input');
+      input.value=row[key]??'';input.dataset.key=key;input.maxLength=key==='name'?100:40;input.setAttribute('aria-label',key+' '+(index+1));td.append(input);tr.append(td);
+    }
+    const modeTd=document.createElement('td'),select=document.createElement('select');select.dataset.key='mode';select.setAttribute('aria-label','mode '+(index+1));
+    for(const [value,label] of Object.entries(MODE_LABELS)){const option=new Option(label,value);select.add(option);}select.value=row.mode;modeTd.append(select);tr.append(modeTd);
+    for(const key of ['quantity','pack_size','buffer_percent']){
+      const td=document.createElement('td'),input=document.createElement('input');input.value=row[key]??'';input.dataset.key=key;input.inputMode='decimal';input.maxLength=30;input.setAttribute('aria-label',key.replaceAll('_',' ')+' '+(index+1));td.append(input);tr.append(td);
+    }
+    const td=document.createElement('td'),button=document.createElement('button');button.textContent='Remove';button.className='secondary';button.setAttribute('aria-label','Remove resource '+(index+1));button.onclick=()=>{tr.remove();clearResults();};td.append(button);tr.append(td);
+    body.append(tr);
+  });
+}
+function rawResources(){
+  return [...$('resources').children].map(tr=>Object.fromEntries([...tr.querySelectorAll('input,select')].map(el=>[el.dataset.key,el.value])));
+}
+function current(){
+  return validatePlan({name:$('plan-name').value,rostered:Number($('rostered').value),expected:Number($('expected').value),resources:rawResources()});
+}
+function clearResults(){$('results').querySelector('tbody').replaceChildren();}
+function showPlan(plan){
+  $('plan-name').value=plan.name;$('rostered').value=plan.rostered;$('expected').value=plan.expected;renderResources(plan.resources);clearResults();
+}
+function showResults(plan){
+  const tbody=$('results').querySelector('tbody');tbody.replaceChildren();
+  calculate(plan).forEach(r=>{const tr=document.createElement('tr');[r.name,MODE_LABELS[r.mode],r.required+' '+r.unit,r.packs,r.purchase+' '+r.unit].forEach(value=>{const td=document.createElement('td');td.textContent=value;tr.append(td);});tbody.append(tr);});
+}
+function refreshSaved(){
+  const select=$('saved');select.replaceChildren(new Option('Choose a plan',''));plans.forEach(p=>select.add(new Option(p.name+' · '+p.expected+' expected',p.id)));if(activeId)select.value=activeId;$('saved-count').textContent=plans.length+' saved plans in this browser.';
+}
+function download(name,body,type){const url=URL.createObjectURL(new Blob([body],{type})),a=document.createElement('a');a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);}
+readStorage();showPlan({name:'Ceramics class',rostered:35,expected:28,resources:clone(starterResources)});refreshSaved();
+for(const id of ['resources','rostered','expected'])$(id).addEventListener('input',clearResults);
+$('add').onclick=()=>run(()=>{const rows=rawResources();if(rows.length>=50)throw Error('Up to 50 resources per plan.');rows.push({name:'New resource',unit:'items',mode:'per_attendee_consumable',quantity:'1',pack_size:'1',buffer_percent:'0'});renderResources(rows);clearResults();});
+$('calculate').onclick=()=>run(()=>{const p=current();showResults(p);status('Calculated. Rostered headcount is preserved as reference; expected attendance drives only consumables.');});
+$('save').onclick=()=>run(()=>{const p=current(),id=activeId||(globalThis.crypto?.randomUUID?.()||'plan-'+Date.now()+'-'+Math.random().toString(36).slice(2));const rows=plans.filter(row=>row.id!==id);if(rows.length>=10000)throw Error('Export a backup and remove an old plan before exceeding 10,000 saved plans.');rows.push({id,...p});writeStorage(rows);activeId=id;refreshSaved();showResults(p);status('Saved in this browser. Export JSON for a portable backup.');});
+$('new').onclick=()=>{activeId=null;showPlan({name:'New workshop',rostered:35,expected:28,resources:clone(starterResources)});refreshSaved();status('New unsaved plan. Existing saved plans are unchanged.');};
+$('load').onclick=()=>run(()=>{const p=plans.find(row=>row.id===$('saved').value);if(!p)throw Error('Select a saved plan.');activeId=p.id;showPlan(p);showResults(p);status('Opened saved plan.');});
+$('delete').onclick=()=>run(()=>{const id=$('saved').value;if(!id)throw Error('Select a saved plan.');if(!confirm('Delete this saved plan from this browser? Export a backup first to preserve it.'))return;writeStorage(plans.filter(row=>row.id!==id));if(activeId===id)activeId=null;refreshSaved();status('Selected plan deleted.');});
+$('csv').onclick=()=>run(()=>{const p=current(),rows=[['Plan','Rostered','Expected attendees','Resource','Unit','Mode','Quantity','Reserve %','Pack size','Required','Packs','Purchase']];calculate(p).forEach((r,i)=>rows.push([p.name,p.rostered,p.expected,r.name,r.unit,r.mode,p.resources[i].quantity,p.resources[i].buffer_percent,p.resources[i].pack_size,r.required,r.packs,r.purchase]));download('mixed-workshop-resources.csv',rows.map(row=>row.map(csvCell).join(',')).join('\r\n')+'\r\n','text/csv;charset=utf-8');status('Exported the current editable plan as CSV.');});
+$('backup').onclick=()=>run(()=>{if(!storageHealthy)throw Error('Storage could not be read; refusing to export an empty replacement.');download('mixed-workshop-resource-plans.json',JSON.stringify(packagePlans(plans),null,2)+'\n','application/json');status('Exported '+plans.length+' saved plans. Unsaved edits are not included.');});
+$('restore').onchange=async()=>{try{const file=$('restore').files[0];if(!file)return;if(file.size>5*1024*1024)throw Error('Backup must be at most 5 MiB.');const incoming=validateBackup(JSON.parse(await file.text()));if(!storageHealthy)throw Error('Existing storage is unreadable; restore in a fresh browser instead of overwriting it.');const merged=new Map(plans.map(p=>[p.id,p]));for(const p of incoming){if(merged.has(p.id)&&JSON.stringify(merged.get(p.id))!==JSON.stringify(p))throw Error('Backup conflicts with an existing plan; no plans were changed.');merged.set(p.id,p);}if(merged.size>10000)throw Error('Combined backup exceeds 10,000 plans.');writeStorage([...merged.values()]);refreshSaved();status('Restored '+incoming.length+' plans without duplicates.');}catch(e){status(e.message,true);}finally{$('restore').value='';}};
+globalThis.MixedResourcePlanner={calculate,validatePlan,validateBackup,csvCell,fixed};
+</script>
+</body></html>
