@@ -259,6 +259,48 @@ def _production_lims_human_release_exception(
     return bool(release_context) and not bool(admission_context)
 
 
+_MARKDOWN_BUSINESS_STATUS_CELL = re.compile(
+    r"(\|\s*(?:\*{1,2})?)(?:not authorized|not permitted)((?:\*{1,2})?\s*\|)",
+    re.IGNORECASE,
+)
+_MARKDOWN_ADMISSION_CONTEXT = re.compile(
+    r"\b(?:action\s+pad|commons|post(?:ing)?|board|admission|authentication|"
+    r"authorization|permissions?|identity|claim|seat|memory|"
+    r"capability(?:\s+declaration)?|actor(?:_id)?|sender|verb|action|access|"
+    r"contributors?|users?|agents?|bots?|models?|members?|participants?|"
+    r"principals?|peers?|workers?|callers?|requesters?|operators?|guests?|"
+    r"humans?|people|persons?|roles?)\b",
+    re.IGNORECASE,
+)
+_MARKDOWN_OWNER_BUSINESS_CONTEXT = re.compile(r"\bowner[- ]controlled\b", re.IGNORECASE)
+_MARKDOWN_BUSINESS_ACTION_CONTEXT = re.compile(
+    r"\b(?:rfp|rfq|rfi|solicitation|procurement|bids?|bidding|proposal|submission|"
+    r"tender|quotes?|pricing|checkout|payments?|invoice|outreach|deliver(?:y|able)?|"
+    r"contract|award|purchase|send|sending)\b",
+    re.IGNORECASE,
+)
+
+
+def _explicit_denial_candidate(path: str, text: str) -> str:
+    """Mask only positively identified owner-controlled business status cells.
+
+    A Markdown denial phrase is security-sensitive by default.  The exception is
+    intentionally narrow: it applies only to revenue Markdown rows that contain
+    both an owner-controlled marker and a concrete commercial/procurement action,
+    and never when admission/identity vocabulary is present.  Masking is still
+    occurrence-local so a second denial elsewhere on the row remains visible.
+    """
+    normalized = normalize_path(path).lower()
+    if not normalized.startswith("revenue/") or not normalized.endswith(".md"):
+        return text
+    if _MARKDOWN_ADMISSION_CONTEXT.search(text):
+        return text
+    if not (_MARKDOWN_OWNER_BUSINESS_CONTEXT.search(text)
+            and _MARKDOWN_BUSINESS_ACTION_CONTEXT.search(text)):
+        return text
+    return _MARKDOWN_BUSINESS_STATUS_CELL.sub(r"\1business status pending\2", text)
+
+
 def scan_added(lines: Iterable[AddedLine]) -> list[Violation]:
     by_path: dict[str, list[AddedLine]] = {}
     for line in lines:
@@ -285,8 +327,12 @@ def scan_added(lines: Iterable[AddedLine]) -> list[Violation]:
             for rule in LINE_RULES:
                 if rule.name in HARD_LINE_RULES:
                     continue
-                contexts = (_admission_contexts(path, line.text)
-                            if rule.name == "admission-phrase" else [line.text])
+                if rule.name == "explicit-denial":
+                    contexts = [_explicit_denial_candidate(path, line.text)]
+                elif rule.name == "admission-phrase":
+                    contexts = _admission_contexts(path, line.text)
+                else:
+                    contexts = [line.text]
                 if any(rule.pattern.search(context) for context in contexts):
                     item = Violation(path, line.line_number, rule.name, rule.explanation, line.text.strip())
                     found[(path, line.line_number, rule.name)] = item
