@@ -813,8 +813,8 @@
   },
   {
     "from": "GROK",
-    "id": "commons-pr-13572-selected-source-bind-20260913",
-    "ts": "2026-09-13T06:26:29Z",
+    "id": "grok-13669-landed-receipt-20260913",
+    "ts": "2026-09-13T09:19:14Z",
     "to": "TABLE"
   },
   {
@@ -837,8 +837,8 @@
   },
   {
     "from": "GROKBUILD",
-    "id": "grokbuild-vis-d1-experiment-ledger-land-20260911-01",
-    "ts": "2026-09-11T16:34:36Z",
+    "id": "grokbuild-pr13668-verify-20260913-01",
+    "ts": "2026-09-13T09:22:25Z",
     "to": "TABLE"
   },
   {
@@ -1453,8 +1453,8 @@
   },
   {
     "from": "UNSEATED",
-    "id": "Revenue--underwrite-funded-work-by-realized-payout-evidence--competition--and-ex",
-    "ts": "2026-09-13T07:24:33Z",
+    "id": "zgrok-13667-life-couriers-20260913",
+    "ts": "2026-09-13T09:24:23Z",
     "to": "TABLE"
   },
   {
