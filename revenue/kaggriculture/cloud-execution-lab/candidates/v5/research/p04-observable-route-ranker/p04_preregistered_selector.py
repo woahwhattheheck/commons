@@ -35,9 +35,16 @@ from p04_route_ranker import (
 )
 
 SCHEMA = "titan-v5-p04-preregistered-selector/v1"
-EVIDENCE_SCHEMA = "titan-v5-p04-committed-row-evidence/v1"
+EVIDENCE_SCHEMA = "titan-v5-p04-committed-row-evidence/v2"
 EVIDENCE_PREFIX = "revenue/kaggriculture/cloud-execution-lab/candidates/v5/selective-carrot/route-matrix-native/"
-TRUSTED_MAIN_REFS = ("refs/remotes/origin/main", "refs/heads/main")
+TRUSTED_MAIN_REF = "refs/remotes/origin/main"
+CANONICAL_ORIGIN_URLS = frozenset(
+    {
+        "https://github.com/woahwhattheheck/commons.git",
+        "https://github.com/woahwhattheheck/commons",
+        "git@github.com:woahwhattheheck/commons.git",
+    }
+)
 ALLOWED_FEATURES = (
     "shop_pair",
     "first_two_yarn_count",
@@ -145,7 +152,12 @@ def preregistration() -> dict[str, Any]:
         "accepted_evidence": {
             "schema": EVIDENCE_SCHEMA,
             "namespace": EVIDENCE_PREFIX,
-            "trust": "immutable JSONL bytes at a commit proven ancestor of canonical main; reduced summaries rejected",
+            "canonical_origin_urls": sorted(CANONICAL_ORIGIN_URLS),
+            "trusted_main_ref": TRUSTED_MAIN_REF,
+            "trust": (
+                "immutable JSONL bytes at a commit proven ancestor of canonical Commons origin/main; "
+                "public repository root is derived from this module, reduced summaries rejected"
+            ),
         },
     }
 
@@ -345,9 +357,7 @@ def evaluate_rule(groups: Iterable[dict[str, Any]], rule: dict[str, Any]) -> dic
     do = [g["delta_own"] for g in engaged]
     candidate_failure_groups = sum(bool(g["candidate_failures"]) for g in engaged)
     incumbent_failure_groups = sum(bool(g["incumbent_failures"]) for g in engaged)
-    comparison_failure_groups = sum(
-        bool(g["candidate_failures"] or g["incumbent_failures"]) for g in engaged
-    )
+    comparison_failure_groups = sum(bool(g["candidate_failures"] or g["incumbent_failures"]) for g in engaged)
     qualified = bool(engaged)
     qualified = qualified and len(engaged) >= SPEC["discovery_qualification"]["minimum_engaged_groups"]
     qualified = qualified and len(engaged_seeds) >= _coverage_floor(len(seeds))
@@ -443,11 +453,23 @@ def _git(repo_root: Path, *args: str, check: bool = True) -> subprocess.Complete
     return proc
 
 
-def _trusted_main_ref(repo_root: Path) -> str:
-    for ref in TRUSTED_MAIN_REFS:
-        if _git(repo_root, "rev-parse", "--verify", "--quiet", ref, check=False).returncode == 0:
-            return ref
-    raise ValueError("canonical main ref is unavailable; fetch origin/main or check out local main")
+def _validate_canonical_checkout(repo_root: Path) -> str:
+    remote_url = _git(repo_root, "remote", "get-url", "origin").stdout.decode("utf-8", errors="strict").strip()
+    if remote_url not in CANONICAL_ORIGIN_URLS:
+        raise ValueError("origin is not the canonical woahwhattheheck/commons repository")
+    if _git(repo_root, "rev-parse", "--verify", "--quiet", TRUSTED_MAIN_REF, check=False).returncode != 0:
+        raise ValueError("canonical origin/main ref is unavailable; fetch origin/main before fitting evidence")
+    return TRUSTED_MAIN_REF
+
+
+def _canonical_repo_root() -> Path:
+    module_dir = Path(__file__).resolve().parent
+    root_text = _git(module_dir, "rev-parse", "--show-toplevel").stdout.decode("utf-8", errors="strict").strip()
+    root = Path(root_text).resolve()
+    if not root.is_dir():
+        raise ValueError("canonical repository root is unavailable")
+    _validate_canonical_checkout(root)
+    return root
 
 
 def _canonical_evidence_path(raw: str) -> str:
@@ -466,15 +488,15 @@ def load_committed_rows(
     evidence_commit: str,
     evidence_paths: Iterable[str],
 ) -> tuple[list[Any], dict[str, Any]]:
-    repo_root = Path(repo_root)
+    repo_root = Path(repo_root).resolve()
     if not repo_root.is_dir():
         raise ValueError("repo_root must be an existing directory")
+    trusted_ref = _validate_canonical_checkout(repo_root)
     if not isinstance(evidence_commit, str) or not re.fullmatch(r"[0-9a-f]{40}", evidence_commit):
         raise ValueError("evidence_commit must be one full lowercase 40-hex commit SHA")
     resolved = _git(repo_root, "rev-parse", "--verify", f"{evidence_commit}^{{commit}}").stdout.decode().strip()
     if resolved != evidence_commit:
         raise ValueError("evidence_commit did not resolve to the exact requested commit")
-    trusted_ref = _trusted_main_ref(repo_root)
     if _git(repo_root, "merge-base", "--is-ancestor", evidence_commit, trusted_ref, check=False).returncode != 0:
         raise ValueError(f"evidence commit is not an ancestor of canonical main ref {trusted_ref}")
 
@@ -486,8 +508,12 @@ def load_committed_rows(
     members = []
     for path in sorted(paths):
         payload = _git(repo_root, "show", f"{evidence_commit}:{path}").stdout
+        try:
+            text = payload.decode("utf-8", errors="strict")
+        except UnicodeDecodeError as exc:
+            raise ValueError(f"committed evidence path is not UTF-8 JSONL: {path}") from exc
         member_rows = []
-        for lineno, raw_line in enumerate(payload.decode("utf-8").splitlines(), 1):
+        for lineno, raw_line in enumerate(text.splitlines(), 1):
             if not raw_line.strip():
                 continue
             try:
@@ -512,7 +538,7 @@ def load_committed_rows(
     }
 
 
-def fit_selector_from_committed_evidence(
+def _fit_selector_from_repo(
     repo_root: Path,
     evidence_commit: str,
     evidence_paths: Iterable[str],
@@ -520,16 +546,20 @@ def fit_selector_from_committed_evidence(
     rows, evidence = load_committed_rows(repo_root, evidence_commit, evidence_paths)
     report = reduce_matrix(rows)
     result = _fit_reduced_report(report)
-    result["evidence"] = {
-        **evidence,
-        "reduced_report_sha256": _sha256(report),
-    }
+    result["evidence"] = {**evidence, "reduced_report_sha256": _sha256(report)}
     return result
+
+
+def fit_selector_from_committed_evidence(
+    evidence_commit: str,
+    evidence_paths: Iterable[str],
+) -> dict[str, Any]:
+    """Fit only from committed evidence in the canonical checkout containing this module."""
+    return _fit_selector_from_repo(_canonical_repo_root(), evidence_commit, evidence_paths)
 
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--repo-root", type=Path)
     parser.add_argument("--evidence-commit")
     parser.add_argument("--evidence-path", action="append", default=[])
     parser.add_argument("--output", type=Path)
@@ -538,13 +568,9 @@ def main() -> None:
     if args.print_preregistration:
         payload = preregistration()
     else:
-        if args.repo_root is None or args.evidence_commit is None or not args.evidence_path:
-            parser.error("--repo-root, --evidence-commit, and at least one --evidence-path are required")
-        payload = fit_selector_from_committed_evidence(
-            args.repo_root,
-            args.evidence_commit,
-            args.evidence_path,
-        )
+        if args.evidence_commit is None or not args.evidence_path:
+            parser.error("--evidence-commit and at least one --evidence-path are required")
+        payload = fit_selector_from_committed_evidence(args.evidence_commit, args.evidence_path)
     encoded = json.dumps(payload, sort_keys=True, indent=2) + "\n"
     if args.output:
         with args.output.open("x", encoding="utf-8") as handle:
