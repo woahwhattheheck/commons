@@ -4,6 +4,10 @@
 The legacy scope_to_delivery composer is a deterministic historical projection. This
 module adds the time/chronology authority it intentionally lacks. It never grants
 external action, payment, delivery, acceptance, or revenue authority.
+
+Exact raw-byte provenance is granted only by ``evaluate_bytes`` (or the CLI), which
+parses and hashes the same bounded bytes internally. ``evaluate`` remains a parsed-
+object compatibility helper and can never authorize current work.
 """
 from __future__ import annotations
 
@@ -13,7 +17,6 @@ import json
 import os
 import re
 import stat
-import sys
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
@@ -22,7 +25,6 @@ SCHEMA_AGREEMENT = "commons-scope-agreement/v1"
 SCHEMA_OBSERVATIONS = "commons-scope-observations/v1"
 SCHEMA_RECEIPT = "commons-scope-time-authority/v1"
 MAX_INPUT_BYTES = 2_000_000
-SHA256_RE = re.compile(r"^[0-9a-f]{64}$")
 
 
 class TemporalAuthorityError(ValueError):
@@ -61,6 +63,10 @@ def _strict_object(pairs: list[tuple[str, Any]]) -> dict[str, Any]:
 
 
 def strict_loads(raw: bytes, field: str) -> Any:
+    if type(raw) is not bytes:
+        raise TemporalAuthorityError(f"{field} must be exact bytes")
+    if len(raw) > MAX_INPUT_BYTES:
+        raise TemporalAuthorityError(f"{field} exceeds {MAX_INPUT_BYTES} bytes")
     try:
         text = raw.decode("utf-8")
     except UnicodeDecodeError as exc:
@@ -79,7 +85,7 @@ def strict_loads(raw: bytes, field: str) -> Any:
         raise TemporalAuthorityError(f"{field} is not valid JSON") from exc
 
 
-def read_plain_json(path: str | Path, field: str) -> tuple[Any, str]:
+def read_plain_bytes(path: str | Path, field: str) -> bytes:
     target = os.fspath(path)
     flags = os.O_RDONLY
     if not hasattr(os, "O_NOFOLLOW"):
@@ -105,9 +111,18 @@ def read_plain_json(path: str | Path, field: str) -> tuple[Any, str]:
             if total > MAX_INPUT_BYTES:
                 raise TemporalAuthorityError(f"{field} exceeds {MAX_INPUT_BYTES} bytes")
             chunks.append(chunk)
-        raw = b"".join(chunks)
+        return b"".join(chunks)
     finally:
         os.close(fd)
+
+
+def read_plain_json(path: str | Path, field: str) -> tuple[Any, str]:
+    """Compatibility reader; the returned hash is informational, not authority.
+
+    Authority-producing callers should pass ``read_plain_bytes`` output directly to
+    ``evaluate_bytes`` so parsing and hashing cannot be separated.
+    """
+    raw = read_plain_bytes(path, field)
     return strict_loads(raw, field), hashlib.sha256(raw).hexdigest()
 
 
@@ -192,13 +207,14 @@ def _validate_observations(
     return parsed, digest(observations)
 
 
-def evaluate(
+def _evaluate_parsed(
     agreement: Any,
     observations: Any | None,
     *,
     as_of: datetime,
-    agreement_raw_sha256: str | None = None,
-    observations_raw_sha256: str | None = None,
+    agreement_raw_sha256: str | None,
+    observations_raw_sha256: str | None,
+    raw_byte_provenance_verified: bool,
 ) -> dict[str, Any]:
     if as_of.tzinfo is None or as_of.utcoffset() is None:
         raise TemporalAuthorityError("as_of must be timezone-aware")
@@ -219,22 +235,20 @@ def evaluate(
     status = written.get("status")
     if status != "PRESENT":
         state = "HOLD_NO_PRESENT_ACCEPTANCE"
-        current_work_authorized = False
+        temporal_ready = False
     elif as_of < start:
         state = "HOLD_WINDOW_NOT_STARTED"
-        current_work_authorized = False
+        temporal_ready = False
     elif as_of > end:
         state = "HOLD_WINDOW_EXPIRED"
-        current_work_authorized = False
+        temporal_ready = False
     else:
         state = "TEMPORAL_PREREQUISITE_READY"
-        current_work_authorized = True
+        temporal_ready = True
 
-    agreement_digest = digest(agreement)
-    if agreement_raw_sha256 is not None and not SHA256_RE.fullmatch(agreement_raw_sha256):
-        raise TemporalAuthorityError("agreement_raw_sha256 must be lowercase sha256")
-    if observations_raw_sha256 is not None and not SHA256_RE.fullmatch(observations_raw_sha256):
-        raise TemporalAuthorityError("observations_raw_sha256 must be lowercase sha256")
+    if temporal_ready and not raw_byte_provenance_verified:
+        state = "HOLD_RAW_PROVENANCE_UNVERIFIED"
+    current_work_authorized = temporal_ready and raw_byte_provenance_verified
 
     receipt_core = {
         "schema_version": SCHEMA_RECEIPT,
@@ -245,10 +259,12 @@ def evaluate(
         "window_start": start.isoformat().replace("+00:00", "Z"),
         "window_end": end.isoformat().replace("+00:00", "Z"),
         "accepted_at": accepted_at.isoformat().replace("+00:00", "Z") if accepted_at else None,
-        "agreement_canonical_sha256": agreement_digest,
+        "agreement_canonical_sha256": digest(agreement),
         "agreement_raw_sha256": agreement_raw_sha256,
         "observations_canonical_sha256": observations_digest,
         "observations_raw_sha256": observations_raw_sha256,
+        "raw_byte_provenance_verified": raw_byte_provenance_verified,
+        "provenance_mode": "EXACT_RAW_BYTES_VERIFIED" if raw_byte_provenance_verified else "CANONICAL_OBJECT_ONLY",
         "observation_count": len(parsed_observations),
         "temporal_prerequisite_only": True,
         "canonical_scope_validation_still_required": True,
@@ -259,12 +275,62 @@ def evaluate(
         "delivery_claim_authorized": False,
         "revenue_authorized": False,
         "authority_boundary": (
-            "This gate proves only trusted-time chronology. Canonical scope, buyer, evidence, "
-            "delivery, payment, provider, and cash gates remain independently mandatory."
+            "This gate proves trusted-time chronology and, only in EXACT_RAW_BYTES_VERIFIED mode, "
+            "exact input-byte custody. Canonical scope, buyer, evidence, delivery, payment, provider, "
+            "and cash gates remain independently mandatory."
         ),
     }
     receipt_core["receipt_sha256"] = digest(receipt_core)
     return receipt_core
+
+
+def evaluate(agreement: Any, observations: Any | None, *, as_of: datetime) -> dict[str, Any]:
+    """Evaluate parsed objects without raw-byte authority.
+
+    This compatibility helper deliberately cannot produce ``current_work_authorized``.
+    Call ``evaluate_bytes`` for an authority-producing temporal prerequisite receipt.
+    """
+    return _evaluate_parsed(
+        agreement,
+        observations,
+        as_of=as_of,
+        agreement_raw_sha256=None,
+        observations_raw_sha256=None,
+        raw_byte_provenance_verified=False,
+    )
+
+
+def _bounded_bytes(raw: Any, field: str) -> bytes:
+    if type(raw) is not bytes:
+        raise TemporalAuthorityError(f"{field} must be exact bytes")
+    if len(raw) > MAX_INPUT_BYTES:
+        raise TemporalAuthorityError(f"{field} exceeds {MAX_INPUT_BYTES} bytes")
+    return raw
+
+
+def evaluate_bytes(
+    agreement_raw: bytes,
+    observations_raw: bytes | None,
+    *,
+    as_of: datetime,
+) -> dict[str, Any]:
+    """Parse, hash, and evaluate one exact bounded byte pair atomically in-process."""
+    agreement_raw = _bounded_bytes(agreement_raw, "agreement")
+    agreement = strict_loads(agreement_raw, "agreement")
+    observations = None
+    observations_raw_sha256 = None
+    if observations_raw is not None:
+        observations_raw = _bounded_bytes(observations_raw, "observations")
+        observations = strict_loads(observations_raw, "observations")
+        observations_raw_sha256 = hashlib.sha256(observations_raw).hexdigest()
+    return _evaluate_parsed(
+        agreement,
+        observations,
+        as_of=as_of,
+        agreement_raw_sha256=hashlib.sha256(agreement_raw).hexdigest(),
+        observations_raw_sha256=observations_raw_sha256,
+        raw_byte_provenance_verified=True,
+    )
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -273,17 +339,12 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--observations")
     args = parser.parse_args(argv)
     try:
-        agreement, agreement_raw_sha256 = read_plain_json(args.agreement, "agreement")
-        observations = None
-        observations_raw_sha256 = None
-        if args.observations:
-            observations, observations_raw_sha256 = read_plain_json(args.observations, "observations")
-        receipt = evaluate(
-            agreement,
-            observations,
+        agreement_raw = read_plain_bytes(args.agreement, "agreement")
+        observations_raw = read_plain_bytes(args.observations, "observations") if args.observations else None
+        receipt = evaluate_bytes(
+            agreement_raw,
+            observations_raw,
             as_of=datetime.now(timezone.utc),
-            agreement_raw_sha256=agreement_raw_sha256,
-            observations_raw_sha256=observations_raw_sha256,
         )
     except (OSError, TemporalAuthorityError) as exc:
         print(json.dumps({"state": "HOLD_INVALID_TEMPORAL_EVIDENCE", "error": str(exc)}, sort_keys=True))
