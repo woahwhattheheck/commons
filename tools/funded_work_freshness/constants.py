@@ -7,9 +7,18 @@ SCHEMA = "commons-funded-work-freshness/v1"
 MAX_HTTP_BYTES = 2 * 1024 * 1024
 TRUSTED_ASSOCIATIONS = {"OWNER", "MEMBER", "COLLABORATOR"}
 TRUSTED_SPONSOR_BOTS = {"algora-pbc[bot]", "opire-bot", "opire[bot]", "polar-sh[bot]"}
+# Candidate-page auto-discovery is intentionally narrower than the generic HTTP transport.
+# Arbitrary boards remain supported when callers provide an explicit canonical GitHub URL.
+AUTO_RESOLVE_SOURCE_HOSTS = (
+    "algora.io",
+    "opire.dev",
+    "polar.sh",
+    "issuehunt.io",
+    "gitcoin.co",
+)
 USER_AGENT = "commons-funded-work-freshness/1.0"
 GITHUB_ITEM_RE = re.compile(
-    r"https?://(?:www\.)?github\.com/([A-Za-z0-9_.-]+)/([A-Za-z0-9_.-]+)/(issues|pull)/(\d+)(?:[/?#][^\s\"'<>]*)?",
+    r"https?://(?:www\.)?github\.com/([A-Za-z0-9_.-]+)/([A-Za-z0-9_.-]+)/(issues|pull)/(\d+)(?!\w)(?:[/?#][^\s\"'<>]*)?",
     re.IGNORECASE,
 )
 STRICT_CLAIM_RE = re.compile(
