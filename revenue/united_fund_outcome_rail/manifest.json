@@ -8,6 +8,7 @@
     "README.md",
     "manifest.json",
     "reconcile.py",
+    "test_committed_disbursement_fence.py",
     "test_reconcile.py"
   ],
   "public_rule_sources": [
