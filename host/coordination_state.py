@@ -1275,7 +1275,9 @@ def _holding_live(record, now):
     ttl = record.get("ttl_s")
     if beat is None or type(ttl) is not int or not 1 <= ttl <= 7200:
         return False
-    return 0 <= (now - beat).total_seconds() <= ttl
+    # Clock skew is not expiry evidence. A syntactically valid future beat is
+    # fail-closed as live until this observer advances beyond beat + TTL.
+    return (now - beat).total_seconds() <= ttl
 
 
 def _holdings_commit(git, parent, holdings, message, when):
@@ -1304,15 +1306,16 @@ def _holdings_commit(git, parent, holdings, message, when):
 def holding_write(git, key, holder, action, ttl_s=1800, note="", now=None,
                   remote="origin", branch=HOLDINGS_BRANCH, push=True, attempts=3):
     """take / renew / release one change key. Returns what the branch now says."""
-    now = now or _now()
+    fixed_now = now
     for _ in range(attempts):
         tip = _remote_tip(git, branch, remote)
         if tip:
             git.fetch([tip], remote)
         holdings = _read_holdings(git, tip)
+        observed_now = fixed_now if fixed_now is not None else _now()
         path = _holding_path(key)
         current = holdings.get(path)
-        live = _holding_live(current, now)
+        live = _holding_live(current, observed_now)
         if action == "take" and live and current.get("holder") != holder:
             return {"ok": False, "key": key, "held_by": current.get("holder"),
                     "heartbeat_at": current.get("heartbeat_at"), "ttl_s": current.get("ttl_s"),
@@ -1320,7 +1323,13 @@ def holding_write(git, key, holder, action, ttl_s=1800, note="", now=None,
         if action in ("renew", "release") and (not current or current.get("holder") != holder):
             return {"ok": False, "key": key, "held_by": (current or {}).get("holder"),
                     "reason": "not the current holder", "tip": tip}
-        stamp = _iso(now)
+        stamp_moment = observed_now
+        if (current or {}).get("holder") == holder:
+            for prior_text in ((current or {}).get("heartbeat_at"), (current or {}).get("taken_at")):
+                prior = _parse_ts(prior_text)
+                if prior is not None and prior > stamp_moment:
+                    stamp_moment = prior
+        stamp = _iso(stamp_moment)
         record = dict(current or {})
         record.update({"schema": HOLDING_SCHEMA, "key": key, "holder": holder,
                        "heartbeat_at": stamp, "ttl_s": int(ttl_s)})
@@ -1333,7 +1342,7 @@ def holding_write(git, key, holder, action, ttl_s=1800, note="", now=None,
             record["note"] = note[:300]
         holdings[path] = record
         message = "%s %s by %s" % (action, key, holder)
-        commit = _holdings_commit(git, tip, holdings, message, now)
+        commit = _holdings_commit(git, tip, holdings, message, stamp_moment)
         if not push:
             return {"ok": True, "key": key, "commit": commit, "pushed": False,
                     "push_line": "git -C %s push %s %s:refs/heads/%s" % (git.root, remote, commit, branch)}
@@ -1342,7 +1351,7 @@ def holding_write(git, key, holder, action, ttl_s=1800, note="", now=None,
             return {"ok": True, "key": key, "commit": commit, "pushed": True, "record": record}
         if "non-fast-forward" not in done.stderr and "fetch first" not in done.stderr:
             return {"ok": False, "key": key, "reason": done.stderr.strip()[-300:]}
-        # Someone else wrote first; re-read and decide again.
+        # Someone else wrote first; re-read and decide again with a fresh runtime clock.
     return {"ok": False, "key": key, "reason": "branch kept moving; retry"}
 
 

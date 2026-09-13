@@ -135,9 +135,9 @@ class Queue(unittest.TestCase):
         self.assertEqual("individual", sr.scrutiny("NEW", outcomes))
         self.assertEqual("new", sr.scrutiny("UNKNOWN", outcomes))
 
-    def test_claim_future_heartbeat_does_not_hold_lane(self):
+    def test_claim_future_heartbeat_holds_lane_fail_closed(self):
         now = dt.datetime(2026, 9, 12, tzinfo=dt.timezone.utc)
-        self.assertFalse(cs._holding_live({"state": "HELD", "heartbeat_at": "2026-09-13T00:00:00Z", "ttl_s": 1800}, now))
+        self.assertTrue(cs._holding_live({"state": "HELD", "heartbeat_at": "2026-09-13T00:00:00Z", "ttl_s": 1800}, now))
 
     def test_duplicate_metadata_and_path_traversal_are_not_review_subjects(self):
         self.assertIsNone(sr.block('```commons-work\n{"seat":"A","seat":"B"}\n```', "commons-work"))
