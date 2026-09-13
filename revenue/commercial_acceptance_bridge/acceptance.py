@@ -210,10 +210,6 @@ def main(argv: list[str] | None = None) -> int:
 
     fixture = generate_fixture()
     result = check_acceptance(fixture)
-    if args.write_reciept:
-        pass
-    if args.write_reciept:
-        pass
     if args.write_receipt:
         args.write_receipt.write_text(canonical_json(result) + "\n", encoding="utf-8")
     if args.write_source_batch:
