@@ -31,6 +31,20 @@ human-outcomes SKUs. It does **not** replace those roads.
   `collected_cash_usd: "0.00"` until live evidence says otherwise. Fixtures here
   are synthetic and public.
 
+## Trusted-time prerequisite
+
+The v1 composer is a deterministic content projection; it does not by itself
+establish that a historically accepted scope is still inside its work window.
+Before beginning current work from `LOCKED_SOW` / `ISSUED`, require a fresh
+`host/scope_to_delivery_time_gate.py` result with
+`current_work_authorized=true` **and** the canonical composer validation.
+
+The temporal gate uses verifier-controlled UTC, constrains every observation to
+the accepted contract window, rejects future evidence, and returns
+`HOLD_WINDOW_EXPIRED` after the window closes. A completed historical delivery
+can remain auditable without reopening work authority. See
+[`TRUSTED_TIME_GATE.md`](./TRUSTED_TIME_GATE.md).
+
 ## CLI
 
 ```text
@@ -40,6 +54,11 @@ python3 host/scope_to_delivery.py project \
   --agreement revenue/scope_to_delivery/fixtures/accepted_agreement.json \
   --observations revenue/scope_to_delivery/fixtures/accepted_observations.json \
   --payment revenue/scope_to_delivery/fixtures/payment_authorized.json
+
+# Current-work temporal prerequisite (uses process UTC; no caller as-of override)
+python3 host/scope_to_delivery_time_gate.py \
+  --agreement revenue/scope_to_delivery/fixtures/accepted_agreement.json \
+  --observations revenue/scope_to_delivery/fixtures/accepted_observations.json
 ```
 
 Stdlib only. No Stripe, Airtable, email, or bank calls.
@@ -49,7 +68,9 @@ Stdlib only. No Stripe, Airtable, email, or bank calls.
 - Human door: [`../../scope-to-delivery.html`](../../scope-to-delivery.html)
 - Ground: [`../../ground/SCOPE_TO_DELIVERY.md`](../../ground/SCOPE_TO_DELIVERY.md)
 - Host: [`../../host/scope_to_delivery.py`](../../host/scope_to_delivery.py)
+- Temporal gate: [`../../host/scope_to_delivery_time_gate.py`](../../host/scope_to_delivery_time_gate.py)
 - Tests: [`../../test_scope_to_delivery.py`](../../test_scope_to_delivery.py)
+- Temporal tests: [`../../test_scope_to_delivery_time_gate.py`](../../test_scope_to_delivery_time_gate.py)
 - Bindings: [`catalog_bindings.json`](./catalog_bindings.json)
 - Synthetic fixtures: [`fixtures/`](./fixtures/)
 
