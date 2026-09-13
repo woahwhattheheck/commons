@@ -11,7 +11,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Dict, Iterable, List, Mapping, Optional, Sequence, Tuple
 
-REPORT_SCHEMA = "outbound-transport-reconcile-report/v1"
+REPORT_SCHEMA = "outbound-transport-reconcile-report/v2"
 POLICY_SCHEMA = "outbound-transport-reconcile-policy/v1"
 GMAIL_SCHEMA = "gmail-sent-snapshot/v1"
 SLACK_SCHEMA = "slack-send-receipt-snapshot/v1"
@@ -213,10 +213,45 @@ def _snapshot_hold_reasons(
             reasons.append(f"{kind}_SNAPSHOT_STALE")
         for record in snapshot["records"]:
             observed = _parse_utc(record[time_key], f"{kind.lower()}.record_time")
+            stable_id = record.get("message_id", record.get("event_id"))
             if observed > captured:
-                reasons.append(f"{kind}_RECORD_AFTER_SNAPSHOT:{record.get('message_id', record.get('event_id'))}")
+                reasons.append(f"{kind}_RECORD_AFTER_SNAPSHOT:{stable_id}")
             if observed > as_of:
-                reasons.append(f"{kind}_RECORD_FROM_FUTURE:{record.get('message_id', record.get('event_id'))}")
+                reasons.append(f"{kind}_RECORD_FROM_FUTURE:{stable_id}")
+    return sorted(set(reasons))
+
+
+def _common_coverage_through(gmail: Mapping[str, Any], slack: Mapping[str, Any]) -> datetime:
+    gmail_captured = _parse_utc(gmail["captured_at"], "gmail.captured_at")
+    slack_captured = _parse_utc(slack["captured_at"], "slack.captured_at")
+    return min(gmail_captured, slack_captured)
+
+
+def _cross_ledger_hold_reasons(gmail: Mapping[str, Any], slack: Mapping[str, Any]) -> List[str]:
+    """Reject impossible matches and absence claims outside counterpart coverage."""
+    reasons: List[str] = []
+    gmail_captured = _parse_utc(gmail["captured_at"], "gmail.captured_at")
+    slack_captured = _parse_utc(slack["captured_at"], "slack.captured_at")
+    providers = {row["message_id"]: row for row in gmail["records"]}
+    slack_by_provider: Dict[str, List[Mapping[str, Any]]] = {}
+    for row in slack["records"]:
+        provider_id = row["provider_message_id"]
+        if provider_id is not None:
+            slack_by_provider.setdefault(provider_id, []).append(row)
+            provider = providers.get(provider_id)
+            if provider is not None:
+                recorded = _parse_utc(row["recorded_at"], "slack.recorded_at")
+                sent = _parse_utc(provider["sent_at"], "gmail.sent_at")
+                if recorded < sent:
+                    reasons.append(f"SLACK_RECEIPT_BEFORE_PROVIDER_SENT:{row['event_id']}")
+            elif _parse_utc(row["recorded_at"], "slack.recorded_at") > gmail_captured:
+                reasons.append(f"SLACK_EVENT_OUTSIDE_GMAIL_COVERAGE:{row['event_id']}")
+
+    for provider_id, provider in providers.items():
+        if provider_id not in slack_by_provider:
+            sent = _parse_utc(provider["sent_at"], "gmail.sent_at")
+            if sent > slack_captured:
+                reasons.append(f"GMAIL_EVENT_OUTSIDE_SLACK_COVERAGE:{provider_id}")
     return sorted(set(reasons))
 
 
@@ -250,8 +285,10 @@ def compile_report(
     gmail, gmail_conflicts = _normalize_snapshot(gmail_snapshot, kind="gmail")
     slack, slack_conflicts = _normalize_snapshot(slack_snapshot, kind="slack")
 
+    common_coverage_through = _format_utc(_common_coverage_through(gmail, slack))
     hold_reasons = gmail_conflicts + slack_conflicts
     hold_reasons.extend(_snapshot_hold_reasons(gmail, slack, normalized_policy, trusted_as_of))
+    hold_reasons.extend(_cross_ledger_hold_reasons(gmail, slack))
     hold_reasons = sorted(set(hold_reasons))
 
     discrepancies: List[Dict[str, Any]] = []
@@ -305,8 +342,6 @@ def compile_report(
                     )
                 )
             if not matching:
-                # The provider fact has receipts, but none bind the same recipient identity.
-                # The conflict row(s) above are sufficient; do not also call it merely missing.
                 continue
             if len(receipts) > 1:
                 for row in sorted(receipts, key=lambda item: item["event_id"]):
@@ -330,6 +365,7 @@ def compile_report(
     base_report: Dict[str, Any] = {
         "schema": REPORT_SCHEMA,
         "as_of": as_of_text,
+        "common_coverage_through": common_coverage_through,
         "policy": normalized_policy,
         "snapshot_ids": {"gmail": gmail["snapshot_id"], "slack": slack["snapshot_id"]},
         "snapshot_sha256": {"gmail": sha256_json(gmail), "slack": sha256_json(slack)},
