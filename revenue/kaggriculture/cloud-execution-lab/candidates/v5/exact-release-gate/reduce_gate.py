@@ -23,6 +23,7 @@ CANDIDATE_SHA256 = "8b4b074012fe3bd731c218a4956f85ce8dadd74d5afe81a3e04c2795a2a5
 CONTROL_SHA256 = "5db3921f85efbc7596e5a1e7e198fc5f4644ceea43d8e8323c74ded7b4ba4361"
 ENGINE_SHA256 = "bc8a54879ef02c7ea64b8b333d6a976f0ea65c4949149d01f463f23bccee653e"
 REQUIRED_LANES = frozenset({"F24", "F25", "F26", "F27", "F28", "F29"})
+EXPECTED_LANE_CELL_COUNTS = {"F24": 16, "F25": 16, "F26": 64, "F27": 62, "F28": 60, "F29": 60}
 _SUCCESS = frozenset({"OK", "COMPLETE", "SUCCESS"})
 _FAILURE_TOKENS = ("DQ", "DISQUAL", "TIMEOUT", "FALLBACK", "PACKAGE_MISMATCH", "MISMATCH")
 _SHA256 = set("0123456789abcdef")
@@ -162,6 +163,9 @@ def _summarize(cells: Iterable[Cell]) -> dict[str, Any]:
     wins = sum(c.candidate_result == "W" for c in rows)
     losses = sum(c.candidate_result == "L" for c in rows)
     ties = len(rows) - wins - losses
+    control_wins = sum(c.control_result == "W" for c in rows)
+    control_losses = sum(c.control_result == "L" for c in rows)
+    control_ties = len(rows) - control_wins - control_losses
     return {
         "n": len(rows),
         "mean_delta": mean(ds),
@@ -172,6 +176,7 @@ def _summarize(cells: Iterable[Cell]) -> dict[str, Any]:
         "zero": sum(d == 0 for d in ds),
         "negative": sum(d < 0 for d in ds),
         "candidate_wlt": {"W": wins, "L": losses, "T": ties},
+        "control_wlt": {"W": control_wins, "L": control_losses, "T": control_ties},
         "loss_to_win": sum(c.control_result == "L" and c.candidate_result == "W" for c in rows),
         "win_to_loss": sum(c.control_result == "W" and c.candidate_result == "L" for c in rows),
         "callback_max_ms": max(max(c.candidate.callback_max_ms, c.control.callback_max_ms) for c in rows),
@@ -188,7 +193,7 @@ def _groups(cells: list[Cell], key):
 def evaluate(bundle: Any) -> dict[str, Any]:
     if type(bundle) is not dict:
         raise GateError("bundle must be an object")
-    expected = {"schema_version", "candidate_sha256", "control_sha256", "engine_sha256", "required_lane_cell_counts", "cells"}
+    expected = {"schema_version", "candidate_sha256", "control_sha256", "engine_sha256", "lane_receipts", "cells"}
     if set(bundle) != expected:
         raise GateError(f"bundle keys must equal {sorted(expected)}")
     if bundle["schema_version"] != SCHEMA:
@@ -200,15 +205,20 @@ def evaluate(bundle: Any) -> dict[str, Any]:
     if _sha(bundle["engine_sha256"], "engine_sha256") != ENGINE_SHA256:
         raise GateError("engine identity mismatch")
 
-    counts = bundle["required_lane_cell_counts"]
-    if type(counts) is not dict or set(counts) != REQUIRED_LANES:
-        raise GateError("required_lane_cell_counts must name exactly F24-F29")
-    normalized_counts = {}
-    for lane, value in counts.items():
-        n = _builtin_int(value, f"required_lane_cell_counts.{lane}")
-        if n <= 0:
-            raise GateError("each release lane must require at least one cell")
-        normalized_counts[lane] = n
+    receipts = bundle["lane_receipts"]
+    if type(receipts) is not dict or set(receipts) != REQUIRED_LANES:
+        raise GateError("lane_receipts must name exactly F24-F29")
+    normalized_receipts = {}
+    receipt_keys = {"raw_artifact", "raw_sha256", "corpus_id", "corpus_sha256"}
+    for lane, raw in receipts.items():
+        if type(raw) is not dict or set(raw) != receipt_keys:
+            raise GateError(f"lane_receipts.{lane} keys must equal {sorted(receipt_keys)}")
+        normalized_receipts[lane] = {
+            "raw_artifact": _builtin_str(raw["raw_artifact"], f"lane_receipts.{lane}.raw_artifact"),
+            "raw_sha256": _sha(raw["raw_sha256"], f"lane_receipts.{lane}.raw_sha256"),
+            "corpus_id": _builtin_str(raw["corpus_id"], f"lane_receipts.{lane}.corpus_id"),
+            "corpus_sha256": _sha(raw["corpus_sha256"], f"lane_receipts.{lane}.corpus_sha256"),
+        }
 
     raw_cells = bundle["cells"]
     if type(raw_cells) is not list or not raw_cells:
@@ -225,8 +235,8 @@ def evaluate(bundle: Any) -> dict[str, Any]:
     observed = {lane: 0 for lane in REQUIRED_LANES}
     for c in cells:
         observed[c.lane] += 1
-    if observed != normalized_counts:
-        raise GateError(f"lane coverage mismatch: observed={observed}, required={normalized_counts}")
+    if observed != EXPECTED_LANE_CELL_COUNTS:
+        raise GateError(f"lane coverage mismatch: observed={observed}, required={EXPECTED_LANE_CELL_COUNTS}")
 
     dirty = [c.cell_id for c in cells if not c.candidate.clean or not c.control.clean]
     overall = _summarize(cells)
@@ -244,6 +254,18 @@ def evaluate(bundle: Any) -> dict[str, Any]:
     if overall["loss_to_win"] < overall["win_to_loss"]:
         machine_failures.append("loss_to_win_below_win_to_loss")
 
+    failure_counts = {
+        "non_success_status": sum(c.candidate.status not in _SUCCESS or c.control.status not in _SUCCESS for c in cells),
+        "dq_or_disqualification": sum("DQ" in c.candidate.status or "DISQUAL" in c.candidate.status or "DQ" in c.control.status or "DISQUAL" in c.control.status for c in cells),
+        "timeout": sum("TIMEOUT" in c.candidate.status or "TIMEOUT" in c.control.status for c in cells),
+        "fallback": sum(c.candidate.fallback_count + c.control.fallback_count for c in cells),
+        "package_or_abi_mismatch": sum("MISMATCH" in c.candidate.status or "MISMATCH" in c.control.status or "ABI" in c.candidate.status or "ABI" in c.control.status for c in cells),
+    }
+    worst_20 = [
+        {"cell_id": c.cell_id, "lane": c.lane, "fixture_id": c.fixture_id, "opponent": c.opponent, "family": c.family, "seat": c.seat, "delta": c.delta}
+        for c in sorted(cells, key=lambda c: (c.delta, c.cell_id))[:20]
+    ]
+
     report = {
         "schema_version": REPORT_SCHEMA,
         "candidate_sha256": CANDIDATE_SHA256,
@@ -251,18 +273,17 @@ def evaluate(bundle: Any) -> dict[str, Any]:
         "engine_sha256": ENGINE_SHA256,
         "cell_count": len(cells),
         "lane_cell_counts": observed,
+        "lane_receipts": normalized_receipts,
         "dirty_cells": dirty,
+        "failure_counts": failure_counts,
+        "worst_20": worst_20,
         "overall": overall,
         "by_family": by_family,
         "by_seat": by_seat,
         "by_lane": by_lane,
         "machine_failures": machine_failures,
         "machine_status": "PASS" if not machine_failures else "HOLD",
-        "root_review_required": {
-            "family_median_adequate_n": True,
-            "lower_tail_materially_unlike_v4": True,
-            "catastrophic_regressions_explained": True,
-        },
+        "root_review_required": {"family_median_adequate_n": True, "lower_tail_materially_unlike_v4": True, "catastrophic_regressions_explained": True},
         "release_status": "AWAIT_ROOT_REVIEW" if not machine_failures else "HOLD",
     }
     report["report_sha256"] = hashlib.sha256(_canonical_json(report).encode("utf-8")).hexdigest()
