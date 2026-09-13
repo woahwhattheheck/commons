@@ -2,15 +2,29 @@
 from __future__ import annotations
 
 from typing import Any
-from urllib.parse import quote
+from urllib.parse import quote, urlsplit
 
-from constants import GITHUB_ITEM_RE, LINK_NEXT_RE
+from constants import AUTO_RESOLVE_SOURCE_HOSTS, GITHUB_ITEM_RE, LINK_NEXT_RE
 from errors import EvidenceError
 from models import Candidate, Resolution, Response, Transport, canonicalize_github_match
 
 
 def github_urls(text: str) -> list[str]:
     return sorted({canonicalize_github_match(match) for match in GITHUB_ITEM_RE.finditer(text)})
+
+
+def auto_resolve_source_allowed(url: str) -> bool:
+    """Return whether an advertised page is trusted enough for automatic network discovery.
+
+    Arbitrary marketplace URLs are untrusted input. Fetching them after a separate DNS
+    safety preflight would leave a DNS-rebinding time-of-check/time-of-use window because
+    the HTTP stack resolves the hostname again when it opens the socket. Automatic page
+    discovery is therefore restricted to recognized sponsor-owned host suffixes. Other
+    boards stay supported by supplying an explicit canonical GitHub issue/PR URL.
+    """
+
+    host = (urlsplit(url).hostname or "").rstrip(".").lower()
+    return any(host == suffix or host.endswith(f".{suffix}") for suffix in AUTO_RESOLVE_SOURCE_HOSTS)
 
 
 def resolve_candidate(candidate: Candidate, transport: Transport) -> Resolution:
@@ -29,6 +43,13 @@ def resolve_candidate(candidate: Candidate, transport: Transport) -> Resolution:
             candidate_final_url=canonical,
             candidate_status=None,
             canonical_url=canonical,
+        )
+
+    if not auto_resolve_source_allowed(candidate.candidate_url):
+        raise EvidenceError(
+            "candidate_source_requires_canonical_url",
+            "automatic candidate-page discovery is restricted to recognized sponsor hosts; "
+            "provide --canonical-url for other boards",
         )
 
     response = transport.fetch(candidate.candidate_url, accept="text/html,application/xhtml+xml")

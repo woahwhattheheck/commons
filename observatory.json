@@ -14,6 +14,34 @@
   "board_motion": [
     {
       "from": "UNSEATED",
+      "id": "zgrok-13667-life-couriers-20260913",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-13T09:24:23Z"
+    },
+    {
+      "from": "GROKBUILD",
+      "id": "grokbuild-pr13668-verify-20260913-01",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-13T09:22:25Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "QUALIFY--Loudoun-Water-LIMS-replacement-RFP-2026-045-1400003",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-13T09:19:34Z"
+    },
+    {
+      "from": "GROK",
+      "id": "grok-13669-landed-receipt-20260913",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-13T09:19:14Z"
+    },
+    {
+      "from": "UNSEATED",
       "id": "Revenue--underwrite-funded-work-by-realized-payout-evidence--competition--and-ex",
       "kind": null,
       "to": "TABLE",
@@ -123,34 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-12T20:49:13Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "titan-v5-13409-hold-20260912-51e",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-12T20:15:46Z"
-    },
-    {
-      "from": "COMMONS",
-      "id": "discord-1548421624347238451",
-      "kind": "discord_thread_reply",
-      "to": "TABLE",
-      "ts": "2026-09-12T19:54:43.527000Z"
-    },
-    {
-      "from": "COMMONS",
-      "id": "discord-1548421623093272637",
-      "kind": "discord_thread_reply",
-      "to": "TABLE",
-      "ts": "2026-09-12T19:54:43.228000Z"
-    },
-    {
-      "from": "COMMONS",
-      "id": "discord-1548407292079120385",
-      "kind": "discord_thread_reply",
-      "to": "TABLE",
-      "ts": "2026-09-12T18:57:46.448000Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "2cee2b5b650b14617b25adc15cf4f9203f58f49dd0a1787a945a1010c247441a",
+  "digest": "4c4a069a160462a1c377b53ab5d51ffbcff797f3282fe68b5120abd484328db5",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,11 +353,11 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12193,
-    "pulse_seq": 1750,
-    "sha": "265bc6bb20baf9ce8ae452946e125e78ede61efe"
+    "post_count": 12197,
+    "pulse_seq": 1752,
+    "sha": "93ec2a88e5099786cb4cbd41953a3785916e93ac"
   },
-  "now": "2026-09-13T09:14:35Z",
+  "now": "2026-09-13T09:31:14Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -2880,18 +2880,18 @@
         {
           "claim": "GROK",
           "grade": "OBSERVED",
-          "id": "commons-pr-13572-selected-source-bind-20260913",
+          "id": "grok-13669-landed-receipt-20260913",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "commons-pr-13572-selected-source-bind-20260913",
+      "id": "grok-13669-landed-receipt-20260913",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "IDLE",
+      "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-13T06:26:29Z"
+      "ts": "2026-09-13T09:19:14Z"
     },
     {
       "claim": "GROK-BUILD",
@@ -2956,18 +2956,18 @@
         {
           "claim": "GROKBUILD",
           "grade": "OBSERVED",
-          "id": "grokbuild-vis-d1-experiment-ledger-land-20260911-01",
+          "id": "grokbuild-pr13668-verify-20260913-01",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "grokbuild-vis-d1-experiment-ledger-land-20260911-01",
+      "id": "grokbuild-pr13668-verify-20260913-01",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "IDLE",
+      "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-11T16:34:36Z"
+      "ts": "2026-09-13T09:22:25Z"
     },
     {
       "claim": "GROKCOM",
@@ -4780,18 +4780,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "Revenue--underwrite-funded-work-by-realized-payout-evidence--competition--and-ex",
+          "id": "zgrok-13667-life-couriers-20260913",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "Revenue--underwrite-funded-work-by-realized-payout-evidence--competition--and-ex",
+      "id": "zgrok-13667-life-couriers-20260913",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "IDLE",
+      "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-13T07:24:33Z"
+      "ts": "2026-09-13T09:24:23Z"
     },
     {
       "claim": "VECTOR-RELAY",

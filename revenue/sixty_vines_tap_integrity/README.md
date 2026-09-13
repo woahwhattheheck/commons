@@ -24,14 +24,14 @@ Exact duplicate event retries are deduplicated by full canonical event bytes. Re
 
 ## UNKNOWN_EFFECT contract
 
-`POUR_UNKNOWN` records the intended synthetic effect but applies **no** inventory or monetary change. The same effect ID is blocked from retry while unresolved.
+`POUR_UNKNOWN` records the intended synthetic effect but applies **no** inventory or monetary change. While that ambiguity is unresolved, a later pour sharing the pending effect's tap, line, or keg fails closed with `UNKNOWN_RESOURCE_BLOCK`; unrelated resources remain available. Reuse of the pending effect ID is also blocked by the effect ledger.
 
 A later `RESOLVE_POUR` must say exactly one of:
 
 - `APPLIED` — apply the stored intended effect once; or
 - `NOT_APPLIED` — close the ambiguity without applying it.
 
-This is the fail-closed timeout-after-commit boundary. The package never guesses.
+`RESOLVE_POUR` is the only path that can clear that pending resource quarantine. This is the fail-closed timeout-after-commit boundary: the package never guesses or permits a dependent effect to pass through unresolved inventory ambiguity.
 
 ## Acceptance generator
 
@@ -59,20 +59,23 @@ Those values are a **synthetic regression result**, not a buyer acceptance, prod
 
 ## Run
 
-From this directory:
+From the repository root:
 
 ```bash
-python -m unittest -v test_rail.py
-python -O -m unittest -v test_rail.py
-python -m py_compile rail.py test_rail.py
+python -m unittest discover -s revenue/sixty_vines_tap_integrity -p 'test_*.py' -v
+python -O -m unittest discover -s revenue/sixty_vines_tap_integrity -p 'test_*.py' -v
+python -m py_compile revenue/sixty_vines_tap_integrity/rail.py \
+  revenue/sixty_vines_tap_integrity/test_rail.py \
+  revenue/sixty_vines_tap_integrity/test_rail_hardening.py
 
-python rail.py acceptance \
+python revenue/sixty_vines_tap_integrity/rail.py acceptance \
   --events 20000 \
   --taps 60 \
-  --receipt acceptance_receipt.example.json \
+  --receipt /tmp/sixty-vines-acceptance.json \
   --require-pass
 
-python rail.py verify-receipt acceptance_receipt.example.json
+python revenue/sixty_vines_tap_integrity/rail.py verify-receipt \
+  /tmp/sixty-vines-acceptance.json
 ```
 
 A passing acceptance run requires:
@@ -81,11 +84,11 @@ A passing acceptance run requires:
 2. zero unresolved unknown effects; and
 3. pours on every configured tap.
 
-The offline receipt verifier checks the receipt's canonical SHA-256 binding. It is a tamper-evidence mechanism, **not** a digital signature or an identity/authentication claim.
+The offline receipt verifier fails closed unless the receipt has the exact v1 evidence shape, required types and digest forms, internally consistent summary/coverage/hold/unresolved-effect invariants, and a matching canonical SHA-256 binding. That checksum is an integrity mechanism, **not a digital signature or an identity/authentication claim**.
 
 ## Test coverage
 
-`test_rail.py` currently contains 27 hostile regression tests covering:
+The package currently contains **33 hostile regression tests** across `test_rail.py` and `test_rail_hardening.py`, covering:
 
 - valid pour inventory/money accounting;
 - exact retry dedupe;
@@ -95,16 +98,22 @@ The offline receipt verifier checks the receipt's canonical SHA-256 binding. It 
 - waste as inventory-only effect;
 - partial refund, refund cap, void, and refund/void conflict rules;
 - UNKNOWN_EFFECT apply / not-applied / retry-block behavior;
+- resource-scoped pending ambiguity quarantine and release after explicit reconciliation;
+- continued progress on unrelated taps while another resource is quarantined;
 - shuffled-input deterministic replay;
 - duplicate sequence rejection;
 - invalid line status and duplicate line configuration;
 - exact 20,000-event / 60-tap acceptance;
 - generator byte determinism;
-- receipt tamper detection;
+- exact-v1 receipt validation and rejection of rehashed malformed/hash-only receipts;
 - offline CLI receipt verification;
 - hostile negative and boolean amount rejection.
 
-The same 27 tests are run in normal Python and under `python -O` so safety rules do not depend on `assert`.
+The same tests are run in normal Python and under `python -O` so safety rules do not depend on `assert`.
+
+## Hosted regression gate
+
+`.github/workflows/sixty-vines-tap-integrity.yml` runs the normal and optimized suites, compile gate, full 20,000-event / 60-tap acceptance, and receipt verification whenever this package or its workflow changes on a push or pull request.
 
 ## Explicit boundary
 

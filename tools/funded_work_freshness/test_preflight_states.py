@@ -17,7 +17,7 @@ from test_support import (
 
 class PreflightStateTests(unittest.TestCase):
     def test_board_open_but_canonical_closed_is_stale(self):
-        page = "https://board.example/electron-48191"
+        page = "https://algora.io/electron-48191"
         gh = "https://github.com/electron/electron/issues/48191"
         issue = open_issue(gh)
         issue["state"] = "closed"
@@ -31,7 +31,7 @@ class PreflightStateTests(unittest.TestCase):
         self.assertFalse(receipt["checks"]["canonical_state_open"])
 
     def test_redirect_to_deleted_canonical_target_is_stale(self):
-        page = "https://opire.example/zeroperl-7"
+        page = "https://opire.dev/zeroperl-7"
         gh = "https://github.com/6over3/zeroperl/issues/7"
         routes = {page: html_response(gh, "not found", status=404)}
         receipt = preflight(candidate(page, amount="1500"), FakeTransport(routes), observed_at=NOW)
@@ -40,7 +40,7 @@ class PreflightStateTests(unittest.TestCase):
         self.assertIn("canonical_target_deleted_or_missing", receipt["reasons"])
 
     def test_fresh_open_unoccupied_funded_candidate_is_actionable(self):
-        page = "https://board.example/fresh-1"
+        page = "https://polar.sh/fresh-1"
         gh = "https://github.com/acme/widget/issues/12"
         routes = {
             page: html_response(page, f'<a href="{gh}">candidate</a>'),
@@ -51,6 +51,25 @@ class PreflightStateTests(unittest.TestCase):
         self.assertEqual(receipt["route"], "qualified_for_human_claim_decision")
         self.assertTrue(receipt["checks"]["advertised_amount_supported_by_canonical_evidence"])
         self.assertRegex(receipt["receipt_sha256"], r"^[0-9a-f]{64}$")
+
+    def test_unknown_board_requires_canonical_url_before_any_fetch(self):
+        page = "https://board.example/reward/1"
+        transport = FakeTransport({})
+        receipt = preflight(candidate(page), transport, observed_at=NOW)
+        self.assertEqual(receipt["freshness_status"], "ambiguous")
+        self.assertEqual(receipt["route"], "reject")
+        self.assertEqual(receipt["reasons"], ["candidate_source_requires_canonical_url"])
+        self.assertEqual(transport.calls, [])
+
+    def test_unknown_board_with_explicit_canonical_skips_board_fetch(self):
+        page = "https://board.example/reward/1"
+        gh = "https://github.com/acme/widget/issues/12"
+        transport = FakeTransport(evidence_routes("acme", "widget", 12, open_issue(gh)))
+        receipt = preflight(
+            candidate(page, canonical_url=gh), transport, observed_at=NOW
+        )
+        self.assertEqual(receipt["freshness_status"], "actionable")
+        self.assertNotIn(page, [url for url, _accept in transport.calls])
 
     def test_moved_but_live_target_binds_returned_canonical_url(self):
         old = "https://github.com/oldco/widget/issues/9"

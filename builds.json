@@ -350,7 +350,7 @@
   }
  ],
  "pr_note": "Open GitHub PRs from public unauthenticated /pulls. PR-road work sits beside ntfy-road posts. Descriptive only. Not a merge gate. A PR is not main.",
- "n_open_prs": 19,
+ "n_open_prs": 13,
  "open_prs": [
   {
    "number": 13471,
@@ -359,7 +359,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/13471",
    "base_freshness": {
     "base_sha": "1f947f809df669fbc40dd095e8bf4d806157b448",
-    "main_sha": "ae5f9c1f3c72d6f5b87e94a2b225287c07989929",
+    "main_sha": "fcea630e86548acc336380424f613cd971e5e660",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -375,7 +375,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/13400",
    "base_freshness": {
     "base_sha": "145a007a64e0cade1424db27e7be55f308edde1d",
-    "main_sha": "ae5f9c1f3c72d6f5b87e94a2b225287c07989929",
+    "main_sha": "fcea630e86548acc336380424f613cd971e5e660",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -391,7 +391,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/13533",
    "base_freshness": {
     "base_sha": "bfddf33e924ee684cf76964b770eafbc51f89ebb",
-    "main_sha": "ae5f9c1f3c72d6f5b87e94a2b225287c07989929",
+    "main_sha": "fcea630e86548acc336380424f613cd971e5e660",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -407,7 +407,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/13587",
    "base_freshness": {
     "base_sha": "82457b4fbc99a64a5fa10203814ab6c3729c9de3",
-    "main_sha": "ae5f9c1f3c72d6f5b87e94a2b225287c07989929",
+    "main_sha": "fcea630e86548acc336380424f613cd971e5e660",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -423,7 +423,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/13595",
    "base_freshness": {
     "base_sha": "c93907c2117d9e4ad2abc55b92ef2aaa4864d72a",
-    "main_sha": "ae5f9c1f3c72d6f5b87e94a2b225287c07989929",
+    "main_sha": "fcea630e86548acc336380424f613cd971e5e660",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -439,103 +439,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/13568",
    "base_freshness": {
     "base_sha": "ec453b791a7fed490d9e3e5dec125e92ab978603",
-    "main_sha": "ae5f9c1f3c72d6f5b87e94a2b225287c07989929",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 13591,
-   "author": "woahwhattheheck",
-   "title": "funded-work: harden paid-work evidence and network boundaries",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/13591",
-   "base_freshness": {
-    "base_sha": "488ad4f843651ddce0a8da4c1c0195a442d35cc1",
-    "main_sha": "ae5f9c1f3c72d6f5b87e94a2b225287c07989929",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 13621,
-   "author": "woahwhattheheck",
-   "title": "creator desk: gate operator controls with workspace capability",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/13621",
-   "base_freshness": {
-    "base_sha": "7e3d6996315e62f5747fb59ebd6c5ce41c924c53",
-    "main_sha": "ae5f9c1f3c72d6f5b87e94a2b225287c07989929",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 13649,
-   "author": "woahwhattheheck",
-   "title": "Revenue: add carrier-safe parallel-agent landing core",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/13649",
-   "base_freshness": {
-    "base_sha": "113a3adeef85dbcae2b893181989533c38629af2",
-    "main_sha": "ae5f9c1f3c72d6f5b87e94a2b225287c07989929",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 13644,
-   "author": "woahwhattheheck",
-   "title": "revenue: add Mermail RFQ companion skill",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/13644",
-   "base_freshness": {
-    "base_sha": "b6de319992d8a5826a8eaa1e0e4243f95d3fea56",
-    "main_sha": "ae5f9c1f3c72d6f5b87e94a2b225287c07989929",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 13611,
-   "author": "woahwhattheheck",
-   "title": "hive: add Fleetline commercial booking terms",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/13611",
-   "base_freshness": {
-    "base_sha": "2f4290907fe088157768fc7acd7b69e99f573753",
-    "main_sha": "ae5f9c1f3c72d6f5b87e94a2b225287c07989929",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 13602,
-   "author": "woahwhattheheck",
-   "title": "revenue: add INPRS CLM migration/public-release evidence gate",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/13602",
-   "base_freshness": {
-    "base_sha": "22b0eb006549b6455197dbcc43649b1fa9f6923a",
-    "main_sha": "ae5f9c1f3c72d6f5b87e94a2b225287c07989929",
+    "main_sha": "fcea630e86548acc336380424f613cd971e5e660",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -551,7 +455,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/13415",
    "base_freshness": {
     "base_sha": "6ce2f6e256c6eeca7e14d217327bb2c6d9a6787b",
-    "main_sha": "ae5f9c1f3c72d6f5b87e94a2b225287c07989929",
+    "main_sha": "fcea630e86548acc336380424f613cd971e5e660",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -567,23 +471,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/13553",
    "base_freshness": {
     "base_sha": "99887c69d461b60c6f5f860184f573623ddb6556",
-    "main_sha": "ae5f9c1f3c72d6f5b87e94a2b225287c07989929",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 13661,
-   "author": "woahwhattheheck",
-   "title": "Fix Sixty Vines unknown-effect quarantine and receipt verification",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/13661",
-   "base_freshness": {
-    "base_sha": "ba8f6cedb6265ecf39420d543fcd51ba0ee46c75",
-    "main_sha": "ae5f9c1f3c72d6f5b87e94a2b225287c07989929",
+    "main_sha": "fcea630e86548acc336380424f613cd971e5e660",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -599,23 +487,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/13585",
    "base_freshness": {
     "base_sha": "afc17b9fae7cfa3c4cc508a156b2656ce5903136",
-    "main_sha": "ae5f9c1f3c72d6f5b87e94a2b225287c07989929",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 13657,
-   "author": "woahwhattheheck",
-   "title": "revenue: add commercial acceptance evidence bridge",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/13657",
-   "base_freshness": {
-    "base_sha": "2551c4e07f16f92acc5f83f2126213ae4977a539",
-    "main_sha": "ae5f9c1f3c72d6f5b87e94a2b225287c07989929",
+    "main_sha": "fcea630e86548acc336380424f613cd971e5e660",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -631,7 +503,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/13654",
    "base_freshness": {
     "base_sha": "4a350f4791e56aae75a33b70c13595763e790ed2",
-    "main_sha": "ae5f9c1f3c72d6f5b87e94a2b225287c07989929",
+    "main_sha": "fcea630e86548acc336380424f613cd971e5e660",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -641,13 +513,45 @@
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
   {
-   "number": 13666,
+   "number": 13657,
    "author": "woahwhattheheck",
-   "title": "revenue: add paid outcome expansion/renewal evidence rail",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/13666",
+   "title": "revenue: add commercial acceptance evidence bridge",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/13657",
    "base_freshness": {
-    "base_sha": "954ad495f1f154dbc44926cfe6462c0e09e4e5f7",
-    "main_sha": "ae5f9c1f3c72d6f5b87e94a2b225287c07989929",
+    "base_sha": "2551c4e07f16f92acc5f83f2126213ae4977a539",
+    "main_sha": "fcea630e86548acc336380424f613cd971e5e660",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 13677,
+   "author": "woahwhattheheck",
+   "title": "revenue: add evidence-only agentic GxP lineage gate",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/13677",
+   "base_freshness": {
+    "base_sha": "5080da9ec1e02169c0c8580f0f128d4af92c4014",
+    "main_sha": "fcea630e86548acc336380424f613cd971e5e660",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 13676,
+   "author": "woahwhattheheck",
+   "title": "fix(revenue): require trusted time for Port QC verification",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/13676",
+   "base_freshness": {
+    "base_sha": "5080da9ec1e02169c0c8580f0f128d4af92c4014",
+    "main_sha": "fcea630e86548acc336380424f613cd971e5e660",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"

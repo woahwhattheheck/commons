@@ -24,7 +24,10 @@ Those are separate authorities. This rail binds 1–5 and explicitly keeps 6 fal
 
 ## Input contract
 
-Each packet is a JSON object with `schema_version: "1"` and:
+Each packet is a JSON object with `schema_version: "1"` and a top-level `account_id`.
+Every authority-bearing evidence object (`settlement`, `delivery_acceptance`,
+`buyer_signal`, and `owner_approval`) must repeat that exact account identity;
+cross-account relabeling or splicing fails closed. The packet also carries:
 
 - `offer`: immutable offer/version, currency, exact expected cents, exact
   scope SHA-256, issue/expiry window.
@@ -38,9 +41,11 @@ Each packet is a JSON object with `schema_version: "1"` and:
   attribution claims.
 - `buyer_signal`: a fresh, `BUYER_AUTHORED` `EXPANSION_REQUEST` or
   `RENEWAL_REQUEST` naming specific catalog IDs.
-- `owner_approval`: a human seller approval for the requested catalog IDs.
+- `owner_approval`: a human seller approval for exact catalog revisions. Each binding carries `catalog_id`, `version`, and the canonical full-row `row_digest`; ID-only approval is insufficient and fails closed.
 - `catalog`: exact bounded price/scope/version entries. The rail never invents
-  pricing.
+  pricing. A catalog revision identity hashes ID, version, kind, currency, exact
+  price cents, scope digest, and activation window. Buyer signal and owner approval
+  must occur after that revision becomes active.
 - `event_log`: caller-supplied evidence-event payloads. Exact duplicate event
   IDs collapse; changed payload under the same ID causes HOLD.
 
@@ -51,8 +56,10 @@ module never treats its own wall clock as buyer/provider evidence.
 ## Decisions
 
 A clean packet yields `EXPANSION_READY` or `RENEWAL_READY`. Any authority,
-identity, freshness, scope, currency, settlement, metric, approval, catalog, or
-idempotency problem yields `HOLD` with stable reason codes.
+identity, freshness, scope, currency, settlement, metric, approval, catalog-revision,
+or idempotency problem yields `HOLD` with stable reason codes. Reusing an approval
+for the same catalog ID after a version, price, scope, currency, kind, or activation
+change is explicitly rejected.
 
 Every receipt hard-codes these authorities to `false`:
 

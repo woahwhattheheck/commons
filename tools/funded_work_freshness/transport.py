@@ -9,12 +9,24 @@ import ssl
 from typing import Any
 from urllib.parse import urljoin, urlsplit
 
-from constants import MAX_HTTP_BYTES, USER_AGENT
+from constants import AUTO_RESOLVE_SOURCE_HOSTS, MAX_HTTP_BYTES, USER_AGENT
 from errors import EvidenceError, PreflightInputError
 from models import Response
 
 _REDIRECT_STATUSES = {301, 302, 303, 307, 308}
 _MAX_REDIRECTS = 10
+
+
+def _host_in_suffix(host: str, suffix: str) -> bool:
+    normalized = host.rstrip(".").lower()
+    return normalized == suffix or normalized.endswith(f".{suffix}")
+
+
+def _trusted_source_suffix(host: str) -> str | None:
+    for suffix in AUTO_RESOLVE_SOURCE_HOSTS:
+        if _host_in_suffix(host, suffix):
+            return suffix
+    return None
 
 
 def _public_destination(url: str) -> tuple[object, str, int, tuple[str, ...]]:
@@ -52,6 +64,25 @@ def _public_destination(url: str) -> tuple[object, str, int, tuple[str, ...]]:
 def validate_public_destination(url: str) -> None:
     """Reject credentials and non-public network destinations."""
     _public_destination(url)
+
+
+def validate_redirect_destination(source_url: str, target_url: str) -> None:
+    """Require redirects to remain inside the source's trusted hostname scope."""
+    _parsed, target_host, _port, _addresses = _public_destination(target_url)
+    source_host = (urlsplit(source_url).hostname or "").rstrip(".").lower()
+    sponsor_suffix = _trusted_source_suffix(source_host)
+    if sponsor_suffix:
+        if not _host_in_suffix(target_host, sponsor_suffix):
+            raise EvidenceError(
+                "unsafe_redirect",
+                f"redirect left trusted source domain {sponsor_suffix}: {target_host}",
+            )
+        return
+    if target_host != source_host:
+        raise EvidenceError(
+            "unsafe_redirect",
+            f"cross-host redirect rejected: {source_host} -> {target_host}",
+        )
 
 
 def read_bounded(handle: Any) -> bytes:
@@ -173,5 +204,7 @@ class UrlLibTransport:
                 return response
             if redirects == _MAX_REDIRECTS:
                 raise EvidenceError("too_many_redirects", f"more than {_MAX_REDIRECTS} redirects")
-            current = urljoin(current, location)
+            target = urljoin(current, location)
+            validate_redirect_destination(url, target)
+            current = target
         raise EvidenceError("too_many_redirects", f"more than {_MAX_REDIRECTS} redirects")

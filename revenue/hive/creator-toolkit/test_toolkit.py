@@ -13,7 +13,8 @@ from pathlib import Path
 from urllib.error import HTTPError
 from urllib.request import Request, urlopen
 
-from app import make_server
+from app import OPERATOR_ACTIONS, make_server
+from operator_auth import OperatorAuth
 from toolkit import CONSENT_TEXT, DeskError, MAX_FILE_BYTES, Store
 
 BINARY = bytes(range(256)) + b'\x00\xff\r\nOriginal bytes\n'
@@ -245,8 +246,11 @@ class StoreTests(unittest.TestCase):
 class HTTPTests(unittest.TestCase):
     def setUp(self):
         self.tmp = tempfile.TemporaryDirectory()
-        self.store = Store(Path(self.tmp.name) / 'http.sqlite3', lambda: 1000)
-        self.server = make_server(self.store, port=0)
+        self.path = Path(self.tmp.name) / 'http.sqlite3'
+        self.store = Store(self.path, lambda: 1000)
+        self.operator_key = OperatorAuth.initialize(self.path)
+        self.auth = OperatorAuth(self.path)
+        self.server = make_server(self.store, port=0, operator_auth=self.auth)
         self.thread = threading.Thread(target=self.server.serve_forever, kwargs={'poll_interval': .01}, daemon=True)
         self.thread.start()
         self.base = f'http://127.0.0.1:{self.server.server_port}'
@@ -257,16 +261,23 @@ class HTTPTests(unittest.TestCase):
         self.thread.join(2)
         self.tmp.cleanup()
 
-    def call(self, path, value=None, method=None):
-        request = Request(self.base + path, data=None if value is None else json.dumps(value).encode(), headers={'Content-Type': 'application/json'}, method=method)
+    def call(self, path, value=None, method=None, operator=False, authorization=None):
+        headers = {'Content-Type': 'application/json'}
+        if authorization is not None:
+            headers['Authorization'] = authorization
+        elif operator:
+            headers['Authorization'] = 'Bearer ' + self.operator_key
+        request = Request(self.base + path, data=None if value is None else json.dumps(value).encode(), headers=headers, method=method)
         try:
             with urlopen(request, timeout=5) as response:
                 return response.status, response.headers, response.read()
         except HTTPError as exc:
             return exc.code, exc.headers, exc.read()
 
-    def change(self, action, payload, op=None):
-        status, _, body = self.call('/api/change', dict(action=action, payload=payload, operation_id=op or uuid.uuid4().hex))
+    def change(self, action, payload, op=None, operator=None):
+        if operator is None:
+            operator = action in OPERATOR_ACTIONS
+        status, _, body = self.call('/api/change', dict(action=action, payload=payload, operation_id=op or uuid.uuid4().hex), operator=operator)
         self.assertEqual(status, 200, body)
         return json.loads(body)
 
@@ -280,6 +291,7 @@ class HTTPTests(unittest.TestCase):
         status, _, body = self.call('/')
         self.assertEqual(status, 200)
         self.assertIn(b'Creator Desk', body)
+        self.assertIn(b'/operator-auth.js', body)
         r = self.resource()
         q = self.request(r, 'wire-once')
         self.assertEqual(q, self.request(r, 'wire-once'))
@@ -292,9 +304,9 @@ class HTTPTests(unittest.TestCase):
         member = json.loads(body)
         self.assertEqual(status, 200)
         first = self.store.dashboard()['outbox'][0]
-        self.assertEqual(self.call('/draft.eml?id=' + first['id'])[0], 200)
+        self.assertEqual(self.call('/draft.eml?id=' + first['id'], operator=True)[0], 200)
         self.change('preferences', dict(member_id=member['id'], expected_revision=member['revision'], opted_in=False))
-        self.assertEqual(self.call('/draft.eml?id=' + first['id'])[0], 409)
+        self.assertEqual(self.call('/draft.eml?id=' + first['id'], operator=True)[0], 409)
         self.assertFalse(json.loads(self.call('/api/member?id=' + member['id'])[2])['opted_in'])
         self.assertEqual(self.call('/download?id=' + q['request_id'])[2], BINARY)
 
@@ -303,9 +315,45 @@ class HTTPTests(unittest.TestCase):
         with concurrent.futures.ThreadPoolExecutor(max_workers=6) as pool:
             results = list(pool.map(lambda _: self.request(r), range(10)))
         self.assertEqual(len({q['request_id'] for q in results}), 1)
-        dashboard = json.loads(self.call('/api/dashboard')[2])
+        dashboard = json.loads(self.call('/api/dashboard', operator=True)[2])
         self.assertEqual(dashboard['counts']['requests'], 1)
         self.assertEqual(len(dashboard['outbox']), 2)
+
+    def test_operator_boundary_rejects_missing_wrong_and_hostile_keys(self):
+        r = self.resource()
+        q = self.request(r)
+        inquiry = self.change('inquiry', dict(member_id=q['member_id'], body='A question'))
+        first = self.store.dashboard()['outbox'][0]
+        for authorization in (None, 'Bearer wrong', 'Basic anything', 'Bearer ' + 'x' * 300, 'Bearer ÿ'):
+            with self.subTest(authorization=repr(authorization)):
+                self.assertEqual(self.call('/api/operator', authorization=authorization)[0], 403)
+                self.assertEqual(self.call('/api/dashboard', authorization=authorization)[0], 403)
+                self.assertEqual(self.call('/workspace.sqlite3', authorization=authorization)[0], 403)
+                self.assertEqual(self.call('/draft.eml?id=' + first['id'], authorization=authorization)[0], 403)
+                status = self.call('/api/change', dict(action='inquiry.close', operation_id=uuid.uuid4().hex,
+                                                       payload={'id': inquiry['id']}), authorization=authorization)[0]
+                self.assertEqual(status, 403)
+        status, _, body = self.call('/api/operator', operator=True)
+        self.assertEqual(status, 200)
+        self.assertEqual(json.loads(body), {'operator': True})
+        self.assertEqual(self.store.dashboard()['inquiries'][0]['state'], 'open')
+
+    def test_public_member_mutations_do_not_require_operator_key(self):
+        r = self.resource()
+        request = self.change('request', dict(resource_id=r['id'], email='public@example.invalid', opt_in=True), operator=False)
+        member = json.loads(self.call('/api/member?id=' + request['member_id'])[2])
+        self.change('preferences', dict(member_id=member['id'], expected_revision=member['revision'], opted_in=False), operator=False)
+        inquiry = self.change('inquiry', dict(member_id=member['id'], body='Public member request'), operator=False)
+        self.assertEqual(inquiry['state'], 'open')
+        self.assertFalse(json.loads(self.call('/api/member?id=' + member['id'])[2])['opted_in'])
+
+    def test_authorized_backup_keeps_plaintext_operator_key_out_of_snapshot(self):
+        self.resource()
+        status, headers, body = self.call('/workspace.sqlite3', operator=True)
+        self.assertEqual(status, 200)
+        self.assertEqual(headers['Content-Type'], 'application/octet-stream')
+        self.assertNotIn(self.operator_key.encode(), body)
+        self.assertEqual(headers['X-Content-SHA256'], hashlib.sha256(body).hexdigest())
 
     def test_bad_json_missing_ids_and_content_type(self):
         self.assertEqual(self.call('/api/member')[0], 400)
@@ -332,7 +380,7 @@ class HTTPTests(unittest.TestCase):
         self.assertEqual(json.loads(self.call('/api/delivery?id=' + q['request_id'])[2])['target'], r['target'])
         inquiry = self.change('inquiry', dict(member_id=q['member_id'], body='A question'))
         self.change('inquiry.close', dict(id=inquiry['id']))
-        self.assertEqual(json.loads(self.call('/api/dashboard')[2])['inquiries'][0]['state'], 'closed')
+        self.assertEqual(json.loads(self.call('/api/dashboard', operator=True)[2])['inquiries'][0]['state'], 'closed')
 
 
 if __name__ == '__main__':

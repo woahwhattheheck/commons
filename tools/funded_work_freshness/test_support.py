@@ -46,7 +46,16 @@ def api(owner, repo, number):
     return f"https://api.github.com/repos/{owner}/{repo}/issues/{number}"
 
 
-def open_issue(url, *, body=None, assignees=None, title="Fresh funded work", labels=None):
+def open_issue(
+    url,
+    *,
+    body=None,
+    assignees=None,
+    title="Fresh funded work",
+    labels=None,
+    author_login="maintainer",
+    author_association="OWNER",
+):
     return {
         "html_url": url,
         "title": title,
@@ -55,6 +64,8 @@ def open_issue(url, *, body=None, assignees=None, title="Fresh funded work", lab
         "state": "open",
         "assignees": assignees or [],
         "labels": labels or [],
+        "user": {"login": author_login},
+        "author_association": author_association,
         "created_at": "2026-09-10T00:00:00Z",
         "updated_at": "2026-09-13T05:00:00Z",
     }
