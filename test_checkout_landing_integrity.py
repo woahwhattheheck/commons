@@ -16,13 +16,13 @@ from pathlib import Path, PurePosixPath
 import re
 import tempfile
 import unittest
-from urllib.parse import urlsplit
+from urllib.parse import parse_qsl, unquote, urlsplit
 
 
 ROOT = Path(__file__).resolve().parent
 CATALOG = Path("revenue/outcome_commerce/catalog.json")
 SNAPSHOT = Path("revenue/checkout_capability/snapshot.json")
-CONTACT_PREFIX = "mailto:tokenjunkielabs@gmail.com"
+CONTACT_MAILBOX = "tokenjunkielabs@gmail.com"
 STRIPE_HOSTS = {"buy.stripe.com", "donate.stripe.com"}
 STRIPE_PATH = re.compile(r"/[A-Za-z0-9_-]+")
 GENERIC_CATALOG_SURFACES = {"commerce.html", "pay.html", "tips.html"}
@@ -56,14 +56,18 @@ def _load(root: Path, rel: Path) -> dict:
     return json.loads((root / rel).read_text(encoding="utf-8"))
 
 
-def stripe_rail_key(raw: str) -> str | None:
-    """Return the immutable provider origin/path identity; ignore tracking query."""
+def stripe_anchor_state(raw: str) -> tuple[bool, str | None]:
+    """Return whether href targets Stripe plus its canonical rail key when valid."""
+    text = unescape(str(raw).strip())
     try:
-        parsed = urlsplit(unescape(str(raw).strip()))
+        parsed = urlsplit(text)
         port = parsed.port
     except (TypeError, ValueError):
-        return None
+        return "stripe.com" in text.lower(), None
     host = (parsed.hostname or "").lower()
+    provider_like = host == "stripe.com" or host.endswith(".stripe.com")
+    if not provider_like:
+        return False, None
     if (
         parsed.scheme.lower() != "https"
         or host not in STRIPE_HOSTS
@@ -72,8 +76,31 @@ def stripe_rail_key(raw: str) -> str | None:
         or port is not None
         or not STRIPE_PATH.fullmatch(parsed.path)
     ):
-        return None
-    return f"https://{host}{parsed.path}"
+        return True, None
+    return True, f"https://{host}{parsed.path}"
+
+
+def stripe_rail_key(raw: str) -> str | None:
+    """Return the immutable provider origin/path identity; ignore tracking query."""
+    return stripe_anchor_state(raw)[1]
+
+
+def canonical_handoff_mailto(raw: str) -> bool:
+    """Require one exact delivery recipient while permitting non-recipient query decoration."""
+    try:
+        parsed = urlsplit(unescape(str(raw).strip()))
+    except (TypeError, ValueError):
+        return False
+    if parsed.scheme.lower() != "mailto" or parsed.netloc or parsed.fragment:
+        return False
+    mailbox = unquote(parsed.path).strip().casefold()
+    if mailbox != CONTACT_MAILBOX:
+        return False
+    try:
+        query = parse_qsl(parsed.query, keep_blank_values=True)
+    except ValueError:
+        return False
+    return not any(name.casefold() in {"to", "cc", "bcc"} for name, _value in query)
 
 
 def _local_html_route(raw: object) -> tuple[str | None, str | None]:
@@ -184,16 +211,26 @@ def landing_surface_errors(root: Path) -> list[str]:
         if None in expected_rails:
             errors.append(f"{route}: catalog contains a malformed canonical Stripe URL")
             expected_rails.discard(None)
-        actual_rails = {
-            key for key in (stripe_rail_key(href) for href in parser.hrefs) if key is not None
-        }
+
+        provider_anchors: list[tuple[str, str | None]] = []
+        actual_rails: set[str] = set()
+        for href in parser.hrefs:
+            provider_like, rail_key = stripe_anchor_state(href)
+            if not provider_like:
+                continue
+            provider_anchors.append((href, rail_key))
+            if rail_key is None:
+                errors.append(f"{route}: invalid Stripe checkout href {href!r}")
+            else:
+                actual_rails.add(rail_key)
+
         slots = Counter(parser.checkout_slots)
         has_pay_js = any(PurePosixPath(urlsplit(src).path).name == "pay.js" for src in parser.script_srcs)
 
-        if actual_rails and slots:
+        if provider_anchors and slots:
             errors.append(f"{route}: mixes raw Stripe anchors with catalog checkout slots")
-        elif actual_rails:
-            if actual_rails != expected_rails:
+        elif provider_anchors:
+            if all(rail_key is not None for _href, rail_key in provider_anchors) and actual_rails != expected_rails:
                 errors.append(
                     f"{route}: Stripe rails {sorted(actual_rails)} do not equal canonical rails "
                     f"{sorted(expected_rails)}"
@@ -210,7 +247,7 @@ def landing_surface_errors(root: Path) -> list[str]:
         else:
             errors.append(f"{route}: no canonical Stripe anchor or catalog checkout slot")
 
-        if not any(href.lower().startswith(CONTACT_PREFIX) for href in parser.hrefs):
+        if not any(canonical_handoff_mailto(href) for href in parser.hrefs):
             errors.append(f"{route}: canonical Token Junkie Labs handoff mailto missing")
     return errors
 
@@ -302,6 +339,67 @@ class CheckoutLandingIntegrity(unittest.TestCase):
             )
             errors = landing_surface_errors(root)
             self.assertIn("one.html: canonical Token Junkie Labs handoff mailto missing", errors)
+
+    def test_delivery_route_requires_exact_single_mailbox(self) -> None:
+        canonical = "https://buy.stripe.com/canonical_1"
+        bad_mailtos = [
+            "mailto:tokenjunkielabs@gmail.com.attacker.example?subject=x",
+            "mailto:tokenjunkielabs@gmail.comevil",
+            "mailto:tokenjunkielabs@gmail.com,attacker@example.com",
+            "mailto:tokenjunkielabs@gmail.com%2Cattacker@example.com",
+            "mailto:tokenjunkielabs@gmail.com?cc=attacker@example.com",
+        ]
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            self._fixture(
+                root,
+                [("sku-one", "one.html", canonical)],
+                {"one.html": '<a href="https://buy.stripe.com/canonical_1">buy</a>'
+                             '<a href="mailto:tokenjunkielabs@gmail.com?subject=ok">handoff</a>'},
+            )
+            self.assertEqual(landing_surface_errors(root), [])
+            for href in bad_mailtos:
+                with self.subTest(href=href):
+                    (root / "one.html").write_text(
+                        '<a href="https://buy.stripe.com/canonical_1">buy</a>'
+                        f'<a href="{href}">handoff</a>',
+                        encoding="utf-8",
+                    )
+                    errors = landing_surface_errors(root)
+                    self.assertIn("one.html: canonical Token Junkie Labs handoff mailto missing", errors)
+
+    def test_provider_like_invalid_anchors_fail_closed(self) -> None:
+        canonical = "https://buy.stripe.com/canonical_1"
+        bad_rails = [
+            "http://buy.stripe.com/canonical_1",
+            "//buy.stripe.com/canonical_1",
+            "https://user@buy.stripe.com/canonical_1",
+            "https://buy.stripe.com:443/canonical_1",
+            "https://checkout.stripe.com/canonical_1",
+        ]
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            self._fixture(root, [("sku-one", "one.html", canonical)], {"one.html": ""})
+            for href in bad_rails:
+                with self.subTest(href=href):
+                    (root / "one.html").write_text(
+                        f'<a href="{href}">buy</a>'
+                        '<a href="mailto:tokenjunkielabs@gmail.com">handoff</a>',
+                        encoding="utf-8",
+                    )
+                    errors = landing_surface_errors(root)
+                    self.assertTrue(any("invalid Stripe checkout href" in row for row in errors), errors)
+
+            (root / "one.html").write_text(
+                '<div class="js-checkout-slot" data-sku="sku-one"></div>'
+                '<script src="./pay.js"></script>'
+                '<a href="mailto:tokenjunkielabs@gmail.com">handoff</a>'
+                '<a href="http://buy.stripe.com/canonical_1">bad raw rail</a>',
+                encoding="utf-8",
+            )
+            errors = landing_surface_errors(root)
+            self.assertTrue(any("invalid Stripe checkout href" in row for row in errors), errors)
+            self.assertIn("one.html: mixes raw Stripe anchors with catalog checkout slots", errors)
 
 
 if __name__ == "__main__":
