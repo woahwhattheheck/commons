@@ -16,6 +16,8 @@ from revenue.reference_authority.reference_authority import (
     canonical_bytes,
     compile_registry,
     evidence_digest,
+    opportunity_digest,
+    requirement_digest,
     record_digest,
     render_markdown,
     strict_json_loads,
@@ -55,6 +57,10 @@ def packet() -> dict:
         evidence("proposal-only", "PROCUREMENT_PURSUIT"),
     ]
     digs = {e["evidence_id"]: evidence_digest(e) for e in items}
+    opp = {"opportunity_id": "opp-iowa", "title": "University assessment pursuit"}
+    req = {"requirement_id": "refs-three", "opportunity_id": "opp-iowa", "label": "Three comparable references", "required_count": 3}
+    oppdig = opportunity_digest(opp)
+    reqdig = requirement_digest(req)
     disclosures = []
     for eid in digs:
         disclosures.append({
@@ -62,6 +68,7 @@ def packet() -> dict:
             "evidence_id": eid,
             "evidence_digest": digs[eid],
             "opportunity_id": "opp-iowa",
+            "opportunity_digest": oppdig,
             "use_class": "PROPOSAL_CAPABILITY",
             "status": "AUTHORIZED",
             "observed_at": "2026-09-13T12:00:00Z",
@@ -74,7 +81,9 @@ def packet() -> dict:
         "evidence_id": "client-one",
         "evidence_digest": digs["client-one"],
         "opportunity_id": "opp-iowa",
+        "opportunity_digest": oppdig,
         "requirement_id": "refs-three",
+        "requirement_digest": reqdig,
         "status": "AUTHORIZED",
         "observed_at": "2026-09-13T12:10:00Z",
         "expires_at": "2026-09-20T00:00:00Z",
@@ -86,7 +95,9 @@ def packet() -> dict:
         "evidence_id": "client-one",
         "evidence_digest": digs["client-one"],
         "opportunity_id": "opp-iowa",
+        "opportunity_digest": oppdig,
         "requirement_id": "refs-three",
+        "requirement_digest": reqdig,
         "status": "COMPARABLE",
         "assessed_at": "2026-09-13T12:20:00Z",
         "expires_at": "2026-09-20T00:00:00Z",
@@ -95,8 +106,8 @@ def packet() -> dict:
     }]
     return {
         "schema_version": "commons-reference-authority/v1",
-        "opportunity": {"opportunity_id": "opp-iowa", "title": "University assessment pursuit"},
-        "requirements": [{"requirement_id": "refs-three", "opportunity_id": "opp-iowa", "label": "Three comparable references", "required_count": 3}],
+        "opportunity": opp,
+        "requirements": [req],
         "evidence": items,
         "disclosure_authorities": disclosures,
         "reference_permissions": permissions,
@@ -214,6 +225,33 @@ class ReferenceAuthorityTests(unittest.TestCase):
         p["comparability_authorities"][0]["requirement_id"] = "refs-other"
         with self.assertRaisesRegex(ReferenceAuthorityError, "requirement_id unknown"):
             compile_registry(p, trusted_now=NOW)
+
+    def test_requirement_label_generation_change_holds_old_authority(self):
+        p = packet()
+        p["requirements"][0]["label"] = "Materially different reference criterion under same stable id"
+        result = compile_registry(p, trusted_now=NOW)
+        reasons = state(result, "client-one")["hold_reasons"]
+        self.assertIn("REFERENCE_PERMISSION_REQUIREMENT_DIGEST_MISMATCH", reasons)
+        self.assertIn("COMPARABILITY_AUTHORITY_REQUIREMENT_DIGEST_MISMATCH", reasons)
+
+    def test_requirement_count_generation_change_holds_old_authority(self):
+        p = packet()
+        p["requirements"][0]["required_count"] = 1
+        result = compile_registry(p, trusted_now=NOW)
+        reasons = state(result, "client-one")["hold_reasons"]
+        self.assertIn("REFERENCE_PERMISSION_REQUIREMENT_DIGEST_MISMATCH", reasons)
+        self.assertIn("COMPARABILITY_AUTHORITY_REQUIREMENT_DIGEST_MISMATCH", reasons)
+        self.assertEqual("HOLD_INSUFFICIENT_REFERENCES", result["requirements"][0]["status"])
+
+    def test_opportunity_generation_change_holds_all_old_authority(self):
+        p = packet()
+        p["opportunity"]["title"] = "Different opportunity generation under same stable id"
+        result = compile_registry(p, trusted_now=NOW)
+        reasons = state(result, "client-one")["hold_reasons"]
+        self.assertIn("DISCLOSURE_AUTHORITY_OPPORTUNITY_DIGEST_MISMATCH", reasons)
+        self.assertIn("REFERENCE_PERMISSION_OPPORTUNITY_DIGEST_MISMATCH", reasons)
+        self.assertIn("COMPARABILITY_AUTHORITY_OPPORTUNITY_DIGEST_MISMATCH", reasons)
+        self.assertNotIn("client-one", {x["evidence_id"] for x in result["capability_examples"]})
 
     def test_second_real_client_can_satisfy_only_with_full_chain(self):
         p = packet()
