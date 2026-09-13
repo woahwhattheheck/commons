@@ -263,24 +263,37 @@ _MARKDOWN_BUSINESS_STATUS_CELL = re.compile(
     r"(\|\s*(?:\*{1,2})?)(?:not authorized|not permitted)((?:\*{1,2})?\s*\|)",
     re.IGNORECASE,
 )
+_MARKDOWN_BUSINESS_STATUS_CONTEXT = re.compile(
+    r"\b(?:procurement|readiness|rfp|rfq|bid(?:ding)?|tender|vendor|supplier|"
+    r"purchas(?:e|ing)|commercial|contract(?:ing)?|invoice|quote|order|"
+    r"checkout|payment)\b",
+    re.IGNORECASE,
+)
 _MARKDOWN_ADMISSION_CONTEXT = re.compile(
     r"\b(?:action\s+pad|commons|post(?:ing)?|board|admission|authentication|"
-    r"authorization|permission|identity|claim|seat|memory|"
-    r"capability(?:\s+declaration)?|actor(?:_id)?|sender|verb|action)\b",
+    r"authorization|permissions?|access|identity|claim|seat|memory|"
+    r"capability(?:\s+declaration)?|actor(?:_id)?|sender|verb|action|"
+    r"contributors?|users?|agents?|bots?|models?|members?|roles?|principals?|"
+    r"accounts?|credentials?)\b",
     re.IGNORECASE,
 )
 
 
 def _explicit_denial_candidate(path: str, text: str) -> str:
-    """Remove only isolated Markdown business-status denial cells.
+    """Remove only proven revenue Markdown business-status denial cells.
 
     Procurement/readiness tables legitimately use an isolated ``NOT AUTHORIZED``
     or ``NOT PERMITTED`` cell to mean that an owner-controlled external action is
-    still pending.  That exception must be occurrence-local: a benign status cell
-    can never hide a second denial elsewhere on the same row.  Rows containing
-    Commons/admission vocabulary receive no exception at all.
+    still pending.  The exception is deliberately narrow: it requires a revenue
+    Markdown path, affirmative business/procurement/readiness vocabulary, and no
+    admission subject or access/permission vocabulary.  The rewrite remains
+    occurrence-local so a benign status cell can never hide another denial later
+    on the same row.
     """
-    if not normalize_path(path).lower().endswith(".md"):
+    normalized = normalize_path(path).lower()
+    if not normalized.startswith("revenue/") or not normalized.endswith(".md"):
+        return text
+    if not _MARKDOWN_BUSINESS_STATUS_CONTEXT.search(text):
         return text
     if _MARKDOWN_ADMISSION_CONTEXT.search(text):
         return text
