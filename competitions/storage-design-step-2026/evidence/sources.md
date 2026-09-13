@@ -36,8 +36,8 @@ No literature value below is entrant test data.
    all-soluble all-iron systems; supports treating stack architecture as an engineering variable.
 
 7. Zhang, S. et al. **All-soluble all-iron aqueous redox flow batteries: Towards sustainable energy storage.**
-   *Energy Storage Materials* 75 (2025).
-   https://www.sciencedirect.com/science/article/pii/S2405829724008264
+   *Energy Storage Materials* 75 (2025), 104004. DOI: 10.1016/j.ensm.2025.104004
+   https://doi.org/10.1016/j.ensm.2025.104004
    Review identifies continuing challenges in solubility, electrolyte stability, electrode reactivity,
    membrane selectivity, and capacity decay.
 

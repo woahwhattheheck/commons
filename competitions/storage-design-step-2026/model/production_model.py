@@ -2,7 +2,8 @@
 
 This module does NOT model electrochemistry and does not claim measured performance.
 It compares user-supplied manufacturing scenarios. Monetary inputs are exact decimal
-strings; checked-in examples are explicitly synthetic and must not be cited as quotes.
+strings. Authority labels identify the intended evidence class but do not authenticate
+supplier quotes, purchase records, or measured observations.
 """
 
 from __future__ import annotations
@@ -16,6 +17,7 @@ from typing import Any
 ZERO = Decimal("0")
 HUNDRED = Decimal("100")
 MINUTES_PER_HOUR = Decimal("60")
+AUTHORITIES = frozenset({"SYNTHETIC_SCENARIO", "QUOTE_BACKED", "PURCHASE_EVIDENCE", "MEASURED_ROUTER"})
 
 
 class ModelError(ValueError):
@@ -62,6 +64,8 @@ class Component:
 @dataclass(frozen=True)
 class Scenario:
     name: str
+    authority: str
+    evidence_ref: str
     power_kw: Decimal
     energy_kwh: Decimal
     components: tuple[Component, ...]
@@ -102,6 +106,8 @@ class Scenario:
     def metrics(self) -> dict[str, str | int]:
         return {
             "scenario": self.name,
+            "authority": self.authority,
+            "evidence_ref": self.evidence_ref,
             "material_cost_usd": str(self.material_cost.quantize(Decimal("0.01"))),
             "labor_cost_usd": str(self.labor_cost.quantize(Decimal("0.01"))),
             "conversion_cost_usd": str(self.conversion_cost.quantize(Decimal("0.01"))),
@@ -139,13 +145,22 @@ def parse_scenario(raw: dict[str, Any]) -> Scenario:
     if not isinstance(raw, dict):
         raise ModelError("scenario must be an object")
     expected = {
-        "name", "authority", "power_kw", "energy_kwh", "components", "assembly_minutes",
-        "direct_labor_usd_per_hour", "annualized_tooling_usd_per_unit",
+        "name", "authority", "evidence_ref", "power_kw", "energy_kwh", "components",
+        "assembly_minutes", "direct_labor_usd_per_hour", "annualized_tooling_usd_per_unit",
     }
     if set(raw) != expected:
         raise ModelError(f"scenario keys must equal {sorted(expected)}")
-    if raw["authority"] != "SYNTHETIC_SCENARIO":
-        raise ModelError("only SYNTHETIC_SCENARIO inputs are accepted by this checked-in model")
+    authority = raw["authority"]
+    if authority not in AUTHORITIES:
+        raise ModelError(f"authority must be one of {sorted(AUTHORITIES)}")
+    evidence_ref = raw["evidence_ref"]
+    if not isinstance(evidence_ref, str) or not evidence_ref.strip() or len(evidence_ref) > 240:
+        raise ModelError("evidence_ref must be a non-empty string <= 240 characters")
+    evidence_ref = evidence_ref.strip()
+    if authority == "SYNTHETIC_SCENARIO" and not evidence_ref.startswith("synthetic:"):
+        raise ModelError("synthetic scenarios require a synthetic: evidence_ref")
+    if authority != "SYNTHETIC_SCENARIO" and evidence_ref.startswith("synthetic:"):
+        raise ModelError("non-synthetic authority cannot use a synthetic: evidence_ref")
     if not isinstance(raw["name"], str) or not raw["name"].strip():
         raise ModelError("name must be a non-empty string")
     components = raw["components"]
@@ -157,6 +172,8 @@ def parse_scenario(raw: dict[str, Any]) -> Scenario:
         raise ModelError("component names must be unique")
     return Scenario(
         name=raw["name"].strip(),
+        authority=authority,
+        evidence_ref=evidence_ref,
         power_kw=_decimal(raw["power_kw"], "power_kw", positive=True),
         energy_kwh=_decimal(raw["energy_kwh"], "energy_kwh", positive=True),
         components=parsed,
@@ -169,11 +186,23 @@ def parse_scenario(raw: dict[str, Any]) -> Scenario:
 def compare(baseline: Scenario, candidate: Scenario) -> dict[str, Any]:
     if baseline.power_kw != candidate.power_kw or baseline.energy_kwh != candidate.energy_kwh:
         raise ModelError("baseline and candidate must represent the same power/energy rating")
+    if baseline.authority != candidate.authority:
+        raise ModelError("baseline and candidate must use the same evidence authority")
     if baseline.conversion_cost == ZERO:
         raise ModelError("baseline conversion cost must be > 0")
     cost_delta = candidate.conversion_cost - baseline.conversion_cost
     cost_reduction_pct = -cost_delta / baseline.conversion_cost * HUNDRED
     single_source_delta = candidate.single_source_value_pct - baseline.single_source_value_pct
+    if baseline.authority == "SYNTHETIC_SCENARIO":
+        boundary = (
+            "Synthetic scenario only. Values are not supplier quotes, measured performance, DOE scores, "
+            "or a claim that the candidate savings have been achieved."
+        )
+    else:
+        boundary = (
+            f"Evidence class {baseline.authority} is caller-labeled and bound to the returned evidence_ref fields; "
+            "the model does not authenticate the referenced evidence. Human evidence review remains required."
+        )
     return {
         "baseline": baseline.metrics(),
         "candidate": candidate.metrics(),
@@ -185,10 +214,7 @@ def compare(baseline: Scenario, candidate: Scenario) -> dict[str, Any]:
             "bespoke_sku_count": candidate.bespoke_sku_count - baseline.bespoke_sku_count,
             "assembly_minutes": candidate.assembly_minutes - baseline.assembly_minutes,
         },
-        "truth_boundary": (
-            "Synthetic scenario only. Values are not supplier quotes, measured performance, DOE scores, "
-            "or a claim that the candidate savings have been achieved."
-        ),
+        "truth_boundary": boundary,
     }
 
 

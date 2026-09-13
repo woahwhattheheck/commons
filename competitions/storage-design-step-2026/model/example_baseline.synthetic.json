@@ -1,6 +1,7 @@
 {
   "name": "illustrative_conventional_stack",
   "authority": "SYNTHETIC_SCENARIO",
+  "evidence_ref": "synthetic:baseline-v1",
   "power_kw": "10",
   "energy_kwh": "100",
   "components": [
