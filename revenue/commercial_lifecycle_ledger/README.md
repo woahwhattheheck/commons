@@ -63,6 +63,8 @@ The receipt exposes gross/net evidence totals. It does **not** convert those tot
 
 Event IDs are idempotency keys. An identical duplicate event is safely collapsed even when a retry appears after newer unique evidence; a conflicting reuse of the same event ID fails closed. Chronology is enforced across the first-seen unique events after exact duplicate collapse.
 
+`evidence_sha256` is also a single-use proof identity across distinct unique events. After exact duplicate retries are collapsed, a second event ID cannot reuse an evidence digest already committed to another lifecycle fact. This prevents one payment receipt, buyer acceptance artifact, finance record, or other proof from being relabeled into multiple ledger facts. If one underlying document legitimately supports more than one semantic event, the upstream verifier must issue separate event-specific evidence records whose digests bind the intended role/subject/amount as applicable.
+
 The output binds:
 
 - normalized-input SHA-256;
@@ -86,14 +88,17 @@ From repository root:
 python -m unittest -v revenue.commercial_lifecycle_ledger.test_lifecycle
 python -m unittest -v revenue.commercial_lifecycle_ledger.test_lifecycle_financial_edges
 python -m unittest -v revenue.commercial_lifecycle_ledger.test_ingestion_hardening
+python -m unittest -v revenue.commercial_lifecycle_ledger.test_evidence_identity
 python -O -m unittest -v revenue.commercial_lifecycle_ledger.test_lifecycle
 python -O -m unittest -v revenue.commercial_lifecycle_ledger.test_lifecycle_financial_edges
 python -O -m unittest -v revenue.commercial_lifecycle_ledger.test_ingestion_hardening
+python -O -m unittest -v revenue.commercial_lifecycle_ledger.test_evidence_identity
 python -m py_compile \
   revenue/commercial_lifecycle_ledger/lifecycle.py \
   revenue/commercial_lifecycle_ledger/test_lifecycle.py \
   revenue/commercial_lifecycle_ledger/test_lifecycle_financial_edges.py \
-  revenue/commercial_lifecycle_ledger/test_ingestion_hardening.py
+  revenue/commercial_lifecycle_ledger/test_ingestion_hardening.py \
+  revenue/commercial_lifecycle_ledger/test_evidence_identity.py
 ```
 
-The hostile suites cover lifecycle skips/repeats, cross-deal replay, wrong authority, future/out-of-order unique events, delayed idempotent retries, canonical timestamp aliases, offer expiry, exact funding binding, legitimate prepayment, money coercion, overpayment, premature recognition, refund-before-finance-reversal handling, refund/reversal reference integrity, duplicate IDs, schema drift, duplicate JSON keys, non-finite JSON, receipt tampering, and trusted-time replay.
+The hostile suites cover lifecycle skips/repeats, cross-deal replay, wrong authority, future/out-of-order unique events, delayed idempotent retries, canonical timestamp aliases, offer expiry, exact funding binding, legitimate prepayment, money coercion, overpayment, premature recognition, refund-before-finance-reversal handling, refund/reversal reference integrity, duplicate IDs, cross-event evidence-digest replay, schema drift, duplicate JSON keys, non-finite JSON, receipt tampering, and trusted-time replay.
