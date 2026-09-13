@@ -1,5 +1,7 @@
 import hashlib
 import json
+import math
+import os
 import subprocess
 import sys
 import tempfile
@@ -147,6 +149,8 @@ class PlanTests(unittest.TestCase):
             a.validate_source_schema("cbp", ["GEOID", "cbp_estab", "coverage_gap_score"])
 
     def test_sample_may_be_submission_shaped_but_only_geoid_is_required(self):
+        # SampleSubmission is explicitly the authoritative tract universe. Its score
+        # placeholder is ignored, not treated as a scored-data source.
         a.validate_source_schema("sample", ["GEOID", "coverage_gap_score"])
 
 
@@ -154,6 +158,7 @@ class OutputGuardTests(unittest.TestCase):
     def rows(self, region="northern-ca"):
         out = []
         count = a.REGIONS[region]
+        # 11 digit synthetic GEOIDs, lexicographically ordered.
         for i in range(count):
             out.append((f"04{i:09d}", *([float(i % 7)] * 12)))
         return out
@@ -222,6 +227,8 @@ class CliTests(unittest.TestCase):
         self.assertNotIn("coverage-gap", payload["sql"].lower())
 
     def test_run_without_duckdb_fails_with_pin(self):
+        # This assertion adapts to developer machines that already have DuckDB:
+        # only test the lazy-import diagnostic when the dependency is absent.
         try:
             import duckdb  # noqa: F401
         except ImportError:
