@@ -1,0 +1,24 @@
+{
+  "schema": "bphc.vendor_pool.requirements/v1",
+  "hard_gates": [
+    "organization identity and mission supplied",
+    "at least one owner-supported prior engagement in public health, nonprofit, or government-funded work",
+    "two distinct professional references from similar engagements",
+    "team and staffing supplied",
+    "owner-approved pricing supplied",
+    "DEI approach supplied",
+    "at least one selected track",
+    "every selected track question answered",
+    "page plan stays within the RFP limits",
+    "source ambiguity about four enumerated tracks versus 'all three' instruction reviewed",
+    "living-wage obligation reviewed",
+    "SAM exclusion requirement reviewed",
+    "source snapshot is fresh",
+    "proposal deadline has not passed"
+  ],
+  "preferences_not_hard_gates": [
+    "Boston community knowledge",
+    "online portal or electronic request tracking"
+  ],
+  "submission_boundary": "This package can only reach READY_FOR_OWNER_SUBMISSION_REVIEW. It cannot send email, certify eligibility, commit pricing, nominate references externally, accept a contract, or claim an award or revenue."
+}
