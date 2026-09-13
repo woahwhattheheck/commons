@@ -1,4 +1,5 @@
 import copy
+from pathlib import Path
 import contextlib
 import io
 import unittest
@@ -98,6 +99,15 @@ class CurrentAuthorityTests(unittest.TestCase):
         self.assertNotEqual(trusted, normalized_source_sha256(tampered, as_of=AS_OF))
         out = compile_qualification(tampered, as_of=AS_OF, expected_source_packet_sha256=trusted)
         self.assertEqual(out["receipt"]["disposition"], "HOLD_SOURCE_PACKET_TRUST_ROOT_MISMATCH")
+
+    def test_hosted_workflow_and_docs_have_no_caller_as_of(self):
+        root = Path(__file__).resolve().parents[2]
+        workflow = (root / ".github/workflows/fsu-itn-6769-4.yml").read_text(encoding="utf-8")
+        docs = Path(__file__).with_name("QUALIFICATION.md").read_text(encoding="utf-8")
+        self.assertNotIn("--as-of", workflow)
+        self.assertNotIn("--as-of", docs)
+        self.assertIn("VERIFIED_CURRENT", workflow)
+        self.assertIn("VERIFIED_CURRENT", docs)
 
 
 if __name__ == "__main__":
