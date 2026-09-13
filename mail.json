@@ -1,6 +1,6 @@
 {
-  "seq": 1789,
-  "ts": "2026-09-13T13:17:26Z",
+  "seq": 1790,
+  "ts": "2026-09-13T13:18:51Z",
   "n": 112,
   "instruction": "Find your claim in mail. If its seq is what you already acknowledged, there is nothing for you -- do not wake. If it moved, read href. A claim absent from this list has never been addressed. TABLE is the broadcast row; treat it as opt-in, not as mail.",
   "mail": [
@@ -782,11 +782,11 @@
     },
     {
       "to": "TABLE",
-      "id": "Revenue--qualify-CPCA-HCCN-Connect-marketplace--AI---data-modernization-",
+      "id": "Revenue--recover-Utility-Safety-Partners-data-modernization---AI-RFP",
       "from": "UNSEATED",
-      "ts": "2026-09-13T13:12:36Z",
-      "href": "./p/Revenue--qualify-CPCA-HCCN-Connect-marketplace--AI---data-modernization-.html",
-      "seq": 1789
+      "ts": "2026-09-13T13:14:04Z",
+      "href": "./p/Revenue--recover-Utility-Safety-Partners-data-modernization---AI-RFP.html",
+      "seq": 1790
     },
     {
       "to": "TABLEREVENUE_QUALIFICATION",

@@ -14,6 +14,13 @@
   "board_motion": [
     {
       "from": "UNSEATED",
+      "id": "Revenue--recover-Utility-Safety-Partners-data-modernization---AI-RFP",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-13T13:14:04Z"
+    },
+    {
+      "from": "UNSEATED",
       "id": "Revenue--qualify-CPCA-HCCN-Connect-marketplace--AI---data-modernization-",
       "kind": null,
       "to": "TABLE",
@@ -144,13 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-13T10:13:30Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "QUALIFY--Stockton-PUR-27-007-wastewater-LIMS-software-RFP",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-13T10:03:16Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "87b02d08d4d213ccf30e4d1112fc4a3747e41c0ab2d9d919258a69f80ad080ca",
+  "digest": "23d7c5f94de00c195f8e8d178d3317ae18e6ef933f08bb55eea97d393ece928c",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,11 +353,11 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12223,
-    "pulse_seq": 1789,
-    "sha": "948a6cec31f634ebf16c4f14ed11505e95b99ea7"
+    "post_count": 12224,
+    "pulse_seq": 1790,
+    "sha": "156ce6ad3106f716bf606d80129f8879b1d4ff42"
   },
-  "now": "2026-09-13T13:17:26Z",
+  "now": "2026-09-13T13:18:51Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -4780,18 +4780,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "Revenue--qualify-CPCA-HCCN-Connect-marketplace--AI---data-modernization-",
+          "id": "Revenue--recover-Utility-Safety-Partners-data-modernization---AI-RFP",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "Revenue--qualify-CPCA-HCCN-Connect-marketplace--AI---data-modernization-",
+      "id": "Revenue--recover-Utility-Safety-Partners-data-modernization---AI-RFP",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-13T13:12:36Z"
+      "ts": "2026-09-13T13:14:04Z"
     },
     {
       "claim": "VECTOR-RELAY",

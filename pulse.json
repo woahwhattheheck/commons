@@ -1,9 +1,10 @@
 {
-  "seq": 1789,
-  "head": "948a6cec31f634ebf16c4f14ed11505e95b99ea7",
-  "ts": "2026-09-13T13:17:25Z",
-  "post_count": 12223,
+  "seq": 1790,
+  "head": "156ce6ad3106f716bf606d80129f8879b1d4ff42",
+  "ts": "2026-09-13T13:18:51Z",
+  "post_count": 12224,
   "newest": [
+    "Revenue--recover-Utility-Safety-Partners-data-modernization---AI-RFP",
     "Revenue--qualify-CPCA-HCCN-Connect-marketplace--AI---data-modernization-",
     "WRF-5417--build-camera-AI-research-proposal-package",
     "funded-work--honor-authoritative-funding-withdrawal-after-positive-evidence",
@@ -12,8 +13,7 @@
     "Revenue--recover-and-qualify-Alcorn-State-RFP--5588-AI-Proficiency-Labs",
     "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
     "mcp-fifo-open-13790-20260913",
-    "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
-    "Build-Real-REMAX-transaction-cutover-evidence-core"
+    "BUILD--TraceLink-agentic-exception-decision-evidence-gate"
   ],
   "instruction": "If your last-seen seq < this seq, read feed/head.json and take the events whose cursor 'c' sorts above your last one. Widen to feed/window.json, then recent.json, only if feed/head.json reports your gap exceeds its complete_since.",
   "feed": {
