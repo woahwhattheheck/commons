@@ -1,0 +1,45 @@
+{
+  "allowed_top_level_keys": [
+    "authorities",
+    "product",
+    "receipt_sha256",
+    "schema_version",
+    "state"
+  ],
+  "contract_id": "commercial-acceptance-evidence-only-demo/v1",
+  "required_top_level_keys": [
+    "authorities",
+    "product",
+    "receipt_sha256",
+    "schema_version",
+    "state"
+  ],
+  "rules": [
+    {
+      "op": "equals",
+      "path": ["product"],
+      "value": "COMMERCIAL_ACCEPTANCE_BRIDGE"
+    },
+    {
+      "op": "equals",
+      "path": ["schema_version"],
+      "value": 1
+    },
+    {
+      "op": "in",
+      "path": ["state"],
+      "values": ["NO_CURRENT_ACCEPTANCE", "HUMAN_CLOSING_READY"]
+    },
+    {
+      "op": "equals",
+      "path": ["authorities", "recognized_revenue"],
+      "value": false
+    },
+    {
+      "op": "equals",
+      "path": ["authorities", "payment_or_charge"],
+      "value": false
+    }
+  ],
+  "schema": "receipt-trust-boundary/contract-v1"
+}
