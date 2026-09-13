@@ -26,7 +26,7 @@ Judgment, diagnosis, design, review, and teaching sold independently of a softwa
 
 Offerable expertise includes agent architecture review, model/GGUF diagnosis, failure and recovery analysis, computer-use design, reproducibility review, evidence architecture, carrier/resource routing, and Muhlnickel/Titan technical consultation. Expertise can be delivered as an advisory hour, written assessment, design review, or embedded engagement.
 
-Next expansion: expose expertise as explicit catalog entries instead of hiding it inside implementation work.
+Buyer surface: [`expertise.html`](../expertise.html) exposes the eight named advisory lanes, while the canonical evidence-bound compiler/verifier remains [`revenue/expertise_catalog/`](./expertise_catalog/). The existing source-backed White Box hour stays `$250/hour` through its canonical commerce route; the other seven lanes remain quote-only until buyer-specific price and terms are recorded. The buyer surface and compiler do not themselves claim a buyer, acceptance, delivery, settlement, payout, or cash.
 
 ## Data
 
