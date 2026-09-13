@@ -23,8 +23,19 @@ def evaluate_candidate(candidate: Mapping[str, Any]) -> dict[str, Any]:
     portfolio = build_portfolio()
     normalized = _validate_candidate(candidate, portfolio)
     events_by_scenario: dict[str, list[dict[str, Any]]] = {row["scenario_id"]: [] for row in portfolio["scenarios"]}
+    effect_scenarios: dict[str, set[str]] = {}
     for event in normalized["events"]:
         events_by_scenario[event["scenario_id"]].append(event)
+        effect_id = event["effect_id"]
+        if effect_id is not None:
+            effect_scenarios.setdefault(effect_id, set()).add(event["scenario_id"])
+
+    cross_scenario_effect_ids = sorted(
+        effect_id
+        for effect_id, scenario_ids in effect_scenarios.items()
+        if len(scenario_ids) > 1
+    )
+    cross_scenario_effect_collision_count = len(cross_scenario_effect_ids)
 
     rows: list[dict[str, Any]] = []
     alert_expected_count = 0
@@ -108,7 +119,10 @@ def evaluate_candidate(candidate: Mapping[str, Any]) -> dict[str, Any]:
         "alert_detection_rate_1_0": detection_rate == 1.0,
         "false_urgent_alert_rate_0_0": false_urgent_rate == 0.0,
         "timeliness_rate_1_0": timeliness_rate == 1.0,
-        "duplicate_effect_count_0": duplicate_effect_count == 0,
+        "duplicate_effect_count_0": (
+            duplicate_effect_count == 0
+            and cross_scenario_effect_collision_count == 0
+        ),
         "lineage_pass_rate_1_0": lineage_rate == 1.0,
         "recovery_rate_1_0": recovery_rate == 1.0,
     }
@@ -145,9 +159,16 @@ def evaluate_candidate(candidate: Mapping[str, Any]) -> dict[str, Any]:
         },
         {
             "claim_id": "synthetic.exactly-once-work-intent",
-            "test": "retries/replays never mint a second distinct effect/work-intent ID for one actionable scenario",
+            "test": (
+                "each actionable scenario has exactly one distinct effect/work-intent ID; "
+                "retries may reuse that ID only within the same scenario"
+            ),
             "passed": gates["duplicate_effect_count_0"],
-            "evidence": {"duplicate_effect_count": duplicate_effect_count},
+            "evidence": {
+                "duplicate_effect_count": duplicate_effect_count,
+                "cross_scenario_effect_collision_count": cross_scenario_effect_collision_count,
+                "cross_scenario_effect_ids": cross_scenario_effect_ids,
+            },
         },
         {
             "claim_id": "synthetic.lineage",
@@ -176,6 +197,8 @@ def evaluate_candidate(candidate: Mapping[str, Any]) -> dict[str, Any]:
         "false_urgent_alert_rate": false_urgent_rate,
         "timeliness_pass_rate": timeliness_rate,
         "duplicate_effect_count": duplicate_effect_count,
+        "cross_scenario_effect_collision_count": cross_scenario_effect_collision_count,
+        "cross_scenario_effect_ids": cross_scenario_effect_ids,
         "lineage_pass_rate": lineage_rate,
         "recovery_pass_rate": recovery_rate,
         "gates": gates,
