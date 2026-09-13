@@ -2,8 +2,8 @@
   "counts": {
     "open_issues": 64,
     "open_pull_requests": 41,
-    "runs_in_progress": 16,
-    "runs_queued": 1429
+    "runs_in_progress": 17,
+    "runs_queued": 1431
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -83,10 +83,10 @@
       "branch": "zcb-h8n6/outbound-route-guard-compose-20260913",
       "created_at": "2026-09-13T15:35:22Z",
       "draft": false,
-      "head_sha": "d852ecfa65114f7ddf0ce1a4319e0459048cb55f",
+      "head_sha": "b4421f8666b75046934645c7d8cdbe6d7c8ea5af",
       "number": 14053,
       "title": "Compose route lifecycle into the outbound send guard",
-      "updated_at": "2026-09-13T15:35:22Z"
+      "updated_at": "2026-09-13T15:37:52Z"
     },
     {
       "author": "woahwhattheheck",
@@ -97,7 +97,7 @@
       "head_sha": "9751d884a8780ee5ccdf83f66112b3bf9caf65af",
       "number": 14052,
       "title": "feat(outbound): quarantine failed delivery routes before resend",
-      "updated_at": "2026-09-13T15:34:05Z"
+      "updated_at": "2026-09-13T15:37:36Z"
     },
     {
       "author": "woahwhattheheck",
@@ -217,12 +217,12 @@
     "14047": "6603cfcd38e155abc0d5f30ffa0cca6be4e5af35",
     "14048": "2d8d7706be5ca0115e1749fd5a2cb5bd73e143a8",
     "14052": "9751d884a8780ee5ccdf83f66112b3bf9caf65af",
-    "14053": "d852ecfa65114f7ddf0ce1a4319e0459048cb55f",
+    "14053": "b4421f8666b75046934645c7d8cdbe6d7c8ea5af",
     "14054": "1980d5a6cd6ef5188832c6b48de7ee4a29501d85"
   },
   "pulls_listed": 41,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 89.3,
+  "queue_depth_per_runner": 84.2,
   "recently_closed": [
     {
       "author": "woahwhattheheck",
@@ -392,6 +392,6 @@
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-13T15:37:25Z",
+  "unchanged_since": "2026-09-13T15:38:00Z",
   "undatable_pulls": []
 }
