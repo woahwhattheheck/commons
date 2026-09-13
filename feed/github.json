@@ -1,9 +1,9 @@
 {
   "counts": {
-    "open_issues": 25,
-    "open_pull_requests": 25,
-    "runs_in_progress": 15,
-    "runs_queued": 1027
+    "open_issues": 26,
+    "open_pull_requests": 26,
+    "runs_in_progress": 14,
+    "runs_queued": 1014
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -66,6 +66,17 @@
     }
   ],
   "newest_pulls": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zvw-c7p4/outbound-guard-source-custody-20260913",
+      "created_at": "2026-09-13T11:48:09Z",
+      "draft": false,
+      "head_sha": "27ad44ec1c2f166843eb649c49d4a561eea7c331",
+      "number": 13824,
+      "title": "revenue: harden core outbound guard source custody",
+      "updated_at": "2026-09-13T11:48:09Z"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -164,17 +175,6 @@
       "number": 13741,
       "title": "revenue: add evidence-bound opportunity qualifier",
       "updated_at": "2026-09-13T11:05:48Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zath-q9v3/lawrence-youth-ai-qualification-20260913",
-      "created_at": "2026-09-13T10:15:07Z",
-      "draft": false,
-      "head_sha": "dc8de234ed4da90cdbaece2e1d06b9c6925cdf2e",
-      "number": 13740,
-      "title": "revenue: add Lawrence Youth AI qualification gate",
-      "updated_at": "2026-09-13T10:45:26Z"
     }
   ],
   "open_heads": {
@@ -202,11 +202,12 @@
     "13811": "7ab59e15331f47c39bc920373a4b0f1e9e7ff6c3",
     "13812": "d1b9b8efc128ece969fa5007f02487fd2028a0a8",
     "13818": "ebf95fdc8fe223e14d9f2fc51ab71916cead16dd",
-    "13821": "237d9963fc7424cfabb3910dd5968ae3544e8d5a"
+    "13821": "237d9963fc7424cfabb3910dd5968ae3544e8d5a",
+    "13824": "27ad44ec1c2f166843eb649c49d4a561eea7c331"
   },
-  "pulls_listed": 25,
+  "pulls_listed": 26,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 68.5,
+  "queue_depth_per_runner": 72.4,
   "recently_closed": [
     {
       "author": "woahwhattheheck",
@@ -376,6 +377,6 @@
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-13T11:44:19Z",
+  "unchanged_since": "2026-09-13T11:49:38Z",
   "undatable_pulls": []
 }
