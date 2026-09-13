@@ -1,6 +1,7 @@
 {
   "buyer": "Florida State University / RFxPremier",
   "closeAt": "2026-10-21T19:00:00Z",
+  "deadlineSourceId": "fsu-public-portal",
   "mandatoryGates": [],
   "notes": "Public notice/index only. Full Jaggaer event redirected to authenticated supplier login; no login or registration was attempted.",
   "openAt": "2026-09-10T04:00:00Z",
