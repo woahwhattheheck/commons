@@ -6,7 +6,7 @@ import unittest
 from pathlib import Path
 
 from . import build_scope_bridge, create_operator_verification, verify_scope_bridge
-from .fixtures import FOUR, NOW, OWNER_KEY, THREE, TWO, VERIFY_KEY, offer, schedule
+from .fixtures import FOUR, NOW, OWNER_KEY, THREE, TWO, VERIFY_KEY, offer, scope_acceptance, service_window
 
 
 class LandedRailsIntegration(unittest.TestCase):
@@ -26,10 +26,11 @@ class LandedRailsIntegration(unittest.TestCase):
         )
         root = Path(__file__).resolve().parents[2]
         catalog = json.loads((root / "revenue" / "outcome_commerce" / "catalog.json").read_text())
+        window = service_window(); accepted_scope = scope_acceptance(captured, catalog, window)
         receipt = create_operator_verification(
-            captured, OWNER_KEY, VERIFY_KEY, verifier_id="operator-001", key_id="acceptance-key-v1",
-            verified_at="2026-09-13T10:06:00Z", public_ref="p/accepted-offer.md",
-            schedule_acceptance=schedule(), trusted_now=NOW,
+            captured, OWNER_KEY, VERIFY_KEY, verifier_id="operator-001", key_id="acceptance-key-v2",
+            verified_at="2026-09-13T10:06:00Z", public_ref="p/accepted-scope-terms.md",
+            catalog=catalog, service_window=window, scope_terms_acceptance=accepted_scope, trusted_now=NOW,
         )
         out = build_scope_bridge(captured, receipt, OWNER_KEY, VERIFY_KEY, catalog=catalog, trusted_now=NOW)
         self.assertEqual(validate_agreement(copy.deepcopy(out["agreement"]), copy.deepcopy(catalog)), out["agreement"])
