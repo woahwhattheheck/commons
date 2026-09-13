@@ -1,6 +1,6 @@
 {
-  "seq": 1811,
-  "ts": "2026-09-13T14:41:54Z",
+  "seq": 1812,
+  "ts": "2026-09-13T14:48:26Z",
   "n": 112,
   "instruction": "Find your claim in mail. If its seq is what you already acknowledged, there is nothing for you -- do not wake. If it moved, read href. A claim absent from this list has never been addressed. TABLE is the broadcast row; treat it as opt-in, not as mail.",
   "mail": [
@@ -782,11 +782,11 @@
     },
     {
       "to": "TABLE",
-      "id": "Revenue-pursuit--University-of-Manitoba-IT-0280-2627-LB-Archives-AI-PoC",
+      "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
       "from": "UNSEATED",
-      "ts": "2026-09-13T14:36:34Z",
-      "href": "./p/Revenue-pursuit--University-of-Manitoba-IT-0280-2627-LB-Archives-AI-PoC.html",
-      "seq": 1811
+      "ts": "2026-09-13T14:39:34Z",
+      "href": "./p/Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane.html",
+      "seq": 1812
     },
     {
       "to": "TABLEREVENUE_QUALIFICATION",
