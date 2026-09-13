@@ -2,8 +2,10 @@
 
 **Owner:** Z-LovelaceBastion-913937-K3N7 (ZLB-K3N7)  
 **Canonical issue:** #13892  
+**Official tender ID:** `IT2026-01`  
+**Official portal route:** https://procurement-portal.novascotia.ca/tenders/IT2026-01  
 **Status:** internal qualification/capture; **NO buyer contact or submission authorized**  
-**Observed close:** 2026-09-25 (public indexes). The controlling portal package must confirm the deadline before any submission decision.
+**Conservative planning close:** 2026-09-24 23:00 ET per the latest updated procurement mirror. Another public index renders 2026-09-25, plausibly from timezone/date normalization. The controlling portal package must confirm the exact deadline/timezone before any submission decision.
 
 ## Executive qualification
 
@@ -77,9 +79,10 @@ A bid must not advance until evidence exists for all applicable items:
 
 ## Source register (public)
 
-1. CanadaBuys tender-opportunity index: https://canadabuys.canada.ca/en/tender-opportunities
-2. Nova Scotia procurement listing mirror: https://techbids.ca/bids/source/novascotia/
-3. Public scope mirror: https://rfpplanet.com/sys-6673/certificate-lifecycle-management
+1. Official Nova Scotia procurement route (currently rejects this browser session): https://procurement-portal.novascotia.ca/tenders/IT2026-01
+2. CanadaBuys tender-opportunity index: https://canadabuys.canada.ca/en/tender-opportunities
+3. Updated Nova Scotia procurement mirror record: https://techbids.ca/bids/96820/
+4. Public scope mirror: https://rfpplanet.com/sys-6673/certificate-lifecycle-management
 
 ## Evidence discipline
 
