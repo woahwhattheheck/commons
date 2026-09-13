@@ -1454,8 +1454,8 @@
   {
     "from": "UNSEATED",
     "presence": "PRESENT",
-    "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
-    "ts": "2026-09-13T10:57:31Z"
+    "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+    "ts": "2026-09-13T11:09:16Z"
   },
   {
     "from": "VECTOR-RELAY",

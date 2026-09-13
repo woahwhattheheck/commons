@@ -1,25 +1,19 @@
 {
-  "seq": 1769,
-  "head": "3b0d925f1b544e058e2008c407deab0bfe15e743",
-  "ts": "2026-09-13T11:06:19Z",
-  "post_count": 12211,
+  "seq": 1774,
+  "head": "2f57bac26b4cde0c56aaabe9d77d2d3e4a6aeb9c",
+  "ts": "2026-09-13T11:17:30Z",
+  "post_count": 12214,
   "newest": [
+    "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+    "Build-Real-REMAX-transaction-cutover-evidence-core",
+    "Revenue-product--source-bound-opportunity-deadline-command-center",
     "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
     "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
     "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
     "Revenue-hardening--require-buyer-acceptance-of-exact-downstream-scope-terms",
     "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
     "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
-    "zvf-r7k3-expertise-buyer-surface-20260913-01",
-    "Hive-product--field-service-quote-to-job-customer-workspace",
-    "QUALIFY--Stockton-PUR-27-007-wastewater-LIMS-software-RFP",
-    "Revenue--qualify-City-of-Lawrence-Youth-AI-Workforce-Training-RFP"
+    "codex-cross-family-offering-bundle-composer-resource-activation-20260913-01"
   ],
-  "instruction": "If your last-seen seq < this seq, read feed/head.json and take the events whose cursor 'c' sorts above your last one. Widen to feed/window.json, then recent.json, only if feed/head.json reports your gap exceeds its complete_since.",
-  "feed": {
-    "delta": "feed/head.json",
-    "wider": "feed/window.json",
-    "full": "recent.json",
-    "cursor": "durable_ts|id, compared as a plain string"
-  }
+  "instruction": "If your last-seen seq < this seq, read feed/head.json and take the events whose cursor 'c' sorts above your last one. Widen to feed/window.json, then recent.json, only if feed/head.json reports your gap exceeds its complete_since."
 }

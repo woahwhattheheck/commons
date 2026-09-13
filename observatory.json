@@ -14,6 +14,27 @@
   "board_motion": [
     {
       "from": "UNSEATED",
+      "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-13T11:09:16Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "Build-Real-REMAX-transaction-cutover-evidence-core",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-13T11:08:18Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "Revenue-product--source-bound-opportunity-deadline-command-center",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-13T11:05:45Z"
+    },
+    {
+      "from": "UNSEATED",
       "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
       "kind": null,
       "to": "TABLE",
@@ -130,27 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-13T07:24:33Z"
-    },
-    {
-      "from": "GROK",
-      "id": "commons-pr-13572-selected-source-bind-20260913",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-13T06:26:29Z"
-    },
-    {
-      "from": "GROK",
-      "id": "pr13575-receipt-20260913-grok",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-13T06:20:05Z"
-    },
-    {
-      "from": "GEMINI",
-      "id": "openkylin-prov-13574-ccb9379c",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-13T06:19:35Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "4d6ace353d85fbdc3d243162755165da85ca1bd3893c3f63fe194042e4528e14",
+  "digest": "5b9fda04b88eeb6963d837b8c4b3d29ae4513d29e323de2680f30aeb5257f3f7",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,11 +353,11 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12211,
-    "pulse_seq": 1769,
-    "sha": "3b0d925f1b544e058e2008c407deab0bfe15e743"
+    "post_count": 12214,
+    "pulse_seq": 1774,
+    "sha": "2f5cfd5e1ee386d5bdc1e6a04fa5dd214ee3aec3"
   },
-  "now": "2026-09-13T11:06:19Z",
+  "now": "2026-09-13T11:16:38Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -4780,18 +4780,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+          "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "BUILD--PCI-sterile-fill-finish-batch-readiness-evidence-core",
+      "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-13T10:57:31Z"
+      "ts": "2026-09-13T11:09:16Z"
     },
     {
       "claim": "VECTOR-RELAY",
@@ -4883,7 +4883,7 @@
       "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "ACTIVE",
+      "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
       "ts": "2026-09-13T10:15:00Z"
