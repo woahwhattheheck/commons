@@ -1,0 +1,25 @@
+{
+  "package": "commercial_acceptance_bridge",
+  "schema_version": 1,
+  "status": "NORMALIZED_HUMAN_REVIEWED_EVIDENCE_ONLY",
+  "acceptance_contract": {
+    "offer_series": 60,
+    "offer_versions": 65,
+    "input_records": 125,
+    "unique_events": 120,
+    "exact_retry_replays": 5,
+    "forced_quarantines": 10
+  },
+  "commands": [
+    "python -m unittest revenue.commercial_acceptance_bridge.test_gate -v",
+    "python -O -m unittest revenue.commercial_acceptance_bridge.test_gate -v",
+    "python -m revenue.commercial_acceptance_bridge.acceptance"
+  ],
+  "raw_message_parsing": false,
+  "signer_or_legal_authority": false,
+  "contract_creation_or_execution": false,
+  "invoice_or_checkout_creation": false,
+  "payment_or_charge": false,
+  "fulfillment_start": false,
+  "recognized_revenue": false
+}
