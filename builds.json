@@ -769,22 +769,6 @@
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
   {
-   "number": 13862,
-   "author": "woahwhattheheck",
-   "title": "funded-work: resolve latest authoritative reward amount",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/13862",
-   "base_freshness": {
-    "base_sha": "ca5e1a075a7a7df1b3f6fd258a8fc9548bebc379",
-    "main_sha": "94766b107d4d3712ee0a9e338844d783f171a9f5",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
    "number": 13865,
    "author": "woahwhattheheck",
    "title": "feat: embed exact Git source capsules in context dispatch packets",
@@ -807,6 +791,22 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/13864",
    "base_freshness": {
     "base_sha": "5090647c10ba49e881ace047a402034146e0d5ea",
+    "main_sha": "94766b107d4d3712ee0a9e338844d783f171a9f5",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 13862,
+   "author": "woahwhattheheck",
+   "title": "funded-work: resolve latest authoritative reward amount",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/13862",
+   "base_freshness": {
+    "base_sha": "ca5e1a075a7a7df1b3f6fd258a8fc9548bebc379",
     "main_sha": "94766b107d4d3712ee0a9e338844d783f171a9f5",
     "ahead_by": null,
     "behind_by": null,
