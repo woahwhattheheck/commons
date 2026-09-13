@@ -4,8 +4,11 @@ from __future__ import annotations
 
 import argparse
 import contextlib
+import hashlib
+import hmac
 import json
 import math
+import secrets
 import sqlite3
 import time
 import uuid
@@ -15,6 +18,8 @@ from typing import Any, Callable
 from urllib.parse import parse_qs, urlsplit
 
 MAX_BODY = 256_000
+HOST_KEY_BYTES = 32
+HOST_KEY_MAX = 256
 
 
 class Problem(Exception):
@@ -41,6 +46,10 @@ def timestamp(value: Any, label: str) -> float:
     return float(value)
 
 
+def _host_digest(host_key: str) -> str:
+    return hashlib.sha256(host_key.encode("utf-8")).hexdigest()
+
+
 class Store:
     def __init__(self, database: str | Path, clock: Callable[[], float] = time.time):
         self.database, self.clock = str(database), clock
@@ -50,7 +59,7 @@ class Store:
                 CREATE TABLE IF NOT EXISTS events (
                     id TEXT PRIMARY KEY, title TEXT NOT NULL, room TEXT NOT NULL,
                     opens REAL NOT NULL, ends REAL NOT NULL, closed INTEGER NOT NULL DEFAULT 0,
-                    questions TEXT NOT NULL, created REAL NOT NULL);
+                    questions TEXT NOT NULL, created REAL NOT NULL, host_hash TEXT);
                 CREATE TABLE IF NOT EXISTS members (
                     id TEXT PRIMARY KEY, event TEXT NOT NULL REFERENCES events(id),
                     name TEXT NOT NULL, joined REAL NOT NULL, UNIQUE(id,event));
@@ -62,6 +71,9 @@ class Store:
                 CREATE INDEX IF NOT EXISTS members_event ON members(event);
                 CREATE INDEX IF NOT EXISTS answers_event ON answers(event);
             """)
+            columns = {row["name"] for row in db.execute("PRAGMA table_info(events)")}
+            if "host_hash" not in columns:
+                db.execute("ALTER TABLE events ADD COLUMN host_hash TEXT")
 
     @contextlib.contextmanager
     def connect(self):
@@ -110,10 +122,12 @@ class Store:
                               "correct": integer(item.get("correct"), "Correct index", 0, len(choices)-1),
                               "points": integer(item.get("points", 100), "Points", 1, 1000)})
         event_id = uuid.uuid4().hex
+        host_key = secrets.token_urlsafe(HOST_KEY_BYTES)
+        host_hash = _host_digest(host_key)
         with self.connect() as db:
-            db.execute("INSERT INTO events(id,title,room,opens,ends,questions,created) VALUES(?,?,?,?,?,?,?)",
-                       (event_id, title, room, opens, ends, json.dumps(questions), self.clock()))
-        return {"id": event_id}
+            db.execute("INSERT INTO events(id,title,room,opens,ends,questions,created,host_hash) VALUES(?,?,?,?,?,?,?,?)",
+                       (event_id, title, room, opens, ends, json.dumps(questions), self.clock(), host_hash))
+        return {"id": event_id, "host_key": host_key}
 
     def listing(self):
         with self.connect() as db:
@@ -122,7 +136,21 @@ class Store:
                               "FROM events e ORDER BY created DESC,id DESC").fetchall()
             return [{"id": e["id"], "title": e["title"], "room": e["room"],
                      "opens": e["opens"], "ends": e["ends"], "phase": self.phase(e, now),
-                     "players": e["players"]} for e in rows]
+                     "players": e["players"], "host_protected": bool(e["host_hash"])} for e in rows]
+
+    def verify_host(self, event_id, host_key):
+        with self.connect() as db:
+            event = self.event(db, event_id)
+            expected = event["host_hash"]
+        if expected is None:
+            return {"host": True, "legacy": True}
+        candidate = host_key if isinstance(host_key, str) else ""
+        if len(candidate) > HOST_KEY_MAX:
+            candidate = ""
+        digest = _host_digest(candidate)
+        if not hmac.compare_digest(expected, digest):
+            raise Problem(403, "Valid host capability required")
+        return {"host": True, "legacy": False}
 
     def join(self, event_id, payload):
         member_id = payload.get("member_id")
@@ -175,7 +203,7 @@ class Store:
 
     def state(self, event_id, member_id=None):
         with self.connect() as db:
-            db.execute("BEGIN")  # One snapshot for questions, answers and rankings.
+            db.execute("BEGIN")
             event = self.event(db, event_id)
             phase = self.phase(event, self.clock())
             finished = phase == "finished"
@@ -203,7 +231,7 @@ class Store:
             return {"id": event_id, "title": event["title"], "room": event["room"], "opens": event["opens"],
                     "ends": event["ends"], "server_time": self.clock(), "phase": phase,
                     "question_count": len(questions), "questions": visible, "member": member, "answers": answers,
-                    "players": len(rows), "leaderboard": board}
+                    "players": len(rows), "leaderboard": board, "host_protected": bool(event["host_hash"])}
 
 
 def make_handler(store: Store):
@@ -220,6 +248,7 @@ def make_handler(store: Store):
                 self.send_header("Content-Disposition", f'attachment; filename="{filename}"')
             self.send_header("Cache-Control", "no-store")
             self.send_header("X-Content-Type-Options", "nosniff")
+            self.send_header("Referrer-Policy", "no-referrer")
             self.end_headers()
             self.wfile.write(body)
 
@@ -248,6 +277,10 @@ def make_handler(store: Store):
                 if parts == ["api", "events"]:
                     return self.send(201 if method == "POST" else 200,
                                      store.create(payload) if method == "POST" else store.listing())
+                if len(parts) == 5 and parts[:2] == ["api", "events"] and parts[3:] == ["host", "verify"]:
+                    if method == "POST":
+                        return self.send(200, store.verify_host(parts[2], payload.get("host_key")))
+                    raise Problem(404, "Route not found")
                 if len(parts) in (3, 4) and parts[:2] == ["api", "events"]:
                     event_id = parts[2]
                     if method == "GET" and len(parts) == 3:
@@ -259,8 +292,6 @@ def make_handler(store: Store):
                         try:
                             content = export_bytes(store, event_id, format)
                         except ExportProblem as exc:
-                            # app.py may be __main__; the exporter's imported app
-                            # then has a distinct Problem class. Keep HTTP errors JSON.
                             raise Problem(exc.status, str(exc)) from exc
                         content_type = "text/csv" if format == "csv" else "application/json"
                         return self.send(200, content, content_type + "; charset=utf-8",
@@ -271,6 +302,7 @@ def make_handler(store: Store):
                         if parts[3] == "answers":
                             return self.send(200, store.answer(event_id, payload))
                         if parts[3] == "finish":
+                            store.verify_host(event_id, payload.get("host_key"))
                             return self.send(200, store.finish(event_id))
                 raise Problem(404, "Route not found")
             except Problem as exc:
