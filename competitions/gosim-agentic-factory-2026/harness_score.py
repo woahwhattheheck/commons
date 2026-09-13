@@ -12,35 +12,16 @@ SCHEMA = "gosim-agentic-factory-readiness/v1"
 POLICY_SCHEMA = "gosim-agentic-factory-score-policy/v1"
 REPORT_SCHEMA = "gosim-agentic-factory-readiness-report/v1"
 RUN_KEYS = {
-    "schema",
-    "task_id",
-    "trial_id",
-    "harness_revision",
-    "model_label",
-    "started_at",
-    "finished_at",
-    "input_tokens",
-    "output_tokens",
-    "cache_tokens",
-    "wall_clock_ms",
-    "tests_total",
-    "tests_passed",
-    "tests_failed",
-    "task_spec_sha256",
-    "artifact_manifest_sha256",
-    "trace_sha256",
+    "schema", "task_id", "trial_id", "harness_revision", "model_label",
+    "started_at", "finished_at", "input_tokens", "output_tokens", "cache_tokens",
+    "wall_clock_ms", "tests_total", "tests_passed", "tests_failed",
+    "task_spec_sha256", "artifact_manifest_sha256", "trace_sha256",
 }
 POLICY_KEYS = {
-    "schema",
-    "correctness_floor_micros",
-    "correctness_weight_micros",
-    "token_weight_micros",
-    "time_weight_micros",
-    "token_reference",
-    "time_reference_ms",
-    "max_correctness_drop_micros",
-    "max_token_regression_bps",
-    "max_time_regression_bps",
+    "schema", "correctness_floor_micros", "correctness_weight_micros",
+    "token_weight_micros", "time_weight_micros", "token_reference",
+    "time_reference_ms", "max_correctness_drop_micros",
+    "max_token_regression_bps", "max_time_regression_bps",
 }
 MAX_INT = (1 << 63) - 1
 ONE = 1_000_000
@@ -68,7 +49,9 @@ def load_json_bytes(data: bytes) -> Any:
         return json.loads(
             text,
             object_pairs_hook=_no_dupes,
-            parse_constant=lambda value: (_ for _ in ()).throw(ContractError(f"non-finite JSON number: {value}")),
+            parse_constant=lambda value: (_ for _ in ()).throw(
+                ContractError(f"non-finite JSON number: {value}")
+            ),
         )
     except json.JSONDecodeError as exc:
         raise ContractError("invalid JSON") from exc
@@ -82,11 +65,7 @@ def load_json(path: str | Path) -> Any:
 def canonical_bytes(value: Any) -> bytes:
     try:
         return json.dumps(
-            value,
-            sort_keys=True,
-            separators=(",", ":"),
-            ensure_ascii=False,
-            allow_nan=False,
+            value, sort_keys=True, separators=(",", ":"), ensure_ascii=False, allow_nan=False
         ).encode("utf-8")
     except (TypeError, ValueError) as exc:
         raise ContractError("value is not canonical JSON") from exc
@@ -123,7 +102,7 @@ def _hex64(value: Any, field: str) -> str:
     return value
 
 
-def _utc(value: Any, field: str) -> tuple[str, int]:
+def _utc_millis(value: Any, field: str) -> tuple[str, int]:
     if type(value) is not str or not value.endswith("Z"):
         raise ContractError(f"{field} must be RFC3339 UTC ending in Z")
     try:
@@ -132,10 +111,13 @@ def _utc(value: Any, field: str) -> tuple[str, int]:
         raise ContractError(f"{field} must be RFC3339 UTC") from exc
     if dt.tzinfo is None or dt.utcoffset() != timezone.utc.utcoffset(dt):
         raise ContractError(f"{field} must be UTC")
-    canonical = dt.isoformat(timespec="seconds").replace("+00:00", "Z")
+    if dt.microsecond % 1000:
+        raise ContractError(f"{field} must use millisecond precision")
+    canonical = dt.isoformat(timespec="milliseconds").replace("+00:00", "Z")
     if value != canonical:
-        raise ContractError(f"{field} must use canonical second-resolution UTC")
-    return value, int(dt.timestamp())
+        raise ContractError(f"{field} must use canonical millisecond UTC")
+    epoch_ms = int(dt.timestamp()) * 1000 + dt.microsecond // 1000
+    return value, epoch_ms
 
 
 def validate_run(raw: Any) -> dict[str, Any]:
@@ -148,15 +130,19 @@ def validate_run(raw: Any) -> dict[str, Any]:
     run["trial_id"] = _safe_text(raw["trial_id"], "trial_id")
     run["harness_revision"] = _safe_text(raw["harness_revision"], "harness_revision", maximum_bytes=128)
     run["model_label"] = _safe_text(raw["model_label"], "model_label", maximum_bytes=128)
-    started, started_ts = _utc(raw["started_at"], "started_at")
-    finished, finished_ts = _utc(raw["finished_at"], "finished_at")
-    if finished_ts < started_ts:
+    started, started_ms = _utc_millis(raw["started_at"], "started_at")
+    finished, finished_ms = _utc_millis(raw["finished_at"], "finished_at")
+    if finished_ms < started_ms:
         raise ContractError("finished_at precedes started_at")
-    run["started_at"] = started
-    run["finished_at"] = finished
-    for name in ("input_tokens", "output_tokens", "cache_tokens", "wall_clock_ms", "tests_total", "tests_passed", "tests_failed"):
+    run["started_at"], run["finished_at"] = started, finished
+    for name in (
+        "input_tokens", "output_tokens", "cache_tokens", "wall_clock_ms",
+        "tests_total", "tests_passed", "tests_failed",
+    ):
         minimum = 1 if name in ("wall_clock_ms", "tests_total") else 0
         run[name] = _strict_int(raw[name], name, minimum=minimum)
+    if finished_ms - started_ms != run["wall_clock_ms"]:
+        raise ContractError("wall_clock_ms must exactly equal finished_at - started_at")
     if run["tests_passed"] + run["tests_failed"] != run["tests_total"]:
         raise ContractError("tests_passed + tests_failed must equal tests_total")
     for name in ("task_spec_sha256", "artifact_manifest_sha256", "trace_sha256"):
@@ -172,20 +158,14 @@ def validate_policy(raw: Any) -> dict[str, Any]:
     policy = dict(raw)
     for name in POLICY_KEYS - {"schema"}:
         minimum = 1 if name in ("token_reference", "time_reference_ms") else 0
-        maximum = ONE if name in (
-            "correctness_floor_micros",
-            "correctness_weight_micros",
-            "token_weight_micros",
-            "time_weight_micros",
-            "max_correctness_drop_micros",
-        ) else MAX_INT
+        maximum = ONE if name in {
+            "correctness_floor_micros", "correctness_weight_micros",
+            "token_weight_micros", "time_weight_micros", "max_correctness_drop_micros",
+        } else MAX_INT
         policy[name] = _strict_int(raw[name], name, minimum=minimum, maximum=maximum)
-    if (
-        policy["correctness_weight_micros"]
-        + policy["token_weight_micros"]
-        + policy["time_weight_micros"]
-        != ONE
-    ):
+    if sum(policy[name] for name in (
+        "correctness_weight_micros", "token_weight_micros", "time_weight_micros"
+    )) != ONE:
         raise ContractError("score weights must sum to 1000000")
     if policy["max_token_regression_bps"] > 1_000_000 or policy["max_time_regression_bps"] > 1_000_000:
         raise ContractError("regression basis points are unreasonably large")
@@ -250,9 +230,7 @@ def _median_int(values: list[int]) -> int:
         raise ContractError("median requires data")
     ordered = sorted(values)
     mid = len(ordered) // 2
-    if len(ordered) % 2:
-        return ordered[mid]
-    return (ordered[mid - 1] + ordered[mid]) // 2
+    return ordered[mid] if len(ordered) % 2 else (ordered[mid - 1] + ordered[mid]) // 2
 
 
 def _normalize_runs(raw: Any) -> list[dict[str, Any]]:
@@ -277,13 +255,13 @@ def _best_by_task(entries: list[dict[str, Any]]) -> dict[str, dict[str, Any]]:
     result: dict[str, dict[str, Any]] = {}
     for entry in entries:
         task = entry["run"]["task_id"]
-        current = result.get(task)
         key = (
             -entry["metrics"]["correctness_micros"],
             entry["metrics"]["total_tokens"],
             entry["metrics"]["wall_clock_ms"],
             entry["run"]["trial_id"],
         )
+        current = result.get(task)
         if current is None:
             result[task] = entry
             continue
@@ -303,15 +281,13 @@ def regression_gate(
     baseline_entries: list[dict[str, Any]],
     policy: dict[str, Any],
 ) -> dict[str, Any]:
-    cand = _best_by_task(candidate_entries)
-    base = _best_by_task(baseline_entries)
+    cand, base = _best_by_task(candidate_entries), _best_by_task(baseline_entries)
     failures: list[dict[str, Any]] = []
     for task_id in sorted(base):
         if task_id not in cand:
             failures.append({"task_id": task_id, "reason": "MISSING_CANDIDATE_TASK"})
             continue
-        cm = cand[task_id]["metrics"]
-        bm = base[task_id]["metrics"]
+        cm, bm = cand[task_id]["metrics"], base[task_id]["metrics"]
         if cm["correctness_micros"] + policy["max_correctness_drop_micros"] < bm["correctness_micros"]:
             failures.append({"task_id": task_id, "reason": "CORRECTNESS_REGRESSION"})
             continue
@@ -334,19 +310,13 @@ def compile_report(runs_raw: Any, policy_raw: Any, baseline_raw: Any | None = No
     for task_entries in by_task.values():
         for entry in task_entries:
             entry["pareto"] = not any(
-                other is not entry and _dominates(other, entry)
-                for other in task_entries
+                other is not entry and _dominates(other, entry) for other in task_entries
             )
 
-    entries.sort(
-        key=lambda e: (
-            e["run"]["task_id"],
-            -e["metrics"]["correctness_micros"],
-            e["metrics"]["total_tokens"],
-            e["metrics"]["wall_clock_ms"],
-            e["run"]["trial_id"],
-        )
-    )
+    entries.sort(key=lambda e: (
+        e["run"]["task_id"], -e["metrics"]["correctness_micros"],
+        e["metrics"]["total_tokens"], e["metrics"]["wall_clock_ms"], e["run"]["trial_id"],
+    ))
 
     configs: dict[str, list[dict[str, Any]]] = {}
     for entry in entries:
@@ -358,18 +328,16 @@ def compile_report(runs_raw: Any, policy_raw: Any, baseline_raw: Any | None = No
         c = [e["metrics"]["correctness_micros"] for e in group]
         t = [e["metrics"]["total_tokens"] for e in group]
         w = [e["metrics"]["wall_clock_ms"] for e in group]
-        summaries.append(
-            {
-                "configuration": key,
-                "trials": len(group),
-                "median_correctness_micros": _median_int(c),
-                "worst_correctness_micros": min(c),
-                "median_total_tokens": _median_int(t),
-                "worst_total_tokens": max(t),
-                "median_wall_clock_ms": _median_int(w),
-                "worst_wall_clock_ms": max(w),
-            }
-        )
+        summaries.append({
+            "configuration": key,
+            "trials": len(group),
+            "median_correctness_micros": _median_int(c),
+            "worst_correctness_micros": min(c),
+            "median_total_tokens": _median_int(t),
+            "worst_total_tokens": max(t),
+            "median_wall_clock_ms": _median_int(w),
+            "worst_wall_clock_ms": max(w),
+        })
 
     baseline_runs = None
     gate = None
@@ -387,10 +355,7 @@ def compile_report(runs_raw: Any, policy_raw: Any, baseline_raw: Any | None = No
         "regression_gate": gate,
     }
     receipt_payload = {
-        "policy": policy,
-        "runs": runs,
-        "baseline_runs": baseline_runs,
-        "report_core": report_core,
+        "policy": policy, "runs": runs, "baseline_runs": baseline_runs, "report_core": report_core,
     }
     return {**report_core, "receipt_sha256": sha256_json(receipt_payload)}
 
@@ -435,8 +400,7 @@ def render_markdown(report: dict[str, Any]) -> str:
 
 
 def verify_report(runs_raw: Any, policy_raw: Any, report_raw: Any, baseline_raw: Any | None = None) -> bool:
-    expected = compile_report(runs_raw, policy_raw, baseline_raw)
-    return canonical_bytes(expected) == canonical_bytes(report_raw)
+    return canonical_bytes(compile_report(runs_raw, policy_raw, baseline_raw)) == canonical_bytes(report_raw)
 
 
 def _write_new(path: str | Path, data: bytes) -> None:
