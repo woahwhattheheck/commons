@@ -113,6 +113,40 @@ def _finite_decimal(value: Any, field: str) -> str:
     return text
 
 
+def _normalize_catalog_row(raw: Any, field: str) -> tuple[dict[str, Any], datetime, datetime | None]:
+    row = _mapping(raw, field)
+    catalog_id = _string(row.get("catalog_id"), f"{field}.catalog_id", max_len=120)
+    version = _string(row.get("version"), f"{field}.version", max_len=64)
+    kind = _string(row.get("kind"), f"{field}.kind", max_len=32).upper()
+    currency = _string(row.get("currency"), f"{field}.currency", max_len=12).upper()
+    price_cents = _int_cents(row.get("price_cents"), f"{field}.price_cents", allow_zero=False)
+    scope_digest = _hex64(row.get("scope_digest"), f"{field}.scope_digest")
+    active_from = _timestamp(row.get("active_from"), f"{field}.active_from")
+    active_until_raw = row.get("active_until")
+    active_until = _timestamp(active_until_raw, f"{field}.active_until") if active_until_raw is not None else None
+    if active_until is not None and active_until <= active_from:
+        raise EvidenceError(f"{field}:activation_window")
+    identity = {
+        "catalog_id": catalog_id,
+        "version": version,
+        "kind": kind,
+        "currency": currency,
+        "price_cents": price_cents,
+        "scope_digest": scope_digest,
+        "active_from": active_from.isoformat().replace("+00:00", "Z"),
+        "active_until": active_until.isoformat().replace("+00:00", "Z") if active_until is not None else None,
+    }
+    normalized = dict(identity)
+    normalized["row_digest"] = digest_json(identity)
+    return normalized, active_from, active_until
+
+
+def catalog_row_digest(row: Any) -> str:
+    """Return the canonical SHA-256 identity for one complete catalog revision."""
+    normalized, _, _ = _normalize_catalog_row(row, "catalog")
+    return normalized["row_digest"]
+
+
 def _minimal_receipt(record: Any, hold_code: str) -> dict[str, Any]:
     account_id = "UNKNOWN"
     offer_id = "UNKNOWN"
@@ -271,56 +305,63 @@ def evaluate(record: Any) -> dict[str, Any]:
         approval_id = _string(approval.get("evidence_id"), "owner_approval.evidence_id", max_len=160)
         approval_class = _string(approval.get("approver_class"), "owner_approval.approver_class", max_len=48).upper()
         approval_at = _timestamp(approval.get("approved_at"), "owner_approval.approved_at")
-        approved_catalog_ids = [
-            _string(v, f"owner_approval.approved_catalog_ids[{i}]", max_len=120)
-            for i, v in enumerate(_list(approval.get("approved_catalog_ids"), "owner_approval.approved_catalog_ids", max_len=32))
-        ]
+        approved_catalog_bindings: dict[str, tuple[str, str]] = {}
+        for idx, raw in enumerate(_list(approval.get("approved_catalog_rows"), "owner_approval.approved_catalog_rows", max_len=32)):
+            binding = _mapping(raw, f"owner_approval.approved_catalog_rows[{idx}]")
+            if set(binding) != {"catalog_id", "version", "row_digest"}:
+                raise EvidenceError(f"owner_approval.approved_catalog_rows[{idx}]:shape")
+            approved_id = _string(binding.get("catalog_id"), f"owner_approval.approved_catalog_rows[{idx}].catalog_id", max_len=120)
+            approved_version = _string(binding.get("version"), f"owner_approval.approved_catalog_rows[{idx}].version", max_len=64)
+            approved_digest = _hex64(binding.get("row_digest"), f"owner_approval.approved_catalog_rows[{idx}].row_digest")
+            prior = approved_catalog_bindings.get(approved_id)
+            current = (approved_version, approved_digest)
+            if prior is None:
+                approved_catalog_bindings[approved_id] = current
+            elif prior == current:
+                holds.add("OWNER_APPROVAL_ENTRY_DUPLICATE")
+            else:
+                holds.add("OWNER_APPROVAL_ENTRY_CONFLICT")
         if approval_class != "OWNER_HUMAN":
             holds.add("OWNER_APPROVAL_NOT_HUMAN")
         if approval_at > as_of + timedelta(minutes=5):
             holds.add("OWNER_APPROVAL_FROM_FUTURE")
-        if any(cid not in set(approved_catalog_ids) for cid in requested_catalog_ids):
-            holds.add("CATALOG_NOT_OWNER_APPROVED")
+        if approval_at < signal_observed:
+            holds.add("OWNER_APPROVAL_PREDATES_BUYER_SIGNAL")
 
-        catalog_rows: dict[str, dict[str, Any]] = {}
+        catalog_rows: dict[str, tuple[dict[str, Any], datetime, datetime | None]] = {}
         for idx, raw in enumerate(_list(top.get("catalog"), "catalog", max_len=64)):
-            row = _mapping(raw, f"catalog[{idx}]")
-            catalog_id = _string(row.get("catalog_id"), f"catalog[{idx}].catalog_id", max_len=120)
+            row, active_from, active_until = _normalize_catalog_row(raw, f"catalog[{idx}]")
+            catalog_id = row["catalog_id"]
             if catalog_id in catalog_rows:
                 holds.add("CATALOG_ID_DUPLICATE")
                 continue
-            version = _string(row.get("version"), f"catalog[{idx}].version", max_len=64)
-            kind = _string(row.get("kind"), f"catalog[{idx}].kind", max_len=32).upper()
-            currency = _string(row.get("currency"), f"catalog[{idx}].currency", max_len=12).upper()
-            price_cents = _int_cents(row.get("price_cents"), f"catalog[{idx}].price_cents", allow_zero=False)
-            row_scope = _hex64(row.get("scope_digest"), f"catalog[{idx}].scope_digest")
-            active_from = _timestamp(row.get("active_from"), f"catalog[{idx}].active_from")
-            active_until_raw = row.get("active_until")
-            active_until = _timestamp(active_until_raw, f"catalog[{idx}].active_until") if active_until_raw is not None else None
-            if kind not in {"EXPANSION", "RENEWAL"}:
+            if row["kind"] not in {"EXPANSION", "RENEWAL"}:
                 holds.add("CATALOG_KIND_INVALID")
-            if currency != offer_currency:
+            if row["currency"] != offer_currency:
                 holds.add("CATALOG_CURRENCY_MISMATCH")
             if as_of < active_from or (active_until is not None and as_of > active_until):
                 holds.add("CATALOG_NOT_ACTIVE")
-            catalog_rows[catalog_id] = {
-                "catalog_id": catalog_id,
-                "version": version,
-                "kind": kind,
-                "currency": currency,
-                "price_cents": price_cents,
-                "scope_digest": row_scope,
-            }
+            catalog_rows[catalog_id] = (row, active_from, active_until)
 
         selected_catalog: list[dict[str, Any]] = []
         for catalog_id in sorted(set(requested_catalog_ids)):
-            row = catalog_rows.get(catalog_id)
-            if row is None:
+            row_data = catalog_rows.get(catalog_id)
+            if row_data is None:
                 holds.add("CATALOG_ITEM_MISSING")
                 continue
+            row, active_from, _ = row_data
             expected_kind = "EXPANSION" if signal_kind == "EXPANSION_REQUEST" else "RENEWAL"
             if row["kind"] != expected_kind:
                 holds.add("CATALOG_SIGNAL_KIND_MISMATCH")
+            approved = approved_catalog_bindings.get(catalog_id)
+            if approved is None:
+                holds.add("CATALOG_NOT_OWNER_APPROVED")
+            elif approved != (row["version"], row["row_digest"]):
+                holds.add("CATALOG_APPROVAL_IDENTITY_MISMATCH")
+            if signal_observed < active_from:
+                holds.add("BUYER_SIGNAL_PREDATES_CATALOG_REVISION")
+            if approval_at < active_from:
+                holds.add("OWNER_APPROVAL_PREDATES_CATALOG_REVISION")
             selected_catalog.append(row)
 
         normalized_outcomes: list[dict[str, Any]] = []
