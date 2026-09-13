@@ -1,0 +1,37 @@
+{
+  "allowed_intents": [
+    "INSPECT_BLOCKAGE",
+    "INVESTIGATE_I_AND_I"
+  ],
+  "blockage": {
+    "max_rain_mm_15m": 1.0,
+    "min_flow_drop_ratio": 0.2,
+    "min_level_rise_pct": 15.0
+  },
+  "external_execution": false,
+  "freshness_max_seconds": 900,
+  "max_gap_seconds": 600,
+  "min_points": 4,
+  "numeric_bounds": {
+    "flow_lps": [
+      0.0,
+      100000.0
+    ],
+    "level_pct": [
+      0.0,
+      100.0
+    ],
+    "rain_mm_15m": [
+      0.0,
+      500.0
+    ]
+  },
+  "policy_id": "lacsd-04254-synthetic-acceptance-20260913",
+  "schema_version": "lacsd-04254-policy-v1",
+  "storm_ii": {
+    "min_flow_rise_ratio": 0.5,
+    "min_level_rise_pct": 8.0,
+    "min_rain_mm_15m": 5.0
+  },
+  "work_intent_namespace": "lacsd-04254-evidence-v1"
+}

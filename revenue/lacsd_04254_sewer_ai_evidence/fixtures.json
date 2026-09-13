@@ -1,0 +1,477 @@
+{
+  "fixtures": [
+    {
+      "evaluation_at": "2026-09-13T12:18:00Z",
+      "expected": {
+        "anomaly_class": "BLOCKAGE_SUSPECTED",
+        "decision": "WORK_INTENT",
+        "hold_reason": null,
+        "work_intents": 1
+      },
+      "packets": [
+        {
+          "flow_lps": 100.0,
+          "level_pct": 30.0,
+          "observed_at": "2026-09-13T12:00:00Z",
+          "packet_id": "a01-0001",
+          "quality": "GOOD",
+          "rain_mm_15m": 0.0
+        },
+        {
+          "flow_lps": 94.0,
+          "level_pct": 35.0,
+          "observed_at": "2026-09-13T12:05:00Z",
+          "packet_id": "a01-0002",
+          "quality": "GOOD",
+          "rain_mm_15m": 0.0
+        },
+        {
+          "flow_lps": 94.0,
+          "level_pct": 35.0,
+          "observed_at": "2026-09-13T12:05:00Z",
+          "packet_id": "a01-0002",
+          "quality": "GOOD",
+          "rain_mm_15m": 0.0
+        },
+        {
+          "flow_lps": 85.0,
+          "level_pct": 42.0,
+          "observed_at": "2026-09-13T12:10:00Z",
+          "packet_id": "a01-0003",
+          "quality": "GOOD",
+          "rain_mm_15m": 0.0
+        },
+        {
+          "flow_lps": 75.0,
+          "level_pct": 48.0,
+          "observed_at": "2026-09-13T12:15:00Z",
+          "packet_id": "a01-0004",
+          "quality": "GOOD",
+          "rain_mm_15m": 0.0
+        }
+      ],
+      "scenario_id": "blockage-drift-duplicate-retransmission",
+      "site_id": "SITE_A01"
+    },
+    {
+      "evaluation_at": "2026-09-13T12:18:00Z",
+      "expected": {
+        "anomaly_class": "I_AND_I_SUSPECTED",
+        "decision": "WORK_INTENT",
+        "hold_reason": null,
+        "work_intents": 1
+      },
+      "packets": [
+        {
+          "flow_lps": 100.0,
+          "level_pct": 30.0,
+          "observed_at": "2026-09-13T12:00:00Z",
+          "packet_id": "b02-0001",
+          "quality": "GOOD",
+          "rain_mm_15m": 0.0
+        },
+        {
+          "flow_lps": 120.0,
+          "level_pct": 33.0,
+          "observed_at": "2026-09-13T12:05:00Z",
+          "packet_id": "b02-0002",
+          "quality": "GOOD",
+          "rain_mm_15m": 2.0
+        },
+        {
+          "flow_lps": 145.0,
+          "level_pct": 37.0,
+          "observed_at": "2026-09-13T12:10:00Z",
+          "packet_id": "b02-0003",
+          "quality": "GOOD",
+          "rain_mm_15m": 6.0
+        },
+        {
+          "flow_lps": 170.0,
+          "level_pct": 40.0,
+          "observed_at": "2026-09-13T12:15:00Z",
+          "packet_id": "b02-0004",
+          "quality": "GOOD",
+          "rain_mm_15m": 8.0
+        }
+      ],
+      "scenario_id": "storm-driven-inflow-infiltration",
+      "site_id": "SITE_B02"
+    },
+    {
+      "evaluation_at": "2026-09-13T12:18:00Z",
+      "expected": {
+        "anomaly_class": "NONE",
+        "decision": "NO_ACTION",
+        "hold_reason": null,
+        "work_intents": 0
+      },
+      "packets": [
+        {
+          "flow_lps": 100.0,
+          "level_pct": 30.0,
+          "observed_at": "2026-09-13T12:00:00Z",
+          "packet_id": "c03-0001",
+          "quality": "GOOD",
+          "rain_mm_15m": 0.0
+        },
+        {
+          "flow_lps": 105.0,
+          "level_pct": 31.0,
+          "observed_at": "2026-09-13T12:05:00Z",
+          "packet_id": "c03-0002",
+          "quality": "GOOD",
+          "rain_mm_15m": 0.0
+        },
+        {
+          "flow_lps": 98.0,
+          "level_pct": 29.0,
+          "observed_at": "2026-09-13T12:10:00Z",
+          "packet_id": "c03-0003",
+          "quality": "GOOD",
+          "rain_mm_15m": 0.0
+        },
+        {
+          "flow_lps": 102.0,
+          "level_pct": 30.0,
+          "observed_at": "2026-09-13T12:15:00Z",
+          "packet_id": "c03-0004",
+          "quality": "GOOD",
+          "rain_mm_15m": 0.0
+        }
+      ],
+      "scenario_id": "normal-diurnal-control",
+      "site_id": "SITE_C03"
+    },
+    {
+      "evaluation_at": "2026-09-13T12:18:00Z",
+      "expected": {
+        "anomaly_class": "UNDETERMINED",
+        "decision": "HOLD",
+        "hold_reason": "SENSOR_QUALITY",
+        "work_intents": 0
+      },
+      "packets": [
+        {
+          "flow_lps": 100.0,
+          "level_pct": 30.0,
+          "observed_at": "2026-09-13T12:00:00Z",
+          "packet_id": "d04-0001",
+          "quality": "GOOD",
+          "rain_mm_15m": 0.0
+        },
+        {
+          "flow_lps": 95.0,
+          "level_pct": 35.0,
+          "observed_at": "2026-09-13T12:05:00Z",
+          "packet_id": "d04-0002",
+          "quality": "GOOD",
+          "rain_mm_15m": 0.0
+        },
+        {
+          "flow_lps": 85.0,
+          "level_pct": 43.0,
+          "observed_at": "2026-09-13T12:10:00Z",
+          "packet_id": "d04-0003",
+          "quality": "MISSING",
+          "rain_mm_15m": 0.0
+        },
+        {
+          "flow_lps": 75.0,
+          "level_pct": 49.0,
+          "observed_at": "2026-09-13T12:15:00Z",
+          "packet_id": "d04-0004",
+          "quality": "GOOD",
+          "rain_mm_15m": 0.0
+        }
+      ],
+      "scenario_id": "sensor-quality-hold",
+      "site_id": "SITE_D04"
+    },
+    {
+      "evaluation_at": "2026-09-13T12:40:01Z",
+      "expected": {
+        "anomaly_class": "UNDETERMINED",
+        "decision": "HOLD",
+        "hold_reason": "STALE_EVIDENCE",
+        "work_intents": 0
+      },
+      "packets": [
+        {
+          "flow_lps": 100.0,
+          "level_pct": 30.0,
+          "observed_at": "2026-09-13T12:00:00Z",
+          "packet_id": "e05-0001",
+          "quality": "GOOD",
+          "rain_mm_15m": 0.0
+        },
+        {
+          "flow_lps": 95.0,
+          "level_pct": 35.0,
+          "observed_at": "2026-09-13T12:05:00Z",
+          "packet_id": "e05-0002",
+          "quality": "GOOD",
+          "rain_mm_15m": 0.0
+        },
+        {
+          "flow_lps": 85.0,
+          "level_pct": 42.0,
+          "observed_at": "2026-09-13T12:10:00Z",
+          "packet_id": "e05-0003",
+          "quality": "GOOD",
+          "rain_mm_15m": 0.0
+        },
+        {
+          "flow_lps": 75.0,
+          "level_pct": 48.0,
+          "observed_at": "2026-09-13T12:15:00Z",
+          "packet_id": "e05-0004",
+          "quality": "GOOD",
+          "rain_mm_15m": 0.0
+        }
+      ],
+      "scenario_id": "stale-evidence-hold",
+      "site_id": "SITE_E05"
+    },
+    {
+      "evaluation_at": "2026-09-13T12:18:00Z",
+      "expected": {
+        "anomaly_class": "UNDETERMINED",
+        "decision": "HOLD",
+        "hold_reason": "CONFLICTING_PACKET_ID",
+        "work_intents": 0
+      },
+      "packets": [
+        {
+          "flow_lps": 100.0,
+          "level_pct": 30.0,
+          "observed_at": "2026-09-13T12:00:00Z",
+          "packet_id": "f06-0001",
+          "quality": "GOOD",
+          "rain_mm_15m": 0.0
+        },
+        {
+          "flow_lps": 95.0,
+          "level_pct": 35.0,
+          "observed_at": "2026-09-13T12:05:00Z",
+          "packet_id": "f06-0002",
+          "quality": "GOOD",
+          "rain_mm_15m": 0.0
+        },
+        {
+          "flow_lps": 85.0,
+          "level_pct": 42.0,
+          "observed_at": "2026-09-13T12:10:00Z",
+          "packet_id": "f06-0003",
+          "quality": "GOOD",
+          "rain_mm_15m": 0.0
+        },
+        {
+          "flow_lps": 75.0,
+          "level_pct": 48.0,
+          "observed_at": "2026-09-13T12:15:00Z",
+          "packet_id": "f06-0004",
+          "quality": "GOOD",
+          "rain_mm_15m": 0.0
+        },
+        {
+          "flow_lps": 96.0,
+          "level_pct": 35.0,
+          "observed_at": "2026-09-13T12:05:00Z",
+          "packet_id": "f06-0002",
+          "quality": "GOOD",
+          "rain_mm_15m": 0.0
+        }
+      ],
+      "scenario_id": "conflicting-retransmission-hold",
+      "site_id": "SITE_F06"
+    },
+    {
+      "evaluation_at": "2026-09-13T12:18:00Z",
+      "expected": {
+        "anomaly_class": "UNDETERMINED",
+        "decision": "HOLD",
+        "hold_reason": "NON_MONOTONIC_TIME",
+        "work_intents": 0
+      },
+      "packets": [
+        {
+          "flow_lps": 100.0,
+          "level_pct": 30.0,
+          "observed_at": "2026-09-13T12:00:00Z",
+          "packet_id": "g07-0001",
+          "quality": "GOOD",
+          "rain_mm_15m": 0.0
+        },
+        {
+          "flow_lps": 95.0,
+          "level_pct": 35.0,
+          "observed_at": "2026-09-13T12:10:00Z",
+          "packet_id": "g07-0002",
+          "quality": "GOOD",
+          "rain_mm_15m": 0.0
+        },
+        {
+          "flow_lps": 85.0,
+          "level_pct": 42.0,
+          "observed_at": "2026-09-13T12:05:00Z",
+          "packet_id": "g07-0003",
+          "quality": "GOOD",
+          "rain_mm_15m": 0.0
+        },
+        {
+          "flow_lps": 75.0,
+          "level_pct": 48.0,
+          "observed_at": "2026-09-13T12:15:00Z",
+          "packet_id": "g07-0004",
+          "quality": "GOOD",
+          "rain_mm_15m": 0.0
+        }
+      ],
+      "scenario_id": "non-monotonic-time-hold",
+      "site_id": "SITE_G07"
+    },
+    {
+      "evaluation_at": "2026-09-13T12:28:00Z",
+      "expected": {
+        "anomaly_class": "UNDETERMINED",
+        "decision": "HOLD",
+        "hold_reason": "SENSOR_GAP",
+        "work_intents": 0
+      },
+      "packets": [
+        {
+          "flow_lps": 100.0,
+          "level_pct": 30.0,
+          "observed_at": "2026-09-13T12:00:00Z",
+          "packet_id": "h08-0001",
+          "quality": "GOOD",
+          "rain_mm_15m": 0.0
+        },
+        {
+          "flow_lps": 95.0,
+          "level_pct": 35.0,
+          "observed_at": "2026-09-13T12:05:00Z",
+          "packet_id": "h08-0002",
+          "quality": "GOOD",
+          "rain_mm_15m": 0.0
+        },
+        {
+          "flow_lps": 85.0,
+          "level_pct": 42.0,
+          "observed_at": "2026-09-13T12:20:01Z",
+          "packet_id": "h08-0003",
+          "quality": "GOOD",
+          "rain_mm_15m": 0.0
+        },
+        {
+          "flow_lps": 75.0,
+          "level_pct": 48.0,
+          "observed_at": "2026-09-13T12:25:00Z",
+          "packet_id": "h08-0004",
+          "quality": "GOOD",
+          "rain_mm_15m": 0.0
+        }
+      ],
+      "scenario_id": "sensor-gap-hold",
+      "site_id": "SITE_H08"
+    },
+    {
+      "evaluation_at": "2026-09-13T12:18:00Z",
+      "expected": {
+        "anomaly_class": "BLOCKAGE_SUSPECTED",
+        "decision": "WORK_INTENT",
+        "hold_reason": null,
+        "work_intents": 1
+      },
+      "packets": [
+        {
+          "flow_lps": 100.0,
+          "level_pct": 30.0,
+          "observed_at": "2026-09-13T12:00:00Z",
+          "packet_id": "i09-0001",
+          "quality": "GOOD",
+          "rain_mm_15m": 1.0
+        },
+        {
+          "flow_lps": 94.0,
+          "level_pct": 35.0,
+          "observed_at": "2026-09-13T12:05:00Z",
+          "packet_id": "i09-0002",
+          "quality": "GOOD",
+          "rain_mm_15m": 1.0
+        },
+        {
+          "flow_lps": 87.0,
+          "level_pct": 40.0,
+          "observed_at": "2026-09-13T12:10:00Z",
+          "packet_id": "i09-0003",
+          "quality": "GOOD",
+          "rain_mm_15m": 1.0
+        },
+        {
+          "flow_lps": 80.0,
+          "level_pct": 45.0,
+          "observed_at": "2026-09-13T12:15:00Z",
+          "packet_id": "i09-0004",
+          "quality": "GOOD",
+          "rain_mm_15m": 1.0
+        }
+      ],
+      "scenario_id": "blockage-threshold-edge",
+      "site_id": "SITE_I09"
+    },
+    {
+      "evaluation_at": "2026-09-13T12:18:00Z",
+      "expected": {
+        "anomaly_class": "NONE",
+        "decision": "NO_ACTION",
+        "hold_reason": null,
+        "work_intents": 0
+      },
+      "packets": [
+        {
+          "flow_lps": 100.0,
+          "level_pct": 30.0,
+          "observed_at": "2026-09-13T12:00:00Z",
+          "packet_id": "j10-0001",
+          "quality": "GOOD",
+          "rain_mm_15m": 2.0
+        },
+        {
+          "flow_lps": 94.0,
+          "level_pct": 35.0,
+          "observed_at": "2026-09-13T12:05:00Z",
+          "packet_id": "j10-0002",
+          "quality": "GOOD",
+          "rain_mm_15m": 2.0
+        },
+        {
+          "flow_lps": 85.0,
+          "level_pct": 42.0,
+          "observed_at": "2026-09-13T12:10:00Z",
+          "packet_id": "j10-0003",
+          "quality": "GOOD",
+          "rain_mm_15m": 2.0
+        },
+        {
+          "flow_lps": 75.0,
+          "level_pct": 48.0,
+          "observed_at": "2026-09-13T12:15:00Z",
+          "packet_id": "j10-0004",
+          "quality": "GOOD",
+          "rain_mm_15m": 2.0
+        }
+      ],
+      "scenario_id": "rain-suppresses-blockage-only-claim",
+      "site_id": "SITE_J10"
+    }
+  ],
+  "model": {
+    "artifact_sha256": "ad180055d2e2eae58a2c1670a38255c5f5a9981d020769444a45392e0f6e2844",
+    "configuration_id": "synthetic-demo-thresholds-v1",
+    "model_id": "synthetic-reference-detector-v1"
+  },
+  "opportunity_id": "LACSD-04254",
+  "schema_version": "lacsd-04254-evidence-v1"
+}

@@ -1,0 +1,30 @@
+{
+  "artifacts": {
+    "README.md": {
+      "bytes": 9322,
+      "sha256": "02614952a79f97ea34052799faa6f8be3e5754045eb49801b331d577609c9705"
+    },
+    "evaluate.py": {
+      "bytes": 31304,
+      "sha256": "3416c8cfa4da5bd49cbaf5330049fe73c68ab6cfa373c0ddc52aeb400378f026"
+    },
+    "example_receipt.json": {
+      "bytes": 15434,
+      "sha256": "cff82b19ffc140dca7ee1b8fe0825ba79dd495d8945a0880b2ce6937cc6420e3"
+    },
+    "fixtures.json": {
+      "bytes": 12865,
+      "sha256": "c3ea467aa2bb0f67c7bc1b36550f9e84fead336c15171c981476af30d96199a8"
+    },
+    "policy.json": {
+      "bytes": 748,
+      "sha256": "bc6597cc5173b5864e206b90debdb156dc327b05a3cc1b860c022063a51de3c4"
+    },
+    "test_evaluate.py": {
+      "bytes": 13526,
+      "sha256": "90940f5b0b7cb6148518f237a9636d448c0d4a9e348b30193506749a5fae4c3c"
+    }
+  },
+  "operation": "LACSD-04254-SEWER-AI-EVIDENCE-ZNCX6P4-20260913",
+  "schema_version": "lacsd-04254-package-manifest-v1"
+}
