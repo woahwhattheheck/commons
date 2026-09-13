@@ -1,0 +1,42 @@
+name: Parcel package integrity
+
+on:
+  pull_request:
+    paths:
+      - 'revenue/hive/fulfillment-desk/**'
+      - 'revenue/hive/intake-crm-workflow/**'
+      - '.github/workflows/parcel-package-integrity.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'revenue/hive/fulfillment-desk/**'
+      - 'revenue/hive/intake-crm-workflow/**'
+      - '.github/workflows/parcel-package-integrity.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  parcel-package-integrity:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    defaults:
+      run:
+        working-directory: revenue/hive/fulfillment-desk
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Syntax
+        run: |
+          python -m py_compile bundle.py run_bundle.py test_package_integrity.py
+      - name: Parcel model
+        run: node --test test_model.js
+      - name: Bundle + integrity tests
+        run: python -B -m unittest -v test_bundle.py test_package_integrity.py
+      - name: Optimized bundle + integrity tests
+        run: python -O -B -m unittest -v test_bundle.py test_package_integrity.py
