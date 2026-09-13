@@ -29,12 +29,15 @@ class UnderwriterInputError(ValueError):
 @dataclass(frozen=True)
 class Config:
     max_history_age_days: int = 180
+    max_freshness_age_hours: int = 24
     min_pursue_cash: Decimal = Decimal("100")
     zero_paid_reject_competitors: int = 3
 
     def validated(self) -> "Config":
         if self.max_history_age_days <= 0:
             raise UnderwriterInputError("max_history_age_days must be positive")
+        if self.max_freshness_age_hours <= 0:
+            raise UnderwriterInputError("max_freshness_age_hours must be positive")
         if self.min_pursue_cash < 0:
             raise UnderwriterInputError("min_pursue_cash must be non-negative")
         if self.zero_paid_reject_competitors < 0:
@@ -316,6 +319,10 @@ def underwrite(
     if freshness["observed_at"] > now + timedelta(minutes=5):
         reasons.append("freshness_observation_in_future")
         hard_reject = True
+    freshness_cutoff = now - timedelta(hours=config.max_freshness_age_hours)
+    if freshness["observed_at"] < freshness_cutoff:
+        reasons.append("freshness_observation_stale")
+        hard_reject = True
 
     history_cutoff = now - timedelta(days=config.max_history_age_days)
     stale_history = [row for row in latest if row["observed_at"] < history_cutoff]
@@ -408,6 +415,7 @@ def underwrite(
             "competition_definition": "visible_claims + active_competing_prs; one equal-share planning denominator, not a win probability",
             "range_semantics": "conservative planning allocation range; not a forecast, probability, booking, or payment claim",
             "pursue_floor": _money(config.min_pursue_cash),
+            "max_freshness_age_hours": config.max_freshness_age_hours,
         },
         "evidence": evidence,
         "input_sha256": _sha256_json(packet),
@@ -433,6 +441,7 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--output", type=Path, help="write receipt JSON atomically")
     parser.add_argument("--observed-at", help="fixed ISO-8601 time for deterministic replay")
     parser.add_argument("--max-history-age-days", type=int, default=180)
+    parser.add_argument("--max-freshness-age-hours", type=int, default=24)
     parser.add_argument("--min-pursue-cash", default="100")
     parser.add_argument("--zero-paid-reject-competitors", type=int, default=3)
     return parser
@@ -445,6 +454,7 @@ def main(argv: Sequence[str] | None = None) -> int:
         fixed_time = _timestamp(args.observed_at, "--observed-at") if args.observed_at else None
         config = Config(
             max_history_age_days=args.max_history_age_days,
+            max_freshness_age_hours=args.max_freshness_age_hours,
             min_pursue_cash=_decimal(args.min_pursue_cash, "--min-pursue-cash"),
             zero_paid_reject_competitors=args.zero_paid_reject_competitors,
         ).validated()
