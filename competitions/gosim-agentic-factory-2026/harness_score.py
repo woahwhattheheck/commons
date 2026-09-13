@@ -261,6 +261,19 @@ def _reject_cross_set_identity_reuse(candidate: list[dict[str, Any]], baseline: 
             raise ContractError("trial identity reused with changed bytes across candidate and baseline")
 
 
+def _task_generations(entries: list[dict[str, Any]]) -> dict[str, tuple[str, int]]:
+    generations: dict[str, tuple[str, int]] = {}
+    for entry in entries:
+        run = entry["run"]
+        task_id = run["task_id"]
+        generation = (run["task_spec_sha256"], run["tests_total"])
+        prior = generations.get(task_id)
+        if prior is not None and prior != generation:
+            raise ContractError("task_id spans multiple task generations")
+        generations[task_id] = generation
+    return generations
+
+
 def _best_by_task(entries: list[dict[str, Any]]) -> dict[str, dict[str, Any]]:
     result: dict[str, dict[str, Any]] = {}
     for entry in entries:
@@ -291,11 +304,16 @@ def regression_gate(
     baseline_entries: list[dict[str, Any]],
     policy: dict[str, Any],
 ) -> dict[str, Any]:
+    candidate_generations = _task_generations(candidate_entries)
+    baseline_generations = _task_generations(baseline_entries)
     cand, base = _best_by_task(candidate_entries), _best_by_task(baseline_entries)
     failures: list[dict[str, Any]] = []
     for task_id in sorted(base):
         if task_id not in cand:
             failures.append({"task_id": task_id, "reason": "MISSING_CANDIDATE_TASK"})
+            continue
+        if candidate_generations[task_id] != baseline_generations[task_id]:
+            failures.append({"task_id": task_id, "reason": "TASK_GENERATION_MISMATCH"})
             continue
         cm, bm = cand[task_id]["metrics"], base[task_id]["metrics"]
         if cm["correctness_micros"] + policy["max_correctness_drop_micros"] < bm["correctness_micros"]:
