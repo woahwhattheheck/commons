@@ -2,7 +2,7 @@
 
 A dependency-free, offline integrity/audit tool for captured Model Context Protocol JSON-RPC sessions. It is deliberately separate from Commons' endpoint-oriented `host/mcp_conformance.py`: this package never opens an endpoint or executes a tool. It verifies the bytes of a capture you already possess.
 
-The lifecycle checks follow the official MCP `2025-11-25` lifecycle: initialization is the first interaction, the client sends `initialize`, the server answers with its negotiated protocol version and capabilities, and the client sends `notifications/initialized` before normal operations. Reference: <https://modelcontextprotocol.io/specification/2025-11-25/basic/lifecycle>.
+The auditor is hard-pinned to MCP `2025-11-25` (the CLI has no protocol-version override). The lifecycle checks follow that official lifecycle: initialization is the first interaction, the client sends `initialize`, the server answers with its negotiated protocol version and capabilities, and the client sends `notifications/initialized` before normal operations. Reference: <https://modelcontextprotocol.io/specification/2025-11-25/basic/lifecycle>.
 
 ## Capture format
 
@@ -22,11 +22,13 @@ A PASS receipt proves, for the supplied capture bytes:
 
 - strict UTF-8/JSON parsing with duplicate-key and NaN/Infinity rejection;
 - JSON-RPC 2.0 request/notification/response envelope shape;
-- string/integer request IDs only (bool/null/float are rejected) and no ID reuse;
+- string or finite-number request IDs (bool/null/non-finite are rejected), with exact numeric-value correlation and no ID reuse;
 - response correlation to the opposite direction with no orphan, duplicate, or unresolved response/request;
 - `initialize` as the first interaction;
 - required initialize fields and exact `2025-11-25` request/negotiated version;
 - client `notifications/initialized` after the successful initialize response and before ordinary operations;
+- schema-valid server `notifications/message` logging exceptions before initialization (required level + data);
+- bounded JSON nesting and capture/event/line limits that fail closed on hostile input;
 - deterministic source, line, payload, and receipt hashes.
 
 The durable receipt intentionally omits request parameters, response results, error data, and raw request IDs. It retains method names, counts, line numbers, typed-ID hashes, and content hashes needed to audit correlation without copying business payloads.
