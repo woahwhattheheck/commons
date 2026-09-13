@@ -275,9 +275,9 @@ def compile_qualification(packet: Any, *, source_observation: Any) -> dict[str, 
     if source_reasons:
         decision, reasons = "HOLD_SOURCE_SNAPSHOT_MISMATCH", source_reasons
     elif route == "prime_offeror" and mandatory:
-        decision, reasons = "PRIME_NO_GO_MANDATORY_EXPERIENCE", mandatory
+        decision, reasons = "SNAPSHOT_MANDATORY_EVIDENCE_GAP", mandatory
     elif route == "prime_offeror" and readiness_reasons:
-        decision, reasons = "HOLD_PROPOSAL_READINESS", readiness_reasons
+        decision, reasons = "SNAPSHOT_PROPOSAL_EVIDENCE_GAP", readiness_reasons
     elif route == "prime_offeror":
         decision = "PRIME_EVIDENCE_READY_FOR_LIVE_SOURCE_REVIEW"
         reasons = ["LIVE_SOURCE_REVIEW_REQUIRED"]
