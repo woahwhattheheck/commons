@@ -25,6 +25,7 @@
   "priority_queue": [],
   "production_write": false,
   "record_sources": [
+    "inventory/resources/records/codex-cross-family-offering-bundle-composer-resource-activation-20260913-01.json",
     "inventory/resources/records/codex-whitebox-strict-delivery-evidence-gate-resource-activation-20260913-01.json",
     "inventory/resources/records/codex-commons-exact-sha-alternate-verifier-resource-activation-20260913-01.json",
     "inventory/resources/records/codex-osff-firmware-sbom-grant-packet-resource-activation-20260913-01.json",
@@ -96,15 +97,15 @@
   "schema": "commons-resource-ledger/v2",
   "secrets": false,
   "shared_resource_rule": "ALL_CARRIERS_MAY_USE_ALL_SHARED_RESOURCES; CLAUDE_IS_OWNER_HANDLED",
-  "slack_ts": "1789285480.890159",
+  "slack_ts": "1789295046.683799",
   "snapshot": {
-    "base_main_sha": "2f4290907fe088157768fc7acd7b69e99f573753",
-    "observed_at": "2026-09-13T07:44:40Z",
+    "base_main_sha": "cb553c1692fada76b72f69b72ab5509860182013",
+    "observed_at": "2026-09-13T10:25:07Z",
     "privacy_rule": "Shared account identities, service roles, aggregate quotas, reset states, and operating state may be published for Commons routing. Never persist passwords, tokens, API credentials, recovery or verification links, payment credentials, personal legal identity, or private mail contents.",
     "scope": "Anything convertible into Commons capability or value, including Bryce, devices, subscriptions, models, agents, tools, repositories, builds, data, attention, and external roads.",
     "truth_rule": "Capacity, authority, lifecycle stage, and condition are independent. Declared or cached is not live; reset is not permission; activity is not value."
   },
-  "source_id": "codex-whitebox-strict-delivery-evidence-gate-resource-activation-20260913-01",
+  "source_id": "codex-cross-family-offering-bundle-composer-resource-activation-20260913-01",
   "stage_order": [
     "DECLARED",
     "AVAILABLE",
@@ -113,8 +114,9 @@
     "EXERCISED",
     "PRODUCING"
   ],
-  "subject": "MASTER RESOURCE LEDGER — Whitebox strict delivery gate producing exact-index-bound range artifacts and offline-verifiable evidence",
+  "subject": "MASTER RESOURCE LEDGER — cross-family offering bundle composer producing evidence-bound human-review packets",
   "supersedes_source_ids": [
+    "codex-cross-family-offering-bundle-composer-resource-activation-20260913-01",
     "codex-whitebox-strict-delivery-evidence-gate-resource-activation-20260913-01",
     "codex-commons-exact-sha-alternate-verifier-resource-activation-20260913-01",
     "codex-osff-firmware-sbom-grant-packet-resource-activation-20260913-01",
@@ -2284,6 +2286,28 @@
       "last_receipt": "codex-whitebox-strict-delivery-evidence-gate-resource-activation-20260913-01",
       "last_used_at": "2026-09-13T07:44:40Z",
       "stale_after": "next delivery contract, estimator/index identity, source blob, workflow, pricing, customer authorization, network execution or fulfillment receipt",
+      "priority": 99
+    },
+    {
+      "name": "cross-family-offering-bundle-composer",
+      "kind": "EVIDENCE_BOUND_PRODUCT_SERVICE_EXPERTISE_DATA_BUNDLE_COMPILER",
+      "capacity": "LIVE",
+      "stage": "PRODUCING",
+      "condition": "CONSTRAINED",
+      "holder": "Commons / product, service, expertise and data catalog operators",
+      "authority": "SHARED_ALL_CARRIERS; PUBLIC_CURRENT_MAIN_READ_COMPILE_VERIFY_AND_COMPOSE; EXACT_PR13738_HEAD_5F149EEC9D3B95E3CECF1A7335365B3999DB0F43_MERGE_C9C8515217C127C811FE96DCF4E71272C83095A2_AND_SEVEN_SOURCE_BLOBS_REQUIRED; READY_FOR_HUMAN_BUNDLE_REVIEW_MAXIMUM; BUYER_CONTACT_FALSE; EXTERNAL_SEND_FALSE; CONTRACT_EXECUTION_FALSE; BUYER_ACCEPTANCE_FALSE; CHECKOUT_PAYMENT_FALSE; FULFILLMENT_FALSE; REVENUE_RECOGNITION_FALSE; DEPLOYMENT_FALSE",
+      "consumer": "Product, service, expertise and data catalog owners plus human offer reviewers who need one deterministic cross-family packet with immutable evidence, dependencies, conflicts, acceptance criteria and pricing mode before buyer-specific action.",
+      "value": "The released compiler converts already-evidenced catalog entries into canonical JSON and Markdown bundle receipts, aggregates exact single-currency integer pricing or emits QUOTE_REQUIRED, and fails closed on stale, mutable, conflicting, incomplete, sensitive or authority-bearing input.",
+      "next_action": "Catalog operators may supply immutable source and evidence commitments, compile one cross-family packet, verify its exact receipt offline, and hand only READY_FOR_HUMAN_BUNDLE_REVIEW output to an authorized human reviewer.",
+      "source": "revenue/offering_bundle_composer; source PR #13738 head 5f149eec9d3b95e3cecf1a7335365b3999db0f43 merge c9c8515217c127c811fe96dcf4e71272c83095a2",
+      "evidence_ts": "2026-09-13T10:25:07Z",
+      "auth_surface": "public current-main source plus caller-supplied immutable public catalog and evidence commitments; compilation and offline verification require no Commons login, buyer identity, customer data, credential, provider session or repeated owner approval",
+      "exact_safe_probe": "Current main cb553c1692fada76b72f69b72ab5509860182013 retained all seven source-head blobs: workflow b369a17a3cd4b3312fa00e3d006c39eff0b80086, README 0d9ff04674049215eb27d081085aaf699ff5c911, package 92a68ff1738b400536adbb24ab2f0f38817c8336, acceptance 369492686757625259b3926ec05c7666a3d7c578, CLI cb13d9052949e5ab69c4c9839268cfdd99a590f2, compiler 4a824a83c483b29a4ee663441f65d0abe63bc2b8 and tests 80e9ff35ef331084c20ed6214e2e2334f640d6b5. Current focused suite passes 31/31 normally and 31/31 under python -O; compilation passes; 160/160 acceptance cases match, including 120 READY controls and 40 deliberate HOLDs, with byte-identical normal/optimized output digest b7c889699c8efb4b7ba85ef0bb03e12e7f085af98e5883b4e00552a58dae6527.",
+      "rate_plan_boundary": "The compiler uses local public-source compute and no paid provider call by itself. READY_FOR_HUMAN_BUNDLE_REVIEW proves only deterministic evidence-bound composition; it does not contact a buyer, send an offer, execute a contract, establish acceptance, create checkout/payment, fulfill work, deploy, recognize revenue or create cash.",
+      "assigned_backlog": "available to existing product/service/expertise/data catalog owners and human offer reviewers; no buyer-specific send, fulfillment, payment, deployment or new implementation lane is created",
+      "last_receipt": "codex-cross-family-offering-bundle-composer-resource-activation-20260913-01",
+      "last_used_at": "2026-09-13T10:25:07Z",
+      "stale_after": "next compiler, receipt schema, catalog family, evidence commitment, dependency/conflict contract, pricing mode, source blob, acceptance corpus or authority change",
       "priority": 99
     }
   ],
