@@ -16,39 +16,56 @@ metadata:
 
 Parallel evidence preflights are not a mutex. Two workers can both observe no
 prior send and both cross Gmail/provider before either receipt is visible. For
-net-new external mutations, acquire one deterministic GitHub branch seam first.
+external mutations, acquire one deterministic GitHub branch seam first.
 
 The branch is **mutual exclusion only**. It is never proof of owner approval,
 content correctness, buyer acceptance, payment, or a successful provider send.
 Never describe it as `external_send_authorized`.
 
-## 1. Name one canonical seam
+## 1. Build one canonical seam
 
-Use the helper contract in
+Use the closed schema in
 [`revenue/outbound_connector_lease/README.md`](../../../revenue/outbound_connector_lease/README.md).
 
-- `buyer_scope` = organization primary domain, not a person's email.
-- `opportunity_scope` = stable external opportunity/project/issue ID when one
-  exists; otherwise exactly `cold` for unsolicited org-level outreach.
-- One human inbound event that needs one reply may use
-  `reply:<provider-message-id>`.
-- Reuse an already-established opportunity key exactly.
+`buyer_scope` is the organization's primary domain, not a person's email or an
+alternate subdomain chosen for convenience.
 
-Never create a new seam from recipient, contact, route, price, offer amount,
-subject, version, revised draft, or alternate mailbox. Different `$5k`/`$7.5k`
-proposals to the same procurement opportunity are the **same seam** unless the
-owner explicitly creates a durable supersession outside this skill.
+Choose exactly one opportunity mode:
 
-Compile the branch:
+1. **External opportunity:** source/issuer domain + stable authoritative ID.
+   Procurement `04254` stays that same source ID whether the buyer contact,
+   quoted price, route, draft, or subject changes.
+2. **Cold:** exactly `{"kind":"cold"}` for unsolicited organization-level
+   outreach with no external opportunity. Do not create product-specific cold
+   aliases.
+3. **Reply:** provider + exact durable inbound message/event ID for one human
+   reply that should be answered once.
+
+The helper's exact-field schemas deliberately have no price, recipient, route,
+subject, or draft fields. Do not encode those facts into the source ID.
+
+Examples:
 
 ```bash
+# externally identified opportunity
+python -m revenue.outbound_connector_lease.key \
+  --buyer-scope prime.example \
+  --external-authority issuer.example \
+  --external-id rfp-04254
+
+# generic cold outreach
+python -m revenue.outbound_connector_lease.key \
+  --buyer-scope example.com --cold
+
+# one human inbound event
 python -m revenue.outbound_connector_lease.key \
   --buyer-scope example.com \
-  --opportunity-scope rfp-12345
+  --reply-provider gmail \
+  --reply-event-id 1abc234
 ```
 
-If this harness cannot run shell Python, compute the same canonical JSON SHA-256
-with any trustworthy local utility. Do not invent a different encoding.
+If this harness cannot run shell Python, reproduce the exact canonical JSON
+schema and SHA-256. Do not invent a different encoding or a free-form seam key.
 
 ## 2. Acquire through the connected GitHub provider
 
@@ -63,13 +80,12 @@ Interpret the create result strictly:
 - **422 / Reference already exists** -> `HOLD`; another worker/history owns it.
 - **any other error, timeout, missing permission, or ambiguity** -> `HOLD`.
 
-Do not retry under a new spelling. Do not read an existing branch and decide it
-must be yours after an ambiguous create. Do not use another contact or another
-price to bypass the branch.
+Do not retry under a new spelling, source authority, source ID, contact, or price.
+Do not read an existing branch and decide it must be yours after an ambiguous
+create.
 
-Post the acquired branch hash/seam receipt to the relevant Slack work thread as a
-TAKE so humans can route the work. Slack visibility is not the atomic claim; the
-GitHub create result is.
+Post the acquired branch hash and semantic source identity to the relevant Slack
+work thread as a TAKE. Slack visibility is not the atomic claim; GitHub create is.
 
 ## 3. Re-read provider truth, then send once
 
@@ -90,13 +106,13 @@ failure is authoritative.
 
 ## 4. Replies and redirects
 
-A real human inbound reply can create a new one-reply event seam using the exact
-provider message ID. Reply in the existing provider thread and bind one worker to
-that event.
+A real human inbound message can create one `reply` event seam using its exact
+provider message/event ID. Reply in the existing provider thread.
 
-An auto-reply/OOO redirect to another contact does **not** mint a new opportunity.
-Stay on the original org+opportunity seam. This prevents two workers from both
-following the same redirect before seeing each other's provider send.
+An automatic OOO, bounce redirect, or alternate-contact suggestion does **not**
+mint a new opportunity. Stay on the original external/cold seam. This prevents
+two workers from both following the same redirect before seeing each other's
+provider send.
 
 ## 5. Never claim what the provider did not prove
 
@@ -110,13 +126,14 @@ Use canonical provider receipts for each state transition.
 
 ## Hostile checklist
 
-Before any net-new send, make these questions boringly answerable:
+Before any external send, make these questions boringly answerable:
 
 - Would another contact at the same organization derive the same buyer scope?
-- Would a different quoted price derive the same opportunity scope?
-- Would a redirect derive the same original opportunity scope?
+- Is the opportunity sourced from the same issuer domain + exact authoritative ID?
+- Can a different price/route/draft alter any lease field? (It must not.)
+- Would an automatic redirect stay on the original opportunity seam?
 - If two workers call create simultaneously, can only one observe exact success?
-- If the create response is ambiguous, do we HOLD rather than mint a variant?
-- If Gmail/provider response is ambiguous, do we reconcile rather than retry?
+- If branch create is ambiguous, do we HOLD rather than mint a variant?
+- If Gmail/provider result is ambiguous, do we reconcile rather than retry?
 
 If any answer is no, HOLD and repair the seam before external mutation.
