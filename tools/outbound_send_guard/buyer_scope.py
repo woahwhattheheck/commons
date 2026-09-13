@@ -16,7 +16,7 @@ except ImportError:  # pragma: no cover - direct script execution
     import guard  # type: ignore
 
 SCOPE_SCHEMA = "outbound-send-buyer-scope/v1"
-RECEIPT_SCHEMA = "outbound-send-buyer-scope-receipt/v1"
+RECEIPT_SCHEMA = "outbound-send-buyer-scope-receipt/v2"
 MAX_SCOPE_MEMBERS = 100
 
 
@@ -176,30 +176,49 @@ def _rebind_evidence(
     return evidence
 
 
-def evaluate(
+def _evaluate(
     intent_raw: dict[str, Any],
     evidence_raw: dict[str, Any],
     scope_raw: dict[str, Any],
     *,
-    intent_sha256: str | None = None,
-    evidence_sha256: str | None = None,
-    scope_sha256: str | None = None,
+    raw_byte_digests: dict[str, str] | None,
 ) -> dict[str, Any]:
     scope_id, members = _parse_scope(_require_dict(scope_raw, "buyer scope"))
     scoped_evidence = _rebind_evidence(intent_raw, evidence_raw, members)
     core = guard.evaluate(intent_raw, scoped_evidence)
+
+    byte_custody = None
+    if raw_byte_digests is not None:
+        expected = {"intent_sha256", "evidence_sha256", "scope_sha256"}
+        if set(raw_byte_digests) != expected:
+            raise ScopeError("internal raw-byte custody set is incomplete")
+        if not all(
+            type(raw_byte_digests[key]) is str and len(raw_byte_digests[key]) == 64
+            for key in expected
+        ):
+            raise ScopeError("internal raw-byte digest is malformed")
+        byte_custody = {
+            "mode": "exact_consumed_bytes",
+            "intent_sha256": raw_byte_digests["intent_sha256"],
+            "evidence_sha256": raw_byte_digests["evidence_sha256"],
+            "scope_sha256": raw_byte_digests["scope_sha256"],
+        }
 
     payload = {
         "schema_version": RECEIPT_SCHEMA,
         "buyer_scope": {
             "scope_id": scope_id,
             "members": members,
-            "scope_sha256": scope_sha256 or guard.digest_object(scope_raw),
         },
         "source": {
-            "intent_sha256": intent_sha256 or guard.digest_object(intent_raw),
-            "evidence_sha256": evidence_sha256 or guard.digest_object(evidence_raw),
-            "scoped_evidence_sha256": guard.digest_object(scoped_evidence),
+            "custody_mode": (
+                "exact_consumed_bytes" if byte_custody is not None else "canonical_objects"
+            ),
+            "intent_object_sha256": guard.digest_object(intent_raw),
+            "evidence_object_sha256": guard.digest_object(evidence_raw),
+            "scope_object_sha256": guard.digest_object(scope_raw),
+            "scoped_evidence_object_sha256": guard.digest_object(scoped_evidence),
+            "byte_custody": byte_custody,
         },
         "core_receipt_sha256": core["receipt_sha256"],
         "core": core["payload"],
@@ -208,6 +227,48 @@ def evaluate(
         "side_effects_authorized": False,
     }
     return {"payload": payload, "receipt_sha256": guard.digest_object(payload)}
+
+
+def evaluate(
+    intent_raw: dict[str, Any],
+    evidence_raw: dict[str, Any],
+    scope_raw: dict[str, Any],
+) -> dict[str, Any]:
+    """Evaluate parsed objects without claiming raw-file byte custody."""
+    return _evaluate(
+        _require_dict(intent_raw, "intent"),
+        _require_dict(evidence_raw, "evidence"),
+        _require_dict(scope_raw, "buyer scope"),
+        raw_byte_digests=None,
+    )
+
+
+def evaluate_bytes(
+    intent_bytes: bytes,
+    evidence_bytes: bytes,
+    scope_bytes: bytes,
+) -> dict[str, Any]:
+    """Strict-parse and evaluate the exact bytes whose digests enter the receipt."""
+    if type(intent_bytes) is not bytes:
+        raise ScopeError("intent bytes must be bytes")
+    if type(evidence_bytes) is not bytes:
+        raise ScopeError("evidence bytes must be bytes")
+    if type(scope_bytes) is not bytes:
+        raise ScopeError("buyer scope bytes must be bytes")
+
+    intent = guard.parse_json_bytes(intent_bytes, "intent")
+    evidence = guard.parse_json_bytes(evidence_bytes, "evidence")
+    scope = guard.parse_json_bytes(scope_bytes, "buyer scope")
+    return _evaluate(
+        intent,
+        evidence,
+        scope,
+        raw_byte_digests={
+            "intent_sha256": guard.digest_bytes(intent_bytes),
+            "evidence_sha256": guard.digest_bytes(evidence_bytes),
+            "scope_sha256": guard.digest_bytes(scope_bytes),
+        },
+    )
 
 
 def _same_file_or_alias(a: Path, b: Path) -> bool:
@@ -251,12 +312,11 @@ def _atomic_write(path: Path, raw: bytes) -> None:
             raise ScopeError(f"cannot publish output {path}: {exc}") from exc
 
 
-def _load(path: Path, label: str) -> tuple[bytes, dict[str, Any]]:
+def _load_bytes(path: Path, label: str) -> bytes:
     try:
-        raw = path.read_bytes()
+        return path.read_bytes()
     except OSError as exc:
         raise ScopeError(f"cannot read {label} {path}: {exc}") from exc
-    return raw, guard.parse_json_bytes(raw, label)
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -278,17 +338,10 @@ def main(argv: list[str] | None = None) -> int:
         if args.out is not None and any(_same_file_or_alias(args.out, value) for value in inputs):
             raise ScopeError("output must not alias an input")
 
-        intent_bytes, intent = _load(args.intent, "intent")
-        evidence_bytes, evidence = _load(args.evidence, "evidence")
-        scope_bytes, scope = _load(args.scope, "buyer scope")
-        receipt = evaluate(
-            intent,
-            evidence,
-            scope,
-            intent_sha256=guard.digest_bytes(intent_bytes),
-            evidence_sha256=guard.digest_bytes(evidence_bytes),
-            scope_sha256=guard.digest_bytes(scope_bytes),
-        )
+        intent_bytes = _load_bytes(args.intent, "intent")
+        evidence_bytes = _load_bytes(args.evidence, "evidence")
+        scope_bytes = _load_bytes(args.scope, "buyer scope")
+        receipt = evaluate_bytes(intent_bytes, evidence_bytes, scope_bytes)
         encoded = (
             json.dumps(receipt, ensure_ascii=False, sort_keys=True, indent=2).encode("utf-8")
             + b"\n"
