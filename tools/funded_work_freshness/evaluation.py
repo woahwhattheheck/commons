@@ -19,6 +19,28 @@ from constants import (
 from models import validate_github_item_url
 
 
+_MONEY_RE = re.compile(
+    r"(?<![A-Za-z0-9_])(?:"
+    r"(?P<code>[A-Za-z]{3})\s*(?P<code_value>\d+(?:,\d{3})*(?:\.\d+)?)"
+    r"|(?P<symbol>[$€£])\s*(?P<symbol_value>\d+(?:,\d{3})*(?:\.\d+)?)"
+    r"|(?P<suffix_value>\d+(?:,\d{3})*(?:\.\d+)?)\s*(?P<suffix_code>[A-Za-z]{3})(?![A-Za-z0-9_])"
+    r")"
+)
+_COMMERCIAL_NOUN_RE = re.compile(r"(?i)\b(?:reward|bounty|funding)(?:\s+amount)?\b")
+_DIRECT_AMOUNT_LINK_RE = re.compile(
+    r"(?i)^[\s:=,()\-]*"
+    r"(?:(?:amount|is|was|has|been|now|currently|set|updated|changed|increased|decreased|raised|reduced|to|at|of|worth|totals?|equals?)\b[\s:=,()\-]*){0,6}$"
+)
+_REVERSE_AMOUNT_LINK_RE = re.compile(
+    r"(?i)^\s*(?:as\s+(?:the\s+)?)?(?:reward|bounty|funding)\b"
+)
+_FROM_TO_RE = re.compile(
+    r"(?i)\b(?:changed|updated|increased|decreased|raised|reduced)\b.*\bfrom\b.*\bto\b"
+)
+_CURRENT_TRANSITION_RE = re.compile(r"(?i)\b(?:now|to)\b")
+_SYMBOL_CURRENCY = {"$": "USD", "€": "EUR", "£": "GBP"}
+
+
 def parse_timestamp(value: Any) -> datetime | None:
     if not isinstance(value, str):
         return None
@@ -99,6 +121,163 @@ def amount_supported(text: str, amount: str, currency: str) -> bool:
     return False
 
 
+def _normalize_amount_token(value: str) -> str:
+    amount = Decimal(value.replace(",", ""))
+    normalized = format(amount, "f")
+    if "." in normalized:
+        normalized = normalized.rstrip("0").rstrip(".")
+    return normalized or "0"
+
+
+def _money_tokens(text: str) -> list[tuple[int, int, str, str]]:
+    """Return positioned currency/amount tokens without assigning commercial meaning."""
+
+    tokens: list[tuple[int, int, str, str]] = []
+    for match in _MONEY_RE.finditer(text):
+        if match.group("code") is not None:
+            currency = str(match.group("code")).upper()
+            value = str(match.group("code_value"))
+        elif match.group("symbol") is not None:
+            currency = _SYMBOL_CURRENCY[str(match.group("symbol"))]
+            value = str(match.group("symbol_value"))
+        else:
+            currency = str(match.group("suffix_code")).upper()
+            value = str(match.group("suffix_value"))
+        tokens.append((match.start(), match.end(), currency, _normalize_amount_token(value)))
+    return tokens
+
+
+def _commercial_amount_event(text: str) -> dict[str, str | None]:
+    """Resolve one authority event's explicit reward/bounty/funding amount.
+
+    A line/semicolon clause must grammatically bind the amount to ``reward``,
+    ``bounty``, or ``funding``. Multiple distinct amounts are ambiguous unless the
+    clause has an explicit transition such as ``from X to Y`` or ``X, now Y``.
+    """
+
+    event_values: list[tuple[str, str]] = []
+    event_ambiguous = False
+    for segment in re.split(r"[\n;]+", text):
+        nouns = list(_COMMERCIAL_NOUN_RE.finditer(segment))
+        monies = _money_tokens(segment)
+        if not nouns or not monies:
+            continue
+
+        first_noun = min(noun.start() for noun in nouns)
+        if len(monies) >= 2 and first_noun < monies[0][0]:
+            transition_text = segment[monies[0][1] : monies[-1][0]]
+            if _FROM_TO_RE.search(segment) or _CURRENT_TRANSITION_RE.search(transition_text):
+                event_values.append((monies[-1][2], monies[-1][3]))
+                continue
+
+        direct_values: list[tuple[str, str]] = []
+        for start, end, currency, amount in monies:
+            prior = [noun for noun in nouns if noun.end() <= start]
+            if prior:
+                noun = prior[-1]
+                between = segment[noun.end() : start]
+                if len(between) <= 80 and _DIRECT_AMOUNT_LINK_RE.fullmatch(between):
+                    direct_values.append((currency, amount))
+                    continue
+            if _REVERSE_AMOUNT_LINK_RE.match(segment[end:]):
+                direct_values.append((currency, amount))
+
+        unique_direct: list[tuple[str, str]] = []
+        for value in direct_values:
+            if value not in unique_direct:
+                unique_direct.append(value)
+        if not unique_direct:
+            continue
+
+        all_unique: list[tuple[str, str]] = []
+        for _, _, currency, amount in monies:
+            value = (currency, amount)
+            if value not in all_unique:
+                all_unique.append(value)
+        if len(all_unique) > 1 or len(unique_direct) > 1:
+            event_ambiguous = True
+        else:
+            event_values.append(unique_direct[0])
+
+    unique_values: list[tuple[str, str]] = []
+    for value in event_values:
+        if value not in unique_values:
+            unique_values.append(value)
+    if event_ambiguous or len(unique_values) > 1:
+        return {"status": "ambiguous", "currency": None, "amount": None}
+    if len(unique_values) == 1:
+        return {
+            "status": "resolved",
+            "currency": unique_values[0][0],
+            "amount": unique_values[0][1],
+        }
+    return {"status": "none", "currency": None, "amount": None}
+
+
+def _trusted_comment_events(
+    comments: Sequence[Mapping[str, Any]],
+) -> list[tuple[datetime, int, str]]:
+    """Return trusted comment prose in deterministic authority chronology."""
+
+    far_future = datetime.max.replace(tzinfo=timezone.utc)
+    events: list[tuple[datetime, int, str]] = []
+    for index, comment in enumerate(comments):
+        if not trusted_comment(comment):
+            continue
+        stamp = (
+            parse_timestamp(comment.get("updated_at"))
+            or parse_timestamp(comment.get("created_at"))
+            or far_future
+        )
+        events.append((stamp, index, str(comment.get("body") or "")))
+    return sorted(events, key=lambda row: (row[0], row[1]))
+
+
+def authoritative_amount_state(
+    issue: Mapping[str, Any],
+    comments: Sequence[Mapping[str, Any]],
+    advertised_amount: str,
+    advertised_currency: str,
+) -> dict[str, str | bool | None]:
+    """Resolve the latest trusted commercial amount and compare it to the candidate."""
+
+    status = "missing"
+    current_currency: str | None = None
+    current_amount: str | None = None
+
+    issue_user = issue.get("user") if isinstance(issue.get("user"), Mapping) else {}
+    if funding_authority(issue_user, issue.get("author_association")):
+        issue_text = "\n".join(
+            (str(issue.get("title") or ""), str(issue.get("body") or ""))
+        )
+        event = _commercial_amount_event(issue_text)
+        if event["status"] != "none":
+            status = str(event["status"])
+            current_currency = event["currency"]
+            current_amount = event["amount"]
+
+    for _, _, text in _trusted_comment_events(comments):
+        event = _commercial_amount_event(text)
+        if event["status"] == "none":
+            continue
+        status = str(event["status"])
+        current_currency = event["currency"]
+        current_amount = event["amount"]
+
+    matches = (
+        status == "resolved"
+        and current_currency == advertised_currency
+        and current_amount is not None
+        and Decimal(current_amount) == Decimal(advertised_amount)
+    )
+    return {
+        "status": status,
+        "currency": current_currency,
+        "amount": current_amount,
+        "matches_advertised": matches,
+    }
+
+
 def _funding_directive(text: str) -> str | None:
     """Return the last explicit commercial-state directive in one authority event."""
 
@@ -141,19 +320,7 @@ def authoritative_funding_state(
             ):
                 state = "not_withdrawn"
 
-    far_future = datetime.max.replace(tzinfo=timezone.utc)
-    events: list[tuple[datetime, int, str]] = []
-    for index, comment in enumerate(comments):
-        if not trusted_comment(comment):
-            continue
-        stamp = (
-            parse_timestamp(comment.get("updated_at"))
-            or parse_timestamp(comment.get("created_at"))
-            or far_future
-        )
-        events.append((stamp, index, str(comment.get("body") or "")))
-
-    for _, _, text in sorted(events, key=lambda row: (row[0], row[1])):
+    for _, _, text in _trusted_comment_events(comments):
         directive = _funding_directive(text)
         if directive == "withdrawn":
             state = "withdrawn"
