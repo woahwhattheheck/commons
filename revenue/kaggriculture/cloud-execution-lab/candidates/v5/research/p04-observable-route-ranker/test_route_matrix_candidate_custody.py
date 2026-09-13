@@ -1,9 +1,12 @@
 #!/usr/bin/env python3
 import gzip
 import hashlib
+import importlib.util
 import io
+import json
 import tarfile
 import tempfile
+import types
 import unittest
 from pathlib import Path
 
@@ -51,11 +54,51 @@ class CandidateCustody(unittest.TestCase):
             selective / "build_delivery.py": custody.BUILD_DELIVERY_SHA256,
             selective / "publication_custody.py": custody.PUBLICATION_CUSTODY_SHA256,
             kaggriculture / "cloud-pack" / "official.py": custody.OFFICIAL_FILE_LOADER_SHA256,
+            kaggriculture / "cloud-pack" / "upstream" / "manifest.json":
+                custody.OFFICIAL_UPSTREAM_MANIFEST_SHA256,
         }
         for path, expected in helpers.items():
             with self.subTest(path=path):
                 self.assertEqual(64, len(expected))
                 self.assertEqual(expected, custody.core.sha256_file(path))
+
+    def test_exact_module_executes_captured_bytes_not_reopened_path(self):
+        with tempfile.TemporaryDirectory() as td:
+            path = Path(td) / "helper.py"
+            original = b"VALUE = 'captured'\n"
+            path.write_bytes(original)
+            expected = hashlib.sha256(original).hexdigest()
+            capture = custody._capture_regular_bytes
+
+            def capture_then_swap(value, label):
+                source_path, body = capture(value, label)
+                Path(value).write_text("VALUE = 'swapped'\n", encoding="utf-8")
+                return source_path, body
+
+            custody._capture_regular_bytes = capture_then_swap
+            try:
+                module = custody._load_exact_module(
+                    "test_captured_helper", path, expected
+                )
+            finally:
+                custody._capture_regular_bytes = capture
+                custody.sys.modules.pop("test_captured_helper", None)
+            self.assertEqual(module.VALUE, "captured")
+            self.assertEqual(path.read_text(encoding="utf-8"), "VALUE = 'swapped'\n")
+
+    def test_exact_module_rejects_original_symlink(self):
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            target = root / "target.py"
+            link = root / "link.py"
+            target.write_text("VALUE = 1\n", encoding="utf-8")
+            try:
+                link.symlink_to(target)
+            except (OSError, NotImplementedError):
+                self.skipTest("symlinks unavailable")
+            expected = hashlib.sha256(target.read_bytes()).hexdigest()
+            with self.assertRaisesRegex(ValueError, "must not be a symlink"):
+                custody._load_exact_module("test_symlink_helper", link, expected)
 
     def test_capture_binds_canonical_archive_manifest_and_exact_tree(self):
         with tempfile.TemporaryDirectory() as td:
@@ -104,28 +147,113 @@ class CandidateCustody(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, "contains symlink"):
                 custody.capture_candidate(payload, archive, m)
 
-    def test_private_snapshot_detects_postcapture_mutation(self):
+    def fake_official(self, root):
+        loader = root / "official.py"
+        upstream = root / "upstream"
+        upstream.mkdir()
+        marker = upstream / "marker.txt"
+        marker.write_text("captured-marker", encoding="utf-8")
+        loader.write_text(
+            "from pathlib import Path\n"
+            "HERE = Path(__file__).resolve().parent\n"
+            "def make_agent(path):\n"
+            "    marker = (HERE / 'upstream' / 'marker.txt').read_text()\n"
+            "    namespace = {}\n"
+            "    exec(Path(path).read_text(), namespace)\n"
+            "    fn = namespace['agent']\n"
+            "    def call(observation, configuration):\n"
+            "        result = dict(fn(observation, configuration))\n"
+            "        result['marker'] = marker\n"
+            "        return result\n"
+            "    return call\n",
+            encoding="utf-8",
+        )
+        upstream_manifest = {
+            "ref": custody.core.ENGINE_REF,
+            "files": {
+                "marker.txt": {
+                    "sha256": hashlib.sha256(marker.read_bytes()).hexdigest()
+                }
+            },
+        }
+        manifest_path = upstream / "manifest.json"
+        manifest_path.write_text(
+            json.dumps(upstream_manifest, sort_keys=True, separators=(",", ":")),
+            encoding="utf-8",
+        )
+        return loader, marker, manifest_path
+
+    def test_adapter_executes_only_captured_candidate_and_loader_closure(self):
         with tempfile.TemporaryDirectory() as td:
             root = Path(td)
-            payload, archive, _, m = self.fixture(root)
-            captured, _ = custody.capture_candidate(payload, archive, m)
-            official = root / "official.py"
-            official.write_text("def make_agent(path): return lambda obs,cfg: {}\n")
-            old = custody.OFFICIAL_FILE_LOADER_SHA256
-            custody.OFFICIAL_FILE_LOADER_SHA256 = hashlib.sha256(official.read_bytes()).hexdigest()
+            loader, marker, manifest_path = self.fake_official(root)
+            old_loader = custody.OFFICIAL_FILE_LOADER_SHA256
+            old_manifest = custody.OFFICIAL_UPSTREAM_MANIFEST_SHA256
+            custody.OFFICIAL_FILE_LOADER_SHA256 = hashlib.sha256(loader.read_bytes()).hexdigest()
+            custody.OFFICIAL_UPSTREAM_MANIFEST_SHA256 = hashlib.sha256(
+                manifest_path.read_bytes()
+            ).hexdigest()
+            captured = {
+                "main.py": b"def agent(observation, configuration): return {'value': 'captured'}\n"
+            }
             try:
-                held, private_root, adapter, authority = custody.private_snapshot(captured, official)
-                self.assertEqual(
-                    authority["generated_adapter_sha256"],
-                    hashlib.sha256(adapter.read_bytes()).hexdigest(),
-                )
-                custody.verify_snapshot(private_root, captured)
-                (private_root / "main.py").write_bytes(b"mutated\n")
-                with self.assertRaisesRegex(ValueError, "changed during game"):
-                    custody.verify_snapshot(private_root, captured)
-                held.cleanup()
+                adapter, authority = custody.private_snapshot(captured, loader)
             finally:
-                custody.OFFICIAL_FILE_LOADER_SHA256 = old
+                custody.OFFICIAL_FILE_LOADER_SHA256 = old_loader
+                custody.OFFICIAL_UPSTREAM_MANIFEST_SHA256 = old_manifest
+
+            loader.write_text("raise RuntimeError('swapped loader')\n", encoding="utf-8")
+            marker.write_text("swapped-marker", encoding="utf-8")
+            self.assertNotIn(str(loader), adapter.decode("utf-8"))
+            self.assertFalse(authority["caller_paths_embedded"])
+
+            adapter_path = root / "adapter.py"
+            adapter_path.write_bytes(adapter)
+            spec = importlib.util.spec_from_file_location("captured_adapter_test", adapter_path)
+            module = importlib.util.module_from_spec(spec)
+            spec.loader.exec_module(module)
+            try:
+                self.assertEqual(
+                    module.agent({}, {}),
+                    {"value": "captured", "marker": "captured-marker"},
+                )
+            finally:
+                module._custody.cleanup()
+
+    def test_actor_private_adapter_blocks_direct_swap_and_unlinks_after_ready(self):
+        class FakeActor:
+            def __init__(self, spec, cache, loader, rng_seed, startup_timeout=10.0):
+                self.spec = spec
+                self.directory = tempfile.TemporaryDirectory(prefix="kag-eval-agent-")
+                path = Path(self.directory.name) / spec.partition("::")[0]
+                try:
+                    path.write_bytes(b"swapped")
+                    self.swap_blocked = False
+                except PermissionError:
+                    self.swap_blocked = True
+                self.loaded = path.read_bytes()
+                self.ready = {"kind": "ready"}
+
+            def report(self):
+                return {"loaded_sha256": hashlib.sha256(self.loaded).hexdigest()}
+
+        fake = types.SimpleNamespace(Actor=FakeActor)
+        adapter = b"agent = lambda observation, configuration: {}\n"
+        private_actor, expected = custody._private_actor_class(fake, adapter)
+        actor = private_actor(
+            custody._PRIVATE_CANDIDATE_SPEC, Path("."), Path("."), 7
+        )
+        try:
+            self.assertTrue(actor.swap_blocked)
+            self.assertEqual(actor.loaded, adapter)
+            self.assertFalse((Path(actor.directory.name) / "candidate-adapter.py").exists())
+            report = actor.report()
+            self.assertEqual(report["candidate_adapter_sha256"], expected)
+            self.assertEqual(report["candidate_adapter_expected_sha256"], expected)
+            self.assertTrue(report["candidate_adapter_actor_private"])
+            self.assertTrue(report["candidate_adapter_removed_after_ready"])
+        finally:
+            actor.directory.cleanup()
 
     def test_shared_publication_primitive_is_loadable_and_effective(self):
         publish = custody.shared_publication()
