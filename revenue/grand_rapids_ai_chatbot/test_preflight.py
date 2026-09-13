@@ -1,17 +1,18 @@
 import copy
 import hashlib
+import io
 import json
 import os
+import sys
 import tempfile
 import unittest
+from contextlib import redirect_stderr, redirect_stdout
 from pathlib import Path
 from unittest import mock
 
-from preflight import REQUIRED_GATES, SCHEMA_VERSION, evaluate
+from preflight import REQUIRED_GATES, SCHEMA_VERSION, evaluate, main
 from trusted_authority import (
     AUTHORITY_SCHEMA,
-    DIGEST_ENV,
-    GENERATION_ENV,
     GATE_EVIDENCE_KIND,
     AuthorityError,
     EvidenceRecord,
@@ -22,6 +23,7 @@ from trusted_authority import (
 )
 
 HERE = Path(__file__).resolve().parent
+
 
 def h(label: str) -> str:
     return hashlib.sha256(label.encode("utf-8")).hexdigest()
@@ -58,7 +60,12 @@ def authority_material(generation: int = 7) -> dict:
             "source_generation_sha256": source,
         }
         material["evidence"].append(row)
-        pending.append(EvidenceRecord(row["id"], row["gate"], row["kind"], row["sha256"], row["source_generation_sha256"]))
+        pending.append(
+            EvidenceRecord(
+                row["id"], row["gate"], row["kind"], row["sha256"],
+                row["source_generation_sha256"],
+            )
+        )
     subject = release_subject_sha256(
         solicitation_id="920-45-269",
         source_generation=source,
@@ -98,13 +105,12 @@ def load_pinned(material: dict):
     with tempfile.TemporaryDirectory() as td:
         path = Path(td) / "authority.json"
         path.write_text(json.dumps(material, sort_keys=True), encoding="utf-8")
-        env = {
-            GENERATION_ENV: str(material["generation"]),
-            DIGEST_ENV: digest,
-        }
-        with mock.patch.dict(os.environ, env, clear=False):
-            return load_current_authority(path), json.loads(json.dumps(material))
-
+        authority = load_current_authority(
+            path,
+            trusted_generation=material["generation"],
+            trusted_authority_sha256=digest,
+        )
+        return authority, json.loads(json.dumps(material))
 
 
 class PreflightTests(unittest.TestCase):
@@ -161,7 +167,7 @@ class PreflightTests(unittest.TestCase):
         self.assertFalse(receipt["trusted_authority"]["verified_current"])
         self.assertEqual(len(REQUIRED_GATES), len(receipt["blockers"]))
 
-    def test_authenticated_current_authority_can_make_ready(self):
+    def test_authenticated_current_authority_can_make_ready_via_trusted_host_api(self):
         material = authority_material()
         authority, _ = load_pinned(material)
         receipt = evaluate(ready_state(material), authority)
@@ -171,49 +177,110 @@ class PreflightTests(unittest.TestCase):
         self.assertTrue(receipt["trusted_authority"]["verified_current"])
         self.assertEqual(material["generation"], receipt["trusted_authority"]["generation"])
 
-    def test_self_minted_authority_not_matching_host_root_is_rejected(self):
+    def test_explicit_wrong_trusted_root_rejects_self_minted_authority(self):
         approved = authority_material()
         attacker = copy.deepcopy(approved)
         attacker["evidence"][-1]["id"] = "ev:owner_release_to_submit:fork"
         with tempfile.TemporaryDirectory() as td:
             path = Path(td) / "authority.json"
             path.write_text(json.dumps(attacker), encoding="utf-8")
-            env = {
-                GENERATION_ENV: str(approved["generation"]),
-                DIGEST_ENV: authority_sha256(approved),
-            }
-            with mock.patch.dict(os.environ, env, clear=False):
-                with self.assertRaisesRegex(AuthorityError, "current digest"):
-                    load_current_authority(path)
+            with self.assertRaisesRegex(AuthorityError, "trusted host root"):
+                load_current_authority(
+                    path,
+                    trusted_generation=approved["generation"],
+                    trusted_authority_sha256=authority_sha256(approved),
+                )
 
-    def test_old_valid_authority_cannot_replay_after_host_root_advances(self):
+    def test_old_valid_authority_cannot_replay_after_trusted_root_advances(self):
         old = authority_material(generation=7)
         current = authority_material(generation=8)
         with tempfile.TemporaryDirectory() as td:
             path = Path(td) / "authority.json"
             path.write_text(json.dumps(old), encoding="utf-8")
-            env = {
-                GENERATION_ENV: "8",
-                DIGEST_ENV: authority_sha256(current),
-            }
-            with mock.patch.dict(os.environ, env, clear=False):
-                with self.assertRaisesRegex(AuthorityError, "current generation"):
-                    load_current_authority(path)
+            with self.assertRaisesRegex(AuthorityError, "trusted host root"):
+                load_current_authority(
+                    path,
+                    trusted_generation=8,
+                    trusted_authority_sha256=authority_sha256(current),
+                )
 
-    def test_same_generation_fork_cannot_replace_host_pinned_digest(self):
+    def test_same_generation_fork_cannot_replace_trusted_digest(self):
         material = authority_material(generation=7)
         fork = copy.deepcopy(material)
         fork["evidence"][-1]["id"] = "ev:owner_release_to_submit:fork"
         with tempfile.TemporaryDirectory() as td:
             path = Path(td) / "authority.json"
             path.write_text(json.dumps(fork), encoding="utf-8")
-            env = {
-                GENERATION_ENV: "7",
-                DIGEST_ENV: authority_sha256(material),
-            }
-            with mock.patch.dict(os.environ, env, clear=False):
-                with self.assertRaisesRegex(AuthorityError, "current digest"):
-                    load_current_authority(path)
+            with self.assertRaisesRegex(AuthorityError, "trusted host root"):
+                load_current_authority(
+                    path,
+                    trusted_generation=7,
+                    trusted_authority_sha256=authority_sha256(material),
+                )
+
+    def test_loader_rejects_bool_trusted_generation(self):
+        material = authority_material()
+        with tempfile.TemporaryDirectory() as td:
+            path = Path(td) / "authority.json"
+            path.write_text(json.dumps(material), encoding="utf-8")
+            with self.assertRaisesRegex(AuthorityError, "integer"):
+                load_current_authority(
+                    path,
+                    trusted_generation=True,
+                    trusted_authority_sha256=authority_sha256(material),
+                )
+
+    def test_loader_rejects_malformed_trusted_digest(self):
+        material = authority_material()
+        with tempfile.TemporaryDirectory() as td:
+            path = Path(td) / "authority.json"
+            path.write_text(json.dumps(material), encoding="utf-8")
+            with self.assertRaisesRegex(AuthorityError, "lowercase 64-hex"):
+                load_current_authority(
+                    path,
+                    trusted_generation=material["generation"],
+                    trusted_authority_sha256="not-a-digest",
+                )
+
+    def test_public_cli_caller_environment_cannot_mint_ready(self):
+        material = authority_material()
+        state = ready_state(material)
+        legacy_env = {
+            "GRAND_RAPIDS_PREFLIGHT_AUTHORITY_GENERATION": str(material["generation"]),
+            "GRAND_RAPIDS_PREFLIGHT_AUTHORITY_SHA256": authority_sha256(material),
+        }
+        with tempfile.TemporaryDirectory() as td:
+            state_path = Path(td) / "state.json"
+            state_path.write_text(json.dumps(state), encoding="utf-8")
+            out = io.StringIO()
+            with mock.patch.dict(os.environ, legacy_env, clear=False):
+                with mock.patch.object(sys, "argv", ["preflight.py", str(state_path)]):
+                    with redirect_stdout(out):
+                        rc = main()
+        receipt = json.loads(out.getvalue())
+        self.assertEqual(0, rc)
+        self.assertEqual("HOLD", receipt["status"])
+        self.assertFalse(receipt["trusted_authority"]["verified_current"])
+        self.assertEqual(len(REQUIRED_GATES), len(receipt["blockers"]))
+
+    def test_public_cli_rejects_legacy_authority_flag(self):
+        material = authority_material()
+        with tempfile.TemporaryDirectory() as td:
+            state_path = Path(td) / "state.json"
+            authority_path = Path(td) / "authority.json"
+            state_path.write_text(json.dumps(ready_state(material)), encoding="utf-8")
+            authority_path.write_text(json.dumps(material), encoding="utf-8")
+            err = io.StringIO()
+            with mock.patch.object(
+                sys,
+                "argv",
+                ["preflight.py", str(state_path), "--authority", str(authority_path)],
+            ):
+                with redirect_stderr(err):
+                    with self.assertRaises(SystemExit) as raised:
+                        main()
+        self.assertEqual(2, raised.exception.code)
+        self.assertIn("unrecognized arguments: --authority", err.getvalue())
 
     def test_gate_universe_cannot_shrink(self):
         material = authority_material()

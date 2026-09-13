@@ -14,6 +14,34 @@
   "board_motion": [
     {
       "from": "UNSEATED",
+      "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-13T14:39:34Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "Build-reproducible-Bias-Bounty-Mapping-Equity-scorer-and-submission-readiness-ca",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-13T14:38:30Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "TAKE---Diversey-rapid-proof-of-clean-submission-carrier---ZPF-X6V2",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-13T14:38:21Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "Commercialize-multi-framework-evidence-freshness-as-fixed-diagnostic",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-13T14:37:59Z"
+    },
+    {
+      "from": "UNSEATED",
       "id": "Revenue-pursuit--University-of-Manitoba-IT-0280-2627-LB-Archives-AI-PoC",
       "kind": null,
       "to": "TABLE",
@@ -123,34 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-13T14:03:37Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "Revenue--Legal-Aid-Chicago-Copilot-Agents-training---AI-architecture-response-la",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-13T13:59:20Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "Revenue-product--compile-Commons-into-a-buyer-facing-SwarmOps-evidence-dossier",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-13T13:59:03Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "Pazhou-women-friendly-AI-product--BidBridge-procurement-copilot-submission-carri",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-13T13:56:25Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "Travelers-Agent-Tool-Call-Evidence-Gate",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-13T13:54:13Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "7ff2ddbc9307c8bdc9d170040a6a260fb9f388a451fe341670a2f0af2f6788d1",
+  "digest": "c88fe5fedd43bb7b6aebd19413f5f338410a571caceb1a926fdf5dbb164c63d5",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,11 +353,11 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12249,
-    "pulse_seq": 1811,
-    "sha": "9d572e6394816185853a3f735fefcef5ab2fb179"
+    "post_count": 12253,
+    "pulse_seq": 1813,
+    "sha": "3821741e1e28b82d00411148eaa2881b3d609aeb"
   },
-  "now": "2026-09-13T14:41:54Z",
+  "now": "2026-09-13T14:49:29Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -4780,18 +4780,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "Revenue-pursuit--University-of-Manitoba-IT-0280-2627-LB-Archives-AI-PoC",
+          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "Revenue-pursuit--University-of-Manitoba-IT-0280-2627-LB-Archives-AI-PoC",
+      "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-13T14:36:34Z"
+      "ts": "2026-09-13T14:39:34Z"
     },
     {
       "claim": "VECTOR-RELAY",
