@@ -20,6 +20,11 @@ READY = "READY_FOR_LMS_SANDBOX_REVIEW"
 HOLD = "HOLD"
 _ID = re.compile(r"^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$")
 _SHA256 = re.compile(r"^[0-9a-f]{64}$")
+_XML_DECL_ENCODING = re.compile(
+    r"^\s*<\?xml\b[^>]*\bencoding\s*=\s*(['\"])([^'\"]+)\1",
+    re.IGNORECASE,
+)
+_FORBIDDEN_XML_DECL = re.compile(r"<!\s*(?:DOCTYPE|ENTITY)\b", re.IGNORECASE)
 
 
 class AssuranceError(ValueError):
@@ -129,6 +134,33 @@ def _child_text(parent: ET.Element | None, name: str) -> str | None:
     return None
 
 
+def _unique_child_text(parent: ET.Element, name: str) -> str:
+    children = [child for child in list(parent) if _local(child.tag) == name]
+    if len(children) != 1:
+        raise AssuranceError(f"manifest metadata must contain exactly one {name}")
+    text = (children[0].text or "").strip()
+    if not text:
+        raise AssuranceError(f"manifest metadata {name} must be non-empty")
+    return text
+
+
+def _manifest_text(raw: bytes) -> str:
+    try:
+        text = raw.decode("utf-8-sig")
+    except UnicodeDecodeError as exc:
+        raise AssuranceError("imsmanifest.xml must be UTF-8") from exc
+    if "\x00" in text:
+        raise AssuranceError("imsmanifest.xml must be UTF-8 without NUL bytes")
+    match = _XML_DECL_ENCODING.match(text)
+    if match:
+        encoding = re.sub(r"[-_]", "", match.group(2)).casefold()
+        if encoding != "utf8":
+            raise AssuranceError("imsmanifest.xml XML declaration must specify UTF-8")
+    if _FORBIDDEN_XML_DECL.search(text):
+        raise AssuranceError("manifest DTD/entity declarations are not accepted")
+    return text
+
+
 def default_policy() -> dict[str, Any]:
     return {
         "schema": POLICY_SCHEMA,
@@ -182,15 +214,21 @@ def validate_policy(policy: Mapping[str, Any]) -> dict[str, Any]:
 
 
 def _standard(root: ET.Element) -> str:
-    metadata = next((x for x in root.iter() if _local(x.tag) == "metadata"), None)
-    text = (_child_text(metadata, "schemaversion") or "").lower()
-    attrs = " ".join(str(v) for v in root.attrib.values()).lower()
-    combined = f"{text} {attrs}"
-    if "2004" in combined or "1.3" in combined:
-        return "SCORM_2004"
-    if "1.2" in combined:
+    metadata_nodes = [child for child in list(root) if _local(child.tag) == "metadata"]
+    if len(metadata_nodes) != 1:
+        raise AssuranceError("manifest must contain exactly one root metadata element")
+    metadata = metadata_nodes[0]
+    schema = " ".join(_unique_child_text(metadata, "schema").split()).casefold()
+    if schema != "adl scorm":
+        raise AssuranceError("manifest metadata schema must be ADL SCORM")
+    version = " ".join(_unique_child_text(metadata, "schemaversion").split()).casefold()
+    if version == "1.2":
         return "SCORM_1_2"
-    raise AssuranceError("cannot determine SCORM version from manifest metadata")
+    if version in {"1.3", "cam 1.3", "2004"} or re.fullmatch(
+        r"2004(?: \d+(?:st|nd|rd|th) edition)?", version
+    ):
+        return "SCORM_2004"
+    raise AssuranceError("unsupported SCORM schemaversion declaration")
 
 
 def _sidecar(
@@ -341,11 +379,9 @@ def compile_assurance(
                 inventory.append({"path": info.filename, "bytes": len(data), "sha256": sha256(data)})
 
             manifest = contents["imsmanifest.xml"]
-            upper = manifest.upper()
-            if b"<!DOCTYPE" in upper or b"<!ENTITY" in upper:
-                raise AssuranceError("manifest DTD/entity declarations are not accepted")
+            text = _manifest_text(manifest)
             try:
-                root = ET.fromstring(manifest)
+                root = ET.fromstring(text)
             except ET.ParseError as exc:
                 raise AssuranceError(f"invalid imsmanifest.xml: {exc}") from exc
             if _local(root.tag) != "manifest":
@@ -441,31 +477,66 @@ def verify_assurance(
     return canonical_bytes(compile_assurance(package_bytes, policy)) == canonical_bytes(report)
 
 
+def _generation(st: os.stat_result) -> tuple[int, int, int, int, int, int]:
+    return (
+        st.st_dev,
+        st.st_ino,
+        st.st_mode,
+        st.st_size,
+        st.st_mtime_ns,
+        st.st_ctime_ns,
+    )
+
+
 def _read_regular(path: Path, limit: int) -> bytes:
-    if path.is_symlink():
-        raise AssuranceError(f"symlink input refused: {path}")
-    if not path.is_file():
-        raise AssuranceError(f"not a regular file: {path}")
-    if path.stat().st_size > limit:
-        raise AssuranceError(f"input exceeds size limit: {path}")
-    return path.read_bytes()
+    flags = os.O_RDONLY
+    for name in ("O_CLOEXEC", "O_NOFOLLOW", "O_NONBLOCK", "O_BINARY"):
+        flags |= int(getattr(os, name, 0))
+    fd = os.open(path, flags)
+    try:
+        before = os.fstat(fd)
+        if not stat.S_ISREG(before.st_mode):
+            raise AssuranceError(f"not a regular file: {path}")
+        if before.st_size > limit:
+            raise AssuranceError(f"input exceeds size limit: {path}")
+        chunks: list[bytes] = []
+        total = 0
+        while True:
+            chunk = os.read(fd, min(1024 * 1024, limit + 1 - total))
+            if not chunk:
+                break
+            chunks.append(chunk)
+            total += len(chunk)
+            if total > limit:
+                raise AssuranceError(f"input exceeds size limit: {path}")
+        after = os.fstat(fd)
+        if _generation(before) != _generation(after) or after.st_size != total:
+            raise AssuranceError(f"input changed during read: {path}")
+        return b"".join(chunks)
+    finally:
+        os.close(fd)
 
 
 def _exclusive(path: Path, data: bytes) -> None:
-    if path.exists() or path.is_symlink():
-        raise AssuranceError(f"refusing to overwrite output: {path}")
-    fd = os.open(path, os.O_WRONLY | os.O_CREAT | os.O_EXCL, 0o600)
+    flags = os.O_WRONLY | os.O_CREAT | os.O_EXCL
+    for name in ("O_CLOEXEC", "O_NOFOLLOW", "O_BINARY"):
+        flags |= int(getattr(os, name, 0))
+    try:
+        fd = os.open(path, flags, 0o600)
+    except FileExistsError as exc:
+        raise AssuranceError(f"refusing to overwrite output: {path}") from exc
     try:
         with os.fdopen(fd, "wb") as stream:
+            fd = -1
             stream.write(data)
             stream.flush()
             os.fsync(stream.fileno())
-    except Exception:
-        try:
-            path.unlink()
-        except FileNotFoundError:
-            pass
-        raise
+    finally:
+        if fd >= 0:
+            os.close(fd)
+    # Deliberately do not unlink by pathname on late write/fsync failure. If another
+    # actor replaces the directory entry, pathname cleanup could delete foreign bytes.
+    # A partial file created by this invocation is safer to preserve for operator review.
 
 
 def main(argv: list[str] | None = None) -> int:
