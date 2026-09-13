@@ -1,0 +1,21 @@
+{
+  "allowed_managers": ["mgr.alex", "mgr.sam"],
+  "duration_days": 7,
+  "max_age_minutes": {
+    "housekeeping": 90,
+    "maintenance": 240,
+    "manager_release": 60
+  },
+  "pilot_id": "hotel-room-turn-evidence-pilot",
+  "price_usd": 2500,
+  "property_id": "demo-hotel-01",
+  "rooms": [
+    {"room_id": "101", "turn_id": "turn-101-a"},
+    {"room_id": "102", "turn_id": "turn-102-a"},
+    {"room_id": "103", "turn_id": "turn-103-a"},
+    {"room_id": "104", "turn_id": "turn-104-a"},
+    {"room_id": "105", "turn_id": "turn-105-a"},
+    {"room_id": "106", "turn_id": "turn-106-a"}
+  ],
+  "schema_version": "hotel-room-turn-policy/v1"
+}
