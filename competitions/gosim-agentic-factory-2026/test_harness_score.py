@@ -167,6 +167,10 @@ class ContractTests(unittest.TestCase):
         with self.assertRaisesRegex(hs.ContractError, "duplicate trial"):
             hs.compile_report([a, copy.deepcopy(a)], policy())
 
+    def test_cross_set_identity_reuse_changed_bytes_rejected(self):
+        with self.assertRaisesRegex(hs.ContractError, "across candidate and baseline"):
+            hs.compile_report([run(input_tokens=401)], policy(), [run(input_tokens=400)])
+
 
 class ScoreTests(unittest.TestCase):
     def test_correctness_floor_disables_efficiency(self):
@@ -221,6 +225,18 @@ class ScoreTests(unittest.TestCase):
         self.assertEqual(summary["worst_total_tokens"], 300)
         self.assertEqual(summary["median_wall_clock_ms"], 2000)
         self.assertEqual(summary["worst_wall_clock_ms"], 3000)
+
+    def test_configuration_identity_cannot_collide_on_separator_text(self):
+        runs = [
+            run(task="a", trial="1", harness="alpha::beta", model="gamma"),
+            run(task="b", trial="2", harness="alpha", model="beta::gamma"),
+        ]
+        summaries = hs.compile_report(runs, policy())["configuration_summaries"]
+        self.assertEqual(len(summaries), 2)
+        self.assertEqual(
+            {(row["harness_revision"], row["model_label"]) for row in summaries},
+            {("alpha::beta", "gamma"), ("alpha", "beta::gamma")},
+        )
 
     def test_markdown_disclaims_official_score(self):
         report = hs.compile_report([run()], policy())
