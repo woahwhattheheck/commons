@@ -11,7 +11,10 @@ from collections.abc import Iterable, Mapping, Sequence
 from pathlib import Path
 from typing import Any
 
-from host.git_source_capsules import GitSourceError, collect_git_source
+try:
+    from host.git_source_capsules import GitSourceError, collect_git_source
+except ModuleNotFoundError:
+    from git_source_capsules import GitSourceError, collect_git_source
 
 SCHEMA = "commons-context-packet/v1"
 DIGEST_KEY = "semantic_sha256"
@@ -342,6 +345,21 @@ def verify_packet(packet: Mapping[str, Any]) -> tuple[bool, str]:
             return False, "git-source-count"
         if [row.get("path") for row in source["capsules"] if isinstance(row, Mapping)] != source["requested_paths"]:
             return False, "git-source-order"
+        commit = source.get("commit")
+        tree_sha = source.get("tree_sha")
+        observed_main = source.get("observed_main_head")
+        matches_main = source.get("source_commit_matches_observed_main")
+        if not isinstance(commit, str) or not re.fullmatch(r"[0-9a-f]{40}", commit):
+            return False, "git-source-commit"
+        if not isinstance(tree_sha, str) or not re.fullmatch(r"[0-9a-f]{40}", tree_sha):
+            return False, "git-source-tree"
+        if observed_main is not None and (
+            not isinstance(observed_main, str) or not re.fullmatch(r"[0-9a-f]{40}", observed_main)
+        ):
+            return False, "git-source-observed-main"
+        expected_match = None if observed_main is None else hmac.compare_digest(commit, observed_main)
+        if matches_main is not expected_match:
+            return False, "git-source-main-fence"
         for row in source["capsules"]:
             if not isinstance(row, Mapping):
                 return False, "git-source-capsule-shape"
@@ -404,7 +422,10 @@ def markdown(packet: Mapping[str, Any]) -> str:
                 f"sha256 `{row.get('content_sha256','')}` · bytes `{row.get('bytes')}` · {status}"
             )
             if row.get("text_included"):
-                lines += ["", "```text", row.get("text", ""), "```"]
+                source_text = row.get("text", "")
+                longest = max((len(match.group(0)) for match in re.finditer(r"`+", source_text)), default=0)
+                fence = "`" * max(3, longest + 1)
+                lines += ["", f"{fence}text", source_text, fence]
     if packet.get("recent"):
         lines += ["", "## Relevant durable events", ""]
         for row in packet["recent"]:
