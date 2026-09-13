@@ -1,10 +1,10 @@
 {
-  "schema": "commons-change-holding/v1",
-  "key": "actions-independent-ci-20260913",
+  "heartbeat_at": "2026-09-13T05:51:53.562Z",
   "holder": "CI-Relay",
+  "key": "actions-independent-ci-20260913",
+  "note": "PR #13561 @ f7b4aa3e65f6d7b8e94859e3823e8642a6a65c40 prepared; 39 regressions + 8 scope assertions pass, 8 remote blobs verified. Cirrus installation and first provider run remain pending. No active cloud process.",
+  "schema": "commons-change-holding/v1",
+  "state": "RELEASED",
   "taken_at": "2026-09-13T05:35:08.340Z",
-  "heartbeat_at": "2026-09-13T05:35:08.341Z",
-  "ttl_s": 1800,
-  "state": "HELD",
-  "note": "Owner request: replace exhausted Actions execution. Build portable Commons Python/Node battery with existing report schema; cloud verification; .github/workflows/tests.yml, host/ci_battery.py, tests and ci docs."
+  "ttl_s": 1800
 }
