@@ -37,6 +37,13 @@ def _write_new(path: Path, data: bytes) -> None:
     finally:
         os.close(dfd)
 
+def _target_exists(path: Path) -> bool:
+    try:
+        os.lstat(path)
+        return True
+    except FileNotFoundError:
+        return False
+
 def main(argv:list[str]|None=None)->int:
     parser=argparse.ArgumentParser(description="Compile/verify multi-framework evidence freshness packets")
     sub=parser.add_subparsers(dest="cmd",required=True)
@@ -47,7 +54,10 @@ def main(argv:list[str]|None=None)->int:
         if ns.cmd=="compile":
             raw=load_strict_json(ns.input); packet=compile_packet(raw)
             packet_bytes=json.dumps(packet,ensure_ascii=False,sort_keys=True,separators=(",",":")).encode("utf-8")+b"\n"; md_bytes=render_markdown(packet).encode("utf-8")
-            _write_new(Path(ns.packet),packet_bytes); _write_new(Path(ns.markdown),md_bytes)
+            packet_path=Path(ns.packet); md_path=Path(ns.markdown)
+            if _target_exists(packet_path) or _target_exists(md_path):
+                raise GateError("output_exists")
+            _write_new(packet_path,packet_bytes); _write_new(md_path,md_bytes)
             print(packet["receipt_sha256"]); return 0
         packet=load_strict_json(ns.packet); verify_packet(packet); print(packet["receipt_sha256"]); return 0
     except (GateError,OSError) as exc:
