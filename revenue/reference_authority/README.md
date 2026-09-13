@@ -1,69 +1,127 @@
 # Reference Authority Registry
 
-This is an offline revenue-control surface for keeping **capability evidence** separate from **customer-reference authority**.
+This offline revenue-control surface keeps **capability evidence** separate from **customer-reference authority**. It is designed so candidate/proposal JSON cannot manufacture the authority that promotes evidence into a named customer reference.
 
-A merged open-source fix, internal engineering artifact, paid review-program result, or submitted proposal can be useful capability evidence. None of those facts makes the work a customer engagement or grants permission to name a customer/reference. This registry makes that distinction structural rather than relying on proposal-author memory.
+A merged open-source fix, internal engineering artifact, paid review-program result, or procurement pursuit can be useful capability evidence. None of those facts creates a customer engagement, a permission to disclose, or comparability to a buyer requirement.
 
-## Boundary
+## Trust boundary
 
-The registry performs no customer or reference contact, permission request, proposal submission, pricing, signature, provider/payment action, accounting, or revenue recognition. It stores no email address, phone number, raw contact identity, credential, or private filesystem path. Source evidence uses public-safe HTTPS references. Authority evidence may instead use a public-safe `opaque:<id>` handle plus SHA-256 commitment so a private permission message or assessment does not need to be published.
+Version 2 has two separate inputs:
 
-`REFERENCE_READY_FOR_OWNER_REVIEW` is **not** authority to disclose or contact. It means only that the supplied evidence currently contains all four independent ingredients for the exact opportunity and exact reference requirement:
+1. **Candidate packet** — opportunity, reference requirements, and public-safe evidence only. It contains no engagement-kind field and no disclosure, permission, or comparability authority fields. Unknown fields fail closed.
+2. **Host authority registry** — engagement classifications plus disclosure, reference-permission, and comparability records. The entire normalized registry generation is authenticated with HMAC-SHA256 under a host-controlled key loaded only from `COMMONS_REFERENCE_AUTHORITY_HMAC_KEY_HEX`.
 
-1. a real `CLIENT_ENGAGEMENT` evidence record;
-2. a current disclosure authority at `PROPOSAL_CAPABILITY` level;
-3. a current exact-opportunity/exact-requirement reference permission; and
-4. a separate current comparability assessment for that exact requirement.
+The candidate packet cannot supply that key and cannot put a MAC or authority record into its own schema. A self-consistent forged registry with arbitrary opaque handles and 64-hex commitments fails MAC verification before any record can authorize anything. Anyone who possesses the host key is, by definition, operating the trusted authority boundary; key custody is therefore an operational prerequisite and the key must not be committed, placed in candidate packets, Slack, receipts, or proposal artifacts.
 
-Capability tags cannot self-declare comparability, and public visibility/payment/merge/receipt/proposal submission cannot self-create reference permission.
+This product does not claim that SHA-256 alone proves permission. `authority_sha256`, `permission_sha256`, and `assessment_sha256` are commitments carried **inside the separately authenticated host registry**. They are useful for exact artifact identity after an owner/integration process has verified the underlying evidence; the host registry MAC is what prevents a packet author from inventing the authority generation.
 
-## Distinct from opportunity qualification
+## Reference-ready contract
 
-`revenue/opportunity_qualification/**` decides whether supplied solicitation/capability evidence clears a pursuit route. This package is downstream evidence-reuse custody: **may this specific item be reused in proposal prose, and may this specific real engagement fill this specific named-reference slot?** It does not interpret the buyer packet or decide PRIME/TEAM/NO-BID.
+`REFERENCE_READY_FOR_OWNER_REVIEW` requires all of the following at verifier-observed current time:
 
-## Input schema
+- a host-authenticated, current engagement classification for the exact normalized evidence generation;
+- that classification says `CLIENT_ENGAGEMENT` and supplies a stable trusted `engagement_id`;
+- a host-authenticated current disclosure authority at `PROPOSAL_CAPABILITY` for the exact evidence and exact normalized opportunity generation;
+- a host-authenticated current reference permission for that exact evidence, opportunity generation, and requirement generation; and
+- a separately host-authenticated current `COMPARABLE` assessment for the same exact generations.
 
-Top-level keys are exact; unknown fields and duplicate JSON keys fail closed.
+`REFERENCE_READY_FOR_OWNER_REVIEW` is **not** authority to disclose, contact, submit, contract, charge, pay, book revenue, or represent customer approval. Every external-action authority flag in output remains false.
 
-- `schema_version`: `commons-reference-authority/v1`
-- `opportunity`: exact `opportunity_id` and public-safe title
-- `requirements[]`: exact opportunity/requirement id, bounded label, `required_count`
-- `evidence[]`: immutable evidence id, engagement kind, public-safe subject/performer, source URL/SHA-256, observed result, limitations, disclosure-safe summary
-- `disclosure_authorities[]`: exact canonical normalized evidence digest + exact normalized opportunity-generation digest + use class + status + observed time/expiry + authority evidence ref/hash
-- `reference_permissions[]`: exact canonical normalized evidence digest + exact normalized opportunity-generation digest + exact normalized requirement-generation digest + status + observed time/expiry + permission evidence ref/hash
-- `comparability_authorities[]`: exact canonical normalized evidence digest + exact normalized opportunity-generation digest + exact normalized requirement-generation digest + COMPARABLE/NOT_COMPARABLE + assessment time/expiry + evidence ref/hash
+## Distinct reference counting
 
-Supported engagement kinds deliberately separate:
+Buyer `required_count` is counted over unique trusted `engagement_id` values, not evidence IDs. Multiple separately authenticated evidence rows may describe the same underlying engagement; they remain visible in the review but count as one reference. A renamed evidence clone with no host classification is a HOLD and cannot increase the count.
 
-- `CLIENT_ENGAGEMENT`
-- `INTERNAL_ENGINEERING`
-- `OPEN_SOURCE_CONTRIBUTION`
-- `EXTERNAL_REVIEW_PROGRAM`
-- `PROCUREMENT_PURSUIT`
+## Generation binding
 
-Only `CLIENT_ENGAGEMENT` can ever reach reference-ready-for-owner-review. Authority producers should use the exported `evidence_digest()`, `opportunity_digest()`, and `requirement_digest()` helpers. These helpers commit normalized record generations rather than presentation order. Reusing a stable opportunity or requirement ID after changing its normalized title, label, or required count therefore invalidates the older authority instead of replaying it into the changed generation.
+Authority is bound to normalized generations rather than stable IDs alone:
 
-## Time and replay semantics
+- engagement classification commits the exact normalized evidence digest;
+- disclosure commits exact evidence + normalized opportunity digest;
+- permission and comparability commit exact evidence + normalized opportunity digest + normalized requirement digest.
 
-Production compilation uses process-observed UTC; packet input does not choose current time. The library accepts a timezone-aware `trusted_now` only so tests/controlled callers can reproduce exact semantics.
+Changing a requirement label or count under the same `requirement_id`, or changing opportunity semantics under the same `opportunity_id`, invalidates older authority with an explicit digest-mismatch HOLD.
 
-A receipt binds the normalized, order-independent packet digest and exact evaluation time. `verify_historical()` proves that an old receipt exactly replays at its recorded time. **Historical verification does not refresh authority.** `verify_current()` first verifies the historical receipt, then independently recompiles at fresh trusted current UTC and emits a new current result/receipt. An expired or revoked permission therefore cannot stay current merely because an older receipt was once valid.
+The helpers `evidence_digest()`, `opportunity_digest()`, and `requirement_digest()` expose the exact normalization used for those commitments.
+
+## Historical vs current verification
+
+A result receipt binds:
+
+- normalized candidate packet SHA-256;
+- exact authenticated authority-registry SHA-256 and generation ID;
+- exact evaluation time; and
+- the deterministic result body.
+
+`verify_historical(packet, historical_registry, result)` proves replay against the exact historical authenticated generation at the recorded evaluation time.
+
+`verify_current(packet, historical_registry, current_registry, result)` first proves that historical receipt and then performs a fresh reassessment against the supplied **current authenticated registry using the verifier process clock**. The public compile and current-verification APIs accept no clock argument. Deterministic clock injection exists only in underscored test/internal helpers, so a caller cannot backdate the public “current” verifier.
+
+A new registry generation can revoke or supersede old authority while the old generation remains available for historical receipt verification.
+
+## Input schemas
+
+Candidate packet (`commons-reference-authority/v2`):
+
+- `opportunity`: exact id and public-safe title;
+- `requirements[]`: exact opportunity/requirement ids, public-safe label, integer `required_count`;
+- `evidence[]`: evidence id, public-safe subject/performer, HTTPS source reference + SHA-256, bounded observed result, limitations, and disclosure summary.
+
+Authenticated registry (`commons-reference-authority-trust/v1`):
+
+- fixed host `key_id`, generation id, issuance time, admitted requirement ids;
+- `classifications[]`: exact evidence digest → stable engagement id/kind, current/revoked state;
+- `disclosures[]`: exact evidence/opportunity generation → disclosure use class/state;
+- `permissions[]`: exact evidence/opportunity/requirement generation → permission state;
+- `comparabilities[]`: exact evidence/opportunity/requirement generation → comparable/not-comparable state;
+- `mac`: HMAC-SHA256 over the canonical normalized registry body.
+
+Authority references may be public-safe HTTPS references or opaque handles. Opaque handles allow the registry to commit to private permission/assessment artifacts without publishing their contents.
 
 ## CLI
 
-```text
-python revenue/reference_authority/reference_authority.py compile packet.json \
-  --json-out review.json --markdown-out review.md
+Set the host verification key in the execution environment, then compile:
 
-python revenue/reference_authority/reference_authority.py verify packet.json review.json
+```text
+COMMONS_REFERENCE_AUTHORITY_HMAC_KEY_HEX=<host-secret-hex> \
+python revenue/reference_authority/reference_authority.py compile \
+  packet.json authority-registry.json \
+  --json-out review.json --markdown-out review.md
 ```
 
-Outputs are canonical JSON plus a human-readable Markdown review. Output authority flags are all false for customer/reference contact, reference disclosure, submission, contract commitment, payment/accounting, and revenue recognition.
+Historical + fresh-current verification:
 
-The compile command uses create-exclusive output files; it will not overwrite an existing review.
+```text
+COMMONS_REFERENCE_AUTHORITY_HMAC_KEY_HEX=<host-secret-hex> \
+python revenue/reference_authority/reference_authority.py verify \
+  packet.json historical-authority-registry.json review.json \
+  --current-authority-registry current-authority-registry.json
+```
 
-## Fail-closed rules
+If `--current-authority-registry` is omitted, the historical generation is also used for the current reassessment.
 
-The implementation rejects duplicate IDs/JSON keys, unknown fields, bool-as-int integers, malformed digests/timestamps/URLs, embedded credentials, email- or phone-shaped contact PII, private/path-shaped public text, unknown evidence/requirement links, unsupported enums, and authority escalation.
+Output creation is exclusive. The CLI preflights both output paths, and `_write()` never unlinks a pathname after a post-create failure; this avoids deleting a concurrent replacement that the process did not create.
 
-Reference promotion also HOLDs on missing permission/comparability/disclosure authority; non-client engagement kind; wrong disclosure class; evidence, opportunity-generation, or requirement-generation digest mismatch; future authority; revocation/not-comparable status; expiry; or insufficient exact references for the requirement count. In particular, an authority issued for one requirement generation cannot survive a same-ID rewrite of the requirement label/count, and disclosure authority cannot survive a same-ID rewrite of the opportunity title.
+## Fail-closed behavior
+
+The implementation rejects or HOLDs, as applicable:
+
+- missing/invalid host key or registry MAC;
+- authority inserted into candidate JSON;
+- caller-selected engagement kind;
+- missing/revoked/expired/future/ambiguous classification or authority;
+- evidence, opportunity-generation, or requirement-generation digest mismatch;
+- renamed aliases without trusted classification;
+- duplicate reference evidence for one trusted engagement inflating `required_count`;
+- duplicate JSON keys/IDs, unknown fields, bool-as-int integers;
+- malformed digests/timestamps/URLs/opaque handles;
+- email/phone/path/credential-shaped public data;
+- future registry generations;
+- substituted historical authority generations;
+- result/receipt tampering; and
+- any output attempt to elevate external-action authority.
+
+## Scope boundary
+
+No customer/reference contact, permission request, PII store, proposal submission, pricing/signature/contract, provider/payment/accounting mutation, revenue recognition, or customer-approval claim is performed here. The registry is an evidence/review control, not an action system.
+
+This package remains downstream of `revenue/opportunity_qualification/**`: opportunity qualification asks whether a pursuit is supportable; this package asks whether a specific evidence item is authorized for capability reuse and whether a specific trusted client engagement is currently eligible for owner review against a specific reference requirement.
