@@ -23,6 +23,7 @@ POLICY = "ground/SWARM_ORDER.md"
 RELIABILITY = "ground/SWARM_RELIABILITY.json"
 GPT = "gpt"
 SHA = re.compile(r"^[0-9a-f]{40}$")
+DOC_ONLY_SUFFIXES = frozenset({".md", ".rst", ".adoc"})
 
 
 def block(text, fence):
@@ -81,6 +82,21 @@ def evidence_pass(items):
                     for e in items))
 
 
+def execution_required(paths):
+    """Only pure documentation changes may merge without an execution receipt."""
+    return any(Path(path).suffix.lower() not in DOC_ONLY_SUFFIXES for path in paths)
+
+
+def exact_execution_pass(items, head):
+    """Whether evidence contains a passing execution receipt for these exact bytes."""
+    return (SHA.fullmatch(head or "") is not None
+            and isinstance(items, list)
+            and any(isinstance(e, dict) and e.get("result") == "PASS"
+                    and e.get("kind") == "execution" and e.get("head") == head
+                    and isinstance(e.get("reference"), str) and e["reference"].strip()
+                    for e in items))
+
+
 def change(git, main, pull):
     head = pull.get("headRefOid") or (pull.get("head") or {}).get("sha")
     base_ref = pull.get("baseRefName") or (pull.get("base") or {}).get("ref")
@@ -114,6 +130,7 @@ def review_template(subject):
             "operation": subject["work"].get("operation"),
             "work_sha256": work_digest(subject["work"]),
             "risk": subject["risk"], "read_set": subject["read_set"],
+            "execution_required": execution_required(subject["paths"]),
             "reviewer": {"seat": "", "family": GPT, "session_ref": ""},
             "summary": "", "evidence": []}
 
@@ -174,11 +191,18 @@ def decision(git, subject, reviews):
             return result("HOLD", "review subject changed: " + field)
     if not evidence_pass(receipt.get("evidence")):
         return result("HOLD", "GPT receipt lacks passing verification evidence")
+    needs_execution = execution_required(subject["paths"])
+    if receipt.get("execution_required", needs_execution) != needs_execution:
+        return result("HOLD", "review execution requirement does not match changed paths")
+    if needs_execution and not exact_execution_pass(receipt.get("evidence"), subject["head"]):
+        return result("HOLD", "non-document change lacks exact-head execution evidence")
     tier = scrutiny(work["seat"], read_outcomes(git, subject["main"]))
     if tier == "individual":
         preflight = receipt.get("preflight") or {}
         if (not preflight.get("seat") or preflight["seat"].casefold() == work["seat"].casefold()
-                or not evidence_pass(preflight.get("evidence"))):
+                or not evidence_pass(preflight.get("evidence"))
+                or (needs_execution
+                    and not exact_execution_pass(preflight.get("evidence"), subject["head"]))):
             return result("HOLD", "recent evidenced regression requires independent preflight")
     base = receipt.get("reviewed_base")
     if not SHA.fullmatch(base or "") or git.merge_base(base, subject["main"]) != base:
