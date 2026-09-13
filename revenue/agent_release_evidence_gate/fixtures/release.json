@@ -1,0 +1,54 @@
+{
+  "agent_id": "worker-z",
+  "approval": {
+    "actor": "owner",
+    "approval_id": "approval-42",
+    "expires_at": "2026-09-13T08:46:00Z",
+    "issued_at": "2026-09-13T08:44:20Z",
+    "request_sha256": "34b2c19a00d686af34f3fb721b414d8152bf68dc92d754e7b20b3a23601e1140"
+  },
+  "evidence": {
+    "checks": {
+      "graph": {
+        "observed_at": "2026-09-13T08:44:50Z",
+        "status": "pass",
+        "subject_sha256": "34b2c19a00d686af34f3fb721b414d8152bf68dc92d754e7b20b3a23601e1140"
+      },
+      "unit": {
+        "observed_at": "2026-09-13T08:44:40Z",
+        "status": "pass",
+        "subject_sha256": "34b2c19a00d686af34f3fb721b414d8152bf68dc92d754e7b20b3a23601e1140"
+      }
+    },
+    "completed_effects": []
+  },
+  "policy": {
+    "approval_required_effects": ["write", "external"],
+    "approvers": ["owner"],
+    "capabilities": [
+      {
+        "effect": "external",
+        "operation": "merge_pull_request",
+        "target_prefix": "woahwhattheheck/",
+        "tool": "github"
+      }
+    ],
+    "decision_ttl_seconds": 60,
+    "effect_budget": {"external": 2, "read": 100, "write": 10},
+    "max_check_age_seconds": 180,
+    "max_future_skew_seconds": 5,
+    "max_snapshot_age_seconds": 120,
+    "required_checks": ["unit", "graph"]
+  },
+  "request": {
+    "effect": "external",
+    "operation": "merge_pull_request",
+    "payload": {"expected_head": "abc123", "strategy": "squash"},
+    "payload_sha256": "ac2a2f6b5bb97b0da9be90a16774ca77908c63726c752dd0365e07f30d17b89c",
+    "target": "woahwhattheheck/example#42",
+    "tool": "github"
+  },
+  "run_id": "run-42",
+  "snapshot_at": "2026-09-13T08:44:30Z",
+  "version": 1
+}
