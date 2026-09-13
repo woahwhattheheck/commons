@@ -327,6 +327,13 @@ def evaluate(intent_raw: dict[str, Any], evidence_raw: dict[str, Any], *, intent
         reasons.append("evidence snapshot is implausibly future-dated")
         authority = "unknown"
 
+    if any(row.observed_at > generated_at for row in mail_rows):
+        reasons.append("mailbox evidence contains a row after the snapshot boundary")
+        authority = "unknown"
+    if any(row.observed_at > generated_at for row in slack_rows):
+        reasons.append("slack evidence contains a row after the snapshot boundary")
+        authority = "unknown"
+
     relevant_mail = [row for row in mail_rows if row.counterparty == recipient and row.observed_at <= generated_at]
     relevant_slack = [row for row in slack_rows if row.recipient == recipient and row.observed_at <= generated_at]
 
