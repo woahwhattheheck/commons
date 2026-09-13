@@ -1,9 +1,9 @@
 {
   "counts": {
-    "open_issues": 6,
+    "open_issues": 7,
     "open_pull_requests": 20,
-    "runs_in_progress": 17,
-    "runs_queued": 279
+    "runs_in_progress": 8,
+    "runs_queued": 369
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -29,7 +29,7 @@
       "head_sha": "6c2142b3c61463c6c34a055f6bdc2704307930fd",
       "number": 13415,
       "title": "TITAN V5: reduce exact V3.1/V4 gauntlet into repair hotspots",
-      "updated_at": "2026-09-13T07:56:31Z"
+      "updated_at": "2026-09-13T08:58:23Z"
     },
     {
       "author": "woahwhattheheck",
@@ -59,23 +59,56 @@
       "branch": "ariadne-z881/business-pack-malformed-ledger-rejoin",
       "created_at": "2026-09-13T04:32:00Z",
       "draft": false,
-      "head_sha": "3eddbdd2ca9f9bf9a1cf5cf8b929c817b056d57b",
+      "head_sha": "bcbaeadc4d3034782f35ed660d1e57e400147f50",
       "number": 13553,
       "title": "Return validation errors for malformed KEEP vs SELL numerics",
-      "updated_at": "2026-09-13T06:18:10Z"
+      "updated_at": "2026-09-13T09:03:08Z"
     }
   ],
   "newest_pulls": [
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "zpy-913436/skytouch-release-evidence-20260913",
-      "created_at": "2026-09-13T08:54:18Z",
+      "branch": "ariadne-z/mermail-rfq-timeline-repair-20260913",
+      "created_at": "2026-09-13T09:14:41Z",
       "draft": false,
-      "head_sha": "c046d38b198d606609c814689efb0694e8203c3a",
-      "number": 13656,
-      "title": "revenue: add Choice / SkyTouch release evidence core",
-      "updated_at": "2026-09-13T08:54:18Z"
+      "head_sha": "2c5cb191c52165e666a7e1eb547dc75bde32323a",
+      "number": 13668,
+      "title": "fix(revenue): bind Mermail quote evidence to RFQ timeline",
+      "updated_at": "2026-09-13T09:14:41Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zcast-913433/life-couriers-canonical-completion-20260913",
+      "created_at": "2026-09-13T09:13:53Z",
+      "draft": false,
+      "head_sha": "64dfce7cc17bfabcb7d90aeb15c8b4b730a05af0",
+      "number": 13667,
+      "title": "revenue: complete Life Couriers original evidence demand",
+      "updated_at": "2026-09-13T09:13:53Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zri-913432-xq7m5/sixty-vines-hardening-20260913",
+      "created_at": "2026-09-13T09:05:46Z",
+      "draft": false,
+      "head_sha": "81e4cbe1b67de68950cc6983f468d833f6c522fd",
+      "number": 13661,
+      "title": "Fix Sixty Vines unknown-effect quarantine and receipt verification",
+      "updated_at": "2026-09-13T09:06:37Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "cobb-z404/commercial-acceptance-bridge-20260913",
+      "created_at": "2026-09-13T08:55:17Z",
+      "draft": false,
+      "head_sha": "cf21110714902fbd6ec424786ddfce6a895a872c",
+      "number": 13657,
+      "title": "revenue: add commercial acceptance evidence bridge",
+      "updated_at": "2026-09-13T09:10:01Z"
     },
     {
       "author": "woahwhattheheck",
@@ -83,21 +116,10 @@
       "branch": "zpq6n/actions-authority-stable-policy-latest-attempt-20260913",
       "created_at": "2026-09-13T08:49:13Z",
       "draft": false,
-      "head_sha": "e712157e38d57ae689435a61807b3124158d4b87",
+      "head_sha": "96e28badbf1ea2ec3d9a9712b3c0cb730942e025",
       "number": 13654,
       "title": "ci: make Actions evidence classification-only",
-      "updated_at": "2026-09-13T08:54:05Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-kestrel-913405/fulfillment-receipt-expiry-20260913",
-      "created_at": "2026-09-13T08:46:08Z",
-      "draft": false,
-      "head_sha": "e3bd30f6e23a6fd3d56a4adffd519668bbd39a19",
-      "number": 13651,
-      "title": "fix(revenue): expire replayed fulfillment release receipts",
-      "updated_at": "2026-09-13T08:54:23Z"
+      "updated_at": "2026-09-13T09:14:30Z"
     },
     {
       "author": "woahwhattheheck",
@@ -119,18 +141,7 @@
       "head_sha": "bcd14a849d9e240a8609acdeea282e55c1dc3fea",
       "number": 13644,
       "title": "revenue: add Mermail RFQ companion skill",
-      "updated_at": "2026-09-13T08:43:29Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zfy-9130415x7q/inbound-reply-custody-20260913",
-      "created_at": "2026-09-13T08:29:13Z",
-      "draft": false,
-      "head_sha": "70cf7f8d5cf806eff6c34bac34062ab86295b434",
-      "number": 13639,
-      "title": "Revenue: add fail-closed inbound reply custody router",
-      "updated_at": "2026-09-13T08:33:40Z"
+      "updated_at": "2026-09-13T09:10:16Z"
     },
     {
       "author": "woahwhattheheck",
@@ -164,17 +175,6 @@
       "number": 13602,
       "title": "revenue: add INPRS CLM migration/public-release evidence gate",
       "updated_at": "2026-09-13T08:54:00Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zar913/champion-ratchet-plain-file-custody-20260913",
-      "created_at": "2026-09-13T07:25:45Z",
-      "draft": false,
-      "head_sha": "4d491a211bf1797d89f7af76af4d3d51fa5b660e",
-      "number": 13595,
-      "title": "TITAN V5: reject symlinked champion evidence inputs",
-      "updated_at": "2026-09-13T07:25:45Z"
     }
   ],
   "open_heads": {
@@ -182,9 +182,8 @@
     "13415": "6c2142b3c61463c6c34a055f6bdc2704307930fd",
     "13471": "91d17d19e2a762318d79058b042be10c63c6743a",
     "13533": "73e73de79cb62cf2f58005efab027138ded6f282",
-    "13553": "3eddbdd2ca9f9bf9a1cf5cf8b929c817b056d57b",
+    "13553": "bcbaeadc4d3034782f35ed660d1e57e400147f50",
     "13568": "98432e69624282b1bef2e36ec818f2215a4c18ff",
-    "13584": "37a203ffc1b68c506fca1ec53b4ca802fb969084",
     "13585": "c03d798cf6a9ea31bc0df02692856343c78435eb",
     "13587": "842d302b4c6ab001df5457c6b25309b301d53827",
     "13591": "48d5f23fe04d8fe0f2b1734d9183f7059ce49c31",
@@ -192,17 +191,139 @@
     "13602": "13571b53579c9c99da768e3130ee01f5660deeb1",
     "13611": "f5e6071c7759e45a3741459c04dbaed1bca594f7",
     "13621": "dbffaa756eb1252545ccaae3266a6ad9de662b28",
-    "13639": "70cf7f8d5cf806eff6c34bac34062ab86295b434",
     "13644": "bcd14a849d9e240a8609acdeea282e55c1dc3fea",
     "13649": "6e4e15270ab10521992ff6410093670ea178d2d8",
-    "13651": "e3bd30f6e23a6fd3d56a4adffd519668bbd39a19",
-    "13654": "e712157e38d57ae689435a61807b3124158d4b87",
-    "13656": "c046d38b198d606609c814689efb0694e8203c3a"
+    "13654": "96e28badbf1ea2ec3d9a9712b3c0cb730942e025",
+    "13657": "cf21110714902fbd6ec424786ddfce6a895a872c",
+    "13661": "81e4cbe1b67de68950cc6983f468d833f6c522fd",
+    "13667": "64dfce7cc17bfabcb7d90aeb15c8b4b730a05af0",
+    "13668": "2c5cb191c52165e666a7e1eb547dc75bde32323a"
   },
   "pulls_listed": 20,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 16.4,
+  "queue_depth_per_runner": 46.1,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zgal-913455/paid-outcome-expansion-rail-20260913",
+      "closed_at": "2026-09-13T09:14:45Z",
+      "head_sha": "3de488f270d49790b07a722377fa0468dd362086",
+      "merged_at": null,
+      "number": 13666,
+      "state": "CLOSED",
+      "title": "revenue: add paid outcome expansion/renewal evidence rail"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zpar-r5n8/inprs-clm-clean-rejoin-20260913",
+      "closed_at": "2026-09-13T09:12:00Z",
+      "head_sha": "a0888a01372df63fe837696d750c2c5fec667c82",
+      "merged_at": "2026-09-13T09:12:00Z",
+      "number": 13663,
+      "state": "MERGED",
+      "title": "revenue: rejoin INPRS CLM migration gate on current main"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z-galois-913456-x731/port-tacoma-data-qc-gate-20260913",
+      "closed_at": "2026-09-13T09:10:21Z",
+      "head_sha": "2c39347262e1c3188de6766fdc0733a842f01022",
+      "merged_at": "2026-09-13T09:10:21Z",
+      "number": 13665,
+      "state": "MERGED",
+      "title": "revenue: add deterministic data-consolidation QC evidence gate"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zobs913452/dusty-layout-evidence-20260913",
+      "closed_at": "2026-09-13T09:08:40Z",
+      "head_sha": "425fd768d8618b799f740e6c1b959ee1876403e1",
+      "merged_at": "2026-09-13T09:08:40Z",
+      "number": 13660,
+      "state": "MERGED",
+      "title": "feat(revenue): add layout revision-to-print evidence gate"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zcast-913433/life-couriers-custody-evidence-20260913",
+      "closed_at": "2026-09-13T09:07:47Z",
+      "head_sha": "0841fce988bbe1199a3f10d99d4801dd453c02b3",
+      "merged_at": null,
+      "number": 13662,
+      "state": "CLOSED",
+      "title": "superseded: Life Couriers custody evidence core"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zp913443/life-couriers-custody-evidence-20260913",
+      "closed_at": "2026-09-13T09:06:28Z",
+      "head_sha": "878d9248de5c082e4045ac9684fa4b785f8c4ba5",
+      "merged_at": "2026-09-13T09:06:28Z",
+      "number": 13659,
+      "state": "MERGED",
+      "title": "Life Couriers: add custody/temperature evidence core"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z-forge-913/openkylin-report-filename-fence-20260913",
+      "closed_at": "2026-09-13T09:05:22Z",
+      "head_sha": "37a203ffc1b68c506fca1ec53b4ca802fb969084",
+      "merged_at": "2026-09-13T09:05:22Z",
+      "number": 13584,
+      "state": "MERGED",
+      "title": "openkylin: fail closed on unsafe report filenames"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zpy-913436/skytouch-release-evidence-20260913",
+      "closed_at": "2026-09-13T09:02:07Z",
+      "head_sha": "d71de62d88bd4e9284bbeb34dd330769ed81269d",
+      "merged_at": "2026-09-13T09:02:07Z",
+      "number": 13656,
+      "state": "MERGED",
+      "title": "revenue: add Choice / SkyTouch release evidence core"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zfy-9130415x7q/inbound-reply-custody-20260913",
+      "closed_at": "2026-09-13T08:59:55Z",
+      "head_sha": "70cf7f8d5cf806eff6c34bac34062ab86295b434",
+      "merged_at": null,
+      "number": 13639,
+      "state": "CLOSED",
+      "title": "Revenue: add fail-closed inbound reply custody router"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "ariadne-z/inbound-reply-custody-hardening-closeout-20260913",
+      "closed_at": "2026-09-13T08:59:41Z",
+      "head_sha": "3cdd5e13624e7d2cd8220f1619542bff2e05aa9a",
+      "merged_at": "2026-09-13T08:59:41Z",
+      "number": 13658,
+      "state": "MERGED",
+      "title": "revenue: harden inbound reply custody boundary"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z-kestrel-913405/fulfillment-receipt-expiry-20260913",
+      "closed_at": "2026-09-13T08:57:25Z",
+      "head_sha": "e3bd30f6e23a6fd3d56a4adffd519668bbd39a19",
+      "merged_at": "2026-09-13T08:57:25Z",
+      "number": 13651,
+      "state": "MERGED",
+      "title": "fix(revenue): expire replayed fulfillment release receipts"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -246,131 +367,10 @@
       "number": 13650,
       "state": "CLOSED",
       "title": "revenue: add Wayne tracer-to-map provenance rail core"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "cobb-z404/wayne-glioma-pet-provenance-20260913",
-      "closed_at": "2026-09-13T08:38:49Z",
-      "head_sha": "80395e0c2c04afc759425512ab251e7beaf8b618",
-      "merged_at": "2026-09-13T08:38:49Z",
-      "number": 13648,
-      "state": "MERGED",
-      "title": "revenue: add Wayne R01CA309136 tracer-to-map provenance core"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zlor91304/revenue-underwriter-coherent-snapshot-closeout-20260913",
-      "closed_at": "2026-09-13T08:37:29Z",
-      "head_sha": "19d9990852ce9a03b93fe6ba3c50d9b3cf700182",
-      "merged_at": null,
-      "number": 13647,
-      "state": "CLOSED",
-      "title": "Close out coherent payout-history snapshot repair on current main"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "ariadne-z/revenue-underwriter-coherent-snapshots-clean-20260913",
-      "closed_at": "2026-09-13T08:37:03Z",
-      "head_sha": "7fe0c67148e11219eade82ddd28b97093a6cd179",
-      "merged_at": "2026-09-13T08:37:03Z",
-      "number": 13646,
-      "state": "MERGED",
-      "title": "fix(revenue): keep payout history snapshots coherent (clean successor)"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "ariadne/recover-deathstar-mail-telemetry",
-      "closed_at": "2026-09-13T08:36:56Z",
-      "head_sha": "30139c8cb27503a70ab6d5a6851951b29ffefb52",
-      "merged_at": "2026-09-13T08:36:56Z",
-      "number": 13596,
-      "state": "MERGED",
-      "title": "command-center: recover Deathstar email telemetry on fresh main"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zquasar913a/revenue-underwriter-coherent-snapshots-20260913",
-      "closed_at": "2026-09-13T08:35:51Z",
-      "head_sha": "c76b102e80efdf1950cdcdc12b9b563cc9facb7b",
-      "merged_at": null,
-      "number": 13629,
-      "state": "CLOSED",
-      "title": "fix(revenue): keep payout history snapshots coherent"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zad913/outbound-route-lifecycle-20260913",
-      "closed_at": "2026-09-13T08:34:12Z",
-      "head_sha": "a42f7dda977d344065ffffb1cae8de2d474cd025",
-      "merged_at": "2026-09-13T08:34:12Z",
-      "number": 13645,
-      "state": "MERGED",
-      "title": "revenue: classify permanent outbound route failures"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-lovelace-9130413a/uwa-committed-disbursement-fence-r2-20260913",
-      "closed_at": "2026-09-13T08:31:15Z",
-      "head_sha": "a1cb08fe375ba6fa2ad9f15e06179aacbf371122",
-      "merged_at": null,
-      "number": 13642,
-      "state": "CLOSED",
-      "title": "Fence committed United Fund disbursements above award"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zkub-91364/committed-disbursement-fence-final-20260913",
-      "closed_at": "2026-09-13T08:30:38Z",
-      "head_sha": "80acb6fb874e69f589555a7ca2d2a5a098d26d5f",
-      "merged_at": "2026-09-13T08:30:38Z",
-      "number": 13641,
-      "state": "MERGED",
-      "title": "revenue: hold committed disbursement over award"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "revenue/sixty-vines-tap-integrity-20260913",
-      "closed_at": "2026-09-13T08:30:36Z",
-      "head_sha": "9a2c2993d511d910e75e78a332f436dc853b14b5",
-      "merged_at": "2026-09-13T08:30:36Z",
-      "number": 13640,
-      "state": "MERGED",
-      "title": "revenue: add tap-to-table integrity acceptance core"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "ap913/highgate-huntington-guest-promise-rail-20260913",
-      "closed_at": "2026-09-13T08:30:32Z",
-      "head_sha": "f54d3a3de4bfd0db87fe290645a63be151fcfdfc",
-      "merged_at": "2026-09-13T08:30:32Z",
-      "number": 13643,
-      "state": "MERGED",
-      "title": "revenue: add Huntington guest-promise integrity rail core"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "cobb-z/actions-authority-runner-backlog-20260913",
-      "closed_at": "2026-09-13T08:29:22Z",
-      "head_sha": "e169b8b425c9730f921bb700e3fe220c8a187668",
-      "merged_at": "2026-09-13T08:29:22Z",
-      "number": 13635,
-      "state": "MERGED",
-      "title": "ci: add exact-head Actions evidence authority"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-13T08:55:08Z",
+  "unchanged_since": "2026-09-13T09:14:46Z",
   "undatable_pulls": []
 }
