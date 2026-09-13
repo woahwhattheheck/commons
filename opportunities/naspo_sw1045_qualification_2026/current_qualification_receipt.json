@@ -1,0 +1,47 @@
+{
+  "attachment_manifest_sha256": "c46c0f38fa96e64fbdca38f1a89ee6dd12f86b3bf63964075c073c5737d5dbb7",
+  "authority": {
+    "agency_contact_authorized": false,
+    "certification_or_signature_authorized": false,
+    "contract_acceptance_authorized": false,
+    "named_person_commitment_authorized": false,
+    "naspo_contact_authorized": false,
+    "past_performance_representation_authorized": false,
+    "portal_login_authorized": false,
+    "pricing_commitment_authorized": false,
+    "prime_contact_authorized": false,
+    "proposal_submission_authorized": false,
+    "revenue_recognition_authorized": false,
+    "spend_authorized": false,
+    "supplier_registration_authorized": false
+  },
+  "award_status": "NO_AWARD_YET",
+  "category_blockers": {
+    "CATEGORY_1_CONSULTING": [
+      "OFFICIAL_PACKET_REQUIRED"
+    ],
+    "CATEGORY_2_SERVICES": [
+      "OFFICIAL_PACKET_REQUIRED"
+    ]
+  },
+  "evaluated_at": "2026-09-13T11:15:00Z",
+  "global_blockers": [],
+  "official_packet_ready": false,
+  "owner_authorized_personnel_count": 0,
+  "owner_input_sha256": "ab18129e73d053005f2bf69f71542b1cfe1ffafa0f31faac0448b06f3f39121a",
+  "receipt_sha256": "2bd83041c4c9b0494e94defc837b0500d6ef2f46847a4a54abf9b71f893ddd2b",
+  "recommended_route": "TEAMING_SUBCONTRACT",
+  "requirements_sha256": "f10be7e73434d25d82b938de25de4a857bd51e27d46f81f85b756f36d4fe70f8",
+  "route_states": {
+    "PRIME_CATEGORY_1_CONSULTING": "HOLD_OFFICIAL_PACKET_REQUIRED",
+    "PRIME_CATEGORY_2_SERVICES": "HOLD_OFFICIAL_PACKET_REQUIRED",
+    "TEAMING_SUBCONTRACT": "TEAMING_DRAFT_READY_FOR_OWNER_REVIEW"
+  },
+  "schema": "naspo.sw1045.qualification_receipt/v1",
+  "source_sha256": "308835194e39bf0424007f2b15638087ab8b016ff0b62c25fba597615ccbfeed",
+  "state": "TEAMING_DRAFT_READY_FOR_OWNER_REVIEW",
+  "supportable_public_sector_reference_count": 0,
+  "supported_claim_count": 0,
+  "technical_evidence_count": 2,
+  "warnings": []
+}
