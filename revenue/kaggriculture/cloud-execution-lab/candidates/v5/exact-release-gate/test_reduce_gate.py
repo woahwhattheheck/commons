@@ -28,71 +28,87 @@ def cell(lane, i, c_margin=100, b_margin=0, family="fam", seat=0, c_status="SUCC
     }
 
 
-def bundle(cells, counts=None):
-    if counts is None:
-        counts = {lane: sum(c["lane"] == lane for c in cells) for lane in gate.REQUIRED_LANES}
+def receipts():
+    return {
+        lane: {
+            "raw_artifact": f"/evidence/{lane}.json",
+            "raw_sha256": ("%064x" % (i + 1)),
+            "corpus_id": f"corpus-{lane}",
+            "corpus_sha256": ("%064x" % (i + 101)),
+        }
+        for i, lane in enumerate(sorted(gate.REQUIRED_LANES))
+    }
+
+
+def bundle(cells):
     return {
         "schema_version": gate.SCHEMA,
         "candidate_sha256": gate.CANDIDATE_SHA256,
         "control_sha256": gate.CONTROL_SHA256,
         "engine_sha256": gate.ENGINE_SHA256,
-        "required_lane_cell_counts": counts,
+        "lane_receipts": receipts(),
         "cells": cells,
     }
 
 
-def six(delta=100):
-    return [cell(lane, 0, delta, 0, family=f"family-{lane}", seat=i % 2) for i, lane in enumerate(sorted(gate.REQUIRED_LANES))]
+def full_cells(delta=100):
+    rows = []
+    for lane in sorted(gate.REQUIRED_LANES):
+        for i in range(gate.EXPECTED_LANE_CELL_COUNTS[lane]):
+            rows.append(cell(lane, i, delta, 0, family=f"family-{lane}", seat=i % 2))
+    return rows
 
 
 class ReleaseGateTests(unittest.TestCase):
     def test_machine_pass_still_requires_root_review(self):
-        report = gate.evaluate(bundle(six(100)))
+        report = gate.evaluate(bundle(full_cells(100)))
         self.assertEqual(report["machine_status"], "PASS")
         self.assertEqual(report["release_status"], "AWAIT_ROOT_REVIEW")
-        self.assertEqual(report["overall"]["positive"], 6)
+        self.assertEqual(report["overall"]["positive"], sum(gate.EXPECTED_LANE_CELL_COUNTS.values()))
         self.assertEqual(report["overall"]["worst_delta"], 100)
+        self.assertEqual(report["overall"]["control_wlt"]["T"], sum(gate.EXPECTED_LANE_CELL_COUNTS.values()))
+        self.assertEqual(len(report["worst_20"]), 20)
 
     def test_identity_mismatch_fails_closed(self):
-        b = bundle(six())
+        b = bundle(full_cells())
         b["candidate_sha256"] = "0" * 64
         with self.assertRaisesRegex(gate.GateError, "candidate identity mismatch"):
             gate.evaluate(b)
 
     def test_missing_lane_cell_fails_closed(self):
-        cells = six()
-        b = bundle(cells)
-        b["required_lane_cell_counts"]["F29"] = 2
+        cells = full_cells()
+        cells.pop()
         with self.assertRaisesRegex(gate.GateError, "lane coverage mismatch"):
-            gate.evaluate(b)
+            gate.evaluate(bundle(cells))
 
     def test_duplicate_semantic_cell_fails_closed(self):
-        cells = six()
+        cells = full_cells()
         dup = dict(cells[0])
         dup["cell_id"] = "different-id"
-        cells.append(dup)
-        counts = {lane: sum(c["lane"] == lane for c in cells) for lane in gate.REQUIRED_LANES}
+        cells[1] = dup
         with self.assertRaisesRegex(gate.GateError, "duplicate semantic cell"):
-            gate.evaluate(bundle(cells, counts))
+            gate.evaluate(bundle(cells))
 
     def test_timeout_or_fallback_holds(self):
-        cells = six()
+        cells = full_cells()
         cells[0]["candidate"]["status"] = "TIMEOUT"
         cells[1]["candidate"]["fallback_count"] = 1
         report = gate.evaluate(bundle(cells))
         self.assertEqual(report["machine_status"], "HOLD")
         self.assertIn("nonclean_status_or_fallback", report["machine_failures"])
         self.assertEqual(set(report["dirty_cells"]), {cells[0]["cell_id"], cells[1]["cell_id"]})
+        self.assertEqual(report["failure_counts"]["timeout"], 1)
+        self.assertEqual(report["failure_counts"]["fallback"], 1)
 
     def test_negative_global_mean_holds(self):
-        cells = six(10)
-        cells[0]["candidate"]["own_score"] -= 100
+        cells = full_cells(10)
+        cells[0]["candidate"]["own_score"] -= 50000
         report = gate.evaluate(bundle(cells))
         self.assertEqual(report["machine_status"], "HOLD")
         self.assertIn("global_mean_not_positive", report["machine_failures"])
 
     def test_win_to_loss_exceeding_loss_to_win_holds(self):
-        cells = six(10)
+        cells = full_cells(10)
         cells[0]["control"] = outcome(10020, 10000)
         cells[0]["candidate"] = outcome(9999, 10000)
         report = gate.evaluate(bundle(cells))
@@ -101,7 +117,7 @@ class ReleaseGateTests(unittest.TestCase):
         self.assertIn("loss_to_win_below_win_to_loss", report["machine_failures"])
 
     def test_family_and_seat_strata_are_reported(self):
-        cells = six(100)
+        cells = full_cells(100)
         cells[0]["family"] = "shared"
         cells[1]["family"] = "shared"
         report = gate.evaluate(bundle(cells))
@@ -110,13 +126,13 @@ class ReleaseGateTests(unittest.TestCase):
         self.assertIn("1", report["by_seat"])
 
     def test_bool_score_rejected(self):
-        cells = six()
+        cells = full_cells()
         cells[0]["candidate"]["own_score"] = True
         with self.assertRaisesRegex(gate.GateError, "built-in integer"):
             gate.evaluate(bundle(cells))
 
     def test_report_digest_is_deterministic(self):
-        b = bundle(six(42))
+        b = bundle(full_cells(42))
         self.assertEqual(gate.evaluate(b)["report_sha256"], gate.evaluate(b)["report_sha256"])
 
 
