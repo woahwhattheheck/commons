@@ -5,18 +5,16 @@ It does not operate sewer infrastructure, dispatch maintenance, or claim field p
 """
 from __future__ import annotations
 
-from dataclasses import dataclass, asdict
-import argparse
+from dataclasses import dataclass
 import hashlib
 import json
 import math
-from pathlib import Path
-from typing import Any, Iterable, Mapping, Sequence
+from typing import Any, Mapping, Sequence
 
 PORTFOLIO_SCHEMA = "lacsd-04254.synthetic-portfolio.v1"
-CANDIDATE_SCHEMA = "lacsd-04254.candidate-log.v1"
-RECEIPT_SCHEMA = "lacsd-04254.evidence-receipt.v1"
-EVENT_SCHEMA = "lacsd-04254.candidate-event.v1"
+CANDIDATE_SCHEMA = "lacsd-04254.candidate-log.v2"
+RECEIPT_SCHEMA = "lacsd-04254.evidence-receipt.v2"
+EVENT_SCHEMA = "lacsd-04254.candidate-event.v2"
 ALLOWED_DISPOSITIONS = {"ALERT", "CLEAR", "NO_DATA"}
 
 
@@ -41,13 +39,13 @@ def _strict_keys(value: Mapping[str, Any], required: set[str], *, label: str) ->
 
 
 def _str(value: Any, *, label: str) -> str:
-    if not isinstance(value, str) or not value.strip():
+    if type(value) is not str or not value.strip():
         raise ValidationError(f"{label} must be a non-empty string")
     return value
 
 
 def _number(value: Any, *, label: str) -> float:
-    if isinstance(value, bool) or not isinstance(value, (int, float)):
+    if type(value) not in (int, float):
         raise ValidationError(f"{label} must be a finite number")
     result = float(value)
     if not math.isfinite(result):
@@ -126,59 +124,18 @@ def _scenario(
 def build_portfolio() -> dict[str, Any]:
     """Return the fixed deterministic 10-scenario synthetic portfolio."""
     scenarios = (
-        _scenario(
-            "normal-diurnal-01", "normal_diurnal", "CLEAR",
-            [("n1-0", 0, 0.45, 0.0, True), ("n1-1", 300, 0.72, 0.0, True), ("n1-2", 600, 0.52, 0.0, True)],
-        ),
-        _scenario(
-            "normal-diurnal-02", "normal_diurnal", "CLEAR",
-            [("n2-0", 0, 0.50, 0.0, True), ("n2-1", 300, 0.80, 0.0, True), ("n2-2", 600, 0.58, 0.0, True)],
-        ),
-        _scenario(
-            "blockage-drift-01", "blockage_drift", "ALERT",
-            [("b1-0", 0, 0.48, 0.0, True), ("b1-1", 300, 0.62, 0.0, True), ("b1-2", 480, 1.30, 0.0, True), ("b1-3", 540, 1.55, 0.0, True), ("b1-4", 720, 1.70, 0.0, True)],
-            onset_s=480, max_alert_latency_s=120,
-        ),
-        _scenario(
-            "blockage-drift-02", "blockage_drift", "ALERT",
-            [("b2-0", 0, 0.44, 0.0, True), ("b2-1", 420, 0.71, 0.0, True), ("b2-2", 600, 1.42, 0.0, True), ("b2-3", 720, 1.66, 0.0, True)],
-            onset_s=600, max_alert_latency_s=180,
-        ),
-        _scenario(
-            "storm-ii-01", "storm_inflow_infiltration", "ALERT",
-            [("s1-0", 0, 0.50, 0.0, True), ("s1-1", 300, 0.75, 0.9, True), ("s1-2", 420, 1.80, 1.0, True), ("s1-3", 540, 2.10, 0.9, True)],
-            onset_s=420, max_alert_latency_s=180,
-        ),
-        _scenario(
-            "storm-ii-02", "storm_inflow_infiltration", "ALERT",
-            [("s2-0", 0, 0.55, 0.0, True), ("s2-1", 360, 0.90, 0.8, True), ("s2-2", 480, 1.95, 1.0, True), ("s2-3", 660, 2.20, 0.7, True)],
-            onset_s=480, max_alert_latency_s=240,
-        ),
-        _scenario(
-            "sensor-dropout-01", "sensor_dropout", "NO_DATA",
-            [("d1-0", 0, 0.48, 0.0, True), ("d1-1", 300, 0.52, 0.0, True), ("d1-2", 600, 0.0, 0.0, False)],
-        ),
-        _scenario(
-            "sensor-dropout-02", "sensor_dropout", "NO_DATA",
-            [("d2-0", 0, 0.51, 0.0, True), ("d2-1", 300, 0.54, 0.0, True), ("d2-2", 600, 0.0, 0.0, False), ("d2-3", 900, 0.0, 0.0, False)],
-        ),
-        _scenario(
-            "duplicate-replay-01", "duplicate_packet_replay", "ALERT",
-            [("r1-0", 0, 0.46, 0.0, True), ("r1-1", 300, 0.70, 0.0, True), ("r1-2", 480, 1.60, 0.0, True), ("r1-2", 481, 1.60, 0.0, True), ("r1-2", 482, 1.60, 0.0, True)],
-            onset_s=480, max_alert_latency_s=120,
-        ),
-        _scenario(
-            "recovery-after-interruption-01", "transport_interruption_recovery", "ALERT",
-            [("x1-0", 0, 0.47, 0.0, True), ("x1-1", 420, 1.50, 0.0, False), ("x1-1", 500, 1.50, 0.0, False), ("x1-1", 560, 1.50, 0.0, True), ("x1-2", 620, 1.62, 0.0, True)],
-            onset_s=420, max_alert_latency_s=240, interruption_end_s=560,
-        ),
+        _scenario("normal-diurnal-01", "normal_diurnal", "CLEAR", [("n1-0", 0, 0.45, 0.0, True), ("n1-1", 300, 0.72, 0.0, True), ("n1-2", 600, 0.52, 0.0, True)]),
+        _scenario("normal-diurnal-02", "normal_diurnal", "CLEAR", [("n2-0", 0, 0.50, 0.0, True), ("n2-1", 300, 0.80, 0.0, True), ("n2-2", 600, 0.58, 0.0, True)]),
+        _scenario("blockage-drift-01", "blockage_drift", "ALERT", [("b1-0", 0, 0.48, 0.0, True), ("b1-1", 300, 0.62, 0.0, True), ("b1-2", 480, 1.30, 0.0, True), ("b1-3", 540, 1.55, 0.0, True), ("b1-4", 720, 1.70, 0.0, True)], onset_s=480, max_alert_latency_s=120),
+        _scenario("blockage-drift-02", "blockage_drift", "ALERT", [("b2-0", 0, 0.44, 0.0, True), ("b2-1", 420, 0.71, 0.0, True), ("b2-2", 600, 1.42, 0.0, True), ("b2-3", 720, 1.66, 0.0, True)], onset_s=600, max_alert_latency_s=180),
+        _scenario("storm-ii-01", "storm_inflow_infiltration", "ALERT", [("s1-0", 0, 0.50, 0.0, True), ("s1-1", 300, 0.75, 0.9, True), ("s1-2", 420, 1.80, 1.0, True), ("s1-3", 540, 2.10, 0.9, True)], onset_s=420, max_alert_latency_s=180),
+        _scenario("storm-ii-02", "storm_inflow_infiltration", "ALERT", [("s2-0", 0, 0.55, 0.0, True), ("s2-1", 360, 0.90, 0.8, True), ("s2-2", 480, 1.95, 1.0, True), ("s2-3", 660, 2.20, 0.7, True)], onset_s=480, max_alert_latency_s=240),
+        _scenario("sensor-dropout-01", "sensor_dropout", "NO_DATA", [("d1-0", 0, 0.48, 0.0, True), ("d1-1", 300, 0.52, 0.0, True), ("d1-2", 600, 0.0, 0.0, False)]),
+        _scenario("sensor-dropout-02", "sensor_dropout", "NO_DATA", [("d2-0", 0, 0.51, 0.0, True), ("d2-1", 300, 0.54, 0.0, True), ("d2-2", 600, 0.0, 0.0, False), ("d2-3", 900, 0.0, 0.0, False)]),
+        _scenario("duplicate-replay-01", "duplicate_packet_replay", "ALERT", [("r1-0", 0, 0.46, 0.0, True), ("r1-1", 300, 0.70, 0.0, True), ("r1-2", 480, 1.60, 0.0, True), ("r1-2", 481, 1.60, 0.0, True), ("r1-2", 482, 1.60, 0.0, True)], onset_s=480, max_alert_latency_s=120),
+        _scenario("recovery-after-interruption-01", "transport_interruption_recovery", "ALERT", [("x1-0", 0, 0.47, 0.0, True), ("x1-1", 420, 1.50, 0.0, False), ("x1-1", 500, 1.50, 0.0, False), ("x1-1", 560, 1.50, 0.0, True), ("x1-2", 620, 1.62, 0.0, True)], onset_s=420, max_alert_latency_s=240, interruption_end_s=560),
     )
-    data = {
-        "schema": PORTFOLIO_SCHEMA,
-        "portfolio_id": "lacsd-04254-synthetic-evidence-v1",
-        "purpose": "software evidence mechanics only; not field/challenge performance",
-        "scenarios": [scenario.to_dict() for scenario in scenarios],
-    }
+    data = {"schema": PORTFOLIO_SCHEMA, "portfolio_id": "lacsd-04254-synthetic-evidence-v1", "purpose": "software evidence mechanics only; not field/challenge performance", "scenarios": [scenario.to_dict() for scenario in scenarios]}
     data["portfolio_sha256"] = canonical_sha256(data)
     return data
 
@@ -186,13 +143,14 @@ def build_portfolio() -> dict[str, Any]:
 def _validate_candidate(candidate: Mapping[str, Any], portfolio: Mapping[str, Any]) -> dict[str, Any]:
     if not isinstance(candidate, Mapping):
         raise ValidationError("candidate must be an object")
-    required = {"schema", "candidate_id", "model_id", "model_version", "portfolio_sha256", "events"}
+    required = {"schema", "candidate_id", "model_id", "model_version", "candidate_build_sha256", "portfolio_sha256", "events"}
     _strict_keys(candidate, required, label="candidate")
     if candidate["schema"] != CANDIDATE_SCHEMA:
         raise ValidationError("unsupported candidate schema")
     candidate_id = _str(candidate["candidate_id"], label="candidate_id")
     model_id = _str(candidate["model_id"], label="model_id")
     model_version = _str(candidate["model_version"], label="model_version")
+    candidate_build_sha = _hex64(candidate["candidate_build_sha256"], label="candidate_build_sha256")
     portfolio_sha = _hex64(candidate["portfolio_sha256"], label="portfolio_sha256")
     if portfolio_sha != portfolio["portfolio_sha256"]:
         raise ValidationError("candidate portfolio_sha256 does not match exact synthetic portfolio")
@@ -202,10 +160,12 @@ def _validate_candidate(candidate: Mapping[str, Any], portfolio: Mapping[str, An
     scenarios = {row["scenario_id"]: row for row in portfolio["scenarios"]}
     normalized_events: list[dict[str, Any]] = []
     event_ids: set[str] = set()
+    effect_bindings: dict[str, tuple[str, str, str]] = {}
+    expected_build_binding = (candidate_id, model_id, model_version, candidate_build_sha)
     for idx, raw in enumerate(events):
         if not isinstance(raw, Mapping):
             raise ValidationError(f"event[{idx}] must be an object")
-        keys = {"schema", "event_id", "scenario_id", "source_packet_id", "observed_at_s", "disposition", "effect_id", "input_sha256"}
+        keys = {"schema", "event_id", "candidate_id", "model_id", "model_version", "candidate_build_sha256", "scenario_id", "source_packet_id", "observed_at_s", "disposition", "effect_id", "input_sha256"}
         _strict_keys(raw, keys, label=f"event[{idx}]")
         if raw["schema"] != EVENT_SCHEMA:
             raise ValidationError(f"event[{idx}] unsupported schema")
@@ -213,6 +173,14 @@ def _validate_candidate(candidate: Mapping[str, Any], portfolio: Mapping[str, An
         if event_id in event_ids:
             raise ValidationError(f"duplicate event_id: {event_id}")
         event_ids.add(event_id)
+        event_build_binding = (
+            _str(raw["candidate_id"], label=f"event[{idx}].candidate_id"),
+            _str(raw["model_id"], label=f"event[{idx}].model_id"),
+            _str(raw["model_version"], label=f"event[{idx}].model_version"),
+            _hex64(raw["candidate_build_sha256"], label=f"event[{idx}].candidate_build_sha256"),
+        )
+        if event_build_binding != expected_build_binding:
+            raise ValidationError(f"event[{idx}] candidate/model/build identity does not match candidate envelope")
         scenario_id = _str(raw["scenario_id"], label=f"event[{idx}].scenario_id")
         if scenario_id not in scenarios:
             raise ValidationError(f"event[{idx}] unknown scenario_id: {scenario_id}")
@@ -240,22 +208,12 @@ def _validate_candidate(candidate: Mapping[str, Any], portfolio: Mapping[str, An
         elif effect_id is not None:
             raise ValidationError(f"event[{idx}] non-ALERT effect_id must be null")
         input_sha = _hex64(raw["input_sha256"], label=f"event[{idx}].input_sha256")
-        normalized_events.append({
-            "schema": EVENT_SCHEMA,
-            "event_id": event_id,
-            "scenario_id": scenario_id,
-            "source_packet_id": packet_id,
-            "observed_at_s": observed,
-            "disposition": disposition,
-            "effect_id": effect_id,
-            "input_sha256": input_sha,
-        })
+        if effect_id is not None:
+            binding = (candidate_build_sha, scenario_id, input_sha)
+            previous = effect_bindings.get(effect_id)
+            if previous is not None and previous != binding:
+                raise ValidationError(f"effect_id {effect_id!r} reused across candidate/scenario/input generations")
+            effect_bindings[effect_id] = binding
+        normalized_events.append({"schema": EVENT_SCHEMA, "event_id": event_id, "candidate_id": event_build_binding[0], "model_id": event_build_binding[1], "model_version": event_build_binding[2], "candidate_build_sha256": event_build_binding[3], "scenario_id": scenario_id, "source_packet_id": packet_id, "observed_at_s": observed, "disposition": disposition, "effect_id": effect_id, "input_sha256": input_sha})
     normalized_events.sort(key=lambda event: (event["scenario_id"], event["observed_at_s"], event["event_id"]))
-    return {
-        "schema": CANDIDATE_SCHEMA,
-        "candidate_id": candidate_id,
-        "model_id": model_id,
-        "model_version": model_version,
-        "portfolio_sha256": portfolio_sha,
-        "events": normalized_events,
-    }
+    return {"schema": CANDIDATE_SCHEMA, "candidate_id": candidate_id, "model_id": model_id, "model_version": model_version, "candidate_build_sha256": candidate_build_sha, "portfolio_sha256": portfolio_sha, "events": normalized_events}
