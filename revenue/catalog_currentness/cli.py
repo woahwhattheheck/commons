@@ -1,33 +1,9 @@
 from __future__ import annotations
 
 import argparse
-import json
 from pathlib import Path
-from typing import Any
 
-from .audit import CatalogCurrentnessError, canonical_json, compile_currentness, render_csv, render_markdown, verify_receipt
-
-
-def _strict_object(pairs: list[tuple[str, Any]]) -> dict[str, Any]:
-    out: dict[str, Any] = {}
-    for key, value in pairs:
-        if key in out:
-            raise CatalogCurrentnessError(f"duplicate JSON key: {key}")
-        out[key] = value
-    return out
-
-
-def _reject_nonfinite(token: str) -> Any:
-    raise CatalogCurrentnessError(f"non-finite JSON number: {token}")
-
-
-def _loads_strict(text: str) -> Any:
-    try:
-        return json.loads(text, object_pairs_hook=_strict_object, parse_constant=_reject_nonfinite)
-    except CatalogCurrentnessError:
-        raise
-    except json.JSONDecodeError as exc:
-        raise CatalogCurrentnessError(f"invalid JSON: {exc}") from exc
+from .audit import CatalogCurrentnessError, canonical_json, compile_currentness, render_csv, render_markdown, strict_json_loads, verify_receipt
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -37,7 +13,7 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--out", type=Path, required=True)
     args = parser.parse_args(argv)
     try:
-        raw = _loads_strict(args.input.read_text(encoding="utf-8"))
+        raw = strict_json_loads(args.input.read_text(encoding="utf-8"))
         receipt = compile_currentness(raw, as_of=args.as_of)
     except (OSError, CatalogCurrentnessError) as exc:
         print(f"HOLD: {exc}")
