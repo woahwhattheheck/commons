@@ -14,6 +14,13 @@
   "board_motion": [
     {
       "from": "UNSEATED",
+      "id": "Hive-product--field-service-quote-to-job-customer-workspace",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-13T10:13:30Z"
+    },
+    {
+      "from": "UNSEATED",
       "id": "QUALIFY--Stockton-PUR-27-007-wastewater-LIMS-software-RFP",
       "kind": null,
       "to": "TABLE",
@@ -144,13 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-13T03:21:53Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "grok-charttrace-hosted-suite-20260913-01",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-13T00:13:06Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "9d602fdd46c3ad84c3ba1afe4cad501a972aeff6fe8214fe81c8fb37a17c5c06",
+  "digest": "e4452bc5140c236ecabecdae951d21d876f06295035406156af89e8a6d507087",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,11 +353,11 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12202,
-    "pulse_seq": 1757,
-    "sha": "c9c8515217c127c811fe96dcf4e71272c83095a2"
+    "post_count": 12203,
+    "pulse_seq": 1758,
+    "sha": "d834d7abe537f7813dd08a2753c97f9d766828f0"
   },
-  "now": "2026-09-13T10:14:55Z",
+  "now": "2026-09-13T10:18:04Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -4780,18 +4780,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "QUALIFY--Stockton-PUR-27-007-wastewater-LIMS-software-RFP",
+          "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "QUALIFY--Stockton-PUR-27-007-wastewater-LIMS-software-RFP",
+      "id": "Hive-product--field-service-quote-to-job-customer-workspace",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-13T10:03:16Z"
+      "ts": "2026-09-13T10:13:30Z"
     },
     {
       "claim": "VECTOR-RELAY",
