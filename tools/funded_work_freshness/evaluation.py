@@ -37,7 +37,7 @@ _REVERSE_AMOUNT_LINK_RE = re.compile(
 _FROM_TO_RE = re.compile(
     r"(?i)\b(?:changed|updated|increased|decreased|raised|reduced)\b.*\bfrom\b.*\bto\b"
 )
-_CURRENT_TRANSITION_RE = re.compile(r"(?i)\b(?:now|to)\b")
+_CURRENT_TRANSITION_RE = re.compile(r"(?i)\bnow\b")
 _SYMBOL_CURRENCY = {"$": "USD", "€": "EUR", "£": "GBP"}
 
 
