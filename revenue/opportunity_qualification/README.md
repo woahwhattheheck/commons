@@ -2,89 +2,70 @@
 
 Reusable offline qualification for public RFPs, paid-work solicitations, and teaming opportunities.
 
-The engine converts a source-bound opportunity packet plus an independently retained controlling-package completeness manifest into one conservative result:
+The engine produces one conservative result: `PRIME_READY`, `TEAMING_READY`, `HOLD`, or `NO_BID`.
 
-- `PRIME_READY`
-- `TEAMING_READY`
-- `HOLD`
-- `NO_BID`
+## Trust model
 
-It is designed for the recurring commercial question: **does the evidence actually support a direct-prime route, a teaming route, neither route yet, or a hard no-bid?**
+Qualification has **three distinct inputs**:
 
-## Two trust inputs
+1. the opportunity packet (buyer/capability sources, evidence, requirements, deadlines);
+2. an independently retained controlling-package completeness manifest; and
+3. the independently retained canonical SHA-256 of that manifest.
 
-The qualification packet binds:
-
-1. opportunity identity and trusted evaluation time;
-2. buyer sources separated into `OFFICIAL` and `SECONDARY`;
-3. capability sources for the prime and any proposed team member;
-4. mandatory and scoreable requirement records tied to exact buyer sources; and
-5. exact capability evidence tied to immutable source digests.
-
-The packet is intentionally **not allowed to prove that its own requirement list is complete**. `PRIME_READY`, `TEAMING_READY`, and requirement-derived `NO_BID` additionally require a separate `tjlabs.opportunity-qualification-completeness/v1` manifest supplied through the `trusted_completeness` argument or CLI `--completeness` file.
-
-That manifest is an out-of-band extraction commitment. It binds:
+The packet is intentionally not allowed to prove that its own requirement list is complete. The completeness manifest is `tjlabs.opportunity-qualification-completeness/v1` and binds:
 
 - opportunity ID;
 - controlling buyer source ID + SHA-256;
 - extraction time + retained extraction-evidence SHA-256;
-- an exact `complete` boolean;
-- expected gate count;
-- canonical gate-set SHA-256; and
+- exact `complete` boolean;
+- expected gate count and canonical gate-set SHA-256; and
 - every expected gate's ID, category, mandatory/scoreable status, route, cure policy, buyer source ID + SHA-256, and description SHA-256.
 
-The engine compares that independent commitment against the packet's observed gate descriptors. Omitting a mandatory gate, omitting a scoreable category, dropping an addendum-derived gate, changing route/cure/category, changing a buyer-source binding, or changing requirement text breaks the commitment and forces `HOLD`.
+The separate verifier trust root (`trusted_completeness_sha256` / CLI `--completeness-sha256`) must equal the canonical SHA-256 of the normalized manifest. It is the external commitment that prevents a caller from deleting a requirement and regenerating both the packet and manifest at consumption time.
 
-A missing completeness manifest also forces `HOLD` for any result that would otherwise assert package readiness or a requirement-derived no-bid. A separately buyer-official expired proposal deadline may still produce `NO_BID` because that negative fact does not depend on requirement-set completeness.
+**Do not derive that expected manifest digest from the qualification packet or from a newly supplied manifest during verification.** Retain it independently when the controlling-package extraction is reviewed/finalized. The repository fixture demonstrates this as two separate artifacts: `completeness_fixture.json` and `completeness_fixture.sha256`.
 
-**Do not generate the trusted completeness manifest from the same packet at consumption time.** It is the independently retained output of the controlling-package extraction/review boundary.
+Without both the manifest and its independently supplied expected digest, package completeness is unverified. Any would-be `PRIME_READY`, `TEAMING_READY`, or requirement-derived `NO_BID` becomes `HOLD`. A separately buyer-official expired proposal deadline may still produce `NO_BID`, because that fact does not depend on requirement-set completeness.
+
+Omitting a mandatory gate, omitting a scoreable category, dropping an addendum-derived gate, changing route/cure/category, changing a buyer-source binding/digest, or changing requirement text breaks the committed gate set and fails closed.
 
 ## Requirement and evidence semantics
 
-Mandatory requirements cannot become green from a procurement mirror; they must bind an `OFFICIAL` buyer source. Readiness evidence must bind an `OFFICIAL` capability source rather than an unverified summary.
+Mandatory gates cannot green from procurement mirrors; they must bind `OFFICIAL` buyer sources. Capability readiness evidence must bind `OFFICIAL` capability sources.
 
-Every requirement carries a stable `gate_id`, category, mandatory status, route (`PRIME`, `TEAM`, or `BOTH`), cure policy (`NONE` or `PARTNER`), exact buyer-source binding, and prime/team evidence state + evidence IDs.
+Each requirement has a stable gate ID, category, mandatory flag, route (`PRIME`, `TEAM`, `BOTH`), cure policy (`NONE`, `PARTNER`), buyer-source binding, and prime/team evidence state + evidence IDs. `MISSING` cannot carry evidence. `PASS`/`FAIL` require evidence. Duplicate IDs, same-ID changed payloads, source/subject/category drift, future or expired evidence, duplicate JSON keys, floats/non-finite numbers, malformed digests/URLs, and credential-shaped text fail closed.
 
-`MISSING` may not carry evidence. `PASS` and `FAIL` must carry source-bound evidence. Duplicate IDs, same-ID changed payloads, source drift, subject/category drift, future evidence, expired capability evidence, malformed input, duplicate JSON keys, floats, and non-finite numbers fail closed.
+`PRIME_READY` requires all applicable mandatory prime gates plus verified package completeness. `TEAMING_READY` additionally requires buyer-official teaming authority and all applicable partner/cure gates. Scoreable gaps are reported without being promoted into mandatory facts.
 
-For `PRIME_READY`, every mandatory `PRIME`/`BOTH` gate must be satisfied by prime evidence **and** package completeness must verify.
+## Negative authority
 
-For `TEAMING_READY`, the buyer must officially allow teaming, the applicable mandatory gates must be satisfied under their cure rules, **and** package completeness must verify. A `BOTH` gate must be satisfied on both sides.
+A non-curable mandatory failure may produce a gate-derived `NO_BID` only when the committed package completeness boundary verifies. An expired proposal deadline can independently produce `NO_BID` only when the controlling package and the deadline source are buyer-official. Secondary mirrors cannot close the team route or force deadline expiry authority.
 
-A non-curable failed mandatory gate can make a route impossible only when the independently committed gate set is complete. Missing evidence normally produces `HOLD`, not an invented failure. Scoreable gaps are reported but never promoted into mandatory facts.
-
-## Deadlines
-
-Proposal and question deadlines are each tied to exact buyer source IDs. The proposal deadline affects disposition; the question deadline is urgency metadata only.
-
-An official addendum can move a proposal deadline by supplying the new timestamp and binding that field to the addendum's official source record. The engine does not scrape or infer extensions.
+An official addendum may move a deadline or carry a requirement only when it is represented as an official buyer source and committed through the relevant field/gate. The engine does not scrape or infer addenda.
 
 ## Determinism and receipts
 
-Packet lists are canonicalized by stable IDs and committed into `input_digest`. The receipt records exact disposition/reasons, route status, package-source truth, completeness verification + expected/observed gate commitments, scoreable gaps, counts, a fixed false external-action authority ceiling, and `receipt_digest`.
+Packet lists are canonicalized by stable IDs and bound into `input_digest`. Receipts record disposition/reasons, prime/team route status, requirement-only readiness diagnostics, package source truth, expected/observed completeness commitments, scoreable gaps, counts, fixed-false external-action authority, and `receipt_digest`.
 
-`verify_receipt()` checks receipt integrity and refuses any receipt whose authority flags are no longer all `false`. `verify_receipt_against_inputs()` is stronger: it recompiles using the packet, trusted clock, and the same independent completeness manifest and compares canonical bytes.
-
-`render_markdown()` renders only an integrity-verified receipt.
+`verify_receipt()` verifies receipt integrity and refuses authority mutations. `verify_receipt_against_inputs()` is stronger: it recompiles against the packet, trusted time, completeness manifest, and independently retained manifest SHA-256, then compares canonical bytes.
 
 ## CLI
-
-Use strict JSON for both inputs. The CLI requires the independent completeness file:
 
 ```bash
 python engine.py packet.json \
   --completeness completeness.json \
+  --completeness-sha256 <independently-retained-manifest-sha256> \
   --as-of 2026-09-13T10:00:00Z \
   --markdown qualification.md
 ```
 
-The trusted `--as-of` value must exactly match packet `as_of`. The completeness extraction time may not be in the future relative to that trusted clock.
+Both JSON inputs are parsed strictly. The trusted `--as-of` must equal packet `as_of`; completeness extraction time cannot be in the future relative to it.
 
 ## Commercial boundary
 
-This module evaluates supplied evidence only. It does not contact a buyer or partner, log into a procurement portal, register an entity, submit questions or proposals, commit pricing, sign anything, move money, deploy a service, or assert an award or recognized revenue.
+This module evaluates supplied evidence only. It does not contact buyers/partners, log into portals, register entities, submit questions/proposals, commit pricing, sign, spend, mutate payment providers, deploy, assert an award, or recognize revenue.
 
-`PRIME_READY` and `TEAMING_READY` are evidence-package states for a human commercial decision, not external-action execution.
+`PRIME_READY` / `TEAMING_READY` are evidence-package states for a human commercial decision, never external-action authority.
 
 ## Validation
 
@@ -96,4 +77,4 @@ python -m unittest -v
 python -O -m unittest -v
 ```
 
-The hostile suite covers direct-prime/team routes, non-curable failures, official-vs-secondary authority, extensions, future/expired evidence, replay/conflict behavior, strict types/JSON, credential-shaped text, receipt tampering, input-order invariance, missing completeness, mandatory and scoreable gate omission, addendum-gate omission, route drift, controlling-source drift, incomplete extraction, manifest tampering, and trust-input re-verification.
+The hostile suite covers original route/evidence semantics plus retained-manifest/root matching, missing trust inputs, caller-regenerated manifest attacks, mandatory/scoreable/category omission, addendum-gate omission, route drift, controlling-source drift, incomplete extraction, manifest tampering/future time/type aliases, requirement-derived NO_BID gating, official deadline expiry, and full re-verification against trust inputs.
