@@ -188,8 +188,8 @@ def decide(raw_evidence: Mapping[str, Any], *, seen_event_ids: Iterable[str] = (
     evidence = validate_evidence(raw_evidence)
     active = (policy or Policy()).validate()
     seen = set(seen_event_ids)
-    if any(type(x) is not str or len(x) != 64 for x in seen):
-        raise ValueError("seen_event_ids must contain 64-character digest strings")
+    for event_id in seen:
+        _hex64(event_id, "seen_event_id")
     if evidence["event_id"] in seen:
         return _make_receipt("REPLAY_IGNORED", ("EVENT_ALREADY_RECORDED",), evidence["event_id"], active)
 
@@ -212,28 +212,22 @@ def decide(raw_evidence: Mapping[str, Any], *, seen_event_ids: Iterable[str] = (
     return _make_receipt("NO_ACTION", ("BELOW_REVIEW_THRESHOLDS",), evidence["event_id"], active)
 
 
-def verify_receipt(raw_evidence: Mapping[str, Any], receipt: Mapping[str, Any], *, policy: Policy | None = None) -> bool:
-    evidence = validate_evidence(raw_evidence)
-    active = (policy or Policy()).validate()
-    expected_keys = {
-        "decision", "reason_codes", "event_id", "policy_id", "external_action_authorized", "receipt_sha256"
-    }
-    if type(receipt) is not dict or set(receipt) != expected_keys:
+def verify_receipt(
+    raw_evidence: Mapping[str, Any],
+    receipt: Mapping[str, Any],
+    *,
+    seen_event_ids: Iterable[str] = (),
+    policy: Policy | None = None,
+) -> bool:
+    """Verify integrity *and* recompile the exact policy semantics.
+
+    Replay receipts are state-dependent, so callers verifying `REPLAY_IGNORED` must
+    provide the same retained event-id set that made the event a replay.
+    """
+    if type(receipt) is not dict:
         return False
-    if receipt["decision"] not in DECISIONS:
+    try:
+        expected = decide(raw_evidence, seen_event_ids=seen_event_ids, policy=policy).to_dict()
+    except ValueError:
         return False
-    if receipt["event_id"] != evidence["event_id"] or receipt["policy_id"] != active.policy_id:
-        return False
-    if receipt["external_action_authorized"] is not False:
-        return False
-    reasons = receipt["reason_codes"]
-    if type(reasons) is not list or any(type(x) is not str for x in reasons):
-        return False
-    unsigned = {
-        "decision": receipt["decision"],
-        "reason_codes": sorted(set(reasons)),
-        "event_id": receipt["event_id"],
-        "policy_id": receipt["policy_id"],
-        "external_action_authorized": False,
-    }
-    return receipt["receipt_sha256"] == sha256_json(unsigned)
+    return receipt == expected
