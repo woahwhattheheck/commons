@@ -1,7 +1,7 @@
 {
-  "seq": 1782,
-  "head": "6be86acbf8a5834016dcbd25dc18d4bc1f4f2727",
-  "ts": "2026-09-13T12:53:30Z",
+  "seq": 1783,
+  "head": "1658d6dce6f2dbdb8082135aeea40332d249f7a4",
+  "ts": "2026-09-13T12:55:36Z",
   "post_count": 12217,
   "newest": [
     "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",

@@ -369,22 +369,6 @@
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
   {
-   "number": 13587,
-   "author": "woahwhattheheck",
-   "title": "ci: reject ignored runtime inputs before battery execution",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/13587",
-   "base_freshness": {
-    "base_sha": "82457b4fbc99a64a5fa10203814ab6c3729c9de3",
-    "main_sha": "0ec460406efe0eb8e98b8bbb716a14382f36e623",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
    "number": 13654,
    "author": "woahwhattheheck",
    "title": "ci: make Actions evidence classification-only",
@@ -679,6 +663,22 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/13792",
    "base_freshness": {
     "base_sha": "363e50c63f7d29d247f4c3f2bf3472f22761dbe5",
+    "main_sha": "0ec460406efe0eb8e98b8bbb716a14382f36e623",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 13587,
+   "author": "woahwhattheheck",
+   "title": "ci: reject ignored runtime inputs before battery execution",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/13587",
+   "base_freshness": {
+    "base_sha": "82457b4fbc99a64a5fa10203814ab6c3729c9de3",
     "main_sha": "0ec460406efe0eb8e98b8bbb716a14382f36e623",
     "ahead_by": null,
     "behind_by": null,
