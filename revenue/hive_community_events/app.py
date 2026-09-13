@@ -47,7 +47,9 @@ def timestamp(value: Any, label: str) -> float:
 
 
 def _host_digest(host_key: str) -> str:
-    return hashlib.sha256(host_key.encode("utf-8")).hexdigest()
+    # Generated keys are ASCII. surrogatepass keeps hostile JSON strings on the
+    # same generic verification path instead of letting UTF-8 encoding raise.
+    return hashlib.sha256(host_key.encode("utf-8", errors="surrogatepass")).hexdigest()
 
 
 class Store:
@@ -73,7 +75,14 @@ class Store:
             """)
             columns = {row["name"] for row in db.execute("PRAGMA table_info(events)")}
             if "host_hash" not in columns:
-                db.execute("ALTER TABLE events ADD COLUMN host_hash TEXT")
+                try:
+                    db.execute("ALTER TABLE events ADD COLUMN host_hash TEXT")
+                except sqlite3.OperationalError:
+                    # Two processes may discover the old schema concurrently.
+                    # Suppress only the race where the other migrator won.
+                    current = {row["name"] for row in db.execute("PRAGMA table_info(events)")}
+                    if "host_hash" not in current:
+                        raise
 
     @contextlib.contextmanager
     def connect(self):
@@ -136,7 +145,7 @@ class Store:
                               "FROM events e ORDER BY created DESC,id DESC").fetchall()
             return [{"id": e["id"], "title": e["title"], "room": e["room"],
                      "opens": e["opens"], "ends": e["ends"], "phase": self.phase(e, now),
-                     "players": e["players"], "host_protected": bool(e["host_hash"])} for e in rows]
+                     "players": e["players"], "host_protected": e["host_hash"] is not None} for e in rows]
 
     def verify_host(self, event_id, host_key):
         with self.connect() as db:
@@ -231,7 +240,7 @@ class Store:
             return {"id": event_id, "title": event["title"], "room": event["room"], "opens": event["opens"],
                     "ends": event["ends"], "server_time": self.clock(), "phase": phase,
                     "question_count": len(questions), "questions": visible, "member": member, "answers": answers,
-                    "players": len(rows), "leaderboard": board, "host_protected": bool(event["host_hash"])}
+                    "players": len(rows), "leaderboard": board, "host_protected": event["host_hash"] is not None}
 
 
 def make_handler(store: Store):
