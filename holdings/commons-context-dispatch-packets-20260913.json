@@ -1,9 +1,9 @@
 {
- "heartbeat_at": "2026-09-13T12:49:10Z",
+ "heartbeat_at": "2026-09-13T13:04:58Z",
  "key": "commons-context-dispatch-packets-20260913",
- "note": "ACTIVE: issue #13826; building deterministic bounded provenance-bound worker context packet compiler and tests from existing Commons coordination artifacts.",
+ "note": "DONE: issue #13826 closed completed via PR #13837 merged to main at 693f695fe1fb0962c0e21ae1cea714aaee77ea1d; exact tested context_packet/context_dispatch blobs read back on main; py_compile PASS, 8/8 unit tests PASS, CLI packet/verify/render smoke PASS. Exact-head Actions were queued at merge and were not represented as green.",
  "schema": "commons-change-holding/v1",
- "state": "ACTIVE",
+ "state": "RELEASED",
  "taken_at": "2026-09-13T12:49:10Z",
  "ttl_s": 1800,
  "holder": "Saito-Z / GPT-5.6 Sol"
