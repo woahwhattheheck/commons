@@ -1,9 +1,9 @@
 {
   "counts": {
-    "open_issues": 33,
-    "open_pull_requests": 28,
-    "runs_in_progress": 15,
-    "runs_queued": 790
+    "open_issues": 36,
+    "open_pull_requests": 29,
+    "runs_in_progress": 20,
+    "runs_queued": 789
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -69,13 +69,24 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
+      "branch": "zzh/context-git-source-capsules-13854",
+      "created_at": "2026-09-13T13:29:53Z",
+      "draft": false,
+      "head_sha": "f4a163341d61089d3d81e2cda98c8087cf7b22d0",
+      "number": 13865,
+      "title": "feat: embed exact Git source capsules in context dispatch packets",
+      "updated_at": "2026-09-13T13:35:15Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
       "branch": "zth-k6p8/wrf-5417-proposal-20260913",
       "created_at": "2026-09-13T13:25:56Z",
       "draft": false,
-      "head_sha": "836f8f22a4625973020aa71c8475a4fbf335b97f",
+      "head_sha": "8fe905a0a9cb03b79f916fd8e97585b50da745a7",
       "number": 13864,
       "title": "revenue: prepare WRF 5417 camera-AI proposal carrier",
-      "updated_at": "2026-09-13T13:26:54Z"
+      "updated_at": "2026-09-13T13:35:45Z"
     },
     {
       "author": "woahwhattheheck",
@@ -94,10 +105,10 @@
       "branch": "z-cassinianvil/funded-work-amount-precedence-20260913",
       "created_at": "2026-09-13T13:25:37Z",
       "draft": false,
-      "head_sha": "63b04a7e02683ccc845d9bad66c9b6c740dcb101",
+      "head_sha": "e6a5d1285db23cb11c5df52423f056ef19b8984d",
       "number": 13862,
       "title": "funded-work: resolve latest authoritative reward amount",
-      "updated_at": "2026-09-13T13:28:33Z"
+      "updated_at": "2026-09-13T13:36:21Z"
     },
     {
       "author": "woahwhattheheck",
@@ -127,10 +138,10 @@
       "branch": "z-kh-h6q2/teaming-conversion-control-20260913",
       "created_at": "2026-09-13T13:09:59Z",
       "draft": false,
-      "head_sha": "87abb2dfc66178066a47e96013c95ad5bd6fb259",
+      "head_sha": "51a23e49c939f3090aedd852539fa2f1806ae630",
       "number": 13844,
       "title": "feat(revenue): evidence-bound teaming conversion control",
-      "updated_at": "2026-09-13T13:14:14Z"
+      "updated_at": "2026-09-13T13:29:31Z"
     },
     {
       "author": "woahwhattheheck",
@@ -141,7 +152,7 @@
       "head_sha": "1460ce57369134ace18c5bdbb8f27f0854542bc2",
       "number": 13842,
       "title": "Add fail-closed SCDHHS MCDE qualification gate",
-      "updated_at": "2026-09-13T13:28:47Z"
+      "updated_at": "2026-09-13T13:31:30Z"
     },
     {
       "author": "woahwhattheheck",
@@ -164,17 +175,6 @@
       "number": 13821,
       "title": "revenue: qualify NASPO SW1045 with packet-gated teaming lane",
       "updated_at": "2026-09-13T12:03:06Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zbra-h8n5/bss-mcp-transcript-audit-20260913",
-      "created_at": "2026-09-13T11:26:41Z",
-      "draft": false,
-      "head_sha": "ebf95fdc8fe223e14d9f2fc51ab71916cead16dd",
-      "number": 13818,
-      "title": "fix(mcp): close post-merge FIFO and Decimal fail-closed gaps",
-      "updated_at": "2026-09-13T11:33:46Z"
     }
   ],
   "open_heads": {
@@ -200,17 +200,29 @@
     "13821": "237d9963fc7424cfabb3910dd5968ae3544e8d5a",
     "13824": "bc094b424ea740395eebc599e6ced2a270b40cde",
     "13842": "1460ce57369134ace18c5bdbb8f27f0854542bc2",
-    "13844": "87abb2dfc66178066a47e96013c95ad5bd6fb259",
+    "13844": "51a23e49c939f3090aedd852539fa2f1806ae630",
     "13857": "a1dde557acac3aa3531b7a5541e11f95b035f3bf",
     "13858": "df9ff9fd0ee645c8a7b16bd38297bd5d254f2508",
-    "13862": "63b04a7e02683ccc845d9bad66c9b6c740dcb101",
+    "13862": "e6a5d1285db23cb11c5df52423f056ef19b8984d",
     "13863": "ae949f0a623b1eb8af94fe76427cb93169f55d91",
-    "13864": "836f8f22a4625973020aa71c8475a4fbf335b97f"
+    "13864": "8fe905a0a9cb03b79f916fd8e97585b50da745a7",
+    "13865": "f4a163341d61089d3d81e2cda98c8087cf7b22d0"
   },
-  "pulls_listed": 28,
+  "pulls_listed": 29,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 52.7,
+  "queue_depth_per_runner": 39.5,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zcf-q8n3/vericodegen-refactor-20260913",
+      "closed_at": "2026-09-13T13:33:53Z",
+      "head_sha": "184fb2d983efae5eb74c56345a95f4c725481df2",
+      "merged_at": "2026-09-13T13:33:52Z",
+      "number": 13867,
+      "state": "MERGED",
+      "title": "feat(revenue): add VeriCodeGen Lean refactor evidence harness"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -364,21 +376,10 @@
       "number": 13833,
       "state": "MERGED",
       "title": "revenue: add buyer-neutral MCP cross-client conformance kernel"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zorth-p8w5/reconciliation-type-stability-current-main-20260913",
-      "closed_at": "2026-09-13T10:45:11Z",
-      "head_sha": "8872e641cb2efe959b9236e1f56252b43915eadb",
-      "merged_at": null,
-      "number": 13753,
-      "state": "CLOSED",
-      "title": "fix(revenue): make reconciliation field equality JSON-type-stable"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-13T13:29:13Z",
+  "unchanged_since": "2026-09-13T13:36:55Z",
   "undatable_pulls": []
 }
