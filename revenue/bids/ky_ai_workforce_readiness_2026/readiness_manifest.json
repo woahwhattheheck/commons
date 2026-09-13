@@ -7,23 +7,113 @@
   "official_rfp_index": "https://southcentralworkforce.com/request-for-proposals",
   "official_q_and_a": "https://assets.zyrosite.com/mjEQjVPDyGsZw4jM/kentucky-ai-workforce-readiness_rfp-qs-as_2026.08.29_final-nNf7aqGWtJgRqD9J.pdf",
   "gates": [
-    {"id":"source_freshness","mandatory":true,"state":"RESOLVED","evidence":"Official SCWDB RFP index rechecked 2026-09-13; current listing still shows proposal due 2026-09-18 16:00 Central and links the current Q&A."},
-    {"id":"both_services_and_five_pathways","mandatory":true,"state":"DRAFTED","evidence":"response_outline.md and sample_lessons.md cover Service A, Service B, and all five Service-A pathways; final partner-approved curriculum remains required."},
-    {"id":"partner_legal_role_and_consent","mandatory":true,"state":"OPEN","evidence":""},
-    {"id":"minimum_three_year_experience_attribution","mandatory":true,"state":"OPEN","evidence":""},
-    {"id":"three_comparable_references","mandatory":true,"state":"OPEN","evidence":""},
-    {"id":"named_instructor_roster","mandatory":true,"state":"OPEN","evidence":""},
-    {"id":"live_remote_and_kentucky_in_person_capacity","mandatory":true,"state":"OPEN","evidence":""},
-    {"id":"prime_admin_financial_and_federal_funds_capacity","mandatory":true,"state":"OPEN","evidence":""},
-    {"id":"accessibility_plan","mandatory":true,"state":"DRAFTED","evidence":"response_outline.md defines accessibility evidence to bind; partner/platform-specific conformance remains unresolved."},
-    {"id":"privacy_security_and_participant_data_plan","mandatory":true,"state":"DRAFTED","evidence":"sample_lessons.md and response_outline.md establish no-sensitive-data/default-human-review design; final systems/data-flow controls remain unresolved."},
-    {"id":"attendance_completion_reporting_and_audit","mandatory":true,"state":"DRAFTED","evidence":"response_outline.md defines a proposed completion-evidence and reporting model; SCWDB-approved final standard and implementation remain unresolved."},
-    {"id":"ip_licensing_and_reviewable_materials","mandatory":true,"state":"DRAFTED","evidence":"response_outline.md separates pre-existing, third-party, and contract-specific materials; owner/partner inventory and final license position remain unresolved."},
-    {"id":"commercial_model_and_approved_prices","mandatory":true,"state":"DRAFTED","evidence":"pricing_assumptions.md contains formula structure and required assumptions only; no price is approved or represented."},
-    {"id":"subcontractor_disclosure_and_role_matrix","mandatory":true,"state":"OPEN","evidence":""},
-    {"id":"legal_registration_insurance_and_certifications","mandatory":true,"state":"OPEN","evidence":""},
-    {"id":"authorized_signatory_and_submission_owner","mandatory":true,"state":"OPEN","evidence":""},
-    {"id":"final_current_instruction_check","mandatory":true,"state":"OPEN","evidence":""},
-    {"id":"final_package_hash_and_submission_authorization","mandatory":true,"state":"OPEN","evidence":""}
+    {
+      "id": "source_freshness",
+      "mandatory": true,
+      "state": "RESOLVED",
+      "evidence": "Official SCWDB RFP index rechecked 2026-09-13; current listing still shows proposal due 2026-09-18 16:00 Central and links the current Q&A."
+    },
+    {
+      "id": "both_services_and_five_pathways",
+      "mandatory": true,
+      "state": "DRAFTED",
+      "evidence": "response_outline.md and sample_lessons.md cover Service A, Service B, and all five Service-A pathways; final partner-approved curriculum remains required."
+    },
+    {
+      "id": "partner_legal_role_and_consent",
+      "mandatory": true,
+      "state": "OPEN",
+      "evidence": ""
+    },
+    {
+      "id": "minimum_three_year_experience_attribution",
+      "mandatory": true,
+      "state": "OPEN",
+      "evidence": ""
+    },
+    {
+      "id": "three_comparable_references",
+      "mandatory": true,
+      "state": "OPEN",
+      "evidence": ""
+    },
+    {
+      "id": "named_instructor_roster",
+      "mandatory": true,
+      "state": "OPEN",
+      "evidence": ""
+    },
+    {
+      "id": "live_remote_and_kentucky_in_person_capacity",
+      "mandatory": true,
+      "state": "OPEN",
+      "evidence": ""
+    },
+    {
+      "id": "prime_admin_financial_and_federal_funds_capacity",
+      "mandatory": true,
+      "state": "OPEN",
+      "evidence": ""
+    },
+    {
+      "id": "accessibility_plan",
+      "mandatory": true,
+      "state": "DRAFTED",
+      "evidence": "response_outline.md defines accessibility evidence to bind; partner/platform-specific conformance remains unresolved."
+    },
+    {
+      "id": "privacy_security_and_participant_data_plan",
+      "mandatory": true,
+      "state": "DRAFTED",
+      "evidence": "sample_lessons.md and response_outline.md establish no-sensitive-data/default-human-review design; final systems/data-flow controls remain unresolved."
+    },
+    {
+      "id": "attendance_completion_reporting_and_audit",
+      "mandatory": true,
+      "state": "DRAFTED",
+      "evidence": "response_outline.md defines a proposed completion-evidence and reporting model; SCWDB-approved final standard and implementation remain unresolved."
+    },
+    {
+      "id": "ip_licensing_and_reviewable_materials",
+      "mandatory": true,
+      "state": "DRAFTED",
+      "evidence": "response_outline.md separates pre-existing, third-party, and contract-specific materials; owner/partner inventory and final license position remain unresolved."
+    },
+    {
+      "id": "commercial_model_and_approved_prices",
+      "mandatory": true,
+      "state": "DRAFTED",
+      "evidence": "pricing_assumptions.md contains formula structure and required assumptions only; no price is approved or represented."
+    },
+    {
+      "id": "subcontractor_disclosure_and_role_matrix",
+      "mandatory": true,
+      "state": "OPEN",
+      "evidence": ""
+    },
+    {
+      "id": "legal_registration_insurance_and_certifications",
+      "mandatory": true,
+      "state": "OPEN",
+      "evidence": ""
+    },
+    {
+      "id": "authorized_signatory_and_submission_owner",
+      "mandatory": true,
+      "state": "OPEN",
+      "evidence": ""
+    },
+    {
+      "id": "final_current_instruction_check",
+      "mandatory": true,
+      "state": "OPEN",
+      "evidence": ""
+    },
+    {
+      "id": "final_package_hash_and_submission_authorization",
+      "mandatory": true,
+      "state": "OPEN",
+      "evidence": ""
+    }
   ]
 }
