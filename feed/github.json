@@ -1,9 +1,9 @@
 {
   "counts": {
-    "open_issues": 64,
-    "open_pull_requests": 40,
-    "runs_in_progress": 18,
-    "runs_queued": 1406
+    "open_issues": 65,
+    "open_pull_requests": 39,
+    "runs_in_progress": 19,
+    "runs_queued": 1243
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -100,17 +100,6 @@
       "updated_at": "2026-09-13T15:37:10Z"
     },
     {
-      "author": "AURELIAN-AUTO",
-      "base": "main",
-      "branch": "aurelian/fix-issue-13856",
-      "created_at": "2026-09-13T15:22:29Z",
-      "draft": false,
-      "head_sha": "6603cfcd38e155abc0d5f30ffa0cca6be4e5af35",
-      "number": 14047,
-      "title": "funded-work: resolve authoritative reward amount precedence (#13856)",
-      "updated_at": "2026-09-13T15:22:29Z"
-    },
-    {
       "author": "woahwhattheheck",
       "base": "main",
       "branch": "ztq-c8m6/jersey-dn827803-authority-v2",
@@ -175,6 +164,17 @@
       "number": 13902,
       "title": "Ship Warranty & RMA Operations Desk",
       "updated_at": "2026-09-13T15:33:55Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zav-s8q3/security-questionnaire-desk-20260913",
+      "created_at": "2026-09-13T14:10:41Z",
+      "draft": false,
+      "head_sha": "54fa9ce0b97e2457aebb087fd4b6f9fdd979536e",
+      "number": 13901,
+      "title": "Build evidence-bound security questionnaire fulfillment desk",
+      "updated_at": "2026-09-13T14:43:24Z"
     }
   ],
   "open_heads": {
@@ -214,15 +214,36 @@
     "13997": "a112441153ab11b7140d7b10b58967936c83edb8",
     "13999": "2182d07cd8750087a73f2aea2455890d75daf251",
     "14010": "457ffa2ce5eacf467c603e1d05d6e2a0bf6bda11",
-    "14047": "6603cfcd38e155abc0d5f30ffa0cca6be4e5af35",
     "14054": "1980d5a6cd6ef5188832c6b48de7ee4a29501d85",
     "14055": "47d0c3324958e66349aa741a56d4732f58a063d1",
     "14057": "05f6f1775a5762ffa18c5c19da1d94d35bc45bb0"
   },
-  "pulls_listed": 40,
+  "pulls_listed": 39,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 78.1,
+  "queue_depth_per_runner": 65.4,
   "recently_closed": [
+    {
+      "author": "AURELIAN-AUTO",
+      "base": "main",
+      "branch": "aurelian/fix-issue-13856",
+      "closed_at": "2026-09-13T16:11:07Z",
+      "head_sha": "6603cfcd38e155abc0d5f30ffa0cca6be4e5af35",
+      "merged_at": null,
+      "number": 14047,
+      "state": "CLOSED",
+      "title": "funded-work: resolve authoritative reward amount precedence (#13856)"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zsol17/nih-spark-dbgap-20260913",
+      "closed_at": "2026-09-13T15:58:40Z",
+      "head_sha": "1624cdf7e7de8c7aa6d4f1887876f9b30661e016",
+      "merged_at": "2026-09-13T15:58:40Z",
+      "number": 14058,
+      "state": "MERGED",
+      "title": "Add NIH SPARK dbGaP transparent dual-track baseline"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -281,79 +302,68 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "zasl3v9/atomic-send-authority-20260913",
-      "closed_at": "2026-09-13T15:18:07Z",
-      "head_sha": "fb7442166c2f8caff7e2b95b8cc86e478b79594f",
-      "merged_at": null,
-      "number": 14009,
-      "state": "CLOSED",
-      "title": "[SUPERSEDED / RED] revenue: add atomic pre-send authority receipt"
+      "branch": "zsol/grandrapids-replay-effect-custody-20260913",
+      "closed_at": "2026-09-13T14:00:15Z",
+      "head_sha": "2306067c24519d99a5227d2de81583055c145388",
+      "merged_at": "2026-09-13T14:00:15Z",
+      "number": 13886,
+      "state": "MERGED",
+      "title": "fix: bind Grand Rapids replay to logical effect count"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "z-furnace/gosim-agentic-factory-harness-20260913",
-      "closed_at": "2026-09-13T15:09:59Z",
-      "head_sha": "4e07b600a1d0d48c40ee7125eb6503eb5d69e90c",
-      "merged_at": "2026-09-13T15:09:59Z",
-      "number": 14029,
+      "branch": "zsm/paramount-streaming-rendition-release-gate-913926",
+      "closed_at": "2026-09-13T13:57:05Z",
+      "head_sha": "4d36fb08bf3e106f59b32008fb2486013298dce6",
+      "merged_at": "2026-09-13T13:57:05Z",
+      "number": 13885,
       "state": "MERGED",
-      "title": "Add deterministic GOSIM Agentic Factory readiness harness"
+      "title": "revenue: ship streaming rendition release gate"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "zafu-j6r8/usac-it-26-139-qualification-20260913",
-      "closed_at": "2026-09-13T15:08:14Z",
-      "head_sha": "11bbcbf342032b2c1c076fcf2a2e3742ccfb39ac",
-      "merged_at": "2026-09-13T15:08:14Z",
-      "number": 14027,
+      "branch": "zhc/agent-capability-constraint-registry-20260913",
+      "closed_at": "2026-09-13T13:53:03Z",
+      "head_sha": "f2cf1d51761a935c591920c8c0bbf37d53be6880",
+      "merged_at": "2026-09-13T13:53:03Z",
+      "number": 13876,
       "state": "MERGED",
-      "title": "revenue: add USAC IT-26-139 qualification carrier"
+      "title": "feat(revenue): add agent capability constraint registry"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "zvc-q7m4/agentic-genai-evaluation-gate",
-      "closed_at": "2026-09-13T15:06:37Z",
-      "head_sha": "f96b5658af640030d949efc7e567dc135b4a4d07",
-      "merged_at": "2026-09-13T15:06:37Z",
-      "number": 13942,
+      "branch": "zsolstice/grandrapids-920-45-269-20260913",
+      "closed_at": "2026-09-13T13:51:24Z",
+      "head_sha": "8a42aa3f05a418d554477ce92efba03217978b75",
+      "merged_at": "2026-09-13T13:51:24Z",
+      "number": 13875,
       "state": "MERGED",
-      "title": "Add agentic GenAI evaluation evidence gate"
+      "title": "revenue: Grand Rapids 920-45-269 AI chatbot proposal carrier"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "zom-k8j3-lacsd-04254-evidence-sprint",
-      "closed_at": "2026-09-13T15:04:23Z",
-      "head_sha": "13793a016245b1fd54f7afdc71bd8ad81991e535",
-      "merged_at": "2026-09-13T15:04:23Z",
-      "number": 14031,
+      "branch": "zsh/stl-print-mail-api-2027bid000033",
+      "closed_at": "2026-09-13T13:44:05Z",
+      "head_sha": "4578e0e6c35e057f7044fa88072eb6845ffe0634",
+      "merged_at": "2026-09-13T13:44:05Z",
+      "number": 13873,
       "state": "MERGED",
-      "title": "LACSD 04254: ship $5,000 AI/ML validation/evidence sprint"
+      "title": "feat(revenue): add St. Louis print/mail API acceptance rail"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "zpf-l7t2/commercial-lifecycle-evidence-identity-20260913",
-      "closed_at": "2026-09-13T15:03:04Z",
-      "head_sha": "16a5a0bc56ba2f9fbc4f8a9f9fa4db7914d75ec5",
-      "merged_at": "2026-09-13T15:03:04Z",
-      "number": 14037,
+      "branch": "zcf-q8n3/vericodegen-refactor-20260913",
+      "closed_at": "2026-09-13T13:33:53Z",
+      "head_sha": "184fb2d983efae5eb74c56345a95f4c725481df2",
+      "merged_at": "2026-09-13T13:33:52Z",
+      "number": 13867,
       "state": "MERGED",
-      "title": "revenue: reserve commercial lifecycle evidence identities"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zbf-r8v5/iqvia-source-provenance-v2-20260913",
-      "closed_at": "2026-09-13T15:02:30Z",
-      "head_sha": "4bda788c31c2f4a7096c4931c0b1bdfa46c66826",
-      "merged_at": "2026-09-13T15:02:30Z",
-      "number": 14042,
-      "state": "MERGED",
-      "title": "fix(iqvia): bind specimen gate semantics to exact source projections"
+      "title": "feat(revenue): add VeriCodeGen Lean refactor evidence harness"
     },
     {
       "author": "woahwhattheheck",
@@ -376,21 +386,10 @@
       "number": 13851,
       "state": "MERGED",
       "title": "revenue: bind outbound reconciliation to temporal coverage"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "codex/commons-context-dispatch-compiler-resource-20260913-01",
-      "closed_at": "2026-09-13T13:17:50Z",
-      "head_sha": "65563ce53fe262337d02e0b62ffceb440fa2d6f2",
-      "merged_at": "2026-09-13T13:17:49Z",
-      "number": 13853,
-      "state": "MERGED",
-      "title": "Resources: activate bounded context dispatch compiler"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-13T15:47:25Z",
+  "unchanged_since": "2026-09-13T16:13:54Z",
   "undatable_pulls": []
 }
