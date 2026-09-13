@@ -1,50 +1,82 @@
-"""CLI for deterministic pursuit portfolio allocation."""
+"""CLI for authenticated current-use pursuit portfolio allocation."""
 from __future__ import annotations
 
 import argparse
 import json
-from pathlib import Path
 
-from .core import PortfolioError, load_regular_json, verify_compiled, write_compiled
-
-
-def _regular_bytes(path: Path, label: str) -> bytes:
-    # Reuse strict file semantics by parsing JSON where applicable at call sites.
-    if not path.is_file() or path.is_symlink():
-        raise PortfolioError(f"{label}: regular non-symlink file required")
-    raw = path.read_bytes()
-    if len(raw) > 2_000_000:
-        raise PortfolioError(f"{label}: file too large")
-    return raw
+from .core import PortfolioError, load_json_bytes
+from .current import (
+    MAX_AUTHORITY_BYTES,
+    compile_authorized_current,
+    load_authority_key,
+    load_current_input,
+    publish_authorized,
+    read_published_authorized,
+    read_regular_bytes,
+    verify_authorized_current,
+)
 
 
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(prog="pursuit-portfolio")
     sub = parser.add_subparsers(dest="command", required=True)
-    compile_p = sub.add_parser("compile", help="compile a current owner-review portfolio")
+
+    compile_p = sub.add_parser(
+        "compile",
+        help="compile a current owner-review portfolio from authenticated upstream authority",
+    )
     compile_p.add_argument("input")
+    compile_p.add_argument("authority")
+    compile_p.add_argument("authority_key")
     compile_p.add_argument("output_dir")
-    verify_p = sub.add_parser("verify", help="deterministically verify a compiled directory")
+
+    verify_p = sub.add_parser(
+        "verify",
+        help="verify historical integrity plus fresh-current allocation semantics",
+    )
     verify_p.add_argument("output_dir")
+    verify_p.add_argument("authority_key")
+
     args = parser.parse_args(argv)
     try:
+        key = load_authority_key(args.authority_key)
         if args.command == "compile":
-            source = load_regular_json(args.input)
-            compiled = write_compiled(source, args.output_dir)
-            print(json.dumps({
-                "output_dir": args.output_dir,
-                "receipt_sha256": compiled.receipt["receipt_sha256"],
-                "selected_opportunity_ids": compiled.result["selected_opportunity_ids"],
-                "selected_priority_units": compiled.result["selected_priority_units"],
-            }, sort_keys=True))
+            source = load_current_input(args.input)
+            authority_raw = read_regular_bytes(
+                args.authority, MAX_AUTHORITY_BYTES, "upstream authority"
+            )
+            authority = load_json_bytes(authority_raw, "upstream authority")
+            value = compile_authorized_current(source, authority, key)
+            publish_authorized(value, args.output_dir)
+            print(
+                json.dumps(
+                    {
+                        "authority_sha256": value.current_receipt["authority_sha256"],
+                        "current_receipt_sha256": value.current_receipt["receipt_sha256"],
+                        "output_dir": args.output_dir,
+                        "selected_opportunity_ids": value.compiled.result[
+                            "selected_opportunity_ids"
+                        ],
+                        "selected_priority_units": value.compiled.result[
+                            "selected_priority_units"
+                        ],
+                    },
+                    sort_keys=True,
+                )
+            )
             return 0
-        root = Path(args.output_dir)
-        if not root.is_dir() or root.is_symlink():
-            raise PortfolioError("verify: ordinary directory required")
-        result = _regular_bytes(root / "portfolio.json", "portfolio.json")
-        markdown = _regular_bytes(root / "portfolio.md", "portfolio.md")
-        receipt = _regular_bytes(root / "receipt.json", "receipt.json")
-        verified = verify_compiled(result, markdown, receipt)
+
+        result, markdown, receipt, authority, current_receipt = read_published_authorized(
+            args.output_dir
+        )
+        verified = verify_authorized_current(
+            result,
+            markdown,
+            receipt,
+            authority,
+            current_receipt,
+            key,
+        )
         print(json.dumps(verified, sort_keys=True))
         return 0
     except PortfolioError as exc:
