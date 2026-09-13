@@ -34,19 +34,18 @@ Per-file timeouts record exit 124, stop the Linux child process group, and keep
 running the remaining tests. GitHub's existing workflow uses this same runner
 and retains its checkout-linked report upload.
 
-### Cirrus CI is retired
+### Cirrus shutdown record
 
-Cirrus Labs announced on 2026-04-07 that hosted Cirrus CI would shut down
-effective 2026-06-01. The service is not an executable Commons CI road.
-`.cirrus.yml` is retained only as an inert historical marker and intentionally
-defines no tasks. Do not install or reactivate the retired GitHub App, require
-Cirrus checks, or represent this marker as a run. Official shutdown notice:
-https://cirruslabs.org/
+Cirrus Labs announced on April 7, 2026 that Cirrus CI would shut down effective
+Monday, June 1, 2026. The hosted service is therefore not an available CI road:
+no repository app installation, quota, task, or future check is expected. The
+former `.cirrus.yml` activation configuration was removed from this tree.
+Historical Cirrus documentation or configuration is not execution authority.
 
-The direct cloud-worker command above remains available, and GitHub Actions
-continues to invoke the same `host/ci_battery.py` runner. A future hosted
-replacement must be evaluated as a new provider road with its own exact-head
-execution receipt; it must not inherit Cirrus's former quota or activation text.
+The portable runner above remains usable on an available cloud worker, and
+GitHub Actions continues to call the same runner. A replacement hosted provider
+must be currently operating and produce a real run before it can be marked live.
+Official shutdown: [Cirrus Labs to join OpenAI](https://cirruslabs.org/).
 
 The muhlnickel is the computer. These files are host-side offload so the 8 GB
 laptop does zero while peers header-walk checked-in `MUHL_READERS` layouts.
@@ -57,12 +56,13 @@ Shared walk: `host_offload/header_census.py` — headers only, not DEPTH, not
 | pipe | config | state | cap to encode |
 | --- | --- | --- | --- |
 | GitHub Actions | `.github/workflows/header-census.yml` | LIVE | public standard runners free; larger runners bill |
-| Cirrus | `.cirrus.yml` | DEAD/EXCLUDED | hosted service shut down 2026-06-01; no quota or activation path |
+| Cirrus | — | DEAD/EXCLUDED | hosted service shut down 2026-06-01; no quota or install path |
 | GitLab | `.gitlab-ci.yml` | UNMEASURED | 400 compute-min/month unless Open Source Program |
 | Codeberg/Woodpecker | `.woodpecker.yml` | UNMEASURED/ONBOARDING | linux/amd64, reasonable use, may need approval |
 
 Machine-readable cards: `ci/provider_quotas.json`. A config file is not a
-measured run. Oracle / D1 / GPU stay unclaimed until a receipt exists.
+measured run, and dead-provider rows are historical records only. Oracle / D1 /
+GPU stay unclaimed until a receipt exists.
 
 ## Repair duty
 

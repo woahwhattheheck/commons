@@ -1,5 +1,0 @@
-# RETIRED PROVIDER — historical marker only.
-# Cirrus Labs announced the hosted Cirrus CI shutdown on 2026-04-07,
-# effective 2026-06-01: https://cirruslabs.org/
-# This file intentionally defines no tasks. Do not install or reactivate the
-# retired GitHub App, require Cirrus checks, or treat this marker as a run.
