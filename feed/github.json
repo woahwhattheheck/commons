@@ -1,9 +1,9 @@
 {
   "counts": {
-    "open_issues": 4,
+    "open_issues": 5,
     "open_pull_requests": 9,
     "runs_in_progress": 13,
-    "runs_queued": 739
+    "runs_queued": 642
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -48,10 +48,10 @@
       "branch": "gpt/titan-v5-v217-probe-corrective-20260912",
       "created_at": "2026-09-12T23:38:48Z",
       "draft": false,
-      "head_sha": "41d05b2e6e5824fcb1b598b3bf36003cfcaba2f5",
+      "head_sha": "a1610c08237a28e4a15fac2498f1c9ac18651dd2",
       "number": 13502,
       "title": "TITAN V5: correct V217 engagement evidence gate",
-      "updated_at": "2026-09-13T02:03:05Z"
+      "updated_at": "2026-09-13T02:29:00Z"
     },
     {
       "author": "woahwhattheheck",
@@ -75,7 +75,7 @@
       "head_sha": "fb036b365808e157aef909fc8f34f79180361c11",
       "number": 13533,
       "title": "coordination: clean successor for exact-head execution evidence gate",
-      "updated_at": "2026-09-13T01:51:40Z"
+      "updated_at": "2026-09-13T02:19:22Z"
     },
     {
       "author": "woahwhattheheck",
@@ -94,10 +94,10 @@
       "branch": "astra/v5-p04-committed-evidence-authority-20260912",
       "created_at": "2026-09-13T00:09:59Z",
       "draft": false,
-      "head_sha": "ba6fff0f638768602d9c32e3f8bdf70f2481e636",
+      "head_sha": "6c4673304dd4af8ed2547a396260dbb7e8a91395",
       "number": 13529,
       "title": "TITAN V5 P04: authenticate selector evidence from canonical main rows",
-      "updated_at": "2026-09-13T00:15:01Z"
+      "updated_at": "2026-09-13T02:15:37Z"
     },
     {
       "author": "woahwhattheheck",
@@ -105,10 +105,10 @@
       "branch": "astra-zeta/shared-holding-future-heartbeat-20260912",
       "created_at": "2026-09-13T00:07:29Z",
       "draft": false,
-      "head_sha": "6a5e85067908c7f4b138ce068eb26ab8ed93fd5c",
+      "head_sha": "14b6bcbf1e9dca10a881ebdee261198d17cc5439",
       "number": 13528,
       "title": "coordination: fail closed on shared holding clock skew",
-      "updated_at": "2026-09-13T00:11:09Z"
+      "updated_at": "2026-09-13T02:17:16Z"
     },
     {
       "author": "woahwhattheheck",
@@ -127,10 +127,10 @@
       "branch": "gpt/titan-v5-v217-probe-corrective-20260912",
       "created_at": "2026-09-12T23:38:48Z",
       "draft": false,
-      "head_sha": "41d05b2e6e5824fcb1b598b3bf36003cfcaba2f5",
+      "head_sha": "a1610c08237a28e4a15fac2498f1c9ac18651dd2",
       "number": 13502,
       "title": "TITAN V5: correct V217 engagement evidence gate",
-      "updated_at": "2026-09-13T02:03:05Z"
+      "updated_at": "2026-09-13T02:29:00Z"
     },
     {
       "author": "woahwhattheheck",
@@ -170,26 +170,37 @@
     "13400": "2ef189e832881ae38111bf9318ee7bba80b204cb",
     "13415": "813c9d49d5a423561c6db35fdca5bdfe44418d14",
     "13471": "91d17d19e2a762318d79058b042be10c63c6743a",
-    "13502": "41d05b2e6e5824fcb1b598b3bf36003cfcaba2f5",
+    "13502": "a1610c08237a28e4a15fac2498f1c9ac18651dd2",
     "13512": "1c40486e14d7212d82c9941412ca7a96db6aec45",
-    "13528": "6a5e85067908c7f4b138ce068eb26ab8ed93fd5c",
-    "13529": "ba6fff0f638768602d9c32e3f8bdf70f2481e636",
+    "13528": "14b6bcbf1e9dca10a881ebdee261198d17cc5439",
+    "13529": "6c4673304dd4af8ed2547a396260dbb7e8a91395",
     "13531": "b9db151337b931479fde8a76d87253acaa4b5737",
     "13533": "fb036b365808e157aef909fc8f34f79180361c11"
   },
   "pulls_listed": 9,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 56.8,
+  "queue_depth_per_runner": 49.4,
   "recently_closed": [
     {
       "author": "woahwhattheheck",
       "base": "main",
+      "branch": "ariadne/r-c08-ky-ai-workforce-partner-20260912",
+      "closed_at": "2026-09-13T02:34:17Z",
+      "head_sha": "4fa88888f26e5a6f84519d55660cee8a6864ebc1",
+      "merged_at": "2026-09-13T02:34:17Z",
+      "number": 13537,
+      "state": "MERGED",
+      "title": "Revenue: qualify Kentucky AI workforce teaming road"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
       "branch": "fischer/futo-portable-roads-20260912",
-      "closed_at": "2026-09-13T02:07:57Z",
-      "head_sha": "d9b9fc9ca30c687766a8782e368a9f3af229f32b",
-      "merged_at": null,
+      "closed_at": "2026-09-13T02:10:59Z",
+      "head_sha": "a325b5c34853f2f4082f74ec695b790b0c4ed445",
+      "merged_at": "2026-09-13T02:10:58Z",
       "number": 13535,
-      "state": "CLOSED",
+      "state": "MERGED",
       "title": "docs(revenue): add FUTO portable roads microgrant packet"
     },
     {
@@ -235,6 +246,17 @@
       "number": 13490,
       "state": "MERGED",
       "title": "TITAN V5 P01: reject-safe post-merge corrective"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "gpt/titan-v5-v217-engagement-probe-20260912",
+      "closed_at": "2026-09-12T23:32:51Z",
+      "head_sha": "67151c442c460c863a1f2b807635be5223921828",
+      "merged_at": "2026-09-12T23:32:51Z",
+      "number": 13493,
+      "state": "MERGED",
+      "title": "TITAN V5: add observation-only V217 starvation engagement probe"
     },
     {
       "author": "woahwhattheheck",
@@ -323,32 +345,10 @@
       "number": 13475,
       "state": "MERGED",
       "title": "TITAN V5: one shared R04 route-matrix carrier"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "gpt/titan-v5-animal-cadence-targeted-rescue-20260912",
-      "closed_at": "2026-09-12T23:10:05Z",
-      "head_sha": "c32966d5d82dfd9485803a202ac18caeb25a3d61",
-      "merged_at": "2026-09-12T23:10:05Z",
-      "number": 13483,
-      "state": "MERGED",
-      "title": "TITAN V5: target-aware V217 starvation rescue planner"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "gpt/titan-v5-route-matrix-shared-20260912",
-      "branch": "astra/v5-terminal-route-shared-extension-20260912",
-      "closed_at": "2026-09-12T23:07:38Z",
-      "head_sha": "4cd43bc0bde175452f8c365ab107e37bfaf56527",
-      "merged_at": "2026-09-12T23:07:38Z",
-      "number": 13480,
-      "state": "MERGED",
-      "title": "TITAN V5: extend shared R04 route matrix to terminal step 648"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-13T02:08:03Z",
+  "unchanged_since": "2026-09-13T02:37:54Z",
   "undatable_pulls": []
 }
