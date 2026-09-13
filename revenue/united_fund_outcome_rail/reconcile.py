@@ -560,6 +560,8 @@ def reconcile(payload: dict[str, Any]) -> dict[str, Any]:
             disbursements.append({"event_id": event_id, "amount_cents": amount, "status": status, "evidence_sha256": _sha(item["evidence_sha256"], where=f"{dwhere}.evidence_sha256")})
         if paid > award_cents:
             award_holds.append("DISBURSEMENT_EXCEEDS_AWARD")
+        if paid + pending > award_cents:
+            award_holds.append("COMMITTED_DISBURSEMENT_EXCEEDS_AWARD")
         if require_full and paid != award_cents:
             award_holds.append("AWARD_NOT_FULLY_DISBURSED")
         allocations.sort(key=lambda x: x["allocation_id"])
