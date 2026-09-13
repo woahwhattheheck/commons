@@ -12,7 +12,7 @@ This means only that the mailbox verifier observed an inbound message labelled a
 
 It does **not** establish that the sender is a verified human decision-maker, that the message is commercially material, that the buyer wants to proceed, that scope or terms are accepted, that an award exists, or that payment occurred. It is deliberately not a HOT GTM lane.
 
-The hermetic verifier may persist this state only as relationship `STATUS` evidence with `decision=BUYER_REPLY_OBSERVED` and `HUMAN_CLASSIFICATION_REQUIRED` as the next action.
+The hermetic verifier may persist this state only as relationship `STATUS` evidence with `decision=BUYER_REPLY_OBSERVED` and `HUMAN_CLASSIFICATION_REQUIRED` as the next action. That raw observation record intentionally omits `dnr`: mailbox arrival alone cannot add, remove, or weaken existing contact/no-resend authority.
 
 ### `MATERIAL_REPLY`
 
@@ -23,10 +23,12 @@ Historical `MATERIAL_REPLY` evidence remains readable for compatibility. Consume
 ## Fail-closed rules
 
 - Duplicate provider message IDs in one fixture are rejected.
+- Fixture direction/role is coherent: outbound messages are seller-role anchors and inbound messages are buyer-role observations.
 - Inbound chronology is bound to the first outbound anchor in the same thread, not to an unrelated older outbound in another thread.
 - The same inbound provider message cannot be reminted under multiple `BUYER_REPLY_OBSERVED` evidence IDs.
 - Legacy `--pin-material-reply` remains as a compatibility surface but always refuses.
 - Auto-acks, support tickets, out-of-office replies, routing mail, unknown replies, and other inbound existence evidence cannot become material buyer interest merely because a message arrived.
+- Raw arrival cannot lift an existing DNR/no-resend hold or create contact authority.
 - No mailbox send, CRM remint, acceptance, contract, payment, award, or revenue-recognition authority is added by this repair.
 
 ## CLI
