@@ -2,8 +2,8 @@
 
 This package solves one narrow fleet problem: two connector workers can both read
 "not sent" and cross an external provider boundary before either send is visible
-to the other. The mutex must therefore be an atomic mutation that the workers
-can actually execute **before** Gmail/Slack/provider send.
+to the other. The mutex must therefore be an atomic mutation that workers can
+actually execute **before** Gmail/Slack/provider send.
 
 The practical connector boundary is a deterministic GitHub branch in
 `woahwhattheheck/commons`:
@@ -13,7 +13,7 @@ outbound-connector-lease/v1/<sha256(canonical seam JSON)>
 ```
 
 `key.py` only compiles that branch name. It never authorizes a send and performs
-no network call. The authority event is the GitHub **create branch** response:
+no network call. The decisive mutex event is the GitHub **create branch** result:
 
 - exact create success: this worker acquired the seam prerequisite;
 - `422 Reference already exists`: another worker/history owns it -> HOLD;
@@ -24,27 +24,56 @@ another worker may have created the same branch during the ambiguity window.
 
 ## Canonical seam
 
-The seam is `buyer_scope + opportunity_scope`.
+Every seam contains an organization primary domain (`buyer_scope`) and one of
+three **closed opportunity shapes**. Callers do not supply a free-form composite
+opportunity string, so price/contact/route fields cannot be smuggled into the
+hash schema.
 
-`buyer_scope` is the organization's primary domain, never an individual email.
-This deliberately makes multiple contacts at one organization collide.
+### External opportunity
 
-`opportunity_scope` is one durable semantic opportunity identifier chosen before
-send:
+Use when an authoritative issuer/source has a durable procurement, project, or
+issue ID:
 
-1. Prefer an externally authoritative procurement/project/issue ID, normalized
-   into a stable machine token (for example `uw-rfi-1255311` or `rfp-04254`).
-2. For unsolicited outreach with no durable external opportunity, use exactly
-   `cold`. This makes the first cold touch own the organization-level cold seam.
-3. For a human reply that should be answered once, use the durable inbound event
-   identity such as `reply:<provider-message-id>`.
-4. If an internal opportunity key already existed before outreach, reuse it
-   exactly. Never mint a synonym to evade an existing lease.
+```json
+{
+  "kind": "external",
+  "authority": "issuer.example",
+  "id": "rfp-04254"
+}
+```
 
-**Never** put recipient/person, route, quoted price, `$5k` vs `$7.5k`, subject,
-draft version, alternate mailbox, or scope revision in the opportunity key.
-Those are precisely the aliases that previously let materially same outreach
-race through different lanes.
+`authority` is the source/issuer domain, not the contacted person's mailbox.
+`id` is the stable external identifier. A changed recipient, prime contact,
+quoted price, draft, or route keeps the same triple: buyer organization + source
+authority + source ID.
+
+### Cold outreach
+
+Use exactly:
+
+```json
+{"kind":"cold"}
+```
+
+for unsolicited organization-level outreach with no durable external
+opportunity. This intentionally permits only one cold seam per organization
+until a real human/provider event creates a new state.
+
+### Human reply event
+
+Use one durable inbound provider event:
+
+```json
+{
+  "kind": "reply",
+  "provider": "gmail",
+  "event_id": "<provider-message-id>"
+}
+```
+
+This lets multiple workers race to answer a new human message while only one can
+own that exact event. Automatic OOO/redirect messages do **not** become a new
+reply opportunity; stay on the original external/cold seam.
 
 ## Required send sequence
 
@@ -62,10 +91,36 @@ race through different lanes.
    seam DNR until a new human/provider event.
 9. If the provider result is ambiguous, do not retry. Reconcile outcome only.
 
-Branches are permanent one-touch state. A changed price, alternate recipient, or
-new draft is not a new opportunity. Recovery from an abandoned lease requires an
-explicit owner/fleet override tied to the original seam; workers must not mint
-`v2`, a new spelling, or a route-specific key on their own.
+Branches are permanent one-touch state. Recovery from an abandoned lease
+requires an explicit owner/fleet override tied to the original seam; workers
+must not mint `v2`, alter source authority/ID, or switch contacts to evade it.
+
+## CLI
+
+External opportunity:
+
+```bash
+python -m revenue.outbound_connector_lease.key \
+  --buyer-scope prime.example \
+  --external-authority issuer.example \
+  --external-id rfp-04254
+```
+
+Cold outreach:
+
+```bash
+python -m revenue.outbound_connector_lease.key \
+  --buyer-scope example.com --cold
+```
+
+One human reply event:
+
+```bash
+python -m revenue.outbound_connector_lease.key \
+  --buyer-scope example.com \
+  --reply-provider gmail \
+  --reply-event-id 1abc234
+```
 
 ## Validation
 
@@ -75,7 +130,9 @@ python -m unittest -v revenue.outbound_connector_lease.test_key
 python -O -m unittest -v revenue.outbound_connector_lease.test_key
 ```
 
-The helper rejects URLs/emails as buyer scope, normalizes domain case/trailing
-dot/IDNA, rejects duplicate/non-finite JSON, and produces deterministic branch
-keys. Semantic alias prevention is a workflow contract, not something a hash
-function can infer; the `outbound-send` skill defines that boundary.
+The helper rejects URLs/emails as organization/source domains, normalizes domain
+case/trailing dot/IDNA, rejects duplicate/non-finite JSON, uses exact field sets
+for each opportunity kind, and rejects price/contact/route/draft/subject fields
+inside the external-opportunity schema. Determining the organization's actual
+primary domain and the authoritative source ID is still a workflow evidence task;
+the `outbound-send` skill requires provider/source readback before acquisition.
