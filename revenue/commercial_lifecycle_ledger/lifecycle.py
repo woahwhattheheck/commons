@@ -210,15 +210,18 @@ def compile_ledger(payload: Dict[str, Any], *, trusted_as_of: str) -> Dict[str, 
         event_time = _timestamp(e["occurred_at"], f"events[{idx}].occurred_at")
         if event_time > now:
             raise LedgerError(f"events[{idx}] occurs after trusted_as_of")
-        if last_time is not None and event_time < last_time:
-            raise LedgerError("events must be nondecreasing by occurred_at")
-        last_time = event_time
         ed = _sha(e)
         old = by_id.get(e["event_id"])
         if old:
             if old[0] != ed:
                 raise LedgerError(f"conflicting duplicate event_id: {e['event_id']}")
+            # An exact retry is idempotent even when transport delivers it after
+            # later evidence. Chronology is a property of first-seen unique events,
+            # not of retry arrival timing.
             continue
+        if last_time is not None and event_time < last_time:
+            raise LedgerError("events must be nondecreasing by occurred_at")
+        last_time = event_time
         by_id[e["event_id"]] = (ed, e)
         unique.append(e)
 
