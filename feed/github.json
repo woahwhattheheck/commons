@@ -3,7 +3,7 @@
     "open_issues": 38,
     "open_pull_requests": 29,
     "runs_in_progress": 19,
-    "runs_queued": 790
+    "runs_queued": 792
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -105,10 +105,10 @@
       "branch": "z-cassinianvil/funded-work-amount-precedence-20260913",
       "created_at": "2026-09-13T13:25:37Z",
       "draft": false,
-      "head_sha": "bcba1a61da864ce0bc96789f2467c2dd4012047b",
+      "head_sha": "b43efae56573459c0552209058ba512b8541e255",
       "number": 13862,
       "title": "funded-work: resolve latest authoritative reward amount",
-      "updated_at": "2026-09-13T13:38:09Z"
+      "updated_at": "2026-09-13T13:39:49Z"
     },
     {
       "author": "woahwhattheheck",
@@ -203,14 +203,14 @@
     "13844": "51a23e49c939f3090aedd852539fa2f1806ae630",
     "13857": "a1dde557acac3aa3531b7a5541e11f95b035f3bf",
     "13858": "df9ff9fd0ee645c8a7b16bd38297bd5d254f2508",
-    "13862": "bcba1a61da864ce0bc96789f2467c2dd4012047b",
+    "13862": "b43efae56573459c0552209058ba512b8541e255",
     "13863": "ae949f0a623b1eb8af94fe76427cb93169f55d91",
     "13864": "8fe905a0a9cb03b79f916fd8e97585b50da745a7",
     "13865": "a21922c17e9310840534d773250cde109cb5bcaf"
   },
   "pulls_listed": 29,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 41.6,
+  "queue_depth_per_runner": 41.7,
   "recently_closed": [
     {
       "author": "woahwhattheheck",
@@ -380,6 +380,6 @@
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-13T13:39:38Z",
+  "unchanged_since": "2026-09-13T13:39:56Z",
   "undatable_pulls": []
 }
