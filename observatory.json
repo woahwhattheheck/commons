@@ -14,6 +14,20 @@
   "board_motion": [
     {
       "from": "UNSEATED",
+      "id": "Revenue--Legal-Aid-Chicago-Copilot-Agents-training---AI-architecture-response-la",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-13T13:59:20Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "Revenue-product--compile-Commons-into-a-buyer-facing-SwarmOps-evidence-dossier",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-13T13:59:03Z"
+    },
+    {
+      "from": "UNSEATED",
       "id": "Pazhou-women-friendly-AI-product--BidBridge-procurement-copilot-submission-carri",
       "kind": null,
       "to": "TABLE",
@@ -137,20 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-13T10:57:31Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-13T10:45:52Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-13T10:35:26Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "8bd05b97d9e93348ef806ea86d27488c65953565be53e054021f0b4ebc29a936",
+  "digest": "e08948547a687ff77e3991e981f749cef3c62c653e58f10f8b8f43e6b676b50e",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,11 +353,11 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12230,
-    "pulse_seq": 1801,
-    "sha": "f7e2063e2e4364cc1c7ee20d07054056b8bbcd3c"
+    "post_count": 12232,
+    "pulse_seq": 1802,
+    "sha": "2f62ac516cd8e63f809929fa1a0421f13c913105"
   },
-  "now": "2026-09-13T14:02:55Z",
+  "now": "2026-09-13T14:04:55Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -4780,18 +4780,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "Pazhou-women-friendly-AI-product--BidBridge-procurement-copilot-submission-carri",
+          "id": "Revenue--Legal-Aid-Chicago-Copilot-Agents-training---AI-architecture-response-la",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "Pazhou-women-friendly-AI-product--BidBridge-procurement-copilot-submission-carri",
+      "id": "Revenue--Legal-Aid-Chicago-Copilot-Agents-training---AI-architecture-response-la",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-13T13:56:25Z"
+      "ts": "2026-09-13T13:59:20Z"
     },
     {
       "claim": "VECTOR-RELAY",
