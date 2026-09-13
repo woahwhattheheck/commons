@@ -90,6 +90,16 @@ def _path(value: Any, label: str) -> str:
     return value
 
 
+def _repository_key(repository: str) -> str:
+    """Canonical provider identity key for GitHub owner/name equality.
+
+    GitHub repository owner/name identities are case-insensitive, while paths
+    inside a Git tree remain case-sensitive. Keep the caller spelling for
+    receipts/display and use this key only for repository identity/grouping.
+    """
+    return repository.casefold()
+
+
 def _instant(value: Any, label: str) -> datetime:
     value = _string(value, label, 32)
     if not value.endswith("Z"):
@@ -237,13 +247,14 @@ def normalize_input(raw: Any) -> dict[str, Any]:
     artifact_keys: dict[tuple[str, str], str] = {}
     artifact_bindings: dict[str, tuple[str, str, str, str, str, str]] = {}
     for entry in all_entries:
-        key = (entry["repository"], entry["sourcePath"])
+        repository_key = _repository_key(entry["repository"])
+        key = (repository_key, entry["sourcePath"])
         previous = artifact_keys.get(key)
         if previous is not None and previous != entry["artifactId"]:
-            raise CatalogCurrentnessError(f"conflicting artifact identity for {key[0]}:{key[1]}")
+            raise CatalogCurrentnessError(f"conflicting artifact identity for {entry['repository']}:{entry['sourcePath']}")
         artifact_keys[key] = entry["artifactId"]
         binding = (
-            entry["repository"], entry["sourcePath"], entry["releaseCommitSha"],
+            repository_key, entry["sourcePath"], entry["releaseCommitSha"],
             entry["sourceContentSha256"], entry["sourceEvidenceSha256"], entry["version"],
         )
         previous_binding = artifact_bindings.get(entry["artifactId"])
@@ -266,7 +277,8 @@ def compile_currentness(raw: Any, *, as_of: str) -> dict[str, Any]:
     by_repo: dict[str, list[dict[str, Any]]] = {}
     findings: list[dict[str, str]] = []
     for snapshot in snapshots:
-        by_repo.setdefault(snapshot["repository"], []).append(snapshot)
+        repository_key = _repository_key(snapshot["repository"])
+        by_repo.setdefault(repository_key, []).append(snapshot)
         captured = _instant(snapshot["capturedAt"], "snapshot.capturedAt")
         age = (now - captured).total_seconds()
         if age < 0:
@@ -275,14 +287,14 @@ def compile_currentness(raw: Any, *, as_of: str) -> dict[str, Any]:
             findings.append(_finding("SNAPSHOT_STALE", snapshot["snapshotId"], "provider snapshot exceeds 24-hour freshness window", "HOLD"))
         if not snapshot["complete"]:
             findings.append(_finding("SNAPSHOT_INCOMPLETE", snapshot["snapshotId"], "provider snapshot is not complete", "HOLD"))
-    for repository, rows in by_repo.items():
+    for repository_key, rows in by_repo.items():
         if len(rows) != 1:
-            findings.append(_finding("AMBIGUOUS_REPOSITORY_SNAPSHOT", repository, f"expected exactly one snapshot; found {len(rows)}", "HOLD"))
+            findings.append(_finding("AMBIGUOUS_REPOSITORY_SNAPSHOT", repository_key, f"expected exactly one snapshot; found {len(rows)}", "HOLD"))
 
     entry_results: list[dict[str, Any]] = []
     all_entries = [entry for catalog in data["catalogs"] for entry in catalog["entries"]]
     for entry in all_entries:
-        rows = by_repo.get(entry["repository"], [])
+        rows = by_repo.get(_repository_key(entry["repository"]), [])
         state = "HOLD"
         reason = "MISSING_REPOSITORY_SNAPSHOT"
         current_head = None
