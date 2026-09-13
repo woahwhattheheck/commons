@@ -59,6 +59,24 @@ class CompareContractTests(unittest.TestCase):
             self.assertIn("output names collide after sanitization", proc.stderr)
             self.assertFalse(out_dir.exists())
 
+    def test_compare_rejects_case_insensitive_slug_collision_before_writing(self):
+        payload = json.loads(REFERENCE.read_text(encoding="utf-8"))
+        with tempfile.TemporaryDirectory() as tmp:
+            tmp_path = Path(tmp)
+            upper = tmp_path / "upper.json"
+            lower = tmp_path / "lower.json"
+            out_dir = tmp_path / "out"
+            upper_payload = json.loads(json.dumps(payload))
+            lower_payload = json.loads(json.dumps(payload))
+            upper_payload["agent"] = "Agent"
+            lower_payload["agent"] = "agent"
+            upper.write_text(json.dumps(upper_payload), encoding="utf-8")
+            lower.write_text(json.dumps(lower_payload), encoding="utf-8")
+            proc = self._run([upper, lower], out_dir)
+            self.assertEqual(proc.returncode, 2)
+            self.assertIn("output names collide after sanitization", proc.stderr)
+            self.assertFalse(out_dir.exists())
+
 
 if __name__ == "__main__":
     unittest.main()
