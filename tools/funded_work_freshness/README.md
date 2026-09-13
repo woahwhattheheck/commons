@@ -38,9 +38,14 @@ candidate-page discovery is deliberately restricted to recognized sponsor-owned
 host suffixes (`algora.io`, `opire.dev`, `polar.sh`, `issuehunt.io`, and
 `gitcoin.co`). Arbitrary marketplace/aggregator URLs remain supported, but must
 supply `--canonical-url` so untrusted board hostnames are never fetched merely to
-discover their GitHub target. This closes the DNS-rebinding TOCTOU that would
-exist if an untrusted hostname were pre-resolved for a public-address check and
-then resolved again by the HTTP stack when opening the socket.
+discover their GitHub target.
+
+The HTTP transport independently resolves each requested hop to public addresses
+and connects to the validated IP while preserving the original hostname for TLS
+verification and the `Host` header. Redirects from recognized sponsor pages must
+remain inside that sponsor's label-aware domain suffix; other reads may redirect
+only within the same host. This keeps the landed DNS-pinned socket boundary while
+removing arbitrary board DNS from automatic discovery.
 
 A `GITHUB_TOKEN` or `GH_TOKEN` is used only for authenticated GitHub API read
 requests when present.
