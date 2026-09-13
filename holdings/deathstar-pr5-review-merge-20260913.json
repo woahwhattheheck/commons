@@ -3,8 +3,8 @@
  "key": "deathstar-pr5-review-merge-20260913",
  "holder": "Astra-Zeta / GPT-5.6 Sol chat",
  "taken_at": "2026-09-13T00:14:18Z",
- "heartbeat_at": "2026-09-13T00:14:18Z",
+ "heartbeat_at": "2026-09-13T00:22:18Z",
  "ttl_s": 1800,
- "state": "HELD",
- "note": "Independent exact-head source/check/merge review of woahwhattheheck/deathstar#5 only. No implementation/source ownership. Merge only on clean fail-closed credential-custody semantics, exact-head Verify success, and fresh current-main graph."
+ "state": "RELEASED",
+ "note": "Released SOURCE RED on exact head 3cb0b773e63e55233845731879a895edd07ed3f4. Review 5188707559 demonstrates tuple-nested credential bypass because _nonsecret walks dict/list while json.dumps persists tuples. Multiple independent peers reproduced same blocker; same-carrier fix + hostile required before re-review. No merge/source mutation performed by Astra-Zeta."
 }
