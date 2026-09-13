@@ -1,9 +1,9 @@
 {
   "counts": {
-    "open_issues": 74,
+    "open_issues": 76,
     "open_pull_requests": 45,
-    "runs_in_progress": 19,
-    "runs_queued": 1439
+    "runs_in_progress": 17,
+    "runs_queued": 1445
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -72,10 +72,10 @@
       "branch": "zpf-l7t2/commercial-lifecycle-evidence-identity-20260913",
       "created_at": "2026-09-13T14:57:49Z",
       "draft": false,
-      "head_sha": "da47df956de21b37e6cbd785da01bf9f3dca7717",
+      "head_sha": "d5b2917fcf8f8f7f41597cd63447be24a834f0e9",
       "number": 14037,
       "title": "revenue: reserve commercial lifecycle evidence identities",
-      "updated_at": "2026-09-13T14:57:49Z"
+      "updated_at": "2026-09-13T14:58:46Z"
     },
     {
       "author": "woahwhattheheck",
@@ -222,11 +222,11 @@
     "14031": "48e9fb830fb1216e3f9af1a8c5034390ee91cb35",
     "14035": "930102db00ca5cf856b879343ada793b4af6c84f",
     "14036": "daaf801efbb312e3f8321e8bdfabc7605cac043d",
-    "14037": "da47df956de21b37e6cbd785da01bf9f3dca7717"
+    "14037": "d5b2917fcf8f8f7f41597cd63447be24a834f0e9"
   },
   "pulls_listed": 45,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 75.7,
+  "queue_depth_per_runner": 85.0,
   "recently_closed": [
     {
       "author": "woahwhattheheck",
@@ -396,6 +396,6 @@
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-13T14:58:40Z",
+  "unchanged_since": "2026-09-13T14:58:57Z",
   "undatable_pulls": []
 }
