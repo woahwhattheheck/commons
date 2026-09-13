@@ -1,6 +1,7 @@
 """Focused tests use real SQLite transactions and a real loopback HTTP server."""
 import concurrent.futures
 import json
+import sqlite3
 import tempfile
 import threading
 import unittest
@@ -25,7 +26,8 @@ class StoreTests(unittest.TestCase):
         self.now = 1100
         self.path = Path(self.temp.name) / "events.sqlite3"
         self.store = Store(self.path, lambda: self.now)
-        self.event = self.store.create(payload())["id"]
+        created = self.store.create(payload())
+        self.event, self.host_key = created["id"], created["host_key"]
         self.member = self.store.join(self.event, {"name": "Lantern test"})["id"]
 
     def answer(self, question=0, choice=1, member=None):
@@ -35,6 +37,39 @@ class StoreTests(unittest.TestCase):
         with self.assertRaises(Problem) as ctx:
             call()
         self.assertEqual(ctx.exception.status, status)
+
+    def test_host_capability_is_unique_hashed_and_absent_from_public_state(self):
+        other = self.store.create(payload())
+        self.assertNotEqual(self.host_key, other["host_key"])
+        self.assertTrue(self.store.state(self.event)["host_protected"])
+        self.assertNotIn("host_key", self.store.state(self.event))
+        self.assertNotIn("host_key", self.store.listing()[0])
+        with self.store.connect() as db:
+            stored = db.execute("SELECT host_hash FROM events WHERE id=?", (self.event,)).fetchone()[0]
+        self.assertNotEqual(stored, self.host_key)
+        self.assertEqual(len(stored), 64)
+        self.assertEqual(self.store.verify_host(self.event, self.host_key), {"host": True, "legacy": False})
+        self.error(403, lambda: self.store.verify_host(self.event, "wrong"))
+        self.error(403, lambda: self.store.verify_host(self.event, None))
+
+    def test_legacy_database_migrates_without_locking_existing_events(self):
+        legacy_path = Path(self.temp.name) / "legacy.sqlite3"
+        with sqlite3.connect(legacy_path) as db:
+            db.execute("""CREATE TABLE events (
+                id TEXT PRIMARY KEY, title TEXT NOT NULL, room TEXT NOT NULL,
+                opens REAL NOT NULL, ends REAL NOT NULL, closed INTEGER NOT NULL DEFAULT 0,
+                questions TEXT NOT NULL, created REAL NOT NULL)""")
+            db.execute("INSERT INTO events VALUES(?,?,?,?,?,?,?,?)",
+                       ("legacy", "Old round", "Old room", 1000, 2000, 0,
+                        json.dumps(payload()["questions"]), 900))
+        reopened = Store(legacy_path, lambda: self.now)
+        with reopened.connect() as db:
+            columns = {row["name"] for row in db.execute("PRAGMA table_info(events)")}
+            row = db.execute("SELECT host_hash FROM events WHERE id='legacy'").fetchone()
+        self.assertIn("host_hash", columns)
+        self.assertIsNone(row["host_hash"])
+        self.assertEqual(reopened.verify_host("legacy", None), {"host": True, "legacy": True})
+        self.assertEqual(reopened.finish("legacy"), {"finished": True})
 
     def test_schedule_hides_questions_and_prevents_early_answers(self):
         self.now = 999
@@ -85,6 +120,7 @@ class StoreTests(unittest.TestCase):
         reopened = Store(self.path, lambda: self.now)
         self.assertEqual(reopened.join(self.event, {"member_id": self.member})["id"], self.member)
         self.assertEqual(reopened.state(self.event, self.member), before)
+        self.assertEqual(reopened.verify_host(self.event, self.host_key), {"host": True, "legacy": False})
 
     def test_finished_event_allows_identical_retry_but_no_new_answer(self):
         self.answer()
@@ -152,6 +188,7 @@ class StoreTests(unittest.TestCase):
         event = self.store.listing()[0]
         self.assertEqual((event["room"], event["players"], event["phase"]), ("Community A", 1, "open"))
         self.assertNotIn("questions", event)
+        self.assertTrue(event["host_protected"])
 
     def test_finish_is_idempotent_and_does_not_change_scoring(self):
         self.answer()
@@ -190,15 +227,31 @@ class HTTPTests(unittest.TestCase):
     def test_full_http_create_join_answer_reconnect_finish_flow(self):
         status, event = self.request('/api/events', payload())
         self.assertEqual(status, 201)
+        self.assertIn('host_key', event)
         base = '/api/events/'+event['id']
         status, member = self.request(base+'/join', {'name': 'HTTP player'})
         self.assertEqual(status, 200)
         answer = {'member_id': member['id'], 'question': 0, 'choice': 1}
         self.assertFalse(self.request(base+'/answers', answer)[1]['replayed'])
         self.assertTrue(self.request(base+'/answers', answer)[1]['replayed'])
-        self.assertEqual(self.request(base+'?member='+member['id'])[1]['answers'][0]['choice'], 1)
-        self.assertEqual(self.request(base+'/finish', {})[0], 200)
+        state = self.request(base+'?member='+member['id'])[1]
+        self.assertEqual(state['answers'][0]['choice'], 1)
+        self.assertTrue(state['host_protected'])
+        self.assertNotIn('host_key', state)
+        self.assertEqual(self.request(base+'/finish', {'host_key': event['host_key']})[0], 200)
         self.assertEqual(self.request(base)[1]['leaderboard'][0]['points'], 100)
+
+    def test_http_finish_and_host_verify_reject_missing_or_wrong_capability(self):
+        _, event = self.request('/api/events', payload())
+        base = '/api/events/'+event['id']
+        self.assertEqual(self.request(base+'/host/verify', {'host_key': 'wrong'})[0], 403)
+        self.assertEqual(self.request(base+'/finish', {})[0], 403)
+        self.assertEqual(self.request(base+'/finish', {'host_key': 'wrong'})[0], 403)
+        self.assertEqual(self.request(base)[1]['phase'], 'open')
+        self.assertEqual(self.request(base+'/host/verify', {'host_key': event['host_key']})[1],
+                         {'host': True, 'legacy': False})
+        self.assertEqual(self.request(base+'/finish', {'host_key': event['host_key']})[0], 200)
+        self.assertEqual(self.request(base)[1]['phase'], 'finished')
 
     def test_invalid_json_objects_and_deep_payloads_are_reported(self):
         self.assertEqual(self.request('/api/events', raw=b'{broken')[0], 400)
