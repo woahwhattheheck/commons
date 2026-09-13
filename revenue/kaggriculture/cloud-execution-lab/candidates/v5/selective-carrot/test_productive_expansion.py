@@ -48,19 +48,19 @@ class ProductiveExpansionGate(unittest.TestCase):
         self.assertEqual(gate.incremental_hire_cost(3, 0, 1, fib), fib(3))
         self.assertEqual(fib(3), 3)
 
-    def test_many_authored_future_hires_do_not_inflate_reject_floor(self):
+    def test_many_authored_future_hires_do_not_inflate_telemetry_floor(self):
         labor, by_day = gate.route_labor_cost_floor(
             obs(hires_today=0), object(), noisy_day_factory(parent_hires=30), fib
         )
         self.assertEqual(labor, 2)
         self.assertEqual(by_day, {18: 2})
 
-    def test_future_days_are_not_consulted_by_reject_floor(self):
+    def test_future_days_are_not_consulted_by_telemetry_floor(self):
         calls = []
         def day18_only(native, day):
             calls.append(day)
             if day != 18:
-                raise AssertionError('future conditional route spend is not floor authority')
+                raise AssertionError('future conditional route spend is not floor telemetry')
             return [{'market': [], 'hands': []}]
         labor, by_day = gate.route_labor_cost_floor(
             obs(hires_today=0), object(), day18_only, fib
@@ -87,7 +87,7 @@ class ProductiveExpansionGate(unittest.TestCase):
         self.assertEqual(by_day[18], 8)
         self.assertEqual(labor, 8)
 
-    def test_flat_seventy_is_inconclusive_not_false_reject(self):
+    def test_flat_seventy_is_telemetry_only(self):
         record = gate.evaluate(
             obs(hires_today=0, price=70),
             object(),
@@ -96,13 +96,18 @@ class ProductiveExpansionGate(unittest.TestCase):
             lambda item, inv: 70,
         )
         self.assertIsNone(record['decision'])
-        self.assertEqual(record['reason'], 'negative_payback_not_proven')
+        self.assertEqual(record['reason'], 'seed_purchase_completion_unproven')
+        self.assertFalse(record['full_seed_purchase_authenticated'])
         self.assertEqual(record['labor_cost_floor'], 2)
         self.assertEqual(record['labor_cost_floor_by_day'], {18: 2})
-        self.assertEqual(record['unavoidable_cost_floor'], 4502)
+        self.assertEqual(record['proven_land_cost_floor'], 4000)
+        self.assertEqual(record['proven_min_seed_cost_floor'], 50)
+        self.assertEqual(record['fixed_cost_floor'], 4050)
+        self.assertEqual(record['unavoidable_cost_floor'], 4052)
         self.assertEqual(record['gross_revenue_upper_bound'], 5600)
+        self.assertFalse(record['negative_payback_telemetry'])
 
-    def test_large_observed_same_day_ordinal_can_prove_negative(self):
+    def test_high_observed_ordinal_cannot_reject_without_seed_completion_proof(self):
         record = gate.evaluate(
             obs(hires_today=15, price=70),
             object(),
@@ -110,13 +115,16 @@ class ProductiveExpansionGate(unittest.TestCase):
             fib,
             lambda item, inv: 70,
         )
-        self.assertFalse(record['decision'])
-        self.assertEqual(record['reason'], 'proven_negative_payback')
+        self.assertIsNone(record['decision'])
+        self.assertEqual(record['reason'], 'seed_purchase_completion_unproven')
+        self.assertFalse(record['full_seed_purchase_authenticated'])
+        self.assertTrue(record['negative_payback_telemetry'])
         self.assertEqual(record['labor_cost_floor'], 2584)
-        self.assertEqual(record['unavoidable_cost_floor'], 7084)
+        self.assertEqual(record['fixed_cost_floor'], 4050)
+        self.assertEqual(record['unavoidable_cost_floor'], 6634)
         self.assertEqual(record['gross_revenue_upper_bound'], 5600)
 
-    def test_visible_rival_field_is_telemetry_not_rejection_authority(self):
+    def test_visible_rival_field_is_telemetry_not_decision_authority(self):
         curve = lambda item, inv: max(1, 130 - max(0, inv - 10000))
         clean = gate.evaluate(
             obs(price=130), object(), noisy_day_factory(), fib, curve
@@ -134,7 +142,8 @@ class ProductiveExpansionGate(unittest.TestCase):
             clean['gross_revenue_upper_bound'],
             crowded['gross_revenue_upper_bound'],
         )
-        self.assertEqual(clean['decision'], crowded['decision'])
+        self.assertIsNone(clean['decision'])
+        self.assertIsNone(crowded['decision'])
         self.assertGreater(
             clean['modeled_gross_visible_field'],
             crowded['modeled_gross_visible_field'],
@@ -174,9 +183,9 @@ class ProductiveExpansionGate(unittest.TestCase):
         self.assertEqual(record['future_tomato_quote_ceiling'], 4966)
         self.assertEqual(record['gross_revenue_upper_bound'], 397280)
         self.assertEqual(record['labor_cost_floor'], 196418)
-        self.assertEqual(record['unavoidable_cost_floor'], 200918)
+        self.assertEqual(record['unavoidable_cost_floor'], 200468)
         self.assertIsNone(record['decision'])
-        self.assertEqual(record['reason'], 'negative_payback_not_proven')
+        self.assertEqual(record['reason'], 'seed_purchase_completion_unproven')
 
     def test_market_param_override_passthrough(self):
         observation = obs()
@@ -200,8 +209,10 @@ class ProductiveExpansionGate(unittest.TestCase):
         self.assertIsNone(record['decision'])
         self.assertEqual(record['reason'], 'unsupported_route_state')
 
-    def test_wrapper_is_reject_only_and_exports_floor_telemetry(self):
-        self.assertIn(b"record['decision'] is False", builder.WRAPPER)
+    def test_wrapper_is_structurally_telemetry_only(self):
+        self.assertIn(b"record['decision'] is not None", builder.WRAPPER)
+        self.assertNotIn(b"record['decision'] is False", builder.WRAPPER)
+        self.assertNotIn(b"_V219_REPORT['p01_payback_rejects'] +=", builder.WRAPPER)
         self.assertIn(b'p01_gross_upper_bound', builder.WRAPPER)
         self.assertIn(b'p01_unavoidable_cost_floor', builder.WRAPPER)
         self.assertNotIn(b'p01_gate_accepts', builder.WRAPPER)
