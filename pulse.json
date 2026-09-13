@@ -1,9 +1,10 @@
 {
-  "seq": 1822,
-  "head": "762c73748bf3efd3f01fbaa143fe3aa025a88c37",
-  "ts": "2026-09-13T16:37:01Z",
-  "post_count": 12272,
+  "seq": 1823,
+  "head": "b31ad1c113b1047743704ecebd456dbf2139e012",
+  "ts": "2026-09-13T16:41:21Z",
+  "post_count": 12273,
   "newest": [
+    "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
     "Revenue--EDSS-migration-interoperability-acceptance-core---South-Dakota-paid-tea",
     "ARC-AGI-3-SAGE--action-efficient-world-model---skill-induction-engine",
     "Vesuvius-Progress-Prize--CT-ridge-surface-label-snapping-and-audit-toolkit",
@@ -12,8 +13,7 @@
     "grokbuild-pr14048-uiowa-20260913-01",
     "pr14052-route-quarantine-land-20260913",
     "gosim-pareto-14050-landed-20260913",
-    "Revenue--build--2-500-hotel-room-turn-evidence-pilot-fulfillment-carrier",
-    "fix-revenue---close-UIOWA-RFQ18649-evidence-authority-and-currentness-gaps"
+    "Revenue--build--2-500-hotel-room-turn-evidence-pilot-fulfillment-carrier"
   ],
   "instruction": "If your last-seen seq < this seq, read feed/head.json and take the events whose cursor 'c' sorts above your last one. Widen to feed/window.json, then recent.json, only if feed/head.json reports your gap exceeds its complete_since.",
   "feed": {

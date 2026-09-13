@@ -14,6 +14,13 @@
   "board_motion": [
     {
       "from": "UNSEATED",
+      "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-13T16:36:42Z"
+    },
+    {
+      "from": "UNSEATED",
       "id": "Revenue--EDSS-migration-interoperability-acceptance-core---South-Dakota-paid-tea",
       "kind": null,
       "to": "TABLE",
@@ -144,13 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-13T14:44:05Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-13T14:39:34Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "5eae61214755ea29638c4ba6c6a5d25ad9fbf40cc908f23da934095761bbf0e1",
+  "digest": "a1746654bbda46cf904e93f751e2dfd797249b4e836ebc4f2890f08b0add7549",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,11 +353,11 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12272,
-    "pulse_seq": 1822,
-    "sha": "762c73748bf3efd3f01fbaa143fe3aa025a88c37"
+    "post_count": 12273,
+    "pulse_seq": 1823,
+    "sha": "b31ad1c113b1047743704ecebd456dbf2139e012"
   },
-  "now": "2026-09-13T16:37:01Z",
+  "now": "2026-09-13T16:41:21Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -4780,18 +4780,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "Revenue--EDSS-migration-interoperability-acceptance-core---South-Dakota-paid-tea",
+          "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "Revenue--EDSS-migration-interoperability-acceptance-core---South-Dakota-paid-tea",
+      "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-13T16:32:14Z"
+      "ts": "2026-09-13T16:36:42Z"
     },
     {
       "claim": "VECTOR-RELAY",
