@@ -274,6 +274,28 @@ def _task_generations(entries: list[dict[str, Any]]) -> dict[str, tuple[str, int
     return generations
 
 
+def _configuration_groups(entries: list[dict[str, Any]]) -> dict[tuple[str, str], list[dict[str, Any]]]:
+    groups: dict[tuple[str, str], list[dict[str, Any]]] = {}
+    for entry in entries:
+        run = entry["run"]
+        key = (run["harness_revision"], run["model_label"])
+        groups.setdefault(key, []).append(entry)
+    return groups
+
+
+def _configuration_ref(key: tuple[str, str]) -> dict[str, str]:
+    return {"harness_revision": key[0], "model_label": key[1]}
+
+
+def _single_configuration(
+    entries: list[dict[str, Any]], label: str
+) -> tuple[tuple[str, str], list[dict[str, Any]]]:
+    groups = _configuration_groups(entries)
+    if len(groups) != 1:
+        raise ContractError(f"{label} must contain exactly one harness/model configuration")
+    return next(iter(groups.items()))
+
+
 def _best_by_task(entries: list[dict[str, Any]]) -> dict[str, dict[str, Any]]:
     result: dict[str, dict[str, Any]] = {}
     for entry in entries:
@@ -299,7 +321,7 @@ def _best_by_task(entries: list[dict[str, Any]]) -> dict[str, dict[str, Any]]:
     return result
 
 
-def regression_gate(
+def _regression_gate_for_configuration(
     candidate_entries: list[dict[str, Any]],
     baseline_entries: list[dict[str, Any]],
     policy: dict[str, Any],
@@ -327,10 +349,47 @@ def regression_gate(
     return {"passed": not failures, "failures": failures}
 
 
+def regression_gate(
+    candidate_entries: list[dict[str, Any]],
+    baseline_entries: list[dict[str, Any]],
+    policy: dict[str, Any],
+) -> dict[str, Any]:
+    baseline_key, baseline_group = _single_configuration(baseline_entries, "baseline")
+    candidate_groups = _configuration_groups(candidate_entries)
+    configuration_results: list[dict[str, Any]] = []
+    passing_configurations: list[dict[str, str]] = []
+    for key in sorted(candidate_groups):
+        result = _regression_gate_for_configuration(candidate_groups[key], baseline_group, policy)
+        configuration_results.append({
+            **_configuration_ref(key),
+            "passed": result["passed"],
+            "failures": result["failures"],
+        })
+        if result["passed"]:
+            passing_configurations.append(_configuration_ref(key))
+
+    passed = bool(passing_configurations)
+    if passed:
+        failures: list[dict[str, Any]] = []
+    elif len(configuration_results) == 1:
+        failures = configuration_results[0]["failures"]
+    else:
+        failures = [{"task_id": "*", "reason": "NO_CANDIDATE_CONFIGURATION_PASSED"}]
+
+    return {
+        "passed": passed,
+        "failures": failures,
+        "baseline_configuration": _configuration_ref(baseline_key),
+        "configuration_results": configuration_results,
+        "passing_configurations": passing_configurations,
+    }
+
+
 def compile_report(runs_raw: Any, policy_raw: Any, baseline_raw: Any | None = None) -> dict[str, Any]:
     runs = _normalize_runs(runs_raw)
     policy = validate_policy(policy_raw)
     entries = [{"run": run, "metrics": metrics_for_run(run, policy)} for run in runs]
+    _task_generations(entries)
 
     by_task: dict[str, list[dict[str, Any]]] = {}
     for entry in entries:
@@ -346,10 +405,7 @@ def compile_report(runs_raw: Any, policy_raw: Any, baseline_raw: Any | None = No
         e["metrics"]["total_tokens"], e["metrics"]["wall_clock_ms"], e["run"]["trial_id"],
     ))
 
-    configs: dict[tuple[str, str], list[dict[str, Any]]] = {}
-    for entry in entries:
-        key = (entry["run"]["harness_revision"], entry["run"]["model_label"])
-        configs.setdefault(key, []).append(entry)
+    configs = _configuration_groups(entries)
     summaries = []
     for harness_revision, model_label in sorted(configs):
         group = configs[(harness_revision, model_label)]
@@ -423,9 +479,18 @@ def render_markdown(report: dict[str, Any]) -> str:
     if report["regression_gate"] is not None:
         lines += ["", "## Regression gate", ""]
         gate = report["regression_gate"]
+        base = gate["baseline_configuration"]
+        lines.append(
+            f"- Baseline: harness `{base['harness_revision']}` / model `{base['model_label']}`"
+        )
         lines.append(f"- Result: **{'PASS' if gate['passed'] else 'FAIL'}**")
-        for failure in gate["failures"]:
-            lines.append(f"- `{failure['task_id']}`: `{failure['reason']}`")
+        for result in gate["configuration_results"]:
+            lines.append(
+                f"- Candidate harness `{result['harness_revision']}` / model `{result['model_label']}`: "
+                f"**{'PASS' if result['passed'] else 'FAIL'}**"
+            )
+            for failure in result["failures"]:
+                lines.append(f"  - `{failure['task_id']}`: `{failure['reason']}`")
     return "\n".join(lines) + "\n"
 
 
