@@ -19,6 +19,10 @@ import subprocess
 import sys
 import tempfile
 
+# Importing the local report helper must not manufacture an ignored __pycache__
+# before the checkout preflight inventories ignored working-tree inputs.
+sys.dont_write_bytecode = True
+
 try:
     from . import battery_report
 except ImportError:
@@ -89,6 +93,17 @@ def tracked_regular_files(root: Path, sha: str, paths: list[str]) -> set[str]:
     return tracked
 
 
+def ignored_worktree_paths(root: Path) -> list[str]:
+    """Return ignored files that could supply uncommitted runtime bytes."""
+    raw = subprocess.run(
+        ["git", "-C", str(root), "ls-files", "--others", "--ignored",
+         "--exclude-standard", "-z"],
+        check=True, capture_output=True,
+    ).stdout
+    return [path.decode("utf-8", "surrogateescape")
+            for path in raw.split(b"\0") if path]
+
+
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--root", type=Path, default=Path.cwd())
@@ -141,6 +156,7 @@ def main(argv: list[str] | None = None) -> int:
     if args.shard_count > 1:
         scope["kind"] = "selected-shard" if requested else "shard"
     dirty = None
+    ignored_paths: list[str] = []
     preflight_error = None
     try:
         # Drop stale evidence before Git preflight so a missing checkout cannot
@@ -157,6 +173,7 @@ def main(argv: list[str] | None = None) -> int:
         tracked = tracked_regular_files(root, sha, selected_paths)
         unbound = [path for path in selected_paths
                    if path not in tracked or (root / path).is_symlink() or not (root / path).is_file()]
+        ignored_paths = ignored_worktree_paths(root)
         with results.open("wb") as handle:
             record(handle, "checkout_sha", sha, "")
             if dirty:
@@ -170,6 +187,12 @@ def main(argv: list[str] | None = None) -> int:
                       file=sys.stderr, flush=True)
                 record(handle, "battery_complete", "", 0)
                 outcome, code, preflight_error = "failure", 2, "selected_not_tracked_regular"
+            elif ignored_paths:
+                print("checkout contains ignored working-tree inputs; "
+                      "refusing source-linked passing evidence",
+                      file=sys.stderr, flush=True)
+                record(handle, "battery_complete", "", 0)
+                outcome, code, preflight_error = "failure", 2, "ignored_worktree_inputs"
             else:
                 for command, path in selected:
                     try:
@@ -195,7 +218,9 @@ def main(argv: list[str] | None = None) -> int:
         report = battery_report.build_report(root, raw, outcome, os.environ)
         report["scope"] = scope
         report["execution"] = {"kind": "direct-process", "python_version": sys.version.split()[0],
-                               "worktree_dirty_at_start": dirty, "preflight_error": preflight_error,
+                               "worktree_dirty_at_start": dirty,
+                               "ignored_worktree_entries_at_start": len(ignored_paths),
+                               "preflight_error": preflight_error,
                                "test_file_sha256": file_hashes}
         report_path.parent.mkdir(parents=True, exist_ok=True)
         report_path.write_text(json.dumps(report, indent=2, ensure_ascii=True) + "\n", encoding="utf-8")
