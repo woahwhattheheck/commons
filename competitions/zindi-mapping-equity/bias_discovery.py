@@ -9,6 +9,8 @@ from typing import Optional,Sequence
 DEFAULT_EXCLUDED_PREFIXES=("svi_","cvi_","ruca_","rucc_","nchs_","tribal_","usdm_","usfs_","mtbs_","heat_","wildfire_","drought_")
 SCHEMA_VERSION="bias-discovery-evidence/v2"
 COMPONENT_PROVENANCE_COLUMNS=("transport_gap","transport_defined","building_gap","building_defined","poi_gap","poi_defined")
+MIN_STRONG_BOOTSTRAP_ITERATIONS=1000
+MIN_STRONG_PERMUTATIONS=2000
 
 def numeric(value:Optional[str])->Optional[float]:
     if value is None or value.strip()=="": return None
@@ -26,9 +28,16 @@ def load_scores(path:Path,*,require_components:bool=False)->dict[str,float]:
             missing=[name for name in COMPONENT_PROVENANCE_COLUMNS if name not in r.fieldnames]
             if missing:
                 raise ValueError("components CSV is missing derived diagnostic columns: "+", ".join(missing))
-        for row in r:
+        for row_number,row in enumerate(r,start=2):
             g=(row.get("GEOID") or "").strip(); s=numeric(row.get("coverage_gap_score"))
-            if not(len(g)==11 and g.isdigit()) or s is None: continue
+            canonical=len(g)==11 and g.isdigit()
+            if require_components:
+                if not canonical:
+                    raise ValueError(f"components CSV row {row_number} has non-canonical GEOID")
+                if s is None:
+                    raise ValueError(f"components CSV row {row_number} has missing or non-finite derived score")
+            elif not canonical or s is None:
+                continue
             if not 0<=s<=1: raise ValueError(f"coverage_gap_score outside [0,1] for GEOID {g}")
             if g in out: raise ValueError(f"duplicate GEOID in score CSV: {g}")
             out[g]=s
@@ -117,10 +126,8 @@ def _cluster(group,descending):
     return {"examples":[x[2] for x in ordered[:10]],"county_count":len(counts),"largest_county":county,
             "largest_county_fraction":count/len(group) if group else 0.0}
 
-def analyze(scores:dict[str,float],strata_path:Path,min_rows:int,prefixes:tuple[str,...],*,
-            bootstrap_iterations:int=1000,permutations:int=2000,seed:int=20260913)->list[dict]:
-    if min_rows<8: raise ValueError("min_rows must be at least 8")
-    with strata_path.open(newline="",encoding="utf-8") as h:
+def _load_strata(path:Path):
+    with path.open(newline="",encoding="utf-8") as h:
         r=csv.DictReader(h)
         if not r.fieldnames or "GEOID" not in r.fieldnames: raise ValueError("strata CSV must contain GEOID")
         if len(set(r.fieldnames))!=len(r.fieldnames): raise ValueError("duplicate strata CSV header")
@@ -131,11 +138,18 @@ def analyze(scores:dict[str,float],strata_path:Path,min_rows:int,prefixes:tuple[
         if "coverage_gap" in normalized:
             raise ValueError(f"strata CSV contains target-like coverage-gap field: {field}")
     seen_geoids=set()
-    for row in rows:
+    for row_number,row in enumerate(rows,start=2):
         g=(row.get("GEOID") or "").strip()
-        if len(g)==11 and g.isdigit():
-            if g in seen_geoids: raise ValueError(f"duplicate GEOID in strata CSV: {g}")
-            seen_geoids.add(g)
+        if not(len(g)==11 and g.isdigit()):
+            raise ValueError(f"strata CSV row {row_number} has non-canonical GEOID")
+        if g in seen_geoids: raise ValueError(f"duplicate GEOID in strata CSV: {g}")
+        seen_geoids.add(g)
+    return fields,rows,seen_geoids
+
+def analyze(scores:dict[str,float],strata_path:Path,min_rows:int,prefixes:tuple[str,...],*,
+            bootstrap_iterations:int=1000,permutations:int=2000,seed:int=20260913)->list[dict]:
+    if min_rows<8: raise ValueError("min_rows must be at least 8")
+    fields,rows,_=_load_strata(strata_path)
     results=[]
     lowered_prefixes=tuple(p.lower() for p in prefixes)
     for field in (f for f in fields if f and f!="GEOID" and not f.lower().startswith(lowered_prefixes)):
@@ -162,9 +176,11 @@ def analyze(scores:dict[str,float],strata_path:Path,min_rows:int,prefixes:tuple[
             "missingness":_missingness(rows,scores,field),"high_group":_cluster(e["high"],True),
             "low_group":_cluster(e["low"],False)})
     _bh(results)
+    production_budget=(bootstrap_iterations>=MIN_STRONG_BOOTSTRAP_ITERATIONS and permutations>=MIN_STRONG_PERMUTATIONS)
     for r in results:
         cj=r["county_jackknife"]["sign_agreement"]
-        r["screening_strength"]="strong" if (r["bootstrap_excludes_zero"] and r["fdr_q"]<=.10
+        r["production_resampling_budget"]=production_budget
+        r["screening_strength"]="strong" if (production_budget and r["bootstrap_excludes_zero"] and r["fdr_q"]<=.10
             and r["threshold_stability"]["sign_agreement"]==1.0 and (cj is None or cj>=.80)) else "exploratory"
     return sorted(results,key=lambda r:(r["screening_strength"]!="strong",r["fdr_q"],-r["absolute_delta"],r["field"]))
 
@@ -182,6 +198,7 @@ def build_evidence_packet(components_csv:Path,strata_csv:Path,candidates:list[di
         "method":{"primary_contrast":"upper versus lower quartile mean derived coverage-gap score",
             "bootstrap":{"iterations":bootstrap_iterations,"interval":"deterministic percentile 95%"},
             "permutation":{"iterations":permutations,"p_value":"two-sided empirical with +1 correction","multiple_testing":"Benjamini-Hochberg FDR"},
+            "strong_gate":{"minimum_bootstrap_iterations":MIN_STRONG_BOOTSTRAP_ITERATIONS,"minimum_permutations":MIN_STRONG_PERMUTATIONS},
             "stability":["20/80, 25/75, and 33/67 threshold sign agreement","leave-one-county-out sign agreement when evaluable",
                          "high/low group county concentration","candidate missingness versus observed score delta"],
             "seed":seed,"min_rows":min_rows,"excluded_prefixes":list(excluded_prefixes)},
@@ -198,10 +215,17 @@ def main(argv=None)->int:
     p.add_argument("--permutations",type=int,default=2000); p.add_argument("--seed",type=int,default=20260913)
     p.add_argument("--include-fixed-scorecard-families",action="store_true"); a=p.parse_args(argv)
     prefixes=() if a.include_fixed_scorecard_families else DEFAULT_EXCLUDED_PREFIXES
-    candidates=analyze(load_scores(a.components_csv,require_components=True),a.strata_csv,a.min_rows,prefixes,
+    scores=load_scores(a.components_csv,require_components=True)
+    _,_,strata_geoids=_load_strata(a.strata_csv)
+    missing_scores=strata_geoids-set(scores)
+    if missing_scores:
+        sample=sorted(missing_scores)[:3]
+        raise ValueError(f"components CSV is missing {len(missing_scores)} strata GEOIDs: {', '.join(sample)}")
+    candidates=analyze(scores,a.strata_csv,a.min_rows,prefixes,
         bootstrap_iterations=a.bootstrap_iterations,permutations=a.permutations,seed=a.seed)
     packet=build_evidence_packet(a.components_csv,a.strata_csv,candidates,min_rows=a.min_rows,
         bootstrap_iterations=a.bootstrap_iterations,permutations=a.permutations,seed=a.seed,excluded_prefixes=prefixes)
+    packet["population"]={"valid_component_scores":len(scores),"strata_rows":len(strata_geoids),"strata_missing_scores":0}
     a.output_json.parent.mkdir(parents=True,exist_ok=True)
     a.output_json.write_text(json.dumps(packet,indent=2,sort_keys=True)+"\n",encoding="utf-8"); return 0
 if __name__=="__main__": raise SystemExit(main())
