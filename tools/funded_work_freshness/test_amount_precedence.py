@@ -165,6 +165,20 @@ class AmountPrecedenceTests(unittest.TestCase):
         self.assertEqual(receipt["freshness_status"], "actionable")
         self.assertEqual(receipt["checks"]["canonical_current_reward_amount"], "200")
 
+    def test_unrelated_to_between_amounts_does_not_invent_transition(self):
+        receipt = self._receipt(
+            [
+                authority_comment(
+                    "Reward: $500 donated to charity $200.",
+                    "2026-09-13T04:00:00Z",
+                )
+            ],
+            amount="500",
+        )
+        self.assertEqual(receipt["freshness_status"], "ambiguous")
+        self.assertEqual(receipt["checks"]["authoritative_amount_state"], "ambiguous")
+        self.assertEqual(receipt["reasons"], ["canonical_reward_amount_ambiguous"])
+
     def test_multiple_current_amounts_without_transition_fail_closed(self):
         receipt = self._receipt(
             [
