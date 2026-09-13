@@ -6,9 +6,10 @@ build/evidence publication, not gameplay. The contract is deliberately
 cooperative-race safe: pre-existing finals are never overwritten and rollback
 removes a path only when the final-path identity check still matches the inode
 reserved by this call. Reservation fds stay open through those rollback checks
-so an unlinked owned inode cannot be recycled before the check. This is not an
-atomic defense against a hostile pathname replacement between that identity
-check and unlink.
+on POSIX so an unlinked owned inode cannot be recycled before the check. Windows
+does not permit deletion through these open CRT descriptors, so rollback closes
+them before the same identity-checked cleanup. This is not an atomic defense
+against a hostile pathname replacement between that identity check and unlink.
 
 Before success, every pathname is re-opened without following the final symlink
 (where supported), re-authenticated against the reserved inode, and its exact
@@ -39,12 +40,25 @@ def _resolved(path: Path) -> Path:
 
 def _flags(base: int) -> int:
     nofollow = getattr(os, "O_NOFOLLOW", 0)
-    return base | nofollow
+    # The Windows CRT defaults descriptors to text mode. Binary artifacts can
+    # contain both newlines and byte 0x1a (DOS EOF), so every payload descriptor
+    # must opt into byte-preserving I/O. O_BINARY is zero/absent on POSIX.
+    return base | nofollow | getattr(os, "O_BINARY", 0)
+
+
+def _os_path(path: Path) -> str:
+    """Return an OS path that preserves Windows paths beyond MAX_PATH."""
+    raw = os.path.abspath(os.fspath(path))
+    if os.name != "nt" or raw.startswith("\\\\?\\"):
+        return raw
+    if raw.startswith("\\\\"):
+        return "\\\\?\\UNC\\" + raw[2:]
+    return "\\\\?\\" + raw
 
 
 def _reserve(path: Path, payload: bytes) -> _OwnedFile:
-    path.parent.mkdir(parents=True, exist_ok=True)
-    fd = os.open(path, _flags(os.O_WRONLY | os.O_CREAT | os.O_EXCL), 0o644)
+    os.makedirs(_os_path(path.parent), exist_ok=True)
+    fd = os.open(_os_path(path), _flags(os.O_WRONLY | os.O_CREAT | os.O_EXCL), 0o644)
     st = os.fstat(fd)
     if not stat.S_ISREG(st.st_mode):
         os.close(fd)
@@ -65,7 +79,7 @@ def _write_all(fd: int, payload: bytes) -> None:
 
 def _path_identity(path: Path):
     try:
-        st = os.lstat(path)
+        st = os.lstat(_os_path(path))
     except FileNotFoundError:
         return None
     return st.st_dev, st.st_ino, st.st_mode
@@ -79,7 +93,7 @@ def _unlink_if_owned(owned: _OwnedFile) -> None:
     if (dev, ino) != (owned.dev, owned.ino):
         return
     try:
-        os.unlink(owned.path)
+        os.unlink(_os_path(owned.path))
     except FileNotFoundError:
         pass
 
@@ -92,7 +106,7 @@ def _verify_final(owned: _OwnedFile) -> None:
     if not stat.S_ISREG(mode) or (dev, ino) != (owned.dev, owned.ino):
         raise OSError(f"publication path identity changed: {owned.path}")
 
-    fd = os.open(owned.path, _flags(os.O_RDONLY))
+    fd = os.open(_os_path(owned.path), _flags(os.O_RDONLY))
     try:
         st = os.fstat(fd)
         if (st.st_dev, st.st_ino) != (owned.dev, owned.ino):
@@ -116,6 +130,14 @@ def _verify_final(owned: _OwnedFile) -> None:
 
 
 def _fsync_parents(paths: Iterable[Path]) -> None:
+    # CPython's Windows ``os.open`` cannot open a directory descriptor, so it
+    # cannot provide the POSIX directory-fsync durability step. The individual
+    # files have already been fsynced and re-opened for exact identity/payload
+    # verification. Keep that supported contract usable rather than rolling a
+    # successful byte-exact publication back solely because the directory-handle
+    # operation is unavailable on Windows.
+    if os.name == "nt":
+        return
     seen = set()
     for path in paths:
         parent = _resolved(path.parent)
@@ -146,7 +168,9 @@ def publish_exclusive(files: Iterable[tuple[Path, bytes]]) -> None:
     artifact+receipt style publication. On failure, rollback identity checks run
     while reservation fds are still open, and only matching pathnames are
     unlinked. On success, every final path is re-authenticated and
-    payload-verified before parent directories are fsynced.
+    payload-verified before parent directories are fsynced on platforms that
+    expose directory descriptors. Windows fsyncs and verifies each file but
+    cannot perform the POSIX directory-fsync step through ``os.open``.
     """
     requested = [(Path(path), bytes(payload)) for path, payload in files]
     if len(requested) < 2:
@@ -165,17 +189,26 @@ def publish_exclusive(files: Iterable[tuple[Path, bytes]]) -> None:
             _verify_final(item)
         _fsync_parents(item.path for item in owned)
     except Exception:
-        # Keep reservation fds open until AFTER every rollback identity check.
-        # Cleanup is best-effort: a cleanup failure must neither widen deletion
-        # authority nor mask the original publication failure.
-        try:
+        # POSIX keeps reservation fds open until after every rollback identity
+        # check. Windows forbids unlinking these open files, and the handle lock
+        # already blocks pathname replacement until close, so close first there.
+        # Cleanup remains best-effort and never masks the publication failure.
+        if os.name == "nt":
+            _close_owned(owned)
             for item in reversed(owned):
                 try:
                     _unlink_if_owned(item)
                 except OSError:
                     pass
-        finally:
-            _close_owned(owned)
+        else:
+            try:
+                for item in reversed(owned):
+                    try:
+                        _unlink_if_owned(item)
+                    except OSError:
+                        pass
+            finally:
+                _close_owned(owned)
         raise
     else:
         _close_owned(owned)

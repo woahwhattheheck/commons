@@ -42,6 +42,16 @@ class ComposerError(ValueError):
     pass
 
 
+def _os_path(path: Path) -> str:
+    """Return an OS path that preserves Windows paths beyond MAX_PATH."""
+    raw = os.path.abspath(os.fspath(path))
+    if os.name != "nt" or raw.startswith("\\\\?\\"):
+        return raw
+    if raw.startswith("\\\\"):
+        return "\\\\?\\UNC\\" + raw[2:]
+    return "\\\\?\\" + raw
+
+
 def digest(raw: bytes) -> str:
     return hashlib.sha256(raw).hexdigest()
 
@@ -49,13 +59,13 @@ def digest(raw: bytes) -> str:
 def read_regular(path: Path) -> bytes:
     """Single-capture one ordinary final pathname without following a symlink."""
     path = Path(path)
-    flags = os.O_RDONLY
+    flags = os.O_RDONLY | getattr(os, "O_BINARY", 0)
     if hasattr(os, "O_CLOEXEC"):
         flags |= os.O_CLOEXEC
     if hasattr(os, "O_NOFOLLOW"):
         flags |= os.O_NOFOLLOW
     try:
-        fd = os.open(path, flags)
+        fd = os.open(_os_path(path), flags)
     except OSError as exc:
         raise ComposerError(f"cannot open ordinary file {path}: {exc}") from exc
     try:
@@ -163,7 +173,7 @@ def _source_path(root: Path, value: Any) -> Path:
     for part in rel.parts:
         current = current / part
         try:
-            mode = os.lstat(current).st_mode
+            mode = os.lstat(_os_path(current)).st_mode
         except OSError as exc:
             raise ComposerError(f"replacement source missing: {value}") from exc
         if stat.S_ISLNK(mode):
