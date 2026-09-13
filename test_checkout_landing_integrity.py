@@ -104,6 +104,20 @@ def canonical_handoff_mailto(raw: str) -> bool:
     return not any(name.casefold() in {"to", "cc", "bcc"} for name, _value in query)
 
 
+def canonical_local_pay_js(raw: str) -> bool:
+    """Accept only the repository-local root pay.js loader, with optional cache query."""
+    try:
+        parsed = urlsplit(unescape(str(raw).strip()))
+    except (TypeError, ValueError):
+        return False
+    if parsed.scheme or parsed.netloc or parsed.fragment:
+        return False
+    path = unquote(parsed.path)
+    while path.startswith("./"):
+        path = path[2:]
+    return path == "pay.js"
+
+
 def _local_html_route(raw: object) -> tuple[str | None, str | None]:
     if not isinstance(raw, str) or not raw.strip():
         return None, "qualification.route must be a non-empty local HTML path"
@@ -229,7 +243,7 @@ def landing_surface_errors(root: Path) -> list[str]:
                 actual_rails.add(rail_key)
 
         slots = Counter(parser.checkout_slots)
-        has_pay_js = any(PurePosixPath(urlsplit(src).path).name == "pay.js" for src in parser.script_srcs)
+        has_pay_js = any(canonical_local_pay_js(src) for src in parser.script_srcs)
 
         if provider_anchors and slots:
             errors.append(f"{route}: mixes raw Stripe anchors with catalog checkout slots")
@@ -247,7 +261,7 @@ def landing_surface_errors(root: Path) -> list[str]:
                     f"to {sorted(expected_skus)}"
                 )
             if not has_pay_js:
-                errors.append(f"{route}: catalog checkout slots require pay.js")
+                errors.append(f"{route}: catalog checkout slots require local pay.js")
         else:
             errors.append(f"{route}: no canonical Stripe anchor or catalog checkout slot")
 
@@ -314,24 +328,40 @@ class CheckoutLandingIntegrity(unittest.TestCase):
             errors = landing_surface_errors(root)
             self.assertTrue(any("do not equal canonical rails" in row for row in errors), errors)
 
-    def test_shared_dynamic_surface_requires_exact_slots_pay_js_and_mailto(self) -> None:
+    def test_shared_dynamic_surface_requires_exact_slots_local_pay_js_and_mailto(self) -> None:
         rows = [
             ("sku-a", "shared.html", "https://buy.stripe.com/a_1"),
             ("sku-b", "shared.html", "https://buy.stripe.com/b_2"),
         ]
-        good = (
+        base = (
             '<div class="js-checkout-slot" data-sku="sku-a"></div>'
             '<div class="js-checkout-slot" data-sku="sku-b"></div>'
             '<a href="mailto:tokenjunkielabs@gmail.com?subject=shared">handoff</a>'
-            '<script src="./pay.js?v=1"></script>'
         )
+        good = base + '<script src="./pay.js?v=1"></script>'
+        bad_sources = [
+            "https://attacker.example/pay.js",
+            "//attacker.example/pay.js",
+            "javascript:pay.js",
+            "nested/pay.js",
+            "/pay.js",
+            "../pay.js",
+        ]
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
             self._fixture(root, rows, {"shared.html": good})
             self.assertEqual(landing_surface_errors(root), [])
-            (root / "shared.html").write_text(good.replace('<script src="./pay.js?v=1"></script>', ""), encoding="utf-8")
+            (root / "shared.html").write_text(base, encoding="utf-8")
             errors = landing_surface_errors(root)
-            self.assertIn("shared.html: catalog checkout slots require pay.js", errors)
+            self.assertIn("shared.html: catalog checkout slots require local pay.js", errors)
+            for src in bad_sources:
+                with self.subTest(src=src):
+                    (root / "shared.html").write_text(
+                        base + f'<script src="{src}"></script>',
+                        encoding="utf-8",
+                    )
+                    errors = landing_surface_errors(root)
+                    self.assertIn("shared.html: catalog checkout slots require local pay.js", errors)
 
     def test_none_route_is_an_explicit_no_dedicated_surface_sentinel(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
@@ -370,6 +400,8 @@ class CheckoutLandingIntegrity(unittest.TestCase):
             "mailto:tokenjunkielabs@gmail.com,attacker@example.com",
             "mailto:tokenjunkielabs@gmail.com%2Cattacker@example.com",
             "mailto:tokenjunkielabs@gmail.com?cc=attacker@example.com",
+            "mailto:tokenjunkielabs@gmail.com?bcc=attacker@example.com",
+            "mailto:tokenjunkielabs@gmail.com?to=attacker@example.com",
         ]
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
