@@ -6,9 +6,9 @@ module adds the time/chronology authority it intentionally lacks. It never grant
 external action, payment, delivery, acceptance, or revenue authority.
 
 Exact raw-byte provenance is granted only by ``evaluate_bytes`` (or the CLI), which
-parses and hashes the same bounded bytes internally. ``evaluate`` remains a parsed-
-object compatibility helper and can never authorize current work. The byte-authority
-path also runs the canonical scope composer on those same parsed inputs and binds the
+parses and hashes the same bounded bytes internally. Parsed-object helpers compute
+chronology/canonical facts only and have no authority toggle. The byte-authority path
+also runs the canonical scope composer on those same parsed inputs and binds the
 supplied canonical project before current-work authority can become true.
 """
 from __future__ import annotations
@@ -221,11 +221,7 @@ def _canonical_project(agreement: Any, observations: Any | None) -> dict[str, An
         raise TemporalAuthorityError("exact temporal inputs fail canonical scope validation") from exc
 
 
-def _bind_project(
-    supplied: Any | None,
-    expected: dict[str, Any],
-    agreement_id: str,
-) -> tuple[bool, str]:
+def _bind_project(supplied: Any | None, expected: dict[str, Any], agreement_id: str) -> tuple[bool, str]:
     expected_sha = digest(expected)
     if supplied is None:
         return False, expected_sha
@@ -263,18 +259,8 @@ def verify_project_binding(project: Any, receipt: Any) -> dict[str, Any]:
     return {"valid": True, "canonical_project_sha256": expected}
 
 
-def _evaluate_parsed(
-    agreement: Any,
-    observations: Any | None,
-    *,
-    as_of: datetime,
-    agreement_raw_sha256: str | None,
-    observations_raw_sha256: str | None,
-    raw_byte_provenance_verified: bool,
-    canonical_scope_validated: bool,
-    canonical_project_bound: bool,
-    canonical_project_sha256: str | None,
-) -> dict[str, Any]:
+def _temporal_facts(agreement: Any, observations: Any | None, *, as_of: datetime) -> dict[str, Any]:
+    """Compute chronology/canonical facts only; this helper cannot mint authority."""
     if as_of.tzinfo is None or as_of.utcoffset() is None:
         raise TemporalAuthorityError("as_of must be timezone-aware")
     as_of = as_of.astimezone(timezone.utc)
@@ -290,7 +276,6 @@ def _evaluate_parsed(
         end=end,
         as_of=as_of,
     )
-
     status = written.get("status")
     if status != "PRESENT":
         state = "HOLD_NO_PRESENT_ACCEPTANCE"
@@ -304,71 +289,67 @@ def _evaluate_parsed(
     else:
         state = "TEMPORAL_PREREQUISITE_READY"
         temporal_ready = True
-
-    if temporal_ready and not raw_byte_provenance_verified:
-        state = "HOLD_RAW_PROVENANCE_UNVERIFIED"
-    elif temporal_ready and not canonical_scope_validated:
-        state = "HOLD_CANONICAL_SCOPE_UNVERIFIED"
-    elif temporal_ready and not canonical_project_bound:
-        state = "HOLD_CANONICAL_PROJECT_UNBOUND"
-    current_work_authorized = (
-        temporal_ready
-        and raw_byte_provenance_verified
-        and canonical_scope_validated
-        and canonical_project_bound
-    )
-
-    receipt_core = {
-        "schema_version": SCHEMA_RECEIPT,
-        "kind": "SCOPE_TO_DELIVERY_TEMPORAL_AUTHORITY",
+    return {
         "agreement_id": agreement.get("agreement_id"),
         "state": state,
+        "temporal_ready": temporal_ready,
         "trusted_as_of": as_of.isoformat().replace("+00:00", "Z"),
         "window_start": start.isoformat().replace("+00:00", "Z"),
         "window_end": end.isoformat().replace("+00:00", "Z"),
         "accepted_at": accepted_at.isoformat().replace("+00:00", "Z") if accepted_at else None,
         "agreement_canonical_sha256": digest(agreement),
-        "agreement_raw_sha256": agreement_raw_sha256,
         "observations_canonical_sha256": observations_digest,
-        "observations_raw_sha256": observations_raw_sha256,
-        "raw_byte_provenance_verified": raw_byte_provenance_verified,
-        "provenance_mode": "EXACT_RAW_BYTES_VERIFIED" if raw_byte_provenance_verified else "CANONICAL_OBJECT_ONLY",
-        "canonical_scope_validated": canonical_scope_validated,
-        "canonical_project_bound": canonical_project_bound,
-        "canonical_project_sha256": canonical_project_sha256,
-        "canonical_binding_required": True,
         "observation_count": len(parsed_observations),
+        "historical_evidence_temporally_admissible": bool(parsed_observations),
+    }
+
+
+def _receipt_base(facts: dict[str, Any], *, state: str) -> dict[str, Any]:
+    """Build non-authority receipt fields from chronology facts only."""
+    return {
+        "schema_version": SCHEMA_RECEIPT,
+        "kind": "SCOPE_TO_DELIVERY_TEMPORAL_AUTHORITY",
+        "agreement_id": facts["agreement_id"],
+        "state": state,
+        "trusted_as_of": facts["trusted_as_of"],
+        "window_start": facts["window_start"],
+        "window_end": facts["window_end"],
+        "accepted_at": facts["accepted_at"],
+        "agreement_canonical_sha256": facts["agreement_canonical_sha256"],
+        "observations_canonical_sha256": facts["observations_canonical_sha256"],
+        "observation_count": facts["observation_count"],
         "temporal_prerequisite_only": True,
         "canonical_scope_validation_still_required": True,
-        "current_work_authorized": current_work_authorized,
-        "historical_evidence_temporally_admissible": bool(parsed_observations),
+        "historical_evidence_temporally_admissible": facts["historical_evidence_temporally_admissible"],
         "external_action_authorized": False,
         "payment_authorized": False,
         "delivery_claim_authorized": False,
         "revenue_authorized": False,
-        "authority_boundary": (
-            "This gate proves trusted-time chronology and exact input-byte custody only when the same inputs "
-            "also pass the canonical scope composer and the supplied canonical project digest is exactly bound. "
-            "Buyer, delivery, payment, provider, and cash gates remain independently mandatory."
-        ),
     }
-    receipt_core["receipt_sha256"] = digest(receipt_core)
-    return receipt_core
 
 
 def evaluate(agreement: Any, observations: Any | None, *, as_of: datetime) -> dict[str, Any]:
-    """Evaluate parsed objects without raw-byte or canonical-project authority."""
-    return _evaluate_parsed(
-        agreement,
-        observations,
-        as_of=as_of,
-        agreement_raw_sha256=None,
-        observations_raw_sha256=None,
-        raw_byte_provenance_verified=False,
-        canonical_scope_validated=False,
-        canonical_project_bound=False,
-        canonical_project_sha256=None,
-    )
+    """Evaluate parsed objects without any raw-byte/canonical-project authority capability."""
+    facts = _temporal_facts(agreement, observations, as_of=as_of)
+    state = "HOLD_RAW_PROVENANCE_UNVERIFIED" if facts["temporal_ready"] else facts["state"]
+    receipt = {
+        **_receipt_base(facts, state=state),
+        "agreement_raw_sha256": None,
+        "observations_raw_sha256": None,
+        "raw_byte_provenance_verified": False,
+        "provenance_mode": "CANONICAL_OBJECT_ONLY",
+        "canonical_scope_validated": False,
+        "canonical_project_bound": False,
+        "canonical_project_sha256": None,
+        "canonical_binding_required": True,
+        "current_work_authorized": False,
+        "authority_boundary": (
+            "Parsed-object evaluation proves chronology only. Exact-byte custody and same-input canonical "
+            "project binding require evaluate_bytes()."
+        ),
+    }
+    receipt["receipt_sha256"] = digest(receipt)
+    return receipt
 
 
 def _bounded_bytes(raw: Any, field: str) -> bytes:
@@ -400,17 +381,30 @@ def evaluate_bytes(
     project_bound, project_sha = _bind_project(
         canonical_project, expected_project, agreement.get("agreement_id") if isinstance(agreement, dict) else ""
     )
-    return _evaluate_parsed(
-        agreement,
-        observations,
-        as_of=as_of,
-        agreement_raw_sha256=hashlib.sha256(agreement_raw).hexdigest(),
-        observations_raw_sha256=observations_raw_sha256,
-        raw_byte_provenance_verified=True,
-        canonical_scope_validated=True,
-        canonical_project_bound=project_bound,
-        canonical_project_sha256=project_sha,
-    )
+    facts = _temporal_facts(agreement, observations, as_of=as_of)
+    state = facts["state"]
+    if facts["temporal_ready"] and not project_bound:
+        state = "HOLD_CANONICAL_PROJECT_UNBOUND"
+    current_work_authorized = facts["temporal_ready"] and project_bound
+    receipt = {
+        **_receipt_base(facts, state=state),
+        "agreement_raw_sha256": hashlib.sha256(agreement_raw).hexdigest(),
+        "observations_raw_sha256": observations_raw_sha256,
+        "raw_byte_provenance_verified": True,
+        "provenance_mode": "EXACT_RAW_BYTES_VERIFIED",
+        "canonical_scope_validated": True,
+        "canonical_project_bound": project_bound,
+        "canonical_project_sha256": project_sha,
+        "canonical_binding_required": True,
+        "current_work_authorized": current_work_authorized,
+        "authority_boundary": (
+            "This gate proves trusted-time chronology and exact input-byte custody only when the same inputs "
+            "also pass the canonical scope composer and the supplied canonical project digest is exactly bound. "
+            "Buyer, delivery, payment, provider, and cash gates remain independently mandatory."
+        ),
+    }
+    receipt["receipt_sha256"] = digest(receipt)
+    return receipt
 
 
 def main(argv: list[str] | None = None) -> int:
