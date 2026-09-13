@@ -529,7 +529,97 @@ def reconcile(payload: Mapping[str, Any]) -> dict[str, Any]:
     return manifest
 
 
-def verify_receipt(manifest: Mapping[str, Any]) -> bool:
+_RECEIPT_KEYS = frozenset(
+    {
+        "schema_version",
+        "product",
+        "authority",
+        "snapshot_at",
+        "input_records",
+        "unique_events",
+        "replay_collapsed",
+        "counts",
+        "series",
+        "quarantines",
+        "roots",
+        "authorities",
+        "receipt_sha256",
+    }
+)
+_COUNT_KEYS = frozenset({"offer_series", "offer_versions", "responses", "quarantined", "states"})
+_ROOT_KEYS = frozenset({"events_sha256", "series_state_sha256", "quarantine_sha256"})
+_AUTHORITY_KEYS = frozenset(
+    {
+        "raw_message_parsing",
+        "signer_or_legal_authority",
+        "contract_creation_or_execution",
+        "invoice_or_checkout_creation",
+        "payment_or_charge",
+        "fulfillment_start",
+        "recognized_revenue",
+    }
+)
+_SERIES_KEYS = frozenset(
+    {
+        "offer_series_id",
+        "offer_version_id",
+        "version",
+        "counterparty_ref",
+        "state",
+        "next_action",
+        "effective_review_class",
+        "effective_response_ref",
+        "changed_fields",
+        "blocker_codes",
+        "contract_authority",
+        "signer_authority_determined",
+        "payment_authority",
+        "fulfillment_authority",
+        "revenue_authority",
+    }
+)
+_QUARANTINE_KEYS = frozenset({"event_id", "kind", "series_id", "code"})
+_STATE_NEXT_ACTION = {
+    "HUMAN_CLOSING_READY": "HUMAN_CLOSING_REVIEW",
+    "COUNTEROFFER_REVIEW": "HUMAN_COUNTEROFFER_REVIEW",
+    "CLARIFICATION_REQUIRED": "HUMAN_CLARIFICATION",
+    "OWNER_REPLY_REQUIRED": "HUMAN_REPLY",
+    "DECLINED": "NO_ACTION",
+    "HUMAN_REVIEW_REQUIRED": "HUMAN_EVIDENCE_REVIEW",
+    "AWAITING_RESPONSE": "NO_ACTION",
+    "EXPIRED_NO_ACCEPTANCE": "HUMAN_REISSUE_DECISION",
+}
+_STATE_REVIEW_CLASS = {
+    "HUMAN_CLOSING_READY": "EXACT_ACCEPT",
+    "COUNTEROFFER_REVIEW": "COUNTEROFFER",
+    "CLARIFICATION_REQUIRED": "PARTIAL_ACCEPT",
+    "OWNER_REPLY_REQUIRED": "QUESTION",
+    "DECLINED": "DECLINE",
+    "AWAITING_RESPONSE": "NONE",
+    "EXPIRED_NO_ACCEPTANCE": "NONE",
+}
+_BLOCKER_CODES = frozenset(
+    {
+        "RESPONSE_AFTER_SNAPSHOT",
+        "COUNTERPARTY_MISMATCH",
+        "THREAD_MISMATCH",
+        "RESPONSE_BEFORE_OFFER",
+        "RESPONSE_AFTER_EXPIRY",
+        "EXACT_ACCEPT_MISMATCH",
+    }
+)
+_QUARANTINE_CODES = _BLOCKER_CODES | frozenset({"UNKNOWN_OFFER_VERSION", "SUPERSEDED_OFFER_VERSION"})
+_REF16_RE = re.compile(r"^[0-9a-f]{16}$")
+
+
+def receipt_self_digest_matches(manifest: Mapping[str, Any]) -> bool:
+    """Return only whether the receipt's self-authored digest matches its bytes.
+
+    This is an integrity check, not authenticity or bridge-validity evidence. A caller
+    must use :func:`verify_receipt` with an independently trusted expected digest to
+    establish that a specific receipt is the one that was committed out of band.
+    """
+
     if not isinstance(manifest, Mapping):
         return False
     digest = manifest.get("receipt_sha256")
@@ -538,3 +628,195 @@ def verify_receipt(manifest: Mapping[str, Any]) -> bool:
     unsigned = deepcopy(dict(manifest))
     unsigned.pop("receipt_sha256", None)
     return sha256_text(canonical_json(unsigned)) == digest
+
+
+def _receipt_exact_keys(value: Any, expected: frozenset[str]) -> bool:
+    return isinstance(value, Mapping) and frozenset(value.keys()) == expected
+
+
+def _receipt_bounded_int(value: Any) -> bool:
+    return type(value) is int and 0 <= value <= MAX_EVENTS
+
+
+def _receipt_identifier(value: Any, *, allow_empty: bool = False) -> bool:
+    if allow_empty and value == "":
+        return True
+    return type(value) is str and bool(ID_RE.fullmatch(value))
+
+
+def _receipt_timestamp(value: Any) -> bool:
+    if type(value) is not str or not re.fullmatch(r"\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z", value):
+        return False
+    try:
+        parsed = datetime.fromisoformat(value.replace("Z", "+00:00"))
+    except ValueError:
+        return False
+    return parsed.tzinfo == timezone.utc
+
+
+def _receipt_series_row_valid(row: Any) -> bool:
+    if not _receipt_exact_keys(row, _SERIES_KEYS):
+        return False
+    if not _receipt_identifier(row["offer_series_id"]) or not _receipt_identifier(row["offer_version_id"]):
+        return False
+    if type(row["version"]) is not int or row["version"] <= 0 or row["version"] > MAX_EVENTS:
+        return False
+    if type(row["counterparty_ref"]) is not str or not _REF16_RE.fullmatch(row["counterparty_ref"]):
+        return False
+    state = row["state"]
+    if state not in _STATE_NEXT_ACTION or row["next_action"] != _STATE_NEXT_ACTION[state]:
+        return False
+    review_class = row["effective_review_class"]
+    if review_class not in REVIEW_CLASSES | {"NONE"}:
+        return False
+    expected_class = _STATE_REVIEW_CLASS.get(state)
+    if expected_class is not None and review_class != expected_class:
+        return False
+    if state == "HUMAN_REVIEW_REQUIRED" and review_class not in {"NONE", "AMBIGUOUS"}:
+        return False
+    response_ref = row["effective_response_ref"]
+    if review_class == "NONE":
+        if response_ref != "":
+            return False
+    elif type(response_ref) is not str or not _REF16_RE.fullmatch(response_ref):
+        return False
+    changed_fields = row["changed_fields"]
+    if not isinstance(changed_fields, list) or any(type(field) is not str or field not in MATCH_FIELDS for field in changed_fields):
+        return False
+    if len(changed_fields) != len(set(changed_fields)):
+        return False
+    if changed_fields != [field for field in MATCH_FIELDS if field in set(changed_fields)]:
+        return False
+    blocker_codes = row["blocker_codes"]
+    if not isinstance(blocker_codes, list) or any(type(code) is not str or code not in _BLOCKER_CODES for code in blocker_codes):
+        return False
+    if blocker_codes != sorted(set(blocker_codes)):
+        return False
+    if blocker_codes and (state != "HUMAN_REVIEW_REQUIRED" or review_class != "NONE"):
+        return False
+    if state in {"AWAITING_RESPONSE", "EXPIRED_NO_ACCEPTANCE"} and (response_ref or changed_fields or blocker_codes):
+        return False
+    for key in (
+        "contract_authority",
+        "signer_authority_determined",
+        "payment_authority",
+        "fulfillment_authority",
+        "revenue_authority",
+    ):
+        if row[key] is not False:
+            return False
+    return True
+
+
+def _receipt_quarantine_row_valid(row: Any) -> bool:
+    if not _receipt_exact_keys(row, _QUARANTINE_KEYS):
+        return False
+    if not _receipt_identifier(row["event_id"]) or row["kind"] != "response":
+        return False
+    if not _receipt_identifier(row["series_id"], allow_empty=True):
+        return False
+    code = row["code"]
+    if code not in _QUARANTINE_CODES:
+        return False
+    if code == "UNKNOWN_OFFER_VERSION":
+        return row["series_id"] == ""
+    return row["series_id"] != ""
+
+
+def _receipt_schema_valid(manifest: Mapping[str, Any]) -> bool:
+    if not _receipt_exact_keys(manifest, _RECEIPT_KEYS):
+        return False
+    if manifest["schema_version"] != SCHEMA_VERSION:
+        return False
+    if manifest["product"] != "COMMERCIAL_ACCEPTANCE_BRIDGE":
+        return False
+    if manifest["authority"] != "NORMALIZED_HUMAN_REVIEWED_EVIDENCE_ONLY":
+        return False
+    if not _receipt_timestamp(manifest["snapshot_at"]):
+        return False
+    for key in ("input_records", "unique_events", "replay_collapsed"):
+        if not _receipt_bounded_int(manifest[key]):
+            return False
+    if manifest["unique_events"] > manifest["input_records"]:
+        return False
+    if manifest["replay_collapsed"] != manifest["input_records"] - manifest["unique_events"]:
+        return False
+
+    counts = manifest["counts"]
+    if not _receipt_exact_keys(counts, _COUNT_KEYS):
+        return False
+    for key in ("offer_series", "offer_versions", "responses", "quarantined"):
+        if not _receipt_bounded_int(counts[key]):
+            return False
+    states_count = counts["states"]
+    if not isinstance(states_count, Mapping):
+        return False
+    if any(type(key) is not str or key not in _STATE_NEXT_ACTION for key in states_count):
+        return False
+    if any(type(value) is not int or value <= 0 or value > MAX_EVENTS for value in states_count.values()):
+        return False
+
+    series = manifest["series"]
+    quarantines = manifest["quarantines"]
+    if not isinstance(series, list) or not isinstance(quarantines, list):
+        return False
+    if len(series) > MAX_EVENTS or len(quarantines) > MAX_EVENTS:
+        return False
+    if not all(_receipt_series_row_valid(row) for row in series):
+        return False
+    if not all(_receipt_quarantine_row_valid(row) for row in quarantines):
+        return False
+    series_ids = [row["offer_series_id"] for row in series]
+    version_ids = [row["offer_version_id"] for row in series]
+    if len(series_ids) != len(set(series_ids)) or len(version_ids) != len(set(version_ids)):
+        return False
+    computed_states: dict[str, int] = defaultdict(int)
+    for row in series:
+        computed_states[row["state"]] += 1
+    if dict(sorted(computed_states.items())) != dict(states_count):
+        return False
+    if counts["offer_series"] != len(series):
+        return False
+    if counts["quarantined"] != len(quarantines):
+        return False
+    if counts["offer_versions"] < counts["offer_series"]:
+        return False
+    if counts["responses"] < counts["quarantined"]:
+        return False
+    if manifest["unique_events"] != counts["offer_versions"] + counts["responses"]:
+        return False
+
+    roots = manifest["roots"]
+    if not _receipt_exact_keys(roots, _ROOT_KEYS):
+        return False
+    if any(type(roots[key]) is not str or not HEX_RE.fullmatch(roots[key]) for key in _ROOT_KEYS):
+        return False
+    if roots["series_state_sha256"] != _root(series):
+        return False
+    if roots["quarantine_sha256"] != _root(quarantines):
+        return False
+
+    authorities = manifest["authorities"]
+    if not _receipt_exact_keys(authorities, _AUTHORITY_KEYS):
+        return False
+    if any(authorities[key] is not False for key in _AUTHORITY_KEYS):
+        return False
+    return True
+
+
+def verify_receipt(manifest: Mapping[str, Any], expected_receipt_sha256: str) -> bool:
+    """Validate a bridge receipt against an independently trusted commitment.
+
+    ``expected_receipt_sha256`` must come from a trusted channel outside the receipt
+    being checked. Supplying the receipt's own digest as the trust source defeats the
+    authenticity boundary; callers that only need byte-integrity should use
+    :func:`receipt_self_digest_matches` and label that result accordingly.
+    """
+
+    if type(expected_receipt_sha256) is not str or not HEX_RE.fullmatch(expected_receipt_sha256):
+        return False
+    if not receipt_self_digest_matches(manifest):
+        return False
+    if manifest.get("receipt_sha256") != expected_receipt_sha256:
+        return False
+    return _receipt_schema_valid(manifest)
