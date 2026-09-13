@@ -7,7 +7,7 @@
     "ibm-granite/granite-4.2-30b",
     "Qwen/Qwen3.8-27B"
   ],
-  "compute_note": "organizers recommend 80GB VRAM for 27–31B reasoning-model interventions",
+  "compute_note": "organizers recommend 80GB VRAM for 27\u201331B reasoning-model interventions",
   "midpoint": "2026-10-19",
   "observed_at": "2026-09-13",
   "schema_version": 1,
