@@ -13,10 +13,10 @@ from typing import Any
 
 try:
     from host.context_packet import PacketError, compile_packet, markdown, verify_packet
-    from host.git_source_capsules import verify_git_source
+    from host.git_source_capsules import verify_packet_git_source
 except ModuleNotFoundError:
     from context_packet import PacketError, compile_packet, markdown, verify_packet
-    from git_source_capsules import verify_git_source
+    from git_source_capsules import verify_packet_git_source
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -130,7 +130,7 @@ def _validate_packet(value: Mapping[str, Any], git_repo: Path) -> tuple[bool, st
     if not ok:
         return ok, reason
     if value.get("git_source") is not None:
-        return verify_git_source(dict(value["git_source"]), git_repo)
+        return verify_packet_git_source(dict(value), git_repo)
     return True, "ok"
 
 
