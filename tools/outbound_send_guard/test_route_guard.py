@@ -195,12 +195,41 @@ class RouteGuardTests(unittest.TestCase):
                 self.assertEqual(receipt["payload"]["route_lifecycle"]["decision"], "HOLD_ROUTE")
                 self.assertEqual(receipt["payload"]["decision"], "HOLD")
 
-    def test_delivered_and_unconfirmed_do_not_promote_or_demote_allow_new(self) -> None:
+    def test_caller_supplied_nonblocking_route_cannot_satisfy_send_capable_requirement(self) -> None:
         for kind in ("delivered", "unconfirmed"):
             with self.subTest(kind=kind):
                 receipt = route_guard.evaluate(self.intent(), self.evidence(), self.route(decision_kind=kind))
                 self.assertEqual(receipt["payload"]["base_guard"]["decision"], "ALLOW_NEW")
-                self.assertEqual(receipt["payload"]["decision"], "ALLOW_NEW")
+                self.assertEqual(receipt["payload"]["route_lifecycle"]["decision"], kind.upper())
+                self.assertEqual(receipt["payload"]["decision"], "HOLD")
+                self.assertEqual(receipt["payload"]["authority"], "partial")
+                self.assertTrue(
+                    any("lacks independent complete-snapshot authority" in reason for reason in receipt["payload"]["reasons"])
+                )
+
+    def test_forged_empty_complete_snapshot_cannot_preserve_allow_new(self) -> None:
+        forged = self.route(decision_kind="block")
+        forged["events"] = []
+        receipt = route_guard.evaluate(self.intent(), self.evidence(), forged)
+        self.assertEqual(receipt["payload"]["route_lifecycle"]["decision"], "UNCONFIRMED")
+        self.assertEqual(receipt["payload"]["decision"], "HOLD")
+        self.assertEqual(receipt["payload"]["authority"], "partial")
+
+    def test_omitting_block_from_complete_snapshot_cannot_preserve_allow_new(self) -> None:
+        forged = self.route(decision_kind="conflict")
+        forged["events"] = [event for event in forged["events"] if event["kind"] == "delivered"]
+        receipt = route_guard.evaluate(self.intent(), self.evidence(), forged)
+        self.assertEqual(receipt["payload"]["route_lifecycle"]["decision"], "DELIVERED")
+        self.assertEqual(receipt["payload"]["decision"], "HOLD")
+        self.assertEqual(receipt["payload"]["authority"], "partial")
+
+    def test_stale_nonblocking_snapshot_replay_is_rejected(self) -> None:
+        with self.assertRaisesRegex(route_guard.ComposeError, "as_of must equal"):
+            route_guard.evaluate(
+                self.intent(),
+                self.evidence(),
+                self.route(decision_kind="unconfirmed", as_of="2026-09-13T15:29:59Z"),
+            )
 
     def test_missing_route_evidence_holds_send_capable_prior_route(self) -> None:
         receipt = route_guard.evaluate(self.intent(), self.evidence(), None)
@@ -238,7 +267,8 @@ class RouteGuardTests(unittest.TestCase):
             self.evidence(),
             self.route(sent_at="2026-08-01T08:00:00-04:00", decision_kind="delivered"),
         )
-        self.assertEqual(receipt["payload"]["decision"], "ALLOW_NEW")
+        self.assertEqual(receipt["payload"]["decision"], "HOLD")
+        self.assertEqual(receipt["payload"]["authority"], "partial")
 
     def test_conflicting_delivery_and_block_is_unknown_hold(self) -> None:
         receipt = route_guard.evaluate(self.intent(), self.evidence(), self.route(decision_kind="conflict"))
@@ -337,7 +367,8 @@ class RouteGuardTests(unittest.TestCase):
         self.assertEqual(receipt["payload"]["base_guard"]["latest_outbound_at"], OLD)
         self.assertEqual(receipt["payload"]["base_guard"]["latest_outbound_source"], "slack")
         self.assertEqual(receipt["payload"]["route_lifecycle"]["target_sent_at"], OLDER)
-        self.assertEqual(receipt["payload"]["decision"], "ALLOW_NEW")
+        self.assertEqual(receipt["payload"]["decision"], "HOLD")
+        self.assertEqual(receipt["payload"]["authority"], "partial")
 
     def test_latest_of_two_provider_outbounds_is_the_only_valid_binding(self) -> None:
         evidence = self.evidence(outbound_time=OLDER)
