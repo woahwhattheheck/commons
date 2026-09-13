@@ -1,10 +1,10 @@
+from datetime import datetime, timedelta
 import copy
 from pathlib import Path
 import tempfile
 import unittest
 
 import harness_score as hs
-
 
 HEX_A = "a" * 64
 HEX_B = "b" * 64
@@ -28,6 +28,11 @@ def policy(**changes):
     return raw
 
 
+def _finish(started: str, wall: int) -> str:
+    dt = datetime.fromisoformat(started[:-1] + "+00:00") + timedelta(milliseconds=wall)
+    return dt.isoformat(timespec="milliseconds").replace("+00:00", "Z")
+
+
 def run(
     task="github-clone",
     trial="t1",
@@ -40,12 +45,14 @@ def run(
     output_tokens=300,
     cache_tokens=100,
     wall=5000,
-    started="2026-09-13T12:00:00Z",
-    finished="2026-09-13T12:00:05Z",
+    started="2026-09-13T12:00:00.000Z",
+    finished=None,
     task_sha=HEX_A,
     artifact_sha=HEX_B,
     trace_sha=HEX_C,
 ):
+    if finished is None:
+        finished = _finish(started, wall)
     return {
         "schema": hs.SCHEMA,
         "task_id": task,
@@ -109,11 +116,25 @@ class ContractTests(unittest.TestCase):
 
     def test_finished_before_started_rejected(self):
         with self.assertRaisesRegex(hs.ContractError, "precedes"):
-            hs.validate_run(run(started="2026-09-13T12:00:05Z", finished="2026-09-13T12:00:04Z"))
+            hs.validate_run(run(wall=1, finished="2026-09-13T11:59:59.999Z"))
 
     def test_noncanonical_utc_rejected(self):
+        item = run()
+        item["started_at"] = "2026-09-13T12:00:00Z"
         with self.assertRaisesRegex(hs.ContractError, "canonical"):
-            hs.validate_run(run(started="2026-09-13T12:00:00.000Z"))
+            hs.validate_run(item)
+
+    def test_submillisecond_utc_rejected(self):
+        item = run()
+        item["started_at"] = "2026-09-13T12:00:00.000001Z"
+        with self.assertRaisesRegex(hs.ContractError, "millisecond"):
+            hs.validate_run(item)
+
+    def test_wall_clock_must_bind_timestamps(self):
+        item = run(wall=1)
+        item["wall_clock_ms"] = 2
+        with self.assertRaisesRegex(hs.ContractError, "wall_clock_ms"):
+            hs.validate_run(item)
 
     def test_bad_digest_rejected(self):
         with self.assertRaisesRegex(hs.ContractError, "lowercase"):
@@ -149,15 +170,17 @@ class ContractTests(unittest.TestCase):
 
 class ScoreTests(unittest.TestCase):
     def test_correctness_floor_disables_efficiency(self):
-        report = hs.compile_report([run(passed=7, failed=3, input_tokens=1, output_tokens=1, cache_tokens=0, wall=1)], policy())
+        report = hs.compile_report(
+            [run(passed=7, failed=3, input_tokens=1, output_tokens=1, cache_tokens=0, wall=1)],
+            policy(),
+        )
         metrics = report["entries"][0]["metrics"]
         self.assertFalse(metrics["efficiency_enabled"])
         self.assertEqual(metrics["correctness_micros"], 700000)
         self.assertEqual(metrics["internal_readiness_micros"], 560000)
 
     def test_full_correctness_gets_efficiency(self):
-        report = hs.compile_report([run()], policy())
-        metrics = report["entries"][0]["metrics"]
+        metrics = hs.compile_report([run()], policy())["entries"][0]["metrics"]
         self.assertTrue(metrics["efficiency_enabled"])
         self.assertEqual(metrics["correctness_micros"], hs.ONE)
         self.assertEqual(metrics["total_tokens"], 800)
@@ -169,8 +192,7 @@ class ScoreTests(unittest.TestCase):
             run(trial="slow-expensive", input_tokens=500, output_tokens=500, cache_tokens=0, wall=7000),
             run(trial="less-correct", passed=9, failed=1, input_tokens=50, output_tokens=50, cache_tokens=0, wall=1000),
         ]
-        report = hs.compile_report(runs, policy())
-        flags = {e["run"]["trial_id"]: e["pareto"] for e in report["entries"]}
+        flags = {e["run"]["trial_id"]: e["pareto"] for e in hs.compile_report(runs, policy())["entries"]}
         self.assertTrue(flags["fast-cheap"])
         self.assertFalse(flags["slow-expensive"])
         self.assertTrue(flags["less-correct"])
@@ -218,34 +240,28 @@ class RegressionTests(unittest.TestCase):
     def test_equal_correctness_token_regression(self):
         baseline = [run(trial="b", input_tokens=100, output_tokens=0, cache_tokens=0)]
         candidate = [run(trial="c", input_tokens=106, output_tokens=0, cache_tokens=0)]
-        report = hs.compile_report(candidate, policy(max_token_regression_bps=500), baseline)
-        reasons = [x["reason"] for x in report["regression_gate"]["failures"]]
+        reasons = [x["reason"] for x in hs.compile_report(candidate, policy(max_token_regression_bps=500), baseline)["regression_gate"]["failures"]]
         self.assertIn("TOKEN_REGRESSION_AT_EQUAL_CORRECTNESS", reasons)
 
     def test_equal_correctness_time_regression(self):
         baseline = [run(trial="b", wall=1000)]
         candidate = [run(trial="c", wall=1060)]
-        report = hs.compile_report(candidate, policy(max_time_regression_bps=500), baseline)
-        reasons = [x["reason"] for x in report["regression_gate"]["failures"]]
+        reasons = [x["reason"] for x in hs.compile_report(candidate, policy(max_time_regression_bps=500), baseline)["regression_gate"]["failures"]]
         self.assertIn("TIME_REGRESSION_AT_EQUAL_CORRECTNESS", reasons)
 
     def test_missing_baseline_task_fails(self):
-        baseline = [run(task="a", trial="b")]
-        candidate = [run(task="b", trial="c")]
-        report = hs.compile_report(candidate, policy(), baseline)
+        report = hs.compile_report([run(task="b", trial="c")], policy(), [run(task="a", trial="b")])
         self.assertEqual(report["regression_gate"]["failures"], [{"task_id": "a", "reason": "MISSING_CANDIDATE_TASK"}])
 
     def test_tolerance_can_allow_small_correctness_drop(self):
         baseline = [run(trial="b", total=100, passed=100, failed=0)]
         candidate = [run(trial="c", total=100, passed=99, failed=1)]
-        report = hs.compile_report(candidate, policy(max_correctness_drop_micros=10000), baseline)
-        self.assertTrue(report["regression_gate"]["passed"])
+        self.assertTrue(hs.compile_report(candidate, policy(max_correctness_drop_micros=10000), baseline)["regression_gate"]["passed"])
 
 
 class VerificationTests(unittest.TestCase):
     def test_receipt_and_report_tamper_detected(self):
-        runs = [run()]
-        p = policy()
+        runs, p = [run()], policy()
         report = hs.compile_report(runs, p)
         self.assertTrue(hs.verify_report(runs, p, report))
         tampered = copy.deepcopy(report)
@@ -253,22 +269,17 @@ class VerificationTests(unittest.TestCase):
         self.assertFalse(hs.verify_report(runs, p, tampered))
 
     def test_policy_tamper_detected(self):
-        runs = [run()]
-        p = policy()
+        runs, p = [run()], policy()
         report = hs.compile_report(runs, p)
         self.assertFalse(hs.verify_report(runs, policy(token_reference=999), report))
 
     def test_baseline_tamper_detected(self):
-        runs = [run(trial="c")]
-        base = [run(trial="b")]
-        p = policy()
+        runs, base, p = [run(trial="c")], [run(trial="b")], policy()
         report = hs.compile_report(runs, p, base)
-        altered = [run(trial="b", input_tokens=401)]
-        self.assertFalse(hs.verify_report(runs, p, report, altered))
+        self.assertFalse(hs.verify_report(runs, p, report, [run(trial="b", input_tokens=401)]))
 
     def test_compile_create_exclusive_outputs_and_verify(self):
-        runs = [run()]
-        p = policy()
+        runs, p = [run()], policy()
         with tempfile.TemporaryDirectory() as td:
             root = Path(td)
             (root / "runs.json").write_bytes(hs.canonical_bytes(runs))
@@ -288,8 +299,7 @@ class VerificationTests(unittest.TestCase):
             ]), 1)
 
     def test_compile_regression_failure_emits_no_outputs(self):
-        baseline = [run(trial="b")]
-        candidate = [run(trial="c", passed=8, failed=2)]
+        baseline, candidate = [run(trial="b")], [run(trial="c", passed=8, failed=2)]
         with tempfile.TemporaryDirectory() as td:
             root = Path(td)
             for name, value in (("runs.json", candidate), ("baseline.json", baseline), ("policy.json", policy())):
