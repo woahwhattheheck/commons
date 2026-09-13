@@ -34,6 +34,6 @@ jobs:
         with:
           python-version: "3.12"
       - name: Standard interpreter hostile suite
-        run: python -m unittest -v test_temporal_evidence.py
+        run: python -m unittest -v test_temporal_evidence.py benchmark/test_benchmark.py
       - name: Optimized interpreter hostile suite
-        run: python -O -m unittest -v test_temporal_evidence.py
+        run: python -O -m unittest -v test_temporal_evidence.py benchmark/test_benchmark.py
