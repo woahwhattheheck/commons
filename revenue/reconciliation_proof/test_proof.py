@@ -47,6 +47,12 @@ class ReconciliationProofTests(unittest.TestCase):
         right = [deepcopy(left[0])] if right is None else right
         return build_proof(spec(**kwargs), left, right, as_of=AS_OF)
 
+    def test_empty_inputs_hold(self):
+        receipt = self.build([], [])
+        self.assertEqual(receipt["status"], "HOLD")
+        self.assertEqual(receipt["counts"]["record_keys"], 0)
+        self.assertTrue(verify_receipt(receipt))
+
     def test_clean_match_is_human_review_ready(self):
         receipt = self.build()
         self.assertEqual(receipt["status"], "RECONCILED_FOR_HUMAN_REVIEW")

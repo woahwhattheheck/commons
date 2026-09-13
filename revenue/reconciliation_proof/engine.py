@@ -186,7 +186,7 @@ def build_proof(
                 "right_digest": rrec["record_digest"] if rrec is not None else None,
             }
         )
-    status = "RECONCILED_FOR_HUMAN_REVIEW" if counts["matched"] == len(outcomes) else "HOLD"
+    status = "RECONCILED_FOR_HUMAN_REVIEW" if outcomes and counts["matched"] == len(outcomes) else "HOLD"
     # Bind every input record, including historical versions, exact replays, and
     # conflicting same-version payloads. Sorting makes input order irrelevant.
     left_manifest = left_input_digests

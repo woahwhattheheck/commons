@@ -148,7 +148,7 @@ def verify_receipt(receipt: Any) -> bool:
     _exact_keys(authority, expected_authority, field="receipt.authority")
     if any(value is not False for value in authority.values()):
         raise ProofError("receipt cannot grant external authority")
-    expected_status = "RECONCILED_FOR_HUMAN_REVIEW" if counts["matched"] == counts["record_keys"] else "HOLD"
+    expected_status = "RECONCILED_FOR_HUMAN_REVIEW" if counts["record_keys"] and counts["matched"] == counts["record_keys"] else "HOLD"
     if receipt["status"] != expected_status:
         raise ProofError("receipt.status does not match outcomes")
     supplied = receipt["receipt_sha256"]
