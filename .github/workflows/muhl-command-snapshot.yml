@@ -3,6 +3,7 @@ name: Muhlnickel command snapshot
 on:
   pull_request:
     paths:
+      - ".gitattributes"
       - "host/muhl_github_drive.py"
       - "host/_muhl_github_drive_legacy_source.txt"
       - "host/muhl_command_snapshot.py"
@@ -15,6 +16,7 @@ on:
   push:
     branches: [main]
     paths:
+      - ".gitattributes"
       - "host/muhl_github_drive.py"
       - "host/_muhl_github_drive_legacy_source.txt"
       - "host/muhl_command_snapshot.py"

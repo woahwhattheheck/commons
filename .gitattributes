@@ -42,3 +42,17 @@ integrations/command_center/observability.py text eol=lf
 integrations/command_center/test_observability.py text eol=lf
 host/github_state.py text eol=lf
 test_github_state.py text eol=lf
+
+# The command consumer verifies this preserved source against its exact Git blob
+# before compiling it. Never let checkout/autocrlf rewrite those pinned bytes.
+host/_muhl_github_drive_legacy_source.txt -text
+infra/host/_muhl_github_drive_legacy_source.txt -text
+# Executable ingress code and its focused tests keep one LF representation on
+# every platform; the strict ticket parser has separate hostile CRLF fixtures.
+host/muhl_github_drive.py text eol=lf
+host/muhl_command_snapshot.py text eol=lf
+infra/host/muhl_github_drive.py text eol=lf
+infra/host/muhl_command_snapshot.py text eol=lf
+tests/test_muhl_command_snapshot.py text eol=lf
+tests/test_muhl_github_drive_snapshot.py text eol=lf
+.github/workflows/muhl-command-snapshot.yml text eol=lf
