@@ -2,10 +2,8 @@ name: zr91313-rustchain-n64-dgb-bench
 
 on:
   push:
-    branches:
-      - zr91313/rustchain-n64-dgb-bench
-    paths:
-      - .github/workflows/zr91313-rustchain-n64-dgb-bench.yml
+    branches: [zr91313/rustchain-n64-dgb-bench]
+    paths: [.github/workflows/zr91313-rustchain-n64-dgb-bench.yml]
   workflow_dispatch:
 
 permissions:
@@ -14,8 +12,6 @@ permissions:
 env:
   TARGET_SHA: ed807ee64964851984ca9d0e9eab65dfc43d17ad
   DGB_SHA: 64207bb8e7e7673b896af11336a805fec1becfcd
-  DGB_RUN_ID: '34719960431'
-  DGB_ZIP_SHA256: 80c74c4f2fb42ab7800e988348b6fb44f796211d9324591c0053fff447877b7a
   LIBDRAGON_IMAGE_DIGEST: sha256:1f208e26f7ca4da57755525555a2f72553701a578ddd925db88de1e9fe850d94
 
 jobs:
@@ -89,29 +85,27 @@ jobs:
     runs-on: ubuntu-24.04
     timeout-minutes: 100
     steps:
-      - name: Download exact RATE_PROBE ROMs from build job
+      - name: Download exact RATE_PROBE ROMs
         uses: actions/download-artifact@v4
         with:
           name: zr91313-rate-probe-roms
           path: /tmp/roms
 
-      - name: Install dgb-n64 runtime dependencies
+      - name: Install dgb-n64 build and runtime dependencies
         shell: bash
         run: |
           set -euxo pipefail
-          sudo apt-get update
+          sudo apt-get update -y -qq
           sudo DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
-            ca-certificates curl unzip xvfb xauth \
-            libsdl2-2.0-0 libdbus-1-3 libsamplerate0 libasound2t64 libpulse0 \
-            libx11-6 libxext6 libxcursor1 libxi6 libxfixes3 libxrandr2 libxss1 \
-            libdrm2 libgbm1 libwayland-client0 libwayland-cursor0 libxkbcommon0 \
-            libdecor-0-0 mesa-vulkan-drivers libvulkan1
+            ca-certificates git curl wget cmake ninja-build build-essential glslc \
+            libsdl2-dev libdbus-1-dev libbz2-dev libsamplerate0-dev \
+            libgtk-3-dev libdecor-0-0 mesa-vulkan-drivers libvulkan1 xvfb xauth
           ldd --version 2>&1 | sed -n '1p' | tee /tmp/glibc-version.txt
           strings /usr/lib/x86_64-linux-gnu/libstdc++.so.6 \
             | grep -E '^GLIBCXX_[0-9]+\.[0-9]+\.[0-9]+$' \
             | sort -V | tail -1 | tee /tmp/glibcxx-version.txt
 
-      - name: Verify ROM provenance from build job
+      - name: Verify ROM provenance
         shell: bash
         run: |
           set -euxo pipefail
@@ -122,18 +116,55 @@ jobs:
           cat versions.txt
           cat libdragon.sha
 
-      - name: Download and verify exact dgb-n64 build artifact
+      - name: Build nativefiledialog dependency
         shell: bash
         run: |
           set -euxo pipefail
-          curl --fail --location --retry 5 \
-            "https://nightly.link/Dillonb/n64/actions/runs/${DGB_RUN_ID}/n64-linux.zip" \
-            -o /tmp/dgb.zip
-          echo "${DGB_ZIP_SHA256}  /tmp/dgb.zip" | sha256sum -c -
-          unzip -q /tmp/dgb.zip -d /tmp/dgb
-          chmod +x /tmp/dgb/n64
-          strings /tmp/dgb/n64 | grep -Fx "$DGB_SHA" | tee /tmp/dgb_embedded_sha.txt
-          /tmp/dgb/n64 --help 2>&1 | tee /tmp/dgb_help.txt
+          git clone --depth 1 --branch v1.3.0 https://github.com/btzy/nativefiledialog-extended.git /tmp/nfd
+          cmake -S /tmp/nfd -B /tmp/nfd/build -DCMAKE_BUILD_TYPE=Release -DNFD_PORTAL=ON -DNFD_BUILD_TESTS=OFF
+          cmake --build /tmp/nfd/build -j2
+          sudo cmake --install /tmp/nfd/build
+
+      - name: Build patched dgb-n64 from exact base
+        shell: bash
+        run: |
+          set -euxo pipefail
+          git clone --recurse-submodules https://github.com/Dillonb/n64.git /tmp/dgb-src
+          git -C /tmp/dgb-src checkout --detach "$DGB_SHA"
+          test "$(git -C /tmp/dgb-src rev-parse HEAD)" = "$DGB_SHA"
+
+          # dgb exposes DPC_START writes but fatals on the corresponding read.
+          # Hardware semantics are the latched DPC start address already stored
+          # as n64sys.dpc.start; make that existing state readable.
+          python3 - <<'PY'
+          from pathlib import Path
+          p = Path('/tmp/dgb-src/src/cpu/rsp.c')
+          s = p.read_text()
+          old = '''        case RSP_CP0_CMD_START:\n            logfatal("Read from unknown RSP CP0 register $c%d: RSP_CP0_CMD_START", r);'''
+          new = '''        case RSP_CP0_CMD_START:   return n64sys.dpc.start;'''
+          if s.count(old) != 1:
+              raise SystemExit('expected exactly one DPC_START fatal-read site')
+          p.write_text(s.replace(old, new))
+          PY
+          git -C /tmp/dgb-src diff --check
+          git -C /tmp/dgb-src diff -- src/cpu/rsp.c | tee /tmp/dgb-cp0-start.patch
+          sha256sum /tmp/dgb-cp0-start.patch | tee /tmp/dgb-patch-sha256.txt
+
+          mkdir -p /tmp/tools
+          curl -fsSL https://raw.githubusercontent.com/DragonMinded/libdragon/8c4e8505778a5c84e5477394eddfb127ce44d71b/tools/chksum64.c -o /tmp/tools/chksum64.c
+          cc /tmp/tools/chksum64.c -o /tmp/tools/chksum64
+          sudo install -m 0755 /tmp/tools/chksum64 /usr/local/bin/chksum64
+          git clone https://github.com/ARM9/bass.git /tmp/bass
+          git -C /tmp/bass/bass checkout v14
+          make -C /tmp/bass/bass -j2
+          sudo install -m 0755 /tmp/bass/bass/bass /usr/local/bin/bass
+
+          cmake -S /tmp/dgb-src -B /tmp/dgb-src/build -DCMAKE_BUILD_TYPE=Release -G Ninja
+          cmake --build /tmp/dgb-src/build -j2
+          cp /tmp/dgb-src/build/n64 /tmp/dgb-n64
+          chmod +x /tmp/dgb-n64
+          strings /tmp/dgb-n64 | grep -Fx "$DGB_SHA" | tee /tmp/dgb_embedded_sha.txt
+          /tmp/dgb-n64 --help 2>&1 | tee /tmp/dgb_help.txt
 
       - name: Write bounded PTY runner
         shell: bash
@@ -141,97 +172,64 @@ jobs:
           cat >/tmp/run_dgb_rate.py <<'PY'
           #!/usr/bin/env python3
           import os, pty, select, signal, subprocess, sys, time
-
           emulator, rom, logpath = sys.argv[1:4]
-          marker = sys.argv[4] if len(sys.argv) > 4 else "RATE_DONE"
+          marker = sys.argv[4] if len(sys.argv) > 4 else 'RATE_DONE'
           timeout = float(sys.argv[5]) if len(sys.argv) > 5 else 2700.0
           master, slave = pty.openpty()
           env = os.environ.copy()
-          env.update({
-              "SDL_AUDIODRIVER": "dummy",
-              "LIBGL_ALWAYS_SOFTWARE": "1",
-              "MESA_VK_DEVICE_SELECT": "llvmpipe",
-              "RUST_BACKTRACE": "1",
-          })
-          # dgb's JIT currently aborts on an unimplemented SDL translation while
-          # booting this libdragon ROM. Force its documented interpreter mode;
-          # the benchmark's authoritative counts are guest CP0/VI values printed
-          # by the ROM, so host-side unthrottling only shortens wall-clock runtime.
-          cmd = ["xvfb-run", "-a", emulator, "--interpreter", "--unlock-framerate", rom]
-          proc = subprocess.Popen(
-              cmd, stdout=slave, stderr=slave, stdin=subprocess.DEVNULL,
-              close_fds=True, start_new_session=True, env=env)
+          env.update({'SDL_AUDIODRIVER':'dummy','LIBGL_ALWAYS_SOFTWARE':'1','MESA_VK_DEVICE_SELECT':'llvmpipe','RUST_BACKTRACE':'1'})
+          cmd = ['xvfb-run','-a',emulator,'--interpreter','--unlock-framerate',rom]
+          proc = subprocess.Popen(cmd, stdout=slave, stderr=slave, stdin=subprocess.DEVNULL, close_fds=True, start_new_session=True, env=env)
           os.close(slave)
-          start = time.monotonic()
-          buf = b""
-          records = []
-          saw = False
+          start=time.monotonic(); buf=b''; records=[]; saw=False
           try:
               while True:
-                  now = time.monotonic()
-                  if now - start > timeout:
-                      records.append((now - start, "HOST TIMEOUT"))
-                      break
-                  ready, _, _ = select.select([master], [], [], 0.1)
+                  now=time.monotonic()
+                  if now-start>timeout:
+                      records.append((now-start,'HOST TIMEOUT')); break
+                  ready,_,_=select.select([master],[],[],0.1)
                   if ready:
-                      try:
-                          chunk = os.read(master, 65536)
-                      except OSError:
-                          break
-                      if not chunk:
-                          break
-                      buf += chunk
-                      while b"\n" in buf:
-                          raw, buf = buf.split(b"\n", 1)
-                          text = raw.decode("utf-8", "replace").rstrip("\r")
-                          records.append((time.monotonic() - start, text))
-                          if marker in text:
-                              saw = True
-                      if saw:
-                          break
-                  elif proc.poll() is not None:
-                      break
+                      try: chunk=os.read(master,65536)
+                      except OSError: break
+                      if not chunk: break
+                      buf+=chunk
+                      while b'\n' in buf:
+                          raw,buf=buf.split(b'\n',1)
+                          text=raw.decode('utf-8','replace').rstrip('\r')
+                          records.append((time.monotonic()-start,text))
+                          if marker in text: saw=True
+                      if saw: break
+                  elif proc.poll() is not None: break
           finally:
-              if buf:
-                  records.append((time.monotonic() - start, buf.decode("utf-8", "replace")))
-              for sig in (signal.SIGINT, signal.SIGKILL):
-                  if proc.poll() is not None:
-                      break
-                  try:
-                      os.killpg(os.getpgid(proc.pid), sig)
-                  except ProcessLookupError:
-                      break
+              if buf: records.append((time.monotonic()-start,buf.decode('utf-8','replace')))
+              for sig in (signal.SIGINT,signal.SIGKILL):
+                  if proc.poll() is not None: break
+                  try: os.killpg(os.getpgid(proc.pid),sig)
+                  except ProcessLookupError: break
                   for _ in range(30):
-                      if proc.poll() is not None:
-                          break
+                      if proc.poll() is not None: break
                       time.sleep(0.1)
-              try:
-                  os.close(master)
-              except OSError:
-                  pass
-          with open(logpath, "w", encoding="utf-8") as fh:
-              for dt, text in records:
-                  fh.write(f"{dt:10.3f}  {text}\n")
-          with open(logpath, encoding="utf-8") as fh:
-              sys.stdout.write(fh.read())
+              try: os.close(master)
+              except OSError: pass
+          with open(logpath,'w',encoding='utf-8') as fh:
+              for dt,text in records: fh.write(f'{dt:10.3f}  {text}\n')
+          with open(logpath,encoding='utf-8') as fh: sys.stdout.write(fh.read())
           raise SystemExit(0 if saw else 1)
           PY
           chmod +x /tmp/run_dgb_rate.py
-          printf '%s\n' 'dgb-n64 --interpreter --unlock-framerate' > /tmp/emulator-mode.txt
+          printf '%s\n' 'dgb-n64 base 64207... + DPC_START read patch; --interpreter --unlock-framerate' > /tmp/emulator-mode.txt
 
-      - name: Run scalar RATE_PROBE on dgb-n64
+      - name: Run scalar RATE_PROBE on patched dgb-n64
         shell: bash
         run: |
           set -o pipefail
-          python3 /tmp/run_dgb_rate.py /tmp/dgb/n64 /tmp/roms/scalar_rate_probe.z64 /tmp/scalar_dgb.log RATE_DONE 2700 \
-            | tee /tmp/scalar_console.txt
+          python3 /tmp/run_dgb_rate.py /tmp/dgb-n64 /tmp/roms/scalar_rate_probe.z64 /tmp/scalar_dgb.log RATE_DONE 2700 | tee /tmp/scalar_console.txt
 
-      - name: Run RSP-overlay RATE_PROBE on dgb-n64
+      - name: Run RSP-overlay RATE_PROBE on patched dgb-n64
         shell: bash
         run: |
           set -o pipefail
-          python3 /tmp/run_dgb_rate.py /tmp/dgb/n64 /tmp/roms/rsp_rate_probe.z64 /tmp/rsp_dgb.log RATE_DONE 2700 \
-            | tee /tmp/rsp_console.txt
+          python3 /tmp/run_dgb_rate.py /tmp/dgb-n64 /tmp/roms/rsp_rate_probe.z64 /tmp/rsp_dgb.log RATE_DONE 2700 | tee /tmp/rsp_console.txt
 
       - name: Assemble independent-emulator evidence
         if: always()
@@ -239,15 +237,11 @@ jobs:
         run: |
           set -euxo pipefail
           mkdir -p /tmp/evidence
-          for f in \
-            /tmp/glibc-version.txt /tmp/glibcxx-version.txt /tmp/rom_sha256_benchmark.txt \
-            /tmp/dgb_embedded_sha.txt /tmp/dgb_help.txt /tmp/emulator-mode.txt /tmp/run_dgb_rate.py \
-            /tmp/scalar_dgb.log /tmp/rsp_dgb.log /tmp/scalar_console.txt /tmp/rsp_console.txt; do
+          for f in /tmp/glibc-version.txt /tmp/glibcxx-version.txt /tmp/rom_sha256_benchmark.txt /tmp/dgb_embedded_sha.txt /tmp/dgb_help.txt /tmp/dgb-cp0-start.patch /tmp/dgb-patch-sha256.txt /tmp/emulator-mode.txt /tmp/run_dgb_rate.py /tmp/scalar_dgb.log /tmp/rsp_dgb.log /tmp/scalar_console.txt /tmp/rsp_console.txt; do
             [ -f "$f" ] && cp "$f" /tmp/evidence/
           done
           cp /tmp/roms/versions.txt /tmp/roms/libdragon.sha /tmp/roms/rom_sha256.txt /tmp/evidence/ 2>/dev/null || true
-          printf 'target_sha=%s\ndgb_sha=%s\ndgb_run_id=%s\ndgb_zip_sha256=%s\nemulator_mode=interpreter-unlocked\n' \
-            "$TARGET_SHA" "$DGB_SHA" "$DGB_RUN_ID" "$DGB_ZIP_SHA256" > /tmp/evidence/benchmark_versions.txt
+          printf 'target_sha=%s\ndgb_base_sha=%s\nemulator_mode=base-plus-dpc-start-read-patch;interpreter-unlocked\n' "$TARGET_SHA" "$DGB_SHA" > /tmp/evidence/benchmark_versions.txt
           for f in /tmp/scalar_dgb.log /tmp/rsp_dgb.log; do
             [ -f "$f" ] || continue
             echo "===== $f ====="
