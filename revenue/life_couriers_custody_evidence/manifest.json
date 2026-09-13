@@ -1,0 +1,18 @@
+{
+  "schema": "commons.revenue-package.v1",
+  "operation": "LIFE-COURIERS-CUSTODY-EVIDENCE-CORE-ZP913443-20260913",
+  "commercial_status": "SENT_NOT_ACCEPTED",
+  "provider_free": true,
+  "synthetic_only": true,
+  "network_access": false,
+  "production_credentials": false,
+  "decision_authority": false,
+  "paths": [
+    "revenue/life_couriers_custody_evidence/__init__.py",
+    "revenue/life_couriers_custody_evidence/rail.py",
+    "revenue/life_couriers_custody_evidence/acceptance.py",
+    "revenue/life_couriers_custody_evidence/test_rail.py",
+    "revenue/life_couriers_custody_evidence/README.md",
+    "revenue/life_couriers_custody_evidence/manifest.json"
+  ]
+}
