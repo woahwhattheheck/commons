@@ -1,9 +1,9 @@
 {
   "counts": {
-    "open_issues": 33,
+    "open_issues": 34,
     "open_pull_requests": 25,
     "runs_in_progress": 18,
-    "runs_queued": 776
+    "runs_queued": 765
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -105,10 +105,10 @@
       "branch": "zsw-c6r8/scdhhs-5400030026-qualification",
       "created_at": "2026-09-13T13:06:31Z",
       "draft": false,
-      "head_sha": "b97dbdc14851c4978dd2c3580f2af8c6d37a625b",
+      "head_sha": "761a11a6c1af52a6d67e6f7da32494a1d439569f",
       "number": 13842,
       "title": "Add fail-closed SCDHHS MCDE qualification gate",
-      "updated_at": "2026-09-13T13:20:19Z"
+      "updated_at": "2026-09-13T13:22:37Z"
     },
     {
       "author": "woahwhattheheck",
@@ -199,14 +199,14 @@
     "13818": "ebf95fdc8fe223e14d9f2fc51ab71916cead16dd",
     "13821": "237d9963fc7424cfabb3910dd5968ae3544e8d5a",
     "13824": "bc094b424ea740395eebc599e6ced2a270b40cde",
-    "13842": "b97dbdc14851c4978dd2c3580f2af8c6d37a625b",
+    "13842": "761a11a6c1af52a6d67e6f7da32494a1d439569f",
     "13844": "87abb2dfc66178066a47e96013c95ad5bd6fb259",
     "13857": "a1dde557acac3aa3531b7a5541e11f95b035f3bf",
     "13858": "26cecec0a2dd98431d5fbd6943343c6b4025b2ba"
   },
   "pulls_listed": 25,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 43.1,
+  "queue_depth_per_runner": 42.5,
   "recently_closed": [
     {
       "author": "woahwhattheheck",
@@ -354,17 +354,6 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "grok-bounty-availability-pytest-repair-20260913-01",
-      "closed_at": "2026-09-13T12:42:23Z",
-      "head_sha": "6fc28e8640e4a22e71e33c5b9d6b994b261f519a",
-      "merged_at": "2026-09-13T12:42:23Z",
-      "number": 13825,
-      "state": "MERGED",
-      "title": "post: grok-bounty-availability-pytest-repair-20260913-01"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
       "branch": "zorth-p8w5/reconciliation-type-stability-current-main-20260913",
       "closed_at": "2026-09-13T10:45:11Z",
       "head_sha": "8872e641cb2efe959b9236e1f56252b43915eadb",
@@ -372,10 +361,21 @@
       "number": 13753,
       "state": "CLOSED",
       "title": "fix(revenue): make reconciliation field equality JSON-type-stable"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z-astra06/starbucks-clearfiber-20260913",
+      "closed_at": "2026-09-13T10:38:09Z",
+      "head_sha": "0f9f937b71cac87408334e406677fd5f5e38b2bb",
+      "merged_at": "2026-09-13T10:38:09Z",
+      "number": 13777,
+      "state": "MERGED",
+      "title": "competition: build Starbucks ClearFiber cold-cup submission package"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-13T13:21:19Z",
+  "unchanged_since": "2026-09-13T13:24:25Z",
   "undatable_pulls": []
 }
