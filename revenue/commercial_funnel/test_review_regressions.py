@@ -56,6 +56,86 @@ class ReviewRegressionTests(unittest.TestCase):
         with self.assertRaises(FunnelError):
             compile_funnel(value, as_of=AS_OF)
 
+    def test_one_source_cannot_mint_two_distinct_events_in_one_opportunity(self):
+        value = _payload()
+        traffic = value["opportunities"][0]["events"][0]
+        value["opportunities"][0]["events"].append({
+            "id": "evt-reply",
+            "stage": "REPLY",
+            "observed_at": "2026-09-12T11:00:00Z",
+            "evidence": copy.deepcopy(traffic["evidence"]),
+        })
+        out = compile_funnel(value, as_of=AS_OF)
+        row = out["packet"]["opportunities"][0]
+        self.assertEqual(row["state"], "HOLD")
+        self.assertIn("EVIDENCE_REUSED_WITHIN_OPPORTUNITY", row["hold_reasons"])
+        self.assertEqual(out["packet"]["metrics"]["eligible_opportunity_count"], 0)
+
+    def test_event_cannot_rebind_its_offer_definition_as_event_evidence(self):
+        value = _payload()
+        opp = value["opportunities"][0]
+        opp["events"][0]["evidence"] = copy.deepcopy(opp["offer"]["source"])
+        out = compile_funnel(value, as_of=AS_OF)
+        row = out["packet"]["opportunities"][0]
+        self.assertEqual(row["state"], "HOLD")
+        self.assertIn("EVIDENCE_ROLE_CONFLICT", row["hold_reasons"])
+
+    def test_offer_source_reused_as_other_opportunity_event_holds_both(self):
+        value = _payload()
+        first = value["opportunities"][0]
+        second = copy.deepcopy(first)
+        second["id"] = "opp-second"
+        second["offer"] = {
+            "id": "offer-second",
+            "version": "v1",
+            "source": _source("offer-second", "c" * 64),
+        }
+        second["events"] = [{
+            "id": "evt-second-traffic",
+            "stage": "TRAFFIC",
+            "observed_at": "2026-09-12T12:00:00Z",
+            "evidence": copy.deepcopy(first["offer"]["source"]),
+        }]
+        value["opportunities"].append(second)
+        out = compile_funnel(value, as_of=AS_OF)
+        self.assertEqual(out["packet"]["metrics"]["held_opportunity_count"], 2)
+        for row in out["packet"]["opportunities"]:
+            self.assertIn("EVIDENCE_ROLE_CONFLICT", row["hold_reasons"])
+
+    def test_same_logical_offer_version_cannot_change_immutable_source(self):
+        value = _payload()
+        first = value["opportunities"][0]
+        second = copy.deepcopy(first)
+        second["id"] = "opp-second"
+        second["offer"]["source"] = _source("different-offer-definition", "d" * 64)
+        second["events"] = [{
+            "id": "evt-second-traffic",
+            "stage": "TRAFFIC",
+            "observed_at": "2026-09-12T12:00:00Z",
+            "evidence": _source("second-traffic", "e" * 64),
+        }]
+        value["opportunities"].append(second)
+        out = compile_funnel(value, as_of=AS_OF)
+        self.assertEqual(out["packet"]["metrics"]["held_opportunity_count"], 2)
+        for row in out["packet"]["opportunities"]:
+            self.assertIn("OFFER_SOURCE_IDENTITY_CONFLICT", row["hold_reasons"])
+
+    def test_same_logical_offer_version_may_reuse_same_definition(self):
+        value = _payload()
+        first = value["opportunities"][0]
+        second = copy.deepcopy(first)
+        second["id"] = "opp-second"
+        second["events"] = [{
+            "id": "evt-second-traffic",
+            "stage": "TRAFFIC",
+            "observed_at": "2026-09-12T12:00:00Z",
+            "evidence": _source("second-traffic", "e" * 64),
+        }]
+        value["opportunities"].append(second)
+        out = compile_funnel(value, as_of=AS_OF)
+        self.assertEqual(out["packet"]["state"], "FUNNEL_PACKET_READY_FOR_HUMAN_REVIEW")
+        self.assertEqual(out["packet"]["metrics"]["eligible_opportunity_count"], 2)
+
 
 if __name__ == "__main__":
     unittest.main()
