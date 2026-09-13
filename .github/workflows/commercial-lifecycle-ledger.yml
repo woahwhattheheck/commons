@@ -19,6 +19,7 @@ jobs:
   ledger-tests:
     name: python-${{ matrix.python-version }}
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     strategy:
       fail-fast: false
       matrix:
@@ -35,14 +36,17 @@ jobs:
           python -m py_compile \
             revenue/commercial_lifecycle_ledger/lifecycle.py \
             revenue/commercial_lifecycle_ledger/test_lifecycle.py \
-            revenue/commercial_lifecycle_ledger/test_lifecycle_financial_edges.py
-      - name: Run ledger regressions
+            revenue/commercial_lifecycle_ledger/test_lifecycle_financial_edges.py \
+            revenue/commercial_lifecycle_ledger/test_ingestion_hardening.py
+      - name: Run lifecycle and ingestion regressions
         run: |
           python -m unittest -v \
             revenue.commercial_lifecycle_ledger.test_lifecycle \
-            revenue.commercial_lifecycle_ledger.test_lifecycle_financial_edges
-      - name: Run optimized ledger regressions
+            revenue.commercial_lifecycle_ledger.test_lifecycle_financial_edges \
+            revenue.commercial_lifecycle_ledger.test_ingestion_hardening
+      - name: Run optimized lifecycle and ingestion regressions
         run: |
           python -O -m unittest -v \
             revenue.commercial_lifecycle_ledger.test_lifecycle \
-            revenue.commercial_lifecycle_ledger.test_lifecycle_financial_edges
+            revenue.commercial_lifecycle_ledger.test_lifecycle_financial_edges \
+            revenue.commercial_lifecycle_ledger.test_ingestion_hardening
