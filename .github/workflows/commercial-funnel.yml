@@ -28,8 +28,8 @@ jobs:
           python -m py_compile revenue/commercial_funnel/*.py
       - name: Focused hostile and acceptance suites
         run: |
-          python -m unittest -v revenue.commercial_funnel.test_ledger revenue.commercial_funnel.test_cli
-          python -O -m unittest -v revenue.commercial_funnel.test_ledger revenue.commercial_funnel.test_cli
+          python -m unittest -v revenue.commercial_funnel.test_ledger revenue.commercial_funnel.test_cli revenue.commercial_funnel.test_review_regressions
+          python -O -m unittest -v revenue.commercial_funnel.test_ledger revenue.commercial_funnel.test_cli revenue.commercial_funnel.test_review_regressions
       - name: Example compile and independent artifact verification
         run: |
           out="$RUNNER_TEMP/commercial-funnel-example"
