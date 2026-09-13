@@ -1,9 +1,9 @@
 {
   "counts": {
-    "open_issues": 13,
-    "open_pull_requests": 21,
-    "runs_in_progress": 17,
-    "runs_queued": 515
+    "open_issues": 14,
+    "open_pull_requests": 23,
+    "runs_in_progress": 18,
+    "runs_queued": 584
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -69,6 +69,50 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
+      "branch": "ariadne-z/open-door-business-status-final2-20260913",
+      "created_at": "2026-09-13T10:08:23Z",
+      "draft": false,
+      "head_sha": "9abf49ef382869f1a7dcfdbfd63cc30e4d2e1d2e",
+      "number": 13728,
+      "title": "open-door: positively bind revenue business-status denials",
+      "updated_at": "2026-09-13T10:08:23Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "ariadne-z/open-door-business-status-final-20260913",
+      "created_at": "2026-09-13T10:07:57Z",
+      "draft": false,
+      "head_sha": "2df03b175264d3de8b430612c00926d68f7327ca",
+      "number": 13727,
+      "title": "open-door: positively bind revenue status exception",
+      "updated_at": "2026-09-13T10:07:57Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zvf-r7k3/expertise-catalog-20260913",
+      "created_at": "2026-09-13T10:05:47Z",
+      "draft": false,
+      "head_sha": "72aa8f8bac0a08f896d52ef1f2cb7f1727ec7c0e",
+      "number": 13723,
+      "title": "revenue: expose expertise as explicit catalog entries",
+      "updated_at": "2026-09-13T10:05:47Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zdar-j2r9/expertise-catalog-20260913",
+      "created_at": "2026-09-13T10:04:48Z",
+      "draft": false,
+      "head_sha": "508d87ac714acfbe04b4638d1d396610ccca10d6",
+      "number": 13719,
+      "title": "revenue: add evidence-bound expertise catalog compiler",
+      "updated_at": "2026-09-13T10:08:19Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
       "branch": "ariadne-z/rejoin-business-pack-malformed-ledger-fix2-20260913",
       "created_at": "2026-09-13T10:03:52Z",
       "draft": false,
@@ -80,24 +124,13 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "zorb-h4/commercial-offer-contract-20260913",
-      "created_at": "2026-09-13T10:03:50Z",
-      "draft": false,
-      "head_sha": "6b59c3cfad77f7c60e80a5757d61aaf194ad92c9",
-      "number": 13717,
-      "title": "revenue: add commercial offer contract rail",
-      "updated_at": "2026-09-13T10:03:50Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
       "branch": "zcard-x5p2/product-catalog-bridge-20260913",
       "created_at": "2026-09-13T10:03:21Z",
       "draft": false,
-      "head_sha": "96797c16f90823bccc49162b36d65bd8e9081aba",
+      "head_sha": "0abd5477fb09242a6b18f0c0b4c03e8eb2bf916c",
       "number": 13715,
       "title": "revenue: add product artifact catalog bridge",
-      "updated_at": "2026-09-13T10:03:21Z"
+      "updated_at": "2026-09-13T10:08:01Z"
     },
     {
       "author": "woahwhattheheck",
@@ -109,17 +142,6 @@
       "number": 13712,
       "title": "revenue: add San Diego RFP 13365 partner-readiness gate",
       "updated_at": "2026-09-13T10:03:07Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "ariadne-z/open-door-business-status-fix2-20260913",
-      "created_at": "2026-09-13T09:58:58Z",
-      "draft": false,
-      "head_sha": "a7213122c41774d18111e075490bf8f201e4bd54",
-      "number": 13708,
-      "title": "open-door: keep procurement denial exception cell-local",
-      "updated_at": "2026-09-13T10:04:13Z"
     },
     {
       "author": "woahwhattheheck",
@@ -153,28 +175,6 @@
       "number": 13701,
       "title": "revenue: add CAS actuarial LLM benchmark reproducibility core",
       "updated_at": "2026-09-13T09:54:04Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "zvoronoi913507/reconciliation-proof-clean-20260913",
-      "branch": "z-eames/reconciliation-type-stability-20260913",
-      "created_at": "2026-09-13T09:45:33Z",
-      "draft": false,
-      "head_sha": "6822ef228d35ba6ddc89e1347d24fbf84b6aff89",
-      "number": 13699,
-      "title": "fix(revenue): preserve JSON types in reconciliation proof",
-      "updated_at": "2026-09-13T09:45:33Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zram/wuhu-lerobot-qc-20260913",
-      "created_at": "2026-09-13T09:42:49Z",
-      "draft": false,
-      "head_sha": "80c722fbe7ab7dd711ce01987bea50c900ad673e",
-      "number": 13695,
-      "title": "competition: add Wuhu LeRobot trajectory QC engine",
-      "updated_at": "2026-09-13T09:42:49Z"
     }
   ],
   "open_heads": {
@@ -194,16 +194,84 @@
     "13701": "437f3e033ae351d825dc7761432a11a78e528b03",
     "13702": "2b6598f90c107dfacc4ec2a975e070f5073f8952",
     "13704": "43a89c97cee946e3d6cfa7e665c92b31586b08cc",
-    "13708": "a7213122c41774d18111e075490bf8f201e4bd54",
     "13712": "e5d13ab500ff195dd85df2728f85794dab2fe048",
-    "13715": "96797c16f90823bccc49162b36d65bd8e9081aba",
-    "13717": "6b59c3cfad77f7c60e80a5757d61aaf194ad92c9",
-    "13718": "2fa63fde5a022b51d40cea01823c5558ab3379e1"
+    "13715": "0abd5477fb09242a6b18f0c0b4c03e8eb2bf916c",
+    "13718": "2fa63fde5a022b51d40cea01823c5558ab3379e1",
+    "13719": "508d87ac714acfbe04b4638d1d396610ccca10d6",
+    "13723": "72aa8f8bac0a08f896d52ef1f2cb7f1727ec7c0e",
+    "13727": "2df03b175264d3de8b430612c00926d68f7327ca",
+    "13728": "9abf49ef382869f1a7dcfdbfd63cc30e4d2e1d2e"
   },
-  "pulls_listed": 21,
+  "pulls_listed": 23,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 30.3,
+  "queue_depth_per_runner": 32.4,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "ariadne-z/open-door-business-status-fix2-20260913",
+      "closed_at": "2026-09-13T10:08:04Z",
+      "head_sha": "d76ac8a3ef31113542a5b8281be71a25a1242dfd",
+      "merged_at": null,
+      "number": 13708,
+      "state": "CLOSED",
+      "title": "superseded by clean current-main #13727"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zpal-v2h8/naspo-package-import-fix-20260913",
+      "closed_at": "2026-09-13T10:07:20Z",
+      "head_sha": "8f66234828bda825fefadf4c26c205946a05425d",
+      "merged_at": "2026-09-13T10:07:20Z",
+      "number": 13725,
+      "state": "MERGED",
+      "title": "fix: make NASPO acceptance package import-safe"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "astra/v5-c02-deferred-replacement-20260913",
+      "closed_at": "2026-09-13T10:06:48Z",
+      "head_sha": "8f93b293ad18a01eb1f42b43e17385bb2a2a2cc2",
+      "merged_at": "2026-09-13T10:06:48Z",
+      "number": 13722,
+      "state": "MERGED",
+      "title": "kaggriculture: admit WF1+C02 as held V5 local leader"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zpyr-c9m7/lawrence-youth-ai-training-core-20260913",
+      "closed_at": "2026-09-13T10:06:05Z",
+      "head_sha": "9d3a7bee87dbc7c796e0667d89bdc0f3a08520c6",
+      "merged_at": "2026-09-13T10:06:05Z",
+      "number": 13720,
+      "state": "MERGED",
+      "title": "Add Lawrence Youth AI technical training evidence core"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zkg-r9/revenue-opportunity-portfolio-20260913",
+      "closed_at": "2026-09-13T10:05:59Z",
+      "head_sha": "69194aa758cdc29063a67ef43ee0429a44af0448",
+      "merged_at": "2026-09-13T10:05:59Z",
+      "number": 13721,
+      "state": "MERGED",
+      "title": "revenue: add evidence-bound opportunity portfolio allocator"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zorb-h4/commercial-offer-contract-20260913",
+      "closed_at": "2026-09-13T10:05:19Z",
+      "head_sha": "bc7836e2ab47a633be26b7c8e3f2c2574077a1c3",
+      "merged_at": "2026-09-13T10:05:19Z",
+      "number": 13717,
+      "state": "MERGED",
+      "title": "revenue: add commercial offer contract rail"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -302,76 +370,10 @@
       "number": 13703,
       "state": "MERGED",
       "title": "revenue: add rights-bound data license sample-pack desk"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "ariadne-z/commercial-decision-relay-afh-clean-20260913",
-      "closed_at": "2026-09-13T09:47:37Z",
-      "head_sha": "7eb6400e237c7d62dd1400eb05e1def5ee20f3f4",
-      "merged_at": "2026-09-13T09:47:37Z",
-      "number": 13700,
-      "state": "MERGED",
-      "title": "revenue: add Strands commercial decision relay for Agents for Humans"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zzircon/right-now-multicurrency-paid-award-20260913",
-      "closed_at": "2026-09-13T09:46:13Z",
-      "head_sha": "d4392b6f9d4de37818507c5584010e5496832a91",
-      "merged_at": "2026-09-13T09:46:13Z",
-      "number": 13697,
-      "state": "MERGED",
-      "title": "revenue: record paid awards without converting USD cash"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "znoct-a7r9/englewood-lims-integration-qa-20260913",
-      "closed_at": "2026-09-13T09:45:38Z",
-      "head_sha": "d604a62220d773b0ca1070f9ec8f829a4c74e867",
-      "merged_at": "2026-09-13T09:45:38Z",
-      "number": 13696,
-      "state": "MERGED",
-      "title": "revenue: add Englewood LIMS integration QA evidence core"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zvoronoi913507/reconciliation-proof-20260913",
-      "closed_at": "2026-09-13T09:44:10Z",
-      "head_sha": "f2af248f0d52b5475072ff566219f50b49edfa79",
-      "merged_at": null,
-      "number": 13680,
-      "state": "CLOSED",
-      "title": "revenue: add deterministic reconciliation proof engine"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zvoronoi913507/reconciliation-proof-clean-20260913",
-      "closed_at": "2026-09-13T09:43:53Z",
-      "head_sha": "e47283122bdbfefcb3468e4c8c3cb964f7c55c00",
-      "merged_at": "2026-09-13T09:43:53Z",
-      "number": 13693,
-      "state": "MERGED",
-      "title": "revenue: add deterministic reconciliation proof engine"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-quine-913459/tobi-rfp-readiness-20260913",
-      "closed_at": "2026-09-13T09:43:19Z",
-      "head_sha": "cf0ded6838ade7640a0672ea15bf6029dd39bc89",
-      "merged_at": "2026-09-13T09:43:19Z",
-      "number": 13694,
-      "state": "MERGED",
-      "title": "revenue: add Indiana FSSA Tobi RFP readiness rail"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-13T10:04:42Z",
+  "unchanged_since": "2026-09-13T10:08:26Z",
   "undatable_pulls": []
 }
