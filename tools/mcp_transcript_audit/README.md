@@ -29,6 +29,7 @@ A PASS receipt proves, for the supplied capture bytes:
 - client `notifications/initialized` after the successful initialize response and before ordinary operations;
 - schema-valid server `notifications/message` logging exceptions before initialization (required level + data);
 - bounded JSON nesting and capture/event/line limits that fail closed on hostile input;
+- CLI file ingestion is bounded before allocation (8 MiB capture, 32 MiB receipt), requires regular files, and uses no-follow opens where the platform supports them;
 - deterministic source, line, payload, and receipt hashes.
 
 The durable receipt intentionally omits request parameters, response results, error data, and raw request IDs. It retains method names, counts, line numbers, typed-ID hashes, and content hashes needed to audit correlation without copying business payloads.
@@ -49,7 +50,7 @@ python -m tools.mcp_transcript_audit.cli verify \
   /tmp/mcp-audit.json
 ```
 
-Audit exits `0` for PASS and `3` for HOLD. Verification exits `0` only for an exact recomputation match. Output files are create-exclusive and non-overwriting; existing destinations are not replaced.
+Audit exits `0` for PASS and `3` for HOLD. Verification exits `0` only for an exact recomputation match. Oversized/non-regular input paths are rejected as input errors before the file is read into memory. Input symlinks are not followed on platforms with `O_NOFOLLOW`. Output files are create-exclusive and non-overwriting; existing destinations are not replaced.
 
 ## Library
 
