@@ -74,7 +74,7 @@ class GateTests(unittest.TestCase):
         self.assertEqual(3, receipt["unique_event_count"])
         self.assertEqual(2, receipt["report_row_count"])
         self.assertEqual("EVIDENCE_ONLY_NO_OPERATIONAL_RELEASE", receipt["authority"])
-        self.assertTrue(verify(result, policy=p, snapshot=s))
+        self.assertTrue(verify(result, policy=p, snapshot=s, evaluated_at=EVAL))
 
     def test_input_order_does_not_change_report_or_receipt(self):
         p = policy()
@@ -140,6 +140,14 @@ class GateTests(unittest.TestCase):
         self.assertEqual("HOLD", result["receipt"]["decision"])
         self.assertIn("SNAPSHOT_STALE", result["receipt"]["holds"])
 
+    def test_fractional_age_past_boundary_holds(self):
+        p = policy()
+        p["max_snapshot_age_seconds"] = 60
+        s = snapshot(happy_events(), captured="2026-09-13T08:58:59.500000Z")
+        result = evaluate(p, s, evaluated_at=EVAL)
+        self.assertEqual("HOLD", result["receipt"]["decision"])
+        self.assertIn("SNAPSHOT_STALE", result["receipt"]["holds"])
+
     def test_missing_approved_source_holds(self):
         events = [e for e in happy_events() if e["source_id"] == "edi"]
         result = evaluate(policy(), snapshot(events), evaluated_at=EVAL)
@@ -199,7 +207,7 @@ class GateTests(unittest.TestCase):
         s = snapshot(happy_events())
         result = evaluate(p, s, evaluated_at=EVAL)
         result["report"]["rows"][0]["values"]["status"] = "TAMPERED"
-        self.assertFalse(verify(result, policy=p, snapshot=s))
+        self.assertFalse(verify(result, policy=p, snapshot=s, evaluated_at=EVAL))
 
     def test_self_consistent_rehashed_forgery_is_rejected(self):
         p = policy()
@@ -215,14 +223,27 @@ class GateTests(unittest.TestCase):
         core = dict(result["receipt"])
         core.pop("receipt_sha256")
         result["receipt"]["receipt_sha256"] = digest(core)
-        self.assertFalse(verify(result, policy=p, snapshot=s))
+        self.assertFalse(verify(result, policy=p, snapshot=s, evaluated_at=EVAL))
+
+    def test_historical_pass_cannot_choose_verifiers_trusted_time(self):
+        p = policy()
+        p["max_snapshot_age_seconds"] = 60
+        s = snapshot(happy_events())
+        historical = evaluate(p, s, evaluated_at=EVAL)
+        self.assertEqual("PASS", historical["receipt"]["decision"])
+        later = "2026-09-13T09:01:00Z"
+        current = evaluate(p, s, evaluated_at=later)
+        self.assertEqual("HOLD", current["receipt"]["decision"])
+        self.assertIn("SNAPSHOT_STALE", current["receipt"]["holds"])
+        self.assertTrue(verify(historical, policy=p, snapshot=s, evaluated_at=EVAL))
+        self.assertFalse(verify(historical, policy=p, snapshot=s, evaluated_at=later))
 
     def test_tampered_receipt_breaks_verification(self):
         p = policy()
         s = snapshot(happy_events())
         result = evaluate(p, s, evaluated_at=EVAL)
         result["receipt"]["decision"] = "HOLD"
-        self.assertFalse(verify(result, policy=p, snapshot=s))
+        self.assertFalse(verify(result, policy=p, snapshot=s, evaluated_at=EVAL))
 
     def test_wrong_policy_or_snapshot_breaks_verification(self):
         p = policy()
@@ -230,17 +251,17 @@ class GateTests(unittest.TestCase):
         result = evaluate(p, s, evaluated_at=EVAL)
         p2 = policy()
         p2["max_snapshot_age_seconds"] = 601
-        self.assertFalse(verify(result, policy=p2, snapshot=s))
+        self.assertFalse(verify(result, policy=p2, snapshot=s, evaluated_at=EVAL))
         s2 = copy.deepcopy(s)
         s2["events"][0]["values"]["status"] = "OTHER"
-        self.assertFalse(verify(result, policy=p, snapshot=s2))
+        self.assertFalse(verify(result, policy=p, snapshot=s2, evaluated_at=EVAL))
 
     def test_verifier_rejects_extra_receipt_fields(self):
         p = policy()
         s = snapshot(happy_events())
         result = evaluate(p, s, evaluated_at=EVAL)
         result["receipt"]["release_authorized"] = True
-        self.assertFalse(verify(result, policy=p, snapshot=s))
+        self.assertFalse(verify(result, policy=p, snapshot=s, evaluated_at=EVAL))
 
     def test_bool_not_accepted_as_integer_policy_age(self):
         p = policy()
