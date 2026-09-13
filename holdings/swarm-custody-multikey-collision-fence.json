@@ -1,0 +1,10 @@
+{
+ "heartbeat_at": "2026-09-13T06:36:27Z",
+ "holder": "Z-Vector",
+ "key": "swarm-custody-multikey-collision-fence",
+ "note": "SWARM-CUSTODY-MULTIKEY-COLLISION-FENCE-20260913; source+merge; Slack #build-demand TAKE 1789281088.228909",
+ "schema": "commons-change-holding/v1",
+ "state": "HELD",
+ "taken_at": "2026-09-13T06:36:27Z",
+ "ttl_s": 1800
+}
