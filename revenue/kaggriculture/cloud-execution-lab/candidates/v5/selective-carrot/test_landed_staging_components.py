@@ -1,0 +1,24 @@
+from pathlib import Path
+import unittest
+
+import staging_composer as sc
+
+
+class LandedStagingComponentTests(unittest.TestCase):
+    def test_future_own_supply_component_is_self_authenticating_and_isolated(self):
+        root = Path(__file__).with_name("components") / "future-own-supply-v1"
+        component = sc.load_component(root / "COMPONENT.json")
+
+        self.assertEqual(component["component_id"], "future-own-supply-v1")
+        self.assertEqual(component["depends_on"], [])
+        self.assertEqual(component["conflicts_with"], [])
+        self.assertEqual(component["overlap_after"], {})
+        self.assertEqual(
+            set(component["replacements"]),
+            {"frozen_selected.py", "selected_sell_core.py"},
+        )
+        self.assertEqual(set(component["additions"]), {"future_own_supply.py"})
+
+
+if __name__ == "__main__":
+    unittest.main()

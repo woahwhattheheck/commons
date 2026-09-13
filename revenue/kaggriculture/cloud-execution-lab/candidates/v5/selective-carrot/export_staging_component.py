@@ -38,7 +38,17 @@ def digest(raw: bytes) -> str:
 
 def read_regular(path: Path) -> bytes:
     path = Path(path)
-    flags = os.O_RDONLY | getattr(os, "O_CLOEXEC", 0) | getattr(os, "O_NOFOLLOW", 0)
+    # Windows ``os.open`` otherwise uses text mode. A gzip stream may contain
+    # byte 0x1a, which the CRT treats as EOF; the exact production-v3 archive
+    # currently hits that byte at offset 32 and was therefore misread as a
+    # 32-byte input. Binary mode is a no-op on POSIX and preserves every byte
+    # on Windows.
+    flags = (
+        os.O_RDONLY
+        | getattr(os, "O_BINARY", 0)
+        | getattr(os, "O_CLOEXEC", 0)
+        | getattr(os, "O_NOFOLLOW", 0)
+    )
     try:
         fd = os.open(path, flags)
     except OSError as exc:

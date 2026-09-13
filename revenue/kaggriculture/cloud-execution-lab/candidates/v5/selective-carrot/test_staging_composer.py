@@ -54,6 +54,12 @@ class ComposerTests(unittest.TestCase):
     def load(self, *paths):
         return [sc.load_component(path) for path in paths]
 
+    def test_read_regular_preserves_ctrl_z_and_following_binary_bytes(self):
+        raw = b"gzip-prefix\x1aarchive-after-dos-eof\x00\xff"
+        path = self.root / "candidate.tar.gz"
+        path.write_bytes(raw)
+        self.assertEqual(sc.read_regular(path), raw)
+
     def test_one_component_preserves_untouched_members(self):
         path = self.manifest("p01", {"main.py": (self.base["main.py"], b"main-1\n")})
         files, applied = sc.compose_files(self.base, self.load(path))
@@ -149,7 +155,12 @@ class ComposerTests(unittest.TestCase):
         target.unlink()
         real = path.parent / "real"
         real.write_bytes(b"main-a\n")
-        target.symlink_to(real.name)
+        try:
+            target.symlink_to(real.name)
+        except OSError as exc:
+            if getattr(exc, "winerror", None) == 1314:
+                self.skipTest("Windows process lacks symlink privilege")
+            raise
         with self.assertRaisesRegex(sc.ComposerError, "crosses symlink"):
             sc.load_component(path)
 
@@ -192,7 +203,8 @@ class ComposerTests(unittest.TestCase):
     def test_publish_pair_write_failure_rolls_back_both_owned_outputs(self):
         out = self.root / "candidate.tar.gz"
         receipt = self.root / "receipt.json"
-        original = sc._write_all
+        import publication_custody as pc
+        original = pc._write_all
         calls = 0
 
         def fail_second(fd, raw):
@@ -202,7 +214,7 @@ class ComposerTests(unittest.TestCase):
                 raise OSError("injected receipt write failure")
             return original(fd, raw)
 
-        with patch.object(sc, "_write_all", side_effect=fail_second):
+        with patch.object(pc, "_write_all", side_effect=fail_second):
             with self.assertRaisesRegex(OSError, "injected receipt write failure"):
                 sc.publish_pair(out, receipt, b"archive", b"receipt")
         self.assertFalse(out.exists())
