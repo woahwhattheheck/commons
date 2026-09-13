@@ -66,6 +66,27 @@ class BuyerScopeCustodyEscapeTests(unittest.TestCase):
                 ),
             )
 
+    def test_internal_custody_path_rejects_json_scalar_type_aliases(self):
+        intent = self.intent()
+        evidence = self.evidence()
+        scope = self.scope()
+        forged_scope = self.scope()
+        forged_scope["members"][0]["mailbox_complete"] = 1
+        with self.assertRaisesRegex(
+            buyer_scope.ScopeError,
+            "raw-byte custody does not match evaluated source objects",
+        ):
+            buyer_scope._evaluate(
+                intent,
+                evidence,
+                scope,
+                raw_bytes=(
+                    self.encoded(intent),
+                    self.encoded(evidence),
+                    self.encoded(forged_scope),
+                ),
+            )
+
     def test_internal_custody_path_rejects_digest_like_strings(self):
         with self.assertRaisesRegex(
             buyer_scope.ScopeError,
