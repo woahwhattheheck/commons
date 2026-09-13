@@ -11,6 +11,7 @@ import argparse
 import hashlib
 import json
 import sys
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
@@ -19,18 +20,19 @@ ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-from host import smart_outreach  # noqa: E402
+from host import settled_awards, smart_outreach  # noqa: E402
 
 
 CATALOG_PATH = ROOT / "revenue" / "right_now" / "catalog.json"
 DIAGNOSTIC_PATH = ROOT / "revenue" / "right_now" / "diagnostic_offer.json"
 AUTOPSY_PATH = ROOT / "revenue" / "right_now" / "autopsy_offer.json"
+SETTLED_AWARDS_PATH = ROOT / "revenue" / "right_now" / "settled_awards.json"
 OUTREACH_PATH = ROOT / "revenue" / "smart_outreach" / "candidates.json"
 PAYMENT_PATH = ROOT / "revenue" / "payment_ready" / "current_receipt.json"
 HUMAN_PATH = ROOT / "revenue" / "human_outcomes" / "offers.json"
 SURVIVAL_PATH = ROOT / "revenue" / "production_survival" / "offer.json"
 RECEIPTS_PATH = ROOT / "revenue" / "payment_ready" / "outreach_receipts"
-SCHEMA_VERSION = "commons-right-now-control/v1"
+SCHEMA_VERSION = "commons-right-now-control/v2"
 DECISION_PRIORITY = {
     "READY_TO_DRAFT": 0,
     "RESEARCH_REQUIRED": 1,
@@ -77,6 +79,23 @@ def _positive_integer(value: Any, where: str) -> int:
     if type(value) is not int or value <= 0:
         raise ControlError(f"{where} must be a positive integer")
     return value
+
+
+def _latest_as_of(*values: Any) -> str:
+    parsed: list[datetime] = []
+    for index, value in enumerate(values):
+        if not isinstance(value, str):
+            raise ControlError(f"as_of[{index}] must be canonical UTC seconds")
+        try:
+            moment = datetime.strptime(value, "%Y-%m-%dT%H:%M:%SZ").replace(
+                tzinfo=timezone.utc
+            )
+        except ValueError as error:
+            raise ControlError(f"as_of[{index}] must be canonical UTC seconds") from error
+        if moment.strftime("%Y-%m-%dT%H:%M:%SZ") != value:
+            raise ControlError(f"as_of[{index}] must be canonical UTC seconds")
+        parsed.append(moment)
+    return max(parsed).strftime("%Y-%m-%dT%H:%M:%SZ")
 
 
 def validate_live_cash(value: Any) -> dict[str, Any]:
@@ -230,6 +249,9 @@ def payment_truth(value: dict[str, Any]) -> dict[str, Any]:
 def build_control() -> dict[str, Any]:
     catalog = validate_catalog(read_object(CATALOG_PATH))
     payment = payment_truth(read_object(PAYMENT_PATH))
+    awards = settled_awards.summarize_ledger(
+        settled_awards.read_ledger(SETTLED_AWARDS_PATH)
+    )
     outreach = smart_outreach.build_plan(
         smart_outreach.read_object(OUTREACH_PATH), RECEIPTS_PATH
     )
@@ -307,6 +329,7 @@ def build_control() -> dict[str, Any]:
         CATALOG_PATH,
         DIAGNOSTIC_PATH,
         AUTOPSY_PATH,
+        SETTLED_AWARDS_PATH,
         OUTREACH_PATH,
         PAYMENT_PATH,
         HUMAN_PATH,
@@ -319,7 +342,7 @@ def build_control() -> dict[str, Any]:
     return {
         "schema_version": SCHEMA_VERSION,
         "kind": "RIGHT_NOW_REVENUE_CONTROL",
-        "as_of": catalog["as_of"],
+        "as_of": _latest_as_of(catalog["as_of"], awards["as_of"]),
         "truth": {
             "collected_cash_usd": catalog_cash,
             "verified_positive_replies": catalog["truth"]["verified_positive_replies"],
@@ -328,8 +351,14 @@ def build_control() -> dict[str, Any]:
             "prospects_evaluated": outreach["truth"]["prospects_evaluated"],
             "ready_to_draft": counts["READY_TO_DRAFT"],
             "transport_actions": outreach["truth"]["transport_actions"],
+            "paid_awards": awards["paid_awards"],
+            "settled_amounts_by_currency": awards["totals_by_currency"],
+            "usd_conversion_asserted": awards["usd_conversion_asserted"],
+            "award_bank_availability_asserted": awards["bank_availability_asserted"],
+            "award_withdrawability_asserted": awards["withdrawability_asserted"],
         },
         "payment": payment,
+        "settled_awards": awards,
         "offers": offers,
         "execution_queue": queue,
         "blockers": blockers,
@@ -359,14 +388,23 @@ def main() -> int:
             sys.stdout.write(canonical_text(control))
         else:
             validate_control(read_object(args.snapshot))
+            totals = ", ".join(
+                f"{row['amount']} {row['currency']}"
+                for row in control["settled_awards"]["totals_by_currency"]
+            )
             print(
                 "VALID "
                 f"{len(control['offers'])} offers "
                 f"{len(control['execution_queue'])} opportunities "
                 f"{control['truth']['transport_actions']} transports "
-                f"USD {control['truth']['collected_cash_usd']} cash"
+                f"USD {control['truth']['collected_cash_usd']} cash · "
+                f"{control['truth']['paid_awards']} paid award · {totals} settled"
             )
-    except (ControlError, smart_outreach.OutreachError) as error:
+    except (
+        ControlError,
+        settled_awards.SettlementError,
+        smart_outreach.OutreachError,
+    ) as error:
         print(f"INVALID: {error}", file=sys.stderr)
         return 2
     return 0

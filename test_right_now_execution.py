@@ -48,7 +48,7 @@ class RightNowExecutionTests(unittest.TestCase):
             )
             self.assertNotEqual(survival["start_route"], "agent-rescue.html")
 
-    def test_truth_never_promotes_internal_activity(self) -> None:
+    def test_truth_never_promotes_internal_activity_or_converts_awards(self) -> None:
         value = control.build_control()
         self.assertEqual(value["truth"]["collected_cash_usd"], 0)
         self.assertEqual(value["truth"]["verified_positive_replies"], 0)
@@ -56,6 +56,26 @@ class RightNowExecutionTests(unittest.TestCase):
         self.assertEqual(value["truth"]["ready_to_draft"], 0)
         self.assertEqual(value["truth"]["transport_actions"], 0)
         self.assertTrue(value["truth"]["active_chargeable_checkout"])
+        self.assertEqual(value["truth"]["paid_awards"], 1)
+        self.assertEqual(
+            value["truth"]["settled_amounts_by_currency"],
+            [{"currency": "RTC", "amount": "25"}],
+        )
+        self.assertIs(value["truth"]["usd_conversion_asserted"], False)
+        self.assertIs(value["truth"]["award_bank_availability_asserted"], False)
+        self.assertIs(value["truth"]["award_withdrawability_asserted"], False)
+
+    def test_settled_award_summary_is_privacy_safe_and_collection_suppressed(self) -> None:
+        summary = control.build_control()["settled_awards"]
+        self.assertEqual(summary["paid_awards"], 1)
+        award = summary["awards"][0]
+        self.assertEqual(award["payment_state"], "PAID")
+        self.assertEqual(award["collection_action"], "NONE_DO_NOT_RESEND")
+        self.assertEqual(award["destination_reference"], "woahwhattheheck")
+        self.assertNotIn("receipt", award)
+        self.assertNotIn("idempotency_key", award)
+        self.assertNotIn("email", json.dumps(summary).lower())
+        self.assertNotIn("thread", json.dumps(summary).lower())
 
     def test_queue_reuses_collision_and_research_decisions(self) -> None:
         value = control.build_control()
@@ -95,6 +115,7 @@ class RightNowExecutionTests(unittest.TestCase):
                 "revenue/right_now/catalog.json",
                 "revenue/right_now/diagnostic_offer.json",
                 "revenue/right_now/autopsy_offer.json",
+                "revenue/right_now/settled_awards.json",
                 "revenue/smart_outreach/candidates.json",
                 "revenue/payment_ready/current_receipt.json",
                 "revenue/human_outcomes/offers.json",
@@ -129,7 +150,7 @@ class RightNowExecutionTests(unittest.TestCase):
 
     def test_validate_detects_snapshot_drift(self) -> None:
         drift = control.build_control()
-        drift["truth"]["ready_to_draft"] = 99
+        drift["truth"]["paid_awards"] = 99
         with self.assertRaises(control.ControlError):
             control.validate_control(drift)
 
@@ -148,7 +169,11 @@ class RightNowExecutionTests(unittest.TestCase):
             capture_output=True,
             text=True,
         )
-        self.assertEqual(result.stdout.strip(), "VALID 6 offers 4 opportunities 0 transports USD 0 cash")
+        self.assertEqual(
+            result.stdout.strip(),
+            "VALID 6 offers 4 opportunities 0 transports USD 0 cash · "
+            "1 paid award · 25 RTC settled",
+        )
 
     def test_cli_rejects_drifted_projection(self) -> None:
         drift = control.build_control()
@@ -185,9 +210,12 @@ class RightNowExecutionTests(unittest.TestCase):
         script = (ROOT / "right-now.js").read_text(encoding="utf-8")
         page = (ROOT / "right-now.html").read_text(encoding="utf-8")
         self.assertIn("./revenue/right_now/control.json", script)
+        self.assertIn("Verified paid awards", script)
+        self.assertIn("No USD conversion", script)
         self.assertIn('id="revenue-control"', page)
         self.assertIn("right-now.js", page)
         self.assertIn("JavaScript-off truth", page)
+        self.assertIn("25 RTC", page)
         self.assertIn("0 ready drafts", page)
         self.assertIn("Composio remains held", page)
 

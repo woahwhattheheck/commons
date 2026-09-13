@@ -11,13 +11,23 @@
     return node;
   }
 
+  function formatTotals(rows) {
+    if (!Array.isArray(rows) || !rows.length) return "None evidenced";
+    return rows.map(function (row) {
+      return row.amount + " " + row.currency;
+    }).join(" · ");
+  }
+
   function render(control) {
     target.replaceChildren();
     var truth = control.truth;
+    var settled = control.settled_awards;
     var summary = document.createElement("div");
     summary.className = "metrics";
     [
-      ["Cash", "USD " + truth.collected_cash_usd],
+      ["USD cash", "USD " + truth.collected_cash_usd],
+      ["Paid awards", truth.paid_awards],
+      ["Settled value", formatTotals(truth.settled_amounts_by_currency)],
       ["Offers", control.offers.length],
       ["Opportunities", truth.prospects_evaluated],
       ["Ready to draft", truth.ready_to_draft],
@@ -31,8 +41,33 @@
     });
     target.append(summary);
 
-    var heading = text("h3", "Evidence-ranked execution queue");
-    target.append(heading);
+    target.append(text("h3", "Verified paid awards"));
+    var awardList = document.createElement("ol");
+    awardList.className = "queue";
+    settled.awards.forEach(function (award) {
+      var row = document.createElement("li");
+      row.append(text(
+        "strong",
+        award.program + " — " + award.amount + " " + award.currency + " PAID"
+      ));
+      row.append(text(
+        "span",
+        "Paid " + award.paid_at + " to hosted handle " +
+          award.destination_reference + ". Collection: do not resend."
+      ));
+      awardList.append(row);
+    });
+    if (!settled.awards.length) {
+      awardList.append(text("li", "No sponsor-confirmed paid awards are recorded."));
+    }
+    target.append(awardList);
+    target.append(text(
+      "p",
+      "Award currencies remain separate. No USD conversion, bank availability, or withdrawability is asserted.",
+      "note"
+    ));
+
+    target.append(text("h3", "Evidence-ranked execution queue"));
     var list = document.createElement("ol");
     list.className = "queue";
     control.execution_queue.forEach(function (item) {
@@ -46,8 +81,7 @@
     }
     target.append(list);
 
-    var blockers = text("h3", "Shortest honest blockers");
-    target.append(blockers);
+    target.append(text("h3", "Shortest honest blockers"));
     var blockerList = document.createElement("ol");
     blockerList.className = "queue";
     control.blockers.forEach(function (item) {
