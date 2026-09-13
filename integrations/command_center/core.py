@@ -116,6 +116,11 @@ class CommandCenter:
         self.state_dir = Path(state_dir)
         self.state_dir.mkdir(parents=True, exist_ok=True)
         self.database = self.state_dir / "command-center.sqlite3"
+        self._summary_lock = threading.Lock()
+        self._summary_cache = None
+        self._mail_cache = None
+        self._work_snapshot_cache = None
+        self._context_index_cache = None
         self._work_store = None
         self._work_store_lock = threading.Lock()
         self._work_refresh_thread = None
@@ -905,6 +910,157 @@ class CommandCenter:
         finally:
             handle.close()
 
+    def _shared_work_snapshot_locked(self):
+        """Reuse one normalized local observation across compact read views.
+
+        Caller holds _summary_lock. Ingestion invalidates this by database/WAL
+        signature; reading a snapshot never advances provider freshness.
+        """
+        store = self._work_store_instance()
+        signature = []
+        for path in (store.db_path, Path(str(store.db_path) + "-wal")):
+            try:
+                stat = path.stat()
+                signature.append((stat.st_mtime_ns, stat.st_size))
+            except FileNotFoundError:
+                signature.append(None)
+        signature = tuple(signature)
+        now = time.monotonic()
+        cached = self._work_snapshot_cache
+        if cached and cached["signature"] == signature and now - cached["at"] < 5:
+            return cached["state"], {"hit": True, "ttl_seconds": 5,
+                                     "age_seconds": round(now - cached["at"], 3)}
+        snapshot = store.state()
+        self._work_snapshot_cache = {"signature": signature, "at": now, "state": snapshot}
+        return snapshot, {"hit": False, "ttl_seconds": 5, "age_seconds": 0}
+
+    def work_context(self, limit=20, offset=0, query="", owner="", provider="",
+                     source="", kind="", status="", if_revision=None):
+        """Read a selective shared context page, with unchanged-page reuse."""
+        from .context_view import build_index, select
+        started = time.monotonic()
+        with self._summary_lock:
+            work, cache = self._shared_work_snapshot_locked()
+            cached = self._context_index_cache
+            # Raw snapshots expire even without writes, so freshness threshold
+            # crossings are evaluated without a query-specific cache explosion.
+            if cached is None or cached["work"] is not work:
+                cached = {"work": work, "index": build_index(work)}
+                self._context_index_cache = cached
+            try:
+                result = select(cached["index"], limit=limit, offset=offset,
+                                query=query, owner=owner, provider=provider,
+                                source=source, kind=kind, status=status,
+                                if_revision=if_revision)
+            except ValueError as exc:
+                raise CoreError(400, str(exc)) from None
+            result["cache"] = cache
+            result["telemetry"] = {
+                "projection_ms": round((time.monotonic() - started) * 1000, 2),
+                "records_examined": len(work.get("items", [])),
+            }
+            return result
+
+    def work_context_item(self, source_id, item_id):
+        """Read one exact normalized observation, not the entire work feed."""
+        if any(not isinstance(value, str) or not value or len(value) > 2000
+               for value in (source_id, item_id)):
+            raise CoreError(400, "A source_id and item_id are required.")
+        with self._summary_lock:
+            work, cache = self._shared_work_snapshot_locked()
+            item = next((value for value in work.get("items", [])
+                         if value.get("source_id") == source_id and value.get("id") == item_id), None)
+            if item is None:
+                raise CoreError(404, "The selected observation is not in the loaded source coverage.")
+            source = next((value for value in work.get("sources", [])
+                           if value.get("id") == source_id), {})
+            result = {"item": item, "source": {key: source.get(key) for key in
+                      ("id", "provider", "label", "status", "last_success_at",
+                       "last_good_observed_at", "coverage", "scope", "sync_mode")},
+                      "cache": cache, "provider_requests": 0,
+                      "scope": "One stored normalized observation; provider-original content stays at its original source."}
+            return json.loads(json.dumps(result))
+
+    def work_summary(self):
+        """Compact shared observation; never triggers provider reads or refresh."""
+        from .summary import build_summary
+        started = time.monotonic()
+        store = self._work_store_instance()
+        paths = [store.db_path, Path(str(store.db_path) + "-wal"),
+                 self.database, Path(str(self.database) + "-wal")]
+        def signature():
+            result = []
+            for path in paths:
+                try:
+                    stat = path.stat()
+                    result.append((stat.st_mtime_ns, stat.st_size))
+                except FileNotFoundError:
+                    result.append(None)
+            return tuple(result)
+        with self._summary_lock:
+            before = signature()
+            cached = self._summary_cache
+            if cached and cached["signature"] == before and started - cached["at"] < 5:
+                # Return independent objects; callers cannot corrupt shared cache.
+                result = json.loads(cached["json"])
+                result["cache"] = {"hit": True, "ttl_seconds": 5,
+                                   "age_seconds": round(started - cached["at"], 3)}
+                return result
+            work = dict(self._shared_work_snapshot_locked()[0])
+            work["refresh"] = self._work_refresh_status()
+            result = build_summary(work)
+            result["telemetry"] = {"projection_ms": round((time.monotonic() - started) * 1000, 2),
+                                   "records_examined": len(work["items"])}
+            self._summary_cache = {"signature": before, "at": started,
+                                   "json": json.dumps(result)}
+            result["cache"] = {"hit": False, "ttl_seconds": 5, "age_seconds": 0}
+            return result
+
+    def work_mail(self, limit=100, offset=0, query="", mode="all"):
+        """Read paginated mail threads from shared observations, without inference or provider calls."""
+        from .mail_tracking import project
+        if type(limit) is not int or not 1 <= limit <= 200 or type(offset) is not int or offset < 0:
+            raise CoreError(400, "Mail pagination requires limit 1..200 and nonnegative offset.")
+        if not isinstance(query, str) or len(query) > 240 or not isinstance(mode, str) or mode not in {"all", "waiting_on_us", "waiting_on_them", "unknown", "unread", "overdue"}:
+            raise CoreError(400, "Invalid mail filter.")
+        started = time.monotonic()
+        store = self._work_store_instance()
+        paths = [store.db_path, Path(str(store.db_path) + "-wal")]
+        def signature():
+            result = []
+            for path in paths:
+                try:
+                    stat = path.stat()
+                    result.append((stat.st_mtime_ns, stat.st_size))
+                except FileNotFoundError:
+                    result.append(None)
+            return tuple(result)
+        with self._summary_lock:
+            before = signature()
+            cached = self._mail_cache
+            hit = bool(cached and cached["signature"] == before and started - cached["at"] < 5)
+            if not hit:
+                work, _ = self._shared_work_snapshot_locked()
+                result = project(work)
+                result["telemetry"] = {"projection_ms": round((time.monotonic() - started) * 1000, 2),
+                                       "records_examined": len(work["items"])}
+                cached = {"signature": before, "at": started, "json": json.dumps(result)}
+                self._mail_cache = cached
+            result = json.loads(cached["json"])
+        query = query.strip().casefold()
+        rows = [row for row in result["threads"]
+                if (not query or query in " ".join(str(row.get(key) or "") for key in
+                    ("title", "account", "owner", "assigned_owner", "next_action")).casefold())
+                and (mode == "all" or row.get("waiting_on") == mode
+                     or mode == "unread" and row.get("unread") is True
+                     or mode == "overdue" and row.get("overdue") is True)]
+        result["threads"] = rows[offset:offset + limit]
+        result["pagination"] = {"limit": limit, "offset": offset, "matching_threads": len(rows),
+                                "next_offset": offset + limit if offset + limit < len(rows) else None}
+        result["cache"] = {"hit": hit, "ttl_seconds": 5, "age_seconds": round(started - cached["at"], 3)}
+        result["provider_requests"] = 0
+        return result
+
     def work_state(self, refresh=False):
         if refresh:
             started = self.refresh_work()
@@ -1121,7 +1277,11 @@ class CommandCenter:
             result = collectors.LiveCollectors(self._work_store_instance(), config).collect()
             sources = result.get("sources", [])
             errors = sum(bool(source.get("error")) for source in sources)
-            final.update(status="completed_with_errors" if errors else "completed",
+            budget = result.get("request_budget") or {}
+            deferred = result.get("deferred_sources") or []
+            final.update(request_budget=budget, deferred_sources=deferred)
+            wholly_deferred = budget.get("observed_attempts") == 0 and bool(deferred)
+            final.update(status="deferred" if wholly_deferred else "completed_with_errors" if errors else "completed",
                          source_count=len(sources), sources_with_errors=errors,
                          items_observed=result.get("items_observed", 0),
                          error=None, last_collected_at=result.get("observed_at"))
