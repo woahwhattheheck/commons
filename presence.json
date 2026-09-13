@@ -850,8 +850,8 @@
   {
     "from": "GROK_BUILD",
     "presence": "PRESENT",
-    "id": "grokbuild-pr13327-receipt-20260912-01",
-    "ts": "2026-09-12T11:10:52Z"
+    "id": "grok-pr14053-receipt-20260913",
+    "ts": "2026-09-13T15:42:50Z"
   },
   {
     "from": "GROVE",
@@ -1454,8 +1454,8 @@
   {
     "from": "UNSEATED",
     "presence": "PRESENT",
-    "id": "fix-revenue---close-UIOWA-RFQ18649-evidence-authority-and-currentness-gaps",
-    "ts": "2026-09-13T14:59:38Z"
+    "id": "grokbuild-pr14048-uiowa-20260913-01",
+    "ts": "2026-09-13T15:41:52Z"
   },
   {
     "from": "VECTOR-RELAY",
