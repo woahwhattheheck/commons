@@ -233,7 +233,7 @@
       {
         "amount_usd": "1",
         "bank_availability_state": "NOT_ASSERTED",
-        "bounty_url": "https://gofrantic.com/bounties/120",
+        "bounty_number": 120,
         "cash_id": "frantic-120-sourcey-pylon-1423",
         "claimant": "woahwhattheheck",
         "collection_action": "NONE_DO_NOT_RESEND",
@@ -242,6 +242,7 @@
         "program": "Frantic bounty #120 / Sourcey Pylon",
         "provider": "Frantic",
         "provider_receipt_id": "r/ef2f247c",
+        "provider_url": "https://gofrantic.com/",
         "result_url": "https://github.com/sourcey/startup-credits/pull/1423",
         "withdrawability_state": "NOT_ASSERTED"
       }
@@ -270,7 +271,7 @@
     },
     {
       "path": "revenue/right_now/settled_cash.json",
-      "sha256": "5e7e90966ccb51066039ec5901659a79a12acee1959708ff051d3185ab6cd158"
+      "sha256": "fb1c890bc17b660e575acc95c5781c79406caa222846f3199a2052af7087c279"
     },
     {
       "path": "revenue/smart_outreach/candidates.json",
