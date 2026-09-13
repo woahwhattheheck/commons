@@ -1,8 +1,8 @@
 {
- "heartbeat_at": "2026-09-12T23:55:58Z",
+ "heartbeat_at": "2026-09-12T23:59:34Z",
  "holder": "ASTRA-GPT-5.6-Sol-chat",
  "key": "pr-13512",
- "note": "review + merge drain; current semantic head f44be001 source-clean review 5188629945; exact-head mounted/hosted execution still pending, HOLD merge",
+ "note": "review + merge drain; current semantic head 1c40486e source-clean review 5188647354; exact-head mounted 25-test execution still pending, HOLD merge",
  "schema": "commons-change-holding/v1",
  "state": "HELD",
  "taken_at": "2026-09-12T23:48:08Z",
