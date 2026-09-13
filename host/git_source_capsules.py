@@ -2,7 +2,9 @@
 
 from __future__ import annotations
 
+import copy
 import hashlib
+import json
 import re
 import subprocess
 from pathlib import Path
@@ -249,8 +251,135 @@ def verify_git_source(bundle: Any, repository: str | Path) -> tuple[bool, str]:
                 return False, "git-source-text"
         elif packet_row.get("text_included") is False:
             reason = packet_row.get("omission_reason")
-            if reason not in {"PACKET_BUDGET", actual.get("source_omission_reason")}:
+            if actual.get("text") is None:
+                if reason != actual.get("source_omission_reason"):
+                    return False, "git-source-omission"
+            elif reason != "PACKET_BUDGET":
                 return False, "git-source-omission"
         else:
             return False, "git-source-inclusion-flag"
+    return True, "ok"
+
+
+def _canonical(value: Any) -> str:
+    return json.dumps(value, ensure_ascii=False, sort_keys=True, separators=(",", ":"))
+
+
+def verify_packet_git_source(packet: Any, repository: str | Path) -> tuple[bool, str]:
+    """Re-read Git and replay compile-time source admission for a semantic-valid packet."""
+    if not isinstance(packet, dict):
+        return False, "git-source-packet-shape"
+    source = packet.get("git_source")
+    if source is None:
+        return True, "ok"
+    if not isinstance(source, dict):
+        return False, "git-source-shape"
+    ok, _ = verify_git_source(source, repository)
+    if not ok:
+        return False, "git-source-readback"
+    try:
+        actual = collect_git_source(
+            repository,
+            source["commit"],
+            source["requested_paths"],
+            max_file_bytes=source["max_file_bytes"],
+        )
+        limits = packet["limits"]
+        max_chars = limits["max_chars"]
+        omitted_final = packet["omitted"]
+        recent_final = packet["recent"]
+        resources_final = packet["resources"]
+    except (GitSourceError, KeyError, TypeError):
+        return False, "git-source-packet-shape"
+    if type(max_chars) is not int or max_chars < 0:
+        return False, "git-source-packet-shape"
+    if not isinstance(omitted_final, dict) or not isinstance(recent_final, list) or not isinstance(resources_final, list):
+        return False, "git-source-packet-shape"
+    for key in ("claims", "coordination", "recent", "resources"):
+        if type(omitted_final.get(key)) is not int or omitted_final[key] < 0:
+            return False, "git-source-omitted-shape"
+
+    packet_rows = source.get("capsules")
+    if not isinstance(packet_rows, list):
+        return False, "git-source-shape"
+    omitted_rows = [row for row in packet_rows if isinstance(row, dict) and row.get("text_included") is False]
+    if len(omitted_rows) != len([row for row in packet_rows if isinstance(row, dict) and not row.get("text_included")]):
+        return False, "git-source-inclusion-flag"
+    omitted_files = len(omitted_rows)
+    omitted_bytes = sum(int(row["bytes"]) for row in omitted_rows)
+    if omitted_final.get("git_source_text_files") != omitted_files:
+        return False, "git-source-omitted-files"
+    if omitted_final.get("git_source_text_bytes") != omitted_bytes:
+        return False, "git-source-omitted-bytes"
+
+    actual_by_path = {row["path"]: row for row in actual["capsules"]}
+    # Restore the exact packet boundary used by compile_packet immediately before source
+    # text admission: claims/coordination are final, recent/resources are not admitted yet,
+    # and every source row is metadata-only. Final included+omitted recovers the later
+    # section pool counts without requiring the original input files.
+    probe = copy.deepcopy(packet)
+    probe.pop("semantic_sha256", None)
+    probe["recent"] = []
+    probe["resources"] = []
+    omitted = dict(probe["omitted"])
+    omitted["recent"] = omitted_final["recent"] + len(recent_final)
+    omitted["resources"] = omitted_final["resources"] + len(resources_final)
+    probe["omitted"] = omitted
+    source_probe = probe.get("git_source")
+    if not isinstance(source_probe, dict) or not isinstance(source_probe.get("capsules"), list):
+        return False, "git-source-shape"
+    for row in source_probe["capsules"]:
+        if not isinstance(row, dict):
+            return False, "git-source-capsule-shape"
+        actual_row = actual_by_path.get(row.get("path"))
+        if actual_row is None:
+            return False, "git-source-path"
+        row.pop("text", None)
+        row["text_included"] = False
+        if actual_row.get("text") is None:
+            row["omission_reason"] = actual_row.get("source_omission_reason")
+        else:
+            row["omission_reason"] = "PACKET_BUDGET"
+    omitted["git_source_text_files"] = len(source_probe["capsules"])
+    omitted["git_source_text_bytes"] = sum(int(row["bytes"]) for row in source_probe["capsules"])
+
+    def size() -> int:
+        sized = copy.deepcopy(probe)
+        sized["semantic_sha256"] = "0" * 64
+        return len(_canonical(sized))
+
+    by_path = {row["path"]: row for row in source_probe["capsules"]}
+    requested = source.get("requested_paths")
+    if not isinstance(requested, list):
+        return False, "git-source-shape"
+    for path in requested:
+        actual_row = actual_by_path.get(path)
+        row = by_path.get(path)
+        if actual_row is None or row is None:
+            return False, "git-source-path"
+        text = actual_row.get("text")
+        if text is None:
+            continue
+        row["text"] = text
+        row["text_included"] = True
+        row.pop("omission_reason", None)
+        omitted["git_source_text_files"] -= 1
+        omitted["git_source_text_bytes"] -= int(row["bytes"])
+        if size() > max_chars:
+            row.pop("text", None)
+            row["text_included"] = False
+            row["omission_reason"] = "PACKET_BUDGET"
+            omitted["git_source_text_files"] += 1
+            omitted["git_source_text_bytes"] += int(row["bytes"])
+
+    expected_by_path = {row["path"]: row for row in source_probe["capsules"]}
+    for packet_row in packet_rows:
+        if not isinstance(packet_row, dict):
+            return False, "git-source-capsule-shape"
+        expected = expected_by_path.get(packet_row.get("path"))
+        if expected is None:
+            return False, "git-source-path"
+        for key in ("text_included", "omission_reason", "text"):
+            if packet_row.get(key) != expected.get(key) or (key in packet_row) != (key in expected):
+                return False, "git-source-admission"
     return True, "ok"
