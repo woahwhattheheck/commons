@@ -120,8 +120,19 @@ def active_competing_prs(timeline: Sequence[Mapping[str, Any]]) -> list[str]:
 def last_activity(
     issue: Mapping[str, Any], comments: Sequence[Mapping[str, Any]]
 ) -> datetime | None:
-    stamps = [parse_timestamp(issue.get("updated_at")), parse_timestamp(issue.get("created_at"))]
+    """Return the newest timestamp allowed to refresh funded-work freshness.
+
+    GitHub issue ``updated_at`` is intentionally excluded: arbitrary comments can
+    advance it even when the sponsor or maintainer has done nothing. The immutable
+    issue creation time is the baseline. After creation, only comments from actors
+    already trusted for funding evidence may refresh the clock. Untrusted comments
+    remain available to claim/occupancy and security checks elsewhere in the gate.
+    """
+
+    stamps = [parse_timestamp(issue.get("created_at"))]
     for comment in comments:
+        if not trusted_comment(comment):
+            continue
         stamps.extend(
             (parse_timestamp(comment.get("updated_at")), parse_timestamp(comment.get("created_at")))
         )
