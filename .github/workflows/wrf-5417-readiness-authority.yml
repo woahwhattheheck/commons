@@ -1,0 +1,49 @@
+name: wrf-5417-readiness-authority
+
+on:
+  pull_request:
+    paths:
+      - 'opportunities/wrf_5417_camera_ai/**'
+      - '.github/workflows/wrf-5417-readiness-authority.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'opportunities/wrf_5417_camera_ai/**'
+      - '.github/workflows/wrf-5417-readiness-authority.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  authority-hostiles:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python: ['3.11', '3.13']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Compile
+        run: |
+          python -m py_compile \
+            opportunities/wrf_5417_camera_ai/validate_readiness.py \
+            opportunities/wrf_5417_camera_ai/tests/test_validate_readiness.py
+      - name: Hostile suite
+        run: python -m unittest -v opportunities.wrf_5417_camera_ai.tests.test_validate_readiness
+      - name: Hostile suite optimized
+        run: python -O -m unittest -v opportunities.wrf_5417_camera_ai.tests.test_validate_readiness
+      - name: Checked-in carrier must fail closed
+        shell: bash
+        run: |
+          set +e
+          python opportunities/wrf_5417_camera_ai/validate_readiness.py \
+            opportunities/wrf_5417_camera_ai/submission_manifest.json > /tmp/wrf-5417-default.json
+          rc=$?
+          set -e
+          cat /tmp/wrf-5417-default.json
+          test "$rc" -eq 3
+          grep -q '"state": "HOLD"' /tmp/wrf-5417-default.json
+          grep -q 'trusted authority bundle missing' /tmp/wrf-5417-default.json
