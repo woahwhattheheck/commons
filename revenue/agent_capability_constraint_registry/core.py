@@ -1,20 +1,14 @@
-"""Deterministic, execution-free agent capability and constraint registry.
-
-The registry compiles a strict JSON census into content-addressed JSON/Markdown
-projections plus an independently verifiable receipt.  It never executes tools,
-selects models, deploys agents, or authorizes any external effect.
-"""
+"""Deterministic, execution-free agent capability and constraint registry."""
 from __future__ import annotations
 
 import hashlib
 import json
-import math
 import re
 from copy import deepcopy
 from dataclasses import dataclass
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Any, Iterable
+from typing import Any
 
 INPUT_SCHEMA = "agent-capability-constraint-registry/input/v1"
 RESULT_SCHEMA = "agent-capability-constraint-registry/result/v1"
@@ -22,17 +16,13 @@ RECEIPT_SCHEMA = "agent-capability-constraint-registry/receipt/v1"
 VALID_STATUSES = ("READY", "TOOLING_NEEDED", "OWNER_DECISION", "HOLD")
 OWNER_VERDICTS = {"APPROVED", "PENDING", "DENIED", "NOT_REQUIRED"}
 CAPABILITY_CONDITIONS = {"PASS", "PARTIAL", "FAIL"}
-_TOKEN_RE = re.compile(r"^[A-Za-z0-9][A-Za-z0-9._:/@+-]{0,127}$")
-_SHA256_RE = re.compile(r"^[0-9a-f]{64}$")
-_RFC3339_Z_RE = re.compile(r"^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z$")
+_TOKEN = re.compile(r"^[A-Za-z0-9][A-Za-z0-9._:/@+-]{0,127}$")
+_SHA = re.compile(r"^[0-9a-f]{64}$")
+_TS = re.compile(r"^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z$")
 
 
 class RegistryError(ValueError):
-    """Fail-closed validation or verification error."""
-
-
-class _DuplicateKeyError(RegistryError):
-    pass
+    """Fail-closed registry validation or verification error."""
 
 
 @dataclass(frozen=True)
@@ -44,403 +34,305 @@ class CompiledRegistry:
     receipt_bytes: bytes
 
 
-def _reject_constant(value: str) -> None:
-    raise RegistryError(f"non-finite JSON number forbidden: {value}")
-
-
-def _reject_float(value: str) -> None:
-    raise RegistryError(f"floating-point JSON number forbidden: {value}")
-
-
-def _strict_pairs(pairs: list[tuple[str, Any]]) -> dict[str, Any]:
+def _pairs(items: list[tuple[str, Any]]) -> dict[str, Any]:
     out: dict[str, Any] = {}
-    for key, value in pairs:
+    for key, value in items:
         if key in out:
-            raise _DuplicateKeyError(f"duplicate JSON key: {key}")
+            raise RegistryError(f"duplicate JSON key: {key}")
         out[key] = value
     return out
 
 
+def _bad_number(value: str) -> None:
+    raise RegistryError(f"non-finite JSON number forbidden: {value}")
+
+
+def _bad_float(value: str) -> None:
+    raise RegistryError(f"floating-point JSON number forbidden: {value}")
+
+
 def load_json_bytes(raw: bytes, label: str = "input") -> dict[str, Any]:
-    """Load UTF-8 JSON with duplicate-key, float and non-finite rejection."""
     if not isinstance(raw, (bytes, bytearray)):
         raise RegistryError(f"{label}: bytes required")
     if bytes(raw).startswith(b"\xef\xbb\xbf"):
         raise RegistryError(f"{label}: UTF-8 BOM forbidden")
     try:
         text = bytes(raw).decode("utf-8", errors="strict")
-    except UnicodeDecodeError as exc:
-        raise RegistryError(f"{label}: invalid UTF-8") from exc
-    try:
-        value = json.loads(
-            text,
-            object_pairs_hook=_strict_pairs,
-            parse_constant=_reject_constant,
-            parse_float=_reject_float,
-        )
+        value = json.loads(text, object_pairs_hook=_pairs, parse_constant=_bad_number, parse_float=_bad_float)
     except RegistryError:
         raise
-    except (json.JSONDecodeError, TypeError, ValueError) as exc:
-        raise RegistryError(f"{label}: invalid JSON") from exc
+    except (UnicodeDecodeError, json.JSONDecodeError, TypeError, ValueError) as exc:
+        raise RegistryError(f"{label}: invalid JSON/UTF-8") from exc
     if not isinstance(value, dict):
         raise RegistryError(f"{label}: top level must be an object")
     return value
 
 
-def _canonical_json_bytes(value: Any) -> bytes:
-    return (json.dumps(value, sort_keys=True, separators=(",", ":"), ensure_ascii=False) + "\n").encode("utf-8")
+def _json(value: Any) -> bytes:
+    return (json.dumps(value, sort_keys=True, separators=(",", ":"), ensure_ascii=False) + "\n").encode()
 
 
-def _sha256(raw: bytes) -> str:
+def _digest(raw: bytes) -> str:
     return hashlib.sha256(raw).hexdigest()
 
 
-def _require_exact_keys(obj: dict[str, Any], keys: set[str], where: str) -> None:
+def _keys(obj: Any, expected: set[str], where: str) -> dict[str, Any]:
+    if not isinstance(obj, dict):
+        raise RegistryError(f"{where}: object required")
     got = set(obj)
-    if got != keys:
-        missing = sorted(keys - got)
-        extra = sorted(got - keys)
-        raise RegistryError(f"{where}: keys mismatch missing={missing} extra={extra}")
+    if got != expected:
+        raise RegistryError(f"{where}: keys mismatch missing={sorted(expected-got)} extra={sorted(got-expected)}")
+    return obj
 
 
-def _require_str(value: Any, where: str, *, token: bool = False, max_len: int = 512) -> str:
-    if not isinstance(value, str) or not value or len(value) > max_len:
-        raise RegistryError(f"{where}: non-empty string <= {max_len} chars required")
-    if any(ord(ch) < 32 for ch in value):
-        raise RegistryError(f"{where}: control characters forbidden")
-    if token and not _TOKEN_RE.fullmatch(value):
+def _str(value: Any, where: str, *, token: bool = False, limit: int = 512) -> str:
+    if not isinstance(value, str) or not value or len(value) > limit or any(ord(ch) < 32 for ch in value):
+        raise RegistryError(f"{where}: non-empty safe string <= {limit} chars required")
+    if token and not _TOKEN.fullmatch(value):
         raise RegistryError(f"{where}: invalid token")
     return value
 
 
-def _require_int(value: Any, where: str, *, minimum: int = 0, maximum: int = 10**9) -> int:
+def _int(value: Any, where: str, lo: int = 0, hi: int = 10**9) -> int:
     if isinstance(value, bool) or not isinstance(value, int):
         raise RegistryError(f"{where}: integer required (bool forbidden)")
-    if not (minimum <= value <= maximum):
+    if not lo <= value <= hi:
         raise RegistryError(f"{where}: integer out of range")
     return value
 
 
-def _require_bool(value: Any, where: str) -> bool:
+def _bool(value: Any, where: str) -> bool:
     if not isinstance(value, bool):
         raise RegistryError(f"{where}: boolean required")
     return value
 
 
-def _require_sha256(value: Any, where: str) -> str:
-    text = _require_str(value, where, max_len=64)
-    if not _SHA256_RE.fullmatch(text):
+def _sha(value: Any, where: str) -> str:
+    value = _str(value, where, limit=64)
+    if not _SHA.fullmatch(value):
         raise RegistryError(f"{where}: lowercase sha256 required")
-    return text
+    return value
 
 
-def _require_timestamp(value: Any, where: str) -> str:
-    text = _require_str(value, where, max_len=20)
-    if not _RFC3339_Z_RE.fullmatch(text):
-        raise RegistryError(f"{where}: RFC3339 UTC second timestamp required")
+def _dt(text: str) -> datetime:
+    return datetime.strptime(text, "%Y-%m-%dT%H:%M:%SZ").replace(tzinfo=timezone.utc)
+
+
+def _ts(value: Any, where: str) -> str:
+    value = _str(value, where, limit=20)
     try:
-        datetime.strptime(text, "%Y-%m-%dT%H:%M:%SZ").replace(tzinfo=timezone.utc)
+        if not _TS.fullmatch(value):
+            raise ValueError
+        _dt(value)
     except ValueError as exc:
-        raise RegistryError(f"{where}: invalid UTC timestamp") from exc
-    return text
+        raise RegistryError(f"{where}: RFC3339 UTC second timestamp required") from exc
+    return value
 
 
-def _require_str_list(value: Any, where: str, *, token: bool = True, max_items: int = 64) -> list[str]:
-    if not isinstance(value, list) or len(value) > max_items:
-        raise RegistryError(f"{where}: list with <= {max_items} items required")
-    out: list[str] = []
-    seen: set[str] = set()
-    for idx, item in enumerate(value):
-        text = _require_str(item, f"{where}[{idx}]", token=token)
-        if text in seen:
-            raise RegistryError(f"{where}: duplicate item {text}")
-        seen.add(text)
-        out.append(text)
+def _fresh(observed: str, generated: str, max_age: int, where: str) -> None:
+    age = int((_dt(generated) - _dt(observed)).total_seconds())
+    if age < 0:
+        raise RegistryError(f"{where}: evidence timestamp is in the future")
+    if age > max_age:
+        raise RegistryError(f"{where}: stale evidence age {age}s exceeds {max_age}s freshness window")
+
+
+def _str_list(value: Any, where: str, limit: int = 64) -> list[str]:
+    if not isinstance(value, list) or len(value) > limit:
+        raise RegistryError(f"{where}: list with <= {limit} items required")
+    out = [_str(item, f"{where}[{idx}]", token=True) for idx, item in enumerate(value)]
+    if len(out) != len(set(out)):
+        raise RegistryError(f"{where}: duplicate item")
     return sorted(out)
 
 
-def _normalize_capability(value: Any, where: str) -> dict[str, Any]:
-    if not isinstance(value, dict):
-        raise RegistryError(f"{where}: object required")
-    _require_exact_keys(value, {"capability", "evidence_ref", "evidence_sha256", "measured_at", "condition"}, where)
-    condition = _require_str(value["condition"], f"{where}.condition", token=True)
+def _cap(value: Any, where: str) -> dict[str, Any]:
+    value = _keys(value, {"capability", "evidence_ref", "evidence_sha256", "measured_at", "condition"}, where)
+    condition = _str(value["condition"], f"{where}.condition", token=True)
     if condition not in CAPABILITY_CONDITIONS:
         raise RegistryError(f"{where}.condition: invalid value")
     return {
-        "capability": _require_str(value["capability"], f"{where}.capability", token=True),
+        "capability": _str(value["capability"], f"{where}.capability", token=True),
         "condition": condition,
-        "evidence_ref": _require_str(value["evidence_ref"], f"{where}.evidence_ref", max_len=512),
-        "evidence_sha256": _require_sha256(value["evidence_sha256"], f"{where}.evidence_sha256"),
-        "measured_at": _require_timestamp(value["measured_at"], f"{where}.measured_at"),
+        "evidence_ref": _str(value["evidence_ref"], f"{where}.evidence_ref"),
+        "evidence_sha256": _sha(value["evidence_sha256"], f"{where}.evidence_sha256"),
+        "measured_at": _ts(value["measured_at"], f"{where}.measured_at"),
     }
 
 
-def _normalize_constraint(value: Any, where: str) -> dict[str, Any]:
-    if not isinstance(value, dict):
-        raise RegistryError(f"{where}: object required")
-    _require_exact_keys(
-        value,
-        {"constraint", "source_ref", "source_sha256", "tooling_need", "owner_verdict", "estimated_fix_minutes"},
-        where,
-    )
-    verdict = _require_str(value["owner_verdict"], f"{where}.owner_verdict", token=True)
+def _constraint(value: Any, where: str) -> dict[str, Any]:
+    value = _keys(value, {"constraint", "source_ref", "source_sha256", "source_ts", "tooling_need", "owner_verdict", "estimated_fix_minutes"}, where)
+    verdict = _str(value["owner_verdict"], f"{where}.owner_verdict", token=True)
     if verdict not in OWNER_VERDICTS:
         raise RegistryError(f"{where}.owner_verdict: invalid value")
-    tooling_need = _require_str(value["tooling_need"], f"{where}.tooling_need", token=True)
     return {
-        "constraint": _require_str(value["constraint"], f"{where}.constraint", token=True),
-        "estimated_fix_minutes": _require_int(value["estimated_fix_minutes"], f"{where}.estimated_fix_minutes", minimum=0, maximum=525600),
+        "constraint": _str(value["constraint"], f"{where}.constraint", token=True),
+        "estimated_fix_minutes": _int(value["estimated_fix_minutes"], f"{where}.estimated_fix_minutes", 0, 525600),
         "owner_verdict": verdict,
-        "source_ref": _require_str(value["source_ref"], f"{where}.source_ref", max_len=512),
-        "source_sha256": _require_sha256(value["source_sha256"], f"{where}.source_sha256"),
-        "tooling_need": tooling_need,
+        "source_ref": _str(value["source_ref"], f"{where}.source_ref"),
+        "source_sha256": _sha(value["source_sha256"], f"{where}.source_sha256"),
+        "source_ts": _ts(value["source_ts"], f"{where}.source_ts"),
+        "tooling_need": _str(value["tooling_need"], f"{where}.tooling_need", token=True),
     }
 
 
-def _normalize_record(value: Any, index: int) -> dict[str, Any]:
-    where = f"records[{index}]"
-    if not isinstance(value, dict):
-        raise RegistryError(f"{where}: object required")
-    _require_exact_keys(
-        value,
-        {
-            "agent_id", "workstream", "provider", "model_or_harness", "revision",
-            "measured_capabilities", "declared_constraints", "required_tools",
-            "available_tools", "owner_decision", "blocking_reasons", "execution_requested",
-        },
-        where,
-    )
-    revision = _require_int(value["revision"], f"{where}.revision", minimum=1, maximum=10**6)
-    owner_decision = _require_str(value["owner_decision"], f"{where}.owner_decision", token=True)
-    if owner_decision not in OWNER_VERDICTS:
-        raise RegistryError(f"{where}.owner_decision: invalid value")
-    execution_requested = _require_bool(value["execution_requested"], f"{where}.execution_requested")
-
+def _record(value: Any, idx: int) -> dict[str, Any]:
+    where = f"records[{idx}]"
+    value = _keys(value, {"agent_id", "workstream", "provider", "model_or_harness", "revision", "measured_capabilities", "declared_constraints", "required_tools", "available_tools", "owner_decision", "blocking_reasons", "execution_requested"}, where)
     caps_raw = value["measured_capabilities"]
-    if not isinstance(caps_raw, list) or not (1 <= len(caps_raw) <= 128):
+    cons_raw = value["declared_constraints"]
+    if not isinstance(caps_raw, list) or not 1 <= len(caps_raw) <= 128:
         raise RegistryError(f"{where}.measured_capabilities: 1..128 items required")
-    caps = [_normalize_capability(item, f"{where}.measured_capabilities[{idx}]") for idx, item in enumerate(caps_raw)]
-    cap_names = [item["capability"] for item in caps]
-    if len(cap_names) != len(set(cap_names)):
-        raise RegistryError(f"{where}.measured_capabilities: duplicate capability")
-    caps.sort(key=lambda item: item["capability"])
-
-    constraints_raw = value["declared_constraints"]
-    if not isinstance(constraints_raw, list) or len(constraints_raw) > 128:
+    if not isinstance(cons_raw, list) or len(cons_raw) > 128:
         raise RegistryError(f"{where}.declared_constraints: <=128 items required")
-    constraints = [_normalize_constraint(item, f"{where}.declared_constraints[{idx}]") for idx, item in enumerate(constraints_raw)]
-    constraint_names = [item["constraint"] for item in constraints]
-    if len(constraint_names) != len(set(constraint_names)):
+    caps = [_cap(item, f"{where}.measured_capabilities[{i}]") for i, item in enumerate(caps_raw)]
+    cons = [_constraint(item, f"{where}.declared_constraints[{i}]") for i, item in enumerate(cons_raw)]
+    if len({x["capability"] for x in caps}) != len(caps):
+        raise RegistryError(f"{where}.measured_capabilities: duplicate capability")
+    if len({x["constraint"] for x in cons}) != len(cons):
         raise RegistryError(f"{where}.declared_constraints: duplicate constraint")
-    constraints.sort(key=lambda item: item["constraint"])
-
+    owner = _str(value["owner_decision"], f"{where}.owner_decision", token=True)
+    if owner not in OWNER_VERDICTS:
+        raise RegistryError(f"{where}.owner_decision: invalid value")
     return {
-        "agent_id": _require_str(value["agent_id"], f"{where}.agent_id", token=True),
-        "available_tools": _require_str_list(value["available_tools"], f"{where}.available_tools"),
-        "blocking_reasons": _require_str_list(value["blocking_reasons"], f"{where}.blocking_reasons"),
-        "declared_constraints": constraints,
-        "execution_requested": execution_requested,
-        "measured_capabilities": caps,
-        "model_or_harness": _require_str(value["model_or_harness"], f"{where}.model_or_harness", token=True),
-        "owner_decision": owner_decision,
-        "provider": _require_str(value["provider"], f"{where}.provider", token=True),
-        "required_tools": _require_str_list(value["required_tools"], f"{where}.required_tools"),
-        "revision": revision,
-        "workstream": _require_str(value["workstream"], f"{where}.workstream", token=True),
+        "agent_id": _str(value["agent_id"], f"{where}.agent_id", token=True),
+        "available_tools": _str_list(value["available_tools"], f"{where}.available_tools"),
+        "blocking_reasons": _str_list(value["blocking_reasons"], f"{where}.blocking_reasons"),
+        "declared_constraints": sorted(cons, key=lambda x: x["constraint"]),
+        "execution_requested": _bool(value["execution_requested"], f"{where}.execution_requested"),
+        "measured_capabilities": sorted(caps, key=lambda x: x["capability"]),
+        "model_or_harness": _str(value["model_or_harness"], f"{where}.model_or_harness", token=True),
+        "owner_decision": owner,
+        "provider": _str(value["provider"], f"{where}.provider", token=True),
+        "required_tools": _str_list(value["required_tools"], f"{where}.required_tools"),
+        "revision": _int(value["revision"], f"{where}.revision", 1, 10**6),
+        "workstream": _str(value["workstream"], f"{where}.workstream", token=True),
     }
 
 
 def normalize_input(value: dict[str, Any]) -> dict[str, Any]:
-    if not isinstance(value, dict):
-        raise RegistryError("input: object required")
-    _require_exact_keys(value, {"schema", "registry_id", "snapshot_ref", "snapshot_sha256", "generated_at", "records"}, "input")
+    value = _keys(value, {"schema", "registry_id", "snapshot_ref", "snapshot_sha256", "generated_at", "evidence_max_age_seconds", "records"}, "input")
     if value["schema"] != INPUT_SCHEMA:
         raise RegistryError("input.schema: unsupported schema")
-    records_raw = value["records"]
-    if not isinstance(records_raw, list) or not (1 <= len(records_raw) <= 4096):
+    raw = value["records"]
+    if not isinstance(raw, list) or not 1 <= len(raw) <= 4096:
         raise RegistryError("input.records: 1..4096 items required")
-    records = [_normalize_record(item, idx) for idx, item in enumerate(records_raw)]
-    identities: set[tuple[str, int]] = set()
-    for record in records:
-        identity = (record["agent_id"], record["revision"])
-        if identity in identities:
-            raise RegistryError(f"input.records: duplicate agent/revision identity {identity[0]}@{identity[1]}")
-        identities.add(identity)
-    records.sort(key=lambda item: (item["workstream"], item["agent_id"], item["revision"]))
+    generated = _ts(value["generated_at"], "input.generated_at")
+    max_age = _int(value["evidence_max_age_seconds"], "input.evidence_max_age_seconds", 1, 31536000)
+    records = [_record(item, i) for i, item in enumerate(raw)]
+    seen: set[tuple[str, int]] = set()
+    for rec in records:
+        ident = (rec["agent_id"], rec["revision"])
+        if ident in seen:
+            raise RegistryError(f"input.records: duplicate agent/revision identity {ident[0]}@{ident[1]}")
+        seen.add(ident)
+        for cap in rec["measured_capabilities"]:
+            _fresh(cap["measured_at"], generated, max_age, f"input.records[{rec['agent_id']}].measured_capabilities[{cap['capability']}].measured_at")
+        for con in rec["declared_constraints"]:
+            _fresh(con["source_ts"], generated, max_age, f"input.records[{rec['agent_id']}].declared_constraints[{con['constraint']}].source_ts")
     return {
-        "generated_at": _require_timestamp(value["generated_at"], "input.generated_at"),
-        "records": records,
-        "registry_id": _require_str(value["registry_id"], "input.registry_id", token=True),
+        "evidence_max_age_seconds": max_age,
+        "generated_at": generated,
+        "records": sorted(records, key=lambda x: (x["workstream"], x["agent_id"], x["revision"])),
+        "registry_id": _str(value["registry_id"], "input.registry_id", token=True),
         "schema": INPUT_SCHEMA,
-        "snapshot_ref": _require_str(value["snapshot_ref"], "input.snapshot_ref", max_len=512),
-        "snapshot_sha256": _require_sha256(value["snapshot_sha256"], "input.snapshot_sha256"),
+        "snapshot_ref": _str(value["snapshot_ref"], "input.snapshot_ref"),
+        "snapshot_sha256": _sha(value["snapshot_sha256"], "input.snapshot_sha256"),
     }
 
 
-def _classify(record: dict[str, Any]) -> tuple[str, list[str], list[str]]:
-    missing_tools = sorted(set(record["required_tools"]) - set(record["available_tools"]))
+def _classify(rec: dict[str, Any]) -> tuple[str, list[str], list[str]]:
+    missing = sorted(set(rec["required_tools"]) - set(rec["available_tools"]))
     reasons: list[str] = []
-
-    failed_caps = [item["capability"] for item in record["measured_capabilities"] if item["condition"] == "FAIL"]
-    denied_constraints = [item["constraint"] for item in record["declared_constraints"] if item["owner_verdict"] == "DENIED"]
-    pending_constraints = [item["constraint"] for item in record["declared_constraints"] if item["owner_verdict"] == "PENDING"]
-    tooling_constraints = [
-        item["tooling_need"] for item in record["declared_constraints"] if item["tooling_need"] != "NONE"
-    ]
-
-    if record["execution_requested"]:
+    if rec["execution_requested"]:
         reasons.append("EXECUTION_REQUESTED_OUTSIDE_REGISTRY_AUTHORITY")
-    reasons.extend(f"BLOCK:{item}" for item in record["blocking_reasons"])
-    reasons.extend(f"CAPABILITY_FAIL:{item}" for item in failed_caps)
-    reasons.extend(f"CONSTRAINT_DENIED:{item}" for item in denied_constraints)
-
-    if reasons:
-        return "HOLD", sorted(reasons), missing_tools
-    if record["owner_decision"] == "DENIED":
-        return "HOLD", ["OWNER_DENIED"], missing_tools
-    if record["owner_decision"] == "PENDING" or pending_constraints:
-        details = ["OWNER_DECISION_PENDING"]
-        details.extend(f"CONSTRAINT_PENDING:{item}" for item in pending_constraints)
-        return "OWNER_DECISION", sorted(details), missing_tools
-    if missing_tools or tooling_constraints:
-        details = [f"MISSING_TOOL:{item}" for item in missing_tools]
-        details.extend(f"TOOLING_CONSTRAINT:{item}" for item in tooling_constraints)
-        return "TOOLING_NEEDED", sorted(details), missing_tools
+    reasons += [f"BLOCK:{x}" for x in rec["blocking_reasons"]]
+    reasons += [f"CAPABILITY_FAIL:{x['capability']}" for x in rec["measured_capabilities"] if x["condition"] == "FAIL"]
+    reasons += [f"CONSTRAINT_DENIED:{x['constraint']}" for x in rec["declared_constraints"] if x["owner_verdict"] == "DENIED"]
+    if reasons or rec["owner_decision"] == "DENIED":
+        return "HOLD", sorted(reasons or ["OWNER_DENIED"]), missing
+    pending = [x["constraint"] for x in rec["declared_constraints"] if x["owner_verdict"] == "PENDING"]
+    if rec["owner_decision"] == "PENDING" or pending:
+        return "OWNER_DECISION", sorted(["OWNER_DECISION_PENDING"] + [f"CONSTRAINT_PENDING:{x}" for x in pending]), missing
+    needs = [x["tooling_need"] for x in rec["declared_constraints"] if x["tooling_need"] != "NONE"]
+    if missing or needs:
+        return "TOOLING_NEEDED", sorted([f"MISSING_TOOL:{x}" for x in missing] + [f"TOOLING_CONSTRAINT:{x}" for x in needs]), missing
     return "READY", [], []
 
 
-def _projection_record(record: dict[str, Any]) -> dict[str, Any]:
-    status, reasons, missing_tools = _classify(record)
-    return {
-        **deepcopy(record),
-        "missing_tools": missing_tools,
-        "status": status,
-        "status_reasons": reasons,
-    }
+def _project(rec: dict[str, Any]) -> dict[str, Any]:
+    status, reasons, missing = _classify(rec)
+    return {**deepcopy(rec), "missing_tools": missing, "status": status, "status_reasons": reasons}
 
 
-def _markdown_escape(value: str) -> str:
+def _md(value: str) -> str:
     return value.replace("\\", "\\\\").replace("|", "\\|").replace("\n", " ")
 
 
 def render_markdown(result: dict[str, Any]) -> bytes:
     lines = [
-        "# Agent Capability & Constraint Registry",
-        "",
-        f"- Registry: `{_markdown_escape(result['registry_id'])}`",
+        "# Agent Capability & Constraint Registry", "",
+        f"- Registry: `{_md(result['registry_id'])}`",
         f"- Generated at: `{result['generated_at']}`",
-        f"- Snapshot: `{_markdown_escape(result['snapshot_ref'])}` / `{result['snapshot_sha256']}`",
+        f"- Evidence freshness window: `{result['evidence_max_age_seconds']}` seconds",
+        f"- Snapshot: `{_md(result['snapshot_ref'])}` / `{result['snapshot_sha256']}`",
         f"- Input SHA-256: `{result['input_sha256']}`",
-        "- Authority: **observational only; no execution, deployment, access, spend, messaging, or model-selection authority**",
-        "",
+        "- Authority: **observational only; no execution, deployment, access, spend, messaging, or model-selection authority**", "",
         "| Workstream | Agent | Rev | Provider | Model/Harness | Status | Reasons |",
         "|---|---|---:|---|---|---|---|",
     ]
-    for record in result["records"]:
-        reasons = ", ".join(record["status_reasons"]) if record["status_reasons"] else "—"
-        lines.append(
-            "| " + " | ".join([
-                _markdown_escape(record["workstream"]),
-                _markdown_escape(record["agent_id"]),
-                str(record["revision"]),
-                _markdown_escape(record["provider"]),
-                _markdown_escape(record["model_or_harness"]),
-                record["status"],
-                _markdown_escape(reasons),
-            ]) + " |"
-        )
-    lines.extend(["", "## Counts", ""])
-    for status in VALID_STATUSES:
-        lines.append(f"- `{status}`: {result['counts'][status]}")
-    lines.extend([
-        "",
-        "## Non-authority boundary",
-        "",
-        "This projection is an evidence-backed census. A `READY` row means only that the declared registry conditions are internally satisfied. It is **not** permission to run, deploy, call a tool, access data, message anyone, spend money, or change external state.",
-        "",
-    ])
-    return "\n".join(lines).encode("utf-8")
+    for rec in result["records"]:
+        reasons = ", ".join(rec["status_reasons"]) or "—"
+        lines.append("| " + " | ".join((_md(rec["workstream"]), _md(rec["agent_id"]), str(rec["revision"]), _md(rec["provider"]), _md(rec["model_or_harness"]), rec["status"], _md(reasons))) + " |")
+    lines += ["", "## Counts", ""] + [f"- `{status}`: {result['counts'][status]}" for status in VALID_STATUSES]
+    lines += ["", "## Non-authority boundary", "", "This projection is an evidence-backed census. A `READY` row means only that the declared registry conditions are internally satisfied. It is **not** permission to run, deploy, call a tool, access data, message anyone, spend money, or change external state.", ""]
+    return "\n".join(lines).encode()
 
 
 def compile_registry(value: dict[str, Any]) -> CompiledRegistry:
-    normalized = normalize_input(value)
-    normalized_bytes = _canonical_json_bytes(normalized)
-    input_digest = _sha256(normalized_bytes)
-    projected = [_projection_record(record) for record in normalized["records"]]
-    counts = {status: 0 for status in VALID_STATUSES}
-    for record in projected:
-        counts[record["status"]] += 1
+    source = normalize_input(value)
+    input_sha = _digest(_json(source))
+    records = [_project(x) for x in source["records"]]
+    counts = {status: sum(x["status"] == status for x in records) for status in VALID_STATUSES}
     result = {
-        "authority": {
-            "access_elevation": False,
-            "deployment": False,
-            "external_effects": False,
-            "messaging": False,
-            "model_selection": False,
-            "spending": False,
-            "tool_execution": False,
-        },
+        "authority": {key: False for key in ("access_elevation", "deployment", "external_effects", "messaging", "model_selection", "spending", "tool_execution")},
         "counts": counts,
-        "generated_at": normalized["generated_at"],
-        "input_sha256": input_digest,
-        "records": projected,
-        "registry_id": normalized["registry_id"],
+        "evidence_max_age_seconds": source["evidence_max_age_seconds"],
+        "generated_at": source["generated_at"],
+        "input_sha256": input_sha,
+        "records": records,
+        "registry_id": source["registry_id"],
         "schema": RESULT_SCHEMA,
-        "snapshot_ref": normalized["snapshot_ref"],
-        "snapshot_sha256": normalized["snapshot_sha256"],
+        "snapshot_ref": source["snapshot_ref"],
+        "snapshot_sha256": source["snapshot_sha256"],
     }
-    result_raw = _canonical_json_bytes(result)
+    result_raw = _json(result)
     markdown_raw = render_markdown(result)
-    receipt_base = {
-        "authority": "OBSERVATIONAL_ONLY",
-        "input_sha256": input_digest,
-        "markdown_sha256": _sha256(markdown_raw),
-        "record_count": len(projected),
-        "registry_id": normalized["registry_id"],
-        "result_sha256": _sha256(result_raw),
-        "schema": RECEIPT_SCHEMA,
-    }
-    receipt = {**receipt_base, "receipt_sha256": _sha256(_canonical_json_bytes(receipt_base))}
-    receipt_raw = _canonical_json_bytes(receipt)
-    return CompiledRegistry(result, result_raw, markdown_raw, receipt, receipt_raw)
+    base = {"authority": "OBSERVATIONAL_ONLY", "input_sha256": input_sha, "markdown_sha256": _digest(markdown_raw), "record_count": len(records), "registry_id": source["registry_id"], "result_sha256": _digest(result_raw), "schema": RECEIPT_SCHEMA}
+    receipt = {**base, "receipt_sha256": _digest(_json(base))}
+    return CompiledRegistry(result, result_raw, markdown_raw, receipt, _json(receipt))
 
 
-def verify_compiled(
-    source: dict[str, Any],
-    result_raw: bytes,
-    markdown_raw: bytes,
-    receipt_raw: bytes,
-) -> dict[str, Any]:
-    """Recompile source and byte-verify all outputs and receipt commitments."""
+def verify_compiled(source: dict[str, Any], result_raw: bytes, markdown_raw: bytes, receipt_raw: bytes) -> dict[str, Any]:
     expected = compile_registry(source)
-    observed_result = load_json_bytes(result_raw, "result")
-    observed_receipt = load_json_bytes(receipt_raw, "receipt")
-    if observed_result.get("schema") != RESULT_SCHEMA:
-        raise RegistryError("result: unsupported schema")
-    if observed_receipt.get("schema") != RECEIPT_SCHEMA:
-        raise RegistryError("receipt: unsupported schema")
+    result = load_json_bytes(result_raw, "result")
+    receipt = load_json_bytes(receipt_raw, "receipt")
+    if result.get("schema") != RESULT_SCHEMA or receipt.get("schema") != RECEIPT_SCHEMA:
+        raise RegistryError("result/receipt: unsupported schema")
     if result_raw != expected.result_bytes:
         raise RegistryError("result: bytes or semantics do not match deterministic recompile")
     if markdown_raw != expected.markdown_bytes:
         raise RegistryError("markdown: bytes do not match deterministic recompile")
     if receipt_raw != expected.receipt_bytes:
         raise RegistryError("receipt: bytes or commitments do not match deterministic recompile")
-    receipt_base = dict(observed_receipt)
-    claimed_receipt = receipt_base.pop("receipt_sha256", None)
-    if claimed_receipt != _sha256(_canonical_json_bytes(receipt_base)):
+    base = dict(receipt)
+    claimed = base.pop("receipt_sha256", None)
+    if claimed != _digest(_json(base)):
         raise RegistryError("receipt: self commitment mismatch")
-    return {
-        "counts": expected.result["counts"],
-        "input_sha256": expected.result["input_sha256"],
-        "markdown_sha256": expected.receipt["markdown_sha256"],
-        "receipt_sha256": expected.receipt["receipt_sha256"],
-        "result_sha256": expected.receipt["result_sha256"],
-        "verified": True,
-    }
+    return {"counts": expected.result["counts"], "input_sha256": expected.result["input_sha256"], "markdown_sha256": expected.receipt["markdown_sha256"], "receipt_sha256": expected.receipt["receipt_sha256"], "result_sha256": expected.receipt["result_sha256"], "verified": True}
 
 
 def write_compiled(source: dict[str, Any], out_dir: str | Path) -> CompiledRegistry:
-    """Create a fresh output directory. Existing destinations fail closed."""
     dest = Path(out_dir)
     if dest.exists():
         raise RegistryError(f"output directory already exists: {dest}")
