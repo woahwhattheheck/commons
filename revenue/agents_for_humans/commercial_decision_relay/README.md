@@ -6,7 +6,7 @@ Built for the AWS **Agents for Humans** hackathon, Professional Agents track.
 
 ## The problem
 
-Commercial teams repeatedly check offers, replies, amendments, expiries, and terms. That work is repetitive; the final decision is not. An LLM should not convert fuzzy language into "closed" status.
+Commercial teams repeatedly check offers, replies, amendments, expiries, and terms. That work is repetitive; the final decision is not. An LLM should not convert fuzzy language into commercial authority.
 
 Commercial Decision Relay separates the two:
 
