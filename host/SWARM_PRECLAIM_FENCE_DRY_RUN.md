@@ -1,6 +1,6 @@
 # Swarm pre-claim fence — offline dry-run transcript
 
-The transcript below is generated from the same pure evaluator used by the live read-only helper. No GitHub or Slack mutation is performed. Unsafe states return nonzero exit codes, so a caller can hard-block branch creation.
+The transcript below mirrors the same pure evaluator used by the live read-only helper. No GitHub or Slack mutation is performed. Unsafe states return nonzero exit codes, so a caller can hard-block branch creation. SAFE requires a complete owner-PR census in addition to the other absence evidence.
 
 ## A — exact target custody beats empty stable-id search
 
@@ -13,6 +13,7 @@ Slack evidence:
   exact_target_hits: 1
     - build-demand | 1 | TAKE SOURCE+MERGE upstream/repo#842
   path_semantic_hits: 0
+Owner PR census: complete=True open=0 hits=0
 Owner snapshot: owner/repo main@owner-head tree=owner-tree
 Upstream snapshot: pull upstream/repo#842 head=donor-head changed=1
 Blob comparisons:
@@ -39,6 +40,7 @@ Slack evidence:
   stable_id_hits: 0
   exact_target_hits: 0
   path_semantic_hits: 0
+Owner PR census: complete=True open=0 hits=0
 Owner snapshot: owner/repo main@owner-head tree=owner-tree
 Upstream snapshot: pull upstream/repo#842 head=donor-head changed=1
 Blob comparisons:
@@ -65,6 +67,7 @@ Slack evidence:
   stable_id_hits: 0
   exact_target_hits: 0
   path_semantic_hits: 0
+Owner PR census: complete=True open=0 hits=0
 Owner snapshot: owner/repo main@owner-head tree=owner-tree
 Upstream snapshot: pull upstream/repo#842 head=donor-head changed=1
 Blob comparisons:
