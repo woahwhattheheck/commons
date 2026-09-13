@@ -1,0 +1,72 @@
+[
+  {
+    "evidence_summary": "Brightcove documents HLS and DASH manifest delivery for VOD plus HLS delivery for live streams, with DRM and CDN configuration in the same playback workflow.",
+    "evidence_url": "https://player.support.brightcove.com/playback/static-url-delivery.html",
+    "falsifier": "Disqualify if Brightcove can already show equivalent pre-publication checks for all seven modeled fault classes on sanitized manifest exports.",
+    "fit_reason": "Public multi-protocol manifest operations map directly to metadata-level checks for rendition presence, DRM references, publication windows, checksums, and CDN-region consistency.",
+    "organization": "Brightcove"
+  },
+  {
+    "evidence_summary": "Vimeo documents live streaming into Vimeo OTT alongside an on-demand library, with encoder setup and account-level live-streaming workflows.",
+    "evidence_url": "https://help.vimeo.com/hc/en-us/articles/12427305044497-Get-started-with-Vimeo-OTT-Live",
+    "falsifier": "Disqualify if Vimeo OTT cannot provide sanitized export metadata or already audits the same seven fault classes before release.",
+    "fit_reason": "A live-to-OTT workflow creates a plausible manifest handoff where publication-window, rendition, caption/audio, and artifact metadata can be checked without touching media.",
+    "organization": "Vimeo OTT"
+  },
+  {
+    "evidence_summary": "Dacast publicly describes HLS delivery for live and on-demand video, adaptive-bitrate preparation, automatic VOD recording, access controls, and stream analytics.",
+    "evidence_url": "https://www.dacast.com/hls-streaming-platform/",
+    "falsifier": "Disqualify if Dacast's existing QA already covers all seven classes with an auditable pre-release artifact and no outside diagnostic gap remains.",
+    "fit_reason": "Adaptive-bitrate live/VOD operations are directly relevant to deterministic metadata checks across renditions, artifacts, publication windows, and CDN-facing fields.",
+    "organization": "Dacast"
+  },
+  {
+    "evidence_summary": "Uscreen publicly offers live streaming across web, mobile, and TV and describes multi-bitrate adaptive delivery plus RTMP-compatible production inputs.",
+    "evidence_url": "https://www.uscreen.tv/live-streaming-platform/",
+    "falsifier": "Disqualify if Uscreen lacks a sanitized manifest/export boundary or can demonstrate equivalent seven-class validation already enforced in production.",
+    "fit_reason": "Multi-bitrate adaptive delivery creates a relevant rendition metadata surface for a no-media diagnostic focused on consistency before release.",
+    "organization": "Uscreen"
+  },
+  {
+    "evidence_summary": "Kaltura documents HLS and DASH live streaming, cloud transcoding, live-to-VOD archiving, multi-protocol delivery, and simultaneous transcode workflows.",
+    "evidence_url": "https://knowledge.kaltura.com/help/what-live-streaming-types-are-available-in-the-kmc",
+    "falsifier": "Disqualify if Kaltura's current preflight already produces equivalent fail-closed evidence for all seven modeled defect classes.",
+    "fit_reason": "The published live workflow has multiple rendition/protocol outputs where metadata-only checks can target missing flavors, timing, captions, DRM references, and release-window drift.",
+    "organization": "Kaltura"
+  },
+  {
+    "evidence_summary": "JWX documents Broadcast Live streams with HLS and DASH playout URLs and an explicit preview-before-publish workflow for OTT applications.",
+    "evidence_url": "https://docs.jwplayer.com/platform/docs/embed-and-publish-a-live-stream",
+    "falsifier": "Disqualify if JWX already verifies the seven modeled metadata fault classes at preview time with equivalent deterministic evidence.",
+    "fit_reason": "Published HLS/DASH playout and preview boundaries are a concrete place to test a sanitized metadata-only pre-release diagnostic without changing stream infrastructure.",
+    "organization": "JWX / JW Player"
+  },
+  {
+    "evidence_summary": "Wowza documents adaptive-bitrate live and VOD delivery over HLS, MPEG-DASH, CMAF variants, and other protocols across browsers, players, and connected devices.",
+    "evidence_url": "https://www.wowza.com/docs/understanding-protocols-and-formats-supported-by-wowza-streaming-engine",
+    "falsifier": "Disqualify if Wowza's built-in validation already covers all seven target defects with exportable audit evidence before publication.",
+    "fit_reason": "A broad ABR packaging surface creates a strong fit for manifest and rendition consistency checks that operate on metadata only.",
+    "organization": "Wowza"
+  },
+  {
+    "evidence_summary": "The Vesper platform describes multi-cloud, multi-CDN streaming from ingestion and encoding through playback for live and on-demand content with DRM and stream security.",
+    "evidence_url": "https://www.endeavorstreaming.com/platform/",
+    "falsifier": "Disqualify if Vesper cannot expose a sanitized metadata sample or already demonstrates all seven checks with equivalent deterministic pre-release evidence.",
+    "fit_reason": "Multi-CDN live/VOD operations expose the exact kind of metadata coordination risk the diagnostic is designed to test while remaining outside media and secret access.",
+    "organization": "Deltatre (Endeavor Streaming)"
+  },
+  {
+    "evidence_summary": "ViewLift publicly describes live, linear, and VOD workflows with MPEG-DASH links, HLS adaptive streaming, multi-device distribution, content ingestion, and DRM.",
+    "evidence_url": "https://viewlift.com/video-platform/",
+    "falsifier": "Disqualify if ViewLift already performs the same seven fail-closed checks or cannot provide sanitized release metadata without customer content.",
+    "fit_reason": "The documented HLS/DASH and multi-device release surface is relevant to deterministic metadata reconciliation across renditions, timing, artifacts, and release windows.",
+    "organization": "ViewLift"
+  },
+  {
+    "evidence_summary": "VPlayed publicly describes HLS and DASH adaptive delivery, multi-bitrate HD encoding, CDN distribution, DRM/security, and OTT operations across device classes.",
+    "evidence_url": "https://www.vplayed.com/ott-entertainment-platform.php",
+    "falsifier": "Disqualify if VPlayed's platform already catches all seven modeled defects with auditable evidence or requires media/secret access for any useful evaluation.",
+    "fit_reason": "The advertised HLS/DASH multi-bitrate workflow makes rendition and artifact metadata a plausible diagnostic surface before customer-specific integration work.",
+    "organization": "VPlayed (CONTUS TECH)"
+  }
+]

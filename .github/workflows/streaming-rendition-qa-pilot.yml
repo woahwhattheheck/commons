@@ -1,0 +1,35 @@
+name: streaming-rendition-qa-pilot
+
+on:
+  pull_request:
+    paths:
+      - "revenue/streaming_rendition_release_gate/**"
+      - "revenue/streaming_rendition_qa_pilot/**"
+      - "test_streaming_rendition_qa_pilot.py"
+      - ".github/workflows/streaming-rendition-qa-pilot.yml"
+  push:
+    branches: ["main"]
+    paths:
+      - "revenue/streaming_rendition_release_gate/**"
+      - "revenue/streaming_rendition_qa_pilot/**"
+      - "test_streaming_rendition_qa_pilot.py"
+      - ".github/workflows/streaming-rendition-qa-pilot.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  deterministic-paid-pilot:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Unit and hostile tests
+        run: python3 test_streaming_rendition_qa_pilot.py
+      - name: Optimized-mode parity
+        run: python3 -O test_streaming_rendition_qa_pilot.py
+      - name: Compile canonical pilot packet
+        run: python3 revenue/streaming_rendition_qa_pilot/build_pilot_packet.py --check

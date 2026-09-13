@@ -1,0 +1,39 @@
+{
+  "authority": {
+    "cdn_mutation": false,
+    "contract_signature": false,
+    "customer_mutation": false,
+    "drm_secret_access": false,
+    "media_ingestion": false,
+    "payment_action": false,
+    "prospect_contact": false,
+    "release_authority": false,
+    "rights_determination": false,
+    "transcoding": false
+  },
+  "commercial": {
+    "buyer_acceptance": false,
+    "diagnostic_asset_cap": 250,
+    "diagnostic_price_usd": 2500,
+    "integration_sprint_price_usd": 7500,
+    "payment_received": false,
+    "pricing_status": "pilot-test-price-not-market-rate-claim",
+    "recognized_revenue_usd": 0
+  },
+  "operation": "STREAMING-RENDITION-QA-PILOT-KIT-ZLCV7Q3-20260913",
+  "owner": "Z-LorentzCinder-914020-V7Q3",
+  "schema": "streaming-rendition-qa-pilot-proof/v1",
+  "source": {
+    "fault_classes": 7,
+    "fixture_sha256": "27d34cc0574f3210e3e42c575f3615be9bd6d056f6f51576271bc7b6ecc79441",
+    "hold": 28,
+    "holds_per_fault_class": 4,
+    "projection_sha256": "e510ed89458a54d32a6cda0da425d92612ed40783fb311c2db86d3ad33f889c2",
+    "release_ready": 140,
+    "repository": "woahwhattheheck/commons",
+    "source_head_sha": "4d36fb08bf3e106f59b32008fb2486013298dce6",
+    "source_merge_sha": "fed79e71c0c94c92568e5b555f50d2ad34ad0658",
+    "source_pr": 13885,
+    "total": 168
+  }
+}
