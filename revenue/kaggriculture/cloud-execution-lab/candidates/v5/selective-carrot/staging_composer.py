@@ -22,6 +22,8 @@ import stat
 import tarfile
 from typing import Any
 
+from publication_custody import publish_exclusive
+
 BASELINE_SHA256 = "20f201161b14af7755146b08207593f9fa5df641d2f31e680792ea62c0e24239"
 COMPONENT_SCHEMA = "titan-v5-staging-component/v1"
 RECEIPT_SCHEMA = "titan-v5-single-staging-composer/v1"
@@ -42,15 +44,6 @@ class ComposerError(ValueError):
 
 def digest(raw: bytes) -> str:
     return hashlib.sha256(raw).hexdigest()
-
-
-def _write_all(fd: int, raw: bytes) -> None:
-    view = memoryview(raw)
-    while view:
-        wrote = os.write(fd, view)
-        if wrote <= 0:
-            raise OSError("short write while publishing output")
-        view = view[wrote:]
 
 
 def read_regular(path: Path) -> bytes:
@@ -371,122 +364,17 @@ def compose(baseline_raw: bytes, components: list[dict[str, Any]]) -> tuple[byte
     return packed, receipt
 
 
-def _verify_owned_final(path: Path, owned: tuple[int, int], expected_raw: bytes) -> None:
-    try:
-        before = os.lstat(path)
-    except OSError as exc:
-        raise ComposerError(f"published final missing: {path}") from exc
-    if not stat.S_ISREG(before.st_mode) or (before.st_dev, before.st_ino) != owned:
-        raise ComposerError(f"published final ownership changed: {path}")
-    if before.st_size != len(expected_raw):
-        raise ComposerError(f"published final size changed: {path}")
-
-    flags = os.O_RDONLY
-    if hasattr(os, "O_CLOEXEC"):
-        flags |= os.O_CLOEXEC
-    if hasattr(os, "O_NOFOLLOW"):
-        flags |= os.O_NOFOLLOW
-    try:
-        fd = os.open(path, flags)
-    except OSError as exc:
-        raise ComposerError(f"cannot re-open published final: {path}") from exc
-    try:
-        opened = os.fstat(fd)
-        if not stat.S_ISREG(opened.st_mode) or (opened.st_dev, opened.st_ino) != owned:
-            raise ComposerError(f"published final ownership changed during verify: {path}")
-        chunks: list[bytes] = []
-        while True:
-            chunk = os.read(fd, 1024 * 1024)
-            if not chunk:
-                break
-            chunks.append(chunk)
-        captured = b"".join(chunks)
-    finally:
-        os.close(fd)
-    if captured != expected_raw:
-        raise ComposerError(f"published final payload changed: {path}")
-    after = os.lstat(path)
-    if not stat.S_ISREG(after.st_mode) or (after.st_dev, after.st_ino) != owned:
-        raise ComposerError(f"published final ownership changed after verify: {path}")
-
-
-def _fsync_directory(directory: Path) -> None:
-    directory = Path(directory)
-    flags = os.O_RDONLY
-    if hasattr(os, "O_CLOEXEC"):
-        flags |= os.O_CLOEXEC
-    if hasattr(os, "O_DIRECTORY"):
-        flags |= os.O_DIRECTORY
-    fd = os.open(directory, flags)
-    try:
-        if not stat.S_ISDIR(os.fstat(fd).st_mode):
-            raise ComposerError(f"output parent is not a directory: {directory}")
-        os.fsync(fd)
-    finally:
-        os.close(fd)
-
-
-def _unlink_if_owned(path: Path, fd: int, owned: tuple[int, int]) -> None:
-    """Best-effort cooperative rollback while the reserved inode is still pinned."""
-    live = os.fstat(fd)
-    if (live.st_dev, live.st_ino) != owned:
-        return
-    try:
-        current = os.lstat(path)
-    except FileNotFoundError:
-        return
-    if not stat.S_ISREG(current.st_mode) or (current.st_dev, current.st_ino) != owned:
-        return
-    try:
-        os.unlink(path)
-    except FileNotFoundError:
-        pass
-
-
 def publish_pair(out: Path, receipt_path: Path, archive_raw: bytes, receipt_raw: bytes) -> None:
+    """Publish composer archive+receipt through the canonical shared custody primitive."""
     out, receipt_path = Path(out), Path(receipt_path)
     if out == receipt_path:
         raise ComposerError("archive and receipt paths must differ")
-    out.parent.mkdir(parents=True, exist_ok=True)
-    receipt_path.parent.mkdir(parents=True, exist_ok=True)
-    opened: list[tuple[Path, int, tuple[int, int]]] = []
-    flags = os.O_WRONLY | os.O_CREAT | os.O_EXCL
-    if hasattr(os, "O_CLOEXEC"):
-        flags |= os.O_CLOEXEC
     try:
-        for path in (out, receipt_path):
-            fd = os.open(path, flags, 0o644)
-            st = os.fstat(fd)
-            opened.append((path, fd, (st.st_dev, st.st_ino)))
-        _write_all(opened[0][1], archive_raw)
-        os.fsync(opened[0][1])
-        _write_all(opened[1][1], receipt_raw)
-        os.fsync(opened[1][1])
-        _verify_owned_final(out, opened[0][2], archive_raw)
-        _verify_owned_final(receipt_path, opened[1][2], receipt_raw)
-        for parent in sorted({out.parent, receipt_path.parent}, key=str):
-            _fsync_directory(parent)
-        _verify_owned_final(out, opened[0][2], archive_raw)
-        _verify_owned_final(receipt_path, opened[1][2], receipt_raw)
-    except Exception:
-        # Keep reservation fds live until every rollback ownership decision is
-        # complete. Cleanup is best-effort and must not mask the root failure.
-        try:
-            for path, fd, owned in reversed(opened):
-                try:
-                    _unlink_if_owned(path, fd, owned)
-                except Exception:
-                    pass
-        finally:
-            for _, fd, _ in opened:
-                try:
-                    os.close(fd)
-                except OSError:
-                    pass
-        raise
-    else:
-        for _, fd, _ in opened:
-            os.close(fd)
+        publish_exclusive(((out, archive_raw), (receipt_path, receipt_raw)))
+    except ValueError as exc:
+        # Keep the composer's public error surface fail-closed while delegating
+        # all create-exclusive reservation/write/verify/rollback semantics.
+        raise ComposerError(str(exc)) from exc
 
 
 def main() -> int:
