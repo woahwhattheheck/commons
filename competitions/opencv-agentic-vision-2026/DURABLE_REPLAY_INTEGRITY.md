@@ -33,7 +33,11 @@ This matters for collision/race recovery as well: a conditional-put loser must r
 
 ## Human-review recovery boundary
 
-`delivery` is a progress marker, not independent proof that SQS accepted a review message. A retained `REQUEST_HUMAN_REVIEW` receipt is therefore reissued to the FIFO review queue on every valid replay whether the row says `RECORDED` or `REVIEW_QUEUED`. The send uses the exact `event_id` as `MessageDeduplicationId`, and the runtime revalidates evidence, receipt, queried event identity, delivery state, and the fixed false external-authority flag immediately before every send.
+`delivery` is a progress marker, not independent proof that SQS accepted a review message. A retained `REQUEST_HUMAN_REVIEW` receipt is therefore reissued to the FIFO review queue on every valid replay whether the row says `RECORDED` or `REVIEW_QUEUED`. The send uses the exact `event_id` as `MessageDeduplicationId`.
+
+Immediately before SQS, `_deliver_review()` must prove current durable custody rather than trusting the caller's in-memory snapshot. For a `RECORDED` row it conditionally advances `delivery` to `REVIEW_QUEUED` only when the exact canonical `evidence_json` and `receipt_json` still match the packet being delivered. If another invocation already advanced the marker, a strongly consistent read must prove an exact matching `REVIEW_QUEUED` row. In either path the runtime then strongly rereads the current row and requires the same verified evidence/receipt plus `REVIEW_QUEUED` before sending. A missing, deleted, replaced, or semantically changed row fails closed with zero SQS call.
+
+The marker is intentionally advanced before the external send and still does **not** claim that SQS accepted anything. If SQS fails after that reservation, the next valid replay sees the exact `REVIEW_QUEUED` row and reissues the same event-id-deduplicated message. This preserves at-least-once recovery without turning a mutable progress bit into delivery proof.
 
 This design intentionally prevents a poisoned or stale `REVIEW_QUEUED` bit from suppressing a required human-review recovery. It provides at-least-once recovery semantics, not global exactly-once delivery. SQS FIFO deduplication has a finite window, so any downstream human-review consumer must also preserve `event_id` as its durable idempotency key and tolerate a later duplicate with the same event ID.
 
