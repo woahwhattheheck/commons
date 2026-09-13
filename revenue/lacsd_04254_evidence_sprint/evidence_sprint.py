@@ -19,9 +19,26 @@ from evidence_core import (
     canonical_sha256,
 )
 
+
+def _validate_effect_lineage(events: Sequence[Mapping[str, Any]]) -> None:
+    """Bind each effect identity to one exact scenario and input lineage."""
+    effect_bindings: dict[str, tuple[str, str]] = {}
+    for event in events:
+        effect_id = event["effect_id"]
+        if effect_id is None:
+            continue
+        binding = (event["scenario_id"], event["input_sha256"])
+        previous = effect_bindings.setdefault(effect_id, binding)
+        if previous != binding:
+            raise ValidationError(
+                f"effect_id reused across distinct scenario/input lineage: {effect_id}"
+            )
+
+
 def evaluate_candidate(candidate: Mapping[str, Any]) -> dict[str, Any]:
     portfolio = build_portfolio()
     normalized = _validate_candidate(candidate, portfolio)
+    _validate_effect_lineage(normalized["events"])
     events_by_scenario: dict[str, list[dict[str, Any]]] = {row["scenario_id"]: [] for row in portfolio["scenarios"]}
     for event in normalized["events"]:
         events_by_scenario[event["scenario_id"]].append(event)
