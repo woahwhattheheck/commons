@@ -17,14 +17,22 @@ import math
 import os
 from pathlib import Path
 import signal
+import stat
 import subprocess
 import sys
 import tempfile
+
+# Importing the local report helper must not create ignored __pycache__ bytes
+# before the clean-checkout preflight inspects the repository.
+sys.dont_write_bytecode = True
 
 try:
     from . import battery_report
 except ImportError:
     import battery_report
+
+
+REGULAR_GIT_MODES = {"100644", "100755"}
 
 
 def discover(root: Path) -> list[tuple[str, str]]:
@@ -70,6 +78,73 @@ def execute(root: Path, command: str, path: str, timeout: float | None) -> int:
         print("test timed out: " + json.dumps(path), file=sys.stderr, flush=True)
         return 124
     return min(255, 128 - rc) if rc < 0 else min(255, rc)
+
+
+def checkout_tree(root: Path, sha: str) -> dict[str, tuple[str, str, str]]:
+    """Return path -> (mode, object kind, object id) for the recorded commit."""
+    raw = subprocess.run(
+        ["git", "-C", str(root), "ls-tree", "-r", "-z", "--full-tree", sha],
+        check=True,
+        capture_output=True,
+    ).stdout
+    entries: dict[str, tuple[str, str, str]] = {}
+    for entry in raw.split(b"\0"):
+        if not entry:
+            continue
+        metadata, raw_path = entry.split(b"\t", 1)
+        mode, kind, object_id = metadata.split()
+        entries[raw_path.decode("utf-8", "surrogateescape")] = (
+            mode.decode("ascii"),
+            kind.decode("ascii"),
+            object_id.decode("ascii"),
+        )
+    return entries
+
+
+def source_binding_errors(
+    root: Path,
+    selected: list[tuple[str, str]],
+    tree: dict[str, tuple[str, str, str]],
+) -> list[dict[str, object]]:
+    """Explain selected tests that are not regular committed files at HEAD."""
+    errors: list[dict[str, object]] = []
+    for _command, path in selected:
+        problems: list[str] = []
+        entry = tree.get(path)
+        if entry is None:
+            problems.append("not_in_checkout_commit")
+        else:
+            mode, kind, _object_id = entry
+            if kind != "blob":
+                problems.append("checkout_object_is_" + kind)
+            if mode not in REGULAR_GIT_MODES:
+                problems.append("checkout_mode_" + mode)
+        try:
+            metadata = (root / path).lstat()
+        except OSError:
+            problems.append("working_tree_path_unavailable")
+        else:
+            if not stat.S_ISREG(metadata.st_mode):
+                problems.append("working_tree_path_not_regular")
+        if problems:
+            errors.append({"path": path, "problems": problems})
+    return errors
+
+
+def worktree_is_contaminated(root: Path) -> bool:
+    """Treat tracked, untracked, and ignored working-tree bytes as contamination."""
+    changed = subprocess.run(
+        ["git", "-C", str(root), "status", "--porcelain=v1", "--untracked-files=all"],
+        check=True,
+        capture_output=True,
+    ).stdout
+    ignored = subprocess.run(
+        ["git", "-C", str(root), "ls-files", "--others", "--ignored",
+         "--exclude-standard", "-z"],
+        check=True,
+        capture_output=True,
+    ).stdout
+    return bool(changed or ignored)
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -127,7 +202,7 @@ def main(argv: list[str] | None = None) -> int:
 
     outcome = "success"
     code = 0
-    file_hashes = {}
+    file_hashes: dict[str, str | None] = {}
     scope = {"kind": "selected" if requested else "full", "requested": requested,
              "shard_index": args.shard_index, "shard_count": args.shard_count,
              "discovered_files": len(discovered), "planned_files": len(selected)}
@@ -135,6 +210,7 @@ def main(argv: list[str] | None = None) -> int:
         scope["kind"] = "selected-shard" if requested else "shard"
     dirty = None
     preflight_error = None
+    binding_errors: list[dict[str, object]] = []
 
     try:
         # Outputs are outside the checkout, so clear old evidence before Git
@@ -150,33 +226,44 @@ def main(argv: list[str] | None = None) -> int:
                 ["git", "-C", str(root), "rev-parse", "--verify", "HEAD^{commit}"],
                 check=True, capture_output=True, text=True,
             ).stdout.strip()
-            dirty = bool(subprocess.run(
-                ["git", "-C", str(root), "status", "--porcelain", "--untracked-files=all"],
-                check=True, capture_output=True,
-            ).stdout)
+            dirty = worktree_is_contaminated(root)
             record(handle, "checkout_sha", sha, "")
             if dirty:
                 preflight_error = "dirty_worktree"
                 outcome, code = "failure", 2
-                print("refusing to execute battery from a dirty worktree", file=sys.stderr)
+                print(
+                    "refusing to execute battery from a tracked, untracked, or ignored dirty worktree",
+                    file=sys.stderr,
+                )
             else:
-                for command, path in selected:
-                    try:
-                        file_hashes[path] = hashlib.sha256((root / path).read_bytes()).hexdigest()
-                    except OSError:
-                        file_hashes[path] = None
-                    rc = execute(root, command, path, args.timeout or None)
-                    record(handle, command, "./" + path, rc)
-                    code = int(bool(code or rc))
-                    print(("ok   " if rc == 0 else "FAIL ") + json.dumps(path), flush=True)
-                record(handle, "battery_complete", "", code)
-                outcome = "failure" if code else "success"
-                if not selected:
-                    print("no tests matched; no passing battery evidence", file=sys.stderr)
-                    code = 1
+                binding_errors = source_binding_errors(root, selected, checkout_tree(root, sha))
+                if binding_errors:
+                    preflight_error = "unbound_test_sources"
+                    outcome, code = "failure", 2
+                    print(
+                        "refusing to execute tests not bound to regular files in the checkout commit",
+                        file=sys.stderr,
+                    )
+                else:
+                    for command, path in selected:
+                        try:
+                            file_hashes[path] = hashlib.sha256((root / path).read_bytes()).hexdigest()
+                        except OSError:
+                            file_hashes[path] = None
+                        rc = execute(root, command, path, args.timeout or None)
+                        record(handle, command, "./" + path, rc)
+                        code = int(bool(code or rc))
+                        print(("ok   " if rc == 0 else "FAIL ") + json.dumps(path), flush=True)
+                    record(handle, "battery_complete", "", code)
+                    outcome = "failure" if code else "success"
+                    if not selected:
+                        print("no tests matched; no passing battery evidence", file=sys.stderr)
+                        code = 1
     except KeyboardInterrupt:
         outcome, code = "cancelled", 130
     except (OSError, subprocess.CalledProcessError):
+        if preflight_error is None:
+            preflight_error = "checkout_preflight_failed"
         print("battery could not read its checkout or write results", file=sys.stderr)
         outcome, code = "failure", 2
 
@@ -190,6 +277,7 @@ def main(argv: list[str] | None = None) -> int:
                 "python_version": sys.version.split()[0],
                 "worktree_dirty_at_start": dirty,
                 "preflight_error": preflight_error,
+                "source_binding_errors": binding_errors,
                 "test_file_sha256": file_hashes,
             }
             report_path.parent.mkdir(parents=True, exist_ok=True)
