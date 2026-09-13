@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Drop-Off & Diagnostic Intake</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <header class="hero">
+    <p class="eyebrow">Dynamic Automotive · delivery-core demo</p>
+    <h1>One drop-off. One vehicle-bound intake.</h1>
+    <p>Capture the request before the keys hit the box, keep missing details visible, and move each arrival through one staff queue.</p>
+    <p class="boundary">This demo never authorizes diagnosis, repair, estimates, charges, or customer contact.</p>
+  </header>
+
+  <main>
+    <section class="panel intake-panel" aria-labelledby="intake-heading">
+      <div class="section-head">
+        <div><p class="eyebrow">Customer / drop-off</p><h2 id="intake-heading">Vehicle intake</h2></div>
+        <span class="pill">Browser-local only</span>
+      </div>
+      <form id="intake-form" novalidate>
+        <fieldset><legend>Contact</legend>
+          <label>Name <input name="contactName" autocomplete="name"></label>
+          <label>Preferred contact
+            <select name="contactMethod"><option value="">Choose</option><option>PHONE</option><option>EMAIL</option></select>
+          </label>
+          <label>Phone or email <input name="contactValue" autocomplete="email"></label>
+        </fieldset>
+
+        <fieldset><legend>Vehicle</legend>
+          <label>VIN <input name="vin" maxlength="20" autocapitalize="characters" placeholder="17-character VIN"></label>
+          <div class="split"><label>Plate <input name="plate" maxlength="16"></label><label>State <input name="state" maxlength="2"></label></div>
+          <div class="triple"><label>Year <input name="year" inputmode="numeric"></label><label>Make <input name="make"></label><label>Model <input name="model"></label></div>
+          <p class="hint">Use VIN, or plate + state, so arrival can be bound to the same vehicle.</p>
+        </fieldset>
+
+        <fieldset><legend>Request</legend>
+          <label>Symptoms <textarea name="symptoms" rows="4" placeholder="What are you noticing?"></textarea></label>
+          <label>Requested work <input name="requestedWork" placeholder="Diagnostic inspection, oil service"></label>
+          <label>Drop-off mode
+            <select name="dropoffMode"><option value="">Choose</option><option value="AFTER_HOURS_KEYBOX">After-hours key box</option><option value="BUSINESS_HOURS_FRONT_DESK">Business-hours front desk</option></select>
+          </label>
+          <label>Photos / evidence <input name="attachments" type="file" multiple accept="image/*,.pdf"></label>
+          <p class="hint">The demo stores attachment metadata + SHA-256 evidence only; file bytes are not persisted.</p>
+          <label>Note <textarea name="note" rows="2"></textarea></label>
+        </fieldset>
+        <button class="primary" type="submit">Save intake & receipt</button>
+      </form>
+      <p id="result" class="result" hidden role="status" aria-live="polite"></p>
+    </section>
+
+    <section class="panel queue-panel" aria-labelledby="queue-heading">
+      <div class="section-head">
+        <div><p class="eyebrow">Staff view</p><h2 id="queue-heading">Current queue</h2></div>
+        <div class="toolbar"><button id="export" type="button">Export queue + history</button><button id="reset-demo" type="button" class="danger">Reset local demo</button></div>
+      </div>
+      <p class="hint">Queue moves record staff workflow only. They do not make a diagnosis, approve an estimate, authorize a repair, or charge a customer.</p>
+      <div id="queue" class="queue" aria-live="polite"></div>
+    </section>
+  </main>
+  <footer>Offline/static acceptance core · no live shop integration · no customer send</footer>
+  <script type="module" src="./app.mjs"></script>
+</body>
+</html>
