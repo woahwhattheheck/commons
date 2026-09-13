@@ -44,7 +44,6 @@ function requestID() {
   return `${hex.slice(0,8)}-${hex.slice(8,12)}-${hex.slice(12,16)}-${hex.slice(16,20)}-${hex.slice(20)}`;
 }
 function operation(command) {
-  // An unchanged request retains its ID after an ambiguous transport failure.
   const key = JSON.stringify(command);
   if (!pending.has(key)) pending.set(key, requestID());
   return {key, id: pending.get(key)};
@@ -80,6 +79,9 @@ function inputISO(id) {
 function when(value) {
   return new Date(value).toLocaleString(undefined, {month:'short', day:'numeric', year:'numeric', hour:'2-digit', minute:'2-digit', timeZoneName:'shortOffset'});
 }
+function terms(value) {
+  return `rental $${value.rental_subtotal} + fee $${value.booking_fee} + refundable deposit $${value.security_deposit}`;
+}
 async function refresh() {
   state = await api('/api/state');
   render();
@@ -92,7 +94,8 @@ function render() {
   if (!state.assets.length) assets.append(element('p', 'Add your first asset to begin booking.', 'empty'));
   for (const asset of state.assets) {
     const card = element('div', undefined, 'asset');
-    card.append(element('strong', asset.name), element('small', `$${asset.rate} / ${asset.unit} · ${asset.minimum_units} minimum`));
+    card.append(element('strong', asset.name), element('small', `$${asset.rate} / ${asset.unit} · ${asset.minimum_units} minimum`),
+      element('small', `Booking fee $${asset.booking_fee} · refundable deposit $${asset.security_deposit}`));
     if (asset.notes) card.append(element('small', asset.notes));
     card.append(button('Edit rate & details', () => editAsset(asset)));
     assets.append(card);
@@ -124,7 +127,12 @@ function renderSchedule() {
     const status = element('td');
     status.append(element('span', row.kind === 'maintenance' && row.status === 'reserved' ? 'Maintenance hold' : statusLabels[row.status],
       `tag ${row.status === 'cancelled' ? 'cancelled' : row.kind === 'maintenance' ? 'maintenance' : ''}`));
-    status.append(element('small', row.kind === 'maintenance' ? 'No rental charge' : `$${row.total} · ${row.billed_units} ${row.unit} units`));
+    if (row.kind === 'maintenance') {
+      status.append(element('small', 'No rental charge'));
+    } else {
+      status.append(element('small', `$${row.amount_due} due · ${terms(row)}`));
+      status.append(element('small', `${row.billed_units} ${row.unit} units · pricing snapshot`));
+    }
     status.append(element('small', `Revision ${row.revision}`));
     const work = element('td'), actions = element('div', undefined, 'actions');
     if (row.status === 'reserved') {
@@ -143,11 +151,14 @@ function renderSchedule() {
 }
 function resetAsset() {
   assetEdit = null; $('asset-form').reset(); $('asset-title').textContent = 'Add an asset';
+  $('asset-booking-fee').value = '0.00'; $('asset-security-deposit').value = '0.00';
 }
 function editAsset(asset) {
   assetEdit = asset;
   $('asset-name').value = asset.name; $('asset-unit').value = asset.unit;
-  $('asset-rate').value = asset.rate; $('asset-minimum').value = asset.minimum_units; $('asset-notes').value = asset.notes;
+  $('asset-rate').value = asset.rate; $('asset-minimum').value = asset.minimum_units;
+  $('asset-booking-fee').value = asset.booking_fee; $('asset-security-deposit').value = asset.security_deposit;
+  $('asset-notes').value = asset.notes;
   $('asset-title').textContent = `Edit asset · revision ${asset.revision}`;
   $('asset-name').focus();
 }
@@ -195,8 +206,9 @@ $('asset-form').addEventListener('submit', event => {
   event.preventDefault(); perform(async () => {
     await send({action:'save_asset', id:assetEdit?.id || null, expected_revision:assetEdit?.revision || 0,
       name:$('asset-name').value, unit:$('asset-unit').value, rate:$('asset-rate').value,
-      minimum_units:Number($('asset-minimum').value), notes:$('asset-notes').value});
-    resetAsset(); await refresh(); feedback('Asset saved. Existing booking quotes are unchanged.');
+      minimum_units:Number($('asset-minimum').value), booking_fee:$('asset-booking-fee').value,
+      security_deposit:$('asset-security-deposit').value, notes:$('asset-notes').value});
+    resetAsset(); await refresh(); feedback('Asset saved. Existing booking pricing snapshots are unchanged.');
   });
 });
 $('reservation-form').addEventListener('submit', event => {
@@ -205,7 +217,9 @@ $('reservation-form').addEventListener('submit', event => {
       expected_revision:reservationEdit?.revision || 0, asset_id:$('reservation-asset').value,
       kind:$('reservation-kind').value, start:inputISO('reservation-start'), end:inputISO('reservation-end'),
       customer:$('reservation-customer').value, contact:$('reservation-contact').value, notes:$('reservation-notes').value});
-    resetReservation(); await refresh(); feedback(row.kind === 'maintenance' ? 'Maintenance hold saved. This interval is unavailable for bookings.' : `Reservation saved. Rental quote: USD ${row.total}. No payment recorded.`);
+    resetReservation(); await refresh();
+    feedback(row.kind === 'maintenance' ? 'Maintenance hold saved. This interval is unavailable for bookings.' :
+      `Reservation saved. Amount due: USD ${row.amount_due} (${terms(row)}). No payment recorded.`);
   });
 });
 $('check-form').addEventListener('submit', event => {
@@ -220,7 +234,10 @@ $('check-form').addEventListener('submit', event => {
 $('check-availability').addEventListener('click', () => perform(async () => {
   const result = await api('/api/availability?' + new URLSearchParams({start:inputISO('reservation-start'), end:inputISO('reservation-end')}));
   $('availability').replaceChildren();
-  for (const asset of result.assets) $('availability').append(element('span', `${asset.name}: ${asset.available ? `available · $${asset.quote}` : 'unavailable'}`, asset.available ? '' : 'busy'));
+  for (const asset of result.assets) {
+    const text = asset.available ? `available · $${asset.amount_due} due (${terms(asset)})` : 'unavailable';
+    $('availability').append(element('span', `${asset.name}: ${text}`, asset.available ? '' : 'busy'));
+  }
   if (!result.assets.length) $('availability').append(element('span', 'Add an asset first.'));
 }));
 $('refresh').addEventListener('click', () => perform(async () => { await refresh(); feedback('Schedule refreshed. Unsaved form edits remain; reopen an edited record to load its latest revision.'); }));
@@ -231,7 +248,7 @@ $('export-workspace').addEventListener('click', event => {
     const link = element('a'); link.href = url; link.download = 'fleetline-export.json';
     document.body.append(link); link.click(); link.remove();
     setTimeout(() => URL.revokeObjectURL(url), 1000);
-    feedback('Workspace export prepared. The file includes customer details and audit history.');
+    feedback('Workspace export prepared. The file includes customer details, pricing snapshots and audit history.');
   });
 });
 $('print').addEventListener('click', () => window.print());
@@ -247,5 +264,6 @@ $('message-copy').addEventListener('click', () => perform(async () => {
   catch (_) { $('message-body').select(); throw new Error('Select and copy the draft manually in this browser.'); }
 }));
 $('zone').textContent = Intl.DateTimeFormat().resolvedOptions().timeZone;
+resetAsset();
 resetReservation();
 perform(refresh);
