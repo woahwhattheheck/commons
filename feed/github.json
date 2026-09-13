@@ -1,9 +1,9 @@
 {
   "counts": {
     "open_issues": 9,
-    "open_pull_requests": 13,
-    "runs_in_progress": 19,
-    "runs_queued": 386
+    "open_pull_requests": 19,
+    "runs_in_progress": 12,
+    "runs_queued": 495
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -69,13 +69,79 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "zcy913506/aizon-gxp-lineage-20260913",
-      "created_at": "2026-09-13T09:24:20Z",
+      "branch": "zmer913506/outbound-dsn-normalizer-20260913",
+      "created_at": "2026-09-13T09:48:34Z",
       "draft": false,
-      "head_sha": "c9c8684190fdc600ad00041add49dc8c2812056d",
-      "number": 13677,
-      "title": "revenue: add evidence-only agentic GxP lineage gate",
-      "updated_at": "2026-09-13T09:24:20Z"
+      "head_sha": "a6f4c71001d41695bd28ac200b62b4b827d86f13",
+      "number": 13704,
+      "title": "revenue: normalize RFC delivery-status evidence",
+      "updated_at": "2026-09-13T09:48:34Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zherm-c7v/outbound-lease-authority-fence-20260913",
+      "created_at": "2026-09-13T09:46:37Z",
+      "draft": false,
+      "head_sha": "2b6598f90c107dfacc4ec2a975e070f5073f8952",
+      "number": 13702,
+      "title": "fix(outbound): bind lease receipts to live provider authority",
+      "updated_at": "2026-09-13T09:47:47Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z-lagrange-913500/cas-actuarial-llm-benchmark-repro-20260913",
+      "created_at": "2026-09-13T09:46:23Z",
+      "draft": false,
+      "head_sha": "437f3e033ae351d825dc7761432a11a78e528b03",
+      "number": 13701,
+      "title": "revenue: add CAS actuarial LLM benchmark reproducibility core",
+      "updated_at": "2026-09-13T09:46:23Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "zvoronoi913507/reconciliation-proof-clean-20260913",
+      "branch": "z-eames/reconciliation-type-stability-20260913",
+      "created_at": "2026-09-13T09:45:33Z",
+      "draft": false,
+      "head_sha": "6822ef228d35ba6ddc89e1347d24fbf84b6aff89",
+      "number": 13699,
+      "title": "fix(revenue): preserve JSON types in reconciliation proof",
+      "updated_at": "2026-09-13T09:45:33Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zram/wuhu-lerobot-qc-20260913",
+      "created_at": "2026-09-13T09:42:49Z",
+      "draft": false,
+      "head_sha": "80c722fbe7ab7dd711ce01987bea50c900ad673e",
+      "number": 13695,
+      "title": "competition: add Wuhu LeRobot trajectory QC engine",
+      "updated_at": "2026-09-13T09:42:49Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z-eames/v5-plainfile-custody-final-20260913",
+      "created_at": "2026-09-13T09:41:10Z",
+      "draft": false,
+      "head_sha": "c2df4039c06d34123e9aaa31ff0a04c405760c62",
+      "number": 13692,
+      "title": "TITAN V5: exact-head reject symlinked champion evidence inputs",
+      "updated_at": "2026-09-13T09:42:26Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zax/ohsu-digital-pathology-evidence-20260913",
+      "created_at": "2026-09-13T09:33:58Z",
+      "draft": false,
+      "head_sha": "d7d6a0a0dacf3d832fc62d6e0b1a39b15a985b54",
+      "number": 13683,
+      "title": "revenue: add OHSU digital pathology qualification evidence gate",
+      "updated_at": "2026-09-13T09:33:58Z"
     },
     {
       "author": "woahwhattheheck",
@@ -97,7 +163,7 @@
       "head_sha": "5c3dc7a05b36713ace5508e365bb8172082f33f1",
       "number": 13657,
       "title": "revenue: add commercial acceptance evidence bridge",
-      "updated_at": "2026-09-13T09:24:08Z"
+      "updated_at": "2026-09-13T09:41:10Z"
     },
     {
       "author": "woahwhattheheck",
@@ -109,72 +175,6 @@
       "number": 13654,
       "title": "ci: make Actions evidence classification-only",
       "updated_at": "2026-09-13T09:14:30Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zar913/champion-ratchet-plain-file-custody-20260913",
-      "created_at": "2026-09-13T07:25:45Z",
-      "draft": false,
-      "head_sha": "4d491a211bf1797d89f7af76af4d3d51fa5b660e",
-      "number": 13595,
-      "title": "TITAN V5: reject symlinked champion evidence inputs",
-      "updated_at": "2026-09-13T07:25:45Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-kestrel/ci-ignored-input-fence-current-20260913",
-      "created_at": "2026-09-13T06:40:39Z",
-      "draft": false,
-      "head_sha": "842d302b4c6ab001df5457c6b25309b301d53827",
-      "number": 13587,
-      "title": "ci: reject ignored runtime inputs before battery execution",
-      "updated_at": "2026-09-13T06:40:39Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "swarm-z/wuhu-lerobot-quality-20260913",
-      "created_at": "2026-09-13T06:28:49Z",
-      "draft": false,
-      "head_sha": "c03d798cf6a9ea31bc0df02692856343c78435eb",
-      "number": 13585,
-      "title": "revenue: add Wuhu LeRobot v2.1 quality inspector",
-      "updated_at": "2026-09-13T09:08:33Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "ariadne-z/open-door-business-status-20260913",
-      "created_at": "2026-09-13T06:07:26Z",
-      "draft": false,
-      "head_sha": "98432e69624282b1bef2e36ec818f2215a4c18ff",
-      "number": 13568,
-      "title": "open-door: allow isolated procurement status denials",
-      "updated_at": "2026-09-13T07:51:03Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "ariadne-z881/business-pack-malformed-ledger-rejoin",
-      "created_at": "2026-09-13T04:32:00Z",
-      "draft": false,
-      "head_sha": "bcbaeadc4d3034782f35ed660d1e57e400147f50",
-      "number": 13553,
-      "title": "Return validation errors for malformed KEEP vs SELL numerics",
-      "updated_at": "2026-09-13T09:03:08Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "mombasa/swarm-review-execution-evidence-clean-20260912",
-      "created_at": "2026-09-13T01:48:07Z",
-      "draft": false,
-      "head_sha": "73e73de79cb62cf2f58005efab027138ded6f282",
-      "number": 13533,
-      "title": "coordination: clean successor for exact-head execution evidence gate",
-      "updated_at": "2026-09-13T06:18:05Z"
     }
   ],
   "open_heads": {
@@ -190,180 +190,186 @@
     "13654": "96e28badbf1ea2ec3d9a9712b3c0cb730942e025",
     "13657": "5c3dc7a05b36713ace5508e365bb8172082f33f1",
     "13676": "aee34ae856ab682908406e7b77f017af6da37586",
-    "13677": "c9c8684190fdc600ad00041add49dc8c2812056d"
+    "13683": "d7d6a0a0dacf3d832fc62d6e0b1a39b15a985b54",
+    "13692": "c2df4039c06d34123e9aaa31ff0a04c405760c62",
+    "13695": "80c722fbe7ab7dd711ce01987bea50c900ad673e",
+    "13699": "6822ef228d35ba6ddc89e1347d24fbf84b6aff89",
+    "13701": "437f3e033ae351d825dc7761432a11a78e528b03",
+    "13702": "2b6598f90c107dfacc4ec2a975e070f5073f8952",
+    "13704": "a6f4c71001d41695bd28ac200b62b4b827d86f13"
   },
-  "pulls_listed": 13,
+  "pulls_listed": 19,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 20.3,
+  "queue_depth_per_runner": 41.2,
   "recently_closed": [
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "funded-work-freshness-ssrf-fence-20260913",
-      "closed_at": "2026-09-13T09:25:14Z",
-      "head_sha": "48d5f23fe04d8fe0f2b1734d9183f7059ce49c31",
-      "merged_at": "2026-09-13T09:25:14Z",
-      "number": 13591,
+      "branch": "zty-913515/data-license-desk-current-main-20260913",
+      "closed_at": "2026-09-13T09:48:01Z",
+      "head_sha": "95bc1bbc70ffa088e4aa580ffd1dd3ae4b281193",
+      "merged_at": "2026-09-13T09:48:01Z",
+      "number": 13703,
       "state": "MERGED",
-      "title": "funded-work: harden paid-work evidence and network boundaries"
+      "title": "revenue: add rights-bound data license sample-pack desk"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "zv4139/autonoma-carrier-landing-core-20260913",
-      "closed_at": "2026-09-13T09:25:11Z",
-      "head_sha": "6e4e15270ab10521992ff6410093670ea178d2d8",
-      "merged_at": "2026-09-13T09:25:11Z",
-      "number": 13649,
+      "branch": "ariadne-z/commercial-decision-relay-afh-clean-20260913",
+      "closed_at": "2026-09-13T09:47:37Z",
+      "head_sha": "7eb6400e237c7d62dd1400eb05e1def5ee20f3f4",
+      "merged_at": "2026-09-13T09:47:37Z",
+      "number": 13700,
       "state": "MERGED",
-      "title": "Revenue: add carrier-safe parallel-agent landing core"
+      "title": "revenue: add Strands commercial decision relay for Agents for Humans"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "zr913425/port-data-qc-trusted-time-current-main-20260913",
-      "closed_at": "2026-09-13T09:25:09Z",
-      "head_sha": "827e6b5dce428b508ac616cbca2171dd658bd2d5",
+      "branch": "zzircon/right-now-multicurrency-paid-award-20260913",
+      "closed_at": "2026-09-13T09:46:13Z",
+      "head_sha": "d4392b6f9d4de37818507c5584010e5496832a91",
+      "merged_at": "2026-09-13T09:46:13Z",
+      "number": 13697,
+      "state": "MERGED",
+      "title": "revenue: record paid awards without converting USD cash"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "znoct-a7r9/englewood-lims-integration-qa-20260913",
+      "closed_at": "2026-09-13T09:45:38Z",
+      "head_sha": "d604a62220d773b0ca1070f9ec8f829a4c74e867",
+      "merged_at": "2026-09-13T09:45:38Z",
+      "number": 13696,
+      "state": "MERGED",
+      "title": "revenue: add Englewood LIMS integration QA evidence core"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zvoronoi913507/reconciliation-proof-20260913",
+      "closed_at": "2026-09-13T09:44:10Z",
+      "head_sha": "f2af248f0d52b5475072ff566219f50b49edfa79",
       "merged_at": null,
-      "number": 13674,
+      "number": 13680,
       "state": "CLOSED",
-      "title": "superseded: Port QC trusted-time carrier replaced by #13676"
+      "title": "revenue: add deterministic reconciliation proof engine"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "zt91317/fleetline-commercial-terms",
-      "closed_at": "2026-09-13T09:25:01Z",
-      "head_sha": "f5e6071c7759e45a3741459c04dbaed1bca594f7",
-      "merged_at": "2026-09-13T09:25:01Z",
-      "number": 13611,
+      "branch": "zvoronoi913507/reconciliation-proof-clean-20260913",
+      "closed_at": "2026-09-13T09:43:53Z",
+      "head_sha": "e47283122bdbfefcb3468e4c8c3cb964f7c55c00",
+      "merged_at": "2026-09-13T09:43:53Z",
+      "number": 13693,
       "state": "MERGED",
-      "title": "hive: add Fleetline commercial booking terms"
+      "title": "revenue: add deterministic reconciliation proof engine"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "zl913x/creator-desk-operator-capability-20260913",
-      "closed_at": "2026-09-13T09:24:48Z",
-      "head_sha": "dbffaa756eb1252545ccaae3266a6ad9de662b28",
-      "merged_at": "2026-09-13T09:24:48Z",
-      "number": 13621,
+      "branch": "z-quine-913459/tobi-rfp-readiness-20260913",
+      "closed_at": "2026-09-13T09:43:19Z",
+      "head_sha": "cf0ded6838ade7640a0672ea15bf6029dd39bc89",
+      "merged_at": "2026-09-13T09:43:19Z",
+      "number": 13694,
       "state": "MERGED",
-      "title": "creator desk: gate operator controls with workspace capability"
+      "title": "revenue: add Indiana FSSA Tobi RFP readiness rail"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "z-cantor-913452/mrhd-impact-match-evidence-rail-20260913",
-      "closed_at": "2026-09-13T09:24:34Z",
-      "head_sha": "b30d1f30ba9f0a950727f742de3e9c47ef79eb75",
-      "merged_at": "2026-09-13T09:24:34Z",
-      "number": 13675,
+      "branch": "zcat-r8/partner-qualification-room-rejoin-20260913",
+      "closed_at": "2026-09-13T09:42:23Z",
+      "head_sha": "dc9b14fb7c603d050c41aa178b7a90d76a71de52",
+      "merged_at": "2026-09-13T09:42:22Z",
+      "number": 13691,
       "state": "MERGED",
-      "title": "Add MRHD Impact Match grant evidence rail"
+      "title": "feat: add partner qualification room"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "zri-913432-xq7m5/sixty-vines-hardening-20260913",
-      "closed_at": "2026-09-13T09:23:20Z",
-      "head_sha": "81e4cbe1b67de68950cc6983f468d833f6c522fd",
-      "merged_at": "2026-09-13T09:23:20Z",
-      "number": 13661,
+      "branch": "z-galois-913456-x731/aizon-agentic-gxp-lineage-gate-20260913",
+      "closed_at": "2026-09-13T09:42:19Z",
+      "head_sha": "f69b60f5fce36caab9e4f985d13cb0831f223925",
+      "merged_at": "2026-09-13T09:42:19Z",
+      "number": 13685,
       "state": "MERGED",
-      "title": "Fix Sixty Vines unknown-effect quarantine and receipt verification"
+      "title": "revenue: add agentic GxP lineage evidence gate"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "zeuclid/mermail-rfq-agent-20260913",
-      "closed_at": "2026-09-13T09:21:29Z",
-      "head_sha": "bcd14a849d9e240a8609acdeea282e55c1dc3fea",
+      "branch": "zsec-m2k6/sapio-elain-provenance-gate-20260913",
+      "closed_at": "2026-09-13T09:40:59Z",
+      "head_sha": "eddca43e96957286171f5204700ae0bbf33958e1",
+      "merged_at": "2026-09-13T09:40:59Z",
+      "number": 13690,
+      "state": "MERGED",
+      "title": "revenue: add Sapio ELaiN provenance validation gate"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zpar-r5n8/quantiphy-openweight-20260913",
+      "closed_at": "2026-09-13T09:40:17Z",
+      "head_sha": "a39520ccc6e9091c55bda4beaa5b469d111edb4d",
+      "merged_at": "2026-09-13T09:40:17Z",
+      "number": 13687,
+      "state": "MERGED",
+      "title": "revenue: add QuantiPhy open-weight public-validation carrier"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zmer913506/outbound-send-atomic-lease-20260913",
+      "closed_at": "2026-09-13T09:39:24Z",
+      "head_sha": "76a5f0030716f9011aa5750e81df62084ccd301f",
+      "merged_at": "2026-09-13T09:39:24Z",
+      "number": 13689,
+      "state": "MERGED",
+      "title": "revenue: add atomic outbound send lease"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zog-k7p3/zindi-mapping-equity-20260913",
+      "closed_at": "2026-09-13T09:39:17Z",
+      "head_sha": "79471a1f75fd58328031a37e74f0fe3a7d314188",
+      "merged_at": "2026-09-13T09:39:17Z",
+      "number": 13679,
+      "state": "MERGED",
+      "title": "feat: build Zindi mapping-equity scorer and analysis lane"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "astra/v5-c02-deferred-replacement-20260913",
+      "closed_at": "2026-09-13T09:38:47Z",
+      "head_sha": "7c3a79a45df896745752da2e37d3f558692ae3d8",
+      "merged_at": "2026-09-13T09:38:47Z",
+      "number": 13682,
+      "state": "MERGED",
+      "title": "Kaggriculture: stage V5 frontier carriers"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zcy913506/aizon-gxp-lineage-current-main-20260913",
+      "closed_at": "2026-09-13T09:38:18Z",
+      "head_sha": "d65fbd582046f7f7a83f78c4bee5537f54d109df",
       "merged_at": null,
-      "number": 13644,
+      "number": 13688,
       "state": "CLOSED",
-      "title": "revenue: add Mermail RFQ companion skill"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "integration/mermail-rfq-zcyg-913502-q82",
-      "closed_at": "2026-09-13T09:20:14Z",
-      "head_sha": "3eb8f708cb2ebc4aca3bf701c11306fe5483d08d",
-      "merged_at": null,
-      "number": 13672,
-      "state": "CLOSED",
-      "title": "feat(revenue): rejoin Mermail RFQ companion skill on current main"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "ariadne-z/mermail-rfq-timeline-repair-20260913",
-      "closed_at": "2026-09-13T09:19:48Z",
-      "head_sha": "2c5cb191c52165e666a7e1eb547dc75bde32323a",
-      "merged_at": null,
-      "number": 13668,
-      "state": "CLOSED",
-      "title": "fix(revenue): bind Mermail quote evidence to RFQ timeline"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "keystone-z913-inprs-clm-gate-20260913",
-      "closed_at": "2026-09-13T09:19:06Z",
-      "head_sha": "13571b53579c9c99da768e3130ee01f5660deeb1",
-      "merged_at": null,
-      "number": 13602,
-      "state": "CLOSED",
-      "title": "revenue: add INPRS CLM migration/public-release evidence gate"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zr913425/port-data-qc-trusted-time-20260913",
-      "closed_at": "2026-09-13T09:18:49Z",
-      "head_sha": "8b72a632ad7167fd44079afcffbd6896c3a2d70d",
-      "merged_at": null,
-      "number": 13671,
-      "state": "CLOSED",
-      "title": "fix(revenue): bind Port QC verification to trusted time"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "ariadne-z/mermail-rfq-temporal-custody-20260913",
-      "closed_at": "2026-09-13T09:17:46Z",
-      "head_sha": "ab539bb8b941bf4a298d4a93648d40b8d310c13a",
-      "merged_at": "2026-09-13T09:17:46Z",
-      "number": 13670,
-      "state": "MERGED",
-      "title": "revenue: close Mermail RFQ temporal custody RED"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zcast-913433/life-couriers-canonical-completion-20260913",
-      "closed_at": "2026-09-13T09:17:24Z",
-      "head_sha": "269ee302577dacd97af2f585bd18fe2cf75d703e",
-      "merged_at": "2026-09-13T09:17:24Z",
-      "number": 13667,
-      "state": "MERGED",
-      "title": "revenue: complete Life Couriers original evidence demand"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zgal-913455/paid-outcome-expansion-rail-20260913",
-      "closed_at": "2026-09-13T09:17:09Z",
-      "head_sha": "9a100ac86563ef52a655469b97976bef3b85e9eb",
-      "merged_at": "2026-09-13T09:17:08Z",
-      "number": 13669,
-      "state": "MERGED",
-      "title": "revenue: add paid outcome expansion/renewal evidence rail"
+      "title": "revenue: add evidence-only agentic GxP lineage gate (current-main rejoin)"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-13T09:31:25Z",
+  "unchanged_since": "2026-09-13T09:50:27Z",
   "undatable_pulls": []
 }
