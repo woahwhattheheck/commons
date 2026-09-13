@@ -1,0 +1,48 @@
+{
+  "complete_inventory_confirmed": false,
+  "documents": [
+    {
+      "discovery_authority": "PUBLIC_MIRROR_DISCOVERY",
+      "document_id": "ATTACHMENT_B_SCOPE",
+      "name": "05 Attachment B - Scope of Work.docx",
+      "official_url": null,
+      "sha256": null,
+      "status": "MIRROR_NAME_ONLY"
+    },
+    {
+      "discovery_authority": "PUBLIC_MIRROR_DISCOVERY",
+      "document_id": "ATTACHMENT_C_EVALUATION",
+      "name": "06 Attachment C- RFP Evaluation Plan.docx",
+      "official_url": null,
+      "sha256": null,
+      "status": "MIRROR_NAME_ONLY"
+    },
+    {
+      "discovery_authority": "PUBLIC_MIRROR_DISCOVERY",
+      "document_id": "ATTACHMENT_D_MASTER_AGREEMENT",
+      "name": "07 Attachment D - Sample Master Agreement.docx",
+      "official_url": null,
+      "sha256": null,
+      "status": "MIRROR_NAME_ONLY"
+    },
+    {
+      "discovery_authority": "PUBLIC_MIRROR_DISCOVERY",
+      "document_id": "ATTACHMENT_G_CERTIFICATION",
+      "name": "11 Attachment G Offeror Info. Acknowledgement Cert.docx",
+      "official_url": null,
+      "sha256": null,
+      "status": "MIRROR_NAME_ONLY"
+    },
+    {
+      "discovery_authority": "PUBLIC_MIRROR_DISCOVERY",
+      "document_id": "ATTACHMENT_H_REQUIREMENTS",
+      "name": "12 Attachment H - Requirements Response Table.xlsx",
+      "official_url": null,
+      "sha256": null,
+      "status": "MIRROR_NAME_ONLY"
+    }
+  ],
+  "note": "This is a discovery inventory, not a representation that the five listed files are the complete controlling packet.",
+  "official_addenda_inventory_confirmed": false,
+  "schema": "naspo.sw1045.attachment_manifest/v1"
+}
