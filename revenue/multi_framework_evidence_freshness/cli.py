@@ -2,24 +2,17 @@ from __future__ import annotations
 
 import argparse
 import json
-import os
 from pathlib import Path
 
-from .gate import GateError, compile_packet, load_strict_json, render_markdown, verify_packet
-
-
-def _write_new(path: Path, data: bytes) -> None:
-    flags = os.O_WRONLY | os.O_CREAT | os.O_EXCL
-    if hasattr(os, "O_NOFOLLOW"):
-        flags |= os.O_NOFOLLOW
-    fd = os.open(path, flags, 0o600)
-    try:
-        with os.fdopen(fd, "wb", closefd=False) as fh:
-            fh.write(data)
-            fh.flush()
-            os.fsync(fh.fileno())
-    finally:
-        os.close(fd)
+from .gate import (
+    GateError,
+    compile_packet,
+    load_strict_json,
+    render_markdown,
+    verify_current_packet,
+    verify_packet,
+    write_new_bytes,
+)
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -31,6 +24,8 @@ def main(argv: list[str] | None = None) -> int:
     c.add_argument("markdown")
     v = sub.add_parser("verify")
     v.add_argument("packet")
+    vh = sub.add_parser("verify-historical")
+    vh.add_argument("packet")
     ns = parser.parse_args(argv)
     try:
         if ns.cmd == "compile":
@@ -42,16 +37,18 @@ def main(argv: list[str] | None = None) -> int:
             md_path = Path(ns.markdown)
             if packet_path.exists() or md_path.exists() or packet_path.is_symlink() or md_path.is_symlink():
                 raise GateError("output_exists")
-            _write_new(packet_path, packet_bytes)
+            write_new_bytes(packet_path, packet_bytes)
             try:
-                _write_new(md_path, md_bytes)
+                write_new_bytes(md_path, md_bytes)
             except Exception:
-                # Do not delete the first visible publication by pathname: preserve partial publication for reconciliation.
                 raise
             print(packet["receipt_sha256"])
             return 0
         packet = load_strict_json(ns.packet)
-        verify_packet(packet)
+        if ns.cmd == "verify-historical":
+            verify_packet(packet)
+        else:
+            verify_current_packet(packet)
         print(packet["receipt_sha256"])
         return 0
     except (GateError, OSError) as exc:
