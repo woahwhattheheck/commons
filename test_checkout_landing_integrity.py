@@ -23,6 +23,7 @@ ROOT = Path(__file__).resolve().parent
 CATALOG = Path("revenue/outcome_commerce/catalog.json")
 SNAPSHOT = Path("revenue/checkout_capability/snapshot.json")
 CONTACT_MAILBOX = "tokenjunkielabs@gmail.com"
+NO_QUALIFICATION_ROUTE = "NONE"
 STRIPE_HOSTS = {"buy.stripe.com", "donate.stripe.com"}
 STRIPE_PATH = re.compile(r"/[A-Za-z0-9_-]+")
 GENERIC_CATALOG_SURFACES = {"commerce.html", "pay.html", "tips.html"}
@@ -172,7 +173,10 @@ def dedicated_checkout_surfaces(root: Path) -> tuple[dict[str, dict[str, str]], 
             errors.append(f"{sku}: canonical rail does not match the active catalog checkout")
             continue
         qualification = funnel.get("qualification") if isinstance(funnel.get("qualification"), dict) else {}
-        route, route_error = _local_html_route(qualification.get("route"))
+        raw_route = qualification.get("route")
+        if raw_route == NO_QUALIFICATION_ROUTE:
+            continue
+        route, route_error = _local_html_route(raw_route)
         if route_error:
             errors.append(f"{sku}: {route_error}")
             continue
@@ -329,6 +333,24 @@ class CheckoutLandingIntegrity(unittest.TestCase):
             errors = landing_surface_errors(root)
             self.assertIn("shared.html: catalog checkout slots require pay.js", errors)
 
+    def test_none_route_is_an_explicit_no_dedicated_surface_sentinel(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            rows = [
+                ("sku-one", "one.html", "https://buy.stripe.com/canonical_1"),
+                ("sku-support", NO_QUALIFICATION_ROUTE, "https://buy.stripe.com/support_2"),
+            ]
+            self._fixture(
+                root,
+                rows,
+                {"one.html": '<a href="https://buy.stripe.com/canonical_1">buy</a>'
+                             '<a href="mailto:tokenjunkielabs@gmail.com">handoff</a>'},
+            )
+            surfaces, errors = dedicated_checkout_surfaces(root)
+            self.assertEqual(errors, [])
+            self.assertEqual(surfaces, {"one.html": {"sku-one": "https://buy.stripe.com/canonical_1"}})
+            self.assertEqual(landing_surface_errors(root), [])
+
     def test_missing_delivery_route_fails_closed(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
@@ -376,6 +398,7 @@ class CheckoutLandingIntegrity(unittest.TestCase):
             "https://user@buy.stripe.com/canonical_1",
             "https://buy.stripe.com:443/canonical_1",
             "https://checkout.stripe.com/canonical_1",
+            "https://buy.stripe.com/canonical_1/extra",
         ]
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
