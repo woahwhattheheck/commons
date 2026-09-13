@@ -3,16 +3,28 @@ from __future__ import annotations
 from datetime import datetime
 from typing import Any, Mapping
 
-from validation import (
-    GateError,
-    RECEIPT_SCHEMA,
-    SCHEMA,
-    _instant,
-    _normalize_packet,
-    _strict_dict,
-    load_json_strict,
-    sha256_json,
-)
+if __package__:
+    from .validation import (
+        GateError,
+        RECEIPT_SCHEMA,
+        SCHEMA,
+        _instant,
+        _normalize_packet,
+        _strict_dict,
+        load_json_strict,
+        sha256_json,
+    )
+else:
+    from validation import (
+        GateError,
+        RECEIPT_SCHEMA,
+        SCHEMA,
+        _instant,
+        _normalize_packet,
+        _strict_dict,
+        load_json_strict,
+        sha256_json,
+    )
 
 def expected_action_digest(packet: Mapping[str, Any]) -> str:
     normalized = _normalize_packet(packet)
