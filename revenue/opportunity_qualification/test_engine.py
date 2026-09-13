@@ -3,6 +3,7 @@ import json
 import unittest
 
 from engine import (
+    COMPLETENESS_CONTRACT,
     CONTRACT,
     HOLD,
     NO_BID,
@@ -10,9 +11,11 @@ from engine import (
     TEAMING_READY,
     QualificationError,
     compile_qualification,
+    digest,
     loads_strict,
     render_markdown,
     verify_receipt,
+    verify_receipt_against_inputs,
 )
 
 AS_OF = "2026-09-13T10:00:00Z"
@@ -148,14 +151,62 @@ PACKET = {
 }
 
 
+def completeness_for(packet):
+    """Test-fixture helper only; production trust must never be derived from packet."""
+    sources = {source["source_id"]: source for source in packet["sources"]}
+    gates = []
+    for requirement in packet["requirements"]:
+        source = sources[requirement["buyer_source_id"]]
+        gates.append(
+            {
+                "gate_id": requirement["gate_id"],
+                "category": requirement["category"],
+                "mandatory": requirement["mandatory"],
+                "route": requirement["route"],
+                "cure": requirement["cure"],
+                "buyer_source_id": requirement["buyer_source_id"],
+                "buyer_source_sha256": source["sha256"],
+                "description_sha256": digest(requirement["description"]),
+            }
+        )
+    gates.sort(key=lambda gate: gate["gate_id"])
+    controlling_id = packet["opportunity"]["controlling_source_id"]
+    return {
+        "contract": COMPLETENESS_CONTRACT,
+        "opportunity_id": packet["opportunity"]["opportunity_id"],
+        "controlling_source_id": controlling_id,
+        "controlling_source_sha256": sources[controlling_id]["sha256"],
+        "extracted_at": "2026-09-13T09:30:00Z",
+        "extraction_evidence_sha256": "e" * 64,
+        "complete": True,
+        "gate_count": len(gates),
+        "gate_set_sha256": digest(gates),
+        "gates": gates,
+    }
+
+
+TRUSTED_COMPLETENESS = completeness_for(PACKET)
+
+
 class QualificationTests(unittest.TestCase):
-    def compile(self, packet=None, as_of=AS_OF):
-        return compile_qualification(copy.deepcopy(PACKET if packet is None else packet), trusted_as_of=as_of)
+    def compile(self, packet=None, as_of=AS_OF, completeness="AUTO"):
+        packet = copy.deepcopy(PACKET if packet is None else packet)
+        if completeness == "AUTO":
+            try:
+                completeness = completeness_for(packet)
+            except (KeyError, TypeError):
+                completeness = copy.deepcopy(TRUSTED_COMPLETENESS)
+        return compile_qualification(
+            packet,
+            trusted_as_of=as_of,
+            trusted_completeness=copy.deepcopy(completeness),
+        )
 
     def test_prime_ready(self):
         receipt = self.compile()
         self.assertEqual(receipt["disposition"], PRIME_READY)
         self.assertTrue(receipt["prime"]["ready"])
+        self.assertTrue(receipt["completeness"]["verified"])
         self.assertTrue(verify_receipt(receipt))
         self.assertTrue(all(value is False for value in receipt["authority"].values()))
 
@@ -487,6 +538,143 @@ class QualificationTests(unittest.TestCase):
         receipt = self.compile()
         self.assertEqual(receipt["disposition"], PRIME_READY)
         self.assertEqual([g["gate_id"] for g in receipt["scoreable_gaps"]], ["experience"])
+
+    def test_missing_completeness_cannot_mint_ready(self):
+        receipt = compile_qualification(copy.deepcopy(PACKET), trusted_as_of=AS_OF)
+        self.assertEqual(receipt["disposition"], HOLD)
+        self.assertFalse(receipt["prime"]["ready"])
+        self.assertTrue(receipt["prime"]["requirements_ready"])
+        self.assertIn("PACKAGE_COMPLETENESS_NOT_PROVIDED", receipt["reasons"])
+
+    def test_frozen_manifest_rejects_removed_mandatory_gate(self):
+        packet = copy.deepcopy(PACKET)
+        packet["requirements"] = [r for r in packet["requirements"] if r["gate_id"] != "registration"]
+        receipt = self.compile(packet, completeness=TRUSTED_COMPLETENESS)
+        self.assertEqual(receipt["disposition"], HOLD)
+        self.assertIn("PACKAGE_GATE_SET_MISMATCH", receipt["reasons"])
+        self.assertFalse(receipt["prime"]["ready"])
+
+    def test_frozen_manifest_rejects_removed_scoreable_category(self):
+        packet = copy.deepcopy(PACKET)
+        packet["requirements"] = [r for r in packet["requirements"] if r["category"] != "EXPERIENCE"]
+        receipt = self.compile(packet, completeness=TRUSTED_COMPLETENESS)
+        self.assertEqual(receipt["disposition"], HOLD)
+        self.assertIn("PACKAGE_GATE_SET_MISMATCH", receipt["reasons"])
+
+    def test_frozen_manifest_rejects_required_addendum_gate_omission(self):
+        packet = copy.deepcopy(PACKET)
+        packet["sources"].append(
+            {
+                "source_id": "buyer-addendum",
+                "scope": "BUYER",
+                "source_class": "OFFICIAL",
+                "url": "https://buyer.example.gov/rfp/2026-001/addendum-3",
+                "captured_at": "2026-09-13T09:20:00Z",
+                "sha256": "8" * 64,
+                "label": "Mandatory submission addendum",
+            }
+        )
+        packet["requirements"].append(
+            {
+                "gate_id": "addendum-certification",
+                "category": "SUBMISSION",
+                "mandatory": True,
+                "route": "PRIME",
+                "cure": "NONE",
+                "buyer_source_id": "buyer-addendum",
+                "description": "Respondent must include the addendum certification.",
+                "prime_state": "PASS",
+                "prime_evidence_ids": ["prime-registration"],
+                "team_state": "MISSING",
+                "team_evidence_ids": [],
+            }
+        )
+        packet["evidence"][1]["category"] = "OTHER"
+        manifest = completeness_for(packet)
+        packet["requirements"] = [r for r in packet["requirements"] if r["gate_id"] != "addendum-certification"]
+        receipt = self.compile(packet, completeness=manifest)
+        self.assertEqual(receipt["disposition"], HOLD)
+        self.assertIn("PACKAGE_GATE_SET_MISMATCH", receipt["reasons"])
+
+    def test_frozen_manifest_rejects_route_drift(self):
+        packet = copy.deepcopy(PACKET)
+        packet["requirements"][0]["route"] = "TEAM"
+        packet["requirements"][0]["prime_state"] = "MISSING"
+        packet["requirements"][0]["prime_evidence_ids"] = []
+        packet["requirements"][0]["team_state"] = "PASS"
+        packet["requirements"][0]["team_evidence_ids"] = ["team-experience"]
+        packet["requirements"][0]["category"] = "EXPERIENCE"
+        receipt = self.compile(packet, completeness=TRUSTED_COMPLETENESS)
+        self.assertEqual(receipt["disposition"], HOLD)
+        self.assertIn("PACKAGE_GATE_SET_MISMATCH", receipt["completeness"]["reasons"])
+
+    def test_controlling_source_digest_mismatch_holds(self):
+        manifest = copy.deepcopy(TRUSTED_COMPLETENESS)
+        manifest["controlling_source_sha256"] = "f" * 64
+        receipt = self.compile(completeness=manifest)
+        self.assertEqual(receipt["disposition"], HOLD)
+        self.assertIn("COMPLETENESS_CONTROLLING_SOURCE_MISMATCH", receipt["reasons"])
+
+    def test_incomplete_extraction_holds(self):
+        manifest = copy.deepcopy(TRUSTED_COMPLETENESS)
+        manifest["complete"] = False
+        receipt = self.compile(completeness=manifest)
+        self.assertEqual(receipt["disposition"], HOLD)
+        self.assertIn("PACKAGE_EXTRACTION_INCOMPLETE", receipt["reasons"])
+
+    def test_manifest_gate_digest_tamper_rejected(self):
+        manifest = copy.deepcopy(TRUSTED_COMPLETENESS)
+        manifest["gates"][0]["route"] = "TEAM"
+        with self.assertRaises(QualificationError):
+            self.compile(completeness=manifest)
+
+    def test_manifest_future_extraction_rejected(self):
+        manifest = copy.deepcopy(TRUSTED_COMPLETENESS)
+        manifest["extracted_at"] = "2026-09-14T09:30:00Z"
+        with self.assertRaises(QualificationError):
+            self.compile(completeness=manifest)
+
+    def test_manifest_gate_count_bool_rejected(self):
+        manifest = copy.deepcopy(TRUSTED_COMPLETENESS)
+        manifest["gate_count"] = True
+        with self.assertRaises(QualificationError):
+            self.compile(completeness=manifest)
+
+    def test_gate_derived_no_bid_without_completeness_holds(self):
+        packet = copy.deepcopy(PACKET)
+        packet["requirements"][1]["prime_state"] = "FAIL"
+        packet["requirements"][1]["prime_evidence_ids"] = ["prime-registration"]
+        receipt = compile_qualification(copy.deepcopy(packet), trusted_as_of=AS_OF)
+        self.assertEqual(receipt["disposition"], HOLD)
+        self.assertIn("PACKAGE_COMPLETENESS_NOT_PROVIDED", receipt["reasons"])
+
+    def test_official_expired_deadline_can_stand_without_completeness(self):
+        packet = copy.deepcopy(PACKET)
+        packet["opportunity"]["proposal_deadline"] = "2026-09-12T17:00:00Z"
+        receipt = compile_qualification(copy.deepcopy(packet), trusted_as_of=AS_OF)
+        self.assertEqual(receipt["disposition"], NO_BID)
+        self.assertEqual(receipt["reasons"], ["PROPOSAL_DEADLINE_EXPIRED"])
+
+    def test_receipt_can_be_reverified_against_trust_inputs(self):
+        receipt = self.compile(completeness=TRUSTED_COMPLETENESS)
+        self.assertTrue(
+            verify_receipt_against_inputs(
+                receipt,
+                copy.deepcopy(PACKET),
+                trusted_as_of=AS_OF,
+                trusted_completeness=copy.deepcopy(TRUSTED_COMPLETENESS),
+            )
+        )
+        wrong = copy.deepcopy(TRUSTED_COMPLETENESS)
+        wrong["controlling_source_sha256"] = "f" * 64
+        self.assertFalse(
+            verify_receipt_against_inputs(
+                receipt,
+                copy.deepcopy(PACKET),
+                trusted_as_of=AS_OF,
+                trusted_completeness=wrong,
+            )
+        )
 
 
 if __name__ == "__main__":
