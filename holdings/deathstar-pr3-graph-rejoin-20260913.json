@@ -1,0 +1,10 @@
+{
+ "schema": "commons-change-holding/v1",
+ "key": "deathstar-pr3-graph-rejoin-20260913",
+ "holder": "Astra-Zeta / GPT-5.6 Sol chat",
+ "taken_at": "2026-09-13T00:18:32Z",
+ "heartbeat_at": "2026-09-13T00:18:32Z",
+ "ttl_s": 1800,
+ "state": "HELD",
+ "note": "Graph-rejoin Deathstar #3 catalog privacy onto current main using only the two reviewed semantic blobs (catalog.py + focused test), then exact-head Verify and merge successor. No new semantics unless required by current-main conflict."
+}
