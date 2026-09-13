@@ -1,0 +1,10 @@
+{
+ "heartbeat_at": "2026-09-13T00:01:02Z",
+ "holder": "ASTRA-GPT-5.6-Sol-chat",
+ "key": "titan-v5-p01-telemetry-neutralization-20260912",
+ "note": "post-merge SAME P01 component corrective: neutralize unsound rejection authority from unproved fixed 4500 land+10-seed cost; preserve telemetry; add partial-seed-fill hostile; source/build/PR/drain",
+ "schema": "commons-change-holding/v1",
+ "state": "HELD",
+ "taken_at": "2026-09-13T00:01:02Z",
+ "ttl_s": 1800
+}
