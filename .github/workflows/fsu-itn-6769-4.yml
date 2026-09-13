@@ -25,8 +25,8 @@ jobs:
       - name: Hostile tests
         working-directory: revenue/fsu_itn_6769_4
         run: |
-          python -m unittest -v test_qualifier.py
-          python -O -m unittest -v test_qualifier.py
+          python -m unittest discover -v -p 'test_*.py'
+          python -O -m unittest discover -v -p 'test_*.py'
       - name: Current public snapshot stays fail-closed
         working-directory: revenue/fsu_itn_6769_4
         run: |

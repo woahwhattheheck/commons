@@ -258,7 +258,11 @@ def normalize_source_packet(packet: Any, *, as_of: str) -> dict[str, Any]:
         if "/" in filename or "\\" in filename or filename in seen_files or filename in {".", ".."}:
             raise QualificationError("manifest filename invalid/duplicate")
         seen_files.add(filename)
-        files.append({"sourceId": sid, "filename": filename, "sha256": _sha(row["sha256"], "packetManifest.file.sha256")})
+        file_sha = _sha(row["sha256"], "packetManifest.file.sha256")
+        source = next(x for x in sources if x["id"] == sid)
+        if file_sha != source["contentSha256"]:
+            raise QualificationError("manifest file sha must match bound source contentSha256")
+        files.append({"sourceId": sid, "filename": filename, "sha256": file_sha})
 
     categories = packet["serviceCategories"]
     if type(categories) is not list or any(type(x) is not str for x in categories):
@@ -307,10 +311,14 @@ def _packet_authoritative(packet: dict[str, Any]) -> tuple[bool, list[str]]:
         reasons.append("CONTROLLING_ITN_NOT_ACQUIRED")
     if not manifest["files"]:
         reasons.append("NO_CONTROLLING_FILES_HASH_BOUND")
+    manifest_source_ids = {row["sourceId"] for row in manifest["files"]}
     for row in manifest["files"]:
         source = sources_by_id[row["sourceId"]]
         if source["kind"] not in CONTROLLING_KINDS or not source["controlling"]:
             reasons.append(f"MANIFEST_FILE_NOT_CONTROLLING:{row['filename']}")
+    for source in packet["sources"]:
+        if source["controlling"] and source["id"] not in manifest_source_ids:
+            reasons.append(f"CONTROLLING_SOURCE_NOT_IN_MANIFEST:{source['id']}")
     for gate in packet["mandatoryGates"]:
         source = sources_by_id[gate["sourceId"]]
         if source["kind"] not in CONTROLLING_KINDS or not source["controlling"]:
