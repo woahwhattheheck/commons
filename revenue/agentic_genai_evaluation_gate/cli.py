@@ -5,109 +5,34 @@ from __future__ import annotations
 import argparse
 import json
 import os
-import stat
 import sys
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Any
+from typing import Sequence
 
-from .gate import EvidenceError, compile_receipt, render_markdown, verify_receipt
-
-MAX_INPUT_BYTES = 8 * 1024 * 1024
-
-
-def _stat_token(info: os.stat_result) -> tuple[int, int, int, int, int]:
-    return (info.st_dev, info.st_ino, info.st_size, info.st_mtime_ns, info.st_ctime_ns)
-
-
-def _read_fd_bounded(fd: int, *, path: Path) -> bytes:
-    data = bytearray()
-    while len(data) <= MAX_INPUT_BYTES:
-        chunk = os.read(fd, min(65536, MAX_INPUT_BYTES + 1 - len(data)))
-        if not chunk:
-            break
-        data.extend(chunk)
-    if len(data) > MAX_INPUT_BYTES:
-        raise EvidenceError(f"{path}: input exceeds {MAX_INPUT_BYTES} bytes")
-    return bytes(data)
+from . import _publication
+from ._ingress import (
+    MAX_INPUT_BYTES,
+    _READ_CHUNK,
+    _read_bytes_bounded,
+    _read_json,
+    _strict_json_loads,
+)
+from ._publication import _commit_link, _drain_write, _revalidate_target
+from .gate import (
+    EvidenceError,
+    compile_receipt,
+    render_markdown,
+    verify_receipt,
+)
 
 
-def _read_bytes_bounded(path: Path) -> bytes:
-    flags = os.O_RDONLY
-    if hasattr(os, "O_BINARY"):
-        flags |= os.O_BINARY
-    nofollow = getattr(os, "O_NOFOLLOW", 0)
-    if nofollow:
-        flags |= nofollow
-    path_before = path.lstat() if not nofollow else None
-    fd = os.open(path, flags)
-    try:
-        before = os.fstat(fd)
-        if not stat.S_ISREG(before.st_mode):
-            raise EvidenceError(f"{path}: expected regular file")
-        if path_before is not None and (path_before.st_dev, path_before.st_ino) != (before.st_dev, before.st_ino):
-            raise EvidenceError(f"{path}: file identity changed during open")
-        if before.st_size > MAX_INPUT_BYTES:
-            raise EvidenceError(f"{path}: input exceeds {MAX_INPUT_BYTES} bytes")
-
-        first = _read_fd_bounded(fd, path=path)
-        middle = os.fstat(fd)
-        if _stat_token(middle) != _stat_token(before) or len(first) != before.st_size:
-            raise EvidenceError(f"{path}: file generation changed during read")
-
-        os.lseek(fd, 0, os.SEEK_SET)
-        second = _read_fd_bounded(fd, path=path)
-        after = os.fstat(fd)
-        if _stat_token(after) != _stat_token(before) or second != first:
-            raise EvidenceError(f"{path}: file generation changed during read")
-        return first
-    finally:
-        os.close(fd)
-
-
-def _reject_duplicate_pairs(pairs: list[tuple[str, Any]]) -> dict[str, Any]:
-    out: dict[str, Any] = {}
-    for key, value in pairs:
-        if key in out:
-            raise EvidenceError(f"duplicate JSON key: {key}")
-        out[key] = value
-    return out
-
-
-def _read_json(path: Path) -> Any:
-    raw = _read_bytes_bounded(path)
-    try:
-        text = raw.decode("utf-8", errors="strict")
-    except UnicodeDecodeError as exc:
-        raise EvidenceError(f"{path}: invalid UTF-8") from exc
-    try:
-        return json.loads(
-            text,
-            object_pairs_hook=_reject_duplicate_pairs,
-            parse_constant=lambda token: (_ for _ in ()).throw(ValueError(token)),
-        )
-    except EvidenceError:
-        raise
-    except (json.JSONDecodeError, ValueError) as exc:
-        raise EvidenceError(f"{path}: invalid JSON") from exc
-
-
-def _write_exclusive(path: Path, data: bytes) -> None:
-    path.parent.mkdir(parents=True, exist_ok=True)
-    flags = os.O_WRONLY | os.O_CREAT | os.O_EXCL
-    if hasattr(os, "O_BINARY"):
-        flags |= os.O_BINARY
-    fd = os.open(path, flags, 0o600)
-    try:
-        offset = 0
-        while offset < len(data):
-            written = os.write(fd, data[offset:])
-            if written <= 0:
-                raise OSError("short write")
-            offset += written
-        os.fsync(fd)
-    finally:
-        os.close(fd)
+def _publish_exclusive(outputs: Sequence[tuple[Path, bytes]]) -> None:
+    _publication._publish_exclusive(
+        outputs,
+        revalidator=_revalidate_target,
+        linker=_commit_link,
+    )
 
 
 def _now() -> datetime:
@@ -115,13 +40,25 @@ def _now() -> datetime:
 
 
 def _cmd_compile(args: argparse.Namespace) -> int:
+    if args.markdown_out:
+        raise EvidenceError(
+            "--markdown-out cannot share the compile transaction; use render"
+        )
     packet = _read_json(Path(args.packet))
     receipt = compile_receipt(packet, evaluated_at=_now())
-    json_bytes = (json.dumps(receipt, sort_keys=True, indent=2) + "\n").encode("utf-8")
-    md_bytes = render_markdown(receipt).encode("utf-8")
-    _write_exclusive(Path(args.receipt_out), json_bytes)
-    if args.markdown_out:
-        _write_exclusive(Path(args.markdown_out), md_bytes)
+    receipt_bytes = (
+        json.dumps(
+            receipt,
+            sort_keys=True,
+            indent=2,
+            ensure_ascii=True,
+            allow_nan=False,
+        )
+        + "\n"
+    ).encode("utf-8")
+
+    _publish_exclusive([(Path(args.receipt_out), receipt_bytes)])
+
     print(receipt["decision"])
     print(receipt["receipt_sha256"])
     return 0 if receipt["decision"] == "RELEASE_CANDIDATE" else 2
@@ -131,22 +68,62 @@ def _cmd_verify(args: argparse.Namespace) -> int:
     packet = _read_json(Path(args.packet))
     receipt = _read_json(Path(args.receipt))
     result = verify_receipt(packet, receipt, verified_at=_now())
-    print(json.dumps(result, sort_keys=True, separators=(",", ":")))
+    print(
+        json.dumps(
+            result,
+            sort_keys=True,
+            separators=(",", ":"),
+            ensure_ascii=True,
+            allow_nan=False,
+        )
+    )
     return 0 if result.get("valid") else 3
+
+
+def _cmd_render(args: argparse.Namespace) -> int:
+    receipt = _read_json(Path(args.receipt))
+    if type(receipt) is not dict:
+        raise EvidenceError("receipt: expected object")
+    try:
+        markdown = render_markdown(receipt).encode("utf-8")
+    except (KeyError, TypeError, ValueError) as exc:
+        raise EvidenceError("receipt: cannot render malformed receipt") from exc
+    _publish_exclusive([(Path(args.markdown_out), markdown)])
+    print(receipt.get("receipt_sha256", "UNKNOWN"))
+    return 0
 
 
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description=__doc__)
-    sub = parser.add_subparsers(dest="command", required=True)
-    compile_p = sub.add_parser("compile", help="compile evaluation evidence")
-    compile_p.add_argument("packet")
-    compile_p.add_argument("receipt_out")
-    compile_p.add_argument("--markdown-out")
-    compile_p.set_defaults(func=_cmd_compile)
-    verify_p = sub.add_parser("verify", help="verify an existing receipt")
-    verify_p.add_argument("packet")
-    verify_p.add_argument("receipt")
-    verify_p.set_defaults(func=_cmd_verify)
+    commands = parser.add_subparsers(dest="command", required=True)
+
+    compile_parser = commands.add_parser(
+        "compile",
+        help="compile evaluation evidence",
+    )
+    compile_parser.add_argument("packet")
+    compile_parser.add_argument("receipt_out")
+    compile_parser.add_argument(
+        "--markdown-out",
+        help="rejected in v2; use the separate render command",
+    )
+    compile_parser.set_defaults(func=_cmd_compile)
+
+    render_parser = commands.add_parser(
+        "render",
+        help="render one receipt to one Markdown artifact",
+    )
+    render_parser.add_argument("receipt")
+    render_parser.add_argument("markdown_out")
+    render_parser.set_defaults(func=_cmd_render)
+
+    verify_parser = commands.add_parser(
+        "verify",
+        help="verify historical integrity and current fitness",
+    )
+    verify_parser.add_argument("packet")
+    verify_parser.add_argument("receipt")
+    verify_parser.set_defaults(func=_cmd_verify)
     return parser
 
 
