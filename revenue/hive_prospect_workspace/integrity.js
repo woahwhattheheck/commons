@@ -8,7 +8,6 @@
   'use strict';
 
   const installedApis = new WeakSet();
-  const decoratedControllers = new WeakSet();
   const FILTER_IDS = new Set(['filter-q', 'filter-industry', 'filter-tag', 'filter-stage', 'filter-email']);
 
   function cloneFilters(filters) {
@@ -20,46 +19,6 @@
       stage: String(f.stage || ''),
       withEmail: Boolean(f.withEmail)
     };
-  }
-
-  function decorateController(controller) {
-    if (!controller || decoratedControllers.has(controller)) return controller;
-    decoratedControllers.add(controller);
-    let revision = 0;
-    const previewRevision = new WeakMap();
-
-    const originalPreview = controller.preview.bind(controller);
-    controller.preview = function (...args) {
-      const preview = originalPreview(...args);
-      if (preview && typeof preview === 'object') previewRevision.set(preview, revision);
-      return preview;
-    };
-
-    const originalCommit = controller.commit.bind(controller);
-    controller.commit = function (preview, ...args) {
-      if (!preview || typeof preview !== 'object' || previewRevision.get(preview) !== revision) {
-        throw new Error('Preview is stale; preview the current workspace again before committing.');
-      }
-      const result = originalCommit(preview, ...args);
-      revision++;
-      return result;
-    };
-
-    for (const name of ['merge', 'update', 'saveSegment', 'restoreText', 'reset']) {
-      const original = controller[name].bind(controller);
-      controller[name] = function (...args) {
-        const result = original(...args);
-        revision++;
-        return result;
-      };
-    }
-
-    Object.defineProperty(controller, 'integrityRevision', {
-      configurable: false,
-      enumerable: false,
-      get: () => revision
-    });
-    return controller;
   }
 
   function patchStorageBridge(api) {
@@ -211,22 +170,15 @@
     installedApis.add(api);
     patchStorageBridge(api);
 
-    const originalCreateController = api.createController.bind(api);
-    api.createController = function (...args) {
-      return decorateController(originalCreateController(...args));
-    };
-
     const originalMount = api.mount.bind(api);
     api.mount = function (doc, model, storage) {
-      const controller = decorateController(originalMount(doc, model, storage));
-      return attachUiIntegrity(doc, controller, root);
+      return attachUiIntegrity(doc, originalMount(doc, model, storage), root);
     };
     return api;
   }
 
   return {
     install,
-    decorateController,
     attachUiIntegrity,
     cloneFilters,
     clearVisibleSelections,
