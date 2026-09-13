@@ -66,6 +66,21 @@ class ProvenanceGateTests(unittest.TestCase):
                 self.assertEqual(record["decision"], READY_FOR_SCREEN)
                 self.assertEqual(record["codes"], [])
 
+
+    def test_manifest_records_expose_full_reconciled_provenance(self) -> None:
+        artifacts = self.build()
+        record = artifacts.manifest["records"][0]
+        expected = self.transfers[0]
+        for key in (
+            "compound_master_id", "source_vial_id", "source_plate_id", "source_well",
+            "source_plate_lot", "source_volume_ul_before", "transfer_volume_ul",
+            "source_volume_ul_after", "source_concentration_um", "membership_type",
+            "pool_id", "destination_plate_id", "destination_well", "destination_plate_lot",
+            "destination_compound_master_id", "assay_protocol_id", "assay_protocol_version",
+            "control_well_map_hash", "instrument_run_id",
+        ):
+            self.assertEqual(record[key], expected[key])
+
     def test_reruns_are_byte_identical(self) -> None:
         first = self.build()
         second = self.build()
