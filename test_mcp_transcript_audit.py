@@ -136,10 +136,26 @@ class AuditHappyPathTests(unittest.TestCase):
         events = [
             (CLIENT, initialize()),
             (SERVER, initialize_result()),
-            (SERVER, {"jsonrpc": "2.0", "method": "notifications/message", "params": {"data": "x"}}),
+            (SERVER, {"jsonrpc": "2.0", "method": "notifications/message", "params": {"level": "info", "data": "x"}}),
             (CLIENT, initialized()),
         ]
         self.assertEqual(audit_transcript(capture(events))["status"], "PASS")
+
+    def test_preinit_logging_requires_params(self):
+        events = [(CLIENT, initialize()), (SERVER, initialize_result()), (SERVER, {"jsonrpc": "2.0", "method": "notifications/message"}), (CLIENT, initialized())]
+        self.assertIn("INVALID_LOGGING_NOTIFICATION", reason_codes(audit_transcript(capture(events))))
+
+    def test_preinit_logging_requires_level(self):
+        events = [(CLIENT, initialize()), (SERVER, initialize_result()), (SERVER, {"jsonrpc": "2.0", "method": "notifications/message", "params": {"data": "x"}}), (CLIENT, initialized())]
+        self.assertIn("INVALID_LOGGING_NOTIFICATION", reason_codes(audit_transcript(capture(events))))
+
+    def test_preinit_logging_rejects_unknown_level(self):
+        events = [(CLIENT, initialize()), (SERVER, initialize_result()), (SERVER, {"jsonrpc": "2.0", "method": "notifications/message", "params": {"level": "verbose", "data": "x"}}), (CLIENT, initialized())]
+        self.assertIn("INVALID_LOGGING_NOTIFICATION", reason_codes(audit_transcript(capture(events))))
+
+    def test_preinit_logging_requires_data_key(self):
+        events = [(CLIENT, initialize()), (SERVER, initialize_result()), (SERVER, {"jsonrpc": "2.0", "method": "notifications/message", "params": {"level": "info"}}), (CLIENT, initialized())]
+        self.assertIn("INVALID_LOGGING_NOTIFICATION", reason_codes(audit_transcript(capture(events))))
 
 
 class LifecycleHostileTests(unittest.TestCase):
@@ -263,10 +279,25 @@ class CorrelationHostileTests(unittest.TestCase):
         self.assertEqual(receipt["status"], "HOLD")
         self.assertIn("INVALID_CAPTURE_EVENT", reason_codes(receipt))
 
-    def test_float_id_rejected(self):
+    def test_fractional_numeric_id_roundtrip_passes(self):
         events = valid_events()
         events[3] = (CLIENT, {"jsonrpc": "2.0", "id": 1.5, "method": "tools/list", "params": {}})
-        self.assertIn("INVALID_CAPTURE_EVENT", reason_codes(audit_transcript(capture(events))))
+        events[4] = (SERVER, {"jsonrpc": "2.0", "id": 1.5, "result": {"tools": []}})
+        self.assertEqual(audit_transcript(capture(events))["status"], "PASS")
+
+    def test_fractional_numeric_id_mismatch_holds(self):
+        events = valid_events()
+        events[3] = (CLIENT, {"jsonrpc": "2.0", "id": 1.5, "method": "tools/list", "params": {}})
+        events[4] = (SERVER, {"jsonrpc": "2.0", "id": 1.5000000000000002, "result": {"tools": []}})
+        receipt = audit_transcript(capture(events))
+        self.assertIn("ORPHAN_RESPONSE", reason_codes(receipt))
+        self.assertIn("UNRESOLVED_REQUESTS", reason_codes(receipt))
+
+    def test_equivalent_numeric_id_spellings_correlate(self):
+        events = valid_events()
+        events[3] = (CLIENT, {"jsonrpc": "2.0", "id": 2, "method": "tools/list", "params": {}})
+        events[4] = (SERVER, {"jsonrpc": "2.0", "id": 2.0, "result": {"tools": []}})
+        self.assertEqual(audit_transcript(capture(events))["status"], "PASS")
 
     def test_result_and_error_together_rejected(self):
         events = valid_events()
@@ -321,6 +352,17 @@ class StrictInputHostileTests(unittest.TestCase):
         canonical = base64.b64encode(payload).decode("ascii")
         line = canonical_json_bytes({"direction": CLIENT, "payload_base64": canonical + "="})
         self.assertIn("INVALID_CAPTURE_EVENT", reason_codes(audit_transcript(line + b"\n")))
+
+    def test_deep_payload_nesting_holds_without_recursion_escape(self):
+        from tools.mcp_transcript_audit.audit import MAX_JSON_NESTING
+        nested = 0
+        for _ in range(MAX_JSON_NESTING + 5):
+            nested = {"x": nested}
+        events = valid_events()
+        events[3] = (CLIENT, {"jsonrpc": "2.0", "id": "deep", "method": "tools/list", "params": {"nested": nested}})
+        receipt = audit_transcript(capture(events))
+        self.assertEqual(receipt["status"], "HOLD")
+        self.assertIn("JSON_NESTING_TOO_DEEP", reason_codes(receipt))
 
     def test_empty_capture_holds(self):
         self.assertIn("EMPTY_CAPTURE", reason_codes(audit_transcript(b"\n\n")))
@@ -406,6 +448,20 @@ class VerificationTests(unittest.TestCase):
         self.assertFalse(verification["valid"])
         self.assertIn("INVALID_RECEIPT_JSON", verification["reasons"])
 
+    def test_deep_receipt_nesting_fails_closed(self):
+        from tools.mcp_transcript_audit.audit import MAX_JSON_NESTING
+        deep = b'{"x":' * (MAX_JSON_NESTING + 5) + b'0' + b'}' * (MAX_JSON_NESTING + 5)
+        verification = verify_receipt(capture(), deep)
+        self.assertFalse(verification["valid"])
+        self.assertIn("INVALID_RECEIPT_JSON", verification["reasons"])
+
+    def test_protocol_version_override_is_rejected_by_library(self):
+        with self.assertRaises(ValueError):
+            audit_transcript(capture(), required_protocol_version="2025-06-18")
+        receipt = canonical_json_bytes(audit_transcript(capture()))
+        with self.assertRaises(ValueError):
+            verify_receipt(capture(), receipt, required_protocol_version="2025-06-18")
+
 
 class CliTests(unittest.TestCase):
     def test_cli_audit_verify_and_create_exclusive_output(self):
@@ -450,6 +506,30 @@ class CliTests(unittest.TestCase):
             )
             self.assertEqual(second.returncode, 2)
             self.assertIn("File exists", second.stderr)
+
+    def test_cli_cannot_downgrade_required_protocol_version(self):
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            capture_path = root / "old.jsonl"
+            old_events = valid_events()
+            old_events[0] = (CLIENT, initialize(version="2025-06-18"))
+            old_events[1] = (SERVER, initialize_result(version="2025-06-18"))
+            capture_path.write_bytes(capture(old_events))
+            repo = str(Path(__file__).resolve().parent)
+            env = dict(os.environ)
+            env["PYTHONPATH"] = repo + (os.pathsep + env["PYTHONPATH"] if env.get("PYTHONPATH") else "")
+            fixed = subprocess.run(
+                [sys.executable, "-m", "tools.mcp_transcript_audit.cli", "audit", str(capture_path)],
+                cwd=repo, env=env, text=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, check=False,
+            )
+            self.assertEqual(fixed.returncode, 3, fixed.stderr)
+            self.assertEqual(json.loads(fixed.stdout)["status"], "HOLD")
+            bypass = subprocess.run(
+                [sys.executable, "-m", "tools.mcp_transcript_audit.cli", "audit", str(capture_path), "--protocol-version", "2025-06-18"],
+                cwd=repo, env=env, text=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, check=False,
+            )
+            self.assertEqual(bypass.returncode, 2)
+            self.assertIn("unrecognized arguments", bypass.stderr)
 
 
 if __name__ == "__main__":
