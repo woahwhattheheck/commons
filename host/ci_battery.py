@@ -129,20 +129,26 @@ def main(argv: list[str] | None = None) -> int:
             dirty = bool(subprocess.run(["git", "-C", str(root), "status", "--porcelain"],
                                         check=True, capture_output=True).stdout)
             record(handle, "checkout_sha", sha, "")
-            for command, path in selected:
-                try:
-                    file_hashes[path] = hashlib.sha256((root / path).read_bytes()).hexdigest()
-                except OSError:
-                    file_hashes[path] = None
-                rc = execute(root, command, path, args.timeout or None)
-                record(handle, command, "./" + path, rc)
-                code = int(bool(code or rc))
-                print(("ok   " if rc == 0 else "FAIL ") + json.dumps(path), flush=True)
-            record(handle, "battery_complete", "", code)
-            outcome = "failure" if code else "success"
-            if not selected:
-                print("no tests matched; no passing battery evidence", file=sys.stderr)
-                code = 1
+            if dirty:
+                print("checkout is dirty; refusing source-linked passing evidence",
+                      file=sys.stderr, flush=True)
+                record(handle, "battery_complete", "", 0)
+                outcome, code = "failure", 2
+            else:
+                for command, path in selected:
+                    try:
+                        file_hashes[path] = hashlib.sha256((root / path).read_bytes()).hexdigest()
+                    except OSError:
+                        file_hashes[path] = None
+                    rc = execute(root, command, path, args.timeout or None)
+                    record(handle, command, "./" + path, rc)
+                    code = int(bool(code or rc))
+                    print(("ok   " if rc == 0 else "FAIL ") + json.dumps(path), flush=True)
+                record(handle, "battery_complete", "", code)
+                outcome = "failure" if code else "success"
+                if not selected:
+                    print("no tests matched; no passing battery evidence", file=sys.stderr)
+                    code = 1
     except KeyboardInterrupt:
         outcome, code = "cancelled", 130
     except (OSError, subprocess.CalledProcessError):
