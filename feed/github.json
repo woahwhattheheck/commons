@@ -1,9 +1,9 @@
 {
   "counts": {
     "open_issues": 18,
-    "open_pull_requests": 22,
-    "runs_in_progress": 16,
-    "runs_queued": 792
+    "open_pull_requests": 23,
+    "runs_in_progress": 19,
+    "runs_queued": 802
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -69,6 +69,17 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
+      "branch": "codex/cross-family-offering-bundle-composer-resource-20260913-01",
+      "created_at": "2026-09-13T10:30:13Z",
+      "draft": false,
+      "head_sha": "4941390d6d8af74694d909215b068491b17e862e",
+      "number": 13763,
+      "title": "resources: activate cross-family offering bundle composer",
+      "updated_at": "2026-09-13T10:30:13Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
       "branch": "zhyp-c9v3/commercial-lifecycle-late-duplicate-idempotency-13755",
       "created_at": "2026-09-13T10:27:20Z",
       "draft": false,
@@ -86,7 +97,7 @@
       "head_sha": "f0db7219f3c214269cb33ea57315d5350f276d47",
       "number": 13756,
       "title": "Harden Commercial Decision Relay trust boundaries",
-      "updated_at": "2026-09-13T10:28:36Z"
+      "updated_at": "2026-09-13T10:29:57Z"
     },
     {
       "author": "woahwhattheheck",
@@ -94,10 +105,10 @@
       "branch": "zcard-x5p2/catalog-currentness-20260913",
       "created_at": "2026-09-13T10:24:07Z",
       "draft": false,
-      "head_sha": "a1dcddaaa916514b414ceb753a8e6426e579dfb7",
+      "head_sha": "e193112296cf0642f7be604dac5c9d2c3cf746a1",
       "number": 13754,
       "title": "revenue: add cross-family catalog currentness auditor",
-      "updated_at": "2026-09-13T10:28:48Z"
+      "updated_at": "2026-09-13T10:30:21Z"
     },
     {
       "author": "woahwhattheheck",
@@ -116,10 +127,10 @@
       "branch": "z-fou/commercial-funnel-20260913",
       "created_at": "2026-09-13T10:20:42Z",
       "draft": false,
-      "head_sha": "3e06ce8e5874f258656382453db2432b6b1764a3",
+      "head_sha": "a8b6bc11c6c361f874d8a8b9b10c846a4d99a5dd",
       "number": 13748,
       "title": "Revenue: add evidence-bound cross-family commercial funnel ledger",
-      "updated_at": "2026-09-13T10:29:25Z"
+      "updated_at": "2026-09-13T10:30:01Z"
     },
     {
       "author": "woahwhattheheck",
@@ -164,17 +175,6 @@
       "number": 13702,
       "title": "fix(outbound): bind lease receipts to live provider authority",
       "updated_at": "2026-09-13T09:55:08Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-lagrange-913500/cas-actuarial-llm-benchmark-repro-20260913",
-      "created_at": "2026-09-13T09:46:23Z",
-      "draft": false,
-      "head_sha": "437f3e033ae351d825dc7761432a11a78e528b03",
-      "number": 13701,
-      "title": "revenue: add CAS actuarial LLM benchmark reproducibility core",
-      "updated_at": "2026-09-13T09:54:04Z"
     }
   ],
   "open_heads": {
@@ -195,15 +195,16 @@
     "13712": "e5d13ab500ff195dd85df2728f85794dab2fe048",
     "13740": "53ce9dafb13ca852d42e15168a2000320d8bd318",
     "13741": "deea95594e6d9944821830c264dcb2037e0e7ab5",
-    "13748": "3e06ce8e5874f258656382453db2432b6b1764a3",
+    "13748": "a8b6bc11c6c361f874d8a8b9b10c846a4d99a5dd",
     "13753": "8872e641cb2efe959b9236e1f56252b43915eadb",
-    "13754": "a1dcddaaa916514b414ceb753a8e6426e579dfb7",
+    "13754": "e193112296cf0642f7be604dac5c9d2c3cf746a1",
     "13756": "f0db7219f3c214269cb33ea57315d5350f276d47",
-    "13760": "4d5e07796c8375c361b63bed8f10c75d951f6cdb"
+    "13760": "4d5e07796c8375c361b63bed8f10c75d951f6cdb",
+    "13763": "4941390d6d8af74694d909215b068491b17e862e"
   },
-  "pulls_listed": 22,
+  "pulls_listed": 23,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 49.5,
+  "queue_depth_per_runner": 42.2,
   "recently_closed": [
     {
       "author": "woahwhattheheck",
@@ -373,6 +374,6 @@
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-13T10:29:41Z",
+  "unchanged_since": "2026-09-13T10:30:44Z",
   "undatable_pulls": []
 }
