@@ -25,6 +25,7 @@
   "priority_queue": [],
   "production_write": false,
   "record_sources": [
+    "inventory/resources/records/codex-titan-v5-route-block-b-resource-activation-20260913-01.json",
     "inventory/resources/records/codex-titan-v5-submitted-package-regression-authority-resource-activation-20260912-01.json",
     "inventory/resources/records/codex-master-resource-census-20260826-01.json",
     "inventory/resources/records/codex-resource-master-office-activation-20260826-01.json",
@@ -92,15 +93,15 @@
   "schema": "commons-resource-ledger/v2",
   "secrets": false,
   "shared_resource_rule": "ALL_CARRIERS_MAY_USE_ALL_SHARED_RESOURCES; CLAUDE_IS_OWNER_HANDLED",
-  "slack_ts": "1789250892.547929",
+  "slack_ts": "1789261340.864119",
   "snapshot": {
-    "base_main_sha": "1b00c954e081654ce950c25e9e72c1dcbb1455e7",
-    "observed_at": "2026-09-12T22:08:12Z",
+    "base_main_sha": "4be49a4e7d4959f0913d08745dba9578b73fd247",
+    "observed_at": "2026-09-13T01:06:53Z",
     "privacy_rule": "Shared account identities, service roles, aggregate quotas, reset states, and operating state may be published for Commons routing. Never persist passwords, tokens, API credentials, recovery or verification links, payment credentials, personal legal identity, or private mail contents.",
     "scope": "Anything convertible into Commons capability or value, including Bryce, devices, subscriptions, models, agents, tools, repositories, builds, data, attention, and external roads.",
     "truth_rule": "Capacity, authority, lifecycle stage, and condition are independent. Declared or cached is not live; reset is not permission; activity is not value."
   },
-  "source_id": "codex-titan-v5-submitted-package-regression-authority-resource-activation-20260912-01",
+  "source_id": "codex-titan-v5-route-block-b-resource-activation-20260913-01",
   "stage_order": [
     "DECLARED",
     "AVAILABLE",
@@ -109,8 +110,9 @@
     "EXERCISED",
     "PRODUCING"
   ],
-  "subject": "MASTER RESOURCE LEDGER — authenticated submitted V3.1↔V4 archive bridge producing for the canonical TITAN V5 recovery consumer",
+  "subject": "MASTER RESOURCE LEDGER — released native R05–R08 route evidence producing for the canonical TITAN V5 P04 selector consumer",
   "supersedes_source_ids": [
+    "codex-titan-v5-route-block-b-resource-activation-20260913-01",
     "codex-titan-v5-submitted-package-regression-authority-resource-activation-20260912-01",
     "codex-titan-v5-v31-v4-submitted-archive-bridge-resource-activation-20260912-01",
     "codex-titan-v5-day-close-animal-feed-certificate-resource-activation-20260912-01",
@@ -2188,6 +2190,28 @@
       "last_receipt": "codex-titan-v5-submitted-package-regression-authority-resource-activation-20260912-01",
       "last_used_at": "2026-09-12T22:08:12Z",
       "stale_after": "next submitted archive identity, coverage schema/checker, package reachability theorem, recovery consumer, workflow, gameplay result or provider-state change",
+      "priority": 99
+    },
+    {
+      "name": "titan-v5-route-matrix-native-block-b-evidence",
+      "kind": "SOURCE_BOUND_NATIVE_ROUTE_MATRIX_EVIDENCE_BUNDLE",
+      "capacity": "LIVE",
+      "stage": "PRODUCING",
+      "condition": "CONSTRAINED",
+      "holder": "Commons / canonical TITAN V5 P04 route reducer and preregistered selector consumers",
+      "authority": "SHARED_ALL_CARRIERS; PUBLIC_CURRENT_MAIN_READ_REDUCE_AND_SELECTOR_INPUT; EXACT_PR13517_HEAD_531928937E85B7F55967CC6A9A28BB8334CDAB3A_12_BLOB_CUSTODY_32_OF_32_GAMES_719_DECISIONS_ZERO_FAILURE_C00_DEDUP_64_SNAPSHOT_BANK_MATCHES_2136_INPUT_CHECKS_AND_SHA256_BINDING_REQUIRED; DISCOVERY_EVIDENCE_ONLY; NO_RERUN_POLICY_DEFAULT_CONFIG_CURRENT_RELEASE_PROVIDER_OR_KAGGLE_MUTATION",
+      "consumer": "The merged P04 route reducer and preregistered selector need exact public R05–R08 rows, snapshots and source custody to rank the complete 13-route matrix and evaluate fresh holdouts without rerunning these completed native cells.",
+      "value": "One released immutable bundle contributes 32 authenticated native cells across four route plans, exact public pre-route snapshots and deterministic P04 rows; consumers can reuse the evidence while preserving the mixed-seed result and rejecting blanket adoption.",
+      "next_action": "Let the existing P04 reducer and preregistered selector consume the exact Block-B rows alongside the remaining released matrix blocks, then use predeclared fresh holdouts; do not rerun Block-B or infer promotion from the two discovery seeds.",
+      "source": "revenue/kaggriculture/cloud-execution-lab/candidates/v5/selective-carrot/route-matrix-native/BLOCK-B; source PR #13517 head 531928937e85b7f55967cc6a9a28bb8334cdab3a merge 145a007a64e0cade1424db27e7be55f308edde1d",
+      "evidence_ts": "2026-09-13T01:06:53Z",
+      "auth_surface": "public current-main immutable evidence files; no credential, provider session, Kaggle write, new gameplay or repeated owner approval is required for Commons read/reduce use",
+      "exact_safe_probe": "Current Block-B row blob 56ad64da297d8afb0f3ec51fcb3ad58ea91104d1 and SHA256 853cc8df7a20d5d78cefb796ed3ddac079c4ad92d9eaac6c338d9f4d398c9093; summary blob fd6b6241a1282a955260f21af461ca85e2fb13eb and SHA256 a4593f95e0e5fd431969fe7907a351641264d4e856cf2e2f47467600bf52d784; raw bundle blob 1be6814334d48337cd1e581a674525da382274cf and SHA256 8bb7c01fa36b842c4cd1df5533ba6e46f0b612b5cd1134ede5db69f97d2af9e5. Source reports 32/32 games, 719 decisions each, zero failures, 64/64 snapshot-bank matches and 2136/2136 input checks.",
+      "rate_plan_boundary": "Retained completed offline evidence consumes no new provider quota or gameplay. It does not prove causal routing, blanket adoption, playing strength, policy promotion, default activation, hosted score, rank, submission, prize, payment, revenue or cash.",
+      "assigned_backlog": "existing canonical P04 route reducer and preregistered selector consumers; no new compute, sibling runner, delegation or release lane is created",
+      "last_receipt": "codex-titan-v5-route-block-b-resource-activation-20260913-01",
+      "last_used_at": "2026-09-13T01:06:53Z",
+      "stale_after": "next Block-B artifact revision, P04 row/snapshot schema, reducer/selector contract, holdout result, policy decision or provider-state change",
       "priority": 99
     }
   ],
