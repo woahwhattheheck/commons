@@ -191,6 +191,7 @@ class RegistryTests(unittest.TestCase):
         with self.assertRaises(RegistryError):
             compile_registry(source)
 
+
     def test_unknown_record_field_rejected(self):
         source = fixture()
         source["records"][0]["surprise"] = "value"
