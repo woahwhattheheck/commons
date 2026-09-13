@@ -8,12 +8,15 @@ The exact optimizer is intentionally boring: maximize explicit owner priority un
 
 There are deliberately separate engine and production layers.
 
-- `core.py` is deterministic optimization/replay machinery. Bare core `portfolio.json` / `receipt.json` bytes prove only deterministic engine integrity for the supplied rows. They do **not** establish that a caller-authored `READY` or `CURABLE` claim was independently reviewed.
-- `current.py` contains the authenticated current-use verifier and descriptor primitives. Explicit-key callables there exist for tests/internal host composition and are not the production authority root.
-- `host.py` is the production authority boundary. It reads one fixed owner-retained key location and exposes no caller-selected key path.
+- `core.py` is deterministic optimization/replay machinery. Bare core `portfolio.json` / `receipt.json` bytes prove only deterministic engine integrity for supplied rows. They do **not** establish that a caller-authored `READY`/`CURABLE` claim was independently reviewed or that owner planning inputs were host-approved.
+- `current.py` contains the authenticated upstream-authority verifier, fresh-current verifier, and descriptor primitives. Explicit-key callables there exist for tests/internal host composition and are not the production authority root.
+- `host.py` is the production authority boundary. It reads one fixed owner-retained key location, exposes no caller-selected key path, and emits a second HMAC seal over the **full normalized input digest plus every exact compiled artifact**.
 - `publisher.py` publishes only into an already-existing retained directory generation and never deletes visible pathnames on rollback.
 
-A row may enter the production current-use optimizer as `READY` or `CURABLE` only when its exact opportunity/revision/source digest/upstream receipt digest/evidence reference/evidence timestamp/deadline/state projection is present in a host-key-authenticated upstream-authority generation.
+This gives two independent bindings with the same retained host key:
+
+1. the upstream-authority HMAC proves the exact READY/CURABLE opportunity generation/state projection; and
+2. `host-seal.json` proves the exact full owner-planning generation and compiled package, so priority/effort/buffer/capacity/reserve/policy edits cannot be laundered through recomputed self-hashes.
 
 ## Fixed retained host key
 
@@ -35,7 +38,18 @@ The retained key file is:
 
 An upstream-authority envelope has schema `pursuit-portfolio-allocation/upstream-authority/v1`, a `key_id`, canonical UTC `issued_at`, exact READY/CURABLE entries, and `hmac_sha256` over canonical JSON of `{entries,issued_at,key_id,schema}`. The authority generation must not be future-issued or predate the evidence it attests to. Its READY/CURABLE set must exactly match the normalized candidate generation; missing, extra, changed, or relabeled rows fail closed.
 
-The authority signer is intentionally outside this candidate-facing compiler. Possession of an unsigned/self-hashed input packet does not mint host authority.
+The authority signer is intentionally outside this candidate-facing compiler. Possession of an unsigned/self-hashed input packet does not mint upstream host authority.
+
+## Host seal
+
+`host-seal.json` uses schema `pursuit-portfolio-allocation/host-seal/v1`. Its HMAC covers canonical bindings for:
+
+- `input_sha256` of the full normalized owner-planning input;
+- exact `portfolio.json`, `portfolio.md`, `receipt.json`, `upstream-authority.json`, and `current-receipt.json` byte digests;
+- the exact evaluation time; and
+- the retained authority `key_id`.
+
+Verification checks this HMAC before accepting the full planning generation, then independently checks upstream authority, deterministic historical integrity, and fresh-current semantics.
 
 ## What the optimizer answers
 
@@ -65,7 +79,7 @@ There is no hidden score, ratio, probability, LLM ranking, expected-value model,
 
 ## Policy binding
 
-`policy.policy_sha256` is SHA-256 over canonical normalized policy JSON without the `policy_sha256` field. This detects silent edits to capacity, reserve, planning horizon, and evidence-freshness policy. Policy is still an explicit owner planning input; that self-digest is an integrity commitment, not third-party approval.
+`policy.policy_sha256` is SHA-256 over canonical normalized policy JSON without the `policy_sha256` field. In production the normalized input containing that policy is additionally bound by the fixed-host HMAC seal. Silent capacity, reserve, priority, effort, buffer, horizon, or evidence-freshness edits therefore invalidate the trusted package.
 
 ## Current-use CLI
 
@@ -77,27 +91,26 @@ python -m revenue.pursuit_portfolio.cli compile \
   portfolio-input.json upstream-authority.json out/portfolio-review
 ```
 
-Production verify again resolves the fixed retained host key and performs both historical byte-integrity verification and a fresh-current semantic reassessment. A portfolio that was once allocated but is now stale, outside the planning horizon, or beyond its deadline/buffer does not remain current merely because its old receipt still hashes:
+Production verify again resolves the fixed retained host key and performs host-seal verification, historical byte-integrity verification, upstream-authority verification, and fresh-current semantic reassessment. A portfolio that was once allocated but is now stale, outside the planning horizon, or beyond its deadline/buffer does not remain current merely because old hashes still match:
 
 ```bash
 python -m revenue.pursuit_portfolio.cli verify out/portfolio-review
 ```
 
-A successful current-use publication contains five bound artifacts:
+A successful production publication contains six bound artifacts:
 
 - `portfolio.json`
 - `portfolio.md`
 - `receipt.json`
 - `upstream-authority.json`
 - `current-receipt.json`
-
-`current-receipt.json` binds the core input/receipt to the exact authenticated authority generation and key ID.
+- `host-seal.json`
 
 ## Descriptor custody
 
 Current-use file ingress walks every path component without following symlinks, opens the final regular file from the retained parent directory descriptor, bounds the byte count, reads the same descriptor generation twice, and rejects a generation that changes while being consumed.
 
-Publication never creates or replaces the destination directory. The owner must create it first. The publisher opens that exact directory generation through the same no-symlink component walk and creates each final artifact exclusively relative to the retained descriptor. If a later artifact fails, already-published files are preserved and reported as partial publication; the implementation never unlinks a visible final pathname during rollback.
+Publication never creates or replaces the destination directory. The owner must create it first. The publisher opens that exact directory generation through the same no-symlink component walk and creates each final artifact exclusively relative to the retained descriptor. Before success, every visible final pathname must still name the exact inode written by the retained file descriptor. If a later artifact fails, already-published files are preserved and reported as partial publication; the implementation never unlinks a visible final pathname during rollback.
 
 The secure current-use descriptor path fails closed on platforms that cannot provide the required `dir_fd`, `O_DIRECTORY`, and `O_NOFOLLOW` semantics rather than silently downgrading custody.
 
@@ -105,4 +118,4 @@ The secure current-use descriptor path fails closed on platforms that cannot pro
 
 This module is offline owner portfolio decision support only. It performs no buyer/partner contact, email/SMS/DM/call, registration, question submission, portal mutation, proposal/bid submission, pricing, staffing assignment, scheduling, signature/certification, contract acceptance, spend, invoice/payment/refund/bank action, award claim, buyer-intent inference, probability/forecast, cash assertion, or recognized-revenue action.
 
-`ALLOCATED_READY` under the production current-use path means only that an authenticated upstream-ready generation fits the supplied owner planning constraints at the recorded evaluation time and still passes fresh-current verification. It is not submission or spend authority.
+`ALLOCATED_READY` under the production current-use path means only that an authenticated upstream-ready generation fits the host-sealed owner planning constraints at the recorded evaluation time and still passes fresh-current verification. It is not submission or spend authority.
