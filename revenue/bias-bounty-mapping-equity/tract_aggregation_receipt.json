@@ -1,0 +1,79 @@
+{
+  "filters": {
+    "overture_road_classes": [
+      "motorway",
+      "trunk",
+      "primary",
+      "secondary"
+    ],
+    "poi_categories": {
+      "ems": [
+        "ambulance_and_ems_services",
+        "emergency_medical_services"
+      ],
+      "fire": [
+        "fire_department",
+        "fire_station"
+      ],
+      "grocery": [
+        "supermarket",
+        "grocery_store"
+      ],
+      "hospital": [
+        "hospital",
+        "emergency_room"
+      ],
+      "pharmacy": [
+        "pharmacy",
+        "drugstore"
+      ],
+      "police": [
+        "police_station",
+        "police_department"
+      ]
+    },
+    "tiger_road_classes": [
+      "S1100",
+      "S1200"
+    ]
+  },
+  "geoid_ordering": "text_11digit_ascending",
+  "metadata": {
+    "eastern-ok": {
+      "crs": "OGC:CRS84",
+      "projection": "EPSG:5070",
+      "source": "Source Cooperative"
+    },
+    "maricopa-az": {
+      "crs": "OGC:CRS84",
+      "projection": "EPSG:5070",
+      "source": "Source Cooperative"
+    },
+    "northern-ca": {
+      "crs": "OGC:CRS84",
+      "projection": "EPSG:5070",
+      "source": "Source Cooperative"
+    },
+    "south-central-tx": {
+      "crs": "OGC:CRS84",
+      "projection": "EPSG:5070",
+      "source": "Source Cooperative"
+    }
+  },
+  "no_provider_submission": true,
+  "no_reference_score_column": true,
+  "output_digest_algorithm": "sha256",
+  "regions": [
+    "eastern-ok",
+    "maricopa-az",
+    "northern-ca",
+    "south-central-tx"
+  ],
+  "row_counts": {
+    "eastern-ok": 1192,
+    "maricopa-az": 1593,
+    "northern-ca": 591,
+    "south-central-tx": 6003
+  },
+  "undefined_zero_reference": true
+}
