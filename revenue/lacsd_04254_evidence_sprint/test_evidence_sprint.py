@@ -1,13 +1,16 @@
 from __future__ import annotations
 
 import copy
-import json
+import os
 import tempfile
 import unittest
 from pathlib import Path
+from unittest import mock
 
+import evidence_sprint
 from evidence_sprint import (
     EVENT_SCHEMA,
+    MAX_JSON_BYTES,
     ValidationError,
     build_portfolio,
     canonical_json,
@@ -28,10 +31,7 @@ class EvidenceSprintTests(unittest.TestCase):
         self.assertEqual(self.portfolio, build_portfolio())
         self.assertEqual(len(self.portfolio["scenarios"]), 10)
         classes = {row["fault_class"] for row in self.portfolio["scenarios"]}
-        self.assertEqual(
-            classes,
-            {"normal_diurnal", "blockage_drift", "storm_inflow_infiltration", "sensor_dropout", "duplicate_packet_replay", "transport_interruption_recovery"},
-        )
+        self.assertEqual(classes, {"normal_diurnal", "blockage_drift", "storm_inflow_infiltration", "sensor_dropout", "duplicate_packet_replay", "transport_interruption_recovery"})
         self.assertEqual(len(self.portfolio["portfolio_sha256"]), 64)
 
     def test_reference_candidate_meets_every_binary_gate(self):
@@ -41,6 +41,7 @@ class EvidenceSprintTests(unittest.TestCase):
         self.assertEqual(result["alert_detection_rate"], 1.0)
         self.assertEqual(result["false_urgent_alert_rate"], 0.0)
         self.assertEqual(result["duplicate_effect_count"], 0)
+        self.assertEqual(result["candidate_build_sha256"], self.candidate["candidate_build_sha256"])
         self.assertFalse(result["authority"]["field_performance_claimed"])
         self.assertFalse(result["authority"]["production_control_authorized"])
         self.assertFalse(result["authority"]["payment_or_revenue_claimed"])
@@ -155,8 +156,7 @@ class EvidenceSprintTests(unittest.TestCase):
 
     def test_duplicate_event_id_fails_closed(self):
         candidate = copy.deepcopy(self.candidate)
-        clone = copy.deepcopy(candidate["events"][0])
-        candidate["events"].append(clone)
+        candidate["events"].append(copy.deepcopy(candidate["events"][0]))
         with self.assertRaises(ValidationError):
             evaluate_candidate(candidate)
 
@@ -171,7 +171,7 @@ class EvidenceSprintTests(unittest.TestCase):
         receipt = compile_receipt(self.candidate)
         self.assertEqual(verify_receipt(receipt, self.candidate), receipt)
         tampered = copy.deepcopy(receipt)
-        tampered["evaluation"]["status"] = "READY_FOR_BUYER_REVIEW" if receipt["evaluation"]["status"] != "READY_FOR_BUYER_REVIEW" else "HOLD"
+        tampered["evaluation"]["status"] = "HOLD"
         with self.assertRaises(ValidationError):
             verify_receipt(tampered, self.candidate)
 
@@ -182,12 +182,85 @@ class EvidenceSprintTests(unittest.TestCase):
         with self.assertRaises(ValidationError):
             verify_receipt(receipt, changed)
 
+    def test_fresh_recompile_rejects_changed_envelope_build_identity(self):
+        changed = copy.deepcopy(self.candidate)
+        changed["model_version"] = "v2"
+        changed["candidate_build_sha256"] = "a" * 64
+        with self.assertRaises(ValidationError):
+            compile_receipt(changed)
+
+    def test_single_event_build_binding_mismatch_fails_closed(self):
+        changed = copy.deepcopy(self.candidate)
+        changed["events"][0]["candidate_build_sha256"] = "b" * 64
+        with self.assertRaises(ValidationError):
+            evaluate_candidate(changed)
+
+    def test_single_event_model_identity_mismatch_fails_closed(self):
+        changed = copy.deepcopy(self.candidate)
+        changed["events"][0]["model_version"] = "pretend-v9"
+        with self.assertRaises(ValidationError):
+            evaluate_candidate(changed)
+
+    def test_cross_scenario_effect_id_transplant_fails_closed(self):
+        changed = copy.deepcopy(self.candidate)
+        alerts = [e for e in changed["events"] if e["disposition"] == "ALERT"]
+        alerts[1]["effect_id"] = alerts[0]["effect_id"]
+        with self.assertRaises(ValidationError):
+            evaluate_candidate(changed)
+
     def test_strict_json_loader_rejects_duplicate_keys(self):
         with tempfile.TemporaryDirectory() as tmp:
             path = Path(tmp) / "dupe.json"
             path.write_text('{"schema":"x","schema":"y"}', encoding="utf-8")
             with self.assertRaises(ValidationError):
                 _load_strict_json(path)
+
+    def test_strict_json_loader_rejects_nonfinite_constant(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "nan.json"
+            path.write_text('{"x":NaN}', encoding="utf-8")
+            with self.assertRaises(ValidationError):
+                _load_strict_json(path)
+
+    def test_loader_rejects_directory(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            with self.assertRaises(ValidationError):
+                _load_strict_json(Path(tmp))
+
+    @unittest.skipUnless(hasattr(os, "O_NOFOLLOW") and hasattr(os, "symlink"), "requires no-follow symlink support")
+    def test_loader_rejects_final_symlink(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            target = Path(tmp) / "target.json"
+            link = Path(tmp) / "link.json"
+            target.write_text('{"x":1}', encoding="utf-8")
+            os.symlink(target, link)
+            with self.assertRaises(ValidationError):
+                _load_strict_json(link)
+
+    @unittest.skipUnless(hasattr(os, "mkfifo"), "requires FIFO support")
+    def test_loader_rejects_fifo_without_blocking(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            fifo = Path(tmp) / "input.fifo"
+            os.mkfifo(fifo)
+            with self.assertRaises(ValidationError):
+                _load_strict_json(fifo)
+
+    def test_loader_rejects_oversize_regular_file_before_materializing(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "too-big.json"
+            with path.open("wb") as handle:
+                handle.seek(MAX_JSON_BYTES)
+                handle.write(b"x")
+            with self.assertRaises(ValidationError):
+                _load_strict_json(path)
+
+    def test_loader_rejects_generation_drift(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "ok.json"
+            path.write_text('{"x":1}', encoding="utf-8")
+            with mock.patch.object(evidence_sprint, "_file_generation", side_effect=[(1, 1, 1, 7, 1, 1), (1, 1, 1, 7, 2, 2)]):
+                with self.assertRaises(ValidationError):
+                    _load_strict_json(path)
 
     def test_canonical_json_is_order_independent_for_objects(self):
         self.assertEqual(canonical_json({"b": 2, "a": 1}), canonical_json({"a": 1, "b": 2}))
@@ -232,8 +305,7 @@ class EvidenceSprintTests(unittest.TestCase):
         receipt = compile_receipt(self.candidate)
         reversed_candidate = copy.deepcopy(self.candidate)
         reversed_candidate["events"] = list(reversed(reversed_candidate["events"]))
-        reversed_receipt = compile_receipt(reversed_candidate)
-        self.assertEqual(receipt, reversed_receipt)
+        self.assertEqual(receipt, compile_receipt(reversed_candidate))
 
     def test_candidate_events_use_expected_schema(self):
         self.assertTrue(self.candidate["events"])
