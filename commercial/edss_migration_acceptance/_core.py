@@ -131,7 +131,7 @@ def _integer(value: Any, *, where: str, minimum: int, maximum: int) -> int:
         raise EdssAcceptanceError(f"{where} must be an integer")
     if value < minimum or value > maximum:
         raise EdssAcceptanceError(f"{where} outside bounds")
-    return text
+    return value
 
 
 def _boolean(value: Any, *, where: str) -> bool:
