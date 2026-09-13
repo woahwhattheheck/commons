@@ -14,6 +14,8 @@ When that ref itself is rejected because the source commit introduces a
 workflow file, a workflow-free receipt commit stores the SHA instead.
 Tag namespace updates use the same classifier: tags GitHub refuses for
 workflow files are skipped; other tag errors stay fail-closed.
+GitHub also times out that same App-scope check; that wording is
+classified identically so the existing fallbacks still run.
 
 Does not remint host/repo_backup.py or host/moving_main_mirror.py.
 """
@@ -35,7 +37,10 @@ DEST_REF = "refs/backup/dest-main"
 SOURCE_RECEIPT_NAME = "SOURCE_SHA"
 WORKFLOWS_DIR = ".github/workflows"
 WORKFLOWS_PERMISSION_RE = re.compile(
-    r"create or update workflow|without [`']workflows[`'] permission",
+    r"create or update workflow|"
+    r"workflow can be created or updated|"
+    r"without [`']workflows[`'] permission|"
+    r"[`']workflows[`'] scope may be required",
     re.IGNORECASE,
 )
 SHA_RE = re.compile(r"^[0-9a-f]{40}$")

@@ -39,6 +39,13 @@ FAILED_TAG_PUSH = (
     "`workflows` permission)\n"
     "error: failed to push some refs to 'https://github.com/woahwhattheheck/commons-backup.git'\n"
 )
+FAILED_WORKFLOW_TIMEOUT_PUSH = (
+    "To https://github.com/woahwhattheheck/commons-backup.git\n"
+    " ! [remote rejected]       b50f793dc0dfc8ba7e10d3528840ca5bc1fa6208 -> "
+    "refs/backup/source-main (Unable to determine if workflow can be created "
+    "or updated due to timeout; `workflows` scope may be required.)\n"
+    "error: failed to push some refs to 'https://github.com/woahwhattheheck/commons-backup.git'\n"
+)
 
 
 def git(repo: Path, *args: str, check: bool = True) -> str:
@@ -97,6 +104,13 @@ class LiveMirrorTests(unittest.TestCase):
             live_mirror.classify_push_error(FAILED_SOURCE_REF_PUSH),
             "WORKFLOWS_PERMISSION",
         )
+
+    def test_classify_failed_run_34786015195_workflow_timeout(self) -> None:
+        self.assertEqual(
+            live_mirror.classify_push_error(FAILED_WORKFLOW_TIMEOUT_PUSH),
+            "WORKFLOWS_PERMISSION",
+        )
+        self.assertEqual(live_mirror.classify_push_error("error: remote hung up"), "OTHER")
 
     def test_plan_exact_and_recorded_source(self) -> None:
         sha = "a" * 40
@@ -455,6 +469,13 @@ class LiveMirrorTests(unittest.TestCase):
             capture_output=True,
         )
         self.assertEqual(json.loads(classify_src.stdout)["kind"], "WORKFLOWS_PERMISSION")
+        classify_timeout = subprocess.run(
+            [sys.executable, str(tool), "classify-error", "--stderr", FAILED_WORKFLOW_TIMEOUT_PUSH],
+            check=True,
+            text=True,
+            capture_output=True,
+        )
+        self.assertEqual(json.loads(classify_timeout.stdout)["kind"], "WORKFLOWS_PERMISSION")
         sha = "c" * 40
         planned = subprocess.run(
             [sys.executable, str(tool), "plan", "--src", sha, "--dst", sha],
@@ -504,6 +525,34 @@ class LiveMirrorTests(unittest.TestCase):
             capture_output=True,
         )
         self.assertEqual(json.loads(read.stdout)["src_sha"], first)
+
+    def test_source_ref_receipt_when_workflow_timeout(self) -> None:
+        """Run 34786015195: GitHub timed out whether a workflow could be created."""
+        src = self.root / "src"
+        dest = self.root / "dest.git"
+        init_repo(src)
+        first = commit_tree(
+            src,
+            {".github/workflows/board-label.yml": "name: v1\n", "readme.md": "one\n"},
+            "first",
+        )
+        git(src, "clone", "--bare", str(src), str(dest))
+        original_push = live_mirror._push
+
+        def reject_source(git_dir: str, url: str, refspec: str):
+            spec = refspec[1:] if refspec.startswith("+") else refspec
+            if spec.endswith(":" + live_mirror.SOURCE_REF) and spec.startswith(first):
+                return _FakeReject(FAILED_WORKFLOW_TIMEOUT_PUSH)
+            return original_push(git_dir, url, refspec)
+
+        live_mirror._push = reject_source  # type: ignore[method-assign]
+        try:
+            recorded = live_mirror.record_receipts(str(src / ".git"), str(dest), first, first)
+        finally:
+            live_mirror._push = original_push  # type: ignore[method-assign]
+        self.assertEqual(recorded["source_ref_state"], "RECEIPT_REF")
+        self.assertEqual(live_mirror.read_source_receipt(str(dest), live_mirror.SOURCE_REF), first)
+        self.assertNotEqual(recorded["source_ref_sha"], first)
 
     def test_classify_failed_run_34785478675_tags(self) -> None:
         self.assertEqual(live_mirror.classify_push_error(FAILED_TAG_PUSH), "WORKFLOWS_PERMISSION")
