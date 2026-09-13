@@ -1,9 +1,9 @@
 {
   "counts": {
     "open_issues": 72,
-    "open_pull_requests": 46,
+    "open_pull_requests": 47,
     "runs_in_progress": 18,
-    "runs_queued": 1333
+    "runs_queued": 1342
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -69,6 +69,17 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
+      "branch": "zdc-j8t2/scorm-assurance-hardening-20260913",
+      "created_at": "2026-09-13T14:52:04Z",
+      "draft": false,
+      "head_sha": "cd832e7a35c41e90df42b7fd6db2797dd5afc6e8",
+      "number": 14019,
+      "title": "Fix-forward: harden SCORM manifest authority and file custody",
+      "updated_at": "2026-09-13T14:52:04Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
       "branch": "zmc-t8r3/nhdes-water-dashboard-rfp-20260913",
       "created_at": "2026-09-13T14:51:40Z",
       "draft": false,
@@ -105,10 +116,10 @@
       "branch": "zsh-w8n5/cuhkx-large-evidence-ensemble-20260913",
       "created_at": "2026-09-13T14:51:20Z",
       "draft": false,
-      "head_sha": "201c48fa18de4bcb95a59c91cdcd500408b6d3bb",
+      "head_sha": "94d396a537895575088e22dc4267f0cacfab252d",
       "number": 14013,
       "title": "CUHK-X large-model reproducibility carrier",
-      "updated_at": "2026-09-13T14:51:20Z"
+      "updated_at": "2026-09-13T14:52:08Z"
     },
     {
       "author": "woahwhattheheck",
@@ -164,17 +175,6 @@
       "number": 13999,
       "title": "CALL-E RouteScout: approval-gated procurement routing agent",
       "updated_at": "2026-09-13T14:46:36Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zpf-x6v2/diversey-proof-clean-rbp-eis-r2",
-      "created_at": "2026-09-13T14:46:25Z",
-      "draft": false,
-      "head_sha": "a112441153ab11b7140d7b10b58967936c83edb8",
-      "number": 13997,
-      "title": "Add Diversey rapid proof-of-clean submission carrier",
-      "updated_at": "2026-09-13T14:49:57Z"
     }
   ],
   "open_heads": {
@@ -220,14 +220,15 @@
     "14009": "fb7442166c2f8caff7e2b95b8cc86e478b79594f",
     "14010": "55e4b1597bf1a65fede2207b5dd01e802c37a9de",
     "14012": "3ed1c3c840473f6f6f30f407fb01f532c4f574fb",
-    "14013": "201c48fa18de4bcb95a59c91cdcd500408b6d3bb",
+    "14013": "94d396a537895575088e22dc4267f0cacfab252d",
     "14014": "d9e465230401fb01abca456ea9d03c06926501db",
     "14015": "c99d6db39222b9c6d3ae7cce7aa45ef1731cbab4",
-    "14016": "6a0a3b9c44f494eecc6e4cdedecf72db9c566298"
+    "14016": "6a0a3b9c44f494eecc6e4cdedecf72db9c566298",
+    "14019": "cd832e7a35c41e90df42b7fd6db2797dd5afc6e8"
   },
-  "pulls_listed": 46,
+  "pulls_listed": 47,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 74.1,
+  "queue_depth_per_runner": 74.6,
   "recently_closed": [
     {
       "author": "woahwhattheheck",
@@ -397,6 +398,6 @@
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-13T14:52:05Z",
+  "unchanged_since": "2026-09-13T14:52:17Z",
   "undatable_pulls": []
 }
