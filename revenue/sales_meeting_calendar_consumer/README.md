@@ -5,52 +5,56 @@ This is the path-disjoint live integration for the landed
 
 The integration closes one operating boundary:
 
-> A verified human asks or suggests a meeting. Before anyone represents Bryce as
-> available, the host must read actual Google Calendar free/busy for the exact
-> requested windows, retain that observation, compile the complete meeting brief,
-> and stop at `READY_FOR_OWNER_SCHEDULING_REVIEW`.
+> After a verified human requests/suggests a meeting, current readiness may be
+> computed only from independently retained human-reply authority plus an actual
+> read-only Google Calendar free/busy capture for the exact requested window.
+> The strongest state is `READY_FOR_OWNER_SCHEDULING_REVIEW`; it never creates,
+> updates, deletes, holds, invites, RSVPs, sends, replies, or confirms a meeting.
 
-## What this carrier does
+## Current trust boundary
 
-1. Requires a separately retained `verified-human-meeting-request/v1` authority
-   object bound to exact provider event id, content digest, received time,
-   opportunity, and thread.
-2. Produces an exact **read-only** Google Calendar `get_availability` plan for
-   `primary`, using the minimum/maximum requested UTC bounds and the request's
-   IANA timezone.
-3. Accepts only the minimal connector result used by the live Google Calendar
-   tool: one calendar id, busy windows, and provider errors.
-4. Normalizes RFC3339 offset busy windows to canonical UTC, hashes the raw
-   provider result, and retains no event title/description/attendee data.
-5. Selects the earliest requested-duration interval that does not overlap the
-   retained busy set. If no such duration fits, it produces a reproducible
-   conflict slot. Provider errors become `UNKNOWN`, never FREE.
-6. Builds the exact availability object expected by the landed
-   `sales_meeting_readiness` compiler and delegates final freshness,
-   request-binding, busy-digest, duration, window, prep, and state logic there.
-7. Wraps that core receipt with external trigger/capture trust-root digests and
-   an explicit no-mutation authority block.
+The current API deliberately does **not** accept caller-supplied "expected
+SHA-256" values and does **not** accept caller-selected `as_of`.
 
-The complete meeting brief must already contain sourced context, objective, key
-questions, likely asks, risks/commitments to avoid, recommended opening,
-recommended closing, and owner actions. Empty sections fail before Calendar
-query planning.
+`CurrentAuthorityStore` is a protocol implemented by the trusted host. Its two
+lookups must be backed by provider evidence retained independently of candidate
+trigger/capture bytes:
 
-## Live connector sequence
+```python
+class CurrentAuthorityStore(Protocol):
+    def get_human_authority(self, authority_ref: str) -> Any: ...
+    def get_calendar_capture(self, capture_ref: str) -> Any: ...
+```
 
-The trusted host owns connector calls and current time. Candidate JSON does not.
+This module ships no JSON/file-backed current store and no current CLI that can
+self-populate one. A plain dict is explicitly rejected. In production the host
+must bind those lookups to its authenticated provider/capability/evidence store.
+Compromise of that trusted host store is outside this compiler's packet threat
+model; candidate JSON cannot manufacture a store hit by hashing itself.
 
-1. Retain the verified human meeting authority and its SHA-256 outside the
-   candidate trigger.
-2. Run:
+The trigger carries only an opaque `human_authority_ref`, not the authority
+record itself. The retained human record must independently match exact inbound
+provider event id, content SHA-256, observed time, opportunity, thread, and the
+verified-human `MEETING_REQUEST` classification.
 
-   ```bash
-   python -m revenue.sales_meeting_calendar_consumer.cli plan \
-     --trigger trigger.json \
-     --human-authority-sha256 "$HUMAN_AUTHORITY_SHA256"
+The Calendar capture is also looked up by an opaque retained reference. The
+capture binds the exact plan, provider-result digest, capture time, normalized
+busy windows and capture digest. A capture from another human event, request,
+thread, opportunity, time range, or timezone cannot transplant.
+
+## Current host sequence
+
+1. A trusted inbound adapter classifies an authenticated provider event as a
+   verified human meeting request and retains the exact authority record in the
+   host's independent authority store. Candidate packet bytes do not create it.
+2. Build the free/busy plan:
+
+   ```python
+   plan = build_google_availability_plan(trigger, authority_store=store)
+   args = google_tool_args(plan)
    ```
 
-   The emitted object has only:
+   `args` contains only:
 
    ```json
    {
@@ -61,81 +65,150 @@ The trusted host owns connector calls and current time. Candidate JSON does not.
    }
    ```
 
-3. Call Google Calendar `get_availability` with those exact arguments. Do not
-   use `create_event`, `update_event`, `delete_event`, invitation/RSVP, or any
-   send/reply action in this carrier.
-4. Immediately pass the exact returned `result` object plus host-owned capture
-   time to `capture_google_availability(...)`; retain the resulting
-   `capture_sha256` independently.
-5. Compile with the independently retained trigger and capture digests:
+3. The trusted host calls Google Calendar `get_availability` with those exact
+   arguments. No mutation tool belongs in this carrier.
+4. Immediately normalize that connector result with
+   `capture_google_availability(plan, provider_result, captured_at=host_time)`
+   and retain the resulting capture independently under an opaque store ref.
+   The durable capture keeps busy windows and error presence, not event titles,
+   descriptions, attendees, or provider error text.
+5. Compile current readiness:
 
-   ```bash
-   python -m revenue.sales_meeting_calendar_consumer.cli compile \
-     --trigger trigger.json \
-     --capture calendar_capture.json \
-     --human-authority-sha256 "$HUMAN_AUTHORITY_SHA256" \
-     --calendar-capture-sha256 "$CALENDAR_CAPTURE_SHA256" \
-     --markdown
+   ```python
+   receipt = compile_calendar_consumer_current(
+       trigger,
+       calendar_capture_ref,
+       authority_store=store,
+   )
    ```
 
-The compile CLI owns `as_of=datetime.now(timezone.utc)`. Historical READY cannot
-be replayed as current because the landed core rechecks the retained
-`captured_at` against its 30-minute availability freshness policy.
+   Current compilation owns `datetime.now(timezone.utc)` internally. There is no
+   public current `as_of` parameter. The landed core still enforces its 30-minute
+   availability freshness window and every request/busy/slot binding.
+6. Before treating an old receipt as ready, call
+   `is_ready_for_owner_review(receipt, trigger, authority_store=store)`. That
+   helper reacquires both store records and recompiles against current time; it
+   does not trust a historical READY string.
 
-## Trust and authority boundaries
+## Historical/offline replay
 
-`expected_human_authority_sha256` and `expected_calendar_capture_sha256` are
-**external trust roots**. Computing new values from candidate bytes and feeding
-them back as "expected" is not verification.
+Historical bytes remain useful for audit, but they cannot become current
+scheduling authority.
 
-A READY receipt means only:
+`compile_calendar_consumer_historical(trigger, human_authority, capture,
+as_of=...)` always emits:
 
-`READY_FOR_OWNER_SCHEDULING_REVIEW`
+- `mode = HISTORICAL_REPLAY`
+- `state = HISTORICAL_REPLAY_ONLY`
+- `historical_core_state = ...` for audit only
+- `owner_review_only = false`
+- `historical_replay_only = true`
 
+Even when a backdated historical `as_of` would make the landed core say READY,
+the wrapper remains `HISTORICAL_REPLAY_ONLY` and
+`is_ready_for_owner_review(...)` returns false before any current authority
+claim.
+
+The CLI intentionally exposes **only** this non-authorizing replay:
+
+```bash
+python -m revenue.sales_meeting_calendar_consumer.cli \
+  --trigger trigger.json \
+  --human-authority retained_human.json \
+  --capture retained_calendar.json \
+  --as-of 2026-09-13T16:26:00Z \
+  --markdown
+```
+
+There is no JSON current-READY CLI because serialized candidate inputs cannot be
+an independent current authority store.
+
+## Calendar semantics
+
+The adapter:
+
+- normalizes RFC3339 offsets to canonical UTC seconds;
+- queries the covering min/max envelope but selects slots only inside the exact
+  requested windows (never the gap between disjoint windows);
+- requires the requested duration to fit wholly in a requested window;
+- picks the earliest full-duration free interval;
+- returns conflict when no full duration exists and retained busy evidence
+  overlaps a reproducible requested slot;
+- maps provider errors to `UNKNOWN`, which the landed core turns into
+  `CALENDAR_CHECK_REQUIRED`;
+- rejects busy intervals outside the exact query bounds;
+- binds every capture to the retained human authority SHA and request digest.
+
+## Meeting prep
+
+The trigger must carry complete, PII-minimized prep before the Calendar query is
+planned:
+
+- sourced context;
+- objective;
+- key questions;
+- likely asks;
+- risks / commitments to avoid;
+- recommended opening;
+- recommended closing;
+- owner actions.
+
+The landed core remains authoritative for freshness, request binding,
+busy-digest binding, slot duration/window/overlap semantics, and preparation
+completeness.
+
+## Authority ceiling
+
+A current READY receipt means only `READY_FOR_OWNER_SCHEDULING_REVIEW`.
 It never authorizes:
 
-- calendar event creation, update, deletion, hold, invite, or RSVP;
+- Calendar create/update/delete/hold/invite/RSVP;
 - email/Slack/provider send or reply;
 - telling a counterparty a meeting is confirmed;
-- commercial, price, scope, staffing, legal, or payment commitment.
+- scope, price, staffing, delivery, legal or commercial commitment;
+- payment, settlement, booked revenue or recognized revenue.
 
-The owner must explicitly review the brief and authorize any later scheduling
-action through a separate action authority.
+## Hostile coverage
 
-## Hostiles
+The exact-core suite covers normal and optimized Python for:
 
-`test_calendar_consumer.py` covers normal and optimized Python for:
-
-- external human-authority digest mismatch;
-- non-human/non-meeting trigger rejection;
-- reply/thread generation transplant;
+- fabricated trigger + fabricated empty-busy capture + matching self-derived
+  hashes cannot reach current READY without independent store records;
+- a plain candidate JSON/dict cannot masquerade as the current authority store;
+- human provider-event/opportunity/thread/digest/time transplant;
+- current store capture tamper;
+- cross-reply capture reuse;
+- stale current capture;
+- backdated historical `as_of` can never revive current READY;
+- readiness helper reacquires store records and current time;
 - exact query window/timezone binding;
 - wrong calendar id;
 - provider busy ranges outside query bounds;
-- RFC3339 offset -> UTC normalization;
+- offset-to-UTC normalization;
 - fresh empty-busy READY;
 - busy-at-start next-slot selection;
 - fully busy conflict;
 - provider error -> fresh Calendar required;
-- stale capture cannot keep READY;
-- capture and plan digest tampering;
-- cross-reply capture replay;
-- requested window shorter than requested duration;
-- multi-window selection without using the gap as an allowed slot;
+- requested window shorter than duration;
+- disjoint multi-window selection;
 - duplicate JSON keys;
-- provider error text/event detail minimization;
+- provider error/event-detail minimization;
 - complete prep rendering;
-- explicit false mutation authority.
+- deterministic capture hashes;
+- explicit false mutation/send/commitment authority.
 
 ## Validation
 
-Owner-local exact candidate run before publication:
+The repair was executed against the exact landed #14062 core blob
+`13e6f2e5d79674c5c72e11b3fadf448acbec76de` (the same blob on current main),
+not a compatibility stub:
 
-- `python -m py_compile calendar_consumer.py cli.py test_calendar_consumer.py`
-- `python -m unittest ...test_calendar_consumer -q` -> 22/22 PASS
-- `python -O -m unittest ...test_calendar_consumer -q` -> 22/22 PASS
+```bash
+python -m py_compile revenue/sales_meeting_readiness/meeting_readiness.py \
+  revenue/sales_meeting_calendar_consumer/*.py
+python -m unittest revenue.sales_meeting_calendar_consumer.test_calendar_consumer -q
+python -O -m unittest revenue.sales_meeting_calendar_consumer.test_calendar_consumer -q
+```
 
-Those local runs use a compatibility stub for the already-landed core because
-the execution container cannot clone GitHub. The branch/PR workflow reruns the
-same tests against the real repository core; hosted status must be reported
-separately and never inferred from local proof.
+Hosted GitHub Actions truth is reported separately. A queued/unassigned run is
+never described as green.
