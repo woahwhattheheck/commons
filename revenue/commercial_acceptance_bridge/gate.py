@@ -9,7 +9,7 @@ from __future__ import annotations
 
 from collections import defaultdict
 from copy import deepcopy
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 import hashlib
 import json
 import re
@@ -18,6 +18,7 @@ from typing import Any, Iterable, Mapping, Sequence
 SCHEMA_VERSION = 1
 MAX_EVENTS = 50_000
 MAX_TEXT = 160
+MAX_RECEIPT_AGE_SECONDS = 300
 HEX_RE = re.compile(r"^[0-9a-f]{64}$")
 ID_RE = re.compile(r"^[A-Za-z0-9][A-Za-z0-9._:-]{0,159}$")
 CURRENCY_RE = re.compile(r"^[A-Z]{3}$")
@@ -188,6 +189,23 @@ def _currency(value: Any, field: str) -> str:
     return cleaned
 
 
+def _utcnow() -> datetime:
+    return datetime.now(timezone.utc).replace(microsecond=0)
+
+
+def _evaluation_time(value: str | datetime | None) -> datetime:
+    if value is None:
+        return _utcnow()
+    if isinstance(value, datetime):
+        if value.tzinfo is None or value.utcoffset() != timedelta(0) or value.microsecond:
+            _fail("INVALID_EVALUATION_TIME", "evaluated_at must be whole-second UTC")
+        return value.astimezone(timezone.utc)
+    if type(value) is str:
+        _, parsed = _timestamp(value, "evaluated_at")
+        return parsed
+    _fail("INVALID_EVALUATION_TIME", "evaluated_at must be canonical UTC text or datetime")
+
+
 def _reject_raw_or_nested(event: Mapping[str, Any], where: str) -> None:
     for key, value in event.items():
         if not isinstance(key, str):
@@ -211,7 +229,7 @@ def normalize_event(raw: Mapping[str, Any]) -> dict[str, Any]:
         if expires <= issued:
             _fail("INVALID_OFFER_WINDOW", "expires_at must be after issued_at")
         supersedes = _id(event["supersedes_version_id"], "supersedes_version_id")
-        normalized = {
+        return {
             "event_id": _id(event["event_id"], "event_id"),
             "kind": kind,
             "offer_series_id": _id(event["offer_series_id"], "offer_series_id"),
@@ -228,7 +246,6 @@ def normalize_event(raw: Mapping[str, Any]) -> dict[str, Any]:
             "issued_at": issued_text,
             "expires_at": expires_text,
         }
-        return normalized
     if kind == "response":
         _exact_keys(event, RESPONSE_KEYS, "response")
         received_text, _ = _timestamp(event["received_at"], "received_at")
@@ -308,11 +325,26 @@ def _counterparty_ref(counterparty_id: str) -> str:
     return sha256_text(f"counterparty\n{counterparty_id}")[:16]
 
 
-def reconcile(payload: Mapping[str, Any]) -> dict[str, Any]:
-    """Reconcile normalized commercial evidence into non-authorizing handoff states."""
+def reconcile(
+    payload: Mapping[str, Any],
+    *,
+    evaluated_at: str | datetime | None = None,
+) -> dict[str, Any]:
+    """Reconcile normalized evidence at a trusted, fresh evaluation time.
+
+    Production callers should omit ``evaluated_at`` so current UTC is used. The
+    explicit argument exists for deterministic tests/replays and must never be
+    populated from the untrusted evidence payload itself.
+    """
 
     batch = normalize_batch(payload)
+    evaluation = _evaluation_time(evaluated_at)
     snapshot = _parse(batch["snapshot_at"])
+    if snapshot > evaluation:
+        _fail("FUTURE_SNAPSHOT", "snapshot_at cannot be later than trusted evaluation time")
+    if evaluation - snapshot > timedelta(seconds=MAX_RECEIPT_AGE_SECONDS):
+        _fail("STALE_SNAPSHOT", f"snapshot_at is older than {MAX_RECEIPT_AGE_SECONDS} seconds")
+
     offers_raw = [row for row in batch["events"] if row["kind"] == "offer"]
     responses_raw = [row for row in batch["events"] if row["kind"] == "response"]
 
@@ -330,7 +362,6 @@ def reconcile(payload: Mapping[str, Any]) -> dict[str, Any]:
         series[offer["offer_series_id"]].append(offer)
 
     current_by_series: dict[str, dict[str, Any]] = {}
-    version_to_series: dict[str, str] = {}
     for series_id, rows in series.items():
         ordered = sorted(rows, key=lambda row: row["version"])
         expected_versions = list(range(1, len(ordered) + 1))
@@ -343,7 +374,6 @@ def reconcile(payload: Mapping[str, Any]) -> dict[str, Any]:
         invariant_counterparty = first["counterparty_id"]
         invariant_thread = first["provider_thread_id"]
         previous = first
-        version_to_series[first["offer_version_id"]] = series_id
         for row in ordered[1:]:
             if row["supersedes_version_id"] != previous["offer_version_id"]:
                 _fail("OFFER_LINEAGE_INVALID", f"series {series_id} version {row['version']} must supersede the prior version")
@@ -353,7 +383,6 @@ def reconcile(payload: Mapping[str, Any]) -> dict[str, Any]:
                 _fail("OFFER_LINEAGE_INVALID", f"series {series_id} changes provider thread")
             if _parse(row["issued_at"]) <= _parse(previous["issued_at"]):
                 _fail("OFFER_LINEAGE_INVALID", f"series {series_id} issue times must strictly increase")
-            version_to_series[row["offer_version_id"]] = series_id
             previous = row
         current_by_series[series_id] = ordered[-1]
 
@@ -439,6 +468,7 @@ def reconcile(payload: Mapping[str, Any]) -> dict[str, Any]:
             key=lambda row: (row["received_at"], row["provider_message_id"]),
         )
         blockers = blocking_by_series.get(series_id, [])
+        state_blocker_codes = sorted({row["code"] for row in blockers})
         state: str
         next_action: str
         effective_class = "NONE"
@@ -463,6 +493,13 @@ def reconcile(payload: Mapping[str, Any]) -> dict[str, Any]:
                 changed_fields = list(effective["changed_fields"])
                 state = class_to_state[effective_class]
                 next_action = class_to_next[effective_class]
+                if state == "HUMAN_CLOSING_READY" and evaluation > _parse(offer["expires_at"]):
+                    state = "HUMAN_REVIEW_REQUIRED"
+                    next_action = "HUMAN_EVIDENCE_REVIEW"
+                    effective_class = "NONE"
+                    effective_response_ref = ""
+                    changed_fields = []
+                    state_blocker_codes = ["OFFER_EXPIRED_AT_EVALUATION"]
         elif snapshot > _parse(offer["expires_at"]):
             state = "EXPIRED_NO_ACCEPTANCE"
             next_action = "HUMAN_REISSUE_DECISION"
@@ -482,7 +519,7 @@ def reconcile(payload: Mapping[str, Any]) -> dict[str, Any]:
                 "effective_review_class": effective_class,
                 "effective_response_ref": effective_response_ref,
                 "changed_fields": changed_fields,
-                "blocker_codes": sorted({row["code"] for row in blockers}),
+                "blocker_codes": state_blocker_codes,
                 "contract_authority": False,
                 "signer_authority_determined": False,
                 "payment_authority": False,
@@ -606,19 +643,17 @@ _BLOCKER_CODES = frozenset(
         "RESPONSE_BEFORE_OFFER",
         "RESPONSE_AFTER_EXPIRY",
         "EXACT_ACCEPT_MISMATCH",
+        "OFFER_EXPIRED_AT_EVALUATION",
     }
 )
-_QUARANTINE_CODES = _BLOCKER_CODES | frozenset({"UNKNOWN_OFFER_VERSION", "SUPERSEDED_OFFER_VERSION"})
+_QUARANTINE_CODES = _BLOCKER_CODES - {"OFFER_EXPIRED_AT_EVALUATION"} | frozenset(
+    {"UNKNOWN_OFFER_VERSION", "SUPERSEDED_OFFER_VERSION"}
+)
 _REF16_RE = re.compile(r"^[0-9a-f]{16}$")
 
 
 def receipt_self_digest_matches(manifest: Mapping[str, Any]) -> bool:
-    """Return only whether the receipt's self-authored digest matches its bytes.
-
-    This is an integrity check, not authenticity or bridge-validity evidence. A caller
-    must use :func:`verify_receipt` with an independently trusted expected digest to
-    establish that a specific receipt is the one that was committed out of band.
-    """
+    """Return only whether the receipt's self-authored digest matches its bytes."""
 
     if not isinstance(manifest, Mapping):
         return False
@@ -804,13 +839,19 @@ def _receipt_schema_valid(manifest: Mapping[str, Any]) -> bool:
     return True
 
 
-def verify_receipt(manifest: Mapping[str, Any], expected_receipt_sha256: str) -> bool:
-    """Validate a bridge receipt against an independently trusted commitment.
+def verify_receipt(
+    manifest: Mapping[str, Any],
+    expected_receipt_sha256: str,
+    source_payload: Mapping[str, Any],
+    *,
+    evaluated_at: str | datetime | None = None,
+) -> bool:
+    """Validate a receipt against commitment, source evidence, and trusted time.
 
-    ``expected_receipt_sha256`` must come from a trusted channel outside the receipt
-    being checked. Supplying the receipt's own digest as the trust source defeats the
-    authenticity boundary; callers that only need byte-integrity should use
-    :func:`receipt_self_digest_matches` and label that result accordingly.
+    ``expected_receipt_sha256`` and ``source_payload`` must come from trusted channels
+    outside the receipt being checked. Production callers should omit ``evaluated_at``
+    so current UTC enforces the five-minute snapshot freshness and current-offer expiry
+    fences. Explicit evaluation time is for deterministic tests/replays only.
     """
 
     if type(expected_receipt_sha256) is not str or not HEX_RE.fullmatch(expected_receipt_sha256):
@@ -819,4 +860,10 @@ def verify_receipt(manifest: Mapping[str, Any], expected_receipt_sha256: str) ->
         return False
     if manifest.get("receipt_sha256") != expected_receipt_sha256:
         return False
-    return _receipt_schema_valid(manifest)
+    if not _receipt_schema_valid(manifest):
+        return False
+    try:
+        recomputed = reconcile(source_payload, evaluated_at=evaluated_at)
+    except (AcceptanceError, TypeError, ValueError):
+        return False
+    return recomputed == dict(manifest)
