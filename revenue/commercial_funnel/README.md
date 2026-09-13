@@ -69,6 +69,12 @@ Exit codes: `0` ready/verified, `2` malformed/refused I/O contract, `3` compiled
 
 Cash is exact integer minor units and remains grouped by currency. There is no implicit FX conversion. Funnel counts and dropoffs include only opportunities whose evidence set is not HOLD, preventing malformed/stale/conflicted evidence from inflating conversion rates. Held opportunities remain visible with explicit reasons and next action `REVIEW_HOLD_REASONS`.
 
+## Integration boundary with the commercial lifecycle ledger
+
+This package owns **cross-opportunity funnel analytics**, including pre-opportunity/top-of-funnel stages such as `TRAFFIC` and `REPLY`, family-level conversion/dropoff metrics, and cohort cash evidence totals. The separate `revenue/commercial_lifecycle_ledger` owns **one bound commercial subject after opportunity selection**, including offer/send/acceptance/funding/execution/settlement/finance-recognition evidence and its reversal mechanics.
+
+A lifecycle receipt may be referenced as immutable source evidence by a funnel event after an upstream verifier has authenticated it. The funnel does not import lifecycle authority, reinterpret finance recognition, or turn lifecycle state into buyer/payment/revenue authority. Conversely, the lifecycle ledger does not own funnel cohort selection, traffic/reply measurement, or cross-family conversion analytics.
+
 ## Development gate
 
 ```bash
