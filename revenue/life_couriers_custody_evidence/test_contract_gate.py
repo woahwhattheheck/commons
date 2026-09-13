@@ -144,6 +144,9 @@ class GateTests(unittest.TestCase):
             with self.assertRaises(EvidenceInputError) as ctx:
                 prepare_manifest([item])
             self.assertEqual(ctx.exception.code, "SECRET_OR_PII_FIELD")
+            message = str(ctx.exception).lower()
+            self.assertNotIn("not permitted", message)
+            self.assertIn("outside the shipment evidence schema", message)
 
     def test_authority_shaped_fields_are_refused(self):
         item = valid_one()

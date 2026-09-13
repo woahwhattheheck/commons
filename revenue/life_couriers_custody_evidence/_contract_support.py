@@ -87,7 +87,7 @@ def _walk_reject(value: Any, path: str = "$", depth: int = 0, budget: list[int] 
             if not isinstance(key, str):
                 _fail("MALFORMED_INPUT", f"{path} contains a non-text key")
             if SECRET_OR_PII_KEY.search(key):
-                _fail("SECRET_OR_PII_FIELD", f"{path}.{key} is not permitted in shipment evidence")
+                _fail("SECRET_OR_PII_FIELD", f"{path}.{key} is outside the shipment evidence schema")
             if FORBIDDEN_AUTHORITY_KEY.search(key):
                 _fail("FORBIDDEN_AUTHORITY_FIELD", f"{path}.{key} exceeds evidence-only authority")
             _walk_reject(item, f"{path}.{key}", depth + 1, budget)
