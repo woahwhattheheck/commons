@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from copy import deepcopy
 import json
 import os
 import tempfile
@@ -9,7 +10,8 @@ from unittest import mock
 
 from revenue.pursuit_portfolio import cli, host
 from revenue.pursuit_portfolio.core import PortfolioError
-from test_pursuit_portfolio_current import KEY, authority_for, source
+from revenue.pursuit_portfolio.current import _compile_authorized_at
+from test_pursuit_portfolio_current import KEY, NOW, authority_for, source
 
 
 class HostAuthorityTests(unittest.TestCase):
@@ -40,7 +42,8 @@ class HostAuthorityTests(unittest.TestCase):
             key_path = self._key_file(Path(tmp))
             with mock.patch.object(host, "HOST_KEY_PATH", key_path):
                 compiled = host.compile_current(value, authority)
-        self.assertEqual(compiled.compiled.result["selected_opportunity_ids"], ["alpha"])
+        self.assertEqual(compiled.authorized.compiled.result["selected_opportunity_ids"], ["alpha"])
+        self.assertEqual(compiled.host_seal["input_sha256"], compiled.authorized.compiled.result["input_sha256"])
 
     @unittest.skipUnless(os.name == "posix", "fixed-host descriptor path requires POSIX dir_fd semantics")
     def test_candidate_cannot_substitute_a_different_key_file(self):
@@ -49,7 +52,6 @@ class HostAuthorityTests(unittest.TestCase):
         forged = authority_for(value, key=attacker_key)
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
-            host_key = self._key_file(root / "host") if False else None
             host_dir = root / "host"
             host_dir.mkdir()
             host_key = self._key_file(host_dir)
@@ -59,6 +61,47 @@ class HostAuthorityTests(unittest.TestCase):
             with mock.patch.object(host, "HOST_KEY_PATH", host_key):
                 with self.assertRaisesRegex(PortfolioError, "HMAC mismatch"):
                     host.compile_current(value, forged)
+
+    @unittest.skipUnless(os.name == "posix", "fixed-host descriptor path requires POSIX dir_fd semantics")
+    def test_host_seal_binds_owner_priority_effort_and_policy_generation(self):
+        value = source(max_age=86400 * 5)
+        authority = authority_for(value)
+        with tempfile.TemporaryDirectory() as tmp:
+            key_path = self._key_file(Path(tmp))
+            with mock.patch.object(host, "HOST_KEY_PATH", key_path):
+                legitimate = host.compile_current(value, authority)
+                modified = deepcopy(value)
+                modified["opportunities"][0]["priority_units"] = 999
+                modified_authorized = _compile_authorized_at(modified, authority, KEY, NOW)
+                with self.assertRaisesRegex(PortfolioError, "compiled-generation binding mismatch"):
+                    host.verify_current(
+                        modified_authorized.compiled.result_bytes,
+                        modified_authorized.compiled.markdown_bytes,
+                        modified_authorized.compiled.receipt_bytes,
+                        modified_authorized.authority_bytes,
+                        modified_authorized.current_receipt_bytes,
+                        legitimate.host_seal_bytes,
+                    )
+
+    @unittest.skipUnless(os.name == "posix", "fixed-host descriptor path requires POSIX dir_fd semantics")
+    def test_host_seal_and_fresh_current_verification_succeed_together(self):
+        value = source(max_age=86400 * 5)
+        authority = authority_for(value)
+        with tempfile.TemporaryDirectory() as tmp:
+            key_path = self._key_file(Path(tmp))
+            with mock.patch.object(host, "HOST_KEY_PATH", key_path):
+                compiled = host.compile_current(value, authority)
+                authorized = compiled.authorized
+                verified = host.verify_current(
+                    authorized.compiled.result_bytes,
+                    authorized.compiled.markdown_bytes,
+                    authorized.compiled.receipt_bytes,
+                    authorized.authority_bytes,
+                    authorized.current_receipt_bytes,
+                    compiled.host_seal_bytes,
+                )
+        self.assertTrue(verified["host_seal_verified"])
+        self.assertTrue(verified["verified_current"])
 
     @unittest.skipUnless(os.name == "posix", "fixed-host descriptor path requires POSIX dir_fd semantics")
     def test_host_key_symlink_is_rejected(self):
