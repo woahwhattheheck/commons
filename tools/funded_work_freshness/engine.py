@@ -11,6 +11,7 @@ from evaluation import (
     active_competing_prs,
     amount_supported,
     canonical_text,
+    descriptive_issue_text,
     iso,
     last_activity,
     visible_claimants,
@@ -114,11 +115,16 @@ def preflight(
                 if (isinstance(row, Mapping) and row.get("name")) or isinstance(row, str)
             }
         )
-        text = canonical_text(issue, comments)
-        sponsor_present = bool(SPONSOR_RE.search(text))
-        amount_present = amount_supported(text, candidate.advertised_amount, candidate.currency)
-        acceptance_reachable = bool(ACCEPTANCE_RE.search(text))
-        security_sensitive = bool(SECURITY_RE.search(text + "\n" + "\n".join(label_names)))
+        authority_text = canonical_text(issue, comments)
+        sponsor_present = bool(SPONSOR_RE.search(authority_text))
+        amount_present = amount_supported(
+            authority_text, candidate.advertised_amount, candidate.currency
+        )
+        acceptance_reachable = bool(ACCEPTANCE_RE.search(authority_text))
+        security_text = descriptive_issue_text(issue) + "\n" + authority_text
+        security_sensitive = bool(
+            SECURITY_RE.search(security_text + "\n" + "\n".join(label_names))
+        )
         activity = last_activity(issue, comments)
         activity_in_future = activity is not None and activity > now + timedelta(minutes=5)
         age_days = None if activity is None else max(

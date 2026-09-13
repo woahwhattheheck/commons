@@ -18,7 +18,7 @@ AUTO_RESOLVE_SOURCE_HOSTS = (
 )
 USER_AGENT = "commons-funded-work-freshness/1.0"
 GITHUB_ITEM_RE = re.compile(
-    r"https?://(?:www\.)?github\.com/([A-Za-z0-9_.-]+)/([A-Za-z0-9_.-]+)/(issues|pull)/(\d+)(?:[/?#][^\s\"'<>]*)?",
+    r"https?://(?:www\.)?github\.com/([A-Za-z0-9_.-]+)/([A-Za-z0-9_.-]+)/(issues|pull)/(\d+)(?!\w)(?:[/?#][^\s\"'<>]*)?",
     re.IGNORECASE,
 )
 STRICT_CLAIM_RE = re.compile(

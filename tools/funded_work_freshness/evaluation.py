@@ -26,29 +26,50 @@ def iso(stamp: datetime) -> str:
     return stamp.astimezone(timezone.utc).isoformat().replace("+00:00", "Z")
 
 
-def trusted_comment(comment: Mapping[str, Any], issue_author: str | None) -> bool:
-    association = str(comment.get("author_association") or "").upper()
-    user = comment.get("user") if isinstance(comment.get("user"), Mapping) else {}
+def funding_authority(user: Mapping[str, Any], association: Any) -> bool:
+    """Return whether one actor may authorize sponsor/amount/acceptance evidence."""
+
     login = str(user.get("login") or "").lower()
+    normalized_association = str(association or "").upper()
     return (
-        association in TRUSTED_ASSOCIATIONS
-        or (issue_author is not None and login == issue_author.lower())
+        normalized_association in TRUSTED_ASSOCIATIONS
         or login in TRUSTED_SPONSOR_BOTS
     )
 
 
+def trusted_comment(
+    comment: Mapping[str, Any], issue_author: str | None = None
+) -> bool:
+    """Return whether a comment is authoritative for funded-work qualification.
+
+    ``issue_author`` is retained only for call/API compatibility; being the issue
+    author does not grant funding authority.
+    """
+
+    del issue_author
+    user = comment.get("user") if isinstance(comment.get("user"), Mapping) else {}
+    return funding_authority(user, comment.get("author_association"))
+
+
 def canonical_text(issue: Mapping[str, Any], comments: Sequence[Mapping[str, Any]]) -> str:
-    """Return only canonical/trusted prose for sponsor and criteria decisions."""
+    """Return only sponsor/maintainer-authoritative funding/acceptance prose."""
 
     issue_user = issue.get("user") if isinstance(issue.get("user"), Mapping) else {}
-    issue_author = str(issue_user.get("login")) if issue_user.get("login") else None
-    chunks = [str(issue.get("title") or ""), str(issue.get("body") or "")]
+    chunks: list[str] = []
+    if funding_authority(issue_user, issue.get("author_association")):
+        chunks.extend((str(issue.get("title") or ""), str(issue.get("body") or "")))
     chunks.extend(
         str(comment.get("body") or "")
         for comment in comments
-        if trusted_comment(comment, issue_author)
+        if trusted_comment(comment)
     )
     return "\n".join(chunks)
+
+
+def descriptive_issue_text(issue: Mapping[str, Any]) -> str:
+    """Return issue-authored descriptive text independent of funding authority."""
+
+    return "\n".join((str(issue.get("title") or ""), str(issue.get("body") or "")))
 
 
 def amount_supported(text: str, amount: str, currency: str) -> bool:

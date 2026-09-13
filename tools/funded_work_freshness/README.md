@@ -64,6 +64,8 @@ python3 -m py_compile *.py
 
 Network reads reject credentials, loopback/private/link-local destinations (including
 redirect targets), responses over 2 MiB, and pagination beyond ten pages. Sponsor,
-amount, and acceptance decisions use only the issue body plus comments from the
-issue author, repository collaborators/members/owners, or recognized sponsor bots;
-untrusted solver comments can establish occupancy but cannot manufacture funding.
+amount, and acceptance decisions use only issue/comment prose authored by repository
+owners, members, collaborators, or recognized sponsor bots; merely creating the issue
+does not grant funding authority. External issue text remains visible to security
+classification and occupancy logic, but cannot manufacture sponsor, amount, or
+acceptance evidence.

@@ -145,10 +145,14 @@ class TestResourceLedger(unittest.TestCase):
             text = handle.read()
         catalog = load_catalog(text)
         raw = json.loads(text)
-        self.assertEqual(catalog["slack_ts"], "1789272333.052199")
+        self.assertEqual(catalog["slack_ts"], "1789284063.855859")
         self.assertEqual(
             catalog["source_id"],
-            "codex-osff-firmware-sbom-grant-packet-resource-activation-20260913-01",
+            "codex-commons-exact-sha-alternate-verifier-resource-activation-20260913-01",
+        )
+        self.assertIn(
+            "codex-commons-exact-sha-alternate-verifier-resource-activation-20260913-01",
+            raw.get("supersedes_source_ids") or [],
         )
         self.assertIn(
             "codex-osff-firmware-sbom-grant-packet-resource-activation-20260913-01",
@@ -335,50 +339,66 @@ class TestResourceLedger(unittest.TestCase):
             "inventory",
             "resources",
             "records",
-            "codex-osff-firmware-sbom-grant-packet-resource-activation-20260913-01.json",
+            "codex-commons-exact-sha-alternate-verifier-resource-activation-20260913-01.json",
+        )
+        self.assertIn(
+            "inventory/resources/records/codex-commons-exact-sha-alternate-verifier-resource-activation-20260913-01.json",
+            raw.get("record_sources") or [],
         )
         with open(current_activation_path, encoding="utf-8") as handle:
             current_activation = json.load(handle)
+        self.assertFalse(json_has_secret_key(json.dumps(current_activation)))
         self.assertEqual(current_activation["event_id"], catalog["source_id"])
         self.assertEqual(
             current_activation["event_type"], "RESOURCE_DISCOVERY_AND_ACTIVATION"
         )
         self.assertEqual(
             current_activation["selected_resource"],
-            "osff-firmware-sbom-conformance-grant-packet",
+            "commons-exact-sha-alternate-verifier",
         )
-        self.assertEqual(current_activation["projection"]["resources"], 95)
-        self.assertEqual(current_activation["projection"]["producing"], 67)
-        self.assertEqual(current_activation["projection"]["inventory_records"], 57)
-        self.assertEqual(current_activation["production_truth"]["source_pr"], 13541)
+        self.assertEqual(current_activation["projection"]["resources"], 96)
+        self.assertEqual(current_activation["projection"]["producing"], 68)
+        self.assertEqual(current_activation["projection"]["inventory_records"], 58)
+        self.assertEqual(current_activation["production_truth"]["source_pr"], 13586)
         self.assertEqual(
             current_activation["production_truth"]["source_merge_sha"],
-            "0a1457fc707b3adc1ebe9b733fc5fd2e72f1091a",
+            "82457b4fbc99a64a5fa10203814ab6c3729c9de3",
         )
         self.assertEqual(
             current_activation["production_truth"]["source_head_sha"],
-            "c8e711dfced98065ca0ae55ce8f578a8c5465d05",
+            "67a5172574db3c600e736f8877251748e42a7d9d",
         )
         self.assertEqual(
-            current_activation["production_truth"]["source_path"],
-            "revenue/grants/OSFF_FIRMWARE_SBOM_CONFORMANCE_KIT_2026.md",
+            set(current_activation["production_truth"]["source_paths"]),
+            {
+                "tools/exact_sha_alt_verifier/README.md",
+                "tools/exact_sha_alt_verifier/exact_sha_alt_verifier.py",
+                "tools/exact_sha_alt_verifier/test_exact_sha_alt_verifier.py",
+            },
         )
         self.assertEqual(
-            current_activation["production_truth"]["source_git_blob"],
-            "60d234eb07b914dd30bc42cb7959c3c065d84cee",
+            current_activation["production_truth"]["source_paths"]
+            ["tools/exact_sha_alt_verifier/exact_sha_alt_verifier.py"]["git_blob"],
+            "839dc8a9f61bf1d4d781a0a85d7c5f7ac66f254b",
         )
         self.assertEqual(
-            current_activation["production_truth"]["source_sha256"],
-            "0ed5630e20d9ede8735ba54c665e6e9aadd725824a0b8c05bd93ca27dbfe9ab3",
+            current_activation["production_truth"]["source_paths"]
+            ["tools/exact_sha_alt_verifier/exact_sha_alt_verifier.py"]["sha256"],
+            "7c5d56e08af816a267586cc30f4bc6ace324bbcf63ec3f3121c78f87ba6d944b",
         )
-        self.assertEqual(current_activation["production_truth"]["requested_eur"], 7500)
-        self.assertEqual(current_activation["production_truth"]["awarded_eur"], 0)
-        self.assertEqual(current_activation["production_truth"]["booked_revenue_eur"], 0)
-        self.assertEqual(current_activation["production_truth"]["timeline_weeks"], 6)
-        self.assertEqual(current_activation["production_truth"]["positive_fixture_floor"], 12)
-        self.assertFalse(current_activation["production_truth"]["submitted"])
-        self.assertFalse(current_activation["production_truth"]["sponsor_contacted"])
-        self.assertFalse(current_activation["production_truth"]["implementation_started"])
+        self.assertEqual(
+            current_activation["production_truth"]["verification_kind"],
+            "alternate_nonhosted",
+        )
+        self.assertFalse(current_activation["production_truth"]["hosted_ci_green"])
+        self.assertFalse(
+            current_activation["production_truth"]["overrides_required_checks"]
+        )
+        self.assertFalse(current_activation["production_truth"]["merge_authority"])
+        self.assertFalse(current_activation["production_truth"]["credentials_inherited"])
+        self.assertFalse(
+            current_activation["production_truth"]["network_sandbox_claimed"]
+        )
         self.assertEqual(current_activation["production_truth"]["provider_writes"], 0)
         self.assertEqual(
             set(current_activation["production_truth"]["source_head_workflows"].values()),
@@ -502,6 +522,14 @@ class TestResourceLedger(unittest.TestCase):
         self.assertIn("NO_SPONSOR_CONTACT", rows["osff-firmware-sbom-conformance-grant-packet"]["authority"])
         self.assertIn("60d234eb07b914dd30bc42cb7959c3c065d84cee", rows["osff-firmware-sbom-conformance-grant-packet"]["exact_safe_probe"])
         self.assertIn("€0", rows["osff-firmware-sbom-conformance-grant-packet"]["rate_plan_boundary"])
+        self.assertEqual(rows["commons-exact-sha-alternate-verifier"]["stage"], "PRODUCING")
+        self.assertEqual(rows["commons-exact-sha-alternate-verifier"]["condition"], "CONSTRAINED")
+        self.assertIn("ALTERNATE_NONHOSTED_ONLY", rows["commons-exact-sha-alternate-verifier"]["authority"])
+        self.assertIn("HOSTED_CI_GREEN_FALSE", rows["commons-exact-sha-alternate-verifier"]["authority"])
+        self.assertIn("OVERRIDES_REQUIRED_CHECKS_FALSE", rows["commons-exact-sha-alternate-verifier"]["authority"])
+        self.assertIn("MERGE_AUTHORITY_FALSE", rows["commons-exact-sha-alternate-verifier"]["authority"])
+        self.assertIn("839dc8a9f61bf1d4d781a0a85d7c5f7ac66f254b", rows["commons-exact-sha-alternate-verifier"]["exact_safe_probe"])
+        self.assertIn("does not prove hosted ci", rows["commons-exact-sha-alternate-verifier"]["rate_plan_boundary"].lower())
         self.assertIn("September 7 global reset", rows["gpt-6-astra-codex-carrier"]["next_action"])
         self.assertEqual(rows["google-ai-mode-browser-mesh"]["capacity"], "LIVE")
         self.assertEqual(rows["google-ai-mode-browser-mesh"]["stage"], "PRODUCING")
