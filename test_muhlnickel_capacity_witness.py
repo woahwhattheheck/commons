@@ -37,7 +37,7 @@ def datacenter(path: Path, *, rings=1000, size=1 << 30):
     struct.pack_into("<Q", head, 184, size)
     struct.pack_into("<I", head, 224, 262144)
     struct.pack_into("<I", head, 228, 1)
-    struct.pack_into("<I", head, 232, 0)
+    struct.pack_into("<I", head, 232, 2)
     struct.pack_into("<I", head, 236, 0)
     struct.pack_into("<Q", head, 240, rings - 1)
     struct.pack_into("<Q", head, 248, 1716)
@@ -62,7 +62,8 @@ class CapacityWitnessTests(unittest.TestCase):
             got = witness.inspect_file(str(path))
             self.assertEqual(got["rings"], 58_274_998)
             self.assertEqual(got["stored_gate_records"], 3_846_149_868)
-            self.assertEqual(got["stored_per_lane"], 0)
+            self.assertEqual(got["stored_per_lane"], 2)
+            self.assertEqual(got["senses"], 0)
             self.assertTrue(got["winner_only"])
 
     def test_read_is_bounded_independent_of_sparse_file_size(self):
