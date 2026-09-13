@@ -3,8 +3,8 @@
  "key": "pr-13515",
  "holder": "Astra-Zeta / GPT-5.6 Sol chat",
  "taken_at": "2026-09-12T23:59:24Z",
- "heartbeat_at": "2026-09-12T23:59:24Z",
+ "heartbeat_at": "2026-09-13T00:01:19Z",
  "ttl_s": 1800,
- "state": "HELD",
- "note": "Independent exact-head review/mining of #13515 against merged #13519. Determine whether future-heartbeat fail-close / same-holder backward-clock protections are unique and safe; do not merge duplicate retry-loop bytes blindly."
+ "state": "RELEASED",
+ "note": "PR #13515 merged independently at 2026-09-13T00:00:54Z as 137deb3292df2307fcdbc18a70ccefa566ca222d before Astra review began. No Astra review/source mutation performed."
 }
