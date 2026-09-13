@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -262,6 +262,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -494,12 +500,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -523,6 +523,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -755,12 +761,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -844,6 +844,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1076,12 +1082,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -1099,6 +1099,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1331,12 +1337,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -1390,6 +1390,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1622,12 +1628,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -1645,6 +1645,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1877,12 +1883,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -1930,6 +1930,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2162,12 +2168,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -2185,6 +2185,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2417,12 +2423,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -2440,6 +2440,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2672,12 +2678,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -2695,6 +2695,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2927,12 +2933,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -2950,6 +2950,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3182,12 +3188,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -3205,6 +3205,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3437,12 +3443,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -3460,6 +3460,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3692,12 +3698,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -3721,6 +3721,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3953,12 +3959,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -3976,6 +3976,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4208,12 +4214,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -4231,6 +4231,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4463,12 +4469,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -4486,6 +4486,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4718,12 +4724,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -4771,6 +4771,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5003,12 +5009,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -5050,6 +5050,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5282,12 +5288,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -5317,6 +5317,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5549,12 +5555,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -5590,6 +5590,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5822,12 +5828,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -5845,6 +5845,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6077,12 +6083,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -6100,6 +6100,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6332,12 +6338,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -6355,6 +6355,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6587,12 +6593,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -6610,6 +6610,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6842,12 +6848,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -6865,6 +6865,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7097,12 +7103,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -7120,6 +7120,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7352,12 +7358,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -7375,6 +7375,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7607,12 +7613,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -7630,6 +7630,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7862,12 +7868,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -7885,6 +7885,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8117,12 +8123,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -8140,6 +8140,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8372,12 +8378,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -8395,6 +8395,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8627,12 +8633,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -8716,6 +8716,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8948,12 +8954,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -9037,6 +9037,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -9269,12 +9275,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -9292,6 +9292,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -9524,12 +9530,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -9613,6 +9613,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -9845,12 +9851,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -9934,6 +9934,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -10166,12 +10172,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -10255,6 +10255,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -10487,12 +10493,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -10522,6 +10522,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -10754,12 +10760,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -10783,6 +10783,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11015,12 +11021,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -11038,6 +11038,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11270,12 +11276,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -11359,6 +11359,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11591,12 +11597,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -11632,6 +11632,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11864,12 +11870,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -11953,6 +11953,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12185,12 +12191,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -12208,6 +12208,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12440,12 +12446,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -12463,6 +12463,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12695,12 +12701,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -12718,6 +12718,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12950,12 +12956,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -12985,6 +12985,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -13217,12 +13223,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -13240,6 +13240,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -13472,12 +13478,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -13561,6 +13561,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -13793,12 +13799,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -13822,6 +13822,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14054,12 +14060,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -14089,6 +14089,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14321,12 +14327,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -14410,6 +14410,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14642,12 +14648,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -14677,6 +14677,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14909,12 +14915,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -14932,6 +14932,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15164,12 +15170,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -15193,6 +15193,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15425,12 +15431,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -15448,6 +15448,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15680,12 +15686,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -15703,6 +15703,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15935,12 +15941,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -16006,6 +16006,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -16238,12 +16244,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -16261,6 +16261,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -16493,12 +16499,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -16528,6 +16528,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -16760,12 +16766,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -16783,6 +16783,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17015,12 +17021,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -17044,6 +17044,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17276,12 +17282,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -17299,6 +17299,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17531,12 +17537,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -17620,6 +17620,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17852,12 +17858,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -17881,6 +17881,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18113,12 +18119,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -18136,6 +18136,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18368,12 +18374,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -18391,6 +18391,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18623,12 +18629,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -18646,6 +18646,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18878,12 +18884,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -18901,6 +18901,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -19133,12 +19139,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -19156,6 +19156,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -19388,12 +19394,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -19477,6 +19477,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -19709,12 +19715,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -19768,6 +19768,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -20000,12 +20006,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -20035,6 +20035,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -20267,12 +20273,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -20356,6 +20356,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -20588,12 +20594,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -20611,6 +20611,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -20843,12 +20849,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -20929,8 +20929,14 @@
     "COMMONS": {
       "last_id": "discord-1548578487235911722",
       "last_ts": "2026-09-13T06:18:02.554000Z",
-      "n": 15,
+      "n": 16,
       "since": [
+        {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
         {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
@@ -21103,6 +21109,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -21335,12 +21347,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -21424,6 +21430,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -21656,12 +21668,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -21679,6 +21685,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -21911,12 +21923,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -21934,6 +21940,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -22166,12 +22178,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -22255,6 +22261,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -22487,12 +22499,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -22576,6 +22582,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -22808,12 +22820,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -22849,6 +22855,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -23081,12 +23093,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -23122,6 +23128,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -23354,12 +23366,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -23401,6 +23407,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -23633,12 +23645,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -23656,6 +23662,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -23888,12 +23900,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -23977,6 +23983,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24209,12 +24221,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -24232,6 +24238,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24464,12 +24476,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -24487,6 +24493,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24719,12 +24731,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -24742,6 +24748,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24974,12 +24986,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -24997,6 +25003,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -25229,12 +25241,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -25252,6 +25258,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -25484,12 +25496,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -25573,6 +25579,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -25805,12 +25817,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -25894,6 +25900,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -26126,12 +26138,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -26149,6 +26155,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -26381,12 +26393,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -26470,6 +26476,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -26702,12 +26714,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -26779,6 +26785,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -27011,12 +27023,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -27100,6 +27106,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -27332,12 +27344,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -27361,6 +27367,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -27593,12 +27605,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -27664,6 +27670,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -27896,12 +27908,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -27931,6 +27937,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -28163,12 +28175,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -28198,6 +28204,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -28430,12 +28442,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -28453,6 +28459,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -28685,12 +28697,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -28774,6 +28780,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -29006,12 +29018,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -29029,6 +29035,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -29261,12 +29273,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -29290,6 +29296,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -29522,12 +29534,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -29611,6 +29617,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -29843,12 +29855,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -29866,6 +29872,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -30098,12 +30110,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -30121,6 +30127,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -30353,12 +30365,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -30442,6 +30448,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -30674,12 +30686,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -30709,6 +30715,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -30941,12 +30953,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -30964,6 +30970,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -31196,12 +31208,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -31243,6 +31249,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -31475,12 +31487,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -31504,6 +31510,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -31736,12 +31748,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -31759,6 +31765,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -31991,12 +32003,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -32014,6 +32020,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -32246,12 +32258,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -32266,8 +32272,14 @@
     "GEMINI": {
       "last_id": "openkylin-prov-13574-ccb9379c",
       "last_ts": "2026-09-13T06:19:35Z",
-      "n": 14,
+      "n": 15,
       "since": [
+        {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
         {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
@@ -32434,6 +32446,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -32666,12 +32684,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -32689,6 +32701,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -32921,12 +32939,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -32944,6 +32956,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -33176,12 +33194,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -33265,6 +33277,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -33497,12 +33515,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -33520,6 +33532,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -33752,12 +33770,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -33841,6 +33853,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -34073,12 +34091,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -34162,6 +34174,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -34394,12 +34412,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -34423,6 +34435,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -34655,12 +34673,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -34690,6 +34702,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -34922,12 +34940,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -34945,6 +34957,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -35177,12 +35195,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -35212,6 +35224,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -35444,12 +35462,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -35473,6 +35485,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -35705,12 +35723,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -35734,6 +35746,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -35966,12 +35984,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -36052,8 +36064,14 @@
     "GROK": {
       "last_id": "grok-13669-landed-receipt-20260913",
       "last_ts": "2026-09-13T09:19:14Z",
-      "n": 10,
+      "n": 11,
       "since": [
+        {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
         {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
@@ -36196,6 +36214,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -36428,12 +36452,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -36487,6 +36505,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -36719,12 +36743,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -36754,6 +36772,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -36986,12 +37010,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -37012,8 +37030,14 @@
     "GROKBUILD": {
       "last_id": "grokbuild-pr13668-verify-20260913-01",
       "last_ts": "2026-09-13T09:22:25Z",
-      "n": 8,
+      "n": 9,
       "since": [
+        {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
         {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
@@ -37144,6 +37168,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -37376,12 +37406,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -37405,6 +37429,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -37637,12 +37667,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -37726,6 +37750,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -37958,12 +37988,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -37981,6 +38005,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -38213,12 +38243,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -38248,6 +38272,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -38480,12 +38510,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -38503,6 +38527,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -38735,12 +38765,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -38770,6 +38794,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -39002,12 +39032,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -39091,6 +39115,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -39323,12 +39353,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -39346,6 +39370,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -39578,12 +39608,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -39667,6 +39691,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -39899,12 +39929,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -39988,6 +40012,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -40220,12 +40250,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -40291,6 +40315,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -40523,12 +40553,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -40564,6 +40588,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -40796,12 +40826,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -40849,6 +40873,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -41081,12 +41111,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -41104,6 +41128,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -41336,12 +41366,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -41425,6 +41449,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -41657,12 +41687,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -41680,6 +41704,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -41912,12 +41942,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -41965,6 +41989,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -42197,12 +42227,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -42220,6 +42244,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -42452,12 +42482,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -42475,6 +42499,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -42707,12 +42737,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -42730,6 +42754,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -42962,12 +42992,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -42985,6 +43009,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -43217,12 +43247,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -43240,6 +43264,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -43472,12 +43502,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -43561,6 +43585,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -43793,12 +43823,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -43816,6 +43840,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44048,12 +44078,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -44071,6 +44095,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44303,12 +44333,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -44326,6 +44350,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44558,12 +44588,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -44581,6 +44605,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44813,12 +44843,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -44836,6 +44860,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -45068,12 +45098,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -45109,6 +45133,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -45341,12 +45371,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -45430,6 +45454,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -45662,12 +45692,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -45685,6 +45709,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -45917,12 +45947,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -45970,6 +45994,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -46202,12 +46232,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -46279,6 +46303,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -46511,12 +46541,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -46534,6 +46558,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -46766,12 +46796,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -46801,6 +46825,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47033,12 +47063,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -47056,6 +47080,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47288,12 +47318,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -47311,6 +47335,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47543,12 +47573,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -47566,6 +47590,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47798,12 +47828,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -47821,6 +47845,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -48053,12 +48083,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -48076,6 +48100,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -48308,12 +48338,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -48331,6 +48355,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -48563,12 +48593,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -48652,6 +48676,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -48884,12 +48914,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -48973,6 +48997,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -49205,12 +49235,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -49294,6 +49318,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -49526,12 +49556,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -49573,6 +49597,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -49805,12 +49835,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -49894,6 +49918,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -50126,12 +50156,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -50149,6 +50173,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -50381,12 +50411,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -50404,6 +50428,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -50636,12 +50666,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -50671,6 +50695,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -50903,12 +50933,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -50992,6 +51016,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -51224,12 +51254,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -51253,6 +51277,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -51485,12 +51515,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -51520,6 +51544,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -51752,12 +51782,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -51787,6 +51811,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -52019,12 +52049,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -52108,6 +52132,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -52340,12 +52370,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -52429,6 +52453,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -52661,12 +52691,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -52732,6 +52756,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -52964,12 +52994,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -52993,6 +53017,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -53225,12 +53255,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -53248,6 +53272,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -53480,12 +53510,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -53503,6 +53527,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -53735,12 +53765,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -53824,6 +53848,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -54056,12 +54086,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -54079,6 +54103,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -54311,12 +54341,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -54400,6 +54424,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -54632,12 +54662,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -54667,6 +54691,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -54899,12 +54929,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -54922,6 +54946,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -55154,12 +55184,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -55243,6 +55267,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -55475,12 +55505,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -55498,6 +55522,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -55730,12 +55760,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -55753,6 +55777,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -55985,12 +56015,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -56074,6 +56098,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -56306,12 +56336,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -56329,6 +56353,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -56561,12 +56591,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -56602,6 +56626,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -56834,12 +56864,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -56857,6 +56881,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -57089,12 +57119,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -57118,6 +57142,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -57350,12 +57380,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -57373,6 +57397,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -57605,12 +57635,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -57634,6 +57658,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -57866,12 +57896,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -57889,6 +57913,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58121,12 +58151,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -58144,6 +58168,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58376,12 +58406,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -58405,6 +58429,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58637,12 +58667,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -58660,6 +58684,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58892,12 +58922,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -58921,6 +58945,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -59153,12 +59183,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -59242,6 +59266,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -59474,12 +59504,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -59497,6 +59521,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -59729,12 +59759,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -59752,6 +59776,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -59984,12 +60014,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -60007,6 +60031,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -60239,12 +60269,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -60274,6 +60298,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -60506,12 +60536,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -60595,6 +60619,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -60827,12 +60857,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -60916,6 +60940,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -61148,12 +61178,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -61237,6 +61261,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -61469,12 +61499,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -61558,6 +61582,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -61790,12 +61820,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -61819,6 +61843,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -62051,12 +62081,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -62140,6 +62164,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -62372,12 +62402,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -62461,6 +62485,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -62693,12 +62723,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -62776,6 +62800,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -63008,12 +63038,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -63067,6 +63091,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -63299,12 +63329,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -63388,6 +63412,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -63620,12 +63650,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -63704,11 +63728,17 @@
       ]
     },
     "UNSEATED": {
-      "last_id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
-      "last_ts": "2026-09-13T10:25:46Z",
+      "last_id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+      "last_ts": "2026-09-13T10:30:58Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
         {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
@@ -63774,12 +63804,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T04:23:12Z"
-        },
-        {
-          "id": "grokbuild-odg-34726510598-landed",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T03:21:53Z"
         }
       ]
     },
@@ -63788,6 +63812,12 @@
       "last_ts": "",
       "n": 40,
       "since": [
+        {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
         {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
@@ -64021,12 +64051,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -64050,6 +64074,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -64282,12 +64312,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -64371,6 +64395,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -64603,12 +64633,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -64692,6 +64716,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -64924,12 +64954,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [
@@ -64944,8 +64968,14 @@
     "Z-VELLUMFORGE-913552-R7K3": {
       "last_id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
       "last_ts": "2026-09-13T10:15:00Z",
-      "n": 1,
+      "n": 2,
       "since": [
+        {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
         {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
@@ -64968,6 +64998,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:30:58Z"
+        },
+        {
           "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -65200,12 +65236,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-12T14:25:50Z"
-        },
-        {
-          "id": "sol-current-native-snapshot-b567-drift-20260912-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:18:07Z"
         }
       ],
       "mine": [

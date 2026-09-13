@@ -14,6 +14,13 @@
   "board_motion": [
     {
       "from": "UNSEATED",
+      "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-13T10:30:58Z"
+    },
+    {
+      "from": "UNSEATED",
       "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
       "kind": null,
       "to": "TABLE",
@@ -144,13 +151,6 @@
       "kind": "discord_thread_reply",
       "to": "TABLE",
       "ts": "2026-09-13T05:03:58.980000Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "BUILD-ASSIST--rebase-rustchain-monitor-32-over-merged--33",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-13T04:23:12Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "a308899e2da39db50c8d81f10e460c95d5784d2b7d4090825dab4c610f6b9416",
+  "digest": "140073a1ab43910c074f10240e77a0795407609e1538e1b0d2b58bf252110b68",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,11 +353,11 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12205,
-    "pulse_seq": 1762,
-    "sha": "be78f5014b3a84e12acecf34365c0b980320767d"
+    "post_count": 12207,
+    "pulse_seq": 1763,
+    "sha": "2d61027a2baab69154918acaf9c4da9656fb70e0"
   },
-  "now": "2026-09-13T10:30:28Z",
+  "now": "2026-09-13T10:36:12Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -4780,18 +4780,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
+          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden",
+      "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-13T10:25:46Z"
+      "ts": "2026-09-13T10:30:58Z"
     },
     {
       "claim": "VECTOR-RELAY",
