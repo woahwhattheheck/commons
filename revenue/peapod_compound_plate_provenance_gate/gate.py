@@ -25,11 +25,16 @@ from .model import (
     normalize_transfer,
 )
 
-CSV_FIELDS = (
-    "sequence transfer_id compound_master_id source_plate_id source_well destination_plate_id "
-    "destination_well membership_type pool_id assay_protocol_id assay_protocol_version "
-    "instrument_run_id decision codes input_sha256 previous_record_sha256 record_sha256"
+TRANSFER_OUTPUT_FIELDS = (
+    "sequence transfer_id compound_master_id source_vial_id source_plate_id source_well "
+    "source_plate_lot source_volume_ul_before transfer_volume_ul source_volume_ul_after "
+    "source_concentration_um membership_type pool_id destination_plate_id destination_well "
+    "destination_plate_lot destination_compound_master_id assay_protocol_id "
+    "assay_protocol_version control_well_map_hash instrument_run_id"
 ).split()
+CSV_FIELDS = TRANSFER_OUTPUT_FIELDS + [
+    "decision", "codes", "input_sha256", "previous_record_sha256", "record_sha256"
+]
 
 
 def defect_codes(row: Mapping[str, Any], context: Mapping[str, Any], seen: set[tuple[str, str]]) -> list[str]:
@@ -73,14 +78,9 @@ def defect_codes(row: Mapping[str, Any], context: Mapping[str, Any], seen: set[t
 
 
 def make_record(row: Mapping[str, Any], codes: Sequence[str], previous: str) -> dict[str, Any]:
-    selected = (
-        "sequence", "transfer_id", "compound_master_id", "source_plate_id", "source_well",
-        "destination_plate_id", "destination_well", "membership_type", "pool_id",
-        "assay_protocol_id", "assay_protocol_version", "instrument_run_id",
-    )
     record = {
         "schema": RECORD_SCHEMA,
-        **{key: row[key] for key in selected},
+        **{key: row[key] for key in TRANSFER_OUTPUT_FIELDS},
         "decision": READY_FOR_SCREEN if not codes else HOLD,
         "codes": list(codes),
         "input_sha256": digest(canonical_bytes(row)),
