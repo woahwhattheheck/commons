@@ -299,11 +299,26 @@ def _radar_svg(reports: list[dict[str, Any]]) -> str:
     return "\n".join(parts) + "\n"
 
 
+def _report_slug(agent: str) -> str:
+    return re.sub(r"[^a-zA-Z0-9._-]+", "-", agent).strip("-") or "agent"
+
+
 def _write_report(out_dir: Path, report: dict[str, Any]) -> None:
     out_dir.mkdir(parents=True, exist_ok=True)
-    slug = re.sub(r"[^a-zA-Z0-9._-]+", "-", report["agent"]).strip("-") or "agent"
+    slug = _report_slug(report["agent"])
     (out_dir / f"{slug}.report.json").write_text(json.dumps(report, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     (out_dir / f"{slug}.report.md").write_text(_markdown(report), encoding="utf-8")
+
+
+def _validate_comparison_reports(reports: list[dict[str, Any]]) -> None:
+    if len(reports) < 2:
+        raise ValueError("compare requires at least two evidence bundles")
+    agents = [report["agent"] for report in reports]
+    if len(set(agents)) != len(agents):
+        raise ValueError("compare evidence agent names must be unique")
+    slugs = [_report_slug(agent) for agent in agents]
+    if len(set(slugs)) != len(slugs):
+        raise ValueError("compare report filenames collide after agent slug normalization")
 
 
 def _load_evidence(path: Path, scenario_ids: set[str]) -> dict[str, Any]:
@@ -358,8 +373,10 @@ def main(argv: list[str] | None = None) -> int:
                 "dataset_sha256": _sha256(args.dataset),
                 "evidence_sha256": _sha256(path),
             }
-            _write_report(args.out_dir, report)
             reports.append(report)
+        _validate_comparison_reports(reports)
+        for report in reports:
+            _write_report(args.out_dir, report)
         args.out_dir.mkdir(parents=True, exist_ok=True)
         (args.out_dir / "comparison.json").write_text(json.dumps(reports, indent=2) + "\n", encoding="utf-8")
         (args.out_dir / "radar.svg").write_text(_radar_svg(reports), encoding="utf-8")
