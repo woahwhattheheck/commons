@@ -259,6 +259,34 @@ def _production_lims_human_release_exception(
     return bool(release_context) and not bool(admission_context)
 
 
+def _markdown_business_status_denial(path: str, text: str) -> bool:
+    """Allow a standalone business-status cell without weakening admission gates.
+
+    Procurement/readiness tables use ``NOT AUTHORIZED`` to record that an
+    owner-controlled external send has not been approved.  That is a business
+    state, not a Commons/Action-Pad admission rule.  Exempt only Markdown rows
+    where the denial is an isolated table cell and the row carries no Commons
+    admission vocabulary; code strings and actual posting/action/identity
+    denials remain visible to the existing explicit-denial rule.
+    """
+    if not normalize_path(path).lower().endswith(".md"):
+        return False
+    if not re.search(
+        r"\|\s*(?:\*{1,2})?(?:not authorized|not permitted)(?:\*{1,2})?\s*\|",
+        text,
+        re.IGNORECASE,
+    ):
+        return False
+    admission_context = re.search(
+        r"\b(?:action\s+pad|commons|post(?:ing)?|board|admission|authentication|"
+        r"authorization|permission|identity|claim|seat|memory|"
+        r"capability(?:\s+declaration)?|actor(?:_id)?|sender|verb|action)\b",
+        text,
+        re.IGNORECASE,
+    )
+    return not bool(admission_context)
+
+
 def scan_added(lines: Iterable[AddedLine]) -> list[Violation]:
     by_path: dict[str, list[AddedLine]] = {}
     for line in lines:
@@ -284,6 +312,9 @@ def scan_added(lines: Iterable[AddedLine]) -> list[Violation]:
                 continue
             for rule in LINE_RULES:
                 if rule.name in HARD_LINE_RULES:
+                    continue
+                if (rule.name == "explicit-denial"
+                        and _markdown_business_status_denial(path, line.text)):
                     continue
                 contexts = (_admission_contexts(path, line.text)
                             if rule.name == "admission-phrase" else [line.text])
