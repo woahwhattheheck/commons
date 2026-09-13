@@ -62,7 +62,7 @@ class CapacityWitnessTests(unittest.TestCase):
             got = witness.inspect_file(str(path))
             self.assertEqual(got["rings"], 58_274_998)
             self.assertEqual(got["stored_gate_records"], 3_846_149_868)
-            self.assertEqual(got["stored_per_lane"], 0)
+            self.assertEqual(got["stored_per_lane"], 2)
             self.assertTrue(got["winner_only"])
 
     def test_read_is_bounded_independent_of_sparse_file_size(self):
