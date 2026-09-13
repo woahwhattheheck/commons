@@ -11,7 +11,7 @@ from strands import Agent, tool
 from strands.hooks import AfterToolCallEvent, BeforeToolCallEvent
 from strands.hooks.registry import HookProvider, HookRegistry
 
-from .core import RelayEngine, canonical_json
+from .core import DecisionRelayError, RelayEngine, canonical_json
 
 
 SYSTEM_PROMPT = """You are Commercial Decision Relay, a professional evidence-routing agent.
@@ -22,7 +22,8 @@ signer authority: it only means reviewed evidence exactly matches the current of
 the next closing step. Do not invent tool results. For routine AWAITING_RESPONSE or DECLINED states, avoid
 interrupting the human unless asked. For conflicts, counteroffers, clarifications, late replies, or expiry,
 state the exact blocker and required human decision. You have no tool that can mutate a provider/customer,
-sign, invoice, charge, fulfill, or recognize revenue; never imply otherwise."""
+sign, invoice, charge, fulfill, or recognize revenue; never imply otherwise. When trusted evidence is
+preloaded, it is immutable for this run and its trusted evaluation time cannot be chosen by the model."""
 
 
 def _json(value: Any) -> str:
@@ -30,8 +31,24 @@ def _json(value: Any) -> str:
 
 
 class RelayToolbox:
-    def __init__(self, engine: RelayEngine):
+    def __init__(
+        self,
+        engine: RelayEngine,
+        *,
+        trusted_evaluated_at: str | None = None,
+        ingest_locked: bool = False,
+    ):
         self.engine = engine
+        self.trusted_evaluated_at = trusted_evaluated_at
+        self.ingest_locked = ingest_locked
+
+    def _trusted_time(self) -> str:
+        if self.trusted_evaluated_at is None:
+            raise DecisionRelayError(
+                "trusted_time_required",
+                "agent reconciliation and verification require a trusted evaluation time",
+            )
+        return self.trusted_evaluated_at
 
     @tool
     def ingest_batch(self, batch_json: str) -> str:
@@ -40,16 +57,17 @@ class RelayToolbox:
         Args:
             batch_json: JSON object with schema_version, snapshot_at, and normalized offer/response events.
         """
+        if self.ingest_locked:
+            raise DecisionRelayError(
+                "preloaded_batch_locked",
+                "trusted preloaded evidence cannot be replaced by model-supplied evidence",
+            )
         return _json(self.engine.ingest(json.loads(batch_json)))
 
     @tool
-    def reconcile_evidence(self, evaluated_at: str | None = None) -> str:
-        """Reconcile the ingested batch into a deterministic, all-false-authority receipt.
-
-        Args:
-            evaluated_at: Optional trusted ISO-8601 evaluation time; defaults to batch snapshot time.
-        """
-        receipt = self.engine.reconcile(evaluated_at=evaluated_at)
+    def reconcile_evidence(self) -> str:
+        """Reconcile evidence at the run's caller-supplied trusted UTC instant."""
+        receipt = self.engine.reconcile(evaluated_at=self._trusted_time())
         return _json({"receipt_sha256": receipt["receipt_sha256"], "summary": receipt["summary"]})
 
     @tool
@@ -68,12 +86,17 @@ class RelayToolbox:
 
     @tool
     def verify_current_receipt(self, expected_receipt_sha256: str) -> str:
-        """Verify the current receipt against an independently supplied expected digest and trusted source batch.
+        """Verify the receipt at the run's trusted UTC instant and independent digest.
 
         Args:
             expected_receipt_sha256: Out-of-band SHA-256 commitment expected by the caller.
         """
-        return _json({"valid": self.engine.verify(expected_receipt_sha256)})
+        return _json({
+            "valid": self.engine.verify(
+                expected_receipt_sha256,
+                evaluated_at=self._trusted_time(),
+            )
+        })
 
 
 class AuditHooks(HookProvider):
@@ -125,11 +148,16 @@ class AuditHooks(HookProvider):
         })
 
     def after_tool(self, event: AfterToolCallEvent) -> None:
+        exception = getattr(event, "exception", None)
+        cancel_message = getattr(event, "cancel_message", None)
+        cancelled = bool(cancel_message)
         self._append({
             "at": datetime.now(timezone.utc).isoformat().replace("+00:00", "Z"),
             "phase": "after",
             "tool": self._name(event.tool_use),
-            "ok": not isinstance(event.result, Exception),
+            "ok": exception is None and not cancelled,
+            "cancelled": cancelled,
+            "exception_type": type(exception).__name__ if exception is not None else None,
             "duration_seconds": event.duration,
         })
 
@@ -147,9 +175,31 @@ def _openai_model():
     )
 
 
-def build_agent(*, provider: str = "bedrock", audit_path: str | Path = ".relay/audit.jsonl") -> Agent:
+def build_agent(
+    *,
+    provider: str = "bedrock",
+    audit_path: str | Path = ".relay/audit.jsonl",
+    batch: dict[str, Any] | None = None,
+    evaluated_at: str | None = None,
+    model: Any | None = None,
+) -> Agent:
     engine = RelayEngine()
-    toolbox = RelayToolbox(engine)
+    ingest_locked = False
+    if batch is not None:
+        if evaluated_at is None:
+            raise DecisionRelayError(
+                "trusted_time_required",
+                "preloaded agent evidence requires caller-supplied evaluated_at",
+            )
+        engine.ingest(batch)
+        engine.reconcile(evaluated_at=evaluated_at)
+        ingest_locked = True
+
+    toolbox = RelayToolbox(
+        engine,
+        trusted_evaluated_at=evaluated_at,
+        ingest_locked=ingest_locked,
+    )
     kwargs: dict[str, Any] = {
         "name": "commercial_decision_relay",
         "description": "Evidence-bound professional agent that surfaces only real commercial decisions.",
@@ -163,7 +213,9 @@ def build_agent(*, provider: str = "bedrock", audit_path: str | Path = ".relay/a
         ],
         "hooks": [AuditHooks(audit_path)],
     }
-    if provider == "openai":
+    if model is not None:
+        kwargs["model"] = model
+    elif provider == "openai":
         kwargs["model"] = _openai_model()
     elif provider != "bedrock":
         raise ValueError("provider must be 'bedrock' or 'openai'")

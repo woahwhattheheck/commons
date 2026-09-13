@@ -24,7 +24,7 @@ See [docs/architecture.md](docs/architecture.md). The repository includes:
 - `src/decision_relay/strands_app.py` — Strands agent, five custom tools, hash-only audit hooks
 - `src/decision_relay/web_demo.py` — zero-dependency local decision board
 - `fixtures/demo-batch.json` — synthetic judge fixture
-- `tests/` — hostile custody, replay, time, identity, authority, and verification cases
+- `tests/` — hostile custody, replay, time, identity, authority, SDK-hook, and verification cases
 - `docs/demo-script.md` — <=5 minute demo plan
 - `docs/submission-draft.md` — submission narrative + prior-work disclosure
 
@@ -40,32 +40,40 @@ pip install -e .
 python -m unittest discover -s tests -v
 python -O -m unittest discover -s tests -v
 
-# Build a deterministic receipt.
+# Build a deterministic receipt at an explicit evidence-evaluation instant.
+# Receipt files are create-exclusive: choose a new output path for each run.
 decision-relay reconcile \
   --batch fixtures/demo-batch.json \
-  --output /tmp/decision-relay-receipt.json
+  --evaluated-at 2026-09-13T12:00:00Z \
+  --output /tmp/decision-relay-receipt-001.json
 
-# Copy receipt_sha256 from the receipt and verify it as an independent caller commitment.
+# Copy receipt_sha256 from the receipt and verify it at caller-supplied trusted UTC.
 decision-relay verify \
-  --receipt /tmp/decision-relay-receipt.json \
+  --receipt /tmp/decision-relay-receipt-001.json \
   --batch fixtures/demo-batch.json \
-  --expected-receipt-sha256 <SHA256>
+  --expected-receipt-sha256 <SHA256> \
+  --evaluated-at 2026-09-13T12:00:00Z
 
 python -m decision_relay.web_demo --batch fixtures/demo-batch.json
 # open http://127.0.0.1:8080
 ```
 
-> `pip install -e .` installs Strands because the hackathon project requires it. For core-only development in a constrained environment, set `PYTHONPATH=src` and run the unit tests directly; `core.py` and `web_demo.py` use only the Python standard library.
+> `pip install -e .` installs the exact Strands SDK version tested by this package (`strands-agents==1.55.1`). For core-only development in a constrained environment, set `PYTHONPATH=src` and run the deterministic unit tests directly; SDK-specific tests skip cleanly when Strands is unavailable.
 
 ## Run the Strands agent
+
+The CLI **preloads and locks** normalized evidence before model orchestration. The caller also supplies the trusted UTC instant used for reconciliation and current-receipt verification. The model cannot replace the preloaded batch or choose the verification clock.
 
 ### Amazon Bedrock (default Strands provider)
 
 Configure AWS credentials using the standard Strands/AWS setup, then:
 
 ```bash
-decision-relay agent --provider bedrock \
-  "Process the normalized evidence and show me only decisions that need a human."
+decision-relay agent \
+  --provider bedrock \
+  --batch fixtures/demo-batch.json \
+  --evaluated-at 2026-09-13T12:00:00Z \
+  "Show me only decisions that need a human."
 ```
 
 ### OpenAI provider
@@ -74,28 +82,38 @@ decision-relay agent --provider bedrock \
 pip install -e '.[openai]'
 export OPENAI_API_KEY='...'
 export DECISION_RELAY_MODEL_ID='gpt-4o-mini'  # optional
-decision-relay agent --provider openai
+decision-relay agent \
+  --provider openai \
+  --batch fixtures/demo-batch.json \
+  --evaluated-at 2026-09-13T12:00:00Z
 ```
 
-Strands supports multiple providers; the provider choice does not change the deterministic receipt semantics.
+Strands supports multiple providers; the provider choice does not change deterministic receipt semantics.
 
 ## Strands implementation
 
 The agent has exactly five business tools:
 
-1. `ingest_batch` — normalize/dedupe evidence; no external side effects.
-2. `reconcile_evidence` — create the deterministic decision receipt.
+1. `ingest_batch` — normalize/dedupe evidence; no external side effects. When the CLI preloads trusted evidence, this tool is locked for the run.
+2. `reconcile_evidence` — create the deterministic decision receipt at the caller-pinned trusted UTC instant.
 3. `decision_queue` — return only human-interruption states.
 4. `explain_blocker` — explain one deterministic series status.
-5. `verify_current_receipt` — bind the receipt to independently supplied SHA-256 plus trusted source.
+5. `verify_current_receipt` — bind the receipt to independently supplied SHA-256, trusted source, and the caller-pinned current UTC instant.
 
-`AuditHooks` subscribes to Strands `BeforeToolCallEvent` and `AfterToolCallEvent`, allowlists those tools, and writes hash-only audit records rather than raw commercial evidence.
+`AuditHooks` subscribes to Strands `BeforeToolCallEvent` and `AfterToolCallEvent`, allowlists those tools, and writes hash-only audit records rather than raw commercial evidence. Failed tool calls use the SDK's exception field; cancelled calls are recorded as failed rather than successful.
 
 ## Evidence contract
 
 Input is **normalized evidence**, not raw email prose. A response is commercially exact only if the current offer version, counterparty, thread, currency, amount, terms digest, timing, source digest, and human-review attestation satisfy the contract. Future evidence is quarantined. Exact replay collapses. Conflicting IDs/offer versions fail closed.
 
-A receipt has a deterministic SHA-256, but that self-digest is only integrity. Verification also requires an **out-of-band expected digest and the trusted source batch** and recomputes the receipt.
+A receipt has a deterministic SHA-256, but that self-digest is only integrity. Two verification modes are deliberately separated:
+
+- `verify_receipt(...)` is historical/offline integrity verification and may recompute at the receipt's embedded instant.
+- `verify_current_receipt(...)`, the CLI, `RelayEngine.verify`, and the Strands tool require caller-supplied trusted UTC. A historical pre-expiry receipt cannot be replayed as current after expiry.
+
+Schema and authority checks use exact JSON/Python types, so `false` cannot be substituted with `0`/`0.0` and integer schema fields cannot be substituted with booleans.
+
+Receipt files are **create-exclusive**. The CLI refuses to overwrite an existing receipt path and refuses final-component symlinks on platforms that expose the needed filesystem flags, preserving claim-time evidence.
 
 ## Authority contract
 

@@ -7,6 +7,7 @@ from .core import (
     canonical_digest,
     receipt_self_digest_matches,
     reconcile,
+    verify_current_receipt,
     verify_receipt,
 )
 
@@ -17,5 +18,6 @@ __all__ = [
     "canonical_digest",
     "receipt_self_digest_matches",
     "reconcile",
+    "verify_current_receipt",
     "verify_receipt",
 ]

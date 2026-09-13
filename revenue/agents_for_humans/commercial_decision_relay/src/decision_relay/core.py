@@ -149,8 +149,9 @@ def _normalize_response(event: dict[str, Any]) -> dict[str, Any]:
 def normalize_batch(batch: dict[str, Any]) -> dict[str, Any]:
     if not isinstance(batch, dict):
         raise DecisionRelayError("invalid_batch", "batch must be an object")
-    if batch.get("schema_version") != 1:
-        raise DecisionRelayError("unsupported_schema", "schema_version must be 1")
+    schema_version = batch.get("schema_version")
+    if type(schema_version) is not int or schema_version != 1:
+        raise DecisionRelayError("unsupported_schema", "schema_version must be the integer 1")
     snapshot_at = _instant(batch.get("snapshot_at"), "snapshot_at")
     raw_events = batch.get("events")
     if not isinstance(raw_events, list):
@@ -273,8 +274,6 @@ def reconcile(batch: dict[str, Any], *, evaluated_at: str | None = None) -> dict
         ]
         matching.sort(key=lambda item: (_ts(item["reviewed_at"]), _ts(item["received_at"]), item["event_id"]))
 
-        # A response to a superseded offer that is reviewed only after the new offer
-        # exists is commercially ambiguous and must interrupt a human rather than vanish.
         stale_after_supersession = [
             item for item in responses
             if item["series_id"] == series_id
@@ -295,9 +294,6 @@ def reconcile(batch: dict[str, Any], *, evaluated_at: str | None = None) -> dict
             series_records.append(record)
             continue
 
-        # Multiple reviewed replies may be duplicate evidence, but materially different
-        # replies must not be reduced to "latest wins". That could hide an acceptance
-        # behind a later decline (or vice versa).
         response_facts = {
             (
                 item["response_class"], item["counterparty_id"], item["thread_id"],
@@ -359,44 +355,90 @@ def receipt_self_digest_matches(receipt: dict[str, Any]) -> bool:
 
 
 def _validate_receipt_shape(receipt: dict[str, Any]) -> None:
+    if not isinstance(receipt, dict):
+        raise DecisionRelayError("invalid_receipt_schema", "receipt must be an object")
     required_root = {
         "schema_version", "receipt_type", "source_digest", "evaluated_at", "series",
         "decision_queue", "quarantined", "summary", "authority", "receipt_sha256",
     }
     if set(receipt) != required_root:
         raise DecisionRelayError("invalid_receipt_schema", "receipt root fields must match the exact schema")
-    if receipt.get("schema_version") != 1 or receipt.get("receipt_type") != "commercial_decision_relay":
+    schema_version = receipt.get("schema_version")
+    if type(schema_version) is not int or schema_version != 1:
+        raise DecisionRelayError("invalid_receipt_schema", "receipt schema_version must be the integer 1")
+    if type(receipt.get("receipt_type")) is not str or receipt.get("receipt_type") != "commercial_decision_relay":
         raise DecisionRelayError("invalid_receipt_schema", "receipt type/schema version mismatch")
     _hex64(receipt.get("source_digest"), "source_digest")
+    _hex64(receipt.get("receipt_sha256"), "receipt_sha256")
     _instant(receipt.get("evaluated_at"), "evaluated_at")
     if not isinstance(receipt.get("series"), list) or not isinstance(receipt.get("decision_queue"), list):
         raise DecisionRelayError("invalid_receipt_schema", "series and decision_queue must be arrays")
     if not isinstance(receipt.get("quarantined"), list):
         raise DecisionRelayError("invalid_receipt_schema", "quarantined must be an array")
     summary = receipt.get("summary")
-    if not isinstance(summary, dict) or set(summary) != {"series_count", "decision_count", "routine_count", "quarantine_count"}:
+    summary_keys = {"series_count", "decision_count", "routine_count", "quarantine_count"}
+    if not isinstance(summary, dict) or set(summary) != summary_keys:
         raise DecisionRelayError("invalid_receipt_schema", "summary must match the exact schema")
-    if any(isinstance(value, bool) or not isinstance(value, int) or value < 0 for value in summary.values()):
+    if any(type(value) is not int or value < 0 for value in summary.values()):
         raise DecisionRelayError("invalid_receipt_schema", "summary counters must be non-negative integers")
     if summary["series_count"] != len(receipt["series"]) or summary["decision_count"] != len(receipt["decision_queue"]):
         raise DecisionRelayError("invalid_receipt_schema", "summary counters do not match receipt arrays")
     if summary["quarantine_count"] != len(receipt["quarantined"]):
         raise DecisionRelayError("invalid_receipt_schema", "quarantine counter does not match receipt array")
+    authority = receipt.get("authority")
+    if not isinstance(authority, dict) or set(authority) != set(AUTHORITY):
+        raise DecisionRelayError("invalid_receipt_schema", "authority must match the exact schema")
+    if any(type(authority[key]) is not bool for key in AUTHORITY):
+        raise DecisionRelayError("invalid_receipt_schema", "authority values must be exact booleans")
 
 
 def _assert_authority(receipt: dict[str, Any]) -> None:
     _validate_receipt_shape(receipt)
-    if receipt.get("authority") != AUTHORITY:
+    if any(receipt["authority"][key] is not False for key in AUTHORITY):
         raise AuthorityBoundaryError("authority_escalation", "receipt authority must remain all-false")
     for record in receipt["series"]:
         if not isinstance(record, dict) or record.get("status") not in DECISION_STATUSES | ROUTINE_STATUSES:
             raise DecisionRelayError("unknown_status", "receipt contains an unknown decision status")
     expected_decisions = [record for record in receipt["series"] if record.get("status") in DECISION_STATUSES]
-    if receipt["decision_queue"] != expected_decisions:
+    if canonical_json(receipt["decision_queue"]) != canonical_json(expected_decisions):
         raise DecisionRelayError("invalid_decision_queue", "decision_queue must exactly mirror decision-status series")
     expected_routine = sum(record.get("status") in ROUTINE_STATUSES for record in receipt["series"] if isinstance(record, dict))
     if receipt["summary"]["routine_count"] != expected_routine:
         raise DecisionRelayError("invalid_receipt_schema", "routine counter does not match series statuses")
+
+
+def _verify_at(
+    receipt: dict[str, Any],
+    expected_receipt_sha256: str,
+    source_batch: dict[str, Any],
+    *,
+    evaluated_at: str,
+    require_embedded_time_match: bool,
+) -> bool:
+    try:
+        expected = _hex64(expected_receipt_sha256, "expected_receipt_sha256")
+        trusted = _instant(evaluated_at, "evaluated_at")
+    except DecisionRelayError:
+        return False
+    if not receipt_self_digest_matches(receipt):
+        return False
+    try:
+        _assert_authority(receipt)
+    except DecisionRelayError:
+        return False
+    if receipt.get("receipt_sha256") != expected:
+        return False
+    try:
+        embedded = _instant(receipt.get("evaluated_at"), "evaluated_at")
+    except DecisionRelayError:
+        return False
+    if require_embedded_time_match and embedded != trusted:
+        return False
+    try:
+        recomputed = reconcile(source_batch, evaluated_at=trusted)
+    except DecisionRelayError:
+        return False
+    return canonical_json(recomputed) == canonical_json(receipt)
 
 
 def verify_receipt(
@@ -406,17 +448,42 @@ def verify_receipt(
     *,
     evaluated_at: str | None = None,
 ) -> bool:
-    expected = _hex64(expected_receipt_sha256, "expected_receipt_sha256")
-    if not receipt_self_digest_matches(receipt):
+    """Verify deterministic historical integrity.
+
+    When ``evaluated_at`` is omitted, recomputation uses the receipt's embedded
+    instant. Current authority checks must use :func:`verify_current_receipt`.
+    """
+    if not isinstance(receipt, dict):
         return False
     try:
-        _assert_authority(receipt)
+        embedded = _instant(receipt.get("evaluated_at"), "evaluated_at")
     except DecisionRelayError:
         return False
-    if receipt.get("receipt_sha256") != expected:
-        return False
-    recomputed = reconcile(source_batch, evaluated_at=evaluated_at or receipt.get("evaluated_at"))
-    return recomputed == receipt
+    when = embedded if evaluated_at is None else evaluated_at
+    return _verify_at(
+        receipt,
+        expected_receipt_sha256,
+        source_batch,
+        evaluated_at=when,
+        require_embedded_time_match=evaluated_at is not None,
+    )
+
+
+def verify_current_receipt(
+    receipt: dict[str, Any],
+    expected_receipt_sha256: str,
+    source_batch: dict[str, Any],
+    *,
+    evaluated_at: str,
+) -> bool:
+    """Verify current authority at an externally supplied trusted instant."""
+    return _verify_at(
+        receipt,
+        expected_receipt_sha256,
+        source_batch,
+        evaluated_at=evaluated_at,
+        require_embedded_time_match=True,
+    )
 
 
 @dataclass
@@ -463,11 +530,16 @@ class RelayEngine:
     def verify(self, expected_receipt_sha256: str, *, evaluated_at: str | None = None) -> bool:
         if self.batch is None or self.receipt is None:
             raise DecisionRelayError("no_receipt", "ingest and reconcile before verification")
-        return verify_receipt(
+        if evaluated_at is None:
+            raise DecisionRelayError(
+                "trusted_time_required",
+                "current receipt verification requires caller-supplied trusted evaluated_at",
+            )
+        return verify_current_receipt(
             self.receipt,
             expected_receipt_sha256,
             self.batch,
-            evaluated_at=evaluated_at or self.receipt["evaluated_at"],
+            evaluated_at=evaluated_at,
         )
 
     def mutate_commercial_authority(self, *_: Any, **__: Any) -> None:

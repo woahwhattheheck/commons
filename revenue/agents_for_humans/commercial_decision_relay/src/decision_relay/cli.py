@@ -2,10 +2,11 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 from pathlib import Path
 import sys
 
-from .core import reconcile, verify_receipt
+from .core import DecisionRelayError, reconcile, verify_current_receipt
 
 
 def _load(path: str) -> dict:
@@ -13,11 +14,44 @@ def _load(path: str) -> dict:
 
 
 def _dump(value: object, path: str | None = None) -> None:
+    """Emit JSON; file outputs are immutable claim-time receipts.
+
+    O_EXCL prevents accidental overwrite and, together with O_NOFOLLOW where
+    available, refuses an existing symlink target rather than following it.
+    """
     text = json.dumps(value, indent=2, sort_keys=True) + "\n"
-    if path:
-        Path(path).write_text(text, encoding="utf-8")
-    else:
+    if not path:
         sys.stdout.write(text)
+        return
+
+    target = Path(path)
+    flags = os.O_WRONLY | os.O_CREAT | os.O_EXCL
+    if hasattr(os, "O_NOFOLLOW"):
+        flags |= os.O_NOFOLLOW
+    try:
+        fd = os.open(target, flags, 0o600)
+    except FileExistsError as exc:
+        raise DecisionRelayError(
+            "output_exists",
+            f"refusing to overwrite existing receipt path {target}",
+        ) from exc
+    except OSError as exc:
+        # Linux reports ELOOP for a final symlink under O_NOFOLLOW on some filesystems.
+        if target.is_symlink():
+            raise DecisionRelayError(
+                "output_symlink",
+                f"refusing to follow receipt symlink {target}",
+            ) from exc
+        raise
+    try:
+        with os.fdopen(fd, "w", encoding="utf-8", newline="\n") as handle:
+            handle.write(text)
+    except Exception:
+        try:
+            os.close(fd)
+        except OSError:
+            pass
+        raise
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -29,38 +63,50 @@ def main(argv: list[str] | None = None) -> int:
     p_reconcile.add_argument("--evaluated-at")
     p_reconcile.add_argument("--output")
 
-    p_verify = sub.add_parser("verify", help="verify receipt against source and out-of-band digest")
+    p_verify = sub.add_parser("verify", help="verify receipt against source, digest, and trusted current UTC")
     p_verify.add_argument("--receipt", required=True)
     p_verify.add_argument("--batch", required=True)
     p_verify.add_argument("--expected-receipt-sha256", required=True)
-    p_verify.add_argument("--evaluated-at")
+    p_verify.add_argument("--evaluated-at", required=True, help="trusted current ISO-8601 UTC instant")
 
-    p_agent = sub.add_parser("agent", help="run the Strands orchestration agent")
-    p_agent.add_argument("prompt", nargs="?", default="Process the evidence and show me only decisions that need a human.")
+    p_agent = sub.add_parser("agent", help="run the Strands orchestration agent over trusted preloaded evidence")
+    p_agent.add_argument("prompt", nargs="?", default="Show me only decisions that need a human.")
+    p_agent.add_argument("--batch", required=True, help="trusted normalized evidence fixture/file")
+    p_agent.add_argument("--evaluated-at", required=True, help="trusted current ISO-8601 UTC instant")
     p_agent.add_argument("--provider", choices=["bedrock", "openai"], default="bedrock")
     p_agent.add_argument("--audit-path", default=".relay/audit.jsonl")
 
     args = parser.parse_args(argv)
-    if args.command == "reconcile":
-        receipt = reconcile(_load(args.batch), evaluated_at=args.evaluated_at)
-        _dump(receipt, args.output)
-        return 0
-    if args.command == "verify":
-        valid = verify_receipt(
-            _load(args.receipt),
-            args.expected_receipt_sha256,
-            _load(args.batch),
+    try:
+        if args.command == "reconcile":
+            receipt = reconcile(_load(args.batch), evaluated_at=args.evaluated_at)
+            _dump(receipt, args.output)
+            return 0
+        if args.command == "verify":
+            valid = verify_current_receipt(
+                _load(args.receipt),
+                args.expected_receipt_sha256,
+                _load(args.batch),
+                evaluated_at=args.evaluated_at,
+            )
+            _dump({"valid": valid})
+            return 0 if valid else 2
+
+        from .strands_app import build_agent
+
+        agent = build_agent(
+            provider=args.provider,
+            audit_path=args.audit_path,
+            batch=_load(args.batch),
             evaluated_at=args.evaluated_at,
         )
-        _dump({"valid": valid})
-        return 0 if valid else 2
-
-    from .strands_app import build_agent
-
-    agent = build_agent(provider=args.provider, audit_path=args.audit_path)
-    result = agent(args.prompt)
-    print(result)
-    return 0
+        result = agent(args.prompt)
+        print(result)
+        return 0
+    except (DecisionRelayError, json.JSONDecodeError, OSError) as exc:
+        code = getattr(exc, "code", "runtime_error")
+        print(f"ERROR {code}: {exc}", file=sys.stderr)
+        return 2
 
 
 if __name__ == "__main__":
