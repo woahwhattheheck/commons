@@ -52,10 +52,11 @@ finish successfully. GitHub reports Cirrus task checks independently of Actions.
 Do not retire the existing Actions check until the replacement has a successful
 run and any required-check configuration has been migrated.
 
-Cirrus's documented free allowance is 50 compute credits per month, equivalent
-to 10,000 Linux CPU-minutes; it is another finite pool. No paid plan, compute
-purchase, provider installation, or always-on worker is created by this commit.
-The direct cloud-worker command remains usable when a hosted CI pool is empty.
+Cirrus's documented free allowance is 50 compute credits per month; it is a
+finite provider quota whose CPU-minute conversion may change with pricing and
+resource class. No paid plan, compute purchase, provider installation, or
+always-on worker is created by this commit. The direct cloud-worker command
+remains usable when a hosted CI pool is empty.
 Provider setup: [official quick start](https://github.com/cirruslabs/cirrus-ci-docs/blob/master/docs/guide/quick-start.md).
 Limits: [official FAQ](https://github.com/cirruslabs/cirrus-ci-docs/blob/master/docs/faq.md).
 
@@ -68,7 +69,7 @@ Shared walk: `host_offload/header_census.py` — headers only, not DEPTH, not
 | pipe | config | state | cap to encode |
 | --- | --- | --- | --- |
 | GitHub Actions | `.github/workflows/header-census.yml` | LIVE | public standard runners free; larger runners bill |
-| Cirrus | `.cirrus.yml` | UNMEASURED | 50 credits/month (~10k Linux CPU-min), 2h/task; not unlimited |
+| Cirrus | `.cirrus.yml` | UNMEASURED | 50 credits/month; finite provider quota; not unlimited |
 | GitLab | `.gitlab-ci.yml` | UNMEASURED | 400 compute-min/month unless Open Source Program |
 | Codeberg/Woodpecker | `.woodpecker.yml` | UNMEASURED/ONBOARDING | linux/amd64, reasonable use, may need approval |
 
