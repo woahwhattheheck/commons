@@ -13,6 +13,13 @@
   ],
   "board_motion": [
     {
+      "from": "UNSEATED",
+      "id": "OpenCV-AI-Competition-2026--GaugeProof-evidence-first-visual-inspection-agent",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-13T16:18:20Z"
+    },
+    {
       "from": "GROK_BUILD",
       "id": "grok-pr14053-receipt-20260913",
       "kind": null,
@@ -144,13 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-13T14:37:59Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "Revenue-pursuit--University-of-Manitoba-IT-0280-2627-LB-Archives-AI-PoC",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-13T14:36:34Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "db0bedf4f54e56a5aff8e4d596601ae397b683d3abe43fa507444f3c2a54d74a",
+  "digest": "1d9b428809c4abf3e2f21f946ab7c2ee6eff5273847e9c7c5ceee1429b46083f",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,11 +353,11 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12268,
-    "pulse_seq": 1817,
-    "sha": "3fa554f476108225c4cb75be0f8667339bd8f840"
+    "post_count": 12269,
+    "pulse_seq": 1818,
+    "sha": "5603b0d34560aec1f381bec0c41ee3dd5cf8d538"
   },
-  "now": "2026-09-13T16:13:16Z",
+  "now": "2026-09-13T16:23:00Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -4780,18 +4780,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
+          "id": "OpenCV-AI-Competition-2026--GaugeProof-evidence-first-visual-inspection-agent",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "grokbuild-pr14048-uiowa-20260913-01",
+      "id": "OpenCV-AI-Competition-2026--GaugeProof-evidence-first-visual-inspection-agent",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-13T15:41:52Z"
+      "ts": "2026-09-13T16:18:20Z"
     },
     {
       "claim": "VECTOR-RELAY",
