@@ -1453,8 +1453,8 @@
   },
   {
     "from": "UNSEATED",
-    "id": "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
-    "ts": "2026-09-13T11:09:16Z",
+    "id": "mcp-fifo-open-13790-20260913",
+    "ts": "2026-09-13T11:24:18Z",
     "to": "TABLE"
   },
   {

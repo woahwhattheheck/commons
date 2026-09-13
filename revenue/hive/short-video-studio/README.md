@@ -31,13 +31,33 @@ python3 demo/make_demos.py
 
 This creates three original 30-second videos in vertical, square, and landscape formats. Each has H.264 video, AAC audio, an MP4 subtitle track, and a sibling SRT source file.
 
+## Resumable multi-video production
+
+`production_queue.py` layers a durable campaign queue over the existing renderer without changing `studio.py`. A production manifest binds each job to an exact project revision and a unique MP4/SRT target. Successful jobs are skipped on retry only when the job spec, project bytes, MP4 bytes, and SRT bytes all still match their recorded SHA-256 values; changed or missing artifacts are rendered again.
+
+Start with the three-format example:
+
+```bash
+python3 production_queue.py validate production.example.json
+python3 production_queue.py run production.example.json --state production-state.json
+python3 production_queue.py delivery production.example.json \
+  --state production-state.json \
+  --output delivery-manifest.json
+```
+
+The state file is written atomically after each attempted job, so a later retry can preserve verified successful renders after a partial failure. Project mutation during rendering fails closed. Duplicate job IDs or output targets, path traversal, symlink targets, and source/output aliases are rejected.
+
+A delivery manifest reaches `DELIVERY_READY` only when every listed MP4 and SRT still matches the exact bound project revision and recorded digests. It also carries the campaign's `brand_id`/`preset_id` planning metadata and the renderer project's actual format preset. `DELIVERY_READY` is local artifact integrity only: the manifest explicitly records that no customer delivery, external publication, provider action, payment verification, or revenue recognition occurred.
+
 ## Tests
 
 ```bash
 python3 test_studio.py
+python3 -m unittest -v test_production_queue.py
+python3 -O -m unittest -v test_production_queue.py
 ```
 
-The integration test performs a real 30-second FFmpeg render and verifies video/audio/subtitle streams with `ffprobe`.
+The original integration test performs a real 30-second FFmpeg render and verifies video/audio/subtitle streams with `ffprobe`. The production-queue suite exercises resume, stale revisions, tampered outputs, partial failures, deterministic delivery, path and alias guards, and mutation-during-render fail-closed behavior.
 
 ## Rights and delivery boundary
 
