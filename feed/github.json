@@ -1,9 +1,9 @@
 {
   "counts": {
-    "open_issues": 57,
+    "open_issues": 56,
     "open_pull_requests": 47,
-    "runs_in_progress": 18,
-    "runs_queued": 1098
+    "runs_in_progress": 19,
+    "runs_queued": 1104
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -69,6 +69,17 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
+      "branch": "zvh-k3p8/streaming-rendition-qa-pilot-20260913",
+      "created_at": "2026-09-13T14:32:59Z",
+      "draft": false,
+      "head_sha": "8c683e89357e6457b183c37aa0bea9a18544836e",
+      "number": 13958,
+      "title": "revenue: package streaming rendition QA as bounded paid diagnostic",
+      "updated_at": "2026-09-13T14:32:59Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
       "branch": "zom-k8j3-dhs-ready-set-id",
       "created_at": "2026-09-13T14:32:50Z",
       "draft": false,
@@ -120,17 +131,6 @@
       "number": 13950,
       "title": "Revenue proof: deterministic SCORM delivery assurance",
       "updated_at": "2026-09-13T14:31:42Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zeh-p3v7/ai-ready-roanoke-rfp127519-20260913",
-      "created_at": "2026-09-13T14:31:27Z",
-      "draft": false,
-      "head_sha": "7464c9998952c59e580c85a52e4b6fb8b883f488",
-      "number": 13949,
-      "title": "revenue: add AI Ready Roanoke RFP-127519 pursuit carrier",
-      "updated_at": "2026-09-13T14:32:20Z"
     },
     {
       "author": "woahwhattheheck",
@@ -212,24 +212,35 @@
     "13902": "0ad7356c59a25f47dac74c2a4a744c334a8397fa",
     "13910": "bdb48ebd9a9f4a8e44345afdb2fc9c064af8a7ee",
     "13937": "3e8e49283f282848c24d303a912254625fc3bb11",
-    "13941": "7d12405b03a87c6cc2446acf4b4c2aa2216ed54c",
+    "13941": "c3621144f1ae98f97301c46f5c0ec58972979655",
     "13942": "d91dd1fbde1fb69276fc828c95c06bc9d9ec6cd8",
     "13943": "7019e8b6a2d6374e81cc7990cb6d62040395cc8c",
     "13944": "3a6e1807126dab6f893dd766b0df03c775a96847",
     "13946": "ec60d59f6c756c097cde8472b15e07b913caee22",
     "13947": "41f4e5c001a97d4624c5fbe2eea76feed427cf95",
     "13948": "2ab8e356ae7ef89ecef6d3f0bebdbdb6fbfb5624",
-    "13949": "7464c9998952c59e580c85a52e4b6fb8b883f488",
     "13950": "acfada278aa045e39eb4f06638831b03f6fc9662",
     "13951": "3d91304e5ecf57452447842a8bd875063d466de6",
     "13952": "2f3c0ac06dedc07a10417d0e7c533527d165e91c",
     "13954": "35c851372836f826ea16354291529e31846cdb72",
-    "13957": "78a2747228c0b2933a9d0ebf43fd5d2ffee5511e"
+    "13957": "78a2747228c0b2933a9d0ebf43fd5d2ffee5511e",
+    "13958": "8c683e89357e6457b183c37aa0bea9a18544836e"
   },
   "pulls_listed": 47,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 61.0,
+  "queue_depth_per_runner": 58.1,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zeh-p3v7/ai-ready-roanoke-rfp127519-20260913",
+      "closed_at": "2026-09-13T14:33:03Z",
+      "head_sha": "7464c9998952c59e580c85a52e4b6fb8b883f488",
+      "merged_at": "2026-09-13T14:33:02Z",
+      "number": 13949,
+      "state": "MERGED",
+      "title": "revenue: add AI Ready Roanoke RFP-127519 pursuit carrier"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -383,21 +394,10 @@
       "number": 13908,
       "state": "MERGED",
       "title": "Add multi-framework evidence freshness gate"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zlf-w3h7/grandrapids-preflight-authority-20260913",
-      "closed_at": "2026-09-13T14:18:41Z",
-      "head_sha": "a843e3a562c6477c398ade0a86bc563f03a0018a",
-      "merged_at": "2026-09-13T14:18:41Z",
-      "number": 13905,
-      "state": "MERGED",
-      "title": "revenue: bind Grand Rapids preflight to independent current authority"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-13T14:32:55Z",
+  "unchanged_since": "2026-09-13T14:33:13Z",
   "undatable_pulls": []
 }
