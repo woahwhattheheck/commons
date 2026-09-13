@@ -6,7 +6,7 @@ import hashlib
 import json
 from typing import Any
 
-GOLDEN_CORPUS_SHA256 = "bb97f376875421b13762aa2297e9620bb68bd019b47a13f25d80f6d6672bd5a0"
+GOLDEN_CORPUS_SHA256 = "db7d082ec44f18de9e7d5105c538f4615e06bc94222fb214599cab2119f4f465"
 
 
 def _digest(label: str) -> str:
@@ -27,7 +27,7 @@ def build_golden_input() -> dict[str, Any]:
         owner: str = "owner:assurance",
         collected: str = "2026-09-01T12:00:00Z",
         coverage_start: str = "2026-01-01T00:00:00Z",
-        coverage_end: str = "2026-12-31T23:59:59Z",
+        coverage_end: str = "2026-09-13T14:00:00Z",
         mappings: list[dict[str, str]] | None = None,
         checksum: str | None = None,
         freshness_rule: str = "freshness-90d",
@@ -74,7 +74,7 @@ def build_golden_input() -> dict[str, Any]:
         "assessment": {
             "assessment_id": "schellman-synthetic-2026",
             "period_start": "2026-01-01T00:00:00Z",
-            "period_end": "2026-12-31T23:59:59Z",
+            "period_end": "2026-09-13T14:00:00Z",
             "scope": scope,
         },
         "freshness_policy": {"rule_id": "freshness-90d", "max_age_days": 90},
