@@ -56,6 +56,12 @@ class BlogBonusTests(unittest.TestCase):
         with self.assertRaisesRegex(check.BonusManifestError, "builder.aws.com"):
             check.validate(manifest, FIXTURE_ROOT)
 
+    def test_trailing_dot_host_alias_is_rejected(self):
+        manifest = load_manifest()
+        published(manifest, 0, "https://builder.aws.com./content/post/slug")
+        with self.assertRaisesRegex(check.BonusManifestError, "builder.aws.com"):
+            check.validate(manifest, FIXTURE_ROOT)
+
     def test_builder_root_is_not_a_post(self):
         manifest = load_manifest()
         published(manifest, 0, "https://builder.aws.com/")
@@ -80,6 +86,38 @@ class BlogBonusTests(unittest.TestCase):
         published(manifest, 0, "https://builder.aws.com/content/same/original-slug?trk=one")
         published(manifest, 1, "https://builder.aws.com/content/same/different-slug/#fragment")
         with self.assertRaisesRegex(check.BonusManifestError, "must be distinct"):
+            check.validate(manifest, FIXTURE_ROOT)
+
+    def test_same_post_repeated_slash_aliases_are_rejected(self):
+        manifest = load_manifest()
+        published(manifest, 0, "https://builder.aws.com/content/same/original-slug")
+        published(manifest, 1, "https://builder.aws.com//content//same//different-slug")
+        with self.assertRaisesRegex(check.BonusManifestError, "must be distinct"):
+            check.validate(manifest, FIXTURE_ROOT)
+
+    def test_same_post_percent_encoded_identity_aliases_are_rejected(self):
+        manifest = load_manifest()
+        published(manifest, 0, "https://builder.aws.com/content/same/original-slug")
+        published(manifest, 1, "https://builder.aws.com/content/%73ame/different-slug")
+        with self.assertRaisesRegex(check.BonusManifestError, "must be distinct"):
+            check.validate(manifest, FIXTURE_ROOT)
+
+    def test_dot_segment_alias_is_rejected(self):
+        manifest = load_manifest()
+        published(manifest, 0, "https://builder.aws.com/content/fake/../real/slug")
+        with self.assertRaisesRegex(check.BonusManifestError, "dot segments"):
+            check.validate(manifest, FIXTURE_ROOT)
+
+    def test_percent_encoded_dot_segment_alias_is_rejected(self):
+        manifest = load_manifest()
+        published(manifest, 0, "https://builder.aws.com/content/fake/%2E%2E/real/slug")
+        with self.assertRaisesRegex(check.BonusManifestError, "dot segments"):
+            check.validate(manifest, FIXTURE_ROOT)
+
+    def test_encoded_path_separator_is_rejected(self):
+        manifest = load_manifest()
+        published(manifest, 0, "https://builder.aws.com/content/fake%2Freal/slug")
+        with self.assertRaisesRegex(check.BonusManifestError, "encode separators"):
             check.validate(manifest, FIXTURE_ROOT)
 
     def test_nonstandard_https_port_is_rejected(self):
