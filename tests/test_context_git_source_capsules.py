@@ -9,7 +9,7 @@ import sys
 from pathlib import Path
 
 from host.context_packet import DIGEST_KEY, PacketError, canonical, compile_packet, markdown, verify_packet
-from host.git_source_capsules import GitSourceError, collect_git_source, verify_git_source
+from host.git_source_capsules import GitSourceError, collect_git_source, verify_git_source, verify_packet_git_source
 
 
 def run(repo: Path, *args: str, input_bytes: bytes | None = None) -> bytes:
@@ -163,6 +163,50 @@ class GitSourceCapsuleTests(unittest.TestCase):
         bad[DIGEST_KEY] = hashlib.sha256(canonical(semantic).encode()).hexdigest()
         self.assertTrue(verify_packet(bad)[0])
         self.assertEqual(verify_git_source(bad["git_source"], self.repo), (False,"git-source-content-sha256"))
+
+    def test_resealed_small_text_cannot_be_forged_as_packet_budget_omission(self):
+        packet = self.packet(paths=("alpha.txt",))
+        row = packet["git_source"]["capsules"][0]
+        self.assertTrue(row["text_included"])
+        bad = copy.deepcopy(packet)
+        row = bad["git_source"]["capsules"][0]
+        row.pop("text")
+        row["text_included"] = False
+        row["omission_reason"] = "PACKET_BUDGET"
+        bad["omitted"]["git_source_text_files"] = 1
+        bad["omitted"]["git_source_text_bytes"] = row["bytes"]
+        semantic = {k:v for k,v in bad.items() if k != DIGEST_KEY}
+        bad[DIGEST_KEY] = hashlib.sha256(canonical(semantic).encode()).hexdigest()
+        self.assertTrue(verify_packet(bad)[0])
+        self.assertTrue(verify_git_source(bad["git_source"], self.repo)[0])
+        self.assertEqual(verify_packet_git_source(bad, self.repo), (False,"git-source-admission"))
+
+    def test_intrinsic_omission_cannot_be_relabelled_packet_budget(self):
+        raw = b"\x00\xffbinary"
+        (self.repo/"binary.bin").write_bytes(raw)
+        run(self.repo, "add", "binary.bin"); run(self.repo, "commit", "-q", "-m", "binary-omit")
+        commit = run(self.repo, "rev-parse", "HEAD").decode().strip()
+        packet = compile_packet(
+            operation="capsule-op", objective="intrinsic", pulse={"head":commit}, recent=[], ledger={"surfaces":[]},
+            git_repository=self.repo, source_commit=commit, source_paths=["binary.bin"],
+            max_chars=5000, max_events=0, max_resources=0, max_claims=0, max_coordination=0,
+        )
+        bad = copy.deepcopy(packet)
+        bad["git_source"]["capsules"][0]["omission_reason"] = "PACKET_BUDGET"
+        semantic = {k:v for k,v in bad.items() if k != DIGEST_KEY}
+        bad[DIGEST_KEY] = hashlib.sha256(canonical(semantic).encode()).hexdigest()
+        self.assertTrue(verify_packet(bad)[0])
+        self.assertEqual(verify_git_source(bad["git_source"], self.repo), (False,"git-source-omission"))
+        self.assertEqual(verify_packet_git_source(bad, self.repo), (False,"git-source-readback"))
+
+    def test_source_omission_counters_are_semantically_verified(self):
+        packet = self.packet(paths=("alpha.txt",))
+        bad = copy.deepcopy(packet)
+        bad["omitted"]["git_source_text_files"] = 1
+        semantic = {k:v for k,v in bad.items() if k != DIGEST_KEY}
+        bad[DIGEST_KEY] = hashlib.sha256(canonical(semantic).encode()).hexdigest()
+        self.assertTrue(verify_packet(bad)[0])
+        self.assertEqual(verify_packet_git_source(bad, self.repo), (False,"git-source-omitted-files"))
 
 
     def test_direct_cli_from_arbitrary_cwd_compiles_and_verifies(self):
