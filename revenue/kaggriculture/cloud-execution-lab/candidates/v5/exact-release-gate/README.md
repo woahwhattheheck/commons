@@ -12,9 +12,19 @@ Pinned identities:
 
 ## Input contract
 
-`reduce_gate.py` consumes one normalized JSON bundle with schema `titan.v5.exact-release-gate.v1`. The bundle must name exactly F24-F29 in `required_lane_cell_counts`; observed cell counts must match those declared counts exactly. Every cell binds a unique lane/fixture/opponent/seat tuple and carries candidate and V3.1 outcomes with status, own/rival score, max callback milliseconds, and fallback count.
+`reduce_gate.py` consumes one normalized JSON bundle with schema `titan.v5.exact-release-gate.v1`. The gate itself pins the required F24-F29 coverage; the evidence producer cannot lower it:
 
-The reducer rejects unknown/missing fields, non-built-in scalar types, duplicate cell IDs, duplicate semantic cells, bad package/control/engine identities, missing lanes, or incomplete lane counts.
+- F24 native Apex: 16 paired cells
+- F25 native Arlene: 16 paired cells
+- F26 top30-union shards 0-1: 64 paired cells
+- F27 shards 2-3: 62 paired cells
+- F28 shards 4-5: 60 paired cells
+- F29 shards 6-7: 60 paired cells
+- total: 278 paired cells
+
+Every cell binds a unique lane/fixture/opponent/seat tuple and carries candidate and exact V3.1 outcomes with status, own/rival score, max callback milliseconds, and fallback count. Every lane also carries a strict raw-artifact/corpus receipt (`raw_artifact`, raw SHA-256, corpus ID, corpus SHA-256).
+
+The reducer rejects unknown/missing fields, non-built-in scalar types, duplicate cell IDs, duplicate semantic cells, bad package/control/engine identities, missing lanes, or incomplete/excess lane coverage.
 
 ## Machine gate
 
@@ -22,13 +32,16 @@ The machine-decidable gate holds on any non-success/DQ/timeout/fallback row, non
 
 The report includes:
 
-- all-cell count and F24-F29 lane counts;
-- candidate W/L/T;
+- all-cell count and exact F24-F29 lane counts;
+- candidate **and V3.1** W/L/T;
 - paired delta mean, median, nearest-rank p10, and worst;
 - positive/zero/negative counts;
 - loss-to-win and win-to-loss conversions;
 - family, seat, and lane strata;
+- explicit failure counts (non-success, DQ/disqualification, timeout, fallback, package/ABI mismatch);
 - maximum callback time;
+- raw/corpus lane receipts;
+- worst 20 V3.1-relative regressions;
 - deterministic report SHA-256.
 
 ## Root-review ceiling
@@ -41,4 +54,4 @@ Bryce's release order also contains deliberately judgmental predicates: no negat
 python -m unittest -v revenue/kaggriculture/cloud-execution-lab/candidates/v5/exact-release-gate/test_reduce_gate.py
 ```
 
-The hostile suite covers identity drift, missing lane coverage, semantic duplicates, timeout/fallback rows, negative mean, adverse W->L conversion balance, strict integer typing, strata reporting, and deterministic report hashing.
+The hostile suite covers identity drift, fixed 278-cell coverage, semantic duplicates, timeout/fallback rows, negative mean, adverse W->L conversion balance, strict scalar typing, both-bot W/L/T, strata, worst-20 output, and deterministic report hashing.
