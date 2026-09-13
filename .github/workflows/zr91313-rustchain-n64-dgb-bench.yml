@@ -11,32 +11,22 @@ on:
 permissions:
   contents: read
 
+env:
+  TARGET_SHA: ed807ee64964851984ca9d0e9eab65dfc43d17ad
+  DGB_SHA: 64207bb8e7e7673b896af11336a805fec1becfcd
+  DGB_RUN_ID: '34719960431'
+  DGB_ZIP_SHA256: 80c74c4f2fb42ab7800e988348b6fb44f796211d9324591c0053fff447877b7a
+  LIBDRAGON_IMAGE_DIGEST: sha256:1f208e26f7ca4da57755525555a2f72553701a578ddd925db88de1e9fe850d94
+
 jobs:
-  benchmark:
+  build-roms:
     runs-on: ubuntu-22.04
-    timeout-minutes: 120
+    timeout-minutes: 30
     container:
       image: ghcr.io/dragonminded/libdragon@sha256:1f208e26f7ca4da57755525555a2f72553701a578ddd925db88de1e9fe850d94
     env:
-      TARGET_SHA: ed807ee64964851984ca9d0e9eab65dfc43d17ad
-      DGB_SHA: 64207bb8e7e7673b896af11336a805fec1becfcd
-      DGB_RUN_ID: '34719960431'
-      DGB_ZIP_SHA256: 80c74c4f2fb42ab7800e988348b6fb44f796211d9324591c0053fff447877b7a
-      LIBDRAGON_IMAGE_DIGEST: sha256:1f208e26f7ca4da57755525555a2f72553701a578ddd925db88de1e9fe850d94
       N64_INST: /n64_toolchain
     steps:
-      - name: Install runtime dependencies
-        shell: bash
-        run: |
-          set -euxo pipefail
-          apt-get update
-          DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
-            ca-certificates curl git unzip xvfb xauth \
-            libsdl2-2.0-0 libdbus-1-3 libsamplerate0 libasound2 libpulse0 \
-            libx11-6 libxext6 libxcursor1 libxi6 libxfixes3 libxrandr2 libxss1 \
-            libdrm2 libgbm1 libwayland-client0 libwayland-cursor0 libxkbcommon0 \
-            mesa-vulkan-drivers libvulkan1
-
       - name: Build libdragon in pinned toolchain image
         shell: bash
         run: |
@@ -47,11 +37,9 @@ jobs:
           JOBS=2 ./build.sh
           test -f "$N64_INST/include/n64.mk"
           ln -sfn "$N64_INST/include/n64.mk" "$N64_INST/n64.mk"
-          test -f "$N64_INST/n64.mk"
           readlink -f "$N64_INST/n64.mk" | tee /tmp/n64mk_compat_link.txt
           printf '%s\n' "$LIBDRAGON_IMAGE_DIGEST" | tee /tmp/libdragon-image-digest.txt
           sha256sum "$N64_INST/include/n64.mk" | tee /tmp/n64mk_sha256.txt
-          find "$N64_INST/bin" -maxdepth 1 -type f -perm -111 -printf '%f\n' | sort | tee /tmp/toolchain-binaries.txt
 
       - name: Checkout exact Legend of Elya revision
         shell: bash
@@ -76,7 +64,63 @@ jobs:
           cp legend_of_elya_rsp_ovl.z64 /tmp/rsp_rate_probe.z64
           sha256sum /tmp/*_rate_probe.z64 | tee /tmp/rom_sha256.txt
 
-      - name: Download exact dgb-n64 build artifact
+      - name: Assemble ROM provenance
+        if: always()
+        shell: bash
+        run: |
+          set -euxo pipefail
+          mkdir -p /rom-evidence
+          for f in /tmp/libdragon.sha /tmp/libdragon-image-digest.txt /tmp/n64mk_sha256.txt /tmp/n64mk_compat_link.txt /tmp/rom_sha256.txt /tmp/scalar_rate_probe.z64 /tmp/rsp_rate_probe.z64; do
+            [ -f "$f" ] && cp "$f" /rom-evidence/
+          done
+          printf 'target_sha=%s\nlibdragon_image=%s\n' "$TARGET_SHA" "$LIBDRAGON_IMAGE_DIGEST" > /rom-evidence/versions.txt
+
+      - name: Upload exact RATE_PROBE ROMs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: zr91313-rate-probe-roms
+          path: /rom-evidence
+          if-no-files-found: error
+          retention-days: 7
+
+  benchmark:
+    needs: build-roms
+    runs-on: ubuntu-24.04
+    timeout-minutes: 100
+    steps:
+      - name: Download exact RATE_PROBE ROMs from build job
+        uses: actions/download-artifact@v4
+        with:
+          name: zr91313-rate-probe-roms
+          path: /tmp/roms
+
+      - name: Install dgb-n64 runtime dependencies
+        shell: bash
+        run: |
+          set -euxo pipefail
+          sudo apt-get update
+          sudo DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+            ca-certificates curl unzip xvfb xauth \
+            libsdl2-2.0-0 libdbus-1-3 libsamplerate0 libasound2t64 libpulse0 \
+            libx11-6 libxext6 libxcursor1 libxi6 libxfixes3 libxrandr2 libxss1 \
+            libdrm2 libgbm1 libwayland-client0 libwayland-cursor0 libxkbcommon0 \
+            libdecor-0-0 mesa-vulkan-drivers libvulkan1
+          ldd --version | head -1 | tee /tmp/glibc-version.txt
+          strings /usr/lib/x86_64-linux-gnu/libstdc++.so.6 | grep '^GLIBCXX_' | sort -V | tail -1 | tee /tmp/glibcxx-version.txt
+
+      - name: Verify ROM provenance from build job
+        shell: bash
+        run: |
+          set -euxo pipefail
+          cd /tmp/roms
+          sha256sum scalar_rate_probe.z64 rsp_rate_probe.z64 | tee /tmp/rom_sha256_benchmark.txt
+          grep -F '54abd9197e5c8de487f6bff865f42974e1146a6639a8a1ed93ccde1310d006fb' /tmp/rom_sha256_benchmark.txt
+          grep -F 'ddfee650835bffbc7f70cea60ee030a8ebacd56d11af62c46a5f7b064305f7e8' /tmp/rom_sha256_benchmark.txt
+          cat versions.txt
+          cat libdragon.sha
+
+      - name: Download and verify exact dgb-n64 build artifact
         shell: bash
         run: |
           set -euxo pipefail
@@ -86,8 +130,8 @@ jobs:
           echo "${DGB_ZIP_SHA256}  /tmp/dgb.zip" | sha256sum -c -
           unzip -q /tmp/dgb.zip -d /tmp/dgb
           chmod +x /tmp/dgb/n64
+          strings /tmp/dgb/n64 | grep -Fx "$DGB_SHA" | tee /tmp/dgb_embedded_sha.txt
           /tmp/dgb/n64 --help 2>&1 | tee /tmp/dgb_help.txt
-          grep -F "$DGB_SHA" /tmp/dgb_help.txt
 
       - name: Write bounded PTY runner
         shell: bash
@@ -104,6 +148,7 @@ jobs:
           env.update({
               "SDL_AUDIODRIVER": "dummy",
               "LIBGL_ALWAYS_SOFTWARE": "1",
+              "MESA_VK_DEVICE_SELECT": "llvmpipe",
           })
           cmd = ["xvfb-run", "-a", emulator, rom]
           proc = subprocess.Popen(
@@ -170,42 +215,42 @@ jobs:
         shell: bash
         run: |
           set -o pipefail
-          python3 /tmp/run_dgb_rate.py /tmp/dgb/n64 /tmp/scalar_rate_probe.z64 /tmp/scalar_dgb.log RATE_DONE 2700 \
+          python3 /tmp/run_dgb_rate.py /tmp/dgb/n64 /tmp/roms/scalar_rate_probe.z64 /tmp/scalar_dgb.log RATE_DONE 2700 \
             | tee /tmp/scalar_console.txt
 
       - name: Run RSP-overlay RATE_PROBE on dgb-n64
         shell: bash
         run: |
           set -o pipefail
-          python3 /tmp/run_dgb_rate.py /tmp/dgb/n64 /tmp/rsp_rate_probe.z64 /tmp/rsp_dgb.log RATE_DONE 2700 \
+          python3 /tmp/run_dgb_rate.py /tmp/dgb/n64 /tmp/roms/rsp_rate_probe.z64 /tmp/rsp_dgb.log RATE_DONE 2700 \
             | tee /tmp/rsp_console.txt
 
-      - name: Validate claim gates and assemble evidence
+      - name: Assemble independent-emulator evidence
         if: always()
         shell: bash
         run: |
           set -euxo pipefail
-          mkdir -p /evidence
+          mkdir -p /tmp/evidence
           for f in \
-            /tmp/libdragon.sha /tmp/libdragon-image-digest.txt /tmp/n64mk_sha256.txt /tmp/n64mk_compat_link.txt /tmp/toolchain-binaries.txt \
-            /tmp/rom_sha256.txt /tmp/dgb_help.txt /tmp/run_dgb_rate.py \
-            /tmp/scalar_dgb.log /tmp/rsp_dgb.log /tmp/scalar_console.txt /tmp/rsp_console.txt \
-            /tmp/scalar_rate_probe.z64 /tmp/rsp_rate_probe.z64; do
-            [ -f "$f" ] && cp "$f" /evidence/
+            /tmp/glibc-version.txt /tmp/glibcxx-version.txt /tmp/rom_sha256_benchmark.txt \
+            /tmp/dgb_embedded_sha.txt /tmp/dgb_help.txt /tmp/run_dgb_rate.py \
+            /tmp/scalar_dgb.log /tmp/rsp_dgb.log /tmp/scalar_console.txt /tmp/rsp_console.txt; do
+            [ -f "$f" ] && cp "$f" /tmp/evidence/
           done
-          printf 'target_sha=%s\ndgb_sha=%s\ndgb_run_id=%s\nlibdragon_image=%s\n' \
-            "$TARGET_SHA" "$DGB_SHA" "$DGB_RUN_ID" "$LIBDRAGON_IMAGE_DIGEST" > /evidence/versions.txt
+          cp /tmp/roms/versions.txt /tmp/roms/libdragon.sha /tmp/roms/rom_sha256.txt /tmp/evidence/ 2>/dev/null || true
+          printf 'target_sha=%s\ndgb_sha=%s\ndgb_run_id=%s\ndgb_zip_sha256=%s\n' \
+            "$TARGET_SHA" "$DGB_SHA" "$DGB_RUN_ID" "$DGB_ZIP_SHA256" > /tmp/evidence/benchmark_versions.txt
           for f in /tmp/scalar_dgb.log /tmp/rsp_dgb.log; do
             [ -f "$f" ] || continue
             echo "===== $f ====="
             grep -E 'RATE |RSPPATH|token|TOKEN|OUT|RATE_DONE' "$f" || true
-          done | tee /evidence/rate_markers.txt
+          done | tee /tmp/evidence/rate_markers.txt
 
       - name: Upload raw independent-emulator evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: zr91313-rustchain-16517-n64-dgb
-          path: /evidence
+          path: /tmp/evidence
           if-no-files-found: error
           retention-days: 7
