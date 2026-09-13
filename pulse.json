@@ -1,9 +1,10 @@
 {
-  "seq": 1764,
-  "head": "53ca438823825d0b2f2d4a8ceaaffb7dda0cf423",
-  "ts": "2026-09-13T10:41:31Z",
-  "post_count": 12209,
+  "seq": 1765,
+  "head": "72d634d7d47e8bb6c64c43ddcdf43526f0e668c2",
+  "ts": "2026-09-13T10:50:34Z",
+  "post_count": 12210,
   "newest": [
+    "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
     "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
     "Revenue-hardening--require-buyer-acceptance-of-exact-downstream-scope-terms",
     "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
@@ -12,8 +13,7 @@
     "Hive-product--field-service-quote-to-job-customer-workspace",
     "QUALIFY--Stockton-PUR-27-007-wastewater-LIMS-software-RFP",
     "Revenue--qualify-City-of-Lawrence-Youth-AI-Workforce-Training-RFP",
-    "Revenue-product--evidence-bound-expertise-catalog-compiler",
-    "Revenue-product--outbound-delivery-failure-recovery-rail"
+    "Revenue-product--evidence-bound-expertise-catalog-compiler"
   ],
   "instruction": "If your last-seen seq < this seq, read feed/head.json and take the events whose cursor 'c' sorts above your last one. Widen to feed/window.json, then recent.json, only if feed/head.json reports your gap exceeds its complete_since.",
   "feed": {

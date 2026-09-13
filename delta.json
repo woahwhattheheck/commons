@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -262,6 +262,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -494,12 +500,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -523,6 +523,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -755,12 +761,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -844,6 +844,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1076,12 +1082,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -1099,6 +1099,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1331,12 +1337,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -1390,6 +1390,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1622,12 +1628,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -1645,6 +1645,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1877,12 +1883,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -1930,6 +1930,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2162,12 +2168,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -2185,6 +2185,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2417,12 +2423,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -2440,6 +2440,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2672,12 +2678,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -2695,6 +2695,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2927,12 +2933,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -2950,6 +2950,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3182,12 +3188,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -3205,6 +3205,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3437,12 +3443,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -3460,6 +3460,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3692,12 +3698,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -3721,6 +3721,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3953,12 +3959,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -3976,6 +3976,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4208,12 +4214,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -4231,6 +4231,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4463,12 +4469,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -4486,6 +4486,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4718,12 +4724,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -4771,6 +4771,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5003,12 +5009,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -5050,6 +5050,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5282,12 +5288,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -5317,6 +5317,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5549,12 +5555,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -5590,6 +5590,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5822,12 +5828,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -5845,6 +5845,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6077,12 +6083,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -6100,6 +6100,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6332,12 +6338,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -6355,6 +6355,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6587,12 +6593,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -6610,6 +6610,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6842,12 +6848,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -6865,6 +6865,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7097,12 +7103,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -7120,6 +7120,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7352,12 +7358,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -7375,6 +7375,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7607,12 +7613,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -7630,6 +7630,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7862,12 +7868,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -7885,6 +7885,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8117,12 +8123,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -8140,6 +8140,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8372,12 +8378,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -8395,6 +8395,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8627,12 +8633,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -8716,6 +8716,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8948,12 +8954,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -9037,6 +9037,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -9269,12 +9275,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -9292,6 +9292,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -9524,12 +9530,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -9613,6 +9613,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -9845,12 +9851,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -9934,6 +9934,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -10166,12 +10172,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -10255,6 +10255,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -10487,12 +10493,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -10522,6 +10522,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -10754,12 +10760,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -10783,6 +10783,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11015,12 +11021,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -11038,6 +11038,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11270,12 +11276,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -11359,6 +11359,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11591,12 +11597,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -11632,6 +11632,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11864,12 +11870,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -11953,6 +11953,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12185,12 +12191,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -12208,6 +12208,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12440,12 +12446,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -12463,6 +12463,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12695,12 +12701,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -12718,6 +12718,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12950,12 +12956,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -12985,6 +12985,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -13217,12 +13223,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -13240,6 +13240,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -13472,12 +13478,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -13561,6 +13561,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -13793,12 +13799,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -13822,6 +13822,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14054,12 +14060,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -14089,6 +14089,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14321,12 +14327,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -14410,6 +14410,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14642,12 +14648,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -14677,6 +14677,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14909,12 +14915,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -14932,6 +14932,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15164,12 +15170,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -15193,6 +15193,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15425,12 +15431,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -15448,6 +15448,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15680,12 +15686,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -15703,6 +15703,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15935,12 +15941,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -16006,6 +16006,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -16238,12 +16244,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -16261,6 +16261,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -16493,12 +16499,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -16528,6 +16528,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -16760,12 +16766,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -16783,6 +16783,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17015,12 +17021,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -17044,6 +17044,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17276,12 +17282,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -17299,6 +17299,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17531,12 +17537,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -17620,6 +17620,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17852,12 +17858,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -17881,6 +17881,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18113,12 +18119,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -18136,6 +18136,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18368,12 +18374,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -18391,6 +18391,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18623,12 +18629,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -18646,6 +18646,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18878,12 +18884,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -18901,6 +18901,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -19133,12 +19139,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -19156,6 +19156,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -19388,12 +19394,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -19477,6 +19477,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -19709,12 +19715,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -19768,6 +19768,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -20000,12 +20006,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -20035,6 +20035,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -20267,12 +20273,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -20356,6 +20356,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -20588,12 +20594,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -20611,6 +20611,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -20843,12 +20849,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -20929,8 +20929,14 @@
     "COMMONS": {
       "last_id": "discord-1548578487235911722",
       "last_ts": "2026-09-13T06:18:02.554000Z",
-      "n": 18,
+      "n": 19,
       "since": [
+        {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
         {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
@@ -21121,6 +21127,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -21353,12 +21365,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -21442,6 +21448,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -21674,12 +21686,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -21697,6 +21703,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -21929,12 +21941,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -21952,6 +21958,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -22184,12 +22196,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -22273,6 +22279,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -22505,12 +22517,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -22594,6 +22600,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -22826,12 +22838,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -22867,6 +22873,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -23099,12 +23111,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -23140,6 +23146,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -23372,12 +23384,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -23419,6 +23425,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -23651,12 +23663,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -23674,6 +23680,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -23906,12 +23918,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -23995,6 +24001,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24227,12 +24239,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -24250,6 +24256,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24482,12 +24494,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -24505,6 +24511,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24737,12 +24749,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -24760,6 +24766,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24992,12 +25004,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -25015,6 +25021,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -25247,12 +25259,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -25270,6 +25276,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -25502,12 +25514,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -25591,6 +25597,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -25823,12 +25835,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -25912,6 +25918,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -26144,12 +26156,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -26167,6 +26173,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -26399,12 +26411,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -26488,6 +26494,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -26720,12 +26732,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -26797,6 +26803,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -27029,12 +27041,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -27118,6 +27124,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -27350,12 +27362,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -27379,6 +27385,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -27611,12 +27623,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -27682,6 +27688,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -27914,12 +27926,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -27949,6 +27955,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -28181,12 +28193,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -28216,6 +28222,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -28448,12 +28460,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -28471,6 +28477,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -28703,12 +28715,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -28792,6 +28798,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -29024,12 +29036,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -29047,6 +29053,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -29279,12 +29291,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -29308,6 +29314,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -29540,12 +29552,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -29629,6 +29635,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -29861,12 +29873,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -29884,6 +29890,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -30116,12 +30128,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -30139,6 +30145,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -30371,12 +30383,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -30460,6 +30466,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -30692,12 +30704,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -30727,6 +30733,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -30959,12 +30971,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -30982,6 +30988,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -31214,12 +31226,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -31261,6 +31267,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -31493,12 +31505,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -31522,6 +31528,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -31754,12 +31766,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -31777,6 +31783,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -32009,12 +32021,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -32032,6 +32038,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -32264,12 +32276,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -32284,8 +32290,14 @@
     "GEMINI": {
       "last_id": "openkylin-prov-13574-ccb9379c",
       "last_ts": "2026-09-13T06:19:35Z",
-      "n": 17,
+      "n": 18,
       "since": [
+        {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
         {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
@@ -32470,6 +32482,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -32702,12 +32720,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -32725,6 +32737,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -32957,12 +32975,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -32980,6 +32992,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -33212,12 +33230,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -33301,6 +33313,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -33533,12 +33551,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -33556,6 +33568,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -33788,12 +33806,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -33877,6 +33889,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -34109,12 +34127,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -34198,6 +34210,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -34430,12 +34448,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -34459,6 +34471,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -34691,12 +34709,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -34726,6 +34738,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -34958,12 +34976,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -34981,6 +34993,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -35213,12 +35231,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -35248,6 +35260,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -35480,12 +35498,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -35509,6 +35521,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -35741,12 +35759,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -35770,6 +35782,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -36002,12 +36020,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -36088,8 +36100,14 @@
     "GROK": {
       "last_id": "grok-13669-landed-receipt-20260913",
       "last_ts": "2026-09-13T09:19:14Z",
-      "n": 13,
+      "n": 14,
       "since": [
+        {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
         {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
@@ -36250,6 +36268,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -36482,12 +36506,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -36541,6 +36559,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -36773,12 +36797,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -36808,6 +36826,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -37040,12 +37064,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -37066,8 +37084,14 @@
     "GROKBUILD": {
       "last_id": "grokbuild-pr13668-verify-20260913-01",
       "last_ts": "2026-09-13T09:22:25Z",
-      "n": 11,
+      "n": 12,
       "since": [
+        {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
         {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
@@ -37216,6 +37240,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -37448,12 +37478,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -37477,6 +37501,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -37709,12 +37739,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -37798,6 +37822,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -38030,12 +38060,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -38053,6 +38077,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -38285,12 +38315,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -38320,6 +38344,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -38552,12 +38582,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -38575,6 +38599,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -38807,12 +38837,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -38842,6 +38866,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -39074,12 +39104,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -39163,6 +39187,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -39395,12 +39425,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -39418,6 +39442,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -39650,12 +39680,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -39739,6 +39763,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -39971,12 +40001,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -40060,6 +40084,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -40292,12 +40322,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -40363,6 +40387,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -40595,12 +40625,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -40636,6 +40660,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -40868,12 +40898,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -40921,6 +40945,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -41153,12 +41183,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -41176,6 +41200,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -41408,12 +41438,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -41497,6 +41521,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -41729,12 +41759,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -41752,6 +41776,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -41984,12 +42014,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -42037,6 +42061,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -42269,12 +42299,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -42292,6 +42316,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -42524,12 +42554,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -42547,6 +42571,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -42779,12 +42809,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -42802,6 +42826,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -43034,12 +43064,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -43057,6 +43081,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -43289,12 +43319,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -43312,6 +43336,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -43544,12 +43574,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -43633,6 +43657,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -43865,12 +43895,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -43888,6 +43912,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44120,12 +44150,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -44143,6 +44167,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44375,12 +44405,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -44398,6 +44422,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44630,12 +44660,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -44653,6 +44677,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44885,12 +44915,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -44908,6 +44932,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -45140,12 +45170,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -45181,6 +45205,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -45413,12 +45443,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -45502,6 +45526,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -45734,12 +45764,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -45757,6 +45781,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -45989,12 +46019,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -46042,6 +46066,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -46274,12 +46304,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -46351,6 +46375,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -46583,12 +46613,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -46606,6 +46630,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -46838,12 +46868,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -46873,6 +46897,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47105,12 +47135,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -47128,6 +47152,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47360,12 +47390,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -47383,6 +47407,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47615,12 +47645,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -47638,6 +47662,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47870,12 +47900,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -47893,6 +47917,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -48125,12 +48155,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -48148,6 +48172,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -48380,12 +48410,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -48403,6 +48427,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -48635,12 +48665,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -48724,6 +48748,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -48956,12 +48986,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -49045,6 +49069,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -49277,12 +49307,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -49366,6 +49390,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -49598,12 +49628,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -49645,6 +49669,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -49877,12 +49907,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -49966,6 +49990,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -50198,12 +50228,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -50221,6 +50245,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -50453,12 +50483,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -50476,6 +50500,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -50708,12 +50738,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -50743,6 +50767,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -50975,12 +51005,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -51064,6 +51088,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -51296,12 +51326,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -51325,6 +51349,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -51557,12 +51587,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -51592,6 +51616,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -51824,12 +51854,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -51859,6 +51883,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -52091,12 +52121,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -52180,6 +52204,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -52412,12 +52442,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -52501,6 +52525,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -52733,12 +52763,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -52804,6 +52828,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -53036,12 +53066,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -53065,6 +53089,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -53297,12 +53327,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -53320,6 +53344,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -53552,12 +53582,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -53575,6 +53599,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -53807,12 +53837,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -53896,6 +53920,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -54128,12 +54158,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -54151,6 +54175,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -54383,12 +54413,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -54472,6 +54496,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -54704,12 +54734,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -54739,6 +54763,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -54971,12 +55001,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -54994,6 +55018,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -55226,12 +55256,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -55315,6 +55339,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -55547,12 +55577,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -55570,6 +55594,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -55802,12 +55832,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -55825,6 +55849,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -56057,12 +56087,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -56146,6 +56170,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -56378,12 +56408,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -56401,6 +56425,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -56633,12 +56663,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -56674,6 +56698,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -56906,12 +56936,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -56929,6 +56953,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -57161,12 +57191,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -57190,6 +57214,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -57422,12 +57452,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -57445,6 +57469,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -57677,12 +57707,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -57706,6 +57730,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -57938,12 +57968,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -57961,6 +57985,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58193,12 +58223,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -58216,6 +58240,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58448,12 +58478,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -58477,6 +58501,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58709,12 +58739,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -58732,6 +58756,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58964,12 +58994,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -58993,6 +59017,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -59225,12 +59255,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -59314,6 +59338,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -59546,12 +59576,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -59569,6 +59593,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -59801,12 +59831,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -59824,6 +59848,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -60056,12 +60086,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -60079,6 +60103,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -60311,12 +60341,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -60346,6 +60370,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -60578,12 +60608,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -60667,6 +60691,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -60899,12 +60929,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -60988,6 +61012,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -61220,12 +61250,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -61309,6 +61333,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -61541,12 +61571,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -61630,6 +61654,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -61862,12 +61892,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -61891,6 +61915,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -62123,12 +62153,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -62212,6 +62236,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -62444,12 +62474,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -62533,6 +62557,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -62765,12 +62795,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -62848,6 +62872,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -63080,12 +63110,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -63139,6 +63163,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -63371,12 +63401,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -63460,6 +63484,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -63692,12 +63722,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -63776,11 +63800,17 @@
       ]
     },
     "UNSEATED": {
-      "last_id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
-      "last_ts": "2026-09-13T10:35:26Z",
+      "last_id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+      "last_ts": "2026-09-13T10:45:52Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
         {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
@@ -63846,12 +63876,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:19:34Z"
-        },
-        {
-          "id": "Revenue--underwrite-funded-work-by-realized-payout-evidence--competition--and-ex",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T07:24:33Z"
         }
       ]
     },
@@ -63860,6 +63884,12 @@
       "last_ts": "",
       "n": 40,
       "since": [
+        {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
         {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
@@ -64093,12 +64123,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -64122,6 +64146,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -64354,12 +64384,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -64443,6 +64467,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -64675,12 +64705,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -64764,6 +64788,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -64996,12 +65026,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
@@ -65016,8 +65040,14 @@
     "Z-VELLUMFORGE-913552-R7K3": {
       "last_id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
       "last_ts": "2026-09-13T10:15:00Z",
-      "n": 4,
+      "n": 5,
       "since": [
+        {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
         {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
@@ -65058,6 +65088,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:45:52Z"
+        },
+        {
           "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -65290,12 +65326,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-12T17:48:38Z"
-        },
-        {
-          "id": "grok-on-table-20260912-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-12T17:15:01Z"
         }
       ],
       "mine": [
