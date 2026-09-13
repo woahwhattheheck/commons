@@ -1,9 +1,9 @@
 {
   "counts": {
-    "open_issues": 27,
-    "open_pull_requests": 23,
-    "runs_in_progress": 14,
-    "runs_queued": 735
+    "open_issues": 31,
+    "open_pull_requests": 24,
+    "runs_in_progress": 18,
+    "runs_queued": 732
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -69,13 +69,24 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
+      "branch": "z-cassinianvil/funded-work-withdrawal-precedence-20260913",
+      "created_at": "2026-09-13T13:13:14Z",
+      "draft": false,
+      "head_sha": "ee2135fd2a96e9d3cb8ceaae6a34433db5442c11",
+      "number": 13849,
+      "title": "funded-work: honor authoritative funding withdrawal",
+      "updated_at": "2026-09-13T13:13:14Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
       "branch": "z-kh-h6q2/teaming-conversion-control-20260913",
       "created_at": "2026-09-13T13:09:59Z",
       "draft": false,
       "head_sha": "87abb2dfc66178066a47e96013c95ad5bd6fb259",
       "number": 13844,
       "title": "feat(revenue): evidence-bound teaming conversion control",
-      "updated_at": "2026-09-13T13:10:00Z"
+      "updated_at": "2026-09-13T13:13:17Z"
     },
     {
       "author": "woahwhattheheck",
@@ -164,17 +175,6 @@
       "number": 13782,
       "title": "Revenue: fix commercial-funnel evidence and time authority",
       "updated_at": "2026-09-13T10:47:39Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zcan/raw-byte-provenance-current-20260913",
-      "created_at": "2026-09-13T10:39:37Z",
-      "draft": false,
-      "head_sha": "cfe6ed2b5bf932f99e9adccbd2cca508a96f2a4e",
-      "number": 13779,
-      "title": "fix(revenue): bind scope time authority to exact raw bytes",
-      "updated_at": "2026-09-13T11:05:44Z"
     }
   ],
   "open_heads": {
@@ -200,11 +200,12 @@
     "13821": "237d9963fc7424cfabb3910dd5968ae3544e8d5a",
     "13824": "bc094b424ea740395eebc599e6ced2a270b40cde",
     "13842": "a5bed215f8fed2ab9e5635b7e1b72cfa50df475f",
-    "13844": "87abb2dfc66178066a47e96013c95ad5bd6fb259"
+    "13844": "87abb2dfc66178066a47e96013c95ad5bd6fb259",
+    "13849": "ee2135fd2a96e9d3cb8ceaae6a34433db5442c11"
   },
-  "pulls_listed": 23,
+  "pulls_listed": 24,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 52.5,
+  "queue_depth_per_runner": 40.7,
   "recently_closed": [
     {
       "author": "woahwhattheheck",
@@ -374,6 +375,6 @@
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-13T13:10:48Z",
+  "unchanged_since": "2026-09-13T13:13:35Z",
   "undatable_pulls": []
 }
