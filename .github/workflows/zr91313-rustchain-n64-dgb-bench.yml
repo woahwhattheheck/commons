@@ -45,9 +45,12 @@ jobs:
           git -C /tmp/libdragon rev-parse HEAD | tee /tmp/libdragon.sha
           cd /tmp/libdragon
           JOBS=2 ./build.sh
+          test -f "$N64_INST/include/n64.mk"
+          ln -sfn "$N64_INST/include/n64.mk" "$N64_INST/n64.mk"
           test -f "$N64_INST/n64.mk"
+          readlink -f "$N64_INST/n64.mk" | tee /tmp/n64mk_compat_link.txt
           printf '%s\n' "$LIBDRAGON_IMAGE_DIGEST" | tee /tmp/libdragon-image-digest.txt
-          sha256sum "$N64_INST/n64.mk" | tee /tmp/n64mk_sha256.txt
+          sha256sum "$N64_INST/include/n64.mk" | tee /tmp/n64mk_sha256.txt
           find "$N64_INST/bin" -maxdepth 1 -type f -perm -111 -printf '%f\n' | sort | tee /tmp/toolchain-binaries.txt
 
       - name: Checkout exact Legend of Elya revision
@@ -184,7 +187,7 @@ jobs:
           set -euxo pipefail
           mkdir -p /evidence
           for f in \
-            /tmp/libdragon.sha /tmp/libdragon-image-digest.txt /tmp/n64mk_sha256.txt /tmp/toolchain-binaries.txt \
+            /tmp/libdragon.sha /tmp/libdragon-image-digest.txt /tmp/n64mk_sha256.txt /tmp/n64mk_compat_link.txt /tmp/toolchain-binaries.txt \
             /tmp/rom_sha256.txt /tmp/dgb_help.txt /tmp/run_dgb_rate.py \
             /tmp/scalar_dgb.log /tmp/rsp_dgb.log /tmp/scalar_console.txt /tmp/rsp_console.txt \
             /tmp/scalar_rate_probe.z64 /tmp/rsp_rate_probe.z64; do
