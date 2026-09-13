@@ -1,0 +1,6 @@
+{
+  "schema_version": "commons-first-party-send-authorizations/v1",
+  "kind": "FIRST_PARTY_SEND_AUTHORIZATIONS",
+  "as_of": "2026-09-13T10:00:00Z",
+  "authorizations": []
+}
