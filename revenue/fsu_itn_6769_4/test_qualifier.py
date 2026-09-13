@@ -28,6 +28,7 @@ def public_packet():
         "title": "Artificial Intelligence (AI) Systems and Services",
         "openAt": "2026-09-10T04:00:00Z",
         "closeAt": "2026-10-21T19:00:00Z",
+        "deadlineSourceId": "fsu-public-portal",
         "sources": [
             {
                 "id": "fsu-public-portal",
@@ -73,6 +74,7 @@ def complete_packet():
             "label": "Controlling ITN",
         }
     )
+    p["deadlineSourceId"] = "itn-main"
     p["packetManifest"] = {
         "complete": True,
         "files": [{"sourceId": "itn-main", "filename": "ITN-6769-4.pdf", "sha256": F}],
@@ -166,8 +168,12 @@ class QualificationTests(unittest.TestCase):
         out = compile_qualification(p, as_of=AS_OF, expected_source_packet_sha256=trusted)
         self.assertEqual(out["receipt"]["disposition"], "NO_BID_MANDATORY_GATE_FAILED")
 
-    def test_closed_deadline_no_bid(self):
-        out = compile_qualification(public_packet(), as_of="2026-10-21T19:00:00Z")
+    def test_closed_deadline_no_bid_requires_current_trusted_complete_packet(self):
+        p = complete_packet()
+        current = "2026-10-21T19:00:00Z"
+        p["packetManifest"]["addendaCheckedThrough"] = "2026-10-21T18:59:00Z"
+        trusted = normalized_source_sha256(p, as_of=current)
+        out = compile_qualification(p, as_of=current, expected_source_packet_sha256=trusted)
         self.assertEqual(out["receipt"]["disposition"], "NO_BID_DEADLINE_CLOSED")
 
     def test_future_capture_rejected(self):
