@@ -46,7 +46,7 @@ def test_code_denial_still_fails_closed() -> None:
 
 def test_business_status_cell_cannot_mask_second_not_permitted_denial() -> None:
     row = (
-        f"| Submission | **{_denial()}** | "
+        f"| Procurement readiness | **{_denial()}** | "
         f"Contributors are {_not_permitted()} to edit files |"
     )
     assert "explicit-denial" in _rules("revenue/example-procurement/STATUS.md", row)
@@ -54,7 +54,32 @@ def test_business_status_cell_cannot_mask_second_not_permitted_denial() -> None:
 
 def test_business_status_cell_cannot_mask_second_access_denied_phrase() -> None:
     row = (
-        f"| Submission | **{_denial()}** | "
+        f"| Procurement readiness | **{_denial()}** | "
         f"{_access_denied().title()} to contributors |"
     )
     assert "explicit-denial" in _rules("revenue/example-procurement/STATUS.md", row)
+
+
+def test_contributor_procurement_row_is_not_exempted() -> None:
+    row = f"| Contributor procurement role | **{_denial()}** |"
+    assert "explicit-denial" in _rules("revenue/example-procurement/STATUS.md", row)
+
+
+def test_automated_agent_readiness_row_is_not_exempted() -> None:
+    row = f"| Automated agents readiness | **{_not_permitted().upper()}** |"
+    assert "explicit-denial" in _rules("revenue/example-procurement/STATUS.md", row)
+
+
+def test_plural_permissions_row_is_not_exempted() -> None:
+    row = f"| Procurement access permissions | **{_not_permitted().upper()}** |"
+    assert "explicit-denial" in _rules("revenue/example-procurement/STATUS.md", row)
+
+
+def test_generic_revenue_status_without_business_evidence_is_not_exempted() -> None:
+    row = f"| Submission status | **{_denial()}** |"
+    assert "explicit-denial" in _rules("revenue/example-procurement/STATUS.md", row)
+
+
+def test_non_revenue_readiness_status_is_not_exempted() -> None:
+    row = f"| Procurement readiness | **{_denial()}** |"
+    assert "explicit-denial" in _rules("ground/procurement-status.md", row)
