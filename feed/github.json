@@ -1,9 +1,9 @@
 {
   "counts": {
-    "open_issues": 18,
-    "open_pull_requests": 23,
-    "runs_in_progress": 19,
-    "runs_queued": 802
+    "open_issues": 22,
+    "open_pull_requests": 24,
+    "runs_in_progress": 17,
+    "runs_queued": 845
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -69,13 +69,35 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "codex/cross-family-offering-bundle-composer-resource-20260913-01",
-      "created_at": "2026-09-13T10:30:13Z",
+      "branch": "z-zeeman/crownbio-provenance-913602",
+      "created_at": "2026-09-13T10:35:32Z",
       "draft": false,
-      "head_sha": "4941390d6d8af74694d909215b068491b17e862e",
-      "number": 13763,
-      "title": "resources: activate cross-family offering bundle composer",
-      "updated_at": "2026-09-13T10:30:13Z"
+      "head_sha": "985bf6a691516ceff0f76b94a33783b4a4b450e5",
+      "number": 13771,
+      "title": "revenue: add CrownBio clinical-model provenance gate",
+      "updated_at": "2026-09-13T10:35:32Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zpk-r4v8/zindi-bias-discovery-v2-20260913",
+      "created_at": "2026-09-13T10:35:15Z",
+      "draft": false,
+      "head_sha": "8a306bd79409d5d066fd8f5c4c833daf5fc44b92",
+      "number": 13769,
+      "title": "Zindi: add robust bias-discovery evidence engine",
+      "updated_at": "2026-09-13T10:36:12Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zrv/step-all-iron-production-20260913",
+      "created_at": "2026-09-13T10:34:04Z",
+      "draft": false,
+      "head_sha": "a4b93ba8b32c101711077b6720ba3a500d950b15",
+      "number": 13766,
+      "title": "competition: build DOE STEP FerroFrame production packet",
+      "updated_at": "2026-09-13T10:35:10Z"
     },
     {
       "author": "woahwhattheheck",
@@ -83,10 +105,10 @@
       "branch": "zhyp-c9v3/commercial-lifecycle-late-duplicate-idempotency-13755",
       "created_at": "2026-09-13T10:27:20Z",
       "draft": false,
-      "head_sha": "4d5e07796c8375c361b63bed8f10c75d951f6cdb",
+      "head_sha": "76495359d301d116d21bc5de3eaef4ab02dad577",
       "number": 13760,
       "title": "fix(revenue): make delayed lifecycle retries idempotent",
-      "updated_at": "2026-09-13T10:29:27Z"
+      "updated_at": "2026-09-13T10:36:24Z"
     },
     {
       "author": "woahwhattheheck",
@@ -105,10 +127,10 @@
       "branch": "zcard-x5p2/catalog-currentness-20260913",
       "created_at": "2026-09-13T10:24:07Z",
       "draft": false,
-      "head_sha": "e193112296cf0642f7be604dac5c9d2c3cf746a1",
+      "head_sha": "b0590e6fe4980490f04a6f4366d129ce3c6a7a15",
       "number": 13754,
       "title": "revenue: add cross-family catalog currentness auditor",
-      "updated_at": "2026-09-13T10:30:21Z"
+      "updated_at": "2026-09-13T10:36:11Z"
     },
     {
       "author": "woahwhattheheck",
@@ -124,24 +146,13 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "z-fou/commercial-funnel-20260913",
-      "created_at": "2026-09-13T10:20:42Z",
-      "draft": false,
-      "head_sha": "a8b6bc11c6c361f874d8a8b9b10c846a4d99a5dd",
-      "number": 13748,
-      "title": "Revenue: add evidence-bound cross-family commercial funnel ledger",
-      "updated_at": "2026-09-13T10:30:01Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
       "branch": "zkal-v7n3/opportunity-qualifier-20260913",
       "created_at": "2026-09-13T10:15:25Z",
       "draft": false,
       "head_sha": "deea95594e6d9944821830c264dcb2037e0e7ab5",
       "number": 13741,
       "title": "revenue: add evidence-bound opportunity qualifier",
-      "updated_at": "2026-09-13T10:24:26Z"
+      "updated_at": "2026-09-13T10:34:00Z"
     },
     {
       "author": "woahwhattheheck",
@@ -149,10 +160,10 @@
       "branch": "zath-q9v3/lawrence-youth-ai-qualification-20260913",
       "created_at": "2026-09-13T10:15:07Z",
       "draft": false,
-      "head_sha": "53ce9dafb13ca852d42e15168a2000320d8bd318",
+      "head_sha": "dc8de234ed4da90cdbaece2e1d06b9c6925cdf2e",
       "number": 13740,
       "title": "revenue: add Lawrence Youth AI qualification gate",
-      "updated_at": "2026-09-13T10:29:20Z"
+      "updated_at": "2026-09-13T10:31:34Z"
     },
     {
       "author": "woahwhattheheck",
@@ -164,17 +175,6 @@
       "number": 13712,
       "title": "revenue: add San Diego RFP 13365 partner-readiness gate",
       "updated_at": "2026-09-13T10:03:07Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zherm-c7v/outbound-lease-authority-fence-20260913",
-      "created_at": "2026-09-13T09:46:37Z",
-      "draft": false,
-      "head_sha": "2b6598f90c107dfacc4ec2a975e070f5073f8952",
-      "number": 13702,
-      "title": "fix(outbound): bind lease receipts to live provider authority",
-      "updated_at": "2026-09-13T09:55:08Z"
     }
   ],
   "open_heads": {
@@ -193,19 +193,64 @@
     "13701": "437f3e033ae351d825dc7761432a11a78e528b03",
     "13702": "2b6598f90c107dfacc4ec2a975e070f5073f8952",
     "13712": "e5d13ab500ff195dd85df2728f85794dab2fe048",
-    "13740": "53ce9dafb13ca852d42e15168a2000320d8bd318",
+    "13740": "dc8de234ed4da90cdbaece2e1d06b9c6925cdf2e",
     "13741": "deea95594e6d9944821830c264dcb2037e0e7ab5",
-    "13748": "a8b6bc11c6c361f874d8a8b9b10c846a4d99a5dd",
     "13753": "8872e641cb2efe959b9236e1f56252b43915eadb",
-    "13754": "e193112296cf0642f7be604dac5c9d2c3cf746a1",
+    "13754": "b0590e6fe4980490f04a6f4366d129ce3c6a7a15",
     "13756": "f0db7219f3c214269cb33ea57315d5350f276d47",
-    "13760": "4d5e07796c8375c361b63bed8f10c75d951f6cdb",
-    "13763": "4941390d6d8af74694d909215b068491b17e862e"
+    "13760": "76495359d301d116d21bc5de3eaef4ab02dad577",
+    "13766": "a4b93ba8b32c101711077b6720ba3a500d950b15",
+    "13769": "8a306bd79409d5d066fd8f5c4c833daf5fc44b92",
+    "13771": "985bf6a691516ceff0f76b94a33783b4a4b450e5"
   },
-  "pulls_listed": 23,
+  "pulls_listed": 24,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 42.2,
+  "queue_depth_per_runner": 49.7,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zhyp-c9v3/ci-commercial-lifecycle-ledger",
+      "closed_at": "2026-09-13T10:35:17Z",
+      "head_sha": "b46ccf9e2cac6cb5b5125c213e8b11002b95ad60",
+      "merged_at": "2026-09-13T10:35:17Z",
+      "number": 13768,
+      "state": "MERGED",
+      "title": "ci(revenue): gate commercial lifecycle ledger regressions"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "codex/cross-family-offering-bundle-composer-resource-20260913-01",
+      "closed_at": "2026-09-13T10:32:57Z",
+      "head_sha": "8325d2272b1e938320de17ea46525d4ad9c353c6",
+      "merged_at": "2026-09-13T10:32:57Z",
+      "number": 13763,
+      "state": "MERGED",
+      "title": "resources: activate cross-family offering bundle composer"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zpal-v2h8/hive-field-service-workspace-20260913",
+      "closed_at": "2026-09-13T10:32:24Z",
+      "head_sha": "2c3fd2bae6694c059705c12df16681b13e2d1366",
+      "merged_at": "2026-09-13T10:32:24Z",
+      "number": 13765,
+      "state": "MERGED",
+      "title": "revenue: add field service quote-to-job workspace"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z-fou/commercial-funnel-20260913",
+      "closed_at": "2026-09-13T10:31:52Z",
+      "head_sha": "a8b6bc11c6c361f874d8a8b9b10c846a4d99a5dd",
+      "merged_at": "2026-09-13T10:31:51Z",
+      "number": 13748,
+      "state": "MERGED",
+      "title": "Revenue: add evidence-bound cross-family commercial funnel ledger"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -326,54 +371,10 @@
       "number": 13704,
       "state": "MERGED",
       "title": "revenue: normalize RFC delivery-status evidence"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zvf-r7k3/expertise-buyer-surface-20260913",
-      "closed_at": "2026-09-13T10:18:15Z",
-      "head_sha": "e695f53757aa9b24cc6ca4f1d075c9055322a69d",
-      "merged_at": "2026-09-13T10:18:15Z",
-      "number": 13746,
-      "state": "MERGED",
-      "title": "revenue: add expertise buyer surface over canonical compiler"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "ariadne-z/open-door-structural-proof-fix4-20260913",
-      "closed_at": "2026-09-13T10:17:30Z",
-      "head_sha": "3ae78910a3dedda36d716632014917abb07fa5bb",
-      "merged_at": null,
-      "number": 13742,
-      "state": "CLOSED",
-      "title": "open-door: prove procurement denial exception by cell structure"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "ariadne-z/cwpd-owner-send-status-20260913",
-      "closed_at": "2026-09-13T10:17:27Z",
-      "head_sha": "76ca15f9c7ce949b3a855b4451053166e0c0b3fa",
-      "merged_at": null,
-      "number": 13735,
-      "state": "CLOSED",
-      "title": "superseded by current-main #13745"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zlov-p9x4/fleetline-customer-request-portal-20260913",
-      "closed_at": "2026-09-13T10:17:20Z",
-      "head_sha": "cf788228f744c7235d3ad81a062ad8b6960dad7e",
-      "merged_at": "2026-09-13T10:17:20Z",
-      "number": 13744,
-      "state": "MERGED",
-      "title": "hive: add Fleetline customer request portal"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-13T10:30:44Z",
+  "unchanged_since": "2026-09-13T10:36:26Z",
   "undatable_pulls": []
 }
