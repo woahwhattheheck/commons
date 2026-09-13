@@ -1,0 +1,158 @@
+{
+  "engagement": {
+    "base_fee_usd": 24000,
+    "buyer": "University of Iowa",
+    "optional_readout_usd": 4000,
+    "prime_candidate": "Clark's Consulting",
+    "solicitation_id": "18649",
+    "subcontractor": "TJLabs"
+  },
+  "evaluation_date": "2026-09-13",
+  "observations": [
+    {
+      "claim": "Synthetic CI evidence shows repeatable build/test promotion with peer review.",
+      "confidence_bp": 8900,
+      "dimension": "software",
+      "evidence_id": "ESS-SW-01",
+      "evidence_kind": "artifact",
+      "evidence_sha256": "sha256:93194b27bfcb2179346e91a485efe4208ff5b7740d9443d1365d22089b57e2ba",
+      "group": "ESS",
+      "maturity": 3,
+      "observed_date": "2026-08-15",
+      "scope_commitment": "sha256:370c26ed0b2b86a298dc70221e9f9791f36cdabe7b1a474adec4e6ca19a0bbb6"
+    },
+    {
+      "claim": "Synthetic vulnerability register shows defined triage and time-bounded remediation.",
+      "confidence_bp": 8200,
+      "dimension": "security",
+      "evidence_id": "ESS-SEC-01",
+      "evidence_kind": "metric",
+      "evidence_sha256": "sha256:4b175366c277a0e8d8d56e21a1282a91ae93daaf989dd6c164838107daf03544",
+      "group": "ESS",
+      "maturity": 2,
+      "observed_date": "2026-08-20",
+      "scope_commitment": "sha256:4b1bbbc8c9295ad5c4cb870ad68e40b71164ed8210d6905508a8b4b60262f870"
+    },
+    {
+      "claim": "Synthetic deployment evidence shows automated promotion with rollback records.",
+      "confidence_bp": 8600,
+      "dimension": "deployment",
+      "evidence_id": "ESS-DEP-01",
+      "evidence_kind": "artifact",
+      "evidence_sha256": "sha256:61659af976edad76cd5249189883bbf4b54593a7afefb180b9974b8a05480757",
+      "group": "ESS",
+      "maturity": 3,
+      "observed_date": "2026-08-22",
+      "scope_commitment": "sha256:ab6d8ccf38deeb4aa0887493d21e18c6fade2885ef949e3bd5b4f962fdf2e40a"
+    },
+    {
+      "claim": "Synthetic repository evidence shows documented review and test gates.",
+      "confidence_bp": 8800,
+      "dimension": "software",
+      "evidence_id": "RIS-SW-01",
+      "evidence_kind": "artifact",
+      "evidence_sha256": "sha256:8ae189b99801ac3e63c4783ef676c5b15fdc874b26ee48ebf2aa973fac377736",
+      "group": "RIS",
+      "maturity": 3,
+      "observed_date": "2026-08-18",
+      "scope_commitment": "sha256:ee133d8e4e9c5af00c9533917a396d1a268e64c82d55f720c926d09a2ae1e4ff"
+    },
+    {
+      "claim": "Synthetic interview maps vulnerability ownership to a defined operating role.",
+      "confidence_bp": 7600,
+      "dimension": "security",
+      "evidence_id": "RIS-SEC-01",
+      "evidence_kind": "interview",
+      "evidence_sha256": "sha256:3a6f5bc9a48b00e6f444cd587f2d6ed3496d3d3620d0a9c259bcc8b00f2add56",
+      "group": "RIS",
+      "maturity": 2,
+      "observed_date": "2026-08-17",
+      "scope_commitment": "sha256:9d100c637b1a0c0d337cbb485d8c9f39aa99bcce0fc5126016b477ac2638a986"
+    },
+    {
+      "claim": "Synthetic metric suggests consistently measured remediation performance at a higher maturity.",
+      "confidence_bp": 8100,
+      "dimension": "security",
+      "evidence_id": "RIS-SEC-02",
+      "evidence_kind": "metric",
+      "evidence_sha256": "sha256:009b8995080c40448af0d61783ff4ca143fb15eddd9086576af6f5654aeb0c88",
+      "group": "RIS",
+      "maturity": 3,
+      "observed_date": "2026-08-18",
+      "scope_commitment": "sha256:4d885f9879f09ac1408810406f0c1b51e5395071c3e8e6e7be277e0148592640"
+    },
+    {
+      "claim": "Synthetic deployment demo records environment promotion and recovery steps.",
+      "confidence_bp": 8300,
+      "dimension": "deployment",
+      "evidence_id": "RIS-DEP-01",
+      "evidence_kind": "demo",
+      "evidence_sha256": "sha256:2e937f951d329f91b80b075945f0a51e4d73dcc150c34b62b962c784a0fd4427",
+      "group": "RIS",
+      "maturity": 2,
+      "observed_date": "2026-08-21",
+      "scope_commitment": "sha256:ffad7fa9f3272b50a39dcafe9da113788ee38652ad549c23eb7d36c7eb809461"
+    },
+    {
+      "claim": "Synthetic interview identifies bounded AI experiments but no standardized evaluation gate.",
+      "confidence_bp": 7700,
+      "dimension": "ai_readiness",
+      "evidence_id": "RIS-AI-01",
+      "evidence_kind": "interview",
+      "evidence_sha256": "sha256:e5c102c27b9830e2fc57b24ab4cdc5e0262929efb35d74e87f9f19cdb5e88cb3",
+      "group": "RIS",
+      "maturity": 1,
+      "observed_date": "2026-08-23",
+      "scope_commitment": "sha256:bac86208c316c3d61fa26062bd4ab659a5d40173f31aed5061939c0dbeb31d0d"
+    },
+    {
+      "claim": "Synthetic change-control evidence links code changes to review and rollback artifacts.",
+      "confidence_bp": 8500,
+      "dimension": "software",
+      "evidence_id": "IAM-SW-01",
+      "evidence_kind": "artifact",
+      "evidence_sha256": "sha256:b1a3440c2ea9608eca89b579f08f5d0e89224c56ae243a84c3e92148fede79a1",
+      "group": "IAM",
+      "maturity": 2,
+      "observed_date": "2026-08-19",
+      "scope_commitment": "sha256:964f08002a54630a28a11dfb9894797221e0880cdfe5df15a152207938403ef0"
+    },
+    {
+      "claim": "Synthetic identity-security metric shows defined access review and exception tracking.",
+      "confidence_bp": 9100,
+      "dimension": "security",
+      "evidence_id": "IAM-SEC-01",
+      "evidence_kind": "metric",
+      "evidence_sha256": "sha256:c87d429935a56ed51289889e67cd6c38ac79f98fef55cd2eb0e1df5cf74eb935",
+      "group": "IAM",
+      "maturity": 3,
+      "observed_date": "2026-08-25",
+      "scope_commitment": "sha256:ffbc1a43c3c4fdd063783a367058fcd7d912fc04183dddc4f609f064016f8acb"
+    },
+    {
+      "claim": "Synthetic deployment runbook is structurally valid but intentionally stale for the proof fixture.",
+      "confidence_bp": 9000,
+      "dimension": "deployment",
+      "evidence_id": "IAM-DEP-01",
+      "evidence_kind": "artifact",
+      "evidence_sha256": "sha256:928e2fb6dac1eabb0a8d0ca46eb4f6ee72294db2cf0e835e05c2daeca14c1de9",
+      "group": "IAM",
+      "maturity": 2,
+      "observed_date": "2025-01-10",
+      "scope_commitment": "sha256:33ceb30e7d5f1dcf16886e7a78b056f48f1f624db2bdab8aab7bb5e5e52465dd"
+    },
+    {
+      "claim": "Synthetic interview identifies AI use cases without a mature model-risk operating process.",
+      "confidence_bp": 7400,
+      "dimension": "ai_readiness",
+      "evidence_id": "IAM-AI-01",
+      "evidence_kind": "interview",
+      "evidence_sha256": "sha256:3417550f2492fe52757e0253640164f6fde4263c94434d2ab25f23d0748859a0",
+      "group": "IAM",
+      "maturity": 1,
+      "observed_date": "2026-08-26",
+      "scope_commitment": "sha256:221d5d1e2af0a53585dc8e4b2e6b8ada5187af3f86d29c0ea8e26ff54864355e"
+    }
+  ],
+  "schema_version": 1
+}

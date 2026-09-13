@@ -1,16 +1,21 @@
 from __future__ import annotations
 
 import json
+import os
 import tempfile
 import unittest
 import warnings
 import zipfile
 from io import BytesIO
 from pathlib import Path
+from unittest.mock import patch
 
 from revenue.scorm_delivery_assurance.assurance import (
+    AssuranceError,
     HOLD,
     READY,
+    _exclusive,
+    _read_regular,
     compile_assurance,
     default_policy,
     main as cli_main,
@@ -109,6 +114,15 @@ class AssuranceTests(unittest.TestCase):
         self.assertEqual("SCORM_1_2", report["facts"]["standard"])
         self.assertTrue(verify_assurance(package, report))
 
+    def test_scorm_2004_metadata_is_accepted(self):
+        manifest = MANIFEST.replace(
+            b"<schemaversion>1.2</schemaversion>",
+            b"<schemaversion>2004 4th Edition</schemaversion>",
+        )
+        report = compile_assurance(make_zip(manifest=manifest))
+        self.assertEqual(READY, report["status"])
+        self.assertEqual("SCORM_2004", report["facts"]["standard"])
+
     def test_missing_caption_holds(self):
         report = compile_assurance(make_zip(evidence=sidecar("m2/missing.vtt")))
         self.assertEqual(HOLD, report["status"])
@@ -180,6 +194,162 @@ class AssuranceTests(unittest.TestCase):
         authority = compile_assurance(make_zip())["authority"]
         self.assertTrue(authority)
         self.assertTrue(all(value is False for value in authority.values()))
+
+    def test_utf16_dtd_entity_manifest_holds_before_xml_semantics(self):
+        text = MANIFEST.decode("utf-8").replace(
+            '<?xml version="1.0" encoding="UTF-8"?>',
+            '<?xml version="1.0" encoding="UTF-16"?>\n<!DOCTYPE manifest [<!ENTITY x "hello">]>',
+        ).replace("<schema>ADL SCORM</schema>", "<schema>ADL &x; SCORM</schema>")
+        report = compile_assurance(make_zip(manifest=text.encode("utf-16")))
+        self.assertEqual(HOLD, report["status"])
+        self.assertTrue(any("UTF-8" in x for x in report["reasons"]))
+
+    def test_utf32_dtd_entity_manifest_holds_before_xml_semantics(self):
+        text = MANIFEST.decode("utf-8").replace(
+            '<?xml version="1.0" encoding="UTF-8"?>',
+            '<?xml version="1.0" encoding="UTF-32"?>\n<!DOCTYPE manifest [<!ENTITY x "hello">]>',
+        )
+        report = compile_assurance(make_zip(manifest=text.encode("utf-32")))
+        self.assertEqual(HOLD, report["status"])
+        self.assertTrue(any("UTF-8" in x for x in report["reasons"]))
+
+    def test_utf8_dtd_entity_manifest_holds(self):
+        manifest = MANIFEST.replace(
+            b"?>\n<manifest",
+            b'?>\n<!DOCTYPE manifest [<!ENTITY x "hello">]>\n<manifest',
+        )
+        report = compile_assurance(make_zip(manifest=manifest))
+        self.assertEqual(HOLD, report["status"])
+        self.assertTrue(any("DTD/entity" in x for x in report["reasons"]))
+
+    def test_root_identifier_cannot_mint_scorm_version(self):
+        manifest = MANIFEST.replace(
+            b'<manifest xmlns=', b'<manifest identifier="course-2004" xmlns=', 1
+        ).replace(b"<schemaversion>1.2</schemaversion>", b"")
+        report = compile_assurance(make_zip(manifest=manifest))
+        self.assertEqual(HOLD, report["status"])
+        self.assertTrue(any("schemaversion" in x for x in report["reasons"]))
+
+    def test_schema_is_required_and_must_be_adl_scorm(self):
+        manifest = MANIFEST.replace(b"<schema>ADL SCORM</schema>", b"<schema>not-scorm</schema>")
+        report = compile_assurance(make_zip(manifest=manifest))
+        self.assertEqual(HOLD, report["status"])
+        self.assertTrue(any("schema must be ADL SCORM" in x for x in report["reasons"]))
+
+    def test_conflicting_schemaversion_declarations_hold(self):
+        manifest = MANIFEST.replace(
+            b"<schemaversion>1.2</schemaversion>",
+            b"<schemaversion>1.2</schemaversion><schemaversion>2004</schemaversion>",
+        )
+        report = compile_assurance(make_zip(manifest=manifest))
+        self.assertEqual(HOLD, report["status"])
+        self.assertTrue(any("exactly one schemaversion" in x for x in report["reasons"]))
+
+    def test_read_regular_rejects_symlink_swapped_at_open(self):
+        if not hasattr(os, "O_NOFOLLOW") or not hasattr(os, "symlink"):
+            self.skipTest("platform lacks O_NOFOLLOW/symlink")
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "input.bin"
+            target = Path(directory) / "target.bin"
+            path.write_bytes(b"safe")
+            target.write_bytes(b"other")
+            real_open = os.open
+            swapped = False
+
+            def racing_open(name, flags, mode=0o777):
+                nonlocal swapped
+                if Path(name) == path and not swapped:
+                    swapped = True
+                    path.unlink()
+                    path.symlink_to(target)
+                return real_open(name, flags, mode)
+
+            with patch("revenue.scorm_delivery_assurance.assurance.os.open", side_effect=racing_open):
+                with self.assertRaises(OSError):
+                    _read_regular(path, 32)
+
+    def test_read_regular_rejects_fifo_swapped_at_open_without_blocking(self):
+        if not hasattr(os, "mkfifo"):
+            self.skipTest("platform lacks FIFO support")
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "input.bin"
+            path.write_bytes(b"safe")
+            real_open = os.open
+            swapped = False
+
+            def racing_open(name, flags, mode=0o777):
+                nonlocal swapped
+                if Path(name) == path and not swapped:
+                    swapped = True
+                    path.unlink()
+                    os.mkfifo(path)
+                return real_open(name, flags, mode)
+
+            with patch("revenue.scorm_delivery_assurance.assurance.os.open", side_effect=racing_open):
+                with self.assertRaisesRegex(AssuranceError, "not a regular file"):
+                    _read_regular(path, 32)
+
+    def test_read_regular_rejects_oversize_swapped_at_open(self):
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "input.bin"
+            replacement = Path(directory) / "replacement.bin"
+            path.write_bytes(b"safe")
+            replacement.write_bytes(b"x" * 33)
+            real_open = os.open
+            swapped = False
+
+            def racing_open(name, flags, mode=0o777):
+                nonlocal swapped
+                if Path(name) == path and not swapped:
+                    swapped = True
+                    os.replace(replacement, path)
+                return real_open(name, flags, mode)
+
+            with patch("revenue.scorm_delivery_assurance.assurance.os.open", side_effect=racing_open):
+                with self.assertRaisesRegex(AssuranceError, "exceeds size limit"):
+                    _read_regular(path, 32)
+
+    def test_read_regular_detects_same_inode_mutation_with_restored_mtime(self):
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "input.bin"
+            path.write_bytes(b"A" * 16)
+            before = path.stat()
+            real_read = os.read
+            mutated = False
+
+            def racing_read(fd, size):
+                nonlocal mutated
+                if not mutated:
+                    mutated = True
+                    with path.open("r+b", buffering=0) as stream:
+                        stream.write(b"B" * 16)
+                        stream.flush()
+                    os.utime(path, ns=(before.st_atime_ns, before.st_mtime_ns))
+                return real_read(fd, size)
+
+            with patch("revenue.scorm_delivery_assurance.assurance.os.read", side_effect=racing_read):
+                with self.assertRaisesRegex(AssuranceError, "changed during read"):
+                    _read_regular(path, 32)
+
+    def test_output_late_failure_never_unlinks_foreign_replacement(self):
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "receipt.json"
+            real_fsync = os.fsync
+            fired = False
+
+            def failing_fsync(fd):
+                nonlocal fired
+                if not fired:
+                    fired = True
+                    path.unlink()
+                    path.write_bytes(b"foreign")
+                    raise OSError("synthetic late failure")
+                return real_fsync(fd)
+
+            with patch("revenue.scorm_delivery_assurance.assurance.os.fsync", side_effect=failing_fsync):
+                with self.assertRaisesRegex(OSError, "synthetic late failure"):
+                    _exclusive(path, b"ours")
+            self.assertEqual(b"foreign", path.read_bytes())
 
     def test_cli_compile_verify_and_no_overwrite(self):
         package = make_zip()

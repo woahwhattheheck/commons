@@ -1,0 +1,40 @@
+name: uiowa-rfq18649-workshare
+
+on:
+  pull_request:
+    paths:
+      - "revenue/uiowa_rfq_18649_workshare/**"
+      - ".github/workflows/uiowa-rfq18649-workshare.yml"
+  push:
+    branches: [main]
+    paths:
+      - "revenue/uiowa_rfq_18649_workshare/**"
+      - ".github/workflows/uiowa-rfq18649-workshare.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  contract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Normal interpreter
+        working-directory: revenue/uiowa_rfq_18649_workshare
+        run: python -m unittest -v test_compiler.py
+      - name: Optimized interpreter
+        working-directory: revenue/uiowa_rfq_18649_workshare
+        run: python -O -m unittest -v test_compiler.py
+      - name: Compile, verify, and render frozen fixture
+        working-directory: revenue/uiowa_rfq_18649_workshare
+        run: |
+          python compiler.py compile fixtures/synthetic_packet.json /tmp/uiowa-report.json
+          python compiler.py verify /tmp/uiowa-report.json
+          python compiler.py render /tmp/uiowa-report.json /tmp/uiowa-report.md
+          test -s /tmp/uiowa-report.json
+          test -s /tmp/uiowa-report.md

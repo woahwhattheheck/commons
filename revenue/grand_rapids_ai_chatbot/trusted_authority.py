@@ -1,16 +1,16 @@
 #!/usr/bin/env python3
-"""Host-pinned retained authority for Grand Rapids RFP 920-45-269.
+"""Retained authority verifier for Grand Rapids RFP 920-45-269.
 
-Proposal state is untrusted. An authority file is accepted only when its exact
-canonical generation + semantic SHA-256 match the current root pinned by the
-validation host outside proposal bytes. No proposal or CLI argument can select
-that root, so old-generation replay and same-generation forks fail closed.
+Proposal state and process environment are untrusted. This module never acquires
+an authority root from CLI flags, environment variables, or proposal bytes.
+Trusted host integration must independently authenticate the current generation
+and authority digest, then pass those values explicitly to
+``load_current_authority``. The public preflight CLI never calls that loader.
 """
 from __future__ import annotations
 
 import hashlib
 import json
-import os
 import re
 from dataclasses import dataclass
 from pathlib import Path
@@ -19,8 +19,6 @@ from typing import Any, Mapping
 
 AUTHORITY_SCHEMA = "grand-rapids-920-45-269-authority/v1"
 SOLICITATION_ID = "920-45-269"
-GENERATION_ENV = "GRAND_RAPIDS_PREFLIGHT_AUTHORITY_GENERATION"
-DIGEST_ENV = "GRAND_RAPIDS_PREFLIGHT_AUTHORITY_SHA256"
 MAX_AUTHORITY_BYTES = 1_048_576
 HEX64 = re.compile(r"[0-9a-f]{64}")
 SAFE_ID = re.compile(r"[A-Za-z0-9][A-Za-z0-9._:/-]{0,159}")
@@ -65,7 +63,7 @@ _CONSTRUCTOR_TOKEN = object()
 
 
 class AuthorityError(ValueError):
-    """Authority input is malformed, stale, forked, or not host-pinned."""
+    """Authority input is malformed, stale, forked, or mismatched to a trusted root."""
 
 
 @dataclass(frozen=True)
@@ -89,7 +87,7 @@ class VerifiedAuthority:
         evidence: tuple[EvidenceRecord, ...],
     ) -> None:
         if _token is not _CONSTRUCTOR_TOKEN:
-            raise TypeError("VerifiedAuthority can only be created by host-root verification")
+            raise TypeError("VerifiedAuthority can only be created by trusted-root verification")
         self.generation = generation
         self.authority_sha256 = authority_sha256
         self.source_generation_sha256 = source_generation_sha256
@@ -270,27 +268,31 @@ def _parse_json_strict(raw: bytes) -> Any:
         raise AuthorityError("authority envelope is not valid JSON") from exc
 
 
-def _host_root() -> tuple[int, str]:
-    generation_text = os.environ.get(GENERATION_ENV, "")
-    if not generation_text.isascii() or not generation_text.isdigit():
-        raise AuthorityError(f"host must provision {GENERATION_ENV} as a positive integer")
-    generation = int(generation_text, 10)
-    _strict_int(generation, name=GENERATION_ENV)
-    digest = _hex64(os.environ.get(DIGEST_ENV), name=DIGEST_ENV)
-    return generation, digest
+def load_current_authority(
+    path: str | Path,
+    *,
+    trusted_generation: int,
+    trusted_authority_sha256: str,
+) -> VerifiedAuthority:
+    """Verify authority bytes against a root authenticated by trusted host code.
 
-
-def load_current_authority(path: str | Path) -> VerifiedAuthority:
-    """Verify one authority document against the host's current pinned root."""
-    expected_generation, expected_digest = _host_root()
+    This function does not authenticate the root parameters themselves. They are
+    explicit capability inputs that trusted host integration must obtain outside
+    proposal bytes, CLI arguments, and caller-controlled process environment.
+    """
+    expected_generation = _strict_int(trusted_generation, name="trusted_generation")
+    expected_digest = _hex64(
+        trusted_authority_sha256,
+        name="trusted_authority_sha256",
+    )
     material = _parse_json_strict(Path(path).read_bytes())
     detached, records, source_digest = _validated_material(material)
     digest = hashlib.sha256(canonical_json(detached)).hexdigest()
     generation = detached["generation"]
     if generation != expected_generation:
-        raise AuthorityError("authority generation is not the host-pinned current generation")
+        raise AuthorityError("authority generation does not match the trusted host root")
     if digest != expected_digest:
-        raise AuthorityError("authority digest is not the host-pinned current digest")
+        raise AuthorityError("authority digest does not match the trusted host root")
     return VerifiedAuthority(
         _token=_CONSTRUCTOR_TOKEN,
         generation=generation,

@@ -23,6 +23,7 @@ from __future__ import annotations
 
 import argparse
 import datetime as dt
+import hashlib
 import json
 import sys
 from pathlib import Path
@@ -48,6 +49,7 @@ MODE_HERMETIC = "HERMETIC"
 FIXTURE_REL = "revenue/lm_gtm_index/mailbox_buyer_reply_fixtures"
 EVIDENCE_REL = "revenue/lm_gtm_index/relationship_handoff_evidence.jsonl"
 DIRECTIONS = frozenset({"outbound", "inbound"})
+OBSERVATION_FUTURE_SKEW = dt.timedelta(minutes=5)
 
 
 def fixture_dir(paths: dict[str, Path] | None = None) -> Path:
@@ -139,21 +141,38 @@ def load_mailbox_fixture(
     return record
 
 
+def _fixture_generation_sha256(record: dict[str, Any]) -> str:
+    """Bind the exact validated semantic fixture generation used for verification."""
+    try:
+        payload = json.dumps(
+            record,
+            sort_keys=True,
+            ensure_ascii=False,
+            separators=(",", ":"),
+            allow_nan=False,
+        ).encode("utf-8")
+    except (TypeError, ValueError) as error:
+        raise idx.IndexError_("mailbox fixture is not canonical JSON") from error
+    return hashlib.sha256(payload).hexdigest()
+
+
 def verify_mailbox_buyer_reply(
     subject_id: str,
     paths: dict[str, Path] | None = None,
     *,
     fixture: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
-    """Observe inbound buyer-labelled mail after an outbound in the SAME thread.
+    """Observe inbound buyer-labelled mail strictly after outbound in the SAME thread.
 
-    This proves arrival/thread chronology only. The fixture role is an input to
-    the hermetic verifier, not independent proof of human identity or materiality.
+    This proves arrival/thread chronology only. Equal timestamps do not prove
+    ordering. The fixture role is an input to the hermetic verifier, not
+    independent proof of human identity or materiality.
     """
     if not isinstance(subject_id, str) or not idx.SUBJECT_RE.fullmatch(subject_id):
         raise idx.IndexError_(f"illegal subject id: {subject_id!r}")
     paths = paths or idx.default_paths()
     record = load_mailbox_fixture(subject_id, paths, fixture=fixture)
+    fixture_generation_sha256 = _fixture_generation_sha256(record)
     messages = sorted(
         record["messages"], key=lambda item: idx.parse_time(str(item["ts"]))
     )
@@ -178,10 +197,15 @@ def verify_mailbox_buyer_reply(
         anchor = first_outbound_by_thread.get(msg["thread_id"])
         if anchor is None:
             continue
-        if idx.parse_time(str(msg["ts"])) < anchor:
+        if idx.parse_time(str(msg["ts"])) <= anchor:
             continue
         inbound_hits.append(msg)
 
+    inbound_latest_ts = (
+        idx.iso_z(max(idx.parse_time(str(item["ts"])) for item in inbound_hits))
+        if inbound_hits
+        else None
+    )
     status = STATUS_OBSERVED if inbound_hits else STATUS_NO
     result = {
         "schema_version": idx.SCHEMA_VERSION,
@@ -190,8 +214,10 @@ def verify_mailbox_buyer_reply(
         "status": status,
         "mode": MODE_HERMETIC,
         "fixture_path": FIXTURE_REL + f"/{subject_id}.json",
+        "fixture_generation_sha256": fixture_generation_sha256,
         "outbound_message_ids": [m["id"] for m in outbound],
         "inbound_buyer_message_ids": [m["id"] for m in inbound_hits],
+        "inbound_buyer_latest_ts": inbound_latest_ts,
         "thread_ids": sorted(first_outbound_by_thread),
         "verified_human_yes": False,
         "material_reply_verified": False,
@@ -298,6 +324,10 @@ def pin_buyer_reply_observed_evidence(
     byte-canonically equivalent to that reacquired result. ``paths`` controls the
     evidence destination only; it cannot select a different verification root.
 
+    The durable row binds the exact validated fixture generation and refuses an
+    observation timestamp before the latest observed inbound source or too far
+    ahead of verifier-owned current UTC.
+
     The record intentionally omits decision, dnr, live, due, route, and
     next_action fields. Relationship handoff therefore learns the observation
     but preserves every existing relationship/contact/owner decision.
@@ -320,10 +350,34 @@ def pin_buyer_reply_observed_evidence(
     outbound_ids = list(canonical_result.get("outbound_message_ids") or [])
     if not inbound_ids:
         raise idx.IndexError_("BUYER_REPLY_OBSERVED pin refused: no inbound buyer ids")
+    fixture_generation_sha256 = canonical_result.get("fixture_generation_sha256")
+    if (
+        not isinstance(fixture_generation_sha256, str)
+        or len(fixture_generation_sha256) != 64
+        or any(ch not in "0123456789abcdef" for ch in fixture_generation_sha256)
+    ):
+        raise idx.IndexError_(
+            "BUYER_REPLY_OBSERVED pin refused: canonical fixture generation is invalid"
+        )
+    inbound_latest_raw = canonical_result.get("inbound_buyer_latest_ts")
+    if not isinstance(inbound_latest_raw, str):
+        raise idx.IndexError_(
+            "BUYER_REPLY_OBSERVED pin refused: canonical inbound source time is missing"
+        )
+    inbound_latest = idx.parse_time(inbound_latest_raw)
     if not isinstance(organization, str) or not organization.strip():
         raise idx.IndexError_("BUYER_REPLY_OBSERVED pin requires organization")
-    stamp = ts or idx.iso_z(dt.datetime.now(dt.timezone.utc))
-    idx.parse_time(stamp)
+    now = dt.datetime.now(dt.timezone.utc)
+    stamp = ts or idx.iso_z(now)
+    stamp_dt = idx.parse_time(stamp)
+    if stamp_dt < inbound_latest:
+        raise idx.IndexError_(
+            "BUYER_REPLY_OBSERVED pin refused: observation timestamp predates inbound source"
+        )
+    if stamp_dt > now + OBSERVATION_FUTURE_SKEW:
+        raise idx.IndexError_(
+            "BUYER_REPLY_OBSERVED pin refused: observation timestamp is in the future"
+        )
     eid = event_id or (
         f"crm6-mailbox-reply-observed-{subject_id}-"
         f"{stamp.replace('-', '').replace(':', '')}"
@@ -351,6 +405,8 @@ def pin_buyer_reply_observed_evidence(
         ),
         "observation": OBSERVATION_KIND,
         "source_paths": source_paths,
+        "mailbox_fixture_sha256": fixture_generation_sha256,
+        "source_observed_through": inbound_latest_raw,
         "cash_usd": 0,
         "transport": "NONE",
     }

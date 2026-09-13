@@ -1,81 +1,71 @@
-# IQVIA Site Lab requisition → specimen evidence gate
+# IQVIA Site Lab requisition → specimen declared-evidence gate
 
-Operation: `IQVIA-SITE-LAB-REQUISITION-SPECIMEN-GATE-ZAQN4R7-20260913`  
-Owner: Z-AureliusQuill-914021-N4R7 (`ZAQ-N4R7`)  
-Tracking: Commons issue #13964
+Operation: `IQVIA-SPECIMEN-SOURCE-PROVENANCE-ZBFR8V5-20260913`  
+Owner/finalizer: Z-BesselForge-914032-R8V5 (`ZBF-R8V5`) / GPT-5.6 Sol  
+Tracking: Commons #14002; post-merge fix-forward for #13987
 
-This package is a **synthetic/deidentified, read-only evidence carrier** derived from the September 1 build demand for IQVIA Laboratories' Site Lab Navigator / e-Requisition operating seam. It demonstrates one narrow capability: given already-collected operational evidence, deterministically say whether the packet is complete enough for **human site/lab review** or must be held for resolution.
+This package is a **synthetic/deidentified, read-only evidence carrier** for the IQVIA Laboratories Site Lab Navigator / e-Requisition operating seam. Version 2 closes the v1 provenance defect: a candidate packet can no longer provide both an operational value and a separate caller-selected “expected/allowed” value, attach arbitrary 64-hex source labels, and grade itself READY.
 
-It is not a clinical product claim, procurement response, buyer acceptance, or evidence that IQVIA uses this code.
+## V2 evidence contract
 
-## Contract
+Each packet has only `schema`, `packet_id`, `sources`, and `source_refs`.
 
-Each packet binds:
+`sources` contains eight exact, closed source-record projections:
 
-- protocol and expected visit
-- requisition protocol/visit and version
-- kit lot and expiry
-- collection timestamp and allowed window
-- courier scan plus observed/allowed temperature
-- accession ID and sample type
-- method ID and allowed sample types
-- query status plus resolution evidence
-- eight source-document SHA-256 references
+- `protocol` — protocol + expected visit;
+- `requisition` — protocol/visit/version, collection window, required sample type;
+- `kit` — lot, expiry, allowed transport temperature;
+- `collection` — collection time, sample type, used kit lot, requisition generation;
+- `courier` — scan, observed temperature, carried kit lot;
+- `accession` — accession, sample type, method, requisition generation;
+- `method` — method identity + allowed sample types;
+- `queries` — requisition generation + bounded query-resolution records.
+
+Before evaluating any operational relationship, the gate canonicalizes **each exact declared source record**, recomputes its SHA-256, and requires exact equality with the corresponding `source_refs` entry. Semantic mutation under a stale hash and cross-source hash transplant therefore fail before READY/HOLD evaluation.
+
+The refs are mechanically labeled:
+
+`CANONICAL_DECLARED_SOURCE_RECORD_SHA256`
+
+They are **not claimed to be hashes of raw IQVIA/provider documents**, and this package does not authenticate the external origin of a declared source record. `source_authenticity_verified` is always `false`. A production pilot would need a separate credential-owning acquisition/attestation boundary.
+
+## Output
 
 Output is only:
 
-- `SPECIMEN_READY` — no declared operational evidence defect was found; **human site/lab staff still own every consequential decision**
-- `HOLD` — one or more stable evidence codes require human resolution
+- `EVIDENCE_CONSISTENT_FOR_HUMAN_REVIEW` — the exact declared source generation is internally consistent under this bounded contract;
+- `HOLD` — one or more stable evidence conflicts require human resolution.
 
-Reason families:
+Current hold families:
 
 1. `PROTOCOL_VISIT_MISMATCH`
-2. `KIT_EXPIRED`
-3. `COLLECTION_WINDOW_BREACH`
-4. `MISSING_COURIER_TEMPERATURE`
-5. `ACCESSION_METHOD_INCOMPATIBLE`
-6. `UNRESOLVED_QUERY`
+2. `REQUISITION_GENERATION_MISMATCH`
+3. `KIT_INVALID_FOR_COLLECTION`
+4. `COLLECTION_WINDOW_BREACH`
+5. `COURIER_EVIDENCE_INVALID`
+6. `ACCESSION_METHOD_INCOMPATIBLE`
+7. `UNRESOLVED_QUERY`
 
-Every result retains the complete source-reference map plus source/evidence digests. JSON is canonical; CSV rows are sorted by packet ID. The library has no network, filesystem-write, database, or external-system mutation path.
+A positive result is deliberately **not** called specimen-ready, clinically ready, release-ready, authenticated, or accepted. Human site/lab staff own every consequential decision.
 
-## Frozen acceptance
+## Frozen synthetic acceptance
 
 ```bash
 python -m revenue.iqvia_site_lab_requisition_specimen_evidence_gate.acceptance
-```
-
-The generator creates exactly 180 deterministic packets:
-
-- 150 ready
-- 30 hold
-- exactly five holds in each reason family
-- zero defective ready
-- exact known packet IDs and codes
-- byte-identical JSON, CSV, and manifest on clean rerun
-
-Focused tests:
-
-```bash
 python -m unittest revenue.iqvia_site_lab_requisition_specimen_evidence_gate.test_gate
 python -O -m unittest revenue.iqvia_site_lab_requisition_specimen_evidence_gate.test_gate
 ```
+
+The frozen generator creates 180 packets: 145 evidence-consistent and 35 HOLD, exactly five in each of seven hold families, with byte-identical JSON/CSV/manifest replay and exact full-report recompilation.
+
+Hostiles additionally prove stale-hash semantic mutation, cross-source hash transplant, deprecated self-grading fields, requisition-generation drift, kit/courier/method/query source drift, unknown source fields, non-finite values, result tamper, and the all-false source-authenticity ceiling.
 
 ## Authority boundary
 
 `AUTHORITY = EVIDENCE_ONLY_HUMAN_SITE_LAB_RESOLUTION`
 
-This package never determines or changes:
-
-- participant/patient eligibility
-- patient instructions
-- specimen disposition
-- result interpretation
-- database lock or record release
-- clinical or regulatory decisions
-- production configuration, credentials, or data
-
-A `SPECIMEN_READY` result means only that this bounded operational evidence contract found no declared hold reason. Human site/lab staff resolve holds and own downstream action.
+No participant eligibility, patient instruction, specimen disposition, result interpretation, database lock, clinical/regulatory decision, provider credential/data access, production mutation, buyer acceptance, payment, or revenue authority is created.
 
 ## Commercial boundary
 
-A landed synthetic carrier may support a separately hard-deduped **paid nonproduction pilot inquiry** using IQVIA's published business contact route. It does not authorize prospect contact itself, does not establish buyer interest, and cannot create acceptance, payment, or recognized-revenue state.
+A landed synthetic carrier may support a separately hard-deduped **paid nonproduction pilot inquiry** through a verified business route. This code does not contact IQVIA, infer interest, or prove that IQVIA uses or accepts the carrier.

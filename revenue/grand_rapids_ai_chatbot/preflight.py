@@ -1,9 +1,11 @@
 #!/usr/bin/env python3
 """Fail-closed proposal readiness preflight for Grand Rapids RFP 920-45-269.
 
-Proposal state is untrusted. READY is possible only when every PASS claim resolves
-against one host-pinned *current* authority generation. The tool never
-submits, signs, contacts the buyer, mutates a portal, awards, invoices, or moves money.
+Proposal state is untrusted. The library can return READY only when trusted host
+integration passes an already verified authority object. The public CLI never
+loads authority bytes or trust-root material, so unprivileged CLI execution can
+only produce HOLD or INVALID. The tool never submits, signs, contacts the buyer,
+mutates a portal, awards, invoices, or moves money.
 """
 from __future__ import annotations
 
@@ -16,23 +18,19 @@ from typing import Any
 
 try:
     from .trusted_authority import (
-        AuthorityError,
         GATE_EVIDENCE_KIND,
         HEX64,
         REQUIRED_GATES,
         VerifiedAuthority,
         canonical_json,
-        load_current_authority,
     )
 except ImportError:
     from trusted_authority import (
-        AuthorityError,
         GATE_EVIDENCE_KIND,
         HEX64,
         REQUIRED_GATES,
         VerifiedAuthority,
         canonical_json,
-        load_current_authority,
     )
 
 SCHEMA_VERSION = "grand-rapids-920-45-269-preflight/v2"
@@ -113,18 +111,18 @@ def evaluate(
         errors.append(f"trusted authority rejected: {authority_error}")
 
     if authority is not None and not isinstance(authority, VerifiedAuthority):
-        errors.append("authority must be a host-pinned VerifiedAuthority")
+        errors.append("authority must be a trusted-host VerifiedAuthority")
         authority = None
 
     bound_authority = False
     if authority is not None:
         if ref_generation is None or ref_digest is None:
-            errors.append("state must bind the host-pinned authority generation and digest")
+            errors.append("state must bind the trusted-host authority generation and digest")
         elif (
             ref_generation != authority.generation
             or ref_digest != authority.authority_sha256
         ):
-            errors.append("state authority reference is stale or does not match the host current root")
+            errors.append("state authority reference is stale or does not match the trusted host root")
         else:
             bound_authority = True
 
@@ -175,7 +173,7 @@ def evaluate(
         if not bound_authority:
             blockers.append({
                 "gate": gate,
-                "reason": "PASS claim is not resolved against the host-pinned current authority",
+                "reason": "PASS claim is not resolved against trusted-host current authority",
             })
             continue
 
@@ -204,8 +202,6 @@ def evaluate(
                     "sha256": record.sha256,
                 })
 
-    # These gates are never inferred from other work. Their absence always remains
-    # an explicit fail-closed blocker even if malformed input prevented normal handling.
     for hard_gate in (
         "controlling_packet_acquired",
         "packet_sha256_verified",
@@ -252,16 +248,13 @@ def evaluate(
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser()
-    parser.add_argument("state", type=Path)
-    parser.add_argument(
-        "--authority",
-        type=Path,
-        help=(
-            "Retained authority document. Its current generation/digest root comes only "
-            "from host environment; there are no CLI root-selection flags."
-        ),
+    parser = argparse.ArgumentParser(
+        description=(
+            "Unprivileged Grand Rapids proposal-state preflight. This CLI never loads "
+            "trusted authority and therefore cannot produce READY."
+        )
     )
+    parser.add_argument("state", type=Path)
     parser.add_argument("--write-receipt", type=Path)
     args = parser.parse_args()
 
@@ -270,15 +263,7 @@ def main() -> int:
     except (OSError, ValueError) as exc:
         parser.error(str(exc))
 
-    authority = None
-    authority_error = None
-    if args.authority is not None:
-        try:
-            authority = load_current_authority(args.authority)
-        except (OSError, AuthorityError) as exc:
-            authority_error = str(exc)
-
-    receipt = evaluate(state, authority, authority_error=authority_error)
+    receipt = evaluate(state)
     rendered = json.dumps(receipt, indent=2, sort_keys=True, ensure_ascii=False) + "\n"
     if args.write_receipt:
         args.write_receipt.write_text(rendered, encoding="utf-8")

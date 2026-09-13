@@ -6,10 +6,11 @@ import re
 from typing import Any
 
 AUTHORITY = "READY_FOR_OWNER_INTEGRATION_REVIEW"
-RECORD_SCHEMA = "tate-lyle-cp-kelco-solution-pack/v1"
-BATCH_SCHEMA = "tate-lyle-cp-kelco-solution-batch/v1"
-MANIFEST_SCHEMA = "tate-lyle-cp-kelco-solution-manifest/v1"
-RECEIPT_SCHEMA = "tate-lyle-cp-kelco-solution-receipt/v1"
+RECORD_SCHEMA = "tate-lyle-cp-kelco-solution-pack/v2"
+BATCH_SCHEMA = "tate-lyle-cp-kelco-solution-batch/v2"
+REFERENCE_SCHEMA = "tate-lyle-cp-kelco-reference-set/v2"
+MANIFEST_SCHEMA = "tate-lyle-cp-kelco-solution-manifest/v2"
+RECEIPT_SCHEMA = "tate-lyle-cp-kelco-solution-receipt/v2"
 MAX_RECORDS = 500
 _HEX64 = re.compile(r"^[0-9a-f]{64}$")
 
@@ -19,7 +20,7 @@ class GateInputError(ValueError):
 
 
 def _canonical(obj: Any) -> bytes:
-    return json.dumps(obj, sort_keys=True, separators=(",", ":"), ensure_ascii=True).encode("utf-8")
+    return json.dumps(obj, sort_keys=True, separators=(",", ":"), ensure_ascii=True, allow_nan=False).encode("utf-8")
 
 
 def digest(obj: Any) -> str:
@@ -40,12 +41,6 @@ def _keys(obj: dict[str, Any], expected: set[str], name: str) -> None:
 def _str(obj: Any, name: str) -> str:
     if type(obj) is not str or not obj:
         raise GateInputError(f"{name} must be a non-empty string")
-    return obj
-
-
-def _bool(obj: Any, name: str) -> bool:
-    if type(obj) is not bool:
-        raise GateInputError(f"{name} must be a boolean")
     return obj
 
 

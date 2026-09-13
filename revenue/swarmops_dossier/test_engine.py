@@ -13,6 +13,7 @@ from revenue.swarmops_dossier.cli import main as cli_main
 from revenue.swarmops_dossier.engine import DossierError, compile_dossier, render_markdown, strict_json_loads, verify_dossier
 
 AS_OF = "2026-09-13T14:00:00Z"
+PORTFOLIO = "commons-swarmops-public-demo"
 
 
 def h(s: str) -> str:
@@ -29,6 +30,22 @@ def commercial(state="PAID", kind="PAYMENT_RECEIPT", sid="payment-1", sha=None):
     }
 
 
+def authority(row, *, portfolio_id=PORTFOLIO, **overrides):
+    out = {
+        "portfolio_id": portfolio_id,
+        **{
+            key: row[key]
+            for key in (
+                "capability_id", "source_kind", "source_ref", "source_sha256",
+                "observed_state", "observed_at", "freshness_seconds",
+                "prospect_class", "required", "claim",
+            )
+        },
+    }
+    out.update(overrides)
+    return out
+
+
 class EngineTests(unittest.TestCase):
     def setUp(self):
         self.packet, self.policy = fixture()
@@ -38,6 +55,7 @@ class EngineTests(unittest.TestCase):
 
     def test_mixed_acceptance_truth(self):
         out = self.compile()
+        self.assertEqual(out["schema"], "commons.swarmops-dossier-output/v3")
         self.assertEqual(out["status"], "READY_FOR_OWNER_REVIEW")
         self.assertEqual(out["summary"]["DEMONSTRATED"], 2)
         self.assertEqual(out["summary"]["LIMITED"], 2)
@@ -55,53 +73,179 @@ class EngineTests(unittest.TestCase):
             self.compile()
 
     def test_fabricated_payment_receipt_without_trust_never_mints_paid(self):
-        self.packet["evidence"].append(commercial())
+        row = commercial()
+        self.packet["evidence"].append(row)
         out = self.compile()
         self.assertFalse(out["external_truth"]["paid"])
-        self.assertIn("UNTRUSTED_COMMERCIAL_RECEIPT", next(r for r in out["evidence"] if r["source_id"] == "payment-1")["reasons"])
+        self.assertIn("UNTRUSTED_COMMERCIAL_RECEIPT", next(r for r in out["evidence"] if r["source_id"] == row["source_id"])["reasons"])
 
-    def test_payment_requires_independent_digest_match(self):
-        self.packet["evidence"].append(commercial())
-        out = self.compile({"payment-1": h("pay")})
+    def test_payment_requires_independent_typed_authority(self):
+        row = commercial()
+        self.packet["evidence"].append(row)
+        out = self.compile({row["source_id"]: authority(row)})
         self.assertTrue(out["external_truth"]["paid"])
-        self.assertEqual(next(r for r in out["evidence"] if r["source_id"] == "payment-1")["classification"], "DEMONSTRATED")
+        self.assertEqual(next(r for r in out["evidence"] if r["source_id"] == row["source_id"])["classification"], "DEMONSTRATED")
 
     def test_wrong_payment_digest_is_limited(self):
-        self.packet["evidence"].append(commercial())
-        out = self.compile({"payment-1": h("wrong")})
+        row = commercial()
+        self.packet["evidence"].append(row)
+        out = self.compile({row["source_id"]: authority(row, source_sha256=h("wrong"))})
         self.assertFalse(out["external_truth"]["paid"])
-        self.assertIn("COMMERCIAL_RECEIPT_DIGEST_MISMATCH", next(r for r in out["evidence"] if r["source_id"] == "payment-1")["reasons"])
+        self.assertIn("COMMERCIAL_RECEIPT_DIGEST_MISMATCH", next(r for r in out["evidence"] if r["source_id"] == row["source_id"])["reasons"])
 
-    def test_buyer_acceptance_requires_buyer_kind_and_trust(self):
-        self.packet["evidence"].append(commercial("BUYER_ACCEPTED", "BUYER_RECEIPT", "buyer-1", h("buyer")))
+    def test_buyer_acceptance_requires_exact_typed_authority(self):
+        row = commercial("BUYER_ACCEPTED", "BUYER_RECEIPT", "buyer-1", h("buyer"))
+        self.packet["evidence"].append(row)
         self.assertFalse(self.compile()["external_truth"]["buyer_accepted"])
-        self.assertTrue(self.compile({"buyer-1": h("buyer")})["external_truth"]["buyer_accepted"])
+        self.assertTrue(self.compile({row["source_id"]: authority(row)})["external_truth"]["buyer_accepted"])
 
-    def test_revenue_recognition_requires_accounting_kind_and_trust(self):
-        self.packet["evidence"].append(commercial("REVENUE_RECOGNIZED", "ACCOUNTING_RECEIPT", "acct-1", h("acct")))
+    def test_revenue_recognition_requires_exact_typed_authority(self):
+        row = commercial("REVENUE_RECOGNIZED", "ACCOUNTING_RECEIPT", "acct-1", h("acct"))
+        self.packet["evidence"].append(row)
         self.assertFalse(self.compile()["external_truth"]["revenue_recognized"])
-        self.assertTrue(self.compile({"acct-1": h("acct")})["external_truth"]["revenue_recognized"])
+        self.assertTrue(self.compile({row["source_id"]: authority(row)})["external_truth"]["revenue_recognized"])
 
     def test_commercial_state_wrong_kind_fails(self):
         self.packet["evidence"].append(commercial("BUYER_ACCEPTED", "PROVIDER_RECEIPT", "buyer-1", h("buyer")))
         with self.assertRaises(DossierError):
-            self.compile({"buyer-1": h("buyer")})
+            self.compile()
+
+    def test_incoherent_trusted_authority_fails_closed(self):
+        row = commercial()
+        self.packet["evidence"].append(row)
+        forged = authority(row, source_kind="BUYER_RECEIPT")
+        with self.assertRaises(DossierError):
+            self.compile({row["source_id"]: forged})
+
+    def test_payment_authority_cannot_be_relabelled_buyer_acceptance(self):
+        trusted_row = commercial()
+        forged = commercial("BUYER_ACCEPTED", "BUYER_RECEIPT", trusted_row["source_id"], trusted_row["source_sha256"])
+        self.packet["evidence"].append(forged)
+        out = self.compile({trusted_row["source_id"]: authority(trusted_row)})
+        projected = next(r for r in out["evidence"] if r["source_id"] == trusted_row["source_id"])
+        self.assertEqual(projected["classification"], "LIMITED")
+        self.assertIn("COMMERCIAL_RECEIPT_KIND_MISMATCH", projected["reasons"])
+        self.assertIn("COMMERCIAL_RECEIPT_STATE_MISMATCH", projected["reasons"])
+        self.assertFalse(out["external_truth"]["buyer_accepted"])
+        self.assertFalse(out["external_truth"]["paid"])
+
+    def test_payment_authority_cannot_be_relabelled_revenue(self):
+        trusted_row = commercial()
+        forged = commercial("REVENUE_RECOGNIZED", "ACCOUNTING_RECEIPT", trusted_row["source_id"], trusted_row["source_sha256"])
+        self.packet["evidence"].append(forged)
+        out = self.compile({trusted_row["source_id"]: authority(trusted_row)})
+        projected = next(r for r in out["evidence"] if r["source_id"] == trusted_row["source_id"])
+        self.assertEqual(projected["classification"], "LIMITED")
+        self.assertIn("COMMERCIAL_RECEIPT_KIND_MISMATCH", projected["reasons"])
+        self.assertIn("COMMERCIAL_RECEIPT_STATE_MISMATCH", projected["reasons"])
+        self.assertFalse(out["external_truth"]["revenue_recognized"])
+
+    def test_buyer_and_accounting_authority_cannot_cross_roles(self):
+        cases = [
+            (commercial("BUYER_ACCEPTED", "BUYER_RECEIPT", "buyer-1", h("buyer")), "PAID", "PAYMENT_RECEIPT", "paid"),
+            (commercial("REVENUE_RECOGNIZED", "ACCOUNTING_RECEIPT", "acct-1", h("acct")), "BUYER_ACCEPTED", "BUYER_RECEIPT", "buyer_accepted"),
+        ]
+        for trusted_row, forged_state, forged_kind, truth_key in cases:
+            packet, policy = fixture()
+            forged = commercial(forged_state, forged_kind, trusted_row["source_id"], trusted_row["source_sha256"])
+            packet["evidence"].append(forged)
+            out = compile_dossier(packet, policy, AS_OF, {trusted_row["source_id"]: authority(trusted_row)})
+            projected = next(r for r in out["evidence"] if r["source_id"] == trusted_row["source_id"])
+            self.assertEqual(projected["classification"], "LIMITED")
+            self.assertFalse(out["external_truth"][truth_key])
+
+    def test_trusted_receipt_cannot_move_between_capabilities(self):
+        trusted_row = commercial()
+        forged = copy.deepcopy(trusted_row)
+        forged["capability_id"] = "different-commercial-event"
+        self.packet["evidence"].append(forged)
+        out = self.compile({trusted_row["source_id"]: authority(trusted_row)})
+        projected = next(r for r in out["evidence"] if r["source_id"] == trusted_row["source_id"])
+        self.assertIn("COMMERCIAL_RECEIPT_CAPABILITY_MISMATCH", projected["reasons"])
+        self.assertFalse(out["external_truth"]["paid"])
+
+    def test_trusted_receipt_cannot_move_between_portfolios(self):
+        row = commercial()
+        self.packet["evidence"].append(row)
+        trusted = {row["source_id"]: authority(row)}
+        self.packet["portfolio_id"] = "different-portfolio"
+        out = self.compile(trusted)
+        projected = next(r for r in out["evidence"] if r["source_id"] == row["source_id"])
+        self.assertIn("COMMERCIAL_RECEIPT_PORTFOLIO_MISMATCH", projected["reasons"])
+        self.assertFalse(out["external_truth"]["paid"])
+
+    def test_trusted_receipt_cannot_change_source_ref(self):
+        trusted_row = commercial()
+        forged = copy.deepcopy(trusted_row)
+        forged["source_ref"] = "retained:different-receipt"
+        self.packet["evidence"].append(forged)
+        out = self.compile({trusted_row["source_id"]: authority(trusted_row)})
+        projected = next(r for r in out["evidence"] if r["source_id"] == trusted_row["source_id"])
+        self.assertIn("COMMERCIAL_RECEIPT_REF_MISMATCH", projected["reasons"])
+        self.assertFalse(out["external_truth"]["paid"])
+
+    def test_trusted_receipt_cannot_refresh_observed_time(self):
+        trusted_row = commercial()
+        forged = copy.deepcopy(trusted_row)
+        forged["observed_at"] = "2026-09-13T13:06:00Z"
+        self.packet["evidence"].append(forged)
+        out = self.compile({trusted_row["source_id"]: authority(trusted_row)})
+        projected = next(r for r in out["evidence"] if r["source_id"] == trusted_row["source_id"])
+        self.assertIn("COMMERCIAL_RECEIPT_OBSERVED_AT_MISMATCH", projected["reasons"])
+        self.assertFalse(out["external_truth"]["paid"])
+
+    def test_trusted_receipt_cannot_extend_freshness(self):
+        trusted_row = commercial()
+        forged = copy.deepcopy(trusted_row)
+        forged["freshness_seconds"] = 172800
+        self.packet["evidence"].append(forged)
+        out = self.compile({trusted_row["source_id"]: authority(trusted_row)})
+        projected = next(r for r in out["evidence"] if r["source_id"] == trusted_row["source_id"])
+        self.assertIn("COMMERCIAL_RECEIPT_FRESHNESS_MISMATCH", projected["reasons"])
+        self.assertFalse(out["external_truth"]["paid"])
+
+    def test_internal_trusted_receipt_cannot_be_released_to_prospect(self):
+        trusted_row = commercial()
+        trusted_row["prospect_class"] = "INTERNAL_ONLY"
+        forged = copy.deepcopy(trusted_row)
+        forged["prospect_class"] = "PROSPECT_SAFE"
+        self.packet["evidence"].append(forged)
+        out = self.compile({trusted_row["source_id"]: authority(trusted_row)})
+        projected = next(r for r in out["evidence"] if r["source_id"] == trusted_row["source_id"])
+        self.assertIn("COMMERCIAL_RECEIPT_PROSPECT_CLASS_MISMATCH", projected["reasons"])
+        self.assertFalse(out["external_truth"]["paid"])
+
+    def test_trusted_receipt_cannot_change_claim_or_required_semantics(self):
+        trusted_row = commercial()
+        forged = copy.deepcopy(trusted_row)
+        forged["claim"] = "A different prospect claim is asserted from the same retained receipt."
+        forged["required"] = True
+        self.packet["evidence"].append(forged)
+        out = self.compile({trusted_row["source_id"]: authority(trusted_row)})
+        projected = next(r for r in out["evidence"] if r["source_id"] == trusted_row["source_id"])
+        self.assertIn("COMMERCIAL_RECEIPT_CLAIM_MISMATCH", projected["reasons"])
+        self.assertIn("COMMERCIAL_RECEIPT_REQUIRED_MISMATCH", projected["reasons"])
+        self.assertFalse(out["external_truth"]["paid"])
 
     def test_unused_trusted_receipt_fails(self):
+        row = commercial(sid="not-present")
         with self.assertRaises(DossierError):
-            self.compile({"not-present": h("x")})
+            self.compile({row["source_id"]: authority(row)})
 
     def test_malformed_trusted_receipt_fails(self):
         with self.assertRaises(DossierError):
-            self.compile({"payment-1": "0" * 63})
+            self.compile({"payment-1": "0" * 64})
 
     def test_trust_map_is_bound_into_receipt_and_verifier(self):
-        self.packet["evidence"].append(commercial())
-        trusted = {"payment-1": h("pay")}
+        row = commercial()
+        self.packet["evidence"].append(row)
+        trusted = {row["source_id"]: authority(row)}
         out = self.compile(trusted)
         self.assertIn("trusted_commercial_receipts_sha256", out)
         self.assertTrue(verify_dossier(self.packet, self.policy, AS_OF, out, trusted))
         self.assertFalse(verify_dossier(self.packet, self.policy, AS_OF, out, {}))
+        substituted = {row["source_id"]: authority(row, capability_id="different-commercial-event")}
+        self.assertFalse(verify_dossier(self.packet, self.policy, AS_OF, out, substituted))
 
     def test_future_required_holds(self):
         self.packet["evidence"][0]["observed_at"] = "2026-09-13T15:00:00Z"
@@ -179,8 +323,9 @@ class EngineTests(unittest.TestCase):
         self.assertEqual(self.compile()["status"], "HOLD")
 
     def test_cli_cannot_self_mint_paid_and_rejects_trust_flag(self):
-        self.packet["evidence"].append(commercial())
-        trusted = {"payment-1": h("pay")}
+        row = commercial()
+        self.packet["evidence"].append(row)
+        trusted = {row["source_id"]: authority(row)}
         with tempfile.TemporaryDirectory() as td:
             packet = Path(td, "packet.json"); policy = Path(td, "policy.json"); trust = Path(td, "trust.json")
             out = Path(td, "out.json"); md = Path(td, "out.md")
@@ -191,8 +336,9 @@ class EngineTests(unittest.TestCase):
                 cli_main(["compile", str(packet), str(policy), "--as-of", AS_OF, "--trusted-commercial-receipts", str(trust), "--json-out", str(Path(td, "evil.json")), "--markdown-out", str(Path(td, "evil.md"))])
 
     def test_cli_cannot_verify_programmatic_paid_truth(self):
-        self.packet["evidence"].append(commercial())
-        paid = compile_dossier(self.packet, self.policy, AS_OF, {"payment-1": h("pay")})
+        row = commercial()
+        self.packet["evidence"].append(row)
+        paid = compile_dossier(self.packet, self.policy, AS_OF, {row["source_id"]: authority(row)})
         self.assertTrue(paid["external_truth"]["paid"])
         with tempfile.TemporaryDirectory() as td:
             packet = Path(td, "packet.json"); policy = Path(td, "policy.json"); candidate = Path(td, "paid.json")
