@@ -18,13 +18,10 @@ def read_regular(path: str) -> str:
         raise DossierError(f"not a regular input file: {path}")
     if st.st_size > MAX_INPUT:
         raise DossierError(f"input too large: {path}")
-    flags = os.O_RDONLY | getattr(os, "O_NOFOLLOW", 0)
-    fd = os.open(p, flags)
+    fd = os.open(p, os.O_RDONLY | getattr(os, "O_NOFOLLOW", 0))
     try:
         data = os.read(fd, MAX_INPUT + 1)
-        if len(data) > MAX_INPUT:
-            raise DossierError(f"input too large: {path}")
-        if os.read(fd, 1):
+        if len(data) > MAX_INPUT or os.read(fd, 1):
             raise DossierError(f"input too large: {path}")
     finally:
         os.close(fd)
@@ -32,8 +29,7 @@ def read_regular(path: str) -> str:
 
 
 def write_new(path: str, data: bytes) -> None:
-    flags = os.O_WRONLY | os.O_CREAT | os.O_EXCL | getattr(os, "O_NOFOLLOW", 0)
-    fd = os.open(path, flags, 0o600)
+    fd = os.open(path, os.O_WRONLY | os.O_CREAT | os.O_EXCL | getattr(os, "O_NOFOLLOW", 0), 0o600)
     try:
         view = memoryview(data)
         while view:
@@ -43,6 +39,10 @@ def write_new(path: str, data: bytes) -> None:
         os.close(fd)
 
 
+def _trusted(path: str | None):
+    return {} if path is None else strict_json_loads(read_regular(path))
+
+
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description="Compile and verify prospect-safe Commons SwarmOps evidence dossiers")
     sub = ap.add_subparsers(dest="cmd", required=True)
@@ -50,6 +50,7 @@ def main(argv: list[str] | None = None) -> int:
     cp.add_argument("packet")
     cp.add_argument("policy")
     cp.add_argument("--as-of", required=True)
+    cp.add_argument("--trusted-commercial-receipts")
     cp.add_argument("--json-out", required=True)
     cp.add_argument("--markdown-out", required=True)
     vp = sub.add_parser("verify")
@@ -57,17 +58,19 @@ def main(argv: list[str] | None = None) -> int:
     vp.add_argument("policy")
     vp.add_argument("candidate")
     vp.add_argument("--as-of", required=True)
+    vp.add_argument("--trusted-commercial-receipts")
     ns = ap.parse_args(argv)
     try:
         packet = strict_json_loads(read_regular(ns.packet))
         policy = strict_json_loads(read_regular(ns.policy))
+        trusted = _trusted(ns.trusted_commercial_receipts)
         if ns.cmd == "compile":
-            dossier = compile_dossier(packet, policy, ns.as_of)
+            dossier = compile_dossier(packet, policy, ns.as_of, trusted)
             write_new(ns.json_out, canonical_bytes(dossier) + b"\n")
             write_new(ns.markdown_out, render_markdown(dossier).encode("utf-8"))
             return 0 if dossier["status"] == "READY_FOR_OWNER_REVIEW" else 2
         candidate = strict_json_loads(read_regular(ns.candidate))
-        return 0 if verify_dossier(packet, policy, ns.as_of, candidate) else 3
+        return 0 if verify_dossier(packet, policy, ns.as_of, candidate, trusted) else 3
     except (DossierError, OSError, UnicodeError, json.JSONDecodeError) as exc:
         print(f"ERROR: {exc}", file=__import__("sys").stderr)
         return 4
