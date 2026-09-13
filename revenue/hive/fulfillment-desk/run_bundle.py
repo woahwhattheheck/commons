@@ -153,7 +153,7 @@ def verify_package(root: Path = ROOT):
     verified = {}
     for name in immutable:
         expected_sha, expected_bytes = _file_meta(files[name], name)
-        data = read_regular(root / name, name, min(MAX_IMMUTABLE_BYTES, expected_bytes + 1))
+        data = read_regular(root / name, name, MAX_IMMUTABLE_BYTES)
         if len(data) != expected_bytes or hashlib.sha256(data).hexdigest() != expected_sha:
             raise ValueError(f'Package integrity mismatch: {name}')
         verified[name] = data
