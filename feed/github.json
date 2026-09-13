@@ -1,9 +1,9 @@
 {
   "counts": {
     "open_issues": 64,
-    "open_pull_requests": 41,
-    "runs_in_progress": 17,
-    "runs_queued": 1431
+    "open_pull_requests": 40,
+    "runs_in_progress": 18,
+    "runs_queued": 1406
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -69,6 +69,28 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
+      "branch": "zcb-h8n6/reply-revenue-chronology-20260913",
+      "created_at": "2026-09-13T15:44:47Z",
+      "draft": false,
+      "head_sha": "05f6f1775a5762ffa18c5c19da1d94d35bc45bb0",
+      "number": 14057,
+      "title": "Make reply-to-revenue contact state chronology-safe",
+      "updated_at": "2026-09-13T15:44:47Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zktu/gosim-real-config-only-20260913",
+      "created_at": "2026-09-13T15:38:52Z",
+      "draft": false,
+      "head_sha": "47d0c3324958e66349aa741a56d4732f58a063d1",
+      "number": 14055,
+      "title": "GOSIM: require a real candidate configuration to pass the baseline",
+      "updated_at": "2026-09-13T15:45:42Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
       "branch": "zkfp7c2/hotel-room-turn-evidence-pilot",
       "created_at": "2026-09-13T15:37:10Z",
       "draft": false,
@@ -76,39 +98,6 @@
       "number": 14054,
       "title": "revenue: land $2,500 hotel room-turn evidence pilot fulfillment",
       "updated_at": "2026-09-13T15:37:10Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zcb-h8n6/outbound-route-guard-compose-20260913",
-      "created_at": "2026-09-13T15:35:22Z",
-      "draft": false,
-      "head_sha": "b4421f8666b75046934645c7d8cdbe6d7c8ea5af",
-      "number": 14053,
-      "title": "Compose route lifecycle into the outbound send guard",
-      "updated_at": "2026-09-13T15:37:52Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zchq-q7n4/route-quarantine-20260913",
-      "created_at": "2026-09-13T15:32:41Z",
-      "draft": false,
-      "head_sha": "9751d884a8780ee5ccdf83f66112b3bf9caf65af",
-      "number": 14052,
-      "title": "feat(outbound): quarantine failed delivery routes before resend",
-      "updated_at": "2026-09-13T15:37:36Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zlck8v4/uiowa-authority-currentness",
-      "created_at": "2026-09-13T15:32:05Z",
-      "draft": false,
-      "head_sha": "2d8d7706be5ca0115e1749fd5a2cb5bd73e143a8",
-      "number": 14048,
-      "title": "fix(uiowa): bind evidence authority and currentness",
-      "updated_at": "2026-09-13T15:32:05Z"
     },
     {
       "author": "AURELIAN-AUTO",
@@ -175,6 +164,17 @@
       "number": 13910,
       "title": "Revenue: authenticate pursuit portfolio authority and file custody",
       "updated_at": "2026-09-13T14:38:24Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zmbq5t8/warranty-rma-ops-20260913",
+      "created_at": "2026-09-13T14:11:49Z",
+      "draft": false,
+      "head_sha": "0ad7356c59a25f47dac74c2a4a744c334a8397fa",
+      "number": 13902,
+      "title": "Ship Warranty & RMA Operations Desk",
+      "updated_at": "2026-09-13T15:33:55Z"
     }
   ],
   "open_heads": {
@@ -215,15 +215,47 @@
     "13999": "2182d07cd8750087a73f2aea2455890d75daf251",
     "14010": "457ffa2ce5eacf467c603e1d05d6e2a0bf6bda11",
     "14047": "6603cfcd38e155abc0d5f30ffa0cca6be4e5af35",
-    "14048": "2d8d7706be5ca0115e1749fd5a2cb5bd73e143a8",
-    "14052": "9751d884a8780ee5ccdf83f66112b3bf9caf65af",
-    "14053": "b4421f8666b75046934645c7d8cdbe6d7c8ea5af",
-    "14054": "1980d5a6cd6ef5188832c6b48de7ee4a29501d85"
+    "14054": "1980d5a6cd6ef5188832c6b48de7ee4a29501d85",
+    "14055": "47d0c3324958e66349aa741a56d4732f58a063d1",
+    "14057": "05f6f1775a5762ffa18c5c19da1d94d35bc45bb0"
   },
-  "pulls_listed": 41,
+  "pulls_listed": 40,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 84.2,
+  "queue_depth_per_runner": 78.1,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zcb-h8n6/outbound-route-guard-compose-20260913",
+      "closed_at": "2026-09-13T15:41:25Z",
+      "head_sha": "cb96a1e9b1580076749bd099542c1b7e0fadd98b",
+      "merged_at": "2026-09-13T15:41:25Z",
+      "number": 14053,
+      "state": "MERGED",
+      "title": "Compose route lifecycle into the outbound send guard"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zlck8v4/uiowa-authority-currentness",
+      "closed_at": "2026-09-13T15:40:20Z",
+      "head_sha": "3e36cfb91a13e5c2275904c282a5be073b6eae7f",
+      "merged_at": "2026-09-13T15:40:20Z",
+      "number": 14048,
+      "state": "MERGED",
+      "title": "fix(uiowa): bind evidence authority and currentness"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zchq-q7n4/route-quarantine-20260913",
+      "closed_at": "2026-09-13T15:38:29Z",
+      "head_sha": "9751d884a8780ee5ccdf83f66112b3bf9caf65af",
+      "merged_at": "2026-09-13T15:38:29Z",
+      "number": 14052,
+      "state": "MERGED",
+      "title": "feat(outbound): quarantine failed delivery routes before resend"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -326,57 +358,24 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "zva-k6n8/swarmops-fd-ingress-custody-20260913",
-      "closed_at": "2026-09-13T15:02:24Z",
-      "head_sha": "2c28187f0449a0c14cccff129ca00568f8bb3fb5",
-      "merged_at": "2026-09-13T15:02:24Z",
-      "number": 14045,
+      "branch": "zca/mcp-conformance-binding-13859",
+      "closed_at": "2026-09-13T13:25:40Z",
+      "head_sha": "690713b1ea31777b1b00564e398323fd4f6047b5",
+      "merged_at": "2026-09-13T13:25:40Z",
+      "number": 13861,
       "state": "MERGED",
-      "title": "Bind SwarmOps CLI reads to the opened file generation"
+      "title": "Fix aggregate MCP evidence-binding escape"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "zsol-1023/iqvia-reference-authority",
-      "closed_at": "2026-09-13T15:01:31Z",
-      "head_sha": "daaf801efbb312e3f8321e8bdfabc7605cac043d",
-      "merged_at": null,
-      "number": 14036,
-      "state": "CLOSED",
-      "title": "[SUPERSEDED BY EARLIER #14002/#14042] fix(iqvia): bind specimen gate to pinned reference authority"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zbf-k8d2/prooflens-review-durable-generation",
-      "closed_at": "2026-09-13T15:00:01Z",
-      "head_sha": "930102db00ca5cf856b879343ada793b4af6c84f",
-      "merged_at": "2026-09-13T15:00:01Z",
-      "number": 14035,
+      "branch": "zow-l9c2/outbound-reconcile-temporal-coverage-20260913",
+      "closed_at": "2026-09-13T13:20:19Z",
+      "head_sha": "0448952e5f0eb9a6e327fd95fcbda21ece404b85",
+      "merged_at": "2026-09-13T13:20:19Z",
+      "number": 13851,
       "state": "MERGED",
-      "title": "Fix ProofLens review delivery durable-row custody"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zzf-m4r8/gtm-reply-chronology-generation-20260913",
-      "closed_at": "2026-09-13T14:59:13Z",
-      "head_sha": "28b9c44004f4d21246e2da1414c0be42969a89ba",
-      "merged_at": "2026-09-13T14:59:13Z",
-      "number": 14008,
-      "state": "MERGED",
-      "title": "GTM: make buyer-reply observation chronology and generation fail closed"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "competition/afh-builder-bonus-zpaf3n8",
-      "closed_at": "2026-09-13T14:58:05Z",
-      "head_sha": "d9e465230401fb01abca456ea9d03c06926501db",
-      "merged_at": "2026-09-13T14:58:05Z",
-      "number": 14014,
-      "state": "MERGED",
-      "title": "competition(afh): package maximum builder.aws bonus path"
+      "title": "revenue: bind outbound reconciliation to temporal coverage"
     },
     {
       "author": "woahwhattheheck",
@@ -392,6 +391,6 @@
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-13T15:38:00Z",
+  "unchanged_since": "2026-09-13T15:47:25Z",
   "undatable_pulls": []
 }
