@@ -1,0 +1,49 @@
+name: Grand Rapids release subject binding
+
+on:
+  pull_request:
+    paths:
+      - 'revenue/grand_rapids_ai_chatbot/trusted_authority.py'
+      - 'revenue/grand_rapids_ai_chatbot/preflight.py'
+      - 'revenue/grand_rapids_ai_chatbot/test_preflight.py'
+      - 'revenue/grand_rapids_ai_chatbot/submission_state.json'
+      - '.github/workflows/grand-rapids-release-subject.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  focused:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11', '3.13']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Compile exact published source
+        run: >-
+          python -m py_compile
+          revenue/grand_rapids_ai_chatbot/trusted_authority.py
+          revenue/grand_rapids_ai_chatbot/preflight.py
+          revenue/grand_rapids_ai_chatbot/test_preflight.py
+      - name: Focused hostile suite
+        run: python -m unittest discover -s revenue/grand_rapids_ai_chatbot -p 'test_preflight.py' -q
+      - name: Focused hostile suite under optimized Python
+        run: python -O -m unittest discover -s revenue/grand_rapids_ai_chatbot -p 'test_preflight.py' -q
+      - name: Checked-in state remains HOLD
+        run: |
+          set -euo pipefail
+          python revenue/grand_rapids_ai_chatbot/preflight.py revenue/grand_rapids_ai_chatbot/submission_state.json > receipt.json
+          python - <<'PY'
+          import json
+          with open('receipt.json', encoding='utf-8') as fh:
+              receipt = json.load(fh)
+          assert receipt['status'] == 'HOLD', receipt
+          assert len(receipt['blockers']) == 16, receipt
+          assert not receipt['errors'], receipt
+          PY
