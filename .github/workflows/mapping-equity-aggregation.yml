@@ -1,0 +1,31 @@
+name: Mapping Equity aggregation carrier
+
+on:
+  push:
+    paths:
+      - 'revenue/bias-bounty-mapping-equity/aggregation/**'
+      - '.github/workflows/mapping-equity-aggregation.yml'
+  pull_request:
+    paths:
+      - 'revenue/bias-bounty-mapping-equity/aggregation/**'
+      - '.github/workflows/mapping-equity-aggregation.yml'
+
+jobs:
+  contract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Compile
+        run: python -m py_compile revenue/bias-bounty-mapping-equity/aggregation/aggregate.py revenue/bias-bounty-mapping-equity/aggregation/test_aggregate.py
+      - name: Normal hostile suite
+        working-directory: revenue/bias-bounty-mapping-equity/aggregation
+        run: python -m unittest -v test_aggregate.py
+      - name: Optimized hostile suite
+        working-directory: revenue/bias-bounty-mapping-equity/aggregation
+        run: python -O -m unittest -v test_aggregate.py
+      - name: Deterministic no-network plan
+        working-directory: revenue/bias-bounty-mapping-equity/aggregation
+        run: python aggregate.py plan --region northern-ca --sql > /tmp/northern-ca.plan.json
