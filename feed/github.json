@@ -1,9 +1,9 @@
 {
   "counts": {
     "open_issues": 27,
-    "open_pull_requests": 21,
+    "open_pull_requests": 22,
     "runs_in_progress": 18,
-    "runs_queued": 700
+    "runs_queued": 698
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -66,6 +66,17 @@
     }
   ],
   "newest_pulls": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z-cassinianvil/funded-work-activity-authority-20260913",
+      "created_at": "2026-09-13T12:55:54Z",
+      "draft": false,
+      "head_sha": "ebdd1ad44f76eefa84a56c405ac33d87da170a8a",
+      "number": 13831,
+      "title": "funded-work: trust only authoritative freshness activity",
+      "updated_at": "2026-09-13T12:57:59Z"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -164,17 +175,6 @@
       "number": 13756,
       "title": "Harden Commercial Decision Relay trust boundaries",
       "updated_at": "2026-09-13T10:29:57Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zkal-v7n3/opportunity-qualifier-20260913",
-      "created_at": "2026-09-13T10:15:25Z",
-      "draft": false,
-      "head_sha": "233642dbbf5dc85ef443a2e34d2bdb9406163b21",
-      "number": 13741,
-      "title": "revenue: add evidence-bound opportunity qualifier",
-      "updated_at": "2026-09-13T11:05:48Z"
     }
   ],
   "open_heads": {
@@ -198,11 +198,12 @@
     "13812": "d1b9b8efc128ece969fa5007f02487fd2028a0a8",
     "13818": "ebf95fdc8fe223e14d9f2fc51ab71916cead16dd",
     "13821": "237d9963fc7424cfabb3910dd5968ae3544e8d5a",
-    "13824": "bc094b424ea740395eebc599e6ced2a270b40cde"
+    "13824": "bc094b424ea740395eebc599e6ced2a270b40cde",
+    "13831": "ebdd1ad44f76eefa84a56c405ac33d87da170a8a"
   },
-  "pulls_listed": 21,
+  "pulls_listed": 22,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 38.9,
+  "queue_depth_per_runner": 38.8,
   "recently_closed": [
     {
       "author": "woahwhattheheck",
@@ -372,6 +373,6 @@
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-13T12:55:45Z",
+  "unchanged_since": "2026-09-13T12:58:30Z",
   "undatable_pulls": []
 }
