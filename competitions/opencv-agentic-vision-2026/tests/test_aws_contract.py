@@ -37,6 +37,16 @@ class AwsContractTests(unittest.TestCase):
         with self.assertRaisesRegex(ContractError, "current"):
             _parse_s3_event(s3_event(key="baseline/unit.png"), "prooflens")
 
+    def test_missing_current_version_rejected(self):
+        event = s3_event()
+        del event["Records"][0]["s3"]["object"]["versionId"]
+        with self.assertRaisesRegex(ContractError, "versionId"):
+            _parse_s3_event(event, "prooflens")
+
+    def test_empty_current_version_rejected(self):
+        with self.assertRaisesRegex(ContractError, "versionId"):
+            _parse_s3_event(s3_event(version=""), "prooflens")
+
     def test_multiple_records_rejected(self):
         event = s3_event()
         event["Records"].append(event["Records"][0])
