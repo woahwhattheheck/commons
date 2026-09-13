@@ -12,6 +12,7 @@ DECISION_SCHEMA = "pci.fill-finish-batch-readiness-decision/v2"
 DEFAULT_MAX_DECISION_AGE_SECONDS = 24 * 60 * 60
 
 _REASON_ORDER = (
+    "TRUSTED_DEFINITION_MISMATCH",
     "RECIPE_MISMATCH",
     "MATERIAL_COVERAGE_MISMATCH",
     "MATERIAL_UNRELEASED",
@@ -114,6 +115,42 @@ def _normalize_pair(raw: Any, field: str) -> dict[str, str]:
     return {
         "component_id": _identifier(obj["component_id"], f"{field}.component_id"),
         "version": _identifier(obj["version"], f"{field}.version"),
+    }
+
+
+def normalize_trusted_definition(raw: Any) -> dict[str, Any]:
+    definition = _obj(copy.deepcopy(raw), "TRUSTED_DEFINITION_REQUIRED")
+    _exact_keys(
+        definition,
+        (
+            "recipe_id",
+            "version",
+            "approved_digest",
+            "required_material_components",
+            "required_equipment_ids",
+            "required_bom",
+        ),
+        "TRUSTED_DEFINITION_FIELDS",
+    )
+    required_bom_raw = definition["required_bom"]
+    if type(required_bom_raw) is not list or not required_bom_raw:
+        _fail("TRUSTED_BOM_REQUIRED")
+    required_bom = [_normalize_pair(value, f"trusted_definition.required_bom[{i}]") for i, value in enumerate(required_bom_raw)]
+    bom_keys = [(value["component_id"], value["version"]) for value in required_bom]
+    if len(set(bom_keys)) != len(bom_keys):
+        _fail("DUPLICATE_TRUSTED_BOM_COMPONENT")
+    required_bom.sort(key=lambda value: (value["component_id"], value["version"]))
+    return {
+        "recipe_id": _identifier(definition["recipe_id"], "trusted_definition.recipe_id"),
+        "version": _identifier(definition["version"], "trusted_definition.version"),
+        "approved_digest": _digest(definition["approved_digest"], "trusted_definition.approved_digest"),
+        "required_material_components": _normalize_unique_ids(
+            definition["required_material_components"], "trusted_definition.required_material_components"
+        ),
+        "required_equipment_ids": _normalize_unique_ids(
+            definition["required_equipment_ids"], "trusted_definition.required_equipment_ids"
+        ),
+        "required_bom": required_bom,
     }
 
 
@@ -300,39 +337,39 @@ def normalize_packet(raw: Any, *, trusted_as_of: str) -> dict[str, Any]:
     }
 
 
-def _requirements_digest(recipe: dict[str, Any]) -> str:
-    return sha256(
-        {
-            "recipe_id": recipe["recipe_id"],
-            "version": recipe["version"],
-            "required_material_components": recipe["required_material_components"],
-            "required_equipment_ids": recipe["required_equipment_ids"],
-        }
-    )
-
-
-def evaluate(raw_packet: Any, *, trusted_as_of: str) -> dict[str, Any]:
+def evaluate(raw_packet: Any, *, trusted_as_of: str, trusted_definition: Any) -> dict[str, Any]:
     trusted_as_of_s, _ = _timestamp(trusted_as_of, "trusted_as_of")
+    definition = normalize_trusted_definition(trusted_definition)
     packet = normalize_packet(raw_packet, trusted_as_of=trusted_as_of_s)
     slot_dt = _timestamp(packet["planned_slot_at"], "planned_slot_at")[1]
     reasons: list[str] = []
 
     recipe = packet["recipe"]
+    definition_projection = {
+        "recipe_id": recipe["recipe_id"],
+        "version": recipe["version"],
+        "approved_digest": recipe["approved_digest"],
+        "required_material_components": recipe["required_material_components"],
+        "required_equipment_ids": recipe["required_equipment_ids"],
+        "required_bom": packet["bom"]["required"],
+    }
+    if canonical_json(definition_projection) != canonical_json(definition):
+        reasons.append("TRUSTED_DEFINITION_MISMATCH")
     if (
         not recipe["approved"]
-        or recipe["scheduled_recipe_id"] != recipe["recipe_id"]
-        or recipe["scheduled_version"] != recipe["version"]
+        or recipe["scheduled_recipe_id"] != definition["recipe_id"]
+        or recipe["scheduled_version"] != definition["version"]
     ):
         reasons.append("RECIPE_MISMATCH")
 
-    required_materials = set(recipe["required_material_components"])
+    required_materials = set(definition["required_material_components"])
     observed_materials = {item["component"] for item in packet["materials"]}
     if observed_materials != required_materials:
         reasons.append("MATERIAL_COVERAGE_MISMATCH")
     if any(not item["released"] for item in packet["materials"]):
         reasons.append("MATERIAL_UNRELEASED")
 
-    required_equipment = set(recipe["required_equipment_ids"])
+    required_equipment = set(definition["required_equipment_ids"])
     observed_equipment = {item["equipment_id"] for item in packet["equipment"]}
     if observed_equipment != required_equipment:
         reasons.append("EQUIPMENT_COVERAGE_MISMATCH")
@@ -351,13 +388,14 @@ def evaluate(raw_packet: Any, *, trusted_as_of: str) -> dict[str, Any]:
     if (
         inspection["fill_weight_batch_id"] != packet["batch_id"]
         or inspection["inspection_batch_id"] != packet["batch_id"]
-        or inspection["recipe_digest"] != recipe["approved_digest"]
+        or inspection["recipe_digest"] != definition["approved_digest"]
     ):
         reasons.append("INSPECTION_LINEAGE_MISMATCH")
 
-    required_bom = [(x["component_id"], x["version"]) for x in packet["bom"]["required"]]
+    required_bom = [(x["component_id"], x["version"]) for x in definition["required_bom"]]
+    packet_required_bom = [(x["component_id"], x["version"]) for x in packet["bom"]["required"]]
     staged_bom = [(x["component_id"], x["version"]) for x in packet["bom"]["staged"]]
-    if required_bom != staged_bom:
+    if packet_required_bom != required_bom or staged_bom != required_bom:
         reasons.append("BOM_MISMATCH")
 
     reasons = [reason for reason in _REASON_ORDER if reason in reasons]
@@ -373,7 +411,7 @@ def evaluate(raw_packet: Any, *, trusted_as_of: str) -> dict[str, Any]:
         ]
     )
     source_digest = sha256(packet)
-    requirements_digest = _requirements_digest(recipe)
+    trusted_definition_digest = sha256(definition)
     core = {
         "schema_version": DECISION_SCHEMA,
         "packet_id": packet["packet_id"],
@@ -383,7 +421,7 @@ def evaluate(raw_packet: Any, *, trusted_as_of: str) -> dict[str, Any]:
         "status": "READY" if not reasons else "HOLD",
         "hold_reasons": reasons,
         "source_digest": source_digest,
-        "requirements_digest": requirements_digest,
+        "trusted_definition_digest": trusted_definition_digest,
         "evidence_digests": evidence_digests,
         "authority": {
             "batch_release": False,
@@ -403,6 +441,7 @@ def verify_decision(
     raw_packet: Any,
     raw_decision: Any,
     *,
+    trusted_definition: Any,
     expected_evaluated_at: str,
     trusted_verify_at: str,
     max_age_seconds: int = DEFAULT_MAX_DECISION_AGE_SECONDS,
@@ -414,7 +453,11 @@ def verify_decision(
     if verify_dt < evaluated_dt:
         _fail("VERIFY_BEFORE_EVALUATION")
     decision = _obj(copy.deepcopy(raw_decision), "DECISION_REQUIRED")
-    expected = evaluate(raw_packet, trusted_as_of=expected_evaluated_at_s)
+    expected = evaluate(
+        raw_packet,
+        trusted_as_of=expected_evaluated_at_s,
+        trusted_definition=trusted_definition,
+    )
     if canonical_json(decision) != canonical_json(expected):
         _fail("DECISION_MISMATCH")
     age_seconds = int((verify_dt - evaluated_dt).total_seconds())
@@ -426,5 +469,6 @@ def verify_decision(
         "trusted_verify_at": trusted_verify_at_s,
         "age_seconds": age_seconds,
         "receipt_digest": expected["receipt_digest"],
+        "trusted_definition_digest": expected["trusted_definition_digest"],
         "status": expected["status"],
     }

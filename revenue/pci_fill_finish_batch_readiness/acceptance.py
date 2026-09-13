@@ -104,6 +104,20 @@ def packet(index: int) -> dict:
     }
 
 
+def trusted_definition(index: int) -> dict:
+    return {
+        "recipe_id": "recipe-sterile-A",
+        "version": "v7",
+        "approved_digest": h(f"recipe-approved-{index:03d}"),
+        "required_material_components": ["drug-A", "excipient-B"],
+        "required_equipment_ids": ["filler-1", "isolator-1"],
+        "required_bom": [
+            {"component_id": "label-A", "version": "v2"},
+            {"component_id": "device-A", "version": "v5"},
+        ],
+    }
+
+
 def inject(raw: dict, reason: str) -> None:
     if reason == "RECIPE_MISMATCH":
         raw["recipe"]["scheduled_version"] = "v8"
@@ -139,10 +153,11 @@ def run_acceptance() -> dict:
         if index < 54:
             expected_reason = HOLD_REASONS[index % len(HOLD_REASONS)]
             inject(raw, expected_reason)
-        decision = evaluate(raw, trusted_as_of=AS_OF)
+        decision = evaluate(raw, trusted_as_of=AS_OF, trusted_definition=trusted_definition(index))
         verified = verify_decision(
             raw,
             decision,
+            trusted_definition=trusted_definition(index),
             expected_evaluated_at=AS_OF,
             trusted_verify_at=VERIFY_AT,
         )

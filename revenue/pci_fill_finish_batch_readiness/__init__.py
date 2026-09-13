@@ -4,6 +4,7 @@ from .gate import (
     canonical_json,
     evaluate,
     normalize_packet,
+    normalize_trusted_definition,
     sha256,
     verify_decision,
 )
@@ -14,6 +15,7 @@ __all__ = [
     "canonical_json",
     "evaluate",
     "normalize_packet",
+    "normalize_trusted_definition",
     "sha256",
     "verify_decision",
 ]
