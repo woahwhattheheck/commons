@@ -1,9 +1,9 @@
 {
   "counts": {
-    "open_issues": 34,
-    "open_pull_requests": 26,
-    "runs_in_progress": 20,
-    "runs_queued": 765
+    "open_issues": 33,
+    "open_pull_requests": 28,
+    "runs_in_progress": 15,
+    "runs_queued": 790
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -69,13 +69,35 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "zca/mcp-conformance-binding-13859",
-      "created_at": "2026-09-13T13:24:37Z",
+      "branch": "zth-k6p8/wrf-5417-proposal-20260913",
+      "created_at": "2026-09-13T13:25:56Z",
       "draft": false,
-      "head_sha": "690713b1ea31777b1b00564e398323fd4f6047b5",
-      "number": 13861,
-      "title": "Fix aggregate MCP evidence-binding escape",
-      "updated_at": "2026-09-13T13:24:37Z"
+      "head_sha": "836f8f22a4625973020aa71c8475a4fbf335b97f",
+      "number": 13864,
+      "title": "revenue: prepare WRF 5417 camera-AI proposal carrier",
+      "updated_at": "2026-09-13T13:26:54Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zmg-n4v7/f45-productive-harvest-collect-20260913",
+      "created_at": "2026-09-13T13:25:49Z",
+      "draft": false,
+      "head_sha": "ae949f0a623b1eb8af94fe76427cb93169f55d91",
+      "number": 13863,
+      "title": "titan: add F45 productive HARVEST/COLLECT protection",
+      "updated_at": "2026-09-13T13:25:49Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z-cassinianvil/funded-work-amount-precedence-20260913",
+      "created_at": "2026-09-13T13:25:37Z",
+      "draft": false,
+      "head_sha": "63b04a7e02683ccc845d9bad66c9b6c740dcb101",
+      "number": 13862,
+      "title": "funded-work: resolve latest authoritative reward amount",
+      "updated_at": "2026-09-13T13:28:33Z"
     },
     {
       "author": "woahwhattheheck",
@@ -83,10 +105,10 @@
       "branch": "revenue/wrf-5417-camera-ai-proposal",
       "created_at": "2026-09-13T13:19:55Z",
       "draft": false,
-      "head_sha": "26cecec0a2dd98431d5fbd6943343c6b4025b2ba",
+      "head_sha": "df9ff9fd0ee645c8a7b16bd38297bd5d254f2508",
       "number": 13858,
       "title": "revenue: package WRF 5417 camera-AI proposal readiness carrier",
-      "updated_at": "2026-09-13T13:19:55Z"
+      "updated_at": "2026-09-13T13:25:58Z"
     },
     {
       "author": "woahwhattheheck",
@@ -116,10 +138,10 @@
       "branch": "zsw-c6r8/scdhhs-5400030026-qualification",
       "created_at": "2026-09-13T13:06:31Z",
       "draft": false,
-      "head_sha": "761a11a6c1af52a6d67e6f7da32494a1d439569f",
+      "head_sha": "1460ce57369134ace18c5bdbb8f27f0854542bc2",
       "number": 13842,
       "title": "Add fail-closed SCDHHS MCDE qualification gate",
-      "updated_at": "2026-09-13T13:24:53Z"
+      "updated_at": "2026-09-13T13:28:47Z"
     },
     {
       "author": "woahwhattheheck",
@@ -153,28 +175,6 @@
       "number": 13818,
       "title": "fix(mcp): close post-merge FIFO and Decimal fail-closed gaps",
       "updated_at": "2026-09-13T11:33:46Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zaf-m8q6/ci-fleet-20260913",
-      "created_at": "2026-09-13T11:20:08Z",
-      "draft": false,
-      "head_sha": "d1b9b8efc128ece969fa5007f02487fd2028a0a8",
-      "number": 13812,
-      "title": "ci: add source-bound portable CI fleet coordinator",
-      "updated_at": "2026-09-13T11:38:24Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zcw-q2v6/pci-readiness-completeness-trusted-time-20260913",
-      "created_at": "2026-09-13T11:20:01Z",
-      "draft": false,
-      "head_sha": "7ab59e15331f47c39bc920373a4b0f1e9e7ff6c3",
-      "number": 13811,
-      "title": "fix: bind PCI readiness to complete trusted evidence",
-      "updated_at": "2026-09-13T12:48:01Z"
     }
   ],
   "open_heads": {
@@ -199,16 +199,29 @@
     "13818": "ebf95fdc8fe223e14d9f2fc51ab71916cead16dd",
     "13821": "237d9963fc7424cfabb3910dd5968ae3544e8d5a",
     "13824": "bc094b424ea740395eebc599e6ced2a270b40cde",
-    "13842": "761a11a6c1af52a6d67e6f7da32494a1d439569f",
+    "13842": "1460ce57369134ace18c5bdbb8f27f0854542bc2",
     "13844": "87abb2dfc66178066a47e96013c95ad5bd6fb259",
     "13857": "a1dde557acac3aa3531b7a5541e11f95b035f3bf",
-    "13858": "26cecec0a2dd98431d5fbd6943343c6b4025b2ba",
-    "13861": "690713b1ea31777b1b00564e398323fd4f6047b5"
+    "13858": "df9ff9fd0ee645c8a7b16bd38297bd5d254f2508",
+    "13862": "63b04a7e02683ccc845d9bad66c9b6c740dcb101",
+    "13863": "ae949f0a623b1eb8af94fe76427cb93169f55d91",
+    "13864": "836f8f22a4625973020aa71c8475a4fbf335b97f"
   },
-  "pulls_listed": 26,
+  "pulls_listed": 28,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 38.2,
+  "queue_depth_per_runner": 52.7,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zca/mcp-conformance-binding-13859",
+      "closed_at": "2026-09-13T13:25:40Z",
+      "head_sha": "690713b1ea31777b1b00564e398323fd4f6047b5",
+      "merged_at": "2026-09-13T13:25:40Z",
+      "number": 13861,
+      "state": "MERGED",
+      "title": "Fix aggregate MCP evidence-binding escape"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -362,21 +375,10 @@
       "number": 13753,
       "state": "CLOSED",
       "title": "fix(revenue): make reconciliation field equality JSON-type-stable"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-astra06/starbucks-clearfiber-20260913",
-      "closed_at": "2026-09-13T10:38:09Z",
-      "head_sha": "0f9f937b71cac87408334e406677fd5f5e38b2bb",
-      "merged_at": "2026-09-13T10:38:09Z",
-      "number": 13777,
-      "state": "MERGED",
-      "title": "competition: build Starbucks ClearFiber cold-cup submission package"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-13T13:25:32Z",
+  "unchanged_since": "2026-09-13T13:29:13Z",
   "undatable_pulls": []
 }
