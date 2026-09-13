@@ -1,8 +1,12 @@
 from __future__ import annotations
 
 import copy
+import os
+import tempfile
 import unittest
 from datetime import datetime, timedelta, timezone
+from pathlib import Path
+from unittest.mock import patch
 
 from revenue.agentic_genai_evaluation_gate.gate import (
     DECISION_HOLD,
@@ -13,6 +17,7 @@ from revenue.agentic_genai_evaluation_gate.gate import (
     verify_receipt,
 )
 from revenue.agentic_genai_evaluation_gate.golden import build_golden_packet
+from revenue.agentic_genai_evaluation_gate.cli import _read_bytes_bounded, _read_json
 
 
 EVAL_AT = datetime(2026, 9, 13, 14, 0, 0, tzinfo=timezone.utc)
@@ -84,6 +89,32 @@ class AgenticGenAIEvaluationGateTests(unittest.TestCase):
         result = verify_receipt(packet, receipt, verified_at=EVAL_AT)
         self.assertFalse(result["valid"])
         self.assertEqual(result["reason"], "RECEIPT_MISMATCH")
+
+
+    def test_automated_result_binding_tamper_holds(self):
+        packet = self.packet()
+        packet["scenarios"][0]["automated_score_bps"] -= 1
+        receipt = self.compile(packet)
+        self.assertEqual(receipt["decision"], DECISION_HOLD)
+        self.assertIn("AUTOMATED_RESULT_BINDING_MISMATCH", receipt["reason_codes"])
+
+    def test_fresh_result_transplant_holds(self):
+        packet = self.packet()
+        packet["scenarios"][0]["result_sha256"] = packet["scenarios"][1]["result_sha256"]
+        receipt = self.compile(packet)
+        self.assertEqual(receipt["decision"], DECISION_HOLD)
+        self.assertIn("RESULT_BINDING_MISMATCH", receipt["reason_codes"])
+
+    def test_current_verification_reassesses_stale_evidence(self):
+        packet = self.packet()
+        packet["policy"]["max_evidence_age_seconds"] = 3600
+        receipt = compile_receipt(packet, evaluated_at=EVAL_AT)
+        self.assertEqual(receipt["decision"], DECISION_RELEASE)
+        result = verify_receipt(packet, receipt, verified_at=EVAL_AT + timedelta(hours=1, seconds=1))
+        self.assertFalse(result["valid"])
+        self.assertEqual(result["reason"], "CURRENT_EVIDENCE_HOLD")
+        self.assertEqual(result["decision"], DECISION_HOLD)
+        self.assertIn("STALE_EVIDENCE", result["reason_codes"])
 
     def test_future_receipt_rejected(self):
         packet = self.packet()
@@ -251,6 +282,38 @@ class AgenticGenAIEvaluationGateTests(unittest.TestCase):
         with self.assertRaises(EvidenceError):
             self.compile(packet)
 
+    def test_cli_rejects_duplicate_json_keys(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "duplicate.json"
+            path.write_text('{"scenario_id":"a","scenario_id":"b"}', encoding="utf-8")
+            with self.assertRaisesRegex(EvidenceError, "duplicate JSON key"):
+                _read_json(path)
+
+    def test_cli_rejects_changing_file_generation(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "changing.json"
+            path.write_bytes(b'{"value":1}')
+            real_read = os.read
+            mutated = False
+
+            def read_then_mutate(fd, size):
+                nonlocal mutated
+                chunk = real_read(fd, size)
+                if chunk and not mutated:
+                    mutated = True
+                    path.write_bytes(b'{"value":2}')
+                return chunk
+
+            with patch("revenue.agentic_genai_evaluation_gate.cli.os.read", side_effect=read_then_mutate):
+                with self.assertRaisesRegex(EvidenceError, "file generation changed during read"):
+                    _read_bytes_bounded(path)
+
+    def test_cli_accepts_stable_file_generation(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "stable.json"
+            path.write_text('{"value":1}', encoding="utf-8")
+            self.assertEqual(_read_json(path), {"value": 1})
+
     def test_reason_order_is_stable(self):
         packet = self.packet()
         packet["scenarios"][0]["automated_status"] = "FAIL"
@@ -260,6 +323,7 @@ class AgenticGenAIEvaluationGateTests(unittest.TestCase):
         self.assertEqual(
             receipt["reason_codes"],
             [
+                "AUTOMATED_RESULT_BINDING_MISMATCH",
                 "AUTOMATED_EVALUATION_FAILED",
                 "SAFETY_UNKNOWN",
                 "OBSERVABILITY_INCOMPLETE",
