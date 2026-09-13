@@ -1,0 +1,31 @@
+{
+  "package": "wayne-glioma-tracer-provenance-rail-core",
+  "schema_version": 1,
+  "commercial_offer_usd": 325000,
+  "commercial_offer_status": "SENT_NOT_ACCEPTED",
+  "runtime": "python-stdlib-only",
+  "network_required": false,
+  "production_integration": false,
+  "buyer_data_included": false,
+  "phi_allowed": false,
+  "cryptographic_signature_implemented": false,
+  "integrity_receipt": "sha256-content-addressed-offline",
+  "authority": {
+    "diagnose": false,
+    "classify_recurrence": false,
+    "recommend_treatment": false,
+    "decide_dose": false,
+    "release_tracer_batch": false,
+    "approve_clinical_handoff": false
+  },
+  "acceptance": {
+    "synthetic_episodes": 100,
+    "zero_cross_subject_associations": true,
+    "batch_dose_scan_qc_lineage": true,
+    "versioned_map_lineage": true,
+    "duplicate_retry_effects": 0,
+    "ambiguities_quarantined": true,
+    "clean_replay_manifest_identity": true,
+    "normal_and_optimized_tests_required": true
+  }
+}
