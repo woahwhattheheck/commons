@@ -320,14 +320,15 @@ class HttpTests(StoreCase):
         self.assertEqual(json.loads(self.request("/health")[2]), {"ok": True})
         status, _, raw = self.request("/api/events", "POST", self.payload())
         self.assertEqual(status, 201)
-        event = json.loads(raw)["id"]
+        created = json.loads(raw)
+        event = created["id"]
         path = f"/api/events/{event}"
         member = json.loads(self.request(path + "/join", "POST", {"name": "Player"})[2])["id"]
         before = self.request("/calendar.ics")[2]
         answer = dict(member_id=member, question=0, choice=1)
         self.assertEqual(self.request(path + "/answers", "POST", answer)[0], 200)
         self.assertTrue(json.loads(self.request(path + "/answers", "POST", answer)[2])["replayed"])
-        self.assertEqual(self.request(path + "/finish", "POST", {})[0], 200)
+        self.assertEqual(self.request(path + "/finish", "POST", {"host_key": created["host_key"]})[0], 200)
         self.assertEqual(json.loads(self.request(path + "/join", "POST", {"member_id": member})[2])["id"], member)
         state = json.loads(self.request(path + "?member=" + member)[2])
         self.assertEqual(state["leaderboard"][0]["points"], 100)

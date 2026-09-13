@@ -26,9 +26,9 @@
 <label><span>Question set (JSON)</span><textarea id="question-set" required spellcheck="false"></textarea></label>
 <p class="muted"><small>Use 2–6 choices per question. <code>correct</code> is a zero-based choice index. 1–50 questions; 1–1,000 points each.</small></p>
 <button class="primary" type="submit">Create event</button></form></details>
-<p class="muted"><small>This is a shared, trust-based room. Everyone with access can host or finish events. Display names and final scores are visible to the room. Use a nickname, not private information.</small></p></section>
+<p class="muted"><small>New events receive a private host recovery key. The share link is safe to give participants; finishing the event requires the host key. Display names and final scores are visible to the room. Use a nickname, not private information.</small></p></section>
 </aside><section class="panel" id="stage"><div class="empty"><h2>Bring your people together.</h2><p class="muted">Choose an event or create a new one. No payment, prizes, or account setup.</p></div></section></div>
-<footer class="muted"><small>Lantern · Scheduled trivia for trusted communities. No competitive identity or anti-cheat guarantees. Community-platform installation and chess challenges are separate work.</small></footer>
+<footer class="muted"><small>Lantern · Scheduled trivia for trusted communities. Host controls use a per-event capability; participant identity remains nickname-based.</small></footer>
 </main>
 <script>
 'use strict';
@@ -36,9 +36,12 @@ const $ = id => document.getElementById(id);
 const node = (tag, value, cls) => {const n = document.createElement(tag);if(value!==undefined)n.textContent=value;if(cls)n.className=cls;return n;};
 let current = new URLSearchParams(location.search).get('event') || '', lastSignature = '', currentState = null;
 let refreshing = false;
-const refs = {};
+const refs = {}, hostRefs = {};
 function stored(id) {try{return localStorage.getItem('lantern:'+id)||refs[id]||'';}catch{return refs[id]||'';}}
 function remember(id, value) {refs[id]=value;try{localStorage.setItem('lantern:'+id,value);}catch{notice('Browser storage is unavailable. Save your participant reference to reconnect.');}}
+function storedHost(id) {try{return localStorage.getItem('lantern-host:'+id)||hostRefs[id]||'';}catch{return hostRefs[id]||'';}}
+function rememberHost(id, value) {if(!value)return;hostRefs[id]=value;try{localStorage.setItem('lantern-host:'+id,value);}catch{notice('Browser storage is unavailable. Copy the host recovery key before leaving this page.');}}
+function forgetHost(id) {delete hostRefs[id];try{localStorage.removeItem('lantern-host:'+id);}catch{}}
 function notice(message) {$('notice').textContent=message;}
 async function api(path, data) {
   const options = data===undefined ? {} : {method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)};
@@ -64,20 +67,39 @@ async function refresh() {
     const ref=stored(id);const data=await api('/api/events/'+id+(ref?'?member='+encodeURIComponent(ref):''));
     if(current!==id)return;
     currentState=data;
-    const {server_time,...stable}=data;const signature=JSON.stringify(stable);
+    const {server_time,...stable}=data;const signature=JSON.stringify(stable)+':host='+(storedHost(id)?'1':'0');
     if(signature!==lastSignature){lastSignature=signature;render(data);}
   }finally{refreshing=false;}
+}
+function hostControls(data) {
+  const controls=node('details');controls.append(node('summary','Host controls'));
+  if(!data.host_protected){
+    controls.append(node('p','Legacy event: it was created before host recovery keys existed, so finish remains shared for this event. Create a new event to use protected host controls.','muted'));
+    const finish=node('button','Finish event and reveal scores');finish.disabled=data.phase==='finished';
+    finish.onclick=act(async()=>{if(!confirm('Finish this event for everyone and reveal scores?'))return;await api('/api/events/'+data.id+'/finish',{});await refresh();await listing();notice('Event finished. Results are saved.');});
+    controls.append(finish);return controls;
+  }
+  const hostKey=storedHost(data.id);
+  if(!hostKey){
+    controls.append(node('p','Only the host recovery key can finish this event. Paste it here to restore host controls on this browser.','muted'));
+    const form=node('form');const input=node('input');input.required=true;input.autocomplete='off';input.setAttribute('aria-label','Host recovery key');input.placeholder='Paste host recovery key';
+    const restore=node('button','Restore host controls','primary');form.append(input,restore);
+    form.onsubmit=act(async()=>{restore.disabled=true;try{const key=input.value.trim();await api('/api/events/'+data.id+'/host/verify',{host_key:key});rememberHost(data.id,key);lastSignature='';render(data);notice('Host controls restored on this browser.');}finally{restore.disabled=false;}});
+    controls.append(form);return controls;
+  }
+  controls.append(node('p','This browser has the host capability for this event. The capability is never included in the participant link or public event state.','muted'));
+  const finish=node('button','Finish event and reveal scores');finish.disabled=data.phase==='finished';
+  finish.onclick=act(async()=>{if(!confirm('Finish this event for everyone and reveal scores?'))return;try{await api('/api/events/'+data.id+'/finish',{host_key:hostKey});await refresh();await listing();notice('Event finished. Results are saved.');}catch(error){if(error.message==='Valid host capability required'){forgetHost(data.id);lastSignature='';render(data);}throw error;}});
+  controls.append(finish);
+  const recovery=node('details');recovery.append(node('summary','Host recovery key'));
+  const key=node('input');key.readOnly=true;key.value=hostKey;key.setAttribute('aria-label','Host recovery key value');recovery.append(key,node('p','Store this key somewhere appropriate for the community host. Anyone with it can finish this event. It cannot be recovered from the server.','muted'));
+  controls.append(recovery);return controls;
 }
 function render(data) {
   const stage=$('stage');stage.replaceChildren();
   stage.append(node('p',`${data.room} · ${data.phase.toUpperCase()} · ${data.players} joined`,'muted'),node('h2',data.title));
   stage.append(node('p',`Starts ${new Date(data.opens*1000).toLocaleString()} · Ends ${new Date(data.ends*1000).toLocaleString()}`,'muted'));
-  const share=node('input');share.readOnly=true;share.value=location.href;share.setAttribute('aria-label','Event link');stage.append(share);
-  const controls=node('details');controls.append(node('summary','Shared host controls'));
-  const warning=node('p','Finishing ends answers for everyone and reveals the results. This cannot be reopened.','muted');controls.append(warning);
-  const finish=node('button','Finish event and reveal scores');finish.disabled=data.phase==='finished';
-  finish.onclick=act(async()=>{if(!confirm('Finish this event for everyone and reveal scores?'))return;await api('/api/events/'+data.id+'/finish',{});await refresh();await listing();notice('Event finished. Results are saved.');});
-  controls.append(finish);stage.append(controls);
+  const share=node('input');share.readOnly=true;share.value=location.href;share.setAttribute('aria-label','Event link');stage.append(share,hostControls(data));
   if(!data.member){
     const form=node('form');const label=node('label');label.append(node('span','Your display name'));
     const name=node('input');name.required=true;name.maxLength=60;name.id='display-name';label.append(name);form.append(label);
@@ -108,7 +130,7 @@ function render(data) {
   if(data.phase!=='finished'){stage.append(node('p','Scores and correct answers are revealed when the event finishes.','muted'));return;}
   const downloads=node('div',undefined,'row');downloads.setAttribute('aria-label','Download final results');
   for(const format of ['csv','json']){const link=node('a',`Download ${format.toUpperCase()} results`);link.href='/api/events/'+encodeURIComponent(data.id)+'/results.'+format;link.download='lantern-results.'+format;downloads.append(link);}
-  stage.append(downloads,node('p','Downloads contain display names and final scores, without reconnect references or individual answers.','muted'));
+  stage.append(downloads,node('p','Downloads contain display names and final scores, without reconnect references, host capabilities, or individual answers.','muted'));
   if(!data.leaderboard.length){stage.append(node('p','No participants joined this event.','muted'));return;}
   const table=node('table');const head=node('tr');['Rank','Player','Points','Answered'].forEach(t=>head.append(node('th',t)));const thead=node('thead');thead.append(head);table.append(thead);const tbody=node('tbody');
   data.leaderboard.forEach(p=>{const tr=node('tr');[p.rank,p.name,p.points,p.answered].forEach(v=>tr.append(node('td',String(v))));tbody.append(tr);});table.append(tbody);stage.append(table);
@@ -122,7 +144,7 @@ $('question-set').value=JSON.stringify([
 ],null,2);
 $('create').onsubmit=act(async()=>{
  const button=$('create').querySelector('button');button.disabled=true;
- try{const event=await api('/api/events',{title:$('title').value,room:$('room').value,opens:new Date($('opens').value).getTime()/1000,ends:new Date($('ends').value).getTime()/1000,questions:JSON.parse($('question-set').value)});$('host').open=false;await select(event.id);notice('Event created. Share its link with your community.');}finally{button.disabled=false;}
+ try{const event=await api('/api/events',{title:$('title').value,room:$('room').value,opens:new Date($('opens').value).getTime()/1000,ends:new Date($('ends').value).getTime()/1000,questions:JSON.parse($('question-set').value)});rememberHost(event.id,event.host_key);$('host').open=false;await select(event.id);notice('Event created. The host recovery key is saved in this browser; keep a backup before sharing the participant link.');}finally{button.disabled=false;}
 });
 $('refresh').onclick=act(async()=>{await listing();await refresh();notice('Up to date.');});
 act(async()=>{await listing();await refresh();})();

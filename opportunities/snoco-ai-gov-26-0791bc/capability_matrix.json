@@ -1,0 +1,292 @@
+{
+  "boundary": {
+    "county_contact_authorized_by_this_artifact": false,
+    "county_packet_retrieved": false,
+    "entra_implementation_claim": false,
+    "m365_gcc_implementation_claim": false,
+    "pricing_authorized_by_this_artifact": false,
+    "proposal_submission_authorized": false,
+    "purview_implementation_claim": false,
+    "tjlabs_is_prime": false,
+    "wa_pra_legal_compliance_claim": false
+  },
+  "repository_evidence_catalog": [
+    {
+      "blob": "4db5e56f93fe609d0539ab270d088d5b1c23e6b0",
+      "capabilities": [
+        "request/response content hashes and byte counts",
+        "bounded complete tools/resources/prompts discovery page ledgers",
+        "public endpoint redaction of userinfo/query/fragment",
+        "optional named tool-call transport evidence"
+      ],
+      "id": "mcp-conformance-receipts",
+      "limitations": [
+        "does not authenticate human or workload identity",
+        "does not discover enterprise Shadow AI across SaaS/endpoints",
+        "does not configure Microsoft 365 GCC, Purview, Entra, or SIEM controls",
+        "receipt hashes are technical evidence, not legal non-repudiation"
+      ],
+      "path": "host/mcp_conformance.py"
+    },
+    {
+      "blob": "2f76e23572133de43bfae02a9c14c3c60f070a12",
+      "capabilities": [
+        "exact source-head and content-key review binding",
+        "work receipt and dependency read-set binding",
+        "current-main dependency stability checks",
+        "explicit evidence-backed review decisions"
+      ],
+      "id": "exact-change-review-receipts",
+      "limitations": [
+        "model family is attested rather than authenticated",
+        "software-change custody is not enterprise IAM or legal identity proof",
+        "does not provide County policy, PRA legal interpretation, or Microsoft tenant controls"
+      ],
+      "path": "host/swarm_review.py"
+    }
+  ],
+  "rows": [
+    {
+      "bounded_deliverables": [
+        "per-page discovery transport receipt",
+        "request/response hash and byte-count evidence",
+        "sanitized endpoint label",
+        "named tool-call transport receipt"
+      ],
+      "claim": "TJLabs can provide a bounded content-addressed receipt layer for MCP runtime discovery and named tool-call transport evidence, subject to the prime's architecture and the authoritative packet.",
+      "classification": "SUPPORTED_WEDGE",
+      "does_not_establish": [
+        "Entra-authenticated identity",
+        "legal non-repudiation",
+        "enterprise Shadow-AI coverage",
+        "County production acceptance"
+      ],
+      "id": "runtime-tool-evidence-receipts",
+      "limitations": [
+        "final requirement fit is packet-dependent",
+        "response bodies are intentionally omitted by default",
+        "coverage is limited to instrumented MCP interactions"
+      ],
+      "repository_evidence": [
+        "mcp-conformance-receipts"
+      ],
+      "requirement_authority": "secondary_scope_signal",
+      "scope_signal": "runtime drift / agent-tool attribution / audit evidence"
+    },
+    {
+      "bounded_deliverables": [
+        "exact source-head receipt",
+        "content-key change identity",
+        "dependency read-set snapshot",
+        "current-main dependency-stability check"
+      ],
+      "claim": "TJLabs can provide exact-head, content-key, dependency-read-set, and evidence-bound review receipts for software/configuration changes as a narrow drift-evidence component.",
+      "classification": "SUPPORTED_WEDGE",
+      "does_not_establish": [
+        "tenant-wide cloud drift discovery",
+        "policy enforcement across County systems",
+        "authenticated reviewer identity",
+        "Microsoft compliance certification"
+      ],
+      "id": "design-vs-live-change-receipts",
+      "limitations": [
+        "applies to repository-governed artifacts, not arbitrary enterprise assets",
+        "reviewer/model identity is attested rather than cryptographically authenticated"
+      ],
+      "repository_evidence": [
+        "exact-change-review-receipts"
+      ],
+      "requirement_authority": "secondary_scope_signal",
+      "scope_signal": "approved-design versus live-state drift evidence"
+    },
+    {
+      "bounded_deliverables": [
+        "hash-bound interaction ledger",
+        "exact-change review ledger",
+        "deterministic machine-readable evidence bundle"
+      ],
+      "claim": "TJLabs can combine content-addressed interaction receipts with exact-change receipts into a deterministic technical evidence package useful to a prime's incident reconstruction workflow.",
+      "classification": "SUPPORTED_WEDGE",
+      "does_not_establish": [
+        "complete SIEM incident response",
+        "legal chain of custody",
+        "County records retention compliance",
+        "enterprise identity non-repudiation"
+      ],
+      "id": "deterministic-incident-evidence-substrate",
+      "limitations": [
+        "evidence substrate must be integrated with the prime's logging/IAM/retention stack",
+        "authoritative retention and disclosure policy must come from the County/prime"
+      ],
+      "repository_evidence": [
+        "mcp-conformance-receipts",
+        "exact-change-review-receipts"
+      ],
+      "requirement_authority": "secondary_scope_signal",
+      "scope_signal": "incident reconstruction / audit-ready technical evidence"
+    },
+    {
+      "claim": "Do not present the landed repository as an enterprise Shadow-AI discovery platform; a product/integrator with demonstrated estate-wide discovery is required.",
+      "classification": "PARTNER_REQUIRED",
+      "id": "shadow-ai-enterprise-discovery",
+      "limitations": [
+        "no landed estate-wide SaaS/cloud/endpoint discovery capability is evidenced"
+      ],
+      "repository_evidence": [],
+      "requirement_authority": "secondary_scope_signal",
+      "scope_signal": "continuous Shadow-AI discovery across SaaS/cloud/endpoints/APIs"
+    },
+    {
+      "claim": "Do not claim TJLabs is the Microsoft 365 GCC/Purview implementation authority or certified prime from current evidence.",
+      "classification": "CANNOT_CLAIM",
+      "id": "m365-gcc-purview-implementation",
+      "limitations": [
+        "no tenant implementation credential, certification, or County deployment evidence is present"
+      ],
+      "repository_evidence": [],
+      "requirement_authority": "secondary_scope_signal",
+      "scope_signal": "Microsoft 365 Government Community Cloud and Purview controls"
+    },
+    {
+      "claim": "Do not claim TJLabs can own County Entra RBAC/Conditional Access implementation from current evidence.",
+      "classification": "CANNOT_CLAIM",
+      "id": "entra-rbac-conditional-access",
+      "limitations": [
+        "no County tenant authority or landed Entra implementation evidence is present"
+      ],
+      "repository_evidence": [],
+      "requirement_authority": "secondary_scope_signal",
+      "scope_signal": "Entra RBAC / Conditional Access / least privilege"
+    },
+    {
+      "claim": "Do not claim this technical package establishes Washington Public Records Act legal compliance or County disclosure policy.",
+      "classification": "CANNOT_CLAIM",
+      "id": "wa-public-records-legal-compliance",
+      "limitations": [
+        "legal and records-governance authority must come from the County/prime and authoritative packet"
+      ],
+      "repository_evidence": [],
+      "requirement_authority": "secondary_scope_signal",
+      "scope_signal": "Washington public-records retention/disclosure/audit obligations"
+    },
+    {
+      "claim": "Treat public-record export/redaction implementation as partner-owned; TJLabs may supply bounded receipt primitives only after policy is supplied by the responsible authority.",
+      "classification": "PARTNER_REQUIRED",
+      "id": "public-records-export-redaction-implementation",
+      "limitations": [
+        "redaction/disclosure rules are not authored by this workstream",
+        "no Purview/eDiscovery implementation evidence is present"
+      ],
+      "repository_evidence": [],
+      "requirement_authority": "secondary_scope_signal",
+      "scope_signal": "public-record export, retention, eDiscovery, lifecycle, and redaction"
+    },
+    {
+      "claim": "A prime or governance specialist must own the enterprise risk taxonomy, decision rights, and operating model; current repo evidence supports only a narrow evidence substrate.",
+      "classification": "PARTNER_REQUIRED",
+      "id": "enterprise-ai-vendor-risk-program",
+      "limitations": [
+        "no County-approved risk taxonomy or governance operating model is available"
+      ],
+      "repository_evidence": [],
+      "requirement_authority": "secondary_scope_signal",
+      "scope_signal": "AI/vendor risk classification and governance workflow"
+    },
+    {
+      "claim": "Treat enterprise spend/ROI attribution as partner-owned unless the packet and architecture define a bounded integration compatible with existing evidence primitives.",
+      "classification": "PARTNER_REQUIRED",
+      "id": "enterprise-spend-roi-attribution",
+      "limitations": [
+        "no County financial data integrations or enterprise cost-allocation model are evidenced"
+      ],
+      "repository_evidence": [],
+      "requirement_authority": "secondary_scope_signal",
+      "scope_signal": "AI spend attribution, budget controls, and ROI dashboards"
+    },
+    {
+      "claim": "A prime or qualified training/change-management partner should own County-wide training and handover; no such delivery record is asserted here.",
+      "classification": "PARTNER_REQUIRED",
+      "id": "county-training-change-management",
+      "limitations": [
+        "no County training curriculum, stakeholder map, or accepted change-management methodology is in evidence"
+      ],
+      "repository_evidence": [],
+      "requirement_authority": "secondary_scope_signal",
+      "scope_signal": "role-based training and governance handover"
+    },
+    {
+      "claim": "Do not infer contract term, scoring weights, mandatory certifications, insurance, forms, or complete submission mechanics from secondary listings; retrieve the authoritative packet/addenda first.",
+      "classification": "PACKET_REQUIRED",
+      "id": "contract-term-scoring-certifications",
+      "limitations": [
+        "full packet/addenda were not retrieved by this workstream"
+      ],
+      "repository_evidence": [],
+      "requirement_authority": "packet_required",
+      "scope_signal": "contract term, scoring, mandatory certifications, insurance, and submission mechanics"
+    }
+  ],
+  "schema": "snoco-ai-gov-capability-map/v1",
+  "solicitation": {
+    "clarification_deadline_authority": "secondary_scope_signal",
+    "clarification_deadline_signal": "2026-09-15T13:00:00-07:00",
+    "full_packet_authority": "PACKET_REQUIRED",
+    "id": "RFP-26-0791BC",
+    "observed_on": "2026-09-13",
+    "proposal_due": "2026-10-01T13:00:00-07:00",
+    "published_notice_date": "2026-09-04",
+    "recommendation": "TEAMING_WEDGE_ONLY_PENDING_PACKET",
+    "title": "AI Governance Solution"
+  },
+  "sources": [
+    {
+      "authority": "published_legal_notice",
+      "facts_used": [
+        "solicitation id/title",
+        "proposal due time",
+        "specifications portal reference",
+        "electronic submittal preference"
+      ],
+      "id": "published-legal-notice",
+      "observed_on": "2026-09-13",
+      "url": "https://sound.ipublishmarketplace.com/washington/advert/-general_18078"
+    },
+    {
+      "authority": "county_purchasing_guidance",
+      "facts_used": [
+        "County Purchasing Portal is the only official source for active solicitation documents and addenda"
+      ],
+      "id": "county-purchasing-guidance",
+      "observed_on": "2026-09-13",
+      "url": "https://www.snohomishcountywa.gov/6004/Info-for-Suppliers"
+    },
+    {
+      "authority": "county_procurement_portal",
+      "facts_used": [
+        "authoritative packet/addenda location only"
+      ],
+      "id": "county-procurement-portal",
+      "observed_on": "2026-09-13",
+      "packet_retrieved": false,
+      "url": "https://snoco.procureware.com/Bids"
+    },
+    {
+      "authority": "secondary_scope_signal",
+      "facts_used": [
+        "broad AI-governance scope signals only; not treated as County packet authority"
+      ],
+      "id": "secondary-scope-listing",
+      "observed_on": "2026-09-13",
+      "url": "https://usesettle.com/rfp-hunter/ai-governance-solution-2337708"
+    },
+    {
+      "authority": "secondary_scope_signal",
+      "facts_used": [
+        "clarification timing and listing metadata as secondary corroboration only"
+      ],
+      "id": "secondary-timing-listing",
+      "observed_on": "2026-09-13",
+      "url": "https://www.cleat.ai/government/contracts/ai-governance-solution-f8s6"
+    }
+  ]
+}
