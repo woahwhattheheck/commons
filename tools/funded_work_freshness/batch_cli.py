@@ -11,9 +11,10 @@ import sys
 from typing import Any, Iterable, Sequence, TextIO
 
 from batch import ReceiptCache, process_batch
-from cli import parse_observed_at, write_atomic
+from cli import parse_observed_at
 from errors import PreflightInputError
 from models import Candidate
+from publication import publish_text_bundle, require_distinct_artifacts
 from transport import UrlLibTransport
 
 
@@ -104,6 +105,13 @@ def load_cache(path: Path | None) -> ReceiptCache:
     return ReceiptCache.from_payload(payload)
 
 
+def _artifact_paths(args: argparse.Namespace) -> tuple[Path | None, Path | None, Path | None]:
+    input_path = None if args.input == "-" else Path(args.input)
+    output_path = None if args.output == "-" else Path(args.output)
+    cache_path = args.cache
+    return input_path, output_path, cache_path
+
+
 def main(argv: Sequence[str] | None = None) -> int:
     parser = build_parser()
     args = parser.parse_args(argv)
@@ -122,10 +130,15 @@ def main(argv: Sequence[str] | None = None) -> int:
             )
         if args.max_cache_entries < 1 or args.max_cache_entries > 10000:
             raise PreflightInputError("--max-cache-entries must be between 1 and 10000")
+
+        input_path, output_path, cache_path = _artifact_paths(args)
+        require_distinct_artifacts(
+            {"input": input_path, "output": output_path, "cache": cache_path}
+        )
         handle, close_handle = _open_input(args.input)
         candidates = read_candidates(handle, max_items=args.max_items)
         observed_at: datetime | None = parse_observed_at(args.observed_at)
-        cache = load_cache(args.cache)
+        cache = load_cache(cache_path)
         transport = UrlLibTransport(
             timeout=args.timeout,
             github_token=os.environ.get("GITHUB_TOKEN") or os.environ.get("GH_TOKEN"),
@@ -145,18 +158,26 @@ def main(argv: Sequence[str] | None = None) -> int:
             handle.close()
 
     rendered = json.dumps(report, sort_keys=True, indent=2, ensure_ascii=False) + "\n"
-    if args.output == "-":
-        print(rendered, end="")
-    else:
-        write_atomic(Path(args.output), rendered)
-    if args.cache is not None:
+    cache_text = None
+    if cache_path is not None:
         cache_text = json.dumps(
             updated_cache.to_payload(max_entries=args.max_cache_entries),
             sort_keys=True,
             indent=2,
             ensure_ascii=False,
         ) + "\n"
-        write_atomic(args.cache, cache_text)
+
+    if output_path is not None:
+        artifacts = {output_path: rendered}
+        if cache_path is not None and cache_text is not None:
+            artifacts[cache_path] = cache_text
+        publish_text_bundle(artifacts)
+    else:
+        # A file cache is committed before stdout because stdout cannot participate in
+        # filesystem rollback semantics.
+        if cache_path is not None and cache_text is not None:
+            publish_text_bundle({cache_path: cache_text})
+        print(rendered, end="")
     return 0
 
 
