@@ -18,6 +18,7 @@ from types import MappingProxyType
 from typing import Any, Mapping
 
 AUTHORITY_SCHEMA = "grand-rapids-920-45-269-authority/v1"
+RELEASE_SUBJECT_SCHEMA = "grand-rapids-920-45-269-release-subject/v1"
 SOLICITATION_ID = "920-45-269"
 GENERATION_ENV = "GRAND_RAPIDS_PREFLIGHT_AUTHORITY_GENERATION"
 DIGEST_ENV = "GRAND_RAPIDS_PREFLIGHT_AUTHORITY_SHA256"
@@ -35,6 +36,7 @@ REQUIRED_GATES = (
     "security_requirements_resolved", "acceptance_plan_complete",
     "pricing_form_complete", "owner_release_to_submit",
 )
+OWNER_RELEASE_GATE = "owner_release_to_submit"
 
 GATE_EVIDENCE_KIND = MappingProxyType({
     "controlling_packet_acquired": "CONTROLLING_PACKET",
@@ -80,19 +82,20 @@ class EvidenceRecord:
 class VerifiedAuthority:
     __slots__ = (
         "generation", "authority_sha256", "source_generation_sha256",
-        "packet_sha256", "_evidence",
+        "release_subject_sha256", "packet_sha256", "_evidence",
     )
 
     def __init__(
         self, *, _token: object, generation: int, authority_sha256: str,
-        source_generation_sha256: str, packet_sha256: str,
-        evidence: tuple[EvidenceRecord, ...],
+        source_generation_sha256: str, release_subject_sha256: str,
+        packet_sha256: str, evidence: tuple[EvidenceRecord, ...],
     ) -> None:
         if _token is not _CONSTRUCTOR_TOKEN:
             raise TypeError("VerifiedAuthority can only be created by host-root verification")
         self.generation = generation
         self.authority_sha256 = authority_sha256
         self.source_generation_sha256 = source_generation_sha256
+        self.release_subject_sha256 = release_subject_sha256
         self.packet_sha256 = packet_sha256
         self._evidence = MappingProxyType({row.id: row for row in evidence})
 
@@ -145,9 +148,7 @@ def source_generation_sha256(material: Mapping[str, Any]) -> str:
     ).hexdigest()
 
 
-def _validated_material(
-    value: Any,
-) -> tuple[dict[str, Any], tuple[EvidenceRecord, ...], str]:
+def _material_context(value: Any) -> tuple[str, str]:
     if not isinstance(value, dict) or set(value) != _MATERIAL_KEYS:
         raise AuthorityError("authority material has unexpected or missing keys")
     if value.get("schema_version") != AUTHORITY_SCHEMA:
@@ -157,9 +158,14 @@ def _validated_material(
     _strict_int(value.get("generation"), name="generation")
     packet_sha = _hex64(value.get("packet_sha256"), name="packet_sha256")
     source_digest = source_generation_sha256(value)
-
     if value.get("required_gates") != list(REQUIRED_GATES):
         raise AuthorityError("required_gates must exactly equal the canonical gate universe")
+    return packet_sha, source_digest
+
+
+def _evidence_records(
+    value: Mapping[str, Any], *, packet_sha: str, source_digest: str
+) -> tuple[EvidenceRecord, ...]:
     evidence = value.get("evidence")
     if not isinstance(evidence, list):
         raise AuthorityError("evidence must be a list")
@@ -191,14 +197,74 @@ def _validated_material(
             raise AuthorityError(f"evidence {ident!r} is bound to a stale source generation")
         if gate == "controlling_packet_acquired" and digest != packet_sha:
             raise AuthorityError("CONTROLLING_PACKET evidence digest must equal packet_sha256")
+        if gate == "packet_sha256_verified" and digest != packet_sha:
+            raise AuthorityError(
+                "PACKET_SHA256_VERIFICATION evidence digest must equal packet_sha256"
+            )
         records.append(EvidenceRecord(ident, gate, kind, digest, row_source))
+    return tuple(records)
+
+
+def _release_subject_digest(
+    records: tuple[EvidenceRecord, ...], *, source_digest: str
+) -> str:
+    evidence_projection = [
+        {
+            "id": record.id,
+            "gate": record.gate,
+            "kind": record.kind,
+            "sha256": record.sha256,
+            "source_generation_sha256": record.source_generation_sha256,
+        }
+        for record in records
+        if record.gate != OWNER_RELEASE_GATE
+    ]
+    evidence_projection.sort(key=lambda row: row["id"])
+    subject = {
+        "schema_version": RELEASE_SUBJECT_SCHEMA,
+        "solicitation_id": SOLICITATION_ID,
+        "source_generation_sha256": source_digest,
+        "required_gates": [gate for gate in REQUIRED_GATES if gate != OWNER_RELEASE_GATE],
+        "evidence": evidence_projection,
+    }
+    return hashlib.sha256(canonical_json(subject)).hexdigest()
+
+
+def release_subject_sha256(material: Mapping[str, Any]) -> str:
+    """Digest the exact commercial/technical evidence that OWNER_RELEASE approves.
+
+    OWNER_RELEASE rows are excluded to avoid a self-referential digest. Every
+    non-release evidence identity, gate, type, digest, and source-generation
+    binding participates in a stable evidence-ID-sorted projection.
+    """
+    detached = dict(material)
+    packet_sha, source_digest = _material_context(detached)
+    records = _evidence_records(
+        detached, packet_sha=packet_sha, source_digest=source_digest
+    )
+    return _release_subject_digest(records, source_digest=source_digest)
+
+
+def _validated_material(
+    value: Any,
+) -> tuple[dict[str, Any], tuple[EvidenceRecord, ...], str, str]:
+    packet_sha, source_digest = _material_context(value)
+    records = _evidence_records(
+        value, packet_sha=packet_sha, source_digest=source_digest
+    )
+    release_digest = _release_subject_digest(records, source_digest=source_digest)
+    for record in records:
+        if record.gate == OWNER_RELEASE_GATE and record.sha256 != release_digest:
+            raise AuthorityError(
+                "OWNER_RELEASE evidence digest must equal the current release-subject sha256"
+            )
 
     detached = json.loads(canonical_json(value))
-    return detached, tuple(records), source_digest
+    return detached, records, source_digest, release_digest
 
 
 def authority_sha256(material: Mapping[str, Any]) -> str:
-    detached, _, _ = _validated_material(dict(material))
+    detached, _, _, _ = _validated_material(dict(material))
     return hashlib.sha256(canonical_json(detached)).hexdigest()
 
 
@@ -238,7 +304,7 @@ def load_current_authority(path: str | Path) -> VerifiedAuthority:
     """Verify one authority document against the host's current pinned root."""
     expected_generation, expected_digest = _host_root()
     material = _parse_json_strict(Path(path).read_bytes())
-    detached, records, source_digest = _validated_material(material)
+    detached, records, source_digest, release_digest = _validated_material(material)
     digest = hashlib.sha256(canonical_json(detached)).hexdigest()
     generation = detached["generation"]
     if generation != expected_generation:
@@ -250,6 +316,7 @@ def load_current_authority(path: str | Path) -> VerifiedAuthority:
         generation=generation,
         authority_sha256=digest,
         source_generation_sha256=source_digest,
+        release_subject_sha256=release_digest,
         packet_sha256=detached["packet_sha256"],
         evidence=records,
     )
