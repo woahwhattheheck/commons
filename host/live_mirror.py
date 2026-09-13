@@ -10,6 +10,8 @@ This is not a Commons lock and not a reason to add a PAT. Exact SHA push
 is attempted first. On the measured GitHub App workflows rejection, dest
 `.github/workflows` is grafted onto the source tree so the rest of the
 corpus still moves. Source SHA is recorded at refs/backup/source-main.
+When that ref itself is rejected because the source commit introduces a
+workflow file, a workflow-free receipt commit stores the SHA instead.
 
 Does not remint host/repo_backup.py or host/moving_main_mirror.py.
 """
@@ -27,6 +29,8 @@ from typing import Any
 
 SCHEMA_VERSION = "commons-live-mirror/v1"
 SOURCE_REF = "refs/backup/source-main"
+DEST_REF = "refs/backup/dest-main"
+SOURCE_RECEIPT_NAME = "SOURCE_SHA"
 WORKFLOWS_DIR = ".github/workflows"
 WORKFLOWS_PERMISSION_RE = re.compile(
     r"create or update workflow|without [`']workflows[`'] permission",
@@ -204,6 +208,15 @@ def graft_dest_workflows(git_dir: str, src_commit: str, dst_commit: str | None) 
     }
 
 
+def _bot_env() -> dict[str, str]:
+    env = os.environ.copy()
+    env.setdefault("GIT_AUTHOR_NAME", "github-actions[bot]")
+    env.setdefault("GIT_AUTHOR_EMAIL", "41898282+github-actions[bot]@users.noreply.github.com")
+    env.setdefault("GIT_COMMITTER_NAME", "github-actions[bot]")
+    env.setdefault("GIT_COMMITTER_EMAIL", "41898282+github-actions[bot]@users.noreply.github.com")
+    return env
+
+
 def commit_graft(
     git_dir: str,
     src_commit: str,
@@ -218,15 +231,10 @@ def commit_graft(
         "permission. Non-workflow paths stay on the source tree. Source SHA is "
         f"recorded at {SOURCE_REF}.\n"
     )
-    env = os.environ.copy()
-    env.setdefault("GIT_AUTHOR_NAME", "github-actions[bot]")
-    env.setdefault("GIT_AUTHOR_EMAIL", "41898282+github-actions[bot]@users.noreply.github.com")
-    env.setdefault("GIT_COMMITTER_NAME", "github-actions[bot]")
-    env.setdefault("GIT_COMMITTER_EMAIL", "41898282+github-actions[bot]@users.noreply.github.com")
     sha = _run(
         ["commit-tree", grafted_tree, "-p", src_commit, "-m", body],
         git_dir=git_dir,
-        env=env,
+        env=_bot_env(),
     ).stdout.decode("ascii").strip()
     if not SHA_RE.fullmatch(sha):
         raise MirrorError("commit-tree did not return a commit id")
@@ -241,6 +249,136 @@ def _force_refspec(refspec: str) -> str:
 def _push(git_dir: str, dest_url: str, refspec: str) -> subprocess.CompletedProcess[bytes]:
     # Same contract as the measured live-mirror job: `git push --force`.
     return _run(["push", dest_url, _force_refspec(refspec)], git_dir=git_dir, check=False)
+
+
+def _last_error_line(stderr: str) -> str:
+    text = stderr.strip()
+    if not text:
+        return "workflows permission"
+    return text.splitlines()[-1]
+
+
+def read_source_receipt(git_dir: str, ref: str = SOURCE_REF) -> str | None:
+    """Return the recorded source SHA from SOURCE_REF.
+
+    Legacy tips are the source commit itself. After a workflows rejection the
+    ref points at a workflow-free commit whose SOURCE_SHA blob holds the hex.
+    """
+    tip = _run(["rev-parse", "--verify", ref], git_dir=git_dir, check=False)
+    if tip.returncode:
+        return None
+    tip_sha = tip.stdout.decode("ascii").strip()
+    blob = _run(
+        ["rev-parse", "--verify", f"{ref}:{SOURCE_RECEIPT_NAME}"],
+        git_dir=git_dir,
+        check=False,
+    )
+    if blob.returncode == 0:
+        text = _run(
+            ["cat-file", "-p", blob.stdout.decode("ascii").strip()],
+            git_dir=git_dir,
+        ).stdout.decode("ascii").strip()
+        if not SHA_RE.fullmatch(text):
+            raise MirrorError(f"source receipt blob is not a full object id: {text!r}")
+        return text
+    if SHA_RE.fullmatch(tip_sha):
+        return tip_sha
+    return None
+
+
+def commit_source_receipt(git_dir: str, src_sha: str) -> str:
+    """Commit containing only SOURCE_SHA so GITHUB_TOKEN can update SOURCE_REF."""
+    if not SHA_RE.fullmatch(src_sha or ""):
+        raise MirrorError("src_sha is not a full object id")
+    blob = _run(
+        ["hash-object", "-w", "--stdin"],
+        git_dir=git_dir,
+        input_bytes=f"{src_sha}\n".encode("ascii"),
+    ).stdout.decode("ascii").strip()
+    if not SHA_RE.fullmatch(blob):
+        raise MirrorError("hash-object did not return a blob id")
+    tree = _mktree(git_dir, [("100644", "blob", blob, SOURCE_RECEIPT_NAME)])
+    if _path_tree(git_dir, tree, WORKFLOWS_DIR) is not None:
+        raise MirrorError("source receipt tree must not contain .github/workflows")
+    body = (
+        f"live-mirror source receipt {src_sha}\n"
+        "\n"
+        "GITHUB_TOKEN cannot create or update .github/workflows without workflows "
+        f"permission. {SOURCE_REF} therefore records the source SHA in a "
+        "workflow-free tree instead of pointing at the source commit.\n"
+    )
+    sha = _run(
+        ["commit-tree", tree, "-m", body],
+        git_dir=git_dir,
+        env=_bot_env(),
+    ).stdout.decode("ascii").strip()
+    if not SHA_RE.fullmatch(sha):
+        raise MirrorError("commit-tree did not return a commit id")
+    return sha
+
+
+def push_source_receipt(git_dir: str, dest_url: str, src_sha: str) -> dict[str, Any]:
+    """Point SOURCE_REF at src_sha, or at a workflow-free receipt of that SHA."""
+    if not SHA_RE.fullmatch(src_sha or ""):
+        raise MirrorError("src_sha is not a full object id")
+    current = read_source_receipt(git_dir, SOURCE_REF)
+    if current == src_sha:
+        tip = _run(["rev-parse", "--verify", SOURCE_REF], git_dir=git_dir, check=False)
+        ref_sha = tip.stdout.decode("ascii").strip() if tip.returncode == 0 else src_sha
+        return {
+            "schema_version": SCHEMA_VERSION,
+            "state": "ALREADY_RECORDED",
+            "src_sha": src_sha,
+            "ref_sha": ref_sha,
+        }
+    exact = _push(git_dir, dest_url, f"{src_sha}:{SOURCE_REF}")
+    if exact.returncode == 0:
+        _run(["update-ref", SOURCE_REF, src_sha], git_dir=git_dir)
+        return {
+            "schema_version": SCHEMA_VERSION,
+            "state": "EXACT_REF",
+            "src_sha": src_sha,
+            "ref_sha": src_sha,
+        }
+    stderr = (exact.stderr or exact.stdout).decode("utf-8", "replace")
+    if classify_push_error(stderr) != "WORKFLOWS_PERMISSION":
+        raise MirrorError(f"source receipt exact push failed: {stderr.strip()}")
+    receipt = commit_source_receipt(git_dir, src_sha)
+    pushed = _push(git_dir, dest_url, f"{receipt}:{SOURCE_REF}")
+    if pushed.returncode:
+        detail = (pushed.stderr or pushed.stdout).decode("utf-8", "replace").strip()
+        raise MirrorError(f"source receipt fallback push failed: {detail}")
+    _run(["update-ref", SOURCE_REF, receipt], git_dir=git_dir)
+    return {
+        "schema_version": SCHEMA_VERSION,
+        "state": "RECEIPT_REF",
+        "src_sha": src_sha,
+        "ref_sha": receipt,
+        "first_error": _last_error_line(stderr),
+    }
+
+
+def push_dest_receipt(git_dir: str, dest_url: str, dst_sha: str) -> None:
+    if not SHA_RE.fullmatch(dst_sha or ""):
+        raise MirrorError("dst_sha is not a full object id")
+    pushed = _push(git_dir, dest_url, f"{dst_sha}:{DEST_REF}")
+    if pushed.returncode:
+        detail = (pushed.stderr or pushed.stdout).decode("utf-8", "replace").strip()
+        raise MirrorError(f"dest receipt push failed: {detail}")
+
+
+def record_receipts(git_dir: str, dest_url: str, src_sha: str, dst_sha: str) -> dict[str, Any]:
+    """Refresh source and destination receipts after sync or a successful push."""
+    source = push_source_receipt(git_dir, dest_url, src_sha)
+    push_dest_receipt(git_dir, dest_url, dst_sha)
+    return {
+        "schema_version": SCHEMA_VERSION,
+        "src_sha": src_sha,
+        "dst_sha": dst_sha,
+        "source_ref_state": source["state"],
+        "source_ref_sha": source["ref_sha"],
+        "dest_ref": DEST_REF,
+    }
 
 
 def push_mirror(
@@ -259,13 +397,15 @@ def push_mirror(
 
     exact = _push(git_dir, dest_url, f"{src_sha}:refs/heads/main")
     if exact.returncode == 0:
-        _push(git_dir, dest_url, f"{src_sha}:{SOURCE_REF}")
+        receipts = record_receipts(git_dir, dest_url, src_sha, src_sha)
         return {
             "schema_version": SCHEMA_VERSION,
             "state": "EXACT",
             "src_sha": src_sha,
             "pushed_sha": src_sha,
             "workflows_frozen": False,
+            "source_ref_state": receipts["source_ref_state"],
+            "source_ref_sha": receipts["source_ref_sha"],
         }
 
     stderr = (exact.stderr or exact.stdout).decode("utf-8", "replace")
@@ -284,7 +424,7 @@ def push_mirror(
     if grafted.returncode:
         detail = (grafted.stderr or grafted.stdout).decode("utf-8", "replace").strip()
         raise MirrorError(f"grafted push failed: {detail}")
-    _push(git_dir, dest_url, f"{src_sha}:{SOURCE_REF}")
+    receipts = record_receipts(git_dir, dest_url, src_sha, grafted_commit)
     return {
         "schema_version": SCHEMA_VERSION,
         "state": "GRAFTED",
@@ -292,7 +432,9 @@ def push_mirror(
         "pushed_sha": grafted_commit,
         "grafted_tree": graft["grafted_tree"],
         "workflows_frozen": True,
-        "first_error": stderr.strip().splitlines()[-1] if stderr.strip() else "workflows permission",
+        "first_error": _last_error_line(stderr),
+        "source_ref_state": receipts["source_ref_state"],
+        "source_ref_sha": receipts["source_ref_sha"],
     }
 
 
@@ -320,6 +462,16 @@ def main(argv: list[str] | None = None) -> int:
     push.add_argument("--dst-ref", default=None)
     push.add_argument("--dest-url", required=True)
 
+    read_src = commands.add_parser("read-source")
+    read_src.add_argument("--git-dir", required=True)
+    read_src.add_argument("--ref", default=SOURCE_REF)
+
+    record = commands.add_parser("record-receipts")
+    record.add_argument("--git-dir", required=True)
+    record.add_argument("--src", required=True)
+    record.add_argument("--dst", required=True)
+    record.add_argument("--dest-url", required=True)
+
     args = parser.parse_args(argv)
     try:
         if args.command == "classify-error":
@@ -331,6 +483,10 @@ def main(argv: list[str] | None = None) -> int:
             payload = plan(args.src, args.dst, args.mirrored)
         elif args.command == "graft":
             payload = graft_dest_workflows(args.git_dir, args.src_ref, args.dst_ref)
+        elif args.command == "read-source":
+            payload = {"src_sha": read_source_receipt(args.git_dir, args.ref)}
+        elif args.command == "record-receipts":
+            payload = record_receipts(args.git_dir, args.dest_url, args.src, args.dst)
         else:
             payload = push_mirror(args.git_dir, args.src_ref, args.dest_url, args.dst_ref)
         print(json.dumps(payload, sort_keys=True))
