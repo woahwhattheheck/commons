@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark light">
+  <meta name="description" content="MistakeMap is a local-first adaptive K–5 math practice demo that explains why it chooses each next challenge.">
+  <title>MistakeMap — practice the next useful mistake</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#game">Skip to challenge</a>
+  <header class="topbar">
+    <div class="brand-block">
+      <span class="eyebrow">NERDY AI HACKATHON · PROTOTYPE</span>
+      <h1>MistakeMap</h1>
+      <p>Practice the <em>next useful mistake</em>, not the next page in a worksheet.</p>
+    </div>
+    <div class="privacy-chip" title="No account, analytics, remote model, or student dataset">Local-only learner model</div>
+  </header>
+
+  <main>
+    <section class="hero-grid" aria-labelledby="mission-title">
+      <div>
+        <span class="kicker">Explainable adaptive practice</span>
+        <h2 id="mission-title">A tiny AI coach that learns <span>how</span> you miss.</h2>
+        <p class="lead">MistakeMap estimates mastery, spots recurring arithmetic misconceptions, spaces mastered skills, and shows the exact reason it chose the next challenge. Everything runs in this browser.</p>
+      </div>
+      <div class="hero-proof" aria-label="Product boundaries">
+        <div><strong>0</strong><span>accounts or logins</span></div>
+        <div><strong>0</strong><span>network calls</span></div>
+        <div><strong>7</strong><span>skill models</span></div>
+        <div><strong>1</strong><span>visible reason per pick</span></div>
+      </div>
+    </section>
+
+    <section class="controls" aria-label="Expedition controls">
+      <label>Practice band
+        <select id="gradeSelect">
+          <option value="1">Grade 1</option>
+          <option value="2">Grade 2</option>
+          <option value="3">Grade 3</option>
+          <option value="4">Grade 4</option>
+          <option value="5">Grade 5</option>
+        </select>
+      </label>
+      <button id="newButton" class="button secondary" type="button">New expedition</button>
+      <button id="demoButton" class="button secondary" type="button">Load synthetic learner A</button>
+      <button id="exportButton" class="button ghost" type="button">Export local model</button>
+    </section>
+
+    <div id="demoBox" class="demo-box" hidden></div>
+
+    <section class="workspace">
+      <article class="game-card" id="game">
+        <div class="card-label">Current challenge</div>
+        <div class="mission-progress" aria-label="Expedition progress">
+          <div class="progress-track"><span id="progressFill"></span></div>
+          <span id="progressText">0/0 correct</span>
+        </div>
+        <div class="challenge-wrap">
+          <div id="prompt" class="prompt" aria-live="polite"></div>
+          <label class="answer-label" for="answerInput">Your answer</label>
+          <div class="answer-row">
+            <input id="answerInput" inputmode="decimal" autocomplete="off" aria-describedby="feedback" placeholder="Type a number">
+            <button id="checkButton" class="button primary" type="button">Check</button>
+            <button id="nextButton" class="button primary" type="button" hidden>Next</button>
+          </div>
+          <div id="feedback" class="feedback neutral">Solve it your way. MistakeMap learns from the pattern, not your identity.</div>
+          <button id="hintButton" class="hint-button" type="button">Give me a strategy hint</button>
+          <div id="hintBox" class="hint-box" hidden></div>
+        </div>
+      </article>
+
+      <aside class="reason-card" aria-labelledby="reason-title">
+        <div class="card-label">Model trace</div>
+        <h3 id="reason-title">Why this challenge?</h3>
+        <ul id="rationale"></ul>
+        <div class="trace-note">The scheduler combines low mastery, uncertainty, spaced-practice due state, and stable misconception signals. No opaque score is treated as a grade.</div>
+      </aside>
+    </section>
+
+    <section class="map-section" aria-labelledby="map-title">
+      <div class="section-heading">
+        <div>
+          <span class="kicker">Learner model</span>
+          <h2 id="map-title">Your map changes after every valid attempt.</h2>
+        </div>
+        <p>Mastery is a lightweight Beta posterior, not a report-card score. Stable error patterns raise a skill's practice priority; correct streaks space it farther out.</p>
+      </div>
+      <div id="masteryGrid" class="mastery-grid"></div>
+    </section>
+
+    <section class="how-it-works" aria-labelledby="how-title">
+      <div class="section-heading">
+        <div>
+          <span class="kicker">Production thinking</span>
+          <h2 id="how-title">Small enough to inspect. Useful enough to demo.</h2>
+        </div>
+      </div>
+      <div class="principles">
+        <article><span>01</span><h3>Infer patterns, not people</h3><p>Only arithmetic responses update the local model. MistakeMap does not infer identity, emotion, attention, or any biometric state.</p></article>
+        <article><span>02</span><h3>Explain every adaptive pick</h3><p>The interface names the mastery, due-state, uncertainty, or misconception signal that moved a skill to the front.</p></article>
+        <article><span>03</span><h3>Fail simple</h3><p>No backend, model key, account, analytics script, or third-party runtime can strand the demo. Invalid answers do not mutate state.</p></article>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <strong>MistakeMap</strong>
+    <span>Competition prototype · synthetic/local data only · do not enter personal information.</span>
+  </footer>
+  <div id="liveStatus" class="sr-only" aria-live="polite"></div>
+  <script type="module" src="./app.mjs"></script>
+</body>
+</html>

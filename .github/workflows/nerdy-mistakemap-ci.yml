@@ -1,0 +1,30 @@
+name: Nerdy MistakeMap CI
+
+on:
+  pull_request:
+    paths:
+      - 'nerdy-mistakemap/**'
+      - '.github/workflows/nerdy-mistakemap-ci.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'nerdy-mistakemap/**'
+      - '.github/workflows/nerdy-mistakemap-ci.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  deterministic-engine:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v5
+        with:
+          node-version: '22'
+      - name: Syntax and hostile engine suite
+        working-directory: nerdy-mistakemap
+        run: npm run check
+      - name: Synthetic scheduler exercise
+        working-directory: nerdy-mistakemap
+        run: npm run benchmark

@@ -1,0 +1,11 @@
+{
+  "name": "nerdy-mistakemap-competition-prototype",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "test": "node --test tests/engine.test.mjs",
+    "benchmark": "node benchmark.mjs",
+    "check": "node --check engine.mjs && node --check app.mjs && node --check benchmark.mjs && node --test tests/engine.test.mjs"
+  }
+}
