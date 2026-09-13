@@ -5,7 +5,8 @@ The default discovery is shared with tests.yml: root test_*.py, recursive
 infra/test_*.py, then root test_*.js. Every selected file runs after failures.
 Use --output-dir for portable JSON evidence, or --results for the existing
 Actions NUL stream. Dirty worktrees fail closed before any test executes.
-No provider API, Docker daemon, or new credentials are needed.
+Evidence outputs must live outside the checkout. No provider API, Docker daemon,
+or new credentials are needed.
 """
 from __future__ import annotations
 
@@ -109,6 +110,16 @@ def main(argv: list[str] | None = None) -> int:
         report_path = args.report.resolve() if args.report else output / "report.json"
     if report_path == results:
         parser.error("report and results must be different files")
+
+    def inside_checkout(path: Path) -> bool:
+        try:
+            path.relative_to(root)
+        except ValueError:
+            return False
+        return True
+
+    if inside_checkout(results) or (report_path is not None and inside_checkout(report_path)):
+        parser.error("battery output paths must be outside the repository checkout")
     # Never let an output path truncate a selected test before execution.
     inputs = {root / path for _, path in selected}
     if results in inputs or report_path in inputs:
@@ -126,9 +137,9 @@ def main(argv: list[str] | None = None) -> int:
     preflight_error = None
 
     try:
-        # Measure checkout state before creating any output inside the repository.
-        # Otherwise a clean run using an in-repo output directory can mark itself
-        # dirty and weaken the starting-state claim.
+        # Measure checkout state before creating output. The output contract keeps
+        # result artifacts outside the repository so tests observe the exact
+        # clean checkout that this report names.
         sha = subprocess.run(["git", "-C", str(root), "rev-parse", "--verify", "HEAD^{commit}"],
                              check=True, capture_output=True, text=True).stdout.strip()
         dirty = bool(subprocess.run(
