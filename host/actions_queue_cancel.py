@@ -9,7 +9,8 @@ Safety contract:
 
 * only classifications already named by ``CANDIDATE_CLASSES`` are eligible;
 * every candidate run is fetched again by id before action;
-* the complete branch and open-PR inventories are fetched again per candidate;
+* complete branch and open-PR inventories are fetched twice per candidate;
+* the second inventory refresh happens immediately before the final run read;
 * the run is fetched one final time immediately before the POST;
 * any moved head, non-queued status, inventory/read error, or reclassification
   to a keep/unknown state fails closed without a POST;
@@ -44,7 +45,6 @@ try:
         GitHub,
         GitHubError,
         _discover_token,
-        _now_iso,
         classify_run,
         make_snapshot,
     )
@@ -54,7 +54,6 @@ except ModuleNotFoundError:  # direct ``python host/actions_queue_cancel.py``
         GitHub,
         GitHubError,
         _discover_token,
-        _now_iso,
         classify_run,
         make_snapshot,
     )
@@ -247,7 +246,28 @@ def drain_stale_runs(
                 )
                 continue
 
-            # Final exact-run re-read immediately before any mutation.  A run
+            # Refresh complete PR/branch authority one more time immediately
+            # before the final run read. This narrows a reopened-PR / moved-ref
+            # race without making the inventory the final read and thereby
+            # widening the window in which a queued run could start executing.
+            final_snapshot = _fresh_snapshot(github, repo)
+            final_class = classify_run(live, final_snapshot, repo)
+            final_label = final_class.get("classification")
+            if not (
+                final_class.get("cancel_candidate") is True
+                and final_label in CANDIDATE_CLASSES
+            ):
+                results.append(
+                    {
+                        **base,
+                        "live_classification": live_label,
+                        "final_classification": final_label,
+                        "outcome": "KEEP_RECLASSIFIED_FINAL",
+                    }
+                )
+                continue
+
+            # Final exact-run re-read immediately before any mutation. A run
             # that started, completed, or otherwise changed while inventories
             # were being refreshed is preserved.
             final_run = github.get(f"/repos/{repo}/actions/runs/{run_id}")
@@ -258,6 +278,7 @@ def drain_stale_runs(
                     {
                         **base,
                         "live_classification": live_label,
+                        "final_classification": final_label,
                         "final_status": final_run.get("status"),
                         "outcome": "KEEP_NOT_QUEUED_FINAL",
                     }
@@ -269,6 +290,7 @@ def drain_stale_runs(
                     {
                         **base,
                         "live_classification": live_label,
+                        "final_classification": final_label,
                         "outcome": "HOLD_HEAD_MOVED_FINAL",
                     }
                 )
@@ -279,6 +301,7 @@ def drain_stale_runs(
                     {
                         **base,
                         "live_classification": live_label,
+                        "final_classification": final_label,
                         "outcome": "WOULD_CANCEL",
                     }
                 )
@@ -296,6 +319,7 @@ def drain_stale_runs(
                 {
                     **base,
                     "live_classification": live_label,
+                    "final_classification": final_label,
                     "cancel_http_status": status,
                     "outcome": "CANCEL_ACCEPTED",
                 }
@@ -328,6 +352,7 @@ def drain_stale_runs(
             "mutates_github": execute,
             "dry_run_default": True,
             "requires_live_reclassification": True,
+            "requires_final_inventory_reread": True,
             "requires_final_run_reread": True,
             "candidate_classes": sorted(CANDIDATE_CLASSES),
         },
