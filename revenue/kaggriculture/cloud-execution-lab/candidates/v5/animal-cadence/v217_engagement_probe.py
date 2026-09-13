@@ -156,7 +156,10 @@ def _v217_probe_observe(view,st,step,action,pending,tape,end):
     for planned in tape[step:end]:
         for cmd in [planned.get('farmer') or []]+list(planned.get('hands') or []):
             if len(cmd)>=2 and cmd[:2]==['PICKUP','WHEAT']:
-                reserved_wheat+=max(0,int(cmd[2]) if len(cmd)>2 else 1)
+                qty=cmd[2] if len(cmd)>2 else 1
+                if type(qty) is not int or qty<0:
+                    return
+                reserved_wheat+=qty
     start=tuple(view.positions[0])
     inventory=view.inventory(0)
     if not isinstance(inventory,dict):
