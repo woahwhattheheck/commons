@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import unittest
 
+from evaluation import amount_supported
 from funded_work_freshness import preflight
 from test_support import NOW, FakeTransport, api, candidate, evidence_routes, open_issue, response
 
@@ -40,6 +41,12 @@ class PreflightEvidenceTests(unittest.TestCase):
         routes = evidence_routes("acme", "widget", 12, issue, comments, [])
         receipt = preflight(candidate(gh, canonical_url=gh), FakeTransport(routes), observed_at=NOW)
         self.assertEqual(receipt["freshness_status"], "actionable")
+
+    def test_amount_evidence_requires_exact_numeric_token(self):
+        self.assertTrue(amount_supported("Reward: $500.00 via Algora", "500", "USD"))
+        self.assertTrue(amount_supported("Reward: 500 USD via Algora", "500", "USD"))
+        self.assertFalse(amount_supported("Reward: $5000 via Algora", "500", "USD"))
+        self.assertFalse(amount_supported("Reward: $50 via Algora", "5", "USD"))
 
     def test_security_label_routes_to_research_only(self):
         gh = "https://github.com/acme/widget/issues/12"

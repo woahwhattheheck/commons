@@ -52,24 +52,20 @@ def canonical_text(issue: Mapping[str, Any], comments: Sequence[Mapping[str, Any
 
 
 def amount_supported(text: str, amount: str, currency: str) -> bool:
-    normalized_text = re.sub(r"(?<=\d),(?=\d)", "", text).lower()
-    amount_decimal = Decimal(amount)
-    forms = {amount, format(amount_decimal, "f")}
-    if amount_decimal == amount_decimal.to_integral_value():
-        forms.add(str(int(amount_decimal)))
-    symbols = {"USD": "$", "EUR": "€", "GBP": "£"}
-    currency_forms = {currency.lower()}
+    """Require an exact numeric currency token, not a prefix of a larger amount."""
+
+    target = Decimal(amount)
+    number = r"(?<![\d.,])(?P<value>\d+(?:,\d{3})*(?:\.\d+)?)(?![\d.,])"
+    symbols = {"USD": r"\$", "EUR": "€", "GBP": "£"}
+    markers = [rf"\b{re.escape(currency)}\b"]
     if currency in symbols:
-        currency_forms.add(symbols[currency])
-    for form in forms:
-        escaped = re.escape(form)
-        for marker in currency_forms:
-            marker_escaped = re.escape(marker)
-            if re.search(
-                rf"(?:{marker_escaped}\s*{escaped}|{escaped}\s*{marker_escaped})",
-                normalized_text,
-            ):
-                return True
+        markers.append(symbols[currency])
+    for marker in markers:
+        for pattern in (rf"{marker}\s*{number}", rf"{number}\s*{marker}"):
+            for match in re.finditer(pattern, text, flags=re.IGNORECASE):
+                found = Decimal(match.group("value").replace(",", ""))
+                if found == target:
+                    return True
     return False
 
 
