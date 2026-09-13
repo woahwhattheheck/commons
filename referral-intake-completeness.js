@@ -58,6 +58,8 @@
   var CLINIC_RE = /^CLINIC-[A-Z0-9][A-Z0-9-]{0,24}-DEMO$/;
   var SSN_RE = /\b\d{3}-\d{2}-\d{4}\b/;
   var MRN_RE = /\bMRN[:\s-]?\d{5,}\b/i;
+  var PHI_SCAN_MAX_DEPTH = 8;
+  var PHI_SCAN_MAX_NODES = 256;
 
   function text(value) { return String(value == null ? "" : value).trim(); }
   function upper(value) { return text(value).toUpperCase(); }
@@ -91,6 +93,7 @@
   }
 
   function valueLooksPhi(value) {
+    if (value && typeof value === "object") return false;
     var raw = text(value);
     if (!raw) return false;
     return SSN_RE.test(raw) || MRN_RE.test(raw);
@@ -98,15 +101,48 @@
 
   function collectPhiHits(raw) {
     var hits = [];
-    var source = raw || {};
-    Object.keys(source).forEach(function (key) {
-      if (key === "fields") return;
-      if (keyLooksForbidden(key) || valueLooksPhi(source[key])) hits.push(key);
-    });
-    var fields = source.fields || {};
-    Object.keys(fields).forEach(function (key) {
-      if (keyLooksForbidden(key) || valueLooksPhi(fields[key])) hits.push("fields." + key);
-    });
+    var seen = {};
+    var nodes = 0;
+
+    function add(path) {
+      var key = path || "$packet";
+      if (!seen[key]) {
+        seen[key] = true;
+        hits.push(key);
+      }
+    }
+
+    function walk(value, path, depth) {
+      nodes += 1;
+      if (nodes > PHI_SCAN_MAX_NODES) {
+        add("$structure.node_limit");
+        return;
+      }
+      if (depth > PHI_SCAN_MAX_DEPTH) {
+        add("$structure.depth_limit");
+        return;
+      }
+      if (value && typeof value === "object") {
+        if (Array.isArray(value)) {
+          add((path || "$packet") + ".$array");
+        } else if (path !== "" && path !== "fields") {
+          add(path + ".$nested");
+        }
+        Object.keys(value).sort().forEach(function (key) {
+          var child = path ? path + "." + key : key;
+          if (keyLooksForbidden(key)) add(child);
+          walk(value[key], child, depth + 1);
+        });
+        return;
+      }
+      if (valueLooksPhi(value)) add(path || "$value");
+    }
+
+    if (!raw || typeof raw !== "object" || Array.isArray(raw)) {
+      add("$packet.invalid_shape");
+      return hits.sort();
+    }
+    walk(raw, "", 0);
     return hits.sort();
   }
 
@@ -160,7 +196,7 @@
   }
 
   function result(state, status) {
-    var packet = Object.assign({
+    return Object.assign({
       receiptVersion: 1,
       slug: SLUG,
       referralId: state.input.referralId,
@@ -179,7 +215,6 @@
       lastProcessedAt: state.lastProcessedAt,
       invariant: "NO_CLINICAL_DECISION_NO_PHI_AT_MOST_ONE_QUEUE_ENTRY"
     }, clinicalZero());
-    return packet;
   }
 
   function newState(input, fingerprint, now) {

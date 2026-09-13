@@ -145,10 +145,18 @@ class TestResourceLedger(unittest.TestCase):
             text = handle.read()
         catalog = load_catalog(text)
         raw = json.loads(text)
-        self.assertEqual(catalog["slack_ts"], "1789272333.052199")
+        self.assertEqual(catalog["slack_ts"], "1789285480.890159")
         self.assertEqual(
             catalog["source_id"],
-            "codex-osff-firmware-sbom-grant-packet-resource-activation-20260913-01",
+            "codex-whitebox-strict-delivery-evidence-gate-resource-activation-20260913-01",
+        )
+        self.assertIn(
+            "codex-whitebox-strict-delivery-evidence-gate-resource-activation-20260913-01",
+            raw.get("supersedes_source_ids") or [],
+        )
+        self.assertIn(
+            "codex-commons-exact-sha-alternate-verifier-resource-activation-20260913-01",
+            raw.get("supersedes_source_ids") or [],
         )
         self.assertIn(
             "codex-osff-firmware-sbom-grant-packet-resource-activation-20260913-01",
@@ -335,51 +343,71 @@ class TestResourceLedger(unittest.TestCase):
             "inventory",
             "resources",
             "records",
-            "codex-osff-firmware-sbom-grant-packet-resource-activation-20260913-01.json",
+            "codex-whitebox-strict-delivery-evidence-gate-resource-activation-20260913-01.json",
+        )
+        self.assertIn(
+            "inventory/resources/records/codex-whitebox-strict-delivery-evidence-gate-resource-activation-20260913-01.json",
+            raw.get("record_sources") or [],
         )
         with open(current_activation_path, encoding="utf-8") as handle:
             current_activation = json.load(handle)
+        self.assertFalse(json_has_secret_key(json.dumps(current_activation)))
         self.assertEqual(current_activation["event_id"], catalog["source_id"])
         self.assertEqual(
             current_activation["event_type"], "RESOURCE_DISCOVERY_AND_ACTIVATION"
         )
         self.assertEqual(
             current_activation["selected_resource"],
-            "osff-firmware-sbom-conformance-grant-packet",
+            "whitebox-strict-delivery-evidence-gate",
         )
-        self.assertEqual(current_activation["projection"]["resources"], 95)
-        self.assertEqual(current_activation["projection"]["producing"], 67)
-        self.assertEqual(current_activation["projection"]["inventory_records"], 57)
-        self.assertEqual(current_activation["production_truth"]["source_pr"], 13541)
+        self.assertEqual(current_activation["projection"]["resources"], 97)
+        self.assertEqual(current_activation["projection"]["producing"], 69)
+        self.assertEqual(current_activation["projection"]["inventory_records"], 59)
+        self.assertEqual(
+            current_activation["production_truth"]["source_repository"],
+            "woahwhattheheck/whitebox-estimation",
+        )
+        self.assertEqual(current_activation["production_truth"]["source_pr"], 13)
         self.assertEqual(
             current_activation["production_truth"]["source_merge_sha"],
-            "0a1457fc707b3adc1ebe9b733fc5fd2e72f1091a",
+            "d6560e03f30aeb68ffc37b958f978f3277d28c09",
         )
         self.assertEqual(
             current_activation["production_truth"]["source_head_sha"],
-            "c8e711dfced98065ca0ae55ce8f578a8c5465d05",
+            "98bc44e8b898aefc5ea2b9a85f5bf3ae72e50214",
         )
         self.assertEqual(
-            current_activation["production_truth"]["source_path"],
-            "revenue/grants/OSFF_FIRMWARE_SBOM_CONFORMANCE_KIT_2026.md",
+            set(current_activation["production_truth"]["source_paths"]),
+            {
+                ".github/workflows/delivery-contract.yml",
+                "DELIVERY.md",
+                "README.md",
+                "test_whitebox_delivery.py",
+                "whitebox_delivery.py",
+            },
         )
         self.assertEqual(
-            current_activation["production_truth"]["source_git_blob"],
-            "60d234eb07b914dd30bc42cb7959c3c065d84cee",
+            current_activation["production_truth"]["source_paths"]
+            ["whitebox_delivery.py"]["git_blob"],
+            "ad3f89cc7f9422445d0b95b6640d193ccc73573e",
         )
+        self.assertFalse(current_activation["production_truth"]["hosted_ci_green"])
+        self.assertTrue(current_activation["production_truth"]["exact_index_binding"])
+        self.assertTrue(
+            current_activation["production_truth"]["strict_http_206_and_content_range"]
+        )
+        self.assertTrue(current_activation["production_truth"]["offline_verification"])
         self.assertEqual(
-            current_activation["production_truth"]["source_sha256"],
-            "0ed5630e20d9ede8735ba54c665e6e9aadd725824a0b8c05bd93ca27dbfe9ab3",
+            current_activation["production_truth"]["network_delivery_runs_by_activation"],
+            0,
         )
-        self.assertEqual(current_activation["production_truth"]["requested_eur"], 7500)
-        self.assertEqual(current_activation["production_truth"]["awarded_eur"], 0)
-        self.assertEqual(current_activation["production_truth"]["booked_revenue_eur"], 0)
-        self.assertEqual(current_activation["production_truth"]["timeline_weeks"], 6)
-        self.assertEqual(current_activation["production_truth"]["positive_fixture_floor"], 12)
-        self.assertFalse(current_activation["production_truth"]["submitted"])
-        self.assertFalse(current_activation["production_truth"]["sponsor_contacted"])
-        self.assertFalse(current_activation["production_truth"]["implementation_started"])
         self.assertEqual(current_activation["production_truth"]["provider_writes"], 0)
+        self.assertFalse(current_activation["production_truth"]["provider_bill"])
+        self.assertFalse(current_activation["production_truth"]["customer_acceptance"])
+        self.assertFalse(current_activation["production_truth"]["payment"])
+        self.assertFalse(current_activation["production_truth"]["tax_result"])
+        self.assertFalse(current_activation["production_truth"]["model_evaluation"])
+        self.assertFalse(current_activation["production_truth"]["deployment"])
         self.assertEqual(
             set(current_activation["production_truth"]["source_head_workflows"].values()),
             {"QUEUED"},
@@ -502,6 +530,33 @@ class TestResourceLedger(unittest.TestCase):
         self.assertIn("NO_SPONSOR_CONTACT", rows["osff-firmware-sbom-conformance-grant-packet"]["authority"])
         self.assertIn("60d234eb07b914dd30bc42cb7959c3c065d84cee", rows["osff-firmware-sbom-conformance-grant-packet"]["exact_safe_probe"])
         self.assertIn("€0", rows["osff-firmware-sbom-conformance-grant-packet"]["rate_plan_boundary"])
+        self.assertEqual(rows["commons-exact-sha-alternate-verifier"]["stage"], "PRODUCING")
+        self.assertEqual(rows["commons-exact-sha-alternate-verifier"]["condition"], "CONSTRAINED")
+        self.assertIn("ALTERNATE_NONHOSTED_ONLY", rows["commons-exact-sha-alternate-verifier"]["authority"])
+        self.assertIn("HOSTED_CI_GREEN_FALSE", rows["commons-exact-sha-alternate-verifier"]["authority"])
+        self.assertIn("OVERRIDES_REQUIRED_CHECKS_FALSE", rows["commons-exact-sha-alternate-verifier"]["authority"])
+        self.assertIn("MERGE_AUTHORITY_FALSE", rows["commons-exact-sha-alternate-verifier"]["authority"])
+        self.assertIn("839dc8a9f61bf1d4d781a0a85d7c5f7ac66f254b", rows["commons-exact-sha-alternate-verifier"]["exact_safe_probe"])
+        self.assertIn("does not prove hosted ci", rows["commons-exact-sha-alternate-verifier"]["rate_plan_boundary"].lower())
+        self.assertEqual(rows["whitebox-strict-delivery-evidence-gate"]["capacity"], "LIVE")
+        self.assertEqual(rows["whitebox-strict-delivery-evidence-gate"]["stage"], "PRODUCING")
+        self.assertEqual(rows["whitebox-strict-delivery-evidence-gate"]["condition"], "CONSTRAINED")
+        self.assertIn(
+            "NETWORK_EXECUTION_CALLER_EXPLICIT_ONLY",
+            rows["whitebox-strict-delivery-evidence-gate"]["authority"],
+        )
+        self.assertIn(
+            "HOSTED_CI_GREEN_FALSE",
+            rows["whitebox-strict-delivery-evidence-gate"]["authority"],
+        )
+        self.assertIn(
+            "ad3f89cc7f9422445d0b95b6640d193ccc73573e",
+            rows["whitebox-strict-delivery-evidence-gate"]["exact_safe_probe"],
+        )
+        self.assertIn(
+            "zero network delivery runs",
+            rows["whitebox-strict-delivery-evidence-gate"]["rate_plan_boundary"].lower(),
+        )
         self.assertIn("September 7 global reset", rows["gpt-6-astra-codex-carrier"]["next_action"])
         self.assertEqual(rows["google-ai-mode-browser-mesh"]["capacity"], "LIVE")
         self.assertEqual(rows["google-ai-mode-browser-mesh"]["stage"], "PRODUCING")

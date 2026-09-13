@@ -17,6 +17,7 @@ import base64
 import binascii
 import hashlib
 import http.server
+import ipaddress
 import json
 import math
 import os
@@ -28,10 +29,12 @@ import struct
 import sys
 import time
 import urllib.error
+import urllib.parse
 import urllib.request
 
 
 SCHEMA_VERSION = "commons-wb-range/v1"
+RANGE_CONTRACT_VERSION = "strict-http-range-v2"
 DEFAULT_LIMIT_BYTES = 64 * 1024 * 1024
 HF_API = "https://huggingface.co/api/models/{repo}?blobs=true"
 HF_RESOLVE = "https://huggingface.co/{repo}/resolve/{rev}/{name}"
@@ -80,6 +83,8 @@ GGML_TYPE_SIZES = {
     30: ("BF16", 1, 2),
 }
 
+_CONTENT_RANGE_RE = re.compile(r"^bytes ([0-9]+)-([0-9]+)/([0-9]+|\*)$")
+
 
 class WbRangeError(AssertionError):
     """A range, index, decode, or archive contract was violated."""
@@ -100,14 +105,37 @@ def _safe_name(raw: str) -> str:
     return name[:120]
 
 
+def _is_loopback_host(hostname: str | None) -> bool:
+    if hostname is None:
+        return False
+    normalized = hostname.rstrip(".").lower()
+    if normalized == "localhost":
+        return True
+    try:
+        return ipaddress.ip_address(normalized).is_loopback
+    except ValueError:
+        return False
+
+
+class _NoRedirectHandler(urllib.request.HTTPRedirectHandler):
+    def redirect_request(self, req, fp, code, msg, headers, newurl):
+        return None
+
+
 class RangeReader:
     """HTTP Range reader with a content-addressed local chunk cache."""
 
     def __init__(self, url: str, cache_dir: Path, *, limit: int = DEFAULT_LIMIT_BYTES,
                  use_cache: bool = True):
-        if not url.startswith("https://") and not url.startswith("http://127.0.0.1") \
-                and not url.startswith("http://localhost"):
-            raise WbRangeError("url must be https (or localhost for rehearsal)")
+        parsed = urllib.parse.urlsplit(url)
+        if parsed.username or parsed.password or not parsed.hostname:
+            raise WbRangeError("remote URL must not contain credentials and must have a host")
+        if parsed.scheme == "https":
+            pass
+        elif parsed.scheme == "http" and _is_loopback_host(parsed.hostname):
+            pass
+        else:
+            raise WbRangeError("url must be https (or loopback http for rehearsal)")
         self.url = url
         self.cache_dir = Path(cache_dir)
         self.limit = int(limit)
@@ -116,6 +144,7 @@ class RangeReader:
         self.chunks_dir.mkdir(parents=True, exist_ok=True)
         self.manifest_path = self.cache_dir / "cache_manifest.json"
         self.manifest = self._load_manifest()
+        self._opener = urllib.request.build_opener(_NoRedirectHandler())
 
     def _load_manifest(self) -> dict:
         if self.manifest_path.is_file():
@@ -145,7 +174,7 @@ class RangeReader:
             )
         key = self._cache_key(offset, length)
         entry = self.manifest["entries"].get(key)
-        if self.use_cache and entry:
+        if self.use_cache and entry and entry.get("transport_contract") == RANGE_CONTRACT_VERSION:
             chunk_path = self.chunks_dir / entry["file"]
             if chunk_path.is_file():
                 data = chunk_path.read_bytes()
@@ -161,64 +190,87 @@ class RangeReader:
             "length": length,
             "sha256": digest,
             "file": file_name,
+            "transport_contract": RANGE_CONTRACT_VERSION,
             "fetched_utc": _utc_now(),
         }
         self._save_manifest()
         return data
 
-    def _fetch(self, offset: int, length: int) -> bytes:
+    def _strict_range(self, offset: int, length: int, *, timeout: int) -> tuple[bytes, int | None]:
+        end = offset + length - 1
         request = urllib.request.Request(
             self.url,
             headers={
-                "Range": "bytes=%d-%d" % (offset, offset + length - 1),
+                "Range": "bytes=%d-%d" % (offset, end),
                 "User-Agent": USER_AGENT,
                 "Accept-Encoding": "identity",
             },
         )
         try:
-            with urllib.request.urlopen(request, timeout=120) as response:
-                status = getattr(response, "status", 200)
-                if status == 206:
-                    data = response.read()
-                elif status == 200:
-                    data = response.read(length)
-                    response.close()
-                else:
-                    raise WbRangeError("unexpected HTTP status %s" % status)
+            with self._opener.open(request, timeout=timeout) as response:
+                status = getattr(response, "status", None)
+                if status is None:
+                    status = response.getcode()
+                if status != 206:
+                    raise WbRangeError("remote range status %s; expected 206" % status)
+                final_url = response.geturl()
+                if final_url != self.url:
+                    raise WbRangeError("remote redirects are not allowed")
+                final = urllib.parse.urlsplit(final_url)
+                if final.scheme == "http" and not _is_loopback_host(final.hostname):
+                    raise WbRangeError("remote range response downgraded to non-loopback http")
+                if final.scheme not in ("http", "https"):
+                    raise WbRangeError("remote range response used unsupported scheme")
+                content_encoding = str(response.headers.get("Content-Encoding") or "").strip().lower()
+                if content_encoding not in ("", "identity"):
+                    raise WbRangeError(
+                        "remote range Content-Encoding %r; expected identity" % content_encoding
+                    )
+                content_range = str(response.headers.get("Content-Range") or "")
+                match = _CONTENT_RANGE_RE.fullmatch(content_range)
+                if match is None:
+                    raise WbRangeError("remote range missing or malformed Content-Range")
+                got_start = int(match.group(1))
+                got_end = int(match.group(2))
+                if (got_start, got_end) != (offset, end):
+                    raise WbRangeError(
+                        "remote Content-Range interval %d-%d; expected %d-%d"
+                        % (got_start, got_end, offset, end)
+                    )
+                total_text = match.group(3)
+                total = None if total_text == "*" else int(total_text)
+                if total is not None and total <= got_end:
+                    raise WbRangeError("remote Content-Range total is not larger than its end")
+                data = response.read()
+        except WbRangeError:
+            raise
         except urllib.error.HTTPError as exc:
             raise WbRangeError(
                 "HTTP %s on range %d+%d" % (exc.code, offset, length)
             ) from exc
         except urllib.error.URLError as exc:
             raise WbRangeError("fetch failed: %s" % exc.reason) from exc
-        if len(data) < length:
+        except OSError as exc:
+            raise WbRangeError("fetch failed: %s" % exc) from exc
+        if len(data) != length:
             raise WbRangeError(
-                "short read: wanted %d bytes, got %d" % (length, len(data))
+                "remote range body length mismatch: wanted %d bytes, got %d"
+                % (length, len(data))
             )
-        if len(data) > length:
-            data = data[:length]
+        return data, total
+
+    def _fetch(self, offset: int, length: int) -> bytes:
+        data, _ = self._strict_range(offset, length, timeout=120)
         return data
 
     def remote_size(self) -> int:
-        data = self._fetch_raw(0, 1)
-        return data
+        return self._fetch_raw(0, 1)
 
     def _fetch_raw(self, offset: int, length: int) -> int:
-        request = urllib.request.Request(
-            self.url,
-            headers={
-                "Range": "bytes=%d-%d" % (offset, offset + length - 1),
-                "User-Agent": USER_AGENT,
-                "Accept-Encoding": "identity",
-            },
-        )
-        with urllib.request.urlopen(request, timeout=60) as response:
-            content_range = response.headers.get("Content-Range", "")
-            response.read(1)
-        match = re.match(r"bytes \d+-\d+/(\d+|\*)", content_range)
-        if not match or match.group(1) == "*":
+        _, total = self._strict_range(offset, length, timeout=60)
+        if total is None:
             raise WbRangeError("server did not report total size")
-        return int(match.group(1))
+        return total
 
 
 def hf_file_list(repo: str, revision: str = "main") -> list[dict]:
