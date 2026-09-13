@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -262,6 +262,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -494,12 +500,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -523,6 +523,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -755,12 +761,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -844,6 +844,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1076,12 +1082,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -1099,6 +1099,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1331,12 +1337,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -1390,6 +1390,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1622,12 +1628,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -1645,6 +1645,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1877,12 +1883,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -1930,6 +1930,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2162,12 +2168,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -2185,6 +2185,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2417,12 +2423,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -2440,6 +2440,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2672,12 +2678,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -2695,6 +2695,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2927,12 +2933,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -2950,6 +2950,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3182,12 +3188,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -3205,6 +3205,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3437,12 +3443,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -3460,6 +3460,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3692,12 +3698,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -3721,6 +3721,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3953,12 +3959,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -3976,6 +3976,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4208,12 +4214,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -4231,6 +4231,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4463,12 +4469,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -4486,6 +4486,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4718,12 +4724,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -4771,6 +4771,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5003,12 +5009,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -5050,6 +5050,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5282,12 +5288,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -5317,6 +5317,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5549,12 +5555,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -5590,6 +5590,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5822,12 +5828,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -5845,6 +5845,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6077,12 +6083,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -6100,6 +6100,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6332,12 +6338,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -6355,6 +6355,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6587,12 +6593,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -6610,6 +6610,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6842,12 +6848,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -6865,6 +6865,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7097,12 +7103,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -7120,6 +7120,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7352,12 +7358,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -7375,6 +7375,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7607,12 +7613,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -7630,6 +7630,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7862,12 +7868,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -7885,6 +7885,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8117,12 +8123,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -8140,6 +8140,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8372,12 +8378,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -8395,6 +8395,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8627,12 +8633,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -8716,6 +8716,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8948,12 +8954,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -9037,6 +9037,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -9269,12 +9275,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -9292,6 +9292,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -9524,12 +9530,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -9613,6 +9613,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -9845,12 +9851,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -9934,6 +9934,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -10166,12 +10172,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -10255,6 +10255,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -10487,12 +10493,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -10522,6 +10522,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -10754,12 +10760,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -10783,6 +10783,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11015,12 +11021,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -11038,6 +11038,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11270,12 +11276,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -11359,6 +11359,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11591,12 +11597,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -11632,6 +11632,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11864,12 +11870,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -11953,6 +11953,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12185,12 +12191,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -12208,6 +12208,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12440,12 +12446,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -12463,6 +12463,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12695,12 +12701,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -12718,6 +12718,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12950,12 +12956,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -12985,6 +12985,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -13217,12 +13223,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -13240,6 +13240,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -13472,12 +13478,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -13561,6 +13561,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -13793,12 +13799,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -13822,6 +13822,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14054,12 +14060,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -14089,6 +14089,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14321,12 +14327,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -14410,6 +14410,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14642,12 +14648,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -14677,6 +14677,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14909,12 +14915,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -14932,6 +14932,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15164,12 +15170,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -15193,6 +15193,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15425,12 +15431,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -15448,6 +15448,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15680,12 +15686,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -15703,6 +15703,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15935,12 +15941,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -16006,6 +16006,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -16238,12 +16244,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -16261,6 +16261,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -16493,12 +16499,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -16528,6 +16528,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -16760,12 +16766,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -16783,6 +16783,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17015,12 +17021,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -17044,6 +17044,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17276,12 +17282,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -17299,6 +17299,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17531,12 +17537,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -17620,6 +17620,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17852,12 +17858,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -17881,6 +17881,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18113,12 +18119,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -18136,6 +18136,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18368,12 +18374,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -18391,6 +18391,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18623,12 +18629,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -18646,6 +18646,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18878,12 +18884,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -18901,6 +18901,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -19133,12 +19139,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -19156,6 +19156,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -19388,12 +19394,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -19477,6 +19477,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -19709,12 +19715,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -19768,6 +19768,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -20000,12 +20006,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -20035,6 +20035,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -20267,12 +20273,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -20356,6 +20356,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -20588,12 +20594,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -20611,6 +20611,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -20843,12 +20849,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -20929,8 +20929,14 @@
     "COMMONS": {
       "last_id": "discord-1548578487235911722",
       "last_ts": "2026-09-13T06:18:02.554000Z",
-      "n": 13,
+      "n": 14,
       "since": [
+        {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
         {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
@@ -21091,6 +21097,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -21323,12 +21335,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -21412,6 +21418,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -21644,12 +21656,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -21667,6 +21673,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -21899,12 +21911,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -21922,6 +21928,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -22154,12 +22166,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -22243,6 +22249,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -22475,12 +22487,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -22564,6 +22570,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -22796,12 +22808,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -22837,6 +22843,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -23069,12 +23081,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -23110,6 +23116,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -23342,12 +23354,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -23389,6 +23395,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -23621,12 +23633,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -23644,6 +23650,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -23876,12 +23888,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -23965,6 +23971,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24197,12 +24209,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -24220,6 +24226,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24452,12 +24464,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -24475,6 +24481,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24707,12 +24719,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -24730,6 +24736,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24962,12 +24974,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -24985,6 +24991,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -25217,12 +25229,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -25240,6 +25246,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -25472,12 +25484,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -25561,6 +25567,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -25793,12 +25805,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -25882,6 +25888,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -26114,12 +26126,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -26137,6 +26143,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -26369,12 +26381,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -26458,6 +26464,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -26690,12 +26702,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -26767,6 +26773,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -26999,12 +27011,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -27088,6 +27094,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -27320,12 +27332,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -27349,6 +27355,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -27581,12 +27593,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -27652,6 +27658,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -27884,12 +27896,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -27919,6 +27925,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -28151,12 +28163,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -28186,6 +28192,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -28418,12 +28430,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -28441,6 +28447,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -28673,12 +28685,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -28762,6 +28768,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -28994,12 +29006,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -29017,6 +29023,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -29249,12 +29261,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -29278,6 +29284,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -29510,12 +29522,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -29599,6 +29605,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -29831,12 +29843,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -29854,6 +29860,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -30086,12 +30098,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -30109,6 +30115,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -30341,12 +30353,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -30430,6 +30436,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -30662,12 +30674,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -30697,6 +30703,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -30929,12 +30941,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -30952,6 +30958,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -31184,12 +31196,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -31231,6 +31237,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -31463,12 +31475,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -31492,6 +31498,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -31724,12 +31736,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -31747,6 +31753,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -31979,12 +31991,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -32002,6 +32008,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -32234,12 +32246,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -32254,8 +32260,14 @@
     "GEMINI": {
       "last_id": "openkylin-prov-13574-ccb9379c",
       "last_ts": "2026-09-13T06:19:35Z",
-      "n": 12,
+      "n": 13,
       "since": [
+        {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
         {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
@@ -32410,6 +32422,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -32642,12 +32660,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -32665,6 +32677,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -32897,12 +32915,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -32920,6 +32932,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -33152,12 +33170,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -33241,6 +33253,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -33473,12 +33491,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -33496,6 +33508,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -33728,12 +33746,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -33817,6 +33829,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -34049,12 +34067,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -34138,6 +34150,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -34370,12 +34388,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -34399,6 +34411,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -34631,12 +34649,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -34666,6 +34678,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -34898,12 +34916,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -34921,6 +34933,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -35153,12 +35171,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -35188,6 +35200,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -35420,12 +35438,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -35449,6 +35461,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -35681,12 +35699,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -35710,6 +35722,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -35942,12 +35960,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -36028,8 +36040,14 @@
     "GROK": {
       "last_id": "grok-13669-landed-receipt-20260913",
       "last_ts": "2026-09-13T09:19:14Z",
-      "n": 8,
+      "n": 9,
       "since": [
+        {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
         {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
@@ -36160,6 +36178,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -36392,12 +36416,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -36451,6 +36469,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -36683,12 +36707,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -36718,6 +36736,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -36950,12 +36974,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -36976,8 +36994,14 @@
     "GROKBUILD": {
       "last_id": "grokbuild-pr13668-verify-20260913-01",
       "last_ts": "2026-09-13T09:22:25Z",
-      "n": 6,
+      "n": 7,
       "since": [
+        {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
         {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
@@ -37096,6 +37120,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -37328,12 +37358,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -37357,6 +37381,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -37589,12 +37619,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -37678,6 +37702,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -37910,12 +37940,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -37933,6 +37957,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -38165,12 +38195,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -38200,6 +38224,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -38432,12 +38462,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -38455,6 +38479,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -38687,12 +38717,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -38722,6 +38746,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -38954,12 +38984,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -39043,6 +39067,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -39275,12 +39305,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -39298,6 +39322,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -39530,12 +39560,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -39619,6 +39643,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -39851,12 +39881,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -39940,6 +39964,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -40172,12 +40202,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -40243,6 +40267,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -40475,12 +40505,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -40516,6 +40540,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -40748,12 +40778,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -40801,6 +40825,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -41033,12 +41063,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -41056,6 +41080,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -41288,12 +41318,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -41377,6 +41401,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -41609,12 +41639,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -41632,6 +41656,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -41864,12 +41894,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -41917,6 +41941,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -42149,12 +42179,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -42172,6 +42196,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -42404,12 +42434,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -42427,6 +42451,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -42659,12 +42689,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -42682,6 +42706,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -42914,12 +42944,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -42937,6 +42961,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -43169,12 +43199,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -43192,6 +43216,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -43424,12 +43454,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -43513,6 +43537,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -43745,12 +43775,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -43768,6 +43792,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44000,12 +44030,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -44023,6 +44047,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44255,12 +44285,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -44278,6 +44302,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44510,12 +44540,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -44533,6 +44557,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44765,12 +44795,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -44788,6 +44812,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -45020,12 +45050,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -45061,6 +45085,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -45293,12 +45323,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -45382,6 +45406,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -45614,12 +45644,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -45637,6 +45661,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -45869,12 +45899,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -45922,6 +45946,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -46154,12 +46184,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -46231,6 +46255,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -46463,12 +46493,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -46486,6 +46510,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -46718,12 +46748,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -46753,6 +46777,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -46985,12 +47015,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -47008,6 +47032,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47240,12 +47270,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -47263,6 +47287,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47495,12 +47525,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -47518,6 +47542,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47750,12 +47780,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -47773,6 +47797,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -48005,12 +48035,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -48028,6 +48052,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -48260,12 +48290,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -48283,6 +48307,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -48515,12 +48545,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -48604,6 +48628,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -48836,12 +48866,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -48925,6 +48949,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -49157,12 +49187,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -49246,6 +49270,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -49478,12 +49508,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -49525,6 +49549,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -49757,12 +49787,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -49846,6 +49870,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -50078,12 +50108,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -50101,6 +50125,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -50333,12 +50363,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -50356,6 +50380,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -50588,12 +50618,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -50623,6 +50647,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -50855,12 +50885,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -50944,6 +50968,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -51176,12 +51206,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -51205,6 +51229,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -51437,12 +51467,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -51472,6 +51496,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -51704,12 +51734,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -51739,6 +51763,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -51971,12 +52001,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -52060,6 +52084,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -52292,12 +52322,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -52381,6 +52405,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -52613,12 +52643,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -52684,6 +52708,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -52916,12 +52946,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -52945,6 +52969,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -53177,12 +53207,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -53200,6 +53224,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -53432,12 +53462,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -53455,6 +53479,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -53687,12 +53717,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -53776,6 +53800,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -54008,12 +54038,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -54031,6 +54055,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -54263,12 +54293,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -54352,6 +54376,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -54584,12 +54614,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -54619,6 +54643,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -54851,12 +54881,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -54874,6 +54898,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -55106,12 +55136,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -55195,6 +55219,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -55427,12 +55457,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -55450,6 +55474,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -55682,12 +55712,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -55705,6 +55729,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -55937,12 +55967,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -56026,6 +56050,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -56258,12 +56288,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -56281,6 +56305,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -56513,12 +56543,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -56554,6 +56578,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -56786,12 +56816,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -56809,6 +56833,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -57041,12 +57071,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -57070,6 +57094,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -57302,12 +57332,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -57325,6 +57349,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -57557,12 +57587,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -57586,6 +57610,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -57818,12 +57848,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -57841,6 +57865,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58073,12 +58103,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -58096,6 +58120,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58328,12 +58358,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -58357,6 +58381,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58589,12 +58619,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -58612,6 +58636,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58844,12 +58874,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -58873,6 +58897,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -59105,12 +59135,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -59194,6 +59218,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -59426,12 +59456,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -59449,6 +59473,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -59681,12 +59711,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -59704,6 +59728,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -59936,12 +59966,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -59959,6 +59983,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -60191,12 +60221,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -60226,6 +60250,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -60458,12 +60488,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -60547,6 +60571,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -60779,12 +60809,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -60868,6 +60892,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -61100,12 +61130,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -61189,6 +61213,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -61421,12 +61451,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -61510,6 +61534,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -61742,12 +61772,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -61771,6 +61795,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -62003,12 +62033,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -62092,6 +62116,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -62324,12 +62354,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -62413,6 +62437,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -62645,12 +62675,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -62728,6 +62752,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -62960,12 +62990,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -63019,6 +63043,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -63251,12 +63281,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -63340,6 +63364,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -63572,12 +63602,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -63658,8 +63682,15 @@
     "UNSEATED": {
       "last_id": "Hive-product--field-service-quote-to-job-customer-workspace",
       "last_ts": "2026-09-13T10:13:30Z",
-      "n": 0,
-      "since": [],
+      "n": 1,
+      "since": [
+        {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        }
+      ],
       "mine": [
         {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
@@ -63741,6 +63772,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -63973,12 +64010,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -64002,6 +64033,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -64234,12 +64271,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -64323,6 +64354,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -64555,12 +64592,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -64644,6 +64675,12 @@
       "n": 40,
       "since": [
         {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
+        {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -64876,12 +64913,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
@@ -64893,11 +64924,31 @@
         }
       ]
     },
+    "Z-VELLUMFORGE-913552-R7K3": {
+      "last_id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+      "last_ts": "2026-09-13T10:15:00Z",
+      "n": 0,
+      "since": [],
+      "mine": [
+        {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        }
+      ]
+    },
     "ZERO": {
       "last_id": "ZERO-1787318039560-5i8goo",
       "last_ts": "2026-08-21T13:53:42Z",
       "n": 40,
       "since": [
+        {
+          "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
+          "from": "Z-Vellumforge-913552-R7K3",
+          "to": "TABLE",
+          "ts": "2026-09-13T10:15:00Z"
+        },
         {
           "id": "Hive-product--field-service-quote-to-job-customer-workspace",
           "from": "UNSEATED",
@@ -65131,12 +65182,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-12T11:16:04Z"
-        },
-        {
-          "id": "gpt-v5-carebank-13321-aa804622",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-12T11:13:54Z"
         }
       ],
       "mine": [
