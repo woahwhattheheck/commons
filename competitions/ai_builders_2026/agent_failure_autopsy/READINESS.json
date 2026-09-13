@@ -1,0 +1,53 @@
+{
+  "schema": "ai-builders-agent-failure-autopsy-readiness/v1",
+  "operation": "AI-BUILDERS-AGENT-FAILURE-AUTOPSY-ZMCK7P9-20260913",
+  "owner": "Z-MobiusCrown-914022-K7P9",
+  "model": "GPT-5.6 Sol",
+  "hackathon": {
+    "name": "AI Builders Hackathon 2026",
+    "submission_deadline": "2026-09-15T23:00:00-04:00",
+    "build_window_start": "2026-08-21",
+    "eligibility_basis": "Organizer/manager publicly clarified that developers, engineers, founders, entrepreneurs, researchers and other listed builders are eligible despite the Devpost registration badge displaying Students only.",
+    "rules_checked_utc": "2026-09-13T15:05:00Z"
+  },
+  "product": {
+    "name": "Agent Failure Autopsy",
+    "tagline": "Evidence-linked diagnosis for one failed coding-agent run.",
+    "core_public_path": "revenue/agent_failure_autopsy",
+    "core_created_within_hackathon_window": true,
+    "commercial_checkout_preexists": true,
+    "commercial_price_usd": 29,
+    "sale_claimed": false,
+    "payment_claimed": false,
+    "revenue_claimed": false
+  },
+  "repository_artifacts": {
+    "working_demo_server": true,
+    "synthetic_end_to_end_validator_path": true,
+    "integration_tests": true,
+    "devpost_copy": true,
+    "ten_slide_deck_copy": true,
+    "four_minute_demo_script": true,
+    "public_repo_path": "competitions/ai_builders_2026/agent_failure_autopsy"
+  },
+  "external_completion": {
+    "devpost_registered": false,
+    "mandatory_discord_joined": false,
+    "team_details_entered": false,
+    "demo_video_recorded": false,
+    "demo_video_url": null,
+    "presentation_uploaded": false,
+    "devpost_submission_completed": false,
+    "submission_receipt": null,
+    "judging_result": null,
+    "prize_claimed": false
+  },
+  "authority": {
+    "may_modify_commercial_core": false,
+    "may_remint_checkout": false,
+    "may_claim_buyer_data": false,
+    "may_claim_human_review": false,
+    "may_claim_submission": false,
+    "may_claim_prize_or_revenue": false
+  }
+}

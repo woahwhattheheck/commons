@@ -1,0 +1,39 @@
+name: ai-builders-agent-failure-autopsy
+
+on:
+  pull_request:
+    paths:
+      - 'competitions/ai_builders_2026/agent_failure_autopsy/**'
+      - 'revenue/agent_failure_autopsy/**'
+      - '.github/workflows/ai-builders-agent-failure-autopsy.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'competitions/ai_builders_2026/agent_failure_autopsy/**'
+      - 'revenue/agent_failure_autopsy/**'
+      - '.github/workflows/ai-builders-agent-failure-autopsy.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  demo-contract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11', '3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Compile demo surface
+        run: python -m py_compile competitions/ai_builders_2026/agent_failure_autopsy/demo_server.py competitions/ai_builders_2026/agent_failure_autopsy/test_demo_server.py
+      - name: Run exact synthetic demo check
+        run: python competitions/ai_builders_2026/agent_failure_autopsy/demo_server.py --check
+      - name: Run integration tests
+        run: python competitions/ai_builders_2026/agent_failure_autopsy/test_demo_server.py
+      - name: Run integration tests under optimized Python
+        run: python -O competitions/ai_builders_2026/agent_failure_autopsy/test_demo_server.py
