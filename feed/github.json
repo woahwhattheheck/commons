@@ -1,9 +1,9 @@
 {
   "counts": {
-    "open_issues": 67,
+    "open_issues": 69,
     "open_pull_requests": 42,
-    "runs_in_progress": 19,
-    "runs_queued": 1237
+    "runs_in_progress": 20,
+    "runs_queued": 1270
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -69,24 +69,24 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "zmh/nci-ods-reuseledger-20260913",
-      "created_at": "2026-09-13T16:28:14Z",
+      "branch": "zak-v5n9/sales-meeting-calendar-prep-consumer",
+      "created_at": "2026-09-13T16:39:41Z",
       "draft": false,
-      "head_sha": "635c246d4407650a8a361a81835614c6722f5339",
-      "number": 14069,
-      "title": "NCI ODS Impact Prize: build ReuseLedger Track-1 carrier",
-      "updated_at": "2026-09-13T16:28:14Z"
+      "head_sha": "e15295cc5c814807b74bd702e3f067651be91d35",
+      "number": 14080,
+      "title": "Integrate live Calendar free/busy into sales meeting readiness",
+      "updated_at": "2026-09-13T16:39:41Z"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "zsol/frantic-sourcey-usd-cash-proof-20260913",
-      "created_at": "2026-09-13T16:26:47Z",
+      "branch": "zts-x9p4/firetv-spoilershield-rejoin2-20260913",
+      "created_at": "2026-09-13T16:33:46Z",
       "draft": false,
-      "head_sha": "3c4edc0085becd50e6200eaf596d14b4eb0de2b7",
-      "number": 14067,
-      "title": "Bind first verified USD payout into right-now revenue truth",
-      "updated_at": "2026-09-13T16:26:47Z"
+      "head_sha": "13097f7581280415461458584c34e590761afa89",
+      "number": 14076,
+      "title": "feat: add Fire TV SpoilerShield competition carrier",
+      "updated_at": "2026-09-13T16:33:46Z"
     },
     {
       "author": "woahwhattheheck",
@@ -218,13 +218,90 @@
     "14055": "47d0c3324958e66349aa741a56d4732f58a063d1",
     "14057": "05f6f1775a5762ffa18c5c19da1d94d35bc45bb0",
     "14066": "533c121abc2a8ea4d2ba90439400d46594b94cf1",
-    "14067": "3c4edc0085becd50e6200eaf596d14b4eb0de2b7",
-    "14069": "635c246d4407650a8a361a81835614c6722f5339"
+    "14076": "13097f7581280415461458584c34e590761afa89",
+    "14080": "e15295cc5c814807b74bd702e3f067651be91d35"
   },
   "pulls_listed": 42,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 65.1,
+  "queue_depth_per_runner": 63.5,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zeta-sol/ohsu-erp-rfp-2027-0005-20260913",
+      "closed_at": "2026-09-13T16:37:16Z",
+      "head_sha": "49756ad6861c0ae3649fafdf35a17351efff9ac3",
+      "merged_at": "2026-09-13T16:37:16Z",
+      "number": 14077,
+      "state": "MERGED",
+      "title": "OHSU ERP RFP: add qualification and paid-workshare carrier"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "ztq-x3n7/prime-teaming-targeter-20260913",
+      "closed_at": "2026-09-13T16:35:41Z",
+      "head_sha": "4455808d83e128aac79ba9e0575b4671de7ecc10",
+      "merged_at": "2026-09-13T16:35:41Z",
+      "number": 14074,
+      "state": "MERGED",
+      "title": "Add evidence-bound prime / teaming targeter"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zdr-p6x4/gatewayhacks-civic-ledger-20260913",
+      "closed_at": "2026-09-13T16:34:29Z",
+      "head_sha": "118e44f9cf8e20a9b83ef213539560487271c328",
+      "merged_at": "2026-09-13T16:34:29Z",
+      "number": 14075,
+      "state": "MERGED",
+      "title": "GatewayHacks: ship evidence-bound Civic Action Ledger"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zlm-q3r7/opencv-gaugeproof-20260913",
+      "closed_at": "2026-09-13T16:34:25Z",
+      "head_sha": "cbf8232e9e1277c6b9cde9f9b19bdcd7b6797dc7",
+      "merged_at": "2026-09-13T16:34:25Z",
+      "number": 14073,
+      "state": "MERGED",
+      "title": "Build GaugeProof evidence-first OpenCV inspection carrier"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zts-x9p4/firetv-spoilershield-main-rejoin-20260913",
+      "closed_at": "2026-09-13T16:33:18Z",
+      "head_sha": "249669315e05386014ee92c80a653f1273c45965",
+      "merged_at": null,
+      "number": 14071,
+      "state": "CLOSED",
+      "title": "feat: add Fire TV SpoilerShield competition carrier"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zmh/nci-ods-reuseledger-20260913",
+      "closed_at": "2026-09-13T16:32:49Z",
+      "head_sha": "680ccd32a624806617ccbc226c6cb3a29f9e938e",
+      "merged_at": "2026-09-13T16:32:49Z",
+      "number": 14069,
+      "state": "MERGED",
+      "title": "NCI ODS Impact Prize: build ReuseLedger Track-1 carrier"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zsol/frantic-sourcey-usd-cash-proof-20260913",
+      "closed_at": "2026-09-13T16:31:53Z",
+      "head_sha": "8bd65e23699cbc9d72e249b7b2b7b4fdda3163b8",
+      "merged_at": "2026-09-13T16:31:53Z",
+      "number": 14067,
+      "state": "MERGED",
+      "title": "Bind first verified USD payout into right-now revenue truth"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -294,105 +371,28 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "zcb-h8n6/outbound-route-guard-compose-20260913",
-      "closed_at": "2026-09-13T15:41:25Z",
-      "head_sha": "cb96a1e9b1580076749bd099542c1b7e0fadd98b",
-      "merged_at": "2026-09-13T15:41:25Z",
-      "number": 14053,
+      "branch": "zlf-w3h7/grandrapids-preflight-authority-20260913",
+      "closed_at": "2026-09-13T14:18:41Z",
+      "head_sha": "a843e3a562c6477c398ade0a86bc563f03a0018a",
+      "merged_at": "2026-09-13T14:18:41Z",
+      "number": 13905,
       "state": "MERGED",
-      "title": "Compose route lifecycle into the outbound send guard"
+      "title": "revenue: bind Grand Rapids preflight to independent current authority"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "zlck8v4/uiowa-authority-currentness",
-      "closed_at": "2026-09-13T15:40:20Z",
-      "head_sha": "3e36cfb91a13e5c2275904c282a5be073b6eae7f",
-      "merged_at": "2026-09-13T15:40:20Z",
-      "number": 14048,
+      "branch": "zzv-r7m4/muhl-command-consumer-snapshot-bind-20260913",
+      "closed_at": "2026-09-13T14:16:24Z",
+      "head_sha": "036c5f5b1f894e21978fccb6bac52dc1283be59f",
+      "merged_at": "2026-09-13T14:16:24Z",
+      "number": 13890,
       "state": "MERGED",
-      "title": "fix(uiowa): bind evidence authority and currentness"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zchq-q7n4/route-quarantine-20260913",
-      "closed_at": "2026-09-13T15:38:29Z",
-      "head_sha": "9751d884a8780ee5ccdf83f66112b3bf9caf65af",
-      "merged_at": "2026-09-13T15:38:29Z",
-      "number": 14052,
-      "state": "MERGED",
-      "title": "feat(outbound): quarantine failed delivery routes before resend"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zet-v7q4/gosim-pareto-task-generation-20260913",
-      "closed_at": "2026-09-13T15:37:10Z",
-      "head_sha": "cec85bd487b43e1dd2175983837771480d2e30b0",
-      "merged_at": "2026-09-13T15:37:10Z",
-      "number": 14050,
-      "state": "MERGED",
-      "title": "GOSIM: fence Pareto comparisons by exact task generation"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zrh-n7q4/wy-ospd-0046n-prime-teaming",
-      "closed_at": "2026-09-13T14:07:51Z",
-      "head_sha": "e6af2a8184818b8c5437b19db56803b485f76450",
-      "merged_at": "2026-09-13T14:07:50Z",
-      "number": 13896,
-      "state": "MERGED",
-      "title": "Wyoming OSPD 0046-N prime teaming carrier"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zlh-x7k4/pursuit-portfolio-allocation",
-      "closed_at": "2026-09-13T14:07:43Z",
-      "head_sha": "1c379ed9a2b23b157792e426c7c090fadd68b273",
-      "merged_at": "2026-09-13T14:07:43Z",
-      "number": 13893,
-      "state": "MERGED",
-      "title": "Revenue: exact pursuit portfolio capacity allocation"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zsol/grandrapids-replay-effect-custody-20260913",
-      "closed_at": "2026-09-13T14:00:15Z",
-      "head_sha": "2306067c24519d99a5227d2de81583055c145388",
-      "merged_at": "2026-09-13T14:00:15Z",
-      "number": 13886,
-      "state": "MERGED",
-      "title": "fix: bind Grand Rapids replay to logical effect count"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zsm/paramount-streaming-rendition-release-gate-913926",
-      "closed_at": "2026-09-13T13:57:05Z",
-      "head_sha": "4d36fb08bf3e106f59b32008fb2486013298dce6",
-      "merged_at": "2026-09-13T13:57:05Z",
-      "number": 13885,
-      "state": "MERGED",
-      "title": "revenue: ship streaming rendition release gate"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zhc/agent-capability-constraint-registry-20260913",
-      "closed_at": "2026-09-13T13:53:03Z",
-      "head_sha": "f2cf1d51761a935c591920c8c0bbf37d53be6880",
-      "merged_at": "2026-09-13T13:53:03Z",
-      "number": 13876,
-      "state": "MERGED",
-      "title": "feat(revenue): add agent capability constraint registry"
+      "title": "fix: freeze and validate command snapshots inside --go"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-13T16:30:53Z",
+  "unchanged_since": "2026-09-13T16:41:35Z",
   "undatable_pulls": []
 }
