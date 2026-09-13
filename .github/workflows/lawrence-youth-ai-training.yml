@@ -1,0 +1,45 @@
+name: Lawrence Youth AI qualification
+
+on:
+  pull_request:
+    paths:
+      - "revenue/lawrence_youth_ai_training/**"
+      - ".github/workflows/lawrence-youth-ai-training.yml"
+  push:
+    branches: [main]
+    paths:
+      - "revenue/lawrence_youth_ai_training/**"
+      - ".github/workflows/lawrence-youth-ai-training.yml"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: lawrence-youth-ai-${{ github.event.pull_request.number || github.sha }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  exact-package:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python: ["3.11", "3.13"]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Compile exact package
+        run: |
+          python -m py_compile \
+            revenue/lawrence_youth_ai_training/__init__.py \
+            revenue/lawrence_youth_ai_training/gate.py \
+            revenue/lawrence_youth_ai_training/cli.py \
+            revenue/lawrence_youth_ai_training/test_gate.py
+      - name: Normal hostile suite
+        run: python -m unittest discover -s revenue/lawrence_youth_ai_training -t . -p 'test*.py' -v
+      - name: Optimized hostile suite
+        run: python -O -m unittest discover -s revenue/lawrence_youth_ai_training -t . -p 'test*.py' -v
