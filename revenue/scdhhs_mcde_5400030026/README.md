@@ -43,8 +43,9 @@ should not submit an offer and will not be evaluated.  The repository trust root
 therefore fixes these minimums; a candidate packet cannot lower them:
 
 1. at least 36 months of experience as prime contractor and at least three
-   distinct federal/state/local/private healthcare entities where a proposed
-   solution of similar size and scope is/was implemented;
+   distinct federal/state/local/private healthcare entities where the offeror
+   was prime contractor and a proposed solution of similar size and scope
+   is/was implemented;
 2. at least 36 months of real-time ADT solution experience, including at least
    24 months in healthcare; and
 3. at least one successful prior ADT implementation for a health plan/system
@@ -73,13 +74,18 @@ does not itself prove the prime-history minimum is
 * evidence references supporting the prime qualification review are present.
 
 Even then, `prime_qualification_candidate` and `submission_authorized` remain
-false.  This is a teaming recommendation, not a representation that the
-specialist may bid as prime or that the State has found either party responsible.
+false.  The receipt exposes `teaming_prime_legal_name` so the recommendation is
+auditable without reinterpreting the packet.  This is a teaming recommendation,
+not a representation that the specialist may bid as prime or that the State has
+found either party responsible.
 
 Amendment 1 §5.5 (page 57 of 95) requires subcontractor identification when a
 subcontracted portion exceeds 10% of cost, involves government information, or
 is otherwise critical to performance.  Missing required identification is a
-proposal-readiness hold.
+proposal-readiness hold.  Separately, §5.2 requires the relationship to be
+explained when the offeror asks the State to consider that subcontractor's
+qualifications; the compiler applies that relationship gate only when
+subcontractor qualification evidence is actually supplied.
 
 ## Readiness gates after the §5.2 minimums
 

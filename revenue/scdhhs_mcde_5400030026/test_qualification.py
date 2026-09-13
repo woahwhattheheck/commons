@@ -38,6 +38,7 @@ def security(value=True):
 def entity(name):
     return {
         "entity_name": name,
+        "as_prime_contractor": True,
         "similar_size_scope": True,
         "evidence_refs": [f"evidence:{name}"],
     }
@@ -80,6 +81,7 @@ class QualificationTests(unittest.TestCase):
         receipt = compile_qualification(prime_packet(), source_observation=source_observation())
         self.assertEqual(receipt["decision"], "PRIME_QUALIFICATION_CANDIDATE")
         self.assertTrue(receipt["prime_qualification_candidate"])
+        self.assertIsNone(receipt["teaming_prime_legal_name"])
         self.assertFalse(receipt["submission_authorized"])
         self.assertTrue(all(value is False for value in receipt["authority"].values()))
         self.assertTrue(verify_receipt(prime_packet(), source_observation=source_observation(), receipt=receipt))
@@ -125,6 +127,13 @@ class QualificationTests(unittest.TestCase):
         self.assertIn("MANDATORY_THREE_SIMILAR_HEALTHCARE_ENTITIES", receipt["reasons"])
         self.assertIn("MANDATORY_SUCCESSFUL_ONE_MILLION_LIVES_ADT", receipt["reasons"])
 
+    def test_three_entities_must_each_be_prime_contracts(self):
+        packet = prime_packet()
+        packet["offeror"]["similar_healthcare_entities"][2]["as_prime_contractor"] = False
+        receipt = compile_qualification(packet, source_observation=source_observation())
+        self.assertEqual(receipt["decision"], "PRIME_NO_GO_MANDATORY_EXPERIENCE")
+        self.assertIn("MANDATORY_THREE_SIMILAR_HEALTHCARE_ENTITIES", receipt["reasons"])
+
     def test_claimed_months_without_evidence_do_not_pass(self):
         packet = prime_packet()
         packet["offeror"]["prime_experience_evidence_refs"] = []
@@ -169,6 +178,7 @@ class QualificationTests(unittest.TestCase):
         }
         receipt = compile_qualification(packet, source_observation=source_observation())
         self.assertEqual(receipt["decision"], "TEAM_AS_SUBCONTRACTOR")
+        self.assertEqual(receipt["teaming_prime_legal_name"], "Qualified Prime Candidate")
         self.assertFalse(receipt["prime_qualification_candidate"])
         self.assertFalse(receipt["submission_authorized"])
 
@@ -201,6 +211,28 @@ class QualificationTests(unittest.TestCase):
         receipt = compile_qualification(packet, source_observation=source_observation())
         self.assertEqual(receipt["decision"], "HOLD_PROPOSAL_READINESS")
         self.assertIn("READINESS_SECURITY_HIPAA_COMPLIANCE", receipt["reasons"])
+
+    def test_subcontractor_relationship_needed_only_when_qualification_evidence_relied_on(self):
+        packet = prime_packet()
+        packet["subcontractors"] = [
+            {
+                "business_name": "Non-qualification Sub",
+                "scope": "Ancillary implementation support",
+                "cost_share_percent": 5,
+                "government_information_access": False,
+                "critical_services": False,
+                "identification_complete": False,
+                "relationship_explained": False,
+                "evidence_refs": [],
+            }
+        ]
+        receipt = compile_qualification(packet, source_observation=source_observation())
+        self.assertEqual(receipt["decision"], "PRIME_QUALIFICATION_CANDIDATE")
+
+        packet["subcontractors"][0]["evidence_refs"] = ["sub:qualification-evidence"]
+        receipt = compile_qualification(packet, source_observation=source_observation())
+        self.assertEqual(receipt["decision"], "HOLD_PROPOSAL_READINESS")
+        self.assertIn("SUBCONTRACTOR_RELATIONSHIP_UNEXPLAINED", receipt["reasons"])
 
     def test_subcontractor_identification_rule_is_fail_closed(self):
         packet = prime_packet()

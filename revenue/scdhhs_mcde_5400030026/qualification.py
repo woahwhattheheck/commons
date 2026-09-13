@@ -140,6 +140,10 @@ def _validate_entity_evidence(entities: Any) -> list[dict[str, Any]]:
         out.append(
             {
                 "entity_name": name,
+                "as_prime_contractor": _bool(
+                    item.get("as_prime_contractor"),
+                    f"offeror.similar_healthcare_entities[{i}].as_prime_contractor",
+                ),
                 "similar_size_scope": _bool(
                     item.get("similar_size_scope"),
                     f"offeror.similar_healthcare_entities[{i}].similar_size_scope",
@@ -200,6 +204,7 @@ def _validate_subcontractors(items: Any) -> tuple[list[dict[str, Any]], list[str
             item.get("relationship_explained"),
             f"subcontractors[{i}].relationship_explained",
         )
+        evidence_refs = _evidence_refs(item.get("evidence_refs"), f"subcontractors[{i}].evidence_refs")
         record = {
             "business_name": _str(item.get("business_name"), f"subcontractors[{i}].business_name"),
             "scope": _str(item.get("scope"), f"subcontractors[{i}].scope"),
@@ -208,12 +213,14 @@ def _validate_subcontractors(items: Any) -> tuple[list[dict[str, Any]], list[str
             "critical_services": critical,
             "identification_complete": identification_complete,
             "relationship_explained": relationship_explained,
-            "evidence_refs": _evidence_refs(item.get("evidence_refs"), f"subcontractors[{i}].evidence_refs"),
+            "evidence_refs": evidence_refs,
         }
         must_identify = cost_share > 10 or government_access or critical
         if must_identify and not identification_complete:
             reasons.append("SUBCONTRACTOR_IDENTIFICATION_INCOMPLETE")
-        if not relationship_explained:
+        # Amendment 1 §5.2 requires the relationship explanation when the
+        # offeror asks the State to consider a subcontractor's qualifications.
+        if evidence_refs and not relationship_explained:
             reasons.append("SUBCONTRACTOR_RELATIONSHIP_UNEXPLAINED")
         out.append(record)
     return out, sorted(set(reasons))
@@ -283,7 +290,9 @@ def compile_qualification(packet: Any, *, source_observation: Any) -> dict[str, 
     mandatory_reasons: list[str] = []
 
     qualifying_entities = [
-        row for row in entities if row["similar_size_scope"] and row["evidence_refs"]
+        row
+        for row in entities
+        if row["as_prime_contractor"] and row["similar_size_scope"] and row["evidence_refs"]
     ]
     successful_million_life = [
         row
@@ -317,6 +326,7 @@ def compile_qualification(packet: Any, *, source_observation: Any) -> dict[str, 
         readiness_reasons.append("READINESS_PROJECT_MANAGER_HEALTHCARE_EXPERIENCE")
 
     prime_qualified = False
+    teaming_prime_name: str | None = None
     if source_reasons:
         decision = "HOLD_SOURCE_NOT_CURRENT"
         reasons = source_reasons
@@ -333,7 +343,7 @@ def compile_qualification(packet: Any, *, source_observation: Any) -> dict[str, 
         prime_qualified = True
     else:
         teaming = _mapping(packet.get("teaming"), "packet.teaming")
-        prime_name = _str(teaming.get("qualified_prime_legal_name"), "teaming.qualified_prime_legal_name")
+        teaming_prime_name = _str(teaming.get("qualified_prime_legal_name"), "teaming.qualified_prime_legal_name")
         relationship = _bool(teaming.get("relationship_explained"), "teaming.relationship_explained")
         prime_refs = _evidence_refs(
             teaming.get("prime_qualification_evidence_refs"),
@@ -356,6 +366,7 @@ def compile_qualification(packet: Any, *, source_observation: Any) -> dict[str, 
         "operation_key": OPERATION_KEY,
         "route": route,
         "offeror_legal_name": legal_name,
+        "teaming_prime_legal_name": teaming_prime_name,
         "source_contract_sha256": source_contract_sha256(),
         "source_observation_sha256": _sha256(source_observation),
         "packet_sha256": _sha256(packet),
