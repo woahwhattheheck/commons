@@ -14,7 +14,7 @@ The public listing establishes a live CDR/openEHR opportunity, but the controlli
 
 Current-work evaluation now:
 
-- loads the retained `trusted_root.json` from beside the engine; there is no CLI flag that can replace it;
+- loads the retained `trusted_root.json` from beside the engine; neither the CLI nor the public Python evaluation APIs accept a caller-supplied trust root;
 - uses process UTC for current authority (`trusted_as_of` is explicit only in the library/test API);
 - binds the exact `sources.json` bytes to the retained source commitment;
 - binds the buyer deadline to both the retained root and, before any future READY, the retained buyer-pack extraction;
@@ -36,10 +36,11 @@ Today's root intentionally has no tender-pack, extraction, or evidence commitmen
 - `route_matrix.md` — prime vs bounded specialist teaming routes.
 - `tender_pack_recovery.md` — authorized exact-byte recovery and v2 retention procedure.
 - `partner_response.md` — prime-evidence profile plus fill-only response structure.
-- `qualify.py` — fail-closed current-authority + historical-replay engine.
+- `qualify.py` — public fail-closed boundary; loads the retained trust root internally.
+- `_qualify_engine.py` — private implementation core used by the boundary and hostile tests.
 - `fixtures/public_hold.json` — current truthful v2 qualification manifest.
 - `fixtures/public_hold.expected.json` — frozen receipt at the test's explicit trusted UTC.
-- `tests/test_qualify.py` — adversarial authority tests.
+- `tests/test_qualify.py` — 26 adversarial authority tests, including a public-API trust-root injection fence.
 
 ## Run
 

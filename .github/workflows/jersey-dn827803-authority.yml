@@ -26,8 +26,8 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Compile authority engine and hostile suite
-        run: python -m py_compile qualify.py tests/test_qualify.py
+      - name: Compile public boundary, private engine, and hostile suite
+        run: python -m py_compile qualify.py _qualify_engine.py tests/test_qualify.py
       - name: Authority hostile suite
         run: python -m unittest discover -s tests -v
       - name: Optimized-mode authority hostile suite
