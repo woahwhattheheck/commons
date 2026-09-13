@@ -1,0 +1,3 @@
+# Native LeRobot v2.1 decoding. The JSONL manifest path has no third-party dependencies.
+pyarrow
+opencv-python-headless
