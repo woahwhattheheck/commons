@@ -16,6 +16,22 @@ from .gate import EvidenceError, compile_receipt, render_markdown, verify_receip
 MAX_INPUT_BYTES = 8 * 1024 * 1024
 
 
+def _stat_token(info: os.stat_result) -> tuple[int, int, int, int, int]:
+    return (info.st_dev, info.st_ino, info.st_size, info.st_mtime_ns, info.st_ctime_ns)
+
+
+def _read_fd_bounded(fd: int, *, path: Path) -> bytes:
+    data = bytearray()
+    while len(data) <= MAX_INPUT_BYTES:
+        chunk = os.read(fd, min(65536, MAX_INPUT_BYTES + 1 - len(data)))
+        if not chunk:
+            break
+        data.extend(chunk)
+    if len(data) > MAX_INPUT_BYTES:
+        raise EvidenceError(f"{path}: input exceeds {MAX_INPUT_BYTES} bytes")
+    return bytes(data)
+
+
 def _read_bytes_bounded(path: Path) -> bytes:
     flags = os.O_RDONLY
     if hasattr(os, "O_BINARY"):
@@ -23,27 +39,39 @@ def _read_bytes_bounded(path: Path) -> bytes:
     nofollow = getattr(os, "O_NOFOLLOW", 0)
     if nofollow:
         flags |= nofollow
-    before = path.lstat() if not nofollow else None
+    path_before = path.lstat() if not nofollow else None
     fd = os.open(path, flags)
     try:
-        info = os.fstat(fd)
-        if not stat.S_ISREG(info.st_mode):
+        before = os.fstat(fd)
+        if not stat.S_ISREG(before.st_mode):
             raise EvidenceError(f"{path}: expected regular file")
-        if before is not None and (before.st_dev, before.st_ino) != (info.st_dev, info.st_ino):
+        if path_before is not None and (path_before.st_dev, path_before.st_ino) != (before.st_dev, before.st_ino):
             raise EvidenceError(f"{path}: file identity changed during open")
-        if info.st_size > MAX_INPUT_BYTES:
+        if before.st_size > MAX_INPUT_BYTES:
             raise EvidenceError(f"{path}: input exceeds {MAX_INPUT_BYTES} bytes")
-        data = bytearray()
-        while len(data) <= MAX_INPUT_BYTES:
-            chunk = os.read(fd, min(65536, MAX_INPUT_BYTES + 1 - len(data)))
-            if not chunk:
-                break
-            data.extend(chunk)
-        if len(data) > MAX_INPUT_BYTES:
-            raise EvidenceError(f"{path}: input exceeds {MAX_INPUT_BYTES} bytes")
-        return bytes(data)
+
+        first = _read_fd_bounded(fd, path=path)
+        middle = os.fstat(fd)
+        if _stat_token(middle) != _stat_token(before) or len(first) != before.st_size:
+            raise EvidenceError(f"{path}: file generation changed during read")
+
+        os.lseek(fd, 0, os.SEEK_SET)
+        second = _read_fd_bounded(fd, path=path)
+        after = os.fstat(fd)
+        if _stat_token(after) != _stat_token(before) or second != first:
+            raise EvidenceError(f"{path}: file generation changed during read")
+        return first
     finally:
         os.close(fd)
+
+
+def _reject_duplicate_pairs(pairs: list[tuple[str, Any]]) -> dict[str, Any]:
+    out: dict[str, Any] = {}
+    for key, value in pairs:
+        if key in out:
+            raise EvidenceError(f"duplicate JSON key: {key}")
+        out[key] = value
+    return out
 
 
 def _read_json(path: Path) -> Any:
@@ -53,7 +81,13 @@ def _read_json(path: Path) -> Any:
     except UnicodeDecodeError as exc:
         raise EvidenceError(f"{path}: invalid UTF-8") from exc
     try:
-        return json.loads(text, parse_constant=lambda token: (_ for _ in ()).throw(ValueError(token)))
+        return json.loads(
+            text,
+            object_pairs_hook=_reject_duplicate_pairs,
+            parse_constant=lambda token: (_ for _ in ()).throw(ValueError(token)),
+        )
+    except EvidenceError:
+        raise
     except (json.JSONDecodeError, ValueError) as exc:
         raise EvidenceError(f"{path}: invalid JSON") from exc
 
