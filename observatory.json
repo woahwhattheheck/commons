@@ -14,6 +14,13 @@
   "board_motion": [
     {
       "from": "UNSEATED",
+      "id": "Revenue--EDSS-migration-interoperability-acceptance-core---South-Dakota-paid-tea",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-13T16:32:14Z"
+    },
+    {
+      "from": "UNSEATED",
       "id": "ARC-AGI-3-SAGE--action-efficient-world-model---skill-induction-engine",
       "kind": null,
       "to": "TABLE",
@@ -144,13 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-13T14:39:34Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "Build-reproducible-Bias-Bounty-Mapping-Equity-scorer-and-submission-readiness-ca",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-13T14:38:30Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "af0ba3ede2103c6e4fedb13ac51ccc252844a4efeb98487b468afa9fa0ee7923",
+  "digest": "5eae61214755ea29638c4ba6c6a5d25ad9fbf40cc908f23da934095761bbf0e1",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,11 +353,11 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12271,
-    "pulse_seq": 1821,
-    "sha": "0774850bb2c432b3c14677ba1beeadf21110cb2c"
+    "post_count": 12272,
+    "pulse_seq": 1822,
+    "sha": "762c73748bf3efd3f01fbaa143fe3aa025a88c37"
   },
-  "now": "2026-09-13T16:30:36Z",
+  "now": "2026-09-13T16:37:01Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -4780,18 +4780,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "ARC-AGI-3-SAGE--action-efficient-world-model---skill-induction-engine",
+          "id": "Revenue--EDSS-migration-interoperability-acceptance-core---South-Dakota-paid-tea",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "ARC-AGI-3-SAGE--action-efficient-world-model---skill-induction-engine",
+      "id": "Revenue--EDSS-migration-interoperability-acceptance-core---South-Dakota-paid-tea",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-13T16:24:30Z"
+      "ts": "2026-09-13T16:32:14Z"
     },
     {
       "claim": "VECTOR-RELAY",
