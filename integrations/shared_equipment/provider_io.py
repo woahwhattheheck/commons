@@ -17,11 +17,15 @@ from commons_publication_policy import require_publication
 
 
 class EquipmentError(RuntimeError):
-    def __init__(self, message, *, code="equipment_error", uncertain=False, http_status=None):
+    def __init__(self, message, *, code="equipment_error", uncertain=False, http_status=None,
+                 retry_after=None, rate_limit_remaining=None, rate_limit_reset=None):
         super().__init__(message)
         self.code = code
         self.uncertain = uncertain
         self.http_status = http_status
+        self.retry_after = retry_after
+        self.rate_limit_remaining = rate_limit_remaining
+        self.rate_limit_reset = rate_limit_reset
 
 
 class _NoRedirect(urllib.request.HTTPRedirectHandler):
@@ -59,6 +63,27 @@ def _slack_publication_text(payload: dict) -> str:
 
     collect({key: payload[key] for key in ("text", "blocks", "attachments") if key in payload})
     return "\n".join(parts)
+
+def _github_headers(stdout):
+    """Extract only retry evidence from gh --include; never expose raw headers."""
+    match = re.match(r"^HTTP/[^\s]+[ \t]+([0-9]{3})(?:[^\r\n]*)\r?\n", stdout)
+    if not match:
+        return stdout, None, {}
+    separator = re.search(r"\r?\n\r?\n", stdout)
+    if separator is None:
+        raise EquipmentError("GitHub returned incomplete response headers",
+                             code="github_response_invalid", http_status=int(match.group(1)))
+    headers = {}
+    for line in stdout[match.end():separator.start()].splitlines():
+        key, colon, value = line.partition(":")
+        if colon and key.lower() in {"retry-after", "x-ratelimit-remaining", "x-ratelimit-reset"}:
+            headers[key.lower()] = value.strip()
+    return stdout[separator.end():], int(match.group(1)), headers
+
+
+def _header_integer(headers, name):
+    value = headers.get(name)
+    return int(value) if isinstance(value, str) and re.fullmatch(r"[0-9]{1,12}", value) else None
 
 class GitHubSlackEquipment:
     def __init__(self, *, gh: str = "gh", slack_token_loader=None, gh_runner=None, opener=None):
@@ -114,6 +139,8 @@ class GitHubSlackEquipment:
 
     def github(self, endpoint: str, *, method: str = "GET", payload: dict | None = None) -> Any:
         command = [self.gh, "api", "--hostname", "github.com", "--method", method, endpoint]
+        if method == "GET":
+            command.insert(-1, "--include")
         if payload is not None:
             command += ["--input", "-"]
         try:
@@ -123,19 +150,28 @@ class GitHubSlackEquipment:
         except (OSError, subprocess.TimeoutExpired) as exc:
             raise EquipmentError("existing gh transport unavailable; retain the operation ID before another write",
                                  code="github_transport_failed", uncertain=method != "GET") from None
-        if result.returncode:
-            # Provider errors can echo submitted data; return only structured
-            # status/message after redaction, never command/environment details.
+        body, status, headers = _github_headers(result.stdout) if method == "GET" else (result.stdout, None, {})
+        if result.returncode or status is not None and status >= 400:
+            # Preserve response rate evidence, never stderr, command or raw headers.
             try:
-                error = json.loads(result.stdout)
-                message = redacted(error.get("message", "GitHub request failed"))
+                error = json.loads(body)
+                message = redacted(error.get("message", "GitHub request failed")) if isinstance(error, dict) else "GitHub request failed"
             except (ValueError, TypeError):
                 message = "GitHub request failed through existing gh account"
-            raise EquipmentError(str(message), code="github_request_failed", uncertain=method != "GET")
-        if not result.stdout.strip():
+            remaining = _header_integer(headers, "x-ratelimit-remaining")
+            reset = _header_integer(headers, "x-ratelimit-reset")
+            secondary = status == 403 and any(term in str(message).lower()
+                for term in ("secondary rate limit", "abuse detection mechanism"))
+            limited = status == 429 or status == 403 and (remaining == 0 or secondary)
+            raise EquipmentError(str(message),
+                code="github_rate_limited" if limited else "github_request_failed",
+                uncertain=method != "GET", http_status=status,
+                retry_after=headers.get("retry-after") if limited else None,
+                rate_limit_remaining=remaining, rate_limit_reset=reset)
+        if not body.strip():
             return {}
         try:
-            return redacted(json.loads(result.stdout))
+            return redacted(json.loads(body))
         except (ValueError, TypeError):
             raise EquipmentError("GitHub returned an invalid response", code="github_response_invalid",
                                  uncertain=method != "GET") from None

@@ -116,6 +116,9 @@ class CommandCenter:
         self.state_dir = Path(state_dir)
         self.state_dir.mkdir(parents=True, exist_ok=True)
         self.database = self.state_dir / "command-center.sqlite3"
+        self._summary_lock = threading.Lock()
+        self._summary_cache = None
+        self._mail_cache = None
         self._work_store = None
         self._work_store_lock = threading.Lock()
         self._work_refresh_thread = None
@@ -905,6 +908,86 @@ class CommandCenter:
         finally:
             handle.close()
 
+    def work_summary(self):
+        """Compact shared observation; never triggers provider reads or refresh."""
+        from .summary import build_summary
+        started = time.monotonic()
+        store = self._work_store_instance()
+        paths = [store.db_path, Path(str(store.db_path) + "-wal"),
+                 self.database, Path(str(self.database) + "-wal")]
+        def signature():
+            result = []
+            for path in paths:
+                try:
+                    stat = path.stat()
+                    result.append((stat.st_mtime_ns, stat.st_size))
+                except FileNotFoundError:
+                    result.append(None)
+            return tuple(result)
+        with self._summary_lock:
+            before = signature()
+            cached = self._summary_cache
+            if cached and cached["signature"] == before and started - cached["at"] < 5:
+                # Return independent objects; callers cannot corrupt shared cache.
+                result = json.loads(cached["json"])
+                result["cache"] = {"hit": True, "ttl_seconds": 5,
+                                   "age_seconds": round(started - cached["at"], 3)}
+                return result
+            work = store.state()
+            work["refresh"] = self._work_refresh_status()
+            result = build_summary(work)
+            result["telemetry"] = {"projection_ms": round((time.monotonic() - started) * 1000, 2),
+                                   "records_examined": len(work["items"])}
+            self._summary_cache = {"signature": before, "at": started,
+                                   "json": json.dumps(result)}
+            result["cache"] = {"hit": False, "ttl_seconds": 5, "age_seconds": 0}
+            return result
+
+    def work_mail(self, limit=100, offset=0, query="", mode="all"):
+        """Read paginated mail threads from shared observations, without inference or provider calls."""
+        from .mail_tracking import project
+        if type(limit) is not int or not 1 <= limit <= 200 or type(offset) is not int or offset < 0:
+            raise CoreError(400, "Mail pagination requires limit 1..200 and nonnegative offset.")
+        if not isinstance(query, str) or len(query) > 240 or mode not in {"all", "waiting_on_us", "waiting_on_them", "unknown", "unread", "overdue"}:
+            raise CoreError(400, "Invalid mail filter.")
+        started = time.monotonic()
+        store = self._work_store_instance()
+        paths = [store.db_path, Path(str(store.db_path) + "-wal")]
+        def signature():
+            result = []
+            for path in paths:
+                try:
+                    stat = path.stat()
+                    result.append((stat.st_mtime_ns, stat.st_size))
+                except FileNotFoundError:
+                    result.append(None)
+            return tuple(result)
+        with self._summary_lock:
+            before = signature()
+            cached = self._mail_cache
+            hit = bool(cached and cached["signature"] == before and started - cached["at"] < 5)
+            if not hit:
+                work = store.state()
+                result = project(work)
+                result["telemetry"] = {"projection_ms": round((time.monotonic() - started) * 1000, 2),
+                                       "records_examined": len(work["items"])}
+                cached = {"signature": before, "at": started, "json": json.dumps(result)}
+                self._mail_cache = cached
+            result = json.loads(cached["json"])
+        query = query.strip().casefold()
+        rows = [row for row in result["threads"]
+                if (not query or query in " ".join(str(row.get(key) or "") for key in
+                    ("title", "account", "owner", "assigned_owner", "next_action")).casefold())
+                and (mode == "all" or row.get("waiting_on") == mode
+                     or mode == "unread" and row.get("unread") is True
+                     or mode == "overdue" and row.get("overdue") is True)]
+        result["threads"] = rows[offset:offset + limit]
+        result["pagination"] = {"limit": limit, "offset": offset, "matching_threads": len(rows),
+                                "next_offset": offset + limit if offset + limit < len(rows) else None}
+        result["cache"] = {"hit": hit, "ttl_seconds": 5, "age_seconds": round(started - cached["at"], 3)}
+        result["provider_requests"] = 0
+        return result
+
     def work_state(self, refresh=False):
         if refresh:
             started = self.refresh_work()
@@ -1121,7 +1204,11 @@ class CommandCenter:
             result = collectors.LiveCollectors(self._work_store_instance(), config).collect()
             sources = result.get("sources", [])
             errors = sum(bool(source.get("error")) for source in sources)
-            final.update(status="completed_with_errors" if errors else "completed",
+            budget = result.get("request_budget") or {}
+            deferred = result.get("deferred_sources") or []
+            final.update(request_budget=budget, deferred_sources=deferred)
+            wholly_deferred = budget.get("observed_attempts") == 0 and bool(deferred)
+            final.update(status="deferred" if wholly_deferred else "completed_with_errors" if errors else "completed",
                          source_count=len(sources), sources_with_errors=errors,
                          items_observed=result.get("items_observed", 0),
                          error=None, last_collected_at=result.get("observed_at"))

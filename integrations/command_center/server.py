@@ -28,6 +28,8 @@ MANIFEST = {
     "ingest_work": "POST /api/work/ingest: operation_id, source with explicit scope/coverage/observed_at, selected items",
     "direct_work_refresh": "POST /api/work/refresh; status is included in GET /api/work",
     "owner_work": "POST /api/work/item: operation_id, source_id, item_id, priority, next_action, optional prepared job",
+    "mail": "GET /api/mail?limit=100&offset=0&q=&mode=all: deterministic thread tracking; selected metadata only, no provider requests. Modes: all, waiting_on_us, waiting_on_them, unknown, unread, overdue. Existing work-item API preserves priorities and next actions. Coverage and sync age remain explicit.",
+    "summary": "GET /api/summary: bounded cache-only Deathstar view; no provider calls, freshness and observed lower-bound throughput, typed money records and request cooldowns",
     "swarm": "GET /api/swarm: existing PR queue, GPT review batches, exact receipts and freshness; ground/SWARM_ORDER.md governs integration",
     "source_modes": "Direct collectors use existing shared GitHub and Slack service roads. Gmail, Airtable and native task observations are supplied by their actual connector-equipped peers through ingest. A source read does not establish complete fleet coverage or business activity.",
     "sharing": "The human and all current and future Commons peers use the same state and capabilities. Roles coordinate responsibility, never access.",
@@ -77,6 +79,16 @@ class Handler(BaseHTTPRequestHandler):
         try:
             if parsed.path == "/api/state":
                 self.send_json(200, with_host(self.server.center, self.server.center.state(refresh=parse_qs(parsed.query).get("refresh") == ["1"])))
+            elif parsed.path == "/api/mail":
+                query = parse_qs(parsed.query)
+                try:
+                    limit = int(query.get("limit", ["100"])[0])
+                    offset = int(query.get("offset", ["0"])[0])
+                except ValueError:
+                    raise CoreError(400, "Mail pagination requires integers.") from None
+                self.send_json(200, self.server.center.work_mail(limit, offset, query.get("q", [""])[0], query.get("mode", ["all"])[0]))
+            elif parsed.path == "/api/summary":
+                self.send_json(200, self.server.center.work_summary())
             elif parsed.path == "/api/work":
                 self.send_json(200, self.server.center.work_state(refresh=parse_qs(parsed.query).get("refresh") == ["1"]))
             elif parsed.path == "/api/swarm":
@@ -108,7 +120,7 @@ class Handler(BaseHTTPRequestHandler):
             elif parsed.path == "/health":
                 self.send_json(200, {"ok": True, "service": "commons-command-center"})
             else:
-                names = {"/": ("index.html", "text/html; charset=utf-8"), "/app.js": ("app.js", "text/javascript; charset=utf-8"), "/style.css": ("style.css", "text/css; charset=utf-8"), "/work.js": ("work.js", "text/javascript; charset=utf-8"), "/work.css": ("work.css", "text/css; charset=utf-8")}
+                names = {"/": ("index.html", "text/html; charset=utf-8"), "/app.js": ("app.js", "text/javascript; charset=utf-8"), "/style.css": ("style.css", "text/css; charset=utf-8"), "/work.js": ("work.js", "text/javascript; charset=utf-8"), "/work.css": ("work.css", "text/css; charset=utf-8"), "/deathstar.js": ("deathstar.js", "text/javascript; charset=utf-8"), "/mail.js": ("mail.js", "text/javascript; charset=utf-8")}
                 entry = names.get(parsed.path)
                 if entry is None:
                     self.send_json(404, {"error": "not_found"})

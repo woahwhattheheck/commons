@@ -60,6 +60,8 @@ class CommandCenterEquipment:
             }, "additionalProperties": False,
         }
         specs = [
+            ("mail", "Read cached mail threads, last-observed waiting state, priority and next action, explicit deadlines, and sync coverage. No inference, provider reads, or sending.", {"limit": {"type": "integer", "minimum": 1, "maximum": 200}, "offset": {"type": "integer", "minimum": 0}, "query": {"type": "string", "maxLength": 240}, "mode": {"type": "string", "enum": ["all", "waiting_on_us", "waiting_on_them", "unknown", "unread", "overdue"]}}, []),
+            ("summary", "Compact Deathstar observation: cache-only work, freshness, coverage debt, lower-bound merge throughput, payment states and provider cooldowns. Never triggers provider calls.", {}, []),
             ("swarm_state", "Read the existing PR queue and GPT review batches before building or integrating. Includes stale-state warnings. Ground/SWARM_ORDER.md: GPTs build and lead; non-GPT work needs an exact-change GPT pass. This read is recorded in command-center usage state.", {"refresh": {"type": "boolean"}}, []),
             ("state", "Read the entire operation: canonical resources, service tools, accounts, observed fleet, budgets, focus, and operation outcomes.", {"refresh": {"type": "boolean"}}, []),
             ("work_state", "Read connected work, source freshness and coverage, owner next actions, and direct refresh progress.", {"refresh": {"type": "boolean"}}, []),
@@ -76,7 +78,7 @@ class CommandCenterEquipment:
         ]
         result = []
         for name, description, properties, required in specs:
-            if name not in {"state", "work_state", "refresh_work", "swarm_state"}:
+            if name not in {"state", "work_state", "refresh_work", "swarm_state", "summary", "mail"}:
                 properties = {"operation_id": {"type": "string", "description": "Stable ID; repeat exact payload on retry."}, **properties}
                 required = ["operation_id"] + required
             result.append({"name": "command_center_" + name, "description": description, "inputSchema": {"type": "object", "properties": properties, "required": required, "additionalProperties": False}})
@@ -86,6 +88,10 @@ class CommandCenterEquipment:
                     {"required": ["hidden"]}, {"required": ["action"]}]
         return result
     def call(self, name, arguments):
+        if name == "command_center_mail":
+            return self.center.work_mail(arguments.get("limit", 100), arguments.get("offset", 0), arguments.get("query", ""), arguments.get("mode", "all"))
+        if name == "command_center_summary":
+            return self.center.work_summary()
         if name == "command_center_swarm_state":
             return self.center.swarm_state(refresh=bool(arguments.get("refresh", False)))
         if name == "command_center_work_state":
