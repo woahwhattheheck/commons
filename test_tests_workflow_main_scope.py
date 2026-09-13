@@ -1,9 +1,11 @@
 #!/usr/bin/env python3
 """Engine battery stays on main; frozen titan PRs keep dedicated gates."""
 from pathlib import Path
+from host.ci_battery import discover
 
 ROOT = Path(__file__).resolve().parent
 TEXT = (ROOT / ".github" / "workflows" / "tests.yml").read_text(encoding="utf-8")
+DISCOVERED = discover(ROOT)
 FAILED = []
 
 
@@ -34,11 +36,12 @@ def main():
     )
     check(
         "battery still discovers root test_*.py",
-        "find . -maxdepth 1 -type f -name 'test_*.py'" in TEXT,
+        "python3 host/ci_battery.py --results" in TEXT
+        and ("python3", "test_battery_report.py") in DISCOVERED,
     )
     check(
         "battery still discovers infra tests",
-        "find infra -type f -name 'test_*.py'" in TEXT,
+        any(command == "python3" and path.startswith("infra/") for command, path in DISCOVERED),
     )
     check(
         "one failure still fails the run",
