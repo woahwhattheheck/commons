@@ -138,3 +138,14 @@ withdrawal, a later trusted restoration must restate sponsor mechanism, exact ad
 amount, and acceptance evidence in the restoration event itself; phrases such as
 "restored, same terms as before" do not silently reactivate stale pre-withdrawal terms.
 The resolved state is exposed as `checks.authoritative_funding_state`.
+
+Advertised amount is versioned independently from the cumulative sponsor/acceptance
+text. The gate starts from an authoritative issue body's explicit `reward`, `bounty`, or
+`funding` amount and then applies later trusted amount events in timestamp order. A newer
+explicit amount supersedes the old one, including a currency change; the gate never
+performs FX conversion. External comments and unrelated monetary prose such as test
+budgets do not change the reward amount. `from X to Y` and `X, now Y` transitions resolve
+to the destination; multiple irreconcilable current amounts fail closed. Receipts expose
+`checks.authoritative_amount_state`, `checks.canonical_current_reward_currency`, and
+`checks.canonical_current_reward_amount`; a stale aggregator amount is rejected as
+`advertised_amount_superseded_by_newer_canonical_evidence`.
