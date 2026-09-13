@@ -10,14 +10,20 @@ from pathlib import Path
 from typing import Any
 
 try:
-    from .gate import canonical_json, reconcile, verify_receipt
+    from .gate import (
+        canonical_json,
+        receipt_self_digest_matches,
+        reconcile,
+        verify_receipt,
+    )
 except ImportError:
-    from gate import canonical_json, reconcile, verify_receipt
+    from gate import canonical_json, receipt_self_digest_matches, reconcile, verify_receipt
 
 SNAPSHOT = "2026-09-13T12:00:00Z"
 ACTIVE_ISSUED = "2026-09-10T12:00:00Z"
 ACTIVE_EXPIRES = "2026-09-20T12:00:00Z"
 RESPONSE_AT = "2026-09-11T12:00:00Z"
+EXPECTED_FIXTURE_RECEIPT_SHA256 = "dede4ae4fb681198b46e5d4433f182f05afe4583539d2f62487672bda27767fb"
 EXPECTED_STATES = {
     "HUMAN_CLOSING_READY": 15,
     "COUNTEROFFER_REVIEW": 10,
@@ -158,8 +164,14 @@ def check_acceptance(payload: dict[str, Any] | None = None) -> dict[str, Any]:
         failures.append("quarantined != 10")
     if any(manifest["authorities"].values()):
         failures.append("one or more forbidden authority flags became true")
-    if not verify_receipt(manifest):
-        failures.append("receipt failed self-verification")
+    if not receipt_self_digest_matches(manifest):
+        failures.append("receipt failed self-digest integrity check")
+    if manifest["receipt_sha256"] != EXPECTED_FIXTURE_RECEIPT_SHA256:
+        failures.append(
+            f"fixture receipt drift: {manifest['receipt_sha256']} != {EXPECTED_FIXTURE_RECEIPT_SHA256}"
+        )
+    if not verify_receipt(manifest, EXPECTED_FIXTURE_RECEIPT_SHA256):
+        failures.append("receipt failed trusted-commitment verification")
     reversed_batch = {**batch, "events": list(reversed(batch["events"]))}
     if reconcile(reversed_batch)["receipt_sha256"] != manifest["receipt_sha256"]:
         failures.append("receipt changed under reversed input order")
@@ -170,13 +182,21 @@ def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--write-receipt", type=Path)
     parser.add_argument("--verify-receipt", type=Path)
+    parser.add_argument(
+        "--expected-receipt-sha256",
+        help="trusted out-of-band receipt SHA-256 required with --verify-receipt",
+    )
     args = parser.parse_args(argv)
     if args.verify_receipt:
+        if not args.expected_receipt_sha256:
+            parser.error("--verify-receipt requires --expected-receipt-sha256 from a trusted out-of-band source")
         payload = json.loads(args.verify_receipt.read_text(encoding="utf-8"))
         manifest = payload.get("manifest", payload)
-        valid = verify_receipt(manifest)
+        valid = verify_receipt(manifest, args.expected_receipt_sha256)
         print(json.dumps({"valid": valid}, sort_keys=True))
         return 0 if valid else 2
+    if args.expected_receipt_sha256:
+        parser.error("--expected-receipt-sha256 is only valid with --verify-receipt")
     result = check_acceptance()
     if args.write_receipt:
         args.write_receipt.write_text(canonical_json(result) + "\n", encoding="utf-8")
