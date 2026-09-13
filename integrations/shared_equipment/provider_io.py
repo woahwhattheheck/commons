@@ -140,7 +140,9 @@ class GitHubSlackEquipment:
     def github(self, endpoint: str, *, method: str = "GET", payload: dict | None = None) -> Any:
         command = [self.gh, "api", "--hostname", "github.com", "--method", method, endpoint]
         if method == "GET":
-            command.insert(-1, "--include")
+            # After `api`, never immediately before endpoint: callers parse
+            # endpoint as the token after --method.
+            command.insert(2, "--include")
         if payload is not None:
             command += ["--input", "-"]
         try:
