@@ -33,6 +33,12 @@ DEFAULT_REQUIRED_TOOLS = (
     "get_send_link",
 )
 DISCOVERY_METHODS = ("tools/list", "resources/list", "prompts/list")
+DISCOVERY_COLLECTIONS = {
+    "tools/list": "tools",
+    "resources/list": "resources",
+    "prompts/list": "prompts",
+}
+DEFAULT_MAX_DISCOVERY_PAGES = 500
 
 
 class ConformanceError(RuntimeError):
@@ -187,13 +193,165 @@ class MCPClient:
         return transport
 
 
-def _discovery_row(client: MCPClient, method: str) -> tuple[dict[str, Any], Any | None]:
-    try:
-        result, transport = client.call(method, {})
-        return {"state": "SUPPORTED", **transport}, result
-    except ConformanceError as exc:
-        state = "UNSUPPORTED" if exc.code == "RPC_ERROR" and exc.details.get("rpc_code") == -32601 else "FAILED"
-        return {"state": state, "error": exc.receipt()}, None
+def _discovery_row(
+    client: MCPClient,
+    method: str,
+    *,
+    collection_key: str | None = None,
+    max_pages: int = DEFAULT_MAX_DISCOVERY_PAGES,
+) -> tuple[dict[str, Any], Any | None]:
+    """Read one complete MCP list method without trusting a single page as complete."""
+    key = collection_key or DISCOVERY_COLLECTIONS.get(method)
+    if key is None:
+        raise ValueError("unknown discovery method: %s" % method)
+    if type(max_pages) is not int or max_pages < 1:
+        raise ValueError("max_pages must be a positive integer")
+
+    pages: list[dict[str, Any]] = []
+    items: list[Any] = []
+    seen_cursors: set[str] = set()
+    cursor: str | None = None
+
+    for page_number in range(1, max_pages + 1):
+        params: dict[str, Any] = {}
+        if cursor is not None:
+            params["cursor"] = cursor
+        try:
+            result, transport = client.call(method, params)
+        except ConformanceError as exc:
+            state = (
+                "UNSUPPORTED"
+                if not pages and exc.code == "RPC_ERROR" and exc.details.get("rpc_code") == -32601
+                else "FAILED"
+            )
+            row: dict[str, Any] = {
+                "state": state,
+                "complete": False,
+                "page_count": len(pages),
+                "pages": pages,
+                "error": exc.receipt(),
+            }
+            return row, None
+
+        if not isinstance(result, dict):
+            error = ConformanceError(
+                "INVALID_DISCOVERY_PAGE",
+                "%s result page must be an object" % method,
+                page=page_number,
+            )
+            return {
+                "state": "FAILED",
+                "complete": False,
+                "page_count": len(pages),
+                "pages": pages,
+                "error": error.receipt(),
+            }, None
+
+        page_items = result.get(key)
+        if not isinstance(page_items, list):
+            error = ConformanceError(
+                "INVALID_DISCOVERY_PAGE",
+                "%s result page must contain a %s list" % (method, key),
+                page=page_number,
+            )
+            return {
+                "state": "FAILED",
+                "complete": False,
+                "page_count": len(pages),
+                "pages": pages,
+                "error": error.receipt(),
+            }, None
+
+        page_receipt = {
+            "page": page_number,
+            "item_count": len(page_items),
+            **transport,
+        }
+        pages.append(page_receipt)
+
+        for item_index, item in enumerate(page_items):
+            name = item.get("name") if type(item) is dict else None
+            if type(item) is not dict or type(name) is not str or not name:
+                error = ConformanceError(
+                    "INVALID_DISCOVERY_ITEM",
+                    "%s returned an invalid %s member" % (method, key),
+                    page=page_number,
+                    item_index=item_index,
+                )
+                return {
+                    "state": "FAILED",
+                    "complete": False,
+                    "page_count": len(pages),
+                    "pages": pages,
+                    "error": error.receipt(),
+                }, None
+
+        items.extend(page_items)
+
+        if "nextCursor" not in result or result["nextCursor"] is None:
+            row = {
+                "state": "SUPPORTED",
+                "complete": True,
+                "page_count": len(pages),
+                "item_count": len(items),
+                "pages": pages,
+            }
+            # Preserve the original single-page transport surface for consumers
+            # by projecting the first page, while binding every page under pages[].
+            for field in (
+                "http_status",
+                "content_type",
+                "request_sha256",
+                "response_sha256",
+                "response_bytes",
+            ):
+                row[field] = pages[0][field]
+            return row, {key: items}
+
+        next_cursor = result["nextCursor"]
+        if type(next_cursor) is not str or not next_cursor:
+            error = ConformanceError(
+                "INVALID_DISCOVERY_CURSOR",
+                "%s returned an invalid nextCursor" % method,
+                page=page_number,
+            )
+            return {
+                "state": "FAILED",
+                "complete": False,
+                "page_count": len(pages),
+                "pages": pages,
+                "error": error.receipt(),
+            }, None
+
+        if next_cursor in seen_cursors:
+            error = ConformanceError(
+                "DISCOVERY_CURSOR_LOOP",
+                "%s repeated a pagination cursor" % method,
+                page=page_number,
+                cursor_sha256=sha256_text(next_cursor),
+            )
+            return {
+                "state": "FAILED",
+                "complete": False,
+                "page_count": len(pages),
+                "pages": pages,
+                "error": error.receipt(),
+            }, None
+        seen_cursors.add(next_cursor)
+        cursor = next_cursor
+
+    error = ConformanceError(
+        "DISCOVERY_PAGE_LIMIT",
+        "%s exceeded the configured discovery page limit" % method,
+        max_pages=max_pages,
+    )
+    return {
+        "state": "FAILED",
+        "complete": False,
+        "page_count": len(pages),
+        "pages": pages,
+        "error": error.receipt(),
+    }, None
 
 
 def _names(result: Any, key: str) -> list[str]:
@@ -201,7 +359,7 @@ def _names(result: Any, key: str) -> list[str]:
         return []
     names = []
     for item in result[key]:
-        if isinstance(item, dict) and isinstance(item.get("name"), str):
+        if type(item) is dict and type(item.get("name")) is str and item["name"]:
             names.append(item["name"])
     return sorted(set(names))
 
@@ -214,6 +372,7 @@ def run_conformance(
     call_tool: str = "",
     call_arguments: dict[str, Any] | None = None,
     include_call_result: bool = False,
+    max_discovery_pages: int = DEFAULT_MAX_DISCOVERY_PAGES,
 ) -> dict[str, Any]:
     started = utc_now()
     receipt: dict[str, Any] = {
@@ -225,10 +384,23 @@ def run_conformance(
         "required_tools": sorted(set(required_tools)),
         "transport": {},
         "discovery": {},
+        "discovery_limits": {"max_pages_per_method": max_discovery_pages},
         "capabilities": {},
         "tool_call": None,
         "errors": [],
     }
+    if type(max_discovery_pages) is not int or max_discovery_pages < 1:
+        receipt["status"] = "FAIL"
+        receipt["errors"].append(
+            ConformanceError(
+                "INVALID_DISCOVERY_LIMIT",
+                "max_discovery_pages must be a positive integer",
+            ).receipt()
+        )
+        unsigned = canonical_json(receipt)
+        receipt["receipt_sha256"] = sha256_text(unsigned)
+        return receipt
+
     client = MCPClient(endpoint, timeout=timeout)
     try:
         initialize, init_transport = client.call(
@@ -252,17 +424,27 @@ def run_conformance(
 
         results: dict[str, Any] = {}
         for method in DISCOVERY_METHODS:
-            row, value = _discovery_row(client, method)
+            row, value = _discovery_row(
+                client,
+                method,
+                collection_key=DISCOVERY_COLLECTIONS[method],
+                max_pages=max_discovery_pages,
+            )
             receipt["discovery"][method] = row
             results[method] = value
 
-        tool_names = _names(results.get("tools/list"), "tools")
+        tools_discovery_complete = (
+            receipt["discovery"]["tools/list"]["state"] == "SUPPORTED"
+            and receipt["discovery"]["tools/list"]["complete"]
+        )
+        tool_names = _names(results.get("tools/list"), "tools") if tools_discovery_complete else []
         receipt["tool_names"] = tool_names
-        missing = sorted(set(required_tools) - set(tool_names))
+        missing = sorted(set(required_tools) - set(tool_names)) if tools_discovery_complete else []
         receipt["tool_parity"] = {
-            "present": sorted(set(required_tools) & set(tool_names)),
+            "present": sorted(set(required_tools) & set(tool_names)) if tools_discovery_complete else [],
             "missing": missing,
-            "complete": not missing,
+            "complete": tools_discovery_complete and not missing,
+            "authoritative": tools_discovery_complete,
         }
         receipt["resource_names"] = _names(results.get("resources/list"), "resources")
         receipt["prompt_names"] = _names(results.get("prompts/list"), "prompts")
@@ -324,6 +506,16 @@ def _parse_arguments(raw: str) -> dict[str, Any]:
     return value
 
 
+def _positive_int(raw: str) -> int:
+    try:
+        value = int(raw, 10)
+    except ValueError as exc:
+        raise argparse.ArgumentTypeError("must be a positive integer") from exc
+    if value < 1:
+        raise argparse.ArgumentTypeError("must be a positive integer")
+    return value
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("endpoint", help="HTTP(S) MCP endpoint")
@@ -341,6 +533,12 @@ def build_parser() -> argparse.ArgumentParser:
         action="store_true",
         help="include the tool response body in the report; default records only hashes and size",
     )
+    parser.add_argument(
+        "--max-discovery-pages",
+        type=_positive_int,
+        default=DEFAULT_MAX_DISCOVERY_PAGES,
+        help="maximum pages to read per list method before failing closed (default: %(default)s)",
+    )
     parser.add_argument("--output", help="write the canonical JSON receipt to this path")
     return parser
 
@@ -355,6 +553,7 @@ def main(argv: list[str] | None = None) -> int:
         call_tool=args.call_tool,
         call_arguments=_parse_arguments(args.arguments_json),
         include_call_result=args.include_call_result,
+        max_discovery_pages=args.max_discovery_pages,
     )
     rendered = json.dumps(report, ensure_ascii=False, sort_keys=True, indent=2) + "\n"
     if args.output:

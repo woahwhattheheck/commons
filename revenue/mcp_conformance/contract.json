@@ -1,8 +1,8 @@
 {
   "id": "mcp-conformance-receipt-20260827",
-  "version": 2,
+  "version": 3,
   "buyer": "Anyone shipping, buying, or debugging an MCP server or carrier integration.",
-  "promise": "One vendor-neutral MCP endpoint run with a shareable exact-evidence JSON receipt.",
+  "promise": "One vendor-neutral MCP endpoint run with a shareable exact-evidence JSON receipt and an offline verification receipt.",
   "tiers": [
     {
       "id": "receipt-run",
@@ -13,7 +13,8 @@
         "tools, resources, and prompts discovery",
         "required-tool parity with exact missing set",
         "request, response, input, and final receipt SHA-256 values",
-        "public-safe endpoint label with URL credentials omitted"
+        "public-safe endpoint label with URL credentials omitted",
+        "offline verification receipt for canonical integrity, privacy, discovery-ledger, parity, and status invariants"
       ]
     },
     {
@@ -33,7 +34,8 @@
     "endpoint label omits URL userinfo, query, and fragment",
     "transport and discovery outcomes are explicit",
     "successful response transport rows record exact byte length and SHA-256; failure rows preserve only response hash metadata the runner actually emits",
-    "the final receipt SHA-256 recomputes from canonical unsigned JSON"
+    "the final receipt SHA-256 recomputes from canonical unsigned JSON",
+    "the offline verifier accepts the delivered receipt without endpoint access and emits schema commons-mcp-conformance-verification-v1 with valid=true and its own verification_sha256"
   ],
   "commercial": {
     "cash_usd": 0,
@@ -43,12 +45,14 @@
   "requires_login": false,
   "runner": {
     "path": "host/mcp_conformance.py",
+    "verifier_path": "host/mcp_conformance_verify.py",
     "dependencies": "Python 3 standard library only",
     "default_mode": "read-only discovery",
-    "optional_mode": "caller-explicit arbitrary tools/call with response body hashed by default"
+    "optional_mode": "caller-explicit arbitrary tools/call with response body hashed by default",
+    "verification_mode": "offline strict-JSON and semantic verification; no endpoint access"
   },
   "intake_boundary": "public MCP endpoint and required tool names only; a public repository URL may be supplied for repair",
   "data_boundary": "keep credentials, tokens, private repository URLs, buyer records, and provider data outside public Commons receipts",
   "execution_boundary": "server tools are not invoked by default; optional tool execution occurs only when the caller explicitly supplies the tool name; omitted JSON arguments default to an empty object; response content is hashed and omitted unless inclusion is explicitly requested",
-  "payment_boundary": "a posted intent, quote, recorded provider URL, or conformance receipt is not payment, authorization, settlement, payout, bank availability, or cash"
+  "payment_boundary": "a posted intent, quote, recorded provider URL, conformance receipt, or verification receipt is not payment, authorization, settlement, payout, bank availability, or cash"
 }

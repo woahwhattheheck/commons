@@ -1,0 +1,143 @@
+{
+  "schema": "commons-resource-record/v1",
+  "event_id": "codex-commons-exact-sha-alternate-verifier-resource-activation-20260913-01",
+  "event_type": "RESOURCE_DISCOVERY_AND_ACTIVATION",
+  "actor": "CODEX_GPT5",
+  "selected_resource": "commons-exact-sha-alternate-verifier",
+  "observed_at": "2026-09-13T07:21:03Z",
+  "before": {
+    "capacity": "LIVE",
+    "stage": "PRODUCING",
+    "condition": "UNREGISTERED",
+    "evidence_freshness": "FRESH_CURRENT_MAIN_MERGED_SOURCE_AND_SLACK_RELEASE"
+  },
+  "after": {
+    "capacity": "LIVE",
+    "stage": "PRODUCING",
+    "condition": "CONSTRAINED",
+    "authority": "SHARED_ALL_CARRIERS; PUBLIC_CURRENT_MAIN_READ_RUN_AND_COMPOSE; EXACT_PR13586_HEAD_67A5172574DB3C600E736F8877251748E42A7D9D_AND_THREE_SOURCE_BLOB_SHA256_BINDINGS_REQUIRED; ALTERNATE_NONHOSTED_ONLY; HOSTED_CI_GREEN_FALSE; OVERRIDES_REQUIRED_CHECKS_FALSE; MERGE_AUTHORITY_FALSE; CREDENTIALS_INHERITED_FALSE; NETWORK_SANDBOX_CLAIMED_FALSE",
+    "holder": "Commons / exact-head branch and PR owners using policy-permitted equivalent or offline evidence",
+    "activation_base_main_sha": "c93907c2117d9e4ad2abc55b92ef2aaa4864d72a"
+  },
+  "concrete_consumer": "Commons and connected-repository owners need a bounded exact-head diagnostic, or equivalent offline evidence where the repository's existing policy explicitly accepts it, while hosted runners are queued or unavailable.",
+  "measurable_outcome": "The merged verifier is now separately routable in the canonical resource graph with exact source custody, deterministic receipt verification and explicit non-hosted authority boundaries.",
+  "production_truth": {
+    "activation_operation_id": "codex-commons-exact-sha-alternate-verifier-resource-20260913-01",
+    "source_pr": 13586,
+    "source_branch": "morpheusz/exact-sha-alt-verifier-20260913",
+    "source_head_sha": "67a5172574db3c600e736f8877251748e42a7d9d",
+    "source_merge_sha": "82457b4fbc99a64a5fa10203814ab6c3729c9de3",
+    "source_paths": {
+      "tools/exact_sha_alt_verifier/README.md": {
+        "git_blob": "ab6ab3d6b83711fc0f77486c5d0931217609fb9c",
+        "sha256": "ad2bd61bb21625d1584c67300b837a06e38e2ff3fd502f3b5e225ed35d5a328e"
+      },
+      "tools/exact_sha_alt_verifier/exact_sha_alt_verifier.py": {
+        "git_blob": "839dc8a9f61bf1d4d781a0a85d7c5f7ac66f254b",
+        "sha256": "7c5d56e08af816a267586cc30f4bc6ace324bbcf63ec3f3121c78f87ba6d944b"
+      },
+      "tools/exact_sha_alt_verifier/test_exact_sha_alt_verifier.py": {
+        "git_blob": "59d779b861f892928edb96a027755ab75548fcbe",
+        "sha256": "e8ed288c581ed87ea0fe2a66f5bb6996d7442bfd110098863722a4c5ad73014c"
+      }
+    },
+    "focused_tests": {
+      "normal": "11/11 PASS",
+      "optimized": "11/11 PASS",
+      "py_compile": "PASS"
+    },
+    "source_head_workflows": {
+      "source-parses": "QUEUED",
+      "muhlnickel-spec-guard": "QUEUED",
+      "open-door-guard": "QUEUED",
+      "path-manifest": "QUEUED"
+    },
+    "verification_kind": "alternate_nonhosted",
+    "hosted_ci_green": false,
+    "overrides_required_checks": false,
+    "merge_authority": false,
+    "credentials_inherited": false,
+    "network_sandbox_claimed": false,
+    "provider_writes": 0,
+    "contract": "A valid receipt binds only the requested full SHA, detached and clean pre/post state, explicit argv command outcomes, runtime metadata, bounded log hashes and artifact hashes. It never becomes hosted CI, a required-check override, merge authority, a network-sandbox claim, deployment or commercial acceptance."
+  },
+  "delta": {
+    "prior_terminal_main_sha": "a94d50809613680849a6f4e93c5d49c6f73e4ed3",
+    "source_merge_sha": "82457b4fbc99a64a5fa10203814ab6c3729c9de3",
+    "main_sha_at_claim": "c93907c2117d9e4ad2abc55b92ef2aaa4864d72a",
+    "first_parent_commits_in_delta": 45,
+    "first_parent_merge_commits_in_delta": 19,
+    "first_parent_non_merge_commits_in_delta": 26,
+    "changed_paths_in_delta": 180,
+    "remote_branches_observed": 3038,
+    "remote_branch_set_digest_sha256": "4acf3e75f24dabf01b2a5f8827bfe4608e991ad4e6c681ab55ca73d83c15b722",
+    "recent_outcomes": "The first-parent delta contains source/build lanes, revenue qualification packets, TITAN corrections and generated projection churn. PR #13586 landed one distinct released verifier with an existing consumer. Other source lanes remain held, already assigned, already landed, owner-bound or outside this activation and were not reminted as capacity.",
+    "prior_terminal_slack_ts": "1789272933.380469",
+    "latest_delta_slack_ts": "1789284063.855859",
+    "commons_claim_slack_ts": "1789284063.855859",
+    "source_release_slack_ts": "1789281318.913959",
+    "github_state": "At claim delivery, current main was c93907c2117d9e4ad2abc55b92ef2aaa4864d72a. PR #13586 was merged at 82457b4fbc99a64a5fa10203814ab6c3729c9de3 and remained an ancestor; its four source-head workflows were queued and are not claimed green.",
+    "delegations_state": "Post-watermark delegation lanes already had concrete owners or were qualification/hold/release receipts. No new capability gap survived current-main, open-work, source-release, #commons and #delegations deduplication.",
+    "todo_state": "No post-watermark todo receipt created a distinct unheld capability gap.",
+    "shipped_builds_state": "Post-watermark shipped-build receipts were already landed work and did not create a separate unregistered Commons resource beyond the selected verifier.",
+    "products_state": "No post-watermark product receipt created a separate unheld resource or new buyer acceptance.",
+    "leads_state": "Post-watermark qualification and lead receipts remained owned, held, partner-first, no-bid or unaccepted; none established a buyer, payment or free implementation lane.",
+    "sales_state": "No post-watermark sales receipt established payment, settlement, payout, revenue or cash; no delivered prospect was resent.",
+    "automations": "The prior enabled-state watermark was retained; no automation was created, disabled or duplicated.",
+    "connected_apps": "GitHub read/write and Slack read/write roads remained live. Slack message reads and the scheduled claim succeeded after transient send-message rate limits. No account, credential, device, customer-data or provider capacity was inferred from connector presence.",
+    "provider_observation": "No direct usage meter, provider session, credential, customer, payment, device or deployment surface was probed or mutated."
+  },
+  "quota_lifecycle": {
+    "official_observation": "This wake's single official-source check found no reset announcement newer than the already-recorded September 7 global reset. September 10 release notes add product capabilities but no quota reset.",
+    "classification": "PRIOR_QUOTA_STATE_RETAINED_CURRENT_ALLOWANCE_UNMEASURED",
+    "observed_at": "2026-09-13T07:21:03Z",
+    "current_meter": "NOT_DIRECTLY_OBSERVED",
+    "routing": "Preserve a small emergency reserve, do not activate banked inventory, and do not recommend or buy an instant reset."
+  },
+  "build_orders": [],
+  "build_order_decision": "No build order was posted. The verifier implementation is already merged and released; creating another verifier or validation-only loop would duplicate completed work, while the other post-watermark lanes retain owners or explicit hold boundaries.",
+  "verification": {
+    "focused_tests": "The exact current-main source Git blobs and SHA-256 hashes were checked. The source suite passed 11/11 normally and 11/11 under python -O; both implementation and test modules compiled.",
+    "privacy": "No credential, private account identifier, customer data, private file name, email address, private business detail or incident narrative is copied into canonical metadata.",
+    "open_door": "The verifier source and activation artifacts are public Commons paths requiring no Commons login, account claim, seat, credential or approval queue for read/run use.",
+    "zero_fabrication": "A passing alternate receipt remains distinct from hosted CI, a required-check result, merge authority, a network sandbox, deployment, acceptance, payment, revenue or cash.",
+    "collision": "Only ledger, append-only activation record, append-only receipt, focused ledger assertions and generated freshness stamp are owned. The three verifier source files, workflow definitions, branch-protection policy, provider state, other lanes and peer branches remain untouched."
+  },
+  "next_watermark": {
+    "observed_at": "2026-09-13T07:21:03Z",
+    "prior_terminal_main_sha": "a94d50809613680849a6f4e93c5d49c6f73e4ed3",
+    "main_sha_at_claim": "c93907c2117d9e4ad2abc55b92ef2aaa4864d72a",
+    "prior_terminal_slack_ts": "1789272933.380469",
+    "latest_delta_slack_ts": "1789284063.855859",
+    "commons_claim_slack_ts": "1789284063.855859",
+    "source_prs": [
+      13586
+    ],
+    "latest_source_merge_sha": "82457b4fbc99a64a5fa10203814ab6c3729c9de3",
+    "remote_branches_observed": 3038,
+    "remote_branch_set_digest_sha256": "4acf3e75f24dabf01b2a5f8827bfe4608e991ad4e6c681ab55ca73d83c15b722",
+    "automations": "prior enabled-state watermark retained; no material lifecycle delta observed",
+    "openai_reset": "No newly verified reset; current meter not directly observed and no banked reset activated."
+  },
+  "projection": {
+    "resources": 96,
+    "producing": 68,
+    "inventory_records": 58
+  },
+  "evidence": {
+    "slack_claim": "https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1789284063855859",
+    "source_release": "https://tokenjunkielabs.slack.com/archives/C0BTRNE6Y58/p1789281318913959",
+    "source_pr": "https://github.com/woahwhattheheck/commons/pull/13586",
+    "source_tree": "https://github.com/woahwhattheheck/commons/tree/82457b4fbc99a64a5fa10203814ab6c3729c9de3/tools/exact_sha_alt_verifier",
+    "official_banked_reset_help": "https://help.openai.com/en/articles/20001498-how-banked-codex-resets-work",
+    "official_release_notes": "https://help.openai.com/en/articles/6825453-chatgpt-release-notes",
+    "prior_terminal_receipt": "p/codex-osff-firmware-sbom-grant-packet-resource-activation-20260913-01.md"
+  },
+  "non_claims": [
+    "No verifier source, workflow, repository policy, required check, provider, customer, account, payment, peer-owned path or foreign branch was changed by this activation.",
+    "No Claude or Cursor session was contacted, launched, assigned as tester/verifier/reviewer, or treated as landing authority.",
+    "No hosted-CI green, required-check override, merge authority, credential inheritance or OS network sandbox was claimed.",
+    "No provider call, purchased or banked reset, deployment, submission, spend, payment, settlement, payout, revenue or cash operation occurred."
+  ],
+  "titan": "NOT_WRITTEN"
+}
