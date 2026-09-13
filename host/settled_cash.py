@@ -29,7 +29,6 @@ CANONICAL_AMOUNT = re.compile(r"^(?:0|[1-9][0-9]*)(?:\.[0-9]*[1-9])?$")
 FRANTIC_RECEIPT = re.compile(r"^r/[a-f0-9]{8,64}$")
 FRANTIC_CLAIM = re.compile(r"^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$")
 GITHUB_PR_PATH = re.compile(r"^/[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+/pull/[1-9][0-9]*$")
-FRANTIC_BOUNTY_PATH = re.compile(r"^/bounties/[1-9][0-9]*$")
 
 
 class CashSettlementError(ValueError):
@@ -99,6 +98,12 @@ def _safe_id(value: Any, where: str) -> str:
     return text
 
 
+def _positive_integer(value: Any, where: str) -> int:
+    if type(value) is not int or value <= 0:
+        raise CashSettlementError(f"{where} must be a positive integer")
+    return value
+
+
 def _utc_timestamp(value: Any, where: str) -> datetime:
     text = _bounded_text(value, where, limit=32)
     try:
@@ -150,6 +155,27 @@ def _public_url(value: Any, where: str, *, host: str, path_pattern: re.Pattern[s
     return text
 
 
+def _provider_url(value: Any, where: str) -> str:
+    text = _bounded_text(value, where, limit=64)
+    try:
+        parsed = urlsplit(text)
+        port = parsed.port
+    except ValueError as error:
+        raise CashSettlementError(f"{where} must be the canonical Frantic root") from error
+    if (
+        parsed.scheme != "https"
+        or parsed.hostname != "gofrantic.com"
+        or parsed.username is not None
+        or parsed.password is not None
+        or port is not None
+        or parsed.path != "/"
+        or parsed.query
+        or parsed.fragment
+    ):
+        raise CashSettlementError(f"{where} must be the canonical Frantic root")
+    return text
+
+
 def validate_ledger(value: dict[str, Any]) -> dict[str, Any]:
     _exact_fields(value, {"schema_version", "kind", "as_of", "receipts"}, "ledger")
     if value["schema_version"] != SCHEMA_VERSION:
@@ -164,8 +190,9 @@ def validate_ledger(value: dict[str, Any]) -> dict[str, Any]:
     expected = {
         "cash_id",
         "provider",
+        "provider_url",
+        "bounty_number",
         "program",
-        "bounty_url",
         "result_url",
         "claimant",
         "amount_usd",
@@ -198,13 +225,9 @@ def validate_ledger(value: dict[str, Any]) -> dict[str, Any]:
 
         if row["provider"] != "Frantic":
             raise CashSettlementError(f"{where}.provider is unsupported")
+        _provider_url(row["provider_url"], f"{where}.provider_url")
+        _positive_integer(row["bounty_number"], f"{where}.bounty_number")
         _bounded_text(row["program"], f"{where}.program", limit=120)
-        _public_url(
-            row["bounty_url"],
-            f"{where}.bounty_url",
-            host="gofrantic.com",
-            path_pattern=FRANTIC_BOUNTY_PATH,
-        )
         _public_url(
             row["result_url"],
             f"{where}.result_url",
@@ -258,8 +281,9 @@ def summarize_ledger(value: dict[str, Any]) -> dict[str, Any]:
             {
                 "cash_id": row["cash_id"],
                 "provider": row["provider"],
+                "provider_url": row["provider_url"],
+                "bounty_number": row["bounty_number"],
                 "program": row["program"],
-                "bounty_url": row["bounty_url"],
                 "result_url": row["result_url"],
                 "claimant": row["claimant"],
                 "amount_usd": row["amount_usd"],
