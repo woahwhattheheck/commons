@@ -5,7 +5,7 @@ import os
 import sys
 from pathlib import Path
 
-from .audit import REQUIRED_PROTOCOL_VERSION, audit_transcript, canonical_json_bytes, verify_receipt
+from .audit import audit_transcript, canonical_json_bytes, verify_receipt
 
 
 def _read_bytes(path: str) -> bytes:
@@ -52,13 +52,11 @@ def _parser() -> argparse.ArgumentParser:
     audit = sub.add_parser("audit", help="audit a capture and emit a deterministic receipt")
     audit.add_argument("capture")
     audit.add_argument("--output", "-o")
-    audit.add_argument("--protocol-version", default=REQUIRED_PROTOCOL_VERSION)
 
     verify = sub.add_parser("verify", help="recompute a capture and verify a saved receipt")
     verify.add_argument("capture")
     verify.add_argument("receipt")
     verify.add_argument("--output", "-o")
-    verify.add_argument("--protocol-version", default=REQUIRED_PROTOCOL_VERSION)
     return parser
 
 
@@ -67,11 +65,11 @@ def main(argv: list[str] | None = None) -> int:
     try:
         source = _read_bytes(args.capture)
         if args.command == "audit":
-            result = audit_transcript(source, required_protocol_version=args.protocol_version)
+            result = audit_transcript(source)
             _emit(result, args.output)
             return 0 if result["status"] == "PASS" else 3
         receipt = _read_bytes(args.receipt)
-        result = verify_receipt(source, receipt, required_protocol_version=args.protocol_version)
+        result = verify_receipt(source, receipt)
         _emit(result, args.output)
         return 0 if result["valid"] else 3
     except (OSError, ValueError) as exc:
