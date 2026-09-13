@@ -268,6 +268,24 @@ def _discovery_row(
             **transport,
         }
         pages.append(page_receipt)
+
+        for item_index, item in enumerate(page_items):
+            name = item.get("name") if type(item) is dict else None
+            if type(item) is not dict or type(name) is not str or not name:
+                error = ConformanceError(
+                    "INVALID_DISCOVERY_ITEM",
+                    "%s returned an invalid %s member" % (method, key),
+                    page=page_number,
+                    item_index=item_index,
+                )
+                return {
+                    "state": "FAILED",
+                    "complete": False,
+                    "page_count": len(pages),
+                    "pages": pages,
+                    "error": error.receipt(),
+                }, None
+
         items.extend(page_items)
 
         if "nextCursor" not in result or result["nextCursor"] is None:
@@ -341,7 +359,7 @@ def _names(result: Any, key: str) -> list[str]:
         return []
     names = []
     for item in result[key]:
-        if isinstance(item, dict) and isinstance(item.get("name"), str):
+        if type(item) is dict and type(item.get("name")) is str and item["name"]:
             names.append(item["name"])
     return sorted(set(names))
 
