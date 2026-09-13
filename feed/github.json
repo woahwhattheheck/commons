@@ -1,9 +1,9 @@
 {
   "counts": {
-    "open_issues": 31,
-    "open_pull_requests": 24,
-    "runs_in_progress": 18,
-    "runs_queued": 732
+    "open_issues": 32,
+    "open_pull_requests": 26,
+    "runs_in_progress": 19,
+    "runs_queued": 768
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -69,13 +69,35 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "z-cassinianvil/funded-work-withdrawal-precedence-20260913",
-      "created_at": "2026-09-13T13:13:14Z",
+      "branch": "zarg-c7w5/afh-video-evidence-gate-20260913",
+      "created_at": "2026-09-13T13:16:16Z",
       "draft": false,
-      "head_sha": "ee2135fd2a96e9d3cb8ceaae6a34433db5442c11",
-      "number": 13849,
-      "title": "funded-work: honor authoritative funding withdrawal",
-      "updated_at": "2026-09-13T13:13:14Z"
+      "head_sha": "131d20236d2aeb12518f17c2c174c45b28e35640",
+      "number": 13855,
+      "title": "fix(afh): fail closed on invalid demo video proof",
+      "updated_at": "2026-09-13T13:16:16Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "codex/commons-context-dispatch-compiler-resource-20260913-01",
+      "created_at": "2026-09-13T13:15:23Z",
+      "draft": false,
+      "head_sha": "65563ce53fe262337d02e0b62ffceb440fa2d6f2",
+      "number": 13853,
+      "title": "Resources: activate bounded context dispatch compiler",
+      "updated_at": "2026-09-13T13:17:33Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zow-l9c2/outbound-reconcile-temporal-coverage-20260913",
+      "created_at": "2026-09-13T13:14:58Z",
+      "draft": false,
+      "head_sha": "601e4736cee73b65d2aa96ef0ab8b921bc512306",
+      "number": 13851,
+      "title": "revenue: bind outbound reconciliation to temporal coverage",
+      "updated_at": "2026-09-13T13:17:03Z"
     },
     {
       "author": "woahwhattheheck",
@@ -86,7 +108,7 @@
       "head_sha": "87abb2dfc66178066a47e96013c95ad5bd6fb259",
       "number": 13844,
       "title": "feat(revenue): evidence-bound teaming conversion control",
-      "updated_at": "2026-09-13T13:13:17Z"
+      "updated_at": "2026-09-13T13:14:14Z"
     },
     {
       "author": "woahwhattheheck",
@@ -153,28 +175,6 @@
       "number": 13811,
       "title": "fix: bind PCI readiness to complete trusted evidence",
       "updated_at": "2026-09-13T12:48:01Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zhyp-c9v3/denton-floyd-cumulative-po-overrun-13789",
-      "created_at": "2026-09-13T10:57:50Z",
-      "draft": false,
-      "head_sha": "8f12b7a8867f82efb6ec3768fc7ee6a89b494964",
-      "number": 13792,
-      "title": "fix(revenue): hold cumulative invoice exposure above PO total",
-      "updated_at": "2026-09-13T12:51:41Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zkg-n7q/commercial-funnel-postmerge-authority-20260913",
-      "created_at": "2026-09-13T10:42:02Z",
-      "draft": false,
-      "head_sha": "1553dd65151766b6c3a195fa87689f9505f1de29",
-      "number": 13782,
-      "title": "Revenue: fix commercial-funnel evidence and time authority",
-      "updated_at": "2026-09-13T10:47:39Z"
     }
   ],
   "open_heads": {
@@ -201,12 +201,36 @@
     "13824": "bc094b424ea740395eebc599e6ced2a270b40cde",
     "13842": "a5bed215f8fed2ab9e5635b7e1b72cfa50df475f",
     "13844": "87abb2dfc66178066a47e96013c95ad5bd6fb259",
-    "13849": "ee2135fd2a96e9d3cb8ceaae6a34433db5442c11"
+    "13851": "601e4736cee73b65d2aa96ef0ab8b921bc512306",
+    "13853": "65563ce53fe262337d02e0b62ffceb440fa2d6f2",
+    "13855": "131d20236d2aeb12518f17c2c174c45b28e35640"
   },
-  "pulls_listed": 24,
+  "pulls_listed": 26,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 40.7,
+  "queue_depth_per_runner": 40.4,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z-theseuscipher/foresight-boundarymesh-20260913",
+      "closed_at": "2026-09-13T13:15:54Z",
+      "head_sha": "f89c6f924b31633756d833f67394dc2026d22e72",
+      "merged_at": "2026-09-13T13:15:54Z",
+      "number": 13852,
+      "state": "MERGED",
+      "title": "revenue: add Foresight BoundaryMesh grant carrier"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z-cassinianvil/funded-work-withdrawal-precedence-20260913",
+      "closed_at": "2026-09-13T13:15:44Z",
+      "head_sha": "ee2135fd2a96e9d3cb8ceaae6a34433db5442c11",
+      "merged_at": "2026-09-13T13:15:44Z",
+      "number": 13849,
+      "state": "MERGED",
+      "title": "funded-work: honor authoritative funding withdrawal"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -320,39 +344,6 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "zar913/champion-ratchet-plain-file-custody-20260913",
-      "closed_at": "2026-09-13T12:17:58Z",
-      "head_sha": "4d491a211bf1797d89f7af76af4d3d51fa5b660e",
-      "merged_at": null,
-      "number": 13595,
-      "state": "CLOSED",
-      "title": "TITAN V5: reject symlinked champion evidence inputs"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "astra/v5-production-v3-action-witness-20260912",
-      "closed_at": "2026-09-13T12:17:57Z",
-      "head_sha": "91d17d19e2a762318d79058b042be10c63c6743a",
-      "merged_at": null,
-      "number": 13471,
-      "state": "CLOSED",
-      "title": "TITAN V5: witness first production-v3 action divergence"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "astra/v5-v31-v4-gauntlet-reducer-20260912",
-      "closed_at": "2026-09-13T12:17:57Z",
-      "head_sha": "6c2142b3c61463c6c34a055f6bdc2704307930fd",
-      "merged_at": null,
-      "number": 13415,
-      "state": "CLOSED",
-      "title": "TITAN V5: reduce exact V3.1/V4 gauntlet into repair hotspots"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
       "branch": "zorth-p8w5/reconciliation-type-stability-current-main-20260913",
       "closed_at": "2026-09-13T10:45:11Z",
       "head_sha": "8872e641cb2efe959b9236e1f56252b43915eadb",
@@ -360,6 +351,17 @@
       "number": 13753,
       "state": "CLOSED",
       "title": "fix(revenue): make reconciliation field equality JSON-type-stable"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z-fou/commercial-funnel-20260913",
+      "closed_at": "2026-09-13T10:31:52Z",
+      "head_sha": "a8b6bc11c6c361f874d8a8b9b10c846a4d99a5dd",
+      "merged_at": "2026-09-13T10:31:51Z",
+      "number": 13748,
+      "state": "MERGED",
+      "title": "Revenue: add evidence-bound cross-family commercial funnel ledger"
     },
     {
       "author": "woahwhattheheck",
@@ -375,6 +377,6 @@
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-13T13:13:35Z",
+  "unchanged_since": "2026-09-13T13:17:42Z",
   "undatable_pulls": []
 }

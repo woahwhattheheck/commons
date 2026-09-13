@@ -30,6 +30,24 @@ SPONSOR_RE = re.compile(
 ACCEPTANCE_RE = re.compile(
     r"(?im)^\s{0,3}(?:#{1,6}\s*)?(?:acceptance criteria|requirements?|definition of done|deliverables?|scope)\b|^\s*[-*]\s*\[[ xX]\]"
 )
+# These directives are intentionally narrow. Ordinary words such as "cancelled build"
+# must not alter commercial state merely because a bounty is mentioned elsewhere.
+FUNDING_WITHDRAWAL_RE = re.compile(
+    r"(?i)\b(?:"
+    r"(?:bounty|reward|funding)\s+(?:(?:is|was|has\s+been)\s+)?(?:withdrawn|revoked|cancelled|canceled)"
+    r"|(?:bounty|reward)\s+(?:(?:is|was)\s+)?no\s+longer\s+(?:available|active|funded|offered)"
+    r"|funding\s+(?:(?:is|was)\s+)?no\s+longer\s+(?:available|active|offered)"
+    r"|(?:withdrawn|revoked|cancelled|canceled)\s+(?:this|the)\s+(?:bounty|reward|funding)"
+    r")\b"
+)
+FUNDING_RESTORATION_RE = re.compile(
+    r"(?i)\b(?:"
+    r"(?:bounty|reward|funding)\s+(?:(?:is|was|has\s+been)\s+)?(?:restored|reinstated|reactivated|reopened)"
+    r"|(?:bounty|reward)\s+(?:(?:is|was)\s+)?(?:available|active|funded|offered)\s+again"
+    r"|funding\s+(?:(?:is|was)\s+)?(?:available|active|offered)\s+again"
+    r"|(?:restored|reinstated|reactivated|reopened)\s+(?:this|the)\s+(?:bounty|reward|funding)"
+    r")\b"
+)
 SECURITY_RE = re.compile(
     r"(?i)\b(?:security|vulnerabilit(?:y|ies)|cve-\d{4}-\d+|exploit|rce|xss|csrf|ssrf|sql injection)\b"
 )
