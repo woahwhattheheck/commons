@@ -26,6 +26,7 @@ class ReplyToRevenueTests(unittest.TestCase):
         self.assertEqual(verdict["classification"], "AUTO_RESPONSE")
         self.assertFalse(verdict["buyer_interest"])
         self.assertTrue(verdict["auto_ack"])
+        self.assertFalse(verdict["delivery_failure"])
         self.assertEqual(verdict["next_action"], "WAIT_FOR_HUMAN_REPLY")
 
     def test_vendor_ai_assistant_is_auto_ack(self) -> None:
@@ -34,17 +35,117 @@ class ReplyToRevenueTests(unittest.TestCase):
         )
         self.assertEqual(verdict["classification"], "AUTO_RESPONSE")
         self.assertFalse(verdict["buyer_interest"])
+        self.assertFalse(verdict["delivery_failure"])
 
     def test_csat_survey_is_auto_ack(self) -> None:
         verdict = r2r.classify_signals(["how would you rate", "rate the support you received"])
         self.assertEqual(verdict["classification"], "AUTO_RESPONSE")
         self.assertFalse(verdict["buyer_interest"])
+        self.assertFalse(verdict["delivery_failure"])
+
+    def test_vacation_reply_stays_auto_response(self) -> None:
+        verdict = r2r.classify_signals(["automatic reply", "out of office", "vacation responder"])
+        self.assertEqual(verdict["classification"], "AUTO_RESPONSE")
+        self.assertTrue(verdict["auto_ack"])
+        self.assertFalse(verdict["delivery_failure"])
+        self.assertEqual(verdict["next_action"], "WAIT_FOR_HUMAN_REPLY")
+
+    def test_mailer_daemon_is_delivery_failure_not_auto_ack(self) -> None:
+        verdict = r2r.classify_signals(
+            ["mailer-daemon", "delivery status notification (failure)"],
+            "POSITIVE_SCOPE",
+        )
+        self.assertEqual(verdict["classification"], "DELIVERY_FAILURE")
+        self.assertFalse(verdict["buyer_interest"])
+        self.assertFalse(verdict["auto_ack"])
+        self.assertTrue(verdict["delivery_failure"])
+        self.assertEqual(verdict["next_action"], "RECOVER_ROUTE_OWNER_REVIEW")
+        self.assertIn("override", verdict["reason"])
+
+    def test_delivery_failure_precedes_generic_auto_ack(self) -> None:
+        verdict = r2r.classify_signals(
+            ["automatic reply", "message blocked", "address not found", "thank you for reaching out"]
+        )
+        self.assertEqual(verdict["classification"], "DELIVERY_FAILURE")
+        self.assertFalse(verdict["auto_ack"])
+        self.assertTrue(verdict["delivery_failure"])
+        self.assertIn("message blocked", verdict["matched_markers"])
+        self.assertIn("address not found", verdict["matched_markers"])
 
     def test_explicit_scope_language_without_auto_ack_is_positive(self) -> None:
         verdict = r2r.classify_signals(["please invoice", "we accept the scope"])
         self.assertEqual(verdict["classification"], "POSITIVE_SCOPE")
         self.assertTrue(verdict["buyer_interest"])
+        self.assertFalse(verdict["delivery_failure"])
         self.assertEqual(verdict["next_action"], "NEEDS_ACCEPTANCE")
+
+    def test_delivery_failure_contact_maps_to_owner_recovery_without_send(self) -> None:
+        receipts = [
+            {
+                "prospect_key": "example-buyer",
+                "organization": "Example Buyer",
+                "hard_dnr": True,
+                "receipt_id": "receipt-example-1",
+                "path": "fixture.json",
+                "cash_usd": 0,
+            }
+        ]
+        inbound = [
+            {
+                "event_ref": "opaque:fixture-bounce-01",
+                "received_at": "2026-09-13T12:00:00Z",
+                "prospect_key": "example-buyer",
+                "matched_receipt_id": "receipt-example-1",
+                "classification": "DELIVERY_FAILURE",
+            }
+        ]
+        contacts = r2r._contact_rows(receipts, inbound)
+        self.assertEqual(len(contacts), 1)
+        self.assertEqual(contacts[0]["lane"], "DELIVERY_FAILURE")
+        self.assertEqual(contacts[0]["next_action"], "RECOVER_ROUTE_OWNER_REVIEW")
+        self.assertEqual(contacts[0]["handoff"], r2r.ROUTE_RECOVERY_TOOL)
+        self.assertFalse(contacts[0]["resend"])
+        recovery = r2r.surface_route_recovery(contacts, inbound)
+        self.assertEqual(recovery["count"], 1)
+        self.assertEqual(recovery["transport_actions"], 0)
+        self.assertEqual(recovery["resends"], 0)
+        self.assertEqual(recovery["authority"], "OWNER_REVIEW_ONLY")
+        self.assertEqual(recovery["items"][0]["event_ref"], "opaque:fixture-bounce-01")
+        self.assertFalse(recovery["items"][0]["buyer_interest"])
+        self.assertFalse(recovery["items"][0]["resend"])
+
+    def test_real_human_positive_supersedes_older_delivery_failure_at_contact_level(self) -> None:
+        receipts = [
+            {
+                "prospect_key": "example-buyer",
+                "organization": "Example Buyer",
+                "hard_dnr": True,
+                "receipt_id": "receipt-example-1",
+                "path": "fixture.json",
+                "cash_usd": 0,
+            }
+        ]
+        inbound = [
+            {
+                "event_ref": "opaque:fixture-bounce-01",
+                "received_at": "2026-09-13T12:00:00Z",
+                "prospect_key": "example-buyer",
+                "matched_receipt_id": "receipt-example-1",
+                "classification": "DELIVERY_FAILURE",
+            },
+            {
+                "event_ref": "opaque:fixture-human-01",
+                "received_at": "2026-09-13T12:10:00Z",
+                "prospect_key": "example-buyer",
+                "matched_receipt_id": "receipt-example-1",
+                "classification": "POSITIVE_SCOPE",
+            },
+        ]
+        contacts = r2r._contact_rows(receipts, inbound)
+        self.assertEqual(contacts[0]["lane"], "HUMAN_POSITIVE")
+        self.assertEqual(contacts[0]["next_action"], "NEEDS_ACCEPTANCE")
+        recovery = r2r.surface_route_recovery(contacts, inbound)
+        self.assertEqual(recovery["count"], 0)
 
     def test_langfuse_is_hard_dnr_zero_cash(self) -> None:
         funnel = r2r.validate_funnel()
@@ -103,6 +204,7 @@ class ReplyToRevenueTests(unittest.TestCase):
             path.write_text(r2r.canonical_text(observations), encoding="utf-8")
             loaded = r2r.load_observations(path)
         self.assertEqual(len(loaded["events"]), 4)
+        self.assertTrue(all(not event["delivery_failure"] for event in loaded["events"]))
 
     def test_send_flag_is_always_refused(self) -> None:
         funnel = r2r.build_funnel()
@@ -134,6 +236,22 @@ class ReplyToRevenueTests(unittest.TestCase):
         parsed = json.loads(classify)
         self.assertEqual(parsed["classification"], "AUTO_RESPONSE")
         self.assertFalse(parsed["buyer_interest"])
+        self.assertFalse(parsed["delivery_failure"])
+
+    def test_recover_cli_is_zero_send_for_checked_in_history(self) -> None:
+        result = subprocess.run(
+            [sys.executable, str(ROOT / "host" / "reply_to_revenue.py"), "recover"],
+            cwd=ROOT,
+            check=True,
+            capture_output=True,
+            text=True,
+        )
+        parsed = json.loads(result.stdout)
+        self.assertEqual(parsed["classification"], "DELIVERY_FAILURE")
+        self.assertEqual(parsed["count"], 0)
+        self.assertEqual(parsed["transport_actions"], 0)
+        self.assertEqual(parsed["resends"], 0)
+        self.assertEqual(parsed["authority"], "OWNER_REVIEW_ONLY")
 
     def test_monitor_send_exits_three(self) -> None:
         result = subprocess.run(
