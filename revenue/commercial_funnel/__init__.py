@@ -10,6 +10,7 @@ from .ledger import (
     compile_funnel,
     strict_loads,
     verify_artifacts,
+    verify_artifacts_current,
     verify_compilation,
 )
 
@@ -23,5 +24,6 @@ __all__ = [
     "compile_funnel",
     "strict_loads",
     "verify_artifacts",
+    "verify_artifacts_current",
     "verify_compilation",
 ]
