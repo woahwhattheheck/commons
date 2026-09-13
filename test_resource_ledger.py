@@ -145,10 +145,18 @@ class TestResourceLedger(unittest.TestCase):
             text = handle.read()
         catalog = load_catalog(text)
         raw = json.loads(text)
-        self.assertEqual(catalog["slack_ts"], "1789250892.547929")
+        self.assertEqual(catalog["slack_ts"], "1789272333.052199")
         self.assertEqual(
             catalog["source_id"],
-            "codex-titan-v5-submitted-package-regression-authority-resource-activation-20260912-01",
+            "codex-osff-firmware-sbom-grant-packet-resource-activation-20260913-01",
+        )
+        self.assertIn(
+            "codex-osff-firmware-sbom-grant-packet-resource-activation-20260913-01",
+            raw.get("supersedes_source_ids") or [],
+        )
+        self.assertIn(
+            "codex-titan-v5-route-block-b-resource-activation-20260913-01",
+            raw.get("supersedes_source_ids") or [],
         )
         self.assertIn(
             "codex-titan-v5-submitted-package-regression-authority-resource-activation-20260912-01",
@@ -327,7 +335,7 @@ class TestResourceLedger(unittest.TestCase):
             "inventory",
             "resources",
             "records",
-            "codex-titan-v5-submitted-package-regression-authority-resource-activation-20260912-01.json",
+            "codex-osff-firmware-sbom-grant-packet-resource-activation-20260913-01.json",
         )
         with open(current_activation_path, encoding="utf-8") as handle:
             current_activation = json.load(handle)
@@ -337,34 +345,45 @@ class TestResourceLedger(unittest.TestCase):
         )
         self.assertEqual(
             current_activation["selected_resource"],
-            "titan-v5-submitted-package-regression-authority",
+            "osff-firmware-sbom-conformance-grant-packet",
         )
-        self.assertEqual(current_activation["projection"]["resources"], 93)
-        self.assertEqual(current_activation["projection"]["producing"], 65)
-        self.assertEqual(current_activation["projection"]["inventory_records"], 55)
-        self.assertEqual(current_activation["production_truth"]["source_pr"], 13454)
+        self.assertEqual(current_activation["projection"]["resources"], 95)
+        self.assertEqual(current_activation["projection"]["producing"], 67)
+        self.assertEqual(current_activation["projection"]["inventory_records"], 57)
+        self.assertEqual(current_activation["production_truth"]["source_pr"], 13541)
         self.assertEqual(
             current_activation["production_truth"]["source_merge_sha"],
-            "40a263ea26f2e40a13379ca7e1148e7c76e997a3",
-        )
-        self.assertEqual(current_activation["production_truth"]["repair_pr"], 13467)
-        self.assertEqual(
-            current_activation["production_truth"]["repair_merge_sha"],
-            "dbfccb9aa5c8c29f9092a978ad00e36e8db840d0",
+            "0a1457fc707b3adc1ebe9b733fc5fd2e72f1091a",
         )
         self.assertEqual(
-            current_activation["production_truth"]["source_validation"]["normal_passed"],
-            19,
+            current_activation["production_truth"]["source_head_sha"],
+            "c8e711dfced98065ca0ae55ce8f578a8c5465d05",
         )
         self.assertEqual(
-            current_activation["production_truth"]["source_validation"]["optimized_passed"],
-            19,
+            current_activation["production_truth"]["source_path"],
+            "revenue/grants/OSFF_FIRMWARE_SBOM_CONFORMANCE_KIT_2026.md",
         )
-        self.assertEqual(current_activation["production_truth"]["submitted_archive_authorities"]["v31_regular_members"], 148)
-        self.assertEqual(current_activation["production_truth"]["submitted_archive_authorities"]["v4_regular_members"], 75)
-        self.assertEqual(current_activation["production_truth"]["new_full_games"], 0)
-        self.assertEqual(current_activation["production_truth"]["candidate_promotions"], 0)
+        self.assertEqual(
+            current_activation["production_truth"]["source_git_blob"],
+            "60d234eb07b914dd30bc42cb7959c3c065d84cee",
+        )
+        self.assertEqual(
+            current_activation["production_truth"]["source_sha256"],
+            "0ed5630e20d9ede8735ba54c665e6e9aadd725824a0b8c05bd93ca27dbfe9ab3",
+        )
+        self.assertEqual(current_activation["production_truth"]["requested_eur"], 7500)
+        self.assertEqual(current_activation["production_truth"]["awarded_eur"], 0)
+        self.assertEqual(current_activation["production_truth"]["booked_revenue_eur"], 0)
+        self.assertEqual(current_activation["production_truth"]["timeline_weeks"], 6)
+        self.assertEqual(current_activation["production_truth"]["positive_fixture_floor"], 12)
+        self.assertFalse(current_activation["production_truth"]["submitted"])
+        self.assertFalse(current_activation["production_truth"]["sponsor_contacted"])
+        self.assertFalse(current_activation["production_truth"]["implementation_started"])
         self.assertEqual(current_activation["production_truth"]["provider_writes"], 0)
+        self.assertEqual(
+            set(current_activation["production_truth"]["source_head_workflows"].values()),
+            {"QUEUED"},
+        )
         self.assertEqual(current_activation["build_orders"], [])
         slack_cite = "p" + catalog["slack_ts"].replace(".", "")
         self.assertIn(slack_cite, current_activation["evidence"]["slack_claim"])
@@ -472,6 +491,17 @@ class TestResourceLedger(unittest.TestCase):
         self.assertEqual(rows["titan-v5-submitted-package-regression-authority"]["condition"], "CONSTRAINED")
         self.assertIn("SINGLE_READ_ORDINARY_FILE", rows["titan-v5-submitted-package-regression-authority"]["authority"])
         self.assertIn("2a14dfd0d0bf7d8d3d30d9f30a24224156307d95", rows["titan-v5-submitted-package-regression-authority"]["exact_safe_probe"])
+        self.assertEqual(rows["titan-v5-route-matrix-native-block-b-evidence"]["stage"], "PRODUCING")
+        self.assertEqual(rows["titan-v5-route-matrix-native-block-b-evidence"]["condition"], "CONSTRAINED")
+        self.assertIn("32_OF_32", rows["titan-v5-route-matrix-native-block-b-evidence"]["authority"])
+        self.assertIn("NO_RERUN", rows["titan-v5-route-matrix-native-block-b-evidence"]["authority"])
+        self.assertIn("853cc8df7a20d5d78cefb796ed3ddac079c4ad92d9eaac6c338d9f4d398c9093", rows["titan-v5-route-matrix-native-block-b-evidence"]["exact_safe_probe"])
+        self.assertEqual(rows["osff-firmware-sbom-conformance-grant-packet"]["stage"], "PRODUCING")
+        self.assertEqual(rows["osff-firmware-sbom-conformance-grant-packet"]["condition"], "CONSTRAINED")
+        self.assertIn("OWNER_ONLY_IDENTITY", rows["osff-firmware-sbom-conformance-grant-packet"]["authority"])
+        self.assertIn("NO_SPONSOR_CONTACT", rows["osff-firmware-sbom-conformance-grant-packet"]["authority"])
+        self.assertIn("60d234eb07b914dd30bc42cb7959c3c065d84cee", rows["osff-firmware-sbom-conformance-grant-packet"]["exact_safe_probe"])
+        self.assertIn("€0", rows["osff-firmware-sbom-conformance-grant-packet"]["rate_plan_boundary"])
         self.assertIn("September 7 global reset", rows["gpt-6-astra-codex-carrier"]["next_action"])
         self.assertEqual(rows["google-ai-mode-browser-mesh"]["capacity"], "LIVE")
         self.assertEqual(rows["google-ai-mode-browser-mesh"]["stage"], "PRODUCING")
@@ -522,6 +552,10 @@ class TestResourceLedger(unittest.TestCase):
         self.assertEqual(activation["counts"]["deletions"], 0)
         self.assertEqual(activation["counts"]["history_rewrites"], 0)
         self.assertEqual(activation["counts"]["blob_content_copies"], 0)
+        self.assertIn(
+            "inventory/resources/records/codex-titan-v5-route-block-b-resource-activation-20260913-01.json",
+            raw.get("record_sources") or [],
+        )
         self.assertIn(
             "inventory/resources/records/codex-commons-data-corpus-alias-index-activation-20260831-01.json",
             raw.get("record_sources") or [],

@@ -98,6 +98,32 @@ def unload_candidate_entry(candidate: Path, saved, name: str) -> None:
 
 
 class CurrentV5SelectiveCarrotCarrierTests(unittest.TestCase):
+    def test_pins_reject_pre_overflow_predecessor_blobs(self):
+        """Parent/helper pins must follow live blobs after later source rotation.
+
+        `187159d9` advanced lab/main.py after the carrot parent pin froze at
+        9cf8feaa. `69fa421d` rotated joint-liquidity paired.py after the
+        shared-helper pin froze at fbc5e320. Naming those predecessor blobs is
+        not a current-V5 identity.
+        """
+        self.assertNotEqual(
+            build.EXPECTED_PARENT_MAIN_BLOB,
+            "9cf8feaa9a755ffdf85d8878baa07b1fc7940192",
+        )
+        self.assertNotEqual(
+            paired.EXPECTED_SHARED_HELPER_GIT_BLOB,
+            "fbc5e320b8a2ee63af11dc9856c956a679823409",
+        )
+        self.assertEqual(
+            build.git_blob(LAB_ROOT / "main.py"),
+            build.EXPECTED_PARENT_MAIN_BLOB,
+        )
+        helper = LAB_ROOT / "candidates/v5/joint-liquidity-bench/paired.py"
+        self.assertEqual(
+            paired.git_blob_bytes(helper.read_bytes()),
+            paired.EXPECTED_SHARED_HELPER_GIT_BLOB,
+        )
+
     def test_source_pins_match_canonical_tree(self):
         self.assertEqual(
             build.git_blob(LAB_ROOT / "main.py"), build.EXPECTED_PARENT_MAIN_BLOB

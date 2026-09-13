@@ -1,8 +1,11 @@
 #!/usr/bin/env python3
 """Pre-registered low-complexity selector fitter for the TITAN V5 P04 route matrix.
 
-Discovery can nominate only a frozen, observation-only rule. Fresh held-out native
-cells are required before any runtime component or promotion decision.
+Discovery can nominate only a frozen, observation-only rule. The public fitting
+surface consumes immutable route-matrix JSONL bytes from canonical-main history
+and re-runs the merged P04 reducer; caller-authored reduced summaries are never
+authority. Fresh held-out native cells remain required before any runtime
+component or promotion decision.
 """
 from __future__ import annotations
 
@@ -10,8 +13,11 @@ import argparse
 import hashlib
 import json
 import math
+import os
+import re
 import statistics
-from pathlib import Path
+import subprocess
+from pathlib import Path, PurePosixPath
 from typing import Any, Iterable
 
 from p04_route_ranker import (
@@ -26,9 +32,20 @@ from p04_route_ranker import (
     canonical_public_snapshot,
     expected_incumbent_plan,
     public_feature_signature,
+    reduce_matrix,
 )
 
 SCHEMA = "titan-v5-p04-preregistered-selector/v1"
+EVIDENCE_SCHEMA = "titan-v5-p04-committed-row-evidence/v2"
+EVIDENCE_PREFIX = "revenue/kaggriculture/cloud-execution-lab/candidates/v5/selective-carrot/route-matrix-native/"
+TRUSTED_MAIN_REF = "refs/remotes/origin/main"
+CANONICAL_ORIGIN_URLS = frozenset(
+    {
+        "https://github.com/woahwhattheheck/commons.git",
+        "https://github.com/woahwhattheheck/commons",
+        "git@github.com:woahwhattheheck/commons.git",
+    }
+)
 ALLOWED_FEATURES = (
     "shop_pair",
     "first_two_yarn_count",
@@ -133,6 +150,16 @@ def preregistration() -> dict[str, Any]:
         "spec_sha256": SPEC_SHA256,
         "discovery_universe": DISCOVERY_UNIVERSE,
         "discovery_universe_sha256": DISCOVERY_UNIVERSE_SHA256,
+        "accepted_evidence": {
+            "schema": EVIDENCE_SCHEMA,
+            "namespace": EVIDENCE_PREFIX,
+            "canonical_origin_urls": sorted(CANONICAL_ORIGIN_URLS),
+            "trusted_main_ref": TRUSTED_MAIN_REF,
+            "trust": (
+                "immutable JSONL bytes at a commit proven ancestor of canonical Commons origin/main; "
+                "public repository root is derived from this module, reduced summaries rejected"
+            ),
+        },
     }
 
 
@@ -231,6 +258,7 @@ def _expected_discovery_keys() -> set[tuple[int, str, int]]:
 
 
 def validate_discovery_report(report: Any) -> list[dict[str, Any]]:
+    """Validate reducer output. This is an internal seam, not evidence authority."""
     if not isinstance(report, dict):
         raise ValueError("discovery report must be an object")
     _validate_authority(report)
@@ -330,9 +358,7 @@ def evaluate_rule(groups: Iterable[dict[str, Any]], rule: dict[str, Any]) -> dic
     do = [g["delta_own"] for g in engaged]
     candidate_failure_groups = sum(bool(g["candidate_failures"]) for g in engaged)
     incumbent_failure_groups = sum(bool(g["incumbent_failures"]) for g in engaged)
-    comparison_failure_groups = sum(
-        bool(g["candidate_failures"] or g["incumbent_failures"]) for g in engaged
-    )
+    comparison_failure_groups = sum(bool(g["candidate_failures"] or g["incumbent_failures"]) for g in engaged)
     qualified = bool(engaged)
     qualified = qualified and len(engaged) >= SPEC["discovery_qualification"]["minimum_engaged_groups"]
     qualified = qualified and len(engaged_seeds) >= _coverage_floor(len(seeds))
@@ -376,7 +402,7 @@ def _selection_key(result: dict[str, Any]) -> tuple[Any, ...]:
     )
 
 
-def fit_selector(report: Any) -> dict[str, Any]:
+def _fit_reduced_report(report: Any) -> dict[str, Any]:
     groups = validate_discovery_report(report)
     evaluated = [evaluate_rule(groups, rule) for rule in enumerate_rules(groups)]
     qualified = [item for item in evaluated if item["qualified"]]
@@ -403,18 +429,232 @@ def fit_selector(report: Any) -> dict[str, Any]:
     }
 
 
+def fit_selector(report: Any) -> dict[str, Any]:
+    """Fail closed on the superseded caller-authored reduced-summary interface."""
+    raise ValueError(
+        "caller-authored reduced reports are not evidence authority; "
+        "use fit_selector_from_committed_evidence()"
+    )
+
+
+def _git(
+    repo_root: Path,
+    *args: str,
+    check: bool = True,
+    env: dict[str, str] | None = None,
+) -> subprocess.CompletedProcess[bytes]:
+    clean_env = {k: v for k, v in os.environ.items() if not k.startswith("GIT_")}
+    if env:
+        clean_env.update(env)
+    try:
+        proc = subprocess.run(
+            ["git", "--no-replace-objects", *args],
+            cwd=repo_root,
+            env=clean_env,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            check=False,
+        )
+    except OSError as exc:
+        raise ValueError(f"cannot execute git: {exc}") from exc
+    if check and proc.returncode != 0:
+        detail = proc.stderr.decode("utf-8", errors="replace").strip()
+        raise ValueError(f"git {' '.join(args)} failed: {detail}")
+    return proc
+
+
+def _validate_canonical_checkout(repo_root: Path) -> str:
+    remote_url = _git(repo_root, "remote", "get-url", "origin").stdout.decode("utf-8", errors="strict").strip()
+    if remote_url not in CANONICAL_ORIGIN_URLS:
+        raise ValueError("origin is not the canonical woahwhattheheck/commons repository")
+    if _git(repo_root, "rev-parse", "--verify", "--quiet", TRUSTED_MAIN_REF, check=False).returncode != 0:
+        raise ValueError("canonical origin/main ref is unavailable; fetch origin/main before fitting evidence")
+    return TRUSTED_MAIN_REF
+
+
+def _resolve_trusted_main_commit(
+    repo_root: Path,
+    trusted_main_commit: str | None = None,
+) -> str:
+    """Resolve and authenticate the trusted main commit tip.
+
+    Authority requires an authenticated remote observation (e.g. via git ls-remote)
+    or an explicit provider-supplied SHA. An attacker-mutable local ref alone
+    cannot manufacture authority.
+    """
+    if trusted_main_commit is not None:
+        if not isinstance(trusted_main_commit, str) or not re.fullmatch(r"[0-9a-f]{40}", trusted_main_commit):
+            raise ValueError("trusted_main_commit must be one full lowercase 40-hex commit SHA")
+        resolved = _git(
+            repo_root, "rev-parse", "--verify", "--quiet", f"{trusted_main_commit}^{{commit}}", check=False
+        )
+        if resolved.returncode != 0 or resolved.stdout.decode().strip() != trusted_main_commit:
+            raise ValueError(f"trusted_main_commit {trusted_main_commit} does not resolve to a commit in repository")
+        trusted_tip = trusted_main_commit
+    else:
+        ls_proc = _git(repo_root, "ls-remote", "--heads", "origin", "refs/heads/main", check=False)
+        if ls_proc.returncode != 0:
+            detail = ls_proc.stderr.decode("utf-8", errors="replace").strip()
+            raise ValueError(
+                f"cannot authenticate trusted main tip via origin ls-remote: {detail}; "
+                "supply trusted_main_commit or connect to canonical remote"
+            )
+        stdout_text = ls_proc.stdout.decode("utf-8", errors="strict").strip()
+        match = re.search(r"^([0-9a-f]{40})\s+refs/heads/main$", stdout_text, re.MULTILINE)
+        if not match:
+            raise ValueError("authenticated remote origin/main tip not found in ls-remote output")
+        remote_tip = match.group(1)
+        check_local = _git(repo_root, "rev-parse", "--verify", "--quiet", f"{remote_tip}^{{commit}}", check=False)
+        if check_local.returncode != 0:
+            raise ValueError(
+                f"authenticated remote main tip {remote_tip} is not present in local repository; run git fetch origin"
+            )
+        trusted_tip = remote_tip
+
+    local_origin_main = _git(repo_root, "rev-parse", "--verify", "--quiet", TRUSTED_MAIN_REF, check=False)
+    if local_origin_main.returncode == 0:
+        local_sha = local_origin_main.stdout.decode().strip()
+        if local_sha != trusted_tip:
+            if _git(repo_root, "merge-base", "--is-ancestor", local_sha, trusted_tip, check=False).returncode != 0:
+                raise ValueError(
+                    f"local {TRUSTED_MAIN_REF} ({local_sha}) is not an ancestor of authenticated main tip ({trusted_tip})"
+                )
+
+    return trusted_tip
+
+
+def _canonical_repo_root() -> Path:
+    module_dir = Path(__file__).resolve().parent
+    root_text = _git(module_dir, "rev-parse", "--show-toplevel").stdout.decode("utf-8", errors="strict").strip()
+    root = Path(root_text).resolve()
+    if not root.is_dir():
+        raise ValueError("canonical repository root is unavailable")
+    _validate_canonical_checkout(root)
+    return root
+
+
+def _canonical_evidence_path(raw: str) -> str:
+    if not isinstance(raw, str) or not raw:
+        raise ValueError("evidence path must be a nonempty repository-relative string")
+    path = PurePosixPath(raw)
+    if path.is_absolute() or ".." in path.parts or str(path) != raw:
+        raise ValueError("evidence path must be canonical repository-relative POSIX syntax")
+    if not raw.startswith(EVIDENCE_PREFIX) or not raw.endswith(".jsonl"):
+        raise ValueError("evidence path must be canonical route-matrix-native JSONL")
+    return raw
+
+
+def load_committed_rows(
+    repo_root: Path,
+    evidence_commit: str,
+    evidence_paths: Iterable[str],
+    *,
+    trusted_main_commit: str | None = None,
+) -> tuple[list[Any], dict[str, Any]]:
+    repo_root = Path(repo_root).resolve()
+    if not repo_root.is_dir():
+        raise ValueError("repo_root must be an existing directory")
+    trusted_ref = _validate_canonical_checkout(repo_root)
+    trusted_commit = _resolve_trusted_main_commit(repo_root, trusted_main_commit=trusted_main_commit)
+    if not isinstance(evidence_commit, str) or not re.fullmatch(r"[0-9a-f]{40}", evidence_commit):
+        raise ValueError("evidence_commit must be one full lowercase 40-hex commit SHA")
+    resolved = _git(repo_root, "rev-parse", "--verify", f"{evidence_commit}^{{commit}}").stdout.decode().strip()
+    if resolved != evidence_commit:
+        raise ValueError("evidence_commit did not resolve to the exact requested commit")
+    if _git(repo_root, "merge-base", "--is-ancestor", evidence_commit, trusted_commit, check=False).returncode != 0:
+        raise ValueError(f"evidence commit is not an ancestor of canonical main tip {trusted_commit}")
+
+    paths = [_canonical_evidence_path(path) for path in evidence_paths]
+    if not paths or len(paths) != len(set(paths)):
+        raise ValueError("evidence_paths must be a nonempty duplicate-free list")
+
+    rows: list[Any] = []
+    members = []
+    for path in sorted(paths):
+        payload = _git(repo_root, "show", f"{evidence_commit}:{path}").stdout
+        try:
+            text = payload.decode("utf-8", errors="strict")
+        except UnicodeDecodeError as exc:
+            raise ValueError(f"committed evidence path is not UTF-8 JSONL: {path}") from exc
+        member_rows = []
+        for lineno, raw_line in enumerate(text.splitlines(), 1):
+            if not raw_line.strip():
+                continue
+            try:
+                member_rows.append(json.loads(raw_line))
+            except json.JSONDecodeError as exc:
+                raise ValueError(f"invalid committed JSONL {path}:{lineno}: {exc}") from exc
+        if not member_rows:
+            raise ValueError(f"committed evidence path is empty: {path}")
+        rows.extend(member_rows)
+        members.append({
+            "path": path,
+            "sha256": hashlib.sha256(payload).hexdigest(),
+            "rows": len(member_rows),
+        })
+
+    return rows, {
+        "schema": EVIDENCE_SCHEMA,
+        "commit": evidence_commit,
+        "trusted_main_ref": trusted_ref,
+        "trusted_main_commit": trusted_commit,
+        "members": members,
+        "rows": len(rows),
+    }
+
+
+def _fit_selector_from_repo(
+    repo_root: Path,
+    evidence_commit: str,
+    evidence_paths: Iterable[str],
+    *,
+    trusted_main_commit: str | None = None,
+) -> dict[str, Any]:
+    rows, evidence = load_committed_rows(
+        repo_root,
+        evidence_commit,
+        evidence_paths,
+        trusted_main_commit=trusted_main_commit,
+    )
+    report = reduce_matrix(rows)
+    result = _fit_reduced_report(report)
+    result["evidence"] = {**evidence, "reduced_report_sha256": _sha256(report)}
+    return result
+
+
+def fit_selector_from_committed_evidence(
+    evidence_commit: str,
+    evidence_paths: Iterable[str],
+    *,
+    trusted_main_commit: str | None = None,
+) -> dict[str, Any]:
+    """Fit only from committed evidence in the canonical checkout containing this module."""
+    return _fit_selector_from_repo(
+        _canonical_repo_root(),
+        evidence_commit,
+        evidence_paths,
+        trusted_main_commit=trusted_main_commit,
+    )
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("report", type=Path, nargs="?", help="Completed #13478 p04-report.json")
+    parser.add_argument("--evidence-commit")
+    parser.add_argument("--evidence-path", action="append", default=[])
+    parser.add_argument("--trusted-main-commit")
     parser.add_argument("--output", type=Path)
     parser.add_argument("--print-preregistration", action="store_true")
     args = parser.parse_args()
     if args.print_preregistration:
         payload = preregistration()
     else:
-        if args.report is None:
-            parser.error("report is required unless --print-preregistration is used")
-        payload = fit_selector(json.loads(args.report.read_text(encoding="utf-8")))
+        if args.evidence_commit is None or not args.evidence_path:
+            parser.error("--evidence-commit and at least one --evidence-path are required")
+        payload = fit_selector_from_committed_evidence(
+            args.evidence_commit,
+            args.evidence_path,
+            trusted_main_commit=args.trusted_main_commit,
+        )
     encoded = json.dumps(payload, sort_keys=True, indent=2) + "\n"
     if args.output:
         with args.output.open("x", encoding="utf-8") as handle:

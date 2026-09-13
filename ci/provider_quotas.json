@@ -23,7 +23,7 @@
       "road": "Cirrus CI",
       "job_class": "CPU CI/validation",
       "state": "UNMEASURED",
-      "free_quota": "50 compute credits/month (~10,000 Linux CPU-minutes); not unlimited",
+      "free_quota": "50 compute credits/month; finite provider quota whose CPU-minute conversion depends on pricing/resource class",
       "runtime": "Linux container; macOS/Windows/FreeBSD available",
       "per_job_ceiling": "2h max free task; CPU-intensive work may be blocked",
       "prerequisites": "Cirrus GitHub App on the public repo",

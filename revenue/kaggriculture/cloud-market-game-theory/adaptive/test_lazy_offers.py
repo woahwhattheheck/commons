@@ -361,7 +361,8 @@ class LazyOfferTests(unittest.TestCase):
 
     def test_full_slots_keep_no_admission_fallback(self):
         a,o,c=scenario(module=runtime(compiler=controlled_compiler()))
-        c['maxMarketOrdersPerTurn']=0
+        c['maxMarketOrdersPerTurn']=1
+        a.parent.action['market']=[['SELL','OTHER',1]]
         self.assertEqual(a.act(o,c),a.parent.action)
         self.assertIsNone(a.offer_work['admitted_index'])
 
