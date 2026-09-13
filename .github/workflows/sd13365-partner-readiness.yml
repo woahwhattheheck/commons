@@ -26,14 +26,22 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python-version }}
+      - name: Materialize bounded source matrix
+        working-directory: revenue/sd13365_partner_readiness
+        run: python assemble_requirements.py
       - name: Compile
-        run: python -m py_compile revenue/sd13365_partner_readiness/matrix.py revenue/sd13365_partner_readiness/test_matrix.py
+        run: >-
+          python -m py_compile
+          revenue/sd13365_partner_readiness/matrix.py
+          revenue/sd13365_partner_readiness/assemble_requirements.py
+          revenue/sd13365_partner_readiness/test_matrix.py
+          revenue/sd13365_partner_readiness/test_assembly.py
       - name: Normal tests
         working-directory: revenue/sd13365_partner_readiness
-        run: python -m unittest -v test_matrix.py
+        run: python -m unittest -v test_matrix.py test_assembly.py
       - name: Optimized tests
         working-directory: revenue/sd13365_partner_readiness
-        run: python -O -m unittest -v test_matrix.py
+        run: python -O -m unittest -v test_matrix.py test_assembly.py
       - name: Deterministic receipt smoke test
         working-directory: revenue/sd13365_partner_readiness
         run: |
