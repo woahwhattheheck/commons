@@ -13,8 +13,10 @@ from typing import Any
 
 try:
     from host.context_packet import PacketError, compile_packet, markdown, verify_packet
+    from host.context_sources import attach_sources, capture_sources, markdown_with_sources
 except ModuleNotFoundError:
     from context_packet import PacketError, compile_packet, markdown, verify_packet
+    from context_sources import attach_sources, capture_sources, markdown_with_sources
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -75,15 +77,38 @@ def _compile(args: argparse.Namespace) -> dict[str, Any]:
     elif claim_raws:
         manifest = "\n".join(f"{path}\t{hashlib.sha256(raw).hexdigest()}\t{len(raw)}" for path,raw in claim_raws).encode()
         provenance.append({"source":"claims","path":str(args.claims),"sha256":hashlib.sha256(manifest).hexdigest(),"files":len(claim_raws),"bytes":sum(len(raw) for _,raw in claim_raws)})
-    return compile_packet(
+
+    source_paths = list(args.source_path or [])
+    if bool(source_paths) != bool(args.source_head):
+        raise PacketError("--source-path and --source-head must be supplied together")
+    base_max_chars = args.max_chars
+    capture = None
+    if source_paths:
+        if args.source_reserve_chars < 512:
+            raise PacketError("--source-reserve-chars must be >= 512")
+        base_max_chars = args.max_chars - args.source_reserve_chars
+        if base_max_chars < 2048:
+            raise PacketError("source reserve leaves fewer than 2048 chars for base context")
+        capture = capture_sources(
+            args.repo_root,
+            args.source_head,
+            source_paths,
+            max_file_bytes=args.source_max_bytes,
+            max_excerpt_chars=args.source_excerpt_chars,
+        )
+
+    result = compile_packet(
         operation=args.operation, objective=args.objective, pulse=pulse,
         recent=[x for x in recent if isinstance(x, Mapping)], ledger=ledger,
         claims=claims, coordination=coordination, explicit_terms=args.term,
         paths=args.path, requested_main_head=args.main_head, provenance=provenance,
-        max_chars=args.max_chars, max_events=args.max_events,
+        max_chars=base_max_chars, max_events=args.max_events,
         max_resources=args.max_resources, max_claims=args.max_claims,
         max_coordination=args.max_coordination,
     )
+    if capture is not None:
+        result = attach_sources(result, capture, max_chars=args.max_chars)
+    return result
 
 
 def _write(text: str, out: Path | None) -> None:
@@ -93,6 +118,10 @@ def _write(text: str, out: Path | None) -> None:
         raise PacketError(f"refusing to overwrite {out}")
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(text, encoding="utf-8")
+
+
+def _render(packet: Mapping[str, Any]) -> str:
+    return markdown_with_sources(packet) if isinstance(packet.get("source_context"), Mapping) else markdown(packet)
 
 
 def main(argv: Sequence[str] | None = None) -> int:
@@ -105,6 +134,11 @@ def main(argv: Sequence[str] | None = None) -> int:
     packet.add_argument("--recent", type=Path, default=ROOT/"recent.json")
     packet.add_argument("--ledger", type=Path, default=ROOT/"ground"/"RESOURCE_LEDGER.json")
     packet.add_argument("--coordination", type=Path); packet.add_argument("--claims", type=Path); packet.add_argument("--main-head")
+    packet.add_argument("--repo-root", type=Path, default=ROOT)
+    packet.add_argument("--source-head"); packet.add_argument("--source-path", action="append", default=[])
+    packet.add_argument("--source-max-bytes", type=int, default=32768)
+    packet.add_argument("--source-excerpt-chars", type=int, default=12000)
+    packet.add_argument("--source-reserve-chars", type=int, default=5000)
     packet.add_argument("--max-chars", type=int, default=12000); packet.add_argument("--max-events", type=int, default=12)
     packet.add_argument("--max-resources", type=int, default=12); packet.add_argument("--max-claims", type=int, default=6)
     packet.add_argument("--max-coordination", type=int, default=8)
@@ -115,7 +149,7 @@ def main(argv: Sequence[str] | None = None) -> int:
     try:
         if args.command == "packet":
             result = _compile(args)
-            _write(json.dumps(result, ensure_ascii=False, sort_keys=True, indent=2) + "\n" if args.format == "json" else markdown(result), args.out)
+            _write(json.dumps(result, ensure_ascii=False, sort_keys=True, indent=2) + "\n" if args.format == "json" else _render(result), args.out)
             return 0
         value, _ = _load(args.packet)
         if not isinstance(value, Mapping):
@@ -124,7 +158,7 @@ def main(argv: Sequence[str] | None = None) -> int:
         if not ok:
             sys.stderr.write(f"INVALID {reason}\n"); return 2
         if args.command == "render":
-            _write(markdown(value), args.out); return 0
+            _write(_render(value), args.out); return 0
         sys.stdout.write(f"VALID {value['schema']} {value['semantic_sha256']}\n"); return 0
     except (OSError, json.JSONDecodeError, PacketError) as exc:
         sys.stderr.write(f"ERROR {exc}\n"); return 2
