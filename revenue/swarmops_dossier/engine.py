@@ -3,11 +3,11 @@ from __future__ import annotations
 import hashlib
 import json
 import re
-from datetime import datetime, timezone
+from datetime import datetime
 from typing import Any
 
 SCHEMA = "commons.swarmops-dossier/v1"
-OUTPUT_SCHEMA = "commons.swarmops-dossier-output/v1"
+OUTPUT_SCHEMA = "commons.swarmops-dossier-output/v2"
 
 SOURCE_KINDS = {
     "GIT_COMMIT", "GIT_BLOB", "TEST_RECEIPT", "CI_RUN", "PROVIDER_RECEIPT",
@@ -25,6 +25,7 @@ COMMERCIAL_REQUIREMENTS = {
     "PAID": "PAYMENT_RECEIPT",
     "REVENUE_RECOGNIZED": "ACCOUNTING_RECEIPT",
 }
+TRUSTED_COMMERCIAL_STATES = {"BUYER_ACCEPTED", "PAID", "REVENUE_RECOGNIZED"}
 TECHNICAL_REQUIREMENTS = {
     "LANDED_VERIFIED": {"GIT_COMMIT", "GIT_BLOB"},
     "TESTED_LOCAL": {"TEST_RECEIPT"},
@@ -35,6 +36,7 @@ TECHNICAL_REQUIREMENTS = {
 SAFE_ID = re.compile(r"^[A-Za-z0-9][A-Za-z0-9._:+#/-]{0,159}$")
 SHA256 = re.compile(r"^[0-9a-f]{64}$")
 SAFE_CLAIM = re.compile(r"^[A-Za-z0-9][A-Za-z0-9 .,:;()_+/#\'-]{0,599}$")
+
 
 class DossierError(ValueError):
     pass
@@ -108,7 +110,6 @@ def _time(value: Any, name: str) -> datetime:
     return dt
 
 
-
 def _validate_policy(policy: Any) -> dict[str, Any]:
     if not isinstance(policy, dict):
         raise DossierError("policy must be object")
@@ -126,6 +127,19 @@ def _validate_policy(policy: Any) -> dict[str, Any]:
         "max_evidence_age_seconds": _int(policy["max_evidence_age_seconds"], "policy.max_evidence_age_seconds", lo=60, hi=31_536_000),
         "max_rows": _int(policy["max_rows"], "policy.max_rows", lo=1, hi=2000),
     }
+
+
+def _validate_trusted_commercial_receipts(value: Any) -> dict[str, str]:
+    if value is None:
+        return {}
+    if not isinstance(value, dict) or len(value) > 2000:
+        raise DossierError("trusted_commercial_receipts must be object")
+    clean: dict[str, str] = {}
+    for raw_id, raw_digest in value.items():
+        source_id = _string(raw_id, "trusted_commercial_receipts.source_id", max_len=120, pattern=SAFE_ID)
+        receipt_digest = _string(raw_digest, f"trusted_commercial_receipts[{source_id}]", max_len=64, pattern=SHA256)
+        clean[source_id] = receipt_digest
+    return dict(sorted(clean.items()))
 
 
 def _validate_row(raw: Any, idx: int) -> dict[str, Any]:
@@ -156,7 +170,6 @@ def _validate_row(raw: Any, idx: int) -> dict[str, Any]:
     if row["prospect_class"] not in PROSPECT_CLASSES:
         raise DossierError(f"evidence[{idx}].prospect_class unsupported")
     _time(row["observed_at"], f"evidence[{idx}].observed_at")
-
     required_source = COMMERCIAL_REQUIREMENTS.get(row["observed_state"])
     if required_source and row["source_kind"] != required_source:
         raise DossierError(f"evidence[{idx}]: {row['observed_state']} requires {required_source}")
@@ -166,7 +179,7 @@ def _validate_row(raw: Any, idx: int) -> dict[str, Any]:
     return row
 
 
-def _row_class(row: dict[str, Any], as_of: datetime, policy: dict[str, Any]) -> tuple[str, list[str]]:
+def _row_class(row: dict[str, Any], as_of: datetime, policy: dict[str, Any], trusted: dict[str, str]) -> tuple[str, list[str]]:
     reasons: list[str] = []
     observed = _time(row["observed_at"], "observed_at")
     if observed > as_of:
@@ -179,7 +192,12 @@ def _row_class(row: dict[str, Any], as_of: datetime, policy: dict[str, Any]) -> 
         reasons.append("INTERNAL_ONLY")
     elif row["prospect_class"] == "OWNER_APPROVAL_REQUIRED":
         reasons.append("OWNER_APPROVAL_REQUIRED")
-
+    if row["observed_state"] in TRUSTED_COMMERCIAL_STATES:
+        trusted_digest = trusted.get(row["source_id"])
+        if trusted_digest is None:
+            reasons.append("UNTRUSTED_COMMERCIAL_RECEIPT")
+        elif trusted_digest != row["source_sha256"]:
+            reasons.append("COMMERCIAL_RECEIPT_DIGEST_MISMATCH")
     if reasons:
         return ("HELD" if row["required"] else "LIMITED"), reasons
     if row["observed_state"] in {"LANDED_VERIFIED", "TESTED_LOCAL", "BUYER_ACCEPTED", "PAID", "REVENUE_RECOGNIZED"}:
@@ -191,9 +209,10 @@ def _row_class(row: dict[str, Any], as_of: datetime, policy: dict[str, Any]) -> 
     return "UNKNOWN", [row["observed_state"]]
 
 
-def compile_dossier(packet: Any, policy: Any, as_of: str) -> dict[str, Any]:
+def compile_dossier(packet: Any, policy: Any, as_of: str, trusted_commercial_receipts: Any = None) -> dict[str, Any]:
     as_of_dt = _time(as_of, "as_of")
     clean_policy = _validate_policy(policy)
+    trusted = _validate_trusted_commercial_receipts(trusted_commercial_receipts)
     if not isinstance(packet, dict):
         raise DossierError("packet must be object")
     _exact_keys(packet, {"schema", "portfolio_id", "evidence"}, "packet")
@@ -203,10 +222,10 @@ def compile_dossier(packet: Any, policy: Any, as_of: str) -> dict[str, Any]:
     evidence = packet["evidence"]
     if not isinstance(evidence, list) or not evidence or len(evidence) > clean_policy["max_rows"]:
         raise DossierError("packet.evidence invalid")
-
     rows: list[dict[str, Any]] = []
     seen_sources: dict[str, str] = {}
     seen_cap_source: set[tuple[str, str]] = set()
+    commercial_source_ids: set[str] = set()
     for idx, raw in enumerate(evidence):
         row = _validate_row(raw, idx)
         row_digest = digest(row)
@@ -218,30 +237,28 @@ def compile_dossier(packet: Any, policy: Any, as_of: str) -> dict[str, Any]:
         if key in seen_cap_source:
             raise DossierError(f"duplicate capability/source: {key[0]}/{key[1]}")
         seen_cap_source.add(key)
-        classification, reasons = _row_class(row, as_of_dt, clean_policy)
+        if row["observed_state"] in TRUSTED_COMMERCIAL_STATES:
+            commercial_source_ids.add(row["source_id"])
+        classification, reasons = _row_class(row, as_of_dt, clean_policy, trusted)
         rows.append({**row, "classification": classification, "reasons": reasons, "row_sha256": row_digest})
-
+    unused_trust = sorted(set(trusted) - commercial_source_ids)
+    if unused_trust:
+        raise DossierError(f"unused trusted commercial receipt ids: {unused_trust}")
     rows.sort(key=lambda r: (r["capability_id"], r["source_id"]))
     required = set(clean_policy["required_capabilities"])
     for row in rows:
         if row["required"]:
             required.add(row["capability_id"])
-
     demonstrated_caps = {
         row["capability_id"] for row in rows
         if row["classification"] == "DEMONSTRATED" and row["prospect_class"] in {"PUBLIC", "PROSPECT_SAFE"}
         and row["observed_state"] in {"LANDED_VERIFIED", "TESTED_LOCAL"}
     }
     missing_required = sorted(required - demonstrated_caps)
-
-    prospect_rows = [
-        row for row in rows
-        if row["prospect_class"] in {"PUBLIC", "PROSPECT_SAFE"}
-    ]
+    prospect_rows = [row for row in rows if row["prospect_class"] in {"PUBLIC", "PROSPECT_SAFE"}]
     counts = {name: 0 for name in ("DEMONSTRATED", "LIMITED", "HELD", "UNKNOWN")}
     for row in prospect_rows:
         counts[row["classification"]] += 1
-
     external_truth = {
         "buyer_accepted": any(r["classification"] == "DEMONSTRATED" and r["observed_state"] == "BUYER_ACCEPTED" for r in prospect_rows),
         "paid": any(r["classification"] == "DEMONSTRATED" and r["observed_state"] == "PAID" for r in prospect_rows),
@@ -253,13 +270,11 @@ def compile_dossier(packet: Any, policy: Any, as_of: str) -> dict[str, Any]:
         if r["classification"] == "DEMONSTRATED" and r["observed_state"] in {"LANDED_VERIFIED", "TESTED_LOCAL"}
     ]
     what_now.sort(key=lambda x: (x["capability_id"], x["source_id"]))
-
     projection_rows = [{
         "capability_id": r["capability_id"], "source_id": r["source_id"], "source_kind": r["source_kind"],
         "source_ref": r["source_ref"], "source_sha256": r["source_sha256"], "observed_state": r["observed_state"],
         "observed_at": r["observed_at"], "classification": r["classification"], "reasons": r["reasons"], "claim": r["claim"],
     } for r in prospect_rows]
-
     dossier = {
         "schema": OUTPUT_SCHEMA,
         "portfolio_id": portfolio_id,
@@ -280,16 +295,17 @@ def compile_dossier(packet: Any, policy: Any, as_of: str) -> dict[str, Any]:
             )} for r in rows
         ]}),
         "policy_sha256": digest(clean_policy),
+        "trusted_commercial_receipts_sha256": digest(trusted),
     }
     dossier["receipt_sha256"] = digest(dossier)
     return dossier
 
 
-def verify_dossier(packet: Any, policy: Any, as_of: str, candidate: Any) -> bool:
+def verify_dossier(packet: Any, policy: Any, as_of: str, candidate: Any, trusted_commercial_receipts: Any = None) -> bool:
     if not isinstance(candidate, dict):
         return False
     try:
-        expected = compile_dossier(packet, policy, as_of)
+        expected = compile_dossier(packet, policy, as_of, trusted_commercial_receipts)
     except DossierError:
         return False
     return canonical_bytes(expected) == canonical_bytes(candidate)
