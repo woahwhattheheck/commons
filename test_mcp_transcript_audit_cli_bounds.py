@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import os
+import stat
 import subprocess
 import sys
 import tempfile
@@ -60,6 +61,50 @@ class CliInputBoundaryTests(unittest.TestCase):
             )
             self.assertEqual(proc.returncode, 2)
             self.assertIn("receipt exceeds", proc.stderr)
+            self.assertEqual(proc.stdout, "")
+
+    @unittest.skipUnless(hasattr(os, "mkfifo") and hasattr(os, "O_NONBLOCK"), "POSIX FIFO + O_NONBLOCK required")
+    def test_cli_rejects_fifo_capture_without_hanging(self):
+        with tempfile.TemporaryDirectory() as td:
+            fifo = Path(td) / "capture.fifo"
+            os.mkfifo(fifo, 0o600)
+            self.assertTrue(stat.S_ISFIFO(os.stat(fifo).st_mode))
+            repo, env = self._runtime()
+            proc = subprocess.run(
+                [sys.executable, "-m", "tools.mcp_transcript_audit.cli", "audit", str(fifo)],
+                cwd=repo,
+                env=env,
+                text=True,
+                stdout=subprocess.PIPE,
+                stderr=subprocess.PIPE,
+                check=False,
+                timeout=5,
+            )
+            self.assertEqual(proc.returncode, 2)
+            self.assertIn("regular file", proc.stderr)
+            self.assertEqual(proc.stdout, "")
+
+    @unittest.skipUnless(hasattr(os, "mkfifo") and hasattr(os, "O_NONBLOCK"), "POSIX FIFO + O_NONBLOCK required")
+    def test_cli_rejects_fifo_receipt_without_hanging(self):
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            capture_path = root / "session.jsonl"
+            fifo = root / "receipt.fifo"
+            capture_path.write_bytes(capture())
+            os.mkfifo(fifo, 0o600)
+            repo, env = self._runtime()
+            proc = subprocess.run(
+                [sys.executable, "-m", "tools.mcp_transcript_audit.cli", "verify", str(capture_path), str(fifo)],
+                cwd=repo,
+                env=env,
+                text=True,
+                stdout=subprocess.PIPE,
+                stderr=subprocess.PIPE,
+                check=False,
+                timeout=5,
+            )
+            self.assertEqual(proc.returncode, 2)
+            self.assertIn("regular file", proc.stderr)
             self.assertEqual(proc.stdout, "")
 
 
