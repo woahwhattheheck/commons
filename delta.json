@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -262,6 +262,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -494,12 +500,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -523,6 +523,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -755,12 +761,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -844,6 +844,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1076,12 +1082,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -1099,6 +1099,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1331,12 +1337,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -1390,6 +1390,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1622,12 +1628,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -1645,6 +1645,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1877,12 +1883,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -1930,6 +1930,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2162,12 +2168,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -2185,6 +2185,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2417,12 +2423,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -2440,6 +2440,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2672,12 +2678,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -2695,6 +2695,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2927,12 +2933,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -2950,6 +2950,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3182,12 +3188,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -3205,6 +3205,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3437,12 +3443,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -3460,6 +3460,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3692,12 +3698,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -3721,6 +3721,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3953,12 +3959,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -3976,6 +3976,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4208,12 +4214,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -4231,6 +4231,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4463,12 +4469,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -4486,6 +4486,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4718,12 +4724,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -4771,6 +4771,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5003,12 +5009,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -5050,6 +5050,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5282,12 +5288,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -5317,6 +5317,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5549,12 +5555,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -5590,6 +5590,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5822,12 +5828,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -5845,6 +5845,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6077,12 +6083,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -6100,6 +6100,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6332,12 +6338,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -6355,6 +6355,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6587,12 +6593,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -6610,6 +6610,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6842,12 +6848,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -6865,6 +6865,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7097,12 +7103,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -7120,6 +7120,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7352,12 +7358,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -7375,6 +7375,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7607,12 +7613,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -7630,6 +7630,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7862,12 +7868,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -7885,6 +7885,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8117,12 +8123,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -8140,6 +8140,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8372,12 +8378,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -8395,6 +8395,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8627,12 +8633,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -8716,6 +8716,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8948,12 +8954,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -9037,6 +9037,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -9269,12 +9275,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -9292,6 +9292,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -9524,12 +9530,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -9613,6 +9613,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -9845,12 +9851,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -9934,6 +9934,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -10166,12 +10172,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -10255,6 +10255,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -10487,12 +10493,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -10522,6 +10522,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -10754,12 +10760,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -10783,6 +10783,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11015,12 +11021,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -11038,6 +11038,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11270,12 +11276,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -11359,6 +11359,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11591,12 +11597,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -11632,6 +11632,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11864,12 +11870,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -11953,6 +11953,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12185,12 +12191,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -12208,6 +12208,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12440,12 +12446,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -12463,6 +12463,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12695,12 +12701,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -12718,6 +12718,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12950,12 +12956,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -12985,6 +12985,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -13217,12 +13223,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -13240,6 +13240,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -13472,12 +13478,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -13561,6 +13561,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -13793,12 +13799,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -13822,6 +13822,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14054,12 +14060,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -14089,6 +14089,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14321,12 +14327,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -14410,6 +14410,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14642,12 +14648,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -14677,6 +14677,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14909,12 +14915,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -14932,6 +14932,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15164,12 +15170,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -15193,6 +15193,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15425,12 +15431,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -15448,6 +15448,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15680,12 +15686,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -15703,6 +15703,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15935,12 +15941,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -16006,6 +16006,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -16238,12 +16244,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -16261,6 +16261,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -16493,12 +16499,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -16528,6 +16528,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -16760,12 +16766,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -16783,6 +16783,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17015,12 +17021,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -17044,6 +17044,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17276,12 +17282,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -17299,6 +17299,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17531,12 +17537,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -17620,6 +17620,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17852,12 +17858,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -17881,6 +17881,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18113,12 +18119,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -18136,6 +18136,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18368,12 +18374,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -18391,6 +18391,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18623,12 +18629,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -18646,6 +18646,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18878,12 +18884,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -18901,6 +18901,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -19133,12 +19139,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -19156,6 +19156,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -19388,12 +19394,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -19477,6 +19477,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -19709,12 +19715,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -19768,6 +19768,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -20000,12 +20006,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -20035,6 +20035,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -20267,12 +20273,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -20356,6 +20356,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -20588,12 +20594,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -20611,6 +20611,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -20843,12 +20849,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -20932,6 +20932,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -21164,12 +21170,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -21253,6 +21253,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -21485,12 +21491,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -21574,6 +21574,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -21806,12 +21812,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -21829,6 +21829,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -22061,12 +22067,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -22084,6 +22084,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -22316,12 +22322,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -22405,6 +22405,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -22637,12 +22643,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -22726,6 +22726,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -22958,12 +22964,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -22999,6 +22999,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -23231,12 +23237,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -23272,6 +23272,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -23504,12 +23510,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -23551,6 +23551,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -23783,12 +23789,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -23806,6 +23806,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24038,12 +24044,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -24127,6 +24127,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24359,12 +24365,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -24382,6 +24382,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24614,12 +24620,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -24637,6 +24637,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24869,12 +24875,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -24892,6 +24892,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -25124,12 +25130,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -25147,6 +25147,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -25379,12 +25385,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -25402,6 +25402,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -25634,12 +25640,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -25723,6 +25723,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -25955,12 +25961,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -26044,6 +26044,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -26276,12 +26282,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -26299,6 +26299,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -26531,12 +26537,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -26620,6 +26620,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -26852,12 +26858,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -26929,6 +26929,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -27161,12 +27167,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -27250,6 +27250,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -27482,12 +27488,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -27511,6 +27511,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -27743,12 +27749,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -27814,6 +27814,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -28046,12 +28052,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -28081,6 +28081,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -28313,12 +28319,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -28348,6 +28348,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -28580,12 +28586,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -28603,6 +28603,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -28835,12 +28841,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -28924,6 +28924,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -29156,12 +29162,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -29179,6 +29179,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -29411,12 +29417,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -29440,6 +29440,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -29672,12 +29678,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -29761,6 +29761,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -29993,12 +29999,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -30016,6 +30016,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -30248,12 +30254,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -30271,6 +30271,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -30503,12 +30509,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -30592,6 +30592,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -30824,12 +30830,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -30859,6 +30859,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -31091,12 +31097,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -31114,6 +31114,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -31346,12 +31352,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -31393,6 +31393,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -31625,12 +31631,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -31654,6 +31654,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -31886,12 +31892,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -31909,6 +31909,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -32141,12 +32147,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -32164,6 +32164,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -32396,12 +32402,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -32419,6 +32419,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -32651,12 +32657,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -32740,6 +32740,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -32972,12 +32978,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -32995,6 +32995,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -33227,12 +33233,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -33250,6 +33250,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -33482,12 +33488,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -33571,6 +33571,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -33803,12 +33809,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -33826,6 +33826,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -34058,12 +34064,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -34147,6 +34147,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -34379,12 +34385,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -34468,6 +34468,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -34700,12 +34706,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -34729,6 +34729,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -34961,12 +34967,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -34996,6 +34996,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -35228,12 +35234,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -35251,6 +35251,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -35483,12 +35489,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -35518,6 +35518,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -35750,12 +35756,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -35779,6 +35779,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -36011,12 +36017,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -36040,6 +36040,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -36272,12 +36278,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -36361,6 +36361,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -36593,12 +36599,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -36682,6 +36682,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -36914,12 +36920,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -36973,6 +36973,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -37205,12 +37211,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -37240,6 +37240,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -37472,12 +37478,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -37501,6 +37501,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -37733,12 +37739,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -37822,6 +37822,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -38054,12 +38060,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -38083,6 +38083,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -38315,12 +38321,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -38404,6 +38404,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -38636,12 +38642,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -38659,6 +38659,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -38891,12 +38897,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -38926,6 +38926,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -39158,12 +39164,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -39181,6 +39181,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -39413,12 +39419,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -39448,6 +39448,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -39680,12 +39686,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -39769,6 +39769,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -40001,12 +40007,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -40024,6 +40024,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -40256,12 +40262,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -40345,6 +40345,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -40577,12 +40583,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -40666,6 +40666,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -40898,12 +40904,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -40969,6 +40969,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -41201,12 +41207,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -41242,6 +41242,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -41474,12 +41480,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -41527,6 +41527,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -41759,12 +41765,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -41782,6 +41782,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -42014,12 +42020,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -42103,6 +42103,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -42335,12 +42341,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -42358,6 +42358,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -42590,12 +42596,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -42643,6 +42643,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -42875,12 +42881,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -42898,6 +42898,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -43130,12 +43136,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -43153,6 +43153,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -43385,12 +43391,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -43408,6 +43408,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -43640,12 +43646,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -43663,6 +43663,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -43895,12 +43901,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -43918,6 +43918,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44150,12 +44156,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -44239,6 +44239,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44471,12 +44477,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -44494,6 +44494,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44726,12 +44732,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -44749,6 +44749,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44981,12 +44987,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -45004,6 +45004,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -45236,12 +45242,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -45259,6 +45259,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -45491,12 +45497,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -45514,6 +45514,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -45746,12 +45752,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -45787,6 +45787,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -46019,12 +46025,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -46108,6 +46108,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -46340,12 +46346,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -46363,6 +46363,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -46595,12 +46601,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -46648,6 +46648,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -46880,12 +46886,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -46957,6 +46957,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47189,12 +47195,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -47212,6 +47212,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47444,12 +47450,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -47479,6 +47479,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47711,12 +47717,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -47734,6 +47734,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47966,12 +47972,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -47989,6 +47989,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -48221,12 +48227,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -48244,6 +48244,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -48476,12 +48482,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -48499,6 +48499,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -48731,12 +48737,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -48754,6 +48754,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -48986,12 +48992,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -49009,6 +49009,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -49241,12 +49247,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -49330,6 +49330,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -49562,12 +49568,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -49651,6 +49651,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -49883,12 +49889,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -49972,6 +49972,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -50204,12 +50210,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -50251,6 +50251,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -50483,12 +50489,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -50572,6 +50572,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -50804,12 +50810,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -50827,6 +50827,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -51059,12 +51065,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -51082,6 +51082,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -51314,12 +51320,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -51349,6 +51349,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -51581,12 +51587,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -51670,6 +51670,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -51902,12 +51908,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -51931,6 +51931,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -52163,12 +52169,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -52198,6 +52198,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -52430,12 +52436,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -52465,6 +52465,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -52697,12 +52703,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -52786,6 +52786,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -53018,12 +53024,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -53107,6 +53107,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -53339,12 +53345,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -53410,6 +53410,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -53642,12 +53648,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -53671,6 +53671,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -53903,12 +53909,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -53926,6 +53926,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -54158,12 +54164,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -54181,6 +54181,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -54413,12 +54419,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -54502,6 +54502,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -54734,12 +54740,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -54757,6 +54757,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -54989,12 +54995,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -55078,6 +55078,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -55310,12 +55316,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -55345,6 +55345,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -55577,12 +55583,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -55600,6 +55600,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -55832,12 +55838,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -55921,6 +55921,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -56153,12 +56159,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -56176,6 +56176,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -56408,12 +56414,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -56431,6 +56431,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -56663,12 +56669,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -56752,6 +56752,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -56984,12 +56990,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -57007,6 +57007,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -57239,12 +57245,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -57280,6 +57280,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -57512,12 +57518,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -57535,6 +57535,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -57767,12 +57773,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -57796,6 +57796,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58028,12 +58034,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -58051,6 +58051,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58283,12 +58289,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -58312,6 +58312,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58544,12 +58550,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -58567,6 +58567,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58799,12 +58805,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -58822,6 +58822,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -59054,12 +59060,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -59083,6 +59083,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -59315,12 +59321,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -59338,6 +59338,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -59570,12 +59576,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -59599,6 +59599,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -59831,12 +59837,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -59920,6 +59920,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -60152,12 +60158,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -60175,6 +60175,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -60407,12 +60413,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -60430,6 +60430,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -60662,12 +60668,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -60685,6 +60685,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -60917,12 +60923,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -60952,6 +60952,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -61184,12 +61190,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -61273,6 +61273,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -61505,12 +61511,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -61594,6 +61594,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -61826,12 +61832,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -61915,6 +61915,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -62147,12 +62153,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -62236,6 +62236,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -62468,12 +62474,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -62497,6 +62497,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -62729,12 +62735,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -62818,6 +62818,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -63050,12 +63056,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -63139,6 +63139,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -63371,12 +63377,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -63454,6 +63454,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -63686,12 +63692,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -63745,6 +63745,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -63977,12 +63983,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -64066,6 +64066,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -64298,12 +64304,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -64382,11 +64382,17 @@
       ]
     },
     "UNSEATED": {
-      "last_id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
-      "last_ts": "2026-09-13T14:23:27Z",
+      "last_id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+      "last_ts": "2026-09-13T14:24:23Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
         {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
@@ -64452,12 +64458,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T13:59:03Z"
-        },
-        {
-          "id": "Pazhou-women-friendly-AI-product--BidBridge-procurement-copilot-submission-carri",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T13:56:25Z"
         }
       ]
     },
@@ -64466,6 +64466,12 @@
       "last_ts": "",
       "n": 40,
       "since": [
+        {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
         {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
@@ -64699,12 +64705,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -64728,6 +64728,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -64960,12 +64966,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -65049,6 +65049,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -65281,12 +65287,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -65370,6 +65370,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -65602,12 +65608,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
@@ -65622,8 +65622,14 @@
     "Z-VELLUMFORGE-913552-R7K3": {
       "last_id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
       "last_ts": "2026-09-13T10:15:00Z",
-      "n": 34,
+      "n": 35,
       "since": [
+        {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
         {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
@@ -65844,6 +65850,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--ship-Streaming-Rendition-QA-paid-pilot-commercialization-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T14:24:23Z"
+        },
+        {
           "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -66076,12 +66088,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T09:59:19Z"
-        },
-        {
-          "id": "Revenue-product--outbound-delivery-failure-recovery-rail",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T09:44:37Z"
         }
       ],
       "mine": [
