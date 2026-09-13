@@ -1,9 +1,9 @@
 {
   "counts": {
-    "open_issues": 27,
-    "open_pull_requests": 22,
-    "runs_in_progress": 18,
-    "runs_queued": 698
+    "open_issues": 28,
+    "open_pull_requests": 26,
+    "runs_in_progress": 17,
+    "runs_queued": 724
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -69,13 +69,57 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
+      "branch": "zhb-r5q8/sublime-cement-batch-dossier-20260913",
+      "created_at": "2026-09-13T13:03:14Z",
+      "draft": false,
+      "head_sha": "19f6dd04090e247c732578bffd92521ce1eaa20a",
+      "number": 13838,
+      "title": "revenue: add Sublime cement batch qualification dossier",
+      "updated_at": "2026-09-13T13:03:14Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "saito-z/context-dispatch-13826",
+      "created_at": "2026-09-13T13:01:00Z",
+      "draft": false,
+      "head_sha": "13a3ac9fbf964e355804798752c819fa319e686d",
+      "number": 13837,
+      "title": "feat: add bounded context dispatch packets for swarm handoff",
+      "updated_at": "2026-09-13T13:01:00Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z-theseuscipher/roadef-instance-copy-20260913",
+      "created_at": "2026-09-13T13:00:31Z",
+      "draft": false,
+      "head_sha": "3c7ea3ad8f113c61ecf973c0e08ca6949beb5aec",
+      "number": 13835,
+      "title": "ROADEF: copy qualification instances into runtime image",
+      "updated_at": "2026-09-13T13:03:11Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zth-k6p8/outbound-transport-reconcile-20260913",
+      "created_at": "2026-09-13T12:59:40Z",
+      "draft": false,
+      "head_sha": "bc1dc16d8574f15a6c6600c68e4416d0d3190388",
+      "number": 13834,
+      "title": "revenue: reconcile Gmail SENT truth with Slack send receipts",
+      "updated_at": "2026-09-13T13:02:10Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
       "branch": "z-cassinianvil/funded-work-activity-authority-20260913",
       "created_at": "2026-09-13T12:55:54Z",
       "draft": false,
       "head_sha": "ebdd1ad44f76eefa84a56c405ac33d87da170a8a",
       "number": 13831,
       "title": "funded-work: trust only authoritative freshness activity",
-      "updated_at": "2026-09-13T12:57:59Z"
+      "updated_at": "2026-09-13T12:58:44Z"
     },
     {
       "author": "woahwhattheheck",
@@ -131,50 +175,6 @@
       "number": 13811,
       "title": "fix: bind PCI readiness to complete trusted evidence",
       "updated_at": "2026-09-13T12:48:01Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zhyp-c9v3/denton-floyd-cumulative-po-overrun-13789",
-      "created_at": "2026-09-13T10:57:50Z",
-      "draft": false,
-      "head_sha": "8f12b7a8867f82efb6ec3768fc7ee6a89b494964",
-      "number": 13792,
-      "title": "fix(revenue): hold cumulative invoice exposure above PO total",
-      "updated_at": "2026-09-13T12:51:41Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zkg-n7q/commercial-funnel-postmerge-authority-20260913",
-      "created_at": "2026-09-13T10:42:02Z",
-      "draft": false,
-      "head_sha": "1553dd65151766b6c3a195fa87689f9505f1de29",
-      "number": 13782,
-      "title": "Revenue: fix commercial-funnel evidence and time authority",
-      "updated_at": "2026-09-13T10:47:39Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zcan/raw-byte-provenance-current-20260913",
-      "created_at": "2026-09-13T10:39:37Z",
-      "draft": false,
-      "head_sha": "cfe6ed2b5bf932f99e9adccbd2cca508a96f2a4e",
-      "number": 13779,
-      "title": "fix(revenue): bind scope time authority to exact raw bytes",
-      "updated_at": "2026-09-13T11:05:44Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zpas-h4n9/cdr-postmerge-hardening-20260913",
-      "created_at": "2026-09-13T10:24:57Z",
-      "draft": false,
-      "head_sha": "f0db7219f3c214269cb33ea57315d5350f276d47",
-      "number": 13756,
-      "title": "Harden Commercial Decision Relay trust boundaries",
-      "updated_at": "2026-09-13T10:29:57Z"
     }
   ],
   "open_heads": {
@@ -199,12 +199,38 @@
     "13818": "ebf95fdc8fe223e14d9f2fc51ab71916cead16dd",
     "13821": "237d9963fc7424cfabb3910dd5968ae3544e8d5a",
     "13824": "bc094b424ea740395eebc599e6ced2a270b40cde",
-    "13831": "ebdd1ad44f76eefa84a56c405ac33d87da170a8a"
+    "13831": "ebdd1ad44f76eefa84a56c405ac33d87da170a8a",
+    "13834": "bc1dc16d8574f15a6c6600c68e4416d0d3190388",
+    "13835": "3c7ea3ad8f113c61ecf973c0e08ca6949beb5aec",
+    "13837": "13a3ac9fbf964e355804798752c819fa319e686d",
+    "13838": "19f6dd04090e247c732578bffd92521ce1eaa20a"
   },
-  "pulls_listed": 22,
+  "pulls_listed": 26,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 38.8,
+  "queue_depth_per_runner": 42.6,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "astra/gemini-v4-historical-complete-20260912",
+      "closed_at": "2026-09-13T13:02:31Z",
+      "head_sha": "0aae347c663f3af929ad965cd0c35ceeba3a1f3f",
+      "merged_at": null,
+      "number": 13836,
+      "state": "CLOSED",
+      "title": "titan v4: complete historical Gemini coverage lock"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zqh-mcp-cross-client-conformance-20260913",
+      "closed_at": "2026-09-13T13:00:38Z",
+      "head_sha": "31f9af6b06947ebe40b05de70f9fe20f545f226a",
+      "merged_at": "2026-09-13T13:00:38Z",
+      "number": 13833,
+      "state": "MERGED",
+      "title": "revenue: add buyer-neutral MCP cross-client conformance kernel"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -285,6 +311,17 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
+      "branch": "zvf-r7k3/commercial-ledger-ingestion-hardening-20260913",
+      "closed_at": "2026-09-13T10:28:45Z",
+      "head_sha": "00c0175cd51ff17b32be8a4d1c7dfb169a646427",
+      "merged_at": "2026-09-13T10:28:45Z",
+      "number": 13762,
+      "state": "MERGED",
+      "title": "revenue: harden commercial lifecycle ledger ingestion"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
       "branch": "znav-q4t8/afh-submission-finalizer-20260913",
       "closed_at": "2026-09-13T10:27:39Z",
       "head_sha": "f9ec51c588316c502d8623f84fee0aecde5ffd0c",
@@ -336,43 +373,10 @@
       "number": 13750,
       "state": "MERGED",
       "title": "feat(revenue): add portfolio execution handoff manifest"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zcyc-p2x9/commercial-lifecycle-ledger-20260913",
-      "closed_at": "2026-09-13T10:21:10Z",
-      "head_sha": "32e1b1a5bdbbeb9b73e8199ddf7215e0f8642805",
-      "merged_at": "2026-09-13T10:21:10Z",
-      "number": 13743,
-      "state": "MERGED",
-      "title": "Revenue: add commercial lifecycle evidence ledger"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "ariadne-z/cwpd-owner-send-status-final2-20260913",
-      "closed_at": "2026-09-13T10:20:29Z",
-      "head_sha": "2287a1d56777632e6edcf0ba7a7f0f8dd7d188ea",
-      "merged_at": "2026-09-13T10:20:29Z",
-      "number": 13745,
-      "state": "MERGED",
-      "title": "docs(revenue): make CWPD send status unambiguous"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zmer913506/outbound-dsn-normalizer-20260913",
-      "closed_at": "2026-09-13T10:19:59Z",
-      "head_sha": "6c64e691e2bd6dce061e71bd4ba1e7e26905e8fd",
-      "merged_at": "2026-09-13T10:19:59Z",
-      "number": 13704,
-      "state": "MERGED",
-      "title": "revenue: normalize RFC delivery-status evidence"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-13T12:58:30Z",
+  "unchanged_since": "2026-09-13T13:03:30Z",
   "undatable_pulls": []
 }
