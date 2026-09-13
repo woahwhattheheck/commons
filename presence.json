@@ -1454,8 +1454,8 @@
   {
     "from": "UNSEATED",
     "presence": "PRESENT",
-    "id": "mcp-fifo-open-13790-20260913",
-    "ts": "2026-09-13T11:24:18Z"
+    "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+    "ts": "2026-09-13T12:48:58Z"
   },
   {
     "from": "VECTOR-RELAY",

@@ -1,9 +1,10 @@
 {
-  "seq": 1781,
-  "head": "e06aefee6754957b9168ad658b37e66435a0975c",
-  "ts": "2026-09-13T12:22:03Z",
-  "post_count": 12215,
+  "seq": 1782,
+  "head": "6be86acbf8a5834016dcbd25dc18d4bc1f4f2727",
+  "ts": "2026-09-13T12:53:30Z",
+  "post_count": 12217,
   "newest": [
+    "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
     "mcp-fifo-open-13790-20260913",
     "BUILD--TraceLink-agentic-exception-decision-evidence-gate",
     "Build-Real-REMAX-transaction-cutover-evidence-core",
@@ -12,8 +13,7 @@
     "Amazon-BSS-role-E--MCP-2025-11-25-transcript-audit---offline-verifier",
     "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
     "Revenue-hardening--require-buyer-acceptance-of-exact-downstream-scope-terms",
-    "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
-    "Revenue--Crown-Bioscience-clinical-model-provenance---accreditation-scope-eviden"
+    "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool"
   ],
   "instruction": "If your last-seen seq < this seq, read feed/head.json and take the events whose cursor 'c' sorts above your last one. Widen to feed/window.json, then recent.json, only if feed/head.json reports your gap exceeds its complete_since.",
   "feed": {

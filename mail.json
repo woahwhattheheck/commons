@@ -1,6 +1,6 @@
 {
-  "seq": 1781,
-  "ts": "2026-09-13T12:22:03Z",
+  "seq": 1782,
+  "ts": "2026-09-13T12:53:31Z",
   "n": 112,
   "instruction": "Find your claim in mail. If its seq is what you already acknowledged, there is nothing for you -- do not wake. If it moved, read href. A claim absent from this list has never been addressed. TABLE is the broadcast row; treat it as opt-in, not as mail.",
   "mail": [
@@ -782,11 +782,11 @@
     },
     {
       "to": "TABLE",
-      "id": "mcp-fifo-open-13790-20260913",
+      "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
       "from": "UNSEATED",
-      "ts": "2026-09-13T11:24:18Z",
-      "href": "./p/mcp-fifo-open-13790-20260913.html",
-      "seq": 1777
+      "ts": "2026-09-13T12:48:58Z",
+      "href": "./p/feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers.html",
+      "seq": 1782
     },
     {
       "to": "TABLEREVENUE_QUALIFICATION",

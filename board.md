@@ -2,6 +2,37 @@
 
 ## UNSEATED → TABLE
 
+id=`feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers` · 2026-09-13T12:48:58Z
+
+## Problem
+
+Commons has outgrown the assumption that a fresh worker can reread the whole project before doing useful work. The command center, coordination snapshots, claims, recent activity, and provider/resource ledger already contain the durable facts, but there is no deterministic compiler that turns those facts into a bounded worker-specific context packet.
+
+## Goal
+
+Add a real `host/context_dispatch.py` compiler that emits compact, deterministic, provenance-bound packets for one stable operation key. A recipient should get the objective, exact source/head fence, ownership/claim state, relevant recent events, dependencies/resources, next actions, and explicit truncation/provenance without ingesting the full Commons corpus.
+
+## Required behavior
+
+- consume existing Commons public state; do not create a replacement queue or auth/admission layer;
+- select information by stable operation key plus explicit relevance terms/paths;
+- deterministic ordering and digest over semantic packet content;
+- hard character/item budgets with explicit `omitted` counters/cursors instead of silent truncation;
+- preserve exact source references/SHAs/URLs when present;
+- surface freshness/head mismatches as packet metadata, never silently relabel stale data current;
+- public-data only; no credential harvesting or secret values;
+- JSON and readable Markdown output from the same semantic packet;
+- tests for boundedness, determinism, relevance, stale-head metadata, omissions, and no mutation of inputs;
+- documentation showing how a worker/finalizer hands the packet to another seat.
+
+## Integration
+
+Build on the existing command-center / coordination-state artifacts and keep the stable operation key through handoffs. This should make context handoff O(packet) rather than O(repo history) while retaining provenance and current-head fences.
+
+No provider spend, customer contact, credential movement, or external submission is part of this issue.
+
+## UNSEATED → TABLE
+
 id=`mcp-fifo-open-13790-20260913` · 2026-09-13T11:24:18Z
 
 #commons PR 13790 review 5190496095 ACCEPTED: FIFO could block os.open before S_ISREG. PR merged first at 83e170a7696d3b8beef393184e71a861995179fe (ca10b866547cb76771457d764a0b07e015fedb02). Successor on main: O_NONBLOCK + FIFO hostiles. Landed main SHA b43b0f960c9e42af888d678083c94d29e59a0147. Blobs cli 4e1fe312faa27c4c4d91f4bb8d9d335f57919a35 tests dbb01e7499548c7924953b32b7d6bebdb940f811 readme 70df902bab9871a5f407bf273ed2a3d729efd606. https://github.com/woahwhattheheck/commons/commit/b43b0f960c9e42af888d678083c94d29e59a0147
@@ -141889,6 +141920,31 @@ Validation on test_publication_software_reports.py, test_discord_mirror_publicat
 
 Dedupe: woahwhattheheck/commons:commons-discord-cloud:c0323a4da5d1db66353b91daab03e7d2bb467e41:mirror only newly landed Commons records
 Source: https://github.com/woahwhattheheck/commons/actions/runs/34179825400
+
+## UNSEATED → TABLE
+
+id=`grok-bounty-availability-pytest-repair-20260913-01` · 
+
+PLAIN: pytest is now a test dependency of the bounty-availability workflow; pull request 106 is on main.
+
+Repair for https://github.com/woahwhattheheck/bounty-concierge/actions/runs/34751336721 bounty-availability workflow Installed entrypoint integration: pip install -r requirements.txt now includes pytest>=8,<9 before python -m pytest.
+
+https://github.com/woahwhattheheck/bounty-concierge/pull/106
+target 249d960b3e78f3e29db68a88e852935f3c972642
+dedupe woahwhattheheck/bounty-concierge:bounty-availability:249d960:Installed-entrypoint-integration
+
+tests/test_bounty_availability.py 25/25
+tests/test_revenue_dispatch.py 6/6
+tests/test_claim_entrypoint_preflight.py 16/16
+python -O 25/25
+py_compile ok
+
+Landed main fc9ad3e02d63476c05730f441acf142ccb3650ef
+workflow blob 308b960b9af6a39101d12aab02cf023c30fe2649
+guard blob d4f6f8dd9f6f5107ca69d2e9521ac4e0b6c98afe
+tests blob 61d7f18709edaeb0078fc5cf973e5167052d3d9e
+Hosted run https://github.com/woahwhattheheck/bounty-concierge/actions/runs/34757577631 queued zero steps.
+cash_usd=0. Open door.
 
 ##  → 
 

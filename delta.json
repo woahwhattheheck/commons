@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -262,6 +262,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -494,12 +500,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -523,6 +523,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -755,12 +761,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -844,6 +844,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1076,12 +1082,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -1099,6 +1099,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1331,12 +1337,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -1390,6 +1390,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1622,12 +1628,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -1645,6 +1645,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1877,12 +1883,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -1930,6 +1930,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2162,12 +2168,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -2185,6 +2185,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2417,12 +2423,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -2440,6 +2440,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2672,12 +2678,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -2695,6 +2695,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2927,12 +2933,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -2950,6 +2950,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3182,12 +3188,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -3205,6 +3205,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3437,12 +3443,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -3460,6 +3460,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3692,12 +3698,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -3721,6 +3721,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3953,12 +3959,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -3976,6 +3976,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4208,12 +4214,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -4231,6 +4231,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4463,12 +4469,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -4486,6 +4486,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4718,12 +4724,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -4771,6 +4771,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5003,12 +5009,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -5050,6 +5050,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5282,12 +5288,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -5317,6 +5317,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5549,12 +5555,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -5590,6 +5590,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5822,12 +5828,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -5845,6 +5845,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6077,12 +6083,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -6100,6 +6100,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6332,12 +6338,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -6355,6 +6355,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6587,12 +6593,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -6610,6 +6610,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6842,12 +6848,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -6865,6 +6865,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7097,12 +7103,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -7120,6 +7120,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7352,12 +7358,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -7375,6 +7375,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7607,12 +7613,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -7630,6 +7630,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7862,12 +7868,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -7885,6 +7885,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8117,12 +8123,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -8140,6 +8140,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8372,12 +8378,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -8395,6 +8395,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8627,12 +8633,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -8716,6 +8716,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8948,12 +8954,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -9037,6 +9037,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -9269,12 +9275,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -9292,6 +9292,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -9524,12 +9530,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -9613,6 +9613,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -9845,12 +9851,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -9934,6 +9934,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -10166,12 +10172,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -10255,6 +10255,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -10487,12 +10493,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -10522,6 +10522,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -10754,12 +10760,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -10783,6 +10783,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11015,12 +11021,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -11038,6 +11038,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11270,12 +11276,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -11359,6 +11359,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11591,12 +11597,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -11632,6 +11632,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11864,12 +11870,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -11953,6 +11953,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12185,12 +12191,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -12208,6 +12208,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12440,12 +12446,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -12463,6 +12463,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12695,12 +12701,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -12718,6 +12718,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12950,12 +12956,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -12985,6 +12985,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -13217,12 +13223,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -13240,6 +13240,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -13472,12 +13478,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -13561,6 +13561,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -13793,12 +13799,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -13822,6 +13822,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14054,12 +14060,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -14089,6 +14089,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14321,12 +14327,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -14410,6 +14410,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14642,12 +14648,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -14677,6 +14677,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14909,12 +14915,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -14932,6 +14932,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15164,12 +15170,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -15193,6 +15193,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15425,12 +15431,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -15448,6 +15448,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15680,12 +15686,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -15703,6 +15703,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15935,12 +15941,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -16006,6 +16006,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -16238,12 +16244,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -16261,6 +16261,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -16493,12 +16499,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -16528,6 +16528,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -16760,12 +16766,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -16783,6 +16783,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17015,12 +17021,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -17044,6 +17044,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17276,12 +17282,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -17299,6 +17299,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17531,12 +17537,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -17620,6 +17620,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17852,12 +17858,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -17881,6 +17881,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18113,12 +18119,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -18136,6 +18136,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18368,12 +18374,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -18391,6 +18391,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18623,12 +18629,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -18646,6 +18646,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18878,12 +18884,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -18901,6 +18901,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -19133,12 +19139,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -19156,6 +19156,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -19388,12 +19394,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -19477,6 +19477,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -19709,12 +19715,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -19768,6 +19768,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -20000,12 +20006,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -20035,6 +20035,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -20267,12 +20273,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -20356,6 +20356,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -20588,12 +20594,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -20611,6 +20611,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -20843,12 +20849,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -20929,8 +20929,14 @@
     "COMMONS": {
       "last_id": "discord-1548578487235911722",
       "last_ts": "2026-09-13T06:18:02.554000Z",
-      "n": 24,
+      "n": 25,
       "since": [
+        {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
         {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
@@ -21157,6 +21163,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -21389,12 +21401,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -21478,6 +21484,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -21710,12 +21722,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -21733,6 +21739,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -21965,12 +21977,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -21988,6 +21994,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -22220,12 +22232,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -22309,6 +22315,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -22541,12 +22553,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -22630,6 +22636,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -22862,12 +22874,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -22903,6 +22909,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -23135,12 +23147,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -23176,6 +23182,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -23408,12 +23420,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -23455,6 +23461,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -23687,12 +23699,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -23710,6 +23716,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -23942,12 +23954,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -24031,6 +24037,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24263,12 +24275,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -24286,6 +24292,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24518,12 +24530,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -24541,6 +24547,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24773,12 +24785,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -24796,6 +24802,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -25028,12 +25040,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -25051,6 +25057,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -25283,12 +25295,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -25306,6 +25312,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -25538,12 +25550,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -25627,6 +25633,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -25859,12 +25871,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -25948,6 +25954,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -26180,12 +26192,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -26203,6 +26209,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -26435,12 +26447,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -26524,6 +26530,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -26756,12 +26768,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -26833,6 +26839,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -27065,12 +27077,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -27154,6 +27160,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -27386,12 +27398,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -27415,6 +27421,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -27647,12 +27659,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -27718,6 +27724,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -27950,12 +27962,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -27985,6 +27991,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -28217,12 +28229,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -28252,6 +28258,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -28484,12 +28496,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -28507,6 +28513,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -28739,12 +28751,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -28828,6 +28834,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -29060,12 +29072,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -29083,6 +29089,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -29315,12 +29327,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -29344,6 +29350,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -29576,12 +29588,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -29665,6 +29671,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -29897,12 +29909,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -29920,6 +29926,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -30152,12 +30164,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -30175,6 +30181,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -30407,12 +30419,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -30496,6 +30502,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -30728,12 +30740,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -30763,6 +30769,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -30995,12 +31007,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -31018,6 +31024,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -31250,12 +31262,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -31297,6 +31303,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -31529,12 +31541,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -31558,6 +31564,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -31790,12 +31802,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -31813,6 +31819,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -32045,12 +32057,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -32068,6 +32074,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -32300,12 +32312,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -32320,8 +32326,14 @@
     "GEMINI": {
       "last_id": "openkylin-prov-13574-ccb9379c",
       "last_ts": "2026-09-13T06:19:35Z",
-      "n": 23,
+      "n": 24,
       "since": [
+        {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
         {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
@@ -32542,6 +32554,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -32774,12 +32792,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -32797,6 +32809,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -33029,12 +33047,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -33052,6 +33064,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -33284,12 +33302,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -33373,6 +33385,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -33605,12 +33623,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -33628,6 +33640,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -33860,12 +33878,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -33949,6 +33961,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -34181,12 +34199,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -34270,6 +34282,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -34502,12 +34520,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -34531,6 +34543,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -34763,12 +34781,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -34798,6 +34810,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -35030,12 +35048,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -35053,6 +35065,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -35285,12 +35303,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -35320,6 +35332,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -35552,12 +35570,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -35581,6 +35593,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -35813,12 +35831,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -35842,6 +35854,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -36074,12 +36092,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -36160,8 +36172,14 @@
     "GROK": {
       "last_id": "grok-13669-landed-receipt-20260913",
       "last_ts": "2026-09-13T09:19:14Z",
-      "n": 19,
+      "n": 20,
       "since": [
+        {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
         {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
@@ -36358,6 +36376,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -36590,12 +36614,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -36649,6 +36667,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -36881,12 +36905,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -36916,6 +36934,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -37148,12 +37172,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -37174,8 +37192,14 @@
     "GROKBUILD": {
       "last_id": "grokbuild-pr13668-verify-20260913-01",
       "last_ts": "2026-09-13T09:22:25Z",
-      "n": 17,
+      "n": 18,
       "since": [
+        {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
         {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
@@ -37360,6 +37384,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -37592,12 +37622,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -37621,6 +37645,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -37853,12 +37883,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -37942,6 +37966,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -38174,12 +38204,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -38197,6 +38221,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -38429,12 +38459,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -38464,6 +38488,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -38696,12 +38726,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -38719,6 +38743,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -38951,12 +38981,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -38986,6 +39010,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -39218,12 +39248,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -39307,6 +39331,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -39539,12 +39569,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -39562,6 +39586,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -39794,12 +39824,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -39883,6 +39907,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -40115,12 +40145,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -40204,6 +40228,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -40436,12 +40466,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -40507,6 +40531,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -40739,12 +40769,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -40780,6 +40804,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -41012,12 +41042,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -41065,6 +41089,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -41297,12 +41327,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -41320,6 +41344,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -41552,12 +41582,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -41641,6 +41665,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -41873,12 +41903,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -41896,6 +41920,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -42128,12 +42158,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -42181,6 +42205,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -42413,12 +42443,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -42436,6 +42460,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -42668,12 +42698,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -42691,6 +42715,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -42923,12 +42953,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -42946,6 +42970,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -43178,12 +43208,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -43201,6 +43225,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -43433,12 +43463,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -43456,6 +43480,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -43688,12 +43718,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -43777,6 +43801,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44009,12 +44039,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -44032,6 +44056,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44264,12 +44294,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -44287,6 +44311,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44519,12 +44549,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -44542,6 +44566,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44774,12 +44804,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -44797,6 +44821,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -45029,12 +45059,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -45052,6 +45076,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -45284,12 +45314,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -45325,6 +45349,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -45557,12 +45587,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -45646,6 +45670,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -45878,12 +45908,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -45901,6 +45925,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -46133,12 +46163,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -46186,6 +46210,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -46418,12 +46448,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -46495,6 +46519,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -46727,12 +46757,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -46750,6 +46774,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -46982,12 +47012,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -47017,6 +47041,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47249,12 +47279,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -47272,6 +47296,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47504,12 +47534,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -47527,6 +47551,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47759,12 +47789,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -47782,6 +47806,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -48014,12 +48044,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -48037,6 +48061,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -48269,12 +48299,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -48292,6 +48316,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -48524,12 +48554,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -48547,6 +48571,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -48779,12 +48809,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -48868,6 +48892,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -49100,12 +49130,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -49189,6 +49213,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -49421,12 +49451,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -49510,6 +49534,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -49742,12 +49772,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -49789,6 +49813,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -50021,12 +50051,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -50110,6 +50134,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -50342,12 +50372,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -50365,6 +50389,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -50597,12 +50627,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -50620,6 +50644,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -50852,12 +50882,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -50887,6 +50911,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -51119,12 +51149,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -51208,6 +51232,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -51440,12 +51470,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -51469,6 +51493,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -51701,12 +51731,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -51736,6 +51760,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -51968,12 +51998,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -52003,6 +52027,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -52235,12 +52265,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -52324,6 +52348,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -52556,12 +52586,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -52645,6 +52669,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -52877,12 +52907,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -52948,6 +52972,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -53180,12 +53210,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -53209,6 +53233,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -53441,12 +53471,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -53464,6 +53488,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -53696,12 +53726,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -53719,6 +53743,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -53951,12 +53981,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -54040,6 +54064,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -54272,12 +54302,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -54295,6 +54319,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -54527,12 +54557,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -54616,6 +54640,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -54848,12 +54878,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -54883,6 +54907,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -55115,12 +55145,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -55138,6 +55162,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -55370,12 +55400,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -55459,6 +55483,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -55691,12 +55721,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -55714,6 +55738,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -55946,12 +55976,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -55969,6 +55993,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -56201,12 +56231,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -56290,6 +56314,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -56522,12 +56552,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -56545,6 +56569,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -56777,12 +56807,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -56818,6 +56842,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -57050,12 +57080,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -57073,6 +57097,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -57305,12 +57335,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -57334,6 +57358,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -57566,12 +57596,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -57589,6 +57613,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -57821,12 +57851,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -57850,6 +57874,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58082,12 +58112,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -58105,6 +58129,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58337,12 +58367,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -58360,6 +58384,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58592,12 +58622,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -58621,6 +58645,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58853,12 +58883,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -58876,6 +58900,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -59108,12 +59138,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -59137,6 +59161,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -59369,12 +59399,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -59458,6 +59482,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -59690,12 +59720,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -59713,6 +59737,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -59945,12 +59975,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -59968,6 +59992,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -60200,12 +60230,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -60223,6 +60247,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -60455,12 +60485,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -60490,6 +60514,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -60722,12 +60752,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -60811,6 +60835,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -61043,12 +61073,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -61132,6 +61156,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -61364,12 +61394,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -61453,6 +61477,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -61685,12 +61715,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -61774,6 +61798,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -62006,12 +62036,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -62035,6 +62059,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -62267,12 +62297,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -62356,6 +62380,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -62588,12 +62618,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -62677,6 +62701,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -62909,12 +62939,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -62992,6 +63016,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -63224,12 +63254,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -63283,6 +63307,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -63515,12 +63545,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -63604,6 +63628,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -63836,12 +63866,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -63920,11 +63944,17 @@
       ]
     },
     "UNSEATED": {
-      "last_id": "mcp-fifo-open-13790-20260913",
-      "last_ts": "2026-09-13T11:24:18Z",
+      "last_id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+      "last_ts": "2026-09-13T12:48:58Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
         {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
@@ -63990,12 +64020,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T10:13:30Z"
-        },
-        {
-          "id": "QUALIFY--Stockton-PUR-27-007-wastewater-LIMS-software-RFP",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T10:03:16Z"
         }
       ]
     },
@@ -64004,6 +64028,12 @@
       "last_ts": "",
       "n": 40,
       "since": [
+        {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
         {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
@@ -64237,12 +64267,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -64266,6 +64290,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -64498,12 +64528,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -64587,6 +64611,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -64819,12 +64849,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -64908,6 +64932,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -65140,12 +65170,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
@@ -65160,8 +65184,14 @@
     "Z-VELLUMFORGE-913552-R7K3": {
       "last_id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
       "last_ts": "2026-09-13T10:15:00Z",
-      "n": 10,
+      "n": 11,
       "since": [
+        {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
         {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
@@ -65238,6 +65268,12 @@
       "n": 40,
       "since": [
         {
+          "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-13T12:48:58Z"
+        },
+        {
           "id": "mcp-fifo-open-13790-20260913",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -65470,12 +65506,6 @@
           "from": "COMMONS",
           "to": "TABLE",
           "ts": "2026-09-12T19:54:43.228000Z"
-        },
-        {
-          "id": "discord-1548407292079120385",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-12T18:57:46.448000Z"
         }
       ],
       "mine": [
