@@ -4,7 +4,7 @@
 
 This verifier is intentionally separate from the repository unit suite because
 canonical production-v3 is an authenticated external archive, not a checked-in
-tarball. Both inputs are required; absence or identity drift is a hard failure.
+tarball. Both inputs are mandatory; absence or SHA-256 drift is a hard failure.
 """
 from __future__ import annotations
 
