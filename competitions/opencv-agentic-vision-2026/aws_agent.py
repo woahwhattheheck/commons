@@ -227,26 +227,67 @@ def _deliver_review(sqs: Any, ddb: Any, *, queue_url: str, table: str, evidence:
         raise RuntimeError("only REQUEST_HUMAN_REVIEW receipts may be queued")
     evidence = validated["evidence"]
     receipt = validated["receipt"]
-    body = _review_body(evidence, receipt)
-    sqs.send_message(
-        QueueUrl=queue_url,
-        MessageBody=_canonical_storage_json(body),
-        MessageGroupId="prooflens-human-review",
-        MessageDeduplicationId=evidence["event_id"],
-    )
+    event_id = evidence["event_id"]
+    evidence_json = _canonical_storage_json(evidence)
+    receipt_json = _canonical_storage_json(receipt)
+
+    # Reserve queue progress only while the exact current durable evidence and
+    # receipt generation are still present. REVIEW_QUEUED remains a progress
+    # marker, not proof of SQS delivery; a later replay still reissues the same
+    # event-id-deduplicated message.
     try:
         ddb.update_item(
             TableName=table,
-            Key={"event_id": {"S": evidence["event_id"]}},
-            UpdateExpression="SET delivery = :queued",
-            ConditionExpression="delivery = :recorded",
-            ExpressionAttributeValues={":queued": {"S": "REVIEW_QUEUED"}, ":recorded": {"S": "RECORDED"}},
+            Key={"event_id": {"S": event_id}},
+            UpdateExpression="SET #delivery = :queued",
+            ConditionExpression=(
+                "#evidence = :evidence AND #receipt = :receipt AND #delivery = :recorded"
+            ),
+            ExpressionAttributeNames={
+                "#evidence": "evidence_json",
+                "#receipt": "receipt_json",
+                "#delivery": "delivery",
+            },
+            ExpressionAttributeValues={
+                ":evidence": {"S": evidence_json},
+                ":receipt": {"S": receipt_json},
+                ":queued": {"S": "REVIEW_QUEUED"},
+                ":recorded": {"S": "RECORDED"},
+            },
         )
     except ClientError as exc:
         if exc.response.get("Error", {}).get("Code") != "ConditionalCheckFailedException":
             raise
-        # A concurrent invocation may already have advanced the progress marker.
-        # The queue send above still uses event_id as its FIFO dedupe key.
+        # A benign concurrent/replay path may already have advanced exactly
+        # this row to REVIEW_QUEUED. Missing or changed rows are not equivalent
+        # to that state and must fail closed before SQS.
+        current = _existing(ddb, table, event_id)
+        if (
+            current is None
+            or current["delivery"] != "REVIEW_QUEUED"
+            or _canonical_storage_json(current["evidence"]) != evidence_json
+            or _canonical_storage_json(current["receipt"]) != receipt_json
+        ):
+            raise RuntimeError("durable review row changed before queue delivery") from exc
+
+    current = _existing(ddb, table, event_id)
+    if current is None:
+        raise RuntimeError("durable review row disappeared before queue delivery")
+    if current["delivery"] != "REVIEW_QUEUED":
+        raise RuntimeError("durable review row was not reserved for queue delivery")
+    if (
+        _canonical_storage_json(current["evidence"]) != evidence_json
+        or _canonical_storage_json(current["receipt"]) != receipt_json
+    ):
+        raise RuntimeError("durable review row changed before queue delivery")
+
+    body = _review_body(current["evidence"], current["receipt"])
+    sqs.send_message(
+        QueueUrl=queue_url,
+        MessageBody=_canonical_storage_json(body),
+        MessageGroupId="prooflens-human-review",
+        MessageDeduplicationId=event_id,
+    )
 
 
 def _recover_pending_review(
