@@ -118,6 +118,18 @@ class GuardTests(unittest.TestCase):
         self.assertEqual(payload["decision"], "HOLD")
         self.assertEqual(payload["authority"], "unknown")
 
+    def test_mail_row_after_snapshot_boundary_fails_closed(self):
+        payload = self.decision(evidence(mail=[outbound(at="2026-09-13T07:19:31Z")]))
+        self.assertEqual(payload["decision"], "HOLD")
+        self.assertEqual(payload["authority"], "unknown")
+        self.assertIn("after the snapshot boundary", " ".join(payload["reasons"]))
+
+    def test_slack_row_after_snapshot_boundary_fails_closed(self):
+        payload = self.decision(evidence(slack=[slack_event(at="2026-09-13T07:19:31Z")]))
+        self.assertEqual(payload["decision"], "HOLD")
+        self.assertEqual(payload["authority"], "unknown")
+        self.assertIn("after the snapshot boundary", " ".join(payload["reasons"]))
+
     def test_conflicting_duplicate_provider_message_id_fails_closed(self):
         a = outbound(message_id="dup")
         b = inbound(message_id="dup")
