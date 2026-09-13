@@ -1,0 +1,47 @@
+{
+  "acceptance": {
+    "held": 36,
+    "holdClasses": {
+      "CALIBRATION_EXPIRED": 6,
+      "ENVIRONMENT_NOT_READY": 6,
+      "FILL_LINEAGE_MISMATCH": 6,
+      "FORMULATION_REVISION_MISMATCH": 6,
+      "MATERIAL_NOT_RELEASED": 6,
+      "PACKAGING_BOM_MISMATCH": 6
+    },
+    "packets": 180,
+    "ready": 144
+  },
+  "artifactId": "pci-fill-finish-batch-readiness-preflight-01",
+  "authority": {
+    "batchRelease": false,
+    "customerContact": false,
+    "deployment": false,
+    "gmpDecision": false,
+    "manufacturingMutation": false,
+    "payment": false,
+    "providerMutation": false,
+    "qpDecision": false,
+    "qualityDecision": false,
+    "revenueRecognition": false,
+    "scientificDecision": false
+  },
+  "commercialTrigger": "PCI Pharma Services sterile fill-finish batch-readiness evidence pilot",
+  "mode": "synthetic-provider-free-owner-review-only",
+  "package": "revenue.sterile_fill_finish_batch_readiness",
+  "paths": [
+    "README.md",
+    "__init__.py",
+    "_common.py",
+    "_normalize.py",
+    "_evaluate.py",
+    "acceptance.py",
+    "gate.py",
+    "test_support.py",
+    "test_gate_a.py",
+    "test_gate_b.py",
+    "test_gate_c.py",
+    "test_gate_d.py"
+  ],
+  "schemaVersion": "tj.revenue-artifact-manifest/v1"
+}
