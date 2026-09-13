@@ -232,6 +232,24 @@ class PartnerEvidenceTests(unittest.TestCase):
         gate = next(item for item in report["gates"] if item["gate"] == "comparable_references")
         self.assertEqual(gate["status"], "PASS")
 
+    def test_nonfinite_experience_rejected(self):
+        bundle = ready_bundle()
+        bundle["partner"]["relevant_experience_years"] = float("inf")
+        with self.assertRaises(EvidenceError):
+            evaluate_bundle(bundle)
+
+    def test_future_reference_rejected(self):
+        bundle = ready_bundle()
+        bundle["references"][0]["completed_on"] = "2027-01-01"
+        with self.assertRaises(EvidenceError):
+            evaluate_bundle(bundle)
+
+    def test_duplicate_reference_contact_rejected(self):
+        bundle = ready_bundle()
+        bundle["references"][1]["contact_id"] = bundle["references"][0]["contact_id"]
+        with self.assertRaises(EvidenceError):
+            evaluate_bundle(bundle)
+
 
 if __name__ == "__main__":
     unittest.main()
