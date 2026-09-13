@@ -1,0 +1,22 @@
+{
+  "package": "cas-actuarial-llm-benchmark-repro-core",
+  "operation": "CAS-ACTUARIAL-LLM-BENCHMARK-REPRO-CORE-ZL913500-20260913",
+  "owner": "Z-Lagrange-913500",
+  "status": "PROPOSAL_TECHNICAL_EVIDENCE_READY",
+  "source_authority": "official CAS 2026 LLM actuarial perception benchmark RFP",
+  "scope": "offline reproducibility and objective-evaluation evidence only",
+  "non_authority": [
+    "actuarial task validity",
+    "CAS submission or acceptance",
+    "live model/provider action",
+    "contract or award",
+    "payment or recognized revenue"
+  ],
+  "acceptance": {
+    "normal_tests": 22,
+    "optimized_tests": 22,
+    "synthetic_tasks": 2,
+    "synthetic_models": 6,
+    "synthetic_runs": 12
+  }
+}
