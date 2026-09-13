@@ -274,6 +274,9 @@ def evaluate(bundle: Any) -> GateResult:
         if not passed:
             failures.append({"code": "INVARIANT_FAILED", "detail": invariant["name"]})
 
+    bundle_sha = _digest(normalized)
+    candidate_sha = _digest(candidate)
+
     effect_intents: list[dict[str, str]] = []
     for row in normalized["changes"]:
         logical_material = {
@@ -283,7 +286,14 @@ def evaluate(bundle: Any) -> GateResult:
             "effect_kind": row["effect_kind"],
         }
         logical_effect_id = _digest(logical_material)
-        fingerprint = _digest({**logical_material, "after": row["after"]})
+        fingerprint = _digest(
+            {
+                **logical_material,
+                "bundle_sha256": bundle_sha,
+                "before": row["before"],
+                "after": row["after"],
+            }
+        )
         effect_intents.append(
             {
                 "logical_effect_id": logical_effect_id,
@@ -303,8 +313,8 @@ def evaluate(bundle: Any) -> GateResult:
         "base_revision": baseline["revision"],
         "candidate_revision": candidate["revision"],
         "base_snapshot_sha256": actual_base_digest,
-        "candidate_snapshot_sha256": _digest(candidate),
-        "bundle_sha256": _digest(normalized),
+        "candidate_snapshot_sha256": candidate_sha,
+        "bundle_sha256": bundle_sha,
         "declared_change_count": len(normalized["changes"]),
         "actual_change_count": len(actual_changes),
         "invariants": invariant_results,
