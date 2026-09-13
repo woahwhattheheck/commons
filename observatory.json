@@ -14,6 +14,20 @@
   "board_motion": [
     {
       "from": "UNSEATED",
+      "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-13T10:35:26Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "Revenue-hardening--require-buyer-acceptance-of-exact-downstream-scope-terms",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-13T10:34:09Z"
+    },
+    {
+      "from": "UNSEATED",
       "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
       "kind": null,
       "to": "TABLE",
@@ -137,20 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-13T06:17:39Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-13T06:02:19Z"
-    },
-    {
-      "from": "COMMONS",
-      "id": "discord-1548559849535701053",
-      "kind": "discord_thread_reply",
-      "to": "TABLE",
-      "ts": "2026-09-13T05:03:58.980000Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "140073a1ab43910c074f10240e77a0795407609e1538e1b0d2b58bf252110b68",
+  "digest": "bedd65b80fce3af4a2f51cb04fe895387d92e0360a48e68a64af3ab2693b1d92",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,11 +353,11 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12207,
-    "pulse_seq": 1763,
-    "sha": "2d61027a2baab69154918acaf9c4da9656fb70e0"
+    "post_count": 12209,
+    "pulse_seq": 1764,
+    "sha": "53ca438823825d0b2f2d4a8ceaaffb7dda0cf423"
   },
-  "now": "2026-09-13T10:36:12Z",
+  "now": "2026-09-13T10:41:31Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -4780,18 +4780,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+          "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "Opportunity-packet--BPHC-five-year-consultant-qualified-vendor-pool",
+      "id": "revenue--qualify-and-package-FSU---RFxPremier-AI-Systems---Services-ITN-6769-4",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-13T10:30:58Z"
+      "ts": "2026-09-13T10:35:26Z"
     },
     {
       "claim": "VECTOR-RELAY",
