@@ -41,8 +41,10 @@ _CURRENT_TRANSITION_RE = re.compile(r"(?i)\bnow\b")
 _CHANGE_FROM_PREFIX_RE = re.compile(
     r"(?i)\b(?:changed|updated|increased|decreased|raised|reduced)\b[^;\n]{0,120}\bfrom\b[\s:=,()\-]*$"
 )
-_TO_DESTINATION_RE = re.compile(r"(?i)\bto\b[\s:=,()\-]*$")
-_NOW_DESTINATION_RE = re.compile(r"(?i)\bnow\b[\s:=,()\-]*(?:is\b[\s:=,()\-]*)?$")
+_TO_DESTINATION_RE = re.compile(r"(?i)^[\s:=,()\-]*to\b[\s:=,()\-]*$")
+_NOW_DESTINATION_RE = re.compile(
+    r"(?i)^[\s:=,()\-]*now\b[\s:=,()\-]*(?:is\b[\s:=,()\-]*)?$"
+)
 _SYMBOL_CURRENCY = {"$": "USD", "€": "EUR", "£": "GBP"}
 
 
@@ -179,10 +181,10 @@ def _commercial_amount_event(text: str) -> dict[str, str | None]:
                 from_to_destination = bool(
                     broad_from_to
                     and _CHANGE_FROM_PREFIX_RE.search(before_source)
-                    and _TO_DESTINATION_RE.search(between_first_second)
+                    and _TO_DESTINATION_RE.fullmatch(between_first_second)
                 )
                 now_destination = bool(
-                    broad_now and _NOW_DESTINATION_RE.search(between_first_second)
+                    broad_now and _NOW_DESTINATION_RE.fullmatch(between_first_second)
                 )
                 if len(monies) == 2 and (from_to_destination or now_destination):
                     event_values.append((monies[1][2], monies[1][3]))
