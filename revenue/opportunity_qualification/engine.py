@@ -1,9 +1,9 @@
-"""Authority-hardening facade for the opportunity qualification core.
+"""Fail-closed authority facade for the opportunity qualification core.
 
-The core remains a stable deterministic compiler. This facade tightens:
-- negative authority from unverified deadline / teaming sources; and
-- positive package-readiness authority by requiring an independently supplied
-  controlling-package completeness manifest before READY can be emitted.
+The core remains the deterministic packet compiler. This facade adds:
+- buyer-official negative-authority fences for deadline / teaming claims; and
+- a separate package-completeness trust root before READY or gate-derived
+  NO_BID can be asserted.
 """
 from __future__ import annotations
 
@@ -16,26 +16,13 @@ from engine_core import *  # noqa: F401,F403 - preserve the public v1 surface
 
 COMPLETENESS_CONTRACT = "tjlabs.opportunity-qualification-completeness/v1"
 _COMPLETENESS_KEYS = {
-    "contract",
-    "opportunity_id",
-    "controlling_source_id",
-    "controlling_source_sha256",
-    "extracted_at",
-    "extraction_evidence_sha256",
-    "complete",
-    "gate_count",
-    "gate_set_sha256",
-    "gates",
+    "contract", "opportunity_id", "controlling_source_id",
+    "controlling_source_sha256", "extracted_at", "extraction_evidence_sha256",
+    "complete", "gate_count", "gate_set_sha256", "gates",
 }
 _COMPLETENESS_GATE_KEYS = {
-    "gate_id",
-    "category",
-    "mandatory",
-    "route",
-    "cure",
-    "buyer_source_id",
-    "buyer_source_sha256",
-    "description_sha256",
+    "gate_id", "category", "mandatory", "route", "cure", "buyer_source_id",
+    "buyer_source_sha256", "description_sha256",
 }
 
 _original_compile = _core.compile_qualification
@@ -50,7 +37,6 @@ def _evaluate_team(requirements, sources, teaming, teaming_source_id):
 
 
 def _evaluate_team_official_allowed(requirements, sources):
-    """Evaluate requirements after buyer-official teaming permission is known."""
     ready = True
     possible = True
     reasons = []
@@ -109,19 +95,13 @@ def _evaluate_team_official_allowed(requirements, sources):
     return ready, possible, sorted(set(reasons))
 
 
-# Keep the core compiler's dynamic lookup on the hardened team evaluator.
 _core._evaluate_team_official_allowed = _evaluate_team_official_allowed
 _core._evaluate_team = _evaluate_team
 
 
 def _normalize_completeness_gate(raw: Any, index: int) -> dict[str, Any]:
     path = f"trusted_completeness.gates[{index}]"
-    gate = _core._expect_object(
-        raw,
-        path,
-        _COMPLETENESS_GATE_KEYS,
-        _COMPLETENESS_GATE_KEYS,
-    )
+    gate = _core._expect_object(raw, path, _COMPLETENESS_GATE_KEYS, _COMPLETENESS_GATE_KEYS)
     return {
         "gate_id": _core._expect_id(gate["gate_id"], f"{path}.gate_id"),
         "category": _core._expect_enum(gate["category"], f"{path}.category", _core._CATEGORIES),
@@ -136,10 +116,7 @@ def _normalize_completeness_gate(raw: Any, index: int) -> dict[str, Any]:
 
 def _normalize_trusted_completeness(raw: Any, *, trusted_as_of: str) -> dict[str, Any]:
     manifest = _core._expect_object(
-        raw,
-        "trusted_completeness",
-        _COMPLETENESS_KEYS,
-        _COMPLETENESS_KEYS,
+        raw, "trusted_completeness", _COMPLETENESS_KEYS, _COMPLETENESS_KEYS
     )
     if _core._expect_text(manifest["contract"], "trusted_completeness.contract", max_len=96) != COMPLETENESS_CONTRACT:
         raise QualificationError("trusted_completeness.contract: unsupported contract")
@@ -154,64 +131,52 @@ def _normalize_trusted_completeness(raw: Any, *, trusted_as_of: str) -> dict[str
         raise QualificationError("trusted_completeness.gate_count: expected non-negative integer")
 
     raw_gates = _core._expect_list(manifest["gates"], "trusted_completeness.gates")
-    gates = [_normalize_completeness_gate(raw_gate, i) for i, raw_gate in enumerate(raw_gates)]
+    normalized = [_normalize_completeness_gate(gate, i) for i, gate in enumerate(raw_gates)]
     by_id: dict[str, dict[str, Any]] = {}
-    for gate in gates:
-        gate_id = gate["gate_id"]
-        if gate_id in by_id:
-            raise QualificationError(f"trusted_completeness.gates: duplicate gate_id {gate_id}")
-        by_id[gate_id] = gate
+    for gate in normalized:
+        if gate["gate_id"] in by_id:
+            raise QualificationError(f"trusted_completeness.gates: duplicate gate_id {gate['gate_id']}")
+        by_id[gate["gate_id"]] = gate
     gates = [by_id[key] for key in sorted(by_id)]
     if gate_count != len(gates):
         raise QualificationError("trusted_completeness.gate_count: does not match gates")
 
-    expected_gate_digest = _core._expect_sha(
+    gate_set_sha256 = _core._expect_sha(
         manifest["gate_set_sha256"], "trusted_completeness.gate_set_sha256"
     )
-    actual_gate_digest = _core.digest(gates)
-    if expected_gate_digest != actual_gate_digest:
+    if gate_set_sha256 != _core.digest(gates):
         raise QualificationError("trusted_completeness.gate_set_sha256: does not match gates")
 
     return {
         "contract": COMPLETENESS_CONTRACT,
-        "opportunity_id": _core._expect_id(
-            manifest["opportunity_id"], "trusted_completeness.opportunity_id"
-        ),
-        "controlling_source_id": _core._expect_id(
-            manifest["controlling_source_id"], "trusted_completeness.controlling_source_id"
-        ),
-        "controlling_source_sha256": _core._expect_sha(
-            manifest["controlling_source_sha256"], "trusted_completeness.controlling_source_sha256"
-        ),
+        "opportunity_id": _core._expect_id(manifest["opportunity_id"], "trusted_completeness.opportunity_id"),
+        "controlling_source_id": _core._expect_id(manifest["controlling_source_id"], "trusted_completeness.controlling_source_id"),
+        "controlling_source_sha256": _core._expect_sha(manifest["controlling_source_sha256"], "trusted_completeness.controlling_source_sha256"),
         "extracted_at": manifest["extracted_at"],
-        "extraction_evidence_sha256": _core._expect_sha(
-            manifest["extraction_evidence_sha256"], "trusted_completeness.extraction_evidence_sha256"
-        ),
+        "extraction_evidence_sha256": _core._expect_sha(manifest["extraction_evidence_sha256"], "trusted_completeness.extraction_evidence_sha256"),
         "complete": complete,
         "gate_count": gate_count,
-        "gate_set_sha256": expected_gate_digest,
+        "gate_set_sha256": gate_set_sha256,
         "gates": gates,
     }
 
 
 def _observed_gate_descriptors(packet: dict[str, Any]) -> list[dict[str, Any]]:
     sources = {source["source_id"]: source for source in packet["sources"]}
-    descriptors = []
+    gates = []
     for requirement in packet["requirements"]:
         source = sources[requirement["buyer_source_id"]]
-        descriptors.append(
-            {
-                "gate_id": requirement["gate_id"],
-                "category": requirement["category"],
-                "mandatory": requirement["mandatory"],
-                "route": requirement["route"],
-                "cure": requirement["cure"],
-                "buyer_source_id": requirement["buyer_source_id"],
-                "buyer_source_sha256": source["sha256"],
-                "description_sha256": _core.digest(requirement["description"]),
-            }
-        )
-    return sorted(descriptors, key=lambda gate: gate["gate_id"])
+        gates.append({
+            "gate_id": requirement["gate_id"],
+            "category": requirement["category"],
+            "mandatory": requirement["mandatory"],
+            "route": requirement["route"],
+            "cure": requirement["cure"],
+            "buyer_source_id": requirement["buyer_source_id"],
+            "buyer_source_sha256": source["sha256"],
+            "description_sha256": _core.digest(requirement["description"]),
+        })
+    return sorted(gates, key=lambda gate: gate["gate_id"])
 
 
 def _assess_completeness(
@@ -219,13 +184,17 @@ def _assess_completeness(
     *,
     trusted_as_of: str,
     trusted_completeness: Any,
+    trusted_completeness_sha256: Any,
 ) -> dict[str, Any]:
     observed_gates = _observed_gate_descriptors(packet)
     observed_gate_digest = _core.digest(observed_gates)
+
     if trusted_completeness is None:
         return {
             "provided": False,
+            "trust_root_provided": trusted_completeness_sha256 is not None,
             "verified": False,
+            "trusted_manifest_sha256": None,
             "manifest_digest": None,
             "extraction_evidence_sha256": None,
             "expected_gate_count": None,
@@ -235,14 +204,22 @@ def _assess_completeness(
             "reasons": ["PACKAGE_COMPLETENESS_NOT_PROVIDED"],
         }
 
-    manifest = _normalize_trusted_completeness(
-        trusted_completeness,
-        trusted_as_of=trusted_as_of,
-    )
+    manifest = _normalize_trusted_completeness(trusted_completeness, trusted_as_of=trusted_as_of)
+    manifest_digest = _core.digest(manifest)
+    trusted_manifest_digest = None
     reasons: list[str] = []
+
+    if trusted_completeness_sha256 is None:
+        reasons.append("COMPLETENESS_TRUST_ROOT_NOT_PROVIDED")
+    else:
+        trusted_manifest_digest = _core._expect_sha(
+            trusted_completeness_sha256, "trusted_completeness_sha256"
+        )
+        if trusted_manifest_digest != manifest_digest:
+            reasons.append("COMPLETENESS_TRUST_ROOT_MISMATCH")
+
     opportunity = packet["opportunity"]
     sources = {source["source_id"]: source for source in packet["sources"]}
-
     if manifest["opportunity_id"] != opportunity["opportunity_id"]:
         reasons.append("COMPLETENESS_OPPORTUNITY_MISMATCH")
 
@@ -257,17 +234,15 @@ def _assess_completeness(
 
     if not manifest["complete"]:
         reasons.append("PACKAGE_EXTRACTION_INCOMPLETE")
-
-    if (
-        manifest["gate_count"] != len(observed_gates)
-        or manifest["gate_set_sha256"] != observed_gate_digest
-    ):
+    if manifest["gate_count"] != len(observed_gates) or manifest["gate_set_sha256"] != observed_gate_digest:
         reasons.append("PACKAGE_GATE_SET_MISMATCH")
 
     return {
         "provided": True,
+        "trust_root_provided": trusted_manifest_digest is not None,
         "verified": not reasons,
-        "manifest_digest": _core.digest(manifest),
+        "trusted_manifest_sha256": trusted_manifest_digest,
+        "manifest_digest": manifest_digest,
         "extraction_evidence_sha256": manifest["extraction_evidence_sha256"],
         "expected_gate_count": manifest["gate_count"],
         "observed_gate_count": len(observed_gates),
@@ -277,12 +252,18 @@ def _assess_completeness(
     }
 
 
-def compile_qualification(packet, *, trusted_as_of, trusted_completeness=None):
+def compile_qualification(
+    packet,
+    *,
+    trusted_as_of,
+    trusted_completeness=None,
+    trusted_completeness_sha256=None,
+):
     receipt = _original_compile(packet, trusted_as_of=trusted_as_of)
     package = receipt["package"]
 
-    # An expired timestamp has negative commercial authority only if both the
-    # controlling package and the deadline source are buyer-official.
+    # A timestamp has negative commercial authority only when the controlling
+    # package and deadline source are buyer-official.
     if package["proposal_expired"] and (
         not package["controlling_source_official"]
         or not package["proposal_deadline_source_official"]
@@ -301,13 +282,11 @@ def compile_qualification(packet, *, trusted_as_of, trusted_completeness=None):
         packet,
         trusted_as_of=trusted_as_of,
         trusted_completeness=trusted_completeness,
+        trusted_completeness_sha256=trusted_completeness_sha256,
     )
     receipt["completeness"] = completeness
     receipt["package"]["completeness_verified"] = completeness["verified"]
 
-    # Route-level `ready` is package-complete readiness. Retain the narrower
-    # requirement-only result explicitly for diagnostics without letting it
-    # masquerade as a READY decision when the extraction boundary is absent.
     for route_name in ("prime", "team"):
         requirements_ready = receipt[route_name]["ready"]
         receipt[route_name]["requirements_ready"] = requirements_ready
@@ -334,8 +313,8 @@ def verify_receipt_against_inputs(
     *,
     trusted_as_of: str,
     trusted_completeness: Any,
+    trusted_completeness_sha256: Any,
 ) -> bool:
-    """Recompile against the same out-of-band trust inputs and compare bytes."""
     if not _core.verify_receipt(receipt):
         return False
     try:
@@ -343,24 +322,25 @@ def verify_receipt_against_inputs(
             packet,
             trusted_as_of=trusted_as_of,
             trusted_completeness=trusted_completeness,
+            trusted_completeness_sha256=trusted_completeness_sha256,
         )
         return _core.canonical_bytes(expected) == _core.canonical_bytes(receipt)
     except QualificationError:
         return False
 
 
-# Core callers resolve this name dynamically. Without a trusted completeness
-# manifest they now fail closed to HOLD rather than minting package readiness.
+# Core callers that omit the independently retained trust root fail closed.
 _core.compile_qualification = compile_qualification
 
 
 def _cli() -> int:
     parser = argparse.ArgumentParser(description="Compile opportunity qualification receipts.")
     parser.add_argument("packet", help="qualification packet JSON")
+    parser.add_argument("--completeness", required=True, help="independent completeness manifest JSON")
     parser.add_argument(
-        "--completeness",
+        "--completeness-sha256",
         required=True,
-        help="independently retained controlling-package completeness manifest JSON",
+        help="independently retained canonical SHA-256 of the completeness manifest",
     )
     parser.add_argument("--as-of", required=True, help="trusted UTC time, YYYY-MM-DDTHH:MM:SSZ")
     parser.add_argument("--markdown", help="optional Markdown output path")
@@ -374,6 +354,7 @@ def _cli() -> int:
         packet,
         trusted_as_of=args.as_of,
         trusted_completeness=completeness,
+        trusted_completeness_sha256=args.completeness_sha256,
     )
     print(json.dumps(receipt, indent=2, sort_keys=True, ensure_ascii=False))
     if args.markdown:
