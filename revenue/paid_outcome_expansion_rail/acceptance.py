@@ -5,7 +5,7 @@ from collections import Counter
 from datetime import datetime, timedelta, timezone
 from typing import Any
 
-from .rail import canonical_json, digest_json, evaluate, verify_receipt
+from .rail import canonical_json, catalog_row_digest, digest_json, evaluate, verify_receipt
 
 AS_OF = datetime(2026, 9, 13, 8, 0, tzinfo=timezone.utc)
 SCOPE = digest_json({"scope": "synthetic-paid-proof-v1"})
@@ -30,6 +30,21 @@ def make_record(index: int, kind: str = "EXPANSION_REQUEST") -> dict[str, Any]:
     settled = AS_OF - timedelta(days=25)
     accepted = AS_OF - timedelta(days=20)
     signal = AS_OF - timedelta(days=10)
+    catalog_row = {
+        "catalog_id": catalog_id,
+        "version": "v1",
+        "kind": catalog_kind,
+        "currency": "USD",
+        "price_cents": 50000 + index,
+        "scope_digest": row_scope,
+        "active_from": _ts(AS_OF - timedelta(days=30)),
+        "active_until": _ts(AS_OF + timedelta(days=90)),
+    }
+    approved_row = {
+        "catalog_id": catalog_id,
+        "version": catalog_row["version"],
+        "row_digest": catalog_row_digest(catalog_row),
+    }
     return {
         "schema_version": "1",
         "account_id": account,
@@ -45,6 +60,7 @@ def make_record(index: int, kind: str = "EXPANSION_REQUEST") -> dict[str, Any]:
         },
         "settlement": {
             "evidence_id": f"settlement-{index:03d}",
+            "account_id": account,
             "offer_id": offer,
             "offer_version": "v1",
             "currency": "USD",
@@ -57,6 +73,7 @@ def make_record(index: int, kind: str = "EXPANSION_REQUEST") -> dict[str, Any]:
         },
         "delivery_acceptance": {
             "evidence_id": f"acceptance-{index:03d}",
+            "account_id": account,
             "offer_id": offer,
             "offer_version": "v1",
             "scope_digest": SCOPE,
@@ -66,6 +83,7 @@ def make_record(index: int, kind: str = "EXPANSION_REQUEST") -> dict[str, Any]:
         },
         "buyer_signal": {
             "evidence_id": f"signal-{index:03d}",
+            "account_id": account,
             "kind": kind,
             "source_class": "BUYER_AUTHORED",
             "offer_id": offer,
@@ -74,20 +92,12 @@ def make_record(index: int, kind: str = "EXPANSION_REQUEST") -> dict[str, Any]:
         },
         "owner_approval": {
             "evidence_id": f"approval-{index:03d}",
+            "account_id": account,
             "approver_class": "OWNER_HUMAN",
             "approved_at": _ts(signal + timedelta(hours=1)),
-            "approved_catalog_ids": [catalog_id],
+            "approved_catalog_rows": [approved_row],
         },
-        "catalog": [{
-            "catalog_id": catalog_id,
-            "version": "v1",
-            "kind": catalog_kind,
-            "currency": "USD",
-            "price_cents": 50000 + index,
-            "scope_digest": row_scope,
-            "active_from": _ts(AS_OF - timedelta(days=30)),
-            "active_until": _ts(AS_OF + timedelta(days=90)),
-        }],
+        "catalog": [catalog_row],
         "outcomes": [{
             "metric_id": "cycle_time_hours",
             "definition_digest": METRIC_DEF,
@@ -128,11 +138,15 @@ def synthetic_suite() -> list[dict[str, Any]]:
         r["settlement"]["captured_at"] = _ts(AS_OF - timedelta(days=60) + timedelta(hours=1))
         r["delivery_acceptance"]["accepted_at"] = _ts(AS_OF - timedelta(days=50))
         r["buyer_signal"]["observed_at"] = _ts(AS_OF - timedelta(days=46))
+        # The selected revision must already be active so this row isolates only
+        # signal freshness. Rebind the approval to the adjusted exact row.
+        r["catalog"][0]["active_from"] = _ts(AS_OF - timedelta(days=70))
+        r["owner_approval"]["approved_catalog_rows"][0]["row_digest"] = catalog_row_digest(r["catalog"][0])
         records.append(r)
     for idx in range(104, 112):
         r = make_record(idx); r["outcomes"][0]["causal_claim"] = True; records.append(r)
     for idx in range(112, 120):
-        r = make_record(idx); r["owner_approval"]["approved_catalog_ids"] = []; records.append(r)
+        r = make_record(idx); r["owner_approval"]["approved_catalog_rows"] = []; records.append(r)
     return records
 
 

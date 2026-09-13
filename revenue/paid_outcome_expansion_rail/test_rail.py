@@ -10,7 +10,7 @@ from datetime import timedelta
 from pathlib import Path
 
 from revenue.paid_outcome_expansion_rail.acceptance import AS_OF, _ts, make_record, run_acceptance
-from revenue.paid_outcome_expansion_rail.rail import digest_json, evaluate, verify_receipt
+from revenue.paid_outcome_expansion_rail.rail import catalog_row_digest, digest_json, evaluate, verify_receipt
 
 
 class RailTests(unittest.TestCase):
@@ -78,12 +78,83 @@ class RailTests(unittest.TestCase):
         self.assertIn("BUYER_SIGNAL_PREDATES_ACCEPTANCE", self.decision()["hold_codes"])
 
     def test_owner_approval_required(self):
-        self.record["owner_approval"]["approved_catalog_ids"] = []
+        self.record["owner_approval"]["approved_catalog_rows"] = []
         self.assertIn("CATALOG_NOT_OWNER_APPROVED", self.decision()["hold_codes"])
+
+    def test_cross_account_relabel_holds_all_authority_evidence(self):
+        self.record["account_id"] = "acct-other"
+        codes = self.decision()["hold_codes"]
+        self.assertIn("SETTLEMENT_ACCOUNT_MISMATCH", codes)
+        self.assertIn("ACCEPTANCE_ACCOUNT_MISMATCH", codes)
+        self.assertIn("BUYER_SIGNAL_ACCOUNT_MISMATCH", codes)
+        self.assertIn("OWNER_APPROVAL_ACCOUNT_MISMATCH", codes)
+
+    def test_settlement_cross_account_splice_holds(self):
+        self.record["settlement"]["account_id"] = "acct-other"
+        self.assertIn("SETTLEMENT_ACCOUNT_MISMATCH", self.decision()["hold_codes"])
+
+    def test_acceptance_cross_account_splice_holds(self):
+        self.record["delivery_acceptance"]["account_id"] = "acct-other"
+        self.assertIn("ACCEPTANCE_ACCOUNT_MISMATCH", self.decision()["hold_codes"])
+
+    def test_buyer_signal_cross_account_splice_holds(self):
+        self.record["buyer_signal"]["account_id"] = "acct-other"
+        self.assertIn("BUYER_SIGNAL_ACCOUNT_MISMATCH", self.decision()["hold_codes"])
+
+    def test_owner_approval_cross_account_splice_holds(self):
+        self.record["owner_approval"]["account_id"] = "acct-other"
+        self.assertIn("OWNER_APPROVAL_ACCOUNT_MISMATCH", self.decision()["hold_codes"])
 
     def test_missing_catalog_holds(self):
         self.record["catalog"] = []
         self.assertIn("CATALOG_ITEM_MISSING", self.decision()["hold_codes"])
+
+    def test_catalog_version_change_invalidates_old_approval(self):
+        self.record["catalog"][0]["version"] = "v2"
+        self.assertIn("CATALOG_APPROVAL_IDENTITY_MISMATCH", self.decision()["hold_codes"])
+
+    def test_catalog_price_change_invalidates_old_approval(self):
+        self.record["catalog"][0]["price_cents"] += 1
+        self.assertIn("CATALOG_APPROVAL_IDENTITY_MISMATCH", self.decision()["hold_codes"])
+
+    def test_catalog_scope_change_invalidates_old_approval(self):
+        self.record["catalog"][0]["scope_digest"] = digest_json({"revision": "different-scope"})
+        self.assertIn("CATALOG_APPROVAL_IDENTITY_MISMATCH", self.decision()["hold_codes"])
+
+    def test_exact_revision_reapproval_restores_identity(self):
+        self.record["catalog"][0]["version"] = "v2"
+        self.record["catalog"][0]["price_cents"] += 2500
+        binding = self.record["owner_approval"]["approved_catalog_rows"][0]
+        binding["version"] = "v2"
+        binding["row_digest"] = catalog_row_digest(self.record["catalog"][0])
+        r = self.decision()
+        self.assertEqual(r["decision"], "EXPANSION_READY")
+        self.assertEqual(r["selected_catalog"][0]["version"], "v2")
+        self.assertEqual(r["selected_catalog"][0]["row_digest"], binding["row_digest"])
+
+    def test_duplicate_owner_approval_entry_holds(self):
+        self.record["owner_approval"]["approved_catalog_rows"].append(
+            copy.deepcopy(self.record["owner_approval"]["approved_catalog_rows"][0])
+        )
+        self.assertIn("OWNER_APPROVAL_ENTRY_DUPLICATE", self.decision()["hold_codes"])
+
+    def test_conflicting_owner_approval_entry_holds(self):
+        conflict = copy.deepcopy(self.record["owner_approval"]["approved_catalog_rows"][0])
+        conflict["version"] = "v0"
+        self.record["owner_approval"]["approved_catalog_rows"].append(conflict)
+        self.assertIn("OWNER_APPROVAL_ENTRY_CONFLICT", self.decision()["hold_codes"])
+
+    def test_buyer_signal_must_follow_revision_activation(self):
+        self.record["catalog"][0]["active_from"] = _ts(AS_OF - timedelta(days=5))
+        binding = self.record["owner_approval"]["approved_catalog_rows"][0]
+        binding["row_digest"] = catalog_row_digest(self.record["catalog"][0])
+        codes = self.decision()["hold_codes"]
+        self.assertIn("BUYER_SIGNAL_PREDATES_CATALOG_REVISION", codes)
+        self.assertIn("OWNER_APPROVAL_PREDATES_CATALOG_REVISION", codes)
+
+    def test_owner_approval_must_follow_buyer_signal(self):
+        self.record["owner_approval"]["approved_at"] = _ts(AS_OF - timedelta(days=11))
+        self.assertIn("OWNER_APPROVAL_PREDATES_BUYER_SIGNAL", self.decision()["hold_codes"])
 
     def test_catalog_kind_matches_signal(self):
         self.record["catalog"][0]["kind"] = "RENEWAL"
