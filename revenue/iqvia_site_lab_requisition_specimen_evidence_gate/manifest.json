@@ -1,7 +1,9 @@
 {
   "acceptance": {
+    "focused_tests": 24,
     "hold": 30,
     "hold_each_reason": 5,
+    "optimized_tests": 24,
     "packets": 180,
     "ready": 150
   },
@@ -10,8 +12,16 @@
   "operation": "IQVIA-SITE-LAB-REQUISITION-SPECIMEN-GATE-ZAQN4R7-20260913",
   "owner": "Z-AureliusQuill-914021-N4R7",
   "payment_received": false,
+  "reference_authority_fix_forward": {
+    "candidate_can_supply_reference_authority": false,
+    "operation": "IQVIA-SPECIMEN-REFERENCE-AUTHORITY-ZSOL1023-R6K2-20260913",
+    "owner": "Z-Sol-1023-R6K2",
+    "reference_digest_bound_to_outputs": true,
+    "tracking_issue": 14005,
+    "trusted_reference_digest_required": true
+  },
   "revenue_recognized": false,
-  "schema": "iqvia-site-lab-requisition-specimen-evidence-gate/manifest-v1",
+  "schema": "iqvia-site-lab-requisition-specimen-evidence-gate/manifest-v2",
   "source_network_writes": 0,
   "tracking_issue": 13964
 }
