@@ -37,15 +37,18 @@ jobs:
             libdrm2 libgbm1 libwayland-client0 libwayland-cursor0 libxkbcommon0 \
             mesa-vulkan-drivers libvulkan1
 
-      - name: Verify pinned libdragon toolchain image
+      - name: Build libdragon in pinned toolchain image
         shell: bash
         run: |
           set -euxo pipefail
+          git clone --depth=1 --branch=trunk https://github.com/DragonMinded/libdragon.git /tmp/libdragon
+          git -C /tmp/libdragon rev-parse HEAD | tee /tmp/libdragon.sha
+          cd /tmp/libdragon
+          JOBS=2 ./build.sh
           test -f "$N64_INST/n64.mk"
-          command -v mips64-elf-gcc
           printf '%s\n' "$LIBDRAGON_IMAGE_DIGEST" | tee /tmp/libdragon-image-digest.txt
-          mips64-elf-gcc --version | tee /tmp/mips64-gcc-version.txt
           sha256sum "$N64_INST/n64.mk" | tee /tmp/n64mk_sha256.txt
+          find "$N64_INST/bin" -maxdepth 1 -type f -perm -111 -printf '%f\n' | sort | tee /tmp/toolchain-binaries.txt
 
       - name: Checkout exact Legend of Elya revision
         shell: bash
@@ -181,7 +184,7 @@ jobs:
           set -euxo pipefail
           mkdir -p /evidence
           for f in \
-            /tmp/libdragon-image-digest.txt /tmp/mips64-gcc-version.txt /tmp/n64mk_sha256.txt \
+            /tmp/libdragon.sha /tmp/libdragon-image-digest.txt /tmp/n64mk_sha256.txt /tmp/toolchain-binaries.txt \
             /tmp/rom_sha256.txt /tmp/dgb_help.txt /tmp/run_dgb_rate.py \
             /tmp/scalar_dgb.log /tmp/rsp_dgb.log /tmp/scalar_console.txt /tmp/rsp_console.txt \
             /tmp/scalar_rate_probe.z64 /tmp/rsp_rate_probe.z64; do
