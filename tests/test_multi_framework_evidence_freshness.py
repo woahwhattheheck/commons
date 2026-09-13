@@ -42,7 +42,7 @@ class FreshnessGateTests(unittest.TestCase):
  def test_scope_mismatch(self):
   raw=self._one("REUSE-000"); raw["evidence"][0]["mappings"]=[{"framework":"SOC2","control":"OUTSIDE"}]; self.assertEqual(_compile_packet_at(raw,AS_OF)["results"][0]["state"],"SCOPE_MISMATCH")
  def test_duplicate_id_rejected(self):
-  raw=self._one("REUSE-000"); raw["evidence"].append(copy.deepcopy(raw["evidence"][0]))
+  raw=self._one("REUSE-000"); raw["evidence"].append(copy.deepcopy(raw["evidence"][0]));
   with self.assertRaises(GateError): _compile_packet_at(raw,AS_OF)
  def test_bool_max_age_rejected(self):
   raw=self._one("REUSE-000"); raw["freshness_policy"]["max_age_days"]=True
@@ -108,4 +108,5 @@ class FreshnessGateTests(unittest.TestCase):
   with tempfile.TemporaryDirectory() as td:
    root=Path(td); src=root/"input.json"; pkt=root/"packet.json"; md=root/"review.md"; src.write_text(json.dumps(self.raw))
    self.assertEqual(main(["compile",str(src),str(pkt),str(md)]),0); self.assertTrue(pkt.exists() and md.exists()); self.assertEqual(main(["verify",str(pkt)]),0)
+
 if __name__=="__main__": unittest.main()
