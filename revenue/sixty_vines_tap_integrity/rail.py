@@ -195,6 +195,25 @@ def _validate_pour_preconditions(
     lot_id = _require_id(event.get("lot_id"), f"{event['event_id']}.lot_id")
     sku = _require_id(event.get("sku"), f"{event['event_id']}.sku")
 
+    for pending_id, pending in sorted(state.pending.items()):
+        pending_spec = pending["spec"]
+        resource = None
+        if pending_spec["tap_id"] == tap_id:
+            resource = f"tap {tap_id}"
+        elif pending_spec["line_id"] == line_id:
+            resource = f"line {line_id}"
+        elif pending_spec["keg_id"] == keg_id:
+            resource = f"keg {keg_id}"
+        if resource is not None:
+            state.holds.append(
+                _hold(
+                    event,
+                    "UNKNOWN_RESOURCE_BLOCK",
+                    f"{pending_id} has unresolved {resource}",
+                )
+            )
+            return None
+
     tap = config.taps.get(tap_id)
     if tap is None:
         state.holds.append(_hold(event, "UNKNOWN_TAP", tap_id))
@@ -597,9 +616,126 @@ def receipt_digest(receipt: Mapping[str, Any]) -> str:
     return _sha(unsigned)
 
 
+def _is_nonnegative_int(value: Any) -> bool:
+    return not isinstance(value, bool) and isinstance(value, int) and value >= 0
+
+
+def _is_sha256(value: Any) -> bool:
+    return (
+        isinstance(value, str)
+        and len(value) == 64
+        and all(char in "0123456789abcdef" for char in value)
+    )
+
+
 def verify_receipt(receipt: Mapping[str, Any]) -> bool:
-    digest = receipt.get("receipt_sha256")
-    return isinstance(digest, str) and digest == receipt_digest(receipt)
+    if not isinstance(receipt, Mapping):
+        return False
+
+    required_fields = {
+        "schema",
+        "config_sha256",
+        "events_sha256",
+        "state_sha256",
+        "summary",
+        "tap_coverage",
+        "holds",
+        "unresolved_effect_ids",
+        "receipt_sha256",
+    }
+    if set(receipt) != required_fields:
+        return False
+    if receipt["schema"] != "sixty-vines-tap-integrity-receipt/v1":
+        return False
+    if not all(
+        _is_sha256(receipt[field])
+        for field in (
+            "config_sha256",
+            "events_sha256",
+            "state_sha256",
+            "receipt_sha256",
+        )
+    ):
+        return False
+
+    summary = receipt["summary"]
+    summary_fields = {
+        "unique_events",
+        "processed_events",
+        "applied_effects",
+        "holds",
+        "unresolved_unknown_effects",
+        "tap_count",
+        "taps_with_pours",
+        "inventory_used_ml",
+        "inventory_waste_ml",
+        "gross_cents",
+        "refund_cents",
+        "void_cents",
+        "net_cents",
+        "remaining_ml",
+    }
+    if not isinstance(summary, Mapping) or set(summary) != summary_fields:
+        return False
+    if not all(_is_nonnegative_int(summary[field]) for field in summary_fields):
+        return False
+    if summary["tap_count"] < 1:
+        return False
+    if summary["processed_events"] != summary["unique_events"]:
+        return False
+    if summary["applied_effects"] > summary["processed_events"]:
+        return False
+    if summary["taps_with_pours"] > summary["tap_count"]:
+        return False
+    if summary["net_cents"] != (
+        summary["gross_cents"] - summary["refund_cents"] - summary["void_cents"]
+    ):
+        return False
+
+    coverage = receipt["tap_coverage"]
+    if not isinstance(coverage, Mapping) or len(coverage) != summary["tap_count"]:
+        return False
+    for tap_id, count in coverage.items():
+        if (
+            not isinstance(tap_id, str)
+            or not tap_id
+            or tap_id.strip() != tap_id
+            or not _is_nonnegative_int(count)
+        ):
+            return False
+    if sum(1 for count in coverage.values() if count > 0) != summary["taps_with_pours"]:
+        return False
+
+    holds = receipt["holds"]
+    if not isinstance(holds, list) or len(holds) != summary["holds"]:
+        return False
+    hold_fields = {"event_id", "seq", "code", "detail"}
+    for hold in holds:
+        if not isinstance(hold, Mapping) or set(hold) != hold_fields:
+            return False
+        if not _is_nonnegative_int(hold["seq"]):
+            return False
+        for field in ("event_id", "code", "detail"):
+            value = hold[field]
+            if not isinstance(value, str) or not value or value.strip() != value:
+                return False
+
+    unresolved = receipt["unresolved_effect_ids"]
+    if not isinstance(unresolved, list):
+        return False
+    if len(unresolved) != summary["unresolved_unknown_effects"]:
+        return False
+    if unresolved != sorted(unresolved) or len(unresolved) != len(set(unresolved)):
+        return False
+    if any(
+        not isinstance(effect_id, str)
+        or not effect_id
+        or effect_id.strip() != effect_id
+        for effect_id in unresolved
+    ):
+        return False
+
+    return receipt["receipt_sha256"] == receipt_digest(receipt)
 
 
 def make_config(tap_count: int = 60, *, cleaning_max_age: int = 720) -> dict[str, Any]:
