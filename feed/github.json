@@ -1,9 +1,9 @@
 {
   "counts": {
-    "open_issues": 21,
-    "open_pull_requests": 21,
-    "runs_in_progress": 13,
-    "runs_queued": 985
+    "open_issues": 23,
+    "open_pull_requests": 24,
+    "runs_in_progress": 16,
+    "runs_queued": 1005
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -69,13 +69,46 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
+      "branch": "zcheb-v5p2/fsu-itn-6769-4-20260913",
+      "created_at": "2026-09-13T11:01:21Z",
+      "draft": false,
+      "head_sha": "2f390d31e3b2b2ab62810555a265cf642578c231",
+      "number": 13795,
+      "title": "revenue: build FSU ITN 6769-4 qualification carrier",
+      "updated_at": "2026-09-13T11:01:21Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zlob-r2m8/air-evidence-network-rfi-20260913",
+      "created_at": "2026-09-13T11:01:05Z",
+      "draft": false,
+      "head_sha": "ddd225a4ce70b3b0b72141f8257f6cacef801132",
+      "number": 13794,
+      "title": "revenue: qualify AIR AI-workforce RFI with partner-first evidence gate",
+      "updated_at": "2026-09-13T11:01:38Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zhyp-c9v3/denton-floyd-cumulative-po-overrun-13789",
+      "created_at": "2026-09-13T10:57:50Z",
+      "draft": false,
+      "head_sha": "8f12b7a8867f82efb6ec3768fc7ee6a89b494964",
+      "number": 13792,
+      "title": "fix(revenue): hold cumulative invoice exposure above PO total",
+      "updated_at": "2026-09-13T10:57:50Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
       "branch": "zbra-h8n5/bss-mcp-transcript-audit-20260913",
       "created_at": "2026-09-13T10:52:53Z",
       "draft": false,
-      "head_sha": "bc8b69892ff4cc3e74b3454bb75cc9b1e84b7512",
+      "head_sha": "df27faf39b2a33f301777eb274e739fa907263bb",
       "number": 13790,
       "title": "mcp: add byte-bound 2025-11-25 transcript audit + verifier",
-      "updated_at": "2026-09-13T10:55:10Z"
+      "updated_at": "2026-09-13T11:01:19Z"
     },
     {
       "author": "woahwhattheheck",
@@ -94,10 +127,10 @@
       "branch": "zcan/raw-byte-provenance-current-20260913",
       "created_at": "2026-09-13T10:39:37Z",
       "draft": false,
-      "head_sha": "a934eef5dbb3e85cf7edc3166bd436bb731a88bc",
+      "head_sha": "cfe6ed2b5bf932f99e9adccbd2cca508a96f2a4e",
       "number": 13779,
       "title": "fix(revenue): bind scope time authority to exact raw bytes",
-      "updated_at": "2026-09-13T10:55:16Z"
+      "updated_at": "2026-09-13T11:00:46Z"
     },
     {
       "author": "woahwhattheheck",
@@ -142,39 +175,6 @@
       "number": 13712,
       "title": "revenue: add San Diego RFP 13365 partner-readiness gate",
       "updated_at": "2026-09-13T10:50:03Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zherm-c7v/outbound-lease-authority-fence-20260913",
-      "created_at": "2026-09-13T09:46:37Z",
-      "draft": false,
-      "head_sha": "2b6598f90c107dfacc4ec2a975e070f5073f8952",
-      "number": 13702,
-      "title": "fix(outbound): bind lease receipts to live provider authority",
-      "updated_at": "2026-09-13T09:55:08Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-lagrange-913500/cas-actuarial-llm-benchmark-repro-20260913",
-      "created_at": "2026-09-13T09:46:23Z",
-      "draft": false,
-      "head_sha": "437f3e033ae351d825dc7761432a11a78e528b03",
-      "number": 13701,
-      "title": "revenue: add CAS actuarial LLM benchmark reproducibility core",
-      "updated_at": "2026-09-13T09:54:04Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zram/wuhu-lerobot-qc-20260913",
-      "created_at": "2026-09-13T09:42:49Z",
-      "draft": false,
-      "head_sha": "80c722fbe7ab7dd711ce01987bea50c900ad673e",
-      "number": 13695,
-      "title": "competition: add Wuhu LeRobot trajectory QC engine",
-      "updated_at": "2026-09-13T10:52:25Z"
     }
   ],
   "open_heads": {
@@ -196,14 +196,28 @@
     "13740": "dc8de234ed4da90cdbaece2e1d06b9c6925cdf2e",
     "13741": "233642dbbf5dc85ef443a2e34d2bdb9406163b21",
     "13756": "f0db7219f3c214269cb33ea57315d5350f276d47",
-    "13779": "a934eef5dbb3e85cf7edc3166bd436bb731a88bc",
+    "13779": "cfe6ed2b5bf932f99e9adccbd2cca508a96f2a4e",
     "13782": "1553dd65151766b6c3a195fa87689f9505f1de29",
-    "13790": "bc8b69892ff4cc3e74b3454bb75cc9b1e84b7512"
+    "13790": "df27faf39b2a33f301777eb274e739fa907263bb",
+    "13792": "8f12b7a8867f82efb6ec3768fc7ee6a89b494964",
+    "13794": "ddd225a4ce70b3b0b72141f8257f6cacef801132",
+    "13795": "2f390d31e3b2b2ab62810555a265cf642578c231"
   },
-  "pulls_listed": 21,
+  "pulls_listed": 24,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 75.8,
+  "queue_depth_per_runner": 62.8,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zaxg-q4n8/air-workforce-evidence-rfi-20260913",
+      "closed_at": "2026-09-13T10:59:11Z",
+      "head_sha": "a797483f0b5e0b5b19a7d289f4fdaa3b91453f85",
+      "merged_at": null,
+      "number": 13793,
+      "state": "CLOSED",
+      "title": "revenue: qualify AIR workforce-AI evidence-network RFI"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -357,21 +371,10 @@
       "number": 13760,
       "state": "CLOSED",
       "title": "fix(revenue): make delayed lifecycle retries idempotent"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-zeeman/crownbio-provenance-913602",
-      "closed_at": "2026-09-13T10:36:29Z",
-      "head_sha": "985bf6a691516ceff0f76b94a33783b4a4b450e5",
-      "merged_at": "2026-09-13T10:36:29Z",
-      "number": 13771,
-      "state": "MERGED",
-      "title": "revenue: add CrownBio clinical-model provenance gate"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-13T10:55:50Z",
+  "unchanged_since": "2026-09-13T11:02:17Z",
   "undatable_pulls": []
 }
