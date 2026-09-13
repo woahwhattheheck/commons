@@ -10,11 +10,11 @@ from .current import (
     compile_authorized_current,
     load_authority_key,
     load_current_input,
-    publish_authorized,
     read_published_authorized,
     read_regular_bytes,
     verify_authorized_current,
 )
+from .publisher import publish_authorized
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -28,7 +28,7 @@ def main(argv: list[str] | None = None) -> int:
     compile_p.add_argument("input")
     compile_p.add_argument("authority")
     compile_p.add_argument("authority_key")
-    compile_p.add_argument("output_dir")
+    compile_p.add_argument("output_dir", help="existing owner-controlled output directory")
 
     verify_p = sub.add_parser(
         "verify",
