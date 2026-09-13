@@ -24,20 +24,24 @@ Those facts remain **discovery evidence only** until exact City / official-procu
 
 ## Authority model
 
-The production CLI accepts only the pursuit packet. It has no argument for trusted procurement sources and cannot promote itself past the controlling-pack HOLD.
+The production CLI accepts only the pursuit packet. It has no argument for trusted procurement sources or authority capabilities and cannot promote itself past the controlling-pack HOLD.
 
-`evaluate_with_trusted_sources()` is a trusted-host integration boundary, not a caller-JSON route. A host using it must independently acquire City / official-procurement records and provide exact content SHA-256, currentness/supersession, scope-completeness, and the canonical UTC deadline from the controlling source. Requirements must bind back to one exact current trusted-source ID + SHA and evidence IDs.
+`evaluate_with_trusted_sources()` is a trusted-host integration boundary. Source dictionaries are **claims, not authority**. Promotion additionally requires an `airdrie-controlling-source-authority/v1` document whose HMAC covers the exact canonical source generation: solicitation ID, source IDs and SHA-256 values, City/official-portal authority claim, currentness, scope-completeness, kind, canonical UTC deadline, and supersession set. The authenticated authority generation is then bound into every trusted-path HOLD/READY receipt by schema, key ID, issuance time, and SHA-256.
 
-Even after all mandatory evidence is proven, the maximum state is `READY_FOR_OWNER_REVIEW`; `submission_authorized` remains false.
+The HMAC capability is loaded only from the trusted host process variable `AIRDRIE_CONTROLLING_AUTHORITY_KEY_HEX`. It must be at least 32 bytes encoded as canonical lowercase hex. It is **not** accepted from the packet, trusted-source list, authority document, function arguments, or CLI. Code/process access able to read that capability is therefore part of the trusted-host boundary and must not be exposed to untrusted request code. If the capability is absent, malformed, wrong, or the authority document does not exactly match the supplied source generation, the trusted path returns `INVALID` and can never reach `READY_FOR_OWNER_REVIEW`.
+
+A trusted host that has independently reacquired the controlling City / official-procurement bytes can call `issue_host_authority_set()` inside that protected process to bind the exact source generation before requirement extraction. Reissuing authority is required whenever source SHA, deadline, currentness, scope, kind, or supersession changes. Requirements must bind back to one exact current trusted-source ID + SHA and evidence IDs.
+
+Even after host authority verifies and all mandatory evidence is proven, the maximum state is `READY_FOR_OWNER_REVIEW`; `submission_authorized` remains false.
 
 ## Status ladder
 
-- `INVALID` — malformed, ambiguous, stale/superseded, or source-inconsistent evidence.
+- `INVALID` — malformed, ambiguous, stale/superseded, source-inconsistent, unauthenticated, or authority-generation-inconsistent evidence.
 - `HOLD_CONTROLLING_PACK_REQUIRED` — discovery-only state.
-- `HOLD_DEADLINE_REVERIFY` — controlling deadline reached; amendments/currentness must be re-read.
-- `HOLD_REQUIREMENT_EXTRACTION_REQUIRED` — trusted pack exists, but requirements have not been source-bound.
+- `HOLD_DEADLINE_REVERIFY` — authenticated controlling deadline reached; amendments/currentness must be re-read and a new authority generation issued.
+- `HOLD_REQUIREMENT_EXTRACTION_REQUIRED` — authenticated trusted pack exists, but requirements have not been source-bound.
 - `HOLD_MANDATORY_GAPS` — at least one source-bound mandatory requirement lacks proven evidence.
-- `READY_FOR_OWNER_REVIEW` — source/evidence gates pass; **still no submission authority**.
+- `READY_FOR_OWNER_REVIEW` — source/host-authority/evidence gates pass; **still no submission authority**.
 
 ## Explicit non-authority
 
