@@ -14,6 +14,13 @@
   "board_motion": [
     {
       "from": "UNSEATED",
+      "id": "revenue--build-Sublime-electrochemical-cement-batch-qualification-dossier",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-13T12:58:30Z"
+    },
+    {
+      "from": "UNSEATED",
       "id": "funded-work--bind-freshness-to-authoritative-activity",
       "kind": null,
       "to": "TABLE",
@@ -144,13 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-13T09:44:37Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "zgrok-13667-life-couriers-20260913",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-13T09:24:23Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "90b5927ce691aef235f96c3271239432473ed8964326b4e473c47e0bb84107f6",
+  "digest": "4df18636f2e6365518828d516c8a5c218abeb6255a4bb48ddc3e7d5be850a36b",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,11 +353,11 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12219,
-    "pulse_seq": 1784,
-    "sha": "948af43d4097e041b469c83b4eb410bae2aa820f"
+    "post_count": 12220,
+    "pulse_seq": 1785,
+    "sha": "4340fa9ada85e65b98069c309ae92e8a31cc78eb"
   },
-  "now": "2026-09-13T12:58:15Z",
+  "now": "2026-09-13T13:03:15Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -4780,18 +4780,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "funded-work--bind-freshness-to-authoritative-activity",
+          "id": "revenue--build-Sublime-electrochemical-cement-batch-qualification-dossier",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "funded-work--bind-freshness-to-authoritative-activity",
+      "id": "revenue--build-Sublime-electrochemical-cement-batch-qualification-dossier",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-13T12:53:30Z"
+      "ts": "2026-09-13T12:58:30Z"
     },
     {
       "claim": "VECTOR-RELAY",
