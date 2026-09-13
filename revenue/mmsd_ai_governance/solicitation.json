@@ -1,0 +1,46 @@
+{
+  "schema_version": "mmsd.ai-governance.solicitation/v1",
+  "opportunity_id": "MMSD-AI-GOVERNANCE-RFP-20260913",
+  "buyer": "Madison Metropolitan Sewerage District",
+  "title": "Comprehensive Artificial Intelligence (AI) Use and Governance Policy",
+  "status": "ACTIVE",
+  "posted_date": "2026-08-31",
+  "question_deadline": "2026-09-28T16:00:00-05:00",
+  "proposal_deadline": "2026-10-16T16:00:00-05:00",
+  "expected_award_date": "2026-11-30",
+  "anticipated_start": "2027-01",
+  "anticipated_term_months": 6,
+  "submission": {
+    "channel": "email",
+    "address": "rfp@madsewer.org",
+    "subject": "Comprehensive AI Policy RFP",
+    "public_record_warning": true
+  },
+  "known_scope": [
+    "comprehensive actionable AI use and governance policy",
+    "separate governance and operational risk tiers for Generative AI and Operational AI",
+    "employee standards for AI use",
+    "electronic data safeguards and data sovereignty",
+    "Wisconsin public-records compliance and transparency guidance",
+    "shadow-AI audit and stakeholder interviews",
+    "vendor procurement framework",
+    "AI incident-response framework",
+    "staff AI literacy and training"
+  ],
+  "source_urls": [
+    "https://www.madsewer.org/contracting-center/comprehensive-artificial-intelligence-ai-use-and-governance-policy-request-for-proposal/",
+    "https://publicbidsearch.com/bids/comprehensive-artificial-intelligence-ai-use-and-governance-madison-wi-d08042"
+  ],
+  "source_document_name": "FINAL-RFP-Comprehensive-AI-Policy-Development-1.pdf",
+  "unresolved_submission_gates": [
+    "exact five required submission items from the source PDF",
+    "minimum prior-project or public-sector consulting experience",
+    "number and form of required client references",
+    "insurance requirements and whether evidence is due with proposal or only upon award",
+    "whether prime qualifications may be supplemented by named subcontractor/team credentials",
+    "evaluation criteria and weights",
+    "required price format",
+    "required contracting forms, representations, certifications, or signatures"
+  ],
+  "truth_boundary": "The indexed official landing page and public solicitation index support the fields above. The source PDF itself was not retrievable in the current research harness, so unresolved submission gates MUST remain UNKNOWN until the official PDF or a buyer clarification is obtained."
+}
