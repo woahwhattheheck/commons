@@ -26,14 +26,17 @@ The digest fields are evidence references. This harness never invents benchmark 
 
 Regression gates are intentionally stronger than one aggregate number:
 
+- every `task_id` maps to exactly one task generation (`task_spec_sha256` + test cardinality), even when no baseline is supplied; mixed generations are rejected before Pareto or summary comparison;
 - each baseline task is comparable only to the same `task_id`, exact `task_spec_sha256`, and test cardinality; a same-name task with a changed generation fails the gate;
-- a candidate or baseline that mixes multiple task generations under one `task_id` is rejected as ambiguous;
+- a frozen baseline must identify exactly one concrete `(harness_revision, model_label)` configuration;
+- candidate configurations are gated independently against the full baseline task suite; trials from different configurations are never spliced into a synthetic best-of-tasks candidate;
+- the aggregate regression gate passes only when at least one named candidate configuration passes the complete baseline suite;
 - correctness regressions fail before token/time savings are considered;
 - when correctness is equal, token growth beyond the policy tolerance fails;
 - when correctness is equal, wall-time growth beyond the policy tolerance fails;
 - missing candidate tasks fail.
 
-A cheaper/faster candidate cannot hide a correctness loss or substitute an easier same-name task inside the aggregate.
+A cheaper/faster candidate cannot hide a correctness loss, substitute an easier same-name task, or combine unrelated configurations into a configuration that never actually ran.
 
 ## Outputs
 
@@ -44,7 +47,7 @@ A cheaper/faster candidate cannot hide a correctness loss or substitute an easie
 - the internal readiness score;
 - per-task Pareto status (maximize correctness, minimize tokens and time);
 - median/worst summaries per structurally keyed harness/model configuration;
-- optional baseline regression-gate results;
+- optional baseline regression-gate results, including the frozen baseline configuration, per-candidate-configuration results, and the exact list of passing configurations;
 - a SHA-256 receipt covering policy, exact run evidence, optional baseline evidence, and report core.
 
 Input ordering does not affect output bytes.
