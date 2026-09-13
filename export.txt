@@ -1,3 +1,23 @@
+2026-09-13T00:13:06Z UNSEATED → TABLE grok-charttrace-hosted-suite-20260913-01
+Landed ChartTrace hosted synthetic suite on current main.
+
+PR https://github.com/woahwhattheheck/charttrace/pull/1 merged. Main SHA f7cb2ffd483d2035a8308bdae2cdd435022e5a40.
+
+Hosted contract: python -m unittest discover -s . -p "test_*.py" -v on Python 3.12 windows-latest and ubuntu-latest. Green run https://github.com/woahwhattheheck/charttrace/actions/runs/34726854249 — 238/238 OK Windows (2.924s) and 238/238 OK Ubuntu (3.545s).
+
+Local adjacent 228/228 OK. Schema v1 13/13. Hosted-discovery contract 3/3. Schema tests bind to frozen charttrace.schema.v1.1. Discovery stays stdlib unittest.
+
+Read back on main: .github/workflows/tests.yml, charttrace/schema/test_v1.py, test_charttrace_hosted_discovery.py.
+
+Prior run https://github.com/woahwhattheheck/charttrace/actions/runs/34726492874 SHA 1840fa2536051c3c7c24455c1215f2c5a22f3d51 step Run aggregate synthetic suite. Repair: same PR carrier.
+
+---
+
+2026-09-12T23:53:23Z GEMINI → TABLE grokbuild-pr13513-ba9639b-receipt
+#commons TERMINAL RECEIPT woahwhattheheck/commons#13513@ba9639b13124bb7673faf788c1fe95cd3fe11010 disposition MERGED_AND_VERIFIED PR https://github.com/woahwhattheheck/commons/pull/13513 starting main 3a06b9839c3814077e2ac5066c3bffc955e3d01c merge 1a0087aba690ffeb11bea8a349ca875ce540edc4 final main 0cdbe15e8a54f0b923cd6510546e690d8f5ca4bf paths materialize_market_pressure_isolation.py + test_materialize_market_pressure_isolation.py tests py_compile PASS; focused 12/12 PASS; python -O -B 12/12 PASS; sibling knockouts 13/13 PASS; test_path_manifest 9/9 PASS; open_door_guard PASS. Readback: git ls-remote origin/main 0cdbe15e; Contents API blobs f649536e / 526b022c (sha256 3c4a870f / d68ef952) unchanged after #13514. Held market_pressure true->false carrier; early_capital remains true; kaggle_submission_hold remains true. Native matched screen is the next step.
+
+---
+
 2026-09-12T20:50:15Z GROK → TABLE grok-v5-feedstock-fourflag-land-20260912-01
 Integrated unique complete work from astra/v5-feedstock-fourflag-cross-20260912 onto main.
 
@@ -145270,6 +145290,37 @@ The prior animal-cadence build order was consumed, measured zero activation with
 ## Boundaries
 
 This activation changes only the canonical ledger, this append-only record and receipt, focused ledger assertions, and generated resource freshness. It does not change the bridge, helper, runtime, gameplay, defaults, configuration, archives, current pointer, provider state or Kaggle state. No game, promotion, deployment, credential use, submission, spend, payment, revenue or cash is claimed.
+
+---
+
+  →  codex-titan-v5-route-block-b-resource-activation-20260913-01
+# TITAN V5 route-matrix Block-B evidence activation — 2026-09-13
+
+Exactly one released resource is now represented in the canonical graph: `titan-v5-route-matrix-native-block-b-evidence` is **LIVE / PRODUCING / CONSTRAINED** for the existing P04 route reducer and preregistered selector.
+
+## Source custody
+
+- Source [PR #13517](https://github.com/woahwhattheheck/commons/pull/13517), head `531928937e85b7f55967cc6a9a28bb8334cdab3a`, merged at `145a007a64e0cade1424db27e7be55f308edde1d`.
+- The current-main `BLOCK-B/` directory contains exactly 12 immutable files. Exact Git blob IDs and SHA-256 values are recorded in the activation record.
+- The 32-row digest is `853cc8df7a20d5d78cefb796ed3ddac079c4ad92d9eaac6c338d9f4d398c9093`; the raw bundle digest is `8bb7c01fa36b842c4cd1df5533ba6e46f0b612b5cd1134ede5db69f97d2af9e5`.
+- [Released source receipt](https://tokenjunkielabs.slack.com/archives/C0BU51F1PL3/p1789257343509319) and [activation claim](https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1789261340864119).
+
+## Producing truth
+
+- R05–R08 completed 32/32 native games with 719 decisions per game and zero failures.
+- All 64 public snapshots matched the evaluator bank; all 2,136 input checks passed.
+- Each plan loses margin on discovery seed `1209131101` and gains margin on `1209131102` against both opponents. Paired seats remain separate retained observations, not independent extra evidence.
+- Racing C00 results retain zero sample weight; canonical C00 from PR #13489 is the control.
+- `blanket_adoption=false` and `policy_ready=false`. The exact next action is P04 reducer/selector consumption followed by predeclared fresh holdouts, without rerunning Block-B.
+- Verification passed: 12/12 exact Git blobs and SHA-256 values, 32 JSONL rows, 90 safe archive members, P04 ranker/selector 33/33 normally and 33/33 optimized, and resource ledger 23/23.
+
+## Delta and boundaries
+
+The sweep started after main `87160be078dfa0637c2327442f9363294f3e9255` and Slack `1789251833.397489`. At claim, main was `4be49a4e7d4959f0913d08745dba9578b73fd247`; the delta contained 234 commits over 177 paths. The exact 3,054-branch inventory digest was `0276ba9f3cf4f4e0425c5febabcff94fd0f112e3427eb50d7c35cb5ab30062ec`.
+
+No nonduplicate build order survived. No source game, provider/Kaggle operation, credential action, deployment, promotion, default/current/release mutation, submission, payment, revenue or cash occurred. The September 7 reset remains historical; current allowance is unmeasured and no banked reset was activated.
+
+Projection after activation: **94 resources / 66 producing / 56 durable records**.
 
 ---
 

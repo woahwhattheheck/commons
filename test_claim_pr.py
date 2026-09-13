@@ -78,17 +78,114 @@ class CanonicalPrClaimTests(unittest.TestCase):
         self.assertTrue(successor["ok"])
         self.assertEqual("ASTRA-A", successor["record"]["previous_holder"])
 
-    def test_invalid_action_holder_and_ttl_fail_before_git_write(self):
+    def test_invalid_action_holder_ttl_and_attempts_fail_before_git_write(self):
         bad = [
             {"action": "steal", "holder": "ASTRA", "ttl_s": 600},
             {"action": "take", "holder": "", "ttl_s": 600},
             {"action": "take", "holder": "ASTRA", "ttl_s": 0},
             {"action": "take", "holder": "ASTRA", "ttl_s": 7201},
             {"action": "take", "holder": "ASTRA", "ttl_s": True},
+            {"action": "take", "holder": "ASTRA", "ttl_s": 600, "attempts": 0},
+            {"action": "take", "holder": "ASTRA", "ttl_s": 600, "attempts": True},
+            {"action": "take", "holder": "ASTRA", "ttl_s": 600, "attempts": 11},
         ]
         for kwargs in bad:
             with self.subTest(kwargs=kwargs), self.assertRaises(ValueError):
                 claim_pr.write_pr_holding(self.a, 13492, now=self.t0, **kwargs)
+
+    def test_runtime_retry_refreshes_clock_before_reread(self):
+        seed = cs.holding_write(self.a, "seed", "SEED", "take", now=self.t0)
+        self.assertTrue(seed["ok"])
+        stale_tip = seed["commit"]
+        winner_time = self.t0 + dt.timedelta(seconds=1)
+        winner = cs.holding_write(
+            self.a, "pr-13492", "ASTRA-A", "take", ttl_s=600, now=winner_time
+        )
+        self.assertTrue(winner["ok"])
+
+        real_tip = cs._remote_tip
+        real_now = cs._now
+        tip_calls = {"n": 0}
+        clock = iter((self.t0, self.t0 + dt.timedelta(seconds=2)))
+
+        def stale_then_real(git, branch, remote="origin"):
+            tip_calls["n"] += 1
+            if tip_calls["n"] == 1:
+                return stale_tip
+            return real_tip(git, branch, remote)
+
+        cs._remote_tip = stale_then_real
+        cs._now = lambda: next(clock)
+        try:
+            lost = claim_pr.write_pr_holding(
+                self.b, 13492, "ASTRA-B", "take", ttl_s=600
+            )
+        finally:
+            cs._remote_tip = real_tip
+            cs._now = real_now
+
+        self.assertFalse(lost["ok"])
+        self.assertEqual("ASTRA-A", lost["held_by"])
+        self.assertGreaterEqual(tip_calls["n"], 2)
+
+    def test_future_winner_heartbeat_is_live_not_expired(self):
+        winner = claim_pr.write_pr_holding(
+            self.a,
+            13492,
+            "WINNER",
+            "take",
+            ttl_s=600,
+            now=self.t0 + dt.timedelta(seconds=10),
+        )
+        self.assertTrue(winner["ok"])
+
+        loser = claim_pr.write_pr_holding(
+            self.b, 13492, "LOSER", "take", ttl_s=600, now=self.t0
+        )
+        self.assertFalse(loser["ok"])
+        self.assertEqual("WINNER", loser["held_by"])
+
+    def test_same_holder_clock_skew_does_not_move_heartbeat_backwards(self):
+        first = claim_pr.write_pr_holding(
+            self.a,
+            13492,
+            "ASTRA-A",
+            "take",
+            ttl_s=600,
+            now=self.t0 + dt.timedelta(seconds=10),
+        )
+        self.assertTrue(first["ok"])
+        renewed = claim_pr.write_pr_holding(
+            self.a, 13492, "ASTRA-A", "renew", ttl_s=1200, now=self.t0
+        )
+        self.assertTrue(renewed["ok"])
+        self.assertEqual(
+            "2026-09-12T23:30:10Z", renewed["record"]["heartbeat_at"]
+        )
+        self.assertEqual(1200, renewed["record"]["ttl_s"])
+
+    def test_explicit_time_never_reads_runtime_clock(self):
+        winner = claim_pr.write_pr_holding(
+            self.a,
+            13492,
+            "WINNER",
+            "take",
+            ttl_s=600,
+            now=self.t0 + dt.timedelta(seconds=10),
+        )
+        self.assertTrue(winner["ok"])
+
+        real_now = cs._now
+        cs._now = lambda: (_ for _ in ()).throw(AssertionError("runtime clock used"))
+        try:
+            result = claim_pr.write_pr_holding(
+                self.b, 13492, "LOSER", "take", ttl_s=600, now=self.t0
+            )
+        finally:
+            cs._now = real_now
+
+        self.assertFalse(result["ok"])
+        self.assertEqual("WINNER", result["held_by"])
 
 
 if __name__ == "__main__":

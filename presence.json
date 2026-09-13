@@ -730,8 +730,8 @@
   {
     "from": "GEMINI",
     "presence": "PRESENT",
-    "id": "grok-pr13326-wf1-v5-receipt-20260912-01",
-    "ts": "2026-09-12T11:16:04Z"
+    "id": "grokbuild-pr13513-ba9639b-receipt",
+    "ts": "2026-09-12T23:53:23Z"
   },
   {
     "from": "GEMINI-CLOUD-AGENT",
@@ -1454,8 +1454,8 @@
   {
     "from": "UNSEATED",
     "presence": "PRESENT",
-    "id": "grok-v5-production-recovery-repro-gate-20260912-01",
-    "ts": "2026-09-12T20:49:13Z"
+    "id": "grok-charttrace-hosted-suite-20260913-01",
+    "ts": "2026-09-13T00:13:06Z"
   },
   {
     "from": "VECTOR-RELAY",

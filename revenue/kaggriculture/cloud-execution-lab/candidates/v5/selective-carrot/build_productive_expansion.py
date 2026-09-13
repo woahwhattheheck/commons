@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: Apache-2.0
-"""Build the P01 payback-gated V219 arm on the exact production-v3 family."""
+"""Build the telemetry-only P01 V219 arm on the exact production-v3 family."""
 from __future__ import annotations
 
 import argparse
@@ -17,7 +17,7 @@ ROUTER = 'r04_full_router.py'
 ROUTER_SHA = '41ea55c5f20c43cd58c5099fbadb212de62ec95a95dfc2e6e1e19c3d4d55b39a'
 GATE = 'p01_productive_expansion_gate.py'
 ANCHOR = b'\n\ndef _v219_walk(pos, target):\n'
-WRAPPER = b'''\n\n# P01 / TITAN-V5-PRODUCTIVE-EXPANSION-WIDE: default-off experiment carrier.\n# Keep the original V219 identity/land/worker checks, then apply only a\n# reject-safe public-evidence negative-payback proof. Inconclusive evidence\n# preserves the exact parent decision.\n_V219_QUALIFIES_PARENT = _v219_qualifies\nfor _key in ('p01_gate_checks', 'p01_payback_rejects',\n             'p01_gate_passthroughs', 'p01_visible_rival_field_projection',\n             'p01_modeled_gross_visible_field', 'p01_gross_upper_bound',\n             'p01_unavoidable_cost_floor', 'p01_labor_cost_floor'):\n    _V219_REPORT.setdefault(_key, 0)\n\ndef _v219_qualifies(obs, native):\n    if not _V219_QUALIFIES_PARENT(obs, native):\n        return False\n    import p01_productive_expansion_gate as _p01\n    record = _p01.evaluate(obs, native, _v219_native_day, _v219_fib, _ro_price)\n    _V219_REPORT['p01_gate_checks'] += 1\n    if 'visible_rival_field_projection' in record:\n        _V219_REPORT['p01_visible_rival_field_projection'] = int(record['visible_rival_field_projection'])\n    if record.get('modeled_gross_visible_field') is not None:\n        _V219_REPORT['p01_modeled_gross_visible_field'] = int(record['modeled_gross_visible_field'])\n    if 'gross_revenue_upper_bound' in record:\n        _V219_REPORT['p01_gross_upper_bound'] = int(record['gross_revenue_upper_bound'])\n    if 'unavoidable_cost_floor' in record:\n        _V219_REPORT['p01_unavoidable_cost_floor'] = int(record['unavoidable_cost_floor'])\n    if 'labor_cost_floor' in record:\n        _V219_REPORT['p01_labor_cost_floor'] = int(record['labor_cost_floor'])\n    if record['decision'] is None:\n        _V219_REPORT['p01_gate_passthroughs'] += 1\n        return True\n    if record['decision'] is False:\n        _V219_REPORT['p01_payback_rejects'] += 1\n        return False\n    raise RuntimeError('P01 gate returned unsupported positive decision')\n'''
+WRAPPER = b'''\n\n# P01 / TITAN-V5-PRODUCTIVE-EXPANSION-WIDE: default-off experiment carrier.\n# Keep the original V219 identity/land/worker checks and collect only public-\n# evidence payback telemetry. Full execution of the ten-seed purchase is not\n# authenticated, so P01 has no authority to accept or reject the parent.\n_V219_QUALIFIES_PARENT = _v219_qualifies\nfor _key in ('p01_gate_checks', 'p01_payback_rejects',\n             'p01_gate_passthroughs', 'p01_visible_rival_field_projection',\n             'p01_modeled_gross_visible_field', 'p01_gross_upper_bound',\n             'p01_unavoidable_cost_floor', 'p01_labor_cost_floor'):\n    _V219_REPORT.setdefault(_key, 0)\n\ndef _v219_qualifies(obs, native):\n    if not _V219_QUALIFIES_PARENT(obs, native):\n        return False\n    import p01_productive_expansion_gate as _p01\n    record = _p01.evaluate(obs, native, _v219_native_day, _v219_fib, _ro_price)\n    _V219_REPORT['p01_gate_checks'] += 1\n    if 'visible_rival_field_projection' in record:\n        _V219_REPORT['p01_visible_rival_field_projection'] = int(record['visible_rival_field_projection'])\n    if record.get('modeled_gross_visible_field') is not None:\n        _V219_REPORT['p01_modeled_gross_visible_field'] = int(record['modeled_gross_visible_field'])\n    if 'gross_revenue_upper_bound' in record:\n        _V219_REPORT['p01_gross_upper_bound'] = int(record['gross_revenue_upper_bound'])\n    if 'unavoidable_cost_floor' in record:\n        _V219_REPORT['p01_unavoidable_cost_floor'] = int(record['unavoidable_cost_floor'])\n    if 'labor_cost_floor' in record:\n        _V219_REPORT['p01_labor_cost_floor'] = int(record['labor_cost_floor'])\n    if record['decision'] is not None:\n        raise RuntimeError('P01 telemetry gate returned decision authority')\n    _V219_REPORT['p01_gate_passthroughs'] += 1\n    return True\n'''
 
 
 def _sha(raw):
@@ -131,8 +131,9 @@ def main():
         'v31_archive_sha256': V31_SHA,
         'delivery_archive_sha256': DELIVERY_SHA,
         'changed_members': [ROUTER, GATE],
-        'decision_contract': 'reject-only-unavoidable-cost-floor-vs-default-curve-gross-upper-bound',
+        'decision_contract': 'telemetry-only-until-full-seed-purchase-authenticated',
         'labor_model': 'day18-commitment-hires-only-lower-bound',
+        'seed_cost_model': 'at-least-one-executed-unit-lower-bound',
         'rival_supply_scope': 'visible-field-telemetry-only',
         'default_activation': False,
         'kaggle_submission_hold': True,

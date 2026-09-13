@@ -55,6 +55,39 @@ class QueueClassification(unittest.TestCase):
         self.assertTrue(got["cancel_candidate"])
         self.assertIn(B, got["reason"])
 
+    def test_incomplete_open_pr_inventory_blocks_partial_moved_pr_proof(self):
+        snap = self.snapshot([], [pr(7, B)], complete_open_prs=False)
+        got = q.classify_run(run(31, prs=(7, 8), event="pull_request"), snap, q.DEFAULT_REPO)
+        self.assertEqual(got["classification"], "UNKNOWN_KEEP")
+        self.assertFalse(got["cancel_candidate"])
+        self.assertIn("open-PR inventory incomplete", got["reason"])
+
+    def test_incomplete_open_pr_inventory_blocks_branch_candidate(self):
+        snap = self.snapshot([branch("topic", B)], [], complete_open_prs=False)
+        got = q.classify_run(run(32), snap, q.DEFAULT_REPO)
+        self.assertEqual(got["classification"], "UNKNOWN_KEEP")
+        self.assertFalse(got["cancel_candidate"])
+
+    def test_incomplete_branch_inventory_blocks_pr_candidate_for_same_repo(self):
+        snap = self.snapshot([], [pr(7, B)], complete_branches=False)
+        got = q.classify_run(run(33, prs=(7,), event="pull_request"), snap, q.DEFAULT_REPO)
+        self.assertEqual(got["classification"], "UNKNOWN_KEEP")
+        self.assertFalse(got["cancel_candidate"])
+        self.assertIn("branch inventory incomplete", got["reason"])
+
+    def test_positive_live_proofs_survive_incomplete_other_inventory(self):
+        pr_snap = self.snapshot([], [pr(7, A)], complete_branches=False, complete_open_prs=False)
+        self.assertEqual(
+            q.classify_run(run(34, prs=(7,)), pr_snap, q.DEFAULT_REPO)["classification"],
+            "LIVE_PR_HEAD_KEEP",
+        )
+        branch_snap = self.snapshot([branch("topic", A)], [], complete_branches=False,
+                                    complete_open_prs=False)
+        self.assertEqual(
+            q.classify_run(run(35), branch_snap, q.DEFAULT_REPO)["classification"],
+            "LIVE_BRANCH_HEAD_KEEP",
+        )
+
     def test_closed_pr_reference_is_candidate_only_with_complete_open_pr_inventory(self):
         complete = self.snapshot([], [])
         got = q.classify_run(run(4, prs=(7,), event="pull_request"), complete, q.DEFAULT_REPO)
@@ -89,6 +122,38 @@ class QueueClassification(unittest.TestCase):
         snap = self.snapshot([], [])
         got = q.classify_run(run(10, repo="someone/fork"), snap, q.DEFAULT_REPO)
         self.assertEqual(got["classification"], "UNKNOWN_KEEP")
+
+    def test_null_repo_provenance_cannot_claim_live_base_branch(self):
+        snap = self.snapshot([branch("topic", A)], [])
+        row = run(13)
+        row["head_repository"] = None
+        got = q.classify_run(row, snap, q.DEFAULT_REPO)
+        self.assertEqual(got["classification"], "UNKNOWN_KEEP")
+        self.assertFalse(got["cancel_candidate"])
+
+    def test_missing_repo_provenance_cannot_claim_moved_base_branch(self):
+        snap = self.snapshot([branch("topic", B)], [])
+        row = run(14)
+        del row["head_repository"]
+        got = q.classify_run(row, snap, q.DEFAULT_REPO)
+        self.assertEqual(got["classification"], "UNKNOWN_KEEP")
+        self.assertFalse(got["cancel_candidate"])
+
+    def test_null_repo_provenance_cannot_claim_orphaned_base_push(self):
+        snap = self.snapshot([], [])
+        row = run(15)
+        row["head_repository"] = None
+        got = q.classify_run(row, snap, q.DEFAULT_REPO)
+        self.assertEqual(got["classification"], "UNKNOWN_KEEP")
+        self.assertFalse(got["cancel_candidate"])
+
+    def test_missing_repo_provenance_does_not_block_pr_head_evidence(self):
+        snap = self.snapshot([], [pr(7, B)])
+        row = run(16, prs=(7,), event="pull_request")
+        del row["head_repository"]
+        got = q.classify_run(row, snap, q.DEFAULT_REPO)
+        self.assertEqual(got["classification"], "SUPERSEDED_PR_HEAD_CANDIDATE")
+        self.assertTrue(got["cancel_candidate"])
 
     def test_incomplete_branch_inventory_fails_closed(self):
         snap = self.snapshot([branch("other", B)], [], complete_branches=False)
