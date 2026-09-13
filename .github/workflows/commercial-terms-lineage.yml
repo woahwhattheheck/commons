@@ -27,10 +27,10 @@ jobs:
           python-version: ${{ matrix.python-version }}
       - name: Compile
         working-directory: revenue/commercial_terms_lineage
-        run: python -B -m py_compile lineage.py cli.py test_lineage.py
+        run: python -B -m py_compile lineage.py runtime.py cli.py test_lineage.py test_runtime.py
       - name: Hostile suite
         working-directory: revenue/commercial_terms_lineage
-        run: python -B -m unittest -v test_lineage.py
+        run: python -B -m unittest -v test_lineage.py test_runtime.py
       - name: Optimized hostile suite
         working-directory: revenue/commercial_terms_lineage
-        run: python -O -B -m unittest -v test_lineage.py
+        run: python -O -B -m unittest -v test_lineage.py test_runtime.py
