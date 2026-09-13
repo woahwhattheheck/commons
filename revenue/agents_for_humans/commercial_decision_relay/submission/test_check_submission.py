@@ -14,6 +14,15 @@ def load_manifest():
     return json.loads((FIXTURE_ROOT / "submission" / "manifest.json").read_text(encoding="utf-8"))
 
 
+def complete_video(manifest, *, url="https://www.youtube.com/watch?v=example", duration=225, public=True):
+    target = next(x for x in manifest["external_requirements"] if x["id"] == "public_demo_video")
+    target["status"] = "COMPLETE"
+    target["value"] = url
+    target["duration_seconds"] = duration
+    target["public_confirmed"] = public
+    return target
+
+
 class SubmissionCheckTests(unittest.TestCase):
     def test_real_packet_is_internal_ready_external_pending(self):
         result = check.validate(load_manifest(), FIXTURE_ROOT)
@@ -28,19 +37,76 @@ class SubmissionCheckTests(unittest.TestCase):
 
     def test_all_required_external_complete_can_be_submission_ready(self):
         manifest = load_manifest()
-        values = {
-            "aws_builder_id": "builder-id-entered",
-            "public_demo_video": "https://www.youtube.com/watch?v=example",
-            "devpost_submission": "https://devpost.com/software/example",
-        }
         for item in manifest["external_requirements"]:
-            if item["id"] in values:
+            if item["id"] == "aws_builder_id":
                 item["status"] = "COMPLETE"
-                item["value"] = values[item["id"]]
+                item["value"] = "builder-id-entered"
+            elif item["id"] == "public_demo_video":
+                complete_video(manifest)
+            elif item["id"] == "devpost_submission":
+                item["status"] = "COMPLETE"
+                item["value"] = "https://devpost.com/software/example"
         result = check.validate(manifest, FIXTURE_ROOT)
         self.assertEqual(result["state"], "SUBMISSION_READY")
         self.assertEqual(result["pending_required_external"], [])
         self.assertFalse(result["devpost_submission_authorized"])
+
+    def test_vimeo_video_can_be_complete(self):
+        manifest = load_manifest()
+        complete_video(manifest, url="https://vimeo.com/123456789", duration=300)
+        result = check.validate(manifest, FIXTURE_ROOT)
+        self.assertNotIn("public_demo_video", result["pending_required_external"])
+
+    def test_video_complete_rejects_non_video_host(self):
+        manifest = load_manifest()
+        complete_video(manifest, url="https://example.com/video/demo", duration=225)
+        with self.assertRaisesRegex(check.SubmissionError, "YouTube or Vimeo"):
+            check.validate(manifest, FIXTURE_ROOT)
+
+    def test_video_complete_rejects_host_suffix_spoof(self):
+        manifest = load_manifest()
+        complete_video(manifest, url="https://youtube.com.evil.example/watch/demo", duration=225)
+        with self.assertRaisesRegex(check.SubmissionError, "YouTube or Vimeo"):
+            check.validate(manifest, FIXTURE_ROOT)
+
+    def test_video_complete_requires_specific_video_path(self):
+        manifest = load_manifest()
+        complete_video(manifest, url="https://www.youtube.com/", duration=225)
+        with self.assertRaisesRegex(check.SubmissionError, "specific video"):
+            check.validate(manifest, FIXTURE_ROOT)
+
+    def test_video_complete_requires_duration(self):
+        manifest = load_manifest()
+        target = complete_video(manifest)
+        del target["duration_seconds"]
+        with self.assertRaisesRegex(check.SubmissionError, "duration_seconds"):
+            check.validate(manifest, FIXTURE_ROOT)
+
+    def test_video_complete_rejects_duration_over_five_minutes(self):
+        manifest = load_manifest()
+        complete_video(manifest, duration=301)
+        with self.assertRaisesRegex(check.SubmissionError, "1 through 300"):
+            check.validate(manifest, FIXTURE_ROOT)
+
+    def test_video_complete_rejects_bool_duration(self):
+        manifest = load_manifest()
+        complete_video(manifest, duration=True)
+        with self.assertRaisesRegex(check.SubmissionError, "duration_seconds"):
+            check.validate(manifest, FIXTURE_ROOT)
+
+    def test_video_complete_requires_public_confirmation(self):
+        manifest = load_manifest()
+        complete_video(manifest, public=False)
+        with self.assertRaisesRegex(check.SubmissionError, "public_confirmed"):
+            check.validate(manifest, FIXTURE_ROOT)
+
+    def test_pending_video_must_not_carry_proof(self):
+        manifest = load_manifest()
+        target = next(x for x in manifest["external_requirements"] if x["id"] == "public_demo_video")
+        target["duration_seconds"] = 225
+        target["public_confirmed"] = True
+        with self.assertRaisesRegex(check.SubmissionError, "must not carry video proof"):
+            check.validate(manifest, FIXTURE_ROOT)
 
     def test_complete_requires_value(self):
         manifest = load_manifest()
