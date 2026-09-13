@@ -19,14 +19,18 @@ def h(s: str) -> str:
     return hashlib.sha256(s.encode()).hexdigest()
 
 
-def commercial(state="PAID", kind="PAYMENT_RECEIPT", sid="payment-1", sha=None):
+def commercial(state="PAID", kind="PAYMENT_RECEIPT", sid="payment-1", sha=None, ref="retained:receipt1"):
     return {
         "capability_id": "commercial-event", "source_id": sid, "source_kind": kind,
-        "source_ref": "retained:receipt1", "source_sha256": sha or h("pay"), "observed_state": state,
+        "source_ref": ref, "source_sha256": sha or h("pay"), "observed_state": state,
         "observed_at": "2026-09-13T13:05:00Z", "freshness_seconds": 86400,
         "prospect_class": "PROSPECT_SAFE", "required": False,
         "claim": "An independently retained commercial receipt exists for one event.",
     }
+
+
+def trust(sid, sha, kind, state, ref="retained:receipt1"):
+    return {sid: {"source_sha256": sha, "source_kind": kind, "observed_state": state, "source_ref": ref}}
 
 
 class EngineTests(unittest.TestCase):
@@ -62,42 +66,81 @@ class EngineTests(unittest.TestCase):
 
     def test_payment_requires_independent_digest_match(self):
         self.packet["evidence"].append(commercial())
-        out = self.compile({"payment-1": h("pay")})
+        out = self.compile(trust("payment-1", h("pay"), "PAYMENT_RECEIPT", "PAID"))
         self.assertTrue(out["external_truth"]["paid"])
         self.assertEqual(next(r for r in out["evidence"] if r["source_id"] == "payment-1")["classification"], "DEMONSTRATED")
 
     def test_wrong_payment_digest_is_limited(self):
         self.packet["evidence"].append(commercial())
-        out = self.compile({"payment-1": h("wrong")})
+        out = self.compile(trust("payment-1", h("wrong"), "PAYMENT_RECEIPT", "PAID"))
         self.assertFalse(out["external_truth"]["paid"])
         self.assertIn("COMMERCIAL_RECEIPT_DIGEST_MISMATCH", next(r for r in out["evidence"] if r["source_id"] == "payment-1")["reasons"])
+
+    def test_untyped_digest_only_trust_fails_closed(self):
+        self.packet["evidence"].append(commercial())
+        with self.assertRaises(DossierError):
+            self.compile({"payment-1": h("pay")})
 
     def test_buyer_acceptance_requires_buyer_kind_and_trust(self):
         self.packet["evidence"].append(commercial("BUYER_ACCEPTED", "BUYER_RECEIPT", "buyer-1", h("buyer")))
         self.assertFalse(self.compile()["external_truth"]["buyer_accepted"])
-        self.assertTrue(self.compile({"buyer-1": h("buyer")})["external_truth"]["buyer_accepted"])
+        self.assertTrue(self.compile(trust("buyer-1", h("buyer"), "BUYER_RECEIPT", "BUYER_ACCEPTED"))["external_truth"]["buyer_accepted"])
 
     def test_revenue_recognition_requires_accounting_kind_and_trust(self):
         self.packet["evidence"].append(commercial("REVENUE_RECOGNIZED", "ACCOUNTING_RECEIPT", "acct-1", h("acct")))
         self.assertFalse(self.compile()["external_truth"]["revenue_recognized"])
-        self.assertTrue(self.compile({"acct-1": h("acct")})["external_truth"]["revenue_recognized"])
+        self.assertTrue(self.compile(trust("acct-1", h("acct"), "ACCOUNTING_RECEIPT", "REVENUE_RECOGNIZED"))["external_truth"]["revenue_recognized"])
 
     def test_commercial_state_wrong_kind_fails(self):
         self.packet["evidence"].append(commercial("BUYER_ACCEPTED", "PROVIDER_RECEIPT", "buyer-1", h("buyer")))
         with self.assertRaises(DossierError):
-            self.compile({"buyer-1": h("buyer")})
+            self.compile(trust("buyer-1", h("buyer"), "BUYER_RECEIPT", "BUYER_ACCEPTED"))
+
+    def test_trusted_payment_cannot_be_relabeled_buyer_accepted(self):
+        self.packet["evidence"].append(commercial("BUYER_ACCEPTED", "BUYER_RECEIPT", "receipt-1", h("R")))
+        out = self.compile(trust("receipt-1", h("R"), "PAYMENT_RECEIPT", "PAID"))
+        self.assertFalse(out["external_truth"]["buyer_accepted"])
+        self.assertFalse(out["external_truth"]["paid"])
+        self.assertIn("COMMERCIAL_RECEIPT_ROLE_MISMATCH", next(r for r in out["evidence"] if r["source_id"] == "receipt-1")["reasons"])
+
+    def test_trusted_payment_cannot_be_relabeled_revenue_recognized(self):
+        self.packet["evidence"].append(commercial("REVENUE_RECOGNIZED", "ACCOUNTING_RECEIPT", "receipt-1", h("R")))
+        out = self.compile(trust("receipt-1", h("R"), "PAYMENT_RECEIPT", "PAID"))
+        self.assertFalse(out["external_truth"]["revenue_recognized"])
+        self.assertFalse(out["external_truth"]["paid"])
+        self.assertIn("COMMERCIAL_RECEIPT_ROLE_MISMATCH", next(r for r in out["evidence"] if r["source_id"] == "receipt-1")["reasons"])
+
+    def test_trusted_buyer_cannot_be_relabeled_paid(self):
+        self.packet["evidence"].append(commercial("PAID", "PAYMENT_RECEIPT", "receipt-1", h("R")))
+        out = self.compile(trust("receipt-1", h("R"), "BUYER_RECEIPT", "BUYER_ACCEPTED"))
+        self.assertFalse(out["external_truth"]["paid"])
+        self.assertFalse(out["external_truth"]["buyer_accepted"])
+        self.assertIn("COMMERCIAL_RECEIPT_ROLE_MISMATCH", next(r for r in out["evidence"] if r["source_id"] == "receipt-1")["reasons"])
+
+    def test_trusted_accounting_cannot_be_relabeled_buyer_accepted(self):
+        self.packet["evidence"].append(commercial("BUYER_ACCEPTED", "BUYER_RECEIPT", "receipt-1", h("R")))
+        out = self.compile(trust("receipt-1", h("R"), "ACCOUNTING_RECEIPT", "REVENUE_RECOGNIZED"))
+        self.assertFalse(out["external_truth"]["buyer_accepted"])
+        self.assertFalse(out["external_truth"]["revenue_recognized"])
+        self.assertIn("COMMERCIAL_RECEIPT_ROLE_MISMATCH", next(r for r in out["evidence"] if r["source_id"] == "receipt-1")["reasons"])
+
+    def test_trusted_source_ref_mismatch_holds_role(self):
+        self.packet["evidence"].append(commercial(sid="receipt-1", sha=h("R"), ref="retained:event-a"))
+        out = self.compile(trust("receipt-1", h("R"), "PAYMENT_RECEIPT", "PAID", "retained:event-b"))
+        self.assertFalse(out["external_truth"]["paid"])
+        self.assertIn("COMMERCIAL_RECEIPT_ROLE_MISMATCH", next(r for r in out["evidence"] if r["source_id"] == "receipt-1")["reasons"])
 
     def test_unused_trusted_receipt_fails(self):
         with self.assertRaises(DossierError):
-            self.compile({"not-present": h("x")})
+            self.compile(trust("not-present", h("x"), "PAYMENT_RECEIPT", "PAID"))
 
     def test_malformed_trusted_receipt_fails(self):
         with self.assertRaises(DossierError):
-            self.compile({"payment-1": "0" * 63})
+            self.compile(trust("payment-1", "0" * 63, "PAYMENT_RECEIPT", "PAID"))
 
     def test_trust_map_is_bound_into_receipt_and_verifier(self):
         self.packet["evidence"].append(commercial())
-        trusted = {"payment-1": h("pay")}
+        trusted = trust("payment-1", h("pay"), "PAYMENT_RECEIPT", "PAID")
         out = self.compile(trusted)
         self.assertIn("trusted_commercial_receipts_sha256", out)
         self.assertTrue(verify_dossier(self.packet, self.policy, AS_OF, out, trusted))
@@ -180,16 +223,16 @@ class EngineTests(unittest.TestCase):
 
     def test_cli_requires_separate_trust_file_for_paid(self):
         self.packet["evidence"].append(commercial())
-        trusted = {"payment-1": h("pay")}
+        trusted = trust("payment-1", h("pay"), "PAYMENT_RECEIPT", "PAID")
         with tempfile.TemporaryDirectory() as td:
-            packet = Path(td, "packet.json"); policy = Path(td, "policy.json"); trust = Path(td, "trust.json")
+            packet = Path(td, "packet.json"); policy = Path(td, "policy.json"); trustp = Path(td, "trust.json")
             out = Path(td, "out.json"); md = Path(td, "out.md")
-            packet.write_text(json.dumps(self.packet)); policy.write_text(json.dumps(self.policy)); trust.write_text(json.dumps(trusted))
-            self.assertEqual(cli_main(["compile", str(packet), str(policy), "--as-of", AS_OF, "--trusted-commercial-receipts", str(trust), "--json-out", str(out), "--markdown-out", str(md)]), 0)
+            packet.write_text(json.dumps(self.packet)); policy.write_text(json.dumps(self.policy)); trustp.write_text(json.dumps(trusted))
+            self.assertEqual(cli_main(["compile", str(packet), str(policy), "--as-of", AS_OF, "--trusted-commercial-receipts", str(trustp), "--json-out", str(out), "--markdown-out", str(md)]), 0)
             compiled = json.loads(out.read_text())
             self.assertTrue(compiled["external_truth"]["paid"])
             self.assertEqual(cli_main(["verify", str(packet), str(policy), str(out), "--as-of", AS_OF]), 3)
-            self.assertEqual(cli_main(["verify", str(packet), str(policy), str(out), "--as-of", AS_OF, "--trusted-commercial-receipts", str(trust)]), 0)
+            self.assertEqual(cli_main(["verify", str(packet), str(policy), str(out), "--as-of", AS_OF, "--trusted-commercial-receipts", str(trustp)]), 0)
 
     def test_cli_no_trust_keeps_fake_payment_false_and_no_overwrite(self):
         self.packet["evidence"].append(commercial())
@@ -203,10 +246,11 @@ class EngineTests(unittest.TestCase):
     def test_cli_rejects_duplicate_keys_in_trust_file(self):
         self.packet["evidence"].append(commercial())
         with tempfile.TemporaryDirectory() as td:
-            packet = Path(td, "p"); policy = Path(td, "q"); trust = Path(td, "t"); out = Path(td, "o"); md = Path(td, "m")
+            packet = Path(td, "p"); policy = Path(td, "q"); trustp = Path(td, "t"); out = Path(td, "o"); md = Path(td, "m")
             packet.write_text(json.dumps(self.packet)); policy.write_text(json.dumps(self.policy))
-            trust.write_text('{"payment-1":"' + h("pay") + '","payment-1":"' + h("pay") + '"}')
-            self.assertEqual(cli_main(["compile", str(packet), str(policy), "--as-of", AS_OF, "--trusted-commercial-receipts", str(trust), "--json-out", str(out), "--markdown-out", str(md)]), 4)
+            rec = json.dumps({"source_sha256": h("pay"), "source_kind": "PAYMENT_RECEIPT", "observed_state": "PAID", "source_ref": "retained:receipt1"})
+            trustp.write_text('{"payment-1":' + rec + ',"payment-1":' + rec + "}")
+            self.assertEqual(cli_main(["compile", str(packet), str(policy), "--as-of", AS_OF, "--trusted-commercial-receipts", str(trustp), "--json-out", str(out), "--markdown-out", str(md)]), 4)
 
     def test_cli_rejects_symlink_input(self):
         if not hasattr(os, "symlink"):
