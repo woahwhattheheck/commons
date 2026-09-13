@@ -1,0 +1,65 @@
+{
+  "opportunity_id": "WRF-5417",
+  "title": "Developing Camera-Based AI Algorithms to Monitor Water Quality at Water and Wastewater Utilities",
+  "source_urls": {
+    "grant": "https://portal.waterrf.org/outbound-grant-details/3352",
+    "rfp": "https://portal.waterrf.org/core/media/media.nl?_xt=.pdf&c=9336228&h=cCxr5g0fgMTJUDdMOEXrnmb7aH-IpjJ_XeWHQ52sRsNxGB44&id=365738",
+    "guidelines": "https://portal.waterrf.org/core/media/media.nl?_xt=.pdf&c=9336228&h=8Plt54arIryvX-1alddYXDGtMziqlp1t7ThZLFBn_LZmAcXE&id=350043"
+  },
+  "deadline": {
+    "source_text": "September 14, 2026, 3:00 PM Mountain Time",
+    "iana_zone": "America/Denver",
+    "portal_offset_label": "GMT-07:00",
+    "offset_discrepancy_requires_live_recheck": true
+  },
+  "funding": {
+    "wrf_request_ceiling_usd": 300000,
+    "minimum_applicant_contribution_fraction_of_wrf_award": 0.33,
+    "indirect_reimbursement_ceiling_fraction": 0.15,
+    "period_months": [24, 30]
+  },
+  "eligibility": {
+    "for_profit_entities_permitted": true,
+    "organization_portal_account_required": true,
+    "portal_submission_only": true
+  },
+  "objectives": [
+    "Prioritize 3–5 high-value applications spanning drinking water and wastewater.",
+    "Compare camera platforms from RGB through multispectral/hyperspectral and define minimum technical requirements.",
+    "Develop/test computer-vision AI and validate camera-derived observations against conventional measurements under varying sites/lighting/weather/configurations.",
+    "Assess transferability/scalability across utilities, sites, camera types and IT infrastructure; define implementation pathways."
+  ],
+  "evaluation_weights": {
+    "responsiveness": 20,
+    "technical_scientific_merit": 30,
+    "qualifications_capabilities_management": 20,
+    "communications_deliverables_applicability": 15,
+    "budget_schedule": 15
+  },
+  "proposal_components": [
+    "abstract", "project_description", "application_potential", "qa_qc", "project_management",
+    "communication_plan", "references", "budget_narrative", "schedule", "cv_resumes",
+    "current_pending_for_pi_and_copis", "budget_workbook", "risk_assessment_financial_packet",
+    "financial_grant_management_capabilities_form", "certification_assurance_form",
+    "w9_or_entity_applicable_tax_documentation"
+  ],
+  "research_requirements": [
+    "Explicitly build on and extend the RFP-cited WRF knowledge base.",
+    "Use a multi-site field demonstration across drinking-water and wastewater utilities.",
+    "Quantify algorithm performance under operational/environmental variation.",
+    "Test domain transfer / retraining needs and failure modes.",
+    "Produce a utility-focused implementation framework.",
+    "Plan research report plus knowledge-transfer outputs and technology deliverables."
+  ],
+  "cost_share_rules": [
+    "Applicant contribution must be at least 33% of the WRF award requested.",
+    "Cash, applicant in-kind and qualifying third-party in-kind may be used only with source-compliant valuation/support.",
+    "Third-party support must identify exact contribution type/value and authorized commitment.",
+    "Do not count prospective or unsigned support as committed contribution."
+  ],
+  "internal_nonclaims": [
+    "Potential Participants on the public grant page are interested utilities, not consent to join this proposal.",
+    "For-profit eligibility does not prove prime readiness.",
+    "This repository contains no legal certification, signature, portal credential, utility consent, or binding cost-share commitment."
+  ]
+}
