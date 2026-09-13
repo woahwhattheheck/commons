@@ -4,7 +4,7 @@ import copy
 import hashlib
 import json
 
-from . import build_scope_bridge, create_operator_verification
+from . import build_scope_bridge, build_scope_terms, create_operator_verification, terms_digest
 
 OWNER_KEY = b"O" * 32
 VERIFY_KEY = b"V" * 32
@@ -55,11 +55,11 @@ def contract():
     }
 
 
-def schedule():
+def service_window():
     return {
-        "start": "2026-09-14T13:00:00Z", "end": "2026-09-18T21:00:00Z",
-        "timezone": "America/Kentucky/Louisville", "accepted_at": "2026-09-13T10:05:00Z",
-        "evidence_sha256": FOUR, "identity_verification_sha256": ONE,
+        "start": "2026-09-14T13:00:00Z",
+        "end": "2026-09-18T21:00:00Z",
+        "timezone": "America/Kentucky/Louisville",
     }
 
 
@@ -71,6 +71,17 @@ def contract_verifier(value, owner_key):
     if owner_key != OWNER_KEY:
         raise ValueError("wrong owner key")
     return copy.deepcopy(value)
+
+
+def scope_acceptance(c=None, cat=None, window=None, *, accepted_at="2026-09-13T10:05:00Z"):
+    c, cat, window = c or contract(), cat or catalog(), window or service_window()
+    terms = build_scope_terms(c, cat, window)
+    return {
+        "terms_digest": terms_digest(terms),
+        "accepted_at": accepted_at,
+        "evidence_sha256": FOUR,
+        "identity_verification_sha256": ONE,
+    }
 
 
 def agreement_validator(value, _catalog):
@@ -90,19 +101,21 @@ def agreement_validator(value, _catalog):
     return copy.deepcopy(value)
 
 
-def verification(c=None, sched=None, **kwargs):
-    c, sched = c or contract(), sched or schedule()
+def verification(c=None, acceptance=None, window=None, cat=None, **kwargs):
+    c, cat, window = c or contract(), cat or catalog(), window or service_window()
+    acceptance = acceptance or scope_acceptance(c, cat, window)
     return create_operator_verification(
-        c, OWNER_KEY, VERIFY_KEY, verifier_id="operator-001", key_id="acceptance-key-v1",
+        c, OWNER_KEY, VERIFY_KEY, verifier_id="operator-001", key_id="acceptance-key-v2",
         verified_at=kwargs.pop("verified_at", "2026-09-13T10:06:00Z"),
-        public_ref=kwargs.pop("public_ref", "p/accepted-offer.md"), schedule_acceptance=sched,
+        public_ref=kwargs.pop("public_ref", "p/accepted-scope-terms.md"),
+        catalog=cat, service_window=window, scope_terms_acceptance=acceptance,
         trusted_now=kwargs.pop("trusted_now", NOW), contract_verifier=contract_verifier, **kwargs,
     )
 
 
 def bundle(c=None, receipt=None, cat=None):
-    c = c or contract(); receipt = receipt or verification(c)
+    c, cat = c or contract(), cat or catalog(); receipt = receipt or verification(c, cat=cat)
     return build_scope_bridge(
-        c, receipt, OWNER_KEY, VERIFY_KEY, catalog=cat or catalog(), trusted_now=NOW,
+        c, receipt, OWNER_KEY, VERIFY_KEY, catalog=cat, trusted_now=NOW,
         contract_verifier=contract_verifier, agreement_validator=agreement_validator,
     )

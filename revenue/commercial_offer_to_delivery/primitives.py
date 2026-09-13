@@ -8,11 +8,11 @@ from datetime import datetime, timezone
 from decimal import Decimal, InvalidOperation
 from typing import Any, Mapping
 
-SCHEMA_VERSION = 1
+SCHEMA_VERSION = 2
 BRIDGE_KIND = "commercial_offer_to_scope_bridge"
-VERIFICATION_KIND = "commercial_offer_buyer_acceptance_verification"
+VERIFICATION_KIND = "commercial_offer_scope_acceptance_verification"
 VERIFICATION_DECISION = "VERIFIED_ACCEPTANCE"
-VERIFICATION_ATTESTATION = "AUTHORIZED_OPERATOR_VERIFIED_BUYER_ACCEPTANCE"
+VERIFICATION_ATTESTATION = "AUTHORIZED_OPERATOR_VERIFIED_EXACT_SCOPE_TERMS_ACCEPTANCE"
 SCOPE_SCHEMA = "commons-scope-agreement/v1"
 SCOPE_KIND = "SCOPE_AGREEMENT"
 SCOPE_ACCEPTANCE_ATTESTATION = "AUTHORIZED_OPERATOR_VERIFIED_EXACT_TERMS_ACCEPTANCE"
