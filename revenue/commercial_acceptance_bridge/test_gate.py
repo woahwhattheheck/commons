@@ -1,15 +1,23 @@
 from __future__ import annotations
 
+from contextlib import redirect_stdout
 from copy import deepcopy
+from datetime import datetime, timezone
+from io import StringIO
 import json
+from pathlib import Path
+from tempfile import TemporaryDirectory
 import unittest
+from unittest.mock import patch
 
+from revenue.commercial_acceptance_bridge import acceptance as acceptance_module
 from revenue.commercial_acceptance_bridge.acceptance import (
     EXPECTED_FIXTURE_RECEIPT_SHA256,
     EXPECTED_QUARANTINES,
     EXPECTED_STATES,
     SNAPSHOT,
     check_acceptance,
+    generate_fixture,
     offer_event,
     response_event,
     sha,
@@ -18,7 +26,7 @@ from revenue.commercial_acceptance_bridge.gate import (
     AcceptanceError,
     canonical_json,
     receipt_self_digest_matches,
-    reconcile,
+    reconcile as reconcile_gate,
     sha256_text,
     verify_receipt,
 )
@@ -26,6 +34,12 @@ from revenue.commercial_acceptance_bridge.gate import (
 
 def batch(events, snapshot=SNAPSHOT):
     return {"schema_version": 1, "snapshot_at": snapshot, "events": events}
+
+
+def reconcile(payload):
+    """Deterministic test helper: evaluate exactly at the supplied fixture snapshot."""
+
+    return reconcile_gate(payload, evaluated_at=payload["snapshot_at"])
 
 
 def self_digest(manifest):
@@ -246,37 +260,65 @@ class CommercialAcceptanceBridgeTests(unittest.TestCase):
         self.assertEqual(one["receipt_sha256"], two["receipt_sha256"])
 
     def test_receipt_verification_and_tamper_detection(self):
-        manifest = reconcile(batch([offer_event(90), response_event(90, "EXACT_ACCEPT")]))
+        source = batch([offer_event(90), response_event(90, "EXACT_ACCEPT")])
+        manifest = reconcile(source)
         self.assertTrue(receipt_self_digest_matches(manifest))
-        self.assertTrue(verify_receipt(manifest, manifest["receipt_sha256"]))
+        self.assertTrue(
+            verify_receipt(manifest, manifest["receipt_sha256"], source, evaluated_at=source["snapshot_at"])
+        )
         tampered = deepcopy(manifest)
         tampered["series"][0]["state"] = "PAID"
         self.assertFalse(receipt_self_digest_matches(tampered))
-        self.assertFalse(verify_receipt(tampered, manifest["receipt_sha256"]))
+        self.assertFalse(
+            verify_receipt(tampered, manifest["receipt_sha256"], source, evaluated_at=source["snapshot_at"])
+        )
 
-    def test_fixture_receipt_requires_frozen_out_of_band_commitment(self):
-        manifest = check_acceptance()["manifest"]
+    def test_fixture_receipt_requires_frozen_out_of_band_commitment_and_source(self):
+        source = generate_fixture()
+        manifest = check_acceptance(source)["manifest"]
         self.assertEqual(manifest["receipt_sha256"], EXPECTED_FIXTURE_RECEIPT_SHA256)
-        self.assertTrue(verify_receipt(manifest, EXPECTED_FIXTURE_RECEIPT_SHA256))
-        self.assertFalse(verify_receipt(manifest, "0" * 64))
+        self.assertTrue(
+            verify_receipt(
+                manifest,
+                EXPECTED_FIXTURE_RECEIPT_SHA256,
+                source,
+                evaluated_at=source["snapshot_at"],
+            )
+        )
+        self.assertFalse(
+            verify_receipt(manifest, "0" * 64, source, evaluated_at=source["snapshot_at"])
+        )
+        changed_source = deepcopy(source)
+        changed_source["events"][0]["price_minor"] += 1
+        self.assertFalse(
+            verify_receipt(
+                manifest,
+                EXPECTED_FIXTURE_RECEIPT_SHA256,
+                changed_source,
+                evaluated_at=source["snapshot_at"],
+            )
+        )
 
     def test_self_digested_unknown_product_is_integrity_only_not_valid_bridge_receipt(self):
-        forged = {"product": "NOT_THE_BRIDGE", "state": "PAID"}
-        forged = self_digest(forged)
+        forged = self_digest({"product": "NOT_THE_BRIDGE", "state": "PAID"})
         self.assertTrue(receipt_self_digest_matches(forged))
-        self.assertFalse(verify_receipt(forged, forged["receipt_sha256"]))
+        self.assertFalse(verify_receipt(forged, forged["receipt_sha256"], batch([]), evaluated_at=SNAPSHOT))
 
     def test_recomputed_digest_cannot_enable_revenue_or_payment_authority(self):
-        manifest = reconcile(batch([offer_event(90), response_event(90, "EXACT_ACCEPT")]))
+        source = batch([offer_event(90), response_event(90, "EXACT_ACCEPT")])
+        manifest = reconcile(source)
         forged = deepcopy(manifest)
         forged["authorities"]["recognized_revenue"] = True
         forged["authorities"]["payment_or_charge"] = True
         forged = self_digest(forged)
         self.assertTrue(receipt_self_digest_matches(forged))
-        self.assertFalse(verify_receipt(forged, forged["receipt_sha256"]))
+        self.assertFalse(
+            verify_receipt(forged, forged["receipt_sha256"], source, evaluated_at=source["snapshot_at"])
+        )
 
     def test_recomputed_digest_cannot_invent_paid_series_state(self):
-        manifest = reconcile(batch([offer_event(90), response_event(90, "EXACT_ACCEPT")]))
+        source = batch([offer_event(90), response_event(90, "EXACT_ACCEPT")])
+        manifest = reconcile(source)
         forged = deepcopy(manifest)
         forged["series"][0]["state"] = "PAID"
         forged["series"][0]["revenue_authority"] = True
@@ -285,7 +327,108 @@ class CommercialAcceptanceBridgeTests(unittest.TestCase):
         )
         forged = self_digest(forged)
         self.assertTrue(receipt_self_digest_matches(forged))
-        self.assertFalse(verify_receipt(forged, forged["receipt_sha256"]))
+        self.assertFalse(
+            verify_receipt(forged, forged["receipt_sha256"], source, evaluated_at=source["snapshot_at"])
+        )
+
+    def test_future_snapshot_is_rejected_against_trusted_evaluation_time(self):
+        source = batch([offer_event(90)])
+        self.assertCode(
+            "FUTURE_SNAPSHOT",
+            lambda: reconcile_gate(source, evaluated_at="2026-09-13T11:59:59Z"),
+        )
+
+    def test_snapshot_older_than_five_minutes_fails_closed(self):
+        source = batch([offer_event(90)])
+        self.assertCode(
+            "STALE_SNAPSHOT",
+            lambda: reconcile_gate(source, evaluated_at="2026-09-13T12:05:01Z"),
+        )
+
+    def test_exact_accept_loses_closing_ready_after_offer_expires_at_evaluation(self):
+        source = batch(
+            [offer_event(90), response_event(90, "EXACT_ACCEPT")],
+            snapshot="2026-09-20T12:01:00Z",
+        )
+        manifest = reconcile_gate(source, evaluated_at=source["snapshot_at"])
+        state = manifest["series"][0]
+        self.assertEqual(state["state"], "HUMAN_REVIEW_REQUIRED")
+        self.assertEqual(state["effective_review_class"], "NONE")
+        self.assertEqual(state["blocker_codes"], ["OFFER_EXPIRED_AT_EVALUATION"])
+
+    def test_historical_closing_receipt_fails_current_verification_after_offer_expiry(self):
+        source = batch(
+            [offer_event(90), response_event(90, "EXACT_ACCEPT")],
+            snapshot="2026-09-20T11:59:00Z",
+        )
+        manifest = reconcile_gate(source, evaluated_at=source["snapshot_at"])
+        self.assertEqual(manifest["series"][0]["state"], "HUMAN_CLOSING_READY")
+        self.assertFalse(
+            verify_receipt(
+                manifest,
+                manifest["receipt_sha256"],
+                source,
+                evaluated_at="2026-09-20T12:01:00Z",
+            )
+        )
+
+    def test_acceptance_cli_default_path_executes(self):
+        output = StringIO()
+        with redirect_stdout(output):
+            status = acceptance_module.main([])
+        self.assertEqual(status, 0)
+        parsed = json.loads(output.getvalue())
+        self.assertEqual(parsed["status"], "PASS")
+
+    def test_trusted_verify_cli_requires_source_and_executes_current_receipt(self):
+        source = generate_fixture()
+        manifest = reconcile(source)
+        with TemporaryDirectory() as temp:
+            temp_path = Path(temp)
+            receipt_path = temp_path / "receipt.json"
+            source_path = temp_path / "source.json"
+            receipt_path.write_text(canonical_json({"manifest": manifest}) + "\n", encoding="utf-8")
+            source_path.write_text(canonical_json(source) + "\n", encoding="utf-8")
+            now = datetime(2026, 9, 13, 12, 0, 0, tzinfo=timezone.utc)
+            output = StringIO()
+            with patch("revenue.commercial_acceptance_bridge.gate._utcnow", return_value=now), redirect_stdout(output):
+                status = acceptance_module.main(
+                    [
+                        "--verify-receipt",
+                        str(receipt_path),
+                        "--source-batch",
+                        str(source_path),
+                        "--expected-receipt-sha256",
+                        manifest["receipt_sha256"],
+                    ]
+                )
+            self.assertEqual(status, 0)
+            self.assertEqual(json.loads(output.getvalue()), {"valid": True})
+
+    def test_trusted_verify_cli_rejects_stale_receipt(self):
+        source = generate_fixture()
+        manifest = reconcile(source)
+        with TemporaryDirectory() as temp:
+            temp_path = Path(temp)
+            receipt_path = temp_path / "receipt.json"
+            source_path = temp_path / "source.json"
+            receipt_path.write_text(canonical_json({"manifest": manifest}) + "\n", encoding="utf-8")
+            source_path.write_text(canonical_json(source) + "\n", encoding="utf-8")
+            stale_now = datetime(2026, 9, 13, 12, 5, 1, tzinfo=timezone.utc)
+            output = StringIO()
+            with patch("revenue.commercial_acceptance_bridge.gate._utcnow", return_value=stale_now), redirect_stdout(output):
+                status = acceptance_module.main(
+                    [
+                        "--verify-receipt",
+                        str(receipt_path),
+                        "--source-batch",
+                        str(source_path),
+                        "--expected-receipt-sha256",
+                        manifest["receipt_sha256"],
+                    ]
+                )
+            self.assertEqual(status, 2)
+            self.assertEqual(json.loads(output.getvalue()), {"valid": False})
 
     def test_unknown_review_class_is_rejected(self):
         response = response_event(90, "QUESTION")
