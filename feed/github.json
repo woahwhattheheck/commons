@@ -1,9 +1,9 @@
 {
   "counts": {
-    "open_issues": 20,
-    "open_pull_requests": 22,
-    "runs_in_progress": 14,
-    "runs_queued": 915
+    "open_issues": 19,
+    "open_pull_requests": 21,
+    "runs_in_progress": 12,
+    "runs_queued": 955
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -69,13 +69,13 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "vector/reconciliation-type-stability-current-main-20260913",
-      "created_at": "2026-09-13T10:40:29Z",
+      "branch": "zkg-n7q/commercial-funnel-postmerge-authority-20260913",
+      "created_at": "2026-09-13T10:42:02Z",
       "draft": false,
-      "head_sha": "dd5c08bc3ef744ccddbabf6fbcecc02ea0b295ac",
-      "number": 13781,
-      "title": "fix(revenue): current-main reconciliation type-stability successor",
-      "updated_at": "2026-09-13T10:41:28Z"
+      "head_sha": "1553dd65151766b6c3a195fa87689f9505f1de29",
+      "number": 13782,
+      "title": "Revenue: fix commercial-funnel evidence and time authority",
+      "updated_at": "2026-09-13T10:47:39Z"
     },
     {
       "author": "woahwhattheheck",
@@ -86,7 +86,7 @@
       "head_sha": "de08c8c7c51e665489c52dbec5e2aef2e18b11cc",
       "number": 13779,
       "title": "fix(revenue): bind scope time authority to exact raw bytes",
-      "updated_at": "2026-09-13T10:40:49Z"
+      "updated_at": "2026-09-13T10:42:51Z"
     },
     {
       "author": "woahwhattheheck",
@@ -94,10 +94,10 @@
       "branch": "zpk-r4v8/zindi-bias-discovery-v2-20260913",
       "created_at": "2026-09-13T10:35:15Z",
       "draft": false,
-      "head_sha": "4edb0d3a51f62a28645e5d256d5d51f2a452a2b6",
+      "head_sha": "56d93e79c46454731a689fb490d88743b8f3ccf5",
       "number": 13769,
       "title": "Zindi: add robust bias-discovery evidence engine",
-      "updated_at": "2026-09-13T10:40:48Z"
+      "updated_at": "2026-09-13T10:46:41Z"
     },
     {
       "author": "woahwhattheheck",
@@ -113,24 +113,13 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "zorth-p8w5/reconciliation-type-stability-current-main-20260913",
-      "created_at": "2026-09-13T10:23:22Z",
-      "draft": false,
-      "head_sha": "8872e641cb2efe959b9236e1f56252b43915eadb",
-      "number": 13753,
-      "title": "fix(revenue): make reconciliation field equality JSON-type-stable",
-      "updated_at": "2026-09-13T10:25:41Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
       "branch": "zkal-v7n3/opportunity-qualifier-20260913",
       "created_at": "2026-09-13T10:15:25Z",
       "draft": false,
-      "head_sha": "deea95594e6d9944821830c264dcb2037e0e7ab5",
+      "head_sha": "56f5a2918d6cff7ce8a0e16f2f0f0428953615a1",
       "number": 13741,
       "title": "revenue: add evidence-bound opportunity qualifier",
-      "updated_at": "2026-09-13T10:40:14Z"
+      "updated_at": "2026-09-13T10:47:46Z"
     },
     {
       "author": "woahwhattheheck",
@@ -141,7 +130,7 @@
       "head_sha": "dc8de234ed4da90cdbaece2e1d06b9c6925cdf2e",
       "number": 13740,
       "title": "revenue: add Lawrence Youth AI qualification gate",
-      "updated_at": "2026-09-13T10:31:34Z"
+      "updated_at": "2026-09-13T10:45:26Z"
     },
     {
       "author": "woahwhattheheck",
@@ -175,6 +164,17 @@
       "number": 13701,
       "title": "revenue: add CAS actuarial LLM benchmark reproducibility core",
       "updated_at": "2026-09-13T09:54:04Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zram/wuhu-lerobot-qc-20260913",
+      "created_at": "2026-09-13T09:42:49Z",
+      "draft": false,
+      "head_sha": "80c722fbe7ab7dd711ce01987bea50c900ad673e",
+      "number": 13695,
+      "title": "competition: add Wuhu LeRobot trajectory QC engine",
+      "updated_at": "2026-09-13T09:42:49Z"
     }
   ],
   "open_heads": {
@@ -194,17 +194,71 @@
     "13702": "2b6598f90c107dfacc4ec2a975e070f5073f8952",
     "13712": "e5d13ab500ff195dd85df2728f85794dab2fe048",
     "13740": "dc8de234ed4da90cdbaece2e1d06b9c6925cdf2e",
-    "13741": "deea95594e6d9944821830c264dcb2037e0e7ab5",
-    "13753": "8872e641cb2efe959b9236e1f56252b43915eadb",
+    "13741": "56f5a2918d6cff7ce8a0e16f2f0f0428953615a1",
     "13756": "f0db7219f3c214269cb33ea57315d5350f276d47",
-    "13769": "4edb0d3a51f62a28645e5d256d5d51f2a452a2b6",
+    "13769": "56d93e79c46454731a689fb490d88743b8f3ccf5",
     "13779": "de08c8c7c51e665489c52dbec5e2aef2e18b11cc",
-    "13781": "dd5c08bc3ef744ccddbabf6fbcecc02ea0b295ac"
+    "13782": "1553dd65151766b6c3a195fa87689f9505f1de29"
   },
-  "pulls_listed": 22,
+  "pulls_listed": 21,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 65.4,
+  "queue_depth_per_runner": 79.6,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zmw/denton-floyd-invoice-exception-20260913",
+      "closed_at": "2026-09-13T10:47:48Z",
+      "head_sha": "e5dd244ade17787480c104986b0b82d99ac68836",
+      "merged_at": "2026-09-13T10:47:48Z",
+      "number": 13787,
+      "state": "MERGED",
+      "title": "Ship deterministic invoice/PO/vendor exception control"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zhyp-c9v3/lifecycle-fullstream-idempotency-matrix-13755",
+      "closed_at": "2026-09-13T10:47:16Z",
+      "head_sha": "6eea1019205599633d7356e4f2f786a7b6100e63",
+      "merged_at": "2026-09-13T10:47:16Z",
+      "number": 13784,
+      "state": "MERGED",
+      "title": "test(revenue): prove lifecycle retries idempotent across money stages"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zorth-p8w5/reconciliation-type-stability-current-main-20260913",
+      "closed_at": "2026-09-13T10:45:11Z",
+      "head_sha": "8872e641cb2efe959b9236e1f56252b43915eadb",
+      "merged_at": null,
+      "number": 13753,
+      "state": "CLOSED",
+      "title": "fix(revenue): make reconciliation field equality JSON-type-stable"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "vector/reconciliation-type-stability-current-main-20260913",
+      "closed_at": "2026-09-13T10:44:51Z",
+      "head_sha": "dd5c08bc3ef744ccddbabf6fbcecc02ea0b295ac",
+      "merged_at": "2026-09-13T10:44:51Z",
+      "number": 13781,
+      "state": "MERGED",
+      "title": "fix(revenue): current-main reconciliation type-stability successor"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zfer/bphc-vendor-pool-20260913",
+      "closed_at": "2026-09-13T10:43:56Z",
+      "head_sha": "1928b741f13a18475a3be76713b6b239882ffd1b",
+      "merged_at": "2026-09-13T10:43:56Z",
+      "number": 13785,
+      "state": "MERGED",
+      "title": "Opportunity: gate BPHC five-year consultant vendor-pool response"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -314,65 +368,10 @@
       "number": 13768,
       "state": "MERGED",
       "title": "ci(revenue): gate commercial lifecycle ledger regressions"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "codex/cross-family-offering-bundle-composer-resource-20260913-01",
-      "closed_at": "2026-09-13T10:32:57Z",
-      "head_sha": "8325d2272b1e938320de17ea46525d4ad9c353c6",
-      "merged_at": "2026-09-13T10:32:57Z",
-      "number": 13763,
-      "state": "MERGED",
-      "title": "resources: activate cross-family offering bundle composer"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zpal-v2h8/hive-field-service-workspace-20260913",
-      "closed_at": "2026-09-13T10:32:24Z",
-      "head_sha": "2c3fd2bae6694c059705c12df16681b13e2d1366",
-      "merged_at": "2026-09-13T10:32:24Z",
-      "number": 13765,
-      "state": "MERGED",
-      "title": "revenue: add field service quote-to-job workspace"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-fou/commercial-funnel-20260913",
-      "closed_at": "2026-09-13T10:31:52Z",
-      "head_sha": "a8b6bc11c6c361f874d8a8b9b10c846a4d99a5dd",
-      "merged_at": "2026-09-13T10:31:51Z",
-      "number": 13748,
-      "state": "MERGED",
-      "title": "Revenue: add evidence-bound cross-family commercial funnel ledger"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "astraz/offer-to-delivery-acceptance-gate-20260913",
-      "closed_at": "2026-09-13T10:28:48Z",
-      "head_sha": "05be1c3556e7e1299ca30f1e1547e7dff031ebf4",
-      "merged_at": "2026-09-13T10:28:48Z",
-      "number": 13758,
-      "state": "MERGED",
-      "title": "revenue: bridge verified commercial offers into delivery scope"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zvf-r7k3/commercial-ledger-ingestion-hardening-20260913",
-      "closed_at": "2026-09-13T10:28:45Z",
-      "head_sha": "00c0175cd51ff17b32be8a4d1c7dfb169a646427",
-      "merged_at": "2026-09-13T10:28:45Z",
-      "number": 13762,
-      "state": "MERGED",
-      "title": "revenue: harden commercial lifecycle ledger ingestion"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-13T10:41:45Z",
+  "unchanged_since": "2026-09-13T10:48:08Z",
   "undatable_pulls": []
 }
