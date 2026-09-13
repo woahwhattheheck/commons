@@ -181,27 +181,28 @@ def _evaluate(
     evidence_raw: dict[str, Any],
     scope_raw: dict[str, Any],
     *,
-    raw_byte_digests: dict[str, str] | None,
+    raw_bytes: tuple[bytes, bytes, bytes] | None,
 ) -> dict[str, Any]:
     scope_id, members = _parse_scope(_require_dict(scope_raw, "buyer scope"))
     scoped_evidence = _rebind_evidence(intent_raw, evidence_raw, members)
     core = guard.evaluate(intent_raw, scoped_evidence)
 
     byte_custody = None
-    if raw_byte_digests is not None:
-        expected = {"intent_sha256", "evidence_sha256", "scope_sha256"}
-        if set(raw_byte_digests) != expected:
-            raise ScopeError("internal raw-byte custody set is incomplete")
-        if not all(
-            type(raw_byte_digests[key]) is str and len(raw_byte_digests[key]) == 64
-            for key in expected
-        ):
-            raise ScopeError("internal raw-byte digest is malformed")
+    if raw_bytes is not None:
+        if type(raw_bytes) is not tuple or len(raw_bytes) != 3 or any(type(item) is not bytes for item in raw_bytes):
+            raise ScopeError("internal raw-byte custody must contain exactly three byte strings")
+        parsed_sources = (
+            guard.parse_json_bytes(raw_bytes[0], "intent byte custody"),
+            guard.parse_json_bytes(raw_bytes[1], "evidence byte custody"),
+            guard.parse_json_bytes(raw_bytes[2], "buyer scope byte custody"),
+        )
+        if parsed_sources != (intent_raw, evidence_raw, scope_raw):
+            raise ScopeError("raw-byte custody does not match evaluated source objects")
         byte_custody = {
             "mode": "exact_consumed_bytes",
-            "intent_sha256": raw_byte_digests["intent_sha256"],
-            "evidence_sha256": raw_byte_digests["evidence_sha256"],
-            "scope_sha256": raw_byte_digests["scope_sha256"],
+            "intent_sha256": guard.digest_bytes(raw_bytes[0]),
+            "evidence_sha256": guard.digest_bytes(raw_bytes[1]),
+            "scope_sha256": guard.digest_bytes(raw_bytes[2]),
         }
 
     payload = {
@@ -234,12 +235,16 @@ def evaluate(
     evidence_raw: dict[str, Any],
     scope_raw: dict[str, Any],
 ) -> dict[str, Any]:
-    """Evaluate parsed objects without claiming raw-file byte custody."""
+    """Evaluate parsed objects.
+
+    This API proves canonical object integrity only. It intentionally cannot accept
+    externally supplied source digests and therefore cannot claim raw-byte custody.
+    """
     return _evaluate(
         _require_dict(intent_raw, "intent"),
         _require_dict(evidence_raw, "evidence"),
         _require_dict(scope_raw, "buyer scope"),
-        raw_byte_digests=None,
+        raw_bytes=None,
     )
 
 
@@ -263,11 +268,7 @@ def evaluate_bytes(
         intent,
         evidence,
         scope,
-        raw_byte_digests={
-            "intent_sha256": guard.digest_bytes(intent_bytes),
-            "evidence_sha256": guard.digest_bytes(evidence_bytes),
-            "scope_sha256": guard.digest_bytes(scope_bytes),
-        },
+        raw_bytes=(intent_bytes, evidence_bytes, scope_bytes),
     )
 
 
