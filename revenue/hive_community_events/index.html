@@ -39,8 +39,12 @@ let refreshing = false;
 const refs = {}, hostRefs = {};
 function stored(id) {try{return localStorage.getItem('lantern:'+id)||refs[id]||'';}catch{return refs[id]||'';}}
 function remember(id, value) {refs[id]=value;try{localStorage.setItem('lantern:'+id,value);}catch{notice('Browser storage is unavailable. Save your participant reference to reconnect.');}}
-function storedHost(id) {try{return localStorage.getItem('lantern-host:'+id)||hostRefs[id]||'';}catch{return hostRefs[id]||'';}}
-function rememberHost(id, value) {if(!value)return;hostRefs[id]=value;try{localStorage.setItem('lantern-host:'+id,value);}catch{notice('Browser storage is unavailable. Copy the host recovery key before leaving this page.');}}
+function storedHost(id) {if(hostRefs[id])return hostRefs[id];try{return localStorage.getItem('lantern-host:'+id)||'';}catch{return '';}}
+function rememberHost(id, value) {if(!value)return false;hostRefs[id]=value;try{localStorage.setItem('lantern-host:'+id,value);return localStorage.getItem('lantern-host:'+id)===value;}catch{return false;}}
+function hostPersistenceMessage(action, persisted) {
+  if(action==='create')return persisted?'Event created. The host recovery key is saved in this browser; keep a backup before sharing the participant link.':'Event created. Browser storage is unavailable, so the host recovery key works in this tab only. Copy it now; reloading or closing this tab will lose it.';
+  return persisted?'Host controls restored and the recovery key is saved in this browser.':'Host controls restored for this tab only. Browser storage is unavailable; copy the recovery key now because reloading or closing this tab will lose it.';
+}
 function forgetHost(id) {delete hostRefs[id];try{localStorage.removeItem('lantern-host:'+id);}catch{}}
 function notice(message) {$('notice').textContent=message;}
 async function api(path, data) {
@@ -84,7 +88,7 @@ function hostControls(data) {
     controls.append(node('p','Only the host recovery key can finish this event. Paste it here to restore host controls on this browser.','muted'));
     const form=node('form');const input=node('input');input.required=true;input.autocomplete='off';input.setAttribute('aria-label','Host recovery key');input.placeholder='Paste host recovery key';
     const restore=node('button','Restore host controls','primary');form.append(input,restore);
-    form.onsubmit=act(async()=>{restore.disabled=true;try{const key=input.value.trim();await api('/api/events/'+data.id+'/host/verify',{host_key:key});rememberHost(data.id,key);lastSignature='';render(data);notice('Host controls restored on this browser.');}finally{restore.disabled=false;}});
+    form.onsubmit=act(async()=>{restore.disabled=true;try{const key=input.value.trim();await api('/api/events/'+data.id+'/host/verify',{host_key:key});const persisted=rememberHost(data.id,key);lastSignature='';render(data);notice(hostPersistenceMessage('restore',persisted));}finally{restore.disabled=false;}});
     controls.append(form);return controls;
   }
   controls.append(node('p','This browser has the host capability for this event. The capability is never included in the participant link or public event state.','muted'));
@@ -144,7 +148,7 @@ $('question-set').value=JSON.stringify([
 ],null,2);
 $('create').onsubmit=act(async()=>{
  const button=$('create').querySelector('button');button.disabled=true;
- try{const event=await api('/api/events',{title:$('title').value,room:$('room').value,opens:new Date($('opens').value).getTime()/1000,ends:new Date($('ends').value).getTime()/1000,questions:JSON.parse($('question-set').value)});rememberHost(event.id,event.host_key);$('host').open=false;await select(event.id);notice('Event created. The host recovery key is saved in this browser; keep a backup before sharing the participant link.');}finally{button.disabled=false;}
+ try{const event=await api('/api/events',{title:$('title').value,room:$('room').value,opens:new Date($('opens').value).getTime()/1000,ends:new Date($('ends').value).getTime()/1000,questions:JSON.parse($('question-set').value)});const persisted=rememberHost(event.id,event.host_key);$('host').open=false;await select(event.id);notice(hostPersistenceMessage('create',persisted));}finally{button.disabled=false;}
 });
 $('refresh').onclick=act(async()=>{await listing();await refresh();notice('Up to date.');});
 act(async()=>{await listing();await refresh();})();
