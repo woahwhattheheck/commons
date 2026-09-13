@@ -46,6 +46,12 @@ The evidence document must have complete slices for every requested search:
 - matching open PRs on the owner fork;
 - per-candidate-path owner-default/upstream-base/upstream-head blob SHAs.
 
+Each Slack slice carries a `query` field and the evaluator requires it to match
+the exact requested stable ID, canonical upstream ref, path, or phrase. GitHub
+evidence carries a scope binding with the exact `owner_fork` and canonical
+upstream ref, and the owner-open-PR slice is bound to that fork. Cross-wired
+empty results are rejected rather than treated as absence of custody.
+
 A hit contains metadata only (`id`, optional URL/channel/timestamp/kind/repo/
 number/overlap paths). Do not paste Slack message text into the receipt.
 
