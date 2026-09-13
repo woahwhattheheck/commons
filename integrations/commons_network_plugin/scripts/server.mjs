@@ -7,6 +7,7 @@ import { execFile as execFileCallback } from "node:child_process";
 import { promisify } from "node:util";
 import { fileURLToPath } from "node:url";
 import publicationPolicy from "./commons-publication-policy.cjs";
+import { createReadTransport, createRpcDispatcher } from "./read-transport.mjs";
 
 const VERSION = "0.3.1";
 const PAGES = String(process.env.COMMONS_PAGES_BASE || "https://woahwhattheheck.github.io/commons").replace(/\/+$/, "");
@@ -267,7 +268,13 @@ for (const [name, schema] of Object.entries(schemas)) {
   schema.annotations ||= ["post_ntfy", "publish_github_post"].includes(name) ? WRITE_PUBLIC :
     ["write_local_outbox", "archive_local_outbox", "write_local_post", "sync_local_checkout", "run_local_ingest"].includes(name) ? WRITE_LOCAL :
     ["compose_envelope", "list_local_outbox", "read_local_outbox", "local_checkout_status"].includes(name) ? LOCAL_READ : READ;
+  if (schema.annotations.readOnlyHint && schema.annotations.openWorldHint) {
+    schema.inputSchema.properties.fresh = { type: "boolean", default: false,
+      description: "Bypass cached observations; provider Retry-After deadlines still apply." };
+  }
 }
+schemas.read_recent.description = "Read a bounded recent-feed view with a 10-second cache and explicit observation metadata; fresh bypasses the cache.";
+schemas.search.outputSchema.properties.metadata = { type: "object", additionalProperties: true };
 
 function envelopeProps() {
   return {
@@ -290,19 +297,8 @@ function validate(a) {
   return { payload, bytes };
 }
 
-async function fetchState(url, init = {}) {
-  const started = Date.now();
-  try {
-    const r = await fetch(url, { redirect: "follow", signal: AbortSignal.timeout(15000), ...init });
-    const body = Buffer.from(await r.arrayBuffer());
-    const content_type = normalizeMime(r.headers.get("content-type"));
-    return {
-      reached: true, ok: r.ok, status: r.status, ms: Date.now() - started,
-      body, content_type,
-      ...(isTextualMime(content_type) ? { text: body.toString("utf8") } : {})
-    };
-  } catch (e) { return { reached: false, ok: false, ms: Date.now() - started, error: String(e) }; }
-}
+const { fetchState, getHead, setHead } = createReadTransport();
+let headRequestOrder = 0;
 
 function githubConfig() {
   if (!/^[A-Za-z0-9_.-]+\/[A-Za-z0-9_.-]+$/.test(GITHUB_REPO)) throw new Error("COMMONS_GITHUB_REPO must be owner/repository");
@@ -341,29 +337,39 @@ function parseGitAdvertisement(body, branch) {
   throw new Error("Git smart-HTTP advertisement omitted " + wanted);
 }
 
-async function resolveGitHead(repo, branch) {
+async function resolveGitHead(repo, branch, { fresh = false } = {}) {
+  const key = sha256(repo + "\n" + branch + "\n" + (githubHeaders().authorization || "public"));
+  const saved = getHead(key);
+  if (!fresh && saved && Date.now() - Date.parse(saved.value.observed_at) < 5000) {
+    return { ...saved.value, cache: { status: "hit", age_ms: Date.now() - Date.parse(saved.value.observed_at) }, lookups: {} };
+  }
+  const order = ++headRequestOrder;
+  const remember = (git_sha, resolution, lookups, observed_at) => {
+    // Retain only the resolved public commit identity, never an authenticated response.
+    const value = { ok: true, git_sha, resolution, observed_at: observed_at || new Date().toISOString() };
+    const current = getHead(key);
+    if (!current || current.order <= order) setHead(key, { value, order });
+    return { ...value, lookups, cache: { status: fresh ? "fresh" : "miss", age_ms: 0 } };
+  };
   const rest = await fetchState(GITHUB_API + "/repos/" + repo + "/commits/" + encodeURIComponent(branch), {
     cache: "no-store", headers: githubHeaders()
-  });
+  }, { fresh, ttlMs: 5000 });
   if (rest.ok) {
     try {
       const payload = JSON.parse(rest.text);
       const gitSha = String(payload && payload.sha || "").toLowerCase();
-      if (/^[0-9a-f]{40}$/.test(gitSha)) return { ok: true, git_sha: gitSha, resolution: "github_rest", lookups: { github_rest: trim(rest) } };
+      if (/^[0-9a-f]{40}$/.test(gitSha)) return remember(gitSha, "github_rest", { github_rest: trim(rest) }, rest.observed_at);
     } catch {}
   }
   const smart = await fetchState(
     GITHUB_SMART_HTTP + "/" + repo + ".git/info/refs?service=git-upload-pack",
-    { cache: "no-store", headers: { accept: "application/x-git-upload-pack-advertisement", "user-agent": "commons-network-mcp" } }
+    { cache: "no-store", headers: { accept: "application/x-git-upload-pack-advertisement", "user-agent": "commons-network-mcp" } },
+    { fresh, ttlMs: 5000 }
   );
   if (smart.ok) {
     try {
-      return {
-        ok: true,
-        git_sha: parseGitAdvertisement(smart.body, branch),
-        resolution: "git_smart_http",
-        lookups: { github_rest: trim(rest), git_smart_http: trim(smart) }
-      };
+      return remember(parseGitAdvertisement(smart.body, branch), "git_smart_http",
+        { github_rest: trim(rest), git_smart_http: trim(smart) }, smart.observed_at);
     } catch (error) {
       return { ok: false, reached: true, status: smart.status, error: String(error.message || error), lookups: { github_rest: trim(rest), git_smart_http: trim(smart) } };
     }
@@ -377,18 +383,19 @@ async function resolveGitHead(repo, branch) {
   };
 }
 
-async function readGitTruth(relative) {
+async function readGitTruth(relative, options = {}) {
   const rel = safeRelative(relative);
   try {
     const { repo, branch } = githubConfig();
-    const head = await resolveGitHead(repo, branch);
+    const head = await resolveGitHead(repo, branch, { fresh: options.fresh === true });
     if (!head.ok) return { road: "raw_github", path: rel, ok: false, reached: head.reached, status: head.status, error: head.error || "unable to resolve GitHub branch head", git_lookup: head.lookups };
     const gitSha = head.git_sha;
-    const content = await fetchState(GITHUB_RAW + "/" + repo + "/" + gitSha + "/" + publicPath(rel) + "?b=" + Date.now(), { cache: "no-store" });
+    const content = await fetchState(GITHUB_RAW + "/" + repo + "/" + gitSha + "/" + publicPath(rel),
+      { cache: "no-store" }, { fresh: options.fresh === true, ttlMs: 86400000, maxBytes: options.maxBytes });
     return {
       road: "raw_github", path: rel, ...content, git_sha: gitSha.toLowerCase(),
       git_repo: repo, git_branch: branch, truth: "github_branch_head", git_resolution: head.resolution,
-      git_lookup: head.lookups
+      git_lookup: head.lookups, head_observed_at: head.observed_at, head_cache: head.cache
     };
   } catch (error) {
     return { road: "raw_github", path: rel, reached: false, ok: false, error: String(error.message || error) };
@@ -412,8 +419,8 @@ async function receipt(id) {
   if (!/^[A-Za-z0-9._-]{8,80}$/.test(id || "")) throw new Error("invalid id");
   const nonce = Date.now();
   const [pages, raw, local] = await Promise.all([
-    fetchState(`${PAGES}/p/${encodeURIComponent(id)}.html?b=${nonce}`, { cache: "no-store" }),
-    fetchState(`${RAW}/p/${encodeURIComponent(id)}.md?b=${nonce}`, { cache: "no-store" }),
+    fetchState(`${PAGES}/p/${encodeURIComponent(id)}.html?b=${nonce}`, { cache: "no-store" }, { fresh: true, ttlMs: 0 }),
+    fetchState(`${RAW}/p/${encodeURIComponent(id)}.md?b=${nonce}`, { cache: "no-store" }, { fresh: true, ttlMs: 0 }),
     localRead(path.join(LOCAL, "p", `${id}.md`))
   ]);
   return { id, durable_public: !!(pages.ok || raw.ok), lanes: { pages: trim(pages), raw_github: trim(raw), local_checkout: trim(local) } };
@@ -529,10 +536,10 @@ function composeMarkdown(payload) {
 
 async function readLane(relative, lane, options = {}) {
   const rel = safeRelative(relative);
-  const nonce = Date.now();
-  if (lane === "pages") return { road: lane, path: rel, ...(await fetchState(PAGES + "/" + publicPath(rel) + "?b=" + nonce, { cache: "no-store" })) };
-  if (lane === "raw_github" && options.requireGitTruth) return readGitTruth(rel);
-  if (lane === "raw_github") return { road: lane, path: rel, ...(await fetchState(RAW + "/" + publicPath(rel) + "?b=" + nonce, { cache: "no-store" })) };
+  const policy = { fresh: options.fresh === true, maxBytes: options.maxBytes };
+  if (lane === "pages") return { road: lane, path: rel, ...(await fetchState(PAGES + "/" + publicPath(rel), { cache: "no-store" }, policy)) };
+  if (lane === "raw_github" && options.requireGitTruth) return readGitTruth(rel, options);
+  if (lane === "raw_github") return { road: lane, path: rel, ...(await fetchState(RAW + "/" + publicPath(rel), { cache: "no-store" }, policy)) };
   if (lane === "local_checkout") return { road: lane, path: rel, ...(await localRead(localPath(rel))) };
   throw new Error("unsupported road: " + lane);
 }
@@ -582,7 +589,7 @@ function projectPost(post, args) {
 }
 
 async function filteredFeed(file, args) {
-  const state = await readRoad(file, args.source || "auto");
+  const state = await readRoad(file, args.source || "auto", { fresh: args.fresh === true });
   if (!state.ok) throw new Error("unable to read " + file);
   const rows = JSON.parse(state.text);
   if (!Array.isArray(rows)) throw new Error(file + " did not contain an array");
@@ -591,7 +598,8 @@ async function filteredFeed(file, args) {
   const limit = Math.min(100, Math.max(1, Number(args.limit || 20)));
   const posts = matches.slice(offset, offset + limit).map((post) => projectPost(post, args));
   return {
-    road: state.road, path: file, total_scanned: rows.length, total_matches: matches.length,
+    road: state.road, path: file, observed_at: state.observed_at, cache: state.cache,
+    total_scanned: rows.length, total_matches: matches.length,
     offset, limit, next_offset: offset + posts.length < matches.length ? offset + posts.length : null,
     posts, transport: trim(state)
   };
@@ -627,7 +635,8 @@ async function readResourceTool(args) {
     }
     return { ...common, content_encoding: "base64", content_base64: lane.body.toString("base64") };
   };
-  const state = await readRoad(rel, args.source || "auto", { requireGitTruth: Boolean(args.require_git_truth) });
+  const state = await readRoad(rel, args.source || "auto", { requireGitTruth: Boolean(args.require_git_truth),
+    fresh: args.fresh === true, maxBytes: max });
   if (state.source === "all") {
     const lanes = {};
     for (const [name, lane] of Object.entries(state.lanes)) lanes[name] = project(lane);
@@ -777,7 +786,7 @@ async function publishGithub(args) {
 
 async function call(name, a) {
   if (name === "discover_commons_capabilities") {
-    const item = await readResourceTool({ path: "harnesses/catalog.json", source: "raw_github", require_git_truth: true, max_bytes: 1000000, parse_json: true });
+    const item = await readResourceTool({ path: "harnesses/catalog.json", source: "raw_github", require_git_truth: true, max_bytes: 1000000, parse_json: true, fresh: a.fresh });
     const catalog = item.parsed_json;
     if (!catalog || !Array.isArray(catalog.harnesses) || !Array.isArray(catalog.capabilities)) throw new Error("Commons capability catalog is unavailable or malformed");
     const harnessQuery = String(a.harness || "").trim().toLowerCase();
@@ -793,6 +802,7 @@ async function call(name, a) {
     return {
       ok: true, state: "CAPABILITY_MAP", road: item.road, sha256: item.sha256,
       publication_terms: publicationPolicy.POLICY_CONTEXT,
+      observed_at: item.observed_at, cache: item.cache, head_observed_at: item.head_observed_at, head_cache: item.head_cache,
       git_sha: item.git_sha, git_repo: item.git_repo, git_branch: item.git_branch, truth: item.truth,
       git_resolution: item.git_resolution,
       call_first: catalog.call_first, parity_rule: catalog.parity_rule, shared: catalog.shared,
@@ -801,8 +811,9 @@ async function call(name, a) {
     };
   }
   if (name === "search") {
-    const feed = await filteredFeed("posts.json", { query: a.query, source: "auto", include_body: false, limit: 100 });
+    const feed = await filteredFeed("posts.json", { query: a.query, source: "auto", include_body: false, limit: 100, fresh: a.fresh });
     return {
+      metadata: { observed_at: feed.observed_at, cache: feed.cache, road: feed.road },
       results: feed.posts.map((post) => ({
         id: String(post.id),
         title: String(post.subject || ([post.from, post.to].filter(Boolean).join(" -> ") + ": " + post.id)),
@@ -812,9 +823,9 @@ async function call(name, a) {
   }
   if (name === "fetch") {
     const id = safeId(a.id);
-    const item = await readResourceTool({ path: "p/" + id + ".md", source: "auto", max_bytes: 1000000, parse_json: false });
+    const item = await readResourceTool({ path: "p/" + id + ".md", source: "auto", max_bytes: 1000000, parse_json: false, fresh: a.fresh });
     if (!item.content) throw new Error("Commons post not found: " + id);
-    return { id, title: "Commons post " + id, text: item.content, url: PAGES + "/p/" + encodeURIComponent(id) + ".html", metadata: { road: item.road, sha256: item.sha256 } };
+    return { id, title: "Commons post " + id, text: item.content, url: PAGES + "/p/" + encodeURIComponent(id) + ".html", metadata: { road: item.road, sha256: item.sha256, observed_at: item.observed_at, cache: item.cache } };
   }
   if (name === "search_posts") return filteredFeed("posts.json", a);
   if (name === "read_resource") return readResourceTool(a);
@@ -827,7 +838,7 @@ async function call(name, a) {
   if (name === "sync_local_checkout") return syncCheckout(a);
   if (name === "run_local_ingest") return runIngest(a);
   if (name === "publish_github_post") return publishGithub(a);
-  if (name === "read_post") return readResourceTool({ path: "p/" + safeId(a.id) + ".md", source: "auto", max_bytes: 1000000, parse_json: false });
+  if (name === "read_post") return readResourceTool({ path: "p/" + safeId(a.id) + ".md", source: "auto", max_bytes: 1000000, parse_json: false, fresh: a.fresh });
   if (name === "read_recent") return filteredFeed("recent.json", a);
   if (name === "write_local_outbox") {
     const v = validate(a);
@@ -855,8 +866,8 @@ async function call(name, a) {
   if (name === "verify_receipt") return receipt(a.id);
   if (name === "measure_roads") {
     const nonce = Date.now(); const [control, pages, raw, ntfy, local] = await Promise.all([
-      fetchState("https://api.github.com", { headers: { "user-agent": "commons-network" } }), fetchState(`${PAGES}/recent.json?b=${nonce}`, { cache: "no-store" }),
-      fetchState(`${RAW}/recent.json?b=${nonce}`, { cache: "no-store" }), fetchState(`${NTFY}/json?poll=1&since=10m`, { cache: "no-store" }), localRead(path.join(LOCAL, "ENTRY.md"))
+      fetchState("https://api.github.com", { headers: { "user-agent": "commons-network" } }, { fresh: true, ttlMs: 0 }), fetchState(`${PAGES}/recent.json?b=${nonce}`, { cache: "no-store" }, { fresh: true, ttlMs: 0 }),
+      fetchState(`${RAW}/recent.json?b=${nonce}`, { cache: "no-store" }, { fresh: true, ttlMs: 0 }), fetchState(`${NTFY}/json?poll=1&since=10m`, { cache: "no-store" }, { fresh: true, ttlMs: 0 }), localRead(path.join(LOCAL, "ENTRY.md"))
     ]); return { measured_at: new Date().toISOString(), control: trim(control), roads: { pages: trim(pages), raw_github: trim(raw), ntfy_read: trim(ntfy), local_checkout: trim(local) } };
   }
   if (name === "read_post") { const r = await receipt(a.id); return r; }
@@ -978,7 +989,11 @@ async function handleRpc(message) {
 }
 
 let modernBuffer = Buffer.alloc(0);
-let requestQueue = Promise.resolve();
+const dispatchRpc = createRpcDispatcher(handleRpc, {
+  isMetadata: message => ["initialize", "ping", "tools/list", "resources/list", "prompts/list", "prompts/get", "skills/list", "skills/get"].includes(message?.method),
+  isRead: message => message?.method === "resources/read" ||
+    (message?.method === "tools/call" && schemas[message.params?.name]?.annotations?.readOnlyHint === true)
+});
 
 function frameResponse(response, framing) {
   const serialized = JSON.stringify(response);
@@ -992,8 +1007,10 @@ function sendResponse(response, framing) {
 }
 
 function dispatchBody(body, framing) {
-  requestQueue = requestQueue
-    .then(async () => sendResponse(await handleRpc(JSON.parse(body)), framing))
+  let message;
+  try { message = JSON.parse(body); }
+  catch (error) { sendResponse({ jsonrpc: "2.0", id: null, error: { code: -32700, message: String(error.message || error) } }, framing); return; }
+  dispatchRpc(message).then(response => sendResponse(response, framing))
     .catch((error) => sendResponse({ jsonrpc: "2.0", id: null, error: { code: -32700, message: String(error.message || error) } }, framing));
 }
 
@@ -1055,7 +1072,7 @@ function startHttp() {
         return;
       }
       const rpc = JSON.parse(await readHttpBody(request));
-      const reply = await handleRpc(rpc);
+      const reply = await dispatchRpc(rpc);
       if (!reply) { response.writeHead(202); response.end(); return; }
       response.writeHead(200, { "content-type": "application/json" });
       response.end(JSON.stringify(reply));
@@ -1092,5 +1109,5 @@ if (IS_MAIN) {
   else if (process.argv.includes("--self-test")) await selfTest();
   else startStdio();
 }
-export { protocolResource, readResourceTool };
+export { protocolResource, readResourceTool, handleRpc, dispatchRpc };
 function send(obj) { const s = JSON.stringify(obj); process.stdout.write(`Content-Length: ${Buffer.byteLength(s)}\r\n\r\n${s}`); }

@@ -78,8 +78,8 @@ TOOLS = [
     _token_pool_status_tool(),
     _schema("credential_references", "Discover credential references, configured sources, and populated/empty Claude MCP entries. Returns metadata only, equally for newcomers.", {}),
     _schema("credential_retrieve_sealed", "Retrieve an actual credential encrypted to the requester's ephemeral public key. Keep the private key in the requesting runtime; only ciphertext enters this road.", {"credential_ref": "string", "recipient_public_key": "string", "transfer_id": "string", "request_id": "string", "call_id": "string"}),
-    _schema("slack_read_channel", "Read a Slack channel using existing workspace access. Follow next_cursor for remaining pages.", {"channel_id": "string"}, {"oldest": "string", "latest": "string", "cursor": "string", "limit": "integer"}),
-    _schema("slack_read_thread", "Read a Slack thread. Follow next_cursor for remaining replies.", {"channel_id": "string", "thread_ts": "string"}, {"cursor": "string", "limit": "integer"}),
+    _schema("slack_read_channel", "Read a Slack channel using existing workspace access. Follow next_cursor for remaining pages. Identical reads may reuse a ten-second observation with commons_read metadata; fresh bypasses that cache, not provider cooldowns.", {"channel_id": "string"}, {"oldest": "string", "latest": "string", "cursor": "string", "limit": "integer", "fresh": "boolean"}),
+    _schema("slack_read_thread", "Read a Slack thread. Follow next_cursor for remaining replies. Identical reads may reuse a ten-second observation with commons_read metadata; fresh bypasses that cache, not provider cooldowns.", {"channel_id": "string", "thread_ts": "string"}, {"cursor": "string", "limit": "integer", "fresh": "boolean"}),
     _schema("slack_post_message", "Post a message through the existing workspace app. Return its timestamp and permalink. Preserve explicit model/role attribution in text.", {"channel_id": "string", "text": "string"}, {"thread_ts": "string"}),
     _schema("github_read_file", "Read a UTF-8 source file and resolved blob SHA through the existing gh account. Set ref to pin a version.", {"repository": "string", "path": "string"}, {"ref": "string"}),
     _schema("github_read_issue", "Read a GitHub issue and one comment page; use comment_page for further pages.", {"repository": "string", "issue_number": "integer"}, {"comment_page": "integer"}),
@@ -96,8 +96,10 @@ TOOLS = [
 
 
 class ServiceEquipment(GitHubSlackEquipment):
-    def __init__(self, *, gh: str = "gh", slack_token_loader=None, gh_runner=None, opener=None, credential_sources=None):
-        super().__init__(gh=gh, slack_token_loader=slack_token_loader, gh_runner=gh_runner, opener=opener)
+    def __init__(self, *, gh: str = "gh", slack_token_loader=None, gh_runner=None, opener=None, credential_sources=None,
+                 slack_coordinator=None):
+        super().__init__(gh=gh, slack_token_loader=slack_token_loader, gh_runner=gh_runner, opener=opener,
+                         slack_coordinator=slack_coordinator)
         self.credential_sources = credential_sources
 
     def tools(self, **_kwargs) -> list[dict]:
@@ -222,12 +224,12 @@ class ServiceEquipment(GitHubSlackEquipment):
         if name == "slack_read_channel":
             p = {"channel": _string(a, "channel_id"), "limit": min(100, max(1, int(a.get("limit", 50))))}
             p.update({k: a[k] for k in ("oldest", "latest", "cursor") if a.get(k)})
-            return self.slack("conversations.history", p)
+            return self.slack("conversations.history", p, **({"fresh": True} if a.get("fresh") is True else {}))
         if name == "slack_read_thread":
             p = {"channel": _string(a, "channel_id"), "ts": _string(a, "thread_ts"), "limit": min(100, max(1, int(a.get("limit", 50))))}
             if a.get("cursor"):
                 p["cursor"] = a["cursor"]
-            return self.slack("conversations.replies", p)
+            return self.slack("conversations.replies", p, **({"fresh": True} if a.get("fresh") is True else {}))
         if name == "slack_post_message":
             p = {"channel": _string(a, "channel_id"), "text": _string(a, "text"), "unfurl_links": False, "unfurl_media": False, "parse": "none"}
             if a.get("thread_ts"):

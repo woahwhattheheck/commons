@@ -11,11 +11,32 @@ import threading
 import time
 from pathlib import Path
 
+from integrations.command_center.request_budget import retry_seconds
 from .outcomes import effect_uncertain, tool_failed
 from .services import build_capability_manifest, redacted
 
 OPEN = "<commons_equipment_request>"
 CLOSE = "</commons_equipment_request>"
+
+
+class SlackCarrierDeferred(RuntimeError):
+    def __init__(self, result):
+        now = time.time()
+        delay, _ = retry_seconds(result.get("retry_after"), now, 60)
+        self.retry_at = now + max(1, delay)
+        super().__init__("Slack provider cooldown; preserve cursor and operation IDs")
+
+
+def _throttle(result):
+    if not isinstance(result, dict) or effect_uncertain(result):
+        return None
+    if result.get("status") == 429 or result.get("error") == "ratelimited":
+        return result
+    for key in ("result", "structuredContent"):
+        found = _throttle(result.get(key))
+        if found is not None:
+            return found
+    return None
 
 
 def slack_timestamp(value) -> str:
@@ -160,6 +181,9 @@ class SlackEquipmentCarrier:
                 {"channel_id": self.channel, "thread_ts": message.get("thread_ts") or message["ts"], "text": text},
                 self.catalog.services.call)
             if tool_failed(delivery) or effect_uncertain(delivery):
+                throttle = _throttle(delivery)
+                if throttle is not None:
+                    raise SlackCarrierDeferred(throttle)
                 if terminal_delivery_rejection(delivery):
                     # Retain the journaled rejection and omit remaining parts.
                     # This is a terminal delivery outcome, never a sent receipt.
@@ -178,6 +202,9 @@ class SlackEquipmentCarrier:
         while True:
             page = self.catalog.services.slack(method, args)
             if not page.get("ok"):
+                throttle = _throttle(page)
+                if throttle is not None:
+                    raise SlackCarrierDeferred(throttle)
                 raise RuntimeError("Slack carrier read failed: " + str(page.get("error", "unknown")))
             messages.extend(m for m in page.get("messages", []) if float(m["ts"]) > float(self.cursor))
             cursor = page.get("response_metadata", {}).get("next_cursor")
@@ -198,16 +225,27 @@ class SlackEquipmentCarrier:
             "last_terminal_delivery_failure": last_terminal_failure}
 
     def run(self):
+        failures = 0
         while not self._stop.is_set():
+            wait_seconds = self.interval
             try:
                 delivery_status = self.once()
+                failures = 0
                 self.status = {"ok": True, "phase": "polling", "channel_id": self.channel,
                     "thread_ts": self.thread_ts, "cursor": self.cursor, "time": time.time(),
                     **delivery_status}
+            except SlackCarrierDeferred as exc:
+                wait_seconds = max(self.interval, exc.retry_at - time.time())
+                self.status = {"ok": False, "phase": "rate_limited", "cursor": self.cursor,
+                    "time": time.time(), "retry_not_before": exc.retry_at,
+                    "retry_after_seconds": wait_seconds}
             except Exception as exc:
+                failures += 1
+                wait_seconds = max(self.interval, min(300, self.interval * 2 ** min(failures - 1, 6)))
                 self.status = {"ok": False, "phase": "error", "error": type(exc).__name__,
-                    "message": redacted(str(exc)), "cursor": self.cursor, "time": time.time()}
+                    "message": redacted(str(exc)), "cursor": self.cursor, "time": time.time(),
+                    "retry_after_seconds": wait_seconds}
             # One redacted diagnostic snapshot; no source message/secret log.
             diagnostic = self.path.with_name("equipment_slack_status.json")
             diagnostic.write_text(json.dumps(self.status), encoding="utf-8")
-            self._stop.wait(self.interval)
+            self._stop.wait(wait_seconds)

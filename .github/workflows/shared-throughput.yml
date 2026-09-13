@@ -1,0 +1,38 @@
+name: shared-throughput
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'integrations/shared_equipment/**'
+      - 'integrations/gemini_slack/peer_tool_gateway.py'
+      - 'integrations/command_center/request_budget.py'
+      - 'integrations/commons_network_plugin/scripts/**'
+      - 'test_gemini_peer_tool_gateway.py'
+      - '.github/workflows/shared-throughput.yml'
+  pull_request:
+    paths:
+      - 'integrations/shared_equipment/**'
+      - 'integrations/gemini_slack/peer_tool_gateway.py'
+      - 'integrations/command_center/request_budget.py'
+      - 'integrations/commons_network_plugin/scripts/**'
+      - 'test_gemini_peer_tool_gateway.py'
+      - '.github/workflows/shared-throughput.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  synthetic-provider-regressions:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Slack cache, carrier and effect-journal regressions
+        run: python -B -m unittest integrations.shared_equipment.test_slack_reads integrations.shared_equipment.test_equipment integrations.shared_equipment.test_journal_retry test_gemini_peer_tool_gateway
+      - name: Commons HTTP cache and RPC dispatch regressions
+        run: node --test integrations/commons_network_plugin/scripts/test_read_throughput.mjs

@@ -15,6 +15,57 @@ This module provides neutral, shared Slack and GitHub equipment accessible by la
 
 ## Invocation Interfaces
 
+### Shared throughput and throttle recovery
+
+Slack channel/thread reads reuse a sanitized in-memory observation for at most
+10 seconds. Responses include `commons_read.observed_at`, `cached`, age and TTL;
+pass `fresh: true` for a new observation. Identical concurrent reads coalesce
+within the process. Successful mutations invalidate cached observations, and
+an older in-flight read cannot repopulate the cache after that invalidation.
+Cache bounds are 64 entries / 8 MiB with a 2 MiB per-entry ceiling.
+
+Provider Retry-After deadlines persist in the existing command-center SQLite
+budget, keyed by a one-way credential fingerprint and method. Every local
+caller using this provider adapter honors that scope; separate credentials are
+not assumed to share a Slack app/workspace quota. No credential or conversation
+body is stored in that budget. `fresh` does not skip a cooldown. Custom injected
+HTTP openers used by tests must also inject a coordinator to exercise this path.
+
+Reuse the original gateway request/call IDs after a confirmed no-effect 429.
+The journal permits a caller-driven retry only after its durable deadline and
+records additive start/result attempt events. It does not retry successful
+writes, unknown effects, interrupted calls, or arbitrary failures. The original
+`tool_calls` receipt remains intact; retry-aware consumers use
+`tool_call_attempts` or the existing journaled execute path. The Slack carrier
+retains its cursor on throttles, waits the provider delay, and backs off
+transient failures instead of hammering a fixed polling interval.
+
+This implementation governs the local shared adapter, not Slack's separately
+hosted MCP connector. Hosted callers must retain the returned Retry-After and
+pagination cursor, avoid duplicate unchanged polling, and use task messaging
+for session coordination. Credential rotation is not a throttle remedy.
+Provider quota increases are not claimed.
+
+The Commons Network plugin independently caps streamed responses at 32 MiB,
+caches public reads for 10 seconds, resolves branch heads for at most 5 seconds,
+and bounds retained response/head data to 64 MiB / 32 entries. It never caches
+authenticated response bodies or failed reads. Existing cached observations
+remain usable during cooldown; `fresh` and receipt verification honor cooldowns
+before network access. Metadata and up to four active reads are no longer
+serialized behind a long-running publication; mutations retain FIFO ordering.
+This is an active-read limit, not a bound on the incoming RPC queue.
+
+Source verification (synthetic providers only):
+
+```text
+python -B -m unittest integrations.shared_equipment.test_slack_reads integrations.shared_equipment.test_equipment integrations.shared_equipment.test_journal_retry test_gemini_peer_tool_gateway
+node --test integrations/commons_network_plugin/scripts/test_read_throughput.mjs
+```
+
+Passing these suites establishes code behavior, not deployment. Installed
+plugin files and the running gateway must be checked separately against their
+actual source hashes and a read-only runtime result.
+
 ### GitHub issue and PR metadata
 
 The shared catalog includes `github_add_issue_comment`,

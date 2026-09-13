@@ -86,11 +86,14 @@ def _header_integer(headers, name):
     return int(value) if isinstance(value, str) and re.fullmatch(r"[0-9]{1,12}", value) else None
 
 class GitHubSlackEquipment:
-    def __init__(self, *, gh: str = "gh", slack_token_loader=None, gh_runner=None, opener=None):
+    def __init__(self, *, gh: str = "gh", slack_token_loader=None, gh_runner=None, opener=None,
+                 slack_coordinator=None):
         self.gh = gh
         self.slack_token_loader = slack_token_loader or self._load_slack_token
         self.gh_runner = gh_runner or subprocess.run
         self.opener = opener or urllib.request.build_opener(_NoRedirect()).open
+        self.slack_coordinator = slack_coordinator
+        self._custom_opener = opener is not None
 
     @staticmethod
     def _load_slack_token() -> str:
@@ -103,10 +106,20 @@ class GitHubSlackEquipment:
             raise EquipmentError("existing Slack vault unavailable; inspect the existing Grok Slack custody route") from exc
 
 
-    def slack(self, method: str, payload: dict) -> dict:
+    def slack(self, method: str, payload: dict, *, fresh=False) -> dict:
         if method in {"chat.postMessage", "chat.update", "chat.postEphemeral", "chat.scheduleMessage"}:
             require_publication(_slack_publication_text(payload))
         token = self.slack_token_loader()
+        coordinator = self.slack_coordinator
+        if coordinator is None and not self._custom_opener:
+            from .slack_reads import default_coordinator
+            coordinator = default_coordinator()
+        if coordinator is not None:
+            return coordinator.call(method, payload, token,
+                lambda: self._slack_request(method, payload, token), fresh=fresh)
+        return self._slack_request(method, payload, token)
+
+    def _slack_request(self, method: str, payload: dict, token: str) -> dict:
         # Slack read methods accept query/form arguments, not consistently JSON.
         read_method = method in {"conversations.history", "conversations.replies", "chat.getPermalink", "auth.test"}
         url = "https://slack.com/api/" + method

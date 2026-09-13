@@ -9,6 +9,7 @@ import datetime as dt
 import hashlib
 import http.client
 import json
+import math
 import os
 import queue
 import re
@@ -20,6 +21,7 @@ import urllib.error
 import urllib.parse
 import urllib.request
 import uuid
+from email.utils import parsedate_to_datetime
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from typing import Any, Callable
@@ -248,13 +250,97 @@ class McpCatalog:
         return self._rpc("tools/call", {"name": name, "arguments": arguments})
 
 
-class ToolCallStore:
-    """Per-request duplicate suppression with honest crash ambiguity."""
+def _retry_envelope_uncertain(result: dict[str, Any]) -> bool:
+    """Any recognized envelope's uncertainty overrides an outer no-effect flag."""
+    pending, seen = [result], set()
+    while pending:
+        value = pending.pop()
+        if not isinstance(value, dict) or id(value) in seen:
+            continue
+        seen.add(id(value))
+        # Inspect each envelope's own metadata, then traverse every envelope road
+        # (including error_data) before allowing an outer 429 to win. Do not scan
+        # arbitrary returned tool data or stop at the retry candidate's depth.
+        metadata = {key: value.get(key) for key in ("uncertain", "code", "error")
+                    if not isinstance(value.get(key), dict)}
+        if effect_uncertain(metadata):
+            return True
+        uncertain = value.get("uncertain")
+        if uncertain is not None and uncertain is not False:
+            return True
+        pending.extend(value.get(key) for key in ("result", "structuredContent", "error", "error_data"))
+    return False
 
-    def __init__(self, path: Path) -> None:
+
+def _throttle_retry_deadline(result: dict[str, Any], observed_at: float) -> float | None:
+    """Return a durable deadline only for an explicit, known-no-effect 429.
+
+    Only result envelopes are traversed, never arbitrary tool data. A missing or
+    malformed Retry-After uses sixty seconds; no caller gets an immediate retry
+    from a zero, negative, boolean, or non-finite delay.
+    """
+    if _retry_envelope_uncertain(result) or not tool_failed(result):
+        return None
+
+    def timestamp(value):
+        if not isinstance(value, str):
+            return None
+        try:
+            parsed = dt.datetime.fromisoformat(value.replace("Z", "+00:00"))
+        except ValueError:
+            try:
+                parsed = parsedate_to_datetime(value)
+            except (ValueError, TypeError, OverflowError):
+                return None
+        if parsed.tzinfo is None:
+            return None
+        try:
+            stamp = parsed.timestamp()
+        except (ValueError, OverflowError, OSError):
+            return None
+        return stamp if math.isfinite(stamp) else None
+
+    def deadline(value):
+        raw = value.get("retry_after", value.get("retry_after_seconds"))
+        try:
+            delay = float(raw) if type(raw) in (int, float, str) else float("nan")
+        except (ValueError, OverflowError):
+            delay = float("nan")
+        if not math.isfinite(delay) or delay <= 0:
+            stamp = timestamp(raw)
+            delay = stamp - observed_at if stamp is not None and stamp > observed_at else 60.0
+        result_at = observed_at + delay
+        if not math.isfinite(result_at):
+            result_at = observed_at + 60.0
+        not_before = timestamp(value.get("retry_not_before"))
+        return max(result_at, not_before) if not_before is not None else result_at
+
+    def inspect(value, no_effect=None, depth=0):
+        if depth > 8 or not isinstance(value, dict):
+            return None
+        no_effect = value.get("uncertain", no_effect)
+        if no_effect not in (None, False) or type(no_effect) not in (type(None), bool):
+            return None
+        status = value.get("status", value.get("http_status"))
+        throttled = ((type(status) is int and status == 429)
+                     or value.get("error") in ("ratelimited", "rate_limited"))
+        if throttled and no_effect is False:
+            return deadline(value)
+        deadlines = [inspect(value.get(key), no_effect, depth + 1)
+                     for key in ("result", "structuredContent", "error", "error_data")]
+        return max((at for at in deadlines if at is not None), default=None)
+
+    return inspect(result)
+
+
+class ToolCallStore:
+    """Duplicate suppression with caller-driven, journaled no-effect retries."""
+
+    def __init__(self, path: Path, *, clock: Callable[[], float] | None = None) -> None:
         path.parent.mkdir(parents=True, exist_ok=True)
         self.path = path
         self._lock = threading.RLock()
+        self._clock = clock or time.time
         self._db = sqlite3.connect(path, check_same_thread=False)
         self._db.row_factory = sqlite3.Row
         with self._db:
@@ -271,6 +357,21 @@ class ToolCallStore:
                     PRIMARY KEY(request_id, call_id)
                 )
                 """
+            )
+            # Append-only start/result snapshots preserve every attempt. The
+            # original tool_calls result remains the first-attempt receipt.
+            self._db.execute(
+                """CREATE TABLE IF NOT EXISTS tool_call_attempts(
+                    request_id TEXT NOT NULL,
+                    call_id TEXT NOT NULL,
+                    attempt_number INTEGER NOT NULL,
+                    phase INTEGER NOT NULL CHECK(phase IN (0,1)),
+                    state TEXT NOT NULL CHECK(state IN ('started','completed','error')),
+                    result_json TEXT,
+                    recorded_at REAL NOT NULL,
+                    retry_at REAL,
+                    PRIMARY KEY(request_id,call_id,attempt_number,phase)
+                )"""
             )
 
     def close(self) -> None:
@@ -290,6 +391,9 @@ class ToolCallStore:
         ).encode("utf-8")
         digest = hashlib.sha256(arg_bytes).hexdigest()
         with self._lock, self._db:
+            # Serialize reservation across connections/processes, not merely
+            # callers sharing this Python object's RLock.
+            self._db.execute("BEGIN IMMEDIATE")
             row = self._db.execute(
                 "SELECT * FROM tool_calls WHERE request_id=? AND call_id=?",
                 (request_id, call_id),
@@ -297,23 +401,52 @@ class ToolCallStore:
             if row:
                 if row["tool_name"] != name or row["arguments_sha256"] != digest:
                     return {"isError": True, "uncertain": False, "error": "call_id_reused_with_different_arguments"}
-                if row["result_json"]:
-                    previous = json.loads(row["result_json"])
-                    if row["state"] == "error" and not tool_failed(previous):
-                        previous.setdefault("isError", True)
-                    if row["state"] == "started" and not effect_uncertain(previous):
-                        previous.update(isError=True, uncertain=True)
-                    return previous
-                return {
-                    "isError": True,
-                    "uncertain": True,
-                    "error": "tool_effect_unknown_after_interruption",
-                    "call_id": call_id,
-                    "reconciliation": "inspect Commons before deciding whether to issue a new call",
-                }
+                attempt = self._db.execute(
+                    "SELECT * FROM tool_call_attempts WHERE request_id=? AND call_id=? "
+                    "ORDER BY attempt_number DESC,phase DESC LIMIT 1", (request_id, call_id),
+                ).fetchone()
+                if attempt is None:
+                    # Add history for an existing database without changing its
+                    # original snapshot or restarting its cooldown on upgrade.
+                    prior = json.loads(row["result_json"]) if row["result_json"] else None
+                    retry_at = (_throttle_retry_deadline(prior, row["updated_at"])
+                                if row["state"] == "error" and prior is not None else None)
+                    self._db.execute(
+                        "INSERT INTO tool_call_attempts VALUES(?,?,?,?,?,?,?,?)",
+                        (request_id, call_id, 0, int(prior is not None), row["state"],
+                         row["result_json"], row["updated_at"], retry_at),
+                    )
+                    attempt = self._db.execute(
+                        "SELECT * FROM tool_call_attempts WHERE request_id=? AND call_id=?",
+                        (request_id, call_id),
+                    ).fetchone()
+                previous = json.loads(attempt["result_json"]) if attempt["result_json"] else None
+                due = (attempt["phase"] == 1 and attempt["state"] == "error"
+                       and attempt["retry_at"] is not None
+                       and self._clock() >= attempt["retry_at"]
+                       and previous is not None and not _retry_envelope_uncertain(previous))
+                if not due:
+                    if previous is not None:
+                        if attempt["state"] == "error" and not tool_failed(previous):
+                            previous.setdefault("isError", True)
+                        if attempt["state"] == "started" and not effect_uncertain(previous):
+                            previous.update(isError=True, uncertain=True)
+                        return previous
+                    return {
+                        "isError": True, "uncertain": True,
+                        "error": "tool_effect_unknown_after_interruption", "call_id": call_id,
+                        "reconciliation": "inspect Commons before deciding whether to issue a new call",
+                    }
+                attempt_number = attempt["attempt_number"] + 1
+            else:
+                attempt_number = 0
+                self._db.execute(
+                    "INSERT INTO tool_calls VALUES(?,?,?,?,?,?,?)",
+                    (request_id, call_id, name, digest, "started", None, self._clock()),
+                )
             self._db.execute(
-                "INSERT INTO tool_calls VALUES(?,?,?,?,?,?,?)",
-                (request_id, call_id, name, digest, "started", None, time.time()),
+                "INSERT INTO tool_call_attempts VALUES(?,?,?,?,?,?,?,NULL)",
+                (request_id, call_id, attempt_number, 0, "started", None, self._clock()),
             )
         try:
             result = runner(name, arguments)
@@ -328,12 +461,19 @@ class ToolCallStore:
                 result["result"] = exc.native_result
             state = "started" if result["uncertain"] else "error"
         encoded = json.dumps(result, ensure_ascii=False, separators=(",", ":"))
+        recorded_at = self._clock()
+        retry_at = _throttle_retry_deadline(result, recorded_at) if state == "error" else None
         with self._lock, self._db:
             self._db.execute(
-                "UPDATE tool_calls SET state=?, result_json=?, updated_at=? "
-                "WHERE request_id=? AND call_id=?",
-                (state, encoded, time.time(), request_id, call_id),
+                "INSERT INTO tool_call_attempts VALUES(?,?,?,?,?,?,?,?)",
+                (request_id, call_id, attempt_number, 1, state, encoded, recorded_at, retry_at),
             )
+            if attempt_number == 0:
+                self._db.execute(
+                    "UPDATE tool_calls SET state=?, result_json=?, updated_at=? "
+                    "WHERE request_id=? AND call_id=?",
+                    (state, encoded, recorded_at, request_id, call_id),
+                )
         return result
 
 
