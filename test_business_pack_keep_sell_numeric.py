@@ -60,6 +60,45 @@ class NumericValidationTests(unittest.TestCase):
                 errors = MOD.validate_ledger(ledger)
                 self.assertTrue(any("tier_usd must be an integer" in row for row in errors))
 
+    def test_hostile_exponents_do_not_materialize_unbounded_integers(self):
+        for value in ("1e999999999", "-1e999999999"):
+            with self.subTest(kind="buyers", value=value):
+                ledger = self.ledger()
+                ledger["buyers"] = value
+                errors = MOD.validate_ledger(ledger)
+                self.assertIn("buyers must stay 0 without a receipt", errors)
+            with self.subTest(kind="tier", value=value):
+                ledger = self.ledger()
+                MOD.record_decision(
+                    ledger,
+                    pack_id="hostile-tier-pack-20260913",
+                    decision="SELL",
+                    title="Hostile tier",
+                )
+                ledger["packs"][0]["tier_usd"] = value
+                errors = MOD.validate_ledger(ledger)
+                self.assertIn(
+                    "hostile-tier-pack-20260913 tier_usd must be one of (20, 100, 200, 1000, 10000)",
+                    errors,
+                )
+        for value in ("1e-999999999", "-1e-999999999"):
+            with self.subTest(kind="buyers-fraction", value=value):
+                ledger = self.ledger()
+                ledger["buyers"] = value
+                errors = MOD.validate_ledger(ledger)
+                self.assertIn("buyers must be an integer", errors)
+            with self.subTest(kind="tier-fraction", value=value):
+                ledger = self.ledger()
+                MOD.record_decision(
+                    ledger,
+                    pack_id="hostile-tier-pack-20260913",
+                    decision="SELL",
+                    title="Hostile tier",
+                )
+                ledger["packs"][0]["tier_usd"] = value
+                errors = MOD.validate_ledger(ledger)
+                self.assertIn("hostile-tier-pack-20260913 tier_usd must be an integer", errors)
+
     def test_wrong_pack_container_returns_error(self):
         for value in ({"id": "not-a-list"}, "not-a-list", 7):
             with self.subTest(value=repr(value)):
@@ -145,7 +184,7 @@ class NumericValidationTests(unittest.TestCase):
         )
 
     def test_cli_set_checkout_rejects_malformed_packs_without_write(self):
-        self._assert_mutating_cli_rejects_malformed_packs(
+        self._assert_mutating_cli_rejects_malformed_packs_without_write(
             [
                 "set-checkout",
                 "--id",
