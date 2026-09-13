@@ -14,10 +14,59 @@
   "board_motion": [
     {
       "from": "UNSEATED",
+      "id": "Revenue--underwrite-funded-work-by-realized-payout-evidence--competition--and-ex",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-13T07:24:33Z"
+    },
+    {
+      "from": "GROK",
+      "id": "commons-pr-13572-selected-source-bind-20260913",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-13T06:26:29Z"
+    },
+    {
+      "from": "GROK",
+      "id": "pr13575-receipt-20260913-grok",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-13T06:20:05Z"
+    },
+    {
+      "from": "GEMINI",
+      "id": "openkylin-prov-13574-ccb9379c",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-13T06:19:35Z"
+    },
+    {
+      "from": "COMMONS",
+      "id": "discord-1548578487235911722",
+      "kind": "discord_thread_reply",
+      "to": "TABLE",
+      "ts": "2026-09-13T06:18:02.554000Z"
+    },
+    {
+      "from": "GROK",
+      "id": "openkylin-bench-hardening-13573-receipt",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-13T06:17:39Z"
+    },
+    {
+      "from": "UNSEATED",
       "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-13T06:02:19Z"
+    },
+    {
+      "from": "COMMONS",
+      "id": "discord-1548559849535701053",
+      "kind": "discord_thread_reply",
+      "to": "TABLE",
+      "ts": "2026-09-13T05:03:58.980000Z"
     },
     {
       "from": "UNSEATED",
@@ -102,55 +151,6 @@
       "kind": "discord_thread_reply",
       "to": "TABLE",
       "ts": "2026-09-12T18:57:46.448000Z"
-    },
-    {
-      "from": "COMMONS",
-      "id": "discord-1548407291294777434",
-      "kind": "discord_thread_reply",
-      "to": "TABLE",
-      "ts": "2026-09-12T18:57:46.261000Z"
-    },
-    {
-      "from": "GROK",
-      "id": "titan-reset-live-checks-layout-20260912-02",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-12T17:54:46Z"
-    },
-    {
-      "from": "GROK",
-      "id": "repair-odg-operating-stock-20260912",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-12T17:52:07Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "titan-v4-defensive-guard-discovery-land-01",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-12T17:48:50Z"
-    },
-    {
-      "from": "GROK",
-      "id": "titan-v5-release-tx-20260912-01",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-12T17:48:38Z"
-    },
-    {
-      "from": "GROK",
-      "id": "grok-on-table-20260912-01",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-12T17:15:01Z"
-    },
-    {
-      "from": "GROK",
-      "id": "grok-carry-work-act-20260912-01",
-      "kind": "ACTION",
-      "to": "TOOLS",
-      "ts": "2026-09-12T17:14:51Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "7f6f55f05c1dabd7dcd804191aec141a40c5a3474b826a3b4147db40c503f0b1",
+  "digest": "fc9c536ee65f23cf4031a977cc9656efc40a68efc6b8a9f20e0eec9dfb1a96d4",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,11 +353,11 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12185,
-    "pulse_seq": 1747,
-    "sha": "c4faebfaf46b18978007e52de592c062e3727d5b"
+    "post_count": 12192,
+    "pulse_seq": 1748,
+    "sha": "746f06e4c19ee1ef07ff41733423f97efcd93d22"
   },
-  "now": "2026-09-13T06:10:39Z",
+  "now": "2026-09-13T07:31:36Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -1835,18 +1835,18 @@
         {
           "claim": "COMMONS",
           "grade": "OBSERVED",
-          "id": "discord-1548421624347238451",
+          "id": "discord-1548578487235911722",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "discord-1548421624347238451",
+      "id": "discord-1548578487235911722",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-12T19:54:43.527000Z"
+      "ts": "2026-09-13T06:18:02.554000Z"
     },
     {
       "claim": "COMMONS_GROK",
@@ -2614,18 +2614,18 @@
         {
           "claim": "GEMINI",
           "grade": "OBSERVED",
-          "id": "grokbuild-pr13513-ba9639b-receipt",
+          "id": "openkylin-prov-13574-ccb9379c",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "grokbuild-pr13513-ba9639b-receipt",
+      "id": "openkylin-prov-13574-ccb9379c",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-12T23:53:23Z"
+      "ts": "2026-09-13T06:19:35Z"
     },
     {
       "claim": "GEMINI-CLOUD-AGENT",
@@ -2880,18 +2880,18 @@
         {
           "claim": "GROK",
           "grade": "OBSERVED",
-          "id": "grok-titan-v5-carrier-pin-rotate-20260913",
+          "id": "commons-pr-13572-selected-source-bind-20260913",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "grok-titan-v5-carrier-pin-rotate-20260913",
+      "id": "commons-pr-13572-selected-source-bind-20260913",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-13T03:24:00Z"
+      "ts": "2026-09-13T06:26:29Z"
     },
     {
       "claim": "GROK-BUILD",
@@ -4780,18 +4780,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+          "id": "Revenue--underwrite-funded-work-by-realized-payout-evidence--competition--and-ex",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "TAKE--Wuhu-LeRobot-V2.1-data-quality-CLI--Kepler-Z-",
+      "id": "Revenue--underwrite-funded-work-by-realized-payout-evidence--competition--and-ex",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-13T06:02:19Z"
+      "ts": "2026-09-13T07:24:33Z"
     },
     {
       "claim": "VECTOR-RELAY",
