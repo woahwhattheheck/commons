@@ -75,17 +75,15 @@ class CleanCheckoutBatteryTests(unittest.TestCase):
         self.assertEqual(report["execution"]["preflight_error"], "dirty_worktree")
         self.assertEqual(report["execution"]["test_file_sha256"], {})
 
-    def test_new_in_repo_output_does_not_dirty_the_starting_state(self):
+    def test_output_inside_checkout_is_rejected_before_creation(self):
         output = self.repo / "ci-output"
 
         result = self.run_battery(output)
 
-        self.assertEqual(result.returncode, 0, result.stderr)
-        report = self.report(output)
-        self.assertEqual(report["conclusion"], "PASSED")
-        self.assertFalse(report["execution"]["worktree_dirty_at_start"])
-        self.assertIsNone(report["execution"]["preflight_error"])
-        self.assertIn("?? ci-output/", self.git("status", "--porcelain"))
+        self.assertEqual(result.returncode, 2)
+        self.assertIn("output paths must be outside", result.stderr)
+        self.assertFalse(output.exists())
+        self.assertEqual(self.git("status", "--porcelain"), "")
 
 
 if __name__ == "__main__":
