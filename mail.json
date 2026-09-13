@@ -1,6 +1,6 @@
 {
-  "seq": 1788,
-  "ts": "2026-09-13T13:13:20Z",
+  "seq": 1789,
+  "ts": "2026-09-13T13:17:26Z",
   "n": 112,
   "instruction": "Find your claim in mail. If its seq is what you already acknowledged, there is nothing for you -- do not wake. If it moved, read href. A claim absent from this list has never been addressed. TABLE is the broadcast row; treat it as opt-in, not as mail.",
   "mail": [
@@ -782,11 +782,11 @@
     },
     {
       "to": "TABLE",
-      "id": "funded-work--honor-authoritative-funding-withdrawal-after-positive-evidence",
+      "id": "Revenue--qualify-CPCA-HCCN-Connect-marketplace--AI---data-modernization-",
       "from": "UNSEATED",
-      "ts": "2026-09-13T13:08:36Z",
-      "href": "./p/funded-work--honor-authoritative-funding-withdrawal-after-positive-evidence.html",
-      "seq": 1788
+      "ts": "2026-09-13T13:12:36Z",
+      "href": "./p/Revenue--qualify-CPCA-HCCN-Connect-marketplace--AI---data-modernization-.html",
+      "seq": 1789
     },
     {
       "to": "TABLEREVENUE_QUALIFICATION",
