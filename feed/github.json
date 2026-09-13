@@ -1,9 +1,9 @@
 {
   "counts": {
-    "open_issues": 76,
+    "open_issues": 77,
     "open_pull_requests": 45,
-    "runs_in_progress": 17,
-    "runs_queued": 1445
+    "runs_in_progress": 19,
+    "runs_queued": 1468
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -69,13 +69,35 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
+      "branch": "zva-k6n8/swarmops-fd-ingress-custody-20260913",
+      "created_at": "2026-09-13T15:00:14Z",
+      "draft": false,
+      "head_sha": "2c28187f0449a0c14cccff129ca00568f8bb3fb5",
+      "number": 14045,
+      "title": "Bind SwarmOps CLI reads to the opened file generation",
+      "updated_at": "2026-09-13T15:00:14Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zbf-r8v5/iqvia-source-provenance-v2-20260913",
+      "created_at": "2026-09-13T14:59:21Z",
+      "draft": false,
+      "head_sha": "4bda788c31c2f4a7096c4931c0b1bdfa46c66826",
+      "number": 14042,
+      "title": "fix(iqvia): bind specimen gate semantics to exact source projections",
+      "updated_at": "2026-09-13T15:00:36Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
       "branch": "zpf-l7t2/commercial-lifecycle-evidence-identity-20260913",
       "created_at": "2026-09-13T14:57:49Z",
       "draft": false,
-      "head_sha": "d5b2917fcf8f8f7f41597cd63447be24a834f0e9",
+      "head_sha": "0186e65b94003577daaf88423d5c726c602bc44d",
       "number": 14037,
       "title": "revenue: reserve commercial lifecycle evidence identities",
-      "updated_at": "2026-09-13T14:58:46Z"
+      "updated_at": "2026-09-13T15:00:36Z"
     },
     {
       "author": "woahwhattheheck",
@@ -91,24 +113,13 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "zbf-k8d2/prooflens-review-durable-generation",
-      "created_at": "2026-09-13T14:57:23Z",
-      "draft": false,
-      "head_sha": "930102db00ca5cf856b879343ada793b4af6c84f",
-      "number": 14035,
-      "title": "Fix ProofLens review delivery durable-row custody",
-      "updated_at": "2026-09-13T14:57:23Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
       "branch": "zom-k8j3-lacsd-04254-evidence-sprint",
       "created_at": "2026-09-13T14:56:39Z",
       "draft": false,
       "head_sha": "48e9fb830fb1216e3f9af1a8c5034390ee91cb35",
       "number": 14031,
       "title": "LACSD 04254: ship $5,000 AI/ML validation/evidence sprint",
-      "updated_at": "2026-09-13T14:56:39Z"
+      "updated_at": "2026-09-13T15:00:07Z"
     },
     {
       "author": "woahwhattheheck",
@@ -116,10 +127,10 @@
       "branch": "z-furnace/gosim-agentic-factory-harness-20260913",
       "created_at": "2026-09-13T14:56:19Z",
       "draft": false,
-      "head_sha": "691d99da1e51c2e49ae111437d7f9c5953952ffe",
+      "head_sha": "b0891bfd0f7297499b372337b5356f62dab18fee",
       "number": 14029,
       "title": "Add deterministic GOSIM Agentic Factory readiness harness",
-      "updated_at": "2026-09-13T14:58:22Z"
+      "updated_at": "2026-09-13T15:00:06Z"
     },
     {
       "author": "woahwhattheheck",
@@ -141,7 +152,7 @@
       "head_sha": "1c4d592328b17d72cc31f8f38b1ba54b98dd2586",
       "number": 14010,
       "title": "fix(revenue): harden Jersey DN827803 qualification authority v2",
-      "updated_at": "2026-09-13T14:55:22Z"
+      "updated_at": "2026-09-13T14:59:41Z"
     },
     {
       "author": "woahwhattheheck",
@@ -152,18 +163,7 @@
       "head_sha": "fb7442166c2f8caff7e2b95b8cc86e478b79594f",
       "number": 14009,
       "title": "revenue: add atomic pre-send authority receipt",
-      "updated_at": "2026-09-13T14:52:55Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zzf-m4r8/gtm-reply-chronology-generation-20260913",
-      "created_at": "2026-09-13T14:49:24Z",
-      "draft": false,
-      "head_sha": "28b9c44004f4d21246e2da1414c0be42969a89ba",
-      "number": 14008,
-      "title": "GTM: make buyer-reply observation chronology and generation fail closed",
-      "updated_at": "2026-09-13T14:57:56Z"
+      "updated_at": "2026-09-13T14:59:20Z"
     },
     {
       "author": "woahwhattheheck",
@@ -210,24 +210,46 @@
     "13901": "54fa9ce0b97e2457aebb087fd4b6f9fdd979536e",
     "13902": "0ad7356c59a25f47dac74c2a4a744c334a8397fa",
     "13910": "8c56dd0fa7679e5eb8de8e76b5ee41f0aa2f885b",
-    "13942": "3cc1494caf9b29005960de758b3496a19c600a3b",
+    "13942": "25bdf36bb33baa3d2ceca49bab9b5a618eb2f439",
     "13976": "31405f2935f1a352f1e06e582d7a3a4008e8eb7f",
     "13997": "a112441153ab11b7140d7b10b58967936c83edb8",
     "13999": "2182d07cd8750087a73f2aea2455890d75daf251",
-    "14008": "28b9c44004f4d21246e2da1414c0be42969a89ba",
     "14009": "fb7442166c2f8caff7e2b95b8cc86e478b79594f",
     "14010": "1c4d592328b17d72cc31f8f38b1ba54b98dd2586",
     "14027": "aaf4a76a55bc33f2078c2e324a67bc3e9d2de3ec",
-    "14029": "691d99da1e51c2e49ae111437d7f9c5953952ffe",
+    "14029": "b0891bfd0f7297499b372337b5356f62dab18fee",
     "14031": "48e9fb830fb1216e3f9af1a8c5034390ee91cb35",
-    "14035": "930102db00ca5cf856b879343ada793b4af6c84f",
     "14036": "daaf801efbb312e3f8321e8bdfabc7605cac043d",
-    "14037": "d5b2917fcf8f8f7f41597cd63447be24a834f0e9"
+    "14037": "0186e65b94003577daaf88423d5c726c602bc44d",
+    "14042": "4bda788c31c2f4a7096c4931c0b1bdfa46c66826",
+    "14045": "2c28187f0449a0c14cccff129ca00568f8bb3fb5"
   },
   "pulls_listed": 45,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 85.0,
+  "queue_depth_per_runner": 77.3,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zbf-k8d2/prooflens-review-durable-generation",
+      "closed_at": "2026-09-13T15:00:01Z",
+      "head_sha": "930102db00ca5cf856b879343ada793b4af6c84f",
+      "merged_at": "2026-09-13T15:00:01Z",
+      "number": 14035,
+      "state": "MERGED",
+      "title": "Fix ProofLens review delivery durable-row custody"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zzf-m4r8/gtm-reply-chronology-generation-20260913",
+      "closed_at": "2026-09-13T14:59:13Z",
+      "head_sha": "28b9c44004f4d21246e2da1414c0be42969a89ba",
+      "merged_at": "2026-09-13T14:59:13Z",
+      "number": 14008,
+      "state": "MERGED",
+      "title": "GTM: make buyer-reply observation chronology and generation fail closed"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -370,32 +392,10 @@
       "number": 14011,
       "state": "MERGED",
       "title": "revert(revenue): clear duplicate CAS carrier for canonical #13701"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zva-k6n8/grandrapids-host-root-separation-20260913",
-      "closed_at": "2026-09-13T14:51:20Z",
-      "head_sha": "28af76cbefd3b8ff596f6627a7e5437906c9c227",
-      "merged_at": "2026-09-13T14:51:20Z",
-      "number": 14001,
-      "state": "MERGED",
-      "title": "Fix Grand Rapids public preflight trust-root self-authentication"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "znc-p7w2/manitoba-archives-ai-poc-20260913",
-      "closed_at": "2026-09-13T14:50:40Z",
-      "head_sha": "02ff93a065d6c663724a8953e1c640a30958af38",
-      "merged_at": "2026-09-13T14:50:40Z",
-      "number": 14000,
-      "state": "MERGED",
-      "title": "feat: add Manitoba Archives AI PoC pursuit carrier"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-13T14:58:57Z",
+  "unchanged_since": "2026-09-13T15:00:54Z",
   "undatable_pulls": []
 }
