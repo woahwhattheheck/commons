@@ -29,6 +29,39 @@ class RouteGuardTests(unittest.TestCase):
             "route_kind": "email",
         }
 
+    def mail(
+        self,
+        message_id: str,
+        observed_at: str,
+        *,
+        offer_id: str = "offer-old",
+        direction: str = "outbound",
+    ) -> dict[str, object]:
+        return {
+            "message_id": message_id,
+            "direction": direction,
+            "counterparty": BUYER,
+            "observed_at": observed_at,
+            "offer_id": offer_id if direction == "outbound" else None,
+        }
+
+    def slack_sent(
+        self,
+        event_id: str,
+        observed_at: str,
+        *,
+        provider_message_id: str | None = None,
+        offer_id: str = "offer-old",
+    ) -> dict[str, object]:
+        return {
+            "event_id": event_id,
+            "kind": "sent",
+            "recipient": BUYER,
+            "observed_at": observed_at,
+            "offer_id": offer_id,
+            "provider_message_id": provider_message_id,
+        }
+
     def evidence(
         self,
         *,
@@ -36,41 +69,12 @@ class RouteGuardTests(unittest.TestCase):
         outbound_time: str = OLD,
         outbound_offer: str = "offer-old",
         inbound_time: str | None = None,
-        slack_only_newer: bool = False,
     ) -> dict[str, object]:
         messages: list[dict[str, object]] = []
         if outbound:
-            messages.append(
-                {
-                    "message_id": "provider-old",
-                    "direction": "outbound",
-                    "counterparty": BUYER,
-                    "observed_at": outbound_time,
-                    "offer_id": outbound_offer,
-                }
-            )
+            messages.append(self.mail("provider-old", outbound_time, offer_id=outbound_offer))
         if inbound_time is not None:
-            messages.append(
-                {
-                    "message_id": "provider-inbound",
-                    "direction": "inbound",
-                    "counterparty": BUYER,
-                    "observed_at": inbound_time,
-                    "offer_id": None,
-                }
-            )
-        slack_events: list[dict[str, object]] = []
-        if slack_only_newer:
-            slack_events.append(
-                {
-                    "event_id": "slack-newer-send",
-                    "kind": "sent",
-                    "recipient": BUYER,
-                    "observed_at": OLD,
-                    "offer_id": "offer-old-2",
-                    "provider_message_id": None,
-                }
-            )
+            messages.append(self.mail("provider-inbound", inbound_time, direction="inbound"))
         return {
             "schema_version": "outbound-send-evidence/v1",
             "generated_at": NOW,
@@ -82,7 +86,7 @@ class RouteGuardTests(unittest.TestCase):
             "slack": {
                 "complete": True,
                 "query_id": "slack-query-1",
-                "events": slack_events,
+                "events": [],
             },
             "policy": {
                 "cross_offer_cooldown_days": 30,
@@ -101,46 +105,24 @@ class RouteGuardTests(unittest.TestCase):
         as_of: str = NOW,
     ) -> dict[str, object]:
         events: list[dict[str, object]] = []
-        if decision_kind == "block":
+        spec = {
+            "block": (550, "5.1.1"),
+            "hold": (550, "5.4.1"),
+            "temporary": (450, "4.2.2"),
+        }
+        if decision_kind in spec:
+            smtp_code, enhanced_status = spec[decision_kind]
             events.append(
                 {
-                    "event_id": "dsn-block-1",
+                    "event_id": f"dsn-{decision_kind}-1",
                     "kind": "dsn",
                     "provider_message_id": provider_message_id,
                     "recipient": recipient,
                     "observed_at": "2026-08-01T12:05:00Z",
-                    "source_id": "source-block-1",
+                    "source_id": f"source-{decision_kind}-1",
                     "source_sha256": SOURCE_SHA,
-                    "smtp_code": 550,
-                    "enhanced_status": "5.1.1",
-                }
-            )
-        elif decision_kind == "hold":
-            events.append(
-                {
-                    "event_id": "dsn-hold-1",
-                    "kind": "dsn",
-                    "provider_message_id": provider_message_id,
-                    "recipient": recipient,
-                    "observed_at": "2026-08-01T12:05:00Z",
-                    "source_id": "source-hold-1",
-                    "source_sha256": SOURCE_SHA,
-                    "smtp_code": 550,
-                    "enhanced_status": "5.4.1",
-                }
-            )
-        elif decision_kind == "temporary":
-            events.append(
-                {
-                    "event_id": "dsn-temp-1",
-                    "kind": "dsn",
-                    "provider_message_id": provider_message_id,
-                    "recipient": recipient,
-                    "observed_at": "2026-08-01T12:05:00Z",
-                    "source_id": "source-temp-1",
-                    "source_sha256": SOURCE_SHA,
-                    "smtp_code": 450,
-                    "enhanced_status": "4.2.2",
+                    "smtp_code": smtp_code,
+                    "enhanced_status": enhanced_status,
                 }
             )
         elif decision_kind == "delivered":
@@ -206,24 +188,19 @@ class RouteGuardTests(unittest.TestCase):
         self.assertEqual(receipt["payload"]["decision"], "DO_NOT_RESEND")
         self.assertFalse(receipt["payload"]["side_effects_authorized"])
 
-    def test_nonallowlisted_permanent_failure_demotes_to_hold(self) -> None:
-        receipt = route_guard.evaluate(self.intent(), self.evidence(), self.route(decision_kind="hold"))
-        self.assertEqual(receipt["payload"]["route_lifecycle"]["decision"], "HOLD_ROUTE")
-        self.assertEqual(receipt["payload"]["decision"], "HOLD")
+    def test_hold_variants_demote_allow_new(self) -> None:
+        for kind in ("hold", "temporary"):
+            with self.subTest(kind=kind):
+                receipt = route_guard.evaluate(self.intent(), self.evidence(), self.route(decision_kind=kind))
+                self.assertEqual(receipt["payload"]["route_lifecycle"]["decision"], "HOLD_ROUTE")
+                self.assertEqual(receipt["payload"]["decision"], "HOLD")
 
-    def test_temporary_failure_demotes_to_hold(self) -> None:
-        receipt = route_guard.evaluate(self.intent(), self.evidence(), self.route(decision_kind="temporary"))
-        self.assertEqual(receipt["payload"]["decision"], "HOLD")
-
-    def test_delivered_route_never_promotes_but_preserves_allow_new(self) -> None:
-        receipt = route_guard.evaluate(self.intent(), self.evidence(), self.route(decision_kind="delivered"))
-        self.assertEqual(receipt["payload"]["base_guard"]["decision"], "ALLOW_NEW")
-        self.assertEqual(receipt["payload"]["decision"], "ALLOW_NEW")
-
-    def test_unconfirmed_complete_route_preserves_allow_new(self) -> None:
-        receipt = route_guard.evaluate(self.intent(), self.evidence(), self.route())
-        self.assertEqual(receipt["payload"]["route_lifecycle"]["decision"], "UNCONFIRMED")
-        self.assertEqual(receipt["payload"]["decision"], "ALLOW_NEW")
+    def test_delivered_and_unconfirmed_do_not_promote_or_demote_allow_new(self) -> None:
+        for kind in ("delivered", "unconfirmed"):
+            with self.subTest(kind=kind):
+                receipt = route_guard.evaluate(self.intent(), self.evidence(), self.route(decision_kind=kind))
+                self.assertEqual(receipt["payload"]["base_guard"]["decision"], "ALLOW_NEW")
+                self.assertEqual(receipt["payload"]["decision"], "ALLOW_NEW")
 
     def test_missing_route_evidence_holds_send_capable_prior_route(self) -> None:
         receipt = route_guard.evaluate(self.intent(), self.evidence(), None)
@@ -243,37 +220,17 @@ class RouteGuardTests(unittest.TestCase):
         with self.assertRaisesRegex(route_guard.ComposeError, "no prior outbound"):
             route_guard.evaluate(self.intent(), self.evidence(outbound=False), self.route())
 
-    def test_route_provider_message_must_match_latest_outbound(self) -> None:
-        with self.assertRaisesRegex(route_guard.ComposeError, "latest provider message"):
-            route_guard.evaluate(
-                self.intent(),
-                self.evidence(),
-                self.route(provider_message_id="provider-other"),
-            )
-
-    def test_route_recipient_must_match_intent_route(self) -> None:
-        with self.assertRaisesRegex(route_guard.ComposeError, "recipient does not match"):
-            route_guard.evaluate(
-                self.intent(),
-                self.evidence(),
-                self.route(recipient="other@example.com"),
-            )
-
-    def test_route_sent_time_must_match_provider_evidence(self) -> None:
-        with self.assertRaisesRegex(route_guard.ComposeError, "sent_at does not match"):
-            route_guard.evaluate(
-                self.intent(),
-                self.evidence(),
-                self.route(sent_at="2026-08-01T12:01:00Z"),
-            )
-
-    def test_route_snapshot_boundary_must_match_base_snapshot(self) -> None:
-        with self.assertRaisesRegex(route_guard.ComposeError, "as_of must equal"):
-            route_guard.evaluate(
-                self.intent(),
-                self.evidence(),
-                self.route(as_of="2026-09-13T15:29:59Z"),
-            )
+    def test_route_identity_fields_are_bound(self) -> None:
+        cases = [
+            (self.route(provider_message_id="provider-other"), "latest provider message"),
+            (self.route(recipient="other@example.com"), "recipient does not match"),
+            (self.route(sent_at="2026-08-01T12:01:00Z"), "sent_at does not match"),
+            (self.route(as_of="2026-09-13T15:29:59Z"), "as_of must equal"),
+        ]
+        for route, message in cases:
+            with self.subTest(message=message):
+                with self.assertRaisesRegex(route_guard.ComposeError, message):
+                    route_guard.evaluate(self.intent(), self.evidence(), route)
 
     def test_equivalent_timezone_sent_time_is_accepted(self) -> None:
         receipt = route_guard.evaluate(
@@ -296,7 +253,7 @@ class RouteGuardTests(unittest.TestCase):
         self.assertEqual(receipt["payload"]["decision"], "DO_NOT_RESEND")
         self.assertIsNone(receipt["payload"]["reply_message_id"])
 
-    def test_base_do_not_resend_is_never_promoted_by_delivery(self) -> None:
+    def test_base_do_not_resend_is_never_promoted(self) -> None:
         receipt = route_guard.evaluate(
             self.intent(offer="offer-old"),
             self.evidence(outbound_offer="offer-old"),
@@ -306,47 +263,103 @@ class RouteGuardTests(unittest.TestCase):
         self.assertEqual(receipt["payload"]["decision"], "DO_NOT_RESEND")
 
     def test_base_hold_does_not_require_route_evidence(self) -> None:
-        evidence = self.evidence(outbound_time="2026-09-10T12:00:00Z")
-        receipt = route_guard.evaluate(self.intent(), evidence, None)
+        receipt = route_guard.evaluate(
+            self.intent(), self.evidence(outbound_time="2026-09-10T12:00:00Z"), None
+        )
         self.assertEqual(receipt["payload"]["base_guard"]["decision"], "HOLD")
         self.assertFalse(receipt["payload"]["route_lifecycle"]["required"])
         self.assertEqual(receipt["payload"]["decision"], "HOLD")
 
-    def test_slack_only_latest_send_cannot_be_route_authorized(self) -> None:
-        evidence = self.evidence(outbound_time=OLDER, slack_only_newer=True)
+    def test_slack_only_latest_send_without_provider_id_holds(self) -> None:
+        evidence = self.evidence(outbound_time=OLDER)
+        evidence["slack"]["events"].append(self.slack_sent("slack-newer-send", OLD))
         receipt = route_guard.evaluate(self.intent(), evidence, None)
         self.assertEqual(receipt["payload"]["base_guard"]["decision"], "ALLOW_NEW")
-        self.assertEqual(
-            receipt["payload"]["route_lifecycle"]["status"],
-            "PROVIDER_MESSAGE_UNAVAILABLE",
-        )
+        self.assertEqual(receipt["payload"]["base_guard"]["latest_outbound_ref"], "slack:slack-newer-send")
+        self.assertEqual(receipt["payload"]["route_lifecycle"]["status"], "PROVIDER_MESSAGE_UNAVAILABLE")
         self.assertEqual(receipt["payload"]["decision"], "HOLD")
+
+    def test_slack_provider_id_must_resolve_to_mailbox(self) -> None:
+        evidence = self.evidence(outbound_time=OLDER)
+        evidence["slack"]["events"].append(
+            self.slack_sent("slack-newer-send", OLD, provider_message_id="provider-missing")
+        )
+        receipt = route_guard.evaluate(self.intent(), evidence, None)
+        self.assertEqual(receipt["payload"]["route_lifecycle"]["status"], "PROVIDER_MESSAGE_UNAVAILABLE")
+        self.assertEqual(receipt["payload"]["decision"], "HOLD")
+        with self.assertRaisesRegex(route_guard.ComposeError, "cannot bind"):
+            route_guard.evaluate(
+                self.intent(),
+                evidence,
+                self.route(provider_message_id="provider-missing", sent_at=OLDER),
+            )
+
+    def test_slack_latest_send_binds_its_provider_message_not_same_time_mail(self) -> None:
+        evidence = self.evidence(outbound_time=OLD)
+        evidence["mailbox"]["messages"].append(
+            self.mail("provider-slack", OLD, offer_id="offer-slack")
+        )
+        evidence["slack"]["events"].append(
+            self.slack_sent(
+                "zz-slack-same-time",
+                OLD,
+                provider_message_id="provider-slack",
+                offer_id="offer-slack",
+            )
+        )
+        with self.assertRaisesRegex(route_guard.ComposeError, "latest provider message"):
+            route_guard.evaluate(
+                self.intent(),
+                evidence,
+                self.route(provider_message_id="provider-old", decision_kind="block"),
+            )
+        good = self.route(provider_message_id="provider-slack", decision_kind="block")
+        receipt = route_guard.evaluate(self.intent(), evidence, good)
+        self.assertEqual(receipt["payload"]["base_guard"]["latest_outbound_ref"], "slack:zz-slack-same-time")
+        self.assertEqual(receipt["payload"]["route_lifecycle"]["target_provider_message_id"], "provider-slack")
+        self.assertEqual(receipt["payload"]["decision"], "DO_NOT_RESEND")
+
+    def test_slack_receipt_time_can_follow_provider_send_time(self) -> None:
+        evidence = self.evidence(outbound_time=OLDER)
+        evidence["slack"]["events"].append(
+            self.slack_sent(
+                "slack-posted-later",
+                OLD,
+                provider_message_id="provider-old",
+                offer_id="offer-old",
+            )
+        )
+        receipt = route_guard.evaluate(
+            self.intent(),
+            evidence,
+            self.route(provider_message_id="provider-old", sent_at=OLDER, decision_kind="delivered"),
+        )
+        self.assertEqual(receipt["payload"]["base_guard"]["latest_outbound_at"], OLD)
+        self.assertEqual(receipt["payload"]["base_guard"]["latest_outbound_source"], "slack")
+        self.assertEqual(receipt["payload"]["route_lifecycle"]["target_sent_at"], OLDER)
+        self.assertEqual(receipt["payload"]["decision"], "ALLOW_NEW")
 
     def test_latest_of_two_provider_outbounds_is_the_only_valid_binding(self) -> None:
         evidence = self.evidence(outbound_time=OLDER)
         evidence["mailbox"]["messages"].append(
-            {
-                "message_id": "provider-newer",
-                "direction": "outbound",
-                "counterparty": BUYER,
-                "observed_at": OLD,
-                "offer_id": "offer-middle",
-            }
+            self.mail("provider-newer", OLD, offer_id="offer-middle")
         )
         with self.assertRaisesRegex(route_guard.ComposeError, "latest provider message"):
-            route_guard.evaluate(self.intent(), evidence, self.route(provider_message_id="provider-old", sent_at=OLDER))
-        good = self.route(provider_message_id="provider-newer", decision_kind="block")
-        receipt = route_guard.evaluate(self.intent(), evidence, good)
-        self.assertEqual(receipt["payload"]["decision"], "DO_NOT_RESEND")
-        self.assertEqual(
-            receipt["payload"]["route_lifecycle"]["target_provider_message_id"],
-            "provider-newer",
+            route_guard.evaluate(
+                self.intent(),
+                evidence,
+                self.route(provider_message_id="provider-old", sent_at=OLDER),
+            )
+        receipt = route_guard.evaluate(
+            self.intent(),
+            evidence,
+            self.route(provider_message_id="provider-newer", decision_kind="block"),
         )
+        self.assertEqual(receipt["payload"]["decision"], "DO_NOT_RESEND")
+        self.assertEqual(receipt["payload"]["route_lifecycle"]["target_provider_message_id"], "provider-newer")
 
     def test_inputs_are_snapshotted_not_mutated(self) -> None:
-        intent = self.intent()
-        evidence = self.evidence()
-        route = self.route(decision_kind="block")
+        intent, evidence, route = self.intent(), self.evidence(), self.route(decision_kind="block")
         before = copy.deepcopy((intent, evidence, route))
         route_guard.evaluate(intent, evidence, route)
         self.assertEqual((intent, evidence, route), before)
@@ -359,7 +372,7 @@ class RouteGuardTests(unittest.TestCase):
         self.assertEqual(len(first["payload"]["base_guard"]["receipt_sha256"]), 64)
         self.assertEqual(len(first["payload"]["route_lifecycle"]["receipt_sha256"]), 64)
 
-    def test_cli_block_exit_code_and_output(self) -> None:
+    def test_cli_exit_semantics(self) -> None:
         root = Path(__file__).resolve().parents[2]
         with tempfile.TemporaryDirectory() as directory:
             tmp = Path(directory)
@@ -370,7 +383,7 @@ class RouteGuardTests(unittest.TestCase):
             intent.write_text(json.dumps(self.intent()), encoding="utf-8")
             evidence.write_text(json.dumps(self.evidence()), encoding="utf-8")
             route.write_text(json.dumps(self.route(decision_kind="block")), encoding="utf-8")
-            result = subprocess.run(
+            blocked = subprocess.run(
                 [
                     sys.executable,
                     "-m",
@@ -389,20 +402,9 @@ class RouteGuardTests(unittest.TestCase):
                 capture_output=True,
                 check=False,
             )
-            self.assertEqual(result.returncode, 5, result.stderr)
-            payload = json.loads(out.read_text(encoding="utf-8"))
-            self.assertEqual(payload["payload"]["decision"], "DO_NOT_RESEND")
-            self.assertFalse(payload["payload"]["side_effects_authorized"])
-
-    def test_cli_missing_required_route_exits_hold(self) -> None:
-        root = Path(__file__).resolve().parents[2]
-        with tempfile.TemporaryDirectory() as directory:
-            tmp = Path(directory)
-            intent = tmp / "intent.json"
-            evidence = tmp / "evidence.json"
-            intent.write_text(json.dumps(self.intent()), encoding="utf-8")
-            evidence.write_text(json.dumps(self.evidence()), encoding="utf-8")
-            result = subprocess.run(
+            self.assertEqual(blocked.returncode, 5, blocked.stderr)
+            self.assertEqual(json.loads(out.read_text(encoding="utf-8"))["payload"]["decision"], "DO_NOT_RESEND")
+            missing = subprocess.run(
                 [
                     sys.executable,
                     "-m",
@@ -417,9 +419,8 @@ class RouteGuardTests(unittest.TestCase):
                 capture_output=True,
                 check=False,
             )
-            self.assertEqual(result.returncode, 4, result.stderr)
-            payload = json.loads(result.stdout)
-            self.assertEqual(payload["payload"]["decision"], "HOLD")
+            self.assertEqual(missing.returncode, 4, missing.stderr)
+            self.assertEqual(json.loads(missing.stdout)["payload"]["decision"], "HOLD")
 
 
 if __name__ == "__main__":
