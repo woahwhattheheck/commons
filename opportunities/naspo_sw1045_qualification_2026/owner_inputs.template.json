@@ -1,0 +1,61 @@
+{
+  "bid_intent": {
+    "categories": [],
+    "teaming_subcontract": true
+  },
+  "claims": [],
+  "mandatory_requirement_evidence": [],
+  "organization": {
+    "legal_entity_evidence_ref": "",
+    "legal_entity_evidence_sha256": "",
+    "public_name": "OWNER_INPUT_REQUIRED",
+    "website": "OWNER_INPUT_REQUIRED"
+  },
+  "personnel_evidence": [],
+  "pricing": {
+    "currency": "USD",
+    "evidence_ref": "",
+    "evidence_sha256": "",
+    "status": "NOT_COMMITTED",
+    "unit_model": "OWNER_INPUT_REQUIRED"
+  },
+  "prime_partner": {
+    "commitment_evidence_ref": "",
+    "commitment_evidence_sha256": "",
+    "cooperative_contract_admin_evidence_ref": "",
+    "cooperative_contract_admin_evidence_sha256": "",
+    "organization_ref": "",
+    "public_sector_prime_track_record": [],
+    "status": "NONE"
+  },
+  "public_sector_references": [],
+  "schema": "naspo.sw1045.owner_inputs/v1",
+  "teaming_scope": {
+    "acceptance_evidence": "OWNER_INPUT_REQUIRED",
+    "data_boundary": "OWNER_INPUT_REQUIRED",
+    "deliverables": [
+      "OWNER_INPUT_REQUIRED"
+    ],
+    "responsible_ai": "OWNER_INPUT_REQUIRED",
+    "staffing_roles": [
+      "OWNER_INPUT_REQUIRED"
+    ],
+    "summary": "OWNER_INPUT_REQUIRED"
+  },
+  "technical_evidence": [
+    {
+      "blob_sha": "66deb64378a06e3261f54d357c30b6a895ca7e38",
+      "capability": "Buyer-neutral offline acceptance core for deterministic approvals, idempotency, reconciliation, tamper-evident receipts, and hostile workflow testing.",
+      "evidence_id": "SW1045-AGENT-WORKFLOW-ACCEPTANCE",
+      "path": "revenue/naspo_sw1045_agent_workflow_acceptance/README.md",
+      "public_sector_past_performance": false
+    },
+    {
+      "blob_sha": "2cafa67c2ce8d6c393ba1fb459b882f2afe80e51",
+      "capability": "Package manifest explicitly disclaims prime qualification, external action, procurement certification, payment, and recognized revenue.",
+      "evidence_id": "SW1045-PACKAGE-MANIFEST",
+      "path": "revenue/naspo_sw1045_agent_workflow_acceptance/PACKAGE_MANIFEST.json",
+      "public_sector_past_performance": false
+    }
+  ]
+}
