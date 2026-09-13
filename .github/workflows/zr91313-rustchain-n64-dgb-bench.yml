@@ -106,8 +106,10 @@ jobs:
             libx11-6 libxext6 libxcursor1 libxi6 libxfixes3 libxrandr2 libxss1 \
             libdrm2 libgbm1 libwayland-client0 libwayland-cursor0 libxkbcommon0 \
             libdecor-0-0 mesa-vulkan-drivers libvulkan1
-          ldd --version | head -1 | tee /tmp/glibc-version.txt
-          strings /usr/lib/x86_64-linux-gnu/libstdc++.so.6 | grep '^GLIBCXX_' | sort -V | tail -1 | tee /tmp/glibcxx-version.txt
+          ldd --version 2>&1 | sed -n '1p' | tee /tmp/glibc-version.txt
+          strings /usr/lib/x86_64-linux-gnu/libstdc++.so.6 \
+            | grep -E '^GLIBCXX_[0-9]+\.[0-9]+\.[0-9]+$' \
+            | sort -V | tail -1 | tee /tmp/glibcxx-version.txt
 
       - name: Verify ROM provenance from build job
         shell: bash
@@ -149,8 +151,13 @@ jobs:
               "SDL_AUDIODRIVER": "dummy",
               "LIBGL_ALWAYS_SOFTWARE": "1",
               "MESA_VK_DEVICE_SELECT": "llvmpipe",
+              "RUST_BACKTRACE": "1",
           })
-          cmd = ["xvfb-run", "-a", emulator, rom]
+          # dgb's JIT currently aborts on an unimplemented SDL translation while
+          # booting this libdragon ROM. Force its documented interpreter mode;
+          # the benchmark's authoritative counts are guest CP0/VI values printed
+          # by the ROM, so host-side unthrottling only shortens wall-clock runtime.
+          cmd = ["xvfb-run", "-a", emulator, "--interpreter", "--unlock-framerate", rom]
           proc = subprocess.Popen(
               cmd, stdout=slave, stderr=slave, stdin=subprocess.DEVNULL,
               close_fds=True, start_new_session=True, env=env)
@@ -210,6 +217,7 @@ jobs:
           raise SystemExit(0 if saw else 1)
           PY
           chmod +x /tmp/run_dgb_rate.py
+          printf '%s\n' 'dgb-n64 --interpreter --unlock-framerate' > /tmp/emulator-mode.txt
 
       - name: Run scalar RATE_PROBE on dgb-n64
         shell: bash
@@ -233,12 +241,12 @@ jobs:
           mkdir -p /tmp/evidence
           for f in \
             /tmp/glibc-version.txt /tmp/glibcxx-version.txt /tmp/rom_sha256_benchmark.txt \
-            /tmp/dgb_embedded_sha.txt /tmp/dgb_help.txt /tmp/run_dgb_rate.py \
+            /tmp/dgb_embedded_sha.txt /tmp/dgb_help.txt /tmp/emulator-mode.txt /tmp/run_dgb_rate.py \
             /tmp/scalar_dgb.log /tmp/rsp_dgb.log /tmp/scalar_console.txt /tmp/rsp_console.txt; do
             [ -f "$f" ] && cp "$f" /tmp/evidence/
           done
           cp /tmp/roms/versions.txt /tmp/roms/libdragon.sha /tmp/roms/rom_sha256.txt /tmp/evidence/ 2>/dev/null || true
-          printf 'target_sha=%s\ndgb_sha=%s\ndgb_run_id=%s\ndgb_zip_sha256=%s\n' \
+          printf 'target_sha=%s\ndgb_sha=%s\ndgb_run_id=%s\ndgb_zip_sha256=%s\nemulator_mode=interpreter-unlocked\n' \
             "$TARGET_SHA" "$DGB_SHA" "$DGB_RUN_ID" "$DGB_ZIP_SHA256" > /tmp/evidence/benchmark_versions.txt
           for f in /tmp/scalar_dgb.log /tmp/rsp_dgb.log; do
             [ -f "$f" ] || continue
