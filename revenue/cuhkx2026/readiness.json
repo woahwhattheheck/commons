@@ -1,0 +1,15 @@
+{
+  "official_registration_complete": false,
+  "kaggle_rules_accepted": false,
+  "dataset_terms_accepted": false,
+  "submission_authorized": false,
+  "validation": {
+    "subject_disjoint": false,
+    "exact_accuracy": null
+  },
+  "submission": {
+    "path": "",
+    "sha256": ""
+  },
+  "note": "Checked-in state is intentionally BLOCKED. Do not flip legal/account fields without owner action and actual receipts."
+}
