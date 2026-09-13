@@ -26,10 +26,20 @@
     },
     "commercial_modes": {"const": ["LIVE_EXISTING_SKU", "QUOTE_ONLY"]},
     "formats": {"const": ["advisory_hour", "written_assessment", "design_review", "embedded_engagement"]},
-    "entries": {"type": "array", "minItems": 8, "uniqueItems": true, "items": {"$ref": "#/$defs/entry"}}
+    "entries": {
+      "type": "array",
+      "minItems": 8,
+      "uniqueItems": true,
+      "items": {"$ref": "#/$defs/entry"}
+    }
   },
   "$defs": {
-    "stringList": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "minLength": 3}},
+    "stringList": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {"type": "string", "minLength": 3}
+    },
     "repoPath": {"type": "string", "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$))[A-Za-z0-9._/-]+$"},
     "entry": {
       "type": "object",
