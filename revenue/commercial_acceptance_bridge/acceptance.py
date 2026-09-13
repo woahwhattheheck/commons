@@ -55,7 +55,7 @@ def offer_event(index: int, version: int = 1) -> dict[str, Any]:
         supersedes = f"OFFER-{index:03d}-V{version - 1}"
         issued = ACTIVE_ISSUED
         expires = ACTIVE_EXPIRES
-    if index >= 56:
+    if 56 <= index <= 60:
         issued = "2026-09-01T12:00:00Z"
         expires = "2026-09-12T12:00:00Z"
     return {
