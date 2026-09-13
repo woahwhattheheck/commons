@@ -5,6 +5,7 @@ on:
       - "revenue/pursuit_portfolio/**"
       - "test_pursuit_portfolio.py"
       - "test_pursuit_portfolio_host_v2.py"
+      - "test_pursuit_portfolio_host_custody_v2.py"
       - ".github/workflows/pursuit-portfolio-host.yml"
   push:
     branches: [main]
@@ -12,6 +13,7 @@ on:
       - "revenue/pursuit_portfolio/**"
       - "test_pursuit_portfolio.py"
       - "test_pursuit_portfolio_host_v2.py"
+      - "test_pursuit_portfolio_host_custody_v2.py"
       - ".github/workflows/pursuit-portfolio-host.yml"
 jobs:
   test:
@@ -21,6 +23,6 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - run: python -m unittest -v test_pursuit_portfolio.py test_pursuit_portfolio_host_v2.py
-      - run: python -O -m unittest -v test_pursuit_portfolio.py test_pursuit_portfolio_host_v2.py
-      - run: python -m py_compile revenue/pursuit_portfolio/core.py revenue/pursuit_portfolio/core_v2.py revenue/pursuit_portfolio/host.py revenue/pursuit_portfolio/cli.py revenue/pursuit_portfolio/__init__.py test_pursuit_portfolio.py test_pursuit_portfolio_host_v2.py
+      - run: python -m unittest -v test_pursuit_portfolio.py test_pursuit_portfolio_host_v2.py test_pursuit_portfolio_host_custody_v2.py
+      - run: python -O -m unittest -v test_pursuit_portfolio.py test_pursuit_portfolio_host_v2.py test_pursuit_portfolio_host_custody_v2.py
+      - run: python -m py_compile revenue/pursuit_portfolio/core.py revenue/pursuit_portfolio/core_v2.py revenue/pursuit_portfolio/host.py revenue/pursuit_portfolio/cli.py revenue/pursuit_portfolio/__init__.py test_pursuit_portfolio.py test_pursuit_portfolio_host_v2.py test_pursuit_portfolio_host_custody_v2.py
