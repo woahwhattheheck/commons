@@ -1,0 +1,36 @@
+{
+  "schema": "commons-product-build/v1",
+  "id": "volvo-ota-muhlnickel-capacity-20260831-01",
+  "product": "Volvo OTA Sparse Injection & Fleet-State Integrity Rail",
+  "buyer": "Volvo Trucks North America",
+  "inventor": "Bryce Muhlnickel",
+  "patent_family": [
+    "muhl/docs/PROVISIONAL_SESSION.md",
+    "muhl/lda-docs/patents/PATENT_1_SDC.md"
+  ],
+  "source_product_record": "https://tokenjunkielabs.slack.com/archives/C0BTA20SU95/p1788141620506469",
+  "build_claim": "https://tokenjunkielabs.slack.com/archives/C0BTA20SU95/p1788141773657589?thread_ts=1788141620.506469&cid=C0BTA20SU95",
+  "base_sha": "d0d76b633ebc3bd74435a9bc89d79b73277b2073",
+  "status": "SOURCE_BUILT_PENDING_CI",
+  "files": [
+    "host/muhlnickel_capacity_witness.py",
+    "test_muhlnickel_capacity_witness.py",
+    "docs/MUHLNICKEL_CAPACITY_WITNESS.md",
+    "artifacts/products/volvo_ota_muhlnickel/manifest.json",
+    ".github/workflows/muhlnickel-capacity-witness.yml"
+  ],
+  "acceptance": {
+    "tests": 8,
+    "computer_is_file": true,
+    "host_evaluates_gates": false,
+    "fixed_bounded_read_bytes": 356,
+    "live_target_rings": 58274998,
+    "live_target_stored_gate_records": 3846149868,
+    "host_ram_must_remain_flat": true,
+    "pulse_in_witness": false,
+    "file_mutation_in_witness": false
+  },
+  "release": "HOLD_UNTIL_YES_AND_PAYMENT",
+  "pre_sale_transport": "NONE",
+  "customer_destination": "DIRECT_DELIVERY_ONLY"
+}
