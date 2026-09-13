@@ -1,9 +1,9 @@
 {
   "counts": {
-    "open_issues": 57,
-    "open_pull_requests": 35,
+    "open_issues": 58,
+    "open_pull_requests": 36,
     "runs_in_progress": 19,
-    "runs_queued": 980
+    "runs_queued": 997
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -69,6 +69,28 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
+      "branch": "zvq-h5c2/prooflens-durable-replay-integrity-20260913",
+      "created_at": "2026-09-13T14:29:14Z",
+      "draft": false,
+      "head_sha": "0b490a8741a363af605c714b6591f9873aacbfe6",
+      "number": 13937,
+      "title": "Fix ProofLens durable replay integrity",
+      "updated_at": "2026-09-13T14:29:14Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "ztc-j4m8/streaming-rendition-qa-pilot",
+      "created_at": "2026-09-13T14:28:40Z",
+      "draft": false,
+      "head_sha": "ecef42a3ee572f9e13d08f245926efb78c4dd5b2",
+      "number": 13936,
+      "title": "revenue: package streaming rendition QA paid pilot",
+      "updated_at": "2026-09-13T14:28:40Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
       "branch": "z-kilncipher/swarmops-cli-trust-boundary",
       "created_at": "2026-09-13T14:25:54Z",
       "draft": false,
@@ -86,18 +108,7 @@
       "head_sha": "866677157820ba81152329a97d3c68a13032f189",
       "number": 13910,
       "title": "Revenue: authenticate pursuit portfolio authority and file custody",
-      "updated_at": "2026-09-13T14:27:02Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zrt-p5v8/gtm-buyer-reply-materiality-20260913",
-      "created_at": "2026-09-13T14:12:43Z",
-      "draft": false,
-      "head_sha": "7f596709cf446d513fe394deb6eb317a2d8c6f28",
-      "number": 13904,
-      "title": "GTM: separate buyer-reply arrival from commercial materiality",
-      "updated_at": "2026-09-13T14:26:13Z"
+      "updated_at": "2026-09-13T14:28:17Z"
     },
     {
       "author": "woahwhattheheck",
@@ -116,10 +127,10 @@
       "branch": "zav-s8q3/security-questionnaire-desk-20260913",
       "created_at": "2026-09-13T14:10:41Z",
       "draft": false,
-      "head_sha": "98052018021b1a6fe22f9a52e59adefec7e53040",
+      "head_sha": "e248f8e4b3b507a7173929222713fc3d783e8c93",
       "number": 13901,
       "title": "Build evidence-bound security questionnaire fulfillment desk",
-      "updated_at": "2026-09-13T14:25:06Z"
+      "updated_at": "2026-09-13T14:29:17Z"
     },
     {
       "author": "woahwhattheheck",
@@ -164,17 +175,6 @@
       "number": 13863,
       "title": "titan: add F45 productive HARVEST/COLLECT protection",
       "updated_at": "2026-09-13T13:25:49Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-cassinianvil/funded-work-amount-precedence-20260913",
-      "created_at": "2026-09-13T13:25:37Z",
-      "draft": false,
-      "head_sha": "e8de1de4969f22b3518159855bf6ed647b6b8d41",
-      "number": 13862,
-      "title": "funded-work: resolve latest authoritative reward amount",
-      "updated_at": "2026-09-13T13:48:13Z"
     }
   ],
   "open_heads": {
@@ -208,16 +208,28 @@
     "13865": "d729342fc448e21e25a7d432b7c5453e4a9774d9",
     "13874": "2d1fb3e3cff82f036a977036706dbaa6749c8459",
     "13877": "0a86059fec8319f9b3782e833089d76847bc408b",
-    "13901": "98052018021b1a6fe22f9a52e59adefec7e53040",
+    "13901": "e248f8e4b3b507a7173929222713fc3d783e8c93",
     "13902": "0ad7356c59a25f47dac74c2a4a744c334a8397fa",
-    "13904": "7f596709cf446d513fe394deb6eb317a2d8c6f28",
     "13910": "866677157820ba81152329a97d3c68a13032f189",
-    "13933": "3c7687ca4ce7fcf6c9d05b2d28a587818e3e92e9"
+    "13933": "3c7687ca4ce7fcf6c9d05b2d28a587818e3e92e9",
+    "13936": "ecef42a3ee572f9e13d08f245926efb78c4dd5b2",
+    "13937": "0b490a8741a363af605c714b6591f9873aacbfe6"
   },
-  "pulls_listed": 35,
+  "pulls_listed": 36,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 51.6,
+  "queue_depth_per_runner": 52.5,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zrt-p5v8/gtm-buyer-reply-materiality-20260913",
+      "closed_at": "2026-09-13T14:28:18Z",
+      "head_sha": "7f596709cf446d513fe394deb6eb317a2d8c6f28",
+      "merged_at": "2026-09-13T14:28:18Z",
+      "number": 13904,
+      "state": "MERGED",
+      "title": "GTM: separate buyer-reply arrival from commercial materiality"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -371,21 +383,10 @@
       "number": 13891,
       "state": "MERGED",
       "title": "Repair reply-to-revenue hard-bounce routing"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zlb/stfx-clm-capture-13892",
-      "closed_at": "2026-09-13T14:08:42Z",
-      "head_sha": "d1073cdcb99cfaf0a48996ae69138522249409c4",
-      "merged_at": "2026-09-13T14:08:42Z",
-      "number": 13895,
-      "state": "MERGED",
-      "title": "Capture StFX certificate lifecycle management opportunity"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-13T14:28:05Z",
+  "unchanged_since": "2026-09-13T14:29:21Z",
   "undatable_pulls": []
 }
