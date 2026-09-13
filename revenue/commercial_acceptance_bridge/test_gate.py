@@ -5,6 +5,7 @@ import json
 import unittest
 
 from revenue.commercial_acceptance_bridge.acceptance import (
+    EXPECTED_FIXTURE_RECEIPT_SHA256,
     EXPECTED_QUARANTINES,
     EXPECTED_STATES,
     SNAPSHOT,
@@ -13,11 +14,25 @@ from revenue.commercial_acceptance_bridge.acceptance import (
     response_event,
     sha,
 )
-from revenue.commercial_acceptance_bridge.gate import AcceptanceError, reconcile, verify_receipt
+from revenue.commercial_acceptance_bridge.gate import (
+    AcceptanceError,
+    canonical_json,
+    receipt_self_digest_matches,
+    reconcile,
+    sha256_text,
+    verify_receipt,
+)
 
 
 def batch(events, snapshot=SNAPSHOT):
     return {"schema_version": 1, "snapshot_at": snapshot, "events": events}
+
+
+def self_digest(manifest):
+    forged = deepcopy(manifest)
+    forged.pop("receipt_sha256", None)
+    forged["receipt_sha256"] = sha256_text(canonical_json(forged))
+    return forged
 
 
 class CommercialAcceptanceBridgeTests(unittest.TestCase):
@@ -232,10 +247,45 @@ class CommercialAcceptanceBridgeTests(unittest.TestCase):
 
     def test_receipt_verification_and_tamper_detection(self):
         manifest = reconcile(batch([offer_event(90), response_event(90, "EXACT_ACCEPT")]))
-        self.assertTrue(verify_receipt(manifest))
+        self.assertTrue(receipt_self_digest_matches(manifest))
+        self.assertTrue(verify_receipt(manifest, manifest["receipt_sha256"]))
         tampered = deepcopy(manifest)
         tampered["series"][0]["state"] = "PAID"
-        self.assertFalse(verify_receipt(tampered))
+        self.assertFalse(receipt_self_digest_matches(tampered))
+        self.assertFalse(verify_receipt(tampered, manifest["receipt_sha256"]))
+
+    def test_fixture_receipt_requires_frozen_out_of_band_commitment(self):
+        manifest = check_acceptance()["manifest"]
+        self.assertEqual(manifest["receipt_sha256"], EXPECTED_FIXTURE_RECEIPT_SHA256)
+        self.assertTrue(verify_receipt(manifest, EXPECTED_FIXTURE_RECEIPT_SHA256))
+        self.assertFalse(verify_receipt(manifest, "0" * 64))
+
+    def test_self_digested_unknown_product_is_integrity_only_not_valid_bridge_receipt(self):
+        forged = {"product": "NOT_THE_BRIDGE", "state": "PAID"}
+        forged = self_digest(forged)
+        self.assertTrue(receipt_self_digest_matches(forged))
+        self.assertFalse(verify_receipt(forged, forged["receipt_sha256"]))
+
+    def test_recomputed_digest_cannot_enable_revenue_or_payment_authority(self):
+        manifest = reconcile(batch([offer_event(90), response_event(90, "EXACT_ACCEPT")]))
+        forged = deepcopy(manifest)
+        forged["authorities"]["recognized_revenue"] = True
+        forged["authorities"]["payment_or_charge"] = True
+        forged = self_digest(forged)
+        self.assertTrue(receipt_self_digest_matches(forged))
+        self.assertFalse(verify_receipt(forged, forged["receipt_sha256"]))
+
+    def test_recomputed_digest_cannot_invent_paid_series_state(self):
+        manifest = reconcile(batch([offer_event(90), response_event(90, "EXACT_ACCEPT")]))
+        forged = deepcopy(manifest)
+        forged["series"][0]["state"] = "PAID"
+        forged["series"][0]["revenue_authority"] = True
+        forged["roots"]["series_state_sha256"] = sha256_text(
+            "\n".join(sorted(canonical_json(row) for row in forged["series"]))
+        )
+        forged = self_digest(forged)
+        self.assertTrue(receipt_self_digest_matches(forged))
+        self.assertFalse(verify_receipt(forged, forged["receipt_sha256"]))
 
     def test_unknown_review_class_is_rejected(self):
         response = response_event(90, "QUESTION")
