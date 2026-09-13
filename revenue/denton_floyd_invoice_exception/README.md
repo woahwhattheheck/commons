@@ -36,6 +36,14 @@ Packets are rejected before classification for malformed or duplicate-key JSON, 
 
 Semantic duplicate invoices are also held even when invoice IDs differ if vendor + source reference + amount + invoice date repeat. This makes replay and duplicate-export behavior visible without creating side effects.
 
+### Cumulative PO utilization
+
+After all row-level checks, the compiler totals exact-`Decimal` amounts for invoices that would otherwise be `READY`, grouped by referenced PO. If that candidate exposure exceeds the PO total, **every otherwise-ready invoice on that PO becomes `HOLD` with `PO_CUMULATIVE_AMOUNT_EXCEEDED`**. Exact equality remains allowed.
+
+Rows already held for duplicate evidence, missing/mismatched/inactive vendor or PO evidence, PO status, an individual amount over the PO, or date defects do not consume candidate-ready utilization: the control is already refusing to treat those rows as authorized spend. This also prevents replayed duplicate evidence from inflating cumulative utilization while keeping every duplicate row visible in the HOLD queue.
+
+Cumulative decision semantics are independent of invoice array order. The packet digest still binds the exact source array order, so reordering source evidence can change `packet_sha256` without changing the sorted decision set or `decisions_sha256`.
+
 ## Determinism and verification
 
 Objects are hashed as canonical UTF-8 JSON (sorted keys, compact separators, finite JSON values only). `verify` recompiles from the original packet and `--as-of`, byte-compares the canonical result, then recomputes the manifest digest. A changed state, reason, count, source binding, or manifest field fails verification.
