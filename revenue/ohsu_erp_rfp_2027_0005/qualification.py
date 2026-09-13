@@ -39,14 +39,14 @@ def _public_scope() -> list[str]:
 def _workshare() -> dict[str, Any]:
     return {
         "commercial_status": "PROPOSED_NOT_ACCEPTED",
-        "fixed_price_usd": 15000,
-        "delivery_window_business_days": 10,
+        "fixed_price_usd": 12500,
+        "delivery_window_status": "TO_NEGOTIATE",
         "scope": [
-            "current-state ERP system, interface, owner, and dependency inventory",
-            "future-state requirement traceability with source, owner, gap, and validation status",
-            "data and integration dependency map with migration/reconciliation risks",
-            "option and TCO scenario scoring with explicit assumptions and sensitivities",
-            "modernization roadmap evidence register with risks, dependencies, and validation actions",
+            "source-bound requirement register across interviews, current-state artifacts, controls, and future-state needs",
+            "requirement to evidence to owner to gap/risk traceability with orphan detection",
+            "deterministic coverage and contradiction reports across finance, HR, supply-chain, and administrative workflows",
+            "decision receipts separating observed current-state evidence, stakeholder assertions, and consultant recommendations",
+            "AI/automation opportunity entries with explicit human approval, source provenance, and control requirements",
         ],
     }
 

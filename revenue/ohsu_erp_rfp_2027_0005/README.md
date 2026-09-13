@@ -10,13 +10,13 @@ The reviewed public OHSU bids notice identifies **Enterprise Resource Planning (
 
 ## Commercial hypothesis — not a sale
 
-A bounded **$15,000 fixed paid workshare / 10 business days** is compiled into every packet as `PROPOSED_NOT_ACCEPTED`:
+A bounded **$12,500 fixed paid workshare** is compiled into every packet as `PROPOSED_NOT_ACCEPTED`; delivery timing and milestones remain explicitly `TO_NEGOTIATE`:
 
-- current-state ERP system/interface/owner/dependency inventory;
-- future-state requirement traceability (source, owner, gap, validation status);
-- data + integration dependency map and migration/reconciliation risks;
-- option/TCO scenario scoring with explicit assumptions/sensitivities;
-- modernization-roadmap evidence register with risks, dependencies, validation actions.
+- source-bound requirement register across interviews, current-state artifacts, controls, and future-state needs;
+- requirement → evidence → owner → gap/risk traceability with orphan detection;
+- deterministic coverage and contradiction reports across finance, HR, supply-chain, and administrative workflows;
+- decision receipts separating observed current-state evidence, stakeholder assertions, and consultant recommendations;
+- AI/automation opportunity entries with explicit human approval, source provenance, and control requirements.
 
 This is designed to sit behind a qualified ERP advisory prime if Token Junkie Labs cannot truthfully prove prime eligibility from the controlling pack. It is not OHSU pricing and is not accepted work until an authorized counterparty actually agrees.
 

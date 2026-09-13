@@ -45,8 +45,10 @@ class QualificationTests(unittest.TestCase):
         p = q._compile_at(PROFILE, facts(), dt.date(2026, 9, 13))
         self.assertEqual(p["status"], "HOLD_CONTROLLING_PACK")
         self.assertIn("QUALIFY_PAID_TEAMING_ROUTE", p["next_actions"])
-        self.assertEqual(p["workshare"]["fixed_price_usd"], 15000)
+        self.assertEqual(p["workshare"]["fixed_price_usd"], 12500)
         self.assertEqual(p["workshare"]["commercial_status"], "PROPOSED_NOT_ACCEPTED")
+        self.assertEqual(p["workshare"]["delivery_window_status"], "TO_NEGOTIATE")
+        self.assertNotIn("delivery_window_business_days", p["workshare"])
         self.assertTrue(all(value is False for value in p["authority"].values()))
 
     def test_notice_deadline_tamper_is_rejected(self):
@@ -246,7 +248,7 @@ class QualificationTests(unittest.TestCase):
         first["workshare"]["fixed_price_usd"] = 0
         first["authority"]["proposal_submission_authorized"] = True
         second = q._compile_at(PROFILE, facts(), dt.date(2026, 9, 13))
-        self.assertEqual(second["workshare"]["fixed_price_usd"], 15000)
+        self.assertEqual(second["workshare"]["fixed_price_usd"], 12500)
         self.assertFalse(second["authority"]["proposal_submission_authorized"])
 
 
