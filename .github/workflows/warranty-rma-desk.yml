@@ -26,11 +26,11 @@ jobs:
         with:
           python-version: '3.12'
       - name: Compile
-        run: python -m py_compile app.py test_app.py
+        run: python -m py_compile app.py test_app.py test_ui_contract.py
       - name: Focused suite
-        run: python -m unittest -v test_app.py
+        run: python -m unittest -v
       - name: Optimized suite
-        run: python -O -m unittest -v test_app.py
+        run: python -O -m unittest -v
       - name: Browser script syntax
         run: |
           python - <<'PY'
