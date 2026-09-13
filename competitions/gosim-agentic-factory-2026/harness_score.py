@@ -251,6 +251,16 @@ def _normalize_runs(raw: Any) -> list[dict[str, Any]]:
     return sorted(runs, key=lambda r: (r["task_id"], r["trial_id"]))
 
 
+def _reject_cross_set_identity_reuse(candidate: list[dict[str, Any]], baseline: list[dict[str, Any]]) -> None:
+    candidate_by_id = {(run["task_id"], run["trial_id"]): canonical_bytes(run) for run in candidate}
+    for run in baseline:
+        identity = (run["task_id"], run["trial_id"])
+        if identity not in candidate_by_id:
+            continue
+        if candidate_by_id[identity] != canonical_bytes(run):
+            raise ContractError("trial identity reused with changed bytes across candidate and baseline")
+
+
 def _best_by_task(entries: list[dict[str, Any]]) -> dict[str, dict[str, Any]]:
     result: dict[str, dict[str, Any]] = {}
     for entry in entries:
@@ -318,18 +328,19 @@ def compile_report(runs_raw: Any, policy_raw: Any, baseline_raw: Any | None = No
         e["metrics"]["total_tokens"], e["metrics"]["wall_clock_ms"], e["run"]["trial_id"],
     ))
 
-    configs: dict[str, list[dict[str, Any]]] = {}
+    configs: dict[tuple[str, str], list[dict[str, Any]]] = {}
     for entry in entries:
-        key = f'{entry["run"]["harness_revision"]}::{entry["run"]["model_label"]}'
+        key = (entry["run"]["harness_revision"], entry["run"]["model_label"])
         configs.setdefault(key, []).append(entry)
     summaries = []
-    for key in sorted(configs):
-        group = configs[key]
+    for harness_revision, model_label in sorted(configs):
+        group = configs[(harness_revision, model_label)]
         c = [e["metrics"]["correctness_micros"] for e in group]
         t = [e["metrics"]["total_tokens"] for e in group]
         w = [e["metrics"]["wall_clock_ms"] for e in group]
         summaries.append({
-            "configuration": key,
+            "harness_revision": harness_revision,
+            "model_label": model_label,
             "trials": len(group),
             "median_correctness_micros": _median_int(c),
             "worst_correctness_micros": min(c),
@@ -343,6 +354,7 @@ def compile_report(runs_raw: Any, policy_raw: Any, baseline_raw: Any | None = No
     gate = None
     if baseline_raw is not None:
         baseline_runs = _normalize_runs(baseline_raw)
+        _reject_cross_set_identity_reuse(runs, baseline_runs)
         baseline_entries = [{"run": run, "metrics": metrics_for_run(run, policy)} for run in baseline_runs]
         gate = regression_gate(entries, baseline_entries, policy)
 
@@ -384,7 +396,7 @@ def render_markdown(report: dict[str, Any]) -> str:
     lines += ["", "## Configuration summaries", ""]
     for summary in report["configuration_summaries"]:
         lines.append(
-            f"- `{summary['configuration']}`: {summary['trials']} trial(s); "
+            f"- harness `{summary['harness_revision']}` / model `{summary['model_label']}`: {summary['trials']} trial(s); "
             f"median correctness {summary['median_correctness_micros']}/1000000; "
             f"worst correctness {summary['worst_correctness_micros']}/1000000; "
             f"median tokens {summary['median_total_tokens']}; worst tokens {summary['worst_total_tokens']}; "
