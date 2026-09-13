@@ -7,12 +7,15 @@ external action, payment, delivery, acceptance, or revenue authority.
 
 Exact raw-byte provenance is granted only by ``evaluate_bytes`` (or the CLI), which
 parses and hashes the same bounded bytes internally. ``evaluate`` remains a parsed-
-object compatibility helper and can never authorize current work.
+object compatibility helper and can never authorize current work. The byte-authority
+path also runs the canonical scope composer on those same parsed inputs and binds the
+supplied canonical project before current-work authority can become true.
 """
 from __future__ import annotations
 
 import argparse
 import hashlib
+import hmac
 import json
 import os
 import re
@@ -20,6 +23,11 @@ import stat
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
+
+try:
+    from host import scope_to_delivery as canonical_scope
+except ModuleNotFoundError:  # direct ``python host/...`` execution
+    import scope_to_delivery as canonical_scope
 
 SCHEMA_AGREEMENT = "commons-scope-agreement/v1"
 SCHEMA_OBSERVATIONS = "commons-scope-observations/v1"
@@ -117,11 +125,7 @@ def read_plain_bytes(path: str | Path, field: str) -> bytes:
 
 
 def read_plain_json(path: str | Path, field: str) -> tuple[Any, str]:
-    """Compatibility reader; the returned hash is informational, not authority.
-
-    Authority-producing callers should pass ``read_plain_bytes`` output directly to
-    ``evaluate_bytes`` so parsing and hashing cannot be separated.
-    """
+    """Compatibility reader; the returned hash is informational, not authority."""
     raw = read_plain_bytes(path, field)
     return strict_loads(raw, field), hashlib.sha256(raw).hexdigest()
 
@@ -207,6 +211,58 @@ def _validate_observations(
     return parsed, digest(observations)
 
 
+def _canonical_project(agreement: Any, observations: Any | None) -> dict[str, Any]:
+    """Run the canonical scope composer on the same parsed temporal inputs."""
+    try:
+        catalog = canonical_scope.load_json(canonical_scope.DEFAULT_CATALOG)
+        bindings = canonical_scope.load_bindings(canonical_scope.DEFAULT_BINDINGS)
+        return canonical_scope.compose_project(agreement, catalog, bindings, observations, None)
+    except canonical_scope.PipelineError as exc:
+        raise TemporalAuthorityError("exact temporal inputs fail canonical scope validation") from exc
+
+
+def _bind_project(
+    supplied: Any | None,
+    expected: dict[str, Any],
+    agreement_id: str,
+) -> tuple[bool, str]:
+    expected_sha = digest(expected)
+    if supplied is None:
+        return False, expected_sha
+    supplied = _require_dict(supplied, "canonical_project")
+    if supplied.get("schema_version") != canonical_scope.SCHEMA_PROJECT:
+        raise TemporalAuthorityError("canonical_project schema_version is invalid")
+    if supplied.get("kind") != "SCOPE_TO_DELIVERY_PROJECT":
+        raise TemporalAuthorityError("canonical_project kind is invalid")
+    if supplied.get("agreement_id") != agreement_id:
+        raise TemporalAuthorityError("canonical_project agreement_id does not match temporal agreement")
+    supplied_sha = digest(supplied)
+    if not hmac.compare_digest(supplied_sha, expected_sha):
+        raise TemporalAuthorityError("canonical_project does not bind the exact temporal agreement/observations")
+    return True, expected_sha
+
+
+def verify_project_binding(project: Any, receipt: Any) -> dict[str, Any]:
+    """Fail closed unless one canonical project is exactly the project time-authorized by receipt."""
+    project = _require_dict(project, "canonical_project")
+    receipt = _require_dict(receipt, "temporal_receipt")
+    if receipt.get("schema_version") != SCHEMA_RECEIPT:
+        raise TemporalAuthorityError("temporal_receipt schema_version is invalid")
+    if receipt.get("canonical_scope_validated") is not True:
+        raise TemporalAuthorityError("temporal_receipt lacks canonical scope validation")
+    if receipt.get("canonical_project_bound") is not True:
+        raise TemporalAuthorityError("temporal_receipt lacks canonical project binding")
+    expected = receipt.get("canonical_project_sha256")
+    if not isinstance(expected, str) or not re.fullmatch(r"[0-9a-f]{64}", expected):
+        raise TemporalAuthorityError("temporal_receipt canonical project digest is invalid")
+    if project.get("agreement_id") != receipt.get("agreement_id"):
+        raise TemporalAuthorityError("canonical project agreement_id does not match temporal receipt")
+    actual = digest(project)
+    if not hmac.compare_digest(actual, expected):
+        raise TemporalAuthorityError("canonical project and temporal receipt are from different artifacts")
+    return {"valid": True, "canonical_project_sha256": expected}
+
+
 def _evaluate_parsed(
     agreement: Any,
     observations: Any | None,
@@ -215,6 +271,9 @@ def _evaluate_parsed(
     agreement_raw_sha256: str | None,
     observations_raw_sha256: str | None,
     raw_byte_provenance_verified: bool,
+    canonical_scope_validated: bool,
+    canonical_project_bound: bool,
+    canonical_project_sha256: str | None,
 ) -> dict[str, Any]:
     if as_of.tzinfo is None or as_of.utcoffset() is None:
         raise TemporalAuthorityError("as_of must be timezone-aware")
@@ -248,7 +307,16 @@ def _evaluate_parsed(
 
     if temporal_ready and not raw_byte_provenance_verified:
         state = "HOLD_RAW_PROVENANCE_UNVERIFIED"
-    current_work_authorized = temporal_ready and raw_byte_provenance_verified
+    elif temporal_ready and not canonical_scope_validated:
+        state = "HOLD_CANONICAL_SCOPE_UNVERIFIED"
+    elif temporal_ready and not canonical_project_bound:
+        state = "HOLD_CANONICAL_PROJECT_UNBOUND"
+    current_work_authorized = (
+        temporal_ready
+        and raw_byte_provenance_verified
+        and canonical_scope_validated
+        and canonical_project_bound
+    )
 
     receipt_core = {
         "schema_version": SCHEMA_RECEIPT,
@@ -265,6 +333,10 @@ def _evaluate_parsed(
         "observations_raw_sha256": observations_raw_sha256,
         "raw_byte_provenance_verified": raw_byte_provenance_verified,
         "provenance_mode": "EXACT_RAW_BYTES_VERIFIED" if raw_byte_provenance_verified else "CANONICAL_OBJECT_ONLY",
+        "canonical_scope_validated": canonical_scope_validated,
+        "canonical_project_bound": canonical_project_bound,
+        "canonical_project_sha256": canonical_project_sha256,
+        "canonical_binding_required": True,
         "observation_count": len(parsed_observations),
         "temporal_prerequisite_only": True,
         "canonical_scope_validation_still_required": True,
@@ -275,9 +347,9 @@ def _evaluate_parsed(
         "delivery_claim_authorized": False,
         "revenue_authorized": False,
         "authority_boundary": (
-            "This gate proves trusted-time chronology and, only in EXACT_RAW_BYTES_VERIFIED mode, "
-            "exact input-byte custody. Canonical scope, buyer, evidence, delivery, payment, provider, "
-            "and cash gates remain independently mandatory."
+            "This gate proves trusted-time chronology and exact input-byte custody only when the same inputs "
+            "also pass the canonical scope composer and the supplied canonical project digest is exactly bound. "
+            "Buyer, delivery, payment, provider, and cash gates remain independently mandatory."
         ),
     }
     receipt_core["receipt_sha256"] = digest(receipt_core)
@@ -285,11 +357,7 @@ def _evaluate_parsed(
 
 
 def evaluate(agreement: Any, observations: Any | None, *, as_of: datetime) -> dict[str, Any]:
-    """Evaluate parsed objects without raw-byte authority.
-
-    This compatibility helper deliberately cannot produce ``current_work_authorized``.
-    Call ``evaluate_bytes`` for an authority-producing temporal prerequisite receipt.
-    """
+    """Evaluate parsed objects without raw-byte or canonical-project authority."""
     return _evaluate_parsed(
         agreement,
         observations,
@@ -297,6 +365,9 @@ def evaluate(agreement: Any, observations: Any | None, *, as_of: datetime) -> di
         agreement_raw_sha256=None,
         observations_raw_sha256=None,
         raw_byte_provenance_verified=False,
+        canonical_scope_validated=False,
+        canonical_project_bound=False,
+        canonical_project_sha256=None,
     )
 
 
@@ -313,8 +384,9 @@ def evaluate_bytes(
     observations_raw: bytes | None,
     *,
     as_of: datetime,
+    canonical_project: Any | None = None,
 ) -> dict[str, Any]:
-    """Parse, hash, and evaluate one exact bounded byte pair atomically in-process."""
+    """Parse/hash/validate one exact byte pair and bind its canonical project."""
     agreement_raw = _bounded_bytes(agreement_raw, "agreement")
     agreement = strict_loads(agreement_raw, "agreement")
     observations = None
@@ -323,6 +395,11 @@ def evaluate_bytes(
         observations_raw = _bounded_bytes(observations_raw, "observations")
         observations = strict_loads(observations_raw, "observations")
         observations_raw_sha256 = hashlib.sha256(observations_raw).hexdigest()
+
+    expected_project = _canonical_project(agreement, observations)
+    project_bound, project_sha = _bind_project(
+        canonical_project, expected_project, agreement.get("agreement_id") if isinstance(agreement, dict) else ""
+    )
     return _evaluate_parsed(
         agreement,
         observations,
@@ -330,6 +407,9 @@ def evaluate_bytes(
         agreement_raw_sha256=hashlib.sha256(agreement_raw).hexdigest(),
         observations_raw_sha256=observations_raw_sha256,
         raw_byte_provenance_verified=True,
+        canonical_scope_validated=True,
+        canonical_project_bound=project_bound,
+        canonical_project_sha256=project_sha,
     )
 
 
@@ -337,14 +417,19 @@ def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description="Trusted-time prerequisite for Commons scope-to-delivery.")
     parser.add_argument("--agreement", required=True)
     parser.add_argument("--observations")
+    parser.add_argument("--project", help="canonical scope_to_delivery.py project JSON for the same inputs")
     args = parser.parse_args(argv)
     try:
         agreement_raw = read_plain_bytes(args.agreement, "agreement")
         observations_raw = read_plain_bytes(args.observations, "observations") if args.observations else None
+        project = None
+        if args.project:
+            project = strict_loads(read_plain_bytes(args.project, "canonical_project"), "canonical_project")
         receipt = evaluate_bytes(
             agreement_raw,
             observations_raw,
             as_of=datetime.now(timezone.utc),
+            canonical_project=project,
         )
     except (OSError, TemporalAuthorityError) as exc:
         print(json.dumps({"state": "HOLD_INVALID_TEMPORAL_EVIDENCE", "error": str(exc)}, sort_keys=True))
