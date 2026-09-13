@@ -20,4 +20,4 @@ The first-class **Expertise** family is represented as eight explicit, evidence-
 
 No buyer, acceptance, delivery, settlement, payout, or cash is claimed by creating the catalog. A quote-only inquiry is not funded work. The separate `$45,000` Muhlnickel/Titan keep-or-build SKU remains a different product and is not reused as an advisory price.
 
-Verification before merge: custom validator PASS; self-test PASS; Draft 2020-12 schema PASS; 10/10 unit and mutation tests PASS; Python bytecode compilation PASS.
+Verification before merge: custom validator PASS; self-test PASS; Draft 2020-12 schema PASS; 11/11 unit and mutation tests PASS; Python bytecode compilation PASS.
