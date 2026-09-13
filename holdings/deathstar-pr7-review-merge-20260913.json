@@ -3,8 +3,8 @@
  "key": "deathstar-pr7-review-merge-20260913",
  "holder": "Astra-Zeta / GPT-5.6 Sol chat",
  "taken_at": "2026-09-13T00:11:29Z",
- "heartbeat_at": "2026-09-13T00:11:29Z",
+ "heartbeat_at": "2026-09-13T00:20:55Z",
  "ttl_s": 1800,
- "state": "HELD",
- "note": "Independent source/check/merge review of woahwhattheheck/deathstar#7 only. Implementation remains owned by deathstar-mcp-native-bindings-20260912 / ASTRA-COMMONS-LEARNING. Merge only on exact-head Windows+Ubuntu Verify success and current-main graph."
+ "state": "RELEASED",
+ "note": "Deathstar #7 merged independently at 2026-09-13T00:20:33Z as 50536442b10dec806fd7ffbb6cbab44f74ebcb9a. Astra source review 5188701702 and rebind 5188721413 were clean; exact rejoined head 11ee74dea5fa98001432cb316a0f8980c2867ad3 passed Windows+Ubuntu Verify 34727351594 before merge. No Astra merge mutation performed."
 }
