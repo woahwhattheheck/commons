@@ -47,6 +47,9 @@ def _economic_context(item, params, shops, cfg, now, end):
     names/order or irrelevant configuration differ. Consumption after the
     final sale date cannot affect these complete-lot receipts.
     """
+    for key in ('townShopSellInterval', 'townCenterSellInterval'):
+        if key in cfg and int(cfg[key]) <= 0:
+            raise ValueError(f"Invalid {key}: {cfg[key]}")
     price = (params or math.m.MARKET_PARAMS)[item]
     return {'version': 1, 'item': item, 'start': now, 'end': end,
             'price': {key: deepcopy(price[key]) for key in _PRICE_FIELDS},
