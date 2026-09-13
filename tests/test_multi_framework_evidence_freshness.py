@@ -13,6 +13,8 @@ class FreshnessGateTests(unittest.TestCase):
  def test_golden_hash(self): self.assertEqual(golden_corpus_sha256(),GOLDEN_CORPUS_SHA256)
  def test_golden_counts(self):
   p=_compile_packet_at(self.raw,AS_OF); self.assertEqual(p["counts"],{"REUSABLE":240,"STALE":50,"SCOPE_MISMATCH":40,"MISSING_OWNER":35,"INCOMPLETE":35})
+  for row in p["results"]:
+   self.assertIn("source_ref",row["source_trace"]); self.assertEqual(set(row["source_trace"]["fields"]),{"owner","collection_time","assessment_period_coverage","framework_control_mapping","checksum","freshness_rule"})
  def test_compile_public_has_no_clock_override(self):
   self.assertEqual(list(inspect.signature(compile_packet).parameters),["raw"])
  def test_future_coverage_incomplete(self):
@@ -23,7 +25,7 @@ class FreshnessGateTests(unittest.TestCase):
   p=_compile_packet_at(raw,AS_OF); self.assertEqual(p["results"][0]["state"],"INCOMPLETE")
  def test_future_collection_incomplete(self):
   raw=self._one("REUSE-000"); raw["evidence"][0]["collected_at"]="2026-09-13T14:00:01Z"
-  self.assertEqual(_compile_packet_at(raw,AS_OF)["results"][0]["state"],"INCOMPLETE")
+  result=_compile_packet_at(raw,AS_OF)["results"][0]; self.assertEqual(result["state"],"INCOMPLETE"); self.assertIn("FUTURE_COLLECTION",result["reasons"])
  def test_current_verifier_rejects_future_packet(self):
   future=AS_OF+timedelta(days=1); packet=_compile_packet_at(self._one("REUSE-000"),future)
   with self.assertRaisesRegex(GateError,"future_evaluation"): _verify_packet_at(packet,AS_OF)
@@ -51,7 +53,7 @@ class FreshnessGateTests(unittest.TestCase):
   packet=_compile_packet_at(self.raw,AS_OF); packet["counts"]["REUSABLE"]-=1
   with self.assertRaises(GateError): _verify_integrity(packet)
  def test_markdown_commitment(self):
-  p=_compile_packet_at(self.raw,AS_OF); self.assertEqual(hashlib.sha256(render_markdown(p).encode()).hexdigest(),p["markdown_sha256"])
+  p=_compile_packet_at(self.raw,AS_OF); md=render_markdown(p); self.assertEqual(hashlib.sha256(md.encode()).hexdigest(),p["markdown_sha256"]); self.assertNotEqual(hashlib.sha256((md+"tamper").encode()).hexdigest(),p["markdown_sha256"])
  def test_authority_false(self): self.assertTrue(all(v is False for v in _compile_packet_at(self.raw,AS_OF)["authority"].values()))
  def test_duplicate_json_key_rejected(self):
   with tempfile.TemporaryDirectory() as td:
@@ -90,12 +92,12 @@ class FreshnessGateTests(unittest.TestCase):
   raw=self._one("REUSE-000"); raw["evidence"][0]["source_ref"]="token=abc"
   with self.assertRaises(GateError): _compile_packet_at(raw,AS_OF)
  def test_three_run_hash_stability(self):
-  packets=[_compile_packet_at(copy.deepcopy(self.raw),AS_OF) for _ in range(3)]; self.assertEqual(len({p["receipt_sha256"] for p in packets}),1)
+  packets=[_compile_packet_at(copy.deepcopy(self.raw),AS_OF) for _ in range(3)]; self.assertEqual(len({p["receipt_sha256"] for p in packets}),1); self.assertEqual(len({hashlib.sha256(json.dumps(p,sort_keys=True,separators=(",",":")).encode()).hexdigest() for p in packets}),1)
  def test_zero_reusable_without_required_semantics(self):
   p=_compile_packet_at(self.raw,AS_OF); rows={r["evidence_id"]:r for r in p["input"]["evidence"]}; scope={(x["framework"],x["control"]) for x in p["input"]["assessment"]["scope"]}
   for result in p["results"]:
    if result["state"]!="REUSABLE": continue
-   row=rows[result["evidence_id"]]; self.assertTrue(row["owner_ref"] and row["checksum_sha256"] and row["source_ref"] and row["mappings"]); self.assertLessEqual(row["coverage_end"],row["collected_at"]); self.assertTrue({(m["framework"],m["control"]) for m in row["mappings"]}.issubset(scope))
+   row=rows[result["evidence_id"]]; self.assertTrue(row["owner_ref"] and row["checksum_sha256"] and row["source_ref"] and row["mappings"]); self.assertEqual(row["freshness_rule_id"],p["input"]["freshness_policy"]["rule_id"]); self.assertLessEqual(row["coverage_start"],p["input"]["assessment"]["period_start"]); self.assertGreaterEqual(row["coverage_end"],p["input"]["assessment"]["period_end"]); self.assertLessEqual(row["coverage_end"],row["collected_at"]); self.assertTrue({(m["framework"],m["control"]) for m in row["mappings"]}.issubset(scope))
  def test_output_create_exclusive_and_symlink_parent(self):
   from revenue.multi_framework_evidence_freshness.cli import _write_new
   with tempfile.TemporaryDirectory() as td:
@@ -103,6 +105,17 @@ class FreshnessGateTests(unittest.TestCase):
    with self.assertRaises(OSError): _write_new(out,b"def")
    real=root/"real"; real.mkdir(); link=root/"link"; os.symlink(real,link)
    with self.assertRaises((OSError,GateError)): _write_new(link/"x",b"x")
+ def test_cli_preflights_both_outputs_before_publication(self):
+  from revenue.multi_framework_evidence_freshness.cli import main
+  with tempfile.TemporaryDirectory() as td:
+   root=Path(td); src=root/"input.json"; pkt=root/"packet.json"; md=root/"review.md"; src.write_text(json.dumps(self.raw)); md.write_text("occupied")
+   self.assertEqual(main(["compile",str(src),str(pkt),str(md)]),2); self.assertFalse(pkt.exists()); self.assertEqual(md.read_text(),"occupied")
+ def test_cli_preflight_rejects_dangling_symlink(self):
+  if not hasattr(os,"symlink"): self.skipTest("no symlink")
+  from revenue.multi_framework_evidence_freshness.cli import main
+  with tempfile.TemporaryDirectory() as td:
+   root=Path(td); src=root/"input.json"; pkt=root/"packet.json"; md=root/"review.md"; src.write_text(json.dumps(self.raw)); os.symlink(root/"missing",md)
+   self.assertEqual(main(["compile",str(src),str(pkt),str(md)]),2); self.assertFalse(pkt.exists())
  def test_cli_current_compile_verify(self):
   from revenue.multi_framework_evidence_freshness.cli import main
   with tempfile.TemporaryDirectory() as td:
