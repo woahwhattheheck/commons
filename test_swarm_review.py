@@ -76,7 +76,8 @@ class ReviewGit(unittest.TestCase):
         self.assertTrue(sr.execution_required(["module.py"]))
         self.assertTrue(sr.execution_required(["config/policy.json"]))
         self.assertTrue(sr.execution_required(["web/control.html"]))
-        self.assertFalse(sr.execution_required(["README.md", "docs/guide.rst", "notes.txt"]))
+        self.assertTrue(sr.execution_required(["requirements.txt"]))
+        self.assertFalse(sr.execution_required(["README.md", "docs/guide.rst", "docs/guide.adoc"]))
 
     def test_unrelated_main_advance_reuses_review(self):
         self.write("unrelated.py", "another builder"); new = self.commit("unrelated")
