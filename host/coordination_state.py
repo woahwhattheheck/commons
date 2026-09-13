@@ -1275,7 +1275,9 @@ def _holding_live(record, now):
     ttl = record.get("ttl_s")
     if beat is None or type(ttl) is not int or not 1 <= ttl <= 7200:
         return False
-    return 0 <= (now - beat).total_seconds() <= ttl
+    # Clock skew is not expiry evidence. A syntactically valid future beat is
+    # fail-closed as live until this observer advances beyond beat + TTL.
+    return (now - beat).total_seconds() <= ttl
 
 
 def _holdings_commit(git, parent, holdings, message, when):
@@ -1320,7 +1322,12 @@ def holding_write(git, key, holder, action, ttl_s=1800, note="", now=None,
         if action in ("renew", "release") and (not current or current.get("holder") != holder):
             return {"ok": False, "key": key, "held_by": (current or {}).get("holder"),
                     "reason": "not the current holder", "tip": tip}
-        stamp = _iso(now)
+        stamp_moment = now
+        if (current or {}).get("state") == "HELD" and (current or {}).get("holder") == holder:
+            prior_beat = _parse_ts(current.get("heartbeat_at") or current.get("taken_at"))
+            if prior_beat is not None and prior_beat > stamp_moment:
+                stamp_moment = prior_beat
+        stamp = _iso(stamp_moment)
         record = dict(current or {})
         record.update({"schema": HOLDING_SCHEMA, "key": key, "holder": holder,
                        "heartbeat_at": stamp, "ttl_s": int(ttl_s)})
