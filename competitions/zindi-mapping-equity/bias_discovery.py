@@ -39,7 +39,7 @@ def quantile_cut(values:Sequence[float],fraction:float)->float:
 def _effect(paired,lo=.25,hi=.75):
     q1=quantile_cut([x[0] for x in paired],lo); q3=quantile_cut([x[0] for x in paired],hi)
     low=[x for x in paired if x[0]<=q1]; high=[x for x in paired if x[0]>=q3]
-    if not low or not high: return None
+    if q1>=q3 or not low or not high: return None
     lm=fmean(x[1] for x in low); hm=fmean(x[1] for x in high)
     return {"low_cut":q1,"high_cut":q3,"low":low,"high":high,"low_mean_gap":lm,"high_mean_gap":hm,"signed_delta":hm-lm}
 
@@ -121,8 +121,15 @@ def analyze(scores:dict[str,float],strata_path:Path,min_rows:int,prefixes:tuple[
         if len(set(r.fieldnames))!=len(r.fieldnames): raise ValueError("duplicate strata CSV header")
         fields=list(r.fieldnames); rows=list(r)
     if not rows: raise ValueError("empty strata CSV")
+    seen_geoids=set()
+    for row in rows:
+        g=(row.get("GEOID") or "").strip()
+        if len(g)==11 and g.isdigit():
+            if g in seen_geoids: raise ValueError(f"duplicate GEOID in strata CSV: {g}")
+            seen_geoids.add(g)
     results=[]
-    for field in (f for f in fields if f and f!="GEOID" and not f.startswith(prefixes)):
+    lowered_prefixes=tuple(p.lower() for p in prefixes)
+    for field in (f for f in fields if f and f!="GEOID" and not f.lower().startswith(lowered_prefixes)):
         paired=[]
         for row in rows:
             g=(row.get("GEOID") or "").strip()
