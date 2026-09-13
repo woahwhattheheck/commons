@@ -14,6 +14,13 @@
   "board_motion": [
     {
       "from": "UNSEATED",
+      "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-13T14:23:27Z"
+    },
+    {
+      "from": "UNSEATED",
       "id": "TITAN-V5-F46---saleable-quantity-forecast-current-ABI-carrier",
       "kind": null,
       "to": "TABLE",
@@ -144,13 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-13T13:08:36Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "revenue--build-Sublime-electrochemical-cement-batch-qualification-dossier",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-13T12:58:30Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "eee91794b10136ba3f35daa2b233be16136c0b4f3daa819ceb79a51a869164a2",
+  "digest": "d326c74c9ed0ef011764e885231eb3c567fc737d128540f5c48b0f3e4828a31e",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,11 +353,11 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12240,
-    "pulse_seq": 1807,
-    "sha": "981aeea06dc148436dc0b9b8135522afe96d60f3"
+    "post_count": 12241,
+    "pulse_seq": 1808,
+    "sha": "349e48ada93493eefb9f738734dea4bbd492a5ee"
   },
-  "now": "2026-09-13T14:26:47Z",
+  "now": "2026-09-13T14:29:06Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -4780,18 +4780,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "TITAN-V5-F46---saleable-quantity-forecast-current-ABI-carrier",
+          "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "TITAN-V5-F46---saleable-quantity-forecast-current-ABI-carrier",
+      "id": "Commercialize-streaming-rendition-release-gate-as-paid-QA-pilot",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-13T14:21:32Z"
+      "ts": "2026-09-13T14:23:27Z"
     },
     {
       "claim": "VECTOR-RELAY",
