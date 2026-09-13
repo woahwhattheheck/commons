@@ -19,7 +19,13 @@ BRANCH_PREFIX = "outbound-connector-lease/v1/"
 REPLY_SCHEMA = "outbound-connector-reply-lease/v2"
 REPLY_BRANCH_PREFIX = "outbound-connector-reply-lease/v2/"
 _TOKEN_RE = re.compile(r"^[a-z0-9][a-z0-9._:/+\-]{0,190}$")
-_PROVIDER_RE = re.compile(r"^[a-z0-9][a-z0-9._+\-]{0,63}$")
+SUPPORTED_REPLY_PROVIDERS = frozenset({
+    "devpost",
+    "gmail",
+    "github",
+    "slack",
+    "web-form",
+})
 
 
 class LeaseKeyError(ValueError):
@@ -89,8 +95,9 @@ def _provider_token(value: Any, field: str) -> str:
     if type(value) is not str:
         raise LeaseKeyError(f"{field} must be a string")
     token = value.strip().casefold()
-    if not token or _PROVIDER_RE.fullmatch(token) is None:
-        raise LeaseKeyError(f"{field} must be a short lowercase provider token")
+    if token not in SUPPORTED_REPLY_PROVIDERS:
+        supported = ",".join(sorted(SUPPORTED_REPLY_PROVIDERS))
+        raise LeaseKeyError(f"{field} must be one of the canonical providers: {supported}")
     return token
 
 
@@ -140,9 +147,9 @@ def compile_reply_key(provider: Any, event_id: Any) -> dict[str, Any]:
     """Compile one global mutex for one durable inbound provider event.
 
     Reply identity deliberately excludes buyer/contact/domain classification. The
-    provider plus exact durable event ID already names the event that may be
-    answered once; adding caller-classified organization data would let parallel
-    workers mint distinct locks for the same human message.
+    canonical provider plus exact durable event ID already names the event that
+    may be answered once; adding caller-classified organization data would let
+    parallel workers mint distinct locks for the same human message.
     """
     seam = {
         "schema": REPLY_SCHEMA,
@@ -188,7 +195,7 @@ def main(argv: Sequence[str] | None = None) -> int:
     parser.add_argument("--cold", action="store_true", help="one organization-level unsolicited outreach seam")
     parser.add_argument("--external-authority", help="domain of authoritative opportunity issuer/source")
     parser.add_argument("--external-id", help="stable external procurement/project/issue ID")
-    parser.add_argument("--reply-provider", help="provider token for one inbound reply event")
+    parser.add_argument("--reply-provider", help="canonical provider ID for one inbound reply event")
     parser.add_argument("--reply-event-id", help="durable provider inbound message/event ID")
     parser.add_argument("--json", dest="json_text", help="strict JSON input document")
     args = parser.parse_args(argv)
