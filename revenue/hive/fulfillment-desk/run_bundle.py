@@ -6,7 +6,7 @@ Copied to run.py by bundle.py. No alternate CRM engine is implemented here.
 from __future__ import annotations
 import hashlib
 import html
-import importlib.util
+import types
 import json
 import os
 import re
@@ -95,7 +95,7 @@ def _file_meta(value, name):
     return digest, size
 
 
-def verify_package(root: Path = ROOT):
+def verify_package(root: Path = ROOT, include_bytes: bool = False):
     """Verify immutable package members before workflow.py is loaded.
 
     This is an internal consistency gate rooted in the packaged launcher/manifest, not a
@@ -161,20 +161,20 @@ def verify_package(root: Path = ROOT):
     config = strict_json_bytes(verified['parcel.json'], 'parcel.json')
     if not isinstance(config, dict) or config.get('format') != 'parcel.intake-handoff' or config.get('version') != 1:
         raise ValueError('parcel.json is not a supported Parcel handoff')
-    return config
+    return (config, verified) if include_bytes else config
 
 
-def _load_workflow(root: Path):
-    path = root / 'workflow.py'
-    spec = importlib.util.spec_from_file_location('parcel_packaged_workflow', path)
-    if spec is None or spec.loader is None:
-        raise RuntimeError('Could not load packaged workflow.py')
-    module = importlib.util.module_from_spec(spec)
-    spec.loader.exec_module(module)
+def _load_workflow_bytes(source: bytes, filename: Path):
+    """Execute the already-verified workflow generation without reopening its pathname."""
+    module = types.ModuleType('parcel_packaged_workflow')
+    module.__file__ = os.fspath(filename)
+    module.__package__ = ''
+    code = compile(source, os.fspath(filename), 'exec')
+    exec(code, module.__dict__)
     return module
 
 
-def compose(config: dict, workflow_module) -> None:
+def compose(config: dict, workflow_module, index_html: str) -> None:
     """Select this installation's task preset and decorate the existing dashboard."""
     workflow_module.TASKS = tuple(config['tasks'])
     workflow_module.DEFAULT_MAPPING = workflow_module.mapping_value(config['fieldMapping'])
@@ -184,7 +184,7 @@ def compose(config: dict, workflow_module) -> None:
         def do_GET(self):
             if urlsplit(self.path).path != '/':
                 return super().do_GET()
-            page = (ROOT / 'index.html').read_text(encoding='utf-8')
+            page = index_html
             agency = html.escape(config['agency'])
             title = html.escape(config['title'])
             support = html.escape(config.get('support', ''))
@@ -213,11 +213,15 @@ def compose(config: dict, workflow_module) -> None:
 
 def main() -> None:
     try:
-        config = verify_package(ROOT)
-        workflow_module = _load_workflow(ROOT)
-    except (OSError, ValueError, TypeError, RuntimeError) as exc:
+        config, verified = verify_package(ROOT, include_bytes=True)
+        try:
+            index_html = verified['index.html'].decode('utf-8')
+        except UnicodeDecodeError as exc:
+            raise ValueError('index.html must be UTF-8') from exc
+        workflow_module = _load_workflow_bytes(verified['workflow.py'], ROOT / 'workflow.py')
+    except (OSError, ValueError, TypeError, RuntimeError, SyntaxError) as exc:
         raise SystemExit(f'Package integrity check failed: {exc}') from exc
-    compose(config, workflow_module)
+    compose(config, workflow_module, index_html)
     workflow_module.main()
 
 
