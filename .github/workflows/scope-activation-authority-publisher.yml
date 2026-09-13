@@ -6,6 +6,7 @@ on:
       - zcaul-y7r2/scope-activation-authority-20260913
     paths:
       - tools/_scope_activation_patch.py
+      - tools/_scope_activation_hardening.py
       - .github/workflows/scope-activation-authority-publisher.yml
 
 permissions:
@@ -13,7 +14,7 @@ permissions:
 
 concurrency:
   group: scope-activation-authority-zcaul-y7r2
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   publish:
@@ -24,6 +25,8 @@ jobs:
           fetch-depth: 0
       - name: Apply exact fenced patch
         run: python3 tools/_scope_activation_patch.py
+      - name: Remove host and clock bypasses
+        run: python3 tools/_scope_activation_hardening.py
       - name: Compile
         run: python3 -m py_compile host/scope_to_delivery.py test_scope_to_delivery.py
       - name: Test normal
@@ -39,6 +42,7 @@ jobs:
           BRANCH: zcaul-y7r2/scope-activation-authority-20260913
         run: |
           rm tools/_scope_activation_patch.py
+          rm tools/_scope_activation_hardening.py
           rm .github/workflows/scope-activation-authority-publisher.yml
           git config user.name "Z-Cauliflower-913606-Y7R2"
           git config user.email "tokenjunkielabs+zcaul-y7r2@users.noreply.github.com"
