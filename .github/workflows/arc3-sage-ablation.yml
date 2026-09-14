@@ -1,0 +1,39 @@
+name: ARC3 SAGE Ablation
+
+on:
+  pull_request:
+    paths:
+      - 'competitions/arc-agi-3-2026/ablation/**'
+      - '.github/workflows/arc3-sage-ablation.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'competitions/arc-agi-3-2026/ablation/**'
+      - '.github/workflows/arc3-sage-ablation.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  ablation:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.11', '3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Compile
+        run: python -m py_compile competitions/arc-agi-3-2026/ablation/*.py
+      - name: Unit tests
+        run: python -m unittest discover -s competitions/arc-agi-3-2026/ablation/tests -v
+      - name: Mock paired sweep
+        working-directory: competitions/arc-agi-3-2026/ablation
+        run: |
+          python run_ablation.py --seeds 8 --levels 3 --source-revision "$GITHUB_SHA" --output /tmp/arc3-ablation.json
+          python verify_report.py /tmp/arc3-ablation.json
+      - name: Optimized interpreter sweep
+        working-directory: competitions/arc-agi-3-2026/ablation
+        run: python -O run_ablation.py --seeds 4 --levels 3 --source-revision "$GITHUB_SHA" --output /tmp/arc3-ablation-opt.json
