@@ -12,6 +12,7 @@ from .core import (
     fingerprint_organization,
     mint_pressure_attestation_for_host,
     verify_lease_document,
+    verify_outcome_document,
     verify_pressure_attestation,
 )
 from .stores import FileLeaseStore, GitHubContentsLeaseStore, StoreConflict, StoreUncertain
@@ -29,5 +30,6 @@ __all__ = [
     "fingerprint_organization",
     "mint_pressure_attestation_for_host",
     "verify_lease_document",
+    "verify_outcome_document",
     "verify_pressure_attestation",
 ]
