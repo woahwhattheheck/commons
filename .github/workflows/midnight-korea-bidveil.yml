@@ -1,0 +1,36 @@
+name: BidVeil Midnight Korea
+
+on:
+  pull_request:
+    paths:
+      - 'competitions/midnight-korea-2026/bidveil/**'
+      - '.github/workflows/midnight-korea-bidveil.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'competitions/midnight-korea-2026/bidveil/**'
+      - '.github/workflows/midnight-korea-bidveil.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  semantic-gate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    defaults:
+      run:
+        working-directory: competitions/midnight-korea-2026/bidveil
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Compile Python
+        run: python -m py_compile bidveil/*.py tests/test_bidveil.py
+      - name: Hostile suite
+        run: PYTHONPATH=. python -m unittest discover -s tests -v
+      - name: Optimized hostile suite
+        run: PYTHONPATH=. python -O -m unittest discover -s tests -v
+      - name: Zero-network demo
+        run: bash demo.sh
