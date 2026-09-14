@@ -1,9 +1,9 @@
 {
   "counts": {
     "open_issues": 84,
-    "open_pull_requests": 49,
+    "open_pull_requests": 47,
     "runs_in_progress": 18,
-    "runs_queued": 629
+    "runs_queued": 622
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -69,13 +69,13 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "zfh-k6w2/cash-source-byte-alias-20260913",
-      "created_at": "2026-09-14T02:15:30Z",
+      "branch": "zsf-k7m3/sophelio-dual-award-20260913",
+      "created_at": "2026-09-14T02:22:50Z",
       "draft": false,
-      "head_sha": "05a127ec0eae34f329906c2c69fa2603b3c791b4",
-      "number": 14206,
-      "title": "fix: dedupe cash evidence by source bytes across authority labels",
-      "updated_at": "2026-09-14T02:16:30Z"
+      "head_sha": "e4838bf76ecc1c27e184661d68f94d2c5e9ce1dc",
+      "number": 14209,
+      "title": "Build Sophelio dual-award shot-group transfer carrier",
+      "updated_at": "2026-09-14T02:22:50Z"
     },
     {
       "author": "woahwhattheheck",
@@ -97,7 +97,7 @@
       "head_sha": "04407dde467b62fc06401f7bd82e81becbdc7200",
       "number": 14173,
       "title": "fix(forensics): bind lease evidence to canonical Commons repo",
-      "updated_at": "2026-09-14T02:15:37Z"
+      "updated_at": "2026-09-14T02:19:20Z"
     },
     {
       "author": "woahwhattheheck",
@@ -192,7 +192,6 @@
     "13756": "f0db7219f3c214269cb33ea57315d5350f276d47",
     "13779": "cfe6ed2b5bf932f99e9adccbd2cca508a96f2a4e",
     "13782": "1553dd65151766b6c3a195fa87689f9505f1de29",
-    "13792": "8f12b7a8867f82efb6ec3768fc7ee6a89b494964",
     "13811": "7ab59e15331f47c39bc920373a4b0f1e9e7ff6c3",
     "13812": "d1b9b8efc128ece969fa5007f02487fd2028a0a8",
     "13818": "ebf95fdc8fe223e14d9f2fc51ab71916cead16dd",
@@ -214,7 +213,6 @@
     "13999": "2182d07cd8750087a73f2aea2455890d75daf251",
     "14010": "457ffa2ce5eacf467c603e1d05d6e2a0bf6bda11",
     "14054": "1980d5a6cd6ef5188832c6b48de7ee4a29501d85",
-    "14055": "47d0c3324958e66349aa741a56d4732f58a063d1",
     "14057": "05f6f1775a5762ffa18c5c19da1d94d35bc45bb0",
     "14066": "533c121abc2a8ea4d2ba90439400d46594b94cf1",
     "14076": "13097f7581280415461458584c34e590761afa89",
@@ -226,12 +224,56 @@
     "14159": "d9acf14a02c0a1455d063b63d1e4f041219b6410",
     "14173": "04407dde467b62fc06401f7bd82e81becbdc7200",
     "14188": "1859cf0bfc12f2819f3f63fd4349ed06ca5f341b",
-    "14206": "05a127ec0eae34f329906c2c69fa2603b3c791b4"
+    "14209": "e4838bf76ecc1c27e184661d68f94d2c5e9ce1dc"
   },
-  "pulls_listed": 49,
+  "pulls_listed": 47,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 34.9,
+  "queue_depth_per_runner": 34.6,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zhyp-c9v3/denton-floyd-cumulative-po-overrun-13789",
+      "closed_at": "2026-09-14T02:24:57Z",
+      "head_sha": "8f12b7a8867f82efb6ec3768fc7ee6a89b494964",
+      "merged_at": null,
+      "number": 13792,
+      "state": "CLOSED",
+      "title": "fix(revenue): hold cumulative invoice exposure above PO total"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zms-q7t9/denton-floyd-cumulative-po-rejoin-20260913",
+      "closed_at": "2026-09-14T02:24:34Z",
+      "head_sha": "b32d46c5b6b56b5e3983e699d1208f55d0d274cf",
+      "merged_at": "2026-09-14T02:24:34Z",
+      "number": 14210,
+      "state": "MERGED",
+      "title": "fix(revenue): land cumulative PO exposure guard on current main"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zktu/gosim-real-config-only-20260913",
+      "closed_at": "2026-09-14T02:23:31Z",
+      "head_sha": "d549f4a5a53eff9b0da77571b1948b97640f409b",
+      "merged_at": "2026-09-14T02:23:31Z",
+      "number": 14055,
+      "state": "MERGED",
+      "title": "GOSIM: require a real candidate configuration to pass the baseline"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zfh-k6w2/cash-source-byte-alias-20260913",
+      "closed_at": "2026-09-14T02:17:28Z",
+      "head_sha": "05a127ec0eae34f329906c2c69fa2603b3c791b4",
+      "merged_at": "2026-09-14T02:17:28Z",
+      "number": 14206,
+      "state": "MERGED",
+      "title": "fix: dedupe cash evidence by source bytes across authority labels"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -352,54 +394,10 @@
       "number": 14190,
       "state": "CLOSED",
       "title": "Revenue custody: collapse GitHub repo case aliases"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zfbw-k7r4/road-ocr-v2-consensus-20260913",
-      "closed_at": "2026-09-14T01:59:04Z",
-      "head_sha": "d83b2bfbffd2ea39506b18c684ef1dc722a2f57a",
-      "merged_at": "2026-09-14T01:59:04Z",
-      "number": 14192,
-      "state": "MERGED",
-      "title": "competition: add ROAD Barbados OCR v2 consensus and pseudo-label core"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zmh-c6t4-arc3-source-custody",
-      "closed_at": "2026-09-14T01:56:06Z",
-      "head_sha": "4c6e1a47b729ee9f1be71b1ba7448d58f03772bc",
-      "merged_at": "2026-09-14T01:56:06Z",
-      "number": 14181,
-      "state": "MERGED",
-      "title": "fix(arc3): bind hermetic execution to verified source bytes"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zzc/post-delivery-buyer-acceptance-20260913",
-      "closed_at": "2026-09-14T01:55:14Z",
-      "head_sha": "2639e90cc1cc6b3f390ea486e623d61745f28127",
-      "merged_at": "2026-09-14T01:55:14Z",
-      "number": 14187,
-      "state": "MERGED",
-      "title": "feat: add post-delivery buyer-acceptance evidence compiler"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zgl-m4q9/service-deal-independent-authority",
-      "closed_at": "2026-09-14T01:55:04Z",
-      "head_sha": "c82312b5c69bd4ad4fbdcd9c8a2393ce2e96238e",
-      "merged_at": null,
-      "number": 14186,
-      "state": "CLOSED",
-      "title": "revenue: authenticate Service Deal Economics input authority"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-14T02:17:10Z",
+  "unchanged_since": "2026-09-14T02:25:34Z",
   "undatable_pulls": []
 }
