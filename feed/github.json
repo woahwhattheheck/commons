@@ -1,9 +1,9 @@
 {
   "counts": {
-    "open_issues": 106,
-    "open_pull_requests": 57,
-    "runs_in_progress": 13,
-    "runs_queued": 732
+    "open_issues": 111,
+    "open_pull_requests": 58,
+    "runs_in_progress": 19,
+    "runs_queued": 769
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -69,13 +69,35 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
+      "branch": "zeta/usac-it-26-139-ai-consulting",
+      "created_at": "2026-09-14T03:50:07Z",
+      "draft": false,
+      "head_sha": "0090408898135a3634971de5f830a09aeb020319",
+      "number": 14281,
+      "title": "revenue: package USAC IT-26-139 AI consulting pursuit",
+      "updated_at": "2026-09-14T03:50:07Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z-vigil/org-atomic-outbound-lease-20260913",
+      "created_at": "2026-09-14T03:47:10Z",
+      "draft": false,
+      "head_sha": "d5c6f50d51f363738ad7cac03b5add6712804a84",
+      "number": 14276,
+      "title": "Revenue safety: atomic organization-wide outbound lease",
+      "updated_at": "2026-09-14T03:50:44Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
       "branch": "zklr-h5m8/outreach-claim-fence-20260913",
       "created_at": "2026-09-14T03:46:13Z",
       "draft": false,
-      "head_sha": "9a86e1bb588e31f59c752bf8dff0df1cf35d945d",
+      "head_sha": "4ae0b5ad134176059d1ed8409fa749ad993cd9c6",
       "number": 14273,
       "title": "feat(outreach): add atomic contact claim fence",
-      "updated_at": "2026-09-14T03:46:13Z"
+      "updated_at": "2026-09-14T03:48:54Z"
     },
     {
       "author": "woahwhattheheck",
@@ -90,17 +112,6 @@
     },
     {
       "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zeh-m6p2/ypf-wetgas-fusionmeter-20260913",
-      "created_at": "2026-09-14T03:39:57Z",
-      "draft": false,
-      "head_sha": "c1aafc9fdc6909a3cebc2965f9966724ca2d40e6",
-      "number": 14260,
-      "title": "YPF wet-gas challenge: FusionMeter AGA-3 PLR correction carrier",
-      "updated_at": "2026-09-14T03:46:14Z"
-    },
-    {
-      "author": "woahwhattheheck",
       "base": "zrt-p3x9/org-contact-pressure",
       "branch": "zam-v7c2/org-contact-pressure-event-id-admission",
       "created_at": "2026-09-14T03:38:04Z",
@@ -108,7 +119,7 @@
       "head_sha": "59bb5b92274463f546744b16b4e0d527b02a377b",
       "number": 14258,
       "title": "Fix organization-pressure proposed event ID admission",
-      "updated_at": "2026-09-14T03:38:04Z"
+      "updated_at": "2026-09-14T03:50:13Z"
     },
     {
       "author": "woahwhattheheck",
@@ -116,10 +127,10 @@
       "branch": "zcbw-x7m4/rfp-addenda-delta-14239",
       "created_at": "2026-09-14T03:36:03Z",
       "draft": false,
-      "head_sha": "e919c4237382e7d6cc3ac74d4022a4687c2884eb",
+      "head_sha": "f5fbaf6530a75ee22986d7aec207381deedfe549",
       "number": 14256,
       "title": "feat(revenue): exact RFP/Addenda Delta Desk",
-      "updated_at": "2026-09-14T03:44:58Z"
+      "updated_at": "2026-09-14T03:50:47Z"
     },
     {
       "author": "woahwhattheheck",
@@ -130,7 +141,7 @@
       "head_sha": "f0a1eba3ac83614e8303d4108dd6ec82abd2e05c",
       "number": 14254,
       "title": "Revenue: gate organization-level cross-contact pressure",
-      "updated_at": "2026-09-14T03:43:11Z"
+      "updated_at": "2026-09-14T03:50:26Z"
     },
     {
       "author": "woahwhattheheck",
@@ -164,17 +175,6 @@
       "number": 14228,
       "title": "repair: bind Commercial Portfolio Allocator to current authority",
       "updated_at": "2026-09-14T02:51:43Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zbj-c6h9-signoz-research-20260913",
-      "created_at": "2026-09-14T02:40:27Z",
-      "draft": false,
-      "head_sha": "bc063456d9fcff764b33a7f9079aed7b889ac09f",
-      "number": 14221,
-      "title": "revenue: qualify SigNoz for bounded survival-proof outreach",
-      "updated_at": "2026-09-14T02:50:35Z"
     }
   ],
   "open_heads": {
@@ -230,16 +230,50 @@
     "14235": "090815cee9355c36db86a6666023f391dc9ebcec",
     "14246": "b9f1b1779b4e4d9b7c19a9fc4744d28881282cd0",
     "14254": "f0a1eba3ac83614e8303d4108dd6ec82abd2e05c",
-    "14256": "e919c4237382e7d6cc3ac74d4022a4687c2884eb",
+    "14256": "f5fbaf6530a75ee22986d7aec207381deedfe549",
     "14258": "59bb5b92274463f546744b16b4e0d527b02a377b",
-    "14260": "c1aafc9fdc6909a3cebc2965f9966724ca2d40e6",
     "14270": "86c47a9e32a67eece1382899a898d9ccf40e26da",
-    "14273": "9a86e1bb588e31f59c752bf8dff0df1cf35d945d"
+    "14273": "4ae0b5ad134176059d1ed8409fa749ad993cd9c6",
+    "14276": "d5c6f50d51f363738ad7cac03b5add6712804a84",
+    "14281": "0090408898135a3634971de5f830a09aeb020319"
   },
-  "pulls_listed": 57,
+  "pulls_listed": 58,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 56.3,
+  "queue_depth_per_runner": 40.5,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zeh-m6p2/ypf-wetgas-fusionmeter-20260913",
+      "closed_at": "2026-09-14T03:49:39Z",
+      "head_sha": "c1aafc9fdc6909a3cebc2965f9966724ca2d40e6",
+      "merged_at": "2026-09-14T03:49:39Z",
+      "number": 14260,
+      "state": "MERGED",
+      "title": "YPF wet-gas challenge: FusionMeter AGA-3 PLR correction carrier"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zvf-h9k4/gguf-prospect-qualification-20260914",
+      "closed_at": "2026-09-14T03:48:49Z",
+      "head_sha": "ed04a8aead811c6e017391416d9c3adc107d3e5e",
+      "merged_at": "2026-09-14T03:48:49Z",
+      "number": 14277,
+      "state": "MERGED",
+      "title": "Revenue: qualify new targets for the fixed $12k GGUF diagnostic"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z-sol-13/ingham-11226-911-acceptance-20260913",
+      "closed_at": "2026-09-14T03:46:49Z",
+      "head_sha": "acbaf0903c0090465d2c55fb9ba9bea2b24c3989",
+      "merged_at": "2026-09-14T03:46:49Z",
+      "number": 14274,
+      "state": "MERGED",
+      "title": "Revenue: Ingham 112-26 independent 911 acceptance workshare"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -371,43 +405,10 @@
       "number": 14215,
       "state": "CLOSED",
       "title": "revenue: make initial hot-lead outreach provider-bound and one-shot"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zcd-b4j9/nawcad-acqatlas-20260913",
-      "closed_at": "2026-09-14T02:50:58Z",
-      "head_sha": "911705bca474f60784ef5db8c6dff070d43c7445",
-      "merged_at": "2026-09-14T02:50:57Z",
-      "number": 14234,
-      "state": "MERGED",
-      "title": "NAWCAD AcqDocs: add deterministic zero-LLM AcqAtlas recommender"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zkdd-r8n6/reply-revenue-chronology-fixforward-20260913",
-      "closed_at": "2026-09-14T02:50:56Z",
-      "head_sha": "83423bd3b038824a007712d722f65c66bd7ad82a",
-      "merged_at": "2026-09-14T02:50:56Z",
-      "number": 14229,
-      "state": "MERGED",
-      "title": "Fix reply-to-revenue chronology safety"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-solstice/relationship-census-14216",
-      "closed_at": "2026-09-14T02:50:08Z",
-      "head_sha": "670ac88afd800b0b1c2cda056a2ee76693a68351",
-      "merged_at": null,
-      "number": 14226,
-      "state": "CLOSED",
-      "title": "revenue: add provider relationship census custody gate"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-14T03:46:32Z",
+  "unchanged_since": "2026-09-14T03:51:24Z",
   "undatable_pulls": []
 }
