@@ -1,9 +1,9 @@
-"""Host-authenticated append-only current-ledger checkpoints.
+"""Host-authenticated retained current-ledger checkpoints.
 
-The ledger file is mutable retained evidence. A separate checkpoint directory
-prevents an earlier authentic ledger generation from becoming current merely by
-being copied back over the ledger pathname. Only checkpoints from the active
-verifier epoch can authorize the current ledger; older epochs may remain for
+The ledger file is mutable retained evidence. While its independently protected
+checkpoint directory remains intact, a copied-back authentic ledger cannot become
+current below a retained higher head. Only checkpoints from the active verifier-
+and-policy epoch can authorize the current ledger; older epochs may remain for
 history without becoming current authority.
 """
 
@@ -26,7 +26,6 @@ from .core import (
     InputError,
     LedgerView,
     VerificationError,
-    _canonical_bytes,
     _expect_exact_fields,
     _expect_hex64,
     _expect_int,
@@ -119,6 +118,7 @@ def _verify_current_ledger_head(
             raise VerificationError("ledger head journal exceeds entry limit")
 
         current: list[tuple[int, str, datetime, datetime]] = []
+        active_policy_generations: set[int] = set()
         for name in names:
             if not _HEAD_NAME_RE.fullmatch(name):
                 raise VerificationError("ledger head journal contains an unexpected entry")
@@ -139,13 +139,6 @@ def _verify_current_ledger_head(
                 continue
             if not hmac.compare_digest(signature, _hmac_hex(active.key, body)):
                 raise VerificationError("ledger head HMAC is invalid")
-            # Policy generations are independent retained epochs. A legitimate
-            # policy rotation may re-sign an unchanged event set at the same
-            # event-count generation, so older policy checkpoints remain
-            # historical without becoming a false same-generation fork.
-            if body["policy_generation"] != authority.policy_generation:
-                continue
-
             ledger_updated = _parse_time(body["ledger_updated_at"], "ledger_head.ledger_updated_at")
             committed = _parse_time(body["committed_at"], "ledger_head.committed_at")
             skew = timedelta(seconds=authority.max_future_skew_seconds)
@@ -153,10 +146,20 @@ def _verify_current_ledger_head(
                 raise VerificationError("ledger head predates the ledger update")
             if committed > now + skew:
                 raise VerificationError("ledger head is future-committed")
+
+            active_policy_generations.add(body["policy_generation"])
+            # Policy generations are independent retained epochs. A legitimate
+            # policy rotation may re-sign an unchanged event set at the same
+            # event-count generation, so older policy checkpoints remain
+            # historical without becoming a false same-generation fork.
+            if body["policy_generation"] != authority.policy_generation:
+                continue
             current.append((body["ledger_generation"], body["ledger_sha256"], ledger_updated, committed))
     finally:
         os.close(directory_fd)
 
+    if active_policy_generations and authority.policy_generation < max(active_policy_generations):
+        raise VerificationError("authority policy rollback detected below retained head")
     if not current:
         raise VerificationError("current verifier/policy epoch has no ledger head")
 

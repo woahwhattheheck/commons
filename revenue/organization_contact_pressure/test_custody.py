@@ -65,6 +65,22 @@ class CustodyTests(GateTestCase):
         self.fx.write_ledger_head(document)
         self.assertEqual(0, self._load_ledger().generation)
 
+    def test_authentic_policy_rollback_below_retained_floor_fails_closed(self):
+        authority_path = self.root / "authorities" / f"{self.fx.organization}.json"
+        ledger_path = self.root / "ledgers" / f"{self.fx.organization}.json"
+        generation_seven_authority = authority_path.read_bytes()
+        generation_seven_ledger = ledger_path.read_bytes()
+
+        self.fx.policy["policy_generation"] = 8
+        self.fx.write_authority()
+        self.fx.write_ledger([])
+        self.fx._write_private(authority_path, generation_seven_authority)
+        self.fx._write_private(ledger_path, generation_seven_ledger)
+
+        with self.assertRaisesRegex(gate.VerificationError, "policy rollback"):
+            self._load_ledger()
+        self.assert_decision(gate.HOLD_AUTHORITY, self.fx.compile())
+
     def test_key_rotation_requires_fresh_active_epoch_head(self):
         self.fx.key_id = "primary-20260915"
         self.fx.verifier_id = "commons-host-2"

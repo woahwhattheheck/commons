@@ -1,6 +1,6 @@
 # Organization Contact Pressure Prerequisite
 
-This package authenticates retained cross-contact pressure for one **canonical organization**. It prevents a different person, route, domain alias, or opportunity label from being treated as fresh when the retained ledger already records active, recent, replied, unsubscribed, bounced, or do-not-resend pressure.
+This package authenticates retained cross-contact pressure for one **canonical organization**. It produces a deterministic HOLD instead of READY when the retained ledger records active, recent, replied, unsubscribed, bounced, or do-not-resend pressure under another person, route, domain alias, or opportunity label.
 
 It is a **read-only prerequisite**, not the organization-wide mutex. Two callers can inspect the same quiet generation concurrently and both receive `READY_FOR_SINGLE_WRITER_REVIEW`. Every positive receipt therefore requires the separately retained `ATOMIC_ORGANIZATION_OUTBOUND_LEASE` before any external-send boundary. This package does not send messages and never emits external-send authority.
 
@@ -53,9 +53,10 @@ The mutable ledger is accepted only when it exactly matches the highest checkpoi
 - two active-epoch checkpoints with the same generation and different ledger identities are a fork and fail closed;
 - verifier-key rotation requires a fresh checkpoint under the new active key/verifier epoch;
 - policy-generation rotation requires a fresh checkpoint and does not misclassify an unchanged event-count generation as a fork;
+- restoring an older authentic policy generation below a retained active-verifier policy floor fails closed;
 - old verifier or policy epoch checkpoints may remain for history but cannot authorize the current ledger.
 
-The checkpoint journal is a separate host-owned retained object. A publisher may write the ledger and checkpoint in either order; readers fail closed during the incomplete transition and resume only when the pair agrees. This closes partial ledger-file rollback while the host-owned head journal remains current.
+The checkpoint journal is a separate host-owned retained path that the deployment must protect as append-only/independently retained. A publisher may write the ledger and checkpoint in either order; readers fail closed during the incomplete transition and resume only when the pair agrees. This detects partial ledger-file rollback while the higher head entries remain intact.
 
 ## Event semantics
 
@@ -104,4 +105,4 @@ The CLI owns current UTC. There is deliberately no `--now`, `--key`, `--authorit
 
 ## Authority ceiling
 
-No Gmail, Slack, customer, procurement portal, calendar, payment, wallet, or other provider is called. A READY receipt does not prove exclusive organization ownership, buyer interest, scope acceptance, award, payment, cash, booked revenue, or recognized revenue. It proves only that retained pressure evidence and its current-head checkpoint were coherent enough to request the separately atomic organization lease and the other named downstream controls.
+No Gmail, Slack, customer, procurement portal, calendar, payment, wallet, or other provider is called. A READY receipt does not prove exclusive organization ownership, buyer interest, scope acceptance, award, payment, cash, booked revenue, or recognized revenue. It proves only that retained pressure evidence and its current-head checkpoint were coherent enough to request the separately atomic organization lease and the other named downstream controls. Rollback resistance depends on the host retaining newer checkpoint entries independently; a whole-authority-root snapshot rollback that removes both the ledger change and its higher heads is a deployment-retention failure this reader cannot detect.
