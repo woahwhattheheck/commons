@@ -1,9 +1,9 @@
 {
   "counts": {
-    "open_issues": 96,
-    "open_pull_requests": 52,
-    "runs_in_progress": 16,
-    "runs_queued": 671
+    "open_issues": 97,
+    "open_pull_requests": 53,
+    "runs_in_progress": 14,
+    "runs_queued": 672
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -69,13 +69,24 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
+      "branch": "zcbw-x7m4/rfp-addenda-delta-14239",
+      "created_at": "2026-09-14T03:36:03Z",
+      "draft": false,
+      "head_sha": "eda701ad409346815180a64a6ef8406915914296",
+      "number": 14256,
+      "title": "feat(revenue): exact RFP/Addenda Delta Desk",
+      "updated_at": "2026-09-14T03:36:03Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
       "branch": "zrt-p3x9/org-contact-pressure",
       "created_at": "2026-09-14T03:31:53Z",
       "draft": false,
       "head_sha": "f0a1eba3ac83614e8303d4108dd6ec82abd2e05c",
       "number": 14254,
       "title": "Revenue: gate organization-level cross-contact pressure",
-      "updated_at": "2026-09-14T03:31:53Z"
+      "updated_at": "2026-09-14T03:36:47Z"
     },
     {
       "author": "woahwhattheheck",
@@ -164,17 +175,6 @@
       "number": 14188,
       "title": "revenue: authenticate Service Deal Economics input authority",
       "updated_at": "2026-09-14T02:03:36Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zaw-c9t4/forensics-canonical-repo-fix-20260913",
-      "created_at": "2026-09-14T01:50:02Z",
-      "draft": false,
-      "head_sha": "04407dde467b62fc06401f7bd82e81becbdc7200",
-      "number": 14173,
-      "title": "fix(forensics): bind lease evidence to canonical Commons repo",
-      "updated_at": "2026-09-14T02:19:20Z"
     }
   ],
   "open_heads": {
@@ -229,11 +229,12 @@
     "14228": "05f892701fdbbde76d0f236a44dc481256772817",
     "14235": "090815cee9355c36db86a6666023f391dc9ebcec",
     "14246": "b9f1b1779b4e4d9b7c19a9fc4744d28881282cd0",
-    "14254": "f0a1eba3ac83614e8303d4108dd6ec82abd2e05c"
+    "14254": "f0a1eba3ac83614e8303d4108dd6ec82abd2e05c",
+    "14256": "eda701ad409346815180a64a6ef8406915914296"
   },
-  "pulls_listed": 52,
+  "pulls_listed": 53,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 41.9,
+  "queue_depth_per_runner": 48.0,
   "recently_closed": [
     {
       "author": "woahwhattheheck",
@@ -403,6 +404,6 @@
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-14T03:33:46Z",
+  "unchanged_since": "2026-09-14T03:37:21Z",
   "undatable_pulls": []
 }
