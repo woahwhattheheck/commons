@@ -1,0 +1,151 @@
+{
+  "schema": "tjl.public-sector-workshare/v1",
+  "commercial_status": "PROPOSED_NOT_ACCEPTED",
+  "external_send_authorized": false,
+  "modules": [
+    {
+      "module_id": "migration-evidence",
+      "name": "Legacy Migration Evidence & Reconciliation",
+      "inputs": ["source-system extracts and schema/data dictionary", "target migration mapping or target export", "record-count/control-total rules and buyer-approved exceptions"],
+      "outputs": ["source-to-target reconciliation ledger", "field/transformation invariant report", "exception queue with source/target evidence locators", "repeatable replay manifest and evidence receipt"],
+      "acceptance": ["100% of in-scope source partitions accounted for", "control totals reconcile or carry explicit approved exception", "every transformed field is mapped to a rule or classified unmapped", "rerun over identical inputs produces identical canonical receipt"],
+      "exclusions": ["prime platform configuration", "production data mutation", "buyer acceptance authority", "PII transfer outside buyer-approved environment"]
+    },
+    {
+      "module_id": "integration-conformance",
+      "name": "Integration Contract Conformance Harness",
+      "inputs": ["interface/API/file contract", "buyer/prime test endpoint or captured fixtures", "required error/retry/idempotency behavior"],
+      "outputs": ["contract test suite", "request/response evidence ledger", "negative-path and replay matrix", "conformance receipt by interface/version"],
+      "acceptance": ["all required fields/types/version rules exercised", "idempotency/retry/error semantics have explicit tests", "pass/fail is traceable to exact contract version and fixture digest", "no test result is promoted to production availability evidence"],
+      "exclusions": ["OEM certification", "production endpoint ownership", "security authorization", "24x7 managed integration operations"]
+    },
+    {
+      "module_id": "uat-evidence",
+      "name": "UAT & Acceptance Evidence Pack",
+      "inputs": ["approved business scenarios and requirements", "test execution artifacts", "defect/disposition records"],
+      "outputs": ["requirement-to-scenario trace matrix", "evidence-bound result packet", "open-defect/waiver ledger", "acceptance-readiness report"],
+      "acceptance": ["every in-scope requirement maps to executed evidence or explicit HOLD", "failed/blocked cases cannot be represented as passed", "waivers are separately attributed and never self-minted by the compiler", "packet digest verifies after handoff"],
+      "exclusions": ["buyer sign-off", "legal acceptance", "prime warranty obligations", "invented performance or security claims"]
+    },
+    {
+      "module_id": "cutover-replay",
+      "name": "Cutover, Rollback & Replay Evidence",
+      "inputs": ["prime-owned cutover plan", "migration/integration checkpoints", "rollback criteria and recovery objectives"],
+      "outputs": ["ordered checkpoint/replay plan", "pre/post cutover reconciliation packet", "rollback-decision evidence template", "dry-run receipt with timing and unresolved holds"],
+      "acceptance": ["every irreversible step is prime/buyer-authorized outside this tool", "pre/post control totals are explicit", "rollback criteria are machine-checkable where possible", "dry-run evidence is never labeled production cutover evidence"],
+      "exclusions": ["production change authority", "go-live approval", "incident commander authority", "cloud/OEM operations"]
+    }
+  ],
+  "pricing": [
+    {
+      "price_id": "evidence-sprint-22500",
+      "name": "3-week Workshare Evidence Sprint",
+      "amount_usd": 22500,
+      "duration_weeks_min": 2,
+      "duration_weeks_max": 4,
+      "scope": ["one bounded migration or integration seam", "one reproducible evidence harness", "one UAT/cutover handoff packet", "up to two review/rework cycles against agreed acceptance tests"],
+      "status": "PROPOSED_NOT_ACCEPTED"
+    },
+    {
+      "price_id": "implementation-workshare-95000",
+      "name": "Implementation Evidence Workshare",
+      "amount_usd": 95000,
+      "duration_weeks_min": 8,
+      "duration_weeks_max": 16,
+      "scope": ["up to three bounded source systems or interfaces", "migration + integration + UAT evidence rails", "cutover rehearsal/replay package", "weekly evidence ledger and prime handoff"],
+      "status": "PROPOSED_NOT_ACCEPTED"
+    }
+  ],
+  "opportunities": [
+    {
+      "opportunity_id": "IL-DOIT-CDB-27-448DOIT-ADMIN-B-52519",
+      "buyer": "Illinois DoIT + Capital Development Board",
+      "title": "Statewide Construction Project Management Automation and Modernization",
+      "deadline": "2026-10-28T23:59:00-05:00",
+      "deadline_authority": "REVALIDATE_BEFORE_REPRESENTATION",
+      "scope_summary": "Cloud full-lifecycle construction/project/procurement/contract/invoice/document platform with legacy migration, SAP ERP integration, CEI/SOS integration and future interfaces; System Implementor prime owns solution and full implementation.",
+      "workshare_wedge": ["legacy migration reconciliation and transformation invariants", "SAP/CEI/SOS interface-contract verification", "UAT evidence and cutover/replay packet"],
+      "prime_owned": ["solution/platform selection and licenses", "System Implementor prime responsibility", "SAP/state enterprise architecture and production integration authority", "CDB/Illinois qualifications and past performance representations"],
+      "named_target_candidates": [],
+      "modules": ["migration-evidence", "integration-conformance", "uat-evidence", "cutover-replay"],
+      "evidence": [
+        {
+          "source_url": "https://cdb.illinois.gov/procurement/camp-rfp.html",
+          "captured_at": "2026-09-14T03:52:00Z",
+          "authority": "FIRST_PARTY_BUYER_PAGE",
+          "facts": ["Bid 27-448DOIT-ADMIN-B-52519", "cloud full-lifecycle construction project management modernization", "legacy migration and SAP ERP plus CEI/SOS integration", "System Implementor serves as prime contractor"]
+        }
+      ]
+    },
+    {
+      "opportunity_id": "OR-ODA-S-DASOBO-00017788",
+      "buyer": "Oregon DAS on behalf of Department of Agriculture",
+      "title": "OneODA CRM and Licensing Solution",
+      "deadline": "2026-09-30T16:00:00-07:00",
+      "deadline_authority": "FIRST_PARTY_VERIFIED",
+      "scope_summary": "OPEN CRM/licensing solicitation covering design, configuration, extension, integration development, data migration, testing and implementation support.",
+      "workshare_wedge": ["Oracle/legacy-to-target migration profiling and reconciliation", "integration conformance harness", "UAT evidence pack"],
+      "prime_owned": ["CRM/licensing platform and solution architecture", "configuration and production implementation", "accessibility/security compliance representations", "prime references and State contract obligations"],
+      "named_target_candidates": [
+        {"company": "Atmosera", "evidence_status": "REVALIDATE_BEFORE_OUTREACH"},
+        {"company": "Deloitte Consulting", "evidence_status": "REVALIDATE_BEFORE_OUTREACH"},
+        {"company": "TEKsystems Global Services", "evidence_status": "REVALIDATE_BEFORE_OUTREACH"},
+        {"company": "Windsor Solutions", "evidence_status": "REVALIDATE_BEFORE_OUTREACH"}
+      ],
+      "modules": ["migration-evidence", "integration-conformance", "uat-evidence"],
+      "evidence": [
+        {
+          "source_url": "https://oregonbuys.gov/bso/external/bidDetail.sda?docId=S-DASOBO-00017788&external=true&parentUrl=close",
+          "captured_at": "2026-09-14T03:52:00Z",
+          "authority": "FIRST_PARTY_PROCUREMENT_PORTAL",
+          "facts": ["Bid S-DASOBO-00017788 is OPEN", "opening September 30 2026 4:00 PM", "scope includes integration development, data migration, testing and implementation support", "attachments include system integration and Oracle table materials"]
+        }
+      ]
+    },
+    {
+      "opportunity_id": "NYSED-RFP-144-OCUE",
+      "buyer": "New York State Education Department",
+      "title": "Office of College & University Evaluation Modernization",
+      "deadline": "2026-10-13T15:00:00-04:00",
+      "deadline_authority": "FIRST_PARTY_VERIFIED",
+      "scope_summary": "SaaS low-code cloud Forms Management Platform modernization; public package includes mainframe/process/integration artifacts and limits subcontracting to 30% of total contract budget.",
+      "workshare_wedge": ["mainframe/Access extraction and migration reconciliation", "interface/UAT harness", "cutover evidence within prime-owned platform implementation"],
+      "prime_owned": ["low-code SaaS platform and solution architecture", "prime bid and overall implementation", "M/WBE/SDVOB compliance and representations", "subcontracting-cap management and NYSED contract obligations"],
+      "named_target_candidates": [
+        {"company": "OutSystems", "evidence_status": "REVALIDATE_BEFORE_OUTREACH"},
+        {"company": "Sparkling Logic", "evidence_status": "REVALIDATE_BEFORE_OUTREACH"},
+        {"company": "Thundercat Technology", "evidence_status": "REVALIDATE_BEFORE_OUTREACH"},
+        {"company": "NYSTEC", "evidence_status": "REVALIDATE_BEFORE_OUTREACH"}
+      ],
+      "modules": ["migration-evidence", "integration-conformance", "uat-evidence", "cutover-replay"],
+      "evidence": [
+        {
+          "source_url": "https://www.nysed.gov/funding-opportunities/rfp-144-office-college-university-evaluation-ocue-modernization",
+          "captured_at": "2026-09-14T03:52:00Z",
+          "authority": "FIRST_PARTY_BUYER_PAGE",
+          "facts": ["RFP 144 seeks SaaS low-code cloud Forms Management Platform", "electronic bids due October 13 2026 at 3:00 PM Eastern", "subcontracting limited to 30% of total contract budget", "buyer publishes mainframe process and functional requirement attachments"]
+        }
+      ]
+    },
+    {
+      "opportunity_id": "NC-DHHS-DHB-30-2025-037-DHB",
+      "buyer": "North Carolina DHHS Division of Health Benefits",
+      "title": "Contract Lifecycle Management System",
+      "deadline": "2026-10-23T14:00:00-04:00",
+      "deadline_authority": "REVALIDATE_BEFORE_REPRESENTATION",
+      "scope_summary": "Secure cloud CLMS for Medicaid-related contracts with Office 365, SharePoint, Adobe and DocuSign interoperability, optional ServiceNow/NCFS integration, implementation, migration, training and support.",
+      "workshare_wedge": ["contract corpus migration verification", "integration conformance/replay", "deterministic UAT and acceptance evidence"],
+      "prime_owned": ["CLMS SaaS product and solution architecture", "qualifying Medicaid/public-sector references", "State security/privacy/enterprise architecture compliance", "training/support and overall contract obligations"],
+      "named_target_candidates": [],
+      "modules": ["migration-evidence", "integration-conformance", "uat-evidence", "cutover-replay"],
+      "evidence": [
+        {
+          "source_url": "https://evp.nc.gov/solicitations/details/?id=5d9802e7-e99b-f111-8077-001dd80bcb64",
+          "captured_at": "2026-09-14T03:52:00Z",
+          "authority": "FIRST_PARTY_PROCUREMENT_PORTAL",
+          "facts": ["RFP 30-2025-037-DHB is Open", "secure cloud CLMS for Medicaid contract lifecycle", "integration with Office 365, SharePoint, Adobe and DocuSign; optional ServiceNow/NCFS", "scope includes implementation, data migration, training, documentation and support"]
+        }
+      ]
+    }
+  ]
+}
