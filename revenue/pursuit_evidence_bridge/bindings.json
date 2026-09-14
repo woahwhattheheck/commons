@@ -1,0 +1,21 @@
+{
+  "schema": "pursuit-evidence-bridge/bindings/v1",
+  "bindings": [
+    {
+      "binding_id": "jersey-dn827803-main-v1",
+      "opportunity_id": "DN827803",
+      "source_ledger_path": "opportunities/jersey_connecting_health_cdr_openehr_dn827803/sources.json",
+      "source_ledger_sha256": "cf68161b5a25921db89b4cc88b8224720a09af1668640e5934a4eaac74e9a1b4",
+      "submission_manifest_path": "opportunities/jersey_connecting_health_cdr_openehr_dn827803/fixtures/public_hold.json",
+      "submission_manifest_sha256": "19caa5e20b55eafcfa39a0fd90689b9642262bf791027bc7db811bd645547a5c",
+      "deadline_utc": "2026-09-29T22:30:00Z",
+      "vault_authority_sha256": null,
+      "vault_registry_sha256": null,
+      "vault_query_sha256": null,
+      "static_holds": [
+        "CONTROLLING_TENDER_PACK_NOT_REVIEWED",
+        "TENDER_PACK_NOT_ACQUIRED"
+      ]
+    }
+  ]
+}
