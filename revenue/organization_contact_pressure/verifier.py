@@ -4,7 +4,6 @@ from __future__ import annotations
 
 import hmac
 from datetime import datetime, timezone
-from pathlib import Path
 from typing import Any
 
 from .core import (
@@ -15,7 +14,15 @@ from .receipt_parse import _normalize_receipt
 from .records import _load_authority, _load_ledger
 from .storage import _authority_root, _load_active_key, _load_key_by_id
 
-def _verify_receipt_integrity_at(receipt_data: bytes, *, root: Path) -> dict[str, Any]:
+
+def _utc_now() -> datetime:
+    """Return the process-owned current UTC generation used by production."""
+    return datetime.now(timezone.utc).replace(microsecond=0)
+
+
+def verify_receipt_integrity(receipt_data: bytes) -> dict[str, Any]:
+    """Verify immutable receipt history using the fixed retained verifier-key root."""
+    root = _authority_root()
     try:
         document = _expect_object(strict_json_loads(receipt_data), "receipt")
         body, receipt_hmac, receipt_sha = _normalize_receipt(document)
@@ -32,18 +39,15 @@ def _verify_receipt_integrity_at(receipt_data: bytes, *, root: Path) -> dict[str
     return {**signed, "receipt_sha256": receipt_sha}
 
 
-def verify_receipt_integrity(receipt_data: bytes) -> dict[str, Any]:
-    """Verify immutable receipt history using a retained verifier key."""
-    return _verify_receipt_integrity_at(receipt_data, root=_authority_root())
-
-
-def _verify_receipt_current_at(receipt_data: bytes, *, root: Path, now: datetime) -> dict[str, Any]:
-    receipt = _verify_receipt_integrity_at(receipt_data, root=root)
+def verify_receipt_current(receipt_data: bytes) -> dict[str, Any]:
+    """Verify integrity and reacquire fixed-root live authority for READY receipts."""
+    receipt = verify_receipt_integrity(receipt_data)
     if receipt["decision"] != READY:
         return receipt
-    now = now.astimezone(timezone.utc).replace(microsecond=0)
+    now = _utc_now()
     if _parse_time(receipt["valid_until"], "receipt.valid_until") < now:
         raise VerificationError("READY receipt is expired")
+    root = _authority_root()
     active = _load_active_key(root)
     if receipt["key_id"] != active.key_id or receipt["verifier_id"] != active.verifier_id:
         raise VerificationError("READY receipt verifier generation is no longer active")
@@ -56,12 +60,3 @@ def _verify_receipt_current_at(receipt_data: bytes, *, root: Path, now: datetime
     if ledger.generation != receipt["ledger_generation"] or ledger.digest != receipt["ledger_sha256"]:
         raise VerificationError("READY receipt ledger generation moved")
     return receipt
-
-
-def verify_receipt_current(receipt_data: bytes) -> dict[str, Any]:
-    """Verify receipt integrity and reacquire live authority for READY receipts."""
-    return _verify_receipt_current_at(
-        receipt_data,
-        root=_authority_root(),
-        now=datetime.now(timezone.utc).replace(microsecond=0),
-    )
