@@ -13,6 +13,7 @@ from typing import Any, Mapping, Optional, Sequence
 REQUEST_SCHEMA = "organization-contact-pressure-request/v1"
 AUTHORITY_SCHEMA = "organization-contact-pressure-authority/v1"
 LEDGER_SCHEMA = "organization-contact-pressure-ledger/v1"
+LEDGER_HEAD_SCHEMA = "organization-contact-pressure-ledger-head/v1"
 RECEIPT_SCHEMA = "organization-contact-pressure-receipt/v1"
 KEY_POINTER_SCHEMA = "organization-contact-pressure-key-pointer/v1"
 
@@ -104,6 +105,7 @@ class AuthorityView:
     request_max_age_seconds: int
     ready_validity_seconds: int
     max_future_skew_seconds: int
+    ledger_complete_max_age_seconds: int
     issued_at: datetime
     valid_until: datetime
     key_id: str
