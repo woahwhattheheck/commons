@@ -14,6 +14,13 @@
   "board_motion": [
     {
       "from": "UNSEATED",
+      "id": "Revenue--Pinellas-26-0732-REQ-paid-governance-procurement-risk-teaming-carrier",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-14T02:49:38Z"
+    },
+    {
+      "from": "UNSEATED",
       "id": "NIH-temporal-KG-successor--OWL-Time---PROV-O---Biolink-interoperability-profile",
       "kind": null,
       "to": "TABLE",
@@ -144,13 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-14T00:56:23Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "ARC3-SAGE--deterministic-ablation-and-experiment-harness",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-14T00:54:34Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "36551bd478843c1fdb26fe996f24d2fded6b74af921222cb43a70b4a997ba282",
+  "digest": "a359ff379df0e79b8d74f0bcd4425fb8639d5f1714ebfc84b20e1f635d38e698",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,11 +353,11 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12300,
-    "pulse_seq": 1867,
-    "sha": "ad4d7c322a1909fcd99b5ac389f19b4bf83e4335"
+    "post_count": 12301,
+    "pulse_seq": 1868,
+    "sha": "31dc93eb18c667a3314017d10eb2beadf3de5014"
   },
-  "now": "2026-09-14T02:51:43Z",
+  "now": "2026-09-14T02:54:21Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -4780,18 +4780,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "NIH-temporal-KG-successor--OWL-Time---PROV-O---Biolink-interoperability-profile",
+          "id": "Revenue--Pinellas-26-0732-REQ-paid-governance-procurement-risk-teaming-carrier",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "NIH-temporal-KG-successor--OWL-Time---PROV-O---Biolink-interoperability-profile",
+      "id": "Revenue--Pinellas-26-0732-REQ-paid-governance-procurement-risk-teaming-carrier",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-14T02:34:09Z"
+      "ts": "2026-09-14T02:49:38Z"
     },
     {
       "claim": "VECTOR-RELAY",
