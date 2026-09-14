@@ -1,9 +1,9 @@
 {
   "counts": {
     "open_issues": 76,
-    "open_pull_requests": 44,
-    "runs_in_progress": 18,
-    "runs_queued": 109
+    "open_pull_requests": 45,
+    "runs_in_progress": 19,
+    "runs_queued": 118
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -69,13 +69,24 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
+      "branch": "zkt-a7v2/right-now-human-authority",
+      "created_at": "2026-09-14T01:14:29Z",
+      "draft": false,
+      "head_sha": "1c95d8463cbaf7e6d11d266d292a5b7792a2dbbb",
+      "number": 14122,
+      "title": "Bind right-now buyer truth to canonical reply evidence",
+      "updated_at": "2026-09-14T01:14:29Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
       "branch": "zep-b4n8/live-opportunity-intake-20260913",
       "created_at": "2026-09-14T01:09:43Z",
       "draft": false,
-      "head_sha": "1dba46bee9a4f6f8551d5046223b2bda1673d407",
+      "head_sha": "6d963d04d54f33586b5ff96cc0388c47d9214211",
       "number": 14114,
       "title": "revenue: compile live opportunity state into portfolio input",
-      "updated_at": "2026-09-14T01:13:48Z"
+      "updated_at": "2026-09-14T01:15:15Z"
     },
     {
       "author": "woahwhattheheck",
@@ -164,17 +175,6 @@
       "number": 14010,
       "title": "fix(revenue): harden Jersey DN827803 qualification authority v2",
       "updated_at": "2026-09-13T15:34:12Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zck-m6v2/call-e-routescout-20260913",
-      "created_at": "2026-09-13T14:46:36Z",
-      "draft": false,
-      "head_sha": "2182d07cd8750087a73f2aea2455890d75daf251",
-      "number": 13999,
-      "title": "CALL-E RouteScout: approval-gated procurement routing agent",
-      "updated_at": "2026-09-13T14:55:42Z"
     }
   ],
   "open_heads": {
@@ -221,11 +221,12 @@
     "14076": "13097f7581280415461458584c34e590761afa89",
     "14086": "4c8e4df0e5a085565937ee85e34f464f76fcdc11",
     "14105": "d0c104f5fd41f4bb1e4f77fbb768804654b27a85",
-    "14114": "1dba46bee9a4f6f8551d5046223b2bda1673d407"
+    "14114": "6d963d04d54f33586b5ff96cc0388c47d9214211",
+    "14122": "1c95d8463cbaf7e6d11d266d292a5b7792a2dbbb"
   },
-  "pulls_listed": 44,
+  "pulls_listed": 45,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 6.1,
+  "queue_depth_per_runner": 6.2,
   "recently_closed": [
     {
       "author": "woahwhattheheck",
@@ -395,6 +396,6 @@
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-14T01:14:29Z",
+  "unchanged_since": "2026-09-14T01:15:22Z",
   "undatable_pulls": []
 }
