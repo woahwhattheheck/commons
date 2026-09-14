@@ -131,6 +131,11 @@ class LeaseTests(unittest.TestCase):
         self.assertNotIn("Example", a)
         self.assertNotEqual(a, fingerprint_organization(b"Example Inc canonical", b"x"*32))
 
+    def test_holder_capability_must_be_exactly_32_bytes(self):
+        with self.assertRaises(ValueError): holder_capability_commitment(b"x" * 31)
+        with self.assertRaises(ValueError): holder_capability_commitment(b"x" * 33)
+        self.assertEqual(len(holder_capability_commitment(b"x" * 32)), 64)
+
     def test_pressure_verifier_has_no_signing_secret_or_mint_helper(self):
         self.assertFalse(hasattr(core, "mint_pressure_attestation_for_host"))
         self.assertEqual(set(VERIFIER.__dict__), {"key_id", "modulus", "exponent"})
