@@ -1,0 +1,45 @@
+{
+  "schema": "agent-false-success-target/v1",
+  "target": "SigNoz",
+  "status": "QUALIFIED_INTERNAL_DRAFT_NO_SEND",
+  "external_send_authorized": false,
+  "commercial_offer": {
+    "name": "Same-Day Agent Survival Proof",
+    "price_usd": 2500,
+    "status": "PROPOSED_NOT_ACCEPTED",
+    "delivery_shape": "One bounded adversarial capture matrix, deterministic proof report, remediation findings, and replayable acceptance checks"
+  },
+  "problem_evidence": [
+    {
+      "kind": "FIRST_PARTY_GITHUB_ISSUE",
+      "url": "https://github.com/SigNoz/signoz/issues/12621",
+      "mapping": "HTTP 200 plus HTML/login/error content can be accepted as a successful tool result and surfaced to an agent as observability data"
+    },
+    {
+      "kind": "FIRST_PARTY_PRODUCT_ROADMAP",
+      "url": "https://signoz.io/blog/agent-native-observability/",
+      "mapping": "Agent-native observability makes machine-consumed telemetry and tool-result correctness a direct product boundary"
+    },
+    {
+      "kind": "FIRST_PARTY_OWNER_ROLE",
+      "url": "https://signoz.io/about-us/",
+      "mapping": "Ankit Nayan is listed as Co-Founder and CTO; re-read first-party contact route and provider/thread history immediately before any outreach"
+    }
+  ],
+  "proof_matrix_mapping": {
+    "HTTP_200_HTML": "Raw HTML error or landing page returned with a success status",
+    "HTTP_200_LOGIN_HTML": "Authentication/login page returned as transport success",
+    "HTTP_200_MISLABELED_HTML": "Proxy labels HTML as JSON",
+    "MCP_WRAPPED_HTML": "HTML is wrapped inside a JSON-RPC/MCP success result",
+    "VALID_CONTROL": "Real structured observability result remains accepted"
+  },
+  "outreach_fence": {
+    "required": true,
+    "requirements": [
+      "fresh Slack opportunity/target/thread ownership check",
+      "fresh mailbox/provider history check",
+      "single-writer last-inch claim before send",
+      "record literal send outcome; never infer acceptance/payment from silence"
+    ]
+  }
+}
