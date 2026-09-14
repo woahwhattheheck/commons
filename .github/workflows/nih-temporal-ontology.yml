@@ -1,0 +1,53 @@
+name: NIH temporal ontology profile
+
+on:
+  pull_request:
+    paths:
+      - "research/nih_temporal_kg_2026/temporal_evidence.py"
+      - "research/nih_temporal_kg_2026/ontology/**"
+      - ".github/workflows/nih-temporal-ontology.yml"
+  push:
+    branches: [main]
+    paths:
+      - "research/nih_temporal_kg_2026/temporal_evidence.py"
+      - "research/nih_temporal_kg_2026/ontology/**"
+      - ".github/workflows/nih-temporal-ontology.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  conformance:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    defaults:
+      run:
+        working-directory: research/nih_temporal_kg_2026/ontology
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Compile exact sources
+        run: >-
+          python -m py_compile
+          ontology_adapter.py
+          profile_vocab.py
+          profile_ntriples.py
+          profile_export.py
+          profile_import.py
+          profile_receipt.py
+          test_ontology_adapter.py
+          ../temporal_evidence.py
+      - name: Hostile suite
+        run: python -m unittest -v test_ontology_adapter.py
+      - name: Hostile suite under optimization
+        run: python -O -m unittest -v test_ontology_adapter.py
+      - name: Example export and semantic round trip
+        run: |
+          tmp="$(mktemp -d)"
+          python ontology_adapter.py export example.jsonl "$tmp/example.nt" --receipt "$tmp/receipt.json"
+          python ontology_adapter.py import "$tmp/example.nt" "$tmp/roundtrip.jsonl"
+          cmp example.jsonl "$tmp/roundtrip.jsonl"
+          python ontology_adapter.py verify example.jsonl "$tmp/example.nt" "$tmp/receipt.json"
