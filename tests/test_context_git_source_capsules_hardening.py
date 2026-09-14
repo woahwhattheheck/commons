@@ -8,7 +8,12 @@ import unittest
 from pathlib import Path
 
 from host.context_packet import DIGEST_KEY, canonical, compile_packet, verify_packet
-from host.git_source_capsules import collect_git_source, verify_git_source, verify_packet_git_source
+from host.git_source_capsules import (
+    GitSourceError,
+    collect_git_source,
+    verify_git_source,
+    verify_packet_git_source,
+)
 
 
 def run(repo: Path, *args: str, input_bytes: bytes | None = None) -> bytes:
@@ -149,6 +154,38 @@ class GitSourceCapsuleHardeningTests(unittest.TestCase):
                 os.environ.pop("GIT_NO_REPLACE_OBJECTS", None)
             else:
                 os.environ["GIT_NO_REPLACE_OBJECTS"] = prior
+        self.assertEqual(bundle["capsules"][0]["text"], "alpha committed\nline two\n")
+
+    def test_inherited_git_dir_cannot_redirect_explicit_repository(self):
+        with tempfile.TemporaryDirectory() as other_tmp:
+            other = Path(other_tmp)
+            run(other, "init", "-q")
+            run(other, "config", "user.email", "decoy@example.invalid")
+            run(other, "config", "user.name", "Decoy Repo")
+            (other / "alpha.txt").write_text("DECOY REPOSITORY\n", encoding="utf-8")
+            run(other, "add", "alpha.txt")
+            run(other, "commit", "-q", "-m", "decoy")
+            run(other, "branch", "-M", "main")
+            decoy_commit = run(other, "rev-parse", "HEAD").decode().strip()
+
+            prior = os.environ.get("GIT_DIR")
+            os.environ["GIT_DIR"] = str(other / ".git")
+            try:
+                # Ordinary Git proves that -C does not defeat inherited GIT_DIR.
+                self.assertEqual(
+                    run(self.repo, "rev-parse", "HEAD").decode().strip(),
+                    decoy_commit,
+                )
+                bundle = collect_git_source(self.repo, self.commit, ["alpha.txt"])
+                with self.assertRaises(GitSourceError):
+                    collect_git_source(self.repo, decoy_commit, ["alpha.txt"])
+            finally:
+                if prior is None:
+                    os.environ.pop("GIT_DIR", None)
+                else:
+                    os.environ["GIT_DIR"] = prior
+
+        self.assertEqual(bundle["commit"], self.commit)
         self.assertEqual(bundle["capsules"][0]["text"], "alpha committed\nline two\n")
 
 
