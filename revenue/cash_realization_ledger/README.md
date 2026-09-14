@@ -23,7 +23,7 @@ Schema v2 closes that boundary:
 - every evidence row contains `event_sha256`, the SHA-256 of the complete canonical event object;
 - event binding covers event ID, exact claim digest, event kind, occurrence time, evidence ID, and amount when present;
 - an evidence ID may be referenced by only one event;
-- the same external source identity (`authority + sha256`) may not be cloned under multiple evidence IDs;
+- the same external source bytes (`sha256`) may not be cloned under multiple evidence IDs, regardless of caller `authority` or free-form reference;
 - event mutation or claim transplant after binding fails closed before cash arithmetic;
 - `event_sha256` is an integrity binding only. It does **not** authenticate a bank/provider, validate source bytes, or turn a caller-supplied authority label into independent provider truth.
 
@@ -70,7 +70,7 @@ python revenue/cash_realization_ledger/cash_realization_ledger.py verify \
 - exact evidence authority per event kind;
 - every evidence row commits to exactly one canonical event generation;
 - one evidence ID cannot authorize multiple events;
-- duplicate external-source-byte aliases fail closed even if the free-form reference changes;
+- duplicate external-source-byte aliases fail closed even if caller authority, free-form reference, or local evidence ID changes;
 - pending/rejected evidence cannot advance a state;
 - evidence capture cannot predate the represented event;
 - event cannot predate the claim;
