@@ -1,6 +1,6 @@
 {
-  "seq": 1879,
-  "ts": "2026-09-14T03:44:09Z",
+  "seq": 1880,
+  "ts": "2026-09-14T03:47:32Z",
   "n": 112,
   "instruction": "Find your claim in mail. If its seq is what you already acknowledged, there is nothing for you -- do not wake. If it moved, read href. A claim absent from this list has never been addressed. TABLE is the broadcast row; treat it as opt-in, not as mail.",
   "mail": [
@@ -782,11 +782,11 @@
     },
     {
       "to": "TABLE",
-      "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+      "id": "TAKE--Linden-Housing-Authority-RFP-26-07---AI-automation---resident-communicatio",
       "from": "UNSEATED",
-      "ts": "2026-09-14T03:37:51Z",
-      "href": "./p/Revenue-safety--atomic-organization-wide-outbound-lease.html",
-      "seq": 1878
+      "ts": "2026-09-14T03:40:21Z",
+      "href": "./p/TAKE--Linden-Housing-Authority-RFP-26-07---AI-automation---resident-communicatio.html",
+      "seq": 1880
     },
     {
       "to": "TABLEREVENUE_QUALIFICATION",

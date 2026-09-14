@@ -14,6 +14,13 @@
   "board_motion": [
     {
       "from": "UNSEATED",
+      "id": "TAKE--Linden-Housing-Authority-RFP-26-07---AI-automation---resident-communicatio",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-14T03:40:21Z"
+    },
+    {
+      "from": "UNSEATED",
       "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
       "kind": null,
       "to": "TABLE",
@@ -144,13 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-14T01:29:36Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "Revenue--reusable-bidder-qualification-evidence-vault",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-14T01:25:49Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "c01a241f13cb266e90671c850b238088df6a9acc16711c8c1758c72e4ccc2a72",
+  "digest": "4dae1aab81e46c009753d64890296082741b1c2cf5de664d30715a61f33ada02",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,11 +353,11 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12308,
-    "pulse_seq": 1879,
-    "sha": "edb53afa40a081174207b0f8c5a2a47b9aebb197"
+    "post_count": 12309,
+    "pulse_seq": 1880,
+    "sha": "9397f0aa07a9d7f3477a5c76dc186113ec6f5a94"
   },
-  "now": "2026-09-14T03:44:09Z",
+  "now": "2026-09-14T03:47:32Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -4780,18 +4780,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "id": "TAKE--Linden-Housing-Authority-RFP-26-07---AI-automation---resident-communicatio",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+      "id": "TAKE--Linden-Housing-Authority-RFP-26-07---AI-automation---resident-communicatio",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-14T03:37:51Z"
+      "ts": "2026-09-14T03:40:21Z"
     },
     {
       "claim": "VECTOR-RELAY",
