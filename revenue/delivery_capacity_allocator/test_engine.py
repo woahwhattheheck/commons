@@ -8,6 +8,7 @@ from datetime import datetime, timezone
 
 from revenue.delivery_capacity_allocator.cli import main as cli_main
 from revenue.delivery_capacity_allocator.engine import (
+    DIAGNOSTIC_CAPACITY_CANDIDATE,
     HISTORICAL_REPLAY_ONLY,
     INDEPENDENT_ROOT_AUTHORITY_REQUIRED,
     CapacityError,
@@ -134,10 +135,12 @@ class CapacityTests(unittest.TestCase):
     def test_historical_allocates_diagnostic_only(self):
         out = compile_obj(policy(), demands([deal("a"), deal("b")]), reservations())
         by = {row["deal_id"]: row for row in out["decisions"]}
-        self.assertEqual(by["a"]["decision"], "ALLOCATED_FOR_OWNER_REVIEW")
+        self.assertEqual(by["a"]["decision"], DIAGNOSTIC_CAPACITY_CANDIDATE)
         self.assertEqual(by["b"]["decision"], "CAPACITY_HOLD")
         self.assertEqual(out["current_state"], HISTORICAL_REPLAY_ONLY)
         self.assertIn(INDEPENDENT_ROOT_AUTHORITY_REQUIRED, out["global_blockers"])
+        self.assertEqual(out["schema"], "tjlabs.delivery-capacity-allocation/v2")
+        self.assertNotIn("ALLOCATED_FOR_OWNER_REVIEW", canonical_json(out).decode("utf-8"))
 
     def test_funded_beats_accepted_diagnostic(self):
         out = compile_obj(
@@ -151,7 +154,7 @@ class CapacityTests(unittest.TestCase):
             reservations(),
         )
         by = {row["deal_id"]: row for row in out["decisions"]}
-        self.assertEqual(by["b"]["decision"], "ALLOCATED_FOR_OWNER_REVIEW")
+        self.assertEqual(by["b"]["decision"], DIAGNOSTIC_CAPACITY_CANDIDATE)
         self.assertEqual(by["a"]["decision"], "CAPACITY_HOLD")
 
     def test_active_reservation_consumes_capacity(self):
@@ -383,6 +386,7 @@ class CapacityTests(unittest.TestCase):
         self.assertEqual(receipt["current_state"], "HOLD_EXTERNAL_AUTHORITY")
         self.assertIn(INDEPENDENT_ROOT_AUTHORITY_REQUIRED, receipt["global_blockers"])
         self.assertFalse(receipt["source_root_authority"]["operational_authority"])
+        self.assertEqual(receipt["decisions"][0]["decision"], DIAGNOSTIC_CAPACITY_CANDIDATE)
 
     def test_receipt_tamper_rejects_historical(self):
         p, d, r = policy(), demands([deal("a")]), reservations()
