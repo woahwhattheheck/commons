@@ -303,7 +303,7 @@ def load_observations(path: Path = OBSERVATIONS_PATH) -> dict[str, Any]:
         raise ReplyRevenueError("unsupported observations version")
     if value["kind"] != "REPLY_TO_REVENUE_OBSERVATIONS":
         raise ReplyRevenueError("unsupported observations kind")
-    parse_time(value["measured_at"])
+    measured_at = parse_time(value["measured_at"])
     monitor = value["monitor"]
     if not isinstance(monitor, dict):
         raise ReplyRevenueError("monitor must be an object")
@@ -341,7 +341,11 @@ def load_observations(path: Path = OBSERVATIONS_PATH) -> dict[str, Any]:
         _exact_keys(event, fields, where)
         if not OPAQUE_RE.fullmatch(event["event_ref"]):
             raise ReplyRevenueError(f"{where}.event_ref is invalid")
-        parse_time(event["received_at"])
+        received_at = parse_time(event["received_at"])
+        if received_at > measured_at:
+            raise ReplyRevenueError(
+                f"{where}.received_at exceeds observations.measured_at"
+            )
         if not PROSPECT_RE.fullmatch(event["prospect_key"]):
             raise ReplyRevenueError(f"{where}.prospect_key is invalid")
         if not SHA256_RE.fullmatch(event["payload_sha256"]):
@@ -356,7 +360,7 @@ def load_observations(path: Path = OBSERVATIONS_PATH) -> dict[str, Any]:
             raise CollisionError(f"duplicate event_ref with different payload: {event['event_ref']}")
         hashed = seen_hashes.get(event["payload_sha256"])
         if hashed and hashed != event["event_ref"]:
-            raise CollisionError(f"duplicate payload_sha256 under a second event_ref")
+            raise CollisionError("duplicate payload_sha256 under a second event_ref")
         if event["event_ref"] in seen_refs:
             continue
         seen_refs[event["event_ref"]] = event["payload_sha256"]
