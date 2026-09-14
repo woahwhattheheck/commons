@@ -112,7 +112,6 @@ def normalize_jsonl(data: bytes, scenario_id: str, evidence_class: str) -> dict[
         elif direction == "server" and etype == "tool.call":
             data_out = {
                 "call_id": event.get("call_id"),
-                "reply_id": event.get("reply_id"),
                 "name": event.get("name"),
                 "arguments": event.get("arguments"),
             }
