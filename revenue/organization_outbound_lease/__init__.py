@@ -24,6 +24,7 @@ _LOCAL_REFERENCE_PROTECTED_CLASS_NAMES = _LOCAL_REFERENCE_ACQUIRE_METHODS + (
     "root",
     "active",
     "outcomes",
+    "__dict__",
     "__getattribute__",
     "__setattr__",
     "__getattr__",
@@ -80,7 +81,9 @@ def _build_local_reference_checker():
                 return False
 
         # Subclasses may customize terminal-only behavior, but nothing that can run
-        # during acquire (including attribute interception or local path state).
+        # during acquire (including attribute interception or local path state).  A
+        # subclass-level __dict__ descriptor is also forbidden because it could hide
+        # rebound acquire methods from the instance-storage observation below.
         for layer in mro[:reference_index]:
             layer_dict = type.__getattribute__(layer, "__dict__")
             if any(name in layer_dict for name in protected_names):
