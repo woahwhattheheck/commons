@@ -6,43 +6,70 @@ import json
 import re
 from dataclasses import dataclass
 from datetime import datetime, timedelta, timezone
-from typing import Any, Mapping, Protocol
+from typing import Any, Mapping, Optional, Protocol, Tuple
 
 from .strict import parse_json_strict
 
 READY_STATE = "READY_FOR_SINGLE_WRITER_REVIEW"
-LEASE_SCHEMA = "commons.organization-outbound-lease/v1"
-ATTESTATION_SCHEMA = "commons.organization-pressure-attestation/v1"
-OUTCOME_SCHEMA = "commons.organization-outbound-outcome/v1"
+LEASE_SCHEMA = "commons.organization-outbound-lease/v2"
+ATTESTATION_SCHEMA = "commons.organization-pressure-attestation/v2"
+OUTCOME_SCHEMA = "commons.organization-outbound-outcome/v2"
+ACQUIRE_SCHEMA = "commons.organization-outbound-acquire/v2"
+FINALIZE_SCHEMA = "commons.organization-outbound-finalize/v2"
 TERMINAL_STATES = frozenset({"SENT", "OUTCOME_UNKNOWN", "REJECTED", "HELD_AUTHORITY", "UNSENT_RELEASED"})
 BLOCKING_TERMINALS = frozenset({"SENT", "OUTCOME_UNKNOWN", "REJECTED", "HELD_AUTHORITY"})
 MAX_PREFLIGHT_AGE_SECONDS = 300
 MAX_OUTCOME_AGE_SECONDS = 600
 MAX_FUTURE_SKEW_SECONDS = 5
 HEX64 = re.compile(r"^[0-9a-f]{64}$")
+HEX_ANY = re.compile(r"^[0-9a-f]+$")
 OPAQUE = re.compile(r"^[A-Za-z0-9._:-]{1,160}$")
+RSA_SHA256_DIGESTINFO_PREFIX = bytes.fromhex("3031300d060960864801650304020105000420")
+PRESSURE_DOMAIN = b"commons-pressure-v2\x00"
+HOLDER_DOMAIN = b"holder-capability-v1\x00"
 
 
 class LeaseStore(Protocol):
-    def get_active(self, org_fingerprint: str) -> tuple[bytes, str] | None: ...
-    def get_outcome(self, org_fingerprint: str, lease_id: str) -> tuple[bytes, str] | None: ...
+    def get_active(self, org_fingerprint: str) -> Optional[Tuple[bytes, str]]: ...
+    def get_outcome(self, org_fingerprint: str, lease_id: str) -> Optional[Tuple[bytes, str]]: ...
     def create_active(self, org_fingerprint: str, content: bytes) -> str: ...
     def create_outcome(self, org_fingerprint: str, lease_id: str, content: bytes) -> str: ...
     def delete_active(self, org_fingerprint: str, expected_generation: str) -> None: ...
 
 
 @dataclass(frozen=True)
+class RsaPublicKey:
+    key_id: str
+    modulus: int
+    exponent: int = 65537
+
+    def __post_init__(self) -> None:
+        _opaque(self.key_id, "RSA key id")
+        if type(self.modulus) is not int or self.modulus <= 0 or self.modulus.bit_length() < 2048:
+            raise ValueError("RSA modulus must be at least 2048 bits")
+        if type(self.exponent) is not int or self.exponent < 3 or self.exponent % 2 == 0:
+            raise ValueError("RSA public exponent must be an odd integer >= 3")
+
+    @classmethod
+    def from_hex(cls, *, key_id: str, modulus_hex: str, exponent: int = 65537) -> "RsaPublicKey":
+        if not isinstance(modulus_hex, str) or not modulus_hex or not HEX_ANY.fullmatch(modulus_hex):
+            raise ValueError("RSA modulus must be lower-case hex")
+        return cls(key_id=key_id, modulus=int(modulus_hex, 16), exponent=exponent)
+
+
+@dataclass(frozen=True)
 class AcquireResult:
     state: str
-    lease: dict[str, Any]
-    active_generation: str | None
+    lease: dict
+    active_generation: Optional[str]
     replay: bool
+    terminal_outcome: Optional[str] = None
 
 
 @dataclass(frozen=True)
 class FinalizeResult:
     state: str
-    outcome: dict[str, Any]
+    outcome: dict
     outcome_generation: str
     active_released: bool
     replay: bool
@@ -58,7 +85,7 @@ def sha256_hex(data: bytes) -> str:
 
 def _require_secret(key: bytes, label: str) -> bytes:
     if not isinstance(key, (bytes, bytearray)) or len(key) < 32:
-        raise ValueError(f"{label} must be at least 32 bytes")
+        raise ValueError("%s must be at least 32 bytes" % label)
     return bytes(key)
 
 
@@ -72,16 +99,25 @@ def fingerprint_organization(canonical_identity: bytes, key: bytes) -> str:
     return hmac.new(key, b"org-v1\x00" + raw, hashlib.sha256).hexdigest()
 
 
+def holder_capability_commitment(capability: bytes) -> str:
+    secret = _require_secret(capability, "holder capability")
+    return sha256_hex(HOLDER_DOMAIN + secret)
+
+
+def normalize_organization_fingerprint(value: Any) -> str:
+    return _hex64(value, "organizationFingerprint")
+
+
 def _utc(value: str, label: str) -> str:
     if not isinstance(value, str) or not value.endswith("Z"):
-        raise ValueError(f"{label} must be canonical UTC seconds")
+        raise ValueError("%s must be canonical UTC seconds" % label)
     try:
         dt = datetime.strptime(value, "%Y-%m-%dT%H:%M:%SZ").replace(tzinfo=timezone.utc)
     except ValueError as exc:
-        raise ValueError(f"{label} must be canonical UTC seconds") from exc
+        raise ValueError("%s must be canonical UTC seconds" % label) from exc
     rendered = dt.strftime("%Y-%m-%dT%H:%M:%SZ")
     if rendered != value:
-        raise ValueError(f"{label} must be canonical UTC seconds")
+        raise ValueError("%s must be canonical UTC seconds" % label)
     return value
 
 
@@ -97,44 +133,49 @@ def _process_now() -> datetime:
 def _require_fresh(event_time: str, *, now: datetime, max_age_seconds: int, label: str) -> None:
     dt = _dt(event_time, label)
     if dt > now + timedelta(seconds=MAX_FUTURE_SKEW_SECONDS):
-        raise ValueError(f"{label} is from the future")
+        raise ValueError("%s is from the future" % label)
     age = (now - dt).total_seconds()
     if age > max_age_seconds:
-        raise ValueError(f"{label} is stale")
+        raise ValueError("%s is stale" % label)
 
 
 def _hex64(value: Any, label: str) -> str:
     if not isinstance(value, str) or not HEX64.fullmatch(value):
-        raise ValueError(f"{label} must be lower-case sha256 hex")
+        raise ValueError("%s must be lower-case sha256 hex" % label)
+    return value
+
+
+def _hex_exact(value: Any, nbytes: int, label: str) -> str:
+    if not isinstance(value, str) or len(value) != nbytes * 2 or not HEX_ANY.fullmatch(value):
+        raise ValueError("%s must be exactly %d bytes of lower-case hex" % (label, nbytes))
     return value
 
 
 def _opaque(value: Any, label: str) -> str:
     if not isinstance(value, str) or not OPAQUE.fullmatch(value):
-        raise ValueError(f"{label} must be a bounded opaque token")
+        raise ValueError("%s must be a bounded opaque token" % label)
     return value
 
 
-def _exact_keys(obj: Any, expected: set[str], label: str) -> Mapping[str, Any]:
+def _exact_keys(obj: Any, expected: set, label: str) -> Mapping[str, Any]:
     if type(obj) is not dict:
-        raise ValueError(f"{label} must be an object")
+        raise ValueError("%s must be an object" % label)
     got = set(obj)
     if got != expected:
         missing = sorted(expected - got)
         extra = sorted(got - expected)
-        raise ValueError(f"{label} keys mismatch missing={missing} extra={extra}")
+        raise ValueError("%s keys mismatch missing=%r extra=%r" % (label, missing, extra))
     return obj
 
 
-def pressure_attestation_body(payload: Mapping[str, Any]) -> dict[str, Any]:
+def _raise(message: str):
+    raise ValueError(message)
+
+
+def pressure_attestation_body(payload: Mapping[str, Any]) -> dict:
     expected = {
-        "schema",
-        "organizationFingerprint",
-        "pressureReceiptSha256",
-        "authorityCommitment",
-        "ledgerCommitment",
-        "verifiedState",
-        "verifiedAt",
+        "schema", "organizationFingerprint", "pressureReceiptSha256",
+        "authorityCommitment", "ledgerCommitment", "verifiedState", "verifiedAt",
     }
     obj = _exact_keys(payload, expected, "pressure attestation body")
     if obj["schema"] != ATTESTATION_SCHEMA:
@@ -150,50 +191,44 @@ def pressure_attestation_body(payload: Mapping[str, Any]) -> dict[str, Any]:
     }
 
 
-def _raise(message: str):
-    raise ValueError(message)
+def _rsa_pkcs1_v15_sha256_verify(public_key: RsaPublicKey, message: bytes, signature_hex: str) -> None:
+    k = (public_key.modulus.bit_length() + 7) // 8
+    signature_hex = _hex_exact(signature_hex, k, "pressure RSA signature")
+    sig = int(signature_hex, 16)
+    if sig >= public_key.modulus:
+        raise ValueError("pressure RSA signature out of range")
+    em = pow(sig, public_key.exponent, public_key.modulus).to_bytes(k, "big")
+    digest_info = RSA_SHA256_DIGESTINFO_PREFIX + hashlib.sha256(message).digest()
+    pad_len = k - len(digest_info) - 3
+    if pad_len < 8:
+        raise ValueError("RSA modulus too small for SHA-256 signature")
+    expected = b"\x00\x01" + (b"\xff" * pad_len) + b"\x00" + digest_info
+    if not hmac.compare_digest(em, expected):
+        raise ValueError("invalid pressure RSA signature")
 
 
-def mint_pressure_attestation_for_host(body: Mapping[str, Any], host_key: bytes) -> dict[str, Any]:
-    """Host-only integration helper.
-
-    The host MUST call the landed organization-pressure verifier itself before invoking
-    this helper. There is intentionally no CLI command that turns caller JSON into an
-    attestation.
-    """
-    key = _require_secret(host_key, "host attestation key")
-    normalized = pressure_attestation_body(body)
-    mac = hmac.new(key, b"pressure-v1\x00" + canonical_json(normalized), hashlib.sha256).hexdigest()
-    return {"body": normalized, "hmacSha256": mac}
-
-
-def verify_pressure_attestation(attestation: Any, host_key: bytes, *, organization_fingerprint: str) -> dict[str, Any]:
-    key = _require_secret(host_key, "host attestation key")
-    obj = _exact_keys(attestation, {"body", "hmacSha256"}, "pressure attestation")
+def verify_pressure_attestation(attestation: Any, verifier: RsaPublicKey, *, organization_fingerprint: str) -> dict:
+    obj = _exact_keys(attestation, {"body", "algorithm", "keyId", "signatureHex"}, "pressure attestation")
+    if obj["algorithm"] != "RS256-PKCS1-v1_5":
+        raise ValueError("unsupported pressure signature algorithm")
+    if _opaque(obj["keyId"], "pressure keyId") != verifier.key_id:
+        raise ValueError("pressure signature key id mismatch")
     body = pressure_attestation_body(obj["body"])
-    mac = _hex64(obj["hmacSha256"], "pressure attestation hmac")
-    expected = hmac.new(key, b"pressure-v1\x00" + canonical_json(body), hashlib.sha256).hexdigest()
-    if not hmac.compare_digest(mac, expected):
-        raise ValueError("invalid pressure attestation HMAC")
+    message = PRESSURE_DOMAIN + canonical_json(body)
+    _rsa_pkcs1_v15_sha256_verify(verifier, message, obj["signatureHex"])
     if body["organizationFingerprint"] != _hex64(organization_fingerprint, "organization_fingerprint"):
         raise ValueError("pressure attestation organization transplant")
     return body
 
 
-def normalize_request(request: Any) -> dict[str, Any]:
+def normalize_request(request: Any) -> dict:
     expected = {
-        "schema",
-        "claimId",
-        "organizationFingerprint",
-        "prospectFingerprint",
-        "routeCommitment",
-        "opportunityCommitment",
-        "claimantCommitment",
-        "requestedAt",
-        "pressureAttestation",
+        "schema", "claimId", "organizationFingerprint", "prospectFingerprint",
+        "routeCommitment", "opportunityCommitment", "holderCapabilityCommitment",
+        "requestedAt", "pressureAttestation",
     }
     obj = _exact_keys(request, expected, "acquire request")
-    if obj["schema"] != "commons.organization-outbound-acquire/v1":
+    if obj["schema"] != ACQUIRE_SCHEMA:
         raise ValueError("unsupported acquire schema")
     return {
         "schema": obj["schema"],
@@ -202,13 +237,13 @@ def normalize_request(request: Any) -> dict[str, Any]:
         "prospectFingerprint": _hex64(obj["prospectFingerprint"], "prospectFingerprint"),
         "routeCommitment": _hex64(obj["routeCommitment"], "routeCommitment"),
         "opportunityCommitment": _hex64(obj["opportunityCommitment"], "opportunityCommitment"),
-        "claimantCommitment": _hex64(obj["claimantCommitment"], "claimantCommitment"),
+        "holderCapabilityCommitment": _hex64(obj["holderCapabilityCommitment"], "holderCapabilityCommitment"),
         "requestedAt": _utc(obj["requestedAt"], "requestedAt"),
         "pressureAttestation": obj["pressureAttestation"],
     }
 
 
-def _lease_document(request: dict[str, Any], pressure: dict[str, Any], nonce_key: bytes) -> dict[str, Any]:
+def _lease_document(request: dict, pressure: dict, nonce_key: bytes) -> dict:
     nonce_key = _require_secret(nonce_key, "lease nonce key")
     intent = {
         "claimId": request["claimId"],
@@ -216,7 +251,7 @@ def _lease_document(request: dict[str, Any], pressure: dict[str, Any], nonce_key
         "prospectFingerprint": request["prospectFingerprint"],
         "routeCommitment": request["routeCommitment"],
         "opportunityCommitment": request["opportunityCommitment"],
-        "claimantCommitment": request["claimantCommitment"],
+        "holderCapabilityCommitment": request["holderCapabilityCommitment"],
         "requestedAt": request["requestedAt"],
         "pressureReceiptSha256": pressure["pressureReceiptSha256"],
         "authorityCommitment": pressure["authorityCommitment"],
@@ -224,8 +259,8 @@ def _lease_document(request: dict[str, Any], pressure: dict[str, Any], nonce_key
         "pressureVerifiedAt": pressure["verifiedAt"],
     }
     intent_sha = sha256_hex(canonical_json(intent))
-    nonce = hmac.new(nonce_key, b"lease-nonce-v1\x00" + canonical_json(intent), hashlib.sha256).hexdigest()
-    lease_id = sha256_hex(b"lease-id-v1\x00" + bytes.fromhex(intent_sha) + bytes.fromhex(nonce))
+    nonce = hmac.new(nonce_key, b"lease-nonce-v2\x00" + canonical_json(intent), hashlib.sha256).hexdigest()
+    lease_id = sha256_hex(b"lease-id-v2\x00" + bytes.fromhex(intent_sha) + bytes.fromhex(nonce))
     body = {
         "schema": LEASE_SCHEMA,
         "leaseId": lease_id,
@@ -238,19 +273,24 @@ def _lease_document(request: dict[str, Any], pressure: dict[str, Any], nonce_key
     return body
 
 
-def verify_lease_document(value: Any) -> dict[str, Any]:
+def verify_lease_document(value: Any) -> dict:
     expected = {
         "schema", "leaseId", "intentSha256", "leaseNonce", "claimId",
         "organizationFingerprint", "prospectFingerprint", "routeCommitment",
-        "opportunityCommitment", "claimantCommitment", "requestedAt",
+        "opportunityCommitment", "holderCapabilityCommitment", "requestedAt",
         "pressureReceiptSha256", "authorityCommitment", "ledgerCommitment",
         "pressureVerifiedAt", "externalSendAuthorized", "leaseSha256",
     }
     obj = dict(_exact_keys(value, expected, "lease"))
     if obj["schema"] != LEASE_SCHEMA:
         raise ValueError("unsupported lease schema")
-    for k in ["leaseId", "intentSha256", "leaseNonce", "organizationFingerprint", "prospectFingerprint", "routeCommitment", "opportunityCommitment", "claimantCommitment", "pressureReceiptSha256", "authorityCommitment", "ledgerCommitment", "leaseSha256"]:
-        _hex64(obj[k], k)
+    for key in (
+        "leaseId", "intentSha256", "leaseNonce", "organizationFingerprint",
+        "prospectFingerprint", "routeCommitment", "opportunityCommitment",
+        "holderCapabilityCommitment", "pressureReceiptSha256", "authorityCommitment",
+        "ledgerCommitment", "leaseSha256",
+    ):
+        _hex64(obj[key], key)
     _opaque(obj["claimId"], "claimId")
     _utc(obj["requestedAt"], "requestedAt")
     _utc(obj["pressureVerifiedAt"], "pressureVerifiedAt")
@@ -264,9 +304,20 @@ def verify_lease_document(value: Any) -> dict[str, Any]:
     return obj
 
 
-def acquire_lease(store: LeaseStore, request: Any, *, host_attestation_key: bytes, lease_nonce_key: bytes) -> AcquireResult:
+def _retained_outcome_for_candidate(store: LeaseStore, lease: dict) -> Optional[Tuple[dict, str]]:
+    existing = store.get_outcome(lease["organizationFingerprint"], lease["leaseId"])
+    if existing is None:
+        return None
+    raw, generation = existing
+    outcome = verify_outcome_document(parse_json_strict(raw.decode("utf-8")))
+    if outcome["leaseSha256"] != lease["leaseSha256"] or outcome["leaseNonce"] != lease["leaseNonce"]:
+        raise ValueError("retained outcome conflicts with candidate lease identity")
+    return outcome, generation
+
+
+def acquire_lease(store: LeaseStore, request: Any, *, pressure_verifier: RsaPublicKey, lease_nonce_key: bytes) -> AcquireResult:
     req = normalize_request(request)
-    pressure = verify_pressure_attestation(req["pressureAttestation"], host_attestation_key, organization_fingerprint=req["organizationFingerprint"])
+    pressure = verify_pressure_attestation(req["pressureAttestation"], pressure_verifier, organization_fingerprint=req["organizationFingerprint"])
     if _dt(pressure["verifiedAt"], "pressure verifiedAt") > _dt(req["requestedAt"], "requestedAt"):
         raise ValueError("pressure verification cannot postdate acquire request")
     if (_dt(req["requestedAt"], "requestedAt") - _dt(pressure["verifiedAt"], "pressure verifiedAt")).total_seconds() > MAX_PREFLIGHT_AGE_SECONDS:
@@ -274,9 +325,21 @@ def acquire_lease(store: LeaseStore, request: Any, *, host_attestation_key: byte
     lease = _lease_document(req, pressure, lease_nonce_key)
     content = canonical_json(lease)
 
-    # Read before the freshness gate so an exact already-held lease can be recovered
-    # after the original acquisition window without minting any new authority. A stale
-    # request may observe a conflicting holder but may never create a new lease.
+    # A retained terminal is stronger than an active byte match. This blocks exact
+    # replay after SENT/UNKNOWN/etc and prevents A->release->A ABA re-creation.
+    retained = _retained_outcome_for_candidate(store, lease)
+    if retained is not None:
+        outcome, _ = retained
+        return AcquireResult(
+            "LEASE_FINALIZED_%s" % outcome["outcome"],
+            lease,
+            None,
+            True,
+            terminal_outcome=outcome["outcome"],
+        )
+
+    # Exact already-held replay may recover after freshness because it creates no new
+    # authority. A conflicting holder is disclosed only as a public lease document.
     existing = store.get_active(req["organizationFingerprint"])
     if existing is not None:
         raw, generation = existing
@@ -293,8 +356,18 @@ def acquire_lease(store: LeaseStore, request: Any, *, host_attestation_key: byte
         generation = store.create_active(req["organizationFingerprint"], content)
         return AcquireResult("LEASE_ACQUIRED", lease, generation, False)
     except Exception as exc:
-        # StoreConflict/StoreUncertain are intentionally not imported here; any create
-        # failure is reconciled by authoritative read before deciding whether to retry.
+        # Reconcile outcome first: another actor may have acquired+finalized between
+        # our create attempt and authoritative readback.
+        retained = _retained_outcome_for_candidate(store, lease)
+        if retained is not None:
+            outcome, _ = retained
+            return AcquireResult(
+                "LEASE_FINALIZED_%s" % outcome["outcome"],
+                lease,
+                None,
+                True,
+                terminal_outcome=outcome["outcome"],
+            )
         existing = store.get_active(req["organizationFingerprint"])
         if existing is None:
             raise RuntimeError("acquire outcome uncertain; reconciliation required") from exc
@@ -305,10 +378,13 @@ def acquire_lease(store: LeaseStore, request: Any, *, host_attestation_key: byte
         return AcquireResult("ORGANIZATION_ALREADY_LEASED", existing_lease, generation, False)
 
 
-def normalize_finalize_request(value: Any) -> dict[str, Any]:
-    expected = {"schema", "organizationFingerprint", "leaseId", "leaseNonce", "claimId", "outcomeId", "outcome", "observedAt", "evidenceCommitment"}
+def normalize_finalize_request(value: Any) -> dict:
+    expected = {
+        "schema", "organizationFingerprint", "leaseId", "leaseNonce", "claimId",
+        "outcomeId", "outcome", "observedAt", "evidenceCommitment", "holderCapability",
+    }
     obj = _exact_keys(value, expected, "finalize request")
-    if obj["schema"] != "commons.organization-outbound-finalize/v1":
+    if obj["schema"] != FINALIZE_SCHEMA:
         raise ValueError("unsupported finalize schema")
     if obj["outcome"] not in TERMINAL_STATES:
         raise ValueError("unsupported terminal outcome")
@@ -322,15 +398,23 @@ def normalize_finalize_request(value: Any) -> dict[str, Any]:
         "outcome": obj["outcome"],
         "observedAt": _utc(obj["observedAt"], "observedAt"),
         "evidenceCommitment": _hex64(obj["evidenceCommitment"], "evidenceCommitment"),
+        "holderCapability": _hex_exact(obj["holderCapability"], 32, "holderCapability"),
     }
 
 
-def _outcome_doc(req: dict[str, Any], lease: dict[str, Any]) -> dict[str, Any]:
+def _assert_holder_capability(req: dict, commitment: str) -> None:
+    actual = holder_capability_commitment(bytes.fromhex(req["holderCapability"]))
+    if not hmac.compare_digest(actual, commitment):
+        raise ValueError("holder capability does not authorize this lease")
+
+
+def _outcome_doc(req: dict, lease: dict) -> dict:
     if req["organizationFingerprint"] != lease["organizationFingerprint"]:
         raise ValueError("cross-organization finalization")
     if req["leaseId"] != lease["leaseId"] or req["leaseNonce"] != lease["leaseNonce"] or req["claimId"] != lease["claimId"]:
         raise ValueError("finalization does not bind exact lease generation")
-    if req["observedAt"] < lease["requestedAt"]:
+    _assert_holder_capability(req, lease["holderCapabilityCommitment"])
+    if _dt(req["observedAt"], "observedAt") < _dt(lease["requestedAt"], "requestedAt"):
         raise ValueError("outcome predates acquire request")
     body = {
         "schema": OUTCOME_SCHEMA,
@@ -338,6 +422,7 @@ def _outcome_doc(req: dict[str, Any], lease: dict[str, Any]) -> dict[str, Any]:
         "leaseId": req["leaseId"],
         "leaseNonce": req["leaseNonce"],
         "leaseSha256": lease["leaseSha256"],
+        "holderCapabilityCommitment": lease["holderCapabilityCommitment"],
         "claimId": req["claimId"],
         "outcomeId": req["outcomeId"],
         "outcome": req["outcome"],
@@ -350,17 +435,19 @@ def _outcome_doc(req: dict[str, Any], lease: dict[str, Any]) -> dict[str, Any]:
     return body
 
 
-def verify_outcome_document(value: Any) -> dict[str, Any]:
+def verify_outcome_document(value: Any) -> dict:
     expected = {
-        "schema", "organizationFingerprint", "leaseId", "leaseNonce",
-        "leaseSha256", "claimId", "outcomeId", "outcome", "observedAt",
-        "evidenceCommitment", "externalSendAuthorized", "cashOrRevenueClaimed",
-        "outcomeSha256",
+        "schema", "organizationFingerprint", "leaseId", "leaseNonce", "leaseSha256",
+        "holderCapabilityCommitment", "claimId", "outcomeId", "outcome", "observedAt",
+        "evidenceCommitment", "externalSendAuthorized", "cashOrRevenueClaimed", "outcomeSha256",
     }
     obj = dict(_exact_keys(value, expected, "outcome"))
     if obj["schema"] != OUTCOME_SCHEMA:
         raise ValueError("unsupported outcome schema")
-    for key in ("organizationFingerprint", "leaseId", "leaseNonce", "leaseSha256", "evidenceCommitment", "outcomeSha256"):
+    for key in (
+        "organizationFingerprint", "leaseId", "leaseNonce", "leaseSha256",
+        "holderCapabilityCommitment", "evidenceCommitment", "outcomeSha256",
+    ):
         _hex64(obj[key], key)
     _opaque(obj["claimId"], "claimId")
     _opaque(obj["outcomeId"], "outcomeId")
@@ -377,7 +464,7 @@ def verify_outcome_document(value: Any) -> dict[str, Any]:
     return obj
 
 
-def _outcome_matches_request(outcome: dict[str, Any], req: dict[str, Any]) -> bool:
+def _outcome_matches_request(outcome: dict, req: dict) -> bool:
     return all((
         outcome["organizationFingerprint"] == req["organizationFingerprint"],
         outcome["leaseId"] == req["leaseId"],
@@ -390,28 +477,28 @@ def _outcome_matches_request(outcome: dict[str, Any], req: dict[str, Any]) -> bo
     ))
 
 
-def _release_unsent_if_needed(store: LeaseStore, req: dict[str, Any]) -> bool:
+def _release_unsent_if_needed(store: LeaseStore, req: dict, outcome: dict) -> bool:
     """Release only the exact finalized lease generation; never a successor."""
+    _assert_holder_capability(req, outcome["holderCapabilityCommitment"])
     active = store.get_active(req["organizationFingerprint"])
     if active is None:
         return True
     raw, active_generation = active
     lease = verify_lease_document(parse_json_strict(raw.decode("utf-8")))
-    if (lease["leaseId"], lease["leaseNonce"], lease["claimId"]) != (req["leaseId"], req["leaseNonce"], req["claimId"]):
-        # A different active generation proves the finalized lease was already released.
+    if lease["leaseSha256"] != outcome["leaseSha256"]:
+        # A distinct active generation proves the finalized lease was already released.
         return True
+    _assert_holder_capability(req, lease["holderCapabilityCommitment"])
     try:
         store.delete_active(req["organizationFingerprint"], active_generation)
         return True
     except Exception as exc:
-        # Conditional delete may have succeeded while its response was lost, or another
-        # exact finalizer may have deleted first. Re-read before escalating uncertainty.
         current = store.get_active(req["organizationFingerprint"])
         if current is None:
             return True
         current_raw, _ = current
         current_lease = verify_lease_document(parse_json_strict(current_raw.decode("utf-8")))
-        if (current_lease["leaseId"], current_lease["leaseNonce"], current_lease["claimId"]) != (req["leaseId"], req["leaseNonce"], req["claimId"]):
+        if current_lease["leaseSha256"] != outcome["leaseSha256"]:
             return True
         raise RuntimeError("lease release uncertain; reconciliation required") from exc
 
@@ -419,18 +506,16 @@ def _release_unsent_if_needed(store: LeaseStore, req: dict[str, Any]) -> bool:
 def finalize_lease(store: LeaseStore, request: Any) -> FinalizeResult:
     req = normalize_finalize_request(request)
 
-    # Exact replay is checked before freshness/active-state gates. Replaying a retained
-    # terminal outcome creates no new authority and must remain recoverable after an
-    # UNSENT release removed the active lease or after the original time window elapsed.
     existing = store.get_outcome(req["organizationFingerprint"], req["leaseId"])
     if existing is not None:
         prior_raw, outcome_generation = existing
         outcome = verify_outcome_document(parse_json_strict(prior_raw.decode("utf-8")))
+        _assert_holder_capability(req, outcome["holderCapabilityCommitment"])
         if not _outcome_matches_request(outcome, req):
             raise ValueError("conflicting outcome already exists")
         released = False
         if req["outcome"] == "UNSENT_RELEASED":
-            released = _release_unsent_if_needed(store, req)
+            released = _release_unsent_if_needed(store, req, outcome)
         return FinalizeResult(req["outcome"], outcome, outcome_generation, released, True)
 
     _require_fresh(req["observedAt"], now=_process_now(), max_age_seconds=MAX_OUTCOME_AGE_SECONDS, label="observedAt")
@@ -445,13 +530,12 @@ def finalize_lease(store: LeaseStore, request: Any) -> FinalizeResult:
         outcome_generation = store.create_outcome(req["organizationFingerprint"], req["leaseId"], content)
         replay = False
     except Exception as exc:
-        # Outcome stores make create-if-absent atomic. A conflict or uncertain response
-        # is reconciled by exact retained bytes rather than by retrying the mutation.
         existing = store.get_outcome(req["organizationFingerprint"], req["leaseId"])
         if existing is None:
             raise RuntimeError("outcome persistence uncertain; reconciliation required") from exc
         prior_raw, outcome_generation = existing
         prior = verify_outcome_document(parse_json_strict(prior_raw.decode("utf-8")))
+        _assert_holder_capability(req, prior["holderCapabilityCommitment"])
         if not _outcome_matches_request(prior, req) or not hmac.compare_digest(prior_raw, content):
             raise ValueError("conflicting outcome already exists") from exc
         outcome = prior
@@ -459,6 +543,5 @@ def finalize_lease(store: LeaseStore, request: Any) -> FinalizeResult:
 
     released = False
     if req["outcome"] == "UNSENT_RELEASED":
-        # Critical ordering: immutable outcome is committed before conditional release.
-        released = _release_unsent_if_needed(store, req)
+        released = _release_unsent_if_needed(store, req, outcome)
     return FinalizeResult(req["outcome"], outcome, outcome_generation, released, replay)
