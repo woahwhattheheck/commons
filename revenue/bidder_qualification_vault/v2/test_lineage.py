@@ -38,6 +38,12 @@ class LineageTests(unittest.TestCase):
         ev = evidence("w9-new", "W9", supersedes="does-not-exist")
         self.assertEqual(self.state(payload([ev], [req("r", "W9")])), "CONFLICT")
 
+    def test_backward_dated_successor_cannot_supersede_later_generation(self):
+        old = evidence("w9-old", "W9", sha=H, issued="2026-09-10T00:00:00Z", captured="2026-09-10T01:00:00Z")
+        forged = evidence("w9-forged-successor", "W9", sha=H2, supersedes="w9-old",
+                          issued="2026-09-09T00:00:00Z", captured="2026-09-09T01:00:00Z")
+        self.assertEqual(self.state(payload([old, forged], [req("r", "W9")])), "CONFLICT")
+
     def test_cross_entity_supersession_conflicts(self):
         old = evidence("old", "W9", entity_id="other-company")
         new = evidence("new", "W9", supersedes="old")

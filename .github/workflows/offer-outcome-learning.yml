@@ -27,9 +27,9 @@ jobs:
       - name: Syntax
         run: python -m py_compile revenue/offer_outcome_learning/*.py
       - name: Normal hostiles
-        run: python -m unittest revenue.offer_outcome_learning.test_engine -v
+        run: python -m unittest revenue.offer_outcome_learning.test_engine revenue.offer_outcome_learning.test_authority -v
       - name: Optimized hostiles
-        run: python -O -m unittest revenue.offer_outcome_learning.test_engine -v
+        run: python -O -m unittest revenue.offer_outcome_learning.test_engine revenue.offer_outcome_learning.test_authority -v
       - name: Historical sample + verifier
         run: |
           tmp=$(mktemp -d)

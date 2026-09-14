@@ -42,7 +42,7 @@ A manifest is `ready_for_bid_consumption=true` only when every requested require
 - `SELF_ASSERTED` evidence can never be `VERIFIED`.
 - Verified evidence requires a non-`NONE` verifier.
 - Same evidence ID appearing more than once is a generation conflict; changed same-ID content cannot be papered over.
-- Supersession must name an existing prior generation with the same entity/category/subject. Forks, cycles, self-supersession and cross-entity/category supersession fail closed.
+- Supersession must name an existing prior generation with the same entity/category/subject and cannot move issued/captured chronology backward. Forks, cycles, self-supersession and cross-entity/category supersession fail closed.
 - Future-issued or future-captured evidence is `CONFLICT`.
 - `expires_at <= as_of` is `EXPIRED`; a revocation effective at/before `as_of` is `SUPERSEDED`.
 - Opportunity-only evidence can satisfy only listed opportunities.

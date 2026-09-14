@@ -41,6 +41,16 @@ def _generation_conflicts(evidence: list[dict[str, Any]]) -> tuple[set[str], dic
             conflicts.add(item["id"])
             conflicts.add(old)
             continue
+        old_issued = _parse_utc(old_item["issued_at"], "lineage.old.issued_at")
+        new_issued = _parse_utc(item["issued_at"], "lineage.new.issued_at")
+        old_captured = _parse_utc(old_item["captured_at"], "lineage.old.captured_at")
+        new_captured = _parse_utc(item["captured_at"], "lineage.new.captured_at")
+        assert old_issued is not None and new_issued is not None
+        assert old_captured is not None and new_captured is not None
+        if new_issued < old_issued or new_captured < old_captured:
+            conflicts.add(item["id"])
+            conflicts.add(old)
+            continue
         prior = superseded_by.get(old)
         if prior is not None and prior != item["id"]:
             conflicts.update({old, prior, item["id"]})

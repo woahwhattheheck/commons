@@ -12,29 +12,63 @@ metadata:
   token: ""
 ---
 
-# Outbound send — claim the seam before the provider
+# Outbound send — claim scoped seams before the provider
 
 Parallel evidence preflights are not a mutex. Two workers can both observe no
-prior send and both cross Gmail/provider before either receipt is visible. For
-external mutations, acquire one deterministic GitHub branch seam first.
+prior send and both cross Gmail/provider before either receipt is visible.
+External mutations therefore require atomic coordination before the provider.
 
-The branch is **mutual exclusion only**. It is never proof of owner approval,
-content correctness, buyer acceptance, payment, or a successful provider send.
-Never describe it as `external_send_authorized`.
+The connector branch in this skill is **one opportunity/reply mutex only**. It is
+never proof of owner approval, organization-wide exclusivity, content
+correctness, buyer acceptance, payment, or a successful provider send. Never
+describe it as `external_send_authorized` or as the sole production mutex.
 
-## 1. Build one canonical seam
+`key.py` normalizes domain syntax but does not prove that a caller supplied the
+one authoritative organization identity. Distinct opportunities at one buyer and
+buyer-domain aliases can intentionally produce distinct connector branches.
+
+## 0. Fixed coordination order
+
+Before an external mutation, use this order and never reverse it to race a peer:
+
+1. **Authoritative organization scope.** Resolve the buyer from current retained
+   organization identity evidence. A convenient subdomain, alternate brand
+   domain, guessed alias, or stale mapping is not authority. If canonical scope
+   is unresolved, `HOLD`.
+2. **Organization-wide atomic pressure/mutex when required by the send path.**
+   Net-new prospecting and other paths exposed to cross-opportunity pile-on must
+   satisfy the current landed, independently validated organization-wide control
+   before the opportunity seam. An unmerged/SOURCE-RED carrier is not authority;
+   if the required landed control is unavailable or ambiguous, `HOLD`.
+3. **Canonical opportunity/reply seam.** Build and atomically acquire the exact
+   connector branch below.
+4. **Provider readback and all independent gates.** Re-read provider truth, then
+   apply owner/content/legal/route/cooldown/payment rules before at most one
+   provider mutation.
+
+If a later prerequisite fails after an organization-wide lease was acquired,
+follow that authority's own release/expiry contract. Do not improvise an unlock,
+mint a new organization spelling, or reverse lock order.
+
+## 1. Build one canonical opportunity/reply seam
 
 Use the closed schema in
 [`revenue/outbound_connector_lease/README.md`](../../../revenue/outbound_connector_lease/README.md).
+The scoped authority ceiling and legacy migration rule are in
+[`revenue/outbound_connector_lease/AUTHORITY.md`](../../../revenue/outbound_connector_lease/AUTHORITY.md).
 
-`buyer_scope` is the organization's primary domain, not a person's email or an
-alternate subdomain chosen for convenience.
+`buyer_scope` must come from authoritative organization-scope evidence and should
+be the organization's primary domain, not a person's email or an alternate
+subdomain chosen for convenience. The key compiler checks syntax; it does not
+prove this semantic choice.
 
 Choose exactly one opportunity mode:
 
 1. **External opportunity:** source/issuer domain + stable authoritative ID.
    Procurement `04254` stays that same source ID whether the buyer contact,
-   quoted price, route, draft, or subject changes.
+   quoted price, route, draft, or subject changes. Source identity must itself be
+   authoritative; an alternate portal/domain chosen by a worker is not a safe
+   alias.
 2. **Cold:** exactly `{"kind":"cold"}` for unsolicited organization-level
    outreach with no external opportunity. Do not create product-specific cold
    aliases.
@@ -72,7 +106,10 @@ If this harness cannot run shell Python, reproduce the exact canonical JSON
 schema and SHA-256. Do not invent a different encoding, provider alias, or a
 free-form seam key.
 
-## 2. Acquire through the connected GitHub provider
+Do **not** use `revenue/outbound_mutex` as a replacement seam. Its free-form
+opportunity key is legacy/reference CAS and is non-authoritative for this layer.
+
+## 2. Acquire the opportunity/reply seam through the connected GitHub provider
 
 Target repository: `woahwhattheheck/commons`.
 
@@ -81,26 +118,28 @@ connected GitHub **create branch** action.
 
 Interpret the create result strictly:
 
-- **create success** -> `SEAM_ACQUIRED`; continue.
+- **create success** -> `OPPORTUNITY_SEAM_ACQUIRED`; continue to remaining gates.
 - **422 / Reference already exists** -> `HOLD`; another worker/history owns it.
 - **any other error, timeout, missing permission, or ambiguity** -> `HOLD`.
 
 Do not retry under a new spelling, source authority, source ID, contact, price,
-or provider alias. Do not read an existing branch and decide it must be yours
-after an ambiguous create.
+provider alias, buyer domain, or subdomain. Do not read an existing branch and
+decide it must be yours after an ambiguous create.
 
 Post the acquired branch hash and semantic source identity to the relevant Slack
 work thread as a TAKE. Slack visibility is not the atomic claim; GitHub create is.
+Exact connector-branch success still does **not** establish organization-wide
+exclusivity or production readiness.
 
 ## 3. Re-read provider truth, then send once
 
-After lease success and immediately before mutation:
+After every required coordination layer succeeds and immediately before mutation:
 
 1. Search/read the authoritative provider for prior same-opportunity outbound and
    current inbound. Slack search miss alone is never clearance.
 2. If an older same-seam send exists, **HOLD even though the branch is yours**;
    the message may predate this lease system.
-3. Respect every separate owner/content/legal/cooldown/payment rule.
+3. Respect every separate owner/content/legal/route/cooldown/payment rule.
 4. Send exactly once.
 5. Immediately persist the provider SENT/message/thread ID and post a HARD DNR
    receipt for that seam until a new human/provider event.
@@ -122,7 +161,8 @@ provider send.
 
 ## 5. Never claim what the provider did not prove
 
-- Branch created != email sent.
+- Organization lease created != opportunity seam acquired.
+- Opportunity branch created != email sent.
 - SENT != human acceptance.
 - Human interest != signed scope.
 - Merge != bounty awarded.
@@ -134,13 +174,21 @@ Use canonical provider receipts for each state transition.
 
 Before any external send, make these questions boringly answerable:
 
-- Would another contact at the same organization derive the same buyer scope?
-- Is the opportunity sourced from the same issuer domain + exact authoritative ID?
-- Can a different price/route/draft alter any lease field? (It must not.)
+- Is `buyer_scope` backed by authoritative organization identity rather than a
+  syntactically valid caller choice?
+- Could an alternate domain/subdomain identify the same organization? If yes,
+  where is the authoritative mapping/generation that collapses it?
+- If cold and external work, or two distinct external opportunities, race at the
+  same organization, which organization-wide atomic control prevents pile-on?
+- Is the opportunity sourced from the same authoritative source identity + exact
+  stable ID rather than an alternate portal/domain spelling?
+- Can a different price/route/draft alter any connector seam field? (It must not.)
 - Is the reply provider one exact reviewed canonical ID rather than an alias?
 - Would an automatic redirect stay on the original opportunity seam?
-- If two workers call create simultaneously, can only one observe exact success?
-- If branch create is ambiguous, do we HOLD rather than mint a variant?
+- If two workers call create for the same connector seam simultaneously, can only
+  one observe exact success?
+- If any branch/lease create is ambiguous, do we HOLD rather than mint a variant?
 - If Gmail/provider result is ambiguous, do we reconcile rather than retry?
 
-If any answer is no, HOLD and repair the seam before external mutation.
+If any answer is no, HOLD and repair the applicable scope/seam before external
+mutation.
