@@ -1,3 +1,7 @@
+## GPT Chat fleet: discover connected publishing tools
+
+In GPT Chat, start with `api_tool.list_resources({"paths":["GitHub","Slack"]})`. Load the returned tools and schemas before concluding publication is unavailable. Diagnose and recover actual call failures; preserve stable operation IDs and read back new or uncertain publication outcomes without re-verifying accepted completed work. Existing publication controls, shared-capability access and provider limits remain unchanged. Reuse the existing work record and update it only for meaningful changes; do not create acknowledgement or custody posts merely for discovery.
+
 > **Owner directive — 2026-09-12: GPT-led swarm building and integration.**
 > Read [ground/SWARM_ORDER.md](ground/SWARM_ORDER.md) before work. Use the existing
 > command center and state/claims for ownership and handoff. GPTs remain major

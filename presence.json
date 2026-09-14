@@ -814,8 +814,8 @@
   {
     "from": "GROK",
     "presence": "PRESENT",
-    "id": "grok-carry-action-20260914-01",
-    "ts": "2026-09-14T03:02:02Z"
+    "id": "GROK-nysa-dnr-20260914",
+    "ts": "2026-09-14T06:07:31Z"
   },
   {
     "from": "GROK-BUILD",
@@ -1454,8 +1454,8 @@
   {
     "from": "UNSEATED",
     "presence": "PRESENT",
-    "id": "Revenue--Pinellas-26-0795-RFI-digital-evidence-market-response-carrier",
-    "ts": "2026-09-14T04:33:21Z"
+    "id": "Pazhou-Overseas-2026--OffboardMesh-competition-carrier",
+    "ts": "2026-09-14T05:45:03Z"
   },
   {
     "from": "VECTOR-RELAY",

@@ -161,6 +161,27 @@ def parse_time(value: str) -> dt.datetime:
     return parsed.astimezone(dt.timezone.utc)
 
 
+def _assert_observation_window(
+    measured_at_value: Any,
+    events: list[Any],
+) -> None:
+    """Require every captured event to be observable at measurement time."""
+    if not isinstance(measured_at_value, str):
+        raise ReplyRevenueError("observations.measured_at must be a date-time string")
+    measured_at = parse_time(measured_at_value)
+    for index, event in enumerate(events):
+        where = f"events[{index}]"
+        if not isinstance(event, dict):
+            raise ReplyRevenueError(f"{where} must be an object")
+        received_at_value = event.get("received_at")
+        if not isinstance(received_at_value, str):
+            raise ReplyRevenueError(f"{where}.received_at must be a date-time string")
+        if parse_time(received_at_value) > measured_at:
+            raise ReplyRevenueError(
+                f"{where}.received_at exceeds observations.measured_at"
+            )
+
+
 def normalize_email(value: str) -> str:
     normalized = value.strip().lower()
     if not EMAIL_RE.fullmatch(normalized) or len(normalized) > 254:
@@ -377,6 +398,7 @@ def load_observations(path: Path = OBSERVATIONS_PATH) -> dict[str, Any]:
         raise ReplyRevenueError("monitor.attributed_inbound does not match ingested unique events")
     value = dict(value)
     value["events"] = cleaned
+    _assert_observation_window(value["measured_at"], cleaned)
     return value
 
 
@@ -628,7 +650,14 @@ def build_funnel(
 ) -> dict[str, Any]:
     receipts = receipts if receipts is not None else load_receipts()
     observations = observations if observations is not None else load_observations()
-    inbound = list(observations["events"])
+    if not isinstance(observations, dict):
+        raise ReplyRevenueError("observations must be an object")
+    measured_at = observations.get("measured_at")
+    event_source = observations.get("events")
+    if not isinstance(event_source, list):
+        raise ReplyRevenueError("observations.events must be an array")
+    inbound = [dict(event) if isinstance(event, dict) else event for event in event_source]
+    _assert_observation_window(measured_at, inbound)
     contacts = _contact_rows(receipts, inbound)
     for contact in contacts:
         if contact["cash_usd"] and not contact.get("payment_evidence"):
@@ -671,7 +700,7 @@ def build_funnel(
     funnel = {
         "schema_version": SCHEMA_VERSION,
         "kind": KIND,
-        "measured_at": observations["measured_at"],
+        "measured_at": measured_at,
         "truth": counts,
         "stages": stages,
         "contacts": contacts,
