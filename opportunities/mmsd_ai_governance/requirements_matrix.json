@@ -1,0 +1,153 @@
+{
+  "schema": "commons.mmsd-ai-governance-requirements/v1",
+  "opportunity_id": "MMSD-COMPREHENSIVE-AI-POLICY-2026",
+  "as_of": "2026-09-14T03:12:00Z",
+  "rules": {
+    "controlling_authority": "Only current buyer-controlled RFP/addenda/Q&A bytes may close submission requirements.",
+    "cached_or_secondary": "May guide discovery and drafting, but remain HOLD for submission compliance.",
+    "unknown": "Never infer a PASS from an absent requirement."
+  },
+  "requirements": [
+    {
+      "id": "R-000",
+      "topic": "current_solicitation_status",
+      "known_value": "former solicitation URL 404; live MMSD Contracting Center does not list AI-governance RFP; secondary indexes still report active",
+      "authority": "MIXED_OFFICIAL_CURRENT_AND_SECONDARY",
+      "status": "BLOCKER_BUYER_REVERIFICATION_REQUIRED",
+      "source_ids": [
+        "buyer-page-probe-20260914",
+        "contracting-center-live-20260914",
+        "publicbidsearch-index-20260914"
+      ]
+    },
+    {
+      "id": "R-001",
+      "topic": "proposal_deadline",
+      "known_value": "2026-10-16 16:00 America/Chicago",
+      "authority": "BUYER_PAGE_CACHE",
+      "status": "HOLD_CURRENT_SOURCE_REQUIRED",
+      "source_id": "buyer-page-cache-20260911"
+    },
+    {
+      "id": "R-002",
+      "topic": "submission_mailbox",
+      "known_value": "rfp@madsewer.org",
+      "authority": "BUYER_PAGE_CACHE",
+      "status": "HOLD_CURRENT_SOURCE_REQUIRED",
+      "source_id": "buyer-page-cache-20260911"
+    },
+    {
+      "id": "R-003",
+      "topic": "submission_subject",
+      "known_value": "Comprehensive AI Policy RFP",
+      "authority": "BUYER_PAGE_CACHE",
+      "status": "HOLD_CURRENT_SOURCE_REQUIRED",
+      "source_id": "buyer-page-cache-20260911"
+    },
+    {
+      "id": "R-004",
+      "topic": "scope_ai_types",
+      "known_value": "Generative AI and Operational AI",
+      "authority": "BUYER_PAGE_CACHE",
+      "status": "DISCOVERY_CONFIDENCE_ONLY",
+      "source_id": "buyer-page-cache-20260911"
+    },
+    {
+      "id": "R-005",
+      "topic": "public_records",
+      "known_value": "proposal responses and contents represented as public record",
+      "authority": "BUYER_PAGE_CACHE",
+      "status": "DISCOVERY_CONFIDENCE_ONLY",
+      "source_id": "buyer-page-cache-20260911"
+    },
+    {
+      "id": "R-006",
+      "topic": "questions_deadline",
+      "known_value": "2026-09-28 16:00 America/Chicago",
+      "authority": "SECONDARY_INDEX",
+      "status": "HOLD_BUYER_SOURCE_REQUIRED",
+      "source_id": "publicbidsearch-index-20260914"
+    },
+    {
+      "id": "R-007",
+      "topic": "term",
+      "known_value": "six-month consulting engagement",
+      "authority": "SECONDARY_INDEX",
+      "status": "HOLD_BUYER_SOURCE_REQUIRED",
+      "source_id": "publicbidsearch-index-20260914"
+    },
+    {
+      "id": "R-008",
+      "topic": "discovery_inventory",
+      "known_value": "shadow/embedded-AI inventory and stakeholder discovery",
+      "authority": "SECONDARY_INDEX",
+      "status": "DRAFTING_INPUT_ONLY",
+      "source_id": "publicbidsearch-index-20260914"
+    },
+    {
+      "id": "R-009",
+      "topic": "governance_controls",
+      "known_value": "risk/data-security, public-records/retention, vendor procurement and incident-response controls",
+      "authority": "SECONDARY_INDEX",
+      "status": "DRAFTING_INPUT_ONLY",
+      "source_id": "publicbidsearch-index-20260914"
+    },
+    {
+      "id": "R-010",
+      "topic": "training",
+      "known_value": "staff training / AI literacy",
+      "authority": "SECONDARY_INDEX",
+      "status": "DRAFTING_INPUT_ONLY",
+      "source_id": "publicbidsearch-index-20260914"
+    },
+    {
+      "id": "R-011",
+      "topic": "evaluation_weights",
+      "known_value": null,
+      "authority": "UNKNOWN",
+      "status": "BLOCKER"
+    },
+    {
+      "id": "R-012",
+      "topic": "proposal_format_page_limit",
+      "known_value": null,
+      "authority": "UNKNOWN",
+      "status": "BLOCKER"
+    },
+    {
+      "id": "R-013",
+      "topic": "pricing_instructions",
+      "known_value": null,
+      "authority": "UNKNOWN",
+      "status": "BLOCKER"
+    },
+    {
+      "id": "R-014",
+      "topic": "insurance_legal_terms",
+      "known_value": null,
+      "authority": "UNKNOWN",
+      "status": "BLOCKER"
+    },
+    {
+      "id": "R-015",
+      "topic": "reference_requirements",
+      "known_value": null,
+      "authority": "UNKNOWN",
+      "status": "BLOCKER"
+    },
+    {
+      "id": "R-016",
+      "topic": "addenda",
+      "known_value": null,
+      "authority": "UNKNOWN",
+      "status": "BLOCKER"
+    },
+    {
+      "id": "R-017",
+      "topic": "questions_answers",
+      "known_value": null,
+      "authority": "UNKNOWN",
+      "status": "BLOCKER"
+    }
+  ]
+}
