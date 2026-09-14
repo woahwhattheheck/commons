@@ -2,8 +2,8 @@
   "counts": {
     "open_issues": 83,
     "open_pull_requests": 49,
-    "runs_in_progress": 17,
-    "runs_queued": 326
+    "runs_in_progress": 19,
+    "runs_queued": 346
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -69,13 +69,13 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "zvq-d6p7/doe-gems-faultmap",
-      "created_at": "2026-09-14T01:44:48Z",
+      "branch": "zes-c4t8/bid-owner-action-cockpit-20260913",
+      "created_at": "2026-09-14T01:44:56Z",
       "draft": false,
-      "head_sha": "de3b7cf99db029e1b39024e616bb3acf80554169",
-      "number": 14167,
-      "title": "Add DOE GEMS Prize fault-mapping solver",
-      "updated_at": "2026-09-14T01:44:48Z"
+      "head_sha": "9d74629539d70adb46768dfa571c58e00534b60d",
+      "number": 14168,
+      "title": "revenue: add cross-bid owner action cockpit",
+      "updated_at": "2026-09-14T01:45:52Z"
     },
     {
       "author": "woahwhattheheck",
@@ -86,7 +86,7 @@
       "head_sha": "24ca588aac16c1f20735c63ffe3addc9267d00fc",
       "number": 14159,
       "title": "Revenue: require fresh Stripe readback for right-now checkout truth",
-      "updated_at": "2026-09-14T01:43:47Z"
+      "updated_at": "2026-09-14T01:45:37Z"
     },
     {
       "author": "woahwhattheheck",
@@ -119,7 +119,7 @@
       "head_sha": "8752910d19fe94caa376a3bfcb5f26f0d9e0147c",
       "number": 14142,
       "title": "Revenue: evidence-bound commercial experiment lab",
-      "updated_at": "2026-09-14T01:44:45Z"
+      "updated_at": "2026-09-14T01:45:56Z"
     },
     {
       "author": "woahwhattheheck",
@@ -226,12 +226,23 @@
     "14147": "01dfcd09b6ad5754fbe362715f499fdb43d29c2a",
     "14151": "421b0703a91d251e94be8ca55d9d22c6a76d8f0a",
     "14159": "24ca588aac16c1f20735c63ffe3addc9267d00fc",
-    "14167": "de3b7cf99db029e1b39024e616bb3acf80554169"
+    "14168": "9d74629539d70adb46768dfa571c58e00534b60d"
   },
   "pulls_listed": 49,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 19.2,
+  "queue_depth_per_runner": 18.2,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zvq-d6p7/doe-gems-faultmap",
+      "closed_at": "2026-09-14T01:45:21Z",
+      "head_sha": "de3b7cf99db029e1b39024e616bb3acf80554169",
+      "merged_at": "2026-09-14T01:45:21Z",
+      "number": 14167,
+      "state": "MERGED",
+      "title": "Add DOE GEMS Prize fault-mapping solver"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -385,21 +396,10 @@
       "number": 14133,
       "state": "CLOSED",
       "title": "[LANDED 75aa9fac] Revenue: make whole-opportunity custody atomic"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zst-q5m9/awwu-2026p044-migration-evidence",
-      "closed_at": "2026-09-14T01:22:37Z",
-      "head_sha": "090a5fcf4efa26f2760b8c41253a7665104c5290",
-      "merged_at": "2026-09-14T01:22:37Z",
-      "number": 14129,
-      "state": "MERGED",
-      "title": "Revenue: add AWWU CIS migration evidence workshare"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-14T01:44:53Z",
+  "unchanged_since": "2026-09-14T01:46:11Z",
   "undatable_pulls": []
 }
