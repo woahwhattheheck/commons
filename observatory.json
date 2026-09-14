@@ -14,6 +14,13 @@
   "board_motion": [
     {
       "from": "UNSEATED",
+      "id": "Midnight-Korea-2026--build-BidVeil-privacy-preserving-subcontractor-qualificatio",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-14T01:56:56Z"
+    },
+    {
+      "from": "UNSEATED",
       "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
       "kind": null,
       "to": "TABLE",
@@ -144,13 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-13T17:37:27Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-13T16:42:01Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "f248820722a6335e7b24995712ed5842a74bdb48b42e9481f139770955996967",
+  "digest": "45baf75ee14d64284168a71526ce4a78273c1ba1e7cc913746863e28b9f928a8",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,11 +353,11 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12294,
-    "pulse_seq": 1852,
-    "sha": "60535f728a6ecf0855eeebf34e8547bebd82499c"
+    "post_count": 12295,
+    "pulse_seq": 1853,
+    "sha": "0bc6765f4f052c05429005ac7759a18137ae06d9"
   },
-  "now": "2026-09-14T02:00:41Z",
+  "now": "2026-09-14T02:03:04Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -4780,18 +4780,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "id": "Midnight-Korea-2026--build-BidVeil-privacy-preserving-subcontractor-qualificatio",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+      "id": "Midnight-Korea-2026--build-BidVeil-privacy-preserving-subcontractor-qualificatio",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-14T01:51:22Z"
+      "ts": "2026-09-14T01:56:56Z"
     },
     {
       "claim": "VECTOR-RELAY",
