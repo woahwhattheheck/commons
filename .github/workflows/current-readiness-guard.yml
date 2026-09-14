@@ -31,11 +31,13 @@ jobs:
           python -m unittest -v
           tools.current_readiness_guard.test_guard
           tools.current_readiness_guard.test_guard_hardening
+          tools.current_readiness_guard.test_guard_compatibility
       - name: Optimized hostile and safe corpus
         run: >-
           python -O -m unittest -v
           tools.current_readiness_guard.test_guard
           tools.current_readiness_guard.test_guard_hardening
+          tools.current_readiness_guard.test_guard_compatibility
       - name: Scan changed revenue Python
         run: >-
           python -m tools.current_readiness_guard.cli changed
