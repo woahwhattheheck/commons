@@ -54,7 +54,7 @@ def validate_message_providers(packet: Any) -> None:
         if not isinstance(payload, Mapping) or "provider" not in payload:
             continue
         provider = payload["provider"]
-        if provider not in CANONICAL_MESSAGE_PROVIDERS:
+        if not isinstance(provider, str) or provider not in CANONICAL_MESSAGE_PROVIDERS:
             raise ContractError(
                 f"event[{index}].payload.provider must be a canonical provider ID: "
                 f"{sorted(CANONICAL_MESSAGE_PROVIDERS)}"
