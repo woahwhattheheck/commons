@@ -93,11 +93,14 @@ contradictory duplicate provider events fail closed.
   or lease evidence is caller-asserted / exists / failed / ambiguous instead of
   the exact successful create result.
 
-A batch also groups distinct provider event IDs by canonical seam. More than one
-send event on one seam adds `DUPLICATE_SEND_SAME_SEAM` to every affected receipt
-and emits an `incident_seams` entry. The batch result is input-order independent.
-Exact duplicate provider events are rejected; conflicting copies are rejected as
-contradictory evidence rather than guessed through.
+A batch groups distinct **authoritative provider SENT** event IDs by canonical
+seam. More than one authoritative send event on one seam adds
+`DUPLICATE_SEND_SAME_SEAM` to those authoritative receipts and emits an
+`incident_seams` entry. Caller-asserted or ambiguous send records remain DNR and
+auditable, but they cannot create, enlarge, or receive a factual duplicate-send
+incident flag. The batch result is input-order independent. Exact duplicate
+provider events are rejected; conflicting copies are rejected as contradictory
+evidence rather than guessed through.
 
 ## Deterministic receipts
 
@@ -138,5 +141,5 @@ The hostile suite covers pre/post/equal ordering, missing and wrong seams,
 branch-existence non-proof, caller assertions, ambiguous sends, timezone
 normalization, strict RFC3339, malformed hashes/branches, exact-field failures,
 duplicate JSON keys, non-finite JSON, duplicate IDs/events, contradictory event
-copies, same-seam duplicate sends, compiler normalization and deterministic
-receipt ordering/hashes.
+copies, authoritative same-seam duplicate sends, untrusted duplicate-send
+injection, compiler normalization and deterministic receipt ordering/hashes.

@@ -118,6 +118,38 @@ class AuditTests(unittest.TestCase):
         for r in out['receipts']:
             self.assertEqual(r['batch_flags'],[DUPLICATE_FLAG]);self.assertEqual(r['same_seam_send_count'],2)
 
+    def test_caller_asserted_event_cannot_create_duplicate_send_incident(self):
+        out=audit_document(doc(
+            record(rid='r1',event='authoritative'),
+            record(rid='r2',event='asserted',send_kwargs={'authority':'caller-assertion'}),
+        ))
+        self.assertEqual(out['summary']['duplicate_seams'],0);self.assertEqual(out['summary']['duplicate_send_records'],0);self.assertEqual(out['incident_seams'],[])
+        by_id={r['record_id']:r for r in out['receipts']}
+        self.assertEqual(by_id['r1']['batch_flags'],[]);self.assertEqual(by_id['r1']['same_seam_send_count'],1)
+        self.assertEqual(by_id['r2']['classification'],CLASS_UNTRUSTED);self.assertEqual(by_id['r2']['batch_flags'],[]);self.assertEqual(by_id['r2']['same_seam_send_count'],1)
+
+    def test_ambiguous_event_cannot_create_duplicate_send_incident(self):
+        out=audit_document(doc(
+            record(rid='r1',event='authoritative'),
+            record(rid='r2',event='ambiguous',send_kwargs={'status':'ambiguous'}),
+        ))
+        self.assertEqual(out['summary']['duplicate_seams'],0);self.assertEqual(out['summary']['duplicate_send_records'],0);self.assertEqual(out['incident_seams'],[])
+        by_id={r['record_id']:r for r in out['receipts']}
+        self.assertEqual(by_id['r2']['classification'],CLASS_UNTRUSTED);self.assertEqual(by_id['r2']['batch_flags'],[])
+
+    def test_untrusted_event_cannot_enlarge_authoritative_duplicate_group(self):
+        out=audit_document(doc(
+            record(rid='r1',event='auth-1'),
+            record(rid='r2',event='auth-2'),
+            record(rid='r3',event='asserted',send_kwargs={'authority':'caller-assertion'}),
+        ))
+        self.assertEqual(out['summary']['duplicate_seams'],1);self.assertEqual(out['summary']['duplicate_send_records'],2)
+        self.assertEqual(out['incident_seams'][0]['send_count'],2);self.assertEqual(out['incident_seams'][0]['record_ids'],['r1','r2'])
+        by_id={r['record_id']:r for r in out['receipts']}
+        for rid in ('r1','r2'):
+            self.assertEqual(by_id[rid]['batch_flags'],[DUPLICATE_FLAG]);self.assertEqual(by_id[rid]['same_seam_send_count'],2)
+        self.assertEqual(by_id['r3']['classification'],CLASS_UNTRUSTED);self.assertEqual(by_id['r3']['batch_flags'],[]);self.assertEqual(by_id['r3']['same_seam_send_count'],1)
+
     def test_input_order_does_not_change_batch_receipt(self):
         a=record(rid='a',event='e-a');b=record(rid='b',event='e-b')
         one=audit_document(doc(a,b));two=audit_document(doc(b,a))
