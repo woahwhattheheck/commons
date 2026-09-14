@@ -1,29 +1,461 @@
 {
   "cases": [
-    {"case":{"approval_present":false,"approval_required":false,"case_id":"case-001","duplicate":false,"invoice_id":"inv-001","invoice_total_cents":10000,"ledger_balance_cents":10000,"po_present":true,"po_required":true,"po_total_cents":10000,"schema":"tjlabs.ap-acceptance-fixture/v1","statement_balance_cents":10000,"tolerance_cents":50,"vendor_match":true},"expected_decision":"ACCEPT_STP"},
-    {"case":{"approval_present":false,"approval_required":false,"case_id":"case-002","duplicate":false,"invoice_id":"inv-002","invoice_total_cents":10050,"ledger_balance_cents":10000,"po_present":true,"po_required":true,"po_total_cents":10000,"schema":"tjlabs.ap-acceptance-fixture/v1","statement_balance_cents":10000,"tolerance_cents":50,"vendor_match":true},"expected_decision":"ACCEPT_STP"},
-    {"case":{"approval_present":false,"approval_required":false,"case_id":"case-003","duplicate":false,"invoice_id":"inv-003","invoice_total_cents":9950,"ledger_balance_cents":10000,"po_present":true,"po_required":true,"po_total_cents":10000,"schema":"tjlabs.ap-acceptance-fixture/v1","statement_balance_cents":10000,"tolerance_cents":50,"vendor_match":true},"expected_decision":"ACCEPT_STP"},
-    {"case":{"approval_present":false,"approval_required":false,"case_id":"case-004","duplicate":false,"invoice_id":"inv-004","invoice_total_cents":20000,"ledger_balance_cents":20000,"po_present":false,"po_required":false,"po_total_cents":0,"schema":"tjlabs.ap-acceptance-fixture/v1","statement_balance_cents":20000,"tolerance_cents":0,"vendor_match":true},"expected_decision":"ACCEPT_STP"},
-    {"case":{"approval_present":false,"approval_required":false,"case_id":"case-005","duplicate":true,"invoice_id":"inv-005","invoice_total_cents":10000,"ledger_balance_cents":10000,"po_present":true,"po_required":true,"po_total_cents":10000,"schema":"tjlabs.ap-acceptance-fixture/v1","statement_balance_cents":10000,"tolerance_cents":50,"vendor_match":true},"expected_decision":"REJECT_DUPLICATE"},
-    {"case":{"approval_present":false,"approval_required":false,"case_id":"case-006","duplicate":true,"invoice_id":"inv-006","invoice_total_cents":10000,"ledger_balance_cents":10000,"po_present":false,"po_required":true,"po_total_cents":10000,"schema":"tjlabs.ap-acceptance-fixture/v1","statement_balance_cents":10000,"tolerance_cents":50,"vendor_match":false},"expected_decision":"REJECT_DUPLICATE"},
-    {"case":{"approval_present":false,"approval_required":false,"case_id":"case-007","duplicate":false,"invoice_id":"inv-007","invoice_total_cents":10000,"ledger_balance_cents":10000,"po_present":false,"po_required":true,"po_total_cents":10000,"schema":"tjlabs.ap-acceptance-fixture/v1","statement_balance_cents":10000,"tolerance_cents":50,"vendor_match":true},"expected_decision":"HOLD_MISSING_PO"},
-    {"case":{"approval_present":false,"approval_required":false,"case_id":"case-008","duplicate":false,"invoice_id":"inv-008","invoice_total_cents":15000,"ledger_balance_cents":10000,"po_present":false,"po_required":true,"po_total_cents":10000,"schema":"tjlabs.ap-acceptance-fixture/v1","statement_balance_cents":10000,"tolerance_cents":50,"vendor_match":true},"expected_decision":"HOLD_MISSING_PO"},
-    {"case":{"approval_present":false,"approval_required":false,"case_id":"case-009","duplicate":false,"invoice_id":"inv-009","invoice_total_cents":10000,"ledger_balance_cents":10000,"po_present":true,"po_required":true,"po_total_cents":10000,"schema":"tjlabs.ap-acceptance-fixture/v1","statement_balance_cents":10000,"tolerance_cents":50,"vendor_match":false},"expected_decision":"HOLD_VENDOR_MISMATCH"},
-    {"case":{"approval_present":false,"approval_required":false,"case_id":"case-010","duplicate":false,"invoice_id":"inv-010","invoice_total_cents":11000,"ledger_balance_cents":10000,"po_present":true,"po_required":true,"po_total_cents":10000,"schema":"tjlabs.ap-acceptance-fixture/v1","statement_balance_cents":10000,"tolerance_cents":50,"vendor_match":false},"expected_decision":"HOLD_VENDOR_MISMATCH"},
-    {"case":{"approval_present":false,"approval_required":false,"case_id":"case-011","duplicate":false,"invoice_id":"inv-011","invoice_total_cents":10051,"ledger_balance_cents":10000,"po_present":true,"po_required":true,"po_total_cents":10000,"schema":"tjlabs.ap-acceptance-fixture/v1","statement_balance_cents":10000,"tolerance_cents":50,"vendor_match":true},"expected_decision":"HOLD_AMOUNT_VARIANCE"},
-    {"case":{"approval_present":false,"approval_required":false,"case_id":"case-012","duplicate":false,"invoice_id":"inv-012","invoice_total_cents":9949,"ledger_balance_cents":10000,"po_present":true,"po_required":true,"po_total_cents":10000,"schema":"tjlabs.ap-acceptance-fixture/v1","statement_balance_cents":10000,"tolerance_cents":50,"vendor_match":true},"expected_decision":"HOLD_AMOUNT_VARIANCE"},
-    {"case":{"approval_present":false,"approval_required":false,"case_id":"case-013","duplicate":false,"invoice_id":"inv-013","invoice_total_cents":20000,"ledger_balance_cents":10000,"po_present":true,"po_required":true,"po_total_cents":10000,"schema":"tjlabs.ap-acceptance-fixture/v1","statement_balance_cents":10000,"tolerance_cents":5000,"vendor_match":true},"expected_decision":"HOLD_AMOUNT_VARIANCE"},
-    {"case":{"approval_present":false,"approval_required":true,"case_id":"case-014","duplicate":false,"invoice_id":"inv-014","invoice_total_cents":10000,"ledger_balance_cents":10000,"po_present":true,"po_required":true,"po_total_cents":10000,"schema":"tjlabs.ap-acceptance-fixture/v1","statement_balance_cents":10000,"tolerance_cents":50,"vendor_match":true},"expected_decision":"HOLD_APPROVAL"},
-    {"case":{"approval_present":false,"approval_required":true,"case_id":"case-015","duplicate":false,"invoice_id":"inv-015","invoice_total_cents":10050,"ledger_balance_cents":10000,"po_present":true,"po_required":true,"po_total_cents":10000,"schema":"tjlabs.ap-acceptance-fixture/v1","statement_balance_cents":10000,"tolerance_cents":50,"vendor_match":true},"expected_decision":"HOLD_APPROVAL"},
-    {"case":{"approval_present":true,"approval_required":true,"case_id":"case-016","duplicate":false,"invoice_id":"inv-016","invoice_total_cents":10000,"ledger_balance_cents":10000,"po_present":true,"po_required":true,"po_total_cents":10000,"schema":"tjlabs.ap-acceptance-fixture/v1","statement_balance_cents":10000,"tolerance_cents":50,"vendor_match":true},"expected_decision":"ACCEPT_STP"},
-    {"case":{"approval_present":false,"approval_required":false,"case_id":"case-017","duplicate":false,"invoice_id":"inv-017","invoice_total_cents":10000,"ledger_balance_cents":10000,"po_present":true,"po_required":true,"po_total_cents":10000,"schema":"tjlabs.ap-acceptance-fixture/v1","statement_balance_cents":9999,"tolerance_cents":50,"vendor_match":true},"expected_decision":"HOLD_RECONCILIATION"},
-    {"case":{"approval_present":false,"approval_required":false,"case_id":"case-018","duplicate":false,"invoice_id":"inv-018","invoice_total_cents":10000,"ledger_balance_cents":9999,"po_present":true,"po_required":true,"po_total_cents":10000,"schema":"tjlabs.ap-acceptance-fixture/v1","statement_balance_cents":10000,"tolerance_cents":50,"vendor_match":true},"expected_decision":"HOLD_RECONCILIATION"},
-    {"case":{"approval_present":false,"approval_required":false,"case_id":"case-019","duplicate":false,"invoice_id":"inv-019","invoice_total_cents":0,"ledger_balance_cents":0,"po_present":true,"po_required":true,"po_total_cents":0,"schema":"tjlabs.ap-acceptance-fixture/v1","statement_balance_cents":0,"tolerance_cents":0,"vendor_match":true},"expected_decision":"ACCEPT_STP"},
-    {"case":{"approval_present":false,"approval_required":false,"case_id":"case-020","duplicate":false,"invoice_id":"inv-020","invoice_total_cents":99999999,"ledger_balance_cents":99999999,"po_present":true,"po_required":true,"po_total_cents":99999999,"schema":"tjlabs.ap-acceptance-fixture/v1","statement_balance_cents":99999999,"tolerance_cents":0,"vendor_match":true},"expected_decision":"ACCEPT_STP"},
-    {"case":{"approval_present":false,"approval_required":true,"case_id":"case-021","duplicate":false,"invoice_id":"inv-021","invoice_total_cents":12345,"ledger_balance_cents":12345,"po_present":false,"po_required":false,"po_total_cents":0,"schema":"tjlabs.ap-acceptance-fixture/v1","statement_balance_cents":12345,"tolerance_cents":0,"vendor_match":true},"expected_decision":"HOLD_APPROVAL"},
-    {"case":{"approval_present":false,"approval_required":false,"case_id":"case-022","duplicate":false,"invoice_id":"inv-022","invoice_total_cents":12345,"ledger_balance_cents":12344,"po_present":false,"po_required":false,"po_total_cents":0,"schema":"tjlabs.ap-acceptance-fixture/v1","statement_balance_cents":12345,"tolerance_cents":0,"vendor_match":true},"expected_decision":"HOLD_RECONCILIATION"},
-    {"case":{"approval_present":false,"approval_required":true,"case_id":"case-023","duplicate":true,"invoice_id":"inv-023","invoice_total_cents":10000,"ledger_balance_cents":10000,"po_present":true,"po_required":true,"po_total_cents":10000,"schema":"tjlabs.ap-acceptance-fixture/v1","statement_balance_cents":1,"tolerance_cents":50,"vendor_match":true},"expected_decision":"REJECT_DUPLICATE"},
-    {"case":{"approval_present":false,"approval_required":true,"case_id":"case-024","duplicate":false,"invoice_id":"inv-024","invoice_total_cents":10000,"ledger_balance_cents":10000,"po_present":true,"po_required":true,"po_total_cents":10000,"schema":"tjlabs.ap-acceptance-fixture/v1","statement_balance_cents":10000,"tolerance_cents":50,"vendor_match":false},"expected_decision":"HOLD_VENDOR_MISMATCH"}
+    {
+      "case": {
+        "approval_present": false,
+        "approval_required": false,
+        "case_id": "case-001",
+        "duplicate": false,
+        "invoice_id": "inv-001",
+        "invoice_total_cents": 10000,
+        "ledger_balance_cents": 10000,
+        "po_present": true,
+        "po_required": true,
+        "po_total_cents": 10000,
+        "schema": "tjlabs.ap-acceptance-fixture/v1",
+        "statement_balance_cents": 10000,
+        "tolerance_cents": 50,
+        "vendor_match": true
+      },
+      "expected_decision": "ACCEPT_STP"
+    },
+    {
+      "case": {
+        "approval_present": false,
+        "approval_required": false,
+        "case_id": "case-002",
+        "duplicate": false,
+        "invoice_id": "inv-002",
+        "invoice_total_cents": 10050,
+        "ledger_balance_cents": 10000,
+        "po_present": true,
+        "po_required": true,
+        "po_total_cents": 10000,
+        "schema": "tjlabs.ap-acceptance-fixture/v1",
+        "statement_balance_cents": 10000,
+        "tolerance_cents": 50,
+        "vendor_match": true
+      },
+      "expected_decision": "ACCEPT_STP"
+    },
+    {
+      "case": {
+        "approval_present": false,
+        "approval_required": false,
+        "case_id": "case-003",
+        "duplicate": false,
+        "invoice_id": "inv-003",
+        "invoice_total_cents": 9950,
+        "ledger_balance_cents": 10000,
+        "po_present": true,
+        "po_required": true,
+        "po_total_cents": 10000,
+        "schema": "tjlabs.ap-acceptance-fixture/v1",
+        "statement_balance_cents": 10000,
+        "tolerance_cents": 50,
+        "vendor_match": true
+      },
+      "expected_decision": "ACCEPT_STP"
+    },
+    {
+      "case": {
+        "approval_present": false,
+        "approval_required": false,
+        "case_id": "case-004",
+        "duplicate": false,
+        "invoice_id": "inv-004",
+        "invoice_total_cents": 20000,
+        "ledger_balance_cents": 20000,
+        "po_present": false,
+        "po_required": false,
+        "po_total_cents": 0,
+        "schema": "tjlabs.ap-acceptance-fixture/v1",
+        "statement_balance_cents": 20000,
+        "tolerance_cents": 0,
+        "vendor_match": true
+      },
+      "expected_decision": "ACCEPT_STP"
+    },
+    {
+      "case": {
+        "approval_present": false,
+        "approval_required": false,
+        "case_id": "case-005",
+        "duplicate": true,
+        "invoice_id": "inv-005",
+        "invoice_total_cents": 10000,
+        "ledger_balance_cents": 10000,
+        "po_present": true,
+        "po_required": true,
+        "po_total_cents": 10000,
+        "schema": "tjlabs.ap-acceptance-fixture/v1",
+        "statement_balance_cents": 10000,
+        "tolerance_cents": 50,
+        "vendor_match": true
+      },
+      "expected_decision": "REJECT_DUPLICATE"
+    },
+    {
+      "case": {
+        "approval_present": false,
+        "approval_required": false,
+        "case_id": "case-006",
+        "duplicate": true,
+        "invoice_id": "inv-006",
+        "invoice_total_cents": 10000,
+        "ledger_balance_cents": 10000,
+        "po_present": false,
+        "po_required": true,
+        "po_total_cents": 10000,
+        "schema": "tjlabs.ap-acceptance-fixture/v1",
+        "statement_balance_cents": 10000,
+        "tolerance_cents": 50,
+        "vendor_match": false
+      },
+      "expected_decision": "REJECT_DUPLICATE"
+    },
+    {
+      "case": {
+        "approval_present": false,
+        "approval_required": false,
+        "case_id": "case-007",
+        "duplicate": false,
+        "invoice_id": "inv-007",
+        "invoice_total_cents": 10000,
+        "ledger_balance_cents": 10000,
+        "po_present": false,
+        "po_required": true,
+        "po_total_cents": 10000,
+        "schema": "tjlabs.ap-acceptance-fixture/v1",
+        "statement_balance_cents": 10000,
+        "tolerance_cents": 50,
+        "vendor_match": true
+      },
+      "expected_decision": "HOLD_MISSING_PO"
+    },
+    {
+      "case": {
+        "approval_present": false,
+        "approval_required": false,
+        "case_id": "case-008",
+        "duplicate": false,
+        "invoice_id": "inv-008",
+        "invoice_total_cents": 15000,
+        "ledger_balance_cents": 10000,
+        "po_present": false,
+        "po_required": true,
+        "po_total_cents": 10000,
+        "schema": "tjlabs.ap-acceptance-fixture/v1",
+        "statement_balance_cents": 10000,
+        "tolerance_cents": 50,
+        "vendor_match": true
+      },
+      "expected_decision": "HOLD_MISSING_PO"
+    },
+    {
+      "case": {
+        "approval_present": false,
+        "approval_required": false,
+        "case_id": "case-009",
+        "duplicate": false,
+        "invoice_id": "inv-009",
+        "invoice_total_cents": 10000,
+        "ledger_balance_cents": 10000,
+        "po_present": true,
+        "po_required": true,
+        "po_total_cents": 10000,
+        "schema": "tjlabs.ap-acceptance-fixture/v1",
+        "statement_balance_cents": 10000,
+        "tolerance_cents": 50,
+        "vendor_match": false
+      },
+      "expected_decision": "HOLD_VENDOR_MISMATCH"
+    },
+    {
+      "case": {
+        "approval_present": false,
+        "approval_required": false,
+        "case_id": "case-010",
+        "duplicate": false,
+        "invoice_id": "inv-010",
+        "invoice_total_cents": 11000,
+        "ledger_balance_cents": 10000,
+        "po_present": true,
+        "po_required": true,
+        "po_total_cents": 10000,
+        "schema": "tjlabs.ap-acceptance-fixture/v1",
+        "statement_balance_cents": 10000,
+        "tolerance_cents": 50,
+        "vendor_match": false
+      },
+      "expected_decision": "HOLD_VENDOR_MISMATCH"
+    },
+    {
+      "case": {
+        "approval_present": false,
+        "approval_required": false,
+        "case_id": "case-011",
+        "duplicate": false,
+        "invoice_id": "inv-011",
+        "invoice_total_cents": 10051,
+        "ledger_balance_cents": 10000,
+        "po_present": true,
+        "po_required": true,
+        "po_total_cents": 10000,
+        "schema": "tjlabs.ap-acceptance-fixture/v1",
+        "statement_balance_cents": 10000,
+        "tolerance_cents": 50,
+        "vendor_match": true
+      },
+      "expected_decision": "HOLD_AMOUNT_VARIANCE"
+    },
+    {
+      "case": {
+        "approval_present": false,
+        "approval_required": false,
+        "case_id": "case-012",
+        "duplicate": false,
+        "invoice_id": "inv-012",
+        "invoice_total_cents": 9949,
+        "ledger_balance_cents": 10000,
+        "po_present": true,
+        "po_required": true,
+        "po_total_cents": 10000,
+        "schema": "tjlabs.ap-acceptance-fixture/v1",
+        "statement_balance_cents": 10000,
+        "tolerance_cents": 50,
+        "vendor_match": true
+      },
+      "expected_decision": "HOLD_AMOUNT_VARIANCE"
+    },
+    {
+      "case": {
+        "approval_present": false,
+        "approval_required": false,
+        "case_id": "case-013",
+        "duplicate": false,
+        "invoice_id": "inv-013",
+        "invoice_total_cents": 20000,
+        "ledger_balance_cents": 10000,
+        "po_present": true,
+        "po_required": true,
+        "po_total_cents": 10000,
+        "schema": "tjlabs.ap-acceptance-fixture/v1",
+        "statement_balance_cents": 10000,
+        "tolerance_cents": 5000,
+        "vendor_match": true
+      },
+      "expected_decision": "HOLD_AMOUNT_VARIANCE"
+    },
+    {
+      "case": {
+        "approval_present": false,
+        "approval_required": true,
+        "case_id": "case-014",
+        "duplicate": false,
+        "invoice_id": "inv-014",
+        "invoice_total_cents": 10000,
+        "ledger_balance_cents": 10000,
+        "po_present": true,
+        "po_required": true,
+        "po_total_cents": 10000,
+        "schema": "tjlabs.ap-acceptance-fixture/v1",
+        "statement_balance_cents": 10000,
+        "tolerance_cents": 50,
+        "vendor_match": true
+      },
+      "expected_decision": "HOLD_APPROVAL"
+    },
+    {
+      "case": {
+        "approval_present": false,
+        "approval_required": true,
+        "case_id": "case-015",
+        "duplicate": false,
+        "invoice_id": "inv-015",
+        "invoice_total_cents": 10050,
+        "ledger_balance_cents": 10000,
+        "po_present": true,
+        "po_required": true,
+        "po_total_cents": 10000,
+        "schema": "tjlabs.ap-acceptance-fixture/v1",
+        "statement_balance_cents": 10000,
+        "tolerance_cents": 50,
+        "vendor_match": true
+      },
+      "expected_decision": "HOLD_APPROVAL"
+    },
+    {
+      "case": {
+        "approval_present": true,
+        "approval_required": true,
+        "case_id": "case-016",
+        "duplicate": false,
+        "invoice_id": "inv-016",
+        "invoice_total_cents": 10000,
+        "ledger_balance_cents": 10000,
+        "po_present": true,
+        "po_required": true,
+        "po_total_cents": 10000,
+        "schema": "tjlabs.ap-acceptance-fixture/v1",
+        "statement_balance_cents": 10000,
+        "tolerance_cents": 50,
+        "vendor_match": true
+      },
+      "expected_decision": "ACCEPT_STP"
+    },
+    {
+      "case": {
+        "approval_present": false,
+        "approval_required": false,
+        "case_id": "case-017",
+        "duplicate": false,
+        "invoice_id": "inv-017",
+        "invoice_total_cents": 10000,
+        "ledger_balance_cents": 10000,
+        "po_present": true,
+        "po_required": true,
+        "po_total_cents": 10000,
+        "schema": "tjlabs.ap-acceptance-fixture/v1",
+        "statement_balance_cents": 9999,
+        "tolerance_cents": 50,
+        "vendor_match": true
+      },
+      "expected_decision": "HOLD_RECONCILIATION"
+    },
+    {
+      "case": {
+        "approval_present": false,
+        "approval_required": false,
+        "case_id": "case-018",
+        "duplicate": false,
+        "invoice_id": "inv-018",
+        "invoice_total_cents": 10000,
+        "ledger_balance_cents": 9999,
+        "po_present": true,
+        "po_required": true,
+        "po_total_cents": 10000,
+        "schema": "tjlabs.ap-acceptance-fixture/v1",
+        "statement_balance_cents": 10000,
+        "tolerance_cents": 50,
+        "vendor_match": true
+      },
+      "expected_decision": "HOLD_RECONCILIATION"
+    },
+    {
+      "case": {
+        "approval_present": false,
+        "approval_required": false,
+        "case_id": "case-019",
+        "duplicate": false,
+        "invoice_id": "inv-019",
+        "invoice_total_cents": 0,
+        "ledger_balance_cents": 0,
+        "po_present": true,
+        "po_required": true,
+        "po_total_cents": 0,
+        "schema": "tjlabs.ap-acceptance-fixture/v1",
+        "statement_balance_cents": 0,
+        "tolerance_cents": 0,
+        "vendor_match": true
+      },
+      "expected_decision": "ACCEPT_STP"
+    },
+    {
+      "case": {
+        "approval_present": false,
+        "approval_required": false,
+        "case_id": "case-020",
+        "duplicate": false,
+        "invoice_id": "inv-020",
+        "invoice_total_cents": 99999999,
+        "ledger_balance_cents": 99999999,
+        "po_present": true,
+        "po_required": true,
+        "po_total_cents": 99999999,
+        "schema": "tjlabs.ap-acceptance-fixture/v1",
+        "statement_balance_cents": 99999999,
+        "tolerance_cents": 0,
+        "vendor_match": true
+      },
+      "expected_decision": "ACCEPT_STP"
+    },
+    {
+      "case": {
+        "approval_present": false,
+        "approval_required": true,
+        "case_id": "case-021",
+        "duplicate": false,
+        "invoice_id": "inv-021",
+        "invoice_total_cents": 12345,
+        "ledger_balance_cents": 12345,
+        "po_present": false,
+        "po_required": false,
+        "po_total_cents": 0,
+        "schema": "tjlabs.ap-acceptance-fixture/v1",
+        "statement_balance_cents": 12345,
+        "tolerance_cents": 0,
+        "vendor_match": true
+      },
+      "expected_decision": "HOLD_APPROVAL"
+    },
+    {
+      "case": {
+        "approval_present": false,
+        "approval_required": false,
+        "case_id": "case-022",
+        "duplicate": false,
+        "invoice_id": "inv-022",
+        "invoice_total_cents": 12345,
+        "ledger_balance_cents": 12344,
+        "po_present": false,
+        "po_required": false,
+        "po_total_cents": 0,
+        "schema": "tjlabs.ap-acceptance-fixture/v1",
+        "statement_balance_cents": 12345,
+        "tolerance_cents": 0,
+        "vendor_match": true
+      },
+      "expected_decision": "HOLD_RECONCILIATION"
+    },
+    {
+      "case": {
+        "approval_present": false,
+        "approval_required": true,
+        "case_id": "case-023",
+        "duplicate": true,
+        "invoice_id": "inv-023",
+        "invoice_total_cents": 10000,
+        "ledger_balance_cents": 10000,
+        "po_present": true,
+        "po_required": true,
+        "po_total_cents": 10000,
+        "schema": "tjlabs.ap-acceptance-fixture/v1",
+        "statement_balance_cents": 1,
+        "tolerance_cents": 50,
+        "vendor_match": true
+      },
+      "expected_decision": "REJECT_DUPLICATE"
+    },
+    {
+      "case": {
+        "approval_present": false,
+        "approval_required": true,
+        "case_id": "case-024",
+        "duplicate": false,
+        "invoice_id": "inv-024",
+        "invoice_total_cents": 10000,
+        "ledger_balance_cents": 10000,
+        "po_present": true,
+        "po_required": true,
+        "po_total_cents": 10000,
+        "schema": "tjlabs.ap-acceptance-fixture/v1",
+        "statement_balance_cents": 10000,
+        "tolerance_cents": 50,
+        "vendor_match": false
+      },
+      "expected_decision": "HOLD_VENDOR_MISMATCH"
+    }
   ],
   "schema": "tjlabs.ap-acceptance-matrix/v1"
 }
