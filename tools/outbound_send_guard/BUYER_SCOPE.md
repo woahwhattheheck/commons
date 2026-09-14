@@ -66,9 +66,9 @@ Receipt schema v2 separates **canonical object integrity** from **exact consumed
 receipt = buyer_scope.evaluate(intent_obj, evidence_obj, scope_obj)
 ```
 
-`evaluate()` accepts only the three parsed objects. It derives all source object digests itself and emits `custody_mode="canonical_objects"` with `byte_custody: null`. There are no caller-supplied digest override parameters.
+`evaluate()` accepts only the three parsed objects. At API entry it canonicalizes each caller-owned object exactly once, strict-reparses those bytes into detached local graphs, and performs scope parsing, evidence rebinding, core evaluation, member projection, and source hashing only from those detached snapshots. A later caller mutation therefore cannot splice one semantic generation with another generation's object digest. It derives all source object digests itself and emits `custody_mode="canonical_objects"` with `byte_custody: null`. There are no caller-supplied digest override parameters.
 
-This mode does **not** claim raw-file byte custody. Two JSON byte streams that parse to the same object have the same canonical object digest.
+This mode does **not** claim raw-file byte custody. Two JSON byte streams that parse to the same object have the same canonical object digest. The one-time canonicalization is an internal generation boundary, not proof of external provenance or freedom from mutation before that serialization completed.
 
 ### Exact-byte API
 
