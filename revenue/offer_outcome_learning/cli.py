@@ -66,7 +66,6 @@ def main(argv: list[str] | None = None) -> int:
     verify = sub.add_parser("verify")
     verify.add_argument("--input", required=True)
     verify.add_argument("--package", required=True)
-    verify.add_argument("--now")
 
     args = parser.parse_args(argv)
     try:
@@ -78,7 +77,7 @@ def main(argv: list[str] | None = None) -> int:
             print(package["receipt_sha256"])
             return 0
         package = loads_strict(_read_regular(args.package))
-        result = verify_package(raw, package, now=args.now)
+        result = verify_package(raw, package)
         print(json.dumps(result, sort_keys=True))
         return 0
     except (LearningError, OSError, UnicodeError) as exc:
