@@ -270,6 +270,21 @@ class AuthorityTests(unittest.TestCase):
         receipt = classify(payload(run(conclusion="cancelled", jobs=[assigned])), now=NOW)
         self.assertEqual(receipt["decision"], "HOLD")
 
+    def test_queued_run_cannot_reuse_completed_cancelled_job_shape(self) -> None:
+        completed_cancelled = job(
+            status="completed",
+            conclusion="cancelled",
+            runner="",
+            runner_id=0,
+            steps=[],
+        )
+        receipt = classify(
+            payload(run(status="queued", conclusion=None, jobs=[completed_cancelled])),
+            now=NOW,
+        )
+        self.assertEqual(receipt["decision"], "WAIT_EXECUTION")
+        self.assertFalse(receipt["runner_exception_candidate"])
+
     def test_runnerless_success_is_hold(self) -> None:
         fake = job(runner="", runner_id=0)
         receipt = classify(payload(run(jobs=[fake])), now=NOW)
@@ -321,6 +336,9 @@ class AuthorityTests(unittest.TestCase):
         stale_policy = payload(run())
         stale_policy["policy"]["captured_at"] = "2026-09-13T07:00:00Z"
         cases.append(stale_policy)
+        postdated_policy = payload(run())
+        postdated_policy["policy"]["captured_at"] = "2026-09-13T08:25:01Z"
+        cases.append(postdated_policy)
         future = payload(run())
         future["captured_at"] = "2026-09-13T09:00:00Z"
         cases.append(future)
