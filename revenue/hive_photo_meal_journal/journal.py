@@ -197,7 +197,7 @@ class MealJournal:
         title: str,
         portion_note: str,
         notes: str,
-        ingredients: Sequence[str],
+        ingredients: Any,
         photo: Optional[bytes] = None,
         photo_mime: Optional[str] = None,
     ) -> Dict[str, Any]:
@@ -205,7 +205,7 @@ class MealJournal:
         title = _text(title, "title", max_len=200, allow_empty=False)
         portion_note = _text(portion_note, "portion_note", max_len=500)
         notes = _text(notes, "notes")
-        ingredients = _ingredients(list(ingredients))
+        ingredients = _ingredients(ingredients)
         photo, photo_mime, photo_sha = _photo(photo, photo_mime)
         payload = {
             "action": "create_meal", "meal_date": meal_date, "title": title,
@@ -237,7 +237,7 @@ class MealJournal:
         title: str,
         portion_note: str,
         notes: str,
-        ingredients: Sequence[str],
+        ingredients: Any,
     ) -> Dict[str, Any]:
         if type(meal_id) is not int or meal_id < 1:
             raise JournalError("meal_id must be a positive integer")
@@ -247,7 +247,7 @@ class MealJournal:
         title = _text(title, "title", max_len=200, allow_empty=False)
         portion_note = _text(portion_note, "portion_note", max_len=500)
         notes = _text(notes, "notes")
-        ingredients = _ingredients(list(ingredients))
+        ingredients = _ingredients(ingredients)
         payload = {
             "action": "update_meal", "meal_id": meal_id, "expected_version": expected_version,
             "meal_date": meal_date, "title": title, "portion_note": portion_note,
@@ -277,13 +277,13 @@ class MealJournal:
         *,
         operation_id: str,
         name: str,
-        ingredients: Sequence[str],
+        ingredients: Any,
         notes: str = "",
         recipe_id: Optional[int] = None,
         expected_version: Optional[int] = None,
     ) -> Dict[str, Any]:
         name = _text(name, "name", max_len=200, allow_empty=False)
-        ingredients = _ingredients(list(ingredients))
+        ingredients = _ingredients(ingredients)
         notes = _text(notes, "notes")
         if recipe_id is not None and (type(recipe_id) is not int or recipe_id < 1):
             raise JournalError("recipe_id must be a positive integer")
