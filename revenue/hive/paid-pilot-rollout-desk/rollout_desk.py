@@ -18,6 +18,7 @@ import os
 import re
 import stat
 import tempfile
+from datetime import datetime
 from pathlib import Path
 from typing import Any, Iterable
 
@@ -28,6 +29,7 @@ MAX_INPUT_BYTES = 2_000_000
 _ID_RE = re.compile(r"^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$")
 _SHA_RE = re.compile(r"^[0-9a-f]{64}$")
 _CURRENCY_RE = re.compile(r"^[A-Z]{3}$")
+_UTC_TS_RE = re.compile(r"^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d{1,6})?Z$")
 _DISPOSITIONS = {"MET", "HOLD", "NOT_MET"}
 _PAYMENT_STATES = {"PAID_EXTERNAL_EVIDENCE", "CONTRACTED_NOT_PAID", "UNVERIFIED"}
 
@@ -55,16 +57,15 @@ def loads_strict(raw: str) -> Any:
 
 
 def canonical_bytes(value: Any) -> bytes:
-    return json.dumps(
-        value, sort_keys=True, separators=(",", ":"), ensure_ascii=False
-    ).encode("utf-8")
+    return json.dumps(value, sort_keys=True, separators=(",", ":"), ensure_ascii=False).encode("utf-8")
 
 
 def sha256_value(value: Any) -> str:
     return hashlib.sha256(canonical_bytes(value)).hexdigest()
 
 
-def _require_exact_keys(obj: dict[str, Any], required: set[str], optional: set[str] = set()) -> None:
+def _require_exact_keys(obj: dict[str, Any], required: set[str], optional: set[str] | None = None) -> None:
+    optional = optional or set()
     keys = set(obj)
     missing = required - keys
     extra = keys - required - optional
@@ -105,8 +106,7 @@ def _require_id(value: Any, label: str) -> str:
 
 def _require_opaque_ref(value: Any, label: str) -> str:
     value = _require_id(value, label)
-    lower = value.lower()
-    if "http" in lower or "@" in value:
+    if "http" in value.lower() or "@" in value:
         raise DeskError(f"{label} must be opaque, not a URL/email")
     return value
 
@@ -123,6 +123,21 @@ def _require_int(value: Any, label: str, *, minimum: int = 0, maximum: int = 10*
         raise DeskError(f"{label} must be an integer")
     if value < minimum or value > maximum:
         raise DeskError(f"{label} out of range")
+    return value
+
+
+def _timestamp_key(value: Any, label: str) -> datetime:
+    value = _require_str(value, label, max_len=27)
+    if not _UTC_TS_RE.fullmatch(value):
+        raise DeskError(f"{label} must be strict UTC RFC3339 ending in Z")
+    try:
+        return datetime.fromisoformat(value[:-1] + "+00:00")
+    except ValueError as exc:
+        raise DeskError(f"{label} must be a real UTC timestamp") from exc
+
+
+def _require_utc_timestamp(value: Any, label: str) -> str:
+    _timestamp_key(value, label)
     return value
 
 
@@ -155,28 +170,20 @@ def _validate_criterion(value: Any, label: str) -> dict[str, Any]:
 
 def _validate_commercial_gate(value: Any) -> dict[str, Any]:
     obj = _require_obj(value, "commercial_gate")
-    _require_exact_keys(
-        obj,
-        {"pilot_payment_state", "evidence_ref", "evidence_sha256"},
-    )
+    _require_exact_keys(obj, {"pilot_payment_state", "evidence_ref", "evidence_sha256"})
     state = _require_str(obj["pilot_payment_state"], "commercial_gate.pilot_payment_state")
     if state not in _PAYMENT_STATES:
         raise DeskError("commercial_gate.pilot_payment_state invalid")
-    evidence_ref = _require_opaque_ref(obj["evidence_ref"], "commercial_gate.evidence_ref")
-    evidence_sha = _require_sha(obj["evidence_sha256"], "commercial_gate.evidence_sha256")
     return {
         "pilot_payment_state": state,
-        "evidence_ref": evidence_ref,
-        "evidence_sha256": evidence_sha,
+        "evidence_ref": _require_opaque_ref(obj["evidence_ref"], "commercial_gate.evidence_ref"),
+        "evidence_sha256": _require_sha(obj["evidence_sha256"], "commercial_gate.evidence_sha256"),
     }
 
 
 def _validate_phase2_template(value: Any) -> dict[str, Any]:
     obj = _require_obj(value, "phase2_template")
-    _require_exact_keys(
-        obj,
-        {"title", "proposed_price_cents", "proposed_duration_days", "acceptance_criteria", "dependencies"},
-    )
+    _require_exact_keys(obj, {"title", "proposed_price_cents", "proposed_duration_days", "acceptance_criteria", "dependencies"})
     criteria = [
         _validate_criterion(row, f"phase2_template.acceptance_criteria[{i}]")
         for i, row in enumerate(_require_list(obj["acceptance_criteria"], "phase2_template.acceptance_criteria"))
@@ -192,12 +199,8 @@ def _validate_phase2_template(value: Any) -> dict[str, Any]:
         raise DeskError("duplicate phase2 dependency")
     return {
         "title": _require_str(obj["title"], "phase2_template.title", max_len=240),
-        "proposed_price_cents": _require_int(
-            obj["proposed_price_cents"], "phase2_template.proposed_price_cents", minimum=0
-        ),
-        "proposed_duration_days": _require_int(
-            obj["proposed_duration_days"], "phase2_template.proposed_duration_days", minimum=1, maximum=3650
-        ),
+        "proposed_price_cents": _require_int(obj["proposed_price_cents"], "phase2_template.proposed_price_cents", minimum=0),
+        "proposed_duration_days": _require_int(obj["proposed_duration_days"], "phase2_template.proposed_duration_days", minimum=1, maximum=3650),
         "acceptance_criteria": criteria,
         "dependencies": deps,
     }
@@ -205,23 +208,11 @@ def _validate_phase2_template(value: Any) -> dict[str, Any]:
 
 def validate_pilot_spec(value: Any) -> dict[str, Any]:
     obj = _require_obj(value, "pilot_spec")
-    _require_exact_keys(
-        obj,
-        {
-            "schema_version",
-            "pilot_id",
-            "buyer_ref",
-            "currency",
-            "pilot_price_cents",
-            "scope_version",
-            "scope_sha256",
-            "commercial_gate",
-            "included_scope",
-            "excluded_scope",
-            "acceptance_criteria",
-            "phase2_template",
-        },
-    )
+    _require_exact_keys(obj, {
+        "schema_version", "pilot_id", "buyer_ref", "currency", "pilot_price_cents",
+        "scope_version", "scope_sha256", "commercial_gate", "included_scope",
+        "excluded_scope", "acceptance_criteria", "phase2_template",
+    })
     if obj["schema_version"] != SCHEMA_VERSION:
         raise DeskError(f"schema_version must be {SCHEMA_VERSION}")
     currency = _require_str(obj["currency"], "currency", max_len=3)
@@ -249,8 +240,7 @@ def validate_pilot_spec(value: Any) -> dict[str, Any]:
     if not criteria:
         raise DeskError("acceptance_criteria must not be empty")
     _unique_ids(criteria, "criterion_id", "pilot acceptance criterion")
-
-    normalized = {
+    return {
         "schema_version": SCHEMA_VERSION,
         "pilot_id": _require_id(obj["pilot_id"], "pilot_id"),
         "buyer_ref": _require_opaque_ref(obj["buyer_ref"], "buyer_ref"),
@@ -264,12 +254,11 @@ def validate_pilot_spec(value: Any) -> dict[str, Any]:
         "acceptance_criteria": criteria,
         "phase2_template": _validate_phase2_template(obj["phase2_template"]),
     }
-    return normalized
 
 
 def new_state(pilot_spec: Any) -> dict[str, Any]:
     spec = validate_pilot_spec(pilot_spec)
-    state = {
+    return seal_state({
         "state_version": STATE_VERSION,
         "revision": 0,
         "pilot_spec": spec,
@@ -283,8 +272,7 @@ def new_state(pilot_spec: Any) -> dict[str, Any]:
             "payment_mutation_authorized": False,
             "revenue_recognition_authorized": False,
         },
-    }
-    return seal_state(state)
+    })
 
 
 def _state_without_seal(state: dict[str, Any]) -> dict[str, Any]:
@@ -297,50 +285,9 @@ def seal_state(state: dict[str, Any]) -> dict[str, Any]:
     return out
 
 
-def validate_state(value: Any) -> dict[str, Any]:
-    state = _require_obj(value, "state")
-    _require_exact_keys(
-        state,
-        {
-            "state_version",
-            "revision",
-            "pilot_spec",
-            "evidence_history",
-            "followon_requests",
-            "authority",
-            "state_integrity_sha256",
-        },
-    )
-    if state["state_version"] != STATE_VERSION:
-        raise DeskError("state_version invalid")
-    _require_int(state["revision"], "revision", minimum=0)
-    validate_pilot_spec(state["pilot_spec"])
-    authority = _require_obj(state["authority"], "authority")
-    required_auth = {
-        "buyer_contact_authorized",
-        "buyer_acceptance_recorded",
-        "contract_signed",
-        "charge_authorized",
-        "payment_mutation_authorized",
-        "revenue_recognition_authorized",
-    }
-    _require_exact_keys(authority, required_auth)
-    if any(v is not False for v in authority.values()):
-        raise DeskError("authority ceiling violated: all authority flags must remain false")
-    _require_list(state["evidence_history"], "evidence_history")
-    _require_list(state["followon_requests"], "followon_requests")
-    expected = sha256_value(_state_without_seal(state))
-    if _require_sha(state["state_integrity_sha256"], "state_integrity_sha256") != expected:
-        raise DeskError("state integrity mismatch")
-    return copy.deepcopy(state)
-
-
 def _validate_evidence_record(value: Any, valid_criteria: set[str]) -> dict[str, Any]:
     obj = _require_obj(value, "evidence")
-    _require_exact_keys(
-        obj,
-        {"criterion_id", "disposition", "evidence_ref", "evidence_sha256", "recorded_at", "note"},
-    )
+    _require_exact_keys(obj, {"criterion_id", "disposition", "evidence_ref", "evidence_sha256", "recorded_at", "note"})
     criterion_id = _require_id(obj["criterion_id"], "evidence.criterion_id")
     if criterion_id not in valid_criteria:
         raise DeskError(f"unknown criterion_id: {criterion_id}")
@@ -352,18 +299,9 @@ def _validate_evidence_record(value: Any, valid_criteria: set[str]) -> dict[str,
         "disposition": disposition,
         "evidence_ref": _require_opaque_ref(obj["evidence_ref"], "evidence.evidence_ref"),
         "evidence_sha256": _require_sha(obj["evidence_sha256"], "evidence.evidence_sha256"),
-        "recorded_at": _require_str(obj["recorded_at"], "evidence.recorded_at", max_len=64),
+        "recorded_at": _require_utc_timestamp(obj["recorded_at"], "evidence.recorded_at"),
         "note": _require_str(obj["note"], "evidence.note", allow_empty=True, max_len=500),
     }
-
-
-def record_evidence(state: Any, evidence: Any) -> dict[str, Any]:
-    current = validate_state(state)
-    valid = {r["criterion_id"] for r in current["pilot_spec"]["acceptance_criteria"]}
-    row = _validate_evidence_record(evidence, valid)
-    current["evidence_history"].append(row)
-    current["revision"] += 1
-    return seal_state(current)
 
 
 def _validate_commercial_delta(value: Any) -> dict[str, Any]:
@@ -396,14 +334,113 @@ def _classify_scope(scope_refs: list[str], included: set[str], excluded: set[str
     return "CHANGE_ORDER_REQUIRED"
 
 
+def _validate_stored_followon(value: Any, spec: dict[str, Any], seen_ids: set[str]) -> tuple[dict[str, Any], datetime]:
+    obj = _require_obj(value, "followon_request")
+    _require_exact_keys(obj, {"request_id", "title", "scope_refs", "requested_at", "classification", "commercial_delta"})
+    request_id = _require_id(obj["request_id"], "followon_request.request_id")
+    if request_id in seen_ids:
+        raise DeskError(f"duplicate followon request_id: {request_id}")
+    seen_ids.add(request_id)
+    scope_refs = [
+        _require_id(ref, f"followon_request.scope_refs[{i}]")
+        for i, ref in enumerate(_require_list(obj["scope_refs"], "followon_request.scope_refs"))
+    ]
+    if not scope_refs:
+        raise DeskError("followon_request.scope_refs must not be empty")
+    if len(set(scope_refs)) != len(scope_refs):
+        raise DeskError("duplicate followon scope ref")
+    included = {r["scope_id"] for r in spec["included_scope"]}
+    excluded = {r["scope_id"] for r in spec["excluded_scope"]}
+    classification = _classify_scope(scope_refs, included, excluded)
+    if obj["classification"] != classification:
+        raise DeskError("stored followon classification does not match source scope")
+    commercial_delta = None
+    if obj["commercial_delta"] is not None:
+        commercial_delta = _validate_commercial_delta(obj["commercial_delta"])
+    if classification != "CHANGE_ORDER_REQUIRED" and commercial_delta is not None:
+        raise DeskError("commercial_delta is allowed only for CHANGE_ORDER_REQUIRED requests")
+    requested_at = _require_utc_timestamp(obj["requested_at"], "followon_request.requested_at")
+    return ({
+        "request_id": request_id,
+        "title": _require_str(obj["title"], "followon_request.title", max_len=300),
+        "scope_refs": scope_refs,
+        "requested_at": requested_at,
+        "classification": classification,
+        "commercial_delta": commercial_delta,
+    }, _timestamp_key(requested_at, "followon_request.requested_at"))
+
+
+def validate_state(value: Any) -> dict[str, Any]:
+    state = _require_obj(value, "state")
+    _require_exact_keys(state, {
+        "state_version", "revision", "pilot_spec", "evidence_history",
+        "followon_requests", "authority", "state_integrity_sha256",
+    })
+    if state["state_version"] != STATE_VERSION:
+        raise DeskError("state_version invalid")
+    revision = _require_int(state["revision"], "revision", minimum=0)
+    spec = validate_pilot_spec(state["pilot_spec"])
+    authority = _require_obj(state["authority"], "authority")
+    required_auth = {
+        "buyer_contact_authorized", "buyer_acceptance_recorded", "contract_signed",
+        "charge_authorized", "payment_mutation_authorized", "revenue_recognition_authorized",
+    }
+    _require_exact_keys(authority, required_auth)
+    if any(v is not False for v in authority.values()):
+        raise DeskError("authority ceiling violated: all authority flags must remain false")
+    evidence_history = _require_list(state["evidence_history"], "evidence_history")
+    followon_requests = _require_list(state["followon_requests"], "followon_requests")
+    if revision != len(evidence_history) + len(followon_requests):
+        raise DeskError("revision must equal accepted evidence plus follow-on event count")
+
+    valid_criteria = {r["criterion_id"] for r in spec["acceptance_criteria"]}
+    last_evidence_time: dict[str, datetime] = {}
+    for index, stored in enumerate(evidence_history):
+        row = _validate_evidence_record(stored, valid_criteria)
+        if row != stored:
+            raise DeskError(f"evidence_history[{index}] is not canonical")
+        ts = _timestamp_key(row["recorded_at"], f"evidence_history[{index}].recorded_at")
+        prior = last_evidence_time.get(row["criterion_id"])
+        if prior is not None and ts <= prior:
+            raise DeskError(f"evidence chronology must strictly increase per criterion: {row['criterion_id']}")
+        last_evidence_time[row["criterion_id"]] = ts
+
+    seen_ids: set[str] = set()
+    last_followon_time: datetime | None = None
+    for index, stored in enumerate(followon_requests):
+        row, ts = _validate_stored_followon(stored, spec, seen_ids)
+        if row != stored:
+            raise DeskError(f"followon_requests[{index}] is not canonical")
+        if last_followon_time is not None and ts <= last_followon_time:
+            raise DeskError("follow-on request chronology must strictly increase")
+        last_followon_time = ts
+
+    expected = sha256_value(_state_without_seal(state))
+    if _require_sha(state["state_integrity_sha256"], "state_integrity_sha256") != expected:
+        raise DeskError("state integrity mismatch")
+    return copy.deepcopy(state)
+
+
+def record_evidence(state: Any, evidence: Any) -> dict[str, Any]:
+    current = validate_state(state)
+    valid = {r["criterion_id"] for r in current["pilot_spec"]["acceptance_criteria"]}
+    row = _validate_evidence_record(evidence, valid)
+    ts = _timestamp_key(row["recorded_at"], "evidence.recorded_at")
+    for prior in reversed(current["evidence_history"]):
+        if prior["criterion_id"] == row["criterion_id"]:
+            prior_ts = _timestamp_key(prior["recorded_at"], "existing evidence.recorded_at")
+            if ts <= prior_ts:
+                raise DeskError(f"evidence chronology must strictly increase per criterion: {row['criterion_id']}")
+            break
+    current["evidence_history"].append(row)
+    current["revision"] += 1
+    return seal_state(current)
+
+
 def add_followon_request(state: Any, request: Any) -> dict[str, Any]:
     current = validate_state(state)
     obj = _require_obj(request, "followon_request")
-    _require_exact_keys(
-        obj,
-        {"request_id", "title", "scope_refs", "requested_at"},
-        {"commercial_delta"},
-    )
+    _require_exact_keys(obj, {"request_id", "title", "scope_refs", "requested_at"}, {"commercial_delta"})
     request_id = _require_id(obj["request_id"], "followon_request.request_id")
     if any(r["request_id"] == request_id for r in current["followon_requests"]):
         raise DeskError(f"duplicate followon request_id: {request_id}")
@@ -423,15 +460,20 @@ def add_followon_request(state: Any, request: Any) -> dict[str, Any]:
         commercial_delta = _validate_commercial_delta(obj["commercial_delta"])
     if classification != "CHANGE_ORDER_REQUIRED" and commercial_delta is not None:
         raise DeskError("commercial_delta is allowed only for CHANGE_ORDER_REQUIRED requests")
-    row = {
+    requested_at = _require_utc_timestamp(obj["requested_at"], "followon_request.requested_at")
+    ts = _timestamp_key(requested_at, "followon_request.requested_at")
+    if current["followon_requests"]:
+        prior_ts = _timestamp_key(current["followon_requests"][-1]["requested_at"], "existing followon requested_at")
+        if ts <= prior_ts:
+            raise DeskError("follow-on request chronology must strictly increase")
+    current["followon_requests"].append({
         "request_id": request_id,
         "title": _require_str(obj["title"], "followon_request.title", max_len=300),
         "scope_refs": scope_refs,
-        "requested_at": _require_str(obj["requested_at"], "followon_request.requested_at", max_len=64),
+        "requested_at": requested_at,
         "classification": classification,
         "commercial_delta": commercial_delta,
-    }
-    current["followon_requests"].append(row)
+    })
     current["revision"] += 1
     return seal_state(current)
 
@@ -448,9 +490,9 @@ def compile_rollout(state: Any) -> dict[str, Any]:
     spec = current["pilot_spec"]
     latest = _latest_evidence(current)
     criteria_projection = []
-    missing = []
-    held = []
-    failed = []
+    missing: list[str] = []
+    held: list[str] = []
+    failed: list[str] = []
     for criterion in spec["acceptance_criteria"]:
         cid = criterion["criterion_id"]
         evidence = latest.get(cid)
@@ -470,18 +512,15 @@ def compile_rollout(state: Any) -> dict[str, Any]:
                 held.append(cid)
             elif disposition == "NOT_MET":
                 failed.append(cid)
-        criteria_projection.append(
-            {
-                "criterion_id": cid,
-                "statement": criterion["statement"],
-                "disposition": disposition,
-                "evidence": evidence_projection,
-            }
-        )
+        criteria_projection.append({
+            "criterion_id": cid,
+            "statement": criterion["statement"],
+            "disposition": disposition,
+            "evidence": evidence_projection,
+        })
 
     unresolved_changes = [
-        r["request_id"]
-        for r in current["followon_requests"]
+        r["request_id"] for r in current["followon_requests"]
         if r["classification"] == "CHANGE_ORDER_REQUIRED" and r["commercial_delta"] is None
     ]
     payment_state = spec["commercial_gate"]["pilot_payment_state"]
@@ -500,10 +539,7 @@ def compile_rollout(state: Any) -> dict[str, Any]:
     for row in current["followon_requests"]:
         entry = copy.deepcopy(row)
         entry["free_extension_allowed"] = row["classification"] == "INCLUDED"
-        if row["classification"] == "CHANGE_ORDER_REQUIRED":
-            entry["requires_separate_buyer_agreement"] = True
-        else:
-            entry["requires_separate_buyer_agreement"] = False
+        entry["requires_separate_buyer_agreement"] = row["classification"] == "CHANGE_ORDER_REQUIRED"
         scope_projection.append(entry)
 
     rollout_candidate = {
@@ -513,27 +549,19 @@ def compile_rollout(state: Any) -> dict[str, Any]:
         "proposed_duration_days": spec["phase2_template"]["proposed_duration_days"],
         "acceptance_criteria": copy.deepcopy(spec["phase2_template"]["acceptance_criteria"]),
         "dependencies": copy.deepcopy(spec["phase2_template"]["dependencies"]),
-        "included_followon_request_ids": [
-            r["request_id"] for r in current["followon_requests"] if r["classification"] == "INCLUDED"
-        ],
+        "included_followon_request_ids": [r["request_id"] for r in current["followon_requests"] if r["classification"] == "INCLUDED"],
         "change_order_candidates": [
-            {
-                "request_id": r["request_id"],
-                "commercial_delta": copy.deepcopy(r["commercial_delta"]),
-            }
+            {"request_id": r["request_id"], "commercial_delta": copy.deepcopy(r["commercial_delta"])}
             for r in current["followon_requests"]
             if r["classification"] == "CHANGE_ORDER_REQUIRED" and r["commercial_delta"] is not None
         ],
-        "excluded_request_ids": [
-            r["request_id"] for r in current["followon_requests"] if r["classification"] == "OUT_OF_SCOPE"
-        ],
+        "excluded_request_ids": [r["request_id"] for r in current["followon_requests"] if r["classification"] == "OUT_OF_SCOPE"],
         "buyer_acceptance": False,
         "contract_signed": False,
         "charge_authorized": False,
         "payment_received": False,
         "revenue_recognized": False,
     }
-
     core = {
         "export_version": EXPORT_VERSION,
         "pilot_id": spec["pilot_id"],
@@ -563,17 +591,14 @@ def render_markdown(export: Any) -> str:
     if out.get("export_version") != EXPORT_VERSION:
         raise DeskError("export_version invalid")
     lines = [
-        "# Paid Pilot → Rollout Decision",
-        "",
+        "# Paid Pilot → Rollout Decision", "",
         f"- Pilot: `{out['pilot_id']}`",
         f"- Buyer ref: `{out['buyer_ref']}`",
         f"- Decision: **{out['decision']}**",
         f"- Source state revision: `{out['source_state_revision']}`",
         f"- Source state SHA-256: `{out['source_state_sha256']}`",
-        f"- Export SHA-256: `{out['export_sha256']}`",
-        "",
-        "## Pilot acceptance evidence",
-        "",
+        f"- Export SHA-256: `{out['export_sha256']}`", "",
+        "## Pilot acceptance evidence", "",
     ]
     for row in out["pilot_criteria"]:
         ev = row["evidence"]
@@ -584,14 +609,10 @@ def render_markdown(export: Any) -> str:
         lines.append("- No follow-on requests recorded.")
     else:
         for row in out["followon_scope"]:
-            lines.append(
-                f"- **{row['request_id']}** — {row['classification']} — {row['title']}"
-            )
+            lines.append(f"- **{row['request_id']}** — {row['classification']} — {row['title']}")
     candidate = out["rollout_candidate"]
     lines += [
-        "",
-        "## Phase-2 candidate",
-        "",
+        "", "## Phase-2 candidate", "",
         f"- Title: {candidate['title']}",
         f"- Proposed price: {candidate['currency']} {candidate['proposed_price_cents'] / 100:.2f}",
         f"- Proposed duration: {candidate['proposed_duration_days']} days",
@@ -599,10 +620,7 @@ def render_markdown(export: Any) -> str:
         "- Contract signed: false",
         "- Charge authorized: false",
         "- Payment received: false",
-        "- Revenue recognized: false",
-        "",
-        "### Acceptance criteria",
-        "",
+        "- Revenue recognized: false", "", "### Acceptance criteria", "",
     ]
     for row in candidate["acceptance_criteria"]:
         lines.append(f"- `{row['criterion_id']}` — {row['statement']}")
@@ -610,11 +628,8 @@ def render_markdown(export: Any) -> str:
     for dep in candidate["dependencies"]:
         lines.append(f"- {dep}")
     lines += [
-        "",
-        "## Commercial boundary",
-        "",
-        "This artifact is an owner-review candidate only. It does not contact the buyer, accept an agreement, authorize a charge, mutate a payment provider, or recognize revenue. Follow-on work outside the original included scope must stay excluded or carry separate commercial terms and separate buyer agreement.",
-        "",
+        "", "## Commercial boundary", "",
+        "This artifact is an owner-review candidate only. It does not contact the buyer, accept an agreement, authorize a charge, mutate a payment provider, or recognize revenue. Follow-on work outside the original included scope must stay excluded or carry separate commercial terms and separate buyer agreement.", "",
     ]
     return "\n".join(lines)
 
@@ -681,8 +696,7 @@ def cmd_init(args: argparse.Namespace) -> None:
 def cmd_evidence(args: argparse.Namespace) -> None:
     path = Path(args.state)
     state = validate_state(_read_regular_json(path))
-    evidence = _read_regular_json(Path(args.evidence))
-    state = record_evidence(state, evidence)
+    state = record_evidence(state, _read_regular_json(Path(args.evidence)))
     _atomic_write_json(path, state)
     print(f"recorded evidence revision={state['revision']} sha256={state['state_integrity_sha256']}")
 
@@ -690,8 +704,7 @@ def cmd_evidence(args: argparse.Namespace) -> None:
 def cmd_followon(args: argparse.Namespace) -> None:
     path = Path(args.state)
     state = validate_state(_read_regular_json(path))
-    request = _read_regular_json(Path(args.request))
-    state = add_followon_request(state, request)
+    state = add_followon_request(state, _read_regular_json(Path(args.request)))
     _atomic_write_json(path, state)
     row = state["followon_requests"][-1]
     print(f"recorded follow-on {row['request_id']} classification={row['classification']} revision={state['revision']}")
