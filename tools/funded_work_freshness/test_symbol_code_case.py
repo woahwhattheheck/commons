@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import unittest
 
-from evaluation import _has_conflicting_symbol_code
+from evaluation import _commercial_amount_event, _has_conflicting_symbol_code
 from funded_work_freshness import Candidate, preflight
 from test_support import NOW, FakeTransport, evidence_routes, open_issue
 
@@ -111,6 +111,20 @@ class SymbolCodeCaseTests(unittest.TestCase):
                 )
                 self.assertEqual(
                     receipt["checks"]["canonical_current_reward_amount"], "200"
+                )
+
+    def test_plain_number_followed_or_preceded_by_prose_is_not_currency(self):
+        forms = (
+            "Reward: 200 via Algora.",
+            "Reward: via 200 after review.",
+            "Reward: 200 for each accepted issue.",
+            "Reward: per 200 accepted reports.",
+        )
+        for body in forms:
+            with self.subTest(body=body):
+                self.assertEqual(
+                    _commercial_amount_event(body),
+                    {"status": "none", "currency": None, "amount": None},
                 )
 
     def test_ordinary_three_letter_prose_after_symbol_is_not_a_code(self):
