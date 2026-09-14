@@ -1,0 +1,24 @@
+name: ZMR Paid Pilot Recovery Exact Head
+
+on:
+  pull_request:
+    paths:
+      - 'revenue/paid_pilot_admission/**'
+      - '.github/workflows/zmr-paid-pilot-recovery-exact-head.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  exact-head:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Compile paid-pilot package
+        run: python -m py_compile revenue/paid_pilot_admission/*.py revenue/paid_pilot_admission/tests/test_gate.py
+      - name: Unit tests
+        run: python -m unittest revenue.paid_pilot_admission.tests.test_gate -v
+      - name: Optimized unit tests
+        run: python -O -m unittest revenue.paid_pilot_admission.tests.test_gate -v
+      - name: Acceptance matrix
+        run: python -m revenue.paid_pilot_admission.acceptance
