@@ -1,9 +1,9 @@
 {
   "counts": {
-    "open_issues": 93,
+    "open_issues": 92,
     "open_pull_requests": 51,
-    "runs_in_progress": 17,
-    "runs_queued": 659
+    "runs_in_progress": 18,
+    "runs_queued": 657
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -86,7 +86,7 @@
       "head_sha": "090815cee9355c36db86a6666023f391dc9ebcec",
       "number": 14235,
       "title": "fix(outbound): snapshot buyer-scope parsed inputs",
-      "updated_at": "2026-09-14T02:54:44Z"
+      "updated_at": "2026-09-14T03:27:17Z"
     },
     {
       "author": "woahwhattheheck",
@@ -119,7 +119,7 @@
       "head_sha": "12e38cf603a6863abee6b6285b2be5024b436f8c",
       "number": 14218,
       "title": "fix(revenue): bind CAS benchmark runs to one evaluation universe",
-      "updated_at": "2026-09-14T03:24:08Z"
+      "updated_at": "2026-09-14T03:26:54Z"
     },
     {
       "author": "woahwhattheheck",
@@ -232,7 +232,7 @@
   },
   "pulls_listed": 51,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 38.8,
+  "queue_depth_per_runner": 36.5,
   "recently_closed": [
     {
       "author": "woahwhattheheck",
@@ -402,6 +402,6 @@
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-14T03:26:46Z",
+  "unchanged_since": "2026-09-14T03:27:38Z",
   "undatable_pulls": []
 }
