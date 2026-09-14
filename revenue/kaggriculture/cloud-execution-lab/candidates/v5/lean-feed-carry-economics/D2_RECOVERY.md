@@ -85,7 +85,7 @@ python -m unittest -v test_d2_archive_authority.py
 python -O -m unittest -v test_d2_archive_authority.py
 ```
 
-Authored-equivalent validation on 2026-09-14: 16/16 normal PASS, 16/16
+Authored-equivalent validation on 2026-09-14: 17/17 normal PASS, 17/17
 optimized PASS, compilation PASS.
 
 ## Current recovery census

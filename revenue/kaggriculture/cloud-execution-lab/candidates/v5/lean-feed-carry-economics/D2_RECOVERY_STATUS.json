@@ -35,7 +35,7 @@
   "state": "D2_SOURCE_BYTES_ABSENT",
   "verifier_validation": {
     "py_compile": "PASS",
-    "unittest_normal": "16/16 PASS",
-    "unittest_optimized": "16/16 PASS"
+    "unittest_normal": "17/17 PASS",
+    "unittest_optimized": "17/17 PASS"
   }
 }

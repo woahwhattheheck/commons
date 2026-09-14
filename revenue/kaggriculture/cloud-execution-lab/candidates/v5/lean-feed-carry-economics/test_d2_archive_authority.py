@@ -39,6 +39,10 @@ def make_tar(entries):
                     info.type = tarfile.LNKTYPE
                     info.linkname = value
                     tf.addfile(info)
+                elif kind == "sparse":
+                    info.type = tarfile.GNUTYPE_SPARSE
+                    info.size = 0
+                    tf.addfile(info)
                 else:
                     raise AssertionError(kind)
     return raw.getvalue()
@@ -187,6 +191,17 @@ class ArchiveAuthorityTests(unittest.TestCase):
 
     def test_hardlink_rejected(self):
         entries = self.entries + [("pkg/hard", "hardlink", "pkg/main.py")]
+        raw = make_tar(entries)
+        root = authority.AuthorityRoot(
+            hashlib.sha256(raw).hexdigest(), len(raw), len(entries),
+            self.root.main_sha256, self.root.runtime_member,
+            self.root.runtime_git_blob, self.root.helper_git_blob,
+        )
+        with self.assertRaisesRegex(authority.AuthorityError, "unsafe archive member type"):
+            authority.audit_archive_bytes(raw, root)
+
+    def test_gnu_sparse_rejected(self):
+        entries = self.entries + [("pkg/sparse.bin", "sparse", b"")]
         raw = make_tar(entries)
         root = authority.AuthorityRoot(
             hashlib.sha256(raw).hexdigest(), len(raw), len(entries),

@@ -148,7 +148,7 @@ def _member_manifest(raw: bytes, expected_count: int) -> list[dict[str, Any]]:
                 raise AuthorityError(f"duplicate archive member: {name!r}")
             seen.add(name)
 
-            if member.isfile():
+            if member.type in (tarfile.REGTYPE, tarfile.AREGTYPE):
                 data = _read_regular(tf, member)
                 manifest.append(
                     {
@@ -159,7 +159,7 @@ def _member_manifest(raw: bytes, expected_count: int) -> list[dict[str, Any]]:
                         "git_blob": _git_blob_id(data),
                     }
                 )
-            elif member.isdir():
+            elif member.type == tarfile.DIRTYPE:
                 manifest.append(
                     {
                         "name": name,
