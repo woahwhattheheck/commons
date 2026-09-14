@@ -157,6 +157,23 @@ class CapacityTests(unittest.TestCase):
         self.assertEqual(by["b"]["decision"], DIAGNOSTIC_CAPACITY_CANDIDATE)
         self.assertEqual(by["a"]["decision"], "CAPACITY_HOLD")
 
+    def test_earlier_deadline_breaks_same_stage(self):
+        p = policy()
+        p["slots"] = [p["slots"][0]]
+        out = compile_obj(
+            p,
+            demands(
+                [
+                    deal("late", deadline="2026-09-14T06:00:00Z"),
+                    deal("early", deadline="2026-09-14T04:00:00Z"),
+                ]
+            ),
+            reservations(),
+        )
+        by = {row["deal_id"]: row for row in out["decisions"]}
+        self.assertEqual(by["early"]["decision"], DIAGNOSTIC_CAPACITY_CANDIDATE)
+        self.assertEqual(by["late"]["decision"], "CAPACITY_HOLD")
+
     def test_active_reservation_consumes_capacity(self):
         out = compile_obj(
             policy(), demands([deal("old"), deal("new")]), reservations([active("old")])
@@ -173,6 +190,14 @@ class CapacityTests(unittest.TestCase):
     def test_reservation_rebinding_holds_globally(self):
         out = compile_obj(
             policy(), demands([deal("old")]), reservations([active("old", buyer="buyer-evil")])
+        )
+        self.assertIn("ACTIVE_RESERVATION_DEAL_REBINDING", out["diagnostic_blockers"])
+
+    def test_changed_reserved_units_are_rebinding(self):
+        out = compile_obj(
+            policy(cap=4),
+            demands([deal("a", units=2)]),
+            reservations([active("a", units=1)]),
         )
         self.assertIn("ACTIVE_RESERVATION_DEAL_REBINDING", out["diagnostic_blockers"])
 
@@ -202,6 +227,23 @@ class CapacityTests(unittest.TestCase):
         )
         self.assertIn("DEAL_ACCEPTED_AT_FUTURE", out["diagnostic_blockers"])
         self.assertEqual(out["decisions"][0]["decision"], "CAPACITY_HOLD")
+
+    def test_future_acceptance_on_later_stage_holds_generation(self):
+        out = compile_obj(
+            policy(),
+            demands(
+                [
+                    deal(
+                        "a",
+                        stage="FULFILLMENT_READY",
+                        accepted="2026-09-14T01:21:00Z",
+                    )
+                ]
+            ),
+            reservations([active("a")]),
+        )
+        self.assertIn("DEAL_ACCEPTED_AT_FUTURE", out["diagnostic_blockers"])
+        self.assertNotEqual(out["decisions"][0]["decision"], DIAGNOSTIC_CAPACITY_CANDIDATE)
 
     def test_past_slot_is_not_new_capacity(self):
         p = policy(snapshot="2026-09-14T01:15:00Z")
@@ -245,6 +287,25 @@ class CapacityTests(unittest.TestCase):
         )
         self.assertEqual(out["decisions"][0]["reasons"], ["NO_FUTURE_SERVICE_CLASS_SLOT"])
 
+    def test_exact_start_slot_is_not_new_capacity(self):
+        p = policy()
+        p["slots"] = [
+            {
+                "slot_id": "exact-start",
+                "service_class": "evidence-pilot",
+                "starts_at": "2026-09-14T01:20:00Z",
+                "ends_at": "2026-09-14T03:00:00Z",
+                "capacity_units": 5,
+            }
+        ]
+        out = compile_obj(
+            p,
+            demands([deal("a", not_before="2026-09-14T01:00:00Z")]),
+            reservations(),
+        )
+        self.assertEqual(out["decisions"][0]["decision"], "CAPACITY_HOLD")
+        self.assertEqual(out["decisions"][0]["reasons"], ["NO_FUTURE_SERVICE_CLASS_SLOT"])
+
     def test_ended_active_reservation_holds(self):
         p = policy()
         p["slots"][0]["starts_at"] = "2026-09-13T02:00:00Z"
@@ -283,6 +344,14 @@ class CapacityTests(unittest.TestCase):
             policy(), demands([deal("a", service="security-review")]), reservations()
         )
         self.assertEqual(out["decisions"][0]["reasons"], ["NO_SERVICE_CLASS_SLOT"])
+
+    def test_window_mismatch_holds_deal(self):
+        out = compile_obj(
+            policy(),
+            demands([deal("a", deadline="2026-09-14T03:00:00Z")]),
+            reservations(),
+        )
+        self.assertEqual(out["decisions"][0]["reasons"], ["NO_SLOT_WITHIN_DEAL_WINDOW"])
 
     def test_no_partial_allocation(self):
         out = compile_obj(
@@ -363,6 +432,19 @@ class CapacityTests(unittest.TestCase):
         self.assertTrue(verify_historical_bytes(pb, db, rb, canonical_json(receipt), **kws))
         self.assertFalse(verify_current_bytes(pb, db, rb, canonical_json(receipt), **kws))
 
+    def test_v1_receipt_is_not_accepted_as_v2(self):
+        p, d, r = policy(), demands([deal("a")]), reservations()
+        pb, db, rb = j(p), j(d), j(r)
+        kws = dict(
+            expected_policy_sha256=sha256_hex(pb),
+            expected_demand_sha256=sha256_hex(db),
+            expected_reservations_sha256=sha256_hex(rb),
+        )
+        receipt = compile_historical_bytes(pb, db, rb, evaluated_at=NOW, **kws)
+        receipt["schema"] = "tjlabs.delivery-capacity-allocation/v1"
+        self.assertFalse(verify_historical_bytes(pb, db, rb, canonical_json(receipt), **kws))
+        self.assertFalse(verify_current_bytes(pb, db, rb, canonical_json(receipt), **kws))
+
     def test_current_compile_is_fail_closed_on_self_derived_roots(self):
         p, d, r = policy(), demands([deal("a")]), reservations()
         now = datetime.now(timezone.utc).replace(microsecond=0)
@@ -418,6 +500,12 @@ class CapacityTests(unittest.TestCase):
         with self.assertRaises(CapacityError):
             compile_obj(policy(), demands([deal("a"), deal("a")]), reservations())
 
+    def test_duplicate_reservation_id_rejects(self):
+        a = active("a")
+        b = dict(a)
+        with self.assertRaises(CapacityError):
+            compile_obj(policy(), demands([deal("a")]), reservations([a, b]))
+
     def test_all_external_authority_false(self):
         out = compile_obj(policy(), demands([deal("a")]), reservations())
         self.assertTrue(out["authority"])
@@ -431,6 +519,19 @@ class CapacityTests(unittest.TestCase):
                 write_exclusive(path, b"two")
             with open(path, "rb") as fh:
                 self.assertEqual(fh.read(), b"one")
+
+    @unittest.skipUnless(hasattr(os, "symlink"), "symlink unavailable")
+    def test_write_exclusive_refuses_symlink(self):
+        with tempfile.TemporaryDirectory() as td:
+            target = os.path.join(td, "target")
+            link = os.path.join(td, "link")
+            with open(target, "wb") as fh:
+                fh.write(b"safe")
+            os.symlink(target, link)
+            with self.assertRaises(CapacityError):
+                write_exclusive(link, b"evil")
+            with open(target, "rb") as fh:
+                self.assertEqual(fh.read(), b"safe")
 
     def test_cli_current_path_fails_closed(self):
         with tempfile.TemporaryDirectory() as td:
