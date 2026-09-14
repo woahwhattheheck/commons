@@ -1,0 +1,49 @@
+{
+  "acceptance_receipt_sha256": "42a862bfc13591bdef9345b759dbbee8b9a30342180a23ff5ee202d86873483b",
+  "authority": {
+    "award_or_revenue_claimed": false,
+    "clearance_claim_authorized": false,
+    "external_contact_authorized": false,
+    "external_submission_authorized": false,
+    "pricing_commitment_authorized": false
+  },
+  "files": [
+    {"bytes":2011,"path":".github/workflows/dcsa-innovation-call-01.yml","sha256":"72b2a50f16dee47db44e7161ae4db13fc3ff0368d4cb52977e345123c431c1b1"},
+    {"bytes":3802,"path":"revenue/dcsa_innovation_call_01/ACCEPTANCE.md","sha256":"8777243614c25f2f8acd83db96857157971319de1291b0eba05008ae5f4747e2"},
+    {"bytes":7641,"path":"revenue/dcsa_innovation_call_01/README.md","sha256":"8f22a7714b9894687e2e26d60f9536bb530e4b97a05f98e29a740e9a6b9edf88"},
+    {"bytes":750,"path":"revenue/dcsa_innovation_call_01/__init__.py","sha256":"18de7e9b5e015a4de2aebf6edd34cf1aa5bba98f63b4a847f6a4eae736a8a671"},
+    {"bytes":48,"path":"revenue/dcsa_innovation_call_01/__main__.py","sha256":"935a1c1166b0c1ea35a82256345000bf2c73ded718d77773bc27a71ecce28f7d"},
+    {"bytes":8041,"path":"revenue/dcsa_innovation_call_01/acceptance.py","sha256":"097f186412babb0f83e166643a3ff8cc182c9fd289f8581aa176edbd250c81b7"},
+    {"bytes":3725,"path":"revenue/dcsa_innovation_call_01/acceptance_matrix.json","sha256":"e008a239e37fd60d166a255fb0bc8fe237d5d6ba75873cf06a8e3bab761eeefd"},
+    {"bytes":268,"path":"revenue/dcsa_innovation_call_01/authority-floor.example.json","sha256":"6ecee2fe82cb3ca277793c969de0084e52cb28dc154ee4f1a776e75b8c939e75"},
+    {"bytes":2953,"path":"revenue/dcsa_innovation_call_01/authority.example.json","sha256":"3fcfac184ce3696ad9709ac21f9034e3ab0d8dc9fba54148032d7023b226a371"},
+    {"bytes":2741,"path":"revenue/dcsa_innovation_call_01/candidate.example.json","sha256":"1cf39d4431e3e6b445e67c00b6bb4174262cd889eb9f407326901bb9e7bfc715"},
+    {"bytes":7002,"path":"revenue/dcsa_innovation_call_01/cli.py","sha256":"b73b1fe0e573735c7cfe7ae24d2627e56ef1c8cdfc9473b869f5fe00dfb97e67"},
+    {"bytes":12887,"path":"revenue/dcsa_innovation_call_01/concept.py","sha256":"eb025d2d29d349e1808e81c8b9571af3ef25a4eb0d9475bf13bfbe2bd91b0016"},
+    {"bytes":11720,"path":"revenue/dcsa_innovation_call_01/concept_paper.internal.md","sha256":"34d956738977b8d2b43ab925ba701dd049167551d2f25b7a6318179768745bca"},
+    {"bytes":32178,"path":"revenue/dcsa_innovation_call_01/gate.py","sha256":"cdd81cbe5bd97ba50a4b11ab899805e548e1e0b642eed44a68ce492c52f5e2f3"},
+    {"bytes":1813,"path":"revenue/dcsa_innovation_call_01/historical_report.example.json","sha256":"356a3918bfaf7d47c7ddfb0ed3ac544c1350a37e9d30246e0fa00701b5b7e345"},
+    {"bytes":1514,"path":"revenue/dcsa_innovation_call_01/questions.md","sha256":"09a90cc1d9e570c78a4ef11a3e547557d588aeaa4ca1eee5062ea9f23b69a3c1"},
+    {"bytes":7123,"path":"revenue/dcsa_innovation_call_01/requirements.json","sha256":"dde0e2e6e869b16db13d70176fb3504f467412bae8cbcc39080d6e448ec7c14a"},
+    {"bytes":2147,"path":"revenue/dcsa_innovation_call_01/source_ledger.json","sha256":"3d966b15c74f4f57cff41d5c0ad7d089ad01ef6c86dc602326ce6de77cf9a92c"},
+    {"bytes":11379,"path":"revenue/dcsa_innovation_call_01/strict.py","sha256":"ad25f8f1ba7291ef236eb1712a4d1e3f836d8c5258bc85189873575d05d1aa1b"},
+    {"bytes":835,"path":"revenue/dcsa_innovation_call_01/teaming_targets.json","sha256":"3969aa7965c66a9cce37cc164ae41ff179bebb6125c40b279bf2ea8cf8f365b7"},
+    {"bytes":25432,"path":"revenue/dcsa_innovation_call_01/test_gate.py","sha256":"1010a7636bacd6cb64a518cfee2111b7f67ab20590176d5bee715126c618dda1"}
+  ],
+  "general_solicitation_id": "HS0021-26-CSO-DCSA",
+  "historical_receipt_sha256": "879f795ac857a5b882cc02259ba5cab9c4d536f8015b129a08e90c839ff5d3ad",
+  "notice_id": "DCSAInnovationCall01",
+  "operation_id": "DCSA-INNOVATION-CALL-01-20260914",
+  "schema": "dcsa-innovation-call-01/carrier-manifest/v1",
+  "source_complete": false,
+  "source_generation_sha256": "df3af195338f8a5abdb70a12f5deab8bec4076796f53db105607facd1558877c",
+  "validation": {
+    "capability_authority_hostiles": "500/500 PASS",
+    "current_example_state": "HOLD",
+    "historical_verify": "PASS",
+    "permutation_invariance": "1000/1000 PASS",
+    "py_compile": "PASS",
+    "unittest_normal": "54/54 PASS",
+    "unittest_optimized": "54/54 PASS"
+  }
+}
