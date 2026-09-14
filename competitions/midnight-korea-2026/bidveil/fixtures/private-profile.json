@@ -1,0 +1,39 @@
+{
+  "schema": "bidveil.private-profile.v1",
+  "subject_secret_hex": "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef",
+  "claim_salt_hex": "abcdef0123456789abcdef0123456789abcdef0123456789abcdef0123456789",
+  "claims": [
+    {
+      "requirement_id": "general-liability-active",
+      "issuer_id": "carrier-a",
+      "observed_at": "2026-09-10T12:00:00Z",
+      "expires_at": "2027-09-10T12:00:00Z",
+      "evidence_sha256": "1111111111111111111111111111111111111111111111111111111111111111",
+      "value": true
+    },
+    {
+      "requirement_id": "annual-revenue-usd",
+      "issuer_id": "auditor-a",
+      "observed_at": "2026-08-15T12:00:00Z",
+      "expires_at": "2027-08-15T12:00:00Z",
+      "evidence_sha256": "2222222222222222222222222222222222222222222222222222222222222222",
+      "value": 750000
+    },
+    {
+      "requirement_id": "service-region",
+      "issuer_id": "state-registry",
+      "observed_at": "2026-08-20T12:00:00Z",
+      "expires_at": "2027-08-20T12:00:00Z",
+      "evidence_sha256": "3333333333333333333333333333333333333333333333333333333333333333",
+      "value": "US-IN"
+    },
+    {
+      "requirement_id": "security-training-current",
+      "issuer_id": "training-a",
+      "observed_at": "2026-08-01T12:00:00Z",
+      "expires_at": "2027-08-01T12:00:00Z",
+      "evidence_sha256": "4444444444444444444444444444444444444444444444444444444444444444",
+      "value": true
+    }
+  ]
+}
