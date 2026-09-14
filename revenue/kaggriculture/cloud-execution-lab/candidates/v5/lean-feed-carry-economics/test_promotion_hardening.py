@@ -14,6 +14,10 @@ class PromotionHardeningTests(unittest.TestCase):
         self.assertIsNone(report["promotion"]["selected_arm"])
         self.assertFalse(report["authority"]["authority_verified"])
         self.assertFalse(report["authority"]["source_promotion_authorized"])
+        self.assertTrue(report["authority"]["terminal_evidence_root_sha256"])
+        self.assertEqual(report["census"], [])
+        self.assertEqual(report["paired_deltas"], [])
+        self.assertEqual(report["runs"], [])
 
     def test_conservative_no_promotion_stays_conservative(self):
         report = o.analyze_for_promotion(document(cash_use=False))
@@ -63,7 +67,7 @@ class PromotionHardeningTests(unittest.TestCase):
             o.analyze_for_promotion(evidence)
 
     def test_report_evidence_digest_binds_terminal_result(self):
-        evidence = document()
+        evidence = document(cash_use=False)
         report = o.analyze_for_promotion(evidence)
         raw = evidence["runs"][0]
         expected = o.sha256_json(
@@ -76,6 +80,7 @@ class PromotionHardeningTests(unittest.TestCase):
         self.assertEqual(row["evidence_sha256"], expected)
         changed = copy.deepcopy(raw)
         changed["result"]["own"] += 1
+        changed["result"]["margin"] += 1
         self.assertNotEqual(
             expected,
             o.sha256_json(
