@@ -1,9 +1,9 @@
 {
   "counts": {
-    "open_issues": 85,
-    "open_pull_requests": 48,
-    "runs_in_progress": 20,
-    "runs_queued": 222
+    "open_issues": 84,
+    "open_pull_requests": 50,
+    "runs_in_progress": 18,
+    "runs_queued": 240
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -69,13 +69,35 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "zaw-c9t4/outbound-presend-forensics-20260913",
-      "created_at": "2026-09-14T01:33:28Z",
+      "branch": "zmh-c6t4-arc3-hermetic-import-escape",
+      "created_at": "2026-09-14T01:36:13Z",
       "draft": false,
-      "head_sha": "ade7435ddb2d5b29807e22b3b9d9b39754f69ed3",
-      "number": 14153,
-      "title": "revenue: add outbound pre-send lease forensics",
-      "updated_at": "2026-09-14T01:34:12Z"
+      "head_sha": "3cec023c891bb16861ec7f01dc3cf9de8f4fc333",
+      "number": 14157,
+      "title": "fix(arc3): close hermetic dynamic-import native escape",
+      "updated_at": "2026-09-14T01:36:13Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zvt-q7m3/service-deal-economics-20260913",
+      "created_at": "2026-09-14T01:36:09Z",
+      "draft": false,
+      "head_sha": "4413bf240a6862c5ce773c15f26aca7b03f0a62b",
+      "number": 14156,
+      "title": "Revenue: add Service Deal Economics Desk",
+      "updated_at": "2026-09-14T01:36:09Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zeb-r4k8/delivery-capacity-allocator",
+      "created_at": "2026-09-14T01:35:47Z",
+      "draft": false,
+      "head_sha": "df02c0d5a962e9503b6e64fd4b93edf0fd61542a",
+      "number": 14155,
+      "title": "revenue: allocate scarce delivery capacity across accepted deals",
+      "updated_at": "2026-09-14T01:35:47Z"
     },
     {
       "author": "woahwhattheheck",
@@ -97,7 +119,7 @@
       "head_sha": "c9af0f0e10608ccf426608a7537a0c459cf889b8",
       "number": 14147,
       "title": "build(shipaton): add ProofPocket Android RevenueCat carrier",
-      "updated_at": "2026-09-14T01:30:35Z"
+      "updated_at": "2026-09-14T01:35:41Z"
     },
     {
       "author": "woahwhattheheck",
@@ -153,28 +175,6 @@
       "number": 14076,
       "title": "feat: add Fire TV SpoilerShield competition carrier",
       "updated_at": "2026-09-13T16:33:46Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zkq-m7v4/hive016-creator-niche-app-studio-20260913",
-      "created_at": "2026-09-13T16:24:30Z",
-      "draft": false,
-      "head_sha": "533c121abc2a8ea4d2ba90439400d46594b94cf1",
-      "number": 14066,
-      "title": "hive016: ship creator-backed niche app studio",
-      "updated_at": "2026-09-14T01:28:27Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zcb-h8n6/reply-revenue-chronology-20260913",
-      "created_at": "2026-09-13T15:44:47Z",
-      "draft": false,
-      "head_sha": "05f6f1775a5762ffa18c5c19da1d94d35bc45bb0",
-      "number": 14057,
-      "title": "Make reply-to-revenue contact state chronology-safe",
-      "updated_at": "2026-09-13T16:18:09Z"
     }
   ],
   "open_heads": {
@@ -225,12 +225,25 @@
     "14142": "18af180c4d101698ea45fcaf10051629d4cd0611",
     "14147": "c9af0f0e10608ccf426608a7537a0c459cf889b8",
     "14151": "d268854c6935bdbbb43b8c804c766fc97a91a307",
-    "14153": "ade7435ddb2d5b29807e22b3b9d9b39754f69ed3"
+    "14155": "df02c0d5a962e9503b6e64fd4b93edf0fd61542a",
+    "14156": "4413bf240a6862c5ce773c15f26aca7b03f0a62b",
+    "14157": "3cec023c891bb16861ec7f01dc3cf9de8f4fc333"
   },
-  "pulls_listed": 48,
+  "pulls_listed": 50,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 11.1,
+  "queue_depth_per_runner": 13.3,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zaw-c9t4/outbound-presend-forensics-20260913",
+      "closed_at": "2026-09-14T01:36:13Z",
+      "head_sha": "ade7435ddb2d5b29807e22b3b9d9b39754f69ed3",
+      "merged_at": "2026-09-14T01:36:13Z",
+      "number": 14153,
+      "state": "MERGED",
+      "title": "revenue: add outbound pre-send lease forensics"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -384,21 +397,10 @@
       "number": 14112,
       "state": "MERGED",
       "title": "competition: Mozilla Spanish-English offline code-switch ASR carrier"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "ztq/proposal-gate-20260913",
-      "closed_at": "2026-09-14T01:04:25Z",
-      "head_sha": "b751020a35698ada71f50845b2ea1bdc96724bf8",
-      "merged_at": "2026-09-14T01:04:25Z",
-      "number": 14111,
-      "state": "MERGED",
-      "title": "feat: add evidence-backed proposal compliance gate"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-14T01:35:00Z",
+  "unchanged_since": "2026-09-14T01:37:04Z",
   "undatable_pulls": []
 }
