@@ -1,0 +1,48 @@
+{
+  "schema": "dcsa-innovation-call-01/source-ledger/v1",
+  "notice_id": "DCSAInnovationCall01",
+  "general_solicitation_id": "HS0021-26-CSO-DCSA",
+  "observed_at": "2026-09-14T04:45:00Z",
+  "documents": [
+    {
+      "document_id": "innovation_call_pdf",
+      "role": "CONTROLLING_CALL",
+      "authority": "OFFICIAL_FIRST_PARTY",
+      "official_url": "https://sam.gov/workspace/contract/opp/8edbc404f99d46caa7f41a9bb760f4a9/view",
+      "mirror_url": "https://govtribe.com/file/government-file/dcsa-innovation-call-01-unified-application-layer-dot-pdf",
+      "posted_at": "2026-09-10T14:28:00Z",
+      "retained_bytes": false,
+      "sha256": null
+    },
+    {
+      "document_id": "general_solicitation_pdf",
+      "role": "CONTROLLING_GENERAL_SOLICITATION",
+      "authority": "OFFICIAL_FIRST_PARTY",
+      "official_url": "https://sam.gov/workspace/contract/opp/49ca8b1859c74fe28a4e9d3ae1c83d68/view",
+      "mirror_url": "https://sam.directory/opportunities/dcsa-innovation-gateway-hs0021-26-cso-dcsa/notices/49ca8b1859c74fe28a4e9d3ae1c83d68",
+      "posted_at": "2026-06-23T00:00:00Z",
+      "retained_bytes": false,
+      "sha256": null
+    },
+    {
+      "document_id": "concept_paper_template",
+      "role": "MANDATORY_TEMPLATE",
+      "authority": "OFFICIAL_FIRST_PARTY",
+      "official_url": "https://sam.gov/workspace/contract/opp/8edbc404f99d46caa7f41a9bb760f4a9/view",
+      "mirror_url": "https://govtribe.com/opportunity/federal-contract-opportunity/unified-application-access-and-integration-prototype-dcsainnovationcall01",
+      "posted_at": "2026-09-10T14:28:00Z",
+      "retained_bytes": false,
+      "sha256": null
+    },
+    {
+      "document_id": "ecosystem_style_guide",
+      "role": "DESIGN_REFERENCE",
+      "authority": "OFFICIAL_FIRST_PARTY",
+      "official_url": "https://sam.gov/workspace/contract/opp/8edbc404f99d46caa7f41a9bb760f4a9/view",
+      "mirror_url": "https://govtribe.com/opportunity/federal-contract-opportunity/unified-application-access-and-integration-prototype-dcsainnovationcall01",
+      "posted_at": "2026-09-10T14:28:00Z",
+      "retained_bytes": false,
+      "sha256": null
+    }
+  ]
+}
