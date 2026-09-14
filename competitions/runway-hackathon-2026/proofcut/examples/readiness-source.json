@@ -1,0 +1,8 @@
+{
+  "schema": "proofcut.readiness-source.v1",
+  "prototype_tests_pass": true,
+  "application_copy_ready": true,
+  "shipped_link_ready": true,
+  "idea_within_280_chars": true,
+  "no_committed_secret": true
+}

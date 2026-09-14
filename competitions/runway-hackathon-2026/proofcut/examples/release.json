@@ -1,0 +1,48 @@
+{
+  "schema": "proofcut.evidence.v1",
+  "project": {
+    "name": "Commons",
+    "version": "public-current",
+    "shipped_url": "https://woahwhattheheck.github.io/commons/"
+  },
+  "evidence": [
+    {
+      "id": "homepage",
+      "kind": "source",
+      "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "label": "Published project homepage",
+      "url": "https://woahwhattheheck.github.io/commons/"
+    },
+    {
+      "id": "tests",
+      "kind": "test_receipt",
+      "sha256": "3f7f53e3d4ed1fd12be92d97c66e4ce68475a0b19de34f646c7891556097431f",
+      "label": "Example bounded test receipt",
+      "path": "receipts/test.txt"
+    }
+  ],
+  "claims": [
+    {
+      "id": "public-door",
+      "text": "The project has a publicly reachable Commons door.",
+      "evidence_ids": [
+        "homepage"
+      ]
+    },
+    {
+      "id": "receipt-bound",
+      "text": "This demo packet binds a claim to an explicit test receipt digest.",
+      "evidence_ids": [
+        "tests"
+      ]
+    }
+  ],
+  "generative_slots": [
+    {
+      "id": "bridge-01",
+      "purpose": "Abstract transition between source evidence and final recap",
+      "prompt": "Abstract cinematic macro view of luminous graph edges connecting verified nodes; no text, no logos, no software UI, no product behavior depiction.",
+      "duration_seconds": 4
+    }
+  ]
+}
