@@ -8,7 +8,14 @@ INPUT_SCHEMA = "awwu-cis-migration-workshare/v1"
 RECEIPT_SCHEMA = "awwu-cis-migration-workshare-receipt/v1"
 VERIFY_SCHEMA = "awwu-cis-migration-workshare-verification/v1"
 READY = "READY_FOR_OWNER_TEAMING_REVIEW"
+EVIDENCE_CONSISTENT = "INTERNALLY_CONSISTENT_SELF_ASSERTED_EVIDENCE"
+EVIDENCE_HOLD = "SELF_ASSERTED_EVIDENCE_HAS_FAILURES"
 PROPOSED = "PROPOSED_NOT_ACCEPTED"
+INDEPENDENT_AUTHORITY_BLOCKERS = (
+    "INDEPENDENT_SOURCE_AUTHORITY_REQUIRED",
+    "INDEPENDENT_REQUIREMENTS_AUTHORITY_REQUIRED",
+    "INDEPENDENT_EVIDENCE_AUTHORITY_REQUIRED",
+)
 HEX64 = re.compile(r"^[0-9a-f]{64}$")
 MAX_SOURCE_AGE_DAYS = 60
 AUTHORITY_KEYS = (
@@ -214,8 +221,13 @@ def evaluate(packet: Mapping[str, Any], *, trusted_as_of: dt.datetime | None = N
     if cutover_failures: blockers.append("CUTOVER_EVIDENCE_INCOMPLETE")
     authority_true = [key for key in AUTHORITY_KEYS if packet["authority"][key] is True]
     if authority_true: blockers.append("AUTHORITY_ESCALATION_REFUSED")
+    evidence_state = EVIDENCE_CONSISTENT if not blockers else EVIDENCE_HOLD
+    # Candidate bytes are never current authority.  Until a separately authenticated
+    # host/provider adapter exists, all three independent roots remain mandatory.
+    blockers.extend(INDEPENDENT_AUTHORITY_BLOCKERS)
     return {
-        "state": READY if not blockers else "HOLD",
+        "state": "HOLD",
+        "evidence_state": evidence_state,
         "blockers": sorted(blockers),
         "migration_failures": sorted(migration_failures),
         "interface_failures": sorted(interface_failures),
@@ -231,6 +243,38 @@ def evaluate(packet: Mapping[str, Any], *, trusted_as_of: dt.datetime | None = N
         "evaluated_at": fmt_time(as_of), "deadline": fmt_time(deadline), "source_observed_at": fmt_time(observed),
     }
 
+def build_authority_challenge(packet: Mapping[str, Any]) -> Dict[str, Any]:
+    """Bind what an independent authority must attest without treating it as attested."""
+    _validate_packet_shape(packet)
+    opp = packet["opportunity"]
+    request: Dict[str, Any] = {
+        "status": "INDEPENDENT_ATTESTATION_REQUIRED",
+        "opportunity_id": opp["opportunity_id"],
+        "source_binding_sha256": sha256_value({
+            "opportunity_id": opp["opportunity_id"],
+            "solicitation_id": opp["solicitation_id"],
+            "deadline": opp["deadline"],
+            "source": opp["source"],
+        }),
+        "requirements_binding_sha256": sha256_value({
+            "dataset_ids": sorted(item["dataset_id"] for item in packet["migration"]["datasets"]),
+            "required_interface_ids": sorted(packet["migration"]["required_interface_ids"]),
+        }),
+        "evidence_binding_sha256": sha256_value({
+            "datasets": packet["migration"]["datasets"],
+            "interfaces": packet["interfaces"],
+            "cutover": packet["cutover"],
+        }),
+        "commercial_binding_sha256": sha256_value(packet["workshare"]),
+        "required_independent_authorities": [
+            "source_currentness_and_identity",
+            "requirements_and_completeness_universe",
+            "evidence_artifact_authenticity",
+        ],
+    }
+    request["challenge_sha256"] = sha256_value(request)
+    return request
+
 def compile_receipt(packet: Mapping[str, Any], *, trusted_as_of: dt.datetime | None = None) -> Dict[str, Any]:
     _validate_packet_shape(packet)
     decision = evaluate(packet, trusted_as_of=trusted_as_of)
@@ -238,8 +282,8 @@ def compile_receipt(packet: Mapping[str, Any], *, trusted_as_of: dt.datetime | N
     receipt: Dict[str, Any] = {
         "schema": RECEIPT_SCHEMA, "opportunity_id": opp["opportunity_id"], "solicitation_id": opp["solicitation_id"], "buyer": opp["buyer"],
         "input_sha256": sha256_value(packet), "source": copy.deepcopy(opp["source"]), "compiled_at": decision["evaluated_at"], "deadline": decision["deadline"],
-        "state": decision["state"], "blockers": decision["blockers"], "migration_failures": decision["migration_failures"], "interface_failures": decision["interface_failures"],
-        "cutover_failures": decision["cutover_failures"], "metrics": decision["metrics"],
+        "state": decision["state"], "evidence_state": decision["evidence_state"], "blockers": decision["blockers"], "migration_failures": decision["migration_failures"], "interface_failures": decision["interface_failures"],
+        "cutover_failures": decision["cutover_failures"], "metrics": decision["metrics"], "authority_challenge": build_authority_challenge(packet),
         "workshare": {"status": PROPOSED, "currency": ws["currency"], "amount_cents": ws["amount_cents"], "duration_business_days": ws["duration_business_days"], "deliverables": list(ws["deliverables"]), "acceptance_criteria": list(ws["acceptance_criteria"]), "scope_exclusions": list(ws["scope_exclusions"])},
         "authority": {key: False for key in AUTHORITY_KEYS},
     }
@@ -248,7 +292,7 @@ def compile_receipt(packet: Mapping[str, Any], *, trusted_as_of: dt.datetime | N
 
 def verify_receipt(packet: Mapping[str, Any], receipt: Mapping[str, Any], *, trusted_as_of: dt.datetime | None = None) -> Dict[str, Any]:
     if not isinstance(receipt, dict): raise ContractError("receipt must be an object")
-    expected = {"schema", "opportunity_id", "solicitation_id", "buyer", "input_sha256", "source", "compiled_at", "deadline", "state", "blockers", "migration_failures", "interface_failures", "cutover_failures", "metrics", "workshare", "authority", "receipt_sha256"}
+    expected = {"schema", "opportunity_id", "solicitation_id", "buyer", "input_sha256", "source", "compiled_at", "deadline", "state", "evidence_state", "blockers", "migration_failures", "interface_failures", "cutover_failures", "metrics", "authority_challenge", "workshare", "authority", "receipt_sha256"}
     if set(receipt) != expected: raise ContractError("receipt keys do not match receipt contract")
     if receipt["schema"] != RECEIPT_SCHEMA: raise ContractError("receipt schema mismatch")
     digest = hex64(receipt["receipt_sha256"], "receipt.receipt_sha256")
@@ -263,13 +307,15 @@ def verify_receipt(packet: Mapping[str, Any], receipt: Mapping[str, Any], *, tru
 def render_markdown(packet: Mapping[str, Any], receipt: Mapping[str, Any]) -> str:
     verify_receipt(packet, receipt, trusted_as_of=parse_time(receipt["compiled_at"], "receipt.compiled_at"))
     ws, m = receipt["workshare"], receipt["metrics"]
-    lines = [f"# {receipt['solicitation_id']} migration-evidence workshare", "", f"**Buyer:** {receipt['buyer']}", f"**Internal state:** `{receipt['state']}`", f"**Paid scope:** {ws['amount_cents']/100:,.2f} {ws['currency']} / {ws['duration_business_days']} business days / `{ws['status']}`", f"**Receipt:** `{receipt['receipt_sha256']}`", "", "## Deliverables"]
+    lines = [f"# {receipt['solicitation_id']} migration-evidence workshare", "", f"**Buyer:** {receipt['buyer']}", f"**Current authority state:** `{receipt['state']}`", f"**Self-asserted evidence state:** `{receipt['evidence_state']}`", f"**Paid scope:** {ws['amount_cents']/100:,.2f} {ws['currency']} / {ws['duration_business_days']} business days / `{ws['status']}`", f"**Receipt:** `{receipt['receipt_sha256']}`", "", "## Deliverables"]
     lines += [f"- {item}" for item in ws["deliverables"]]
     lines += ["", "## Acceptance criteria"] + [f"- {item}" for item in ws["acceptance_criteria"]]
     lines += ["", "## Scope exclusions"] + [f"- {item}" for item in ws["scope_exclusions"]]
     lines += ["", "## Evidence summary", f"- Dataset rows reconciled: {m['target_rows']} target / {m['source_rows']} source", f"- Required interfaces verified: {m['verified_required_interface_count']} / {m['required_interface_count']}"]
     if receipt["blockers"]: lines += ["", "## Holds"] + [f"- `{item}`" for item in receipt["blockers"]]
-    lines += ["", "## Authority boundary", "This packet is internal owner-review evidence only. It does not authorize outreach, represent a prime's participation, submit a bid, sign a contract, charge a customer, claim payment, or recognize revenue.", ""]
+    challenge = receipt["authority_challenge"]
+    lines += ["", "## Independent authority challenge", f"- Challenge: `{challenge['challenge_sha256']}`", f"- Source binding: `{challenge['source_binding_sha256']}`", f"- Requirements binding: `{challenge['requirements_binding_sha256']}`", f"- Evidence binding: `{challenge['evidence_binding_sha256']}`"]
+    lines += ["", "## Authority boundary", "Candidate packet bytes cannot authorize READY in this carrier. Independent source, requirements/completeness, and evidence-artifact authority must be established outside this packet. This packet is internal evidence history only; it does not authorize outreach, represent a prime's participation, submit a bid, sign a contract, charge a customer, claim payment, or recognize revenue.", ""]
     return "\n".join(lines)
 
 def write_exclusive(path: str | os.PathLike[str], data: bytes) -> None:

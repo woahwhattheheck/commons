@@ -1,9 +1,9 @@
 {
   "counts": {
-    "open_issues": 80,
+    "open_issues": 84,
     "open_pull_requests": 47,
-    "runs_in_progress": 18,
-    "runs_queued": 169
+    "runs_in_progress": 17,
+    "runs_queued": 206
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -69,35 +69,35 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "zrt-h4v9/right-now-checkout-authority-20260913",
-      "created_at": "2026-09-14T01:24:02Z",
+      "branch": "zhk/shipaton-proofpocket",
+      "created_at": "2026-09-14T01:30:35Z",
       "draft": false,
-      "head_sha": "49cf48cee976cb158f4e5fed225d7950eac79a9e",
-      "number": 14135,
-      "title": "Revenue: bind active checkout truth to retained Stripe authority",
-      "updated_at": "2026-09-14T01:24:02Z"
+      "head_sha": "c9af0f0e10608ccf426608a7537a0c459cf889b8",
+      "number": 14147,
+      "title": "build(shipaton): add ProofPocket Android RevenueCat carrier",
+      "updated_at": "2026-09-14T01:30:35Z"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "zmh-c6t4-capability-future-time",
-      "created_at": "2026-09-14T01:23:37Z",
+      "branch": "zst-q5m9/awwu-independent-authority-fix",
+      "created_at": "2026-09-14T01:30:14Z",
       "draft": false,
-      "head_sha": "260bbf9739578a6ad94d42268c61e6246478d9ec",
-      "number": 14134,
-      "title": "fix(revenue): reject future-dated capability reports",
-      "updated_at": "2026-09-14T01:23:37Z"
+      "head_sha": "b11d8697d224c5be834551f3eefe75b92a0734a5",
+      "number": 14144,
+      "title": "AWWU: require independent authority before current READY",
+      "updated_at": "2026-09-14T01:30:43Z"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "zhb/commercial-opportunity-custody-20260913",
-      "created_at": "2026-09-14T01:23:35Z",
+      "branch": "zpt-j8w4/commercial-experiment-lab-14120",
+      "created_at": "2026-09-14T01:29:44Z",
       "draft": false,
-      "head_sha": "147b8b8f07fd572704dcc649faaab0eedb4b3cf4",
-      "number": 14133,
-      "title": "Revenue: make whole-opportunity custody atomic",
-      "updated_at": "2026-09-14T01:24:16Z"
+      "head_sha": "18af180c4d101698ea45fcaf10051629d4cd0611",
+      "number": 14142,
+      "title": "Revenue: evidence-bound commercial experiment lab",
+      "updated_at": "2026-09-14T01:29:44Z"
     },
     {
       "author": "woahwhattheheck",
@@ -152,7 +152,7 @@
       "head_sha": "533c121abc2a8ea4d2ba90439400d46594b94cf1",
       "number": 14066,
       "title": "hive016: ship creator-backed niche app studio",
-      "updated_at": "2026-09-13T16:24:31Z"
+      "updated_at": "2026-09-14T01:28:27Z"
     },
     {
       "author": "woahwhattheheck",
@@ -222,14 +222,80 @@
     "14086": "4c8e4df0e5a085565937ee85e34f464f76fcdc11",
     "14105": "d0c104f5fd41f4bb1e4f77fbb768804654b27a85",
     "14122": "1c95d8463cbaf7e6d11d266d292a5b7792a2dbbb",
-    "14133": "147b8b8f07fd572704dcc649faaab0eedb4b3cf4",
-    "14134": "260bbf9739578a6ad94d42268c61e6246478d9ec",
-    "14135": "49cf48cee976cb158f4e5fed225d7950eac79a9e"
+    "14142": "18af180c4d101698ea45fcaf10051629d4cd0611",
+    "14144": "b11d8697d224c5be834551f3eefe75b92a0734a5",
+    "14147": "c9af0f0e10608ccf426608a7537a0c459cf889b8"
   },
   "pulls_listed": 47,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 9.4,
+  "queue_depth_per_runner": 12.1,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zgl-m4q9/mozilla-lit-all3-provenance-r2",
+      "closed_at": "2026-09-14T01:31:21Z",
+      "head_sha": "c20f742e658ae16108a7e24459fd7a90e129a170",
+      "merged_at": "2026-09-14T01:31:21Z",
+      "number": 14148,
+      "state": "MERGED",
+      "title": "research: harden LIT all-three bundle provenance"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zgl-m4q9/mozilla-lit-all3-provenance",
+      "closed_at": "2026-09-14T01:30:54Z",
+      "head_sha": "6c4d8142c264f0626aa2ba1a5a8f2d73fa64ea28",
+      "merged_at": null,
+      "number": 14143,
+      "state": "CLOSED",
+      "title": "research: harden LIT all-three bundle provenance"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zpc-m8q3/arc3-hermetic-offline-20260913",
+      "closed_at": "2026-09-14T01:27:14Z",
+      "head_sha": "fa11c75473fa360b96762bd86e04d560d959919f",
+      "merged_at": "2026-09-14T01:27:14Z",
+      "number": 14139,
+      "state": "MERGED",
+      "title": "ARC3 SAGE: add hermetic offline execution and dependency closure"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zrt-h4v9/right-now-checkout-authority-20260913",
+      "closed_at": "2026-09-14T01:26:18Z",
+      "head_sha": "49cf48cee976cb158f4e5fed225d7950eac79a9e",
+      "merged_at": "2026-09-14T01:26:18Z",
+      "number": 14135,
+      "state": "MERGED",
+      "title": "Revenue: bind active checkout truth to retained Stripe authority"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zmh-c6t4-capability-future-time",
+      "closed_at": "2026-09-14T01:26:08Z",
+      "head_sha": "260bbf9739578a6ad94d42268c61e6246478d9ec",
+      "merged_at": "2026-09-14T01:26:08Z",
+      "number": 14134,
+      "state": "MERGED",
+      "title": "fix(revenue): reject future-dated capability reports"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zhb/commercial-opportunity-custody-20260913",
+      "closed_at": "2026-09-14T01:25:55Z",
+      "head_sha": "147b8b8f07fd572704dcc649faaab0eedb4b3cf4",
+      "merged_at": null,
+      "number": 14133,
+      "state": "CLOSED",
+      "title": "[LANDED 75aa9fac] Revenue: make whole-opportunity custody atomic"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -328,76 +394,10 @@
       "number": 14108,
       "state": "MERGED",
       "title": "Fix settled cash authority so receipt-shaped JSON cannot mint USD"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zca-p4k8/arc3-sage-eval-kaggle-20260913",
-      "closed_at": "2026-09-14T01:03:31Z",
-      "head_sha": "377ec5a44244f26d79893a39ddabcd845a5d8815",
-      "merged_at": "2026-09-14T01:03:31Z",
-      "number": 14109,
-      "state": "MERGED",
-      "title": "ARC3 SAGE: offline Kaggle packager + runtime evidence gate"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zcr-h3n7/arc3-sage-ablation-20260913",
-      "closed_at": "2026-09-14T01:01:48Z",
-      "head_sha": "029e4dce8848deb5a9cf6f3bbca35e82573316a5",
-      "merged_at": "2026-09-14T01:01:48Z",
-      "number": 14106,
-      "state": "MERGED",
-      "title": "ARC3 SAGE: deterministic paired ablation harness"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zgc-p7v2/arc3-ablation-lab-20260913",
-      "closed_at": "2026-09-14T01:01:01Z",
-      "head_sha": "b9f55c73b34fe5a8a9bf1bc739f8253a3bd6f419",
-      "merged_at": null,
-      "number": 14103,
-      "state": "CLOSED",
-      "title": "ARC3: add SAGE paired ablation lab"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "fix/arc3-effects-receipts-import",
-      "closed_at": "2026-09-13T22:40:22Z",
-      "head_sha": "b82951b7b6e37090dc6c0ff0b6991972b2433b94",
-      "merged_at": "2026-09-13T22:40:22Z",
-      "number": 14095,
-      "state": "MERGED",
-      "title": "fix(arc3): effects CI receipts import shadow"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "grok-build/live-mirror-workflows-timeout-34786015195",
-      "closed_at": "2026-09-13T22:18:18Z",
-      "head_sha": "e0a68d4f55784874212eae58dc45ffabee6bdad4",
-      "merged_at": "2026-09-13T22:18:18Z",
-      "number": 14098,
-      "state": "MERGED",
-      "title": "live-mirror: classify GitHub workflow-timeout as App-scope reject"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "grok-build/live-mirror-tag-skip-34785478675",
-      "closed_at": "2026-09-13T22:07:54Z",
-      "head_sha": "d66f14d531a0aeb5f19754083d6f65ce0113ce83",
-      "merged_at": "2026-09-13T22:07:54Z",
-      "number": 14097,
-      "state": "MERGED",
-      "title": "live-mirror: skip tags GitHub rejects for workflow files"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-14T01:24:25Z",
+  "unchanged_since": "2026-09-14T01:32:25Z",
   "undatable_pulls": []
 }
