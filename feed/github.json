@@ -1,9 +1,9 @@
 {
   "counts": {
-    "open_issues": 81,
+    "open_issues": 82,
     "open_pull_requests": 48,
-    "runs_in_progress": 19,
-    "runs_queued": 292
+    "runs_in_progress": 20,
+    "runs_queued": 306
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -72,10 +72,10 @@
       "branch": "zkf-t9c4/right-now-stripe-currentness-20260913",
       "created_at": "2026-09-14T01:39:43Z",
       "draft": false,
-      "head_sha": "d28e8cf26355869c10b650ca61b534e82661ec57",
+      "head_sha": "b7da801d99b10fa5619f80e60f133eded8c424be",
       "number": 14159,
       "title": "Revenue: require fresh Stripe readback for right-now checkout truth",
-      "updated_at": "2026-09-14T01:39:43Z"
+      "updated_at": "2026-09-14T01:42:13Z"
     },
     {
       "author": "woahwhattheheck",
@@ -97,7 +97,7 @@
       "head_sha": "01dfcd09b6ad5754fbe362715f499fdb43d29c2a",
       "number": 14147,
       "title": "build(shipaton): add ProofPocket Android RevenueCat carrier",
-      "updated_at": "2026-09-14T01:40:34Z"
+      "updated_at": "2026-09-14T01:41:03Z"
     },
     {
       "author": "woahwhattheheck",
@@ -105,10 +105,10 @@
       "branch": "zpt-j8w4/commercial-experiment-lab-14120",
       "created_at": "2026-09-14T01:29:44Z",
       "draft": false,
-      "head_sha": "e7e3f498ffca14bfbe1261b24ac6958c57a2321c",
+      "head_sha": "8752910d19fe94caa376a3bfcb5f26f0d9e0147c",
       "number": 14142,
       "title": "Revenue: evidence-bound commercial experiment lab",
-      "updated_at": "2026-09-14T01:40:28Z"
+      "updated_at": "2026-09-14T01:42:28Z"
     },
     {
       "author": "woahwhattheheck",
@@ -222,14 +222,14 @@
     "14086": "4c8e4df0e5a085565937ee85e34f464f76fcdc11",
     "14105": "d0c104f5fd41f4bb1e4f77fbb768804654b27a85",
     "14122": "1c95d8463cbaf7e6d11d266d292a5b7792a2dbbb",
-    "14142": "e7e3f498ffca14bfbe1261b24ac6958c57a2321c",
+    "14142": "8752910d19fe94caa376a3bfcb5f26f0d9e0147c",
     "14147": "01dfcd09b6ad5754fbe362715f499fdb43d29c2a",
     "14151": "421b0703a91d251e94be8ca55d9d22c6a76d8f0a",
-    "14159": "d28e8cf26355869c10b650ca61b534e82661ec57"
+    "14159": "b7da801d99b10fa5619f80e60f133eded8c424be"
   },
   "pulls_listed": 48,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 15.4,
+  "queue_depth_per_runner": 15.3,
   "recently_closed": [
     {
       "author": "woahwhattheheck",
@@ -399,6 +399,6 @@
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-14T01:40:59Z",
+  "unchanged_since": "2026-09-14T01:42:37Z",
   "undatable_pulls": []
 }
