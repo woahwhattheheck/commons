@@ -142,3 +142,25 @@ class CustodyTests(GateTestCase):
                 gate._write_exclusive(output, b"authored-receipt")
         self.assertEqual(foreign, output.read_bytes())
         self.assertEqual(b"authored-receipt", moved.read_bytes())
+
+    def test_exceptional_publication_has_no_pathname_unlink_surface(self):
+        self.assertFalse(hasattr(storage, "_unlink_if_authored"))
+        self.assertNotIn("unlink", storage._write_exclusive.__code__.co_names)
+
+        output = self.root / "failed-receipt.json"
+        authored = b"authored-but-ambiguous"
+        real_fsync = os.fsync
+        calls = 0
+
+        def fail_parent_fsync(fd):
+            nonlocal calls
+            real_fsync(fd)
+            calls += 1
+            if calls == 2:
+                raise OSError("forced late failure")
+
+        with mock.patch.object(storage.os, "unlink", side_effect=AssertionError("unlink must not run")):
+            with mock.patch.object(storage.os, "fsync", side_effect=fail_parent_fsync):
+                with self.assertRaisesRegex(gate.InputError, "ambiguous"):
+                    gate._write_exclusive(output, authored)
+        self.assertEqual(authored, output.read_bytes())
