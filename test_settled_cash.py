@@ -18,16 +18,22 @@ assert SPEC and SPEC.loader
 settled = importlib.util.module_from_spec(SPEC)
 SPEC.loader.exec_module(settled)
 LEDGER_PATH = ROOT / "revenue" / "right_now" / "settled_cash.json"
+AUTHORITY_PATH = ROOT / "revenue" / "right_now" / "settled_cash_authority.json"
 
 
 class SettledCashTests(unittest.TestCase):
     def ledger(self):
         return settled.read_ledger(LEDGER_PATH)
 
-    def test_canonical_receipt_validates_and_summarizes(self):
+    def authority(self):
+        return settled.read_authority(AUTHORITY_PATH)
+
+    def test_canonical_receipt_validates_and_summarizes_under_pinned_authority(self):
         summary = settled.summarize_ledger(self.ledger())
         self.assertEqual(summary["settled_receipts"], 1)
         self.assertEqual(summary["settled_usd"], "1")
+        self.assertEqual(summary["authority_state"], "PINNED_RETAINED_PROVIDER_EVIDENCE")
+        self.assertEqual(summary["authority_root_sha256"], settled.TRUSTED_AUTHORITY_ROOT)
         self.assertIs(summary["bank_availability_asserted"], False)
         self.assertIs(summary["withdrawability_asserted"], False)
         receipt = summary["receipts"][0]
@@ -35,9 +41,121 @@ class SettledCashTests(unittest.TestCase):
         self.assertEqual(receipt["provider_url"], "https://gofrantic.com/")
         self.assertEqual(receipt["bounty_number"], 120)
         self.assertEqual(receipt["provider_receipt_id"], "r/ef2f247c")
+        self.assertEqual(receipt["source_evidence_ref"], "https://gofrantic.com/a/agent-df56d0")
         self.assertEqual(receipt["collection_action"], "NONE_DO_NOT_RESEND")
         self.assertNotIn("idempotency_key", receipt)
         self.assertNotIn("provider_claim_id", receipt)
+
+    def test_fully_fabricated_paid_row_is_not_settled_cash(self):
+        value = self.ledger()
+        row = value["receipts"][0]
+        row.update(
+            {
+                "cash_id": "fabricated-paid-row",
+                "provider_claim_id": "11111111-1111-1111-1111-111111111111",
+                "provider_receipt_id": "r/deadbeef",
+                "result_url": "https://github.com/example/example/pull/1",
+                "claimant": "fabricator",
+                "amount_usd": "999999",
+                "idempotency_key": "fabricated-paid-row",
+            }
+        )
+        settled.validate_ledger(value)
+        inspection = settled.inspect_ledger(value)
+        self.assertEqual(inspection["candidate_usd"], "999999")
+        self.assertIs(inspection["settled_cash_asserted"], False)
+        with self.assertRaisesRegex(settled.CashSettlementError, "authority universe"):
+            settled.summarize_ledger(value)
+
+    def test_candidate_field_transplants_fail_authority(self):
+        mutations = {
+            "amount_usd": "2",
+            "result_url": "https://github.com/sourcey/startup-credits/pull/1424",
+            "claimant": "sourcey",
+            "provider_receipt_id": "r/deadbeef",
+            "program": "Frantic bounty #120 / Other delivery",
+        }
+        for field, replacement in mutations.items():
+            with self.subTest(field=field):
+                value = self.ledger()
+                value["receipts"][0][field] = replacement
+                settled.validate_ledger(value)
+                with self.assertRaises(settled.CashSettlementError):
+                    settled.summarize_ledger(value)
+
+    def test_coupled_candidate_and_authority_mutation_fails_stale_pin(self):
+        ledger = self.ledger()
+        authority = self.authority()
+        ledger["receipts"][0]["amount_usd"] = "2"
+        authority["records"][0]["amount_usd"] = "2"
+        authority["records"][0]["source_evidence_sha256"] = settled.source_evidence_sha256(
+            authority["records"][0]
+        )
+        with self.assertRaisesRegex(settled.CashSettlementError, "trusted pinned root"):
+            settled.reconcile_authority(ledger, authority, settled.TRUSTED_AUTHORITY_ROOT)
+
+    def test_authority_expansion_and_omission_fail_closed(self):
+        authority = self.authority()
+        extra = copy.deepcopy(authority["records"][0])
+        extra.update(
+            {
+                "provider_claim_id": "11111111-1111-1111-1111-111111111111",
+                "provider_receipt_id": "r/deadbeef",
+                "result_url": "https://github.com/sourcey/startup-credits/pull/1424",
+                "source_evidence_ref": "https://gofrantic.com/a/agent-second",
+            }
+        )
+        extra["source_evidence_sha256"] = settled.source_evidence_sha256(extra)
+        expanded = copy.deepcopy(authority)
+        expanded["records"].append(extra)
+        expanded["records"].sort(key=lambda row: (row["evidenced_at"], row["provider_receipt_id"]))
+        with self.assertRaisesRegex(settled.CashSettlementError, "trusted pinned root"):
+            settled.reconcile_authority(self.ledger(), expanded, settled.TRUSTED_AUTHORITY_ROOT)
+
+        omitted = copy.deepcopy(authority)
+        omitted["records"] = []
+        with self.assertRaisesRegex(settled.CashSettlementError, "non-empty"):
+            settled.reconcile_authority(self.ledger(), omitted, settled.TRUSTED_AUTHORITY_ROOT)
+
+    def test_source_evidence_digest_drift_fails_closed(self):
+        authority = self.authority()
+        authority["records"][0]["source_evidence_sha256"] = "0" * 64
+        with self.assertRaisesRegex(settled.CashSettlementError, "does not bind"):
+            settled.validate_authority(authority)
+
+    def test_duplicate_authority_claim_receipt_and_source_fail_closed(self):
+        for field, replacement, pattern in (
+            (
+                "provider_claim_id",
+                "04ef83a2-ba34-4a0b-8678-84eac9f00a96",
+                "duplicate authority provider_claim_id",
+            ),
+            ("provider_receipt_id", "r/ef2f247c", "duplicate authority provider_receipt_id"),
+            (
+                "source_evidence_ref",
+                "https://gofrantic.com/a/agent-df56d0",
+                "duplicate authority source_evidence_ref",
+            ),
+        ):
+            with self.subTest(field=field):
+                authority = self.authority()
+                other = copy.deepcopy(authority["records"][0])
+                other.update(
+                    {
+                        "provider_claim_id": "11111111-1111-1111-1111-111111111111",
+                        "provider_receipt_id": "r/deadbeef",
+                        "result_url": "https://github.com/sourcey/startup-credits/pull/1424",
+                        "source_evidence_ref": "https://gofrantic.com/a/agent-second",
+                    }
+                )
+                other[field] = replacement
+                other["source_evidence_sha256"] = settled.source_evidence_sha256(other)
+                authority["records"].append(other)
+                authority["records"].sort(
+                    key=lambda row: (row["evidenced_at"], row["provider_receipt_id"])
+                )
+                with self.assertRaisesRegex(settled.CashSettlementError, pattern):
+                    settled.validate_authority(authority)
 
     def test_only_paid_rows_can_enter_cash_truth(self):
         for state in ("SENT", "MERGED", "ACCEPTED", "DELIVERED", "FUNDED", "PENDING"):
@@ -89,7 +207,7 @@ class SettledCashTests(unittest.TestCase):
         with self.assertRaisesRegex(settled.CashSettlementError, "NONE_DO_NOT_RESEND"):
             settled.validate_ledger(value)
 
-    def test_provider_root_and_result_url_are_allowlisted(self):
+    def test_provider_root_result_and_evidence_urls_are_allowlisted(self):
         for url in (
             "http://gofrantic.com/",
             "https://example.com/",
@@ -111,6 +229,13 @@ class SettledCashTests(unittest.TestCase):
                 value["receipts"][0]["result_url"] = url
                 with self.assertRaisesRegex(settled.CashSettlementError, "clean public HTTPS URL"):
                     settled.validate_ledger(value)
+        authority = self.authority()
+        authority["records"][0]["source_evidence_ref"] = "https://example.com/a/agent-df56d0"
+        authority["records"][0]["source_evidence_sha256"] = settled.source_evidence_sha256(
+            authority["records"][0]
+        )
+        with self.assertRaisesRegex(settled.CashSettlementError, "clean public HTTPS URL"):
+            settled.validate_authority(authority)
 
     def test_bounty_number_must_be_positive_integer(self):
         for number in (0, -1, "120", True, 1.5):
@@ -120,7 +245,7 @@ class SettledCashTests(unittest.TestCase):
                 with self.assertRaisesRegex(settled.CashSettlementError, "positive integer"):
                     settled.validate_ledger(value)
 
-    def test_evidence_time_cannot_be_future_of_ledger(self):
+    def test_evidence_time_cannot_be_future_of_artifact(self):
         value = self.ledger()
         value["receipts"][0]["evidenced_at"] = "2026-09-13T15:34:34Z"
         with self.assertRaisesRegex(settled.CashSettlementError, "later than"):
@@ -131,6 +256,10 @@ class SettledCashTests(unittest.TestCase):
         value["receipts"][0]["private_payout_address"] = "secret"
         with self.assertRaisesRegex(settled.CashSettlementError, "fields differ"):
             settled.validate_ledger(value)
+        authority = self.authority()
+        authority["records"][0]["private_provider_token"] = "secret"
+        with self.assertRaisesRegex(settled.CashSettlementError, "fields differ"):
+            settled.validate_authority(authority)
 
     def test_duplicate_json_key_and_nonfinite_fail_closed(self):
         with self.assertRaisesRegex(settled.CashSettlementError, "duplicate JSON key"):
@@ -138,7 +267,7 @@ class SettledCashTests(unittest.TestCase):
         with self.assertRaisesRegex(settled.CashSettlementError, "non-finite"):
             settled.loads_strict('{"x":NaN}')
 
-    def test_cli_validate_and_summary_are_deterministic(self):
+    def test_cli_validate_summary_and_inspect_are_deterministic(self):
         script = ROOT / "host" / "settled_cash.py"
         validate = subprocess.run(
             [sys.executable, str(script), "validate", str(LEDGER_PATH)],
@@ -147,8 +276,9 @@ class SettledCashTests(unittest.TestCase):
             capture_output=True,
             text=True,
         )
+        self.assertIn("AUTHORIZED", validate.stdout)
         self.assertIn("USD 1 PAID", validate.stdout)
-        self.assertIn("not asserted", validate.stdout)
+        self.assertIn(settled.TRUSTED_AUTHORITY_ROOT, validate.stdout)
         first = subprocess.run(
             [sys.executable, str(script), "summary", str(LEDGER_PATH)],
             cwd=ROOT,
@@ -165,6 +295,50 @@ class SettledCashTests(unittest.TestCase):
         )
         self.assertEqual(first.stdout, second.stdout)
         self.assertEqual(json.loads(first.stdout), settled.summarize_ledger(self.ledger()))
+        inspected = subprocess.run(
+            [sys.executable, str(script), "inspect", str(LEDGER_PATH)],
+            cwd=ROOT,
+            check=True,
+            capture_output=True,
+            text=True,
+        )
+        inspection = json.loads(inspected.stdout)
+        self.assertEqual(inspection["authority_state"], "UNVERIFIED_FORMAT_ONLY")
+        self.assertIs(inspection["settled_cash_asserted"], False)
+
+    def test_cli_forged_well_shaped_ledger_returns_nonzero_for_authoritative_commands(self):
+        forged = self.ledger()
+        forged["receipts"][0].update(
+            {
+                "cash_id": "fake",
+                "provider_claim_id": "11111111-1111-1111-1111-111111111111",
+                "provider_receipt_id": "r/deadbeef",
+                "amount_usd": "9000",
+                "idempotency_key": "fake-paid",
+            }
+        )
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory, "fake.json")
+            path.write_text(settled.canonical_text(forged), encoding="utf-8")
+            for command in ("validate", "summary"):
+                with self.subTest(command=command):
+                    result = subprocess.run(
+                        [sys.executable, str(ROOT / "host" / "settled_cash.py"), command, str(path)],
+                        cwd=ROOT,
+                        capture_output=True,
+                        text=True,
+                    )
+                    self.assertEqual(result.returncode, 2)
+                    self.assertIn("INVALID:", result.stderr)
+                    self.assertNotIn("Traceback", result.stderr)
+            inspect = subprocess.run(
+                [sys.executable, str(ROOT / "host" / "settled_cash.py"), "inspect", str(path)],
+                cwd=ROOT,
+                capture_output=True,
+                text=True,
+                check=True,
+            )
+            self.assertEqual(json.loads(inspect.stdout)["candidate_usd"], "9000")
 
     def test_invalid_file_returns_nonzero_without_traceback(self):
         with tempfile.TemporaryDirectory() as directory:
