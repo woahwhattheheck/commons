@@ -41,6 +41,24 @@ class Tests(unittest.TestCase):
         self.assertEqual(state, "HOLD")
         self.assertTrue(any("organization_my_portal_account" in x for x in reasons))
 
+    def test_buyer_confirmed_owner_pi_eligibility_is_preproven_but_not_readiness(self):
+        m = copy.deepcopy(BASE)
+        gate = m["hard_gates"]["pi_owner_eligibility"]
+        self.assertEqual(gate["status"], "PROVEN")
+        self.assertTrue(gate["evidence"])
+        state, reasons = v.check(m, NOW)
+        self.assertEqual(state, "HOLD")
+        self.assertFalse(any(x.startswith("pi_owner_eligibility:") for x in reasons))
+        self.assertTrue(any(x.startswith("pi_and_copi_identified:") for x in reasons))
+        self.assertTrue(any(x.startswith("team_qualification_evidence:") for x in reasons))
+
+    def test_owner_pi_eligibility_proof_is_evidence_bound(self):
+        m = ready_fixture()
+        m["hard_gates"]["pi_owner_eligibility"]["evidence"] = []
+        state, reasons = v.check(m, NOW)
+        self.assertEqual(state, "HOLD")
+        self.assertIn("pi_owner_eligibility: proven without evidence", reasons)
+
     def test_ready_spoof_holds(self):
         m = copy.deepcopy(BASE)
         m["intended_submission_state"] = v.READY
