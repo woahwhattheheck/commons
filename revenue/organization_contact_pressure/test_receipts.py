@@ -21,6 +21,30 @@ class ReceiptsTests(GateTestCase):
         self.assertEqual(receipt, result)
 
 
+    def test_ready_receipt_validity_is_capped_by_request_freshness(self):
+        self.fx.policy["request_max_age_seconds"] = 30
+        self.fx.policy["ready_validity_seconds"] = 120
+        self.fx.write_authority()
+        requested_at = self.fx.now - timedelta(seconds=20)
+        receipt = self.fx.compile(self.fx.request(requested_at=requested_at))
+        request_expiry = self.fx.now + timedelta(seconds=10)
+        self.assertEqual(ts(request_expiry), receipt["valid_until"])
+        self.assertEqual(
+            receipt,
+            gate._verify_receipt_current_at(
+                self.fx.receipt_bytes(receipt),
+                root=self.root,
+                now=request_expiry,
+            ),
+        )
+        with self.assertRaisesRegex(gate.VerificationError, "READY receipt is expired"):
+            gate._verify_receipt_current_at(
+                self.fx.receipt_bytes(receipt),
+                root=self.root,
+                now=request_expiry + timedelta(seconds=1),
+            )
+
+
     def test_ready_receipt_expires(self):
         receipt = self.fx.compile()
         future = self.fx.now + timedelta(seconds=self.fx.policy["ready_validity_seconds"] + 1)
