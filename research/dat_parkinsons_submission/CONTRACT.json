@@ -1,0 +1,15 @@
+{
+  "challenge": "DaT Parkinson's Challenge",
+  "competition_id": 311,
+  "deadline_utc": "2026-09-16T23:59:00Z",
+  "observed_at_utc": "2026-09-14T04:00:00Z",
+  "runtime_repo": "drivendataorg/competition-sfmn-parkinsons-runtime",
+  "runtime_ref_observed": "976fdcea1e6e586ca8af13bdab703de4a6c260a4",
+  "python": "3.12",
+  "submission_columns": ["uid", "is_pathologic"],
+  "network_at_inference": false,
+  "max_runtime_seconds": 10800,
+  "test_sample_independence_required": true,
+  "competition_data_present_in_public_tree": false,
+  "note": "Re-pin exact organizer runtime commit locally immediately before final entrant submission."
+}

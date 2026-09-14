@@ -1,0 +1,22 @@
+name: DaT Parkinsons public carrier
+on:
+  pull_request:
+    paths:
+      - 'research/dat_parkinsons_submission/**'
+      - '.github/workflows/dat-parkinsons-public.yml'
+  push:
+    paths:
+      - 'research/dat_parkinsons_submission/**'
+      - '.github/workflows/dat-parkinsons-public.yml'
+permissions:
+  contents: read
+jobs:
+  public-contract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Parse and public-data guard
+        run: python -m unittest discover -s research/dat_parkinsons_submission/tests -p 'test_public_contract.py' -v

@@ -1,0 +1,14 @@
+__pycache__/
+*.pyc
+bundle/
+submission_src/model_bundle/
+submission.zip
+submission.csv
+*.nii
+*.nii.gz
+*.pt
+*.pth
+*.ckpt
+*.safetensors
+*.dcm
+*.npz
