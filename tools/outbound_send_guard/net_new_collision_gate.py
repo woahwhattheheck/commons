@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 """Compose buyer-scope dedupe evidence with live v3 lease possession.
 
-This is a collision gate, not a sender. It proves that one exact ALLOW_NEW
+This is a collision gate, not a sender.  It proves that one exact ALLOW_NEW
 buyer/offer preflight is the preflight bound into one exact provider-backed v3
 lease and that the current caller still possesses that lease capability against
-fresh provider readback. Other outbound policy gates remain independent.
+fresh provider readback.  Other outbound policy gates remain independent.
 """
 from __future__ import annotations
 
@@ -21,6 +21,7 @@ from typing import Any, Callable, Mapping
 SCHEMA = "outbound-net-new-collision-gate/v1"
 BUYER_RECEIPT_SCHEMA = "outbound-send-buyer-scope-receipt/v2"
 LEASE_RECEIPT_SCHEMA = "outbound-send-lease-receipt/v3"
+DECISIONS = {"COLLISION_CLEAR", "HOLD"}
 _HEX = frozenset("0123456789abcdef")
 
 
@@ -40,6 +41,14 @@ def _canon_bytes(value: Any) -> bytes:
 
 def _digest(value: Any) -> str:
     return hashlib.sha256(_canon_bytes(value)).hexdigest()
+
+
+def _lease_scope_token(prefix: str, value: str) -> str:
+    """Return a lowercase machine token stable across independent workers."""
+    if prefix not in {"email", "offer"}:
+        raise CollisionGateError("unsupported lease-scope prefix")
+    text = _text(value, f"{prefix} scope source", max_len=512)
+    return f"{prefix}-" + hashlib.sha256(text.encode("utf-8")).hexdigest()
 
 
 def _hex64(value: Any, label: str) -> str:
@@ -100,7 +109,7 @@ def parse_json_bytes(raw: bytes, label: str) -> dict[str, Any]:
     return _obj(value, label)
 
 
-def _validate_buyer_receipt(raw: Mapping[str, Any]) -> tuple[str, str, str]:
+def _validate_buyer_receipt(raw: Mapping[str, Any]) -> tuple[str, str, str, str]:
     receipt = _obj(raw, "buyer receipt")
     _exact(receipt, {"payload", "receipt_sha256"}, "buyer receipt")
     payload = _obj(receipt["payload"], "buyer receipt.payload")
@@ -120,22 +129,38 @@ def _validate_buyer_receipt(raw: Mapping[str, Any]) -> tuple[str, str, str]:
     buyer = _obj(payload["buyer_scope"], "buyer receipt.payload.buyer_scope")
     _exact(buyer, {"scope_id", "members"}, "buyer receipt.payload.buyer_scope")
     scope_id = _text(buyer["scope_id"], "buyer scope id", max_len=200)
-    if type(buyer["members"]) is not list or not buyer["members"]:
+    members = buyer["members"]
+    if type(members) is not list or not members:
         raise CollisionGateError("buyer receipt: nonempty members required")
+    member_emails: set[str] = set()
+    for index, raw_member in enumerate(members):
+        member = _obj(raw_member, f"buyer receipt member[{index}]")
+        _exact(member, {"email", "mailbox_complete", "mailbox_query_id", "slack_complete", "slack_query_id"}, f"buyer receipt member[{index}]")
+        email = _text(member["email"], f"buyer receipt member[{index}].email", max_len=320)
+        if email in member_emails:
+            raise CollisionGateError("buyer receipt: duplicate member email")
+        member_emails.add(email)
+        if type(member["mailbox_complete"]) is not bool or type(member["slack_complete"]) is not bool:
+            raise CollisionGateError("buyer receipt: member completeness flags must be boolean")
+        _text(member["mailbox_query_id"], f"buyer receipt member[{index}].mailbox_query_id", max_len=200)
+        _text(member["slack_query_id"], f"buyer receipt member[{index}].slack_query_id", max_len=200)
 
     core = _obj(payload["core"], "buyer receipt.payload.core")
     core_sha = _hex64(payload["core_receipt_sha256"], "buyer receipt.core_receipt_sha256")
     if _digest(core) != core_sha:
         raise CollisionGateError("buyer receipt: embedded core digest mismatch")
     core_intent = _obj(core.get("intent"), "buyer receipt.payload.core.intent")
+    recipient = _text(core_intent.get("recipient"), "core intent recipient", max_len=320)
     offer_id = _text(core_intent.get("offer_id"), "core intent offer_id", max_len=200)
     if core_intent.get("route_kind") != "email":
         raise CollisionGateError("buyer receipt: core route must be email")
+    if recipient not in member_emails:
+        raise CollisionGateError("buyer receipt: core recipient is not a declared buyer-scope member")
     if core.get("side_effects_authorized") is not False:
         raise CollisionGateError("buyer receipt: embedded core may not authorize side effects")
     if core.get("decision") != payload["decision"] or core.get("authority") != payload["authority"]:
         raise CollisionGateError("buyer receipt: projected decision/authority mismatch")
-    return receipt_sha, scope_id, offer_id
+    return receipt_sha, scope_id, recipient, offer_id
 
 
 def _default_receipt_verifier(raw: Mapping[str, Any]) -> bool:
@@ -173,11 +198,13 @@ def evaluate(
 ) -> dict[str, Any]:
     """Return a content-addressed collision decision for one net-new outreach seam.
 
-    Malformed/tampered public artifacts raise ``CollisionGateError``. Valid but
-    non-authoritative/other-owned evidence returns ``HOLD``. The raw capability
+    Malformed/tampered public artifacts raise ``CollisionGateError``.  Valid but
+    non-authoritative/other-owned evidence returns ``HOLD``.  The raw capability
     is never copied into the result.
     """
-    buyer_sha, buyer_scope_id, offer_id = _validate_buyer_receipt(buyer_receipt)
+    buyer_sha, buyer_scope_id, recipient, offer_id = _validate_buyer_receipt(buyer_receipt)
+    expected_lease_buyer_scope = _lease_scope_token("email", recipient)
+    expected_lease_offer_scope = _lease_scope_token("offer", offer_id)
     capability = _hex64(claim_capability, "claim capability")
     lease = _obj(lease_receipt, "lease receipt")
     if lease.get("schema") != LEASE_RECEIPT_SCHEMA:
@@ -206,10 +233,10 @@ def evaluate(
         reasons.append("BUYER_PREFLIGHT_NOT_ALLOW_NEW")
     if buyer_payload["authority"] != "complete":
         reasons.append("BUYER_PREFLIGHT_AUTHORITY_NOT_COMPLETE")
-    if lease_buyer != buyer_scope_id:
-        reasons.append("BUYER_SCOPE_BINDING_MISMATCH")
-    if lease_offer != offer_id:
-        reasons.append("OFFER_BINDING_MISMATCH")
+    if lease_buyer != expected_lease_buyer_scope:
+        reasons.append("RECIPIENT_LEASE_SCOPE_BINDING_MISMATCH")
+    if lease_offer != expected_lease_offer_scope:
+        reasons.append("OFFER_LEASE_SCOPE_BINDING_MISMATCH")
     if lease_preflight != buyer_sha:
         reasons.append("PREFLIGHT_DIGEST_BINDING_MISMATCH")
     if lease.get("decision") != "LEASE_HELD" or held is not True:
@@ -236,8 +263,9 @@ def evaluate(
         "schema": SCHEMA,
         "decision": "COLLISION_CLEAR" if clear else "HOLD",
         "collision_gate_passed": clear,
-        "buyer_scope": buyer_scope_id,
-        "offer_scope": offer_id,
+        "buyer_scope_id": buyer_scope_id,
+        "lease_buyer_scope": expected_lease_buyer_scope,
+        "lease_offer_scope": expected_lease_offer_scope,
         "buyer_preflight_receipt_sha256": buyer_sha,
         "lease_receipt_sha256": _hex64(lease.get("receipt_sha256"), "lease receipt_sha256"),
         "lease_seam_sha256": _hex64(lease.get("seam_sha256"), "lease seam_sha256"),
@@ -284,8 +312,8 @@ def _same_path(a: Path, b: Path) -> bool:
 
 
 def _atomic_write(path: Path, raw: bytes) -> None:
-    path.parent.mkdir(parents=True, exist_ok=True)
     try:
+        path.parent.mkdir(parents=True, exist_ok=True)
         fd, name = tempfile.mkstemp(prefix=f".{path.name}.stage-", dir=str(path.parent))
     except OSError as exc:
         raise CollisionGateError(f"cannot stage output {path}: {exc}") from exc
