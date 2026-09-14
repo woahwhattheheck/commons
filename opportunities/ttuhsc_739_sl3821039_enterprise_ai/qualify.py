@@ -2,18 +2,28 @@
 
 The original PR #14310 caller-assertion qualifier was independently source-RED because
 one runtime packet could assert both facts and the values that supposedly authorized
-PRIME/TEAM readiness, including a caller-selected clock.  This replacement exposes no
-caller clock and no PRIME/TEAM self-certification path.  Current evidence is evaluated
+PRIME/TEAM readiness, including a caller-selected clock. This replacement exposes no
+caller clock and no PRIME/TEAM self-certification path. Current evidence is evaluated
 only through the repo-pinned Pursuit Evidence Bridge binding.
 """
 from __future__ import annotations
 
 import argparse
 import json
+import sys
 from pathlib import Path
 from typing import Any
 
-from revenue.pursuit_evidence_bridge.bridge import BridgeError, compile_bridge, load_json as bridge_load_json
+HERE = Path(__file__).resolve().parent
+ROOT = HERE.parents[1]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+
+from revenue.pursuit_evidence_bridge.bridge import (  # noqa: E402
+    BridgeError,
+    compile_bridge,
+    load_json as bridge_load_json,
+)
 
 BINDING_ID = "ttuhsc-739-sl3821039-main-v1"
 SCHEMA = "tjlabs.ttuhsc-739-sl3821039-current-gate/v2"
@@ -59,9 +69,9 @@ def evaluate_current(envelope: dict[str, Any]) -> dict[str, Any]:
     except BridgeError as exc:
         raise QualificationError(str(exc)) from exc
 
-    # Keep the shared bridge vocabulary.  OPPORTUNITY_EVIDENCE_READY is deliberately
+    # Keep the shared bridge vocabulary. OPPORTUNITY_EVIDENCE_READY is deliberately
     # not translated into PRIME_READY / TEAMING_READY: route choice and proposal action
-    # remain separate authority decisions.  The current production binding is HOLD.
+    # remain separate authority decisions. The current production binding is HOLD.
     return {
         "schema": SCHEMA,
         "binding_id": BINDING_ID,
