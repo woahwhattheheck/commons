@@ -20,7 +20,7 @@ The funding record includes a `source_authority` label plus an evidence SHA-256.
 
 ## Authority ceiling
 
-The strongest state is deliberately `READY_FOR_OWNER_WORK_ADMISSION`, not `WORK_STARTED`, `PAID`, `ACCEPTED`, or `REVENUE`.
+The strongest current state is deliberately `READY_FOR_OWNER_WORK_ADMISSION`, not `WORK_STARTED`, `PAID`, `ACCEPTED`, or `REVENUE`.
 
 This package never:
 
@@ -32,13 +32,17 @@ This package never:
 - starts delivery work;
 - claims buyer acceptance, payment, cash, or recognized revenue.
 
-Every receipt fixes all of those external-authority bits to `false`.
+Every current receipt fixes all of those external-authority bits to `false`.
 
-## Currentness and replay
+## Currentness and historical audit
 
-`evaluate()` must receive a trusted current process time. It rejects expired offers, future-dated acceptance/funding observations, acceptance recorded after the funding observation, stale funding evidence, partial funding, and transplanted offer bindings.
+Production code must call `evaluate_current(packet)`. It samples the host process UTC clock internally and accepts no caller timestamp. The compatibility alias `evaluate(packet)` delegates to the same current evaluator and likewise accepts no clock argument. This closes the predecessor seam where an expired offer or stale funding record could be resurrected by passing an earlier instant.
 
-Receipts are **historical immediately after evaluation**. `verify()` recomputes the historical receipt using its frozen `evaluated_at` timestamp; it proves receipt integrity only. Before an owner admits work, run a fresh `evaluate()` against current evidence.
+`audit_at(packet, *, at=...)` is deliberately different. It is an explicit historical replay surface for audit and receipt investigation only. Even when the packet would have been ready at that historical instant, the returned status is `AUDIT_WOULD_HAVE_BEEN_READY`, never `READY_FOR_OWNER_WORK_ADMISSION`, and the receipt fixes `current_work_admission_authority` to `false`. Historical HOLDs are likewise prefixed with `AUDIT_`.
+
+Receipts are **historical immediately after evaluation**. `verify(packet, receipt)` returns only a boolean integrity result. It may replay a frozen `evaluated_at` internally, but it cannot produce a current work-admission decision. Before an owner admits work, run a fresh `evaluate_current(packet)` against current evidence.
+
+The lower-level `_evaluate_at` helper in `gate.py` remains private implementation machinery. Integrations should use only `evaluate_current`, `audit_at`, and `verify` from the package surface.
 
 ## CLI
 
@@ -48,11 +52,11 @@ From the repository root:
 python -m revenue.paid_pilot_admission.cli evaluate packet.json --json-out receipt.json --markdown-out receipt.md
 python -m revenue.paid_pilot_admission.cli verify packet.json receipt.json
 python -m revenue.paid_pilot_admission.acceptance
-python -m unittest revenue.paid_pilot_admission.tests.test_gate -v
-python -O -m unittest revenue.paid_pilot_admission.tests.test_gate -v
+python -m unittest revenue.paid_pilot_admission.tests.test_gate revenue.paid_pilot_admission.tests.test_current_authority -v
+python -O -m unittest revenue.paid_pilot_admission.tests.test_gate revenue.paid_pilot_admission.tests.test_current_authority -v
 ```
 
-Exit codes: `0` ready/verified, `2` malformed input, `3` valid packet held, `4` receipt verification failure.
+The CLI `evaluate` command calls only `evaluate_current`; there is no `--now`, `--as-of`, replay-clock, or equivalent override. Exit codes: `0` ready/verified, `2` malformed input, `3` valid packet held, `4` receipt verification failure.
 
 ## Commercial use
 

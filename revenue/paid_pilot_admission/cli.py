@@ -3,10 +3,10 @@ from __future__ import annotations
 import argparse
 import json
 import sys
-from datetime import datetime, timezone
 from pathlib import Path
 
-from .gate import AdmissionError, evaluate, markdown, verify
+from .authority import evaluate_current, verify
+from .gate import AdmissionError, markdown
 from .strict_json import StrictJSONError, loads
 
 
@@ -31,7 +31,7 @@ def main(argv: list[str] | None = None) -> int:
     try:
         packet = _read(args.packet)
         if args.command == "evaluate":
-            result = evaluate(packet, now=datetime.now(timezone.utc))
+            result = evaluate_current(packet)
             text = json.dumps(result.receipt, sort_keys=True, indent=2, ensure_ascii=False) + "\n"
             if args.json_out:
                 Path(args.json_out).write_text(text, encoding="utf-8")
