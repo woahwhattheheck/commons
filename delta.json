@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -262,6 +262,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -494,12 +500,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -523,6 +523,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -755,12 +761,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -844,6 +844,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1076,12 +1082,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -1099,6 +1099,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1331,12 +1337,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -1390,6 +1390,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1622,12 +1628,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -1645,6 +1645,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1877,12 +1883,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -1930,6 +1930,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2162,12 +2168,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -2185,6 +2185,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2417,12 +2423,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -2440,6 +2440,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2672,12 +2678,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -2695,6 +2695,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2927,12 +2933,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -2950,6 +2950,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3182,12 +3188,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -3205,6 +3205,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3437,12 +3443,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -3460,6 +3460,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3692,12 +3698,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -3721,6 +3721,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3953,12 +3959,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -3976,6 +3976,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4208,12 +4214,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -4231,6 +4231,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4463,12 +4469,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -4486,6 +4486,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4718,12 +4724,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -4771,6 +4771,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5003,12 +5009,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -5050,6 +5050,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5282,12 +5288,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -5317,6 +5317,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5549,12 +5555,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -5590,6 +5590,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5822,12 +5828,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -5845,6 +5845,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6077,12 +6083,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -6100,6 +6100,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6332,12 +6338,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -6355,6 +6355,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6587,12 +6593,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -6610,6 +6610,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6842,12 +6848,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -6865,6 +6865,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7097,12 +7103,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -7120,6 +7120,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7352,12 +7358,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -7375,6 +7375,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7607,12 +7613,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -7630,6 +7630,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7862,12 +7868,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -7885,6 +7885,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8117,12 +8123,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -8140,6 +8140,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8372,12 +8378,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -8395,6 +8395,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8627,12 +8633,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -8716,6 +8716,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8948,12 +8954,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -9037,6 +9037,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -9269,12 +9275,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -9292,6 +9292,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -9524,12 +9530,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -9613,6 +9613,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -9845,12 +9851,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -9934,6 +9934,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -10166,12 +10172,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -10255,6 +10255,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -10487,12 +10493,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -10522,6 +10522,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -10754,12 +10760,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -10783,6 +10783,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11015,12 +11021,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -11038,6 +11038,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11270,12 +11276,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -11359,6 +11359,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11591,12 +11597,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -11632,6 +11632,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11864,12 +11870,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -11953,6 +11953,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12185,12 +12191,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -12208,6 +12208,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12440,12 +12446,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -12463,6 +12463,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12695,12 +12701,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -12718,6 +12718,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12950,12 +12956,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -12985,6 +12985,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -13217,12 +13223,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -13240,6 +13240,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -13472,12 +13478,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -13561,6 +13561,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -13793,12 +13799,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -13822,6 +13822,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14054,12 +14060,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -14089,6 +14089,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14321,12 +14327,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -14410,6 +14410,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14642,12 +14648,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -14677,6 +14677,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14909,12 +14915,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -14932,6 +14932,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15164,12 +15170,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -15193,6 +15193,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15425,12 +15431,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -15448,6 +15448,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15680,12 +15686,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -15703,6 +15703,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15935,12 +15941,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -16006,6 +16006,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -16238,12 +16244,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -16261,6 +16261,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -16493,12 +16499,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -16528,6 +16528,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -16760,12 +16766,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -16783,6 +16783,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17015,12 +17021,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -17044,6 +17044,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17276,12 +17282,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -17299,6 +17299,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17531,12 +17537,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -17620,6 +17620,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17852,12 +17858,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -17881,6 +17881,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18113,12 +18119,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -18136,6 +18136,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18368,12 +18374,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -18391,6 +18391,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18623,12 +18629,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -18646,6 +18646,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18878,12 +18884,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -18901,6 +18901,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -19133,12 +19139,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -19156,6 +19156,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -19388,12 +19394,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -19477,6 +19477,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -19709,12 +19715,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -19768,6 +19768,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -20000,12 +20006,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -20035,6 +20035,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -20267,12 +20273,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -20356,6 +20356,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -20588,12 +20594,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -20611,6 +20611,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -20843,12 +20849,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -20929,8 +20929,14 @@
     "COMMONS": {
       "last_id": "discord-1548789538770649099",
       "last_ts": "2026-09-13T20:16:41.161000Z",
-      "n": 28,
+      "n": 29,
       "since": [
+        {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
         {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
@@ -21181,6 +21187,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -21413,12 +21425,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -21502,6 +21508,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -21734,12 +21746,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -21757,6 +21763,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -21989,12 +22001,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -22012,6 +22018,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -22244,12 +22256,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -22333,6 +22339,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -22565,12 +22577,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -22654,6 +22660,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -22886,12 +22898,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -22927,6 +22933,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -23159,12 +23171,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -23200,6 +23206,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -23432,12 +23444,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -23479,6 +23485,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -23711,12 +23723,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -23734,6 +23740,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -23966,12 +23978,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -24055,6 +24061,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24287,12 +24299,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -24310,6 +24316,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24542,12 +24554,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -24565,6 +24571,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24797,12 +24809,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -24820,6 +24826,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -25052,12 +25064,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -25075,6 +25081,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -25307,12 +25319,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -25330,6 +25336,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -25562,12 +25574,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -25651,6 +25657,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -25883,12 +25895,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -25972,6 +25978,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -26204,12 +26216,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -26227,6 +26233,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -26459,12 +26471,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -26548,6 +26554,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -26780,12 +26792,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -26857,6 +26863,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -27089,12 +27101,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -27178,6 +27184,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -27410,12 +27422,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -27439,6 +27445,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -27671,12 +27683,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -27742,6 +27748,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -27974,12 +27986,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -28009,6 +28015,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -28241,12 +28253,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -28276,6 +28282,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -28508,12 +28520,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -28531,6 +28537,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -28763,12 +28775,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -28852,6 +28858,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -29084,12 +29096,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -29107,6 +29113,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -29339,12 +29351,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -29368,6 +29374,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -29600,12 +29612,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -29689,6 +29695,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -29921,12 +29933,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -29944,6 +29950,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -30176,12 +30188,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -30199,6 +30205,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -30431,12 +30443,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -30520,6 +30526,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -30752,12 +30764,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -30787,6 +30793,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -31019,12 +31031,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -31042,6 +31048,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -31274,12 +31286,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -31321,6 +31327,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -31553,12 +31565,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -31582,6 +31588,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -31814,12 +31826,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -31837,6 +31843,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -32069,12 +32081,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -32092,6 +32098,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -32324,12 +32336,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -32347,6 +32353,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -32579,12 +32591,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -32668,6 +32674,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -32900,12 +32912,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -32923,6 +32929,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -33155,12 +33167,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -33178,6 +33184,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -33410,12 +33422,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -33499,6 +33505,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -33731,12 +33743,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -33754,6 +33760,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -33986,12 +33998,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -34075,6 +34081,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -34307,12 +34319,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -34396,6 +34402,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -34628,12 +34640,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -34657,6 +34663,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -34889,12 +34901,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -34924,6 +34930,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -35156,12 +35168,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -35179,6 +35185,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -35411,12 +35423,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -35446,6 +35452,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -35678,12 +35690,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -35707,6 +35713,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -35939,12 +35951,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -35968,6 +35974,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -36200,12 +36212,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -36286,8 +36292,14 @@
     "GROK": {
       "last_id": "grok-carry-action-20260914-01",
       "last_ts": "2026-09-14T03:02:02Z",
-      "n": 4,
+      "n": 5,
       "since": [
+        {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
         {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
@@ -36394,6 +36406,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -36626,12 +36644,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -36685,6 +36697,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -36917,12 +36935,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -36952,6 +36964,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -37184,12 +37202,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -37213,6 +37225,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -37445,12 +37463,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -37534,6 +37546,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -37766,12 +37784,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -37792,8 +37804,14 @@
     "GROK_BUILD": {
       "last_id": "packmarket-mi-34765159873-c21f39d1-20260913",
       "last_ts": "2026-09-13T18:49:54Z",
-      "n": 29,
+      "n": 30,
       "since": [
+        {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
         {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
@@ -38050,6 +38068,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -38282,12 +38306,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -38305,6 +38323,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -38537,12 +38561,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -38572,6 +38590,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -38804,12 +38828,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -38827,6 +38845,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -39059,12 +39083,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -39094,6 +39112,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -39326,12 +39350,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -39415,6 +39433,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -39647,12 +39671,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -39670,6 +39688,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -39902,12 +39926,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -39991,6 +40009,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -40223,12 +40247,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -40312,6 +40330,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -40544,12 +40568,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -40615,6 +40633,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -40847,12 +40871,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -40888,6 +40906,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -41120,12 +41144,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -41173,6 +41191,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -41405,12 +41429,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -41428,6 +41446,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -41660,12 +41684,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -41749,6 +41767,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -41981,12 +42005,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -42004,6 +42022,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -42236,12 +42260,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -42289,6 +42307,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -42521,12 +42545,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -42544,6 +42562,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -42776,12 +42800,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -42799,6 +42817,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -43031,12 +43055,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -43054,6 +43072,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -43286,12 +43310,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -43309,6 +43327,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -43541,12 +43565,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -43564,6 +43582,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -43796,12 +43820,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -43885,6 +43903,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44117,12 +44141,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -44140,6 +44158,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44372,12 +44396,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -44395,6 +44413,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44627,12 +44651,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -44650,6 +44668,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44882,12 +44906,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -44905,6 +44923,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -45137,12 +45161,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -45160,6 +45178,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -45392,12 +45416,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -45433,6 +45451,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -45665,12 +45689,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -45754,6 +45772,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -45986,12 +46010,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -46009,6 +46027,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -46241,12 +46265,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -46294,6 +46312,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -46526,12 +46550,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -46603,6 +46621,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -46835,12 +46859,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -46858,6 +46876,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47090,12 +47114,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -47125,6 +47143,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47357,12 +47381,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -47380,6 +47398,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47612,12 +47636,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -47635,6 +47653,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47867,12 +47891,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -47890,6 +47908,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -48122,12 +48146,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -48145,6 +48163,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -48377,12 +48401,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -48400,6 +48418,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -48632,12 +48656,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -48655,6 +48673,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -48887,12 +48911,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -48976,6 +48994,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -49208,12 +49232,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -49297,6 +49315,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -49529,12 +49553,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -49618,6 +49636,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -49850,12 +49874,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -49897,6 +49915,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -50129,12 +50153,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -50218,6 +50236,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -50450,12 +50474,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -50473,6 +50491,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -50705,12 +50729,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -50728,6 +50746,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -50960,12 +50984,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -50995,6 +51013,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -51227,12 +51251,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -51316,6 +51334,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -51548,12 +51572,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -51577,6 +51595,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -51809,12 +51833,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -51844,6 +51862,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -52076,12 +52100,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -52111,6 +52129,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -52343,12 +52367,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -52432,6 +52450,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -52664,12 +52688,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -52753,6 +52771,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -52985,12 +53009,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -53056,6 +53074,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -53288,12 +53312,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -53317,6 +53335,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -53549,12 +53573,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -53572,6 +53590,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -53804,12 +53828,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -53827,6 +53845,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -54059,12 +54083,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -54148,6 +54166,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -54380,12 +54404,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -54403,6 +54421,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -54635,12 +54659,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -54724,6 +54742,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -54956,12 +54980,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -54991,6 +55009,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -55223,12 +55247,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -55246,6 +55264,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -55478,12 +55502,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -55567,6 +55585,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -55799,12 +55823,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -55822,6 +55840,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -56054,12 +56078,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -56077,6 +56095,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -56309,12 +56333,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -56398,6 +56416,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -56630,12 +56654,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -56653,6 +56671,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -56885,12 +56909,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -56926,6 +56944,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -57158,12 +57182,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -57181,6 +57199,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -57413,12 +57437,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -57442,6 +57460,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -57674,12 +57698,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -57697,6 +57715,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -57929,12 +57953,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -57958,6 +57976,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58190,12 +58214,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -58213,6 +58231,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58445,12 +58469,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -58468,6 +58486,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58700,12 +58724,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -58729,6 +58747,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58961,12 +58985,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -58984,6 +59002,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -59216,12 +59240,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -59245,6 +59263,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -59477,12 +59501,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -59566,6 +59584,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -59798,12 +59822,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -59821,6 +59839,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -60053,12 +60077,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -60076,6 +60094,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -60308,12 +60332,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -60331,6 +60349,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -60563,12 +60587,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -60598,6 +60616,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -60830,12 +60854,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -60919,6 +60937,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -61151,12 +61175,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -61240,6 +61258,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -61472,12 +61496,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -61561,6 +61579,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -61793,12 +61817,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -61882,6 +61900,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -62114,12 +62138,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -62143,6 +62161,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -62375,12 +62399,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -62464,6 +62482,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -62696,12 +62720,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -62785,6 +62803,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -63017,12 +63041,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -63100,6 +63118,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -63332,12 +63356,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -63391,6 +63409,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -63623,12 +63647,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -63712,6 +63730,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -63944,12 +63968,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -64028,11 +64046,17 @@
       ]
     },
     "UNSEATED": {
-      "last_id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
-      "last_ts": "2026-09-14T03:35:18Z",
+      "last_id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+      "last_ts": "2026-09-14T03:37:51Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
         {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
@@ -64098,12 +64122,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:56:56Z"
-        },
-        {
-          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:51:22Z"
         }
       ]
     },
@@ -64112,6 +64130,12 @@
       "last_ts": "",
       "n": 40,
       "since": [
+        {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
         {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
@@ -64345,12 +64369,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -64374,6 +64392,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -64606,12 +64630,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -64695,6 +64713,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -64927,12 +64951,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -65016,6 +65034,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -65248,12 +65272,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -65271,6 +65289,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -65503,12 +65527,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [
@@ -65526,6 +65544,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T03:37:51Z"
+        },
+        {
           "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -65758,12 +65782,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-13T15:42:50Z"
-        },
-        {
-          "id": "grokbuild-pr14048-uiowa-20260913-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T15:41:52Z"
         }
       ],
       "mine": [

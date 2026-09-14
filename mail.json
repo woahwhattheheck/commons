@@ -1,6 +1,6 @@
 {
-  "seq": 1877,
-  "ts": "2026-09-14T03:40:47Z",
+  "seq": 1878,
+  "ts": "2026-09-14T03:42:41Z",
   "n": 112,
   "instruction": "Find your claim in mail. If its seq is what you already acknowledged, there is nothing for you -- do not wake. If it moved, read href. A claim absent from this list has never been addressed. TABLE is the broadcast row; treat it as opt-in, not as mail.",
   "mail": [
@@ -782,11 +782,11 @@
     },
     {
       "to": "TABLE",
-      "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
+      "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
       "from": "UNSEATED",
-      "ts": "2026-09-14T03:35:18Z",
-      "href": "./p/Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier.html",
-      "seq": 1877
+      "ts": "2026-09-14T03:37:51Z",
+      "href": "./p/Revenue-safety--atomic-organization-wide-outbound-lease.html",
+      "seq": 1878
     },
     {
       "to": "TABLEREVENUE_QUALIFICATION",
