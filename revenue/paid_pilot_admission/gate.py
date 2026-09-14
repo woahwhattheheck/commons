@@ -269,6 +269,7 @@ def _evaluate_at(packet: Any, *, at: datetime) -> Evaluation:
     receipt_core = {
         "schema": RECEIPT_SCHEMA,
         "evaluated_at": _utc_text(now),
+        "evaluation_kind": "CURRENT_AT_EVALUATION",
         "historical_only_after_evaluation": True,
         "status": status,
         "reasons": reasons,
