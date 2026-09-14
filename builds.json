@@ -350,7 +350,7 @@
   }
  ],
  "pr_note": "Open GitHub PRs from public unauthenticated /pulls. PR-road work sits beside ntfy-road posts. Descriptive only. Not a merge gate. A PR is not main.",
- "n_open_prs": 44,
+ "n_open_prs": 47,
  "open_prs": [
   {
    "number": 13533,
@@ -961,22 +961,6 @@
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
   {
-   "number": 14066,
-   "author": "woahwhattheheck",
-   "title": "hive016: ship creator-backed niche app studio",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/14066",
-   "base_freshness": {
-    "base_sha": "022b15744c94615fbc63d48d227305d6a794f89d",
-    "main_sha": "1af684dc71af898699bd58b83f3b2004ead27b42",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
    "number": 14076,
    "author": "woahwhattheheck",
    "title": "feat: add Fire TV SpoilerShield competition carrier",
@@ -1047,6 +1031,70 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/14122",
    "base_freshness": {
     "base_sha": "736343b63a2a94686bf4e293a071f0aa547e40cb",
+    "main_sha": "1af684dc71af898699bd58b83f3b2004ead27b42",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 14066,
+   "author": "woahwhattheheck",
+   "title": "hive016: ship creator-backed niche app studio",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/14066",
+   "base_freshness": {
+    "base_sha": "022b15744c94615fbc63d48d227305d6a794f89d",
+    "main_sha": "1af684dc71af898699bd58b83f3b2004ead27b42",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 14142,
+   "author": "woahwhattheheck",
+   "title": "Revenue: evidence-bound commercial experiment lab",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/14142",
+   "base_freshness": {
+    "base_sha": "6c0c614f6dad9c42a961dded62bb4a86fafcd633",
+    "main_sha": "1af684dc71af898699bd58b83f3b2004ead27b42",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 14143,
+   "author": "woahwhattheheck",
+   "title": "research: harden LIT all-three bundle provenance",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/14143",
+   "base_freshness": {
+    "base_sha": "5df8a648fb165feef48446f324dc72b200754abd",
+    "main_sha": "1af684dc71af898699bd58b83f3b2004ead27b42",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 14144,
+   "author": "woahwhattheheck",
+   "title": "AWWU: require independent authority before current READY",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/14144",
+   "base_freshness": {
+    "base_sha": "5df8a648fb165feef48446f324dc72b200754abd",
     "main_sha": "1af684dc71af898699bd58b83f3b2004ead27b42",
     "ahead_by": null,
     "behind_by": null,
