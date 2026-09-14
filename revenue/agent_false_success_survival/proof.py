@@ -328,12 +328,30 @@ def classify_exchange(status: int, content_type: str, body: bytes) -> Classifica
             reasons.append("JSON_RPC_RESULT_MISSING")
         else:
             result = payload.get("result")
-            if isinstance(result, dict) and "isError" in result:
-                if type(result["isError"]) is not bool:
+            if not isinstance(result, dict):
+                reasons.append("MCP_RESULT_NOT_OBJECT")
+            else:
+                if "isError" not in result:
+                    reasons.append("MCP_IS_ERROR_MISSING")
+                elif type(result["isError"]) is not bool:
                     reasons.append("MCP_IS_ERROR_NOT_BOOL")
                 elif result["isError"]:
                     reasons.append("MCP_TOOL_ERROR")
                     tags.add("MCP_TOOL_ERROR")
+
+                if "content" not in result:
+                    reasons.append("MCP_CONTENT_MISSING")
+                elif not isinstance(result["content"], list):
+                    reasons.append("MCP_CONTENT_NOT_LIST")
+                else:
+                    for item in result["content"]:
+                        if not isinstance(item, dict):
+                            reasons.append("MCP_CONTENT_ITEM_NOT_OBJECT")
+                            continue
+                        if type(item.get("type")) is not str or not item["type"]:
+                            reasons.append("MCP_CONTENT_TYPE_INVALID")
+                        elif item["type"] == "text" and type(item.get("text")) is not str:
+                            reasons.append("MCP_TEXT_CONTENT_INVALID")
             if _embedded_html(payload):
                 reasons.append("MCP_WRAPPED_HTML")
                 tags.add("MCP_WRAPPED_HTML")
