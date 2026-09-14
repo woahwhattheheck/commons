@@ -59,7 +59,7 @@ class RightNowExecutionTests(unittest.TestCase):
         self.assertEqual(value["truth"]["accepted_scopes"], 0)
         self.assertEqual(value["truth"]["ready_to_draft"], 0)
         self.assertEqual(value["truth"]["transport_actions"], 0)
-        self.assertTrue(value["truth"]["active_chargeable_checkout"])
+        self.assertIs(value["truth"]["active_chargeable_checkout"], False)
         self.assertEqual(value["truth"]["paid_awards"], 1)
         self.assertEqual(
             value["truth"]["settled_amounts_by_currency"],
@@ -202,7 +202,8 @@ class RightNowExecutionTests(unittest.TestCase):
         self.assertEqual(
             result.stdout.strip(),
             "VALID 6 offers 4 opportunities 0 transports USD 1 cash · "
-            "1 provider receipt · 1 paid award · 25 RTC settled",
+            "1 provider receipt · 1 paid award · 25 RTC settled · "
+            "current checkout requires authenticated Stripe readback",
         )
 
     def test_cli_rejects_drifted_projection(self) -> None:
