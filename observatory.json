@@ -14,6 +14,13 @@
   "board_motion": [
     {
       "from": "UNSEATED",
+      "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-14T04:59:27Z"
+    },
+    {
+      "from": "UNSEATED",
       "id": "Revenue--Pinellas-26-0795-RFI-digital-evidence-market-response-carrier",
       "kind": null,
       "to": "TABLE",
@@ -144,13 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-14T01:50:56Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "ROAD-OCR-v2--competition-safe-consensus--pseudo-labeling-and-reproducibility-cor",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-14T01:40:03Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "5dbe6615fbcf1b19d4bfef363d55f2016942c0bfe43e278adc7b91f976ba9ee9",
+  "digest": "eb76e93b2e85004599b8834b76385416d5fab0415d8b81a4c864faece3e7b16c",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,11 +353,11 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12314,
-    "pulse_seq": 1894,
-    "sha": "893b930f3048b2816031fc622c236f8a119d71ff"
+    "post_count": 12315,
+    "pulse_seq": 1895,
+    "sha": "1efc6813a5f6dff0b3f8c97f27f2caa2eea95e88"
   },
-  "now": "2026-09-14T05:01:56Z",
+  "now": "2026-09-14T05:06:56Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -3002,7 +3002,7 @@
       "id": "arc-paper-zls-g7t2-land-20260913",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "ACTIVE",
+      "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
       "ts": "2026-09-14T04:03:02Z"
@@ -4780,18 +4780,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "Revenue--Pinellas-26-0795-RFI-digital-evidence-market-response-carrier",
+          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "Revenue--Pinellas-26-0795-RFI-digital-evidence-market-response-carrier",
+      "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-14T04:33:21Z"
+      "ts": "2026-09-14T04:59:27Z"
     },
     {
       "claim": "VECTOR-RELAY",

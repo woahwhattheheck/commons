@@ -1,9 +1,9 @@
 {
   "counts": {
-    "open_issues": 114,
+    "open_issues": 113,
     "open_pull_requests": 64,
-    "runs_in_progress": 9,
-    "runs_queued": 985
+    "runs_in_progress": 11,
+    "runs_queued": 1026
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -19,17 +19,6 @@
       "number": 13533,
       "title": "coordination: clean successor for exact-head execution evidence gate",
       "updated_at": "2026-09-13T06:18:05Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-kestrel/ci-ignored-input-fence-current-20260913",
-      "created_at": "2026-09-13T06:40:39Z",
-      "draft": false,
-      "head_sha": "842d302b4c6ab001df5457c6b25309b301d53827",
-      "number": 13587,
-      "title": "ci: reject ignored runtime inputs before battery execution",
-      "updated_at": "2026-09-13T12:53:11Z"
     },
     {
       "author": "woahwhattheheck",
@@ -63,19 +52,41 @@
       "number": 13692,
       "title": "TITAN V5: exact-head reject symlinked champion evidence inputs",
       "updated_at": "2026-09-13T12:51:24Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zram/wuhu-lerobot-qc-20260913",
+      "created_at": "2026-09-13T09:42:49Z",
+      "draft": false,
+      "head_sha": "80c722fbe7ab7dd711ce01987bea50c900ad673e",
+      "number": 13695,
+      "title": "competition: add Wuhu LeRobot trajectory QC engine",
+      "updated_at": "2026-09-13T10:52:25Z"
     }
   ],
   "newest_pulls": [
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "zforge/ar-leakage-chronology-14326",
-      "created_at": "2026-09-14T05:01:38Z",
+      "branch": "zkw-f4d9/outbound-guard-verifier-clock-20260914",
+      "created_at": "2026-09-14T05:06:50Z",
       "draft": false,
-      "head_sha": "478139b6b4180bf39a318bddf0996a0308afbf9e",
-      "number": 14326,
-      "title": "Fix AR Leakage currency, chronology, and conflict presentation",
-      "updated_at": "2026-09-14T05:01:38Z"
+      "head_sha": "e1cfee85559d718c0f3689e0166a144fb2a3028e",
+      "number": 14333,
+      "title": "fix(outbound): bind current preflight to verifier-owned time",
+      "updated_at": "2026-09-14T05:06:50Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "work-zad-001",
+      "created_at": "2026-09-14T05:03:23Z",
+      "draft": false,
+      "head_sha": "7f0daf0d235b494eca5b994a51536a8006404141",
+      "number": 14330,
+      "title": "Add connector write-capability preflight",
+      "updated_at": "2026-09-14T05:03:23Z"
     },
     {
       "author": "woahwhattheheck",
@@ -97,7 +108,7 @@
       "head_sha": "d8d2800a0490eb465e2eab91f01ced0943a33912",
       "number": 14321,
       "title": "revenue: build Pinellas digital-evidence RFI response carrier",
-      "updated_at": "2026-09-14T04:44:09Z"
+      "updated_at": "2026-09-14T05:05:15Z"
     },
     {
       "author": "woahwhattheheck",
@@ -164,22 +175,10 @@
       "number": 14299,
       "title": "ARM26BX06-NV012: decision-as-program Phase I qualification + demo carrier",
       "updated_at": "2026-09-14T04:32:38Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zhelix/mmsd-ai-governance-policy",
-      "created_at": "2026-09-14T03:56:06Z",
-      "draft": false,
-      "head_sha": "932635011e5850cedf27eaddfa12365000352344",
-      "number": 14296,
-      "title": "feat(revenue): add public-utility AI governance evidence core",
-      "updated_at": "2026-09-14T03:58:59Z"
     }
   ],
   "open_heads": {
     "13533": "73e73de79cb62cf2f58005efab027138ded6f282",
-    "13587": "842d302b4c6ab001df5457c6b25309b301d53827",
     "13676": "aee34ae856ab682908406e7b77f017af6da37586",
     "13683": "d7d6a0a0dacf3d832fc62d6e0b1a39b15a985b54",
     "13692": "c2df4039c06d34123e9aaa31ff0a04c405760c62",
@@ -241,12 +240,68 @@
     "14320": "67469492f28f15602e8e7463bf06a34d19a05448",
     "14321": "d8d2800a0490eb465e2eab91f01ced0943a33912",
     "14322": "6842fd25e7877fd67a11fed216f0fac292fb16d4",
-    "14326": "478139b6b4180bf39a318bddf0996a0308afbf9e"
+    "14330": "7f0daf0d235b494eca5b994a51536a8006404141",
+    "14333": "e1cfee85559d718c0f3689e0166a144fb2a3028e"
   },
   "pulls_listed": 64,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 109.4,
+  "queue_depth_per_runner": 93.3,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zhq-r9t4/fort-worth-26-0263-ivr-evidence-20260914",
+      "closed_at": "2026-09-14T05:05:54Z",
+      "head_sha": "6087bf4d396cde936492c47a98613fd648e32f9c",
+      "merged_at": "2026-09-14T05:05:54Z",
+      "number": 14332,
+      "state": "MERGED",
+      "title": "feat: add Fort Worth 26-0263 AI-IVR validation evidence carrier"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zforge/ar-leakage-chronology-14326",
+      "closed_at": "2026-09-14T05:05:17Z",
+      "head_sha": "bf29e226599a2ba7576562628e8399bcc0feb425",
+      "merged_at": "2026-09-14T05:05:17Z",
+      "number": 14331,
+      "state": "MERGED",
+      "title": "fix(revenue): bind AR leakage currency and event chronology"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z-kestrel/ci-ignored-input-fence-current-20260913",
+      "closed_at": "2026-09-14T05:04:49Z",
+      "head_sha": "842d302b4c6ab001df5457c6b25309b301d53827",
+      "merged_at": null,
+      "number": 13587,
+      "state": "CLOSED",
+      "title": "ci: reject ignored runtime inputs before battery execution"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zfh-w4k9/ci-ignored-input-fence-main-20260914",
+      "closed_at": "2026-09-14T05:04:12Z",
+      "head_sha": "1d99ad43e5707d7f29697170f1fb8d906ca0c8e7",
+      "merged_at": "2026-09-14T05:04:12Z",
+      "number": 14329,
+      "state": "MERGED",
+      "title": "ci: land ignored runtime-input battery fence on current main"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zforge/ar-leakage-chronology-14326",
+      "closed_at": "2026-09-14T05:03:38Z",
+      "head_sha": "bf29e226599a2ba7576562628e8399bcc0feb425",
+      "merged_at": null,
+      "number": 14326,
+      "state": "CLOSED",
+      "title": "Fix AR Leakage currency, chronology, and conflict presentation"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -327,46 +382,13 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "zhb-q8m2/outbound-mutex-provider-drift-r2",
-      "closed_at": "2026-09-14T04:03:48Z",
-      "head_sha": "3e7eee063f01e396040ca768bd7ee6dbfe6ee9ec",
-      "merged_at": null,
-      "number": 14303,
-      "state": "CLOSED",
-      "title": "fix(outbound): reject provider drift during lease takeover"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-helix/darpa-dv026-market-poc",
-      "closed_at": "2026-09-14T04:02:55Z",
-      "head_sha": "3df71ac7308e8368b481d9b6e1e016c124f7c1a3",
-      "merged_at": "2026-09-14T04:02:55Z",
-      "number": 14297,
+      "branch": "zcd-b4j9/nawcad-acqatlas-20260913",
+      "closed_at": "2026-09-14T02:50:58Z",
+      "head_sha": "911705bca474f60784ef5db8c6dff070d43c7445",
+      "merged_at": "2026-09-14T02:50:57Z",
+      "number": 14234,
       "state": "MERGED",
-      "title": "research: deterministic DARPA DV026 market technical proof"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zls-g7t2/arc-paper-sage-skill-induction-20260913",
-      "closed_at": "2026-09-14T04:02:07Z",
-      "head_sha": "aaeae47967349952130b61c40d8dfab273be1e51",
-      "merged_at": "2026-09-14T04:02:07Z",
-      "number": 14307,
-      "state": "MERGED",
-      "title": "ARC Paper: action-efficient skill induction + fail-closed submission carrier"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zrc-p6h2/outbound-mutex-takeover-repair-20260914",
-      "closed_at": "2026-09-14T04:02:06Z",
-      "head_sha": "cde5177acbc3f158f4b46cea2d93bc1f33988928",
-      "merged_at": "2026-09-14T04:02:06Z",
-      "number": 14308,
-      "state": "MERGED",
-      "title": "Fail closed on changed-provider outbound takeover"
+      "title": "NAWCAD AcqDocs: add deterministic zero-LLM AcqAtlas recommender"
     },
     {
       "author": "woahwhattheheck",
@@ -389,32 +411,10 @@
       "number": 14226,
       "state": "CLOSED",
       "title": "revenue: add provider relationship census custody gate"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zlt-c8n4/relationship-census-20260913",
-      "closed_at": "2026-09-14T02:49:11Z",
-      "head_sha": "7542aa1933697e4ee7888786d4b0c77db3a1d8a1",
-      "merged_at": "2026-09-14T02:49:11Z",
-      "number": 14231,
-      "state": "MERGED",
-      "title": "outbound: bind provider relationship census to target custody"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zcl-h7k3/paid-pilot-rollout-chronology-20260913",
-      "closed_at": "2026-09-14T02:48:39Z",
-      "head_sha": "581768bb05252e1cc9b87aa9750e48b5f8850fe9",
-      "merged_at": "2026-09-14T02:48:39Z",
-      "number": 14227,
-      "state": "MERGED",
-      "title": "Repair paid-pilot rollout chronology authority"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-14T05:02:07Z",
+  "unchanged_since": "2026-09-14T05:07:13Z",
   "undatable_pulls": []
 }
