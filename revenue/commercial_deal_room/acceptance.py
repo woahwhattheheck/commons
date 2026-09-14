@@ -3,7 +3,7 @@ from __future__ import annotations
 from copy import deepcopy
 from datetime import datetime, timezone
 
-from .engine import compile_board, sha256_hex
+from .guarded import compile_board, sha256_hex
 
 NOW = datetime(2026, 9, 13, 16, 0, tzinfo=timezone.utc)
 D = "1" * 64
