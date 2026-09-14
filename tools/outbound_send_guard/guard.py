@@ -1,14 +1,17 @@
 """Compatibility facade for the outbound send guard.
 
 The deterministic engine is retained byte-for-byte in :mod:`guard_legacy` for
-historical replay and composed controls.  Package and module CLI execution use
+historical replay and composed controls. Package and module CLI execution use
 the verifier-clock current boundary.
 """
 from __future__ import annotations
 
 import sys
 
-from . import guard_legacy as _legacy
+try:
+    from . import guard_legacy as _legacy
+except ImportError:  # pragma: no cover - direct script execution
+    import guard_legacy as _legacy  # type: ignore
 
 # Preserve the historical engine surface, including internal helpers consumed by
 # the buyer-scope companion, without re-authoring its semantics.
@@ -19,7 +22,10 @@ for _name in dir(_legacy):
 
 def main(argv: list[str] | None = None) -> int:
     """Route every supported CLI invocation through current process time."""
-    from .current import main as current_main
+    try:
+        from .current import main as current_main
+    except ImportError:  # pragma: no cover - direct script execution
+        from current import main as current_main  # type: ignore
 
     args = list(sys.argv[1:] if argv is None else argv)
     if args and args[0] in {"compile", "verify"}:
