@@ -1,6 +1,8 @@
 # Current-time outbound send preflight
 
-`current.py` is the supported **current-use** boundary for the outbound send guard. The original `guard.py` decision engine remains deterministic and useful for historical reconstruction, but its two input timestamps are caller data and cannot by themselves establish that a snapshot is fresh now.
+`current.py` is the supported **current-use** boundary for the outbound send guard. The deterministic v1 decision engine is retained byte-for-byte in `guard_legacy.py` for historical reconstruction and composed controls, but its two input timestamps are caller data and cannot by themselves establish that a snapshot is fresh now.
+
+`guard.py` is a compatibility facade: it exposes the deterministic helper surface to existing internal callers, while its command-line entrypoint routes old and new CLI syntax through `current.py`. There is no supported command that emits a caller-clock current receipt.
 
 ## Current contract
 
@@ -34,9 +36,11 @@ The current wrapper:
 
 `compile_historical_at()` exists for deterministic reconstruction. Its receipt is permanently labeled `HISTORICAL_INTEGRITY_ONLY`, sets the outward decision to `HOLD`, and cannot clear current preflight even when the historical core decision was `ALLOW_NEW`.
 
+Direct Python imports of `guard.evaluate` preserve the deterministic engine for internal composition. They are not the advertised package API: package-level `evaluate` is `compile_current`. Tests pin this distinction so old matched timestamps may remain reproducible as historical engine evidence but cannot pass the package/current boundary.
+
 ## CLI
 
-Use the package CLI, not the deterministic engine module:
+Both package and compatibility module invocations are current-time bound:
 
 ```bash
 python -m tools.outbound_send_guard compile \
@@ -49,6 +53,12 @@ python -m tools.outbound_send_guard verify \
   --evidence evidence.json \
   --receipt receipt.json \
   --out verification.json
+
+# Old syntax is accepted only as a current compile compatibility route:
+python -m tools.outbound_send_guard.guard \
+  --intent intent.json \
+  --evidence evidence.json \
+  --out receipt.json
 ```
 
 The CLI consumes one bounded, no-follow, single-link regular-file generation, verifies that the visible path still names the consumed inode, and creates outputs exclusively. Existing outputs and final-component symlinks are refused.
@@ -59,14 +69,20 @@ Exit codes: compile uses `0 ALLOW_NEW`, `3 REPLY_ONLY`, `4 HOLD`, `5 DO_NOT_RESE
 
 ```bash
 python -m py_compile \
+  tools/outbound_send_guard/guard_legacy.py \
+  tools/outbound_send_guard/guard.py \
   tools/outbound_send_guard/current.py \
-  tools/outbound_send_guard/test_current.py
+  tools/outbound_send_guard/test_guard.py \
+  tools/outbound_send_guard/test_current.py \
+  tools/outbound_send_guard/test_current_entrypoint.py
 python -m unittest -v \
   tools.outbound_send_guard.test_guard \
-  tools.outbound_send_guard.test_current
+  tools.outbound_send_guard.test_current \
+  tools.outbound_send_guard.test_current_entrypoint
 python -O -m unittest -v \
   tools.outbound_send_guard.test_guard \
-  tools.outbound_send_guard.test_current
+  tools.outbound_send_guard.test_current \
+  tools.outbound_send_guard.test_current_entrypoint
 ```
 
-The hostile suite includes matched stale timestamps, matched future timestamps, one-sided stale intent/snapshot, candidate policy widening, expiry, verifier-time tamper with reseal, changed source bytes, exact-byte custody, caller mutation after snapshot, create-exclusive output, and symlink refusal.
+The hostile suite includes matched stale timestamps, matched future timestamps, one-sided stale intent/snapshot, candidate policy widening, expiry, verifier-time tamper with reseal, changed source bytes, exact-byte custody, caller mutation after snapshot, compatibility CLI routing, create-exclusive output, and symlink refusal.
