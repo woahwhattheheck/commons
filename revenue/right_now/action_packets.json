@@ -26,7 +26,7 @@
       "follow_up_timing": "none",
       "evidence_to_record": "preserve canonical rejection evidence; do not mint a transport receipt",
       "economic_state_if_successful": "DISCOVERED",
-      "status": "rejected-as-buyer",
+      "status": "do-not-contact",
       "lane": "do-not-contact"
     },
     {
