@@ -101,12 +101,12 @@
   "kind": "RIGHT_NOW_REVENUE_CONTROL",
   "offers": [
     {
-      "commons_bottleneck": "Deliver the full-strength autopsy (or refund) against the live offer contract without reminting Stripe.",
+      "commons_bottleneck": "Deliver the full-strength autopsy (or refund) against the offer contract without reminting Stripe; use authenticated provider readback for any current-active checkout claim.",
       "delivery_window": "one business day",
       "founder_bottleneck": "Confirm usable redacted evidence arrived after payment, start the one-business-day clock, and assign fulfillment.",
       "id": "agent-failure-autopsy-29",
       "name": "Agent Failure Autopsy",
-      "next_external_event": "A real buyer pays the live $29 checkout on agent-rescue.html and sends redacted one-run evidence inside the intake boundary.",
+      "next_external_event": "A real buyer pays the $29 checkout on agent-rescue.html and sends redacted one-run evidence inside the intake boundary.",
       "payment_state": "LIVE_PUBLIC_CHECKOUT_PAGE",
       "price_usd": 29,
       "rank": 1,
@@ -163,7 +163,7 @@
     {
       "commons_bottleneck": "Reserve one delivery window and build the accepted proof after funding; keep agent-rescue.html reserved for Autopsy.",
       "delivery_window": "one agreed business day",
-      "founder_bottleneck": "Do not route Survival Proof buyers to agent-rescue.html (that page is the live $29 Autopsy). Accept the exact sentence and window from revenue/production_survival/README.md, then issue a buyer-specific payment handoff.",
+      "founder_bottleneck": "Do not route Survival Proof buyers to agent-rescue.html (that page is the $29 Autopsy route). Accept the exact sentence and window from revenue/production_survival/README.md, then issue a buyer-specific payment handoff.",
       "id": "same-day-agent-survival-proof",
       "name": "Same-Day Agent Survival Proof",
       "next_external_event": "A real buyer starts from revenue/production_survival/README.md with the one-sentence failure and agrees to a start window.",
@@ -255,7 +255,7 @@
   "source_receipts": [
     {
       "path": "revenue/right_now/catalog.json",
-      "sha256": "58aa2987feca960ecc683a12b7fae7f6c493c495a07a2ab024ed48aa8be157f5"
+      "sha256": "da6d4896517d12a40c85eddf6862596343775e910c6c57bda775de0f942e5aeb"
     },
     {
       "path": "revenue/right_now/diagnostic_offer.json",
@@ -300,7 +300,7 @@
   ],
   "truth": {
     "accepted_scopes": 0,
-    "active_chargeable_checkout": true,
+    "active_chargeable_checkout": false,
     "award_bank_availability_asserted": false,
     "award_withdrawability_asserted": false,
     "cash_bank_availability_asserted": false,
