@@ -59,6 +59,16 @@ def _require_bool(value: Any, label: str) -> bool:
     return value
 
 
+def _snapshot_canonical_object(value: Any, label: str) -> dict[str, Any]:
+    """Detach one caller-owned parsed object into a canonical JSON generation."""
+    obj = _require_dict(value, label)
+    try:
+        raw = guard.canonical_bytes(obj)
+    except (TypeError, ValueError) as exc:
+        raise ScopeError(f"{label} is not canonical JSON") from exc
+    return guard.parse_json_bytes(raw, f"{label} canonical snapshot")
+
+
 def _parse_scope(raw: dict[str, Any]) -> tuple[str, list[dict[str, Any]]]:
     allowed = {"schema_version", "scope_id", "members"}
     unknown = set(raw) - allowed
@@ -239,15 +249,18 @@ def evaluate(
     evidence_raw: dict[str, Any],
     scope_raw: dict[str, Any],
 ) -> dict[str, Any]:
-    """Evaluate parsed objects.
+    """Evaluate one detached canonical generation of each caller-owned object.
 
     This API proves canonical object integrity only. It intentionally cannot accept
     externally supplied source digests and therefore cannot claim raw-byte custody.
     """
+    intent_snapshot = _snapshot_canonical_object(intent_raw, "intent")
+    evidence_snapshot = _snapshot_canonical_object(evidence_raw, "evidence")
+    scope_snapshot = _snapshot_canonical_object(scope_raw, "buyer scope")
     return _evaluate(
-        _require_dict(intent_raw, "intent"),
-        _require_dict(evidence_raw, "evidence"),
-        _require_dict(scope_raw, "buyer scope"),
+        intent_snapshot,
+        evidence_snapshot,
+        scope_snapshot,
         raw_bytes=None,
     )
 
