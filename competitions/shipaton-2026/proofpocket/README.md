@@ -7,7 +7,8 @@ ProofPocket is a new Android-first, offline work-evidence app: create a project,
 - **Local-first:** evidence bytes stay on the device. ProofPocket stores only local project metadata and SHA-256 digests.
 - **Free:** up to 3 local projects, JSON receipt creation/export/import verification.
 - **Pro:** an observed active RevenueCat `pro` entitlement unlocks unlimited local projects and platform-native PDF proof packs.
-- **Fail closed:** no RevenueCat public SDK key means Pro stays locked. SDK errors never create entitlement truth. Store/submission readiness is compiled separately and cannot be minted from source state.
+- **Fail closed:** no RevenueCat public SDK key means Pro stays locked. SDK errors never create entitlement truth.
+- **No source-local competition READY:** this repository can validate source state and preserve self-asserted observation history, but cannot authenticate RevenueCat/store/Devpost facts or emit an authoritative competition-ready state.
 
 ## Android build
 
@@ -24,9 +25,9 @@ Supply the **public** RevenueCat SDK key only at build time (never a secret API 
 
 This repository intentionally does not contain the key, RevenueCat products/offerings, store credentials, signing keys, or a claim that purchases have been tested.
 
-## Local proof engine tests
+## Local proof-engine tests
 
-The receipt engine and entitlement fail-closed policy are plain Kotlin and can be tested without Android tooling:
+The receipt engine, strict JSON key preflight, entitlement policy, and competition gate have dependency-light tests:
 
 ```bash
 kotlinc \
@@ -34,16 +35,28 @@ kotlinc \
   app/src/main/java/com/tokenjunkielabs/proofpocket/core/EntitlementPolicy.kt \
   core-tests/CoreTests.kt -include-runtime -d /tmp/proofpocket-core-tests.jar
 java -jar /tmp/proofpocket-core-tests.jar
+
+kotlinc \
+  app/src/main/java/com/tokenjunkielabs/proofpocket/core/StrictJsonKeys.kt \
+  core-tests/StrictJsonTests.kt -include-runtime -d /tmp/proofpocket-strict-json.jar
+java -jar /tmp/proofpocket-strict-json.jar
+
 python3 -m unittest discover -s tests -v
-python3 shipaton/readiness.py shipaton/manifest.json --json  # expected HOLD until external witness exists
+python3 shipaton/readiness.py shipaton/manifest.json --json  # expected HOLD_EXTERNAL_AUTHORITY
 ```
+
+The current environment used for this carrier has Java/Kotlin/Python but no Android SDK/Gradle executable, so these receipts are **not** an APK/AAB compile claim.
 
 ## Receipt semantics
 
-`receiptId = SHA256(canonical_payload_json)`. Evidence is sorted by stable evidence ID before hashing, so input order does not change identity. Evidence IDs derive from content SHA-256. Duplicate IDs, malformed digests/timestamps, negative sizes, and unsupported schemas are rejected. Import verification rebuilds the canonical payload and compares the digest.
+`receiptId = SHA256(canonical_payload_json)`. Evidence is sorted by stable evidence ID before hashing, so input order does not change identity. Evidence IDs derive from content SHA-256. Duplicate IDs, malformed digests/timestamps, negative sizes, and unsupported schemas are rejected.
+
+Import is stricter than ordinary `JSONObject` parsing: duplicate object keys are refused before parsing (including escaped aliases such as `id` and `\u0069d`), and receipt root/payload/evidence objects must contain exactly the supported fields. This prevents unbound side claims from riding beside an otherwise valid receipt.
 
 This is **tamper evidence**, not a claim of signer identity or a digital signature. A PDF proof pack contains the same receipt ID and digest excerpts; it does not claim cryptographic signing.
 
-## Competition truth
+## Competition truth / trust boundary
 
-`shipaton/readiness.py` requires an external witness separate from `manifest.json`. The current checked-in manifest is intentionally `HOLD` because RevenueCat account/product verification, store developer access/publication, demo media, and Devpost submission are not presently evidenced in this lane. See `shipaton/OWNER_ACTIONS.md`.
+`shipaton/readiness.py` has **no READY branch**. An optional `--witness` file is treated as `SELF_ASSERTED` integrity/history only; even a fully populated file claiming all provider gates remains `HOLD_EXTERNAL_AUTHORITY` with `ready_authorized=false`.
+
+Crossing the actual competition gate requires a separate host/provider integration that reacquires and authenticates exact RevenueCat account/app/product/offering/entitlement state, eligible store developer/publication state for the exact package/version, retained demo/screenshot evidence digests, Devpost submission identity/time, and a host-owned current-time/deadline evaluation. None of those authorities can be created by this source tree. See `shipaton/OWNER_ACTIONS.md`.
