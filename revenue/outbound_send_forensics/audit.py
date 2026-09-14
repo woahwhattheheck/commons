@@ -19,9 +19,10 @@ from revenue.outbound_connector_lease.key import (
     compile_document as compile_lease_document,
 )
 
-INPUT_SCHEMA = "outbound-send-forensics/v1"
-RECEIPT_SCHEMA = "outbound-send-forensics-receipt/v1"
-BATCH_SCHEMA = "outbound-send-forensics-batch/v1"
+LEGACY_INPUT_SCHEMA = "outbound-send-forensics/v1"
+INPUT_SCHEMA = "outbound-send-forensics/v2"
+RECEIPT_SCHEMA = "outbound-send-forensics-receipt/v2"
+BATCH_SCHEMA = "outbound-send-forensics-batch/v2"
 CANONICAL_LEASE_REPOSITORY = "woahwhattheheck/commons"
 
 _SHA256_RE = re.compile(r"^[0-9a-f]{64}$")
@@ -191,25 +192,29 @@ def _normalize_send(raw):
     }
 
 
-def _normalize_lease(raw):
+def _normalize_lease(raw, input_schema):
     if raw is None:
         return None
-    lease = _exact(
-        raw,
-        {
-            "repository_full_name",
-            "branch",
-            "created_at",
-            "authority",
-            "result",
-            "base_sha",
-            "receipt_sha256",
-        },
-        "record.lease_create",
-    )
-    repository_full_name = _repository(
-        lease["repository_full_name"], "record.lease_create.repository_full_name"
-    )
+    common_fields = {
+        "branch",
+        "created_at",
+        "authority",
+        "result",
+        "base_sha",
+        "receipt_sha256",
+    }
+    if input_schema == LEGACY_INPUT_SCHEMA:
+        lease = _exact(raw, common_fields, "record.lease_create")
+        repository_full_name = None
+    else:
+        lease = _exact(
+            raw,
+            common_fields | {"repository_full_name"},
+            "record.lease_create",
+        )
+        repository_full_name = _repository(
+            lease["repository_full_name"], "record.lease_create.repository_full_name"
+        )
     branch = _branch(lease["branch"], "record.lease_create.branch")
     created_dt, created_at = _timestamp(lease["created_at"], "record.lease_create.created_at")
     authority = _enum(
@@ -235,7 +240,7 @@ def _normalize_lease(raw):
         "receipt_sha256": receipt_sha256,
     }
 
-def _normalize_record(raw):
+def _normalize_record(raw, input_schema):
     record = _exact(raw, {"record_id", "seam", "send", "lease_create"}, "record")
     record_id = _token(record["record_id"], "record.record_id")
     try:
@@ -246,7 +251,8 @@ def _normalize_record(raw):
         "record_id": record_id,
         "compiled": compiled,
         "send": _normalize_send(record["send"]),
-        "lease": _normalize_lease(record["lease_create"]),
+        "lease": _normalize_lease(record["lease_create"], input_schema),
+        "input_schema": input_schema,
     }
 
 
@@ -261,6 +267,10 @@ def _classify(record):
     if lease["authority"] != "github-create-result" or lease["result"] != "created":
         return CLASS_UNTRUSTED, [
             "lease evidence does not prove an exact successful GitHub create-branch result"
+        ]
+    if lease["repository_full_name"] is None:
+        return CLASS_UNTRUSTED, [
+            "legacy v1 lease evidence lacks repository identity and cannot prove the canonical mutex"
         ]
     if lease["repository_full_name"] != CANONICAL_LEASE_REPOSITORY:
         return CLASS_UNTRUSTED, [
@@ -282,6 +292,7 @@ def _payload(record):
     return {
         "schema": RECEIPT_SCHEMA,
         "record_id": record["record_id"],
+        "source_input_schema": record["input_schema"],
         "classification": classification,
         "reasons": reasons,
         "dnr": True,
@@ -309,11 +320,14 @@ def _seal(payload):
 
 def audit_document(document):
     top = _exact(document, {"schema", "records"}, "input")
-    if top["schema"] != INPUT_SCHEMA:
-        raise ForensicsError(f"input.schema must be {INPUT_SCHEMA}")
+    if top["schema"] not in {LEGACY_INPUT_SCHEMA, INPUT_SCHEMA}:
+        raise ForensicsError(
+            f"input.schema must be one of: {LEGACY_INPUT_SCHEMA},{INPUT_SCHEMA}"
+        )
+    input_schema = top["schema"]
     if type(top["records"]) is not list or not top["records"]:
         raise ForensicsError("input.records must be a non-empty array")
-    records = [_normalize_record(item) for item in top["records"]]
+    records = [_normalize_record(item, input_schema) for item in top["records"]]
     ids = [record["record_id"] for record in records]
     duplicate_ids = sorted(key for key, count in Counter(ids).items() if count > 1)
     if duplicate_ids:
