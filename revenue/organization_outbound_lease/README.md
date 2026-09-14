@@ -23,7 +23,9 @@ Production mode uses the GitHub Contents API on a dedicated coordination branch 
 - immutable outcome writes create `outcomes/<org-hmac>/<lease-id>.json` without a prior SHA;
 - the only releasable terminal is `UNSENT_RELEASED`, and its outcome is committed **before** active deletion;
 - release supplies the exact active blob SHA. A stale duplicate releaser cannot delete a successor lease because GitHub rejects a SHA mismatch;
-- network/create ambiguity is reconciled by reading the authoritative path. No blind retry is treated as safe.
+- network/create ambiguity is reconciled by reading the authoritative path. No blind retry is treated as safe;
+- exact acquire replay recovers an already-held identical lease even after freshness elapses, because it creates no new authority; exact retained terminal-outcome replay is likewise recoverable after the original window;
+- `UNSENT_RELEASED` outcome receipts bind the lease nonce as well as lease ID/digest. Replaying an old release can never delete a successor active generation.
 
 The coordination branch must already exist and must be restricted to this protocol. The package never creates, force-updates or resets that branch.
 
