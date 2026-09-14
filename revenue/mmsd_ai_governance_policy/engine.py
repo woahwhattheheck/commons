@@ -378,14 +378,14 @@ def compile_report(packet: Any) -> dict[str, Any]:
 def verify_report(packet: Any, report: Any) -> bool:
     if type(report) is not dict:
         return False
-    candidate = dict(report)
-    receipt = candidate.pop("receipt_sha256", None)
-    if type(receipt) is not str or len(receipt) != 64:
-        return False
-    if sha256(canonical_bytes(candidate)) != receipt:
-        return False
     try:
+        candidate = dict(report)
+        receipt = candidate.pop("receipt_sha256", None)
+        if type(receipt) is not str or len(receipt) != 64:
+            return False
+        if sha256(canonical_bytes(candidate)) != receipt:
+            return False
         expected = compile_report(packet)
+        return canonical_bytes(expected) == canonical_bytes(report)
     except GovernanceError:
         return False
-    return canonical_bytes(expected) == canonical_bytes(report)
