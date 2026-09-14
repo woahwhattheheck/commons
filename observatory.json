@@ -14,6 +14,13 @@
   "board_motion": [
     {
       "from": "UNSEATED",
+      "id": "DOE-GEMS-Prize--build-fault-mapping-solver---exact-metric-harness",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-14T01:29:36Z"
+    },
+    {
+      "from": "UNSEATED",
       "id": "Revenue--reusable-bidder-qualification-evidence-vault",
       "kind": null,
       "to": "TABLE",
@@ -144,13 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-13T16:23:03Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "OpenCV-AI-Competition-2026--GaugeProof-evidence-first-visual-inspection-agent",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-13T16:18:20Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "2068b013732bab35910afa7bd28a4dc80dbeafa70543147399c6046e0cc9b759",
+  "digest": "2f0f9efd1903bcad1ced4a07c2203db6b0f263a468b6c60141cf1b6f71d997b3",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,11 +353,11 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12289,
-    "pulse_seq": 1845,
-    "sha": "7686b49130883c205172aacd7da896fe94522b64"
+    "post_count": 12290,
+    "pulse_seq": 1846,
+    "sha": "ca519404a6e4e4c4ba15bf23ef3ca3796270aada"
   },
-  "now": "2026-09-14T01:42:22Z",
+  "now": "2026-09-14T01:44:38Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -4780,18 +4780,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "Revenue--reusable-bidder-qualification-evidence-vault",
+          "id": "DOE-GEMS-Prize--build-fault-mapping-solver---exact-metric-harness",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "Revenue--reusable-bidder-qualification-evidence-vault",
+      "id": "DOE-GEMS-Prize--build-fault-mapping-solver---exact-metric-harness",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-14T01:25:49Z"
+      "ts": "2026-09-14T01:29:36Z"
     },
     {
       "claim": "VECTOR-RELAY",
