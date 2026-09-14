@@ -44,13 +44,17 @@ The active pointer is:
 
 Authority, ledger, and ledger-head records are HMAC-SHA256 authenticated. The organization scope and route scopes are opaque SHA-256 commitments; retained records contain no raw organization name, domain, email address, contact name, message body, or provider credential.
 
+The authenticated authority policy includes `ledger_max_age_seconds`. `ledger.updated_at` is the retained coverage watermark: a publisher must advance it only after the event projection is complete through that time, including quiet synchronization cycles where no new contact event appeared. Readers fail closed when that signed coverage watermark is older than the policy bound. This prevents an old-but-authentic quiet ledger from authorizing READY merely because its authority has not expired.
+
 ### Rollback-resistant currentness
 
-The mutable ledger is accepted only when it exactly matches the highest checkpoint in the active verifier-and-policy epoch by generation, SHA-256, and `updated_at`.
+The mutable ledger is accepted only when it exactly matches the highest checkpoint in the active verifier-and-policy epoch by event generation, event-state identity, SHA-256, and coverage `updated_at`.
 
 - restoring an older authentic ledger below a retained higher head fails closed;
 - a ledger newer than the committed head fails closed;
-- two active-epoch checkpoints with the same generation and different ledger identities are a fork and fail closed;
+- two active-epoch checkpoints with the same event generation but different event-state identities are a fork and fail closed;
+- a quiet synchronization cycle may append a newer checkpoint at the same event generation only when the event-state identity is byte-identical; this advances authenticated coverage without fabricating a contact event;
+- the live ledger must match the newest coverage checkpoint for the highest event generation, so replaying an older same-state heartbeat fails closed;
 - verifier-key rotation requires a fresh checkpoint under the new active key/verifier epoch;
 - policy-generation rotation requires a fresh checkpoint and does not misclassify an unchanged event-count generation as a fork;
 - restoring an older authentic policy generation below a retained active-verifier policy floor fails closed;
@@ -85,7 +89,7 @@ A release resolves active work; it does **not** erase the authenticated cooldown
 - `HOLD_AUTHORITY`
 - `HOLD_CONFLICT`
 
-Positive READY receipts have short, authenticated validity and are rechecked against the live authority, ledger generation, ledger digest, and retained ledger head. HOLD receipts remain historically verifiable after later generations move.
+Positive READY receipts have short, authenticated validity and are rechecked against the live authority, ledger generation, ledger digest, retained ledger head, and policy-bounded ledger coverage freshness. HOLD receipts remain historically verifiable after later generations move.
 
 ## CLI
 
@@ -105,4 +109,4 @@ The CLI owns current UTC. There is deliberately no `--now`, `--key`, `--authorit
 
 ## Authority ceiling
 
-No Gmail, Slack, customer, procurement portal, calendar, payment, wallet, or other provider is called. A READY receipt does not prove exclusive organization ownership, buyer interest, scope acceptance, award, payment, cash, booked revenue, or recognized revenue. It proves only that retained pressure evidence and its current-head checkpoint were coherent enough to request the separately atomic organization lease and the other named downstream controls. Rollback resistance depends on the host retaining newer checkpoint entries independently; a whole-authority-root snapshot rollback that removes both the ledger change and its higher heads is a deployment-retention failure this reader cannot detect.
+No Gmail, Slack, customer, procurement portal, calendar, payment, wallet, or other provider is called. A READY receipt does not prove exclusive organization ownership, buyer interest, scope acceptance, award, payment, cash, booked revenue, or recognized revenue. It proves only that retained pressure evidence, its freshness watermark, and its current-head checkpoint were coherent enough to request the separately atomic organization lease and the other named downstream controls. Rollback resistance depends on the host retaining newer checkpoint entries independently; a whole-authority-root snapshot rollback that removes both the ledger change and its higher heads is a deployment-retention failure this reader cannot detect.
