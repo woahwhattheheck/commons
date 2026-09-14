@@ -27,6 +27,16 @@ GIT_SOURCE_KEYS = {
 }
 CAPSULE_BASE_KEYS = {"path", "mode", "blob_sha", "content_sha256", "bytes", "text_included"}
 CAPSULE_OMISSION_REASONS = {"FILE_TOO_LARGE", "NON_UTF8", "NON_TEXT_CONTROL", "PACKET_BUDGET"}
+GIT_REPOSITORY_REDIRECT_ENV = {
+    "GIT_DIR",
+    "GIT_COMMON_DIR",
+    "GIT_WORK_TREE",
+    "GIT_OBJECT_DIRECTORY",
+    "GIT_ALTERNATE_OBJECT_DIRECTORIES",
+    "GIT_NAMESPACE",
+    "GIT_INDEX_FILE",
+    "GIT_SHALLOW_FILE",
+}
 
 
 class GitSourceError(ValueError):
@@ -34,10 +44,14 @@ class GitSourceError(ValueError):
 
 
 def _git_env() -> dict[str, str]:
-    """Return a controlled Git environment with replacement objects disabled."""
+    """Return an exact-repository Git environment with replacement objects disabled."""
     env = os.environ.copy()
-    # refs/replace/* must never be allowed to change the object graph beneath an
-    # exact 40-hex identity. Overwrite any inherited value rather than trusting it.
+    # ``git -C repo`` does not override inherited repository-routing variables such
+    # as GIT_DIR. Remove every repository/object-store redirect so the explicit
+    # repository argument is the authority boundary, then independently disable
+    # refs/replace object substitution.
+    for key in GIT_REPOSITORY_REDIRECT_ENV:
+        env.pop(key, None)
     env["GIT_NO_REPLACE_OBJECTS"] = "1"
     return env
 
