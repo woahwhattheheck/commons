@@ -64,6 +64,10 @@ class AuditTests(unittest.TestCase):
   with self.assertRaisesRegex(ForensicsError,'contradictory duplicate provider event'): audit_document(doc(record(rid='a',event='same'),record(rid='b',event='same',send_kwargs={'when':'2026-09-14T01:21:00Z'})))
  def test_distinct_events_same_seam_are_incident(self):
   o=audit_document(doc(record(rid='a',event='e1'),record(rid='b',event='e2'))); self.assertEqual(o['summary']['duplicate_seams'],1); self.assertEqual(o['summary']['duplicate_send_records'],2); self.assertTrue(all(x['batch_flags']==[DUPLICATE_FLAG] for x in o['receipts']))
+ def test_untrusted_send_cannot_mint_or_contaminate_duplicate_incident(self):
+  a=record(rid='authoritative',event='e1'); c=record(rid='caller',event='e2',send_kwargs={'authority':'caller-assertion'}); u=record(rid='ambiguous',event='e3',send_kwargs={'status':'ambiguous'})
+  o=audit_document(doc(a,c,u)); self.assertEqual(o['summary']['duplicate_seams'],0); self.assertEqual(o['summary']['duplicate_send_records'],0); self.assertTrue(all(x['batch_flags']==[] and x['same_seam_send_count']==1 for x in o['receipts']))
+  b=record(rid='authoritative-2',event='e4'); o=audit_document(doc(a,b,c)); rows={x['record_id']:x for x in o['receipts']}; self.assertEqual(o['summary']['duplicate_seams'],1); self.assertEqual(o['summary']['duplicate_send_records'],2); self.assertEqual(rows['authoritative']['same_seam_send_count'],2); self.assertEqual(rows['authoritative-2']['same_seam_send_count'],2); self.assertEqual(rows['caller']['batch_flags'],[]); self.assertEqual(rows['caller']['same_seam_send_count'],1)
  def test_order_independent_and_deterministic(self):
   a=record(rid='a',event='e1'); b=record(rid='b',event='e2'); x=audit_document(doc(a,b)); y=audit_document(doc(b,a)); self.assertEqual(x['batch_sha256'],y['batch_sha256']); self.assertEqual(x['receipts'],y['receipts']); self.assertEqual(x,audit_document(doc(a,b)))
  def test_seam_normalization_uses_landed_compiler(self):
