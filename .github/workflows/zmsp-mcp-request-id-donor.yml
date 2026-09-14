@@ -1,0 +1,47 @@
+name: ZMSP MCP RequestId donor repair
+
+on:
+  push:
+    branches:
+      - zmsp/mcp-request-id-domain-20260914
+
+permissions:
+  contents: write
+
+jobs:
+  apply-test-commit:
+    if: ${{ !contains(github.event.head_commit.message, '[zmsp applied]') }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: zmsp/mcp-request-id-domain-20260914
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Prove exact parent and apply donor patch
+        run: |
+          git merge-base --is-ancestor ebf95fdc8fe223e14d9f2fc51ab71916cead16dd HEAD
+          git apply --check .github/patches/zmsp-mcp-request-id-domain.patch
+          git apply .github/patches/zmsp-mcp-request-id-domain.patch
+      - name: Compile
+        run: python -m py_compile tools/mcp_transcript_audit/*.py test_mcp_transcript_audit.py test_mcp_transcript_audit_cli_bounds.py test_mcp_transcript_audit_numeric_parser.py
+      - name: Unit and hostile tests
+        run: python -m unittest -v test_mcp_transcript_audit.py test_mcp_transcript_audit_cli_bounds.py test_mcp_transcript_audit_numeric_parser.py
+      - name: Optimized-mode hostile tests
+        run: python -O -m unittest -v test_mcp_transcript_audit.py test_mcp_transcript_audit_cli_bounds.py test_mcp_transcript_audit_numeric_parser.py
+      - name: Example audit and independent verification
+        run: |
+          tmpdir="$(mktemp -d)"
+          python -m tools.mcp_transcript_audit.cli audit tools/mcp_transcript_audit/example_session.jsonl -o "$tmpdir/receipt.json"
+          python -m tools.mcp_transcript_audit.cli verify tools/mcp_transcript_audit/example_session.jsonl "$tmpdir/receipt.json"
+      - name: Commit exact tested repair only
+        run: |
+          git config user.name "Z-Mainspring"
+          git config user.email "tokenjunkielabs@gmail.com"
+          git add tools/mcp_transcript_audit/audit.py tools/mcp_transcript_audit/README.md test_mcp_transcript_audit.py
+          git diff --cached --check
+          git commit -m "fix(mcp): enforce integer RequestIds [zmsp applied]"
+          git push origin HEAD:zmsp/mcp-request-id-domain-20260914
