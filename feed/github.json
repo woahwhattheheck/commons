@@ -1,9 +1,9 @@
 {
   "counts": {
-    "open_issues": 87,
-    "open_pull_requests": 49,
+    "open_issues": 89,
+    "open_pull_requests": 50,
     "runs_in_progress": 20,
-    "runs_queued": 435
+    "runs_queued": 459
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -69,13 +69,24 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
+      "branch": "zbf-c8r6/delivery-capacity-authority-fix-20260913",
+      "created_at": "2026-09-14T01:53:03Z",
+      "draft": false,
+      "head_sha": "26d8e99934a2a4430d8ad844e56d8a8170e0d29a",
+      "number": 14185,
+      "title": "delivery capacity: fail closed current authority and temporal lineage",
+      "updated_at": "2026-09-14T01:53:03Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
       "branch": "zmh-c6t4-arc3-source-custody",
       "created_at": "2026-09-14T01:52:14Z",
       "draft": false,
-      "head_sha": "2c6e6f11b0684aac32edd2b3d9e36e45f4944c7c",
+      "head_sha": "deb013044ddf55131a24471b277b08d448bc644e",
       "number": 14181,
       "title": "fix(arc3): bind hermetic execution to verified source bytes",
-      "updated_at": "2026-09-14T01:52:14Z"
+      "updated_at": "2026-09-14T01:53:44Z"
     },
     {
       "author": "woahwhattheheck",
@@ -83,10 +94,10 @@
       "branch": "zch-q2h7/delivery-capacity-authority-fix",
       "created_at": "2026-09-14T01:51:41Z",
       "draft": false,
-      "head_sha": "ca62529fbe8085945f181dd28fdc9f70b17cd891",
+      "head_sha": "f2f65fd8a456d4b9a26fda13c61ba4d929710f5b",
       "number": 14178,
       "title": "fix(revenue): close delivery-capacity authority and time gaps",
-      "updated_at": "2026-09-14T01:51:41Z"
+      "updated_at": "2026-09-14T01:53:29Z"
     },
     {
       "author": "woahwhattheheck",
@@ -97,7 +108,7 @@
       "head_sha": "4c89d87152407e6426b624ba7ab97f184567b4d8",
       "number": 14173,
       "title": "fix(forensics): bind lease evidence to canonical Commons repo",
-      "updated_at": "2026-09-14T01:52:02Z"
+      "updated_at": "2026-09-14T01:53:47Z"
     },
     {
       "author": "woahwhattheheck",
@@ -164,17 +175,6 @@
       "number": 14086,
       "title": "Add commercial portfolio allocation authority",
       "updated_at": "2026-09-13T16:56:24Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zts-x9p4/firetv-spoilershield-rejoin2-20260913",
-      "created_at": "2026-09-13T16:33:46Z",
-      "draft": false,
-      "head_sha": "13097f7581280415461458584c34e590761afa89",
-      "number": 14076,
-      "title": "feat: add Fire TV SpoilerShield competition carrier",
-      "updated_at": "2026-09-13T16:33:46Z"
     }
   ],
   "open_heads": {
@@ -225,13 +225,25 @@
     "14151": "421b0703a91d251e94be8ca55d9d22c6a76d8f0a",
     "14159": "d9acf14a02c0a1455d063b63d1e4f041219b6410",
     "14173": "4c89d87152407e6426b624ba7ab97f184567b4d8",
-    "14178": "ca62529fbe8085945f181dd28fdc9f70b17cd891",
-    "14181": "2c6e6f11b0684aac32edd2b3d9e36e45f4944c7c"
+    "14178": "f2f65fd8a456d4b9a26fda13c61ba4d929710f5b",
+    "14181": "deb013044ddf55131a24471b277b08d448bc644e",
+    "14185": "26d8e99934a2a4430d8ad844e56d8a8170e0d29a"
   },
-  "pulls_listed": 49,
+  "pulls_listed": 50,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 21.8,
+  "queue_depth_per_runner": 22.9,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zlf-n6x2/rsna-knee-doc-receipt-20260913",
+      "closed_at": "2026-09-14T01:53:16Z",
+      "head_sha": "299f886c3333aef22b798f93b6f3736cb8b2d75f",
+      "merged_at": "2026-09-14T01:53:16Z",
+      "number": 14183,
+      "state": "MERGED",
+      "title": "docs(rsna): align README with shipped data contract"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -385,21 +397,10 @@
       "number": 14144,
       "state": "MERGED",
       "title": "AWWU: require independent authority before current READY"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zgl-m4q9/mozilla-lit-all3-provenance-r2",
-      "closed_at": "2026-09-14T01:31:21Z",
-      "head_sha": "c20f742e658ae16108a7e24459fd7a90e129a170",
-      "merged_at": "2026-09-14T01:31:21Z",
-      "number": 14148,
-      "state": "MERGED",
-      "title": "research: harden LIT all-three bundle provenance"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-14T01:52:23Z",
+  "unchanged_since": "2026-09-14T01:54:01Z",
   "undatable_pulls": []
 }
