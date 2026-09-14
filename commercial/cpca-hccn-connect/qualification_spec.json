@@ -30,23 +30,51 @@
     "artificial_intelligence": {
       "emerging": true,
       "packet_page": 5,
-      "topics": ["AI Governance", "AI Vendor Evaluation", "AI Use Case Education", "AI Implementation"]
+      "topics": ["AI Governance", "AI Vendor Evaluation", "AI Use Case Education", "AI Implementation"],
+      "comparable_rule": {
+        "kind": "emerging",
+        "recent_completed_min": 1,
+        "recent_window_years": 2,
+        "total_relevant_min": 2
+      }
     },
     "data_management_and_analytics": {
       "emerging": false,
-      "packet_pages": [4, 5]
+      "packet_pages": [4, 5],
+      "comparable_rule": {
+        "kind": "established",
+        "completed_min": 3,
+        "lookback_years": 3
+      }
     },
     "data_sharing_and_interoperability": {
       "emerging": true,
-      "packet_page": 5
+      "packet_page": 5,
+      "comparable_rule": {
+        "kind": "emerging",
+        "recent_completed_min": 1,
+        "recent_window_years": 2,
+        "total_relevant_min": 2
+      }
     },
     "uds_plus_implementation": {
       "emerging": true,
-      "packet_page": 5
+      "packet_page": 5,
+      "comparable_rule": {
+        "kind": "emerging",
+        "recent_completed_min": 1,
+        "recent_window_years": 2,
+        "total_relevant_min": 2
+      }
     },
     "value_based_care": {
       "emerging": false,
-      "packet_page": 5
+      "packet_page": 5,
+      "comparable_rule": {
+        "kind": "established",
+        "completed_min": 3,
+        "lookback_years": 3
+      }
     }
   },
   "mandatory_direct_prime_gates": [

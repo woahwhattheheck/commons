@@ -16,6 +16,8 @@ from typing import Any, Dict, Iterable, List
 ALLOWED_GATE_STATUS = {"PROVEN", "PARTNER_CURABLE", "MISSING", "HOLD", "NOT_APPLICABLE"}
 FINAL_STATES = {"PRIME_READY", "TEAMING_READY", "HOLD", "NO_BID"}
 DERIVED_SOURCE_GATES = {"client_references", "recent_domain_engagements", "safety_net_experience"}
+COMPLETED_STATES = {"COMPLETED", "SUBSTANTIALLY_COMPLETED"}
+RELEVANT_ENGAGEMENT_STATES = COMPLETED_STATES | {"ACTIVE", "PILOT"}
 
 
 def _load(path: Path) -> Dict[str, Any]:
@@ -77,32 +79,139 @@ def _validate_proven_gate_sources(status: Dict[str, str], evidence: Dict[str, An
             raise ValueError(f"{gate_id} cannot be PROVEN without >=1 bound source")
 
 
-def _derive_count_gates(status: Dict[str, str], evidence: Dict[str, Any], domain_meta: Dict[str, Any]) -> None:
+def _reference_identity(row: Dict[str, Any]) -> str | None:
+    for key in ("reference_id", "name"):
+        value = row.get(key)
+        if isinstance(value, str) and value.strip():
+            return value.strip()
+    return None
+
+
+def _engagement_domains(row: Dict[str, Any]) -> set[str]:
+    raw = row.get("domains", [])
+    if isinstance(raw, str):
+        raw = [raw]
+    if not isinstance(raw, list):
+        return set()
+    return {str(x) for x in raw if isinstance(x, str) and x.strip()}
+
+
+def _engagement_date(row: Dict[str, Any]) -> dt.date | None:
+    raw = row.get("completed_at", row.get("end_date"))
+    if not isinstance(raw, str):
+        return None
+    try:
+        return dt.date.fromisoformat(raw)
+    except ValueError:
+        return None
+
+
+def _years_ago(day: dt.date, years: int) -> dt.date:
+    try:
+        return day.replace(year=day.year - years)
+    except ValueError:
+        # February 29 -> February 28 in a non-leap target year.
+        return day.replace(year=day.year - years, day=28)
+
+
+def _engagement_identity(row: Dict[str, Any]) -> str | None:
+    for key in ("engagement_id", "source"):
+        value = row.get(key)
+        if isinstance(value, str) and value.strip():
+            return value.strip()
+    return None
+
+
+def _derive_count_gates(
+    status: Dict[str, str],
+    evidence: Dict[str, Any],
+    domain: str,
+    domain_meta: Dict[str, Any],
+    now: dt.datetime,
+) -> None:
     refs = evidence.get("client_references", [])
-    if len(refs) >= 3 and all(isinstance(x, dict) and x.get("source") for x in refs):
+    if not isinstance(refs, list):
+        raise ValueError("client_references must be a list")
+    reference_ids = {
+        identity
+        for row in refs
+        if isinstance(row, dict) and row.get("source") and (identity := _reference_identity(row))
+    }
+    if len(reference_ids) >= 3:
         status["client_references"] = "PROVEN"
     elif status.get("client_references") == "PROVEN":
-        raise ValueError("client_references cannot be PROVEN without >=3 source-bound references")
+        raise ValueError("client_references cannot be PROVEN without >=3 distinct source-bound references")
 
     engagements = evidence.get("comparable_engagements", [])
     if not isinstance(engagements, list):
         raise ValueError("comparable_engagements must be a list")
-    completed = sum(1 for e in engagements if e.get("state") in {"COMPLETED", "SUBSTANTIALLY_COMPLETED"})
-    total = len(engagements)
-    if domain_meta.get("emerging"):
-        recent_ok = completed >= 1 and total >= 2
+    relevant_by_id: Dict[str, Dict[str, Any]] = {}
+    for row in engagements:
+        if (
+            not isinstance(row, dict)
+            or not row.get("source")
+            or domain not in _engagement_domains(row)
+            or row.get("state") not in RELEVANT_ENGAGEMENT_STATES
+        ):
+            continue
+        identity = _engagement_identity(row)
+        if identity is None:
+            continue
+        if identity in relevant_by_id:
+            raise ValueError(f"duplicate comparable engagement identity: {identity}")
+        relevant_by_id[identity] = row
+    relevant = list(relevant_by_id.values())
+
+    rule = domain_meta.get("comparable_rule")
+    if not isinstance(rule, dict):
+        raise ValueError(f"domain {domain!r} missing comparable_rule")
+    kind = rule.get("kind")
+    today = now.astimezone(dt.timezone.utc).date()
+    if kind == "emerging":
+        window_years = rule.get("recent_window_years")
+        recent_min = rule.get("recent_completed_min")
+        total_min = rule.get("total_relevant_min")
+        if not all(isinstance(x, int) and x > 0 for x in (window_years, recent_min, total_min)):
+            raise ValueError(f"domain {domain!r} has malformed emerging comparable_rule")
+        cutoff = _years_ago(today, window_years)
+        recent_completed = [
+            row
+            for row in relevant
+            if row.get("state") in COMPLETED_STATES
+            and (ended := _engagement_date(row)) is not None
+            and cutoff <= ended <= today
+        ]
+        recent_ok = len(recent_completed) >= recent_min and len(relevant) >= total_min
+    elif kind == "established":
+        window_years = rule.get("lookback_years")
+        completed_min = rule.get("completed_min")
+        if not all(isinstance(x, int) and x > 0 for x in (window_years, completed_min)):
+            raise ValueError(f"domain {domain!r} has malformed established comparable_rule")
+        cutoff = _years_ago(today, window_years)
+        completed_only = [
+            row
+            for row in relevant
+            if row.get("state") == "COMPLETED"
+            and (ended := _engagement_date(row)) is not None
+            and cutoff <= ended <= today
+        ]
+        recent_ok = len(completed_only) >= completed_min
     else:
-        recent_ok = completed >= 3
-    if recent_ok and all(e.get("source") for e in engagements):
+        raise ValueError(f"domain {domain!r} has unsupported comparable_rule kind {kind!r}")
+    if recent_ok:
         status["recent_domain_engagements"] = "PROVEN"
     elif status.get("recent_domain_engagements") == "PROVEN":
-        raise ValueError("recent_domain_engagements cannot be PROVEN without source-bound minimum counts")
+        raise ValueError(
+            "recent_domain_engagements cannot be PROVEN without selected-domain, source-bound minimum counts inside the buyer lookback window"
+        )
 
-    safety_net = [e for e in engagements if e.get("safety_net_primary_care") is True and e.get("source")]
+    safety_net = [row for row in relevant if row.get("safety_net_primary_care") is True]
     if safety_net:
         status["safety_net_experience"] = "PROVEN"
     elif status.get("safety_net_experience") == "PROVEN":
-        raise ValueError("safety_net_experience cannot be PROVEN without a source-bound comparable engagement")
+        raise ValueError(
+            "safety_net_experience cannot be PROVEN without a selected-domain, source-bound safety-net comparable engagement"
+        )
 
 
 def evaluate(spec: Dict[str, Any], evidence: Dict[str, Any]) -> Dict[str, Any]:
@@ -127,7 +236,7 @@ def evaluate(spec: Dict[str, Any], evidence: Dict[str, Any]) -> Dict[str, Any]:
         }
 
     status = _status_map(evidence)
-    _derive_count_gates(status, evidence, spec["domains"][domain])
+    _derive_count_gates(status, evidence, domain, spec["domains"][domain], now)
     _validate_proven_gate_sources(status, evidence)
     required_ids = _required_gate_ids(spec, service_type)
     normalized = {gid: status.get(gid, "MISSING") for gid in required_ids}
