@@ -1,0 +1,53 @@
+name: DCSA Innovation Call 01 carrier
+
+on:
+  pull_request:
+    paths:
+      - "revenue/dcsa_innovation_call_01/**"
+      - ".github/workflows/dcsa-innovation-call-01.yml"
+  push:
+    paths:
+      - "revenue/dcsa_innovation_call_01/**"
+      - ".github/workflows/dcsa-innovation-call-01.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  carrier:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.11", "3.13"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Compile exact source
+        run: |
+          python -m py_compile revenue/dcsa_innovation_call_01/*.py
+      - name: Test normal Python
+        run: |
+          python -m unittest -v revenue.dcsa_innovation_call_01.test_gate
+      - name: Test optimized Python
+        run: |
+          python -O -m unittest -v revenue.dcsa_innovation_call_01.test_gate
+      - name: Verify checked-in historical receipt
+        run: |
+          python -m revenue.dcsa_innovation_call_01 verify-historical \
+            --candidate revenue/dcsa_innovation_call_01/candidate.example.json \
+            --source revenue/dcsa_innovation_call_01/source_ledger.json \
+            --authority revenue/dcsa_innovation_call_01/authority.example.json \
+            --floor revenue/dcsa_innovation_call_01/authority-floor.example.json \
+            --as-of 2026-09-14T04:45:00Z \
+            --report revenue/dcsa_innovation_call_01/historical_report.example.json
+      - name: Regenerate deterministic acceptance matrix
+        run: |
+          tmp="$(mktemp -d)"
+          python -m revenue.dcsa_innovation_call_01 render-acceptance \
+            --json-output "$tmp/acceptance.json" \
+            --markdown-output "$tmp/ACCEPTANCE.md"
+          cmp "$tmp/acceptance.json" revenue/dcsa_innovation_call_01/acceptance_matrix.json
+          cmp "$tmp/ACCEPTANCE.md" revenue/dcsa_innovation_call_01/ACCEPTANCE.md
