@@ -1,0 +1,56 @@
+{
+  "schema": "tjlabs.ttuhsc-739-sl3821039-submission-manifest/v1",
+  "solicitation": "739-SL3821039",
+  "deadline": {"utc": "2026-09-21T21:30:00Z", "buyer_local": "2026-09-21 16:30 Central Time"},
+  "submission_routes": {
+    "preferred": "TechBid",
+    "public_portal": "https://bids.sciquest.com/apps/Router/PublicEvent?CustomerOrg=TexasTech",
+    "alternate": "Mail/carrier per current RFP; printed original plus archival USB requirements apply"
+  },
+  "required_components": [
+    {"name":"Complete proposal","status":"DRAFT_REQUIRED"},
+    {"name":"Execution of Offer / authorized signature or valid TechBid bidder affirmation","status":"AUTHORIZED_HUMAN_REQUIRED"},
+    {"name":"VetHUB Subcontracting Plan","status":"OWNER_OR_TEAM_INPUT_REQUIRED"},
+    {"name":"Addenda Checklist covering every current addendum","status":"CURRENT_BUYER_GENERATION_REQUIRED"},
+    {"name":"Section 5 Specifications / Scope response","status":"DRAFTED_INTERNAL"},
+    {"name":"Exhibit A Scope of Work","status":"DRAFT_REQUIRED"},
+    {"name":"Project schedule","status":"REAL_CAPACITY_INPUT_REQUIRED"},
+    {"name":"At least 3 current/recent similar references with reachable contacts","status":"REAL_EVIDENCE_REQUIRED"},
+    {"name":"Named project team / subconsultants / qualifications / time commitments","status":"REAL_PERSONNEL_REQUIRED"},
+    {"name":"Signed Pricing Schedule","status":"AUTHORIZED_HUMAN_REQUIRED"},
+    {"name":"NTE fixed fee per deliverable with LOE schedule","status":"OWNER_PRICE_REQUIRED"},
+    {"name":"Hourly resource rate card valid through 2027-08-31","status":"OWNER_PRICE_REQUIRED"},
+    {"name":"90-day proposal validity statement","status":"OWNER_COMMITMENT_REQUIRED"},
+    {"name":"Contract exceptions list if any","status":"LEGAL_REVIEW_REQUIRED"},
+    {"name":"Texas Comptroller / franchise tax evidence where applicable","status":"ENTITY_EVIDENCE_REQUIRED"},
+    {"name":"TX-RAMP applicability/status evidence","status":"SECURITY_ENTITY_EVIDENCE_REQUIRED"},
+    {"name":"Insurance / required certifications and licenses evidence","status":"ENTITY_EVIDENCE_REQUIRED"},
+    {"name":"NDAA 889 / 1260H / foreign-adversary certifications","status":"AUTHORIZED_HUMAN_REVIEW_REQUIRED"}
+  ],
+  "security_acceptance": {
+    "ferpa_hipaa_dir_boundary_reviewed": false,
+    "institutional_data_no_training_rule_bound": true,
+    "rbac_design_required": true,
+    "sso_design_required": true,
+    "tls_1_3_required": true,
+    "aes_256_at_rest_required": true,
+    "baa_applicability_resolved": false,
+    "unsupported_compliance_claims_permitted": false
+  },
+  "commercial": {
+    "payment_terms": "Net 30",
+    "final_nte_price_present": false,
+    "level_of_effort_schedule_present": false,
+    "rate_card_through_2027_08_31_present": false,
+    "travel_and_associated_fees_included": false,
+    "final_price_owner_approved": false
+  },
+  "source_truth": {
+    "first_party_event_observed_open": true,
+    "first_party_packet_bytes_retained": false,
+    "all_addenda_retained": false,
+    "secondary_mirror_used_for_requirement_extraction": true,
+    "submission_ready": false
+  },
+  "external_submission_authorized": false
+}
