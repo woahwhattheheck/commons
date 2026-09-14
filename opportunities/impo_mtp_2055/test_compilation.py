@@ -3,25 +3,47 @@
 import copy
 import json
 import unittest
+from datetime import datetime, timezone
 
-from .engine import compile_packet
+from .engine import (
+    CURRENT_PROCESS_UTC,
+    HISTORICAL_INTEGRITY_ONLY,
+    compile_current,
+    compile_packet,
+)
+from .schema import OpportunityInputError
 from .test_support import load_owner_fixture, ready_fixture
+
 
 class CompilationTests(unittest.TestCase):
     def test_owner_fixture_is_source_hold(self) -> None:
         receipt, _ = compile_packet(load_owner_fixture())
         self.assertEqual(receipt["status"], "SOURCE_HOLD")
         self.assertFalse(receipt["submission_ready"])
+        self.assertEqual(receipt["evaluation_mode"], HISTORICAL_INTEGRITY_ONLY)
 
     def test_ready_evidence_without_authority_is_owner_review_ready(self) -> None:
         receipt, _ = compile_packet(ready_fixture())
         self.assertEqual(receipt["status"], "OWNER_REVIEW_READY")
         self.assertFalse(receipt["submission_ready"])
+        self.assertEqual(receipt["evidence_authority"], "CANDIDATE_ASSERTIONS_ONLY")
+        self.assertFalse(receipt["external_authority_authenticated"])
 
-    def test_explicit_owner_authority_can_make_submission_ready(self) -> None:
-        receipt, _ = compile_packet(ready_fixture(authority=True))
-        self.assertEqual(receipt["status"], "SUBMISSION_READY")
-        self.assertTrue(receipt["submission_ready"])
+    def test_candidate_cannot_self_mint_external_authority(self) -> None:
+        with self.assertRaises(OpportunityInputError):
+            compile_packet(ready_fixture(authority=True))
+
+    def test_current_compile_owns_process_utc(self) -> None:
+        value = ready_fixture()
+        value["as_of"] = "2026-01-01T00:00:00+00:00"
+        before = datetime.now(timezone.utc)
+        receipt, _ = compile_current(value)
+        after = datetime.now(timezone.utc)
+        observed = datetime.fromisoformat(receipt["as_of"]).astimezone(timezone.utc)
+        self.assertLessEqual(before, observed)
+        self.assertLessEqual(observed, after)
+        self.assertEqual(receipt["evaluation_mode"], CURRENT_PROCESS_UTC)
+        self.assertFalse(receipt["submission_ready"])
 
     def test_missing_qualification_is_qualification_hold(self) -> None:
         value = ready_fixture()
@@ -95,12 +117,14 @@ class CompilationTests(unittest.TestCase):
         receipt, _ = compile_packet(value)
         self.assertEqual(receipt["status"], "SOURCE_HOLD")
 
-    def test_expired_deadline_blocks(self) -> None:
-        value = ready_fixture(authority=True)
+    def test_expired_deadline_blocks_historical_replay(self) -> None:
+        value = ready_fixture()
         value["as_of"] = "2026-10-06T17:00:00-04:00"
         value["source_checks"]["last_checked_at"] = value["as_of"]
         receipt, _ = compile_packet(value)
         self.assertEqual(receipt["status"], "SOURCE_HOLD")
+        self.assertEqual(receipt["evaluation_mode"], HISTORICAL_INTEGRITY_ONLY)
+        self.assertFalse(receipt["submission_ready"])
 
     def test_impo_project_does_not_count(self) -> None:
         value = ready_fixture()
@@ -212,3 +236,5 @@ class CompilationTests(unittest.TestCase):
         self.assertIn("\\`code\\`", markdown)
 
 
+if __name__ == "__main__":
+    unittest.main()
