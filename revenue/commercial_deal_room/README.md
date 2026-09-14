@@ -15,6 +15,8 @@ It deliberately separates facts that fleets commonly collapse:
 
 A packet binds one `buyer_id + opportunity_id + offer_id` to immutable offer terms and append-only evidence events. Every event repeats the full identity, source reference and source digest. Exact event-ID replay collapses; changed same-ID payloads HOLD. Provider message IDs cannot be reused across different facts. Buyer replies must reference earlier outbound evidence and occur later. Proposals are revisioned and acceptance binds the latest proposal digest. Payment requests bind the active payment route and accepted offer. Settlement/reversal evidence is reconciled in exact integer minor currency units. Fulfillment send/acceptance must bind a specific artifact event.
 
+Message-bearing evidence uses a closed canonical provider vocabulary: `devpost`, `gmail`, `github`, `slack`, and `web-form`. Provider aliases and unreviewed spellings such as `googlemail` or `gmail-api` are rejected before lifecycle compilation. A trusted adapter may map its own provider-specific aliases to one canonical ID before packet construction; Deal Room never guesses an alias because the provider ID participates in external-message identity. This prevents one durable provider message from being interpreted as multiple independent facts by changing only the caller spelling.
+
 Current-time evaluation is process-owned by the CLI. `verify` first proves historical board bytes at their recorded evaluation time, then recompiles current state; an old OFFER_READY board cannot silently remain current after expiration.
 
 ## Stages / owner-review actions
@@ -42,7 +44,7 @@ No action is an external-action authorization. They are owner-review queue label
 
 ## Truth / authority ceiling
 
-This package is intentionally **not** a provider-authentication primitive. A SHA-256 digest proves byte identity, not that Gmail, Stripe, a buyer, a bank, or any other actor actually produced those bytes. Integrations must acquire external evidence through a separately trusted provider path. The compiler and receipt verifier do not authorize email/Slack sends, payment/wallet mutations, deployment, contract acceptance, or accounting revenue recognition.
+This package is intentionally **not** a provider-authentication primitive. A SHA-256 digest proves byte identity, not that Gmail, Stripe, a buyer, a bank, or any other actor actually produced those bytes. Integrations must acquire external evidence through a separately trusted provider path. Provider canonicalization closes only the identity-alias seam; it does not authenticate the underlying evidence. The compiler and receipt verifier do not authorize email/Slack sends, payment/wallet mutations, deployment, contract acceptance, or accounting revenue recognition.
 
 `CLOSED_SETTLED` means: the supplied lifecycle evidence contains explicit buyer acceptance, qualifying settlement evidence, fulfillment send evidence, and explicit buyer fulfillment acceptance with no active hold. It still does not mean GAAP/IFRS revenue recognition.
 
@@ -54,12 +56,12 @@ python -m revenue.commercial_deal_room.cli compile deal.json --format markdown
 python -m revenue.commercial_deal_room.cli verify deal.json board.json
 ```
 
-Ingress rejects duplicate JSON keys, non-regular final files, oversized inputs, and final-component symlinks where `O_NOFOLLOW` is available. The engine rejects unknown keys and unsupported event shapes.
+Ingress rejects duplicate JSON keys, non-regular final files, oversized inputs, and final-component symlinks where `O_NOFOLLOW` is available. The public package API and CLI route through the canonical-provider guard; the core engine continues to reject unknown keys and unsupported event shapes.
 
 ## Validation
 
 ```bash
-python -m unittest revenue.commercial_deal_room.test_engine revenue.commercial_deal_room.test_cli
-python -O -m unittest revenue.commercial_deal_room.test_engine revenue.commercial_deal_room.test_cli
+python -m unittest revenue.commercial_deal_room.test_engine revenue.commercial_deal_room.test_guarded revenue.commercial_deal_room.test_cli
+python -O -m unittest revenue.commercial_deal_room.test_engine revenue.commercial_deal_room.test_guarded revenue.commercial_deal_room.test_cli
 python -m revenue.commercial_deal_room.acceptance
 ```
