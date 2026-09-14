@@ -30,6 +30,7 @@ jobs:
         run: >-
           python -m py_compile
           coordination/connector_preflight/core.py
+          coordination/connector_preflight/latest.py
           coordination/connector_preflight/cli.py
           coordination/connector_preflight/test_preflight.py
           coordination/connector_preflight/test_latest.py
