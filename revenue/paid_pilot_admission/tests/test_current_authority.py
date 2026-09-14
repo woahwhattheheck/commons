@@ -58,6 +58,8 @@ class CurrentAuthorityTests(unittest.TestCase):
         packet, _ = fixture()
         current = evaluate_current(packet)
         self.assertEqual(current.status, READY)
+        self.assertEqual(current.receipt["evaluation_kind"], "CURRENT_AT_EVALUATION")
+        self.assertIs(current.receipt["historical_only_after_evaluation"], True)
         self.assertTrue(verify(packet, current.receipt))
         self.assertEqual(evaluate(packet).status, READY)
 
