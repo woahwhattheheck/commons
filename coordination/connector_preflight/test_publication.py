@@ -61,6 +61,24 @@ class PublicationCustodyTests(unittest.TestCase):
             self.assertEqual(foreign, path.read_bytes())
             self.assertTrue(displaced.exists())
 
+    def test_exception_path_never_unlinks_public_path(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "bundle.json"
+            real_unlink = publication.os.unlink
+            unlink_calls: list[str] = []
+
+            def record_unlink(target, *args, **kwargs):
+                unlink_calls.append(os.fspath(target))
+                return real_unlink(target, *args, **kwargs)
+
+            with patch.object(publication.os, "fsync", side_effect=OSError("synthetic fsync failure")):
+                with patch.object(publication.os, "unlink", side_effect=record_unlink):
+                    with self.assertRaisesRegex(PreflightError, "cannot publish output safely"):
+                        publication.write_json_exclusive(path, {"ok": True})
+
+            self.assertEqual([], unlink_calls)
+            self.assertTrue(path.exists())
+
 
 if __name__ == "__main__":
     unittest.main()
