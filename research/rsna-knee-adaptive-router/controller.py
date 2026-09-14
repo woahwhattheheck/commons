@@ -50,19 +50,51 @@ def canonical_bytes(value: Any) -> bytes:
     return json.dumps(value, sort_keys=True, separators=(",", ":"), ensure_ascii=False).encode()
 
 
-def receipt(kind: str, payload: Mapping[str, Any]) -> dict[str, Any]:
-    if not kind or not kind.replace("_", "").replace("-", "").isalnum():
+def _receipt_kind(kind: Any) -> str:
+    if type(kind) is not str or not kind or not kind.replace("_", "").replace("-", "").isalnum():
         raise ValueError("invalid receipt kind")
-    core = {"schema": SCHEMA, "kind": kind, "payload": payload}
+    return kind
+
+
+def _detached_payload(payload: Any) -> dict[str, Any]:
+    detached = json.loads(canonical_bytes(payload))
+    if type(detached) is not dict:
+        raise ValueError("receipt payload must be a JSON object")
+    return detached
+
+
+def receipt(kind: str, payload: Mapping[str, Any]) -> dict[str, Any]:
+    # The receipt owns a canonical detached payload snapshot. Mutating the caller's
+    # object after issuance cannot silently mutate the receipt in memory.
+    core = {"schema": SCHEMA, "kind": _receipt_kind(kind), "payload": _detached_payload(payload)}
     return {**core, "sha256": hashlib.sha256(canonical_bytes(core)).hexdigest()}
 
 
 def verify_receipt(value: Mapping[str, Any]) -> None:
+    """Verify internal receipt integrity only; this does not establish authority."""
     if set(value) != {"schema", "kind", "payload", "sha256"} or value["schema"] != SCHEMA:
         raise ValueError("receipt shape/schema mismatch")
-    core = {"schema": value["schema"], "kind": value["kind"], "payload": value["payload"]}
-    if hashlib.sha256(canonical_bytes(core)).hexdigest() != value["sha256"]:
+    kind = _receipt_kind(value["kind"])
+    digest = value["sha256"]
+    if type(digest) is not str or len(digest) != 64 or any(c not in "0123456789abcdef" for c in digest):
+        raise ValueError("receipt digest must be lowercase SHA-256")
+    core = {"schema": value["schema"], "kind": kind, "payload": _detached_payload(value["payload"])}
+    if hashlib.sha256(canonical_bytes(core)).hexdigest() != digest:
         raise ValueError("receipt digest mismatch")
+
+
+def verify_receipt_authoritative(
+    value: Mapping[str, Any], *, expected_sha256: str, expected_kind: str
+) -> None:
+    """Verify integrity plus an out-of-band retained digest and receipt context."""
+    if type(expected_sha256) is not str or len(expected_sha256) != 64 or any(c not in "0123456789abcdef" for c in expected_sha256):
+        raise ValueError("expected receipt digest must be lowercase SHA-256")
+    expected_kind = _receipt_kind(expected_kind)
+    verify_receipt(value)
+    if value["kind"] != expected_kind:
+        raise ValueError("receipt kind does not match retained context")
+    if value["sha256"] != expected_sha256:
+        raise ValueError("receipt digest does not match retained authority")
 
 
 @dataclass(frozen=True)
@@ -257,11 +289,18 @@ def fit_calibration(rows: Sequence[Mapping[str, Any]], min_class_count: int = 8)
     return result
 
 
-def efficiency_score(auc: float, runtime_seconds: float, benchmark: float, max_auc: float) -> float:
+def local_efficiency_surrogate(
+    auc: float, runtime_seconds: float, benchmark_auc: float, reference_max_auc: float
+) -> float:
+    """Local planning heuristic only; lower is better and this is not an organizer score."""
     auc = _num(auc, "auc", 0, 1); runtime = _num(runtime_seconds, "runtime", 0)
-    benchmark = _num(benchmark, "benchmark", 0, 1); max_auc = _num(max_auc, "max_auc", 0, 1)
-    if max_auc <= benchmark: raise ValueError("max_auc must exceed benchmark")
-    return auc / (benchmark - max_auc) + runtime / 32400.0
+    benchmark = _num(benchmark_auc, "benchmark_auc", 0, 1)
+    reference_max = _num(reference_max_auc, "reference_max_auc", 0, 1)
+    if reference_max <= benchmark:
+        raise ValueError("reference_max_auc must exceed benchmark_auc")
+    quality_gap = (reference_max - auc) / (reference_max - benchmark)
+    runtime_fraction = runtime / 32400.0
+    return quality_gap + runtime_fraction
 
 
 def project_runtime(study_count: int, policy: Policy, fixed_seconds: float, seconds_per_slice: float, upgrade_rate: float) -> float:
