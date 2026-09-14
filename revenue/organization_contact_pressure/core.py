@@ -13,6 +13,7 @@ from typing import Any, Mapping, Optional, Sequence
 REQUEST_SCHEMA = "organization-contact-pressure-request/v1"
 AUTHORITY_SCHEMA = "organization-contact-pressure-authority/v1"
 LEDGER_SCHEMA = "organization-contact-pressure-ledger/v1"
+LEDGER_HEAD_SCHEMA = "organization-contact-pressure-ledger-head/v1"
 RECEIPT_SCHEMA = "organization-contact-pressure-receipt/v1"
 KEY_POINTER_SCHEMA = "organization-contact-pressure-key-pointer/v1"
 
@@ -62,6 +63,7 @@ RELEASABLE_KINDS = {
 
 MAX_JSON_BYTES = 2_000_000
 MAX_EVENTS = 20_000
+MAX_LEDGER_HEAD_FILES = 40_000
 MAX_ROUTES = 1_024
 MAX_TEXT = 256
 MAX_SAFE_INTEGER = (1 << 53) - 1

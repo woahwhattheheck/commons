@@ -16,7 +16,9 @@ from .core import (
     _sha256, strict_json_loads,
 )
 from .events import _normalize_event
+from .ledger_head import _verify_current_ledger_head
 from .storage import _read_regular_file
+
 
 def _normalize_ledger_document(document: Mapping[str, Any]) -> tuple[dict[str, Any], str, tuple[EventView, ...], tuple[str, ...]]:
     fields = {
@@ -121,7 +123,7 @@ def _load_ledger(
         if event.observed_at > updated + skew:
             extra_conflicts.add(f"EVENT_AFTER_LEDGER_UPDATE:{event.event_id}")
     canonical = {**body, "signature": signature}
-    return LedgerView(
+    ledger = LedgerView(
         organization_scope_sha256=organization,
         generation=body["generation"],
         policy_generation=body["policy_generation"],
@@ -132,3 +134,5 @@ def _load_ledger(
         verifier_id=active.verifier_id,
         digest=_sha256(_canonical_bytes(canonical)),
     )
+    _verify_current_ledger_head(root, active, authority, ledger, now)
+    return ledger

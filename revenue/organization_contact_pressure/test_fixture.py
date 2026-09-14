@@ -5,8 +5,9 @@ import os
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from typing import Optional
+from unittest import mock
 
-from revenue.organization_contact_pressure import gate
+from revenue.organization_contact_pressure import compiler, gate, ledger_head, verifier
 
 
 def digest(label: str) -> str:
@@ -44,6 +45,7 @@ class GateFixture:
     def _make_dirs(self) -> None:
         for name in ("keys", "authorities", "ledgers"):
             (self.root / name).mkdir(parents=True, exist_ok=True)
+        (self.root / "ledger-heads" / self.organization).mkdir(parents=True, exist_ok=True)
 
     def _write_private(self, path: Path, data: bytes) -> None:
         path.write_bytes(data)
@@ -138,6 +140,39 @@ class GateFixture:
         body.update(overrides)
         return body
 
+    def write_ledger_head(
+        self,
+        document: dict,
+        *,
+        key: Optional[bytes] = None,
+        signature: Optional[str] = None,
+        committed_at: Optional[datetime] = None,
+    ):
+        canonical = gate._canonical_bytes(document)
+        body = {
+            "schema": ledger_head.LEDGER_HEAD_SCHEMA,
+            "organization_scope_sha256": self.organization,
+            "policy_generation": document["policy_generation"],
+            "ledger_generation": document["generation"],
+            "ledger_sha256": gate._sha256(canonical),
+            "ledger_updated_at": document["updated_at"],
+            "committed_at": ts(
+                committed_at
+                or gate._parse_time(document["updated_at"], "ledger.updated_at")
+            ),
+            "key_id": self.key_id,
+            "verifier_id": self.verifier_id,
+        }
+        checkpoint = {**body, "signature": signature or gate._hmac_hex(key or self.key, body)}
+        path = self.root / "ledger-heads" / self.organization / ledger_head._ledger_head_filename(body)
+        data = gate._canonical_bytes(checkpoint) + b"\n"
+        if path.exists():
+            if path.read_bytes() != data:
+                raise RuntimeError("ledger head filename collision")
+        else:
+            self._write_private(path, data)
+        return checkpoint
+
     def write_ledger(
         self,
         events,
@@ -147,6 +182,7 @@ class GateFixture:
         generation: Optional[int] = None,
         updated_at: Optional[datetime] = None,
         raw_document: Optional[dict] = None,
+        write_head: bool = True,
         **overrides,
     ):
         if raw_document is None:
@@ -156,6 +192,8 @@ class GateFixture:
             document = raw_document
         path = self.root / "ledgers" / f"{self.organization}.json"
         self._write_private(path, gate._canonical_bytes(document) + b"\n")
+        if write_head:
+            self.write_ledger_head(document)
         return document
 
     def request(self, *, route: Optional[str] = None, requested_at: Optional[datetime] = None, **overrides):
@@ -172,7 +210,22 @@ class GateFixture:
         return gate._canonical_bytes(body)
 
     def compile(self, request: Optional[bytes] = None, *, now: Optional[datetime] = None):
-        return gate._compile_at(request or self.request(), root=self.root, now=now or self.now)
+        with mock.patch.object(compiler, "_authority_root", return_value=self.root), mock.patch.object(
+            compiler, "_utc_now", return_value=now or self.now
+        ):
+            return gate.compile_current(request or self.request())
+
+    def verify_integrity(self, receipt) -> dict:
+        data = receipt if isinstance(receipt, bytes) else self.receipt_bytes(receipt)
+        with mock.patch.object(verifier, "_authority_root", return_value=self.root):
+            return gate.verify_receipt_integrity(data)
+
+    def verify_current(self, receipt, *, now: Optional[datetime] = None) -> dict:
+        data = receipt if isinstance(receipt, bytes) else self.receipt_bytes(receipt)
+        with mock.patch.object(verifier, "_authority_root", return_value=self.root), mock.patch.object(
+            verifier, "_utc_now", return_value=now or self.now
+        ):
+            return gate.verify_receipt_current(data)
 
     def receipt_bytes(self, receipt) -> bytes:
         return gate._canonical_bytes(receipt) + b"\n"

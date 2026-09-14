@@ -10,6 +10,7 @@ from .core import (
     _canonical_bytes, _format_time, _hmac_hex, _parse_time, _sha256,
 )
 
+
 def _receipt_body(
     request: Mapping[str, Any],
     active: ActiveKey,
@@ -47,6 +48,7 @@ def _receipt_body(
         "verifier_id": active.verifier_id,
         "external_send_authorized": False,
         "next_required_controls": [
+            "ATOMIC_ORGANIZATION_OUTBOUND_LEASE",
             "PER_PROSPECT_ATOMIC_LOCK",
             "COMMERCIAL_OPPORTUNITY_CUSTODY",
             "INITIAL_OUTREACH_ONE_SHOT",
