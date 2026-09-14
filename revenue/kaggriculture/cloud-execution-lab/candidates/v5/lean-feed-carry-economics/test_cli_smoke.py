@@ -25,8 +25,10 @@ class CliSmokeTests(unittest.TestCase):
             )
             self.assertEqual(
                 summary["promotion"]["conclusion"],
-                "PROMOTE_RESEARCH_CANDIDATE",
+                "SOURCE_MODEL_BLOCKED",
             )
+            self.assertFalse(summary["authority"]["authority_verified"])
+            self.assertFalse(summary["authority"]["source_promotion_authorized"])
             self.assertTrue((output / "manifest.json").is_file())
 
 
