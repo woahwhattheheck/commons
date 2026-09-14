@@ -3,16 +3,22 @@
 This module is deliberately non-sending. It authenticates a retained organization
 scope and retained cross-contact event ledger, then decides whether the organization
 is quiet enough to advance to existing single-writer and provider-bound controls.
+Only fixed-root/process-time authority functions are exposed here.
 """
 
 from __future__ import annotations
 
 import argparse
 import sys
-from datetime import datetime, timezone
 from pathlib import Path
 from typing import Optional, Sequence
 
+from .compiler import compile_current
+from .authority import _normalize_authority_document, _normalize_key_pointer
+from .ledger import _normalize_ledger_document
+from .ledger_head import _ledger_head_filename
+from .receipt_body import _receipt_body, _seal_receipt
+from .receipt_parse import _normalize_receipt
 from .core import (
     AUTHORITY_SCHEMA,
     DECISIONS,
@@ -47,36 +53,12 @@ from .core import (
     strict_json_loads,
 )
 from .records import _normalize_event, _normalize_request
-from .receipts import (
-    _compile_at,
-    _verify_receipt_current_at,
-    _verify_receipt_integrity_at,
-)
-from .storage import _authority_root, _read_request_file, _write_exclusive
+from .storage import _read_request_file, _write_exclusive
+from .verifier import verify_receipt_current, verify_receipt_integrity
 
 
 def _render_receipt(receipt: dict[str, object]) -> bytes:
     return _canonical_bytes(receipt) + b"\n"
-
-
-def compile_current(request_data: bytes) -> dict[str, object]:
-    """Compile with process-owned UTC and the fixed retained authority root."""
-    now = datetime.now(timezone.utc).replace(microsecond=0)
-    return _compile_at(request_data, root=_authority_root(), now=now)
-
-
-def verify_receipt_integrity(receipt_data: bytes) -> dict[str, object]:
-    """Verify immutable receipt history using a retained verifier key."""
-    return _verify_receipt_integrity_at(receipt_data, root=_authority_root())
-
-
-def verify_receipt_current(receipt_data: bytes) -> dict[str, object]:
-    """Verify integrity and reacquire live authority for READY receipts."""
-    return _verify_receipt_current_at(
-        receipt_data,
-        root=_authority_root(),
-        now=datetime.now(timezone.utc).replace(microsecond=0),
-    )
 
 
 def _build_parser() -> argparse.ArgumentParser:
