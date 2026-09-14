@@ -317,6 +317,30 @@ def _fold_one(
             raise IntakeError(f"{item['id']}.facts.blockers: duplicate code {code}")
         blockers[code] = {"code": code, "status": status, "evidenceSha256": evidence}
 
+    same_time: dict[str, list[dict[str, Any]]] = {}
+    for event in item["events"]:
+        same_time.setdefault(event["source"]["observedAt"], []).append(event)
+    for group in same_time.values():
+        custody_by_actor: dict[str, set[str]] = {}
+        status_by_code: dict[str, set[str]] = {}
+        reserved_kinds: set[str] = set()
+        for event in group:
+            kind = event["kind"]
+            if kind in {"TAKE", "RELEASE", "EXPIRE"}:
+                custody_by_actor.setdefault(event["actorSeat"], set()).add(kind)
+            elif kind in {"BLOCKER_OPEN", "BLOCKER_RESOLVED"}:
+                status_by_code.setdefault(event["code"], set()).add(kind)
+            elif kind in {"DNR", "BUYER_REOPEN"}:
+                reserved_kinds.add(kind)
+        if any("TAKE" in kinds and kinds.intersection({"RELEASE", "EXPIRE"})
+               for kinds in custody_by_actor.values()):
+            custody_conflict = True
+        if any({"BLOCKER_OPEN", "BLOCKER_RESOLVED"}.issubset(kinds)
+               for kinds in status_by_code.values()):
+            status_conflict = True
+        if {"DNR", "BUYER_REOPEN"}.issubset(reserved_kinds):
+            status_conflict = True
+
     event_ids: list[str] = []
     for event in item["events"]:
         event_ids.append(event["eventId"])
