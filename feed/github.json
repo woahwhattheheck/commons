@@ -1,9 +1,9 @@
 {
   "counts": {
-    "open_issues": 116,
-    "open_pull_requests": 61,
-    "runs_in_progress": 17,
-    "runs_queued": 823
+    "open_issues": 117,
+    "open_pull_requests": 64,
+    "runs_in_progress": 18,
+    "runs_queued": 843
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -66,6 +66,39 @@
     }
   ],
   "newest_pulls": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zgf-j7m5/offer-outcome-learning-20260913",
+      "created_at": "2026-09-14T03:56:40Z",
+      "draft": false,
+      "head_sha": "fd5ecf1c431ebca673633f748e219595b07d222b",
+      "number": 14300,
+      "title": "Offer Outcome Learning: evidence-bound post-outreach revenue feedback loop",
+      "updated_at": "2026-09-14T03:56:40Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zhq/army-sbir-arm26bx06-nv012-20260913",
+      "created_at": "2026-09-14T03:56:40Z",
+      "draft": false,
+      "head_sha": "cd6a66435851b57f61c5a68c4ab7f8356701f910",
+      "number": 14299,
+      "title": "ARM26BX06-NV012: decision-as-program Phase I qualification + demo carrier",
+      "updated_at": "2026-09-14T03:56:40Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z-helix/darpa-dv026-market-poc",
+      "created_at": "2026-09-14T03:56:10Z",
+      "draft": false,
+      "head_sha": "3df71ac7308e8368b481d9b6e1e016c124f7c1a3",
+      "number": 14297,
+      "title": "research: deterministic DARPA DV026 market technical proof",
+      "updated_at": "2026-09-14T03:56:10Z"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -142,39 +175,6 @@
       "number": 14270,
       "title": "feat(proposal-gate): model submission and award readiness",
       "updated_at": "2026-09-14T03:55:15Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "zrt-p3x9/org-contact-pressure",
-      "branch": "zam-v7c2/org-contact-pressure-event-id-admission",
-      "created_at": "2026-09-14T03:38:04Z",
-      "draft": false,
-      "head_sha": "00ad636d2661ac7c0d101d4d3b3ddd7c0b884ca0",
-      "number": 14258,
-      "title": "Fix organization-pressure proposed event ID admission",
-      "updated_at": "2026-09-14T03:56:00Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zcbw-x7m4/rfp-addenda-delta-14239",
-      "created_at": "2026-09-14T03:36:03Z",
-      "draft": false,
-      "head_sha": "66efe9c85f77b6700cc2c8090770e205aee51ffa",
-      "number": 14256,
-      "title": "feat(revenue): exact RFP/Addenda Delta Desk",
-      "updated_at": "2026-09-14T03:55:22Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zrt-p3x9/org-contact-pressure",
-      "created_at": "2026-09-14T03:31:53Z",
-      "draft": false,
-      "head_sha": "f0a1eba3ac83614e8303d4108dd6ec82abd2e05c",
-      "number": 14254,
-      "title": "Revenue: gate organization-level cross-contact pressure",
-      "updated_at": "2026-09-14T03:55:42Z"
     }
   ],
   "open_heads": {
@@ -238,11 +238,14 @@
     "14281": "0090408898135a3634971de5f830a09aeb020319",
     "14289": "ebf9fe1056ffcb0cd724a00cb9032dc568fef2d4",
     "14291": "c8f6a689194b80e86054b057acc560c67885f774",
-    "14296": "932635011e5850cedf27eaddfa12365000352344"
+    "14296": "932635011e5850cedf27eaddfa12365000352344",
+    "14297": "3df71ac7308e8368b481d9b6e1e016c124f7c1a3",
+    "14299": "cd6a66435851b57f61c5a68c4ab7f8356701f910",
+    "14300": "fd5ecf1c431ebca673633f748e219595b07d222b"
   },
-  "pulls_listed": 61,
+  "pulls_listed": 64,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 48.4,
+  "queue_depth_per_runner": 46.8,
   "recently_closed": [
     {
       "author": "woahwhattheheck",
@@ -412,6 +415,6 @@
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-14T03:56:08Z",
+  "unchanged_since": "2026-09-14T03:56:45Z",
   "undatable_pulls": []
 }
