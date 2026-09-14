@@ -48,8 +48,8 @@ _NOW_DESTINATION_RE = re.compile(
 _SYMBOL_CURRENCY = {"$": "USD", "€": "EUR", "£": "GBP"}
 _SYMBOL_CODE_RE = re.compile(
     r"(?:"
-    r"(?P<prefix>[A-Z]{3})\s*(?P<prefix_symbol>[$€£])\s*\d+(?:,\d{3})*(?:\.\d+)?"
-    r"|(?P<suffix_symbol>[$€£])\s*\d+(?:,\d{3})*(?:\.\d+)?\s*(?P<suffix>[A-Z]{3})(?![A-Z])"
+    r"(?P<prefix>[A-Za-z]{3})\s*(?P<prefix_symbol>[$€£])\s*\d+(?:,\d{3})*(?:\.\d+)?"
+    r"|(?P<suffix_symbol>[$€£])\s*\d+(?:,\d{3})*(?:\.\d+)?\s*(?P<suffix>[A-Za-z]{3})(?![A-Za-z0-9_])"
     r")"
 )
 
@@ -158,7 +158,7 @@ def _money_tokens(text: str) -> list[tuple[int, int, str, str]]:
 
 
 def _has_conflicting_symbol_code(text: str) -> bool:
-    """Fail closed when a currency symbol and adjacent uppercase code disagree."""
+    """Fail closed when a currency symbol and adjacent code disagree."""
 
     for match in _SYMBOL_CODE_RE.finditer(text):
         if match.group("prefix") is not None:
@@ -167,7 +167,7 @@ def _has_conflicting_symbol_code(text: str) -> bool:
         else:
             code = str(match.group("suffix"))
             symbol = str(match.group("suffix_symbol"))
-        if code != _SYMBOL_CURRENCY[symbol]:
+        if code.upper() != _SYMBOL_CURRENCY[symbol]:
             return True
     return False
 
