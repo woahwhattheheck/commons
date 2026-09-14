@@ -32,9 +32,11 @@ jobs:
             revenue/prospect_contact_lock/__init__.py \
             revenue/prospect_contact_lock/__main__.py \
             revenue/prospect_contact_lock/lock.py \
+            revenue/prospect_contact_lock/hardened.py \
             revenue/prospect_contact_lock/cli.py \
-            revenue/prospect_contact_lock/test_lock.py
+            revenue/prospect_contact_lock/test_lock.py \
+            revenue/prospect_contact_lock/test_hardened.py
       - name: Hostile suite
-        run: python -m unittest -v revenue.prospect_contact_lock.test_lock
+        run: python -m unittest -v revenue.prospect_contact_lock.test_lock revenue.prospect_contact_lock.test_hardened
       - name: Hostile suite under optimized Python
-        run: python -O -m unittest -v revenue.prospect_contact_lock.test_lock
+        run: python -O -m unittest -v revenue.prospect_contact_lock.test_lock revenue.prospect_contact_lock.test_hardened
