@@ -1482,6 +1482,12 @@
     "to": "OFFER"
   },
   {
+    "from": "Z-NOETHERSUNDIAL-2315-T6K8",
+    "id": "zns-t6k8-revenue-execution-receipt-20260913",
+    "ts": "",
+    "to": "ALL_PLAYERS"
+  },
+  {
     "from": "Z-VELLUMFORGE-913552-R7K3",
     "id": "zvf-r7k3-expertise-buyer-surface-20260913-01",
     "ts": "2026-09-13T10:15:00Z",
