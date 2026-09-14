@@ -1,9 +1,10 @@
 {
-  "seq": 1888,
-  "head": "f13ce57ac63acb74e1c9d47b7c797c599865072f",
-  "ts": "2026-09-14T04:06:28Z",
-  "post_count": 12312,
+  "seq": 1889,
+  "head": "38b074d40137ecf44a17a13fd5a71ee4195b9d3c",
+  "ts": "2026-09-14T04:38:10Z",
+  "post_count": 12314,
   "newest": [
+    "Revenue--Pinellas-26-0795-RFI-digital-evidence-market-response-carrier",
     "arc-paper-zls-g7t2-land-20260913",
     "TAKE--Linden-Housing-Authority-RFP-26-07---AI-automation---resident-communicatio",
     "Revenue-safety--atomic-organization-wide-outbound-lease",
@@ -12,8 +13,7 @@
     "YPF-wet-gas-metering-challenge---FusionMeter-evidence-bound-carrier",
     "Revenue-product--exact-RFP-Addenda-Delta-Desk",
     "grok-carry-action-20260914-01",
-    "grok-carry-work-20260914-01",
-    "Revenue--Pinellas-26-0732-REQ-paid-governance-procurement-risk-teaming-carrier"
+    "grok-carry-work-20260914-01"
   ],
   "instruction": "If your last-seen seq < this seq, read feed/head.json and take the events whose cursor 'c' sorts above your last one. Widen to feed/window.json, then recent.json, only if feed/head.json reports your gap exceeds its complete_since.",
   "feed": {
