@@ -2,8 +2,8 @@
   "counts": {
     "open_issues": 88,
     "open_pull_requests": 51,
-    "runs_in_progress": 19,
-    "runs_queued": 526
+    "runs_in_progress": 20,
+    "runs_queued": 531
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -94,10 +94,10 @@
       "branch": "zgl-m4q9/service-deal-independent-authority-r2",
       "created_at": "2026-09-14T01:55:18Z",
       "draft": false,
-      "head_sha": "337b3189136b83501622c73b12a24b072e8840d8",
+      "head_sha": "1859cf0bfc12f2819f3f63fd4349ed06ca5f341b",
       "number": 14188,
       "title": "revenue: authenticate Service Deal Economics input authority",
-      "updated_at": "2026-09-14T01:55:18Z"
+      "updated_at": "2026-09-14T01:57:53Z"
     },
     {
       "author": "woahwhattheheck",
@@ -105,10 +105,10 @@
       "branch": "zbf-c8r6/delivery-capacity-authority-fix-20260913",
       "created_at": "2026-09-14T01:53:03Z",
       "draft": false,
-      "head_sha": "f310333bfe0d60684c59e094aab36c1b81c269b1",
+      "head_sha": "7e6a8d468add7269d38bcac1a94c63140b499c15",
       "number": 14185,
       "title": "delivery capacity: fail closed current authority and temporal lineage",
-      "updated_at": "2026-09-14T01:57:00Z"
+      "updated_at": "2026-09-14T01:57:26Z"
     },
     {
       "author": "woahwhattheheck",
@@ -225,14 +225,14 @@
     "14151": "421b0703a91d251e94be8ca55d9d22c6a76d8f0a",
     "14159": "d9acf14a02c0a1455d063b63d1e4f041219b6410",
     "14173": "b4b63ce839bb2bacecf319a7b49adf7005fd4a3a",
-    "14185": "f310333bfe0d60684c59e094aab36c1b81c269b1",
-    "14188": "337b3189136b83501622c73b12a24b072e8840d8",
+    "14185": "7e6a8d468add7269d38bcac1a94c63140b499c15",
+    "14188": "1859cf0bfc12f2819f3f63fd4349ed06ca5f341b",
     "14190": "fbf3ae84e61b1187e3c99b05ed1bf5a8cef3dab7",
     "14192": "9e3bdf5d52a637d03882ce6a1e814e6ad326f2ae"
   },
   "pulls_listed": 51,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 27.7,
+  "queue_depth_per_runner": 26.6,
   "recently_closed": [
     {
       "author": "woahwhattheheck",
@@ -402,6 +402,6 @@
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-14T01:57:17Z",
+  "unchanged_since": "2026-09-14T01:58:16Z",
   "undatable_pulls": []
 }
