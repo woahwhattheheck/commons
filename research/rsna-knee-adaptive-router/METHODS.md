@@ -14,7 +14,11 @@ Do not tune route thresholds, calibration, or model choice on public/private lea
 
 ## Evidence to retain
 
-For every arm retain exact source/checkpoint/config digests; split identity; proof that calibration rows are OOF; per-target and macro AUC; studies/series/decoded-slice counts; full wall time and predictor time; upgrade rate; missing-preferred-plane frequency; failures/fallbacks; projected full-test wall time; measured/estimated peak VRAM plus available VRAM and safety multiplier; and the published efficiency-formula surrogate with its explicit reference parameters.
+For every arm retain exact source/checkpoint/config digests; split identity; proof that calibration rows are OOF; per-target and macro AUC; studies/series/decoded-slice counts; full wall time and predictor time; upgrade rate; missing-preferred-plane frequency; failures/fallbacks; projected full-test wall time; measured/estimated peak VRAM plus available VRAM and safety multiplier.
+
+`local_efficiency_surrogate()` is deliberately a **local planning heuristic, not the organizer score**. It is lower-is-better and equals a positive quality-gap fraction, `(reference_max_auc - auc) / (reference_max_auc - benchmark_auc)`, plus notebook-runtime fraction, `runtime_seconds / 32400`. `reference_max_auc` must strictly exceed `benchmark_auc`; tests require better AUC to improve the surrogate and longer runtime to worsen it across a predeclared reference band. Do not report this value as a competition score or use it as evidence of rank.
+
+Receipts are also deliberately split into two trust levels. `receipt()` snapshots a canonical detached payload and `verify_receipt()` checks only internal integrity. A caller that can freely edit and reseal a receipt can still construct another internally valid receipt. Any authority-bearing decision must instead retain the expected digest and receipt kind out of band and call `verify_receipt_authoritative()` against that retained context.
 
 ## Promote ADAPTIVE only if all pass
 
@@ -22,7 +26,7 @@ For every arm retain exact source/checkpoint/config digests; split identity; pro
 2. macro-AUC is >=99% of ALL **or** no more than 0.005 absolute below ALL;
 3. projected wall time is >=30% lower than ALL;
 4. at least 10/12 targets lose <=0.01 AUC and no target loses >0.025;
-5. the efficiency surrogate improves across a predeclared plausible `maxAUC` band rather than one cherry-picked value;
+5. the local efficiency surrogate improves across a predeclared plausible `reference_max_auc` band rather than one cherry-picked value;
 6. runtime and VRAM budgets pass with safety margins;
 7. exact submission validation produces every expected study once in canonical order.
 
