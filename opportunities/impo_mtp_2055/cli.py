@@ -25,6 +25,19 @@ def _no_follow_flag() -> int:
     return getattr(os, "O_NOFOLLOW", 0)
 
 
+def _generation_signature(metadata: os.stat_result) -> tuple[int, ...]:
+    """Return metadata that changes when an ordinary file generation changes."""
+    return (
+        metadata.st_dev,
+        metadata.st_ino,
+        metadata.st_mode,
+        metadata.st_nlink,
+        metadata.st_size,
+        metadata.st_mtime_ns,
+        metadata.st_ctime_ns,
+    )
+
+
 def read_regular_file(path: str | os.PathLike[str], *, max_bytes: int) -> bytes:
     raw_path = os.fspath(path)
     flags = os.O_RDONLY | _no_follow_flag()
@@ -53,22 +66,46 @@ def read_regular_file(path: str | os.PathLike[str], *, max_bytes: int) -> bytes:
             raise SafeFileError(
                 f"input exceeded maximum size while reading: {raw_path!r}"
             )
-        # Reject files that changed, shrank, or grew while the retained descriptor was read.
         if os.read(fd, 1):
             raise SafeFileError(f"input changed or exceeded bound while reading: {raw_path!r}")
         final_metadata = os.fstat(fd)
-        stable_fields = (
-            metadata.st_dev == final_metadata.st_dev,
-            metadata.st_ino == final_metadata.st_ino,
-            metadata.st_size == final_metadata.st_size,
-            metadata.st_mtime_ns == final_metadata.st_mtime_ns,
-            len(payload) == metadata.st_size,
-        )
-        if not all(stable_fields):
+        if (
+            _generation_signature(metadata) != _generation_signature(final_metadata)
+            or len(payload) != metadata.st_size
+        ):
             raise SafeFileError(f"input generation changed while reading: {raw_path!r}")
+
+        # Prove that the visible pathname still names the exact retained regular-file
+        # generation. O_NOFOLLOW protects open-time lookup; this closes a later
+        # rename/replacement race before bytes are accepted as that path's source.
+        try:
+            visible_metadata = os.lstat(raw_path)
+        except OSError as exc:
+            raise SafeFileError(
+                f"input path changed after opening {raw_path!r}: {exc}"
+            ) from exc
+        if (
+            not stat.S_ISREG(visible_metadata.st_mode)
+            or _generation_signature(visible_metadata)
+            != _generation_signature(final_metadata)
+        ):
+            raise SafeFileError(f"input path generation changed while reading: {raw_path!r}")
         return payload
     finally:
         os.close(fd)
+
+
+def _strict_object(pairs: list[tuple[str, Any]]) -> dict[str, Any]:
+    result: dict[str, Any] = {}
+    for key, value in pairs:
+        if key in result:
+            raise SafeFileError(f"duplicate JSON object key: {key!r}")
+        result[key] = value
+    return result
+
+
+def _reject_nonfinite_constant(value: str) -> None:
+    raise SafeFileError(f"non-finite JSON number is forbidden: {value}")
 
 
 def load_json(path: str | os.PathLike[str]) -> Any:
@@ -78,7 +115,11 @@ def load_json(path: str | os.PathLike[str]) -> Any:
     except UnicodeDecodeError as exc:
         raise SafeFileError(f"JSON input is not UTF-8: {path!r}") from exc
     try:
-        return json.loads(text)
+        return json.loads(
+            text,
+            object_pairs_hook=_strict_object,
+            parse_constant=_reject_nonfinite_constant,
+        )
     except json.JSONDecodeError as exc:
         raise SafeFileError(f"invalid JSON in {path!r}: {exc}") from exc
 
