@@ -207,6 +207,9 @@ def _normalize(raw: Any, at: datetime) -> tuple[str, list[dict[str, Any]], list[
         if stage == "PAYMENT_CONFIRMED":
             sref = _ident(row.get("settlement_ref"), f"event:{eid}.settlement_ref")
             ssha = _sha(row.get("settlement_sha256"), f"event:{eid}.settlement_sha256")
+            if sref in source_refs and source_refs[sref] != ssha:
+                raise LearningError(f"SOURCE_REF_DIGEST_CONFLICT:{sref}")
+            source_refs[sref] = ssha
             _claim_digest(digest_owner, ssha, "settlement", eid)
             e.update(settlement_ref=sref, settlement_sha256=ssha)
         elif row.get("settlement_ref") is not None or row.get("settlement_sha256") is not None:
