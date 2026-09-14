@@ -5,8 +5,9 @@ import os
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from typing import Optional
+from unittest import mock
 
-from revenue.organization_contact_pressure import gate, ledger_head
+from revenue.organization_contact_pressure import compiler, gate, ledger_head, verifier
 
 
 def digest(label: str) -> str:
@@ -209,7 +210,22 @@ class GateFixture:
         return gate._canonical_bytes(body)
 
     def compile(self, request: Optional[bytes] = None, *, now: Optional[datetime] = None):
-        return gate._compile_at(request or self.request(), root=self.root, now=now or self.now)
+        with mock.patch.object(compiler, "_authority_root", return_value=self.root), mock.patch.object(
+            compiler, "_utc_now", return_value=now or self.now
+        ):
+            return gate.compile_current(request or self.request())
+
+    def verify_integrity(self, receipt) -> dict:
+        data = receipt if isinstance(receipt, bytes) else self.receipt_bytes(receipt)
+        with mock.patch.object(verifier, "_authority_root", return_value=self.root):
+            return gate.verify_receipt_integrity(data)
+
+    def verify_current(self, receipt, *, now: Optional[datetime] = None) -> dict:
+        data = receipt if isinstance(receipt, bytes) else self.receipt_bytes(receipt)
+        with mock.patch.object(verifier, "_authority_root", return_value=self.root), mock.patch.object(
+            verifier, "_utc_now", return_value=now or self.now
+        ):
+            return gate.verify_receipt_current(data)
 
     def receipt_bytes(self, receipt) -> bytes:
         return gate._canonical_bytes(receipt) + b"\n"
