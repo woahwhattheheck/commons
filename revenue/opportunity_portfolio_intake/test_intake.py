@@ -100,6 +100,14 @@ class IntakeTests(unittest.TestCase):
         ])
         self.assertEqual(self.item(receipt)["owner"]["status"], "AVAILABLE")
 
+    def test_same_timestamp_take_release_fails_closed(self):
+        receipt = self.compile([
+            event("a-release", "RELEASE", "2026-09-14T00:50:00Z", actorSeat="A-1"),
+            event("z-take", "TAKE", "2026-09-14T00:50:00Z", actorSeat="A-1"),
+        ])
+        self.assertEqual(self.item(receipt)["owner"]["status"], "UNKNOWN")
+        self.assertEqual(self.blockers(receipt)["CUSTODY-HISTORY-CONFLICT"], "OPEN")
+
     def test_unmatched_release_marks_history_conflict(self):
         receipt = self.compile([event("e1", "RELEASE", "2026-09-14T00:51:00Z", actorSeat="A-1")])
         self.assertEqual(self.item(receipt)["owner"]["status"], "UNKNOWN")
@@ -179,6 +187,20 @@ class IntakeTests(unittest.TestCase):
             event("e2", "BLOCKER_RESOLVED", "2026-09-14T00:55:00Z", code="NEEDS-SCOPE"),
         ])
         self.assertEqual(self.blockers(receipt)["NEEDS-SCOPE"], "RESOLVED")
+
+    def test_same_timestamp_blocker_open_resolve_fails_closed(self):
+        receipt = self.compile([
+            event("a-resolve", "BLOCKER_RESOLVED", "2026-09-14T00:50:00Z", code="NEEDS-SCOPE"),
+            event("z-open", "BLOCKER_OPEN", "2026-09-14T00:50:00Z", code="NEEDS-SCOPE"),
+        ])
+        self.assertEqual(self.blockers(receipt)["STATUS-HISTORY-CONFLICT"], "OPEN")
+
+    def test_same_timestamp_dnr_reopen_fails_closed(self):
+        receipt = self.compile([
+            event("a-reopen", "BUYER_REOPEN", "2026-09-14T00:50:00Z", origin="BUYER"),
+            event("z-dnr", "DNR", "2026-09-14T00:50:00Z", origin="BUYER"),
+        ])
+        self.assertEqual(self.blockers(receipt)["STATUS-HISTORY-CONFLICT"], "OPEN")
 
     def test_unknown_blocker_resolution_marks_history_conflict(self):
         receipt = self.compile([event("e1", "BLOCKER_RESOLVED", "2026-09-14T00:55:00Z", code="NEEDS-SCOPE")])
