@@ -39,11 +39,13 @@ jobs:
       - name: Contract tests
         run: >-
           python -m unittest -v
+          revenue.bidder_qualification_vault.test_vault
           revenue.pursuit_evidence_bridge.test_bridge
           opportunities.ttuhsc_739_sl3821039_enterprise_ai.test_qualify
       - name: Optimized contract tests
         run: >-
           python -O -m unittest -v
+          revenue.bidder_qualification_vault.test_vault
           revenue.pursuit_evidence_bridge.test_bridge
           opportunities.ttuhsc_739_sl3821039_enterprise_ai.test_qualify
       - name: Current gate must remain held for this source generation
