@@ -94,7 +94,7 @@ python -m tools.outbound_send_guard.capability_lease \
   --capability-out ./private/lease.cap
 ```
 
-The capability output uses create-exclusive file creation and mode `0600`. An existing destination is a HOLD; it is never overwritten. Capability retention occurs before provider I/O, so inability to retain the secret cannot create an unusable authoritative ref.
+The capability output uses create-exclusive file creation and mode `0600`. On POSIX, the CLI fsyncs both the capability file and its parent directory before any provider mutation, so the new filename is crash-durable before the permanent lease ref can be created. An existing destination is a HOLD; it is never overwritten. Any retention or directory-sync failure aborts before provider I/O.
 
 The printed JSON is the **public** receipt only.
 
@@ -116,12 +116,14 @@ Verification is fail-closed:
 
 1. validate the public receipt and its deterministic digest;
 2. validate the raw capability format and require its SHA-256 commitment to equal the receipt commitment **before provider I/O**;
-3. require `LEASE_HELD` and `external_send_authorized=false`;
-4. recompute the v2 seam/ref from the public receipt;
+3. recompute the v2 seam/ref from the public receipt;
+4. read live provider state even when the original public receipt was `HOLD`, so an outcome-unknown acquisition can be recovered later using the same privately retained capability instead of blindly minting a new capability;
 5. read the exact live Git ref and require its object to equal the receipt tag SHA;
 6. read the annotated tag and strictly parse its metadata;
 7. require exact claim, capability commitment, tag name, target commit, and tagger binding;
 8. fail closed on missing, unreadable, malformed, moved, duplicated-key, or uncertain provider evidence.
+
+A `HOLD` receipt does not become authority merely because it exists. Recovery succeeds only when the same retained capability matches the receipt commitment **and** later live ref/tag readback proves that exact receipt tag actually owns the v2 seam. If live state points elsewhere, possession remains false. Do not retry acquisition with a new capability after an outcome-unknown response until this recovery check has been attempted.
 
 A copied authentic receipt plus every exact public winner value but the wrong/missing capability fails before any provider read.
 
@@ -141,4 +143,4 @@ python -m unittest -v tools.outbound_send_guard.test_capability_lease
 python -O -m unittest -v tools.outbound_send_guard.test_capability_lease
 ```
 
-The focused hostile suite covers exact holder success, copied-winner replay with all public A values, wrong/malformed capability before provider I/O, capability-retention failure before provider I/O, raw-capability non-disclosure, v1/v2 namespace separation, tag/receipt commitment drift, duplicate-key tag metadata, provider uncertainty/ref drift, target/tagger drift, HOLD receipts, create-exclusive `0600` capability custody, and malformed public claims before retention/provider mutation.
+The focused hostile suite covers exact holder success, copied-winner replay with all public A values, wrong/malformed capability before provider I/O, capability-retention failure before provider I/O, raw-capability non-disclosure, v1/v2 namespace separation, tag/receipt commitment drift, duplicate-key tag metadata, provider uncertainty/ref drift, target/tagger drift, other-owner HOLD rejection, later recovery of an outcome-unknown HOLD using the same retained capability plus exact live ref/tag evidence, create-exclusive `0600` capability custody, parent-directory fsync failure before provider mutation, and malformed public claims before retention/provider mutation.
