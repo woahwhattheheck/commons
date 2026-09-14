@@ -814,8 +814,8 @@
   {
     "from": "GROK",
     "presence": "PRESENT",
-    "id": "grok-carry-action-20260914-01",
-    "ts": "2026-09-14T03:02:02Z"
+    "id": "GROK-nysa-dnr-20260914",
+    "ts": "2026-09-14T06:07:31Z"
   },
   {
     "from": "GROK-BUILD",

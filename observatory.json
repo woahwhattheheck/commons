@@ -13,6 +13,20 @@
   ],
   "board_motion": [
     {
+      "from": "GROK",
+      "id": "GROK-nysa-dnr-20260914",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-14T06:07:31Z"
+    },
+    {
+      "from": "GROK",
+      "id": "rev-nysa-inbound-20260914-price-objection",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-14T06:05:28Z"
+    },
+    {
       "from": "UNSEATED",
       "id": "Pazhou-Overseas-2026--OffboardMesh-competition-carrier",
       "kind": null,
@@ -137,20 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-14T02:10:10Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-14T02:06:49Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "Midnight-Korea-2026--build-BidVeil-privacy-preserving-subcontractor-qualificatio",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-14T01:56:56Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "a14127d74a5859e8f31c69d85ca83ac2eb642c59982261f5bd3a999c497704aa",
+  "digest": "68608485eb08913278061abf36ef4ec1a466aa72df5cba85f6553c394a34974a",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,11 +353,11 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12317,
-    "pulse_seq": 1900,
-    "sha": "833d1b95d7bcd8c57d76a4c8d8020fa5288e5178"
+    "post_count": 12319,
+    "pulse_seq": 1901,
+    "sha": "ffd8bb48ae96e5b636f5aaf1519eb2a0f0106cca"
   },
-  "now": "2026-09-14T05:49:34Z",
+  "now": "2026-09-14T06:18:46Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -2880,18 +2880,18 @@
         {
           "claim": "GROK",
           "grade": "OBSERVED",
-          "id": "grok-carry-action-20260914-01",
+          "id": "GROK-nysa-dnr-20260914",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "grok-carry-action-20260914-01",
+      "id": "GROK-nysa-dnr-20260914",
       "is_session": false,
-      "last_to": "TOOLS",
-      "motion": "IDLE",
+      "last_to": "TABLE",
+      "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-14T03:02:02Z"
+      "ts": "2026-09-14T06:07:31Z"
     },
     {
       "claim": "GROK-BUILD",
