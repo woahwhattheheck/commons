@@ -10,11 +10,19 @@ The included examples are synthetic contract fixtures. They exercise the evidenc
 
 Pinned D2 archive identity: `3d250d7bd32bf51f26ec1f69c2c10bc3c914e7d0cf64a078ae5bac5832465bd8`.
 
+## D2 archive recovery gate
+
+`d2_archive_authority.py` is the fail-closed ingress boundary for the still-missing exact D2 archive. It authenticates the raw 424,145-byte gzip tarball and its 94-member identity before reading any member, never extracts or executes archive content, rejects unsafe/ambiguous tar structures, and binds `main.py`, the retained runtime member, and retained `operating_stock.py` lineage by cryptographic identity.
+
+A successful source check is intentionally **not** a promotion: the verifier keeps `candidate_build_authorized=false` and `promotion_authorized=false`. The WHEAT-only census, prospective development panel, untouched holdout, independent review, and explicit code-retained authority root remain separate requirements. See `D2_RECOVERY.md` and `D2_RECOVERY_STATUS.json`.
+
 ## Local commands
 
 ```bash
-python -m py_compile feed_carry_oracle.py lean_feed_hardening.py test_feed_carry_oracle.py test_promotion_gate_hardening.py test_cli_smoke.py examples/generate_synthetic_contracts.py
-python -m unittest -v test_feed_carry_oracle.py test_promotion_gate_hardening.py test_cli_smoke.py
+python -m py_compile feed_carry_oracle.py lean_feed_hardening.py d2_archive_authority.py test_feed_carry_oracle.py test_promotion_gate_hardening.py test_d2_archive_authority.py test_cli_smoke.py examples/generate_synthetic_contracts.py
+python -m unittest -v test_feed_carry_oracle.py test_promotion_gate_hardening.py test_d2_archive_authority.py test_cli_smoke.py
+python -O -m unittest -v test_d2_archive_authority.py
+python d2_archive_authority.py
 python examples/generate_synthetic_contracts.py
 python feed_carry_oracle.py examples/synthetic_positive_contract.json --out /tmp/lean-feed-positive
 python feed_carry_oracle.py examples/synthetic_no_redeployment.json --out /tmp/lean-feed-negative
