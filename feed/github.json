@@ -1,9 +1,9 @@
 {
   "counts": {
-    "open_issues": 84,
-    "open_pull_requests": 48,
-    "runs_in_progress": 20,
-    "runs_queued": 593
+    "open_issues": 91,
+    "open_pull_requests": 57,
+    "runs_in_progress": 19,
+    "runs_queued": 703
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -69,112 +69,112 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "zgc-m4r7/hive016-current-main-origin-guard-20260913",
-      "created_at": "2026-09-14T02:27:00Z",
+      "branch": "zbh-y6m3-outreach-cas-reservation",
+      "created_at": "2026-09-14T02:48:17Z",
       "draft": false,
-      "head_sha": "ff1f29987bfc89bf41a875b6cdb56886ccb74d4e",
-      "number": 14211,
-      "title": "feat(revenue): rejoin creator niche app studio with browser origin guard",
-      "updated_at": "2026-09-14T02:33:34Z"
+      "head_sha": "8d5e4511fd4514e7f95b248f408fb640a77df50e",
+      "number": 14232,
+      "title": "feat(revenue): make hot-lead outreach claims atomic",
+      "updated_at": "2026-09-14T02:48:17Z"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "zsf-k7m3/sophelio-dual-award-20260913",
-      "created_at": "2026-09-14T02:22:50Z",
+      "branch": "zlt-c8n4/relationship-census-20260913",
+      "created_at": "2026-09-14T02:47:04Z",
       "draft": false,
-      "head_sha": "e4838bf76ecc1c27e184661d68f94d2c5e9ce1dc",
-      "number": 14209,
-      "title": "Build Sophelio dual-award shot-group transfer carrier",
-      "updated_at": "2026-09-14T02:22:50Z"
+      "head_sha": "7542aa1933697e4ee7888786d4b0c77db3a1d8a1",
+      "number": 14231,
+      "title": "outbound: bind provider relationship census to target custody",
+      "updated_at": "2026-09-14T02:47:53Z"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "zgl-m4q9/service-deal-independent-authority-r2",
-      "created_at": "2026-09-14T01:55:18Z",
+      "branch": "zkdd-r8n6/reply-revenue-chronology-fixforward-20260913",
+      "created_at": "2026-09-14T02:46:10Z",
       "draft": false,
-      "head_sha": "1859cf0bfc12f2819f3f63fd4349ed06ca5f341b",
-      "number": 14188,
-      "title": "revenue: authenticate Service Deal Economics input authority",
-      "updated_at": "2026-09-14T02:03:36Z"
+      "head_sha": "83423bd3b038824a007712d722f65c66bd7ad82a",
+      "number": 14229,
+      "title": "Fix reply-to-revenue chronology safety",
+      "updated_at": "2026-09-14T02:47:51Z"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "zaw-c9t4/forensics-canonical-repo-fix-20260913",
-      "created_at": "2026-09-14T01:50:02Z",
+      "branch": "z-kiln/commercial-portfolio-allocator-current-main-20260913",
+      "created_at": "2026-09-14T02:44:56Z",
       "draft": false,
-      "head_sha": "04407dde467b62fc06401f7bd82e81becbdc7200",
-      "number": 14173,
-      "title": "fix(forensics): bind lease evidence to canonical Commons repo",
-      "updated_at": "2026-09-14T02:19:20Z"
+      "head_sha": "4c6b7994fb64a8bcb316e26ec82f91c0b285ad82",
+      "number": 14228,
+      "title": "repair: bind Commercial Portfolio Allocator to current authority",
+      "updated_at": "2026-09-14T02:44:56Z"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "zkf-t9c4/right-now-stripe-currentness-20260913",
-      "created_at": "2026-09-14T01:39:43Z",
+      "branch": "zcl-h7k3/paid-pilot-rollout-chronology-20260913",
+      "created_at": "2026-09-14T02:44:51Z",
       "draft": false,
-      "head_sha": "d9acf14a02c0a1455d063b63d1e4f041219b6410",
-      "number": 14159,
-      "title": "Revenue: require fresh Stripe readback for right-now checkout truth",
-      "updated_at": "2026-09-14T01:58:34Z"
+      "head_sha": "581768bb05252e1cc9b87aa9750e48b5f8850fe9",
+      "number": 14227,
+      "title": "Repair paid-pilot rollout chronology authority",
+      "updated_at": "2026-09-14T02:44:51Z"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "zgc-p7v2/wri-open-timber-proposal-20260913",
-      "created_at": "2026-09-14T01:32:44Z",
+      "branch": "z-solstice/relationship-census-14216",
+      "created_at": "2026-09-14T02:43:37Z",
       "draft": false,
-      "head_sha": "421b0703a91d251e94be8ca55d9d22c6a76d8f0a",
-      "number": 14151,
-      "title": "Revenue: add WRI Open Timber Portal proposal carrier",
-      "updated_at": "2026-09-14T01:39:42Z"
+      "head_sha": "670ac88afd800b0b1c2cda056a2ee76693a68351",
+      "number": 14226,
+      "title": "revenue: add provider relationship census custody gate",
+      "updated_at": "2026-09-14T02:46:53Z"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "zhk/shipaton-proofpocket",
-      "created_at": "2026-09-14T01:30:35Z",
+      "branch": "zfj-k8d5/outbound-guard-source-custody-successor-20260913",
+      "created_at": "2026-09-14T02:41:48Z",
       "draft": false,
-      "head_sha": "7410ea5e8d1818a2443fddfea55475c5788dc1de",
-      "number": 14147,
-      "title": "build(shipaton): add ProofPocket Android RevenueCat carrier",
-      "updated_at": "2026-09-14T02:06:10Z"
+      "head_sha": "6ed69e2e963ff6143c7f4741e95aa475aa2224cb",
+      "number": 14223,
+      "title": "revenue: close outbound guard source-custody mutation race",
+      "updated_at": "2026-09-14T02:46:33Z"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "zkt-a7v2/right-now-human-authority",
-      "created_at": "2026-09-14T01:14:29Z",
+      "branch": "zbj-c6h9-signoz-research-20260913",
+      "created_at": "2026-09-14T02:40:27Z",
       "draft": false,
-      "head_sha": "1c95d8463cbaf7e6d11d266d292a5b7792a2dbbb",
-      "number": 14122,
-      "title": "Bind right-now buyer truth to canonical reply evidence",
-      "updated_at": "2026-09-14T01:20:44Z"
+      "head_sha": "412ee5bc38aa53abe6e7a8efe8b06a9bead49d85",
+      "number": 14221,
+      "title": "revenue: qualify SigNoz for bounded survival-proof outreach",
+      "updated_at": "2026-09-14T02:48:01Z"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "zba-v8k6/deal-room-provider-canonical-20260913",
-      "created_at": "2026-09-14T01:00:33Z",
+      "branch": "zms-q7t9/cas-benchmark-cohort-binding-20260913",
+      "created_at": "2026-09-14T02:38:08Z",
       "draft": false,
-      "head_sha": "d0c104f5fd41f4bb1e4f77fbb768804654b27a85",
-      "number": 14105,
-      "title": "fix(revenue): canonicalize Commercial Deal Room provider identity",
-      "updated_at": "2026-09-14T01:16:50Z"
+      "head_sha": "6a9543e6f2eeb2a60d353b294d9db4feff6e7a0f",
+      "number": 14218,
+      "title": "fix(revenue): bind CAS benchmark runs to one evaluation universe",
+      "updated_at": "2026-09-14T02:43:18Z"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "zkp-h7v2/commercial-portfolio-allocator",
-      "created_at": "2026-09-13T16:46:51Z",
+      "branch": "zpe-s4q8/initial-outreach-slot-20260913",
+      "created_at": "2026-09-14T02:34:25Z",
       "draft": false,
-      "head_sha": "4c8e4df0e5a085565937ee85e34f464f76fcdc11",
-      "number": 14086,
-      "title": "Add commercial portfolio allocation authority",
-      "updated_at": "2026-09-13T16:56:24Z"
+      "head_sha": "aad62a27680ccabd66d174d2140ec1c9d9123c42",
+      "number": 14215,
+      "title": "revenue: make initial hot-lead outreach provider-bound and one-shot",
+      "updated_at": "2026-09-14T02:42:28Z"
     }
   ],
   "open_heads": {
@@ -196,13 +196,12 @@
     "13812": "d1b9b8efc128ece969fa5007f02487fd2028a0a8",
     "13818": "ebf95fdc8fe223e14d9f2fc51ab71916cead16dd",
     "13821": "237d9963fc7424cfabb3910dd5968ae3544e8d5a",
-    "13824": "bc094b424ea740395eebc599e6ced2a270b40cde",
     "13842": "1460ce57369134ace18c5bdbb8f27f0854542bc2",
     "13844": "51a23e49c939f3090aedd852539fa2f1806ae630",
     "13857": "a1dde557acac3aa3531b7a5541e11f95b035f3bf",
-    "13862": "116b2605942aa826fae77a64e9448804298a2346",
+    "13862": "f77cc42cd065bcbc41d965b8165690b0c06c47d4",
     "13863": "ae949f0a623b1eb8af94fe76427cb93169f55d91",
-    "13865": "d729342fc448e21e25a7d432b7c5453e4a9774d9",
+    "13865": "b96d04b38d391236b2d9fd99528f57703cb5c481",
     "13874": "2d1fb3e3cff82f036a977036706dbaa6749c8459",
     "13877": "0a86059fec8319f9b3782e833089d76847bc408b",
     "13901": "54fa9ce0b97e2457aebb087fd4b6f9fdd979536e",
@@ -224,13 +223,45 @@
     "14159": "d9acf14a02c0a1455d063b63d1e4f041219b6410",
     "14173": "04407dde467b62fc06401f7bd82e81becbdc7200",
     "14188": "1859cf0bfc12f2819f3f63fd4349ed06ca5f341b",
-    "14209": "e4838bf76ecc1c27e184661d68f94d2c5e9ce1dc",
-    "14211": "ff1f29987bfc89bf41a875b6cdb56886ccb74d4e"
+    "14209": "61b6955c3db6ae10a71d54238243c87576a77166",
+    "14211": "ff1f29987bfc89bf41a875b6cdb56886ccb74d4e",
+    "14215": "aad62a27680ccabd66d174d2140ec1c9d9123c42",
+    "14218": "6a9543e6f2eeb2a60d353b294d9db4feff6e7a0f",
+    "14221": "412ee5bc38aa53abe6e7a8efe8b06a9bead49d85",
+    "14223": "6ed69e2e963ff6143c7f4741e95aa475aa2224cb",
+    "14226": "670ac88afd800b0b1c2cda056a2ee76693a68351",
+    "14227": "581768bb05252e1cc9b87aa9750e48b5f8850fe9",
+    "14228": "4c6b7994fb64a8bcb316e26ec82f91c0b285ad82",
+    "14229": "83423bd3b038824a007712d722f65c66bd7ad82a",
+    "14231": "7542aa1933697e4ee7888786d4b0c77db3a1d8a1",
+    "14232": "8d5e4511fd4514e7f95b248f408fb640a77df50e"
   },
-  "pulls_listed": 48,
+  "pulls_listed": 57,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 29.6,
+  "queue_depth_per_runner": 37.0,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zvw-c7p4/outbound-guard-source-custody-20260913",
+      "closed_at": "2026-09-14T02:43:40Z",
+      "head_sha": "bc094b424ea740395eebc599e6ced2a270b40cde",
+      "merged_at": null,
+      "number": 13824,
+      "state": "CLOSED",
+      "title": "revenue: harden core outbound guard source custody"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zbh-n6v2/mfef-commercial-contract-pin",
+      "closed_at": "2026-09-14T02:42:40Z",
+      "head_sha": "82811c0b20c5c65a603c1edd38dbc039c04e5a05",
+      "merged_at": "2026-09-14T02:42:40Z",
+      "number": 14222,
+      "state": "MERGED",
+      "title": "Fix evidence freshness commercial packet reseal trust"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -373,32 +404,10 @@
       "number": 14199,
       "state": "MERGED",
       "title": "feat: add AgentWitness trust rail for Monad Metropolis"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zch-n6k4/bid-cockpit-dependency-closure-20260913",
-      "closed_at": "2026-09-14T02:05:07Z",
-      "head_sha": "44e0af122ca0d5ffdd686fb3fd2b0344833779ee",
-      "merged_at": "2026-09-14T02:05:07Z",
-      "number": 14195,
-      "state": "MERGED",
-      "title": "fix(cockpit): enforce proven dependency closure"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zkl-f3n7/custody-repo-case-alias-r2",
-      "closed_at": "2026-09-14T02:02:08Z",
-      "head_sha": "481cf197917e5cda6d5004c9d6e544600294e4e0",
-      "merged_at": null,
-      "number": 14196,
-      "state": "CLOSED",
-      "title": "Revenue custody: collapse GitHub repo case aliases (clean successor)"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-14T02:33:52Z",
+  "unchanged_since": "2026-09-14T02:48:19Z",
   "undatable_pulls": []
 }
