@@ -18,11 +18,12 @@ The preflight makes the evidence requirements mechanical:
 
 1. one complete, unfiltered first-pass discovery must cover both `GitHub` and `Slack`;
 2. the latest such discovery controls; an older catalog or action success cannot override newer evidence;
-3. the discovery catalog is checked for policy-required write actions;
-4. a `NO_WRITE_RAIL` claim requires a relevant write attempt when those actions are exposed;
-5. read-endpoint throttling never proves a write rail absent;
-6. temporary or ambiguous write failures do not become connector-absence evidence;
-7. only complete read-only discovery or unavailable results for every exposed required probe can support the blocker claim.
+3. CURRENT mode requires the controlling discovery and latest write attempts to remain inside `max_age_seconds`; a fresh wrapper cannot revive old provider evidence;
+4. the discovery catalog is checked for policy-required write actions;
+5. a `NO_WRITE_RAIL` claim requires a relevant write attempt when those actions are exposed;
+6. read-endpoint throttling never proves a write rail absent;
+7. temporary or ambiguous write failures do not become connector-absence evidence;
+8. only complete read-only discovery or unavailable results for every exposed required probe can support the blocker claim.
 
 ## States
 
@@ -71,7 +72,7 @@ python -m coordination.connector_preflight.cli verify input.json bundle.json
 python -m coordination.connector_preflight.cli verify-current input.json bundle.json
 ```
 
-`compile` and `verify-current` use process UTC. `verify` proves exact retained historical integrity. Current verification fails when the input becomes stale or when the current decision projection differs from the retained one.
+`compile` and `verify-current` use process UTC. Their public Python APIs accept no `clock`, `now`, or `as_of` override. `verify` proves exact retained historical integrity. Current verification fails when the wrapper, controlling discovery, or authority-bearing write attempts become stale, or when the current decision projection differs from the retained one.
 
 Input reads require a bounded regular file and reject a final symlink. Output creation is create-exclusive, mode `0600`, and refuses overwrite/final-symlink publication.
 
