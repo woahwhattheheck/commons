@@ -2,8 +2,8 @@
   "counts": {
     "open_issues": 89,
     "open_pull_requests": 50,
-    "runs_in_progress": 20,
-    "runs_queued": 459
+    "runs_in_progress": 19,
+    "runs_queued": 464
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -83,10 +83,10 @@
       "branch": "zmh-c6t4-arc3-source-custody",
       "created_at": "2026-09-14T01:52:14Z",
       "draft": false,
-      "head_sha": "deb013044ddf55131a24471b277b08d448bc644e",
+      "head_sha": "4c6e1a47b729ee9f1be71b1ba7448d58f03772bc",
       "number": 14181,
       "title": "fix(arc3): bind hermetic execution to verified source bytes",
-      "updated_at": "2026-09-14T01:53:44Z"
+      "updated_at": "2026-09-14T01:54:03Z"
     },
     {
       "author": "woahwhattheheck",
@@ -226,12 +226,12 @@
     "14159": "d9acf14a02c0a1455d063b63d1e4f041219b6410",
     "14173": "4c89d87152407e6426b624ba7ab97f184567b4d8",
     "14178": "f2f65fd8a456d4b9a26fda13c61ba4d929710f5b",
-    "14181": "deb013044ddf55131a24471b277b08d448bc644e",
+    "14181": "4c6e1a47b729ee9f1be71b1ba7448d58f03772bc",
     "14185": "26d8e99934a2a4430d8ad844e56d8a8170e0d29a"
   },
   "pulls_listed": 50,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 22.9,
+  "queue_depth_per_runner": 24.4,
   "recently_closed": [
     {
       "author": "woahwhattheheck",
@@ -401,6 +401,6 @@
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-14T01:54:01Z",
+  "unchanged_since": "2026-09-14T01:54:18Z",
   "undatable_pulls": []
 }
