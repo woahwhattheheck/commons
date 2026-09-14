@@ -50,13 +50,13 @@ def spec(payment_state="PAID_EXTERNAL_EVIDENCE"):
     }
 
 
-def evidence(cid, disposition="MET", sha=H3, ref=None):
+def evidence(cid, disposition="MET", sha=H3, ref=None, recorded_at="2026-09-13T12:00:00Z"):
     return {
         "criterion_id": cid,
         "disposition": disposition,
         "evidence_ref": ref or f"ev-{cid}",
         "evidence_sha256": sha,
-        "recorded_at": "2026-09-13T12:00:00Z",
+        "recorded_at": recorded_at,
         "note": "",
     }
 
@@ -102,14 +102,57 @@ class DeskTests(unittest.TestCase):
 
     def test_latest_evidence_wins_without_erasing_history(self):
         st = rd.new_state(spec())
-        st = rd.record_evidence(st, evidence("accuracy", "HOLD", ref="ev-old"))
-        st = rd.record_evidence(st, evidence("accuracy", "MET", ref="ev-new"))
+        st = rd.record_evidence(st, evidence("accuracy", "HOLD", ref="ev-old", recorded_at="2026-09-13T12:00:00Z"))
+        st = rd.record_evidence(st, evidence("accuracy", "MET", ref="ev-new", recorded_at="2026-09-13T12:00:01Z"))
         st = rd.record_evidence(st, evidence("handoff"))
         out = rd.compile_rollout(st)
         self.assertEqual(out["decision"], "READY_FOR_OWNER_ROLLOUT_REVIEW")
         row = [x for x in out["pilot_criteria"] if x["criterion_id"] == "accuracy"][0]
         self.assertEqual(row["evidence"]["evidence_ref"], "ev-new")
         self.assertEqual(len(st["evidence_history"]), 3)
+
+    def test_same_time_contradictory_evidence_rejected(self):
+        st = rd.new_state(spec())
+        st = rd.record_evidence(st, evidence("accuracy", "NOT_MET", recorded_at="2026-09-13T12:00:10Z"))
+        with self.assertRaises(rd.DeskError):
+            rd.record_evidence(st, evidence("accuracy", "MET", recorded_at="2026-09-13T12:00:10Z"))
+
+    def test_backdated_evidence_rejected(self):
+        st = rd.new_state(spec())
+        st = rd.record_evidence(st, evidence("accuracy", "NOT_MET", recorded_at="2026-09-13T12:00:10Z"))
+        with self.assertRaises(rd.DeskError):
+            rd.record_evidence(st, evidence("accuracy", "MET", recorded_at="2026-09-13T12:00:09Z"))
+
+    def test_resealed_backdated_history_rejected(self):
+        st = rd.new_state(spec())
+        st = rd.record_evidence(st, evidence("accuracy", "NOT_MET", recorded_at="2026-09-13T12:00:10Z"))
+        st = rd.record_evidence(st, evidence("accuracy", "MET", recorded_at="2026-09-13T12:00:11Z"))
+        raw = rd._state_without_seal(st)
+        raw["evidence_history"][1]["recorded_at"] = "2026-09-13T12:00:09Z"
+        resealed = rd.seal_state(raw)
+        with self.assertRaises(rd.DeskError):
+            rd.validate_state(resealed)
+        with self.assertRaises(rd.DeskError):
+            rd.compile_rollout(resealed)
+
+    def test_timestamp_aliases_and_invalid_dates_rejected(self):
+        bad_values = [
+            "2026-09-13T12:00:00+00:00",
+            "2026-09-13 12:00:00Z",
+            "2026-09-13T12:00:00z",
+            "2026-02-30T12:00:00Z",
+            "yesterday",
+        ]
+        for value in bad_values:
+            with self.subTest(value=value):
+                st = rd.new_state(spec())
+                with self.assertRaises(rd.DeskError):
+                    rd.record_evidence(st, evidence("accuracy", recorded_at=value))
+
+    def test_fractional_utc_timestamp_is_supported(self):
+        st = rd.new_state(spec())
+        st = rd.record_evidence(st, evidence("accuracy", recorded_at="2026-09-13T12:00:00.123456Z"))
+        self.assertEqual(st["evidence_history"][0]["recorded_at"], "2026-09-13T12:00:00.123456Z")
 
     def test_included_followon_is_not_change_order(self):
         st = ready_state()
@@ -174,6 +217,56 @@ class DeskTests(unittest.TestCase):
         self.assertFalse(out["rollout_candidate"]["payment_received"])
         self.assertFalse(out["rollout_candidate"]["revenue_recognized"])
 
+    def test_followon_chronology_regression_rejected(self):
+        st = ready_state()
+        st = rd.add_followon_request(st, {
+            "request_id": "req-newer",
+            "title": "First observed request",
+            "scope_refs": ["summary"],
+            "requested_at": "2026-09-13T12:02:00Z",
+        })
+        with self.assertRaises(rd.DeskError):
+            rd.add_followon_request(st, {
+                "request_id": "req-older",
+                "title": "Backdated request",
+                "scope_refs": ["summary"],
+                "requested_at": "2026-09-13T12:01:59Z",
+            })
+
+    def test_resealed_followon_classification_rejected(self):
+        st = ready_state()
+        st = rd.add_followon_request(st, {
+            "request_id": "req-class",
+            "title": "Deploy to production",
+            "scope_refs": ["production-deploy"],
+            "requested_at": "2026-09-13T12:01:00Z",
+        })
+        raw = rd._state_without_seal(st)
+        raw["followon_requests"][0]["classification"] = "INCLUDED"
+        resealed = rd.seal_state(raw)
+        with self.assertRaises(rd.DeskError):
+            rd.validate_state(resealed)
+
+    def test_resealed_followon_chronology_rejected(self):
+        st = ready_state()
+        st = rd.add_followon_request(st, {
+            "request_id": "req-a",
+            "title": "A",
+            "scope_refs": ["summary"],
+            "requested_at": "2026-09-13T12:01:00Z",
+        })
+        st = rd.add_followon_request(st, {
+            "request_id": "req-b",
+            "title": "B",
+            "scope_refs": ["summary"],
+            "requested_at": "2026-09-13T12:02:00Z",
+        })
+        raw = rd._state_without_seal(st)
+        raw["followon_requests"][1]["requested_at"] = "2026-09-13T12:00:59Z"
+        resealed = rd.seal_state(raw)
+        with self.assertRaises(rd.DeskError):
+            rd.validate_state(resealed)
+
     def test_duplicate_followon_id_rejected(self):
         st = ready_state()
         req = {
@@ -214,6 +307,13 @@ class DeskTests(unittest.TestCase):
         st["revision"] = 999
         with self.assertRaises(rd.DeskError):
             rd.validate_state(st)
+
+    def test_resealed_revision_drift_rejected(self):
+        st = ready_state()
+        raw = rd._state_without_seal(st)
+        raw["revision"] = 999
+        with self.assertRaises(rd.DeskError):
+            rd.validate_state(rd.seal_state(raw))
 
     def test_authority_escalation_rejected(self):
         st = ready_state()
