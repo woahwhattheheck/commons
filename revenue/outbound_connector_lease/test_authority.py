@@ -49,21 +49,27 @@ def legacy(opportunity: str = "Acme / $199 diagnostic"):
 
 
 class CanonicalSeamAuthorityTests(unittest.TestCase):
-    def test_canonical_cold_seam_is_admitted_but_never_send_authority(self):
-        receipt = admit_compiled_seam(cold())
+    def assert_incomplete_production_receipt(self, receipt):
         self.assertEqual(receipt["state"], STATE)
-        self.assertFalse(receipt["external_send_authorized"])
-        self.assertFalse(receipt["legacy_mutex_accepted"])
         self.assertTrue(receipt["atomic_branch_create_required"])
+        self.assertTrue(receipt["organization_scope_authority_required"])
+        self.assertTrue(receipt["organization_wide_mutex_required"])
+        self.assertFalse(receipt["production_mutex_complete"])
         self.assertTrue(receipt["provider_reread_required"])
+        self.assertFalse(receipt["legacy_mutex_accepted"])
+        self.assertFalse(receipt["external_send_authorized"])
+
+    def test_canonical_cold_seam_is_admitted_but_incomplete_for_production(self):
+        self.assert_incomplete_production_receipt(admit_compiled_seam(cold()))
 
     def test_canonical_external_seam_round_trips(self):
         candidate = external()
         receipt = admit_json(json.dumps(candidate, sort_keys=True))
         self.assertEqual(receipt["branch"], candidate["branch"])
         self.assertEqual(receipt["seam_sha256"], candidate["seam_sha256"])
+        self.assert_incomplete_production_receipt(receipt)
 
-    def test_same_org_cold_outreach_cannot_split_by_recipient_or_offer(self):
+    def test_same_org_cold_spelling_normalizes_but_identity_fields_cannot_expand(self):
         first = cold("Example.COM.")
         second = cold("example.com")
         self.assertEqual(first, second)
@@ -84,6 +90,33 @@ class CanonicalSeamAuthorityTests(unittest.TestCase):
                 compile_key("prime.example", mutated)
         self.assertEqual(baseline, external("PRIME.EXAMPLE.", "ISSUER.EXAMPLE.", "RFP-04254"))
 
+    def test_distinct_org_opportunities_remain_distinct_and_require_org_mutex(self):
+        candidates = (
+            cold("example.com"),
+            external("example.com", "issuer.example", "rfp-a"),
+            external("example.com", "issuer.example", "rfp-b"),
+        )
+        self.assertEqual(len({candidate["branch"] for candidate in candidates}), 3)
+        for candidate in candidates:
+            with self.subTest(opportunity=candidate["opportunity"]):
+                self.assert_incomplete_production_receipt(admit_compiled_seam(candidate))
+
+    def test_buyer_scope_subdomain_alias_is_not_claimed_canonical(self):
+        primary = cold("example.com")
+        subdomain = cold("www.example.com")
+        self.assertNotEqual(primary["branch"], subdomain["branch"])
+        for candidate in (primary, subdomain):
+            receipt = admit_compiled_seam(candidate)
+            self.assertTrue(receipt["organization_scope_authority_required"])
+            self.assertFalse(receipt["production_mutex_complete"])
+
+    def test_external_authority_domain_alias_is_not_claimed_canonical(self):
+        issuer = external("buyer.example", "issuer.example", "rfp-42")
+        portal = external("buyer.example", "portal.issuer.example", "rfp-42")
+        self.assertNotEqual(issuer["branch"], portal["branch"])
+        for candidate in (issuer, portal):
+            self.assert_incomplete_production_receipt(admit_compiled_seam(candidate))
+
     def test_legacy_free_form_aliases_reproduce_parallel_key_bug(self):
         a = legacy_lead_key(
             opportunity="SigNoz / $2,500 survival proof",
@@ -101,7 +134,7 @@ class CanonicalSeamAuthorityTests(unittest.TestCase):
         with self.assertRaisesRegex(SeamAuthorityError, "legacy revenue/outbound_mutex"):
             admit_compiled_seam(legacy())
 
-    def test_legacy_sent_document_is_still_rejected_as_production_seam(self):
+    def test_legacy_sent_document_is_still_rejected_as_canonical_seam(self):
         candidate = legacy()
         candidate.update(
             state="sent",
