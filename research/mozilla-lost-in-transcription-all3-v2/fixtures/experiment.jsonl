@@ -1,0 +1,3 @@
+{"id":"sp-en-a","track":"sp-en","evidence_class":"synthetic","reference":"alpha uno beta","hypotheses":[{"text":"alpha uno beta","source":"a","rank":0},{"text":"alpha uno zeta","source":"b","rank":1}]}
+{"id":"sp-nh-a","track":"sp-nh","evidence_class":"synthetic","reference":"gamma uno delta","hypotheses":[{"text":"gamma uno delta","source":"a","rank":0},{"text":"gamma uno beta","source":"b","rank":1}]}
+{"id":"id-jv-a","track":"id-jv","evidence_class":"synthetic","reference":"epsilon satu zeta","hypotheses":[{"text":"epsilon satu zeta","source":"a","rank":0},{"text":"epsilon satu eta","source":"b","rank":1}]}
