@@ -1,70 +1,15 @@
 {
   "counts": {
-    "open_issues": 80,
-    "open_pull_requests": 44,
-    "runs_in_progress": 18,
+    "open_issues": 81,
+    "open_pull_requests": 45,
+    "runs_in_progress": 20,
     "runs_queued": 174
   },
   "counts_source": "graphql",
-  "degraded": [],
-  "drafts": 0,
-  "longest_open": [
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "mombasa/swarm-review-execution-evidence-clean-20260912",
-      "created_at": "2026-09-13T01:48:07Z",
-      "draft": false,
-      "head_sha": "73e73de79cb62cf2f58005efab027138ded6f282",
-      "number": 13533,
-      "title": "coordination: clean successor for exact-head execution evidence gate",
-      "updated_at": "2026-09-13T06:18:05Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-kestrel/ci-ignored-input-fence-current-20260913",
-      "created_at": "2026-09-13T06:40:39Z",
-      "draft": false,
-      "head_sha": "842d302b4c6ab001df5457c6b25309b301d53827",
-      "number": 13587,
-      "title": "ci: reject ignored runtime inputs before battery execution",
-      "updated_at": "2026-09-13T12:53:11Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zpq6n/actions-authority-stable-policy-latest-attempt-20260913",
-      "created_at": "2026-09-13T08:49:13Z",
-      "draft": false,
-      "head_sha": "96e28badbf1ea2ec3d9a9712b3c0cb730942e025",
-      "number": 13654,
-      "title": "ci: make Actions evidence classification-only",
-      "updated_at": "2026-09-13T09:14:30Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zr913425/port-data-qc-trusted-time-live-main-20260913",
-      "created_at": "2026-09-13T09:23:24Z",
-      "draft": false,
-      "head_sha": "aee34ae856ab682908406e7b77f017af6da37586",
-      "number": 13676,
-      "title": "fix(revenue): require trusted time for Port QC verification",
-      "updated_at": "2026-09-13T09:24:50Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zax/ohsu-digital-pathology-evidence-20260913",
-      "created_at": "2026-09-13T09:33:58Z",
-      "draft": false,
-      "head_sha": "d7d6a0a0dacf3d832fc62d6e0b1a39b15a985b54",
-      "number": 13683,
-      "title": "revenue: add OHSU digital pathology qualification evidence gate",
-      "updated_at": "2026-09-13T10:21:53Z"
-    }
+  "degraded": [
+    "pulls-partial"
   ],
+  "drafts": 0,
   "newest_pulls": [
     {
       "author": "woahwhattheheck",
@@ -224,8 +169,8 @@
     "14122": "1c95d8463cbaf7e6d11d266d292a5b7792a2dbbb"
   },
   "pulls_listed": 44,
-  "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 9.7,
+  "pulls_listing": "PARTIAL",
+  "queue_depth_per_runner": 8.7,
   "recently_closed": [
     {
       "author": "woahwhattheheck",
@@ -395,6 +340,6 @@
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-14T01:28:52Z",
+  "unchanged_since": "2026-09-14T01:29:46Z",
   "undatable_pulls": []
 }
