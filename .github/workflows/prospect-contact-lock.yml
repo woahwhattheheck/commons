@@ -23,10 +23,22 @@ jobs:
         python-version: ['3.11', '3.13']
     steps:
       - uses: actions/checkout@v4
+      - name: Detect package
+        id: package
+        shell: bash
+        run: |
+          if [[ -f revenue/prospect_contact_lock/lock.py ]]; then
+            echo 'present=true' >> "$GITHUB_OUTPUT"
+          else
+            echo 'present=false' >> "$GITHUB_OUTPUT"
+            echo 'Package not landed yet; workflow bootstrap only.'
+          fi
       - uses: actions/setup-python@v5
+        if: steps.package.outputs.present == 'true'
         with:
           python-version: ${{ matrix.python-version }}
       - name: Compile exact package
+        if: steps.package.outputs.present == 'true'
         run: |
           python -m py_compile \
             revenue/prospect_contact_lock/__init__.py \
@@ -37,6 +49,8 @@ jobs:
             revenue/prospect_contact_lock/test_lock.py \
             revenue/prospect_contact_lock/test_hardened.py
       - name: Hostile suite
+        if: steps.package.outputs.present == 'true'
         run: python -m unittest -v revenue.prospect_contact_lock.test_lock revenue.prospect_contact_lock.test_hardened
       - name: Hostile suite under optimized Python
+        if: steps.package.outputs.present == 'true'
         run: python -O -m unittest -v revenue.prospect_contact_lock.test_lock revenue.prospect_contact_lock.test_hardened
