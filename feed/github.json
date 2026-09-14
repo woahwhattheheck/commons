@@ -2,8 +2,8 @@
   "counts": {
     "open_issues": 89,
     "open_pull_requests": 54,
-    "runs_in_progress": 16,
-    "runs_queued": 759
+    "runs_in_progress": 13,
+    "runs_queued": 758
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -86,7 +86,7 @@
       "head_sha": "090815cee9355c36db86a6666023f391dc9ebcec",
       "number": 14235,
       "title": "fix(outbound): snapshot buyer-scope parsed inputs",
-      "updated_at": "2026-09-14T02:54:22Z"
+      "updated_at": "2026-09-14T02:54:44Z"
     },
     {
       "author": "woahwhattheheck",
@@ -235,7 +235,7 @@
   },
   "pulls_listed": 54,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 47.4,
+  "queue_depth_per_runner": 58.3,
   "recently_closed": [
     {
       "author": "woahwhattheheck",
@@ -405,6 +405,6 @@
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-14T02:54:37Z",
+  "unchanged_since": "2026-09-14T02:56:06Z",
   "undatable_pulls": []
 }
