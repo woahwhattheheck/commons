@@ -8,6 +8,7 @@ on:
       - "test_reply_to_revenue.py"
       - "test_reply_to_revenue_chronology.py"
       - "test_reply_to_revenue_chronology_hostiles.py"
+      - "test_reply_to_revenue_measurement_boundary.py"
       - ".github/workflows/reply-to-revenue-chronology.yml"
   pull_request:
     paths:
@@ -16,6 +17,7 @@ on:
       - "test_reply_to_revenue.py"
       - "test_reply_to_revenue_chronology.py"
       - "test_reply_to_revenue_chronology_hostiles.py"
+      - "test_reply_to_revenue_measurement_boundary.py"
       - ".github/workflows/reply-to-revenue-chronology.yml"
 
 permissions:
@@ -37,16 +39,19 @@ jobs:
             host/reply_to_revenue_core.py \
             test_reply_to_revenue.py \
             test_reply_to_revenue_chronology.py \
-            test_reply_to_revenue_chronology_hostiles.py
+            test_reply_to_revenue_chronology_hostiles.py \
+            test_reply_to_revenue_measurement_boundary.py
       - name: Run reply-to-revenue regressions
         run: |
           python -m unittest -v \
             test_reply_to_revenue \
             test_reply_to_revenue_chronology \
-            test_reply_to_revenue_chronology_hostiles
+            test_reply_to_revenue_chronology_hostiles \
+            test_reply_to_revenue_measurement_boundary
       - name: Run optimized reply-to-revenue regressions
         run: |
           python -O -m unittest -v \
             test_reply_to_revenue \
             test_reply_to_revenue_chronology \
-            test_reply_to_revenue_chronology_hostiles
+            test_reply_to_revenue_chronology_hostiles \
+            test_reply_to_revenue_measurement_boundary
