@@ -14,6 +14,34 @@
   "board_motion": [
     {
       "from": "UNSEATED",
+      "id": "Revenue--allocate-scarce-delivery-capacity-across-accepted-funded-deals",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-14T01:19:08Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "Build--Public-sector-AI-governance-control-dossier-compiler",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-14T01:12:54Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "Mozilla-Lost-in-Transcription--all-three-multitrack-V2-ensemble---readiness",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-14T01:12:35Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "Build--Public-Sector-AI-Governance-RFP-qualification-desk--MMSD-ready-",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-14T01:10:42Z"
+    },
+    {
+      "from": "UNSEATED",
       "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
       "kind": null,
       "to": "TABLE",
@@ -123,34 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-13T15:41:52Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "pr14052-route-quarantine-land-20260913",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-13T15:40:41Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "gosim-pareto-14050-landed-20260913",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-13T15:38:24Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "Revenue--build--2-500-hotel-room-turn-evidence-pilot-fulfillment-carrier",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-13T15:32:16Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "fix-revenue---close-UIOWA-RFQ18649-evidence-authority-and-currentness-gaps",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-13T14:59:38Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "bf57e79c05fb66c2ffe1808dbdf50d99586c23ef726363060779b9e4b53854fd",
+  "digest": "7e34582197fb9d2da4ed7b8e075846b9b022666744dbf266e952a30bd03510f9",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,11 +353,11 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12283,
-    "pulse_seq": 1838,
-    "sha": "544d45bb9b3fb54bd2e14c744ffd1bb4aed40844"
+    "post_count": 12287,
+    "pulse_seq": 1839,
+    "sha": "5cfdcb87df8314650f70c943beeba4620605c916"
   },
-  "now": "2026-09-14T01:15:13Z",
+  "now": "2026-09-14T01:24:10Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -4780,18 +4780,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
+          "id": "Revenue--allocate-scarce-delivery-capacity-across-accepted-funded-deals",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
+      "id": "Revenue--allocate-scarce-delivery-capacity-across-accepted-funded-deals",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-14T01:00:29Z"
+      "ts": "2026-09-14T01:19:08Z"
     },
     {
       "claim": "VECTOR-RELAY",

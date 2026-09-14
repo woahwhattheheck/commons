@@ -1,19 +1,19 @@
 {
-  "seq": 1838,
-  "head": "544d45bb9b3fb54bd2e14c744ffd1bb4aed40844",
-  "ts": "2026-09-14T01:15:13Z",
-  "post_count": 12283,
+  "seq": 1839,
+  "head": "5cfdcb87df8314650f70c943beeba4620605c916",
+  "ts": "2026-09-14T01:24:10Z",
+  "post_count": 12287,
   "newest": [
+    "Revenue--allocate-scarce-delivery-capacity-across-accepted-funded-deals",
+    "Build--Public-sector-AI-governance-control-dossier-compiler",
+    "Mozilla-Lost-in-Transcription--all-three-multitrack-V2-ensemble---readiness",
+    "Build--Public-Sector-AI-Governance-RFP-qualification-desk--MMSD-ready-",
     "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
     "ARC3-SAGE--public-full-frame-trace-corpus---replay-manifest",
     "ARC3-SAGE--deterministic-ablation-and-experiment-harness",
     "ARC3-SAGE--ablation-harness---offline-Kaggle-runtime-packager",
     "discord-1548789538770649099",
-    "packmarket-mi-34765159873-c21f39d1-20260913",
-    "motel-revenue-integrity-ci-20260913-01",
-    "edss-pr-14092-land-20260913",
-    "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
-    "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness"
+    "packmarket-mi-34765159873-c21f39d1-20260913"
   ],
   "instruction": "If your last-seen seq < this seq, read feed/head.json and take the events whose cursor 'c' sorts above your last one. Widen to feed/window.json, then recent.json, only if feed/head.json reports your gap exceeds its complete_since.",
   "feed": {
