@@ -2,8 +2,8 @@
   "counts": {
     "open_issues": 90,
     "open_pull_requests": 52,
-    "runs_in_progress": 17,
-    "runs_queued": 642
+    "runs_in_progress": 15,
+    "runs_queued": 647
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -66,6 +66,17 @@
     }
   ],
   "newest_pulls": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z-solstice/relationship-census-14216",
+      "created_at": "2026-09-14T02:43:37Z",
+      "draft": false,
+      "head_sha": "5c097d4c285943576f72c75d4989ade534c53ac9",
+      "number": 14226,
+      "title": "revenue: add provider relationship census custody gate",
+      "updated_at": "2026-09-14T02:43:37Z"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -164,17 +175,6 @@
       "number": 14159,
       "title": "Revenue: require fresh Stripe readback for right-now checkout truth",
       "updated_at": "2026-09-14T01:58:34Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zgc-p7v2/wri-open-timber-proposal-20260913",
-      "created_at": "2026-09-14T01:32:44Z",
-      "draft": false,
-      "head_sha": "421b0703a91d251e94be8ca55d9d22c6a76d8f0a",
-      "number": 14151,
-      "title": "Revenue: add WRI Open Timber Portal proposal carrier",
-      "updated_at": "2026-09-14T01:39:42Z"
     }
   ],
   "open_heads": {
@@ -196,7 +196,6 @@
     "13812": "d1b9b8efc128ece969fa5007f02487fd2028a0a8",
     "13818": "ebf95fdc8fe223e14d9f2fc51ab71916cead16dd",
     "13821": "237d9963fc7424cfabb3910dd5968ae3544e8d5a",
-    "13824": "bc094b424ea740395eebc599e6ced2a270b40cde",
     "13842": "1460ce57369134ace18c5bdbb8f27f0854542bc2",
     "13844": "51a23e49c939f3090aedd852539fa2f1806ae630",
     "13857": "a1dde557acac3aa3531b7a5541e11f95b035f3bf",
@@ -229,12 +228,24 @@
     "14215": "aad62a27680ccabd66d174d2140ec1c9d9123c42",
     "14218": "6a9543e6f2eeb2a60d353b294d9db4feff6e7a0f",
     "14221": "412ee5bc38aa53abe6e7a8efe8b06a9bead49d85",
-    "14223": "6ed69e2e963ff6143c7f4741e95aa475aa2224cb"
+    "14223": "6ed69e2e963ff6143c7f4741e95aa475aa2224cb",
+    "14226": "5c097d4c285943576f72c75d4989ade534c53ac9"
   },
   "pulls_listed": 52,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 37.8,
+  "queue_depth_per_runner": 43.1,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zvw-c7p4/outbound-guard-source-custody-20260913",
+      "closed_at": "2026-09-14T02:43:40Z",
+      "head_sha": "bc094b424ea740395eebc599e6ced2a270b40cde",
+      "merged_at": null,
+      "number": 13824,
+      "state": "CLOSED",
+      "title": "revenue: harden core outbound guard source custody"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -388,21 +399,10 @@
       "number": 14199,
       "state": "MERGED",
       "title": "feat: add AgentWitness trust rail for Monad Metropolis"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zch-n6k4/bid-cockpit-dependency-closure-20260913",
-      "closed_at": "2026-09-14T02:05:07Z",
-      "head_sha": "44e0af122ca0d5ffdd686fb3fd2b0344833779ee",
-      "merged_at": "2026-09-14T02:05:07Z",
-      "number": 14195,
-      "state": "MERGED",
-      "title": "fix(cockpit): enforce proven dependency closure"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-14T02:43:38Z",
+  "unchanged_since": "2026-09-14T02:44:26Z",
   "undatable_pulls": []
 }
