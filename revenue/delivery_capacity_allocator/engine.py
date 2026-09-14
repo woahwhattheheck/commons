@@ -84,8 +84,11 @@ def _allocation_core(
     active_by_deal: dict[str, dict[str, Any]] = {}
     blockers = _snapshot_blockers(policy, demand, reservations, now)
 
+    # Any normalized acceptance timestamp from the future contradicts the
+    # generation as a whole, even when the row has already advanced beyond the
+    # two stages eligible to compete for fresh capacity.
     for deal in demand["deals"]:
-        if deal["stage"] in {"BUYER_ACCEPTED", "FUNDED_TO_START"}:
+        if deal["accepted_at"] is not None:
             accepted = _parse_utc(deal["accepted_at"], "deal.accepted_at")
             if accepted > now:
                 blockers.append("DEAL_ACCEPTED_AT_FUTURE")
@@ -184,7 +187,7 @@ def _allocation_core(
         future_service = [
             slot
             for slot in matching_service
-            if _parse_utc(slot["starts_at"], "slot.starts_at") >= now
+            if _parse_utc(slot["starts_at"], "slot.starts_at") > now
         ]
         window_ok = [
             slot
