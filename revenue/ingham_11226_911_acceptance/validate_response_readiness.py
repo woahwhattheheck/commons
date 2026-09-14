@@ -18,7 +18,7 @@ STATE = ROOT / "response_readiness.json"
 REQUIRED_DOC_TOKENS = {
     "README.md": ["CONTACT_HOLD", "paid specialist", "Single-writer / outreach fence"],
     "SOURCE_LEDGER.md": ["Official current-solicitation facts", "Current unresolved gates", "UNKNOWN"],
-    "OPPORTUNITY_AND_WORKSHARE.md": ["PAID", "Binary technical acceptance criteria", "Explicit exclusions"],
+    "OPPORTUNITY_AND_WORKSHARE.md": ["paid specialist work package", "Binary technical acceptance criteria", "Explicit exclusions"],
     "ACCEPTANCE_HARNESS.md": ["Duplicate / replay / ambiguous retry", "Case denominator integrity", "Human-review boundary"],
     "INTEGRATION_AND_MEASUREMENT.md": ["Human authority classes", "Data boundary", "Workforce / quality instrumentation"],
     "PREPROPOSAL_BRIEF.md": ["Internal only", "Procurement questions", "Fast partner qualification"],
