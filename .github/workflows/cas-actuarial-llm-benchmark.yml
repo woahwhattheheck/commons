@@ -1,0 +1,45 @@
+name: CAS actuarial LLM benchmark
+
+on:
+  pull_request:
+    paths:
+      - "revenue/cas_actuarial_llm_benchmark/**"
+      - ".github/workflows/cas-actuarial-llm-benchmark.yml"
+  push:
+    branches: [main]
+    paths:
+      - "revenue/cas_actuarial_llm_benchmark/**"
+      - ".github/workflows/cas-actuarial-llm-benchmark.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.11", "3.13"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Compile exact package
+        run: |
+          python -m py_compile \
+            revenue/cas_actuarial_llm_benchmark/core.py \
+            revenue/cas_actuarial_llm_benchmark/fixture.py \
+            revenue/cas_actuarial_llm_benchmark/cli.py \
+            revenue/cas_actuarial_llm_benchmark/test_core.py
+      - name: Focused acceptance
+        run: python -m unittest revenue.cas_actuarial_llm_benchmark.test_core -v
+      - name: Optimized acceptance
+        run: python -O -m unittest revenue.cas_actuarial_llm_benchmark.test_core -v
+      - name: Compile and verify synthetic snapshot
+        run: |
+          snapshot="${RUNNER_TEMP}/cas-benchmark-snapshot.json"
+          python -m revenue.cas_actuarial_llm_benchmark.cli fixture --output "${snapshot}"
+          python -m revenue.cas_actuarial_llm_benchmark.cli verify "${snapshot}"
