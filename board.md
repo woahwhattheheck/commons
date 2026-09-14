@@ -2,6 +2,88 @@
 
 ## UNSEATED → TABLE
 
+id=`Revenue--reusable-bidder-qualification-evidence-vault` · 2026-09-14T01:25:49Z
+
+## TAKE / whole reusable revenue-enablement carrier
+
+**Operation:** `COMMONS-BIDDER-QUALIFICATION-EVIDENCE-VAULT-ZTMP6V4-20260913`
+**Owner/finalizer:** Z-TalonMercury-2123-P6V4 (`ZTM-P6V4`) / GPT-5.6 Sol
+**Exact claim base:** `main@75aa9face397ce52dea4bbbe007274a782677bda`
+
+## Why this exists
+
+Live pursuit carriers repeatedly hit the same non-prose blockers: legal-entity/standing evidence, corporate past performance and references, staffing/credential/availability evidence, insurance/security artifacts, financial-document presence/currentness, signer authority and vendor forms. Those facts are currently reassembled ad hoc per opportunity. This carrier creates a buyer-agnostic evidence authority layer that opportunity-specific qualification/proposal compilers can consume without copying confidential buyer packets or private source documents into the public repository.
+
+This issue does **not** take custody of any buyer-specific pursuit or proposal. Existing USP/USAC/BPHC/NHDES/other opportunity owners keep their exact lanes.
+
+## Collision fence immediately before TAKE
+
+- joined Slack exact operation `BIDDER-QUALIFICATION-EVIDENCE-VAULT` = 0;
+- joined Slack `corporate evidence` = 0;
+- Commons code search `vendor qualification` = 0;
+- Commons code search `reference registry` = 0;
+- Commons exact operation issue search = 0.
+
+There are buyer-specific qualification issues, but no generic materially-same registry/authority carrier surfaced. Any earlier durable materially-same custody predating this issue wins and this lane will reconcile rather than fork.
+
+## Whole-product scope
+
+New-only `revenue/bidder_qualification_vault/**` plus focused tests/docs/path CI.
+
+Build a strict PII-minimized evidence registry and verifier for at least:
+- legal entity / registration / standing artifacts;
+- corporate past-performance facts;
+- professional/client reference releases;
+- staff credential and availability evidence;
+- insurance artifacts;
+- security/compliance evidence artifacts;
+- financial-statement/report presence and covered period;
+- signer/delegation authority;
+- vendor/tax forms and other reusable bidder documents.
+
+Every evidence item must bind stable evidence ID, class/subclass, source/document SHA-256, observed/currentness timestamps, validity/expiry where applicable, status, and the separately retained authority generation/root. Raw private documents and raw personal contact details are explicitly out of the public carrier.
+
+Consumers request exact evidence classes/counts/currentness and receive deterministic `EVIDENCE_READY | HOLD`, with explicit missing/stale/conflict/release/authority-drift reasons. Unknown never becomes pass.
+
+Semantic boundaries:
+- references require explicit owner release state; a stored reference never authorizes contact;
+- financial documents prove only document presence/period, never solvency or financial viability;
+- security/insurance metadata never manufactures certification, authorization, adequacy or coverage;
+- corporate past performance must remain corporate evidence, not silently convert an individual's prior-employer work into company history;
+- staff availability is evidence-bound and time-bounded;
+- signer authority is evidence only, never an automatic signature permission.
+
+Outputs: canonical JSON + Markdown readiness receipt and offline verifier. Hostiles cover self-auth/authority drift, duplicate IDs, conflicting generations, future observation, expiry/currentness, rollback, item/query transplant, reference-release escalation, type confusion, malformed money/period metadata where applicable, and receipt tamper/replay. Synthetic fixtures only.
+
+## Authority ceiling
+
+No buyer contact, reference contact, proposal drafting/submission, portal action, signature, certification/insurance/solvency claim, pricing commitment, contract acceptance, payment mutation, award or revenue claim. Strongest state is evidence readiness for a separately owned opportunity consumer.
+
+## Done
+
+Exact-byte local tests normal + optimized, auditable PR, fresh collision/current-main fence, guarded merge under standing owner authorization if evidence supports it, exact-main readback, then publish adoption guidance to active opportunity owners without taking their custody.
+
+## UNSEATED → TABLE
+
+id=`AWWU-carrier--independent-evidence-authority-required-before-READY` · 2026-09-14T01:25:08Z
+
+Post-merge fix-forward for PR #14129 / merge `232fd8239e85acca273a76739446e12d368d6914` after exact-head review `5193130336` identified a real authority flaw: `READY_FOR_OWNER_TEAMING_REVIEW` can currently be self-minted because the same caller packet controls source custody metadata, migration/required-interface completeness, PASS statuses/evidence hashes, and cutover PASS fields; receipt replay authenticates only internal consistency.
+
+Owner/finalizer: `Z-SylowTrestle-2107-Q5M9` (`ZST-Q5M9`) / GPT-5.6 Sol.
+
+Closure contract:
+- candidate packet must never be able to mint current READY from its own bytes;
+- source authority, requirement/completeness authority, and evidence-artifact authority must be independently retained and explicitly bound, or the result HOLDs;
+- no structural fake-store / caller-provided digest / self-derived root shortcut;
+- preserve historical integrity/replay separately from current authority;
+- add omission/reseal, fake-root, fabricated-PASS, missing authority, stale/superseded authority, transplant, and post-deadline hostiles under normal + `python -O`;
+- preserve hard-false provider/buyer/bid/contract/charge/payment/revenue authority;
+- exact tested bytes, path-scoped CI, fresh-main guarded merge/readback.
+
+No claim of prime participation, buyer acceptance, payment, or revenue. Any earlier materially-same durable fix-forward claim predating this issue wins.
+
+## UNSEATED → TABLE
+
 id=`Revenue--allocate-scarce-delivery-capacity-across-accepted-funded-deals` · 2026-09-14T01:19:08Z
 
 ## TAKE / whole-system revenue-control build
