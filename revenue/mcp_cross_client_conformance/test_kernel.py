@@ -70,6 +70,20 @@ class EvaluationTests(unittest.TestCase):
         m,o=make_acceptance(); o=[x for x in o if x["case"]!="corrupt_binary"]; r=evaluate(m,o); self.assertEqual("HOLD",r["overall"]); self.assertIn("MISSING_HOSTILE_CASE:corrupt_binary",r["global_reasons"])
     def test_hostile_wrong_disposition_holds(self):
         m,o=make_acceptance(); t=next(x for x in o if x["case"]=="omitted_tool"); t["listed_tools"]=list(TOOLS); r=evaluate(m,o); self.assertEqual("HOLD",r["overall"]); self.assertTrue(any(x.startswith("HOSTILE_DISPOSITION:omitted_tool") for x in r["global_reasons"]))
+    def _assert_hostile_binding_failure(self, case, field, value, reason):
+        m,o=make_acceptance(); t=next(x for x in o if x["case"]==case); t[field]=value
+        assessment=assess_observation(m,t)
+        self.assertEqual(m["hostile_expectations"][case],assessment["disposition"])
+        self.assertIn(reason,assessment["reasons"])
+        r=evaluate(m,o)
+        self.assertEqual("HOLD",r["overall"])
+        self.assertIn(f"EVIDENCE_BINDING_FAILURE:{t['observation_id']}:{reason}",r["global_reasons"])
+    def test_reject_hostile_wrong_server_build_cannot_pass_aggregate(self):
+        self._assert_hostile_binding_failure("unsupported_protocol","server_build","wrong-build","SERVER_BUILD_MISMATCH")
+    def test_hold_hostile_wrong_fixture_cannot_pass_aggregate(self):
+        self._assert_hostile_binding_failure("omitted_tool","fixture_sha256","f"*64,"FIXTURE_MISMATCH")
+    def test_unverified_hostile_unknown_client_cannot_pass_aggregate(self):
+        self._assert_hostile_binding_failure("unreachable_listing","client_id","unknown-client","UNKNOWN_CLIENT")
     def test_production_action_boundary_fails_report(self):
         m,o=make_acceptance(); o[0]["production_action_count"]=1; r=evaluate(m,o); self.assertEqual("HOLD",r["overall"]); self.assertIn("PRODUCTION_ACTION_BOUNDARY_VIOLATED",r["global_reasons"])
     def test_receipt_tamper_detected(self):

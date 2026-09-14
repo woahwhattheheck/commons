@@ -4,6 +4,7 @@ on:
   push:
     paths:
       - "host/right_now_revenue.py"
+      - "host/settled_cash.py"
       - "host/smart_outreach.py"
       - "host/gpt_action_packets.py"
       - "revenue/right_now/**"
@@ -13,6 +14,7 @@ on:
       - "revenue/production_survival/**"
       - "right-now.html"
       - "right-now.js"
+      - "test_settled_cash.py"
       - "test_right_now.py"
       - "test_right_now_execution.py"
       - "test_smart_outreach.py"
@@ -22,6 +24,7 @@ on:
   pull_request:
     paths:
       - "host/right_now_revenue.py"
+      - "host/settled_cash.py"
       - "host/smart_outreach.py"
       - "host/gpt_action_packets.py"
       - "revenue/right_now/**"
@@ -31,6 +34,7 @@ on:
       - "revenue/production_survival/**"
       - "right-now.html"
       - "right-now.js"
+      - "test_settled_cash.py"
       - "test_right_now.py"
       - "test_right_now_execution.py"
       - "test_smart_outreach.py"
@@ -52,6 +56,6 @@ jobs:
       - name: Validate deterministic revenue projection
         run: python3 host/right_now_revenue.py validate
       - name: Run composed revenue tests
-        run: python3 -m unittest test_right_now.py test_right_now_execution.py test_smart_outreach.py test_gpt_action_packets.py test_survival_offer_page_truth.py
+        run: python3 -m unittest test_settled_cash.py test_right_now.py test_right_now_execution.py test_smart_outreach.py test_gpt_action_packets.py test_survival_offer_page_truth.py
       - name: Verify Python syntax
-        run: python3 -m py_compile host/right_now_revenue.py host/smart_outreach.py host/gpt_action_packets.py test_right_now.py test_right_now_execution.py test_smart_outreach.py test_gpt_action_packets.py test_survival_offer_page_truth.py
+        run: python3 -m py_compile host/right_now_revenue.py host/settled_cash.py host/smart_outreach.py host/gpt_action_packets.py test_settled_cash.py test_right_now.py test_right_now_execution.py test_smart_outreach.py test_gpt_action_packets.py test_survival_offer_page_truth.py

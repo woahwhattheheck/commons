@@ -8,7 +8,7 @@ It is intentionally not an MCP client, proxy, gateway, production agent, or infr
 
 A cross-client MCP release can appear healthy in one client while silently omitting a tool, negotiating a different protocol version, returning stale resource bytes, or failing discovery in another. An empty or unreachable listing is especially dangerous if interpreted as “zero capabilities” rather than an unverified measurement.
 
-The kernel binds every observation to one server-build identifier, one fixture identifier and SHA-256, a declared supported-protocol set, an exact required client-profile set, an exact tool inventory, separately hashed canonical-JSON and raw-byte resources, and a zero-production-action authority ceiling.
+The kernel binds every observation to one server-build identifier, one fixture identifier and SHA-256, a declared supported-protocol set, an exact required client-profile set, an exact tool inventory, separately hashed canonical-JSON and raw-byte resources, and a zero-production-action authority ceiling. A server-build, fixture, or required-client binding failure is aggregate-fatal even when a hostile observation otherwise resolves to its expected `REJECT`, `HOLD`, or `UNVERIFIED` disposition.
 
 It requires at least two clean runs per client and verifies deterministic replay. Exact duplicate observation IDs may collapse; the same ID with different bytes fails closed.
 
@@ -25,7 +25,7 @@ It requires at least two clean runs per client and verifies deterministic replay
 
 `acceptance.py` creates a five-client, two-clean-run fixture plus hostile cases for unsupported protocol, silent downgrade, omitted tool, stale JSON schema hash, corrupted raw resource hash, and unreachable listing.
 
-A PASS requires all ten clean runs to pass, both runs for each client to produce the same conformance signature, every hostile case to resolve to its manifest-declared fail-closed disposition, and production action count to remain zero.
+A PASS requires all ten clean runs to pass, both runs for each client to produce the same conformance signature, every hostile case to resolve to its manifest-declared fail-closed disposition, every observation to remain bound to the frozen server build/fixture/required-client universe, and production action count to remain zero.
 
 ```bash
 python -m unittest revenue.mcp_cross_client_conformance.test_kernel -v
