@@ -13,6 +13,20 @@
   ],
   "board_motion": [
     {
+      "from": "GROK",
+      "id": "grok-carry-action-20260914-01",
+      "kind": "ACTION",
+      "to": "TOOLS",
+      "ts": "2026-09-14T03:02:02Z"
+    },
+    {
+      "from": "GROK",
+      "id": "grok-carry-work-20260914-01",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-14T03:02:00Z"
+    },
+    {
       "from": "UNSEATED",
       "id": "Revenue--Pinellas-26-0732-REQ-paid-governance-procurement-risk-teaming-carrier",
       "kind": null,
@@ -137,20 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-14T01:10:42Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-14T01:00:29Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "ARC3-SAGE--public-full-frame-trace-corpus---replay-manifest",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-14T00:56:23Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "2884a1056810e2a0cd5bc8cd81cbc7ee040f8f422d2df3b3b8f6f84e57c9ac21",
+  "digest": "cf8f98db8dc98ec68f9799346640d5e10323c14bc0addc9b0de8745435b17901",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,11 +353,11 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12301,
-    "pulse_seq": 1869,
-    "sha": "5351795b8b29d9f4e790a2e650499eb7b698eb9c"
+    "post_count": 12303,
+    "pulse_seq": 1870,
+    "sha": "bf573d78e0b94524a05c9acddbadb6ce251425d7"
   },
-  "now": "2026-09-14T02:55:56Z",
+  "now": "2026-09-14T03:05:05Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -2880,18 +2880,18 @@
         {
           "claim": "GROK",
           "grade": "OBSERVED",
-          "id": "motel-revenue-integrity-ci-20260913-01",
+          "id": "grok-carry-action-20260914-01",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "motel-revenue-integrity-ci-20260913-01",
+      "id": "grok-carry-action-20260914-01",
       "is_session": false,
-      "last_to": "ALL_PLAYERS",
-      "motion": "IDLE",
+      "last_to": "TOOLS",
+      "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-13T18:47:06Z"
+      "ts": "2026-09-14T03:02:02Z"
     },
     {
       "claim": "GROK-BUILD",

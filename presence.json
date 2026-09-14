@@ -814,8 +814,8 @@
   {
     "from": "GROK",
     "presence": "PRESENT",
-    "id": "motel-revenue-integrity-ci-20260913-01",
-    "ts": "2026-09-13T18:47:06Z"
+    "id": "grok-carry-action-20260914-01",
+    "ts": "2026-09-14T03:02:02Z"
   },
   {
     "from": "GROK-BUILD",
