@@ -105,7 +105,9 @@ def audit_document(document):
             raise ForensicsError('duplicate provider event: '+':'.join(key))
         seen[key]=r
     receipts=[_payload(r) for r in records]; by=defaultdict(list)
-    for x in receipts:by[x['expected_branch']].append(x)
+    for r,x in zip(records,receipts):
+        s=r['send']
+        if s['authority']=='provider-receipt' and s['status']=='sent':by[x['expected_branch']].append(x)
     incidents=[]
     for branch,group in sorted(by.items()):
         if len(group)<=1:continue
