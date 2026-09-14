@@ -24,8 +24,22 @@ data, name private buyers, or overwrite DIO / `commercial.json`.
 | [evidence_contract.md](./evidence_contract.md) | Exact secret-free quote, acceptance, AT1–AT6 delivery, and processor-reference inputs |
 | [prospects.json](./prospects.json) | Four primary-source fit hypotheses plus the seven-contact canonical transport ledger |
 | [outreach.md](./outreach.md) | Sent distribution copy, do-not-resend ledger, and response-state receipt fields |
+| [outreach_reservations.json](./outreach_reservations.json) | Canonical secret-absent org/recipient/lead fingerprint reservation ledger. `main` blob-SHA CAS is the outbound single-writer authority. |
+| [outreach_reservation_protocol.md](./outreach_reservation_protocol.md) | Mandatory pre-send exact-history search, CAS reservation, last-inch authority verification, SENT_DNR tombstone, and unsent-release procedure. |
 | [processor_handoff.md](./processor_handoff.md) | Official hosted provider boundary; payout values never enter Commons |
 | [integration_inventory.json](./integration_inventory.json) | Connected and missing revenue capabilities without mock checkout |
+
+## Outbound single-writer gate
+
+**No successful canonical `main` ledger compare-and-swap, no new outbound send.**
+Slack TAKE messages are coordination mirrors, not transport authority. Before any
+new prospect email/form/provider action, search the exact organization,
+recipient, and stable lead reference across available Slack + transport/Gmail
+history, then reserve the lane in `outreach_reservations.json` using the current
+blob SHA. A stale-SHA conflict means another writer won: refresh and stop if the
+identity is now reserved. Immediately before transport, re-read `main` and
+verify the exact reservation is still `RESERVED` for the same owner and
+identity. See `outreach_reservation_protocol.md`.
 
 ## What is already landed (do not remint)
 
@@ -52,6 +66,8 @@ python3 -m unittest -v test_payment_ready.py
 python3 host/revenue_recovery.py --self-test
 python3 host/revenue_recovery.py measure --root .
 python3 -m unittest -v test_revenue_recovery.py
+python3 host/outreach_reservation.py --ledger revenue/payment_ready/outreach_reservations.json lint
+python3 -m unittest -v test_outreach_reservation.py
 ```
 
 ## Contest product (titanmcp)
