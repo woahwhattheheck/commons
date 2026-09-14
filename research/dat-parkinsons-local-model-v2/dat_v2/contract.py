@@ -6,10 +6,13 @@ import hashlib
 import json
 
 SCHEMA_VERSION = "dat-parkinsons-local-model-v2/model-v1"
-FEATURE_VERSION = "dat-v2-features/v1"
+FEATURE_VERSION = "dat-v2-features/v2"
 RUNTIME_COMMIT = "976fdcea1e6e586ca8af13bdab703de4a6c260a4"
 EPS = 1e-6
+MAX_INPUT_VOXELS = 256 * 256 * 256
+MAX_WORKING_AXIS = 96
 BRANCH_NAMES = ("logreg_c025", "logreg_c1", "logreg_c4_balanced")
+
 
 def _public_feature_names() -> tuple[str, ...]:
     names: list[str] = []
