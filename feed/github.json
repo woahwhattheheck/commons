@@ -1,9 +1,9 @@
 {
   "counts": {
-    "open_issues": 76,
-    "open_pull_requests": 45,
-    "runs_in_progress": 19,
-    "runs_queued": 118
+    "open_issues": 75,
+    "open_pull_requests": 44,
+    "runs_in_progress": 18,
+    "runs_queued": 122
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -80,24 +80,13 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "zep-b4n8/live-opportunity-intake-20260913",
-      "created_at": "2026-09-14T01:09:43Z",
-      "draft": false,
-      "head_sha": "6d963d04d54f33586b5ff96cc0388c47d9214211",
-      "number": 14114,
-      "title": "revenue: compile live opportunity state into portfolio input",
-      "updated_at": "2026-09-14T01:15:15Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
       "branch": "zba-v8k6/deal-room-provider-canonical-20260913",
       "created_at": "2026-09-14T01:00:33Z",
       "draft": false,
       "head_sha": "d0c104f5fd41f4bb1e4f77fbb768804654b27a85",
       "number": 14105,
       "title": "fix(revenue): canonicalize Commercial Deal Room provider identity",
-      "updated_at": "2026-09-14T01:13:01Z"
+      "updated_at": "2026-09-14T01:16:50Z"
     },
     {
       "author": "woahwhattheheck",
@@ -175,6 +164,17 @@
       "number": 14010,
       "title": "fix(revenue): harden Jersey DN827803 qualification authority v2",
       "updated_at": "2026-09-13T15:34:12Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zck-m6v2/call-e-routescout-20260913",
+      "created_at": "2026-09-13T14:46:36Z",
+      "draft": false,
+      "head_sha": "2182d07cd8750087a73f2aea2455890d75daf251",
+      "number": 13999,
+      "title": "CALL-E RouteScout: approval-gated procurement routing agent",
+      "updated_at": "2026-09-13T14:55:42Z"
     }
   ],
   "open_heads": {
@@ -221,13 +221,34 @@
     "14076": "13097f7581280415461458584c34e590761afa89",
     "14086": "4c8e4df0e5a085565937ee85e34f464f76fcdc11",
     "14105": "d0c104f5fd41f4bb1e4f77fbb768804654b27a85",
-    "14114": "6d963d04d54f33586b5ff96cc0388c47d9214211",
     "14122": "1c95d8463cbaf7e6d11d266d292a5b7792a2dbbb"
   },
-  "pulls_listed": 45,
+  "pulls_listed": 44,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 6.2,
+  "queue_depth_per_runner": 6.8,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zgl-m4q9/mozilla-lit-all3-v2",
+      "closed_at": "2026-09-14T01:18:58Z",
+      "head_sha": "24d6b0e374c62dbc3ecdd5820cd9e4d3630887f3",
+      "merged_at": null,
+      "number": 14123,
+      "state": "CLOSED",
+      "title": "research: Lost in Transcription all-three multitrack V2"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zep-b4n8/live-opportunity-intake-20260913",
+      "closed_at": "2026-09-14T01:17:28Z",
+      "head_sha": "6d963d04d54f33586b5ff96cc0388c47d9214211",
+      "merged_at": "2026-09-14T01:17:28Z",
+      "number": 14114,
+      "state": "MERGED",
+      "title": "revenue: compile live opportunity state into portfolio input"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -370,32 +391,10 @@
       "number": 14080,
       "state": "MERGED",
       "title": "Integrate live Calendar free/busy into sales meeting readiness"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zfa-v5k2/quantiphy-main-20260913",
-      "closed_at": "2026-09-13T16:53:33Z",
-      "head_sha": "abc4221105cf5163246ac98e88d0d9b522d61151",
-      "merged_at": "2026-09-13T16:53:33Z",
-      "number": 14090,
-      "state": "MERGED",
-      "title": "QuantiPhy Main: hybrid inference, calibration & evidence harness"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zlm-g7p2/tenderproof-paid-intake-20260913",
-      "closed_at": "2026-09-13T16:51:59Z",
-      "head_sha": "59c9992be28f72691b4db77e84bd9f3168db4bc6",
-      "merged_at": "2026-09-13T16:51:59Z",
-      "number": 14088,
-      "state": "MERGED",
-      "title": "revenue: gate TenderProof delivery on accepted funded scope"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-14T01:15:22Z",
+  "unchanged_since": "2026-09-14T01:19:04Z",
   "undatable_pulls": []
 }
