@@ -31,9 +31,9 @@ python -m tools.outbound_send_guard verify \
   --out verification.json
 ```
 
-The package-level `evaluate` alias is `compile_current`. It samples process UTC and has no caller clock parameter. See `CURRENT_TIME.md` for the exact currentness, expiry, historical replay, custody, and verification contract.
+The package-level `evaluate` alias is `compile_current`. It samples process UTC and has no caller clock parameter. The compatibility command `python -m tools.outbound_send_guard.guard --intent ... --evidence ...` also routes through the same process-clock current compiler; it cannot emit the old caller-clock receipt.
 
-The old `guard.py::evaluate()` routine is the deterministic decision engine used underneath the current wrapper. It is suitable for historical reconstruction and focused engine tests, but **its caller-supplied timestamps do not establish present freshness**. Direct invocation of `python -m tools.outbound_send_guard.guard` is legacy/historical and is not the supported production preflight route.
+The deterministic v1 decision engine is retained byte-for-byte in `guard_legacy.py` for historical reconstruction, focused engine tests, and composed controls such as buyer scope. It is an internal historical core: its caller-supplied timestamps do not establish present freshness and it is not a supported send-preflight entrypoint. See `CURRENT_TIME.md` for the exact currentness, expiry, historical replay, custody, and verification contract.
 
 ## Current receipt decisions
 
@@ -59,7 +59,8 @@ Every compiler and verifier result sets `side_effects_authorized=false`. A curre
 9. Current authority uses code-owned ceilings: evidence age 900 seconds, request age 900 seconds, future skew 300 seconds, and positive receipt lifetime 60 seconds. Candidate policy may tighten but never widen them.
 10. Historical explicit-time replay is labeled `HISTORICAL_INTEGRITY_ONLY`, outwardly `HOLD`, and can never clear current preflight.
 11. Parsed-object inputs are detached at the supported API entry. Exact-byte APIs hash the same bytes they strict-parse.
-12. The current CLI consumes one bounded no-follow regular-file generation and creates outputs exclusively; overwrite and final-component symlink targets are refused.
+12. Both package and compatibility CLIs route through process-clock current authority. The legacy engine has no production CLI.
+13. The current CLI consumes one bounded no-follow regular-file generation and creates outputs exclusively; overwrite and final-component symlink targets are refused.
 
 ## Evidence envelope
 
@@ -87,16 +88,22 @@ Verify: `0` only for an unexpired positive receipt whose current decision still 
 
 ```bash
 python -m py_compile \
+  tools/outbound_send_guard/guard_legacy.py \
   tools/outbound_send_guard/guard.py \
   tools/outbound_send_guard/current.py \
+  tools/outbound_send_guard/__init__.py \
+  tools/outbound_send_guard/__main__.py \
   tools/outbound_send_guard/test_guard.py \
-  tools/outbound_send_guard/test_current.py
+  tools/outbound_send_guard/test_current.py \
+  tools/outbound_send_guard/test_current_entrypoint.py
 python -m unittest -v \
   tools.outbound_send_guard.test_guard \
-  tools.outbound_send_guard.test_current
+  tools.outbound_send_guard.test_current \
+  tools.outbound_send_guard.test_current_entrypoint
 python -O -m unittest -v \
   tools.outbound_send_guard.test_guard \
-  tools.outbound_send_guard.test_current
+  tools.outbound_send_guard.test_current \
+  tools.outbound_send_guard.test_current_entrypoint
 ```
 
-The hostile matrix includes the original provider-SENT-without-Slack-receipt incident plus matched stale/future timestamp replay, one-sided stale request/snapshot, policy widening, expiry, verifier-time reseal, source change, caller mutation after snapshot, exact-byte custody, create-exclusive output, and symlink refusal.
+The hostile matrix includes the original provider-SENT-without-Slack-receipt incident plus matched stale/future timestamp replay, one-sided stale request/snapshot, policy widening, expiry, verifier-time reseal, source change, caller mutation after snapshot, exact-byte custody, legacy-module CLI routing, create-exclusive output, and symlink refusal.
