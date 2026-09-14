@@ -3,7 +3,7 @@
 {"at_ms":500,"direction":"server","event":{"type":"input.speech.stopped"}}
 {"at_ms":520,"direction":"server","event":{"type":"transcript.user","item_id":"item_1","text":"Please open a SEV one ticket for checkout latency."}}
 {"at_ms":700,"direction":"server","event":{"type":"reply.started","reply_id":"reply_1","item_id":"item_1"}}
-{"at_ms":850,"direction":"server","event":{"type":"tool.call","call_id":"call_1","reply_id":"reply_1","name":"open_ticket","arguments":{"severity":"sev1","summary":"checkout latency"}}}
+{"at_ms":850,"direction":"server","event":{"type":"tool.call","call_id":"call_1","name":"open_ticket","arguments":{"severity":"sev1","summary":"checkout latency"}}}
 {"at_ms":900,"direction":"server","event":{"type":"reply.done","reply_id":"reply_1","status":"completed"}}
 {"at_ms":920,"direction":"client","event":{"type":"tool.result","call_id":"call_1","result":"{\"ticket\":\"INC-123\"}","is_error":false}}
 {"at_ms":1000,"direction":"server","event":{"type":"reply.started","reply_id":"reply_2","item_id":"item_1"}}
