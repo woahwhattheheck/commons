@@ -39,7 +39,7 @@ class Agent:
             raise ValueError(variant)
         self.variant = variant
         self.rng = random.Random(seed)
-        self.skill: dict[tuple[int, int, int], int] = {}
+        self.skill: dict[tuple[int, int, int, int], int] = {}
         self.effect_votes: dict[tuple[int, int], list[int]] = {}
 
     def _candidate_order(self, ep: Episode) -> list[int]:
