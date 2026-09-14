@@ -5,15 +5,15 @@ from .test_support import *  # noqa: F401,F403
 
 
 class CustodyTests(GateTestCase):
-    def _load_ledger(self):
+    def _load_ledger(self, *, now=None):
         active = storage._load_active_key(self.root)
         retained_authority = authority._load_authority(
             self.root,
             active,
             self.fx.organization,
-            self.fx.now,
+            now or self.fx.now,
         )
-        return ledger._load_ledger(self.root, active, retained_authority, self.fx.now)
+        return ledger._load_ledger(self.root, active, retained_authority, now or self.fx.now)
 
     def test_authentic_ledger_rollback_below_retained_head_fails_closed(self):
         ledger_path = self.root / "ledgers" / f"{self.fx.organization}.json"
@@ -27,8 +27,32 @@ class CustodyTests(GateTestCase):
         self.assert_decision(gate.HOLD_AUTHORITY, receipt)
         self.assertIsNone(receipt["ledger_sha256"])
 
-    def test_same_generation_authenticated_fork_fails_closed(self):
-        self.fx.write_ledger([], updated_at=self.fx.now + timedelta(seconds=1))
+    def test_stale_but_authentic_quiet_ledger_fails_closed(self):
+        future = self.fx.now + timedelta(seconds=self.fx.policy["ledger_max_age_seconds"] + 1)
+
+        with self.assertRaisesRegex(gate.VerificationError, "coverage is stale"):
+            self._load_ledger(now=future)
+        receipt = self.fx.compile(
+            self.fx.request(requested_at=future),
+            now=future,
+        )
+        self.assert_decision(gate.HOLD_AUTHORITY, receipt)
+        self.assertIsNone(receipt["ledger_sha256"])
+
+    def test_same_generation_identical_state_coverage_refresh_is_allowed(self):
+        refreshed_at = self.fx.now + timedelta(seconds=1)
+        self.fx.write_ledger([], updated_at=refreshed_at)
+
+        retained = self._load_ledger()
+        self.assertEqual(refreshed_at, retained.updated_at)
+        self.assert_decision(gate.READY, self.fx.compile())
+
+    def test_same_generation_authenticated_event_state_fork_fails_closed(self):
+        self.fx.write_ledger([self.fx.event("sent-a", gate.EVENT_SENT)])
+        self.fx.write_ledger(
+            [self.fx.event("sent-b", gate.EVENT_SENT)],
+            updated_at=self.fx.now + timedelta(seconds=1),
+        )
 
         with self.assertRaisesRegex(gate.VerificationError, "same-generation ledger fork"):
             self._load_ledger()
