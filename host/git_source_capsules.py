@@ -14,6 +14,7 @@ from typing import Any, Sequence
 HEX40 = re.compile(r"[0-9a-f]{40}")
 HEX64 = re.compile(r"[0-9a-f]{64}")
 ORDINARY_BLOB_MODES = {"100644", "100755"}
+TREE_MODE = "40000"
 MAX_SOURCE_PATHS = 32
 MAX_FILE_BYTES_CEILING = 1_048_576
 GIT_SOURCE_KEYS = {
@@ -36,12 +37,21 @@ GIT_REPOSITORY_REDIRECT_ENV = {
     "GIT_NAMESPACE",
     "GIT_INDEX_FILE",
     "GIT_SHALLOW_FILE",
+    "GIT_QUARANTINE_PATH",
 }
 GIT_PATHSPEC_ENV = {
     "GIT_LITERAL_PATHSPECS",
     "GIT_GLOB_PATHSPECS",
     "GIT_NOGLOB_PATHSPECS",
     "GIT_ICASE_PATHSPECS",
+}
+GIT_CONFIG_INJECTION_ENV = {
+    "GIT_CONFIG",
+    "GIT_CONFIG_COUNT",
+    "GIT_CONFIG_PARAMETERS",
+    "GIT_CONFIG_SYSTEM",
+    "GIT_CONFIG_GLOBAL",
+    "GIT_CONFIG_NOSYSTEM",
 }
 
 
@@ -54,10 +64,13 @@ def _git_env() -> dict[str, str]:
     env = os.environ.copy()
     # ``git -C repo`` does not override inherited repository-routing variables such
     # as GIT_DIR. Remove every repository/object-store redirect so the explicit
-    # repository argument is the authority boundary. Pathspec policy is likewise
-    # process-owned so an inherited icase/glob mode cannot change path resolution.
-    for key in GIT_REPOSITORY_REDIRECT_ENV | GIT_PATHSPEC_ENV:
+    # repository argument is the authority boundary. Pathspec and command-line
+    # config injection are likewise process-owned rather than caller-controlled.
+    for key in GIT_REPOSITORY_REDIRECT_ENV | GIT_PATHSPEC_ENV | GIT_CONFIG_INJECTION_ENV:
         env.pop(key, None)
+    for key in list(env):
+        if key.startswith("GIT_CONFIG_KEY_") or key.startswith("GIT_CONFIG_VALUE_"):
+            env.pop(key, None)
     env["GIT_LITERAL_PATHSPECS"] = "1"
     # Exact-source reads are local-only: replacement objects and promisor-remote
     # lazy fetches may not supply bytes outside the selected local object database.
@@ -85,6 +98,11 @@ def _run(repo: Path, args: Sequence[str], *, input_bytes: bytes | None = None) -
     return proc.stdout
 
 
+def _git_object_oid(kind: str, raw: bytes) -> str:
+    header = f"{kind} {len(raw)}\0".encode("ascii")
+    return hashlib.sha1(header + raw).hexdigest()
+
+
 def _canonical_path(raw: str) -> str:
     if not isinstance(raw, str):
         raise GitSourceError("source path must be a string")
@@ -107,7 +125,9 @@ def _object_type(repo: Path, oid: str) -> str:
 
 
 def _commit_tree(repo: Path, commit: str) -> str:
-    raw = _run(repo, ["cat-file", "-p", commit])
+    raw = _run(repo, ["cat-file", "commit", commit])
+    if _git_object_oid("commit", raw) != commit:
+        raise GitSourceError(f"commit object id mismatch for {commit}")
     for line in raw.split(b"\n"):
         if line.startswith(b"tree "):
             try:
@@ -128,25 +148,50 @@ def _observed_main(repo: Path) -> str | None:
     return raw if HEX40.fullmatch(raw) else None
 
 
-def _tree_entry(repo: Path, commit: str, path: str) -> tuple[str, str, str]:
-    raw = _run(repo, ["ls-tree", "-z", "--full-tree", commit, "--", path])
-    rows = [row for row in raw.split(b"\x00") if row]
-    if len(rows) != 1:
-        raise GitSourceError(f"source path must resolve to exactly one committed entry: {path}")
-    try:
-        meta, returned = rows[0].split(b"\t", 1)
-        mode_b, typ_b, oid_b = meta.split(b" ", 2)
-        mode = mode_b.decode("ascii", "strict")
-        typ = typ_b.decode("ascii", "strict")
-        oid = oid_b.decode("ascii", "strict")
-        returned_path = returned.decode("utf-8", "strict")
-    except (ValueError, UnicodeDecodeError) as exc:
-        raise GitSourceError(f"malformed ls-tree result for {path}") from exc
-    if returned_path != path:
-        raise GitSourceError(f"source path resolved ambiguously: requested {path!r}, got {returned_path!r}")
-    if typ != "blob" or mode not in ORDINARY_BLOB_MODES or not HEX40.fullmatch(oid):
-        raise GitSourceError(f"source path is not an ordinary committed blob: {path} mode={mode} type={typ}")
-    return mode, typ, oid
+def _tree_rows(repo: Path, oid: str) -> dict[bytes, tuple[str, str]]:
+    raw = _run(repo, ["cat-file", "tree", oid])
+    if _git_object_oid("tree", raw) != oid:
+        raise GitSourceError(f"tree object id mismatch for {oid}")
+
+    rows: dict[bytes, tuple[str, str]] = {}
+    offset = 0
+    while offset < len(raw):
+        space = raw.find(b" ", offset)
+        nul = raw.find(b"\0", space + 1) if space >= 0 else -1
+        if space <= offset or nul <= space + 1 or nul + 21 > len(raw):
+            raise GitSourceError(f"malformed tree object {oid}")
+        mode_raw = raw[offset:space]
+        name = raw[space + 1 : nul]
+        object_raw = raw[nul + 1 : nul + 21]
+        try:
+            mode = mode_raw.decode("ascii", "strict")
+        except UnicodeDecodeError as exc:
+            raise GitSourceError(f"malformed tree mode in {oid}") from exc
+        if not name or b"/" in name or name in rows:
+            raise GitSourceError(f"malformed tree name in {oid}")
+        rows[name] = (mode, object_raw.hex())
+        offset = nul + 21
+    return rows
+
+
+def _tree_entry(repo: Path, tree_sha: str, path: str) -> tuple[str, str, str]:
+    current_tree = tree_sha
+    pieces = path.split("/")
+    for index, piece in enumerate(pieces):
+        rows = _tree_rows(repo, current_tree)
+        item = rows.get(piece.encode("utf-8", "strict"))
+        if item is None:
+            raise GitSourceError(f"source path is missing from committed tree: {path}")
+        mode, oid = item
+        if index < len(pieces) - 1:
+            if mode != TREE_MODE:
+                raise GitSourceError(f"source path crosses a non-tree entry: {path}")
+            current_tree = oid
+            continue
+        if mode not in ORDINARY_BLOB_MODES or not HEX40.fullmatch(oid):
+            raise GitSourceError(f"source path is not an ordinary committed blob: {path} mode={mode}")
+        return mode, "blob", oid
+    raise GitSourceError(f"source path did not resolve: {path}")
 
 
 def _blob(repo: Path, oid: str, expected_size: int, collect_limit: int) -> tuple[str, bytes | None]:
@@ -162,7 +207,9 @@ def _blob(repo: Path, oid: str, expected_size: int, collect_limit: int) -> tuple
     if proc.stdout is None:
         proc.kill()
         raise GitSourceError("git cat-file stdout unavailable")
-    hasher = hashlib.sha256()
+    content_hasher = hashlib.sha256()
+    object_hasher = hashlib.sha1()
+    object_hasher.update(f"blob {expected_size}\0".encode("ascii"))
     collected = bytearray() if expected_size <= collect_limit else None
     seen = 0
     while True:
@@ -170,7 +217,8 @@ def _blob(repo: Path, oid: str, expected_size: int, collect_limit: int) -> tuple
         if not chunk:
             break
         seen += len(chunk)
-        hasher.update(chunk)
+        content_hasher.update(chunk)
+        object_hasher.update(chunk)
         if collected is not None:
             collected.extend(chunk)
     if proc.stdout is not None:
@@ -183,7 +231,9 @@ def _blob(repo: Path, oid: str, expected_size: int, collect_limit: int) -> tuple
         raise GitSourceError(f"git cat-file blob failed: {stderr.decode('utf-8', 'replace')[:240]}")
     if seen != expected_size:
         raise GitSourceError(f"blob size changed while reading {oid}: expected {expected_size}, got {seen}")
-    return hasher.hexdigest(), bytes(collected) if collected is not None else None
+    if object_hasher.hexdigest() != oid:
+        raise GitSourceError(f"blob object id mismatch for {oid}")
+    return content_hasher.hexdigest(), bytes(collected) if collected is not None else None
 
 
 def _text_status(raw: bytes | None, *, oversized: bool) -> tuple[str | None, str | None]:
@@ -229,7 +279,7 @@ def collect_git_source(
     observed_main = _observed_main(repo)
     capsules: list[dict[str, Any]] = []
     for path in canonical_paths:
-        mode, _, blob_sha = _tree_entry(repo, commit, path)
+        mode, _, blob_sha = _tree_entry(repo, tree_sha, path)
         size_text = _run(repo, ["cat-file", "-s", blob_sha]).decode("ascii", "strict").strip()
         try:
             size = int(size_text)
