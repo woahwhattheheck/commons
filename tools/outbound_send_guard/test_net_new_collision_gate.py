@@ -20,7 +20,11 @@ def buyer_receipt(*, decision="ALLOW_NEW", authority="complete", scope="buyer-12
     }
     payload = {
         "schema_version": gate.BUYER_RECEIPT_SCHEMA,
-        "buyer_scope": {"scope_id": scope, "members": [{"email": "buyer@example.com"}]},
+        "buyer_scope": {"scope_id": scope, "members": [{
+            "email": "buyer@example.com",
+            "mailbox_complete": True, "mailbox_query_id": "gmail-sweep",
+            "slack_complete": True, "slack_query_id": "slack-sweep",
+        }]},
         "source": {},
         "core_receipt_sha256": gate._digest(core),
         "core": core,
@@ -31,10 +35,12 @@ def buyer_receipt(*, decision="ALLOW_NEW", authority="complete", scope="buyer-12
     return {"payload": payload, "receipt_sha256": gate._digest(payload)}
 
 
-def lease_receipt(preflight: str, *, scope="buyer-123", offer="pilot-001", held=True):
+def lease_receipt(preflight: str, *, recipient="buyer@example.com", offer="pilot-001", held=True, lease_scope=None, lease_offer=None):
+    lease_scope = lease_scope or gate._lease_scope_token("email", recipient)
+    lease_offer = lease_offer or gate._lease_scope_token("offer", offer)
     raw = {
         "schema": gate.LEASE_RECEIPT_SCHEMA,
-        "repo": "woahwhattheheck/commons", "buyer_scope": scope, "offer_scope": offer,
+        "repo": "woahwhattheheck/commons", "buyer_scope": lease_scope, "offer_scope": lease_offer,
         "seam_sha256": "2" * 64, "lease_ref": "refs/heads/outbound-lease-v3/x",
         "branch_name": "outbound-lease-v3/x", "metadata_path": ".tjlabs/x.json",
         "claimant": "Z-Worker", "claim_id": "claim-1", "claim_started_at": "2026-09-14T23:00:01Z",
@@ -78,18 +84,33 @@ class GateTests(unittest.TestCase):
         self.assertNotIn(CAP, str(result))
         self.assertEqual(result["receipt_sha256"], gate._digest(result["payload"]))
 
-    def test_green_artifacts_from_different_buyer_are_not_composable(self):
-        buyer = buyer_receipt(scope="buyer-A")
-        lease = lease_receipt(buyer["receipt_sha256"], scope="buyer-B")
+    def test_same_recipient_cannot_escape_collision_by_renaming_buyer_scope(self):
+        buyer = buyer_receipt(scope="arbitrary-local-name")
+        lease = lease_receipt(
+            buyer["receipt_sha256"],
+            lease_scope=gate._lease_scope_token("email", "other@example.com"),
+        )
         result = self.evaluate(buyer, lease)
         self.assertEqual(result["payload"]["decision"], "HOLD")
-        self.assertIn("BUYER_SCOPE_BINDING_MISMATCH", result["payload"]["reasons"])
+        self.assertIn("RECIPIENT_LEASE_SCOPE_BINDING_MISMATCH", result["payload"]["reasons"])
 
     def test_green_artifacts_from_different_offer_are_not_composable(self):
         buyer = buyer_receipt(offer="offer-A")
-        lease = lease_receipt(buyer["receipt_sha256"], offer="offer-B")
+        lease = lease_receipt(
+            buyer["receipt_sha256"],
+            offer="offer-A",
+            lease_offer=gate._lease_scope_token("offer", "offer-B"),
+        )
         result = self.evaluate(buyer, lease)
-        self.assertIn("OFFER_BINDING_MISMATCH", result["payload"]["reasons"])
+        self.assertIn("OFFER_LEASE_SCOPE_BINDING_MISMATCH", result["payload"]["reasons"])
+
+    def test_lease_tokens_are_canonical_machine_tokens_not_caller_names(self):
+        buyer = buyer_receipt(scope="Buyer Name With Spaces", offer="Pilot / 001")
+        lease = lease_receipt(buyer["receipt_sha256"], offer="Pilot / 001")
+        result = self.evaluate(buyer, lease)
+        self.assertEqual(result["payload"]["decision"], "COLLISION_CLEAR")
+        self.assertRegex(result["payload"]["lease_buyer_scope"], r"^email-[0-9a-f]{64}$")
+        self.assertRegex(result["payload"]["lease_offer_scope"], r"^offer-[0-9a-f]{64}$")
 
     def test_lease_must_bind_exact_preflight_receipt_generation(self):
         buyer = buyer_receipt()
@@ -164,6 +185,44 @@ class GateTests(unittest.TestCase):
                 live_parent_sha=PARENT, live_metadata_json=META,
                 receipt_verifier=lambda _: False, possession_verifier=possession_ok,
             )
+
+    def test_core_recipient_must_be_declared_buyer_member(self):
+        buyer = buyer_receipt()
+        buyer["payload"]["buyer_scope"]["members"][0]["email"] = "other@example.com"
+        buyer["receipt_sha256"] = gate._digest(buyer["payload"])
+        lease = lease_receipt(buyer["receipt_sha256"])
+        with self.assertRaisesRegex(gate.CollisionGateError, "not a declared buyer-scope member"):
+            self.evaluate(buyer, lease)
+
+    def test_default_verifiers_accept_real_v3_receipt_and_possession(self):
+        try:
+            from . import connector_capability_lease as v3
+        except ImportError:
+            self.skipTest("real v3 module unavailable in isolated local fixture")
+        buyer = buyer_receipt(scope="arbitrary-local-name", offer="Pilot / 001")
+        retained = []
+        claim = {
+            "repo": "woahwhattheheck/commons",
+            "buyer_scope": gate._lease_scope_token("email", "buyer@example.com"),
+            "offer_scope": gate._lease_scope_token("offer", "Pilot / 001"),
+            "claimant": "Z-Worker", "claim_id": "claim-001",
+            "claim_started_at": "2026-09-14T23:00:01Z",
+            "anchor_sha": PARENT, "preflight_sha256": buyer["receipt_sha256"],
+        }
+        plan = v3.prepare_acquisition(claim, retain_capability=retained.append)
+        intent = v3.bind_lease_commit(plan, BRANCH)
+        receipt = v3.receipt_from_readback(
+            intent, observed_branch_sha=BRANCH, observed_parent_sha=PARENT,
+            observed_metadata_json=plan["metadata_json"],
+        )
+        result = gate.evaluate(
+            buyer, receipt, claim_capability=retained[0],
+            live_branch_sha=BRANCH, live_parent_sha=PARENT,
+            live_metadata_json=plan["metadata_json"],
+        )
+        self.assertEqual(result["payload"]["decision"], "COLLISION_CLEAR")
+        self.assertTrue(result["payload"]["live_possession_proven"])
+        self.assertNotIn(retained[0], str(result))
 
     def test_output_is_deterministic_for_same_bound_evidence(self):
         self.assertEqual(self.evaluate(), self.evaluate())
