@@ -157,7 +157,10 @@ def _rfc3339(value: Any, field: str) -> str:
 def _repo(value: Any) -> str:
     if type(value) is not str or _REPO_RE.fullmatch(value) is None:
         raise CustodyError("repo: owner/name required")
-    return value
+    # GitHub owner/repository paths are case-insensitive. The custody seam must
+    # therefore collapse case aliases before hashing or the same repository can
+    # acquire multiple independent generation-1 chains.
+    return value.casefold()
 
 
 def _nullable_actor(value: Any, field: str) -> Optional[str]:
