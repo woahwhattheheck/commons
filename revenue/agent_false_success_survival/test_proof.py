@@ -150,6 +150,13 @@ class ProofTests(unittest.TestCase):
         self.assertEqual(c.decision, "REJECT")
         self.assertIn("MCP_IS_ERROR_NOT_BOOL", c.reasons)
 
+    def test_malformed_mcp_tool_result_rejected(self):
+        body = json.dumps({"jsonrpc": "2.0", "id": 1, "result": {"foo": "bar"}}).encode()
+        c = p.classify_exchange(200, "application/json", body)
+        self.assertEqual(c.decision, "REJECT")
+        self.assertIn("MCP_IS_ERROR_MISSING", c.reasons)
+        self.assertIn("MCP_CONTENT_MISSING", c.reasons)
+
     def test_json_rpc_error_rejected(self):
         body = b'{"jsonrpc":"2.0","id":1,"error":{"code":-1,"message":"x"}}'
         c = p.classify_exchange(200, "application/json", body)
