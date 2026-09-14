@@ -4,6 +4,7 @@ import copy
 import importlib.util
 import unittest
 from pathlib import Path
+from unittest import mock
 
 
 ROOT = Path(__file__).resolve().parent
@@ -21,50 +22,97 @@ class RightNowCheckoutAuthorityTests(unittest.TestCase):
         self.offer = control.read_object(control.AUTOPSY_PROVIDER_PATH)
         self.page = control.AUTOPSY_PUBLIC_PAGE_PATH.read_text(encoding="utf-8")
 
-    def validate(self, offer=None, page=None):
+    def validate(self, offer=None, page=None, catalog_as_of=None):
         return control.validate_checkout_authority(
             self.offer if offer is None else offer,
             self.page if page is None else page,
-            self.catalog["as_of"],
+            self.catalog["as_of"] if catalog_as_of is None else catalog_as_of,
         )
 
-    def test_exact_retained_provider_evidence_and_public_page_are_active(self) -> None:
+    def current_authority(self) -> dict:
+        return {
+            "active": True,
+            "offer_id": "agent-failure-autopsy-29",
+            "provider": "STRIPE",
+            "provider_account_id": "acct_1U6HI9ATH4EDE7XD",
+            "provider_payment_link_id": "plink_1UCFbLATH4EDE7XDlTunr6iO",
+            "provider_product_id": "prod_VCevsvv7skWk3e",
+            "provider_price_id": "price_1UCFbHATH4EDE7XD4NNrjfUe",
+            "payment_url": "https://buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g",
+            "currency": "USD",
+            "amount": 29,
+            "authority": "AUTHENTICATED_STRIPE_CURRENT_READBACK",
+            "observed_at_utc": "2026-09-14T01:31:47Z",
+        }
+
+    def test_exact_retained_provider_evidence_is_historical_not_current(self) -> None:
         authority = self.validate()
-        self.assertIs(authority["active"], True)
+        self.assertIs(authority["active"], False)
+        self.assertIs(authority["historically_verified"], True)
+        self.assertEqual(
+            authority["authority"], "RETAINED_HISTORICAL_STRIPE_EVIDENCE"
+        )
+        self.assertEqual(
+            authority["current_state"], "AUTHENTICATED_PROVIDER_READBACK_REQUIRED"
+        )
         self.assertEqual(authority["offer_id"], "agent-failure-autopsy-29")
-        self.assertEqual(authority["provider"], "STRIPE")
         self.assertEqual(
             authority["provider_payment_link_id"],
             "plink_1UCFbLATH4EDE7XDlTunr6iO",
         )
+
+    def test_far_future_catalog_cannot_reanimate_retained_provider_evidence(self) -> None:
+        authority = self.validate(catalog_as_of="2030-01-01T00:00:00Z")
+        self.assertIs(authority["active"], False)
         self.assertEqual(
-            authority["provider_receipt_sha256"],
-            "39ce997a58fe256b11c82963559452ec167bb8c2c7f42c67ad7ce790052e7b42",
+            authority["current_state"], "AUTHENTICATED_PROVIDER_READBACK_REQUIRED"
         )
 
-    def test_catalog_truth_reconciles_to_retained_authority(self) -> None:
+    def test_checked_in_catalog_and_compiled_control_fail_closed(self) -> None:
         authority = self.validate()
-        self.assertEqual(
-            self.catalog["truth"]["active_chargeable_checkout"],
-            authority["active"],
-        )
+        self.assertIs(self.catalog["truth"]["active_chargeable_checkout"], False)
+        self.assertIs(authority["active"], False)
         control.validate_catalog(copy.deepcopy(self.catalog), authority)
+        compiled = control.build_control()
+        self.assertIs(compiled["truth"]["active_chargeable_checkout"], False)
 
-    def test_repo_authored_catalog_boolean_cannot_hide_missing_live_row(self) -> None:
+    def test_repo_authored_true_cannot_mint_current_checkout(self) -> None:
         catalog = copy.deepcopy(self.catalog)
-        catalog["offers"][0]["payment_state"] = "BUYER_SPECIFIC_HANDOFF_REQUIRED"
         catalog["truth"]["active_chargeable_checkout"] = True
-        with self.assertRaisesRegex(control.ControlError, "retained checkout authority"):
+        with self.assertRaisesRegex(control.ControlError, "authenticated Stripe readback"):
             control.validate_catalog(catalog, self.validate())
 
-    def test_second_unbound_live_checkout_claim_fails_closed(self) -> None:
+    def test_current_control_requires_authenticated_provider_readback(self) -> None:
+        with mock.patch.object(
+            control.right_now_stripe_authority,
+            "fetch_current_checkout_authority",
+            return_value=self.current_authority(),
+        ):
+            current = control.build_current_control()
+        self.assertIs(current["truth"]["active_chargeable_checkout"], True)
+        self.assertEqual(
+            current["current_checkout_authority"]["authority"],
+            "AUTHENTICATED_STRIPE_CURRENT_READBACK",
+        )
+        self.assertEqual(current["as_of"], "2026-09-14T01:31:47Z")
+
+    def test_provider_read_failure_cannot_be_replaced_by_catalog_time(self) -> None:
+        with mock.patch.object(
+            control.right_now_stripe_authority,
+            "fetch_current_checkout_authority",
+            side_effect=control.right_now_stripe_authority.StripeAuthorityError("inactive"),
+        ):
+            with self.assertRaises(control.right_now_stripe_authority.StripeAuthorityError):
+                control.build_current_control()
+
+    def test_second_unbound_live_checkout_route_fails_closed(self) -> None:
         catalog = copy.deepcopy(self.catalog)
         catalog["offers"][1]["payment_state"] = "LIVE_PUBLIC_CHECKOUT_PAGE"
         catalog["offers"][1]["start_route"] = "agent-rescue.html"
         with self.assertRaises(control.ControlError):
             control.validate_catalog(catalog, self.validate())
 
-    def test_provider_status_drift_fails_closed(self) -> None:
+    def test_provider_status_drift_fails_closed_even_for_history(self) -> None:
         offer = copy.deepcopy(self.offer)
         offer["status"] = "PUBLIC_OFFER"
         with self.assertRaisesRegex(control.ControlError, "ACTIVE_VERIFIED"):
@@ -84,13 +132,13 @@ class RightNowCheckoutAuthorityTests(unittest.TestCase):
                 with self.assertRaisesRegex(control.ControlError, field):
                     self.validate(offer=offer)
 
-    def test_live_mode_evidence_is_required(self) -> None:
+    def test_live_mode_evidence_is_required_for_retained_identity(self) -> None:
         offer = copy.deepcopy(self.offer)
         offer["price"]["provider_account_binding"]["live_mode_verified_from_objects"] = False
         with self.assertRaisesRegex(control.ControlError, "live-mode evidence"):
             self.validate(offer=offer)
 
-    def test_provider_evidence_cannot_postdate_catalog_boundary(self) -> None:
+    def test_retained_provider_evidence_cannot_postdate_catalog_boundary(self) -> None:
         offer = copy.deepcopy(self.offer)
         offer["price"]["verified_at_utc"] = "2026-09-14T00:00:00+00:00"
         with self.assertRaisesRegex(control.ControlError, "later than catalog as_of"):
