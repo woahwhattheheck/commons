@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import copy
+import importlib
 import os
 import tempfile
 import unittest
@@ -95,6 +96,24 @@ class LatestDiscoveryTests(unittest.TestCase):
         github = next(row for row in packet["connectors"] if row["connector"] == "GitHub")
         self.assertFalse(github["blocker_supported"])
         self.assertFalse(packet["work_blocked_claim_supported"])
+
+    def test_same_time_conflicting_write_results_hold(self):
+        raw = base_input(
+            attempts=[
+                attempt("attempt-github-a", "GitHub", "create_branch", "SUCCESS"),
+                attempt("attempt-github-b", "GitHub", "create_branch", "UNAVAILABLE", digest=SHA_D),
+            ]
+        )
+        packet = compile_at(raw, T0)["packet"]
+        self.assertEqual("HOLD", packet["overall_state"])
+        self.assertIn("LATEST_ATTEMPT_CONFLICT_GitHub_create_branch", packet["reasons"])
+
+    def test_policy_overlay_reload_is_idempotent(self):
+        import coordination.connector_preflight.latest as latest
+
+        importlib.reload(latest)
+        packet = latest.compile_at(base_input(), T0)["packet"]
+        self.assertEqual("WRITE_ATTEMPT_REQUIRED", packet["overall_state"])
 
     @unittest.skipUnless(hasattr(os, "mkfifo"), "FIFO unavailable")
     def test_fifo_input_rejected_without_waiting_for_writer(self):
