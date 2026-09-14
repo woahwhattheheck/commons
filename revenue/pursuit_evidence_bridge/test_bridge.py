@@ -92,12 +92,19 @@ class BridgeTests(unittest.TestCase):
             "static_holds": [],
         }, 0)
 
-    def test_production_binding_matches_landed_jersey_bytes_and_holds(self):
+    def _jersey_bytes(self):
         root = Path(__file__).resolve().parents[2]
-        source = json.loads((root / "opportunities/jersey_connecting_health_cdr_openehr_dn827803/sources.json").read_text())
-        manifest = json.loads((root / "opportunities/jersey_connecting_health_cdr_openehr_dn827803/fixtures/public_hold.json").read_text())
-        with patch.object(bridge, "_process_now", return_value=NOW):
-            result = bridge.compile_bridge("jersey-dn827803-main-v1", source, manifest, None)
+        _, bindings = bridge._load_binding_registry()
+        binding = bindings["jersey-dn827803-main-v1"]
+        source = json.loads((root / binding["source_ledger_path"]).read_text())
+        manifest = json.loads((root / binding["submission_manifest_path"]).read_text())
+        return binding, source, manifest
+
+    def test_production_binding_matches_landed_jersey_bytes_and_holds(self):
+        registry_sha, bindings = bridge._load_binding_registry()
+        binding, source, manifest = self._jersey_bytes()
+        self.assertEqual(binding, bindings["jersey-dn827803-main-v1"])
+        result = bridge._evaluate_at(binding, registry_sha, source, manifest, None, NOW)
         self.assertEqual(result["status"], "HOLD")
         self.assertIn("TENDER_PACK_NOT_ACQUIRED", result["reason_codes"])
         self.assertIn("CONTROLLING_TENDER_PACK_NOT_REVIEWED", result["reason_codes"])
@@ -110,9 +117,7 @@ class BridgeTests(unittest.TestCase):
         authority, registry, query, bundle, authority_sha, registry_sha = self._vault_fixture()
         binding = self._synthetic_binding(source, manifest, authority_sha, registry_sha, query)
         vault = {"authority": authority, "registry": registry, "query": query, "bundle": bundle}
-        with patch.object(bridge, "_load_binding_registry", return_value=("f" * 64, {binding["binding_id"]: binding})), \
-             patch.object(bridge, "_process_now", return_value=NOW):
-            result = bridge.compile_bridge(binding["binding_id"], source, manifest, vault)
+        result = bridge._evaluate_at(binding, "f" * 64, source, manifest, vault, NOW)
         self.assertEqual(result["status"], "OPPORTUNITY_EVIDENCE_READY")
         self.assertEqual(result["reason_codes"], [])
         self.assertEqual(result["vault"]["current_status"], "EVIDENCE_READY")
@@ -124,9 +129,7 @@ class BridgeTests(unittest.TestCase):
         binding = self._synthetic_binding(source, manifest, authority_sha, registry_sha, query)
         vault = {"authority": authority, "registry": registry, "query": query, "bundle": bundle}
         later = datetime(2026, 9, 14, 12, 2, 0, tzinfo=UTC)
-        with patch.object(bridge, "_load_binding_registry", return_value=("f" * 64, {binding["binding_id"]: binding})), \
-             patch.object(bridge, "_process_now", return_value=later):
-            result = bridge.compile_bridge(binding["binding_id"], source, manifest, vault)
+        result = bridge._evaluate_at(binding, "f" * 64, source, manifest, vault, later)
         self.assertEqual(result["status"], "HOLD")
         self.assertIn("BIDDER_EVIDENCE_HOLD", result["reason_codes"])
 
@@ -137,10 +140,8 @@ class BridgeTests(unittest.TestCase):
         bad_query = deepcopy(query)
         bad_query["query_id"] = "other-query"
         vault = {"authority": authority, "registry": registry, "query": bad_query, "bundle": bundle}
-        with patch.object(bridge, "_load_binding_registry", return_value=("f" * 64, {binding["binding_id"]: binding})), \
-             patch.object(bridge, "_process_now", return_value=NOW):
-            with self.assertRaisesRegex(bridge.BridgeError, "query root mismatch"):
-                bridge.compile_bridge(binding["binding_id"], source, manifest, vault)
+        with self.assertRaisesRegex(bridge.BridgeError, "query root mismatch"):
+            bridge._evaluate_at(binding, "f" * 64, source, manifest, vault, NOW)
 
     def test_source_and_manifest_roots_are_not_caller_selected(self):
         registry_sha, bindings = bridge._load_binding_registry()
@@ -152,25 +153,38 @@ class BridgeTests(unittest.TestCase):
         with self.assertRaisesRegex(bridge.BridgeError, "submission_manifest root mismatch"):
             bridge._evaluate_at(binding, registry_sha, source, {"fake": True}, None, NOW)
 
-    def test_deadline_uses_process_clock_and_public_api_has_no_as_of(self):
+    def test_deadline_uses_explicit_historical_evaluator_and_public_api_has_no_as_of(self):
         registry_sha, bindings = bridge._load_binding_registry()
-        binding = bindings["jersey-dn827803-main-v1"]
-        root = Path(__file__).resolve().parents[2]
-        source = json.loads((root / binding["source_ledger_path"]).read_text())
-        manifest = json.loads((root / binding["submission_manifest_path"]).read_text())
+        binding, source, manifest = self._jersey_bytes()
+        self.assertEqual(binding, bindings["jersey-dn827803-main-v1"])
         after = datetime(2026, 9, 29, 22, 30, 0, tzinfo=UTC)
-        with patch.object(bridge, "_process_now", return_value=after):
-            result = bridge.compile_bridge(binding["binding_id"], source, manifest, None)
+        result = bridge._evaluate_at(binding, registry_sha, source, manifest, None, after)
         self.assertIn("PROPOSAL_DEADLINE_EXPIRED", result["reason_codes"])
         with self.assertRaises(TypeError):
             bridge.compile_bridge(binding["binding_id"], source, manifest, None, evaluated_at=NOW)  # type: ignore[call-arg]
 
+    def test_public_current_clock_ignores_module_datetime_rebinding(self):
+        binding, source, manifest = self._jersey_bytes()
+        fake_now = datetime(2001, 1, 1, 0, 0, 0, tzinfo=UTC)
+        real_datetime = datetime
+
+        class FakeDatetime:
+            @classmethod
+            def now(cls, tz=None):
+                return fake_now
+
+            @classmethod
+            def strptime(cls, text, fmt):
+                return real_datetime.strptime(text, fmt)
+
+        with patch.object(bridge, "datetime", FakeDatetime):
+            result = bridge.compile_bridge(binding["binding_id"], source, manifest, None)
+        self.assertNotEqual(result["evaluated_at"], "2001-01-01T00:00:00Z")
+
     def test_runtime_cannot_supply_unpinned_vault_roots(self):
         registry_sha, bindings = bridge._load_binding_registry()
-        binding = bindings["jersey-dn827803-main-v1"]
-        root = Path(__file__).resolve().parents[2]
-        source = json.loads((root / binding["source_ledger_path"]).read_text())
-        manifest = json.loads((root / binding["submission_manifest_path"]).read_text())
+        binding, source, manifest = self._jersey_bytes()
+        self.assertEqual(binding, bindings["jersey-dn827803-main-v1"])
         fake_vault = {"authority": {}, "registry": {}, "query": {}, "bundle": {}}
         with self.assertRaisesRegex(bridge.BridgeError, "cannot self-authorize"):
             bridge._evaluate_at(binding, registry_sha, source, manifest, fake_vault, NOW)
@@ -179,15 +193,10 @@ class BridgeTests(unittest.TestCase):
         class MutatingDict(dict):
             pass
 
-        registry_sha, bindings = bridge._load_binding_registry()
-        binding = bindings["jersey-dn827803-main-v1"]
-        root = Path(__file__).resolve().parents[2]
-        source = json.loads((root / binding["source_ledger_path"]).read_text())
-        manifest = json.loads((root / binding["submission_manifest_path"]).read_text())
+        binding, source, manifest = self._jersey_bytes()
         source["tender_pack"] = MutatingDict(source["tender_pack"])
-        with patch.object(bridge, "_process_now", return_value=NOW):
-            with self.assertRaisesRegex(bridge.BridgeError, "plain JSON builtins required"):
-                bridge.compile_bridge(binding["binding_id"], source, manifest, None)
+        with self.assertRaisesRegex(bridge.BridgeError, "plain JSON builtins required"):
+            bridge.compile_bridge(binding["binding_id"], source, manifest, None)
 
     def test_envelope_rejects_caller_clock_and_expected_roots(self):
         for extra in ("as_of", "deadline_utc", "expected_authority_sha256", "expected_source_sha256"):
