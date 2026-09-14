@@ -1,0 +1,52 @@
+name: Hive016 Creator Niche App Studio
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'revenue/hive/creator-niche-app-studio/**'
+      - '.github/workflows/hive016-creator-niche-app-studio.yml'
+  pull_request:
+    paths:
+      - 'revenue/hive/creator-niche-app-studio/**'
+      - '.github/workflows/hive016-creator-niche-app-studio.yml'
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.sha }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python: ['3.11', '3.12', '3.13']
+    defaults:
+      run:
+        working-directory: revenue/hive/creator-niche-app-studio
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: python -m py_compile *.py
+      - run: python -m unittest -v
+      - run: python -O -m unittest -v
+      - run: node --check static/app.js
+      - name: Deterministic demo replay
+        run: |
+          rm -rf "$RUNNER_TEMP/hive016"
+          mkdir -p "$RUNNER_TEMP/hive016"
+          python studio.py demo --db "$RUNNER_TEMP/hive016/state.sqlite3" --fixture example_workspace.json --output "$RUNNER_TEMP/hive016/export-a.zip" > "$RUNNER_TEMP/hive016/demo-receipt.json"
+          python studio.py export --db "$RUNNER_TEMP/hive016/state.sqlite3" --plan-id spring-wheel-basics --output "$RUNNER_TEMP/hive016/export-b.zip" > "$RUNNER_TEMP/hive016/export-receipt.json"
+          cmp "$RUNNER_TEMP/hive016/export-a.zip" "$RUNNER_TEMP/hive016/export-b.zip"
+          python studio.py verify "$RUNNER_TEMP/hive016/export-a.zip"

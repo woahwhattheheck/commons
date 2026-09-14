@@ -1,0 +1,52 @@
+{
+  "workspace": {
+    "workspace_id": "kiln-club",
+    "brand_name": "Kiln Club Studio",
+    "audience_name": "Ceramics teachers and community-studio instructors",
+    "tagline": "Plan shared tools and per-attendee supplies without multiplying the wrong things.",
+    "accent_color": "#b45309",
+    "tier": "starter"
+  },
+  "plan": {
+    "plan_id": "spring-wheel-basics",
+    "title": "Spring Wheel Basics — three class sessions",
+    "rostered_count": 35,
+    "expected_attendees": 28,
+    "sessions": 3,
+    "items": [
+      {
+        "item_id": "clay-lumps",
+        "name": "Prepared clay lumps",
+        "mode": "PER_ATTENDEE_CONSUMABLE",
+        "unit_label": "lumps",
+        "on_hand_units": 30,
+        "reserve_units": 8,
+        "units_per_pack": 25,
+        "estimated_pack_cost_cents": 4200,
+        "per_attendee_per_session": 1
+      },
+      {
+        "item_id": "brushes",
+        "name": "Glaze brushes",
+        "mode": "SHARED_REUSABLE",
+        "unit_label": "brushes",
+        "on_hand_units": 12,
+        "reserve_units": 2,
+        "units_per_pack": 6,
+        "estimated_pack_cost_cents": 1800,
+        "shared_target_units": 18
+      },
+      {
+        "item_id": "ribs",
+        "name": "Pottery ribs",
+        "mode": "SHARED_REUSABLE",
+        "unit_label": "ribs",
+        "on_hand_units": 16,
+        "reserve_units": 2,
+        "units_per_pack": 8,
+        "estimated_pack_cost_cents": 2400,
+        "shared_target_units": 20
+      }
+    ]
+  }
+}
