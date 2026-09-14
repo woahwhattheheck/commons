@@ -1,9 +1,9 @@
 {
   "counts": {
-    "open_issues": 116,
+    "open_issues": 117,
     "open_pull_requests": 66,
-    "runs_in_progress": 14,
-    "runs_queued": 1081
+    "runs_in_progress": 11,
+    "runs_queued": 1006
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -247,7 +247,7 @@
   },
   "pulls_listed": 66,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 77.2,
+  "queue_depth_per_runner": 91.5,
   "recently_closed": [
     {
       "author": "woahwhattheheck",
@@ -362,35 +362,24 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "swarm-z/zgl-nourish-digital-health-20260914",
-      "closed_at": "2026-09-14T04:34:09Z",
-      "head_sha": "1a4bd2f505d3f6537af1d7ce641b816669970722",
-      "merged_at": "2026-09-14T04:34:09Z",
-      "number": 14315,
+      "branch": "z-sol-13/ttuhsc-keywell-workstream-20260913",
+      "closed_at": "2026-09-14T03:32:56Z",
+      "head_sha": "6fab4c5fb9144aa29e3effe76747443d8380a049",
+      "merged_at": "2026-09-14T03:32:56Z",
+      "number": 14253,
       "state": "MERGED",
-      "title": "Add NIH NOURISH local-first association notebook prototype"
+      "title": "Revenue: TTUHSC Keywell pilot-verification subcontract workstream"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "zfhj2x9/outbound-canonical-seam-fix-rejoin-20260913",
-      "closed_at": "2026-09-14T04:24:48Z",
-      "head_sha": "28b1a3131e900ffc10209231b22aba7d8ecd66b7",
-      "merged_at": null,
-      "number": 14302,
-      "state": "CLOSED",
-      "title": "[SUPERSEDED / AUDIT ONLY] fix(outbound): opportunity seam repair"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zmg-n4v7/f45-productive-harvest-collect-20260913",
-      "closed_at": "2026-09-14T04:22:36Z",
-      "head_sha": "2e150e0ea32c5f8ecb7456d077ca6befb88dcfb4",
-      "merged_at": "2026-09-14T04:22:35Z",
-      "number": 13863,
+      "branch": "z17/offer-portfolio-router-20260913",
+      "closed_at": "2026-09-14T03:31:52Z",
+      "head_sha": "2ccbf7d2e7773e59c2ec9400d93bfec15768eac6",
+      "merged_at": "2026-09-14T03:31:52Z",
+      "number": 14252,
       "state": "MERGED",
-      "title": "titan: add F45 productive HARVEST/COLLECT protection"
+      "title": "revenue(router): allocate one paid offer per org before outreach"
     },
     {
       "author": "woahwhattheheck",
@@ -406,17 +395,28 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "zfj-k8d5/outbound-guard-source-custody-successor-20260913",
-      "closed_at": "2026-09-14T03:08:12Z",
-      "head_sha": "6526e530767cd517249a7f72ae281aa565eda0cb",
-      "merged_at": null,
-      "number": 14223,
-      "state": "CLOSED",
-      "title": "revenue: close outbound guard source-custody mutation race"
+      "branch": "zlp/mmsd-ai-governance-20260913",
+      "closed_at": "2026-09-14T03:23:23Z",
+      "head_sha": "d5f2615da22bce9c765d9ddfce7b03b7690b1b67",
+      "merged_at": "2026-09-14T03:23:23Z",
+      "number": 14242,
+      "state": "MERGED",
+      "title": "MMSD AI governance: fail-closed pursuit/source-status carrier"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "swarm-z/f38-s420-only-zbbc4w8",
+      "closed_at": "2026-09-14T03:23:12Z",
+      "head_sha": "e82415299f3dc4496367b7ad25ecaf69af1838ac",
+      "merged_at": "2026-09-14T03:23:12Z",
+      "number": 14241,
+      "state": "MERGED",
+      "title": "TITAN V5: land F38 S420-only source carrier"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-14T05:36:30Z",
+  "unchanged_since": "2026-09-14T05:49:49Z",
   "undatable_pulls": []
 }
