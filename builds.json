@@ -350,7 +350,7 @@
   }
  ],
  "pr_note": "Open GitHub PRs from public unauthenticated /pulls. PR-road work sits beside ntfy-road posts. Descriptive only. Not a merge gate. A PR is not main.",
- "n_open_prs": 52,
+ "n_open_prs": 53,
  "open_prs": [
   {
    "number": 13533,
@@ -1153,12 +1153,12 @@
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
   {
-   "number": 14254,
+   "number": 14246,
    "author": "woahwhattheheck",
-   "title": "Revenue: gate organization-level cross-contact pressure",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/14254",
+   "title": "fix(revenue): close questionnaire authority and publication gaps",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/14246",
    "base_freshness": {
-    "base_sha": "8e6cbd02d3f247a8ca906018c7344c65bd48e3ce",
+    "base_sha": "db68118423bef95d0971fb320d83ffabec802abc",
     "main_sha": "483290583247a26c510262ba1483759aa5a1b834",
     "ahead_by": null,
     "behind_by": null,
@@ -1169,12 +1169,28 @@
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
   {
-   "number": 14246,
+   "number": 14256,
    "author": "woahwhattheheck",
-   "title": "fix(revenue): close questionnaire authority and publication gaps",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/14246",
+   "title": "feat(revenue): exact RFP/Addenda Delta Desk",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/14256",
    "base_freshness": {
-    "base_sha": "db68118423bef95d0971fb320d83ffabec802abc",
+    "base_sha": "c86f4036fa793eb26f9d50d77d972e7798ce6f18",
+    "main_sha": "483290583247a26c510262ba1483759aa5a1b834",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 14254,
+   "author": "woahwhattheheck",
+   "title": "Revenue: gate organization-level cross-contact pressure",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/14254",
+   "base_freshness": {
+    "base_sha": "8e6cbd02d3f247a8ca906018c7344c65bd48e3ce",
     "main_sha": "483290583247a26c510262ba1483759aa5a1b834",
     "ahead_by": null,
     "behind_by": null,
