@@ -5,19 +5,41 @@ from __future__ import annotations
 import copy
 import hashlib
 import json
+import os
 import re
 import subprocess
 from pathlib import Path
 from typing import Any, Sequence
 
 HEX40 = re.compile(r"[0-9a-f]{40}")
+HEX64 = re.compile(r"[0-9a-f]{64}")
 ORDINARY_BLOB_MODES = {"100644", "100755"}
 MAX_SOURCE_PATHS = 32
 MAX_FILE_BYTES_CEILING = 1_048_576
+GIT_SOURCE_KEYS = {
+    "commit",
+    "tree_sha",
+    "observed_main_head",
+    "source_commit_matches_observed_main",
+    "max_file_bytes",
+    "requested_paths",
+    "capsules",
+}
+CAPSULE_BASE_KEYS = {"path", "mode", "blob_sha", "content_sha256", "bytes", "text_included"}
+CAPSULE_OMISSION_REASONS = {"FILE_TOO_LARGE", "NON_UTF8", "NON_TEXT_CONTROL", "PACKET_BUDGET"}
 
 
 class GitSourceError(ValueError):
     pass
+
+
+def _git_env() -> dict[str, str]:
+    """Return a controlled Git environment with replacement objects disabled."""
+    env = os.environ.copy()
+    # refs/replace/* must never be allowed to change the object graph beneath an
+    # exact 40-hex identity. Overwrite any inherited value rather than trusting it.
+    env["GIT_NO_REPLACE_OBJECTS"] = "1"
+    return env
 
 
 def _run(repo: Path, args: Sequence[str], *, input_bytes: bytes | None = None) -> bytes:
@@ -28,6 +50,7 @@ def _run(repo: Path, args: Sequence[str], *, input_bytes: bytes | None = None) -
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE,
             check=False,
+            env=_git_env(),
         )
     except OSError as exc:
         raise GitSourceError(f"git unavailable: {exc}") from exc
@@ -107,6 +130,7 @@ def _blob(repo: Path, oid: str, expected_size: int, collect_limit: int) -> tuple
             ["git", "-C", str(repo), "cat-file", "blob", oid],
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE,
+            env=_git_env(),
         )
     except OSError as exc:
         raise GitSourceError(f"git unavailable: {exc}") from exc
@@ -215,16 +239,66 @@ def collect_git_source(
     }
 
 
+def _validate_packet_capsule(row: Any) -> tuple[bool, str]:
+    """Validate exact packet capsule schema before equality/coercion is possible."""
+    if type(row) is not dict:
+        return False, "git-source-capsule-shape"
+    included = row.get("text_included")
+    if type(included) is not bool:
+        return False, "git-source-inclusion-flag"
+    expected_keys = CAPSULE_BASE_KEYS | ({"text"} if included else {"omission_reason"})
+    if set(row) != expected_keys:
+        return False, "git-source-capsule-shape"
+    path = row.get("path")
+    try:
+        if type(path) is not str or _canonical_path(path) != path:
+            return False, "git-source-path"
+    except GitSourceError:
+        return False, "git-source-path"
+    if type(row.get("mode")) is not str or row["mode"] not in ORDINARY_BLOB_MODES:
+        return False, "git-source-mode"
+    if type(row.get("blob_sha")) is not str or not HEX40.fullmatch(row["blob_sha"]):
+        return False, "git-source-blob-sha"
+    if type(row.get("content_sha256")) is not str or not HEX64.fullmatch(row["content_sha256"]):
+        return False, "git-source-content-sha256"
+    if type(row.get("bytes")) is not int or row["bytes"] < 0:
+        return False, "git-source-bytes"
+    if included:
+        if type(row.get("text")) is not str:
+            return False, "git-source-text"
+    else:
+        if type(row.get("omission_reason")) is not str or row["omission_reason"] not in CAPSULE_OMISSION_REASONS:
+            return False, "git-source-omission"
+    return True, "ok"
+
+
 def verify_git_source(bundle: Any, repository: str | Path) -> tuple[bool, str]:
     """Re-read committed objects and verify packet source metadata/text against them."""
-    if not isinstance(bundle, dict):
+    if type(bundle) is not dict or set(bundle) != GIT_SOURCE_KEYS:
         return False, "git-source-shape"
     commit = bundle.get("commit")
+    tree_sha = bundle.get("tree_sha")
+    observed_main = bundle.get("observed_main_head")
+    source_matches_main = bundle.get("source_commit_matches_observed_main")
     requested = bundle.get("requested_paths")
     max_file_bytes = bundle.get("max_file_bytes")
     capsules = bundle.get("capsules")
-    if not isinstance(requested, list) or not isinstance(capsules, list):
+    if type(commit) is not str or not HEX40.fullmatch(commit):
+        return False, "git-source-commit"
+    if type(tree_sha) is not str or not HEX40.fullmatch(tree_sha):
+        return False, "git-source-tree-sha"
+    if observed_main is not None and (type(observed_main) is not str or not HEX40.fullmatch(observed_main)):
+        return False, "git-source-observed-main-head"
+    if source_matches_main is not None and type(source_matches_main) is not bool:
+        return False, "git-source-main-match"
+    if type(max_file_bytes) is not int or not (1 <= max_file_bytes <= MAX_FILE_BYTES_CEILING):
+        return False, "git-source-max-file-bytes"
+    if type(requested) is not list or not all(type(path) is str for path in requested) or type(capsules) is not list:
         return False, "git-source-shape"
+    for packet_row in capsules:
+        valid, reason = _validate_packet_capsule(packet_row)
+        if not valid:
+            return False, reason
     try:
         expected = collect_git_source(repository, commit, requested, max_file_bytes=max_file_bytes)
     except (GitSourceError, TypeError):
@@ -237,27 +311,23 @@ def verify_git_source(bundle: Any, repository: str | Path) -> tuple[bool, str]:
     if len(actual_by_path) != len(capsules):
         return False, "git-source-capsule-count"
     for packet_row in capsules:
-        if not isinstance(packet_row, dict):
-            return False, "git-source-capsule-shape"
-        path = packet_row.get("path")
+        path = packet_row["path"]
         actual = actual_by_path.get(path)
         if actual is None:
             return False, "git-source-path"
         for key in ("mode", "blob_sha", "content_sha256", "bytes"):
-            if packet_row.get(key) != actual.get(key):
+            if packet_row[key] != actual.get(key):
                 return False, f"git-source-{key.replace('_', '-')}"
-        if packet_row.get("text_included") is True:
-            if "text" not in packet_row or packet_row.get("text") != actual.get("text") or actual.get("text") is None:
+        if packet_row["text_included"] is True:
+            if packet_row["text"] != actual.get("text") or actual.get("text") is None:
                 return False, "git-source-text"
-        elif packet_row.get("text_included") is False:
-            reason = packet_row.get("omission_reason")
+        else:
+            reason = packet_row["omission_reason"]
             if actual.get("text") is None:
                 if reason != actual.get("source_omission_reason"):
                     return False, "git-source-omission"
             elif reason != "PACKET_BUDGET":
                 return False, "git-source-omission"
-        else:
-            return False, "git-source-inclusion-flag"
     return True, "ok"
 
 
@@ -295,18 +365,16 @@ def verify_packet_git_source(packet: Any, repository: str | Path) -> tuple[bool,
         return False, "git-source-packet-shape"
     if not isinstance(omitted_final, dict) or not isinstance(recent_final, list) or not isinstance(resources_final, list):
         return False, "git-source-packet-shape"
-    for key in ("claims", "coordination", "recent", "resources"):
+    for key in ("claims", "coordination", "recent", "resources", "git_source_text_files", "git_source_text_bytes"):
         if type(omitted_final.get(key)) is not int or omitted_final[key] < 0:
             return False, "git-source-omitted-shape"
 
     packet_rows = source.get("capsules")
     if not isinstance(packet_rows, list):
         return False, "git-source-shape"
-    omitted_rows = [row for row in packet_rows if isinstance(row, dict) and row.get("text_included") is False]
-    if len(omitted_rows) != len([row for row in packet_rows if isinstance(row, dict) and not row.get("text_included")]):
-        return False, "git-source-inclusion-flag"
+    omitted_rows = [row for row in packet_rows if row["text_included"] is False]
     omitted_files = len(omitted_rows)
-    omitted_bytes = sum(int(row["bytes"]) for row in omitted_rows)
+    omitted_bytes = sum(row["bytes"] for row in omitted_rows)
     if omitted_final.get("git_source_text_files") != omitted_files:
         return False, "git-source-omitted-files"
     if omitted_final.get("git_source_text_bytes") != omitted_bytes:
@@ -341,7 +409,7 @@ def verify_packet_git_source(packet: Any, repository: str | Path) -> tuple[bool,
         else:
             row["omission_reason"] = "PACKET_BUDGET"
     omitted["git_source_text_files"] = len(source_probe["capsules"])
-    omitted["git_source_text_bytes"] = sum(int(row["bytes"]) for row in source_probe["capsules"])
+    omitted["git_source_text_bytes"] = sum(row["bytes"] for row in source_probe["capsules"])
 
     def size() -> int:
         sized = copy.deepcopy(probe)
@@ -364,13 +432,13 @@ def verify_packet_git_source(packet: Any, repository: str | Path) -> tuple[bool,
         row["text_included"] = True
         row.pop("omission_reason", None)
         omitted["git_source_text_files"] -= 1
-        omitted["git_source_text_bytes"] -= int(row["bytes"])
+        omitted["git_source_text_bytes"] -= row["bytes"]
         if size() > max_chars:
             row.pop("text", None)
             row["text_included"] = False
             row["omission_reason"] = "PACKET_BUDGET"
             omitted["git_source_text_files"] += 1
-            omitted["git_source_text_bytes"] += int(row["bytes"])
+            omitted["git_source_text_bytes"] += row["bytes"]
 
     expected_by_path = {row["path"]: row for row in source_probe["capsules"]}
     for packet_row in packet_rows:
