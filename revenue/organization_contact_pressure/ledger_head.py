@@ -41,7 +41,7 @@ from .core import (
 )
 from .storage import _open_directory_fd, _read_regular_file_at
 
-_HEAD_NAME_RE = re.compile(r"^(\d{20})-([0-9a-f]{64})-([0-9a-f]{64})\.json$")
+_HEAD_NAME_RE = re.compile(r"^(\d{20})-(\d{20})-([0-9a-f]{64})-([0-9a-f]{64})\.json$")
 
 
 def _ledger_head_epoch_sha256(key_id: str, verifier_id: str) -> str:
@@ -50,6 +50,7 @@ def _ledger_head_epoch_sha256(key_id: str, verifier_id: str) -> str:
 
 def _ledger_head_filename(body: Mapping[str, Any]) -> str:
     return (
+        f"{body['policy_generation']:020d}-"
         f"{body['ledger_generation']:020d}-"
         f"{body['ledger_sha256']}-"
         f"{_ledger_head_epoch_sha256(body['key_id'], body['verifier_id'])}.json"
@@ -60,6 +61,7 @@ def _normalize_ledger_head_document(document: Mapping[str, Any]) -> tuple[dict[s
     fields = {
         "schema",
         "organization_scope_sha256",
+        "policy_generation",
         "ledger_generation",
         "ledger_sha256",
         "ledger_updated_at",
@@ -75,6 +77,12 @@ def _normalize_ledger_head_document(document: Mapping[str, Any]) -> tuple[dict[s
         "schema": LEDGER_HEAD_SCHEMA,
         "organization_scope_sha256": _expect_hex64(
             document["organization_scope_sha256"], "ledger_head.organization_scope_sha256"
+        ),
+        "policy_generation": _expect_int(
+            document["policy_generation"],
+            "ledger_head.policy_generation",
+            minimum=1,
+            maximum=MAX_SAFE_INTEGER,
         ),
         "ledger_generation": _expect_int(
             document["ledger_generation"],
@@ -131,6 +139,12 @@ def _verify_current_ledger_head(
                 continue
             if not hmac.compare_digest(signature, _hmac_hex(active.key, body)):
                 raise VerificationError("ledger head HMAC is invalid")
+            # Policy generations are independent retained epochs. A legitimate
+            # policy rotation may re-sign an unchanged event set at the same
+            # event-count generation, so older policy checkpoints remain
+            # historical without becoming a false same-generation fork.
+            if body["policy_generation"] != authority.policy_generation:
+                continue
 
             ledger_updated = _parse_time(body["ledger_updated_at"], "ledger_head.ledger_updated_at")
             committed = _parse_time(body["committed_at"], "ledger_head.committed_at")
@@ -144,7 +158,7 @@ def _verify_current_ledger_head(
         os.close(directory_fd)
 
     if not current:
-        raise VerificationError("current verifier epoch has no ledger head")
+        raise VerificationError("current verifier/policy epoch has no ledger head")
 
     by_generation: dict[int, set[tuple[str, datetime]]] = {}
     committed_by_generation: dict[int, datetime] = {}

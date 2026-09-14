@@ -55,6 +55,16 @@ class CustodyTests(GateTestCase):
             self._load_ledger()
         self.assert_decision(gate.HOLD_AUTHORITY, self.fx.compile())
 
+    def test_policy_rotation_requires_fresh_policy_epoch_head(self):
+        self.fx.policy["policy_generation"] = 8
+        self.fx.write_authority()
+        document = self.fx.write_ledger([], write_head=False)
+
+        with self.assertRaisesRegex(gate.VerificationError, "verifier/policy epoch"):
+            self._load_ledger()
+        self.fx.write_ledger_head(document)
+        self.assertEqual(0, self._load_ledger().generation)
+
     def test_key_rotation_requires_fresh_active_epoch_head(self):
         self.fx.key_id = "primary-20260915"
         self.fx.verifier_id = "commons-host-2"
@@ -63,7 +73,7 @@ class CustodyTests(GateTestCase):
         self.fx.write_authority()
         document = self.fx.write_ledger([], write_head=False)
 
-        with self.assertRaisesRegex(gate.VerificationError, "current verifier epoch"):
+        with self.assertRaisesRegex(gate.VerificationError, "verifier/policy epoch"):
             self._load_ledger()
         self.fx.write_ledger_head(document)
         self.assertEqual(0, self._load_ledger().generation)

@@ -151,6 +151,7 @@ class GateFixture:
         body = {
             "schema": ledger_head.LEDGER_HEAD_SCHEMA,
             "organization_scope_sha256": self.organization,
+            "policy_generation": document["policy_generation"],
             "ledger_generation": document["generation"],
             "ledger_sha256": gate._sha256(canonical),
             "ledger_updated_at": document["updated_at"],

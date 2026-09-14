@@ -31,7 +31,7 @@ keys/<key-id>.key
 authorities/<organization-scope-sha256>.json
 ledgers/<organization-scope-sha256>.json
 ledger-heads/<organization-scope-sha256>/
-  <generation>-<ledger-sha256>-<verifier-epoch-sha256>.json
+  <policy-generation>-<ledger-generation>-<ledger-sha256>-<verifier-epoch-sha256>.json
 ```
 
 Key, pointer, authority, ledger, and ledger-head files must be regular non-symlink files. On POSIX they must have no group/other permission bits. The key is exactly 32 bytes encoded as 64 hexadecimal characters.
@@ -46,13 +46,14 @@ Authority, ledger, and ledger-head records are HMAC-SHA256 authenticated. The or
 
 ### Rollback-resistant currentness
 
-The mutable ledger is accepted only when it exactly matches the highest checkpoint in the active verifier epoch by generation, SHA-256, and `updated_at`.
+The mutable ledger is accepted only when it exactly matches the highest checkpoint in the active verifier-and-policy epoch by generation, SHA-256, and `updated_at`.
 
 - restoring an older authentic ledger below a retained higher head fails closed;
 - a ledger newer than the committed head fails closed;
 - two active-epoch checkpoints with the same generation and different ledger identities are a fork and fail closed;
 - verifier-key rotation requires a fresh checkpoint under the new active key/verifier epoch;
-- old verifier-epoch checkpoints may remain for history but cannot authorize the current ledger.
+- policy-generation rotation requires a fresh checkpoint and does not misclassify an unchanged event-count generation as a fork;
+- old verifier or policy epoch checkpoints may remain for history but cannot authorize the current ledger.
 
 The checkpoint journal is a separate host-owned retained object. A publisher may write the ledger and checkpoint in either order; readers fail closed during the incomplete transition and resume only when the pair agrees. This closes partial ledger-file rollback while the host-owned head journal remains current.
 
