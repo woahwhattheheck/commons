@@ -1,0 +1,32 @@
+name: initial-outreach-slot
+
+on:
+  pull_request:
+    paths:
+      - 'revenue/initial_outreach_slot/**'
+      - '.github/workflows/initial-outreach-slot.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'revenue/initial_outreach_slot/**'
+      - '.github/workflows/initial-outreach-slot.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  hostile-gate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Parse exact modules
+        run: python -m py_compile revenue/initial_outreach_slot/slot.py revenue/initial_outreach_slot/test_slot.py
+      - name: Normal hostile suite
+        run: python -m unittest -v revenue.initial_outreach_slot.test_slot
+      - name: Optimized hostile suite
+        run: python -O -m unittest -v revenue.initial_outreach_slot.test_slot
