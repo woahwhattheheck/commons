@@ -12,7 +12,7 @@ from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from unittest.mock import patch
 
-from coordination.connector_preflight.core import (
+from coordination.connector_preflight import (
     PreflightError,
     compile_at,
     compile_current,
@@ -20,6 +20,7 @@ from coordination.connector_preflight.core import (
     verify_current,
     verify_integrity,
 )
+from coordination.connector_preflight.latest import _compile_current_at, _verify_current_at
 
 T0 = datetime(2026, 9, 14, 4, 40, 0, tzinfo=timezone.utc)
 SHA_A = "a" * 64
@@ -60,6 +61,18 @@ def base_input(*, claim: str = "NO_WRITE_RAIL", attempts: list[dict] | None = No
         ],
         "attempts": attempts or [],
     }
+
+
+def fresh_process_input() -> dict:
+    raw = base_input()
+    now = datetime.now(timezone.utc).replace(microsecond=0)
+    requested = now - timedelta(seconds=20)
+    completed = now - timedelta(seconds=15)
+    captured = now - timedelta(seconds=5)
+    raw["captured_at"] = captured.strftime("%Y-%m-%dT%H:%M:%SZ")
+    raw["discoveries"][0]["requested_at"] = requested.strftime("%Y-%m-%dT%H:%M:%SZ")
+    raw["discoveries"][0]["completed_at"] = completed.strftime("%Y-%m-%dT%H:%M:%SZ")
+    return raw
 
 
 def attempt(
@@ -374,16 +387,16 @@ class VerificationTests(unittest.TestCase):
 
     def test_current_valid_while_semantics_same(self):
         raw = base_input()
-        bundle = compile_at(raw, T0, mode="CURRENT")
-        result = verify_current(raw, bundle, clock=lambda: T0 + timedelta(seconds=10))
+        bundle = _compile_current_at(raw, T0)
+        result = _verify_current_at(raw, bundle, T0 + timedelta(seconds=10))
         self.assertTrue(result["integrity_valid"])
         self.assertTrue(result["current_valid"])
 
     def test_current_invalid_after_staleness(self):
         raw = base_input()
         raw["policy"]["max_age_seconds"] = 60
-        bundle = compile_at(raw, T0, mode="CURRENT")
-        result = verify_current(raw, bundle, clock=lambda: T0 + timedelta(seconds=61))
+        bundle = _compile_current_at(raw, T0)
+        result = _verify_current_at(raw, bundle, T0 + timedelta(seconds=61))
         self.assertTrue(result["integrity_valid"])
         self.assertFalse(result["current_valid"])
         self.assertEqual("STALE_OR_INVALID", result["current_state"])
@@ -395,7 +408,7 @@ class CliTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp:
             input_path = Path(tmp) / "input.json"
             bundle_path = Path(tmp) / "bundle.json"
-            input_path.write_text(json.dumps(base_input()), encoding="utf-8")
+            input_path.write_text(json.dumps(fresh_process_input()), encoding="utf-8")
             env = {**os.environ, "PYTHONPATH": str(root)}
             compile_proc = subprocess.run(
                 [sys.executable, "-m", "coordination.connector_preflight.cli", "compile", str(input_path), str(bundle_path)],
@@ -419,7 +432,7 @@ class CliTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp:
             input_path = Path(tmp) / "input.json"
             output_path = Path(tmp) / "bundle.json"
-            input_path.write_text(json.dumps(base_input()), encoding="utf-8")
+            input_path.write_text(json.dumps(fresh_process_input()), encoding="utf-8")
             output_path.write_text("occupied", encoding="utf-8")
             env = {**os.environ, "PYTHONPATH": str(root)}
             proc = subprocess.run(
@@ -439,7 +452,7 @@ class CliTests(unittest.TestCase):
             input_path = Path(tmp) / "input.json"
             target_path = Path(tmp) / "target.json"
             output_path = Path(tmp) / "bundle.json"
-            input_path.write_text(json.dumps(base_input()), encoding="utf-8")
+            input_path.write_text(json.dumps(fresh_process_input()), encoding="utf-8")
             target_path.write_text("safe", encoding="utf-8")
             output_path.symlink_to(target_path)
             env = {**os.environ, "PYTHONPATH": str(root)}
@@ -460,7 +473,7 @@ class CliTests(unittest.TestCase):
             real_input = Path(tmp) / "real.json"
             input_path = Path(tmp) / "input.json"
             output_path = Path(tmp) / "bundle.json"
-            real_input.write_text(json.dumps(base_input()), encoding="utf-8")
+            real_input.write_text(json.dumps(fresh_process_input()), encoding="utf-8")
             input_path.symlink_to(real_input)
             env = {**os.environ, "PYTHONPATH": str(root)}
             proc = subprocess.run(
