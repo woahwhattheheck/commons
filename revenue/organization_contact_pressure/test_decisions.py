@@ -10,7 +10,12 @@ class DecisionsTests(GateTestCase):
         self.assertEqual([], receipt["reasons"])
         self.assertIsNotNone(receipt["valid_until"])
         self.assertEqual(
-            ["PER_PROSPECT_ATOMIC_LOCK", "COMMERCIAL_OPPORTUNITY_CUSTODY", "PROVIDER_BOUND_SEND_CONSUMER"],
+            [
+                "PER_PROSPECT_ATOMIC_LOCK",
+                "COMMERCIAL_OPPORTUNITY_CUSTODY",
+                "INITIAL_OUTREACH_ONE_SHOT",
+                "PROVIDER_BOUND_SEND_CONSUMER",
+            ],
             receipt["next_required_controls"],
         )
 
