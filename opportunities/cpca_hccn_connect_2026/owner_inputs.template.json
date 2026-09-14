@@ -1,0 +1,60 @@
+{
+  "schema": "cpca.hccn.owner_inputs/v1",
+  "organization": {
+    "legal_name": "OWNER_INPUT_REQUIRED",
+    "website": "OWNER_INPUT_REQUIRED",
+    "point_of_contact_name": "OWNER_INPUT_REQUIRED",
+    "point_of_contact_title": "OWNER_INPUT_REQUIRED",
+    "point_of_contact_email": "OWNER_INPUT_REQUIRED"
+  },
+  "selected_routes": [],
+  "comparable_engagements": [],
+  "safety_net_engagements": [],
+  "technical_assistance_evidence": [],
+  "group_training_evidence": [],
+  "personnel": [],
+  "subcontractors": [],
+  "references": [],
+  "work_samples": [],
+  "regulatory_knowledge": {},
+  "cultural_competency": {
+    "narrative": "OWNER_INPUT_REQUIRED",
+    "evidence_ref": "OWNER_INPUT_REQUIRED"
+  },
+  "delivery_capacity": {
+    "virtual_delivery_supported": null,
+    "california_presence": "OWNER_INPUT_REQUIRED",
+    "concurrent_engagement_capacity": "OWNER_INPUT_REQUIRED",
+    "reporting_invoicing_oversight_capability": "OWNER_INPUT_REQUIRED"
+  },
+  "licensing_compliance": {
+    "requirements_reviewed": false,
+    "all_required_licenses_certifications_current": null,
+    "insurance_requirements_reviewed": false,
+    "insurance_supportable": null,
+    "evidence_ref": "OWNER_INPUT_REQUIRED"
+  },
+  "privacy_contracting": {
+    "baa_obligations_reviewed": false,
+    "baa_capability": "OWNER_INPUT_REQUIRED",
+    "phi_pii_delivery_boundary": "OWNER_INPUT_REQUIRED"
+  },
+  "pricing": {
+    "technical_assistance_rates_by_role": {},
+    "group_training_rates": {},
+    "fully_loaded_basis_reviewed": false,
+    "owner_approved": false
+  },
+  "appendix_c": {
+    "reviewed_by_authorized_human": false,
+    "signed_by_authorized_human": false,
+    "authorized_representative_name": "OWNER_INPUT_REQUIRED",
+    "conflict_status": "OWNER_INPUT_REQUIRED"
+  },
+  "packaging": {
+    "single_pdf_plan_reviewed": false,
+    "smartsheet_submission_mechanics_reviewed": false,
+    "filename_reviewed": false
+  },
+  "owner_final_review_complete": false
+}
