@@ -50,12 +50,22 @@ def validate_authority(value: Any) -> dict[str, Any]:
     approval_reference = _optional_text(
         authority["approval_reference"], "authority.approval_reference", max_length=2_048
     )
-    if any(normalized.values()) and (approved_by is None or approval_reference is None):
-        _fail("authority", "any true authority requires approved_by and approval_reference")
-    if not any(normalized.values()) and (approved_by is not None or approval_reference is not None):
-        _fail("authority", "approval metadata must be absent when all authority is false")
+
+    # This is an offline owner-review carrier, not an authority authenticator.
+    # Candidate JSON must never be able to mint signing/pricing/submission/etc.
+    # authority merely by asserting booleans and a reference string.
+    if any(normalized.values()):
+        _fail(
+            "authority",
+            "owner-review carrier cannot carry external authority; all authority bits must be false",
+        )
+    if approved_by is not None or approval_reference is not None:
+        _fail(
+            "authority",
+            "approval metadata is forbidden because this carrier does not authenticate owner authority",
+        )
     normalized.update(
-        {"approved_by": approved_by, "approval_reference": approval_reference}
+        {"approved_by": None, "approval_reference": None}
     )
     return normalized
 
