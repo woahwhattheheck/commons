@@ -1,0 +1,158 @@
+{
+  "schema": "tjlabs.ohsu-ap-rfi-evidence/v1",
+  "solicitation": {
+    "id": "RFI-2027-0824",
+    "buyer": "Oregon Health & Science University",
+    "title": "Artificial Intelligence-Enabled Accounts Payable Automation Solution",
+    "response_due_utc": "2026-09-24T00:00:00Z",
+    "intent_required": false
+  },
+  "source": {
+    "authority": "OFFICIAL",
+    "url": "https://www.ohsu.edu/procurement/bids",
+    "captured_at_utc": "2026-09-14T03:45:00Z",
+    "fact_digest": "531f2f93c44701aaef44250e3b0a7e1c768b1bbe0b85ada8bc0fbc9653353a72",
+    "facts": {
+      "solicitation_id": "RFI-2027-0824",
+      "buyer": "Oregon Health & Science University",
+      "title": "Artificial Intelligence-Enabled Accounts Payable Automation Solution",
+      "erp_context": "on-premises Oracle E-Business Suite R12",
+      "intent_required": false,
+      "response_due_utc": "2026-09-24T00:00:00Z"
+    }
+  },
+  "evidence": [
+    {
+      "id": "ohsu_bids_20260914",
+      "kind": "OFFICIAL_SOURCE",
+      "locator": "OHSU procurement bids page; RFI-2027-0824 listing",
+      "digest": "531f2f93c44701aaef44250e3b0a7e1c768b1bbe0b85ada8bc0fbc9653353a72",
+      "state": "VERIFIED"
+    },
+    {
+      "id": "local_acceptance_harness",
+      "kind": "LOCAL_TEST",
+      "locator": "ohsu_rfi_2027_0824/ap_acceptance.py + test_ohsu_carrier.py",
+      "digest": "2ec4468bea9bcc57101cb2051de1fda7f5a85da822ecafab731cd9c60af8fa79",
+      "state": "VERIFIED"
+    },
+    {
+      "id": "smb_ap_variance_inflight",
+      "kind": "REPO_RECEIPT",
+      "locator": "woahwhattheheck/smb-showcase-inventory#237 (in-flight; not main proof)",
+      "digest": "1111111111111111111111111111111111111111111111111111111111111111",
+      "state": "UNMERGED"
+    }
+  ],
+  "claims": [
+    {
+      "capability": "invoice_intake_validation",
+      "status": "PROPOSED",
+      "statement": "Synthetic evidence harness can validate required invoice fields and fail closed; no production OHSU/Oracle intake deployment is claimed.",
+      "evidence_refs": [
+        "local_acceptance_harness"
+      ]
+    },
+    {
+      "capability": "po_matching",
+      "status": "PROPOSED",
+      "statement": "Deterministic fixture logic covers PO presence, vendor match, amount tolerance, and duplicate rejection; Oracle-specific production integration remains unproven.",
+      "evidence_refs": [
+        "local_acceptance_harness",
+        "smb_ap_variance_inflight"
+      ]
+    },
+    {
+      "capability": "coding",
+      "status": "PARTNER_REQUIRED",
+      "statement": "No verified production Oracle EBS R12 GL-coding integration is available in this carrier; an Oracle-capable prime must supply this evidence.",
+      "evidence_refs": []
+    },
+    {
+      "capability": "approvals",
+      "status": "PROPOSED",
+      "statement": "Harness models approval-required versus approval-present gates; production role/routing integration is partner scope.",
+      "evidence_refs": [
+        "local_acceptance_harness"
+      ]
+    },
+    {
+      "capability": "oracle_transaction_processing",
+      "status": "PARTNER_REQUIRED",
+      "statement": "No claim of demonstrated Oracle EBS R12 write-back capability is made. Prime/partner must furnish verifiable Oracle integration evidence.",
+      "evidence_refs": []
+    },
+    {
+      "capability": "supplier_internal_inquiries",
+      "status": "PARTNER_REQUIRED",
+      "statement": "No live supplier inquiry automation deployment is claimed by this carrier.",
+      "evidence_refs": []
+    },
+    {
+      "capability": "statement_reconciliation",
+      "status": "PROPOSED",
+      "statement": "Harness includes statement-versus-ledger reconciliation as a deterministic hold gate; production ERP ingestion is partner scope.",
+      "evidence_refs": [
+        "local_acceptance_harness"
+      ]
+    },
+    {
+      "capability": "exception_management",
+      "status": "PROPOSED",
+      "statement": "Exception outcomes are explicit, typed, deterministic, and receipt-bound for synthetic cases; no autonomous resolution is claimed.",
+      "evidence_refs": [
+        "local_acceptance_harness"
+      ]
+    },
+    {
+      "capability": "reporting",
+      "status": "PROPOSED",
+      "statement": "Carrier compiles a deterministic capability matrix and receipt; enterprise reporting integration remains unproven.",
+      "evidence_refs": [
+        "local_acceptance_harness"
+      ]
+    },
+    {
+      "capability": "audit_controls",
+      "status": "PROPOSED",
+      "statement": "Each synthetic decision emits a content-addressed receipt and never grants Oracle write or payment authority.",
+      "evidence_refs": [
+        "local_acceptance_harness"
+      ]
+    },
+    {
+      "capability": "implementation_requirements",
+      "status": "PARTNER_REQUIRED",
+      "statement": "OHSU-specific Oracle topology, interface inventory, security, data-volume, and deployment constraints require partner/buyer evidence.",
+      "evidence_refs": [
+        "ohsu_bids_20260914"
+      ]
+    },
+    {
+      "capability": "automation_outcomes",
+      "status": "OWNER_REQUIRED",
+      "statement": "No unverified touchless-processing, cycle-time, staffing, savings, or accuracy percentage may be represented as ours.",
+      "evidence_refs": []
+    },
+    {
+      "capability": "comparable_customer_experience",
+      "status": "PARTNER_REQUIRED",
+      "statement": "No comparable OHSU-scale Oracle EBS R12 customer reference is asserted for TJLabs/Commons. A qualified prime must own this proof.",
+      "evidence_refs": []
+    },
+    {
+      "capability": "indicative_pricing",
+      "status": "PROPOSED",
+      "statement": "A bounded specialist evidence package is proposed separately; no OHSU software/license/implementation price is invented.",
+      "evidence_refs": []
+    }
+  ],
+  "commercial_offer": {
+    "state": "PROPOSED_NOT_ACCEPTED",
+    "name": "Oracle AP RFI Response Evidence Pack",
+    "price_usd_cents": 250000,
+    "delivery_business_days": 3,
+    "acceptance": "Prime supplies its Oracle EBS R12 architecture/customer evidence plus one agreed AP workflow. Delivery returns a requirement-to-evidence matrix and at least 20 deterministic synthetic acceptance cases covering match, exception, reconciliation, approval, and audit behavior, with zero unsupported customer/revenue/security claims.",
+    "external_send_authorized": false
+  }
+}
