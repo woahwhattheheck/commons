@@ -1,0 +1,35 @@
+{
+  "schema": "bidveil.opportunity.v1",
+  "opportunity_id": "demo-rfp-001",
+  "generation": 1,
+  "issued_at": "2026-09-01T00:00:00Z",
+  "valid_until": "2026-10-01T00:00:00Z",
+  "requirements": [
+    {
+      "id": "general-liability-active",
+      "kind": "boolean",
+      "expected": true,
+      "issuer_allowlist": ["carrier-a"],
+      "max_age_seconds": 2678400
+    },
+    {
+      "id": "annual-revenue-usd",
+      "kind": "minimum",
+      "minimum": 250000,
+      "issuer_allowlist": ["auditor-a"]
+    },
+    {
+      "id": "service-region",
+      "kind": "enum",
+      "allowed": ["US-IN", "US-KY"],
+      "issuer_allowlist": ["state-registry"]
+    },
+    {
+      "id": "security-training-current",
+      "kind": "boolean",
+      "expected": true,
+      "issuer_allowlist": ["training-a"],
+      "max_age_seconds": 31536000
+    }
+  ]
+}
