@@ -32,13 +32,17 @@ class CapacityAuthorityFixTests(unittest.TestCase):
         self.assertEqual(by["a"]["decision"], "CAPACITY_HOLD")
 
     def test_future_acceptance_is_global_hold(self):
+        p = policy()
+        d = demands([deal("a", accepted="2026-09-14T01:30:00Z")])
+        r = reservations()
+        pb, db, rb = j(p), j(d), j(r)
         out = compile_bytes(
-            j(policy()),
-            j(demands([deal("a", accepted="2026-09-14T01:30:00Z")])),
-            j(reservations()),
-            expected_policy_sha256=sha256_hex(j(policy())),
-            expected_demand_sha256=sha256_hex(j(demands([deal("a", accepted="2026-09-14T01:30:00Z")]))),
-            expected_reservations_sha256=sha256_hex(j(reservations())),
+            pb,
+            db,
+            rb,
+            expected_policy_sha256=sha256_hex(pb),
+            expected_demand_sha256=sha256_hex(db),
+            expected_reservations_sha256=sha256_hex(rb),
             now=NOW,
         )
         self.assertIn("DEAL_ACCEPTED_AT_FUTURE", out["global_blockers"])
@@ -107,7 +111,7 @@ class CapacityAuthorityFixTests(unittest.TestCase):
         self.assertEqual(out["decisions"][0]["decision"], "CAPACITY_HOLD")
         self.assertTrue(out["decisions"][0]["existing_reservation"])
 
-    def test_self_minted_historical_receipt_never_passes_production_verifier(self):
+    def test_self_minted_historical_receipt_never_claims_or_verifies_current(self):
         p, d, r = policy(), demands([deal("a")]), reservations()
         pb, db, rb = j(p), j(d), j(r)
         receipt = compile_bytes(
@@ -119,7 +123,7 @@ class CapacityAuthorityFixTests(unittest.TestCase):
             expected_reservations_sha256=sha256_hex(rb),
             now=NOW,
         )
-        self.assertEqual(receipt["current_state"], "CURRENT")
+        self.assertEqual(receipt["current_state"], "HISTORICAL_INTEGRITY_ONLY")
         self.assertFalse(
             verify_current_receipt_bytes(pb, db, rb, canonical_json(receipt))
         )
