@@ -5,6 +5,7 @@ import hashlib
 import inspect
 import json
 import stat
+import tempfile
 import unittest
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
@@ -16,7 +17,7 @@ import revenue.organization_outbound_lease.cli as cli
 import revenue.organization_outbound_lease.core as core
 import revenue.organization_outbound_lease.trust as trust
 from revenue.organization_outbound_lease.core import RsaPublicKey
-from revenue.organization_outbound_lease.stores import GitHubContentsLeaseStore
+from revenue.organization_outbound_lease.stores import FileLeaseStore, GitHubContentsLeaseStore
 
 ATTACKER_N_HEX = "e0d93d458bfda245a9d1404e84705e90a250cc520c26efa8de084532f7f7e3bfff9d8bf9f18dea68948538013ee0b1e18b86d6a4f2893c307c460ff5196184b0acfc6078fa0d735f9546d312e5d9baed7f09b34504a38e79d7be17c68a4cca6f9ac80da03f67e54a19b3f4d7f83e0d2c984327c6fd4a7f441e9772d54be7f46fc60f494821067e2849b13a639fd1cbaed1963f04e17a1dcc85902762f3ff7b571c128d25e4f68984ab63ac3a7fcb2ae75fe41339aa40e1fcb5c0beff47d32f64e5394fae20700423be6807189b68425e4a8773a42387c5347c1835f8c4efa8d8faf8a1963921230c9b40cefd04b555c6af273858acaebbf4800ca8db3ad940a5"
 ATTACKER_D_HEX = "6e979b51fa3d99d38ee7abac12eb1c30228e003938ddebd210c75b95eaae44189b16f812cb5344a104b013b055277a8697b48e1d9a6792b1bc664f91fbd661c7ee85c1c3af25ef81eb6fe700ac0a302d8167198450784beb3508bc33fcb1317ebc503a977fa84ff866f502f0391af82adf876468b50bafd626ffd1cd04a545adca269a36b22e645b38ae5aa60df00f6698e0c45c7ac103d2456a958272140d410c14543559656ce9e3875e73e7d9126a1f3ed5f1d0206c9c1a92892cdcdc6147ed2d16c297b0835095b23d0c3da5a9dafe9a6304593d371c330c271493a6c0b9a7424fff4572d7a73369c0c79ea564a3be8034c2f842cccc39225cfcda19314f"
@@ -47,6 +48,42 @@ class TrustBoundaryTests(unittest.TestCase):
             exponent=ATTACKER_E,
         )
 
+    def _valid_attacker_ready_request(self):
+        org = "1" * 64
+        body = core.pressure_attestation_body({
+            "schema": core.ATTESTATION_SCHEMA,
+            "organizationFingerprint": org,
+            "pressureReceiptSha256": "2" * 64,
+            "authorityCommitment": "3" * 64,
+            "ledgerCommitment": "4" * 64,
+            "verifiedState": core.READY_STATE,
+            "verifiedAt": _utc(-2),
+        })
+        attestation = {
+            "body": body,
+            "algorithm": "RS256-PKCS1-v1_5",
+            "keyId": self.attacker.key_id,
+            "signatureHex": _attacker_sign(core.PRESSURE_DOMAIN + core.canonical_json(body)),
+        }
+        verified = core.verify_pressure_attestation(
+            attestation,
+            self.attacker,
+            organization_fingerprint=org,
+        )
+        self.assertEqual(verified["verifiedState"], core.READY_STATE)
+        request = {
+            "schema": core.ACQUIRE_SCHEMA,
+            "claimId": "attacker-claim",
+            "organizationFingerprint": org,
+            "prospectFingerprint": "5" * 64,
+            "routeCommitment": "6" * 64,
+            "opportunityCommitment": "7" * 64,
+            "holderCapabilityCommitment": core.holder_capability_commitment(b"c" * 32),
+            "requestedAt": _utc(-1),
+            "pressureAttestation": attestation,
+        }
+        return request
+
     def test_direct_core_import_is_same_hardened_public_acquire(self):
         self.assertIs(core.acquire_lease, package.acquire_lease)
         self.assertEqual(core.acquire_lease.__name__, "acquire_lease")
@@ -64,42 +101,7 @@ class TrustBoundaryTests(unittest.TestCase):
             token="token",
             opener=opener,
         )
-        org = "1" * 64
-        body = core.pressure_attestation_body({
-            "schema": core.ATTESTATION_SCHEMA,
-            "organizationFingerprint": org,
-            "pressureReceiptSha256": "2" * 64,
-            "authorityCommitment": "3" * 64,
-            "ledgerCommitment": "4" * 64,
-            "verifiedState": core.READY_STATE,
-            "verifiedAt": _utc(-2),
-        })
-        attestation = {
-            "body": body,
-            "algorithm": "RS256-PKCS1-v1_5",
-            "keyId": self.attacker.key_id,
-            "signatureHex": _attacker_sign(core.PRESSURE_DOMAIN + core.canonical_json(body)),
-        }
-        # Establish that this really is a cryptographically valid attacker-produced
-        # READY attestation under the attacker-selected public key.
-        verified = core.verify_pressure_attestation(
-            attestation,
-            self.attacker,
-            organization_fingerprint=org,
-        )
-        self.assertEqual(verified["verifiedState"], core.READY_STATE)
-
-        request = {
-            "schema": core.ACQUIRE_SCHEMA,
-            "claimId": "attacker-claim",
-            "organizationFingerprint": org,
-            "prospectFingerprint": "5" * 64,
-            "routeCommitment": "6" * 64,
-            "opportunityCommitment": "7" * 64,
-            "holderCapabilityCommitment": core.holder_capability_commitment(b"c" * 32),
-            "requestedAt": _utc(-1),
-            "pressureAttestation": attestation,
-        }
+        request = self._valid_attacker_ready_request()
         with self.assertRaisesRegex(ValueError, "caller-supplied pressure verifier is forbidden"):
             core.acquire_lease(
                 store,
@@ -108,6 +110,142 @@ class TrustBoundaryTests(unittest.TestCase):
                 lease_nonce_key=b"n" * 32,
             )
         self.assertEqual(calls, [])
+
+    def test_facade_global_rebinding_cannot_widen_verifier_seam(self):
+        calls = []
+
+        def opener(request):
+            calls.append(request)
+            raise AssertionError("production store must not be touched")
+
+        store = GitHubContentsLeaseStore(
+            repository="owner/repo",
+            branch="outbound-lease-ledger",
+            token="token",
+            opener=opener,
+        )
+        request = self._valid_attacker_ready_request()
+        with patch.object(package, "_mechanically_local_reference_store", lambda store: True), \
+             patch.object(package, "_LOCAL_REFERENCE_CHECKER", lambda store: True), \
+             patch.object(package, "FileLeaseStore", GitHubContentsLeaseStore), \
+             patch.object(package, "_LOCAL_REFERENCE_ACQUIRE_IMPLS", ()), \
+             patch.object(package, "Path", lambda value: object()):
+            with self.assertRaisesRegex(ValueError, "caller-supplied pressure verifier is forbidden"):
+                core.acquire_lease(
+                    store,
+                    request,
+                    pressure_verifier=self.attacker,
+                    lease_nonce_key=b"n" * 32,
+                )
+        self.assertEqual(calls, [])
+
+    def test_file_store_subclass_cannot_launder_attacker_verifier_to_delegated_backend(self):
+        calls = []
+
+        class LaunderedProductionStore(FileLeaseStore):
+            def _touch(self, operation):
+                calls.append(operation)
+                raise AssertionError("delegated production-like backend must not be touched")
+
+            def get_active(self, org_fingerprint):
+                return self._touch("get_active")
+
+            def get_outcome(self, org_fingerprint, lease_id):
+                return self._touch("get_outcome")
+
+            def create_active(self, org_fingerprint, content):
+                return self._touch("create_active")
+
+            def create_outcome(self, org_fingerprint, lease_id, content):
+                return self._touch("create_outcome")
+
+            def delete_active(self, org_fingerprint, expected_generation):
+                return self._touch("delete_active")
+
+        with tempfile.TemporaryDirectory() as td:
+            store = LaunderedProductionStore(td)
+            with self.assertRaisesRegex(ValueError, "caller-supplied pressure verifier is forbidden"):
+                core.acquire_lease(
+                    store,
+                    self._valid_attacker_ready_request(),
+                    pressure_verifier=self.attacker,
+                    lease_nonce_key=b"n" * 32,
+                )
+        self.assertEqual(calls, [])
+
+    def test_exact_file_store_instance_method_rebinding_cannot_launder_attacker_verifier(self):
+        calls = []
+        with tempfile.TemporaryDirectory() as td:
+            store = FileLeaseStore(td)
+
+            def delegated_get_active(org_fingerprint):
+                calls.append(("get_active", org_fingerprint))
+                raise AssertionError("delegated backend must not be touched")
+
+            store.get_active = delegated_get_active
+            with self.assertRaisesRegex(ValueError, "caller-supplied pressure verifier is forbidden"):
+                core.acquire_lease(
+                    store,
+                    self._valid_attacker_ready_request(),
+                    pressure_verifier=self.attacker,
+                    lease_nonce_key=b"n" * 32,
+                )
+        self.assertEqual(calls, [])
+
+    def test_subclass_dict_descriptor_cannot_hide_rebound_acquire_methods(self):
+        calls = []
+
+        class HiddenDictStore(FileLeaseStore):
+            @property
+            def __dict__(self):
+                return {}
+
+        with tempfile.TemporaryDirectory() as td:
+            store = HiddenDictStore(td)
+
+            def delegated_get_active(org_fingerprint):
+                calls.append(("get_active", org_fingerprint))
+                raise AssertionError("hidden rebound backend must not be touched")
+
+            store.get_active = delegated_get_active
+            self.assertFalse(package._mechanically_local_reference_store(store))
+            with self.assertRaisesRegex(ValueError, "caller-supplied pressure verifier is forbidden"):
+                core.acquire_lease(
+                    store,
+                    self._valid_attacker_ready_request(),
+                    pressure_verifier=self.attacker,
+                    lease_nonce_key=b"n" * 32,
+                )
+        self.assertEqual(calls, [])
+
+    def test_reference_base_method_monkeypatch_is_rejected_against_frozen_descriptor(self):
+        calls = []
+        with tempfile.TemporaryDirectory() as td:
+            store = FileLeaseStore(td)
+
+            def delegated_get_active(self, org_fingerprint):
+                calls.append(("get_active", org_fingerprint))
+                raise AssertionError("patched reference method must not be touched")
+
+            with patch.object(FileLeaseStore, "get_active", delegated_get_active):
+                self.assertFalse(package._mechanically_local_reference_store(store))
+                with self.assertRaisesRegex(ValueError, "caller-supplied pressure verifier is forbidden"):
+                    core.acquire_lease(
+                        store,
+                        self._valid_attacker_ready_request(),
+                        pressure_verifier=self.attacker,
+                        lease_nonce_key=b"n" * 32,
+                    )
+        self.assertEqual(calls, [])
+
+    def test_terminal_only_reference_subclass_keeps_local_test_seam(self):
+        class TerminalOnlyStore(FileLeaseStore):
+            def delete_active(self, org_fingerprint, expected_generation):
+                return super().delete_active(org_fingerprint, expected_generation)
+
+        with tempfile.TemporaryDirectory() as td:
+            store = TerminalOnlyStore(td)
+            self.assertTrue(package._mechanically_local_reference_store(store))
 
     def test_cli_contains_no_claimant_pressure_key_selector(self):
         source = Path(cli.__file__).read_text(encoding="utf-8")
