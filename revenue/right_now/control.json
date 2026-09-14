@@ -266,6 +266,14 @@
       "sha256": "1803396c0851b0eda5996f0d6c5cb802c91ff431eeb9d8f71ceb20422f77990f"
     },
     {
+      "path": "revenue/agent_failure_autopsy/offer.json",
+      "sha256": "a04b373563f468edb0afe47bc32ba1a5608aa7bc5e00b5956a996e84d6070b32"
+    },
+    {
+      "path": "agent-rescue.html",
+      "sha256": "b23983d65b6335668ff3b9067f0ace94c7c64025548fd0b79c9e1912bdca88d7"
+    },
+    {
       "path": "revenue/right_now/settled_awards.json",
       "sha256": "7284b37369d4734cee9402cce494d17e7af99a3a5d576e6f8181a88a9848f6dd"
     },

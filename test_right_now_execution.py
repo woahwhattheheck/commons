@@ -138,6 +138,8 @@ class RightNowExecutionTests(unittest.TestCase):
                 "revenue/right_now/catalog.json",
                 "revenue/right_now/diagnostic_offer.json",
                 "revenue/right_now/autopsy_offer.json",
+                "revenue/agent_failure_autopsy/offer.json",
+                "agent-rescue.html",
                 "revenue/right_now/settled_awards.json",
                 "revenue/right_now/settled_cash.json",
                 "revenue/smart_outreach/candidates.json",
