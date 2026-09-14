@@ -23,6 +23,7 @@ from .model import (
 
 INDEPENDENT_ROOT_AUTHORITY_REQUIRED = "INDEPENDENT_ROOT_AUTHORITY_REQUIRED"
 HISTORICAL_REPLAY_ONLY = "HISTORICAL_REPLAY_ONLY"
+DIAGNOSTIC_CAPACITY_CANDIDATE = "DIAGNOSTIC_CAPACITY_CANDIDATE"
 
 
 def _process_now() -> datetime:
@@ -83,9 +84,6 @@ def _allocation_core(
     active_by_deal: dict[str, dict[str, Any]] = {}
     blockers = _snapshot_blockers(policy, demand, reservations, now)
 
-    # Any accepted/funded fact from the future is a generation-level temporal
-    # contradiction. Fail the whole allocation rather than letting caller order
-    # or priority accidentally choose around it.
     for deal in demand["deals"]:
         if deal["stage"] in {"BUYER_ACCEPTED", "FUNDED_TO_START"}:
             accepted = _parse_utc(deal["accepted_at"], "deal.accepted_at")
@@ -101,8 +99,8 @@ def _allocation_core(
             blockers.append("ACTIVE_RESERVATION_UNKNOWN_SLOT")
             continue
 
-        # Conserve the claimed units as soon as the slot identity is known.
-        # Corrupt lineage/service facts must never free capacity.
+        # Capacity conservation happens as soon as the slot identity is known.
+        # Corrupt lineage/service metadata must never free scarce units.
         remaining[reservation["slot_id"]] -= reservation["units"]
         if remaining[reservation["slot_id"]] < 0:
             blockers.append("ACTIVE_RESERVATION_OVERDRAW")
@@ -171,11 +169,11 @@ def _allocation_core(
             decisions.append(
                 {
                     "deal_id": deal["deal_id"],
-                    "decision": "ALLOCATED_FOR_OWNER_REVIEW",
+                    "decision": DIAGNOSTIC_CAPACITY_CANDIDATE,
                     "slot_id": existing["slot_id"],
                     "units": existing["units"],
                     "existing_reservation": True,
-                    "reasons": ["EXISTING_ACTIVE_RESERVATION"],
+                    "reasons": ["EXISTING_ACTIVE_RESERVATION", "DIAGNOSTIC_ONLY_NO_OPERATIONAL_AUTHORITY"],
                 }
             )
             continue
@@ -183,9 +181,6 @@ def _allocation_core(
         matching_service = [
             slot for slot in slots.values() if slot["service_class"] == deal["service_class"]
         ]
-        # New capacity can only be proposed in a slot that has not started yet.
-        # An already-running or ended window cannot be minted into a fresh
-        # commitment by a newly supplied demand packet.
         future_service = [
             slot
             for slot in matching_service
@@ -217,11 +212,11 @@ def _allocation_core(
             decisions.append(
                 {
                     "deal_id": deal["deal_id"],
-                    "decision": "ALLOCATED_FOR_OWNER_REVIEW",
+                    "decision": DIAGNOSTIC_CAPACITY_CANDIDATE,
                     "slot_id": chosen["slot_id"],
                     "units": deal["requested_units"],
                     "existing_reservation": False,
-                    "reasons": ["COMPATIBLE_CAPACITY_AVAILABLE"],
+                    "reasons": ["COMPATIBLE_CAPACITY_AVAILABLE", "DIAGNOSTIC_ONLY_NO_OPERATIONAL_AUTHORITY"],
                 }
             )
         else:
