@@ -100,14 +100,18 @@ class RightNowExecutionTests(unittest.TestCase):
         self.assertIs(value["payment"]["cash_claimed"], False)
         self.assertEqual(value["truth"]["collected_cash_usd"], 1)
 
-    def test_queue_reuses_collision_and_research_decisions(self) -> None:
+    def test_queue_reuses_collision_and_suppression_decisions(self) -> None:
         value = control.build_control()
         queue = {row["prospect_id"]: row for row in value["execution_queue"]}
         self.assertEqual(queue["anythingllm-mintplex"]["decision"], "HOLD_DO_NOT_RESEND")
         self.assertEqual(queue["metaforms"]["decision"], "HOLD_DO_NOT_RESEND")
         self.assertEqual(queue["composio"]["decision"], "HOLD_DO_NOT_RESEND")
         self.assertEqual(queue["composio"]["collision_receipts"], [COMPOSIO_RECEIPT])
-        self.assertEqual(queue["signoz"]["decision"], "RESEARCH_REQUIRED")
+        self.assertEqual(queue["signoz"]["decision"], "HOLD_DO_NOT_CONTACT")
+        self.assertEqual(
+            queue["signoz"]["next_action"],
+            "retain suppression; no draft and no transport handoff",
+        )
         self.assertTrue(queue["anythingllm-mintplex"]["collision_receipts"])
         self.assertFalse(any(row["transport_authorized"] for row in queue.values()))
         demand_blocker = next(
@@ -249,6 +253,7 @@ class RightNowExecutionTests(unittest.TestCase):
         self.assertIn("JavaScript-off truth", page)
         self.assertIn("25 RTC", page)
         self.assertIn("0 ready drafts", page)
+        self.assertIn("SigNoz remains suppressed", page)
         self.assertIn("Composio remains held", page)
 
     def test_catalog_live_cash_is_part_of_the_control_contract(self) -> None:

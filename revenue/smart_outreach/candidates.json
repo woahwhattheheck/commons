@@ -67,8 +67,10 @@
       },
       "proof_hypothesis": "Can one schema-breaking trace fail visibly and preserve an exact replay receipt?",
       "occupied_by": null,
-      "do_not_contact": false,
-      "disqualifiers": []
+      "do_not_contact": true,
+      "disqualifiers": [
+        "canonical CRM recAejCRStalFim0K is REJECTED_AS_BUYER; do not contact absent an explicit authoritative reopen event"
+      ]
     },
     {
       "prospect_id": "composio",
