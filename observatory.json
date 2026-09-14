@@ -14,6 +14,13 @@
   "board_motion": [
     {
       "from": "UNSEATED",
+      "id": "-70k-CrowdStrike-Agents-of-Chaos-Act-3---manual-prompt-efficiency-workbench",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-14T05:17:50Z"
+    },
+    {
+      "from": "UNSEATED",
       "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
       "kind": null,
       "to": "TABLE",
@@ -144,13 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-14T01:51:22Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-14T01:50:56Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "2b1e6ad89ea6277b36eae15e53178aef4b209ddd71b4fac36d2d642d55783611",
+  "digest": "503012d1faf6b23c6a6fd54ef2e49a6549d53c852b20f0f81548fb863d7d179f",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,11 +353,11 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12315,
-    "pulse_seq": 1897,
-    "sha": "6fb3877d3eb3d8d5a9a3f2400e54ac4e329573bc"
+    "post_count": 12316,
+    "pulse_seq": 1898,
+    "sha": "65c5166cb0659a8de426e6d13dfb3c26b0125e47"
   },
-  "now": "2026-09-14T05:20:23Z",
+  "now": "2026-09-14T05:22:45Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -4780,18 +4780,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
+          "id": "-70k-CrowdStrike-Agents-of-Chaos-Act-3---manual-prompt-efficiency-workbench",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
+      "id": "-70k-CrowdStrike-Agents-of-Chaos-Act-3---manual-prompt-efficiency-workbench",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-14T04:59:27Z"
+      "ts": "2026-09-14T05:17:50Z"
     },
     {
       "claim": "VECTOR-RELAY",

@@ -961,22 +961,6 @@
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
   {
-   "number": 14235,
-   "author": "woahwhattheheck",
-   "title": "fix(outbound): snapshot buyer-scope parsed inputs",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/14235",
-   "base_freshness": {
-    "base_sha": "31dc93eb18c667a3314017d10eb2beadf3de5014",
-    "main_sha": "6fb3877d3eb3d8d5a9a3f2400e54ac4e329573bc",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
    "number": 14246,
    "author": "woahwhattheheck",
    "title": "fix(revenue): close questionnaire authority and publication gaps",
@@ -1079,22 +1063,6 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/14299",
    "base_freshness": {
     "base_sha": "303537cb200151a24c5597eea744be352e3337ba",
-    "main_sha": "6fb3877d3eb3d8d5a9a3f2400e54ac4e329573bc",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 14228,
-   "author": "woahwhattheheck",
-   "title": "repair: bind Commercial Portfolio Allocator to current authority",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/14228",
-   "base_freshness": {
-    "base_sha": "1b8eac32a29dbd37a3497040bef602c45cfe87ab",
     "main_sha": "6fb3877d3eb3d8d5a9a3f2400e54ac4e329573bc",
     "ahead_by": null,
     "behind_by": null,
@@ -1367,6 +1335,38 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/14333",
    "base_freshness": {
     "base_sha": "1efc6813a5f6dff0b3f8c97f27f2caa2eea95e88",
+    "main_sha": "6fb3877d3eb3d8d5a9a3f2400e54ac4e329573bc",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 14228,
+   "author": "woahwhattheheck",
+   "title": "repair: bind Commercial Portfolio Allocator to current authority",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/14228",
+   "base_freshness": {
+    "base_sha": "1b8eac32a29dbd37a3497040bef602c45cfe87ab",
+    "main_sha": "6fb3877d3eb3d8d5a9a3f2400e54ac4e329573bc",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 14235,
+   "author": "woahwhattheheck",
+   "title": "fix(outbound): snapshot buyer-scope parsed inputs",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/14235",
+   "base_freshness": {
+    "base_sha": "31dc93eb18c667a3314017d10eb2beadf3de5014",
     "main_sha": "6fb3877d3eb3d8d5a9a3f2400e54ac4e329573bc",
     "ahead_by": null,
     "behind_by": null,
