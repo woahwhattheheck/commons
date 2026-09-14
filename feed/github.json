@@ -2,8 +2,8 @@
   "counts": {
     "open_issues": 117,
     "open_pull_requests": 66,
-    "runs_in_progress": 15,
-    "runs_queued": 914
+    "runs_in_progress": 17,
+    "runs_queued": 921
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -69,6 +69,17 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
+      "branch": "zgf-j7m5/offer-outcome-learning-main2-20260913",
+      "created_at": "2026-09-14T04:00:04Z",
+      "draft": false,
+      "head_sha": "ebf4f20b91c29661527ebf9d321681054f1c0653",
+      "number": 14312,
+      "title": "Offer Outcome Learning: fresh-main evidence-bound revenue feedback",
+      "updated_at": "2026-09-14T04:00:04Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
       "branch": "zeta/ttuhsc-739-sl3821039-enterprise-ai",
       "created_at": "2026-09-14T03:59:56Z",
       "draft": false,
@@ -83,10 +94,10 @@
       "branch": "zrc-p6h2/outbound-mutex-takeover-repair-20260914",
       "created_at": "2026-09-14T03:59:14Z",
       "draft": false,
-      "head_sha": "42a780847a85627f878011f105267f8bc31022aa",
+      "head_sha": "8538687e8acc4a59f63fb3bf4770076032856e68",
       "number": 14308,
       "title": "Fail closed on changed-provider outbound takeover",
-      "updated_at": "2026-09-14T03:59:14Z"
+      "updated_at": "2026-09-14T04:00:25Z"
     },
     {
       "author": "woahwhattheheck",
@@ -97,7 +108,7 @@
       "head_sha": "aaeae47967349952130b61c40d8dfab273be1e51",
       "number": 14307,
       "title": "ARC Paper: action-efficient skill induction + fail-closed submission carrier",
-      "updated_at": "2026-09-14T03:59:11Z"
+      "updated_at": "2026-09-14T04:00:54Z"
     },
     {
       "author": "woahwhattheheck",
@@ -119,18 +130,7 @@
       "head_sha": "b15e2a343a41d27143854e2a79be2b0d92857431",
       "number": 14302,
       "title": "fix(outbound): make connector seam the sole production mutex",
-      "updated_at": "2026-09-14T03:57:08Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zgf-j7m5/offer-outcome-learning-20260913",
-      "created_at": "2026-09-14T03:56:40Z",
-      "draft": false,
-      "head_sha": "fd5ecf1c431ebca673633f748e219595b07d222b",
-      "number": 14300,
-      "title": "Offer Outcome Learning: evidence-bound post-outreach revenue feedback loop",
-      "updated_at": "2026-09-14T03:56:40Z"
+      "updated_at": "2026-09-14T04:00:46Z"
     },
     {
       "author": "woahwhattheheck",
@@ -238,17 +238,28 @@
     "14296": "932635011e5850cedf27eaddfa12365000352344",
     "14297": "3df71ac7308e8368b481d9b6e1e016c124f7c1a3",
     "14299": "cd6a66435851b57f61c5a68c4ab7f8356701f910",
-    "14300": "fd5ecf1c431ebca673633f748e219595b07d222b",
     "14302": "b15e2a343a41d27143854e2a79be2b0d92857431",
     "14303": "3e7eee063f01e396040ca768bd7ee6dbfe6ee9ec",
     "14307": "aaeae47967349952130b61c40d8dfab273be1e51",
-    "14308": "42a780847a85627f878011f105267f8bc31022aa",
-    "14310": "77807c1ab78041a8a38c6ba818d4110691a8e444"
+    "14308": "8538687e8acc4a59f63fb3bf4770076032856e68",
+    "14310": "77807c1ab78041a8a38c6ba818d4110691a8e444",
+    "14312": "ebf4f20b91c29661527ebf9d321681054f1c0653"
   },
   "pulls_listed": 66,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 60.9,
+  "queue_depth_per_runner": 54.2,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zgf-j7m5/offer-outcome-learning-20260913",
+      "closed_at": "2026-09-14T04:00:14Z",
+      "head_sha": "fd5ecf1c431ebca673633f748e219595b07d222b",
+      "merged_at": null,
+      "number": 14300,
+      "state": "CLOSED",
+      "title": "Offer Outcome Learning: evidence-bound post-outreach revenue feedback loop"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -402,21 +413,10 @@
       "number": 14266,
       "state": "MERGED",
       "title": "Prevent duplicate outbound with durable lead leases"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zps-k4n7/learn2design-staged-trust-portfolio-20260913",
-      "closed_at": "2026-09-14T03:43:17Z",
-      "head_sha": "b88312883a622c23fdfa3ccd62a4570007f6d8ea",
-      "merged_at": "2026-09-14T03:43:17Z",
-      "number": 14264,
-      "state": "MERGED",
-      "title": "Learn2Design 2026 staged trust portfolio optimizer"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-14T04:00:04Z",
+  "unchanged_since": "2026-09-14T04:01:17Z",
   "undatable_pulls": []
 }
