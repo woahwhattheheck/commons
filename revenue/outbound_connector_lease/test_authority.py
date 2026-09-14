@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+from pathlib import Path
 import unittest
 
 from revenue.outbound_connector_lease.authority import (
@@ -186,6 +187,19 @@ class CanonicalSeamAuthorityTests(unittest.TestCase):
 
         with self.assertRaisesRegex(SeamAuthorityError, "plain JSON object"):
             admit_compiled_seam(Sneaky(cold()))
+
+    def test_package_readme_preserves_production_composition_order(self):
+        text = Path(__file__).with_name("README.md").read_text(encoding="utf-8")
+        self.assertIn("not, by itself, an organization-wide production mutex", text)
+        self.assertIn("production_mutex_complete=false", text)
+        self.assertIn("external_send_authorized=false", text)
+        org_scope = text.index("1. **Authoritative organization scope.**")
+        org_mutex = text.index("2. **Organization-wide atomic control.**")
+        seam = text.index("3. **Canonical opportunity/reply seam.**")
+        provider = text.index("4. **Provider readback and ordinary gates.**")
+        self.assertLess(org_scope, org_mutex)
+        self.assertLess(org_mutex, seam)
+        self.assertLess(seam, provider)
 
 
 if __name__ == "__main__":
