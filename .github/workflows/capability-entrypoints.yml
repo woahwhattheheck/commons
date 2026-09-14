@@ -18,6 +18,7 @@ on:
       - 'orchestration/jeffersonville/frameworks.json'
       - 'orchestration/jeffersonville/topology.json'
       - 'coordination/connector_preflight/**'
+      - 'revenue/mmsd_ai_governance_policy/**'
   pull_request:
     paths: *entrypoint_paths
   workflow_dispatch:
@@ -67,3 +68,25 @@ jobs:
         run: python -m unittest -q coordination.connector_preflight.test_preflight coordination.connector_preflight.test_latest coordination.connector_preflight.test_publication
       - name: Connector preflight optimized Python tests
         run: python -O -m unittest -q coordination.connector_preflight.test_preflight coordination.connector_preflight.test_latest coordination.connector_preflight.test_publication
+
+  mmsd-ai-governance-policy:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11', '3.13']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Compile AI governance evidence core
+        run: >-
+          python -m py_compile
+          revenue/mmsd_ai_governance_policy/engine.py
+          revenue/mmsd_ai_governance_policy/test_engine.py
+          revenue/mmsd_ai_governance_policy/test_verify_hostiles.py
+      - name: AI governance unit and hostile tests
+        run: python -m unittest -q revenue.mmsd_ai_governance_policy.test_engine revenue.mmsd_ai_governance_policy.test_verify_hostiles
+      - name: AI governance optimized Python tests
+        run: python -O -m unittest -q revenue.mmsd_ai_governance_policy.test_engine revenue.mmsd_ai_governance_policy.test_verify_hostiles
