@@ -26,7 +26,13 @@ An opportunity is suppressed from allocation when any of these apply:
 
 Future-dated evidence, changed same-`opportunity_id` facts, or two distinct opportunities sharing one `collision_key` HOLD the entire portfolio. `collision_key` is not free-form: it must equal the SHA-256 commitment derived from canonical `buyer_id + opportunity_key`, preventing parallel workers from evading a shared seam merely by spelling the collision label differently. This is deliberate: identity ambiguity must be reconciled before a fleet spends capacity.
 
-Exact duplicate opportunity records are treated as replays and collapse for state evaluation. Input array order does not change the receipt.
+Exact duplicate opportunity records are treated as replays and collapse for state evaluation. Same-ID generations are grouped before evaluation; duplicate multiplicities and each distinct generation digest are retained in a deterministic conflict projection. Input array order therefore does not change the receipt, including when conflicts and replays coexist.
+
+## Current-time authority
+
+Package-level `compile_plan(packet)` and `verify_plan(packet, plan)` own the process UTC clock. They do not accept a caller-selected `now`. Deterministic at-time evaluation exists only on underscore-prefixed internal surfaces used for historical receipt verification and tests.
+
+`verify` reports historical receipt integrity separately from current decision semantics. The CLI exits successfully only when the historical receipt is valid **and** its allocation/hold decision still matches a fresh process-time evaluation; a historically authentic but now stale/expired plan does not clear the current gate.
 
 ## Objective and global capacity allocation
 

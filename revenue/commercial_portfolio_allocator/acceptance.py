@@ -5,7 +5,7 @@ import json
 from datetime import datetime, timezone
 from typing import Optional
 
-from .engine import compile_plan, derive_collision_key, sha256_hex
+from .engine import _compile_plan_at as compile_plan, derive_collision_key, sha256_hex
 
 NOW = datetime(2026, 9, 13, 16, 0, tzinfo=timezone.utc)
 H = "1" * 64

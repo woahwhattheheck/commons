@@ -78,7 +78,7 @@ def main(argv=None) -> int:
         plan = _read_json(args.plan)
         result = verify_plan(packet, plan)
         sys.stdout.buffer.write(canonical_json(result))
-        return 0 if result["historical_valid"] else 2
+        return 0 if result["current_gate_clear"] else 2
     except (ContractError, OSError) as exc:
         print(f"commercial-portfolio-allocator: {exc}", file=sys.stderr)
         return 2

@@ -1,13 +1,26 @@
 from __future__ import annotations
 
+import io
 import json
 import os
 import tempfile
 import unittest
+from unittest import mock
 
 from .acceptance import base_packet
-from .cli import _read_json
+from .cli import _read_json, main
 from .engine import ContractError
+
+
+class _StdoutCapture:
+    def __init__(self):
+        self.buffer = io.BytesIO()
+
+    def write(self, value):
+        return len(value)
+
+    def flush(self):
+        return None
 
 
 class CliIngressTests(unittest.TestCase):
@@ -41,6 +54,21 @@ class CliIngressTests(unittest.TestCase):
             os.symlink(target, link)
             with self.assertRaises(OSError):
                 _read_json(link)
+
+    def test_verify_exit_code_requires_current_gate_clear(self):
+        capture = _StdoutCapture()
+        with mock.patch("revenue.commercial_portfolio_allocator.cli._read_json", side_effect=[{}, {}]), mock.patch(
+            "revenue.commercial_portfolio_allocator.cli.verify_plan",
+            return_value={"historical_valid": True, "current_gate_clear": False},
+        ), mock.patch("revenue.commercial_portfolio_allocator.cli.sys.stdout", capture):
+            self.assertEqual(main(["verify", "packet.json", "plan.json"]), 2)
+
+        capture = _StdoutCapture()
+        with mock.patch("revenue.commercial_portfolio_allocator.cli._read_json", side_effect=[{}, {}]), mock.patch(
+            "revenue.commercial_portfolio_allocator.cli.verify_plan",
+            return_value={"historical_valid": True, "current_gate_clear": True},
+        ), mock.patch("revenue.commercial_portfolio_allocator.cli.sys.stdout", capture):
+            self.assertEqual(main(["verify", "packet.json", "plan.json"]), 0)
 
 
 if __name__ == "__main__":
