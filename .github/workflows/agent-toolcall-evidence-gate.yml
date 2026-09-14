@@ -1,0 +1,26 @@
+name: Agent Tool-Call Evidence Gate
+on:
+  pull_request:
+    paths:
+      - 'products/agent_toolcall_evidence_gate/**'
+      - '.github/workflows/agent-toolcall-evidence-gate.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'products/agent_toolcall_evidence_gate/**'
+      - '.github/workflows/agent-toolcall-evidence-gate.yml'
+permissions:
+  contents: read
+jobs:
+  offline-proof:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m py_compile products/agent_toolcall_evidence_gate/*.py products/agent_toolcall_evidence_gate/tests/*.py
+      - run: python -m unittest discover -s products/agent_toolcall_evidence_gate/tests -v
+      - run: python -O -m unittest discover -s products/agent_toolcall_evidence_gate/tests -v
+      - run: python -m products.agent_toolcall_evidence_gate.acceptance
