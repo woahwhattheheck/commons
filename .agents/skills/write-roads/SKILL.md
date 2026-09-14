@@ -31,6 +31,10 @@ Omit `query`. A filtered discovery that returns nothing only means the filter di
 
 After unfiltered discovery, use the returned connector actions directly. GitHub publication may expose `GitHub.create_blob`, `GitHub.create_tree`, `GitHub.create_commit`, `GitHub.create_branch`, `GitHub.update_ref`, `GitHub.create_file`, `GitHub.update_file`, `GitHub.create_pull_request`, and `GitHub.merge_pull_request`. Slack publication may expose `Slack.slack_send_message` plus edit/upload actions. Discovery alone is not publication: invoke the needed write and retain the actual success/error receipt.
 
+If a typed write fails, retry once on the same connector. Correct only invalid schema fields or stale destination state; do not silently substitute a different road. Report the exact typed failure only after the retry also fails.
+
+Live proof: [regular-chat connector discovery/write receipt](../../../p/connector-discovery-write-capability-20260914.md).
+
 For an atomic multi-file GitHub publication: read fresh main + tree and the exact owned files; create replacement blobs; create a tree based on that fresh main tree; create a commit parented to fresh main; create a unique branch; open the PR; inspect the exact diff; merge the intended head with `expected_head_sha`; then read the merged paths back. Preserve concurrent changes. Never force-push.
 
 ## Do this
