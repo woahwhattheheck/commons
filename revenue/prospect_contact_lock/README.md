@@ -15,8 +15,9 @@ Production authority is code-pinned. Ordinary callers cannot select an alternate
 - branch: `coordination/prospect-contact-lock-v1`
 - root: `.coordination/prospect-contact-lock/v1`
 - generation: `prospect-contact-lock/v1/2026-09-14`
+- installed marker: `.coordination/prospect-contact-lock/v1/AUTHORITY.json`
 
-The bearer token is sent only to the pinned HTTPS API/repository URL family. Redirects are refused rather than forwarding Authorization.
+The canonical public/CLI surface verifies that exact marker before every contact-record read. A missing branch, missing marker, malformed marker, or marker whose generation/repository/branch/root/digest differs from the compiled authority fails closed; record-level `404` is interpreted as ABSENT only after the marker has been proven readable and exact. The bearer token is sent only to the pinned HTTPS API/repository URL family. Redirects are refused rather than forwarding Authorization.
 
 ## Lifecycle
 
@@ -78,7 +79,7 @@ Supported target kinds:
 
 ## Paid-path requirement
 
-`arm` requires a concrete compensation path such as a fixed-price pilot, bounty/prize, bid/contract/subcontract, invoice/fee/retainer, or explicit amount. The plaintext is not retained. This proves only that the operator declared a path to compensation; it is not evidence of acceptance or payment.
+`arm` requires a concrete compensation path such as a fixed-price pilot, bounty/prize, bid/contract/subcontract, invoice/fee/retainer, or explicit positive amount. Canonical validation uses token/phrase boundaries rather than substring matching, so negative/larger-token prose such as `unpaid`, `repaid`, `uncontracted`, `not paid`, `no fee`, and `$0` cannot self-promote into a paid path. The plaintext is not retained. This proves only that the operator declared a path to compensation; it is not evidence of acceptance or payment.
 
 ## CLI
 
@@ -159,14 +160,16 @@ python -m py_compile \
   revenue/prospect_contact_lock/__init__.py \
   revenue/prospect_contact_lock/__main__.py \
   revenue/prospect_contact_lock/lock.py \
+  revenue/prospect_contact_lock/hardened.py \
   revenue/prospect_contact_lock/cli.py \
-  revenue/prospect_contact_lock/test_lock.py
+  revenue/prospect_contact_lock/test_lock.py \
+  revenue/prospect_contact_lock/test_hardened.py
 
-python -m unittest -v revenue.prospect_contact_lock.test_lock
-python -O -m unittest -v revenue.prospect_contact_lock.test_lock
+python -m unittest -v revenue.prospect_contact_lock.test_lock revenue.prospect_contact_lock.test_hardened
+python -O -m unittest -v revenue.prospect_contact_lock.test_lock revenue.prospect_contact_lock.test_hardened
 ```
 
-Hostiles cover same-contact contention, no-timeout stale blocking, exact-owner release/finalize, ARMED payload immutability, explicit ARMED release, one-shot dispatch consumption, same-owner replay after dispatch, OUTCOME_UNKNOWN no-release/no-reacquire, exact payload binding at finalization, permanent CONTACTED suppression, CAS loss, canonical namespace binding, raw-contact non-retention, digest-only evidence, server-Date fail-closed behavior, token-bearing URL origin pinning, duplicate-key/tampered-record rejection, receipt tamper detection, message-file bounds, and history-chain advancement.
+The combined suite currently contains **47 hostile tests**. It covers same-contact contention, no-timeout stale blocking, exact-owner release/finalize, ARMED payload immutability, explicit ARMED release, one-shot dispatch consumption, same-owner replay after dispatch, OUTCOME_UNKNOWN no-release/no-reacquire, exact payload binding at finalization, permanent CONTACTED suppression, CAS loss, canonical namespace binding, missing/tampered authority-marker fail-closed behavior before record reads, paid-path token-boundary/negative regressions, raw-contact non-retention, digest-only evidence, server-Date fail-closed behavior, token-bearing URL origin pinning, duplicate-key/tampered-record rejection, receipt tamper detection, message-file bounds, and history-chain advancement.
 
 ## Lineage
 
