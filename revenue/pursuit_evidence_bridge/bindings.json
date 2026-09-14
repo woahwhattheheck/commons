@@ -16,6 +16,22 @@
         "CONTROLLING_TENDER_PACK_NOT_REVIEWED",
         "TENDER_PACK_NOT_ACQUIRED"
       ]
+    },
+    {
+      "binding_id": "ttuhsc-739-sl3821039-main-v1",
+      "opportunity_id": "739-SL3821039",
+      "source_ledger_path": "opportunities/ttuhsc_739_sl3821039_enterprise_ai/source_ledger.json",
+      "source_ledger_sha256": "3d2af64d5c4c9547e3c35f7095606e0be16c6628d78dfc1de7a9c8d1eb20d729",
+      "submission_manifest_path": "opportunities/ttuhsc_739_sl3821039_enterprise_ai/submission_manifest.json",
+      "submission_manifest_sha256": "3b199b5ceb4e8f1d7a5a72a46267d57d7333c8c2acc2b97f2ac8d738cf4713f3",
+      "deadline_utc": "2026-09-21T21:30:00Z",
+      "vault_authority_sha256": null,
+      "vault_registry_sha256": null,
+      "vault_query_sha256": null,
+      "static_holds": [
+        "ALL_ADDENDA_NOT_RETAINED",
+        "FIRST_PARTY_PACKET_BYTES_NOT_RETAINED"
+      ]
     }
   ]
 }

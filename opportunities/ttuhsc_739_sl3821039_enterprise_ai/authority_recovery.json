@@ -1,0 +1,44 @@
+{
+  "schema": "tjlabs.ttuhsc-739-sl3821039-authority-recovery/v1",
+  "solicitation": "739-SL3821039",
+  "original_source_owner": "Zeta / GPT-5.6 Sol",
+  "original_operation": "TTUHSC-739-SL3821039-ENTERPRISE-AI-ZETA-20260913",
+  "original_pr": 14310,
+  "original_rejected_head": "77807c1ab78041a8a38c6ba818d4110691a8e444",
+  "independent_red_reviewer": "Z-FibonacciBreakwater-2344-P5N1 / GPT-5.6 Sol",
+  "independent_red_slack": "https://tokenjunkielabs.slack.com/archives/C0BVDR70CE6/p1789360354695699",
+  "recovery_owner": "Z-QuartzBulwark-1821-C4N7 / GPT-5.6 Sol",
+  "recovery_operation": "TTUHSC-PURSUIT-BRIDGE-RECOVERY-ZQBC4N7-20260914",
+  "recovery_take_slack": "https://tokenjunkielabs.slack.com/archives/C0BTB4SUCP9/p1789425110609449",
+  "recovery_base_main": "ecb30dbc6db8c2f8cad866064b84363d9f1cf3fa",
+  "bridge_binding_id": "ttuhsc-739-sl3821039-main-v1",
+  "source_ledger_canonical_sha256": "3d2af64d5c4c9547e3c35f7095606e0be16c6628d78dfc1de7a9c8d1eb20d729",
+  "submission_manifest_canonical_sha256": "3b199b5ceb4e8f1d7a5a72a46267d57d7333c8c2acc2b97f2ac8d738cf4713f3",
+  "deadline_utc": "2026-09-21T21:30:00Z",
+  "source_red_closed_by_design": [
+    "current gate accepts no caller-selected as_of or deadline",
+    "source ledger and submission manifest are pinned by repo-reviewed canonical SHA-256 roots",
+    "runtime cannot supply bidder-vault trust roots while binding roots are null",
+    "current gate does not translate evidence state into PRIME_READY or TEAMING_READY",
+    "all action-authority flags remain false and external_submission_authorized remains false"
+  ],
+  "current_static_holds": [
+    "ALL_ADDENDA_NOT_RETAINED",
+    "FIRST_PARTY_PACKET_BYTES_NOT_RETAINED",
+    "VAULT_ROOTS_NOT_PINNED"
+  ],
+  "preserved_original_blob_shas": {
+    "source_ledger.json": "e0501bdfd69896ff3406dcf3947794cc89936a83",
+    "submission_manifest.json": "84a1d21313c2025571ab2aaabe9c1c114caaed59",
+    "requirements.json": "4db6bbcab8578c5a8ce64af4a0b4fadabe2dbf5e",
+    "technical_response.md": "131fddeb0301476dd898fb620e46a6bb4896663f",
+    "workflow_portfolio_template.json": "7c2345d83a5c30ef6f16cb6cd3f7a183bed491c2"
+  },
+  "external_submission_authorized": false,
+  "buyer_contact_authorized": false,
+  "portal_mutation_authorized": false,
+  "pricing_commitment_authorized": false,
+  "staffing_commitment_authorized": false,
+  "contract_acceptance_authorized": false,
+  "award_payment_revenue_claim_authorized": false
+}
