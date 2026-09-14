@@ -1,9 +1,9 @@
 {
   "counts": {
-    "open_issues": 95,
-    "open_pull_requests": 51,
-    "runs_in_progress": 20,
-    "runs_queued": 649
+    "open_issues": 96,
+    "open_pull_requests": 52,
+    "runs_in_progress": 18,
+    "runs_queued": 670
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -68,6 +68,17 @@
   "newest_pulls": [
     {
       "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zrt-p3x9/org-contact-pressure",
+      "created_at": "2026-09-14T03:31:53Z",
+      "draft": false,
+      "head_sha": "f0a1eba3ac83614e8303d4108dd6ec82abd2e05c",
+      "number": 14254,
+      "title": "Revenue: gate organization-level cross-contact pressure",
+      "updated_at": "2026-09-14T03:31:53Z"
+    },
+    {
+      "author": "woahwhattheheck",
       "base": "zav-s8q3/security-questionnaire-desk-20260913",
       "branch": "zmo-k4p7/questionnaire-authority-honest-successor-20260913",
       "created_at": "2026-09-14T03:26:19Z",
@@ -75,7 +86,7 @@
       "head_sha": "b9f1b1779b4e4d9b7c19a9fc4744d28881282cd0",
       "number": 14246,
       "title": "fix(revenue): close questionnaire authority and publication gaps",
-      "updated_at": "2026-09-14T03:26:19Z"
+      "updated_at": "2026-09-14T03:32:06Z"
     },
     {
       "author": "woahwhattheheck",
@@ -86,7 +97,7 @@
       "head_sha": "090815cee9355c36db86a6666023f391dc9ebcec",
       "number": 14235,
       "title": "fix(outbound): snapshot buyer-scope parsed inputs",
-      "updated_at": "2026-09-14T03:27:17Z"
+      "updated_at": "2026-09-14T03:29:35Z"
     },
     {
       "author": "woahwhattheheck",
@@ -164,17 +175,6 @@
       "number": 14173,
       "title": "fix(forensics): bind lease evidence to canonical Commons repo",
       "updated_at": "2026-09-14T02:19:20Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zkf-t9c4/right-now-stripe-currentness-20260913",
-      "created_at": "2026-09-14T01:39:43Z",
-      "draft": false,
-      "head_sha": "d9acf14a02c0a1455d063b63d1e4f041219b6410",
-      "number": 14159,
-      "title": "Revenue: require fresh Stripe readback for right-now checkout truth",
-      "updated_at": "2026-09-14T02:46:12Z"
     }
   ],
   "open_heads": {
@@ -228,12 +228,35 @@
     "14221": "bc063456d9fcff764b33a7f9079aed7b889ac09f",
     "14228": "05f892701fdbbde76d0f236a44dc481256772817",
     "14235": "090815cee9355c36db86a6666023f391dc9ebcec",
-    "14246": "b9f1b1779b4e4d9b7c19a9fc4744d28881282cd0"
+    "14246": "b9f1b1779b4e4d9b7c19a9fc4744d28881282cd0",
+    "14254": "f0a1eba3ac83614e8303d4108dd6ec82abd2e05c"
   },
-  "pulls_listed": 51,
+  "pulls_listed": 52,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 32.5,
+  "queue_depth_per_runner": 37.2,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z-sol-13/ttuhsc-keywell-workstream-20260913",
+      "closed_at": "2026-09-14T03:32:56Z",
+      "head_sha": "6fab4c5fb9144aa29e3effe76747443d8380a049",
+      "merged_at": "2026-09-14T03:32:56Z",
+      "number": 14253,
+      "state": "MERGED",
+      "title": "Revenue: TTUHSC Keywell pilot-verification subcontract workstream"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z17/offer-portfolio-router-20260913",
+      "closed_at": "2026-09-14T03:31:52Z",
+      "head_sha": "2ccbf7d2e7773e59c2ec9400d93bfec15768eac6",
+      "merged_at": "2026-09-14T03:31:52Z",
+      "number": 14252,
+      "state": "MERGED",
+      "title": "revenue(router): allocate one paid offer per org before outreach"
+    },
     {
       "author": "woahwhattheheck",
       "base": "zav-s8q3/security-questionnaire-desk-20260913",
@@ -376,32 +399,10 @@
       "number": 14227,
       "state": "MERGED",
       "title": "Repair paid-pilot rollout chronology authority"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zvw-c7p4/outbound-guard-source-custody-20260913",
-      "closed_at": "2026-09-14T02:43:40Z",
-      "head_sha": "bc094b424ea740395eebc599e6ced2a270b40cde",
-      "merged_at": null,
-      "number": 13824,
-      "state": "CLOSED",
-      "title": "revenue: harden core outbound guard source custody"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zbh-n6v2/mfef-commercial-contract-pin",
-      "closed_at": "2026-09-14T02:42:40Z",
-      "head_sha": "82811c0b20c5c65a603c1edd38dbc039c04e5a05",
-      "merged_at": "2026-09-14T02:42:40Z",
-      "number": 14222,
-      "state": "MERGED",
-      "title": "Fix evidence freshness commercial packet reseal trust"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-14T03:29:43Z",
+  "unchanged_since": "2026-09-14T03:33:34Z",
   "undatable_pulls": []
 }
