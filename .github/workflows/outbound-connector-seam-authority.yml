@@ -4,13 +4,17 @@ on:
   pull_request:
     paths:
       - 'revenue/outbound_connector_lease/**'
+      - 'revenue/outbound_mutex/README.md'
       - 'revenue/outbound_mutex/PRODUCTION_DEPRECATION.md'
+      - '.agents/skills/outbound-send/SKILL.md'
       - '.github/workflows/outbound-connector-seam-authority.yml'
   push:
     branches: [main]
     paths:
       - 'revenue/outbound_connector_lease/**'
+      - 'revenue/outbound_mutex/README.md'
       - 'revenue/outbound_mutex/PRODUCTION_DEPRECATION.md'
+      - '.agents/skills/outbound-send/SKILL.md'
       - '.github/workflows/outbound-connector-seam-authority.yml'
 
 permissions:
