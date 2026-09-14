@@ -1,6 +1,8 @@
 from __future__ import annotations
 
 import json
+import os
+import stat
 from datetime import date, datetime, timezone
 from pathlib import Path, PurePosixPath
 from typing import Any, Iterable
@@ -87,6 +89,60 @@ def apply_policy(findings: Iterable[Finding], exemptions: Iterable[Exemption]) -
     return [finding for finding in sorted(findings) if (finding.path, finding.rule) not in allowed]
 
 
+MAX_SOURCE_BYTES = 2_000_000
+
+
+def _generation(value: os.stat_result) -> tuple[int, ...]:
+    return (
+        value.st_dev, value.st_ino, value.st_mode, value.st_nlink, value.st_size,
+        value.st_mtime_ns, value.st_ctime_ns,
+    )
+
+
+def _read_source(root: Path, relative: PurePosixPath) -> bytes:
+    cursor = root
+    try:
+        for part in relative.parts:
+            cursor = cursor / part
+            meta = os.lstat(cursor)
+            if stat.S_ISLNK(meta.st_mode):
+                raise PolicyError(f"source path contains symlink: {relative.as_posix()}")
+        flags = os.O_RDONLY | getattr(os, "O_NOFOLLOW", 0)
+        fd = os.open(cursor, flags)
+    except (OSError, PolicyError) as exc:
+        if isinstance(exc, PolicyError):
+            raise
+        raise PolicyError(f"source open failure: {exc}") from exc
+    try:
+        before = os.fstat(fd)
+        if not stat.S_ISREG(before.st_mode):
+            raise PolicyError("source is not a regular file")
+        if before.st_size > MAX_SOURCE_BYTES:
+            raise PolicyError(f"source exceeds {MAX_SOURCE_BYTES} bytes")
+        chunks: list[bytes] = []
+        remaining = MAX_SOURCE_BYTES + 1
+        while remaining:
+            chunk = os.read(fd, min(65536, remaining))
+            if not chunk:
+                break
+            chunks.append(chunk)
+            remaining -= len(chunk)
+        raw = b"".join(chunks)
+        after = os.fstat(fd)
+        visible = os.lstat(cursor)
+        if len(raw) > MAX_SOURCE_BYTES:
+            raise PolicyError(f"source exceeds {MAX_SOURCE_BYTES} bytes")
+        if _generation(before) != _generation(after) or _generation(after) != _generation(visible):
+            raise PolicyError("source generation changed while reading")
+        if len(raw) != before.st_size:
+            raise PolicyError("source length changed while reading")
+        return raw
+    except OSError as exc:
+        raise PolicyError(f"source read failure: {exc}") from exc
+    finally:
+        os.close(fd)
+
+
 def scan_paths(
     paths: Iterable[str | Path],
     *,
@@ -96,19 +152,17 @@ def scan_paths(
     root_path = Path(root).resolve()
     out: list[Finding] = []
     for item in sorted({str(path) for path in paths}):
-        candidate = Path(item)
-        full = (root_path / candidate).resolve() if not candidate.is_absolute() else candidate.resolve()
-        try:
-            relative = full.relative_to(root_path).as_posix()
-        except ValueError:
-            out.append(Finding(str(candidate), 1, 1, "CRG000", "scan path escapes repository root", None))
+        candidate = PurePosixPath(item.replace("\\", "/"))
+        if candidate.is_absolute() or ".." in candidate.parts:
+            out.append(Finding(item, 1, 1, "CRG000", "scan path escapes repository root", None))
             continue
+        relative = candidate.as_posix()
         if not relative.startswith("revenue/") or not relative.endswith(".py"):
             continue
         try:
-            raw = full.read_bytes()
-        except OSError as exc:
-            out.append(Finding(relative, 1, 1, "CRG000", f"source read failure: {exc}", None))
+            raw = _read_source(root_path, candidate)
+        except PolicyError as exc:
+            out.append(Finding(relative, 1, 1, "CRG000", str(exc), None))
             continue
         out.extend(analyze_source(raw, path=relative))
     return apply_policy(out, exemptions)

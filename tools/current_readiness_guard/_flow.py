@@ -137,13 +137,18 @@ def _assignment_value(node: ast.AST) -> ast.AST | None:
     return None
 
 
-def _trusted_clock_call(node: ast.Call) -> bool:
+def _trusted_clock_call(node: ast.Call, *, params: set[str]) -> bool:
     name = _name(node.func).lower()
-    if name in {"datetime.now", "datetime.utcnow", "time.time", "time.time_ns", "_process_now"}:
-        return True
-    if name.endswith(".datetime.now") or name.endswith(".datetime.utcnow"):
-        return True
-    return name.endswith("process_now") or name.endswith("current_utc") or name.endswith("utc_now")
+    root = name.split(".", 1)[0]
+    if root in {value.lower() for value in params}:
+        return False
+    return name in {
+        "datetime.now",
+        "datetime.utcnow",
+        "time.time",
+        "time.time_ns",
+        "_process_now",
+    }
 
 
 def _expr_sources(
@@ -164,7 +169,7 @@ def _expr_sources(
             return {node.id}
         return set()
     if isinstance(node, ast.Call):
-        if _trusted_clock_call(node):
+        if _trusted_clock_call(node, params=params):
             return {_PROCESS_CLOCK}
         out = _expr_sources(node.func, params=params, origins=origins, defs=defs, seen=seen)
         for arg in node.args:

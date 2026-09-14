@@ -230,6 +230,39 @@ def verify_report(packet, report, timer):
 '''
         self.assertIn("CRG004", self.rules(source))
 
+    def test_trusted_looking_caller_clock_method_is_not_process_clock(self):
+        source = """
+def verify_report(packet, report, timer):
+    current = timer.current_utc()
+    rebuilt = compile_state(packet, as_of=report["evaluated_at"])
+    return rebuilt["state"] == "READY"
+"""
+        self.assertIn("CRG004", self.rules(source))
+
+    def test_parameter_named_datetime_cannot_mint_process_clock(self):
+        source = """
+def verify_report(packet, report, datetime):
+    current = datetime.now()
+    rebuilt = compile_state(packet, as_of=report["evaluated_at"])
+    return rebuilt["state"] == "READY"
+"""
+        self.assertIn("CRG004", self.rules(source))
+
+    @unittest.skipUnless(hasattr(os, "symlink"), "symlink unavailable")
+    def test_revenue_symlink_fails_closed(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            (root / "revenue").mkdir()
+            safe = root / "safe.py"
+            safe.write_text('def evaluate(packet):\n return "HOLD"\n', encoding="utf-8")
+            link = root / "revenue" / "escape.py"
+            try:
+                os.symlink(safe, link)
+            except OSError:
+                self.skipTest("symlink unavailable")
+            findings = scan_paths(["revenue/escape.py"], root=root)
+            self.assertEqual([finding.rule for finding in findings], ["CRG000"])
+
     def test_verifier_process_projection_used_in_result_is_safe(self):
         source = '''
 def verify_report(packet, report):
