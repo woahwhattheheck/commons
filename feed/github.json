@@ -1,9 +1,9 @@
 {
   "counts": {
-    "open_issues": 113,
+    "open_issues": 114,
     "open_pull_requests": 64,
     "runs_in_progress": 11,
-    "runs_queued": 1026
+    "runs_queued": 1102
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -29,7 +29,7 @@
       "head_sha": "aee34ae856ab682908406e7b77f017af6da37586",
       "number": 13676,
       "title": "fix(revenue): require trusted time for Port QC verification",
-      "updated_at": "2026-09-13T09:24:50Z"
+      "updated_at": "2026-09-14T05:13:42Z"
     },
     {
       "author": "woahwhattheheck",
@@ -69,13 +69,24 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
+      "branch": "forge-z/dcsa-innovation-call-01-20260914",
+      "created_at": "2026-09-14T05:09:16Z",
+      "draft": false,
+      "head_sha": "96e1247fb5e46ebe399151fcedc56fcf154b31d2",
+      "number": 14336,
+      "title": "feat: add DCSA Innovation Call #01 readiness carrier",
+      "updated_at": "2026-09-14T05:13:09Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
       "branch": "zkw-f4d9/outbound-guard-verifier-clock-20260914",
       "created_at": "2026-09-14T05:06:50Z",
       "draft": false,
-      "head_sha": "e1cfee85559d718c0f3689e0166a144fb2a3028e",
+      "head_sha": "7617fe8fd765f7e36eec502aefbec089c76661e7",
       "number": 14333,
       "title": "fix(outbound): bind current preflight to verifier-owned time",
-      "updated_at": "2026-09-14T05:06:50Z"
+      "updated_at": "2026-09-14T05:13:34Z"
     },
     {
       "author": "woahwhattheheck",
@@ -83,10 +94,10 @@
       "branch": "work-zad-001",
       "created_at": "2026-09-14T05:03:23Z",
       "draft": false,
-      "head_sha": "7f0daf0d235b494eca5b994a51536a8006404141",
+      "head_sha": "2f257419debc28eba49f028f11993665c392c879",
       "number": 14330,
       "title": "Add connector write-capability preflight",
-      "updated_at": "2026-09-14T05:03:23Z"
+      "updated_at": "2026-09-14T05:12:59Z"
     },
     {
       "author": "woahwhattheheck",
@@ -164,17 +175,6 @@
       "number": 14310,
       "title": "revenue: package TTUHSC 739-SL3821039 enterprise AI pursuit",
       "updated_at": "2026-09-14T04:33:26Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zhq/army-sbir-arm26bx06-nv012-20260913",
-      "created_at": "2026-09-14T03:56:40Z",
-      "draft": false,
-      "head_sha": "cd6a66435851b57f61c5a68c4ab7f8356701f910",
-      "number": 14299,
-      "title": "ARM26BX06-NV012: decision-as-program Phase I qualification + demo carrier",
-      "updated_at": "2026-09-14T04:32:38Z"
     }
   ],
   "open_heads": {
@@ -196,7 +196,6 @@
     "13821": "237d9963fc7424cfabb3910dd5968ae3544e8d5a",
     "13842": "1460ce57369134ace18c5bdbb8f27f0854542bc2",
     "13844": "51a23e49c939f3090aedd852539fa2f1806ae630",
-    "13857": "a1dde557acac3aa3531b7a5541e11f95b035f3bf",
     "13862": "820a0f79675169025ebf6a28194114077c95e993",
     "13865": "323b9a7c646df4dabaf9233a178093add5aa11ca",
     "13874": "2d1fb3e3cff82f036a977036706dbaa6749c8459",
@@ -240,13 +239,36 @@
     "14320": "67469492f28f15602e8e7463bf06a34d19a05448",
     "14321": "d8d2800a0490eb465e2eab91f01ced0943a33912",
     "14322": "6842fd25e7877fd67a11fed216f0fac292fb16d4",
-    "14330": "7f0daf0d235b494eca5b994a51536a8006404141",
-    "14333": "e1cfee85559d718c0f3689e0166a144fb2a3028e"
+    "14330": "2f257419debc28eba49f028f11993665c392c879",
+    "14333": "7617fe8fd765f7e36eec502aefbec089c76661e7",
+    "14336": "96e1247fb5e46ebe399151fcedc56fcf154b31d2"
   },
   "pulls_listed": 64,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 93.3,
+  "queue_depth_per_runner": 100.2,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zarg-c7w5/afh-video-evidence-gate-20260913",
+      "closed_at": "2026-09-14T05:11:02Z",
+      "head_sha": "a1dde557acac3aa3531b7a5541e11f95b035f3bf",
+      "merged_at": null,
+      "number": 13857,
+      "state": "CLOSED",
+      "title": "fix(afh): fail closed on invalid demo video proof"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zrh-k7p2/afh-video-url-shapes-20260914",
+      "closed_at": "2026-09-14T05:10:44Z",
+      "head_sha": "a8806ca9f4972a50331afb7f56f4fe8b5fc553c9",
+      "merged_at": "2026-09-14T05:10:44Z",
+      "number": 14334,
+      "state": "MERGED",
+      "title": "fix(afh): validate concrete public demo video URLs"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -389,32 +411,10 @@
       "number": 14234,
       "state": "MERGED",
       "title": "NAWCAD AcqDocs: add deterministic zero-LLM AcqAtlas recommender"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zkdd-r8n6/reply-revenue-chronology-fixforward-20260913",
-      "closed_at": "2026-09-14T02:50:56Z",
-      "head_sha": "83423bd3b038824a007712d722f65c66bd7ad82a",
-      "merged_at": "2026-09-14T02:50:56Z",
-      "number": 14229,
-      "state": "MERGED",
-      "title": "Fix reply-to-revenue chronology safety"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-solstice/relationship-census-14216",
-      "closed_at": "2026-09-14T02:50:08Z",
-      "head_sha": "670ac88afd800b0b1c2cda056a2ee76693a68351",
-      "merged_at": null,
-      "number": 14226,
-      "state": "CLOSED",
-      "title": "revenue: add provider relationship census custody gate"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-14T05:07:13Z",
+  "unchanged_since": "2026-09-14T05:14:09Z",
   "undatable_pulls": []
 }
