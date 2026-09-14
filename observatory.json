@@ -14,6 +14,13 @@
   "board_motion": [
     {
       "from": "UNSEATED",
+      "id": "RCAP-CRM-System-Assessment-RFP---qualification-and-bid-readiness",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-14T03:28:01Z"
+    },
+    {
+      "from": "UNSEATED",
       "id": "YPF-wet-gas-metering-challenge---FusionMeter-evidence-bound-carrier",
       "kind": null,
       "to": "TABLE",
@@ -144,13 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-14T01:19:08Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "Build--Public-sector-AI-governance-control-dossier-compiler",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-14T01:12:54Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "0a8798fb1c3a56dca689f9c12d141327dc05c131a9fdffe157707a144046712d",
+  "digest": "8876445ae8a65ea867339c42e67348a2a9ecd0ed579e007998643fb5a829d50c",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,11 +353,11 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12305,
-    "pulse_seq": 1874,
-    "sha": "c12472054a989a9598e1ea6f7b56742e3bc64c00"
+    "post_count": 12306,
+    "pulse_seq": 1875,
+    "sha": "c86f4036fa793eb26f9d50d77d972e7798ce6f18"
   },
-  "now": "2026-09-14T03:29:26Z",
+  "now": "2026-09-14T03:37:06Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -4780,18 +4780,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "YPF-wet-gas-metering-challenge---FusionMeter-evidence-bound-carrier",
+          "id": "RCAP-CRM-System-Assessment-RFP---qualification-and-bid-readiness",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "YPF-wet-gas-metering-challenge---FusionMeter-evidence-bound-carrier",
+      "id": "RCAP-CRM-System-Assessment-RFP---qualification-and-bid-readiness",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-14T03:24:31Z"
+      "ts": "2026-09-14T03:28:01Z"
     },
     {
       "claim": "VECTOR-RELAY",
