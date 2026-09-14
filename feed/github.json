@@ -1,9 +1,9 @@
 {
   "counts": {
-    "open_issues": 90,
+    "open_issues": 89,
     "open_pull_requests": 54,
-    "runs_in_progress": 17,
-    "runs_queued": 757
+    "runs_in_progress": 16,
+    "runs_queued": 759
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -83,10 +83,10 @@
       "branch": "zkfj-r3x7/buyer-scope-snapshot-custody-20260913",
       "created_at": "2026-09-14T02:49:26Z",
       "draft": false,
-      "head_sha": "8071cf0b7d1dddc48dcba455a0e26758c9e5c0a8",
+      "head_sha": "090815cee9355c36db86a6666023f391dc9ebcec",
       "number": 14235,
       "title": "fix(outbound): snapshot buyer-scope parsed inputs",
-      "updated_at": "2026-09-14T02:51:23Z"
+      "updated_at": "2026-09-14T02:54:22Z"
     },
     {
       "author": "woahwhattheheck",
@@ -199,9 +199,9 @@
     "13842": "1460ce57369134ace18c5bdbb8f27f0854542bc2",
     "13844": "51a23e49c939f3090aedd852539fa2f1806ae630",
     "13857": "a1dde557acac3aa3531b7a5541e11f95b035f3bf",
-    "13862": "7e28cbccfdd397c880763a58b0d873cf484c44f6",
+    "13862": "3e8e2aaa1106e204d4a55e86a96ada8731574771",
     "13863": "ae949f0a623b1eb8af94fe76427cb93169f55d91",
-    "13865": "b96d04b38d391236b2d9fd99528f57703cb5c481",
+    "13865": "eb7f842b7d4e3029d508c23bbe5e345b1bcadc9a",
     "13874": "2d1fb3e3cff82f036a977036706dbaa6749c8459",
     "13877": "0a86059fec8319f9b3782e833089d76847bc408b",
     "13901": "54fa9ce0b97e2457aebb087fd4b6f9fdd979536e",
@@ -230,12 +230,12 @@
     "14223": "6ed69e2e963ff6143c7f4741e95aa475aa2224cb",
     "14228": "05f892701fdbbde76d0f236a44dc481256772817",
     "14233": "cd239db89e8d5ff41c608f1a4b61c62de125e6fe",
-    "14235": "8071cf0b7d1dddc48dcba455a0e26758c9e5c0a8",
+    "14235": "090815cee9355c36db86a6666023f391dc9ebcec",
     "14236": "b287b8077ff444c5e18f325817cceea2fb1aefe5"
   },
   "pulls_listed": 54,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 44.5,
+  "queue_depth_per_runner": 47.4,
   "recently_closed": [
     {
       "author": "woahwhattheheck",
@@ -405,6 +405,6 @@
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-14T02:51:51Z",
+  "unchanged_since": "2026-09-14T02:54:37Z",
   "undatable_pulls": []
 }
