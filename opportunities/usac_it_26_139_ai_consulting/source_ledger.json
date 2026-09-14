@@ -1,0 +1,57 @@
+{
+  "schema": "tjlabs.usac-it-26-139-source-ledger/v1",
+  "observed_at_utc": "2026-09-14T03:40:00Z",
+  "buyer": "Universal Service Administrative Company",
+  "solicitation": "IT-26-139",
+  "amendment_policy": "USAC procurement page is authoritative for later notices; recheck before any readiness claim.",
+  "sources": [
+    {
+      "id": "buyer-page",
+      "authority": "FIRST_PARTY_INDEX",
+      "url": "https://www.usac.org/about/procurement/rfp-it-26-139-artificial-intelligence-ai-consulting-and-support-services/",
+      "title": "RFP IT-26-139 – Artificial Intelligence (AI) Consulting and Support Services",
+      "sha256": null,
+      "byte_custody": false,
+      "notes": "Lists the RFP, Attachment 1 Bid Sheet, Attachment 2 Confidentiality Agreement, and Questions & Answers; warns contractors to monitor for later notices."
+    },
+    {
+      "id": "rfp",
+      "authority": "FIRST_PARTY_CONTROLLING",
+      "url": "https://www.usac.org/wp-content/uploads/about/documents/Procurement/RFP-IT-26-139-AI-Consulting-and-Support-Services.pdf",
+      "title": "RFP IT-26-139 – AI Consulting and Support Services",
+      "pages": 55,
+      "sha256": null,
+      "byte_custody": false,
+      "notes": "Controlling solicitation; issue 2026-08-31; proposal due 2026-09-30 11:00 ET."
+    },
+    {
+      "id": "bid-sheet",
+      "authority": "FIRST_PARTY_CONTROLLING",
+      "url": null,
+      "title": "Attachment 1 – Bid Sheet",
+      "sha256": null,
+      "byte_custody": false,
+      "notes": "First-party buyer page exposes the attachment, but this runtime did not retain its spreadsheet bytes. Must be recovered before submission readiness."
+    },
+    {
+      "id": "confidentiality-agreement",
+      "authority": "FIRST_PARTY_CONTROLLING",
+      "url": "https://www.usac.org/wp-content/uploads/about/documents/Procurement/IT-26-139-Attachment-2-USAC-Confidentiality-Agreement.pdf",
+      "title": "Attachment 2 – USAC Confidentiality Agreement",
+      "pages": 5,
+      "sha256": null,
+      "byte_custody": false,
+      "notes": "Must be executed by Offeror and submitted with proposal."
+    },
+    {
+      "id": "q-and-a",
+      "authority": "FIRST_PARTY_CONTROLLING_CLARIFICATION",
+      "url": "https://www.usac.org/wp-content/uploads/about/documents/Procurement/IT-26-139-Questions-and-Answers.pdf",
+      "title": "IT-26-139 Questions & Answers",
+      "pages": 40,
+      "sha256": null,
+      "byte_custody": false,
+      "notes": "Buyer-issued clarifications, including teaming, past performance, AI-use approval, page limits, staffing, insurance, and remote/on-site expectations."
+    }
+  ]
+}
