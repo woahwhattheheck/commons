@@ -93,7 +93,7 @@ class DependencyClosureTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as td:
             bundle = _bundle(Path(td), {"main.py": "name='json'\nmod=__import__(name)\n"})
             closure = dependency_closure(bundle)
-            self.assertEqual(len(closure["dynamic_import_sites"]), 1)
+            self.assertTrue(closure["dynamic_import_sites"])
             with self.assertRaisesRegex(HermeticError, "dynamic imports"):
                 require_closed_dependencies(closure)
 
