@@ -1,9 +1,9 @@
 {
   "counts": {
-    "open_issues": 84,
-    "open_pull_requests": 47,
-    "runs_in_progress": 17,
-    "runs_queued": 206
+    "open_issues": 85,
+    "open_pull_requests": 48,
+    "runs_in_progress": 20,
+    "runs_queued": 222
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -69,6 +69,28 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
+      "branch": "zaw-c9t4/outbound-presend-forensics-20260913",
+      "created_at": "2026-09-14T01:33:28Z",
+      "draft": false,
+      "head_sha": "ade7435ddb2d5b29807e22b3b9d9b39754f69ed3",
+      "number": 14153,
+      "title": "revenue: add outbound pre-send lease forensics",
+      "updated_at": "2026-09-14T01:34:12Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zgc-p7v2/wri-open-timber-proposal-20260913",
+      "created_at": "2026-09-14T01:32:44Z",
+      "draft": false,
+      "head_sha": "d268854c6935bdbbb43b8c804c766fc97a91a307",
+      "number": 14151,
+      "title": "Revenue: add WRI Open Timber Portal proposal carrier",
+      "updated_at": "2026-09-14T01:32:44Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
       "branch": "zhk/shipaton-proofpocket",
       "created_at": "2026-09-14T01:30:35Z",
       "draft": false,
@@ -80,24 +102,13 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "zst-q5m9/awwu-independent-authority-fix",
-      "created_at": "2026-09-14T01:30:14Z",
-      "draft": false,
-      "head_sha": "b11d8697d224c5be834551f3eefe75b92a0734a5",
-      "number": 14144,
-      "title": "AWWU: require independent authority before current READY",
-      "updated_at": "2026-09-14T01:30:43Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
       "branch": "zpt-j8w4/commercial-experiment-lab-14120",
       "created_at": "2026-09-14T01:29:44Z",
       "draft": false,
       "head_sha": "18af180c4d101698ea45fcaf10051629d4cd0611",
       "number": 14142,
       "title": "Revenue: evidence-bound commercial experiment lab",
-      "updated_at": "2026-09-14T01:29:44Z"
+      "updated_at": "2026-09-14T01:34:18Z"
     },
     {
       "author": "woahwhattheheck",
@@ -164,17 +175,6 @@
       "number": 14057,
       "title": "Make reply-to-revenue contact state chronology-safe",
       "updated_at": "2026-09-13T16:18:09Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zktu/gosim-real-config-only-20260913",
-      "created_at": "2026-09-13T15:38:52Z",
-      "draft": false,
-      "head_sha": "47d0c3324958e66349aa741a56d4732f58a063d1",
-      "number": 14055,
-      "title": "GOSIM: require a real candidate configuration to pass the baseline",
-      "updated_at": "2026-09-13T15:45:42Z"
     }
   ],
   "open_heads": {
@@ -223,13 +223,25 @@
     "14105": "d0c104f5fd41f4bb1e4f77fbb768804654b27a85",
     "14122": "1c95d8463cbaf7e6d11d266d292a5b7792a2dbbb",
     "14142": "18af180c4d101698ea45fcaf10051629d4cd0611",
-    "14144": "b11d8697d224c5be834551f3eefe75b92a0734a5",
-    "14147": "c9af0f0e10608ccf426608a7537a0c459cf889b8"
+    "14147": "c9af0f0e10608ccf426608a7537a0c459cf889b8",
+    "14151": "d268854c6935bdbbb43b8c804c766fc97a91a307",
+    "14153": "ade7435ddb2d5b29807e22b3b9d9b39754f69ed3"
   },
-  "pulls_listed": 47,
+  "pulls_listed": 48,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 12.1,
+  "queue_depth_per_runner": 11.1,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zst-q5m9/awwu-independent-authority-fix",
+      "closed_at": "2026-09-14T01:33:02Z",
+      "head_sha": "ba91c9c26e3fc15eca5a6d1dc9b95f552097602c",
+      "merged_at": "2026-09-14T01:33:02Z",
+      "number": 14144,
+      "state": "MERGED",
+      "title": "AWWU: require independent authority before current READY"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -383,21 +395,10 @@
       "number": 14111,
       "state": "MERGED",
       "title": "feat: add evidence-backed proposal compliance gate"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zkt-a7v2/settled-cash-provider-authority",
-      "closed_at": "2026-09-14T01:03:37Z",
-      "head_sha": "a67484ffb31c32d4bc6f96a8e13feb97435f80d7",
-      "merged_at": "2026-09-14T01:03:37Z",
-      "number": 14108,
-      "state": "MERGED",
-      "title": "Fix settled cash authority so receipt-shaped JSON cannot mint USD"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-14T01:32:25Z",
+  "unchanged_since": "2026-09-14T01:35:00Z",
   "undatable_pulls": []
 }
