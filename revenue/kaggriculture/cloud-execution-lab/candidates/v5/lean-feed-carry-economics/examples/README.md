@@ -1,6 +1,14 @@
 # Synthetic contract fixtures
 
-These files exercise the evidence contract only. They are **not TITAN engine results** and must never be cited as empirical promotion evidence.
+These fixtures exercise the evidence and promotion-fence contracts only. They are **not TITAN engine results** and must never be cited as empirical promotion evidence.
 
-- `synthetic_positive_contract.json` contains a complete synthetic causal chain and is expected to emit `PROMOTE_RESEARCH_CANDIDATE`.
-- `synthetic_no_redeployment.json` removes downstream use of liberated cash and is expected to emit `NO_PROMOTION`.
+Generate the README-named inputs deterministically from the package test-contract helper:
+
+```bash
+python examples/generate_synthetic_contracts.py
+```
+
+- `synthetic_positive_contract.json` contains a complete synthetic causal chain. The candidate economics evaluator supports `PROMOTE_RESEARCH_CANDIDATE`, but the official CLI must emit final `NO_PROMOTION` because synthetic caller-authored evidence has no code-retained trusted authority root.
+- `synthetic_no_redeployment.json` removes downstream use of liberated cash and must emit candidate and final `NO_PROMOTION`.
+
+The checked-in `positive-cli.json` and `negative-cli.json` files are historical output examples from the pre-hardening candidate contract; they are not promotion-authority receipts.
