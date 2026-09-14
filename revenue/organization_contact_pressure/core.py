@@ -104,6 +104,7 @@ class AuthorityView:
     policy_generation: int
     contact_cooldown_seconds: int
     request_max_age_seconds: int
+    ledger_max_age_seconds: int
     ready_validity_seconds: int
     max_future_skew_seconds: int
     issued_at: datetime
@@ -137,6 +138,7 @@ class LedgerView:
     key_id: str
     verifier_id: str
     digest: str
+    state_digest: str
 
 
 def _canonical_bytes(value: Any) -> bytes:

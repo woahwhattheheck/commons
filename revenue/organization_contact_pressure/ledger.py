@@ -111,6 +111,8 @@ def _load_ledger(
         raise VerificationError("ledger is future-updated")
     if updated < authority.issued_at:
         raise VerificationError("ledger predates its authority generation")
+    if now - updated > timedelta(seconds=authority.ledger_max_age_seconds):
+        raise VerificationError("ledger coverage is stale")
     allowed_routes = set(authority.route_scope_sha256s)
     extra_conflicts = set(conflicts)
     for event in events:
@@ -123,6 +125,8 @@ def _load_ledger(
         if event.observed_at > updated + skew:
             extra_conflicts.add(f"EVENT_AFTER_LEDGER_UPDATE:{event.event_id}")
     canonical = {**body, "signature": signature}
+    state_body = dict(body)
+    state_body.pop("updated_at")
     ledger = LedgerView(
         organization_scope_sha256=organization,
         generation=body["generation"],
@@ -133,6 +137,7 @@ def _load_ledger(
         key_id=active.key_id,
         verifier_id=active.verifier_id,
         digest=_sha256(_canonical_bytes(canonical)),
+        state_digest=_sha256(_canonical_bytes(state_body)),
     )
     _verify_current_ledger_head(root, active, authority, ledger, now)
     return ledger

@@ -62,6 +62,7 @@ def _normalize_ledger_head_document(document: Mapping[str, Any]) -> tuple[dict[s
         "organization_scope_sha256",
         "policy_generation",
         "ledger_generation",
+        "ledger_state_sha256",
         "ledger_sha256",
         "ledger_updated_at",
         "committed_at",
@@ -88,6 +89,9 @@ def _normalize_ledger_head_document(document: Mapping[str, Any]) -> tuple[dict[s
             "ledger_head.ledger_generation",
             minimum=0,
             maximum=MAX_SAFE_INTEGER,
+        ),
+        "ledger_state_sha256": _expect_hex64(
+            document["ledger_state_sha256"], "ledger_head.ledger_state_sha256"
         ),
         "ledger_sha256": _expect_hex64(document["ledger_sha256"], "ledger_head.ledger_sha256"),
         "ledger_updated_at": _format_time(
@@ -117,7 +121,8 @@ def _verify_current_ledger_head(
         if len(names) > MAX_LEDGER_HEAD_FILES:
             raise VerificationError("ledger head journal exceeds entry limit")
 
-        current: list[tuple[int, str, datetime, datetime]] = []
+        # generation, event-state digest, full ledger digest, coverage time, commit time
+        current: list[tuple[int, str, str, datetime, datetime]] = []
         active_policy_generations: set[int] = set()
         for name in names:
             if not _HEAD_NAME_RE.fullmatch(name):
@@ -154,7 +159,15 @@ def _verify_current_ledger_head(
             # historical without becoming a false same-generation fork.
             if body["policy_generation"] != authority.policy_generation:
                 continue
-            current.append((body["ledger_generation"], body["ledger_sha256"], ledger_updated, committed))
+            current.append(
+                (
+                    body["ledger_generation"],
+                    body["ledger_state_sha256"],
+                    body["ledger_sha256"],
+                    ledger_updated,
+                    committed,
+                )
+            )
     finally:
         os.close(directory_fd)
 
@@ -163,22 +176,27 @@ def _verify_current_ledger_head(
     if not current:
         raise VerificationError("current verifier/policy epoch has no ledger head")
 
-    by_generation: dict[int, set[tuple[str, datetime]]] = {}
-    committed_by_generation: dict[int, datetime] = {}
-    for generation, digest, ledger_updated, committed in current:
-        by_generation.setdefault(generation, set()).add((digest, ledger_updated))
-        prior_committed = committed_by_generation.get(generation)
-        if prior_committed is None or committed < prior_committed:
-            committed_by_generation[generation] = committed
-    for generation, versions in by_generation.items():
-        if len(versions) != 1:
+    # Event-count generation identifies semantic ledger state. Coverage heartbeats
+    # may re-sign the *same* state at a later updated_at while no contact event
+    # changed. A different event-state digest at the same generation remains a fork.
+    states_by_generation: dict[int, set[str]] = {}
+    rows_by_generation: dict[int, list[tuple[str, str, datetime, datetime]]] = {}
+    for generation, state_digest, digest, ledger_updated, committed in current:
+        states_by_generation.setdefault(generation, set()).add(state_digest)
+        rows_by_generation.setdefault(generation, []).append(
+            (state_digest, digest, ledger_updated, committed)
+        )
+    for generation, states in states_by_generation.items():
+        if len(states) != 1:
             raise VerificationError(f"same-generation ledger fork detected at generation {generation}")
 
+    # Across the append-only checkpoint history, both coverage time and commit
+    # time must move monotonically forward as event generation increases or an
+    # identical-state coverage heartbeat advances.
     prior_updated: Optional[datetime] = None
     prior_committed: Optional[datetime] = None
-    for generation in sorted(by_generation):
-        (_, ledger_updated), = by_generation[generation]
-        committed = committed_by_generation[generation]
+    ordered = sorted(current, key=lambda row: (row[0], row[3], row[4], row[2]))
+    for _, _, _, ledger_updated, committed in ordered:
         if prior_updated is not None and ledger_updated < prior_updated:
             raise VerificationError("ledger head journal update time moved backward")
         if prior_committed is not None and committed < prior_committed:
@@ -186,13 +204,25 @@ def _verify_current_ledger_head(
         prior_updated = ledger_updated
         prior_committed = committed
 
-    highest = max(by_generation)
+    highest = max(states_by_generation)
     if ledger.generation < highest:
         raise VerificationError("ledger rollback detected below retained head")
     if ledger.generation > highest:
         raise VerificationError("ledger is newer than the retained committed head")
-    (expected_digest, expected_updated), = by_generation[highest]
-    if ledger.digest != expected_digest:
+
+    highest_rows = rows_by_generation[highest]
+    # Coverage is the latest signed updated_at for the highest semantic state.
+    latest_updated = max(row[2] for row in highest_rows)
+    latest_rows = [row for row in highest_rows if row[2] == latest_updated]
+    latest_digests = {row[1] for row in latest_rows}
+    if len(latest_digests) != 1:
+        raise VerificationError(f"same-generation ledger fork detected at generation {highest}")
+    expected_state, expected_digest, expected_updated, _ = max(
+        latest_rows, key=lambda row: (row[3], row[1])
+    )
+    if ledger.state_digest != expected_state:
         raise VerificationError("same-generation ledger fork detected")
+    if ledger.digest != expected_digest:
+        raise VerificationError("ledger does not match latest retained coverage head")
     if ledger.updated_at != expected_updated:
         raise VerificationError("ledger head update-time mismatch")
