@@ -4,7 +4,7 @@ Additive research/evaluation tooling for issue #14337. The package is default in
 
 It provides three comparison arms (`MIN_PROVABLE`, `CURRENT_POLICY`, and `PLUS_ONE`), validates complete paired evidence across both seats and multiple opponent regimes, records decision-window telemetry, and emits deterministic JSON, JSONL, CSV, Markdown, and manifest artifacts.
 
-Candidate economics and promotion authority are intentionally separate. The base evaluator can report that a normalized document supports a research candidate, while the official CLI routes through `lean_feed_hardening.py` and refuses final promotion unless the evidence binds to an independently reviewed root retained in code. The trusted-root set is intentionally empty while the D2 source contract remains blocked.
+Candidate economics and promotion authority are intentionally separate. The base evaluator may identify a research candidate, but the official CLI routes through `lean_feed_hardening.py`. While the exact D2 archive member bytes remain unavailable, synthetic-positive candidate economics are reported only as `SOURCE_MODEL_BLOCKED`: promotion stays unauthorized and synthetic census/delta/run arrays are suppressed rather than exposed as if they described the official engine. Conservative candidate `NO_PROMOTION` results remain conservative.
 
 The included examples are synthetic contract fixtures. They exercise the evidence and hardening contracts only; they are not official-engine results and cannot authorize promotion.
 
@@ -22,7 +22,7 @@ python feed_carry_oracle.py examples/synthetic_no_redeployment.json --out /tmp/l
 
 Expected fixture conclusions through the official CLI:
 
-- positive contract: candidate economics `PROMOTE_RESEARCH_CANDIDATE`, final conclusion `NO_PROMOTION`, `authority_verified=false`
+- positive contract: candidate economics `PROMOTE_RESEARCH_CANDIDATE`, final conclusion `SOURCE_MODEL_BLOCKED`, `authority_verified=false`, synthetic economic arrays empty
 - no-redeployment contract: candidate economics `NO_PROMOTION`, final conclusion `NO_PROMOTION`
 
 Official promotion remains blocked until exact D2 source bytes and normalized evidence are authenticated, independently reviewed, and their authority root is explicitly retained by code review.
