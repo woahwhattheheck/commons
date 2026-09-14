@@ -30,7 +30,13 @@ facade = load_module(
 
 
 class ReplyToRevenueMeasurementBoundaryTests(unittest.TestCase):
-    def observations(self, received_at: str) -> dict[str, object]:
+    def observations(
+        self,
+        received_at: str,
+        *,
+        markers: list[str] | None = None,
+        requested_classification: str | None = "POSITIVE_SCOPE",
+    ) -> dict[str, object]:
         return {
             "schema_version": "commons-reply-to-revenue-observations/v1",
             "kind": "REPLY_TO_REVENUE_OBSERVATIONS",
@@ -49,10 +55,10 @@ class ReplyToRevenueMeasurementBoundaryTests(unittest.TestCase):
                     "received_at": received_at,
                     "prospect_key": "example-buyer",
                     "payload_sha256": "a" * 64,
-                    "markers": ["we want to proceed"],
+                    "markers": markers or ["we want to proceed"],
                     "provider": "fixture",
                     "matched_receipt_id": "receipt-example-1",
-                    "requested_classification": "POSITIVE_SCOPE",
+                    "requested_classification": requested_classification,
                 }
             ],
         }
@@ -74,11 +80,41 @@ class ReplyToRevenueMeasurementBoundaryTests(unittest.TestCase):
         ):
             self.load(module, self.observations("2026-09-13T12:00:01Z"))
 
-    def test_direct_core_rejects_future_event_before_chronology(self) -> None:
+    def test_direct_core_rejects_future_event_during_load(self) -> None:
         self.assert_future_event_rejected(core)
 
-    def test_facade_rejects_future_event_before_chronology(self) -> None:
+    def test_facade_rejects_future_event_during_load(self) -> None:
         self.assert_future_event_rejected(facade)
+
+    def test_direct_build_rejects_post_load_human_and_machine_mutation(self) -> None:
+        cases = (
+            (["we want to proceed"], "POSITIVE_SCOPE", "POSITIVE_SCOPE"),
+            (["automatic reply"], None, "AUTO_RESPONSE"),
+        )
+        for module in (core, facade):
+            for markers, requested, expected_classification in cases:
+                with self.subTest(
+                    module=module.__name__,
+                    classification=expected_classification,
+                ):
+                    value = self.load(
+                        module,
+                        self.observations(
+                            "2026-09-13T11:59:59Z",
+                            markers=markers,
+                            requested_classification=requested,
+                        ),
+                    )
+                    self.assertEqual(
+                        value["events"][0]["classification"],
+                        expected_classification,
+                    )
+                    value["events"][0]["received_at"] = "2026-09-13T12:00:01Z"
+                    with self.assertRaisesRegex(
+                        module.ReplyRevenueError,
+                        r"events\[0\]\.received_at exceeds observations\.measured_at",
+                    ):
+                        module.build_funnel(receipts=[], observations=value)
 
     def test_offset_equivalent_measurement_instant_is_accepted(self) -> None:
         for module in (core, facade):
@@ -87,11 +123,14 @@ class ReplyToRevenueMeasurementBoundaryTests(unittest.TestCase):
                     module,
                     self.observations("2026-09-13T13:00:00+01:00"),
                 )
+                funnel = module.build_funnel(receipts=[], observations=value)
                 self.assertEqual(len(value["events"]), 1)
                 self.assertEqual(
                     value["events"][0]["classification"],
                     "POSITIVE_SCOPE",
                 )
+                self.assertEqual(funnel["truth"]["human_positive"], 1)
+                self.assertEqual(funnel["measured_at"], "2026-09-13T12:00:00Z")
 
 
 if __name__ == "__main__":
