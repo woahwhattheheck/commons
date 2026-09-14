@@ -14,10 +14,11 @@ from typing import Any
 
 try:
     from . import guard
-except ImportError:  # pragma: no cover
+except ImportError:  # pragma: no cover - direct script execution
     import guard  # type: ignore
 
 CURRENT_RECEIPT_SCHEMA = "outbound-send-guard-current-receipt/v1"
+HISTORICAL_RECEIPT_SCHEMA = "outbound-send-guard-historical-receipt/v1"
 CURRENT_VERIFICATION_SCHEMA = "outbound-send-guard-current-verification/v1"
 POLICY_GENERATION = "outbound-send-guard-current-policy/1"
 MODE_CURRENT = "CURRENT"
@@ -100,6 +101,20 @@ def _core(intent: dict[str, Any], evidence: dict[str, Any], ib: bytes, eb: bytes
     return guard.evaluate(intent, evidence)
 
 
+def _core_parts(
+    intent: dict[str, Any], evidence: dict[str, Any], ib: bytes, eb: bytes
+) -> tuple[dict[str, Any], dict[str, Any], str]:
+    receipt = _dict(_core(intent, evidence, ib, eb), "core receipt")
+    core = _dict(receipt.get("payload"), "core payload")
+    decision = _text(core.get("decision"), "core decision", 32)
+    if decision not in DECISIONS:
+        raise CurrentGuardError("unsupported core decision")
+    if _bool(core.get("side_effects_authorized"), "core side_effects_authorized"):
+        raise CurrentGuardError("core unexpectedly authorizes side effects")
+    _text(receipt.get("receipt_sha256"), "core receipt digest", 64)
+    return receipt, core, decision
+
+
 def _policy(core: dict[str, Any]) -> dict[str, int]:
     raw = _dict(core.get("policy"), "core policy")
     declared_age = _integer(raw.get("max_evidence_age_seconds"), "max evidence age", 0, 604800)
@@ -112,7 +127,14 @@ def _policy(core: dict[str, Any]) -> dict[str, int]:
     }
 
 
-def _time_gate(intent: dict[str, Any], evidence: dict[str, Any], core: dict[str, Any], now: datetime):
+def _temporal_projection(
+    intent: dict[str, Any],
+    evidence: dict[str, Any],
+    core: dict[str, Any],
+    verifier_time: datetime,
+) -> tuple[list[str], dict[str, int], datetime]:
+    """Project temporal facts only; this helper cannot emit authority artifacts."""
+    now = _aware(verifier_time, "verifier_time")
     requested = guard.parse_time(intent.get("requested_at"), "intent.requested_at")
     generated = guard.parse_time(evidence.get("generated_at"), "evidence.generated_at")
     policy = _policy(core)
@@ -133,40 +155,24 @@ def _time_gate(intent: dict[str, Any], evidence: dict[str, Any], core: dict[str,
     return reasons, policy, valid_until
 
 
-def _compile_at(
+def _decision(core_decision: str, temporal_reasons: list[str]) -> tuple[str, list[str]]:
+    if core_decision == "DO_NOT_RESEND":
+        return "DO_NOT_RESEND", list(temporal_reasons)
+    if temporal_reasons:
+        return "HOLD", list(temporal_reasons)
+    return core_decision, []
+
+
+def _source_record(
     intent: dict[str, Any],
     evidence: dict[str, Any],
-    *,
     ib: bytes,
     eb: bytes,
     source_mode: str,
-    verified_at: datetime,
-    mode: str,
 ) -> dict[str, Any]:
-    now = _aware(verified_at, "verified_at")
-    if mode not in {MODE_CURRENT, MODE_HISTORICAL}:
-        raise CurrentGuardError("unsupported mode")
-    core_receipt = _dict(_core(intent, evidence, ib, eb), "core receipt")
-    core = _dict(core_receipt.get("payload"), "core payload")
-    core_decision = _text(core.get("decision"), "core decision", 32)
-    if core_decision not in DECISIONS:
-        raise CurrentGuardError("unsupported core decision")
-    if _bool(core.get("side_effects_authorized"), "core side_effects_authorized"):
-        raise CurrentGuardError("core unexpectedly authorizes side effects")
-    temporal, effective_policy, valid_until = _time_gate(intent, evidence, core, now)
-
-    if mode == MODE_HISTORICAL:
-        decision, reasons = "HOLD", ["historical replay cannot authorize a current send"]
-    elif core_decision == "DO_NOT_RESEND":
-        decision, reasons = "DO_NOT_RESEND", list(temporal)
-    elif temporal:
-        decision, reasons = "HOLD", list(temporal)
-    else:
-        decision, reasons = core_decision, []
-
     if source_mode not in {"canonical_objects", "exact_consumed_bytes"}:
         raise CurrentGuardError("unsupported source mode")
-    source = {
+    source: dict[str, Any] = {
         "custody_mode": source_mode,
         "intent_object_sha256": guard.digest_object(intent),
         "evidence_object_sha256": guard.digest_object(evidence),
@@ -177,15 +183,31 @@ def _compile_at(
             "intent_sha256": guard.digest_bytes(ib),
             "evidence_sha256": guard.digest_bytes(eb),
         }
-    clear = mode == MODE_CURRENT and decision in POSITIVE and not temporal
+    return source
+
+
+def _compile_current_owned_clock(
+    intent: dict[str, Any],
+    evidence: dict[str, Any],
+    *,
+    ib: bytes,
+    eb: bytes,
+    source_mode: str,
+) -> dict[str, Any]:
+    """Emit current authority using a clock sampled inside this function."""
+    now = _aware(_utc_now(), "process UTC")
+    core_receipt, core, core_decision = _core_parts(intent, evidence, ib, eb)
+    temporal, effective_policy, valid_until = _temporal_projection(intent, evidence, core, now)
+    decision, reasons = _decision(core_decision, temporal)
+    clear = decision in POSITIVE and not temporal
     payload = {
         "schema_version": CURRENT_RECEIPT_SCHEMA,
-        "mode": mode,
+        "mode": MODE_CURRENT,
         "verified_at": guard.format_time(now),
         "valid_until": guard.format_time(valid_until),
         "policy_generation": POLICY_GENERATION,
         "current_policy": effective_policy,
-        "source": source,
+        "source": _source_record(intent, evidence, ib, eb, source_mode),
         "core_receipt_sha256": _text(core_receipt.get("receipt_sha256"), "core receipt digest", 64),
         "core": core,
         "historical_decision": core_decision,
@@ -204,21 +226,60 @@ def _compile_at(
 def compile_current(intent_raw: dict[str, Any], evidence_raw: dict[str, Any]) -> dict[str, Any]:
     intent, ib = _snapshot(intent_raw, "intent")
     evidence, eb = _snapshot(evidence_raw, "evidence")
-    return _compile_at(intent, evidence, ib=ib, eb=eb, source_mode="canonical_objects", verified_at=_utc_now(), mode=MODE_CURRENT)
+    return _compile_current_owned_clock(
+        intent, evidence, ib=ib, eb=eb, source_mode="canonical_objects"
+    )
 
 
 def compile_current_bytes(intent_bytes: bytes, evidence_bytes: bytes) -> dict[str, Any]:
-    intent, evidence = _parse_bytes(intent_bytes, "intent"), _parse_bytes(evidence_bytes, "evidence")
-    return _compile_at(intent, evidence, ib=intent_bytes, eb=evidence_bytes, source_mode="exact_consumed_bytes", verified_at=_utc_now(), mode=MODE_CURRENT)
+    intent = _parse_bytes(intent_bytes, "intent")
+    evidence = _parse_bytes(evidence_bytes, "evidence")
+    return _compile_current_owned_clock(
+        intent,
+        evidence,
+        ib=intent_bytes,
+        eb=evidence_bytes,
+        source_mode="exact_consumed_bytes",
+    )
 
 
-def compile_historical_at(intent_raw: dict[str, Any], evidence_raw: dict[str, Any], *, historical_at: datetime) -> dict[str, Any]:
+def compile_historical_at(
+    intent_raw: dict[str, Any],
+    evidence_raw: dict[str, Any],
+    *,
+    historical_at: datetime,
+) -> dict[str, Any]:
+    """Compile deterministic historical integrity with no current-authority fields."""
     intent, ib = _snapshot(intent_raw, "intent")
     evidence, eb = _snapshot(evidence_raw, "evidence")
-    return _compile_at(intent, evidence, ib=ib, eb=eb, source_mode="canonical_objects", verified_at=_aware(historical_at, "historical_at"), mode=MODE_HISTORICAL)
+    historical_time = _aware(historical_at, "historical_at")
+    core_receipt, core, core_decision = _core_parts(intent, evidence, ib, eb)
+    temporal, effective_policy, valid_until = _temporal_projection(
+        intent, evidence, core, historical_time
+    )
+    payload = {
+        "schema_version": HISTORICAL_RECEIPT_SCHEMA,
+        "mode": MODE_HISTORICAL,
+        "evaluated_at": guard.format_time(historical_time),
+        "would_be_valid_until": guard.format_time(valid_until),
+        "policy_generation": POLICY_GENERATION,
+        "current_policy": effective_policy,
+        "source": _source_record(intent, evidence, ib, eb, "canonical_objects"),
+        "core_receipt_sha256": _text(core_receipt.get("receipt_sha256"), "core receipt digest", 64),
+        "core": core,
+        "historical_decision": core_decision,
+        "decision": "HOLD",
+        "reasons": ["historical replay cannot authorize a current send"],
+        "temporal_reasons_at_historical_time": temporal,
+        "current_preflight_clear": False,
+        "net_new_send_preflight_clear": False,
+        "reply_preflight_clear": False,
+        "side_effects_authorized": False,
+    }
+    return {"payload": payload, "receipt_sha256": guard.digest_object(payload)}
 
 
-def _receipt(value: dict[str, Any]) -> tuple[dict[str, Any], str]:
+def _receipt_current(value: dict[str, Any]) -> tuple[dict[str, Any], str]:
     value = _dict(value, "receipt")
     if set(value) != {"payload", "receipt_sha256"}:
         raise CurrentGuardError("receipt must contain exactly payload and receipt_sha256")
@@ -226,14 +287,18 @@ def _receipt(value: dict[str, Any]) -> tuple[dict[str, Any], str]:
     digest = _text(value.get("receipt_sha256"), "receipt digest", 64)
     if digest != guard.digest_object(payload):
         raise CurrentGuardError("receipt digest mismatch")
-    if payload.get("schema_version") != CURRENT_RECEIPT_SCHEMA or payload.get("policy_generation") != POLICY_GENERATION:
-        raise CurrentGuardError("unsupported receipt schema or policy")
+    if (
+        payload.get("schema_version") != CURRENT_RECEIPT_SCHEMA
+        or payload.get("policy_generation") != POLICY_GENERATION
+        or payload.get("mode") != MODE_CURRENT
+    ):
+        raise CurrentGuardError("unsupported current receipt schema, policy, or mode")
     if _bool(payload.get("side_effects_authorized"), "receipt side_effects_authorized"):
         raise CurrentGuardError("receipt unexpectedly authorizes side effects")
     return payload, digest
 
 
-def _verify_at(
+def _verify_current_owned_clock(
     intent: dict[str, Any],
     evidence: dict[str, Any],
     *,
@@ -241,32 +306,62 @@ def _verify_at(
     eb: bytes,
     source_mode: str,
     receipt_raw: dict[str, Any],
-    now: datetime,
 ) -> dict[str, Any]:
-    payload, digest = _receipt(receipt_raw)
+    """Verify current authority using a clock sampled inside this function."""
+    payload, digest = _receipt_current(receipt_raw)
+    now = _aware(_utc_now(), "process UTC")
     bound_at = guard.parse_time(payload.get("verified_at"), "receipt.verified_at")
-    mode = _text(payload.get("mode"), "receipt.mode", 64)
-    rebound = _compile_at(intent, evidence, ib=ib, eb=eb, source_mode=source_mode, verified_at=bound_at, mode=mode)
-    historical_valid = rebound == receipt_raw
-    now = _aware(now, "verification now")
-    fresh = _compile_at(intent, evidence, ib=ib, eb=eb, source_mode=source_mode, verified_at=now, mode=MODE_CURRENT)
+    core_receipt, core, core_decision = _core_parts(intent, evidence, ib, eb)
+
+    bound_temporal, bound_policy, bound_valid_until = _temporal_projection(
+        intent, evidence, core, bound_at
+    )
+    bound_decision, bound_reasons = _decision(core_decision, bound_temporal)
+    bound_clear = bound_decision in POSITIVE and not bound_temporal
+    expected_payload = {
+        "schema_version": CURRENT_RECEIPT_SCHEMA,
+        "mode": MODE_CURRENT,
+        "verified_at": guard.format_time(bound_at),
+        "valid_until": guard.format_time(bound_valid_until),
+        "policy_generation": POLICY_GENERATION,
+        "current_policy": bound_policy,
+        "source": _source_record(intent, evidence, ib, eb, source_mode),
+        "core_receipt_sha256": _text(core_receipt.get("receipt_sha256"), "core receipt digest", 64),
+        "core": core,
+        "historical_decision": core_decision,
+        "core_authority": _text(core.get("authority"), "core authority", 32),
+        "decision": bound_decision,
+        "reasons": bound_reasons,
+        "temporal_reasons": bound_temporal,
+        "current_preflight_clear": bound_clear,
+        "net_new_send_preflight_clear": bound_clear and bound_decision == "ALLOW_NEW",
+        "reply_preflight_clear": bound_clear and bound_decision == "REPLY_ONLY",
+        "side_effects_authorized": False,
+    }
+    historical_valid = expected_payload == payload
+
+    current_temporal, _, _ = _temporal_projection(intent, evidence, core, now)
+    current_decision, _ = _decision(core_decision, current_temporal)
+    current_clear = current_decision in POSITIVE and not current_temporal
     expired = now > guard.parse_time(payload.get("valid_until"), "receipt.valid_until")
     receipt_decision = _text(payload.get("decision"), "receipt decision", 32)
-    current_decision = _text(fresh["payload"].get("decision"), "current decision", 32)
     semantic_match = receipt_decision == current_decision
     receipt_clear = _bool(payload.get("current_preflight_clear"), "receipt current_preflight_clear")
-    fresh_clear = _bool(fresh["payload"].get("current_preflight_clear"), "current current_preflight_clear")
-    valid = historical_valid and mode == MODE_CURRENT and not expired and semantic_match and receipt_clear and fresh_clear
-    reasons = []
+    valid = (
+        historical_valid
+        and not expired
+        and semantic_match
+        and receipt_clear
+        and current_clear
+    )
+    reasons: list[str] = []
     if not historical_valid:
         reasons.append("receipt does not replay at its bound verifier time")
-    if mode != MODE_CURRENT:
-        reasons.append("historical receipt cannot authorize current preflight")
     if expired:
         reasons.append("receipt is expired")
     if not semantic_match:
         reasons.append("current decision no longer matches receipt decision")
-    if not receipt_clear or not fresh_clear:
+    if not receipt_clear or not current_clear:
         reasons.append("receipt is not a current positive preflight")
     verification = {
         "schema_version": CURRENT_VERIFICATION_SCHEMA,
@@ -284,16 +379,35 @@ def _verify_at(
     return {"payload": verification, "receipt_sha256": guard.digest_object(verification)}
 
 
-def verify_current(intent_raw: dict[str, Any], evidence_raw: dict[str, Any], receipt_raw: dict[str, Any]) -> dict[str, Any]:
+def verify_current(
+    intent_raw: dict[str, Any], evidence_raw: dict[str, Any], receipt_raw: dict[str, Any]
+) -> dict[str, Any]:
     intent, ib = _snapshot(intent_raw, "intent")
     evidence, eb = _snapshot(evidence_raw, "evidence")
-    return _verify_at(intent, evidence, ib=ib, eb=eb, source_mode="canonical_objects", receipt_raw=receipt_raw, now=_utc_now())
+    return _verify_current_owned_clock(
+        intent,
+        evidence,
+        ib=ib,
+        eb=eb,
+        source_mode="canonical_objects",
+        receipt_raw=receipt_raw,
+    )
 
 
-def verify_current_bytes(intent_bytes: bytes, evidence_bytes: bytes, receipt_bytes: bytes) -> dict[str, Any]:
-    intent, evidence = _parse_bytes(intent_bytes, "intent"), _parse_bytes(evidence_bytes, "evidence")
+def verify_current_bytes(
+    intent_bytes: bytes, evidence_bytes: bytes, receipt_bytes: bytes
+) -> dict[str, Any]:
+    intent = _parse_bytes(intent_bytes, "intent")
+    evidence = _parse_bytes(evidence_bytes, "evidence")
     receipt = _parse_bytes(receipt_bytes, "receipt")
-    return _verify_at(intent, evidence, ib=intent_bytes, eb=evidence_bytes, source_mode="exact_consumed_bytes", receipt_raw=receipt, now=_utc_now())
+    return _verify_current_owned_clock(
+        intent,
+        evidence,
+        ib=intent_bytes,
+        eb=evidence_bytes,
+        source_mode="exact_consumed_bytes",
+        receipt_raw=receipt,
+    )
 
 
 def _alias(a: Path, b: Path) -> bool:
@@ -306,16 +420,26 @@ def _alias(a: Path, b: Path) -> bool:
 
 
 def _read(path: Path, label: str) -> bytes:
-    flags = os.O_RDONLY | getattr(os, "O_CLOEXEC", 0) | getattr(os, "O_NOFOLLOW", 0) | getattr(os, "O_NONBLOCK", 0)
+    flags = (
+        os.O_RDONLY
+        | getattr(os, "O_CLOEXEC", 0)
+        | getattr(os, "O_NOFOLLOW", 0)
+        | getattr(os, "O_NONBLOCK", 0)
+    )
     try:
         fd = os.open(path, flags)
     except OSError as exc:
         raise CurrentGuardError(f"cannot open {label} {path}: {exc}") from exc
     try:
         before = os.fstat(fd)
-        if not stat.S_ISREG(before.st_mode) or before.st_nlink != 1 or before.st_size > MAX_INPUT_BYTES:
+        if (
+            not stat.S_ISREG(before.st_mode)
+            or before.st_nlink != 1
+            or before.st_size > MAX_INPUT_BYTES
+        ):
             raise CurrentGuardError(f"{label} must be one bounded regular single-link file")
-        chunks, total = [], 0
+        chunks: list[bytes] = []
+        total = 0
         while True:
             chunk = os.read(fd, min(65536, MAX_INPUT_BYTES + 1 - total))
             if not chunk:
@@ -325,11 +449,25 @@ def _read(path: Path, label: str) -> bytes:
             if total > MAX_INPUT_BYTES:
                 raise CurrentGuardError(f"{label} exceeds {MAX_INPUT_BYTES} bytes")
         after = os.fstat(fd)
-        signature = lambda s: (s.st_dev, s.st_ino, s.st_mode, s.st_nlink, s.st_size, s.st_mtime_ns, s.st_ctime_ns)
+
+        def signature(value: os.stat_result) -> tuple[int, ...]:
+            return (
+                value.st_dev,
+                value.st_ino,
+                value.st_mode,
+                value.st_nlink,
+                value.st_size,
+                value.st_mtime_ns,
+                value.st_ctime_ns,
+            )
+
         if signature(before) != signature(after):
             raise CurrentGuardError(f"{label} generation changed during read")
         visible = os.lstat(path)
-        if stat.S_ISLNK(visible.st_mode) or (visible.st_dev, visible.st_ino) != (after.st_dev, after.st_ino):
+        if stat.S_ISLNK(visible.st_mode) or (visible.st_dev, visible.st_ino) != (
+            after.st_dev,
+            after.st_ino,
+        ):
             raise CurrentGuardError(f"{label} path no longer names the consumed file")
         return b"".join(chunks)
     finally:
@@ -338,7 +476,13 @@ def _read(path: Path, label: str) -> bytes:
 
 def _write(path: Path, raw: bytes) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
-    flags = os.O_WRONLY | os.O_CREAT | os.O_EXCL | getattr(os, "O_CLOEXEC", 0) | getattr(os, "O_NOFOLLOW", 0)
+    flags = (
+        os.O_WRONLY
+        | os.O_CREAT
+        | os.O_EXCL
+        | getattr(os, "O_CLOEXEC", 0)
+        | getattr(os, "O_NOFOLLOW", 0)
+    )
     try:
         fd = os.open(path, flags, 0o600)
     except OSError as exc:
@@ -371,20 +515,37 @@ def main(argv: list[str] | None = None) -> int:
         command.add_argument("--out", type=Path)
     args = parser.parse_args(argv)
     try:
-        inputs = [args.intent, args.evidence] + ([args.receipt] if args.command == "verify" else [])
-        if any(_alias(a, b) for i, a in enumerate(inputs) for b in inputs[i + 1:]):
+        inputs = [args.intent, args.evidence] + (
+            [args.receipt] if args.command == "verify" else []
+        )
+        if any(_alias(a, b) for index, a in enumerate(inputs) for b in inputs[index + 1 :]):
             raise CurrentGuardError("input files must be distinct")
         if args.out is not None and any(_alias(args.out, item) for item in inputs):
             raise CurrentGuardError("output must not alias an input")
-        ib, eb = _read(args.intent, "intent"), _read(args.evidence, "evidence")
+        ib = _read(args.intent, "intent")
+        eb = _read(args.evidence, "evidence")
         if args.command == "compile":
             result = compile_current_bytes(ib, eb)
-            code = {"ALLOW_NEW": 0, "REPLY_ONLY": 3, "HOLD": 4, "DO_NOT_RESEND": 5}[result["payload"]["decision"]]
+            code = {
+                "ALLOW_NEW": 0,
+                "REPLY_ONLY": 3,
+                "HOLD": 4,
+                "DO_NOT_RESEND": 5,
+            }[result["payload"]["decision"]]
         else:
             result = verify_current_bytes(ib, eb, _read(args.receipt, "receipt"))
-            code = 0 if result["payload"]["current_preflight_valid"] else (5 if result["payload"]["current_decision"] == "DO_NOT_RESEND" else 4)
+            code = (
+                0
+                if result["payload"]["current_preflight_valid"]
+                else 5
+                if result["payload"]["current_decision"] == "DO_NOT_RESEND"
+                else 4
+            )
         raw = _encode(result)
-        sys.stdout.buffer.write(raw) if args.out is None else _write(args.out, raw)
+        if args.out is None:
+            sys.stdout.buffer.write(raw)
+        else:
+            _write(args.out, raw)
         return code
     except (CurrentGuardError, guard.GuardError) as exc:
         print(f"outbound-send-current: {exc}", file=sys.stderr)
