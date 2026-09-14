@@ -26,7 +26,8 @@
     "single_pdf_submission",
     "subject_matter_expertise",
     "submission_authority",
-    "technical_assistance_track_record"
+    "technical_assistance_track_record",
+    "virtual_or_california_presence"
   ],
   "domain": "artificial_intelligence",
   "due_at": "2026-09-18T17:00:00-07:00",
@@ -49,10 +50,10 @@
     "subject_matter_expertise": "HOLD",
     "submission_authority": "HOLD",
     "technical_assistance_track_record": "HOLD",
-    "virtual_or_california_presence": "PROVEN"
+    "virtual_or_california_presence": "HOLD"
   },
   "reason": "unproven_direct_prime_gates",
-  "receipt_sha256": "e5025b8641a01cf2ac3029945eb92018437c72ce9c3a796ee459cd6d61fe7daf",
+  "receipt_sha256": "f68bb8f2fb7eeb6aaba603e25662b3874561a0a31c55c0622b61919d8f726fe2",
   "schema": "cpca-hccn-qualification-result/v1",
   "service_type": "technical_assistance",
   "state": "HOLD"
