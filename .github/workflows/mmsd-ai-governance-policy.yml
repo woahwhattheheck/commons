@@ -15,6 +15,6 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python-version }}
-      - run: python -m py_compile revenue/mmsd_ai_governance_policy/engine.py revenue/mmsd_ai_governance_policy/test_engine.py
-      - run: python -m unittest -v revenue.mmsd_ai_governance_policy.test_engine
-      - run: python -O -m unittest -v revenue.mmsd_ai_governance_policy.test_engine
+      - run: python -m py_compile revenue/mmsd_ai_governance_policy/engine.py revenue/mmsd_ai_governance_policy/test_engine.py revenue/mmsd_ai_governance_policy/test_verify_hostiles.py
+      - run: python -m unittest -v revenue.mmsd_ai_governance_policy.test_engine revenue.mmsd_ai_governance_policy.test_verify_hostiles
+      - run: python -O -m unittest -v revenue.mmsd_ai_governance_policy.test_engine revenue.mmsd_ai_governance_policy.test_verify_hostiles
