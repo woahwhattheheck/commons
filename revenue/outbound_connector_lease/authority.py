@@ -1,16 +1,15 @@
 #!/usr/bin/env python3
-"""Fail-closed production admission for outbound mutual-exclusion seams.
+"""Fail-closed admission for one canonical outbound opportunity/reply seam.
 
-The repository historically contains multiple outbound lease helpers.  Only the
-closed-schema connector lease is a production mutual-exclusion prerequisite for
-external sends.  This module deliberately does *not* authorize a provider send;
-it validates that a caller is holding the one canonical seam identity that the
-fleet must attempt to acquire atomically.
+This module intentionally does not claim organization-wide mutual exclusion.
+The connector seam serializes one closed-schema opportunity/reply identity. A
+production send may additionally require an independently authoritative
+organization scope plus an organization-wide atomic pressure/mutex layer.
 
-A legacy ``revenue/outbound_mutex`` document is never accepted here.  That
-post-merge helper hashes caller free text (opportunity/channel/destination) and
-can therefore split one commercial opportunity across aliases.  It remains
-useful as local/reference CAS material, but not as production send clearance.
+A legacy ``revenue/outbound_mutex`` document is never accepted here. That helper
+hashes caller free text (opportunity/channel/destination) and can split one
+commercial opportunity across aliases. It remains historical/reference CAS
+material, not canonical opportunity/reply seam authority.
 """
 from __future__ import annotations
 
@@ -27,12 +26,11 @@ from revenue.outbound_connector_lease.key import (
     compile_key,
 )
 
-STATE = "CANONICAL_MUTEX_PREREQUISITE"
-LEGACY_STATE = "HOLD_LEGACY_MUTEX_NONAUTHORITATIVE"
+STATE = "CANONICAL_OPPORTUNITY_SEAM_PREREQUISITE"
 
 
 class SeamAuthorityError(ValueError):
-    """Raised when a candidate cannot carry production mutex authority."""
+    """Raised when a candidate cannot carry canonical opportunity-seam authority."""
 
 
 def _is_plain_dict(value: Any) -> bool:
@@ -58,17 +56,23 @@ def _looks_like_legacy_mutex(value: Mapping[str, Any]) -> bool:
 
 
 def admit_compiled_seam(value: Mapping[str, Any]) -> dict[str, Any]:
-    """Validate one exact compiled connector seam and return a non-send receipt.
+    """Validate one exact connector opportunity/reply seam.
 
     The input must be byte-semantically equivalent to ``compile_key`` output:
-    no aliases, no extra recipient/price/route/draft fields, no caller-selected
-    branch, and no legacy free-form lease document.
+    no price/recipient/route/draft aliases, no caller-selected branch, and no
+    legacy free-form lease document.
+
+    A successful receipt is deliberately incomplete for production mutation:
+    ``key.py`` normalizes syntax but does not prove organization alias identity,
+    and distinct cold/external/reply opportunities intentionally compile to
+    distinct branches. Callers must not represent this receipt as an
+    organization-wide or sole production mutex.
     """
     if not _is_plain_dict(value):
         raise SeamAuthorityError("candidate must be a plain JSON object")
     if _looks_like_legacy_mutex(value):
         raise SeamAuthorityError(
-            "legacy revenue/outbound_mutex leases are non-authoritative for production sends"
+            "legacy revenue/outbound_mutex leases are non-authoritative for canonical opportunity seams"
         )
 
     required = {"schema", "buyer_scope", "opportunity", "seam_sha256", "branch"}
@@ -97,6 +101,9 @@ def admit_compiled_seam(value: Mapping[str, Any]) -> dict[str, Any]:
         "seam_sha256": expected["seam_sha256"],
         "branch": expected["branch"],
         "atomic_branch_create_required": True,
+        "organization_scope_authority_required": True,
+        "organization_wide_mutex_required": True,
+        "production_mutex_complete": False,
         "provider_reread_required": True,
         "legacy_mutex_accepted": False,
         "external_send_authorized": False,
@@ -113,7 +120,7 @@ def admit_json(raw: str) -> dict[str, Any]:
 
 def main(argv: Sequence[str] | None = None) -> int:
     parser = argparse.ArgumentParser(
-        description="Admit only the canonical connector-native outbound seam"
+        description="Validate one canonical connector opportunity/reply seam; never production-ready alone"
     )
     parser.add_argument("--json", required=True, help="compiled seam JSON from key.py")
     args = parser.parse_args(argv)
