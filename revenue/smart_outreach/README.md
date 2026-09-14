@@ -22,7 +22,7 @@ catalog, Airtable CRM, Apollo receipts, or `host/swarm_mail.py`. It composes
 them. The checked-in cohort intentionally demonstrates three truthful states:
 
 - AnythingLLM is `HOLD_DO_NOT_RESEND` from canonical receipts;
-- Metaforms is `HOLD_OCCUPIED` because another Commons lane already staged it;
+- Metaforms is `HOLD_DO_NOT_RESEND` from canonical receipt suppression;
 - SigNoz is `READY_TO_DRAFT` from refreshed first-party product-pain evidence,
   an engineering-owner role, and the verified `dev@signoz.io` route. This is
   draft readiness only; it is not send authority.
