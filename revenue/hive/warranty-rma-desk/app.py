@@ -152,6 +152,12 @@ def _read_visible_exact(path: _Path, created: _Any, expected: bytes) -> None:
             raise OSError("published output grew during readback")
         if b"".join(chunks) != expected:
             raise OSError("published output bytes differ from source bytes")
+        # Re-check the pathname after readback.  Opening the correct inode is not
+        # enough: a concurrent rename/replacement during the read must not allow
+        # success while foreign bytes are now visible at the requested path.
+        after = _os.lstat(path)
+        if not _same_inode(after, created):
+            raise OSError("published pathname changed during readback")
     finally:
         _os.close(rfd)
 

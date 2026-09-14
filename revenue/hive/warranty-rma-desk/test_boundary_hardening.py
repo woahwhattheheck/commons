@@ -67,6 +67,29 @@ class PublicationHardeningTest(unittest.TestCase):
             self.assertEqual(out.read_bytes(), b"FOREIGN")
             self.assertEqual(displaced.read_bytes(), raw)
 
+    def test_replacement_during_readback_is_detected_and_foreign_preserved(self):
+        raw = b"exact-export-bytes-readback"
+        with tempfile.TemporaryDirectory() as td:
+            out = Path(td) / "export.json"
+            displaced = Path(td) / "displaced-created-inode"
+            real_read = app._os.read
+            fired = False
+
+            def replace_during_read(fd, size):
+                nonlocal fired
+                data = real_read(fd, size)
+                if not fired:
+                    fired = True
+                    os.replace(out, displaced)
+                    out.write_bytes(b"FOREIGN-DURING-READBACK")
+                return data
+
+            with mock.patch.object(app._os, "read", replace_during_read):
+                with self.assertRaises(OSError):
+                    app._publish_bytes(out, raw)
+            self.assertEqual(out.read_bytes(), b"FOREIGN-DURING-READBACK")
+            self.assertEqual(displaced.read_bytes(), raw)
+
     def test_existing_output_is_never_overwritten(self):
         with tempfile.TemporaryDirectory() as td:
             out = Path(td) / "export.json"
