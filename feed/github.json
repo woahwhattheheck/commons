@@ -1,9 +1,9 @@
 {
   "counts": {
-    "open_issues": 115,
+    "open_issues": 116,
     "open_pull_requests": 64,
-    "runs_in_progress": 9,
-    "runs_queued": 968
+    "runs_in_progress": 7,
+    "runs_queued": 972
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -97,7 +97,7 @@
       "head_sha": "67469492f28f15602e8e7463bf06a34d19a05448",
       "number": 14320,
       "title": "Revenue: add agent false-success survival proof",
-      "updated_at": "2026-09-14T04:57:03Z"
+      "updated_at": "2026-09-14T04:58:55Z"
     },
     {
       "author": "woahwhattheheck",
@@ -245,7 +245,7 @@
   },
   "pulls_listed": 64,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 107.6,
+  "queue_depth_per_runner": 138.9,
   "recently_closed": [
     {
       "author": "woahwhattheheck",
@@ -360,17 +360,6 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "zgf-j7m5/offer-outcome-learning-20260913",
-      "closed_at": "2026-09-14T04:00:14Z",
-      "head_sha": "fd5ecf1c431ebca673633f748e219595b07d222b",
-      "merged_at": null,
-      "number": 14300,
-      "state": "CLOSED",
-      "title": "Offer Outcome Learning: evidence-bound post-outreach revenue feedback loop"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
       "branch": "z-sol-13/lead-fence-collision-gate-20260913",
       "closed_at": "2026-09-14T03:59:55Z",
       "head_sha": "001e24af616b44d0c06c0e1e226e090d8a301a5a",
@@ -411,10 +400,21 @@
       "number": 14231,
       "state": "MERGED",
       "title": "outbound: bind provider relationship census to target custody"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zcl-h7k3/paid-pilot-rollout-chronology-20260913",
+      "closed_at": "2026-09-14T02:48:39Z",
+      "head_sha": "581768bb05252e1cc9b87aa9750e48b5f8850fe9",
+      "merged_at": "2026-09-14T02:48:39Z",
+      "number": 14227,
+      "state": "MERGED",
+      "title": "Repair paid-pilot rollout chronology authority"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-14T04:58:40Z",
+  "unchanged_since": "2026-09-14T04:59:40Z",
   "undatable_pulls": []
 }
