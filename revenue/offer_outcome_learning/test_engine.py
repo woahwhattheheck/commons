@@ -94,6 +94,21 @@ class LearningTests(unittest.TestCase):
         with self.assertRaisesRegex(LearningError, "INVALID_ID"):
             compile_historical(raw, AT)
 
+    def test_settlement_ref_digest_conflict_rejected(self):
+        raw = base_input()
+        confirmed = [r for r in raw["events"] if r["stage"] == "PAYMENT_CONFIRMED"]
+        confirmed[0]["settlement_ref"] = "settlement-shared"
+        confirmed[1]["settlement_ref"] = "settlement-shared"
+        with self.assertRaisesRegex(LearningError, "SOURCE_REF_DIGEST_CONFLICT:settlement-shared"):
+            compile_historical(raw, AT)
+
+    def test_settlement_ref_cross_kind_digest_conflict_rejected(self):
+        raw = base_input()
+        row = next(r for r in raw["events"] if r["stage"] == "PAYMENT_CONFIRMED")
+        row["settlement_ref"] = raw["campaigns"][0]["source_ref"]
+        with self.assertRaisesRegex(LearningError, "SOURCE_REF_DIGEST_CONFLICT:campaign-src-1"):
+            compile_historical(raw, AT)
+
     def test_duplicate_event_exact_replay_collapses(self):
         raw = base_input()
         raw["events"].append(copy.deepcopy(raw["events"][0]))
