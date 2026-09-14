@@ -1,0 +1,42 @@
+{
+  "schema": "cpca.hccn.requirements/v1",
+  "hard_gates": [
+    "controlling buyer packet bound to exact SHA-256 and fresh source snapshot",
+    "proposal deadline has not passed",
+    "organization identity and point of contact supplied",
+    "at least one domain/service-type route selected",
+    "required licensing/certification/insurance/accreditation for selected services reviewed and supportable",
+    "prior safety-net/FQHC-equivalent experience proven for every selected domain",
+    "domain-specific comparable-engagement minimums proven",
+    "proposed key personnel and subcontractors identified with domain qualifications",
+    "selected technical-assistance routes have comparable individualized consulting/project evidence",
+    "selected group-training routes have structured multi-organization curriculum/facilitation evidence",
+    "regulatory/standards knowledge for every selected domain addressed",
+    "cultural competency and nondiscriminatory delivery evidence addressed",
+    "virtual delivery and/or California presence proven",
+    "concurrent-delivery capacity proven",
+    "reporting/invoicing/oversight capability reviewed",
+    "at least three supportable client references identified",
+    "at least one relevant sample work product identified",
+    "owner-approved rate structure supplied",
+    "Appendix C attestation reviewed and signed only by an authorized human representative",
+    "BAA/PHI/PII obligations reviewed for selected work",
+    "single-PDF packaging and Smartsheet submission mechanics reviewed"
+  ],
+  "evaluation_weights_percent": {
+    "domain_expertise_and_qualifications": 30,
+    "relevant_experience": 25,
+    "references_and_past_performance": 15,
+    "approach_and_capacity": 15,
+    "cost_reasonableness": 15
+  },
+  "current_repository_evidence_note": "Default-branch code search performed 2026-09-14 found no hits for FQHC, health center, or safety-net in woahwhattheheck/commons. That is an evidence gap, not proof that qualifying experience does not exist.",
+  "recommended_initial_route": {
+    "domain": "artificial_intelligence",
+    "topics": ["AI Governance", "AI Vendor Evaluation", "AI Use Case Education"],
+    "service_type": "technical_assistance",
+    "status": "HOLD_PENDING_SAFETY_NET_AND_COMPARABLE_ENGAGEMENT_EVIDENCE",
+    "reason": "These topics best match landed technical capabilities, but the buyer's healthcare/safety-net experience requirements still control eligibility. AI Implementation and Group Training should not be selected unless their separate experience requirements are actually evidenced."
+  },
+  "submission_boundary": "This carrier may only reach READY_FOR_OWNER_SUBMISSION_REVIEW. It cannot send, sign, certify, register, contact references, commit rates, accept an agreement, or claim qualification, award, work volume, payment, or revenue."
+}
