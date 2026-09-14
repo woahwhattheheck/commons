@@ -3,9 +3,9 @@ import unittest
 
 from controller import (
     LABELS, Calibration, Policy, Series, aggregate, assert_inference_record_has_no_report,
-    assert_runtime_budget, assert_vram_budget, efficiency_score, fit_calibration, project_runtime,
-    receipt, run_dataset, run_study, select_initial, select_upgrade, submission_csv_bytes,
-    uncertain_labels, verify_receipt,
+    assert_runtime_budget, assert_vram_budget, fit_calibration, local_efficiency_surrogate,
+    project_runtime, receipt, run_dataset, run_study, select_initial, select_upgrade,
+    submission_csv_bytes, uncertain_labels, verify_receipt, verify_receipt_authoritative,
 )
 
 
@@ -72,9 +72,17 @@ class AggregationTests(unittest.TestCase):
 
 
 class BudgetTests(unittest.TestCase):
-    def test_efficiency_direction(self):
-        self.assertLess(efficiency_score(.90, 1200, .5, .95), efficiency_score(.90, 7200, .5, .95))
-        self.assertLess(efficiency_score(.92, 1200, .5, .95), efficiency_score(.90, 1200, .5, .95))
+    def test_local_efficiency_surrogate_direction_across_reference_band(self):
+        for reference_max in (.93, .95, .99):
+            fast = local_efficiency_surrogate(.90, 1200, .50, reference_max)
+            slow = local_efficiency_surrogate(.90, 7200, .50, reference_max)
+            better_auc = local_efficiency_surrogate(.92, 1200, .50, reference_max)
+            self.assertLess(fast, slow)
+            self.assertLess(better_auc, fast)
+
+    def test_local_efficiency_surrogate_rejects_sign_inverting_reference(self):
+        with self.assertRaises(ValueError): local_efficiency_surrogate(.90, 1200, .95, .50)
+        with self.assertRaises(ValueError): local_efficiency_surrogate(.90, 1200, .95, .95)
 
     def test_runtime_pass(self):
         p = Policy(); assert_runtime_budget(project_runtime(1300, p, 60, .05, .3), p)
@@ -94,6 +102,27 @@ class BudgetTests(unittest.TestCase):
     def test_receipt_tamper(self):
         r = receipt("x", {"a": 1}); verify_receipt(r); r["payload"]["a"] = 2
         with self.assertRaises(ValueError): verify_receipt(r)
+
+    def test_receipt_detaches_caller_payload(self):
+        payload = {"nested": {"values": [1]}}
+        r = receipt("x", payload)
+        payload["nested"]["values"].append(2)
+        self.assertEqual(r["payload"], {"nested": {"values": [1]}})
+        verify_receipt(r)
+
+    def test_authoritative_receipt_rejects_validly_resealed_payload(self):
+        trusted = receipt("x", {"a": 1})
+        verify_receipt_authoritative(trusted, expected_sha256=trusted["sha256"], expected_kind="x")
+        resealed = receipt("x", {"a": 2})
+        verify_receipt(resealed)
+        with self.assertRaises(ValueError):
+            verify_receipt_authoritative(resealed, expected_sha256=trusted["sha256"], expected_kind="x")
+
+    def test_authoritative_receipt_rejects_context_transplant(self):
+        trusted = receipt("x", {"a": 1})
+        transplant = receipt("y", {"a": 1})
+        with self.assertRaises(ValueError):
+            verify_receipt_authoritative(transplant, expected_sha256=trusted["sha256"], expected_kind="x")
 
     def test_bool_not_numeric(self):
         with self.assertRaises(ValueError): Policy(initial_series=True).validate()
