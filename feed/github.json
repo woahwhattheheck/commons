@@ -1,9 +1,9 @@
 {
   "counts": {
     "open_issues": 87,
-    "open_pull_requests": 52,
-    "runs_in_progress": 17,
-    "runs_queued": 595
+    "open_pull_requests": 53,
+    "runs_in_progress": 19,
+    "runs_queued": 597
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -69,6 +69,17 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
+      "branch": "zrf-c5n7/outbound-capability-v2-20260913",
+      "created_at": "2026-09-14T02:03:20Z",
+      "draft": false,
+      "head_sha": "83c885981c9a877b247c2fddb220d3cea516703a",
+      "number": 14198,
+      "title": "fix(outbound): add v2 proof-of-possession lease",
+      "updated_at": "2026-09-14T02:04:00Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
       "branch": "zfh-k6w2/cash-evidence-event-binding-20260913",
       "created_at": "2026-09-14T02:01:28Z",
       "draft": false,
@@ -86,7 +97,7 @@
       "head_sha": "44e0af122ca0d5ffdd686fb3fd2b0344833779ee",
       "number": 14195,
       "title": "fix(cockpit): enforce proven dependency closure",
-      "updated_at": "2026-09-14T02:02:11Z"
+      "updated_at": "2026-09-14T02:03:39Z"
     },
     {
       "author": "woahwhattheheck",
@@ -108,7 +119,7 @@
       "head_sha": "1859cf0bfc12f2819f3f63fd4349ed06ca5f341b",
       "number": 14188,
       "title": "revenue: authenticate Service Deal Economics input authority",
-      "updated_at": "2026-09-14T01:58:19Z"
+      "updated_at": "2026-09-14T02:03:36Z"
     },
     {
       "author": "woahwhattheheck",
@@ -119,7 +130,7 @@
       "head_sha": "6446471055b5cc7d407976d0353a025f0e1eafb3",
       "number": 14185,
       "title": "delivery capacity: fail closed current authority and temporal lineage",
-      "updated_at": "2026-09-14T02:02:52Z"
+      "updated_at": "2026-09-14T02:03:18Z"
     },
     {
       "author": "woahwhattheheck",
@@ -163,18 +174,7 @@
       "head_sha": "7410ea5e8d1818a2443fddfea55475c5788dc1de",
       "number": 14147,
       "title": "build(shipaton): add ProofPocket Android RevenueCat carrier",
-      "updated_at": "2026-09-14T02:03:04Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zkt-a7v2/right-now-human-authority",
-      "created_at": "2026-09-14T01:14:29Z",
-      "draft": false,
-      "head_sha": "1c95d8463cbaf7e6d11d266d292a5b7792a2dbbb",
-      "number": 14122,
-      "title": "Bind right-now buyer truth to canonical reply evidence",
-      "updated_at": "2026-09-14T01:20:44Z"
+      "updated_at": "2026-09-14T02:03:40Z"
     }
   ],
   "open_heads": {
@@ -229,11 +229,12 @@
     "14188": "1859cf0bfc12f2819f3f63fd4349ed06ca5f341b",
     "14193": "043d88686e937891afd87260987c4ee45a16aeb9",
     "14195": "44e0af122ca0d5ffdd686fb3fd2b0344833779ee",
-    "14197": "3f8fae3f8877185de13dca7aacd822d1d2c786ec"
+    "14197": "3f8fae3f8877185de13dca7aacd822d1d2c786ec",
+    "14198": "83c885981c9a877b247c2fddb220d3cea516703a"
   },
-  "pulls_listed": 52,
+  "pulls_listed": 53,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 35.0,
+  "queue_depth_per_runner": 31.4,
   "recently_closed": [
     {
       "author": "woahwhattheheck",
@@ -403,6 +404,6 @@
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-14T02:03:18Z",
+  "unchanged_since": "2026-09-14T02:04:07Z",
   "undatable_pulls": []
 }
