@@ -7,7 +7,7 @@ import stat
 import sys
 from typing import Any, Dict
 
-from .engine import ContractError, canonical_json, compile_board, render_markdown, verify_board
+from .guarded import ContractError, canonical_json, compile_board, render_markdown, verify_board
 
 MAX_INPUT_BYTES = 4 * 1024 * 1024
 

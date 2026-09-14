@@ -6,9 +6,9 @@ import tempfile
 import unittest
 from unittest import mock
 
-from .acceptance import base_packet
-from .cli import _read_json
-from .engine import ContractError
+from .acceptance import base_packet, offer_sent
+from .cli import _read_json, main
+from .guarded import ContractError
 
 
 class CliIngressTests(unittest.TestCase):
@@ -34,6 +34,19 @@ class CliIngressTests(unittest.TestCase):
             json.dump(base_packet("x"),f); path=f.name
         try: self.assertEqual(_read_json(path)["buyer_id"],"buyer-x")
         finally: os.unlink(path)
+
+    def test_compile_cli_rejects_provider_alias(self):
+        packet = base_packet("alias-cli")
+        offer_sent(packet)
+        packet["events"][0]["payload"]["provider"] = "gmail-api"
+        with tempfile.NamedTemporaryFile("w", delete=False, encoding="utf-8") as f:
+            json.dump(packet, f)
+            path = f.name
+        try:
+            with mock.patch("sys.stderr"):
+                self.assertEqual(main(["compile", path]), 2)
+        finally:
+            os.unlink(path)
 
 
 if __name__ == "__main__": unittest.main()
