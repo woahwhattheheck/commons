@@ -84,6 +84,13 @@ class BudgetTests(unittest.TestCase):
         with self.assertRaises(ValueError): local_efficiency_surrogate(.90, 1200, .95, .50)
         with self.assertRaises(ValueError): local_efficiency_surrogate(.90, 1200, .95, .95)
 
+    def test_local_efficiency_surrogate_reference_ceiling(self):
+        for reference_max in (.93, .95, .99):
+            at_ceiling = local_efficiency_surrogate(reference_max, 1200, .50, reference_max)
+            self.assertAlmostEqual(at_ceiling, 1200 / 32400.0)
+            with self.assertRaises(ValueError):
+                local_efficiency_surrogate(min(1.0, reference_max + .001), 1200, .50, reference_max)
+
     def test_runtime_pass(self):
         p = Policy(); assert_runtime_budget(project_runtime(1300, p, 60, .05, .3), p)
 
@@ -109,6 +116,15 @@ class BudgetTests(unittest.TestCase):
         payload["nested"]["values"].append(2)
         self.assertEqual(r["payload"], {"nested": {"values": [1]}})
         verify_receipt(r)
+
+    def test_receipt_rejects_nonfinite_json_numbers(self):
+        for value in (float("nan"), float("inf"), float("-inf")):
+            with self.assertRaises(ValueError):
+                receipt("x", {"metric": value})
+            forged = receipt("x", {"metric": 0.0})
+            forged["payload"]["metric"] = value
+            with self.assertRaises(ValueError):
+                verify_receipt(forged)
 
     def test_authoritative_receipt_rejects_validly_resealed_payload(self):
         trusted = receipt("x", {"a": 1})
