@@ -1137,22 +1137,6 @@
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
   {
-   "number": 14222,
-   "author": "woahwhattheheck",
-   "title": "Fix evidence freshness commercial packet reseal trust",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/14222",
-   "base_freshness": {
-    "base_sha": "11e017c5f22fccd5b285b8a819cf71e238eca1d9",
-    "main_sha": "89f00414857442e54565bdecba76f77cfba47150",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
    "number": 14221,
    "author": "woahwhattheheck",
    "title": "revenue: qualify SigNoz for bounded survival-proof outreach",
@@ -1189,6 +1173,22 @@
    "author": "woahwhattheheck",
    "title": "revenue: close outbound guard source-custody mutation race",
    "html_url": "https://github.com/woahwhattheheck/commons/pull/14223",
+   "base_freshness": {
+    "base_sha": "11e017c5f22fccd5b285b8a819cf71e238eca1d9",
+    "main_sha": "89f00414857442e54565bdecba76f77cfba47150",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 14222,
+   "author": "woahwhattheheck",
+   "title": "Fix evidence freshness commercial packet reseal trust",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/14222",
    "base_freshness": {
     "base_sha": "11e017c5f22fccd5b285b8a819cf71e238eca1d9",
     "main_sha": "89f00414857442e54565bdecba76f77cfba47150",
