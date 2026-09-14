@@ -278,6 +278,14 @@ def normalize_packet(packet: Any, *, as_of: datetime) -> dict:
         for gid in sorted(graph):
             visit(gid)
 
+        by_id = {g["id"]: g for g in gates}
+        for gate in gates:
+            if gate["status"] != "PROVEN":
+                continue
+            unmet = [p for p in gate["prerequisites"] if by_id[p]["status"] != "PROVEN"]
+            if unmet:
+                raise ValidationError(f"gate {gate['id']} PROVEN with unmet prerequisites: {unmet}")
+
         normalized.append({
             "id": opp_id,
             "owner_ref": owner_ref,
