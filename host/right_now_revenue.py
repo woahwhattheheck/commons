@@ -20,7 +20,7 @@ ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-from host import settled_awards, settled_cash, smart_outreach  # noqa: E402
+from host import right_now_human_authority, settled_awards, settled_cash, smart_outreach  # noqa: E402
 
 
 CATALOG_PATH = ROOT / "revenue" / "right_now" / "catalog.json"
@@ -263,6 +263,7 @@ def build_control() -> dict[str, Any]:
     outreach = smart_outreach.build_plan(
         smart_outreach.read_object(OUTREACH_PATH), RECEIPTS_PATH
     )
+    human_truth = right_now_human_authority.derive_human_truth(catalog["truth"])
     catalog_cash = catalog["truth"]["collected_cash_usd"]
     if cash["settled_usd"] != str(catalog_cash):
         raise ControlError("global cash truth differs from the settled-cash ledger")
@@ -327,7 +328,7 @@ def build_control() -> dict[str, Any]:
             "id": "BUYER_ACCEPTANCE",
             "owner": "REAL_BUYER",
             "condition": "A real buyer accepts one exact scope and delivery window.",
-            "current": catalog["truth"]["accepted_scopes"],
+            "current": human_truth["accepted_scopes"],
         },
     ]
 
@@ -352,8 +353,8 @@ def build_control() -> dict[str, Any]:
         "as_of": _latest_as_of(catalog["as_of"], awards["as_of"], cash["as_of"]),
         "truth": {
             "collected_cash_usd": catalog_cash,
-            "verified_positive_replies": catalog["truth"]["verified_positive_replies"],
-            "accepted_scopes": catalog["truth"]["accepted_scopes"],
+            "verified_positive_replies": human_truth["verified_positive_replies"],
+            "accepted_scopes": human_truth["accepted_scopes"],
             "active_chargeable_checkout": catalog["truth"]["active_chargeable_checkout"],
             "prospects_evaluated": outreach["truth"]["prospects_evaluated"],
             "ready_to_draft": counts["READY_TO_DRAFT"],
@@ -415,6 +416,7 @@ def main() -> int:
             )
     except (
         ControlError,
+        right_now_human_authority.HumanOutcomeAuthorityError,
         settled_awards.SettlementError,
         settled_cash.CashSettlementError,
         smart_outreach.OutreachError,
