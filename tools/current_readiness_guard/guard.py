@@ -10,7 +10,6 @@ from typing import Any, Iterable
 from ._model import Exemption, Finding, PolicyError, RULES, _POLICY_KEYS, _RULE_RE
 from ._analyzer import analyze_source
 
-
 def _parse_expiry(value: Any, where: str) -> date:
     if type(value) is not str:
         raise PolicyError(f"{where}.expires must be YYYY-MM-DD")
@@ -100,21 +99,35 @@ def _generation(value: os.stat_result) -> tuple[int, ...]:
 
 
 def _read_source(root: Path, relative: PurePosixPath) -> bytes:
-    cursor = root
+    directory_flag = getattr(os, "O_DIRECTORY", 0)
+    nofollow_flag = getattr(os, "O_NOFOLLOW", 0)
+    nonblock_flag = getattr(os, "O_NONBLOCK", 0)
+    opened_directories: list[int] = []
+    file_fd: int | None = None
     try:
-        for part in relative.parts:
-            cursor = cursor / part
-            meta = os.lstat(cursor)
-            if stat.S_ISLNK(meta.st_mode):
-                raise PolicyError(f"source path contains symlink: {relative.as_posix()}")
-        flags = os.O_RDONLY | getattr(os, "O_NOFOLLOW", 0)
-        fd = os.open(cursor, flags)
-    except (OSError, PolicyError) as exc:
-        if isinstance(exc, PolicyError):
-            raise
-        raise PolicyError(f"source open failure: {exc}") from exc
-    try:
-        before = os.fstat(fd)
+        current_fd = os.open(root, os.O_RDONLY | directory_flag)
+        opened_directories.append(current_fd)
+        parts = relative.parts
+        if not parts:
+            raise PolicyError("source path is empty")
+        for part in parts[:-1]:
+            next_fd = os.open(
+                part,
+                os.O_RDONLY | directory_flag | nofollow_flag,
+                dir_fd=current_fd,
+            )
+            opened_directories.append(next_fd)
+            current_fd = next_fd
+        leaf = parts[-1]
+        visible_before = os.stat(leaf, dir_fd=current_fd, follow_symlinks=False)
+        if stat.S_ISLNK(visible_before.st_mode):
+            raise PolicyError(f"source path contains symlink: {relative.as_posix()}")
+        file_fd = os.open(
+            leaf,
+            os.O_RDONLY | nofollow_flag | nonblock_flag,
+            dir_fd=current_fd,
+        )
+        before = os.fstat(file_fd)
         if not stat.S_ISREG(before.st_mode):
             raise PolicyError("source is not a regular file")
         if before.st_size > MAX_SOURCE_BYTES:
@@ -122,26 +135,34 @@ def _read_source(root: Path, relative: PurePosixPath) -> bytes:
         chunks: list[bytes] = []
         remaining = MAX_SOURCE_BYTES + 1
         while remaining:
-            chunk = os.read(fd, min(65536, remaining))
+            chunk = os.read(file_fd, min(65536, remaining))
             if not chunk:
                 break
             chunks.append(chunk)
             remaining -= len(chunk)
         raw = b"".join(chunks)
-        after = os.fstat(fd)
-        visible = os.lstat(cursor)
+        after = os.fstat(file_fd)
+        visible_after = os.stat(leaf, dir_fd=current_fd, follow_symlinks=False)
         if len(raw) > MAX_SOURCE_BYTES:
             raise PolicyError(f"source exceeds {MAX_SOURCE_BYTES} bytes")
-        if _generation(before) != _generation(after) or _generation(after) != _generation(visible):
+        if (
+            _generation(visible_before) != _generation(before)
+            or _generation(before) != _generation(after)
+            or _generation(after) != _generation(visible_after)
+        ):
             raise PolicyError("source generation changed while reading")
         if len(raw) != before.st_size:
             raise PolicyError("source length changed while reading")
         return raw
-    except OSError as exc:
-        raise PolicyError(f"source read failure: {exc}") from exc
+    except (OSError, PolicyError) as exc:
+        if isinstance(exc, PolicyError):
+            raise
+        raise PolicyError(f"source open/read failure: {exc}") from exc
     finally:
-        os.close(fd)
-
+        if file_fd is not None:
+            os.close(file_fd)
+        for fd in reversed(opened_directories):
+            os.close(fd)
 
 def scan_paths(
     paths: Iterable[str | Path],

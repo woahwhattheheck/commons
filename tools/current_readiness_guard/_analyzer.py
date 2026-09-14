@@ -1,44 +1,128 @@
+from __future__ import annotations
+
 from ._model import *
 from ._flow import *
+
+
+class _CallCollector(ast.NodeVisitor):
+    def __init__(self, root: ast.FunctionDef | ast.AsyncFunctionDef):
+        self.root = root
+        self.calls: list[ast.Call] = []
+
+    def visit_FunctionDef(self, node: ast.FunctionDef) -> None:
+        if node is self.root:
+            for statement in node.body:
+                self.visit(statement)
+
+    def visit_AsyncFunctionDef(self, node: ast.AsyncFunctionDef) -> None:
+        if node is self.root:
+            for statement in node.body:
+                self.visit(statement)
+
+    def visit_ClassDef(self, node: ast.ClassDef) -> None:
+        return
+
+    def visit_Lambda(self, node: ast.Lambda) -> None:
+        return
+
+    def visit_Call(self, node: ast.Call) -> None:
+        self.calls.append(node)
+        self.generic_visit(node)
+
 
 class _Analyzer:
     def __init__(self, tree: ast.Module, path: str):
         self.tree = tree
         self.path = path
         self.globals = _module_string_constants(tree)
+        self.trusted_clock_names = _trusted_clock_names(tree)
+        self.specs = _collect_function_specs(tree)
+        self.function_keys = {spec.key for spec in self.specs}
         self.functions: dict[str, _FunctionModel] = {}
-        top_level = [node for node in tree.body if isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef))]
-        function_names = {node.name for node in top_level}
-        for fn in top_level:
+
+        for spec in self.specs:
+            fn = spec.node
             params = _function_params(fn)
             authority_params = {name for name in params if _authority_name(name)}
             defs = _local_defs(fn)
-            direct, returned_calls, _, _ = _collect_positive_paths(
+            resolver = lambda raw, spec=spec: self._resolve_call(raw, spec)
+            direct, returned_calls, _, _, _ = _collect_positive_paths(
                 fn.body,
                 facts=frozenset(),
                 authority_params=authority_params,
-                defs=defs,
+                env={},
                 globals_=self.globals,
-                function_names=function_names,
+                resolve_call=resolver,
             )
-            self.functions[fn.name] = _FunctionModel(
+            collector = _CallCollector(fn)
+            collector.visit(fn)
+            all_calls: list[_CallSite] = []
+            for call in collector.calls:
+                targets: set[str] = set()
+                direct_target = resolver(_name(call.func))
+                if direct_target is not None:
+                    targets.add(direct_target)
+                if isinstance(call.func, ast.Name) and call.func.id in defs:
+                    for value in defs[call.func.id]:
+                        alias = resolver(_name(value))
+                        if alias is not None:
+                            targets.add(alias)
+                all_calls.extend(
+                    _CallSite(target, call, frozenset())
+                    for target in sorted(targets)
+                )
+            self.functions[spec.key] = _FunctionModel(
+                key=spec.key,
+                owner=spec.owner,
+                lexical_parent=spec.lexical_parent,
+                surface=spec.surface,
                 node=fn,
                 params=params,
                 authority_params=authority_params,
                 local_defs=defs,
+                trusted_clock_names=self.trusted_clock_names,
                 direct_positive_requirements=direct,
                 returned_calls=returned_calls,
-                all_calls=[
-                    call
-                    for call in ast.walk(fn)
-                    if isinstance(call, ast.Call) and _name(call.func) in function_names
-                ],
-                direct_time_requirements=_direct_time_requirements(fn, defs),
-                direct_retained_replay=_direct_retained_replay(fn, defs),
+                all_calls=all_calls,
+                direct_time_requirements=_direct_time_requirements(
+                    fn, defs, self.trusted_clock_names
+                ),
+                direct_retained_replay=_direct_retained_replay(
+                    fn, defs, self.trusted_clock_names
+                ),
             )
+
         self._positive_cache: dict[str, list[frozenset[str]]] = {}
         self._time_cache: dict[str, list[frozenset[str]]] = {}
         self._replay_cache: dict[str, bool] = {}
+
+    def _resolve_call(self, raw: str, spec: _FunctionSpec) -> str | None:
+        if not raw:
+            return None
+        if raw in self.function_keys:
+            return raw
+        if "." not in raw:
+            candidate = f"{spec.key}.<locals>.{raw}"
+            if candidate in self.function_keys:
+                return candidate
+            parent = spec.lexical_parent
+            while parent is not None:
+                candidate = f"{parent}.<locals>.{raw}"
+                if candidate in self.function_keys:
+                    return candidate
+                parent_model = next((item for item in self.specs if item.key == parent), None)
+                parent = parent_model.lexical_parent if parent_model is not None else None
+        if spec.owner is not None:
+            if raw.startswith("self.") or raw.startswith("cls."):
+                candidate = f"{spec.owner}.{raw.split('.', 1)[1]}"
+                if candidate in self.function_keys:
+                    return candidate
+            owner_short = spec.owner.rsplit(".", 1)[-1]
+            if raw.startswith(owner_short + "."):
+                candidate = f"{spec.owner}.{raw.split('.', 1)[1]}"
+                if candidate in self.function_keys:
+                    return candidate
+        return None
 
     def _map_requirements(
         self,
@@ -49,7 +133,11 @@ class _Analyzer:
         facts: frozenset[str] = frozenset(),
     ) -> list[frozenset[str]]:
         params = set(caller.params)
-        origins = _origins(caller.node, caller.local_defs)
+        origins = _origins(
+            caller.node,
+            caller.local_defs,
+            caller.trusted_clock_names,
+        )
         out: list[frozenset[str]] = []
         for requirement in requirements:
             mapped = set(facts)
@@ -62,12 +150,17 @@ class _Analyzer:
                     params=params,
                     origins=origins,
                     defs=caller.local_defs,
+                    trusted_clock_names=caller.trusted_clock_names,
                 )
                 mapped.update(source for source in sources if source in caller.authority_params)
             out.append(frozenset(mapped))
         return out
 
-    def positive_requirements(self, name: str, stack: frozenset[str] = frozenset()) -> list[frozenset[str]]:
+    def positive_requirements(
+        self,
+        name: str,
+        stack: frozenset[str] = frozenset(),
+    ) -> list[frozenset[str]]:
         if name in self._positive_cache:
             return self._positive_cache[name]
         if name in stack:
@@ -79,11 +172,23 @@ class _Analyzer:
             if callee is None:
                 continue
             child = self.positive_requirements(site.callee, stack | {name})
-            out.extend(self._map_requirements(fn, site.node, callee, child, site.authority_facts))
+            out.extend(
+                self._map_requirements(
+                    fn,
+                    site.node,
+                    callee,
+                    child,
+                    site.authority_facts,
+                )
+            )
         self._positive_cache[name] = out
         return out
 
-    def time_requirements(self, name: str, stack: frozenset[str] = frozenset()) -> list[frozenset[str]]:
+    def time_requirements(
+        self,
+        name: str,
+        stack: frozenset[str] = frozenset(),
+    ) -> list[frozenset[str]]:
         if name in self._time_cache:
             return self._time_cache[name]
         if name in stack:
@@ -91,26 +196,35 @@ class _Analyzer:
         fn = self.functions[name]
         out = list(fn.direct_time_requirements)
         params = set(fn.params)
-        origins = _origins(fn.node, fn.local_defs)
-        for call in fn.all_calls:
-            callee_name = _name(call.func)
-            callee = self.functions.get(callee_name)
+        origins = _origins(fn.node, fn.local_defs, fn.trusted_clock_names)
+        for site in fn.all_calls:
+            callee = self.functions.get(site.callee)
             if callee is None:
                 continue
-            for requirement in self.time_requirements(callee_name, stack | {name}):
+            for requirement in self.time_requirements(site.callee, stack | {name}):
                 mapped: set[str] = set()
                 for parameter in requirement:
-                    argument = _call_argument(call, callee, parameter)
+                    argument = _call_argument(site.node, callee, parameter)
                     if argument is None:
                         continue
-                    sources = _expr_sources(argument, params=params, origins=origins, defs=fn.local_defs)
+                    sources = _expr_sources(
+                        argument,
+                        params=params,
+                        origins=origins,
+                        defs=fn.local_defs,
+                        trusted_clock_names=fn.trusted_clock_names,
+                    )
                     mapped.update(source for source in sources if source in params)
                 if mapped:
                     out.append(frozenset(mapped))
         self._time_cache[name] = out
         return out
 
-    def retained_replay(self, name: str, stack: frozenset[str] = frozenset()) -> bool:
+    def retained_replay(
+        self,
+        name: str,
+        stack: frozenset[str] = frozenset(),
+    ) -> bool:
         if name in self._replay_cache:
             return self._replay_cache[name]
         if name in stack:
@@ -120,9 +234,9 @@ class _Analyzer:
             self._replay_cache[name] = True
             return True
         unsafe = any(
-            self.retained_replay(_name(call.func), stack | {name})
-            for call in fn.all_calls
-            if _name(call.func) in self.functions
+            self.retained_replay(site.callee, stack | {name})
+            for site in fn.all_calls
+            if site.callee in self.functions
         )
         self._replay_cache[name] = unsafe
         return unsafe
@@ -131,7 +245,7 @@ class _Analyzer:
         out: list[Finding] = []
         for name, model in self.functions.items():
             fn = model.node
-            if not _public(fn) or _historical_surface(fn):
+            if not model.surface or not _public(fn) or _historical_surface(fn):
                 continue
             positives = self.positive_requirements(name)
             times = self.time_requirements(name)
@@ -151,7 +265,10 @@ class _Analyzer:
                     parameter
                     for parameter in model.params
                     if any(word in parameter.lower() for word in _TIME_WORDS)
-                    and any(isinstance(child, ast.Name) and child.id == parameter for child in ast.walk(fn))
+                    and any(
+                        isinstance(child, ast.Name) and child.id == parameter
+                        for child in ast.walk(fn)
+                    )
                 ]
                 if risky_time_params:
                     out.append(
@@ -176,7 +293,7 @@ class _Analyzer:
                             name,
                         )
                     )
-            if "verify" in name.lower() and self.retained_replay(name):
+            if "verify" in fn.name.lower() and self.retained_replay(name):
                 out.append(
                     Finding(
                         self.path,

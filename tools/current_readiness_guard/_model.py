@@ -17,72 +17,25 @@ RULES = {
 }
 
 _TIME_WORDS = (
-    "as_of",
-    "asof",
-    "evaluated_at",
-    "evaluation_time",
-    "current_time",
-    "now",
-    "verifier_now",
-    "trusted_as_of",
-    "clock",
-    "timestamp",
-    "time_utc",
+    "as_of", "asof", "evaluated_at", "evaluation_time", "current_time", "now",
+    "verifier_now", "trusted_as_of", "clock", "timestamp", "time_utc",
 )
 _DEADLINE_WORDS = (
-    "deadline",
-    "cutoff",
-    "cut_off",
-    "close_at",
-    "closes_at",
-    "expiry",
-    "expires",
-    "expiration",
-    "not_after",
-    "valid_until",
-    "end_at",
-    "due_at",
+    "deadline", "cutoff", "cut_off", "close_at", "closes_at", "expiry", "expires",
+    "expiration", "not_after", "valid_until", "end_at", "due_at",
 )
 _AUTHORITY_WORDS = (
-    "authority",
-    "trusted",
-    "root",
-    "receipt",
-    "evidence",
-    "verifier",
-    "attestation",
-    "source_generation",
-    "source_root",
-    "host_proof",
+    "authority", "trusted", "root", "receipt", "evidence", "verifier", "attestation",
+    "source_generation", "source_root", "host_proof",
 )
 _NONCURRENT_PREFIXES = (
-    "HOLD",
-    "NOT_",
-    "NON_",
-    "HISTORICAL",
-    "SOURCE_",
-    "REVIEW_REQUIRED",
-    "OWNER_REVIEW",
-    "CANDIDATE_",
-    "BLOCKED",
-    "INVALID",
-    "REJECT",
-    "DECLINED",
+    "HOLD", "NOT_", "NON_", "HISTORICAL", "SOURCE_", "REVIEW_REQUIRED",
+    "OWNER_REVIEW", "CANDIDATE_", "BLOCKED", "INVALID", "REJECT", "DECLINED",
 )
 _POSITIVE_EXACT = {
-    "READY",
-    "VALID",
-    "CLEAR",
-    "REUSABLE",
-    "ALLOCATED_READY",
-    "ALLOW_NEW",
-    "LEASE_HELD",
-    "SEND_READY",
-    "INITIAL_OUTREACH_ACQUIRED",
-    "CURRENT_VERIFIED",
-    "PROTECTED_PRE_SEND",
-    "FOLLOWUP_READY",
-    "REFERENCE_READY_FOR_OWNER_REVIEW",
+    "READY", "VALID", "CLEAR", "REUSABLE", "ALLOCATED_READY", "ALLOW_NEW",
+    "LEASE_HELD", "SEND_READY", "INITIAL_OUTREACH_ACQUIRED", "CURRENT_VERIFIED",
+    "PROTECTED_PRE_SEND", "FOLLOWUP_READY", "REFERENCE_READY_FOR_OWNER_REVIEW",
 }
 _POLICY_KEYS = {"path", "rule", "rationale", "owner", "issue", "expires"}
 _RULE_RE = re.compile(r"^CRG\d{3}$")
@@ -113,21 +66,41 @@ class Exemption:
 
 
 @dataclass(frozen=True)
+class _BoundValue:
+    expression: ast.AST
+    authority_facts: frozenset[str]
+
+
+@dataclass(frozen=True)
 class _CallSite:
     callee: str
     node: ast.Call
     authority_facts: frozenset[str]
 
 
+@dataclass(frozen=True)
+class _FunctionSpec:
+    key: str
+    owner: str | None
+    lexical_parent: str | None
+    surface: bool
+    node: ast.FunctionDef | ast.AsyncFunctionDef
+
+
 @dataclass
 class _FunctionModel:
+    key: str
+    owner: str | None
+    lexical_parent: str | None
+    surface: bool
     node: ast.FunctionDef | ast.AsyncFunctionDef
     params: list[str]
     authority_params: set[str]
-    local_defs: dict[str, ast.AST]
+    local_defs: dict[str, tuple[ast.AST, ...]]
+    trusted_clock_names: frozenset[str]
     direct_positive_requirements: list[frozenset[str]]
     returned_calls: list[_CallSite]
-    all_calls: list[ast.Call]
+    all_calls: list[_CallSite]
     direct_time_requirements: list[frozenset[str]]
     direct_retained_replay: bool
 
@@ -227,34 +200,194 @@ def _module_string_constants(tree: ast.Module) -> dict[str, str]:
     return out
 
 
-def _local_defs(fn: ast.FunctionDef | ast.AsyncFunctionDef) -> dict[str, ast.AST]:
-    out: dict[str, ast.AST] = {}
-    for node in ast.walk(fn):
-        if isinstance(node, ast.Assign):
-            for target in node.targets:
-                if isinstance(target, ast.Name):
-                    out[target.id] = node.value
-        elif isinstance(node, ast.AnnAssign) and isinstance(node.target, ast.Name) and node.value is not None:
-            out[node.target.id] = node.value
-        elif isinstance(node, ast.NamedExpr) and isinstance(node.target, ast.Name):
-            out[node.target.id] = node.value
+def _collect_function_specs(tree: ast.Module) -> list[_FunctionSpec]:
+    out: list[_FunctionSpec] = []
+
+    def collect(
+        statements: Sequence[ast.stmt],
+        *,
+        class_owner: str | None = None,
+        lexical_parent: str | None = None,
+        surface: bool = True,
+    ) -> None:
+        for statement in statements:
+            if isinstance(statement, (ast.FunctionDef, ast.AsyncFunctionDef)):
+                if lexical_parent is not None:
+                    key = f"{lexical_parent}.<locals>.{statement.name}"
+                    is_surface = False
+                elif class_owner is not None:
+                    key = f"{class_owner}.{statement.name}"
+                    is_surface = surface
+                else:
+                    key = statement.name
+                    is_surface = surface
+                out.append(
+                    _FunctionSpec(
+                        key=key,
+                        owner=class_owner,
+                        lexical_parent=lexical_parent,
+                        surface=is_surface,
+                        node=statement,
+                    )
+                )
+                collect(
+                    statement.body,
+                    class_owner=class_owner,
+                    lexical_parent=key,
+                    surface=False,
+                )
+            elif isinstance(statement, ast.ClassDef):
+                if lexical_parent is not None:
+                    class_key = f"{lexical_parent}.<locals>.{statement.name}"
+                    class_surface = False
+                elif class_owner is not None:
+                    class_key = f"{class_owner}.{statement.name}"
+                    class_surface = surface
+                else:
+                    class_key = statement.name
+                    class_surface = surface
+                collect(
+                    statement.body,
+                    class_owner=class_key,
+                    lexical_parent=None,
+                    surface=class_surface,
+                )
+
+    collect(tree.body)
+    return out
+
+def _assigned_names(statement: ast.stmt) -> list[str]:
+    targets: list[ast.AST] = []
+    if isinstance(statement, ast.Assign):
+        targets.extend(statement.targets)
+    elif isinstance(statement, ast.AnnAssign):
+        targets.append(statement.target)
+    elif isinstance(statement, ast.AugAssign):
+        targets.append(statement.target)
+
+    def flatten(target: ast.AST) -> list[str]:
+        if isinstance(target, ast.Name):
+            return [target.id]
+        if isinstance(target, (ast.Tuple, ast.List)):
+            result: list[str] = []
+            for item in target.elts:
+                result.extend(flatten(item))
+            return result
+        return []
+
+    result: list[str] = []
+    for target in targets:
+        result.extend(flatten(target))
+    return result
+
+
+def _module_shadowed_names(tree: ast.Module) -> set[str]:
+    out: set[str] = set()
+    for statement in tree.body:
+        if isinstance(statement, (ast.Assign, ast.AnnAssign, ast.AugAssign)):
+            out.update(_assigned_names(statement))
+        elif isinstance(statement, (ast.FunctionDef, ast.AsyncFunctionDef, ast.ClassDef)):
+            out.add(statement.name)
     return out
 
 
-def _expand_expr(node: ast.AST | None, defs: Mapping[str, ast.AST], *, seen: frozenset[str] = frozenset()) -> ast.AST | None:
-    if isinstance(node, ast.Name) and node.id in defs and node.id not in seen:
-        return _expand_expr(defs[node.id], defs, seen=seen | {node.id})
-    return node
+def _trusted_clock_names(tree: ast.Module) -> frozenset[str]:
+    names: set[str] = {"_process_now"}
+    roots: dict[str, set[str]] = {}
+    for statement in tree.body:
+        if isinstance(statement, ast.Import):
+            for alias in statement.names:
+                root = alias.asname or alias.name.split(".", 1)[0]
+                if alias.name == "datetime":
+                    roots.setdefault(root, set()).update({f"{root}.datetime.now", f"{root}.datetime.utcnow"})
+                elif alias.name == "time":
+                    roots.setdefault(root, set()).update({f"{root}.time", f"{root}.time_ns"})
+        elif isinstance(statement, ast.ImportFrom):
+            if statement.module == "datetime":
+                for alias in statement.names:
+                    local = alias.asname or alias.name
+                    if alias.name == "datetime":
+                        roots.setdefault(local, set()).update({f"{local}.now", f"{local}.utcnow"})
+            elif statement.module == "time":
+                for alias in statement.names:
+                    local = alias.asname or alias.name
+                    if alias.name in {"time", "time_ns"}:
+                        roots.setdefault(local, set()).add(local)
+    shadowed = _module_shadowed_names(tree)
+    for root, calls in roots.items():
+        if root not in shadowed:
+            names.update(calls)
+    if "_process_now" in shadowed:
+        names.discard("_process_now")
+    return frozenset(names)
+
+
+class _DefinitionCollector(ast.NodeVisitor):
+    def __init__(self, root: ast.FunctionDef | ast.AsyncFunctionDef):
+        self.root = root
+        self.values: dict[str, list[ast.AST]] = {}
+
+    def _record(self, name: str, value: ast.AST) -> None:
+        self.values.setdefault(name, []).append(value)
+
+    def visit_FunctionDef(self, node: ast.FunctionDef) -> None:
+        if node is self.root:
+            for statement in node.body:
+                self.visit(statement)
+
+    def visit_AsyncFunctionDef(self, node: ast.AsyncFunctionDef) -> None:
+        if node is self.root:
+            for statement in node.body:
+                self.visit(statement)
+
+    def visit_ClassDef(self, node: ast.ClassDef) -> None:
+        return
+
+    def visit_Lambda(self, node: ast.Lambda) -> None:
+        return
+
+    def visit_Assign(self, node: ast.Assign) -> None:
+        for target in node.targets:
+            for name in _assigned_target_names(target):
+                self._record(name, node.value)
+        self.visit(node.value)
+
+    def visit_AnnAssign(self, node: ast.AnnAssign) -> None:
+        if node.value is not None:
+            for name in _assigned_target_names(node.target):
+                self._record(name, node.value)
+            self.visit(node.value)
+
+    def visit_NamedExpr(self, node: ast.NamedExpr) -> None:
+        for name in _assigned_target_names(node.target):
+            self._record(name, node.value)
+        self.visit(node.value)
+
+
+def _assigned_target_names(target: ast.AST) -> list[str]:
+    if isinstance(target, ast.Name):
+        return [target.id]
+    if isinstance(target, (ast.Tuple, ast.List)):
+        result: list[str] = []
+        for item in target.elts:
+            result.extend(_assigned_target_names(item))
+        return result
+    return []
+
+
+def _local_defs(fn: ast.FunctionDef | ast.AsyncFunctionDef) -> dict[str, tuple[ast.AST, ...]]:
+    collector = _DefinitionCollector(fn)
+    collector.visit(fn)
+    return {name: tuple(values) for name, values in collector.values.items()}
 
 
 def _emitted_strings(
     node: ast.AST | None,
-    defs: Mapping[str, ast.AST],
+    defs: Mapping[str, Sequence[ast.AST]],
     globals_: Mapping[str, str],
     *,
     seen: frozenset[str] = frozenset(),
 ) -> set[str]:
-    node = _expand_expr(node, defs, seen=seen)
     if node is None:
         return set()
     if isinstance(node, ast.Constant) and isinstance(node.value, str):
@@ -263,7 +396,10 @@ def _emitted_strings(
         if node.id in globals_:
             return {globals_[node.id]}
         if node.id in defs and node.id not in seen:
-            return _emitted_strings(defs[node.id], defs, globals_, seen=seen | {node.id})
+            result: set[str] = set()
+            for value in defs[node.id]:
+                result |= _emitted_strings(value, defs, globals_, seen=seen | {node.id})
+            return result
         return set()
     if isinstance(node, ast.Attribute):
         return {node.attr}
@@ -272,19 +408,26 @@ def _emitted_strings(
             node.orelse, defs, globals_, seen=seen
         )
     if isinstance(node, ast.Dict):
-        out: set[str] = set()
+        result: set[str] = set()
         for value in node.values:
-            out |= _emitted_strings(value, defs, globals_, seen=seen)
-        return out
+            result |= _emitted_strings(value, defs, globals_, seen=seen)
+        return result
     if isinstance(node, (ast.List, ast.Tuple, ast.Set)):
-        out: set[str] = set()
+        result: set[str] = set()
         for value in node.elts:
-            out |= _emitted_strings(value, defs, globals_, seen=seen)
-        return out
+            result |= _emitted_strings(value, defs, globals_, seen=seen)
+        return result
+    if isinstance(node, ast.Call):
+        result: set[str] = set()
+        for value in node.args:
+            result |= _emitted_strings(value, defs, globals_, seen=seen)
+        for keyword in node.keywords:
+            result |= _emitted_strings(keyword.value, defs, globals_, seen=seen)
+        return result
     return set()
 
 
-def _contains_positive(node: ast.AST | None, defs: Mapping[str, ast.AST], globals_: Mapping[str, str]) -> set[str]:
+def _contains_positive(node: ast.AST | None, defs: Mapping[str, Sequence[ast.AST]], globals_: Mapping[str, str]) -> set[str]:
     return {value.strip().upper() for value in _emitted_strings(node, defs, globals_) if _positive_state(value)}
 
 
@@ -305,15 +448,15 @@ def _condition_authority_facts(node: ast.AST, authority_params: set[str], *, tru
         return _condition_authority_facts(node.operand, authority_params, truth=not truth)
     if isinstance(node, ast.BoolOp):
         if isinstance(node.op, ast.And) and truth:
-            out: set[str] = set()
+            result: set[str] = set()
             for value in node.values:
-                out |= _condition_authority_facts(value, authority_params, truth=True)
-            return out
+                result |= _condition_authority_facts(value, authority_params, truth=True)
+            return result
         if isinstance(node.op, ast.Or) and not truth:
-            out: set[str] = set()
+            result: set[str] = set()
             for value in node.values:
-                out |= _condition_authority_facts(value, authority_params, truth=False)
-            return out
+                result |= _condition_authority_facts(value, authority_params, truth=False)
+            return result
         return set()
     if isinstance(node, ast.Compare) and len(node.ops) == len(node.comparators) == 1:
         left, op, right = node.left, node.ops[0], node.comparators[0]
@@ -329,7 +472,6 @@ def _condition_authority_facts(node: ast.AST, authority_params: set[str], *, tru
         if name is not None:
             positive = (
                 (constant is None and isinstance(op, (ast.IsNot, ast.NotEq)))
-                or (constant is None and not truth and isinstance(op, (ast.Is, ast.Eq)))
                 or (constant is True and isinstance(op, (ast.Is, ast.Eq)))
                 or (constant is False and isinstance(op, (ast.IsNot, ast.NotEq)))
             )
