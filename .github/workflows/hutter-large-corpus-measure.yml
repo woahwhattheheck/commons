@@ -1,0 +1,82 @@
+name: Hutter MixerLab larger-corpus measurement
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - '.github/workflows/hutter-large-corpus-measure.yml'
+      - 'competitions/hutter-prize-enwik9-2026/large_corpus_benchmark.py'
+      - 'competitions/hutter-prize-enwik9-2026/tests/test_large_corpus_benchmark.py'
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/hutter-large-corpus-measure.yml'
+      - 'competitions/hutter-prize-enwik9-2026/large_corpus_benchmark.py'
+      - 'competitions/hutter-prize-enwik9-2026/tests/test_large_corpus_benchmark.py'
+
+permissions:
+  contents: write
+
+jobs:
+  paired-enwik8-prefixes:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    defaults:
+      run:
+        working-directory: competitions/hutter-prize-enwik9-2026
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Source proof and focused tests
+        run: |
+          python -m py_compile mixerlab.py match_model.py large_corpus_benchmark.py tests/test_large_corpus_benchmark.py
+          python -m unittest -v tests.test_large_corpus_benchmark
+          python -O -m unittest -v tests.test_large_corpus_benchmark
+      - name: Paired public enwik8 prefix measurement
+        run: |
+          python large_corpus_benchmark.py run \
+            --prefixes 65536,262144 \
+            --table-bits 12 \
+            --match-bits 12 \
+            --timeout-seconds 900 \
+            --cache "$RUNNER_TEMP/hutter-enwik8" \
+            --json-out "$RUNNER_TEMP/HUTTER_LARGER_CORPUS_EVIDENCE.json" \
+            --markdown-out "$RUNNER_TEMP/HUTTER_LARGER_CORPUS_EVIDENCE.md"
+          echo '--- canonical evidence ---'
+          cat "$RUNNER_TEMP/HUTTER_LARGER_CORPUS_EVIDENCE.json"
+      - name: Publish hosted evidence branch
+        if: github.event_name == 'push'
+        env:
+          OUTPUT_BRANCH: zbs-j8r6/hutter-hosted-evidence-output-20260914
+        run: |
+          cp "$RUNNER_TEMP/HUTTER_LARGER_CORPUS_EVIDENCE.json" HUTTER_LARGER_CORPUS_EVIDENCE.json
+          cp "$RUNNER_TEMP/HUTTER_LARGER_CORPUS_EVIDENCE.md" HUTTER_LARGER_CORPUS_EVIDENCE.md
+          python - <<'PY'
+          import json, os
+          payload = {
+              "event": os.environ["GITHUB_EVENT_NAME"],
+              "repository": os.environ["GITHUB_REPOSITORY"],
+              "run_attempt": int(os.environ["GITHUB_RUN_ATTEMPT"]),
+              "run_id": int(os.environ["GITHUB_RUN_ID"]),
+              "run_number": int(os.environ["GITHUB_RUN_NUMBER"]),
+              "source_sha": os.environ["GITHUB_SHA"],
+              "workflow": os.environ["GITHUB_WORKFLOW"],
+              "truth_boundary": {
+                  "official_hutter_score": False,
+                  "prize_or_payment_claim": False,
+                  "record_claim": False,
+                  "submission": False
+              }
+          }
+          with open("HUTTER_LARGER_CORPUS_HOSTED_RUN.json", "w", encoding="utf-8") as fh:
+              json.dump(payload, fh, sort_keys=True, indent=2)
+              fh.write("\n")
+          PY
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git switch -c "$OUTPUT_BRANCH"
+          git add HUTTER_LARGER_CORPUS_EVIDENCE.json HUTTER_LARGER_CORPUS_EVIDENCE.md HUTTER_LARGER_CORPUS_HOSTED_RUN.json
+          git commit -m 'Record hosted Hutter larger-corpus evidence'
+          git push origin "HEAD:refs/heads/$OUTPUT_BRANCH"
