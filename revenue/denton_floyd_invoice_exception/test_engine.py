@@ -11,6 +11,33 @@ FIXTURE = json.loads((HERE / "fixture.json").read_text())
 AS_OF = "2026-09-13T10:45:00Z"
 
 
+def po_packet(amounts, *, po_total="1000.00", po_id="PO-CUM-001"):
+    """Build a small valid packet whose rows all reference one open PO."""
+    p = copy.deepcopy(FIXTURE)
+    vendor = copy.deepcopy(FIXTURE["vendors"][0])
+    po = copy.deepcopy(FIXTURE["purchase_orders"][0])
+    po.update({"po_id": po_id, "vendor_id": vendor["vendor_id"], "total": po_total})
+    p["vendors"] = [vendor]
+    p["purchase_orders"] = [po]
+    p["invoices"] = []
+    for index, amount in enumerate(amounts, start=1):
+        inv = copy.deepcopy(FIXTURE["invoices"][0])
+        inv.update(
+            {
+                "invoice_id": f"CUM-{index:03d}",
+                "vendor_id": vendor["vendor_id"],
+                "po_id": po_id,
+                "amount": amount,
+                "invoice_date": f"2026-08-{10 + index:02d}",
+                "due_date": f"2026-09-{10 + index:02d}",
+                "source_ref": f"cumulative-source-{index}",
+                "snapshot_sha256": f"{index:x}" * 64,
+            }
+        )
+        p["invoices"].append(inv)
+    return p
+
+
 class EngineTests(unittest.TestCase):
     def test_control_fixture_exact_counts(self):
         result = compile_packet(FIXTURE, as_of=AS_OF)
@@ -66,6 +93,79 @@ class EngineTests(unittest.TestCase):
         states = {x["invoice_id"]: x for x in r["decisions"]}
         self.assertIn("DUPLICATE_INVOICE_EVIDENCE", states["INV-001"]["reasons"])
         self.assertIn("DUPLICATE_INVOICE_EVIDENCE", states["INV-099"]["reasons"])
+
+    def test_cumulative_po_overrun_holds_every_otherwise_ready_invoice(self):
+        p = po_packet(["700.00", "700.00"], po_total="1000.00")
+        r = compile_packet(p, as_of=AS_OF)
+        self.assertEqual(r["manifest"]["counts"], {"total": 2, "ready": 0, "hold": 2})
+        for row in r["decisions"]:
+            self.assertEqual(row["state"], "HOLD")
+            self.assertEqual(row["reasons"], ["PO_CUMULATIVE_AMOUNT_EXCEEDED"])
+
+    def test_cumulative_po_exact_boundary_remains_ready(self):
+        r = compile_packet(po_packet(["500.00", "500.00"], po_total="1000.00"), as_of=AS_OF)
+        self.assertEqual(r["manifest"]["counts"], {"total": 2, "ready": 2, "hold": 0})
+        self.assertTrue(all(row["reasons"] == [] for row in r["decisions"]))
+
+    def test_cumulative_three_invoice_overrun_holds_all_candidates(self):
+        r = compile_packet(po_packet(["350.00", "350.00", "350.00"], po_total="1000.00"), as_of=AS_OF)
+        self.assertEqual(r["manifest"]["counts"], {"total": 3, "ready": 0, "hold": 3})
+        self.assertTrue(
+            all("PO_CUMULATIVE_AMOUNT_EXCEEDED" in row["reasons"] for row in r["decisions"])
+        )
+
+    def test_cumulative_exposure_isolated_by_po(self):
+        p = po_packet(["600.00", "600.00"], po_total="1000.00", po_id="PO-CUM-A")
+        second_po = copy.deepcopy(p["purchase_orders"][0])
+        second_po.update({"po_id": "PO-CUM-B", "total": "1000.00", "snapshot_sha256": "b" * 64})
+        p["purchase_orders"].append(second_po)
+        third = copy.deepcopy(p["invoices"][0])
+        third.update(
+            {
+                "invoice_id": "CUM-B-001",
+                "po_id": "PO-CUM-B",
+                "amount": "900.00",
+                "source_ref": "second-po-source",
+                "invoice_date": "2026-08-20",
+                "due_date": "2026-09-20",
+                "snapshot_sha256": "c" * 64,
+            }
+        )
+        p["invoices"].append(third)
+        rows = {row["invoice_id"]: row for row in compile_packet(p, as_of=AS_OF)["decisions"]}
+        self.assertEqual(rows["CUM-001"]["reasons"], ["PO_CUMULATIVE_AMOUNT_EXCEEDED"])
+        self.assertEqual(rows["CUM-002"]["reasons"], ["PO_CUMULATIVE_AMOUNT_EXCEEDED"])
+        self.assertEqual(rows["CUM-B-001"]["state"], "READY")
+        self.assertEqual(rows["CUM-B-001"]["reasons"], [])
+
+    def test_row_level_overrun_does_not_consume_candidate_ready_exposure(self):
+        p = po_packet(["700.00", "1200.00"], po_total="1000.00")
+        rows = {row["invoice_id"]: row for row in compile_packet(p, as_of=AS_OF)["decisions"]}
+        self.assertEqual(rows["CUM-001"]["state"], "READY")
+        self.assertEqual(rows["CUM-001"]["reasons"], [])
+        self.assertEqual(rows["CUM-002"]["state"], "HOLD")
+        self.assertEqual(rows["CUM-002"]["reasons"], ["INVOICE_EXCEEDS_PO"])
+
+    def test_semantic_duplicate_does_not_double_count_candidate_exposure(self):
+        p = po_packet(["600.00", "400.00"], po_total="1000.00")
+        duplicate = copy.deepcopy(p["invoices"][0])
+        duplicate["invoice_id"] = "CUM-099"
+        duplicate["snapshot_sha256"] = "f" * 64
+        p["invoices"].append(duplicate)
+        rows = {row["invoice_id"]: row for row in compile_packet(p, as_of=AS_OF)["decisions"]}
+        self.assertEqual(rows["CUM-001"]["reasons"], ["DUPLICATE_INVOICE_EVIDENCE"])
+        self.assertEqual(rows["CUM-099"]["reasons"], ["DUPLICATE_INVOICE_EVIDENCE"])
+        self.assertEqual(rows["CUM-002"]["state"], "READY")
+        self.assertEqual(rows["CUM-002"]["reasons"], [])
+
+    def test_cumulative_decisions_are_invariant_to_invoice_input_order(self):
+        p = po_packet(["700.00", "700.00"], po_total="1000.00")
+        forward = compile_packet(copy.deepcopy(p), as_of=AS_OF)
+        p["invoices"].reverse()
+        reversed_result = compile_packet(p, as_of=AS_OF)
+        self.assertEqual(forward["decisions"], reversed_result["decisions"])
+        self.assertEqual(forward["manifest"]["decisions_sha256"], reversed_result["manifest"]["decisions_sha256"])
+        self.assertNotEqual(forward["manifest"]["packet_sha256"], reversed_result["manifest"]["packet_sha256"])
 
     def test_vendor_missing_holds(self):
         p = copy.deepcopy(FIXTURE); p["invoices"][0]["vendor_id"] = "V-NOPE"
