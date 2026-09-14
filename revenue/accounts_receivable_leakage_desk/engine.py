@@ -14,6 +14,7 @@ MAX_PAYMENTS = 10_000
 MAX_CREDITS = 10_000
 MAX_DISPUTE_EVENTS = 10_000
 MAX_GRACE_DAYS = 90
+SUPPORTED_CURRENCY = "USD"
 
 _ID_RE = re.compile(r"^[A-Za-z0-9][A-Za-z0-9._:-]{0,63}$")
 _SHA_RE = re.compile(r"^[0-9a-f]{64}$")
@@ -39,7 +40,11 @@ def _reject_constant(value: str) -> None:
 
 def loads_strict(text: str) -> Any:
     try:
-        return json.loads(text, object_pairs_hook=_pairs_no_dupes, parse_constant=_reject_constant)
+        return json.loads(
+            text,
+            object_pairs_hook=_pairs_no_dupes,
+            parse_constant=_reject_constant,
+        )
     except InputError:
         raise
     except (json.JSONDecodeError, TypeError, ValueError) as exc:
@@ -48,7 +53,13 @@ def loads_strict(text: str) -> Any:
 
 def canonical_bytes(value: Any) -> bytes:
     try:
-        return json.dumps(value, sort_keys=True, separators=(",", ":"), ensure_ascii=False, allow_nan=False).encode("utf-8")
+        return json.dumps(
+            value,
+            sort_keys=True,
+            separators=(",", ":"),
+            ensure_ascii=False,
+            allow_nan=False,
+        ).encode("utf-8")
     except (TypeError, ValueError) as exc:
         raise InputError(f"not canonicalizable: {exc}") from exc
 
@@ -62,7 +73,9 @@ def _exact_keys(value: Any, keys: set[str], where: str) -> dict[str, Any]:
         raise InputError(f"{where}: expected object")
     got = set(value)
     if got != keys:
-        raise InputError(f"{where}: key mismatch missing={sorted(keys-got)} extra={sorted(got-keys)}")
+        raise InputError(
+            f"{where}: key mismatch missing={sorted(keys - got)} extra={sorted(got - keys)}"
+        )
     return value
 
 
@@ -117,7 +130,9 @@ def _utc(value: Any, where: str) -> datetime:
     if not re.fullmatch(r"\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z", text):
         raise InputError(f"{where}: expected canonical UTC whole seconds")
     try:
-        return datetime.strptime(text, "%Y-%m-%dT%H:%M:%SZ").replace(tzinfo=timezone.utc)
+        return datetime.strptime(text, "%Y-%m-%dT%H:%M:%SZ").replace(
+            tzinfo=timezone.utc
+        )
     except ValueError as exc:
         raise InputError(f"{where}: invalid UTC timestamp") from exc
 
@@ -130,13 +145,39 @@ def _enum(value: Any, allowed: set[str], where: str) -> str:
 
 
 def _validate_packet(packet: Any) -> dict[str, Any]:
-    root = _exact_keys(packet, {"schema","analysis_date","currency","grace_days","invoices","payments","credits","disputes"}, "packet")
+    root = _exact_keys(
+        packet,
+        {
+            "schema",
+            "analysis_date",
+            "currency",
+            "grace_days",
+            "invoices",
+            "payments",
+            "credits",
+            "disputes",
+        },
+        "packet",
+    )
     if root["schema"] != SCHEMA:
         raise InputError(f"packet.schema: expected {SCHEMA}")
+
     analysis = _date(root["analysis_date"], "packet.analysis_date")
     currency = _currency(root["currency"], "packet.currency")
-    grace = _integer(root["grace_days"], "packet.grace_days", low=0, high=MAX_GRACE_DAYS)
-    for key, limit in (("invoices",PILOT_MAX_INVOICES),("payments",MAX_PAYMENTS),("credits",MAX_CREDITS),("disputes",MAX_DISPUTE_EVENTS)):
+    if currency != SUPPORTED_CURRENCY:
+        raise InputError(
+            f"packet.currency: v1 supports {SUPPORTED_CURRENCY} minor units only"
+        )
+    grace = _integer(
+        root["grace_days"], "packet.grace_days", low=0, high=MAX_GRACE_DAYS
+    )
+
+    for key, limit in (
+        ("invoices", PILOT_MAX_INVOICES),
+        ("payments", MAX_PAYMENTS),
+        ("credits", MAX_CREDITS),
+        ("disputes", MAX_DISPUTE_EVENTS),
+    ):
         if type(root[key]) is not list:
             raise InputError(f"packet.{key}: expected array")
         if len(root[key]) > limit:
@@ -146,143 +187,704 @@ def _validate_packet(packet: Any) -> dict[str, Any]:
     invoice_ids: set[str] = set()
     evidence_seen: set[str] = set()
     for idx, raw in enumerate(root["invoices"]):
-        where=f"packet.invoices[{idx}]"
-        row=_exact_keys(raw,{"invoice_id","account_id","issue_date","due_date","amount_minor","state","evidence_sha256"},where)
-        invoice_id=_id(row["invoice_id"],f"{where}.invoice_id")
-        if invoice_id in invoice_ids: raise InputError(f"{where}.invoice_id: duplicate {invoice_id}")
+        where = f"packet.invoices[{idx}]"
+        row = _exact_keys(
+            raw,
+            {
+                "invoice_id",
+                "account_id",
+                "issue_date",
+                "due_date",
+                "amount_minor",
+                "state",
+                "evidence_sha256",
+            },
+            where,
+        )
+        invoice_id = _id(row["invoice_id"], f"{where}.invoice_id")
+        if invoice_id in invoice_ids:
+            raise InputError(f"{where}.invoice_id: duplicate {invoice_id}")
         invoice_ids.add(invoice_id)
-        issue=_date(row["issue_date"],f"{where}.issue_date"); due=_date(row["due_date"],f"{where}.due_date")
-        if due < issue: raise InputError(f"{where}: due_date precedes issue_date")
-        evidence=_sha(row["evidence_sha256"],f"{where}.evidence_sha256")
-        if evidence in evidence_seen: raise InputError(f"{where}.evidence_sha256: evidence replay")
+        issue = _date(row["issue_date"], f"{where}.issue_date")
+        due = _date(row["due_date"], f"{where}.due_date")
+        if due < issue:
+            raise InputError(f"{where}: due_date precedes issue_date")
+        evidence = _sha(row["evidence_sha256"], f"{where}.evidence_sha256")
+        if evidence in evidence_seen:
+            raise InputError(f"{where}.evidence_sha256: evidence replay")
         evidence_seen.add(evidence)
-        invoices.append({"invoice_id":invoice_id,"account_id":_id(row["account_id"],f"{where}.account_id"),"issue_date":issue.isoformat(),"due_date":due.isoformat(),"amount_minor":_integer(row["amount_minor"],f"{where}.amount_minor",low=1,high=10**15),"state":_enum(row["state"],{"OPEN","VOID"},f"{where}.state"),"evidence_sha256":evidence})
+        invoices.append(
+            {
+                "invoice_id": invoice_id,
+                "account_id": _id(row["account_id"], f"{where}.account_id"),
+                "issue_date": issue.isoformat(),
+                "due_date": due.isoformat(),
+                "amount_minor": _integer(
+                    row["amount_minor"],
+                    f"{where}.amount_minor",
+                    low=1,
+                    high=10**15,
+                ),
+                "state": _enum(
+                    row["state"], {"OPEN", "VOID"}, f"{where}.state"
+                ),
+                "evidence_sha256": evidence,
+            }
+        )
 
     def event_evidence(raw_sha: Any, where: str) -> str:
-        digest=_sha(raw_sha,where)
-        if digest in evidence_seen: raise InputError(f"{where}: evidence replay across rows")
-        evidence_seen.add(digest); return digest
+        digest = _sha(raw_sha, where)
+        if digest in evidence_seen:
+            raise InputError(f"{where}: evidence replay across rows")
+        evidence_seen.add(digest)
+        return digest
 
-    payments=[]; payment_ids=set()
+    payments: list[dict[str, Any]] = []
+    payment_ids: set[str] = set()
     for idx, raw in enumerate(root["payments"]):
-        where=f"packet.payments[{idx}]"
-        row=_exact_keys(raw,{"payment_id","account_id","invoice_id","amount_minor","currency","observed_at","evidence_sha256"},where)
-        pid=_id(row["payment_id"],f"{where}.payment_id")
-        if pid in payment_ids: raise InputError(f"{where}.payment_id: duplicate {pid}")
-        payment_ids.add(pid); inv=None if row["invoice_id"] is None else _id(row["invoice_id"],f"{where}.invoice_id")
-        payments.append({"payment_id":pid,"account_id":_id(row["account_id"],f"{where}.account_id"),"invoice_id":inv,"amount_minor":_integer(row["amount_minor"],f"{where}.amount_minor",low=1,high=10**15),"currency":_currency(row["currency"],f"{where}.currency"),"observed_at":_utc(row["observed_at"],f"{where}.observed_at").strftime("%Y-%m-%dT%H:%M:%SZ"),"evidence_sha256":event_evidence(row["evidence_sha256"],f"{where}.evidence_sha256")})
+        where = f"packet.payments[{idx}]"
+        row = _exact_keys(
+            raw,
+            {
+                "payment_id",
+                "account_id",
+                "invoice_id",
+                "amount_minor",
+                "currency",
+                "observed_at",
+                "evidence_sha256",
+            },
+            where,
+        )
+        payment_id = _id(row["payment_id"], f"{where}.payment_id")
+        if payment_id in payment_ids:
+            raise InputError(f"{where}.payment_id: duplicate {payment_id}")
+        payment_ids.add(payment_id)
+        invoice_id = (
+            None
+            if row["invoice_id"] is None
+            else _id(row["invoice_id"], f"{where}.invoice_id")
+        )
+        payments.append(
+            {
+                "payment_id": payment_id,
+                "account_id": _id(row["account_id"], f"{where}.account_id"),
+                "invoice_id": invoice_id,
+                "amount_minor": _integer(
+                    row["amount_minor"],
+                    f"{where}.amount_minor",
+                    low=1,
+                    high=10**15,
+                ),
+                "currency": _currency(row["currency"], f"{where}.currency"),
+                "observed_at": _utc(
+                    row["observed_at"], f"{where}.observed_at"
+                ).strftime("%Y-%m-%dT%H:%M:%SZ"),
+                "evidence_sha256": event_evidence(
+                    row["evidence_sha256"], f"{where}.evidence_sha256"
+                ),
+            }
+        )
 
-    credits=[]; credit_ids=set()
+    credits: list[dict[str, Any]] = []
+    credit_ids: set[str] = set()
     for idx, raw in enumerate(root["credits"]):
-        where=f"packet.credits[{idx}]"
-        row=_exact_keys(raw,{"credit_id","account_id","invoice_id","amount_minor","currency","observed_at","evidence_sha256"},where)
-        cid=_id(row["credit_id"],f"{where}.credit_id")
-        if cid in credit_ids: raise InputError(f"{where}.credit_id: duplicate {cid}")
-        credit_ids.add(cid)
-        credits.append({"credit_id":cid,"account_id":_id(row["account_id"],f"{where}.account_id"),"invoice_id":_id(row["invoice_id"],f"{where}.invoice_id"),"amount_minor":_integer(row["amount_minor"],f"{where}.amount_minor",low=1,high=10**15),"currency":_currency(row["currency"],f"{where}.currency"),"observed_at":_utc(row["observed_at"],f"{where}.observed_at").strftime("%Y-%m-%dT%H:%M:%SZ"),"evidence_sha256":event_evidence(row["evidence_sha256"],f"{where}.evidence_sha256")})
+        where = f"packet.credits[{idx}]"
+        row = _exact_keys(
+            raw,
+            {
+                "credit_id",
+                "account_id",
+                "invoice_id",
+                "amount_minor",
+                "currency",
+                "observed_at",
+                "evidence_sha256",
+            },
+            where,
+        )
+        credit_id = _id(row["credit_id"], f"{where}.credit_id")
+        if credit_id in credit_ids:
+            raise InputError(f"{where}.credit_id: duplicate {credit_id}")
+        credit_ids.add(credit_id)
+        credits.append(
+            {
+                "credit_id": credit_id,
+                "account_id": _id(row["account_id"], f"{where}.account_id"),
+                "invoice_id": _id(row["invoice_id"], f"{where}.invoice_id"),
+                "amount_minor": _integer(
+                    row["amount_minor"],
+                    f"{where}.amount_minor",
+                    low=1,
+                    high=10**15,
+                ),
+                "currency": _currency(row["currency"], f"{where}.currency"),
+                "observed_at": _utc(
+                    row["observed_at"], f"{where}.observed_at"
+                ).strftime("%Y-%m-%dT%H:%M:%SZ"),
+                "evidence_sha256": event_evidence(
+                    row["evidence_sha256"], f"{where}.evidence_sha256"
+                ),
+            }
+        )
 
-    disputes=[]; event_ids=set()
+    disputes: list[dict[str, Any]] = []
+    dispute_event_ids: set[str] = set()
     for idx, raw in enumerate(root["disputes"]):
-        where=f"packet.disputes[{idx}]"
-        row=_exact_keys(raw,{"event_id","dispute_id","account_id","invoice_id","state","observed_at","evidence_sha256"},where)
-        eid=_id(row["event_id"],f"{where}.event_id")
-        if eid in event_ids: raise InputError(f"{where}.event_id: duplicate {eid}")
-        event_ids.add(eid)
-        disputes.append({"event_id":eid,"dispute_id":_id(row["dispute_id"],f"{where}.dispute_id"),"account_id":_id(row["account_id"],f"{where}.account_id"),"invoice_id":_id(row["invoice_id"],f"{where}.invoice_id"),"state":_enum(row["state"],{"OPEN","RESOLVED"},f"{where}.state"),"observed_at":_utc(row["observed_at"],f"{where}.observed_at").strftime("%Y-%m-%dT%H:%M:%SZ"),"evidence_sha256":event_evidence(row["evidence_sha256"],f"{where}.evidence_sha256")})
+        where = f"packet.disputes[{idx}]"
+        row = _exact_keys(
+            raw,
+            {
+                "event_id",
+                "dispute_id",
+                "account_id",
+                "invoice_id",
+                "state",
+                "observed_at",
+                "evidence_sha256",
+            },
+            where,
+        )
+        event_id = _id(row["event_id"], f"{where}.event_id")
+        if event_id in dispute_event_ids:
+            raise InputError(f"{where}.event_id: duplicate {event_id}")
+        dispute_event_ids.add(event_id)
+        disputes.append(
+            {
+                "event_id": event_id,
+                "dispute_id": _id(row["dispute_id"], f"{where}.dispute_id"),
+                "account_id": _id(row["account_id"], f"{where}.account_id"),
+                "invoice_id": _id(row["invoice_id"], f"{where}.invoice_id"),
+                "state": _enum(
+                    row["state"], {"OPEN", "RESOLVED"}, f"{where}.state"
+                ),
+                "observed_at": _utc(
+                    row["observed_at"], f"{where}.observed_at"
+                ).strftime("%Y-%m-%dT%H:%M:%SZ"),
+                "evidence_sha256": event_evidence(
+                    row["evidence_sha256"], f"{where}.evidence_sha256"
+                ),
+            }
+        )
 
-    return {"schema":SCHEMA,"analysis_date":analysis.isoformat(),"currency":currency,"grace_days":grace,"invoices":sorted(invoices,key=lambda x:x["invoice_id"]),"payments":sorted(payments,key=lambda x:x["payment_id"]),"credits":sorted(credits,key=lambda x:x["credit_id"]),"disputes":sorted(disputes,key=lambda x:x["event_id"])}
+    return {
+        "schema": SCHEMA,
+        "analysis_date": analysis.isoformat(),
+        "currency": currency,
+        "grace_days": grace,
+        "invoices": sorted(invoices, key=lambda row: row["invoice_id"]),
+        "payments": sorted(payments, key=lambda row: row["payment_id"]),
+        "credits": sorted(credits, key=lambda row: row["credit_id"]),
+        "disputes": sorted(disputes, key=lambda row: row["event_id"]),
+    }
 
 
-def _conflict(conflicts: list[dict[str, Any]], code: str, row_kind: str, row_id: str, invoice_id: str | None) -> None:
-    conflicts.append({"code":code,"row_kind":row_kind,"row_id":row_id,"invoice_id":invoice_id})
+def _conflict(
+    conflicts: list[dict[str, Any]],
+    code: str,
+    row_kind: str,
+    row_id: str,
+    invoice_id: str | None,
+) -> None:
+    conflicts.append(
+        {
+            "code": code,
+            "row_kind": row_kind,
+            "row_id": row_id,
+            "invoice_id": invoice_id,
+        }
+    )
 
 
 def compile_report(packet: Any) -> dict[str, Any]:
-    normalized=_validate_packet(packet); analysis=date.fromisoformat(normalized["analysis_date"]); currency=normalized["currency"]; grace=normalized["grace_days"]
-    invoices={row["invoice_id"]:row for row in normalized["invoices"]}; applied_payments={k:0 for k in invoices}; applied_credits={k:0 for k in invoices}
-    conflict_invoice_ids:set[str]=set(); conflicts=[]; valid_unapplied=[]
-    def event_date(row): return datetime.strptime(row["observed_at"],"%Y-%m-%dT%H:%M:%SZ").date()
+    normalized = _validate_packet(packet)
+    analysis = date.fromisoformat(normalized["analysis_date"])
+    currency = normalized["currency"]
+    grace = normalized["grace_days"]
+    invoices = {row["invoice_id"]: row for row in normalized["invoices"]}
+    applied_payments = {invoice_id: 0 for invoice_id in invoices}
+    applied_credits = {invoice_id: 0 for invoice_id in invoices}
+    conflict_invoice_ids: set[str] = set()
+    future_invoice_ids: set[str] = set()
+    conflicts: list[dict[str, Any]] = []
+    valid_unapplied: list[dict[str, Any]] = []
+
+    def event_date(row: dict[str, Any]) -> date:
+        return datetime.strptime(row["observed_at"], "%Y-%m-%dT%H:%M:%SZ").date()
+
+    for invoice_id, invoice in invoices.items():
+        if date.fromisoformat(invoice["issue_date"]) > analysis:
+            future_invoice_ids.add(invoice_id)
+            conflict_invoice_ids.add(invoice_id)
+            _conflict(
+                conflicts,
+                "INVOICE_AFTER_ANALYSIS_DATE",
+                "INVOICE",
+                invoice_id,
+                invoice_id,
+            )
 
     for row in normalized["payments"]:
-        target=row["invoice_id"]
+        target = row["invoice_id"]
+        observed = event_date(row)
         if row["currency"] != currency:
-            _conflict(conflicts,"PAYMENT_CURRENCY_MISMATCH","PAYMENT",row["payment_id"],target); conflict_invoice_ids.update([target] if target in invoices else []); continue
-        if event_date(row) > analysis:
-            _conflict(conflicts,"PAYMENT_AFTER_ANALYSIS_DATE","PAYMENT",row["payment_id"],target); conflict_invoice_ids.update([target] if target in invoices else []); continue
-        if target is None: valid_unapplied.append(row); continue
-        inv=invoices.get(target)
-        if inv is None: _conflict(conflicts,"PAYMENT_UNKNOWN_INVOICE","PAYMENT",row["payment_id"],target); continue
-        if row["account_id"] != inv["account_id"]: _conflict(conflicts,"PAYMENT_ACCOUNT_MISMATCH","PAYMENT",row["payment_id"],target); conflict_invoice_ids.add(target); continue
-        if inv["state"] == "VOID": _conflict(conflicts,"PAYMENT_TO_VOID_INVOICE","PAYMENT",row["payment_id"],target); conflict_invoice_ids.add(target); continue
-        applied_payments[target]+=row["amount_minor"]
+            _conflict(
+                conflicts,
+                "PAYMENT_CURRENCY_MISMATCH",
+                "PAYMENT",
+                row["payment_id"],
+                target,
+            )
+            if target in invoices:
+                conflict_invoice_ids.add(target)
+            continue
+        if observed > analysis:
+            _conflict(
+                conflicts,
+                "PAYMENT_AFTER_ANALYSIS_DATE",
+                "PAYMENT",
+                row["payment_id"],
+                target,
+            )
+            if target in invoices:
+                conflict_invoice_ids.add(target)
+            continue
+        if target is None:
+            valid_unapplied.append(row)
+            continue
+        invoice = invoices.get(target)
+        if invoice is None:
+            _conflict(
+                conflicts,
+                "PAYMENT_UNKNOWN_INVOICE",
+                "PAYMENT",
+                row["payment_id"],
+                target,
+            )
+            continue
+        if observed < date.fromisoformat(invoice["issue_date"]):
+            _conflict(
+                conflicts,
+                "PAYMENT_BEFORE_INVOICE",
+                "PAYMENT",
+                row["payment_id"],
+                target,
+            )
+            conflict_invoice_ids.add(target)
+            continue
+        if row["account_id"] != invoice["account_id"]:
+            _conflict(
+                conflicts,
+                "PAYMENT_ACCOUNT_MISMATCH",
+                "PAYMENT",
+                row["payment_id"],
+                target,
+            )
+            conflict_invoice_ids.add(target)
+            continue
+        if invoice["state"] == "VOID":
+            _conflict(
+                conflicts,
+                "PAYMENT_TO_VOID_INVOICE",
+                "PAYMENT",
+                row["payment_id"],
+                target,
+            )
+            conflict_invoice_ids.add(target)
+            continue
+        applied_payments[target] += row["amount_minor"]
 
     for row in normalized["credits"]:
-        target=row["invoice_id"]
-        if row["currency"] != currency: _conflict(conflicts,"CREDIT_CURRENCY_MISMATCH","CREDIT",row["credit_id"],target); conflict_invoice_ids.update([target] if target in invoices else []); continue
-        if event_date(row) > analysis: _conflict(conflicts,"CREDIT_AFTER_ANALYSIS_DATE","CREDIT",row["credit_id"],target); conflict_invoice_ids.update([target] if target in invoices else []); continue
-        inv=invoices.get(target)
-        if inv is None: _conflict(conflicts,"CREDIT_UNKNOWN_INVOICE","CREDIT",row["credit_id"],target); continue
-        if row["account_id"] != inv["account_id"]: _conflict(conflicts,"CREDIT_ACCOUNT_MISMATCH","CREDIT",row["credit_id"],target); conflict_invoice_ids.add(target); continue
-        if inv["state"] == "VOID": _conflict(conflicts,"CREDIT_TO_VOID_INVOICE","CREDIT",row["credit_id"],target); conflict_invoice_ids.add(target); continue
-        applied_credits[target]+=row["amount_minor"]
+        target = row["invoice_id"]
+        observed = event_date(row)
+        if row["currency"] != currency:
+            _conflict(
+                conflicts,
+                "CREDIT_CURRENCY_MISMATCH",
+                "CREDIT",
+                row["credit_id"],
+                target,
+            )
+            if target in invoices:
+                conflict_invoice_ids.add(target)
+            continue
+        if observed > analysis:
+            _conflict(
+                conflicts,
+                "CREDIT_AFTER_ANALYSIS_DATE",
+                "CREDIT",
+                row["credit_id"],
+                target,
+            )
+            if target in invoices:
+                conflict_invoice_ids.add(target)
+            continue
+        invoice = invoices.get(target)
+        if invoice is None:
+            _conflict(
+                conflicts,
+                "CREDIT_UNKNOWN_INVOICE",
+                "CREDIT",
+                row["credit_id"],
+                target,
+            )
+            continue
+        if observed < date.fromisoformat(invoice["issue_date"]):
+            _conflict(
+                conflicts,
+                "CREDIT_BEFORE_INVOICE",
+                "CREDIT",
+                row["credit_id"],
+                target,
+            )
+            conflict_invoice_ids.add(target)
+            continue
+        if row["account_id"] != invoice["account_id"]:
+            _conflict(
+                conflicts,
+                "CREDIT_ACCOUNT_MISMATCH",
+                "CREDIT",
+                row["credit_id"],
+                target,
+            )
+            conflict_invoice_ids.add(target)
+            continue
+        if invoice["state"] == "VOID":
+            _conflict(
+                conflicts,
+                "CREDIT_TO_VOID_INVOICE",
+                "CREDIT",
+                row["credit_id"],
+                target,
+            )
+            conflict_invoice_ids.add(target)
+            continue
+        applied_credits[target] += row["amount_minor"]
 
-    case_latest={}; case_same_time_conflict=set()
+    case_latest: dict[tuple[str, str], dict[str, Any]] = {}
+    case_same_time_conflict: set[tuple[str, str]] = set()
     for row in normalized["disputes"]:
-        target=row["invoice_id"]
-        if event_date(row)>analysis: _conflict(conflicts,"DISPUTE_AFTER_ANALYSIS_DATE","DISPUTE",row["event_id"],target); conflict_invoice_ids.update([target] if target in invoices else []); continue
-        inv=invoices.get(target)
-        if inv is None: _conflict(conflicts,"DISPUTE_UNKNOWN_INVOICE","DISPUTE",row["event_id"],target); continue
-        if row["account_id"] != inv["account_id"]: _conflict(conflicts,"DISPUTE_ACCOUNT_MISMATCH","DISPUTE",row["event_id"],target); conflict_invoice_ids.add(target); continue
-        key=(target,row["dispute_id"]); prior=case_latest.get(key)
-        if prior is None or row["observed_at"]>prior["observed_at"]: case_latest[key]=row
-        elif row["observed_at"]==prior["observed_at"] and row["state"]!=prior["state"]:
-            case_same_time_conflict.add(key); conflict_invoice_ids.add(target); _conflict(conflicts,"DISPUTE_SAME_TIME_CONFLICT","DISPUTE",row["event_id"],target)
-    open_disputes={iid for (iid,did),row in case_latest.items() if (iid,did) not in case_same_time_conflict and row["state"]=="OPEN"}
+        target = row["invoice_id"]
+        observed = event_date(row)
+        if observed > analysis:
+            _conflict(
+                conflicts,
+                "DISPUTE_AFTER_ANALYSIS_DATE",
+                "DISPUTE",
+                row["event_id"],
+                target,
+            )
+            if target in invoices:
+                conflict_invoice_ids.add(target)
+            continue
+        invoice = invoices.get(target)
+        if invoice is None:
+            _conflict(
+                conflicts,
+                "DISPUTE_UNKNOWN_INVOICE",
+                "DISPUTE",
+                row["event_id"],
+                target,
+            )
+            continue
+        if observed < date.fromisoformat(invoice["issue_date"]):
+            _conflict(
+                conflicts,
+                "DISPUTE_BEFORE_INVOICE",
+                "DISPUTE",
+                row["event_id"],
+                target,
+            )
+            conflict_invoice_ids.add(target)
+            continue
+        if row["account_id"] != invoice["account_id"]:
+            _conflict(
+                conflicts,
+                "DISPUTE_ACCOUNT_MISMATCH",
+                "DISPUTE",
+                row["event_id"],
+                target,
+            )
+            conflict_invoice_ids.add(target)
+            continue
+        key = (target, row["dispute_id"])
+        prior = case_latest.get(key)
+        if prior is None or row["observed_at"] > prior["observed_at"]:
+            case_latest[key] = row
+        elif (
+            row["observed_at"] == prior["observed_at"]
+            and row["state"] != prior["state"]
+        ):
+            case_same_time_conflict.add(key)
+            conflict_invoice_ids.add(target)
+            _conflict(
+                conflicts,
+                "DISPUTE_SAME_TIME_CONFLICT",
+                "DISPUTE",
+                row["event_id"],
+                target,
+            )
 
-    invoice_rows=[]
-    totals={"billed_minor":0,"applied_payment_minor":0,"applied_credit_minor":0,"known_outstanding_minor":0,"recovery_candidate_minor":0,"disputed_outstanding_minor":0,"unapplied_payment_minor":sum(x["amount_minor"] for x in valid_unapplied),"conflicted_face_value_minor":0}
+    open_disputes = {
+        invoice_id
+        for (invoice_id, dispute_id), row in case_latest.items()
+        if (invoice_id, dispute_id) not in case_same_time_conflict
+        and row["state"] == "OPEN"
+    }
+
+    invoice_rows: list[dict[str, Any]] = []
+    totals = {
+        "billed_minor": 0,
+        "applied_payment_minor": 0,
+        "applied_credit_minor": 0,
+        "known_outstanding_minor": 0,
+        "recovery_candidate_minor": 0,
+        "disputed_outstanding_minor": 0,
+        "unapplied_payment_minor": sum(
+            row["amount_minor"] for row in valid_unapplied
+        ),
+        "conflicted_face_value_minor": 0,
+    }
+
     for invoice_id in sorted(invoices):
-        inv=invoices[invoice_id]; amount=inv["amount_minor"]; paid=applied_payments[invoice_id]; credited=applied_credits[invoice_id]
-        if inv["state"]=="OPEN": totals["billed_minor"]+=amount; totals["applied_payment_minor"]+=paid; totals["applied_credit_minor"]+=credited
-        if inv["state"]=="OPEN" and paid+credited>amount: conflict_invoice_ids.add(invoice_id); _conflict(conflicts,"INVOICE_OVER_APPLIED","INVOICE",invoice_id,invoice_id)
-        balance=max(amount-paid-credited,0) if inv["state"]=="OPEN" else 0; dispute_open=invoice_id in open_disputes
-        if invoice_id in conflict_invoice_ids: status="CONFLICT"; totals["conflicted_face_value_minor"]+=amount
-        elif inv["state"]=="VOID": status="VOID"
-        elif balance==0: status="PAID"
-        elif dispute_open: status="DISPUTED_HOLD"; totals["known_outstanding_minor"]+=balance; totals["disputed_outstanding_minor"]+=balance
-        else:
-            overdue=analysis>(date.fromisoformat(inv["due_date"])+timedelta(days=grace)); touched=paid+credited>0
-            status="PARTIAL_OVERDUE" if overdue and touched else "OVERDUE" if overdue else "PARTIAL" if touched else "OPEN"
-            totals["known_outstanding_minor"]+=balance
-            if status in {"OVERDUE","PARTIAL_OVERDUE"}: totals["recovery_candidate_minor"]+=balance
-        review="RECONCILE_INTEGRITY_CONFLICT" if status=="CONFLICT" else "OWNER_REVIEW_DISPUTE" if status=="DISPUTED_HOLD" else "OWNER_REVIEW_POTENTIAL_LEAKAGE" if status in {"OVERDUE","PARTIAL_OVERDUE"} else "NO_ACTION_FROM_DIAGNOSTIC"
-        invoice_rows.append({"invoice_id":invoice_id,"account_id":inv["account_id"],"status":status,"face_value_minor":amount,"applied_payment_minor":paid,"applied_credit_minor":credited,"balance_minor":balance,"open_dispute":dispute_open,"review":review})
+        invoice = invoices[invoice_id]
+        amount = invoice["amount_minor"]
+        paid = applied_payments[invoice_id]
+        credited = applied_credits[invoice_id]
+        economic_eligible = invoice_id not in future_invoice_ids
 
-    core={"schema":REPORT_SCHEMA,"source_schema":SCHEMA,"source_sha256":sha256_hex(canonical_bytes(normalized)),"analysis_date":normalized["analysis_date"],"currency":currency,"grace_days":grace,"commercial_reference":{"pilot_price_usd_minor":PILOT_PRICE_USD_MINOR,"pilot_max_invoices":PILOT_MAX_INVOICES,"state":"REFERENCE_NOT_ACCEPTED"},"summary":{"invoice_count":len(normalized["invoices"]),"payment_count":len(normalized["payments"]),"credit_count":len(normalized["credits"]),"dispute_event_count":len(normalized["disputes"]),"conflict_count":len(conflicts),**totals},"invoices":invoice_rows,"unapplied_payments":[{"payment_id":x["payment_id"],"account_id":x["account_id"],"amount_minor":x["amount_minor"],"review":"RECONCILE_UNAPPLIED_PAYMENT"} for x in sorted(valid_unapplied,key=lambda x:x["payment_id"])],"integrity_conflicts":sorted(conflicts,key=lambda x:(x["code"],x["row_kind"],x["row_id"])),"authority":{"customer_contact_authorized":False,"collections_authorized":False,"accounting_write_authorized":False,"payment_provider_write_authorized":False,"legal_debt_determined":False,"revenue_recognized":False,"cash_received_inferred":False},"truth_boundary":"Evidence-only reconciliation. Balances and recovery candidates are diagnostic findings, not legal debt, collection authority, recognized revenue, or cash receipt."}
-    return {**core,"receipt_sha256":sha256_hex(canonical_bytes(core))}
+        if invoice["state"] == "OPEN" and economic_eligible:
+            totals["billed_minor"] += amount
+            totals["applied_payment_minor"] += paid
+            totals["applied_credit_minor"] += credited
+        if (
+            invoice["state"] == "OPEN"
+            and economic_eligible
+            and paid + credited > amount
+        ):
+            conflict_invoice_ids.add(invoice_id)
+            _conflict(
+                conflicts,
+                "INVOICE_OVER_APPLIED",
+                "INVOICE",
+                invoice_id,
+                invoice_id,
+            )
+
+        balance = (
+            max(amount - paid - credited, 0)
+            if invoice["state"] == "OPEN" and economic_eligible
+            else 0
+        )
+        dispute_open = invoice_id in open_disputes
+
+        if invoice_id in conflict_invoice_ids:
+            status = "CONFLICT"
+            totals["conflicted_face_value_minor"] += amount
+        elif invoice["state"] == "VOID":
+            status = "VOID"
+        elif balance == 0:
+            status = "PAID"
+        elif dispute_open:
+            status = "DISPUTED_HOLD"
+            totals["known_outstanding_minor"] += balance
+            totals["disputed_outstanding_minor"] += balance
+        else:
+            overdue = analysis > (
+                date.fromisoformat(invoice["due_date"]) + timedelta(days=grace)
+            )
+            touched = paid + credited > 0
+            status = (
+                "PARTIAL_OVERDUE"
+                if overdue and touched
+                else "OVERDUE"
+                if overdue
+                else "PARTIAL"
+                if touched
+                else "OPEN"
+            )
+            totals["known_outstanding_minor"] += balance
+            if status in {"OVERDUE", "PARTIAL_OVERDUE"}:
+                totals["recovery_candidate_minor"] += balance
+
+        review = (
+            "RECONCILE_INTEGRITY_CONFLICT"
+            if status == "CONFLICT"
+            else "OWNER_REVIEW_DISPUTE"
+            if status == "DISPUTED_HOLD"
+            else "OWNER_REVIEW_POTENTIAL_LEAKAGE"
+            if status in {"OVERDUE", "PARTIAL_OVERDUE"}
+            else "NO_ACTION_FROM_DIAGNOSTIC"
+        )
+        invoice_rows.append(
+            {
+                "invoice_id": invoice_id,
+                "account_id": invoice["account_id"],
+                "status": status,
+                "face_value_minor": amount,
+                "applied_payment_minor": paid,
+                "applied_credit_minor": credited,
+                "balance_minor": balance,
+                "open_dispute": dispute_open,
+                "review": review,
+            }
+        )
+
+    core = {
+        "schema": REPORT_SCHEMA,
+        "source_schema": SCHEMA,
+        "source_sha256": sha256_hex(canonical_bytes(normalized)),
+        "analysis_date": normalized["analysis_date"],
+        "currency": currency,
+        "grace_days": grace,
+        "commercial_reference": {
+            "pilot_price_usd_minor": PILOT_PRICE_USD_MINOR,
+            "pilot_max_invoices": PILOT_MAX_INVOICES,
+            "state": "REFERENCE_NOT_ACCEPTED",
+        },
+        "summary": {
+            "invoice_count": len(normalized["invoices"]),
+            "payment_count": len(normalized["payments"]),
+            "credit_count": len(normalized["credits"]),
+            "dispute_event_count": len(normalized["disputes"]),
+            "conflict_count": len(conflicts),
+            **totals,
+        },
+        "invoices": invoice_rows,
+        "unapplied_payments": [
+            {
+                "payment_id": row["payment_id"],
+                "account_id": row["account_id"],
+                "amount_minor": row["amount_minor"],
+                "review": "RECONCILE_UNAPPLIED_PAYMENT",
+            }
+            for row in sorted(valid_unapplied, key=lambda row: row["payment_id"])
+        ],
+        "integrity_conflicts": sorted(
+            conflicts,
+            key=lambda row: (row["code"], row["row_kind"], row["row_id"]),
+        ),
+        "authority": {
+            "customer_contact_authorized": False,
+            "collections_authorized": False,
+            "accounting_write_authorized": False,
+            "payment_provider_write_authorized": False,
+            "legal_debt_determined": False,
+            "revenue_recognized": False,
+            "cash_received_inferred": False,
+        },
+        "truth_boundary": (
+            "Evidence-only reconciliation. Balances and recovery candidates are "
+            "diagnostic findings, not legal debt, collection authority, recognized "
+            "revenue, or cash receipt."
+        ),
+    }
+    return {**core, "receipt_sha256": sha256_hex(canonical_bytes(core))}
 
 
 def verify_report(packet: Any, report: Any) -> bool:
-    if type(report) is not dict: return False
-    try: expected=compile_report(packet)
-    except InputError: return False
-    return canonical_bytes(expected)==canonical_bytes(report)
+    if type(report) is not dict:
+        return False
+    try:
+        expected = compile_report(packet)
+    except InputError:
+        return False
+    return canonical_bytes(expected) == canonical_bytes(report)
 
 
 def _money(minor: int, currency: str) -> str:
-    return f"{currency} {minor//100:,}.{minor%100:02d}"
+    if currency != SUPPORTED_CURRENCY:
+        raise InputError(
+            f"report currency {currency!r} is unsupported by the v1 Markdown renderer"
+        )
+    return f"USD {minor // 100:,}.{minor % 100:02d}"
 
 
 def render_markdown(report: dict[str, Any]) -> str:
-    if report.get("schema") != REPORT_SCHEMA: raise InputError("report schema mismatch")
-    currency=report["currency"]; s=report["summary"]
-    lines=["# Accounts Receivable Leakage Desk","",f"Analysis date: `{report['analysis_date']}`  ",f"Receipt: `{report['receipt_sha256']}`  ",f"Source: `{report['source_sha256']}`","","## Evidence summary","",f"- Invoices: **{s['invoice_count']}**",f"- Known outstanding: **{_money(s['known_outstanding_minor'],currency)}**",f"- Potential leakage queue: **{_money(s['recovery_candidate_minor'],currency)}**",f"- Disputed outstanding (HOLD): **{_money(s['disputed_outstanding_minor'],currency)}**",f"- Unapplied payment evidence: **{_money(s['unapplied_payment_minor'],currency)}**",f"- Integrity conflicts: **{s['conflict_count']}**","","## Invoice review queue","","| Invoice | Account | State | Balance | Review |","|---|---|---:|---:|---|"]
-    rows=[x for x in report["invoices"] if x["review"]!="NO_ACTION_FROM_DIAGNOSTIC"]
-    lines.extend(f"| `{x['invoice_id']}` | `{x['account_id']}` | {x['status']} | {_money(x['balance_minor'],currency)} | {x['review']} |" for x in rows)
-    if not rows: lines.append("| — | — | — | — | No diagnostic review rows |")
-    lines.extend(["","## Unapplied payments",""])
+    if report.get("schema") != REPORT_SCHEMA:
+        raise InputError("report schema mismatch")
+    currency = report["currency"]
+    if currency != SUPPORTED_CURRENCY:
+        raise InputError(
+            f"report currency {currency!r} is unsupported by the v1 Markdown renderer"
+        )
+    summary = report["summary"]
+    lines = [
+        "# Accounts Receivable Leakage Desk",
+        "",
+        f"Analysis date: `{report['analysis_date']}`  ",
+        f"Receipt: `{report['receipt_sha256']}`  ",
+        f"Source: `{report['source_sha256']}`",
+        "",
+        "## Evidence summary",
+        "",
+        f"- Invoices: **{summary['invoice_count']}**",
+        f"- Known outstanding: **{_money(summary['known_outstanding_minor'], currency)}**",
+        f"- Potential leakage queue: **{_money(summary['recovery_candidate_minor'], currency)}**",
+        f"- Disputed outstanding (HOLD): **{_money(summary['disputed_outstanding_minor'], currency)}**",
+        f"- Unapplied payment evidence: **{_money(summary['unapplied_payment_minor'], currency)}**",
+        f"- Integrity conflicts: **{summary['conflict_count']}**",
+        "",
+        "## Invoice review queue",
+        "",
+        "| Invoice | Account | State | Balance | Review |",
+        "|---|---|---:|---:|---|",
+    ]
+    review_rows = [
+        row
+        for row in report["invoices"]
+        if row["review"] != "NO_ACTION_FROM_DIAGNOSTIC"
+    ]
+    lines.extend(
+        f"| `{row['invoice_id']}` | `{row['account_id']}` | {row['status']} | "
+        f"{_money(row['balance_minor'], currency)} | {row['review']} |"
+        for row in review_rows
+    )
+    if not review_rows:
+        lines.append("| — | — | — | — | No diagnostic review rows |")
+
+    lines.extend(["", "## Integrity conflicts", ""])
+    conflicts = report["integrity_conflicts"]
+    if conflicts:
+        lines.extend(
+            [
+                "| Code | Row kind | Row ID | Invoice |",
+                "|---|---|---|---|",
+            ]
+        )
+        for conflict in conflicts:
+            invoice_id = conflict["invoice_id"]
+            invoice_cell = f"`{invoice_id}`" if invoice_id is not None else "—"
+            lines.append(
+                f"| `{conflict['code']}` | {conflict['row_kind']} | "
+                f"`{conflict['row_id']}` | {invoice_cell} |"
+            )
+    else:
+        lines.append("- None in this packet.")
+
+    lines.extend(["", "## Unapplied payments", ""])
     if report["unapplied_payments"]:
-        lines.extend(f"- `{x['payment_id']}` / `{x['account_id']}`: {_money(x['amount_minor'],currency)} — reconcile; do not guess an invoice." for x in report["unapplied_payments"])
-    else: lines.append("- None in this packet.")
-    lines.extend(["","## Truth boundary","",report["truth_boundary"],"","Reference service scope: $2,500 fixed diagnostic for one sanitized export generation up to 5,000 invoices. Integration, writeback and collections are excluded unless separately scoped and accepted.",""])
+        lines.extend(
+            f"- `{row['payment_id']}` / `{row['account_id']}`: "
+            f"{_money(row['amount_minor'], currency)} — reconcile; do not guess an invoice."
+            for row in report["unapplied_payments"]
+        )
+    else:
+        lines.append("- None in this packet.")
+
+    lines.extend(
+        [
+            "",
+            "## Truth boundary",
+            "",
+            report["truth_boundary"],
+            "",
+            (
+                "Reference service scope: $2,500 fixed diagnostic for one sanitized "
+                "USD export generation up to 5,000 invoices. Integration, writeback "
+                "and collections are excluded unless separately scoped and accepted."
+            ),
+            "",
+        ]
+    )
     return "\n".join(lines)
