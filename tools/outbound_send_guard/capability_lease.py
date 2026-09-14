@@ -416,6 +416,23 @@ def _write_capability_file(path: str, capability: str) -> None:
     else:
         os.close(fd)
 
+    # Persist the newly created directory entry before any provider mutation.
+    # File fsync alone does not make creation crash-durable on POSIX filesystems.
+    if hasattr(os, "O_DIRECTORY"):
+        parent = os.path.dirname(os.path.abspath(path)) or "."
+        try:
+            dir_fd = os.open(parent, os.O_RDONLY | os.O_DIRECTORY)
+            try:
+                os.fsync(dir_fd)
+            finally:
+                os.close(dir_fd)
+        except OSError as exc:
+            try:
+                os.unlink(path)
+            except OSError:
+                pass
+            raise LeaseError("capability directory sync failed") from exc
+
 
 def main(argv: Sequence[str] | None = None) -> int:
     parser = argparse.ArgumentParser(
