@@ -20,11 +20,17 @@ outbound-connector-lease/v1/<sha256(canonical seam JSON)>
 ```
 
 `key.py` only compiles that branch name. `authority.py` validates the exact
-closed-schema identity and always keeps the ceiling explicit:
+closed-schema identity. It cannot prove that the backing Git ref is immutable, so
+its current receipt and CLI remain fail-closed:
 
 ```text
+identity_state=CANONICAL_OPPORTUNITY_SEAM_IDENTITY_VALID
+state=HOLD_REF_ROLLBACK_PROTECTION_UNVERIFIED
 organization_scope_authority_required=true
 organization_wide_mutex_required=true
+ref_rollback_protection_required=true
+ref_rollback_protection_verified=false
+branch_create_authority=false
 production_mutex_complete=false
 provider_reread_required=true
 external_send_authorized=false
@@ -112,9 +118,14 @@ this order and never reverse them to race another worker:
    control is unavailable, ambiguous, unmerged, or SOURCE-RED, `HOLD`. Do not use
    this connector seam or `revenue/outbound_mutex` as a substitute.
 3. **Canonical opportunity/reply seam.** Compile the exact closed connector
-   identity, optionally validate it with `authority.py`, then atomically create
-   its exact GitHub branch from current `main` through the connected provider.
-   Exact create success establishes only this opportunity/reply prerequisite.
+   identity and validate it with `authority.py`. Independently read current host
+   rules for the exact candidate ref. The applicable rule generation must be
+   active, forbid deletion and update/non-fast-forward mutation, and expose no
+   fleet-worker or GitHub-App bypass. Missing, disabled, evaluate-only,
+   ambiguous, or bypassable protection means
+   `HOLD_REF_ROLLBACK_PROTECTION_UNVERIFIED`; do not create or interpret the ref
+   as authority. Only after that independent gate may a connector atomically
+   create the exact branch from current `main`.
 4. **Provider readback and ordinary gates.** Re-read provider truth immediately
    before mutation. A historical send may predate the branch; if so, HOLD despite
    owning the seam. Apply every independent owner/content/legal/route/cooldown/
@@ -128,23 +139,45 @@ If a later prerequisite fails after an organization-wide lease was acquired,
 follow that authority's own release/expiry contract. Never improvise an unlock,
 mint a new organization spelling, or reverse lock order.
 
+## Ref immutability requirement and cutover
+
+A successful GitHub branch create is not a durable one-touch witness when an
+actor can later delete or update that ref. Create → delete → recreate can produce
+two successful creates for one semantic seam. Branch absence therefore cannot
+distinguish “never acquired” from “acquired and rolled back.”
+
+The repository host, not candidate JSON, must prove rollback resistance. Before
+branch-create success can carry authority, read the active rules applicable to
+the exact branch and retain that provider generation with the acquisition
+receipt. The package itself cannot self-attest those rules; it deliberately emits
+`ref_rollback_protection_verified=false` and `branch_create_authority=false`.
+
+Pre-protection v1 history is ambiguous. Activating rules today does not prove an
+absent v1 branch was never acquired and deleted yesterday. A production cutover
+must use a protected new prefix/generation (for example reviewed v2 rules) or an
+independently monotonic retained witness, and must conservatively HOLD old absent
+v1 seams. Workers may not mint a v2 spelling on their own to evade an existing
+seam.
+
+The checked-in `ref_immutability/ruleset-candidate.json` is configuration input
+for administrator review only. Its presence in source is not evidence that the
+ruleset is installed, active, applicable, bypass-free, or retained by GitHub.
+
 ## Atomic connector-branch result
 
-Interpret the exact GitHub create result strictly:
+Interpret the exact GitHub create result strictly **after** independent ref
+rollback protection is verified:
 
-- exact create success: this worker acquired the opportunity/reply seam
-  prerequisite;
+- exact create success with verified protection: this worker acquired only the
+  opportunity/reply seam prerequisite;
 - `422 Reference already exists`: another worker/history owns it -> HOLD;
 - timeout, permission error, transport error, or any indeterminate result -> HOLD.
 
-Do not convert an ambiguous create into success by reading the branch afterward:
-another worker may have created the same branch during the ambiguity window.
-Do not retry under a new buyer-domain spelling, source authority/ID, contact,
-price, provider alias, route, or draft.
-
-Branches are permanent one-touch opportunity state. Recovery from an abandoned
-seam requires an explicit owner/fleet override tied to the original identity;
-workers must not mint `v2` or a variant identity to evade it.
+Exact create success while `ref_rollback_protection_verified=false` is also HOLD;
+it is not durable branch-create authority. Do not convert an ambiguous create
+into success by reading the branch afterward: another worker may have created the
+same branch during the ambiguity window. Do not retry under a new buyer-domain
+spelling, source authority/ID, contact, price, provider alias, route, or draft.
 
 ## Legacy free-form mutex
 
@@ -188,9 +221,10 @@ python -m revenue.outbound_connector_lease.authority \
   --json '<exact key.py JSON output>'
 ```
 
-A successful admission still reports `production_mutex_complete=false` and
-`external_send_authorized=false`; the atomic GitHub branch create and every
-separate production prerequisite remain outstanding.
+The authority CLI emits the identity receipt but exits with status 2 while ref
+rollback protection is unverified. This is intentional containment, not a syntax
+failure. A future provider-bound verifier must be separately reviewed; caller-
+supplied rules JSON must never upgrade itself to current host authority.
 
 ## Validation
 

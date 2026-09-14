@@ -1,14 +1,18 @@
 from __future__ import annotations
 
+from contextlib import redirect_stderr, redirect_stdout
+import io
 import json
 from pathlib import Path
 import unittest
 
 from revenue.outbound_connector_lease.authority import (
+    IDENTITY_STATE,
     STATE,
     SeamAuthorityError,
     admit_compiled_seam,
     admit_json,
+    main,
 )
 from revenue.outbound_connector_lease.key import LeaseKeyError, compile_key
 from revenue.outbound_mutex.lease import lead_key as legacy_lead_key
@@ -52,7 +56,13 @@ def legacy(opportunity: str = "Acme / $199 diagnostic"):
 class CanonicalSeamAuthorityTests(unittest.TestCase):
     def assert_incomplete_production_receipt(self, receipt):
         self.assertEqual(receipt["state"], STATE)
+        self.assertEqual(receipt["identity_state"], IDENTITY_STATE)
+        self.assertTrue(receipt["canonical_seam_identity_valid"])
         self.assertTrue(receipt["atomic_branch_create_required"])
+        self.assertTrue(receipt["ref_rollback_protection_required"])
+        self.assertFalse(receipt["ref_rollback_protection_verified"])
+        self.assertTrue(receipt["pre_protection_history_ambiguous"])
+        self.assertFalse(receipt["branch_create_authority"])
         self.assertTrue(receipt["organization_scope_authority_required"])
         self.assertTrue(receipt["organization_wide_mutex_required"])
         self.assertFalse(receipt["production_mutex_complete"])
@@ -188,6 +198,17 @@ class CanonicalSeamAuthorityTests(unittest.TestCase):
         with self.assertRaisesRegex(SeamAuthorityError, "plain JSON object"):
             admit_compiled_seam(Sneaky(cold()))
 
+    def test_cli_holds_after_identity_validation_until_ref_protection_is_verified(self):
+        candidate = json.dumps(cold(), sort_keys=True)
+        stdout = io.StringIO()
+        stderr = io.StringIO()
+        with redirect_stdout(stdout), redirect_stderr(stderr):
+            result = main(["--json", candidate])
+        self.assertEqual(result, 2)
+        receipt = json.loads(stdout.getvalue())
+        self.assert_incomplete_production_receipt(receipt)
+        self.assertIn("HOLD: ref rollback protection", stderr.getvalue())
+
     def test_package_readme_preserves_production_composition_order(self):
         text = Path(__file__).with_name("README.md").read_text(encoding="utf-8")
         self.assertIn("not, by itself, an organization-wide production mutex", text)
@@ -200,6 +221,21 @@ class CanonicalSeamAuthorityTests(unittest.TestCase):
         self.assertLess(org_scope, org_mutex)
         self.assertLess(org_mutex, seam)
         self.assertLess(seam, provider)
+
+    def test_all_operator_docs_hold_on_unverified_ref_rollback_protection(self):
+        package = Path(__file__).resolve().parent
+        root = package.parents[1]
+        documents = {
+            "README": (package / "README.md").read_text(encoding="utf-8"),
+            "AUTHORITY": (package / "AUTHORITY.md").read_text(encoding="utf-8"),
+            "SKILL": (root / ".agents" / "skills" / "outbound-send" / "SKILL.md").read_text(encoding="utf-8"),
+        }
+        for label, text in documents.items():
+            with self.subTest(document=label):
+                self.assertIn("ref_rollback_protection_required=true", text)
+                self.assertIn("ref_rollback_protection_verified=false", text)
+                self.assertIn("branch_create_authority=false", text)
+                self.assertIn("HOLD_REF_ROLLBACK_PROTECTION_UNVERIFIED", text)
 
 
 if __name__ == "__main__":
