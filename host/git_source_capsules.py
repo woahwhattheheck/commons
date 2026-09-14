@@ -12,7 +12,6 @@ except ModuleNotFoundError:
     import git_source_capsules_legacy as _legacy
 
 GitSourceError = _legacy.GitSourceError
-collect_git_source = _legacy.collect_git_source
 HEX40 = _legacy.HEX40
 GIT_SOURCE_KEYS = {
     "commit",
@@ -25,6 +24,23 @@ LIVE_DRIFT_KEYS = {
     "observed_current_main_head",
     "source_commit_matches_current_main",
 }
+
+
+def collect_git_source(
+    repository: str | Path,
+    commit: str,
+    paths: Any,
+    *,
+    max_file_bytes: int = 16_384,
+) -> dict[str, Any]:
+    """Collect exact source identity without sealing a historical ref observation."""
+    bundle = _legacy.collect_git_source(
+        repository,
+        commit,
+        paths,
+        max_file_bytes=max_file_bytes,
+    )
+    return {key: copy.deepcopy(bundle[key]) for key in GIT_SOURCE_KEYS}
 
 
 def observe_current_main(repository: str | Path, source_commit: str) -> dict[str, Any]:
