@@ -10,7 +10,7 @@ from typing import Any, Mapping, Optional
 POLICY_SCHEMA = "tjlabs.delivery-capacity-policy/v1"
 DEMAND_SCHEMA = "tjlabs.delivery-capacity-demand/v1"
 RESERVATIONS_SCHEMA = "tjlabs.delivery-capacity-reservations/v1"
-RECEIPT_SCHEMA = "tjlabs.delivery-capacity-allocation/v1"
+RECEIPT_SCHEMA = "tjlabs.delivery-capacity-allocation/v2"
 MAX_INPUT_BYTES = 2_000_000
 MAX_ROWS = 10_000
 _HEX64 = re.compile(r"^[0-9a-f]{64}$")
@@ -248,7 +248,6 @@ def _normalize_reservations(obj: Any) -> dict[str, Any]:
         })
     out.sort(key=lambda r: r["reservation_id"])
     return {"schema": RESERVATIONS_SCHEMA, "policy_id": policy_id, "generation": generation, "snapshot_at": snapshot_at, "reservations": out}
-
 
 
 def read_regular_file(path: str) -> bytes:
