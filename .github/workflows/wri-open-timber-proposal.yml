@@ -1,0 +1,37 @@
+name: WRI Open Timber Proposal Carrier
+
+on:
+  pull_request:
+    paths:
+      - 'revenue/wri_open_timber_portal/**'
+      - '.github/workflows/wri-open-timber-proposal.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'revenue/wri_open_timber_portal/**'
+      - '.github/workflows/wri-open-timber-proposal.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  contract:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.11', '3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Compile
+        run: python -m py_compile revenue/wri_open_timber_portal/*.py
+      - name: Contract tests
+        run: python -m unittest revenue.wri_open_timber_portal.test_engine revenue.wri_open_timber_portal.test_cli -v
+      - name: Optimized contract tests
+        run: python -O -m unittest revenue.wri_open_timber_portal.test_engine revenue.wri_open_timber_portal.test_cli -v
+      - name: Fixture compile and verify
+        run: |
+          python -m revenue.wri_open_timber_portal.cli compile revenue/wri_open_timber_portal/fixtures/public_known.json --format json > /tmp/wri-otp-report.json
+          python -m revenue.wri_open_timber_portal.cli verify revenue/wri_open_timber_portal/fixtures/public_known.json /tmp/wri-otp-report.json
