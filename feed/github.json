@@ -1,9 +1,9 @@
 {
   "counts": {
-    "open_issues": 116,
+    "open_issues": 114,
     "open_pull_requests": 64,
-    "runs_in_progress": 7,
-    "runs_queued": 972
+    "runs_in_progress": 9,
+    "runs_queued": 985
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -69,13 +69,24 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
+      "branch": "zforge/ar-leakage-chronology-14326",
+      "created_at": "2026-09-14T05:01:38Z",
+      "draft": false,
+      "head_sha": "478139b6b4180bf39a318bddf0996a0308afbf9e",
+      "number": 14326,
+      "title": "Fix AR Leakage currency, chronology, and conflict presentation",
+      "updated_at": "2026-09-14T05:01:38Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
       "branch": "zpc-t7m3/current-readiness-authority-guard-20260914",
       "created_at": "2026-09-14T04:44:53Z",
       "draft": false,
       "head_sha": "6842fd25e7877fd67a11fed216f0fac292fb16d4",
       "number": 14322,
       "title": "Guard new revenue gates against caller-minted current readiness",
-      "updated_at": "2026-09-14T04:55:06Z"
+      "updated_at": "2026-09-14T05:00:48Z"
     },
     {
       "author": "woahwhattheheck",
@@ -97,7 +108,7 @@
       "head_sha": "67469492f28f15602e8e7463bf06a34d19a05448",
       "number": 14320,
       "title": "Revenue: add agent false-success survival proof",
-      "updated_at": "2026-09-14T04:58:55Z"
+      "updated_at": "2026-09-14T05:01:30Z"
     },
     {
       "author": "woahwhattheheck",
@@ -119,7 +130,7 @@
       "head_sha": "767953bfe5313334e9011709afaac685b0901a26",
       "number": 14317,
       "title": "fix(forensics): require host-attested outbound evidence",
-      "updated_at": "2026-09-14T04:37:44Z"
+      "updated_at": "2026-09-14T05:00:16Z"
     },
     {
       "author": "woahwhattheheck",
@@ -164,17 +175,6 @@
       "number": 14296,
       "title": "feat(revenue): add public-utility AI governance evidence core",
       "updated_at": "2026-09-14T03:58:59Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zeta/usac-it-26-139-ai-consulting",
-      "created_at": "2026-09-14T03:50:07Z",
-      "draft": false,
-      "head_sha": "ec793b65b128e56d51c7835e05876f4356b9907b",
-      "number": 14281,
-      "title": "revenue: package USAC IT-26-139 AI consulting pursuit",
-      "updated_at": "2026-09-14T04:33:35Z"
     }
   ],
   "open_heads": {
@@ -228,7 +228,6 @@
     "14235": "090815cee9355c36db86a6666023f391dc9ebcec",
     "14246": "b9f1b1779b4e4d9b7c19a9fc4744d28881282cd0",
     "14254": "6fbb133246fa0c20ae127dd3b64b8c0ded470615",
-    "14256": "49d1fc2b3913407b8c6dd951977dae18e4611481",
     "14270": "86c47a9e32a67eece1382899a898d9ccf40e26da",
     "14273": "113a792a7e331d089d3fb89c2ad3e3147fa9eb16",
     "14276": "09cd89669f83dcc2f64716d0131d846a78346bbe",
@@ -241,12 +240,24 @@
     "14318": "008ef427c26f9effbbea6e6df718fbad023b6613",
     "14320": "67469492f28f15602e8e7463bf06a34d19a05448",
     "14321": "d8d2800a0490eb465e2eab91f01ced0943a33912",
-    "14322": "6842fd25e7877fd67a11fed216f0fac292fb16d4"
+    "14322": "6842fd25e7877fd67a11fed216f0fac292fb16d4",
+    "14326": "478139b6b4180bf39a318bddf0996a0308afbf9e"
   },
   "pulls_listed": 64,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 138.9,
+  "queue_depth_per_runner": 109.4,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zcbw-x7m4/rfp-addenda-delta-14239",
+      "closed_at": "2026-09-14T05:00:57Z",
+      "head_sha": "49d1fc2b3913407b8c6dd951977dae18e4611481",
+      "merged_at": "2026-09-14T05:00:57Z",
+      "number": 14256,
+      "state": "MERGED",
+      "title": "feat(revenue): exact RFP/Addenda Delta Desk"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -360,17 +371,6 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "z-sol-13/lead-fence-collision-gate-20260913",
-      "closed_at": "2026-09-14T03:59:55Z",
-      "head_sha": "001e24af616b44d0c06c0e1e226e090d8a301a5a",
-      "merged_at": null,
-      "number": 14304,
-      "state": "CLOSED",
-      "title": "revenue: add collision-safe lead claim fence"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
       "branch": "zkdd-r8n6/reply-revenue-chronology-fixforward-20260913",
       "closed_at": "2026-09-14T02:50:56Z",
       "head_sha": "83423bd3b038824a007712d722f65c66bd7ad82a",
@@ -415,6 +415,6 @@
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-14T04:59:40Z",
+  "unchanged_since": "2026-09-14T05:02:07Z",
   "undatable_pulls": []
 }
