@@ -29,6 +29,6 @@ jobs:
       - name: Compile package
         run: python -m py_compile revenue/paid_discovery_offer/*.py
       - name: Focused tests
-        run: python -m unittest revenue.paid_discovery_offer.test_offer -v
+        run: python -m unittest revenue.paid_discovery_offer.test_offer revenue.paid_discovery_offer.test_hardening -v
       - name: Focused tests under optimization
-        run: python -O -m unittest revenue.paid_discovery_offer.test_offer -v
+        run: python -O -m unittest revenue.paid_discovery_offer.test_offer revenue.paid_discovery_offer.test_hardening -v
