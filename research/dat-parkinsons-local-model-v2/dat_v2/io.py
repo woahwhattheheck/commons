@@ -1,6 +1,6 @@
 """Strict local-only I/O helpers.
 
-NIfTI loading is lazy so the public/synthetic test suite does not require nibabel.  Real
+NIfTI loading is lazy so the public/synthetic test suite does not require nibabel. Real
 competition data must stay in the participant's rule-compliant local environment and should
 never be copied into logs, git, Slack, or hosted assistants.
 """
@@ -9,13 +9,35 @@ from __future__ import annotations
 
 import csv
 import json
-import math
 from pathlib import Path
-from typing import Iterable
 
 import numpy as np
 
 from .core import ModelContractError, canonical_json, validate_model_artifact
+
+MAX_JSON_BYTES = 16 * 1024 * 1024
+
+
+def _reject_constant(value: str) -> None:
+    raise ModelContractError(f"non-finite JSON constant is forbidden: {value}")
+
+
+def _unique_object(pairs: list[tuple[str, object]]) -> dict[str, object]:
+    result: dict[str, object] = {}
+    for key, value in pairs:
+        if key in result:
+            raise ModelContractError("duplicate JSON object key")
+        result[key] = value
+    return result
+
+
+def parse_json_strict(text: str) -> object:
+    try:
+        return json.loads(text, parse_constant=_reject_constant, object_pairs_hook=_unique_object)
+    except ModelContractError:
+        raise
+    except (json.JSONDecodeError, TypeError, ValueError) as exc:
+        raise ModelContractError("invalid strict JSON") from exc
 
 
 def load_nifti_array(path: Path) -> np.ndarray:
@@ -91,12 +113,21 @@ def write_model_json(path: Path, artifact: dict) -> None:
     validate_model_artifact(artifact)
     destination = Path(path)
     destination.parent.mkdir(parents=True, exist_ok=True)
-    if destination.exists():
-        raise FileExistsError(f"refusing to overwrite model artifact: {destination}")
-    destination.write_text(canonical_json(artifact) + "\n", encoding="utf-8")
+    try:
+        with destination.open("x", encoding="utf-8", newline="\n") as handle:
+            handle.write(canonical_json(artifact) + "\n")
+    except FileExistsError:
+        raise FileExistsError(f"refusing to overwrite model artifact: {destination}") from None
 
 
 def load_model_json(path: Path) -> dict:
-    model = json.loads(Path(path).read_text(encoding="utf-8"))
+    source = Path(path)
+    if not source.is_file():
+        raise ModelContractError("model artifact is not a regular file")
+    if source.stat().st_size > MAX_JSON_BYTES:
+        raise ModelContractError("model artifact exceeds bounded JSON size")
+    model = parse_json_strict(source.read_text(encoding="utf-8"))
+    if not isinstance(model, dict):
+        raise ModelContractError("model artifact must be a JSON object")
     validate_model_artifact(model)
     return model
