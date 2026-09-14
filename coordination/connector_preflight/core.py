@@ -13,7 +13,7 @@ import re
 import stat
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Any, Callable
+from typing import Any
 
 INPUT_SCHEMA = "commons.connector-preflight/v1"
 PACKET_SCHEMA = "commons.connector-preflight-packet/v1"
@@ -606,8 +606,13 @@ def compile_at(raw: Any, evaluated_at: datetime, *, mode: str = "HISTORICAL_INTE
     }
 
 
-def compile_current(raw: Any, *, clock: Callable[[], datetime] = utc_now) -> dict[str, Any]:
-    return compile_at(raw, clock(), mode="CURRENT")
+def _compile_current_at(raw: Any, evaluated_at: datetime) -> dict[str, Any]:
+    return compile_at(raw, evaluated_at, mode="CURRENT")
+
+
+def compile_current(raw: Any) -> dict[str, Any]:
+    """Compile current capability truth using process-owned UTC only."""
+    return _compile_current_at(raw, utc_now())
 
 
 def _validate_bundle_shape(bundle: Any) -> dict[str, Any]:
@@ -648,9 +653,9 @@ def verify_integrity(raw: Any, bundle: Any) -> bool:
         return False
 
 
-def verify_current(raw: Any, bundle: Any, *, clock: Callable[[], datetime] = utc_now) -> dict[str, Any]:
+def _verify_current_at(raw: Any, bundle: Any, evaluated_at: datetime) -> dict[str, Any]:
     integrity = verify_integrity(raw, bundle)
-    evaluated = clock().astimezone(timezone.utc).replace(microsecond=0)
+    evaluated = evaluated_at.astimezone(timezone.utc).replace(microsecond=0)
     result: dict[str, Any] = {
         "schema": "commons.connector-preflight-verification/v1",
         "integrity_valid": integrity,
@@ -663,7 +668,7 @@ def verify_current(raw: Any, bundle: Any, *, clock: Callable[[], datetime] = utc
         result["reasons"] = ["BUNDLE_INTEGRITY_INVALID"]
         return result
     try:
-        current_bundle = compile_at(raw, evaluated, mode="CURRENT")
+        current_bundle = _compile_current_at(raw, evaluated)
     except PreflightError as exc:
         result["current_state"] = "STALE_OR_INVALID"
         result["reasons"] = [str(exc)]
@@ -675,6 +680,11 @@ def verify_current(raw: Any, bundle: Any, *, clock: Callable[[], datetime] = utc
     result["current_state"] = current_packet["overall_state"]
     result["reasons"] = [] if current else ["CURRENT_SEMANTICS_DRIFTED"]
     return result
+
+
+def verify_current(raw: Any, bundle: Any) -> dict[str, Any]:
+    """Verify current capability truth using process-owned UTC only."""
+    return _verify_current_at(raw, bundle, utc_now())
 
 
 def read_json_file(path: Path, *, max_bytes: int = MAX_FILE_BYTES) -> Any:
