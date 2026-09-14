@@ -3,11 +3,17 @@ from __future__ import annotations
 import copy
 import unittest
 
+from revenue.outbound_connector_lease.key import SUPPORTED_REPLY_PROVIDERS
+
+from . import engine as direct_engine
 from .acceptance import D, E, NOW, add, base_packet, offer_sent
 from .guarded import CANONICAL_MESSAGE_PROVIDERS, ContractError, compile_board, verify_board
 
 
 class GuardedProviderTests(unittest.TestCase):
+    def test_registry_is_shared_with_outbound_reply_lease(self):
+        self.assertIs(CANONICAL_MESSAGE_PROVIDERS, SUPPORTED_REPLY_PROVIDERS)
+
     def test_all_canonical_message_providers_are_accepted(self):
         for provider in sorted(CANONICAL_MESSAGE_PROVIDERS):
             with self.subTest(provider=provider):
@@ -18,7 +24,7 @@ class GuardedProviderTests(unittest.TestCase):
                 self.assertEqual(board["stage"], "AWAITING_BUYER")
 
     def test_known_aliases_and_unknown_spellings_are_rejected(self):
-        for provider in ("googlemail", "gmail-api", "GMAIL", "gmail.com", "smtp", ""):
+        for provider in ("email", "googlemail", "gmail-api", "github-api", "slack-api", "webform", "GMAIL", "gmail.com", "smtp", ""):
             with self.subTest(provider=provider):
                 packet = base_packet("alias")
                 offer_sent(packet)
@@ -60,6 +66,13 @@ class GuardedProviderTests(unittest.TestCase):
         )
         with self.assertRaises(ContractError):
             compile_board(packet, now=NOW)
+
+    def test_direct_engine_compile_is_guarded_after_package_import(self):
+        packet = base_packet("direct-engine")
+        offer_sent(packet)
+        packet["events"][0]["payload"]["provider"] = "gmail-api"
+        with self.assertRaises(ContractError):
+            direct_engine.compile_board(packet, now=NOW)
 
     def test_canonical_same_message_conflict_still_holds_in_engine(self):
         packet = base_packet("canonical-conflict")
