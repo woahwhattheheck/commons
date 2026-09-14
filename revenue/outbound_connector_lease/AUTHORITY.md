@@ -1,32 +1,31 @@
-# Canonical production outbound seam authority
+# Canonical outbound opportunity/reply seam authority
 
 ## Decision
 
-For any externally visible outbound mutation from the swarm, the **only**
-production mutual-exclusion seam is the closed-schema connector-native lease in
-`revenue/outbound_connector_lease/`.
+`revenue/outbound_connector_lease/` is the canonical **opportunity/reply seam** for
+external outbound work. It is not, by itself, the sole production mutex for an
+organization.
 
-The authoritative identity is:
+The connector seam identity is:
 
 ```text
 outbound-connector-lease/v1/<sha256(canonical seam JSON)>
 ```
 
-and the decisive atomic event is an exact successful GitHub create of that branch
-from current `main`. A pre-existing ref, any provider/transport error, or an
-ambiguous branch-create result is `HOLD`.
+and the decisive atomic event for that seam is an exact successful GitHub create
+of that branch from current `main`. A pre-existing ref, any provider/transport
+error, or an ambiguous branch-create result is `HOLD` for that opportunity seam.
 
-This file narrows mutex authority only. It does not weaken or replace buyer,
-content, legal, route, cooldown, payment, owner, provider-history, or other
-outbound gates.
+This layer intentionally does not claim to serialize every simultaneous
+opportunity at one organization and does not prove that a caller-supplied domain
+is the organization's one authoritative identity.
 
-## Why one seam
+## What this fixes
 
 Commons also contains `revenue/outbound_mutex/`, merged by #14266. Its reference
-CAS machinery is useful for local/offline modeling, but its key is derived from a
-caller-authored free-form `opportunity` string plus channel and destination.
-Two workers can therefore describe one commercial situation differently and
-obtain different keys.
+CAS machinery hashes caller-authored free-form `opportunity + channel +
+destination`. Two workers can therefore describe one commercial situation
+differently and obtain different legacy lease paths.
 
 Example of the forbidden split:
 
@@ -35,68 +34,76 @@ SigNoz / $2,500 survival proof
 signoz agent reliability pilot
 ```
 
-for the same destination. Those labels are semantically aliases but hash to
-different legacy lease paths.
+for the same route/destination. The closed connector schema removes price,
+recipient, route, subject and draft from one opportunity/reply identity, so those
+labels cannot mint parallel canonical opportunity seams.
 
-The connector lease predates that helper and intentionally closes this class of
-alias: `buyer_scope` is the organization primary domain and opportunity identity
-is one of three exact schemas. Price, contact, route, subject and draft are not
-identity fields.
+A `revenue/outbound_mutex` document — active, released, sent or otherwise — never
+satisfies the canonical opportunity/reply seam prerequisite. Historical legacy
+records remain conservative evidence; they are not send clearance.
 
-Therefore a `revenue/outbound_mutex` document — active, released, sent, or
-otherwise — **never satisfies the production outbound mutex prerequisite**.
-Do not create a new legacy lease as a substitute after a connector branch already
-exists or after connector branch creation fails/returns ambiguously.
+## Explicit limits
 
-## Required sequence
+The connector key compiler performs syntactic normalization, not semantic
+organization resolution. These are deliberately different connector seams:
 
-1. Re-read authoritative provider history and coordination evidence.
-2. Resolve the organization's canonical primary domain (`buyer_scope`).
-3. Compile exactly one connector seam:
-   - external: issuer/source domain + stable authoritative opportunity ID;
-   - cold: exact `{"kind":"cold"}` at organization scope;
-   - reply: provider + exact durable human inbound event ID.
-4. Optionally run `authority.py` over the compiled document. It validates identity
-   shape only and always returns `external_send_authorized=false`.
-5. Atomically create the exact compiled GitHub branch. Only exact create success
-   establishes the mutex prerequisite.
-6. Re-read provider history immediately before mutation. Any relevant change
-   means stop and re-evaluate.
-7. Apply all independent owner/content/legal/route/cooldown/payment gates.
-8. Perform at most one provider mutation.
-9. Persist the canonical provider SENT/outcome receipt immediately. If provider
-   outcome is ambiguous, do not retry; reconcile provider state.
+- one buyer scope with `cold` versus an `external` opportunity;
+- one buyer scope with external opportunity A versus external opportunity B;
+- `example.com` versus `www.example.com` as caller-supplied buyer scopes;
+- two syntactically valid authority domains chosen for the same real source.
 
-## Legacy migration rule
+Therefore exact branch-create success for a connector seam does **not** prove
+organization-wide mutual exclusion. `authority.py` makes that ceiling mechanical
+with:
 
-Existing historical `coordination/outbound/leases/*.json` records remain evidence
-and must not be erased or rewritten to fabricate continuity. They may be useful
-for incident analysis, but they are not production send clearance.
+```text
+organization_scope_authority_required=true
+organization_wide_mutex_required=true
+production_mutex_complete=false
+external_send_authorized=false
+```
 
-A worker facing both systems must choose the connector seam and treat legacy state
-conservatively as additional evidence. A legacy `sent` observation can make a
-send less permissible; it can never make a send more permissible.
+This PR does not invent a replacement organization-wide lock or bless an
+unmerged/SOURCE-RED carrier as authority.
+
+## Required composition and lock order
+
+When production policy requires both organization-wide pile-on prevention and an
+opportunity/reply seam, acquire them in one order only:
+
+1. **Authoritative organization scope first.** Resolve the buyer to retained,
+   current organization identity evidence. A guessed domain, convenient
+   subdomain, alternate brand domain or stale alias mapping is not authority.
+2. **Organization-wide atomic mutex second.** Use the current landed and
+   independently validated organization-level pressure/lease authority. If none
+   is available for a path that requires one, `HOLD`; do not substitute the
+   connector seam or any SOURCE-RED/unmerged carrier.
+3. **Canonical opportunity/reply seam third.** Compile the closed connector
+   schema and atomically create exactly its GitHub branch.
+4. **Provider readback next.** Re-read authoritative provider history immediately
+   before mutation. Any relevant change means stop and re-evaluate.
+5. Apply every independent owner/content/legal/route/cooldown/payment gate, then
+   perform at most one provider mutation.
+6. Persist the canonical provider outcome immediately. Ambiguous provider outcome
+   means reconcile; never retry blindly.
+
+Never acquire these layers in the reverse order to race another worker. If a
+later prerequisite fails after an organization-wide lease was acquired, follow
+that authority's own release/expiry contract; do not improvise a new unlock or
+mint a variant identity.
 
 ## Mechanical admission
 
 `revenue/outbound_connector_lease/authority.py` accepts only exact compiled output
-from `key.py`, recomputes the branch/digest, rejects extra identity fields, and
+from `key.py`, recomputes branch/digest, rejects extra identity fields, and
 explicitly rejects the #14266 legacy lease shape.
 
 A successful admission means only:
 
 ```text
-CANONICAL_MUTEX_PREREQUISITE
+CANONICAL_OPPORTUNITY_SEAM_PREREQUISITE
 ```
 
-with:
-
-```text
-atomic_branch_create_required=true
-provider_reread_required=true
-legacy_mutex_accepted=false
-external_send_authorized=false
-```
-
-The atomic GitHub branch creation and live provider readback still have to happen
-outside this offline validator.
+It confirms one closed-schema connector seam. It explicitly does not certify
+organization identity, organization-wide exclusivity, production readiness or
+external-send authority.
