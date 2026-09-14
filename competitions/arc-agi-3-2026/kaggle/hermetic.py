@@ -166,45 +166,53 @@ def _safe_relpath(value: object) -> PurePosixPath:
 
 
 def _read_regular_no_symlink(src_root: Path, rel: PurePosixPath) -> bytes:
-    """Read one manifest file while refusing symlink components/final objects."""
-    cursor = src_root
-    try:
-        root_st = cursor.lstat()
-    except OSError as exc:
-        raise HermeticError("bundle src root unavailable") from exc
-    if not stat.S_ISDIR(root_st.st_mode) or stat.S_ISLNK(root_st.st_mode):
-        raise HermeticError("bundle src root must be a real directory")
-    for part in rel.parts[:-1]:
-        cursor = cursor / part
-        try:
-            st = cursor.lstat()
-        except OSError as exc:
-            raise HermeticError(f"missing manifest parent: {rel.as_posix()}") from exc
-        if stat.S_ISLNK(st.st_mode) or not stat.S_ISDIR(st.st_mode):
-            raise HermeticError(f"manifest parent is not a real directory: {rel.as_posix()}")
-    path = src_root.joinpath(*rel.parts)
-    flags = os.O_RDONLY
+    """Read one manifest file through held directory FDs without path re-resolution."""
+    if os.open not in getattr(os, "supports_dir_fd", set()) or not hasattr(os, "O_DIRECTORY") or not hasattr(os, "O_NOFOLLOW"):
+        raise HermeticError("descriptor-safe source traversal is unavailable")
+    dir_flags = os.O_RDONLY | os.O_DIRECTORY | os.O_NOFOLLOW
+    file_flags = os.O_RDONLY | os.O_NOFOLLOW
     if hasattr(os, "O_CLOEXEC"):
-        flags |= os.O_CLOEXEC
-    if hasattr(os, "O_NOFOLLOW"):
-        flags |= os.O_NOFOLLOW
+        dir_flags |= os.O_CLOEXEC
+        file_flags |= os.O_CLOEXEC
     try:
-        fd = os.open(path, flags)
+        current_fd = os.open(src_root, dir_flags)
     except OSError as exc:
-        raise HermeticError(f"cannot safely open manifest file: {rel.as_posix()}") from exc
+        raise HermeticError("bundle src root must be a real directory") from exc
     try:
-        st = os.fstat(fd)
-        if not stat.S_ISREG(st.st_mode):
-            raise HermeticError(f"manifest file is not regular: {rel.as_posix()}")
-        chunks: list[bytes] = []
-        while True:
-            chunk = os.read(fd, 1 << 20)
-            if not chunk:
-                break
-            chunks.append(chunk)
-        return b"".join(chunks)
+        if not stat.S_ISDIR(os.fstat(current_fd).st_mode):
+            raise HermeticError("bundle src root must be a real directory")
+        for part in rel.parts[:-1]:
+            try:
+                next_fd = os.open(part, dir_flags, dir_fd=current_fd)
+            except OSError as exc:
+                raise HermeticError(f"manifest parent is not a real directory: {rel.as_posix()}") from exc
+            try:
+                if not stat.S_ISDIR(os.fstat(next_fd).st_mode):
+                    raise HermeticError(f"manifest parent is not a real directory: {rel.as_posix()}")
+            except Exception:
+                os.close(next_fd)
+                raise
+            os.close(current_fd)
+            current_fd = next_fd
+        try:
+            fd = os.open(rel.parts[-1], file_flags, dir_fd=current_fd)
+        except OSError as exc:
+            raise HermeticError(f"cannot safely open manifest file: {rel.as_posix()}") from exc
+        try:
+            st = os.fstat(fd)
+            if not stat.S_ISREG(st.st_mode):
+                raise HermeticError(f"manifest file is not regular: {rel.as_posix()}")
+            chunks: list[bytes] = []
+            while True:
+                chunk = os.read(fd, 1 << 20)
+                if not chunk:
+                    break
+                chunks.append(chunk)
+            return b"".join(chunks)
+        finally:
+            os.close(fd)
     finally:
-        os.close(fd)
+        os.close(current_fd)
 
 
 def _verified_sources(bundle_root: Path, manifest: Mapping[str, object]) -> dict[str, bytes]:
@@ -258,6 +266,16 @@ def _verified_sources(bundle_root: Path, manifest: Mapping[str, object]) -> dict
         extra = sorted(actual - set(out))
         raise HermeticError(f"bundle src inventory mismatch missing={missing} extra={extra}")
     return out
+
+
+def _stage_verified_sources(src_root: Path, sources: Mapping[str, bytes]) -> None:
+    """Materialize only verified manifest bytes into a private execution tree."""
+    src_root.mkdir(parents=True)
+    for rel_text, data in sorted(sources.items()):
+        rel = _safe_relpath(rel_text)
+        path = src_root.joinpath(*rel.parts)
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_bytes(data)
 
 
 def _local_roots(paths: Sequence[str]) -> frozenset[str]:
@@ -547,7 +565,7 @@ def _execution_identity(*, entrypoint: str, manifest_sha: str, closure_sha: str,
 
 
 def run_hermetic(bundle_root: Path, *, entrypoint: str, policy: ExecutionPolicy) -> ExecutionReceipt:
-    """Run one verified bundle entrypoint in an isolated Python subprocess."""
+    """Run one verified bundle entrypoint from a private copy of verified bytes."""
     bundle_root = bundle_root.resolve()
     manifest = _load_manifest(bundle_root)
     sources = _verified_sources(bundle_root, manifest)
@@ -564,17 +582,23 @@ def run_hermetic(bundle_root: Path, *, entrypoint: str, policy: ExecutionPolicy)
         run_root = Path(td)
         home = run_root / "home"
         tmp = run_root / "tmp"
+        exec_bundle = run_root / "exec-bundle"
+        exec_src = exec_bundle / "src"
         home.mkdir()
         tmp.mkdir()
+        exec_bundle.mkdir()
+        _stage_verified_sources(exec_src, sources)
+        if _verified_sources(exec_bundle, manifest) != sources:
+            raise HermeticError("staged source bytes do not match verified source bytes")
         bootstrap = run_root / "bootstrap.py"
-        bootstrap.write_text(_bootstrap_text(bundle_root / "src", rel), encoding="utf-8")
+        bootstrap.write_text(_bootstrap_text(exec_src, rel), encoding="utf-8")
         out_cap = _Capture(policy.max_output_bytes, bytearray())
         err_cap = _Capture(policy.max_output_bytes, bytearray())
         started = time.monotonic()
         try:
             proc = subprocess.Popen(
                 (sys.executable, "-I", "-S", str(bootstrap)),
-                cwd=str(bundle_root),
+                cwd=str(exec_bundle),
                 stdin=subprocess.DEVNULL,
                 stdout=subprocess.PIPE,
                 stderr=subprocess.PIPE,
@@ -618,10 +642,15 @@ def run_hermetic(bundle_root: Path, *, entrypoint: str, policy: ExecutionPolicy)
         output_limit_exceeded = out_cap.overflow or err_cap.overflow
         stdout_sha = sha256(bytes(out_cap.data)).hexdigest()
         stderr_sha = sha256(bytes(err_cap.data)).hexdigest()
+        staged_unchanged = True
+        try:
+            staged_unchanged = _verified_sources(exec_bundle, manifest) == sources
+        except HermeticError:
+            staged_unchanged = False
 
-    source_unchanged = True
+    source_unchanged = staged_unchanged
     try:
-        _verified_sources(bundle_root, manifest)
+        source_unchanged = source_unchanged and _verified_sources(bundle_root, manifest) == sources
     except HermeticError:
         source_unchanged = False
 
