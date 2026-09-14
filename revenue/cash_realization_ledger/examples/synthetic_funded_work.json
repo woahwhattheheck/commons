@@ -1,5 +1,5 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "portfolio": {
     "name": "Synthetic funded-work truth boundary"
   },
@@ -79,7 +79,8 @@
       "authority": "sponsor_evidence",
       "captured_at": "2026-09-13T15:10:00Z",
       "reference": "synthetic://sponsor/award/one-dollar",
-      "sha256": "3333333333333333333333333333333333333333333333333333333333333333"
+      "sha256": "3333333333333333333333333333333333333333333333333333333333333333",
+      "event_sha256": "53977485ac29db7533068b3cd88aeb2941f94b6d9ae26edaa24963d2fa6ecfc3"
     },
     {
       "id": "e-dollar-cash",
@@ -87,7 +88,8 @@
       "authority": "payment_provider_evidence",
       "captured_at": "2026-09-13T15:20:00Z",
       "reference": "synthetic://provider/receipt/one-dollar",
-      "sha256": "4444444444444444444444444444444444444444444444444444444444444444"
+      "sha256": "4444444444444444444444444444444444444444444444444444444444444444",
+      "event_sha256": "f5eb3e5a3cc9339d5b9b7452f59656a4b84f2456c6517d760d7c31cfe82ec30f"
     },
     {
       "id": "e-dollar-reconcile",
@@ -95,7 +97,8 @@
       "authority": "owner_approved",
       "captured_at": "2026-09-13T15:30:00Z",
       "reference": "synthetic://owner/reconcile/one-dollar",
-      "sha256": "5555555555555555555555555555555555555555555555555555555555555555"
+      "sha256": "5555555555555555555555555555555555555555555555555555555555555555",
+      "event_sha256": "e89604119eaaa688ac42ba75f65659e8c687463b3612566295076ad03245a722"
     },
     {
       "id": "e-pending-award",
@@ -103,7 +106,8 @@
       "authority": "sponsor_evidence",
       "captured_at": "2026-09-13T15:12:00Z",
       "reference": "synthetic://sponsor/award/ninety-dollar",
-      "sha256": "6666666666666666666666666666666666666666666666666666666666666666"
+      "sha256": "6666666666666666666666666666666666666666666666666666666666666666",
+      "event_sha256": "f63c44498b29a849524d582c6cbced2c87836df9833594c90d89d07b2a7a3e7a"
     },
     {
       "id": "e-pending-provider",
@@ -111,7 +115,8 @@
       "authority": "payment_provider_evidence",
       "captured_at": "2026-09-13T15:25:00Z",
       "reference": "synthetic://provider/pending/ninety-dollar",
-      "sha256": "7777777777777777777777777777777777777777777777777777777777777777"
+      "sha256": "7777777777777777777777777777777777777777777777777777777777777777",
+      "event_sha256": "68b8b63a4bbfea73dc68d2171ad2473ca8b3139cb0b98cce47f8f6dd30c0294f"
     }
   ]
 }
