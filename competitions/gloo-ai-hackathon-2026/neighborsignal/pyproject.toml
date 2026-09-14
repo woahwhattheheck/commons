@@ -1,7 +1,3 @@
-[build-system]
-requires = []
-build-backend = ""
-
 [project]
 name = "neighborsignal"
 version = "0.1.0"
