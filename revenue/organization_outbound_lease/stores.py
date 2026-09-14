@@ -13,7 +13,7 @@ import urllib.error
 import urllib.parse
 import urllib.request
 from pathlib import Path
-from typing import Callable
+from typing import Callable, Optional, Tuple, Union
 
 
 class StoreConflict(RuntimeError):
@@ -31,7 +31,7 @@ class FileLeaseStore:
     It is intentionally suitable only for one shared filesystem namespace.
     """
 
-    def __init__(self, root: str | os.PathLike[str]):
+    def __init__(self, root: Union[str, os.PathLike]):
         self.root = Path(root)
         self.active = self.root / "active"
         self.outcomes = self.root / "outcomes"
@@ -149,7 +149,7 @@ class GitHubContentsLeaseStore:
         branch: str,
         token: str,
         api_base: str = "https://api.github.com",
-        opener: Callable[[urllib.request.Request], tuple[int, bytes]] | None = None,
+        opener: Optional[Callable[[urllib.request.Request], Tuple[int, bytes]]] = None,
     ):
         if "/" not in repository or repository.count("/") != 1:
             raise ValueError("repository must be owner/name")
@@ -175,7 +175,7 @@ class GitHubContentsLeaseStore:
         except (urllib.error.URLError, TimeoutError) as exc:
             raise StoreUncertain("GitHub request outcome uncertain") from exc
 
-    def _request(self, method: str, rel: str, payload: dict | None = None, query: dict[str, str] | None = None) -> tuple[int, dict]:
+    def _request(self, method: str, rel: str, payload: Optional[dict] = None, query: Optional[dict] = None) -> Tuple[int, dict]:
         data = None if payload is None else json.dumps(payload, separators=(",", ":")).encode()
         url = self._url(rel)
         if query:
