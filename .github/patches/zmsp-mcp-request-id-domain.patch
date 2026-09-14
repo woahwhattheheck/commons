@@ -1,0 +1,89 @@
+diff --git a/tools/mcp_transcript_audit/audit.py b/tools/mcp_transcript_audit/audit.py
+--- a/tools/mcp_transcript_audit/audit.py
++++ b/tools/mcp_transcript_audit/audit.py
+@@ -95,7 +95,7 @@ def _sha256(data: bytes) -> str:
+ 
+ def _number_identity(value: int | float | Decimal) -> tuple[int, str, int]:
+     if isinstance(value, bool):
+-        raise ValueError("request id must be a string or finite number, not bool/null")
++        raise ValueError("request id must be a string or integer, not bool/null")
+     if isinstance(value, Decimal):
+         decimal_value = value
+     elif isinstance(value, int):
+@@ -105,23 +105,25 @@ def _number_identity(value: int | float | Decimal) -> tuple[int, str, int]:
+             raise ValueError("request id number must be finite")
+         decimal_value = Decimal(repr(value))
+     else:
+-        raise ValueError("request id must be a string or finite number, not bool/null")
++        raise ValueError("request id must be a string or integer, not bool/null")
+     if not decimal_value.is_finite():
+         raise ValueError("request id number must be finite")
+     sign, digits_tuple, exponent = decimal_value.as_tuple()
+     digits = list(digits_tuple)
+     while digits and digits[-1] == 0:
+         digits.pop()
+         exponent += 1
+     if not digits:
+         return (0, "0", 0)
++    if exponent < 0:
++        raise ValueError("request id number must be an integer")
+     return (sign, "".join(str(digit) for digit in digits), int(exponent))
+ 
+ 
+ def _typed_id_key(value: Any) -> tuple[str, Any]:
+     if isinstance(value, str):
+         return ("string", value)
+     if isinstance(value, bool) or value is None:
+-        raise ValueError("request id must be a string or finite number, not bool/null")
++        raise ValueError("request id must be a string or integer, not bool/null")
+     if isinstance(value, (int, float, Decimal)):
+         return ("number", _number_identity(value))
+-    raise ValueError("request id must be a string or finite number, not bool/null")
++    raise ValueError("request id must be a string or integer, not bool/null")
+ 
+ 
+ def _id_hash(value: Any) -> str:
+diff --git a/test_mcp_transcript_audit.py b/test_mcp_transcript_audit.py
+--- a/test_mcp_transcript_audit.py
++++ b/test_mcp_transcript_audit.py
+@@ -270,23 +270,25 @@ class CorrelationHostileTests(unittest.TestCase):
+         self.assertEqual(receipt["status"], "HOLD")
+         self.assertIn("INVALID_CAPTURE_EVENT", reason_codes(receipt))
+ 
+-    def test_fractional_numeric_id_roundtrip_passes(self):
++    def test_fractional_numeric_request_id_rejected(self):
+         events = valid_events()
+         events[3] = (CLIENT, {"jsonrpc": "2.0", "id": 1.5, "method": "tools/list", "params": {}})
+         events[4] = (SERVER, {"jsonrpc": "2.0", "id": 1.5, "result": {"tools": []}})
+-        self.assertEqual(audit_transcript(capture(events))["status"], "PASS")
++        receipt = audit_transcript(capture(events))
++        self.assertEqual(receipt["status"], "HOLD")
++        self.assertIn("INVALID_CAPTURE_EVENT", reason_codes(receipt))
+ 
+-    def test_fractional_numeric_id_mismatch_holds(self):
++    def test_fractional_numeric_response_id_rejected(self):
+         events = valid_events()
+-        events[3] = (CLIENT, {"jsonrpc": "2.0", "id": 1.5, "method": "tools/list", "params": {}})
+-        events[4] = (SERVER, {"jsonrpc": "2.0", "id": 1.5000000000000002, "result": {"tools": []}})
++        events[3] = (CLIENT, {"jsonrpc": "2.0", "id": 2, "method": "tools/list", "params": {}})
++        events[4] = (SERVER, {"jsonrpc": "2.0", "id": 2.5, "result": {"tools": []}})
+         receipt = audit_transcript(capture(events))
+-        self.assertIn("ORPHAN_RESPONSE", reason_codes(receipt))
+-        self.assertIn("UNRESOLVED_REQUESTS", reason_codes(receipt))
++        self.assertEqual(receipt["status"], "HOLD")
++        self.assertIn("INVALID_CAPTURE_EVENT", reason_codes(receipt))
+ 
+     def test_equivalent_numeric_id_spellings_correlate(self):
+         events = valid_events()
+diff --git a/tools/mcp_transcript_audit/README.md b/tools/mcp_transcript_audit/README.md
+--- a/tools/mcp_transcript_audit/README.md
++++ b/tools/mcp_transcript_audit/README.md
+@@ -20,7 +20,7 @@ A PASS receipt proves, for the supplied capture bytes:
+ 
+ - strict UTF-8/JSON parsing with duplicate-key and NaN/Infinity rejection;
+ - JSON-RPC 2.0 request/notification/response envelope shape;
+-- string or finite-number request IDs (bool/null/non-finite are rejected), with exact numeric-value correlation and no ID reuse;
++- string or integer request IDs (bool/null/non-integral/non-finite values are rejected), with exact integer-value correlation and no ID reuse;
+ - response correlation to the opposite direction with no orphan, duplicate, or unresolved response/request;
+ - `initialize` as the first interaction;
+ - required initialize fields and exact `2025-11-25` request/negotiated version;
