@@ -1,0 +1,29 @@
+name: lead-fence
+
+on:
+  push:
+    paths:
+      - 'revenue/lead_fence/**'
+      - '.github/workflows/lead-fence.yml'
+  pull_request:
+    paths:
+      - 'revenue/lead_fence/**'
+      - '.github/workflows/lead-fence.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  unit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Compile
+        run: python -m py_compile revenue/lead_fence/lead_fence.py revenue/lead_fence/test_lead_fence.py
+      - name: Test
+        working-directory: revenue/lead_fence
+        run: python -m unittest -v test_lead_fence.py

@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://woahwhattheheck.github.io/commons/revenue/lead_fence/protocol.schema.json",
+  "title": "Commons Lead Fence Claim",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "fingerprint",
+    "state",
+    "actor",
+    "campaign",
+    "source",
+    "acquired_at",
+    "expires_at",
+    "sent_at",
+    "released_at",
+    "generation"
+  ],
+  "properties": {
+    "schema": {"const": "commons.lead-fence/v1"},
+    "fingerprint": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "state": {"enum": ["ACTIVE", "SENT", "RELEASED"]},
+    "actor": {"type": "string", "minLength": 1},
+    "campaign": {"type": "string"},
+    "source": {"type": "string"},
+    "acquired_at": {"type": "string", "format": "date-time"},
+    "expires_at": {"type": "string", "format": "date-time"},
+    "sent_at": {"type": ["string", "null"], "format": "date-time"},
+    "released_at": {"type": ["string", "null"], "format": "date-time"},
+    "generation": {"type": "integer", "minimum": 1}
+  }
+}
