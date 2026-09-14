@@ -36,19 +36,20 @@ _SIGNAL_PHRASES = (
     "payment",
     "bounty",
     "prize",
-    "contract",
-    "subcontract",
     "invoice",
     "fee",
     "commission",
     "award",
-    "bid",
     "purchase order",
     "retainer",
-    "discovery",
-    "pilot",
 )
-_NEGATORS = {"no", "not", "without", "zero", "unpaid"}
+_NEGATIVE_COMP_RE = re.compile(
+    r"(?:\b(?:unpaid|gratis|volunteer|free)\b|"
+    r"\bpro\s+bono\b|"
+    r"\b(?:no|not|without|zero)\s+(?:pay|paid|payment|fee|compensation|bounty|prize|invoice|commission|retainer)\b|"
+    r"\b(?:no|not|without)\s+(?:[$€£]\s*[0-9]|[0-9][0-9,.]*\s*(?:usd|eur|gbp|rtc)\b))",
+    re.IGNORECASE,
+)
 _AMOUNT_RE = re.compile(
     r"(?:[$€£]\s*(?P<lead>[0-9][0-9,]*(?:\.[0-9]{1,2})?)|"
     r"(?P<trail>[0-9][0-9,]*(?:\.[0-9]{1,2})?)\s*(?:usd|eur|gbp|rtc)\b)",
@@ -73,6 +74,8 @@ def _strict_compensation_category(text: str) -> str:
     norm = unicodedata.normalize("NFKC", text.strip()).casefold()
     if not norm or len(norm) > 500 or core.CONTROL_RE.search(norm):
         raise core.ValidationError("compensation_path invalid")
+    if _NEGATIVE_COMP_RE.search(norm):
+        raise core.ValidationError("compensation_path contains explicit free/negative compensation language")
 
     for match in _AMOUNT_RE.finditer(norm):
         raw = (match.group("lead") or match.group("trail") or "").replace(",", "")
@@ -88,8 +91,6 @@ def _strict_compensation_category(text: str) -> str:
         width = len(words)
         for i in range(0, len(tokens) - width + 1):
             if tokens[i : i + width] != words:
-                continue
-            if i > 0 and tokens[i - 1] in _NEGATORS:
                 continue
             return core._compensation_category(text)
 
