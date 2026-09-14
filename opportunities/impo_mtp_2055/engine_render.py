@@ -8,6 +8,7 @@ from typing import Any, Iterable
 
 from .schema import AUTHORITY_KEYS
 
+
 def _status(rows: Iterable[dict[str, Any]]) -> str:
     rows = list(rows)
     blocked = {row["stage"] for row in rows if row["blocking"] and row["disposition"] == "BLOCKED"}
@@ -19,7 +20,8 @@ def _status(rows: Iterable[dict[str, Any]]) -> str:
         return "COMMERCIAL_HOLD"
     if "AUTHORITY" in blocked:
         return "OWNER_REVIEW_READY"
-    return "SUBMISSION_READY"
+    # Defensive ceiling: this package does not authenticate external authority.
+    return "OWNER_REVIEW_READY"
 
 
 def _safe_markdown(value: Any) -> str:
@@ -55,13 +57,16 @@ def render_markdown(receipt: dict[str, Any]) -> str:
         "",
         f"- **Opportunity:** {_safe_markdown(opportunity['title'])}",
         f"- **Buyer:** {_safe_markdown(opportunity['buyer'])}",
-        f"- **Deterministic as-of:** `{_safe_markdown(receipt['as_of'])}`",
+        f"- **Evaluation mode:** `{_safe_markdown(receipt['evaluation_mode'])}`",
+        f"- **Evaluation as-of:** `{_safe_markdown(receipt['as_of'])}`",
+        f"- **Evidence authority:** `{_safe_markdown(receipt['evidence_authority'])}`",
+        f"- **External authority authenticated:** `{str(receipt['external_authority_authenticated']).lower()}`",
         f"- **Status:** **{_safe_markdown(receipt['status'])}**",
         f"- **Submission ready:** `{str(receipt['submission_ready']).lower()}`",
         f"- **Input SHA-256:** `{receipt['input_sha256']}`",
         f"- **Receipt SHA-256:** `{receipt['receipt_sha256']}`",
         "",
-        "> This packet is owner-review evidence only. Compilation and verification perform no buyer contact, registration, signature, pricing commitment, submission, contract acceptance, or spending.",
+        "> This packet is non-authorizing owner-review analysis. Candidate evidence references are not independently authenticated by this package. Compilation and verification perform no buyer contact, registration, signature, pricing commitment, submission, contract acceptance, or spending.",
         "",
         "## Control summary",
         "",
@@ -130,17 +135,14 @@ def render_markdown(receipt: dict[str, Any]) -> str:
             "",
             "## Verification",
             "",
-            "Recompile from the exact input and compare the canonical receipt and this Markdown byte-for-byte. Any input, source generation, gate, price, authority, or rendering change voids this receipt.",
+            "Current receipts use process-owned UTC and expire quickly; historical explicit-time receipts are integrity-only. Recompile from the exact candidate input and compare the canonical receipt and this Markdown byte-for-byte. Any input, gate, price, rendering, or current-time readiness transition voids a current receipt.",
             "",
         ]
     )
     markdown = "\n".join(lines)
-    # Defensive invariant: rendered output contains no literal hidden controls besides LF.
     for char in markdown:
         if char == "\n":
             continue
         if unicodedata.category(char) in {"Cc", "Cf", "Zl", "Zp"}:
             raise RuntimeError("unsafe control character survived Markdown rendering")
     return markdown
-
-
