@@ -26,7 +26,9 @@ GitHub `main` is the coordination authority. Do **not** treat a local file, Slac
 
 ### Takeover / release
 
-An active lease can be taken over only after expiration. A released lease may be taken over immediately. Fetch the current file and update using its exact blob SHA; two contenders using the same prior SHA cannot both win. A `sent` lease can never be released or taken over.
+An active lease can be considered for takeover only after expiration. A released lease can be considered immediately. **Before either takeover, freshly re-read the provider and require its fingerprint to equal the snapshot retained by the lease being replaced.** If provider state changed, takeover fails closed for reconciliation/manual review; the changed generation must never be adopted as a new automatic-send baseline. This closes the crash-after-send window where a prior holder could have sent successfully and crashed before persisting `state=sent`.
+
+If provider state is unchanged, fetch the current lease file and update using its exact blob SHA; two contenders using the same prior SHA cannot both win. A `sent` lease can never be released or taken over.
 
 For GitHub connector seats, the primitives are deliberately boring:
 
@@ -40,7 +42,7 @@ Always fetch again after a successful write and before a send.
 
 The provider snapshot is a non-secret version marker that changes if relevant provider state changes. For Gmail, use a stable combination that changes when the thread changes (for example thread/message/history identity from the provider read). The lease stores only its SHA-256 fingerprint.
 
-A provider change after claim is not permission to “send fast.” It is a mandatory stop: another agent or the prospect may have acted.
+A provider change after claim, release, or expiry is not permission to “send fast” or to establish a replacement baseline. It is a mandatory stop: another agent or the prospect may have acted, or a prior send may have succeeded before its durable receipt was written.
 
 ## CLI
 
@@ -58,7 +60,7 @@ python revenue/outbound_mutex/lease.py claim \
   --provider-snapshot 'thread:abc/history:123'
 ```
 
-The `claim` command emits canonical JSON for the initial create. It does not send mail and it does not claim the remote lease by itself.
+The `claim` command emits canonical JSON for the initial create. It does not send mail and it does not claim the remote lease by itself. `takeover` likewise requires a freshly read provider snapshot and exits non-zero if it differs from the lease's retained snapshot.
 
 ## Tests
 
@@ -67,4 +69,4 @@ cd revenue/outbound_mutex
 python -m unittest -v test_lease.py
 ```
 
-The suite includes 32 simultaneous initial claimants and 24 simultaneous takeover CAS contenders. Exactly one may win each race.
+The suite includes changed-provider crash-after-send hostiles for both expired and released leases, plus 32 simultaneous initial claimants and 24 simultaneous takeover CAS contenders. Exactly one may win each unchanged-provider race.
