@@ -43,12 +43,9 @@ def load_json(raw: bytes, label: str = "input") -> dict[str, Any]:
     if not isinstance(raw, (bytes, bytearray)):
         raise BridgeError(f"{label}: bytes required")
     try:
-        value = json.loads(
-            bytes(raw).decode("utf-8", "strict"),
-            object_pairs_hook=_pairs,
-            parse_constant=lambda x: (_ for _ in ()).throw(BridgeError(f"{label}: non-finite number")),
-            parse_float=lambda x: (_ for _ in ()).throw(BridgeError(f"{label}: floating-point numbers forbidden")),
-        )
+        value = json.loads(bytes(raw).decode("utf-8", "strict"), object_pairs_hook=_pairs,
+                           parse_constant=lambda x: (_ for _ in ()).throw(BridgeError(f"{label}: non-finite number")),
+                           parse_float=lambda x: (_ for _ in ()).throw(BridgeError(f"{label}: floating-point numbers forbidden")))
     except BridgeError:
         raise
     except (UnicodeDecodeError, json.JSONDecodeError, TypeError, ValueError) as exc:
@@ -56,6 +53,22 @@ def load_json(raw: bytes, label: str = "input") -> dict[str, Any]:
     if type(value) is not dict:
         raise BridgeError(f"{label}: top level must be object")
     return value
+
+
+def _plain_json(value: Any, label: str) -> Any:
+    """Copy exact JSON builtins, rejecting mutable/type-confusing subclasses."""
+    if value is None or type(value) in {str, int, bool}:
+        return value
+    if type(value) is list:
+        return [_plain_json(item, f"{label}[]") for item in value]
+    if type(value) is dict:
+        out: dict[str, Any] = {}
+        for key, item in value.items():
+            if type(key) is not str:
+                raise BridgeError(f"{label}: object keys must be strings")
+            out[key] = _plain_json(item, f"{label}.{key}")
+        return out
+    raise BridgeError(f"{label}: plain JSON builtins required")
 
 
 def _canonical(value: Any) -> bytes:
@@ -70,9 +83,7 @@ def _keys(value: Any, expected: set[str], label: str) -> dict[str, Any]:
     if type(value) is not dict:
         raise BridgeError(f"{label}: object required")
     if set(value) != expected:
-        raise BridgeError(
-            f"{label}: keys mismatch missing={sorted(expected-set(value))} extra={sorted(set(value)-expected)}"
-        )
+        raise BridgeError(f"{label}: keys mismatch missing={sorted(expected-set(value))} extra={sorted(set(value)-expected)}")
     return value
 
 
@@ -116,16 +127,12 @@ def _process_now() -> datetime:
 
 def _normalize_binding(raw: dict[str, Any], index: int) -> dict[str, Any]:
     where = f"bindings[{index}]"
-    raw = _keys(
-        raw,
-        {
-            "binding_id", "opportunity_id", "source_ledger_path", "source_ledger_sha256",
-            "submission_manifest_path", "submission_manifest_sha256", "deadline_utc",
-            "vault_authority_sha256", "vault_registry_sha256", "vault_query_sha256",
-            "static_holds",
-        },
-        where,
-    )
+    raw = _keys(raw, {
+        "binding_id", "opportunity_id", "source_ledger_path", "source_ledger_sha256",
+        "submission_manifest_path", "submission_manifest_sha256", "deadline_utc",
+        "vault_authority_sha256", "vault_registry_sha256", "vault_query_sha256",
+        "static_holds",
+    }, where)
     holds = raw["static_holds"]
     if type(holds) is not list:
         raise BridgeError(f"{where}.static_holds: array required")
@@ -144,12 +151,8 @@ def _normalize_binding(raw: dict[str, Any], index: int) -> dict[str, Any]:
         "opportunity_id": _str(raw["opportunity_id"], f"{where}.opportunity_id", token=True),
         "source_ledger_path": _str(raw["source_ledger_path"], f"{where}.source_ledger_path", limit=512),
         "source_ledger_sha256": _sha(raw["source_ledger_sha256"], f"{where}.source_ledger_sha256"),
-        "submission_manifest_path": _str(
-            raw["submission_manifest_path"], f"{where}.submission_manifest_path", limit=512
-        ),
-        "submission_manifest_sha256": _sha(
-            raw["submission_manifest_sha256"], f"{where}.submission_manifest_sha256"
-        ),
+        "submission_manifest_path": _str(raw["submission_manifest_path"], f"{where}.submission_manifest_path", limit=512),
+        "submission_manifest_sha256": _sha(raw["submission_manifest_sha256"], f"{where}.submission_manifest_sha256"),
         "deadline_utc": _ts(raw["deadline_utc"], f"{where}.deadline_utc"),
         "vault_authority_sha256": roots[0],
         "vault_registry_sha256": roots[1],
@@ -184,14 +187,9 @@ def _normalize_vault(value: Any) -> dict[str, Any] | None:
     return _keys(value, {"authority", "registry", "query", "bundle"}, "vault")
 
 
-def _evaluate_at(
-    binding: dict[str, Any],
-    registry_sha256: str,
-    source_ledger: dict[str, Any],
-    submission_manifest: dict[str, Any],
-    vault: dict[str, Any] | None,
-    now: datetime,
-) -> dict[str, Any]:
+def _evaluate_at(binding: dict[str, Any], registry_sha256: str, source_ledger: dict[str, Any],
+                 submission_manifest: dict[str, Any], vault: dict[str, Any] | None,
+                 now: datetime) -> dict[str, Any]:
     if type(source_ledger) is not dict or type(submission_manifest) is not dict:
         raise BridgeError("source_ledger and submission_manifest must be objects")
     source_sha = _digest(source_ledger)
@@ -221,10 +219,7 @@ def _evaluate_at(
             raise BridgeError("vault query root mismatch")
         try:
             vault_proof = verify_bundle(
-                vault["authority"],
-                vault["registry"],
-                vault["query"],
-                vault["bundle"],
+                vault["authority"], vault["registry"], vault["query"], vault["bundle"],
                 expected_authority_sha256=binding["vault_authority_sha256"],
                 expected_registry_sha256=binding["vault_registry_sha256"],
                 verified_at=now,
@@ -246,13 +241,8 @@ def _evaluate_at(
         "status": status,
         "reason_codes": reasons,
         "source_ledger": {"path": binding["source_ledger_path"], "sha256": source_sha},
-        "submission_manifest": {
-            "path": binding["submission_manifest_path"],
-            "sha256": manifest_sha,
-        },
-        "vault": None
-        if vault_proof is None
-        else {
+        "submission_manifest": {"path": binding["submission_manifest_path"], "sha256": manifest_sha},
+        "vault": None if vault_proof is None else {
             "verified": True,
             "current_status": vault_proof["current_status"],
             "current_evaluated_at": vault_proof["current_evaluated_at"],
@@ -268,30 +258,21 @@ def _evaluate_at(
     }
 
 
-def compile_bridge(
-    binding_id: str,
-    source_ledger: dict[str, Any],
-    submission_manifest: dict[str, Any],
-    vault: dict[str, Any] | None = None,
-) -> dict[str, Any]:
+def compile_bridge(binding_id: str, source_ledger: dict[str, Any], submission_manifest: dict[str, Any],
+                   vault: dict[str, Any] | None = None) -> dict[str, Any]:
     """Evaluate one repo-pinned pursuit binding using only the process-owned current UTC time."""
     registry_sha, bindings = _load_binding_registry()
     binding_id = _str(binding_id, "binding_id", token=True)
     if binding_id not in bindings:
         raise BridgeError(f"unknown binding_id: {binding_id}")
-    return _evaluate_at(
-        bindings[binding_id],
-        registry_sha,
-        deepcopy(source_ledger),
-        deepcopy(submission_manifest),
-        deepcopy(_normalize_vault(vault)),
-        _process_now(),
-    )
+    source = _plain_json(source_ledger, "source_ledger")
+    manifest = _plain_json(submission_manifest, "submission_manifest")
+    frozen_vault = None if vault is None else _plain_json(vault, "vault")
+    return _evaluate_at(bindings[binding_id], registry_sha, source, manifest,
+                        _normalize_vault(frozen_vault), _process_now())
 
 
-def _parse_envelope(
-    value: dict[str, Any],
-) -> tuple[dict[str, Any], dict[str, Any], dict[str, Any] | None]:
+def _parse_envelope(value: dict[str, Any]) -> tuple[dict[str, Any], dict[str, Any], dict[str, Any] | None]:
     value = _keys(value, {"source_ledger", "submission_manifest", "vault"}, "envelope")
     return value["source_ledger"], value["submission_manifest"], _normalize_vault(value["vault"])
 
