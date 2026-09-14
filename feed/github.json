@@ -1,9 +1,9 @@
 {
   "counts": {
-    "open_issues": 117,
-    "open_pull_requests": 64,
-    "runs_in_progress": 18,
-    "runs_queued": 843
+    "open_issues": 116,
+    "open_pull_requests": 66,
+    "runs_in_progress": 19,
+    "runs_queued": 907
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -69,6 +69,61 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
+      "branch": "zrc-p6h2/outbound-mutex-takeover-repair-20260914",
+      "created_at": "2026-09-14T03:59:14Z",
+      "draft": false,
+      "head_sha": "42a780847a85627f878011f105267f8bc31022aa",
+      "number": 14308,
+      "title": "Fail closed on changed-provider outbound takeover",
+      "updated_at": "2026-09-14T03:59:14Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zls-g7t2/arc-paper-sage-skill-induction-20260913",
+      "created_at": "2026-09-14T03:59:11Z",
+      "draft": false,
+      "head_sha": "aaeae47967349952130b61c40d8dfab273be1e51",
+      "number": 14307,
+      "title": "ARC Paper: action-efficient skill induction + fail-closed submission carrier",
+      "updated_at": "2026-09-14T03:59:11Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z-sol-13/lead-fence-collision-gate-20260913",
+      "created_at": "2026-09-14T03:57:44Z",
+      "draft": false,
+      "head_sha": "001e24af616b44d0c06c0e1e226e090d8a301a5a",
+      "number": 14304,
+      "title": "revenue: add collision-safe lead claim fence",
+      "updated_at": "2026-09-14T03:57:44Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zhb-q8m2/outbound-mutex-provider-drift-r2",
+      "created_at": "2026-09-14T03:57:23Z",
+      "draft": false,
+      "head_sha": "3e7eee063f01e396040ca768bd7ee6dbfe6ee9ec",
+      "number": 14303,
+      "title": "fix(outbound): reject provider drift during lease takeover",
+      "updated_at": "2026-09-14T03:58:40Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zfhj2x9/outbound-canonical-seam-fix-rejoin-20260913",
+      "created_at": "2026-09-14T03:57:08Z",
+      "draft": false,
+      "head_sha": "b15e2a343a41d27143854e2a79be2b0d92857431",
+      "number": 14302,
+      "title": "fix(outbound): make connector seam the sole production mutex",
+      "updated_at": "2026-09-14T03:57:08Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
       "branch": "zgf-j7m5/offer-outcome-learning-20260913",
       "created_at": "2026-09-14T03:56:40Z",
       "draft": false,
@@ -108,18 +163,7 @@
       "head_sha": "932635011e5850cedf27eaddfa12365000352344",
       "number": 14296,
       "title": "feat(revenue): add public-utility AI governance evidence core",
-      "updated_at": "2026-09-14T03:56:06Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zflux/ohsu-ap-rfi-2027-0824",
-      "created_at": "2026-09-14T03:54:08Z",
-      "draft": false,
-      "head_sha": "c8f6a689194b80e86054b057acc560c67885f774",
-      "number": 14291,
-      "title": "revenue: OHSU Oracle EBS R12 AP RFI evidence carrier",
-      "updated_at": "2026-09-14T03:54:08Z"
+      "updated_at": "2026-09-14T03:58:59Z"
     },
     {
       "author": "woahwhattheheck",
@@ -130,51 +174,7 @@
       "head_sha": "ebf9fe1056ffcb0cd724a00cb9032dc568fef2d4",
       "number": 14289,
       "title": "Revenue: ship Accounts Receivable Leakage Desk",
-      "updated_at": "2026-09-14T03:53:34Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zeta/usac-it-26-139-ai-consulting",
-      "created_at": "2026-09-14T03:50:07Z",
-      "draft": false,
-      "head_sha": "0090408898135a3634971de5f830a09aeb020319",
-      "number": 14281,
-      "title": "revenue: package USAC IT-26-139 AI consulting pursuit",
-      "updated_at": "2026-09-14T03:54:43Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-vigil/org-atomic-outbound-lease-20260913",
-      "created_at": "2026-09-14T03:47:10Z",
-      "draft": false,
-      "head_sha": "3a1ecef508ebf6430a3824f8e5d46ae21c53b960",
-      "number": 14276,
-      "title": "Revenue safety: atomic organization-wide outbound lease",
-      "updated_at": "2026-09-14T03:56:00Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zklr-h5m8/outreach-claim-fence-20260913",
-      "created_at": "2026-09-14T03:46:13Z",
-      "draft": false,
-      "head_sha": "4ae0b5ad134176059d1ed8409fa749ad993cd9c6",
-      "number": 14273,
-      "title": "feat(outreach): add atomic contact claim fence",
-      "updated_at": "2026-09-14T03:54:42Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zss-k7v2/proposal-gate-lifecycle-14251",
-      "created_at": "2026-09-14T03:44:57Z",
-      "draft": false,
-      "head_sha": "86c47a9e32a67eece1382899a898d9ccf40e26da",
-      "number": 14270,
-      "title": "feat(proposal-gate): model submission and award readiness",
-      "updated_at": "2026-09-14T03:55:15Z"
+      "updated_at": "2026-09-14T03:58:43Z"
     }
   ],
   "open_heads": {
@@ -220,7 +220,6 @@
     "14147": "7410ea5e8d1818a2443fddfea55475c5788dc1de",
     "14151": "421b0703a91d251e94be8ca55d9d22c6a76d8f0a",
     "14159": "d9acf14a02c0a1455d063b63d1e4f041219b6410",
-    "14173": "04407dde467b62fc06401f7bd82e81becbdc7200",
     "14188": "1859cf0bfc12f2819f3f63fd4349ed06ca5f341b",
     "14209": "61b6955c3db6ae10a71d54238243c87576a77166",
     "14211": "ff1f29987bfc89bf41a875b6cdb56886ccb74d4e",
@@ -229,24 +228,82 @@
     "14228": "05f892701fdbbde76d0f236a44dc481256772817",
     "14235": "090815cee9355c36db86a6666023f391dc9ebcec",
     "14246": "b9f1b1779b4e4d9b7c19a9fc4744d28881282cd0",
-    "14254": "f0a1eba3ac83614e8303d4108dd6ec82abd2e05c",
+    "14254": "6fbb133246fa0c20ae127dd3b64b8c0ded470615",
     "14256": "66efe9c85f77b6700cc2c8090770e205aee51ffa",
-    "14258": "00ad636d2661ac7c0d101d4d3b3ddd7c0b884ca0",
     "14270": "86c47a9e32a67eece1382899a898d9ccf40e26da",
     "14273": "4ae0b5ad134176059d1ed8409fa749ad993cd9c6",
     "14276": "3a1ecef508ebf6430a3824f8e5d46ae21c53b960",
     "14281": "0090408898135a3634971de5f830a09aeb020319",
     "14289": "ebf9fe1056ffcb0cd724a00cb9032dc568fef2d4",
-    "14291": "c8f6a689194b80e86054b057acc560c67885f774",
     "14296": "932635011e5850cedf27eaddfa12365000352344",
     "14297": "3df71ac7308e8368b481d9b6e1e016c124f7c1a3",
     "14299": "cd6a66435851b57f61c5a68c4ab7f8356701f910",
-    "14300": "fd5ecf1c431ebca673633f748e219595b07d222b"
+    "14300": "fd5ecf1c431ebca673633f748e219595b07d222b",
+    "14302": "b15e2a343a41d27143854e2a79be2b0d92857431",
+    "14303": "3e7eee063f01e396040ca768bd7ee6dbfe6ee9ec",
+    "14304": "001e24af616b44d0c06c0e1e226e090d8a301a5a",
+    "14307": "aaeae47967349952130b61c40d8dfab273be1e51",
+    "14308": "42a780847a85627f878011f105267f8bc31022aa"
   },
-  "pulls_listed": 64,
+  "pulls_listed": 66,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 46.8,
+  "queue_depth_per_runner": 47.7,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zflux/ohsu-ap-rfi-2027-0824",
+      "closed_at": "2026-09-14T03:58:48Z",
+      "head_sha": "c8f6a689194b80e86054b057acc560c67885f774",
+      "merged_at": null,
+      "number": 14291,
+      "state": "CLOSED",
+      "title": "revenue: OHSU Oracle EBS R12 AP RFI evidence carrier"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zaw-c9t4/forensics-canonical-repo-fix-20260913",
+      "closed_at": "2026-09-14T03:58:20Z",
+      "head_sha": "04407dde467b62fc06401f7bd82e81becbdc7200",
+      "merged_at": "2026-09-14T03:58:20Z",
+      "number": 14173,
+      "state": "MERGED",
+      "title": "fix(forensics): bind lease evidence to canonical Commons repo"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "swarm-z/z-forge-smart-outreach-leases-20260913",
+      "closed_at": "2026-09-14T03:58:15Z",
+      "head_sha": "78753d93633292c84abb056d3c8107144c3412f6",
+      "merged_at": "2026-09-14T03:58:14Z",
+      "number": 14305,
+      "state": "MERGED",
+      "title": "Bind smart outreach drafts to atomic lead leases"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "zrt-p3x9/org-contact-pressure",
+      "branch": "zam-v7c2/org-contact-pressure-event-id-admission",
+      "closed_at": "2026-09-14T03:57:43Z",
+      "head_sha": "00ad636d2661ac7c0d101d4d3b3ddd7c0b884ca0",
+      "merged_at": "2026-09-14T03:57:43Z",
+      "number": 14258,
+      "state": "MERGED",
+      "title": "Fix organization-pressure proposed event ID admission"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zv-reconcile-14293",
+      "closed_at": "2026-09-14T03:57:09Z",
+      "head_sha": "9e11c7805ecc369fa61912aead9dd41e324f4b56",
+      "merged_at": "2026-09-14T03:57:09Z",
+      "number": 14301,
+      "state": "MERGED",
+      "title": "reconcile: yield duplicate first-touch CAS to #14273"
+    },
     {
       "author": "woahwhattheheck",
       "base": "zam-v7c2/org-contact-pressure-event-id-admission",
@@ -356,65 +413,10 @@
       "number": 14253,
       "state": "MERGED",
       "title": "Revenue: TTUHSC Keywell pilot-verification subcontract workstream"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z17/offer-portfolio-router-20260913",
-      "closed_at": "2026-09-14T03:31:52Z",
-      "head_sha": "2ccbf7d2e7773e59c2ec9400d93bfec15768eac6",
-      "merged_at": "2026-09-14T03:31:52Z",
-      "number": 14252,
-      "state": "MERGED",
-      "title": "revenue(router): allocate one paid offer per org before outreach"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "zav-s8q3/security-questionnaire-desk-20260913",
-      "branch": "zsable/security-questionnaire-import-assist",
-      "closed_at": "2026-09-14T03:23:26Z",
-      "head_sha": "4219b679763418a217f491ca950cb32c6792d9e8",
-      "merged_at": "2026-09-14T03:23:26Z",
-      "number": 14236,
-      "state": "MERGED",
-      "title": "assist(revenue): make questionnaire desk package import deterministic"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zlp/mmsd-ai-governance-20260913",
-      "closed_at": "2026-09-14T03:23:23Z",
-      "head_sha": "d5f2615da22bce9c765d9ddfce7b03b7690b1b67",
-      "merged_at": "2026-09-14T03:23:23Z",
-      "number": 14242,
-      "state": "MERGED",
-      "title": "MMSD AI governance: fail-closed pursuit/source-status carrier"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "swarm-z/f38-s420-only-zbbc4w8",
-      "closed_at": "2026-09-14T03:23:12Z",
-      "head_sha": "e82415299f3dc4496367b7ad25ecaf69af1838ac",
-      "merged_at": "2026-09-14T03:23:12Z",
-      "number": 14241,
-      "state": "MERGED",
-      "title": "TITAN V5: land F38 S420-only source carrier"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zpq6n/actions-authority-stable-policy-latest-attempt-20260913",
-      "closed_at": "2026-09-14T03:18:29Z",
-      "head_sha": "96e28badbf1ea2ec3d9a9712b3c0cb730942e025",
-      "merged_at": "2026-09-14T03:18:29Z",
-      "number": 13654,
-      "state": "MERGED",
-      "title": "ci: make Actions evidence classification-only"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-14T03:56:45Z",
+  "unchanged_since": "2026-09-14T03:59:23Z",
   "undatable_pulls": []
 }
