@@ -5,7 +5,7 @@ import math
 import os
 import stat
 from pathlib import Path
-from typing import Any
+from typing import Any, Union
 
 MAX_JSON_BYTES = 256 * 1024
 
@@ -41,7 +41,7 @@ def _reject_non_finite(value: Any) -> None:
             _reject_non_finite(item)
 
 
-def read_regular_text(path: str | os.PathLike[str], *, max_bytes: int = MAX_JSON_BYTES) -> str:
+def read_regular_text(path: Union[str, os.PathLike], *, max_bytes: int = MAX_JSON_BYTES) -> str:
     p = Path(path)
     flags = os.O_RDONLY
     if hasattr(os, "O_NOFOLLOW"):
@@ -77,7 +77,7 @@ def read_regular_text(path: str | os.PathLike[str], *, max_bytes: int = MAX_JSON
         os.close(fd)
 
 
-def write_exclusive(path: str | os.PathLike[str], data: bytes) -> None:
+def write_exclusive(path: Union[str, os.PathLike], data: bytes) -> None:
     p = Path(path)
     parent = p.parent
     parent.mkdir(parents=True, exist_ok=True)
