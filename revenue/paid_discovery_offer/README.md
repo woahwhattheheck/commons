@@ -42,8 +42,8 @@ Focused acceptance:
 
 ```bash
 python -m py_compile revenue/paid_discovery_offer/*.py
-python -m unittest revenue.paid_discovery_offer.test_offer -v
-python -O -m unittest revenue.paid_discovery_offer.test_offer -v
+python -m unittest revenue.paid_discovery_offer.test_offer revenue.paid_discovery_offer.test_hardening -v
+python -O -m unittest revenue.paid_discovery_offer.test_offer revenue.paid_discovery_offer.test_hardening -v
 ```
 
-The workflow in `.github/workflows/paid-discovery-offer.yml` runs the same focused suite on Python 3.9 and current Python without touching external systems.
+The workflow in `.github/workflows/paid-discovery-offer.yml` runs the 53 core hostiles plus 8 self-review hardening hostiles (61 total) on Python 3.9 and current Python without touching external systems. The public `engine.py` is a hardened facade over private `_core.py`, preserving the exact originally tested core while adding cross-record chronology, commercial coherence, literal rendering, direct-route rejection, and exact manifest receipts.
