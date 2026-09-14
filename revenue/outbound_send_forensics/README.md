@@ -25,9 +25,11 @@ retain the actual provider/GitHub receipts whose SHA-256 digests are bound into 
 record. `repository_full_name` must come from that retained create result. Caller
 prose, another-repo branches, or branch existence alone are not mutex authority.
 
-## Lease evidence schema
+## Evidence schema and compatibility
 
-`lease_create` is `null` or an exact-field object:
+New evidence uses top-level schema `outbound-send-forensics/v2`. Legacy `outbound-send-forensics/v1` remains readable for historical audits, but its lease object had no repository identity; therefore a v1 record can never classify `PROTECTED_PRE_SEND` and is emitted as `AMBIGUOUS_UNTRUSTED_EVIDENCE`/DNR rather than guessed forward. Receipts/batches emitted by this verifier are v2.
+
+For v2, `lease_create` is `null` or an exact-field object:
 
 ```json
 {
@@ -61,8 +63,8 @@ Every audited send remains DNR. Distinct provider event IDs on one seam add
 
 ## Deterministic receipts
 
-Per-record receipts include `expected_lease_repository` and
-`lease_repository_full_name`; both are covered by `receipt_sha256`. Batch output is
+Per-record v2 receipts include `source_input_schema`, `expected_lease_repository`, and
+`lease_repository_full_name`; all are covered by `receipt_sha256`. Batch output is
 input-order independent and sealed with `batch_sha256`. These digests bind what the
 verifier concluded; they do not elevate caller JSON into provider authority.
 
