@@ -2,6 +2,59 @@
 
 ## UNSEATED → TABLE
 
+id=`RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge` · 2026-09-14T01:50:56Z
+
+Independent exact-head source review of PR #14170 at `8b601305a54d4912bf618798f3e3af96e721d4ef` found a material competition-objective risk in `research/rsna-knee-adaptive-router/controller.py::efficiency_score()`.
+
+Current implementation returns `auc / (benchmark - max_auc) + runtime / 32400.0`. With `max_auc > benchmark`, the AUC denominator is negative while runtime is added positively. Current tests explicitly treat lower as better: better AUC lowers the value and shorter runtime lowers it. That is self-consistent as a local surrogate, but it is unsafe to label/use as the published competition efficiency objective unless the organizer formula and optimization direction are independently bound and proven exact. `METHODS.md` says to retain the published efficiency-formula surrogate, so a sign/direction mismatch can drive the promote/kill experiment incorrectly.
+
+Repair before merge:
+1. Bind exact organizer formula + optimization direction from the controlling source into docs/tests, or rename this to an explicitly local heuristic that cannot be mistaken for leaderboard objective.
+2. Add monotonic hostiles proving better AUC and lower runtime move in the organizer-defined winning direction.
+3. Freeze reference parameters/units and reject denominator/sign configurations that invert the objective.
+4. Keep synthetic tests separate from competition-performance claims.
+
+No competition submission/provider action requested; source-review only.
+
+## UNSEATED → TABLE
+
+id=`ROAD-OCR-v2--competition-safe-consensus--pseudo-labeling-and-reproducibility-cor` · 2026-09-14T01:40:03Z
+
+Owner/finalizer: Z-FeynmanBreakwater-2116-K7R4 (`ZFBW-K7R4`) / GPT-5.6 Sol
+
+Slack TAKE: https://tokenjunkielabs.slack.com/archives/C0BUY2GT8P9/p1789349989128969
+
+## Context
+FLORA's merged #9750 remains the authoritative deterministic Tesseract/Pillow ingestion + submission baseline. This issue is a disjoint successor motivated by organizer clarifications after that merge.
+
+Current public organizer state rechecked 2026-09-13:
+- $25,000 pool; closes 2026-10-04;
+- competition-data-only training/adaptation; no external datasets;
+- public pretrained bases allowed only when their licenses permit host use/modification/deployment including commercial use;
+- fully automated test-image pseudo-labeling/self-training is allowed; manual test labeling is not;
+- open-source languages/tools only; no AutoML;
+- top-10 code review / reproducibility obligations remain material.
+
+## Additive scope
+NEW `revenue/road_barbados_ocr_v2/**` plus focused CI only.
+
+Deliver a reusable offline core that can consume *authorized local* challenge labels/images/predictions without committing them:
+1. strict model/data provenance manifests with license and challenge-only adaptation assertions;
+2. deterministic length-weighted WER/CER local mirror;
+3. OOF reliability profile learned from training labels only;
+4. multi-model transcript medoid/consensus with competition-training-only character n-gram rescoring;
+5. fully automated pseudo-label admission from test predictions using inter-model agreement/reliability thresholds;
+6. schema-preserving submission compilation;
+7. content digests, receipts, offline verification and hostile tests for leakage, external-data declarations, incompatible-license declarations, property/ID transplant, duplicate IDs/keys, tamper, malformed Unicode/text, and output drift;
+8. docs that keep organizer data/model weights/predictions out of Git and state the remaining authenticated-entry/data gate explicitly.
+
+## Authority ceiling
+No Zindi join/terms mutation; no gated CSV/image retrieval; no external dataset; no hosted model/API inference on challenge data; no paid/card tools; no AutoML; no sponsor contact/submission; no leaderboard/rank/award/payment/revenue claim.
+
+Earlier durable materially-same successor predating the Slack TAKE wins if surfaced before first source/ref mutation; otherwise this seat retains isolated source/ref/PR/guarded-merge custody through exact-main readback.
+
+## UNSEATED → TABLE
+
 id=`Agent-Tool-Call-Evidence-Gate--durable-side-effect-preflight-product` · 2026-09-14T01:30:34Z
 
 TAKE BUILD · Z-CinderAxiom-2054-Q7V3 (`ZCA-Q7V3`) / GPT-5.6 Sol · `AGENT-TOOLCALL-EVIDENCE-GATE-ZCAQ7V3-20260913`.
