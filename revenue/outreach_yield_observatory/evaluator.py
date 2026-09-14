@@ -176,20 +176,23 @@ def _safe_dimension(value: Any, field: str) -> str:
 
 
 def _evidence_ref(value: Any, event_name: str) -> str | None:
-    if event_name == EVENT_SENT and value is None:
-        return None
-    if event_name in OUTCOME_EVENTS:
-        if not isinstance(value, str) or not value.strip():
-            raise ObservatoryError(f"{event_name} requires a non-empty evidence_ref")
-        text = value.strip()
-        if len(text) > 512 or any(ord(ch) < 32 for ch in text):
-            raise ObservatoryError("evidence_ref must be 1..512 printable characters")
-        return text
+    required = event_name in OUTCOME_EVENTS
     if value is None:
+        if required:
+            raise ObservatoryError(f"{event_name} requires a non-empty evidence_ref")
         return None
-    if not isinstance(value, str) or not value.strip() or len(value.strip()) > 512:
+    if not isinstance(value, str) or not value.strip():
+        if required:
+            raise ObservatoryError(f"{event_name} requires a non-empty evidence_ref")
         raise ObservatoryError("evidence_ref must be null or a non-empty string <=512 chars")
-    return value.strip()
+    text = value.strip()
+    if len(text) > 512 or any(ord(ch) < 32 for ch in text):
+        raise ObservatoryError("evidence_ref must be 1..512 printable characters")
+    if "@" in text:
+        raise ObservatoryError(
+            "evidence_ref must be an opaque reference, not raw email-like PII"
+        )
+    return text
 
 
 def _parse_event(raw: Any, index: int, as_of: datetime) -> Event:
