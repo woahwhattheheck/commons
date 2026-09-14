@@ -117,18 +117,6 @@ def _same_inode(a: _Any, b: _Any) -> bool:
     return int(a.st_dev) == int(b.st_dev) and int(a.st_ino) == int(b.st_ino)
 
 
-def _cleanup_exact_created_path(path: _Path, created: _Any) -> None:
-    try:
-        visible = _os.lstat(path)
-    except FileNotFoundError:
-        return
-    if _same_inode(visible, created):
-        try:
-            _os.unlink(path)
-        except FileNotFoundError:
-            pass
-
-
 def _read_visible_exact(path: _Path, created: _Any, expected: bytes) -> None:
     flags = _os.O_RDONLY
     if hasattr(_os, "O_NOFOLLOW"):
@@ -174,7 +162,6 @@ def _publish_bytes(path: _Path, raw: bytes) -> None:
         flags |= _os.O_NOFOLLOW
     fd = _os.open(path, flags, 0o600)
     created = _os.fstat(fd)
-    succeeded = False
     try:
         if not _stat.S_ISREG(created.st_mode) or created.st_nlink != 1 or created.st_size != 0:
             raise OSError("new output is not an empty single-link regular file")
@@ -197,11 +184,13 @@ def _publish_bytes(path: _Path, raw: bytes) -> None:
         if not _same_inode(visible, created):
             raise OSError("published pathname was replaced")
         _read_visible_exact(path, created, raw)
-        succeeded = True
     finally:
+        # Deliberately never unlink a pathname on failure.  A check-then-unlink
+        # cleanup cannot be made inode-conditional with portable os.unlink: a
+        # concurrent replacement between lstat and unlink could delete foreign
+        # data.  Failed create-exclusive artifacts therefore remain for operator
+        # inspection/removal; foreign replacements and aliases are never deleted.
         _os.close(fd)
-        if not succeeded:
-            _cleanup_exact_created_path(path, created)
 
 
 def main(argv: list[str] | None = None) -> int:

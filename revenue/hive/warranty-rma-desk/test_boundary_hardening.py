@@ -37,13 +37,15 @@ class PublicationHardeningTest(unittest.TestCase):
             self.assertGreater(len(calls), 1)
             self.assertEqual(out.read_bytes(), raw)
 
-    def test_zero_write_progress_fails_and_removes_only_created_output(self):
+    def test_zero_write_progress_fails_without_pathname_deletion(self):
         with tempfile.TemporaryDirectory() as td:
             out = Path(td) / "export.json"
-            with mock.patch.object(app._os, "write", lambda fd, view: 0):
-                with self.assertRaises(OSError):
-                    app._publish_bytes(out, b"abc")
-            self.assertFalse(out.exists())
+            with mock.patch.object(app._os, "unlink", side_effect=AssertionError("publication failure must never unlink")):
+                with mock.patch.object(app._os, "write", lambda fd, view: 0):
+                    with self.assertRaises(OSError):
+                        app._publish_bytes(out, b"abc")
+            self.assertTrue(out.exists())
+            self.assertEqual(out.read_bytes(), b"")
 
     def test_foreign_path_replacement_is_preserved_on_failure(self):
         raw = b"exact-export-bytes"
@@ -90,7 +92,7 @@ class PublicationHardeningTest(unittest.TestCase):
             self.assertEqual(out.read_bytes(), b"FOREIGN-DURING-READBACK")
             self.assertEqual(displaced.read_bytes(), raw)
 
-    def test_hardlink_during_readback_is_detected_and_created_path_removed(self):
+    def test_hardlink_during_readback_fails_without_deleting_either_name(self):
         raw = b"exact-export-bytes-hardlink"
         with tempfile.TemporaryDirectory() as td:
             out = Path(td) / "export.json"
@@ -106,11 +108,16 @@ class PublicationHardeningTest(unittest.TestCase):
                     os.link(out, alias)
                 return data
 
-            with mock.patch.object(app._os, "read", link_during_read):
-                with self.assertRaises(OSError):
-                    app._publish_bytes(out, raw)
-            self.assertFalse(out.exists())
+            with mock.patch.object(app._os, "unlink", side_effect=AssertionError("publication failure must never unlink")):
+                with mock.patch.object(app._os, "read", link_during_read):
+                    with self.assertRaises(OSError):
+                        app._publish_bytes(out, raw)
+            self.assertEqual(out.read_bytes(), raw)
             self.assertEqual(alias.read_bytes(), raw)
+            out_stat = os.stat(out)
+            alias_stat = os.stat(alias)
+            self.assertEqual((out_stat.st_dev, out_stat.st_ino), (alias_stat.st_dev, alias_stat.st_ino))
+            self.assertEqual(out_stat.st_nlink, 2)
 
     def test_existing_output_is_never_overwritten(self):
         with tempfile.TemporaryDirectory() as td:
