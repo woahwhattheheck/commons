@@ -1,0 +1,47 @@
+{
+  "schema": "tjlabs.pinellas-26-0795-rfi-source-ledger/v1",
+  "solicitation_id": "26-0795-RFI",
+  "observed_at": "2026-09-14T04:24:00Z",
+  "deadline": "2026-10-01T19:00:00Z",
+  "sources": [
+    {
+      "id": "official-opengov-project",
+      "class": "OFFICIAL_PORTAL",
+      "url": "https://procurement.opengov.com/portal/pinellasfl/projects/295048",
+      "status": "HTTP_403_FROM_THIS_RUNTIME",
+      "facts": {"project_id": "26-0795-RFI"},
+      "can_authorize_submission": false
+    },
+    {
+      "id": "mirrored-rfi-pdf",
+      "class": "PUBLIC_MIRROR_OF_COUNTY_RFI",
+      "source_url": "https://bidscopeai.com/opportunities/bbf583f1-9c09-4f42-a28e-5bdacb844ae4",
+      "document_title": "Digital Evidence Request for Information",
+      "pages": 10,
+      "document_facts": {
+        "issue_date": "2026-09-04",
+        "question_deadline": "2026-09-11T18:00:00Z",
+        "response_deadline": "2026-10-01T19:00:00Z",
+        "opengov_registration_required": true,
+        "addenda_acknowledgement_required_if_issued": true,
+        "responses_via_opengov_only": true,
+        "response_withdrawal_lock_days": 120,
+        "rfi_only_no_award_commitment": true
+      },
+      "can_authorize_submission": false
+    },
+    {
+      "id": "secondary-cleatus-summary",
+      "class": "SECONDARY_SUMMARY",
+      "url": "https://www.cleat.ai/government/contracts/digital-evidence-request-for-information-nbu7",
+      "facts": {"listed_documents": 5},
+      "can_authorize_submission": false
+    }
+  ],
+  "authority_gaps": [
+    "Current official OpenGov project bytes and current addenda generation are not retained from the controlling portal",
+    "No OpenGov registration/account state is evidenced here",
+    "Affidavits/attestations are visible through public mirrors but are not signed or represented as complete",
+    "This package does not establish a production-hosting provider, court deployment, certification, or prior court reference"
+  ]
+}
