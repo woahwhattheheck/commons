@@ -2,10 +2,9 @@
 """Chronology-safe reply-to-revenue entrypoint.
 
 The implementation inherited from the original chronology carrier lives in
-``reply_to_revenue_core.py``. This entrypoint applies three narrow policy fixes:
+``reply_to_revenue_core.py``.  This entrypoint applies two narrow policy fixes:
 explicit opt-out evidence keeps the DNC boundary during equal-time conflicts,
-positive surfaces describe recorded machine observations truthfully, and event
-evidence cannot postdate the enclosing observation measurement.
+and positive surfaces describe recorded machine observations truthfully.
 """
 
 from __future__ import annotations
@@ -25,22 +24,8 @@ if _SPEC is None or _SPEC.loader is None:
 _core = importlib.util.module_from_spec(_SPEC)
 _SPEC.loader.exec_module(_core)
 
-_ORIGINAL_LOAD_OBSERVATIONS = _core.load_observations
 _ORIGINAL_REDUCE_CONTACT_STATE = _core._reduce_contact_state
 _MACHINE_CLASSIFICATIONS = frozenset({"DELIVERY_FAILURE", "AUTO_RESPONSE"})
-
-
-def load_observations(path: Path = _core.OBSERVATIONS_PATH) -> dict[str, Any]:
-    """Reject inbound evidence outside the enclosing measurement window."""
-    value = _ORIGINAL_LOAD_OBSERVATIONS(path)
-    measured_at = _core.parse_time(str(value["measured_at"]))
-    for index, event in enumerate(value["events"]):
-        received_at = _core.parse_time(str(event["received_at"]))
-        if received_at > measured_at:
-            raise _core.ReplyRevenueError(
-                f"events[{index}].received_at exceeds observations.measured_at"
-            )
-    return value
 
 
 def _latest_human_bucket(events: list[dict[str, Any]]) -> list[dict[str, Any]]:
@@ -143,9 +128,8 @@ def surface_positives(
     return positives
 
 
-# Core functions resolve globals in the core module. Install the corrected
-# boundaries there before re-exporting the public surface from this entrypoint.
-_core.load_observations = load_observations
+# Core functions resolve globals in the core module.  Install the corrected
+# reducers there before re-exporting the public surface from this entrypoint.
 _core._reduce_contact_state = _reduce_contact_state
 _core.surface_positives = surface_positives
 
