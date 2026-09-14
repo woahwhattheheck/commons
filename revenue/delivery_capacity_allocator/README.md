@@ -18,7 +18,7 @@ Other fail-closed conditions include stale/future source generations, reservatio
 
 There are two deliberately different interfaces:
 
-- `compile_bytes(...)` and `verify_current_bytes(...)` are **historical/test integrity primitives**. Their expected roots and optional clock are caller supplied. They can prove byte self-consistency against those supplied facts, but they are not a production-current authority boundary and must not authorize scheduling, staffing, or a buyer commitment.
+- `compile_bytes(...)`, `verify_historical_bytes(...)`, and the compatibility name `verify_current_bytes(...)` are **historical/test integrity primitives**. Their expected roots and optional clock originate with the caller. `compile_bytes(...)` therefore emits `HISTORICAL_INTEGRITY_ONLY` (or a historical hold), never `CURRENT`; `verify_current_bytes(...)` cannot return true under this caller-bound authority model. These APIs may prove byte self-consistency for replay/testing, but they cannot authorize scheduling, staffing, or a buyer commitment.
 - The production CLI uses `compile_current_bytes(...)` / `verify_current_receipt_bytes(...)`. It owns current UTC and accepts **no caller-selected root as authority**.
 
 This package does not yet have an independently retained root registry, signed upstream receipt store, or other trusted reacquisition path for the current policy/demand/reservation generations. Therefore the production-current boundary intentionally fails closed with `HOLD_RETAINED_ROOT_AUTHORITY` and `RETAINED_ROOT_AUTHORITY_UNAVAILABLE`. It will not relabel hashes computed from the same caller-supplied bytes as trusted roots. A future integration may remove that hold only by wiring an independent retained-root authority and hostile-testing that boundary.
