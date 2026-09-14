@@ -68,13 +68,15 @@ class ExperimentTests(unittest.TestCase):
         with patch("revenue.commercial_experiment_lab.compiler._compile_upstream", return_value=upstream):
             return compile_experiment(value, as_of=AS_OF)
 
-    def test_metrics_money_timing_recommendations_and_authority(self) -> None:
+    def test_metrics_money_timing_descriptive_status_and_authority(self) -> None:
         value, upstream = fixture(); result = self.compile(value, upstream)
         arms = {x["arm"]["id"]: x for x in result["packet"]["arms"]}; a, b = arms["arm-a"], arms["arm-b"]
         self.assertEqual((a["stage_reach_bps"]["REPLY"], a["stage_reach_bps"]["ACCEPTANCE"], a["stage_reach_bps"]["CASH"]), (10000, 5000, 5000))
         self.assertEqual(a["median_seconds_from_traffic"]["REPLY"], 600)
         self.assertEqual((a["gross_cash_by_currency"], a["cash_reversals_by_currency"], a["net_cash_by_currency"]), ({"USD": 100}, {"USD": 25}, {"USD": 75}))
-        self.assertEqual((a["recommendation"]["state"], b["recommendation"]["state"]), ("EXPAND_CANDIDATE", "PAUSE_REVIEW"))
+        self.assertEqual((a["strategy_status"]["state"], b["strategy_status"]["state"]), ("DESCRIPTIVE_ONLY", "DESCRIPTIVE_ONLY"))
+        self.assertEqual(result["packet"]["chronology"]["state"], "SELF_ASSERTED_UNVERIFIED")
+        self.assertFalse(result["packet"]["chronology"]["strategy_recommendations_authorized"])
         self.assertEqual(result["packet"]["comparisons"][0]["interpretation"], "OBSERVATIONAL_NOT_CAUSAL")
         self.assertTrue(all(v is False for v in result["packet"]["authority"].values()))
 
@@ -88,10 +90,11 @@ class ExperimentTests(unittest.TestCase):
         for value, upstream, text in cases:
             with self.subTest(text=text), self.assertRaisesRegex(LabError, text): self.compile(value, upstream)
 
-    def test_upstream_hold_excluded_and_blocks_expand(self) -> None:
+    def test_upstream_hold_excluded_and_reported_descriptively(self) -> None:
         value, upstream = fixture(); opp = upstream["packet"]["opportunities"][0]; opp["state"] = "HOLD"; opp["hold_reasons"] = ["EVIDENCE_STALE"]; upstream["packet"]["state"] = "HOLD"
         result = self.compile(value, upstream); arm = {x["arm"]["id"]: x for x in result["packet"]["arms"]}["arm-a"]
-        self.assertEqual((arm["eligible_count"], arm["held_count"], arm["recommendation"]["state"]), (1, 1, "INSUFFICIENT_EVIDENCE"))
+        self.assertEqual((arm["eligible_count"], arm["held_count"], arm["strategy_status"]["state"]), (1, 1, "DESCRIPTIVE_ONLY"))
+        self.assertIn("UPSTREAM_HOLD_PRESENT", arm["strategy_status"]["reasons"])
         self.assertEqual(result["packet"]["excluded_opportunities"][0]["reason"], "UPSTREAM_FUNNEL_HOLD")
 
     def test_no_fx_and_order_invariance(self) -> None:
@@ -106,13 +109,40 @@ class ExperimentTests(unittest.TestCase):
         value, upstream = fixture(); three = self.compile(copy.deepcopy(value), copy.deepcopy(upstream)); upstream["receipt"]["input_sha256"] = "e" * 64; upstream["receipt"]["packet_sha256"] = "f" * 64
         four = self.compile(value, upstream); self.assertNotEqual(three["packet"]["input_sha256"], four["packet"]["input_sha256"])
 
-    def test_threshold_paths(self) -> None:
-        value, upstream = fixture(); value["plan"]["thresholds"]["expand_reply_bps"] = 10000; value["plan"]["thresholds"]["expand_acceptance_bps"] = 5000
-        self.assertEqual({x["arm"]["id"]: x for x in self.compile(value, upstream)["packet"]["arms"]}["arm-a"]["recommendation"]["state"], "EXPAND_CANDIDATE")
-        value, upstream = fixture(); a2 = upstream["packet"]["opportunities"][1]; a2["strongest_evidenced_stage"] = "TRAFFIC"; a2["stage_times"] = {"TRAFFIC": "2026-09-13T10:11:00Z"}
-        self.assertEqual({x["arm"]["id"]: x for x in self.compile(value, upstream)["packet"]["arms"]}["arm-a"]["recommendation"]["state"], "KEEP_TESTING")
+    def test_post_hoc_backdating_and_threshold_rewrite_cannot_mint_strategy_advice(self) -> None:
+        # Red-team attack: start after outcomes are known, backdate the caller-owned
+        # declaration/assignment record, rewrite the declared thresholds to favor the
+        # observed winner, and reseal syntactically valid source metadata. V1 accepts
+        # the internally consistent historical record but must downgrade it to
+        # self-asserted descriptive evidence with no expand/pause/keep-testing state.
+        value, upstream = fixture()
+        value["plan"]["declared_at"] = "2026-09-13T09:50:00Z"
+        for i, assignment in enumerate(value["assignments"]):
+            assignment["assigned_at"] = f"2026-09-13T10:0{i}:00Z"
+            assignment["evidence"] = source(f"resealed/posthoc-{i}.json")
+        value["plan"]["source"] = source("resealed/posthoc-plan.json")
+        value["plan"]["thresholds"] = {"expand_reply_bps": 1, "expand_acceptance_bps": 1, "pause_reply_bps": 0}
+        result = self.compile(value, upstream)
+        self.assertEqual(result["packet"]["chronology"], {
+            "state": "SELF_ASSERTED_UNVERIFIED",
+            "plan_predeclaration_authenticated": False,
+            "assignment_chronology_authenticated": False,
+            "declared_thresholds_authenticated": False,
+            "strategy_recommendations_authorized": False,
+        })
+        self.assertTrue(all(arm["strategy_status"]["state"] == "DESCRIPTIVE_ONLY" for arm in result["packet"]["arms"]))
+        rendered = repr(result["packet"])
+        for forbidden in ("EXPAND_CANDIDATE", "PAUSE_REVIEW", "KEEP_TESTING"):
+            self.assertNotIn(forbidden, rendered)
+        self.assertEqual(result["receipt"]["chronology_state"], "SELF_ASSERTED_UNVERIFIED")
+        self.assertFalse(result["receipt"]["strategy_recommendations_authorized"])
+
+    def test_self_asserted_minimum_sample_is_only_a_note(self) -> None:
         value, upstream = fixture(); value["plan"]["minimum_sample_per_arm"] = 3
-        self.assertTrue(all(x["recommendation"]["state"] == "INSUFFICIENT_EVIDENCE" for x in self.compile(value, upstream)["packet"]["arms"]))
+        result = self.compile(value, upstream)
+        for arm in result["packet"]["arms"]:
+            self.assertEqual(arm["strategy_status"]["state"], "DESCRIPTIVE_ONLY")
+            self.assertIn("SELF_ASSERTED_MINIMUM_SAMPLE_NOT_MET", arm["strategy_status"]["reasons"])
 
     def test_shape_time_number_pii_and_source_guards(self) -> None:
         cases = []
