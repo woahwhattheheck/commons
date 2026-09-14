@@ -75,7 +75,7 @@ def validate_packet(packet):
  evidence_ids=set(); sources={}; proofs={}
  for e in evs:
   _keys(e,{"id","status","authority","captured_at","reference","sha256","event_sha256"},set(),f"evidence {e.get('id','?')}"); eid=_id(e["id"],"evidence.id"); evidence_ids.add(eid); _enum(e["status"],EVIDENCE_STATUS,f"evidence {eid}.status"); authority=_enum(e["authority"],AUTHORITIES,f"evidence {eid}.authority"); _utc(e["captured_at"],f"evidence {eid}.captured_at"); ref=_text(e["reference"],f"evidence {eid}.reference"); source_sha=_digest(e["sha256"],f"evidence {eid}.sha256"); _digest(e["event_sha256"],f"evidence {eid}.event_sha256")
-  source=(authority,source_sha)
+  source=source_sha
   if source in sources: raise ValueError(f"evidence source identity reused under multiple ids: {sources[source]} and {eid}")
   sources[source]=eid; proofs[eid]=e
  for eid in evidence_ids:
