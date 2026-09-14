@@ -1,0 +1,26 @@
+name: organization-outbound-lease
+on:
+  pull_request:
+    paths:
+      - 'revenue/organization_outbound_lease/**'
+      - 'tests/test_organization_outbound_lease.py'
+      - '.github/workflows/organization-outbound-lease.yml'
+  push:
+    paths:
+      - 'revenue/organization_outbound_lease/**'
+      - 'tests/test_organization_outbound_lease.py'
+      - '.github/workflows/organization-outbound-lease.yml'
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.9', '3.13']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - run: python -m py_compile revenue/organization_outbound_lease/*.py tests/test_organization_outbound_lease.py
+      - run: python -m unittest -v tests.test_organization_outbound_lease
+      - run: python -O -m unittest -v tests.test_organization_outbound_lease
