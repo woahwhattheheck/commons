@@ -1,0 +1,20 @@
+name: mmsd-ai-governance-policy
+on:
+  pull_request:
+    paths:
+      - 'revenue/mmsd_ai_governance_policy/**'
+      - '.github/workflows/mmsd-ai-governance-policy.yml'
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.11', '3.13']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - run: python -m py_compile revenue/mmsd_ai_governance_policy/engine.py revenue/mmsd_ai_governance_policy/test_engine.py
+      - run: python -m unittest -v revenue.mmsd_ai_governance_policy.test_engine
+      - run: python -O -m unittest -v revenue.mmsd_ai_governance_policy.test_engine
