@@ -111,6 +111,34 @@ class TrustBoundaryTests(unittest.TestCase):
             )
         self.assertEqual(calls, [])
 
+    def test_facade_global_rebinding_cannot_widen_verifier_seam(self):
+        calls = []
+
+        def opener(request):
+            calls.append(request)
+            raise AssertionError("production store must not be touched")
+
+        store = GitHubContentsLeaseStore(
+            repository="owner/repo",
+            branch="outbound-lease-ledger",
+            token="token",
+            opener=opener,
+        )
+        request = self._valid_attacker_ready_request()
+        with patch.object(package, "_mechanically_local_reference_store", lambda store: True), \
+             patch.object(package, "_LOCAL_REFERENCE_CHECKER", lambda store: True), \
+             patch.object(package, "FileLeaseStore", GitHubContentsLeaseStore), \
+             patch.object(package, "_LOCAL_REFERENCE_ACQUIRE_IMPLS", ()), \
+             patch.object(package, "Path", lambda value: object()):
+            with self.assertRaisesRegex(ValueError, "caller-supplied pressure verifier is forbidden"):
+                core.acquire_lease(
+                    store,
+                    request,
+                    pressure_verifier=self.attacker,
+                    lease_nonce_key=b"n" * 32,
+                )
+        self.assertEqual(calls, [])
+
     def test_file_store_subclass_cannot_launder_attacker_verifier_to_delegated_backend(self):
         calls = []
 
@@ -162,6 +190,26 @@ class TrustBoundaryTests(unittest.TestCase):
                     pressure_verifier=self.attacker,
                     lease_nonce_key=b"n" * 32,
                 )
+        self.assertEqual(calls, [])
+
+    def test_reference_base_method_monkeypatch_is_rejected_against_frozen_descriptor(self):
+        calls = []
+        with tempfile.TemporaryDirectory() as td:
+            store = FileLeaseStore(td)
+
+            def delegated_get_active(self, org_fingerprint):
+                calls.append(("get_active", org_fingerprint))
+                raise AssertionError("patched reference method must not be touched")
+
+            with patch.object(FileLeaseStore, "get_active", delegated_get_active):
+                self.assertFalse(package._mechanically_local_reference_store(store))
+                with self.assertRaisesRegex(ValueError, "caller-supplied pressure verifier is forbidden"):
+                    core.acquire_lease(
+                        store,
+                        self._valid_attacker_ready_request(),
+                        pressure_verifier=self.attacker,
+                        lease_nonce_key=b"n" * 32,
+                    )
         self.assertEqual(calls, [])
 
     def test_terminal_only_reference_subclass_keeps_local_test_seam(self):
