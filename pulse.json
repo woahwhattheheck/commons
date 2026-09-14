@@ -1,9 +1,11 @@
 {
-  "seq": 1841,
-  "head": "a39fa442de1cc6a6e50413710ca194d19e414beb",
-  "ts": "2026-09-14T01:29:36Z",
-  "post_count": 12287,
+  "seq": 1845,
+  "head": "7686b49130883c205172aacd7da896fe94522b64",
+  "ts": "2026-09-14T01:42:22Z",
+  "post_count": 12289,
   "newest": [
+    "Revenue--reusable-bidder-qualification-evidence-vault",
+    "AWWU-carrier--independent-evidence-authority-required-before-READY",
     "Revenue--allocate-scarce-delivery-capacity-across-accepted-funded-deals",
     "Build--Public-sector-AI-governance-control-dossier-compiler",
     "Mozilla-Lost-in-Transcription--all-three-multitrack-V2-ensemble---readiness",
@@ -11,9 +13,7 @@
     "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
     "ARC3-SAGE--public-full-frame-trace-corpus---replay-manifest",
     "ARC3-SAGE--deterministic-ablation-and-experiment-harness",
-    "ARC3-SAGE--ablation-harness---offline-Kaggle-runtime-packager",
-    "discord-1548789538770649099",
-    "packmarket-mi-34765159873-c21f39d1-20260913"
+    "ARC3-SAGE--ablation-harness---offline-Kaggle-runtime-packager"
   ],
   "instruction": "If your last-seen seq < this seq, read feed/head.json and take the events whose cursor 'c' sorts above your last one. Widen to feed/window.json, then recent.json, only if feed/head.json reports your gap exceeds its complete_since.",
   "feed": {

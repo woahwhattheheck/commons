@@ -9,8 +9,8 @@ def sample(): return c.load_json(HERE / 'sample_input.json')
 def at(text='2026-09-14T02:00:00Z'): return c.parse_time(text, 'test')
 
 class ContractTests(unittest.TestCase):
-    def test_happy_ready(self):
-        r=c.compile_receipt(sample(),trusted_as_of=at()); self.assertEqual(r['state'],c.READY); self.assertEqual(r['blockers'],[]); self.assertEqual(r['metrics']['verified_required_interface_count'],2); self.assertTrue(all(v is False for v in r['authority'].values()))
+    def test_all_pass_self_asserted_packet_still_holds(self):
+        r=c.compile_receipt(sample(),trusted_as_of=at()); self.assertEqual(r['state'],'HOLD'); self.assertEqual(r['evidence_state'],c.EVIDENCE_CONSISTENT); self.assertEqual(r['metrics']['verified_required_interface_count'],2); self.assertTrue(set(c.INDEPENDENT_AUTHORITY_BLOCKERS).issubset(r['blockers'])); self.assertTrue(all(v is False for v in r['authority'].values()))
     def test_deadline_closed(self):
         r=c.compile_receipt(sample(),trusted_as_of=at('2026-10-02T00:00:00Z')); self.assertEqual(r['state'],'HOLD'); self.assertIn('DEADLINE_CLOSED',r['blockers'])
     def test_source_future(self):
@@ -53,10 +53,16 @@ class ContractTests(unittest.TestCase):
         p=sample(); r=c.compile_receipt(p,trusted_as_of=at()); r['metrics']['target_rows']+=1; self.assertRaises(c.ContractError,c.verify_receipt,p,r,trusted_as_of=at())
     def test_receipt_transplant_rejected(self):
         p=sample(); r=c.compile_receipt(p,trusted_as_of=at()); p2=sample(); p2['opportunity']['opportunity_id']='OTHER'; self.assertRaises(c.ContractError,c.verify_receipt,p2,r,trusted_as_of=at())
-    def test_historical_ready_current_deadline_hold(self):
-        p=sample(); r=c.compile_receipt(p,trusted_as_of=at()); v=c.verify_receipt(p,r,trusted_as_of=at('2026-10-02T00:00:00Z')); self.assertEqual(v['historical_state'],c.READY); self.assertEqual(v['current_state'],'HOLD'); self.assertIn('DEADLINE_CLOSED',v['current_blockers'])
+    def test_historical_hold_current_deadline_hold(self):
+        p=sample(); r=c.compile_receipt(p,trusted_as_of=at()); v=c.verify_receipt(p,r,trusted_as_of=at('2026-10-02T00:00:00Z')); self.assertEqual(v['historical_state'],'HOLD'); self.assertEqual(v['current_state'],'HOLD'); self.assertIn('DEADLINE_CLOSED',v['current_blockers']); self.assertTrue(set(c.INDEPENDENT_AUTHORITY_BLOCKERS).issubset(v['current_blockers']))
     def test_render_authority_boundary(self):
-        p=sample(); r=c.compile_receipt(p,trusted_as_of=at()); md=c.render_markdown(p,r); self.assertIn('PROPOSED_NOT_ACCEPTED',md); self.assertIn('does not authorize outreach',md)
+        p=sample(); r=c.compile_receipt(p,trusted_as_of=at()); md=c.render_markdown(p,r); self.assertIn('PROPOSED_NOT_ACCEPTED',md); self.assertIn('Candidate packet bytes cannot authorize READY',md); self.assertIn('Independent authority challenge',md)
+    def test_authority_challenge_binds_declared_universe(self):
+        p=sample(); a=c.build_authority_challenge(p); p2=sample(); p2['migration']['required_interface_ids']=['meter_reads']; b=c.build_authority_challenge(p2); self.assertNotEqual(a['requirements_binding_sha256'],b['requirements_binding_sha256']); self.assertNotEqual(a['challenge_sha256'],b['challenge_sha256'])
+    def test_fake_independent_root_field_is_rejected(self):
+        p=sample(); p['independent_authority']={'source_root':'0'*64}; self.assertRaises(c.ContractError,c.compile_receipt,p,trusted_as_of=at())
+    def test_fabricated_pass_hashes_cannot_clear_authority_hold(self):
+        p=sample(); p['interfaces'][0]['test_receipt_sha256']='1'*64; r=c.compile_receipt(p,trusted_as_of=at()); self.assertEqual(r['state'],'HOLD'); self.assertIn('INDEPENDENT_EVIDENCE_AUTHORITY_REQUIRED',r['blockers'])
     def test_duplicate_json_key_rejected(self):
         with tempfile.TemporaryDirectory() as td:
             path=pathlib.Path(td)/'x.json'; path.write_text('{"schema":"x","schema":"y"}'); self.assertRaises(c.ContractError,c.load_json,path)

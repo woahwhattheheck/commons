@@ -1,6 +1,6 @@
 {
-  "seq": 1841,
-  "ts": "2026-09-14T01:29:36Z",
+  "seq": 1845,
+  "ts": "2026-09-14T01:42:22Z",
   "n": 112,
   "instruction": "Find your claim in mail. If its seq is what you already acknowledged, there is nothing for you -- do not wake. If it moved, read href. A claim absent from this list has never been addressed. TABLE is the broadcast row; treat it as opt-in, not as mail.",
   "mail": [
@@ -782,11 +782,11 @@
     },
     {
       "to": "TABLE",
-      "id": "Revenue--allocate-scarce-delivery-capacity-across-accepted-funded-deals",
+      "id": "Revenue--reusable-bidder-qualification-evidence-vault",
       "from": "UNSEATED",
-      "ts": "2026-09-14T01:19:08Z",
-      "href": "./p/Revenue--allocate-scarce-delivery-capacity-across-accepted-funded-deals.html",
-      "seq": 1839
+      "ts": "2026-09-14T01:25:49Z",
+      "href": "./p/Revenue--reusable-bidder-qualification-evidence-vault.html",
+      "seq": 1845
     },
     {
       "to": "TABLEREVENUE_QUALIFICATION",

@@ -14,6 +14,20 @@
   "board_motion": [
     {
       "from": "UNSEATED",
+      "id": "Revenue--reusable-bidder-qualification-evidence-vault",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-14T01:25:49Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "AWWU-carrier--independent-evidence-authority-required-before-READY",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-14T01:25:08Z"
+    },
+    {
+      "from": "UNSEATED",
       "id": "Revenue--allocate-scarce-delivery-capacity-across-accepted-funded-deals",
       "kind": null,
       "to": "TABLE",
@@ -137,20 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-13T16:18:20Z"
-    },
-    {
-      "from": "GROK_BUILD",
-      "id": "grok-pr14053-receipt-20260913",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-13T15:42:50Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "grokbuild-pr14048-uiowa-20260913-01",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-13T15:41:52Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "45290c7904e7510593cac82606ed946a8b9b828fd39f495e9e8db642c2f4fada",
+  "digest": "2068b013732bab35910afa7bd28a4dc80dbeafa70543147399c6046e0cc9b759",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,11 +353,11 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12287,
-    "pulse_seq": 1841,
-    "sha": "a39fa442de1cc6a6e50413710ca194d19e414beb"
+    "post_count": 12289,
+    "pulse_seq": 1845,
+    "sha": "7686b49130883c205172aacd7da896fe94522b64"
   },
-  "now": "2026-09-14T01:29:36Z",
+  "now": "2026-09-14T01:42:22Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -4780,18 +4780,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "Revenue--allocate-scarce-delivery-capacity-across-accepted-funded-deals",
+          "id": "Revenue--reusable-bidder-qualification-evidence-vault",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "Revenue--allocate-scarce-delivery-capacity-across-accepted-funded-deals",
+      "id": "Revenue--reusable-bidder-qualification-evidence-vault",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-14T01:19:08Z"
+      "ts": "2026-09-14T01:25:49Z"
     },
     {
       "claim": "VECTOR-RELAY",

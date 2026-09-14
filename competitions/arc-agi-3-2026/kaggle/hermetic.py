@@ -303,6 +303,19 @@ def dependency_closure(bundle_root: Path) -> dict[str, object]:
             tree = ast.parse(data.decode("utf-8"), filename=rel)
         except (UnicodeDecodeError, SyntaxError) as exc:
             raise HermeticError(f"cannot parse verified Python source: {rel}") from exc
+
+        builtins_module_aliases: set[str] = set()
+        builtin_import_aliases: set[str] = set()
+        for node in ast.walk(tree):
+            if isinstance(node, ast.Import):
+                for alias in node.names:
+                    if alias.name == "builtins":
+                        builtins_module_aliases.add(alias.asname or "builtins")
+            elif isinstance(node, ast.ImportFrom) and node.level == 0 and node.module == "builtins":
+                for alias in node.names:
+                    if alias.name == "__import__":
+                        builtin_import_aliases.add(alias.asname or "__import__")
+
         for node in ast.walk(tree):
             roots: list[str] = []
             if isinstance(node, ast.Import):
@@ -322,13 +335,33 @@ def dependency_closure(bundle_root: Path) -> dict[str, object]:
                     imported_roots.append(node.module.split(".", 1)[0])
                 if "importlib" in imported_roots:
                     dynamic_sites.add(f"{rel}:{getattr(node, 'lineno', 0)}:importlib-capability")
+                if isinstance(node, ast.ImportFrom) and node.level == 0 and node.module == "builtins":
+                    if any(alias.name == "__import__" for alias in node.names):
+                        dynamic_sites.add(f"{rel}:{getattr(node, 'lineno', 0)}:builtins.__import__-capability")
+            elif isinstance(node, ast.Name) and isinstance(node.ctx, ast.Load):
+                if node.id == "__builtins__" or node.id in builtin_import_aliases or node.id == "__import__":
+                    dynamic_sites.add(f"{rel}:{getattr(node, 'lineno', 0)}:{node.id}-capability")
+            elif isinstance(node, ast.Attribute) and node.attr == "__import__":
+                if isinstance(node.value, ast.Name) and node.value.id in builtins_module_aliases | {"__builtins__"}:
+                    dynamic_sites.add(f"{rel}:{getattr(node, 'lineno', 0)}:builtins.__import__-capability")
+            elif isinstance(node, ast.Subscript):
+                if isinstance(node.value, ast.Name) and node.value.id == "__builtins__":
+                    key = node.slice
+                    if isinstance(key, ast.Constant) and key.value == "__import__":
+                        dynamic_sites.add(f"{rel}:{getattr(node, 'lineno', 0)}:__builtins__.__import__-capability")
             elif isinstance(node, ast.Call):
                 name = _call_name(node.func)
-                if name in {"__import__", "importlib.import_module"}:
+                alias_calls = {f"{alias}.__import__" for alias in builtins_module_aliases}
+                if name in {"__import__", "importlib.import_module"} | builtin_import_aliases | alias_calls:
                     dynamic_sites.add(f"{rel}:{getattr(node, 'lineno', 0)}:{name}")
+                if name == "getattr" and len(node.args) >= 2:
+                    target, attribute = node.args[0], node.args[1]
+                    target_name = target.id if isinstance(target, ast.Name) else None
+                    if target_name in builtins_module_aliases | {"__builtins__"} and isinstance(attribute, ast.Constant) and attribute.value == "__import__":
+                        dynamic_sites.add(f"{rel}:{getattr(node, 'lineno', 0)}:reflective-builtins.__import__")
             for root in roots:
-                if root == "ctypes":
-                    runtime_escape_imports.add(f"{rel}:{getattr(node, 'lineno', 0)}:ctypes")
+                if root in {"ctypes", "_ctypes"}:
+                    runtime_escape_imports.add(f"{rel}:{getattr(node, 'lineno', 0)}:{root}")
                 if root in local_roots:
                     local_imports.add(root)
                 elif root in stdlib:
@@ -377,7 +410,7 @@ def _bootstrap_text(src_root: Path, entrypoint: str) -> str:
     blocked = repr((
         "socket.__new__", "socket.bind", "socket.connect", "socket.getaddrinfo",
         "subprocess.Popen", "os.system", "os.exec", "os.spawn", "os.posix_spawn",
-        "os.posix_spawnp", "os.fork", "os.forkpty",
+        "os.posix_spawnp", "os.fork", "os.forkpty", "ctypes.dlopen", "ctypes.dlsym",
     ))
     return f'''from pathlib import Path\nimport runpy, sys\nBLOCKED = set({blocked})\ndef _audit(event, args):\n    if event in BLOCKED:\n        raise RuntimeError("HERMETIC_AUDIT_DENY:" + event)\nsys.addaudithook(_audit)\nROOT = Path({str(src_root)!r})\nsys.path.insert(0, str(ROOT))\nrunpy.run_path(str(ROOT / {entrypoint!r}), run_name="__main__")\n'''
 
