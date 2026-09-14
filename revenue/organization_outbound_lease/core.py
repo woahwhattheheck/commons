@@ -47,8 +47,10 @@ class RsaPublicKey:
         _opaque(self.key_id, "RSA key id")
         if type(self.modulus) is not int or self.modulus <= 0 or self.modulus.bit_length() < 2048:
             raise ValueError("RSA modulus must be at least 2048 bits")
-        if type(self.exponent) is not int or self.exponent < 3 or self.exponent % 2 == 0:
-            raise ValueError("RSA public exponent must be an odd integer >= 3")
+        if self.modulus % 2 == 0:
+            raise ValueError("RSA modulus must be odd")
+        if type(self.exponent) is not int or self.exponent < 3 or self.exponent % 2 == 0 or self.exponent >= self.modulus:
+            raise ValueError("RSA public exponent must be an odd integer >= 3 and smaller than modulus")
 
     @classmethod
     def from_hex(cls, *, key_id: str, modulus_hex: str, exponent: int = 65537) -> "RsaPublicKey":
@@ -100,8 +102,9 @@ def fingerprint_organization(canonical_identity: bytes, key: bytes) -> str:
 
 
 def holder_capability_commitment(capability: bytes) -> str:
-    secret = _require_secret(capability, "holder capability")
-    return sha256_hex(HOLDER_DOMAIN + secret)
+    if not isinstance(capability, (bytes, bytearray)) or len(capability) != 32:
+        raise ValueError("holder capability must be exactly 32 bytes")
+    return sha256_hex(HOLDER_DOMAIN + bytes(capability))
 
 
 def normalize_organization_fingerprint(value: Any) -> str:
