@@ -15,6 +15,7 @@ from typing import Any, Dict, Iterable, List
 
 ALLOWED_GATE_STATUS = {"PROVEN", "PARTNER_CURABLE", "MISSING", "HOLD", "NOT_APPLICABLE"}
 FINAL_STATES = {"PRIME_READY", "TEAMING_READY", "HOLD", "NO_BID"}
+DERIVED_SOURCE_GATES = {"client_references", "recent_domain_engagements", "safety_net_experience"}
 
 
 def _load(path: Path) -> Dict[str, Any]:
@@ -60,6 +61,20 @@ def _status_map(evidence: Dict[str, Any]) -> Dict[str, str]:
             raise ValueError(f"invalid gate status {value!r} for {key}")
         out[str(key)] = str(value)
     return out
+
+
+def _validate_proven_gate_sources(status: Dict[str, str], evidence: Dict[str, Any]) -> None:
+    sources = evidence.get("gate_sources", {})
+    if not isinstance(sources, dict):
+        raise ValueError("gate_sources must be an object")
+    for gate_id, gate_status in status.items():
+        if gate_status != "PROVEN" or gate_id in DERIVED_SOURCE_GATES:
+            continue
+        bound = sources.get(gate_id)
+        if isinstance(bound, str):
+            bound = [bound] if bound.strip() else []
+        if not isinstance(bound, list) or not bound or not all(isinstance(x, str) and x.strip() for x in bound):
+            raise ValueError(f"{gate_id} cannot be PROVEN without >=1 bound source")
 
 
 def _derive_count_gates(status: Dict[str, str], evidence: Dict[str, Any], domain_meta: Dict[str, Any]) -> None:
@@ -113,6 +128,7 @@ def evaluate(spec: Dict[str, Any], evidence: Dict[str, Any]) -> Dict[str, Any]:
 
     status = _status_map(evidence)
     _derive_count_gates(status, evidence, spec["domains"][domain])
+    _validate_proven_gate_sources(status, evidence)
     required_ids = _required_gate_ids(spec, service_type)
     normalized = {gid: status.get(gid, "MISSING") for gid in required_ids}
     blockers = [gid for gid, st in normalized.items() if st != "PROVEN"]
