@@ -57,3 +57,12 @@ class RepositoryArtifactTests(unittest.TestCase):
         self.assertFalse(ledger["complete"])
         self.assertTrue(all(row["sha256"] is None for row in ledger["documents"]))
 
+    def test_manifest_matches_exact_file_bytes(self):
+        manifest = strict.strict_json_loads((self.root / "manifest.json").read_bytes())
+        repo_root = self.root.parents[1]
+        for row in manifest["files"]:
+            path = repo_root / row["path"]
+            data = path.read_bytes()
+            self.assertEqual(len(data), row["bytes"], row["path"])
+            self.assertEqual(hashlib.sha256(data).hexdigest(), row["sha256"], row["path"])
+
