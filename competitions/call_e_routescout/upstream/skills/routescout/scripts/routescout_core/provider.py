@@ -76,4 +76,4 @@ def run_live(inquiry: Mapping[str, Any], confirm_call: str) -> tuple[str, dict[s
             "CALL-E create response lacked call id; do not retry blindly—inspect provider state using the idempotency key"
         )
     terminal = api.wait(call_id)
-    return call_id, reconcile(i, terminal)
+    return call_id, reconcile(i, terminal, expected_call_id=call_id)

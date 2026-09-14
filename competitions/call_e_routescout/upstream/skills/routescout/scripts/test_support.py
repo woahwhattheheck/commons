@@ -51,6 +51,12 @@ def terminal(**overrides):
         "id": "call_demo_1",
         "status": "completed",
         "task_completed": True,
+        "metadata": {
+            "workflow": "routescout",
+            "schema_version": "1",
+            "inquiry_id": INQUIRY["inquiry_id"],
+            "inquiry_digest_sha256": r.inquiry_digest(INQUIRY),
+        },
         "recipients": [{"structured_result": structured()}],
         "evidence": ["Recipient said: Please send solicitation questions to procurement@example.com and reference RFP-123."],
     }

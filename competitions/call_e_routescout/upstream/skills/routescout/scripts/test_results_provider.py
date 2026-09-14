@@ -78,3 +78,44 @@ class ResultProviderTests(unittest.TestCase):
         def test_nonterminal_result_is_never_reconciled(self):
             with self.assertRaises(r.RouteScoutError):
                 r.reconcile(INQUIRY, terminal(status="in_progress"))
+
+        def test_terminal_from_another_inquiry_holds_before_route_semantics(self):
+            other = copy.deepcopy(INQUIRY)
+            other["inquiry_id"] = "demo-route-002"
+            receipt = r.reconcile(other, terminal())
+            self.assertEqual(receipt["outcome"], "HUMAN_REQUIRED")
+            self.assertIsNone(receipt["route"])
+            self.assertFalse(receipt["provider_binding"]["verified"])
+
+        def test_missing_provider_metadata_holds(self):
+            receipt = r.reconcile(INQUIRY, terminal(metadata={}))
+            self.assertEqual(receipt["outcome"], "HUMAN_REQUIRED")
+            self.assertIsNone(receipt["route"])
+            self.assertFalse(receipt["provider_binding"]["verified"])
+
+        def test_expected_call_id_mismatch_holds(self):
+            receipt = r.reconcile(INQUIRY, terminal(id="call_A"), expected_call_id="call_B")
+            self.assertEqual(receipt["outcome"], "HUMAN_REQUIRED")
+            self.assertIsNone(receipt["route"])
+            self.assertFalse(receipt["provider_binding"]["verified"])
+
+        def test_receipt_binds_verified_provider_identity(self):
+            receipt = r.reconcile(INQUIRY, terminal(), expected_call_id="call_demo_1")
+            self.assertEqual(receipt["outcome"], "ROUTE_FOUND")
+            self.assertEqual(receipt["provider_call_id"], "call_demo_1")
+            self.assertEqual(receipt["provider_binding"]["inquiry_digest_sha256"], r.inquiry_digest(INQUIRY))
+            self.assertTrue(receipt["provider_binding"]["verified"])
+
+        def test_mismatched_provider_digest_holds_even_with_route(self):
+            metadata = dict(terminal()["metadata"])
+            metadata["inquiry_digest_sha256"] = "0" * 64
+            receipt = r.reconcile(INQUIRY, terminal(metadata=metadata))
+            self.assertEqual(receipt["outcome"], "HUMAN_REQUIRED")
+            self.assertIsNone(receipt["route"])
+
+        def test_mismatched_provider_inquiry_id_holds_even_with_digest(self):
+            metadata = dict(terminal()["metadata"])
+            metadata["inquiry_id"] = "other-id"
+            receipt = r.reconcile(INQUIRY, terminal(metadata=metadata))
+            self.assertEqual(receipt["outcome"], "HUMAN_REQUIRED")
+            self.assertIsNone(receipt["route"])

@@ -2,6 +2,12 @@
   "id": "call_demo_1",
   "status": "completed",
   "task_completed": true,
+  "metadata": {
+    "workflow": "routescout",
+    "schema_version": "1",
+    "inquiry_id": "demo-route-001",
+    "inquiry_digest_sha256": "ba4a426318e562b7d0763d0a2674ca6ec7439fdbfcdb634d40cf068269cdeb7f"
+  },
   "recipients": [
     {
       "structured_result": {

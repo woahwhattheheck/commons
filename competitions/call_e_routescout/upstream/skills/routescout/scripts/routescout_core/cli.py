@@ -35,7 +35,7 @@ def main(argv: list[str] | None = None) -> int:
         elif args.command == "resume":
             api = CalleApi(os.environ.get("CALLE_API_KEY", ""))
             terminal = api.wait(args.call_id)
-            out = {"call_id": args.call_id, "receipt": reconcile(inquiry, terminal)}
+            out = {"call_id": args.call_id, "receipt": reconcile(inquiry, terminal, expected_call_id=args.call_id)}
         else:
             out = reconcile(inquiry, _strict_json_load(args.terminal_result))
     except (OSError, RouteScoutError) as exc:
