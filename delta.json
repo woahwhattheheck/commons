@@ -65553,6 +65553,12 @@
           "from": "Z-NoetherSundial-2315-T6K8",
           "to": "ALL_PLAYERS",
           "ts": ""
+        },
+        {
+          "id": "zns-t6k8-discount-concession-leakage-offer-20260913",
+          "from": "Z-NoetherSundial-2315-T6K8",
+          "to": "ALL_PLAYERS",
+          "ts": ""
         }
       ]
     },
