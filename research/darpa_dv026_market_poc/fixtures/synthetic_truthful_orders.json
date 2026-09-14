@@ -1,0 +1,62 @@
+[
+  {
+    "participant_id": "b1",
+    "price_minor": 120,
+    "quantity": 1,
+    "side": "BUY"
+  },
+  {
+    "participant_id": "b2",
+    "price_minor": 110,
+    "quantity": 1,
+    "side": "BUY"
+  },
+  {
+    "participant_id": "b3",
+    "price_minor": 100,
+    "quantity": 1,
+    "side": "BUY"
+  },
+  {
+    "participant_id": "b4",
+    "price_minor": 90,
+    "quantity": 1,
+    "side": "BUY"
+  },
+  {
+    "participant_id": "b5",
+    "price_minor": 80,
+    "quantity": 1,
+    "side": "BUY"
+  },
+  {
+    "participant_id": "s1",
+    "price_minor": 10,
+    "quantity": 1,
+    "side": "SELL"
+  },
+  {
+    "participant_id": "s2",
+    "price_minor": 20,
+    "quantity": 1,
+    "side": "SELL"
+  },
+  {
+    "participant_id": "s3",
+    "price_minor": 30,
+    "quantity": 1,
+    "side": "SELL"
+  },
+  {
+    "participant_id": "s4",
+    "price_minor": 40,
+    "quantity": 1,
+    "side": "SELL"
+  },
+  {
+    "participant_id": "s5",
+    "price_minor": 50,
+    "quantity": 1,
+    "side": "SELL"
+  }
+]

@@ -1,0 +1,95 @@
+{
+  "asset": "SIM",
+  "news": [
+    {
+      "buyer_value_delta_minor": 0,
+      "headline": "public neutral benchmark bulletin",
+      "seller_cost_delta_minor": 0,
+      "seq": 1
+    }
+  ],
+  "participants": [
+    {
+      "adapter_kind": "SYNTHETIC_STUB",
+      "model_id": "stub-b1",
+      "participant_id": "b1",
+      "quantity": 1,
+      "reservation_minor": 120,
+      "role": "BUYER"
+    },
+    {
+      "adapter_kind": "SYNTHETIC_STUB",
+      "model_id": "stub-b2",
+      "participant_id": "b2",
+      "quantity": 1,
+      "reservation_minor": 110,
+      "role": "BUYER"
+    },
+    {
+      "adapter_kind": "SYNTHETIC_STUB",
+      "model_id": "stub-b3",
+      "participant_id": "b3",
+      "quantity": 1,
+      "reservation_minor": 100,
+      "role": "BUYER"
+    },
+    {
+      "adapter_kind": "SYNTHETIC_STUB",
+      "model_id": "stub-b4",
+      "participant_id": "b4",
+      "quantity": 1,
+      "reservation_minor": 90,
+      "role": "BUYER"
+    },
+    {
+      "adapter_kind": "SYNTHETIC_STUB",
+      "model_id": "stub-b5",
+      "participant_id": "b5",
+      "quantity": 1,
+      "reservation_minor": 80,
+      "role": "BUYER"
+    },
+    {
+      "adapter_kind": "SYNTHETIC_STUB",
+      "model_id": "stub-s1",
+      "participant_id": "s1",
+      "quantity": 1,
+      "reservation_minor": 10,
+      "role": "SELLER"
+    },
+    {
+      "adapter_kind": "SYNTHETIC_STUB",
+      "model_id": "stub-s2",
+      "participant_id": "s2",
+      "quantity": 1,
+      "reservation_minor": 20,
+      "role": "SELLER"
+    },
+    {
+      "adapter_kind": "SYNTHETIC_STUB",
+      "model_id": "stub-s3",
+      "participant_id": "s3",
+      "quantity": 1,
+      "reservation_minor": 30,
+      "role": "SELLER"
+    },
+    {
+      "adapter_kind": "SYNTHETIC_STUB",
+      "model_id": "stub-s4",
+      "participant_id": "s4",
+      "quantity": 1,
+      "reservation_minor": 40,
+      "role": "SELLER"
+    },
+    {
+      "adapter_kind": "SYNTHETIC_STUB",
+      "model_id": "stub-s5",
+      "participant_id": "s5",
+      "quantity": 1,
+      "reservation_minor": 50,
+      "role": "SELLER"
+    }
+  ],
+  "scenario_id": "synthetic-panel-10",
+  "schema": "darpa-dv026-market-scenario/v1"
+}

@@ -1,0 +1,45 @@
+name: darpa-dv026-market-poc
+
+on:
+  push:
+    branches:
+      - main
+    paths: &dv026_paths
+      - 'research/darpa_dv026_market_poc/**'
+      - '.github/workflows/darpa-dv026-market-poc.yml'
+  pull_request:
+    paths: *dv026_paths
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11', '3.13']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Compile
+        run: >-
+          python -m py_compile
+          research/darpa_dv026_market_poc/engine.py
+          research/darpa_dv026_market_poc/cli.py
+          research/darpa_dv026_market_poc/tests/test_engine.py
+      - name: Test
+        run: python -m unittest -v research.darpa_dv026_market_poc.tests.test_engine
+      - name: Test optimized
+        run: python -O -m unittest -v research.darpa_dv026_market_poc.tests.test_engine
+      - name: Fixture smoke
+        run: >-
+          python -m research.darpa_dv026_market_poc.cli evaluate
+          research/darpa_dv026_market_poc/fixtures/synthetic_panel.json
+          research/darpa_dv026_market_poc/fixtures/synthetic_truthful_orders.json
+          --mechanism CONTINUOUS_DOUBLE_AUCTION
+          --out /tmp/dv026-receipt.json

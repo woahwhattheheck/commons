@@ -1,0 +1,29 @@
+{
+  "implemented": {
+    "allocative_efficiency_metric": true,
+    "black_box_adapter_contract": true,
+    "canonical_receipts": true,
+    "default_efficiency_threshold_bps": 9000,
+    "dynamic_public_news": true,
+    "multiple_market_mechanisms": [
+      "CONTINUOUS_DOUBLE_AUCTION",
+      "UNIFORM_PRICE_CALL"
+    ],
+    "offline_stdlib_only": true,
+    "ten_distinct_external_model_contract_gate": true
+  },
+  "not_claimed": [
+    "DARPA proposal submitted",
+    "SBIR eligibility verified",
+    "ten distinct LLMs actually executed",
+    "official >90% Phase-I milestone satisfied",
+    "human reference calibration complete",
+    "Direct-to-Phase-II readiness",
+    "award",
+    "payment",
+    "revenue"
+  ],
+  "operation": "DARPA-DV026-MARKET-POC-ZNCQ5M2-20260914",
+  "schema": "darpa-dv026-market-poc-manifest/v1",
+  "source_issue": "https://github.com/woahwhattheheck/commons/issues/13534"
+}

@@ -2,56 +2,59 @@ from __future__ import annotations
 
 import argparse
 import json
+import sys
 from pathlib import Path
 
-try:
-    from .engine import ContractError, canonical_bytes, compile_result, loads_strict, render_markdown, verify_result
-    from .io_secure import _read_regular, _write_exclusive
-except ImportError:
-    from engine import ContractError, canonical_bytes, compile_result, loads_strict, render_markdown, verify_result
-    from io_secure import _read_regular, _write_exclusive
-
-def command_compile(args: argparse.Namespace) -> int:
-    scenario = loads_strict(_read_regular(Path(args.scenario)))
-    result = compile_result(scenario)
-    json_raw = canonical_bytes(result) + b"\n"
-    md_raw = render_markdown(result).encode("utf-8")
-    # Stage complete bytes before either publication. JSON is authoritative; Markdown is a projection.
-    _write_exclusive(Path(args.json_out), json_raw)
-    try:
-        _write_exclusive(Path(args.markdown_out), md_raw)
-    except Exception as exc:
-        raise ContractError(f"authoritative JSON committed; Markdown projection failed: {exc}") from exc
-    print(result["status"])
-    print(result["receipt"]["result_sha256"])
-    return 0
+from .engine import ContractError, evaluate, parse_orders, parse_scenario, verify_receipt
 
 
-def command_verify(args: argparse.Namespace) -> int:
-    scenario = loads_strict(_read_regular(Path(args.scenario)))
-    result = loads_strict(_read_regular(Path(args.result)))
-    valid = verify_result(scenario, result)
-    print(json.dumps({"valid": valid}, sort_keys=True, separators=(",", ":")))
-    return 0 if valid else 2
+def _load(path: str):
+    return json.loads(Path(path).read_text(encoding="utf-8"))
 
 
 def main(argv: list[str] | None = None) -> int:
-    parser = argparse.ArgumentParser(description="DARPA DV026 deterministic market technical proof")
+    parser = argparse.ArgumentParser(prog="darpa-dv026-market-poc")
     sub = parser.add_subparsers(dest="command", required=True)
-    compile_p = sub.add_parser("compile")
-    compile_p.add_argument("--scenario", required=True)
-    compile_p.add_argument("--json-out", required=True)
-    compile_p.add_argument("--markdown-out", required=True)
-    compile_p.set_defaults(func=command_compile)
-    verify_p = sub.add_parser("verify")
-    verify_p.add_argument("--scenario", required=True)
-    verify_p.add_argument("--result", required=True)
-    verify_p.set_defaults(func=command_verify)
+
+    run = sub.add_parser("evaluate")
+    run.add_argument("scenario")
+    run.add_argument("orders")
+    run.add_argument(
+        "--mechanism",
+        choices=["CONTINUOUS_DOUBLE_AUCTION", "UNIFORM_PRICE_CALL"],
+        default="CONTINUOUS_DOUBLE_AUCTION",
+    )
+    run.add_argument("--threshold-bps", type=int, default=9000)
+    run.add_argument("--out")
+
+    verify = sub.add_parser("verify")
+    verify.add_argument("scenario")
+    verify.add_argument("orders")
+    verify.add_argument("receipt")
+
     args = parser.parse_args(argv)
     try:
-        return args.func(args)
-    except (ContractError, OSError) as exc:
-        parser.error(str(exc))
+        scenario = parse_scenario(_load(args.scenario))
+        orders = parse_orders(scenario, _load(args.orders))
+        if args.command == "evaluate":
+            receipt = evaluate(
+                scenario,
+                orders,
+                mechanism=args.mechanism,
+                efficiency_threshold_bps=args.threshold_bps,
+            )
+            text = json.dumps(receipt, sort_keys=True, indent=2, ensure_ascii=False) + "\n"
+            if args.out:
+                Path(args.out).write_text(text, encoding="utf-8")
+            else:
+                sys.stdout.write(text)
+            return 0 if receipt["efficiency_gate_pass"] else 3
+
+        ok = verify_receipt(scenario, orders, _load(args.receipt))
+        sys.stdout.write(json.dumps({"verified": ok}, sort_keys=True) + "\n")
+        return 0 if ok else 4
+    except (ContractError, OSError, json.JSONDecodeError, ValueError) as exc:
+        sys.stderr.write(f"error: {exc}\n")
         return 2
 
 
