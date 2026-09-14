@@ -45,7 +45,7 @@ No bank/account-holder/private verification fields from the provider response ar
 - Commons fulfillment authority: landed `smb-showcase-inventory/main/apps/appointment_fee_leakage/`
 - public door: `../late-cancel-noshow-fee-leakage.html`
 
-## Provider-ready but storefront-withheld — Hotel Room-Turn Evidence Pilot
+## Public now — Hotel Room-Turn Evidence Pilot
 
 - Payment Link: `plink_1UFgCQATH4EDE7XDCTRxIf02`
 - URL: `https://buy.stripe.com/7sYdR8ckZgHLbCN50K43S0y`
@@ -55,8 +55,10 @@ No bank/account-holder/private verification fields from the provider response ar
 - completed-session restriction at readback: `count=0`, `limit=1`
 - `payment_intent_data.capture_method=manual`
 - provider checkout binds **$2,500**, one property, seven days, offline/de-identified room-turn evidence, with written-scope/acceptance before capture
+- corrected Commons fulfillment authority: `revenue/hotel_room_turn_evidence/**` landed via PR #14411 / merge `5b1319c5a15e17b843288061af2808fc0be2ac1b`, superseding the #14054 SOURCE RED with retained policy identity and verifier-owned current replay
+- public door: `../hotel-room-turn-evidence.html`
 
-**Do not expose this link as a Commons public buy door yet.** Payment capability is not delivery authority. Commons PR #14054 remains open with a documented SOURCE RED around retained policy/current-verification authority, and an earlier durable repair owner retains that fulfillment repair lane. The Hotel rail stays buyer-agnostic and withheld until a corrected fulfillment carrier is landed and re-read from `main`.
+The Hotel link was intentionally withheld when this receipt was first written because payment capability did not override the then-open delivery-authority defect. That named blocker is now closed: #14054 is superseded by the corrected nine-blob #14411 carrier on `main`. This update changes storefront exposure only; it does not claim a buyer, authorization, capture, settlement, cash, fulfillment, or revenue.
 
 ## Economic truth / reuse law
 

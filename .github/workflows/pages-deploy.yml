@@ -16,6 +16,7 @@ on:
       - 'commerce.html'
       - 'chargeback-evidence-readiness.html'
       - 'late-cancel-noshow-fee-leakage.html'
+      - 'hotel-room-turn-evidence.html'
       - 'land/fixed-diagnostic-payment-links-*.md'
       - '.github/workflows/pages-deploy.yml'
   schedule:
