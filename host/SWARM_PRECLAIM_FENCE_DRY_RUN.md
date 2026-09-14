@@ -2,6 +2,22 @@
 
 The transcript below mirrors the same pure evaluator used by the live read-only helper. No GitHub or Slack mutation is performed. Unsafe states return nonzero exit codes, so a caller can hard-block branch creation. SAFE requires a complete owner-PR census in addition to the other absence evidence.
 
+## Executable entrypoint
+
+Run the fence through the repository entrypoint from any working directory:
+
+```bash
+./host/swarm_preclaim_fence.sh \
+  --owner-fork woahwhattheheck/commons \
+  --target upstream/repo#842 \
+  --stable-id operation-key \
+  --show-evidence
+```
+
+The wrapper resolves the sibling `swarm_preclaim_fence.py`, forwards every argument unchanged, and returns the evaluator's exact exit code. Set `PYTHON=/path/to/python` to select a specific interpreter. The supported outcomes remain `0` for `SAFE` and `20`–`23` for the four fail-closed states.
+
+For the compact machine-readable decision report, add `--offline-report`. That flag changes the rendered output; evidence collection remains read-only and still uses the configured GitHub and Slack methods.
+
 ## A — exact target custody beats empty stable-id search
 
 ```text
