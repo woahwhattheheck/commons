@@ -161,24 +161,6 @@ def _normalize_amount_token(value: str) -> str:
     return normalized or "0"
 
 
-def _money_tokens(text: str) -> list[tuple[int, int, str, str]]:
-    """Return positioned currency/amount tokens without assigning commercial meaning."""
-
-    tokens: list[tuple[int, int, str, str]] = []
-    for match in _MONEY_RE.finditer(text):
-        if match.group("code") is not None:
-            currency = str(match.group("code")).upper()
-            value = str(match.group("code_value"))
-        elif match.group("symbol") is not None:
-            currency = _SYMBOL_CURRENCY[str(match.group("symbol"))]
-            value = str(match.group("symbol_value"))
-        else:
-            currency = str(match.group("suffix_code")).upper()
-            value = str(match.group("suffix_value"))
-        tokens.append((match.start(), match.end(), currency, _normalize_amount_token(value)))
-    return tokens
-
-
 def _normalized_adjacent_currency_code(value: str) -> str | None:
     """Return a plausible adjacent currency code without treating prose as one."""
 
@@ -186,6 +168,28 @@ def _normalized_adjacent_currency_code(value: str) -> str | None:
     if value.isupper() or normalized in _KNOWN_ISO_CURRENCY_CODES:
         return normalized
     return None
+
+
+def _money_tokens(text: str) -> list[tuple[int, int, str, str]]:
+    """Return positioned currency/amount tokens without assigning commercial meaning."""
+
+    tokens: list[tuple[int, int, str, str]] = []
+    for match in _MONEY_RE.finditer(text):
+        if match.group("code") is not None:
+            currency = _normalized_adjacent_currency_code(str(match.group("code")))
+            value = str(match.group("code_value"))
+        elif match.group("symbol") is not None:
+            currency = _SYMBOL_CURRENCY[str(match.group("symbol"))]
+            value = str(match.group("symbol_value"))
+        else:
+            currency = _normalized_adjacent_currency_code(
+                str(match.group("suffix_code"))
+            )
+            value = str(match.group("suffix_value"))
+        if currency is None:
+            continue
+        tokens.append((match.start(), match.end(), currency, _normalize_amount_token(value)))
+    return tokens
 
 
 def _direct_amount_link_supported(value: str) -> bool:
