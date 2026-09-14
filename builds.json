@@ -350,7 +350,7 @@
   }
  ],
  "pr_note": "Open GitHub PRs from public unauthenticated /pulls. PR-road work sits beside ntfy-road posts. Descriptive only. Not a merge gate. A PR is not main.",
- "n_open_prs": 50,
+ "n_open_prs": 53,
  "open_prs": [
   {
    "number": 13533,
@@ -1089,26 +1089,10 @@
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
   {
-   "number": 14209,
+   "number": 14218,
    "author": "woahwhattheheck",
-   "title": "Build Sophelio dual-award shot-group transfer carrier",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/14209",
-   "base_freshness": {
-    "base_sha": "89f00414857442e54565bdecba76f77cfba47150",
-    "main_sha": "89f00414857442e54565bdecba76f77cfba47150",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "FRESH"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 14215,
-   "author": "woahwhattheheck",
-   "title": "revenue: make initial hot-lead outreach provider-bound and one-shot",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/14215",
+   "title": "fix(revenue): bind CAS benchmark runs to one evaluation universe",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/14218",
    "base_freshness": {
     "base_sha": "89f00414857442e54565bdecba76f77cfba47150",
     "main_sha": "89f00414857442e54565bdecba76f77cfba47150",
@@ -1137,16 +1121,80 @@
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
   {
-   "number": 14218,
+   "number": 14215,
    "author": "woahwhattheheck",
-   "title": "fix(revenue): bind CAS benchmark runs to one evaluation universe",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/14218",
+   "title": "revenue: make initial hot-lead outreach provider-bound and one-shot",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/14215",
    "base_freshness": {
     "base_sha": "89f00414857442e54565bdecba76f77cfba47150",
     "main_sha": "89f00414857442e54565bdecba76f77cfba47150",
     "ahead_by": null,
     "behind_by": null,
     "label": "FRESH"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 14222,
+   "author": "woahwhattheheck",
+   "title": "Fix evidence freshness commercial packet reseal trust",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/14222",
+   "base_freshness": {
+    "base_sha": "11e017c5f22fccd5b285b8a819cf71e238eca1d9",
+    "main_sha": "89f00414857442e54565bdecba76f77cfba47150",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 14221,
+   "author": "woahwhattheheck",
+   "title": "revenue: qualify SigNoz for bounded survival-proof outreach",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/14221",
+   "base_freshness": {
+    "base_sha": "066078ccac2bebf11a9a31c800e6be66a730c42a",
+    "main_sha": "89f00414857442e54565bdecba76f77cfba47150",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 14209,
+   "author": "woahwhattheheck",
+   "title": "Build Sophelio dual-award shot-group transfer carrier",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/14209",
+   "base_freshness": {
+    "base_sha": "89f00414857442e54565bdecba76f77cfba47150",
+    "main_sha": "89f00414857442e54565bdecba76f77cfba47150",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "FRESH"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 14223,
+   "author": "woahwhattheheck",
+   "title": "revenue: close outbound guard source-custody mutation race",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/14223",
+   "base_freshness": {
+    "base_sha": "11e017c5f22fccd5b285b8a819cf71e238eca1d9",
+    "main_sha": "89f00414857442e54565bdecba76f77cfba47150",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
    },
    "status": "PR_OPEN",
    "road": "pr",
