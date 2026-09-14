@@ -13,10 +13,10 @@ from typing import Any
 
 try:
     from host.context_packet import PacketError, compile_packet, markdown, verify_packet
-    from host.git_source_capsules import verify_packet_git_source
+    from host.git_source_capsules import observe_current_main, verify_packet_git_source
 except ModuleNotFoundError:
     from context_packet import PacketError, compile_packet, markdown, verify_packet
-    from git_source_capsules import verify_packet_git_source
+    from git_source_capsules import observe_current_main, verify_packet_git_source
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -74,17 +74,17 @@ def _compile(args: argparse.Namespace) -> dict[str, Any]:
         provenance.append(_source("coordination", args.coordination, coordination_raw))
     if len(claim_raws) == 1:
         path, raw = claim_raws[0]
-        provenance.append({"source":"claims","path":path,"sha256":hashlib.sha256(raw).hexdigest(),"bytes":len(raw)})
+        provenance.append({"source": "claims", "path": path, "sha256": hashlib.sha256(raw).hexdigest(), "bytes": len(raw)})
     elif claim_raws:
         manifest = "\n".join(
-            f"{path}\t{hashlib.sha256(raw).hexdigest()}\t{len(raw)}" for path,raw in claim_raws
+            f"{path}\t{hashlib.sha256(raw).hexdigest()}\t{len(raw)}" for path, raw in claim_raws
         ).encode()
         provenance.append({
-            "source":"claims",
-            "path":str(args.claims),
-            "sha256":hashlib.sha256(manifest).hexdigest(),
-            "files":len(claim_raws),
-            "bytes":sum(len(raw) for _,raw in claim_raws),
+            "source": "claims",
+            "path": str(args.claims),
+            "sha256": hashlib.sha256(manifest).hexdigest(),
+            "files": len(claim_raws),
+            "bytes": sum(len(raw) for _, raw in claim_raws),
         })
 
     source_requested = bool(args.source_commit or args.source_path)
@@ -134,6 +134,26 @@ def _validate_packet(value: Mapping[str, Any], git_repo: Path) -> tuple[bool, st
     return True, "ok"
 
 
+def _live_git_drift(value: Mapping[str, Any], git_repo: Path) -> Mapping[str, Any] | None:
+    source = value.get("git_source")
+    if not isinstance(source, Mapping):
+        return None
+    commit = source.get("commit")
+    if not isinstance(commit, str):
+        raise PacketError("git_source commit is missing")
+    return observe_current_main(git_repo, commit)
+
+
+def _format_live_git_drift(drift: Mapping[str, Any] | None) -> str:
+    if drift is None:
+        return "\n"
+    return (
+        "\nLIVE_UNSEALED "
+        f"current_main={drift.get('observed_current_main_head')} "
+        f"source_commit_matches_current_main={drift.get('source_commit_matches_current_main')}\n"
+    )
+
+
 def main(argv: Sequence[str] | None = None) -> int:
     parser = argparse.ArgumentParser()
     sub = parser.add_subparsers(dest="command", required=True)
@@ -143,9 +163,9 @@ def main(argv: Sequence[str] | None = None) -> int:
     packet.add_argument("--objective", required=True)
     packet.add_argument("--term", action="append", default=[])
     packet.add_argument("--path", action="append", default=[])
-    packet.add_argument("--pulse", type=Path, default=ROOT/"pulse.json")
-    packet.add_argument("--recent", type=Path, default=ROOT/"recent.json")
-    packet.add_argument("--ledger", type=Path, default=ROOT/"ground"/"RESOURCE_LEDGER.json")
+    packet.add_argument("--pulse", type=Path, default=ROOT / "pulse.json")
+    packet.add_argument("--recent", type=Path, default=ROOT / "recent.json")
+    packet.add_argument("--ledger", type=Path, default=ROOT / "ground" / "RESOURCE_LEDGER.json")
     packet.add_argument("--coordination", type=Path)
     packet.add_argument("--claims", type=Path)
     packet.add_argument("--main-head")
@@ -158,7 +178,7 @@ def main(argv: Sequence[str] | None = None) -> int:
     packet.add_argument("--max-resources", type=int, default=12)
     packet.add_argument("--max-claims", type=int, default=6)
     packet.add_argument("--max-coordination", type=int, default=8)
-    packet.add_argument("--format", choices=("json","markdown"), default="json")
+    packet.add_argument("--format", choices=("json", "markdown"), default="json")
     packet.add_argument("--out", type=Path)
 
     verify = sub.add_parser("verify")
@@ -174,10 +194,11 @@ def main(argv: Sequence[str] | None = None) -> int:
     try:
         if args.command == "packet":
             result = _compile(args)
+            drift = _live_git_drift(result, args.git_repo) if args.format == "markdown" else None
             text = (
                 json.dumps(result, ensure_ascii=False, sort_keys=True, indent=2) + "\n"
                 if args.format == "json"
-                else markdown(result)
+                else markdown(result, live_git_drift=drift)
             )
             _write(text, args.out)
             return 0
@@ -189,10 +210,14 @@ def main(argv: Sequence[str] | None = None) -> int:
         if not ok:
             sys.stderr.write(f"INVALID {reason}\n")
             return 2
+        drift = _live_git_drift(value, args.git_repo)
         if args.command == "render":
-            _write(markdown(value), args.out)
+            _write(markdown(value, live_git_drift=drift), args.out)
             return 0
-        sys.stdout.write(f"VALID {value['schema']} {value['semantic_sha256']}\n")
+        sys.stdout.write(
+            f"VALID {value['schema']} {value['semantic_sha256']}"
+            f"{_format_live_git_drift(drift)}"
+        )
         return 0
     except (OSError, json.JSONDecodeError, PacketError, ValueError) as exc:
         sys.stderr.write(f"ERROR {exc}\n")

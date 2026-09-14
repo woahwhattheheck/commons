@@ -9,7 +9,13 @@ import sys
 from pathlib import Path
 
 from host.context_packet import DIGEST_KEY, PacketError, canonical, compile_packet, markdown, verify_packet
-from host.git_source_capsules import GitSourceError, collect_git_source, verify_git_source, verify_packet_git_source
+from host.git_source_capsules import (
+    GitSourceError,
+    collect_git_source,
+    observe_current_main,
+    verify_git_source,
+    verify_packet_git_source,
+)
 
 
 def run(repo: Path, *args: str, input_bytes: bytes | None = None) -> bytes:
@@ -143,17 +149,37 @@ class GitSourceCapsuleTests(unittest.TestCase):
         self.assertEqual(bundle["tree_sha"], tree)
         self.assertEqual(bundle["capsules"][0]["text"], "alpha committed\nline two\n")
 
-    def test_main_drift_is_metadata_not_relabel(self):
+    def test_main_drift_is_fresh_unsealed_observation_not_packet_authority(self):
         first = self.packet(paths=("alpha.txt",))
+        self.assertNotIn("observed_main_head", first["git_source"])
+        self.assertNotIn("source_commit_matches_observed_main", first["git_source"])
+        before = observe_current_main(self.repo, self.commit)
+        self.assertEqual(before["observed_current_main_head"], self.commit)
+        self.assertTrue(before["source_commit_matches_current_main"])
+
         (self.repo/"later.txt").write_text("later\n", encoding="utf-8")
         run(self.repo,"add","later.txt"); run(self.repo,"commit","-q","-m","later")
+        newer_head = run(self.repo, "rev-parse", "HEAD").decode().strip()
         ok, reason = verify_git_source(first["git_source"], self.repo)
         self.assertTrue(ok, reason)
         self.assertEqual(first["git_source"]["commit"], self.commit)
-        self.assertTrue(first["git_source"]["source_commit_matches_observed_main"])
-        newer = collect_git_source(self.repo, self.commit, ["alpha.txt"])
-        self.assertFalse(newer["source_commit_matches_observed_main"])
-        self.assertEqual(newer["commit"], self.commit)
+        after = observe_current_main(self.repo, self.commit)
+        self.assertEqual(after["observed_current_main_head"], newer_head)
+        self.assertFalse(after["source_commit_matches_current_main"])
+        rendered = markdown(first, live_git_drift=after)
+        self.assertIn("Observed current main (live, unsealed)", rendered)
+        self.assertIn(newer_head, rendered)
+
+    def test_resealed_historical_main_claim_is_rejected(self):
+        packet = self.packet(paths=("alpha.txt",))
+        bad = copy.deepcopy(packet)
+        bad["git_source"]["observed_main_head"] = self.commit
+        bad["git_source"]["source_commit_matches_observed_main"] = True
+        semantic = {k:v for k,v in bad.items() if k != DIGEST_KEY}
+        bad[DIGEST_KEY] = hashlib.sha256(canonical(semantic).encode()).hexdigest()
+        self.assertEqual(verify_packet(bad), (False, "git-source-shape"))
+        self.assertEqual(verify_git_source(bad["git_source"], self.repo), (False, "git-source-shape"))
+        self.assertEqual(verify_packet_git_source(bad, self.repo), (False, "git-source-readback"))
 
     def test_tamper_and_reseal_still_fail_git_reverification(self):
         packet = self.packet(paths=("alpha.txt",))
@@ -243,6 +269,9 @@ class GitSourceCapsuleTests(unittest.TestCase):
         )
         self.assertEqual(verify_proc.returncode, 0, verify_proc.stderr)
         self.assertIn("VALID commons-context-packet/v1", verify_proc.stdout)
+        self.assertIn("LIVE_UNSEALED", verify_proc.stdout)
+        self.assertIn(f"current_main={self.commit}", verify_proc.stdout)
+        self.assertIn("source_commit_matches_current_main=True", verify_proc.stdout)
 
     def test_markdown_source_fence_cannot_be_closed_by_committed_text(self):
         raw = "before\n```\n# not a heading\n```\nafter\n"

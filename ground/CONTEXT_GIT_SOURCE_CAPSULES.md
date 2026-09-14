@@ -49,17 +49,20 @@ source text is budgeted before recent/resource context.
 
 ## Moving main
 
-`git_source.commit` is always the exact caller-selected source commit.
-`git_source.observed_main_head` and
-`git_source.source_commit_matches_observed_main` are drift metadata captured from
-the local `refs/heads/main` at packet compilation time. A later main advance never
-relabels the capsule or changes its committed source identity.
+`git_source.commit` is always the exact caller-selected source commit. The sealed
+packet deliberately stores no historical `main` observation: a later verifier can
+reconstruct committed objects, but cannot reconstruct which ref value a compiler
+claimed to have observed earlier.
 
 Packet verification checks the semantic SHA-256 and packet budget. The CLI's
 `verify` and `render` commands additionally re-read the exact commit and requested
 blobs from `--git-repo`; content identity, blob identity, mode, byte count, and any
-included text must still match. Drift of the current `main` ref is deliberately
-not treated as source drift.
+included text must still match. Only after those checks do they read the current
+local `refs/heads/main`. That comparison is emitted as `LIVE_UNSEALED` in verify
+output and as **Observed current main (live, unsealed)** in Markdown. It is fresh
+presentation metadata, outside the packet digest, and may change immediately after
+observation. A later main advance never relabels the capsule or changes its committed
+source identity.
 
 ## Example handoff
 

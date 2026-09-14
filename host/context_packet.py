@@ -12,13 +12,13 @@ from pathlib import Path
 from typing import Any
 
 try:
-    from host.git_source_capsules import GitSourceError, collect_git_source
+    from host.git_source_capsules import GitSourceError, LIVE_DRIFT_KEYS, collect_git_source
 except ModuleNotFoundError:
-    from git_source_capsules import GitSourceError, collect_git_source
+    from git_source_capsules import GitSourceError, LIVE_DRIFT_KEYS, collect_git_source
 
 SCHEMA = "commons-context-packet/v1"
 DIGEST_KEY = "semantic_sha256"
-STOP_TERMS = {"commons","build","revenue","agent","agents","host","ground","tests","json","html","python","issue","feature"}
+STOP_TERMS = {"commons", "build", "revenue", "agent", "agents", "host", "ground", "tests", "json", "html", "python", "issue", "feature"}
 SPLIT = re.compile(r"[^a-z0-9]+")
 
 
@@ -111,7 +111,7 @@ def _pick(
 def _coord_rows(value: Any) -> Iterable[Mapping[str, Any]]:
     if not isinstance(value, Mapping):
         return
-    for key in ("pull_requests","prs","lanes","work_items","items","queue","open"):
+    for key in ("pull_requests", "prs", "lanes", "work_items", "items", "queue", "open"):
         rows = value.get(key)
         if isinstance(rows, list):
             yield from (row for row in rows if isinstance(row, Mapping))
@@ -123,8 +123,6 @@ def _source_shell(bundle: Mapping[str, Any]) -> tuple[dict[str, Any], list[dict[
     source = {
         "commit": bundle["commit"],
         "tree_sha": bundle["tree_sha"],
-        "observed_main_head": bundle.get("observed_main_head"),
-        "source_commit_matches_observed_main": bundle.get("source_commit_matches_observed_main"),
         "max_file_bytes": bundle["max_file_bytes"],
         "requested_paths": list(bundle["requested_paths"]),
         "capsules": [],
@@ -213,12 +211,12 @@ def compile_packet(
             raise PacketError(f"git source: {exc}") from exc
         source_bundle, source_candidates = _source_shell(raw_bundle)
 
-    event_fields = ("id","from","to","ts","durable_ts","state","kind","lane","href","body")
-    resource_fields = ("name","kind","stage","condition","consumer","next_action","last_used_at","stale_after","href","url")
-    claim_fields = ("key","holder","state","taken_at","heartbeat_at","ttl_s","note")
+    event_fields = ("id", "from", "to", "ts", "durable_ts", "state", "kind", "lane", "href", "body")
+    resource_fields = ("name", "kind", "stage", "condition", "consumer", "next_action", "last_used_at", "stale_after", "href", "url")
+    claim_fields = ("key", "holder", "state", "taken_at", "heartbeat_at", "ttl_s", "note")
     coord_fields = (
-        "operation","id","number","title","url","state","status","head_sha","head","base_sha","base",
-        "content_key","next_action","holder","updated_at","drift","verdicts","hosted"
+        "operation", "id", "number", "title", "url", "state", "status", "head_sha", "head", "base_sha", "base",
+        "content_key", "next_action", "holder", "updated_at", "drift", "verdicts", "hosted",
     )
 
     pools = {
@@ -279,8 +277,8 @@ def compile_packet(
         return len(canonical(probe))
 
     def append_rows(name: str) -> None:
-        for row in pools[name][:caps[name]]:
-            clean = _bounded({k:v for k,v in row.items() if not k.startswith("_")})
+        for row in pools[name][: caps[name]]:
+            clean = _bounded({k: v for k, v in row.items() if not k.startswith("_")})
             packet[name].append(clean)
             refresh()
             if size() > max_chars:
@@ -291,8 +289,6 @@ def compile_packet(
     if size() > max_chars:
         raise PacketError("max_chars is too small for packet metadata/provenance/source metadata")
 
-    # Ownership and active coordination remain highest priority. Source bytes are next,
-    # then less-authoritative recent/resource context. Every omitted source stays explicit.
     append_rows("claims")
     append_rows("coordination")
 
@@ -326,7 +322,7 @@ def verify_packet(packet: Mapping[str, Any]) -> tuple[bool, str]:
     supplied = packet.get(DIGEST_KEY)
     if not isinstance(supplied, str) or not re.fullmatch(r"[0-9a-f]{64}", supplied):
         return False, "digest-format"
-    semantic = {k:v for k,v in packet.items() if k != DIGEST_KEY}
+    semantic = {k: v for k, v in packet.items() if k != DIGEST_KEY}
     if not hmac.compare_digest(supplied, digest(semantic)):
         return False, "digest-mismatch"
     max_chars = (packet.get("limits") or {}).get("max_chars")
@@ -336,7 +332,7 @@ def verify_packet(packet: Mapping[str, Any]) -> tuple[bool, str]:
     if source is not None:
         if not isinstance(source, Mapping):
             return False, "git-source-shape"
-        required = {"commit","tree_sha","observed_main_head","source_commit_matches_observed_main","max_file_bytes","requested_paths","capsules"}
+        required = {"commit", "tree_sha", "max_file_bytes", "requested_paths", "capsules"}
         if set(source) != required:
             return False, "git-source-shape"
         if not isinstance(source.get("requested_paths"), list) or not isinstance(source.get("capsules"), list):
@@ -347,19 +343,10 @@ def verify_packet(packet: Mapping[str, Any]) -> tuple[bool, str]:
             return False, "git-source-order"
         commit = source.get("commit")
         tree_sha = source.get("tree_sha")
-        observed_main = source.get("observed_main_head")
-        matches_main = source.get("source_commit_matches_observed_main")
         if not isinstance(commit, str) or not re.fullmatch(r"[0-9a-f]{40}", commit):
             return False, "git-source-commit"
         if not isinstance(tree_sha, str) or not re.fullmatch(r"[0-9a-f]{40}", tree_sha):
             return False, "git-source-tree"
-        if observed_main is not None and (
-            not isinstance(observed_main, str) or not re.fullmatch(r"[0-9a-f]{40}", observed_main)
-        ):
-            return False, "git-source-observed-main"
-        expected_match = None if observed_main is None else hmac.compare_digest(commit, observed_main)
-        if matches_main is not expected_match:
-            return False, "git-source-main-fence"
         for row in source["capsules"]:
             if not isinstance(row, Mapping):
                 return False, "git-source-capsule-shape"
@@ -374,7 +361,22 @@ def verify_packet(packet: Mapping[str, Any]) -> tuple[bool, str]:
     return True, "ok"
 
 
-def markdown(packet: Mapping[str, Any]) -> str:
+def _validated_live_drift(source: Mapping[str, Any], drift: Mapping[str, Any] | None) -> Mapping[str, Any] | None:
+    if drift is None:
+        return None
+    if type(drift) is not dict or set(drift) != LIVE_DRIFT_KEYS:
+        raise PacketError("invalid live Git drift observation")
+    observed = drift.get("observed_current_main_head")
+    matches = drift.get("source_commit_matches_current_main")
+    if observed is not None and (type(observed) is not str or not re.fullmatch(r"[0-9a-f]{40}", observed)):
+        raise PacketError("invalid live Git main head")
+    expected = None if observed is None else hmac.compare_digest(str(source.get("commit")), observed)
+    if matches is not expected:
+        raise PacketError("inconsistent live Git drift observation")
+    return drift
+
+
+def markdown(packet: Mapping[str, Any], *, live_git_drift: Mapping[str, Any] | None = None) -> str:
     ok, reason = verify_packet(packet)
     if not ok:
         raise PacketError(f"cannot render invalid packet: {reason}")
@@ -382,8 +384,8 @@ def markdown(packet: Mapping[str, Any]) -> str:
     lines = [
         "# Commons context packet",
         "",
-        f"- **Operation:** `{packet.get('operation','')}`",
-        f"- **Digest:** `{packet.get(DIGEST_KEY,'')}`",
+        f"- **Operation:** `{packet.get('operation', '')}`",
+        f"- **Digest:** `{packet.get(DIGEST_KEY, '')}`",
         f"- **Pulse:** seq `{fence.get('pulse_seq')}` · head `{fence.get('pulse_head')}`",
     ]
     if fence.get("requested_main_head"):
@@ -393,18 +395,23 @@ def markdown(packet: Mapping[str, Any]) -> str:
         )
     source = packet.get("git_source")
     if isinstance(source, Mapping):
-        lines += [
-            f"- **Git source commit:** `{source.get('commit','')}`",
-            f"- **Observed local main:** `{source.get('observed_main_head')}` · "
-            f"same as source `{source.get('source_commit_matches_observed_main')}`",
-        ]
+        lines.append(f"- **Git source commit:** `{source.get('commit', '')}`")
+        drift = _validated_live_drift(source, live_git_drift)
+        if drift is not None:
+            lines.append(
+                f"- **Observed current main (live, unsealed):** "
+                f"`{drift.get('observed_current_main_head')}` · same as source "
+                f"`{drift.get('source_commit_matches_current_main')}`"
+            )
+    elif live_git_drift is not None:
+        raise PacketError("live Git drift requires git_source")
     lines += ["", "## Objective", "", str(packet.get("objective") or "")]
     if packet.get("claims"):
         lines += ["", "## Ownership / claims", ""]
         for row in packet["claims"]:
             lines.append(
-                f"- `{row.get('key','')}` · holder `{row.get('holder','')}` · "
-                f"state `{row.get('state','')}` · heartbeat `{row.get('heartbeat_at','')}`"
+                f"- `{row.get('key', '')}` · holder `{row.get('holder', '')}` · "
+                f"state `{row.get('state', '')}` · heartbeat `{row.get('heartbeat_at', '')}`"
             )
             if row.get("note"):
                 lines.append(f"  - {row['note']}")
@@ -418,33 +425,33 @@ def markdown(packet: Mapping[str, Any]) -> str:
         for row in source.get("capsules") or []:
             status = "included" if row.get("text_included") else f"omitted:{row.get('omission_reason')}"
             lines.append(
-                f"- `{row.get('path','')}` · mode `{row.get('mode','')}` · blob `{row.get('blob_sha','')}` · "
-                f"sha256 `{row.get('content_sha256','')}` · bytes `{row.get('bytes')}` · {status}"
+                f"- `{row.get('path', '')}` · mode `{row.get('mode', '')}` · blob `{row.get('blob_sha', '')}` · "
+                f"sha256 `{row.get('content_sha256', '')}` · bytes `{row.get('bytes')}` · {status}"
             )
             if row.get("text_included"):
                 source_text = row.get("text", "")
                 longest = max((len(match.group(0)) for match in re.finditer(r"`+", source_text)), default=0)
-                fence = "`" * max(3, longest + 1)
-                lines += ["", f"{fence}text", source_text, fence]
+                source_fence = "`" * max(3, longest + 1)
+                lines += ["", f"{source_fence}text", source_text, source_fence]
     if packet.get("recent"):
         lines += ["", "## Relevant durable events", ""]
         for row in packet["recent"]:
             lines.append(
-                f"- `{row.get('id','')}` · {row.get('durable_ts') or row.get('ts') or ''} · "
-                f"{row.get('from','')}: {row.get('body','')}"
+                f"- `{row.get('id', '')}` · {row.get('durable_ts') or row.get('ts') or ''} · "
+                f"{row.get('from', '')}: {row.get('body', '')}"
             )
     if packet.get("resources"):
         lines += ["", "## Relevant resources", ""]
         for row in packet["resources"]:
             detail = " · ".join(
-                str(row.get(k)) for k in ("kind","stage","condition") if row.get(k) not in (None,"")
+                str(row.get(k)) for k in ("kind", "stage", "condition") if row.get(k) not in (None, "")
             )
-            lines.append(f"- **{row.get('name','')}**{(' · ' + detail) if detail else ''}")
+            lines.append(f"- **{row.get('name', '')}**{(' · ' + detail) if detail else ''}")
             if row.get("next_action"):
                 lines.append(f"  - next: {row['next_action']}")
     lines += ["", "## Omissions / bounds", "", f"`{canonical(packet.get('omitted') or {})}`"]
     if packet.get("provenance"):
         lines += ["", "## Provenance", ""]
         for row in packet["provenance"]:
-            lines.append(f"- **{row.get('source','source')}** · `{row.get('path','')}` · `{row.get('sha256','')}`")
+            lines.append(f"- **{row.get('source', 'source')}** · `{row.get('path', '')}` · `{row.get('sha256', '')}`")
     return "\n".join(lines) + "\n"
