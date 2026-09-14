@@ -5,7 +5,7 @@ import json
 import re
 from dataclasses import dataclass
 from datetime import datetime, timezone
-from typing import Any, Iterable
+from typing import Any
 
 SCHEMA = "paid-pilot-admission/v1"
 RECEIPT_SCHEMA = "paid-pilot-admission-receipt/v1"
@@ -141,9 +141,7 @@ def normalize_packet(packet: Any) -> dict[str, Any]:
     if not _CURRENCY.fullmatch(currency):
         raise AdmissionError("offer.currency must be ISO-style uppercase 3 letters")
     price_minor = _integer(offer["price_minor"], "offer.price_minor", low=1, high=10**12)
-    admission = _integer(
-        offer["admission_funding_minor"], "offer.admission_funding_minor", low=1, high=price_minor
-    )
+    admission = _integer(offer["admission_funding_minor"], "offer.admission_funding_minor", low=1, high=price_minor)
     scope = _string_list(offer["scope"], "offer.scope")
     criteria = _string_list(offer["acceptance_criteria"], "offer.acceptance_criteria")
     issued_at = _utc(offer["issued_at"], "offer.issued_at")
@@ -156,7 +154,6 @@ def normalize_packet(packet: Any) -> dict[str, Any]:
         low=60,
         high=7 * 24 * 60 * 60,
     )
-
     normalized_offer = {
         "acceptance_criteria": criteria,
         "admission_funding_minor": admission,
@@ -219,10 +216,11 @@ def normalize_packet(packet: Any) -> dict[str, Any]:
     }
 
 
-def evaluate(packet: Any, *, now: datetime) -> Evaluation:
-    if now.tzinfo is None:
-        raise AdmissionError("now must be timezone-aware")
-    now = now.astimezone(timezone.utc).replace(microsecond=0)
+def _evaluate_at(packet: Any, *, at: datetime) -> Evaluation:
+    """Historical evaluator used only behind trusted current evaluation and receipt verification."""
+    if at.tzinfo is None:
+        raise AdmissionError("evaluation time must be timezone-aware")
+    now = at.astimezone(timezone.utc).replace(microsecond=0)
     normalized = normalize_packet(packet)
     offer = normalized["offer"]
     acceptance = normalized["acceptance"]
@@ -271,6 +269,7 @@ def evaluate(packet: Any, *, now: datetime) -> Evaluation:
     receipt_core = {
         "schema": RECEIPT_SCHEMA,
         "evaluated_at": _utc_text(now),
+        "evaluation_kind": "CURRENT_AT_EVALUATION",
         "historical_only_after_evaluation": True,
         "status": status,
         "reasons": reasons,
@@ -304,10 +303,16 @@ def evaluate(packet: Any, *, now: datetime) -> Evaluation:
     return Evaluation(status=status, reasons=tuple(reasons), receipt=receipt)
 
 
+def evaluate(packet: Any) -> Evaluation:
+    """Evaluate a current owner-admission decision using the host process UTC clock."""
+    return _evaluate_at(packet, at=datetime.now(timezone.utc))
+
+
 def verify(packet: Any, receipt: Any) -> bool:
+    """Verify historical receipt integrity only; never mint current work-admission authority."""
     supplied = _require_object(receipt, "receipt")
     evaluated_at = _utc(supplied.get("evaluated_at"), "receipt.evaluated_at")
-    expected = evaluate(packet, now=evaluated_at).receipt
+    expected = _evaluate_at(packet, at=evaluated_at).receipt
     return supplied == expected
 
 

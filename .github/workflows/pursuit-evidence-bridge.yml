@@ -1,0 +1,39 @@
+name: Pursuit evidence bridge
+
+on:
+  pull_request:
+    paths:
+      - 'revenue/pursuit_evidence_bridge/**'
+      - 'revenue/bidder_qualification_vault/**'
+      - 'opportunities/jersey_connecting_health_cdr_openehr_dn827803/sources.json'
+      - 'opportunities/jersey_connecting_health_cdr_openehr_dn827803/fixtures/public_hold.json'
+      - '.github/workflows/pursuit-evidence-bridge.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'revenue/pursuit_evidence_bridge/**'
+      - 'revenue/bidder_qualification_vault/**'
+      - 'opportunities/jersey_connecting_health_cdr_openehr_dn827803/sources.json'
+      - 'opportunities/jersey_connecting_health_cdr_openehr_dn827803/fixtures/public_hold.json'
+      - '.github/workflows/pursuit-evidence-bridge.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.11', '3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Compile
+        run: python -m py_compile revenue/pursuit_evidence_bridge/*.py revenue/bidder_qualification_vault/*.py
+      - name: Unit tests
+        run: python -m unittest -v revenue.pursuit_evidence_bridge.test_bridge
+      - name: Optimized unit tests
+        run: python -O -m unittest -v revenue.pursuit_evidence_bridge.test_bridge
