@@ -46,7 +46,7 @@ Pass one JSON object:
 }
 ```
 
-`prospect_key` and `experiment_id` must be stable de-identified identifiers. Dimensions reject `@` and control characters so raw email addresses do not accidentally become analytics keys.
+`prospect_key` and `experiment_id` must be stable de-identified identifiers. Dimensions reject `@` and control characters so raw email addresses do not accidentally become analytics keys. `evidence_ref` must also be an opaque non-PII reference; values containing `@` are rejected rather than retained in analytics evidence.
 
 Supported lifecycle events:
 
@@ -102,7 +102,7 @@ The evaluator rejects:
 - reply-path events before `SENT`;
 - positive/accept/payment events missing their explicit evidence chain;
 - contradictory DNR/bounce plus reply-path outcomes;
-- obvious raw email-like identifiers/dimensions;
+- obvious raw email-like identifiers, dimensions, and evidence references;
 - unknown schema keys.
 
 Cohorts are ranked deterministically using evidence state only. Ranking never performs an action.
