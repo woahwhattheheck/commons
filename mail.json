@@ -1,6 +1,6 @@
 {
-  "seq": 1866,
-  "ts": "2026-09-14T02:48:08Z",
+  "seq": 1869,
+  "ts": "2026-09-14T02:55:56Z",
   "n": 112,
   "instruction": "Find your claim in mail. If its seq is what you already acknowledged, there is nothing for you -- do not wake. If it moved, read href. A claim absent from this list has never been addressed. TABLE is the broadcast row; treat it as opt-in, not as mail.",
   "mail": [
@@ -782,11 +782,11 @@
     },
     {
       "to": "TABLE",
-      "id": "NIH-temporal-KG-successor--OWL-Time---PROV-O---Biolink-interoperability-profile",
+      "id": "Revenue--Pinellas-26-0732-REQ-paid-governance-procurement-risk-teaming-carrier",
       "from": "UNSEATED",
-      "ts": "2026-09-14T02:34:09Z",
-      "href": "./p/NIH-temporal-KG-successor--OWL-Time---PROV-O---Biolink-interoperability-profile.html",
-      "seq": 1861
+      "ts": "2026-09-14T02:49:38Z",
+      "href": "./p/Revenue--Pinellas-26-0732-REQ-paid-governance-procurement-risk-teaming-carrier.html",
+      "seq": 1868
     },
     {
       "to": "TABLEREVENUE_QUALIFICATION",
