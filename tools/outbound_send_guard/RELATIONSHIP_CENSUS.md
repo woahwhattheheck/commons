@@ -1,43 +1,76 @@
-# Provider relationship census / custody gate
+# Provider relationship census / integrity gate
 
-`relationship_census.py` closes the historical-owner race that exact-recipient dedupe and a buyer+offer atomic lease cannot see by themselves. It is **offline**: callers export a complete provider/workspace census, authenticate that snapshot with a provider-scoped HMAC, and feed the exact JSON bytes to this tool before any outreach path is considered.
+`relationship_census.py` is a **fail-closed offline relationship census validator**. It exists to preserve exact target/route/history/transfer evidence across parallel sales workers, but v2 deliberately does **not** claim that a caller-supplied HMAC proves provider origin.
 
-This gate never sends mail, mutates Gmail/Slack/provider state, schedules work, or authorizes an external side effect. A non-HOLD result only projects custody. Downstream callers still require the ordinary outbound send guard and the atomic send lease.
+That distinction matters: a process that possesses an HMAC secret can also mint a matching signature. A valid supplied-secret HMAC proves integrity under that secret; by itself it cannot prove that Gmail, Slack, a CRM, or another independent provider produced the snapshot. The v1 implementation blurred those two facts and could therefore turn worker-authored state into a non-HOLD custody projection.
 
-## Identity and PII boundary
+## v2 authority boundary
 
-The input names the buyer/account with an opaque `target_scope`; raw email addresses are rejected there. Routes are lowercase SHA-256 hashes only. Each route observation carries `target_binding_sha256 = SHA256(canonical({schema_version, target_scope, route_sha256}))`. The signed provider snapshot also binds the target and sorted route set, so a route-history row copied from a different target yields `HOLD` even if somebody re-signs the malformed census.
+The public `evaluate(...)` / `evaluate_bytes(...)` surface now has a narrow live contract:
 
-The receipt contains the opaque target, route hashes, provider/workspace hash, content digests, relationship owner/generation, decision, and reasons. It never contains raw route addresses.
+- current time is always process UTC;
+- freshness is code-owned and fixed at **900 seconds**;
+- future skew is code-owned and fixed at **300 seconds**;
+- callers cannot supply `now`, `max_snapshot_age_seconds`, or `max_future_skew_seconds`;
+- the receipt binds the exact policy generation (`process-utc-fixed-900-300-v1`);
+- a supplied-secret HMAC is reported as `integrity_hmac_valid`, with `authority_scope=SUPPLIED_SECRET_INTEGRITY_ONLY`;
+- `provider_origin_attested=false` and `current_authority=false` remain explicit;
+- live `decision` is therefore **HOLD** until a separately verified provider-origin authority is composed.
 
-## Provider authority
+The private `_evaluate_at(...)` helper exists only for deterministic tests/historical replay. Its receipts are explicitly marked `HISTORICAL_REPLAY_NOT_LIVE_AUTHORITY`; backdating that helper can never produce current custody authority.
 
-`authority.signature_sha256` is HMAC-SHA256 over the canonical authority material: authority schema/key id, target scope, sorted route hashes, and normalized `census`. The CLI gets the secret only from `OUTBOUND_RELATIONSHIP_CENSUS_HMAC_KEY_HEX` (at least 32 bytes); the secret is never accepted in the JSON and never appears in receipts.
+This module never sends email, mutates Gmail/Slack/provider state, schedules work, accepts payment, or authorizes any side effect. Every receipt has `external_send_authorized=false` and `side_effects_authorized=false`.
 
-Invalid/unsigned authority, incomplete coverage, a stale snapshot, a far-future snapshot, target-binding failures, a current-owner/generation mismatch, or transfer defects all project `HOLD` rather than send authority.
+## Relationship projection
 
-Default freshness is 900 seconds with at most 300 seconds of future skew. CLI bounds can make those windows stricter or looser, but never grant send authority.
+The receipt keeps a non-authoritative `projected_custody` field so operators can reason about normalized relationship history without confusing that projection with live authority:
 
-## Relationship states
+- `CLEAR` may project `CUSTODY_CLEAR` when the census is otherwise semantically valid;
+- `ACTIVE_OWNER` may project `CURRENT_OWNER` when owner/generation/route observations agree;
+- a valid completed `TRANSFERRED` record may project `CURRENT_OWNER` after the transfer proof checks pass;
+- any semantic defect projects `UNPROVEN`.
 
-Supported states are `CLEAR`, `ACTIVE_OWNER`, `WAITING_REPLY`, `INBOUND_NEEDS_OWNER`, `UNSUBSCRIBED`, `DNR`, `HARD_BOUNCE`, `TRANSFER_PENDING`, `TRANSFERRED`, and `CLOSED`.
+Regardless of that projection, v2 `decision` stays `HOLD` because provider origin is not independently attested by this offline supplied-secret mechanism.
 
-- `CLEAR` with a valid complete snapshot projects `CUSTODY_CLEAR`.
-- Non-clear ownership can project `CURRENT_OWNER` only when the current worker and claimed generation match the live relationship and route observations.
-- `UNSUBSCRIBED`, `DNR`, and `HARD_BOUNCE` remain `HOLD` even for the owner: custody is not consent or deliverability authority.
-- `TRANSFER_PENDING` remains `HOLD`.
+## Non-reusable lifecycle states
 
-## Explicit transfer
+These aggregate **and route-level** states are mechanically blocked from reusable custody projection:
 
-A `TRANSFERRED` census must include `census.transfer`. The record is target/route-set bound and must prove:
+- `WAITING_REPLY`
+- `INBOUND_NEEDS_OWNER`
+- `UNSUBSCRIBED`
+- `DNR`
+- `HARD_BOUNCE`
+- `TRANSFER_PENDING`
+- `CLOSED`
+
+A matching worker/generation cannot turn them into `CURRENT_OWNER`.
+
+Complaint, unsubscribe, delivery, and DSN evidence remain separately governed by `route_lifecycle.py`. That reducer is an independent mandatory gate; this census does not invent a second complaint vocabulary or treat a route-health result as send authority.
+
+## Identity / PII boundary
+
+The input names the buyer/account with opaque `target_scope`; raw email addresses are rejected there and in worker/owner tokens. Routes are lowercase SHA-256 hashes. Each route observation binds to the target via:
+
+`SHA256(canonical({schema_version, target_scope, route_sha256}))`
+
+The signed census material also binds the target and sorted route set. Cross-target route transplantation therefore fails even if the malformed census is re-HMACed.
+
+The receipt contains only opaque target, route hashes, provider/workspace hash, content digests, normalized relationship data, currentness policy, and authority/integrity facts. It never emits raw route addresses.
+
+## Transfer proof
+
+`TRANSFERRED` still requires an exact target/route-set-bound transfer record proving:
 
 1. `to_generation == from_generation + 1`;
-2. release by the prior owner, or an actor explicitly attested with `release_authority=ADMIN`;
+2. release by the prior owner, or an actor explicitly marked `ADMIN` in the supplied transfer record;
 3. acceptance by the new owner;
-4. release occurs before acceptance and both precede the provider snapshot;
-5. the transferred owner/generation exactly equal the live relationship owner/generation.
+4. release no later than acceptance, and both no later than the snapshot;
+5. transferred owner/generation equal the live relationship owner/generation.
 
-The normalized transfer record receives its own `transfer_receipt_sha256` in the custody receipt, making the transfer assertion content-addressed and immutable at the receipt layer.
+The normalized transfer receives a content-addressed `transfer_receipt_sha256`.
+
+This verifies internal transfer semantics only. It does not elevate the supplied transfer record into independently authenticated provider authority.
 
 ## CLI
 
@@ -48,18 +81,37 @@ python -m tools.outbound_send_guard.relationship_census \
   --out custody-receipt.json
 ```
 
-The CLI reads the census bytes once, rejects duplicate JSON keys and non-finite numbers, and create-exclusively publishes the receipt using same-directory staging + atomic hard-link publication. It refuses to overwrite an existing receipt.
+The environment key is used for **integrity checking only**. The CLI intentionally has no caller freshness/future-skew options. It reads the census bytes once, rejects duplicate JSON keys/non-finite numbers, and create-exclusively publishes the receipt using same-directory staging plus atomic hard-link publication.
 
-Exit codes: `0` for a valid non-HOLD custody projection, `4` for a valid `HOLD` receipt, and `2` for malformed input/configuration or publication failure.
+Exit codes:
 
-## Composition
+- `4` — valid v2 receipt published, live authority still HOLD;
+- `2` — malformed input/configuration/publication failure.
 
-A caller that wants to send must independently satisfy all of the following at the same live operation boundary:
+There is no v2 exit-0 path from supplied-secret census input alone.
 
-1. provider relationship census/custody projection here;
-2. existing mailbox + Slack outbound dedupe authority (#13625 family);
-3. existing buyer/route scope aggregation when multiple verified routes are relevant;
-4. existing atomic buyer+offer lease / capability possession (#13689 family);
-5. any route-lifecycle, unsubscribe, complaint, or bounce policy.
+## Required live composition
+
+A future sender must independently satisfy all applicable live controls at the same operation boundary, including:
+
+1. **provider-origin authority** obtained from an independently verified provider/connector path (not this supplied-secret HMAC alone);
+2. this module's exact census/relationship integrity projection;
+3. complete mailbox + Slack outbound-send guard;
+4. route-lifecycle / complaint / unsubscribe / bounce policy;
+5. buyer/route scope aggregation where multiple verified routes are relevant;
+6. atomic buyer+offer capability/lease; and
+7. any owner/HOT-lead human approval rule in force.
 
 No result from this module substitutes for any of those gates.
+
+## Regression gate
+
+```bash
+python -m py_compile \
+  tools/outbound_send_guard/relationship_census.py \
+  tools/outbound_send_guard/test_relationship_census.py
+python -m unittest -v tools.outbound_send_guard.test_relationship_census
+python -O -m unittest -v tools.outbound_send_guard.test_relationship_census
+```
+
+The hostile suite covers caller-clock/policy removal, self-minted valid HMAC remaining HOLD, historical backdating remaining non-current, blocked lifecycle states at aggregate+route level, target transplantation, stale/future snapshots, transfer proof defects, exact-byte custody, and optimized-mode behavior.
