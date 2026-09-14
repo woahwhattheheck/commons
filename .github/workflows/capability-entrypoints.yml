@@ -22,6 +22,9 @@ on:
       - 'revenue/hive_photo_meal_journal/**'
       - 'tests/test_mealframe.py'
       - 'p/ztk-q4m7-hive019-mealframe-recovery-20260914.md'
+      - 'revenue/organization_outbound_lease/**'
+      - 'tests/test_organization_outbound_lease.py'
+      - 'tests/test_organization_outbound_lease_trust.py'
   pull_request:
     paths: *entrypoint_paths
   workflow_dispatch:
@@ -107,3 +110,30 @@ jobs:
         run: python -W error::ResourceWarning tests/test_mealframe.py
       - name: MealFrame optimized tests with resource warnings fatal
         run: python -O -W error::ResourceWarning tests/test_mealframe.py
+
+  organization-outbound-lease:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.9', '3.13']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Compile organization outbound lease
+        run: >-
+          python -m py_compile
+          revenue/organization_outbound_lease/__init__.py
+          revenue/organization_outbound_lease/core.py
+          revenue/organization_outbound_lease/stores.py
+          revenue/organization_outbound_lease/strict.py
+          revenue/organization_outbound_lease/trust.py
+          revenue/organization_outbound_lease/cli.py
+          tests/test_organization_outbound_lease.py
+          tests/test_organization_outbound_lease_trust.py
+      - name: Organization outbound lease unit and hostile tests
+        run: python -m unittest -q tests.test_organization_outbound_lease tests.test_organization_outbound_lease_trust
+      - name: Organization outbound lease optimized Python tests
+        run: python -O -m unittest -q tests.test_organization_outbound_lease tests.test_organization_outbound_lease_trust
