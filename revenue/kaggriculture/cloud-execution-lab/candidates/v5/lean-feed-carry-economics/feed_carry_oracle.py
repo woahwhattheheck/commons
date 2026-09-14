@@ -13,6 +13,7 @@ from typing import Any, Mapping, Sequence
 from lean_feed_core import *
 from lean_feed_core import EvidenceError, _require, canonical_json_bytes, sha256_file
 from lean_feed_gate import *
+from lean_feed_hardening import analyze_authoritative_document
 from lean_feed_run import *
 
 
@@ -23,6 +24,13 @@ def render_markdown(report: Mapping[str, Any]) -> str:
         "",
         f"- Conclusion: **{promotion['conclusion']}**",
         f"- Selected arm: `{promotion['selected_arm'] or 'none'}`",
+    ]
+    if "candidate_conclusion" in promotion:
+        lines += [
+            f"- Candidate economics: `{promotion['candidate_conclusion']}`",
+            f"- Promotion authority verified: `{str(promotion['authority_verified']).lower()}`",
+        ]
+    lines += [
         f"- Dev mean delta-M: `{promotion['dev_mean_delta_m']:.6f}`",
         f"- Holdout mean delta-M: `{promotion['holdout_mean_delta_m']:.6f}`",
         "- Dev/holdout downstream liberated-cash use: "
@@ -53,7 +61,8 @@ def render_markdown(report: Mapping[str, Any]) -> str:
         "This report rejects inventory, ending-cash, and byte-change proxies. "
         "A promotion requires a reachable current-policy excess, explicit cash "
         "liberation, later runtime-ledger use, satisfied feed obligations, "
-        "both-seat/opponent stability, and untouched holdout survival.",
+        "both-seat/opponent stability, untouched holdout survival, and an "
+        "independently retained code-trusted evidence root.",
         "",
     ]
     return "\n".join(lines)
@@ -114,7 +123,9 @@ def main(argv: Sequence[str] | None = None) -> int:
     try:
         document = json.loads(args.evidence.read_text(encoding="utf-8"))
         _require(isinstance(document, Mapping), "top-level evidence must be an object")
-        report = analyze_document(document)
+        # Official CLI is a promotion-authority surface, not merely an economics
+        # candidate scorer. It therefore always applies the fail-closed wrapper.
+        report = analyze_authoritative_document(document)
         artifacts = write_outputs(report, args.out, args.force)
     except (OSError, json.JSONDecodeError, EvidenceError) as exc:
         print(f"ERROR: {exc}", file=sys.stderr)
