@@ -15,9 +15,9 @@ def _parser() -> argparse.ArgumentParser:
         cmd.add_argument("--policy", required=True)
         cmd.add_argument("--demands", required=True)
         cmd.add_argument("--reservations", required=True)
-        cmd.add_argument("--policy-sha", required=True)
-        cmd.add_argument("--demand-sha", required=True)
-        cmd.add_argument("--reservations-sha", required=True)
+        cmd.add_argument("--policy-sha", required=True, help="integrity pin only; not operational authority")
+        cmd.add_argument("--demand-sha", required=True, help="integrity pin only; not operational authority")
+        cmd.add_argument("--reservations-sha", required=True, help="integrity pin only; not operational authority")
         if name == "compile":
             cmd.add_argument("--out", required=True)
         else:
