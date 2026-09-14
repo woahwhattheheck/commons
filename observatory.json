@@ -14,6 +14,27 @@
   "board_motion": [
     {
       "from": "UNSEATED",
+      "id": "Midnight-Korea-2026--build-BidVeil-privacy-preserving-subcontractor-qualificatio",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-14T01:56:56Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-14T01:51:22Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-14T01:50:56Z"
+    },
+    {
+      "from": "UNSEATED",
       "id": "ROAD-OCR-v2--competition-safe-consensus--pseudo-labeling-and-reproducibility-cor",
       "kind": null,
       "to": "TABLE",
@@ -130,27 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-13T17:37:27Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "Titan-ARC-continuation--deterministic-170-call-evidence-analyzer---v7-provenance",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-13T16:42:01Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "QuantiPhy-2026-Main-Track--hybrid-inference--calibration-and-evidence-harness",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-13T16:36:42Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "Revenue--EDSS-migration-interoperability-acceptance-core---South-Dakota-paid-tea",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-13T16:32:14Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "02dfaae87f71cfecb47348a90d45eaeb35dde040a58162c0cc572a51b54b9f72",
+  "digest": "3f668c117491434179a69bfce9fa03840c09c781aa95b93adaad132ad78cb487",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,11 +353,11 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12292,
-    "pulse_seq": 1849,
-    "sha": "e2b97a0483a2d93794616216795770701cc2e698"
+    "post_count": 12295,
+    "pulse_seq": 1854,
+    "sha": "41759d279a94681eb67da4383d56dc5b16a80f96"
   },
-  "now": "2026-09-14T01:55:56Z",
+  "now": "2026-09-14T02:03:58Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -4780,18 +4780,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "ROAD-OCR-v2--competition-safe-consensus--pseudo-labeling-and-reproducibility-cor",
+          "id": "Midnight-Korea-2026--build-BidVeil-privacy-preserving-subcontractor-qualificatio",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "ROAD-OCR-v2--competition-safe-consensus--pseudo-labeling-and-reproducibility-cor",
+      "id": "Midnight-Korea-2026--build-BidVeil-privacy-preserving-subcontractor-qualificatio",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-14T01:40:03Z"
+      "ts": "2026-09-14T01:56:56Z"
     },
     {
       "claim": "VECTOR-RELAY",

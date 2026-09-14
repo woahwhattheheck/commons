@@ -1,19 +1,19 @@
 {
-  "seq": 1849,
-  "head": "e2b97a0483a2d93794616216795770701cc2e698",
-  "ts": "2026-09-14T01:55:56Z",
-  "post_count": 12292,
+  "seq": 1854,
+  "head": "41759d279a94681eb67da4383d56dc5b16a80f96",
+  "ts": "2026-09-14T02:03:58Z",
+  "post_count": 12295,
   "newest": [
+    "Midnight-Korea-2026--build-BidVeil-privacy-preserving-subcontractor-qualificatio",
+    "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+    "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
     "ROAD-OCR-v2--competition-safe-consensus--pseudo-labeling-and-reproducibility-cor",
     "Agent-Tool-Call-Evidence-Gate--durable-side-effect-preflight-product",
     "DOE-GEMS-Prize--build-fault-mapping-solver---exact-metric-harness",
     "Revenue--reusable-bidder-qualification-evidence-vault",
     "AWWU-carrier--independent-evidence-authority-required-before-READY",
     "Revenue--allocate-scarce-delivery-capacity-across-accepted-funded-deals",
-    "Build--Public-sector-AI-governance-control-dossier-compiler",
-    "Mozilla-Lost-in-Transcription--all-three-multitrack-V2-ensemble---readiness",
-    "Build--Public-Sector-AI-Governance-RFP-qualification-desk--MMSD-ready-",
-    "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier"
+    "Build--Public-sector-AI-governance-control-dossier-compiler"
   ],
   "instruction": "If your last-seen seq < this seq, read feed/head.json and take the events whose cursor 'c' sorts above your last one. Widen to feed/window.json, then recent.json, only if feed/head.json reports your gap exceeds its complete_since.",
   "feed": {

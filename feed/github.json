@@ -1,9 +1,9 @@
 {
   "counts": {
-    "open_issues": 89,
-    "open_pull_requests": 50,
+    "open_issues": 87,
+    "open_pull_requests": 53,
     "runs_in_progress": 19,
-    "runs_queued": 464
+    "runs_queued": 597
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -69,35 +69,68 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
+      "branch": "zrf-c5n7/outbound-capability-v2-20260913",
+      "created_at": "2026-09-14T02:03:20Z",
+      "draft": false,
+      "head_sha": "83c885981c9a877b247c2fddb220d3cea516703a",
+      "number": 14198,
+      "title": "fix(outbound): add v2 proof-of-possession lease",
+      "updated_at": "2026-09-14T02:04:00Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zfh-k6w2/cash-evidence-event-binding-20260913",
+      "created_at": "2026-09-14T02:01:28Z",
+      "draft": false,
+      "head_sha": "3f8fae3f8877185de13dca7aacd822d1d2c786ec",
+      "number": 14197,
+      "title": "fix: bind cash receipt evidence to exact events",
+      "updated_at": "2026-09-14T02:03:10Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zch-n6k4/bid-cockpit-dependency-closure-20260913",
+      "created_at": "2026-09-14T02:00:13Z",
+      "draft": false,
+      "head_sha": "44e0af122ca0d5ffdd686fb3fd2b0344833779ee",
+      "number": 14195,
+      "title": "fix(cockpit): enforce proven dependency closure",
+      "updated_at": "2026-09-14T02:03:39Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zla-c7m9/rsna-adaptive-router-semantics-20260913",
+      "created_at": "2026-09-14T01:58:53Z",
+      "draft": false,
+      "head_sha": "043d88686e937891afd87260987c4ee45a16aeb9",
+      "number": 14193,
+      "title": "fix(rsna): make objective/receipt trust semantics explicit",
+      "updated_at": "2026-09-14T02:02:37Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zgl-m4q9/service-deal-independent-authority-r2",
+      "created_at": "2026-09-14T01:55:18Z",
+      "draft": false,
+      "head_sha": "1859cf0bfc12f2819f3f63fd4349ed06ca5f341b",
+      "number": 14188,
+      "title": "revenue: authenticate Service Deal Economics input authority",
+      "updated_at": "2026-09-14T02:03:36Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
       "branch": "zbf-c8r6/delivery-capacity-authority-fix-20260913",
       "created_at": "2026-09-14T01:53:03Z",
       "draft": false,
-      "head_sha": "26d8e99934a2a4430d8ad844e56d8a8170e0d29a",
+      "head_sha": "6446471055b5cc7d407976d0353a025f0e1eafb3",
       "number": 14185,
       "title": "delivery capacity: fail closed current authority and temporal lineage",
-      "updated_at": "2026-09-14T01:53:03Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zmh-c6t4-arc3-source-custody",
-      "created_at": "2026-09-14T01:52:14Z",
-      "draft": false,
-      "head_sha": "4c6e1a47b729ee9f1be71b1ba7448d58f03772bc",
-      "number": 14181,
-      "title": "fix(arc3): bind hermetic execution to verified source bytes",
-      "updated_at": "2026-09-14T01:54:03Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zch-q2h7/delivery-capacity-authority-fix",
-      "created_at": "2026-09-14T01:51:41Z",
-      "draft": false,
-      "head_sha": "f2f65fd8a456d4b9a26fda13c61ba4d929710f5b",
-      "number": 14178,
-      "title": "fix(revenue): close delivery-capacity authority and time gaps",
-      "updated_at": "2026-09-14T01:53:29Z"
+      "updated_at": "2026-09-14T02:03:18Z"
     },
     {
       "author": "woahwhattheheck",
@@ -105,10 +138,10 @@
       "branch": "zaw-c9t4/forensics-canonical-repo-fix-20260913",
       "created_at": "2026-09-14T01:50:02Z",
       "draft": false,
-      "head_sha": "4c89d87152407e6426b624ba7ab97f184567b4d8",
+      "head_sha": "88a6c03802108ca2e8eeae4efa95fbd17322ff63",
       "number": 14173,
       "title": "fix(forensics): bind lease evidence to canonical Commons repo",
-      "updated_at": "2026-09-14T01:53:47Z"
+      "updated_at": "2026-09-14T02:02:37Z"
     },
     {
       "author": "woahwhattheheck",
@@ -119,7 +152,7 @@
       "head_sha": "d9acf14a02c0a1455d063b63d1e4f041219b6410",
       "number": 14159,
       "title": "Revenue: require fresh Stripe readback for right-now checkout truth",
-      "updated_at": "2026-09-14T01:50:18Z"
+      "updated_at": "2026-09-14T01:58:34Z"
     },
     {
       "author": "woahwhattheheck",
@@ -138,43 +171,10 @@
       "branch": "zhk/shipaton-proofpocket",
       "created_at": "2026-09-14T01:30:35Z",
       "draft": false,
-      "head_sha": "16e765b01b86739e8df3e76cade38d439a1e1b7e",
+      "head_sha": "7410ea5e8d1818a2443fddfea55475c5788dc1de",
       "number": 14147,
       "title": "build(shipaton): add ProofPocket Android RevenueCat carrier",
-      "updated_at": "2026-09-14T01:51:39Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zkt-a7v2/right-now-human-authority",
-      "created_at": "2026-09-14T01:14:29Z",
-      "draft": false,
-      "head_sha": "1c95d8463cbaf7e6d11d266d292a5b7792a2dbbb",
-      "number": 14122,
-      "title": "Bind right-now buyer truth to canonical reply evidence",
-      "updated_at": "2026-09-14T01:20:44Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zba-v8k6/deal-room-provider-canonical-20260913",
-      "created_at": "2026-09-14T01:00:33Z",
-      "draft": false,
-      "head_sha": "d0c104f5fd41f4bb1e4f77fbb768804654b27a85",
-      "number": 14105,
-      "title": "fix(revenue): canonicalize Commercial Deal Room provider identity",
-      "updated_at": "2026-09-14T01:16:50Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zkp-h7v2/commercial-portfolio-allocator",
-      "created_at": "2026-09-13T16:46:51Z",
-      "draft": false,
-      "head_sha": "4c8e4df0e5a085565937ee85e34f464f76fcdc11",
-      "number": 14086,
-      "title": "Add commercial portfolio allocation authority",
-      "updated_at": "2026-09-13T16:56:24Z"
+      "updated_at": "2026-09-14T02:03:40Z"
     }
   ],
   "open_heads": {
@@ -221,18 +221,98 @@
     "14086": "4c8e4df0e5a085565937ee85e34f464f76fcdc11",
     "14105": "d0c104f5fd41f4bb1e4f77fbb768804654b27a85",
     "14122": "1c95d8463cbaf7e6d11d266d292a5b7792a2dbbb",
-    "14147": "16e765b01b86739e8df3e76cade38d439a1e1b7e",
+    "14147": "7410ea5e8d1818a2443fddfea55475c5788dc1de",
     "14151": "421b0703a91d251e94be8ca55d9d22c6a76d8f0a",
     "14159": "d9acf14a02c0a1455d063b63d1e4f041219b6410",
-    "14173": "4c89d87152407e6426b624ba7ab97f184567b4d8",
-    "14178": "f2f65fd8a456d4b9a26fda13c61ba4d929710f5b",
-    "14181": "4c6e1a47b729ee9f1be71b1ba7448d58f03772bc",
-    "14185": "26d8e99934a2a4430d8ad844e56d8a8170e0d29a"
+    "14173": "88a6c03802108ca2e8eeae4efa95fbd17322ff63",
+    "14185": "6446471055b5cc7d407976d0353a025f0e1eafb3",
+    "14188": "1859cf0bfc12f2819f3f63fd4349ed06ca5f341b",
+    "14193": "043d88686e937891afd87260987c4ee45a16aeb9",
+    "14195": "44e0af122ca0d5ffdd686fb3fd2b0344833779ee",
+    "14197": "3f8fae3f8877185de13dca7aacd822d1d2c786ec",
+    "14198": "83c885981c9a877b247c2fddb220d3cea516703a"
   },
-  "pulls_listed": 50,
+  "pulls_listed": 53,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 24.4,
+  "queue_depth_per_runner": 31.4,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zkl-f3n7/custody-repo-case-alias-r2",
+      "closed_at": "2026-09-14T02:02:08Z",
+      "head_sha": "481cf197917e5cda6d5004c9d6e544600294e4e0",
+      "merged_at": null,
+      "number": 14196,
+      "state": "CLOSED",
+      "title": "Revenue custody: collapse GitHub repo case aliases (clean successor)"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zkl-f3n7/custody-repo-case-alias",
+      "closed_at": "2026-09-14T02:02:03Z",
+      "head_sha": "fbf3ae84e61b1187e3c99b05ed1bf5a8cef3dab7",
+      "merged_at": null,
+      "number": 14190,
+      "state": "CLOSED",
+      "title": "Revenue custody: collapse GitHub repo case aliases"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zfbw-k7r4/road-ocr-v2-consensus-20260913",
+      "closed_at": "2026-09-14T01:59:04Z",
+      "head_sha": "d83b2bfbffd2ea39506b18c684ef1dc722a2f57a",
+      "merged_at": "2026-09-14T01:59:04Z",
+      "number": 14192,
+      "state": "MERGED",
+      "title": "competition: add ROAD Barbados OCR v2 consensus and pseudo-label core"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zmh-c6t4-arc3-source-custody",
+      "closed_at": "2026-09-14T01:56:06Z",
+      "head_sha": "4c6e1a47b729ee9f1be71b1ba7448d58f03772bc",
+      "merged_at": "2026-09-14T01:56:06Z",
+      "number": 14181,
+      "state": "MERGED",
+      "title": "fix(arc3): bind hermetic execution to verified source bytes"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zzc/post-delivery-buyer-acceptance-20260913",
+      "closed_at": "2026-09-14T01:55:14Z",
+      "head_sha": "2639e90cc1cc6b3f390ea486e623d61745f28127",
+      "merged_at": "2026-09-14T01:55:14Z",
+      "number": 14187,
+      "state": "MERGED",
+      "title": "feat: add post-delivery buyer-acceptance evidence compiler"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zgl-m4q9/service-deal-independent-authority",
+      "closed_at": "2026-09-14T01:55:04Z",
+      "head_sha": "c82312b5c69bd4ad4fbdcd9c8a2393ce2e96238e",
+      "merged_at": null,
+      "number": 14186,
+      "state": "CLOSED",
+      "title": "revenue: authenticate Service Deal Economics input authority"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zch-q2h7/delivery-capacity-authority-fix",
+      "closed_at": "2026-09-14T01:54:43Z",
+      "head_sha": "f31e21c5f650232bcff5f126c1d7930cbe305aa6",
+      "merged_at": null,
+      "number": 14178,
+      "state": "CLOSED",
+      "title": "fix(revenue): close delivery-capacity authority and time gaps"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -320,87 +400,10 @@
       "number": 14165,
       "state": "MERGED",
       "title": "fix(revenue): require authoritative sends for duplicate incidents"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zzc/commercial-cash-realization-ledger-20260913",
-      "closed_at": "2026-09-14T01:40:45Z",
-      "head_sha": "df8bae191b85f84fc69fb484c849b02e5213d837",
-      "merged_at": "2026-09-14T01:40:45Z",
-      "number": 14158,
-      "state": "MERGED",
-      "title": "feat: add commercial cash-realization evidence ledger"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "ztm-p6v4/bidder-qualification-vault",
-      "closed_at": "2026-09-14T01:40:31Z",
-      "head_sha": "5e97687d5d03b79ae13adfd0b773fa0439574fe4",
-      "merged_at": "2026-09-14T01:40:31Z",
-      "number": 14160,
-      "state": "MERGED",
-      "title": "Revenue: add bidder qualification evidence vault"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zeb-r4k8/delivery-capacity-allocator",
-      "closed_at": "2026-09-14T01:39:53Z",
-      "head_sha": "df02c0d5a962e9503b6e64fd4b93edf0fd61542a",
-      "merged_at": "2026-09-14T01:39:53Z",
-      "number": 14155,
-      "state": "MERGED",
-      "title": "revenue: allocate scarce delivery capacity across accepted deals"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zvt-q7m3/service-deal-economics-20260913",
-      "closed_at": "2026-09-14T01:38:26Z",
-      "head_sha": "1bda608237117a473476a6fadc01832a40e225c9",
-      "merged_at": "2026-09-14T01:38:26Z",
-      "number": 14156,
-      "state": "MERGED",
-      "title": "Revenue: add Service Deal Economics Desk"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zmh-c6t4-arc3-hermetic-import-escape",
-      "closed_at": "2026-09-14T01:37:49Z",
-      "head_sha": "3cec023c891bb16861ec7f01dc3cf9de8f4fc333",
-      "merged_at": "2026-09-14T01:37:49Z",
-      "number": 14157,
-      "state": "MERGED",
-      "title": "fix(arc3): close hermetic dynamic-import native escape"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zaw-c9t4/outbound-presend-forensics-20260913",
-      "closed_at": "2026-09-14T01:36:13Z",
-      "head_sha": "ade7435ddb2d5b29807e22b3b9d9b39754f69ed3",
-      "merged_at": "2026-09-14T01:36:13Z",
-      "number": 14153,
-      "state": "MERGED",
-      "title": "revenue: add outbound pre-send lease forensics"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zst-q5m9/awwu-independent-authority-fix",
-      "closed_at": "2026-09-14T01:33:02Z",
-      "head_sha": "ba91c9c26e3fc15eca5a6d1dc9b95f552097602c",
-      "merged_at": "2026-09-14T01:33:02Z",
-      "number": 14144,
-      "state": "MERGED",
-      "title": "AWWU: require independent authority before current READY"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-14T01:54:18Z",
+  "unchanged_since": "2026-09-14T02:04:07Z",
   "undatable_pulls": []
 }
