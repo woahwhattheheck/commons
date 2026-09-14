@@ -1,16 +1,104 @@
 {
   "counts": {
-    "open_issues": 81,
-    "open_pull_requests": 45,
-    "runs_in_progress": 20,
-    "runs_queued": 174
+    "open_issues": 84,
+    "open_pull_requests": 47,
+    "runs_in_progress": 17,
+    "runs_queued": 206
   },
   "counts_source": "graphql",
-  "degraded": [
-    "pulls-partial"
-  ],
+  "degraded": [],
   "drafts": 0,
+  "longest_open": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "mombasa/swarm-review-execution-evidence-clean-20260912",
+      "created_at": "2026-09-13T01:48:07Z",
+      "draft": false,
+      "head_sha": "73e73de79cb62cf2f58005efab027138ded6f282",
+      "number": 13533,
+      "title": "coordination: clean successor for exact-head execution evidence gate",
+      "updated_at": "2026-09-13T06:18:05Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z-kestrel/ci-ignored-input-fence-current-20260913",
+      "created_at": "2026-09-13T06:40:39Z",
+      "draft": false,
+      "head_sha": "842d302b4c6ab001df5457c6b25309b301d53827",
+      "number": 13587,
+      "title": "ci: reject ignored runtime inputs before battery execution",
+      "updated_at": "2026-09-13T12:53:11Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zpq6n/actions-authority-stable-policy-latest-attempt-20260913",
+      "created_at": "2026-09-13T08:49:13Z",
+      "draft": false,
+      "head_sha": "96e28badbf1ea2ec3d9a9712b3c0cb730942e025",
+      "number": 13654,
+      "title": "ci: make Actions evidence classification-only",
+      "updated_at": "2026-09-13T09:14:30Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zr913425/port-data-qc-trusted-time-live-main-20260913",
+      "created_at": "2026-09-13T09:23:24Z",
+      "draft": false,
+      "head_sha": "aee34ae856ab682908406e7b77f017af6da37586",
+      "number": 13676,
+      "title": "fix(revenue): require trusted time for Port QC verification",
+      "updated_at": "2026-09-13T09:24:50Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zax/ohsu-digital-pathology-evidence-20260913",
+      "created_at": "2026-09-13T09:33:58Z",
+      "draft": false,
+      "head_sha": "d7d6a0a0dacf3d832fc62d6e0b1a39b15a985b54",
+      "number": 13683,
+      "title": "revenue: add OHSU digital pathology qualification evidence gate",
+      "updated_at": "2026-09-13T10:21:53Z"
+    }
+  ],
   "newest_pulls": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zhk/shipaton-proofpocket",
+      "created_at": "2026-09-14T01:30:35Z",
+      "draft": false,
+      "head_sha": "c9af0f0e10608ccf426608a7537a0c459cf889b8",
+      "number": 14147,
+      "title": "build(shipaton): add ProofPocket Android RevenueCat carrier",
+      "updated_at": "2026-09-14T01:30:35Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zst-q5m9/awwu-independent-authority-fix",
+      "created_at": "2026-09-14T01:30:14Z",
+      "draft": false,
+      "head_sha": "b11d8697d224c5be834551f3eefe75b92a0734a5",
+      "number": 14144,
+      "title": "AWWU: require independent authority before current READY",
+      "updated_at": "2026-09-14T01:30:43Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zpt-j8w4/commercial-experiment-lab-14120",
+      "created_at": "2026-09-14T01:29:44Z",
+      "draft": false,
+      "head_sha": "18af180c4d101698ea45fcaf10051629d4cd0611",
+      "number": 14142,
+      "title": "Revenue: evidence-bound commercial experiment lab",
+      "updated_at": "2026-09-14T01:29:44Z"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -87,39 +175,6 @@
       "number": 14055,
       "title": "GOSIM: require a real candidate configuration to pass the baseline",
       "updated_at": "2026-09-13T15:45:42Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zkfp7c2/hotel-room-turn-evidence-pilot",
-      "created_at": "2026-09-13T15:37:10Z",
-      "draft": false,
-      "head_sha": "1980d5a6cd6ef5188832c6b48de7ee4a29501d85",
-      "number": 14054,
-      "title": "revenue: land $2,500 hotel room-turn evidence pilot fulfillment",
-      "updated_at": "2026-09-13T19:36:09Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "ztq-c8m6/jersey-dn827803-authority-v2",
-      "created_at": "2026-09-13T14:49:35Z",
-      "draft": false,
-      "head_sha": "457ffa2ce5eacf467c603e1d05d6e2a0bf6bda11",
-      "number": 14010,
-      "title": "fix(revenue): harden Jersey DN827803 qualification authority v2",
-      "updated_at": "2026-09-13T15:34:12Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zck-m6v2/call-e-routescout-20260913",
-      "created_at": "2026-09-13T14:46:36Z",
-      "draft": false,
-      "head_sha": "2182d07cd8750087a73f2aea2455890d75daf251",
-      "number": 13999,
-      "title": "CALL-E RouteScout: approval-gated procurement routing agent",
-      "updated_at": "2026-09-13T14:55:42Z"
     }
   ],
   "open_heads": {
@@ -166,12 +221,37 @@
     "14076": "13097f7581280415461458584c34e590761afa89",
     "14086": "4c8e4df0e5a085565937ee85e34f464f76fcdc11",
     "14105": "d0c104f5fd41f4bb1e4f77fbb768804654b27a85",
-    "14122": "1c95d8463cbaf7e6d11d266d292a5b7792a2dbbb"
+    "14122": "1c95d8463cbaf7e6d11d266d292a5b7792a2dbbb",
+    "14142": "18af180c4d101698ea45fcaf10051629d4cd0611",
+    "14144": "b11d8697d224c5be834551f3eefe75b92a0734a5",
+    "14147": "c9af0f0e10608ccf426608a7537a0c459cf889b8"
   },
-  "pulls_listed": 44,
-  "pulls_listing": "PARTIAL",
-  "queue_depth_per_runner": 8.7,
+  "pulls_listed": 47,
+  "pulls_listing": "COMPLETE",
+  "queue_depth_per_runner": 12.1,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zgl-m4q9/mozilla-lit-all3-provenance-r2",
+      "closed_at": "2026-09-14T01:31:21Z",
+      "head_sha": "c20f742e658ae16108a7e24459fd7a90e129a170",
+      "merged_at": "2026-09-14T01:31:21Z",
+      "number": 14148,
+      "state": "MERGED",
+      "title": "research: harden LIT all-three bundle provenance"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zgl-m4q9/mozilla-lit-all3-provenance",
+      "closed_at": "2026-09-14T01:30:54Z",
+      "head_sha": "6c4d8142c264f0626aa2ba1a5a8f2d73fa64ea28",
+      "merged_at": null,
+      "number": 14143,
+      "state": "CLOSED",
+      "title": "research: harden LIT all-three bundle provenance"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -314,32 +394,10 @@
       "number": 14108,
       "state": "MERGED",
       "title": "Fix settled cash authority so receipt-shaped JSON cannot mint USD"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zca-p4k8/arc3-sage-eval-kaggle-20260913",
-      "closed_at": "2026-09-14T01:03:31Z",
-      "head_sha": "377ec5a44244f26d79893a39ddabcd845a5d8815",
-      "merged_at": "2026-09-14T01:03:31Z",
-      "number": 14109,
-      "state": "MERGED",
-      "title": "ARC3 SAGE: offline Kaggle packager + runtime evidence gate"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zcr-h3n7/arc3-sage-ablation-20260913",
-      "closed_at": "2026-09-14T01:01:48Z",
-      "head_sha": "029e4dce8848deb5a9cf6f3bbca35e82573316a5",
-      "merged_at": "2026-09-14T01:01:48Z",
-      "number": 14106,
-      "state": "MERGED",
-      "title": "ARC3 SAGE: deterministic paired ablation harness"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-14T01:29:46Z",
+  "unchanged_since": "2026-09-14T01:32:25Z",
   "undatable_pulls": []
 }
