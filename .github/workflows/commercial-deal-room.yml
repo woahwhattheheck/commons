@@ -22,6 +22,6 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
       - run: python -m py_compile revenue/commercial_deal_room/*.py
-      - run: python -m unittest revenue.commercial_deal_room.test_engine revenue.commercial_deal_room.test_cli
-      - run: python -O -m unittest revenue.commercial_deal_room.test_engine revenue.commercial_deal_room.test_cli
+      - run: python -m unittest revenue.commercial_deal_room.test_engine revenue.commercial_deal_room.test_guarded revenue.commercial_deal_room.test_cli
+      - run: python -O -m unittest revenue.commercial_deal_room.test_engine revenue.commercial_deal_room.test_guarded revenue.commercial_deal_room.test_cli
       - run: python -m revenue.commercial_deal_room.acceptance
