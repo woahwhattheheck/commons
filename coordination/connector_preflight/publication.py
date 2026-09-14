@@ -62,7 +62,13 @@ def _verify_visible_bytes(path: Path, data: bytes, created: os.stat_result) -> N
 
 
 def write_json_exclusive(path: Path, value: Any) -> None:
-    """Create JSON exactly once and prove the visible pathname owns those bytes.
+    """Create JSON once and verify one point-in-time visible generation.
+
+    The retained writer is closed before the final namespace observation. A
+    successful return therefore means the final observation saw the exact
+    retained regular-file generation and bytes. It does not claim the pathname
+    remains immutable after that observation; callers needing stronger custody
+    must retain an independently controlled directory/namespace boundary.
 
     Once O_EXCL creates the public pathname, an exceptional failure deliberately
     leaves whatever generation is visible at that pathname untouched. There is
@@ -95,6 +101,13 @@ def write_json_exclusive(path: Path, value: Any) -> None:
             raise PreflightError("retained output generation is not singly linked regular data")
         if not _same_identity(retained, created) or retained.st_size != len(data):
             raise PreflightError("retained output generation changed during write")
+
+        # Close the retained writer before the final readback/namespace check.
+        # This makes the final lstat in _verify_visible_bytes the last public
+        # pathname observation performed on a successful call.
+        writer_fd = fd
+        fd = None
+        os.close(writer_fd)
         _verify_visible_bytes(path, data, retained)
     except Exception as exc:
         if isinstance(exc, PreflightError):
@@ -103,4 +116,5 @@ def write_json_exclusive(path: Path, value: Any) -> None:
             raise PreflightError(f"cannot publish output safely: {exc}") from exc
         raise
     finally:
-        os.close(fd)
+        if fd is not None:
+            os.close(fd)
