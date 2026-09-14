@@ -26,5 +26,5 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
       - run: python -m py_compile revenue/service_deal_economics/*.py
-      - run: python -m unittest -v revenue.service_deal_economics.test_engine revenue.service_deal_economics.test_authority
-      - run: python -O -m unittest -v revenue.service_deal_economics.test_engine revenue.service_deal_economics.test_authority
+      - run: python -m unittest -v revenue.service_deal_economics.test_engine revenue.service_deal_economics.test_authority revenue.service_deal_economics.test_authority_surface
+      - run: python -O -m unittest -v revenue.service_deal_economics.test_engine revenue.service_deal_economics.test_authority revenue.service_deal_economics.test_authority_surface

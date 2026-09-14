@@ -241,10 +241,18 @@ def _assemble(candidate: dict[str, Any], evaluated: datetime, auth: dict[str, An
     return report
 
 
-def _compile_current_at(packet: Any, as_of: datetime, *, registry: dict[str, Any] | None = None, registry_sha256: str | None = None) -> dict[str, Any]:
+def _compile_current_at(packet: Any, as_of: datetime) -> dict[str, Any]:
+    """Current-state helper for tests: time is injectable, authority registry is not."""
     as_of = as_of.astimezone(timezone.utc).replace(microsecond=0)
     candidate = compile_report(packet, _utc_text(as_of))
-    return _assemble(candidate, as_of, _authority_status(packet, as_of, registry=registry, registry_sha256=registry_sha256))
+    return _assemble(candidate, as_of, _authority_status(packet, as_of))
+
+
+def _replay_historical_at(packet: Any, as_of: datetime, registry: dict[str, Any], registry_sha256: str) -> dict[str, Any]:
+    """Reconstruct a historical report from its embedded signed registry; never a current-state API."""
+    candidate = compile_report(packet, _utc_text(as_of))
+    auth = _authority_status(packet, as_of, registry=registry, registry_sha256=registry_sha256)
+    return _assemble(candidate, as_of, auth)
 
 
 def compile_current(packet: Any) -> dict[str, Any]:
@@ -260,7 +268,7 @@ def _historical_valid(packet: Any, report: Any) -> bool:
         if embedded is None:
             expected = _assemble(compile_report(packet, _utc_text(evaluated)), evaluated, _unauth())
         else:
-            expected = _compile_current_at(packet, evaluated, registry=embedded, registry_sha256=report["input_authority"]["registry_sha256"])
+            expected = _replay_historical_at(packet, evaluated, embedded, report["input_authority"]["registry_sha256"])
         return canonical_json(expected) == canonical_json(report)
     except (AuthorityError, DealEconomicsError, OSError, KeyError, TypeError, ValueError):
         return False
