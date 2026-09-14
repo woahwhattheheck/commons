@@ -41,6 +41,8 @@ def _build_report(old: dict[str, Any], new: dict[str, Any], decisions: list[dict
         if _dt(row["decided_at"]) > now:
             raise DeltaError(f"decision {row['decision_id']} is from the future")
     coverage = _decision_coverage(old, decisions)
+    decisions_by_id = {row["decision_id"]: row for row in decisions}
+    stale_review_decisions = []
 
     conflicts = []
     old_docs = _index(old["documents"], "document_id")
@@ -132,8 +134,16 @@ def _build_report(old: dict[str, Any], new: dict[str, Any], decisions: list[dict
         if old_ident == new_ident:
             unchanged.append(req_id)
             if o["class"] != "INFORMATIONAL":
-                if req_id in coverage:
-                    carry_decisions.append({"requirement_id": req_id, "decision_id": coverage[req_id]})
+                if not old["complete"]:
+                    review_required.add(req_id)
+                elif req_id in coverage:
+                    decision_id = coverage[req_id]
+                    decision = decisions_by_id[decision_id]
+                    if now - _dt(decision["decided_at"]) > MAX_SOURCE_AGE:
+                        stale_review_decisions.append({"requirement_id": req_id, "decision_id": decision_id})
+                        review_required.add(req_id)
+                    else:
+                        carry_decisions.append({"requirement_id": req_id, "decision_id": decision_id})
                 else:
                     review_required.add(req_id)
         else:
@@ -150,7 +160,8 @@ def _build_report(old: dict[str, Any], new: dict[str, Any], decisions: list[dict
                 review_required.add(req_id)
 
     source_stale = now - _dt(new["captured_at"]) > MAX_SOURCE_AGE
-    material_change = bool(doc_added or doc_removed or doc_changed or added or removed or changed)
+    completeness_changed = old["complete"] != new["complete"]
+    material_change = bool(completeness_changed or doc_added or doc_removed or doc_changed or added or removed or changed)
 
     if conflicts:
         state = "CONFLICT"
@@ -169,6 +180,8 @@ def _build_report(old: dict[str, Any], new: dict[str, Any], decisions: list[dict
         "evaluated_at": evaluated_at,
         "state": state,
         "source_freshness_days": MAX_SOURCE_AGE.days,
+        "decision_freshness_days": MAX_SOURCE_AGE.days,
+        "source_set_delta": {"old_complete": old["complete"], "new_complete": new["complete"]},
         "old_generation_sha256": sha(old),
         "new_generation_sha256": sha(new),
         "decisions_sha256": sha(decisions),
@@ -185,6 +198,7 @@ def _build_report(old: dict[str, Any], new: dict[str, Any], decisions: list[dict
             "unchanged": unchanged,
         },
         "carried_review_decisions": sorted(carry_decisions, key=lambda x: x["requirement_id"]),
+        "stale_review_decisions": sorted(stale_review_decisions, key=lambda x: x["requirement_id"]),
         "review_required": sorted(review_required),
         "conflicts": sorted(conflicts),
         "authority": {
@@ -220,9 +234,10 @@ def verify_report(old_generation: Any, new_generation: Any, decisions: Any, repo
         return False, "report_not_object"
     if set(report) != {
         "schema", "opportunity_id", "old_generation_id", "new_generation_id",
-        "evaluated_at", "state", "source_freshness_days", "old_generation_sha256",
-        "new_generation_sha256", "decisions_sha256", "document_delta",
-        "requirement_delta", "carried_review_decisions", "review_required",
+        "evaluated_at", "state", "source_freshness_days", "decision_freshness_days",
+        "source_set_delta", "old_generation_sha256", "new_generation_sha256",
+        "decisions_sha256", "document_delta", "requirement_delta",
+        "carried_review_decisions", "stale_review_decisions", "review_required",
         "conflicts", "authority", "semantic_sha256",
     }:
         return False, "report_shape"
@@ -258,6 +273,11 @@ def markdown(report: Mapping[str, Any]) -> str:
         f"- Evaluated: `{report['evaluated_at']}`",
         f"- Receipt: `{report['semantic_sha256']}`",
         "",
+        "## Source-set custody",
+        f"- Old generation complete: {str(report['source_set_delta']['old_complete']).lower()}",
+        f"- New generation complete: {str(report['source_set_delta']['new_complete']).lower()}",
+        f"- Carried review freshness ceiling: {report['decision_freshness_days']} days",
+        "",
         "## Controlling-document delta",
     ]
     dd = report["document_delta"]
@@ -282,6 +302,7 @@ def markdown(report: Mapping[str, Any]) -> str:
         "## Review",
         f"- Review required: {', '.join(report['review_required']) or 'none'}",
         f"- Carried decisions: {len(report['carried_review_decisions'])}",
+        f"- Stale decisions: {', '.join(x['decision_id'] for x in report['stale_review_decisions']) or 'none'}",
         f"- Conflicts: {', '.join(report['conflicts']) or 'none'}",
         "",
         "## Authority ceiling",
