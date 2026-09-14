@@ -1,0 +1,86 @@
+# DCSA Innovation Call #01 — Prototype Acceptance Evidence
+
+> Internal evidence contract only. No Government acceptance, ATO, award, payment, or production authority is claimed.
+
+## PHASE_1_DISCOVERY_BASELINE
+
+**Decision point:** Government can judge whether the baseline, architecture, sustainment transition, and test strategy are credible.
+
+**Required evidence**
+
+- IE sustainment transition receipt and known-issue baseline
+- application, interface, dependency, and authority inventory
+- approved persona, role, attribute, and workflow inventory
+- common-shell and role-based-navigation design evidence
+- security approach, authorization evidence plan, and data-flow baseline
+- test plan, backlog, measurable success criteria, and rollback model
+
+**Fail-closed conditions**
+
+- missing rollback or continuity baseline
+- security authorization deferred to a later phase
+- unowned sustainment dependency
+- unresolved mission-workflow authority
+
+## PHASE_2_CORE_PROTOTYPE
+
+**Decision point:** Government can observe a common entry point, policy-aware navigation, and at least one end-to-end workflow without hidden legacy disruption.
+
+**Required evidence**
+
+- CAC/PIV, ECA, and other approved MFA adapter contract tests
+- accessibility and design-system conformance evidence
+- common dashboard and approved-user-information projection tests
+- modular API and event adapter contracts with idempotency and ambiguity handling
+- one end-to-end workflow with continuity canary and visible fallback
+- role, permission, attribute, resource, and data-aware policy tests
+- single-entry shell with approved identity-provider assertions
+
+**Fail-closed conditions**
+
+- accessibility or zero-trust control is untested
+- legacy workflow unavailable after prototype deployment
+- shell mints identity or bypasses policy authority
+- silent partial success across an adapter boundary
+
+## PHASE_3_APPLICATION_ONBOARDING
+
+**Decision point:** Government can judge whether eApp, IEP, required forms/PVQ, and PDT can be onboarded through reusable patterns while remaining operational.
+
+**Required evidence**
+
+- application-specific rollback and continuity receipts
+- authorized-role access evidence for each initial application/form family
+- operational impact, integration issue, and recommendation ledger
+- representative cross-application workflow demonstrations
+- reusable onboarding checklist, interface specification, and lessons learned
+- validated handoff and user-context continuity tests
+
+**Fail-closed conditions**
+
+- application sustainment degradation during onboarding
+- context transplant between users, roles, or workflows
+- one-off integration with no reusable contract
+- unresolved cross-application authority or data ownership
+
+## PHASE_4_VALIDATION_AUTHORIZATION_TRANSITION
+
+**Decision point:** Government can decide whether the prototype is viable, authorized, and bounded for production transition.
+
+**Required evidence**
+
+- GAT, UAT, regression, integration, performance, reliability, accessibility, and security results
+- authorization documentation, evidence, remediation, and ATO decision support
+- exact defect, usability, integration, security, and operational-risk disposition
+- final prototype design and prioritized enhancement backlog
+- phased production plan and owner-approved deployment/operations/sustainment/onboarding ROM
+- production-readiness assessment and transition recommendation
+
+**Fail-closed conditions**
+
+- ATO-critical evidence remains planned rather than produced
+- critical finding lacks owner, disposition, or remediation evidence
+- production ROM relies on unverified staffing, scope, or environment assumptions
+- test result is not bound to exact source/configuration/environment generations
+
+Receipt: `42a862bfc13591bdef9345b759dbbee8b9a30342180a23ff5ee202d86873483b`
