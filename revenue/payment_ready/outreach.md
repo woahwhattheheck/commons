@@ -11,6 +11,22 @@ Canonical offer: `gguf-diagnostic-10d-12k` in
 `diagnostic.html`. Public prospect evidence:
 `revenue/payment_ready/prospects.json`.
 
+## Mandatory single-writer gate for future outreach
+
+The duplicate-send history is evidence that Slack-only coordination is not a
+mutex. Before **any new** prospect transport, follow
+`outreach_reservation_protocol.md` and use
+`outreach_reservations.json` on canonical GitHub `main` as the authority.
+
+No successful blob-SHA compare-and-swap reservation commit means **no send**.
+A Slack TAKE, local prepared JSON, branch copy, or stale ledger read is not
+authority. Search the exact organization + recipient + stable lead/provider
+reference across available coordination and transport history first; earlier
+durable custody or completed transport wins. After winning the CAS, re-read
+`main` immediately before transport and verify the exact reservation is still
+`RESERVED` for the same owner and identity. Completed transport must be moved
+to permanent `SENT_DNR`; only a reservation with no transport may be released.
+
 ## Qualification rule
 
 Send only after reviewing the named organization's current official channel.
