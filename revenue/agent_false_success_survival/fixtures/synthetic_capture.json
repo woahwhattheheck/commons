@@ -1,0 +1,100 @@
+{
+  "captured_at": "2026-09-14T04:00:00Z",
+  "cases": [
+    {
+      "body_base64": "PCFkb2N0eXBlIGh0bWw+PGh0bWw+PGJvZHk+bWFpbnRlbmFuY2U8L2JvZHk+PC9odG1sPg==",
+      "client_event_sha256": "7d2919507adb454556f85111f6d6db17bc392e43e43dec6fd0356fab475cf520",
+      "content_type": "text/html; charset=utf-8",
+      "family": "HTTP_200_HTML",
+      "id": "html-200",
+      "observed_client_disposition": "SUCCESS",
+      "source_sha256": "fb907c64ab5dc2b157b77b2a95f1abd202c45204493d435b8e0e2c8255c4900d",
+      "status": 200
+    },
+    {
+      "body_base64": "PGh0bWw+PGJvZHk+PGZvcm0+PGlucHV0IHR5cGU9InBhc3N3b3JkIj5TaWduIGluPC9mb3JtPjwvYm9keT48L2h0bWw+",
+      "client_event_sha256": "a416ce0350671f8569a135d79a826bf661f5934e43903bb45201a9351e29d4af",
+      "content_type": "text/html",
+      "family": "HTTP_200_LOGIN_HTML",
+      "id": "login-200",
+      "observed_client_disposition": "SUCCESS",
+      "source_sha256": "bee7fa1a0898337453b20ce849e3888311dfd5e404f342284fe5ecf90459aced",
+      "status": 200
+    },
+    {
+      "body_base64": "PCEtLSBwcm94eSAtLT48aHRtbD48Ym9keT5nYXRld2F5IHBhZ2U8L2JvZHk+PC9odG1sPg==",
+      "client_event_sha256": "4829eeed5c1f49cfa0ba49e6a336a4ceb5c588ca54f515934c5a237dc44c431d",
+      "content_type": "application/json",
+      "family": "HTTP_200_MISLABELED_HTML",
+      "id": "mislabeled-html",
+      "observed_client_disposition": "SUCCESS",
+      "source_sha256": "b336d3c558986f8bd80e6066665a53f30890256225147354ef4be600ae4e113f",
+      "status": 200
+    },
+    {
+      "body_base64": "eyJlcnJvciI6InVuYXZhaWxhYmxlIn0=",
+      "client_event_sha256": "9944d2aeff3d6801c345b6789efadf1a1bce3dd1c5c56f0c84cecb0a3fc1ce91",
+      "content_type": "application/json",
+      "family": "HTTP_NON_2XX",
+      "id": "http-503",
+      "observed_client_disposition": "ERROR",
+      "source_sha256": "cca26c0e8c675d05842e86ddc43a2a39a984b6c20f62d671aac8e62cd645e57b",
+      "status": 503
+    },
+    {
+      "body_base64": "eyJqc29ucnBjIjoiMi4wIiwiaWQiOjIsImVycm9yIjp7ImNvZGUiOi0zMjAwMCwibWVzc2FnZSI6InVwc3RyZWFtIHVuYXZhaWxhYmxlIn19",
+      "client_event_sha256": "a33f0720421044787beb555a4467b50e7470ff2235e1fcbcb1715788f2f164d6",
+      "content_type": "application/json",
+      "family": "JSON_RPC_ERROR",
+      "id": "jsonrpc-error",
+      "observed_client_disposition": "ERROR",
+      "source_sha256": "8389fa01d8939c8e8fea3eed9b928b2418e84f9d553d36a2fcfa12953d081f45",
+      "status": 200
+    },
+    {
+      "body_base64": "eyJqc29ucnBjIjoiMi4wIiwiaWQiOjMsInJlc3VsdCI6eyJpc0Vycm9yIjp0cnVlLCJjb250ZW50IjpbeyJ0eXBlIjoidGV4dCIsInRleHQiOiJiYWNrZW5kIHVuYXZhaWxhYmxlIn1dfX0=",
+      "client_event_sha256": "10a56908540ae3e402b8655a850f7e690ff9731ea1057817d0003ae63a7e5cca",
+      "content_type": "application/json",
+      "family": "MCP_TOOL_ERROR",
+      "id": "mcp-tool-error",
+      "observed_client_disposition": "ERROR",
+      "source_sha256": "13ea390bb4807457df1419d593ddb3d337bb1c550485109aa45162f4e9129dfa",
+      "status": 200
+    },
+    {
+      "body_base64": "eyJqc29ucnBjIjoiMi4wIiwiaWQiOjQsInJlc3VsdCI6eyJpc0Vycm9yIjpmYWxzZSwiY29udGVudCI6W3sidHlwZSI6InRleHQiLCJ0ZXh0IjoiPCFkb2N0eXBlIGh0bWw+PGh0bWw+PHRpdGxlPlNpZ24gaW48L3RpdGxlPjxib2R5PmxvZ2luIHJlcXVpcmVkPC9ib2R5PjwvaHRtbD4ifV19fQ==",
+      "client_event_sha256": "0cdd7fe4a2726ac0d98f22265606dcb27227d1a90e2e3b0e32feab1b50a23616",
+      "content_type": "application/json",
+      "family": "MCP_WRAPPED_HTML",
+      "id": "wrapped-html",
+      "observed_client_disposition": "SUCCESS",
+      "source_sha256": "67256a871e6d76ec0eb00e6d70a4d662d9195e4a7e4851f70e6063f7dc5b4645",
+      "status": 200
+    },
+    {
+      "body_base64": "eyJqc29ucnBjIjoiMi4wIiw=",
+      "client_event_sha256": "27295e0606c02cf0120f5d2f72f1d34f8c4dd3ffc7255b2a0c31f32f53287788",
+      "content_type": "application/json",
+      "family": "MALFORMED_JSON",
+      "id": "malformed-json",
+      "observed_client_disposition": "ERROR",
+      "source_sha256": "587e2981d0cb795f18edebe2a4145b22bdeccef9921c642bb0074e1d4752a2ff",
+      "status": 200
+    },
+    {
+      "body_base64": "eyJqc29ucnBjIjoiMi4wIiwiaWQiOjEsInJlc3VsdCI6eyJpc0Vycm9yIjpmYWxzZSwiY29udGVudCI6W3sidHlwZSI6InRleHQiLCJ0ZXh0IjoiY3B1LnV0aWxpemF0aW9uPTAuNDIifV19fQ==",
+      "client_event_sha256": "412ff90e40f8631a268a5366f008cf484129addae00026c423be2c51adaba6f6",
+      "content_type": "application/json",
+      "family": "VALID_CONTROL",
+      "id": "valid-control",
+      "observed_client_disposition": "SUCCESS",
+      "source_sha256": "8d54752d9f7bd5ca7f73905cd2020286db6447459899e8b312babc27b88e7a30",
+      "status": 200
+    }
+  ],
+  "client": {
+    "name": "synthetic-observability-agent",
+    "version": "0.1-fixture"
+  },
+  "schema": "agent-false-success-capture/v1"
+}
