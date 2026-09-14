@@ -96,22 +96,30 @@ python -m coordination.connector_preflight.cli verify-current input.json bundle.
 
 `verify` proves exact retained historical integrity. Current verification fails when the wrapper, controlling discovery, or authority-bearing write attempts become stale, or when the current decision projection differs from the retained one.
 
-Input reads require one bounded regular-file generation. The descriptor generation is compared before and after the read, and the visible pathname must still identify the same generation. Final symlinks, FIFOs, in-place generation changes, pathname replacement, and growth beyond the ceiling are rejected. Output creation is create-exclusive, mode `0600`, and refuses overwrite/final-symlink publication.
+Input reads require one bounded regular-file generation. The descriptor generation is compared before and after the read, and the visible pathname must still identify the same generation. Final symlinks, FIFOs, in-place generation changes, pathname replacement, and growth beyond the ceiling are rejected. Output creation is create-exclusive, mode `0600`, and refuses overwrite/final-symlink publication. The retained writer is closed before the final readback/namespace observation; success therefore proves that the final observation saw the exact retained regular-file generation and exact bytes. It does not claim the pathname is immutable after that point-in-time observation.
 
 ## Tests
 
 ```bash
-python -m unittest -q coordination.connector_preflight.test_preflight coordination.connector_preflight.test_latest
-python -O -m unittest -q coordination.connector_preflight.test_preflight coordination.connector_preflight.test_latest
+python -m unittest -q \
+  coordination.connector_preflight.test_preflight \
+  coordination.connector_preflight.test_latest \
+  coordination.connector_preflight.test_publication
+python -O -m unittest -q \
+  coordination.connector_preflight.test_preflight \
+  coordination.connector_preflight.test_latest \
+  coordination.connector_preflight.test_publication
 python -m py_compile \
   coordination/connector_preflight/core.py \
   coordination/connector_preflight/latest.py \
   coordination/connector_preflight/cli.py \
+  coordination/connector_preflight/publication.py \
   coordination/connector_preflight/test_preflight.py \
-  coordination/connector_preflight/test_latest.py
+  coordination/connector_preflight/test_latest.py \
+  coordination/connector_preflight/test_publication.py
 ```
 
-The 62-test hostile suite covers malformed and filtered discovery, incomplete catalogs, caller-selected probe hiding, unauthenticated blocker attempts, read throttling, missing or unknown action attempts, latest-result ordering, same-time conflicts, confirmed write rails, chronology, process-owned current time, code-owned age ceilings, stale/future evidence, duplicate identities, type aliases, order invariance, receipt tamper, currentness drift, strict JSON, FIFO rejection, retained-generation changes, pathname replacement, and safe file publication.
+The 63-test hostile suite covers malformed and filtered discovery, incomplete catalogs, caller-selected probe hiding, unauthenticated blocker attempts, read throttling, missing or unknown action attempts, latest-result ordering, same-time conflicts, confirmed write rails, chronology, process-owned current time, code-owned age ceilings, stale/future evidence, duplicate identities, type aliases, order invariance, receipt tamper, currentness drift, strict JSON, FIFO rejection, retained-generation changes, pathname replacement, safe file publication, exceptional-path foreign-successor preservation, and post-close namespace replacement.
 
 ## Authority ceiling
 
