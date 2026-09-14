@@ -283,6 +283,40 @@ class CapabilityLeaseTests(unittest.TestCase):
             with open(path, "r", encoding="ascii") as fh:
                 self.assertEqual(fh.read(), CAPABILITY + "\n")
 
+    def test_capability_directory_sync_failure_blocks_provider(self):
+        if not hasattr(os, "O_DIRECTORY"):
+            self.skipTest("directory fsync gate is POSIX-only")
+        store = Store()
+        retained_path = None
+        with tempfile.TemporaryDirectory() as tmp:
+            retained_path = os.path.join(tmp, "lease.cap")
+            real_fsync = os.fsync
+            calls = {"count": 0}
+
+            def fail_second(fd):
+                calls["count"] += 1
+                if calls["count"] == 2:
+                    raise OSError("directory sync failed")
+                return real_fsync(fd)
+
+            with mock.patch(
+                "tools.outbound_send_guard.capability_lease.secrets.token_hex",
+                return_value=CAPABILITY,
+            ), mock.patch(
+                "tools.outbound_send_guard.capability_lease.os.fsync",
+                side_effect=fail_second,
+            ):
+                with self.assertRaisesRegex(CapabilityLeaseError, "retention failed"):
+                    acquire(
+                        claim(),
+                        store,
+                        retain_capability=lambda secret: _write_capability_file(
+                            retained_path, secret
+                        ),
+                    )
+            self.assertFalse(os.path.exists(retained_path))
+        self.assertEqual(store.calls, [])
+
     def test_invalid_claim_fails_before_capability_retention_or_provider(self):
         store = Store()
         retained = []
