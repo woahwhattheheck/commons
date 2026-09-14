@@ -6,7 +6,8 @@ import json
 import sys
 from pathlib import Path
 
-from .core import PreflightError, compile_current, read_json_file, verify_current, verify_integrity, write_json_exclusive
+from .core import PreflightError, compile_current, read_json_file, verify_current, verify_integrity
+from .publication import write_json_exclusive
 
 
 def _emit_error(message: str) -> None:

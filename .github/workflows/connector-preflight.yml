@@ -32,9 +32,11 @@ jobs:
           coordination/connector_preflight/core.py
           coordination/connector_preflight/latest.py
           coordination/connector_preflight/cli.py
+          coordination/connector_preflight/publication.py
           coordination/connector_preflight/test_preflight.py
           coordination/connector_preflight/test_latest.py
+          coordination/connector_preflight/test_publication.py
       - name: Unit and hostile tests
-        run: python -m unittest -q coordination.connector_preflight.test_preflight coordination.connector_preflight.test_latest
+        run: python -m unittest -q coordination.connector_preflight.test_preflight coordination.connector_preflight.test_latest coordination.connector_preflight.test_publication
       - name: Optimized Python tests
-        run: python -O -m unittest -q coordination.connector_preflight.test_preflight coordination.connector_preflight.test_latest
+        run: python -O -m unittest -q coordination.connector_preflight.test_preflight coordination.connector_preflight.test_latest coordination.connector_preflight.test_publication
