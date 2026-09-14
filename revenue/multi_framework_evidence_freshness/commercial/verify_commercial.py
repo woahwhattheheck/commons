@@ -7,6 +7,8 @@ EXPECTED_SAMPLE_SCHEMA = "commons.multi-framework-evidence-freshness-commercial-
 EXPECTED_MERGE = "183aa75b65cdec2cca6cf95a4d2e0b7d9674fd3c"
 EXPECTED_CORPUS = "bb97f376875421b13762aa2297e9620bb68bd019b47a13f25d80f6d6672bd5a0"
 EXPECTED_COUNTS = {"REUSABLE":240,"STALE":50,"SCOPE_MISMATCH":40,"MISSING_OWNER":35,"INCOMPLETE":35}
+EXPECTED_OFFER_SHA256 = "1fb6379d7f3ff326f13f020fbfea122db4edf45e09b9a98698debe777a52fd66"
+EXPECTED_SAMPLE_SHA256 = "3ab5cd82edb18f5c9d2fe923cf7c4f04d1bfcae0c5501b1708ec174659a294c8"
 
 class CommercialPacketError(ValueError): pass
 
@@ -65,6 +67,8 @@ def verify(offer_path, sample_path):
     auth=offer.get("authority")
     expected_auth={"buyer_acceptance":False,"audit_opinion":False,"certification":False,"payment_received":False,"revenue_recognized":False}
     if auth!=expected_auth: raise CommercialPacketError("authority_escalation")
+    if oe["offer_sha256"]!=EXPECTED_OFFER_SHA256: raise CommercialPacketError("offer_contract_mismatch")
+    if se["sample_sha256"]!=EXPECTED_SAMPLE_SHA256: raise CommercialPacketError("sample_contract_mismatch")
     return oe["offer_sha256"], se["sample_sha256"]
 
 def main(argv=None):
