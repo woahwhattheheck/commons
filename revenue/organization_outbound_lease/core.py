@@ -25,6 +25,7 @@ OPAQUE = re.compile(r"^[A-Za-z0-9._:-]{1,160}$")
 
 class LeaseStore(Protocol):
     def get_active(self, org_fingerprint: str) -> tuple[bytes, str] | None: ...
+    def get_outcome(self, org_fingerprint: str, lease_id: str) -> tuple[bytes, str] | None: ...
     def create_active(self, org_fingerprint: str, content: bytes) -> str: ...
     def create_outcome(self, org_fingerprint: str, lease_id: str, content: bytes) -> str: ...
     def delete_active(self, org_fingerprint: str, expected_generation: str) -> None: ...
@@ -266,9 +267,6 @@ def verify_lease_document(value: Any) -> dict[str, Any]:
 def acquire_lease(store: LeaseStore, request: Any, *, host_attestation_key: bytes, lease_nonce_key: bytes) -> AcquireResult:
     req = normalize_request(request)
     pressure = verify_pressure_attestation(req["pressureAttestation"], host_attestation_key, organization_fingerprint=req["organizationFingerprint"])
-    now = _process_now()
-    _require_fresh(req["requestedAt"], now=now, max_age_seconds=MAX_PREFLIGHT_AGE_SECONDS, label="requestedAt")
-    _require_fresh(pressure["verifiedAt"], now=now, max_age_seconds=MAX_PREFLIGHT_AGE_SECONDS, label="pressure verifiedAt")
     if _dt(pressure["verifiedAt"], "pressure verifiedAt") > _dt(req["requestedAt"], "requestedAt"):
         raise ValueError("pressure verification cannot postdate acquire request")
     if (_dt(req["requestedAt"], "requestedAt") - _dt(pressure["verifiedAt"], "pressure verifiedAt")).total_seconds() > MAX_PREFLIGHT_AGE_SECONDS:
@@ -276,6 +274,9 @@ def acquire_lease(store: LeaseStore, request: Any, *, host_attestation_key: byte
     lease = _lease_document(req, pressure, lease_nonce_key)
     content = canonical_json(lease)
 
+    # Read before the freshness gate so an exact already-held lease can be recovered
+    # after the original acquisition window without minting any new authority. A stale
+    # request may observe a conflicting holder but may never create a new lease.
     existing = store.get_active(req["organizationFingerprint"])
     if existing is not None:
         raw, generation = existing
@@ -283,6 +284,10 @@ def acquire_lease(store: LeaseStore, request: Any, *, host_attestation_key: byte
         if existing_lease["leaseSha256"] == lease["leaseSha256"]:
             return AcquireResult("LEASE_ACQUIRED", existing_lease, generation, True)
         return AcquireResult("ORGANIZATION_ALREADY_LEASED", existing_lease, generation, False)
+
+    now = _process_now()
+    _require_fresh(req["requestedAt"], now=now, max_age_seconds=MAX_PREFLIGHT_AGE_SECONDS, label="requestedAt")
+    _require_fresh(pressure["verifiedAt"], now=now, max_age_seconds=MAX_PREFLIGHT_AGE_SECONDS, label="pressure verifiedAt")
 
     try:
         generation = store.create_active(req["organizationFingerprint"], content)
@@ -331,6 +336,7 @@ def _outcome_doc(req: dict[str, Any], lease: dict[str, Any]) -> dict[str, Any]:
         "schema": OUTCOME_SCHEMA,
         "organizationFingerprint": req["organizationFingerprint"],
         "leaseId": req["leaseId"],
+        "leaseNonce": req["leaseNonce"],
         "leaseSha256": lease["leaseSha256"],
         "claimId": req["claimId"],
         "outcomeId": req["outcomeId"],
@@ -344,13 +350,94 @@ def _outcome_doc(req: dict[str, Any], lease: dict[str, Any]) -> dict[str, Any]:
     return body
 
 
+def verify_outcome_document(value: Any) -> dict[str, Any]:
+    expected = {
+        "schema", "organizationFingerprint", "leaseId", "leaseNonce",
+        "leaseSha256", "claimId", "outcomeId", "outcome", "observedAt",
+        "evidenceCommitment", "externalSendAuthorized", "cashOrRevenueClaimed",
+        "outcomeSha256",
+    }
+    obj = dict(_exact_keys(value, expected, "outcome"))
+    if obj["schema"] != OUTCOME_SCHEMA:
+        raise ValueError("unsupported outcome schema")
+    for key in ("organizationFingerprint", "leaseId", "leaseNonce", "leaseSha256", "evidenceCommitment", "outcomeSha256"):
+        _hex64(obj[key], key)
+    _opaque(obj["claimId"], "claimId")
+    _opaque(obj["outcomeId"], "outcomeId")
+    if obj["outcome"] not in TERMINAL_STATES:
+        raise ValueError("unsupported terminal outcome")
+    _utc(obj["observedAt"], "observedAt")
+    if obj["externalSendAuthorized"] is not False or obj["cashOrRevenueClaimed"] is not False:
+        raise ValueError("outcome exceeds authority ceiling")
+    claimed = obj.pop("outcomeSha256")
+    actual = sha256_hex(canonical_json(obj))
+    obj["outcomeSha256"] = claimed
+    if not hmac.compare_digest(claimed, actual):
+        raise ValueError("outcome digest mismatch")
+    return obj
+
+
+def _outcome_matches_request(outcome: dict[str, Any], req: dict[str, Any]) -> bool:
+    return all((
+        outcome["organizationFingerprint"] == req["organizationFingerprint"],
+        outcome["leaseId"] == req["leaseId"],
+        outcome["leaseNonce"] == req["leaseNonce"],
+        outcome["claimId"] == req["claimId"],
+        outcome["outcomeId"] == req["outcomeId"],
+        outcome["outcome"] == req["outcome"],
+        outcome["observedAt"] == req["observedAt"],
+        outcome["evidenceCommitment"] == req["evidenceCommitment"],
+    ))
+
+
+def _release_unsent_if_needed(store: LeaseStore, req: dict[str, Any]) -> bool:
+    """Release only the exact finalized lease generation; never a successor."""
+    active = store.get_active(req["organizationFingerprint"])
+    if active is None:
+        return True
+    raw, active_generation = active
+    lease = verify_lease_document(parse_json_strict(raw.decode("utf-8")))
+    if (lease["leaseId"], lease["leaseNonce"], lease["claimId"]) != (req["leaseId"], req["leaseNonce"], req["claimId"]):
+        # A different active generation proves the finalized lease was already released.
+        return True
+    try:
+        store.delete_active(req["organizationFingerprint"], active_generation)
+        return True
+    except Exception as exc:
+        # Conditional delete may have succeeded while its response was lost, or another
+        # exact finalizer may have deleted first. Re-read before escalating uncertainty.
+        current = store.get_active(req["organizationFingerprint"])
+        if current is None:
+            return True
+        current_raw, _ = current
+        current_lease = verify_lease_document(parse_json_strict(current_raw.decode("utf-8")))
+        if (current_lease["leaseId"], current_lease["leaseNonce"], current_lease["claimId"]) != (req["leaseId"], req["leaseNonce"], req["claimId"]):
+            return True
+        raise RuntimeError("lease release uncertain; reconciliation required") from exc
+
+
 def finalize_lease(store: LeaseStore, request: Any) -> FinalizeResult:
     req = normalize_finalize_request(request)
+
+    # Exact replay is checked before freshness/active-state gates. Replaying a retained
+    # terminal outcome creates no new authority and must remain recoverable after an
+    # UNSENT release removed the active lease or after the original time window elapsed.
+    existing = store.get_outcome(req["organizationFingerprint"], req["leaseId"])
+    if existing is not None:
+        prior_raw, outcome_generation = existing
+        outcome = verify_outcome_document(parse_json_strict(prior_raw.decode("utf-8")))
+        if not _outcome_matches_request(outcome, req):
+            raise ValueError("conflicting outcome already exists")
+        released = False
+        if req["outcome"] == "UNSENT_RELEASED":
+            released = _release_unsent_if_needed(store, req)
+        return FinalizeResult(req["outcome"], outcome, outcome_generation, released, True)
+
     _require_fresh(req["observedAt"], now=_process_now(), max_age_seconds=MAX_OUTCOME_AGE_SECONDS, label="observedAt")
     active = store.get_active(req["organizationFingerprint"])
     if active is None:
         raise ValueError("no active organization lease; reconcile before finalization")
-    raw, active_generation = active
+    raw, _active_generation = active
     lease = verify_lease_document(parse_json_strict(raw.decode("utf-8")))
     outcome = _outcome_doc(req, lease)
     content = canonical_json(outcome)
@@ -358,22 +445,20 @@ def finalize_lease(store: LeaseStore, request: Any) -> FinalizeResult:
         outcome_generation = store.create_outcome(req["organizationFingerprint"], req["leaseId"], content)
         replay = False
     except Exception as exc:
-        # Outcome stores MUST make create-if-absent atomic. Implementations expose exact
-        # replay as the returned generation; uncertain outcomes must reconcile or raise.
-        if hasattr(store, "get_outcome"):
-            existing = getattr(store, "get_outcome")(req["organizationFingerprint"], req["leaseId"])
-            if existing is None:
-                raise RuntimeError("outcome persistence uncertain; reconciliation required") from exc
-            prior_raw, outcome_generation = existing
-            if not hmac.compare_digest(prior_raw, content):
-                raise ValueError("conflicting outcome already exists") from exc
-            replay = True
-        else:
+        # Outcome stores make create-if-absent atomic. A conflict or uncertain response
+        # is reconciled by exact retained bytes rather than by retrying the mutation.
+        existing = store.get_outcome(req["organizationFingerprint"], req["leaseId"])
+        if existing is None:
             raise RuntimeError("outcome persistence uncertain; reconciliation required") from exc
+        prior_raw, outcome_generation = existing
+        prior = verify_outcome_document(parse_json_strict(prior_raw.decode("utf-8")))
+        if not _outcome_matches_request(prior, req) or not hmac.compare_digest(prior_raw, content):
+            raise ValueError("conflicting outcome already exists") from exc
+        outcome = prior
+        replay = True
 
     released = False
     if req["outcome"] == "UNSENT_RELEASED":
         # Critical ordering: immutable outcome is committed before conditional release.
-        store.delete_active(req["organizationFingerprint"], active_generation)
-        released = True
+        released = _release_unsent_if_needed(store, req)
     return FinalizeResult(req["outcome"], outcome, outcome_generation, released, replay)
