@@ -1,193 +1,95 @@
-# Outreach Claim Fence
+# Outreach claim fence v2
 
-`outreach_claim_fence` is a dependency-free Python module and coordination gate for outbound
-email, Slack, GitHub, and other lead contact. It prevents two workers from contacting
-the same person seconds apart, even when they describe the opportunity differently.
+`outreach_claim_fence` is a contact-level coordination authority for preventing duplicate outbound contact by concurrent workers. It does **not** send mail/messages, choose recipients, authorize provider/customer/account mutation, move funds, or prove revenue.
 
-The gate does **not** send messages. It establishes ownership before contact and records
-a digest-only receipt after contact.
+## Canonical authority
 
-## Core invariant
+Production/current authority is code-pinned to one namespace:
 
-A claim is keyed by the normalized contact target, not by campaign, proposal, or worker.
-While a claim lease is live, only its exact `agent_id + operation_id` owner may renew it,
-record contact, or release it. A second worker receives exit code `3` and the current
-safe ownership metadata.
+- API origin: `https://api.github.com`
+- repository: `woahwhattheheck/commons`
+- branch: `coordination/outreach-claims-v2`
+- root: `.coordination/outreach-claims/v2`
+- authority generation: `outreach-claims-v2/2026-09-14`
 
-This deliberately favors protecting a hot lead over maximizing parallelism. Different
-campaign labels cannot bypass the contact-level fence.
+The CLI exposes no repository/branch/root/API override. Direct API callers that supply a different namespace fail closed. Every stored record and success receipt binds the complete authority identity plus a SHA-256 authority-policy digest.
 
-## Why GitHub Contents
+The default HTTP transport accepts only canonical HTTPS GitHub API URLs and refuses redirects rather than forwarding bearer credentials to a redirect target.
 
-Each target maps to one deterministic file:
+## Safe outbound protocol
 
-```text
-.coordination/outreach-claims/v1/<first-two-hash-bytes>/<sha256>.json
-```
+The intended order is deliberately asymmetric around the external side effect:
 
-Creating a missing file and updating an existing file use GitHub's conditional Contents
-API. Creation races converge on one winner. Updates include the current blob SHA, so a
-stale writer cannot overwrite a newer owner. The client rereads and retries boundedly
-when unrelated branch movement causes a conflict.
+1. `acquire` — atomically reserve the normalized contact.
+2. `arm` — bind the exact message digest, channel, and concrete compensation path. This returns a one-time plaintext dispatch token; only its digest is stored.
+3. `dispatch` — CAS the exact ARMED generation to `OUTCOME_UNKNOWN` using that token. **Do this before calling the external provider.** A successful dispatch receipt means only that the ambiguity fence is durable; it is not evidence the provider send happened.
+4. perform at most one provider send using the already-bound message/channel.
+5. on confirmed provider acceptance, `contacted` records digest-only contact evidence and a monotonic re-contact suppression window.
+6. if the provider result is missing/ambiguous, do **not** release or reacquire. `OUTCOME_UNKNOWN` blocks reassignment indefinitely, even after ownership time expires.
+7. only provider-history evidence signed by a separately controlled reconciliation key can execute `reconcile-unsent` for the exact unknown record generation. That transition proves the coordination layer received a trusted `UNSENT` attestation; it does not itself query a provider.
 
-Lease time comes from GitHub's HTTP `Date` response header. The tool refuses to fall back
-to the worker's local clock.
+This closes the crash-after-send gap: time alone never turns an ambiguous external effect into new send authority.
 
-## Privacy and receipts
+## Lifecycle invariants
 
-The ledger never stores the raw contact target or outbound message body.
+- `ACTIVE`: owned reservation, no dispatch commitment.
+- `ARMED`: exact message/channel/payment path committed; still insufficient to send.
+- `OUTCOME_UNKNOWN`: dispatch capability consumed; blocks reassignment indefinitely until confirmed contact or signed `UNSENT` reconciliation.
+- `CONTACTED`: confirmed contact history plus `contact_not_before` suppression.
+- `RELEASED`: ownership ended; any existing `contact_not_before` suppression remains authoritative.
 
-It stores:
+`renew` is monotonic and cannot shorten ownership. Contact suppression is stored separately from ownership and cannot be shortened by `renew` or `release`. A stale ARMED reservation may be taken over after ownership expiry because no dispatch capability was consumed; a stale OUTCOME_UNKNOWN reservation may not.
 
-- a SHA-256 contact key and a masked target hint (including masked domain labels);
-- the active agent and operation identifiers;
-- a human-readable opportunity label plus its digest;
-- server-time lease timestamps;
-- a SHA-256 digest of the last outbound message;
-- channel and concrete compensation path;
-- contact count and last-contact metadata across ownership handoffs;
-- a digest-linked revision chain. Git history retains the overwritten revisions.
+## Privacy and evidence
 
-`contacted` refuses vague values such as `free`, `unknown`, or `maybe later`. The
-compensation path must name a real paid route, such as a bounty, paid discovery proposal,
-fixed-scope contract, fee, bid, invoice, commission, or explicit currency amount.
+Raw contact values are used only to derive the deterministic claim key and masked hint. Records store digests, masked hints, ownership, lifecycle state, and paid-path metadata. Message files are hashed through a bounded descriptor read: final symlinks/non-regular inputs are rejected where the platform exposes `O_NOFOLLOW`, size is capped, and descriptor identity/size/timestamps must remain stable across the read.
 
-## Bootstrap
+Compensation paths must contain a concrete paid signal (amount, bounty, paid proposal, contract, invoice, fee, bid/award, etc.). This is an intent/path requirement, not proof of payment.
 
-Use one coordination repository and a dedicated data branch. Create the branch once from
-an existing trusted ref:
+## CLI
 
 ```bash
-git push origin main:refs/heads/coordination/outreach-claims-v1
-```
+python -m outreach_claim_fence key --kind email --contact lead@example.com
 
-The token needs Contents read/write access to that repository. Keep it in an environment
-variable; never pass it on the command line.
+python -m outreach_claim_fence acquire \
+  --kind email --contact lead@example.com \
+  --agent-id Z-Tungsten --operation-id OP-123 \
+  --opportunity '$1500 paid discovery' --lease-seconds 3600
 
-```bash
-export GITHUB_TOKEN='...'
-export OUTREACH_CLAIM_REPOSITORY='woahwhattheheck/commons'
-```
+python -m outreach_claim_fence arm \
+  --kind email --contact lead@example.com \
+  --agent-id Z-Tungsten --operation-id OP-123 \
+  --message-file /path/to/exact-message.txt \
+  --channel email --compensation-path '$1500 paid discovery'
 
-All global options precede the subcommand.
+# Persist the arm receipt securely and pass its one-time dispatch_token:
+python -m outreach_claim_fence dispatch \
+  --kind email --contact lead@example.com \
+  --agent-id Z-Tungsten --operation-id OP-123 \
+  --dispatch-token '<one-time token>'
 
-## Acquire before any outbound
-
-```bash
-python -m outreach_claim_fence \
-  --repository "$OUTREACH_CLAIM_REPOSITORY" \
-  acquire \
-  --kind email \
-  --contact 'lead@example.com' \
-  --opportunity 'Paid utility-data discovery engagement' \
-  --agent-id 'ZKLR-H5M8' \
-  --operation-id 'UTILITY-DISCOVERY-ZKLRH5M8-20260913' \
-  --lease-seconds 3600
-```
-
-A successful response contains `"action":"ACQUIRED"`. Repeating the exact operation is
-idempotent and returns `"action":"ALREADY_OWNED"` without another commit.
-
-A conflicting live owner produces exit code `3`. Do not contact the lead.
-
-## Record contact without storing the message
-
-Prepare the message locally, send it through the authorized channel, then record its
-local digest and the paid path:
-
-```bash
-python -m outreach_claim_fence \
-  --repository "$OUTREACH_CLAIM_REPOSITORY" \
-  contacted \
-  --kind email \
-  --contact 'lead@example.com' \
-  --agent-id 'ZKLR-H5M8' \
-  --operation-id 'UTILITY-DISCOVERY-ZKLRH5M8-20260913' \
-  --message-file /tmp/sent-message.txt \
-  --channel email \
-  --compensation-path '$2,500 paid discovery proposal' \
+# Only after the dispatch CAS succeeded may the caller attempt the provider send.
+# If provider acceptance is confirmed:
+python -m outreach_claim_fence contacted \
+  --kind email --contact lead@example.com \
+  --agent-id Z-Tungsten --operation-id OP-123 \
+  --message-file /path/to/exact-message.txt \
+  --channel email --compensation-path '$1500 paid discovery' \
   --cooldown-seconds 259200
 ```
 
-`--message-file` is hashed in streaming chunks. Its bytes are never uploaded by this
-tool. `--message-digest` may be used instead when another trusted sender already computed
-the SHA-256 digest.
+`GITHUB_TOKEN` is required for remote operations. `reconcile-unsent` additionally requires `OUTREACH_RECONCILIATION_KEY` (minimum 32 bytes) and an exact provider-history digest/signature produced by the trusted reconciliation authority. Ordinary workers should not possess that key.
 
-The cooldown keeps thread ownership after the first contact. Prior contact count and last
-contact evidence survive later takeover, so a new owner can see that the lead was already
-contacted.
-
-## Renew, inspect, and release
+## Tests
 
 ```bash
-python -m outreach_claim_fence --repository "$OUTREACH_CLAIM_REPOSITORY" \
-  renew --kind email --contact 'lead@example.com' \
-  --agent-id 'ZKLR-H5M8' --operation-id 'UTILITY-DISCOVERY-ZKLRH5M8-20260913' \
-  --lease-seconds 3600
-
-python -m outreach_claim_fence --repository "$OUTREACH_CLAIM_REPOSITORY" \
-  inspect --kind email --contact 'lead@example.com'
-
-python -m outreach_claim_fence --repository "$OUTREACH_CLAIM_REPOSITORY" \
-  release --kind email --contact 'lead@example.com' \
-  --agent-id 'ZKLR-H5M8' --operation-id 'UTILITY-DISCOVERY-ZKLRH5M8-20260913' \
-  --reason 'Owner reassigned the lead'
+python -m py_compile outreach_claim_fence/*.py test_outreach_claim_fence.py
+python -m unittest -q test_outreach_claim_fence.py
+python -O -m unittest -q test_outreach_claim_fence.py
 ```
 
-Release and contact receipts are replay-idempotent. If the server accepted a write but
-the client lost the response, rerunning the same command does not create a second event.
+The 42-test suite covers canonical namespace pinning, token-origin and redirect fences, authority-bound receipts, normalization, CAS contention, server-time fail-closed behavior, one-time dispatch generation, crash/ambiguity blocking, contact confirmation, CONTACTED release suppression, ACTIVE and CONTACTED renewal monotonicity, contact-history takeover, signed exact-generation UNSENT reconciliation, record/authority tamper, privacy, bounded descriptor file hashing, symlink rejection, and CLI namespace-override rejection.
 
-## Exit codes
+## Scope ceiling
 
-| Code | Meaning |
-|---:|---|
-| 0 | Success or idempotent replay |
-| 2 | Invalid local input |
-| 3 | Another live claim owns the target |
-| 4 | No claim exists |
-| 5 | Wrong owner or expired ownership |
-| 6 | Remote request or compare-and-swap failure |
-| 7 | Malformed, tampered, or unsupported remote data |
-
-Every operational success or error response is a single JSON object (`--help` remains
-human-readable). Errors are written to stderr and never include the token or raw contact
-target.
-
-## Normalization
-
-- Email domains use IDNA and case folding. Email local parts are also case folded on
-  purpose: operational anti-spam safety is more important here than preserving rare
-  case-sensitive mailbox semantics.
-- Domains are lowercased, IDNA-normalized, and stripped of a trailing dot.
-- GitHub and Slack handles ignore a leading `@` and are case folded.
-- Custom targets use Unicode NFKC normalization, whitespace collapse, and case folding.
-
-The tool does not guess provider-specific aliases such as Gmail `+tag` addresses. Teams
-should use the canonical address they actually intend to contact.
-
-## Threat boundary
-
-The gate prevents accidental concurrent contact by cooperating workers. It does not:
-
-- send or authorize outreach;
-- discover a contact or verify consent;
-- prove that a bounty, contract, or payment exists;
-- prevent a repository administrator from rewriting the coordination branch;
-- replace a CRM, legal review, or buyer-approved communication policy.
-
-Protect the data branch against force pushes and restrict write access. The record digest
-and Git history make ordinary mutation evident, but repository administrators remain in
-the trust root.
-
-## Validation
-
-The hostile suite covers simultaneous creation, stale takeover, server-time expiry,
-idempotent lost-response replay, ownership checks, contact-level campaign collisions,
-privacy, masked domain targets, corrupted base64, unknown schema fields, incomplete
-contact history, digest tampering, JSON-only argument errors, concrete compensation
-metadata, and normal plus optimized Python execution.
-
-```bash
-python -m unittest -v test_outreach_claim_fence.py
-python -O -m unittest -v test_outreach_claim_fence.py
-```
+This is a **contact-level** gate. Organization-wide cross-contact suppression is a separate layer and should compose above this one. A success receipt never grants provider/customer/account mutation authority by itself; the caller must still satisfy the organization-wide lease/history checks and any external-send policy in force.
