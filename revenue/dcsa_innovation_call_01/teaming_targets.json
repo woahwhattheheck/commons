@@ -1,0 +1,17 @@
+{
+  "schema": "dcsa-innovation-call-01/teaming-targets/v1",
+  "generated_at": "2026-09-14T04:45:00Z",
+  "status": "RESEARCH_REQUIRED",
+  "qualification_contract": {
+    "active_fcl_evidence_required": true,
+    "relevant_cleared_program_evidence_required": true,
+    "govcloud_or_il4_il5_delivery_evidence_required": true,
+    "application_modernization_and_sustainment_evidence_required": true,
+    "source_bytes_and_generation_required": true,
+    "owner_workshare_approval_required": true,
+    "fresh_org_and_route_lease_required_before_contact": true
+  },
+  "targets": [],
+  "external_send_authorized": false,
+  "note": "No target is listed because this carrier has not independently retained evidence of current FCL, relevant cleared delivery, route ownership, or mailbox history. Do not infer a target from brand familiarity."
+}
