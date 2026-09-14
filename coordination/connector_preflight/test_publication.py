@@ -1,0 +1,63 @@
+from __future__ import annotations
+
+import os
+import tempfile
+import unittest
+from pathlib import Path
+from unittest.mock import patch
+
+from coordination.connector_preflight.core import PreflightError
+from coordination.connector_preflight import publication
+
+
+class PublicationCustodyTests(unittest.TestCase):
+    def test_exact_visible_generation_is_published(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "bundle.json"
+            publication.write_json_exclusive(path, {"ok": True})
+            self.assertEqual('{\n  "ok": true\n}\n', path.read_text(encoding="utf-8"))
+
+    def test_post_open_replacement_refuses_success_and_preserves_foreign(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "bundle.json"
+            displaced = Path(tmp) / "displaced.json"
+            foreign = b"foreign-successor\n"
+            real_fsync = os.fsync
+
+            def replace_after_fsync(fd: int) -> None:
+                real_fsync(fd)
+                os.replace(path, displaced)
+                path.write_bytes(foreign)
+
+            with patch.object(publication.os, "fsync", side_effect=replace_after_fsync):
+                with self.assertRaisesRegex(PreflightError, "published output"):
+                    publication.write_json_exclusive(path, {"ok": True})
+
+            self.assertEqual(foreign, path.read_bytes())
+            self.assertTrue(displaced.exists())
+
+    def test_post_open_replacement_then_write_failure_preserves_foreign(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "bundle.json"
+            displaced = Path(tmp) / "displaced.json"
+            foreign = b"foreign-successor\n"
+            replaced = False
+
+            def fail_after_replacement(fd: int, data: bytes | memoryview) -> int:
+                nonlocal replaced
+                if not replaced:
+                    replaced = True
+                    os.replace(path, displaced)
+                    path.write_bytes(foreign)
+                raise OSError("synthetic write failure")
+
+            with patch.object(publication.os, "write", side_effect=fail_after_replacement):
+                with self.assertRaisesRegex(PreflightError, "cannot publish output safely"):
+                    publication.write_json_exclusive(path, {"ok": True})
+
+            self.assertEqual(foreign, path.read_bytes())
+            self.assertTrue(displaced.exists())
+
+
+if __name__ == "__main__":
+    unittest.main()
