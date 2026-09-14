@@ -301,8 +301,9 @@ def verify_possession(
     capability = _capability(claim_capability)
     if _capability_commitment(capability) != raw["claim_capability_sha256"]:
         return False
-    if raw["lease_held_by_claimant"] is not True:
-        return False
+    # Live provider state plus the private capability can recover an earlier
+    # outcome-unknown/HOLD receipt. This matters because the v2 capability is
+    # unique per acquisition; blindly retrying would mint a different tag.
     claim = _claim_from_receipt(raw)
     owner, repo_name = claim.repo.split("/", 1)
     quoted = urllib.parse.quote(_ref(claim).removeprefix("refs/"), safe="/")
