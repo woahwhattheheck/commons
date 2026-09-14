@@ -10,6 +10,7 @@ from .core import (
     _canonical_bytes, _format_time, _hmac_hex, _parse_time, _sha256,
 )
 
+
 def _receipt_body(
     request: Mapping[str, Any],
     active: ActiveKey,
@@ -21,13 +22,23 @@ def _receipt_body(
 ) -> dict[str, Any]:
     valid_until = None
     if decision == READY:
-        if authority is None:
-            raise ValueError("READY receipt requires authenticated authority")
+        if authority is None or ledger is None:
+            raise ValueError("READY receipt requires authenticated authority and ledger")
         policy_valid_until = now + timedelta(seconds=authority.ready_validity_seconds)
         request_valid_until = _parse_time(
             request["requested_at"], "requested_at"
         ) + timedelta(seconds=authority.request_max_age_seconds)
-        valid_until = _format_time(min(policy_valid_until, request_valid_until))
+        ledger_valid_until = ledger.updated_at + timedelta(
+            seconds=authority.ledger_complete_max_age_seconds
+        )
+        valid_until = _format_time(
+            min(
+                policy_valid_until,
+                request_valid_until,
+                authority.valid_until,
+                ledger_valid_until,
+            )
+        )
     return {
         "schema": RECEIPT_SCHEMA,
         "organization_scope_sha256": request["organization_scope_sha256"],
@@ -47,6 +58,7 @@ def _receipt_body(
         "verifier_id": active.verifier_id,
         "external_send_authorized": False,
         "next_required_controls": [
+            "ORGANIZATION_OUTBOUND_LEASE",
             "PER_PROSPECT_ATOMIC_LOCK",
             "COMMERCIAL_OPPORTUNITY_CUSTODY",
             "INITIAL_OUTREACH_ONE_SHOT",
