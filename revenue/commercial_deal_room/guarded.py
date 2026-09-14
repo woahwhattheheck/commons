@@ -3,6 +3,8 @@ from __future__ import annotations
 from datetime import datetime
 from typing import Any, Mapping, Optional, Sequence
 
+from revenue.outbound_connector_lease.key import SUPPORTED_REPLY_PROVIDERS
+
 from . import engine as _engine
 
 ContractError = _engine.ContractError
@@ -11,12 +13,10 @@ canonical_json = _engine.canonical_json
 render_markdown = _engine.render_markdown
 sha256_hex = _engine.sha256_hex
 
-# Keep this vocabulary aligned with the canonical provider IDs already used by
-# Commons outbound-provider custody. Adapters may map provider-specific aliases
-# to one of these values before constructing a Deal Room packet; the Deal Room
-# itself never guesses aliases because that would make evidence identity depend
-# on caller spelling.
-CANONICAL_MESSAGE_PROVIDERS = frozenset({"devpost", "gmail", "github", "slack", "web-form"})
+# Provider identity is one cross-revenue seam. Reuse the registry that already
+# protects outbound reply leases instead of minting a second vocabulary that can
+# drift and reopen alias splits later.
+CANONICAL_MESSAGE_PROVIDERS = SUPPORTED_REPLY_PROVIDERS
 
 _MESSAGE_EVENT_TYPES = frozenset(
     {
@@ -31,14 +31,19 @@ _MESSAGE_EVENT_TYPES = frozenset(
     }
 )
 
+# Capture the core normalizer before installing the package-level guard below.
+# Normal Python imports execute commercial_deal_room.__init__ before exposing a
+# submodule, so patching this one normalization seam also protects callers that
+# import commercial_deal_room.engine.compile_board directly.
+_CORE_NORMALIZE_PACKET = _engine.normalize_packet
+
 
 def validate_message_providers(packet: Any) -> None:
     """Reject non-canonical provider spellings before lifecycle compilation.
 
-    This is deliberately a narrow pre-normalization guard. Structural packet
-    validation remains owned by engine.normalize_packet(), so malformed objects
-    still receive the engine's existing errors. The guard only acts once it can
-    unambiguously identify a message-bearing event and its provider value.
+    Structural packet validation remains owned by engine.normalize_packet().
+    This guard only acts once it can unambiguously identify a message-bearing
+    event and its provider value.
     """
 
     if not isinstance(packet, Mapping):
@@ -63,7 +68,15 @@ def validate_message_providers(packet: Any) -> None:
 
 def normalize_packet(packet: Any):
     validate_message_providers(packet)
-    return _engine.normalize_packet(packet)
+    return _CORE_NORMALIZE_PACKET(packet)
+
+
+# Close the direct-engine import seam without rewriting the large v1 compiler.
+# Existing compile_board()/verify_board() resolve normalize_packet from their
+# module globals at call time, so canonical packets preserve their v1 behavior
+# while every normal package/submodule entrypoint shares this pre-normalization
+# guard.
+_engine.normalize_packet = normalize_packet
 
 
 def compile_board(packet: Any, *, now: Optional[datetime] = None):
