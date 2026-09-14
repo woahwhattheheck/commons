@@ -9,6 +9,7 @@ INPUT_SCHEMA = "commons-ai-governance-inventory/v1"
 REPORT_SCHEMA = "commons-ai-governance-report/v2"
 INVENTORY_SCOPE = "CALLER_SUPPLIED_ROWS_ONLY"
 INVENTORY_COMPLETENESS = "NOT_ASSERTED_BY_ENGINE"
+MAX_SAFE_INTEGER = (1 << 63) - 1
 SYSTEM_KEYS = {
     "system_id", "system_kind", "deployment", "data_class", "external_processing",
     "provider_training", "physical_influence", "human_override", "monitoring",
@@ -62,7 +63,11 @@ def strict_json_loads(raw: str | bytes) -> Any:
 def canonical_bytes(value: Any) -> bytes:
     def reject(v: Any, path: str = "$"):
         t = type(v)
-        if v is None or t in (str, bool, int):
+        if v is None or t in (str, bool):
+            return
+        if t is int:
+            if v < -MAX_SAFE_INTEGER or v > MAX_SAFE_INTEGER:
+                raise GovernanceError(f"integer out of range at {path}")
             return
         if t is float:
             if not math.isfinite(v):
@@ -276,6 +281,7 @@ def compile_report(packet: Any) -> dict[str, Any]:
     if (
         type(packet["inventory_generation"]) is not int
         or packet["inventory_generation"] < 1
+        or packet["inventory_generation"] > MAX_SAFE_INTEGER
     ):
         raise GovernanceError("invalid inventory_generation")
     if type(packet["systems"]) is not list or len(packet["systems"]) > 5000:
