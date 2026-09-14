@@ -55,6 +55,8 @@ def open_issue(
     labels=None,
     author_login="maintainer",
     author_association="OWNER",
+    created_at="2026-09-10T00:00:00Z",
+    updated_at="2026-09-13T03:00:00Z",
 ):
     return {
         "html_url": url,
@@ -66,8 +68,8 @@ def open_issue(
         "labels": labels or [],
         "user": {"login": author_login},
         "author_association": author_association,
-        "created_at": "2026-09-10T00:00:00Z",
-        "updated_at": "2026-09-13T05:00:00Z",
+        "created_at": created_at,
+        "updated_at": updated_at,
     }
 
 
