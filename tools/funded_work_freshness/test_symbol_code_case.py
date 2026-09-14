@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import unittest
 
+from evaluation import _has_conflicting_symbol_code
 from funded_work_freshness import Candidate, preflight
 from test_support import NOW, FakeTransport, evidence_routes, open_issue
 
@@ -49,6 +50,7 @@ class SymbolCodeCaseTests(unittest.TestCase):
             "Reward: cAd $200 via Algora.",
             "Reward: €200 usd via Algora.",
             "Reward: uSd €200 via Algora.",
+            "Reward: $200 zwg via Algora.",
         )
         for body in hostiles:
             with self.subTest(body=body):
@@ -111,6 +113,27 @@ class SymbolCodeCaseTests(unittest.TestCase):
                     receipt["checks"]["canonical_current_reward_amount"], "200"
                 )
 
+    def test_ordinary_three_letter_prose_after_symbol_is_not_a_code(self):
+        forms = (
+            "Reward: $200 via Algora.",
+            "Reward: $200 for each accepted issue.",
+            "Reward: $200 per merged fix.",
+            "Reward: $200 and expenses.",
+        )
+        for body in forms:
+            with self.subTest(body=body):
+                receipt = self._receipt(body)
+                self.assertEqual(receipt["freshness_status"], "actionable")
+                self.assertEqual(
+                    receipt["checks"]["authoritative_amount_state"], "resolved"
+                )
+                self.assertEqual(
+                    receipt["checks"]["canonical_current_reward_currency"], "USD"
+                )
+                self.assertEqual(
+                    receipt["checks"]["canonical_current_reward_amount"], "200"
+                )
+
     def test_identifier_like_suffixes_are_not_currency_codes(self):
         forms = (
             "Reward: $200 cadet via Algora.",
@@ -129,6 +152,17 @@ class SymbolCodeCaseTests(unittest.TestCase):
                 self.assertEqual(
                     receipt["checks"]["canonical_current_reward_amount"], "200"
                 )
+
+    def test_code_fragments_inside_longer_prefixes_are_not_codes(self):
+        for text in ("ACAD $200", "USDS $200", "prefixCAD $200"):
+            with self.subTest(text=text):
+                self.assertFalse(_has_conflicting_symbol_code(text))
+        self.assertTrue(_has_conflicting_symbol_code("CAD $200"))
+        self.assertTrue(_has_conflicting_symbol_code("cAd $200"))
+
+    def test_unknown_lowercase_prose_is_ignored_but_uppercase_code_fails_closed(self):
+        self.assertFalse(_has_conflicting_symbol_code("$200 xyz"))
+        self.assertTrue(_has_conflicting_symbol_code("$200 XYZ"))
 
 
 if __name__ == "__main__":
