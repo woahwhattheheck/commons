@@ -12,7 +12,7 @@ buyer-source generations and produces a deterministic owner-review delta. It ans
 - which requirement identities were added, removed, changed, or unchanged;
 - whether an apparent same-ID change has an exact supersession lineage;
 - which prior human review decisions are still attached to byte/semantic-identical
-  requirements; and
+  requirements and remain inside the fixed review-freshness window; and
 - which rows must be reviewed again before later bid/submission work can continue.
 
 It does not contact a buyer, acknowledge an addendum, sign a form, submit a bid,
@@ -40,7 +40,7 @@ ID/time, and evidence digest. It is never inferred from prose.
 ## States
 
 - `NO_MATERIAL_CHANGE`: source semantics are materially unchanged and every
-  non-informational live requirement has valid carried review coverage.
+  non-informational live requirement has valid carried review coverage from a complete prior source generation and inside the fixed review-freshness window.
 - `REVIEW_REQUIRED`: material packet/requirement movement occurred or current
   non-informational requirements lack exact review coverage.
 - `SOURCE_REFRESH_REQUIRED`: the new source set is declared incomplete or the
@@ -48,6 +48,8 @@ ID/time, and evidence digest. It is never inferred from prose.
 - `CONFLICT`: exact supersession/source continuity is broken.
 - `HOLD`: reserved by the v1 report contract for future fail-closed operational
   extensions; malformed input raises `DeltaError` rather than minting a report.
+
+A transition from an incomplete old generation to a complete new generation is itself material: old review coverage cannot carry across that source-authority transition. Carried review decisions older than seven days at evaluation are stale and become `REVIEW_REQUIRED`.
 
 A `NO_MATERIAL_CHANGE` receipt is evidence-only. It is not submission authority.
 
@@ -82,7 +84,7 @@ recompilation validity.
 
 Focused hostile coverage exercises addenda/form additions, requirement and source
 supersession, deadline/mandatory/route/cure drift, source-set shrink, stale/future
-sources, cross-generation decisions, duplicate IDs/JSON keys, bool/int traps,
+sources, incomplete-old→complete-new authority transitions, stale/future/cross-generation decisions, duplicate IDs/JSON keys, bool/int traps,
 noncanonical timestamps, URL credential injection, order determinism, receipt
 tamper/reseal, create-exclusive output, and final-component symlink refusal.
 
