@@ -10,8 +10,8 @@ from pathlib import Path
 
 from http.server import ThreadingHTTPServer
 
-from app import StudioHandler
-from studio import StudioStore, load_config
+from app import StudioHandler, loopback_browser_authorities
+from studio import StudioError, StudioStore, load_config
 
 
 class BrowserProductTests(unittest.TestCase):
@@ -26,9 +26,11 @@ class BrowserProductTests(unittest.TestCase):
         self.server = ThreadingHTTPServer(("127.0.0.1", 0), StudioHandler)
         self.server.store = self.store
         self.server.csrf = "fixed-test-token"
+        self.port = self.server.server_address[1]
+        self.server.allowed_hosts, self.server.allowed_origins = loopback_browser_authorities("127.0.0.1", self.port)
+        self.origin = f"http://127.0.0.1:{self.port}"
         self.thread = threading.Thread(target=self.server.serve_forever, daemon=True)
         self.thread.start()
-        self.port = self.server.server_address[1]
 
     def tearDown(self) -> None:
         self.server.shutdown()
@@ -53,7 +55,12 @@ class BrowserProductTests(unittest.TestCase):
         return status, out_headers, data
 
     def post(self, path: str, fields: dict[str, str]):
-        return self.request("POST", path, {"csrf": "fixed-test-token", **fields})
+        return self.request(
+            "POST",
+            path,
+            {"csrf": "fixed-test-token", **fields},
+            headers={"Origin": self.origin},
+        )
 
     def seed_workflow(self) -> None:
         status, _, _ = self.post(
@@ -126,6 +133,7 @@ class BrowserProductTests(unittest.TestCase):
             "POST",
             "/class/save",
             {"csrf": "wrong", "class_id": "x", "label": "X", "rostered": "1", "expected": "1", "notes": ""},
+            headers={"Origin": self.origin},
         )
         self.assertEqual(status, 400)
         self.assertIn(b"invalid form token", raw)
@@ -135,6 +143,7 @@ class BrowserProductTests(unittest.TestCase):
         conn = http.client.HTTPConnection("127.0.0.1", self.port, timeout=3)
         body = "csrf=fixed-test-token&class_id=x&label=X&rostered=1&expected=1&notes="
         conn.putrequest("POST", "/class/save")
+        conn.putheader("Origin", self.origin)
         conn.putheader("Transfer-Encoding", "chunked")
         conn.endheaders()
         conn.send(f"{len(body):X}\r\n{body}\r\n0\r\n\r\n".encode())
@@ -145,6 +154,60 @@ class BrowserProductTests(unittest.TestCase):
         self.assertEqual(status, 400)
         self.assertIn(b"Transfer-Encoding is not supported", raw)
         self.assertEqual(self.store.snapshot()["classes"], [])
+
+    def test_untrusted_host_cannot_read_csrf_page_or_export(self) -> None:
+        status, _, raw = self.request("GET", "/", headers={"Host": "attacker.example"})
+        self.assertEqual(status, 421)
+        self.assertIn(b"untrusted browser host", raw)
+        self.assertNotIn(b"fixed-test-token", raw)
+
+        self.seed_workflow()
+        status, _, raw = self.request("GET", "/export.json", headers={"Host": "attacker.example"})
+        self.assertEqual(status, 421)
+        self.assertNotIn(b"ceramics-a", raw)
+        self.assertNotIn(b"fixed-test-token", raw)
+
+    def test_cross_site_origin_cannot_mutate_even_with_valid_csrf(self) -> None:
+        status, _, raw = self.request(
+            "POST",
+            "/class/save",
+            {"csrf": "fixed-test-token", "class_id": "x", "label": "X", "rostered": "1", "expected": "1", "notes": ""},
+            headers={"Origin": "https://attacker.example"},
+        )
+        self.assertEqual(status, 403)
+        self.assertIn(b"untrusted browser origin", raw)
+        self.assertNotIn(b"fixed-test-token", raw)
+        self.assertEqual(self.store.snapshot()["classes"], [])
+
+    def test_missing_origin_cannot_mutate_even_with_valid_csrf(self) -> None:
+        status, _, raw = self.request(
+            "POST",
+            "/class/save",
+            {"csrf": "fixed-test-token", "class_id": "x", "label": "X", "rostered": "1", "expected": "1", "notes": ""},
+        )
+        self.assertEqual(status, 403)
+        self.assertIn(b"untrusted browser origin", raw)
+        self.assertEqual(self.store.snapshot()["classes"], [])
+
+    def test_canonical_localhost_host_and_origin_are_accepted(self) -> None:
+        authority = f"localhost:{self.port}"
+        status, _, _ = self.request(
+            "POST",
+            "/class/save",
+            {"csrf": "fixed-test-token", "class_id": "x", "label": "X", "rostered": "1", "expected": "1", "notes": ""},
+            headers={"Host": authority, "Origin": f"http://{authority}"},
+        )
+        self.assertEqual(status, 303)
+        self.assertEqual(self.store.snapshot()["classes"][0]["class_id"], "x")
+
+    def test_loopback_authority_builder_is_exact_and_fail_closed(self) -> None:
+        hosts, origins = loopback_browser_authorities("::1", 8765)
+        self.assertEqual(hosts, frozenset({"[::1]:8765"}))
+        self.assertEqual(origins, frozenset({"http://[::1]:8765"}))
+        with self.assertRaises(StudioError):
+            loopback_browser_authorities("0.0.0.0", 8765)
+        with self.assertRaises(StudioError):
+            loopback_browser_authorities("127.0.0.1", 0)
 
 
 if __name__ == "__main__":
