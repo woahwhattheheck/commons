@@ -5,11 +5,11 @@ from datetime import datetime, timedelta, timezone
 from typing import Any, Mapping
 from urllib.parse import quote
 
+from amount_chronology import authoritative_amount_state
 from constants import ACCEPTANCE_RE, GITHUB_ITEM_RE, SECURITY_RE, SPONSOR_RE
 from errors import EvidenceError, PreflightInputError
 from evaluation import (
     active_competing_prs,
-    authoritative_amount_state,
     authoritative_funding_state,
     canonical_text,
     descriptive_issue_text,
