@@ -21,6 +21,9 @@ from .model import (
     write_exclusive,
 )
 
+_RETAINED_ROOT_BLOCKER = "RETAINED_ROOT_AUTHORITY_UNAVAILABLE"
+
+
 def _snapshot_blockers(policy: dict[str, Any], demand: dict[str, Any], reservations: dict[str, Any], now: datetime) -> list[str]:
     blockers: list[str] = []
     max_age = policy["max_age_seconds"]
@@ -67,6 +70,15 @@ def _allocation_core(policy: dict[str, Any], demand: dict[str, Any], reservation
     active_by_deal: dict[str, dict[str, Any]] = {}
     blockers = _snapshot_blockers(policy, demand, reservations, now)
 
+    # Acceptance chronology is current-state authority. A future-dated accepted
+    # or funded deal must never compete for scarce capacity merely because the
+    # rest of the generation is self-consistent.
+    for deal in demand["deals"]:
+        if deal["stage"] in {"BUYER_ACCEPTED", "FUNDED_TO_START"}:
+            accepted_at = _parse_utc(deal["accepted_at"], "deal.accepted_at")
+            if accepted_at > now:
+                blockers.append("DEAL_ACCEPTED_AT_FUTURE")
+
     for reservation in reservations["reservations"]:
         if reservation["state"] != "ACTIVE":
             continue
@@ -79,12 +91,14 @@ def _allocation_core(policy: dict[str, Any], demand: dict[str, Any], reservation
             continue
 
         # Capacity conservation is independent of whether the reservation's deal
-        # lineage is still valid. A corrupt/rebound reservation still occupies
-        # its claimed units until reconciled; otherwise a bad identity row could
-        # accidentally free capacity.
+        # lineage is still valid. A corrupt/rebound/orphan reservation still
+        # occupies its claimed units until reconciled; otherwise bad lineage can
+        # accidentally free scarce capacity.
         remaining[reservation["slot_id"]] -= reservation["units"]
         if remaining[reservation["slot_id"]] < 0:
             blockers.append("ACTIVE_RESERVATION_OVERDRAW")
+        if _parse_utc(slot["ends_at"], "slot.ends_at") <= now:
+            blockers.append("ACTIVE_RESERVATION_SLOT_ENDED")
 
         if reservation["deal_id"] in active_by_deal:
             blockers.append("DEAL_RESERVATION_COLLISION")
@@ -92,7 +106,9 @@ def _allocation_core(policy: dict[str, Any], demand: dict[str, Any], reservation
             active_by_deal[reservation["deal_id"]] = reservation
 
         deal = deals.get(reservation["deal_id"])
-        if deal is not None and not _same_deal_identity(deal, reservation):
+        if deal is None:
+            blockers.append("ACTIVE_RESERVATION_ORPHAN_DEAL")
+        elif not _same_deal_identity(deal, reservation):
             blockers.append("ACTIVE_RESERVATION_DEAL_REBINDING")
 
     blockers = sorted(set(blockers))
@@ -146,7 +162,17 @@ def _allocation_core(policy: dict[str, Any], demand: dict[str, Any], reservation
             continue
 
         matching_service = [slot for slot in slots.values() if slot["service_class"] == deal["service_class"]]
-        window_ok = [slot for slot in matching_service if _parse_utc(slot["starts_at"], "slot.starts_at") >= _parse_utc(deal["not_before"], "deal.not_before") and _parse_utc(slot["ends_at"], "slot.ends_at") <= _parse_utc(deal["deadline"], "deal.deadline")]
+        # A historical slot that has already ended at the trusted evaluation
+        # instant cannot become a new allocation candidate.
+        live_matching_service = [
+            slot for slot in matching_service
+            if _parse_utc(slot["ends_at"], "slot.ends_at") > now
+        ]
+        window_ok = [
+            slot for slot in live_matching_service
+            if _parse_utc(slot["starts_at"], "slot.starts_at") >= _parse_utc(deal["not_before"], "deal.not_before")
+            and _parse_utc(slot["ends_at"], "slot.ends_at") <= _parse_utc(deal["deadline"], "deal.deadline")
+        ]
         capacity_ok = [slot for slot in window_ok if remaining[slot["slot_id"]] >= deal["requested_units"]]
         if capacity_ok:
             chosen = sorted(capacity_ok, key=lambda s: (_parse_utc(s["starts_at"], "slot.starts_at"), _parse_utc(s["ends_at"], "slot.ends_at"), s["slot_id"]))[0]
@@ -163,6 +189,8 @@ def _allocation_core(policy: dict[str, Any], demand: dict[str, Any], reservation
             if not matching_service:
                 reason = "NO_SERVICE_CLASS_SLOT"
             elif not window_ok:
+                # Keep the stable reason while making the predicate itself
+                # current-time aware; past slots cannot satisfy the window.
                 reason = "NO_SLOT_WITHIN_DEAL_WINDOW"
             else:
                 reason = "INSUFFICIENT_REMAINING_CAPACITY"
@@ -201,6 +229,13 @@ def compile_bytes(
     expected_reservations_sha256: str,
     now: Optional[datetime] = None,
 ) -> dict[str, Any]:
+    """Compile an integrity-bound historical/test receipt.
+
+    The expected roots and optional clock are supplied by the caller.  This API
+    therefore proves self-consistency against those supplied facts only; it is
+    intentionally not the production-current authority boundary.  The CLI uses
+    ``compile_current_bytes`` instead.
+    """
     expected_policy_sha256 = _require_sha(expected_policy_sha256, "expected_policy_sha256")
     expected_demand_sha256 = _require_sha(expected_demand_sha256, "expected_demand_sha256")
     expected_reservations_sha256 = _require_sha(expected_reservations_sha256, "expected_reservations_sha256")
@@ -219,10 +254,6 @@ def compile_bytes(
     reservations = _normalize_reservations(strict_json_loads(reservations_bytes))
     trusted_now = _trusted_now(now)
     core = _allocation_core(policy, demand, reservations, trusted_now)
-    # Separate semantic allocation identity from exact raw-byte custody. Input
-    # arrays are normalized/sorted above, so equivalent source orderings yield
-    # the same allocation digest while the outer receipt remains bound to each
-    # retained source file's exact SHA-256.
     policy_semantic_sha256 = sha256_hex(canonical_json(policy))
     demand_semantic_sha256 = sha256_hex(canonical_json(demand))
     reservations_semantic_sha256 = sha256_hex(canonical_json(reservations))
@@ -266,6 +297,83 @@ def compile_bytes(
     return receipt
 
 
+def _root_authority_hold(receipt: dict[str, Any]) -> dict[str, Any]:
+    blocker = _RETAINED_ROOT_BLOCKER
+    global_blockers = sorted(set(receipt["global_blockers"] + [blocker]))
+    held: list[dict[str, Any]] = []
+    for raw in receipt["decisions"]:
+        row = dict(raw)
+        if row["decision"] != "INELIGIBLE":
+            row["decision"] = "CAPACITY_HOLD"
+            row["reasons"] = ["GLOBAL_CAPACITY_STATE_HOLD"] + global_blockers
+            if not row["existing_reservation"]:
+                row["slot_id"] = None
+                row["units"] = 0
+        held.append(row)
+
+    receipt = dict(receipt)
+    receipt["current_state"] = "HOLD_RETAINED_ROOT_AUTHORITY"
+    receipt["global_blockers"] = global_blockers
+    receipt["decisions"] = held
+    receipt["allocation_sha256"] = sha256_hex(canonical_json({
+        "authority_mode": "FAIL_CLOSED_WITHOUT_RETAINED_ROOTS",
+        "policy": receipt["policy"],
+        "demand": receipt["demand"],
+        "reservations": receipt["reservations"],
+        "global_blockers": global_blockers,
+        "decisions": held,
+        "slot_balances": receipt["slot_balances"],
+    }))
+    receipt.pop("receipt_sha256", None)
+    receipt["receipt_sha256"] = sha256_hex(canonical_json(receipt))
+    return receipt
+
+
+def compile_current_bytes(
+    policy_bytes: bytes,
+    demand_bytes: bytes,
+    reservations_bytes: bytes,
+) -> dict[str, Any]:
+    """Production-current entry point.
+
+    The package does not currently possess an independently retained root
+    authority.  It therefore parses and temporally evaluates the supplied bytes
+    using process UTC, but mechanically downgrades every otherwise-allocatable
+    deal to HOLD.  Caller-selected roots are never accepted by this boundary.
+    """
+    candidate = compile_bytes(
+        policy_bytes,
+        demand_bytes,
+        reservations_bytes,
+        expected_policy_sha256=sha256_hex(policy_bytes),
+        expected_demand_sha256=sha256_hex(demand_bytes),
+        expected_reservations_sha256=sha256_hex(reservations_bytes),
+        now=None,
+    )
+    return _root_authority_hold(candidate)
+
+
+def verify_current_receipt_bytes(
+    policy_bytes: bytes,
+    demand_bytes: bytes,
+    reservations_bytes: bytes,
+    receipt_bytes: bytes,
+) -> bool:
+    """Fail closed until an independent retained-root authority is wired in."""
+    try:
+        receipt = _require_dict(strict_json_loads(receipt_bytes), "receipt")
+        if receipt.get("schema") != RECEIPT_SCHEMA:
+            return False
+        # Parse/re-evaluate current source truth so malformed or unsafe input does
+        # not get a special bypass.  The resulting state is necessarily HOLD.
+        current = compile_current_bytes(policy_bytes, demand_bytes, reservations_bytes)
+        if current["current_state"] != "HOLD_RETAINED_ROOT_AUTHORITY":
+            return False
+        return False
+    except CapacityError:
+        return False
+
+
 def verify_current_bytes(
     policy_bytes: bytes,
     demand_bytes: bytes,
@@ -277,6 +385,12 @@ def verify_current_bytes(
     expected_reservations_sha256: str,
     now: Optional[datetime] = None,
 ) -> bool:
+    """Historical/test verifier retained for compatibility.
+
+    Because both roots and the optional clock are caller supplied, this function
+    is not used by the production CLI and must not be treated as current owner
+    scheduling/staffing authority.
+    """
     receipt = strict_json_loads(receipt_bytes)
     receipt = _require_dict(receipt, "receipt")
     if receipt.get("schema") != RECEIPT_SCHEMA:
@@ -310,6 +424,3 @@ def verify_current_bytes(
     except CapacityError:
         return False
     return current["current_state"] == "CURRENT" and hmac.compare_digest(current["allocation_sha256"], receipt["allocation_sha256"])
-
-
-
