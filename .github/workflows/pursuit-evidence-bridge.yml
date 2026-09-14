@@ -34,6 +34,6 @@ jobs:
       - name: Compile
         run: python -m py_compile revenue/pursuit_evidence_bridge/*.py revenue/bidder_qualification_vault/*.py
       - name: Unit tests
-        run: python -m unittest -v revenue.pursuit_evidence_bridge.test_bridge
+        run: python -m unittest -v revenue.pursuit_evidence_bridge.test_bridge revenue.pursuit_evidence_bridge.test_current_clock_custody
       - name: Optimized unit tests
-        run: python -O -m unittest -v revenue.pursuit_evidence_bridge.test_bridge
+        run: python -O -m unittest -v revenue.pursuit_evidence_bridge.test_bridge revenue.pursuit_evidence_bridge.test_current_clock_custody
