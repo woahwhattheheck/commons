@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -262,6 +262,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -494,12 +500,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -523,6 +523,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -755,12 +761,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -844,6 +844,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1076,12 +1082,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -1099,6 +1099,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1331,12 +1337,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -1390,6 +1390,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1622,12 +1628,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -1645,6 +1645,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1877,12 +1883,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -1930,6 +1930,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2162,12 +2168,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -2185,6 +2185,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2417,12 +2423,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -2440,6 +2440,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2672,12 +2678,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -2695,6 +2695,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2927,12 +2933,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -2950,6 +2950,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3182,12 +3188,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -3205,6 +3205,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3437,12 +3443,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -3460,6 +3460,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3692,12 +3698,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -3721,6 +3721,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3953,12 +3959,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -3976,6 +3976,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4208,12 +4214,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -4231,6 +4231,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4463,12 +4469,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -4486,6 +4486,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4718,12 +4724,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -4771,6 +4771,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5003,12 +5009,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -5050,6 +5050,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5282,12 +5288,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -5317,6 +5317,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5549,12 +5555,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -5590,6 +5590,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5822,12 +5828,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -5845,6 +5845,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6077,12 +6083,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -6100,6 +6100,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6332,12 +6338,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -6355,6 +6355,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6587,12 +6593,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -6610,6 +6610,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6842,12 +6848,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -6865,6 +6865,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7097,12 +7103,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -7120,6 +7120,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7352,12 +7358,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -7375,6 +7375,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7607,12 +7613,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -7630,6 +7630,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7862,12 +7868,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -7885,6 +7885,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8117,12 +8123,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -8140,6 +8140,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8372,12 +8378,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -8395,6 +8395,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8627,12 +8633,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -8716,6 +8716,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8948,12 +8954,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -9037,6 +9037,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -9269,12 +9275,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -9292,6 +9292,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -9524,12 +9530,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -9613,6 +9613,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -9845,12 +9851,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -9934,6 +9934,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -10166,12 +10172,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -10255,6 +10255,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -10487,12 +10493,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -10522,6 +10522,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -10754,12 +10760,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -10783,6 +10783,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11015,12 +11021,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -11038,6 +11038,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11270,12 +11276,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -11359,6 +11359,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11591,12 +11597,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -11632,6 +11632,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11864,12 +11870,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -11953,6 +11953,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12185,12 +12191,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -12208,6 +12208,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12440,12 +12446,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -12463,6 +12463,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12695,12 +12701,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -12718,6 +12718,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12950,12 +12956,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -12985,6 +12985,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -13217,12 +13223,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -13240,6 +13240,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -13472,12 +13478,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -13561,6 +13561,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -13793,12 +13799,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -13822,6 +13822,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14054,12 +14060,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -14089,6 +14089,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14321,12 +14327,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -14410,6 +14410,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14642,12 +14648,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -14677,6 +14677,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14909,12 +14915,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -14932,6 +14932,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15164,12 +15170,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -15193,6 +15193,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15425,12 +15431,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -15448,6 +15448,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15680,12 +15686,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -15703,6 +15703,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15935,12 +15941,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -16006,6 +16006,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -16238,12 +16244,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -16261,6 +16261,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -16493,12 +16499,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -16528,6 +16528,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -16760,12 +16766,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -16783,6 +16783,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17015,12 +17021,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -17044,6 +17044,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17276,12 +17282,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -17299,6 +17299,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17531,12 +17537,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -17620,6 +17620,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17852,12 +17858,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -17881,6 +17881,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18113,12 +18119,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -18136,6 +18136,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18368,12 +18374,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -18391,6 +18391,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18623,12 +18629,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -18646,6 +18646,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18878,12 +18884,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -18901,6 +18901,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -19133,12 +19139,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -19156,6 +19156,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -19388,12 +19394,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -19477,6 +19477,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -19709,12 +19715,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -19768,6 +19768,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -20000,12 +20006,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -20035,6 +20035,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -20267,12 +20273,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -20356,6 +20356,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -20588,12 +20594,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -20611,6 +20611,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -20843,12 +20849,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -20929,8 +20929,14 @@
     "COMMONS": {
       "last_id": "discord-1548789538770649099",
       "last_ts": "2026-09-13T20:16:41.161000Z",
-      "n": 14,
+      "n": 15,
       "since": [
+        {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
         {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
@@ -21097,6 +21103,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -21329,12 +21341,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -21418,6 +21424,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -21650,12 +21662,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -21673,6 +21679,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -21905,12 +21917,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -21928,6 +21934,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -22160,12 +22172,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -22249,6 +22255,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -22481,12 +22493,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -22570,6 +22576,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -22802,12 +22814,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -22843,6 +22849,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -23075,12 +23087,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -23116,6 +23122,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -23348,12 +23360,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -23395,6 +23401,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -23627,12 +23639,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -23650,6 +23656,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -23882,12 +23894,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -23971,6 +23977,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24203,12 +24215,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -24226,6 +24232,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24458,12 +24470,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -24481,6 +24487,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24713,12 +24725,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -24736,6 +24742,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24968,12 +24980,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -24991,6 +24997,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -25223,12 +25235,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -25246,6 +25252,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -25478,12 +25490,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -25567,6 +25573,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -25799,12 +25811,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -25888,6 +25894,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -26120,12 +26132,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -26143,6 +26149,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -26375,12 +26387,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -26464,6 +26470,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -26696,12 +26708,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -26773,6 +26779,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -27005,12 +27017,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -27094,6 +27100,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -27326,12 +27338,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -27355,6 +27361,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -27587,12 +27599,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -27658,6 +27664,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -27890,12 +27902,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -27925,6 +27931,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -28157,12 +28169,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -28192,6 +28198,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -28424,12 +28436,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -28447,6 +28453,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -28679,12 +28691,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -28768,6 +28774,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -29000,12 +29012,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -29023,6 +29029,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -29255,12 +29267,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -29284,6 +29290,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -29516,12 +29528,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -29605,6 +29611,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -29837,12 +29849,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -29860,6 +29866,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -30092,12 +30104,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -30115,6 +30121,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -30347,12 +30359,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -30436,6 +30442,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -30668,12 +30680,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -30703,6 +30709,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -30935,12 +30947,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -30958,6 +30964,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -31190,12 +31202,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -31237,6 +31243,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -31469,12 +31481,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -31498,6 +31504,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -31730,12 +31742,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -31753,6 +31759,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -31985,12 +31997,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -32008,6 +32014,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -32240,12 +32252,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -32263,6 +32269,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -32495,12 +32507,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -32584,6 +32590,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -32816,12 +32828,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -32839,6 +32845,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -33071,12 +33083,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -33094,6 +33100,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -33326,12 +33338,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -33415,6 +33421,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -33647,12 +33659,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -33670,6 +33676,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -33902,12 +33914,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -33991,6 +33997,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -34223,12 +34235,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -34312,6 +34318,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -34544,12 +34556,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -34573,6 +34579,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -34805,12 +34817,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -34840,6 +34846,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -35072,12 +35084,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -35095,6 +35101,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -35327,12 +35339,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -35362,6 +35368,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -35594,12 +35606,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -35623,6 +35629,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -35855,12 +35867,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -35884,6 +35890,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -36116,12 +36128,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -36202,8 +36208,14 @@
     "GROK": {
       "last_id": "motel-revenue-integrity-ci-20260913-01",
       "last_ts": "2026-09-13T18:47:06Z",
-      "n": 16,
+      "n": 17,
       "since": [
+        {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
         {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
@@ -36382,6 +36394,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -36614,12 +36632,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -36673,6 +36685,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -36905,12 +36923,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -36940,6 +36952,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -37172,12 +37190,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -37201,6 +37213,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -37433,12 +37451,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -37522,6 +37534,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -37754,12 +37772,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -37780,8 +37792,14 @@
     "GROK_BUILD": {
       "last_id": "packmarket-mi-34765159873-c21f39d1-20260913",
       "last_ts": "2026-09-13T18:49:54Z",
-      "n": 15,
+      "n": 16,
       "since": [
+        {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
         {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
@@ -37954,6 +37972,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -38186,12 +38210,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -38209,6 +38227,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -38441,12 +38465,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -38476,6 +38494,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -38708,12 +38732,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -38731,6 +38749,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -38963,12 +38987,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -38998,6 +39016,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -39230,12 +39254,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -39319,6 +39337,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -39551,12 +39575,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -39574,6 +39592,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -39806,12 +39830,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -39895,6 +39913,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -40127,12 +40151,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -40216,6 +40234,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -40448,12 +40472,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -40519,6 +40537,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -40751,12 +40775,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -40792,6 +40810,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -41024,12 +41048,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -41077,6 +41095,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -41309,12 +41333,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -41332,6 +41350,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -41564,12 +41588,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -41653,6 +41671,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -41885,12 +41909,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -41908,6 +41926,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -42140,12 +42164,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -42193,6 +42211,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -42425,12 +42449,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -42448,6 +42466,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -42680,12 +42704,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -42703,6 +42721,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -42935,12 +42959,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -42958,6 +42976,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -43190,12 +43214,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -43213,6 +43231,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -43445,12 +43469,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -43468,6 +43486,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -43700,12 +43724,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -43789,6 +43807,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44021,12 +44045,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -44044,6 +44062,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44276,12 +44300,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -44299,6 +44317,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44531,12 +44555,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -44554,6 +44572,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44786,12 +44810,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -44809,6 +44827,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -45041,12 +45065,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -45064,6 +45082,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -45296,12 +45320,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -45337,6 +45355,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -45569,12 +45593,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -45658,6 +45676,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -45890,12 +45914,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -45913,6 +45931,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -46145,12 +46169,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -46198,6 +46216,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -46430,12 +46454,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -46507,6 +46525,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -46739,12 +46763,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -46762,6 +46780,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -46994,12 +47018,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -47029,6 +47047,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47261,12 +47285,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -47284,6 +47302,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47516,12 +47540,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -47539,6 +47557,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47771,12 +47795,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -47794,6 +47812,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -48026,12 +48050,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -48049,6 +48067,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -48281,12 +48305,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -48304,6 +48322,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -48536,12 +48560,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -48559,6 +48577,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -48791,12 +48815,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -48880,6 +48898,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -49112,12 +49136,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -49201,6 +49219,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -49433,12 +49457,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -49522,6 +49540,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -49754,12 +49778,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -49801,6 +49819,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -50033,12 +50057,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -50122,6 +50140,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -50354,12 +50378,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -50377,6 +50395,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -50609,12 +50633,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -50632,6 +50650,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -50864,12 +50888,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -50899,6 +50917,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -51131,12 +51155,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -51220,6 +51238,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -51452,12 +51476,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -51481,6 +51499,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -51713,12 +51737,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -51748,6 +51766,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -51980,12 +52004,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -52015,6 +52033,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -52247,12 +52271,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -52336,6 +52354,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -52568,12 +52592,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -52657,6 +52675,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -52889,12 +52913,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -52960,6 +52978,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -53192,12 +53216,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -53221,6 +53239,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -53453,12 +53477,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -53476,6 +53494,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -53708,12 +53732,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -53731,6 +53749,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -53963,12 +53987,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -54052,6 +54070,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -54284,12 +54308,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -54307,6 +54325,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -54539,12 +54563,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -54628,6 +54646,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -54860,12 +54884,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -54895,6 +54913,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -55127,12 +55151,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -55150,6 +55168,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -55382,12 +55406,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -55471,6 +55489,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -55703,12 +55727,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -55726,6 +55744,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -55958,12 +55982,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -55981,6 +55999,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -56213,12 +56237,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -56302,6 +56320,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -56534,12 +56558,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -56557,6 +56575,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -56789,12 +56813,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -56830,6 +56848,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -57062,12 +57086,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -57085,6 +57103,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -57317,12 +57341,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -57346,6 +57364,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -57578,12 +57602,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -57601,6 +57619,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -57833,12 +57857,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -57862,6 +57880,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58094,12 +58118,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -58117,6 +58135,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58349,12 +58373,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -58372,6 +58390,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58604,12 +58628,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -58633,6 +58651,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58865,12 +58889,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -58888,6 +58906,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -59120,12 +59144,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -59149,6 +59167,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -59381,12 +59405,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -59470,6 +59488,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -59702,12 +59726,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -59725,6 +59743,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -59957,12 +59981,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -59980,6 +59998,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -60212,12 +60236,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -60235,6 +60253,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -60467,12 +60491,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -60502,6 +60520,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -60734,12 +60758,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -60823,6 +60841,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -61055,12 +61079,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -61144,6 +61162,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -61376,12 +61400,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -61465,6 +61483,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -61697,12 +61721,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -61786,6 +61804,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -62018,12 +62042,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -62047,6 +62065,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -62279,12 +62303,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -62368,6 +62386,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -62600,12 +62624,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -62689,6 +62707,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -62921,12 +62945,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -63004,6 +63022,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -63236,12 +63260,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -63295,6 +63313,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -63527,12 +63551,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -63616,6 +63634,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -63848,12 +63872,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -63932,11 +63950,17 @@
       ]
     },
     "UNSEATED": {
-      "last_id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
-      "last_ts": "2026-09-14T01:50:56Z",
+      "last_id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+      "last_ts": "2026-09-14T01:51:22Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
         {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
@@ -64002,12 +64026,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:00:29Z"
-        },
-        {
-          "id": "ARC3-SAGE--public-full-frame-trace-corpus---replay-manifest",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T00:56:23Z"
         }
       ]
     },
@@ -64016,6 +64034,12 @@
       "last_ts": "",
       "n": 40,
       "since": [
+        {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
         {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
@@ -64249,12 +64273,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -64278,6 +64296,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -64510,12 +64534,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -64599,6 +64617,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -64831,12 +64855,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -64920,6 +64938,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -65152,12 +65176,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -65175,6 +65193,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -65407,12 +65431,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [
@@ -65430,6 +65448,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T01:51:22Z"
+        },
+        {
           "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -65662,12 +65686,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:44:05Z"
-        },
-        {
-          "id": "Indiana-ERP-RFI-27-87809--Chrysalis-paid-specialist-teaming-lane",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:39:34Z"
         }
       ],
       "mine": [

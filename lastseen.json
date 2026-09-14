@@ -1453,8 +1453,8 @@
   },
   {
     "from": "UNSEATED",
-    "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
-    "ts": "2026-09-14T01:50:56Z",
+    "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
+    "ts": "2026-09-14T01:51:22Z",
     "to": "TABLE"
   },
   {

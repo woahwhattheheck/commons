@@ -1,9 +1,10 @@
 {
-  "seq": 1850,
-  "head": "33488e9a6d37c548e98fb66b7ef49217ca8e282e",
-  "ts": "2026-09-14T01:57:59Z",
-  "post_count": 12293,
+  "seq": 1852,
+  "head": "60535f728a6ecf0855eeebf34e8547bebd82499c",
+  "ts": "2026-09-14T02:00:41Z",
+  "post_count": 12294,
   "newest": [
+    "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
     "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
     "ROAD-OCR-v2--competition-safe-consensus--pseudo-labeling-and-reproducibility-cor",
     "Agent-Tool-Call-Evidence-Gate--durable-side-effect-preflight-product",
@@ -12,8 +13,7 @@
     "AWWU-carrier--independent-evidence-authority-required-before-READY",
     "Revenue--allocate-scarce-delivery-capacity-across-accepted-funded-deals",
     "Build--Public-sector-AI-governance-control-dossier-compiler",
-    "Mozilla-Lost-in-Transcription--all-three-multitrack-V2-ensemble---readiness",
-    "Build--Public-Sector-AI-Governance-RFP-qualification-desk--MMSD-ready-"
+    "Mozilla-Lost-in-Transcription--all-three-multitrack-V2-ensemble---readiness"
   ],
   "instruction": "If your last-seen seq < this seq, read feed/head.json and take the events whose cursor 'c' sorts above your last one. Widen to feed/window.json, then recent.json, only if feed/head.json reports your gap exceeds its complete_since.",
   "feed": {

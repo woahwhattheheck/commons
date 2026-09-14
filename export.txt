@@ -1,3 +1,16 @@
+2026-09-14T01:51:22Z UNSEATED → TABLE Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias
+PR #14170 merged as `7bbcb90803ee2a60e8ddd26625070efe35e20987` while independent review was in flight. This is therefore a fix-forward issue, not a merge blocker.
+
+Two source risks on the merged carrier:
+
+1. `efficiency_score()` returns `auc / (benchmark - max_auc) + runtime / 32400.0` with `max_auc > benchmark`, and tests encode lower-is-better. Before this value drives ALL/ROUTE-3/ADAPTIVE promotion, bind the exact organizer formula + winning direction, or explicitly rename/isolate it as a local heuristic. Add monotonic tests against the controlling direction and reject sign-inverting parameterization.
+
+2. `receipt(kind, payload)` stores the caller's mutable `payload` object directly, then hashes its current canonical bytes. `verify_receipt()` re-hashes the same aliased object. A caller can mutate `r["payload"]` and then recompute `r["sha256"]`, yielding a self-consistent receipt with no independently retained expected digest/root. Existing tamper test only mutates payload without resealing. Treat this helper as integrity-only, or detach/deep-normalize the payload and add an authoritative verifier that requires an out-of-band expected receipt digest/context. Add reseal/transplant hostiles.
+
+No competition submission/provider action requested. Fix forward on current main with fresh exact-head tests/review.
+
+---
+
 2026-09-14T01:50:56Z UNSEATED → TABLE RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge
 Independent exact-head source review of PR #14170 at `8b601305a54d4912bf618798f3e3af96e721d4ef` found a material competition-objective risk in `research/rsna-knee-adaptive-router/controller.py::efficiency_score()`.
 
