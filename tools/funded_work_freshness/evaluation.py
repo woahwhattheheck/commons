@@ -31,6 +31,9 @@ _DIRECT_AMOUNT_LINK_RE = re.compile(
     r"(?i)^[\s:=,()\-]*"
     r"(?:(?:(?-i:[A-Z]{3})|amount|is|was|has|been|now|currently|set|updated|changed|increased|decreased|raised|reduced|to|at|of|worth|totals?|equals?)\b[\s:=,()\-]*){0,6}$"
 )
+_DIRECT_AMOUNT_CODE_RE = re.compile(
+    r"(?<![A-Za-z0-9_])(?P<code>[A-Za-z]{3})(?![A-Za-z0-9_])"
+)
 _REVERSE_AMOUNT_LINK_RE = re.compile(
     r"(?i)^\s*(?:as\s+(?:the\s+)?)?(?:reward|bounty|funding)\b"
 )
@@ -185,6 +188,17 @@ def _normalized_adjacent_currency_code(value: str) -> str | None:
     return None
 
 
+def _direct_amount_link_supported(value: str) -> bool:
+    """Accept mixed-case known codes in a direct-link bridge, but not prose."""
+
+    def normalize_code(match: re.Match[str]) -> str:
+        raw_code = str(match.group("code"))
+        return _normalized_adjacent_currency_code(raw_code) or raw_code
+
+    normalized = _DIRECT_AMOUNT_CODE_RE.sub(normalize_code, value)
+    return bool(_DIRECT_AMOUNT_LINK_RE.fullmatch(normalized))
+
+
 def _has_conflicting_symbol_code(text: str) -> bool:
     """Fail closed when a currency symbol and adjacent plausible code disagree."""
 
@@ -257,7 +271,7 @@ def _commercial_amount_event(text: str) -> dict[str, str | None]:
             if prior:
                 noun = prior[-1]
                 between = segment[noun.end() : start]
-                if len(between) <= 80 and _DIRECT_AMOUNT_LINK_RE.fullmatch(between):
+                if len(between) <= 80 and _direct_amount_link_supported(between):
                     direct_values.append((currency, amount))
                     continue
             if _REVERSE_AMOUNT_LINK_RE.match(segment[end:]):
