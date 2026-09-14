@@ -10,7 +10,7 @@
   "service_type": "technical_assistance",
   "bid_model": "direct_prime",
   "gate_status": {
-    "virtual_or_california_presence": "PROVEN",
+    "virtual_or_california_presence": "HOLD",
     "reporting_invoicing_oversight": "HOLD",
     "delivery_capacity": "HOLD",
     "subject_matter_expertise": "HOLD",
@@ -29,6 +29,7 @@
     "rate_sheet": "MISSING",
     "signed_attestation": "MISSING"
   },
+  "gate_sources": {},
   "client_references": [],
   "comparable_engagements": [],
   "evidence_notes": [
