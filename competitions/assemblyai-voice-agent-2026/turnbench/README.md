@@ -12,7 +12,7 @@ Current checks:
 
 - resolved AssemblyAI session-config hash and `min_silence` / `max_silence` binding;
 - final user transcript → `reply.started` latency;
-- semantic barge-in → `reply.done(status="interrupted")` plus interrupted agent transcript within budget;
+- required minimum observed semantic barge-ins → `reply.done(status="interrupted")` plus interrupted agent transcript within budget;
 - required tool calls, required argument keys, transcript witness phrase and tool-call latency;
 - forbidden provider error codes;
 - clean session end;
