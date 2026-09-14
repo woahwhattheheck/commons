@@ -15,7 +15,8 @@ from typing import Any
 
 from . import core as _core
 
-_BASE_EVALUATE = _core.evaluate
+_BASE_EVALUATE = getattr(_core, "_CONNECTOR_PREFLIGHT_BASE_EVALUATE", _core.evaluate)
+_core._CONNECTOR_PREFLIGHT_BASE_EVALUATE = _BASE_EVALUATE
 MAX_FILE_BYTES = _core.MAX_FILE_BYTES
 
 
@@ -54,6 +55,19 @@ def _prepare_latest(normalized: dict[str, Any]) -> tuple[dict[str, Any], list[st
     prepared["attempts"] = [
         row for row in prepared["attempts"] if row["discovery_request_id"] not in removed_ids
     ]
+    latest_results: dict[tuple[str, str], tuple[str, set[str]]] = {}
+    for row in prepared["attempts"]:
+        if row["discovery_request_id"] != winner["request_id"] or row["access"] != "WRITE":
+            continue
+        identity = (row["connector"], row["action"])
+        previous = latest_results.get(identity)
+        if previous is None or row["attempted_at"] > previous[0]:
+            latest_results[identity] = (row["attempted_at"], {row["result"]})
+        elif row["attempted_at"] == previous[0]:
+            previous[1].add(row["result"])
+    for (connector, action), (_, results) in latest_results.items():
+        if len(results) > 1:
+            overlay_reasons.append(f"LATEST_ATTEMPT_CONFLICT_{connector}_{action}")
     return prepared, sorted(set(overlay_reasons)), winner
 
 
