@@ -71,7 +71,36 @@ def make_handler(journal: MealJournal):
         def _json(self, status, value):
             self._send(status, json.dumps(value, sort_keys=True, separators=(",", ":"), ensure_ascii=False).encode("utf-8"))
 
+        def _assert_browser_write_boundary(self):
+            if self.headers.get_content_type() != "application/json":
+                raise JournalError("Content-Type must be application/json")
+
+            # Browser-simple cross-origin requests cannot set application/json without
+            # preflight. Keep preflight closed and also reject explicit cross-origin
+            # metadata so state-changing routes never rely on response CORS alone.
+            fetch_site = (self.headers.get("Sec-Fetch-Site") or "").lower()
+            if fetch_site in {"cross-site", "same-site"}:
+                raise JournalError("cross-origin browser mutation rejected")
+
+            host = self.headers.get("Host")
+            origin = self.headers.get("Origin")
+            if origin is not None:
+                if not host or origin != f"http://{host}":
+                    raise JournalError("request Origin does not match MealFrame origin")
+
+            # When the listener itself is loopback-only, refuse Host-header rebinding
+            # through attacker-controlled DNS names. Normal localhost/127.0.0.1 access
+            # remains valid; explicitly shared non-loopback listeners keep their host.
+            bound_host = str(self.server.server_address[0]).lower()
+            if bound_host in {"127.0.0.1", "::1"}:
+                if not host:
+                    raise JournalError("Host header required")
+                host_name = host.split(":", 1)[0].strip("[]").lower()
+                if host_name not in {"127.0.0.1", "localhost", "localhost."}:
+                    raise JournalError("loopback MealFrame rejects non-loopback Host")
+
         def _read_json(self):
+            self._assert_browser_write_boundary()
             raw_len = self.headers.get("Content-Length")
             if raw_len is None:
                 raise JournalError("Content-Length required")
@@ -85,6 +114,11 @@ def make_handler(journal: MealJournal):
             if not isinstance(payload, dict):
                 raise JournalError("request body must be a JSON object")
             return payload
+
+        def do_OPTIONS(self):
+            # Deliberately no Access-Control-Allow-* headers. Cross-origin JSON
+            # mutation attempts must fail their browser preflight.
+            self._json(403, {"error": "cross-origin browser access denied"})
 
         def do_GET(self):
             parsed = urlparse(self.path)
@@ -116,7 +150,13 @@ def make_handler(journal: MealJournal):
                 match = re.fullmatch(r"/photo/(\d+)", parsed.path)
                 if match:
                     photo, mime, sha = journal.photo(int(match.group(1)))
-                    self._send(200, photo, mime, {"ETag": f'"sha256-{sha}"'})
+                    extra = {"ETag": f'"sha256-{sha}"'}
+                    if mime == "image/svg+xml":
+                        # SVG remains a useful exact-byte local photo/demo format but
+                        # must never become active same-origin script authority when
+                        # opened as its own document.
+                        extra["Content-Security-Policy"] = "sandbox; default-src 'none'"
+                    self._send(200, photo, mime, extra)
                     return
                 self._json(404, {"error": "not_found"})
             except NotFoundError as exc:
