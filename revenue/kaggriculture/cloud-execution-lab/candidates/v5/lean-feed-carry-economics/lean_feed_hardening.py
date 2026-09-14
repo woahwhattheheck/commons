@@ -16,12 +16,28 @@ import math
 from collections import Counter, defaultdict
 from typing import Any, Mapping, Sequence
 
-from lean_feed_core import ARM_MIN, ARMS, _require, compute_reserve_oracle, sha256_json
+from lean_feed_core import (
+    ARM_MIN,
+    ARMS,
+    D2_ARCHIVE_SHA256,
+    D2_MEMBER_COUNT,
+    _require,
+    compute_reserve_oracle,
+    sha256_json,
+)
 from lean_feed_gate import analyze_document as analyze_candidate_document
 
 AUTHORITY_ROOT_SCHEMA = "titan-v5-lean-feed-authority-root-v1"
 PROMOTE = "PROMOTE_RESEARCH_CANDIDATE"
 NO_PROMOTION = "NO_PROMOTION"
+SOURCE_MODEL_BLOCKED = "SOURCE_MODEL_BLOCKED"
+SOURCE_AUTHORITY_RECEIPT_SHA256 = (
+    "297f7cf6e38f8e4be7fd00387e228194e366648570b781cd7abe05be41f2d4d8"
+)
+SOURCE_BLOCK_REASON = (
+    "retained official source is WHEAT-only and exact D2 archive member bytes "
+    "are not retained; synthetic legacy economics cannot authorize promotion"
+)
 
 # Promotion authority is a code-retained trust decision, not a field that an
 # evidence producer can mint. Add a reviewed root digest only in a dedicated
@@ -102,10 +118,6 @@ def _validate_obligation_census_and_cash(runs: Sequence[Mapping[str, Any]]) -> N
                 and decision.get("candidate_active") is True
             )
             if active_lean:
-                # A null boundary makes MIN_PROVABLE vacuously zero and can
-                # fabricate a cash win from an empty animal-obligation census.
-                # Inert/no-obligation windows remain valid; only a claimed lean
-                # activation must prove the boundary it says it is protecting.
                 _require(
                     oracle["next_boundary_step"] is not None,
                     f"{run_id}: null source-proven obligation boundary",
@@ -203,6 +215,44 @@ def _result_bound_digest(run: Mapping[str, Any]) -> str:
     )
 
 
+def _suppress_blocked_source_economics(report: dict[str, Any]) -> None:
+    """Expose source custody state without publishing fictional-domain economics."""
+    promotion = report["promotion"]
+    promotion.update(
+        {
+            "conclusion": SOURCE_MODEL_BLOCKED,
+            "selected_arm": None,
+            "dev_mean_delta_m": 0.0,
+            "holdout_mean_delta_m": 0.0,
+            "active_dev_windows": 0,
+            "active_holdout_windows": 0,
+            "dev_downstream_cash_used": 0.0,
+            "holdout_downstream_cash_used": 0.0,
+            "obligation_failures": 0,
+            "productivity_loss": 0.0,
+            "survival_loss": 0.0,
+            "strata": [],
+            "falsifiers": [SOURCE_BLOCK_REASON],
+            "source_model_state": SOURCE_MODEL_BLOCKED,
+        }
+    )
+    report["authority"] = {
+        "archive_sha256": D2_ARCHIVE_SHA256,
+        "archive_member_count": D2_MEMBER_COUNT,
+        "source_model_state": SOURCE_MODEL_BLOCKED,
+        "promotion_authorized": False,
+        "source_authority_receipt_sha256": SOURCE_AUTHORITY_RECEIPT_SHA256,
+    }
+    report["design"] = {
+        "cells": 0,
+        "dev_opponents": [],
+        "holdout_opponents": [],
+    }
+    report["census"] = []
+    report["paired_deltas"] = []
+    report["runs"] = []
+
+
 def analyze_authoritative_document(document: Mapping[str, Any]) -> dict[str, Any]:
     """Return candidate economics plus an independently rooted final verdict."""
     runs = document.get("runs")
@@ -227,11 +277,7 @@ def analyze_authoritative_document(document: Mapping[str, Any]) -> dict[str, Any
     promotion["authority_root_sha256"] = root_sha256
 
     if candidate_conclusion == PROMOTE and not authority_verified:
-        promotion["conclusion"] = NO_PROMOTION
-        promotion["selected_arm"] = None
-        fence = "promotion authority is not rooted in a code-retained trusted evidence root"
-        if fence not in promotion["falsifiers"]:
-            promotion["falsifiers"].append(fence)
+        _suppress_blocked_source_economics(report)
 
     report["hardening"] = {
         "exact_one_row_per_cell_arm": True,
@@ -242,6 +288,9 @@ def analyze_authoritative_document(document: Mapping[str, Any]) -> dict[str, Any
         "authority_root_schema": AUTHORITY_ROOT_SCHEMA,
         "authority_verified": authority_verified,
         "trusted_root_count": len(TRUSTED_AUTHORITY_ROOT_SHA256),
+        "source_model_state": (
+            "SOURCE_AUTHORITY_VERIFIED" if authority_verified else SOURCE_MODEL_BLOCKED
+        ),
     }
 
     report.pop("report_sha256", None)
@@ -251,6 +300,7 @@ def analyze_authoritative_document(document: Mapping[str, Any]) -> dict[str, Any
 
 __all__ = [
     "AUTHORITY_ROOT_SCHEMA",
+    "SOURCE_MODEL_BLOCKED",
     "TRUSTED_AUTHORITY_ROOT_SHA256",
     "analyze_authoritative_document",
 ]
