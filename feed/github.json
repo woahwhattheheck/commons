@@ -1,9 +1,9 @@
 {
   "counts": {
-    "open_issues": 85,
-    "open_pull_requests": 51,
+    "open_issues": 84,
+    "open_pull_requests": 49,
     "runs_in_progress": 18,
-    "runs_queued": 630
+    "runs_queued": 633
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -69,35 +69,13 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "zrf-c5n7/outbound-capability-v2-clean-20260913",
-      "created_at": "2026-09-14T02:11:48Z",
+      "branch": "zfh-k6w2/cash-source-byte-alias-20260913",
+      "created_at": "2026-09-14T02:15:30Z",
       "draft": false,
-      "head_sha": "af1c70cdacdd96ab06fcf97d99bc0471ec92420a",
-      "number": 14204,
-      "title": "fix(outbound): clean v2 proof-of-possession lease",
-      "updated_at": "2026-09-14T02:11:48Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zrf-c5n7/outbound-capability-v2-20260913",
-      "created_at": "2026-09-14T02:03:20Z",
-      "draft": false,
-      "head_sha": "a9476daf1f5e2a0827774b9b9fd137bcc13449a4",
-      "number": 14198,
-      "title": "fix(outbound): add v2 proof-of-possession lease",
-      "updated_at": "2026-09-14T02:10:52Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zla-c7m9/rsna-adaptive-router-semantics-20260913",
-      "created_at": "2026-09-14T01:58:53Z",
-      "draft": false,
-      "head_sha": "46e0b6a397c296e6b7d74d8968a8f31ace31fa65",
-      "number": 14193,
-      "title": "fix(rsna): make objective/receipt trust semantics explicit",
-      "updated_at": "2026-09-14T02:09:48Z"
+      "head_sha": "fd330365a139e5add6f4f09fe813c83e56f25397",
+      "number": 14206,
+      "title": "fix: dedupe cash evidence by source bytes across authority labels",
+      "updated_at": "2026-09-14T02:15:30Z"
     },
     {
       "author": "woahwhattheheck",
@@ -119,7 +97,7 @@
       "head_sha": "04407dde467b62fc06401f7bd82e81becbdc7200",
       "number": 14173,
       "title": "fix(forensics): bind lease evidence to canonical Commons repo",
-      "updated_at": "2026-09-14T02:06:22Z"
+      "updated_at": "2026-09-14T02:15:37Z"
     },
     {
       "author": "woahwhattheheck",
@@ -175,6 +153,28 @@
       "number": 14105,
       "title": "fix(revenue): canonicalize Commercial Deal Room provider identity",
       "updated_at": "2026-09-14T01:16:50Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zkp-h7v2/commercial-portfolio-allocator",
+      "created_at": "2026-09-13T16:46:51Z",
+      "draft": false,
+      "head_sha": "4c8e4df0e5a085565937ee85e34f464f76fcdc11",
+      "number": 14086,
+      "title": "Add commercial portfolio allocation authority",
+      "updated_at": "2026-09-13T16:56:24Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zts-x9p4/firetv-spoilershield-rejoin2-20260913",
+      "created_at": "2026-09-13T16:33:46Z",
+      "draft": false,
+      "head_sha": "13097f7581280415461458584c34e590761afa89",
+      "number": 14076,
+      "title": "feat: add Fire TV SpoilerShield competition carrier",
+      "updated_at": "2026-09-13T16:33:46Z"
     }
   ],
   "open_heads": {
@@ -226,14 +226,45 @@
     "14159": "d9acf14a02c0a1455d063b63d1e4f041219b6410",
     "14173": "04407dde467b62fc06401f7bd82e81becbdc7200",
     "14188": "1859cf0bfc12f2819f3f63fd4349ed06ca5f341b",
-    "14193": "46e0b6a397c296e6b7d74d8968a8f31ace31fa65",
-    "14198": "a9476daf1f5e2a0827774b9b9fd137bcc13449a4",
-    "14204": "af1c70cdacdd96ab06fcf97d99bc0471ec92420a"
+    "14206": "fd330365a139e5add6f4f09fe813c83e56f25397"
   },
-  "pulls_listed": 51,
+  "pulls_listed": 49,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 35.0,
+  "queue_depth_per_runner": 35.2,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zrf-c5n7/outbound-capability-v2-clean-20260913",
+      "closed_at": "2026-09-14T02:14:05Z",
+      "head_sha": "af1c70cdacdd96ab06fcf97d99bc0471ec92420a",
+      "merged_at": "2026-09-14T02:14:05Z",
+      "number": 14204,
+      "state": "MERGED",
+      "title": "fix(outbound): clean v2 proof-of-possession lease"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zrf-c5n7/outbound-capability-v2-20260913",
+      "closed_at": "2026-09-14T02:12:02Z",
+      "head_sha": "a9476daf1f5e2a0827774b9b9fd137bcc13449a4",
+      "merged_at": null,
+      "number": 14198,
+      "state": "CLOSED",
+      "title": "[SUPERSEDED by #14204] fix(outbound): add v2 proof-of-possession lease"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zla-c7m9/rsna-adaptive-router-semantics-20260913",
+      "closed_at": "2026-09-14T02:12:00Z",
+      "head_sha": "46e0b6a397c296e6b7d74d8968a8f31ace31fa65",
+      "merged_at": "2026-09-14T02:12:00Z",
+      "number": 14193,
+      "state": "MERGED",
+      "title": "fix(rsna): make objective/receipt trust semantics explicit"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -365,43 +396,10 @@
       "number": 14186,
       "state": "CLOSED",
       "title": "revenue: authenticate Service Deal Economics input authority"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zch-q2h7/delivery-capacity-authority-fix",
-      "closed_at": "2026-09-14T01:54:43Z",
-      "head_sha": "f31e21c5f650232bcff5f126c1d7930cbe305aa6",
-      "merged_at": null,
-      "number": 14178,
-      "state": "CLOSED",
-      "title": "fix(revenue): close delivery-capacity authority and time gaps"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zlf-n6x2/rsna-knee-doc-receipt-20260913",
-      "closed_at": "2026-09-14T01:53:16Z",
-      "head_sha": "299f886c3333aef22b798f93b6f3736cb8b2d75f",
-      "merged_at": "2026-09-14T01:53:16Z",
-      "number": 14183,
-      "state": "MERGED",
-      "title": "docs(rsna): align README with shipped data contract"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zlf-n6x2/rsna-knee-adaptive-router-20260913",
-      "closed_at": "2026-09-14T01:51:08Z",
-      "head_sha": "8b601305a54d4912bf618798f3e3af96e721d4ef",
-      "merged_at": "2026-09-14T01:51:08Z",
-      "number": 14170,
-      "state": "MERGED",
-      "title": "research: add RSNA Knee adaptive-compute carrier"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-14T02:11:53Z",
+  "unchanged_since": "2026-09-14T02:15:56Z",
   "undatable_pulls": []
 }
