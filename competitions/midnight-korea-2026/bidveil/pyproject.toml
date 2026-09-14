@@ -1,0 +1,8 @@
+[project]
+name = "bidveil"
+version = "0.1.0"
+description = "Privacy-preserving subcontractor qualification semantics for Midnight Korea Hackathon 2026"
+requires-python = ">=3.11"
+
+[project.scripts]
+bidveil = "bidveil.cli:main"
