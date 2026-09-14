@@ -359,6 +359,8 @@ def verify_receipt(receipt: Mapping[str, Any]) -> dict[str, Any]:
     rebuilt = compile_receipt(body["events"], body["policy"])
     # Recompile the embedded canonical event evidence; replay and conflict metadata must reproduce exactly.
     rebuilt_body = rebuilt["body"]
+    if set(body) != set(rebuilt_body):
+        raise ContractError("receipt body fields invalid")
     for field in (
         "kind", "schema_version", "authority", "shipment_id", "shipment_fingerprint_sha256",
         "state", "reasons", "current_custodian", "current_location", "open_exceptions",
