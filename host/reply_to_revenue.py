@@ -46,6 +46,9 @@ def _latest_human_bucket(events: list[dict[str, Any]]) -> list[dict[str, Any]]:
 
 def _reduce_contact_state(events: list[dict[str, Any]]) -> dict[str, Any]:
     """Preserve explicit DNC authority in an equal-time semantic conflict."""
+    # Run the inherited reducer first so its full schema/known-classification
+    # validation remains authoritative even when this policy override applies.
+    inherited_state = _ORIGINAL_REDUCE_CONTACT_STATE(events)
     latest_semantic = _latest_human_bucket(events)
     opt_outs = [
         event
@@ -64,7 +67,7 @@ def _reduce_contact_state(events: list[dict[str, Any]]) -> dict[str, Any]:
             "handoff": None,
             "effective_event": effective_event,
         }
-    return _ORIGINAL_REDUCE_CONTACT_STATE(events)
+    return inherited_state
 
 
 def _positive_context(events: list[dict[str, Any]]) -> str:
