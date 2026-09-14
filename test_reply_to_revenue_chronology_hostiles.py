@@ -81,6 +81,20 @@ class ReplyToRevenueChronologyHostileTests(unittest.TestCase):
                 self.assertEqual(contact["lane"], "CLOSED")
                 self.assertEqual(contact["next_action"], "DNC/CLOSE")
 
+    def test_opt_out_does_not_bypass_unknown_classification_validation(self) -> None:
+        opt_out = self.event(
+            "OPT_OUT",
+            "2026-09-13T12:00:00Z",
+            "opaque:opt-out-known",
+        )
+        unknown = self.event(
+            "UNRECOGNIZED_STATE",
+            "2026-09-13T12:00:00Z",
+            "opaque:unknown-state",
+        )
+        with self.assertRaises(r2r.ReplyRevenueError):
+            r2r._reduce_contact_state([opt_out, unknown])
+
     def test_unmatched_opt_out_row_remains_hard_dnr(self) -> None:
         opt_out = self.event(
             "OPT_OUT",
