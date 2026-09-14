@@ -21,6 +21,7 @@ def _normalize_policy(value: Any) -> dict[str, int]:
         "policy_generation",
         "contact_cooldown_seconds",
         "request_max_age_seconds",
+        "ledger_max_age_seconds",
         "ready_validity_seconds",
         "max_future_skew_seconds",
     }
@@ -38,6 +39,12 @@ def _normalize_policy(value: Any) -> dict[str, int]:
         "request_max_age_seconds": _expect_int(
             policy["request_max_age_seconds"],
             "policy.request_max_age_seconds",
+            minimum=30,
+            maximum=86_400,
+        ),
+        "ledger_max_age_seconds": _expect_int(
+            policy["ledger_max_age_seconds"],
+            "policy.ledger_max_age_seconds",
             minimum=30,
             maximum=86_400,
         ),
@@ -125,6 +132,7 @@ def _load_authority(root: Path, active: ActiveKey, organization: str, now: datet
         policy_generation=policy["policy_generation"],
         contact_cooldown_seconds=policy["contact_cooldown_seconds"],
         request_max_age_seconds=policy["request_max_age_seconds"],
+        ledger_max_age_seconds=policy["ledger_max_age_seconds"],
         ready_validity_seconds=policy["ready_validity_seconds"],
         max_future_skew_seconds=policy["max_future_skew_seconds"],
         issued_at=issued,
