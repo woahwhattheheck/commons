@@ -3,9 +3,13 @@ package com.tokenjunkielabs.proofpocket.core
 /** Structural preflight that rejects duplicate JSON object keys before JSONObject
  * can collapse them. It intentionally authenticates nothing; it only preserves
  * unambiguous receipt semantics at the parser boundary.
+ *
+ * Parsing is resource-bounded: input strings are capped and recursive descent
+ * stops at MAX_JSON_DEPTH before untrusted nesting can approach VM stack limits.
  */
 object StrictJsonKeys {
     fun requireNoDuplicateObjectKeys(raw: String) {
+        ReceiptImportLimits.requireBoundedString(raw)
         Parser(raw).parseDocument()
     }
 
@@ -14,17 +18,20 @@ object StrictJsonKeys {
 
         fun parseDocument() {
             skipWs()
-            parseValue()
+            parseValue(0)
             skipWs()
             require(i == raw.length) { "trailing JSON content" }
         }
 
-        private fun parseValue() {
+        private fun parseValue(depth: Int) {
+            require(depth <= ReceiptImportLimits.MAX_JSON_DEPTH) {
+                "JSON nesting exceeds ${ReceiptImportLimits.MAX_JSON_DEPTH} levels"
+            }
             skipWs()
             require(i < raw.length) { "unexpected end of JSON" }
             when (raw[i]) {
-                '{' -> parseObject()
-                '[' -> parseArray()
+                '{' -> parseObject(depth)
+                '[' -> parseArray(depth)
                 '"' -> parseString()
                 't' -> consumeLiteral("true")
                 'f' -> consumeLiteral("false")
@@ -34,7 +41,7 @@ object StrictJsonKeys {
             }
         }
 
-        private fun parseObject() {
+        private fun parseObject(depth: Int) {
             i++
             skipWs()
             if (peek('}')) { i++; return }
@@ -47,7 +54,7 @@ object StrictJsonKeys {
                 skipWs()
                 require(peek(':')) { "missing ':' after object key" }
                 i++
-                parseValue()
+                parseValue(depth + 1)
                 skipWs()
                 when {
                     peek(',') -> i++
@@ -57,12 +64,12 @@ object StrictJsonKeys {
             }
         }
 
-        private fun parseArray() {
+        private fun parseArray(depth: Int) {
             i++
             skipWs()
             if (peek(']')) { i++; return }
             while (true) {
-                parseValue()
+                parseValue(depth + 1)
                 skipWs()
                 when {
                     peek(',') -> i++

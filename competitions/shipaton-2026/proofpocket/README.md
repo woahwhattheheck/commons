@@ -27,7 +27,7 @@ This repository intentionally does not contain the key, RevenueCat products/offe
 
 ## Local proof-engine tests
 
-The receipt engine, strict JSON key preflight, entitlement policy, and competition gate have dependency-light tests:
+The receipt engine, bounded strict JSON preflight, entitlement policy, and competition gate have dependency-light tests:
 
 ```bash
 kotlinc \
@@ -37,9 +37,10 @@ kotlinc \
 java -jar /tmp/proofpocket-core-tests.jar
 
 kotlinc \
+  app/src/main/java/com/tokenjunkielabs/proofpocket/core/ReceiptImportLimits.kt \
   app/src/main/java/com/tokenjunkielabs/proofpocket/core/StrictJsonKeys.kt \
   core-tests/StrictJsonTests.kt -include-runtime -d /tmp/proofpocket-strict-json.jar
-java -jar /tmp/proofpocket-strict-json.jar
+java -Xss256k -jar /tmp/proofpocket-strict-json.jar
 
 python3 -m unittest discover -s tests -v
 python3 shipaton/readiness.py shipaton/manifest.json --json  # expected HOLD_EXTERNAL_AUTHORITY
@@ -52,6 +53,8 @@ The current environment used for this carrier has Java/Kotlin/Python but no Andr
 `receiptId = SHA256(canonical_payload_json)`. Evidence is sorted by stable evidence ID before hashing, so input order does not change identity. Evidence IDs derive from content SHA-256. Duplicate IDs, malformed digests/timestamps, negative sizes, and unsupported schemas are rejected.
 
 Import is stricter than ordinary `JSONObject` parsing: duplicate object keys are refused before parsing (including escaped aliases such as `id` and `\u0069d`), and receipt root/payload/evidence objects must contain exactly the supported fields. This prevents unbound side claims from riding beside an otherwise valid receipt.
+
+Untrusted portable receipts are also availability-bounded **before** JSON decoding: the Android import path streams at most 256 KiB, requires strict UTF-8, and the structural preflight refuses nesting deeper than 64 levels. These are ordinary rejection states, not competition/security claims; the selected receipt contains metadata/digests only, never evidence bytes.
 
 This is **tamper evidence**, not a claim of signer identity or a digital signature. A PDF proof pack contains the same receipt ID and digest excerpts; it does not claim cryptographic signing.
 

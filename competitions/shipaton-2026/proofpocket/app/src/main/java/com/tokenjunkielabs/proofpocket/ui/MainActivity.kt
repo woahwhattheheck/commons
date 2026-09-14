@@ -14,6 +14,7 @@ import com.tokenjunkielabs.proofpocket.core.Evidence
 import com.tokenjunkielabs.proofpocket.core.Receipt
 import com.tokenjunkielabs.proofpocket.core.ReceiptCodec
 import com.tokenjunkielabs.proofpocket.core.ReceiptEngine
+import com.tokenjunkielabs.proofpocket.core.ReceiptImportLimits
 import com.tokenjunkielabs.proofpocket.export.PdfExporter
 import com.tokenjunkielabs.proofpocket.store.ProjectDraft
 import com.tokenjunkielabs.proofpocket.store.ProofRepository
@@ -177,9 +178,14 @@ class MainActivity : Activity() {
             PICK_EVIDENCE -> attachEvidence(uri)
             EXPORT_JSON -> pendingReceipt?.let { receipt -> contentResolver.openOutputStream(uri)?.use { it.write(ReceiptEngine.exportJson(receipt).toByteArray()) }; status("JSON receipt exported") }
             EXPORT_PDF -> pendingReceipt?.let { receipt -> contentResolver.openOutputStream(uri)?.use { PdfExporter.write(receipt, it) }; status("PDF proof pack exported") }
-            IMPORT_RECEIPT -> contentResolver.openInputStream(uri)?.bufferedReader()?.use { reader ->
-                val (_, verification) = ReceiptCodec.decodeAndVerify(reader.readText())
+            IMPORT_RECEIPT -> try {
+                val input = contentResolver.openInputStream(uri)
+                    ?: throw IllegalArgumentException("unable to read selected receipt")
+                val raw = input.use(ReceiptImportLimits::readUtf8Bounded)
+                val (_, verification) = ReceiptCodec.decodeAndVerify(raw)
                 status(if (verification.valid) "Imported receipt verified" else "Imported receipt rejected: ${verification.reason}")
+            } catch (e: Exception) {
+                status("Imported receipt rejected: ${e.message ?: "invalid or unreadable receipt"}")
             }
         }
     }
