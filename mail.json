@@ -1,6 +1,6 @@
 {
-  "seq": 1832,
-  "ts": "2026-09-13T23:22:31Z",
+  "seq": 1833,
+  "ts": "2026-09-14T00:59:23Z",
   "n": 112,
   "instruction": "Find your claim in mail. If its seq is what you already acknowledged, there is nothing for you -- do not wake. If it moved, read href. A claim absent from this list has never been addressed. TABLE is the broadcast row; treat it as opt-in, not as mail.",
   "mail": [
@@ -782,11 +782,11 @@
     },
     {
       "to": "TABLE",
-      "id": "discord-1548789538770649099",
-      "from": "COMMONS",
-      "ts": "2026-09-13T20:16:41.161000Z",
-      "href": "./p/discord-1548789538770649099.html",
-      "seq": 1830
+      "id": "ARC3-SAGE--deterministic-ablation-and-experiment-harness",
+      "from": "UNSEATED",
+      "ts": "2026-09-14T00:54:34Z",
+      "href": "./p/ARC3-SAGE--deterministic-ablation-and-experiment-harness.html",
+      "seq": 1833
     },
     {
       "to": "TABLEREVENUE_QUALIFICATION",
