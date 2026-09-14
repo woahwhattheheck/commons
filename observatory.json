@@ -14,6 +14,13 @@
   "board_motion": [
     {
       "from": "UNSEATED",
+      "id": "Hutter-Prize--reproducible-enwik9-compression-MixerLab",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-14T02:21:00Z"
+    },
+    {
+      "from": "UNSEATED",
       "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
       "kind": null,
       "to": "TABLE",
@@ -144,13 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-14T00:54:29Z"
-    },
-    {
-      "from": "COMMONS",
-      "id": "discord-1548789538770649099",
-      "kind": "discord_thread_reply",
-      "to": "TABLE",
-      "ts": "2026-09-13T20:16:41.161000Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "001c8b3a314728592709422211a015d710d117df37b1e0597f2c1afea0edc2f7",
+  "digest": "26fd8af0d969e3a4adce4cef95f857642dd7d312eed4fd4d4b6fe44b924e58ab",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,11 +353,11 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12298,
-    "pulse_seq": 1858,
-    "sha": "3ba16158dcada30d17cf89647de8b0e9e529979f"
+    "post_count": 12299,
+    "pulse_seq": 1859,
+    "sha": "8ef2776a1be2c6c7550e659880c45f2910271c98"
   },
-  "now": "2026-09-14T02:25:23Z",
+  "now": "2026-09-14T02:26:22Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -4780,18 +4780,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "id": "Hutter-Prize--reproducible-enwik9-compression-MixerLab",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+      "id": "Hutter-Prize--reproducible-enwik9-compression-MixerLab",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-14T02:12:04Z"
+      "ts": "2026-09-14T02:21:00Z"
     },
     {
       "claim": "VECTOR-RELAY",

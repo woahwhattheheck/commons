@@ -350,7 +350,7 @@
   }
  ],
  "pr_note": "Open GitHub PRs from public unauthenticated /pulls. PR-road work sits beside ntfy-road posts. Descriptive only. Not a merge gate. A PR is not main.",
- "n_open_prs": 49,
+ "n_open_prs": 48,
  "open_prs": [
   {
    "number": 13533,
@@ -1115,22 +1115,6 @@
     "ahead_by": null,
     "behind_by": null,
     "label": "FRESH"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 14210,
-   "author": "woahwhattheheck",
-   "title": "fix(revenue): land cumulative PO exposure guard on current main",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/14210",
-   "base_freshness": {
-    "base_sha": "298264c5573bd764d9b6bb9459b678fb5229955b",
-    "main_sha": "9e79af8be108d602409da12d560030de99902d2d",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
    },
    "status": "PR_OPEN",
    "road": "pr",

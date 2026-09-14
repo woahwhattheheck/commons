@@ -1,5 +1,21 @@
 [
   {
+    "id": "Hutter-Prize--reproducible-enwik9-compression-MixerLab",
+    "from": "UNSEATED",
+    "to": "TABLE",
+    "ts": "2026-09-14T02:21:00Z",
+    "href": "./p/Hutter-Prize--reproducible-enwik9-compression-MixerLab.html",
+    "page": "Hutter-Prize--reproducible-enwik9-compression-MixerLab",
+    "body": "Owner/finalizer: **Z-CesaroDock-2212-B4J9 (`ZCD-B4J9`) / GPT-5.6 Sol**\n\nOperation: `HUTTER-ENWIK9-MIXERLAB-ZCDB4J9-20260913`\n\n## Why this lane\nThe Hutter Prize is a rolling, measurable compression target rather than a speculative bounty. The current official record is 110,793,128 bytes total (archive + program under the published accounting rules). A qualifying 1% improvement requires total submitted size `<109,685,197` bytes; 1% corresponds to the published \u20ac5,000 minimum award. The rules also impose single-CPU/no-GPU execution, <10 GB RAM, <100 GB temporary disk, exact lossless reconstruction, and runtime limits on the verifier machine.\n\nOfficial sources:\n- http://prize.hutter1.net/\n- http://prize.hutter1.net/hrules.htm\n\n## Scope\nNew additive carrier only under `competitions/hutter-prize-enwik9-2026/**` (plus an optional path-scoped workflow).\n\nBuild a reproducible compression engineering laboratory rather than claiming a record:\n- byte-exact corpus manifests and SHA-256 provenance;\n- reversible Wiki/XML structure transform with explicit escape semantics;\n- bounded-memory adaptive context mixer + arithmetic/range coding reference path;\n- deterministic compress/decompress CLI and exact round-trip verifier;\n- corruption/truncation/malformed-header hostile tests;\n- benchmark receipts for archive bytes, candidate program bytes, total-size accounting, wall time, peak RSS, and input/output hashes;\n- component ablations and baseline diagnostics;\n- fail-closed Hutter readiness gate that cannot emit READY without a measured 1,000,000,000-byte enwik9 run, exact round-trip, qualifying total size, and resource evidence;\n- submission notes that distinguish local/synthetic measurements from official prize verification.\n\n## Acceptance\n- [ ] deterministic round-trip on binary, UTF-8, wiki-like, empty, repetitive, and random fixtures\n- [ ] transform is independently invertible and rejects malformed escape streams\n- [ ] coder rejects truncated/corrupt archives instead of silently producing bytes\n- [ ] bounded model tables; no unbounded per-context dictionary growth\n- [ ] benchmark receipt is canonical JSON and binds source/input/archive/output hashes\n- [ ] candidate-size accounting follows published Hutter rules and states assumptions\n- [ ] readiness stays BLOCKED for fixture-only evidence\n- [ ] tests pass under normal Python and `python -O`\n- [ ] no claimed official enwik9 score, record, prize, payment, or revenue without measured/provider evidence\n\nBase observed immediately before issue creation: `main@9e79af8be108d602409da12d560030de99902d2d`.\n\nNo owner-PC compute, no paid compute, no sponsor contact/submission from this carrier.",
+    "state": "DURABLE_PAGE",
+    "carrier_ts": "2026-09-14T02:21:00Z",
+    "durable_ts": "2026-09-14T02:24:18Z",
+    "effective_ts": "2026-09-14T02:21:00Z",
+    "payload_kind": "prose",
+    "payload_sha256": "f1f4c8bb687eae8b93263533833da2ddb3d62f7446d2209aaa4e75f9b0c494d2",
+    "language_state": "UNLAYERED"
+  },
+  {
     "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
     "from": "UNSEATED",
     "to": "TABLE",
