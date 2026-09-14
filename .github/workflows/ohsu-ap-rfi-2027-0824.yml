@@ -1,0 +1,39 @@
+name: OHSU AP RFI evidence carrier
+
+on:
+  pull_request:
+    paths:
+      - "revenue/opportunities/ohsu_rfi_2027_0824/**"
+      - ".github/workflows/ohsu-ap-rfi-2027-0824.yml"
+  push:
+    branches: [main]
+    paths:
+      - "revenue/opportunities/ohsu_rfi_2027_0824/**"
+      - ".github/workflows/ohsu-ap-rfi-2027-0824.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    defaults:
+      run:
+        working-directory: revenue/opportunities/ohsu_rfi_2027_0824
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Normal hostile suite
+        run: python -m unittest -v test_ohsu_carrier.py
+      - name: Optimized hostile suite
+        run: python -O -m unittest -v test_ohsu_carrier.py
+      - name: Rebuild deterministic receipts
+        run: |
+          mkdir -p /tmp/ohsu-rfi
+          matrix_receipt=$(python run_acceptance_matrix.py fixtures/ap_cases.json --json-out /tmp/ohsu-rfi/matrix.json)
+          packet_receipt=$(python build_packet.py fixtures/manifest.json --as-of 2026-09-14T04:00:00Z --json-out /tmp/ohsu-rfi/packet.json --md-out /tmp/ohsu-rfi/packet.md)
+          test "$matrix_receipt" = "f837a7bb72dca55ed0884b4cdb394b0861dc720c4bd23b78c69a6a14fb480774"
+          test "$packet_receipt" = "c72e74b22391d771c6ffb3f8b25cbd348ea0e51ec282c4960b712fead70f5d2e"
