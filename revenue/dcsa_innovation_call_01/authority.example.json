@@ -1,0 +1,118 @@
+{
+  "capability_evidence": [
+    {
+      "capability": "mission_workflow_discovery",
+      "evidence_ref": null,
+      "evidence_sha256": null,
+      "state": "UNVERIFIED"
+    },
+    {
+      "capability": "unified_experience_shell",
+      "evidence_ref": null,
+      "evidence_sha256": null,
+      "state": "UNVERIFIED"
+    },
+    {
+      "capability": "multi_idp_icam",
+      "evidence_ref": null,
+      "evidence_sha256": null,
+      "state": "UNVERIFIED"
+    },
+    {
+      "capability": "policy_attribute_access",
+      "evidence_ref": null,
+      "evidence_sha256": null,
+      "state": "UNVERIFIED"
+    },
+    {
+      "capability": "api_event_integration",
+      "evidence_ref": null,
+      "evidence_sha256": null,
+      "state": "UNVERIFIED"
+    },
+    {
+      "capability": "legacy_ie_sustainment",
+      "evidence_ref": null,
+      "evidence_sha256": null,
+      "state": "UNVERIFIED"
+    },
+    {
+      "capability": "devsecops_iac",
+      "evidence_ref": null,
+      "evidence_sha256": null,
+      "state": "UNVERIFIED"
+    },
+    {
+      "capability": "security_authorization_ato",
+      "evidence_ref": null,
+      "evidence_sha256": null,
+      "state": "UNVERIFIED"
+    },
+    {
+      "capability": "test_acceptance_evidence",
+      "evidence_ref": null,
+      "evidence_sha256": null,
+      "state": "UNVERIFIED"
+    },
+    {
+      "capability": "production_transition_rom",
+      "evidence_ref": null,
+      "evidence_sha256": null,
+      "state": "UNVERIFIED"
+    }
+  ],
+  "direct_clearance": {
+    "active_top_secret_fcl": {
+      "evidence_ref": null,
+      "evidence_sha256": null,
+      "state": "UNVERIFIED"
+    }
+  },
+  "generation": 1,
+  "issued_at": "2026-09-14T04:45:00Z",
+  "ota_eligibility": {
+    "direct_path": {
+      "evidence_ref": null,
+      "evidence_sha256": null,
+      "state": "UNVERIFIED"
+    },
+    "teaming_prime_path": {
+      "evidence_ref": null,
+      "evidence_sha256": null,
+      "state": "UNVERIFIED"
+    }
+  },
+  "owner_decisions": {
+    "direct_route_approved": false,
+    "external_contact_approved": false,
+    "external_submission_approved": false,
+    "rom_approved": false,
+    "teaming_route_approved": false
+  },
+  "personnel": {
+    "all_assigned_interim_secret_or_higher": {
+      "evidence_ref": null,
+      "evidence_sha256": null,
+      "state": "UNVERIFIED"
+    },
+    "all_assigned_us_citizens": {
+      "evidence_ref": null,
+      "evidence_sha256": null,
+      "state": "UNVERIFIED"
+    },
+    "cac_operability": {
+      "evidence_ref": null,
+      "evidence_sha256": null,
+      "state": "UNVERIFIED"
+    },
+    "privileged_users_t5_or_ts_start": {
+      "evidence_ref": null,
+      "evidence_sha256": null,
+      "state": "UNVERIFIED"
+    }
+  },
+  "schema": "dcsa-innovation-call-01/host-authority/v1",
+  "source_generation_sha256": "df3af195338f8a5abdb70a12f5deab8bec4076796f53db105607facd1558877c",
+  "subject_id": "token-junkie-labs",
+  "valid_until": "2026-09-14T15:00:00Z"
+}
