@@ -1,9 +1,9 @@
 {
   "counts": {
-    "open_issues": 102,
-    "open_pull_requests": 55,
-    "runs_in_progress": 18,
-    "runs_queued": 681
+    "open_issues": 106,
+    "open_pull_requests": 57,
+    "runs_in_progress": 13,
+    "runs_queued": 732
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -69,13 +69,35 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
+      "branch": "zklr-h5m8/outreach-claim-fence-20260913",
+      "created_at": "2026-09-14T03:46:13Z",
+      "draft": false,
+      "head_sha": "9a86e1bb588e31f59c752bf8dff0df1cf35d945d",
+      "number": 14273,
+      "title": "feat(outreach): add atomic contact claim fence",
+      "updated_at": "2026-09-14T03:46:13Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zss-k7v2/proposal-gate-lifecycle-14251",
+      "created_at": "2026-09-14T03:44:57Z",
+      "draft": false,
+      "head_sha": "86c47a9e32a67eece1382899a898d9ccf40e26da",
+      "number": 14270,
+      "title": "feat(proposal-gate): model submission and award readiness",
+      "updated_at": "2026-09-14T03:44:57Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
       "branch": "zeh-m6p2/ypf-wetgas-fusionmeter-20260913",
       "created_at": "2026-09-14T03:39:57Z",
       "draft": false,
-      "head_sha": "8bbb67f6677547fd7a058387606e17cfb54b9387",
+      "head_sha": "c1aafc9fdc6909a3cebc2965f9966724ca2d40e6",
       "number": 14260,
       "title": "YPF wet-gas challenge: FusionMeter AGA-3 PLR correction carrier",
-      "updated_at": "2026-09-14T03:39:57Z"
+      "updated_at": "2026-09-14T03:46:14Z"
     },
     {
       "author": "woahwhattheheck",
@@ -97,7 +119,7 @@
       "head_sha": "e919c4237382e7d6cc3ac74d4022a4687c2884eb",
       "number": 14256,
       "title": "feat(revenue): exact RFP/Addenda Delta Desk",
-      "updated_at": "2026-09-14T03:43:31Z"
+      "updated_at": "2026-09-14T03:44:58Z"
     },
     {
       "author": "woahwhattheheck",
@@ -153,28 +175,6 @@
       "number": 14221,
       "title": "revenue: qualify SigNoz for bounded survival-proof outreach",
       "updated_at": "2026-09-14T02:50:35Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zms-q7t9/cas-benchmark-cohort-binding-20260913",
-      "created_at": "2026-09-14T02:38:08Z",
-      "draft": false,
-      "head_sha": "12e38cf603a6863abee6b6285b2be5024b436f8c",
-      "number": 14218,
-      "title": "fix(revenue): bind CAS benchmark runs to one evaluation universe",
-      "updated_at": "2026-09-14T03:26:54Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zgc-m4r7/hive016-current-main-origin-guard-20260913",
-      "created_at": "2026-09-14T02:27:00Z",
-      "draft": false,
-      "head_sha": "ff1f29987bfc89bf41a875b6cdb56886ccb74d4e",
-      "number": 14211,
-      "title": "feat(revenue): rejoin creator niche app studio with browser origin guard",
-      "updated_at": "2026-09-14T02:34:47Z"
     }
   ],
   "open_heads": {
@@ -232,12 +232,36 @@
     "14254": "f0a1eba3ac83614e8303d4108dd6ec82abd2e05c",
     "14256": "e919c4237382e7d6cc3ac74d4022a4687c2884eb",
     "14258": "59bb5b92274463f546744b16b4e0d527b02a377b",
-    "14260": "8bbb67f6677547fd7a058387606e17cfb54b9387"
+    "14260": "c1aafc9fdc6909a3cebc2965f9966724ca2d40e6",
+    "14270": "86c47a9e32a67eece1382899a898d9ccf40e26da",
+    "14273": "9a86e1bb588e31f59c752bf8dff0df1cf35d945d"
   },
-  "pulls_listed": 55,
+  "pulls_listed": 57,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 37.8,
+  "queue_depth_per_runner": 56.3,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zol-v4k9/signoz-rightnow-evidence-20260913",
+      "closed_at": "2026-09-14T03:46:04Z",
+      "head_sha": "c617e85ce92c884b2e854c2e4701a51039b436a5",
+      "merged_at": "2026-09-14T03:46:04Z",
+      "number": 14271,
+      "state": "MERGED",
+      "title": "Close SigNoz Right Now public-research gaps without authorizing outreach"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "swarm-z/z-forge-outbound-mutex-20260913",
+      "closed_at": "2026-09-14T03:45:14Z",
+      "head_sha": "cc47db07908d2edc07cb855b0d1720ab92e0af75",
+      "merged_at": "2026-09-14T03:45:14Z",
+      "number": 14266,
+      "state": "MERGED",
+      "title": "Prevent duplicate outbound with durable lead leases"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -380,32 +404,10 @@
       "number": 14226,
       "state": "CLOSED",
       "title": "revenue: add provider relationship census custody gate"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zbh-y6m3-outreach-cas-reservation",
-      "closed_at": "2026-09-14T02:49:24Z",
-      "head_sha": "8d5e4511fd4514e7f95b248f408fb640a77df50e",
-      "merged_at": null,
-      "number": 14232,
-      "state": "CLOSED",
-      "title": "feat(revenue): make hot-lead outreach claims atomic"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zlt-c8n4/relationship-census-20260913",
-      "closed_at": "2026-09-14T02:49:11Z",
-      "head_sha": "7542aa1933697e4ee7888786d4b0c77db3a1d8a1",
-      "merged_at": "2026-09-14T02:49:11Z",
-      "number": 14231,
-      "state": "MERGED",
-      "title": "outbound: bind provider relationship census to target custody"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-14T03:44:20Z",
+  "unchanged_since": "2026-09-14T03:46:32Z",
   "undatable_pulls": []
 }
