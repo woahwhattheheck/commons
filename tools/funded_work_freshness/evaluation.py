@@ -48,6 +48,36 @@ _TO_DESTINATION_RE = re.compile(r"(?i)^[\s:=,()\-]*to\b[\s:=,()\-]*$")
 _NOW_DESTINATION_RE = re.compile(
     r"(?i)^[\s:=,()\-]*now\b[\s:=,()\-]*(?:is\b[\s:=,()\-]*)?$"
 )
+_UNRESOLVED_VALUE_PATTERN = (
+    r"(?:tbd|unknown|variable|negotiable|unconfirmed|more|less|"
+    r"varies(?:\s+by\s+scope)?|depends\s+on\s+(?:the\s+)?scope|"
+    r"(?:an?\s+)?amount\s+to\s+be\s+determined|to\s+be\s+determined|"
+    r"no\s+fixed\s+amount|not\s+(?:yet\s+)?(?:set|fixed))"
+)
+_UNRESOLVED_DIRECT_RE = re.compile(
+    r"(?i)^(?:reward|bounty|funding)(?:\s+amount)?\b"
+    r"[\s:=,()\-]*"
+    r"(?:(?:is|was|now(?:\s+is)?|"
+    r"has\s+been(?:\s+set(?:\s+to|\s+at)?)?|"
+    r"set(?:\s+to|\s+at)?|changed\s+to|updated\s+to|"
+    r"reduced\s+to|increased\s+to)\b[\s:=,()\-]*)?"
+    + _UNRESOLVED_VALUE_PATTERN
+    + r"\b"
+)
+_UNRESOLVED_AFTER_MONEY_RE = re.compile(
+    r"(?i)^[\s:=,()\-]*(?:to|or|now(?:\s+is)?|instead(?:\s+is)?|"
+    r"but\s+now(?:\s+is)?)\b[\s:=,()\-]*"
+    + _UNRESOLVED_VALUE_PATTERN
+    + r"\b"
+)
+_NONEXACT_AMOUNT_RE = re.compile(
+    r"(?i)^(?:reward|bounty|funding)(?:\s+amount)?\b[^;\n]{0,120}(?:"
+    r"\b(?:up\s+to|at\s+least|at\s+most|between|ranges?|varies|variable|"
+    r"depends\s+on)\b"
+    r"|\b(?:changed|updated|increased|decreased|raised|reduced)\b"
+    r"[^;\n]{0,40}\bfrom\b"
+    r")"
+)
 _SYMBOL_CURRENCY = {"$": "USD", "€": "EUR", "£": "GBP"}
 # Mixed/lowercase strings count as currency codes only when they are known ISO
 # 4217 alpha codes. This keeps ordinary prose such as "$200 via Algora" from
@@ -70,8 +100,8 @@ _KNOWN_ISO_CURRENCY_CODES = frozenset(
 )
 _SYMBOL_CODE_RE = re.compile(
     r"(?<![A-Za-z0-9_])(?:"
-    r"(?P<prefix>[A-Za-z]{3})\s*(?P<prefix_symbol>[$€£])\s*\d+(?:,\d{3})*(?:\.\d+)?"
-    r"|(?P<suffix_symbol>[$€£])\s*\d+(?:,\d{3})*(?:\.\d+)?\s*(?P<suffix>[A-Za-z]{3})(?![A-Za-z0-9_])"
+    r"(?P<prefix>[A-Za-z]{3})[\s:=,()\-]*(?P<prefix_symbol>[$€£])\s*\d+(?:,\d{3})*(?:\.\d+)?"
+    r"|(?P<suffix_symbol>[$€£])\s*\d+(?:,\d{3})*(?:\.\d+)?[\s:=,()\-]*(?P<suffix>[A-Za-z]{3})(?![A-Za-z0-9_])"
     r")"
 )
 
@@ -245,6 +275,15 @@ def _commercial_amount_event(text: str) -> dict[str, str | None]:
         nouns = list(_COMMERCIAL_NOUN_RE.finditer(segment))
         monies = _money_tokens(segment)
         if not monies:
+            if _UNRESOLVED_DIRECT_RE.search(segment) or _NONEXACT_AMOUNT_RE.search(
+                segment
+            ):
+                event_ambiguous = True
+            continue
+        if len(monies) == 1 and _UNRESOLVED_AFTER_MONEY_RE.match(
+            segment[monies[0][1] :]
+        ):
+            event_ambiguous = True
             continue
 
         first_noun = nouns[0].start()
@@ -286,6 +325,8 @@ def _commercial_amount_event(text: str) -> dict[str, str | None]:
             if value not in unique_direct:
                 unique_direct.append(value)
         if not unique_direct:
+            if len(monies) > 1 or _NONEXACT_AMOUNT_RE.search(segment):
+                event_ambiguous = True
             continue
 
         all_unique: list[tuple[str, str]] = []
