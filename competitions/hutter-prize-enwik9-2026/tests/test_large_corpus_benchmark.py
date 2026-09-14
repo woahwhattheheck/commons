@@ -15,6 +15,13 @@ class LargeCorpusHarnessTests(unittest.TestCase):
             with self.subTest(bad=bad), self.assertRaises(ValueError):
                 bench.parse_prefixes(bad)
 
+    def test_published_enwik8_identity_constants(self):
+        self.assertEqual(bench.ENWIK8_URL, "https://www.mattmahoney.net/dc/enwik8.zip")
+        self.assertEqual(bench.ENWIK8_BYTES, 100_000_000)
+        self.assertEqual(bench.ENWIK8_MD5, "a1fa5ffddb56f4953e226637dabbb36a")
+        self.assertEqual(bench.ENWIK8_SHA1, "57b8363b814821dc9d47aa4d41f58733519076b2")
+        self.assertEqual(bench.DEFAULT_PREFIXES, (65_536, 262_144))
+
     def test_canonical_json_is_order_stable(self):
         self.assertEqual(bench.canonical_json({"b": 2, "a": 1}), '{"a":1,"b":2}')
 
