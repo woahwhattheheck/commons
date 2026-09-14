@@ -1,0 +1,167 @@
+{
+  "claims": [
+    {
+      "claimed_at": "2026-08-24T00:00:00Z",
+      "fingerprints": [
+        "org:afe4d16f403a383f07814bbe04a5e7c5a7dc62ba5ce4040fc85514c29e0e88ae"
+      ],
+      "owner": "legacy-receipt-import",
+      "released_at": null,
+      "reservation_id": "legacy-paypal-20260824",
+      "sent_at": "2026-08-24T00:00:00Z",
+      "source_ref": "revenue/payment_ready/outreach.md",
+      "state": "SENT_DNR"
+    },
+    {
+      "claimed_at": "2026-08-24T00:00:00Z",
+      "fingerprints": [
+        "org:2bed2032ed3d8300b7714ff77101e6c43637597977337c699191dd844c86a72d"
+      ],
+      "owner": "legacy-receipt-import",
+      "released_at": null,
+      "reservation_id": "legacy-stripe-20260824",
+      "sent_at": "2026-08-24T00:00:00Z",
+      "source_ref": "revenue/payment_ready/outreach.md",
+      "state": "SENT_DNR"
+    },
+    {
+      "claimed_at": "2026-08-24T00:00:00Z",
+      "fingerprints": [
+        "org:2cf1060cff51f70617ca25136a14e338ffc61d5a4d8cc68ff861732610a05522",
+        "org:80daf15e57af2a318ecfba9b83746a6a165a3694fdaad25e56b1f0878ac8e2f6",
+        "org:d56d16d88324bdc4f441ca0a834e9250b5cf44464763d0de98a6ff684f5f7ca4"
+      ],
+      "owner": "legacy-receipt-import",
+      "released_at": null,
+      "reservation_id": "legacy-intuit-mailchimp-20260824",
+      "sent_at": "2026-08-24T00:00:00Z",
+      "source_ref": "revenue/payment_ready/outreach.md",
+      "state": "SENT_DNR"
+    },
+    {
+      "claimed_at": "2026-08-24T00:00:00Z",
+      "fingerprints": [
+        "org:ee46e2d141d53f08cc6dc5102319ddb97817480ce931d2b6381bf7ccca94bed0"
+      ],
+      "owner": "legacy-receipt-import",
+      "released_at": null,
+      "reservation_id": "legacy-adyen-20260824",
+      "sent_at": "2026-08-24T00:00:00Z",
+      "source_ref": "revenue/payment_ready/outreach.md",
+      "state": "SENT_DNR"
+    },
+    {
+      "claimed_at": "2026-08-24T00:00:00Z",
+      "fingerprints": [
+        "org:496aca80e4d8f29fb8e8cd816c3afb48d3f103970b3a2ee1600c08ca67326dee",
+        "org:4ba3e8e3765f2970eb37fae535353dd623d40a0507848c3c1dd240a5a7eb995e",
+        "org:f4b50076399d964a9a7c93efe7c0b3f37efc2135ebdddc588acd340578c752fd"
+      ],
+      "owner": "legacy-receipt-import",
+      "released_at": null,
+      "reservation_id": "legacy-block-square-20260824",
+      "sent_at": "2026-08-24T00:00:00Z",
+      "source_ref": "revenue/payment_ready/outreach.md",
+      "state": "SENT_DNR"
+    },
+    {
+      "claimed_at": "2026-08-26T00:00:00Z",
+      "fingerprints": [
+        "org:51618f53f3095a9fcb490d84bff989ea451539b1a0e488eaf217f4a5a03b3c2e",
+        "org:c8c175e4fd9aacec1feb6971258fe0435cbaac3faa03eae782c1005bec89d007",
+        "org:fc5710d9d89a9132f60115f602ec28dd3f474f474fca6d49c4424282e0b8f5e0"
+      ],
+      "owner": "legacy-receipt-import",
+      "released_at": null,
+      "reservation_id": "legacy-lm-studio-20260826",
+      "sent_at": "2026-08-26T00:00:00Z",
+      "source_ref": "revenue/payment_ready/outreach.md",
+      "state": "SENT_DNR"
+    },
+    {
+      "claimed_at": "2026-08-26T00:00:00Z",
+      "fingerprints": [
+        "org:2738057ca2ac46867bdefad5bf76c131ef363dcd5d73627747abaa904686f8ad",
+        "org:76e3c7bfe641ea125c0c2e1c5f89349e17b352ed128d528de2443794e7acf870"
+      ],
+      "owner": "legacy-receipt-import",
+      "released_at": null,
+      "reservation_id": "legacy-ollama-20260826",
+      "sent_at": "2026-08-26T00:00:00Z",
+      "source_ref": "revenue/payment_ready/outreach.md",
+      "state": "SENT_DNR"
+    },
+    {
+      "claimed_at": "2026-08-26T00:00:00Z",
+      "fingerprints": [
+        "org:6a0ac0fd972c325d6ca5512b67a5e0ad996c4a3e9b59971d125164e6d4db1a1c",
+        "org:aa8f203e7c503945cdd47af4cc9adcad102a8251dea08f15d7e411f9ade23dba"
+      ],
+      "owner": "legacy-receipt-import",
+      "released_at": null,
+      "reservation_id": "legacy-jan-20260826",
+      "sent_at": "2026-08-26T00:00:00Z",
+      "source_ref": "revenue/payment_ready/outreach.md",
+      "state": "SENT_DNR"
+    },
+    {
+      "claimed_at": "2026-08-26T00:00:00Z",
+      "fingerprints": [
+        "org:0582965d1ced5ed0d3bf712d932c0c027360417317b32e7e5289b4db3433214b",
+        "org:c6b4b2bbb3ebebad02861ee4abba676eb06c42da5b74b6682c6c1e24a99d47e5",
+        "org:cfbb6a8fa3b31af76d0053e5f9a71fa3cd0db4e2c74dca473e4f56b3ebb56109"
+      ],
+      "owner": "legacy-receipt-import",
+      "released_at": null,
+      "reservation_id": "legacy-anythingllm-mintplex-20260826",
+      "sent_at": "2026-08-26T00:00:00Z",
+      "source_ref": "revenue/payment_ready/outreach.md",
+      "state": "SENT_DNR"
+    },
+    {
+      "claimed_at": "2026-08-26T00:00:00Z",
+      "fingerprints": [
+        "org:b75d29707724bc9dfe1f23e4dffa185e4a854f937ed263f92199c71007cb9160"
+      ],
+      "owner": "legacy-receipt-import",
+      "released_at": null,
+      "reservation_id": "legacy-parallel-wireless-20260826",
+      "sent_at": "2026-08-26T00:00:00Z",
+      "source_ref": "revenue/payment_ready/outreach.md",
+      "state": "SENT_DNR"
+    },
+    {
+      "claimed_at": "2026-08-26T00:00:00Z",
+      "fingerprints": [
+        "org:aafd72cf2283a08a26140ce37e003e39b30e76a67ecd589c4c630db21a7d77f0"
+      ],
+      "owner": "legacy-receipt-import",
+      "released_at": null,
+      "reservation_id": "legacy-nextgen-federal-20260826",
+      "sent_at": "2026-08-26T00:00:00Z",
+      "source_ref": "revenue/payment_ready/outreach.md",
+      "state": "SENT_DNR"
+    },
+    {
+      "claimed_at": "2026-08-26T00:00:00Z",
+      "fingerprints": [
+        "org:a7268177b268d0d08a358d8b74b8a253e93f80a02410a3d2e7474862e536b396"
+      ],
+      "owner": "legacy-receipt-import",
+      "released_at": null,
+      "reservation_id": "legacy-lyceum-technology-20260826",
+      "sent_at": "2026-08-26T00:00:00Z",
+      "source_ref": "revenue/payment_ready/outreach.md",
+      "state": "SENT_DNR"
+    }
+  ],
+  "kind": "OUTREACH_RESERVATION_LEDGER",
+  "policy": {
+    "authority": "main_blob_sha_compare_and_swap",
+    "conflict_scope": "any matching org, recipient, or lead fingerprint",
+    "fail_closed_without_main": true,
+    "sent_dnr_is_permanent": true,
+    "slack_take_is_authority": false
+  },
+  "schema_version": 1
+}
