@@ -1,0 +1,13 @@
+{
+  "task_id": "demo-contact-001",
+  "event_id": "mailbox-event-88",
+  "kind": "CONTACT_CUSTOMER",
+  "action": "send customer a proposed $3500 fixed-scope diagnostic offer",
+  "evidence": [
+    {"ref": "thread://lead/acme/42", "sha256": "3333333333333333333333333333333333333333333333333333333333333333"}
+  ],
+  "confidence_bps": 10000,
+  "ambiguous_evidence": false,
+  "external_effect": true,
+  "amount_minor": 350000
+}

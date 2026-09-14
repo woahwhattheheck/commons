@@ -1,0 +1,130 @@
+{
+  "ci_workflow": {
+    "bytes": 1215,
+    "path": ".github/workflows/agents-for-humans-quietops.yml",
+    "sha256": "be885bd39d4713365f9fbf28eb99feda2de73fef71b443e4918dff67b8fe3577"
+  },
+  "files": [
+    {
+      "bytes": 5696,
+      "path": "README.md",
+      "sha256": "0e79139c78967632c3c22dbfcb57765282e9913181f2b2d561f47c84fe9d52f5"
+    },
+    {
+      "bytes": 422,
+      "path": "demo/human_required.json",
+      "sha256": "61d62a53a27fbcf5434d7f07ff7a4563995b89ec493d0c2467fe140e1150c984"
+    },
+    {
+      "bytes": 590,
+      "path": "demo/inbox.json",
+      "sha256": "e2acfd626554f608b65ba773f3b25d5149d3cf5f85ab9cc30c011774689597f5"
+    },
+    {
+      "bytes": 3886,
+      "path": "docs/ARCHITECTURE.md",
+      "sha256": "c039ba0b35bab5fb8507c65b2e8dd78bd62769f1cb61772362eff188760349dd"
+    },
+    {
+      "bytes": 1339,
+      "path": "docs/BUILD_STORY.md",
+      "sha256": "fae1b8e5d4bc95e5aa97a371a8bcbffe8eb88bcef525d8c6b1c1897799049c28"
+    },
+    {
+      "bytes": 1796,
+      "path": "docs/DEMO_SCRIPT.md",
+      "sha256": "e5d0beea59f6dc65e3d8fbe098181bf5855b7410a4c3959ce23648037b401ab4"
+    },
+    {
+      "bytes": 2641,
+      "path": "docs/DEVPOST.md",
+      "sha256": "7a5010eccba9f75d4da0dfc2b71d3a09e5cd7bf3d4454129d2fc4824fc7d3b9b"
+    },
+    {
+      "bytes": 1666,
+      "path": "docs/JUDGING.md",
+      "sha256": "c938512d86a6a9574a499ad0be704404ed276ecd4b38b150f387ab2a2691ebd0"
+    },
+    {
+      "bytes": 1994,
+      "path": "docs/SOURCES.md",
+      "sha256": "60b6a1735b1128068a85e3e9a261fc515971246098efc0fc7669afad1aacbfa5"
+    },
+    {
+      "bytes": 1992,
+      "path": "docs/SUBMISSION_CHECKLIST.md",
+      "sha256": "a229a48dc0980ba43efe51a0f3e1c76c41fb7e2c9434854e06e2fdded74ebf9c"
+    },
+    {
+      "bytes": 432,
+      "path": "pyproject.toml",
+      "sha256": "f38956522e88ca50e460cde7ea91f068c8a816016b20596bbf6a3355f505cf1b"
+    },
+    {
+      "bytes": 184,
+      "path": "quietops/__init__.py",
+      "sha256": "db205c8274f9f1233589358004f9ad430eda92c74347c6ce51745601b08c5e09"
+    },
+    {
+      "bytes": 3912,
+      "path": "quietops/benchmark.py",
+      "sha256": "bd3805ba0b4e9f4253ce27b9a4d1c05b16bf9fee4cf6090ec149f14a7dbe23de"
+    },
+    {
+      "bytes": 1200,
+      "path": "quietops/cli.py",
+      "sha256": "40e3903eb259aa2b2d1bd8bb5b5e7d1c8eb34a98af5e37a298b91866cee0ddac"
+    },
+    {
+      "bytes": 17273,
+      "path": "quietops/core.py",
+      "sha256": "7c056f92d199f16cd214b26866dcd67f8e4877db04d2fee1408c0648c53369d6"
+    },
+    {
+      "bytes": 3213,
+      "path": "quietops/server.py",
+      "sha256": "46a2333570f539062c7f86fb73fb956a7fdaeaf13a43199d63d088fca2733929"
+    },
+    {
+      "bytes": 6070,
+      "path": "quietops/strands_app.py",
+      "sha256": "7be12d4a033612bd654c9bfbbd27c888d299d3ebb5d4295e586fbafe5ae3c833"
+    },
+    {
+      "bytes": 22,
+      "path": "requirements.txt",
+      "sha256": "887bd2aed4f8c02041bfdb9acd68e2dbcdb96d0166b8b6087744228a18f76866"
+    },
+    {
+      "bytes": 2132,
+      "path": "tests/test_cli.py",
+      "sha256": "ef9cfc7c782d9bd399775fb3e4a6b39cdac6e855b30d9276ff159bb09e97a335"
+    },
+    {
+      "bytes": 9076,
+      "path": "tests/test_core.py",
+      "sha256": "727828170845a163b908955aa865b5dfb001565b4d2159a069a54b7240491789"
+    },
+    {
+      "bytes": 1296,
+      "path": "tests/test_manifest.py",
+      "sha256": "174f4fccf4954939555f0d7837a6628fe1780d4ba601e2ba101aad6fc8365f5e"
+    },
+    {
+      "bytes": 2776,
+      "path": "tests/test_server_benchmark.py",
+      "sha256": "eb9de90b1a0f97e7c9f9cad4c0453113ec0d1f211d785c96ec6f6f7b3e6e811a"
+    },
+    {
+      "bytes": 4323,
+      "path": "tests/test_strands_binding.py",
+      "sha256": "21ca10250cb75184251bf8b75e0961fe606f1b515dbbc09085bc0e4541301177"
+    },
+    {
+      "bytes": 2777,
+      "path": "web/index.html",
+      "sha256": "ba25d5902c00c181f39aa39f40a7a4261fbd724f1ec47b7c1660b1cb2a94fb6d"
+    }
+  ],
+  "schema": "quietops.carrier-manifest/v1"
+}

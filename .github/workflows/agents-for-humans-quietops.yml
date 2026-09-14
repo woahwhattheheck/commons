@@ -1,0 +1,36 @@
+name: Agents for Humans - QuietOps
+on:
+  push:
+    paths:
+      - 'competitions/agents_for_humans_quietops/**'
+      - '.github/workflows/agents-for-humans-quietops.yml'
+  pull_request:
+    paths:
+      - 'competitions/agents_for_humans_quietops/**'
+      - '.github/workflows/agents-for-humans-quietops.yml'
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: competitions/agents_for_humans_quietops
+    strategy:
+      matrix:
+        python-version: ['3.10', '3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Core hostile suite (normal)
+        run: PYTHONPATH=. python -m unittest discover -s tests -v
+      - name: Core hostile suite (optimized)
+        run: PYTHONPATH=. python -O -m unittest discover -s tests -v
+      - name: Compile source
+        run: python -m compileall -q quietops tests
+      - name: Deterministic demo
+        run: PYTHONPATH=. python -m quietops.cli demo/inbox.json --out /tmp/quietops-result.json
+      - name: Authority benchmark
+        run: PYTHONPATH=. python -m quietops.benchmark

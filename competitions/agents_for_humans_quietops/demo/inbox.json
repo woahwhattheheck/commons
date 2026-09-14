@@ -1,0 +1,14 @@
+{
+  "task_id": "demo-reconcile-001",
+  "event_id": "mailbox-event-87",
+  "kind": "RECONCILE_RECORDS",
+  "action": "reconcile September platform fee totals",
+  "evidence": [
+    {"ref": "snapshot://billing/2026-09", "sha256": "1111111111111111111111111111111111111111111111111111111111111111"},
+    {"ref": "snapshot://processor/2026-09", "sha256": "2222222222222222222222222222222222222222222222222222222222222222"}
+  ],
+  "confidence_bps": 10000,
+  "ambiguous_evidence": false,
+  "external_effect": false,
+  "context": {"expected_minor": 6625, "observed_minor": 3750, "currency": "USD"}
+}
