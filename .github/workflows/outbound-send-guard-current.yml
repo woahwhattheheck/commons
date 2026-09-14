@@ -36,16 +36,19 @@ jobs:
             tools/outbound_send_guard/__main__.py \
             tools/outbound_send_guard/test_guard.py \
             tools/outbound_send_guard/test_current.py \
-            tools/outbound_send_guard/test_current_entrypoint.py
+            tools/outbound_send_guard/test_current_entrypoint.py \
+            tools/outbound_send_guard/test_current_clock_boundary.py
       - name: Normal tests
         run: |
           python -m unittest -v \
             tools.outbound_send_guard.test_guard \
             tools.outbound_send_guard.test_current \
-            tools.outbound_send_guard.test_current_entrypoint
+            tools.outbound_send_guard.test_current_entrypoint \
+            tools.outbound_send_guard.test_current_clock_boundary
       - name: Optimized tests
         run: |
           python -O -m unittest -v \
             tools.outbound_send_guard.test_guard \
             tools.outbound_send_guard.test_current \
-            tools.outbound_send_guard.test_current_entrypoint
+            tools.outbound_send_guard.test_current_entrypoint \
+            tools.outbound_send_guard.test_current_clock_boundary
