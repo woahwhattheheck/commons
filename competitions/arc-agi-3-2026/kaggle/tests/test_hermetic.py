@@ -7,6 +7,7 @@ import os
 from pathlib import Path
 import tempfile
 import unittest
+from unittest.mock import patch
 
 from kaggle.hermetic import (
     ExecutionPolicy,
@@ -96,6 +97,56 @@ class DependencyClosureTests(unittest.TestCase):
             with self.assertRaisesRegex(HermeticError, "dynamic imports"):
                 require_closed_dependencies(closure)
 
+    def test_rejects_aliased_builtin_import_capability(self) -> None:
+        with tempfile.TemporaryDirectory() as td:
+            bundle = _bundle(Path(td), {
+                "main.py": "from builtins import __import__ as load\nnative=load('ctypes')\n",
+            })
+            closure = dependency_closure(bundle)
+            self.assertTrue(closure["dynamic_import_sites"])
+            with self.assertRaisesRegex(HermeticError, "dynamic imports"):
+                require_closed_dependencies(closure)
+
+    def test_rejects_builtins_module_importer_alias(self) -> None:
+        with tempfile.TemporaryDirectory() as td:
+            bundle = _bundle(Path(td), {
+                "main.py": "import builtins as b\nnative=b.__import__('ctypes')\n",
+            })
+            closure = dependency_closure(bundle)
+            self.assertTrue(closure["dynamic_import_sites"])
+            with self.assertRaisesRegex(HermeticError, "dynamic imports"):
+                require_closed_dependencies(closure)
+
+    def test_rejects_dunder_builtins_importer_access(self) -> None:
+        with tempfile.TemporaryDirectory() as td:
+            bundle = _bundle(Path(td), {
+                "main.py": "native=__builtins__['__import__']('ctypes')\n",
+            })
+            closure = dependency_closure(bundle)
+            self.assertTrue(closure["dynamic_import_sites"])
+            with self.assertRaisesRegex(HermeticError, "dynamic imports"):
+                require_closed_dependencies(closure)
+
+    def test_rejects_reflective_builtins_importer_access(self) -> None:
+        with tempfile.TemporaryDirectory() as td:
+            bundle = _bundle(Path(td), {
+                "main.py": "import builtins as b\nload=getattr(b, '__import__')\nload('ctypes')\n",
+            })
+            closure = dependency_closure(bundle)
+            self.assertTrue(closure["dynamic_import_sites"])
+            with self.assertRaisesRegex(HermeticError, "dynamic imports"):
+                require_closed_dependencies(closure)
+
+    def test_safe_selective_builtins_import_remains_allowed(self) -> None:
+        with tempfile.TemporaryDirectory() as td:
+            bundle = _bundle(Path(td), {
+                "main.py": "from builtins import len as builtin_len\nprint(builtin_len([1,2]))\n",
+            })
+            closure = dependency_closure(bundle)
+            self.assertEqual(closure["dynamic_import_sites"], [])
+            self.assertEqual(closure["runtime_escape_imports"], [])
+            require_closed_dependencies(closure)
+
     def test_rejects_source_tamper(self) -> None:
         with tempfile.TemporaryDirectory() as td:
             bundle = _bundle(Path(td), {"main.py": "print('ok')\n"})
@@ -121,6 +172,14 @@ class DependencyClosureTests(unittest.TestCase):
     def test_rejects_ctypes_runtime_escape_capability(self) -> None:
         with tempfile.TemporaryDirectory() as td:
             bundle = _bundle(Path(td), {"main.py": "import ctypes\nprint(ctypes.sizeof(ctypes.c_int))\n"})
+            closure = dependency_closure(bundle)
+            self.assertTrue(closure["runtime_escape_imports"])
+            with self.assertRaisesRegex(HermeticError, "runtime escape imports"):
+                require_closed_dependencies(closure)
+
+    def test_rejects_low_level_ctypes_runtime_escape_capability(self) -> None:
+        with tempfile.TemporaryDirectory() as td:
+            bundle = _bundle(Path(td), {"main.py": "import _ctypes\nprint(_ctypes.__name__)\n"})
             closure = dependency_closure(bundle)
             self.assertTrue(closure["runtime_escape_imports"])
             with self.assertRaisesRegex(HermeticError, "runtime escape imports"):
@@ -173,6 +232,17 @@ class HermeticExecutionTests(unittest.TestCase):
             receipt = run_hermetic(bundle, entrypoint="main.py", policy=_policy())
             self.assertEqual(receipt.state, "BLOCKED")
             self.assertNotEqual(receipt.returncode, 0)
+
+    def test_audit_hook_denies_ctypes_dlopen_defense_in_depth(self) -> None:
+        with tempfile.TemporaryDirectory() as td:
+            bundle = _bundle(Path(td), {
+                "main.py": "import ctypes\nctypes.CDLL(None)\nprint('unreachable')\n",
+            })
+            with patch("kaggle.hermetic.require_closed_dependencies", lambda closure: None):
+                receipt = run_hermetic(bundle, entrypoint="main.py", policy=_policy())
+            self.assertEqual(receipt.state, "BLOCKED")
+            self.assertNotEqual(receipt.returncode, 0)
+            self.assertIn("NONZERO_EXIT", receipt.blockers)
 
     def test_parent_environment_is_not_inherited(self) -> None:
         with tempfile.TemporaryDirectory() as td:
