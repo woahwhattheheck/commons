@@ -95,3 +95,5 @@ python -m py_compile revenue/port_data_qc_gate/gate.py revenue/port_data_qc_gate
 ```
 
 No Port, NWSA, Kalé, customer, provider, proposal, deployment, payment, or revenue action is performed by this package or its tests.
+
+<!-- validation-only carrier: executable/test/workflow blobs are byte-identical to commons#14426@7f5d029a29e862380887f63b4b034cd79a768d56 -->
