@@ -49,9 +49,17 @@ organization-wide and provider gate.
 
 ### Takeover / release
 
-An active legacy lease can be taken over only after expiration. A released lease
-may be taken over immediately. Fetch the current file and update using its exact
-blob SHA; two contenders using the same prior SHA cannot both win. A `sent`
+An active legacy lease can be considered for takeover only after expiration. A
+released legacy lease can be considered immediately. **Before either takeover,
+freshly re-read the provider and require its fingerprint to equal the snapshot
+retained by the lease being replaced.** If provider state changed, takeover fails
+closed for reconciliation/manual review; the changed generation must never be
+adopted as a new automatic-send baseline. This preserves the landed
+crash-after-send protection where a prior holder could have sent successfully and
+crashed before persisting `state=sent`.
+
+If provider state is unchanged, fetch the current lease file and update using its
+exact blob SHA; two contenders using the same prior SHA cannot both win. A `sent`
 legacy lease can never be released or taken over.
 
 For GitHub connector seats, the reference primitives are:
@@ -70,8 +78,10 @@ provider state changes. For Gmail, use a stable combination that changes when th
 thread changes (for example thread/message/history identity from the provider
 read). The lease stores only its SHA-256 fingerprint.
 
-A provider change after claim is not permission to “send fast.” It is a mandatory
-stop: another agent or the prospect may have acted.
+A provider change after claim, release, or expiry is not permission to “send
+fast” or to establish a replacement baseline. It is a mandatory stop: another
+agent or the prospect may have acted, or a prior send may have succeeded before
+its durable receipt was written.
 
 ## CLI
 
@@ -91,6 +101,8 @@ python revenue/outbound_mutex/lease.py claim \
 
 The `claim` command emits canonical JSON for one legacy key. It does not send
 mail, claim the remote lease by itself, or establish production authority.
+`takeover` likewise requires a freshly read provider snapshot and exits non-zero
+if it differs from the lease's retained snapshot.
 
 ## Tests
 
@@ -99,6 +111,8 @@ cd revenue/outbound_mutex
 python -m unittest -v test_lease.py
 ```
 
-The suite includes simultaneous initial claimants and takeover CAS contenders for
-one exact legacy key. It does not prove semantic identity across free-form
-opportunity aliases.
+The suite includes changed-provider crash-after-send hostiles for both expired
+and released legacy leases, plus simultaneous initial claimants and takeover CAS
+contenders for one exact legacy key. Exactly one may win each unchanged-provider
+race. These tests do not prove semantic identity across free-form opportunity
+aliases.
