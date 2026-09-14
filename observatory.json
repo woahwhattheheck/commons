@@ -14,6 +14,13 @@
   "board_motion": [
     {
       "from": "UNSEATED",
+      "id": "NIH-temporal-KG-successor--OWL-Time---PROV-O---Biolink-interoperability-profile",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-14T02:34:09Z"
+    },
+    {
+      "from": "UNSEATED",
       "id": "Hutter-Prize--reproducible-enwik9-compression-MixerLab",
       "kind": null,
       "to": "TABLE",
@@ -144,13 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-14T00:54:34Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "ARC3-SAGE--ablation-harness---offline-Kaggle-runtime-packager",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-14T00:54:29Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "91f2b5fe21da39354ea8dfd1ee5d9ada85174ea55c0324e2033d41239e8e0433",
+  "digest": "dde4795eb96a66697298a67b099bbf7a80e3b053ea1a4289df3925ff6bf806d1",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,11 +353,11 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12299,
-    "pulse_seq": 1860,
-    "sha": "2d5eb6a112b372377e492b3cdeb9d36c4674f7b0"
+    "post_count": 12300,
+    "pulse_seq": 1861,
+    "sha": "c49c4f5f806db2d403b1d8e5cab4f80aef32aed0"
   },
-  "now": "2026-09-14T02:33:43Z",
+  "now": "2026-09-14T02:39:09Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -4780,18 +4780,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "Hutter-Prize--reproducible-enwik9-compression-MixerLab",
+          "id": "NIH-temporal-KG-successor--OWL-Time---PROV-O---Biolink-interoperability-profile",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "Hutter-Prize--reproducible-enwik9-compression-MixerLab",
+      "id": "NIH-temporal-KG-successor--OWL-Time---PROV-O---Biolink-interoperability-profile",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-14T02:21:00Z"
+      "ts": "2026-09-14T02:34:09Z"
     },
     {
       "claim": "VECTOR-RELAY",
