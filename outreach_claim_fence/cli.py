@@ -14,6 +14,12 @@ from .core import (
 )
 from .store import GitHubContentsClaimStore
 
+
+class _JsonArgumentParser(argparse.ArgumentParser):
+    def error(self, message: str) -> None:
+        raise ValidationError(f"argument error: {message}")
+
+
 def _store_from_args(args: argparse.Namespace) -> GitHubContentsClaimStore:
     repository = args.repository or os.environ.get("OUTREACH_CLAIM_REPOSITORY")
     if not repository:
@@ -43,7 +49,7 @@ def _add_owner_arguments(parser: argparse.ArgumentParser) -> None:
 
 
 def build_parser() -> argparse.ArgumentParser:
-    parser = argparse.ArgumentParser(
+    parser = _JsonArgumentParser(
         description="Atomic, digest-only outreach claim coordination over GitHub"
     )
     parser.add_argument("--repository", help="coordination repository in owner/name form")
@@ -96,8 +102,8 @@ def _print_json(value: Mapping[str, Any], *, stream: Optional[Any] = None) -> No
 
 def main(argv: Optional[Sequence[str]] = None) -> int:
     parser = build_parser()
-    args = parser.parse_args(argv)
     try:
+        args = parser.parse_args(argv)
         if args.command == "key":
             identity = normalize_target(args.kind, args.contact)
             _print_json(

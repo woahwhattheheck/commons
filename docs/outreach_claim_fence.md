@@ -39,7 +39,7 @@ The ledger never stores the raw contact target or outbound message body.
 
 It stores:
 
-- a SHA-256 contact key and a masked target hint;
+- a SHA-256 contact key and a masked target hint (including masked domain labels);
 - the active agent and operation identifiers;
 - a human-readable opportunity label plus its digest;
 - server-time lease timestamps;
@@ -149,8 +149,9 @@ the client lost the response, rerunning the same command does not create a secon
 | 6 | Remote request or compare-and-swap failure |
 | 7 | Malformed, tampered, or unsupported remote data |
 
-Every response is a single JSON object. Errors are written to stderr and never include the
-token or raw contact target.
+Every operational success or error response is a single JSON object (`--help` remains
+human-readable). Errors are written to stderr and never include the token or raw contact
+target.
 
 ## Normalization
 
@@ -182,7 +183,8 @@ the trust root.
 
 The hostile suite covers simultaneous creation, stale takeover, server-time expiry,
 idempotent lost-response replay, ownership checks, contact-level campaign collisions,
-privacy, corrupted base64, incomplete records, digest tampering, concrete compensation
+privacy, masked domain targets, corrupted base64, unknown schema fields, incomplete
+contact history, digest tampering, JSON-only argument errors, concrete compensation
 metadata, and normal plus optimized Python execution.
 
 ```bash

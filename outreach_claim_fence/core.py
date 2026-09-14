@@ -205,6 +205,10 @@ def _normalize_domain(value: str) -> str:
     return ascii_domain
 
 
+def _masked_domain_hint(domain: str) -> str:
+    return ".".join(f"{label[:1]}***" for label in domain.split("."))
+
+
 def normalize_target(kind: str, value: str) -> TargetIdentity:
     kind = _clean_text(kind, field="target kind", max_length=24).casefold()
     if kind not in _TARGET_KINDS:
@@ -222,10 +226,10 @@ def normalize_target(kind: str, value: str) -> TargetIdentity:
             raise ValidationError("email local part is invalid")
         domain = _normalize_domain(domain)
         normalized = f"{local}@{domain}"
-        hint = f"{local[:1]}***@{domain}"
+        hint = f"{local[:1]}***@{_masked_domain_hint(domain)}"
     elif kind == "domain":
         normalized = _normalize_domain(raw)
-        hint = normalized
+        hint = _masked_domain_hint(normalized)
     elif kind == "github":
         handle = raw.lstrip("@").casefold()
         if not re.fullmatch(r"[a-z0-9](?:[a-z0-9-]{0,37}[a-z0-9])?", handle):
@@ -325,6 +329,12 @@ def _validate_record(record: Any, *, expected_claim_key: str) -> Dict[str, Any]:
     for key, expected_type in required.items():
         if key not in record or not isinstance(record[key], expected_type):
             raise ProtocolError(f"stored claim field {key!r} has an invalid type")
+    unexpected = sorted(set(record) - set(required))
+    if unexpected:
+        raise ProtocolError(
+            "stored claim contains fields outside the v1 schema",
+            details={"unexpected_fields": unexpected},
+        )
     if record["schema"] != SCHEMA:
         raise ProtocolError("stored claim schema is unsupported")
     if record["claim_key"] != expected_claim_key:
@@ -354,9 +364,16 @@ def _validate_record(record: Any, *, expected_claim_key: str) -> Dict[str, Any]:
         raise ProtocolError("stored prior record digest has an invalid shape")
     if not _HEX_64.fullmatch(record["opportunity_digest"]):
         raise ProtocolError("stored opportunity digest has an invalid shape")
-    _parse_timestamp(record["claimed_at"], field="claimed_at")
-    _parse_timestamp(record["last_action_at"], field="last_action_at")
+    expected_opportunity_digest = _sha256_hex(
+        record["opportunity_label"].casefold().encode("utf-8")
+    )
+    if not hmac.compare_digest(expected_opportunity_digest, record["opportunity_digest"]):
+        raise ProtocolError("stored opportunity digest does not match its label")
+    claimed_at = _parse_timestamp(record["claimed_at"], field="claimed_at")
+    last_action_at = _parse_timestamp(record["last_action_at"], field="last_action_at")
     _parse_timestamp(record["lease_expires_at"], field="lease_expires_at")
+    if last_action_at < claimed_at:
+        raise ProtocolError("stored action chronology predates current ownership")
     if record["last_contacted_at"] is not None:
         _parse_timestamp(record["last_contacted_at"], field="last_contacted_at")
     if record["last_message_digest"] is not None and not _HEX_64.fullmatch(
@@ -369,21 +386,29 @@ def _validate_record(record: Any, *, expected_claim_key: str) -> Dict[str, Any]:
         record["compensation_path"]
     ):
         raise ProtocolError("stored compensation path is not concrete")
-    if record["state"] == "CONTACTED":
-        if record["contact_count"] < 1:
-            raise ProtocolError("contacted claim has no contact count")
-        if any(
-            record[field] is None
-            for field in (
-                "last_contacted_at",
-                "last_message_digest",
-                "last_channel",
-                "compensation_path",
-            )
-        ):
-            raise ProtocolError("contacted claim is missing contact evidence")
-    if record["state"] == "RELEASED" and not record["release_reason"]:
-        raise ProtocolError("released claim is missing a release reason")
+    contact_evidence_fields = (
+        "last_contacted_at",
+        "last_message_digest",
+        "last_channel",
+        "compensation_path",
+    )
+    has_any_contact_evidence = any(
+        record[field] is not None for field in contact_evidence_fields
+    )
+    has_all_contact_evidence = all(
+        record[field] is not None for field in contact_evidence_fields
+    )
+    if record["contact_count"] == 0 and has_any_contact_evidence:
+        raise ProtocolError("zero-count claim carries contact evidence")
+    if record["contact_count"] > 0 and not has_all_contact_evidence:
+        raise ProtocolError("stored contact history is incomplete")
+    if record["state"] == "CONTACTED" and record["contact_count"] < 1:
+        raise ProtocolError("contacted claim has no contact count")
+    if record["state"] == "RELEASED":
+        if not record["release_reason"]:
+            raise ProtocolError("released claim is missing a release reason")
+    elif record["release_reason"] is not None:
+        raise ProtocolError("non-released claim carries a release reason")
     expected_digest = _record_digest(record)
     if not hmac.compare_digest(expected_digest, record["record_digest"]):
         raise ProtocolError("stored claim digest does not verify")
