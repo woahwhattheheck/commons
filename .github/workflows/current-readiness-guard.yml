@@ -27,9 +27,15 @@ jobs:
       - name: Compile guard
         run: python -m py_compile tools/current_readiness_guard/*.py
       - name: Hostile and safe corpus
-        run: python -m unittest -v tools.current_readiness_guard.test_guard
+        run: >-
+          python -m unittest -v
+          tools.current_readiness_guard.test_guard
+          tools.current_readiness_guard.test_guard_hardening
       - name: Optimized hostile and safe corpus
-        run: python -O -m unittest -v tools.current_readiness_guard.test_guard
+        run: >-
+          python -O -m unittest -v
+          tools.current_readiness_guard.test_guard
+          tools.current_readiness_guard.test_guard_hardening
       - name: Scan changed revenue Python
         run: >-
           python -m tools.current_readiness_guard.cli changed
