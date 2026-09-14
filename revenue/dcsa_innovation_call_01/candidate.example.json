@@ -1,0 +1,44 @@
+{
+  "schema": "dcsa-innovation-call-01/candidate/v1",
+  "subject_id": "token-junkie-labs",
+  "operation_id": "DCSA-INNOVATION-CALL-01-20260914",
+  "route_preference": "AUTO",
+  "concept_title": "Mission Access Fabric — Unified Application Access and Integration Prototype",
+  "declared_capabilities": [
+    "mission_workflow_discovery",
+    "unified_experience_shell",
+    "multi_idp_icam",
+    "policy_attribute_access",
+    "api_event_integration",
+    "legacy_ie_sustainment",
+    "devsecops_iac",
+    "security_authorization_ato",
+    "test_acceptance_evidence",
+    "production_transition_rom"
+  ],
+  "background_ip": [
+    "Deterministic evidence compilation and replay patterns, subject to owner rights review",
+    "Fail-visible integration and workflow verification patterns, subject to owner rights review"
+  ],
+  "third_party_dependencies": [
+    "Government-approved identity providers and MFA services",
+    "Government-provided AWS GovCloud environments and operational toolchain",
+    "Existing IE application APIs, data dictionaries, business rules, and sustainment artifacts"
+  ],
+  "risks": [
+    "Active Top Secret Facility Clearance and personnel clearance evidence is not retained in this repository",
+    "The first-30-day sustainment transition can dominate prototype risk if application and operational custody is incomplete",
+    "Identity and role semantics may differ across IE applications and cannot be normalized by presentation-layer assumptions",
+    "ATO evidence deferred to Phase 4 would create a late authorization failure",
+    "A portal-only implementation could hide rather than remove integration and workflow discontinuities"
+  ],
+  "question_drafts": [
+    "Does the active Top Secret Facility Clearance requirement apply only to the prime performer, or must every significant subcontractor possess an FCL at Solution Concept Paper submission?",
+    "What exact source repositories, pipelines, environment inventories, unresolved incident backlogs, and authorization artifacts will be available for the required first-30-day IE sustainment transition?",
+    "Which identity providers and assertion protocols are in the approved baseline, and which CAC/PIV, ECA, and other MFA flows must be demonstrated during Phase 2?",
+    "What Government decision criteria distinguish a successful common-entry prototype from a portal that only deep-links to existing applications?",
+    "Which applications and forms are authoritative for PVQ and required-form scope in Phase 3, and what user-context continuity is permitted across those boundaries?",
+    "What ROM granularity and cost-share treatment does DCSA expect by phase in the six-page Concept Paper?"
+  ],
+  "rom_state": "OWNER_DECISION_REQUIRED"
+}
