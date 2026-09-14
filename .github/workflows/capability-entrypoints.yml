@@ -26,6 +26,7 @@ on:
       - 'revenue/organization_outbound_lease/**'
       - 'tests/test_organization_outbound_lease.py'
       - 'tests/test_organization_outbound_lease_trust.py'
+      - 'tests/test_organization_outbound_lease_store_boundary.py'
   pull_request:
     paths: *entrypoint_paths
   workflow_dispatch:
@@ -143,7 +144,8 @@ jobs:
           revenue/organization_outbound_lease/cli.py
           tests/test_organization_outbound_lease.py
           tests/test_organization_outbound_lease_trust.py
+          tests/test_organization_outbound_lease_store_boundary.py
       - name: Organization outbound lease unit and hostile tests
-        run: python -m unittest -q tests.test_organization_outbound_lease tests.test_organization_outbound_lease_trust
+        run: python -m unittest -q tests.test_organization_outbound_lease tests.test_organization_outbound_lease_trust tests.test_organization_outbound_lease_store_boundary
       - name: Organization outbound lease optimized Python tests
-        run: python -O -m unittest -q tests.test_organization_outbound_lease tests.test_organization_outbound_lease_trust
+        run: python -O -m unittest -q tests.test_organization_outbound_lease tests.test_organization_outbound_lease_trust tests.test_organization_outbound_lease_store_boundary

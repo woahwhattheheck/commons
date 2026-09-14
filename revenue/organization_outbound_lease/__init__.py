@@ -13,15 +13,16 @@ def _install_trusted_acquire(untrusted_acquire):
     def trusted_acquire(store, request, *, lease_nonce_key, pressure_verifier=None):
         """Acquire with a host-pinned verifier for every production store.
 
-        `pressure_verifier` survives only as a deterministic local-reference test seam.
-        The production GitHub adapter mechanically rejects caller-supplied verifier
-        material, so a claimant cannot substitute a self-generated RSA keypair.
+        `pressure_verifier` survives only as a deterministic exact local-reference test
+        seam. Subclasses are not local-reference authority: they can override the store
+        protocol and route writes into a production backend, so verifier injection must
+        fail before request parsing or store I/O for every non-exact FileLeaseStore.
         """
         if pressure_verifier is None:
             from .trust import load_pressure_verifier
             verifier = load_pressure_verifier()
         else:
-            if not isinstance(store, FileLeaseStore):
+            if type(store) is not FileLeaseStore:
                 raise ValueError(
                     "caller-supplied pressure verifier is forbidden for production stores"
                 )
