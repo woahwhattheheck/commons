@@ -15,6 +15,30 @@ from studio import CreatorConfig, StudioError, StudioStore, canonical_json_bytes
 MAX_BODY = 64_000
 
 
+def loopback_browser_authorities(bind_host: str, port: int) -> tuple[frozenset[str], frozenset[str]]:
+    """Return exact browser Host/Origin values for the configured loopback listener.
+
+    Host validation is deliberately lexical rather than DNS based: an attacker-controlled
+    hostname that happens to resolve to loopback must never become an application origin.
+    """
+    if bind_host not in {"127.0.0.1", "::1", "localhost"}:
+        raise StudioError("browser app is loopback-only")
+    if type(port) is not int or not (1 <= port <= 65535):
+        raise StudioError("invalid browser port")
+
+    if bind_host == "::1":
+        names = ("[::1]",)
+    elif bind_host == "localhost":
+        names = ("localhost", "127.0.0.1")
+    else:
+        names = ("127.0.0.1", "localhost")
+
+    hosts = {f"{name}:{port}" for name in names}
+    if port == 80:
+        hosts.update(names)
+    return frozenset(hosts), frozenset(f"http://{host}" for host in hosts)
+
+
 def page(cfg: CreatorConfig, body: str, csrf: str) -> bytes:
     title = html.escape(cfg.app_name)
     return f"""<!doctype html>
@@ -53,17 +77,49 @@ class StudioHandler(BaseHTTPRequestHandler):
     def csrf(self) -> str:
         return self.server.csrf  # type: ignore[attr-defined]
 
+    @property
+    def allowed_hosts(self) -> frozenset[str]:
+        return self.server.allowed_hosts  # type: ignore[attr-defined]
+
+    @property
+    def allowed_origins(self) -> frozenset[str]:
+        return self.server.allowed_origins  # type: ignore[attr-defined]
+
     def _send(self, code: int, content_type: str, data: bytes, *, disposition: str | None = None) -> None:
         self.send_response(code)
         self.send_header("Content-Type", content_type)
         self.send_header("Content-Length", str(len(data)))
         self.send_header("Cache-Control", "no-store")
         self.send_header("X-Content-Type-Options", "nosniff")
-        self.send_header("Content-Security-Policy", "default-src 'self'; style-src 'unsafe-inline'; form-action 'self'; frame-ancestors 'none'")
+        self.send_header("Cross-Origin-Resource-Policy", "same-origin")
+        self.send_header("Referrer-Policy", "no-referrer")
+        self.send_header("X-Frame-Options", "DENY")
+        self.send_header("Content-Security-Policy", "default-src 'self'; style-src 'unsafe-inline'; form-action 'self'; frame-ancestors 'none'; base-uri 'none'")
         if disposition:
             self.send_header("Content-Disposition", disposition)
         self.end_headers()
         self.wfile.write(data)
+
+    def _plain_refusal(self, code: int, message: str) -> None:
+        data = (message + "\n").encode("utf-8")
+        self.send_response(code)
+        self.send_header("Content-Type", "text/plain; charset=utf-8")
+        self.send_header("Content-Length", str(len(data)))
+        self.send_header("Cache-Control", "no-store")
+        self.send_header("X-Content-Type-Options", "nosniff")
+        self.send_header("Cross-Origin-Resource-Policy", "same-origin")
+        self.send_header("Referrer-Policy", "no-referrer")
+        self.send_header("X-Frame-Options", "DENY")
+        self.end_headers()
+        self.wfile.write(data)
+
+    def _trusted_host(self) -> bool:
+        values = self.headers.get_all("Host", [])
+        return len(values) == 1 and values[0] in self.allowed_hosts
+
+    def _trusted_origin(self) -> bool:
+        values = self.headers.get_all("Origin", [])
+        return len(values) == 1 and values[0] in self.allowed_origins
 
     def _html(self, body: str, code: int = 200) -> None:
         self._send(code, "text/html; charset=utf-8", page(self.cfg, body, self.csrf))
@@ -88,6 +144,9 @@ class StudioHandler(BaseHTTPRequestHandler):
             raise StudioError("invalid form token")
 
     def do_GET(self) -> None:
+        if not self._trusted_host():
+            self._plain_refusal(HTTPStatus.MISDIRECTED_REQUEST, "untrusted browser host")
+            return
         path = urllib.parse.urlsplit(self.path).path
         try:
             if path == "/":
@@ -110,6 +169,12 @@ class StudioHandler(BaseHTTPRequestHandler):
             self._error(str(exc), 400)
 
     def do_POST(self) -> None:
+        if not self._trusted_host():
+            self._plain_refusal(HTTPStatus.MISDIRECTED_REQUEST, "untrusted browser host")
+            return
+        if not self._trusted_origin():
+            self._plain_refusal(HTTPStatus.FORBIDDEN, "untrusted browser origin")
+            return
         path = urllib.parse.urlsplit(self.path).path
         try:
             form = self._form()
@@ -206,6 +271,8 @@ def serve(config_path: str, db_path: str, host: str = "127.0.0.1", port: int = 8
         store.close()
         raise StudioError("browser app is loopback-only")
     server = ThreadingHTTPServer((host, port), StudioHandler)
+    actual_port = int(server.server_address[1])
+    server.allowed_hosts, server.allowed_origins = loopback_browser_authorities(host, actual_port)  # type: ignore[attr-defined]
     server.store = store  # type: ignore[attr-defined]
     server.csrf = secrets.token_urlsafe(24)  # type: ignore[attr-defined]
     try:
