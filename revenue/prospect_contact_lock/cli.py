@@ -4,7 +4,6 @@ import argparse
 import json
 import os
 import sys
-from pathlib import Path
 
 from .lock import (
     AUTHORITY_DIGEST,
@@ -26,17 +25,18 @@ def _parser() -> argparse.ArgumentParser:
     fp.add_argument("--kind", required=True, choices=("email", "domain", "phone"))
     fp.add_argument("--target", required=True)
 
-    for name in ("status", "acquire", "finalize", "release"):
+    for name in ("status", "acquire", "arm", "dispatch", "finalize", "release"):
         sp = sub.add_parser(name)
         sp.add_argument("--kind", required=True, choices=("email", "domain", "phone"))
         sp.add_argument("--target", required=True)
-        if name in {"acquire", "finalize", "release"}:
+        if name in {"acquire", "arm", "dispatch", "finalize", "release"}:
             sp.add_argument("--agent-id", required=True)
             sp.add_argument("--operation-id", required=True)
-        if name == "finalize":
+        if name in {"arm", "finalize"}:
             sp.add_argument("--message-file", required=True)
             sp.add_argument("--channel", required=True)
             sp.add_argument("--compensation-path", required=True)
+        if name == "finalize":
             sp.add_argument("--provider-receipt", required=True)
         if name == "release":
             sp.add_argument("--reason", required=True)
@@ -64,14 +64,26 @@ def main(argv: list[str] | None = None) -> int:
             result = lock.status(args.kind, args.target)
         elif args.command == "acquire":
             result = lock.acquire(
-                args.kind, args.target, agent_id=args.agent_id, operation_id=args.operation_id
+                args.kind, args.target,
+                agent_id=args.agent_id, operation_id=args.operation_id,
+            )
+        elif args.command == "arm":
+            result = lock.arm(
+                args.kind, args.target,
+                agent_id=args.agent_id, operation_id=args.operation_id,
+                message_sha256=digest_message_file(args.message_file),
+                channel=args.channel,
+                compensation_path=args.compensation_path,
+            )
+        elif args.command == "dispatch":
+            result = lock.dispatch(
+                args.kind, args.target,
+                agent_id=args.agent_id, operation_id=args.operation_id,
             )
         elif args.command == "finalize":
             result = lock.finalize_contacted(
-                args.kind,
-                args.target,
-                agent_id=args.agent_id,
-                operation_id=args.operation_id,
+                args.kind, args.target,
+                agent_id=args.agent_id, operation_id=args.operation_id,
                 message_sha256=digest_message_file(args.message_file),
                 channel=args.channel,
                 compensation_path=args.compensation_path,
@@ -79,10 +91,8 @@ def main(argv: list[str] | None = None) -> int:
             )
         else:
             result = lock.release_unsent(
-                args.kind,
-                args.target,
-                agent_id=args.agent_id,
-                operation_id=args.operation_id,
+                args.kind, args.target,
+                agent_id=args.agent_id, operation_id=args.operation_id,
                 reason=args.reason,
             )
         print(json.dumps(result, sort_keys=True))
