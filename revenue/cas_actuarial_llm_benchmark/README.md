@@ -26,7 +26,8 @@ a qualified actuarial research team can populate with valid task content:
   duplicate, and same-ID/different-truth records fail closed;
 - the model roster must include provider families `openai`, `anthropic`, and
   `google`, plus at least three distinct open models;
-- every model artifact/version and evaluation protocol is SHA-256 bound;
+- every model artifact/version is SHA-256 bound;
+- each task declares one evaluation-protocol SHA-256 and every model run must match it;
 - every model × task cell must exist exactly once;
 - predictions and probabilities remain model-specific, are canonicalized by item
   identity, and receive a per-run `record_manifest_sha256` bound into the snapshot;
@@ -48,13 +49,19 @@ claimant, or production data and it does not call any model or provider API.
 ## Acceptance
 
 ```bash
-python -m unittest revenue.cas_actuarial_llm_benchmark.test_core -v
-python -O -m unittest revenue.cas_actuarial_llm_benchmark.test_core -v
+python -m unittest \
+  revenue.cas_actuarial_llm_benchmark.test_core \
+  revenue.cas_actuarial_llm_benchmark.test_core_hardening -v
+python -O -m unittest \
+  revenue.cas_actuarial_llm_benchmark.test_core \
+  revenue.cas_actuarial_llm_benchmark.test_core_hardening -v
 python -m py_compile \
+  revenue/cas_actuarial_llm_benchmark/_schema.py \
   revenue/cas_actuarial_llm_benchmark/core.py \
   revenue/cas_actuarial_llm_benchmark/fixture.py \
   revenue/cas_actuarial_llm_benchmark/cli.py \
-  revenue/cas_actuarial_llm_benchmark/test_core.py
+  revenue/cas_actuarial_llm_benchmark/test_core.py \
+  revenue/cas_actuarial_llm_benchmark/test_core_hardening.py
 python -m revenue.cas_actuarial_llm_benchmark.cli fixture \
   --output /tmp/cas-benchmark-snapshot.json
 python -m revenue.cas_actuarial_llm_benchmark.cli verify \
@@ -63,7 +70,7 @@ python -m revenue.cas_actuarial_llm_benchmark.cli verify \
 
 Expected fixture shape:
 
-- 40 focused tests pass under normal Python and `python -O`;
+- 48 focused tests pass under normal Python and `python -O`;
 - `status=PROPOSAL_TECHNICAL_EVIDENCE_READY`;
 - 2 versioned synthetic tasks with 12-item truth universes each;
 - 6 synthetic model identities: 3 commercial provider families + 3 open models;

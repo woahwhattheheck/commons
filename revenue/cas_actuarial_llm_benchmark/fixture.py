@@ -43,6 +43,7 @@ def _task(
     version = "v1"
     dataset_sha256 = _sha(f"{task_id}-dataset-v1")
     split_sha256 = _sha(f"{task_id}-split-v1")
+    evaluation_protocol_sha256 = _sha("fixed-evaluation-protocol-v1")
     records = [
         {"item_id": f"item-{index:03d}", "truth": labels[index % len(labels)]}
         for index in range(12)
@@ -67,6 +68,7 @@ def _task(
             "provenance": "Synthetic records generated for repository acceptance testing only.",
             "source_uri": f"https://example.invalid/cas-fixture/{task_id}-v1",
         },
+        "evaluation_protocol_sha256": evaluation_protocol_sha256,
         "evaluation_universe": {
             "sha256": _digest(universe_payload),
             "records": records,
@@ -135,7 +137,7 @@ def synthetic_evidence() -> dict[str, Any]:
                     "task_version": task["version"],
                     "dataset_sha256": task["dataset"]["sha256"],
                     "split_sha256": task["dataset"]["split_sha256"],
-                    "protocol_sha256": _sha("fixed-evaluation-protocol-v1"),
+                    "protocol_sha256": task["evaluation_protocol_sha256"],
                     "records": records,
                 }
             )

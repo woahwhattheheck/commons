@@ -30,14 +30,16 @@ jobs:
       - name: Compile exact package
         run: |
           python -m py_compile \
+            revenue/cas_actuarial_llm_benchmark/_schema.py \
             revenue/cas_actuarial_llm_benchmark/core.py \
             revenue/cas_actuarial_llm_benchmark/fixture.py \
             revenue/cas_actuarial_llm_benchmark/cli.py \
-            revenue/cas_actuarial_llm_benchmark/test_core.py
+            revenue/cas_actuarial_llm_benchmark/test_core.py \
+            revenue/cas_actuarial_llm_benchmark/test_core_hardening.py
       - name: Focused acceptance
-        run: python -m unittest revenue.cas_actuarial_llm_benchmark.test_core -v
+        run: python -m unittest revenue.cas_actuarial_llm_benchmark.test_core revenue.cas_actuarial_llm_benchmark.test_core_hardening -v
       - name: Optimized acceptance
-        run: python -O -m unittest revenue.cas_actuarial_llm_benchmark.test_core -v
+        run: python -O -m unittest revenue.cas_actuarial_llm_benchmark.test_core revenue.cas_actuarial_llm_benchmark.test_core_hardening -v
       - name: Compile and verify synthetic snapshot
         run: |
           snapshot="${RUNNER_TEMP}/cas-benchmark-snapshot.json"

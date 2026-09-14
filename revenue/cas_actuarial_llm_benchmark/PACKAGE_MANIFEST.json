@@ -17,8 +17,8 @@
     "payment or recognized revenue"
   ],
   "acceptance": {
-    "normal_tests": 40,
-    "optimized_tests": 40,
+    "normal_tests": 48,
+    "optimized_tests": 48,
     "synthetic_tasks": 2,
     "synthetic_evaluation_items": 24,
     "synthetic_models": 6,
