@@ -13,6 +13,8 @@ A pursuit becomes `OPPORTUNITY_EVIDENCE_READY` only when all of these are true a
 
 The CLI does **not** accept `as_of`, deadline, expected source hash, expected manifest hash, expected vault roots, or an alternate binding registry from stdin. Those values must move through an ordinary repository change before they can influence readiness. This prevents the caller-self-authentication pattern where one JSON packet supplies both the claim and the value that supposedly proves it.
 
+The supported `compile_bridge(...)` CURRENT path also binds its process clock and time-normalization/evaluation capabilities at module initialization. Ordinary importer rebinding of the corresponding `bridge` module globals (`datetime`, `timezone`, `_process_now`, timestamp helpers, or `_evaluate_at`) therefore cannot retarget current evaluation after import. This boundary does not claim protection from a trusted process owner deliberately rewriting function code, defaults, or closure cells.
+
 `OPPORTUNITY_EVIDENCE_READY` is still evidence readiness only. Every action-authority flag is false and `external_submission_authorized` is always false. The bridge never authorizes buyer/reference contact, portal mutation, submission, signing, certification or insurance claims, pricing/staffing commitments, contract acceptance, spend, award, payment, or revenue recognition.
 
 ## Current production binding
@@ -52,9 +54,9 @@ A source owner updates `bindings.json` alongside the opportunity bytes. Pin cano
 ## Validation
 
 ```bash
-python -m unittest -v revenue.pursuit_evidence_bridge.test_bridge
-python -O -m unittest -v revenue.pursuit_evidence_bridge.test_bridge
+python -m unittest -v revenue.pursuit_evidence_bridge.test_bridge revenue.pursuit_evidence_bridge.test_current_clock_custody
+python -O -m unittest -v revenue.pursuit_evidence_bridge.test_bridge revenue.pursuit_evidence_bridge.test_current_clock_custody
 python -m py_compile revenue/pursuit_evidence_bridge/*.py
 ```
 
-The hostile suite covers pinned production-byte drift, duplicate/extra input keys, source/manifest root mismatch, process-owned deadline expiry, all-or-none vault roots, query transplant, current-vault HOLD propagation, positive vault integration, and the invariant that every action-authority bit remains false.
+The hostile suite covers pinned production-byte drift, duplicate/extra input keys, source/manifest root mismatch, process-owned deadline expiry, all-or-none vault roots, query transplant, current-vault HOLD propagation, positive vault integration, ordinary module-global current-clock rebinding, and the invariant that every action-authority bit remains false.
