@@ -5,16 +5,28 @@ import json
 import tempfile
 import unittest
 from pathlib import Path
+from types import ModuleType
 
 
 ROOT = Path(__file__).resolve().parent
-SPEC = importlib.util.spec_from_file_location(
-    "reply_to_revenue_measurement_boundary",
+
+
+def load_module(name: str, path: Path) -> ModuleType:
+    spec = importlib.util.spec_from_file_location(name, path)
+    assert spec and spec.loader
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
+
+
+core = load_module(
+    "reply_to_revenue_measurement_boundary_core",
+    ROOT / "host" / "reply_to_revenue_core.py",
+)
+facade = load_module(
+    "reply_to_revenue_measurement_boundary_facade",
     ROOT / "host" / "reply_to_revenue.py",
 )
-assert SPEC and SPEC.loader
-r2r = importlib.util.module_from_spec(SPEC)
-SPEC.loader.exec_module(r2r)
 
 
 class ReplyToRevenueMeasurementBoundaryTests(unittest.TestCase):
@@ -45,23 +57,41 @@ class ReplyToRevenueMeasurementBoundaryTests(unittest.TestCase):
             ],
         }
 
-    def load(self, value: dict[str, object]) -> dict[str, object]:
+    def load(
+        self,
+        module: ModuleType,
+        value: dict[str, object],
+    ) -> dict[str, object]:
         with tempfile.TemporaryDirectory() as directory:
             path = Path(directory) / "observations.json"
             path.write_text(json.dumps(value), encoding="utf-8")
-            return r2r.load_observations(path)
+            return module.load_observations(path)
 
-    def test_future_event_is_rejected_before_chronology(self) -> None:
+    def assert_future_event_rejected(self, module: ModuleType) -> None:
         with self.assertRaisesRegex(
-            r2r.ReplyRevenueError,
+            module.ReplyRevenueError,
             r"events\[0\]\.received_at exceeds observations\.measured_at",
         ):
-            self.load(self.observations("2026-09-13T12:00:01Z"))
+            self.load(module, self.observations("2026-09-13T12:00:01Z"))
+
+    def test_direct_core_rejects_future_event_before_chronology(self) -> None:
+        self.assert_future_event_rejected(core)
+
+    def test_facade_rejects_future_event_before_chronology(self) -> None:
+        self.assert_future_event_rejected(facade)
 
     def test_offset_equivalent_measurement_instant_is_accepted(self) -> None:
-        value = self.load(self.observations("2026-09-13T13:00:00+01:00"))
-        self.assertEqual(len(value["events"]), 1)
-        self.assertEqual(value["events"][0]["classification"], "POSITIVE_SCOPE")
+        for module in (core, facade):
+            with self.subTest(module=module.__name__):
+                value = self.load(
+                    module,
+                    self.observations("2026-09-13T13:00:00+01:00"),
+                )
+                self.assertEqual(len(value["events"]), 1)
+                self.assertEqual(
+                    value["events"][0]["classification"],
+                    "POSITIVE_SCOPE",
+                )
 
 
 if __name__ == "__main__":
