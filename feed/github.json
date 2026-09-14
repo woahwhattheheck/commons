@@ -1,9 +1,9 @@
 {
   "counts": {
-    "open_issues": 101,
-    "open_pull_requests": 55,
+    "open_issues": 102,
+    "open_pull_requests": 56,
     "runs_in_progress": 19,
-    "runs_queued": 669
+    "runs_queued": 678
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -69,6 +69,17 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
+      "branch": "zps-k4n7/learn2design-staged-trust-portfolio-20260913",
+      "created_at": "2026-09-14T03:42:19Z",
+      "draft": false,
+      "head_sha": "b88312883a622c23fdfa3ccd62a4570007f6d8ea",
+      "number": 14264,
+      "title": "Learn2Design 2026 staged trust portfolio optimizer",
+      "updated_at": "2026-09-14T03:42:19Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
       "branch": "zeh-m6p2/ypf-wetgas-fusionmeter-20260913",
       "created_at": "2026-09-14T03:39:57Z",
       "draft": false,
@@ -94,10 +105,10 @@
       "branch": "zcbw-x7m4/rfp-addenda-delta-14239",
       "created_at": "2026-09-14T03:36:03Z",
       "draft": false,
-      "head_sha": "eda701ad409346815180a64a6ef8406915914296",
+      "head_sha": "2f92d18c29036467637ff1b18f8a97a97644795c",
       "number": 14256,
       "title": "feat(revenue): exact RFP/Addenda Delta Desk",
-      "updated_at": "2026-09-14T03:36:03Z"
+      "updated_at": "2026-09-14T03:42:36Z"
     },
     {
       "author": "woahwhattheheck",
@@ -108,7 +119,7 @@
       "head_sha": "f0a1eba3ac83614e8303d4108dd6ec82abd2e05c",
       "number": 14254,
       "title": "Revenue: gate organization-level cross-contact pressure",
-      "updated_at": "2026-09-14T03:40:33Z"
+      "updated_at": "2026-09-14T03:41:52Z"
     },
     {
       "author": "woahwhattheheck",
@@ -164,17 +175,6 @@
       "number": 14218,
       "title": "fix(revenue): bind CAS benchmark runs to one evaluation universe",
       "updated_at": "2026-09-14T03:26:54Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zgc-m4r7/hive016-current-main-origin-guard-20260913",
-      "created_at": "2026-09-14T02:27:00Z",
-      "draft": false,
-      "head_sha": "ff1f29987bfc89bf41a875b6cdb56886ccb74d4e",
-      "number": 14211,
-      "title": "feat(revenue): rejoin creator niche app studio with browser origin guard",
-      "updated_at": "2026-09-14T02:34:47Z"
     }
   ],
   "open_heads": {
@@ -230,13 +230,14 @@
     "14235": "090815cee9355c36db86a6666023f391dc9ebcec",
     "14246": "b9f1b1779b4e4d9b7c19a9fc4744d28881282cd0",
     "14254": "f0a1eba3ac83614e8303d4108dd6ec82abd2e05c",
-    "14256": "eda701ad409346815180a64a6ef8406915914296",
+    "14256": "2f92d18c29036467637ff1b18f8a97a97644795c",
     "14258": "59bb5b92274463f546744b16b4e0d527b02a377b",
-    "14260": "8bbb67f6677547fd7a058387606e17cfb54b9387"
+    "14260": "8bbb67f6677547fd7a058387606e17cfb54b9387",
+    "14264": "b88312883a622c23fdfa3ccd62a4570007f6d8ea"
   },
-  "pulls_listed": 55,
+  "pulls_listed": 56,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 35.2,
+  "queue_depth_per_runner": 35.7,
   "recently_closed": [
     {
       "author": "woahwhattheheck",
@@ -406,6 +407,6 @@
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-14T03:41:02Z",
+  "unchanged_since": "2026-09-14T03:42:57Z",
   "undatable_pulls": []
 }
