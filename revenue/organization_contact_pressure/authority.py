@@ -15,6 +15,7 @@ from .core import (
 )
 from .storage import _read_regular_file
 
+
 def _normalize_policy(value: Any) -> dict[str, int]:
     policy = _expect_object(value, "policy")
     fields = {
@@ -23,6 +24,7 @@ def _normalize_policy(value: Any) -> dict[str, int]:
         "request_max_age_seconds",
         "ready_validity_seconds",
         "max_future_skew_seconds",
+        "ledger_complete_max_age_seconds",
     }
     _expect_exact_fields(policy, fields, "policy")
     return {
@@ -52,6 +54,12 @@ def _normalize_policy(value: Any) -> dict[str, int]:
             "policy.max_future_skew_seconds",
             minimum=0,
             maximum=300,
+        ),
+        "ledger_complete_max_age_seconds": _expect_int(
+            policy["ledger_complete_max_age_seconds"],
+            "policy.ledger_complete_max_age_seconds",
+            minimum=30,
+            maximum=86_400,
         ),
     }
 
@@ -127,6 +135,7 @@ def _load_authority(root: Path, active: ActiveKey, organization: str, now: datet
         request_max_age_seconds=policy["request_max_age_seconds"],
         ready_validity_seconds=policy["ready_validity_seconds"],
         max_future_skew_seconds=policy["max_future_skew_seconds"],
+        ledger_complete_max_age_seconds=policy["ledger_complete_max_age_seconds"],
         issued_at=issued,
         valid_until=valid_until,
         key_id=active.key_id,
