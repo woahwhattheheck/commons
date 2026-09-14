@@ -1,0 +1,118 @@
+from __future__ import annotations
+
+from revenue.organization_contact_pressure import authority, ledger, storage
+from .test_support import *  # noqa: F401,F403
+
+
+class CustodyTests(GateTestCase):
+    def _load_ledger(self):
+        active = storage._load_active_key(self.root)
+        retained_authority = authority._load_authority(
+            self.root,
+            active,
+            self.fx.organization,
+            self.fx.now,
+        )
+        return ledger._load_ledger(self.root, active, retained_authority, self.fx.now)
+
+    def test_authentic_ledger_rollback_below_retained_head_fails_closed(self):
+        ledger_path = self.root / "ledgers" / f"{self.fx.organization}.json"
+        generation_zero = gate.strict_json_loads(ledger_path.read_bytes())
+        self.fx.write_ledger([self.fx.event("sent-1", gate.EVENT_SENT)])
+        self.fx.write_ledger([], raw_document=generation_zero, write_head=False)
+
+        with self.assertRaisesRegex(gate.VerificationError, "rollback"):
+            self._load_ledger()
+        receipt = self.fx.compile()
+        self.assert_decision(gate.HOLD_AUTHORITY, receipt)
+        self.assertIsNone(receipt["ledger_sha256"])
+
+    def test_same_generation_authenticated_fork_fails_closed(self):
+        self.fx.write_ledger([], updated_at=self.fx.now + timedelta(seconds=1))
+
+        with self.assertRaisesRegex(gate.VerificationError, "same-generation ledger fork"):
+            self._load_ledger()
+        self.assert_decision(gate.HOLD_AUTHORITY, self.fx.compile())
+
+    def test_ledger_newer_than_committed_head_fails_closed(self):
+        self.fx.write_ledger(
+            [self.fx.event("uncommitted-sent", gate.EVENT_SENT)],
+            write_head=False,
+        )
+
+        with self.assertRaisesRegex(gate.VerificationError, "newer than"):
+            self._load_ledger()
+        self.assert_decision(gate.HOLD_AUTHORITY, self.fx.compile())
+
+    def test_forged_active_epoch_head_hmac_fails_closed(self):
+        head_dir = self.root / "ledger-heads" / self.fx.organization
+        (head_path,) = tuple(head_dir.iterdir())
+        document = gate.strict_json_loads(head_path.read_bytes())
+        document["signature"] = "00" * 32
+        self.fx._write_private(head_path, gate._canonical_bytes(document) + b"\n")
+
+        with self.assertRaisesRegex(gate.VerificationError, "HMAC"):
+            self._load_ledger()
+        self.assert_decision(gate.HOLD_AUTHORITY, self.fx.compile())
+
+    def test_key_rotation_requires_fresh_active_epoch_head(self):
+        self.fx.key_id = "primary-20260915"
+        self.fx.verifier_id = "commons-host-2"
+        self.fx.key = bytes.fromhex("43" * 32)
+        self.fx._write_active_key()
+        self.fx.write_authority()
+        document = self.fx.write_ledger([], write_head=False)
+
+        with self.assertRaisesRegex(gate.VerificationError, "current verifier epoch"):
+            self._load_ledger()
+        self.fx.write_ledger_head(document)
+        self.assertEqual(0, self._load_ledger().generation)
+
+    def test_windows_production_root_is_explicitly_unsupported(self):
+        with mock.patch.object(storage.os, "name", "nt"):
+            with self.assertRaisesRegex(gate.AuthorityUnavailable, "Windows"):
+                storage._authority_root()
+
+    def test_output_success_path_detects_replacement_and_preserves_foreign_file(self):
+        output = self.root / "receipt.json"
+        moved = self.root / "authored.json"
+        foreign = b"foreign-successor"
+        real_fsync = os.fsync
+        calls = 0
+
+        def rename_and_replace(fd):
+            nonlocal calls
+            real_fsync(fd)
+            calls += 1
+            if calls == 1:
+                output.rename(moved)
+                output.write_bytes(foreign)
+
+        with mock.patch.object(storage.os, "fsync", side_effect=rename_and_replace):
+            with self.assertRaisesRegex(gate.InputError, "identity changed"):
+                gate._write_exclusive(output, b"authored-receipt")
+        self.assertEqual(foreign, output.read_bytes())
+        self.assertEqual(b"authored-receipt", moved.read_bytes())
+
+    def test_output_late_failure_does_not_unlink_foreign_successor(self):
+        output = self.root / "receipt.json"
+        moved = self.root / "authored.json"
+        foreign = b"foreign-successor"
+        real_fsync = os.fsync
+        calls = 0
+
+        def rename_replace_then_fail(fd):
+            nonlocal calls
+            real_fsync(fd)
+            calls += 1
+            if calls == 1:
+                output.rename(moved)
+                output.write_bytes(foreign)
+            elif calls == 2:
+                raise OSError("late parent fsync failure")
+
+        with mock.patch.object(storage.os, "fsync", side_effect=rename_replace_then_fail):
+            with self.assertRaisesRegex(gate.InputError, "ambiguous"):
+                gate._write_exclusive(output, b"authored-receipt")
+        self.assertEqual(foreign, output.read_bytes())
+        self.assertEqual(b"authored-receipt", moved.read_bytes())

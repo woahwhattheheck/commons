@@ -10,6 +10,7 @@ from .core import (
     _expect_slug, _expect_string, _format_time, _parse_time,
 )
 
+
 def _normalize_receipt(document: Mapping[str, Any]) -> tuple[dict[str, Any], str, str]:
     fields = {
         "schema",
@@ -69,6 +70,7 @@ def _normalize_receipt(document: Mapping[str, Any]) -> tuple[dict[str, Any], str
     if document["external_send_authorized"] is not False:
         raise InputError("receipt must never authorize external send")
     expected_controls = [
+        "ATOMIC_ORGANIZATION_OUTBOUND_LEASE",
         "PER_PROSPECT_ATOMIC_LOCK",
         "COMMERCIAL_OPPORTUNITY_CUSTODY",
         "INITIAL_OUTREACH_ONE_SHOT",
