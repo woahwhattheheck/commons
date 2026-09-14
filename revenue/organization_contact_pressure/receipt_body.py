@@ -7,7 +7,7 @@ from typing import Any, Iterable, Mapping, Optional
 
 from .core import (
     READY, RECEIPT_SCHEMA, ActiveKey, AuthorityView, LedgerView,
-    _canonical_bytes, _format_time, _hmac_hex, _sha256,
+    _canonical_bytes, _format_time, _hmac_hex, _parse_time, _sha256,
 )
 
 def _receipt_body(
@@ -19,8 +19,15 @@ def _receipt_body(
     reasons: Iterable[str],
     now: datetime,
 ) -> dict[str, Any]:
-    validity = authority.ready_validity_seconds if authority is not None else 0
-    valid_until = _format_time(now + timedelta(seconds=validity)) if decision == READY else None
+    valid_until = None
+    if decision == READY:
+        if authority is None:
+            raise ValueError("READY receipt requires authenticated authority")
+        policy_valid_until = now + timedelta(seconds=authority.ready_validity_seconds)
+        request_valid_until = _parse_time(
+            request["requested_at"], "requested_at"
+        ) + timedelta(seconds=authority.request_max_age_seconds)
+        valid_until = _format_time(min(policy_valid_until, request_valid_until))
     return {
         "schema": RECEIPT_SCHEMA,
         "organization_scope_sha256": request["organization_scope_sha256"],
@@ -42,6 +49,7 @@ def _receipt_body(
         "next_required_controls": [
             "PER_PROSPECT_ATOMIC_LOCK",
             "COMMERCIAL_OPPORTUNITY_CUSTODY",
+            "INITIAL_OUTREACH_ONE_SHOT",
             "PROVIDER_BOUND_SEND_CONSUMER",
         ],
     }

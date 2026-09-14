@@ -27,6 +27,7 @@ from .core import (
     _parse_time,
 )
 
+
 def _evaluate(
     request: Mapping[str, Any],
     authority: AuthorityView,
@@ -47,6 +48,10 @@ def _evaluate(
         reasons.add("REQUEST_STALE")
 
     by_id = {event.event_id: event for event in ledger.events}
+    proposed_event_id = request["proposed_event_id"]
+    if proposed_event_id in by_id:
+        reasons.add(f"PROPOSED_EVENT_ID_ALREADY_RECORDED:{proposed_event_id}")
+
     released: set[str] = set()
     for event in ledger.events:
         if event.kind != EVENT_OWNER_RELEASE:
@@ -102,6 +107,7 @@ def _evaluate(
     if any(
         reason.startswith((
             "EVENT_ID_MUTATION:",
+            "PROPOSED_EVENT_ID_ALREADY_RECORDED:",
             "LEDGER_GENERATION_COUNT_MISMATCH",
             "RELEASE_TARGET_",
             "RELEASE_ROUTE_MISMATCH:",

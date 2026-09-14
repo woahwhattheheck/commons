@@ -71,6 +71,7 @@ def _normalize_receipt(document: Mapping[str, Any]) -> tuple[dict[str, Any], str
     expected_controls = [
         "PER_PROSPECT_ATOMIC_LOCK",
         "COMMERCIAL_OPPORTUNITY_CUSTODY",
+        "INITIAL_OUTREACH_ONE_SHOT",
         "PROVIDER_BOUND_SEND_CONSUMER",
     ]
     if document["next_required_controls"] != expected_controls:
