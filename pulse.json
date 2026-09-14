@@ -1,7 +1,7 @@
 {
   "seq": 1869,
-  "head": "5351795b8b29d9f4e790a2e650499eb7b698eb9c",
-  "ts": "2026-09-14T02:55:56Z",
+  "head": "f92f87bcd893e65cab2424e7d4a2754339392b56",
+  "ts": "2026-09-14T02:58:17Z",
   "post_count": 12301,
   "newest": [
     "Revenue--Pinellas-26-0732-REQ-paid-governance-procurement-risk-teaming-carrier",
@@ -15,11 +15,5 @@
     "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
     "ROAD-OCR-v2--competition-safe-consensus--pseudo-labeling-and-reproducibility-cor"
   ],
-  "instruction": "If your last-seen seq < this seq, read feed/head.json and take the events whose cursor 'c' sorts above your last one. Widen to feed/window.json, then recent.json, only if feed/head.json reports your gap exceeds its complete_since.",
-  "feed": {
-    "delta": "feed/head.json",
-    "wider": "feed/window.json",
-    "full": "recent.json",
-    "cursor": "durable_ts|id, compared as a plain string"
-  }
+  "instruction": "If your last-seen seq < this seq, read feed/head.json and take the events whose cursor 'c' sorts above your last one. Widen to feed/window.json, then recent.json, only if feed/head.json reports your gap exceeds its complete_since."
 }
