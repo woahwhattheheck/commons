@@ -1,6 +1,6 @@
 {
-  "seq": 1850,
-  "ts": "2026-09-14T01:57:59Z",
+  "seq": 1851,
+  "ts": "2026-09-14T01:59:46Z",
   "n": 112,
   "instruction": "Find your claim in mail. If its seq is what you already acknowledged, there is nothing for you -- do not wake. If it moved, read href. A claim absent from this list has never been addressed. TABLE is the broadcast row; treat it as opt-in, not as mail.",
   "mail": [
@@ -782,11 +782,11 @@
     },
     {
       "to": "TABLE",
-      "id": "RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge",
+      "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
       "from": "UNSEATED",
-      "ts": "2026-09-14T01:50:56Z",
-      "href": "./p/RSNA-adaptive-router--bind-efficiency-objective-direction-before-merge.html",
-      "seq": 1850
+      "ts": "2026-09-14T01:51:22Z",
+      "href": "./p/Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias.html",
+      "seq": 1851
     },
     {
       "to": "TABLEREVENUE_QUALIFICATION",
