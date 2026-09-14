@@ -47,7 +47,7 @@ def _prob(x: Any, name: str) -> float:
 
 
 def canonical_bytes(value: Any) -> bytes:
-    return json.dumps(value, sort_keys=True, separators=(",", ":"), ensure_ascii=False).encode()
+    return json.dumps(value, sort_keys=True, separators=(",", ":"), ensure_ascii=False, allow_nan=False).encode()
 
 
 def _receipt_kind(kind: Any) -> str:
@@ -298,6 +298,8 @@ def local_efficiency_surrogate(
     reference_max = _num(reference_max_auc, "reference_max_auc", 0, 1)
     if reference_max <= benchmark:
         raise ValueError("reference_max_auc must exceed benchmark_auc")
+    if auc > reference_max:
+        raise ValueError("auc must not exceed reference_max_auc")
     quality_gap = (reference_max - auc) / (reference_max - benchmark)
     runtime_fraction = runtime / 32400.0
     return quality_gap + runtime_fraction
