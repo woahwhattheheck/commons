@@ -1,0 +1,80 @@
+pragma language_version 0.23;
+import CompactStandardLibrary;
+
+// BidVeil Compact integration scaffold.
+// IMPORTANT: this file was authored against the current public Compact examples,
+// but the Commons build runtime did not have `compact`/`compactc` installed.
+// It is therefore SOURCE-NOT-COMPILE-ATTESTED until the documented compiler gate runs.
+
+export ledger opportunityDigests: Set<Bytes<32>>;
+export ledger spentRequirementNullifiers: Set<Bytes<32>>;
+export ledger proofReceipts: Set<Bytes<32>>;
+
+export circuit registerOpportunity(opportunityDigest: Bytes<32>): [] {
+    assert(!opportunityDigests.member(disclose(opportunityDigest)), "Opportunity already registered");
+    opportunityDigests.insert(disclose(opportunityDigest));
+}
+
+circuit requirementNullifier(
+    opportunityDigest: Bytes<32>,
+    requirementDigest: Bytes<32>,
+    subjectSecret: Bytes<32>
+): Bytes<32> {
+    return persistentHash<Vector<4, Bytes<32>>>([
+        pad(32, "bidveil:nullifier:v1:"),
+        opportunityDigest,
+        requirementDigest,
+        subjectSecret
+    ]);
+}
+
+circuit proofReceipt(
+    opportunityDigest: Bytes<32>,
+    requirementDigest: Bytes<32>,
+    claimCommitment: Bytes<32>,
+    nullifier: Bytes<32>
+): Bytes<32> {
+    return persistentHash<Vector<5, Bytes<32>>>([
+        pad(32, "bidveil:receipt:v1:"),
+        opportunityDigest,
+        requirementDigest,
+        claimCommitment,
+        nullifier
+    ]);
+}
+
+export circuit proveBooleanRequirement(
+    opportunityDigest: Bytes<32>,
+    requirementDigest: Bytes<32>,
+    subjectSecret: Bytes<32>,
+    claimCommitment: Bytes<32>,
+    privateValue: Boolean,
+    expectedValue: Boolean
+): Bytes<32> {
+    assert(opportunityDigests.member(disclose(opportunityDigest)), "Unknown opportunity");
+    assert(privateValue == expectedValue, "Boolean predicate not satisfied");
+    const nullifier = requirementNullifier(opportunityDigest, requirementDigest, subjectSecret);
+    assert(!spentRequirementNullifiers.member(disclose(nullifier)), "Requirement proof already used");
+    spentRequirementNullifiers.insert(disclose(nullifier));
+    const receipt = proofReceipt(opportunityDigest, requirementDigest, claimCommitment, nullifier);
+    proofReceipts.insert(disclose(receipt));
+    return disclose(receipt);
+}
+
+export circuit proveMinimumRequirement(
+    opportunityDigest: Bytes<32>,
+    requirementDigest: Bytes<32>,
+    subjectSecret: Bytes<32>,
+    claimCommitment: Bytes<32>,
+    privateValue: Uint<64>,
+    publicMinimum: Uint<64>
+): Bytes<32> {
+    assert(opportunityDigests.member(disclose(opportunityDigest)), "Unknown opportunity");
+    assert(privateValue >= publicMinimum, "Minimum predicate not satisfied");
+    const nullifier = requirementNullifier(opportunityDigest, requirementDigest, subjectSecret);
+    assert(!spentRequirementNullifiers.member(disclose(nullifier)), "Requirement proof already used");
+    spentRequirementNullifiers.insert(disclose(nullifier));
+    const receipt = proofReceipt(opportunityDigest, requirementDigest, claimCommitment, nullifier);
+    proofReceipts.insert(disclose(receipt));
+    return disclose(receipt);
+}
