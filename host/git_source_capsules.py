@@ -37,6 +37,12 @@ GIT_REPOSITORY_REDIRECT_ENV = {
     "GIT_INDEX_FILE",
     "GIT_SHALLOW_FILE",
 }
+GIT_PATHSPEC_ENV = {
+    "GIT_LITERAL_PATHSPECS",
+    "GIT_GLOB_PATHSPECS",
+    "GIT_NOGLOB_PATHSPECS",
+    "GIT_ICASE_PATHSPECS",
+}
 
 
 class GitSourceError(ValueError):
@@ -44,15 +50,20 @@ class GitSourceError(ValueError):
 
 
 def _git_env() -> dict[str, str]:
-    """Return an exact-repository Git environment with replacement objects disabled."""
+    """Return a local, exact-repository, literal-path Git environment."""
     env = os.environ.copy()
     # ``git -C repo`` does not override inherited repository-routing variables such
     # as GIT_DIR. Remove every repository/object-store redirect so the explicit
-    # repository argument is the authority boundary, then independently disable
-    # refs/replace object substitution.
-    for key in GIT_REPOSITORY_REDIRECT_ENV:
+    # repository argument is the authority boundary. Pathspec policy is likewise
+    # process-owned so an inherited icase/glob mode cannot change path resolution.
+    for key in GIT_REPOSITORY_REDIRECT_ENV | GIT_PATHSPEC_ENV:
         env.pop(key, None)
+    env["GIT_LITERAL_PATHSPECS"] = "1"
+    # Exact-source reads are local-only: replacement objects and promisor-remote
+    # lazy fetches may not supply bytes outside the selected local object database.
     env["GIT_NO_REPLACE_OBJECTS"] = "1"
+    env["GIT_NO_LAZY_FETCH"] = "1"
+    env["GIT_OPTIONAL_LOCKS"] = "0"
     return env
 
 
