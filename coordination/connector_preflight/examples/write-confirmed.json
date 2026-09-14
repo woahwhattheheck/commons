@@ -1,0 +1,56 @@
+{
+  "schema": "commons.connector-preflight/v1",
+  "snapshot_id": "example-write-confirmed-001",
+  "claim": "NO_WRITE_RAIL",
+  "captured_at": "2026-09-14T04:39:30Z",
+  "policy": {
+    "max_age_seconds": 3600,
+    "required_actions": {
+      "GitHub": ["create_branch"],
+      "Slack": ["slack_send_message"]
+    }
+  },
+  "discoveries": [
+    {
+      "request_id": "example-discovery-001",
+      "requested_at": "2026-09-14T04:38:00Z",
+      "completed_at": "2026-09-14T04:38:05Z",
+      "paths": ["GitHub", "Slack"],
+      "query": null,
+      "complete": true,
+      "actions": [
+        {"connector": "GitHub", "name": "fetch_file", "access": "READ"},
+        {"connector": "GitHub", "name": "create_branch", "access": "WRITE"},
+        {"connector": "Slack", "name": "slack_read_channel", "access": "READ"},
+        {"connector": "Slack", "name": "slack_send_message", "access": "WRITE"}
+      ],
+      "evidence_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+    }
+  ],
+  "attempts": [
+    {
+      "attempt_id": "example-github-attempt-001",
+      "operation_id": "example-github-operation-001",
+      "discovery_request_id": "example-discovery-001",
+      "connector": "GitHub",
+      "action": "create_branch",
+      "access": "WRITE",
+      "attempted_at": "2026-09-14T04:39:00Z",
+      "result": "SUCCESS",
+      "error_code": null,
+      "evidence_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+    },
+    {
+      "attempt_id": "example-slack-attempt-001",
+      "operation_id": "example-slack-operation-001",
+      "discovery_request_id": "example-discovery-001",
+      "connector": "Slack",
+      "action": "slack_send_message",
+      "access": "WRITE",
+      "attempted_at": "2026-09-14T04:39:05Z",
+      "result": "SUCCESS",
+      "error_code": null,
+      "evidence_sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+    }
+  ]
+}
