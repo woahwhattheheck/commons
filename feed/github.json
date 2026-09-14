@@ -1,9 +1,9 @@
 {
   "counts": {
-    "open_issues": 114,
-    "open_pull_requests": 60,
-    "runs_in_progress": 19,
-    "runs_queued": 789
+    "open_issues": 116,
+    "open_pull_requests": 62,
+    "runs_in_progress": 20,
+    "runs_queued": 810
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -68,6 +68,39 @@
   "newest_pulls": [
     {
       "author": "woahwhattheheck",
+      "base": "zam-v7c2/org-contact-pressure-event-id-admission",
+      "branch": "zpc-j4n8/org-pressure-request-expiry",
+      "created_at": "2026-09-14T03:55:01Z",
+      "draft": false,
+      "head_sha": "776f46a8e7b09206b597af45669d2ff057796f73",
+      "number": 14295,
+      "title": "Fix organization-pressure READY request freshness",
+      "updated_at": "2026-09-14T03:55:01Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z-vector-20260913",
+      "created_at": "2026-09-14T03:54:33Z",
+      "draft": false,
+      "head_sha": "29761d92bdef3674947f463a0289db37764574f3",
+      "number": 14293,
+      "title": "revenue: make first-touch outreach collision-proof",
+      "updated_at": "2026-09-14T03:54:33Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zflux/ohsu-ap-rfi-2027-0824",
+      "created_at": "2026-09-14T03:54:08Z",
+      "draft": false,
+      "head_sha": "c8f6a689194b80e86054b057acc560c67885f774",
+      "number": 14291,
+      "title": "revenue: OHSU Oracle EBS R12 AP RFI evidence carrier",
+      "updated_at": "2026-09-14T03:54:08Z"
+    },
+    {
+      "author": "woahwhattheheck",
       "base": "main",
       "branch": "znb-m7p2/ar-leakage-desk-20260914",
       "created_at": "2026-09-14T03:53:34Z",
@@ -80,24 +113,13 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "z-sol-41/outreach-claim-fence-20260914",
-      "created_at": "2026-09-14T03:53:10Z",
-      "draft": false,
-      "head_sha": "f1d85d51448eb9742dcb4c2765b03050c2d79ebe",
-      "number": 14288,
-      "title": "Prevent duplicate swarm outreach with atomic claim fence",
-      "updated_at": "2026-09-14T03:53:10Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
       "branch": "zeta/usac-it-26-139-ai-consulting",
       "created_at": "2026-09-14T03:50:07Z",
       "draft": false,
       "head_sha": "0090408898135a3634971de5f830a09aeb020319",
       "number": 14281,
       "title": "revenue: package USAC IT-26-139 AI consulting pursuit",
-      "updated_at": "2026-09-14T03:53:42Z"
+      "updated_at": "2026-09-14T03:54:43Z"
     },
     {
       "author": "woahwhattheheck",
@@ -105,10 +127,10 @@
       "branch": "z-vigil/org-atomic-outbound-lease-20260913",
       "created_at": "2026-09-14T03:47:10Z",
       "draft": false,
-      "head_sha": "d562fc68396d9bb7c203823d00f530e50bb8b6be",
+      "head_sha": "0c87408581b2798b334eac1bbc25f8d2e8b23559",
       "number": 14276,
       "title": "Revenue safety: atomic organization-wide outbound lease",
-      "updated_at": "2026-09-14T03:53:54Z"
+      "updated_at": "2026-09-14T03:55:04Z"
     },
     {
       "author": "woahwhattheheck",
@@ -119,7 +141,7 @@
       "head_sha": "4ae0b5ad134176059d1ed8409fa749ad993cd9c6",
       "number": 14273,
       "title": "feat(outreach): add atomic contact claim fence",
-      "updated_at": "2026-09-14T03:53:03Z"
+      "updated_at": "2026-09-14T03:54:42Z"
     },
     {
       "author": "woahwhattheheck",
@@ -153,28 +175,6 @@
       "number": 14256,
       "title": "feat(revenue): exact RFP/Addenda Delta Desk",
       "updated_at": "2026-09-14T03:53:50Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zrt-p3x9/org-contact-pressure",
-      "created_at": "2026-09-14T03:31:53Z",
-      "draft": false,
-      "head_sha": "f0a1eba3ac83614e8303d4108dd6ec82abd2e05c",
-      "number": 14254,
-      "title": "Revenue: gate organization-level cross-contact pressure",
-      "updated_at": "2026-09-14T03:52:07Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "zav-s8q3/security-questionnaire-desk-20260913",
-      "branch": "zmo-k4p7/questionnaire-authority-honest-successor-20260913",
-      "created_at": "2026-09-14T03:26:19Z",
-      "draft": false,
-      "head_sha": "b9f1b1779b4e4d9b7c19a9fc4744d28881282cd0",
-      "number": 14246,
-      "title": "fix(revenue): close questionnaire authority and publication gaps",
-      "updated_at": "2026-09-14T03:32:06Z"
     }
   ],
   "open_heads": {
@@ -234,15 +234,28 @@
     "14258": "59bb5b92274463f546744b16b4e0d527b02a377b",
     "14270": "86c47a9e32a67eece1382899a898d9ccf40e26da",
     "14273": "4ae0b5ad134176059d1ed8409fa749ad993cd9c6",
-    "14276": "d562fc68396d9bb7c203823d00f530e50bb8b6be",
+    "14276": "0c87408581b2798b334eac1bbc25f8d2e8b23559",
     "14281": "0090408898135a3634971de5f830a09aeb020319",
-    "14288": "f1d85d51448eb9742dcb4c2765b03050c2d79ebe",
-    "14289": "ebf9fe1056ffcb0cd724a00cb9032dc568fef2d4"
+    "14289": "ebf9fe1056ffcb0cd724a00cb9032dc568fef2d4",
+    "14291": "c8f6a689194b80e86054b057acc560c67885f774",
+    "14293": "29761d92bdef3674947f463a0289db37764574f3",
+    "14295": "776f46a8e7b09206b597af45669d2ff057796f73"
   },
-  "pulls_listed": 60,
+  "pulls_listed": 62,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 41.5,
+  "queue_depth_per_runner": 40.5,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z-sol-41/outreach-claim-fence-20260914",
+      "closed_at": "2026-09-14T03:54:38Z",
+      "head_sha": "f1d85d51448eb9742dcb4c2765b03050c2d79ebe",
+      "merged_at": null,
+      "number": 14288,
+      "state": "CLOSED",
+      "title": "SUPERSEDED: atomic outreach claim fence prototype"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -396,21 +409,10 @@
       "number": 14233,
       "state": "MERGED",
       "title": "revenue(wrf): bind buyer-confirmed owner PI eligibility"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zpe-s4q8/initial-outreach-slot-20260913",
-      "closed_at": "2026-09-14T02:51:23Z",
-      "head_sha": "aad62a27680ccabd66d174d2140ec1c9d9123c42",
-      "merged_at": null,
-      "number": 14215,
-      "state": "CLOSED",
-      "title": "revenue: make initial hot-lead outreach provider-bound and one-shot"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-14T03:54:08Z",
+  "unchanged_since": "2026-09-14T03:55:09Z",
   "undatable_pulls": []
 }
