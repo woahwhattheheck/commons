@@ -10,7 +10,7 @@
     {"seq": 3, "at_ms": 500, "type": "input.speech.stopped", "data": {}},
     {"seq": 4, "at_ms": 520, "type": "transcript.user", "data": {"item_id": "item_1", "text": "Please open a SEV one ticket for checkout latency."}},
     {"seq": 5, "at_ms": 700, "type": "reply.started", "data": {"reply_id": "reply_1", "item_id": "item_1"}},
-    {"seq": 6, "at_ms": 850, "type": "tool.call", "data": {"call_id": "call_1", "reply_id": "reply_1", "name": "open_ticket", "arguments": {"severity": "sev1", "summary": "checkout latency"}}},
+    {"seq": 6, "at_ms": 850, "type": "tool.call", "data": {"call_id": "call_1", "name": "open_ticket", "arguments": {"severity": "sev1", "summary": "checkout latency"}}},
     {"seq": 7, "at_ms": 900, "type": "reply.done", "data": {"reply_id": "reply_1", "status": "completed"}},
     {"seq": 8, "at_ms": 920, "type": "tool.result", "data": {"call_id": "call_1", "is_error": false}},
     {"seq": 9, "at_ms": 1000, "type": "reply.started", "data": {"reply_id": "reply_2", "item_id": "item_1"}},
