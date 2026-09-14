@@ -21,7 +21,12 @@
   "eligibility": {
     "for_profit_entities_permitted": true,
     "organization_portal_account_required": true,
-    "portal_submission_only": true
+    "portal_submission_only": true,
+    "sole_proprietor_owner_may_serve_as_pi": {
+      "status": "PROVEN",
+      "scope": "WRF buyer interpretation of the applicant-employee PI rule only; does not prove PI identity, qualifications, CV, Current & Pending support, or team completeness.",
+      "evidence": ["https://github.com/woahwhattheheck/commons/issues/13845#issuecomment-5657559761"]
+    }
   },
   "objectives": [
     "Prioritize 3–5 high-value applications spanning drinking water and wastewater.",
@@ -58,6 +63,7 @@
     "Do not count prospective or unsigned support as committed contribution."
   ],
   "internal_nonclaims": [
+    "The buyer-confirmed owner-as-PI interpretation does not identify a PI or prove PI/team qualifications.",
     "Potential Participants on the public grant page are interested utilities, not consent to join this proposal.",
     "For-profit eligibility does not prove prime readiness.",
     "This repository contains no legal certification, signature, portal credential, utility consent, or binding cost-share commitment."
