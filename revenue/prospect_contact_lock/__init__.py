@@ -8,7 +8,6 @@ from .lock import (
     CANONICAL_REPOSITORY,
     ConflictError,
     LockError,
-    ProspectContactLock,
     Receipt,
     RemoteError,
     Target,
@@ -18,6 +17,7 @@ from .lock import (
     normalize_target,
     verify_receipt,
 )
+from .hardened import ProspectContactLock
 __all__ = [
     "AUTHORITY_BRANCH", "AUTHORITY_DIGEST", "AUTHORITY_GENERATION",
     "AUTHORITY_ROOT", "CANONICAL_API_ORIGIN", "CANONICAL_REPOSITORY",
