@@ -20,23 +20,39 @@ The bearer token is sent only to the pinned HTTPS API/repository URL family. Red
 
 ## Lifecycle
 
-The lifecycle is deliberately stricter than a lease.
+This is deliberately stricter than a lease. There is no ordinary timeout takeover.
 
 ### `ACTIVE`
 
 `acquire` creates one record with GitHub Contents create semantics. Concurrent creates for the same normalized contact race the same path; one wins and the other fails closed.
 
-An `ACTIVE` record has **no timeout**. A dead/crashed/stale worker does not silently turn ambiguity into new outreach authority. Another worker must not contact the prospect until the exact current owner records an explicit `RELEASED` state as UNSENT, or a separately governed recovery mechanism is added in a later control.
+An `ACTIVE` record has **no timeout**. A dead/crashed/stale worker does not silently turn ambiguity into new outreach authority.
 
-### `RELEASED`
+### `ARMED`
 
-`release` is allowed only for the exact `ACTIVE` owner+operation and means the worker asserts that no provider contact occurred. The reason is stored only as SHA-256. `RELEASED` is the only ordinary state from which another owner may reacquire.
+Before any provider mutation, the exact owner binds the exact message SHA-256, channel, and paid/award compensation-path digest/category. A changed payload cannot silently replace an ARMED generation; the owner must explicitly release UNSENT and reacquire.
+
+Because provider mutation has not yet been attempted, the exact owner may still explicitly release an ARMED record as UNSENT.
+
+### `OUTCOME_UNKNOWN`
+
+Immediately before the external provider call, the exact owner must `dispatch`. That CAS consumes the replayable attempt slot and transitions `ARMED -> OUTCOME_UNKNOWN`.
+
+`OUTCOME_UNKNOWN` is fail-closed and has no timeout. Ordinary `acquire`, `release`, or a second `dispatch` all fail. This closes the crash/restart seam: if the provider accepted a message but the process dies before finalization, the same owner and every other worker are blocked from sending a second first contact.
+
+A successful `dispatch` receipt is **not provider-send authority**. It proves only that this coordination layer burned its replayable slot. All separately required outbound controls still apply.
 
 ### `CONTACTED`
 
-`finalize` is allowed only for the exact `ACTIVE` owner+operation after it has observed provider acceptance. It stores only digests of the exact message, provider receipt, and compensation path plus bounded channel/category metadata.
+After confirmed provider acceptance, the exact dispatched owner calls `finalize` with the exact same message/channel/compensation binding plus provider receipt. Only the provider-receipt SHA-256 is retained.
 
-`CONTACTED` is terminal for ordinary workers. It cannot be released and cannot be reacquired. This intentionally prefers false-negative outreach opportunities over duplicate contact.
+`CONTACTED` is terminal for ordinary workers. It cannot be released and cannot be reacquired.
+
+### `RELEASED`
+
+`release` is allowed only from `ACTIVE` or `ARMED` by the exact owner+operation and means the operator asserts no provider contact occurred. The reason is retained only as SHA-256. `RELEASED` is the only ordinary state from which another owner may reacquire.
+
+`OUTCOME_UNKNOWN` can never be ordinary-released. A future provider-history reconciliation mechanism may prove UNSENT, but that must be separately governed; this package intentionally leaves ambiguity stranded rather than guessing.
 
 ## Why the key ignores campaign names
 
@@ -62,7 +78,7 @@ Supported target kinds:
 
 ## Paid-path requirement
 
-`finalize` requires a concrete compensation path such as a fixed-price pilot, bounty/prize, bid/contract/subcontract, invoice/fee/retainer, or explicit amount. The plaintext is not retained. This proves only that the operator declared a path to compensation; it is not evidence of acceptance or payment.
+`arm` requires a concrete compensation path such as a fixed-price pilot, bounty/prize, bid/contract/subcontract, invoice/fee/retainer, or explicit amount. The plaintext is not retained. This proves only that the operator declared a path to compensation; it is not evidence of acceptance or payment.
 
 ## CLI
 
@@ -79,12 +95,28 @@ Remote operations require `GITHUB_TOKEN` with write access to the canonical coor
 python -m revenue.prospect_contact_lock acquire \
   --kind email --target lead@example.com \
   --agent-id Z-EXAMPLE --operation-id OP-PAID-1
-
-python -m revenue.prospect_contact_lock status \
-  --kind email --target lead@example.com
 ```
 
-After a confirmed provider acceptance, hash the exact sent message from a bounded regular file and finalize:
+Bind the exact candidate message and paid path before any external effect:
+
+```bash
+python -m revenue.prospect_contact_lock arm \
+  --kind email --target lead@example.com \
+  --agent-id Z-EXAMPLE --operation-id OP-PAID-1 \
+  --message-file exact-message.txt \
+  --channel email \
+  --compensation-path '$2,500 paid pilot'
+```
+
+After all separately required external-send controls pass, consume the one-shot coordination slot **before** making the provider call:
+
+```bash
+python -m revenue.prospect_contact_lock dispatch \
+  --kind email --target lead@example.com \
+  --agent-id Z-EXAMPLE --operation-id OP-PAID-1
+```
+
+If provider acceptance is confirmed, finalize against the exact same payload:
 
 ```bash
 python -m revenue.prospect_contact_lock finalize \
@@ -96,7 +128,7 @@ python -m revenue.prospect_contact_lock finalize \
   --provider-receipt 'provider message id / acceptance receipt'
 ```
 
-If **nothing was sent**, the exact owner may explicitly release:
+If **no provider action occurred** and the state is still ACTIVE or ARMED, the exact owner may explicitly release:
 
 ```bash
 python -m revenue.prospect_contact_lock release \
@@ -105,18 +137,20 @@ python -m revenue.prospect_contact_lock release \
   --reason 'route invalid before provider mutation'
 ```
 
-There is intentionally no `--repo`, `--branch`, `--root`, `--api-url`, timeout, force-release, stale-takeover, or CONTACTED-reopen option.
+There is intentionally no `--repo`, `--branch`, `--root`, `--api-url`, timeout, force-release, stale-takeover, OUTCOME_UNKNOWN-release, or CONTACTED-reopen option.
 
 ## Mandatory operating order
 
 1. Search/read live relationship/DNR and organization-level pressure controls.
 2. Establish the canonical contact route and paid path.
 3. `acquire` this contact lock.
-4. Re-read provider history immediately before any external mutation.
-5. Satisfy all higher/lower outbound controls in force. **An ACQUIRED receipt alone never authorizes sending.**
-6. Perform at most the externally authorized provider action.
-7. If provider acceptance is confirmed, `finalize` immediately.
-8. If no provider action occurred, `release` explicitly. If outcome is ambiguous, **do not release**; leave ACTIVE fail-closed and reconcile under a separately governed recovery path.
+4. `arm` the exact message/channel/paid-path binding.
+5. Re-read provider history and satisfy every higher/lower outbound control in force.
+6. `dispatch` to durably consume this coordination layer's one-shot attempt slot.
+7. Only then perform at most the separately authorized provider action.
+8. If provider acceptance is confirmed, `finalize` immediately.
+9. If dispatch occurred but outcome is ambiguous or no acceptance receipt is available, **do not release or resend**. Leave `OUTCOME_UNKNOWN` fail-closed for reconciliation.
+10. If no dispatch/provider action occurred, `release` explicitly.
 
 ## Validation
 
@@ -132,8 +166,8 @@ python -m unittest -v revenue.prospect_contact_lock.test_lock
 python -O -m unittest -v revenue.prospect_contact_lock.test_lock
 ```
 
-Hostiles cover same-contact contention, no-timeout stale blocking, exact-owner release/finalize, explicit-release reacquisition, permanent CONTACTED suppression, CAS loss, canonical namespace binding, raw-contact non-retention, digest-only evidence, server-Date fail-closed behavior, token-bearing URL origin pinning, duplicate-key/tampered-record rejection, receipt tamper detection, message-file bounds, and history-chain advancement.
+Hostiles cover same-contact contention, no-timeout stale blocking, exact-owner release/finalize, ARMED payload immutability, explicit ARMED release, one-shot dispatch consumption, same-owner replay after dispatch, OUTCOME_UNKNOWN no-release/no-reacquire, exact payload binding at finalization, permanent CONTACTED suppression, CAS loss, canonical namespace binding, raw-contact non-retention, digest-only evidence, server-Date fail-closed behavior, token-bearing URL origin pinning, duplicate-key/tampered-record rejection, receipt tamper detection, message-file bounds, and history-chain advancement.
 
 ## Lineage
 
-This lands canonical issue **#14220**. Closed/unmerged PR **#14273** is donor evidence only; it surfaced useful lessons around GitHub server time, canonical namespace binding, token-egress/redirect safety, digest-only evidence, monotonic suppression, and provider-ambiguity handling. This implementation does not revive its stale branch history. It adopts #14220's stricter requirement that stale claims fail closed rather than auto-expire.
+This lands canonical issue **#14220**. Closed/unmerged PR **#14273** is donor evidence only; it surfaced useful lessons around GitHub server time, canonical namespace binding, token-egress/redirect safety, digest-only evidence, monotonic suppression, and provider-ambiguity handling. This implementation does not revive its stale branch history. It combines #14220's strict no-auto-expiry requirement with a pre-send `ARMED -> OUTCOME_UNKNOWN` consume boundary so same-owner crash/restart cannot silently replay an ambiguous first contact.
