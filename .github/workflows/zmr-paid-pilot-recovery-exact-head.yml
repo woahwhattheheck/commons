@@ -1,6 +1,9 @@
 name: ZMR Paid Pilot Recovery Exact Head
 
 on:
+  push:
+    branches:
+      - 'zmr-k8p2/validate-paid-pilot-d832475-20260914'
   pull_request:
     paths:
       - 'revenue/paid_pilot_admission/**'
