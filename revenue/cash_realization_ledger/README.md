@@ -14,6 +14,21 @@ An advertised bounty, accepted proposal, sponsor award, invoice/payment request,
 
 This is intentionally distinct from the funded-work reward-amount gate: that gate can determine the current advertised/canonical reward amount; this ledger answers whether and how external receipt evidence realizes a separately declared commercial reference amount.
 
+## Schema v2: exact event-bound evidence
+
+Schema v1 is intentionally rejected. In v1, an evidence row named a source digest/reference and authority but did **not** commit to the event it allegedly proved. The same bank/provider row could therefore be reused across changed amounts, times, event IDs, event kinds, or claims and mint more than one cash fact.
+
+Schema v2 closes that boundary:
+
+- every evidence row contains `event_sha256`, the SHA-256 of the complete canonical event object;
+- event binding covers event ID, exact claim digest, event kind, occurrence time, evidence ID, and amount when present;
+- an evidence ID may be referenced by only one event;
+- the same external source identity (`authority + sha256`) may not be cloned under multiple evidence IDs;
+- event mutation or claim transplant after binding fails closed before cash arithmetic;
+- `event_sha256` is an integrity binding only. It does **not** authenticate a bank/provider, validate source bytes, or turn a caller-supplied authority label into independent provider truth.
+
+Callers migrating v1 packets must re-derive each evidence binding from the exact event they intend the evidence to support. A legacy unbound packet cannot obtain current `RECEIVED`/`RECONCILED` state.
+
 ## Authority matrix
 
 - opportunity: internal record / owner approval
@@ -28,7 +43,7 @@ A self-authored owner note **cannot mint received cash**.
 
 ## Input model
 
-Each claim is PII-minimized and immutable: opaque claim/counterparty refs, kind, currency, exact integer minor-unit reference amount, creation time, source ref, and SHA-256. Every event binds the exact canonical claim digest so cross-claim transplantation fails closed. Evidence has an independent status, authority, capture time, reference, and digest.
+Each claim is PII-minimized and immutable: opaque claim/counterparty refs, kind, currency, exact integer minor-unit reference amount, creation time, source ref, and SHA-256. Every event binds the exact canonical claim digest so cross-claim transplantation fails closed. Every evidence record is referenced by exactly one event and binds that exact canonical event using `event_sha256`; evidence also carries independent status, authority, capture time, source reference, and source digest.
 
 `reference_amount_minor` is owner-supplied commercial reference metadata. It is **not** a debt, invoice balance, collectible amount, accounting receivable, earned revenue, tax base, or cash assertion.
 
@@ -53,6 +68,9 @@ python revenue/cash_realization_ledger/cash_realization_ledger.py verify \
 - exact integer minor units; bool/float money rejected;
 - no implicit FX and no cross-currency grand total;
 - exact evidence authority per event kind;
+- every evidence row commits to exactly one canonical event generation;
+- one evidence ID cannot authorize multiple events;
+- duplicate external-source-byte aliases fail closed even if the free-form reference changes;
 - pending/rejected evidence cannot advance a state;
 - evidence capture cannot predate the represented event;
 - event cannot predate the claim;
@@ -65,7 +83,7 @@ python revenue/cash_realization_ledger/cash_realization_ledger.py verify \
 
 ## Authority ceiling
 
-Evidence control only. No invoice issuance/send, buyer/sponsor contact, collections demand, contract/legal conclusion, debt validity or collectability decision, accounting/tax treatment, revenue recognition, bank/Stripe/payment-provider mutation, payment initiation/refund, or deployment/spend. `RECEIVED` and `RECONCILED` are evidence states under this local model—not GAAP/bookkeeping conclusions.
+Evidence control only. No invoice issuance/send, buyer/sponsor contact, collections demand, contract/legal conclusion, debt validity or collectability decision, accounting/tax treatment, revenue recognition, bank/Stripe/payment-provider mutation, payment initiation/refund, or deployment/spend. `RECEIVED` and `RECONCILED` are evidence states under this local model—not GAAP/bookkeeping conclusions. A source digest or `bank_record` / `payment_provider_evidence` label is supplied evidence metadata, not independently authenticated provider truth.
 
 ## Tests
 
