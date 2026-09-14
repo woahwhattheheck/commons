@@ -31,12 +31,14 @@ The receipt engine, bounded strict JSON preflight, entitlement policy, and compe
 
 ```bash
 kotlinc \
+  app/src/main/java/com/tokenjunkielabs/proofpocket/core/UnicodeIntegrity.kt \
   app/src/main/java/com/tokenjunkielabs/proofpocket/core/ReceiptEngine.kt \
   app/src/main/java/com/tokenjunkielabs/proofpocket/core/EntitlementPolicy.kt \
   core-tests/CoreTests.kt -include-runtime -d /tmp/proofpocket-core-tests.jar
 java -jar /tmp/proofpocket-core-tests.jar
 
 kotlinc \
+  app/src/main/java/com/tokenjunkielabs/proofpocket/core/UnicodeIntegrity.kt \
   app/src/main/java/com/tokenjunkielabs/proofpocket/core/ReceiptImportLimits.kt \
   app/src/main/java/com/tokenjunkielabs/proofpocket/core/StrictJsonKeys.kt \
   core-tests/StrictJsonTests.kt -include-runtime -d /tmp/proofpocket-strict-json.jar
@@ -55,6 +57,8 @@ The current environment used for this carrier has Java/Kotlin/Python but no Andr
 Import is stricter than ordinary `JSONObject` parsing: duplicate object keys are refused before parsing (including escaped aliases such as `id` and `\u0069d`), and receipt root/payload/evidence objects must contain exactly the supported fields. This prevents unbound side claims from riding beside an otherwise valid receipt.
 
 Untrusted portable receipts are also availability-bounded **before** JSON decoding: the Android import path streams at most 256 KiB, requires strict UTF-8, and the structural preflight refuses nesting deeper than 64 levels. These are ordinary rejection states, not competition/security claims; the selected receipt contains metadata/digests only, never evidence bytes.
+
+Receipt strings must also be well-formed UTF-16. Lone high/low surrogates are rejected both by strict JSON preflight and by the direct receipt/canonicalization domain path; valid surrogate pairs remain supported. This prevents Java's default UTF-8 replacement behavior from collapsing a malformed logical string onto the same canonical bytes as a literal `?`.
 
 This is **tamper evidence**, not a claim of signer identity or a digital signature. A PDF proof pack contains the same receipt ID and digest excerpts; it does not claim cryptographic signing.
 

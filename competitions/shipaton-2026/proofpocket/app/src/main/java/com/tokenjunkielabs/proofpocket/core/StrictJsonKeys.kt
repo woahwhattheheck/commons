@@ -86,7 +86,7 @@ object StrictJsonKeys {
             while (i < raw.length) {
                 val c = raw[i++]
                 when (c) {
-                    '"' -> return out.toString()
+                    '"' -> return out.toString().also { UnicodeIntegrity.requireWellFormedUtf16(it, "JSON string") }
                     '\\' -> {
                         require(i < raw.length) { "unterminated JSON escape" }
                         when (val e = raw[i++]) {

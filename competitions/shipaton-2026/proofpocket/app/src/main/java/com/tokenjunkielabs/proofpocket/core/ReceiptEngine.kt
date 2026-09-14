@@ -32,6 +32,7 @@ object ReceiptEngine {
 
     fun stableProjectId(title: String, createdAtUtc: String): String {
         require(title.isNotBlank()) { "project title is required" }
+        UnicodeIntegrity.requireWellFormedUtf16(title, "project title")
         validateInstant(createdAtUtc)
         return "p_" + sha256("proofpocket-project-v1\n${title.trim()}\n$createdAtUtc".toByteArray()).take(24)
     }
@@ -125,17 +126,20 @@ object ReceiptEngine {
         }
     }
 
-    private fun jsonEscape(value: String): String = buildString(value.length + 8) {
-        value.forEach { c ->
-            when (c) {
-                '\\' -> append("\\\\")
-                '"' -> append("\\\"")
-                '\b' -> append("\\b")
-                '\u000C' -> append("\\f")
-                '\n' -> append("\\n")
-                '\r' -> append("\\r")
-                '\t' -> append("\\t")
-                else -> if (c.code < 0x20) append("\\u%04x".format(c.code)) else append(c)
+    private fun jsonEscape(value: String): String {
+        UnicodeIntegrity.requireWellFormedUtf16(value, "canonical JSON string")
+        return buildString(value.length + 8) {
+            value.forEach { c ->
+                when (c) {
+                    '\\' -> append("\\\\")
+                    '"' -> append("\\\"")
+                    '\b' -> append("\\b")
+                    '\u000C' -> append("\\f")
+                    '\n' -> append("\\n")
+                    '\r' -> append("\\r")
+                    '\t' -> append("\\t")
+                    else -> if (c.code < 0x20) append("\\u%04x".format(c.code)) else append(c)
+                }
             }
         }
     }

@@ -30,6 +30,20 @@ fun main() {
     expectFailure { ReceiptEngine.issue(project, "Hotel room turn", "x", time, listOf(a.copy(id = "e_spoofed"))) }
     expectFailure { ReceiptEngine.issue(project, "Hotel room turn", "x", "2026-09-14T02:30:00+01:00", listOf(a)) }
 
+    val loneHigh = "\uD800"
+    val loneLow = "\uDC00"
+    val rocket = "\uD83D\uDE80"
+    expectFailure { ReceiptEngine.stableProjectId("bad-$loneHigh", time) }
+    expectFailure { ReceiptEngine.issue(project, "Hotel room turn", loneHigh, time, listOf(a)) }
+    expectFailure { ReceiptEngine.issue(project, loneLow, "claim", time, listOf(a)) }
+    expectFailure { ReceiptEngine.issue(project, "Hotel room turn", "claim", time, listOf(a.copy(name = loneHigh))) }
+    expectFailure { ReceiptEngine.issue(project, "Hotel room turn", "claim", time, listOf(a.copy(mimeType = loneLow))) }
+    expectFailure { ReceiptEngine.canonicalPayload(r1.copy(claim = loneHigh)) }
+    val paired = ReceiptEngine.issue(project, "Hotel room turn $rocket", "paired supplementary $rocket", time, listOf(a))
+    check(ReceiptEngine.verify(paired).valid)
+    val question = ReceiptEngine.issue(project, "Hotel room turn", "?", time, listOf(a))
+    check(question.receiptId != paired.receiptId)
+
     check(!EntitlementPolicy.evaluate(false, true, true).pro)
     check(!EntitlementPolicy.evaluate(true, false, true).pro)
     check(!EntitlementPolicy.evaluate(true, true, false).pro)

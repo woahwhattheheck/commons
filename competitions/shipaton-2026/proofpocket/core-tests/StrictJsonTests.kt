@@ -20,6 +20,9 @@ fun main() {
     expectStrictFailure("{\"a\":{\"x\":1,\"x\":2}}")
     expectStrictFailure("{\"id\":1,\"\\u0069d\":2}")
     StrictJsonKeys.requireNoDuplicateObjectKeys("[{\"id\":1},{\"id\":2}]")
+    expectStrictFailure("{\"x\":\"\\uD800\"}")
+    expectStrictFailure("{\"x\":\"\\uDC00\"}")
+    StrictJsonKeys.requireNoDuplicateObjectKeys("{\"x\":\"\\uD83D\\uDE80\"}")
 
     val safeDepth = "[".repeat(32) + "0" + "]".repeat(32)
     StrictJsonKeys.requireNoDuplicateObjectKeys(safeDepth)
