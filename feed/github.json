@@ -1,9 +1,9 @@
 {
   "counts": {
-    "open_issues": 73,
-    "open_pull_requests": 45,
-    "runs_in_progress": 15,
-    "runs_queued": 104
+    "open_issues": 72,
+    "open_pull_requests": 43,
+    "runs_in_progress": 16,
+    "runs_queued": 116
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -69,35 +69,13 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "zca-p4k8/arc3-sage-eval-kaggle-20260913",
-      "created_at": "2026-09-14T01:01:39Z",
-      "draft": false,
-      "head_sha": "7ea1328117e3dee5420b458a83515d0aa6bb1039",
-      "number": 14109,
-      "title": "ARC3 SAGE: ablation evidence + offline Kaggle packager",
-      "updated_at": "2026-09-14T01:01:39Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zkt-a7v2/settled-cash-provider-authority",
-      "created_at": "2026-09-14T01:01:28Z",
-      "draft": false,
-      "head_sha": "a67484ffb31c32d4bc6f96a8e13feb97435f80d7",
-      "number": 14108,
-      "title": "Fix settled cash authority so receipt-shaped JSON cannot mint USD",
-      "updated_at": "2026-09-14T01:01:28Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
       "branch": "zba-v8k6/deal-room-provider-canonical-20260913",
       "created_at": "2026-09-14T01:00:33Z",
       "draft": false,
-      "head_sha": "306366f6377e35687ff03a6c4571849b7350dd8b",
+      "head_sha": "7f6c84e7efcbbc921cb7b0b6289476507a63d60c",
       "number": 14105,
       "title": "fix(revenue): canonicalize Commercial Deal Room provider identity",
-      "updated_at": "2026-09-14T01:01:22Z"
+      "updated_at": "2026-09-14T01:04:09Z"
     },
     {
       "author": "woahwhattheheck",
@@ -175,6 +153,28 @@
       "number": 14010,
       "title": "fix(revenue): harden Jersey DN827803 qualification authority v2",
       "updated_at": "2026-09-13T15:34:12Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zck-m6v2/call-e-routescout-20260913",
+      "created_at": "2026-09-13T14:46:36Z",
+      "draft": false,
+      "head_sha": "2182d07cd8750087a73f2aea2455890d75daf251",
+      "number": 13999,
+      "title": "CALL-E RouteScout: approval-gated procurement routing agent",
+      "updated_at": "2026-09-13T14:55:42Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zpf-x6v2/diversey-proof-clean-rbp-eis-r2",
+      "created_at": "2026-09-13T14:46:25Z",
+      "draft": false,
+      "head_sha": "a112441153ab11b7140d7b10b58967936c83edb8",
+      "number": 13997,
+      "title": "Add Diversey rapid proof-of-clean submission carrier",
+      "updated_at": "2026-09-13T14:52:25Z"
     }
   ],
   "open_heads": {
@@ -220,14 +220,45 @@
     "14066": "533c121abc2a8ea4d2ba90439400d46594b94cf1",
     "14076": "13097f7581280415461458584c34e590761afa89",
     "14086": "4c8e4df0e5a085565937ee85e34f464f76fcdc11",
-    "14105": "306366f6377e35687ff03a6c4571849b7350dd8b",
-    "14108": "a67484ffb31c32d4bc6f96a8e13feb97435f80d7",
-    "14109": "7ea1328117e3dee5420b458a83515d0aa6bb1039"
+    "14105": "7f6c84e7efcbbc921cb7b0b6289476507a63d60c"
   },
-  "pulls_listed": 45,
+  "pulls_listed": 43,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 6.9,
+  "queue_depth_per_runner": 7.2,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "ztq/proposal-gate-20260913",
+      "closed_at": "2026-09-14T01:04:25Z",
+      "head_sha": "b751020a35698ada71f50845b2ea1bdc96724bf8",
+      "merged_at": "2026-09-14T01:04:25Z",
+      "number": 14111,
+      "state": "MERGED",
+      "title": "feat: add evidence-backed proposal compliance gate"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zkt-a7v2/settled-cash-provider-authority",
+      "closed_at": "2026-09-14T01:03:37Z",
+      "head_sha": "a67484ffb31c32d4bc6f96a8e13feb97435f80d7",
+      "merged_at": "2026-09-14T01:03:37Z",
+      "number": 14108,
+      "state": "MERGED",
+      "title": "Fix settled cash authority so receipt-shaped JSON cannot mint USD"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zca-p4k8/arc3-sage-eval-kaggle-20260913",
+      "closed_at": "2026-09-14T01:03:31Z",
+      "head_sha": "377ec5a44244f26d79893a39ddabcd845a5d8815",
+      "merged_at": "2026-09-14T01:03:31Z",
+      "number": 14109,
+      "state": "MERGED",
+      "title": "ARC3 SAGE: offline Kaggle packager + runtime evidence gate"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -359,43 +390,10 @@
       "number": 14085,
       "state": "MERGED",
       "title": "ARC3 SAGE: ship action-efficient world-model and skill engine"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "znh-k8m3/paid-pilot-rollout-desk-20260913",
-      "closed_at": "2026-09-13T16:44:59Z",
-      "head_sha": "5fa3e247d51b2de49bba947e5ef7db54e6f60f15",
-      "merged_at": "2026-09-13T16:44:59Z",
-      "number": 14084,
-      "state": "MERGED",
-      "title": "Revenue: add paid-pilot to rollout conversion desk"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zeta-sol/ohsu-erp-provider-truth-12500-20260913",
-      "closed_at": "2026-09-13T16:43:26Z",
-      "head_sha": "c24d2a201653511c83861a008f9f5a4222df3c4a",
-      "merged_at": "2026-09-13T16:43:26Z",
-      "number": 14083,
-      "state": "MERGED",
-      "title": "OHSU ERP: align workshare to provider-truth $12.5k offer"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zdr-p6x4/gatewayhacks-static-demo-20260913",
-      "closed_at": "2026-09-13T16:42:38Z",
-      "head_sha": "3bd7b9df59a70ae66e7b2d1f9b6997c76aa47a80",
-      "merged_at": "2026-09-13T16:42:38Z",
-      "number": 14082,
-      "state": "MERGED",
-      "title": "GatewayHacks: publish Civic Action Ledger live demo"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-14T01:02:09Z",
+  "unchanged_since": "2026-09-14T01:05:15Z",
   "undatable_pulls": []
 }
