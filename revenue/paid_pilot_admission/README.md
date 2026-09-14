@@ -36,9 +36,11 @@ Every receipt fixes all of those external-authority bits to `false`.
 
 ## Currentness and replay
 
-`evaluate()` must receive a trusted current process time. It rejects expired offers, future-dated acceptance/funding observations, acceptance recorded after the funding observation, stale funding evidence, partial funding, and transplanted offer bindings.
+Production `evaluate(packet)` samples the host process UTC clock internally. **There is no caller-supplied evaluation timestamp.** This prevents an expired offer or stale funding observation from being resurrected by backdating a library call. It rejects expired offers, future-dated acceptance/funding observations, acceptance recorded after the funding observation, stale funding evidence, partial funding, and transplanted offer bindings.
 
-Receipts are **historical immediately after evaluation**. `verify()` recomputes the historical receipt using its frozen `evaluated_at` timestamp; it proves receipt integrity only. Before an owner admits work, run a fresh `evaluate()` against current evidence.
+Receipts are **historical immediately after evaluation**. `verify()` may replay the receipt's frozen `evaluated_at` timestamp only inside a private historical evaluator so it can prove receipt integrity. `verify()` returns only a boolean and cannot mint a current admission decision. Before an owner admits work, run a fresh `evaluate(packet)` against current evidence.
+
+The internal `_evaluate_at` helper is not application authority and is not exported from the package. It exists solely to make historical receipt verification deterministic. Do not call it from integrations.
 
 ## CLI
 
@@ -52,7 +54,7 @@ python -m unittest revenue.paid_pilot_admission.tests.test_gate -v
 python -O -m unittest revenue.paid_pilot_admission.tests.test_gate -v
 ```
 
-Exit codes: `0` ready/verified, `2` malformed input, `3` valid packet held, `4` receipt verification failure.
+The `evaluate` command has no `--now`, `--as-of`, replay-clock, or equivalent override. Exit codes: `0` ready/verified, `2` malformed input, `3` valid packet held, `4` receipt verification failure.
 
 ## Commercial use
 
