@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import hmac
 import os
 import stat
 from pathlib import Path
@@ -20,9 +21,12 @@ from .core import (
     strict_json_loads,
 )
 
+
 def _authority_root() -> Path:
     if os.name == "nt":
-        return Path(r"C:\ProgramData\Commons\organization-contact-pressure")
+        raise AuthorityUnavailable(
+            "organization-contact-pressure production storage is unsupported on Windows"
+        )
     return Path("/var/lib/commons/organization-contact-pressure")
 
 
@@ -43,22 +47,16 @@ def _directory_flags() -> int:
 
 
 def _open_no_symlink_path(path: Path, flags: int, mode: int = 0o600) -> tuple[int, Optional[int], str]:
-    """Open a path without following any POSIX path-component symlink.
+    """Open a POSIX path without following any path-component symlink.
 
-    The returned parent descriptor remains open so a create caller can fsync or
-    unlink by descriptor.  Windows lacks compatible ``dir_fd`` semantics; the
-    fallback performs a best-effort component check before the final no-follow
-    open.
+    Production deliberately fails closed on Windows because pathname prechecks
+    cannot establish a handle-bound no-reparse trust boundary there.
     """
     candidate = Path(path)
     if not candidate.name or candidate.name in {".", ".."}:
         raise OSError("path has no safe final component")
     if os.name == "nt":
-        absolute = candidate.absolute()
-        for component in (absolute,) + tuple(absolute.parents):
-            if component.is_symlink():
-                raise OSError("symlink path component rejected")
-        return os.open(candidate, flags, mode), None, candidate.name
+        raise OSError("safe retained-path traversal is unsupported on Windows")
 
     parts = candidate.parts
     if candidate.is_absolute():
@@ -106,7 +104,7 @@ def _read_regular_file(path: Path, *, limit: int, private: bool) -> bytes:
             raise AuthorityUnavailable(f"retained file is not regular: {path.name}")
         if info.st_size < 0 or info.st_size > limit:
             raise AuthorityUnavailable(f"retained file size invalid: {path.name}")
-        if private and os.name != "nt" and (stat.S_IMODE(info.st_mode) & 0o077):
+        if private and (stat.S_IMODE(info.st_mode) & 0o077):
             raise AuthorityUnavailable(f"retained file permissions are not private: {path.name}")
         chunks: list[bytes] = []
         remaining = limit + 1
@@ -152,6 +150,47 @@ def _read_request_file(path: Path, *, limit: int = MAX_JSON_BYTES) -> bytes:
         os.close(fd)
 
 
+def _same_file(left: os.stat_result, right: os.stat_result) -> bool:
+    return left.st_dev == right.st_dev and left.st_ino == right.st_ino
+
+
+def _read_exact_fd(fd: int, expected_size: int) -> bytes:
+    chunks: list[bytes] = []
+    remaining = expected_size + 1
+    while remaining:
+        chunk = os.read(fd, min(65536, remaining))
+        if not chunk:
+            break
+        chunks.append(chunk)
+        remaining -= len(chunk)
+    data = b"".join(chunks)
+    if len(data) != expected_size:
+        raise OSError("published output size changed")
+    return data
+
+
+def _verify_visible_output(path: Path, authored: os.stat_result, expected: bytes) -> None:
+    visible_fd: Optional[int] = None
+    visible_parent: Optional[int] = None
+    try:
+        visible_fd, visible_parent, _ = _open_no_symlink_path(path, _open_flags_read())
+        visible = os.fstat(visible_fd)
+        if not stat.S_ISREG(visible.st_mode):
+            raise OSError("published output is not regular")
+        if not _same_file(authored, visible):
+            raise OSError("published output pathname no longer names the authored inode")
+        if visible.st_size != len(expected):
+            raise OSError("published output length mismatch")
+        observed = _read_exact_fd(visible_fd, len(expected))
+        if not hmac.compare_digest(observed, expected):
+            raise OSError("published output bytes mismatch")
+    finally:
+        if visible_fd is not None:
+            os.close(visible_fd)
+        if visible_parent is not None:
+            os.close(visible_parent)
+
+
 def _write_exclusive(path: Path, data: bytes) -> None:
     flags = os.O_WRONLY | os.O_CREAT | os.O_EXCL
     flags |= getattr(os, "O_CLOEXEC", 0)
@@ -159,9 +198,14 @@ def _write_exclusive(path: Path, data: bytes) -> None:
     try:
         fd, parent_fd, final_name = _open_no_symlink_path(path, flags, 0o600)
     except OSError as exc:
-        raise InputError("output path is unsafe, missing, or already exists") from exc
+        raise InputError("output path is unsafe, missing, unsupported, or already exists") from exc
+
+    authored = os.fstat(fd)
     succeeded = False
+    failure: Optional[BaseException] = None
     try:
+        if not stat.S_ISREG(authored.st_mode):
+            raise OSError("created output is not regular")
         offset = 0
         while offset < len(data):
             written = os.write(fd, data[offset:])
@@ -169,21 +213,29 @@ def _write_exclusive(path: Path, data: bytes) -> None:
                 raise OSError("short write")
             offset += written
         os.fsync(fd)
+        after_write = os.fstat(fd)
+        if not _same_file(authored, after_write) or after_write.st_size != len(data):
+            raise OSError("authored output identity or size changed")
         if parent_fd is not None:
             os.fsync(parent_fd)
+        _verify_visible_output(path, after_write, data)
         succeeded = True
+    except BaseException as exc:
+        failure = exc
     finally:
         os.close(fd)
         if not succeeded:
             try:
                 if parent_fd is not None:
-                    os.unlink(final_name, dir_fd=parent_fd)
-                else:
-                    os.unlink(path)
+                    current = os.stat(final_name, dir_fd=parent_fd, follow_symlinks=False)
+                    if _same_file(authored, current):
+                        os.unlink(final_name, dir_fd=parent_fd)
             except OSError:
                 pass
         if parent_fd is not None:
             os.close(parent_fd)
+    if failure is not None:
+        raise InputError("output publication failed without deleting a foreign replacement") from failure
 
 
 def _load_key_by_id(root: Path, key_id: str) -> bytes:
