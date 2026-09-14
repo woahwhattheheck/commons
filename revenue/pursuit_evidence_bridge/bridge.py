@@ -106,23 +106,28 @@ def _optional_sha(value: Any, label: str) -> str | None:
     return None if value is None else _sha(value, label)
 
 
-def _ts(value: Any, label: str) -> str:
+def _ts(value: Any, label: str, _strptime=datetime.strptime) -> str:
+    """Normalize a registry timestamp with the parser captured at module construction."""
     text = _str(value, label, limit=20)
     if not TS.fullmatch(text):
         raise BridgeError(f"{label}: RFC3339 UTC second timestamp required")
     try:
-        datetime.strptime(text, "%Y-%m-%dT%H:%M:%SZ")
+        _strptime(text, "%Y-%m-%dT%H:%M:%SZ")
     except ValueError as exc:
         raise BridgeError(f"{label}: invalid timestamp") from exc
     return text
 
 
-def _parse_ts(text: str) -> datetime:
-    return datetime.strptime(text, "%Y-%m-%dT%H:%M:%SZ").replace(tzinfo=timezone.utc)
+def _parse_ts(text: str, _strptime=datetime.strptime, _utc=timezone.utc) -> datetime:
+    """Parse a pinned registry deadline using immutable captured runtime primitives."""
+    return _strptime(text, "%Y-%m-%dT%H:%M:%SZ").replace(tzinfo=_utc)
 
 
-def _process_now() -> datetime:
-    return datetime.now(timezone.utc).replace(microsecond=0)
+def _make_process_clock(now=datetime.now, utc=timezone.utc):
+    """Close over the interpreter clock so module-global rebinding cannot backdate current evaluation."""
+    def current_utc() -> datetime:
+        return now(utc).replace(microsecond=0)
+    return current_utc
 
 
 def _normalize_binding(raw: dict[str, Any], index: int) -> dict[str, Any]:
@@ -189,7 +194,8 @@ def _normalize_vault(value: Any) -> dict[str, Any] | None:
 
 def _evaluate_at(binding: dict[str, Any], registry_sha256: str, source_ledger: dict[str, Any],
                  submission_manifest: dict[str, Any], vault: dict[str, Any] | None,
-                 now: datetime) -> dict[str, Any]:
+                 now: datetime, _utc=timezone.utc, _parse_deadline=_parse_ts) -> dict[str, Any]:
+    """Deterministic lower-level evaluator for tests and historical verification only."""
     if type(source_ledger) is not dict or type(submission_manifest) is not dict:
         raise BridgeError("source_ledger and submission_manifest must be objects")
     source_sha = _digest(source_ledger)
@@ -200,10 +206,10 @@ def _evaluate_at(binding: dict[str, Any], registry_sha256: str, source_ledger: d
         raise BridgeError("submission_manifest root mismatch")
     if now.tzinfo is None or now.utcoffset() is None:
         raise BridgeError("process clock must be timezone-aware")
-    now = now.astimezone(timezone.utc).replace(microsecond=0)
+    now = now.astimezone(_utc).replace(microsecond=0)
     when = now.strftime("%Y-%m-%dT%H:%M:%SZ")
     reasons = list(binding["static_holds"])
-    if now >= _parse_ts(binding["deadline_utc"]):
+    if now >= _parse_deadline(binding["deadline_utc"]):
         reasons.append("PROPOSAL_DEADLINE_EXPIRED")
 
     vault_proof: dict[str, Any] | None = None
@@ -258,18 +264,27 @@ def _evaluate_at(binding: dict[str, Any], registry_sha256: str, source_ledger: d
     }
 
 
-def compile_bridge(binding_id: str, source_ledger: dict[str, Any], submission_manifest: dict[str, Any],
-                   vault: dict[str, Any] | None = None) -> dict[str, Any]:
-    """Evaluate one repo-pinned pursuit binding using only the process-owned current UTC time."""
-    registry_sha, bindings = _load_binding_registry()
-    binding_id = _str(binding_id, "binding_id", token=True)
-    if binding_id not in bindings:
-        raise BridgeError(f"unknown binding_id: {binding_id}")
-    source = _plain_json(source_ledger, "source_ledger")
-    manifest = _plain_json(submission_manifest, "submission_manifest")
-    frozen_vault = None if vault is None else _plain_json(vault, "vault")
-    return _evaluate_at(bindings[binding_id], registry_sha, source, manifest,
-                        _normalize_vault(frozen_vault), _process_now())
+def _make_compile_bridge(clock):
+    """Construct the public current evaluator around a captured, non-caller clock."""
+    def compile_bridge(binding_id: str, source_ledger: dict[str, Any], submission_manifest: dict[str, Any],
+                       vault: dict[str, Any] | None = None) -> dict[str, Any]:
+        """Evaluate one repo-pinned pursuit binding using only captured process UTC."""
+        registry_sha, bindings = _load_binding_registry()
+        clean_binding_id = _str(binding_id, "binding_id", token=True)
+        if clean_binding_id not in bindings:
+            raise BridgeError(f"unknown binding_id: {clean_binding_id}")
+        source = _plain_json(source_ledger, "source_ledger")
+        manifest = _plain_json(submission_manifest, "submission_manifest")
+        frozen_vault = None if vault is None else _plain_json(vault, "vault")
+        return _evaluate_at(bindings[clean_binding_id], registry_sha, source, manifest,
+                            _normalize_vault(frozen_vault), clock())
+    return compile_bridge
+
+
+# Capture the interpreter's datetime.now + UTC objects at module construction.  Current
+# callers cannot inject a clock through compile_bridge's signature, and rebinding
+# bridge.datetime / bridge.timezone later cannot change the captured clock.
+compile_bridge = _make_compile_bridge(_make_process_clock())
 
 
 def _parse_envelope(value: dict[str, Any]) -> tuple[dict[str, Any], dict[str, Any], dict[str, Any] | None]:

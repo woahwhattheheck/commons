@@ -37,9 +37,15 @@ jobs:
           revenue/pursuit_evidence_bridge/*.py
           revenue/bidder_qualification_vault/*.py
       - name: Contract tests
-        run: python -m unittest -v opportunities.ttuhsc_739_sl3821039_enterprise_ai.test_qualify
+        run: >-
+          python -m unittest -v
+          revenue.pursuit_evidence_bridge.test_bridge
+          opportunities.ttuhsc_739_sl3821039_enterprise_ai.test_qualify
       - name: Optimized contract tests
-        run: python -O -m unittest -v opportunities.ttuhsc_739_sl3821039_enterprise_ai.test_qualify
+        run: >-
+          python -O -m unittest -v
+          revenue.pursuit_evidence_bridge.test_bridge
+          opportunities.ttuhsc_739_sl3821039_enterprise_ai.test_qualify
       - name: Current gate must remain held for this source generation
         shell: bash
         run: |
