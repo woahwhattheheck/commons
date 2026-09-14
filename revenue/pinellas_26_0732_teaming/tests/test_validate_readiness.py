@@ -123,6 +123,21 @@ class Tests(unittest.TestCase):
         self.assertEqual(result, v.CLOSED)
         self.assertEqual(reasons, [])
 
+    def test_closed_no_fit_cannot_bypass_profile_or_parallel_contact_safety(self):
+        for section, key in [
+            ("confidential_material", "profile_content_present_in_carrier"),
+            ("thread_state", "parallel_contact_forbidden"),
+        ]:
+            with self.subTest(section=section, key=key):
+                state = copy.deepcopy(STATE)
+                state["disposition"] = v.CLOSED
+                state["closeout"]["reason"] = "Provider confirmed channel is staffing-only."
+                state["closeout"]["evidence"] = ["synthetic:human-closeout"]
+                state[section][key] = True if key == "profile_content_present_in_carrier" else False
+                result, reasons = v.check(copy.deepcopy(OPP), state, copy.deepcopy(WORK), NOW)
+                self.assertEqual(result, v.HOLD)
+                self.assertTrue(reasons)
+
     def test_ready_spoof_by_disposition_is_rejected(self):
         opp, state, work = ready_fixture()
         state["disposition"] = v.READY
