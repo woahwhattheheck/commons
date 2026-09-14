@@ -14,6 +14,7 @@ from revenue.delivery_capacity_allocator.engine import (
     sha256_hex,
     strict_json_loads,
     verify_current_bytes,
+    verify_historical_bytes,
     write_exclusive,
 )
 
@@ -126,7 +127,6 @@ class CapacityTests(unittest.TestCase):
         out = compile_obj(policy(), demands([deal("old", deadline="2026-09-14T08:00:00Z")]), reservations([r1, r2]))
         self.assertIn("DEAL_RESERVATION_COLLISION", out["global_blockers"])
 
-
     def test_changed_reserved_units_are_rebinding(self):
         r = active("a", units=1)
         out = compile_obj(policy(cap=4), demands([deal("a", units=2)]), reservations([r]))
@@ -213,12 +213,14 @@ class CapacityTests(unittest.TestCase):
         with self.assertRaises(CapacityError):
             compile_obj(policy(), demands([deal("a")]), reservations([a, b]))
 
-    def test_verify_current_passes_same_allocation(self):
+    def test_historical_verifies_same_allocation_but_never_current(self):
         p, d, r = policy(), demands([deal("a")]), reservations()
         pb, db, rb = j(p), j(d), j(r)
         kws = dict(expected_policy_sha256=sha256_hex(pb), expected_demand_sha256=sha256_hex(db), expected_reservations_sha256=sha256_hex(rb))
         receipt = compile_bytes(pb, db, rb, now=NOW, **kws)
-        self.assertTrue(verify_current_bytes(pb, db, rb, canonical_json(receipt), now=NOW + timedelta(minutes=5), **kws))
+        self.assertEqual(receipt["current_state"], "HISTORICAL_INTEGRITY_ONLY")
+        self.assertTrue(verify_historical_bytes(pb, db, rb, canonical_json(receipt), **kws))
+        self.assertFalse(verify_current_bytes(pb, db, rb, canonical_json(receipt), now=NOW + timedelta(minutes=5), **kws))
 
     def test_verify_current_rejects_when_snapshot_ages_out(self):
         p, d, r = policy(age=600), demands([deal("a")]), reservations()
@@ -240,7 +242,7 @@ class CapacityTests(unittest.TestCase):
         kws = dict(expected_policy_sha256=sha256_hex(pb), expected_demand_sha256=sha256_hex(db), expected_reservations_sha256=sha256_hex(rb))
         receipt = compile_bytes(pb, db, rb, now=NOW, **kws)
         receipt["decisions"][0]["decision"] = "ALLOCATED_FOR_OWNER_REVIEW" if receipt["decisions"][0]["decision"] != "ALLOCATED_FOR_OWNER_REVIEW" else "CAPACITY_HOLD"
-        self.assertFalse(verify_current_bytes(pb, db, rb, canonical_json(receipt), now=NOW, **kws))
+        self.assertFalse(verify_historical_bytes(pb, db, rb, canonical_json(receipt), **kws))
 
     def test_all_external_authority_false(self):
         out = compile_obj(policy(), demands([deal("a")]), reservations())
@@ -280,11 +282,10 @@ class CapacityTests(unittest.TestCase):
                 paths[name] = path
             out = os.path.join(td, "receipt.json")
             rc = cli_main(["compile", "--policy", paths["p"], "--demands", paths["d"], "--reservations", paths["r"], "--policy-sha", sha256_hex(p), "--demand-sha", sha256_hex(d), "--reservations-sha", sha256_hex(r), "--out", out])
-            # Runtime clock may be later than frozen fixture. The CLI must fail closed rather than fabricate CURRENT.
-            self.assertIn(rc, (0, 3))
+            self.assertEqual(rc, 3)
             self.assertTrue(os.path.exists(out))
             verify_rc = cli_main(["verify", "--policy", paths["p"], "--demands", paths["d"], "--reservations", paths["r"], "--policy-sha", sha256_hex(p), "--demand-sha", sha256_hex(d), "--reservations-sha", sha256_hex(r), "--receipt", out])
-            self.assertIn(verify_rc, (0, 3))
+            self.assertEqual(verify_rc, 3)
 
 
 if __name__ == "__main__":
