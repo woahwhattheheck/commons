@@ -13,6 +13,7 @@ from typing import Any, Mapping
 
 from lean_feed_core import (
     D2_ARCHIVE_SHA256,
+    D2_MEMBER_COUNT,
     EvidenceError,
     _require,
     sha256_json,
@@ -23,6 +24,8 @@ SOURCE_PROMOTION_AUTHORIZED = False
 SOURCE_AUTHORITY_RECEIPT_SHA256 = (
     "297f7cf6e38f8e4be7fd00387e228194e366648570b781cd7abe05be41f2d4d8"
 )
+D2_MAIN_SHA256 = "ae7032281ba680cc70fdfc333bb55cbd4aab7127c277c5150f18746c12f549d3"
+OFFICIAL_ENGINE_SHA256 = "bc8a54879ef02c7ea64b8b333d6a976f0ea65c4949149d01f463f23bccee653e"
 SOURCE_BLOCK_REASON = (
     "retained official source is WHEAT-only and exact D2 archive member bytes "
     "are not retained; legacy fixed-feed economics cannot authorize promotion"
@@ -40,12 +43,7 @@ def _positive_finite(value: Any, label: str) -> float:
 
 
 def validate_promotion_evidence(document: Mapping[str, Any]) -> None:
-    """Reject evidence shapes that can manufacture a false promotion.
-
-    This validator intentionally runs before the legacy economics analyzer. It
-    does not make the legacy model authoritative; it only prevents known evidence
-    aliasing and pairing failures from surviving into a research report.
-    """
+    """Reject evidence shapes that can manufacture a false promotion."""
     _require(isinstance(document, Mapping), "evidence root must be an object")
     authority = document.get("authority")
     _require(isinstance(authority, Mapping), "authority required")
@@ -161,47 +159,86 @@ def validate_promotion_evidence(document: Mapping[str, Any]) -> None:
             )
 
 
-def apply_source_authority(
-    report: Mapping[str, Any], document: Mapping[str, Any]
-) -> dict[str, Any]:
-    """Bind terminal evidence and enforce the retained non-authorizing source root."""
-    hardened = copy.deepcopy(dict(report))
-    raw_by_run = {
-        row.get("run_id"): row
-        for row in document.get("runs", [])
-        if isinstance(row, Mapping)
-    }
-    for row in hardened.get("runs", []):
-        raw = raw_by_run.get(row.get("run_id"))
-        _require(isinstance(raw, Mapping), "report run missing source evidence")
-        row["evidence_sha256"] = sha256_json(
+def _terminal_evidence_digests(document: Mapping[str, Any]) -> dict[str, str]:
+    result: dict[str, str] = {}
+    for raw in document.get("runs", []):
+        _require(isinstance(raw, Mapping), "run must be an object")
+        run_id = raw.get("run_id")
+        _require(isinstance(run_id, str) and run_id, "run_id invalid")
+        _require(run_id not in result, "duplicate run_id")
+        result[run_id] = sha256_json(
             {
                 "decision_windows": raw.get("decision_windows"),
                 "result": raw.get("result"),
             }
         )
+    return result
 
-    authority = dict(hardened.get("authority", {}))
-    authority.update(
-        {
+
+def apply_source_authority(
+    report: Mapping[str, Any], document: Mapping[str, Any]
+) -> dict[str, Any]:
+    """Bind terminal evidence and enforce the retained non-authorizing source root."""
+    hardened = copy.deepcopy(dict(report))
+    terminal_digests = _terminal_evidence_digests(document)
+    terminal_root = sha256_json(terminal_digests)
+
+    for row in hardened.get("runs", []):
+        digest = terminal_digests.get(row.get("run_id"))
+        _require(isinstance(digest, str), "report run missing source evidence")
+        row["evidence_sha256"] = digest
+
+    promotion = dict(hardened.get("promotion", {}))
+    if promotion.get("conclusion") == "PROMOTE_RESEARCH_CANDIDATE":
+        legacy_report_sha = hardened.get("report_sha256")
+        hardened["authority"] = {
+            "archive_sha256": D2_ARCHIVE_SHA256,
+            "archive_member_count": D2_MEMBER_COUNT,
+            "main_sha256": D2_MAIN_SHA256,
+            "official_engine_sha256": OFFICIAL_ENGINE_SHA256,
             "authority_verified": False,
             "source_model_state": SOURCE_MODEL_STATE,
             "source_promotion_authorized": SOURCE_PROMOTION_AUTHORIZED,
             "source_authority_receipt_sha256": SOURCE_AUTHORITY_RECEIPT_SHA256,
+            "terminal_evidence_root_sha256": terminal_root,
+            "legacy_candidate_report_sha256": legacy_report_sha,
         }
-    )
-    hardened["authority"] = authority
-
-    promotion = dict(hardened.get("promotion", {}))
-    if promotion.get("conclusion") == "PROMOTE_RESEARCH_CANDIDATE":
-        promotion["legacy_candidate_conclusion"] = "PROMOTE_RESEARCH_CANDIDATE"
-        promotion["conclusion"] = SOURCE_MODEL_STATE
-        promotion["selected_arm"] = None
-        falsifiers = list(promotion.get("falsifiers", []))
-        if SOURCE_BLOCK_REASON not in falsifiers:
-            falsifiers.append(SOURCE_BLOCK_REASON)
-        promotion["falsifiers"] = falsifiers
-    hardened["promotion"] = promotion
+        hardened["design"] = {
+            "cells": 0,
+            "dev_opponents": [],
+            "holdout_opponents": [],
+        }
+        hardened["promotion"] = {
+            "conclusion": SOURCE_MODEL_STATE,
+            "selected_arm": None,
+            "legacy_candidate_conclusion": "PROMOTE_RESEARCH_CANDIDATE",
+            "dev_mean_delta_m": 0.0,
+            "holdout_mean_delta_m": 0.0,
+            "active_dev_windows": 0,
+            "active_holdout_windows": 0,
+            "dev_downstream_cash_used": 0.0,
+            "holdout_downstream_cash_used": 0.0,
+            "obligation_failures": 0,
+            "productivity_loss": 0.0,
+            "survival_loss": 0.0,
+            "strata": [],
+            "falsifiers": [SOURCE_BLOCK_REASON],
+        }
+        hardened["census"] = []
+        hardened["paired_deltas"] = []
+        hardened["runs"] = []
+    else:
+        authority = dict(hardened.get("authority", {}))
+        authority.update(
+            {
+                "authority_verified": False,
+                "source_model_state": SOURCE_MODEL_STATE,
+                "source_promotion_authorized": SOURCE_PROMOTION_AUTHORIZED,
+                "source_authority_receipt_sha256": SOURCE_AUTHORITY_RECEIPT_SHA256,
+                "terminal_evidence_root_sha256": terminal_root,
+            }
+        )
+        hardened["authority"] = authority
 
     hardened.pop("report_sha256", None)
     hardened["report_sha256"] = sha256_json(hardened)
