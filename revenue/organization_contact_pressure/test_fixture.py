@@ -33,6 +33,7 @@ class GateFixture:
             "policy_generation": 7,
             "contact_cooldown_seconds": 3600,
             "request_max_age_seconds": 600,
+            "ledger_max_age_seconds": 600,
             "ready_validity_seconds": 120,
             "max_future_skew_seconds": 5,
         }
@@ -149,11 +150,17 @@ class GateFixture:
         committed_at: Optional[datetime] = None,
     ):
         canonical = gate._canonical_bytes(document)
+        state_body = {
+            field: value
+            for field, value in document.items()
+            if field not in {"signature", "updated_at"}
+        }
         body = {
             "schema": ledger_head.LEDGER_HEAD_SCHEMA,
             "organization_scope_sha256": self.organization,
             "policy_generation": document["policy_generation"],
             "ledger_generation": document["generation"],
+            "ledger_state_sha256": gate._sha256(gate._canonical_bytes(state_body)),
             "ledger_sha256": gate._sha256(canonical),
             "ledger_updated_at": document["updated_at"],
             "committed_at": ts(
