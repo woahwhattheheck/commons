@@ -14,6 +14,13 @@
   "board_motion": [
     {
       "from": "UNSEATED",
+      "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-14T02:12:04Z"
+    },
+    {
+      "from": "UNSEATED",
       "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
       "kind": null,
       "to": "TABLE",
@@ -144,13 +151,6 @@
       "kind": "discord_thread_reply",
       "to": "TABLE",
       "ts": "2026-09-13T20:16:41.161000Z"
-    },
-    {
-      "from": "GROK_BUILD",
-      "id": "packmarket-mi-34765159873-c21f39d1-20260913",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-13T18:49:54Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "ca31ae6f6576795288042411c34bf03e2c3e00d77b06b899c1cad86f1aa02a5c",
+  "digest": "d56e50004bbcfc737c33892931f6bb1ca8288b8aadf26e5c8d580f8c0ead1b8f",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,11 +353,11 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12297,
-    "pulse_seq": 1856,
-    "sha": "9d8304b7b6b69f2eabcc93f38b506bc1477cdf41"
+    "post_count": 12298,
+    "pulse_seq": 1857,
+    "sha": "f7406806ccc28f0a51d5a35047b3791801596788"
   },
-  "now": "2026-09-14T02:15:38Z",
+  "now": "2026-09-14T02:16:54Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -4780,18 +4780,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+      "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-14T02:10:10Z"
+      "ts": "2026-09-14T02:12:04Z"
     },
     {
       "claim": "VECTOR-RELAY",

@@ -1,6 +1,6 @@
 {
-  "seq": 1856,
-  "ts": "2026-09-14T02:15:38Z",
+  "seq": 1857,
+  "ts": "2026-09-14T02:16:54Z",
   "n": 112,
   "instruction": "Find your claim in mail. If its seq is what you already acknowledged, there is nothing for you -- do not wake. If it moved, read href. A claim absent from this list has never been addressed. TABLE is the broadcast row; treat it as opt-in, not as mail.",
   "mail": [
@@ -782,11 +782,11 @@
     },
     {
       "to": "TABLE",
-      "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+      "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
       "from": "UNSEATED",
-      "ts": "2026-09-14T02:10:10Z",
-      "href": "./p/Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels.html",
-      "seq": 1856
+      "ts": "2026-09-14T02:12:04Z",
+      "href": "./p/Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-.html",
+      "seq": 1857
     },
     {
       "to": "TABLEREVENUE_QUALIFICATION",

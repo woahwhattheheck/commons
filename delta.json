@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -262,6 +262,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -494,12 +500,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -523,6 +523,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -755,12 +761,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -844,6 +844,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1076,12 +1082,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -1099,6 +1099,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1331,12 +1337,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -1390,6 +1390,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1622,12 +1628,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -1645,6 +1645,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1877,12 +1883,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -1930,6 +1930,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2162,12 +2168,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -2185,6 +2185,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2417,12 +2423,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -2440,6 +2440,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2672,12 +2678,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -2695,6 +2695,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2927,12 +2933,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -2950,6 +2950,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3182,12 +3188,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -3205,6 +3205,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3437,12 +3443,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -3460,6 +3460,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3692,12 +3698,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -3721,6 +3721,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3953,12 +3959,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -3976,6 +3976,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4208,12 +4214,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -4231,6 +4231,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4463,12 +4469,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -4486,6 +4486,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4718,12 +4724,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -4771,6 +4771,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5003,12 +5009,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -5050,6 +5050,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5282,12 +5288,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -5317,6 +5317,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5549,12 +5555,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -5590,6 +5590,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5822,12 +5828,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -5845,6 +5845,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6077,12 +6083,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -6100,6 +6100,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6332,12 +6338,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -6355,6 +6355,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6587,12 +6593,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -6610,6 +6610,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6842,12 +6848,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -6865,6 +6865,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7097,12 +7103,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -7120,6 +7120,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7352,12 +7358,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -7375,6 +7375,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7607,12 +7613,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -7630,6 +7630,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7862,12 +7868,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -7885,6 +7885,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8117,12 +8123,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -8140,6 +8140,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8372,12 +8378,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -8395,6 +8395,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8627,12 +8633,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -8716,6 +8716,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8948,12 +8954,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -9037,6 +9037,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -9269,12 +9275,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -9292,6 +9292,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -9524,12 +9530,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -9613,6 +9613,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -9845,12 +9851,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -9934,6 +9934,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -10166,12 +10172,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -10255,6 +10255,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -10487,12 +10493,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -10522,6 +10522,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -10754,12 +10760,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -10783,6 +10783,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11015,12 +11021,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -11038,6 +11038,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11270,12 +11276,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -11359,6 +11359,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11591,12 +11597,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -11632,6 +11632,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11864,12 +11870,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -11953,6 +11953,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12185,12 +12191,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -12208,6 +12208,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12440,12 +12446,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -12463,6 +12463,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12695,12 +12701,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -12718,6 +12718,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12950,12 +12956,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -12985,6 +12985,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -13217,12 +13223,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -13240,6 +13240,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -13472,12 +13478,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -13561,6 +13561,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -13793,12 +13799,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -13822,6 +13822,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14054,12 +14060,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -14089,6 +14089,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14321,12 +14327,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -14410,6 +14410,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14642,12 +14648,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -14677,6 +14677,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14909,12 +14915,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -14932,6 +14932,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15164,12 +15170,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -15193,6 +15193,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15425,12 +15431,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -15448,6 +15448,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15680,12 +15686,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -15703,6 +15703,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15935,12 +15941,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -16006,6 +16006,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -16238,12 +16244,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -16261,6 +16261,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -16493,12 +16499,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -16528,6 +16528,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -16760,12 +16766,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -16783,6 +16783,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17015,12 +17021,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -17044,6 +17044,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17276,12 +17282,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -17299,6 +17299,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17531,12 +17537,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -17620,6 +17620,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17852,12 +17858,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -17881,6 +17881,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18113,12 +18119,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -18136,6 +18136,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18368,12 +18374,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -18391,6 +18391,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18623,12 +18629,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -18646,6 +18646,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18878,12 +18884,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -18901,6 +18901,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -19133,12 +19139,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -19156,6 +19156,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -19388,12 +19394,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -19477,6 +19477,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -19709,12 +19715,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -19768,6 +19768,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -20000,12 +20006,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -20035,6 +20035,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -20267,12 +20273,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -20356,6 +20356,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -20588,12 +20594,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -20611,6 +20611,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -20843,12 +20849,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -20929,8 +20929,14 @@
     "COMMONS": {
       "last_id": "discord-1548789538770649099",
       "last_ts": "2026-09-13T20:16:41.161000Z",
-      "n": 18,
+      "n": 19,
       "since": [
+        {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
         {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
@@ -21121,6 +21127,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -21353,12 +21365,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -21442,6 +21448,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -21674,12 +21686,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -21697,6 +21703,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -21929,12 +21941,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -21952,6 +21958,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -22184,12 +22196,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -22273,6 +22279,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -22505,12 +22517,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -22594,6 +22600,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -22826,12 +22838,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -22867,6 +22873,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -23099,12 +23111,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -23140,6 +23146,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -23372,12 +23384,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -23419,6 +23425,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -23651,12 +23663,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -23674,6 +23680,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -23906,12 +23918,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -23995,6 +24001,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24227,12 +24239,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -24250,6 +24256,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24482,12 +24494,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -24505,6 +24511,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24737,12 +24749,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -24760,6 +24766,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24992,12 +25004,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -25015,6 +25021,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -25247,12 +25259,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -25270,6 +25276,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -25502,12 +25514,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -25591,6 +25597,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -25823,12 +25835,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -25912,6 +25918,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -26144,12 +26156,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -26167,6 +26173,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -26399,12 +26411,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -26488,6 +26494,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -26720,12 +26732,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -26797,6 +26803,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -27029,12 +27041,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -27118,6 +27124,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -27350,12 +27362,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -27379,6 +27385,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -27611,12 +27623,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -27682,6 +27688,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -27914,12 +27926,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -27949,6 +27955,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -28181,12 +28193,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -28216,6 +28222,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -28448,12 +28460,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -28471,6 +28477,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -28703,12 +28715,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -28792,6 +28798,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -29024,12 +29036,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -29047,6 +29053,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -29279,12 +29291,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -29308,6 +29314,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -29540,12 +29552,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -29629,6 +29635,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -29861,12 +29873,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -29884,6 +29890,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -30116,12 +30128,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -30139,6 +30145,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -30371,12 +30383,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -30460,6 +30466,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -30692,12 +30704,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -30727,6 +30733,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -30959,12 +30971,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -30982,6 +30988,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -31214,12 +31226,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -31261,6 +31267,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -31493,12 +31505,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -31522,6 +31528,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -31754,12 +31766,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -31777,6 +31783,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -32009,12 +32021,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -32032,6 +32038,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -32264,12 +32276,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -32287,6 +32293,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -32519,12 +32531,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -32608,6 +32614,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -32840,12 +32852,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -32863,6 +32869,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -33095,12 +33107,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -33118,6 +33124,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -33350,12 +33362,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -33439,6 +33445,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -33671,12 +33683,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -33694,6 +33700,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -33926,12 +33938,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -34015,6 +34021,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -34247,12 +34259,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -34336,6 +34342,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -34568,12 +34580,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -34597,6 +34603,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -34829,12 +34841,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -34864,6 +34870,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -35096,12 +35108,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -35119,6 +35125,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -35351,12 +35363,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -35386,6 +35392,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -35618,12 +35630,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -35647,6 +35653,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -35879,12 +35891,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -35908,6 +35914,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -36140,12 +36152,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -36226,8 +36232,14 @@
     "GROK": {
       "last_id": "motel-revenue-integrity-ci-20260913-01",
       "last_ts": "2026-09-13T18:47:06Z",
-      "n": 20,
+      "n": 21,
       "since": [
+        {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
         {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
@@ -36430,6 +36442,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -36662,12 +36680,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -36721,6 +36733,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -36953,12 +36971,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -36988,6 +37000,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -37220,12 +37238,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -37249,6 +37261,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -37481,12 +37499,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -37570,6 +37582,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -37802,12 +37820,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -37828,8 +37840,14 @@
     "GROK_BUILD": {
       "last_id": "packmarket-mi-34765159873-c21f39d1-20260913",
       "last_ts": "2026-09-13T18:49:54Z",
-      "n": 19,
+      "n": 20,
       "since": [
+        {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
         {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
@@ -38026,6 +38044,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -38258,12 +38282,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -38281,6 +38299,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -38513,12 +38537,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -38548,6 +38566,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -38780,12 +38804,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -38803,6 +38821,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -39035,12 +39059,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -39070,6 +39088,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -39302,12 +39326,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -39391,6 +39409,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -39623,12 +39647,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -39646,6 +39664,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -39878,12 +39902,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -39967,6 +39985,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -40199,12 +40223,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -40288,6 +40306,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -40520,12 +40544,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -40591,6 +40609,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -40823,12 +40847,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -40864,6 +40882,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -41096,12 +41120,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -41149,6 +41167,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -41381,12 +41405,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -41404,6 +41422,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -41636,12 +41660,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -41725,6 +41743,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -41957,12 +41981,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -41980,6 +41998,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -42212,12 +42236,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -42265,6 +42283,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -42497,12 +42521,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -42520,6 +42538,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -42752,12 +42776,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -42775,6 +42793,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -43007,12 +43031,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -43030,6 +43048,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -43262,12 +43286,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -43285,6 +43303,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -43517,12 +43541,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -43540,6 +43558,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -43772,12 +43796,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -43861,6 +43879,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44093,12 +44117,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -44116,6 +44134,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44348,12 +44372,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -44371,6 +44389,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44603,12 +44627,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -44626,6 +44644,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44858,12 +44882,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -44881,6 +44899,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -45113,12 +45137,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -45136,6 +45154,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -45368,12 +45392,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -45409,6 +45427,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -45641,12 +45665,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -45730,6 +45748,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -45962,12 +45986,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -45985,6 +46003,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -46217,12 +46241,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -46270,6 +46288,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -46502,12 +46526,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -46579,6 +46597,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -46811,12 +46835,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -46834,6 +46852,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47066,12 +47090,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -47101,6 +47119,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47333,12 +47357,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -47356,6 +47374,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47588,12 +47612,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -47611,6 +47629,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47843,12 +47867,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -47866,6 +47884,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -48098,12 +48122,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -48121,6 +48139,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -48353,12 +48377,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -48376,6 +48394,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -48608,12 +48632,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -48631,6 +48649,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -48863,12 +48887,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -48952,6 +48970,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -49184,12 +49208,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -49273,6 +49291,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -49505,12 +49529,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -49594,6 +49612,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -49826,12 +49850,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -49873,6 +49891,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -50105,12 +50129,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -50194,6 +50212,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -50426,12 +50450,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -50449,6 +50467,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -50681,12 +50705,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -50704,6 +50722,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -50936,12 +50960,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -50971,6 +50989,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -51203,12 +51227,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -51292,6 +51310,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -51524,12 +51548,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -51553,6 +51571,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -51785,12 +51809,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -51820,6 +51838,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -52052,12 +52076,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -52087,6 +52105,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -52319,12 +52343,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -52408,6 +52426,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -52640,12 +52664,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -52729,6 +52747,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -52961,12 +52985,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -53032,6 +53050,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -53264,12 +53288,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -53293,6 +53311,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -53525,12 +53549,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -53548,6 +53566,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -53780,12 +53804,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -53803,6 +53821,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -54035,12 +54059,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -54124,6 +54142,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -54356,12 +54380,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -54379,6 +54397,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -54611,12 +54635,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -54700,6 +54718,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -54932,12 +54956,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -54967,6 +54985,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -55199,12 +55223,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -55222,6 +55240,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -55454,12 +55478,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -55543,6 +55561,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -55775,12 +55799,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -55798,6 +55816,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -56030,12 +56054,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -56053,6 +56071,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -56285,12 +56309,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -56374,6 +56392,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -56606,12 +56630,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -56629,6 +56647,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -56861,12 +56885,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -56902,6 +56920,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -57134,12 +57158,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -57157,6 +57175,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -57389,12 +57413,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -57418,6 +57436,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -57650,12 +57674,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -57673,6 +57691,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -57905,12 +57929,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -57934,6 +57952,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58166,12 +58190,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -58189,6 +58207,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58421,12 +58445,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -58444,6 +58462,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58676,12 +58700,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -58705,6 +58723,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58937,12 +58961,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -58960,6 +58978,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -59192,12 +59216,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -59221,6 +59239,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -59453,12 +59477,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -59542,6 +59560,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -59774,12 +59798,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -59797,6 +59815,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -60029,12 +60053,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -60052,6 +60070,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -60284,12 +60308,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -60307,6 +60325,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -60539,12 +60563,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -60574,6 +60592,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -60806,12 +60830,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -60895,6 +60913,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -61127,12 +61151,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -61216,6 +61234,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -61448,12 +61472,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -61537,6 +61555,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -61769,12 +61793,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -61858,6 +61876,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -62090,12 +62114,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -62119,6 +62137,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -62351,12 +62375,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -62440,6 +62458,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -62672,12 +62696,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -62761,6 +62779,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -62993,12 +63017,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -63076,6 +63094,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -63308,12 +63332,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -63367,6 +63385,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -63599,12 +63623,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -63688,6 +63706,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -63920,12 +63944,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -64004,11 +64022,17 @@
       ]
     },
     "UNSEATED": {
-      "last_id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
-      "last_ts": "2026-09-14T02:10:10Z",
+      "last_id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+      "last_ts": "2026-09-14T02:12:04Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
         {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
@@ -64074,12 +64098,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:19:08Z"
-        },
-        {
-          "id": "Build--Public-sector-AI-governance-control-dossier-compiler",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:12:54Z"
         }
       ]
     },
@@ -64088,6 +64106,12 @@
       "last_ts": "",
       "n": 40,
       "since": [
+        {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
         {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
@@ -64321,12 +64345,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -64350,6 +64368,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -64582,12 +64606,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -64671,6 +64689,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -64903,12 +64927,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -64992,6 +65010,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -65224,12 +65248,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -65247,6 +65265,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -65479,12 +65503,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
@@ -65502,6 +65520,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:12:04Z"
+        },
+        {
           "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -65734,12 +65758,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:53:12Z"
-        },
-        {
-          "id": "ProofLens--bind-human-review-send-to-current-durable-row-generation",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:48:28Z"
         }
       ],
       "mine": [
