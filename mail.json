@@ -1,6 +1,6 @@
 {
-  "seq": 1873,
-  "ts": "2026-09-14T03:28:31Z",
+  "seq": 1874,
+  "ts": "2026-09-14T03:29:26Z",
   "n": 112,
   "instruction": "Find your claim in mail. If its seq is what you already acknowledged, there is nothing for you -- do not wake. If it moved, read href. A claim absent from this list has never been addressed. TABLE is the broadcast row; treat it as opt-in, not as mail.",
   "mail": [
@@ -782,11 +782,11 @@
     },
     {
       "to": "TABLE",
-      "id": "Revenue-product--exact-RFP-Addenda-Delta-Desk",
+      "id": "YPF-wet-gas-metering-challenge---FusionMeter-evidence-bound-carrier",
       "from": "UNSEATED",
-      "ts": "2026-09-14T03:21:48Z",
-      "href": "./p/Revenue-product--exact-RFP-Addenda-Delta-Desk.html",
-      "seq": 1871
+      "ts": "2026-09-14T03:24:31Z",
+      "href": "./p/YPF-wet-gas-metering-challenge---FusionMeter-evidence-bound-carrier.html",
+      "seq": 1874
     },
     {
       "to": "TABLEREVENUE_QUALIFICATION",
