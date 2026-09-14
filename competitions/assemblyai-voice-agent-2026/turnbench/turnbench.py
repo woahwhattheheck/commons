@@ -107,7 +107,7 @@ def _event(e,i):
         _expect_exact_keys(d,{"reply_id","status"}); _expect_id(d["reply_id"],"reply_id")
         if d["status"] not in {"completed","interrupted","failed"}: raise ValueError("reply.done status invalid")
     elif t=="tool.call":
-        _expect_exact_keys(d,{"call_id","reply_id","name","arguments"}); _expect_id(d["call_id"],"call_id"); _expect_id(d["reply_id"],"reply_id"); _expect_id(d["name"],"name")
+        _expect_exact_keys(d,{"call_id","name","arguments"}); _expect_id(d["call_id"],"call_id"); _expect_id(d["name"],"name")
         if not isinstance(d["arguments"],dict): raise ValueError("tool.call arguments must be an object")
         _finite(d["arguments"])
     elif t=="tool.result": _expect_exact_keys(d,{"call_id","is_error"}); _expect_id(d["call_id"],"call_id"); _expect_bool(d["is_error"],"is_error")
@@ -135,9 +135,9 @@ def evaluate(scenario,trace):
     if s["scenario_id"]!=t["scenario_id"]: raise ValueError("scenario/trace scenario_id mismatch")
     e=t["events"]; a=s["assertions"]; c=s["session_contract"]; f=[]
     def add(code,passed,detail): f.append({"code":code,"passed":bool(passed),"detail":detail})
-    cfg=[x for x in e if x["type"]=="harness.session.configured"]; ready=[x for x in e if x["type"]=="session.ready"]
-    ok=len(cfg)==1 and bool(ready) and cfg[0]["data"]==c and all(x["data"]["resolved_config_sha256"]==c["resolved_config_sha256"] for x in ready)
-    add("CONFIG_BOUND",ok,{"configured_count":len(cfg),"ready_count":len(ready)})
+    cfg=[x for x in e if x["type"]=="harness.session.configured"]; resolved=[x for x in e if x["type"] in {"session.ready","session.updated"}]; ready=[x for x in resolved if x["type"]=="session.ready"]; updates=[x for x in resolved if x["type"]=="session.updated"]
+    ok=len(cfg)==1 and bool(ready) and cfg[0]["data"]==c and all(x["data"]["resolved_config_sha256"]==c["resolved_config_sha256"] for x in resolved)
+    add("CONFIG_BOUND",ok,{"configured_count":len(cfg),"ready_count":len(ready),"updated_count":len(updates)})
     errs=[x["data"]["code"] for x in e if x["type"]=="session.error"]; bad=sorted(set(errs)&set(a["forbidden_error_codes"])); add("NO_FORBIDDEN_PROVIDER_ERROR",not bad,{"forbidden_seen":bad})
     users=[x for x in e if x["type"]=="transcript.user"]; add("MIN_USER_TURNS",len(users)>=a["min_user_turns"],{"observed":len(users),"required":a["min_user_turns"]})
     lats=[]; missing=[]
