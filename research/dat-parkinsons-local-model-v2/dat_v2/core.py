@@ -16,13 +16,8 @@ from .contract import (
     sha256_json,
 )
 from .features import extract_features, feature_matrix, robust_normalize
-from .model import (
-    apply_calibrator,
-    binary_log_loss,
-    predict_feature_matrix,
-    train_feature_model,
-    validate_model_artifact,
-)
+from .artifact import apply_calibrator, predict_feature_matrix, validate_model_artifact
+from .training import binary_log_loss, train_feature_model
 
 
 def predict_volume(volume: np.ndarray, artifact: Mapping[str, object]) -> float:
