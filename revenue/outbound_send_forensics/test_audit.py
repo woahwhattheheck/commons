@@ -2,13 +2,15 @@ import copy,unittest
 from revenue.outbound_connector_lease.key import compile_document
 from revenue.outbound_send_forensics.audit import *
 SCHEMA='outbound-connector-lease/v1'
+INPUT_SCHEMA='outbound-send-forensics/v2'
+LEGACY_SCHEMA='outbound-send-forensics/v1'
 def seam(): return {'schema':SCHEMA,'buyer_scope':'Example.COM.','opportunity':{'kind':'external','authority':'Issuer.EXAMPLE.','id':'RFP-04254'}}
 def send(event='msg-1',when='2026-09-14T01:20:00Z',authority='provider-receipt',status='sent',receipt='a'*64,provider='gmail'): return {'provider':provider,'event_id':event,'sent_at':when,'authority':authority,'status':status,'receipt_sha256':receipt}
 def lease(s=None,when='2026-09-14T01:19:00Z',authority='github-create-result',result='created',branch=None,receipt='b'*64,base='c'*40,repository=CANONICAL_LEASE_REPOSITORY):
  s=s or seam(); return {'repository_full_name':repository,'branch':branch or compile_document(s)['branch'],'created_at':when,'authority':authority,'result':result,'base_sha':base,'receipt_sha256':receipt}
 def record(rid='r1',event='msg-1',s=None,send_kwargs=None,lease_value='default'):
  s=copy.deepcopy(s or seam()); return {'record_id':rid,'seam':s,'send':send(event=event,**(send_kwargs or {})),'lease_create':lease(s) if lease_value=='default' else lease_value}
-def doc(*rows): return {'schema':'outbound-send-forensics/v1','records':list(rows)}
+def doc(*rows, schema=INPUT_SCHEMA): return {'schema':schema,'records':list(rows)}
 class AuditTests(unittest.TestCase):
  def one(self,r): return audit_document(doc(r))['receipts'][0]
  def test_protected_binds_canonical_repository(self):
@@ -66,4 +68,10 @@ class AuditTests(unittest.TestCase):
   a=record(rid='a',event='e1'); b=record(rid='b',event='e2'); x=audit_document(doc(a,b)); y=audit_document(doc(b,a)); self.assertEqual(x['batch_sha256'],y['batch_sha256']); self.assertEqual(x['receipts'],y['receipts']); self.assertEqual(x,audit_document(doc(a,b)))
  def test_seam_normalization_uses_landed_compiler(self):
   s1=seam(); s2=copy.deepcopy(s1); s2['buyer_scope']='example.com'; s2['opportunity']['authority']='issuer.example'; s2['opportunity']['id']='rfp-04254'; self.assertEqual(compile_document(s1)['branch'],compile_document(s2)['branch']); self.assertEqual(self.one(record(s=s1,lease_value=lease(s2)))['classification'],CLASS_PROTECTED)
+ def test_legacy_v1_remains_readable_but_can_never_prove_protection(self):
+  r=record(); r['lease_create'].pop('repository_full_name')
+  o=audit_document(doc(r,schema=LEGACY_SCHEMA))['receipts'][0]
+  self.assertEqual(o['classification'],CLASS_UNTRUSTED); self.assertEqual(o['source_input_schema'],LEGACY_SCHEMA); self.assertIn('lacks repository identity',o['reasons'][0])
+  r2=record(); r2['lease_create'].pop('repository_full_name')
+  with self.assertRaisesRegex(ForensicsError,'missing=repository_full_name'): audit_document(doc(r2))
 if __name__=='__main__': unittest.main()
