@@ -1,9 +1,9 @@
 {
   "counts": {
     "open_issues": 84,
-    "open_pull_requests": 47,
-    "runs_in_progress": 16,
-    "runs_queued": 619
+    "open_pull_requests": 48,
+    "runs_in_progress": 20,
+    "runs_queued": 593
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -66,6 +66,17 @@
     }
   ],
   "newest_pulls": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zgc-m4r7/hive016-current-main-origin-guard-20260913",
+      "created_at": "2026-09-14T02:27:00Z",
+      "draft": false,
+      "head_sha": "ff1f29987bfc89bf41a875b6cdb56886ccb74d4e",
+      "number": 14211,
+      "title": "feat(revenue): rejoin creator niche app studio with browser origin guard",
+      "updated_at": "2026-09-14T02:33:34Z"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -164,17 +175,6 @@
       "number": 14086,
       "title": "Add commercial portfolio allocation authority",
       "updated_at": "2026-09-13T16:56:24Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zts-x9p4/firetv-spoilershield-rejoin2-20260913",
-      "created_at": "2026-09-13T16:33:46Z",
-      "draft": false,
-      "head_sha": "13097f7581280415461458584c34e590761afa89",
-      "number": 14076,
-      "title": "feat: add Fire TV SpoilerShield competition carrier",
-      "updated_at": "2026-09-13T16:33:46Z"
     }
   ],
   "open_heads": {
@@ -200,7 +200,7 @@
     "13842": "1460ce57369134ace18c5bdbb8f27f0854542bc2",
     "13844": "51a23e49c939f3090aedd852539fa2f1806ae630",
     "13857": "a1dde557acac3aa3531b7a5541e11f95b035f3bf",
-    "13862": "e8de1de4969f22b3518159855bf6ed647b6b8d41",
+    "13862": "116b2605942aa826fae77a64e9448804298a2346",
     "13863": "ae949f0a623b1eb8af94fe76427cb93169f55d91",
     "13865": "d729342fc448e21e25a7d432b7c5453e4a9774d9",
     "13874": "2d1fb3e3cff82f036a977036706dbaa6749c8459",
@@ -224,12 +224,24 @@
     "14159": "d9acf14a02c0a1455d063b63d1e4f041219b6410",
     "14173": "04407dde467b62fc06401f7bd82e81becbdc7200",
     "14188": "1859cf0bfc12f2819f3f63fd4349ed06ca5f341b",
-    "14209": "e4838bf76ecc1c27e184661d68f94d2c5e9ce1dc"
+    "14209": "e4838bf76ecc1c27e184661d68f94d2c5e9ce1dc",
+    "14211": "ff1f29987bfc89bf41a875b6cdb56886ccb74d4e"
   },
-  "pulls_listed": 47,
+  "pulls_listed": 48,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 38.7,
+  "queue_depth_per_runner": 29.6,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zcd-b4j9/hutter-mixerlab-20260913",
+      "closed_at": "2026-09-14T02:32:37Z",
+      "head_sha": "f6e19bcf133da2f0eca5c540558ba5ce39177820",
+      "merged_at": "2026-09-14T02:32:37Z",
+      "number": 14213,
+      "state": "MERGED",
+      "title": "Hutter Prize: add bounded enwik9 compression MixerLab"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -383,21 +395,10 @@
       "number": 14196,
       "state": "CLOSED",
       "title": "Revenue custody: collapse GitHub repo case aliases (clean successor)"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zkl-f3n7/custody-repo-case-alias",
-      "closed_at": "2026-09-14T02:02:03Z",
-      "head_sha": "fbf3ae84e61b1187e3c99b05ed1bf5a8cef3dab7",
-      "merged_at": null,
-      "number": 14190,
-      "state": "CLOSED",
-      "title": "Revenue custody: collapse GitHub repo case aliases"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-14T02:26:39Z",
+  "unchanged_since": "2026-09-14T02:33:52Z",
   "undatable_pulls": []
 }
