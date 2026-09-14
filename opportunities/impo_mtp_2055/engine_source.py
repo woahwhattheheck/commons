@@ -1,4 +1,4 @@
-"""Source-generation gates for IMPO MTP 2055 readiness."""
+"""Source-generation gates for IMPO MTP 2055 owner-review candidates."""
 
 from __future__ import annotations
 
@@ -6,6 +6,7 @@ from datetime import datetime, timedelta
 from typing import Any
 
 from .engine_core import SOURCE_FRESH, SOURCE_STALE, _evidence_row, _row
+
 
 def _source_rows(packet: dict[str, Any]) -> list[dict[str, Any]]:
     opportunity = packet["opportunity"]
@@ -24,7 +25,7 @@ def _source_rows(packet: dict[str, Any]) -> list[dict[str, Any]]:
                 "SOURCE",
                 "Exact base RFP bytes and SHA-256",
                 "BLOCKED",
-                "The public URL is known, but exact source bytes have not been independently retrieved and hashed.",
+                "The public URL is known, but the candidate does not provide an exact source-byte digest assertion.",
                 blocking=True,
             )
         )
@@ -35,7 +36,7 @@ def _source_rows(packet: dict[str, Any]) -> list[dict[str, Any]]:
                 "SOURCE",
                 "Exact base RFP bytes and SHA-256",
                 "READY",
-                "The base RFP generation is bound to an exact SHA-256 digest.",
+                "Candidate input asserts that the base RFP bytes were captured and bound to this SHA-256; this package does not independently authenticate that assertion.",
                 blocking=False,
                 evidence_reference=f"sha256:{digest}",
             )
@@ -48,25 +49,25 @@ def _source_rows(packet: dict[str, Any]) -> list[dict[str, Any]]:
         disposition, blocking, reason = (
             "READY",
             False,
-            f"Official source was checked {int(age.total_seconds())} seconds before as_of.",
+            f"Candidate reports an official-source check {int(age.total_seconds())} seconds before as_of.",
         )
     elif age <= SOURCE_STALE:
         disposition, blocking, reason = (
             "AT_RISK",
             False,
-            f"Official source check is {age.days} day(s) old; refresh before final owner review.",
+            f"Candidate-reported official-source check is {age.days} day(s) old; refresh before final owner review.",
         )
     else:
         disposition, blocking, reason = (
             "BLOCKED",
             True,
-            f"Official source check is {age.days} day(s) old and is not current enough for submission.",
+            f"Candidate-reported official-source check is {age.days} day(s) old and is not current enough for owner review.",
         )
     rows.append(
         _row(
             "SRC-002",
             "SOURCE",
-            "Current official-source check",
+            "Current candidate official-source check",
             disposition,
             reason,
             blocking=blocking,
@@ -82,7 +83,7 @@ def _source_rows(packet: dict[str, Any]) -> list[dict[str, Any]]:
                 "SOURCE",
                 "All discovered addenda acknowledged",
                 "BLOCKED",
-                "Unsigned addenda: " + ", ".join(unsigned),
+                "Candidate marks these discovered addenda unsigned: " + ", ".join(unsigned),
                 blocking=True,
             )
         )
@@ -93,7 +94,7 @@ def _source_rows(packet: dict[str, Any]) -> list[dict[str, Any]]:
                 "SOURCE",
                 "All discovered addenda acknowledged",
                 "READY",
-                f"{len(source['addenda'])} discovered addendum/addenda are acknowledged.",
+                f"Candidate reports {len(source['addenda'])} discovered addendum/addenda and no unsigned acknowledgement.",
                 blocking=False,
             )
         )
@@ -105,7 +106,7 @@ def _source_rows(packet: dict[str, Any]) -> list[dict[str, Any]]:
                 _evidence_row(
                     "SRC-004",
                     "SOURCE",
-                    "Questions addendum generation",
+                    "Questions addendum candidate evidence",
                     question_evidence,
                 )
             )
@@ -114,9 +115,9 @@ def _source_rows(packet: dict[str, Any]) -> list[dict[str, Any]]:
                 _row(
                     "SRC-004",
                     "SOURCE",
-                    "Questions addendum generation",
+                    "Questions addendum candidate evidence",
                     "DEFERRED",
-                    "The questions deadline has not yet passed; the final addendum may not exist yet and must be rechecked after publication.",
+                    "The questions deadline has not yet passed; a final addendum may not exist yet and must be rechecked after publication.",
                     blocking=False,
                 )
             )
@@ -125,10 +126,10 @@ def _source_rows(packet: dict[str, Any]) -> list[dict[str, Any]]:
             _evidence_row(
                 "SRC-004",
                 "SOURCE",
-                "Questions addendum generation",
+                "Questions addendum candidate evidence",
                 question_evidence,
                 mandatory=True,
-                missing_reason="The questions deadline has passed; the posted questions addendum must be retrieved, reviewed, and signed.",
+                missing_reason="The questions deadline has passed; the candidate packet must include the posted questions-addendum evidence for owner review.",
             )
         )
 
@@ -139,7 +140,7 @@ def _source_rows(packet: dict[str, Any]) -> list[dict[str, Any]]:
                 "SOURCE",
                 "Proposal deadline remains open",
                 "BLOCKED",
-                "The deterministic as_of timestamp is at or after the proposal deadline.",
+                "The evaluation timestamp is at or after the proposal deadline.",
                 blocking=True,
             )
         )
@@ -151,11 +152,9 @@ def _source_rows(packet: dict[str, Any]) -> list[dict[str, Any]]:
                 "SOURCE",
                 "Proposal deadline remains open",
                 "READY",
-                f"Proposal deadline is {seconds} seconds after as_of.",
+                f"Proposal deadline is {seconds} seconds after the evaluation timestamp.",
                 blocking=False,
                 evidence_reference=opportunity["proposal_due_at"],
             )
         )
     return rows
-
-
