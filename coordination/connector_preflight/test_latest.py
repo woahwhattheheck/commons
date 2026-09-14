@@ -204,7 +204,7 @@ class LatestDiscoveryTests(unittest.TestCase):
             ]
         )
         packet = compile_at(raw, T0)["packet"]
-        self.assertEqual("HOLD", packet["overall_state""])
+        self.assertEqual("HOLD", packet["overall_state"])
         self.assertIn(
             "LATEST_ATTEMPT_CONFLICT_GitHub_create_branch",
             packet["reasons"],
@@ -290,10 +290,7 @@ class LatestDiscoveryTests(unittest.TestCase):
         packet = _compile_current_at(raw, T0)["packet"]
         self.assertEqual("HOLD", packet["overall_state"])
         self.assertFalse(packet["work_blocked_claim_supported"])
-        self.assertIn(
-            "CONTROLLING_DISCOVERY_STALE",
-            packet["reasons"],
-        )
+        self.assertIn("CONTROLLING_DISCOVERY_STALE", packet["reasons"])
         self.assertIn(
             "LATEST_WRITE_ATTEMPT_STALE_GitHub_create_branch",
             packet["reasons"],
