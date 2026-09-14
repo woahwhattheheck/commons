@@ -192,6 +192,32 @@ class TrustBoundaryTests(unittest.TestCase):
                 )
         self.assertEqual(calls, [])
 
+    def test_subclass_dict_descriptor_cannot_hide_rebound_acquire_methods(self):
+        calls = []
+
+        class HiddenDictStore(FileLeaseStore):
+            @property
+            def __dict__(self):
+                return {}
+
+        with tempfile.TemporaryDirectory() as td:
+            store = HiddenDictStore(td)
+
+            def delegated_get_active(org_fingerprint):
+                calls.append(("get_active", org_fingerprint))
+                raise AssertionError("hidden rebound backend must not be touched")
+
+            store.get_active = delegated_get_active
+            self.assertFalse(package._mechanically_local_reference_store(store))
+            with self.assertRaisesRegex(ValueError, "caller-supplied pressure verifier is forbidden"):
+                core.acquire_lease(
+                    store,
+                    self._valid_attacker_ready_request(),
+                    pressure_verifier=self.attacker,
+                    lease_nonce_key=b"n" * 32,
+                )
+        self.assertEqual(calls, [])
+
     def test_reference_base_method_monkeypatch_is_rejected_against_frozen_descriptor(self):
         calls = []
         with tempfile.TemporaryDirectory() as td:
