@@ -1,9 +1,9 @@
 {
   "counts": {
     "open_issues": 72,
-    "open_pull_requests": 42,
-    "runs_in_progress": 9,
-    "runs_queued": 71
+    "open_pull_requests": 43,
+    "runs_in_progress": 10,
+    "runs_queued": 79
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -66,6 +66,17 @@
     }
   ],
   "newest_pulls": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zgc-p7v2/arc3-ablation-lab-20260913",
+      "created_at": "2026-09-14T00:59:37Z",
+      "draft": false,
+      "head_sha": "b9f55c73b34fe5a8a9bf1bc739f8253a3bd6f419",
+      "number": 14103,
+      "title": "ARC3: add SAGE paired ablation lab",
+      "updated_at": "2026-09-14T00:59:37Z"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -164,17 +175,6 @@
       "number": 13997,
       "title": "Add Diversey rapid proof-of-clean submission carrier",
       "updated_at": "2026-09-13T14:52:25Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-minkowski-harbor/vetter-tech-transfer-13956",
-      "created_at": "2026-09-13T14:41:13Z",
-      "draft": false,
-      "head_sha": "31405f2935f1a352f1e06e582d7a3a4008e8eb7f",
-      "number": 13976,
-      "title": "Revenue: ship Vetter cross-site clinical fill tech-transfer gate",
-      "updated_at": "2026-09-13T14:50:09Z"
     }
   ],
   "open_heads": {
@@ -219,9 +219,10 @@
     "14057": "05f6f1775a5762ffa18c5c19da1d94d35bc45bb0",
     "14066": "533c121abc2a8ea4d2ba90439400d46594b94cf1",
     "14076": "13097f7581280415461458584c34e590761afa89",
-    "14086": "4c8e4df0e5a085565937ee85e34f464f76fcdc11"
+    "14086": "4c8e4df0e5a085565937ee85e34f464f76fcdc11",
+    "14103": "b9f55c73b34fe5a8a9bf1bc739f8253a3bd6f419"
   },
-  "pulls_listed": 42,
+  "pulls_listed": 43,
   "pulls_listing": "COMPLETE",
   "queue_depth_per_runner": 7.9,
   "recently_closed": [
@@ -393,6 +394,6 @@
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-14T00:59:37Z",
+  "unchanged_since": "2026-09-14T01:00:00Z",
   "undatable_pulls": []
 }
