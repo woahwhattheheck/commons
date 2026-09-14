@@ -12,6 +12,10 @@ def packet(route="PRIME"):
         "source_generation": {
             "buyer_page_checked_at": "2026-09-14T03:40:00Z",
             "complete_package_observed": True,
+            "controlling_rfp_bytes_retained": True,
+            "bid_sheet_bytes_retained": True,
+            "confidentiality_agreement_bytes_retained": True,
+            "q_and_a_bytes_retained": True,
         },
         "organization": {
             "uei": "OWNER-VERIFIED-UEI",
@@ -129,6 +133,22 @@ class QualificationTests(unittest.TestCase):
         p = packet()
         p["source_generation"]["complete_package_observed"] = False
         self.assertIn("CONTROLLING_PACKAGE_INCOMPLETE", qualify.evaluate(p)["reason_codes"])
+
+    def test_missing_bid_sheet_bytes_holds(self):
+        p = packet()
+        p["source_generation"]["bid_sheet_bytes_retained"] = False
+        self.assertIn("BID_SHEET_BYTES_MISSING", qualify.evaluate(p)["reason_codes"])
+
+    def test_missing_any_other_controlling_bytes_holds(self):
+        for key, code in (
+            ("controlling_rfp_bytes_retained", "CONTROLLING_RFP_BYTES_MISSING"),
+            ("confidentiality_agreement_bytes_retained", "CONFIDENTIALITY_AGREEMENT_BYTES_MISSING"),
+            ("q_and_a_bytes_retained", "Q_AND_A_BYTES_MISSING"),
+        ):
+            with self.subTest(key=key):
+                p = packet()
+                p["source_generation"][key] = False
+                self.assertIn(code, qualify.evaluate(p)["reason_codes"])
 
     def test_future_source_observation_holds(self):
         p = packet()
