@@ -1,0 +1,30 @@
+name: DCSA Innovation Call 01 readiness
+
+on:
+  pull_request:
+    paths:
+      - "revenue/dcsa_innovation_call_01/**"
+      - ".github/workflows/dcsa-innovation-call-01.yml"
+  push:
+    paths:
+      - "revenue/dcsa_innovation_call_01/**"
+      - ".github/workflows/dcsa-innovation-call-01.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  offline-proof:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Compile
+        run: python -m py_compile revenue/dcsa_innovation_call_01/engine.py revenue/dcsa_innovation_call_01/cli.py
+      - name: Tests
+        run: python -m unittest discover -s revenue/dcsa_innovation_call_01/tests -v
+      - name: Optimized tests
+        run: python -O -m unittest discover -s revenue/dcsa_innovation_call_01/tests -v
