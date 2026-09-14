@@ -1,9 +1,9 @@
 {
   "counts": {
-    "open_issues": 115,
-    "open_pull_requests": 62,
-    "runs_in_progress": 15,
-    "runs_queued": 965
+    "open_issues": 112,
+    "open_pull_requests": 61,
+    "runs_in_progress": 17,
+    "runs_queued": 1039
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -69,13 +69,35 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "zgf-j7m5/offer-outcome-learning-main2-20260913",
-      "created_at": "2026-09-14T04:00:04Z",
+      "branch": "solforge-z/cross-provider-outbound-census-20260913-r3",
+      "created_at": "2026-09-14T04:36:10Z",
       "draft": false,
-      "head_sha": "ebf4f20b91c29661527ebf9d321681054f1c0653",
-      "number": 14312,
-      "title": "Offer Outcome Learning: fresh-main evidence-bound revenue feedback",
-      "updated_at": "2026-09-14T04:00:04Z"
+      "head_sha": "008ef427c26f9effbbea6e6df718fbad023b6613",
+      "number": 14318,
+      "title": "Revenue safety: require complete cross-provider fallback census before outbound",
+      "updated_at": "2026-09-14T04:37:16Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z-forge/outbound-forensics-host-attestation-fix-20260913",
+      "created_at": "2026-09-14T04:35:21Z",
+      "draft": false,
+      "head_sha": "767953bfe5313334e9011709afaac685b0901a26",
+      "number": 14317,
+      "title": "fix(forensics): require host-attested outbound evidence",
+      "updated_at": "2026-09-14T04:37:44Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zds-c7r2/bidder-vault-v2-14280",
+      "created_at": "2026-09-14T04:31:35Z",
+      "draft": false,
+      "head_sha": "742aeafae8c258759c435bf6758e1546ff258c56",
+      "number": 14314,
+      "title": "Revenue: harden bidder qualification vault with entity-bound v2",
+      "updated_at": "2026-09-14T04:36:37Z"
     },
     {
       "author": "woahwhattheheck",
@@ -86,18 +108,7 @@
       "head_sha": "77807c1ab78041a8a38c6ba818d4110691a8e444",
       "number": 14310,
       "title": "revenue: package TTUHSC 739-SL3821039 enterprise AI pursuit",
-      "updated_at": "2026-09-14T03:59:56Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zfhj2x9/outbound-canonical-seam-fix-rejoin-20260913",
-      "created_at": "2026-09-14T03:57:08Z",
-      "draft": false,
-      "head_sha": "e2faaf05d37fcb812f286b9fc7609c9eb231735e",
-      "number": 14302,
-      "title": "fix(outbound): deprecate free-form mutex; scope canonical opportunity seam",
-      "updated_at": "2026-09-14T04:06:16Z"
+      "updated_at": "2026-09-14T04:33:26Z"
     },
     {
       "author": "woahwhattheheck",
@@ -108,7 +119,7 @@
       "head_sha": "cd6a66435851b57f61c5a68c4ab7f8356701f910",
       "number": 14299,
       "title": "ARM26BX06-NV012: decision-as-program Phase I qualification + demo carrier",
-      "updated_at": "2026-09-14T03:56:40Z"
+      "updated_at": "2026-09-14T04:32:38Z"
     },
     {
       "author": "woahwhattheheck",
@@ -124,24 +135,13 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "znb-m7p2/ar-leakage-desk-20260914",
-      "created_at": "2026-09-14T03:53:34Z",
-      "draft": false,
-      "head_sha": "ebf9fe1056ffcb0cd724a00cb9032dc568fef2d4",
-      "number": 14289,
-      "title": "Revenue: ship Accounts Receivable Leakage Desk",
-      "updated_at": "2026-09-14T03:58:43Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
       "branch": "zeta/usac-it-26-139-ai-consulting",
       "created_at": "2026-09-14T03:50:07Z",
       "draft": false,
       "head_sha": "ec793b65b128e56d51c7835e05876f4356b9907b",
       "number": 14281,
       "title": "revenue: package USAC IT-26-139 AI consulting pursuit",
-      "updated_at": "2026-09-14T04:06:14Z"
+      "updated_at": "2026-09-14T04:33:35Z"
     },
     {
       "author": "woahwhattheheck",
@@ -149,10 +149,10 @@
       "branch": "z-vigil/org-atomic-outbound-lease-20260913",
       "created_at": "2026-09-14T03:47:10Z",
       "draft": false,
-      "head_sha": "3a1ecef508ebf6430a3824f8e5d46ae21c53b960",
+      "head_sha": "09cd89669f83dcc2f64716d0131d846a78346bbe",
       "number": 14276,
       "title": "Revenue safety: atomic organization-wide outbound lease",
-      "updated_at": "2026-09-14T03:58:50Z"
+      "updated_at": "2026-09-14T04:35:05Z"
     },
     {
       "author": "woahwhattheheck",
@@ -199,7 +199,6 @@
     "13844": "51a23e49c939f3090aedd852539fa2f1806ae630",
     "13857": "a1dde557acac3aa3531b7a5541e11f95b035f3bf",
     "13862": "820a0f79675169025ebf6a28194114077c95e993",
-    "13863": "ae949f0a623b1eb8af94fe76427cb93169f55d91",
     "13865": "323b9a7c646df4dabaf9233a178093add5aa11ca",
     "13874": "2d1fb3e3cff82f036a977036706dbaa6749c8459",
     "13877": "0a86059fec8319f9b3782e833089d76847bc408b",
@@ -229,22 +228,77 @@
     "14235": "090815cee9355c36db86a6666023f391dc9ebcec",
     "14246": "b9f1b1779b4e4d9b7c19a9fc4744d28881282cd0",
     "14254": "6fbb133246fa0c20ae127dd3b64b8c0ded470615",
-    "14256": "8e0fd744643b9ee877b1e35dd703a1f3b69f12d1",
+    "14256": "49d1fc2b3913407b8c6dd951977dae18e4611481",
     "14270": "86c47a9e32a67eece1382899a898d9ccf40e26da",
     "14273": "113a792a7e331d089d3fb89c2ad3e3147fa9eb16",
-    "14276": "3a1ecef508ebf6430a3824f8e5d46ae21c53b960",
+    "14276": "09cd89669f83dcc2f64716d0131d846a78346bbe",
     "14281": "ec793b65b128e56d51c7835e05876f4356b9907b",
-    "14289": "ebf9fe1056ffcb0cd724a00cb9032dc568fef2d4",
     "14296": "932635011e5850cedf27eaddfa12365000352344",
     "14299": "cd6a66435851b57f61c5a68c4ab7f8356701f910",
-    "14302": "e2faaf05d37fcb812f286b9fc7609c9eb231735e",
     "14310": "77807c1ab78041a8a38c6ba818d4110691a8e444",
-    "14312": "ebf4f20b91c29661527ebf9d321681054f1c0653"
+    "14314": "742aeafae8c258759c435bf6758e1546ff258c56",
+    "14317": "767953bfe5313334e9011709afaac685b0901a26",
+    "14318": "008ef427c26f9effbbea6e6df718fbad023b6613"
   },
-  "pulls_listed": 62,
+  "pulls_listed": 61,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 64.3,
+  "queue_depth_per_runner": 61.1,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "swarm-z/zgl-nourish-digital-health-20260914",
+      "closed_at": "2026-09-14T04:34:09Z",
+      "head_sha": "1a4bd2f505d3f6537af1d7ce641b816669970722",
+      "merged_at": "2026-09-14T04:34:09Z",
+      "number": 14315,
+      "state": "MERGED",
+      "title": "Add NIH NOURISH local-first association notebook prototype"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zfhj2x9/outbound-canonical-seam-fix-rejoin-20260913",
+      "closed_at": "2026-09-14T04:24:48Z",
+      "head_sha": "28b1a3131e900ffc10209231b22aba7d8ecd66b7",
+      "merged_at": null,
+      "number": 14302,
+      "state": "CLOSED",
+      "title": "[SUPERSEDED / AUDIT ONLY] fix(outbound): opportunity seam repair"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zmg-n4v7/f45-productive-harvest-collect-20260913",
+      "closed_at": "2026-09-14T04:22:36Z",
+      "head_sha": "2e150e0ea32c5f8ecb7456d077ca6befb88dcfb4",
+      "merged_at": "2026-09-14T04:22:35Z",
+      "number": 13863,
+      "state": "MERGED",
+      "title": "titan: add F45 productive HARVEST/COLLECT protection"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zgf-j7m5/offer-outcome-learning-main2-20260913",
+      "closed_at": "2026-09-14T04:10:28Z",
+      "head_sha": "4623ca47ec76795fe8befae27db5909bef220164",
+      "merged_at": "2026-09-14T04:10:28Z",
+      "number": 14312,
+      "state": "MERGED",
+      "title": "Offer Outcome Learning: fresh-main evidence-bound revenue feedback"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "znb-m7p2/ar-leakage-desk-20260914",
+      "closed_at": "2026-09-14T04:08:11Z",
+      "head_sha": "ebf9fe1056ffcb0cd724a00cb9032dc568fef2d4",
+      "merged_at": "2026-09-14T04:08:11Z",
+      "number": 14289,
+      "state": "MERGED",
+      "title": "Revenue: ship Accounts Receivable Leakage Desk"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -354,65 +408,10 @@
       "number": 14258,
       "state": "MERGED",
       "title": "Fix organization-pressure proposed event ID admission"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zv-reconcile-14293",
-      "closed_at": "2026-09-14T03:57:09Z",
-      "head_sha": "9e11c7805ecc369fa61912aead9dd41e324f4b56",
-      "merged_at": "2026-09-14T03:57:09Z",
-      "number": 14301,
-      "state": "MERGED",
-      "title": "reconcile: yield duplicate first-touch CAS to #14273"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "zam-v7c2/org-contact-pressure-event-id-admission",
-      "branch": "zpc-j4n8/org-pressure-request-expiry",
-      "closed_at": "2026-09-14T03:55:58Z",
-      "head_sha": "776f46a8e7b09206b597af45669d2ff057796f73",
-      "merged_at": "2026-09-14T03:55:58Z",
-      "number": 14295,
-      "state": "MERGED",
-      "title": "Fix organization-pressure READY request freshness"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-vector-20260913",
-      "closed_at": "2026-09-14T03:55:47Z",
-      "head_sha": "76ddda79525abff4f77982a44c236a87f9f56344",
-      "merged_at": "2026-09-14T03:55:47Z",
-      "number": 14293,
-      "state": "MERGED",
-      "title": "revenue: make first-touch outreach collision-proof"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-sol-41/outreach-claim-fence-20260914",
-      "closed_at": "2026-09-14T03:54:38Z",
-      "head_sha": "f1d85d51448eb9742dcb4c2765b03050c2d79ebe",
-      "merged_at": null,
-      "number": 14288,
-      "state": "CLOSED",
-      "title": "SUPERSEDED: atomic outreach claim fence prototype"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zeh-m6p2/ypf-wetgas-fusionmeter-20260913",
-      "closed_at": "2026-09-14T03:49:39Z",
-      "head_sha": "c1aafc9fdc6909a3cebc2965f9966724ca2d40e6",
-      "merged_at": "2026-09-14T03:49:39Z",
-      "number": 14260,
-      "state": "MERGED",
-      "title": "YPF wet-gas challenge: FusionMeter AGA-3 PLR correction carrier"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-14T04:06:44Z",
+  "unchanged_since": "2026-09-14T04:38:31Z",
   "undatable_pulls": []
 }
