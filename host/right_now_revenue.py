@@ -33,7 +33,7 @@ for _name in dir(_core):
 
 
 CHECKOUT_CURRENT_PATH = ROOT / "revenue" / "right_now" / "stripe_checkout_current.json"
-CHECKOUT_CURRENT_SHA256 = "3ccefcbe58f9856a486475ce2321a2df3eac443207c4ac4f3badfbfc8b64dbf8"
+CHECKOUT_CURRENT_SHA256 = "8374c72137777216abe09d9bc22b6e85ab7d406ed9877bf50009f45a6162e325"
 CHECKOUT_CURRENT_MAX_AGE = timedelta(hours=24)
 
 _HISTORICAL_VALIDATE_CHECKOUT_AUTHORITY = _core.validate_checkout_authority

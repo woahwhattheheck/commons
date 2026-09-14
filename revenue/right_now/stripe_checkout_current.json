@@ -17,6 +17,7 @@
     "contract_version": "commons-agent-failure-autopsy-offer/v1",
     "currency": "usd",
     "id": "plink_1UCFbLATH4EDE7XDlTunr6iO",
+    "livemode": true,
     "offer_id": "agent-failure-autopsy-29",
     "url": "https://buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g"
   },
