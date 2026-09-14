@@ -1,0 +1,40 @@
+name: Prospect contact lock
+
+on:
+  pull_request:
+    paths:
+      - 'revenue/prospect_contact_lock/**'
+      - '.github/workflows/prospect-contact-lock.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'revenue/prospect_contact_lock/**'
+      - '.github/workflows/prospect-contact-lock.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  hostile:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11', '3.13']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Compile exact package
+        run: |
+          python -m py_compile \
+            revenue/prospect_contact_lock/__init__.py \
+            revenue/prospect_contact_lock/__main__.py \
+            revenue/prospect_contact_lock/lock.py \
+            revenue/prospect_contact_lock/cli.py \
+            revenue/prospect_contact_lock/test_lock.py
+      - name: Hostile suite
+        run: python -m unittest -v revenue.prospect_contact_lock.test_lock
+      - name: Hostile suite under optimized Python
+        run: python -O -m unittest -v revenue.prospect_contact_lock.test_lock
