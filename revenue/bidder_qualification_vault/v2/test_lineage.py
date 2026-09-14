@@ -3,8 +3,8 @@ from __future__ import annotations
 import copy
 import unittest
 
-from revenue.bid_evidence_registry.engine import compile_registry, verify_receipt
-from revenue.bid_evidence_registry.test_support import H, H2, evidence, payload, req
+from revenue.bidder_qualification_vault.v2.engine import compile_registry, verify_receipt
+from revenue.bidder_qualification_vault.v2.test_support import H, H2, evidence, payload, req
 
 class LineageTests(unittest.TestCase):
     def state(self, p):
@@ -13,6 +13,17 @@ class LineageTests(unittest.TestCase):
     def test_future_evidence_conflicts(self):
         ev = evidence("w9-future", "W9", issued="2026-09-15T00:00:00Z", captured="2026-09-15T01:00:00Z")
         self.assertEqual(self.state(payload([ev], [req("r", "W9")])), "CONFLICT")
+
+    def test_future_successor_cannot_make_prior_generation_green(self):
+        old = evidence("w9-old", "W9", sha=H)
+        future = evidence("w9-future", "W9", sha=H2, supersedes="w9-old",
+                          issued="2026-09-15T00:00:00Z", captured="2026-09-15T01:00:00Z")
+        self.assertEqual(self.state(payload([old, future], [req("r", "W9")])), "CONFLICT")
+
+    def test_revoked_successor_does_not_resurrect_prior_generation(self):
+        old = evidence("w9-old", "W9", sha=H)
+        revoked = evidence("w9-new", "W9", sha=H2, supersedes="w9-old", revoked_at="2026-09-10T00:00:00Z")
+        self.assertEqual(self.state(payload([old, revoked], [req("r", "W9")])), "SUPERSEDED")
 
     def test_changed_same_id_conflicts(self):
         a = evidence("same", "W9", sha=H)

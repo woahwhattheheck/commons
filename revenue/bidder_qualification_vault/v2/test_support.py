@@ -73,7 +73,7 @@ def payload(evs=None, reqs=None):
     if reqs is None:
         reqs = [req("r-w9", "W9")]
     return {
-        "schema": "tjlabs.bid-evidence-registry/v1",
+        "schema": "bidder-qualification-vault/entity-bound/v2",
         "generation_id": "gen-20260914",
         "entity_id": "token-junkie-labs",
         "as_of": "2026-09-14T03:50:00Z",

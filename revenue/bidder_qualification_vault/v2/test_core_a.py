@@ -2,8 +2,8 @@ from __future__ import annotations
 
 import unittest
 
-from revenue.bid_evidence_registry.engine import RegistryError, compile_registry
-from revenue.bid_evidence_registry.test_support import H, H2, evidence, payload, req
+from revenue.bidder_qualification_vault.v2.engine import RegistryError, compile_registry
+from revenue.bidder_qualification_vault.v2.test_support import H, H2, evidence, payload, req
 
 class CoreATests(unittest.TestCase):
     def state(self, p):

@@ -86,7 +86,7 @@ class LeaseProtocolTests(unittest.TestCase):
         with self.assertRaises(lease.LeaseHeld):
             lease.release(sent, holder="Z-Forge", reason="oops", now=T0 + dt.timedelta(seconds=4))
 
-    def test_expired_takeover_increments_generation(self):
+    def test_expired_takeover_increments_generation_when_provider_unchanged(self):
         obj = lease.acquire(
             opportunity="ACME diagnostic",
             channel="email",
@@ -98,12 +98,30 @@ class LeaseProtocolTests(unittest.TestCase):
         )
         with self.assertRaises(lease.LeaseHeld):
             lease.takeover(obj, holder="B", provider_snapshot="v1", now=T0 + dt.timedelta(seconds=4))
-        nxt = lease.takeover(obj, holder="B", provider_snapshot="v2", now=T0 + dt.timedelta(seconds=5), ttl_seconds=9)
+        nxt = lease.takeover(obj, holder="B", provider_snapshot="v1", now=T0 + dt.timedelta(seconds=5), ttl_seconds=9)
         self.assertEqual(nxt.holder, "B")
         self.assertEqual(nxt.generation, 2)
-        self.assertEqual(nxt.provider_snapshot, lease.fingerprint("v2"))
+        self.assertEqual(nxt.provider_snapshot, lease.fingerprint("v1"))
 
-    def test_release_allows_cas_takeover_but_not_send(self):
+    def test_expired_takeover_rejects_changed_provider_after_possible_send(self):
+        obj = lease.acquire(
+            opportunity="ACME diagnostic",
+            channel="email",
+            destination="buyer@example.com",
+            holder="A",
+            provider_snapshot="thread:123/history:9",
+            now=T0,
+            ttl_seconds=5,
+        )
+        with self.assertRaisesRegex(lease.PreflightFailed, "reconcile before takeover"):
+            lease.takeover(
+                obj,
+                holder="B",
+                provider_snapshot="thread:123/history:10",
+                now=T0 + dt.timedelta(seconds=5),
+            )
+
+    def test_release_allows_same_provider_takeover_but_not_send(self):
         obj = lease.acquire(
             opportunity="ACME diagnostic",
             channel="email",
@@ -116,9 +134,22 @@ class LeaseProtocolTests(unittest.TestCase):
         self.assertEqual(released.state, lease.RELEASED)
         with self.assertRaises(lease.PreflightFailed):
             lease.assert_preflight(released, holder="A", provider_snapshot="v1", now=T0 + dt.timedelta(seconds=2))
-        nxt = lease.takeover(released, holder="B", provider_snapshot="v2", now=T0 + dt.timedelta(seconds=2))
+        nxt = lease.takeover(released, holder="B", provider_snapshot="v1", now=T0 + dt.timedelta(seconds=2))
         self.assertEqual(nxt.state, lease.ACTIVE)
         self.assertEqual(nxt.holder, "B")
+
+    def test_released_takeover_rejects_changed_provider(self):
+        obj = lease.acquire(
+            opportunity="ACME diagnostic",
+            channel="email",
+            destination="buyer@example.com",
+            holder="A",
+            provider_snapshot="v1",
+            now=T0,
+        )
+        released = lease.release(obj, holder="A", reason="handoff", now=T0 + dt.timedelta(seconds=1))
+        with self.assertRaisesRegex(lease.PreflightFailed, "reconcile before takeover"):
+            lease.takeover(released, holder="B", provider_snapshot="v2", now=T0 + dt.timedelta(seconds=2))
 
 
 class StoreRaceTests(unittest.TestCase):
@@ -161,7 +192,7 @@ class StoreRaceTests(unittest.TestCase):
             self.assertEqual(rev2, seen)
 
             variants = [
-                lease.takeover(current, holder=f"seat-{i}", provider_snapshot=f"v{i}", now=T0 + dt.timedelta(seconds=2))
+                lease.takeover(current, holder=f"seat-{i}", provider_snapshot="provider-v1", now=T0 + dt.timedelta(seconds=2))
                 for i in range(24)
             ]
 
@@ -188,7 +219,7 @@ class StoreRaceTests(unittest.TestCase):
                 if current.state == lease.ACTIVE:
                     candidate = lease.release(current, holder=current.holder, reason=f"cycle-{n}", now=T0 + dt.timedelta(seconds=n + 1))
                 else:
-                    candidate = lease.takeover(current, holder=f"seat-{n}", provider_snapshot=f"v{n}", now=T0 + dt.timedelta(seconds=n + 1))
+                    candidate = lease.takeover(current, holder=f"seat-{n}", provider_snapshot="provider-v1", now=T0 + dt.timedelta(seconds=n + 1))
                 rev = store.compare_and_swap(candidate, expected_revision=rev)
                 json.loads(pathlib.Path(tmp, f"{obj.key}.json").read_text())
 

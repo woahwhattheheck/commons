@@ -2,8 +2,8 @@ from __future__ import annotations
 
 import unittest
 
-from revenue.bid_evidence_registry.engine import RegistryError, compile_registry
-from revenue.bid_evidence_registry.test_support import H, H2, evidence, payload, req
+from revenue.bidder_qualification_vault.v2.engine import RegistryError, compile_registry
+from revenue.bidder_qualification_vault.v2.test_support import H, H2, evidence, payload, req
 
 class CoreBTests(unittest.TestCase):
     def state(self, p):
@@ -22,6 +22,14 @@ class CoreBTests(unittest.TestCase):
     def test_entity_transplant_cannot_green(self):
         ev = evidence("w9-other", "W9", entity_id="other-company")
         self.assertEqual(self.state(payload([ev], [req("r", "W9")])), "MISSING")
+
+    def test_v1_subject_relabel_regression_same_evidence_digest_cannot_green(self):
+        # V1 trusted roots did not bind query.subject_id. V2 must not let a caller
+        # relabel an otherwise identical retained evidence generation to another entity.
+        ev = evidence("w9-company-a", "W9", entity_id="company-a", sha=H)
+        p = payload([ev], [req("r", "W9")])
+        p["entity_id"] = "company-b"
+        self.assertEqual(self.state(p), "MISSING")
 
     def test_opportunity_only_not_reused_globally(self):
         ev = evidence("w9-op", "W9", reuse_scope="OPPORTUNITY_ONLY", opportunity_ids=["usac-it-26-139"])

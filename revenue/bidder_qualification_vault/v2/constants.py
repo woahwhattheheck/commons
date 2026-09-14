@@ -2,8 +2,8 @@ from __future__ import annotations
 
 import re
 
-INPUT_SCHEMA = "tjlabs.bid-evidence-registry/v1"
-OUTPUT_SCHEMA = "tjlabs.bid-evidence-manifest/v1"
+INPUT_SCHEMA = "bidder-qualification-vault/entity-bound/v2"
+OUTPUT_SCHEMA = "bidder-qualification-vault/entity-bound-manifest/v2"
 
 STATES = {
     "CURRENT_VERIFIED",
