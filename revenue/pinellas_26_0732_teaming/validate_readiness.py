@@ -119,6 +119,11 @@ def check(opportunity, state, workshare, now=None):
         if authority.get(key) is not False:
             reasons.append(f"{key} must remain false")
 
+    # Safety/identity/privacy reasons are captured before ordinary commercial
+    # readiness checks so CLOSED_NO_FIT can ignore stale pricing/deadline gates
+    # without ever bypassing anti-spam, private-material, or authority fences.
+    safety_reasons = list(reasons)
+
     _valid_fee(workshare, reasons)
 
     deadline = opportunity.get("deadline", {})
@@ -138,14 +143,14 @@ def check(opportunity, state, workshare, now=None):
 
     disposition = state.get("disposition")
     if disposition == CLOSED:
+        closeout_reasons = []
         closeout = state.get("closeout", {})
         if not isinstance(closeout.get("reason"), str) or not closeout["reason"].strip():
-            reasons.append("closeout reason missing")
+            closeout_reasons.append("closeout reason missing")
         if not _evidence(closeout):
-            reasons.append("closeout evidence missing")
-        if any("authority" in reason or "confidential" in reason or "DNR" in reason for reason in reasons):
-            return HOLD, reasons
-        return (CLOSED if not reasons else HOLD), reasons
+            closeout_reasons.append("closeout evidence missing")
+        blockers = safety_reasons + closeout_reasons
+        return (CLOSED if not blockers else HOLD), blockers
     if disposition != "ACTIVE_HOLD":
         reasons.append("invalid disposition")
 
