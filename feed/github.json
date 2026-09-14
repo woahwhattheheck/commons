@@ -1,9 +1,9 @@
 {
   "counts": {
-    "open_issues": 84,
-    "open_pull_requests": 50,
-    "runs_in_progress": 18,
-    "runs_queued": 240
+    "open_issues": 81,
+    "open_pull_requests": 48,
+    "runs_in_progress": 19,
+    "runs_queued": 292
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -69,35 +69,13 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "zmh-c6t4-arc3-hermetic-import-escape",
-      "created_at": "2026-09-14T01:36:13Z",
+      "branch": "zkf-t9c4/right-now-stripe-currentness-20260913",
+      "created_at": "2026-09-14T01:39:43Z",
       "draft": false,
-      "head_sha": "3cec023c891bb16861ec7f01dc3cf9de8f4fc333",
-      "number": 14157,
-      "title": "fix(arc3): close hermetic dynamic-import native escape",
-      "updated_at": "2026-09-14T01:36:13Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zvt-q7m3/service-deal-economics-20260913",
-      "created_at": "2026-09-14T01:36:09Z",
-      "draft": false,
-      "head_sha": "4413bf240a6862c5ce773c15f26aca7b03f0a62b",
-      "number": 14156,
-      "title": "Revenue: add Service Deal Economics Desk",
-      "updated_at": "2026-09-14T01:36:09Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zeb-r4k8/delivery-capacity-allocator",
-      "created_at": "2026-09-14T01:35:47Z",
-      "draft": false,
-      "head_sha": "df02c0d5a962e9503b6e64fd4b93edf0fd61542a",
-      "number": 14155,
-      "title": "revenue: allocate scarce delivery capacity across accepted deals",
-      "updated_at": "2026-09-14T01:35:47Z"
+      "head_sha": "d28e8cf26355869c10b650ca61b534e82661ec57",
+      "number": 14159,
+      "title": "Revenue: require fresh Stripe readback for right-now checkout truth",
+      "updated_at": "2026-09-14T01:39:43Z"
     },
     {
       "author": "woahwhattheheck",
@@ -105,10 +83,10 @@
       "branch": "zgc-p7v2/wri-open-timber-proposal-20260913",
       "created_at": "2026-09-14T01:32:44Z",
       "draft": false,
-      "head_sha": "d268854c6935bdbbb43b8c804c766fc97a91a307",
+      "head_sha": "421b0703a91d251e94be8ca55d9d22c6a76d8f0a",
       "number": 14151,
       "title": "Revenue: add WRI Open Timber Portal proposal carrier",
-      "updated_at": "2026-09-14T01:32:44Z"
+      "updated_at": "2026-09-14T01:39:42Z"
     },
     {
       "author": "woahwhattheheck",
@@ -116,10 +94,10 @@
       "branch": "zhk/shipaton-proofpocket",
       "created_at": "2026-09-14T01:30:35Z",
       "draft": false,
-      "head_sha": "c9af0f0e10608ccf426608a7537a0c459cf889b8",
+      "head_sha": "01dfcd09b6ad5754fbe362715f499fdb43d29c2a",
       "number": 14147,
       "title": "build(shipaton): add ProofPocket Android RevenueCat carrier",
-      "updated_at": "2026-09-14T01:35:41Z"
+      "updated_at": "2026-09-14T01:40:34Z"
     },
     {
       "author": "woahwhattheheck",
@@ -127,10 +105,10 @@
       "branch": "zpt-j8w4/commercial-experiment-lab-14120",
       "created_at": "2026-09-14T01:29:44Z",
       "draft": false,
-      "head_sha": "18af180c4d101698ea45fcaf10051629d4cd0611",
+      "head_sha": "e7e3f498ffca14bfbe1261b24ac6958c57a2321c",
       "number": 14142,
       "title": "Revenue: evidence-bound commercial experiment lab",
-      "updated_at": "2026-09-14T01:34:18Z"
+      "updated_at": "2026-09-14T01:40:28Z"
     },
     {
       "author": "woahwhattheheck",
@@ -175,6 +153,28 @@
       "number": 14076,
       "title": "feat: add Fire TV SpoilerShield competition carrier",
       "updated_at": "2026-09-13T16:33:46Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zkq-m7v4/hive016-creator-niche-app-studio-20260913",
+      "created_at": "2026-09-13T16:24:30Z",
+      "draft": false,
+      "head_sha": "533c121abc2a8ea4d2ba90439400d46594b94cf1",
+      "number": 14066,
+      "title": "hive016: ship creator-backed niche app studio",
+      "updated_at": "2026-09-14T01:28:27Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zcb-h8n6/reply-revenue-chronology-20260913",
+      "created_at": "2026-09-13T15:44:47Z",
+      "draft": false,
+      "head_sha": "05f6f1775a5762ffa18c5c19da1d94d35bc45bb0",
+      "number": 14057,
+      "title": "Make reply-to-revenue contact state chronology-safe",
+      "updated_at": "2026-09-13T16:18:09Z"
     }
   ],
   "open_heads": {
@@ -222,17 +222,70 @@
     "14086": "4c8e4df0e5a085565937ee85e34f464f76fcdc11",
     "14105": "d0c104f5fd41f4bb1e4f77fbb768804654b27a85",
     "14122": "1c95d8463cbaf7e6d11d266d292a5b7792a2dbbb",
-    "14142": "18af180c4d101698ea45fcaf10051629d4cd0611",
-    "14147": "c9af0f0e10608ccf426608a7537a0c459cf889b8",
-    "14151": "d268854c6935bdbbb43b8c804c766fc97a91a307",
-    "14155": "df02c0d5a962e9503b6e64fd4b93edf0fd61542a",
-    "14156": "4413bf240a6862c5ce773c15f26aca7b03f0a62b",
-    "14157": "3cec023c891bb16861ec7f01dc3cf9de8f4fc333"
+    "14142": "e7e3f498ffca14bfbe1261b24ac6958c57a2321c",
+    "14147": "01dfcd09b6ad5754fbe362715f499fdb43d29c2a",
+    "14151": "421b0703a91d251e94be8ca55d9d22c6a76d8f0a",
+    "14159": "d28e8cf26355869c10b650ca61b534e82661ec57"
   },
-  "pulls_listed": 50,
+  "pulls_listed": 48,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 13.3,
+  "queue_depth_per_runner": 15.4,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zzc/commercial-cash-realization-ledger-20260913",
+      "closed_at": "2026-09-14T01:40:45Z",
+      "head_sha": "df8bae191b85f84fc69fb484c849b02e5213d837",
+      "merged_at": "2026-09-14T01:40:45Z",
+      "number": 14158,
+      "state": "MERGED",
+      "title": "feat: add commercial cash-realization evidence ledger"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "ztm-p6v4/bidder-qualification-vault",
+      "closed_at": "2026-09-14T01:40:31Z",
+      "head_sha": "5e97687d5d03b79ae13adfd0b773fa0439574fe4",
+      "merged_at": "2026-09-14T01:40:31Z",
+      "number": 14160,
+      "state": "MERGED",
+      "title": "Revenue: add bidder qualification evidence vault"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zeb-r4k8/delivery-capacity-allocator",
+      "closed_at": "2026-09-14T01:39:53Z",
+      "head_sha": "df02c0d5a962e9503b6e64fd4b93edf0fd61542a",
+      "merged_at": "2026-09-14T01:39:53Z",
+      "number": 14155,
+      "state": "MERGED",
+      "title": "revenue: allocate scarce delivery capacity across accepted deals"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zvt-q7m3/service-deal-economics-20260913",
+      "closed_at": "2026-09-14T01:38:26Z",
+      "head_sha": "1bda608237117a473476a6fadc01832a40e225c9",
+      "merged_at": "2026-09-14T01:38:26Z",
+      "number": 14156,
+      "state": "MERGED",
+      "title": "Revenue: add Service Deal Economics Desk"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zmh-c6t4-arc3-hermetic-import-escape",
+      "closed_at": "2026-09-14T01:37:49Z",
+      "head_sha": "3cec023c891bb16861ec7f01dc3cf9de8f4fc333",
+      "merged_at": "2026-09-14T01:37:49Z",
+      "number": 14157,
+      "state": "MERGED",
+      "title": "fix(arc3): close hermetic dynamic-import native escape"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -342,65 +395,10 @@
       "number": 14126,
       "state": "MERGED",
       "title": "feat: add public-sector AI governance control dossier"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zgl-m4q9/mozilla-lit-all3-v2-r2",
-      "closed_at": "2026-09-14T01:19:29Z",
-      "head_sha": "42b8859ce601da7759fbceea656533cf58672617",
-      "merged_at": "2026-09-14T01:19:29Z",
-      "number": 14125,
-      "state": "MERGED",
-      "title": "research: Lost in Transcription all-three multitrack V2"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zgl-m4q9/mozilla-lit-all3-v2",
-      "closed_at": "2026-09-14T01:18:58Z",
-      "head_sha": "24d6b0e374c62dbc3ecdd5820cd9e4d3630887f3",
-      "merged_at": null,
-      "number": 14123,
-      "state": "CLOSED",
-      "title": "research: Lost in Transcription all-three multitrack V2"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zep-b4n8/live-opportunity-intake-20260913",
-      "closed_at": "2026-09-14T01:17:28Z",
-      "head_sha": "6d963d04d54f33586b5ff96cc0388c47d9214211",
-      "merged_at": "2026-09-14T01:17:28Z",
-      "number": 14114,
-      "state": "MERGED",
-      "title": "revenue: compile live opportunity state into portfolio input"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zgc-p7v2/technical-capability-packet-20260913",
-      "closed_at": "2026-09-14T01:13:09Z",
-      "head_sha": "ab0ebaed9c4db0bb3944d6b3d7a093957ecb95ba",
-      "merged_at": "2026-09-14T01:13:09Z",
-      "number": 14116,
-      "state": "MERGED",
-      "title": "Revenue: add buyer technical capability packet"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zca-q7v3/mozilla-spen-codeswitch",
-      "closed_at": "2026-09-14T01:07:21Z",
-      "head_sha": "a48192c82ad5cb57ad5ab3a62cf9fad4c3ffaa2d",
-      "merged_at": "2026-09-14T01:07:21Z",
-      "number": 14112,
-      "state": "MERGED",
-      "title": "competition: Mozilla Spanish-English offline code-switch ASR carrier"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-14T01:37:04Z",
+  "unchanged_since": "2026-09-14T01:40:59Z",
   "undatable_pulls": []
 }
