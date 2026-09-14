@@ -349,8 +349,10 @@ def audit_document(document):
 
     receipts = [_payload(record) for record in records]
     by_branch = defaultdict(list)
-    for receipt in receipts:
-        by_branch[receipt["expected_branch"]].append(receipt)
+    for record, receipt in zip(records, receipts):
+        send = record["send"]
+        if send["authority"] == "provider-receipt" and send["status"] == "sent":
+            by_branch[receipt["expected_branch"]].append(receipt)
     incidents = []
     for branch, group in sorted(by_branch.items()):
         if len(group) <= 1:
