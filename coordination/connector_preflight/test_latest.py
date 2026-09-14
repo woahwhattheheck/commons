@@ -7,9 +7,15 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from coordination.connector_preflight import PreflightError, compile_at
+from coordination.connector_preflight import (
+    PreflightError,
+    compile_at,
+    compile_current,
+    verify_current,
+)
 from coordination.connector_preflight.latest import read_json_file
 from coordination.connector_preflight.test_preflight import SHA_C, SHA_D, T0, attempt, base_input
+from unittest.mock import patch
 
 
 class LatestDiscoveryTests(unittest.TestCase):
@@ -107,6 +113,68 @@ class LatestDiscoveryTests(unittest.TestCase):
         packet = compile_at(raw, T0)["packet"]
         self.assertEqual("HOLD", packet["overall_state"])
         self.assertIn("LATEST_ATTEMPT_CONFLICT_GitHub_create_branch", packet["reasons"])
+
+    def test_public_current_clock_injection_is_impossible(self):
+        raw = base_input()
+        bundle = compile_at(raw, T0, mode="CURRENT")
+        with self.assertRaises(TypeError):
+            compile_current(raw, clock=lambda: T0)
+        with self.assertRaises(TypeError):
+            verify_current(raw, bundle, clock=lambda: T0)
+
+    def test_public_current_paths_use_process_owned_clock(self):
+        raw = base_input()
+        with patch("coordination.connector_preflight.core.utc_now", return_value=T0):
+            bundle = compile_current(raw)
+            result = verify_current(raw, bundle)
+        self.assertEqual("CURRENT", bundle["packet"]["evaluation_mode"])
+        self.assertTrue(result["current_valid"])
+
+    def test_fresh_wrapper_cannot_launder_old_read_only_discovery(self):
+        raw = base_input()
+        raw["policy"]["max_age_seconds"] = 60
+        raw["captured_at"] = "2026-09-14T04:39:55Z"
+        raw["discoveries"][0]["requested_at"] = "2026-09-14T03:00:00Z"
+        raw["discoveries"][0]["completed_at"] = "2026-09-14T03:00:05Z"
+        raw["discoveries"][0]["actions"] = [
+            {"connector": "GitHub", "name": "fetch_file", "access": "READ"},
+            {"connector": "Slack", "name": "slack_read_channel", "access": "READ"},
+        ]
+        packet = compile_at(raw, T0, mode="CURRENT")["packet"]
+        self.assertEqual("HOLD", packet["overall_state"])
+        self.assertFalse(packet["work_blocked_claim_supported"])
+        self.assertIn("CONTROLLING_DISCOVERY_STALE", packet["reasons"])
+
+    def test_fresh_wrapper_cannot_launder_old_write_evidence(self):
+        raw = base_input(
+            attempts=[
+                attempt(
+                    "attempt-github-old",
+                    "GitHub",
+                    "create_branch",
+                    "SUCCESS",
+                    at="2026-09-14T03:00:10Z",
+                ),
+                attempt(
+                    "attempt-slack-old",
+                    "Slack",
+                    "slack_send_message",
+                    "SUCCESS",
+                    at="2026-09-14T03:00:11Z",
+                    digest=SHA_D,
+                ),
+            ]
+        )
+        raw["policy"]["max_age_seconds"] = 60
+        raw["captured_at"] = "2026-09-14T04:39:55Z"
+        raw["discoveries"][0]["requested_at"] = "2026-09-14T03:00:00Z"
+        raw["discoveries"][0]["completed_at"] = "2026-09-14T03:00:05Z"
+        packet = compile_at(raw, T0, mode="CURRENT")["packet"]
+        self.assertEqual("HOLD", packet["overall_state"])
+        self.assertFalse(packet["work_blocked_claim_supported"])
+        self.assertIn("CONTROLLING_DISCOVERY_STALE", packet["reasons"])
+        self.assertIn("LATEST_WRITE_ATTEMPT_STALE_GitHub_create_branch", packet["reasons"])
+        self.assertIn("LATEST_WRITE_ATTEMPT_STALE_Slack_slack_send_message", packet["reasons"])
 
     def test_policy_overlay_reload_is_idempotent(self):
         import coordination.connector_preflight.latest as latest
