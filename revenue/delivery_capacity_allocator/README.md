@@ -1,16 +1,18 @@
 # Delivery Capacity Allocator
 
-`delivery-capacity-allocation/v1` is a buyer-neutral, offline post-acceptance capacity diagnostic for scarce service delivery windows.
+`tjlabs.delivery-capacity-allocation/v2` is a buyer-neutral, offline post-acceptance capacity diagnostic for scarce service delivery windows. Version 2 is intentional: the prior v1 receipt shape/semantics could imply operational currentness from caller-supplied roots, so the fail-closed authority contract is not silently published under the old schema.
 
-Commons already tracks one deal truthfully and can prioritize pre-sale pursuits. This package solves a different problem: multiple individually valid accepted/funded deals must not all be planned against the same bounded delivery capacity. It consumes a capacity-policy generation, a deal-demand generation, and an active-reservation generation, conserves active reservations first, then deterministically computes whole-slot candidates for owner review.
+Commons already tracks one deal truthfully and can prioritize pre-sale pursuits. This package solves a different problem: multiple individually valid accepted/funded deals must not all be planned against the same bounded delivery capacity. It consumes a capacity-policy generation, a deal-demand generation, and an active-reservation generation, conserves active reservations first, then deterministically computes whole-slot diagnostic candidates.
 
 ## Allocation contract
 
-Only explicit `BUYER_ACCEPTED` and `FUNDED_TO_START` rows compete for new capacity. Existing active reservations consume slot units before new work is considered. Corrupt known-slot reservations still consume their claimed units before HOLD so bad lineage or service metadata cannot accidentally free capacity.
+Only explicit `BUYER_ACCEPTED` and `FUNDED_TO_START` rows compete for diagnostic capacity. Existing active reservations consume slot units before new work is considered. Corrupt known-slot reservations still consume their claimed units before HOLD so bad lineage or service metadata cannot accidentally free capacity.
 
 New capacity is never proposed into a slot that has already started. A future `accepted_at`, an ended active reservation, an orphan active reservation whose deal disappeared from the current demand generation, overdraw, unknown slot, service mismatch, duplicate active reservation, or identity rebinding fails closed. Orphan/corrupt known-slot reservations remain capacity-consuming while the global state is held.
 
 Priority remains deterministic: `FUNDED_TO_START` before `BUYER_ACCEPTED`, then earliest deadline, earliest acceptance time, and stable deal ID. Input array order does not change the semantic diagnostic allocation or `allocation_sha256`; the outer receipt remains bound to exact raw source bytes.
+
+A positive per-deal diagnostic result is named `DIAGNOSTIC_CAPACITY_CANDIDATE`, never `ALLOCATED_FOR_OWNER_REVIEW`. It also carries `DIAGNOSTIC_ONLY_NO_OPERATIONAL_AUTHORITY` in its reasons. The output deliberately avoids an operational-sounding allocation label that a downstream consumer could detach from the receipt-level HOLD.
 
 ## Trust boundary: hashes are integrity, not authority
 
@@ -28,7 +30,7 @@ A future operational host may consume the diagnostic core only after it independ
 
 ## Authority ceiling
 
-Every receipt keeps buyer contact, schedule commitment, provider send, payment mutation, contract acceptance, staffing commitment, deployment, and revenue recognition authority false. `ALLOCATED_FOR_OWNER_REVIEW` inside a diagnostic receipt is a computed capacity candidate, not operational authority and not a buyer promise or external reservation.
+Every receipt keeps buyer contact, schedule commitment, provider send, payment mutation, contract acceptance, staffing commitment, deployment, and revenue recognition authority false. `DIAGNOSTIC_CAPACITY_CANDIDATE` is a computed capacity candidate, not operational authority, not an allocation, not a buyer promise, and not an external reservation.
 
 ## CLI
 
@@ -56,4 +58,4 @@ python -m unittest -v revenue.delivery_capacity_allocator.test_engine
 python -O -m unittest -v revenue.delivery_capacity_allocator.test_engine
 ```
 
-The fix-forward regression suite covers caller-clock removal, self-derived-root non-authority, historical-vs-current separation, expired/started slots, future acceptance, orphan reservations, conservative capacity consumption under corrupt service metadata, replay/tamper, strict JSON, and filesystem output refusal.
+The fix-forward regression suite covers caller-clock removal, self-derived-root non-authority, v1-to-v2 receipt separation, diagnostic-only positive labels, historical-vs-current separation, expired/started slots, future acceptance, orphan reservations, conservative capacity consumption under corrupt service metadata, replay/tamper, strict JSON, and filesystem output refusal.
