@@ -1,12 +1,19 @@
 from __future__ import annotations
 
 import argparse
-import json
 import os
 import sys
-from pathlib import Path
+from typing import Optional
 
-from .core import acquire_lease, canonical_json, finalize_lease, fingerprint_organization, verify_lease_document
+from .core import (
+    RsaPublicKey,
+    acquire_lease,
+    canonical_json,
+    finalize_lease,
+    fingerprint_organization,
+    normalize_organization_fingerprint,
+    verify_lease_document,
+)
 from .stores import FileLeaseStore, GitHubContentsLeaseStore
 from .strict import parse_json_strict, read_regular_text, write_exclusive
 
@@ -14,23 +21,40 @@ from .strict import parse_json_strict, read_regular_text, write_exclusive
 def _key_from_env(name: str) -> bytes:
     raw = os.environ.get(name)
     if raw is None:
-        raise ValueError(f"missing environment variable {name}")
+        raise ValueError("missing environment variable %s" % name)
     data = raw.encode("utf-8")
     if len(data) < 32:
-        raise ValueError(f"{name} must contain at least 32 UTF-8 bytes")
+        raise ValueError("%s must contain at least 32 UTF-8 bytes" % name)
     return data
+
+
+def _pressure_verifier(args) -> RsaPublicKey:
+    modulus = os.environ.get(args.pressure_rsa_modulus_env)
+    key_id = os.environ.get(args.pressure_key_id_env)
+    exponent_raw = os.environ.get(args.pressure_rsa_exponent_env, "65537")
+    if modulus is None:
+        raise ValueError("missing environment variable %s" % args.pressure_rsa_modulus_env)
+    if key_id is None:
+        raise ValueError("missing environment variable %s" % args.pressure_key_id_env)
+    try:
+        exponent = int(exponent_raw, 10)
+    except ValueError as exc:
+        raise ValueError("RSA exponent must be a decimal integer") from exc
+    return RsaPublicKey.from_hex(key_id=key_id, modulus_hex=modulus, exponent=exponent)
 
 
 def _store(args):
     if args.store == "file":
         return FileLeaseStore(args.store_root)
+    if not args.repository:
+        raise ValueError("--repository is required for GitHub store")
     token = os.environ.get(args.github_token_env)
     if not token:
-        raise ValueError(f"missing environment variable {args.github_token_env}")
+        raise ValueError("missing environment variable %s" % args.github_token_env)
     return GitHubContentsLeaseStore(repository=args.repository, branch=args.branch, token=token)
 
 
-def _emit(value, output: str | None):
+def _emit(value, output: Optional[str]):
     data = canonical_json(value) + b"\n"
     if output:
         write_exclusive(output, data)
@@ -56,7 +80,9 @@ def main(argv=None) -> int:
         sp.add_argument("--github-token-env", default="GITHUB_TOKEN")
         sp.add_argument("--output")
         if name == "acquire":
-            sp.add_argument("--host-attestation-key-env", default="ORG_PRESSURE_ATTESTATION_KEY")
+            sp.add_argument("--pressure-rsa-modulus-env", default="ORG_PRESSURE_RSA_N_HEX")
+            sp.add_argument("--pressure-rsa-exponent-env", default="ORG_PRESSURE_RSA_E")
+            sp.add_argument("--pressure-key-id-env", default="ORG_PRESSURE_KEY_ID")
             sp.add_argument("--lease-nonce-key-env", default="ORG_LEASE_NONCE_KEY")
 
     status = sub.add_parser("status")
@@ -83,9 +109,10 @@ def main(argv=None) -> int:
             return 0
         if args.command == "status":
             store = _store(args)
-            active = store.get_active(args.organization_fingerprint)
+            org = normalize_organization_fingerprint(args.organization_fingerprint)
+            active = store.get_active(org)
             if active is None:
-                _emit({"state": "UNLEASED", "organizationFingerprint": args.organization_fingerprint, "externalSendAuthorized": False}, None)
+                _emit({"state": "UNLEASED", "organizationFingerprint": org, "externalSendAuthorized": False}, None)
                 return 0
             raw, generation = active
             lease = verify_lease_document(parse_json_strict(raw.decode("utf-8")))
@@ -97,18 +124,32 @@ def main(argv=None) -> int:
             result = acquire_lease(
                 store,
                 value,
-                host_attestation_key=_key_from_env(args.host_attestation_key_env),
+                pressure_verifier=_pressure_verifier(args),
                 lease_nonce_key=_key_from_env(args.lease_nonce_key_env),
             )
-            _emit({"state": result.state, "replay": result.replay, "activeGeneration": result.active_generation, "lease": result.lease, "externalSendAuthorized": False}, args.output)
+            _emit({
+                "state": result.state,
+                "replay": result.replay,
+                "activeGeneration": result.active_generation,
+                "terminalOutcome": result.terminal_outcome,
+                "lease": result.lease,
+                "externalSendAuthorized": False,
+            }, args.output)
             return 0 if result.state == "LEASE_ACQUIRED" else 3
         if args.command == "release" and value.get("outcome") != "UNSENT_RELEASED":
             raise ValueError("release command requires outcome=UNSENT_RELEASED")
         result = finalize_lease(store, value)
-        _emit({"state": result.state, "replay": result.replay, "activeReleased": result.active_released, "outcomeGeneration": result.outcome_generation, "outcome": result.outcome, "externalSendAuthorized": False}, args.output)
+        _emit({
+            "state": result.state,
+            "replay": result.replay,
+            "activeReleased": result.active_released,
+            "outcomeGeneration": result.outcome_generation,
+            "outcome": result.outcome,
+            "externalSendAuthorized": False,
+        }, args.output)
         return 0
     except Exception as exc:
-        print(f"HOLD: {exc}", file=sys.stderr)
+        print("HOLD: %s" % exc, file=sys.stderr)
         return 2
 
 
