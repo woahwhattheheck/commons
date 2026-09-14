@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -262,6 +262,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -494,12 +500,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -523,6 +523,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -755,12 +761,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -844,6 +844,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1076,12 +1082,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -1099,6 +1099,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1331,12 +1337,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -1390,6 +1390,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1622,12 +1628,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -1645,6 +1645,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1877,12 +1883,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -1930,6 +1930,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2162,12 +2168,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -2185,6 +2185,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2417,12 +2423,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -2440,6 +2440,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2672,12 +2678,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -2695,6 +2695,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2927,12 +2933,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -2950,6 +2950,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3182,12 +3188,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -3205,6 +3205,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3437,12 +3443,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -3460,6 +3460,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3692,12 +3698,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -3721,6 +3721,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3953,12 +3959,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -3976,6 +3976,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4208,12 +4214,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -4231,6 +4231,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4463,12 +4469,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -4486,6 +4486,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4718,12 +4724,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -4771,6 +4771,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5003,12 +5009,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -5050,6 +5050,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5282,12 +5288,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -5317,6 +5317,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5549,12 +5555,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -5590,6 +5590,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5822,12 +5828,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -5845,6 +5845,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6077,12 +6083,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -6100,6 +6100,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6332,12 +6338,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -6355,6 +6355,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6587,12 +6593,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -6610,6 +6610,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6842,12 +6848,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -6865,6 +6865,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7097,12 +7103,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -7120,6 +7120,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7352,12 +7358,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -7375,6 +7375,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7607,12 +7613,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -7630,6 +7630,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7862,12 +7868,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -7885,6 +7885,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8117,12 +8123,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -8140,6 +8140,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8372,12 +8378,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -8395,6 +8395,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8627,12 +8633,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -8716,6 +8716,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8948,12 +8954,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -9037,6 +9037,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -9269,12 +9275,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -9292,6 +9292,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -9524,12 +9530,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -9613,6 +9613,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -9845,12 +9851,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -9934,6 +9934,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -10166,12 +10172,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -10255,6 +10255,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -10487,12 +10493,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -10522,6 +10522,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -10754,12 +10760,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -10783,6 +10783,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11015,12 +11021,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -11038,6 +11038,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11270,12 +11276,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -11359,6 +11359,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11591,12 +11597,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -11632,6 +11632,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11864,12 +11870,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -11953,6 +11953,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12185,12 +12191,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -12208,6 +12208,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12440,12 +12446,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -12463,6 +12463,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12695,12 +12701,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -12718,6 +12718,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12950,12 +12956,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -12985,6 +12985,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -13217,12 +13223,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -13240,6 +13240,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -13472,12 +13478,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -13561,6 +13561,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -13793,12 +13799,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -13822,6 +13822,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14054,12 +14060,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -14089,6 +14089,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14321,12 +14327,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -14410,6 +14410,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14642,12 +14648,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -14677,6 +14677,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14909,12 +14915,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -14932,6 +14932,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15164,12 +15170,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -15193,6 +15193,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15425,12 +15431,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -15448,6 +15448,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15680,12 +15686,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -15703,6 +15703,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15935,12 +15941,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -16006,6 +16006,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -16238,12 +16244,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -16261,6 +16261,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -16493,12 +16499,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -16528,6 +16528,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -16760,12 +16766,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -16783,6 +16783,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17015,12 +17021,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -17044,6 +17044,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17276,12 +17282,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -17299,6 +17299,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17531,12 +17537,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -17620,6 +17620,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17852,12 +17858,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -17881,6 +17881,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18113,12 +18119,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -18136,6 +18136,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18368,12 +18374,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -18391,6 +18391,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18623,12 +18629,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -18646,6 +18646,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18878,12 +18884,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -18901,6 +18901,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -19133,12 +19139,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -19156,6 +19156,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -19388,12 +19394,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -19477,6 +19477,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -19709,12 +19715,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -19768,6 +19768,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -20000,12 +20006,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -20035,6 +20035,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -20267,12 +20273,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -20356,6 +20356,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -20588,12 +20594,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -20611,6 +20611,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -20843,12 +20849,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -20929,8 +20929,14 @@
     "COMMONS": {
       "last_id": "discord-1548789538770649099",
       "last_ts": "2026-09-13T20:16:41.161000Z",
-      "n": 17,
+      "n": 18,
       "since": [
+        {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
         {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
@@ -21115,6 +21121,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -21347,12 +21359,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -21436,6 +21442,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -21668,12 +21680,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -21691,6 +21697,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -21923,12 +21935,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -21946,6 +21952,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -22178,12 +22190,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -22267,6 +22273,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -22499,12 +22511,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -22588,6 +22594,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -22820,12 +22832,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -22861,6 +22867,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -23093,12 +23105,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -23134,6 +23140,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -23366,12 +23378,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -23413,6 +23419,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -23645,12 +23657,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -23668,6 +23674,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -23900,12 +23912,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -23989,6 +23995,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24221,12 +24233,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -24244,6 +24250,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24476,12 +24488,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -24499,6 +24505,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24731,12 +24743,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -24754,6 +24760,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24986,12 +24998,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -25009,6 +25015,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -25241,12 +25253,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -25264,6 +25270,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -25496,12 +25508,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -25585,6 +25591,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -25817,12 +25829,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -25906,6 +25912,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -26138,12 +26150,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -26161,6 +26167,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -26393,12 +26405,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -26482,6 +26488,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -26714,12 +26726,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -26791,6 +26797,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -27023,12 +27035,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -27112,6 +27118,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -27344,12 +27356,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -27373,6 +27379,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -27605,12 +27617,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -27676,6 +27682,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -27908,12 +27920,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -27943,6 +27949,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -28175,12 +28187,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -28210,6 +28216,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -28442,12 +28454,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -28465,6 +28471,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -28697,12 +28709,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -28786,6 +28792,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -29018,12 +29030,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -29041,6 +29047,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -29273,12 +29285,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -29302,6 +29308,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -29534,12 +29546,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -29623,6 +29629,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -29855,12 +29867,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -29878,6 +29884,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -30110,12 +30122,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -30133,6 +30139,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -30365,12 +30377,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -30454,6 +30460,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -30686,12 +30698,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -30721,6 +30727,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -30953,12 +30965,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -30976,6 +30982,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -31208,12 +31220,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -31255,6 +31261,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -31487,12 +31499,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -31516,6 +31522,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -31748,12 +31760,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -31771,6 +31777,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -32003,12 +32015,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -32026,6 +32032,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -32258,12 +32270,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -32281,6 +32287,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -32513,12 +32525,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -32602,6 +32608,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -32834,12 +32846,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -32857,6 +32863,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -33089,12 +33101,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -33112,6 +33118,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -33344,12 +33356,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -33433,6 +33439,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -33665,12 +33677,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -33688,6 +33694,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -33920,12 +33932,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -34009,6 +34015,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -34241,12 +34253,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -34330,6 +34336,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -34562,12 +34574,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -34591,6 +34597,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -34823,12 +34835,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -34858,6 +34864,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -35090,12 +35102,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -35113,6 +35119,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -35345,12 +35357,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -35380,6 +35386,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -35612,12 +35624,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -35641,6 +35647,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -35873,12 +35885,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -35902,6 +35908,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -36134,12 +36146,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -36220,8 +36226,14 @@
     "GROK": {
       "last_id": "motel-revenue-integrity-ci-20260913-01",
       "last_ts": "2026-09-13T18:47:06Z",
-      "n": 19,
+      "n": 20,
       "since": [
+        {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
         {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
@@ -36418,6 +36430,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -36650,12 +36668,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -36709,6 +36721,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -36941,12 +36959,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -36976,6 +36988,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -37208,12 +37226,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -37237,6 +37249,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -37469,12 +37487,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -37558,6 +37570,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -37790,12 +37808,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -37816,8 +37828,14 @@
     "GROK_BUILD": {
       "last_id": "packmarket-mi-34765159873-c21f39d1-20260913",
       "last_ts": "2026-09-13T18:49:54Z",
-      "n": 18,
+      "n": 19,
       "since": [
+        {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
         {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
@@ -38008,6 +38026,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -38240,12 +38264,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -38263,6 +38281,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -38495,12 +38519,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -38530,6 +38548,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -38762,12 +38786,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -38785,6 +38803,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -39017,12 +39041,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -39052,6 +39070,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -39284,12 +39308,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -39373,6 +39391,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -39605,12 +39629,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -39628,6 +39646,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -39860,12 +39884,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -39949,6 +39967,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -40181,12 +40205,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -40270,6 +40288,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -40502,12 +40526,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -40573,6 +40591,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -40805,12 +40829,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -40846,6 +40864,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -41078,12 +41102,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -41131,6 +41149,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -41363,12 +41387,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -41386,6 +41404,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -41618,12 +41642,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -41707,6 +41725,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -41939,12 +41963,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -41962,6 +41980,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -42194,12 +42218,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -42247,6 +42265,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -42479,12 +42503,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -42502,6 +42520,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -42734,12 +42758,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -42757,6 +42775,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -42989,12 +43013,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -43012,6 +43030,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -43244,12 +43268,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -43267,6 +43285,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -43499,12 +43523,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -43522,6 +43540,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -43754,12 +43778,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -43843,6 +43861,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44075,12 +44099,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -44098,6 +44116,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44330,12 +44354,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -44353,6 +44371,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44585,12 +44609,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -44608,6 +44626,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44840,12 +44864,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -44863,6 +44881,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -45095,12 +45119,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -45118,6 +45136,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -45350,12 +45374,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -45391,6 +45409,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -45623,12 +45647,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -45712,6 +45730,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -45944,12 +45968,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -45967,6 +45985,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -46199,12 +46223,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -46252,6 +46270,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -46484,12 +46508,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -46561,6 +46579,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -46793,12 +46817,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -46816,6 +46834,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47048,12 +47072,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -47083,6 +47101,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47315,12 +47339,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -47338,6 +47356,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47570,12 +47594,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -47593,6 +47611,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47825,12 +47849,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -47848,6 +47866,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -48080,12 +48104,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -48103,6 +48121,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -48335,12 +48359,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -48358,6 +48376,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -48590,12 +48614,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -48613,6 +48631,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -48845,12 +48869,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -48934,6 +48952,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -49166,12 +49190,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -49255,6 +49273,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -49487,12 +49511,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -49576,6 +49594,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -49808,12 +49832,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -49855,6 +49873,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -50087,12 +50111,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -50176,6 +50194,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -50408,12 +50432,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -50431,6 +50449,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -50663,12 +50687,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -50686,6 +50704,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -50918,12 +50942,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -50953,6 +50971,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -51185,12 +51209,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -51274,6 +51292,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -51506,12 +51530,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -51535,6 +51553,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -51767,12 +51791,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -51802,6 +51820,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -52034,12 +52058,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -52069,6 +52087,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -52301,12 +52325,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -52390,6 +52408,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -52622,12 +52646,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -52711,6 +52729,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -52943,12 +52967,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -53014,6 +53032,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -53246,12 +53270,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -53275,6 +53293,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -53507,12 +53531,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -53530,6 +53548,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -53762,12 +53786,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -53785,6 +53803,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -54017,12 +54041,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -54106,6 +54124,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -54338,12 +54362,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -54361,6 +54379,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -54593,12 +54617,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -54682,6 +54700,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -54914,12 +54938,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -54949,6 +54967,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -55181,12 +55205,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -55204,6 +55222,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -55436,12 +55460,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -55525,6 +55543,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -55757,12 +55781,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -55780,6 +55798,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -56012,12 +56036,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -56035,6 +56053,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -56267,12 +56291,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -56356,6 +56374,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -56588,12 +56612,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -56611,6 +56629,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -56843,12 +56867,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -56884,6 +56902,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -57116,12 +57140,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -57139,6 +57157,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -57371,12 +57395,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -57400,6 +57418,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -57632,12 +57656,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -57655,6 +57673,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -57887,12 +57911,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -57916,6 +57934,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58148,12 +58172,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -58171,6 +58189,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58403,12 +58427,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -58426,6 +58444,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58658,12 +58682,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -58687,6 +58705,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58919,12 +58943,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -58942,6 +58960,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -59174,12 +59198,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -59203,6 +59221,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -59435,12 +59459,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -59524,6 +59542,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -59756,12 +59780,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -59779,6 +59797,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -60011,12 +60035,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -60034,6 +60052,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -60266,12 +60290,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -60289,6 +60307,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -60521,12 +60545,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -60556,6 +60574,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -60788,12 +60812,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -60877,6 +60895,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -61109,12 +61133,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -61198,6 +61216,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -61430,12 +61454,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -61519,6 +61537,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -61751,12 +61775,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -61840,6 +61858,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -62072,12 +62096,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -62101,6 +62119,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -62333,12 +62357,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -62422,6 +62440,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -62654,12 +62678,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -62743,6 +62761,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -62975,12 +62999,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -63058,6 +63076,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -63290,12 +63314,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -63349,6 +63367,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -63581,12 +63605,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -63670,6 +63688,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -63902,12 +63926,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -63986,11 +64004,17 @@
       ]
     },
     "UNSEATED": {
-      "last_id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
-      "last_ts": "2026-09-14T02:06:49Z",
+      "last_id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+      "last_ts": "2026-09-14T02:10:10Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
         {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
@@ -64056,12 +64080,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:12:54Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription--all-three-multitrack-V2-ensemble---readiness",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:12:35Z"
         }
       ]
     },
@@ -64070,6 +64088,12 @@
       "last_ts": "",
       "n": 40,
       "since": [
+        {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
         {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
@@ -64303,12 +64327,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -64332,6 +64350,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -64564,12 +64588,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -64653,6 +64671,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -64885,12 +64909,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -64974,6 +64992,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -65206,12 +65230,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -65229,6 +65247,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -65461,12 +65485,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
@@ -65484,6 +65502,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-14T02:10:10Z"
+        },
+        {
           "id": "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -65716,12 +65740,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-13T14:48:28Z"
-        },
-        {
-          "id": "LACSD-04254--build--5-000-AI-ML-validation-evidence-sprint-delivery-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-13T14:46:09Z"
         }
       ],
       "mine": [
