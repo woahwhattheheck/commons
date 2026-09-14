@@ -20,9 +20,6 @@ _LOCAL_REFERENCE_ACQUIRE_METHODS = (
     "_org_lock",
     "_generation",
 )
-_LOCAL_REFERENCE_ACQUIRE_IMPLS = {
-    name: getattr(FileLeaseStore, name) for name in _LOCAL_REFERENCE_ACQUIRE_METHODS
-}
 _LOCAL_REFERENCE_PROTECTED_CLASS_NAMES = _LOCAL_REFERENCE_ACQUIRE_METHODS + (
     "root",
     "active",
@@ -41,57 +38,104 @@ _LOCAL_REFERENCE_BASE_FORBIDDEN_NAMES = (
 )
 
 
-def _mechanically_local_reference_store(store):
-    """Return whether verifier injection is confined to the local reference engine.
+def _build_local_reference_checker():
+    """Freeze the local-reference identity used by the public acquire wrapper.
 
-    A mere ``isinstance(FileLeaseStore)`` check is not an authority boundary: a
-    subclass can delegate the store protocol to a production backend, and an exact
-    FileLeaseStore instance can replace methods through its instance dictionary.
-    The test seam therefore accepts only the unmodified local acquisition call graph.
-    Terminal-only subclass behavior (for example a lost DELETE response simulator)
-    remains usable because it cannot participate in acquire.
+    The checker is built once while this facade is imported.  Its authoritative
+    class, path type, protected names, and raw method descriptors live in closure
+    cells rather than mutable module globals.  Later rebinding of facade helpers or
+    exported symbols therefore cannot widen the verifier-injection seam.
     """
-    if not isinstance(store, FileLeaseStore):
-        return False
-
-    # Catch later monkeypatches to the base reference class itself, not just subclass
-    # overrides. These attributes were absent or snapshotted when this facade loaded.
-    if any(name in FileLeaseStore.__dict__ for name in _LOCAL_REFERENCE_BASE_FORBIDDEN_NAMES):
-        return False
-    for name, expected in _LOCAL_REFERENCE_ACQUIRE_IMPLS.items():
-        if getattr(FileLeaseStore, name, None) is not expected:
-            return False
-
-    cls = type(store)
-    for layer in cls.__mro__:
-        if layer is FileLeaseStore:
-            break
-        if any(name in layer.__dict__ for name in _LOCAL_REFERENCE_PROTECTED_CLASS_NAMES):
-            return False
-    else:
-        return False
-
-    instance_dict = getattr(store, "__dict__", {})
-    if any(name in instance_dict for name in _LOCAL_REFERENCE_ACQUIRE_METHODS):
-        return False
-
-    # The inherited implementation must still resolve to the exact reference methods.
-    for name, expected in _LOCAL_REFERENCE_ACQUIRE_IMPLS.items():
-        if getattr(cls, name, None) is not expected:
-            return False
-
+    reference_store_type = FileLeaseStore
     concrete_path_type = type(Path("."))
-    root = getattr(store, "root", None)
-    active = getattr(store, "active", None)
-    outcomes = getattr(store, "outcomes", None)
-    if not all(type(value) is concrete_path_type for value in (root, active, outcomes)):
-        return False
-    if active != root / "active" or outcomes != root / "outcomes":
-        return False
-    return True
+    acquire_names = tuple(_LOCAL_REFERENCE_ACQUIRE_METHODS)
+    protected_names = frozenset(_LOCAL_REFERENCE_PROTECTED_CLASS_NAMES)
+    base_forbidden_names = frozenset(_LOCAL_REFERENCE_BASE_FORBIDDEN_NAMES)
+    reference_dict = type.__getattribute__(reference_store_type, "__dict__")
+    acquire_impls = tuple((name, reference_dict[name]) for name in acquire_names)
+
+    def resolve_raw(mro, name):
+        for layer in mro:
+            layer_dict = type.__getattribute__(layer, "__dict__")
+            if name in layer_dict:
+                return layer_dict[name]
+        return None
+
+    def mechanically_local_reference_store(store):
+        """Return whether verifier injection stays inside the frozen local engine."""
+        cls = type(store)
+        mro = type.__getattribute__(cls, "__mro__")
+        try:
+            reference_index = mro.index(reference_store_type)
+        except ValueError:
+            return False
+
+        # Inspect raw class dictionaries through type.__getattribute__, so a hostile
+        # metaclass cannot lie about MRO/class attributes during this decision.
+        current_reference_dict = type.__getattribute__(reference_store_type, "__dict__")
+        if any(name in current_reference_dict for name in base_forbidden_names):
+            return False
+        for name, expected in acquire_impls:
+            if current_reference_dict.get(name) is not expected:
+                return False
+
+        # Subclasses may customize terminal-only behavior, but nothing that can run
+        # during acquire (including attribute interception or local path state).
+        for layer in mro[:reference_index]:
+            layer_dict = type.__getattribute__(layer, "__dict__")
+            if any(name in layer_dict for name in protected_names):
+                return False
+
+        try:
+            instance_dict = object.__getattribute__(store, "__dict__")
+        except AttributeError:
+            return False
+        if any(name in instance_dict for name in acquire_names):
+            return False
+
+        # Resolve the raw descriptors ourselves instead of using getattr(cls, ...),
+        # which a custom metaclass can intercept.
+        for name, expected in acquire_impls:
+            if resolve_raw(mro, name) is not expected:
+                return False
+
+        root = instance_dict.get("root")
+        active = instance_dict.get("active")
+        outcomes = instance_dict.get("outcomes")
+        if not all(type(value) is concrete_path_type for value in (root, active, outcomes)):
+            return False
+        if active != root / "active" or outcomes != root / "outcomes":
+            return False
+        return True
+
+    return (
+        mechanically_local_reference_store,
+        reference_store_type,
+        concrete_path_type,
+        acquire_impls,
+    )
 
 
-def _install_trusted_acquire(untrusted_acquire):
+(
+    _LOCAL_REFERENCE_CHECKER,
+    _LOCAL_REFERENCE_STORE_TYPE,
+    _LOCAL_REFERENCE_PATH_TYPE,
+    _LOCAL_REFERENCE_ACQUIRE_IMPLS,
+) = _build_local_reference_checker()
+del _build_local_reference_checker
+
+
+def _mechanically_local_reference_store(store):
+    """Diagnostic view of the frozen local-reference checker used by acquire."""
+    return _LOCAL_REFERENCE_CHECKER(store)
+
+
+def _install_trusted_acquire(
+    untrusted_acquire,
+    local_reference_checker=_LOCAL_REFERENCE_CHECKER,
+):
+    # `local_reference_checker` is captured by the installed wrapper.  Do not resolve
+    # the mutable module-global diagnostic helper when deciding verifier authority.
     def trusted_acquire(store, request, *, lease_nonce_key, pressure_verifier=None):
         """Acquire under the pinned verifier, with one mechanically local test seam.
 
@@ -104,7 +148,7 @@ def _install_trusted_acquire(untrusted_acquire):
             from .trust import load_pressure_verifier
             verifier = load_pressure_verifier()
         else:
-            if not _mechanically_local_reference_store(store):
+            if not local_reference_checker(store):
                 raise ValueError(
                     "caller-supplied pressure verifier is forbidden for production stores"
                 )
