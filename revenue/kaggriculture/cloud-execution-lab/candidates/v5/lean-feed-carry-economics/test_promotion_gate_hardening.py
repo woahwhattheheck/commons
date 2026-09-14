@@ -12,15 +12,26 @@ from test_feed_carry_oracle import document
 
 
 class PromotionGateHardeningTests(unittest.TestCase):
-    def test_synthetic_candidate_cannot_self_authorize_promotion(self):
+    def test_synthetic_candidate_is_source_blocked(self):
         report = analyze_authoritative_document(document())
         self.assertEqual(
             report["promotion"]["candidate_conclusion"],
             "PROMOTE_RESEARCH_CANDIDATE",
         )
-        self.assertEqual(report["promotion"]["conclusion"], "NO_PROMOTION")
+        self.assertEqual(report["promotion"]["conclusion"], "SOURCE_MODEL_BLOCKED")
         self.assertFalse(report["promotion"]["authority_verified"])
         self.assertIsNone(report["promotion"]["selected_arm"])
+        self.assertEqual(report["census"], [])
+        self.assertEqual(report["paired_deltas"], [])
+        self.assertEqual(report["runs"], [])
+        self.assertFalse(report["authority"]["promotion_authorized"])
+        self.assertEqual(report["authority"]["source_model_state"], "SOURCE_MODEL_BLOCKED")
+
+    def test_conservative_candidate_stays_no_promotion(self):
+        report = analyze_authoritative_document(document(cash_use=False))
+        self.assertEqual(report["promotion"]["candidate_conclusion"], "NO_PROMOTION")
+        self.assertEqual(report["promotion"]["conclusion"], "NO_PROMOTION")
+        self.assertTrue(report["runs"])
 
     def test_duplicate_arm_row_is_rejected(self):
         evidence = document()
@@ -54,7 +65,7 @@ class PromotionGateHardeningTests(unittest.TestCase):
             analyze_authoritative_document(evidence)
 
     def test_terminal_result_is_bound_into_run_evidence_digest(self):
-        baseline = document()
+        baseline = document(cash_use=False)
         changed = copy.deepcopy(baseline)
         target = changed["runs"][0]
         target["result"]["own"] += 2
@@ -92,7 +103,7 @@ class PromotionGateHardeningTests(unittest.TestCase):
         }
         report = analyze_authoritative_document(evidence)
         self.assertFalse(report["promotion"]["authority_verified"])
-        self.assertEqual(report["promotion"]["conclusion"], "NO_PROMOTION")
+        self.assertEqual(report["promotion"]["conclusion"], "SOURCE_MODEL_BLOCKED")
         self.assertIsNotNone(report["promotion"]["authority_root_sha256"])
 
 
