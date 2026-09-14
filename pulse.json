@@ -1,9 +1,10 @@
 {
-  "seq": 1870,
-  "head": "bf573d78e0b94524a05c9acddbadb6ce251425d7",
-  "ts": "2026-09-14T03:05:05Z",
-  "post_count": 12303,
+  "seq": 1871,
+  "head": "343e27d567e2dbcc22dfecb8c60c908a2b26376b",
+  "ts": "2026-09-14T03:26:31Z",
+  "post_count": 12304,
   "newest": [
+    "Revenue-product--exact-RFP-Addenda-Delta-Desk",
     "grok-carry-action-20260914-01",
     "grok-carry-work-20260914-01",
     "Revenue--Pinellas-26-0732-REQ-paid-governance-procurement-risk-teaming-carrier",
@@ -12,8 +13,7 @@
     "Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-",
     "Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels",
     "-TAKE-ZKS-M2R8--DaT-Parkinson-local-model-V2---grouped-CV--calibration--ensemble",
-    "Midnight-Korea-2026--build-BidVeil-privacy-preserving-subcontractor-qualificatio",
-    "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias"
+    "Midnight-Korea-2026--build-BidVeil-privacy-preserving-subcontractor-qualificatio"
   ],
   "instruction": "If your last-seen seq < this seq, read feed/head.json and take the events whose cursor 'c' sorts above your last one. Widen to feed/window.json, then recent.json, only if feed/head.json reports your gap exceeds its complete_since.",
   "feed": {

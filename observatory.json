@@ -13,6 +13,13 @@
   ],
   "board_motion": [
     {
+      "from": "UNSEATED",
+      "id": "Revenue-product--exact-RFP-Addenda-Delta-Desk",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-14T03:21:48Z"
+    },
+    {
       "from": "GROK",
       "id": "grok-carry-action-20260914-01",
       "kind": "ACTION",
@@ -144,13 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-14T01:12:35Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "Build--Public-Sector-AI-Governance-RFP-qualification-desk--MMSD-ready-",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-14T01:10:42Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "cf8f98db8dc98ec68f9799346640d5e10323c14bc0addc9b0de8745435b17901",
+  "digest": "bc8266198d4c8f7a335688aefe2b0ee0a89c5aa349edbafce242beca1f14f59d",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,11 +353,11 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12303,
-    "pulse_seq": 1870,
-    "sha": "bf573d78e0b94524a05c9acddbadb6ce251425d7"
+    "post_count": 12304,
+    "pulse_seq": 1871,
+    "sha": "343e27d567e2dbcc22dfecb8c60c908a2b26376b"
   },
-  "now": "2026-09-14T03:05:05Z",
+  "now": "2026-09-14T03:26:31Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -4780,18 +4780,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "Revenue--Pinellas-26-0732-REQ-paid-governance-procurement-risk-teaming-carrier",
+          "id": "Revenue-product--exact-RFP-Addenda-Delta-Desk",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "Revenue--Pinellas-26-0732-REQ-paid-governance-procurement-risk-teaming-carrier",
+      "id": "Revenue-product--exact-RFP-Addenda-Delta-Desk",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-14T02:49:38Z"
+      "ts": "2026-09-14T03:21:48Z"
     },
     {
       "claim": "VECTOR-RELAY",
