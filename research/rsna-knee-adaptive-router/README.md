@@ -22,7 +22,8 @@ The routing priors are compute hints only. They are not diagnoses, medical advic
 ## Files
 
 - `controller.py` — series router, uncertainty controller, logit aggregation, OOF calibration, runtime/VRAM gates, resource receipts, notebook callback runner, exact submission compiler, and report-leakage guard.
-- `test_controller.py` — deterministic routing, leakage, calibration, resource-budget, predictor-boundary, receipt, and submission hostiles.
+- `data_contract.py` — exact organizer-shaped series manifest ingestion, explicit slice-count binding, deterministic group-safe fold assignment, and abstention receipts.
+- `test_controller.py` / `test_data_contract.py` — deterministic routing, leakage, calibration, resource-budget, manifest/fold, predictor-boundary, receipt, and submission hostiles.
 - `METHODS.md` — frozen experiment arms and promote/kill gates for an authorized competition-data seat.
 
 ## Predictor boundary
@@ -47,9 +48,9 @@ Sources:
 ## Test
 
 ```bash
-python -m unittest -v test_controller.py
-python -O -m unittest -v test_controller.py
-python -m py_compile controller.py test_controller.py
+python -m unittest -v
+python -O -m unittest -v
+python -m py_compile controller.py data_contract.py test_controller.py test_data_contract.py
 ```
 
 Passing these synthetic/data-free tests is not evidence of leaderboard performance.
