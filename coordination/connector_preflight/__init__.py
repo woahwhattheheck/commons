@@ -1,6 +1,6 @@
 """Connector capability preflight compiler."""
 
-from .core import (
+from .latest import (
     PreflightError,
     compile_at,
     compile_current,
