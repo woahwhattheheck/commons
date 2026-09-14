@@ -2,7 +2,7 @@
 """Canonical right-now revenue compiler with current Stripe checkout authority.
 
 The frozen core preserves the historical compiler and replay contracts from the
-#14135 merge.  This wrapper adds one production-only authority boundary: a
+#14135 merge. This wrapper adds one production-only authority boundary: a
 retained authenticated Stripe readback must still be fresh under process UTC
 before historical checkout evidence can authorize "current" checkout truth.
 """
@@ -24,16 +24,13 @@ if str(ROOT) not in sys.path:
 from host import right_now_revenue_core as _core
 
 
-# Preserve the established public module surface. Existing callers/tests that
-# import helpers from host/right_now_revenue.py continue to receive the frozen
-# historical implementations unless explicitly overridden below.
 for _name in dir(_core):
     if not _name.startswith("__"):
         globals()[_name] = getattr(_core, _name)
 
 
 CHECKOUT_CURRENT_PATH = ROOT / "revenue" / "right_now" / "stripe_checkout_current.json"
-CHECKOUT_CURRENT_SHA256 = "8374c72137777216abe09d9bc22b6e85ab7d406ed9877bf50009f45a6162e325"
+CHECKOUT_CURRENT_SHA256 = "e81cff2426c3da2eca1510d8b89db1a686cf91a85ac41c5a85ed41d2a59ac115"
 CHECKOUT_CURRENT_MAX_AGE = timedelta(hours=24)
 
 _HISTORICAL_VALIDATE_CHECKOUT_AUTHORITY = _core.validate_checkout_authority
@@ -42,12 +39,7 @@ _ORIGINAL_BUILD_CONTROL = _core.build_control
 
 
 def _current_utc() -> datetime:
-    """Return the production freshness clock.
-
-    Deliberately accepts no caller-selected timestamp. Tests may monkeypatch the
-    function object, but production CLI/library callers cannot backdate current
-    authority through a function argument, catalog field, or environment value.
-    """
+    """Return the production freshness clock; callers cannot supply it."""
 
     return datetime.now(timezone.utc)
 
@@ -74,11 +66,13 @@ def validate_current_checkout_readback(
             "observed_at_utc",
             "payment_link",
             "line_item",
+            "line_item_count",
+            "line_items_has_more",
             "source",
         },
         "checkout current readback",
     )
-    if value["schema_version"] != "commons-stripe-checkout-readback/v1":
+    if value["schema_version"] != "commons-stripe-checkout-readback/v2":
         raise ControlError("checkout current readback schema drift")
     if value["account_id"] != CHECKOUT_AUTHORITY["provider_account_id"]:
         raise ControlError("checkout current readback account drift")
@@ -121,6 +115,11 @@ def validate_current_checkout_readback(
     for field, expected in expected_link.items():
         if payment_link[field] != expected:
             raise ControlError(f"checkout current payment_link {field} drift")
+
+    if type(value["line_item_count"]) is not int or value["line_item_count"] != 1:
+        raise ControlError("checkout current line-item count drift")
+    if value["line_items_has_more"] is not False:
+        raise ControlError("checkout current line-items pagination is incomplete")
 
     line_item = _exact_keys(
         value["line_item"],
@@ -215,7 +214,6 @@ def build_checkout_authority(catalog_as_of: str) -> dict[str, Any]:
     return result
 
 
-# Core functions resolve globals in the core module at call time.
 _core.build_checkout_authority = build_checkout_authority
 
 
@@ -246,9 +244,6 @@ def build_control() -> dict[str, Any]:
 
 
 _core.build_control = build_control
-
-# Re-export the historical helper intentionally; "historical offer integrity"
-# and "right-now provider authority" are separate contracts.
 validate_checkout_authority = _HISTORICAL_VALIDATE_CHECKOUT_AUTHORITY
 
 

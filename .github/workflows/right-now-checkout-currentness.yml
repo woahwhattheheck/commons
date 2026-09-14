@@ -9,6 +9,7 @@ on:
       - "revenue/right_now/CHECKOUT_CURRENTNESS.md"
       - "test_right_now_checkout_authority.py"
       - "test_right_now_checkout_currentness.py"
+      - "test_right_now_checkout_cardinality.py"
       - ".github/workflows/right-now-checkout-currentness.yml"
   workflow_dispatch:
 
@@ -33,14 +34,17 @@ jobs:
             host/right_now_revenue.py \
             host/right_now_revenue_core.py \
             test_right_now_checkout_authority.py \
-            test_right_now_checkout_currentness.py
+            test_right_now_checkout_currentness.py \
+            test_right_now_checkout_cardinality.py
       - name: Currentness hostiles
         run: |
           python -m unittest -v \
             test_right_now_checkout_authority.py \
-            test_right_now_checkout_currentness.py
+            test_right_now_checkout_currentness.py \
+            test_right_now_checkout_cardinality.py
       - name: Currentness hostiles under optimized mode
         run: |
           python -O -m unittest -v \
             test_right_now_checkout_authority.py \
-            test_right_now_checkout_currentness.py
+            test_right_now_checkout_currentness.py \
+            test_right_now_checkout_cardinality.py

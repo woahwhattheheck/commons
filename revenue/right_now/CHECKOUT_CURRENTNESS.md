@@ -20,6 +20,9 @@ The retained current readback binds:
 - price `price_1UCFbHATH4EDE7XD4NNrjfUe`, active/live;
 - product `prod_VCevsvv7skWk3e`;
 - USD 29 one-time amount and quantity 1;
+- the Payment Link line-item list is complete (`has_more=false`) and contains
+  exactly one item, so an additional mandatory item or pagination cannot hide
+  behind retention of the expected USD 29 member;
 - the `agent-failure-autopsy-29` / `commons-agent-failure-autopsy-offer/v1`
   metadata binding; and
 - the UTC time at which those provider objects were read.
@@ -32,13 +35,13 @@ provider evidence lifetime.
 
 A retained provider readback authorizes current checkout truth for at most
 **24 hours** after `observed_at_utc`. Future observations, stale observations,
-inactive/revoked link or price state, test-mode objects, identity/amount/
-metadata drift, unexpected provider operation provenance, or any retained-file
-byte change fail closed.
+inactive/revoked link or price state, test-mode objects, a second line item or
+incomplete/paginated line-item list, identity/amount/metadata drift, unexpected
+provider operation provenance, or any retained-file byte change fail closed.
 
 Refreshing currentness requires a new authenticated read-only Stripe retrieval
 and a reviewed update of the retained readback plus its code-pinned SHA-256.
-Do not copy forward the old timestamp.
+Do not copy forward the old timestamp or discard provider list cardinality.
 
 ## Authority ceiling
 

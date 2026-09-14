@@ -10,6 +10,8 @@
     "quantity": 1,
     "unit_amount": 2900
   },
+  "line_item_count": 1,
+  "line_items_has_more": false,
   "livemode": true,
   "observed_at_utc": "2026-09-14T01:30:22Z",
   "payment_link": {
@@ -21,7 +23,7 @@
     "offer_id": "agent-failure-autopsy-29",
     "url": "https://buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g"
   },
-  "schema_version": "commons-stripe-checkout-readback/v1",
+  "schema_version": "commons-stripe-checkout-readback/v2",
   "source": {
     "authenticated_read": true,
     "collector": "STRIPE_API_READ",
