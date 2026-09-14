@@ -1,9 +1,9 @@
 {
   "counts": {
     "open_issues": 112,
-    "open_pull_requests": 61,
-    "runs_in_progress": 17,
-    "runs_queued": 1039
+    "open_pull_requests": 62,
+    "runs_in_progress": 14,
+    "runs_queued": 1035
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -69,13 +69,24 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
+      "branch": "znc/agent-false-success-survival",
+      "created_at": "2026-09-14T04:41:07Z",
+      "draft": false,
+      "head_sha": "67469492f28f15602e8e7463bf06a34d19a05448",
+      "number": 14320,
+      "title": "Revenue: add agent false-success survival proof",
+      "updated_at": "2026-09-14T04:41:07Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
       "branch": "solforge-z/cross-provider-outbound-census-20260913-r3",
       "created_at": "2026-09-14T04:36:10Z",
       "draft": false,
       "head_sha": "008ef427c26f9effbbea6e6df718fbad023b6613",
       "number": 14318,
       "title": "Revenue safety: require complete cross-provider fallback census before outbound",
-      "updated_at": "2026-09-14T04:37:16Z"
+      "updated_at": "2026-09-14T04:39:26Z"
     },
     {
       "author": "woahwhattheheck",
@@ -97,7 +108,7 @@
       "head_sha": "742aeafae8c258759c435bf6758e1546ff258c56",
       "number": 14314,
       "title": "Revenue: harden bidder qualification vault with entity-bound v2",
-      "updated_at": "2026-09-14T04:36:37Z"
+      "updated_at": "2026-09-14T04:39:34Z"
     },
     {
       "author": "woahwhattheheck",
@@ -164,17 +175,6 @@
       "number": 14273,
       "title": "feat(outreach): add atomic contact claim fence",
       "updated_at": "2026-09-14T04:05:21Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zss-k7v2/proposal-gate-lifecycle-14251",
-      "created_at": "2026-09-14T03:44:57Z",
-      "draft": false,
-      "head_sha": "86c47a9e32a67eece1382899a898d9ccf40e26da",
-      "number": 14270,
-      "title": "feat(proposal-gate): model submission and award readiness",
-      "updated_at": "2026-09-14T03:55:15Z"
     }
   ],
   "open_heads": {
@@ -238,11 +238,12 @@
     "14310": "77807c1ab78041a8a38c6ba818d4110691a8e444",
     "14314": "742aeafae8c258759c435bf6758e1546ff258c56",
     "14317": "767953bfe5313334e9011709afaac685b0901a26",
-    "14318": "008ef427c26f9effbbea6e6df718fbad023b6613"
+    "14318": "008ef427c26f9effbbea6e6df718fbad023b6613",
+    "14320": "67469492f28f15602e8e7463bf06a34d19a05448"
   },
-  "pulls_listed": 61,
+  "pulls_listed": 62,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 61.1,
+  "queue_depth_per_runner": 73.9,
   "recently_closed": [
     {
       "author": "woahwhattheheck",
@@ -412,6 +413,6 @@
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-14T04:38:31Z",
+  "unchanged_since": "2026-09-14T04:41:20Z",
   "undatable_pulls": []
 }
