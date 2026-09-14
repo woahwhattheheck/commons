@@ -46,6 +46,20 @@ class TurnBenchTests(unittest.TestCase):
         r = self.decision(trace=t)
         self.assertFalse(self.finding(r, "CONFIG_BOUND")["passed"])
 
+    def test_session_update_config_drift_fails(self):
+        t = copy.deepcopy(self.trace)
+        t["events"].insert(2, {"seq": 2, "at_ms": 50, "type": "session.updated", "data": {"resolved_config_sha256": "a" * 64}})
+        for e in t["events"][3:]:
+            e["seq"] += 1
+        r = self.decision(trace=t)
+        self.assertFalse(self.finding(r, "CONFIG_BOUND")["passed"])
+
+    def test_tool_call_matches_current_provider_shape_without_reply_id(self):
+        t = copy.deepcopy(self.trace)
+        call = next(e for e in t["events"] if e["type"] == "tool.call")
+        self.assertEqual({"call_id", "name", "arguments"}, set(call["data"]))
+        tb.validate_trace(t)
+
     def test_turn_latency_over_budget_fails(self):
         s = copy.deepcopy(self.scenario)
         s["assertions"]["max_turn_start_latency_ms"] = 100
