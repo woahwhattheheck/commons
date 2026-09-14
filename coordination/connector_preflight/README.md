@@ -17,11 +17,12 @@ api_tool.list_resources({"paths":["GitHub","Slack"]})
 The preflight makes the evidence requirements mechanical:
 
 1. one complete, unfiltered first-pass discovery must cover both `GitHub` and `Slack`;
-2. the discovery catalog is checked for policy-required write actions;
-3. a `NO_WRITE_RAIL` claim requires a relevant write attempt when those actions are exposed;
-4. read-endpoint throttling never proves a write rail absent;
-5. temporary or ambiguous write failures do not become connector-absence evidence;
-6. only complete read-only discovery or unavailable results for every exposed required probe can support the blocker claim.
+2. the latest such discovery controls; an older catalog or action success cannot override newer evidence;
+3. the discovery catalog is checked for policy-required write actions;
+4. a `NO_WRITE_RAIL` claim requires a relevant write attempt when those actions are exposed;
+5. read-endpoint throttling never proves a write rail absent;
+6. temporary or ambiguous write failures do not become connector-absence evidence;
+7. only complete read-only discovery or unavailable results for every exposed required probe can support the blocker claim.
 
 ## States
 
@@ -77,12 +78,13 @@ Input reads require a bounded regular file and reject a final symlink. Output cr
 ## Tests
 
 ```bash
-python -m unittest -q coordination.connector_preflight.test_preflight
-python -O -m unittest -q coordination.connector_preflight.test_preflight
+python -m unittest -q coordination.connector_preflight.test_preflight coordination.connector_preflight.test_latest
+python -O -m unittest -q coordination.connector_preflight.test_preflight coordination.connector_preflight.test_latest
 python -m py_compile \
   coordination/connector_preflight/core.py \
   coordination/connector_preflight/cli.py \
-  coordination/connector_preflight/test_preflight.py
+  coordination/connector_preflight/test_preflight.py \
+  coordination/connector_preflight/test_latest.py
 ```
 
 The hostile suite covers malformed discovery, filtered first-pass discovery, incomplete catalogs, read throttling, missing or unknown action attempts, temporary write failure, confirmed write rails, unavailable rails, chronology, stale/future evidence, duplicate identities, type aliases, order invariance, receipt tamper, currentness drift, strict JSON, and safe file publication.
@@ -90,3 +92,5 @@ The hostile suite covers malformed discovery, filtered first-pass discovery, inc
 ## Authority ceiling
 
 Every packet hard-codes all external authority flags false. A receipt does not authorize connector calls, repository mutation, messaging, customer contact, payment activity, submission, or a revenue claim.
+
+Runtime support is explicitly Python 3.10+; hosted CI exercises Python 3.10 and 3.12.
