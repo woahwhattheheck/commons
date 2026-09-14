@@ -4,19 +4,27 @@ on:
   push:
     paths:
       - "host/right_now_revenue.py"
+      - "host/right_now_revenue_current.py"
+      - "host/_right_now_revenue_retained_v3.py"
+      - "host/right_now_stripe_authority.py"
       - "revenue/right_now/**"
       - "revenue/agent_failure_autopsy/offer.json"
       - "agent-rescue.html"
       - "test_right_now_checkout_authority.py"
+      - "test_right_now_stripe_authority.py"
       - "test_right_now_execution.py"
       - ".github/workflows/right-now-checkout-authority.yml"
   pull_request:
     paths:
       - "host/right_now_revenue.py"
+      - "host/right_now_revenue_current.py"
+      - "host/_right_now_revenue_retained_v3.py"
+      - "host/right_now_stripe_authority.py"
       - "revenue/right_now/**"
       - "revenue/agent_failure_autopsy/offer.json"
       - "agent-rescue.html"
       - "test_right_now_checkout_authority.py"
+      - "test_right_now_stripe_authority.py"
       - "test_right_now_execution.py"
       - ".github/workflows/right-now-checkout-authority.yml"
 
@@ -31,11 +39,19 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - name: Validate deterministic right-now projection
+      - name: Validate deterministic non-authorizing right-now projection
         run: python3 host/right_now_revenue.py validate
-      - name: Run checkout-authority and composed-control tests
-        run: python3 -m unittest test_right_now_checkout_authority.py test_right_now_execution.py
+      - name: Run retained/current checkout-authority and composed-control tests
+        run: python3 -m unittest test_right_now_checkout_authority.py test_right_now_stripe_authority.py test_right_now_execution.py
       - name: Run optimized-mode regressions
-        run: python3 -O -m unittest test_right_now_checkout_authority.py test_right_now_execution.py
+        run: python3 -O -m unittest test_right_now_checkout_authority.py test_right_now_stripe_authority.py test_right_now_execution.py
       - name: Verify Python syntax
-        run: python3 -m py_compile host/right_now_revenue.py test_right_now_checkout_authority.py test_right_now_execution.py
+        run: >-
+          python3 -m py_compile
+          host/right_now_revenue.py
+          host/right_now_revenue_current.py
+          host/_right_now_revenue_retained_v3.py
+          host/right_now_stripe_authority.py
+          test_right_now_checkout_authority.py
+          test_right_now_stripe_authority.py
+          test_right_now_execution.py
