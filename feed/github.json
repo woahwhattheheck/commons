@@ -1,9 +1,9 @@
 {
   "counts": {
-    "open_issues": 75,
-    "open_pull_requests": 44,
+    "open_issues": 80,
+    "open_pull_requests": 47,
     "runs_in_progress": 18,
-    "runs_queued": 122
+    "runs_queued": 169
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -69,13 +69,46 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
+      "branch": "zrt-h4v9/right-now-checkout-authority-20260913",
+      "created_at": "2026-09-14T01:24:02Z",
+      "draft": false,
+      "head_sha": "49cf48cee976cb158f4e5fed225d7950eac79a9e",
+      "number": 14135,
+      "title": "Revenue: bind active checkout truth to retained Stripe authority",
+      "updated_at": "2026-09-14T01:24:02Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zmh-c6t4-capability-future-time",
+      "created_at": "2026-09-14T01:23:37Z",
+      "draft": false,
+      "head_sha": "260bbf9739578a6ad94d42268c61e6246478d9ec",
+      "number": 14134,
+      "title": "fix(revenue): reject future-dated capability reports",
+      "updated_at": "2026-09-14T01:23:37Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zhb/commercial-opportunity-custody-20260913",
+      "created_at": "2026-09-14T01:23:35Z",
+      "draft": false,
+      "head_sha": "147b8b8f07fd572704dcc649faaab0eedb4b3cf4",
+      "number": 14133,
+      "title": "Revenue: make whole-opportunity custody atomic",
+      "updated_at": "2026-09-14T01:24:16Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
       "branch": "zkt-a7v2/right-now-human-authority",
       "created_at": "2026-09-14T01:14:29Z",
       "draft": false,
       "head_sha": "1c95d8463cbaf7e6d11d266d292a5b7792a2dbbb",
       "number": 14122,
       "title": "Bind right-now buyer truth to canonical reply evidence",
-      "updated_at": "2026-09-14T01:14:29Z"
+      "updated_at": "2026-09-14T01:20:44Z"
     },
     {
       "author": "woahwhattheheck",
@@ -142,39 +175,6 @@
       "number": 14055,
       "title": "GOSIM: require a real candidate configuration to pass the baseline",
       "updated_at": "2026-09-13T15:45:42Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zkfp7c2/hotel-room-turn-evidence-pilot",
-      "created_at": "2026-09-13T15:37:10Z",
-      "draft": false,
-      "head_sha": "1980d5a6cd6ef5188832c6b48de7ee4a29501d85",
-      "number": 14054,
-      "title": "revenue: land $2,500 hotel room-turn evidence pilot fulfillment",
-      "updated_at": "2026-09-13T19:36:09Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "ztq-c8m6/jersey-dn827803-authority-v2",
-      "created_at": "2026-09-13T14:49:35Z",
-      "draft": false,
-      "head_sha": "457ffa2ce5eacf467c603e1d05d6e2a0bf6bda11",
-      "number": 14010,
-      "title": "fix(revenue): harden Jersey DN827803 qualification authority v2",
-      "updated_at": "2026-09-13T15:34:12Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zck-m6v2/call-e-routescout-20260913",
-      "created_at": "2026-09-13T14:46:36Z",
-      "draft": false,
-      "head_sha": "2182d07cd8750087a73f2aea2455890d75daf251",
-      "number": 13999,
-      "title": "CALL-E RouteScout: approval-gated procurement routing agent",
-      "updated_at": "2026-09-13T14:55:42Z"
     }
   ],
   "open_heads": {
@@ -221,12 +221,48 @@
     "14076": "13097f7581280415461458584c34e590761afa89",
     "14086": "4c8e4df0e5a085565937ee85e34f464f76fcdc11",
     "14105": "d0c104f5fd41f4bb1e4f77fbb768804654b27a85",
-    "14122": "1c95d8463cbaf7e6d11d266d292a5b7792a2dbbb"
+    "14122": "1c95d8463cbaf7e6d11d266d292a5b7792a2dbbb",
+    "14133": "147b8b8f07fd572704dcc649faaab0eedb4b3cf4",
+    "14134": "260bbf9739578a6ad94d42268c61e6246478d9ec",
+    "14135": "49cf48cee976cb158f4e5fed225d7950eac79a9e"
   },
-  "pulls_listed": 44,
+  "pulls_listed": 47,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 6.8,
+  "queue_depth_per_runner": 9.4,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zst-q5m9/awwu-2026p044-migration-evidence",
+      "closed_at": "2026-09-14T01:22:37Z",
+      "head_sha": "090a5fcf4efa26f2760b8c41253a7665104c5290",
+      "merged_at": "2026-09-14T01:22:37Z",
+      "number": 14129,
+      "state": "MERGED",
+      "title": "Revenue: add AWWU CIS migration evidence workshare"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zzc/public-sector-ai-governance-dossier-20260913",
+      "closed_at": "2026-09-14T01:20:46Z",
+      "head_sha": "91edfbb101aa3ab7c4a98feb4076928fb4b36c12",
+      "merged_at": "2026-09-14T01:20:46Z",
+      "number": 14126,
+      "state": "MERGED",
+      "title": "feat: add public-sector AI governance control dossier"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zgl-m4q9/mozilla-lit-all3-v2-r2",
+      "closed_at": "2026-09-14T01:19:29Z",
+      "head_sha": "42b8859ce601da7759fbceea656533cf58672617",
+      "merged_at": "2026-09-14T01:19:29Z",
+      "number": 14125,
+      "state": "MERGED",
+      "title": "research: Lost in Transcription all-three multitrack V2"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -358,43 +394,10 @@
       "number": 14097,
       "state": "MERGED",
       "title": "live-mirror: skip tags GitHub rejects for workflow files"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "grok-build/live-mirror-source-receipt-34784776092",
-      "closed_at": "2026-09-13T21:59:17Z",
-      "head_sha": "a5574f971f751f063c6aa5a6a9ab190f78441ad8",
-      "merged_at": "2026-09-13T21:59:17Z",
-      "number": 14096,
-      "state": "MERGED",
-      "title": "live-mirror: record source SHA without workflows permission"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zlm-g7p2/arc3-sage-effects-20260913",
-      "closed_at": "2026-09-13T17:08:01Z",
-      "head_sha": "1afbd096f83873d11e2c7c0b1e924780786aff04",
-      "merged_at": "2026-09-13T17:08:01Z",
-      "number": 14093,
-      "state": "MERGED",
-      "title": "ARC3 SAGE: add causal visual-effect factorizer"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zak-v5n9/sales-meeting-calendar-prep-consumer",
-      "closed_at": "2026-09-13T17:05:43Z",
-      "head_sha": "a3760de2a226a2e7748b38ab67af9a0e9e9b46dd",
-      "merged_at": "2026-09-13T17:05:43Z",
-      "number": 14080,
-      "state": "MERGED",
-      "title": "Integrate live Calendar free/busy into sales meeting readiness"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-14T01:19:04Z",
+  "unchanged_since": "2026-09-14T01:24:25Z",
   "undatable_pulls": []
 }
