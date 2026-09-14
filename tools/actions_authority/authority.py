@@ -86,9 +86,12 @@ def _run_classification(run: dict[str, Any]) -> tuple[str, str]:
         return "HOLD", f"required workflow concluded {conclusion}, not success"
 
     if status in ZERO_STEP_WAIT_STATUSES:
-        if jobs and all(_job_zero_step_unassigned(job) for job in jobs):
+        if jobs and all(
+            _job_zero_step_unassigned(job) and job["status"] in ZERO_STEP_WAIT_STATUSES
+            for job in jobs
+        ):
             return "BACKLOG", "latest run attempt is queued and unassigned with zero executed steps"
-        return "WAIT", "latest workflow run has not completed"
+        return "WAIT", "latest workflow run has not completed or job state contradicts queue backlog"
 
     if status == "in_progress":
         return "WAIT", "latest workflow run is executing"
@@ -171,7 +174,7 @@ def classify(
         raise EvidenceError("evidence snapshot is stale")
 
     policy = _parse_policy(payload.get("policy"))
-    if policy["captured_at"] > captured_at + timedelta(seconds=max_future_skew_seconds):
+    if policy["captured_at"] > captured_at:
         raise EvidenceError("policy was captured after the evidence snapshot")
     if captured_at - policy["captured_at"] > timedelta(seconds=max_age_seconds):
         raise EvidenceError("policy snapshot is stale relative to the evidence snapshot")
