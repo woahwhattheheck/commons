@@ -47,7 +47,7 @@ python app.py serve \
   --operator-token 'replace-with-a-long-random-local-capability'
 ```
 
-The server refuses non-loopback bind targets. Open the printed local URL. The browser UI has customer intake/status and operator catalog/case workflows.
+The server refuses non-loopback bind targets. The hardened entry boundary also requires the HTTP `Host` header to name loopback exactly and requires `application/json` for POST bodies that can reach JSON parsing. Open the printed local URL. The browser UI has customer intake/status and operator catalog/case workflows.
 
 For a synthetic end-to-end case:
 
@@ -72,6 +72,10 @@ Export an existing case without overwriting an existing path:
 python app.py export --db ./warranty-rma.sqlite3 --case-id RMA-... --out ./case.json
 ```
 
+Export publication is create-exclusive and fail-closed. The entry boundary drains legal positive short writes, fsyncs, verifies the retained regular single-link inode and exact size, reads the visible pathname back byte-for-byte, then re-checks pathname identity and single-link state after readback. If any publication check fails, the command fails nonzero.
+
+Failure cleanup intentionally does **not** unlink the output pathname. Portable `lstat(path)` followed by `unlink(path)` has a replacement race that could delete foreign data. A failed create-exclusive artifact may therefore remain for operator inspection/removal; a later export to the same path will continue to refuse overwrite until an operator handles that artifact. Foreign replacement paths and hardlink aliases are never deleted by failure cleanup.
+
 ## Security / privacy boundaries
 
 - SQLite state is local; no external network client exists in the Python product.
@@ -79,6 +83,7 @@ python app.py export --db ./warranty-rma.sqlite3 --case-id RMA-... --out ./case.
 - Operator bearer and customer status capabilities are cryptographically compared by SHA-256 digest; plaintext status capabilities are not persisted.
 - JSON parsing rejects duplicate keys and non-finite values.
 - HTTP JSON bodies are bounded and transfer encoding is rejected.
+- Loopback HTTP requests require an exact loopback `Host`; mutation bodies that can reach JSON parsing require `application/json`.
 - Evidence stores metadata + SHA-256 only; this product does not upload customer files to an external service.
 - Browser rendering uses DOM text nodes rather than dynamic `innerHTML`.
 - HTTP responses use `no-store`, `nosniff`, no-referrer, and a local-only CSP.
@@ -89,12 +94,14 @@ If deployed beyond loopback later, add an explicit deployment/auth/TLS/tenant-is
 ## Tests
 
 ```bash
-python -m py_compile app.py test_app.py
-python -m unittest -v test_app.py
-python -O -m unittest -v test_app.py
+python -m py_compile app.py app_core.py test_app.py test_ui_contract.py test_boundary_hardening.py
+python -m unittest -v
+python -O -m unittest -v
 ```
 
-The focused suite attacks duplicate/changed retries, active duplicate serials, cross-case capability use, private-note leakage, stale case/policy decisions, impossible transition order, duplicate/cross-case receipt identities, reopen, concurrency, operator authentication, strict JSON/type handling, local HTTP authorization, and external-network primitives.
+The original focused suite attacks duplicate/changed retries, active duplicate serials, cross-case capability use, private-note leakage, stale case/policy decisions, impossible transition order, duplicate/cross-case receipt identities, reopen, concurrency, operator authentication, strict JSON/type handling, local HTTP authorization, and external-network primitives.
+
+The recovery boundary suite additionally attacks positive short writes, zero write progress, overwrite refusal, pathname replacement before/during readback, hardlink creation during readback, hostile `Host`, cross-origin-simple `text/plain` JSON mutation, and ordinary loopback `application/json` compatibility. Failure-path tests trap `os.unlink` so a hidden pathname-deletion regression fails the suite.
 
 ## Commercial posture
 
