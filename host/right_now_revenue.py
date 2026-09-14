@@ -31,6 +31,7 @@ CHECKOUT_CURRENT_SHA256 = "3ccefcbe58f9856a486475ce2321a2df3eac443207c4ac4f3badf
 CHECKOUT_CURRENT_MAX_AGE = timedelta(hours=24)
 
 _HISTORICAL_VALIDATE_CHECKOUT_AUTHORITY = _core.validate_checkout_authority
+_HISTORICAL_VALIDATE_CATALOG = _core.validate_catalog
 _ORIGINAL_BUILD_CONTROL = _core.build_control
 
 
@@ -208,10 +209,28 @@ def build_checkout_authority(catalog_as_of: str) -> dict[str, Any]:
     return result
 
 
-# Core functions resolve globals in the core module at call time. Patch only the
-# production current-authority seam; the direct historical validator remains
-# unchanged and deterministic for replay/migration callers.
+# Core functions resolve globals in the core module at call time.
 _core.build_checkout_authority = build_checkout_authority
+
+
+def validate_catalog(
+    catalog: dict[str, Any],
+    checkout_authority: dict[str, Any] | None = None,
+) -> dict[str, Any]:
+    """Validate catalog truth against freshly recomputed provider authority.
+
+    ``checkout_authority`` remains in the signature for source compatibility,
+    but is intentionally not trusted. A caller cannot preserve ACTIVE by
+    passing a historical or fabricated authority object.
+    """
+
+    if checkout_authority is not None and not isinstance(checkout_authority, dict):
+        raise ControlError("checkout authority override must be an object")
+    current = build_checkout_authority(catalog.get("as_of"))
+    return _HISTORICAL_VALIDATE_CATALOG(catalog, current)
+
+
+_core.validate_catalog = validate_catalog
 
 
 def build_control() -> dict[str, Any]:

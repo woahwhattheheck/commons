@@ -170,6 +170,20 @@ class RightNowCheckoutCurrentnessTests(unittest.TestCase):
         self.assertIs(historical["active"], True)
         self.assertNotIn("current_observed_at_utc", historical)
 
+    def test_catalog_override_cannot_bypass_stale_currentness(self) -> None:
+        catalog = control.read_object(control.CATALOG_PATH)
+        offer = control.read_object(control.AUTOPSY_PROVIDER_PATH)
+        page = control.AUTOPSY_PUBLIC_PAGE_PATH.read_text(encoding="utf-8")
+        historical = control.validate_checkout_authority(
+            offer,
+            page,
+            catalog["as_of"],
+        )
+        stale_now = datetime(2026, 9, 15, 1, 30, 23, tzinfo=timezone.utc)
+        with mock.patch.object(control, "_current_utc", return_value=stale_now):
+            with self.assertRaisesRegex(control.ControlError, "stale"):
+                control.validate_catalog(copy.deepcopy(catalog), historical)
+
     def test_control_compilation_fails_once_current_evidence_expires(self) -> None:
         stale_now = datetime(2026, 9, 15, 1, 30, 23, tzinfo=timezone.utc)
         with mock.patch.object(control, "_current_utc", return_value=stale_now):
