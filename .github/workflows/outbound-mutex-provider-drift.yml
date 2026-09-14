@@ -1,0 +1,47 @@
+name: outbound-mutex-provider-drift
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - "revenue/outbound_mutex/**"
+      - ".github/workflows/outbound-mutex-provider-drift.yml"
+  push:
+    branches:
+      - main
+    paths:
+      - "revenue/outbound_mutex/**"
+      - ".github/workflows/outbound-mutex-provider-drift.yml"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: outbound-mutex-provider-drift-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.9", "3.13"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Compile exact outbound mutex sources
+        run: >-
+          python -m py_compile
+          revenue/outbound_mutex/lease.py
+          revenue/outbound_mutex/test_provider_snapshot_takeover.py
+      - name: Provider-drift regression suite
+        run: >-
+          python -m unittest -v
+          revenue.outbound_mutex.test_provider_snapshot_takeover
+      - name: Provider-drift regression suite under optimized Python
+        run: >-
+          python -O -m unittest -v
+          revenue.outbound_mutex.test_provider_snapshot_takeover
