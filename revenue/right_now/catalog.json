@@ -8,8 +8,8 @@
     "collected_cash_usd": 1,
     "verified_positive_replies": 0,
     "accepted_scopes": 0,
-    "active_chargeable_checkout": true,
-    "payment_note": "USD 1 of cash is independently evidenced by the Frantic bounty #120 provider receipt recorded in revenue/right_now/settled_cash.json and the merged Sourcey PR #1423; bank availability and withdrawability remain unasserted. The live $29 Agent Failure Autopsy checkout remains active on agent-rescue.html (Payment Link recorded in revenue/agent_failure_autopsy/offer.json; #8889). Other right-now routes stay scope-first with buyer-specific payment handoff. The $2,500 same-day survival proof stays on revenue/production_survival/README.md and is not the agent-rescue page."
+    "active_chargeable_checkout": false,
+    "payment_note": "USD 1 of cash is independently evidenced by the Frantic bounty #120 provider receipt recorded in revenue/right_now/settled_cash.json and the merged Sourcey PR #1423; bank availability and withdrawability remain unasserted. The $29 Agent Failure Autopsy public checkout route remains agent-rescue.html and retained Stripe identity evidence remains in revenue/agent_failure_autopsy/offer.json, but checked-in repository bytes do not assert that the Payment Link is active right now. Current active_chargeable_checkout=true requires a fresh authenticated Stripe readback through host/right_now_revenue.py current-checkout or compile-current. Other right-now routes stay scope-first with buyer-specific payment handoff. The $2,500 same-day survival proof stays on revenue/production_survival/README.md and is not the agent-rescue page."
   },
   "ranking_rule": [
     "buyer can state the job now using public or synthetic inputs",
@@ -36,9 +36,9 @@
       "start_route": "agent-rescue.html",
       "source": "revenue/right_now/autopsy_offer.json",
       "payment_state": "LIVE_PUBLIC_CHECKOUT_PAGE",
-      "next_external_event": "A real buyer pays the live $29 checkout on agent-rescue.html and sends redacted one-run evidence inside the intake boundary.",
+      "next_external_event": "A real buyer pays the $29 checkout on agent-rescue.html and sends redacted one-run evidence inside the intake boundary.",
       "founder_bottleneck": "Confirm usable redacted evidence arrived after payment, start the one-business-day clock, and assign fulfillment.",
-      "commons_bottleneck": "Deliver the full-strength autopsy (or refund) against the live offer contract without reminting Stripe."
+      "commons_bottleneck": "Deliver the full-strength autopsy (or refund) against the offer contract without reminting Stripe; use authenticated provider readback for any current-active checkout claim."
     },
     {
       "rank": 2,
@@ -112,7 +112,7 @@
       "source": "revenue/production_survival/offer.json#/entry_offer",
       "payment_state": "BUYER_SPECIFIC_HANDOFF_REQUIRED",
       "next_external_event": "A real buyer starts from revenue/production_survival/README.md with the one-sentence failure and agrees to a start window.",
-      "founder_bottleneck": "Do not route Survival Proof buyers to agent-rescue.html (that page is the live $29 Autopsy). Accept the exact sentence and window from revenue/production_survival/README.md, then issue a buyer-specific payment handoff.",
+      "founder_bottleneck": "Do not route Survival Proof buyers to agent-rescue.html (that page is the $29 Autopsy route). Accept the exact sentence and window from revenue/production_survival/README.md, then issue a buyer-specific payment handoff.",
       "commons_bottleneck": "Reserve one delivery window and build the accepted proof after funding; keep agent-rescue.html reserved for Autopsy."
     }
   ],
@@ -128,7 +128,7 @@
       "goat-carriers-catalog-json-live-cash-20260909-01",
       "right-now.html Live cash / tip-shelf-199"
     ],
-    "note": "Optional smaller-step paid diagnostics with live checkout on product pages. Ranking offers and truth above stay canonical. right-now.html already surfaces Live cash / tip-shelf. No invent Stripe URLs.",
+    "note": "Optional smaller-step paid diagnostics with public checkout routes on product pages. Ranking offers and truth above stay canonical. right-now.html already surfaces Live cash / tip-shelf. Current provider-active claims require fresh provider authority; do not invent Stripe URLs.",
     "products": [
       {
         "name": "Agent Failure Autopsy",
