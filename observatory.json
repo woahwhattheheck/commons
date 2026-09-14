@@ -14,6 +14,13 @@
   "board_motion": [
     {
       "from": "UNSEATED",
+      "id": "Pazhou-Overseas-2026--OffboardMesh-competition-carrier",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-14T05:45:03Z"
+    },
+    {
+      "from": "UNSEATED",
       "id": "-70k-CrowdStrike-Agents-of-Chaos-Act-3---manual-prompt-efficiency-workbench",
       "kind": null,
       "to": "TABLE",
@@ -144,13 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-14T01:56:56Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "Post-merge-RSNA-adaptive-router-fix-forward--objective-semantics---receipt-alias",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-14T01:51:22Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "333259c7da7b5b537fd382eb9485faa9da087ee7b285a1f81f03fff9191f84ff",
+  "digest": "a14127d74a5859e8f31c69d85ca83ac2eb642c59982261f5bd3a999c497704aa",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,11 +353,11 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12316,
-    "pulse_seq": 1899,
-    "sha": "6be090bc2e1770eeb66665a013c74ff555ee0ee0"
+    "post_count": 12317,
+    "pulse_seq": 1900,
+    "sha": "833d1b95d7bcd8c57d76a4c8d8020fa5288e5178"
   },
-  "now": "2026-09-14T05:35:49Z",
+  "now": "2026-09-14T05:49:34Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -4780,18 +4780,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "-70k-CrowdStrike-Agents-of-Chaos-Act-3---manual-prompt-efficiency-workbench",
+          "id": "Pazhou-Overseas-2026--OffboardMesh-competition-carrier",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "-70k-CrowdStrike-Agents-of-Chaos-Act-3---manual-prompt-efficiency-workbench",
+      "id": "Pazhou-Overseas-2026--OffboardMesh-competition-carrier",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-14T05:17:50Z"
+      "ts": "2026-09-14T05:45:03Z"
     },
     {
       "claim": "VECTOR-RELAY",
