@@ -111,6 +111,25 @@ class SymbolCodeCaseTests(unittest.TestCase):
                     receipt["checks"]["canonical_current_reward_amount"], "200"
                 )
 
+    def test_identifier_like_suffixes_are_not_currency_codes(self):
+        forms = (
+            "Reward: $200 cadet via Algora.",
+            "Reward: $200 usd_label via Algora.",
+        )
+        for body in forms:
+            with self.subTest(body=body):
+                receipt = self._receipt(body)
+                self.assertEqual(receipt["freshness_status"], "actionable")
+                self.assertEqual(
+                    receipt["checks"]["authoritative_amount_state"], "resolved"
+                )
+                self.assertEqual(
+                    receipt["checks"]["canonical_current_reward_currency"], "USD"
+                )
+                self.assertEqual(
+                    receipt["checks"]["canonical_current_reward_amount"], "200"
+                )
+
 
 if __name__ == "__main__":
     unittest.main()
