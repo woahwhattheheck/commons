@@ -11,7 +11,7 @@ from pathlib import Path
 from typing import Any, Mapping, Sequence
 
 from lean_feed_core import *
-from lean_feed_core import EvidenceError, canonical_json_bytes, sha256_file
+from lean_feed_core import EvidenceError, _require, canonical_json_bytes, sha256_file
 from lean_feed_gate import *
 from lean_feed_run import *
 
