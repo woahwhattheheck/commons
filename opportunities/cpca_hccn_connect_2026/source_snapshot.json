@@ -1,0 +1,140 @@
+{
+  "schema": "cpca.hccn.source_snapshot/v1",
+  "buyer": "California Primary Care Association",
+  "program": "CPCA HCCN Connect",
+  "rfp_title": "Health Center Controlled Network (HCCN) Technical Assistance and Training Marketplace Vendor Pool",
+  "rfp_number": "1",
+  "release_date": "2026-08-31",
+  "proposal_due_at": "2026-09-18T17:00:00-07:00",
+  "checked_at": "2026-09-14T21:46:27Z",
+  "buyer_packet": {
+    "filename": "2026.09.03_CPCA HCCN Connect Marketplace RFP.pdf",
+    "sha256": "37c61b76500fee4639e1499d7683d4882da294f65d77e5e59c224ada3fc52529",
+    "bytes": 222280,
+    "pages": 16,
+    "received_via": "buyer email reply to packet-recovery request",
+    "gmail_event_id": "1a0a1017913c03e8",
+    "public_packet_bytes_committed": false
+  },
+  "marketplace": {
+    "single_vendor_award": false,
+    "multiple_vendors_expected": true,
+    "qualification_through": "2028-07-31",
+    "guaranteed_referrals_or_volume": false,
+    "projects": "time_and_materials",
+    "payment_basis": "hours completed, submitted by vendor, approved by recipient and CPCA monthly",
+    "per_engagement_sow_required": true
+  },
+  "service_types": ["technical_assistance", "group_training"],
+  "domains": {
+    "data_management_analytics": [
+      "Data Governance",
+      "Data Quality Improvement",
+      "Dashboard and Report Development",
+      "Dashboard Optimization",
+      "Incorporating Data in Workflows",
+      "Predictive Analytics"
+    ],
+    "data_sharing_interoperability": [
+      "Navigating California's Health Data Exchange Ecosystem",
+      "Optimizing Data Exchange for Clinical and Operational Impact",
+      "Data Governance for Effective Interoperability"
+    ],
+    "uds_plus_implementation": [
+      "FHIR Fundamentals",
+      "FHIR Readiness and Organizational Preparedness",
+      "FHIR Implementation",
+      "FHIR Utilization",
+      "FHIR Data Exchange Compliance"
+    ],
+    "value_based_care": [
+      "Closing Care Gaps",
+      "Quality Improvement",
+      "Assignment and Attribution",
+      "Diagnosis Coding",
+      "Encounter Data Improvement",
+      "Managed Care and Risk Contracting"
+    ],
+    "artificial_intelligence": [
+      "AI Governance",
+      "AI Vendor Evaluation",
+      "AI Use Case Education",
+      "AI Implementation"
+    ]
+  },
+  "experience_rules": {
+    "established_domains": {
+      "domain_ids": ["data_management_analytics", "value_based_care"],
+      "completed_comparable_engagements_min": 3,
+      "lookback_years": 3
+    },
+    "emerging_domains": {
+      "domain_ids": ["data_sharing_interoperability", "uds_plus_implementation", "artificial_intelligence"],
+      "recent_completed_or_substantially_completed_min": 1,
+      "additional_completed_active_or_pilot_min": 1,
+      "lookback_years_for_recent": 2
+    },
+    "safety_net_requirement_per_selected_domain": true,
+    "qualifying_safety_net_types": [
+      "federally_qualified_health_center",
+      "health_center_program_look_alike",
+      "primary_care_association_or_hccn",
+      "safety_net_primary_care_organization_or_network"
+    ]
+  },
+  "general_qualifications": [
+    "maintain any business licensing, certification, insurance, and accreditation required for proposed services",
+    "prior experience serving FQHCs, look-alikes, or other safety-net primary care providers",
+    "cultural competency and non-discriminatory practices, including rural and agricultural/farm-worker experience where applicable",
+    "organizational capacity for timely and concurrent TA engagements",
+    "virtual service capability and/or California presence",
+    "CPCA reporting, invoicing, and oversight compliance",
+    "satisfactory client references"
+  ],
+  "application_requirements": [
+    "organizational overview and point of contact",
+    "domain and service-type selections using Appendix A",
+    "staff/consultant qualifications, resumes, certifications",
+    "relevant past performance and at least three client references",
+    "relevant sample work products",
+    "proposed rate structure using Appendix B",
+    "signed Appendix C licensing, non-discrimination, and conflict-of-interest attestation"
+  ],
+  "evaluation_weights_percent": {
+    "domain_expertise_and_qualifications": 30,
+    "relevant_experience": 25,
+    "references_and_past_performance": 15,
+    "approach_and_capacity": 15,
+    "cost_reasonableness": 15
+  },
+  "selection": {
+    "first_review_period": "2026-09-14/2026-09-25",
+    "notification_date": "2026-10-12",
+    "onboarding_window": "2026-11-01/2026-12-31",
+    "next_vendor_selection_period": "2027-06"
+  },
+  "contract": {
+    "engagement_agreement_required": true,
+    "business_associate_agreement_as_applicable": true,
+    "project_specific_sow_required": true,
+    "phi_or_pii_may_be_in_scope": true
+  },
+  "submission": {
+    "channel": "CPCA HCCN Smartsheet submission form",
+    "single_pdf_required": true,
+    "filename_pattern": "[Vendor Organization Name]_CPCA_HCCN_Connect_Application.pdf",
+    "receipt_confirmation_expected_within_business_days": 2,
+    "point_of_contact": "Lucy Saenz, Director of Data Informatics and Information Technology"
+  },
+  "authority": {
+    "external_submission_authorized": false,
+    "external_contact_authorized": false,
+    "qualification_assertion_authorized": false,
+    "healthcare_experience_assertion_authorized": false,
+    "reference_contact_authorized": false,
+    "pricing_commitment_authorized": false,
+    "legal_or_compliance_certification_authorized": false,
+    "contract_or_signature_authorized": false,
+    "award_or_revenue_claim_authorized": false
+  }
+}
