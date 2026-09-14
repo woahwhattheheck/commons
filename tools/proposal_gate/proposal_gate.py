@@ -16,6 +16,8 @@ from typing import Any, Iterable
 PLACEHOLDER_RE = re.compile(r"(?:\bTBD\b|\bTODO\b|\[\s*(?:INSERT|TBD|TODO)[^\]]*\]|<[^>]*(?:TBD|TODO|INSERT)[^>]*>)", re.I)
 VALID_EVIDENCE = {"available", "pending", "missing", "not_applicable"}
 VALID_REQ_TYPES = {"mandatory", "scored", "informational"}
+VALID_STAGES = ("submission", "award")
+STAGE_INDEX = {stage: index for index, stage in enumerate(VALID_STAGES)}
 
 
 @dataclass(frozen=True)
@@ -28,11 +30,20 @@ class GateResult:
     missing_evidence: tuple[str, ...]
     owner_gate: bool
     notes: tuple[str, ...]
+    requirement_stage: str = "submission"
+    target_stage: str = "submission"
+    controlling: bool = True
 
 
 def _load(path: str | Path) -> Any:
     with Path(path).open("r", encoding="utf-8") as fh:
         return json.load(fh)
+
+
+def _validate_stage(value: Any, *, label: str) -> str:
+    if type(value) is not str or value not in STAGE_INDEX:
+        raise ValueError(f"{label}: invalid stage {value!r}")
+    return value
 
 
 def _validate_payload(requirements: list[dict[str, Any]], evidence: list[dict[str, Any]]) -> None:
@@ -47,6 +58,7 @@ def _validate_payload(requirements: list[dict[str, Any]], evidence: list[dict[st
         kind = str(req.get("type", "mandatory"))
         if kind not in VALID_REQ_TYPES:
             raise ValueError(f"{rid}: invalid type {kind!r}")
+        _validate_stage(req.get("stage", "submission"), label=f"{rid}.stage")
         if not isinstance(req.get("statement", ""), str):
             raise ValueError(f"{rid}: statement must be text")
         ev = req.get("evidence", [])
@@ -66,7 +78,13 @@ def _validate_payload(requirements: list[dict[str, Any]], evidence: list[dict[st
             raise ValueError(f"{eid}: invalid status {status!r}")
 
 
-def evaluate(requirements: list[dict[str, Any]], evidence: list[dict[str, Any]]) -> list[GateResult]:
+def evaluate(
+    requirements: list[dict[str, Any]],
+    evidence: list[dict[str, Any]],
+    *,
+    stage: str = "submission",
+) -> list[GateResult]:
+    target_stage = _validate_stage(stage, label="target stage")
     _validate_payload(requirements, evidence)
     evid = {str(x["id"]): x for x in evidence}
     results: list[GateResult] = []
@@ -74,6 +92,8 @@ def evaluate(requirements: list[dict[str, Any]], evidence: list[dict[str, Any]])
     for req in requirements:
         rid = str(req["id"])
         kind = str(req.get("type", "mandatory"))
+        requirement_stage = str(req.get("stage", "submission"))
+        controlling = STAGE_INDEX[requirement_stage] <= STAGE_INDEX[target_stage]
         required_evidence = [str(x) for x in req.get("evidence", [])]
         missing: list[str] = []
         pending: list[str] = []
@@ -116,7 +136,10 @@ def evaluate(requirements: list[dict[str, Any]], evidence: list[dict[str, Any]])
             ev_status = "not_applicable"
 
         response_bad = response_required and (not response or bool(PLACEHOLDER_RE.search(response)))
-        if kind == "mandatory" and (missing or pending or response_bad or owner_gate):
+        if not controlling:
+            disposition = "DEFERRED"
+            notes.append(f"deferred until {requirement_stage} stage")
+        elif kind == "mandatory" and (missing or pending or response_bad or owner_gate):
             disposition = "BLOCKED"
         elif kind == "scored" and (missing or pending or response_bad or owner_gate):
             disposition = "AT_RISK"
@@ -134,26 +157,56 @@ def evaluate(requirements: list[dict[str, Any]], evidence: list[dict[str, Any]])
             missing_evidence=tuple(missing + pending),
             owner_gate=owner_gate,
             notes=tuple(notes),
+            requirement_stage=requirement_stage,
+            target_stage=target_stage,
+            controlling=controlling,
         ))
     return results
 
 
+def _target_stage(rows: list[GateResult]) -> str:
+    if not rows:
+        return "submission"
+    stages = {row.target_stage for row in rows}
+    if len(stages) != 1:
+        raise ValueError("gate results mix target stages")
+    return _validate_stage(next(iter(stages)), label="result target stage")
+
+
 def summarize(results: Iterable[GateResult]) -> dict[str, Any]:
     rows = list(results)
+    target_stage = _target_stage(rows)
     counts: dict[str, int] = {}
     for row in rows:
         counts[row.disposition] = counts.get(row.disposition, 0) + 1
-    blocking = [r.requirement_id for r in rows if r.disposition == "BLOCKED"]
-    owner = [r.requirement_id for r in rows if r.owner_gate]
-    ready = [r for r in rows if r.disposition == "READY"]
-    score = round((len(ready) / len(rows) * 100.0), 1) if rows else 100.0
+
+    controlling_rows = [r for r in rows if r.controlling]
+    ready = [r for r in controlling_rows if r.disposition == "READY"]
+    blocking = [r.requirement_id for r in controlling_rows if r.disposition == "BLOCKED"]
+    owner = [r.requirement_id for r in controlling_rows if r.owner_gate]
+    deferred = [r.requirement_id for r in rows if not r.controlling]
+
+    submission_rows = [r for r in rows if r.requirement_stage == "submission"]
+    submission_blocking = [r.requirement_id for r in submission_rows if r.disposition == "BLOCKED"]
+    submission_owner = [r.requirement_id for r in submission_rows if r.owner_gate]
+
+    score = round((len(ready) / len(controlling_rows) * 100.0), 1) if controlling_rows else 100.0
+    stage_ready = not blocking and not owner
+    submission_ready = not submission_blocking and not submission_owner
     return {
+        "stage": target_stage,
         "total": len(rows),
+        "controlling_total": len(controlling_rows),
+        "deferred_total": len(deferred),
         "counts": dict(sorted(counts.items())),
         "readiness_percent": score,
-        "submission_ready": not blocking and not owner,
+        "stage_ready": stage_ready,
+        "submission_ready": submission_ready,
         "blocking_requirements": blocking,
         "owner_gates": owner,
+        "deferred_requirements": deferred,
+        "submission_blocking_requirements": submission_blocking,
+        "submission_owner_gates": submission_owner,
     }
 
 
@@ -163,32 +216,40 @@ def render_markdown(requirements: list[dict[str, Any]], results: list[GateResult
     lines = [
         "# Proposal compliance gate",
         "",
+        f"**Target stage:** {summary['stage']}  ",
         f"**Readiness:** {summary['readiness_percent']}%  ",
+        f"**Stage ready:** {'YES' if summary['stage_ready'] else 'NO'}  ",
         f"**Submission ready:** {'YES' if summary['submission_ready'] else 'NO'}  ",
         f"**Blocked:** {len(summary['blocking_requirements'])}  ",
-        f"**Owner gates:** {len(summary['owner_gates'])}",
+        f"**Owner gates:** {len(summary['owner_gates'])}  ",
+        f"**Deferred:** {summary['deferred_total']}",
         "",
-        "| ID | Section | Type | Disposition | Evidence | Owner gate | Requirement |",
-        "|---|---|---|---|---|---|---|",
+        "| ID | Section | Type | Controls at | Disposition | Evidence | Owner gate | Requirement |",
+        "|---|---|---|---|---|---|---|---|",
     ]
     for row in results:
         req = req_map[row.requirement_id]
         statement = str(req.get("statement", "")).replace("|", "\\|").replace("\n", " ")
         lines.append(
-            f"| {row.requirement_id} | {row.section} | {row.requirement_type} | **{row.disposition}** | "
-            f"{row.evidence_status} | {'YES' if row.owner_gate else 'no'} | {statement} |"
+            f"| {row.requirement_id} | {row.section} | {row.requirement_type} | {row.requirement_stage} | "
+            f"**{row.disposition}** | {row.evidence_status} | {'YES' if row.owner_gate else 'no'} | {statement} |"
         )
     if summary["blocking_requirements"]:
-        lines += ["", "## Blocking requirements", ""]
+        lines += ["", f"## Blocking requirements at {summary['stage']} stage", ""]
         for rid in summary["blocking_requirements"]:
             row = next(x for x in results if x.requirement_id == rid)
             req = req_map[rid]
             detail = "; ".join(row.notes) or "blocked"
             lines.append(f"- **{rid}** — {req.get('statement','')} ({detail})")
     if summary["owner_gates"]:
-        lines += ["", "## Authorized-human gates", ""]
+        lines += ["", f"## Authorized-human gates at {summary['stage']} stage", ""]
         for rid in summary["owner_gates"]:
             lines.append(f"- **{rid}** — {req_map[rid].get('statement','')}")
+    if summary["deferred_requirements"]:
+        lines += ["", "## Deferred requirements", ""]
+        for rid in summary["deferred_requirements"]:
+            req = req_map[rid]
+            lines.append(f"- **{rid}** — controls at {req.get('stage', 'submission')} stage: {req.get('statement','')}")
     return "\n".join(lines) + "\n"
 
 
@@ -220,7 +281,8 @@ def render_draft(requirements: list[dict[str, Any]]) -> str:
         for req in items:
             response = str(req.get("response", "") or "").strip() or "[TBD — evidence-backed response required]"
             gate = " **[OWNER GATE]**" if req.get("owner_gate") else ""
-            lines += [f"### {req['id']}{gate}", f"**Requirement:** {req['statement']}", "", response, ""]
+            stage = str(req.get("stage", "submission"))
+            lines += [f"### {req['id']}{gate}", f"**Controls at:** {stage}", f"**Requirement:** {req['statement']}", "", response, ""]
     return "\n".join(lines)
 
 
@@ -228,20 +290,21 @@ def main(argv: list[str] | None = None) -> int:
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument("requirements", help="requirements JSON file")
     p.add_argument("evidence", help="evidence inventory JSON file")
+    p.add_argument("--stage", choices=VALID_STAGES, default="submission", help="readiness horizon to evaluate")
     p.add_argument("--json-out", help="write machine-readable gate report")
     p.add_argument("--markdown-out", help="write Markdown compliance matrix")
     p.add_argument("--skeleton-out", help="write response skeleton")
     p.add_argument("--draft-out", help="write current evidence-backed response draft")
-    p.add_argument("--check", action="store_true", help="exit 2 unless submission_ready")
+    p.add_argument("--check", action="store_true", help="exit 2 unless the target stage is ready")
     args = p.parse_args(argv)
 
     req_payload = _load(args.requirements)
     ev_payload = _load(args.evidence)
     requirements = req_payload["requirements"] if isinstance(req_payload, dict) else req_payload
     evidence = ev_payload["evidence"] if isinstance(ev_payload, dict) else ev_payload
-    results = evaluate(requirements, evidence)
+    results = evaluate(requirements, evidence, stage=args.stage)
     summary = summarize(results)
-    report = {"summary": summary, "results": [asdict(r) for r in results]}
+    report = {"stage": args.stage, "summary": summary, "results": [asdict(r) for r in results]}
 
     if args.json_out:
         Path(args.json_out).write_text(json.dumps(report, indent=2, sort_keys=True) + "\n", encoding="utf-8")
@@ -253,7 +316,7 @@ def main(argv: list[str] | None = None) -> int:
         Path(args.draft_out).write_text(render_draft(requirements), encoding="utf-8")
 
     print(json.dumps(summary, sort_keys=True))
-    if args.check and not summary["submission_ready"]:
+    if args.check and not summary["stage_ready"]:
         return 2
     return 0
 
