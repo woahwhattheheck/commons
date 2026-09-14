@@ -499,7 +499,12 @@ def command_receive(args: argparse.Namespace) -> None:
         raise ReorderError("receipt stock and log outputs must refer to different files")
     plan = json.loads(args.plan.read_text(encoding="utf-8"))
     prior_path = getattr(args, "prior_log", None)
-    prior_log = json.loads(prior_path.read_text(encoding="utf-8")) if prior_path is not None else None
+    try:
+        prior_log = json.loads(prior_path.read_text(encoding="utf-8")) if prior_path is not None else None
+    except UnicodeError as exc:
+        raise ReorderError(f"cannot read prior log {prior_path}: {exc}") from exc
+    if prior_path is not None and not isinstance(prior_log, dict):
+        raise ReorderError("prior log must be a JSON object")
     receipts = _read_csv(
         args.receipts,
         {"receipt_id", "received_at", "supplier_id", "supplier_sku", "sku", "quantity"},
