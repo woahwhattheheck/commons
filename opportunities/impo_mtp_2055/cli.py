@@ -1,4 +1,4 @@
-"""Offline CLI for deterministic IMPO MTP 2055 readiness packets."""
+"""Offline CLI for non-authorizing IMPO MTP 2055 owner-review packets."""
 
 from __future__ import annotations
 
@@ -10,7 +10,7 @@ import sys
 from pathlib import Path
 from typing import Any
 
-from .engine import canonical_json_bytes, compile_packet, verify_packet
+from .engine import canonical_json_bytes, compile_current, verify_current
 from .schema import OpportunityInputError
 
 MAX_JSON_BYTES = 2_000_000
@@ -75,9 +75,6 @@ def read_regular_file(path: str | os.PathLike[str], *, max_bytes: int) -> bytes:
         ):
             raise SafeFileError(f"input generation changed while reading: {raw_path!r}")
 
-        # Prove that the visible pathname still names the exact retained regular-file
-        # generation. O_NOFOLLOW protects open-time lookup; this closes a later
-        # rename/replacement race before bytes are accepted as that path's source.
         try:
             visible_metadata = os.lstat(raw_path)
         except OSError as exc:
@@ -154,7 +151,7 @@ def write_exclusive_at(directory_fd: int, name: str, payload: bytes) -> None:
 
 def compile_command(args: argparse.Namespace) -> int:
     value = load_json(args.input)
-    receipt, markdown = compile_packet(value)
+    receipt, markdown = compile_current(value)
     output_dir = Path(args.output_dir)
     output_dir.mkdir(mode=0o700, parents=False, exist_ok=True)
     directory_fd = _open_output_directory(output_dir)
@@ -173,6 +170,7 @@ def compile_command(args: argparse.Namespace) -> int:
             {
                 "status": receipt["status"],
                 "submission_ready": receipt["submission_ready"],
+                "evaluation_mode": receipt["evaluation_mode"],
                 "receipt_sha256": receipt["receipt_sha256"],
                 "output_dir": str(output_dir),
             },
@@ -192,12 +190,14 @@ def verify_command(args: argparse.Namespace) -> int:
         markdown = markdown_bytes.decode("utf-8")
     except UnicodeDecodeError as exc:
         raise SafeFileError("Markdown input is not UTF-8") from exc
-    verify_packet(value, receipt, markdown)
+    verify_current(value, receipt, markdown)
     print(
         json.dumps(
             {
                 "verified": True,
                 "status": receipt["status"],
+                "submission_ready": receipt["submission_ready"],
+                "evaluation_mode": receipt["evaluation_mode"],
                 "receipt_sha256": receipt["receipt_sha256"],
             },
             sort_keys=True,
@@ -210,24 +210,27 @@ def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
         prog="impo-mtp2055-readiness",
         description=(
-            "Compile and verify an offline, fail-closed owner-review packet for the "
+            "Compile and verify a current, non-authorizing owner-review packet for the "
             "Indianapolis MPO 2055 MTP RFP. This tool never performs external actions."
         ),
     )
     subparsers = parser.add_subparsers(dest="command", required=True)
 
-    compile_parser = subparsers.add_parser("compile", help="compile an input JSON packet")
-    compile_parser.add_argument("input", help="path to strict input JSON")
+    compile_parser = subparsers.add_parser("compile", help="compile a current owner-review packet")
+    compile_parser.add_argument("input", help="path to strict candidate JSON")
     compile_parser.add_argument("--output-dir", required=True, help="new or empty output directory")
     compile_parser.add_argument(
         "--require-submission-ready",
         action="store_true",
-        help="return exit code 3 unless all gates and explicit submission authority are ready",
+        help=(
+            "return exit code 3 unless submission_ready is true; this owner-review-only "
+            "carrier deliberately never authenticates submission authority"
+        ),
     )
     compile_parser.set_defaults(handler=compile_command)
 
-    verify_parser = subparsers.add_parser("verify", help="verify exact input, receipt, and Markdown")
-    verify_parser.add_argument("input", help="path to strict input JSON")
+    verify_parser = subparsers.add_parser("verify", help="verify exact bytes plus current process-time semantics")
+    verify_parser.add_argument("input", help="path to strict candidate JSON")
     verify_parser.add_argument("receipt", help="path to compiled receipt JSON")
     verify_parser.add_argument("markdown", help="path to compiled Markdown")
     verify_parser.set_defaults(handler=verify_command)
