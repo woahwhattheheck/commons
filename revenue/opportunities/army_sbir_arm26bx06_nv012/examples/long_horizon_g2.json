@@ -1,0 +1,122 @@
+{
+  "as_of": "2026-09-14T00:00:00Z",
+  "assumptions": [
+    {
+      "evidence_ids": [
+        "ev-api"
+      ],
+      "id": "api_stability",
+      "statement": "Published vendor API remains stable through the evaluation generation.",
+      "status": "UNRESOLVED"
+    }
+  ],
+  "bias_checks": [
+    {
+      "finding": "Price is only one weighted objective.",
+      "id": "price_anchor",
+      "question": "Does lowest price automatically win?",
+      "status": "PASS"
+    }
+  ],
+  "constraints": [
+    {
+      "id": "budget",
+      "metric": "three_year_cost_usd",
+      "op": "<=",
+      "rationale": "Synthetic program budget.",
+      "value": 225000
+    },
+    {
+      "id": "schedule",
+      "metric": "deployment_weeks",
+      "op": "<=",
+      "rationale": "Synthetic rollout window.",
+      "value": 18
+    }
+  ],
+  "evidence": [
+    {
+      "digest_sha256": "2222222222222222222222222222222222222222222222222222222222222222",
+      "id": "ev-api",
+      "kind": "SYNTHETIC_FIXTURE",
+      "observed_at": "2026-09-01T00:00:00Z",
+      "source_ref": "fixture://gateway-api/v1"
+    },
+    {
+      "digest_sha256": "3333333333333333333333333333333333333333333333333333333333333333",
+      "id": "ev-api-refresh",
+      "kind": "SYNTHETIC_FIXTURE",
+      "observed_at": "2026-09-14T00:00:00Z",
+      "source_ref": "fixture://gateway-api/v2"
+    }
+  ],
+  "generation": 2,
+  "human_authority": {
+    "decision_state": "PENDING_HUMAN",
+    "required": true
+  },
+  "objectives": [
+    {
+      "id": "integration",
+      "label": "Integration fit",
+      "weight_bp": 3000
+    },
+    {
+      "id": "security",
+      "label": "Security posture",
+      "weight_bp": 3000
+    },
+    {
+      "id": "cost",
+      "label": "Three-year cost",
+      "weight_bp": 2500
+    },
+    {
+      "id": "support",
+      "label": "Supportability",
+      "weight_bp": 1500
+    }
+  ],
+  "options": [
+    {
+      "id": "gateway_a",
+      "label": "Gateway A",
+      "metrics": {
+        "deployment_weeks": 14,
+        "three_year_cost_usd": 220000
+      },
+      "scores": {
+        "cost": 7700,
+        "integration": 7900,
+        "security": 8200,
+        "support": 7600
+      }
+    },
+    {
+      "id": "gateway_b",
+      "label": "Gateway B",
+      "metrics": {
+        "deployment_weeks": 16,
+        "three_year_cost_usd": 205000
+      },
+      "scores": {
+        "cost": 8300,
+        "integration": 8700,
+        "security": 8600,
+        "support": 8500
+      }
+    }
+  ],
+  "program_id": "commercial-fleet-telemetry-gateway",
+  "risks": [
+    {
+      "id": "vendor_roadmap",
+      "level": "HIGH",
+      "mitigation": "Refresh product evidence at each decision generation.",
+      "statement": "Vendor roadmap could alter integration effort."
+    }
+  ],
+  "schema_version": "commons.decision-program/v1",
+  "supersedes_digest": "ad0d0685ca09b7109dfd2cf7c6fb7ad34eb8f106c4633501bd8aabb63aa6fd13",
+  "title": "Synthetic commercial fleet telemetry gateway decision program"
+}
