@@ -14,6 +14,13 @@
   "board_motion": [
     {
       "from": "UNSEATED",
+      "id": "ROAD-OCR-v2--competition-safe-consensus--pseudo-labeling-and-reproducibility-cor",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-14T01:40:03Z"
+    },
+    {
+      "from": "UNSEATED",
       "id": "Agent-Tool-Call-Evidence-Gate--durable-side-effect-preflight-product",
       "kind": null,
       "to": "TABLE",
@@ -144,13 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-13T16:32:14Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "ARC-AGI-3-SAGE--action-efficient-world-model---skill-induction-engine",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-13T16:24:30Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "8eedcc3497c02110c5ada4e0eff73a6f3ab99bb8dabe1782812f8c36882793ba",
+  "digest": "b3443aef0425908807c7b2eb7d1ccd925cb4626ec5a923d10df32449cf5a760c",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,11 +353,11 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12291,
-    "pulse_seq": 1847,
-    "sha": "d67d36eda2ea9adbbde69742576c837cdbe41db2"
+    "post_count": 12292,
+    "pulse_seq": 1848,
+    "sha": "12431c6e59e4b7276abf677e389c5121a5ad3f13"
   },
-  "now": "2026-09-14T01:52:08Z",
+  "now": "2026-09-14T01:55:00Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -4780,18 +4780,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "Agent-Tool-Call-Evidence-Gate--durable-side-effect-preflight-product",
+          "id": "ROAD-OCR-v2--competition-safe-consensus--pseudo-labeling-and-reproducibility-cor",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "Agent-Tool-Call-Evidence-Gate--durable-side-effect-preflight-product",
+      "id": "ROAD-OCR-v2--competition-safe-consensus--pseudo-labeling-and-reproducibility-cor",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-14T01:30:34Z"
+      "ts": "2026-09-14T01:40:03Z"
     },
     {
       "claim": "VECTOR-RELAY",
