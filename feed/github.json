@@ -3,7 +3,7 @@
     "open_issues": 84,
     "open_pull_requests": 49,
     "runs_in_progress": 18,
-    "runs_queued": 633
+    "runs_queued": 629
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -72,10 +72,10 @@
       "branch": "zfh-k6w2/cash-source-byte-alias-20260913",
       "created_at": "2026-09-14T02:15:30Z",
       "draft": false,
-      "head_sha": "fd330365a139e5add6f4f09fe813c83e56f25397",
+      "head_sha": "05a127ec0eae34f329906c2c69fa2603b3c791b4",
       "number": 14206,
       "title": "fix: dedupe cash evidence by source bytes across authority labels",
-      "updated_at": "2026-09-14T02:15:30Z"
+      "updated_at": "2026-09-14T02:16:30Z"
     },
     {
       "author": "woahwhattheheck",
@@ -226,11 +226,11 @@
     "14159": "d9acf14a02c0a1455d063b63d1e4f041219b6410",
     "14173": "04407dde467b62fc06401f7bd82e81becbdc7200",
     "14188": "1859cf0bfc12f2819f3f63fd4349ed06ca5f341b",
-    "14206": "fd330365a139e5add6f4f09fe813c83e56f25397"
+    "14206": "05a127ec0eae34f329906c2c69fa2603b3c791b4"
   },
   "pulls_listed": 49,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 35.2,
+  "queue_depth_per_runner": 34.9,
   "recently_closed": [
     {
       "author": "woahwhattheheck",
@@ -400,6 +400,6 @@
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-14T02:15:56Z",
+  "unchanged_since": "2026-09-14T02:17:10Z",
   "undatable_pulls": []
 }
