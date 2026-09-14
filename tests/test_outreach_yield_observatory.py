@@ -56,6 +56,7 @@ class ObservatoryTests(unittest.TestCase):
             event("lead-1", "PAYMENT_EVIDENCED", "2026-09-10T14:00:00Z", evidence="receipt:4"),
             event("lead-2", "SENT", "2026-09-10T11:00:00Z"),
             event("lead-3", "SENT", "2026-09-14T10:00:00Z"),
+            # Early positive evidence still does not mature lead-3's denominator.
             event("lead-3", "HUMAN_REPLY", "2026-09-14T11:00:00Z", evidence="msg:5"),
             event("lead-3", "POSITIVE_REPLY", "2026-09-14T12:00:00Z", evidence="msg:6"),
         ]
@@ -102,11 +103,30 @@ class ObservatoryTests(unittest.TestCase):
 
     def test_rejects_raw_email_pii_in_key_and_dimensions(self):
         doc = base_doc()
-        doc["events"] = [event("person@example.com", "SENT", "2026-09-10T10:00:00Z")]
+        doc["events"] = [
+            event("person@example.com", "SENT", "2026-09-10T10:00:00Z")
+        ]
         with self.assertRaisesRegex(ObservatoryError, "de-identified|raw email"):
             evaluate_document(doc)
-        doc["events"] = [event("lead-1", "SENT", "2026-09-10T10:00:00Z", segment="person@example.com")]
+
+        doc["events"] = [
+            event("lead-1", "SENT", "2026-09-10T10:00:00Z", segment="person@example.com")
+        ]
         with self.assertRaisesRegex(ObservatoryError, "raw email"):
+            evaluate_document(doc)
+
+    def test_rejects_raw_email_pii_in_evidence_ref(self):
+        doc = base_doc()
+        doc["events"] = [
+            event("lead-1", "SENT", "2026-09-10T10:00:00Z"),
+            event(
+                "lead-1",
+                "HUMAN_REPLY",
+                "2026-09-10T11:00:00Z",
+                evidence="person@example.com",
+            ),
+        ]
+        with self.assertRaisesRegex(ObservatoryError, "opaque reference|raw email"):
             evaluate_document(doc)
 
     def test_rejects_future_and_naive_timestamps(self):
@@ -114,6 +134,7 @@ class ObservatoryTests(unittest.TestCase):
         doc["events"] = [event("lead-1", "SENT", "2026-09-15T10:00:00Z")]
         with self.assertRaisesRegex(ObservatoryError, "later than as_of"):
             evaluate_document(doc)
+
         doc = base_doc()
         doc["events"] = [event("lead-1", "SENT", "2026-09-10T10:00:00")]
         with self.assertRaisesRegex(ObservatoryError, "timezone"):
@@ -127,6 +148,7 @@ class ObservatoryTests(unittest.TestCase):
         ]
         with self.assertRaisesRegex(ObservatoryError, "requires explicit HUMAN_REPLY"):
             evaluate_document(doc)
+
         doc["events"] = [
             event("lead-1", "SENT", "2026-09-10T10:00:00Z"),
             event("lead-1", "HUMAN_REPLY", "2026-09-10T11:00:00Z", evidence="msg:1"),
@@ -154,6 +176,7 @@ class ObservatoryTests(unittest.TestCase):
         ]
         with self.assertRaisesRegex(ObservatoryError, "duplicate SENT"):
             evaluate_document(doc)
+
         doc["events"] = [
             event("lead-1", "SENT", "2026-09-10T10:00:00Z"),
             event("lead-1", "HUMAN_REPLY", "2026-09-10T11:00:00Z", segment="saas", evidence="m1"),
@@ -163,7 +186,12 @@ class ObservatoryTests(unittest.TestCase):
 
     def test_deterministic_ranking_prefers_evidenced_funnel(self):
         doc = base_doc()
-        doc["policy"].update(min_matured_exposures=1, min_positive_reply_ppm=0, max_dnr_ppm=1_000_000, min_paid_scope_acceptances=0)
+        doc["policy"].update(
+            min_matured_exposures=1,
+            min_positive_reply_ppm=0,
+            max_dnr_ppm=1_000_000,
+            min_paid_scope_acceptances=0,
+        )
         doc["events"] = [
             event("a-1", "SENT", "2026-09-10T10:00:00Z", exp="exp-a"),
             event("b-1", "SENT", "2026-09-10T10:00:00Z", exp="exp-b"),
@@ -191,11 +219,22 @@ class ObservatoryTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as td:
             src = Path(td) / "evidence.json"
             src.write_text(json.dumps(doc), encoding="utf-8")
-            json_run = subprocess.run([sys.executable, str(cli), str(src), "--format", "json"], check=False, capture_output=True, text=True)
+            json_run = subprocess.run(
+                [sys.executable, str(cli), str(src), "--format", "json"],
+                check=False,
+                capture_output=True,
+                text=True,
+            )
             self.assertEqual(json_run.returncode, 0, json_run.stderr)
             parsed = json.loads(json_run.stdout)
             self.assertEqual(parsed["schema_version"], 1)
-            md_run = subprocess.run([sys.executable, str(cli), str(src), "--format", "markdown"], check=False, capture_output=True, text=True)
+
+            md_run = subprocess.run(
+                [sys.executable, str(cli), str(src), "--format", "markdown"],
+                check=False,
+                capture_output=True,
+                text=True,
+            )
             self.assertEqual(md_run.returncode, 0, md_run.stderr)
             self.assertIn("# Outreach Yield Observatory", md_run.stdout)
 
@@ -204,7 +243,12 @@ class ObservatoryTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as td:
             src = Path(td) / "bad.json"
             src.write_text('{"schema_version": 1}', encoding="utf-8")
-            run = subprocess.run([sys.executable, str(cli), str(src)], check=False, capture_output=True, text=True)
+            run = subprocess.run(
+                [sys.executable, str(cli), str(src)],
+                check=False,
+                capture_output=True,
+                text=True,
+            )
             self.assertEqual(run.returncode, 2)
             self.assertIn("as_of", run.stderr)
 
