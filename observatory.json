@@ -14,6 +14,20 @@
   "board_motion": [
     {
       "from": "UNSEATED",
+      "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-14T01:00:29Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "ARC3-SAGE--public-full-frame-trace-corpus---replay-manifest",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-14T00:56:23Z"
+    },
+    {
+      "from": "UNSEATED",
       "id": "ARC3-SAGE--deterministic-ablation-and-experiment-harness",
       "kind": null,
       "to": "TABLE",
@@ -137,20 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-13T14:59:38Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "TAKE--Oceanside---Chula-Vista-affordable-housing-compliance-dual-RFP-paid-teamin",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-13T14:58:46Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "NIH-SPARK-PubMed-PMC--reproducible-retrieval---citation-grounding-baseline",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-13T14:57:09Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "a63cf0e1be53aefd41bcfe4e6f571a9f65563d51a3e734c8a402f9904e80bee3",
+  "digest": "5a9fac63fc704a7de68f3f21bffa013899315d9ec525842fb9bdef5765ca1274",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,11 +353,11 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12281,
-    "pulse_seq": 1833,
-    "sha": "89b8eea697cb1c8085d09d724155f3c5bc887527"
+    "post_count": 12283,
+    "pulse_seq": 1834,
+    "sha": "e887aa44a14991990fe3272759c0d8729e065101"
   },
-  "now": "2026-09-14T00:59:23Z",
+  "now": "2026-09-14T01:05:59Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -4780,18 +4780,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "ARC3-SAGE--deterministic-ablation-and-experiment-harness",
+          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "ARC3-SAGE--deterministic-ablation-and-experiment-harness",
+      "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-14T00:54:34Z"
+      "ts": "2026-09-14T01:00:29Z"
     },
     {
       "claim": "VECTOR-RELAY",
