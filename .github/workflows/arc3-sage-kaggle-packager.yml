@@ -1,16 +1,14 @@
-name: ARC3 SAGE evaluation + Kaggle packager
+name: ARC3 SAGE offline Kaggle packager
 on:
   pull_request:
     paths:
-      - 'competitions/arc-agi-3-2026/evaluation/**'
       - 'competitions/arc-agi-3-2026/kaggle/**'
-      - '.github/workflows/arc3-sage-eval-kaggle.yml'
+      - '.github/workflows/arc3-sage-kaggle-packager.yml'
   push:
     branches: [main]
     paths:
-      - 'competitions/arc-agi-3-2026/evaluation/**'
       - 'competitions/arc-agi-3-2026/kaggle/**'
-      - '.github/workflows/arc3-sage-eval-kaggle.yml'
+      - '.github/workflows/arc3-sage-kaggle-packager.yml'
 permissions:
   contents: read
 jobs:
@@ -26,10 +24,10 @@ jobs:
           python-version: ${{ matrix.python-version }}
       - name: Compile
         working-directory: competitions/arc-agi-3-2026
-        run: python -m compileall -q evaluation kaggle
+        run: python -m compileall -q kaggle
       - name: Unit tests
         working-directory: competitions/arc-agi-3-2026
-        run: python -m unittest discover -s evaluation/tests -p 'test_*.py' && python -m unittest discover -s kaggle/tests -p 'test_*.py'
+        run: python -m unittest discover -s kaggle/tests -p 'test_*.py'
       - name: Optimized-mode tests
         working-directory: competitions/arc-agi-3-2026
-        run: python -O -m unittest discover -s evaluation/tests -p 'test_*.py' && python -O -m unittest discover -s kaggle/tests -p 'test_*.py'
+        run: python -O -m unittest discover -s kaggle/tests -p 'test_*.py'
