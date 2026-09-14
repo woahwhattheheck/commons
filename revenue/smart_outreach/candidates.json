@@ -1,7 +1,7 @@
 {
   "schema_version": "commons-smart-outreach/v1",
   "kind": "SMART_OUTREACH_CANDIDATES",
-  "generated_at": "2026-08-30T15:20:37Z",
+  "generated_at": "2026-09-14T02:33:58Z",
   "offer": {
     "sku_id": "same-day-agent-survival-proof",
     "name": "Same-Day Agent Survival Proof",
@@ -53,19 +53,19 @@
     {
       "prospect_id": "signoz",
       "organization": "SigNoz",
-      "recipient_email": null,
+      "recipient_email": "dev@signoz.io",
       "evidence": {
-        "source_url": "https://signoz.io/blog/introducing-agent-native-observability/",
-        "observed_at": "2026-08-27T00:40:00Z",
-        "exact_quote": "Schema consistency, in an agent-native world, is product quality."
+        "source_url": "https://signoz.io/blog/why-engineering-first-teams-choose-signoz/",
+        "observed_at": "2026-09-13T00:00:00Z",
+        "exact_quote": "A slow browser session, unreliable sandbox, delayed model response, or failed tool call is not an internal implementation detail. It is a product failure."
       },
-      "owner_role": null,
+      "owner_role": "agent-native observability engineering team",
       "route": {
-        "kind": "FIRST_PARTY_ROUTE",
-        "value": null,
-        "state": "UNVERIFIED"
+        "kind": "EMAIL",
+        "value": "dev@signoz.io",
+        "state": "VERIFIED"
       },
-      "proof_hypothesis": "Can one schema-breaking trace fail visibly and preserve an exact replay receipt?",
+      "proof_hypothesis": "Can one failed agent tool call fail visibly, preserve evidence, and leave an exact replay receipt before automation proceeds?",
       "occupied_by": null,
       "do_not_contact": false,
       "disqualifiers": []
