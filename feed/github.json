@@ -1,9 +1,9 @@
 {
   "counts": {
-    "open_issues": 112,
-    "open_pull_requests": 62,
-    "runs_in_progress": 14,
-    "runs_queued": 1035
+    "open_issues": 115,
+    "open_pull_requests": 64,
+    "runs_in_progress": 11,
+    "runs_queued": 966
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -69,13 +69,35 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
+      "branch": "zpc-t7m3/current-readiness-authority-guard-20260914",
+      "created_at": "2026-09-14T04:44:53Z",
+      "draft": false,
+      "head_sha": "6842fd25e7877fd67a11fed216f0fac292fb16d4",
+      "number": 14322,
+      "title": "Guard new revenue gates against caller-minted current readiness",
+      "updated_at": "2026-09-14T04:55:06Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zna/pinellas-26-0795-rfi-digital-evidence",
+      "created_at": "2026-09-14T04:44:09Z",
+      "draft": false,
+      "head_sha": "d8d2800a0490eb465e2eab91f01ced0943a33912",
+      "number": 14321,
+      "title": "revenue: build Pinellas digital-evidence RFI response carrier",
+      "updated_at": "2026-09-14T04:44:09Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
       "branch": "znc/agent-false-success-survival",
       "created_at": "2026-09-14T04:41:07Z",
       "draft": false,
       "head_sha": "67469492f28f15602e8e7463bf06a34d19a05448",
       "number": 14320,
       "title": "Revenue: add agent false-success survival proof",
-      "updated_at": "2026-09-14T04:41:07Z"
+      "updated_at": "2026-09-14T04:57:03Z"
     },
     {
       "author": "woahwhattheheck",
@@ -153,28 +175,6 @@
       "number": 14281,
       "title": "revenue: package USAC IT-26-139 AI consulting pursuit",
       "updated_at": "2026-09-14T04:33:35Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-vigil/org-atomic-outbound-lease-20260913",
-      "created_at": "2026-09-14T03:47:10Z",
-      "draft": false,
-      "head_sha": "09cd89669f83dcc2f64716d0131d846a78346bbe",
-      "number": 14276,
-      "title": "Revenue safety: atomic organization-wide outbound lease",
-      "updated_at": "2026-09-14T04:35:05Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zklr-h5m8/outreach-claim-fence-20260913",
-      "created_at": "2026-09-14T03:46:13Z",
-      "draft": false,
-      "head_sha": "113a792a7e331d089d3fb89c2ad3e3147fa9eb16",
-      "number": 14273,
-      "title": "feat(outreach): add atomic contact claim fence",
-      "updated_at": "2026-09-14T04:05:21Z"
     }
   ],
   "open_heads": {
@@ -239,12 +239,25 @@
     "14314": "742aeafae8c258759c435bf6758e1546ff258c56",
     "14317": "767953bfe5313334e9011709afaac685b0901a26",
     "14318": "008ef427c26f9effbbea6e6df718fbad023b6613",
-    "14320": "67469492f28f15602e8e7463bf06a34d19a05448"
+    "14320": "67469492f28f15602e8e7463bf06a34d19a05448",
+    "14321": "d8d2800a0490eb465e2eab91f01ced0943a33912",
+    "14322": "6842fd25e7877fd67a11fed216f0fac292fb16d4"
   },
-  "pulls_listed": 62,
+  "pulls_listed": 64,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 73.9,
+  "queue_depth_per_runner": 87.8,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zhq-r9t4/impo-mtp2055-finalizer-hardening-20260914",
+      "closed_at": "2026-09-14T04:52:46Z",
+      "head_sha": "92c9cef2b489c37ce53818ebe77bb21707393541",
+      "merged_at": "2026-09-14T04:52:46Z",
+      "number": 14323,
+      "state": "MERGED",
+      "title": "fix: harden IMPO MTP 2055 owner-review trust boundary"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -369,50 +382,39 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "zflux/ohsu-ap-rfi-2027-0824",
-      "closed_at": "2026-09-14T03:58:48Z",
-      "head_sha": "c8f6a689194b80e86054b057acc560c67885f774",
+      "branch": "zkdd-r8n6/reply-revenue-chronology-fixforward-20260913",
+      "closed_at": "2026-09-14T02:50:56Z",
+      "head_sha": "83423bd3b038824a007712d722f65c66bd7ad82a",
+      "merged_at": "2026-09-14T02:50:56Z",
+      "number": 14229,
+      "state": "MERGED",
+      "title": "Fix reply-to-revenue chronology safety"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z-solstice/relationship-census-14216",
+      "closed_at": "2026-09-14T02:50:08Z",
+      "head_sha": "670ac88afd800b0b1c2cda056a2ee76693a68351",
       "merged_at": null,
-      "number": 14291,
+      "number": 14226,
       "state": "CLOSED",
-      "title": "revenue: OHSU Oracle EBS R12 AP RFI evidence carrier"
+      "title": "revenue: add provider relationship census custody gate"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "zaw-c9t4/forensics-canonical-repo-fix-20260913",
-      "closed_at": "2026-09-14T03:58:20Z",
-      "head_sha": "04407dde467b62fc06401f7bd82e81becbdc7200",
-      "merged_at": "2026-09-14T03:58:20Z",
-      "number": 14173,
+      "branch": "zlt-c8n4/relationship-census-20260913",
+      "closed_at": "2026-09-14T02:49:11Z",
+      "head_sha": "7542aa1933697e4ee7888786d4b0c77db3a1d8a1",
+      "merged_at": "2026-09-14T02:49:11Z",
+      "number": 14231,
       "state": "MERGED",
-      "title": "fix(forensics): bind lease evidence to canonical Commons repo"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "swarm-z/z-forge-smart-outreach-leases-20260913",
-      "closed_at": "2026-09-14T03:58:15Z",
-      "head_sha": "78753d93633292c84abb056d3c8107144c3412f6",
-      "merged_at": "2026-09-14T03:58:14Z",
-      "number": 14305,
-      "state": "MERGED",
-      "title": "Bind smart outreach drafts to atomic lead leases"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "zrt-p3x9/org-contact-pressure",
-      "branch": "zam-v7c2/org-contact-pressure-event-id-admission",
-      "closed_at": "2026-09-14T03:57:43Z",
-      "head_sha": "00ad636d2661ac7c0d101d4d3b3ddd7c0b884ca0",
-      "merged_at": "2026-09-14T03:57:43Z",
-      "number": 14258,
-      "state": "MERGED",
-      "title": "Fix organization-pressure proposed event ID admission"
+      "title": "outbound: bind provider relationship census to target custody"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-14T04:41:20Z",
+  "unchanged_since": "2026-09-14T04:57:19Z",
   "undatable_pulls": []
 }
