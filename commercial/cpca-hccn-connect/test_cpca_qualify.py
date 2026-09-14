@@ -12,7 +12,14 @@ CURRENT = json.loads((ROOT / "current_evidence.json").read_text())
 
 def proven_fixture():
     e = copy.deepcopy(CURRENT)
-    e["gate_status"] = {g["id"]: "PROVEN" for g in SPEC["mandatory_direct_prime_gates"]}
+    e["gate_status"] = {
+        g["id"]: "PROVEN" for g in SPEC["mandatory_direct_prime_gates"]
+    }
+    e["gate_sources"] = {
+        g["id"]: [f"urn:test:gate:{g['id']}"]
+        for g in SPEC["mandatory_direct_prime_gates"]
+        if g["id"] not in q.DERIVED_SOURCE_GATES
+    }
     e["client_references"] = [
         {"name": "r1", "source": "urn:test:r1"},
         {"name": "r2", "source": "urn:test:r2"},
@@ -51,6 +58,12 @@ class QualificationTests(unittest.TestCase):
             {"state": "COMPLETED", "source": "urn:test:e1", "safety_net_primary_care": True}
         ]
         with self.assertRaisesRegex(ValueError, "recent_domain_engagements cannot be PROVEN"):
+            q.evaluate(SPEC, e)
+
+    def test_non_count_proven_gate_requires_source(self):
+        e = proven_fixture()
+        e["gate_sources"].pop("subject_matter_expertise")
+        with self.assertRaisesRegex(ValueError, "subject_matter_expertise cannot be PROVEN"):
             q.evaluate(SPEC, e)
 
     def test_full_source_bound_fixture_prime_ready(self):
