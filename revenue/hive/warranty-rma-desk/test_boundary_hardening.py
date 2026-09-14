@@ -90,6 +90,28 @@ class PublicationHardeningTest(unittest.TestCase):
             self.assertEqual(out.read_bytes(), b"FOREIGN-DURING-READBACK")
             self.assertEqual(displaced.read_bytes(), raw)
 
+    def test_hardlink_during_readback_is_detected_and_created_path_removed(self):
+        raw = b"exact-export-bytes-hardlink"
+        with tempfile.TemporaryDirectory() as td:
+            out = Path(td) / "export.json"
+            alias = Path(td) / "hardlink-alias"
+            real_read = app._os.read
+            fired = False
+
+            def link_during_read(fd, size):
+                nonlocal fired
+                data = real_read(fd, size)
+                if not fired:
+                    fired = True
+                    os.link(out, alias)
+                return data
+
+            with mock.patch.object(app._os, "read", link_during_read):
+                with self.assertRaises(OSError):
+                    app._publish_bytes(out, raw)
+            self.assertFalse(out.exists())
+            self.assertEqual(alias.read_bytes(), raw)
+
     def test_existing_output_is_never_overwritten(self):
         with tempfile.TemporaryDirectory() as td:
             out = Path(td) / "export.json"
