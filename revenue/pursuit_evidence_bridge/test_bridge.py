@@ -175,6 +175,20 @@ class BridgeTests(unittest.TestCase):
         with self.assertRaisesRegex(bridge.BridgeError, "cannot self-authorize"):
             bridge._evaluate_at(binding, registry_sha, source, manifest, fake_vault, NOW)
 
+    def test_public_api_rejects_nested_container_subclasses(self):
+        class MutatingDict(dict):
+            pass
+
+        registry_sha, bindings = bridge._load_binding_registry()
+        binding = bindings["jersey-dn827803-main-v1"]
+        root = Path(__file__).resolve().parents[2]
+        source = json.loads((root / binding["source_ledger_path"]).read_text())
+        manifest = json.loads((root / binding["submission_manifest_path"]).read_text())
+        source["tender_pack"] = MutatingDict(source["tender_pack"])
+        with patch.object(bridge, "_process_now", return_value=NOW):
+            with self.assertRaisesRegex(bridge.BridgeError, "plain JSON builtins required"):
+                bridge.compile_bridge(binding["binding_id"], source, manifest, None)
+
     def test_envelope_rejects_caller_clock_and_expected_roots(self):
         for extra in ("as_of", "deadline_utc", "expected_authority_sha256", "expected_source_sha256"):
             with self.subTest(extra=extra):
