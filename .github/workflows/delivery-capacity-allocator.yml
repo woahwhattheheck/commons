@@ -22,5 +22,11 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
       - run: python -m py_compile revenue/delivery_capacity_allocator/*.py
-      - run: python -m unittest -v revenue.delivery_capacity_allocator.test_engine
-      - run: python -O -m unittest -v revenue.delivery_capacity_allocator.test_engine
+      - run: >-
+          python -m unittest -v
+          revenue.delivery_capacity_allocator.test_engine
+          revenue.delivery_capacity_allocator.test_authority_fix
+      - run: >-
+          python -O -m unittest -v
+          revenue.delivery_capacity_allocator.test_engine
+          revenue.delivery_capacity_allocator.test_authority_fix
