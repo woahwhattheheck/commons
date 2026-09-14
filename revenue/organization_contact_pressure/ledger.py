@@ -16,7 +16,9 @@ from .core import (
     _sha256, strict_json_loads,
 )
 from .events import _normalize_event
+from .head import _load_ledger_head
 from .storage import _read_regular_file
+
 
 def _normalize_ledger_document(document: Mapping[str, Any]) -> tuple[dict[str, Any], str, tuple[EventView, ...], tuple[str, ...]]:
     fields = {
@@ -109,6 +111,8 @@ def _load_ledger(
         raise VerificationError("ledger is future-updated")
     if updated < authority.issued_at:
         raise VerificationError("ledger predates its authority generation")
+    if now - updated > timedelta(seconds=authority.ledger_complete_max_age_seconds):
+        raise VerificationError("ledger completeness watermark is stale")
     allowed_routes = set(authority.route_scope_sha256s)
     extra_conflicts = set(conflicts)
     for event in events:
@@ -121,6 +125,14 @@ def _load_ledger(
         if event.observed_at > updated + skew:
             extra_conflicts.add(f"EVENT_AFTER_LEDGER_UPDATE:{event.event_id}")
     canonical = {**body, "signature": signature}
+    ledger_digest = _sha256(_canonical_bytes(canonical))
+    head, _ = _load_ledger_head(root, active, authority, now)
+    if (
+        head["ledger_generation"] != body["generation"]
+        or head["ledger_sha256"] != ledger_digest
+        or head["ledger_updated_at"] != body["updated_at"]
+    ):
+        raise VerificationError("ledger does not match the retained monotonic head")
     return LedgerView(
         organization_scope_sha256=organization,
         generation=body["generation"],
@@ -130,5 +142,5 @@ def _load_ledger(
         conflicts=tuple(sorted(extra_conflicts)),
         key_id=active.key_id,
         verifier_id=active.verifier_id,
-        digest=_sha256(_canonical_bytes(canonical)),
+        digest=ledger_digest,
     )
