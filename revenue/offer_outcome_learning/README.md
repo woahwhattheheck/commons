@@ -8,7 +8,7 @@ It is deliberately downstream of Commons targeting, relationship/DNR, commercial
 
 A campaign binds one canonical organization scope, offer, proof variant, price-band label, proposed integer minor-unit amount, and immutable source evidence. Event rows bind opaque IDs and source SHA-256 digests. Exact event replay collapses; changed event-ID reuse, digest aliasing, chronology regressions, stage skips, cross-campaign transplant, future evidence, and unsafe numeric values fail closed.
 
-`PAYMENT_REPORTED` is **not cash**. Only `PAYMENT_CONFIRMED` contributes to confirmed-payment metrics, and that stage requires separate settlement evidence (`settlement_ref` + SHA-256). A reported amount and confirmed amount must agree when both exist.
+`PAYMENT_REPORTED` is **not cash**. Only `PAYMENT_CONFIRMED` contributes to confirmed-payment metrics, and that stage requires separate settlement evidence (`settlement_ref` + SHA-256). A settlement reference is generation-bound: reusing the same settlement reference with a different digest fails closed. A reported amount and confirmed amount must agree when both exist.
 
 The engine exposes denominators and uses a Wilson 95% lower bound on observed confirmed-payment rate. It also applies concentration controls: unique paid organizations, dominant paid-organization share, and a leave-one-organization-out confirmed-count floor. Small cohorts return `INSUFFICIENT_EVIDENCE`; one-organization success returns `OBSERVED_SIGNAL_CONCENTRATED`. No output is a causal claim that an offer or price caused conversion.
 
@@ -44,15 +44,15 @@ python -m revenue.offer_outcome_learning.cli verify \
   --package /tmp/offer-outcome.json
 ```
 
-Production `build` without `--historical-at` samples process UTC internally. Current packages have a 15-minute verifier freshness ceiling. Historical compilation is explicit and is intended for reproducible analysis / tests, not live send authorization.
+Production `build` without `--historical-at` samples process UTC internally. Current packages have a 15-minute verifier freshness ceiling and CURRENT verification always samples process UTC internally. The CLI exposes no verifier-clock override. The Python verifier retains its legacy `now` keyword only as a fail-closed compatibility tripwire: supplying it to CURRENT verification is rejected rather than used as authority. Historical compilation is explicit and is intended for reproducible analysis / tests, not live send authorization.
 
 The CLI opens input with `O_NOFOLLOW` where available, requires an ordinary file, bounds input bytes, and creates outputs exclusively (`O_EXCL`) so it will not silently overwrite an existing artifact.
 
 ## Test
 
 ```bash
-python -m unittest revenue.offer_outcome_learning.test_engine -v
-python -O -m unittest revenue.offer_outcome_learning.test_engine -v
+python -m unittest revenue.offer_outcome_learning.test_engine revenue.offer_outcome_learning.test_authority -v
+python -O -m unittest revenue.offer_outcome_learning.test_engine revenue.offer_outcome_learning.test_authority -v
 python -m py_compile revenue/offer_outcome_learning/*.py
 ```
 
