@@ -79,6 +79,30 @@ class PublicationCustodyTests(unittest.TestCase):
             self.assertEqual([], unlink_calls)
             self.assertTrue(path.exists())
 
+    def test_second_close_replacement_is_caught_by_final_namespace_observation(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "bundle.json"
+            displaced = Path(tmp) / "displaced.json"
+            foreign = b"foreign-successor\n"
+            real_close = os.close
+            close_calls = 0
+
+            def replace_on_second_close(fd: int) -> None:
+                nonlocal close_calls
+                close_calls += 1
+                real_close(fd)
+                if close_calls == 2:
+                    os.replace(path, displaced)
+                    path.write_bytes(foreign)
+
+            with patch.object(publication.os, "close", side_effect=replace_on_second_close):
+                with self.assertRaisesRegex(PreflightError, "published output path changed after readback"):
+                    publication.write_json_exclusive(path, {"ok": True})
+
+            self.assertEqual(2, close_calls)
+            self.assertEqual(foreign, path.read_bytes())
+            self.assertTrue(displaced.exists())
+
 
 if __name__ == "__main__":
     unittest.main()
