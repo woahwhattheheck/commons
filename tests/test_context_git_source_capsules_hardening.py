@@ -5,6 +5,7 @@ import os
 import subprocess
 import tempfile
 import unittest
+import zlib
 from pathlib import Path
 
 from host.context_packet import DIGEST_KEY, canonical, compile_packet, verify_packet
@@ -187,6 +188,91 @@ class GitSourceCapsuleHardeningTests(unittest.TestCase):
 
         self.assertEqual(bundle["commit"], self.commit)
         self.assertEqual(bundle["capsules"][0]["text"], "alpha committed\nline two\n")
+
+    def test_inherited_object_directory_cannot_inject_forged_blob(self):
+        blob_sha = run(self.repo, "rev-parse", f"{self.commit}:alpha.txt").decode().strip()
+        forged = b"FORGED OBJECT STORE\n"
+        forged_object = b"blob " + str(len(forged)).encode("ascii") + b"\0" + forged
+        # Prove this is not a SHA-1 collision; Git still trusts the loose-object pathname.
+        self.assertNotEqual(hashlib.sha1(forged_object).hexdigest(), blob_sha)
+
+        with tempfile.TemporaryDirectory() as object_tmp:
+            object_dir = Path(object_tmp)
+            forged_path = object_dir / blob_sha[:2] / blob_sha[2:]
+            forged_path.parent.mkdir(parents=True)
+            forged_path.write_bytes(zlib.compress(forged_object))
+
+            prior_object = os.environ.get("GIT_OBJECT_DIRECTORY")
+            prior_alt = os.environ.get("GIT_ALTERNATE_OBJECT_DIRECTORIES")
+            os.environ["GIT_OBJECT_DIRECTORY"] = str(object_dir)
+            os.environ["GIT_ALTERNATE_OBJECT_DIRECTORIES"] = str(self.repo / ".git" / "objects")
+            try:
+                # Ordinary Git accepts attacker bytes under the legitimate OID path.
+                self.assertEqual(run(self.repo, "cat-file", "blob", blob_sha), forged)
+                bundle = collect_git_source(self.repo, self.commit, ["alpha.txt"])
+            finally:
+                if prior_object is None:
+                    os.environ.pop("GIT_OBJECT_DIRECTORY", None)
+                else:
+                    os.environ["GIT_OBJECT_DIRECTORY"] = prior_object
+                if prior_alt is None:
+                    os.environ.pop("GIT_ALTERNATE_OBJECT_DIRECTORIES", None)
+                else:
+                    os.environ["GIT_ALTERNATE_OBJECT_DIRECTORIES"] = prior_alt
+
+        self.assertEqual(bundle["capsules"][0]["text"], "alpha committed\nline two\n")
+
+    def test_partial_clone_missing_blob_fails_closed_without_lazy_fetch(self):
+        payload = "L" * 200_000
+        (self.repo / "promised.txt").write_text(payload, encoding="utf-8")
+        run(self.repo, "add", "promised.txt")
+        run(self.repo, "commit", "-q", "-m", "promised")
+        commit = run(self.repo, "rev-parse", "HEAD").decode().strip()
+        blob_sha = run(self.repo, "rev-parse", f"{commit}:promised.txt").decode().strip()
+        run(self.repo, "config", "uploadpack.allowFilter", "true")
+
+        with tempfile.TemporaryDirectory() as clone_tmp:
+            clone = Path(clone_tmp) / "partial"
+            proc = subprocess.run(
+                [
+                    "git",
+                    "clone",
+                    "-q",
+                    "--no-checkout",
+                    "--filter=blob:none",
+                    self.repo.as_uri(),
+                    str(clone),
+                ],
+                stdout=subprocess.PIPE,
+                stderr=subprocess.PIPE,
+                check=False,
+            )
+            if proc.returncode != 0:
+                self.skipTest("local Git transport does not support partial clone filtering")
+
+            no_lazy = os.environ.copy()
+            no_lazy["GIT_NO_LAZY_FETCH"] = "1"
+            before = subprocess.run(
+                ["git", "-C", str(clone), "cat-file", "-e", blob_sha],
+                stdout=subprocess.PIPE,
+                stderr=subprocess.PIPE,
+                env=no_lazy,
+                check=False,
+            )
+            if before.returncode == 0:
+                self.skipTest("partial clone server materialized filtered blob")
+
+            with self.assertRaises(GitSourceError):
+                collect_git_source(clone, commit, ["promised.txt"])
+
+            after = subprocess.run(
+                ["git", "-C", str(clone), "cat-file", "-e", blob_sha],
+                stdout=subprocess.PIPE,
+                stderr=subprocess.PIPE,
+                env=no_lazy,
+                check=False,
+            )
+            self.assertNotEqual(after.returncode, 0)
 
 
 if __name__ == "__main__":
