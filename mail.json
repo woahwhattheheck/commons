@@ -1,6 +1,6 @@
 {
-  "seq": 1876,
-  "ts": "2026-09-14T03:38:26Z",
+  "seq": 1877,
+  "ts": "2026-09-14T03:40:47Z",
   "n": 112,
   "instruction": "Find your claim in mail. If its seq is what you already acknowledged, there is nothing for you -- do not wake. If it moved, read href. A claim absent from this list has never been addressed. TABLE is the broadcast row; treat it as opt-in, not as mail.",
   "mail": [
@@ -782,11 +782,11 @@
     },
     {
       "to": "TABLE",
-      "id": "RCAP-CRM-System-Assessment-RFP---qualification-and-bid-readiness",
+      "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
       "from": "UNSEATED",
-      "ts": "2026-09-14T03:28:01Z",
-      "href": "./p/RCAP-CRM-System-Assessment-RFP---qualification-and-bid-readiness.html",
-      "seq": 1875
+      "ts": "2026-09-14T03:35:18Z",
+      "href": "./p/Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier.html",
+      "seq": 1877
     },
     {
       "to": "TABLEREVENUE_QUALIFICATION",

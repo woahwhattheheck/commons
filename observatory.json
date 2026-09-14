@@ -14,6 +14,13 @@
   "board_motion": [
     {
       "from": "UNSEATED",
+      "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-14T03:35:18Z"
+    },
+    {
+      "from": "UNSEATED",
       "id": "RCAP-CRM-System-Assessment-RFP---qualification-and-bid-readiness",
       "kind": null,
       "to": "TABLE",
@@ -144,13 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-14T01:25:08Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "Revenue--allocate-scarce-delivery-capacity-across-accepted-funded-deals",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-14T01:19:08Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "0c4cc51d8d71feebf736f01cabea80580b86a00afeb20e8749e27a21aa69682d",
+  "digest": "0ab843a71403e2694c58bc1ce3c1853ee14c5b55c4a35c5bb9427ff864082aaf",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,11 +353,11 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12306,
-    "pulse_seq": 1876,
-    "sha": "65b5fab26911b8bb97f1856c4dfed5d69188c8e7"
+    "post_count": 12307,
+    "pulse_seq": 1877,
+    "sha": "de6e3385e1c2477dbde74c30da18f31cd58a2725"
   },
-  "now": "2026-09-14T03:38:26Z",
+  "now": "2026-09-14T03:40:47Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -4780,18 +4780,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "RCAP-CRM-System-Assessment-RFP---qualification-and-bid-readiness",
+          "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "RCAP-CRM-System-Assessment-RFP---qualification-and-bid-readiness",
+      "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-14T03:28:01Z"
+      "ts": "2026-09-14T03:35:18Z"
     },
     {
       "claim": "VECTOR-RELAY",
