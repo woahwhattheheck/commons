@@ -58,6 +58,12 @@ def _row(
     }
 
 
+def _candidate_note(prefix: str, note: Any) -> str:
+    if note:
+        return f"{prefix} Candidate note: {note}"
+    return prefix
+
+
 def _evidence_row(
     identifier: str,
     stage: str,
@@ -77,7 +83,10 @@ def _evidence_row(
             stage,
             title,
             "READY",
-            note or "Evidence is verified.",
+            _candidate_note(
+                "Candidate input marks this evidence VERIFIED; this package does not independently authenticate it.",
+                note,
+            ),
             blocking=False,
             evidence_reference=reference,
         )
@@ -88,7 +97,10 @@ def _evidence_row(
                 stage,
                 title,
                 "BLOCKED",
-                note or "A mandatory requirement cannot be marked not applicable.",
+                _candidate_note(
+                    "Candidate input marks a mandatory requirement not applicable.",
+                    note,
+                ),
                 blocking=True,
             )
         return _row(
@@ -96,12 +108,13 @@ def _evidence_row(
             stage,
             title,
             "DEFERRED",
-            note or "Requirement is documented as not applicable.",
+            _candidate_note(
+                "Candidate input marks this non-mandatory requirement not applicable.",
+                note,
+            ),
             blocking=False,
         )
     disposition = missing_disposition or ("BLOCKED" if mandatory else "DEFERRED")
     blocking = mandatory and disposition == "BLOCKED"
-    reason = missing_reason or note or f"Evidence state is {state}."
+    reason = missing_reason or _candidate_note(f"Candidate evidence state is {state}.", note)
     return _row(identifier, stage, title, disposition, reason, blocking=blocking)
-
-
