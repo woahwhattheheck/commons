@@ -6,42 +6,51 @@ Commons already tracks one deal truthfully and can prioritize pre-sale pursuits.
 
 ## Allocation contract
 
-Only explicit `BUYER_ACCEPTED` and `FUNDED_TO_START` rows compete for new capacity. No outreach, proposal, configured payment route, or internal optimism is treated as acceptance. Existing active reservations consume slot units before new work is considered. A deal is never partially allocated: its requested units fit one compatible slot in the deal window or the result is `CAPACITY_HOLD`.
+Only explicit `BUYER_ACCEPTED` and `FUNDED_TO_START` rows can compete for new capacity. No outreach, proposal, configured payment route, or internal optimism is treated as acceptance. Existing active reservations consume slot units before new work is considered. A deal is never partially allocated: its requested units fit one compatible live slot in the deal window or the result is `CAPACITY_HOLD`.
 
-Priority is deterministic: `FUNDED_TO_START` before `BUYER_ACCEPTED`, then earliest deadline, earliest acceptance time, and stable deal ID. Input array order does not change the semantic allocation or `allocation_sha256`; the outer receipt remains bound to the exact retained source bytes and therefore changes when raw source bytes change.
+Priority is deterministic: `FUNDED_TO_START` before `BUYER_ACCEPTED`, then earliest deadline, earliest acceptance time, and stable deal ID. Input array order does not change the semantic allocation or `allocation_sha256`; the outer receipt remains bound to the exact source bytes and therefore changes when raw source bytes change.
 
-Fail-closed conditions include stale/future source generations, reservation overdraw, unknown reservation slots, service mismatch, one deal with multiple active reservations, and reservation-to-deal identity rebinding. These conditions hold the global capacity state rather than guessing around corrupted custody.
+Temporal/current-state fences are strict. A capacity-eligible deal with a future `accepted_at` globally holds. New allocations cannot use a slot whose delivery window has already ended at the trusted evaluation instant. An ACTIVE reservation against an ended slot also holds current state. ACTIVE reservations whose deal lineage is missing still consume their claimed slot units and additionally emit `ACTIVE_RESERVATION_ORPHAN_DEAL`; unverifiable lineage never frees scarce capacity or leaves the allocator CURRENT.
+
+Other fail-closed conditions include stale/future source generations, reservation overdraw, unknown reservation slots, service mismatch, one deal with multiple active reservations, and reservation-to-deal identity rebinding. These conditions hold the global capacity state rather than guessing around corrupted custody.
 
 ## Trust boundary
 
-The CLI requires the exact SHA-256 of policy, demand, and reservation bytes. Those roots are **host-retained inputs**; this package does not claim a caller-provided digest authenticates Gmail, Stripe, GitHub, a buyer, a scheduler, or another provider. Upstream integrations must acquire and retain those roots through their own trusted boundary.
+There are two deliberately different interfaces:
 
-`verify` first recompiles the exact historical receipt at its recorded evaluation instant, then independently reevaluates currentness using process UTC. A once-valid allocation does not remain current after any input snapshot ages out.
+- `compile_bytes(...)` and `verify_current_bytes(...)` are **historical/test integrity primitives**. Their expected roots and optional clock are caller supplied. They can prove byte self-consistency against those supplied facts, but they are not a production-current authority boundary and must not authorize scheduling, staffing, or a buyer commitment.
+- The production CLI uses `compile_current_bytes(...)` / `verify_current_receipt_bytes(...)`. It owns current UTC and accepts **no caller-selected root as authority**.
+
+This package does not yet have an independently retained root registry, signed upstream receipt store, or other trusted reacquisition path for the current policy/demand/reservation generations. Therefore the production-current boundary intentionally fails closed with `HOLD_RETAINED_ROOT_AUTHORITY` and `RETAINED_ROOT_AUTHORITY_UNAVAILABLE`. It will not relabel hashes computed from the same caller-supplied bytes as trusted roots. A future integration may remove that hold only by wiring an independent retained-root authority and hostile-testing that boundary.
+
+Legacy `--policy-sha`, `--demand-sha`, and `--reservations-sha` CLI switches are accepted silently for compatibility with older callers but ignored by the production-current authority path.
 
 ## Authority ceiling
 
-Every receipt keeps these false: buyer contact, schedule commitment, provider send, payment mutation, contract acceptance, staffing commitment, deployment, and revenue recognition. `ALLOCATED_FOR_OWNER_REVIEW` means capacity exists under the supplied current generations; it is not a promise to a buyer and does not reserve an external calendar/provider by itself.
+Every receipt keeps these false: buyer contact, schedule commitment, provider send, payment mutation, contract acceptance, staffing commitment, deployment, and revenue recognition. Even a historical/test `ALLOCATED_FOR_OWNER_REVIEW` means only that the supplied generations fit the modeled capacity constraints at that supplied evaluation instant. It is not a promise to a buyer and does not reserve an external calendar/provider by itself. The production CLI remains HOLD until independent retained-root authority exists.
 
 ## CLI
 
 ```bash
 python -m revenue.delivery_capacity_allocator.cli compile \
   --policy policy.json --demands demand.json --reservations reservations.json \
-  --policy-sha <sha256> --demand-sha <sha256> --reservations-sha <sha256> \
   --out allocation.json
 
 python -m revenue.delivery_capacity_allocator.cli verify \
   --policy policy.json --demands demand.json --reservations reservations.json \
-  --policy-sha <sha256> --demand-sha <sha256> --reservations-sha <sha256> \
   --receipt allocation.json
 ```
 
-Inputs are bounded strict UTF-8 JSON with duplicate/non-finite rejection. CLI reads only stable regular-file generations and writes create-exclusively without pathname cleanup that could delete foreign replacements.
+Inputs are bounded strict UTF-8 JSON with duplicate/non-finite rejection. CLI reads only stable regular-file generations and writes create-exclusively without pathname cleanup that could delete foreign replacements. `compile` returns exit 3 while retained-root authority is unavailable; `verify` likewise returns non-current rather than manufacturing authority.
 
 ## Validation
 
 ```bash
 python -m py_compile revenue/delivery_capacity_allocator/*.py
-python -m unittest -v revenue.delivery_capacity_allocator.test_engine
-python -O -m unittest -v revenue.delivery_capacity_allocator.test_engine
+python -m unittest -v \
+  revenue.delivery_capacity_allocator.test_engine \
+  revenue.delivery_capacity_allocator.test_authority_fix
+python -O -m unittest -v \
+  revenue.delivery_capacity_allocator.test_engine \
+  revenue.delivery_capacity_allocator.test_authority_fix
 ```
