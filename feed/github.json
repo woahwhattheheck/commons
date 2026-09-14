@@ -1,9 +1,9 @@
 {
   "counts": {
-    "open_issues": 89,
-    "open_pull_requests": 53,
+    "open_issues": 93,
+    "open_pull_requests": 51,
     "runs_in_progress": 17,
-    "runs_queued": 722
+    "runs_queued": 659
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -34,17 +34,6 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "zpq6n/actions-authority-stable-policy-latest-attempt-20260913",
-      "created_at": "2026-09-13T08:49:13Z",
-      "draft": false,
-      "head_sha": "96e28badbf1ea2ec3d9a9712b3c0cb730942e025",
-      "number": 13654,
-      "title": "ci: make Actions evidence classification-only",
-      "updated_at": "2026-09-13T09:14:30Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
       "branch": "zr913425/port-data-qc-trusted-time-live-main-20260913",
       "created_at": "2026-09-13T09:23:24Z",
       "draft": false,
@@ -63,19 +52,30 @@
       "number": 13683,
       "title": "revenue: add OHSU digital pathology qualification evidence gate",
       "updated_at": "2026-09-13T10:21:53Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z-eames/v5-plainfile-custody-final-20260913",
+      "created_at": "2026-09-13T09:41:10Z",
+      "draft": false,
+      "head_sha": "c2df4039c06d34123e9aaa31ff0a04c405760c62",
+      "number": 13692,
+      "title": "TITAN V5: exact-head reject symlinked champion evidence inputs",
+      "updated_at": "2026-09-13T12:51:24Z"
     }
   ],
   "newest_pulls": [
     {
       "author": "woahwhattheheck",
       "base": "zav-s8q3/security-questionnaire-desk-20260913",
-      "branch": "zsable/security-questionnaire-import-assist",
-      "created_at": "2026-09-14T02:49:30Z",
+      "branch": "zmo-k4p7/questionnaire-authority-honest-successor-20260913",
+      "created_at": "2026-09-14T03:26:19Z",
       "draft": false,
-      "head_sha": "b287b8077ff444c5e18f325817cceea2fb1aefe5",
-      "number": 14236,
-      "title": "assist(revenue): make questionnaire desk package import deterministic",
-      "updated_at": "2026-09-14T02:49:30Z"
+      "head_sha": "b9f1b1779b4e4d9b7c19a9fc4744d28881282cd0",
+      "number": 14246,
+      "title": "fix(revenue): close questionnaire authority and publication gaps",
+      "updated_at": "2026-09-14T03:26:19Z"
     },
     {
       "author": "woahwhattheheck",
@@ -102,17 +102,6 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "zfj-k8d5/outbound-guard-source-custody-successor-20260913",
-      "created_at": "2026-09-14T02:41:48Z",
-      "draft": false,
-      "head_sha": "6ed69e2e963ff6143c7f4741e95aa475aa2224cb",
-      "number": 14223,
-      "title": "revenue: close outbound guard source-custody mutation race",
-      "updated_at": "2026-09-14T02:46:33Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
       "branch": "zbj-c6h9-signoz-research-20260913",
       "created_at": "2026-09-14T02:40:27Z",
       "draft": false,
@@ -130,7 +119,7 @@
       "head_sha": "12e38cf603a6863abee6b6285b2be5024b436f8c",
       "number": 14218,
       "title": "fix(revenue): bind CAS benchmark runs to one evaluation universe",
-      "updated_at": "2026-09-14T02:50:01Z"
+      "updated_at": "2026-09-14T03:24:08Z"
     },
     {
       "author": "woahwhattheheck",
@@ -175,12 +164,22 @@
       "number": 14173,
       "title": "fix(forensics): bind lease evidence to canonical Commons repo",
       "updated_at": "2026-09-14T02:19:20Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zkf-t9c4/right-now-stripe-currentness-20260913",
+      "created_at": "2026-09-14T01:39:43Z",
+      "draft": false,
+      "head_sha": "d9acf14a02c0a1455d063b63d1e4f041219b6410",
+      "number": 14159,
+      "title": "Revenue: require fresh Stripe readback for right-now checkout truth",
+      "updated_at": "2026-09-14T02:46:12Z"
     }
   ],
   "open_heads": {
     "13533": "73e73de79cb62cf2f58005efab027138ded6f282",
     "13587": "842d302b4c6ab001df5457c6b25309b301d53827",
-    "13654": "96e28badbf1ea2ec3d9a9712b3c0cb730942e025",
     "13676": "aee34ae856ab682908406e7b77f017af6da37586",
     "13683": "d7d6a0a0dacf3d832fc62d6e0b1a39b15a985b54",
     "13692": "c2df4039c06d34123e9aaa31ff0a04c405760c62",
@@ -199,12 +198,12 @@
     "13842": "1460ce57369134ace18c5bdbb8f27f0854542bc2",
     "13844": "51a23e49c939f3090aedd852539fa2f1806ae630",
     "13857": "a1dde557acac3aa3531b7a5541e11f95b035f3bf",
-    "13862": "4fd543c1f6fbeae8a93eea28861d7ae6fec800f6",
+    "13862": "820a0f79675169025ebf6a28194114077c95e993",
     "13863": "ae949f0a623b1eb8af94fe76427cb93169f55d91",
     "13865": "323b9a7c646df4dabaf9233a178093add5aa11ca",
     "13874": "2d1fb3e3cff82f036a977036706dbaa6749c8459",
     "13877": "0a86059fec8319f9b3782e833089d76847bc408b",
-    "13901": "54fa9ce0b97e2457aebb087fd4b6f9fdd979536e",
+    "13901": "db68118423bef95d0971fb320d83ffabec802abc",
     "13902": "0ad7356c59a25f47dac74c2a4a744c334a8397fa",
     "13910": "8c56dd0fa7679e5eb8de8e76b5ee41f0aa2f885b",
     "13976": "31405f2935f1a352f1e06e582d7a3a4008e8eb7f",
@@ -227,15 +226,69 @@
     "14211": "ff1f29987bfc89bf41a875b6cdb56886ccb74d4e",
     "14218": "12e38cf603a6863abee6b6285b2be5024b436f8c",
     "14221": "bc063456d9fcff764b33a7f9079aed7b889ac09f",
-    "14223": "6ed69e2e963ff6143c7f4741e95aa475aa2224cb",
     "14228": "05f892701fdbbde76d0f236a44dc481256772817",
     "14235": "090815cee9355c36db86a6666023f391dc9ebcec",
-    "14236": "b287b8077ff444c5e18f325817cceea2fb1aefe5"
+    "14246": "b9f1b1779b4e4d9b7c19a9fc4744d28881282cd0"
   },
-  "pulls_listed": 53,
+  "pulls_listed": 51,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 42.5,
+  "queue_depth_per_runner": 38.8,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "zav-s8q3/security-questionnaire-desk-20260913",
+      "branch": "zsable/security-questionnaire-import-assist",
+      "closed_at": "2026-09-14T03:23:26Z",
+      "head_sha": "4219b679763418a217f491ca950cb32c6792d9e8",
+      "merged_at": "2026-09-14T03:23:26Z",
+      "number": 14236,
+      "state": "MERGED",
+      "title": "assist(revenue): make questionnaire desk package import deterministic"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zlp/mmsd-ai-governance-20260913",
+      "closed_at": "2026-09-14T03:23:23Z",
+      "head_sha": "d5f2615da22bce9c765d9ddfce7b03b7690b1b67",
+      "merged_at": "2026-09-14T03:23:23Z",
+      "number": 14242,
+      "state": "MERGED",
+      "title": "MMSD AI governance: fail-closed pursuit/source-status carrier"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "swarm-z/f38-s420-only-zbbc4w8",
+      "closed_at": "2026-09-14T03:23:12Z",
+      "head_sha": "e82415299f3dc4496367b7ad25ecaf69af1838ac",
+      "merged_at": "2026-09-14T03:23:12Z",
+      "number": 14241,
+      "state": "MERGED",
+      "title": "TITAN V5: land F38 S420-only source carrier"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zpq6n/actions-authority-stable-policy-latest-attempt-20260913",
+      "closed_at": "2026-09-14T03:18:29Z",
+      "head_sha": "96e28badbf1ea2ec3d9a9712b3c0cb730942e025",
+      "merged_at": "2026-09-14T03:18:29Z",
+      "number": 13654,
+      "state": "MERGED",
+      "title": "ci: make Actions evidence classification-only"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zfj-k8d5/outbound-guard-source-custody-successor-20260913",
+      "closed_at": "2026-09-14T03:08:12Z",
+      "head_sha": "6526e530767cd517249a7f72ae281aa565eda0cb",
+      "merged_at": null,
+      "number": 14223,
+      "state": "CLOSED",
+      "title": "revenue: close outbound guard source-custody mutation race"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -345,65 +398,10 @@
       "number": 14222,
       "state": "MERGED",
       "title": "Fix evidence freshness commercial packet reseal trust"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zcd-b4j9/hutter-mixerlab-20260913",
-      "closed_at": "2026-09-14T02:32:37Z",
-      "head_sha": "f6e19bcf133da2f0eca5c540558ba5ce39177820",
-      "merged_at": "2026-09-14T02:32:37Z",
-      "number": 14213,
-      "state": "MERGED",
-      "title": "Hutter Prize: add bounded enwik9 compression MixerLab"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zhyp-c9v3/denton-floyd-cumulative-po-overrun-13789",
-      "closed_at": "2026-09-14T02:24:57Z",
-      "head_sha": "8f12b7a8867f82efb6ec3768fc7ee6a89b494964",
-      "merged_at": null,
-      "number": 13792,
-      "state": "CLOSED",
-      "title": "fix(revenue): hold cumulative invoice exposure above PO total"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zms-q7t9/denton-floyd-cumulative-po-rejoin-20260913",
-      "closed_at": "2026-09-14T02:24:34Z",
-      "head_sha": "b32d46c5b6b56b5e3983e699d1208f55d0d274cf",
-      "merged_at": "2026-09-14T02:24:34Z",
-      "number": 14210,
-      "state": "MERGED",
-      "title": "fix(revenue): land cumulative PO exposure guard on current main"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zktu/gosim-real-config-only-20260913",
-      "closed_at": "2026-09-14T02:23:31Z",
-      "head_sha": "d549f4a5a53eff9b0da77571b1948b97640f409b",
-      "merged_at": "2026-09-14T02:23:31Z",
-      "number": 14055,
-      "state": "MERGED",
-      "title": "GOSIM: require a real candidate configuration to pass the baseline"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zfh-k6w2/cash-source-byte-alias-20260913",
-      "closed_at": "2026-09-14T02:17:28Z",
-      "head_sha": "05a127ec0eae34f329906c2c69fa2603b3c791b4",
-      "merged_at": "2026-09-14T02:17:28Z",
-      "number": 14206,
-      "state": "MERGED",
-      "title": "fix: dedupe cash evidence by source bytes across authority labels"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-14T03:05:23Z",
+  "unchanged_since": "2026-09-14T03:26:46Z",
   "undatable_pulls": []
 }
