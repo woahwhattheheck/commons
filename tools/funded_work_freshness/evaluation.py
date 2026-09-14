@@ -46,8 +46,27 @@ _NOW_DESTINATION_RE = re.compile(
     r"(?i)^[\s:=,()\-]*now\b[\s:=,()\-]*(?:is\b[\s:=,()\-]*)?$"
 )
 _SYMBOL_CURRENCY = {"$": "USD", "€": "EUR", "£": "GBP"}
+# Mixed/lowercase strings count as currency codes only when they are known ISO
+# 4217 alpha codes. This keeps ordinary prose such as "$200 via Algora" from
+# becoming a false symbol/code conflict. All-uppercase unknown codes retain the
+# previous fail-closed behavior, and historic codes remain useful for old issues.
+_KNOWN_ISO_CURRENCY_CODES = frozenset(
+    """
+    AED AFN ALL AMD ANG AOA ARS AUD AWG AZN BAM BBD BDT BGN BHD BIF BMD BND
+    BOB BOV BRL BSD BTN BWP BYN BZD CAD CDF CHE CHF CHW CLF CLP CNY COP COU
+    CRC CUC CUP CVE CZK DJF DKK DOP DZD EGP ERN ETB EUR FJD FKP GBP GEL GHS
+    GIP GMD GNF GTQ GYD HKD HNL HRK HTG HUF IDR ILS INR IQD IRR ISK JMD JOD
+    JPY KES KGS KHR KMF KPW KRW KWD KYD KZT LAK LBP LKR LRD LSL LYD MAD MDL
+    MGA MKD MMK MNT MOP MRU MUR MVR MWK MXN MXV MYR MZN NAD NGN NIO NOK NPR
+    NZD OMR PAB PEN PGK PHP PKR PLN PYG QAR RON RSD RUB RWF SAR SBD SCR SDG
+    SEK SGD SHP SLE SLL SOS SRD SSP STN SVC SYP SZL THB TJS TMT TND TOP TRY
+    TTD TWD TZS UAH UGX USD USN UYI UYU UYW UZS VED VES VND VUV WST XAF XAG
+    XAU XBA XBB XBC XBD XCD XDR XOF XPD XPF XPT XSU XTS XUA XXX YER ZAR ZMW
+    ZWG ZWL
+    """.split()
+)
 _SYMBOL_CODE_RE = re.compile(
-    r"(?:"
+    r"(?<![A-Za-z0-9_])(?:"
     r"(?P<prefix>[A-Za-z]{3})\s*(?P<prefix_symbol>[$€£])\s*\d+(?:,\d{3})*(?:\.\d+)?"
     r"|(?P<suffix_symbol>[$€£])\s*\d+(?:,\d{3})*(?:\.\d+)?\s*(?P<suffix>[A-Za-z]{3})(?![A-Za-z0-9_])"
     r")"
@@ -157,17 +176,29 @@ def _money_tokens(text: str) -> list[tuple[int, int, str, str]]:
     return tokens
 
 
+def _normalized_adjacent_currency_code(value: str) -> str | None:
+    """Return a plausible adjacent currency code without treating prose as one."""
+
+    normalized = value.upper()
+    if value.isupper() or normalized in _KNOWN_ISO_CURRENCY_CODES:
+        return normalized
+    return None
+
+
 def _has_conflicting_symbol_code(text: str) -> bool:
-    """Fail closed when a currency symbol and adjacent code disagree."""
+    """Fail closed when a currency symbol and adjacent plausible code disagree."""
 
     for match in _SYMBOL_CODE_RE.finditer(text):
         if match.group("prefix") is not None:
-            code = str(match.group("prefix"))
+            raw_code = str(match.group("prefix"))
             symbol = str(match.group("prefix_symbol"))
         else:
-            code = str(match.group("suffix"))
+            raw_code = str(match.group("suffix"))
             symbol = str(match.group("suffix_symbol"))
-        if code.upper() != _SYMBOL_CURRENCY[symbol]:
+        code = _normalized_adjacent_currency_code(raw_code)
+        if code is None:
+            continue
+        if code != _SYMBOL_CURRENCY[symbol]:
             return True
     return False
 
