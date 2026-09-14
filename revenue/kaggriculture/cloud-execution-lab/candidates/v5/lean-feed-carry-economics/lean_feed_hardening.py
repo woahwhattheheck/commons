@@ -85,7 +85,7 @@ def _validate_initial_snapshots(runs: Sequence[Mapping[str, Any]]) -> None:
 
 
 def _validate_obligation_census_and_cash(runs: Sequence[Mapping[str, Any]]) -> None:
-    """Require a real source-bound boundary and single-use cash liberation IDs."""
+    """Require source-bound lean activations and single-use cash liberation IDs."""
     for run in runs:
         run_id = run.get("run_id")
         seen_liberation_ids: set[str] = set()
@@ -94,25 +94,27 @@ def _validate_obligation_census_and_cash(runs: Sequence[Mapping[str, Any]]) -> N
         for window in windows:
             _require(isinstance(window, Mapping), "decision window invalid")
             oracle = compute_reserve_oracle(window.get("snapshot"))
-
-            # A null boundary makes MIN_PROVABLE vacuously zero and can fabricate
-            # a cash win from an empty animal-obligation census.
-            _require(
-                oracle["next_boundary_step"] is not None,
-                f"{run_id}: null source-proven obligation boundary",
-            )
-            _require(
-                bool(oracle["obligation_sources"]),
-                f"{run_id}: empty source-proven obligation census",
-            )
-
             decision = window.get("decision")
             _require(isinstance(decision, Mapping), "decision required")
-            if (
+            active_lean = (
                 run.get("arm") == ARM_MIN
                 and oracle["reachable_excess"]
                 and decision.get("candidate_active") is True
-            ):
+            )
+            if active_lean:
+                # A null boundary makes MIN_PROVABLE vacuously zero and can
+                # fabricate a cash win from an empty animal-obligation census.
+                # Inert/no-obligation windows remain valid; only a claimed lean
+                # activation must prove the boundary it says it is protecting.
+                _require(
+                    oracle["next_boundary_step"] is not None,
+                    f"{run_id}: null source-proven obligation boundary",
+                )
+                _require(
+                    bool(oracle["obligation_sources"]),
+                    f"{run_id}: empty source-proven obligation census",
+                )
+
                 liberation_id = decision.get("liberation_id")
                 _require(
                     isinstance(liberation_id, str) and liberation_id,
@@ -234,7 +236,7 @@ def analyze_authoritative_document(document: Mapping[str, Any]) -> dict[str, Any
     report["hardening"] = {
         "exact_one_row_per_cell_arm": True,
         "cross_arm_initial_snapshot_bound": True,
-        "source_proven_obligation_boundary_required": True,
+        "source_proven_obligation_boundary_required_for_activation": True,
         "liberation_id_single_use_per_run": True,
         "terminal_result_bound_in_run_digest": True,
         "authority_root_schema": AUTHORITY_ROOT_SCHEMA,
