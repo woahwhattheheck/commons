@@ -22,11 +22,11 @@ def authority_comment(body: str):
 
 
 class SymbolCodeCaseTests(unittest.TestCase):
-    def _receipt(self, body: str, *, currency: str = "USD"):
+    def _receipt(self, body: str, *, currency: str = "USD", amount: str = "200"):
         candidate = Candidate.validated(
             candidate_url=GH,
             platform="fixture-board",
-            advertised_amount="200",
+            advertised_amount=amount,
             currency=currency,
             canonical_url=GH,
             max_age_days=30,
@@ -51,6 +51,10 @@ class SymbolCodeCaseTests(unittest.TestCase):
             "Reward: €200 usd via Algora.",
             "Reward: uSd €200 via Algora.",
             "Reward: $200 zwg via Algora.",
+            "Reward: CAD: $200 via Algora.",
+            "Reward: cAd: $200 via Algora.",
+            "Reward: $200 (CAD) via Algora.",
+            "Reward: $200 - cad via Algora.",
         )
         for body in hostiles:
             with self.subTest(body=body):
@@ -76,6 +80,8 @@ class SymbolCodeCaseTests(unittest.TestCase):
             "Reward: $200 UsD via Algora.",
             "Reward: usd $200 via Algora.",
             "Reward: uSd $200 via Algora.",
+            "Reward: USD: $200 via Algora.",
+            "Reward: $200 (usd) via Algora.",
         )
         for body in forms:
             with self.subTest(body=body):
@@ -127,6 +133,37 @@ class SymbolCodeCaseTests(unittest.TestCase):
                     {"status": "none", "currency": None, "amount": None},
                 )
 
+    def test_unresolved_amount_update_overrides_older_numeric_authority(self):
+        hostiles = (
+            "Reward changed from $500 to TBD.",
+            "Reward was $500, now TBD.",
+            "Reward changed to TBD.",
+            "Reward amount TBD.",
+            "Reward is negotiable.",
+            "Reward amount varies by scope.",
+            "Reward depends on scope.",
+            "Reward amount varies between $100 and $300.",
+            "Reward up to $500.",
+            "Reward changed from $500.",
+        )
+        for body in hostiles:
+            with self.subTest(body=body):
+                receipt = self._receipt(body, amount="500")
+                self.assertEqual(receipt["freshness_status"], "ambiguous")
+                self.assertEqual(receipt["route"], "reject")
+                self.assertEqual(
+                    receipt["checks"]["authoritative_amount_state"], "ambiguous"
+                )
+                self.assertIsNone(
+                    receipt["checks"]["canonical_current_reward_currency"]
+                )
+                self.assertIsNone(
+                    receipt["checks"]["canonical_current_reward_amount"]
+                )
+                self.assertEqual(
+                    receipt["reasons"], ["canonical_reward_amount_ambiguous"]
+                )
+
     def test_ordinary_three_letter_prose_after_symbol_is_not_a_code(self):
         forms = (
             "Reward: $200 via Algora.",
@@ -147,6 +184,21 @@ class SymbolCodeCaseTests(unittest.TestCase):
                 self.assertEqual(
                     receipt["checks"]["canonical_current_reward_amount"], "200"
                 )
+
+    def test_unrelated_non_amount_prose_does_not_invalidate_numeric_authority(self):
+        forms = (
+            "Reward: $200, acceptance pending.",
+            "Reward remains available and test budget is $200.",
+            "Reward details pending review.",
+        )
+        expected = (
+            "resolved",
+            "none",
+            "none",
+        )
+        for body, status in zip(forms, expected):
+            with self.subTest(body=body):
+                self.assertEqual(_commercial_amount_event(body)["status"], status)
 
     def test_identifier_like_suffixes_are_not_currency_codes(self):
         forms = (
