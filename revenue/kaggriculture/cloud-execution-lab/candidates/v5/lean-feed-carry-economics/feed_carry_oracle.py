@@ -14,6 +14,13 @@ from lean_feed_core import *
 from lean_feed_core import EvidenceError, _require, canonical_json_bytes, sha256_file
 from lean_feed_gate import *
 from lean_feed_run import *
+from lean_feed_hardening import apply_source_authority, validate_promotion_evidence
+
+
+def analyze_for_promotion(document: Mapping[str, Any]) -> dict[str, Any]:
+    """Run legacy research economics behind the fail-closed promotion authority."""
+    validate_promotion_evidence(document)
+    return apply_source_authority(analyze_document(document), document)
 
 
 def render_markdown(report: Mapping[str, Any]) -> str:
@@ -29,6 +36,8 @@ def render_markdown(report: Mapping[str, Any]) -> str:
         f"`{promotion['dev_downstream_cash_used']:.6f}` / "
         f"`{promotion['holdout_downstream_cash_used']:.6f}`",
         f"- D2 archive: `{report['authority']['archive_sha256']}`",
+        f"- Authority verified: `{report['authority'].get('authority_verified', False)}`",
+        f"- Source model state: `{report['authority'].get('source_model_state', 'legacy-research-only')}`",
         f"- Report digest: `{report['report_sha256']}`",
         "",
         "## Falsifiers",
@@ -50,10 +59,9 @@ def render_markdown(report: Mapping[str, Any]) -> str:
         )
     lines += [
         "",
-        "This report rejects inventory, ending-cash, and byte-change proxies. "
-        "A promotion requires a reachable current-policy excess, explicit cash "
-        "liberation, later runtime-ledger use, satisfied feed obligations, "
-        "both-seat/opponent stability, and untouched holdout survival.",
+        "The legacy fixed-feed oracle is research-only. Promotion additionally "
+        "requires a retained source authority root; current retained source is "
+        "SOURCE_MODEL_BLOCKED until exact D2 archive member bytes are authenticated.",
         "",
     ]
     return "\n".join(lines)
@@ -114,7 +122,7 @@ def main(argv: Sequence[str] | None = None) -> int:
     try:
         document = json.loads(args.evidence.read_text(encoding="utf-8"))
         _require(isinstance(document, Mapping), "top-level evidence must be an object")
-        report = analyze_document(document)
+        report = analyze_for_promotion(document)
         artifacts = write_outputs(report, args.out, args.force)
     except (OSError, json.JSONDecodeError, EvidenceError) as exc:
         print(f"ERROR: {exc}", file=sys.stderr)
