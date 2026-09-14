@@ -5,6 +5,7 @@ import os
 import tempfile
 import threading
 import unittest
+from unittest.mock import patch
 from copy import deepcopy
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
@@ -101,6 +102,16 @@ class LeaseTests(unittest.TestCase):
         self.assertEqual(one.lease["leaseSha256"], two.lease["leaseSha256"])
         self.assertFalse(one.lease["externalSendAuthorized"])
 
+    def test_stale_exact_acquire_replay_recovers_without_new_authority(self):
+        r = req(self.org)
+        one = self.acquire(r)
+        future = datetime.now(timezone.utc).replace(microsecond=0) + timedelta(seconds=900)
+        with patch("revenue.organization_outbound_lease.core._process_now", return_value=future):
+            replay = self.acquire(r)
+        self.assertTrue(replay.replay)
+        self.assertEqual(replay.lease["leaseId"], one.lease["leaseId"])
+        self.assertEqual(replay.active_generation, one.active_generation)
+
     def test_same_org_different_prospect_route_and_opportunity_collide(self):
         first = self.acquire()
         for variant in [
@@ -179,6 +190,40 @@ class LeaseTests(unittest.TestCase):
         second = self.acquire(req(self.org, claim="claim-second", prospect="9"*64))
         self.assertEqual(second.state, "LEASE_ACQUIRED")
         self.assertNotEqual(first.lease["leaseId"], second.lease["leaseId"])
+
+    def test_unsent_finalize_exact_replay_after_release_is_idempotent(self):
+        first = self.acquire()
+        request = fin(first.lease, "UNSENT_RELEASED", oid="release-replay")
+        one = finalize_lease(self.store, request)
+        self.assertFalse(one.replay)
+        self.assertTrue(one.active_released)
+        future = datetime.now(timezone.utc).replace(microsecond=0) + timedelta(seconds=1200)
+        with patch("revenue.organization_outbound_lease.core._process_now", return_value=future):
+            two = finalize_lease(self.store, request)
+        self.assertTrue(two.replay)
+        self.assertTrue(two.active_released)
+        self.assertEqual(two.outcome["outcomeSha256"], one.outcome["outcomeSha256"])
+        self.assertIsNone(self.store.get_active(self.org))
+
+    def test_old_unsent_finalize_replay_never_deletes_successor(self):
+        first = self.acquire()
+        request = fin(first.lease, "UNSENT_RELEASED", oid="release-before-successor")
+        finalize_lease(self.store, request)
+        successor = self.acquire(req(self.org, claim="successor", prospect="9"*64))
+        replay = finalize_lease(self.store, request)
+        self.assertTrue(replay.replay)
+        current_raw, _ = self.store.get_active(self.org)
+        current = json.loads(current_raw)
+        self.assertEqual(current["leaseId"], successor.lease["leaseId"])
+
+    def test_released_outcome_mutation_conflicts_on_replay(self):
+        first = self.acquire()
+        request = fin(first.lease, "UNSENT_RELEASED", oid="release-mutation")
+        finalize_lease(self.store, request)
+        changed = deepcopy(request)
+        changed["evidenceCommitment"] = "d"*64
+        with self.assertRaises(ValueError):
+            finalize_lease(self.store, changed)
 
     def test_sent_and_unknown_do_not_release_or_reacquire(self):
         for outcome in ("SENT", "OUTCOME_UNKNOWN", "REJECTED", "HELD_AUTHORITY"):
