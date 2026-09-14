@@ -4,6 +4,8 @@ import copy
 import importlib.util
 import inspect
 import json
+import subprocess
+import sys
 import tempfile
 import unittest
 from datetime import datetime, timezone
@@ -169,6 +171,18 @@ class RightNowCheckoutCurrentnessTests(unittest.TestCase):
         )
         self.assertIs(historical["active"], True)
         self.assertNotIn("current_observed_at_utc", historical)
+
+    def test_direct_cli_compile_uses_canonical_wrapper(self) -> None:
+        result = subprocess.run(
+            [sys.executable, "host/right_now_revenue.py", "compile"],
+            cwd=ROOT,
+            capture_output=True,
+            text=True,
+            check=False,
+        )
+        self.assertEqual(result.returncode, 0, msg=result.stderr)
+        compiled = json.loads(result.stdout)
+        self.assertIs(compiled["truth"]["active_chargeable_checkout"], True)
 
     def test_catalog_override_cannot_bypass_stale_currentness(self) -> None:
         catalog = control.read_object(control.CATALOG_PATH)

@@ -11,14 +11,20 @@ from __future__ import annotations
 
 import hashlib
 import json
+import sys
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from typing import Any
 
+
+ROOT = Path(__file__).resolve().parents[1]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+
 from host import right_now_revenue_core as _core
 
 
-# Preserve the established public module surface.  Existing callers/tests that
+# Preserve the established public module surface. Existing callers/tests that
 # import helpers from host/right_now_revenue.py continue to receive the frozen
 # historical implementations unless explicitly overridden below.
 for _name in dir(_core):
