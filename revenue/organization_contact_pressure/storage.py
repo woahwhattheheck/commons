@@ -49,10 +49,10 @@ def _directory_flags() -> int:
 def _open_no_symlink_path(path: Path, flags: int, mode: int = 0o600) -> tuple[int, Optional[int], str]:
     """Open a path without following any POSIX path-component symlink.
 
-    The returned parent descriptor remains open so a create caller can fsync or
-    unlink by descriptor. Windows lacks compatible ``dir_fd`` semantics; the
-    public retained-authority entrypoint fails closed on Windows before this
-    fallback can establish production authority.
+    The returned parent descriptor remains open so a create caller can fsync the
+    directory. Windows lacks compatible ``dir_fd`` semantics; the public retained-
+    authority entrypoint fails closed on Windows before this fallback can establish
+    production authority.
     """
     candidate = Path(path)
     if not candidate.name or candidate.name in {".", ".."}:
@@ -238,36 +238,26 @@ def _verify_published_path(path: Path, authored: os.stat_result, expected: bytes
         os.close(visible_fd)
 
 
-def _unlink_if_authored(parent_fd: Optional[int], final_name: str, authored: os.stat_result) -> None:
-    """Remove only the exact directory entry created by this call."""
-    if parent_fd is None:
-        return
-    try:
-        current = os.stat(final_name, dir_fd=parent_fd, follow_symlinks=False)
-    except OSError:
-        return
-    if not stat.S_ISREG(current.st_mode) or not _same_identity(authored, current):
-        return
-    try:
-        os.unlink(final_name, dir_fd=parent_fd)
-        os.fsync(parent_fd)
-    except OSError:
-        pass
-
-
 def _write_exclusive(path: Path, data: bytes) -> None:
+    """Publish once; on any post-create failure leave the pathname untouched.
+
+    Once O_EXCL has made a public directory entry, this process deliberately has no
+    exceptional-path pathname deletion authority. A later peer may replace that entry,
+    and any check-then-unlink cleanup would be a race capable of deleting the peer's
+    successor. Ambiguous/partial authored output is therefore left for explicit owner
+    reconciliation rather than being unlinked by this call.
+    """
     if not isinstance(data, bytes):
         raise TypeError("output data must be bytes")
     flags = os.O_WRONLY | os.O_CREAT | os.O_EXCL
     flags |= getattr(os, "O_CLOEXEC", 0)
     flags |= getattr(os, "O_NOFOLLOW", 0)
     try:
-        fd, parent_fd, final_name = _open_no_symlink_path(path, flags, 0o600)
+        fd, parent_fd, _ = _open_no_symlink_path(path, flags, 0o600)
     except OSError as exc:
         raise InputError("output path is unsafe, missing, or already exists") from exc
 
     authored = os.fstat(fd)
-    succeeded = False
     failure: Optional[BaseException] = None
     try:
         offset = 0
@@ -280,12 +270,9 @@ def _write_exclusive(path: Path, data: bytes) -> None:
         if parent_fd is not None:
             os.fsync(parent_fd)
         _verify_published_path(path, authored, data)
-        succeeded = True
-    except BaseException as exc:  # preserve KeyboardInterrupt/SystemExit after identity-safe cleanup
+    except BaseException as exc:
         failure = exc
     finally:
-        if not succeeded:
-            _unlink_if_authored(parent_fd, final_name, authored)
         try:
             os.close(fd)
         finally:

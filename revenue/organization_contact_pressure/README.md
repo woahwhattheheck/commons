@@ -18,7 +18,7 @@ The strongest result is `READY_FOR_SINGLE_WRITER_REVIEW`. The signed receipt alw
 
 ## Retained authority
 
-Production selects a fixed POSIX root; callers cannot pass a key, key path, authority path, retained-ledger path, ledger-head path, cooldown, or evaluation time.
+Production selects a fixed POSIX root; callers cannot pass a key, key path, authority path, retained-ledger path, ledger-head path, cooldown, or evaluation time. The supported `compile_current`, `verify_receipt_current`, and `verify_receipt_integrity` APIs expose no caller-root or caller-time parameters, and the compatibility receipt module does not re-export deterministic `_at` authority hooks.
 
 - POSIX: `/var/lib/commons/organization-contact-pressure`
 - Windows: production verification fails closed until handle-bound reparse-point traversal and retained-root owner/ACL verification are implemented.
@@ -101,7 +101,7 @@ Exit codes:
 - `3`: canonical HOLD compiled;
 - `4`: retained authority unavailable or receipt verification failure.
 
-The CLI owns current UTC. There is deliberately no `--now`, `--key`, `--authority-root`, `--cooldown`, or provider-send option. Output creation is exclusive. Immediately before success, the CLI reopens the requested lexical path and proves inode identity, regular-file mode, exact size, and exact bytes. Failure cleanup unlinks only the inode created by that invocation; a renamed or foreign replacement is preserved.
+The CLI owns current UTC. There is deliberately no `--now`, `--key`, `--authority-root`, `--cooldown`, or provider-send option. Output creation is exclusive. Immediately before success, the CLI reopens the requested lexical path and proves inode identity, regular-file mode, exact size, and exact bytes. Once `O_EXCL` creates the public pathname, any later publication failure leaves that pathname untouched for explicit owner reconciliation; exceptional cleanup has no pathname-unlink authority because a check-then-unlink could delete a foreign successor installed by a peer.
 
 ## Authority ceiling
 

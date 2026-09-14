@@ -9,7 +9,6 @@ from __future__ import annotations
 
 import argparse
 import sys
-from datetime import datetime, timezone
 from pathlib import Path
 from typing import Optional, Sequence
 
@@ -47,36 +46,12 @@ from .core import (
     strict_json_loads,
 )
 from .records import _normalize_event, _normalize_request
-from .receipts import (
-    _compile_at,
-    _verify_receipt_current_at,
-    _verify_receipt_integrity_at,
-)
-from .storage import _authority_root, _read_request_file, _write_exclusive
+from .receipts import compile_current, verify_receipt_current, verify_receipt_integrity
+from .storage import _read_request_file, _write_exclusive
 
 
 def _render_receipt(receipt: dict[str, object]) -> bytes:
     return _canonical_bytes(receipt) + b"\n"
-
-
-def compile_current(request_data: bytes) -> dict[str, object]:
-    """Compile with process-owned UTC and the fixed retained authority root."""
-    now = datetime.now(timezone.utc).replace(microsecond=0)
-    return _compile_at(request_data, root=_authority_root(), now=now)
-
-
-def verify_receipt_integrity(receipt_data: bytes) -> dict[str, object]:
-    """Verify immutable receipt history using a retained verifier key."""
-    return _verify_receipt_integrity_at(receipt_data, root=_authority_root())
-
-
-def verify_receipt_current(receipt_data: bytes) -> dict[str, object]:
-    """Verify integrity and reacquire live authority for READY receipts."""
-    return _verify_receipt_current_at(
-        receipt_data,
-        root=_authority_root(),
-        now=datetime.now(timezone.utc).replace(microsecond=0),
-    )
 
 
 def _build_parser() -> argparse.ArgumentParser:
