@@ -6,11 +6,14 @@ import unittest
 from pathlib import Path
 from unittest.mock import patch
 
+from coordination.connector_preflight import core, publication
 from coordination.connector_preflight.core import PreflightError
-from coordination.connector_preflight import publication
 
 
 class PublicationCustodyTests(unittest.TestCase):
+    def test_core_writer_name_is_rebound_to_custody_writer(self):
+        self.assertIs(core.write_json_exclusive, publication.write_json_exclusive)
+
     def test_exact_visible_generation_is_published(self):
         with tempfile.TemporaryDirectory() as tmp:
             path = Path(tmp) / "bundle.json"
