@@ -189,13 +189,24 @@ def takeover(
         raise LeaseHeld(f"live lease held by {lease.holder}")
     if ttl_seconds <= 0:
         raise LeaseError("ttl_seconds must be positive")
+
+    # A takeover must never turn provider drift into a fresh send baseline. If the
+    # prior holder sent successfully and crashed before ``mark_sent`` won its CAS,
+    # the provider fingerprint will have advanced while the lease still looks
+    # expired/released. Re-read provider state and require it to match the snapshot
+    # retained by the lease; any drift requires manual/provider reconciliation.
+    current_provider_snapshot = fingerprint(provider_snapshot)
+    if current_provider_snapshot != lease.provider_snapshot:
+        raise PreflightFailed(
+            "provider state changed since claim; reconcile before takeover"
+        )
+
     return dataclasses.replace(
         lease,
         holder=holder.strip(),
         state=ACTIVE,
         acquired_at=_iso(now),
         expires_at=_iso(now + dt.timedelta(seconds=ttl_seconds)),
-        provider_snapshot=fingerprint(provider_snapshot),
         generation=lease.generation + 1,
         released_at=None,
         release_reason=None,
