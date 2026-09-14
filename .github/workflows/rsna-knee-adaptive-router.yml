@@ -26,6 +26,6 @@ jobs:
       - name: Data-free synthetic hostiles
         working-directory: research/rsna-knee-adaptive-router
         run: |
-          python -m unittest -v test_controller.py
-          python -O -m unittest -v test_controller.py
-          python -m py_compile controller.py test_controller.py
+          python -m unittest -v
+          python -O -m unittest -v
+          python -m py_compile controller.py data_contract.py test_controller.py test_data_contract.py
