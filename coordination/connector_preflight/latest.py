@@ -158,11 +158,43 @@ def _recompute_overall(packet: dict[str, Any], overlay_reasons: list[str]) -> No
         packet["reasons"] = ["REQUIRED_WRITE_ACTIONS_NOT_EXPOSED"]
 
 
+def _current_generation_reasons(
+    prepared: dict[str, Any],
+    winner: dict[str, Any] | None,
+    evaluated_at: datetime,
+    mode: str,
+) -> list[str]:
+    if mode != "CURRENT" or winner is None:
+        return []
+    max_age = prepared["policy"]["max_age_seconds"]
+    reasons: list[str] = []
+    discovery_age = int((evaluated_at - _core.parse_utc(winner["completed_at"])).total_seconds())
+    if discovery_age > max_age:
+        reasons.append("CONTROLLING_DISCOVERY_STALE")
+    latest_attempts: dict[tuple[str, str], dict[str, Any]] = {}
+    for row in prepared["attempts"]:
+        if row["discovery_request_id"] != winner["request_id"] or row["access"] != "WRITE":
+            continue
+        identity = (row["connector"], row["action"])
+        previous = latest_attempts.get(identity)
+        if previous is None or (row["attempted_at"], row["attempt_id"]) > (
+            previous["attempted_at"],
+            previous["attempt_id"],
+        ):
+            latest_attempts[identity] = row
+    for row in latest_attempts.values():
+        age = int((evaluated_at - _core.parse_utc(row["attempted_at"])).total_seconds())
+        if age > max_age:
+            reasons.append(f"LATEST_WRITE_ATTEMPT_STALE_{row['connector']}_{row['action']}")
+    return sorted(set(reasons))
+
+
 def evaluate(normalized: dict[str, Any], evaluated_at: datetime, mode: str) -> dict[str, Any]:
     prepared, overlay_reasons, winner = _prepare_latest(normalized)
+    overlay_reasons.extend(_current_generation_reasons(prepared, winner, evaluated_at, mode))
     packet = _BASE_EVALUATE(prepared, evaluated_at, mode)
     _latest_write_truth(packet, prepared, winner)
-    _recompute_overall(packet, overlay_reasons)
+    _recompute_overall(packet, sorted(set(overlay_reasons)))
     return packet
 
 
@@ -203,16 +235,19 @@ def read_json_file(path: Path, *, max_bytes: int = MAX_FILE_BYTES) -> Any:
     return _core.strict_loads(text)
 
 
-# compile_at and compile_current resolve evaluate from the base module at runtime.
-# Install overlays once, then re-export the public surface.
+_compile_current_at = _core._compile_current_at
+_verify_current_at = _core._verify_current_at
+compile_current = _core.compile_current
+verify_current = _core.verify_current
+
+# Base compilation resolves evaluate at runtime. Install overlays once, then
+# replace the file-reader boundary used by the CLI.
 _core.evaluate = evaluate
 _core.read_json_file = read_json_file
 
 PreflightError = _core.PreflightError
 compile_at = _core.compile_at
-compile_current = _core.compile_current
 strict_loads = _core.strict_loads
-verify_current = _core.verify_current
 verify_integrity = _core.verify_integrity
 write_json_exclusive = _core.write_json_exclusive
 
