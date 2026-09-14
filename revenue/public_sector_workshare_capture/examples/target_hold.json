@@ -1,0 +1,3 @@
+{
+  "example": "Target packets are generated with capture_pack.cli target. Missing relationship history, exact target lease, provider-history recheck, opportunity-fact revalidation, fresh source evidence, or an open deadline keeps state HOLD. Even READY_FOR_OWNER_TRANSPORT_REVIEW always has external_send_authorized=false."
+}
