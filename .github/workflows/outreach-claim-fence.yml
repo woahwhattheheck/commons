@@ -1,0 +1,30 @@
+name: outreach-claim-fence
+
+on:
+  push:
+    paths:
+      - "commercial/outreach_claim_fence/**"
+      - ".github/workflows/outreach-claim-fence.yml"
+  pull_request:
+    paths:
+      - "commercial/outreach_claim_fence/**"
+      - ".github/workflows/outreach-claim-fence.yml"
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+      - name: Normal interpreter
+        working-directory: commercial/outreach_claim_fence
+        run: python -m unittest -v test_outreach_claim_fence.py
+      - name: Optimized interpreter
+        working-directory: commercial/outreach_claim_fence
+        run: python -O -m unittest -q test_outreach_claim_fence.py
+      - name: Compile check
+        working-directory: commercial/outreach_claim_fence
+        run: python -m py_compile outreach_claim_fence.py test_outreach_claim_fence.py
