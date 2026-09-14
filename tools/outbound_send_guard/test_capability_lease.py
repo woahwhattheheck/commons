@@ -46,6 +46,7 @@ class Store:
         self.tag_payload = None
         self.tag_sha = TAG
         self.ref_sha = TAG
+        self.ref_create_status = 201
         self.ref_read_status = 200
         self.tag_read_status = 200
         self.calls = []
@@ -57,6 +58,8 @@ class Store:
             self.tag_payload = copy.deepcopy(body)
             return 201, {"sha": self.tag_sha}
         if method == "POST" and path.endswith("/git/refs"):
+            if self.ref_create_status != 201:
+                return self.ref_create_status, None
             return 201, {"object": {"sha": self.ref_sha}}
         if method == "GET" and "/git/ref/" in path:
             if self.ref_read_status != 200:
@@ -230,7 +233,7 @@ class CapabilityLeaseTests(unittest.TestCase):
             verify_possession(receipt, claim_capability=capability, transport=store)
         )
 
-    def test_hold_receipt_never_becomes_possession_authority(self):
+    def test_other_owner_hold_still_fails_live_possession(self):
         store = Store()
         store.ref_sha = OTHER
         retained = []
@@ -244,7 +247,29 @@ class CapabilityLeaseTests(unittest.TestCase):
         self.assertFalse(
             verify_possession(receipt, claim_capability=CAPABILITY, transport=store)
         )
-        self.assertEqual(store.calls, [])
+        self.assertEqual([call[0] for call in store.calls], ["GET"])
+
+    def test_outcome_unknown_hold_recovers_from_later_exact_live_readback(self):
+        store = Store()
+        store.ref_create_status = 503
+        store.ref_read_status = 503
+        retained = []
+        with mock.patch(
+            "tools.outbound_send_guard.capability_lease.secrets.token_hex",
+            return_value=CAPABILITY,
+        ):
+            receipt = acquire(claim(), store, retain_capability=retained.append)
+        self.assertFalse(receipt["lease_held_by_claimant"])
+        self.assertEqual(receipt["reason"], "READBACK_FAILED_503")
+        self.assertEqual(retained, [CAPABILITY])
+
+        store.ref_read_status = 200
+        store.ref_sha = TAG
+        store.calls.clear()
+        self.assertTrue(
+            verify_possession(receipt, claim_capability=CAPABILITY, transport=store)
+        )
+        self.assertEqual([call[0] for call in store.calls], ["GET", "GET"])
 
     def test_capability_file_is_create_exclusive_and_owner_only(self):
         with tempfile.TemporaryDirectory() as tmp:
