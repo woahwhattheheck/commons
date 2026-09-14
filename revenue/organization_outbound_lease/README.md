@@ -26,7 +26,7 @@ The trust-root file is strict JSON with exactly:
 }
 ```
 
-The package contains no private signing key and no signing helper. The local `FileLeaseStore` reference surface retains a direct verifier-injection seam solely for deterministic unit/hostile tests; the production `GitHubContentsLeaseStore` mechanically rejects caller-supplied verifier material. The supported CLI never exposes that seam.
+The package contains no private signing key and no signing helper. Caller-supplied verifier material survives only for deterministic local-reference tests, and that seam is mechanically bound to the unchanged `FileLeaseStore` acquisition call graph. A subclass/proxy/delegated store, an instance with rebound acquire methods, a later monkeypatch of the reference acquire implementation, or noncanonical local path state is rejected **before store I/O**. The production `GitHubContentsLeaseStore` and supported CLI never accept claimant-selected verifier identity.
 
 The signed body binds:
 
@@ -99,4 +99,4 @@ Acquire has **no pressure-key selector**. The fixed host trust-root file supplie
 
 Finalize/release JSON contains the raw `holderCapability` only as an input capability. Treat that input as secret: create it with owner-only permissions, do not retain it in shared logs/artifacts, and destroy it according to the surrounding host policy after terminal reconciliation.
 
-For deterministic local tests, `--store file --store-root DIR` uses a reference create-exclusive store. Unit tests may inject a verifier only into that local reference store. That test seam is not accepted by the production GitHub store and is not exposed by the CLI.
+For deterministic local tests, `--store file --store-root DIR` uses a reference create-exclusive store. Unit tests may inject a verifier only while the store retains the mechanically unchanged local acquisition implementation. That seam rejects subclass/proxy delegation and instance method rebinding before I/O; it is not accepted by the production GitHub store and is not exposed by the CLI.
