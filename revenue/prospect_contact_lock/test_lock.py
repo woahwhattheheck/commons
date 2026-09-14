@@ -95,6 +95,27 @@ class ProspectContactLockTests(unittest.TestCase):
     def acquire(self):
         return self.lock.acquire("email", self.email, **self.owner)
 
+    def payload(self, body: bytes = b"hello", compensation: str = "$2500 paid pilot"):
+        return dict(
+            message_sha256=hashlib.sha256(body).hexdigest(),
+            channel="email",
+            compensation_path=compensation,
+        )
+
+    def arm(self, **overrides):
+        kwargs = self.payload()
+        kwargs.update(overrides)
+        return self.lock.arm("email", self.email, **self.owner, **kwargs)
+
+    def dispatch(self):
+        return self.lock.dispatch("email", self.email, **self.owner)
+
+    def consume(self, **overrides):
+        self.acquire()
+        armed = self.arm(**overrides)
+        dispatched = self.dispatch()
+        return armed, dispatched
+
     def test_email_normalization_collapses_case(self):
         a = mod.normalize_target("email", "User@EXAMPLE.com")
         b = mod.normalize_target("EMAIL", "user@example.com")
@@ -102,10 +123,7 @@ class ProspectContactLockTests(unittest.TestCase):
 
     def test_campaign_and_offer_not_in_fingerprint(self):
         target = mod.normalize_target("email", self.email)
-        self.assertEqual(
-            target.fingerprint,
-            mod.normalize_target("email", self.email).fingerprint,
-        )
+        self.assertEqual(target.fingerprint, mod.normalize_target("email", self.email).fingerprint)
         self.assertNotIn("paid", target.fingerprint)
 
     def test_domain_idna_and_trailing_dot(self):
@@ -193,12 +211,11 @@ class ProspectContactLockTests(unittest.TestCase):
             self.lock.release_unsent("email", self.email, **self.owner, reason="")
 
     def test_finalize_contacted_is_terminal(self):
-        self.acquire()
+        self.consume()
         receipt = self.lock.finalize_contacted(
             "email", self.email, **self.owner,
             message_sha256=hashlib.sha256(b"hello").hexdigest(),
-            channel="email",
-            compensation_path="$2500 paid pilot",
+            channel="email", compensation_path="$2500 paid pilot",
             provider_receipt="gmail-message-id:abc123",
         )
         self.assertEqual(receipt["state"], "CONTACTED")
@@ -208,7 +225,7 @@ class ProspectContactLockTests(unittest.TestCase):
             self.lock.release_unsent("email", self.email, **self.owner, reason="too late")
 
     def test_finalize_owner_mismatch_fails(self):
-        self.acquire()
+        self.consume()
         with self.assertRaises(mod.ConflictError):
             self.lock.finalize_contacted(
                 "email", self.email, agent_id="Z-OTHER", operation_id="OP-2",
@@ -218,7 +235,7 @@ class ProspectContactLockTests(unittest.TestCase):
             )
 
     def test_finalize_requires_paid_path(self):
-        self.acquire()
+        self.consume()
         with self.assertRaises(mod.ValidationError):
             self.lock.finalize_contacted(
                 "email", self.email, **self.owner,
@@ -228,10 +245,12 @@ class ProspectContactLockTests(unittest.TestCase):
             )
 
     def test_contacted_persists_only_evidence_digests(self):
-        self.acquire()
         comp = "$15,000 fixed paid subcontract"
         provider = "provider-secret-ish-id-123"
         message = hashlib.sha256(b"commercial offer body").hexdigest()
+        self.acquire()
+        self.lock.arm("email", self.email, **self.owner, message_sha256=message, channel="email", compensation_path=comp)
+        self.dispatch()
         self.lock.finalize_contacted(
             "email", self.email, **self.owner,
             message_sha256=message, channel="email",
@@ -247,20 +266,17 @@ class ProspectContactLockTests(unittest.TestCase):
 
     def test_finalize_is_idempotent_only_for_same_evidence(self):
         self.acquire()
-        kwargs = dict(
-            message_sha256=hashlib.sha256(b"x").hexdigest(),
-            channel="email", compensation_path="$2500 paid pilot",
-            provider_receipt="receipt-1",
-        )
+        kwargs = dict(message_sha256=hashlib.sha256(b"x").hexdigest(), channel="email", compensation_path="$2500 paid pilot", provider_receipt="receipt-1")
+        self.lock.arm("email", self.email, **self.owner, message_sha256=kwargs["message_sha256"], channel=kwargs["channel"], compensation_path=kwargs["compensation_path"])
+        self.dispatch()
         self.lock.finalize_contacted("email", self.email, **self.owner, **kwargs)
         again = self.lock.finalize_contacted("email", self.email, **self.owner, **kwargs)
         self.assertEqual(again["outcome"], "ALREADY_CONTACTED")
         with self.assertRaises(mod.ConflictError):
             self.lock.finalize_contacted(
                 "email", self.email, **self.owner,
-                message_sha256=hashlib.sha256(b"y").hexdigest(),
-                channel="email", compensation_path="$2500 paid pilot",
-                provider_receipt="receipt-2",
+                message_sha256=hashlib.sha256(b"y").hexdigest(), channel="email",
+                compensation_path="$2500 paid pilot", provider_receipt="receipt-2",
             )
 
     def test_status_absent_and_active_never_authorize_send(self):
@@ -351,6 +367,84 @@ class ProspectContactLockTests(unittest.TestCase):
         record = self.transport.record()
         self.assertEqual(record["authority"], mod.AUTHORITY_DOCUMENT)
         self.assertEqual(record["authority_digest"], mod.AUTHORITY_DIGEST)
+
+    def test_arm_binds_exact_payload_and_is_idempotent(self):
+        self.acquire()
+        first = self.arm()
+        self.assertEqual(first["state"], "ARMED")
+        record = self.transport.record()
+        self.assertEqual(record["message_sha256"], hashlib.sha256(b"hello").hexdigest())
+        self.assertEqual(record["channel"], "email")
+        counter = self.transport.counter
+        again = self.arm()
+        self.assertEqual(again["outcome"], "ALREADY_ARMED")
+        self.assertEqual(self.transport.counter, counter)
+
+    def test_arm_payload_change_requires_release_not_rearm(self):
+        self.acquire()
+        self.arm()
+        with self.assertRaises(mod.ConflictError):
+            self.lock.arm(
+                "email", self.email, **self.owner,
+                message_sha256=hashlib.sha256(b"different").hexdigest(),
+                channel="email", compensation_path="$2500 paid pilot",
+            )
+
+    def test_armed_may_release_unsent_then_reacquire(self):
+        self.acquire()
+        self.arm()
+        released = self.lock.release_unsent("email", self.email, **self.owner, reason="armed but provider was never called")
+        self.assertEqual(released["state"], "RELEASED")
+        self.assertEqual(self.transport.record()["released_from_state"], "ARMED")
+        again = self.lock.acquire("email", self.email, agent_id="Z-NEXT", operation_id="OP-NEXT")
+        self.assertEqual(again["state"], "ACTIVE")
+
+    def test_dispatch_consumes_slot_before_provider_effect(self):
+        self.acquire()
+        self.arm()
+        receipt = self.dispatch()
+        self.assertEqual(receipt["state"], "OUTCOME_UNKNOWN")
+        self.assertEqual(receipt["outcome"], "OUTCOME_UNKNOWN_SLOT_CONSUMED")
+        self.assertFalse(receipt["external_send_authorized"])
+        record = self.transport.record()
+        self.assertIsNotNone(record["dispatched_at"])
+
+    def test_dispatch_same_owner_replay_is_blocked(self):
+        self.consume()
+        with self.assertRaises(mod.ConflictError):
+            self.dispatch()
+
+    def test_outcome_unknown_blocks_acquire_and_release(self):
+        self.consume()
+        with self.assertRaises(mod.ConflictError):
+            self.lock.acquire("email", self.email, **self.owner)
+        with self.assertRaises(mod.ConflictError):
+            self.lock.acquire("email", self.email, agent_id="Z-OTHER", operation_id="OP-OTHER")
+        with self.assertRaises(mod.ConflictError):
+            self.lock.release_unsent("email", self.email, **self.owner, reason="cannot assert unsent after dispatch")
+
+    def test_finalize_requires_dispatch_first(self):
+        self.acquire()
+        self.arm()
+        kwargs = self.payload()
+        with self.assertRaises(mod.ConflictError):
+            self.lock.finalize_contacted("email", self.email, **self.owner, **kwargs, provider_receipt="provider-accepted")
+
+    def test_finalize_requires_exact_armed_payload(self):
+        self.consume()
+        with self.assertRaises(mod.ConflictError):
+            self.lock.finalize_contacted(
+                "email", self.email, **self.owner,
+                message_sha256=hashlib.sha256(b"different").hexdigest(), channel="email",
+                compensation_path="$2500 paid pilot", provider_receipt="provider-accepted",
+            )
+
+    def test_outcome_unknown_retains_no_provider_receipt(self):
+        self.consume()
+        record = self.transport.record()
+        self.assertEqual(record["state"], "OUTCOME_UNKNOWN")
+        self.assertNotIn("provider_receipt_sha256", record)
+        self.assertFalse(record["provider_send_completed"])
 
 
 if __name__ == "__main__":
