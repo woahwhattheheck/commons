@@ -43,7 +43,7 @@ python3 cpca_qualify.py current_evidence.json
 python3 -m unittest -v test_cpca_qualify.py
 ```
 
-The CLI emits a canonical result plus a SHA-256 receipt. Missing gates default to `MISSING`; nothing defaults to pass.
+The CLI emits a canonical result plus a SHA-256 receipt. Missing gates default to `MISSING`; nothing defaults to pass. Every non-count gate marked `PROVEN` must carry at least one explicit `gate_sources` entry; references, recent engagements, and safety-net experience are proven only from their own source-bound records.
 
 ## State meanings
 
