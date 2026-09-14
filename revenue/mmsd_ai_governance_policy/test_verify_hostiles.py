@@ -62,6 +62,11 @@ class VerifyHostileReportTests(unittest.TestCase):
         report["systems"][0][1] = "hostile"
         self.assertFalse(verify_report(packet(), report))
 
+    def test_oversized_integer_in_report_returns_false_not_exception(self):
+        report = self._report()
+        report["systems"][0]["overall_risk"] = 10 ** 5000
+        self.assertFalse(verify_report(packet(), report))
+
     def test_valid_report_roundtrip_stays_true(self):
         p = packet()
         report = compile_report(p)
@@ -85,6 +90,12 @@ class VerifyHostileReportTests(unittest.TestCase):
         p = packet()
         report = compile_report(p)
         p["inventory_generation"] = 1.0
+        self.assertFalse(verify_report(p, report))
+
+    def test_oversized_generation_stays_false_not_exception(self):
+        p = packet()
+        report = compile_report(p)
+        p["inventory_generation"] = 10 ** 5000
         self.assertFalse(verify_report(p, report))
 
 
