@@ -1,0 +1,94 @@
+{
+  "concept_inputs": {
+    "cover": {},
+    "past_performance": [],
+    "rom": {
+      "basis_sha256": null,
+      "owner_approved": false,
+      "total_usd_minor": null
+    },
+    "template_format": {
+      "format_verified": false,
+      "retained_template_sha256": null
+    }
+  },
+  "eligibility": {
+    "assigned_personnel": {
+      "all_at_least_interim_secret": false,
+      "all_us_citizens": false,
+      "evidence_sha256": null
+    },
+    "facility_clearance": {
+      "evidence_sha256": null,
+      "level": "UNKNOWN",
+      "status": "NOT_EVIDENCED",
+      "valid_through": null
+    },
+    "ota_eligibility": {
+      "basis": null,
+      "evidence_sha256": null,
+      "status": "NOT_EVIDENCED"
+    }
+  },
+  "sources": [
+    {
+      "authority": "PUBLIC_MIRROR_NOT_RETAINED",
+      "generation": "2026-09-10-posting",
+      "key": "innovation_call",
+      "sha256": null,
+      "url": "https://sam.gov/workspace/contract/opp/8edbc404f99d46caa7f41a9bb760f4a9/view"
+    },
+    {
+      "authority": "PUBLIC_MIRROR_NOT_RETAINED",
+      "generation": "HS0021-26-CSO-DCSA",
+      "key": "general_solicitation",
+      "sha256": null,
+      "url": "https://sam.gov/"
+    },
+    {
+      "authority": "PUBLIC_MIRROR_NOT_RETAINED",
+      "generation": "2026-06-23-template",
+      "key": "concept_template",
+      "sha256": null,
+      "url": "https://sam.gov/"
+    }
+  ],
+  "teaming_targets": [
+    {
+      "app_modernization": true,
+      "cleared_workforce_signal": true,
+      "dcsa_relevance": true,
+      "evidence": [
+        {
+          "claim": "Prime on DCSA One IT for enterprise IT modernization, cloud readiness, cybersecurity, application development and sustainment.",
+          "source_class": "PUBLIC_FIRST_PARTY",
+          "url": "https://investors.saic.com/news-releases/news-release-details/saic-selected-889m-contract-integrate-it-services-defense"
+        },
+        {
+          "claim": "Current DCSA One IT roles publicly require active TS/SCI for relevant program work.",
+          "source_class": "PUBLIC_FIRST_PARTY",
+          "url": "https://jobs.saic.com/jobs/18144819-sysops-team-lead"
+        }
+      ],
+      "organization": "SAIC"
+    },
+    {
+      "app_modernization": true,
+      "cleared_workforce_signal": true,
+      "dcsa_relevance": true,
+      "evidence": [
+        {
+          "claim": "DCSA enterprise IT application-development OTA for a modernized central background-investigation platform.",
+          "source_class": "PUBLIC_FIRST_PARTY",
+          "url": "https://www.peraton.com/news/peraton-to-fulfill-474-million-dod-contract-for-advanced-background-investigation-services"
+        },
+        {
+          "claim": "Peraton publicly describes a large cleared workforce while supporting DCSA background-investigation missions.",
+          "source_class": "PUBLIC_FIRST_PARTY",
+          "url": "https://www.peraton.com/news/peraton-awarded-2-25-billion-contract-to-provide-background-investigation-field-work-services-to-the-dcsa"
+        }
+      ],
+      "organization": "Peraton"
+    }
+  ]
+}
