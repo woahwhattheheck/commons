@@ -1,43 +1,70 @@
 # Atomic Organization Outbound Lease
 
-This package closes one coordination race: two workers can target **different people or routes at the same organization** and therefore both win a per-prospect lock. The organization outbound lease introduces an atomic organization-level writer before any provider send authority is approached.
+This package closes one coordination race: two workers can target **different people or routes at the same organization** and therefore both win narrower per-prospect/per-destination locks. The organization outbound lease introduces one atomic organization-level writer before any provider send authority is approached.
 
-It composes with, rather than replaces:
+It composes with, rather than replaces, the organization contact-pressure gate, per-prospect/contact CAS controls, outbound destination mutexes, opportunity/initial-outreach guards, and the terminal provider-send consumer.
 
-1. the organization contact-pressure gate (#14247 / PR #14254), which decides whether more contact pressure is admissible;
-2. the per-prospect atomic lock (#14220);
-3. opportunity/initial-outreach/provider guards; and
-4. the terminal one-shot provider-send consumer (#14049).
+## Authority boundary
 
-## Trust boundary
+Version 2 deliberately separates **pressure-attestation signing** from **acquire verification**.
 
-`acquire` accepts only an HMAC-authenticated pressure attestation whose body is bound to the same organization fingerprint and to exact pressure-receipt, authority-generation and ledger-generation commitments. The host integration must call the landed organization-pressure verifier itself before minting that attestation. The CLI deliberately exposes **no `attest` command**. Acquire also samples process UTC internally: request and pressure-verification timestamps must be current within five minutes, with only five seconds of future skew tolerated, so a once-good pressure receipt cannot be replayed indefinitely.
+The pressure host signs a canonical `commons.organization-pressure-attestation/v2` body with an RSA private key that does **not** enter this package or the claimant process. Acquire receives only the matching RSA public modulus/exponent/key id and verifies an exact PKCS#1 v1.5 SHA-256 signature under a domain-separated message. There is no signing helper or private-key input in the package or CLI. Production must never use the private test fixture embedded in the unit tests.
 
-The organization fingerprint is HMAC-SHA256 over the host's canonical organization identity. Raw organization/contact identity never belongs in lease paths, receipts, branch names or logs. Prospect, route, opportunity and claimant inputs are commitments, not raw labels.
+The signed body binds:
+
+- organization fingerprint;
+- exact pressure-receipt SHA-256;
+- authority-generation commitment;
+- ledger-generation commitment;
+- exact positive upstream state `READY_FOR_SINGLE_WRITER_REVIEW`; and
+- verification time.
+
+Acquire samples process UTC internally. New authority requires both request and pressure verification to be fresh within five minutes, with at most five seconds of future skew. An exact already-active replay may recover its existing lease after freshness expires because it creates no new authority.
+
+## Privacy-safe organization identity
+
+The organization fingerprint is HMAC-SHA256 over the host's independently retained canonical organization identity. Raw organization/contact identity never belongs in lease paths, receipts, branch names, or logs. Prospect, route, opportunity and authority inputs are commitments rather than raw labels.
+
+## Private holder capability
+
+Before acquire, the claimant generates a fresh **32-byte CSPRNG secret** and places only:
+
+`sha256(b"holder-capability-v1\\0" + secret)`
+
+in `holderCapabilityCommitment`.
+
+The raw holder capability is never serialized in the active lease, outcome receipt, branch path, status output, or collision response. Every first-time terminal finalization and every exact terminal replay must present the raw 32-byte capability; core recomputes the commitment and compares it to the lease/outcome commitment.
+
+This means another protocol writer can read the entire active organization lease and still cannot emit `SENT`, `REJECTED`, `HELD_AUTHORITY`, `OUTCOME_UNKNOWN`, or `UNSENT_RELEASED` for the winner. Losing the holder capability fails closed to explicit administrative reconciliation.
 
 ## GitHub atomicity
 
 Production mode uses the GitHub Contents API on a dedicated coordination branch (default `outbound-lease-ledger`):
 
-- acquire creates `active/<org-hmac>.json` **without** a prior SHA; GitHub create-if-absent gives one winner for that path;
-- immutable outcome writes create `outcomes/<org-hmac>/<lease-id>.json` without a prior SHA;
+- acquire creates `active/<org-hmac>.json` **without** a prior SHA, so one organization path has one winner;
+- immutable outcomes create `outcomes/<org-hmac>/<lease-id>.json` without a prior SHA;
 - the only releasable terminal is `UNSENT_RELEASED`, and its outcome is committed **before** active deletion;
-- release supplies the exact active blob SHA. A stale duplicate releaser cannot delete a successor lease because GitHub rejects a SHA mismatch;
-- network/create ambiguity is reconciled by reading the authoritative path. No blind retry is treated as safe;
-- exact acquire replay recovers an already-held identical lease even after freshness elapses, because it creates no new authority; exact retained terminal-outcome replay is likewise recoverable after the original window;
-- `UNSENT_RELEASED` outcome receipts bind the lease nonce as well as lease ID/digest. Replaying an old release can never delete a successor active generation.
+- release supplies the exact active blob SHA, so a stale deleter cannot remove a distinct successor generation;
+- network/create/delete ambiguity is reconciled by authoritative read rather than blind mutation retry;
+- time passage alone never expires an active lease.
 
-The coordination branch must already exist and must be restricted to this protocol. The package never creates, force-updates or resets that branch.
+The coordination branch must already exist and must be restricted to this protocol. This package never creates, force-updates, or resets it.
 
-## Outcomes
+## Terminal and replay rules
 
-`SENT`, `OUTCOME_UNKNOWN`, `REJECTED`, and `HELD_AUTHORITY` remain blocking. Time passage never frees them. Only an explicit `UNSENT_RELEASED` outcome can remove an active lease and permit a later acquire.
+A retained outcome is stronger than an active-byte match.
 
-This is intentionally conservative: abandoned/stale leases require owner reconciliation instead of expiry.
+- `SENT`, `OUTCOME_UNKNOWN`, `REJECTED`, and `HELD_AUTHORITY` stay blocking and exact acquire replay returns `LEASE_FINALIZED_<OUTCOME>`, never `LEASE_ACQUIRED`.
+- `UNSENT_RELEASED` removes the active lease only after its immutable outcome exists.
+- Exact terminal replay remains idempotent after freshness expiry and after an unsent release removes the active file, but it still requires the private holder capability.
+- An exact acquire identity that already has a retained outcome cannot be recreated. This prevents A -> release -> byte-identical A ABA reuse.
+- A later legitimate acquire must have a genuinely new lease identity (normally a new request/claim and fresh holder capability). Replaying an old release cannot delete that successor because release compares the exact retained `leaseSha256` and holder capability commitment.
 
 ## Authority ceiling
 
-A positive result means only **internal organization-lease ownership**. Every receipt hard-codes `externalSendAuthorized=false`. The package has no email/Slack/SMS/form sender and makes no buyer-response, payment, cash, booked-revenue or recognized-revenue claim.
+A positive result means only **internal organization-lease ownership**. Every lease and outcome hard-codes `externalSendAuthorized=false`; every outcome also hard-codes `cashOrRevenueClaimed=false`. The package has no email/Slack/SMS/form sender and makes no buyer-response, payment, cash, booked-revenue, or recognized-revenue claim.
+
+The mandatory provider-bound composition layer remains responsible for proving all downstream send authority. It must bind the exact winning organization fingerprint, `leaseId`, `leaseNonce`, `leaseSha256`, holder-capability commitment, and active store generation; the lease itself is never provider authority.
 
 ## CLI
 
@@ -50,6 +77,14 @@ python -m revenue.organization_outbound_lease.cli release --input unsent-release
 python -m revenue.organization_outbound_lease.cli verify --input lease.json
 ```
 
-Required secrets are read only from environment variables (`ORG_FINGERPRINT_KEY`, `ORG_PRESSURE_ATTESTATION_KEY`, `ORG_LEASE_NONCE_KEY`, `GITHUB_TOKEN` by default) and are never serialized.
+Acquire verification material comes from public configuration/environment only:
 
-For deterministic local tests, `--store file --store-root DIR` uses a reference create-exclusive store.
+- `ORG_PRESSURE_RSA_N_HEX` — lower-case RSA public modulus, at least 2048 bits;
+- `ORG_PRESSURE_RSA_E` — decimal public exponent, normally `65537`;
+- `ORG_PRESSURE_KEY_ID` — pinned key identifier.
+
+Other secrets are read only from environment (`ORG_FINGERPRINT_KEY`, `ORG_LEASE_NONCE_KEY`, `GITHUB_TOKEN` by default). The private pressure-signing key is intentionally unsupported.
+
+Finalize/release JSON contains the raw `holderCapability` only as an input capability. Treat that input as secret: create it with owner-only permissions, do not retain it in shared logs/artifacts, and destroy it according to the surrounding host policy after terminal reconciliation.
+
+For deterministic local tests, `--store file --store-root DIR` uses a reference create-exclusive store. The test suite includes a non-production RSA private fixture solely to produce known signed test attestations.
