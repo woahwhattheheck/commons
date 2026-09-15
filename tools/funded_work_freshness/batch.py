@@ -51,6 +51,51 @@ def candidate_fingerprint(candidate: Candidate) -> str:
     return hashlib.sha256(raw).hexdigest()
 
 
+def cache_entry_hash(entry: Mapping[str, Any]) -> str:
+    """Bind cache-envelope identity, age, policy fingerprint, and receipt bytes."""
+
+    payload = dict(entry)
+    payload.pop("entry_sha256", None)
+    raw = json.dumps(
+        payload, sort_keys=True, separators=(",", ":"), ensure_ascii=False
+    ).encode("utf-8")
+    return hashlib.sha256(raw).hexdigest()
+
+
+def _receipt_is_persistently_cacheable(receipt: object) -> bool:
+    if not isinstance(receipt, Mapping):
+        return False
+    if receipt.get("freshness_status") not in {"occupied", "stale", "ambiguous"}:
+        return False
+    checks = receipt.get("checks")
+    if not isinstance(checks, Mapping) or checks.get("evidence_complete") is not True:
+        return False
+    expected = receipt.get("receipt_sha256")
+    try:
+        return isinstance(expected, str) and receipt_hash(receipt) == expected
+    except (TypeError, ValueError):
+        return False
+
+
+def _cache_entry_is_valid(key: object, entry: object) -> bool:
+    if not isinstance(key, str) or not isinstance(entry, Mapping):
+        return False
+    if entry.get("candidate_fingerprint") != key:
+        return False
+    expected = entry.get("entry_sha256")
+    try:
+        if not isinstance(expected, str) or cache_entry_hash(entry) != expected:
+            return False
+    except (TypeError, ValueError):
+        return False
+    receipt = entry.get("receipt")
+    if not _receipt_is_persistently_cacheable(receipt):
+        return False
+    cached_at = _parse_iso(entry.get("cached_at"))
+    generated_at = _parse_iso(receipt.get("generated_at"))
+    return cached_at is not None and cached_at == generated_at
+
+
 class MemoizingTransport:
     """Share immutable GET-equivalent responses within one batch execution."""
 
@@ -93,13 +138,22 @@ class ReceiptCache:
         if not isinstance(payload, Mapping) or payload.get("schema") != CACHE_SCHEMA:
             return cls()
         entries = payload.get("entries")
-        return cls(entries if isinstance(entries, Mapping) else None)
+        if not isinstance(entries, Mapping):
+            return cls()
+        return cls(
+            {key: value for key, value in entries.items() if _cache_entry_is_valid(key, value)}
+        )
 
     def to_payload(self, *, max_entries: int) -> dict[str, Any]:
         if isinstance(max_entries, bool) or max_entries < 1:
             raise PreflightInputError("max_cache_entries must be a positive integer")
+        valid = (
+            (key, value)
+            for key, value in self.entries.items()
+            if _cache_entry_is_valid(key, value)
+        )
         ordered = sorted(
-            self.entries.items(),
+            valid,
             key=lambda item: str(item[1].get("cached_at") or ""),
             reverse=True,
         )[:max_entries]
@@ -114,25 +168,16 @@ class ReceiptCache:
     ) -> CacheLookup:
         if ttl_seconds <= 0:
             return CacheLookup(None)
-        entry = self.entries.get(candidate_fingerprint(candidate))
-        if not isinstance(entry, Mapping):
+        fingerprint = candidate_fingerprint(candidate)
+        entry = self.entries.get(fingerprint)
+        if not _cache_entry_is_valid(fingerprint, entry):
             return CacheLookup(None)
+        assert isinstance(entry, Mapping)
         cached_at = _parse_iso(entry.get("cached_at"))
         receipt = entry.get("receipt")
-        if cached_at is None or not isinstance(receipt, Mapping):
-            return CacheLookup(None)
+        assert cached_at is not None and isinstance(receipt, Mapping)
         age = (now - cached_at).total_seconds()
         if age < 0 or age > ttl_seconds:
-            return CacheLookup(None, age_seconds=age)
-        status = receipt.get("freshness_status")
-        if status not in _ALLOWED_STATUSES:
-            return CacheLookup(None, age_seconds=age)
-        # Positive authority is intentionally never served from persistent cache: an
-        # issue can be claimed, assigned, or closed immediately after qualification.
-        if status == "actionable":
-            return CacheLookup(None, age_seconds=age)
-        expected = receipt.get("receipt_sha256")
-        if not isinstance(expected, str) or receipt_hash(receipt) != expected:
             return CacheLookup(None, age_seconds=age)
         candidate_block = receipt.get("candidate")
         if not isinstance(candidate_block, Mapping):
@@ -149,10 +194,16 @@ class ReceiptCache:
         return CacheLookup(dict(receipt), age_seconds=age)
 
     def put(self, candidate: Candidate, receipt: Mapping[str, Any], *, cached_at: datetime) -> None:
-        self.entries[candidate_fingerprint(candidate)] = {
+        if not _receipt_is_persistently_cacheable(receipt):
+            return
+        fingerprint = candidate_fingerprint(candidate)
+        entry: dict[str, Any] = {
+            "candidate_fingerprint": fingerprint,
             "cached_at": _iso(cached_at),
             "receipt": dict(receipt),
         }
+        entry["entry_sha256"] = cache_entry_hash(entry)
+        self.entries[fingerprint] = entry
 
 
 def _validate_now(value: datetime | None) -> datetime:

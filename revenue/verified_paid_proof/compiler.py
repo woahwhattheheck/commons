@@ -1,10 +1,54 @@
 """Permission-state compiler and deterministic proof renderer."""
 from __future__ import annotations
+
 import hashlib
+import html
+import re
+import unicodedata
 from pathlib import Path
 from typing import Any
-from .core import (CompiledProof, POLICY_VERSION, STATUSES, ProofError, _canonical_json, _money, _public_proof_id, _redacted_customer_id, strict_json_loads)
+
+from .core import (
+    CompiledProof,
+    POLICY_VERSION,
+    STATUSES,
+    ProofError,
+    _canonical_json,
+    _money,
+    _public_proof_id,
+    _redacted_customer_id,
+    strict_json_loads,
+)
 from .validation import validate_and_normalize
+
+_MARKDOWN_CONTROL_RE = re.compile(r"([\\`*_{}\[\]()#+\-!|>])")
+
+
+def _markdown_inline(value: str) -> str:
+    """Project external text into one non-linking Markdown-safe visual line."""
+
+    # Replace controls with spacing rather than deleting them so hostile bidi/newline input cannot
+    # join two otherwise separate tokens into a different visible claim.
+    without_controls = "".join(
+        " " if unicodedata.category(character) in {"Cc", "Cf", "Cs", "Zl", "Zp"} else character
+        for character in value
+    )
+    single_line = " ".join(without_controls.split())
+
+    # Escape Markdown before HTML. Reversing this order would backslash the `#` inside numeric
+    # entities such as `&#x27;`, changing the visible customer text.
+    markdown_safe = _MARKDOWN_CONTROL_RE.sub(r"\\\1", single_line)
+    html_safe = html.escape(markdown_safe, quote=True)
+
+    # Break common automatic-link/mention recognizers at source-token time while preserving the
+    # rendered characters. This covers URLs, bare domains, email addresses, and @-mentions.
+    return (
+        html_safe.replace("@", "&#64;")
+        .replace(":", "&#58;")
+        .replace("/", "&#47;")
+        .replace(".", "&#46;")
+    )
+
 
 def compile_proof(raw: dict[str, Any]) -> CompiledProof:
     record = validate_and_normalize(raw)
@@ -85,9 +129,11 @@ def compile_proof(raw: dict[str, Any]) -> CompiledProof:
     for outcome in record["outcomes"]:
         private_outcomes.append({"claim": outcome["claim"], "evidence_refs": outcome["evidence_refs"]})
         if public_enabled and outcome["publication_permission"]["granted"]:
-            public_outcomes.append({"claim": outcome["claim"], "evidence_refs": outcome["evidence_refs"]})
+            # The publication grant covers the claim, not its private source locators.
+            public_outcomes.append({"claim": outcome["claim"]})
         else:
-            withheld.append(f"outcome:{outcome['claim']}")
+            # Withheld metadata must never echo the non-public claim itself.
+            withheld.append("outcome_claim")
 
     permission_refs = {
         scope: p[scope]["evidence_refs"]
@@ -160,10 +206,10 @@ def render_markdown(proof: dict[str, Any]) -> str:
         ]
     else:
         lines += ["", "## Sales-safe public projection", ""]
-        lines.append(f"- Customer: **{public['customer']}**")
+        lines.append(f"- Customer: **{_markdown_inline(public['customer'])}**")
         lines.append("- Commercial fact: **Paid engagement verified**")
         if public["exact_amount"] is not None:
-            lines.append(f"- Settled amount: **{public['exact_amount']}**")
+            lines.append(f"- Settled amount: **{_markdown_inline(public['exact_amount'])}**")
         else:
             lines.append("- Settled amount: withheld")
         if public["delivery_accepted"]:
@@ -171,12 +217,11 @@ def render_markdown(proof: dict[str, Any]) -> str:
         if public["outcomes"]:
             lines.append("- Permissioned outcome facts:")
             for outcome in public["outcomes"]:
-                lines.append(f"  - {outcome['claim']}")
+                lines.append(f"  - {_markdown_inline(outcome['claim'])}")
         if public["quote"] is not None:
-            quote = public["quote"].replace("\n", " ")
-            lines.append(f"- Permissioned customer quote: “{quote}”")
+            lines.append(f"- Permissioned customer quote: “{_markdown_inline(public['quote'])}”")
         if public["logo_ref"] is not None:
-            lines.append(f"- Permissioned logo reference: `{public['logo_ref']}`")
+            lines.append(f"- Permissioned logo reference: {_markdown_inline(public['logo_ref'])}")
         lines += [
             "",
             "Payment is represented only as payment. No unstated satisfaction, endorsement, recommendation, recurring-customer, or performance claim is implied.",
@@ -185,11 +230,11 @@ def render_markdown(proof: dict[str, Any]) -> str:
     if proof["withheld"]:
         lines += ["", "## Withheld from public projection", ""]
         for item in proof["withheld"]:
-            lines.append(f"- `{item}`")
+            lines.append(f"- {_markdown_inline(item)}")
     if proof["blockers"]:
         lines += ["", "## Blockers", ""]
         for item in proof["blockers"]:
-            lines.append(f"- `{item}`")
+            lines.append(f"- {_markdown_inline(item)}")
     lines.append("")
     return "\n".join(lines)
 
@@ -203,5 +248,3 @@ def write_outputs(compiled: CompiledProof, out_dir: Path) -> None:
     (out_dir / "proof.json").write_text(compiled.proof_json(), encoding="utf-8")
     (out_dir / "proof.md").write_text(compiled.markdown, encoding="utf-8")
     (out_dir / "receipt.sha256").write_text(compiled.receipt_sha256 + "\n", encoding="utf-8")
-
-

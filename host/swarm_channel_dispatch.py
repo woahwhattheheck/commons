@@ -89,7 +89,7 @@ def _text(value: Any, where: str, pattern: re.Pattern[str]) -> str:
 
 
 def _int(value: Any, where: str, *, minimum: int, maximum: int) -> int:
-    if type(value) is not int:  # bool must not pass as an integer
+    if type(value) is not int:
         raise DispatchInputError(f"{where} must be an integer")
     if not minimum <= value <= maximum:
         raise DispatchInputError(f"{where} must be in [{minimum}, {maximum}]")
@@ -189,6 +189,13 @@ def normalize_snapshot(snapshot: Any) -> dict[str, Any]:
     }
 
 
+def _remaining_headroom(channel: dict[str, Any], assigned_now: int) -> int:
+    """Conservative new-work headroom bounded by capacity and verified targets."""
+    capacity_headroom = channel["capacity"] - channel["active_claims"] - assigned_now
+    target_headroom = channel["verified_targets"] - channel["active_claims"] - assigned_now
+    return max(0, min(capacity_headroom, target_headroom))
+
+
 def _pressure_score(channel: dict[str, Any], assigned_now: int, match_count: int) -> tuple[int, int, int, int, str, str]:
     """Lower is better; score is integer-only for cross-platform determinism."""
     capacity = channel["capacity"]
@@ -218,14 +225,9 @@ def compile_dispatch(snapshot: Any) -> dict[str, Any]:
         candidates: list[tuple[tuple[int, int, int, int, str, str], dict[str, Any], list[str]]] = []
         for channel in channels:
             assigned_now = assigned_counts[channel["channel_id"]]
-            headroom = channel["capacity"] - channel["active_claims"] - assigned_now
+            headroom = _remaining_headroom(channel, assigned_now)
             matched = sorted(work_tags.intersection(channel["specialty_tags"]))
-            if (
-                channel["paused"]
-                or channel["verified_targets"] == 0
-                or headroom <= 0
-                or not matched
-            ):
+            if channel["paused"] or headroom <= 0 or not matched:
                 continue
             candidates.append((_pressure_score(channel, assigned_now, len(matched)), channel, matched))
 
@@ -255,13 +257,12 @@ def compile_dispatch(snapshot: Any) -> dict[str, Any]:
     channel_summary = []
     for channel in channels:
         assigned = assigned_counts[channel["channel_id"]]
-        remaining = max(0, channel["capacity"] - channel["active_claims"] - assigned)
         channel_summary.append(
             {
                 "channel_id": channel["channel_id"],
                 "channel_name": channel["name"],
                 "assigned": assigned,
-                "remaining_headroom": remaining,
+                "remaining_headroom": _remaining_headroom(channel, assigned),
                 "eligible_target_count": channel["verified_targets"],
                 "paused": channel["paused"],
             }
