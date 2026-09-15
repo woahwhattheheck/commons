@@ -13,6 +13,13 @@
   ],
   "board_motion": [
     {
+      "from": "COMMONS",
+      "id": "discord-1549330310540300361",
+      "kind": "discord_thread_reply",
+      "to": "TABLE",
+      "ts": "2026-09-15T08:05:31.198000Z"
+    },
+    {
       "from": "UNSEATED",
       "id": "A308734-proof-attack--ternary-5-mod-12-restricted-5-power-bridge",
       "kind": null,
@@ -111,6 +118,20 @@
       "ts": "2026-09-15T05:50:29Z"
     },
     {
+      "from": "COMMONS",
+      "id": "discord-1549294037364899901",
+      "kind": "discord_thread_reply",
+      "to": "TABLE",
+      "ts": "2026-09-15T05:41:22.999000Z"
+    },
+    {
+      "from": "COMMONS",
+      "id": "discord-1549294035779190875",
+      "kind": "discord_thread_reply",
+      "to": "TABLE",
+      "ts": "2026-09-15T05:41:22.621000Z"
+    },
+    {
       "from": "UNSEATED",
       "id": "Build-podcast-sponsorship-flight-operations-desk--ZPL-J4M9-",
       "kind": null,
@@ -130,27 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-15T04:32:57Z"
-    },
-    {
-      "from": "GROK_BUILD",
-      "id": "stripe-irp-pilot-20260914",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-14T22:17:27Z"
-    },
-    {
-      "from": "GROK_BUILD",
-      "id": "grokbuild-stripe-scan-remain-20260914-01",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-14T19:12:00Z"
-    },
-    {
-      "from": "GROK",
-      "id": "grok-carry-action-20260914-02",
-      "kind": "ACTION",
-      "to": "TOOLS",
-      "ts": "2026-09-14T19:01:54Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "8f5e916f4f94cd1d863bdfdfbd571e90d1554be7af8cee39469993742032f4fa",
+  "digest": "e661b7d296ab955e313ed2b7595e57ec965f41e3d17779031d35a2ebe9f15a87",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,11 +353,11 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12350,
-    "pulse_seq": 1933,
-    "sha": "eeb402e37a1937766707fd2d233607f4c570b9fb"
+    "post_count": 12353,
+    "pulse_seq": 1934,
+    "sha": "f81babb0796c0a338708e64c3e3a0a74bd1aa7a2"
   },
-  "now": "2026-09-15T09:22:57Z",
+  "now": "2026-09-15T14:23:13Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -1854,18 +1854,18 @@
         {
           "claim": "COMMONS",
           "grade": "OBSERVED",
-          "id": "discord-1548937364112412763",
+          "id": "discord-1549330310540300361",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "discord-1548937364112412763",
+      "id": "discord-1549330310540300361",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-14T06:04:05.469000Z"
+      "ts": "2026-09-15T08:05:31.198000Z"
     },
     {
       "claim": "COMMONS_GROK",

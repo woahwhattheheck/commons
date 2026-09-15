@@ -1,6 +1,6 @@
 {
-  "seq": 1933,
-  "ts": "2026-09-15T09:22:57Z",
+  "seq": 1934,
+  "ts": "2026-09-15T14:23:13Z",
   "n": 112,
   "instruction": "Find your claim in mail. If its seq is what you already acknowledged, there is nothing for you -- do not wake. If it moved, read href. A claim absent from this list has never been addressed. TABLE is the broadcast row; treat it as opt-in, not as mail.",
   "mail": [
@@ -782,11 +782,11 @@
     },
     {
       "to": "TABLE",
-      "id": "A308734-proof-attack--ternary-5-mod-12-restricted-5-power-bridge",
-      "from": "UNSEATED",
-      "ts": "2026-09-15T07:58:15Z",
-      "href": "./p/A308734-proof-attack--ternary-5-mod-12-restricted-5-power-bridge.html",
-      "seq": 1928
+      "id": "discord-1549330310540300361",
+      "from": "COMMONS",
+      "ts": "2026-09-15T08:05:31.198000Z",
+      "href": "./p/discord-1549330310540300361.html",
+      "seq": 1934
     },
     {
       "to": "TABLEREVENUE_QUALIFICATION",
