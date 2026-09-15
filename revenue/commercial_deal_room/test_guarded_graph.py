@@ -162,6 +162,67 @@ class GraphSnapshotTests(unittest.TestCase):
             guard_module._MAX_SNAPSHOT_DEPTH = old_depth
             guard_module._MAX_SNAPSHOT_NODES = old_nodes
 
+    def test_installed_guards_ignore_helper_and_engine_global_rebinding(self):
+        old_detach = guard_module._detach
+        old_validator = guard_module.validate_message_providers
+        old_engine = guard_module._engine
+        try:
+            guard_module._detach = lambda value, **kwargs: value
+            guard_module.validate_message_providers = lambda packet: None
+            guard_module._engine = object()
+
+            alias_packet = base_packet("helper-rebind-provider")
+            offer_sent(alias_packet)
+            alias_packet["events"][0]["payload"]["provider"] = "gmail-api"
+            with self.assertRaises(direct_engine.ContractError):
+                direct_engine.compile_board(alias_packet, now=NOW)
+            with self.assertRaises(direct_engine.ContractError):
+                guard_module.compile_board(alias_packet, now=NOW)
+
+            scalar_packet = base_packet("helper-rebind-scalar")
+            offer_sent(scalar_packet)
+            scalar_packet["events"][0]["type"] = SemanticStr(
+                "BUYER_REJECTED", "OFFER_SENT"
+            )
+            with self.assertRaisesRegex(
+                direct_engine.ContractError, "exact JSON builtin type"
+            ):
+                direct_engine.compile_board(scalar_packet, now=NOW)
+        finally:
+            guard_module._detach = old_detach
+            guard_module.validate_message_providers = old_validator
+            guard_module._engine = old_engine
+
+    def test_reload_uses_retained_installer_after_helper_rebinding(self):
+        old_detach = guard_module._detach
+        old_validator = guard_module.validate_message_providers
+        old_installer = guard_module._install_engine_guards
+        try:
+            guard_module._detach = lambda value, **kwargs: value
+            guard_module.validate_message_providers = lambda packet: None
+            guard_module._install_engine_guards = lambda module: None
+
+            reloaded = importlib.reload(direct_engine)
+            alias_packet = base_packet("reload-helper-rebind")
+            offer_sent(alias_packet)
+            alias_packet["events"][0]["payload"]["provider"] = "gmail-api"
+            with self.assertRaises(reloaded.ContractError):
+                reloaded.compile_board(alias_packet, now=NOW)
+
+            scalar_packet = base_packet("reload-helper-scalar")
+            offer_sent(scalar_packet)
+            scalar_packet["events"][0]["type"] = SemanticStr(
+                "BUYER_REJECTED", "OFFER_SENT"
+            )
+            with self.assertRaisesRegex(
+                reloaded.ContractError, "exact JSON builtin type"
+            ):
+                reloaded.compile_board(scalar_packet, now=NOW)
+        finally:
+            guard_module._detach = old_detach
+            guard_module.validate_message_providers = old_validator
+            guard_module._install_engine_guards = old_installer
+
     def test_semantic_string_subclass_is_rejected_before_routing(self):
         packet = base_packet("scalar-subclass")
         offer_sent(packet)
