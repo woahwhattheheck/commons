@@ -3,9 +3,10 @@
 
 The retained implementation is stored as non-importable source beside this
 module. This executable/import surface loads that implementation, replaces its
-observation loader with one authoritative full-envelope reducer, and then
-re-exports the public API. Every supported wrapper, direct import, and CLI path
-therefore validates and reduces the same parsed object exactly once.
+observation loader with one authoritative full-envelope reducer, installs the
+chronology-safe contact policy into the retained implementation globals, and
+then re-exports the public API. Every supported wrapper, direct import, and CLI
+path therefore validates and reduces through the same authoritative graph.
 """
 
 from __future__ import annotations
@@ -138,9 +139,122 @@ def load_observations(path: Path = OBSERVATIONS_PATH) -> dict[str, Any]:
     return value
 
 
-# Functions defined in the retained implementation resolve globals in that
-# module. Install the repaired loader there before any build/main path runs.
+_ORIGINAL_REDUCE_CONTACT_STATE = _impl._reduce_contact_state
+_MACHINE_CLASSIFICATIONS = frozenset({"DELIVERY_FAILURE", "AUTO_RESPONSE"})
+
+
+def _latest_human_bucket(events: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    semantic = [
+        event
+        for event in events
+        if event.get("classification") in HUMAN_STATE_CLASSIFICATIONS
+    ]
+    if not semantic:
+        return []
+    stamped = [
+        (parse_time(str(event["received_at"])), event)
+        for event in semantic
+    ]
+    latest_time = max(stamp for stamp, _ in stamped)
+    return [event for stamp, event in stamped if stamp == latest_time]
+
+
+def _reduce_contact_state(events: list[dict[str, Any]]) -> dict[str, Any]:
+    """Preserve explicit DNC authority in an equal-time semantic conflict."""
+    # Preserve every validation/error contract owned by the retained reducer.
+    inherited_state = _ORIGINAL_REDUCE_CONTACT_STATE(events)
+    latest_semantic = _latest_human_bucket(events)
+    opt_outs = [
+        event
+        for event in latest_semantic
+        if event.get("classification") == "OPT_OUT"
+    ]
+    if opt_outs:
+        effective_event = min(
+            opt_outs,
+            key=lambda item: str(item.get("event_ref") or ""),
+        )
+        return {
+            "classification": "OPT_OUT",
+            "lane": "CLOSED",
+            "next_action": "DNC/CLOSE",
+            "handoff": None,
+            "effective_event": effective_event,
+        }
+    return inherited_state
+
+
+def _positive_context(events: list[dict[str, Any]]) -> str:
+    machine_classes = sorted(
+        {
+            str(event.get("classification"))
+            for event in events
+            if event.get("classification") in _MACHINE_CLASSIFICATIONS
+        }
+    )
+    if not machine_classes:
+        return (
+            "effective human inbound classified POSITIVE_SCOPE; "
+            "no machine delivery-failure or auto-response observations were recorded"
+        )
+    recorded = ", ".join(machine_classes)
+    return (
+        "effective human inbound classified POSITIVE_SCOPE; "
+        f"recorded machine observations ({recorded}) do not override human semantics"
+    )
+
+
+def surface_positives(
+    contacts: list[dict[str, Any]],
+    inbound: list[dict[str, Any]],
+) -> list[dict[str, Any]]:
+    positives: list[dict[str, Any]] = []
+    inbound_by_key: dict[str, list[dict[str, Any]]] = {}
+    for event in inbound:
+        inbound_by_key.setdefault(event["prospect_key"], []).append(event)
+    for contact in contacts:
+        if contact["lane"] != "HUMAN_POSITIVE":
+            continue
+        events = inbound_by_key.get(contact["prospect_key"], [])
+        state = _reduce_contact_state(events)
+        effective_event = state["effective_event"]
+        if state["lane"] != "HUMAN_POSITIVE" or effective_event is None:
+            raise ReplyRevenueError(
+                f"positive contact {contact['prospect_key']} lacks an effective POSITIVE_SCOPE event"
+            )
+        if effective_event.get("classification") != "POSITIVE_SCOPE":
+            raise ReplyRevenueError(
+                f"positive contact {contact['prospect_key']} resolved to non-positive evidence"
+            )
+        positives.append(
+            {
+                "prospect_key": contact["prospect_key"],
+                "organization": contact["organization"],
+                "event_ref": effective_event["event_ref"],
+                "received_at": effective_event["received_at"],
+                "next_action": "NEEDS_ACCEPTANCE",
+                "handoff": ACCEPTANCE_TOOL,
+                "context": _positive_context(events),
+                "buyer_interest": True,
+            }
+        )
+    positives.sort(key=lambda item: item["prospect_key"])
+    return positives
+
+
+# Functions copied from the retained implementation keep that module's globals.
+# Install every repaired authority into the retained graph before any production
+# build/main path can run, then keep this direct-import surface identical.
 _impl.load_observations = load_observations
+_impl._reduce_contact_state = _reduce_contact_state
+_impl.surface_positives = surface_positives
+
+if _impl.load_observations is not load_observations:
+    raise ImportError("reply-to-revenue observation authority was not installed")
+if _impl._reduce_contact_state is not _reduce_contact_state:
+    raise ImportError("reply-to-revenue reducer authority was not installed")
+if _impl.surface_positives is not surface_positives:
+    raise ImportError("reply-to-revenue positive-surface authority was not installed")
 
 
 if __name__ == "__main__":
