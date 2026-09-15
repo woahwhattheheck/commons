@@ -37,7 +37,10 @@ def load_state(path: Path) -> dict[str, Any]:
         payload = json.loads(path.read_text(encoding="utf-8"))
     except (OSError, json.JSONDecodeError) as exc:
         raise InvalidState(f"cannot load readiness state: {exc}") from exc
-    if not isinstance(payload, dict) or payload.get("schema_version") != 1:
+    if not isinstance(payload, dict):
+        raise InvalidState("readiness state must be an object")
+    schema = payload.get("schema_version")
+    if type(schema) is not int or schema != 1:
         raise InvalidState("schema_version must be integer 1")
     if type(payload.get("track_prize_pool_usd")) is not int or payload["track_prize_pool_usd"] != 10000:
         raise InvalidState("track_prize_pool_usd must be integer 10000")
@@ -71,10 +74,21 @@ def load_state(path: Path) -> dict[str, Any]:
         "verification_deadline_rechecked_after_top15",
     ):
         _require_bool(gates, key, "gates")
-    for key in ("team_name_match_verified",):
-        _require_bool(team, key, "team")
+    match_verified = _require_bool(team, "team_name_match_verified", "team")
     for key in ("dataset_access_claimed", "submission_ready", "submission_claimed", "prize_or_award_claimed"):
         _require_bool(authority, key, "authority")
+
+    if match_verified:
+        official_name = team.get("official_site_team_name")
+        kaggle_name = team.get("kaggle_team_name")
+        if not isinstance(official_name, str) or not official_name.strip():
+            raise InvalidState("team-name match claim requires official_site_team_name")
+        if not isinstance(kaggle_name, str) or not kaggle_name.strip():
+            raise InvalidState("team-name match claim requires kaggle_team_name")
+        if official_name != official_name.strip() or kaggle_name != kaggle_name.strip():
+            raise InvalidState("team names must be trimmed exact values")
+        if official_name != kaggle_name:
+            raise InvalidState("team_name_match_verified contradicts actual team names")
 
     if authority["prize_or_award_claimed"]:
         raise InvalidState("this packet is not permitted to claim a prize or award")
