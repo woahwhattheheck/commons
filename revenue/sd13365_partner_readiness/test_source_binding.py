@@ -43,6 +43,28 @@ class ReviewedSourceBindingTests(unittest.TestCase):
         with self.assertRaisesRegex(matrix.MatrixError, "classification differs from reviewed source"):
             matrix.build_receipt(value)
 
+    def test_same_status_semantic_substitution_cannot_retain_reviewed_authority(self) -> None:
+        value = self.fresh()
+        target = self.requirement(value, "fips-140-3")
+        self.assertEqual(target["status"], "UNKNOWN")
+        target["county_requirement"] = (
+            "Caller-substituted County requirement text that remains structurally valid "
+            "but is not part of the reviewed source generation."
+        )
+        target["public_evidence"][0]["claim"] = (
+            "Caller-substituted adjacent evidence claim that does not alter status or "
+            "relationship but must not inherit reviewed-source authority."
+        )
+        target["rationale"] = (
+            "Caller-substituted rationale that preserves UNKNOWN while changing the "
+            "semantic assessment and therefore must fail closed."
+        )
+        target["closure_artifact"] = (
+            "Caller-substituted closure artifact request that was never reviewed."
+        )
+        with self.assertRaisesRegex(matrix.MatrixError, "matrix differs from reviewed source generation"):
+            matrix.build_receipt(value)
+
     def test_receipt_names_the_reviewed_source_generation(self) -> None:
         receipt = matrix.build_receipt(self.fresh())
         self.assertEqual(
