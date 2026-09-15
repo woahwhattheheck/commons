@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import copy
 import datetime as _dt
-from typing import Any, Dict, List, Mapping, Optional, Sequence
+from typing import Any, Dict, List, Mapping, Sequence
 
 from .common import (
     BUNDLE_SCHEMA,
@@ -26,12 +26,9 @@ from .common import (
     utc_now,
 )
 from .consortium_validation import _validate_applicant, _validate_consortium
-from .evidence_validation import (
-    _validate_commercial,
-    _validate_concept_and_evidence,
-    _validate_partner_shortlist,
-)
+from .evidence_validation import _validate_commercial, _validate_concept_and_evidence, _validate_partner_shortlist
 from .source_validation import _validate_sources
+
 
 def _status_from_reasons(groups: Mapping[str, Sequence[Dict[str, Any]]]) -> str:
     if groups["source"]:
@@ -64,14 +61,7 @@ def _semantic_projection(packet: Mapping[str, Any]) -> Dict[str, Any]:
     }
 
 
-def compile_at(input_value: Any, evaluated_at: _dt.datetime, mode: str) -> Dict[str, Any]:
-    """Compile an exact readiness bundle at a trusted evaluation time.
-
-    ``mode`` must be ``CURRENT`` or ``HISTORICAL``.  Callers should use
-    :func:`compile_current` for current authority so process time, not caller
-    time, is used.
-    """
-
+def _compile_at(input_value: Any, evaluated_at: _dt.datetime, mode: str) -> Dict[str, Any]:
     if mode not in {"CURRENT", "HISTORICAL"}:
         raise ReadinessError("mode must be CURRENT or HISTORICAL")
     if evaluated_at.tzinfo is None:
@@ -82,13 +72,16 @@ def compile_at(input_value: Any, evaluated_at: _dt.datetime, mode: str) -> Dict[
     if root.get("schema") != INPUT_SCHEMA:
         raise ReadinessError("unsupported input schema")
 
+    current_mode = mode == "CURRENT"
     sources, source_reasons, controlling_deadline, planning_deadline, source_generation = _validate_sources(
-        root.get("official_sources"), evaluated_at, mode == "CURRENT"
+        root.get("official_sources"), evaluated_at, current_mode
     )
-    consortium, consortium_reasons, consortium_by_id = _validate_consortium(root.get("consortium"))
+    consortium, consortium_reasons, consortium_by_id = _validate_consortium(
+        root.get("consortium"), evaluated_at=evaluated_at, current_mode=current_mode
+    )
     applicant, applicant_reasons = _validate_applicant(root.get("applicant"), consortium_by_id)
     concept_and_evidence, technical_reasons = _validate_concept_and_evidence(
-        root.get("concept"), root.get("technical_evidence"), evaluated_at, mode == "CURRENT"
+        root.get("concept"), root.get("technical_evidence"), evaluated_at, current_mode
     )
     partner_shortlist, partner_reasons = _validate_partner_shortlist(root.get("partner_shortlist"))
     commercial, commercial_reasons = _validate_commercial(root.get("commercial"))
@@ -128,11 +121,7 @@ def compile_at(input_value: Any, evaluated_at: _dt.datetime, mode: str) -> Dict[
         "concept_and_evidence": concept_and_evidence,
         "partner_shortlist": partner_shortlist,
         "commercial": commercial,
-        "decision": {
-            "status": status,
-            "reason_count": len(all_reasons),
-            "reasons": all_reasons,
-        },
+        "decision": {"status": status, "reason_count": len(all_reasons), "reasons": all_reasons},
         "authority": {
             "integrity_receipt_is_signature": False,
             "external_contact_authorized": False,
@@ -148,33 +137,33 @@ def compile_at(input_value: Any, evaluated_at: _dt.datetime, mode: str) -> Dict[
         },
     }
     packet["semantic_sha256"] = sha256_hex(_semantic_projection(packet))
-    receipt = {
-        "algorithm": "SHA-256-INTEGRITY-ONLY",
-        "packet_sha256": sha256_hex(packet),
-        "signature": False,
-    }
+    receipt = {"algorithm": "SHA-256-INTEGRITY-ONLY", "packet_sha256": sha256_hex(packet), "signature": False}
     return {"schema": BUNDLE_SCHEMA, "packet": packet, "receipt": receipt}
 
 
+def compile_at(input_value: Any, evaluated_at: _dt.datetime, mode: str) -> Dict[str, Any]:
+    """Compile an explicit historical/mock generation.
+
+    CURRENT authority deliberately rejects caller-owned time.  Use
+    :func:`compile_current`, which reads process-owned UTC internally.
+    """
+
+    if mode != "HISTORICAL":
+        raise ReadinessError("CURRENT compilation requires compile_current() with process-owned UTC")
+    return _compile_at(input_value, evaluated_at, "HISTORICAL")
+
+
 def compile_historical(input_value: Any, evaluated_at: Any) -> Dict[str, Any]:
-    return compile_at(input_value, parse_time(evaluated_at, "evaluated_at") if not isinstance(evaluated_at, _dt.datetime) else evaluated_at, "HISTORICAL")
+    when = parse_time(evaluated_at, "evaluated_at") if not isinstance(evaluated_at, _dt.datetime) else evaluated_at
+    return _compile_at(input_value, when, "HISTORICAL")
 
 
 def compile_current(input_value: Any) -> Dict[str, Any]:
-    return compile_at(input_value, utc_now(), "CURRENT")
+    return _compile_at(input_value, utc_now(), "CURRENT")
 
 
-def verify_bundle(
-    input_value: Any,
-    bundle_value: Any,
-    trusted_now: Optional[_dt.datetime] = None,
-) -> Dict[str, Any]:
-    """Verify bundle integrity and, for CURRENT packets, live semantics.
-
-    Historical packets are verified only against their retained evaluation time.
-    Current packets must be no older than five minutes and must have the same
-    semantic projection when recompiled at process-owned verifier time.
-    """
+def verify_bundle(input_value: Any, bundle_value: Any) -> Dict[str, Any]:
+    """Verify integrity and re-evaluate CURRENT semantics at process-owned UTC."""
 
     bundle = _expect_dict(copy.deepcopy(bundle_value), "bundle")
     if bundle.get("schema") != BUNDLE_SCHEMA:
@@ -190,8 +179,10 @@ def verify_bundle(
         raise ReadinessError("packet integrity receipt mismatch")
 
     mode = _expect_str(packet.get("mode"), "bundle.packet.mode")
+    if mode not in {"CURRENT", "HISTORICAL"}:
+        raise ReadinessError("unsupported packet mode")
     generated_at = parse_time(packet.get("generated_at"), "bundle.packet.generated_at")
-    exact = compile_at(input_value, generated_at, mode)
+    exact = _compile_at(input_value, generated_at, mode)
     if canonical_bytes(exact) != canonical_bytes(bundle):
         raise ReadinessError("bundle does not exactly replay from input at retained generation")
 
@@ -203,12 +194,12 @@ def verify_bundle(
         "packet_sha256": expected_packet_hash,
     }
     if mode == "CURRENT":
-        now = utc_now() if trusted_now is None else trusted_now.astimezone(_dt.timezone.utc).replace(microsecond=0)
+        now = utc_now()
         if generated_at > now + _dt.timedelta(seconds=FUTURE_SKEW_SECONDS):
             raise ReadinessError("current packet was generated in the future")
         if now - generated_at > _dt.timedelta(seconds=CURRENT_PACKET_MAX_AGE_SECONDS):
             raise ReadinessError("current packet exceeds verifier freshness window")
-        live = compile_at(input_value, now, "CURRENT")
+        live = _compile_at(input_value, now, "CURRENT")
         if live["packet"]["semantic_sha256"] != packet.get("semantic_sha256"):
             raise ReadinessError("current semantics drifted since packet generation")
         result["current_semantics"] = True
@@ -218,8 +209,6 @@ def verify_bundle(
 
 
 def render_owner_markdown(bundle_value: Any) -> str:
-    """Render a deliberately non-authoritative owner-review summary."""
-
     bundle = _expect_dict(bundle_value, "bundle")
     packet = _expect_dict(bundle.get("packet"), "bundle.packet")
     decision = _expect_dict(packet.get("decision"), "bundle.packet.decision")
@@ -245,11 +234,5 @@ def render_owner_markdown(bundle_value: Any) -> str:
             code = str(reason.get("code", "UNKNOWN")).replace("`", "&#96;")
             detail = str(reason.get("detail", "")).replace("\r", " ").replace("\n", " ").replace("`", "&#96;")
             lines.append("- `%s`: %s" % (code, detail))
-    lines.extend(
-        [
-            "",
-            "> Integrity receipts are not signatures. This packet cannot contact a partner, commit funding, quote a price, or submit a proposal.",
-            "",
-        ]
-    )
+    lines.extend(["", "> Integrity receipts are not signatures. This packet cannot contact a partner, commit funding, quote a price, or submit a proposal.", ""])
     return "\n".join(lines)
