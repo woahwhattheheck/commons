@@ -9,6 +9,8 @@ from .codec import now_utc
 from .constants import DB_SCHEMA
 from .errors import PacemakerError, StoreInvariantError
 
+_SQLITE_CONNECT = sqlite3.connect
+
 
 def _owned(info) -> None:
     if hasattr(os, "geteuid") and info.st_uid != os.geteuid():
@@ -21,7 +23,20 @@ def _safe_file(info) -> None:
     _owned(info)
 
 
-def _prepare_db_path(path: Path) -> tuple[Path, tuple[int, int]]:
+def _descriptor_sqlite_uri(fd: int, identity: tuple[int, int]) -> str:
+    """Return a SQLite URI that reopens the already-acquired file generation."""
+    for root in (Path("/proc/self/fd"), Path("/dev/fd")):
+        candidate = root / str(fd)
+        try:
+            info = os.stat(candidate)
+        except OSError:
+            continue
+        if (info.st_dev, info.st_ino) == identity:
+            return candidate.as_uri() + "?mode=rw"
+    raise PacemakerError("descriptor-backed SQLite open is unavailable")
+
+
+def _prepare_db_path(path: Path) -> tuple[Path, tuple[int, int], int]:
     path = Path(path)
     if str(path) == ":memory:":
         raise PacemakerError("persistent database path required")
@@ -93,15 +108,17 @@ def _prepare_db_path(path: Path) -> tuple[Path, tuple[int, int]]:
             raise PacemakerError("database permission hardening failed") from exc
         after = os.fstat(fd)
         _safe_file(after)
+        identity = (after.st_dev, after.st_ino)
         try:
             visible_after = os.stat(name, dir_fd=parent_fd, follow_symlinks=False)
         except OSError as exc:
             raise PacemakerError("database path changed during acquisition") from exc
-        if (visible_after.st_dev, visible_after.st_ino) != (
-            after.st_dev, after.st_ino
-        ):
+        if (visible_after.st_dev, visible_after.st_ino) != identity:
             raise PacemakerError("database path changed during acquisition")
-        return canonical_parent / name, (after.st_dev, after.st_ino)
+
+        kept_fd = fd
+        fd = None
+        return canonical_parent / name, identity, kept_fd
     finally:
         if fd is not None:
             try:
@@ -117,24 +134,51 @@ def _prepare_db_path(path: Path) -> tuple[Path, tuple[int, int]]:
 class StoreBase:
     def __init__(self, path: Path, *, clock=now_utc) -> None:
         self.clock = clock
-        self.path, self._db_identity = _prepare_db_path(Path(path))
-        self._db_uri = self.path.as_uri() + "?mode=rw"
-        self._init()
-        self._assert_db_identity()
+        self._db_fd = None
+        try:
+            self.path, self._db_identity, self._db_fd = _prepare_db_path(Path(path))
+            self._db_uri = _descriptor_sqlite_uri(
+                self._db_fd, self._db_identity
+            )
+            self._init()
+            self._assert_db_identity()
+        except Exception:
+            self.close()
+            raise
+
+    def close(self) -> None:
+        fd = getattr(self, "_db_fd", None)
+        if fd is None:
+            return
+        self._db_fd = None
+        try:
+            os.close(fd)
+        except OSError:
+            pass
+
+    def __del__(self):
+        self.close()
 
     def _assert_db_identity(self) -> None:
+        fd = getattr(self, "_db_fd", None)
+        if fd is None:
+            raise StoreInvariantError("database generation anchor is closed")
         try:
+            anchored = os.fstat(fd)
+            _safe_file(anchored)
             info = os.lstat(self.path)
             _safe_file(info)
         except (OSError, PacemakerError) as exc:
             raise StoreInvariantError("database path generation changed") from exc
+        if (anchored.st_dev, anchored.st_ino) != self._db_identity:
+            raise StoreInvariantError("database generation anchor changed")
         if (info.st_dev, info.st_ino) != self._db_identity:
             raise StoreInvariantError("database path generation changed")
 
     def _connect(self) -> sqlite3.Connection:
         self._assert_db_identity()
         try:
-            db = sqlite3.connect(
+            db = _SQLITE_CONNECT(
                 self._db_uri, timeout=30, isolation_level=None, uri=True
             )
         except sqlite3.Error:
