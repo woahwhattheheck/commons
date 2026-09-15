@@ -28,9 +28,9 @@ The model separates immutable content identity from mutable case/exhibit metadat
 
 ### Chain of custody and accepted-evidence locking
 
-All material actions append canonical events chained by cryptographic digest. Acceptance/finalization changes the object's state so original bytes cannot be replaced; later redactions, transcodes or authorized copies are separately identified derivatives linked to the original.
+All material actions append canonical hash-linked events. The hash chain detects non-coherent mutation but is not, by itself, proof that the observed chain is the retained original chain: a writer with authority over the whole mutable object could construct another coherent history and recompute its hashes. The reference therefore requires an independently retained custody witness binding the exact event count, chain head and current state. Verification accepts a retained history only when both semantic/hash replay and that external witness agree.
 
-The supplied reference implementation demonstrates deterministic content identity, event chaining, view-event logging, acceptance lock and verification failure on event mutation/reordering. It is an assurance artifact, not production software.
+Acceptance/finalization changes the object's state so original bytes cannot be replaced; later redactions, transcodes or authorized copies are separately identified derivatives linked to the original. The supplied reference implementation demonstrates deterministic content identity, event chaining, view-event logging, acceptance lock, external-witness checking and verification failure on coherent history reseal. It is an assurance artifact, not production software or an independently trusted storage service.
 
 ### Search, inventory and reporting
 
@@ -38,7 +38,9 @@ A production index should expose case/hearing metadata, exhibit/evidence status,
 
 ### Retention, appeal and destruction
 
-Retention policy is externally authorized configuration—not embedded vendor guesswork. Holds block destruction. Eligible items enter a review state; approval records are bound to the destruction action, with notice/copy opportunity before deletion when policy requires it. The permanent-delete event survives as a receipt with identity, authority and timing while the content is irrecoverably removed according to the approved storage design.
+Retention policy is externally authorized configuration—not embedded vendor guesswork. Holds and releases, retention eligibility, completed notice/copy opportunity, approvals and destruction authorization are modeled as generated authority records in separately rooted snapshots. Lifecycle events retain the exact snapshot root and record generation/root they consumed. Verification must reacquire the archived snapshot and independently trusted root; merely constructing a locally consistent snapshot does not grant authority.
+
+Holds block destruction. Eligible items enter a review state. Final destruction requires current eligible retention evidence, completed notice evidence, at least two current approvals from distinct issuers, explicit destruction authority and no active hold. The permanent-delete event survives as a receipt with content identity and exact authority-record bindings while the content is irrecoverably removed according to the approved storage design.
 
 Appeal/records-copy exports use deterministic manifests tying exported representations back to immutable original identity and a custody-event digest.
 
@@ -54,7 +56,7 @@ Maintain an isolated test/training environment with separate identities/endpoint
 
 The target production system should encrypt in transit and at rest, keep court-record storage in the United States, protect against unauthorized data use/mining, route third-party/law-enforcement access through authorized custodian processes, scan untrusted uploads, and have tested backup/recovery/DR/continuity controls.
 
-This carrier **does not claim** a U.S. hosting certification, FedRAMP/CJIS certification, production malware service, BCP/DR history or existing County/court deployment. Those are partner/provider evidence gates in any future procurement.
+This carrier **does not claim** a U.S. hosting certification, FedRAMP/CJIS certification, production malware service, BCP/DR history, existing County/court deployment, or a live County-controlled authority-root service. Those are partner/provider evidence gates in any future procurement.
 
 ## 4. Implementation approach for a future procurement
 
@@ -72,8 +74,9 @@ A credible implementation would phase delivery rather than migrate evidence in o
 - Controlling OpenGov packet/addenda must be re-read before any actual response upload.
 - The public RFI does not identify the County's CMS/court-platform products or API contracts.
 - Exact volume, concurrency, maximum file size, retention schedules, RTO/RPO, accessibility target, identity provider, security policy baseline and desired support SLA require buyer/packet authority in a future procurement or permitted clarification process.
+- The reference model assumes custody witnesses and authority-snapshot roots are retained by systems outside the mutable evidence object; it does not create that institutional trust merely by hashing local data.
 - TJLabs would need a production platform/hosting partner for a turnkey system unless a future solicitation explicitly procures only the bounded architecture/integration/assurance work described here.
 
 ## 6. Value to future procurement
 
-The main recommendation is to make custody and lifecycle requirements **acceptance-testable**. Require bidders to prove that: original bytes retain stable identity; every view/action is auditable; accepted originals cannot be silently replaced; retries cannot duplicate/misattach evidence; holds stop destruction; destruction authority is reconstructable; exports are verifiable; and restore/DR preserves both objects and custody history. Those tests reduce dependence on screenshots and vendor assertions and can travel across whichever commercial platform Pinellas ultimately selects.
+The main recommendation is to make custody and lifecycle requirements **acceptance-testable**. Require bidders to prove that: original bytes retain stable identity; every view/action is auditable; accepted originals cannot be silently replaced; the retained event history is independently anchored rather than only self-hashed; retries cannot duplicate/misattach evidence; holds stop destruction; hold/release/retention/notice/approval/destruction authority is reconstructable from independently trusted generations; exports are verifiable; and restore/DR preserves both objects and custody history. Those tests reduce dependence on screenshots and vendor assertions and can travel across whichever commercial platform Pinellas ultimately selects.
