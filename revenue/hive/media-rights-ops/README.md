@@ -32,9 +32,11 @@ python rights_ops.py serve desk.sqlite3 --host 127.0.0.1 --port 8765
 
 To record a placement, add a stable `request_id` to the intent and use CLI `place --at ...`. The same request and content replay without duplication; the same request ID with changed content fails closed. CLI `revoke <grant_id> --at ...` is immutable: a revocation can be replayed exactly but not silently rewritten. A recorded placement affected by revocation enters the retraction-review queue; the desk does not remove it from any provider.
 
+Export publication is create-exclusive and retains the created directory and every created leaf by filesystem identity. Writes are descriptor-relative with no-follow/exclusive creation; a pathname swap, renamed directory, symlink successor, or replaced leaf fails closed rather than redirecting an `EXPORTED` result. Rollback identity-checks each transaction-created leaf and removes the visible output directory only when that directory still has the retained identity, so foreign successors are never deleted by name. Secure publication therefore requires a platform with descriptor-relative `open`/`mkdir`/`stat`/`unlink`/`rmdir`, `O_DIRECTORY`, and `O_NOFOLLOW`; unsupported platforms fail closed instead of silently using a weaker export path.
+
 ## Acceptance surface
 
-The hostile suite covers exact-asset authority; parent-grant/child-derivative non-inheritance; HTTP mutation fail-closure with unchanged durable state; allowed placement; wrong channel and territory; future/expired/revoked grants; unlicensed/unknown assets; request replay mutation; HOLD-without-write; immutable revocation; renewal/expiry queues; concurrent duplicate placement -> exactly one durable row; restart behavior; deterministic exports; create-exclusive publication; duplicate-key, floating-point, non-finite, cyclic/missing-lineage, duplicate authority rows, and naive-time failures.
+The hostile suite covers exact-asset authority; parent-grant/child-derivative non-inheritance; HTTP mutation fail-closure with unchanged durable state; allowed placement; wrong channel and territory; future/expired/revoked grants; unlicensed/unknown assets; request replay mutation; HOLD-without-write; immutable revocation; renewal/expiry queues; concurrent duplicate placement -> exactly one durable row; restart behavior; deterministic exports; create-exclusive publication; export-directory pathname replacement/redirection; failure rollback preserving a foreign successor; duplicate-key, floating-point, non-finite, cyclic/missing-lineage, duplicate authority rows, and naive-time failures.
 
 Run both ordinary and optimized modes:
 
@@ -44,4 +46,4 @@ python -O -m unittest -v test_rights_ops.py
 python -m py_compile rights_model.py rights_store.py rights_export.py rights_http.py rights_ops.py test_rights_ops.py
 ```
 
-Input JSON is bounded to 8 MiB, UTF-8 only, duplicate-key rejecting, floating-point/non-finite rejecting, exact-schema validated, and timestamps must be offset-aware. Export directories are create-exclusive and files are mode `0600`.
+Input JSON is bounded to 8 MiB, UTF-8 only, duplicate-key rejecting, floating-point/non-finite rejecting, exact-schema validated, and timestamps must be offset-aware. Export directories are mode `0700`; export files are mode `0600` subject to the process umask.
