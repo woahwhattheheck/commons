@@ -41,46 +41,127 @@ _MESSAGE_EVENT_TYPES = frozenset(
 _ENGINE_NAME = _engine.__name__
 _GUARD_MARKER = "__commercial_deal_room_guarded__"
 _FINDER_MARKER = "__commercial_deal_room_reload_finder__"
+_MAX_SNAPSHOT_DEPTH = 64
+_MAX_SNAPSHOT_NODES = 250_000
 
 
-def _detach(value: Any, *, path: str = "packet") -> Any:
-    """Capture caller-owned containers once into plain dict/list values.
+def _detach(
+    value: Any,
+    *,
+    path: str = "packet",
+    _memo: Optional[dict[int, tuple[Any, Any]]] = None,
+    _active: Optional[set[int]] = None,
+    _nodes: Optional[list[int]] = None,
+    _depth: int = 0,
+) -> Any:
+    """Capture a bounded caller-owned object graph exactly once by identity.
 
-    The compiler intentionally accepts Mapping/Sequence inputs. A preflight
-    validator must therefore not authorize one observation and let the core
-    compiler consume a later observation from a stateful or concurrently-mutated
-    object. This function establishes the retained snapshot consumed by provider
-    validation and v1 normalization. verify_board captures once for both its
-    historical and current evaluations.
+    Mapping/Sequence inputs may be stateful or concurrently mutated. Shared
+    object identities therefore reuse one completed snapshot instead of being
+    traversed again. The memo retains a strong identity witness alongside each
+    snapshot for the lifetime of the capture, so a later short-lived container
+    can never inherit a stale snapshot through recycled ``id()`` state.
+    Back-edges fail closed as cycles, and every container edge consumes a global
+    budget before the referenced child is read. This prevents alias splits,
+    recursion blowups, and unbounded tuple materialization before provider
+    validation or v1 normalization.
     """
 
-    if isinstance(value, Mapping):
-        try:
-            keys = tuple(value.keys())
-        except Exception as exc:
-            raise ContractError(f"{path} could not be snapshotted") from exc
-        out: dict[Any, Any] = {}
-        for key in keys:
+    if _depth > _MAX_SNAPSHOT_DEPTH:
+        raise ContractError(f"{path} exceeds snapshot depth limit")
+    if _memo is None:
+        _memo = {}
+    if _active is None:
+        _active = set()
+    if _nodes is None:
+        _nodes = [0]
+
+    is_mapping = isinstance(value, Mapping)
+    is_sequence = isinstance(value, Sequence) and not isinstance(
+        value, (str, bytes, bytearray)
+    )
+    if not (is_mapping or is_sequence):
+        return value
+
+    identity = id(value)
+    if identity in _active:
+        raise ContractError(f"{path} contains a cyclic input graph")
+    memo_entry = _memo.get(identity)
+    if memo_entry is not None:
+        witness, snapshot = memo_entry
+        if witness is value:
+            return snapshot
+        # A strong witness makes this unreachable for ordinary Python objects,
+        # but fail closed rather than alias distinct objects if an exotic runtime
+        # violates live-object identity uniqueness.
+        raise ContractError(f"{path} contains a snapshot identity collision")
+
+    _nodes[0] += 1
+    if _nodes[0] > _MAX_SNAPSHOT_NODES:
+        raise ContractError("input graph exceeds snapshot node limit")
+    _active.add(identity)
+
+    try:
+        if is_mapping:
+            out: dict[Any, Any] = {}
+            _memo[identity] = (value, out)
             try:
-                child = value[key]
+                for key in value:
+                    _nodes[0] += 1
+                    if _nodes[0] > _MAX_SNAPSHOT_NODES:
+                        raise ContractError("input graph exceeds snapshot node limit")
+                    try:
+                        child = value[key]
+                    except Exception as exc:
+                        raise ContractError(
+                            f"{path} changed while being snapshotted"
+                        ) from exc
+                    try:
+                        out[key] = _detach(
+                            child,
+                            path=f"{path}[{key!r}]",
+                            _memo=_memo,
+                            _active=_active,
+                            _nodes=_nodes,
+                            _depth=_depth + 1,
+                        )
+                    except TypeError as exc:
+                        raise ContractError(
+                            f"{path} contains an invalid mapping key"
+                        ) from exc
+            except ContractError:
+                raise
             except Exception as exc:
-                raise ContractError(f"{path} changed while being snapshotted") from exc
-            try:
-                out[key] = _detach(child, path=f"{path}[{key!r}]")
-            except (TypeError, ValueError) as exc:
-                if isinstance(exc, ContractError):
-                    raise
-                raise ContractError(f"{path} contains an invalid mapping key") from exc
-        return out
+                raise ContractError(f"{path} could not be snapshotted") from exc
+            return out
 
-    if isinstance(value, Sequence) and not isinstance(value, (str, bytes, bytearray)):
+        out_list: list[Any] = []
+        _memo[identity] = (value, out_list)
         try:
-            items = tuple(value)
+            for index, child in enumerate(value):
+                _nodes[0] += 1
+                if _nodes[0] > _MAX_SNAPSHOT_NODES:
+                    raise ContractError("input graph exceeds snapshot node limit")
+                out_list.append(
+                    _detach(
+                        child,
+                        path=f"{path}[{index}]",
+                        _memo=_memo,
+                        _active=_active,
+                        _nodes=_nodes,
+                        _depth=_depth + 1,
+                    )
+                )
+        except ContractError:
+            raise
         except Exception as exc:
             raise ContractError(f"{path} could not be snapshotted") from exc
-        return [_detach(item, path=f"{path}[{index}]") for index, item in enumerate(items)]
-
-    return value
+        return out_list
+    except Exception:
+        _memo.pop(identity, None)
+        raise
+    finally:
+        _active.discard(identity)
 
 
 def validate_message_providers(packet: Any) -> None:
@@ -160,9 +241,27 @@ def _install_engine_guards(module: ModuleType) -> None:
     @wraps(core_verify)
     def guarded_verify_board(packet: Any, board: Any, *, now: Optional[datetime] = None):
         # Core verification compiles historical and current views separately.
-        # Give both evaluations the exact same detached packet generation.
-        snapshot = _detach(packet)
-        return core_verify(snapshot, board, now=now)
+        # Capture packet + board into one bounded identity domain before core
+        # touches either caller-owned graph, so historical verification observes
+        # one stable board generation and cross-input aliases share one snapshot.
+        memo: dict[int, tuple[Any, Any]] = {}
+        active: set[int] = set()
+        nodes = [0]
+        packet_snapshot = _detach(
+            packet,
+            path="packet",
+            _memo=memo,
+            _active=active,
+            _nodes=nodes,
+        )
+        board_snapshot = _detach(
+            board,
+            path="board",
+            _memo=memo,
+            _active=active,
+            _nodes=nodes,
+        )
+        return core_verify(packet_snapshot, board_snapshot, now=now)
 
     setattr(guarded_verify_board, _GUARD_MARKER, True)
 
