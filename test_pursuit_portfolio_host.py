@@ -8,10 +8,12 @@ import unittest
 from pathlib import Path
 from unittest import mock
 
+import revenue.pursuit_portfolio.current as current
 from revenue.pursuit_portfolio import host
 from revenue.pursuit_portfolio.core import PortfolioError
-from revenue.pursuit_portfolio.current import AuthorityKey, KEY_SCHEMA, _canonical, _now
+from revenue.pursuit_portfolio.current import AuthorityKey, KEY_SCHEMA, _canonical
 from revenue.pursuit_portfolio.floor import FLOOR_SCHEMA
+from test_pursuit_portfolio import NOW
 from test_pursuit_portfolio_current import KEY, portfolio_source, signed_authority_for
 
 
@@ -34,7 +36,7 @@ def write_floor(
     *,
     key: AuthorityKey = KEY,
     generation: int = 1,
-    updated_at: str,
+    updated_at: str = NOW,
 ) -> None:
     unsigned = {
         "authority_sha256": hashlib.sha256(authority_raw).hexdigest(),
@@ -63,18 +65,24 @@ class HostCurrentTests(unittest.TestCase):
         write_key(key_path)
         return tmp, host_dir, key_path, floor_path
 
+    def fixed_clock(self):
+        return (
+            mock.patch.object(current, "_now", return_value=NOW),
+            mock.patch.object(host, "_now", return_value=NOW),
+        )
+
     def test_compile_and_verify_use_fixed_key_floor_and_host_seal(self):
         tmp, _host_dir, key_path, floor_path = self.host_state()
         self.addCleanup(tmp.cleanup)
-        now = _now()
         data = portfolio_source()
-        signed = signed_authority_for(data, captured=now, issued_at=now)
+        signed = signed_authority_for(data)
         signed_raw = _canonical(signed)
-        write_floor(floor_path, signed_raw, updated_at=now)
+        write_floor(floor_path, signed_raw)
+        current_clock, host_clock = self.fixed_clock()
 
-        with mock.patch.object(host, "HOST_KEY_PATH", key_path), mock.patch.object(
-            host, "HOST_FLOOR_PATH", floor_path
-        ):
+        with current_clock, host_clock, mock.patch.object(
+            host, "HOST_KEY_PATH", key_path
+        ), mock.patch.object(host, "HOST_FLOOR_PATH", floor_path):
             value = host.compile_current(data, signed)
             verified = host.verify_current(
                 value.authorized.compiled.result_bytes,
@@ -91,18 +99,18 @@ class HostCurrentTests(unittest.TestCase):
     def test_floor_supersession_rejects_historically_valid_signed_generation(self):
         tmp, _host_dir, key_path, floor_path = self.host_state()
         self.addCleanup(tmp.cleanup)
-        now = _now()
         data = portfolio_source()
-        signed1 = signed_authority_for(data, captured=now, issued_at=now)
+        signed1 = signed_authority_for(data)
         raw1 = _canonical(signed1)
-        write_floor(floor_path, raw1, generation=1, updated_at=now)
+        write_floor(floor_path, raw1, generation=1)
+        current_clock, host_clock = self.fixed_clock()
 
-        with mock.patch.object(host, "HOST_KEY_PATH", key_path), mock.patch.object(
-            host, "HOST_FLOOR_PATH", floor_path
-        ):
+        with current_clock, host_clock, mock.patch.object(
+            host, "HOST_KEY_PATH", key_path
+        ), mock.patch.object(host, "HOST_FLOOR_PATH", floor_path):
             value1 = host.compile_current(data, signed1)
 
-            signed2 = signed_authority_for(data, captured=now, issued_at=now)
+            signed2 = signed_authority_for(data)
             signed2["upstream_authority"]["revision"] = 2
             unsigned2 = {
                 "schema": signed2["schema"],
@@ -113,7 +121,7 @@ class HostCurrentTests(unittest.TestCase):
             signed2["hmac_sha256"] = hmac.new(
                 KEY.key, _canonical(unsigned2), hashlib.sha256
             ).hexdigest()
-            write_floor(floor_path, _canonical(signed2), generation=2, updated_at=now)
+            write_floor(floor_path, _canonical(signed2), generation=2)
 
             with self.assertRaisesRegex(PortfolioError, "superseded"):
                 host.verify_current(
@@ -128,10 +136,9 @@ class HostCurrentTests(unittest.TestCase):
     def test_floor_exact_digest_rejects_same_generation_fork(self):
         tmp, _host_dir, key_path, floor_path = self.host_state()
         self.addCleanup(tmp.cleanup)
-        now = _now()
         data = portfolio_source()
-        signed_a = signed_authority_for(data, captured=now, issued_at=now)
-        signed_b = signed_authority_for(data, captured=now, issued_at=now)
+        signed_a = signed_authority_for(data)
+        signed_b = signed_authority_for(data)
         signed_b["upstream_authority"]["revision"] = 2
         unsigned_b = {
             "schema": signed_b["schema"],
@@ -142,24 +149,25 @@ class HostCurrentTests(unittest.TestCase):
         signed_b["hmac_sha256"] = hmac.new(
             KEY.key, _canonical(unsigned_b), hashlib.sha256
         ).hexdigest()
-        write_floor(floor_path, _canonical(signed_a), generation=7, updated_at=now)
+        write_floor(floor_path, _canonical(signed_a), generation=7)
+        current_clock, host_clock = self.fixed_clock()
 
-        with mock.patch.object(host, "HOST_KEY_PATH", key_path), mock.patch.object(
-            host, "HOST_FLOOR_PATH", floor_path
-        ):
+        with current_clock, host_clock, mock.patch.object(
+            host, "HOST_KEY_PATH", key_path
+        ), mock.patch.object(host, "HOST_FLOOR_PATH", floor_path):
             with self.assertRaisesRegex(PortfolioError, "superseded"):
                 host.compile_current(data, signed_b)
 
     def test_host_seal_tamper_is_rejected(self):
         tmp, _host_dir, key_path, floor_path = self.host_state()
         self.addCleanup(tmp.cleanup)
-        now = _now()
         data = portfolio_source()
-        signed = signed_authority_for(data, captured=now, issued_at=now)
-        write_floor(floor_path, _canonical(signed), updated_at=now)
-        with mock.patch.object(host, "HOST_KEY_PATH", key_path), mock.patch.object(
-            host, "HOST_FLOOR_PATH", floor_path
-        ):
+        signed = signed_authority_for(data)
+        write_floor(floor_path, _canonical(signed))
+        current_clock, host_clock = self.fixed_clock()
+        with current_clock, host_clock, mock.patch.object(
+            host, "HOST_KEY_PATH", key_path
+        ), mock.patch.object(host, "HOST_FLOOR_PATH", floor_path):
             value = host.compile_current(data, signed)
             seal = dict(value.host_seal)
             seal["result_sha256"] = "f" * 64
@@ -176,30 +184,30 @@ class HostCurrentTests(unittest.TestCase):
     def test_host_parent_must_be_effective_uid_owned_and_nonwritable_by_others(self):
         tmp, host_dir, key_path, floor_path = self.host_state()
         self.addCleanup(tmp.cleanup)
-        now = _now()
         data = portfolio_source()
-        signed = signed_authority_for(data, captured=now, issued_at=now)
-        write_floor(floor_path, _canonical(signed), updated_at=now)
+        signed = signed_authority_for(data)
+        write_floor(floor_path, _canonical(signed))
         host_dir.chmod(0o770)
-        with mock.patch.object(host, "HOST_KEY_PATH", key_path), mock.patch.object(
-            host, "HOST_FLOOR_PATH", floor_path
-        ):
+        current_clock, host_clock = self.fixed_clock()
+        with current_clock, host_clock, mock.patch.object(
+            host, "HOST_KEY_PATH", key_path
+        ), mock.patch.object(host, "HOST_FLOOR_PATH", floor_path):
             with self.assertRaisesRegex(PortfolioError, "must not be group/world writable"):
                 host.compile_current(data, signed)
 
     def test_host_key_symlink_is_rejected(self):
         tmp, host_dir, key_path, floor_path = self.host_state()
         self.addCleanup(tmp.cleanup)
-        now = _now()
         data = portfolio_source()
-        signed = signed_authority_for(data, captured=now, issued_at=now)
-        write_floor(floor_path, _canonical(signed), updated_at=now)
+        signed = signed_authority_for(data)
+        write_floor(floor_path, _canonical(signed))
         real_key = host_dir / "real-key.json"
         key_path.replace(real_key)
         key_path.symlink_to(real_key.name)
-        with mock.patch.object(host, "HOST_KEY_PATH", key_path), mock.patch.object(
-            host, "HOST_FLOOR_PATH", floor_path
-        ):
+        current_clock, host_clock = self.fixed_clock()
+        with current_clock, host_clock, mock.patch.object(
+            host, "HOST_KEY_PATH", key_path
+        ), mock.patch.object(host, "HOST_FLOOR_PATH", floor_path):
             with self.assertRaises((OSError, PortfolioError)):
                 host.compile_current(data, signed)
 
