@@ -14,6 +14,20 @@ _BASE_EVALUATE = _base.evaluate_bundle
 _BASE_BUILD_RUN_RECEIPT = _base.build_run_receipt
 _BASELINE_MODULE_NAME = _base.__name__
 _RELOAD_FINDER_MARKER = "nih.spark.pubmed/retrieval-authority-reload-v1"
+_BASELINE_PACKAGE_EXPORTS = (
+    "ContractError",
+    "SCHEMA_ANSWER",
+    "SCHEMA_CASES",
+    "SCHEMA_CORPUS",
+    "bm25_retrieve",
+    "corpus_digest",
+    "load_cases",
+    "load_corpus",
+    "load_json_strict_bytes",
+    "semantic_sha256",
+    "text_sha256",
+    "verify_exploratory_answer",
+)
 
 
 def _canonical_retrievals(corpus: Any, cases: Any) -> dict[str, list[dict[str, Any]]]:
@@ -87,9 +101,22 @@ def verify_run_receipt(receipt: Any, **kwargs: Any) -> bool:
 def _install_baseline_authority(module: Any = _base) -> None:
     if module is not _base:
         raise ImportError("unexpected NIH SPARK baseline module generation")
+
     module.evaluate_bundle = evaluate_bundle
     module.build_run_receipt = build_run_receipt
     module.verify_run_receipt = verify_run_receipt
+
+    # A baseline reload recreates its classes/helpers as well as its evaluator.
+    # Rebind the package module's public baseline-derived aliases so callers see
+    # one coherent generation rather than a stale package/new submodule split.
+    package = sys.modules.get(__package__)
+    if package is not None:
+        for name in _BASELINE_PACKAGE_EXPORTS:
+            setattr(package, name, getattr(module, name))
+        package.RETRIEVAL_TOP_K = RETRIEVAL_TOP_K
+        package.evaluate_bundle = evaluate_bundle
+        package.build_run_receipt = build_run_receipt
+        package.verify_run_receipt = verify_run_receipt
 
 
 class _BaselineReloadLoader(importlib.abc.Loader):
