@@ -41,20 +41,28 @@ A routing receipt means only: **given this exact declared snapshot, this is the 
 }
 ```
 
-Fields are strict: unknown keys, duplicate IDs/names/tags, booleans masquerading as integers, malformed identifiers, or out-of-range values fail closed. `verified_targets` is deliberately supplied by the observer rather than inferred by this compiler.
+Fields are strict: unknown keys, duplicate IDs/names/tags, booleans masquerading as integers, malformed identifiers, or out-of-range values fail closed. `verified_targets` is deliberately supplied by the observer rather than inferred by this compiler. It is the declared count of currently verified work targets in that channel snapshot, so existing active claims and new assignments consume the same finite target pool.
 
 ## Routing rules
 
 Work items are considered by descending priority and stable work ID. A channel is eligible only when:
 
 - it is not paused;
-- `verified_targets > 0`;
-- declared capacity has headroom after assignments already made by this compilation; and
+- at least one verified target remains after accounting for existing active claims and assignments made by this compilation;
+- declared channel capacity has headroom after those same claims and assignments; and
 - at least one work tag intersects a channel specialty tag.
+
+The effective new-work headroom for a channel is therefore bounded by both resources:
+
+```text
+max(0, min(capacity, verified_targets) - active_claims - assignments_now)
+```
+
+This prevents one verified target from authorizing multiple new workers merely because the channel's nominal capacity is larger.
 
 Eligible channels are ranked using integer-only pressure: post-assignment utilization first, then recent message pressure, then specialty breadth, then match count and stable lexical tie-breakers. This makes a relevant underused specialist feed beat a saturated generic feed without letting an unrelated quiet feed steal work.
 
-Capacity is a hard bound. When no eligible relevant headroom exists, the work item is emitted as `NO_ELIGIBLE_RELEVANT_HEADROOM`; the compiler does not invent a destination.
+Capacity and verified-target cardinality are both hard bounds. When no eligible relevant headroom exists, the work item is emitted as `NO_ELIGIBLE_RELEVANT_HEADROOM`; the compiler does not invent a destination.
 
 ## Usage
 
@@ -68,8 +76,8 @@ python host/swarm_channel_dispatch.py verify snapshot.json receipt.json
 ## Test
 
 ```bash
-python -m unittest tests.test_swarm_channel_dispatch -v
-python -O -m unittest tests.test_swarm_channel_dispatch -v
+python -m unittest tests.test_swarm_channel_dispatch tests.test_swarm_channel_dispatch_target_cardinality -v
+python -O -m unittest tests.test_swarm_channel_dispatch tests.test_swarm_channel_dispatch_target_cardinality -v
 ```
 
-The suite covers specialist routing, relevance fencing, zero-target exclusion, hard capacity, input-order invariance, strict schema rejection, paused channels, authority falsehoods, source mutation, receipt tampering, and the CLI round trip.
+The suite covers specialist routing, relevance fencing, zero-target exclusion, hard channel capacity, hard verified-target cardinality, already-claimed target exhaustion, target-limited spillover, input-order invariance, strict schema rejection, paused channels, authority falsehoods, source mutation, receipt tampering, and the CLI round trip.
