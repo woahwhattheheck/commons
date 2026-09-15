@@ -347,48 +347,107 @@ class SourceSnapshots:
 def _materialize_sources(connection: object, region: str) -> SourceSnapshots:
     remote = source_registry(region)
     root = Path(tempfile.mkdtemp(prefix="mapping-equity-snapshot-"))
-    os.chmod(root, 0o700)
     fds: dict[str, int] = {}
     registry: dict[str, str] = {}
     receipts: dict[str, dict[str, object]] = {}
     identities: dict[str, tuple[int, int]] = {}
+    root_fd: Optional[int] = None
     try:
+        root_visible = os.lstat(root)
+        root_flags = (
+            os.O_RDONLY
+            | getattr(os, "O_DIRECTORY", 0)
+            | getattr(os, "O_NOFOLLOW", 0)
+        )
+        root_fd = os.open(root, root_flags)
+        root_opened = os.fstat(root_fd)
+        if not stat.S_ISDIR(root_opened.st_mode):
+            raise AggregationError("snapshot staging root is not a directory")
+        if (root_opened.st_dev, root_opened.st_ino) != (
+            root_visible.st_dev,
+            root_visible.st_ino,
+        ):
+            raise AggregationError("snapshot staging root changed during acquisition")
+        if hasattr(os, "geteuid") and root_opened.st_uid != os.geteuid():
+            raise AggregationError("snapshot staging root owner mismatch")
+        os.fchmod(root_fd, 0o700)
+        root_alias = _descriptor_alias(root_fd)
+
         for key, uri in remote.items():
             suffix = ".csv" if key == "sample" else ".parquet"
-            target = root / f"{key}{suffix}"
+            name = f"{key}{suffix}"
+            target = Path(root_alias) / name
             connection.execute(_snapshot_copy_sql(key, uri, target))
-            visible = os.lstat(target)
+            visible = os.stat(name, dir_fd=root_fd, follow_symlinks=False)
             if not stat.S_ISREG(visible.st_mode) or visible.st_nlink != 1:
                 raise AggregationError(f"{key}: materialized snapshot must be one regular file")
             if hasattr(os, "geteuid") and visible.st_uid != os.geteuid():
                 raise AggregationError(f"{key}: materialized snapshot owner mismatch")
-            os.chmod(target, 0o400)
-            flags = os.O_RDONLY | getattr(os, "O_NOFOLLOW", 0)
-            fd = os.open(target, flags)
-            opened = os.fstat(fd)
-            if (opened.st_dev, opened.st_ino) != (visible.st_dev, visible.st_ino):
-                os.close(fd)
-                raise AggregationError(f"{key}: materialized snapshot changed during acquisition")
-            digest, size = _sha256_fd(fd)
-            alias = _descriptor_alias(fd)
-            os.unlink(target)
-            alias_info = os.stat(alias)
-            if (alias_info.st_dev, alias_info.st_ino) != (opened.st_dev, opened.st_ino):
-                os.close(fd)
-                raise AggregationError(f"{key}: descriptor alias changed during acquisition")
-            fds[key] = fd
-            registry[key] = alias
-            receipts[key] = {
-                "source_uri": uri,
-                "snapshot_format": "CSV" if key == "sample" else "PARQUET",
-                "materialized_sha256": digest,
-                "materialized_bytes": size,
-            }
-            identities[key] = (opened.st_dev, opened.st_ino)
-        try:
-            root.rmdir()
-        except OSError as exc:
-            raise AggregationError("snapshot staging directory did not drain cleanly") from exc
+
+            fd: Optional[int] = None
+            try:
+                flags = os.O_RDONLY | getattr(os, "O_NOFOLLOW", 0)
+                fd = os.open(name, flags, dir_fd=root_fd)
+                opened = os.fstat(fd)
+                if not stat.S_ISREG(opened.st_mode) or opened.st_nlink != 1:
+                    raise AggregationError(f"{key}: acquired snapshot must be one regular file")
+                if hasattr(os, "geteuid") and opened.st_uid != os.geteuid():
+                    raise AggregationError(f"{key}: acquired snapshot owner mismatch")
+                if (opened.st_dev, opened.st_ino) != (visible.st_dev, visible.st_ino):
+                    raise AggregationError(f"{key}: materialized snapshot changed during acquisition")
+
+                os.fchmod(fd, 0o400)
+                hardened = os.fstat(fd)
+                if (hardened.st_dev, hardened.st_ino) != (opened.st_dev, opened.st_ino):
+                    raise AggregationError(f"{key}: snapshot generation changed during hardening")
+                if stat.S_IMODE(hardened.st_mode) != 0o400:
+                    raise AggregationError(f"{key}: snapshot permission hardening failed")
+
+                digest, size = _sha256_fd(fd)
+                alias = _descriptor_alias(fd)
+                visible_before_unlink = os.stat(
+                    name, dir_fd=root_fd, follow_symlinks=False
+                )
+                if (visible_before_unlink.st_dev, visible_before_unlink.st_ino) != (
+                    opened.st_dev,
+                    opened.st_ino,
+                ):
+                    raise AggregationError(f"{key}: snapshot path changed before unlink")
+                os.unlink(name, dir_fd=root_fd)
+                alias_info = os.stat(alias)
+                if (alias_info.st_dev, alias_info.st_ino) != (
+                    opened.st_dev,
+                    opened.st_ino,
+                ):
+                    raise AggregationError(f"{key}: descriptor alias changed during acquisition")
+
+                fds[key] = fd
+                registry[key] = alias
+                receipts[key] = {
+                    "source_uri": uri,
+                    "snapshot_format": "CSV" if key == "sample" else "PARQUET",
+                    "materialized_sha256": digest,
+                    "materialized_bytes": size,
+                }
+                identities[key] = (opened.st_dev, opened.st_ino)
+                fd = None
+            finally:
+                if fd is not None:
+                    try:
+                        os.close(fd)
+                    except OSError:
+                        pass
+
+        root_after = os.lstat(root)
+        if (root_after.st_dev, root_after.st_ino) != (
+            root_opened.st_dev,
+            root_opened.st_ino,
+        ):
+            raise AggregationError("snapshot staging root changed before removal")
+        os.close(root_fd)
+        root_fd = None
+        root.rmdir()
+
         snapshots = SourceSnapshots(registry, receipts, fds, identities)
         snapshots.verify()
         return snapshots
@@ -398,15 +457,13 @@ def _materialize_sources(connection: object, region: str) -> SourceSnapshots:
                 os.close(fd)
             except OSError:
                 pass
-        for child in root.glob("*"):
+        if root_fd is not None:
             try:
-                child.unlink()
+                os.close(root_fd)
             except OSError:
                 pass
-        try:
-            root.rmdir()
-        except OSError:
-            pass
+        # Do not pathname-unlink children on a failed acquisition: after a custody
+        # failure those names may denote a generation we never safely acquired.
         raise
 
 

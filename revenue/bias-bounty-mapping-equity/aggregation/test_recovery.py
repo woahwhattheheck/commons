@@ -4,9 +4,11 @@ import hashlib
 import json
 import os
 import re
+import stat
 import tempfile
 import unittest
 from pathlib import Path
+from unittest import mock
 
 import aggregate as a
 
@@ -158,6 +160,10 @@ class SourceGenerationBindingTests(unittest.TestCase):
                 )
                 self.assertNotIn("device", receipt)
                 self.assertNotIn("inode", receipt)
+                self.assertEqual(
+                    0o400,
+                    stat.S_IMODE(os.fstat(snapshots._fds[key]).st_mode),
+                )
             snapshots.verify()
         finally:
             snapshots.close()
@@ -190,6 +196,68 @@ class SourceGenerationBindingTests(unittest.TestCase):
             a._bind_sql_to_snapshots(
                 a.aggregate_query("eastern-ok"), remote, snapshots
             )
+
+    @unittest.skipIf(os.name == "nt", "POSIX no-follow acquisition hostile")
+    def test_leaf_to_foreign_symlink_swap_cannot_chmod_victim(self) -> None:
+        with tempfile.TemporaryDirectory() as parent:
+            parent_path = Path(parent)
+            victim = parent_path / "victim.db"
+            victim.write_bytes(b"foreign-victim\n")
+            os.chmod(victim, 0o644)
+            victim_before = victim.read_bytes(), stat.S_IMODE(os.stat(victim).st_mode)
+            real_mkdtemp = a.tempfile.mkdtemp
+            real_open = a.os.open
+            swapped = False
+
+            def local_mkdtemp(*, prefix: str):
+                return real_mkdtemp(prefix=prefix, dir=parent)
+
+            def racing_open(path, flags, *args, dir_fd=None, **kwargs):
+                nonlocal swapped
+                if (
+                    not swapped
+                    and dir_fd is not None
+                    and isinstance(path, str)
+                    and (path.endswith(".csv") or path.endswith(".parquet"))
+                ):
+                    os.unlink(path, dir_fd=dir_fd)
+                    os.symlink(victim, path, dir_fd=dir_fd)
+                    swapped = True
+                return real_open(path, flags, *args, dir_fd=dir_fd, **kwargs)
+
+            with mock.patch.object(a.tempfile, "mkdtemp", side_effect=local_mkdtemp), \
+                 mock.patch.object(a.os, "open", side_effect=racing_open):
+                with self.assertRaises(OSError):
+                    a._materialize_sources(self._CopyConnection(), "northern-ca")
+
+            self.assertTrue(swapped)
+            self.assertEqual(victim_before[0], victim.read_bytes())
+            self.assertEqual(victim_before[1], stat.S_IMODE(os.stat(victim).st_mode))
+
+    @unittest.skipIf(os.name == "nt", "POSIX descriptor leak hostile")
+    def test_alias_failure_closes_just_opened_snapshot_descriptor(self) -> None:
+        with tempfile.TemporaryDirectory() as parent:
+            real_mkdtemp = a.tempfile.mkdtemp
+            real_alias = a._descriptor_alias
+            captured: list[int] = []
+
+            def local_mkdtemp(*, prefix: str):
+                return real_mkdtemp(prefix=prefix, dir=parent)
+
+            def failing_alias(fd: int) -> str:
+                if stat.S_ISDIR(os.fstat(fd).st_mode):
+                    return real_alias(fd)
+                captured.append(fd)
+                raise a.AggregationError("forced alias failure")
+
+            with mock.patch.object(a.tempfile, "mkdtemp", side_effect=local_mkdtemp), \
+                 mock.patch.object(a, "_descriptor_alias", side_effect=failing_alias):
+                with self.assertRaisesRegex(a.AggregationError, "forced alias failure"):
+                    a._materialize_sources(self._CopyConnection(), "northern-ca")
+
+            self.assertEqual(1, len(captured))
+            with self.assertRaises(OSError):
+                os.fstat(captured[0])
 
 
 if __name__ == "__main__":
