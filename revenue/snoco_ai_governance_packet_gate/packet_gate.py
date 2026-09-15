@@ -2,7 +2,7 @@
 """Fail-closed compliance gate for Snohomish County RFP-26-0791BC.
 
 This package does not submit, contact, price, sign, or log into procurement
-systems. It only verifies that requirement claims are backed by allowed,
+systems. It only verifies that requirement claims are backed by code-pinned,
 requirement-bound source authority and reports whether the official packet is
 still required.
 """
@@ -44,6 +44,168 @@ BOUNDARY_KEYS = {
     "proposal_submission_authorized",
     "award_claim_authorized",
     "recognized_revenue",
+}
+
+# Trust is deliberately outside the caller-supplied registry.  Official source
+# identity, authority class, canonical URL, support bindings, and the exact
+# public facts used by this carrier are code-pinned.  A future packet-ingestion
+# change must therefore change this executable under review; the registry cannot
+# mint its own OFFICIAL_* authority.
+TRUSTED_OFFICIAL_SOURCES: dict[str, dict[str, Any]] = {
+    "snoco_legal_notice": {
+        "id": "snoco_legal_notice",
+        "authority": "OFFICIAL_PUBLIC_NOTICE",
+        "url": "https://sound.ipublishmarketplace.com/washington/advert/-general_18078",
+        "assertable": True,
+        "raw_bytes_sha256": None,
+        "raw_hash_status": "UNAVAILABLE_WEB_TEXT_ONLY",
+        "supports_requirement_ids": [
+            "identity",
+            "proposal_due",
+            "late_submittals",
+            "electronic_preferred",
+            "electronic_signature",
+            "email_subject",
+            "hardcopy_signature",
+            "hand_delivery_location",
+        ],
+        "facts": [
+            "Snohomish County Purchasing Division is soliciting RFP-26-0791BC, AI Governance Solution.",
+            "Proposals are due October 1, 2026 no later than 1:00 p.m. Pacific Local Time; late submittals are not accepted.",
+            "Electronic submittal is preferred and its first page must be digitally signed by an authorized representative.",
+            "The RFP number should be listed in the email subject line for identification.",
+            "Hard-copy submittals require an original signature on the first page; hand delivery is accepted only at the County Purchasing Division.",
+        ],
+    },
+    "snoco_supplier_info": {
+        "id": "snoco_supplier_info",
+        "authority": "OFFICIAL_COUNTY_GUIDANCE",
+        "url": "https://snohomishcountywa.gov/6004/Info-for-Suppliers",
+        "assertable": True,
+        "raw_bytes_sha256": None,
+        "raw_hash_status": "UNAVAILABLE_WEB_TEXT_ONLY",
+        "supports_requirement_ids": ["official_document_source"],
+        "facts": [
+            "The Snohomish County Purchasing Portal is the only official source for active bid/RFP/RFQ documents, except Public Works projects.",
+            "Vendor registration in the portal provides notifications of addenda and current solicitation information.",
+        ],
+    },
+    "snoco_purchasing_portal_page": {
+        "id": "snoco_purchasing_portal_page",
+        "authority": "OFFICIAL_COUNTY_GUIDANCE",
+        "url": "https://snohomishcountywa.gov/3706/Purchasing-Portal",
+        "assertable": True,
+        "raw_bytes_sha256": None,
+        "raw_hash_status": "UNAVAILABLE_WEB_TEXT_ONLY",
+        "supports_requirement_ids": ["clarification_channel_general"],
+        "facts": [
+            "No oral solicitation interpretations are made.",
+            "Questions must be submitted through ProcureWare clarifications or in writing by email to Purchasing.",
+            "Answers and clarifications are distributed to plan holders via addendum.",
+        ],
+    },
+    "snoco_procureware_guide": {
+        "id": "snoco_procureware_guide",
+        "authority": "OFFICIAL_COUNTY_GUIDANCE",
+        "url": "https://www.snohomishcountywa.gov/DocumentCenter/View/142331/Finding-Available-Bid-or-RF-Documents-in-ProcureWare",
+        "assertable": True,
+        "raw_bytes_sha256": None,
+        "raw_hash_status": "DOWNLOAD_NOT_AVAILABLE_IN_CURRENT_HARNESS",
+        "supports_requirement_ids": ["official_document_source", "addenda_acknowledgement"],
+        "facts": [
+            "Users must be logged in to view and download bid or RFP documents.",
+            "Addenda are posted in the same bid-document area.",
+        ],
+    },
+    "procureware_public_portal": {
+        "id": "procureware_public_portal",
+        "authority": "OFFICIAL_PORTAL",
+        "url": "https://snoco.procureware.com/Bids",
+        "assertable": True,
+        "raw_bytes_sha256": None,
+        "raw_hash_status": "UNAVAILABLE_DYNAMIC_PORTAL",
+        "supports_requirement_ids": ["official_document_source"],
+        "facts": [
+            "The public portal exposes Log In and Register controls; the solicitation-document tabs are not anonymously available in the retrieved surface."
+        ],
+    },
+}
+
+# The text and citation set of each currently-confirmed claim are also pinned.
+# Without this second anchor a caller could keep a trusted source ID but rewrite
+# the requirement text (for example, change the proposal deadline) and still
+# obtain a current-looking CONFIRMED_OFFICIAL receipt.
+TRUSTED_CONFIRMED_REQUIREMENTS: dict[str, dict[str, Any]] = {
+    "identity": {
+        "id": "identity",
+        "classification": "MANDATORY",
+        "state": "CONFIRMED_OFFICIAL",
+        "source_ids": ["snoco_legal_notice"],
+        "requirement": "RFP-26-0791BC is titled AI Governance Solution.",
+    },
+    "proposal_due": {
+        "id": "proposal_due",
+        "classification": "MANDATORY",
+        "state": "CONFIRMED_OFFICIAL",
+        "source_ids": ["snoco_legal_notice"],
+        "requirement": "Proposal due October 1, 2026 no later than 1:00 p.m. Pacific Local Time.",
+    },
+    "late_submittals": {
+        "id": "late_submittals",
+        "classification": "MANDATORY",
+        "state": "CONFIRMED_OFFICIAL",
+        "source_ids": ["snoco_legal_notice"],
+        "requirement": "Late submittals are not accepted.",
+    },
+    "electronic_preferred": {
+        "id": "electronic_preferred",
+        "classification": "SUBMISSION",
+        "state": "CONFIRMED_OFFICIAL",
+        "source_ids": ["snoco_legal_notice"],
+        "requirement": "Electronic submittal is preferred.",
+    },
+    "electronic_signature": {
+        "id": "electronic_signature",
+        "classification": "MANDATORY",
+        "state": "CONFIRMED_OFFICIAL",
+        "source_ids": ["snoco_legal_notice"],
+        "requirement": "Electronic proposal first page must be digitally signed by an authorized representative.",
+    },
+    "email_subject": {
+        "id": "email_subject",
+        "classification": "SUBMISSION",
+        "state": "CONFIRMED_OFFICIAL",
+        "source_ids": ["snoco_legal_notice"],
+        "requirement": "List the RFP number in the email subject line for identification.",
+    },
+    "hardcopy_signature": {
+        "id": "hardcopy_signature",
+        "classification": "MANDATORY",
+        "state": "CONFIRMED_OFFICIAL",
+        "source_ids": ["snoco_legal_notice"],
+        "requirement": "Hard-copy first page must carry an original signature by an authorized representative.",
+    },
+    "hand_delivery_location": {
+        "id": "hand_delivery_location",
+        "classification": "SUBMISSION",
+        "state": "CONFIRMED_OFFICIAL",
+        "source_ids": ["snoco_legal_notice"],
+        "requirement": "Hand-delivered proposals are accepted only at the County Purchasing Division.",
+    },
+    "official_document_source": {
+        "id": "official_document_source",
+        "classification": "CONTROL",
+        "state": "CONFIRMED_OFFICIAL",
+        "source_ids": ["snoco_supplier_info", "snoco_procureware_guide"],
+        "requirement": "Active RFP documents and addenda are controlled through the County Purchasing Portal; viewing/downloading requires login.",
+    },
+    "clarification_channel_general": {
+        "id": "clarification_channel_general",
+        "classification": "INFORMATIONAL",
+        "state": "CONFIRMED_OFFICIAL",
+        "source_ids": ["snoco_purchasing_portal_page"],
+        "requirement": "County general guidance requires written questions via ProcureWare clarification or Purchasing email; answers are issued by addendum.",
+    },
 }
 
 
@@ -140,11 +302,16 @@ def validate_sources(registry: Any) -> dict[str, dict[str, Any]]:
             raise GateError(f"unsupported authority: {source['authority']}")
         if not isinstance(source["url"], str) or not source["url"].startswith("https://"):
             raise GateError(f"source {sid} must use https")
-        if source["authority"] == "THIRD_PARTY_MIRROR":
-            if source["assertable"] is not False:
-                raise GateError(f"third-party source {sid} must be non-assertable")
-        elif source["assertable"] is not True:
-            raise GateError(f"official source {sid} must be assertable")
+
+        if source["authority"] in OFFICIAL_AUTHORITIES:
+            expected = TRUSTED_OFFICIAL_SOURCES.get(sid)
+            if expected is None:
+                raise GateError(f"untrusted official source id: {sid}")
+            if source != expected:
+                raise GateError(f"official source identity drift: {sid}")
+        elif source["assertable"] is not False:
+            raise GateError(f"third-party source {sid} must be non-assertable")
+
         digest = source["raw_bytes_sha256"]
         if digest is not None and (
             not isinstance(digest, str)
@@ -164,6 +331,10 @@ def validate_sources(registry: Any) -> dict[str, dict[str, Any]]:
         for fact_index, fact in enumerate(source["facts"]):
             _bounded_text(fact, f"source {sid} fact[{fact_index}]", maximum=600)
         by_id[sid] = source
+
+    missing_official = sorted(set(TRUSTED_OFFICIAL_SOURCES) - set(by_id))
+    if missing_official:
+        raise GateError(f"trusted official source(s) missing: {missing_official}")
     return by_id
 
 
@@ -181,6 +352,7 @@ def validate_matrix(matrix: Any, sources: dict[str, dict[str, Any]]) -> list[dic
         raise GateError("requirements must be a non-empty list")
     ids: set[str] = set()
     normalized: list[dict[str, Any]] = []
+    confirmed_ids: set[str] = set()
     for index, req in enumerate(matrix["requirements"]):
         _exact_keys(
             req,
@@ -210,6 +382,11 @@ def validate_matrix(matrix: Any, sources: dict[str, dict[str, Any]]) -> list[dic
         _bounded_text(req["requirement"], f"requirement {rid}", maximum=1200)
 
         if req["state"] == "CONFIRMED_OFFICIAL":
+            expected_req = TRUSTED_CONFIRMED_REQUIREMENTS.get(rid)
+            if expected_req is None:
+                raise GateError(f"untrusted confirmed requirement id: {rid}")
+            if req != expected_req:
+                raise GateError(f"confirmed requirement identity drift: {rid}")
             if not cited:
                 raise GateError(f"confirmed requirement {rid} must cite official evidence")
             if any(
@@ -217,7 +394,14 @@ def validate_matrix(matrix: Any, sources: dict[str, dict[str, Any]]) -> list[dic
                 for source in cited
             ):
                 raise GateError(f"confirmed requirement {rid} cites non-official authority")
+            confirmed_ids.add(rid)
         normalized.append(req)
+
+    expected_confirmed_ids = set(TRUSTED_CONFIRMED_REQUIREMENTS)
+    if confirmed_ids != expected_confirmed_ids:
+        missing = sorted(expected_confirmed_ids - confirmed_ids)
+        extra = sorted(confirmed_ids - expected_confirmed_ids)
+        raise GateError(f"confirmed requirement set drift: missing={missing} extra={extra}")
 
     _exact_keys(matrix["boundaries"], BOUNDARY_KEYS, "boundaries")
     for key in BOUNDARY_KEYS:
