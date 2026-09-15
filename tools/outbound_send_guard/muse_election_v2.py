@@ -2,7 +2,7 @@
 """Canonical Muse publication-election v2 entrypoint.
 
 Raw/caller-provided Slack snapshots are analysis evidence only: they may prove
-HOLD or NOT_SELECTED, but cannot mint current SELECTED authority until a real
+HOLD, but cannot mint terminal SELECTED or NOT_SELECTED authority until a real
 provider-authenticated adapter exists.
 
 Authority threat model
@@ -91,8 +91,9 @@ def _bind_boundary():
         """Compile raw snapshot analysis using the process clock, then seal it.
 
         The supported call surface intentionally has no `observed_at` input.
-        Raw SELECTED is demoted by the current-authority envelope until a
-        provider-authenticated adapter is composed in a separate reviewed lane.
+        Raw terminal SELECTED and NOT_SELECTED decisions are both demoted by the
+        current-authority envelope until a provider-authenticated adapter is
+        composed in a separate reviewed lane.
         """
         observed = current_auth._utc_now()
         raw = engine["compile_receipt"](
