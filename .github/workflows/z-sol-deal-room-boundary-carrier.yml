@@ -1,0 +1,30 @@
+name: Z-Sol Deal Room Boundary Carrier
+
+on:
+  push:
+    branches:
+      - z-sol/deal-room-graph-boundary-ci-20260915
+
+permissions:
+  contents: read
+
+jobs:
+  contract:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.9', '3.11', '3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Compile
+        run: python -m py_compile revenue/commercial_deal_room/*.py
+      - name: Unit tests
+        run: python -m unittest revenue.commercial_deal_room.test_engine revenue.commercial_deal_room.test_guarded revenue.commercial_deal_room.test_guarded_reload revenue.commercial_deal_room.test_guarded_graph revenue.commercial_deal_room.test_cli
+      - name: Optimized unit tests
+        run: python -O -m unittest revenue.commercial_deal_room.test_engine revenue.commercial_deal_room.test_guarded revenue.commercial_deal_room.test_guarded_reload revenue.commercial_deal_room.test_guarded_graph revenue.commercial_deal_room.test_cli
+      - name: Acceptance
+        run: python -m revenue.commercial_deal_room.acceptance
