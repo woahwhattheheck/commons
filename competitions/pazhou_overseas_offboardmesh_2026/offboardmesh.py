@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 """Deterministic, side-effect-free OffboardMesh competition demo.
 
-Model output is proposal material only. This module digest-binds caller-asserted
-evidence, evaluates historical/request-time shape separately from verifier-owned
-current freshness, emits a tamper-evident owner-review packet, and never grants
-authority for external/destructive/customer/payment actions.
+Model output is proposal material only. The compiler digest-binds caller-asserted
+input into one canonical owner-review packet. Verification reconstructs that
+packet from the candidate; a caller-recomputed public receipt is never treated
+as proof that arbitrary packet contents correspond to the candidate.
 """
 from __future__ import annotations
 
@@ -86,7 +86,7 @@ def _parse_time(value: Any, field: str) -> datetime:
 
 
 def _now_utc() -> datetime:
-    """Verifier-owned wall clock. Public verification has no caller time override."""
+    """Verifier-owned wall clock. Public verification has no caller override."""
     return _NATIVE_DATETIME.now(_NATIVE_UTC)
 
 
@@ -115,7 +115,11 @@ def _exact_keys(obj: Any, expected: set[str], field: str) -> dict[str, Any]:
 
 
 def _validate_candidate(candidate: Any) -> dict[str, Any]:
-    root = _exact_keys(candidate, {"schema", "organizationRef", "engagementId", "planVersion", "requestedAt", "requestedCloseoutAt", "modelProposal", "evidence"}, "candidate")
+    root = _exact_keys(
+        candidate,
+        {"schema", "organizationRef", "engagementId", "planVersion", "requestedAt", "requestedCloseoutAt", "modelProposal", "evidence"},
+        "candidate",
+    )
     if root["schema"] != INPUT_SCHEMA:
         _fail("SCHEMA_INVALID")
     organization = _safe_ref(root["organizationRef"], "organizationRef")
@@ -269,56 +273,71 @@ def compile_packet(candidate: Any) -> dict[str, Any]:
 
 
 def _packet_integrity(packet: Any) -> bool:
-    if type(packet) is not dict or packet.get("schema") != PACKET_SCHEMA:
-        return False
-    receipt = packet.get("receiptSha256")
-    if type(receipt) is not str or not _SHA256.fullmatch(receipt):
-        return False
-    unsigned = {k: v for k, v in packet.items() if k != "receiptSha256"}
-    if _digest(unsigned) != receipt or packet.get("authority") != AUTHORITY:
-        return False
-    truth = packet.get("truth")
-    if type(truth) is not dict or truth.get("ownerEvidenceBound") is not False or truth.get("evidenceProvenance") != "CALLER_ASSERTED_UNVERIFIED":
-        return False
-    tasks = packet.get("tasks")
-    return bool(
-        type(tasks) is list
-        and tasks
-        and all(
-            type(task) is dict
-            and task.get("modelState") == "PROPOSAL_ONLY"
-            and task.get("reviewState") == "OWNER_REVIEW_REQUIRED"
-            and task.get("executionAuthorized") is False
-            for task in tasks
+    try:
+        if type(packet) is not dict or packet.get("schema") != PACKET_SCHEMA:
+            return False
+        receipt = packet.get("receiptSha256")
+        if type(receipt) is not str or not _SHA256.fullmatch(receipt):
+            return False
+        unsigned = {k: v for k, v in packet.items() if k != "receiptSha256"}
+        if _digest(unsigned) != receipt or packet.get("authority") != AUTHORITY:
+            return False
+        truth = packet.get("truth")
+        if type(truth) is not dict or truth.get("ownerEvidenceBound") is not False or truth.get("evidenceProvenance") != "CALLER_ASSERTED_UNVERIFIED":
+            return False
+        tasks = packet.get("tasks")
+        return bool(
+            type(tasks) is list
+            and tasks
+            and all(
+                type(task) is dict
+                and task.get("modelState") == "PROPOSAL_ONLY"
+                and task.get("reviewState") == "OWNER_REVIEW_REQUIRED"
+                and task.get("executionAuthorized") is False
+                for task in tasks
+            )
         )
-    )
+    except OffboardMeshError:
+        return False
 
 
 def _verification_facts(candidate: Any, packet: Any) -> tuple[dict[str, bool], dict[str, Any] | None]:
     packet_valid = _packet_integrity(packet)
-    source = packet.get("source") if type(packet) is dict else None
-    same_work = same_plan = source_matches = False
     candidate_valid = True
+    normalized: dict[str, Any] | None
+    expected: dict[str, Any] | None
     try:
         normalized = _validate_candidate(candidate)
+        expected = compile_packet(candidate)
     except OffboardMeshError:
         candidate_valid = False
         normalized = None
-    if packet_valid and candidate_valid and type(source) is dict and normalized is not None:
+        expected = None
+
+    source = packet.get("source") if type(packet) is dict else None
+    same_work = same_plan = source_matches = compiler_projection_matches = False
+    if candidate_valid and normalized is not None and type(source) is dict:
         same_work = source.get("organizationRef") == normalized["organizationRef"] and source.get("engagementId") == normalized["engagementId"]
         same_plan = source.get("planVersion") == normalized["planVersion"]
         source_matches = source.get("sourceSha256") == _digest(candidate)
+    if candidate_valid and expected is not None and packet_valid:
+        try:
+            compiler_projection_matches = _canonical(packet) == _canonical(expected)
+        except OffboardMeshError:
+            compiler_projection_matches = False
+
     return {
         "packetIntegrityValid": bool(packet_valid),
         "candidateValid": bool(candidate_valid),
         "sameEngagement": bool(same_work),
         "samePlanVersion": bool(same_plan),
         "sourceMatches": bool(source_matches),
+        "compilerProjectionMatches": bool(compiler_projection_matches),
     }, normalized
 
 
 def verify_current(candidate: Any, packet: Any) -> dict[str, Any]:
-    """Verify exact replay plus freshness against verifier-owned current time."""
+    """Require exact compiler correspondence plus verifier-owned current freshness."""
     facts, normalized = _verification_facts(candidate, packet)
     current_fresh = bool(normalized is not None and _is_current(normalized, _now_utc()))
     valid = bool(
@@ -327,18 +346,14 @@ def verify_current(candidate: Any, packet: Any) -> dict[str, Any]:
         and facts["sameEngagement"]
         and facts["samePlanVersion"]
         and facts["sourceMatches"]
+        and facts["compilerProjectionMatches"]
         and current_fresh
     )
-    return {
-        "externalSendAuthorized": False,
-        "validCurrent": valid,
-        "currentEvidenceFresh": current_fresh,
-        **facts,
-    }
+    return {"externalSendAuthorized": False, "validCurrent": valid, "currentEvidenceFresh": current_fresh, **facts}
 
 
 def verify_historical(candidate: Any, packet: Any) -> dict[str, Any]:
-    """Verify exact candidate/packet integrity without asserting present freshness."""
+    """Require exact compiler correspondence without asserting present freshness."""
     facts, _ = _verification_facts(candidate, packet)
     valid = bool(
         facts["packetIntegrityValid"]
@@ -346,6 +361,7 @@ def verify_historical(candidate: Any, packet: Any) -> dict[str, Any]:
         and facts["sameEngagement"]
         and facts["samePlanVersion"]
         and facts["sourceMatches"]
+        and facts["compilerProjectionMatches"]
     )
     return {"externalSendAuthorized": False, "validHistorical": valid, **facts}
 
@@ -361,8 +377,11 @@ def _strict_load(path: str | Path) -> Any:
             obj[key] = value
         return obj
 
+    def reject_constant(value: str) -> None:
+        _fail("JSON_NONFINITE", value)
+
     try:
-        return json.loads(text, object_pairs_hook=hook)
+        return json.loads(text, object_pairs_hook=hook, parse_constant=reject_constant)
     except OffboardMeshError:
         raise
     except (json.JSONDecodeError, ValueError, TypeError) as exc:
