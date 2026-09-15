@@ -18,6 +18,19 @@ function compile(candidate) {
         self.assertEqual(len(rows), 1)
         self.assertEqual(rows[0].field, "diagnostic_passed")
 
+    def test_closed_sibling_function_cannot_donate_authority(self):
+        source = """
+function prior(candidate, diagnosticReceipt) {
+  return candidate;
+}
+if (candidate.diagnostic_passed && diagnosticReceipt.verified) {
+  const state = "QUALIFIED_FOR_OWNER_SALES_REVIEW";
+}
+"""
+        rows = lint.scan_javascript("case.js", source)
+        self.assertEqual(len(rows), 1)
+        self.assertEqual(rows[0].function, "<module>")
+
     def test_direct_independent_receipt_parameter_still_suppresses(self):
         source = """
 function compile(candidate, diagnosticReceipt) {
