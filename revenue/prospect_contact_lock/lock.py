@@ -1,14 +1,15 @@
-"""Canonical production facade for the prospect contact lock.
+"""Canonical production surface for the prospect contact lock.
 
-The CAS state machine is preserved byte-for-byte in :mod:`._core`. This module
-is the only production construction surface: every record read verifies the
-code-pinned authority marker, paid/award prose is validated before state
-mutation, and ordinary callers cannot substitute transport authority through
-the public constructor.
+The landed CAS implementation remains source-preserved in :mod:`._core`, but
+its ``ProspectContactLock`` class object is hardened *in place* here during
+package initialization.  Python imports the package before returning any
+``revenue.prospect_contact_lock._core`` submodule import, so direct ``_core``
+callers, package callers, CLI callers, and the compatibility ``hardened``
+module all receive the same production class identity and invariants.
 
-The private ``_for_tests`` constructor exists only so deterministic hostiles can
-exercise this exact facade without network effects. It is deliberately not
-exported by the package.
+Ordinary construction accepts only the GitHub token.  Deterministic transport
+substitution exists only through the deliberately private ``_for_tests``
+capability used by the hostile suite.
 """
 from __future__ import annotations
 
@@ -21,8 +22,6 @@ from typing import Any, Mapping
 
 from . import _core as core
 
-# Stable public API re-exports. The implementation remains private so importing
-# ``revenue.prospect_contact_lock.lock`` cannot bypass the canonical facade.
 SCHEMA = core.SCHEMA
 RECEIPT_SCHEMA = core.RECEIPT_SCHEMA
 AUTHORITY_GENERATION = core.AUTHORITY_GENERATION
@@ -52,9 +51,6 @@ verify_receipt = core.verify_receipt
 normalize_target = core.normalize_target
 digest_message_bytes = core.digest_message_bytes
 digest_message_file = core.digest_message_file
-
-# Kept private-but-addressable for the historical hostile corpus. Production
-# package exports do not include these helpers.
 _assert_canonical_url = core._assert_canonical_url
 _parse_json_strict = core._parse_json_strict
 
@@ -71,21 +67,9 @@ EXPECTED_AUTHORITY_MARKER: dict[str, str] = {
 }
 
 _SIGNAL_PHRASES = (
-    "paid",
-    "payment",
-    "bounty",
-    "prize",
-    "invoice",
-    "fee",
-    "commission",
-    "award",
-    "purchase order",
-    "retainer",
-    "contract",
-    "subcontract",
-    "bid",
-    "pilot",
-    "discovery",
+    "paid", "payment", "bounty", "prize", "invoice", "fee",
+    "commission", "award", "purchase order", "retainer", "contract",
+    "subcontract", "bid", "pilot", "discovery",
 )
 _NEGATIVE_COMP_RE = re.compile(
     r"(?:\b(?:unpaid|gratis|volunteer|free)\b|"
@@ -104,7 +88,9 @@ _AMOUNT_RE = re.compile(
     re.IGNORECASE,
 )
 _TOKEN_RE = re.compile(r"[a-z0-9]+")
-_NEGATOR_TOKENS = frozenset({"no", "not", "without", "zero", "unpaid", "free", "gratis", "volunteer"})
+_NEGATOR_TOKENS = frozenset(
+    {"no", "not", "without", "zero", "unpaid", "free", "gratis", "volunteer"}
+)
 
 
 def _authority_marker_url() -> str:
@@ -118,19 +104,16 @@ def _authority_marker_url() -> str:
 
 
 def _strict_compensation_category(text: str) -> str:
-    """Return the retained coarse category only for an explicit paid/award path.
-
-    This parser is intentionally conservative: explicit free/negative wording,
-    zero-valued amounts, larger-token accidents (``repaid``, ``uncontracted``),
-    and locally negated paid/award phrases cannot self-promote a send candidate.
-    """
+    """Accept only an explicit positive paid/award path; otherwise fail closed."""
     if not isinstance(text, str):
         raise ValidationError("compensation_path must be text")
     norm = unicodedata.normalize("NFKC", text.strip()).casefold()
     if not norm or len(norm) > 500 or CONTROL_RE.search(norm):
         raise ValidationError("compensation_path invalid")
     if _NEGATIVE_COMP_RE.search(norm) or _ZERO_AMOUNT_RE.search(norm):
-        raise ValidationError("compensation_path contains explicit free/negative/zero compensation language")
+        raise ValidationError(
+            "compensation_path contains explicit free/negative/zero compensation language"
+        )
 
     for match in _AMOUNT_RE.finditer(norm):
         raw = (match.group("lead") or match.group("trail") or "").replace(",", "")
@@ -156,23 +139,31 @@ def _strict_compensation_category(text: str) -> str:
     )
 
 
-class ProspectContactLock(core.ProspectContactLock):
-    """Canonical production lock with non-substitutable transport authority."""
+def _install_core_hardening() -> type:
+    """Harden the actual core class object before package import completes.
 
-    def __init__(self, token: str) -> None:
-        # No caller-supplied transport is accepted on the production surface.
-        super().__init__(token)
+    Raw predecessor methods are captured only in function closures, never left
+    as module attributes.  The resulting class is the object already stored at
+    ``_core.ProspectContactLock``; direct `_core` imports therefore cannot select
+    a weaker constructor or weaker mutation path.
+    """
+    cls = core.ProspectContactLock
+    raw_init = cls.__init__
+    raw_get = cls._get
+    raw_arm = cls.arm
+    raw_finalize = cls.finalize_contacted
 
-    @classmethod
-    def _for_tests(cls, token: str, transport: Any) -> "ProspectContactLock":
-        """Private deterministic-test constructor preserving hardening overrides."""
+    def safe_init(self: Any, token: str) -> None:
+        raw_init(self, token)
+
+    def test_constructor(inner_cls: type, token: str, transport: Any) -> Any:
         if transport is None or not callable(getattr(transport, "request", None)):
             raise TypeError("test transport must provide request()")
-        obj = cls.__new__(cls)
-        core.ProspectContactLock.__init__(obj, token, transport)
+        obj = inner_cls.__new__(inner_cls)
+        raw_init(obj, token, transport)
         return obj
 
-    def _verify_authority_marker(self) -> None:
+    def verify_authority_marker(self: Any) -> None:
         response = self._transport.request(
             "GET", _authority_marker_url(), self._headers, None
         )
@@ -197,12 +188,12 @@ class ProspectContactLock(core.ProspectContactLock):
         if marker != EXPECTED_AUTHORITY_MARKER:
             raise ValidationError("canonical authority marker mismatch")
 
-    def _get(self, target: Target):
-        self._verify_authority_marker()
-        return super()._get(target)
+    def safe_get(self: Any, target: Target):
+        verify_authority_marker(self)
+        return raw_get(self, target)
 
-    def arm(
-        self,
+    def safe_arm(
+        self: Any,
         kind: str,
         raw_target: str,
         *,
@@ -213,7 +204,8 @@ class ProspectContactLock(core.ProspectContactLock):
         compensation_path: str,
     ) -> dict[str, Any]:
         _strict_compensation_category(compensation_path)
-        return super().arm(
+        return raw_arm(
+            self,
             kind,
             raw_target,
             agent_id=agent_id,
@@ -223,8 +215,8 @@ class ProspectContactLock(core.ProspectContactLock):
             compensation_path=compensation_path,
         )
 
-    def finalize_contacted(
-        self,
+    def safe_finalize(
+        self: Any,
         kind: str,
         raw_target: str,
         *,
@@ -236,7 +228,8 @@ class ProspectContactLock(core.ProspectContactLock):
         provider_receipt: str,
     ) -> dict[str, Any]:
         _strict_compensation_category(compensation_path)
-        return super().finalize_contacted(
+        return raw_finalize(
+            self,
             kind,
             raw_target,
             agent_id=agent_id,
@@ -246,3 +239,19 @@ class ProspectContactLock(core.ProspectContactLock):
             compensation_path=compensation_path,
             provider_receipt=provider_receipt,
         )
+
+    cls.__init__ = safe_init
+    cls._for_tests = classmethod(test_constructor)
+    cls._verify_authority_marker = verify_authority_marker
+    cls._get = safe_get
+    cls.arm = safe_arm
+    cls.finalize_contacted = safe_finalize
+    return cls
+
+
+ProspectContactLock = _install_core_hardening()
+del _install_core_hardening
+
+# Mechanical invariant: these are the same class object, not wrapper/core peers.
+if core.ProspectContactLock is not ProspectContactLock:  # pragma: no cover
+    raise RuntimeError("prospect contact lock hardening identity split")

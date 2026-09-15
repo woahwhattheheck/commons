@@ -6,6 +6,7 @@ import json
 import unittest
 from urllib.parse import unquote, urlsplit
 
+from revenue.prospect_contact_lock import _core as raw_core
 from revenue.prospect_contact_lock import hardened
 from revenue.prospect_contact_lock import lock as core
 from revenue.prospect_contact_lock.test_lock import DATE, FakeTransport
@@ -43,7 +44,7 @@ class HardenedTransport(FakeTransport):
 class CanonicalHardeningTests(unittest.TestCase):
     def setUp(self):
         self.transport = HardenedTransport()
-        self.lock = hardened.ProspectContactLock._for_tests(
+        self.lock = core.ProspectContactLock._for_tests(
             "ghp_TESTTOKEN123", self.transport
         )
         self.email = "Lead.Person+Pilot@Example.com"
@@ -52,14 +53,48 @@ class CanonicalHardeningTests(unittest.TestCase):
     def acquire(self):
         return self.lock.acquire("email", self.email, **self.owner)
 
-    def test_lock_and_hardened_imports_are_same_production_class(self):
+    def test_all_import_paths_share_same_hardened_class_identity(self):
         self.assertIs(core.ProspectContactLock, hardened.ProspectContactLock)
+        self.assertIs(core.ProspectContactLock, raw_core.ProspectContactLock)
 
-    def test_public_constructor_rejects_transport_injection(self):
-        with self.assertRaises(TypeError):
-            core.ProspectContactLock("ghp_TESTTOKEN123", self.transport)
-        with self.assertRaises(TypeError):
-            hardened.ProspectContactLock("ghp_TESTTOKEN123", self.transport)
+    def test_public_constructor_rejects_transport_injection_every_import_path(self):
+        for cls in (
+            core.ProspectContactLock,
+            hardened.ProspectContactLock,
+            raw_core.ProspectContactLock,
+        ):
+            with self.subTest(cls=repr(cls)):
+                with self.assertRaises(TypeError):
+                    cls("ghp_TESTTOKEN123", self.transport)
+
+    def test_direct_core_import_missing_marker_fails_closed(self):
+        direct = raw_core.ProspectContactLock._for_tests(
+            "ghp_TESTTOKEN123", self.transport
+        )
+        self.transport.authority_available = False
+        with self.assertRaises(core.RemoteError):
+            direct.status("email", self.email)
+        self.assertEqual(self.transport.files, {})
+
+    def test_direct_core_import_uses_strict_compensation_gate(self):
+        direct = raw_core.ProspectContactLock._for_tests(
+            "ghp_TESTTOKEN123", self.transport
+        )
+        direct.acquire("email", self.email, **self.owner)
+        for bad in (
+            "unpaid volunteer work",
+            "$0 bounty",
+            "no contract",
+            "without purchase order",
+            "not a paid pilot",
+        ):
+            with self.subTest(bad=bad):
+                with self.assertRaises(core.ValidationError):
+                    direct.arm(
+                        "email", self.email, **self.owner,
+                        message_sha256=hashlib.sha256(b"hello").hexdigest(),
+                        channel="email", compensation_path=bad,
+                    )
 
     def test_direct_lock_import_missing_marker_fails_closed(self):
         direct = core.ProspectContactLock._for_tests(
