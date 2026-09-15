@@ -89,15 +89,33 @@ jobs:
           node --check test_diagnostic_dlp.js
           node --check test_carrier_from_memory.js
           python -c "import json,pathlib; [json.loads(path.read_text(encoding='utf-8')) for path in pathlib.Path('revenue/payment_ready').glob('*.json')]"
+      - name: no admission lock in the landed commit
+        run: git show --format= --no-ext-diff HEAD | python open_door_guard.py --diff-file -
+      - name: whitespace guard
+        run: git diff --check HEAD^
+
+  pinellas:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: detect Pinellas carrier delta
+        id: delta
+        shell: bash
+        run: |
+          if git diff --quiet HEAD^ -- opportunities/pinellas_26_0795_rfi_digital_evidence; then
+            echo 'changed=false' >> "$GITHUB_OUTPUT"
+          else
+            echo 'changed=true' >> "$GITHUB_OUTPUT"
+          fi
       - name: Pinellas 26-0795 digital-evidence carrier
+        if: steps.delta.outputs.changed == 'true'
         run: |
           set -eu
-          changed=0
-          git diff --quiet HEAD^ -- opportunities/pinellas_26_0795_rfi_digital_evidence || changed=1
-          if [ "$changed" -eq 0 ]; then
-            echo 'Pinellas carrier unchanged; focused verification skipped.'
-            exit 0
-          fi
           cd opportunities/pinellas_26_0795_rfi_digital_evidence
           python -m py_compile custody_reference.py tests/test_custody_reference.py
           python -m unittest discover -s tests -v
@@ -113,7 +131,3 @@ jobs:
           assert data['submission_ready'] is False, data
           assert set(data['blocking_requirements']) == {'GATE-SOURCE','GATE-ROUTE','GATE-ORG','GATE-ATTEST','GATE-OWNER'}, data
           PY
-      - name: no admission lock in the landed commit
-        run: git show --format= --no-ext-diff HEAD | python open_door_guard.py --diff-file -
-      - name: whitespace guard
-        run: git diff --check HEAD^
