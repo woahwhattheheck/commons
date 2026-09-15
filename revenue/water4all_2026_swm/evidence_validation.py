@@ -22,12 +22,18 @@ from .common import (
     _expect_int,
     _expect_list,
     _expect_str,
-    _https_url,
     _reason,
     format_time,
     parse_time,
     sha256_hex,
 )
+from .trust import (
+    canonical_partner_profile_url,
+    enforce_partner_research_shape,
+    technical_descriptor_key,
+    trusted_technical_descriptor_keys,
+)
+
 
 def _required_capabilities(topic_ids: Iterable[int]) -> Set[str]:
     required: Set[str] = set()
@@ -59,6 +65,7 @@ def _validate_concept_and_evidence(
         raise ReadinessError("concept status must remain PROPOSED_NOT_ACCEPTED in v1")
 
     evidence_list = _expect_list(raw_evidence, "$.technical_evidence")
+    trusted_keys = trusted_technical_descriptor_keys() if current_mode else set()
     reasons: List[Dict[str, Any]] = []
     normalized_evidence: List[Dict[str, Any]] = []
     seen: Set[str] = set()
@@ -80,16 +87,12 @@ def _validate_concept_and_evidence(
             raise ReadinessError("%s.path must be repository-relative" % path)
         observed_dt = parse_time(evidence.get("observed_at"), path + ".observed_at")
         observed_at = format_time(observed_dt)
-        verified = _expect_bool(evidence.get("verified"), path + ".verified")
+        caller_verified = _expect_bool(evidence.get("verified"), path + ".verified")
         publicability = _expect_str(evidence.get("publicability"), path + ".publicability")
         if publicability not in PUBLICABILITY:
             raise ReadinessError("unsupported publicability")
         raw_tags = _expect_list(evidence.get("capability_tags"), path + ".capability_tags")
-        tags: List[str] = []
-        for tag_index, raw_tag in enumerate(raw_tags):
-            tag = _expect_id(raw_tag, "%s.capability_tags[%d]" % (path, tag_index))
-            tags.append(tag)
-        tags = sorted(set(tags))
+        tags = sorted(set(_expect_id(raw_tag, "%s.capability_tags" % path) for raw_tag in raw_tags))
         item = {
             "evidence_id": evidence_id,
             "repo_full_name": repo_full_name,
@@ -97,18 +100,29 @@ def _validate_concept_and_evidence(
             "path": source_path,
             "content_sha256": content_sha256,
             "observed_at": observed_at,
-            "verified": verified,
+            "verified": caller_verified,
             "publicability": publicability,
             "capability_tags": tags,
         }
+        manifest_match = technical_descriptor_key(item) in trusted_keys if current_mode else False
+        item["trusted_manifest_match"] = manifest_match if current_mode else None
         normalized_evidence.append(item)
+
         if observed_dt > evaluated_at + _dt.timedelta(seconds=FUTURE_SKEW_SECONDS):
             reasons.append(_reason("TECHNICAL_EVIDENCE_FUTURE", "technical evidence observation is beyond future skew", [evidence_id]))
         if current_mode and evaluated_at - observed_dt > _dt.timedelta(seconds=EVIDENCE_MAX_AGE_SECONDS):
             reasons.append(_reason("TECHNICAL_EVIDENCE_STALE", "technical evidence observation exceeds the currentness window", [evidence_id]))
-        if not verified:
-            reasons.append(_reason("TECHNICAL_EVIDENCE_UNVERIFIED", "technical evidence descriptor is not verified", [evidence_id]))
-        if verified and observed_dt <= evaluated_at + _dt.timedelta(seconds=FUTURE_SKEW_SECONDS) and (
+
+        if current_mode:
+            if not manifest_match:
+                reasons.append(_reason("TECHNICAL_EVIDENCE_NOT_TRUSTED", "CURRENT technical evidence descriptor is absent from the repository-pinned baseline manifest", [evidence_id]))
+            decision_verified = manifest_match
+        else:
+            if not caller_verified:
+                reasons.append(_reason("TECHNICAL_EVIDENCE_UNVERIFIED", "historical technical evidence descriptor is not marked verified", [evidence_id]))
+            decision_verified = caller_verified
+
+        if decision_verified and observed_dt <= evaluated_at + _dt.timedelta(seconds=FUTURE_SKEW_SECONDS) and (
             not current_mode or evaluated_at - observed_dt <= _dt.timedelta(seconds=EVIDENCE_MAX_AGE_SECONDS)
         ):
             verified_tags.update(tags)
@@ -130,6 +144,7 @@ def _validate_concept_and_evidence(
         "missing_capability_tags": missing,
         "evidence": normalized_evidence,
         "evidence_generation_sha256": sha256_hex(normalized_evidence),
+        "live_verification_basis": "REPOSITORY_PINNED_MANIFEST" if current_mode else "HISTORICAL_INTEGRITY_ONLY",
     }
     return summary, reasons
 
@@ -139,13 +154,10 @@ def _validate_partner_shortlist(raw_shortlist: Any) -> Tuple[List[Dict[str, Any]
     normalized: List[Dict[str, Any]] = []
     reasons: List[Dict[str, Any]] = []
     seen: Set[str] = set()
-    forbidden_keys = {"email", "phone", "contact_email", "contact_phone", "message", "outreach_body"}
     for index, raw in enumerate(shortlist):
         path = "$.partner_shortlist[%d]" % index
         item = _expect_dict(raw, path)
-        found_forbidden = sorted(forbidden_keys.intersection(item.keys()))
-        if found_forbidden:
-            raise ReadinessError("%s contains forbidden contact/outreach keys: %s" % (path, ", ".join(found_forbidden)))
+        enforce_partner_research_shape(item, path)
         profile_id = _expect_id(item.get("profile_id"), path + ".profile_id")
         if profile_id in seen:
             raise ReadinessError("duplicate partner profile_id: %s" % profile_id)
@@ -157,7 +169,7 @@ def _validate_partner_shortlist(raw_shortlist: Any) -> Tuple[List[Dict[str, Any]
             "organization_label": _expect_str(item.get("organization_label"), path + ".organization_label"),
             "country_code": _expect_country(item.get("country_code"), path + ".country_code"),
             "topic_ids": topics,
-            "public_profile_url": _https_url(item.get("public_profile_url"), path + ".public_profile_url", "proposals.etag.ee"),
+            "public_profile_url": canonical_partner_profile_url(item.get("public_profile_url"), path + ".public_profile_url"),
             "public_fit_summary": _expect_str(item.get("public_fit_summary"), path + ".public_fit_summary"),
             "status": _expect_str(item.get("status"), path + ".status"),
         }
@@ -189,6 +201,4 @@ def _validate_commercial(raw_commercial: Any) -> Tuple[Dict[str, Any], List[Dict
         reasons.append(_reason("COMMERCIAL_PATH_NOT_OWNER_APPROVED", "paid participation path remains proposed and not owner-approved"))
     if status == "ACCEPTED_EXTERNAL" and not normalized["accepted_external"]:
         reasons.append(_reason("COMMERCIAL_ACCEPTANCE_CONTRADICTION", "commercial status claims external acceptance without matching evidence flag"))
-    # Even when these inputs are true, this compiler never turns them into provider
-    # or submission authority.  They are facts for owner review only.
     return normalized, reasons
