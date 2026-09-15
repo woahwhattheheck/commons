@@ -1,0 +1,192 @@
+{
+  "opportunity_id": "INKOMOKO-AI-TRAINING-PLATFORM-2026",
+  "qualification": [
+    {
+      "evidence_sha256": null,
+      "id": "THREE_COMPARABLE_REFERENCES",
+      "state": "OWNER_EVIDENCE_REQUIRED"
+    },
+    {
+      "evidence_sha256": null,
+      "id": "PRODUCTION_AI_CONVERSATIONAL_EXPERIENCE",
+      "state": "OWNER_EVIDENCE_REQUIRED"
+    },
+    {
+      "evidence_sha256": null,
+      "id": "WHATSAPP_MULTICHANNEL_EXPERIENCE",
+      "state": "OWNER_EVIDENCE_REQUIRED"
+    },
+    {
+      "evidence_sha256": null,
+      "id": "SENSITIVE_CBS_INTEGRATION_EXPERIENCE",
+      "state": "OWNER_EVIDENCE_REQUIRED"
+    },
+    {
+      "evidence_sha256": null,
+      "id": "MULTILINGUAL_NLP_CAPABILITY",
+      "state": "OWNER_EVIDENCE_REQUIRED"
+    },
+    {
+      "evidence_sha256": null,
+      "id": "SECURITY_PRIVACY_TRACK_RECORD",
+      "state": "OWNER_EVIDENCE_REQUIRED"
+    },
+    {
+      "evidence_sha256": null,
+      "id": "EMERGING_MARKET_LOW_CONNECTIVITY_EXPERIENCE",
+      "state": "OWNER_EVIDENCE_REQUIRED"
+    },
+    {
+      "evidence_sha256": null,
+      "id": "MULTIYEAR_FINANCIAL_CAPACITY",
+      "state": "OWNER_EVIDENCE_REQUIRED"
+    },
+    {
+      "evidence_sha256": null,
+      "id": "LEGAL_COMPANY_DOCUMENTS",
+      "state": "OWNER_EVIDENCE_REQUIRED"
+    },
+    {
+      "evidence_sha256": null,
+      "id": "NAMED_TEAM_CVS",
+      "state": "OWNER_EVIDENCE_REQUIRED"
+    },
+    {
+      "evidence_sha256": null,
+      "id": "ITEMIZED_COMMERCIAL_PRICE",
+      "state": "OWNER_EVIDENCE_REQUIRED"
+    }
+  ],
+  "sources": [
+    {
+      "authority": "PUBLIC_REPRODUCTION",
+      "captured_at": "2026-09-13T10:00:00Z",
+      "content_sha256": "350c892bd891f10713cdfe2a1b83ba67c7d7f5371377d3957ad67bac95dad104",
+      "id": "PUBLIC-LINKEDIN-REPRODUCTION",
+      "reviewed": true,
+      "url": "https://ke.linkedin.com/jobs/view/rfp-development-of-ai-powered-entrepreneur-training-support-platform-at-inkomoko-4463198467"
+    },
+    {
+      "authority": "PUBLIC_REPRODUCTION",
+      "captured_at": "2026-09-13T10:00:00Z",
+      "content_sha256": "29ba3dec247dc1972aa174b361c16b3c5763f9af785450343eeddf9036c0fb1f",
+      "id": "PUBLIC-RIPPLEWORKS-REPRODUCTION",
+      "reviewed": true,
+      "url": "https://careers.rippleworks.org/companies/inkomoko/jobs/92194681-rfp-development-of-ai-powered-entrepreneur-training-support-platform"
+    }
+  ],
+  "submission": [
+    {
+      "evidence_sha256": null,
+      "id": "CONTROLLING_BUYER_PACKET",
+      "state": "OWNER_EVIDENCE_REQUIRED"
+    },
+    {
+      "evidence_sha256": null,
+      "id": "TECHNICAL_PROPOSAL_COMPLETE",
+      "state": "OWNER_EVIDENCE_REQUIRED"
+    },
+    {
+      "evidence_sha256": null,
+      "id": "FINANCIAL_PROPOSAL_COMPLETE",
+      "state": "OWNER_EVIDENCE_REQUIRED"
+    },
+    {
+      "evidence_sha256": null,
+      "id": "REFERENCES_VERIFIED",
+      "state": "OWNER_EVIDENCE_REQUIRED"
+    },
+    {
+      "evidence_sha256": null,
+      "id": "LEGAL_DOCUMENTS_VERIFIED",
+      "state": "OWNER_EVIDENCE_REQUIRED"
+    },
+    {
+      "evidence_sha256": null,
+      "id": "TEAM_AND_CVS_VERIFIED",
+      "state": "OWNER_EVIDENCE_REQUIRED"
+    },
+    {
+      "evidence_sha256": null,
+      "id": "PROJECT_PLAN_VERIFIED",
+      "state": "OWNER_EVIDENCE_REQUIRED"
+    },
+    {
+      "evidence_sha256": null,
+      "id": "SUPPORT_MODEL_VERIFIED",
+      "state": "OWNER_EVIDENCE_REQUIRED"
+    },
+    {
+      "evidence_sha256": null,
+      "id": "RISK_REGISTER_VERIFIED",
+      "state": "OWNER_EVIDENCE_REQUIRED"
+    },
+    {
+      "evidence_sha256": null,
+      "id": "PRICE_OWNER_APPROVED",
+      "state": "OWNER_EVIDENCE_REQUIRED"
+    }
+  ],
+  "technical": [
+    {
+      "evidence_sha256": "69a296d000a92c7d2ba478781f5fdfe208ae1ac555d0e9dbd76a4c4bef125165",
+      "id": "PROGRESSIVE_TRAINING",
+      "state": "SUPPORTED"
+    },
+    {
+      "evidence_sha256": "7f8360c23fcf1002ac0e95471e92ad7f14253dc4d2187228dec9c16a1a8d5c48",
+      "id": "ALWAYS_ON_SUPPORT",
+      "state": "SUPPORTED"
+    },
+    {
+      "evidence_sha256": "79d00167e2719558f37cae8f3fc715030a527f5457bae1f57bc8caad24dd1979",
+      "id": "HUMAN_ESCALATION_CONTEXT",
+      "state": "SUPPORTED"
+    },
+    {
+      "evidence_sha256": "5c0924bb05682e7b8854168c151de681f7814b8c16e62fb02355f377dbee6b59",
+      "id": "DYNAMIC_KNOWLEDGE",
+      "state": "SUPPORTED"
+    },
+    {
+      "evidence_sha256": "8f7b003def0205052568c482922bb05534a242f1f7636c8edead2c1086395141",
+      "id": "FINANCIAL_PRODUCT_ENQUIRIES",
+      "state": "SUPPORTED"
+    },
+    {
+      "evidence_sha256": "639a720558a7a7d077e5e96ac57a3ddd23b32e53ce46e7d0b1b09bc9c4c753f9",
+      "id": "CBS_INKOBOOK_POWERBI_BOUNDARIES",
+      "state": "SUPPORTED"
+    },
+    {
+      "evidence_sha256": "8e6efbcc62d3059d08d3a1dfaea078e0304590adb682e76cfd94700437e0a037",
+      "id": "WHATSAPP_MULTICHANNEL",
+      "state": "SUPPORTED"
+    },
+    {
+      "evidence_sha256": "4149cfe028f1ff102c31c1b59094592892cbb2506cfdcc6320d21bb8f79d66ed",
+      "id": "RBAC_AUDIT_LOGGING",
+      "state": "SUPPORTED"
+    },
+    {
+      "evidence_sha256": "95029c78351b480c763628251fbf6f9b1bc13ed2572f38a205fef465f72936f3",
+      "id": "MULTILINGUAL_EN_FR_RW_SW",
+      "state": "SUPPORTED"
+    },
+    {
+      "evidence_sha256": "2f41f2000b6ecc27c5d4539d249180af2343724f442f423a3af92f7def2bb160",
+      "id": "CONFIGURABLE_WORKFLOWS",
+      "state": "SUPPORTED"
+    },
+    {
+      "evidence_sha256": "c88f4e98deff1b2cc442fa7009e0b783894a55ff71cb626bb5d8ae0f1040d5e0",
+      "id": "REALTIME_ANALYTICS_APIS",
+      "state": "SUPPORTED"
+    },
+    {
+      "evidence_sha256": "da73c0742442c93d0b13ae9450f6ef0fa761b6469004cae34e7edcc453db0854",
+      "id": "PRIVACY_SECURITY_SCALABILITY",
+      "state": "SUPPORTED"
+    }
+  ]
+}
