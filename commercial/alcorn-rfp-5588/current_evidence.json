@@ -1,0 +1,50 @@
+{
+  "schema": "alcorn-rfp5588-evidence/v1",
+  "source_packet": {
+    "gmail_message_id": "1a0a0186cbd89b53",
+    "filename": "RFP#5588 NVIDIA v3.pdf",
+    "sha256": "107f0cc3ae880e4000ad89f0d6db6ad4908600afcdafcaf8d66ff4303170f688",
+    "page_count": 41
+  },
+  "current_time": "2026-09-14T21:05:00-04:00",
+  "bid_model": "nvidia_prime_subcontract",
+  "buyer_artifacts": {
+    "section_viii_cost_information": {"state": "MISSING_BUYER_ARTIFACT"},
+    "section_ix_references": {"state": "MISSING_BUYER_ARTIFACT"},
+    "section_vii_item_12_requirements_matrix": {"state": "MISSING_BUYER_ARTIFACT"}
+  },
+  "nvidia_prime": {
+    "nvidia_partner": {
+      "name": "UNCONFIRMED",
+      "status": "UNKNOWN",
+      "authorization_evidence_id": "MISSING",
+      "authorization_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "effective_date": "2026-09-14",
+      "expires_date": "2026-09-14",
+      "scope": [],
+      "commitment_evidence_id": "MISSING",
+      "commitment_current": false,
+      "commitment_revoked": false
+    },
+    "ai_infrastructure_engagements": [],
+    "references": [],
+    "legal_entity_evidence_id": "",
+    "certificate_of_liability_insurance_evidence_id": "",
+    "everify_evidence_id": "",
+    "taxpayer_id_confirmation_evidence_id": "",
+    "order_remit_address_evidence_id": "",
+    "amendments_review_evidence_id": "",
+    "insurance_expires_date": "2026-09-14",
+    "pricing_approved": false,
+    "signature_officer_ready": false,
+    "sealed_delivery_plan_ready": false,
+    "training_sample_ready": false,
+    "warranty_support_ready": false
+  },
+  "tjlabs_support": {
+    "commitment_current": false,
+    "commitment_evidence_id": "MISSING",
+    "workshare_evidence_id": "commercial/alcorn-rfp-5588/workshare.md",
+    "capabilities": ["AI_TRAINING_PLAYBOOKS", "NIM_LLM_ENABLEMENT", "ACCEPTANCE_TESTING", "DOCUMENTATION"]
+  }
+}
