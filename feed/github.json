@@ -1,9 +1,9 @@
 {
   "counts": {
     "open_issues": 110,
-    "open_pull_requests": 57,
+    "open_pull_requests": 54,
     "runs_in_progress": 19,
-    "runs_queued": 170
+    "runs_queued": 172
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -37,10 +37,10 @@
       "branch": "zanv-p7/sd13365-partner-readiness-20260913",
       "created_at": "2026-09-13T10:03:07Z",
       "draft": false,
-      "head_sha": "b8264a412c17243e5f2fb41441bd7ea56005fe9a",
+      "head_sha": "ef871e6822f6f863b165d2f64b866c6829d4254b",
       "number": 13712,
       "title": "revenue: add San Diego RFP 13365 partner-readiness gate",
-      "updated_at": "2026-09-15T03:19:16Z"
+      "updated_at": "2026-09-15T07:01:12Z"
     },
     {
       "author": "woahwhattheheck",
@@ -68,25 +68,25 @@
   "newest_pulls": [
     {
       "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-helix/execution-authority-prbase-recovery-20260915",
-      "created_at": "2026-09-15T06:45:42Z",
+      "base": "ziq-k4r9/muse-election-v2-consolidation-14503",
+      "branch": "zzq-n4p8/muse-v2-current-auth-integration-14503",
+      "created_at": "2026-09-15T06:58:44Z",
       "draft": false,
-      "head_sha": "166c4b99f2528420d6d50bc54f755c28e92c0056",
-      "number": 14680,
-      "title": "coordination: bind execution authority to exact PR/base composition",
-      "updated_at": "2026-09-15T06:48:10Z"
+      "head_sha": "4396384b395b84727f7a0f453d5654f03ec97125",
+      "number": 14684,
+      "title": "Compose Muse v2 current-authority boundary",
+      "updated_at": "2026-09-15T06:58:44Z"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "z-sol/cuhkx-large-readiness-20260915",
-      "created_at": "2026-09-15T06:45:33Z",
+      "branch": "z-helix/execution-authority-prbase-recovery-20260915",
+      "created_at": "2026-09-15T06:45:42Z",
       "draft": false,
-      "head_sha": "510c8abd4f745a98c7f3c73b778a302e520b192b",
-      "number": 14679,
-      "title": "CUHK-X: bind organizer authorization and fail-closed entry readiness",
-      "updated_at": "2026-09-15T06:47:45Z"
+      "head_sha": "3c801971265381a084d19eb064839ff74747015e",
+      "number": 14680,
+      "title": "coordination: bind execution authority to exact PR/base composition",
+      "updated_at": "2026-09-15T07:02:42Z"
     },
     {
       "author": "woahwhattheheck",
@@ -116,10 +116,10 @@
       "branch": "zym-l4v8/media-rights-ops-20260915",
       "created_at": "2026-09-15T06:26:21Z",
       "draft": false,
-      "head_sha": "8b30a9fb489432de0ead07d4a268403e173db2b0",
+      "head_sha": "a5cc71da1b595768d04e38d16107e088e9f007a2",
       "number": 14670,
       "title": "revenue: add content rights usage-window operations desk",
-      "updated_at": "2026-09-15T06:47:19Z"
+      "updated_at": "2026-09-15T07:02:55Z"
     },
     {
       "author": "woahwhattheheck",
@@ -127,10 +127,10 @@
       "branch": "zsr-q4n7/commercial-funnel-current-main-recovery-20260915",
       "created_at": "2026-09-15T06:23:45Z",
       "draft": false,
-      "head_sha": "e6b348767281a303f5782c2c7cfa751a10bf25f3",
+      "head_sha": "877b07a41f1b13b5d3cdeec635e9b4dcec75ac47",
       "number": 14669,
       "title": "Recover commercial-funnel evidence/time authority on current main",
-      "updated_at": "2026-09-15T06:45:24Z"
+      "updated_at": "2026-09-15T06:55:06Z"
     },
     {
       "author": "woahwhattheheck",
@@ -156,17 +156,6 @@
     },
     {
       "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zrg-h4q8/pinellas-current-main-recovery-20260915",
-      "created_at": "2026-09-15T05:58:16Z",
-      "draft": false,
-      "head_sha": "f63f4b8df010dc04ba976b1b0e061d466efec5c8",
-      "number": 14661,
-      "title": "revenue: recover repaired Pinellas digital-evidence RFI carrier onto current main",
-      "updated_at": "2026-09-15T06:46:52Z"
-    },
-    {
-      "author": "woahwhattheheck",
       "base": "zrsb/product-lane-collision-preflight-20260915",
       "branch": "zne-k7m4/collision-preflight-red-closure-20260915",
       "created_at": "2026-09-15T05:48:13Z",
@@ -175,12 +164,23 @@
       "number": 14658,
       "title": "Fix collision-preflight false-CLEAR authority gaps",
       "updated_at": "2026-09-15T05:56:48Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zns-r8k5/commercial-waste-postmerge-authority-20260914",
+      "created_at": "2026-09-15T05:22:37Z",
+      "draft": false,
+      "head_sha": "576e256cada30f206de9ebb8d37b5e9327768c1c",
+      "number": 14651,
+      "title": "Fix commercial-waste invoice custody and current-service authority",
+      "updated_at": "2026-09-15T07:01:14Z"
     }
   ],
   "open_heads": {
     "13533": "73e73de79cb62cf2f58005efab027138ded6f282",
     "13701": "437f3e033ae351d825dc7761432a11a78e528b03",
-    "13712": "b8264a412c17243e5f2fb41441bd7ea56005fe9a",
+    "13712": "ef871e6822f6f863b165d2f64b866c6829d4254b",
     "13740": "dc8de234ed4da90cdbaece2e1d06b9c6925cdf2e",
     "13741": "233642dbbf5dc85ef443a2e34d2bdb9406163b21",
     "13779": "cfe6ed2b5bf932f99e9adccbd2cca508a96f2a4e",
@@ -192,17 +192,16 @@
     "14122": "1c95d8463cbaf7e6d11d266d292a5b7792a2dbbb",
     "14188": "1859cf0bfc12f2819f3f63fd4349ed06ca5f341b",
     "14209": "61b6955c3db6ae10a71d54238243c87576a77166",
-    "14221": "bc063456d9fcff764b33a7f9079aed7b889ac09f",
     "14270": "86c47a9e32a67eece1382899a898d9ccf40e26da",
     "14299": "cd6a66435851b57f61c5a68c4ab7f8356701f910",
     "14314": "742aeafae8c258759c435bf6758e1546ff258c56",
     "14317": "767953bfe5313334e9011709afaac685b0901a26",
     "14321": "1810cbac9e1fc9a0beddfcb13af37f6aa60726aa",
-    "14322": "2bf62321f0e7775083be8f30d43c2c8d458cc50e",
+    "14322": "b6fc93812a9b72a1d71015f99069e833262e7d74",
     "14333": "26e7110348d2ab0d994adf68d5e0f14ad8677e38",
     "14343": "c04b1fa4adcdb5cf928bb163c158a3adec828ea3",
     "14356": "4d55e009437563dd254dfa38e2cd4bfaffec2f10",
-    "14392": "09b4acdf087532dbffd2e6044b4e381d5ae4be59",
+    "14392": "46869c1a76e01934a686e1a5e65daad293cfebcb",
     "14395": "1b6907c68885d2feac44c15c2dd39f128864640d",
     "14454": "20a25009ce7ae2b144ab19dcd3c0e0e92f5f60cd",
     "14464": "dd41745b9c6796b9215a232bbfc3387e2c4a5b74",
@@ -218,28 +217,92 @@
     "14568": "d374fbe3553da4b1b4c1e512b9107e162cd92402",
     "14578": "ad1381417d6b7b95844d993d2cc9cf409794cb84",
     "14589": "c534accfe4842a0c4e4acf2ece9b5a21eb6a3b4e",
-    "14600": "734c70a6a15235e7e8b157e1397e0850f7badd28",
     "14612": "a46937dbeaa21caa72c30cbb03b8d535163ccc13",
     "14632": "ec91a123231b3ad8f8813c22dd9751b1a7c2b6b4",
     "14641": "ada6bccd3ec08da69b0572b08943c35ea0c0c5a4",
     "14648": "d422798850c2803484a2da2b77df3e515196bc74",
     "14650": "f7f86ce04a8a1e493cce18508acdd1807ab0cad6",
-    "14651": "2452c93dc8887dd77adf9f7d9fe2d70afcf3ce12",
+    "14651": "576e256cada30f206de9ebb8d37b5e9327768c1c",
     "14658": "bcc29688e888b38a5ce6ee1feb734b3d0060636f",
-    "14661": "f63f4b8df010dc04ba976b1b0e061d466efec5c8",
     "14664": "f1c9800387b399949a4bf9f85e10b73500042c41",
     "14668": "7d6b74618dbae948f7bc85e07db21ee32c5346a5",
-    "14669": "e6b348767281a303f5782c2c7cfa751a10bf25f3",
-    "14670": "8b30a9fb489432de0ead07d4a268403e173db2b0",
+    "14669": "877b07a41f1b13b5d3cdeec635e9b4dcec75ac47",
+    "14670": "a5cc71da1b595768d04e38d16107e088e9f007a2",
     "14672": "36be284452141d26cdff4b74efb8f185b27c4b32",
     "14674": "4546876d1e15d2a065da35574c791d1b6ef28b3e",
-    "14679": "510c8abd4f745a98c7f3c73b778a302e520b192b",
-    "14680": "166c4b99f2528420d6d50bc54f755c28e92c0056"
+    "14680": "3c801971265381a084d19eb064839ff74747015e",
+    "14684": "4396384b395b84727f7a0f453d5654f03ec97125"
   },
-  "pulls_listed": 57,
+  "pulls_listed": 54,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 8.9,
+  "queue_depth_per_runner": 9.1,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zrg-h4q8/pinellas-current-main-recovery-20260915",
+      "closed_at": "2026-09-15T07:01:57Z",
+      "head_sha": "f63f4b8df010dc04ba976b1b0e061d466efec5c8",
+      "merged_at": "2026-09-15T07:01:57Z",
+      "number": 14661,
+      "state": "MERGED",
+      "title": "revenue: recover repaired Pinellas digital-evidence RFI carrier onto current main"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "zanv-p7/sd13365-partner-readiness-20260913",
+      "branch": "keystone/sd13365-post-commit-parent-fence-20260914",
+      "closed_at": "2026-09-15T07:01:10Z",
+      "head_sha": "734c70a6a15235e7e8b157e1397e0850f7badd28",
+      "merged_at": "2026-09-15T07:01:10Z",
+      "number": 14600,
+      "state": "MERGED",
+      "title": "SD13365: close retained-dirfd parent generation races"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z-sol/cuhkx-large-readiness-20260915",
+      "closed_at": "2026-09-15T06:56:57Z",
+      "head_sha": "00e763b5849ffcca9272d5bab7145aadc39ca83a",
+      "merged_at": "2026-09-15T06:56:57Z",
+      "number": 14679,
+      "state": "MERGED",
+      "title": "CUHK-X: bind organizer authorization and fail-closed entry readiness"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z-sol-sentinel/coordination-state-core-sparse-20260915",
+      "closed_at": "2026-09-15T06:55:34Z",
+      "head_sha": "b2e1832b6068bc9688c01381b402546a1f207443",
+      "merged_at": "2026-09-15T06:55:34Z",
+      "number": 14681,
+      "state": "MERGED",
+      "title": "ci: include swarm review core in coordination sparse checkout"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "z-helix/execution-authority-prbase-recovery-20260915",
+      "branch": "zcf-x7m3/execution-authority-coordination-sparsefix-20260915",
+      "closed_at": "2026-09-15T06:54:22Z",
+      "head_sha": "dc90365b9713b051efdb3764422dd7739d5a7bbc",
+      "merged_at": null,
+      "number": 14682,
+      "state": "CLOSED",
+      "title": "ci: restore coordination-state coverage for swarm review core"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zbj-c6h9-signoz-research-20260913",
+      "closed_at": "2026-09-15T06:48:46Z",
+      "head_sha": "bc063456d9fcff764b33a7f9079aed7b889ac09f",
+      "merged_at": null,
+      "number": 14221,
+      "state": "CLOSED",
+      "title": "revenue: qualify SigNoz for bounded survival-proof outreach"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -338,76 +401,10 @@
       "number": 14666,
       "state": "MERGED",
       "title": "revenue: make CAS benchmark snapshots independently self-verifying"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-cairnline/creator-fetch-native-getters-14637",
-      "closed_at": "2026-09-15T06:27:51Z",
-      "head_sha": "e216ecc4655b6db2d361b9a4094f0c2751fd3b25",
-      "merged_at": "2026-09-15T06:27:51Z",
-      "number": 14649,
-      "state": "MERGED",
-      "title": "Fix Creator Desk native Request accessor-shadow bearer leak"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "zns-r8k5/commercial-waste-postmerge-authority-20260914",
-      "branch": "z-sol-17/commercial-waste-migration-auth-20260915",
-      "closed_at": "2026-09-15T06:11:41Z",
-      "head_sha": "d81dddea30c5ed87e176ee139d6ff97d8c8ea94d",
-      "merged_at": "2026-09-15T06:11:41Z",
-      "number": 14663,
-      "state": "MERGED",
-      "title": "Repair authenticated commercial-waste custody backfill"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-solforge/openkylin-memory-dynamics-v2-20260915",
-      "closed_at": "2026-09-15T06:05:21Z",
-      "head_sha": "c2d8e637e3e9bf464123ccfd7c29a51c4c8d3766",
-      "merged_at": "2026-09-15T06:05:21Z",
-      "number": 14662,
-      "state": "MERGED",
-      "title": "openkylin: Memory Dynamics V2 adversarial benchmark + stability + deb"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "zna/pinellas-26-0795-rfi-digital-evidence",
-      "branch": "zrg-h4q8/pinellas-stale-manifest-cleanup-20260915",
-      "closed_at": "2026-09-15T05:54:44Z",
-      "head_sha": "e0f29858671dfa507755ab6efce89bb1f6dbda80",
-      "merged_at": "2026-09-15T05:54:44Z",
-      "number": 14660,
-      "state": "MERGED",
-      "title": "fix: remove stale unscoped Pinellas checksum manifest"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "zrg-h4q8/adia-current-main-recovery-20260915",
-      "branch": "zrg-h4q8/adia-synthetic-receipt-repair-20260915",
-      "closed_at": "2026-09-15T05:50:07Z",
-      "head_sha": "ad15f6d394cc32b8a35bd0e99daf8a1f69375ed6",
-      "merged_at": "2026-09-15T05:50:07Z",
-      "number": 14656,
-      "state": "MERGED",
-      "title": "fix: refresh ADIA synthetic receipt after detector hardening"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "zna/pinellas-26-0795-rfi-digital-evidence",
-      "branch": "zrg-h4q8/pinellas-authority-witness-repair-20260915",
-      "closed_at": "2026-09-15T05:49:27Z",
-      "head_sha": "868c98345950373a3df9ce5ca717e67b6ff224ce",
-      "merged_at": "2026-09-15T05:49:27Z",
-      "number": 14655,
-      "state": "MERGED",
-      "title": "fix: bind Pinellas custody history and authority to external roots"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-15T06:48:19Z",
+  "unchanged_since": "2026-09-15T07:03:33Z",
   "undatable_pulls": []
 }
