@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import copy
 import importlib
+import threading
 import unittest
 
 import research.nih_spark_pubmed_2026 as nih_package
@@ -15,6 +16,7 @@ from research.nih_spark_pubmed_2026 import (
     text_sha256,
     verify_run_receipt,
 )
+from research.nih_spark_pubmed_2026 import _baseline_core as baseline_core
 from research.nih_spark_pubmed_2026 import baseline
 from research.nih_spark_pubmed_2026 import retrieval_authority as authority
 
@@ -137,6 +139,58 @@ class RetrievalAuthorityTests(unittest.TestCase):
         rescored["Q-DEPTH"][0]["score"] += 1.0
         with self.assertRaisesRegex(ContractError, "canonical BM25 evidence"):
             evaluate_bundle(CORPUS, CASES, rescored, ANSWERS)
+
+    def test_y_concurrent_reload_never_publishes_predecessor_authority(self):
+        # importlib.reload() executes into the already-published module object.
+        # Freeze the facade copy loop on an appended core sentinel after every
+        # historical definition has been visited, then inspect the live module
+        # from this thread while reload is still in progress. Before the fix the
+        # three predecessor authority callables were visible in this window.
+        entered = threading.Event()
+        release = threading.Event()
+        failures: list[BaseException] = []
+
+        class ReloadBarrier:
+            @property
+            def __module__(self) -> str:
+                entered.set()
+                if not release.wait(5.0):
+                    raise RuntimeError("reload barrier timed out")
+                return "reload_barrier"
+
+        barrier = ReloadBarrier()
+        setattr(baseline_core, "_reload_authority_test_barrier", barrier)
+
+        def do_reload() -> None:
+            try:
+                importlib.reload(baseline)
+            except BaseException as exc:  # pragma: no cover - surfaced below
+                failures.append(exc)
+
+        worker = threading.Thread(target=do_reload, name="nih-baseline-reload-hostile")
+        try:
+            worker.start()
+            self.assertTrue(entered.wait(5.0), "reload never reached hostile barrier")
+
+            self.assertIs(baseline.evaluate_bundle, authority.evaluate_bundle)
+            self.assertIs(baseline.build_run_receipt, authority.build_run_receipt)
+            self.assertIs(baseline.verify_run_receipt, authority.verify_run_receipt)
+            self.assertIsNot(baseline.evaluate_bundle, authority._BASE_EVALUATE)
+            self.assertIsNot(baseline.build_run_receipt, authority._BASE_BUILD_RUN_RECEIPT)
+            self.assertIsNot(baseline.verify_run_receipt, baseline_core.verify_run_receipt)
+        finally:
+            release.set()
+            worker.join(5.0)
+            if hasattr(baseline_core, "_reload_authority_test_barrier"):
+                delattr(baseline_core, "_reload_authority_test_barrier")
+            if hasattr(baseline, "_reload_authority_test_barrier"):
+                delattr(baseline, "_reload_authority_test_barrier")
+
+        self.assertFalse(worker.is_alive(), "reload thread did not complete")
+        self.assertEqual(failures, [])
+        self.assertIs(baseline.evaluate_bundle, authority.evaluate_bundle)
+        self.assertIs(baseline.build_run_receipt, authority.build_run_receipt)
+        self.assertIs(baseline.verify_run_receipt, authority.verify_run_receipt)
 
     def test_z_baseline_reload_and_repeated_reload_preserve_authority(self):
         # This is the exact post-merge predecessor killer for #14607. Before the
