@@ -1,9 +1,9 @@
 {
   "counts": {
-    "open_issues": 109,
+    "open_issues": 108,
     "open_pull_requests": 51,
-    "runs_in_progress": 19,
-    "runs_queued": 88
+    "runs_in_progress": 16,
+    "runs_queued": 106
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -68,25 +68,36 @@
   "newest_pulls": [
     {
       "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "lattice/mapping-equity-cli-authority-14623",
-      "created_at": "2026-09-15T04:50:15Z",
+      "base": "sol-z17/exact-byte-late-fsync-14617",
+      "branch": "zid-h8v3/exact-byte-v2-review-14627",
+      "created_at": "2026-09-15T04:55:54Z",
       "draft": false,
-      "head_sha": "64ae3af82954e1afe8f2a3c1698d71ef136e3b19",
-      "number": 14630,
-      "title": "Fix Mapping Equity CLI execution-authority rebinding",
-      "updated_at": "2026-09-15T04:50:15Z"
+      "head_sha": "e763f9683249582ef98d32c90d82910daa973b91",
+      "number": 14635,
+      "title": "Close exact-byte v2 lexical path and stage-evidence gaps",
+      "updated_at": "2026-09-15T04:55:54Z"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "zyp-v5q9/mapping-equity-cli-authority-14623",
-      "created_at": "2026-09-15T04:47:07Z",
+      "branch": "z-fathom/swarm-channel-drift-14626-20260915",
+      "created_at": "2026-09-15T04:54:57Z",
       "draft": false,
-      "head_sha": "f82fd376c2396cdeff337514de1108c1b3271659",
-      "number": 14628,
-      "title": "Fix Mapping Equity CLI execution-authority rebinding",
-      "updated_at": "2026-09-15T04:50:55Z"
+      "head_sha": "9f0246b75ac04c53fd88291c0fa825e52d88a0f0",
+      "number": 14634,
+      "title": "Swarm: audit specialist-channel registry drift and dead routes",
+      "updated_at": "2026-09-15T04:55:55Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zargent/snoco-packet-gap-inventory-20260915",
+      "created_at": "2026-09-15T04:52:07Z",
+      "draft": false,
+      "head_sha": "6c5b5784edaa70f93af82bd06b450a64694c62db",
+      "number": 14632,
+      "title": "Pin Snohomish packet-required gap inventory",
+      "updated_at": "2026-09-15T04:52:07Z"
     },
     {
       "author": "woahwhattheheck",
@@ -97,18 +108,7 @@
       "head_sha": "ea6f736fe49fe3d6f17c0208f9371511306ff1cc",
       "number": 14627,
       "title": "Fix exact-byte artifact sets with atomic directory commit",
-      "updated_at": "2026-09-15T04:49:32Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zccw-h8r5/creator-desk-operator-fetch-origin-repair-20260915",
-      "created_at": "2026-09-15T04:44:31Z",
-      "draft": false,
-      "head_sha": "1ad25e7f1d9f0df8f1fc2ad7be1ac28d62969336",
-      "number": 14624,
-      "title": "fix(creator-desk): prevent cross-origin operator bearer forwarding",
-      "updated_at": "2026-09-15T04:49:30Z"
+      "updated_at": "2026-09-15T04:51:23Z"
     },
     {
       "author": "woahwhattheheck",
@@ -206,7 +206,7 @@
     "14333": "26e7110348d2ab0d994adf68d5e0f14ad8677e38",
     "14343": "c04b1fa4adcdb5cf928bb163c158a3adec828ea3",
     "14356": "4d55e009437563dd254dfa38e2cd4bfaffec2f10",
-    "14392": "a7a44ad309247a9758ca8c17cd014b5b7877b84c",
+    "14392": "37143e2aae004ba8218a5d1c16c8b383a434c8a9",
     "14395": "1b6907c68885d2feac44c15c2dd39f128864640d",
     "14454": "20a25009ce7ae2b144ab19dcd3c0e0e92f5f60cd",
     "14464": "dd41745b9c6796b9215a232bbfc3387e2c4a5b74",
@@ -225,15 +225,59 @@
     "14600": "734c70a6a15235e7e8b157e1397e0850f7badd28",
     "14612": "a46937dbeaa21caa72c30cbb03b8d535163ccc13",
     "14616": "8d4a4215103a46c42c6d4af54fbf42e41e253253",
-    "14624": "1ad25e7f1d9f0df8f1fc2ad7be1ac28d62969336",
     "14627": "ea6f736fe49fe3d6f17c0208f9371511306ff1cc",
-    "14628": "f82fd376c2396cdeff337514de1108c1b3271659",
-    "14630": "64ae3af82954e1afe8f2a3c1698d71ef136e3b19"
+    "14632": "6c5b5784edaa70f93af82bd06b450a64694c62db",
+    "14634": "9f0246b75ac04c53fd88291c0fa825e52d88a0f0",
+    "14635": "e763f9683249582ef98d32c90d82910daa973b91"
   },
   "pulls_listed": 51,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 4.6,
+  "queue_depth_per_runner": 6.6,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "lattice/mapping-equity-cli-authority-14623",
+      "closed_at": "2026-09-15T04:54:06Z",
+      "head_sha": "64ae3af82954e1afe8f2a3c1698d71ef136e3b19",
+      "merged_at": null,
+      "number": 14630,
+      "state": "CLOSED",
+      "title": "Fix Mapping Equity CLI execution-authority rebinding"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zyp-v5q9/mapping-equity-cli-authority-14623",
+      "closed_at": "2026-09-15T04:53:39Z",
+      "head_sha": "f82fd376c2396cdeff337514de1108c1b3271659",
+      "merged_at": "2026-09-15T04:53:39Z",
+      "number": 14628,
+      "state": "MERGED",
+      "title": "Fix Mapping Equity CLI execution-authority rebinding"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zar-m7k2/creator-desk-workspace-backup-auth-test",
+      "closed_at": "2026-09-15T04:53:07Z",
+      "head_sha": "3b477ddfc193a705298c224b466772143411f6e2",
+      "merged_at": null,
+      "number": 14631,
+      "state": "CLOSED",
+      "title": "test(creator-desk): authenticate live workspace backup"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zccw-h8r5/creator-desk-operator-fetch-origin-repair-20260915",
+      "closed_at": "2026-09-15T04:52:44Z",
+      "head_sha": "1ad25e7f1d9f0df8f1fc2ad7be1ac28d62969336",
+      "merged_at": "2026-09-15T04:52:44Z",
+      "number": 14624,
+      "state": "MERGED",
+      "title": "fix(creator-desk): prevent cross-origin operator bearer forwarding"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -354,54 +398,10 @@
       "number": 14613,
       "state": "CLOSED",
       "title": "fix(mapping-equity): bind redirect provenance to canonical source"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "zsfg-h7n2/pursuit-portfolio-v2-fix-forward-20260914",
-      "branch": "zil-k7m4/pursuit-portfolio-publication-donor-to-14604-20260914",
-      "closed_at": "2026-09-15T03:30:40Z",
-      "head_sha": "8e059a5cf0f305283c7c149ed5356bb642f083a5",
-      "merged_at": null,
-      "number": 14611,
-      "state": "CLOSED",
-      "title": "Donor: publication/receipt closure into pursuit portfolio #14604"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "zsfg-h7n2/pursuit-portfolio-v2-fix-forward-20260914",
-      "branch": "zil-k7m4/pursuit-portfolio-postmerge-fix-20260914",
-      "closed_at": "2026-09-15T03:29:26Z",
-      "head_sha": "6b100d4982a01aebdadf8086025c59f0c454f3d1",
-      "merged_at": "2026-09-15T03:29:26Z",
-      "number": 14605,
-      "state": "MERGED",
-      "title": "Donor: add pursuit portfolio publication/receipt closure to #14604"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zof-q7v4/pursuit-portfolio-publication-fix-20260914",
-      "closed_at": "2026-09-15T03:29:19Z",
-      "head_sha": "b3b219859a02f6cc8ce0efac417110673bf5c5c3",
-      "merged_at": "2026-09-15T03:29:19Z",
-      "number": 14610,
-      "state": "MERGED",
-      "title": "Fix pursuit portfolio publication byte custody and receipt hashes"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zsw-c6r8/scdhhs-5400030026-qualification",
-      "closed_at": "2026-09-15T03:29:12Z",
-      "head_sha": "e9c924114ce10d13a0bf0a70d0521082fd21ec27",
-      "merged_at": "2026-09-15T03:29:12Z",
-      "number": 13842,
-      "state": "MERGED",
-      "title": "Add fail-closed SCDHHS MCDE qualification gate"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-15T04:51:01Z",
+  "unchanged_since": "2026-09-15T04:56:15Z",
   "undatable_pulls": []
 }
