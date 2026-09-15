@@ -143,108 +143,152 @@ _ORIGINAL_REDUCE_CONTACT_STATE = _impl._reduce_contact_state
 _MACHINE_CLASSIFICATIONS = frozenset({"DELIVERY_FAILURE", "AUTO_RESPONSE"})
 
 
-def _latest_human_bucket(events: list[dict[str, Any]]) -> list[dict[str, Any]]:
-    semantic = [
-        event
-        for event in events
-        if event.get("classification") in HUMAN_STATE_CLASSIFICATIONS
-    ]
-    if not semantic:
-        return []
-    stamped = [
-        (parse_time(str(event["received_at"])), event)
-        for event in semantic
-    ]
-    latest_time = max(stamp for stamp, _ in stamped)
-    return [event for stamp, event in stamped if stamp == latest_time]
+def _make_policy_bundle(
+    *,
+    original_reduce: Any,
+    parse_received_at: Any,
+    human_state_classifications: frozenset[str],
+    machine_classifications: frozenset[str],
+    reply_error: type[Exception],
+    acceptance_tool: str,
+) -> tuple[Any, Any, Any, Any]:
+    """Build policy functions whose authority dependencies are closure-captured.
 
+    Production functions installed into the retained implementation must not
+    resolve policy through ordinary public-module globals after import. A
+    supported importer may rebind names on this module for tests/integration;
+    those rebinding operations cannot be allowed to drift DNC or provenance
+    semantics while the retained implementation still holds the same function
+    object.
+    """
+    _original_reduce = original_reduce
+    _parse_received_at = parse_received_at
+    _human_classes = frozenset(human_state_classifications)
+    _machine_classes = frozenset(machine_classifications)
+    _reply_error = reply_error
+    _acceptance_tool = acceptance_tool
+    _max = max
+    _min = min
+    _sorted = sorted
+    _str = str
 
-def _reduce_contact_state(events: list[dict[str, Any]]) -> dict[str, Any]:
-    """Preserve explicit DNC authority in an equal-time semantic conflict."""
-    # Preserve every validation/error contract owned by the retained reducer.
-    inherited_state = _ORIGINAL_REDUCE_CONTACT_STATE(events)
-    latest_semantic = _latest_human_bucket(events)
-    opt_outs = [
-        event
-        for event in latest_semantic
-        if event.get("classification") == "OPT_OUT"
-    ]
-    if opt_outs:
-        effective_event = min(
-            opt_outs,
-            key=lambda item: str(item.get("event_ref") or ""),
-        )
-        return {
-            "classification": "OPT_OUT",
-            "lane": "CLOSED",
-            "next_action": "DNC/CLOSE",
-            "handoff": None,
-            "effective_event": effective_event,
-        }
-    return inherited_state
-
-
-def _positive_context(events: list[dict[str, Any]]) -> str:
-    machine_classes = sorted(
-        {
-            str(event.get("classification"))
+    def latest_human_bucket(events: list[dict[str, Any]]) -> list[dict[str, Any]]:
+        semantic = [
+            event
             for event in events
-            if event.get("classification") in _MACHINE_CLASSIFICATIONS
-        }
-    )
-    if not machine_classes:
-        return (
-            "effective human inbound classified POSITIVE_SCOPE; "
-            "no machine delivery-failure or auto-response observations were recorded"
-        )
-    recorded = ", ".join(machine_classes)
-    return (
-        "effective human inbound classified POSITIVE_SCOPE; "
-        f"recorded machine observations ({recorded}) do not override human semantics"
-    )
+            if event.get("classification") in _human_classes
+        ]
+        if not semantic:
+            return []
+        stamped = [
+            (_parse_received_at(_str(event["received_at"])), event)
+            for event in semantic
+        ]
+        latest_time = _max(stamp for stamp, _ in stamped)
+        return [event for stamp, event in stamped if stamp == latest_time]
 
+    def reduce_contact_state(events: list[dict[str, Any]]) -> dict[str, Any]:
+        """Preserve explicit DNC authority in an equal-time semantic conflict."""
+        # Preserve every validation/error contract owned by the retained reducer.
+        inherited_state = _original_reduce(events)
+        latest_semantic = latest_human_bucket(events)
+        opt_outs = [
+            event
+            for event in latest_semantic
+            if event.get("classification") == "OPT_OUT"
+        ]
+        if opt_outs:
+            effective_event = _min(
+                opt_outs,
+                key=lambda item: _str(item.get("event_ref") or ""),
+            )
+            return {
+                "classification": "OPT_OUT",
+                "lane": "CLOSED",
+                "next_action": "DNC/CLOSE",
+                "handoff": None,
+                "effective_event": effective_event,
+            }
+        return inherited_state
 
-def surface_positives(
-    contacts: list[dict[str, Any]],
-    inbound: list[dict[str, Any]],
-) -> list[dict[str, Any]]:
-    positives: list[dict[str, Any]] = []
-    inbound_by_key: dict[str, list[dict[str, Any]]] = {}
-    for event in inbound:
-        inbound_by_key.setdefault(event["prospect_key"], []).append(event)
-    for contact in contacts:
-        if contact["lane"] != "HUMAN_POSITIVE":
-            continue
-        events = inbound_by_key.get(contact["prospect_key"], [])
-        state = _reduce_contact_state(events)
-        effective_event = state["effective_event"]
-        if state["lane"] != "HUMAN_POSITIVE" or effective_event is None:
-            raise ReplyRevenueError(
-                f"positive contact {contact['prospect_key']} lacks an effective POSITIVE_SCOPE event"
-            )
-        if effective_event.get("classification") != "POSITIVE_SCOPE":
-            raise ReplyRevenueError(
-                f"positive contact {contact['prospect_key']} resolved to non-positive evidence"
-            )
-        positives.append(
+    def positive_context(events: list[dict[str, Any]]) -> str:
+        machine_classes = _sorted(
             {
-                "prospect_key": contact["prospect_key"],
-                "organization": contact["organization"],
-                "event_ref": effective_event["event_ref"],
-                "received_at": effective_event["received_at"],
-                "next_action": "NEEDS_ACCEPTANCE",
-                "handoff": ACCEPTANCE_TOOL,
-                "context": _positive_context(events),
-                "buyer_interest": True,
+                _str(event.get("classification"))
+                for event in events
+                if event.get("classification") in _machine_classes
             }
         )
-    positives.sort(key=lambda item: item["prospect_key"])
-    return positives
+        if not machine_classes:
+            return (
+                "effective human inbound classified POSITIVE_SCOPE; "
+                "no machine delivery-failure or auto-response observations were recorded"
+            )
+        recorded = ", ".join(machine_classes)
+        return (
+            "effective human inbound classified POSITIVE_SCOPE; "
+            f"recorded machine observations ({recorded}) do not override human semantics"
+        )
 
+    def positive_surface(
+        contacts: list[dict[str, Any]],
+        inbound: list[dict[str, Any]],
+    ) -> list[dict[str, Any]]:
+        positives: list[dict[str, Any]] = []
+        inbound_by_key: dict[str, list[dict[str, Any]]] = {}
+        for event in inbound:
+            inbound_by_key.setdefault(event["prospect_key"], []).append(event)
+        for contact in contacts:
+            if contact["lane"] != "HUMAN_POSITIVE":
+                continue
+            events = inbound_by_key.get(contact["prospect_key"], [])
+            state = reduce_contact_state(events)
+            effective_event = state["effective_event"]
+            if state["lane"] != "HUMAN_POSITIVE" or effective_event is None:
+                raise _reply_error(
+                    f"positive contact {contact['prospect_key']} lacks an effective POSITIVE_SCOPE event"
+                )
+            if effective_event.get("classification") != "POSITIVE_SCOPE":
+                raise _reply_error(
+                    f"positive contact {contact['prospect_key']} resolved to non-positive evidence"
+                )
+            positives.append(
+                {
+                    "prospect_key": contact["prospect_key"],
+                    "organization": contact["organization"],
+                    "event_ref": effective_event["event_ref"],
+                    "received_at": effective_event["received_at"],
+                    "next_action": "NEEDS_ACCEPTANCE",
+                    "handoff": _acceptance_tool,
+                    "context": positive_context(events),
+                    "buyer_interest": True,
+                }
+            )
+        positives.sort(key=lambda item: item["prospect_key"])
+        return positives
+
+    return latest_human_bucket, reduce_contact_state, positive_context, positive_surface
+
+
+(
+    _latest_human_bucket,
+    _reduce_contact_state,
+    _positive_context,
+    surface_positives,
+) = _make_policy_bundle(
+    original_reduce=_ORIGINAL_REDUCE_CONTACT_STATE,
+    parse_received_at=parse_time,
+    human_state_classifications=frozenset(HUMAN_STATE_CLASSIFICATIONS),
+    machine_classifications=_MACHINE_CLASSIFICATIONS,
+    reply_error=ReplyRevenueError,
+    acceptance_tool=ACCEPTANCE_TOOL,
+)
 
 # Functions copied from the retained implementation keep that module's globals.
 # Install every repaired authority into the retained graph before any production
-# build/main path can run, then keep this direct-import surface identical.
+# build/main path can run. The policy functions above capture their dependency
+# graph in closure cells, so post-import rebinding of public helper/original
+# names cannot silently alter the policy retained by `_impl`.
 _impl.load_observations = load_observations
 _impl._reduce_contact_state = _reduce_contact_state
 _impl.surface_positives = surface_positives
