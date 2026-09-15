@@ -63,6 +63,33 @@ class OutputCustodyTests(unittest.TestCase):
 
         return swap_then_verify
 
+    @staticmethod
+    def _swap_inside_replace(parent: Path, held: Path, attacker: Path):
+        real_replace = safe_output.os.replace
+        swapped = False
+
+        def swap_then_replace(
+            src: str,
+            dst: str,
+            *,
+            src_dir_fd: int | None = None,
+            dst_dir_fd: int | None = None,
+        ) -> None:
+            nonlocal swapped
+            if not swapped:
+                os.rename(parent, held)
+                attacker.mkdir()
+                parent.symlink_to(attacker, target_is_directory=True)
+                swapped = True
+            real_replace(
+                src,
+                dst,
+                src_dir_fd=src_dir_fd,
+                dst_dir_fd=dst_dir_fd,
+            )
+
+        return swap_then_replace
+
     def test_materializer_parent_swap_fails_closed_without_redirected_output(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:
             root = Path(temporary)
@@ -100,6 +127,46 @@ class OutputCustodyTests(unittest.TestCase):
 
             self.assertFalse((attacker / output.name).exists())
             self.assertFalse((held / output.name).exists())
+            self.assertEqual(list(held.glob(f".{output.name}.*.tmp")), [])
+
+    def test_materializer_swap_after_precommit_fence_returns_failure(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            parent = root / "live"
+            parent.mkdir()
+            held = root / "held"
+            attacker = root / "attacker"
+            output = parent / "requirements.json"
+            hook = self._swap_inside_replace(parent, held, attacker)
+            payload = b'{"reviewed":true}\n'
+
+            with mock.patch.object(safe_output.os, "replace", side_effect=hook):
+                with self.assertRaisesRegex(
+                    assemble_requirements.AssemblyError,
+                    "unsafe output custody",
+                ):
+                    assemble_requirements.write_atomic(output, payload)
+
+            self.assertFalse((attacker / output.name).exists())
+            self.assertEqual((held / output.name).read_bytes(), payload)
+            self.assertEqual(list(held.glob(f".{output.name}.*.tmp")), [])
+
+    def test_receipt_swap_after_precommit_fence_returns_failure(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            parent = root / "live"
+            parent.mkdir()
+            held = root / "held"
+            attacker = root / "attacker"
+            output = parent / "receipt.json"
+            hook = self._swap_inside_replace(parent, held, attacker)
+
+            with mock.patch.object(safe_output.os, "replace", side_effect=hook):
+                with self.assertRaisesRegex(matrix.MatrixError, "unsafe receipt output custody"):
+                    matrix.write_receipt(output, {"classification": "UNKNOWN"})
+
+            self.assertFalse((attacker / output.name).exists())
+            self.assertTrue((held / output.name).is_file())
             self.assertEqual(list(held.glob(f".{output.name}.*.tmp")), [])
 
     def test_ancestor_symlink_is_rejected(self) -> None:
