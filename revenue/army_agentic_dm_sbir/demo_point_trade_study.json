@@ -1,0 +1,73 @@
+{
+  "as_of": "2026-09-14T00:00:00Z",
+  "assumptions": [
+    {
+      "id": "a1",
+      "status": "ACCEPTED",
+      "text": "Synthetic duty cycle remains representative."
+    }
+  ],
+  "bias_checks": [
+    {
+      "id": "b1",
+      "status": "PASS",
+      "text": "No option receives hidden incumbent preference."
+    }
+  ],
+  "criteria": [
+    {
+      "evidence_ids": ["mass"],
+      "id": "mass",
+      "weight_bps": 2500
+    },
+    {
+      "evidence_ids": ["thermal"],
+      "id": "thermal",
+      "weight_bps": 5000
+    },
+    {
+      "evidence_ids": ["lead"],
+      "id": "lead",
+      "weight_bps": 2500
+    }
+  ],
+  "episode_id": "synthetic-ground-vehicle-power-thermal-v1",
+  "evidence": [
+    {
+      "id": "mass",
+      "observed_at": "2026-09-01T00:00:00Z",
+      "payload": {"source_class": "synthetic", "unit": "kg"},
+      "payload_sha256": "c2735252adf4a8a60dd67d2a16f5fbc518331a69e94466daf78475f92060460e",
+      "source": "synthetic://mass",
+      "status": "ACTIVE",
+      "valid_until": "2027-01-01T00:00:00Z"
+    },
+    {
+      "id": "thermal",
+      "observed_at": "2026-09-01T00:00:00Z",
+      "payload": {"source_class": "synthetic", "unit": "normalized"},
+      "payload_sha256": "52386e1c62d351b242c7cd678a4a2fdf8d69264cd8774710b2c698a98424832f",
+      "source": "synthetic://thermal",
+      "status": "ACTIVE",
+      "valid_until": "2027-01-01T00:00:00Z"
+    },
+    {
+      "id": "lead",
+      "observed_at": "2026-09-01T00:00:00Z",
+      "payload": {"source_class": "synthetic", "unit": "days"},
+      "payload_sha256": "d2c52bcc6758283351c88ea5c86ea495f64baa8f9a36df3dbabca54da9abb585",
+      "source": "synthetic://lead",
+      "status": "ACTIVE",
+      "valid_until": "2027-01-01T00:00:00Z"
+    }
+  ],
+  "generation": 1,
+  "objectives": ["Select a synthetic power/thermal architecture for demonstration only."],
+  "options": [
+    {"criterion_scores": {"lead": 7000, "mass": 8000, "thermal": 7600}, "id": "architecture-a"},
+    {"criterion_scores": {"lead": 6000, "mass": 6500, "thermal": 8600}, "id": "architecture-b"}
+  ],
+  "risks": [
+    {"disposition": "MITIGATE", "id": "r1", "text": "Supplier lead-time uncertainty."}
+  ]
+}
