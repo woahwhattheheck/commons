@@ -51,12 +51,14 @@ def _evidence(raw,p):
     st=_str(o.get("status"),p+".status"); tr=_str(o.get("translation_status","UNTRANSLATED"),p+".translation_status")
     if st not in STATUSES: raise ValidationError(f"{p}.status unsupported")
     if tr not in TRANSLATIONS: raise ValidationError(f"{p}.translation_status unsupported")
+    lang=_str(o.get("language","und"),p+".language")
+    if tr=="ORIGINAL_FR" and lang.lower()!="fr": raise ValidationError(f"{p}.translation_status ORIGINAL_FR requires language=fr")
     src=o.get("source"); parsed=None
     if st=="EVIDENCED":
         src=_obj(src,p+".source"); _only(src,{"locator","sha256","generation"},p+".source")
         parsed={"locator":_str(src.get("locator"),p+".source.locator"),"sha256":_sha(src.get("sha256"),p+".source.sha256"),"generation":_str(src.get("generation"),p+".source.generation")}
     elif src is not None: raise ValidationError(f"{p}.source allowed only when status=EVIDENCED")
-    return {"id":_str(o.get("id"),p+".id"),"party_id":_str(o.get("party_id"),p+".party_id"),"kind":_str(o.get("kind"),p+".kind"),"status":st,"source":parsed,"language":_str(o.get("language","und"),p+".language"),"translation_status":tr,"note":_str(o.get("note",""),p+".note",True)}
+    return {"id":_str(o.get("id"),p+".id"),"party_id":_str(o.get("party_id"),p+".party_id"),"kind":_str(o.get("kind"),p+".kind"),"status":st,"source":parsed,"language":lang,"translation_status":tr,"note":_str(o.get("note",""),p+".note",True)}
 
 def validate_packet(packet):
     o=_obj(packet,"$"); _only(o,{"schema","applicant","partners","categories","evidence","dce"},"$")
