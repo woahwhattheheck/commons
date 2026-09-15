@@ -11,17 +11,19 @@
   const NativeRequest = window.Request;
   const NativeURL = window.URL || URL;
   const NativeHeaders = window.Headers || Headers;
-  const baseHref = location.href;
+  const NativeNode = window.Node;
   const baseOrigin = location.origin;
   const requestPrototype = typeof NativeRequest === 'function' ? NativeRequest.prototype : null;
   const urlPrototype = typeof NativeURL === 'function' ? NativeURL.prototype : null;
   const headersPrototype = typeof NativeHeaders === 'function' ? NativeHeaders.prototype : null;
+  const nodePrototype = typeof NativeNode === 'function' ? NativeNode.prototype : null;
   const requestUrlDescriptor = requestPrototype ? nativeGetOwnPropertyDescriptor(requestPrototype, 'url') : null;
   const requestHeadersDescriptor = requestPrototype ? nativeGetOwnPropertyDescriptor(requestPrototype, 'headers') : null;
   const urlHrefDescriptor = urlPrototype ? nativeGetOwnPropertyDescriptor(urlPrototype, 'href') : null;
   const urlOriginDescriptor = urlPrototype ? nativeGetOwnPropertyDescriptor(urlPrototype, 'origin') : null;
   const urlPathnameDescriptor = urlPrototype ? nativeGetOwnPropertyDescriptor(urlPrototype, 'pathname') : null;
   const headersSetDescriptor = headersPrototype ? nativeGetOwnPropertyDescriptor(headersPrototype, 'set') : null;
+  const nodeBaseUriDescriptor = nodePrototype ? nativeGetOwnPropertyDescriptor(nodePrototype, 'baseURI') : null;
   const nativeRequestUrlGetter = requestUrlDescriptor && typeof requestUrlDescriptor.get === 'function'
     ? requestUrlDescriptor.get
     : null;
@@ -39,6 +41,9 @@
     : null;
   const nativeHeadersSet = headersSetDescriptor && typeof headersSetDescriptor.value === 'function'
     ? headersSetDescriptor.value
+    : null;
+  const nativeNodeBaseUriGetter = nodeBaseUriDescriptor && typeof nodeBaseUriDescriptor.get === 'function'
+    ? nodeBaseUriDescriptor.get
     : null;
   let operatorKey = '';
   let lockPanel = null;
@@ -96,11 +101,16 @@
     }
   }
 
+  function documentBaseHref() {
+    if (!nativeNodeBaseUriGetter) throw new TypeError('Native document base URL accessor unavailable');
+    return nativeReflectApply(nativeNodeBaseUriGetter, document, []);
+  }
+
   function parseTarget(raw) {
     if (typeof NativeURL !== 'function' || !nativeUrlHrefGetter || !nativeUrlOriginGetter || !nativeUrlPathnameGetter) {
       throw new TypeError('Native URL accessors unavailable');
     }
-    const parsed = new NativeURL(raw, baseHref);
+    const parsed = new NativeURL(raw, documentBaseHref());
     return {
       href: nativeReflectApply(nativeUrlHrefGetter, parsed, []),
       origin: nativeReflectApply(nativeUrlOriginGetter, parsed, []),
