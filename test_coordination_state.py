@@ -525,6 +525,7 @@ class BuildOffline(TempGit):
         for older, newer in zip(chain, chain[1:]):
             self.assertEqual(sh(self.root, "rev-parse", newer + "^"), older)
         self.assertEqual(len(result["push_lines"]), 10)
+        self.assertIn("push --no-thin", result["push_lines"][0])
 
     def test_git_verb_skips_config_prefix(self):
         self.assertEqual(cs._git_verb(("fetch", "--no-tags", "origin")), "fetch")
@@ -641,6 +642,86 @@ class BuildOffline(TempGit):
         text = cs._dump_rows(doc)
         self.assertEqual(json.loads(text), doc)
         self.assertIn('\n  {"number":1},\n  {"number":2}\n', text)
+
+
+class BloblessPublishPush(unittest.TestCase):
+    """Hosted coordination-state publish checks out blob:none, then pushes
+    onto state/coordination. A thin pack asks for parent blobs the clone
+    never fetched; GIT_NO_LAZY_FETCH blocks the promisor read and send-pack
+    hangs up. --no-thin sends only the new objects."""
+
+    def setUp(self):
+        self.tmp = tempfile.mkdtemp(prefix="coordination-blobless-")
+        self.addCleanup(shutil.rmtree, self.tmp, ignore_errors=True)
+        self.remote = os.path.join(self.tmp, "remote.git")
+        subprocess.run(["git", "init", "-q", "--bare", self.remote], check=True)
+        sh(self.remote, "config", "uploadpack.allowFilter", "true")
+        sh(self.remote, "config", "uploadpack.allowAnySHA1InWant", "true")
+        self.seed = os.path.join(self.tmp, "seed")
+        os.makedirs(self.seed)
+        sh(self.seed, "init", "-q", "-b", "main")
+        sh(self.seed, "config", "core.autocrlf", "false")
+        write(self.seed, "a.txt", "a\n")
+        commit_all(self.seed, "base")
+        sh(self.seed, "remote", "add", "origin", "file://" + self.remote)
+        sh(self.seed, "push", "-q", "origin", "HEAD:refs/heads/main")
+
+    def _payload(self, n):
+        return {"schema": cs.SCHEMA, "observed_at": "2026-09-11T11:00:0%dZ" % n,
+                "main": {"sha": "a" * 40}, "queue": {}, "counts": {"open_prs": n},
+                "lanes": [], "degraded": []}
+
+    def _blobless_clone(self):
+        clone = os.path.join(self.tmp, "clone")
+        os.makedirs(clone)
+        sh(clone, "init", "-q", "-b", "main")
+        sh(clone, "remote", "add", "origin", "file://" + self.remote)
+        done = subprocess.run(
+            ["git", "-C", clone, "fetch", "--filter=blob:none", "--depth=20",
+             "origin", "+refs/heads/main:refs/remotes/origin/main"],
+            capture_output=True, text=True)
+        if done.returncode != 0:
+            raise AssertionError("blob:none fetch failed: %s" % done.stderr)
+        sh(clone, "checkout", "-q", "-B", "main", "origin/main")
+        return clone
+
+    def test_thin_push_from_blobless_clone_misses_parent_blobs(self):
+        first = cs.publish(cs.Git(self.seed), self._payload(0), "o/r", push=True)
+        self.assertTrue(first["pushed"])
+        clone = self._blobless_clone()
+        git = cs.Git(clone)
+        git.fetch([first["commit"]])
+        tree = git.out("ls-tree", "-r", first["commit"])
+        missing = []
+        for line in tree.splitlines():
+            sha = line.split()[2]
+            if git.run("cat-file", "-e", sha, check=False).returncode != 0:
+                missing.append(sha)
+        self.assertTrue(missing, "parent blobs should be absent in a blob:none clone")
+        commit = cs.state_commit(git, {"README.md": "x\n"}, cs.STATE_BRANCH, "x",
+                                 first["commit"])
+        # Git.run now treats push as a network verb so lazy fetch can fill
+        # missing parent blobs. The hosted hangup was GIT_NO_LAZY_FETCH=1 on
+        # that push; pin it here so the thin pack still misses those bytes.
+        thin = git.run("push", "origin",
+                       "%s:refs/heads/%s" % (commit, cs.STATE_BRANCH),
+                       env={"GIT_NO_LAZY_FETCH": "1"}, check=False)
+        self.assertNotEqual(thin.returncode, 0, thin.stderr)
+        joined = (thin.stderr or "") + (thin.stdout or "")
+        self.assertTrue(
+            "promisor" in joined or "unpack" in joined or "hung up" in joined
+            or "failed to push" in joined,
+            joined)
+
+    def test_publish_from_blobless_clone_pushes_without_parent_blobs(self):
+        first = cs.publish(cs.Git(self.seed), self._payload(0), "o/r", push=True)
+        self.assertTrue(first["pushed"])
+        clone = self._blobless_clone()
+        git = cs.Git(clone)
+        result = cs.publish(git, self._payload(1), "o/r", push=True)
+        self.assertTrue(result["pushed"], result.get("stderr"))
+        self.assertEqual(result["parent"], first["commit"])
+        self.assertEqual(cs._remote_tip(git, cs.STATE_BRANCH), result["commit"])
 
 
 if __name__ == "__main__":
