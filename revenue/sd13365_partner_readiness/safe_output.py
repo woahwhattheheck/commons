@@ -141,7 +141,9 @@ def atomic_write_bytes(path: Path, payload: bytes) -> None:
         finally:
             os.close(temp_fd)
 
-        # Detection is fail-closed; safety itself comes from the retained dirfd.
+        # The first fence catches movement before commit.  The second catches the
+        # remaining verification->replace window; safety itself still comes from
+        # committing only through the retained directory descriptor.
         _verify_parent_identity(parent, parent_identity)
         try:
             os.replace(temp_name, path.name, src_dir_fd=dir_fd, dst_dir_fd=dir_fd)
@@ -149,6 +151,7 @@ def atomic_write_bytes(path: Path, payload: bytes) -> None:
             os.fsync(dir_fd)
         except (OSError, TypeError, NotImplementedError) as exc:
             raise OutputCustodyError(f"cannot commit retained-dirfd output: {exc}") from exc
+        _verify_parent_identity(parent, parent_identity)
     finally:
         if temp_name is not None:
             try:
