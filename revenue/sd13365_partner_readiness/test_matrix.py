@@ -36,11 +36,17 @@ class MatrixTests(unittest.TestCase):
         self.assertEqual(first_receipt["matrix_sha256"], second_receipt["matrix_sha256"])
         self.assertEqual(first_receipt, second_receipt)
 
-    def test_changed_evidence_changes_digest(self) -> None:
-        first = self.fresh()
-        second = self.fresh()
-        self.requirement(second, "fips-140-3")["rationale"] += " Additional evidence pending."
-        self.assertNotEqual(matrix.build_receipt(first)["matrix_sha256"], matrix.build_receipt(second)["matrix_sha256"])
+    def test_changed_evidence_is_rejected_by_reviewed_source_binding(self) -> None:
+        value = self.fresh()
+        self.requirement(value, "fips-140-3")["rationale"] += " Additional evidence pending."
+        with self.assertRaisesRegex(matrix.MatrixError, "matrix differs from reviewed source generation"):
+            matrix.build_receipt(value)
+
+    def test_changed_due_date_is_rejected_by_reviewed_source_binding(self) -> None:
+        value = self.fresh()
+        value["opportunity"]["due_at"] = "2026-10-17T15:00:00-07:00"
+        with self.assertRaisesRegex(matrix.MatrixError, "matrix differs from reviewed source generation"):
+            matrix.build_receipt(value)
 
     def test_duplicate_json_key_is_rejected(self) -> None:
         with self.assertRaisesRegex(matrix.MatrixError, "duplicate JSON key"):
