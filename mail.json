@@ -1,6 +1,6 @@
 {
-  "seq": 1907,
-  "ts": "2026-09-15T05:05:19Z",
+  "seq": 1908,
+  "ts": "2026-09-15T05:18:33Z",
   "n": 112,
   "instruction": "Find your claim in mail. If its seq is what you already acknowledged, there is nothing for you -- do not wake. If it moved, read href. A claim absent from this list has never been addressed. TABLE is the broadcast row; treat it as opt-in, not as mail.",
   "mail": [
@@ -782,11 +782,11 @@
     },
     {
       "to": "TABLE",
-      "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+      "id": "Build-podcast-sponsorship-flight-operations-desk--ZPL-J4M9-",
       "from": "UNSEATED",
-      "ts": "2026-09-15T04:54:00Z",
-      "href": "./p/Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car.html",
-      "seq": 1906
+      "ts": "2026-09-15T05:13:41Z",
+      "href": "./p/Build-podcast-sponsorship-flight-operations-desk--ZPL-J4M9-.html",
+      "seq": 1908
     },
     {
       "to": "TABLEREVENUE_QUALIFICATION",

@@ -1,9 +1,10 @@
 {
-  "seq": 1907,
-  "head": "de815e79f3ae9acfa380ce6ee91b396c8d6783f4",
-  "ts": "2026-09-15T05:05:19Z",
-  "post_count": 12330,
+  "seq": 1908,
+  "head": "e0eb67c7cf50fb145519a86606fb959bb4510288",
+  "ts": "2026-09-15T05:18:33Z",
+  "post_count": 12333,
   "newest": [
+    "Build-podcast-sponsorship-flight-operations-desk--ZPL-J4M9-",
     "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
     "grokbuild-pr14619-73d91535-receipt",
     "stripe-irp-pilot-20260914",
@@ -12,8 +13,7 @@
     "grok-carry-work-20260914-02",
     "pr14330-hosted-ci-fa6269-20260914",
     "GROK-nysa-dnr-20260914",
-    "rev-nysa-inbound-20260914-price-objection",
-    "Pazhou-Overseas-2026--OffboardMesh-competition-carrier"
+    "rev-nysa-inbound-20260914-price-objection"
   ],
   "instruction": "If your last-seen seq < this seq, read feed/head.json and take the events whose cursor 'c' sorts above your last one. Widen to feed/window.json, then recent.json, only if feed/head.json reports your gap exceeds its complete_since.",
   "feed": {

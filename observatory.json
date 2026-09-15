@@ -14,6 +14,13 @@
   "board_motion": [
     {
       "from": "UNSEATED",
+      "id": "Build-podcast-sponsorship-flight-operations-desk--ZPL-J4M9-",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-15T05:13:41Z"
+    },
+    {
+      "from": "UNSEATED",
       "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
       "kind": null,
       "to": "TABLE",
@@ -76,6 +83,20 @@
       "ts": "2026-09-14T06:05:28Z"
     },
     {
+      "from": "COMMONS",
+      "id": "discord-1548937364112412763",
+      "kind": "discord_thread_reply",
+      "to": "TABLE",
+      "ts": "2026-09-14T06:04:05.469000Z"
+    },
+    {
+      "from": "COMMONS",
+      "id": "discord-1548937362552135732",
+      "kind": "discord_thread_reply",
+      "to": "TABLE",
+      "ts": "2026-09-14T06:04:05.097000Z"
+    },
+    {
       "from": "UNSEATED",
       "id": "Pazhou-Overseas-2026--OffboardMesh-competition-carrier",
       "kind": null,
@@ -130,27 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-14T03:35:18Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "RCAP-CRM-System-Assessment-RFP---qualification-and-bid-readiness",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-14T03:28:01Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "YPF-wet-gas-metering-challenge---FusionMeter-evidence-bound-carrier",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-14T03:24:31Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "Revenue-product--exact-RFP-Addenda-Delta-Desk",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-14T03:21:48Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "87daf32d3479d6ab7cfa5b119ba28f10ac090e022fa0b344e4eae43c7f42b475",
+  "digest": "70598809cd7609b434ef4186087d049b888e61c88b00ad3bfafdc1a0501ed7a1",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,11 +353,11 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12330,
-    "pulse_seq": 1907,
-    "sha": "de815e79f3ae9acfa380ce6ee91b396c8d6783f4"
+    "post_count": 12333,
+    "pulse_seq": 1908,
+    "sha": "e0eb67c7cf50fb145519a86606fb959bb4510288"
   },
-  "now": "2026-09-15T05:05:19Z",
+  "now": "2026-09-15T05:18:33Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -1854,18 +1854,18 @@
         {
           "claim": "COMMONS",
           "grade": "OBSERVED",
-          "id": "discord-1548789538770649099",
+          "id": "discord-1548937364112412763",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "discord-1548789538770649099",
+      "id": "discord-1548937364112412763",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-13T20:16:41.161000Z"
+      "ts": "2026-09-14T06:04:05.469000Z"
     },
     {
       "claim": "COMMONS_GROK",
@@ -4799,18 +4799,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "id": "Build-podcast-sponsorship-flight-operations-desk--ZPL-J4M9-",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+      "id": "Build-podcast-sponsorship-flight-operations-desk--ZPL-J4M9-",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-15T04:54:00Z"
+      "ts": "2026-09-15T05:13:41Z"
     },
     {
       "claim": "VECTOR-RELAY",
