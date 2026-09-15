@@ -111,7 +111,7 @@ class PacketGateTrustBindingTests(unittest.TestCase):
 
         with self.assertRaisesRegex(
             gate.GateError,
-            "packet-required requirement identity drift: references",
+            "packet-gap row drift: references",
         ):
             gate.build_receipt(self.sources, matrix)
 
@@ -121,7 +121,7 @@ class PacketGateTrustBindingTests(unittest.TestCase):
 
         with self.assertRaisesRegex(
             gate.GateError,
-            "packet-required requirement identity drift: insurance",
+            "packet-gap row drift: insurance",
         ):
             gate.build_receipt(self.sources, matrix)
 
@@ -131,7 +131,7 @@ class PacketGateTrustBindingTests(unittest.TestCase):
 
         with self.assertRaisesRegex(
             gate.GateError,
-            "packet-required requirement identity drift: addenda_acknowledgement",
+            "packet-gap row drift: addenda_acknowledgement",
         ):
             gate.build_receipt(self.sources, matrix)
 
