@@ -213,6 +213,40 @@ class ReplyToRevenueEventIdentityTests(unittest.TestCase):
         self.assertEqual(funnel["truth"]["human_question"], 0)
         self.assertEqual(funnel["truth"]["human_positive"], 0)
 
+    def test_direct_core_policy_survives_post_import_public_global_poisoning(self) -> None:
+        core = load_direct_core()
+        installed_reducer = core._impl._reduce_contact_state
+        core._ORIGINAL_REDUCE_CONTACT_STATE = lambda _events: {
+            "classification": "QUESTION",
+            "lane": "NEEDS_HUMAN",
+            "next_action": "DRAFT_REPLY",
+            "handoff": None,
+            "effective_event": None,
+        }
+        core._latest_human_bucket = lambda _events: []
+        core.parse_time = lambda _value: (_ for _ in ()).throw(AssertionError("poisoned parse_time"))
+        core._reduce_contact_state = lambda _events: {
+            "classification": "QUESTION",
+            "lane": "NEEDS_HUMAN",
+            "next_action": "DRAFT_REPLY",
+            "handoff": None,
+            "effective_event": None,
+        }
+        self.assertIs(core._impl._reduce_contact_state, installed_reducer)
+        events = [
+            self._event("opaque:poison-opt-out-0001", "OPT_OUT"),
+            self._event("opaque:poison-question-0001", "QUESTION"),
+        ]
+        funnel = core.build_funnel(
+            receipts=[self._receipt()],
+            observations=self._observations(events),
+        )
+        contact = next(item for item in funnel["contacts"] if item["prospect_key"] == "buyer-one")
+        self.assertEqual(contact["lane"], "CLOSED")
+        self.assertEqual(contact["next_action"], "DNC/CLOSE")
+        self.assertEqual(funnel["truth"]["human_question"], 0)
+        self.assertEqual(funnel["truth"]["human_positive"], 0)
+
     def test_cli_surface_reports_recorded_machine_observation_truthfully(self) -> None:
         events = [
             self._event("opaque:positive-0001", "POSITIVE_SCOPE", received_at="2026-09-14T20:00:00Z"),
@@ -238,6 +272,41 @@ class ReplyToRevenueEventIdentityTests(unittest.TestCase):
         context = surfaces[0]["context"]
         self.assertIn("recorded machine observations (AUTO_RESPONSE)", context)
         self.assertNotIn("were absent", context)
+
+    def test_direct_core_surface_survives_post_import_public_global_poisoning(self) -> None:
+        core = load_direct_core()
+        events = [
+            self._event("opaque:poison-positive-0001", "POSITIVE_SCOPE", received_at="2026-09-14T20:00:00Z"),
+            self._event("opaque:poison-auto-ack-0001", "AUTO_RESPONSE", received_at="2026-09-14T20:01:00Z"),
+        ]
+        receipts = [self._receipt()]
+        observations = self._observations(events)
+        impl = core._impl
+        installed_surface = impl.surface_positives
+        core._MACHINE_CLASSIFICATIONS = frozenset()
+        core._positive_context = lambda _events: "POISONED PUBLIC CONTEXT"
+        core.surface_positives = lambda _contacts, _inbound: []
+        core.ACCEPTANCE_TOOL = "POISONED_ACCEPTANCE_TOOL"
+        core.ReplyRevenueError = AssertionError
+        self.assertIs(impl.surface_positives, installed_surface)
+        original_load_receipts = impl.load_receipts
+        original_load_observations = impl.load_observations
+        impl.load_receipts = lambda: copy.deepcopy(receipts)
+        impl.load_observations = lambda: copy.deepcopy(observations)
+        output = io.StringIO()
+        try:
+            with contextlib.redirect_stdout(output):
+                result = impl.main(["surface"])
+        finally:
+            impl.load_receipts = original_load_receipts
+            impl.load_observations = original_load_observations
+        self.assertEqual(result, 0)
+        surfaces = json.loads(output.getvalue())
+        self.assertEqual(len(surfaces), 1)
+        context = surfaces[0]["context"]
+        self.assertIn("recorded machine observations (AUTO_RESPONSE)", context)
+        self.assertNotIn("POISONED PUBLIC CONTEXT", context)
+        self.assertNotEqual(surfaces[0]["handoff"], "POISONED_ACCEPTANCE_TOOL")
 
     def test_fresh_process_direct_core_cli_uses_authoritative_surface_policy(self) -> None:
         events = [
