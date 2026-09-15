@@ -1,9 +1,7 @@
 name: Astra SOL Puzzle71 Current Review
 on:
   push:
-    branches:
-      - astra-sol/puzzle71-review-run-20260909-01
-      - main
+    branches: [main]
     paths: &review_paths
       - '.github/workflows/astra-sol-puzzle71-current-review.yml'
       - 'test_astra_sol_puzzle71_current_review.py'

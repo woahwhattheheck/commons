@@ -1,6 +1,6 @@
 {
   "schema_version": "commons.revenue-product-manifest/v1",
-  "operation": "PCI-STERILE-FILL-FINISH-READINESS-CORE-ZFB-S4J7-20260913",
+  "operation": "PCI-FILL-FINISH-COMPLETENESS-TRUSTED-TIME-ZCWQ2V6-20260913",
   "issue": 13791,
   "product": "pci-fill-finish-batch-readiness-preflight-01",
   "entrypoint": "revenue.pci_fill_finish_batch_readiness.gate:evaluate",

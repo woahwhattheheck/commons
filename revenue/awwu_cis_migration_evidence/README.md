@@ -6,7 +6,9 @@ The initial opportunity profile is Municipality of Anchorage / Anchorage Water a
 
 ## Commercial boundary
 
-A compiled packet keeps the workshare at `PROPOSED_NOT_ACCEPTED`. It can become `READY_FOR_OWNER_TEAMING_REVIEW` only when the opportunity source is current, the deadline is open, dataset row/key/control-total reconciliation is exact, every declared required interface has round-trip/retry/rollback/duplicate-effect PASS evidence, the cutover rehearsal is fully evidenced, and all external authority flags are false.
+A compiled packet keeps the workshare at `PROPOSED_NOT_ACCEPTED`. **Candidate packet bytes can no longer become `READY_FOR_OWNER_TEAMING_REVIEW`.** Even when every self-asserted source, reconciliation, interface, and cutover check is internally consistent, current state is `HOLD` until three independent authorities exist outside this carrier: source currentness/identity, the complete requirements universe, and authenticity of the referenced evidence artifacts.
+
+The compiler emits a deterministic *authority challenge* that binds the exact source metadata, declared dataset/interface universe, evidence payload, and commercial scope so a future mechanically authenticated host/provider adapter can attest the same object. The carrier deliberately accepts no caller digest, custom trust-store object, environment variable, or self-derived root as a substitute.
 
 It does **not** authorize a provider send, claim a prime participates, contact the buyer, submit to BidExpress, sign a contract, charge, treat a payment route as payment, or recognize revenue.
 
@@ -19,7 +21,9 @@ It does **not** authorize a provider send, claim a prime participates, contact t
 - round-trip, retry idempotency, rollback, and duplicate-effect checks;
 - dry-run/reconciliation/rollback/restart cutover evidence;
 - immutable receipt digest and exact input binding;
-- historical receipt replay plus verifier-owned current revalidation.
+- deterministic authority challenge for independently retained source / completeness / evidence roots;
+- historical receipt replay plus verifier-owned current revalidation;
+- fail-closed current HOLD when those independent authorities are not mechanically available.
 
 ## CLI
 
@@ -33,7 +37,7 @@ python -m revenue.awwu_cis_migration_evidence.compiler render input.json receipt
 
 ## Price hypothesis
 
-The synthetic sample uses **$12,500 fixed / 10 business days** for migration reconciliation, interface regression evidence, and a cutover replay packet. That is a commercial hypothesis only; no buyer or prime has accepted it.
+The synthetic sample uses **$12,500 fixed / 10 business days** for migration reconciliation, interface regression evidence, and a cutover replay packet. That is a commercial hypothesis only; no buyer or prime has accepted it. The sample intentionally remains current `HOLD` even when its self-asserted evidence is internally consistent.
 
 ## Source note
 

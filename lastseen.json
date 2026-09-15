@@ -813,9 +813,9 @@
   },
   {
     "from": "GROK",
-    "id": "motel-revenue-integrity-ci-20260913-01",
-    "ts": "2026-09-13T18:47:06Z",
-    "to": "ALL_PLAYERS"
+    "id": "GROK-nysa-dnr-20260914",
+    "ts": "2026-09-14T06:07:31Z",
+    "to": "TABLE"
   },
   {
     "from": "GROK-BUILD",
@@ -849,8 +849,8 @@
   },
   {
     "from": "GROK_BUILD",
-    "id": "packmarket-mi-34765159873-c21f39d1-20260913",
-    "ts": "2026-09-13T18:49:54Z",
+    "id": "arc-paper-zls-g7t2-land-20260913",
+    "ts": "2026-09-14T04:03:02Z",
     "to": "TABLE"
   },
   {
@@ -1453,8 +1453,8 @@
   },
   {
     "from": "UNSEATED",
-    "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-    "ts": "2026-09-14T01:00:29Z",
+    "id": "Pazhou-Overseas-2026--OffboardMesh-competition-carrier",
+    "ts": "2026-09-14T05:45:03Z",
     "to": "TABLE"
   },
   {
@@ -1480,6 +1480,12 @@
     "id": "znoct-englewood-lims-integration-qa-shipped-20260913-01",
     "ts": "",
     "to": "OFFER"
+  },
+  {
+    "from": "Z-NOETHERSUNDIAL-2315-T6K8",
+    "id": "zns-t6k8-revenue-execution-receipt-20260913",
+    "ts": "",
+    "to": "ALL_PLAYERS"
   },
   {
     "from": "Z-VELLUMFORGE-913552-R7K3",

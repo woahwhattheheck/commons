@@ -1,35 +1,57 @@
-# Exact-head Actions authority
+# Policy-bound exact-head Actions classification
 
-`actions_authority` is an offline, fail-closed reducer for GitHub Actions evidence. It exists because queued, cancelled, and runner-starved checks are not the same thing as green CI.
+`actions_authority` is an offline, fail-closed **classifier** for captured GitHub Actions evidence. It distinguishes terminal results, active execution, missing evidence, and runner-starved zero-step attempts without granting merge or side-effect authority.
 
-## Contract
+## v3 security contract
 
-Input schema `commons-actions-evidence/v1` binds one fresh evidence snapshot to a repository, an exact 40-hex head SHA, required workflow names, and one explicitly selected exact-head run for each workflow. Each run includes status/conclusion/timestamps and job evidence (runner, start/completion time, and steps).
+Earlier experimental schemas were unsafe:
 
-The reducer emits `commons-actions-authority/v1` with a canonical evidence digest and a stable receipt digest (the informational `evaluated_at` timestamp is excluded from that digest). It never calls GitHub or mutates a repository. `side_effects_authorized` is always false.
+- v1 let a caller choose workflow display names and one preferred run, then exposed merge authority;
+- v2 bound complete run/job counts but did not bind each job capture to the exact workflow `run_id` and `run_attempt`, so evidence from an older attempt could be spliced into the latest attempt;
+- v2 also accepted a `completed/success` job as green without affirmative runner, chronology, and completed-step evidence.
 
-Decisions:
+`commons-actions-evidence/v3` rejects v1/v2 and requires:
 
-- `TERMINAL_GREEN`: every required workflow is completed-success with successful job evidence. This is the **only** state where `merge_authorized=true`.
-- `TERMINAL_RED`: a required workflow failed, timed out, needs action, went stale, or had startup failure.
-- `WAIT_RUNNER_BACKLOG`: every non-green required workflow is positively zero-step and unassigned. This may set `runner_exception_candidate=true`; it still **never** authorizes merge.
-- `WAIT_EXECUTION`: a required workflow is executing or has incomplete non-backlog evidence.
-- `WAIT_MISSING`: required exact-head evidence is absent.
-- `HOLD`: contradictory/unsafe terminal evidence (for example a successful run with a failed job, skipped required workflow, or cancellation after runner execution).
+1. a digest-bound `commons-actions-policy/v1` descriptor whose required workflows are identified by numeric workflow ID, canonical workflow path, and display name;
+2. a complete exact-head run inventory bound to repository and head by the canonical locator `github-actions:runs:<owner/repo>:<head_sha>`;
+3. for every run, a complete **attempt-specific** job inventory bound to repository, `run_id`, and `run_attempt` by `github-actions:attempt-jobs:<owner/repo>:<run_id>:<run_attempt>`;
+4. every supplied job row to repeat and match the containing `run_id` and `run_attempt`;
+5. terminal success to include an assigned runner, run/job start and completion times, and at least one completed successful step. Label-only, runnerless, timestampless, or step-less “success” is `HOLD`, never green.
 
-Zero-step backlog requires no runner name, no job start, and null/empty steps. A queued/waiting/pending/requested job may qualify; a cancelled job qualifies only if it still satisfies those zero-execution facts. Cancellation after a runner started is `HOLD`.
+Workflow ID/path/name alias collisions, stale policy snapshots, duplicate IDs/numbers, wrong heads, incomplete pagination, count mismatches, cross-attempt evidence, temporal contradictions, and malformed exact fields fail closed.
 
-## Fail-closed parsing
+## Classification is never permission
 
-The tool rejects duplicate JSON keys, unknown fields, non-finite values, wrong-head runs, duplicate run IDs, multiple attempts for one required workflow, stale/future snapshots, run/job timestamps after the capture window, unsupported states, and inconsistent completion semantics. Extra non-required workflows are ignored for authority but listed in the receipt.
+Every valid receipt contains:
 
-The CLI reads only an ordinary non-symlink input, rejects input/output aliases, and publishes its receipt create-exclusively through a staged + fsynced file.
-
-```sh
-python -m tools.actions_authority.cli evidence.json --out authority.json
+```json
+{
+  "authorization_scope": "CLASSIFICATION_ONLY",
+  "merge_authorized": false,
+  "side_effects_authorized": false
+}
 ```
 
-Exit codes: `0` only for `TERMINAL_GREEN`; `3` for valid but non-authorizing evidence; `2` for malformed/stale evidence or publication failure. `--now` supports deterministic offline replay.
+`declared_policy_green=true` means only that the latest captured exact-head run for every workflow in the declared policy is terminal success with affirmative executed-job evidence. A separate trusted online boundary must verify the live repository policy, current head/base graph, reviews, permissions, and any merge exception immediately before mutation.
+
+## Decisions
+
+- `TERMINAL_GREEN`: every required workflow's latest run has affirmative execution success.
+- `TERMINAL_RED`: at least one latest required run is terminal failure, with no contradictory `HOLD` evidence.
+- `WAIT_RUNNER_BACKLOG`: every non-green latest required attempt is complete-inventory, unassigned, and zero-step. This only sets `runner_exception_candidate=true`.
+- `WAIT_EXECUTION`: a required latest run is active or lacks backlog proof.
+- `WAIT_MISSING`: no exact-head run exists for a required workflow in the complete inventory.
+- `HOLD`: contradictory or unsafe evidence. `HOLD` dominates `TERMINAL_RED` so contradictions cannot be hidden by a separate failure.
+
+GitHub may encode an unassigned job as null runner values or `runner_id=0` plus `runner_name=""`; both normalize to unassigned. A queue-time `started_at` alone is not execution proof. Cancelled backlog requires every job in the exact attempt-specific inventory to remain unassigned and step-less.
+
+## CLI
+
+```sh
+python -m tools.actions_authority.cli evidence.json --out classification.json
+```
+
+The CLI reads one retained ordinary non-symlink file generation, publishes create-exclusively through a retained output-parent descriptor, and never calls GitHub. Exit `3` means a valid classification receipt was emitted; exit `2` means evidence or publication failed. `--now` exists only for deterministic offline replay and does not add live authority.
 
 ## Verification
 
@@ -39,6 +61,4 @@ python -B -m unittest -v tools.actions_authority.test_authority
 python -O -B -m unittest -v tools.actions_authority.test_authority
 ```
 
-Coverage includes terminal green/red, queued and cancelled zero-step backlog, cancellation after execution, missing/in-progress evidence, contradictory success, skipped required workflows, exact-head/freshness/single-attempt fences, duplicate keys/unknown fields, ignored optional workflows, deterministic digests, create-exclusive output, and symlink rejection.
-
-A `runner_exception_candidate` receipt is classification evidence only. It does not waive a repository's merge policy and cannot self-authorize this tool's own merge.
+Hostiles cover old-green/new-red selection, workflow aliases, omitted run/jobs, exact attempt provenance, generic/latest jobs-source rejection, cross-attempt splice, runnerless/timestampless/step-less success, mixed RED+HOLD precedence, provider-native zero-step queue shapes, stale policy/capture chronology, deterministic receipts, strict JSON, symlink input, and create-exclusive publication.

@@ -7,7 +7,9 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import os
 import re
+import stat
 import zipfile
 from datetime import date
 from pathlib import Path
@@ -15,12 +17,95 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent
 FIELDS = ('name', 'email', 'phone', 'address', 'service', 'preferred_date', 'notes')
 PRESETS = ('client-intake', 'quote-request', 'service-request')
+MAX_DEPLOYMENT_BYTES = 12_000_000
+MAX_RUNNER_FILE_BYTES = 4_000_000
 
 
 def text(value, label, maximum=6000):
     if not isinstance(value, str) or len(value) > maximum:
         raise ValueError(f'{label} must be text of at most {maximum} characters')
     return value
+
+
+def _pairs(pairs):
+    result = {}
+    for key, value in pairs:
+        if key in result:
+            raise ValueError(f'Duplicate JSON key: {key}')
+        result[key] = value
+    return result
+
+
+def _constant(value):
+    raise ValueError(f'Non-finite JSON value is not allowed: {value}')
+
+
+def strict_json_bytes(data: bytes, label='JSON'):
+    try:
+        source = data.decode('utf-8')
+    except UnicodeDecodeError as exc:
+        raise ValueError(f'{label} must be UTF-8 JSON') from exc
+    try:
+        return json.loads(source, object_pairs_hook=_pairs, parse_constant=_constant)
+    except json.JSONDecodeError as exc:
+        raise ValueError(f'{label} is not valid JSON: {exc.msg}') from exc
+
+
+def _fingerprint(info):
+    return (
+        info.st_mode,
+        info.st_dev,
+        info.st_ino,
+        info.st_size,
+        getattr(info, 'st_mtime_ns', int(info.st_mtime * 1_000_000_000)),
+        getattr(info, 'st_ctime_ns', int(info.st_ctime * 1_000_000_000)),
+    )
+
+
+def _read_bounded(fd, maximum: int, label: str):
+    chunks = []
+    total = 0
+    while True:
+        chunk = os.read(fd, min(65536, maximum + 1 - total))
+        if not chunk:
+            break
+        chunks.append(chunk)
+        total += len(chunk)
+        if total > maximum:
+            raise ValueError(f'{label} exceeds {maximum} bytes')
+    return b''.join(chunks), total
+
+
+def read_regular(path: Path, label: str, maximum: int) -> bytes:
+    """Read exactly one retained regular-file generation without following a final symlink."""
+    flags = os.O_RDONLY | getattr(os, 'O_BINARY', 0) | getattr(os, 'O_NONBLOCK', 0)
+    flags |= getattr(os, 'O_NOFOLLOW', 0)
+    fd = os.open(os.fspath(path), flags)
+    try:
+        before = os.fstat(fd)
+        if not stat.S_ISREG(before.st_mode):
+            raise ValueError(f'{label} must be a regular file')
+        if before.st_size > maximum:
+            raise ValueError(f'{label} exceeds {maximum} bytes')
+        data, total = _read_bounded(fd, maximum, label)
+        after = os.fstat(fd)
+        if _fingerprint(before) != _fingerprint(after) or total != after.st_size:
+            raise ValueError(f'{label} changed while it was being read')
+        os.lseek(fd, 0, os.SEEK_SET)
+        again, total2 = _read_bounded(fd, maximum, label)
+        after2 = os.fstat(fd)
+        if again != data or total2 != total or _fingerprint(after) != _fingerprint(after2):
+            raise ValueError(f'{label} changed while it was being read')
+        return data
+    finally:
+        os.close(fd)
+
+
+def _optional_regular(path: Path, label: str, maximum: int):
+    try:
+        return read_regular(path, label, maximum)
+    except FileNotFoundError:
+        return None
 
 
 def validate(raw):
@@ -61,22 +146,57 @@ def json_bytes(value):
     return (json.dumps(value, ensure_ascii=False, indent=2, allow_nan=False) + '\n').encode('utf-8')
 
 
+def _inode_key(info):
+    return (info.st_dev, info.st_ino)
+
+
+def _visible_created(path: Path, inode_key) -> bool:
+    try:
+        visible = os.stat(path, follow_symlinks=False)
+    except FileNotFoundError:
+        return False
+    return stat.S_ISREG(visible.st_mode) and _inode_key(visible) == inode_key
+
+
+def _cleanup_created(path: Path, inode_key) -> None:
+    if _visible_created(path, inode_key):
+        try:
+            os.unlink(path)
+        except FileNotFoundError:
+            pass
+
+
+def _hash_stream(stream):
+    stream.seek(0)
+    digest = hashlib.sha256()
+    total = 0
+    while True:
+        chunk = stream.read(1024 * 1024)
+        if not chunk:
+            break
+        digest.update(chunk)
+        total += len(chunk)
+    return total, digest.hexdigest()
+
+
 def build(deployment: Path, runner_dir: Path, output: Path, source_revision='not-supplied') -> dict:
-    if deployment.stat().st_size > 12_000_000:
-        raise ValueError('Deployment input exceeds 12 MB')
-    raw = validate(json.loads(deployment.read_text(encoding='utf-8')))
+    deployment_raw = read_regular(deployment, 'Deployment input', MAX_DEPLOYMENT_BYTES)
+    raw = validate(strict_json_bytes(deployment_raw, 'Deployment input'))
     if source_revision != 'not-supplied' and not re.fullmatch(r'[0-9a-f]{40}', source_revision):
         raise ValueError('Source revision must be a full Git commit SHA or not-supplied')
+
     files = {}
     # Only runtime source files are packaged, never the runner's database or exports.
     for name in ('workflow.py', 'index.html'):
-        files[name] = (runner_dir / name).read_bytes()
+        files[name] = read_regular(runner_dir / name, f'Runner {name}', MAX_RUNNER_FILE_BYTES)
     compile(files['workflow.py'], 'workflow.py', 'exec')
     if not re.search(rb'<(?:body|header)\b', files['index.html'], re.I):
         raise ValueError('Runner dashboard needs an explicit body or leading header')
-    if (runner_dir / 'README.md').is_file():
-        files['UPSTREAM-README.md'] = (runner_dir / 'README.md').read_bytes()
-    files['run.py'] = (ROOT / 'run_bundle.py').read_bytes()
+    upstream_readme = _optional_regular(runner_dir / 'README.md', 'Runner README.md', MAX_RUNNER_FILE_BYTES)
+    if upstream_readme is not None:
+        files['UPSTREAM-README.md'] = upstream_readme
+
+    files['run.py'] = read_regular(ROOT / 'run_bundle.py', 'Parcel launcher', MAX_RUNNER_FILE_BYTES)
     files['parcel.json'] = json_bytes(raw)
     files['config.local.json'] = json_bytes({'mapping': raw['fieldMapping'], 'endpoint': ''})
     files['example-intake.json'] = json_bytes(raw['exampleIntake'])
@@ -86,6 +206,11 @@ def build(deployment: Path, runner_dir: Path, output: Path, source_revision='not
         'Extract into the intended existing private environment and run from this directory:\n\n'
         '  python run.py --db client.sqlite3 configure config.local.json\n'
         '  python run.py --db client.sqlite3 serve\n\n'
+        'The launcher checks MANIFEST.json against its immutable packaged runtime files before\n'
+        'loading workflow.py. config.local.json is intentionally editable operator configuration.\n'
+        'The launcher removes the package directory from Python import search before loading\n'
+        'shadowable standard-library modules or the verified workflow generation.\n'
+        'This internal integrity check is not a signed provenance or authenticity guarantee.\n\n'
         'Open http://127.0.0.1:8789 in that environment. This is a trusted single-workspace\n'
         'operator service, not an internet-facing or multi-tenant deployment.\n\n'
         'Exercise the sample in a SEPARATE throwaway database, not the client database:\n'
@@ -110,25 +235,72 @@ def build(deployment: Path, runner_dir: Path, output: Path, source_revision='not
         'Record the actual installation and client walkthrough in the Parcel checklist.\n'
         'No deployment, customer contact or payment happened merely by building this ZIP.\n'
     ).encode('utf-8')
-    manifest = {'format': 'parcel.bundle-manifest', 'version': 1,
-                'sourceRevisionSupplied': source_revision,
-                'sourceRevisionIndependentlyVerified': False,
-                'files': {name: {'sha256': hashlib.sha256(data).hexdigest(), 'bytes': len(data)} for name, data in sorted(files.items())}}
+
+    operator_editable = ['config.local.json']
+    runtime_immutable = sorted(name for name in files if name not in operator_editable)
+    manifest = {
+        'format': 'parcel.bundle-manifest',
+        'version': 1,
+        'sourceRevisionSupplied': source_revision,
+        'sourceRevisionIndependentlyVerified': False,
+        'runtimeImmutable': runtime_immutable,
+        'operatorEditable': operator_editable,
+        'files': {
+            name: {'sha256': hashlib.sha256(data).hexdigest(), 'bytes': len(data)}
+            for name, data in sorted(files.items())
+        },
+    }
     files['MANIFEST.json'] = json_bytes(manifest)
+
     output.parent.mkdir(parents=True, exist_ok=True)
-    # Exclusive creation preserves an existing customer package.
-    with output.open('xb') as stream:
-        try:
+    flags = os.O_RDWR | os.O_CREAT | os.O_EXCL | getattr(os, 'O_BINARY', 0)
+    flags |= getattr(os, 'O_NOFOLLOW', 0)
+    fd = os.open(os.fspath(output), flags, 0o600)
+    created = os.fstat(fd)
+    created_key = _inode_key(created)
+    try:
+        with os.fdopen(fd, 'w+b', closefd=True) as stream:
             with zipfile.ZipFile(stream, 'w', compression=zipfile.ZIP_DEFLATED) as archive:
                 for name, data in sorted(files.items()):
                     info = zipfile.ZipInfo(name, date_time=(2026, 9, 8, 0, 0, 0))
                     info.compress_type = zipfile.ZIP_DEFLATED
                     info.external_attr = 0o600 << 16
                     archive.writestr(info, data)
-        except BaseException:
-            output.unlink(missing_ok=True)
-            raise
-    return {'output': str(output), 'bytes': output.stat().st_size, 'sha256': hashlib.sha256(output.read_bytes()).hexdigest(), 'files': len(files)}
+            stream.flush()
+            os.fsync(stream.fileno())
+            before_hash = os.fstat(stream.fileno())
+            byte_count, bundle_sha256 = _hash_stream(stream)
+            after_hash = os.fstat(stream.fileno())
+            if (
+                _fingerprint(before_hash) != _fingerprint(after_hash)
+                or byte_count != after_hash.st_size
+            ):
+                raise RuntimeError('Created package changed while it was being hashed')
+            byte_count2, sha2 = _hash_stream(stream)
+            after2 = os.fstat(stream.fileno())
+            if (
+                byte_count2 != byte_count
+                or sha2 != bundle_sha256
+                or byte_count2 != after2.st_size
+                or _fingerprint(after_hash) != _fingerprint(after2)
+            ):
+                raise RuntimeError('Created package changed while it was being hashed')
+            visible = os.stat(output, follow_symlinks=False)
+            if (
+                not stat.S_ISREG(visible.st_mode)
+                or _inode_key(visible) != created_key
+                or _fingerprint(visible) != _fingerprint(after2)
+            ):
+                raise RuntimeError('Output path no longer names the hashed package generation')
+            return {
+                'output': str(output),
+                'bytes': byte_count,
+                'sha256': bundle_sha256,
+                'files': len(files),
+            }
+    except BaseException:
+        _cleanup_created(output, created_key)
+        raise
 
 
 def main():
@@ -140,7 +312,7 @@ def main():
     args = parser.parse_args()
     try:
         result = build(args.deployment, args.runner_dir, args.output, args.source_revision)
-    except (OSError, ValueError, TypeError, SyntaxError) as exc:
+    except (OSError, ValueError, TypeError, SyntaxError, RuntimeError) as exc:
         parser.exit(1, f'Bundle not created: {exc}\n')
     print(json.dumps(result, indent=2))
 

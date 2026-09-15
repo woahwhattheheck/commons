@@ -84,6 +84,14 @@ def _validate_sha(value: Any, field: str) -> str:
     return value.lower()
 
 
+def _validate_sha256(value: Any, field: str) -> str:
+    if not isinstance(value, str) or len(value) != 64:
+        raise LeaseError(f"{field}: expected 64 lowercase hex characters")
+    if value != value.lower() or any(ch not in "0123456789abcdef" for ch in value):
+        raise LeaseError(f"{field}: expected 64 lowercase hex characters")
+    return value
+
+
 @dataclass(frozen=True)
 class Claim:
     repo: str
@@ -108,7 +116,7 @@ class Claim:
             _machine_token(raw["claim_id"], "claim_id"),
             _rfc3339(raw["claim_started_at"], "claim_started_at"),
             _validate_sha(raw["anchor_sha"], "anchor_sha"),
-            _validate_sha(raw["preflight_sha256"], "preflight_sha256"),
+            _validate_sha256(raw["preflight_sha256"], "preflight_sha256"),
         )
 
     @property
@@ -254,7 +262,7 @@ def verify_receipt(raw: Mapping[str, Any]) -> bool:
     _machine_token(raw["claim_id"], "receipt claim_id")
     _display_token(raw["claimant"], "receipt claimant")
     _rfc3339(raw["claim_started_at"], "receipt claim_started_at")
-    _validate_sha(raw["preflight_sha256"], "receipt preflight_sha256")
+    _validate_sha256(raw["preflight_sha256"], "receipt preflight_sha256")
     tag_sha = _validate_sha(raw["tag_object_sha"], "receipt tag_object_sha")
     observed = raw["observed_ref_sha"]
     if observed is not None:

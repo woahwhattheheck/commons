@@ -194,6 +194,27 @@ class EngineTests(unittest.TestCase):
         self.assertEqual(verification["verdict"], "STALE_OR_DRIFTED")
         self.assertFalse(verification["historical_exact"])
 
+    def test_exact_time_report_verifies_as_current(self):
+        p = fixture()
+        report = compile_packet(p, as_of=NOW)
+        verification = verify_report(p, report, current_as_of=NOW)
+        self.assertEqual(verification["verdict"], "CURRENT_VERIFIED")
+        self.assertTrue(verification["historical_receipt_valid"])
+        self.assertTrue(verification["historical_exact"])
+        self.assertTrue(verification["current_same_state"])
+
+    def test_future_dated_report_never_verifies_as_current(self):
+        p = fixture()
+        future = datetime(2026, 9, 14, 1, 0, 1, tzinfo=timezone.utc)
+        report = compile_packet(p, as_of=future)
+        current = compile_packet(p, as_of=NOW)
+        self.assertEqual(report["state_sha256"], current["state_sha256"])
+        verification = verify_report(p, report, current_as_of=NOW)
+        self.assertTrue(verification["historical_receipt_valid"])
+        self.assertTrue(verification["historical_exact"])
+        self.assertTrue(verification["current_same_state"])
+        self.assertEqual(verification["verdict"], "STALE_OR_DRIFTED")
+
     def test_verification_rechecks_currentness(self):
         p = fixture()
         p["request"]["expires_at"] = "2026-09-14T01:00:01Z"

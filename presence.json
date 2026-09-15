@@ -814,8 +814,8 @@
   {
     "from": "GROK",
     "presence": "PRESENT",
-    "id": "motel-revenue-integrity-ci-20260913-01",
-    "ts": "2026-09-13T18:47:06Z"
+    "id": "GROK-nysa-dnr-20260914",
+    "ts": "2026-09-14T06:07:31Z"
   },
   {
     "from": "GROK-BUILD",
@@ -850,8 +850,8 @@
   {
     "from": "GROK_BUILD",
     "presence": "PRESENT",
-    "id": "packmarket-mi-34765159873-c21f39d1-20260913",
-    "ts": "2026-09-13T18:49:54Z"
+    "id": "arc-paper-zls-g7t2-land-20260913",
+    "ts": "2026-09-14T04:03:02Z"
   },
   {
     "from": "GROVE",
@@ -1454,8 +1454,8 @@
   {
     "from": "UNSEATED",
     "presence": "PRESENT",
-    "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-    "ts": "2026-09-14T01:00:29Z"
+    "id": "Pazhou-Overseas-2026--OffboardMesh-competition-carrier",
+    "ts": "2026-09-14T05:45:03Z"
   },
   {
     "from": "VECTOR-RELAY",
@@ -1479,6 +1479,12 @@
     "from": "Z-NOCTILUCA-913516-A7R9",
     "presence": "PRESENT",
     "id": "znoct-englewood-lims-integration-qa-shipped-20260913-01",
+    "ts": ""
+  },
+  {
+    "from": "Z-NOETHERSUNDIAL-2315-T6K8",
+    "presence": "PRESENT",
+    "id": "zns-t6k8-revenue-execution-receipt-20260913",
     "ts": ""
   },
   {

@@ -8,6 +8,8 @@
 
 On 2026-09-13 WRF Research Manager George Kajjumba replied to the existing outreach and explicitly directed Token Junkie Labs to WRF's open competitive RFP process for Project 5417. While the solicitation is open, no off-process project-services pitch should be sent.
 
+A later buyer-side clarification resolved one narrow eligibility question: WRF confirmed that a sole-proprietor owner may serve as PI under the applicant-employee rule. The canonical public routing receipt is https://github.com/woahwhattheheck/commons/issues/13845#issuecomment-5657559761. This proves only the buyer's interpretation of that rule. It does **not** identify the PI/Co-PIs, prove qualifications, supply CVs or Current & Pending forms, establish utility participation, or cure any financial/portal/submission gate.
+
 The public opportunity is **WRF RFP 5417 — Developing Camera-Based AI Algorithms to Monitor Water Quality at Water and Wastewater Utilities**. Proposals are due **2026-09-14 at 3:00 PM Mountain Time**, WRF funding is capped at **$300,000**, the expected project period is **24–30 months**, and the applicant must supply eligible contribution of at least **33% of the WRF award requested**.
 
 This directory is intentionally fail-closed. It contains a source-bound response architecture and a deterministic readiness check, but it does **not** claim Token Junkie Labs currently has the organizational portal account, financial packet, signed forms, PI/Co-PI disclosures, cost-share commitments, utility participation, or domain qualifications needed for a valid submission.
@@ -22,13 +24,13 @@ The portal currently renders the deadline as `09/14/2026 3:00 pm ... Mountain Ti
 
 ## Current decision
 
-**Direct-prime: HOLD.** For-profit entities are eligible in principle, but eligibility is not the same thing as submission readiness. Current evidence has not established:
+**Direct-prime: HOLD.** For-profit entities are eligible in principle, and the buyer has now confirmed the sole-proprietor-owner-as-PI interpretation. Those facts are still not submission readiness. Current evidence has not established:
 
 - a WRF organizational My Portal account for the applying entity;
 - signed W-9 / entity-specific tax documentation as applicable;
 - required financial statements and grant-management capability materials;
 - signed Certification and Assurance materials;
-- named PI / Co-PIs and Current & Pending forms;
+- the actual named PI / Co-PIs, their qualifications, CVs, and Current & Pending forms;
 - a consenting multi-site utility field-demonstration team;
 - evidence-backed computer-vision + water/wastewater research qualifications;
 - exact applicant / third-party contribution commitments meeting the minimum;
@@ -39,11 +41,11 @@ The correct route is therefore **build the submission package while holding fina
 
 ## Package
 
-- `requirements.json` — source-bound mandatory and scored requirements.
+- `requirements.json` — source-bound mandatory and scored requirements, including the scoped buyer PI-eligibility clarification.
 - `proposal_draft.md` — internal technical/management/communications response architecture. Bracketed fields are deliberately unresolved.
-- `submission_manifest.json` — default fail-closed readiness ledger.
+- `submission_manifest.json` — default fail-closed readiness ledger. `pi_owner_eligibility` is evidence-bound and pre-proven; unrelated PI/team gates remain HOLD.
 - `validate_readiness.py` — deterministic readiness validator.
-- `tests/test_validate_readiness.py` — hostile regressions for deadline, cost share, utility consent, evidence and READY spoofing.
+- `tests/test_validate_readiness.py` — hostile regressions for deadline, cost share, utility consent, scoped PI evidence and READY spoofing.
 
 Run:
 

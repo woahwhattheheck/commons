@@ -1,0 +1,61 @@
+{
+  "categories": [
+    {
+      "category_id": "CATEGORY_1_CONSULTING",
+      "independently_evaluated": true,
+      "label": "Consulting",
+      "mandatory_requirements": [],
+      "observed_scope": [
+        "readiness assessments",
+        "roadmaps",
+        "governance and risk frameworks",
+        "organizational change management"
+      ]
+    },
+    {
+      "category_id": "CATEGORY_2_SERVICES",
+      "independently_evaluated": true,
+      "label": "Services",
+      "mandatory_requirements": [],
+      "observed_scope": [
+        "implementation and integration",
+        "custom development",
+        "testing and quality assurance",
+        "managed services"
+      ]
+    }
+  ],
+  "evaluation_model_status": "NOT_CONTROLLING_SOURCE_CAPTURED",
+  "noncontrolling_observations": [
+    {
+      "applies_to": [
+        "CATEGORY_1_CONSULTING",
+        "CATEGORY_2_SERVICES"
+      ],
+      "authority": "PUBLIC_MIRROR_DISCOVERY",
+      "observation_id": "OBS-CATEGORY-INDEPENDENCE",
+      "text": "Public mirror says bidders may respond to one or both categories and each is evaluated independently."
+    },
+    {
+      "applies_to": [
+        "CATEGORY_1_CONSULTING",
+        "CATEGORY_2_SERVICES"
+      ],
+      "authority": "PUBLIC_MIRROR_DISCOVERY",
+      "observation_id": "OBS-DATA-RESIDENCY",
+      "text": "Public mirror says no offshore resources or data storage outside the contiguous United States."
+    },
+    {
+      "applies_to": [
+        "CATEGORY_1_CONSULTING",
+        "CATEGORY_2_SERVICES"
+      ],
+      "authority": "OFFICIAL_SUMMARY",
+      "observation_id": "OBS-COOP-REACH",
+      "text": "Official NASPO summary confirms cooperative use by state/local/higher-education and other eligible public entities."
+    }
+  ],
+  "qualification_rule": "Mirror observations may guide diligence and drafting but cannot create a PROVEN mandatory requirement, evaluation score, or prime-ready state.",
+  "schema": "naspo.sw1045.requirements/v1",
+  "source_authority": "PUBLIC_MIRROR_DISCOVERY"
+}

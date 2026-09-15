@@ -15,6 +15,8 @@ on:
       - 'p/demon-revenue-hardening-correction-20260825-01.md'
       - 'p/jojo-revenue-recovery-pipeline-20260825-01.md'
       - 'revenue/payment_ready/**'
+      - 'revenue/hive/fulfillment-desk/**'
+      - 'revenue/hive/intake-crm-workflow/**'
       - 'test_carrier_from_memory.js'
       - 'test_diagnostic_dlp.js'
       - 'test_dio_crlf.py'
@@ -34,6 +36,8 @@ on:
       - 'p/demon-revenue-hardening-correction-20260825-01.md'
       - 'p/jojo-revenue-recovery-pipeline-20260825-01.md'
       - 'revenue/payment_ready/**'
+      - 'revenue/hive/fulfillment-desk/**'
+      - 'revenue/hive/intake-crm-workflow/**'
       - 'test_carrier_from_memory.js'
       - 'test_diagnostic_dlp.js'
       - 'test_dio_crlf.py'
@@ -59,6 +63,13 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
+      - name: Parcel package integrity
+        working-directory: revenue/hive/fulfillment-desk
+        run: |
+          python -m py_compile bundle.py run_bundle.py test_package_integrity.py
+          node --test test_model.js
+          python -B -m unittest -v test_bundle.py test_package_integrity.py
+          python -O -B -m unittest -v test_bundle.py test_package_integrity.py
       - name: focused Python contract suite
         run: python -W error -m unittest -q test_revenue_recovery.py test_payment_ready.py test_dio_revenue_contract.py test_dio_crlf.py test_gitignore_eof.py
       - name: actual diagnostic inline DLP

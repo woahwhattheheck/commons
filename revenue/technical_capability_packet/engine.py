@@ -442,13 +442,15 @@ def verify_report(packet: Any, report: Any, *, current_as_of: datetime) -> dict[
         raise ContractError("invalid report receipt")
     historical_payload = {key: value for key, value in report.items() if key != "receipt_sha256"}
     historical_receipt_valid = _digest(historical_payload) == receipt
+    current_now = _trusted_time(current_as_of, "current_as_of")
     evaluated_at = _utc(report["evaluated_at"], "report.evaluated_at")
+    report_not_future = evaluated_at <= current_now
     historical = compile_packet(packet, as_of=evaluated_at)
     historical_exact = historical == report
-    current = compile_packet(packet, as_of=current_as_of)
+    current = compile_packet(packet, as_of=current_now)
     current_same_state = current["state_sha256"] == report["state_sha256"]
     current_usable = current_same_state and current["readiness"] == "READY_FOR_OWNER_SEND_REVIEW" and current["request_live"]
-    verdict = "CURRENT_VERIFIED" if historical_receipt_valid and historical_exact and current_usable else "STALE_OR_DRIFTED"
+    verdict = "CURRENT_VERIFIED" if historical_receipt_valid and historical_exact and report_not_future and current_usable else "STALE_OR_DRIFTED"
     payload = {
         "schema": VERIFY_SCHEMA,
         "verdict": verdict,

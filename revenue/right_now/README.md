@@ -23,7 +23,7 @@ python3 host/right_now_revenue.py compile
 python3 host/right_now_revenue.py validate
 python3 host/gpt_action_packets.py validate
 python3 host/gpt_action_packets.py next
-python3 -m unittest test_settled_cash.py test_settled_awards.py test_right_now.py test_right_now_execution.py test_smart_outreach.py test_gpt_action_packets.py
+python3 -m unittest test_settled_cash.py test_settled_awards.py test_right_now.py test_right_now_execution.py test_right_now_checkout_authority.py test_smart_outreach.py test_gpt_action_packets.py
 ```
 
 Buyer-facing first rung: [agent-triage.html](../../agent-triage.html).
@@ -39,6 +39,26 @@ the projection drifts from its sources, including a price, global cash,
 offer-specific payment, settled cash, settled award, candidate, collision, or
 hash change. `right-now.js` renders that exact snapshot without creating a
 second ledger.
+
+## Checkout-authority boundary
+
+`active_chargeable_checkout` is not minted by the right-now catalog. The
+compiler derives that fact from the retained Stripe-verified Autopsy offer in
+`revenue/agent_failure_autopsy/offer.json` plus the buyer-visible
+`agent-rescue.html` checkout anchors. The reviewed authority root pins the exact
+USD 29 offer, Stripe account, product, price, payment-link identity, base payment
+URL, and retained provider receipt digest. The retained offer must remain
+`ACTIVE_VERIFIED`, its provider binding must carry the live-mode evidence, and
+its verification timestamp may not postdate the catalog evidence boundary.
+Every `data-checkout` anchor on the public page must resolve to the pinned base
+payment URL; UTM/query decoration may vary.
+
+The catalog boolean and its `LIVE_PUBLIC_CHECKOUT_PAGE` row are redundant
+assertions only. They must reconcile exactly to that retained authority and no
+second unbound live-checkout row may appear. Both the provider offer and public
+page are SHA-256 source-receipted in the compiled control. This is still retained
+evidence, not a fresh Stripe re-query: the compiler does not create, update,
+charge, refund, or infer a purchase from the checkout.
 
 ## Settled-cash boundary
 
