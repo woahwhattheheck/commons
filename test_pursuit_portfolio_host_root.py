@@ -4,7 +4,6 @@ import hashlib
 import hmac
 import json
 import os
-import pwd
 import subprocess
 import sys
 import tempfile
@@ -14,9 +13,9 @@ from unittest import mock
 
 from revenue.pursuit_portfolio import host
 from revenue.pursuit_portfolio.core import PortfolioError
-from revenue.pursuit_portfolio.current import AuthorityKey, KEY_SCHEMA, _canonical
+from revenue.pursuit_portfolio.current import AuthorityKey, KEY_SCHEMA, _canonical, _now
 from revenue.pursuit_portfolio.floor import FLOOR_SCHEMA
-from test_pursuit_portfolio_current import KEY, NOW, authority_for, source
+from test_pursuit_portfolio_current import KEY, portfolio_source, signed_authority_for
 
 
 def _write_key(root: Path, key: AuthorityKey) -> Path:
@@ -41,7 +40,7 @@ def _write_floor(
     key: AuthorityKey,
     *,
     generation: int = 1,
-    updated_at: str = NOW,
+    updated_at: str,
 ) -> Path:
     authority_raw = _canonical(authority)
     unsigned = {
@@ -69,9 +68,17 @@ def _write_floor(
 @unittest.skipUnless(os.name == "posix", "effective-account host root requires POSIX")
 class HostRootSelectionTests(unittest.TestCase):
     def test_attacker_home_with_self_consistent_host_tree_cannot_select_trust_root(self):
-        value = source(max_age=86400 * 5)
+        import pwd
+
+        now = _now()
+        value = portfolio_source()
         attacker_key = AuthorityKey("attacker-root-1", b"x" * 32)
-        authority = authority_for(value, key=attacker_key)
+        authority = signed_authority_for(
+            value,
+            key=attacker_key,
+            captured=now,
+            issued_at=now,
+        )
 
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
@@ -79,7 +86,7 @@ class HostRootSelectionTests(unittest.TestCase):
             attacker_host = attacker_home / ".config" / "commons" / "pursuit-portfolio"
             attacker_host.mkdir(parents=True, mode=0o700)
             _write_key(attacker_host, attacker_key)
-            _write_floor(attacker_host, authority, attacker_key)
+            _write_floor(attacker_host, authority, attacker_key, updated_at=now)
 
             source_path = root / "input.json"
             source_path.write_bytes(_canonical(value))
@@ -180,8 +187,9 @@ class HostRootSelectionTests(unittest.TestCase):
             self.assertNotEqual(loaded.key, attacker_key.key)
 
     def test_repeated_floor_reads_survive_parent_swap_without_consuming_attacker_tree(self):
-        value = source(max_age=86400 * 5)
-        authority = authority_for(value)
+        now = _now()
+        value = portfolio_source()
+        authority = signed_authority_for(value, captured=now, issued_at=now)
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
             live = root / "host"
@@ -191,8 +199,8 @@ class HostRootSelectionTests(unittest.TestCase):
             attacker.mkdir(mode=0o700)
             attacker.chmod(0o777)
             key_path = _write_key(live, KEY)
-            floor_path = _write_floor(live, authority, KEY, generation=1)
-            _write_floor(attacker, authority, KEY, generation=99)
+            floor_path = _write_floor(live, authority, KEY, generation=1, updated_at=now)
+            _write_floor(attacker, authority, KEY, generation=99, updated_at=now)
 
             original = host._read_validated_host_leaf
             swaps = 0
