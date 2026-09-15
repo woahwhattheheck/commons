@@ -1,9 +1,9 @@
 {
   "counts": {
-    "open_issues": 112,
+    "open_issues": 111,
     "open_pull_requests": 57,
-    "runs_in_progress": 10,
-    "runs_queued": 72
+    "runs_in_progress": 19,
+    "runs_queued": 83
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -69,24 +69,46 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "ztlk7m4/transform-health-agentic-assessment-20260915",
-      "created_at": "2026-09-15T06:14:53Z",
+      "branch": "zsh-q6m4/learn2design-public-evidence-20260915",
+      "created_at": "2026-09-15T06:33:59Z",
       "draft": false,
-      "head_sha": "0c06ed680b959d8caaaf5159f85b466094266e7c",
-      "number": 14668,
-      "title": "Revenue: add Transform Health agentic assessment pursuit carrier",
-      "updated_at": "2026-09-15T06:19:15Z"
+      "head_sha": "58a65187f9465f19d64ef2bb4f2936c19c1bd7b4",
+      "number": 14672,
+      "title": "Learn2Design: source-pinned matched public evidence rail",
+      "updated_at": "2026-09-15T06:33:59Z"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "zgb-n7q4/cas-snapshot-selfverify-20260915",
-      "created_at": "2026-09-15T06:12:01Z",
+      "branch": "zym-l4v8/media-rights-ops-20260915",
+      "created_at": "2026-09-15T06:26:21Z",
       "draft": false,
-      "head_sha": "ca774c1ba87607c248c9c945d61289f83a17fd6e",
-      "number": 14666,
-      "title": "revenue: make CAS benchmark snapshots independently self-verifying",
-      "updated_at": "2026-09-15T06:15:21Z"
+      "head_sha": "7aacbb2f2f057ef640c975f338bf205d1101852c",
+      "number": 14670,
+      "title": "revenue: add content rights usage-window operations desk",
+      "updated_at": "2026-09-15T06:34:29Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zsr-q4n7/commercial-funnel-current-main-recovery-20260915",
+      "created_at": "2026-09-15T06:23:45Z",
+      "draft": false,
+      "head_sha": "61cdf2ba59e68bd4f1bd51e4a234563984117870",
+      "number": 14669,
+      "title": "Recover commercial-funnel evidence/time authority on current main",
+      "updated_at": "2026-09-15T06:32:28Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "ztlk7m4/transform-health-agentic-assessment-20260915",
+      "created_at": "2026-09-15T06:14:53Z",
+      "draft": false,
+      "head_sha": "7d6b74618dbae948f7bc85e07db21ee32c5346a5",
+      "number": 14668,
+      "title": "Revenue: add Transform Health agentic assessment pursuit carrier",
+      "updated_at": "2026-09-15T06:34:16Z"
     },
     {
       "author": "woahwhattheheck",
@@ -97,7 +119,7 @@
       "head_sha": "f1c9800387b399949a4bf9f85e10b73500042c41",
       "number": 14664,
       "title": "Fix collision preflight query authority and same-hit ambiguity",
-      "updated_at": "2026-09-15T06:18:15Z"
+      "updated_at": "2026-09-15T06:31:52Z"
     },
     {
       "author": "woahwhattheheck",
@@ -105,10 +127,10 @@
       "branch": "zrg-h4q8/pinellas-current-main-recovery-20260915",
       "created_at": "2026-09-15T05:58:16Z",
       "draft": false,
-      "head_sha": "3be94cadadb8e44b4218bc125f26793c95adb2e9",
+      "head_sha": "6b44a8161e45bdac33d3d5b446eb8dc0c46ec97c",
       "number": 14661,
       "title": "revenue: recover repaired Pinellas digital-evidence RFI carrier onto current main",
-      "updated_at": "2026-09-15T06:01:12Z"
+      "updated_at": "2026-09-15T06:34:14Z"
     },
     {
       "author": "woahwhattheheck",
@@ -153,28 +175,6 @@
       "number": 14650,
       "title": "Add swarm product-lane collision preflight compiler",
       "updated_at": "2026-09-15T05:48:49Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-cairnline/creator-fetch-native-getters-14637",
-      "created_at": "2026-09-15T05:21:06Z",
-      "draft": false,
-      "head_sha": "e216ecc4655b6db2d361b9a4094f0c2751fd3b25",
-      "number": 14649,
-      "title": "Fix Creator Desk native Request accessor-shadow bearer leak",
-      "updated_at": "2026-09-15T06:09:21Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zrg-h4q8/adia-current-main-recovery-20260915",
-      "created_at": "2026-09-15T05:20:59Z",
-      "draft": false,
-      "head_sha": "d422798850c2803484a2da2b77df3e515196bc74",
-      "number": 14648,
-      "title": "research: recover and re-verify ADIA structural-break carrier on current main",
-      "updated_at": "2026-09-15T05:59:31Z"
     }
   ],
   "open_heads": {
@@ -194,7 +194,6 @@
     "14122": "1c95d8463cbaf7e6d11d266d292a5b7792a2dbbb",
     "14188": "1859cf0bfc12f2819f3f63fd4349ed06ca5f341b",
     "14209": "61b6955c3db6ae10a71d54238243c87576a77166",
-    "14218": "12e38cf603a6863abee6b6285b2be5024b436f8c",
     "14221": "bc063456d9fcff764b33a7f9079aed7b889ac09f",
     "14270": "86c47a9e32a67eece1382899a898d9ccf40e26da",
     "14299": "cd6a66435851b57f61c5a68c4ab7f8356701f910",
@@ -205,7 +204,7 @@
     "14333": "26e7110348d2ab0d994adf68d5e0f14ad8677e38",
     "14343": "c04b1fa4adcdb5cf928bb163c158a3adec828ea3",
     "14356": "4d55e009437563dd254dfa38e2cd4bfaffec2f10",
-    "14392": "e264c9353767128050fe769488499963d7cd7d67",
+    "14392": "2810c72b9bb48c185944b57fb38fee896f37b8c4",
     "14395": "1b6907c68885d2feac44c15c2dd39f128864640d",
     "14454": "20a25009ce7ae2b144ab19dcd3c0e0e92f5f60cd",
     "14464": "dd41745b9c6796b9215a232bbfc3387e2c4a5b74",
@@ -226,20 +225,54 @@
     "14632": "ec91a123231b3ad8f8813c22dd9751b1a7c2b6b4",
     "14641": "ada6bccd3ec08da69b0572b08943c35ea0c0c5a4",
     "14648": "d422798850c2803484a2da2b77df3e515196bc74",
-    "14649": "e216ecc4655b6db2d361b9a4094f0c2751fd3b25",
     "14650": "f7f86ce04a8a1e493cce18508acdd1807ab0cad6",
     "14651": "2452c93dc8887dd77adf9f7d9fe2d70afcf3ce12",
     "14657": "e428c29d67cb44cb156ba055ec60a7abc6c16f09",
     "14658": "bcc29688e888b38a5ce6ee1feb734b3d0060636f",
-    "14661": "3be94cadadb8e44b4218bc125f26793c95adb2e9",
+    "14661": "6b44a8161e45bdac33d3d5b446eb8dc0c46ec97c",
     "14664": "f1c9800387b399949a4bf9f85e10b73500042c41",
-    "14666": "ca774c1ba87607c248c9c945d61289f83a17fd6e",
-    "14668": "0c06ed680b959d8caaaf5159f85b466094266e7c"
+    "14668": "7d6b74618dbae948f7bc85e07db21ee32c5346a5",
+    "14669": "61cdf2ba59e68bd4f1bd51e4a234563984117870",
+    "14670": "7aacbb2f2f057ef640c975f338bf205d1101852c",
+    "14672": "58a65187f9465f19d64ef2bb4f2936c19c1bd7b4"
   },
   "pulls_listed": 57,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 7.2,
+  "queue_depth_per_runner": 4.4,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zms-q7t9/cas-benchmark-cohort-binding-20260913",
+      "closed_at": "2026-09-15T06:29:14Z",
+      "head_sha": "12e38cf603a6863abee6b6285b2be5024b436f8c",
+      "merged_at": null,
+      "number": 14218,
+      "state": "CLOSED",
+      "title": "fix(revenue): bind CAS benchmark runs to one evaluation universe"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zgb-n7q4/cas-snapshot-selfverify-20260915",
+      "closed_at": "2026-09-15T06:28:06Z",
+      "head_sha": "383ed292faa4022862a54d4a2f18308d9177980d",
+      "merged_at": "2026-09-15T06:28:06Z",
+      "number": 14666,
+      "state": "MERGED",
+      "title": "revenue: make CAS benchmark snapshots independently self-verifying"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z-cairnline/creator-fetch-native-getters-14637",
+      "closed_at": "2026-09-15T06:27:51Z",
+      "head_sha": "e216ecc4655b6db2d361b9a4094f0c2751fd3b25",
+      "merged_at": "2026-09-15T06:27:51Z",
+      "number": 14649,
+      "state": "MERGED",
+      "title": "Fix Creator Desk native Request accessor-shadow bearer leak"
+    },
     {
       "author": "woahwhattheheck",
       "base": "zns-r8k5/commercial-waste-postmerge-authority-20260914",
@@ -371,43 +404,10 @@
       "number": 14640,
       "state": "MERGED",
       "title": "Fix Creator Desk forged Request bearer exfiltration"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zol-c4n9/sun-a303656-exact-harness-20260914",
-      "closed_at": "2026-09-15T05:13:53Z",
-      "head_sha": "11d643d224cc815949603ebeb03e7e25fd017656",
-      "merged_at": "2026-09-15T05:13:53Z",
-      "number": 14639,
-      "state": "MERGED",
-      "title": "Add exact A303656 research harness and negative-evidence ledger"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "zargent/snoco-packet-gap-inventory-20260915",
-      "branch": "z-ledger/snoco-open-door-wording-20260915",
-      "closed_at": "2026-09-15T05:11:01Z",
-      "head_sha": "4f26f538ef110e51ac777a6c1d91c03451af2977",
-      "merged_at": "2026-09-15T05:11:01Z",
-      "number": 14642,
-      "state": "MERGED",
-      "title": "Donor: clear Snohomish open-door lexical false positive"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "revenue/learn2design-vectorized-zsol17",
-      "closed_at": "2026-09-15T05:01:28Z",
-      "head_sha": "d2348dd1cd5e82043e36670a371ebb28b798f299",
-      "merged_at": "2026-09-15T05:01:28Z",
-      "number": 14636,
-      "state": "MERGED",
-      "title": "Learn2Design: vectorize staged-trust optimizer"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-15T06:19:38Z",
+  "unchanged_since": "2026-09-15T06:37:12Z",
   "undatable_pulls": []
 }
