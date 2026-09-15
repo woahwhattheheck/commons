@@ -5,13 +5,17 @@ Primary implementation credit belongs to ZSA-D6P2. This module wraps that strand
 implementation instead of rewriting it: `_zsa_d6p2_core.py` is the byte-exact donor.
 ZHD-K8P3 adds the current M1 preflight/leak-fence contract while keeping the donor
 branch immutable. ZFS-R7 supplied independent alternate-carrier review evidence.
+Forge-56 adds one-generation source snapshots after independent A->B race review.
 """
 from __future__ import annotations
 
 import hashlib
 import json
 import math
+import os
 import re
+import stat
+import tempfile
 from pathlib import Path
 from typing import Iterable, Mapping, Optional, Sequence
 from urllib.parse import unquote
@@ -30,6 +34,7 @@ SCHOOL_CATEGORIES = _core.SCHOOL_CATEGORIES
 GEOID_RE = _core.GEOID_RE
 REQUIRED_COLUMNS = _core.REQUIRED_COLUMNS
 AggregationError = _core.AggregationError
+SNAPSHOT_POLICY = "SINGLE_MATERIALIZATION_DESCRIPTOR_BOUND_SHA256"
 
 FORBIDDEN_SOURCE_TOKENS = tuple(dict.fromkeys((*_core.FORBIDDEN_SOURCE_TOKENS,
     "reference-answer", "reference_answer")))
@@ -56,7 +61,6 @@ PUBLISHED_POLICY_VALUES: dict[str, tuple[str, ...]] = {
 
 
 def _decode_bounded(value: str) -> str:
-    """Percent-decode repeatedly, rejecting pathological encoding depth."""
     current = value
     for _ in range(8):
         decoded = unquote(current)
@@ -83,7 +87,6 @@ def _forbidden_token(value: str) -> Optional[str]:
 
 
 def _safe_source(uri: str, *, allow_sample_score_header: bool = False) -> str:
-    """Admit only canonical challenge URIs and reject encoded answer semantics."""
     del allow_sample_score_header
     decoded = _decode_bounded(uri)
     token = _forbidden_token(decoded)
@@ -96,7 +99,6 @@ def _safe_source(uri: str, *, allow_sample_score_header: bool = False) -> str:
     return uri
 
 
-# Every retained donor function resolves through the repaired URI gate.
 _core._safe_source = _safe_source
 
 source_registry = _core.source_registry
@@ -132,8 +134,6 @@ def aggregate_query(region: str) -> str:
 def validate_source_schema(key: str, columns: Iterable[str]) -> None:
     columns = tuple(str(column) for column in columns)
     _core.validate_source_schema(key, columns)
-    # SampleSubmission is the sole explicit exception: it is custody authority and
-    # its organizer score placeholder is projected away rather than consumed.
     if key == "sample":
         return
     for column in columns:
@@ -192,7 +192,6 @@ SELECT (SELECT COUNT(*) FROM authoritative) AS sample_rows,
 
 
 def preflight_probe_sql(region: str) -> dict[str, str]:
-    """Return the complete deterministic pre-aggregation probe transcript."""
     r = source_registry(region)
     probes: dict[str, str] = {}
     for key, uri in r.items():
@@ -255,34 +254,217 @@ def _domain_receipt(name: str, observed: Iterable[object]) -> dict[str, object]:
     }
 
 
-def run_preflight(connection: object, region: str) -> dict[str, object]:
-    """Execute all source/schema/custody/domain probes before aggregation."""
-    r = source_registry(region)
-    probes = preflight_probe_sql(region)
+def _source_reader_sql(key: str, uri: str) -> str:
+    if key == "sample":
+        return f"read_csv_auto({_sql_string(uri)}, header=true, all_varchar=true)"
+    return f"read_parquet({_sql_string(uri)})"
+
+
+def _snapshot_copy_sql(key: str, source_uri: str, target: Path) -> str:
+    _safe_source(source_uri)
+    reader = _source_reader_sql(key, source_uri)
+    if key == "sample":
+        options = "FORMAT CSV, HEADER true"
+    else:
+        options = "FORMAT PARQUET, COMPRESSION ZSTD"
+    return f"COPY (SELECT * FROM {reader}) TO {_sql_string(str(target))} ({options})"
+
+
+def _sha256_fd(fd: int) -> tuple[str, int]:
+    digest = hashlib.sha256()
+    size = 0
+    offset = 0
+    while True:
+        if hasattr(os, "pread"):
+            block = os.pread(fd, 1024 * 1024, offset)
+        else:
+            os.lseek(fd, offset, os.SEEK_SET)
+            block = os.read(fd, 1024 * 1024)
+        if not block:
+            break
+        digest.update(block)
+        size += len(block)
+        offset += len(block)
+    return digest.hexdigest(), size
+
+
+def _descriptor_alias(fd: int) -> str:
+    info = os.fstat(fd)
+    for root in ("/proc/self/fd", "/dev/fd"):
+        alias = f"{root}/{fd}"
+        try:
+            observed = os.stat(alias)
+        except OSError:
+            continue
+        if (observed.st_dev, observed.st_ino) == (info.st_dev, info.st_ino):
+            return alias
+    raise AggregationError("descriptor-backed source reopening is unavailable")
+
+
+class SourceSnapshots:
+    def __init__(
+        self,
+        registry: Mapping[str, str],
+        receipts: Mapping[str, Mapping[str, object]],
+        fds: Mapping[str, int],
+        identities: Mapping[str, tuple[int, int]],
+    ) -> None:
+        self.registry = dict(registry)
+        self.receipts = {key: dict(value) for key, value in receipts.items()}
+        self._fds = dict(fds)
+        self._identities = dict(identities)
+        self._closed = False
+
+    def verify(self) -> None:
+        if self._closed:
+            raise AggregationError("source snapshots are closed")
+        for key, fd in self._fds.items():
+            expected = self.receipts[key]
+            identity = self._identities[key]
+            info = os.fstat(fd)
+            if not stat.S_ISREG(info.st_mode):
+                raise AggregationError(f"{key}: retained snapshot is not a regular file")
+            if (info.st_dev, info.st_ino) != identity:
+                raise AggregationError(f"{key}: retained snapshot generation changed")
+            alias_info = os.stat(self.registry[key])
+            if (alias_info.st_dev, alias_info.st_ino) != (info.st_dev, info.st_ino):
+                raise AggregationError(f"{key}: descriptor alias generation changed")
+            digest, size = _sha256_fd(fd)
+            if size != expected["materialized_bytes"] or digest != expected["materialized_sha256"]:
+                raise AggregationError(f"{key}: retained snapshot content changed")
+
+    def close(self) -> None:
+        if self._closed:
+            return
+        self._closed = True
+        for fd in self._fds.values():
+            try:
+                os.close(fd)
+            except OSError:
+                pass
+
+
+def _materialize_sources(connection: object, region: str) -> SourceSnapshots:
+    remote = source_registry(region)
+    root = Path(tempfile.mkdtemp(prefix="mapping-equity-snapshot-"))
+    os.chmod(root, 0o700)
+    fds: dict[str, int] = {}
+    registry: dict[str, str] = {}
+    receipts: dict[str, dict[str, object]] = {}
+    identities: dict[str, tuple[int, int]] = {}
+    try:
+        for key, uri in remote.items():
+            suffix = ".csv" if key == "sample" else ".parquet"
+            target = root / f"{key}{suffix}"
+            connection.execute(_snapshot_copy_sql(key, uri, target))
+            visible = os.lstat(target)
+            if not stat.S_ISREG(visible.st_mode) or visible.st_nlink != 1:
+                raise AggregationError(f"{key}: materialized snapshot must be one regular file")
+            if hasattr(os, "geteuid") and visible.st_uid != os.geteuid():
+                raise AggregationError(f"{key}: materialized snapshot owner mismatch")
+            os.chmod(target, 0o400)
+            flags = os.O_RDONLY | getattr(os, "O_NOFOLLOW", 0)
+            fd = os.open(target, flags)
+            opened = os.fstat(fd)
+            if (opened.st_dev, opened.st_ino) != (visible.st_dev, visible.st_ino):
+                os.close(fd)
+                raise AggregationError(f"{key}: materialized snapshot changed during acquisition")
+            digest, size = _sha256_fd(fd)
+            alias = _descriptor_alias(fd)
+            os.unlink(target)
+            alias_info = os.stat(alias)
+            if (alias_info.st_dev, alias_info.st_ino) != (opened.st_dev, opened.st_ino):
+                os.close(fd)
+                raise AggregationError(f"{key}: descriptor alias changed during acquisition")
+            fds[key] = fd
+            registry[key] = alias
+            receipts[key] = {
+                "source_uri": uri,
+                "snapshot_format": "CSV" if key == "sample" else "PARQUET",
+                "materialized_sha256": digest,
+                "materialized_bytes": size,
+            }
+            identities[key] = (opened.st_dev, opened.st_ino)
+        try:
+            root.rmdir()
+        except OSError as exc:
+            raise AggregationError("snapshot staging directory did not drain cleanly") from exc
+        snapshots = SourceSnapshots(registry, receipts, fds, identities)
+        snapshots.verify()
+        return snapshots
+    except Exception:
+        for fd in fds.values():
+            try:
+                os.close(fd)
+            except OSError:
+                pass
+        for child in root.glob("*"):
+            try:
+                child.unlink()
+            except OSError:
+                pass
+        try:
+            root.rmdir()
+        except OSError:
+            pass
+        raise
+
+
+def _bind_sql_to_snapshots(
+    sql: str,
+    remote_registry: Mapping[str, str],
+    snapshot_registry: Mapping[str, str],
+) -> str:
+    if set(remote_registry) != set(snapshot_registry):
+        raise AggregationError("snapshot registry key mismatch")
+    bound = sql
+    for key in remote_registry:
+        bound = bound.replace(
+            _sql_string(remote_registry[key]), _sql_string(snapshot_registry[key])
+        )
+    if HTTPS_ROOT in bound:
+        raise AggregationError("remote source escaped snapshot binding")
+    return bound
+
+
+def run_preflight(
+    connection: object,
+    region: str,
+    *,
+    registry: Optional[Mapping[str, str]] = None,
+    probes: Optional[Mapping[str, str]] = None,
+    receipt_registry: Optional[Mapping[str, str]] = None,
+    receipt_probes: Optional[Mapping[str, str]] = None,
+) -> dict[str, object]:
+    r = dict(source_registry(region) if registry is None else registry)
+    probe_map = dict(preflight_probe_sql(region) if probes is None else probes)
+    receipt_refs = dict(r if receipt_registry is None else receipt_registry)
+    if set(r) != set(source_registry(region)) or set(receipt_refs) != set(r):
+        raise AggregationError("preflight registry key mismatch")
     schemas: dict[str, object] = {}
-    for key, uri in r.items():
-        description = connection.execute(probes[f"schema:{key}"]).fetchall()
+    for key in r:
+        description = connection.execute(probe_map[f"schema:{key}"]).fetchall()
         columns = [str(row[0]) for row in description]
         validate_source_schema(key, columns)
         schemas[key] = {
-            "uri": uri,
+            "source_uri": receipt_refs[key],
             "columns": columns,
             "describe_sha256": _digest_schema(description),
         }
 
-    custody_row = connection.execute(probes["custody"]).fetchone()
+    custody_row = connection.execute(probe_map["custody"]).fetchone()
     if custody_row is None:
         raise AggregationError(f"{region}: custody probe returned no row")
     custody = _validate_custody(region, custody_row)
 
     geometries: dict[str, list[str]] = {}
     for key in GEOMETRY_EXPECTATIONS:
-        rows = connection.execute(probes[f"geometry:{key}"]).fetchall()
+        rows = connection.execute(probe_map[f"geometry:{key}"]).fetchall()
         geometries[key] = _validate_geometry_domain(key, (row[0] for row in rows))
 
-    road_rows = connection.execute(probes["domain:overture_roads"]).fetchall()
-    tiger_rows = connection.execute(probes["domain:tiger_roads"]).fetchall()
-    poi_rows = connection.execute(probes["domain:overture_pois"]).fetchall()
+    road_rows = connection.execute(probe_map["domain:overture_roads"]).fetchall()
+    tiger_rows = connection.execute(probe_map["domain:tiger_roads"]).fetchall()
+    poi_rows = connection.execute(probe_map["domain:overture_pois"]).fetchall()
     poi_values = [row[0] for row in poi_rows]
     domains = {
         "overture_roads.class": _domain_receipt(
@@ -296,15 +478,16 @@ def run_preflight(connection: object, region: str) -> dict[str, object]:
         "overture_pois.ems": _domain_receipt("overture_pois.ems", poi_values),
     }
 
-    connection.execute(probes["semantic:overture_poi_category"])
-    axis_row = connection.execute(probes["semantic:axis_order"]).fetchone()
+    connection.execute(probe_map["semantic:overture_poi_category"])
+    axis_row = connection.execute(probe_map["semantic:axis_order"]).fetchone()
     if axis_row is None:
         raise AggregationError("axis-order smoke probe returned no row")
     smoke = float(axis_row[0])
     if not math.isfinite(smoke) or not 500.0 < smoke < 2000.0:
         raise AggregationError(f"EPSG axis-order smoke test failed: {smoke!r} metres")
 
-    transcript = json.dumps(probes, sort_keys=True, separators=(",", ":"), ensure_ascii=True)
+    receipt_probe_map = probe_map if receipt_probes is None else dict(receipt_probes)
+    transcript = json.dumps(receipt_probe_map, sort_keys=True, separators=(",", ":"), ensure_ascii=True)
     return {
         "probe_sql_sha256": hashlib.sha256(transcript.encode("utf-8")).hexdigest(),
         "schemas": schemas,
@@ -326,6 +509,13 @@ def build_plan(region: str) -> dict[str, object]:
         "geometry_expectations": {k: sorted(v) for k, v in GEOMETRY_EXPECTATIONS.items()},
         "published_policy_values": {k: list(v) for k, v in PUBLISHED_POLICY_VALUES.items()},
     }
+    plan["source_snapshot_policy"] = {
+        "mode": SNAPSHOT_POLICY,
+        "logical_materialization_scan_per_source": 1,
+        "preflight_and_aggregate_share_snapshot": True,
+        "content_digest": "SHA-256",
+        "descriptor_bound_after_materialization": True,
+    }
     return plan
 
 
@@ -340,13 +530,35 @@ def execute_region(region: str, output: Path, receipt: Path) -> dict[str, object
     if output.exists() or receipt.exists():
         raise AggregationError("run outputs are create-exclusive; choose fresh paths")
     con = _connect_duckdb()
+    snapshots: Optional[SourceSnapshots] = None
     try:
-        # No aggregate query executes until source schema, GEOID custody, geometry,
-        # and category/value-domain probes have passed on this same connection.
-        preflight = run_preflight(con, region)
-        cursor = con.execute(aggregate_query(region))
+        remote_registry = source_registry(region)
+        snapshots = _materialize_sources(con, region)
+        snapshots.verify()
+
+        remote_probes = preflight_probe_sql(region)
+        bound_probes = {
+            name: _bind_sql_to_snapshots(sql, remote_registry, snapshots.registry)
+            for name, sql in remote_probes.items()
+        }
+        preflight = run_preflight(
+            con,
+            region,
+            registry=snapshots.registry,
+            probes=bound_probes,
+            receipt_registry=remote_registry,
+            receipt_probes=remote_probes,
+        )
+        snapshots.verify()
+
+        bound_query = _bind_sql_to_snapshots(
+            aggregate_query(region), remote_registry, snapshots.registry
+        )
+        cursor = con.execute(bound_query)
         fieldnames = [str(desc[0]) for desc in cursor.description]
         rows = cursor.fetchall()
+        snapshots.verify()
+
         cleaned = validate_rows(region, fieldnames, rows)
         csv_text = render_csv(cleaned)
         csv_sha = hashlib.sha256(csv_text.encode("utf-8")).hexdigest()
@@ -359,6 +571,8 @@ def execute_region(region: str, output: Path, receipt: Path) -> dict[str, object
             "real_public_data_executed": True,
             "row_count": len(cleaned),
             "output_csv_sha256": csv_sha,
+            "snapshot_policy": SNAPSHOT_POLICY,
+            "source_snapshots": snapshots.receipts,
             "preflight": preflight,
             "plan": plan,
             "claims": {
@@ -379,6 +593,8 @@ def execute_region(region: str, output: Path, receipt: Path) -> dict[str, object
         _write_new(receipt, receipt_text)
         return {"region": region, "rows": len(cleaned), "output_csv_sha256": csv_sha}
     finally:
+        if snapshots is not None:
+            snapshots.close()
         con.close()
 
 

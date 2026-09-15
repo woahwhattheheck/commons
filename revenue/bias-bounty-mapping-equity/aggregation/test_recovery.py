@@ -1,7 +1,12 @@
 from __future__ import annotations
 
+import hashlib
 import json
+import os
+import re
+import tempfile
 import unittest
+from pathlib import Path
 
 import aggregate as a
 
@@ -56,6 +61,13 @@ class RecoveryPreflightTests(unittest.TestCase):
         self.assertIn("categories.primary", serialized)
         self.assertIn("DESCRIBE SELECT", serialized)
         self.assertNotIn("coverage-gap.csv", serialized.lower())
+        self.assertEqual(
+            a.SNAPSHOT_POLICY,
+            one["source_snapshot_policy"]["mode"],
+        )
+        self.assertTrue(
+            one["source_snapshot_policy"]["preflight_and_aggregate_share_snapshot"]
+        )
 
     def test_custody_requires_exact_authoritative_text_universe(self) -> None:
         expected = a.REGIONS["northern-ca"]
@@ -109,6 +121,75 @@ class RecoveryPreflightTests(unittest.TestCase):
         self.assertIn("MTFCC", tiger)
         self.assertIn("categories.primary", pois)
         self.assertIn("maricopa-az", roads)
+
+
+class SourceGenerationBindingTests(unittest.TestCase):
+    class _CopyConnection:
+        def __init__(self) -> None:
+            self.calls: list[str] = []
+
+        def execute(self, sql: str):
+            self.calls.append(sql)
+            match = re.search(r"\bTO '((?:''|[^'])+)' \(", sql)
+            if match is None:
+                raise AssertionError(f"expected COPY target in {sql!r}")
+            target = Path(match.group(1).replace("''", "'"))
+            payload = f"snapshot-{len(self.calls):02d}\n".encode("ascii")
+            target.write_bytes(payload)
+            return self
+
+    @unittest.skipIf(os.name == "nt", "descriptor-backed snapshot aliases are POSIX-only")
+    def test_every_remote_source_is_materialized_once_then_unlinked(self) -> None:
+        con = self._CopyConnection()
+        remote = a.source_registry("northern-ca")
+        snapshots = a._materialize_sources(con, "northern-ca")
+        try:
+            self.assertEqual(len(remote), len(con.calls))
+            for key, uri in remote.items():
+                self.assertEqual(1, sum(uri in call for call in con.calls), key)
+                self.assertNotIn(a.HTTPS_ROOT, snapshots.registry[key])
+                receipt = snapshots.receipts[key]
+                self.assertEqual(uri, receipt["source_uri"])
+                self.assertEqual(
+                    hashlib.sha256(
+                        f"snapshot-{list(remote).index(key) + 1:02d}\n".encode("ascii")
+                    ).hexdigest(),
+                    receipt["materialized_sha256"],
+                )
+                self.assertNotIn("device", receipt)
+                self.assertNotIn("inode", receipt)
+            snapshots.verify()
+        finally:
+            snapshots.close()
+
+    def test_preflight_and_aggregate_sql_cannot_reopen_same_remote_uri(self) -> None:
+        remote = a.source_registry("northern-ca")
+        snapshots = {
+            key: f"/proc/self/fd/{700 + index}"
+            for index, key in enumerate(remote)
+        }
+        bound_query = a._bind_sql_to_snapshots(
+            a.aggregate_query("northern-ca"), remote, snapshots
+        )
+        bound_probes = {
+            name: a._bind_sql_to_snapshots(sql, remote, snapshots)
+            for name, sql in a.preflight_probe_sql("northern-ca").items()
+        }
+        transcript = json.dumps(bound_probes, sort_keys=True) + bound_query
+        self.assertNotIn(a.HTTPS_ROOT, transcript)
+        for uri in remote.values():
+            self.assertNotIn(uri, transcript)
+        for alias in snapshots.values():
+            self.assertIn(alias, transcript)
+
+    def test_binding_fails_closed_if_any_remote_source_escapes(self) -> None:
+        remote = a.source_registry("eastern-ok")
+        snapshots = dict(remote)
+        snapshots["sample"] = "/proc/self/fd/999"
+        with self.assertRaisesRegex(a.AggregationError, "remote source escaped"):
+            a._bind_sql_to_snapshots(
+                a.aggregate_query("eastern-ok"), remote, snapshots
+            )
 
 
 if __name__ == "__main__":

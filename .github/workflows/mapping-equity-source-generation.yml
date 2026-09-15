@@ -1,0 +1,36 @@
+name: Mapping Equity source-generation binding
+
+on:
+  pull_request:
+    paths:
+      - "revenue/bias-bounty-mapping-equity/aggregation/**"
+      - ".github/workflows/mapping-equity-source-generation.yml"
+  push:
+    branches: [main]
+    paths:
+      - "revenue/bias-bounty-mapping-equity/aggregation/**"
+      - ".github/workflows/mapping-equity-source-generation.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  offline-contract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Compile carrier
+        working-directory: revenue/bias-bounty-mapping-equity/aggregation
+        run: python -m py_compile aggregate.py _zsa_d6p2_core.py test_aggregate.py test_recovery.py
+      - name: Offline contract suite
+        working-directory: revenue/bias-bounty-mapping-equity/aggregation
+        run: python -B -m unittest -v test_aggregate.py test_recovery.py
+      - name: Offline contract suite optimized
+        working-directory: revenue/bias-bounty-mapping-equity/aggregation
+        run: python -O -B -m unittest -v test_aggregate.py test_recovery.py
