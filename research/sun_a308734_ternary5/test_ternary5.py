@@ -72,7 +72,15 @@ def test_known_obstruction_certificate() -> None:
     assert bad_prime_obstructions(12229) == ((7, 1), (1747, 1))
 
 
-@pytest.mark.parametrize("bad", [0, 1, 2, 6, 17, 25])
+@pytest.mark.parametrize("bad", [0, 1, 2, 6, 13, 25])
 def test_non_targets_rejected(bad: int) -> None:
     with pytest.raises(ValueError):
         primitive_25_core(bad)
+
+
+def test_legal_5_mod_12_target_is_accepted() -> None:
+    # 17 ≡ 5 (mod 12) is a legal target. A landed fixture listed it as invalid.
+    assert primitive_25_core(17) == (17, 0)
+    witness = find_witness(17)
+    assert witness == Ternary5Witness(2, 3, 1, 0)
+    witness.verify(17)
