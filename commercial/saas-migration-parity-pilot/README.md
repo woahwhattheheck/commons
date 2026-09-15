@@ -72,7 +72,7 @@ python parity.py verify \
   --report-json /tmp/saas-parity.json
 ```
 
-`synthetic_fixture.py` deterministically emits the acceptance fixture: **500 source records and 500 target records**. Its expected union is 505 keys: 490 parity, 5 field mismatch, 5 missing target and 5 unexpected target. CI emits it twice and byte-compares the generated input and both resulting report projections before verification.
+`synthetic_fixture.py` deterministically emits the acceptance fixture: **500 source records and 500 target records**. Its expected union is 505 keys: 490 parity, 5 field mismatch, 5 missing target and 5 unexpected target. The hostile suite recompiles and verifies the fixture deterministically.
 
 ## Acceptance / tests
 
@@ -81,5 +81,7 @@ python -m unittest -v test_parity.py
 python -O -m unittest -v test_parity.py
 python -m py_compile errors.py parity_schema.py secure_io.py parity.py synthetic_fixture.py test_parity.py
 ```
+
+Commons keeps a hard active-workflow budget. Instead of adding another active workflow, root `test_saas_migration_parity_pilot.py` bridges this hostile suite into the repository's retained `tests.yml` battery; the root test path also keeps that existing workflow triggered for this PR.
 
 The suite covers golden 500-record behavior; input-order invariance; stale/future/incomplete snapshots; duplicate and invalid keys; type mismatch; missing/unexpected rows; strict duplicate-key/nonfinite/float JSON; limits; raw-vs-semantic digest behavior; report/receipt tamper; exact verifier bytes; overwrite/final-symlink/ancestor-symlink/nonregular I/O refusal; parent-generation replacement without redirection or foreign cleanup; CLI compile/verify; opaque row commitments; and the all-false external-authority ceiling.
