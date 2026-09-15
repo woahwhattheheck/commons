@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Fail-closed public-evidence matrix for San Diego County RFP 13365.
 
-This module does not determine vendor compliance.  It validates that a public-
+This module does not determine vendor compliance. It validates that a public-
 evidence assessment is complete, conservatively classified, source-linked, and
 stripped of contact, bid, production, or compliance-certification authority.
 """
@@ -22,6 +22,7 @@ from urllib.parse import urlsplit
 SCHEMA = 1
 OPERATION = "R-SD13365-PROBATION-AI-TEAMING-ZCAS913455-20260913"
 STRONGEST_STATE = "PUBLIC_EVIDENCE_GAPS_DOCUMENTED"
+REVIEWED_SOURCE_MATRIX_SHA256 = "e6e857e1df33a6b6d486252fd1e0f1f243fdf0818b48ebfe6a80525e5dc19f42"
 EXPECTED_REQUIREMENTS = (
     "fips-140-3",
     "sso-saml-oauth",
@@ -37,6 +38,11 @@ EXPECTED_REQUIREMENTS = (
     "prompt-injection-defenses",
     "data-poisoning-anomaly-detection",
 )
+# This is a static reviewed assessment, not a generic classifier. The reviewed
+# source generation above authorizes exactly these public classifications.
+# Changing PASS/UNKNOWN/RED requires a new reviewed source/code generation; a
+# caller-supplied matrix cannot promote its own status merely by self-hashing.
+REVIEWED_CLASSIFICATIONS = {requirement_id: "UNKNOWN" for requirement_id in EXPECTED_REQUIREMENTS}
 STATUSES = {"PASS", "UNKNOWN", "RED"}
 RELATIONSHIPS = {"direct_support", "adjacent_only", "direct_contradiction"}
 SOURCE_KINDS = {
@@ -362,6 +368,17 @@ def validate_matrix(matrix: dict[str, Any]) -> dict[str, Any]:
             f"requirement set mismatch; missing={sorted(set(EXPECTED_REQUIREMENTS) - set(ids))}, "
             f"extra={sorted(set(ids) - set(EXPECTED_REQUIREMENTS))}"
         )
+    observed_classifications = {item["id"]: item["status"] for item in validated}
+    if observed_classifications != REVIEWED_CLASSIFICATIONS:
+        changed = sorted(
+            requirement_id
+            for requirement_id in EXPECTED_REQUIREMENTS
+            if observed_classifications.get(requirement_id) != REVIEWED_CLASSIFICATIONS[requirement_id]
+        )
+        raise MatrixError(
+            "classification differs from reviewed source generation "
+            f"{REVIEWED_SOURCE_MATRIX_SHA256}; changed={changed}"
+        )
 
     wedge = _require_type(matrix["subcontract_wedge"], dict, "subcontract_wedge")
     _require_exact_keys(wedge, {"name", "components", "forbidden_actions"}, "subcontract_wedge")
@@ -410,6 +427,7 @@ def build_receipt(matrix: dict[str, Any]) -> dict[str, Any]:
         },
         "evidence_cutoff": matrix["evidence_cutoff"],
         "classification_scope": matrix["classification_policy"]["scope"],
+        "reviewed_source_matrix_sha256": REVIEWED_SOURCE_MATRIX_SHA256,
         "counts": counts,
         "unknown_ids": [item["id"] for item in ordered_requirements if item["status"] == "UNKNOWN"],
         "red_ids": [item["id"] for item in ordered_requirements if item["status"] == "RED"],
