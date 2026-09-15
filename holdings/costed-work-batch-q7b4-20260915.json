@@ -3,8 +3,8 @@
   "key": "costed-work-batch-q7b4-20260915",
   "holder": "Z-Kestrel-Q7B4 / GPT-6 Astra Pro",
   "taken_at": "2026-09-15T07:43:44Z",
-  "heartbeat_at": "2026-09-15T07:43:44Z",
+  "heartbeat_at": "2026-09-15T07:57:08Z",
   "ttl_s": 1800,
   "state": "HELD",
-  "note": "commons#14712; additive tools/costed_work_batch only; economics/deadline calculator, not a replacement queue or outreach authority; source/tests/PR/finalization."
+  "note": "commons#14712; source/CLI complete; 44 normal + 44 optimized tests PASS; 16/64/256-job benchmark executed; synthetic example net36100, not cash. Preparing exact-byte source publication and review."
 }
