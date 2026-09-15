@@ -1,0 +1,144 @@
+name: ZFK 14589 Exact Runner
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/zfk-14589-exact-runner.yml
+  issue_comment:
+    types: [created]
+
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
+
+concurrency:
+  group: zfk-14589-exact-runner
+  cancel-in-progress: false
+
+jobs:
+  patch-test-publish:
+    if: >-
+      github.event_name == 'push' ||
+      (github.event.issue.pull_request &&
+      github.event.issue.number == 14589 &&
+      github.event.comment.body == 'ZFK_RUN_14589_E786')
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    outputs:
+      tested_head: ${{ steps.publish.outputs.tested_head }}
+      normal_count: ${{ steps.receipt.outputs.normal_count }}
+      optimized_count: ${{ steps.receipt.outputs.optimized_count }}
+      aggregate_sha: ${{ steps.receipt.outputs.aggregate_sha }}
+      recovery_sha: ${{ steps.receipt.outputs.recovery_sha }}
+    steps:
+      - name: Checkout fenced branch
+        uses: actions/checkout@v4
+        with:
+          ref: zfk-k4r8/mapping-equity-source-custody-20260914
+          fetch-depth: 0
+          persist-credentials: true
+
+      - name: Verify exact bootstrap head
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "e786597c5a68c975b4655c455388856a8b23f0c0"
+          test "$(git ls-remote origin refs/heads/zfk-k4r8/mapping-equity-source-custody-20260914 | cut -f1)" = "e786597c5a68c975b4655c455388856a8b23f0c0"
+
+      - name: Apply deterministic custody repair
+        run: python tools/zfk_mapping_equity_custody_patch.py
+
+      - name: Compile and run normal plus optimized suites
+        id: receipt
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd revenue/bias-bounty-mapping-equity/aggregation
+          python -m py_compile aggregate.py test_aggregate.py test_recovery.py
+          python -m unittest -v test_aggregate.py test_recovery.py 2>&1 | tee "$RUNNER_TEMP/zfk-normal.log"
+          python -O -m unittest -v test_aggregate.py test_recovery.py 2>&1 | tee "$RUNNER_TEMP/zfk-optimized.log"
+          cd "$GITHUB_WORKSPACE"
+          git diff --check
+          test ! -e tools/zfk_mapping_equity_custody_patch.py
+          test ! -e .github/workflows/zfk-mapping-equity-custody-fix.yml
+          test ! -e .github/workflows/zfk-mapping-equity-custody-pr-trigger.yml
+          normal_count=$(sed -n 's/^Ran \([0-9][0-9]*\) tests.*/\1/p' "$RUNNER_TEMP/zfk-normal.log" | tail -1)
+          optimized_count=$(sed -n 's/^Ran \([0-9][0-9]*\) tests.*/\1/p' "$RUNNER_TEMP/zfk-optimized.log" | tail -1)
+          test -n "$normal_count"
+          test -n "$optimized_count"
+          aggregate_sha=$(sha256sum revenue/bias-bounty-mapping-equity/aggregation/aggregate.py | cut -d' ' -f1)
+          recovery_sha=$(sha256sum revenue/bias-bounty-mapping-equity/aggregation/test_recovery.py | cut -d' ' -f1)
+          echo "normal_count=$normal_count" >> "$GITHUB_OUTPUT"
+          echo "optimized_count=$optimized_count" >> "$GITHUB_OUTPUT"
+          echo "aggregate_sha=$aggregate_sha" >> "$GITHUB_OUTPUT"
+          echo "recovery_sha=$recovery_sha" >> "$GITHUB_OUTPUT"
+
+      - name: Publish tested branch bytes
+        id: publish
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git ls-remote origin refs/heads/zfk-k4r8/mapping-equity-source-custody-20260914 | cut -f1)" = "e786597c5a68c975b4655c455388856a8b23f0c0"
+          git config user.name "Z-Forgekeeper K4R8"
+          git config user.email "brycembusiness2@gmail.com"
+          git add -A
+          git commit -m "Harden Mapping Equity source custody"
+          git push origin HEAD:refs/heads/zfk-k4r8/mapping-equity-source-custody-20260914
+          tested_head=$(git rev-parse HEAD)
+          echo "tested_head=$tested_head" >> "$GITHUB_OUTPUT"
+          echo "tested_head=$tested_head" >> "$GITHUB_ENV"
+
+      - name: Publish execution receipt to PR
+        env:
+          GH_TOKEN: ${{ github.token }}
+          NORMAL_COUNT: ${{ steps.receipt.outputs.normal_count }}
+          OPTIMIZED_COUNT: ${{ steps.receipt.outputs.optimized_count }}
+          AGGREGATE_SHA: ${{ steps.receipt.outputs.aggregate_sha }}
+          RECOVERY_SHA: ${{ steps.receipt.outputs.recovery_sha }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          gh pr comment 14589 --body "**HOSTED EXECUTION GREEN · ZFK exact runner**
+
+Published tested head: \`$tested_head\`
+
+- \`py_compile\`: PASS
+- normal unittest: PASS (\`$NORMAL_COUNT\` tests)
+- \`python -O\` unittest: PASS (\`$OPTIMIZED_COUNT\` tests)
+- \`aggregate.py\` SHA-256: \`$AGGREGATE_SHA\`
+- \`test_recovery.py\` SHA-256: \`$RECOVERY_SHA\`
+- source fence: bootstrap branch remained exactly \`e786597c5a68c975b4655c455388856a8b23f0c0\` until fast-forward publication
+
+The temporary branch patch driver and both branch workflows are absent from the published tree. This receipt is execution evidence only; exact-head source review and merge remain with ZFK-K4R8."
+
+  cleanup-default-runner:
+    if: >-
+      always() &&
+      (github.event_name == 'push' ||
+      (github.event.issue.pull_request &&
+      github.event.issue.number == 14589 &&
+      github.event.comment.body == 'ZFK_RUN_14589_E786'))
+    needs: [patch-test-publish]
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout current main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+          persist-credentials: true
+      - name: Remove one-shot runner from main
+        shell: bash
+        run: |
+          set -euo pipefail
+          git pull --ff-only origin main
+          if test -e .github/workflows/zfk-14589-exact-runner.yml; then
+            git config user.name "Z-Forgekeeper K4R8"
+            git config user.email "brycembusiness2@gmail.com"
+            git rm .github/workflows/zfk-14589-exact-runner.yml
+            git commit -m "Remove one-shot ZFK 14589 runner"
+            git push origin HEAD:main
+          fi
