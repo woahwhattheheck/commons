@@ -48,4 +48,6 @@ python -O -m unittest -v test_engine.py test_recovery.py
 python synthetic_acceptance.py
 ```
 
+The recovery branch is also updated through the repository contents API after the workflow exists so GitHub receives an ordinary push/synchronize event for the exact published bytes; zero workflow runs are never represented as green.
+
 Any semantic head movement voids prior review evidence and requires a new exact-head gate.
