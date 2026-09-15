@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """Fail-closed opportunity qualification for Army SBIR ARM26BX06-NV012.
 
-The gate is intentionally unable to submit, contact, register, certify, or sign.
+Caller assertions are useful for evidence collection, but cannot mint current
+submission readiness. Independent authority roots are not yet implemented here.
 """
 from __future__ import annotations
 
@@ -52,30 +53,39 @@ def evaluate(raw: Any) -> dict[str, Any]:
     if type(refs) is not dict:
         raise ValidationError("evidence_refs must be an object")
     hold, no_go = [], []
+    assertions_complete = True
     for key in REQUIRED_FACTS:
         value = facts[key]
         if value not in (True, False, None):
             raise ValidationError(f"{key} must be true, false, or null")
         if value is None:
+            assertions_complete = False
             hold.append(key)
         elif value is False:
+            assertions_complete = False
             if key in {"sbir_small_business_eligibility_evidenced", "ownership_control_requirements_evidenced"} and refs.get(key) == "EXPLICIT_INELIGIBILITY":
                 no_go.append(key)
             else:
                 hold.append(key)
         elif not refs.get(key):
+            assertions_complete = False
             hold.append(key + ":MISSING_EVIDENCE_REF")
+
     if no_go:
         disposition = "NO_GO"
-    elif hold:
-        disposition = "HOLD"
     else:
-        disposition = "READY_FOR_OWNER_SUBMISSION_DECISION"
+        # This schema contains only caller assertions/strings. Until the gate
+        # verifies caller-unmintable evidence generations and current time,
+        # it cannot truthfully emit submission readiness.
+        disposition = "HOLD"
+        hold.append("INDEPENDENT_AUTHORITY_NOT_BOUND")
+
     result = {
         "schema_version": "commons.army-sbir-qualification-result/v1",
         "topic": raw["topic"],
         "disposition": disposition,
-        "hold_reasons": sorted(hold),
+        "caller_assertions_complete": assertions_complete,
+        "hold_reasons": sorted(set(hold)),
         "no_go_reasons": sorted(no_go),
         "external_contact_authorized": False,
         "portal_mutation_authorized": False,
@@ -99,6 +109,7 @@ def main(argv=None) -> int:
     except (OSError, json.JSONDecodeError, ValidationError) as exc:
         print(f"INVALID: {exc}", file=sys.stderr)
         return 2
+
 
 if __name__ == "__main__":
     raise SystemExit(main())

@@ -1,36 +1,158 @@
 {
-  "schema_version": "commons.decision-program/v1",
-  "program_id": "commercial-utility-vehicle-battery-trade",
-  "title": "Synthetic commercial utility vehicle battery chemistry trade study",
-  "generation": 1,
-  "supersedes_digest": null,
   "as_of": "2026-09-14T00:00:00Z",
-  "human_authority": {"required": true, "decision_state": "PENDING_HUMAN"},
-  "objectives": [
-    {"id": "lifecycle_cost", "label": "Lifecycle cost", "weight_bp": 3500},
-    {"id": "cold_weather", "label": "Cold weather performance", "weight_bp": 2500},
-    {"id": "cycle_life", "label": "Cycle life", "weight_bp": 2500},
-    {"id": "mass", "label": "Pack mass", "weight_bp": 1500}
-  ],
-  "options": [
-    {"id": "lfp", "label": "LFP pack", "scores": {"lifecycle_cost": 8800, "cold_weather": 6200, "cycle_life": 9300, "mass": 6500}, "metrics": {"pack_cost_usd": 14800, "pack_mass_kg": 620}},
-    {"id": "nmc", "label": "NMC pack", "scores": {"lifecycle_cost": 6900, "cold_weather": 8500, "cycle_life": 6900, "mass": 8800}, "metrics": {"pack_cost_usd": 17600, "pack_mass_kg": 505}}
-  ],
-  "constraints": [
-    {"id": "budget", "metric": "pack_cost_usd", "op": "<=", "value": 18000, "rationale": "Synthetic owner budget ceiling."},
-    {"id": "mass_limit", "metric": "pack_mass_kg", "op": "<=", "value": 650, "rationale": "Synthetic chassis integration ceiling."}
-  ],
   "assumptions": [
-    {"id": "annual_miles", "statement": "Synthetic duty cycle remains within modeled annual mileage band.", "status": "SUPPORTED", "evidence_ids": ["ev-duty"]}
-  ],
-  "risks": [
-    {"id": "supplier_variance", "statement": "Supplier lead time may move during sourcing.", "level": "MEDIUM", "mitigation": "Refresh supplier evidence before human sign-off."}
+    {
+      "evidence_ids": [
+        "ev-duty"
+      ],
+      "id": "annual_miles",
+      "statement": "Synthetic duty cycle remains within modeled annual mileage band.",
+      "status": "SUPPORTED"
+    }
   ],
   "bias_checks": [
-    {"id": "incumbent_bias", "question": "Does incumbent preference override scored evidence?", "status": "PASS", "finding": "No incumbent preference is encoded."},
-    {"id": "single_metric_bias", "question": "Can one unweighted metric silently dominate?", "status": "PASS", "finding": "All scored objectives have explicit basis-point weights."}
+    {
+      "evidence_ids": [
+        "ev-duty"
+      ],
+      "finding": "No incumbent preference is encoded.",
+      "id": "incumbent_bias",
+      "question": "Does incumbent preference override scored evidence?",
+      "status": "PASS"
+    },
+    {
+      "evidence_ids": [
+        "ev-duty"
+      ],
+      "finding": "All scored objectives have explicit basis-point weights.",
+      "id": "single_metric_bias",
+      "question": "Can one unweighted metric silently dominate?",
+      "status": "PASS"
+    }
+  ],
+  "constraints": [
+    {
+      "id": "budget",
+      "metric": "pack_cost_usd",
+      "op": "<=",
+      "rationale": "Synthetic owner budget ceiling.",
+      "value": 18000
+    },
+    {
+      "id": "mass_limit",
+      "metric": "pack_mass_kg",
+      "op": "<=",
+      "rationale": "Synthetic chassis integration ceiling.",
+      "value": 650
+    }
   ],
   "evidence": [
-    {"id": "ev-duty", "kind": "SYNTHETIC_FIXTURE", "source_ref": "fixture://utility-vehicle-duty-cycle/v1", "observed_at": "2026-09-14T00:00:00Z", "digest_sha256": "1111111111111111111111111111111111111111111111111111111111111111"}
-  ]
+    {
+      "digest_sha256": "1111111111111111111111111111111111111111111111111111111111111111",
+      "id": "ev-duty",
+      "kind": "SYNTHETIC_FIXTURE",
+      "observed_at": "2026-09-14T00:00:00Z",
+      "source_ref": "fixture://utility-vehicle-duty-cycle/v1"
+    }
+  ],
+  "generation": 1,
+  "human_authority": {
+    "decision_state": "PENDING_HUMAN",
+    "required": true
+  },
+  "objectives": [
+    {
+      "id": "lifecycle_cost",
+      "label": "Lifecycle cost",
+      "weight_bp": 3500
+    },
+    {
+      "id": "cold_weather",
+      "label": "Cold weather performance",
+      "weight_bp": 2500
+    },
+    {
+      "id": "cycle_life",
+      "label": "Cycle life",
+      "weight_bp": 2500
+    },
+    {
+      "id": "mass",
+      "label": "Pack mass",
+      "weight_bp": 1500
+    }
+  ],
+  "options": [
+    {
+      "id": "lfp",
+      "label": "LFP pack",
+      "metrics": {
+        "pack_cost_usd": 14800,
+        "pack_mass_kg": 620
+      },
+      "score_evidence_ids": {
+        "cold_weather": [
+          "ev-duty"
+        ],
+        "cycle_life": [
+          "ev-duty"
+        ],
+        "lifecycle_cost": [
+          "ev-duty"
+        ],
+        "mass": [
+          "ev-duty"
+        ]
+      },
+      "scores": {
+        "cold_weather": 6200,
+        "cycle_life": 9300,
+        "lifecycle_cost": 8800,
+        "mass": 6500
+      }
+    },
+    {
+      "id": "nmc",
+      "label": "NMC pack",
+      "metrics": {
+        "pack_cost_usd": 17600,
+        "pack_mass_kg": 505
+      },
+      "score_evidence_ids": {
+        "cold_weather": [
+          "ev-duty"
+        ],
+        "cycle_life": [
+          "ev-duty"
+        ],
+        "lifecycle_cost": [
+          "ev-duty"
+        ],
+        "mass": [
+          "ev-duty"
+        ]
+      },
+      "scores": {
+        "cold_weather": 8500,
+        "cycle_life": 6900,
+        "lifecycle_cost": 6900,
+        "mass": 8800
+      }
+    }
+  ],
+  "program_id": "commercial-utility-vehicle-battery-trade",
+  "risks": [
+    {
+      "evidence_ids": [
+        "ev-duty"
+      ],
+      "id": "supplier_variance",
+      "level": "MEDIUM",
+      "mitigation": "Refresh supplier evidence before human sign-off.",
+      "statement": "Supplier lead time may move during sourcing."
+    }
+  ],
+  "schema_version": "commons.decision-program/v1",
+  "supersedes_digest": null,
+  "title": "Synthetic commercial utility vehicle battery chemistry trade study"
 }

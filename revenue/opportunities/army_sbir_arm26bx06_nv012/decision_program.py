@@ -1,17 +1,17 @@
 #!/usr/bin/env python3
 """Deterministic decision-program compiler/evaluator for ARM26BX06-NV012 evidence.
 
-This is a non-operational demonstration kernel. It does not contact providers,
-submit proposals, or make final decisions. All inputs are owner-supplied JSON.
+Non-operational Phase-I demonstration kernel. Inputs are owner-supplied JSON.
+The kernel does not contact providers, submit proposals, or make final decisions.
 """
 from __future__ import annotations
 
 import argparse
 import hashlib
 import json
-import math
 import sys
 from copy import deepcopy
+from datetime import datetime
 from pathlib import Path
 from typing import Any
 
@@ -20,6 +20,7 @@ DECISION_STATES = {"PENDING_HUMAN", "HUMAN_ACCEPTED", "HUMAN_REJECTED"}
 BIAS_STATES = {"PASS", "FAIL", "NOT_RUN"}
 RISK_LEVELS = {"LOW", "MEDIUM", "HIGH", "CRITICAL"}
 OPS = {"<=", ">=", "=="}
+
 
 class ValidationError(ValueError):
     pass
@@ -55,8 +56,21 @@ def _keys(obj: dict[str, Any], required: set[str], optional: set[str], where: st
         raise ValidationError(f"{where} keys mismatch missing={missing} extra={extra}")
 
 
+def _utc(value: Any, where: str) -> datetime:
+    value = _string(value, where)
+    if not value.endswith("Z"):
+        raise ValidationError(f"{where} must be UTC RFC3339 ending in Z")
+    try:
+        parsed = datetime.fromisoformat(value[:-1] + "+00:00")
+    except ValueError as exc:
+        raise ValidationError(f"{where} must be valid UTC RFC3339") from exc
+    if parsed.tzinfo is None:
+        raise ValidationError(f"{where} must be timezone-aware")
+    return parsed
+
+
 def canonical_bytes(value: Any) -> bytes:
-    """Canonical JSON with booleans/ints/strings only; rejects floats/non-finite values."""
+    """Canonical JSON with booleans/ints/strings only; reject float authority."""
     def check(node: Any, where: str = "$") -> None:
         if node is None or type(node) in (str, bool, int):
             return
@@ -94,6 +108,18 @@ def _unique_ids(rows: list[Any], where: str) -> list[dict[str, Any]]:
     return out
 
 
+def _ref_list(raw: Any, where: str, *, required: bool = True) -> list[str]:
+    refs = _strict_list(raw, where)
+    if required and not refs:
+        raise ValidationError(f"{where} must contain at least one evidence id")
+    out = []
+    for i, ref in enumerate(refs):
+        out.append(_string(ref, f"{where}[{i}]"))
+    if len(set(out)) != len(out):
+        raise ValidationError(f"{where} contains duplicate evidence ids")
+    return out
+
+
 def validate_program(raw: Any) -> dict[str, Any]:
     p = deepcopy(_strict_object(raw, "$"))
     _keys(
@@ -110,15 +136,14 @@ def validate_program(raw: Any) -> dict[str, Any]:
         raise ValidationError("unsupported schema_version")
     _string(p["program_id"], "$.program_id")
     _string(p["title"], "$.title")
-    _string(p["as_of"], "$.as_of")
+    as_of = _utc(p["as_of"], "$.as_of")
     if not _is_int(p["generation"]) or p["generation"] < 1:
         raise ValidationError("$.generation must be integer >= 1")
     if p["generation"] == 1:
         if p["supersedes_digest"] is not None:
             raise ValidationError("generation 1 must not supersede a prior digest")
-    else:
-        if type(p["supersedes_digest"]) is not str or len(p["supersedes_digest"]) != 64:
-            raise ValidationError("generation >1 requires a 64-char supersedes_digest")
+    elif type(p["supersedes_digest"]) is not str or len(p["supersedes_digest"]) != 64:
+        raise ValidationError("generation >1 requires a 64-char supersedes_digest")
 
     auth = _strict_object(p["human_authority"], "$.human_authority")
     _keys(auth, {"required", "decision_state"}, {"decision_note"}, "$.human_authority")
@@ -146,9 +171,8 @@ def validate_program(raw: Any) -> dict[str, Any]:
     options = _unique_ids(_strict_list(p["options"], "$.options"), "$.options")
     if len(options) < 2:
         raise ValidationError("at least two options are required")
-    option_ids: set[str] = set()
     for i, row in enumerate(options):
-        _keys(row, {"id", "label", "scores", "metrics"}, set(), f"$.options[{i}]")
+        _keys(row, {"id", "label", "scores", "metrics", "score_evidence_ids"}, set(), f"$.options[{i}]")
         _string(row["label"], f"$.options[{i}].label")
         scores = _strict_object(row["scores"], f"$.options[{i}].scores")
         if set(scores) != objective_ids:
@@ -156,12 +180,16 @@ def validate_program(raw: Any) -> dict[str, Any]:
         for oid, score in scores.items():
             if not _is_int(score) or not 0 <= score <= 10000:
                 raise ValidationError(f"option {row['id']} score {oid} must be integer 0..10000")
+        refs = _strict_object(row["score_evidence_ids"], f"$.options[{i}].score_evidence_ids")
+        if set(refs) != objective_ids:
+            raise ValidationError(f"option {row['id']} score evidence must cover each objective exactly")
+        for oid in objective_ids:
+            _ref_list(refs[oid], f"$.options[{i}].score_evidence_ids.{oid}")
         metrics = _strict_object(row["metrics"], f"$.options[{i}].metrics")
         for key, value in metrics.items():
             _string(key, f"$.options[{i}].metrics key")
             if not _is_int(value):
                 raise ValidationError("metrics must be integer scaled units")
-        option_ids.add(row["id"])
 
     constraints = _unique_ids(_strict_list(p["constraints"], "$.constraints"), "$.constraints")
     for i, row in enumerate(constraints):
@@ -179,37 +207,45 @@ def validate_program(raw: Any) -> dict[str, Any]:
         _string(row["statement"], f"$.assumptions[{i}].statement")
         if row["status"] not in {"SUPPORTED", "UNRESOLVED", "REJECTED"}:
             raise ValidationError("invalid assumption status")
-        _strict_list(row["evidence_ids"], f"$.assumptions[{i}].evidence_ids")
+        _ref_list(
+            row["evidence_ids"],
+            f"$.assumptions[{i}].evidence_ids",
+            required=(row["status"] == "SUPPORTED"),
+        )
 
     risks = _unique_ids(_strict_list(p["risks"], "$.risks"), "$.risks")
     if not risks:
         raise ValidationError("at least one risk is required")
     for i, row in enumerate(risks):
-        _keys(row, {"id", "statement", "level", "mitigation"}, set(), f"$.risks[{i}]")
+        _keys(row, {"id", "statement", "level", "mitigation", "evidence_ids"}, set(), f"$.risks[{i}]")
         _string(row["statement"], f"$.risks[{i}].statement")
         _string(row["mitigation"], f"$.risks[{i}].mitigation")
         if row["level"] not in RISK_LEVELS:
             raise ValidationError("invalid risk level")
+        _ref_list(row["evidence_ids"], f"$.risks[{i}].evidence_ids")
 
     bias = _unique_ids(_strict_list(p["bias_checks"], "$.bias_checks"), "$.bias_checks")
     if not bias:
         raise ValidationError("at least one bias check is required")
     for i, row in enumerate(bias):
-        _keys(row, {"id", "question", "status", "finding"}, set(), f"$.bias_checks[{i}]")
+        _keys(row, {"id", "question", "status", "finding", "evidence_ids"}, set(), f"$.bias_checks[{i}]")
         _string(row["question"], f"$.bias_checks[{i}].question")
         _string(row["finding"], f"$.bias_checks[{i}].finding")
         if row["status"] not in BIAS_STATES:
             raise ValidationError("invalid bias status")
+        _ref_list(row["evidence_ids"], f"$.bias_checks[{i}].evidence_ids")
 
     evidence = _unique_ids(_strict_list(p["evidence"], "$.evidence"), "$.evidence")
     if not evidence:
         raise ValidationError("at least one evidence item is required")
-    evidence_ids = set()
+    evidence_ids: set[str] = set()
     for i, row in enumerate(evidence):
         _keys(row, {"id", "kind", "source_ref", "observed_at", "digest_sha256"}, set(), f"$.evidence[{i}]")
         _string(row["kind"], f"$.evidence[{i}].kind")
         _string(row["source_ref"], f"$.evidence[{i}].source_ref")
-        _string(row["observed_at"], f"$.evidence[{i}].observed_at")
+        observed = _utc(row["observed_at"], f"$.evidence[{i}].observed_at")
+        if observed > as_of:
+            raise ValidationError(f"evidence {row['id']} observed_at is after program as_of")
         if type(row["digest_sha256"]) is not str or len(row["digest_sha256"]) != 64:
             raise ValidationError("evidence digest_sha256 must be 64 hex chars")
         try:
@@ -217,10 +253,21 @@ def validate_program(raw: Any) -> dict[str, Any]:
         except ValueError as exc:
             raise ValidationError("evidence digest_sha256 must be hex") from exc
         evidence_ids.add(row["id"])
-    for i, row in enumerate(assumptions):
-        for eid in row["evidence_ids"]:
+
+    def require_known(refs: list[str], where: str) -> None:
+        for eid in refs:
             if eid not in evidence_ids:
-                raise ValidationError(f"assumption {row['id']} references unknown evidence {eid}")
+                raise ValidationError(f"{where} references unknown evidence {eid}")
+
+    for i, row in enumerate(assumptions):
+        require_known(row["evidence_ids"], f"assumption {row['id']}")
+    for i, row in enumerate(risks):
+        require_known(row["evidence_ids"], f"risk {row['id']}")
+    for i, row in enumerate(bias):
+        require_known(row["evidence_ids"], f"bias check {row['id']}")
+    for i, row in enumerate(options):
+        for oid in objective_ids:
+            require_known(row["score_evidence_ids"][oid], f"option {row['id']} score {oid}")
 
     canonical_bytes(p)
     return p
@@ -259,7 +306,6 @@ def evaluate(raw: Any) -> dict[str, Any]:
     runner = eligible[1] if len(eligible) > 1 else None
     winner = eligible[0] if eligible else None
 
-    what_flips: dict[str, Any]
     if winner is None:
         what_flips = {"kind": "NO_ELIGIBLE_OPTION", "delta_weighted_score": None}
     elif runner is None:
@@ -274,19 +320,15 @@ def evaluate(raw: Any) -> dict[str, Any]:
         }
 
     blockers = []
-    if any(a["status"] == "UNRESOLVED" for a in p["assumptions"]):
-        blockers.append("UNRESOLVED_ASSUMPTION")
+    if any(a["status"] != "SUPPORTED" for a in p["assumptions"]):
+        blockers.append("ASSUMPTION_NOT_SUPPORTED")
     if any(r["level"] in {"HIGH", "CRITICAL"} for r in p["risks"]):
         blockers.append("HIGH_OR_CRITICAL_RISK")
     if any(b["status"] != "PASS" for b in p["bias_checks"]):
         blockers.append("BIAS_CHECK_NOT_PASS")
     if not eligible:
         blockers.append("NO_ELIGIBLE_OPTION")
-
-    if blockers:
-        readiness = "HOLD"
-    else:
-        readiness = "READY_FOR_HUMAN_REVIEW"
+    readiness = "HOLD" if blockers else "READY_FOR_HUMAN_REVIEW"
     result = {
         "schema_version": "commons.decision-evaluation/v1",
         "program_id": p["program_id"],
@@ -304,6 +346,13 @@ def evaluate(raw: Any) -> dict[str, Any]:
     return result
 
 
+def _decision_semantics(p: dict[str, Any]) -> dict[str, Any]:
+    return {
+        key: p[key]
+        for key in ("objectives", "options", "constraints", "assumptions", "risks", "bias_checks")
+    }
+
+
 def verify_refresh(previous: Any, current: Any) -> dict[str, Any]:
     prev = validate_program(previous)
     cur = validate_program(current)
@@ -316,7 +365,12 @@ def verify_refresh(previous: Any, current: Any) -> dict[str, Any]:
         raise ValidationError("refresh does not bind exact prior generation")
     prev_evidence = {r["id"]: r for r in prev["evidence"]}
     cur_evidence = {r["id"]: r for r in cur["evidence"]}
-    changed = sorted(eid for eid in set(prev_evidence) | set(cur_evidence) if prev_evidence.get(eid) != cur_evidence.get(eid))
+    changed = sorted(
+        eid for eid in set(prev_evidence) | set(cur_evidence)
+        if prev_evidence.get(eid) != cur_evidence.get(eid)
+    )
+    if _decision_semantics(prev) != _decision_semantics(cur) and not changed:
+        raise ValidationError("decision semantics changed without authoritative evidence-generation change")
     return {
         "schema_version": "commons.decision-refresh-verification/v1",
         "program_id": cur["program_id"],
@@ -337,7 +391,12 @@ def _read_json(path: Path) -> Any:
                 raise ValidationError(f"duplicate JSON key {k!r}")
             out[k] = v
         return out
-    return json.loads(path.read_text(encoding="utf-8"), object_pairs_hook=no_dupes, parse_float=lambda _: (_ for _ in ()).throw(ValidationError("floats forbidden")), parse_constant=lambda _: (_ for _ in ()).throw(ValidationError("non-finite numbers forbidden")))
+    return json.loads(
+        path.read_text(encoding="utf-8"),
+        object_pairs_hook=no_dupes,
+        parse_float=lambda _: (_ for _ in ()).throw(ValidationError("floats forbidden")),
+        parse_constant=lambda _: (_ for _ in ()).throw(ValidationError("non-finite numbers forbidden")),
+    )
 
 
 def main(argv: list[str] | None = None) -> int:

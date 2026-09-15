@@ -3,7 +3,8 @@
   "assumptions": [
     {
       "evidence_ids": [
-        "ev-api"
+        "ev-api",
+        "ev-api-refresh"
       ],
       "id": "api_stability",
       "statement": "Published vendor API remains stable through the evaluation generation.",
@@ -12,6 +13,9 @@
   ],
   "bias_checks": [
     {
+      "evidence_ids": [
+        "ev-api-refresh"
+      ],
       "finding": "Price is only one weighted objective.",
       "id": "price_anchor",
       "question": "Does lowest price automatically win?",
@@ -85,6 +89,20 @@
         "deployment_weeks": 14,
         "three_year_cost_usd": 220000
       },
+      "score_evidence_ids": {
+        "cost": [
+          "ev-api-refresh"
+        ],
+        "integration": [
+          "ev-api-refresh"
+        ],
+        "security": [
+          "ev-api-refresh"
+        ],
+        "support": [
+          "ev-api-refresh"
+        ]
+      },
       "scores": {
         "cost": 7700,
         "integration": 7900,
@@ -99,6 +117,20 @@
         "deployment_weeks": 16,
         "three_year_cost_usd": 205000
       },
+      "score_evidence_ids": {
+        "cost": [
+          "ev-api-refresh"
+        ],
+        "integration": [
+          "ev-api-refresh"
+        ],
+        "security": [
+          "ev-api-refresh"
+        ],
+        "support": [
+          "ev-api-refresh"
+        ]
+      },
       "scores": {
         "cost": 8300,
         "integration": 8700,
@@ -110,6 +142,9 @@
   "program_id": "commercial-fleet-telemetry-gateway",
   "risks": [
     {
+      "evidence_ids": [
+        "ev-api-refresh"
+      ],
       "id": "vendor_roadmap",
       "level": "HIGH",
       "mitigation": "Refresh product evidence at each decision generation.",
@@ -117,6 +152,6 @@
     }
   ],
   "schema_version": "commons.decision-program/v1",
-  "supersedes_digest": "ad0d0685ca09b7109dfd2cf7c6fb7ad34eb8f106c4633501bd8aabb63aa6fd13",
+  "supersedes_digest": "49be947777504a40e2119e9db9b2b1d23db2e772ff0d32b4ef3a0a9f94a67ae2",
   "title": "Synthetic commercial fleet telemetry gateway decision program"
 }
