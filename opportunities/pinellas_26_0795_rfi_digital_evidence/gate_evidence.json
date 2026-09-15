@@ -10,9 +10,9 @@
     {"id":"authorized-signer","status":"missing","note":"No signer authority asserted."},
     {"id":"required-attestations","status":"missing","note":"Affidavits/attestations not completed or approved."},
     {"id":"owner-external-response-approval","status":"missing","note":"No external response approval is claimed."},
-    {"id":"truth-boundary-review","status":"available","note":"capability_matrix.json and rfi_response.md explicitly separate buildable, partner-required and non-claim items."},
+    {"id":"truth-boundary-review","status":"available","note":"The response matrix and RFI draft explicitly separate buildable, partner-required and non-claim items."},
     {"id":"custody-reference-tests","status":"available","note":"Reference implementation hostile tests pass under normal Python and python -O."},
-    {"id":"requirements-crosswalk","status":"available","note":"requirements.json and capability_matrix.json are populated from the mirrored 10-page RFI."},
+    {"id":"requirements-crosswalk","status":"available","note":"The requirements crosswalk and response matrix are populated from the mirrored 10-page RFI."},
     {"id":"partner-boundary","status":"available","note":"partner_landscape.md names candidates and open proof without authorizing outreach."},
     {"id":"rfi-only-acknowledgement","status":"available","note":"README/response/source ledger state that the RFI is information gathering only."}
   ]
