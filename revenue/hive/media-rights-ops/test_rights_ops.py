@@ -227,6 +227,33 @@ class DeskTests(unittest.TestCase):
         with self.assertRaisesRegex(r.RightsError, "refusing to overwrite"):
             r.publish_export(self.db, out, "2026-12-10T00:00:00Z")
 
+    def test_export_parent_swap_cannot_redirect_transaction(self):
+        parent = self.root / "export-parent"
+        retained = self.root / "export-parent-retained"
+        foreign = self.root / "foreign-parent"
+        parent.mkdir()
+        foreign.mkdir()
+        (foreign / "sentinel.txt").write_text("foreign", encoding="utf-8")
+        out = parent / "bundle"
+        real_open = e.os.open
+        fired = False
+        def racing_open(path, flags, mode=0o777, *, dir_fd=None):
+            nonlocal fired
+            if dir_fd is None and Path(path) == parent and not fired:
+                fired = True
+                os.rename(parent, retained)
+                os.rename(foreign, parent)
+            if dir_fd is None:
+                return real_open(path, flags, mode)
+            return real_open(path, flags, mode, dir_fd=dir_fd)
+        with mock.patch.object(e.os, "open", side_effect=racing_open):
+            with self.assertRaisesRegex(r.RightsError, "output parent identity changed"):
+                r.publish_export(self.db, out, "2026-12-10T00:00:00Z")
+        self.assertTrue(fired)
+        self.assertFalse((retained / "bundle").exists())
+        self.assertFalse((parent / "bundle").exists())
+        self.assertEqual((parent / "sentinel.txt").read_text(encoding="utf-8"), "foreign")
+
     def test_export_path_swap_cannot_redirect_success(self):
         out = self.root / "bundle-race"
         moved = self.root / "bundle-race-retained"
