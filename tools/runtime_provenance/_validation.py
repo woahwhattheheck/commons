@@ -27,7 +27,9 @@ def _validate_record_shape(record: Any, index: int) -> dict[str, Any]:
         raise RegistryError(f"{label}.provider_ids: at least one stable provider id required")
     for key, value in provider_ids.items():
         _require_nonempty_string(key, f"{label}.provider_ids key")
-        _require_nonempty_string(value, f"{label}.provider_ids.{key}")
+        value = _require_nonempty_string(value, f"{label}.provider_ids.{key}")
+        if value == UNKNOWN:
+            raise RegistryError(f"{label}.provider_ids.{key}: stable provider id cannot be UNKNOWN")
 
     for key in (
         "custodian",
@@ -87,7 +89,9 @@ def _validate_record_shape(record: Any, index: int) -> dict[str, Any]:
         if kind not in EVIDENCE_KINDS:
             raise RegistryError(f"{ev_label}.kind: unsupported value")
         for key in ("ref", "observed_at", "generation"):
-            _require_nonempty_string(item[key], f"{ev_label}.{key}")
+            value = _require_nonempty_string(item[key], f"{ev_label}.{key}")
+            if value == UNKNOWN:
+                raise RegistryError(f"{ev_label}.{key}: evidence rows must be concrete")
         _parse_time(item["observed_at"], f"{ev_label}.observed_at")
         fingerprint = (item["kind"], item["ref"], item["observed_at"], item["generation"])
         if fingerprint in seen_evidence:
@@ -141,5 +145,4 @@ def _critical_unknowns(record: dict[str, Any]) -> list[str]:
     if record["probe"]["result"] == UNKNOWN:
         reasons.append("UNKNOWN_PROBE_RESULT")
     return reasons
-
 
