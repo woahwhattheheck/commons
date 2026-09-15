@@ -38,8 +38,8 @@ def normalize_display_name(name):
     if not isinstance(name, str):
         raise ValueError("display name must be text")
     value = unicodedata.normalize("NFKC", name)
-    if any(ord(ch) < 32 or ord(ch) == 127 for ch in value):
-        raise ValueError("display name must not contain control characters")
+    if any(unicodedata.category(ch) in {"Cc", "Cf"} for ch in value):
+        raise ValueError("display name must not contain control or format characters")
     value = " ".join(value.strip().split()).casefold()
     if not value:
         raise ValueError("display name must be non-empty text")
