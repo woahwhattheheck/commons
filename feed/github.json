@@ -1,9 +1,9 @@
 {
   "counts": {
-    "open_issues": 109,
-    "open_pull_requests": 51,
-    "runs_in_progress": 17,
-    "runs_queued": 357
+    "open_issues": 108,
+    "open_pull_requests": 50,
+    "runs_in_progress": 19,
+    "runs_queued": 359
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -18,7 +18,7 @@
       "head_sha": "73e73de79cb62cf2f58005efab027138ded6f282",
       "number": 13533,
       "title": "coordination: clean successor for exact-head execution evidence gate",
-      "updated_at": "2026-09-13T06:18:05Z"
+      "updated_at": "2026-09-15T07:36:04Z"
     },
     {
       "author": "woahwhattheheck",
@@ -83,21 +83,10 @@
       "branch": "zcbw/channel-coverage-router-14690",
       "created_at": "2026-09-15T07:34:27Z",
       "draft": false,
-      "head_sha": "7e23024fc87a66319aff66dd93d049bd77d4bf37",
+      "head_sha": "40bf9f497c8fedf828eebcfeaad91bc52acabe21",
       "number": 14699,
       "title": "SwarmOps: route agents toward undercovered Slack work surfaces",
-      "updated_at": "2026-09-15T07:35:13Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zch/org-outbound-lease-structural-trust-root",
-      "created_at": "2026-09-15T07:33:18Z",
-      "draft": false,
-      "head_sha": "7fa3afe6530ec1ceb7a8a9f7a661b592f26f8416",
-      "number": 14698,
-      "title": "Harden outbound lease trust root against core reload",
-      "updated_at": "2026-09-15T07:33:18Z"
+      "updated_at": "2026-09-15T07:36:23Z"
     },
     {
       "author": "woahwhattheheck",
@@ -130,7 +119,7 @@
       "head_sha": "36be284452141d26cdff4b74efb8f185b27c4b32",
       "number": 14672,
       "title": "Learn2Design: source-pinned matched public evidence rail",
-      "updated_at": "2026-09-15T07:23:24Z"
+      "updated_at": "2026-09-15T07:36:13Z"
     },
     {
       "author": "woahwhattheheck",
@@ -175,6 +164,17 @@
       "number": 14658,
       "title": "Fix collision-preflight false-CLEAR authority gaps",
       "updated_at": "2026-09-15T05:56:48Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zns-r8k5/commercial-waste-postmerge-authority-20260914",
+      "created_at": "2026-09-15T05:22:37Z",
+      "draft": false,
+      "head_sha": "576e256cada30f206de9ebb8d37b5e9327768c1c",
+      "number": 14651,
+      "title": "Fix commercial-waste invoice custody and current-service authority",
+      "updated_at": "2026-09-15T07:29:25Z"
     }
   ],
   "open_heads": {
@@ -226,14 +226,24 @@
     "14672": "36be284452141d26cdff4b74efb8f185b27c4b32",
     "14680": "3c801971265381a084d19eb064839ff74747015e",
     "14684": "5804490ae2a883bc492f7fe975921b62fdc25216",
-    "14698": "7fa3afe6530ec1ceb7a8a9f7a661b592f26f8416",
-    "14699": "7e23024fc87a66319aff66dd93d049bd77d4bf37",
+    "14699": "40bf9f497c8fedf828eebcfeaad91bc52acabe21",
     "14700": "4c6cdef8e7020dbba7f25299c9e57c893a8df73b"
   },
-  "pulls_listed": 51,
+  "pulls_listed": 50,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 21.0,
+  "queue_depth_per_runner": 18.9,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zch/org-outbound-lease-structural-trust-root",
+      "closed_at": "2026-09-15T07:36:21Z",
+      "head_sha": "7fa3afe6530ec1ceb7a8a9f7a661b592f26f8416",
+      "merged_at": "2026-09-15T07:36:21Z",
+      "number": 14698,
+      "state": "MERGED",
+      "title": "Harden outbound lease trust root against core reload"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -387,21 +397,10 @@
       "number": 14661,
       "state": "MERGED",
       "title": "revenue: recover repaired Pinellas digital-evidence RFI carrier onto current main"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "zanv-p7/sd13365-partner-readiness-20260913",
-      "branch": "keystone/sd13365-post-commit-parent-fence-20260914",
-      "closed_at": "2026-09-15T07:01:10Z",
-      "head_sha": "734c70a6a15235e7e8b157e1397e0850f7badd28",
-      "merged_at": "2026-09-15T07:01:10Z",
-      "number": 14600,
-      "state": "MERGED",
-      "title": "SD13365: close retained-dirfd parent generation races"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-15T07:35:41Z",
+  "unchanged_since": "2026-09-15T07:36:41Z",
   "undatable_pulls": []
 }
