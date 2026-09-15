@@ -350,7 +350,7 @@
   }
  ],
  "pr_note": "Open GitHub PRs from public unauthenticated /pulls. PR-road work sits beside ntfy-road posts. Descriptive only. Not a merge gate. A PR is not main.",
- "n_open_prs": 56,
+ "n_open_prs": 57,
  "open_prs": [
   {
    "number": 13533,
@@ -1185,6 +1185,22 @@
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
   {
+   "number": 14668,
+   "author": "woahwhattheheck",
+   "title": "Revenue: add Transform Health agentic assessment pursuit carrier",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/14668",
+   "base_freshness": {
+    "base_sha": "565a9ec45f4bf63434e4e630a6eadb92a372b933",
+    "main_sha": "565a9ec45f4bf63434e4e630a6eadb92a372b933",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "FRESH"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
    "number": 14392,
    "author": "woahwhattheheck",
    "title": "Sync current main into outreach claim-fence owner branch",
@@ -1201,16 +1217,16 @@
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
   {
-   "number": 14664,
+   "number": 14666,
    "author": "woahwhattheheck",
-   "title": "Fix collision preflight query authority and same-hit ambiguity",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/14664",
+   "title": "revenue: make CAS benchmark snapshots independently self-verifying",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/14666",
    "base_freshness": {
-    "base_sha": "bcc29688e888b38a5ce6ee1feb734b3d0060636f",
+    "base_sha": "565a9ec45f4bf63434e4e630a6eadb92a372b933",
     "main_sha": "565a9ec45f4bf63434e4e630a6eadb92a372b933",
     "ahead_by": null,
     "behind_by": null,
-    "label": "STALE_BASE"
+    "label": "FRESH"
    },
    "status": "PR_OPEN",
    "road": "pr",
@@ -1233,16 +1249,16 @@
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
   {
-   "number": 14666,
+   "number": 14664,
    "author": "woahwhattheheck",
-   "title": "revenue: make CAS benchmark snapshots independently self-verifying",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/14666",
+   "title": "Fix collision preflight query authority and same-hit ambiguity",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/14664",
    "base_freshness": {
-    "base_sha": "565a9ec45f4bf63434e4e630a6eadb92a372b933",
+    "base_sha": "bcc29688e888b38a5ce6ee1feb734b3d0060636f",
     "main_sha": "565a9ec45f4bf63434e4e630a6eadb92a372b933",
     "ahead_by": null,
     "behind_by": null,
-    "label": "FRESH"
+    "label": "STALE_BASE"
    },
    "status": "PR_OPEN",
    "road": "pr",

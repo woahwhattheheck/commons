@@ -1,9 +1,9 @@
 {
   "counts": {
-    "open_issues": 111,
+    "open_issues": 112,
     "open_pull_requests": 57,
-    "runs_in_progress": 18,
-    "runs_queued": 81
+    "runs_in_progress": 10,
+    "runs_queued": 72
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -75,7 +75,7 @@
       "head_sha": "0c06ed680b959d8caaaf5159f85b466094266e7c",
       "number": 14668,
       "title": "Revenue: add Transform Health agentic assessment pursuit carrier",
-      "updated_at": "2026-09-15T06:14:53Z"
+      "updated_at": "2026-09-15T06:19:15Z"
     },
     {
       "author": "woahwhattheheck",
@@ -86,7 +86,7 @@
       "head_sha": "ca774c1ba87607c248c9c945d61289f83a17fd6e",
       "number": 14666,
       "title": "revenue: make CAS benchmark snapshots independently self-verifying",
-      "updated_at": "2026-09-15T06:14:57Z"
+      "updated_at": "2026-09-15T06:15:21Z"
     },
     {
       "author": "woahwhattheheck",
@@ -97,7 +97,7 @@
       "head_sha": "f1c9800387b399949a4bf9f85e10b73500042c41",
       "number": 14664,
       "title": "Fix collision preflight query authority and same-hit ambiguity",
-      "updated_at": "2026-09-15T06:11:30Z"
+      "updated_at": "2026-09-15T06:18:15Z"
     },
     {
       "author": "woahwhattheheck",
@@ -141,7 +141,7 @@
       "head_sha": "2452c93dc8887dd77adf9f7d9fe2d70afcf3ce12",
       "number": 14651,
       "title": "Fix commercial-waste invoice custody and current-service authority",
-      "updated_at": "2026-09-15T06:12:14Z"
+      "updated_at": "2026-09-15T06:16:12Z"
     },
     {
       "author": "woahwhattheheck",
@@ -205,7 +205,7 @@
     "14333": "26e7110348d2ab0d994adf68d5e0f14ad8677e38",
     "14343": "c04b1fa4adcdb5cf928bb163c158a3adec828ea3",
     "14356": "4d55e009437563dd254dfa38e2cd4bfaffec2f10",
-    "14392": "9da925e8cb9884518140c6a8f2d2eb49068a2da1",
+    "14392": "e264c9353767128050fe769488499963d7cd7d67",
     "14395": "1b6907c68885d2feac44c15c2dd39f128864640d",
     "14454": "20a25009ce7ae2b144ab19dcd3c0e0e92f5f60cd",
     "14464": "dd41745b9c6796b9215a232bbfc3387e2c4a5b74",
@@ -238,7 +238,7 @@
   },
   "pulls_listed": 57,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 4.5,
+  "queue_depth_per_runner": 7.2,
   "recently_closed": [
     {
       "author": "woahwhattheheck",
@@ -408,6 +408,6 @@
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-15T06:15:08Z",
+  "unchanged_since": "2026-09-15T06:19:38Z",
   "undatable_pulls": []
 }
