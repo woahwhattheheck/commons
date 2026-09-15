@@ -22,11 +22,12 @@
     try { localStorage.removeItem(STORAGE_KEY); } catch (_) {}
   }
 
-  function withAuth(init = {}) {
+  function withAuth(init = {}, inheritedHeaders) {
     const key = readKey();
     if (!key) return init;
     const next = {...init};
-    const headers = new Headers(init.headers || {});
+    const sourceHeaders = Object.prototype.hasOwnProperty.call(init, 'headers') ? init.headers : inheritedHeaders;
+    const headers = new Headers(sourceHeaders || {});
     headers.set('Authorization', 'Bearer ' + key);
     next.headers = headers;
     return next;
@@ -37,11 +38,20 @@
       path === '/workspace.sqlite3' || path.startsWith('/draft.eml') || path === '/api/change';
   }
 
+  function fetchTarget(input) {
+    if (typeof input === 'string') return input;
+    if (input && typeof input.url === 'string') return input.url;
+    return String(input);
+  }
+
   window.fetch = async function(input, init) {
-    const url = typeof input === 'string' ? input : input.url;
-    const local = url.startsWith('/') || url.startsWith(location.origin + '/');
-    const response = await originalFetch(input, local ? withAuth(init || {}) : init);
-    if (local && protectedPath(new URL(url, location.href).pathname) && response.status === 403 && readKey()) {
+    const resolved = new URL(fetchTarget(input), location.href);
+    const guarded = resolved.origin === location.origin && protectedPath(resolved.pathname);
+    const inheritedHeaders = !init || !Object.prototype.hasOwnProperty.call(init, 'headers')
+      ? (input && typeof input !== 'string' ? input.headers : undefined)
+      : undefined;
+    const response = await originalFetch(input, guarded ? withAuth(init || {}, inheritedHeaders) : init);
+    if (guarded && response.status === 403 && readKey()) {
       clearKey();
       setLocked(true, 'Operator key was rejected. Paste the current key to restore creator controls.');
     }
