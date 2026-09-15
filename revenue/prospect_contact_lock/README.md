@@ -8,7 +8,7 @@ It does **not** send email/DM/provider traffic. It never emits `external_send_au
 
 ## Canonical authority
 
-Production authority is code-pinned. Ordinary callers cannot select an alternate repository, branch, API origin, or record root.
+Production authority is code-pinned. Ordinary callers cannot select an alternate repository, branch, API origin, record root, or transport implementation.
 
 - API: `https://api.github.com`
 - repository: `woahwhattheheck/commons`
@@ -17,7 +17,9 @@ Production authority is code-pinned. Ordinary callers cannot select an alternate
 - generation: `prospect-contact-lock/v1/2026-09-14`
 - installed marker: `.coordination/prospect-contact-lock/v1/AUTHORITY.json`
 
-The canonical public/CLI surface verifies that exact marker before every contact-record read. A missing branch, missing marker, malformed marker, or marker whose generation/repository/branch/root/digest differs from the compiled authority fails closed; record-level `404` is interpreted as ABSENT only after the marker has been proven readable and exact. The bearer token is sent only to the pinned HTTPS API/repository URL family. Redirects are refused rather than forwarding Authorization.
+`revenue.prospect_contact_lock.lock.ProspectContactLock` is the single production implementation. The package export and compatibility `hardened` import resolve to that same class. Its public constructor accepts only the GitHub token; deterministic transport substitution exists only on private test surfaces.
+
+The production surface verifies the exact authority marker before every contact-record read. A missing branch, missing marker, malformed marker, or marker whose generation/repository/branch/root/digest differs from the compiled authority fails closed; record-level `404` is interpreted as ABSENT only after the marker has been proven readable and exact. The bearer token is sent only to the pinned HTTPS API/repository URL family. Redirects are refused rather than forwarding Authorization.
 
 ## Lifecycle
 
@@ -79,7 +81,7 @@ Supported target kinds:
 
 ## Paid-path requirement
 
-`arm` requires a concrete compensation path such as a fixed-price pilot, bounty/prize, bid/contract/subcontract, invoice/fee/retainer, or explicit positive amount. Canonical validation uses token/phrase boundaries rather than substring matching, so negative/larger-token prose such as `unpaid`, `repaid`, `uncontracted`, `not paid`, `no fee`, and `$0` cannot self-promote into a paid path. The plaintext is not retained. This proves only that the operator declared a path to compensation; it is not evidence of acceptance or payment.
+`arm` requires a concrete compensation path such as a fixed-price pilot, bounty/prize, bid/contract/subcontract, invoice/fee/retainer, or explicit positive amount. Canonical validation uses token/phrase boundaries rather than substring matching, so negative/larger-token prose such as `unpaid`, `repaid`, `uncontracted`, `not paid`, `no fee`, and zero-valued paths such as `$0` or `$0 bounty` cannot self-promote into a paid path. The plaintext is not retained. This proves only that the operator declared a path to compensation; it is not evidence of acceptance or payment.
 
 ## CLI
 
@@ -138,7 +140,7 @@ python -m revenue.prospect_contact_lock release \
   --reason 'route invalid before provider mutation'
 ```
 
-There is intentionally no `--repo`, `--branch`, `--root`, `--api-url`, timeout, force-release, stale-takeover, OUTCOME_UNKNOWN-release, or CONTACTED-reopen option.
+There is intentionally no `--repo`, `--branch`, `--root`, `--api-url`, transport override, timeout, force-release, stale-takeover, OUTCOME_UNKNOWN-release, or CONTACTED-reopen option.
 
 ## Mandatory operating order
 
@@ -159,9 +161,11 @@ There is intentionally no `--repo`, `--branch`, `--root`, `--api-url`, timeout, 
 python -m py_compile \
   revenue/prospect_contact_lock/__init__.py \
   revenue/prospect_contact_lock/__main__.py \
+  revenue/prospect_contact_lock/_core.py \
   revenue/prospect_contact_lock/lock.py \
   revenue/prospect_contact_lock/hardened.py \
   revenue/prospect_contact_lock/cli.py \
+  revenue/prospect_contact_lock/_legacy_test_lock.py \
   revenue/prospect_contact_lock/test_lock.py \
   revenue/prospect_contact_lock/test_hardened.py
 
@@ -169,8 +173,8 @@ python -m unittest -v revenue.prospect_contact_lock.test_lock revenue.prospect_c
 python -O -m unittest -v revenue.prospect_contact_lock.test_lock revenue.prospect_contact_lock.test_hardened
 ```
 
-The combined suite currently contains **47 hostile tests**. It covers same-contact contention, no-timeout stale blocking, exact-owner release/finalize, ARMED payload immutability, explicit ARMED release, one-shot dispatch consumption, same-owner replay after dispatch, OUTCOME_UNKNOWN no-release/no-reacquire, exact payload binding at finalization, permanent CONTACTED suppression, CAS loss, canonical namespace binding, missing/tampered authority-marker fail-closed behavior before record reads, paid-path token-boundary/negative regressions, raw-contact non-retention, digest-only evidence, server-Date fail-closed behavior, token-bearing URL origin pinning, duplicate-key/tampered-record rejection, receipt tamper detection, message-file bounds, and history-chain advancement.
+The combined hostile suite covers same-contact contention, no-timeout stale blocking, exact-owner release/finalize, ARMED payload immutability, explicit ARMED release, one-shot dispatch consumption, same-owner replay after dispatch, OUTCOME_UNKNOWN no-release/no-reacquire, exact payload binding at finalization, permanent CONTACTED suppression, CAS loss, canonical namespace binding, missing/tampered authority-marker fail-closed behavior before record reads, direct-submodule import equivalence, public transport-injection rejection, paid-path token-boundary/negative/zero regressions, raw-contact non-retention, digest-only evidence, server-Date fail-closed behavior, token-bearing URL origin pinning, duplicate-key/tampered-record rejection, receipt tamper detection, message-file bounds, and history-chain advancement.
 
 ## Lineage
 
-This lands canonical issue **#14220**. Closed/unmerged PR **#14273** is donor evidence only; it surfaced useful lessons around GitHub server time, canonical namespace binding, token-egress/redirect safety, digest-only evidence, monotonic suppression, and provider-ambiguity handling. This implementation does not revive its stale branch history. It combines #14220's strict no-auto-expiry requirement with a pre-send `ARMED -> OUTCOME_UNKNOWN` consume boundary so same-owner crash/restart cannot silently replay an ambiguous first contact.
+Canonical issue **#14220** established the no-auto-expiry contact-lock requirement. Closed/unmerged PR **#14273** is donor evidence only; it surfaced useful lessons around GitHub server time, canonical namespace binding, token-egress/redirect safety, digest-only evidence, monotonic suppression, and provider-ambiguity handling. #14434 landed the recovered state machine plus the pre-send `ARMED -> OUTCOME_UNKNOWN` consume boundary. Post-merge repair **#14475 / #14493** closes the remaining production-surface bypass by making `lock.py` the sole hardened production facade and removing arbitrary transport injection from ordinary construction.

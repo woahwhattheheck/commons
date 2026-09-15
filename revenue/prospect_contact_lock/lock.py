@@ -1,13 +1,13 @@
 """Canonical production facade for the prospect contact lock.
 
-The CAS state machine is preserved byte-for-byte in :mod:`._core`.  This module
+The CAS state machine is preserved byte-for-byte in :mod:`._core`. This module
 is the only production construction surface: every record read verifies the
 code-pinned authority marker, paid/award prose is validated before state
-mutation, and callers cannot substitute transport authority through the public
-constructor.
+mutation, and ordinary callers cannot substitute transport authority through
+the public constructor.
 
-Private helpers ending in ``_for_tests`` exist only so deterministic hostiles can
-exercise the state machine without network effects.  They are deliberately not
+The private ``_for_tests`` constructor exists only so deterministic hostiles can
+exercise this exact facade without network effects. It is deliberately not
 exported by the package.
 """
 from __future__ import annotations
@@ -21,7 +21,7 @@ from typing import Any, Mapping
 
 from . import _core as core
 
-# Stable public API re-exports.  The implementation remains private so importing
+# Stable public API re-exports. The implementation remains private so importing
 # ``revenue.prospect_contact_lock.lock`` cannot bypass the canonical facade.
 SCHEMA = core.SCHEMA
 RECEIPT_SCHEMA = core.RECEIPT_SCHEMA
@@ -53,7 +53,7 @@ normalize_target = core.normalize_target
 digest_message_bytes = core.digest_message_bytes
 digest_message_file = core.digest_message_file
 
-# Kept private-but-addressable for the historical hostile corpus.  Production
+# Kept private-but-addressable for the historical hostile corpus. Production
 # package exports do not include these helpers.
 _assert_canonical_url = core._assert_canonical_url
 _parse_json_strict = core._parse_json_strict
@@ -154,11 +154,6 @@ def _strict_compensation_category(text: str) -> str:
     raise ValidationError(
         "compensation_path must contain a positive amount or an exact non-negated paid/award signal"
     )
-
-
-def _state_machine_for_tests(token: str, transport: Any) -> core.ProspectContactLock:
-    """Private constructor for byte-preserved core state-machine hostiles only."""
-    return core.ProspectContactLock(token, transport)
 
 
 class ProspectContactLock(core.ProspectContactLock):

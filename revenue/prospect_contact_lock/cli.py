@@ -8,10 +8,10 @@ import sys
 from .lock import (
     AUTHORITY_DIGEST,
     LockError,
+    ProspectContactLock,
     digest_message_file,
     normalize_target,
 )
-from .hardened import ProspectContactLock
 
 
 def _parser() -> argparse.ArgumentParser:
