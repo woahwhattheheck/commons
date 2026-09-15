@@ -74,6 +74,11 @@ class ExecutionAuthorityTests(unittest.TestCase):
         self.assertFalse(hasattr(a, "_make_authoritative_main"))
         self.assertIs(a._legacy.main, a.main)
 
+    def test_cli_authority_introduces_no_second_factory_in_source(self) -> None:
+        source = inspect.getsource(a)
+        self.assertNotIn("def _make_authoritative_main(", source)
+        self.assertEqual(1, source.count("def _make_authoritative_"))
+
 
 if __name__ == "__main__":
     unittest.main()
