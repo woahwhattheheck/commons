@@ -5,12 +5,12 @@ import base64
 from datetime import datetime, timezone
 import hashlib
 import hmac
-from typing import Any
+from typing import Any, Mapping
 
 from .core import PortfolioError, load_json_bytes
 from . import current
 from . import host_kernel as host
-from .floor import require_current_authority
+from .floor import AuthorityFloor, require_current_authority
 from .fresh_exec import WORKER_LIMIT
 from .fresh_protocol import ARTIFACT_KEYS
 
@@ -45,6 +45,38 @@ def decode_artifacts(value: Any) -> dict[str, bytes]:
     return decoded
 
 
+def require_authority_chronology(
+    authority: Mapping[str, Any],
+    floor: AuthorityFloor,
+    trusted_now: str,
+) -> None:
+    """Bind evidence -> authority -> retained-floor -> real-current chronology."""
+    generated = current._dt(
+        authority["generated_at"], "upstream authority.generated_at"
+    )
+    floor_updated = current._dt(
+        floor.updated_at, "authority floor.updated_at"
+    )
+    now = current._dt(trusted_now, "trusted_now")
+    if generated > floor_updated:
+        raise PortfolioError(
+            "authority chronology: generation postdates retained floor update"
+        )
+    if floor_updated > now:
+        raise PortfolioError(
+            "authority chronology: retained floor update is in the future"
+        )
+    for index, row in enumerate(authority["rows"]):
+        evidence = current._dt(
+            row["evidence_captured_at"],
+            f"upstream authority.rows[{index}].evidence_captured_at",
+        )
+        if evidence > generated:
+            raise PortfolioError(
+                "authority chronology: evidence postdates authority generation"
+            )
+
+
 def compile_operation(request: dict[str, Any]) -> dict[str, Any]:
     if set(request) != {"action", "authority", "source"}:
         raise PortfolioError("worker compile request has wrong key set")
@@ -58,6 +90,7 @@ def compile_operation(request: dict[str, Any]) -> dict[str, Any]:
     normalized_authority, authority_bytes = current.canonical_authority(authority)
     floor_before = host.load_host_floor(key, trusted_now)
     require_current_authority(floor_before, authority_bytes)
+    require_authority_chronology(normalized_authority, floor_before, trusted_now)
     authorized = current.compile_authorized_at(
         source, normalized_authority, key, trusted_now
     )
@@ -68,6 +101,7 @@ def compile_operation(request: dict[str, Any]) -> dict[str, Any]:
     floor_after = host.load_host_floor(key, trusted_now)
     host.same_floor(floor_before, floor_after)
     require_current_authority(floor_after, authorized.authority_bytes)
+    require_authority_chronology(normalized_authority, floor_after, trusted_now)
 
     return {
         "ok": True,
@@ -95,9 +129,21 @@ def verify_operation(request: dict[str, Any]) -> dict[str, Any]:
     artifacts = decode_artifacts(request["artifacts"])
     trusted_now = now_utc()
 
+    authority_value = load_json_bytes(
+        artifacts["authority"], "upstream authority"
+    )
+    normalized_authority, canonical_authority = current.canonical_authority(
+        authority_value
+    )
+    if artifacts["authority"] != canonical_authority:
+        raise PortfolioError(
+            "upstream authority: noncanonical persisted bytes"
+        )
+
     key = host.load_host_key()
     floor_before = host.load_host_floor(key, trusted_now)
     require_current_authority(floor_before, artifacts["authority"])
+    require_authority_chronology(normalized_authority, floor_before, trusted_now)
     seal = host.parse_host_seal(artifacts["host_seal"])
     if seal["key_id"] != key.key_id:
         raise PortfolioError("host seal: key_id mismatch")
@@ -138,6 +184,7 @@ def verify_operation(request: dict[str, Any]) -> dict[str, Any]:
     floor_after = host.load_host_floor(key, trusted_now)
     host.same_floor(floor_before, floor_after)
     require_current_authority(floor_after, artifacts["authority"])
+    require_authority_chronology(normalized_authority, floor_after, trusted_now)
     return {
         "ok": True,
         "verified": {

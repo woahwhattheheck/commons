@@ -9,6 +9,7 @@ from pathlib import Path
 from revenue.pursuit_portfolio import current, host
 from revenue.pursuit_portfolio.core import PortfolioError
 from revenue.pursuit_portfolio.floor import require_current_authority
+from revenue.pursuit_portfolio.fresh_worker_ops import require_authority_chronology
 from test_pursuit_portfolio_current import KEY, NOW, authority_for, source
 from test_pursuit_portfolio_host_support import write_floor, write_key
 
@@ -67,6 +68,45 @@ class HostFloorTests(unittest.TestCase):
             os.link(real, root / "authority-key-alias.json")
             with self.assertRaisesRegex(PortfolioError, "single-link"):
                 host._load_host_key_from(real)
+
+    def test_floor_attestation_rejects_evidence_after_authority_generation(self):
+        value = source()
+        authority = authority_for(
+            value, issued_at="2026-09-13T13:00:00Z"
+        )
+        authority["rows"][0]["evidence_captured_at"] = (
+            "2026-09-13T13:01:00Z"
+        )
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            key = host._load_host_key_from(write_key(root))
+            floor = host._load_host_floor_from(
+                write_floor(root, authority, updated_at=NOW), key, NOW
+            )
+            with self.assertRaisesRegex(
+                PortfolioError, "evidence postdates authority generation"
+            ):
+                require_authority_chronology(authority, floor, NOW)
+
+    def test_floor_attestation_rejects_authority_generated_after_floor_update(self):
+        value = source()
+        authority = authority_for(
+            value, issued_at="2026-09-13T14:01:00Z"
+        )
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            key = host._load_host_key_from(write_key(root))
+            floor = host._load_host_floor_from(
+                write_floor(root, authority, updated_at=NOW),
+                key,
+                "2026-09-13T14:02:00Z",
+            )
+            with self.assertRaisesRegex(
+                PortfolioError, "generation postdates retained floor update"
+            ):
+                require_authority_chronology(
+                    authority, floor, "2026-09-13T14:02:00Z"
+                )
 
 
 if __name__ == "__main__":
