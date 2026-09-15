@@ -5,6 +5,7 @@ import hashlib
 import io
 import json
 import os
+import stat
 import tempfile
 import unittest
 from pathlib import Path
@@ -15,60 +16,71 @@ from revenue.pursuit_portfolio import cli
 from revenue.pursuit_portfolio.core import PortfolioError
 from revenue.pursuit_portfolio.current import _compile_authorized_at
 import revenue.pursuit_portfolio.publisher as publisher
-from test_pursuit_portfolio_current import (
-    KEY,
-    NOW,
-    portfolio_source,
-    signed_authority_for,
-)
+from test_pursuit_portfolio_current import KEY, NOW, authority_for, source
 
 
 @unittest.skipUnless(
     os.name == "posix",
-    "retained publication generation requires POSIX directory descriptors",
+    "retained publication byte custody requires POSIX directory descriptors",
 )
-class PublicationGenerationTests(unittest.TestCase):
-    def test_final_boundary_revalidates_every_visible_artifact(self):
-        value = portfolio_source(max_age=86400 * 5)
-        compiled = _compile_authorized_at(value, signed_authority_for(value), KEY, NOW)
+class PublicationByteCustodyTests(unittest.TestCase):
+    def test_same_inode_same_length_mutation_during_directory_fsync_fails_closed(self):
+        value = source(max_age=86400 * 5)
+        authorized = _compile_authorized_at(value, authority_for(value), KEY, NOW)
 
         with tempfile.TemporaryDirectory() as tmp:
             out = Path(tmp) / "out"
             out.mkdir(mode=0o700)
-            replacement = out / "replacement.tmp"
-            replacement.write_bytes(b"attacker replacement")
-            replacement.chmod(0o600)
+            real_fsync = publisher.os.fsync
+            observed: dict[str, int | bool] = {"mutated": False}
 
-            original = publisher._write_owned_relative
-
-            def replace_first_after_second(dir_fd, name, data):
-                identity = original(dir_fd, name, data)
-                if name == "portfolio.md":
-                    os.replace(
-                        "replacement.tmp",
+            def adversarial_fsync(fd: int) -> None:
+                info = os.fstat(fd)
+                if not observed["mutated"] and stat.S_ISDIR(info.st_mode):
+                    leaf_fd = os.open(
                         "portfolio.json",
-                        src_dir_fd=dir_fd,
-                        dst_dir_fd=dir_fd,
+                        os.O_RDWR | os.O_NOFOLLOW,
+                        dir_fd=fd,
                     )
-                return identity
+                    try:
+                        before = os.fstat(leaf_fd)
+                        observed["inode"] = int(before.st_ino)
+                        replacement = b"X" * int(before.st_size)
+                        os.lseek(leaf_fd, 0, os.SEEK_SET)
+                        view = memoryview(replacement)
+                        while view:
+                            written = os.write(leaf_fd, view)
+                            if written <= 0:
+                                raise AssertionError("short hostile write")
+                            view = view[written:]
+                        real_fsync(leaf_fd)
+                    finally:
+                        os.close(leaf_fd)
+                    observed["mutated"] = True
+                real_fsync(fd)
 
             with mock.patch.object(
-                publisher,
-                "_write_owned_relative",
-                side_effect=replace_first_after_second,
+                publisher.os,
+                "fsync",
+                side_effect=adversarial_fsync,
             ):
                 with self.assertRaisesRegex(
                     PortfolioError,
-                    "visible output ownership changed: portfolio.json",
+                    "output content changed: portfolio.json",
                 ):
-                    publisher.publish_authorized(compiled, out)
+                    publisher.publish_authorized(authorized, out)
 
-            # Failure preserves filesystem evidence and never pathname-deletes
-            # the foreign generation that triggered the custody alarm.
+            self.assertTrue(observed["mutated"])
+            after = os.stat(out / "portfolio.json", follow_symlinks=False)
+            self.assertEqual(int(after.st_ino), observed["inode"])
+            self.assertEqual(after.st_size, len(authorized.compiled.result_bytes))
             self.assertEqual(
                 (out / "portfolio.json").read_bytes(),
-                b"attacker replacement",
+                b"X" * len(authorized.compiled.result_bytes),
             )
+            # Failure preserves the hostile generation as evidence; publication
+            # never pathname-deletes a re-resolved output name.
+            self.assertTrue((out / "portfolio.md").exists())
 
 
 class CompileReceiptOutputTests(unittest.TestCase):
