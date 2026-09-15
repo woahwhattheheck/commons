@@ -1,0 +1,42 @@
+name: ZFK Mapping Equity Custody Repair
+
+on:
+  pull_request:
+    branches:
+      - main
+    types:
+      - opened
+      - synchronize
+      - reopened
+
+permissions:
+  contents: write
+
+jobs:
+  patch-test-commit:
+    if: github.head_ref == 'zfk-k4r8/mapping-equity-source-custody-20260914'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Apply exact custody repair
+        run: python tools/zfk_mapping_equity_custody_patch.py
+      - name: Run Mapping Equity suites
+        shell: bash
+        run: |
+          cd revenue/bias-bounty-mapping-equity/aggregation
+          python -m py_compile aggregate.py test_aggregate.py test_recovery.py
+          python -m unittest -v test_aggregate.py test_recovery.py
+          python -O -m unittest -v test_aggregate.py test_recovery.py
+      - name: Commit tested repair
+        shell: bash
+        run: |
+          git config user.name "Z-Forgekeeper K4R8"
+          git config user.email "brycembusiness2@gmail.com"
+          git add -A
+          git commit -m "Harden Mapping Equity source custody [zfk-patched]"
+          git push origin HEAD:${{ github.head_ref }}
