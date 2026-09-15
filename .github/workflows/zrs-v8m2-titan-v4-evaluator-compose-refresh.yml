@@ -78,12 +78,16 @@ jobs:
           python -B -m unittest -v test_champion_gate
           python -O -B -m unittest -v test_champion_gate
           python -B - <<'PY'
+          import os
           from pathlib import Path
           import champion_gate as gate
           kg = Path('../../../..').resolve(strict=True)
+          evaluator_rel = 'cloud-execution-lab/reference/evaluator/evaluate.py'
           receipt = gate.authenticate_repo(kg)
-          assert receipt['repo']['cloud-execution-lab/reference/evaluator/evaluate.py']['git_blob'] == gate.REQUIRED_EVALUATOR_GIT_BLOB
-          print('live champion authority: PASS', gate.REQUIRED_EVALUATOR_GIT_BLOB)
+          expected = os.environ['NEW_EVALUATOR_BLOB']
+          assert gate.REPO_GIT_BLOBS[evaluator_rel] == expected
+          assert receipt[evaluator_rel]['git_blob'] == expected
+          print('live champion authority: PASS', expected)
           PY
       - name: Commit generated authority chain to the composition branch
         shell: bash
