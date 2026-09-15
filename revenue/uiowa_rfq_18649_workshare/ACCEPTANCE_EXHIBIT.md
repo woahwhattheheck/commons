@@ -32,19 +32,21 @@ TJLabs owns evidence organization, deterministic technical compilation, traceabi
 
 | Milestone | Share | Amount | Commercial trigger |
 |---|---:|---:|---|
-| Written authorization / kickoff | 40% | $9,600 | Prospective prime gives written authorization to begin the bounded base workshare and provides the minimum kickoff inputs in Section 6. |
-| Draft technical work package | 40% | $9,600 | TJLabs delivers the draft artifacts in Section 4 and they meet the corresponding artifact acceptance criteria in Section 5. |
-| Accepted final technical work package | 20% | $4,800 | TJLabs delivers the reconciled final artifacts in Section 4 and they meet the final artifact acceptance criteria in Section 5. |
+| Written authorization / kickoff | 40% | $9,600 | Prospective prime gives written authorization to begin the bounded base workshare. |
+| Draft technical work package | 40% | $9,600 | TJLabs delivers the draft technical work package described in Section 4.2. |
+| Accepted final technical work package | 20% | $4,800 | TJLabs delivers the reconciled final artifacts in Section 4.3 and they meet the final artifact acceptance criteria in Section 5.3. |
 
-The milestone amounts restate the existing `COMMERCIAL.md`; this exhibit does not create payment authority by itself. A repository commit, test pass, email draft, or artifact receipt does not equal buyer authorization, invoice approval, payment, cash, or recognized revenue.
+These payment triggers restate the existing `COMMERCIAL.md` exactly: 40% on written authorization/kickoff, 40% on delivery of the draft technical work package, and 20% on acceptance of the final technical work package. The artifact acceptance criteria below are a deliverable-conformance and cure mechanism; they do **not** add a minimum-input condition to the kickoff payment trigger or convert the draft delivery payment trigger into an acceptance trigger. Minimum inputs and dependencies in Section 6 can block or shift the work that depends on them, but they do not silently rewrite the existing milestone economics.
 
-Acceptance in this exhibit means conformance of TJLabs-delivered artifacts to stated criteria. It does **not** mean University award, University acceptance, agreement with a technical conclusion, or a guarantee that the prime will win or complete the solicitation.
+This exhibit does not create payment authority by itself. A repository commit, test pass, email draft, or artifact receipt does not equal buyer authorization, invoice approval, payment, cash, or recognized revenue.
+
+Acceptance in this exhibit means conformance of TJLabs-delivered artifacts to stated criteria. It does **not** mean University award, University acceptance, agreement with a technical conclusion, or a guarantee that the prime will win or complete the solicitation. Only the final base-workshare payment milestone is acceptance-triggered under the current commercial hypothesis; kickoff and draft retain the triggers stated above.
 
 ## 3. Schedule boundary
 
-The public solicitation context describes a six-to-eight-week assessment. TJLabs' workshare clock begins only after written authorization and receipt of the minimum kickoff inputs needed for the applicable artifact. The prime owns the integrated project schedule and any University-facing dates, interview commitments, onsite commitments, or dependencies.
+The public solicitation context describes a six-to-eight-week assessment. TJLabs' authorized workshare begins on written authorization/kickoff. Artifact production that depends on prime- or University-supplied evidence can proceed only when the applicable minimum inputs in Section 6 are available. The prime owns the integrated project schedule and any University-facing dates, interview commitments, onsite commitments, or dependencies.
 
-TJLabs will identify blocked items rather than fabricate evidence or convert unavailable inputs into unsupported findings. Delays in buyer/University evidence access, interview scheduling, addenda, or prime decisions shift the affected artifact dependency unless the parties separately agree otherwise in writing.
+TJLabs will identify blocked items rather than fabricate evidence or convert unavailable inputs into unsupported findings. Delays in buyer/University evidence access, interview scheduling, addenda, or prime decisions shift the affected artifact dependency unless the parties separately agree otherwise in writing. A dependency-driven schedule shift does not retroactively redefine the kickoff or draft commercial triggers in Section 2.
 
 ## 4. Deliverables
 
@@ -73,7 +75,7 @@ TJLabs delivers a draft package containing, to the extent supported by authorize
 - a limitations/dependencies section identifying unresolved evidence gaps, source conflicts, stale observations, and scope assumptions;
 - a change log identifying material changes from the kickoff frame.
 
-A draft finding may be revised after prime review or additional evidence. Draft status is not a representation of final University-facing professional judgment.
+A draft finding may be revised after prime review or additional evidence. Draft status is not a representation of final University-facing professional judgment. Section 5.2 provides an objective conformance/cure frame for the delivered draft; under the current commercial hypothesis it does not change the Section 2 draft payment trigger from delivery to acceptance.
 
 ### 4.3 Final technical work package
 
@@ -95,6 +97,8 @@ The optional final-readout support is **not included in the $24,000 base worksha
 
 ## 5. Artifact acceptance criteria
 
+These criteria define artifact conformance, review, and cure. They are not an alternate payment schedule. Section 2 controls the proposed milestone triggers: kickoff is triggered by written authorization, draft by delivery, and final by acceptance.
+
 ### 5.1 Kickoff / evidence-plan acceptance
 
 The kickoff packet conforms when all of the following are true:
@@ -115,6 +119,8 @@ The draft package conforms when all of the following are true:
 4. source-universe/currentness checks and deterministic recompilation checks complete for the delivered draft generation, or the package explicitly reports the exact blocker preventing a current trusted result;
 5. draft findings and roadmap inputs remain within the technical workshare and do not claim bidder submission, contract, legal/compliance certification, award, or final University-facing recommendation authority;
 6. prime review comments received during the agreed review window are either incorporated when they correct TJLabs artifact nonconformance, or recorded as a bounded decision/open item when they require prime judgment, new evidence, or scope change.
+
+A draft artifact that fails these criteria is subject to the cure mechanism below; that conformance review does not convert the existing draft **delivery** payment trigger into an acceptance trigger.
 
 ### 5.3 Final technical package acceptance
 
@@ -141,7 +147,7 @@ The base workshare assumes the prospective prime supplies or coordinates access 
 - scheduling decisions and any University-facing communications needed to obtain evidence or interviews;
 - prompt notice of new amendments or scope changes that could invalidate an assessment assumption.
 
-The deterministic compiler can prove consistency/currentness only over evidence made available to it under the defined authority boundary. It cannot independently authenticate a source that the caller controls together with its purported trust root.
+These are execution dependencies for the affected technical artifacts, not additional payment conditions that rewrite the Section 2 kickoff or draft triggers. The deterministic compiler can prove consistency/currentness only over evidence made available to it under the defined authority boundary. It cannot independently authenticate a source that the caller controls together with its purported trust root.
 
 ## 7. Change-control boundary
 
@@ -192,7 +198,7 @@ Operational evidence should be handled using the minimum necessary content and s
 
 This exhibit is intended to make a prospective prime's review concrete. It remains **nonbinding until the relevant commercial terms are accepted through an authorized written agreement or authorization**.
 
-For each deliverable milestone, the prime can either acknowledge artifact acceptance or identify a specific unmet criterion. TJLabs can then correct an actual artifact nonconformance, document a blocker, or identify the request as a scope/evidence/judgment change requiring separate resolution.
+For each deliverable, the prime can acknowledge artifact acceptance or identify a specific unmet criterion. TJLabs can then correct an actual artifact nonconformance, document a blocker, or identify the request as a scope/evidence/judgment change requiring separate resolution. This conformance/cure protocol is distinct from the proposed payment schedule: kickoff remains triggered by written authorization, draft remains triggered by delivery, and only the final base-workshare milestone is acceptance-triggered.
 
 Nothing in this file authorizes or represents:
 
