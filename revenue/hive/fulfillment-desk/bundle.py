@@ -62,6 +62,20 @@ def _fingerprint(info):
     )
 
 
+def _read_bounded(fd, maximum: int, label: str):
+    chunks = []
+    total = 0
+    while True:
+        chunk = os.read(fd, min(65536, maximum + 1 - total))
+        if not chunk:
+            break
+        chunks.append(chunk)
+        total += len(chunk)
+        if total > maximum:
+            raise ValueError(f'{label} exceeds {maximum} bytes')
+    return b''.join(chunks), total
+
+
 def read_regular(path: Path, label: str, maximum: int) -> bytes:
     """Read exactly one retained regular-file generation without following a final symlink."""
     flags = os.O_RDONLY | getattr(os, 'O_BINARY', 0) | getattr(os, 'O_NONBLOCK', 0)
@@ -73,20 +87,16 @@ def read_regular(path: Path, label: str, maximum: int) -> bytes:
             raise ValueError(f'{label} must be a regular file')
         if before.st_size > maximum:
             raise ValueError(f'{label} exceeds {maximum} bytes')
-        chunks = []
-        total = 0
-        while True:
-            chunk = os.read(fd, min(65536, maximum + 1 - total))
-            if not chunk:
-                break
-            chunks.append(chunk)
-            total += len(chunk)
-            if total > maximum:
-                raise ValueError(f'{label} exceeds {maximum} bytes')
+        data, total = _read_bounded(fd, maximum, label)
         after = os.fstat(fd)
         if _fingerprint(before) != _fingerprint(after) or total != after.st_size:
             raise ValueError(f'{label} changed while it was being read')
-        return b''.join(chunks)
+        os.lseek(fd, 0, os.SEEK_SET)
+        again, total2 = _read_bounded(fd, maximum, label)
+        after2 = os.fstat(fd)
+        if again != data or total2 != total or _fingerprint(after) != _fingerprint(after2):
+            raise ValueError(f'{label} changed while it was being read')
+        return data
     finally:
         os.close(fd)
 
@@ -266,11 +276,20 @@ def build(deployment: Path, runner_dir: Path, output: Path, source_revision='not
                 or byte_count != after_hash.st_size
             ):
                 raise RuntimeError('Created package changed while it was being hashed')
+            byte_count2, sha2 = _hash_stream(stream)
+            after2 = os.fstat(stream.fileno())
+            if (
+                byte_count2 != byte_count
+                or sha2 != bundle_sha256
+                or byte_count2 != after2.st_size
+                or _fingerprint(after_hash) != _fingerprint(after2)
+            ):
+                raise RuntimeError('Created package changed while it was being hashed')
             visible = os.stat(output, follow_symlinks=False)
             if (
                 not stat.S_ISREG(visible.st_mode)
                 or _inode_key(visible) != created_key
-                or _fingerprint(visible) != _fingerprint(after_hash)
+                or _fingerprint(visible) != _fingerprint(after2)
             ):
                 raise RuntimeError('Output path no longer names the hashed package generation')
             return {
