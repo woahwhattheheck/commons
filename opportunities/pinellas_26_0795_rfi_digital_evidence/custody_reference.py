@@ -112,9 +112,13 @@ class Evidence:
         self.legal_hold = enabled
 
     def destroy(self, *, actor: str, at: str, retention_eligible: bool, notice_complete: bool,
+                retention_evidence_id: str, notice_evidence_id: str,
                 approval_ids: list[str], authority: str) -> dict[str, Any]:
         if type(retention_eligible) is not bool or type(notice_complete) is not bool:
             raise CustodyError("retention_eligible and notice_complete must be boolean")
+        if any(type(x) is not str or not x.strip()
+               for x in (retention_evidence_id, notice_evidence_id)):
+            raise CustodyError("retention and notice evidence IDs must be non-empty strings")
         if not self.accepted:
             raise CustodyError("only accepted evidence can enter destruction workflow")
         if self.legal_hold:
@@ -131,6 +135,10 @@ class Evidence:
             raise CustodyError("destruction authority must be a non-empty string")
         receipt = self._append("DESTROYED", actor=actor, at=at, data={
             "original_sha256": self.original_sha256,
+            "retention_eligible": retention_eligible,
+            "retention_evidence_id": retention_evidence_id,
+            "notice_complete": notice_complete,
+            "notice_evidence_id": notice_evidence_id,
             "approval_ids": sorted(set(approval_ids)),
             "authority": authority,
         })
@@ -221,10 +229,20 @@ class Evidence:
             elif kind == "DESTROYED":
                 if not derived_accepted or derived_hold or derived_destroyed:
                     raise CustodyError("destruction state invalid")
-                if set(data) != {"original_sha256", "approval_ids", "authority"}:
+                if set(data) != {
+                    "original_sha256", "retention_eligible", "retention_evidence_id",
+                    "notice_complete", "notice_evidence_id", "approval_ids", "authority",
+                }:
                     raise CustodyError("destruction receipt invalid")
                 if data["original_sha256"] != derived_original:
                     raise CustodyError("destruction digest mismatch")
+                if type(data["retention_eligible"]) is not bool or data["retention_eligible"] is not True:
+                    raise CustodyError("destruction retention predicate invalid")
+                if type(data["notice_complete"]) is not bool or data["notice_complete"] is not True:
+                    raise CustodyError("destruction notice predicate invalid")
+                for key in ("retention_evidence_id", "notice_evidence_id"):
+                    if type(data[key]) is not str or not data[key].strip():
+                        raise CustodyError("destruction predicate evidence identity invalid")
                 approvals = data["approval_ids"]
                 if (type(approvals) is not list or len(approvals) < 2
                         or approvals != sorted(set(approvals))
