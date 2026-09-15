@@ -4,8 +4,8 @@
 Runs only on the dedicated recovery branch. It archives every active workflow
 outside the original retained set and the structural auditor, pins each new
 archive row to the exact branch-base commit, restores the one drifted historical
-recipe from its original trust anchor, and removes itself plus its temporary
-workflow before validation/commit.
+recipe from its archive-origin trust anchor, and removes itself plus its
+temporary workflow before validation/commit.
 """
 from __future__ import annotations
 
@@ -17,11 +17,11 @@ import subprocess
 ROOT = Path(__file__).resolve().parents[1]
 MANIFEST = ROOT / "ci/workflow-surface.json"
 WORKFLOW_DIR = ROOT / ".github/workflows"
-RECIPE_DIR = ROOT / "ci/workflow-recipes"
 SELF_SCRIPT = ROOT / "tools/z_sol_loom_workflow_surface_migrate.py"
 SELF_WORKFLOW = ROOT / ".github/workflows/z-sol-loom-workflow-surface-migrate.yml"
 STRUCTURAL = ".github/workflows/workflow-surface.yml"
 BASE_COMMIT = "c35b159817de42e79e2c29b267d7d8122c2baa05"
+COMMERCIAL_ARCHIVE_ORIGIN_COMMIT = "b7fce9e369a279392931e3b43e291a39461cef52"
 
 
 def sha256(raw: bytes) -> str:
@@ -41,16 +41,20 @@ def main() -> int:
     if len(existing_by_source) != len(manifest["archived"]) or len(existing_by_archive) != len(manifest["archived"]):
         raise SystemExit("duplicate archive inventory before migration")
 
-    # Restore the canonical historical recipe instead of blessing post-archive
-    # mutation. The inventory itself is the trust root for length/digest.
+    # Restore the canonical archived recipe instead of blessing post-archive
+    # mutation. The inventory remains the trust root for length/digest. The
+    # archive-origin commit is where the exact 926-byte recipe was first made
+    # durable; the manifest's source_commit names the pre-migration snapshot,
+    # not the commit that materialized the recipe path itself.
     commercial_source = ".github/workflows/commercial-deal-room.yml"
     commercial_row = existing_by_source[commercial_source]
+    archive_path = commercial_row["archive"]
     historical = subprocess.check_output([
-        "git", "show", f"{manifest['source_commit']}:{commercial_source}"
+        "git", "show", f"{COMMERCIAL_ARCHIVE_ORIGIN_COMMIT}:{archive_path}"
     ], cwd=ROOT)
     if len(historical) != commercial_row["bytes"] or sha256(historical) != commercial_row["sha256"]:
-        raise SystemExit("historical commercial-deal-room bytes do not match inventory trust anchor")
-    (ROOT / commercial_row["archive"]).write_bytes(historical)
+        raise SystemExit("archive-origin commercial-deal-room bytes do not match inventory trust anchor")
+    (ROOT / archive_path).write_bytes(historical)
 
     active = sorted(
         p for p in WORKFLOW_DIR.iterdir()
@@ -82,7 +86,7 @@ def main() -> int:
     manifest["source_workflows"] = len(manifest["retained"]) + len(manifest["archived"])
     MANIFEST.write_text(json.dumps(manifest, indent=2, sort_keys=False) + "\n", encoding="utf-8")
 
-    # The branch-only scaffolding must not survive into the candidate surface.
+    # Branch-only scaffolding must not survive into the candidate surface.
     SELF_WORKFLOW.unlink(missing_ok=True)
     SELF_SCRIPT.unlink(missing_ok=True)
 
@@ -106,7 +110,7 @@ def main() -> int:
         "active_after": len(final_active),
         "archive_inventory_after": len(manifest["archived"]),
         "source_workflows_after": manifest["source_workflows"],
-        "restored_historical_recipe": commercial_row["archive"],
+        "restored_historical_recipe": archive_path,
         "archived_sources": extra,
     }, indent=2))
     return 0
