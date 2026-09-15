@@ -29,12 +29,16 @@ SQLite reopens that exact generation through a verified `/proc/self/fd/<n>` or
 `/dev/fd/<n>` descriptor URI with `mode=rw`; if the runtime cannot provide an
 alias resolving to the acquired `(device, inode)`, initialization fails closed.
 The retained descriptor and the visible pathname are checked around each SQLite
-open. Consequently, a path that is swapped to a foreign database only for the
-open and restored before return cannot redirect the SQLite connection. A
-contested generation fails closed rather than unlinking, replacing, chmodding,
-or schema-writing a foreign successor. These checks protect cooperative
-pacemaker state only; they do not turn the pacemaker into caller admission or
-provider authorization.
+open. The SQLite open callable, its exception type, and row factory are captured
+once in the `StoreBase._connect` closure when the module is defined; later
+rebinding of `sqlite3.connect` or creation/rebinding of the predecessor's
+`_SQLITE_CONNECT` module global cannot substitute a foreign returned connection.
+Consequently, a path that is swapped to a foreign database only for the open and
+restored before return cannot redirect SQLite, while the race hostiles no longer
+need a writable production connection authority. A contested generation fails
+closed rather than unlinking, replacing, chmodding, or schema-writing a foreign
+successor. These checks protect cooperative pacemaker state only; they do not
+turn the pacemaker into caller admission or provider authorization.
 
 ## Example
 
