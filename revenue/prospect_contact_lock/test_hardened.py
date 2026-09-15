@@ -43,12 +43,52 @@ class HardenedTransport(FakeTransport):
 class CanonicalHardeningTests(unittest.TestCase):
     def setUp(self):
         self.transport = HardenedTransport()
-        self.lock = hardened.ProspectContactLock("ghp_TESTTOKEN123", self.transport)
+        self.lock = hardened.ProspectContactLock._for_tests(
+            "ghp_TESTTOKEN123", self.transport
+        )
         self.email = "Lead.Person+Pilot@Example.com"
         self.owner = dict(agent_id="ZXR-B7Q2", operation_id="OP-PAID-1")
 
     def acquire(self):
         return self.lock.acquire("email", self.email, **self.owner)
+
+    def test_lock_and_hardened_imports_are_same_production_class(self):
+        self.assertIs(core.ProspectContactLock, hardened.ProspectContactLock)
+
+    def test_public_constructor_rejects_transport_injection(self):
+        with self.assertRaises(TypeError):
+            core.ProspectContactLock("ghp_TESTTOKEN123", self.transport)
+        with self.assertRaises(TypeError):
+            hardened.ProspectContactLock("ghp_TESTTOKEN123", self.transport)
+
+    def test_direct_lock_import_missing_marker_fails_closed(self):
+        direct = core.ProspectContactLock._for_tests(
+            "ghp_TESTTOKEN123", self.transport
+        )
+        self.transport.authority_available = False
+        with self.assertRaises(core.RemoteError):
+            direct.status("email", self.email)
+        self.assertEqual(self.transport.files, {})
+
+    def test_direct_lock_import_uses_strict_compensation_gate(self):
+        direct = core.ProspectContactLock._for_tests(
+            "ghp_TESTTOKEN123", self.transport
+        )
+        direct.acquire("email", self.email, **self.owner)
+        for bad in (
+            "unpaid volunteer work",
+            "$0 bounty",
+            "no contract",
+            "without purchase order",
+            "not a paid pilot",
+        ):
+            with self.subTest(bad=bad):
+                with self.assertRaises(core.ValidationError):
+                    direct.arm(
+                        "email", self.email, **self.owner,
+                        message_sha256=hashlib.sha256(b"hello").hexdigest(),
+                        channel="email", compensation_path=bad,
+                    )
 
     def test_missing_authority_marker_status_fails_closed_not_absent(self):
         self.transport.authority_available = False
@@ -86,6 +126,10 @@ class CanonicalHardeningTests(unittest.TestCase):
             "not paid for this",
             "no fee",
             "$0",
+            "$0 bounty",
+            "no contract",
+            "without purchase order",
+            "not a paid pilot",
         ):
             with self.subTest(bad=bad):
                 with self.assertRaises(core.ValidationError):

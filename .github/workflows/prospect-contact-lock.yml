@@ -43,9 +43,11 @@ jobs:
           python -m py_compile \
             revenue/prospect_contact_lock/__init__.py \
             revenue/prospect_contact_lock/__main__.py \
+            revenue/prospect_contact_lock/_core.py \
             revenue/prospect_contact_lock/lock.py \
             revenue/prospect_contact_lock/hardened.py \
             revenue/prospect_contact_lock/cli.py \
+            revenue/prospect_contact_lock/_legacy_test_lock.py \
             revenue/prospect_contact_lock/test_lock.py \
             revenue/prospect_contact_lock/test_hardened.py
       - name: Hostile suite
