@@ -47,10 +47,11 @@ jobs:
             revenue/prospect_contact_lock/hardened.py \
             revenue/prospect_contact_lock/cli.py \
             revenue/prospect_contact_lock/test_lock.py \
-            revenue/prospect_contact_lock/test_hardened.py
+            revenue/prospect_contact_lock/test_hardened.py \
+            revenue/prospect_contact_lock/test_transactional.py
       - name: Hostile suite
         if: steps.package.outputs.present == 'true'
-        run: python -m unittest -v revenue.prospect_contact_lock.test_lock revenue.prospect_contact_lock.test_hardened
+        run: python -m unittest -v revenue.prospect_contact_lock.test_lock revenue.prospect_contact_lock.test_hardened revenue.prospect_contact_lock.test_transactional
       - name: Hostile suite under optimized Python
         if: steps.package.outputs.present == 'true'
-        run: python -O -m unittest -v revenue.prospect_contact_lock.test_lock revenue.prospect_contact_lock.test_hardened
+        run: python -O -m unittest -v revenue.prospect_contact_lock.test_lock revenue.prospect_contact_lock.test_hardened revenue.prospect_contact_lock.test_transactional
