@@ -14,7 +14,7 @@ import hashlib
 import json
 from pathlib import Path
 import re
-from typing import Any, Sequence
+from typing import Any, Callable, Sequence
 
 _NATIVE_DATETIME = datetime
 _NATIVE_UTC = timezone.utc
@@ -83,11 +83,6 @@ def _parse_time(value: Any, field: str) -> datetime:
     if parsed.tzinfo is None:
         _fail("TIME_INVALID", field)
     return parsed.astimezone(_NATIVE_UTC)
-
-
-def _now_utc() -> datetime:
-    """Verifier-owned wall clock. Public verification has no caller override."""
-    return _NATIVE_DATETIME.now(_NATIVE_UTC)
 
 
 def _safe_ref(value: Any, field: str) -> str:
@@ -218,19 +213,6 @@ def _validate_candidate(candidate: Any) -> dict[str, Any]:
     }
 
 
-def _is_current(normalized: dict[str, Any], evaluated_at: datetime) -> bool:
-    requested = _parse_time(normalized["requestedAt"], "requestedAt")
-    closeout = _parse_time(normalized["requestedCloseoutAt"], "requestedCloseoutAt")
-    generated = _parse_time(normalized["modelProposal"]["generatedAt"], "modelProposal.generatedAt")
-    if evaluated_at < requested or evaluated_at > closeout or generated > evaluated_at:
-        return False
-    for evidence in normalized["evidence"]:
-        observed = _parse_time(evidence["observedAt"], f"{evidence['evidenceId']}.observedAt")
-        if observed > evaluated_at or (evaluated_at - observed).total_seconds() > _MAX_EVIDENCE_AGE_SECONDS:
-            return False
-    return True
-
-
 def compile_packet(candidate: Any) -> dict[str, Any]:
     normalized = _validate_candidate(candidate)
     core = {
@@ -336,20 +318,54 @@ def _verification_facts(candidate: Any, packet: Any) -> tuple[dict[str, bool], d
     }, normalized
 
 
-def verify_current(candidate: Any, packet: Any) -> dict[str, Any]:
-    """Require exact compiler correspondence plus verifier-owned current freshness."""
-    facts, normalized = _verification_facts(candidate, packet)
-    current_fresh = bool(normalized is not None and _is_current(normalized, _now_utc()))
-    valid = bool(
-        facts["packetIntegrityValid"]
-        and facts["candidateValid"]
-        and facts["sameEngagement"]
-        and facts["samePlanVersion"]
-        and facts["sourceMatches"]
-        and facts["compilerProjectionMatches"]
-        and current_fresh
-    )
-    return {"externalSendAuthorized": False, "validCurrent": valid, "currentEvidenceFresh": current_fresh, **facts}
+def _build_current_verifier(
+    verification_facts: Callable[[Any, Any], tuple[dict[str, bool], dict[str, Any] | None]],
+    native_datetime: type[datetime],
+    native_utc: Any,
+    max_evidence_age_seconds: int,
+) -> Callable[[Any, Any], dict[str, Any]]:
+    """Capture CURRENT authority once; module-global helper rebinding is ignored."""
+
+    def parse_time(value: str) -> datetime:
+        parsed = native_datetime.fromisoformat(value[:-1] + "+00:00")
+        return parsed.astimezone(native_utc)
+
+    def is_current(normalized: dict[str, Any], evaluated_at: datetime) -> bool:
+        requested = parse_time(normalized["requestedAt"])
+        closeout = parse_time(normalized["requestedCloseoutAt"])
+        generated = parse_time(normalized["modelProposal"]["generatedAt"])
+        if evaluated_at < requested or evaluated_at > closeout or generated > evaluated_at:
+            return False
+        for evidence in normalized["evidence"]:
+            observed = parse_time(evidence["observedAt"])
+            if observed > evaluated_at or (evaluated_at - observed).total_seconds() > max_evidence_age_seconds:
+                return False
+        return True
+
+    def verify(candidate: Any, packet: Any) -> dict[str, Any]:
+        facts, normalized = verification_facts(candidate, packet)
+        evaluated_at = native_datetime.now(native_utc)
+        current_fresh = bool(normalized is not None and is_current(normalized, evaluated_at))
+        valid = bool(
+            facts["packetIntegrityValid"]
+            and facts["candidateValid"]
+            and facts["sameEngagement"]
+            and facts["samePlanVersion"]
+            and facts["sourceMatches"]
+            and facts["compilerProjectionMatches"]
+            and current_fresh
+        )
+        return {"externalSendAuthorized": False, "validCurrent": valid, "currentEvidenceFresh": current_fresh, **facts}
+
+    return verify
+
+
+verify_current = _build_current_verifier(
+    _verification_facts,
+    datetime,
+    timezone.utc,
+    14 * 24 * 60 * 60,
+)
 
 
 def verify_historical(candidate: Any, packet: Any) -> dict[str, Any]:
