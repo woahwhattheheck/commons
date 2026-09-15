@@ -33,7 +33,7 @@ First-party terms rechecked on 2026-09-15:
 
 **PURSUE — technically aligned, qualification-sensitive.**
 
-This carrier is preparation only. Before any external submission, complete the applicant/CV/contact fields, review the final attachment set, run a fresh provider dedupe, and obtain one-route Muse arbitration.
+A retained buyer-bound Muse decision has selected exactly one Transform Health application route for this operation. That selection is not send authority and the lease has not been consumed. Before any external submission, complete the applicant/CV/contact fields, bind the required profile/experience evidence, review the final attachment set, and run a fresh Gmail + Slack hard-dedupe.
 
 ### Strong fit
 
@@ -103,13 +103,15 @@ See `APPLICATION_PACKET.md` for the truthful submission narrative, pricing bound
 
 ## Coordination / outreach state
 
-As of the claim on 2026-09-15:
+As of 2026-09-15:
 
 - prior all-access Slack searches for `Transform Health`, the exact agentic title, and `health data governance` + `agentic` returned no earlier owner/outreach;
 - Commons default-branch code search for `Transform Health` returned no prior carrier;
 - a durable TAKE was posted in `#sales` before repository mutation;
+- retained Muse decision `1789453079.952329` selects buyer `Transform Health`, offer `Application — Agentic Feature for Health Data Governance Assessment Tool`, route `hr@transformhealthcoalition.org`, selected seat `ZTL-K7M4`, request key `TRANSFORM-HEALTH-AGENTIC-ASSESSMENT-TOOL-2026-ZTLK7M4`;
+- the Muse lease is selected but **not consumed**; selection alone does not authorize outbound;
 - **no application email has been sent from this lane**;
-- **no email may be sent until fresh dedupe is clean and Muse arbitration explicitly selects this route**.
+- **no email may be sent until applicant/CV/contact and required profile evidence are complete, the final attachment set is reviewed, and a fresh Gmail + Slack hard-dedupe is clean**.
 
 ## Authority ceiling
 
