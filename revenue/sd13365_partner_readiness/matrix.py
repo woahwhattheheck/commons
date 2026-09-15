@@ -15,13 +15,13 @@ import gzip
 import hashlib
 import io
 import json
-import os
 import re
-import tempfile
 from datetime import date, datetime
 from pathlib import Path
 from typing import Any, Iterable
 from urllib.parse import urlsplit
+
+import _atomic_output
 
 SCHEMA = 1
 OPERATION = "R-SD13365-PROBATION-AI-TEAMING-ZCAS913455-20260913"
@@ -487,26 +487,13 @@ def build_receipt(matrix: dict[str, Any]) -> dict[str, Any]:
 
 
 def write_receipt(path: Path, receipt: dict[str, Any]) -> None:
-    if path.exists() and path.is_symlink():
-        raise MatrixError("refusing to replace a symlink output")
-    parent = path.parent
-    parent.mkdir(parents=True, exist_ok=True)
-    if parent.is_symlink():
-        raise MatrixError("refusing to write through a symlink directory")
-    payload = json.dumps(receipt, ensure_ascii=False, sort_keys=True, indent=2) + "\n"
-    fd, temporary = tempfile.mkstemp(prefix=f".{path.name}.", suffix=".tmp", dir=parent)
-    temporary_path = Path(temporary)
+    payload = (
+        json.dumps(receipt, ensure_ascii=False, sort_keys=True, indent=2) + "\n"
+    ).encode("utf-8")
     try:
-        with os.fdopen(fd, "w", encoding="utf-8", newline="\n") as handle:
-            handle.write(payload)
-            handle.flush()
-            os.fsync(handle.fileno())
-        os.replace(temporary_path, path)
-    finally:
-        try:
-            temporary_path.unlink()
-        except FileNotFoundError:
-            pass
+        _atomic_output.write_atomic_bytes(path, payload)
+    except _atomic_output.AtomicOutputError as exc:
+        raise MatrixError(f"cannot publish receipt safely: {exc}") from exc
 
 
 def main(argv: list[str] | None = None) -> int:
