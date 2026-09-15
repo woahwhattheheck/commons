@@ -1,9 +1,10 @@
 """Fail-closed current-authority seal for Muse election v2 receipts.
 
-This is a composition donor for canonical issue #14503.  It carries the already
+This is a composition donor for canonical issue #14503. It carries the already
 landed #14505 authority law into v2 without inventing a third election protocol:
 caller-supplied Slack snapshots are analysis evidence, not provider-authenticated
-current authority, and caller-supplied clocks cannot mint current SELECTED.
+current authority, and caller-supplied clocks cannot mint terminal election
+outcomes.
 """
 from __future__ import annotations
 
@@ -16,6 +17,7 @@ from typing import Any, Mapping
 AUTHORITY_MODE = "UNAUTHENTICATED_SNAPSHOT_ANALYSIS"
 UNAUTHENTICATED_SNAPSHOT_REASON = "SNAPSHOT_AUTHORITY_UNVERIFIED"
 CURRENT_POSITIVE_DISABLED_REASON = "CURRENT_SELECTED_REQUIRES_PROVIDER_AUTHENTICATED_SNAPSHOT"
+CURRENT_NEGATIVE_DISABLED_REASON = "CURRENT_NOT_SELECTED_REQUIRES_PROVIDER_AUTHENTICATED_SNAPSHOT"
 FUTURE_SKEW_SECONDS = 30
 
 _REQUIRED_BINDING_FIELDS = (
@@ -59,10 +61,12 @@ def _binding_payload(payload: Mapping[str, Any]) -> dict[str, Any] | None:
 
 
 def seal_untrusted_snapshot_receipt(receipt: Mapping[str, Any]) -> dict[str, Any]:
-    """Return a verifier-clocked, non-positive receipt for raw snapshot analysis.
+    """Return a verifier-clocked HOLD receipt for raw snapshot analysis.
 
-    The function deliberately does not accept `now`.  Tests may patch `_utc_now`,
+    The function deliberately does not accept `now`. Tests may patch `_utc_now`,
     but production callers cannot backdate current authority through the API.
+    Until a reviewed provider-authenticated adapter exists, caller-supplied Muse
+    bytes cannot prove either terminal SELECTED or terminal NOT_SELECTED.
     """
     if type(receipt) is not dict or set(receipt) != {"payload", "receipt_sha256"}:
         raise ValueError("receipt must contain exactly payload and receipt_sha256")
@@ -82,11 +86,16 @@ def seal_untrusted_snapshot_receipt(receipt: Mapping[str, Any]) -> dict[str, Any
     payload["external_send_authorized"] = False
     payload["side_effects_authorized"] = False
 
-    if payload.get("decision") == "SELECTED":
+    decision = payload.get("decision")
+    if decision in {"SELECTED", "NOT_SELECTED"}:
         payload["decision"] = "HOLD"
         reasons = payload.get("reasons")
         reasons = [] if type(reasons) is not list else [x for x in reasons if type(x) is str and x]
-        reasons.extend((UNAUTHENTICATED_SNAPSHOT_REASON, CURRENT_POSITIVE_DISABLED_REASON))
+        reasons.append(UNAUTHENTICATED_SNAPSHOT_REASON)
+        if decision == "SELECTED":
+            reasons.append(CURRENT_POSITIVE_DISABLED_REASON)
+        else:
+            reasons.append(CURRENT_NEGATIVE_DISABLED_REASON)
         payload["reasons"] = sorted(set(reasons))
         for name in _SELECTION_FIELDS + _WINNER_FIELDS:
             payload[name] = None
@@ -98,10 +107,11 @@ def seal_untrusted_snapshot_receipt(receipt: Mapping[str, Any]) -> dict[str, Any
 
 
 def verify_untrusted_snapshot_receipt(receipt: Mapping[str, Any]) -> bool:
-    """Verify the #14505 fail-closed current-authority envelope.
+    """Verify the fail-closed unauthenticated current-authority envelope.
 
-    A receipt can prove HOLD/negative analysis.  It can never prove current
-    SELECTED authority while `authority_mode` is unauthenticated snapshot analysis.
+    A receipt can prove only HOLD analysis while `authority_mode` is
+    unauthenticated snapshot analysis. Terminal SELECTED and NOT_SELECTED both
+    require a separately reviewed provider-authenticated source boundary.
     """
     try:
         if type(receipt) is not dict or set(receipt) != {"payload", "receipt_sha256"}:
@@ -125,8 +135,7 @@ def verify_untrusted_snapshot_receipt(receipt: Mapping[str, Any]) -> bool:
         binding = _binding_payload(payload)
         if binding is None or payload.get("request_context_sha256") != _digest(binding):
             return False
-        decision = payload.get("decision")
-        if decision not in {"HOLD", "NOT_SELECTED"}:
+        if payload.get("decision") != "HOLD":
             return False
         if payload.get("valid_until") is not None:
             return False
@@ -135,9 +144,7 @@ def verify_untrusted_snapshot_receipt(receipt: Mapping[str, Any]) -> bool:
         reasons = payload.get("reasons")
         if type(reasons) is not list or reasons != sorted(set(reasons)) or any(type(x) is not str or not x for x in reasons):
             return False
-        if decision == "HOLD" and not reasons:
-            return False
-        if decision == "NOT_SELECTED" and reasons:
+        if not reasons:
             return False
         return True
     except (TypeError, ValueError, OverflowError):
