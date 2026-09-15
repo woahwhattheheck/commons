@@ -22,8 +22,15 @@ def _directory_flags() -> int:
     return os.O_RDONLY | directory | nofollow | getattr(os, "O_CLOEXEC", 0)
 
 
-def _walk_parent(parent: Path, *, create: bool) -> int:
-    """Open every parent component no-follow and return a retained final dirfd."""
+def _walk_parent(parent: Path) -> int:
+    """Open an already-existing parent chain no-follow and retain its final dirfd.
+
+    Authority-bearing publication deliberately does not create missing directory
+    components. There is no portable atomic mkdir+open primitive that proves a
+    later no-follow open is the exact directory generation just created rather
+    than an ordinary-directory substitution at the same name. Callers that need
+    new directories must create them before entering this publication boundary.
+    """
     parent = Path(parent)
     flags = _directory_flags()
     try:
@@ -44,16 +51,10 @@ def _walk_parent(parent: Path, *, create: bool) -> int:
                 raise OutputCustodyError("parent traversal '..' is not allowed for output")
             try:
                 next_fd = os.open(component, flags, dir_fd=fd)
-            except FileNotFoundError:
-                if not create:
-                    raise OutputCustodyError("output parent identity changed")
-                try:
-                    os.mkdir(component, mode=0o755, dir_fd=fd)
-                    next_fd = os.open(component, flags, dir_fd=fd)
-                except (OSError, TypeError, NotImplementedError) as exc:
-                    raise OutputCustodyError(
-                        f"cannot create/open output directory component {component!r}: {exc}"
-                    ) from exc
+            except FileNotFoundError as exc:
+                raise OutputCustodyError(
+                    f"output parent component {component!r} does not already exist"
+                ) from exc
             except (OSError, TypeError, NotImplementedError) as exc:
                 raise OutputCustodyError(
                     f"output directory component {component!r} is not a safe ordinary directory: {exc}"
@@ -81,7 +82,7 @@ def _identity(fd: int) -> tuple[int, int]:
 
 def _verify_parent_identity(parent: Path, expected: tuple[int, int]) -> None:
     """Fail if the requested parent pathname no longer names the retained directory."""
-    verify_fd = _walk_parent(parent, create=False)
+    verify_fd = _walk_parent(parent)
     try:
         if _identity(verify_fd) != expected:
             raise OutputCustodyError("output parent identity changed during write")
@@ -124,7 +125,7 @@ def atomic_write_bytes(path: Path, payload: bytes) -> None:
     if path.name in ("", ".", ".."):
         raise OutputCustodyError("output filename is invalid")
     parent = path.parent
-    dir_fd = _walk_parent(parent, create=True)
+    dir_fd = _walk_parent(parent)
     temp_name: str | None = None
     try:
         parent_identity = _identity(dir_fd)
@@ -141,7 +142,7 @@ def atomic_write_bytes(path: Path, payload: bytes) -> None:
         finally:
             os.close(temp_fd)
 
-        # The first fence catches movement before commit.  The second catches the
+        # The first fence catches movement before commit. The second catches the
         # remaining verification->replace window; safety itself still comes from
         # committing only through the retained directory descriptor.
         _verify_parent_identity(parent, parent_identity)
