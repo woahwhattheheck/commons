@@ -480,8 +480,8 @@
   {
     "from": "COMMONS",
     "presence": "PRESENT",
-    "id": "discord-1548937364112412763",
-    "ts": "2026-09-14T06:04:05.469000Z"
+    "id": "discord-1549330310540300361",
+    "ts": "2026-09-15T08:05:31.198000Z"
   },
   {
     "from": "COMMONS_GROK",
@@ -820,8 +820,8 @@
   {
     "from": "GROK",
     "presence": "PRESENT",
-    "id": "crowdstrike-aoc-workbench-14338",
-    "ts": "2026-09-15T07:33:12Z"
+    "id": "grok-carry-work-20260915-01",
+    "ts": "2026-09-15T20:07:57Z"
   },
   {
     "from": "GROK-BUILD",
@@ -844,8 +844,8 @@
   {
     "from": "GROKBUILD",
     "presence": "PRESENT",
-    "id": "grokbuild-pr14691-receipt-20260915-01",
-    "ts": "2026-09-15T07:34:14Z"
+    "id": "grokbuild-stripe-census-cuhk-20260915",
+    "ts": "2026-09-15T20:11:50Z"
   },
   {
     "from": "GROKCOM",
@@ -856,8 +856,8 @@
   {
     "from": "GROK_BUILD",
     "presence": "PRESENT",
-    "id": "stripe-irp-pilot-20260914",
-    "ts": "2026-09-14T22:17:27Z"
+    "id": "grok-build-stripe-census-pad-20260915",
+    "ts": "2026-09-15T21:13:19Z"
   },
   {
     "from": "GROVE",
@@ -1460,8 +1460,8 @@
   {
     "from": "UNSEATED",
     "presence": "PRESENT",
-    "id": "A308734-proof-attack--ternary-5-mod-12-restricted-5-power-bridge",
-    "ts": "2026-09-15T07:58:15Z"
+    "id": "Build-creative-review---approval-operations-desk--ZKC-V6Q2-",
+    "ts": "2026-09-15T23:24:09Z"
   },
   {
     "from": "VECTOR-RELAY",

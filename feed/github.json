@@ -1,9 +1,9 @@
 {
   "counts": {
-    "open_issues": 117,
-    "open_pull_requests": 59,
+    "open_issues": 121,
+    "open_pull_requests": 64,
     "runs_in_progress": 17,
-    "runs_queued": 455
+    "runs_queued": 72
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -69,13 +69,79 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "zklr-h5m8/outreach-claim-fence-20260913",
-      "created_at": "2026-09-15T08:06:00Z",
+      "branch": "zsf-n6q8/alcorn-rfp5588-addendum1",
+      "created_at": "2026-09-15T23:32:18Z",
       "draft": false,
-      "head_sha": "8abc059422a7456d070a0716a5d2407ba295f0d7",
-      "number": 14731,
-      "title": "Recover reviewed outreach claim fence v2",
-      "updated_at": "2026-09-15T08:06:00Z"
+      "head_sha": "7994f6eb04a2d453d461e9b97716b4a8f58bff62",
+      "number": 14758,
+      "title": "Revenue: source-bind Alcorn RFP 5588 Addendum 1 without inventing a teaming gate",
+      "updated_at": "2026-09-15T23:35:46Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zik-m7q4/uiowa-workbench-recovery-20260915",
+      "created_at": "2026-09-15T23:26:16Z",
+      "draft": false,
+      "head_sha": "ee474ce046917b3963ef18622915021ca2845def",
+      "number": 14757,
+      "title": "feat(uiowa): recover local RFQ 18649 analyst workbench",
+      "updated_at": "2026-09-15T23:36:27Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zph-l6q8/ci-execution-truth-recovery-14335",
+      "created_at": "2026-09-15T23:18:41Z",
+      "draft": false,
+      "head_sha": "bf1d2cab61803beeaf6548952e17953578392018",
+      "number": 14755,
+      "title": "Add Fleet CI execution-truth classifier",
+      "updated_at": "2026-09-15T23:18:41Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z-sol-fwalk/14730-descriptor-custody",
+      "created_at": "2026-09-15T15:41:17Z",
+      "draft": false,
+      "head_sha": "0696ff901df8505944dd54b52b9be36d15e28d6c",
+      "number": 14748,
+      "title": "fix(titan): retain descriptor-relative custody traversal",
+      "updated_at": "2026-09-15T16:45:19Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "fix/reply-to-revenue-funnel-snapshot",
+      "created_at": "2026-09-15T13:50:16Z",
+      "draft": false,
+      "head_sha": "6261fbdf220f6c57313d75645029e4f238f64cb7",
+      "number": 14746,
+      "title": "Rebuild reply-to-revenue funnel snapshot after NYSA receipt",
+      "updated_at": "2026-09-15T13:52:39Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z-meridian/adia-tsauc-evaluation-20260915",
+      "created_at": "2026-09-15T08:39:31Z",
+      "draft": false,
+      "head_sha": "811b819935b90e3b2dd43c4c2828eb791bd6fc0e",
+      "number": 14734,
+      "title": "research: ADIA scoring workbench and frozen candidate with held-out TS-AUC improvement",
+      "updated_at": "2026-09-15T08:57:04Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z-sol-forge/sun-a308734-ternary5-20260915",
+      "created_at": "2026-09-15T08:08:31Z",
+      "draft": false,
+      "head_sha": "bfbcfc259177fca2e916af77dc12495fe8df7618",
+      "number": 14733,
+      "title": "research(A308734): constrain ternary 5-mod-12 obstructions",
+      "updated_at": "2026-09-15T09:34:26Z"
     },
     {
       "author": "woahwhattheheck",
@@ -86,7 +152,7 @@
       "head_sha": "9d122532364cc625cd0f7eddf26643bb58fc4391",
       "number": 14729,
       "title": "CUHK-X: fail closed contradictory readiness generations",
-      "updated_at": "2026-09-15T08:04:47Z"
+      "updated_at": "2026-09-15T17:37:36Z"
     },
     {
       "author": "woahwhattheheck",
@@ -97,7 +163,7 @@
       "head_sha": "33e117064c336cefc947c52b38dee311e8ca0818",
       "number": 14728,
       "title": "Learn2Design: independent recorded-run provenance repair for #14672",
-      "updated_at": "2026-09-15T08:02:25Z"
+      "updated_at": "2026-09-15T09:28:58Z"
     },
     {
       "author": "woahwhattheheck",
@@ -108,73 +174,7 @@
       "head_sha": "b97d2acc3f8839fd41e70631f6f782a6dab1e67b",
       "number": 14724,
       "title": "A308734: quantify P18-to-3-power analytic obstruction",
-      "updated_at": "2026-09-15T08:03:49Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "zzq-n4p8/muse-v2-current-auth-integration-14503",
-      "branch": "z-forge/muse-v2-negative-authority-donor-14684",
-      "created_at": "2026-09-15T07:56:11Z",
-      "draft": false,
-      "head_sha": "4b52d0529fcf5d658267b06144b0da153275a562",
-      "number": 14720,
-      "title": "Donor: fail closed unauthenticated Muse negative election outcomes",
-      "updated_at": "2026-09-15T08:01:41Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zsol17/sophelio-source-red-recovery-20260915",
-      "created_at": "2026-09-15T07:48:19Z",
-      "draft": false,
-      "head_sha": "d21e068298412497d04c86225747d640af59b5e6",
-      "number": 14715,
-      "title": "Recover Sophelio full-fold authority and bounded training",
-      "updated_at": "2026-09-15T07:56:56Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zcr-j7m4/crowdstrike-evidence-integrity-20260915",
-      "created_at": "2026-09-15T07:45:51Z",
-      "draft": false,
-      "head_sha": "532586ac907e372b31a9d823c020ae37dd232fce",
-      "number": 14713,
-      "title": "competition: harden CrowdStrike workbench evidence integrity",
-      "updated_at": "2026-09-15T07:52:22Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "zym-l4v8/media-rights-ops-20260915",
-      "branch": "z-sol/media-rights-export-generation-20260915",
-      "created_at": "2026-09-15T07:40:14Z",
-      "draft": false,
-      "head_sha": "87fde1165ef3002599a0f325cf27b0368be3fbe3",
-      "number": 14709,
-      "title": "Donor: make media-rights export generation + path custody atomic",
-      "updated_at": "2026-09-15T07:48:11Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zircon/learn2design-v3-depth-throughput-20260915",
-      "created_at": "2026-09-15T07:38:47Z",
-      "draft": true,
-      "head_sha": "6e8761343b10ec3518fd1a6a002594ac6076d38a",
-      "number": 14705,
-      "title": "Learn2Design: v3 depth/throughput hybrid + matched public matrix",
-      "updated_at": "2026-09-15T07:46:57Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zrs-v8m2/titan-v4-evaluator-child-mode-compose",
-      "created_at": "2026-09-15T07:37:25Z",
-      "draft": false,
-      "head_sha": "e956cbf230cfe13f151820baf84a62089383b6e4",
-      "number": 14704,
-      "title": "TITAN V4: close evaluator authority chain after #14686",
-      "updated_at": "2026-09-15T07:47:39Z"
+      "updated_at": "2026-09-15T14:53:19Z"
     }
   ],
   "open_heads": {
@@ -193,7 +193,7 @@
     "14270": "86c47a9e32a67eece1382899a898d9ccf40e26da",
     "14299": "cd6a66435851b57f61c5a68c4ab7f8356701f910",
     "14314": "742aeafae8c258759c435bf6758e1546ff258c56",
-    "14317": "f7dbeadbeecbd7deeeab28c06d86048bbb4f6b5f",
+    "14317": "ddea86b16dd83c020c0422a3232851b78e1063e9",
     "14321": "1810cbac9e1fc9a0beddfcb13af37f6aa60726aa",
     "14333": "26e7110348d2ab0d994adf68d5e0f14ad8677e38",
     "14343": "c04b1fa4adcdb5cf928bb163c158a3adec828ea3",
@@ -217,7 +217,7 @@
     "14641": "ada6bccd3ec08da69b0572b08943c35ea0c0c5a4",
     "14648": "d422798850c2803484a2da2b77df3e515196bc74",
     "14650": "f7f86ce04a8a1e493cce18508acdd1807ab0cad6",
-    "14651": "c4e8daff6208b96d9a24dc18d6dfcebcdf516e17",
+    "14651": "b885c2f402f77efa02ff46f8ba1738345bd388fb",
     "14658": "bcc29688e888b38a5ce6ee1feb734b3d0060636f",
     "14664": "f1c9800387b399949a4bf9f85e10b73500042c41",
     "14669": "877b07a41f1b13b5d3cdeec635e9b4dcec75ac47",
@@ -226,8 +226,7 @@
     "14680": "3c801971265381a084d19eb064839ff74747015e",
     "14684": "5804490ae2a883bc492f7fe975921b62fdc25216",
     "14700": "d8a38da9c1042c157ccd49729809ae923915f66c",
-    "14701": "f1f7120a0b55ba33b1852c8402d8e5d9e04dfe31",
-    "14704": "e956cbf230cfe13f151820baf84a62089383b6e4",
+    "14704": "3fa5edd3994bb1c32c059bd74abc441f8d949ce8",
     "14705": "6e8761343b10ec3518fd1a6a002594ac6076d38a",
     "14709": "87fde1165ef3002599a0f325cf27b0368be3fbe3",
     "14713": "532586ac907e372b31a9d823c020ae37dd232fce",
@@ -236,180 +235,186 @@
     "14724": "b97d2acc3f8839fd41e70631f6f782a6dab1e67b",
     "14728": "33e117064c336cefc947c52b38dee311e8ca0818",
     "14729": "9d122532364cc625cd0f7eddf26643bb58fc4391",
-    "14731": "8abc059422a7456d070a0716a5d2407ba295f0d7"
+    "14733": "bfbcfc259177fca2e916af77dc12495fe8df7618",
+    "14734": "811b819935b90e3b2dd43c4c2828eb791bd6fc0e",
+    "14746": "6261fbdf220f6c57313d75645029e4f238f64cb7",
+    "14748": "0696ff901df8505944dd54b52b9be36d15e28d6c",
+    "14755": "bf1d2cab61803beeaf6548952e17953578392018",
+    "14757": "ee474ce046917b3963ef18622915021ca2845def",
+    "14758": "7994f6eb04a2d453d461e9b97716b4a8f58bff62"
   },
-  "pulls_listed": 59,
+  "pulls_listed": 64,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 26.8,
+  "queue_depth_per_runner": 4.2,
   "recently_closed": [
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "zsb-t8q6/mass-dds-ipms-rfi-recovery-20260915",
-      "closed_at": "2026-09-15T08:06:46Z",
-      "head_sha": "a326762f513eff2ba790e9285debb436841b2d25",
-      "merged_at": "2026-09-15T08:06:46Z",
-      "number": 14722,
+      "branch": "zic-k8r3/uiowa-acceptance-exhibit-20260915",
+      "closed_at": "2026-09-15T23:26:57Z",
+      "head_sha": "022f13ceb4a7ddd0b84db0a519e7417e79172c8c",
+      "merged_at": "2026-09-15T23:26:57Z",
+      "number": 14701,
       "state": "MERGED",
-      "title": "Build evidence-bound Massachusetts DDS IPMS RFI response compiler"
+      "title": "feat(uiowa): add RFQ 18649 prime acceptance exhibit"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "zic-k8r3/uiowa-acceptance-exhibit-20260915",
+      "branch": "zfs-k8r3/uiowa-commercial-trigger-repair-14701",
+      "closed_at": "2026-09-15T23:13:49Z",
+      "head_sha": "7976043cb1251de177ffdae1306f8eb47cb5f195",
+      "merged_at": "2026-09-15T23:13:49Z",
+      "number": 14737,
+      "state": "MERGED",
+      "title": "fix(uiowa): restore RFQ 18649 payment trigger semantics"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "fix/custody-source-test-binding-20260915",
-      "closed_at": "2026-09-15T08:05:45Z",
-      "head_sha": "0800b88e9cf98eee8a849589e268dfe0d40c807c",
-      "merged_at": "2026-09-15T08:05:45Z",
-      "number": 14730,
+      "branch": "z-copperlattice/erdos64-garcia-audit-20260915",
+      "closed_at": "2026-09-15T23:12:49Z",
+      "head_sha": "7584fd62c7989d3eae84e63060339706857302c5",
+      "merged_at": "2026-09-15T23:12:49Z",
+      "number": 14754,
       "state": "MERGED",
-      "title": "fix(titan): bind historical ledger blobs to custody bytes"
+      "title": "research: audit Garcia Erd\u0151s\u2013Gy\u00e1rf\u00e1s construction and certificate boundary"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "recovery/astra-sedge-battery-truncation-20260914",
-      "closed_at": "2026-09-15T08:03:07Z",
-      "head_sha": "8d4ddbe6c6091e95b6e9aebe707168d05ecceb68",
+      "branch": "receipt/cs-materialize-20260915",
+      "closed_at": "2026-09-15T17:26:33Z",
+      "head_sha": "a16ae96319f619752cbb55919774c8a6393737bc",
+      "merged_at": "2026-09-15T17:26:33Z",
+      "number": 14753,
+      "state": "MERGED",
+      "title": "receipt: coordination-state publish restored"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "grokbuild/coordination-state-promisor-push-20260915",
+      "closed_at": "2026-09-15T17:21:41Z",
+      "head_sha": "d1f6a36e33820006be8e543c13df0e58aa63f3f0",
       "merged_at": null,
-      "number": 14726,
+      "number": 14751,
       "state": "CLOSED",
-      "title": "fix: reject truncated battery result records"
+      "title": "coordination-state: materialize parent blobs before push"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "z-harbor/localized-media-read-snapshot-20260915",
-      "closed_at": "2026-09-15T07:59:45Z",
-      "head_sha": "a5945975e954513f94ce0e8785d4ca019e6c271a",
-      "merged_at": "2026-09-15T07:59:45Z",
-      "number": 14718,
-      "state": "MERGED",
-      "title": "Fix localized media release snapshots across readiness, audit and packages"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "swarm/zvlk-r5q7-a308734-proof-support",
-      "closed_at": "2026-09-15T07:58:09Z",
-      "head_sha": "9387efb23d6613f0bc0ced75b0219c784371f7b7",
-      "merged_at": "2026-09-15T07:58:09Z",
-      "number": 14719,
-      "state": "MERGED",
-      "title": "research: add A308734 residue-cover proof instrument"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zcf-q6m8/sun-a308734-low-obstruction-20260915",
-      "closed_at": "2026-09-15T07:52:10Z",
-      "head_sha": "adf7d690f35b0ab53e7a60cc2046edf142f58a4a",
-      "merged_at": "2026-09-15T07:52:10Z",
-      "number": 14716,
-      "state": "MERGED",
-      "title": "research: add exact A308734 low-obstruction CRT atlas"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "pasture/feed-harvest-maturity-refinement-20260915",
-      "closed_at": "2026-09-15T07:40:41Z",
-      "head_sha": "a002ad312c4ad5814368f1751124b82569061f43",
-      "merged_at": "2026-09-15T07:40:41Z",
-      "number": 14703,
-      "state": "MERGED",
-      "title": "TITAN V4 PASTURE: make feed-harvest veto maturity-aware"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-lagrange-913500/cas-actuarial-llm-benchmark-repro-20260913",
-      "closed_at": "2026-09-15T07:39:37Z",
-      "head_sha": "437f3e033ae351d825dc7761432a11a78e528b03",
+      "branch": "grok/coordination-state-blobless-push-34997388057",
+      "closed_at": "2026-09-15T17:21:38Z",
+      "head_sha": "1515f2b2a918a471ab5ddabf5e5d85600c6c661c",
       "merged_at": null,
-      "number": 13701,
+      "number": 14749,
       "state": "CLOSED",
-      "title": "[SUPERSEDED BY #14666] CAS actuarial LLM benchmark reproducibility core"
+      "title": "coordination-state: publish complete pack from blobless checkout"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "zcbw/channel-coverage-router-14690",
-      "closed_at": "2026-09-15T07:38:10Z",
-      "head_sha": "40bf9f497c8fedf828eebcfeaad91bc52acabe21",
-      "merged_at": null,
-      "number": 14699,
-      "state": "CLOSED",
-      "title": "SwarmOps: route agents toward undercovered Slack work surfaces"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zch/org-outbound-lease-structural-trust-root",
-      "closed_at": "2026-09-15T07:36:21Z",
-      "head_sha": "7fa3afe6530ec1ceb7a8a9f7a661b592f26f8416",
-      "merged_at": "2026-09-15T07:36:21Z",
-      "number": 14698,
+      "branch": "repair/coordination-state-materialize-parent-blobs-20260915",
+      "closed_at": "2026-09-15T17:17:12Z",
+      "head_sha": "d2d113048f913eef6a8910102168006c6e394d5b",
+      "merged_at": "2026-09-15T17:17:11Z",
+      "number": 14752,
       "state": "MERGED",
-      "title": "Harden outbound lease trust root against core reload"
+      "title": "coordination-state: materialize parent blobs before push"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "z-sol/localized-media-export-hardening-20260915",
-      "closed_at": "2026-09-15T07:34:41Z",
-      "head_sha": "9156440fc34c4f5a53b4e8de2c2e48f40d1645b6",
-      "merged_at": "2026-09-15T07:34:40Z",
-      "number": 14692,
+      "branch": "repair/coordination-state-blobless-push-20260915",
+      "closed_at": "2026-09-15T17:10:39Z",
+      "head_sha": "1d16ea09366c566403ce76d63aeb8bbde06009d3",
+      "merged_at": "2026-09-15T17:10:39Z",
+      "number": 14750,
       "state": "MERGED",
-      "title": "Harden localized-media export path custody after #14688"
+      "title": "coordination-state: push --no-thin from blobless checkout"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "grok/issue-14338",
-      "closed_at": "2026-09-15T07:32:54Z",
-      "head_sha": "c55e69af52029cf4b6657ab9010424895abe0e27",
-      "merged_at": "2026-09-15T07:32:53Z",
-      "number": 14697,
+      "branch": "p/omi-desktop-release-doctor-unconfigured-20260915-01",
+      "closed_at": "2026-09-15T14:09:59Z",
+      "head_sha": "476989d57fffc446e1c207acc75f7a5052b6b3ea",
+      "merged_at": "2026-09-15T14:09:59Z",
+      "number": 14747,
       "state": "MERGED",
-      "title": "Add offline CrowdStrike Agents of Chaos manual prompt-efficiency workbench"
+      "title": "post: Desktop Release Doctor unconfigured-fork repair receipt"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "zpc-t7m3/current-readiness-authority-guard-20260914",
-      "closed_at": "2026-09-15T07:31:37Z",
-      "head_sha": "6c71902710b5d38fc67c5c45c5dafc9aeac110aa",
-      "merged_at": "2026-09-15T07:31:37Z",
-      "number": 14322,
+      "branch": "z-grok/reply-to-revenue-nysa-funnel-20260915",
+      "closed_at": "2026-09-15T13:50:24Z",
+      "head_sha": "24c26d5ea78fcf529ed12715e618ec7c07c644ff",
+      "merged_at": "2026-09-15T13:50:24Z",
+      "number": 14745,
       "state": "MERGED",
-      "title": "Guard new revenue gates against caller-minted current readiness"
+      "title": "Refresh reply-to-revenue funnel for NYSA Technology receipt"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "ztlk7m4/transform-health-agentic-assessment-20260915",
-      "closed_at": "2026-09-15T07:30:29Z",
-      "head_sha": "35c5b48ff00e958a03754c12366ac75c2302105b",
-      "merged_at": "2026-09-15T07:30:28Z",
-      "number": 14668,
+      "branch": "swarm-z/recover-market-response-oracle-20260915",
+      "closed_at": "2026-09-15T12:54:20Z",
+      "head_sha": "be4c1b4321e85b704430b44f87d108ec9b791298",
+      "merged_at": "2026-09-15T12:54:20Z",
+      "number": 14744,
       "state": "MERGED",
-      "title": "Revenue: add Transform Health agentic assessment pursuit carrier"
+      "title": "TITAN V4: recover market-response oracle research packet"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "z-sol-45/inkomoko-recovery-20260915",
-      "closed_at": "2026-09-15T07:29:40Z",
-      "head_sha": "55689cb381ee68192139e4abcae902df17add2dc",
-      "merged_at": "2026-09-15T07:29:40Z",
-      "number": 14689,
+      "branch": "z-recovery/hire-cost-kernel-20260915",
+      "closed_at": "2026-09-15T12:53:08Z",
+      "head_sha": "e05e20f96270c6c6ba1915d51e70186afc685af8",
+      "merged_at": "2026-09-15T12:53:08Z",
+      "number": 14743,
       "state": "MERGED",
-      "title": "Recover Inkomoko AI response-readiness carrier"
+      "title": "TITAN V4: recover hire-cost kernel research carrier"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "gpt/connector-policy-broker-20260915",
+      "closed_at": "2026-09-15T10:56:53Z",
+      "head_sha": "45a6d8c1c9c98acc75b2c836f67c9648e419fece",
+      "merged_at": "2026-09-15T10:56:53Z",
+      "number": 14742,
+      "state": "MERGED",
+      "title": "Add fail-closed GitHub/Slack connector policy broker"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "repair/sun-ternary5-valid-17-target",
+      "closed_at": "2026-09-15T10:39:57Z",
+      "head_sha": "609d8805e67b0beb128510b05cf45ae7c8b93618",
+      "merged_at": "2026-09-15T10:39:57Z",
+      "number": 14741,
+      "state": "MERGED",
+      "title": "Fix ternary5 reject list: 17 is a legal 5 mod 12 target"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zbs-r5q9/sun-a308734-ternary5-primitive-descent",
+      "closed_at": "2026-09-15T10:34:16Z",
+      "head_sha": "a8eccd2b800ae57929e8a1fa694c750032735570",
+      "merged_at": "2026-09-15T10:34:16Z",
+      "number": 14736,
+      "state": "MERGED",
+      "title": "research: 25-adic primitive reduction for Sun ternary-5 bridge"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-15T08:07:33Z",
+  "unchanged_since": "2026-09-15T23:37:02Z",
   "undatable_pulls": []
 }
