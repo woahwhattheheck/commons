@@ -76,7 +76,7 @@ Outputs are `proof.json`, `proof.md`, and `receipt.sha256`. The receipt binds no
 
 Only the `public_projection` object and `proof.md` are designed for public reuse, and only when the resulting state is `PUBLIC_ANONYMOUS` or `PUBLIC_NAMED`. Public outcome entries contain the permissioned claim only; their evidence/source locators remain in `private_evidence`. Withheld reasons are content-free and never echo a non-public claim.
 
-Policy `verified-paid-proof/v2` projects every external string into one visual line, removes Unicode control/format characters, HTML-escapes it, and escapes Markdown structural punctuation before rendering. This keeps permissioned text from creating extra headings, links, emphasis, HTML, or claims outside the structured public projection.
+Policy `verified-paid-proof/v2` projects every external string into one visual line, replaces Unicode control/format characters with spacing, escapes Markdown structure before HTML encoding, and entity-encodes URL/email delimiters that common renderers auto-link. This keeps permissioned text from creating extra headings, links, mentions, emphasis, HTML, or claims outside the structured public projection while preserving ordinary punctuation such as apostrophes.
 
 ## Authority boundary
 
