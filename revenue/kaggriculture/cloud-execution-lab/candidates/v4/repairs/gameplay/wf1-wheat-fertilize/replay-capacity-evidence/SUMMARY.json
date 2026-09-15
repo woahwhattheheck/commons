@@ -1,0 +1,168 @@
+{
+  "by_candidate_seat": {
+    "0": {
+      "activated_cells": 5,
+      "cells": 6,
+      "changed_callbacks": 15,
+      "margin_mean_delta": 117.0,
+      "margin_median_delta": 139.0,
+      "negative": 0,
+      "off_losses": 0,
+      "off_ties": 0,
+      "off_wins": 6,
+      "on_losses": 0,
+      "on_ties": 0,
+      "on_wins": 6,
+      "opponent_mean_delta": -13.666666666666666,
+      "own_mean_delta": 103.33333333333333,
+      "positive": 5,
+      "zero": 1
+    },
+    "1": {
+      "activated_cells": 8,
+      "cells": 11,
+      "changed_callbacks": 24,
+      "margin_mean_delta": 78.0,
+      "margin_median_delta": 122.0,
+      "negative": 1,
+      "off_losses": 4,
+      "off_ties": 0,
+      "off_wins": 7,
+      "on_losses": 4,
+      "on_ties": 0,
+      "on_wins": 7,
+      "opponent_mean_delta": -0.5454545454545454,
+      "own_mean_delta": 77.45454545454545,
+      "positive": 7,
+      "zero": 3
+    }
+  },
+  "callbacks_per_episode": 719,
+  "compared_old_and_new_trials": 36,
+  "completed_utc": "2026-09-12T02:49:06.201561+00:00",
+  "decision": "KEEP_DEFAULT_OFF; characterize future input-purchase capacity conflict before native promotion",
+  "delivery": {
+    "default_changed": false,
+    "github_committed": false,
+    "github_merged": false,
+    "kaggle_submitted": false,
+    "local_evidence_and_additive_patch_only": true,
+    "production_changed": false,
+    "slack_posted": false
+  },
+  "engine_blob": "3c202c7ee921da239356789e266b694635103fc4",
+  "external_opponents": {
+    "activated_cells": 13,
+    "cells": 17,
+    "changed_callbacks": 39,
+    "margin_mean_delta": 91.76470588235294,
+    "margin_median_delta": 129.0,
+    "negative": 1,
+    "off_losses": 4,
+    "off_ties": 0,
+    "off_wins": 13,
+    "on_losses": 4,
+    "on_ties": 0,
+    "on_wins": 13,
+    "opponent_mean_delta": -5.176470588235294,
+    "own_mean_delta": 86.58823529411765,
+    "positive": 12,
+    "zero": 4
+  },
+  "full_episode_callbacks": 38826,
+  "limits": [
+    "18 available V3.1 tapes, not the distinct requested 88 historical cells.",
+    "All tape cells predeclared; one recorded self-play excluded only from external-opponent summary.",
+    "Recorded opponents are fixed action tapes, not agents reacting to the changed policy.",
+    "Runtime executable/config closure verified against source manifest; no current full production archive build gate.",
+    "WF1 is applied outside main.agent: no native finalizer/history/deadline composition proof.",
+    "Wall time is local in-process time, not full hosted RPC timing.",
+    "No inference of Kaggle strength, native V4 promotion, or future worst-case safety."
+  ],
+  "max_adapter_seconds": 0.001524034999874857,
+  "max_callback_seconds": 0.08208910100006506,
+  "old_58bee_and_current_5b8f_trials_equal_action_streams_and_scores": 36,
+  "recorded_controls": 18,
+  "recorded_controls_exact": 18,
+  "reference_main_commit": "7ab60c39d600416a64a35303648cdafc77c9573d",
+  "regressions": [
+    {
+      "candidate_seat": 1,
+      "changed_callbacks": 3,
+      "episode": 107952194,
+      "margin_delta": -52.0,
+      "off_bank": [
+        91169.0,
+        84204.0
+      ],
+      "off_deadline_fallbacks": 0,
+      "off_margin": -6965.0,
+      "on_bank": [
+        91177.0,
+        84160.0
+      ],
+      "on_deadline_fallbacks": 0,
+      "on_margin": -7017.0,
+      "on_overbudget_market": 0,
+      "own_delta": -44.0,
+      "rival_delta": 8.0,
+      "self_play": false
+    }
+  ],
+  "runtime_manifest_blob": "8dafbc57595a09eaa8b67e7fc061e60cbcdacc74",
+  "runtime_trial_counters": {
+    "callback_over_1s": 0,
+    "changed_callbacks": 39,
+    "overbudget_parent_market": 0,
+    "parent_action_mutated": 0,
+    "parent_callbacks": 25884,
+    "parent_deadline_fallbacks": 0,
+    "parent_instance_absent": 0
+  },
+  "runtime_trials": 36,
+  "schema": "wf1-current-runtime-external-replay-evidence/v1",
+  "seam": "external_post_main_agent_not_native_runtime_composition",
+  "self_play": [
+    {
+      "candidate_seat": 1,
+      "changed_callbacks": 0,
+      "episode": 107941268,
+      "margin_delta": 0.0,
+      "off_bank": [
+        68106.0,
+        66042.0
+      ],
+      "off_deadline_fallbacks": 0,
+      "off_margin": -2064.0,
+      "on_bank": [
+        68106.0,
+        66042.0
+      ],
+      "on_deadline_fallbacks": 0,
+      "on_margin": -2064.0,
+      "on_overbudget_market": 0,
+      "own_delta": 0.0,
+      "rival_delta": 0.0,
+      "self_play": true
+    }
+  ],
+  "total_full_episodes": 54,
+  "trace_action_streams_and_scores_identical": true,
+  "trace_reference_games": 2,
+  "unit_test_results": {
+    "normal": {
+      "errors": 0,
+      "failures": 0,
+      "skips": 0,
+      "tests": 53
+    },
+    "optimized": {
+      "errors": 0,
+      "failures": 0,
+      "skips": 0,
+      "tests": 53
+    }
+  },
+  "wf1_adapter_blob": "5b8f4c0144ce43ae449373a6a188ce03409a16ee",
+  "wf1_donor_blob": "b35a30431f64c1d6b40d1d599190338a9d50b555"
+}
