@@ -1,9 +1,9 @@
 {
   "counts": {
-    "open_issues": 115,
-    "open_pull_requests": 54,
-    "runs_in_progress": 18,
-    "runs_queued": 427
+    "open_issues": 118,
+    "open_pull_requests": 58,
+    "runs_in_progress": 17,
+    "runs_queued": 438
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -68,14 +68,58 @@
   "newest_pulls": [
     {
       "author": "woahwhattheheck",
+      "base": "zsh-q6m4/learn2design-public-evidence-20260915",
+      "branch": "z-quorum/learn2design-provenance-20260915",
+      "created_at": "2026-09-15T08:02:25Z",
+      "draft": false,
+      "head_sha": "33e117064c336cefc947c52b38dee311e8ca0818",
+      "number": 14728,
+      "title": "Learn2Design: independent recorded-run provenance repair for #14672",
+      "updated_at": "2026-09-15T08:02:25Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zida7k5/sun-a308734-analytic-bridge-14714",
+      "created_at": "2026-09-15T07:57:46Z",
+      "draft": false,
+      "head_sha": "b97d2acc3f8839fd41e70631f6f782a6dab1e67b",
+      "number": 14724,
+      "title": "A308734: quantify P18-to-3-power analytic obstruction",
+      "updated_at": "2026-09-15T08:03:49Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zsb-t8q6/mass-dds-ipms-rfi-recovery-20260915",
+      "created_at": "2026-09-15T07:56:39Z",
+      "draft": false,
+      "head_sha": "8f8ab1770a2e0aad4908e4e2f67820442edb6c3a",
+      "number": 14722,
+      "title": "Build evidence-bound Massachusetts DDS IPMS RFI response compiler",
+      "updated_at": "2026-09-15T08:02:21Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "zzq-n4p8/muse-v2-current-auth-integration-14503",
+      "branch": "z-forge/muse-v2-negative-authority-donor-14684",
+      "created_at": "2026-09-15T07:56:11Z",
+      "draft": false,
+      "head_sha": "4b52d0529fcf5d658267b06144b0da153275a562",
+      "number": 14720,
+      "title": "Donor: fail closed unauthenticated Muse negative election outcomes",
+      "updated_at": "2026-09-15T08:01:41Z"
+    },
+    {
+      "author": "woahwhattheheck",
       "base": "main",
       "branch": "zsol17/sophelio-source-red-recovery-20260915",
       "created_at": "2026-09-15T07:48:19Z",
       "draft": false,
-      "head_sha": "4f9ef59d3d48f0c2a917d6f3d318801956a4aee1",
+      "head_sha": "d21e068298412497d04c86225747d640af59b5e6",
       "number": 14715,
       "title": "Recover Sophelio full-fold authority and bounded training",
-      "updated_at": "2026-09-15T07:50:17Z"
+      "updated_at": "2026-09-15T07:56:56Z"
     },
     {
       "author": "woahwhattheheck",
@@ -131,50 +175,6 @@
       "number": 14701,
       "title": "feat(uiowa): add RFQ 18649 prime acceptance exhibit",
       "updated_at": "2026-09-15T07:42:08Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zsol15k/sun-a308734-p18-frontier-14694",
-      "created_at": "2026-09-15T07:35:11Z",
-      "draft": false,
-      "head_sha": "d8a38da9c1042c157ccd49729809ae923915f66c",
-      "number": 14700,
-      "title": "Sun A308734: pin P18 frontier and exact reduction verifier",
-      "updated_at": "2026-09-15T07:50:42Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "ziq-k4r9/muse-election-v2-consolidation-14503",
-      "branch": "zzq-n4p8/muse-v2-current-auth-integration-14503",
-      "created_at": "2026-09-15T06:58:44Z",
-      "draft": false,
-      "head_sha": "5804490ae2a883bc492f7fe975921b62fdc25216",
-      "number": 14684,
-      "title": "Compose Muse v2 current-authority boundary",
-      "updated_at": "2026-09-15T07:47:48Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-helix/execution-authority-prbase-recovery-20260915",
-      "created_at": "2026-09-15T06:45:42Z",
-      "draft": false,
-      "head_sha": "3c801971265381a084d19eb064839ff74747015e",
-      "number": 14680,
-      "title": "coordination: bind execution authority to exact PR/base composition",
-      "updated_at": "2026-09-15T07:34:40Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zsh-q6m4/learn2design-public-evidence-20260915",
-      "created_at": "2026-09-15T06:33:59Z",
-      "draft": false,
-      "head_sha": "36be284452141d26cdff4b74efb8f185b27c4b32",
-      "number": 14672,
-      "title": "Learn2Design: source-pinned matched public evidence rail",
-      "updated_at": "2026-09-15T07:36:13Z"
     }
   ],
   "open_heads": {
@@ -231,12 +231,49 @@
     "14705": "6e8761343b10ec3518fd1a6a002594ac6076d38a",
     "14709": "87fde1165ef3002599a0f325cf27b0368be3fbe3",
     "14713": "532586ac907e372b31a9d823c020ae37dd232fce",
-    "14715": "4f9ef59d3d48f0c2a917d6f3d318801956a4aee1"
+    "14715": "d21e068298412497d04c86225747d640af59b5e6",
+    "14720": "4b52d0529fcf5d658267b06144b0da153275a562",
+    "14722": "8f8ab1770a2e0aad4908e4e2f67820442edb6c3a",
+    "14724": "b97d2acc3f8839fd41e70631f6f782a6dab1e67b",
+    "14728": "33e117064c336cefc947c52b38dee311e8ca0818"
   },
-  "pulls_listed": 54,
+  "pulls_listed": 58,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 23.7,
+  "queue_depth_per_runner": 25.8,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "recovery/astra-sedge-battery-truncation-20260914",
+      "closed_at": "2026-09-15T08:03:07Z",
+      "head_sha": "8d4ddbe6c6091e95b6e9aebe707168d05ecceb68",
+      "merged_at": null,
+      "number": 14726,
+      "state": "CLOSED",
+      "title": "fix: reject truncated battery result records"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z-harbor/localized-media-read-snapshot-20260915",
+      "closed_at": "2026-09-15T07:59:45Z",
+      "head_sha": "a5945975e954513f94ce0e8785d4ca019e6c271a",
+      "merged_at": "2026-09-15T07:59:45Z",
+      "number": 14718,
+      "state": "MERGED",
+      "title": "Fix localized media release snapshots across readiness, audit and packages"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "swarm/zvlk-r5q7-a308734-proof-support",
+      "closed_at": "2026-09-15T07:58:09Z",
+      "head_sha": "9387efb23d6613f0bc0ced75b0219c784371f7b7",
+      "merged_at": "2026-09-15T07:58:09Z",
+      "number": 14719,
+      "state": "MERGED",
+      "title": "research: add A308734 residue-cover proof instrument"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -368,43 +405,10 @@
       "number": 14470,
       "state": "MERGED",
       "title": "donor: remove mutable reply-revenue dispatch authority"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "zklr-h5m8/outreach-claim-fence-20260913",
-      "branch": "main",
-      "closed_at": "2026-09-15T07:26:32Z",
-      "head_sha": "47f978c906e8aca47b147fb66f11c525ca38f2e1",
-      "merged_at": null,
-      "number": 14392,
-      "state": "CLOSED",
-      "title": "Sync current main into outreach claim-fence owner branch"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-sol/localized-media-release-ops-14685",
-      "closed_at": "2026-09-15T07:24:10Z",
-      "head_sha": "47c7695de8310865b05332f0ebfc915de560ee12",
-      "merged_at": "2026-09-15T07:24:10Z",
-      "number": 14688,
-      "state": "MERGED",
-      "title": "Add localized media release & variant operations desk"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zrs-v8m2/titan-v4-evaluator-child-mode-compose",
-      "closed_at": "2026-09-15T07:23:25Z",
-      "head_sha": "4637546d2c9b4c3e06b74343184c30c9b3a04878",
-      "merged_at": "2026-09-15T07:23:25Z",
-      "number": 14686,
-      "state": "MERGED",
-      "title": "TITAN V4: compose evaluator child optimization-mode inheritance"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-15T07:53:02Z",
+  "unchanged_since": "2026-09-15T08:04:09Z",
   "undatable_pulls": []
 }
