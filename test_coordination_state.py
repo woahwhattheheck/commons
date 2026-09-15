@@ -8,6 +8,7 @@ against throwaway repositories, and GitHub replies come from a fake transport.
 import datetime as dt
 import json
 import os
+import glob
 import shutil
 import subprocess
 import sys
@@ -509,6 +510,7 @@ class BuildOffline(TempGit):
         self.assertEqual(sorted(names), sorted(["README.md", cs.HEAD_FILE, cs.STATE_FILE,
                                                 cs.LANES_FILE, cs.PATHS_FILE]))
         self.assertIn(":refs/heads/%s" % cs.STATE_BRANCH, result["push_line"])
+        self.assertIn("push --no-thin ", result["push_line"])
 
     def test_split_publish_is_a_chain_adding_one_file_per_commit(self):
         remote = tempfile.mkdtemp(prefix="coordination-remote-")
@@ -525,12 +527,104 @@ class BuildOffline(TempGit):
         for older, newer in zip(chain, chain[1:]):
             self.assertEqual(sh(self.root, "rev-parse", newer + "^"), older)
         self.assertEqual(len(result["push_lines"]), 10)
+        self.assertTrue(any("push --no-thin " in line for line in result["push_lines"]))
 
     def test_rows_are_one_per_line_and_valid_json(self):
         doc = {"schema": "s", "prs": [{"number": 1}, {"number": 2}], "counts": {"a": 1}}
         text = cs._dump_rows(doc)
         self.assertEqual(json.loads(text), doc)
         self.assertIn('\n  {"number":1},\n  {"number":2}\n', text)
+
+
+class RecordingGit(cs.Git):
+    def __init__(self, root):
+        super().__init__(root)
+        self.calls = []
+
+    def run(self, *args, **kw):
+        self.calls.append(args)
+        return super().run(*args, **kw)
+
+
+def _unpack_and_drop_blobs(root, commit):
+    packdir = os.path.join(root, ".git", "objects", "pack")
+    for pack in glob.glob(os.path.join(packdir, "*.pack")):
+        with open(pack, "rb") as fh:
+            subprocess.run(["git", "-C", root, "unpack-objects", "-q"], input=fh.read(), check=True)
+        os.remove(pack)
+        for ext in (".idx", ".promisor"):
+            extra = pack[:-5] + ext
+            if os.path.exists(extra):
+                os.remove(extra)
+    listing = subprocess.check_output(["git", "-C", root, "ls-tree", "-r", commit], text=True)
+    dropped = []
+    for line in listing.splitlines():
+        parts = line.replace("\t", " ").split()
+        if len(parts) < 4 or parts[1] != "blob":
+            continue
+        sha = parts[2]
+        path = os.path.join(root, ".git", "objects", sha[:2], sha[2:])
+        if os.path.exists(path):
+            os.remove(path)
+            dropped.append(sha)
+    return dropped
+
+
+class PublishFromBloblessParent(unittest.TestCase):
+    def setUp(self):
+        self.tmp = tempfile.mkdtemp(prefix="coordination-promisor-")
+        self.addCleanup(shutil.rmtree, self.tmp, ignore_errors=True)
+        self.remote = os.path.join(self.tmp, "remote.git")
+        subprocess.run(["git", "init", "-q", "--bare", self.remote], check=True)
+        self.work = os.path.join(self.tmp, "work")
+        subprocess.run(["git", "init", "-q", "-b", "main", self.work], check=True)
+        sh(self.work, "config", "core.autocrlf", "false")
+        write(self.work, "coordination-head.json", '{"schema":"h","n":1}\n')
+        write(self.work, "coordination.json", '{"schema":"s","n":1}\n')
+        write(self.work, "README.md", "state\n")
+        self.parent = commit_all(self.work, "parent snapshot")
+        self.head_blob = sh(self.work, "rev-parse", "HEAD:coordination-head.json")
+        sh(self.work, "remote", "add", "origin", self.remote)
+        sh(self.work, "push", "-q", "origin", "HEAD:refs/heads/%s" % cs.STATE_BRANCH)
+        self.clone = os.path.join(self.tmp, "clone")
+        subprocess.run(["git", "init", "-q", self.clone], check=True)
+        sh(self.clone, "remote", "add", "origin", self.remote)
+        sh(self.clone, "fetch", "--no-tags", "origin", self.parent)
+        self.git = RecordingGit(self.clone)
+
+    def test_materialize_restores_dropped_parent_head_blob(self):
+        dropped = _unpack_and_drop_blobs(self.clone, self.parent)
+        self.assertIn(self.head_blob, dropped)
+        missing = self.git.run("cat-file", "-e", self.head_blob, check=False)
+        self.assertNotEqual(missing.returncode, 0)
+        self.git.materialize_tree_blobs(self.parent, "origin")
+        present = self.git.run("cat-file", "-e", self.head_blob, check=False)
+        self.assertEqual(present.returncode, 0)
+        fetches = [c for c in self.git.calls if c and c[0] == "fetch"]
+        self.assertTrue(any("--no-filter" in c and "--refetch" in c and "--depth=1" in c
+                            for c in fetches))
+
+    def test_publish_push_materializes_parent_and_uses_no_thin(self):
+        payload = {"schema": cs.SCHEMA, "observed_at": "2026-09-11T11:00:00Z",
+                   "main": {"sha": "abc"}, "queue": {}, "counts": {"open_prs": 0},
+                   "lanes": [], "degraded": []}
+        result = cs.publish(self.git, payload, "o/r", push=True)
+        self.assertTrue(result["pushed"], result.get("stderr"))
+        self.assertEqual(result["parent"], self.parent)
+        fetches = [c for c in self.git.calls if c and c[0] == "fetch"]
+        self.assertTrue(any("--no-filter" in c and "--refetch" in c for c in fetches))
+        pushes = [c for c in self.git.calls if c and c[0] == "push"]
+        self.assertTrue(pushes, "publish must push")
+        self.assertTrue(all(c[1] == "--no-thin" for c in pushes))
+        self.assertTrue(any("--no-filter" in c for c in fetches))
+
+    def test_default_fetch_stays_blobless(self):
+        git = RecordingGit(self.clone)
+        git.fetch(["not-a-real-sha"])
+        fetches = [c for c in git.calls if c and c[0] == "fetch"]
+        self.assertTrue(fetches)
+        self.assertTrue(all("--filter=blob:none" in c for c in fetches))
+        self.assertFalse(any("--no-filter" in c for c in fetches))
 
 
 if __name__ == "__main__":

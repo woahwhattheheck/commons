@@ -380,15 +380,20 @@ class Git:
     def __init__(self, root):
         self.root = root
 
-    def run(self, *args, env=None, check=True, input_text=None):
+    def run(self, *args, env=None, check=True, input_text=None, lazy_fetch=False):
         merged = dict(os.environ)
         # In a partial clone, touching a missing object makes git fetch it on
         # the spot, one object and its whole tree at a time. Only the batched
-        # `fetch` below may go to the network; everything else reads locally.
-        if args and args[0] != "fetch":
+        # `fetch` below (and an explicit lazy_fetch for one blob) may go to
+        # the network; everything else reads locally.
+        if lazy_fetch:
+            merged.pop("GIT_NO_LAZY_FETCH", None)
+        elif args and args[0] != "fetch":
             merged["GIT_NO_LAZY_FETCH"] = "1"
         if env:
             merged.update(env)
+            if lazy_fetch:
+                merged.pop("GIT_NO_LAZY_FETCH", None)
         data = input_text.encode("utf-8", "surrogateescape") if input_text is not None else None
         raw = subprocess.run(["git", "-C", self.root] + list(args), capture_output=True,
                              env=merged, input=data)
@@ -417,6 +422,36 @@ class Git:
                     if one.returncode != 0:
                         failed.append(sha)
         return failed
+
+    def materialize_tree_blobs(self, commit, remote="origin"):
+        """Ensure blobs of `commit`'s tree are present locally.
+
+        The coordination-state workflow checks out main with blob:none and
+        fetches the state/coordination parent the same way. pack-objects then
+        reads the previous snapshot's blobs while `git push` holds GitHub's
+        send-pack sideband. That lazy fetch fails with
+        "could not fetch <blob> from promisor remote" and the remote hangs
+        up. Hosted evidence: blob e3ee4c7252d2f6f8c2c9d75ede5e0d2f1ba7187d
+        is coordination-head.json on parent 0b7cd9cf.
+        """
+        if not commit or commit == UNKNOWN:
+            return
+        # One commit, with blobs, on a fetch connection (not during push).
+        self.run("fetch", "--refetch", "--no-filter", "--depth=1", "--no-tags",
+                 remote, commit, check=False)
+        listing = self.run("ls-tree", "-r", "-z", commit, check=False)
+        if listing.returncode != 0 or not listing.stdout:
+            return
+        for entry in listing.stdout.split("\0"):
+            if not entry:
+                continue
+            meta = entry.split("\t", 1)[0].split()
+            if len(meta) < 3 or meta[1] != "blob":
+                continue
+            blob = meta[2]
+            if self.run("cat-file", "-e", blob, check=False).returncode == 0:
+                continue
+            self.run("cat-file", "blob", blob, check=False, lazy_fetch=True)
 
     def merge_base(self, a, b):
         done = self.run("merge-base", a, b, check=False)
@@ -1215,21 +1250,24 @@ def publish(git, payload, repo, push=True, remote="origin", branch=STATE_BRANCH,
                       % (git.root, remote, branch, remote, branch))
         lines = []
         for sha in chain:
-            lines.append("git -C %s push %s %s:refs/heads/%s" % (git.root, remote, sha, branch))
+            lines.append("git -C %s push --no-thin %s %s:refs/heads/%s" % (git.root, remote, sha, branch))
             lines.append(fetch_line)
         return {"commit": chain[-1] if chain else None, "parent": parent, "pushed": False,
                 "chain": chain, "push_lines": lines}
     commit = state_commit(git, files, branch, message, parent)
-    line = "git -C %s push %s %s:refs/heads/%s" % (git.root, remote, commit, branch)
+    line = "git -C %s push --no-thin %s %s:refs/heads/%s" % (git.root, remote, commit, branch)
     if not push:
         return {"commit": commit, "parent": parent, "pushed": False, "push_line": line}
-    done = git.run("push", remote, "%s:refs/heads/%s" % (commit, branch), check=False)
+    if parent:
+        git.materialize_tree_blobs(parent, remote)
+    done = git.run("push", "--no-thin", remote, "%s:refs/heads/%s" % (commit, branch), check=False)
     if done.returncode != 0 and ("non-fast-forward" in done.stderr or "fetch first" in done.stderr):
         parent = _remote_tip(git, branch, remote)
         if parent:
             git.fetch([parent], remote)
+            git.materialize_tree_blobs(parent, remote)
         commit = state_commit(git, files, branch, message, parent)
-        done = git.run("push", remote, "%s:refs/heads/%s" % (commit, branch), check=False)
+        done = git.run("push", "--no-thin", remote, "%s:refs/heads/%s" % (commit, branch), check=False)
     return {"commit": commit, "parent": parent, "pushed": done.returncode == 0,
             "stderr": done.stderr.strip()[-300:]}
 
@@ -1345,8 +1383,10 @@ def holding_write(git, key, holder, action, ttl_s=1800, note="", now=None,
         commit = _holdings_commit(git, tip, holdings, message, stamp_moment)
         if not push:
             return {"ok": True, "key": key, "commit": commit, "pushed": False,
-                    "push_line": "git -C %s push %s %s:refs/heads/%s" % (git.root, remote, commit, branch)}
-        done = git.run("push", remote, "%s:refs/heads/%s" % (commit, branch), check=False)
+                    "push_line": "git -C %s push --no-thin %s %s:refs/heads/%s" % (git.root, remote, commit, branch)}
+        if tip:
+            git.materialize_tree_blobs(tip, remote)
+        done = git.run("push", "--no-thin", remote, "%s:refs/heads/%s" % (commit, branch), check=False)
         if done.returncode == 0:
             return {"ok": True, "key": key, "commit": commit, "pushed": True, "record": record}
         if "non-fast-forward" not in done.stderr and "fetch first" not in done.stderr:
