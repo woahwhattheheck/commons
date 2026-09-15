@@ -1,6 +1,7 @@
 {
   "operation_id": "TRANSFORM-HEALTH-AGENTIC-ASSESSMENT-TOOL-2026-ZTLK7M4",
   "owner_seat": "Z-TitaniumLedger-0121-K7M4",
+  "repair_assist": "Z-SOL/15 / GPT-5.6 Sol",
   "buyer": "Transform Health",
   "opportunity": "Consultant/Firm to Integrate an Agentic Feature into the Health Data Governance Legislative and Regulatory Assessment Tool",
   "primary_source_url": "https://transformhealthcoalition.org/opportunity/terms-of-reference-consultant-firm-to-integrate-an-agentic-feature-into-the-health-data-governance-legislative-and-regulatory-assessment-tool/",
@@ -20,12 +21,25 @@
     "brief_proposal_or_approach": true,
     "work_samples_min": 2,
     "work_samples_max": 3,
-    "quote_with_breakdown": true
+    "quote_with_breakdown": true,
+    "english_french_spanish_inputs_and_outputs": true
+  },
+  "evidence_authority": {
+    "native_text_positive_requires_source_bound_span_verification": true,
+    "ocr_output_self_authenticates_source_fidelity": false,
+    "ocr_candidate_state": "OCR_DERIVED_CANDIDATE",
+    "ocr_promotion_requires_exact_source_image_binding": true,
+    "ocr_promotion_requires_image_grounded_or_authorized_human_visual_confirmation": true,
+    "unverified_ocr_may_feed_positive_step2": false,
+    "unverified_ocr_may_feed_step3": false
   },
   "proposed_commercials": {
     "pricing_model": "FIXED_FEE",
-    "professional_fee_usd": 15000,
-    "third_party_operating_costs_included_without_written_approval": false
+    "professional_implementation_fee_usd": 15000,
+    "professional_fee_scope": "TOTAL_FOR_STATED_CONSULTANCY_DELIVERABLES",
+    "third_party_operating_services": "BUYER_PROCURED_OR_SEPARATELY_WRITTEN_APPROVED_ONLY",
+    "third_party_cost_cap_or_change_order_required": true,
+    "uncapped_extra_operating_cost_committed": false
   },
   "candidate_samples": [
     "revenue/agentic_genai_evaluation_gate",
@@ -33,7 +47,7 @@
     "revenue/snoco_ai_governance_packet_gate"
   ],
   "state": {
-    "pursuit": "PACKET_IN_PREPARATION_NO_OUTBOUND",
+    "pursuit": "PACKET_REPAIRED_PENDING_REVIEW_NO_OUTBOUND",
     "outbound_authorized": false,
     "muse_arbitration_selected": false,
     "application_submitted": false,
