@@ -2,23 +2,27 @@
 """Sealed-generation authority wrapper for Mapping Equity aggregation.
 
 The exact runner merged by #14579 is preserved byte-for-byte in
-`_aggregate_unsealed.py`. This successor hardens three authority primitives while
+`_aggregate_unsealed.py`. This successor hardens four authority primitives while
 leaving the landed scorer/policy implementation frozen:
 
 * remote source bytes are retained in a kernel-sealed memfd so the public
   `/proc/self/fd/<n>` read path cannot be reopened and mutated between preflight
   and scored aggregation;
 * response bytes become source authority only when the final resolved URL is
-  exactly the canonical registry URL that was requested; and
+  exactly the canonical registry URL that was requested;
 * the production receipt-minting entrypoint captures code-owned execution
-  dependencies and exposes no dependency-injection parameters.
+  dependencies and exposes no dependency-injection parameters; and
+* the production CLI captures that authoritative entrypoint instead of
+  late-resolving the mutable predecessor-module `execute_region` global.
 
 Primary implementation/source credit remains ZSA-D6P2. ZFS-R7 supplied
 alternate-carrier review evidence; ZHD-K8P3 recovered/finalized M1 and the
 first generation/policy fix; ZRH-H7N4 owns the sealed-generation fix-forward.
 Keystone / GPT-5.6 Sol identified the redirect-provenance defect; ZCE-J5V8 /
 GPT-5.6 Sol owns the exact-identity fix-forward. ZPB-X4K8 identified the
-production dependency-injection receipt bypass; Z-Argent closes it here.
+production dependency-injection receipt bypass; Z-Argent closed the direct
+entrypoint seam in #14619. ZYP-V5Q9 identified and closes the post-merge CLI
+dispatch rebinding seam in #14623.
 """
 from __future__ import annotations
 
@@ -333,13 +337,68 @@ execute_region = _make_authoritative_execute_region(
 del _make_authoritative_execute_region
 
 
+def _make_authoritative_main(
+    parser_factory,
+    region_choices,
+    plan_builder,
+    aggregate_query_builder,
+    executor,
+    path_type,
+    json_dumps,
+    error_types,
+):
+    """Bind CLI run dispatch to the captured authoritative executor."""
+
+    def main(argv=None) -> int:
+        parser = parser_factory(description=__doc__)
+        sub = parser.add_subparsers(dest="command", required=True)
+        plan_cmd = sub.add_parser("plan", help="emit deterministic no-download plan + preflight SQL")
+        plan_cmd.add_argument("--region", required=True, choices=region_choices)
+        plan_cmd.add_argument("--sql", action="store_true", help="include aggregate SQL")
+        run_cmd = sub.add_parser("run", help="materialize + execute one public region with DuckDB 1.5.4")
+        run_cmd.add_argument("--region", required=True, choices=region_choices)
+        run_cmd.add_argument("--output", required=True)
+        run_cmd.add_argument("--receipt", required=True)
+        args = parser.parse_args(argv)
+        try:
+            if args.command == "plan":
+                payload = plan_builder(args.region)
+                if args.sql:
+                    payload["sql"] = aggregate_query_builder(args.region)
+                print(json_dumps(payload, sort_keys=True, indent=2))
+            else:
+                result = executor(args.region, path_type(args.output), path_type(args.receipt))
+                print(json_dumps(result, sort_keys=True))
+        except error_types as exc:
+            parser.error(str(exc))
+        return 0
+
+    return main
+
+
+main = _make_authoritative_main(
+    _legacy.argparse.ArgumentParser,
+    tuple(_legacy.REGIONS),
+    _legacy.build_plan,
+    _legacy.aggregate_query,
+    execute_region,
+    Path,
+    json.dumps,
+    (AggregationError, OSError),
+)
+# As with the authoritative executor factory, do not export a second callable
+# constructor that a direct-library caller could reuse with substituted dispatch.
+del _make_authoritative_main
+
+
 # Preserve `_aggregate_unsealed.py` byte-for-byte. Rebind only the live authority
 # surfaces whose defaults would otherwise still point at the frozen predecessor.
 _legacy._stream_response_to_retained_fd = _stream_response_to_retained_fd
 _legacy._materialize_one = _materialize_one
 _legacy._materialize_sources = _materialize_sources
 _legacy.execute_region = execute_region
+_legacy.main = main
 
 
 if __name__ == "__main__":
-    raise SystemExit(_legacy.main())
+    raise SystemExit(main())
