@@ -21,6 +21,30 @@ _POSIX_DIRFD = (
 )
 
 
+class OutputPrimitiveAvailabilityTests(unittest.TestCase):
+    def test_missing_odirectory_fails_closed(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            output = Path(temporary) / "receipt.json"
+            with mock.patch.object(safe_output.os, "O_DIRECTORY", None, create=True):
+                with self.assertRaisesRegex(
+                    safe_output.OutputCustodyError,
+                    "platform lacks O_DIRECTORY",
+                ):
+                    safe_output.atomic_write_bytes(output, b"{}\n")
+            self.assertFalse(output.exists())
+
+    def test_missing_nofollow_fails_closed(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            output = Path(temporary) / "receipt.json"
+            with mock.patch.object(safe_output.os, "O_NOFOLLOW", None, create=True):
+                with self.assertRaisesRegex(
+                    safe_output.OutputCustodyError,
+                    "platform lacks O_NOFOLLOW",
+                ):
+                    safe_output.atomic_write_bytes(output, b"{}\n")
+            self.assertFalse(output.exists())
+
+
 @unittest.skipUnless(_POSIX_DIRFD, "requires POSIX no-follow retained-dirfd output")
 class OutputCustodyTests(unittest.TestCase):
     @staticmethod
