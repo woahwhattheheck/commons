@@ -6,7 +6,6 @@ or deployment authority.
 """
 from __future__ import annotations
 
-import argparse
 import json
 from datetime import datetime, timezone
 from pathlib import Path
@@ -15,9 +14,10 @@ from typing import Any, Iterable, Optional, Union
 from ._model import (
     MAX_AGE_SECONDS_DEFAULT, SCHEMA, UNKNOWN, RecordAssessment, RegistryError,
     _contains_secret_like_data, _parse_time, _require_exact_type,
-    _require_nonempty_string, canonical_json, registry_digest,
+    _require_nonempty_string, registry_digest,
 )
 from ._validation import _critical_unknowns, _unknown, _validate_record_shape
+
 
 def assess_record(
     record: dict[str, Any],
@@ -75,16 +75,48 @@ def assess_record(
         reasons.append("NO_DEPLOYMENT_EVIDENCE")
     if not probe_evidence:
         reasons.append("NO_BLACK_BOX_EVIDENCE")
-    if deployment_at is not None:
-        if any(_parse_time(item["observed_at"], "deployment_evidence.observed_at") < deployment_at for item in deployment_evidence):
-            reasons.append("DEPLOYMENT_EVIDENCE_PREDATES_DEPLOYMENT")
-        if any(_parse_time(item["observed_at"], "probe_evidence.observed_at") < deployment_at for item in probe_evidence):
-            reasons.append("BLACK_BOX_EVIDENCE_PREDATES_DEPLOYMENT")
+
+    current_deployment_evidence = (
+        [item for item in deployment_evidence if item["generation"] == generation]
+        if generation != UNKNOWN else []
+    )
+    current_probe_evidence = (
+        [item for item in probe_evidence if item["generation"] == generation]
+        if generation != UNKNOWN else []
+    )
+
     if generation != UNKNOWN:
-        if deployment_evidence and not any(item["generation"] == generation for item in deployment_evidence):
+        if deployment_evidence and not current_deployment_evidence:
             reasons.append("DEPLOYMENT_EVIDENCE_GENERATION_MISMATCH")
-        if probe_evidence and not any(item["generation"] == generation for item in probe_evidence):
+        if probe_evidence and not current_probe_evidence:
             reasons.append("PROBE_EVIDENCE_GENERATION_MISMATCH")
+
+    if deployment_at is not None:
+        if any(
+            _parse_time(item["observed_at"], "deployment_evidence.observed_at") < deployment_at
+            for item in current_deployment_evidence
+        ):
+            reasons.append("DEPLOYMENT_EVIDENCE_PREDATES_DEPLOYMENT")
+        if any(
+            _parse_time(item["observed_at"], "probe_evidence.observed_at") < deployment_at
+            for item in current_probe_evidence
+        ):
+            reasons.append("BLACK_BOX_EVIDENCE_PREDATES_DEPLOYMENT")
+
+    # Fresh top-level timestamps are not independent claims: they must be backed by
+    # a typed evidence row for this exact deployed generation at the same instant.
+    if evidence_at is not None and generation != UNKNOWN:
+        if not any(
+            _parse_time(item["observed_at"], "deployment_evidence.observed_at") == evidence_at
+            for item in current_deployment_evidence
+        ):
+            reasons.append("EVIDENCE_TIME_UNBOUND")
+    if probe_at is not None and generation != UNKNOWN:
+        if not any(
+            _parse_time(item["observed_at"], "probe_evidence.observed_at") == probe_at
+            for item in current_probe_evidence
+        ):
+            reasons.append("PROBE_TIME_UNBOUND")
 
     if record["probe"]["result"] == "FAIL":
         reasons.append("BLACK_BOX_PROBE_FAILED")
@@ -158,9 +190,7 @@ def verify_registry(
         if record["runtime_id"] in seen_ids:
             raise RegistryError(f"duplicate runtime_id: {record['runtime_id']}")
         seen_ids.add(record["runtime_id"])
-        assessments.append(
-            assess_record(record, now=now, max_age_seconds=max_age_seconds)
-        )
+        assessments.append(assess_record(record, now=now, max_age_seconds=max_age_seconds))
 
     return {
         "schema": SCHEMA,
