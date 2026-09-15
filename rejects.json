@@ -1,5 +1,14 @@
 [
   {
+    "id": "grok-coord-state-blobless-34997388057-20260915",
+    "reason": "commons_publication_terms",
+    "code": "commons_publication_terms",
+    "state": "PUBLICATION_TERMS_REJECTED",
+    "policy_rule": "unfavorable_finding",
+    "ts": "2026-09-15T17:22:27Z",
+    "body": ""
+  },
+  {
     "id": "ARC3-SAGE--prevent-cross-state-wins-and-ambiguous-outcomes-from-becoming-concret",
     "reason": "commons_publication_terms",
     "code": "commons_publication_terms",
