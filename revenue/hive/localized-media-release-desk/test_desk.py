@@ -4,6 +4,7 @@ import sqlite3
 import tempfile
 import unittest
 from pathlib import Path
+from unittest import mock
 
 from desk import (
     HoldError,
@@ -182,6 +183,36 @@ class DeskTest(unittest.TestCase):
         with self.assertRaises(FileExistsError):
             self.desk.export_package("title-1", link)
         self.assertEqual(target.read_text(encoding="utf-8"), "sentinel")
+
+    @unittest.skipUnless(
+        hasattr(os, "symlink") and bool(getattr(os, "O_NOFOLLOW", 0)) and os.open in getattr(os, "supports_dir_fd", ()),
+        "component-wise no-follow traversal unsupported",
+    )
+    def test_export_refuses_intermediate_symlink_component(self):
+        self._ready()
+        real = self.root / "real"
+        nested = real / "nested"
+        nested.mkdir(parents=True)
+        alias = self.root / "alias"
+        try:
+            os.symlink(real, alias, target_is_directory=True)
+        except (OSError, NotImplementedError):
+            self.skipTest("directory symlink unavailable")
+        with self.assertRaises(OSError):
+            self.desk.export_package("title-1", alias / "nested" / "release.zip")
+        self.assertEqual(list(nested.iterdir()), [])
+
+    def test_export_failure_never_path_unlinks_owned_or_foreign_successor(self):
+        if not getattr(os, "O_NOFOLLOW", 0) or os.open not in getattr(os, "supports_dir_fd", ()):
+            self.skipTest("safe export traversal unsupported")
+        self._ready()
+        out = self.root / "release.zip"
+        with mock.patch("os.unlink") as unlink, mock.patch("os.fsync", side_effect=OSError("forced durability failure")):
+            with self.assertRaises(OSError):
+                self.desk.export_package("title-1", out)
+        unlink.assert_not_called()
+        self.assertTrue(out.is_file())
+        self.assertEqual(out.stat().st_size, 0)
 
     def test_package_tamper_is_detected(self):
         self._ready()
