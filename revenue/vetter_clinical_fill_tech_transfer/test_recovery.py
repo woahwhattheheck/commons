@@ -67,6 +67,17 @@ class RecoveryBoundaryTests(unittest.TestCase):
             self._snapshot("RECEIVING_SITE", "SNAP-RECEIVING", row, captured),
         )
 
+    def _candidate_from_decision(self, decision: dict[str, object]) -> dict[str, object]:
+        core = {
+            "schema": engine.CURRENT_CANDIDATE_SCHEMA,
+            "authority_mode": engine.CURRENT_CANDIDATE_MODE,
+            "evaluated_at_utc": decision["as_of"],
+            "decision": decision,
+        }
+        candidate = dict(core)
+        candidate["candidate_receipt_sha256"] = engine.canonical_sha256(core)
+        return candidate
+
     def test_row_after_snapshot_capture_fails_closed_in_historical_lane(self) -> None:
         captured = datetime(2026, 9, 13, 15, 0, tzinfo=timezone.utc)
         source, receiving = self._pair(captured, captured + timedelta(seconds=1))
@@ -91,11 +102,11 @@ class RecoveryBoundaryTests(unittest.TestCase):
                 as_of=engine.format_utc(captured),
             )
 
-    def test_supported_current_verifier_has_report_only(self) -> None:
+    def test_supported_current_verifier_has_candidate_only(self) -> None:
         params = tuple(inspect.signature(engine.verify_report_current).parameters)
-        self.assertEqual(params, ("report",))
+        self.assertEqual(params, ("candidate",))
 
-    def test_current_module_does_not_expose_raw_core_or_authority_factory(self) -> None:
+    def test_current_module_does_not_expose_raw_core_or_builder(self) -> None:
         for name in (
             "_impl",
             "_core",
@@ -117,37 +128,30 @@ class RecoveryBoundaryTests(unittest.TestCase):
             {"max_evidence_age_minutes": 60},
             as_of=engine.format_utc(captured + timedelta(seconds=1)),
         )
-        self.assertEqual(
-            envelope["schema"], historical.HISTORICAL_REPORT_SCHEMA
-        )
-        self.assertEqual(
-            envelope["authority_mode"], "HISTORICAL_INTEGRITY_ONLY"
-        )
-        self.assertNotIn("state", envelope)
-        self.assertNotIn("current_receipt_sha256", envelope)
+        self.assertEqual(envelope["schema"], historical.HISTORICAL_REPORT_SCHEMA)
+        self.assertEqual(envelope["authority_mode"], "HISTORICAL_INTEGRITY_ONLY")
+        self.assertNotIn("decision_state", envelope)
+        self.assertNotIn("candidate_receipt_sha256", envelope)
         result = historical.verify_report(envelope)
-        self.assertEqual(
-            result["schema"], historical.HISTORICAL_VERIFY_SCHEMA
-        )
-        self.assertEqual(
-            result["authority_mode"], "HISTORICAL_INTEGRITY_ONLY"
-        )
-        self.assertNotIn("state", result)
+        self.assertEqual(result["schema"], historical.HISTORICAL_VERIFY_SCHEMA)
+        self.assertEqual(result["authority_mode"], "HISTORICAL_INTEGRITY_ONLY")
+        self.assertNotIn("decision_state", result)
         self.assertIn("historical_decision_state", result)
 
-    def test_current_compiler_emits_current_envelope_only_from_process_clock(self) -> None:
+    def test_current_compiler_emits_candidate_not_current_authority(self) -> None:
         captured = datetime.now(timezone.utc).replace(microsecond=0) - timedelta(seconds=2)
         source, receiving = self._pair(captured)
-        report = engine.compile_transfer(
+        candidate = engine.compile_transfer(
             source,
             receiving,
             {"max_evidence_age_minutes": 60},
         )
-        self.assertEqual(report["schema"], engine.CURRENT_REPORT_SCHEMA)
-        self.assertEqual(report["authority_mode"], "CURRENT_OWNER_REVIEW")
-        self.assertEqual(report["evaluated_at_utc"], report["decision"]["as_of"])
-        self.assertIn("current_receipt_sha256", report)
-        self.assertNotIn("historical_receipt_sha256", report)
+        self.assertEqual(candidate["schema"], engine.CURRENT_CANDIDATE_SCHEMA)
+        self.assertEqual(candidate["authority_mode"], engine.CURRENT_CANDIDATE_MODE)
+        self.assertNotEqual(candidate["authority_mode"], engine.CURRENT_AUTHORITY_MODE)
+        self.assertEqual(candidate["evaluated_at_utc"], candidate["decision"]["as_of"])
+        self.assertIn("candidate_receipt_sha256", candidate)
+        self.assertNotIn("verification_receipt_sha256", candidate)
 
     def test_current_verifier_rejects_historical_envelope(self) -> None:
         captured = datetime(2026, 9, 13, 15, 0, tzinfo=timezone.utc)
@@ -158,45 +162,101 @@ class RecoveryBoundaryTests(unittest.TestCase):
             {"max_evidence_age_minutes": 60},
             as_of=engine.format_utc(captured + timedelta(seconds=1)),
         )
-        with self.assertRaisesRegex(engine.TransferError, "current report key set"):
+        with self.assertRaisesRegex(engine.TransferError, "current candidate key set"):
             engine.verify_report_current(envelope)
 
-    def test_recent_current_report_verifies(self) -> None:
+    def test_recent_candidate_verifies_to_current_authority(self) -> None:
         captured = datetime.now(timezone.utc).replace(microsecond=0) - timedelta(seconds=2)
         source, receiving = self._pair(captured)
-        report = engine.compile_transfer(
+        candidate = engine.compile_transfer(
             source,
             receiving,
             {"max_evidence_age_minutes": 60},
         )
-        result = engine.verify_report_current(report)
+        result = engine.verify_report_current(candidate)
         self.assertTrue(result["verified"])
-        self.assertEqual(result["authority_mode"], "CURRENT_OWNER_REVIEW")
-        self.assertEqual(
-            result["decision_state"], "TRANSFER_READY_FOR_OWNER_REVIEW"
+        self.assertEqual(result["schema"], engine.CURRENT_VERIFY_SCHEMA)
+        self.assertEqual(result["authority_mode"], engine.CURRENT_AUTHORITY_MODE)
+        self.assertEqual(result["decision_state"], "TRANSFER_READY_FOR_OWNER_REVIEW")
+        self.assertIn("verification_receipt_sha256", result)
+
+    def test_render_is_fresh_current_authority_not_candidate_replay(self) -> None:
+        captured = datetime.now(timezone.utc).replace(microsecond=0) - timedelta(seconds=2)
+        source, receiving = self._pair(captured)
+        candidate = engine.compile_transfer(
+            source,
+            receiving,
+            {"max_evidence_age_minutes": 60},
         )
+        rendered = engine.render_markdown(candidate)
+        self.assertIn("Current Verified Owner-Review Projection", rendered)
+        self.assertIn(engine.CURRENT_AUTHORITY_MODE, rendered)
+        self.assertNotIn(engine.CURRENT_CANDIDATE_MODE, rendered)
+
+    def test_closure_introspection_recovers_no_current_authority_sealer(self) -> None:
+        cells = dict(
+            zip(
+                engine.compile_transfer.__code__.co_freevars,
+                (cell.cell_contents for cell in engine.compile_transfer.__closure__ or ()),
+            )
+        )
+        self.assertNotIn("seal", cells)
+        self.assertNotIn("seal_current", cells)
+        self.assertIn("raw_compile", cells)  # attack precondition remains visible
+
+    def test_recovered_explicit_time_classifier_cannot_render_current_authority(self) -> None:
+        # Reproduce the exact reviewer attack: recover raw_compile from the
+        # exported function closure, backdate a READY decision, and construct a
+        # perfectly self-consistent candidate with a valid receipt. The public
+        # current renderer must still re-evaluate at real process UTC and fail.
+        cells = dict(
+            zip(
+                engine.compile_transfer.__code__.co_freevars,
+                (cell.cell_contents for cell in engine.compile_transfer.__closure__ or ()),
+            )
+        )
+        raw_compile = cells["raw_compile"]
+        captured = datetime.now(timezone.utc).replace(microsecond=0) - timedelta(minutes=10)
+        source, receiving = self._pair(captured)
+        historical_time = engine.format_utc(captured + timedelta(seconds=30))
+        decision = raw_compile(
+            source,
+            receiving,
+            {"max_evidence_age_minutes": 1},
+            as_of=historical_time,
+        )
+        self.assertEqual(decision["summary"]["state"], "TRANSFER_READY_FOR_OWNER_REVIEW")
+        forged_candidate = self._candidate_from_decision(decision)
+        self.assertEqual(
+            forged_candidate["authority_mode"], engine.CURRENT_CANDIDATE_MODE
+        )
+        with self.assertRaisesRegex(engine.TransferError, "no longer current"):
+            engine.verify_report_current(forged_candidate)
+        with self.assertRaisesRegex(engine.TransferError, "no longer current"):
+            engine.render_markdown(forged_candidate)
 
     def test_current_verifier_resamples_process_time_and_expires_ready(self) -> None:
-        # 116 seconds old is still inside the inclusive 1-minute bucket because
-        # the retained classifier floors age to whole minutes.  Five seconds of
-        # real process time moves it past the >1-minute stale threshold without
-        # any injectable clock or caller-selected as_of.
+        # Retained age logic floors to whole minutes. 116 seconds old is one
+        # minute at compile; five seconds of real process time crosses >1.
         now = datetime.now(timezone.utc).replace(microsecond=0)
         captured = now - timedelta(seconds=2)
         updated = now - timedelta(seconds=116)
         source, receiving = self._pair(captured, updated)
-        report = engine.compile_transfer(
+        candidate = engine.compile_transfer(
             source,
             receiving,
             {"max_evidence_age_minutes": 1},
         )
         self.assertEqual(
-            report["decision"]["summary"]["state"],
+            candidate["decision"]["summary"]["state"],
             "TRANSFER_READY_FOR_OWNER_REVIEW",
         )
+        self.assertEqual(candidate["authority_mode"], engine.CURRENT_CANDIDATE_MODE)
         time.sleep(5)
         with self.assertRaisesRegex(engine.TransferError, "no longer current"):
-            engine.verify_report_current(report)
+            engine.verify_report_current(candidate)
+        with self.assertRaisesRegex(engine.TransferError, "no longer current"):
+            engine.render_markdown(candidate)
 
     @unittest.skipUnless(hasattr(os, "O_NOFOLLOW"), "platform lacks O_NOFOLLOW")
     def test_final_input_symlink_is_rejected(self) -> None:

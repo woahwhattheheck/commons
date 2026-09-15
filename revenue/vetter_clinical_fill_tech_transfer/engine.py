@@ -1,11 +1,17 @@
 from __future__ import annotations
 
-"""Current-authority facade for the Vetter tech-transfer evidence gate.
+"""Current-candidate facade for the Vetter tech-transfer evidence gate.
 
-The deterministic 2026-09-13 classifier is retained as inert source text in
-``_engine_v1.txt``. It is evaluated into a private namespace at import time,
-then only current, process-clock-owned capabilities are exported. Explicit-time
-replay lives in ``historical.py`` under a distinct non-current authority.
+Compilation produces a non-authoritative candidate at process UTC. Only a
+fresh process-time verification can emit ``CURRENT_OWNER_REVIEW`` authority or
+render current Markdown. Deterministic explicit-time replay remains isolated in
+``historical.py`` under a distinct non-current schema/mode.
+
+Python same-process introspection is not treated as a secrecy boundary. The
+mechanical boundary is semantic: even if a caller recovers the retained
+explicit-time classifier from a function closure, it can at most construct a
+candidate-shaped object. Current authority and current Markdown independently
+re-evaluate the candidate at fresh process UTC.
 """
 
 import argparse
@@ -18,16 +24,17 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
-CURRENT_REPORT_SCHEMA = "vetter-clinical-fill-tech-transfer-current/v2"
-CURRENT_VERIFY_SCHEMA = "vetter-clinical-fill-tech-transfer-current-verification/v2"
+CURRENT_CANDIDATE_SCHEMA = "vetter-clinical-fill-tech-transfer-current-candidate/v3"
+CURRENT_VERIFY_SCHEMA = "vetter-clinical-fill-tech-transfer-current-verification/v3"
+CURRENT_CANDIDATE_MODE = "CURRENT_EVIDENCE_CANDIDATE"
 CURRENT_AUTHORITY_MODE = "CURRENT_OWNER_REVIEW"
-CURRENT_REPORT_KEYS = frozenset(
+CURRENT_CANDIDATE_KEYS = frozenset(
     {
         "schema",
         "authority_mode",
         "evaluated_at_utc",
         "decision",
-        "current_receipt_sha256",
+        "candidate_receipt_sha256",
     }
 )
 
@@ -82,9 +89,9 @@ TransferError = _core["TransferError"]
 MAX_JSON_BYTES = int(_core["MAX_JSON_BYTES"])
 _COMPILE_INPUT_KEYS = frozenset(_core["COMPILE_INPUT_KEYS"])
 
-# Safe public utilities are implemented in this module rather than re-exporting
-# retained-core function objects. That prevents ordinary ``fn.__globals__``
-# access from revealing the private explicit-time compiler namespace.
+
+# Safe public utilities are implemented outside the retained-core namespace so
+# ordinary ``fn.__globals__`` access does not reveal the explicit-time compiler.
 def _reject_constant(value: str) -> None:
     raise TransferError(f"non-finite JSON value is forbidden: {value}")
 
@@ -192,54 +199,44 @@ def _build_current_capabilities(
     raw_formatter = core["format_utc"]
     transfer_error = core["TransferError"]
     snapshot_keys = frozenset(core["SNAPSHOT_KEYS"])
-    current_schema = CURRENT_REPORT_SCHEMA
-    current_verify_schema = CURRENT_VERIFY_SCHEMA
-    current_mode = CURRENT_AUTHORITY_MODE
-    current_keys = frozenset(CURRENT_REPORT_KEYS)
+    candidate_schema = CURRENT_CANDIDATE_SCHEMA
+    verify_schema = CURRENT_VERIFY_SCHEMA
+    candidate_mode = CURRENT_CANDIDATE_MODE
+    authority_mode = CURRENT_AUTHORITY_MODE
+    candidate_keys = frozenset(CURRENT_CANDIDATE_KEYS)
 
     def clock() -> str:
         return raw_formatter(datetime_type.now(timezone_value))
 
-    def seal(decision: dict[str, Any]) -> dict[str, Any]:
-        core_value = {
-            "schema": current_schema,
-            "authority_mode": current_mode,
-            "evaluated_at_utc": decision["as_of"],
-            "decision": decision,
-        }
-        sealed = dict(core_value)
-        sealed["current_receipt_sha256"] = raw_canonical(core_value)
-        return sealed
-
-    def validate(report: object) -> dict[str, Any]:
-        if type(report) is not dict or set(report) != set(current_keys):
-            raise transfer_error("current report key set is invalid")
-        if report["schema"] != current_schema:
-            raise transfer_error("current report schema mismatch")
-        if report["authority_mode"] != current_mode:
-            raise transfer_error("current report authority mode mismatch")
-        receipt = report["current_receipt_sha256"]
+    def validate_candidate(candidate: object) -> dict[str, Any]:
+        if type(candidate) is not dict or set(candidate) != set(candidate_keys):
+            raise transfer_error("current candidate key set is invalid")
+        if candidate["schema"] != candidate_schema:
+            raise transfer_error("current candidate schema mismatch")
+        if candidate["authority_mode"] != candidate_mode:
+            raise transfer_error("current candidate authority mode mismatch")
+        receipt = candidate["candidate_receipt_sha256"]
         if type(receipt) is not str or len(receipt) != 64:
-            raise transfer_error("current report receipt is invalid")
+            raise transfer_error("current candidate receipt is invalid")
         without = {
-            key: report[key]
-            for key in report
-            if key != "current_receipt_sha256"
+            key: candidate[key]
+            for key in candidate
+            if key != "candidate_receipt_sha256"
         }
         if raw_canonical(without) != receipt:
-            raise transfer_error("current report receipt mismatch")
-        decision = report["decision"]
+            raise transfer_error("current candidate receipt mismatch")
+        decision = candidate["decision"]
         raw_verify(decision)
-        if report["evaluated_at_utc"] != decision["as_of"]:
-            raise transfer_error("current report evaluated time does not bind decision")
+        if candidate["evaluated_at_utc"] != decision["as_of"]:
+            raise transfer_error("current candidate evaluated time does not bind decision")
         return decision
 
     def plain_snapshot(snapshot: object, name: str) -> dict[str, Any]:
         if type(snapshot) is not dict:
-            raise transfer_error(f"current report {name} must be an object")
+            raise transfer_error(f"current candidate {name} must be an object")
         expected = set(snapshot_keys) | {"snapshot_sha256"}
         if set(snapshot) != expected:
-            raise transfer_error(f"current report {name} key set invalid")
+            raise transfer_error(f"current candidate {name} key set invalid")
         return {key: snapshot[key] for key in snapshot_keys}
 
     def semantic_projection(decision: dict[str, Any]) -> dict[str, Any]:
@@ -249,15 +246,27 @@ def _build_current_capabilities(
             if key not in {"as_of", "receipt_sha256"}
         }
 
-    def compile_current(
+    def compile_candidate(
         source: object,
         receiving: object,
         policy: object,
     ) -> dict[str, Any]:
-        return seal(raw_compile(source, receiving, policy, as_of=clock()))
+        now = clock()
+        decision = raw_compile(source, receiving, policy, as_of=now)
+        # Deliberately NON-AUTHORITATIVE. There is no current-authority sealer
+        # reachable from this function: compilation creates only a candidate.
+        candidate_core = {
+            "schema": candidate_schema,
+            "authority_mode": candidate_mode,
+            "evaluated_at_utc": decision["as_of"],
+            "decision": decision,
+        }
+        candidate = dict(candidate_core)
+        candidate["candidate_receipt_sha256"] = raw_canonical(candidate_core)
+        return candidate
 
-    def verify_current(report: object) -> dict[str, Any]:
-        decision = validate(report)
+    def evaluate_fresh(candidate: object) -> tuple[dict[str, Any], dict[str, Any], str]:
+        decision = validate_candidate(candidate)
         now = clock()
         rebuilt = raw_compile(
             plain_snapshot(decision["source"], "source"),
@@ -267,34 +276,43 @@ def _build_current_capabilities(
         )
         if semantic_projection(rebuilt) != semantic_projection(decision):
             raise transfer_error(
-                "current report is no longer current: decision semantics changed at process UTC"
+                "current candidate is no longer current: decision semantics changed at process UTC"
             )
-        return {
-            "schema": current_verify_schema,
-            "authority_mode": current_mode,
+        return decision, rebuilt, now
+
+    def verify_current(candidate: object) -> dict[str, Any]:
+        _decision, rebuilt, now = evaluate_fresh(candidate)
+        verification_core = {
+            "schema": verify_schema,
+            "authority_mode": authority_mode,
             "verified": True,
-            "current_as_of_utc": now,
+            "verified_at_utc": now,
             "decision_state": rebuilt["summary"]["state"],
-            "report_receipt_sha256": report["current_receipt_sha256"],
-            "decision_receipt_sha256": decision["receipt_sha256"],
+            "candidate_receipt_sha256": candidate["candidate_receipt_sha256"],
             "current_decision_receipt_sha256": rebuilt["receipt_sha256"],
         }
+        verification = dict(verification_core)
+        verification["verification_receipt_sha256"] = raw_canonical(verification_core)
+        return verification
 
-    def render_current(report: object) -> str:
-        decision = validate(report)
-        legacy = raw_render(decision)
+    def render_current(candidate: object) -> str:
+        # Rendering is itself a current-authority operation. It MUST cross the
+        # fresh process-time gate rather than merely replay candidate integrity.
+        _decision, rebuilt, now = evaluate_fresh(candidate)
+        legacy = raw_render(rebuilt)
         prefix = [
-            "# Current Authority Envelope",
+            "# Current Verified Owner-Review Projection",
             "",
-            f"- Schema: `{current_schema}`",
-            f"- Authority mode: `{current_mode}`",
-            f"- Evaluated at process UTC: `{report['evaluated_at_utc']}`",
-            f"- Current envelope receipt: `{report['current_receipt_sha256']}`",
+            f"- Verification schema: `{verify_schema}`",
+            f"- Authority mode: `{authority_mode}`",
+            f"- Verified at process UTC: `{now}`",
+            f"- Candidate receipt: `{candidate['candidate_receipt_sha256']}`",
+            f"- Current decision receipt: `{rebuilt['receipt_sha256']}`",
             "",
         ]
         return "\n".join(prefix) + legacy
 
-    return compile_current, verify_current, render_current
+    return compile_candidate, verify_current, render_current
 
 
 compile_transfer, verify_report_current, render_markdown = _build_current_capabilities(
@@ -303,8 +321,11 @@ compile_transfer, verify_report_current, render_markdown = _build_current_capabi
     timezone_value=timezone.utc,
 )
 
-# The retained explicit-time compiler and the factory used to construct current
-# authority are deliberately not left on the importable current module surface.
+# Raw retained namespace and construction factory are not module API. Reflection
+# can still inspect Python closure cells, so authority does not depend on hiding
+# them: recovered explicit-time classification can only produce historical/raw
+# decisions or candidate-shaped data; fresh verification/rendering owns current
+# authority.
 del _core
 del _build_current_capabilities
 del _load_private_core
@@ -386,17 +407,20 @@ def _build_cli(
         request = loader(reader(args.input))
         if type(request) is not dict or set(request) != set(keys):
             raise transfer_error("compile input key set is invalid")
-        report = current_compile(
+        candidate = current_compile(
             request["source"], request["receiving"], request["policy"]
         )
-        writer_bytes(args.report, canonical_bytes(report))
-        writer_text(args.markdown, current_render(report))
+        # Current Markdown independently verifies at fresh process time before
+        # any bytes are written. If freshness crosses a boundary here, fail.
+        markdown = current_render(candidate)
+        writer_bytes(args.report, canonical_bytes(candidate))
+        writer_text(args.markdown, markdown)
         print(
             json.dumps(
                 {
-                    "authority_mode": report["authority_mode"],
-                    "state": report["decision"]["summary"]["state"],
-                    "current_receipt_sha256": report["current_receipt_sha256"],
+                    "authority_mode": candidate["authority_mode"],
+                    "state": candidate["decision"]["summary"]["state"],
+                    "candidate_receipt_sha256": candidate["candidate_receipt_sha256"],
                 },
                 sort_keys=True,
             )
@@ -404,18 +428,21 @@ def _build_cli(
         return 0
 
     def verify_cli(args: argparse.Namespace) -> int:
-        report = loader(reader(args.report))
-        result = current_verify(report)
+        candidate = loader(reader(args.report))
+        result = current_verify(candidate)
         if args.markdown:
             actual = reader(args.markdown).decode("utf-8")
-            if actual != current_render(report):
-                raise transfer_error("Markdown projection mismatch")
+            expected = current_render(candidate)
+            if actual != expected:
+                raise transfer_error(
+                    "Markdown projection mismatch or stale verification generation"
+                )
         print(json.dumps(result, sort_keys=True))
         return 0
 
     def run(argv: list[str] | None = None) -> int:
         parser = argparse.ArgumentParser(
-            description="Read-only cross-site clinical fill tech-transfer current evidence compiler"
+            description="Read-only cross-site clinical fill tech-transfer current evidence candidate compiler"
         )
         subs = parser.add_subparsers(dest="command", required=True)
         cp = subs.add_parser("compile")
@@ -454,6 +481,10 @@ del _COMPILE_INPUT_KEYS
 
 __all__ = [
     "TransferError",
+    "CURRENT_CANDIDATE_SCHEMA",
+    "CURRENT_VERIFY_SCHEMA",
+    "CURRENT_CANDIDATE_MODE",
+    "CURRENT_AUTHORITY_MODE",
     "compile_transfer",
     "verify_report_current",
     "render_markdown",
