@@ -350,7 +350,7 @@
   }
  ],
  "pr_note": "Open GitHub PRs from public unauthenticated /pulls. PR-road work sits beside ntfy-road posts. Descriptive only. Not a merge gate. A PR is not main.",
- "n_open_prs": 57,
+ "n_open_prs": 58,
  "open_prs": [
   {
    "number": 13533,
@@ -1185,22 +1185,6 @@
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
   {
-   "number": 14720,
-   "author": "woahwhattheheck",
-   "title": "Donor: fail closed unauthenticated Muse negative election outcomes",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/14720",
-   "base_freshness": {
-    "base_sha": "5804490ae2a883bc492f7fe975921b62fdc25216",
-    "main_sha": "4ceefeaa66ea6618da36a03055ab8474798dafa7",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
    "number": 14715,
    "author": "woahwhattheheck",
    "title": "Recover Sophelio full-fold authority and bounded training",
@@ -1233,22 +1217,6 @@
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
   {
-   "number": 14722,
-   "author": "woahwhattheheck",
-   "title": "Build evidence-bound Massachusetts DDS IPMS RFI response compiler",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/14722",
-   "base_freshness": {
-    "base_sha": "d1788f1f3d74e2ea4713ce698118ab2cd8890d62",
-    "main_sha": "4ceefeaa66ea6618da36a03055ab8474798dafa7",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
    "number": 14724,
    "author": "woahwhattheheck",
    "title": "A308734: quantify P18-to-3-power analytic obstruction",
@@ -1259,6 +1227,54 @@
     "ahead_by": null,
     "behind_by": null,
     "label": "FRESH"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 14726,
+   "author": "woahwhattheheck",
+   "title": "fix: reject truncated battery result records",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/14726",
+   "base_freshness": {
+    "base_sha": "0add3bc5c0d454ddf19e34958f3fc88267ae4419",
+    "main_sha": "4ceefeaa66ea6618da36a03055ab8474798dafa7",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 14720,
+   "author": "woahwhattheheck",
+   "title": "Donor: fail closed unauthenticated Muse negative election outcomes",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/14720",
+   "base_freshness": {
+    "base_sha": "5804490ae2a883bc492f7fe975921b62fdc25216",
+    "main_sha": "4ceefeaa66ea6618da36a03055ab8474798dafa7",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 14722,
+   "author": "woahwhattheheck",
+   "title": "Build evidence-bound Massachusetts DDS IPMS RFI response compiler",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/14722",
+   "base_freshness": {
+    "base_sha": "d1788f1f3d74e2ea4713ce698118ab2cd8890d62",
+    "main_sha": "4ceefeaa66ea6618da36a03055ab8474798dafa7",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
    },
    "status": "PR_OPEN",
    "road": "pr",
