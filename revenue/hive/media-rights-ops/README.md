@@ -26,17 +26,20 @@ cat > intent.json <<'JSON'
 JSON
 python rights_ops.py evaluate desk.sqlite3 intent.json
 python rights_ops.py queues desk.sqlite3 --as-of 2026-12-10T00:00:00Z --horizon-days 30
+mkdir -m 700 bundle
 python rights_ops.py export desk.sqlite3 bundle --as-of 2026-12-10T00:00:00Z
 python rights_ops.py serve desk.sqlite3 --host 127.0.0.1 --port 8765
 ```
 
 To record a placement, add a stable `request_id` to the intent and use CLI `place --at ...`. The same request and content replay without duplication; the same request ID with changed content fails closed. CLI `revoke <grant_id> --at ...` is immutable: a revocation can be replayed exactly but not silently rewritten. A recorded placement affected by revocation enters the retraction-review queue; the desk does not remove it from any provider.
 
-Export publication is create-exclusive and retains the existing output-parent generation, the newly created output directory, and every created leaf by filesystem identity. The output parent must already exist as a real directory; the exporter will not recursively create or follow a symlinked parent. Parent observation/open, child creation, leaf creation, rollback, and final success are identity-fenced. Writes are descriptor-relative with no-follow/exclusive creation; a parent replacement, pathname swap, renamed directory, symlink successor, or replaced leaf fails closed rather than redirecting an `EXPORTED` result. Rollback identity-checks each transaction-created leaf and removes only the transaction-created child through the retained parent descriptor, so foreign successors are never deleted by name. Secure publication therefore requires a platform with descriptor-relative `open`/`mkdir`/`stat`/`unlink`/`rmdir`, `O_DIRECTORY`, and `O_NOFOLLOW`; unsupported platforms fail closed instead of silently using a weaker export path.
+Export publication consumes an **already-provisioned empty real directory**. The exporter does not create or remove that directory and does not follow a symlink in its place. It snapshots the directory's filesystem identity before open, opens it with `O_DIRECTORY|O_NOFOLLOW`, proves the descriptor is the same generation with `fstat`, and only then creates export leaves descriptor-relatively with exclusive/no-follow creation. This eliminates the prior `mkdir -> open` successor-adoption window: replacing the directory between observation and open fails the identity check, and replacing or renaming it after open cannot redirect the retained descriptor.
+
+Before success, the desk rechecks the caller-visible directory identity, requires the retained directory to contain exactly the transaction-created filenames, and revalidates every created leaf's filesystem identity. If publication fails, rollback removes only leaf identities created by the transaction through the retained descriptor; it never deletes the directory or any foreign successor/entry by pathname. A foreign entry injected during publication therefore makes the operation fail closed and survives cleanup. Operators should provision a fresh directory with restrictive permissions such as `0700` immediately before export. Secure publication requires a platform with descriptor-relative `open`/`stat`/`unlink`, `O_DIRECTORY`, `O_NOFOLLOW`, and file-descriptor `listdir`; unsupported platforms fail closed instead of silently using a weaker path.
 
 ## Acceptance surface
 
-The hostile suite covers exact-asset authority; parent-grant/child-derivative non-inheritance; HTTP mutation fail-closure with unchanged durable state; allowed placement; wrong channel and territory; future/expired/revoked grants; unlicensed/unknown assets; request replay mutation; HOLD-without-write; immutable revocation; renewal/expiry queues; concurrent duplicate placement -> exactly one durable row; restart behavior; deterministic exports; create-exclusive publication; output-parent generation replacement; export-directory pathname replacement/redirection; failure rollback preserving a foreign successor; duplicate-key, floating-point, non-finite, cyclic/missing-lineage, duplicate authority rows, and naive-time failures.
+The hostile suite covers exact-asset authority; parent-grant/child-derivative non-inheritance; HTTP mutation fail-closure with unchanged durable state; allowed placement; wrong channel and territory; future/expired/revoked grants; unlicensed/unknown assets; request replay mutation; HOLD-without-write; immutable revocation; renewal/expiry queues; concurrent duplicate placement -> exactly one durable row; restart behavior; deterministic exports; pre-provisioned empty-directory enforcement; symlink-output rejection; ordinary-directory substitution between observation/open; post-open pathname replacement/redirection; failure rollback preserving a foreign successor; foreign-entry injection with preservation; duplicate-key, floating-point, non-finite, cyclic/missing-lineage, duplicate authority rows, and naive-time failures.
 
 Run both ordinary and optimized modes:
 
@@ -46,4 +49,4 @@ python -O -m unittest -v test_rights_ops.py
 python -m py_compile rights_model.py rights_store.py rights_export.py rights_http.py rights_ops.py test_rights_ops.py
 ```
 
-Input JSON is bounded to 8 MiB, UTF-8 only, duplicate-key rejecting, floating-point/non-finite rejecting, exact-schema validated, and timestamps must be offset-aware. Export directories are mode `0700`; export files are mode `0600` subject to the process umask.
+Input JSON is bounded to 8 MiB, UTF-8 only, duplicate-key rejecting, floating-point/non-finite rejecting, exact-schema validated, and timestamps must be offset-aware. The caller owns output-directory provisioning and permissions; export files are requested as mode `0600` subject to the process umask.
