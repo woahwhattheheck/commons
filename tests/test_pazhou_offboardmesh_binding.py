@@ -1,12 +1,11 @@
 from __future__ import annotations
 
 from copy import deepcopy
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 import importlib.util
 import json
 from pathlib import Path
 import unittest
-from unittest.mock import patch
 
 ROOT = Path(__file__).resolve().parents[1]
 MODULE_PATH = ROOT / "competitions" / "pazhou_overseas_offboardmesh_2026" / "offboardmesh.py"
@@ -17,11 +16,21 @@ assert spec and spec.loader
 offboardmesh = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(offboardmesh)
 
-FIXTURE_NOW = datetime(2026, 9, 14, 12, 0, 0, tzinfo=timezone.utc)
+
+def _iso(value: datetime) -> str:
+    return value.astimezone(timezone.utc).isoformat(timespec="milliseconds").replace("+00:00", "Z")
 
 
 def candidate():
-    return json.loads(EXAMPLE_PATH.read_text(encoding="utf-8"))
+    value = json.loads(EXAMPLE_PATH.read_text(encoding="utf-8"))
+    now = datetime.now(timezone.utc)
+    requested = now - timedelta(minutes=5)
+    value["requestedAt"] = _iso(requested)
+    value["requestedCloseoutAt"] = _iso(now + timedelta(hours=1))
+    value["modelProposal"]["generatedAt"] = _iso(requested + timedelta(minutes=1))
+    for index, evidence in enumerate(value["evidence"], start=1):
+        evidence["observedAt"] = _iso(requested - timedelta(minutes=index))
+    return value
 
 
 def reseal(packet):
@@ -37,8 +46,7 @@ class OffboardMeshCompilerBindingTests(unittest.TestCase):
         mutate(packet)
         reseal(packet)
         historical = offboardmesh.verify_historical(value, packet)
-        with patch.object(offboardmesh, "_now_utc", return_value=FIXTURE_NOW):
-            current = offboardmesh.verify_current(value, packet)
+        current = offboardmesh.verify_current(value, packet)
         self.assertTrue(historical["packetIntegrityValid"])
         self.assertTrue(current["packetIntegrityValid"])
         self.assertFalse(historical["compilerProjectionMatches"])
@@ -72,8 +80,7 @@ class OffboardMeshCompilerBindingTests(unittest.TestCase):
         value = candidate()
         packet = offboardmesh.compile_packet(value)
         historical = offboardmesh.verify_historical(value, deepcopy(packet))
-        with patch.object(offboardmesh, "_now_utc", return_value=FIXTURE_NOW):
-            current = offboardmesh.verify_current(value, deepcopy(packet))
+        current = offboardmesh.verify_current(value, deepcopy(packet))
         self.assertTrue(historical["compilerProjectionMatches"])
         self.assertTrue(current["compilerProjectionMatches"])
         self.assertTrue(historical["validHistorical"])
