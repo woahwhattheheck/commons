@@ -2,6 +2,7 @@
 
 from .test_support import *  # noqa: F401,F403
 
+
 class ApplicantAndEvidenceTests(unittest.TestCase):
     def test_formal_applicant_must_be_in_consortium(self):
         value = base_valid()
@@ -15,36 +16,14 @@ class ApplicantAndEvidenceTests(unittest.TestCase):
 
     def test_subcontract_candidate_always_requires_owner_review(self):
         value = base_valid()
-        value["applicant"].update(
-            {
-                "applicant_id": "vendor",
-                "organization_label": "Vendor",
-                "country_code": "US",
-                "intended_role": "PAID_TECHNICAL_SUBCONTRACT_CANDIDATE",
-                "legal_entity_verified": True,
-                "pic_verified": True,
-                "paid_role_authority_verified": True,
-                "subcontract_rule_verified": True,
-            }
-        )
+        value["applicant"].update({"applicant_id": "vendor", "organization_label": "Vendor", "country_code": "US", "intended_role": "PAID_TECHNICAL_SUBCONTRACT_CANDIDATE", "legal_entity_verified": True, "pic_verified": True, "paid_role_authority_verified": True, "subcontract_rule_verified": True})
         bundle = compile_valid(value)
         self.assertIn("SUBCONTRACT_CANDIDATE_OWNER_REVIEW_REQUIRED", reason_codes(bundle))
         self.assertEqual(bundle["packet"]["decision"]["status"], "HOLD_APPLICANT_ROLE")
 
     def test_subcontract_candidate_cannot_be_counted_as_formal_partner(self):
         value = base_valid()
-        value["applicant"].update(
-            {
-                "applicant_id": "p2",
-                "organization_label": "p2",
-                "country_code": "ES",
-                "intended_role": "PAID_TECHNICAL_SUBCONTRACT_CANDIDATE",
-                "legal_entity_verified": True,
-                "pic_verified": True,
-                "paid_role_authority_verified": True,
-                "subcontract_rule_verified": True,
-            }
-        )
+        value["applicant"].update({"applicant_id": "p2", "organization_label": "p2", "country_code": "ES", "intended_role": "PAID_TECHNICAL_SUBCONTRACT_CANDIDATE", "legal_entity_verified": True, "pic_verified": True, "paid_role_authority_verified": True, "subcontract_rule_verified": True})
         self.assertIn("SUBCONTRACT_CANDIDATE_COUNTED_AS_PARTNER", reason_codes(compile_valid(value)))
 
     def test_invalid_commit_sha_rejected(self):
@@ -72,8 +51,8 @@ class ApplicantAndEvidenceTests(unittest.TestCase):
     def test_stale_evidence_holds_current_only(self):
         value = base_valid()
         value["technical_evidence"][0]["observed_at"] = "2026-06-01T00:00:00Z"
-        current = compile_at(value, T0, "CURRENT")
-        historical = compile_at(value, T0, "HISTORICAL")
+        current = compile_current_at(value)
+        historical = compile_valid(value)
         self.assertIn("TECHNICAL_EVIDENCE_STALE", reason_codes(current))
         self.assertNotIn("TECHNICAL_EVIDENCE_STALE", reason_codes(historical))
 
@@ -184,7 +163,7 @@ class ParsingAndCliTests(unittest.TestCase):
 
     def test_example_remains_fail_closed(self):
         example = load_json("example_input.json")
-        bundle = compile_at(example, T0, "CURRENT")
+        bundle = compile_current_at(example)
         self.assertEqual(bundle["packet"]["decision"]["status"], "HOLD_DEADLINE_SOURCE_CONFLICT")
         authority = bundle["packet"]["authority"]
         self.assertFalse(authority["external_contact_authorized"])
