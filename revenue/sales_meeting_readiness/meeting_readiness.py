@@ -311,6 +311,7 @@ def _validate_packet(packet: Any, policy: dict[str, Any]) -> dict[str, Any]:
                 "timezone", "duration_minutes", "request_digest", "busy_windows", "busy_digest",
                 "result", "proposed_slot",
             },
+            {"owner_ref"},
             where="packet.availability",
         )
         busy, _ = _validate_intervals(
@@ -324,6 +325,11 @@ def _validate_packet(packet: Any, policy: dict[str, Any]) -> dict[str, Any]:
             "observation_id": _safe_id(availability["observation_id"], where="packet.availability.observation_id"),
             "provider_ref": _safe_id(availability["provider_ref"], where="packet.availability.provider_ref"),
             "captured_at": _utc_text(_parse_utc(availability["captured_at"], where="packet.availability.captured_at")),
+            "owner_ref": (
+                _safe_id(availability["owner_ref"], where="packet.availability.owner_ref")
+                if "owner_ref" in availability
+                else None
+            ),
             "opportunity_id": _safe_id(availability["opportunity_id"], where="packet.availability.opportunity_id"),
             "thread_ref": _safe_id(availability["thread_ref"], where="packet.availability.thread_ref"),
             "timezone": _timezone_name(availability["timezone"], where="packet.availability.timezone"),
@@ -374,6 +380,7 @@ def _slot_evaluation(packet: dict[str, Any], policy: dict[str, Any], as_of: date
     expected_req = request_digest(packet["opportunity_id"], packet["thread_ref"], packet["request"])
     expected_busy = busy_digest(availability["busy_windows"])
     bindings = [
+        (availability["owner_ref"] == packet["owner_ref"], "availability owner binding mismatch"),
         (availability["opportunity_id"] == packet["opportunity_id"], "availability opportunity binding mismatch"),
         (availability["thread_ref"] == packet["thread_ref"], "availability thread binding mismatch"),
         (availability["timezone"] == packet["request"]["timezone"], "availability timezone binding mismatch"),
@@ -393,8 +400,8 @@ def _slot_evaluation(packet: dict[str, Any], policy: dict[str, Any], as_of: date
         return HOLD, ["proposed slot duration does not match request"]
     if (slot_start - as_of).total_seconds() > policy["max_slot_horizon_seconds"]:
         return HOLD, ["proposed slot exceeds policy horizon"]
-    if slot_end <= as_of:
-        return REQUEST_STALE, ["proposed slot has already ended"]
+    if slot_start <= as_of:
+        return REQUEST_STALE, ["proposed slot has already started"]
 
     request_ranges = [
         (_parse_utc(w["start"], where="window.start"), _parse_utc(w["end"], where="window.end"))
