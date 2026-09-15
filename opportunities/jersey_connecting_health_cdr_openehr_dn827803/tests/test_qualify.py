@@ -1,113 +1,127 @@
 from __future__ import annotations
-import copy, hashlib, json, sys, unittest
+
+import copy
+import inspect
+import json
+import sys
+import tempfile
+import unittest
+from datetime import datetime, timezone
 from pathlib import Path
+
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 import qualify
 
-def canonical(obj):
-    return json.dumps(obj, sort_keys=True, separators=(",", ":")).encode() + b"\n"
-
-def load(path):
-    return qualify.load_json_bytes(path.read_bytes(), str(path))
 
 class Tests(unittest.TestCase):
     def setUp(self):
-        self.source = load(ROOT / "sources.json")
-        self.manifest = load(ROOT / "fixtures/public_hold.json")
+        self.source_raw = (ROOT / "sources.json").read_bytes()
+        self.manifest_raw = (ROOT / "fixtures/public_hold.json").read_bytes()
+        self.source = qualify.load_json_bytes(self.source_raw, "source")
+        self.manifest = qualify.load_json_bytes(self.manifest_raw, "manifest")
 
-    def run_case(self, source=None, manifest=None, pack=None):
-        source = copy.deepcopy(source if source is not None else self.source)
-        manifest = copy.deepcopy(manifest if manifest is not None else self.manifest)
-        raw = canonical(source)
-        manifest["source_ledger_sha256"] = hashlib.sha256(raw).hexdigest()
-        return qualify.evaluate(manifest, source, raw, tender_pack_bytes=pack)
+    def run_case(self, source=None, manifest=None, raw=None, pack=None):
+        return qualify.evaluate(
+            copy.deepcopy(self.manifest if manifest is None else manifest),
+            copy.deepcopy(self.source if source is None else source),
+            self.source_raw if raw is None else raw,
+            tender_pack_bytes=pack,
+        )
 
-    def acquired(self, reviewed=True, pack=b"TEST-ONLY synthetic tender pack\n"):
+    def test_public_fixture_remains_truthful_hold(self):
+        result = self.run_case()
+        self.assertEqual("HOLD_TENDER_PACK_REQUIRED", result.state)
+        self.assertEqual(3, result.exit_code)
+        self.assertEqual("HOLD", result.payload["bridge_status"])
+        self.assertEqual(qualify.BINDING_ID, result.payload["binding_id"])
+        self.assertTrue(result.payload["legacy_ready_authority_retired"])
+        self.assertFalse(result.payload["tender_submission_authorized"])
+        self.assertFalse(result.payload["external_submission_authorized"])
+        self.assertTrue(all(value is False for value in result.payload["action_authority"].values()))
+
+    def test_current_time_is_process_owned_not_manifest_time(self):
+        before = datetime.now(timezone.utc).replace(microsecond=0)
+        result = self.run_case()
+        after = datetime.now(timezone.utc).replace(microsecond=0)
+        evaluated = datetime.strptime(result.payload["evaluated_at"], "%Y-%m-%dT%H:%M:%SZ").replace(tzinfo=timezone.utc)
+        self.assertLessEqual(before, evaluated)
+        self.assertLessEqual(evaluated, after)
+        self.assertNotEqual(self.manifest["evaluated_at"], result.payload["evaluated_at"])
+
+    def test_route_switch_cannot_self_authorize(self):
+        manifest = copy.deepcopy(self.manifest)
+        manifest["route"] = "PRIME_CDR"
+        with self.assertRaisesRegex(qualify.QualificationError, "BRIDGE_AUTHORITY_REJECTED:submission_manifest root mismatch"):
+            self.run_case(manifest=manifest)
+
+    def test_partner_false_to_true_cannot_self_authorize(self):
+        manifest = copy.deepcopy(self.manifest)
+        manifest["partner_prime_confirmed"] = True
+        with self.assertRaisesRegex(qualify.QualificationError, "BRIDGE_AUTHORITY_REJECTED:submission_manifest root mismatch"):
+            self.run_case(manifest=manifest)
+
+    def test_caller_time_change_cannot_self_authorize(self):
+        manifest = copy.deepcopy(self.manifest)
+        manifest["evaluated_at"] = "2026-09-01T00:00:00Z"
+        with self.assertRaisesRegex(qualify.QualificationError, "BRIDGE_AUTHORITY_REJECTED:submission_manifest root mismatch"):
+            self.run_case(manifest=manifest)
+
+    def test_source_generation_mutation_rejected(self):
         source = copy.deepcopy(self.source)
-        source["tender_pack"] = {
-            "acquired": True,
-            "reviewed": reviewed,
-            "sha256": hashlib.sha256(pack).hexdigest(),
-            "state": "TENDER_PACK_ACQUIRED_REVIEWED" if reviewed else "TENDER_PACK_ACQUIRED_UNREVIEWED",
+        source["checked_at"] = "2026-09-15T00:00:00+00:00"
+        raw = (json.dumps(source, sort_keys=True, separators=(",", ":")) + "\n").encode()
+        with self.assertRaisesRegex(qualify.QualificationError, "BRIDGE_AUTHORITY_REJECTED:source_ledger root mismatch"):
+            self.run_case(source=source, raw=raw)
+
+    def test_source_raw_must_describe_supplied_source(self):
+        source = copy.deepcopy(self.source)
+        source["checked_at"] = "2026-09-15T00:00:00+00:00"
+        with self.assertRaisesRegex(qualify.QualificationError, "SOURCE_RAW_OBJECT_MISMATCH"):
+            self.run_case(source=source)
+
+    def test_legacy_tender_pack_bytes_are_not_authority(self):
+        with self.assertRaisesRegex(qualify.QualificationError, "LEGACY_TENDER_PACK_BYTES_NOT_AUTHORITY"):
+            self.run_case(pack=b"synthetic pack bytes\n")
+
+    def test_legacy_surface_has_no_as_of_or_trusted_time_parameter(self):
+        parameters = inspect.signature(qualify.evaluate).parameters
+        self.assertNotIn("as_of", parameters)
+        self.assertNotIn("trusted_as_of", parameters)
+        self.assertEqual({"manifest", "source", "source_raw", "tender_pack_bytes"}, set(parameters))
+
+    def test_even_future_bridge_evidence_ready_maps_to_hold(self):
+        synthetic = {
+            "status": "OPPORTUNITY_EVIDENCE_READY",
+            "reason_codes": [],
+            "external_submission_authorized": False,
+            "authority": {"proposal_submission": False, "revenue_claim": False},
         }
-        return source, pack
+        self.assertEqual("HOLD_LEGACY_QUALIFIER_RETIRED", qualify._legacy_state(synthetic))
 
-    @staticmethod
-    def proven(route):
-        return {
-            "schema_version": 1,
-            "notice_id": qualify.NOTICE_ID,
-            "evaluated_at": "2026-09-13T11:20:00Z",
-            "source_ledger_sha256": "0" * 64,
-            "route": route,
-            "partner_prime_confirmed": True,
-            "authority": {k: False for k in qualify.AUTHORITY_FLAGS},
-            "capabilities": {g: {"status": "PROVEN", "evidence_refs": [f"evidence:{g}"]} for g in qualify.ROUTES[route]},
+    def test_bridge_authority_escalation_fails_closed(self):
+        synthetic = {
+            "status": "HOLD",
+            "reason_codes": ["TENDER_PACK_NOT_ACQUIRED"],
+            "external_submission_authorized": False,
+            "authority": {"proposal_submission": True},
         }
+        with self.assertRaisesRegex(qualify.QualificationError, "ACTION_AUTHORITY_ESCALATION"):
+            qualify._legacy_state(synthetic)
 
-    def test_public_holds_pack(self):
-        r = self.run_case(); self.assertEqual(r.state, "HOLD_TENDER_PACK_REQUIRED"); self.assertEqual(r.exit_code, 3)
-        self.assertFalse(r.payload["tender_submission_authorized"])
-
-    def test_deterministic(self):
-        self.assertEqual(self.run_case().bytes(), self.run_case().bytes())
-
-    def test_duplicate_key(self):
-        with self.assertRaisesRegex(qualify.QualificationError, "DUPLICATE_JSON_KEY"):
+    def test_duplicate_json_key_rejected(self):
+        with self.assertRaisesRegex(qualify.QualificationError, "DUPLICATE_JSON_KEY:a"):
             qualify.load_json_bytes(b'{"a":1,"a":2}', "x")
 
-    def test_bool_as_int(self):
-        m = copy.deepcopy(self.manifest); m["schema_version"] = True
-        with self.assertRaisesRegex(qualify.QualificationError, "MUST_BE_INT_NOT_BOOL"):
-            self.run_case(manifest=m)
+    def test_diagnostic_output_is_create_exclusive(self):
+        with tempfile.TemporaryDirectory() as directory:
+            target = Path(directory) / "receipt.json"
+            qualify._write_exclusive(target, b"one\n")
+            self.assertEqual(b"one\n", target.read_bytes())
+            with self.assertRaises(FileExistsError):
+                qualify._write_exclusive(target, b"two\n")
+            self.assertEqual(b"one\n", target.read_bytes())
 
-    def test_authority_escalation(self):
-        m = copy.deepcopy(self.manifest); m["authority"]["tender_submission"] = True
-        with self.assertRaisesRegex(qualify.QualificationError, "AUTHORITY_ESCALATION_FORBIDDEN"):
-            self.run_case(manifest=m)
 
-    def test_proven_requires_evidence(self):
-        m = copy.deepcopy(self.manifest); gate = next(iter(m["capabilities"])); m["capabilities"][gate] = {"status":"PROVEN","evidence_refs":[]}
-        with self.assertRaisesRegex(qualify.QualificationError, "PROVEN_REQUIRES_EVIDENCE"):
-            self.run_case(manifest=m)
-
-    def test_pack_digest_mismatch(self):
-        s, pack = self.acquired(); s["tender_pack"]["sha256"] = "a"*64
-        with self.assertRaisesRegex(qualify.QualificationError, "TENDER_PACK_DIGEST_MISMATCH"):
-            self.run_case(source=s, manifest=self.proven("TEAMING_ACCEPTANCE_EVIDENCE"), pack=pack)
-
-    def test_declared_pack_without_bytes_holds(self):
-        s, _ = self.acquired(); r = self.run_case(source=s, manifest=self.proven("TEAMING_ACCEPTANCE_EVIDENCE"), pack=None)
-        self.assertEqual(r.state, "HOLD_TENDER_PACK_FILE_REQUIRED")
-
-    def test_unreviewed_pack_holds(self):
-        s, pack = self.acquired(reviewed=False); r = self.run_case(source=s, manifest=self.proven("TEAMING_ACCEPTANCE_EVIDENCE"), pack=pack)
-        self.assertEqual(r.state, "HOLD_TENDER_PACK_REVIEW")
-
-    def test_missing_evidence_holds(self):
-        s, pack = self.acquired(); m = copy.deepcopy(self.manifest); m["route"] = "PRIME_CDR"
-        m["capabilities"] = {g:{"status":"UNKNOWN","evidence_refs":[]} for g in qualify.ROUTES["PRIME_CDR"]}
-        r = self.run_case(source=s, manifest=m, pack=pack); self.assertEqual(r.state, "HOLD_EVIDENCE_GAPS")
-
-    def test_teaming_requires_prime(self):
-        s, pack = self.acquired(); m = self.proven("TEAMING_INTEROPERABILITY_SPECIALIST"); m["partner_prime_confirmed"] = False
-        r = self.run_case(source=s, manifest=m, pack=pack); self.assertEqual(r.state, "HOLD_PARTNER_REQUIRED")
-
-    def test_ready_is_owner_review_only(self):
-        s, pack = self.acquired(); r = self.run_case(source=s, manifest=self.proven("TEAMING_ACCEPTANCE_EVIDENCE"), pack=pack)
-        self.assertEqual(r.state, "READY_FOR_OWNER_TENDER_REVIEW"); self.assertEqual(r.exit_code, 0)
-        self.assertFalse(r.payload["tender_submission_authorized"])
-
-    def test_stale_source_holds(self):
-        s, pack = self.acquired(); s["checked_at"] = "2026-07-01T00:00:00+00:00"
-        r = self.run_case(source=s, manifest=self.proven("TEAMING_ACCEPTANCE_EVIDENCE"), pack=pack)
-        self.assertEqual(r.state, "HOLD_SOURCE_STALE")
-
-    def test_source_digest_binding(self):
-        m = copy.deepcopy(self.manifest); m["source_ledger_sha256"] = "0"*64
-        raw = canonical(self.source)
-        with self.assertRaisesRegex(qualify.QualificationError, "SOURCE_LEDGER_DIGEST_MISMATCH"):
-            qualify.evaluate(m, self.source, raw)
-
-if __name__ == "__main__": unittest.main()
+if __name__ == "__main__":
+    unittest.main()
