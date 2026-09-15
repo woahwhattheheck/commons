@@ -1,7 +1,10 @@
 from __future__ import annotations
 
+import contextlib
 import copy
 import importlib.util
+import io
+import json
 import tempfile
 import unittest
 from pathlib import Path
@@ -33,6 +36,68 @@ class ReplyToRevenueEventIdentityTests(unittest.TestCase):
         path = Path(directory) / "observations.json"
         path.write_text(r2r.canonical_text(observations), encoding="utf-8")
         return path
+
+    def _receipt(self, prospect_key: str = "buyer-one") -> dict:
+        return {
+            "path": "fixture-receipt.json",
+            "receipt_id": "fixture-receipt",
+            "prospect_key": prospect_key,
+            "organization": "Fixture Org",
+            "recipient_email": None,
+            "provider_reference": None,
+            "provider_state": "COMPLETED",
+            "response_state": "UNKNOWN",
+            "hard_dnr": True,
+            "cash_usd": 0,
+            "observed_at": "2026-09-14T20:00:00Z",
+        }
+
+    def _event(
+        self,
+        event_ref: str,
+        classification: str,
+        *,
+        received_at: str = "2026-09-14T20:00:00Z",
+        prospect_key: str = "buyer-one",
+    ) -> dict:
+        next_actions = {
+            "OPT_OUT": "DNC/CLOSE",
+            "QUESTION": "DRAFT_REPLY",
+            "POSITIVE_SCOPE": "NEEDS_ACCEPTANCE",
+            "AUTO_RESPONSE": "WAIT_FOR_HUMAN_REPLY",
+            "DELIVERY_FAILURE": "RECOVER_ROUTE_OWNER_REVIEW",
+        }
+        return {
+            "event_ref": event_ref,
+            "received_at": received_at,
+            "prospect_key": prospect_key,
+            "payload_sha256": ("a" if classification != "AUTO_RESPONSE" else "b") * 64,
+            "provider": "fixture-provider",
+            "matched_receipt_id": "fixture-receipt",
+            "classification": classification,
+            "next_action": next_actions[classification],
+            "buyer_interest": classification == "POSITIVE_SCOPE",
+            "auto_ack": classification == "AUTO_RESPONSE",
+            "delivery_failure": classification == "DELIVERY_FAILURE",
+            "matched_markers": [],
+            "reason": "fixture classification",
+        }
+
+    def _observations(self, events: list[dict]) -> dict:
+        return {
+            "schema_version": "commons-reply-to-revenue-observations/v1",
+            "kind": "REPLY_TO_REVENUE_OBSERVATIONS",
+            "measured_at": "2026-09-14T20:10:00Z",
+            "monitor": {
+                "connector": "fixture",
+                "status": "complete",
+                "mailbox_claim": "fixture",
+                "sends": 0,
+                "queries": 1,
+                "attributed_inbound": len(events),
+            },
+            "events": events,
+        }
 
     def test_identical_full_envelope_retry_is_ingested_once(self) -> None:
         observations = r2r.read_object(r2r.OBSERVATIONS_PATH)
@@ -106,6 +171,51 @@ class ReplyToRevenueEventIdentityTests(unittest.TestCase):
             [event["event_ref"] for event in loaded["events"]],
             [event["event_ref"] for event in generation_a["events"]],
         )
+
+    def test_wrapper_policy_is_installed_in_actual_implementation_globals(self) -> None:
+        self.assertIs(r2r._core._impl._reduce_contact_state, r2r._reduce_contact_state)
+        self.assertIs(r2r._core._impl.surface_positives, r2r.surface_positives)
+
+    def test_build_funnel_preserves_equal_time_opt_out(self) -> None:
+        events = [
+            self._event("opaque:opt-out-0001", "OPT_OUT"),
+            self._event("opaque:question-0001", "QUESTION"),
+        ]
+        funnel = r2r.build_funnel(
+            receipts=[self._receipt()],
+            observations=self._observations(events),
+        )
+        contact = next(item for item in funnel["contacts"] if item["prospect_key"] == "buyer-one")
+        self.assertEqual(contact["lane"], "CLOSED")
+        self.assertEqual(contact["next_action"], "DNC/CLOSE")
+        self.assertEqual(funnel["truth"]["human_question"], 0)
+        self.assertEqual(funnel["truth"]["human_positive"], 0)
+
+    def test_cli_surface_reports_recorded_machine_observation_truthfully(self) -> None:
+        events = [
+            self._event("opaque:positive-0001", "POSITIVE_SCOPE", received_at="2026-09-14T20:00:00Z"),
+            self._event("opaque:auto-ack-0001", "AUTO_RESPONSE", received_at="2026-09-14T20:01:00Z"),
+        ]
+        receipts = [self._receipt()]
+        observations = self._observations(events)
+        impl = r2r._core._impl
+        original_load_receipts = impl.load_receipts
+        original_load_observations = impl.load_observations
+        impl.load_receipts = lambda: copy.deepcopy(receipts)
+        impl.load_observations = lambda: copy.deepcopy(observations)
+        output = io.StringIO()
+        try:
+            with contextlib.redirect_stdout(output):
+                result = r2r._core.main(["surface"])
+        finally:
+            impl.load_receipts = original_load_receipts
+            impl.load_observations = original_load_observations
+        self.assertEqual(result, 0)
+        surfaces = json.loads(output.getvalue())
+        self.assertEqual(len(surfaces), 1)
+        context = surfaces[0]["context"]
+        self.assertIn("recorded machine observations (AUTO_RESPONSE)", context)
+        self.assertNotIn("were absent", context)
 
 
 if __name__ == "__main__":
