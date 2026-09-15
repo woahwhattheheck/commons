@@ -4,6 +4,24 @@
 Copied to run.py by bundle.py. No alternate CRM engine is implemented here.
 """
 from __future__ import annotations
+
+# ``python run.py`` normally prepends the package directory to sys.path.  The
+# package directory is operator-writable by design (config.local.json and the
+# SQLite database live beside the launcher), so allowing it to participate in
+# imports would let an unmanifested html.py/json.py/sqlite3.py execute before
+# the integrity gate.  ``sys`` is a built-in module and therefore safe to use
+# for this bootstrap before importing any shadowable stdlib module.  Keep the
+# sanitized path in force while the verified workflow bytes execute as well.
+import sys as _sys
+
+if __name__ == '__main__':
+    _script_import_root = _sys.path[0] if _sys.path else None
+    _sys.path[:] = [
+        entry
+        for index, entry in enumerate(_sys.path)
+        if index != 0 and entry not in ('', '.', _script_import_root)
+    ]
+
 import hashlib
 import html
 import types
