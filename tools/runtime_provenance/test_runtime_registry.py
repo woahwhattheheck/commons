@@ -140,6 +140,25 @@ class RuntimeRegistryTests(unittest.TestCase):
         self.assertEqual(result["effective_lifecycle"], "SOURCE_BOUND")
         self.assertFalse(result["deployment_proven"])
 
+    def test_unknown_evidence_reference_is_rejected(self):
+        rec = proven_record()
+        rec["evidence"][0]["ref"] = "UNKNOWN"
+        with self.assertRaises(RegistryError):
+            verify_registry(registry(rec), now=NOW)
+
+    def test_unknown_provider_identity_is_rejected(self):
+        rec = proven_record()
+        rec["provider_ids"] = {"slack_user_id": "UNKNOWN"}
+        with self.assertRaises(RegistryError):
+            verify_registry(registry(rec), now=NOW)
+
+    def test_predeployment_black_box_evidence_fails_closed(self):
+        rec = proven_record()
+        rec["evidence"][1]["observed_at"] = "2026-09-15T06:59:00Z"
+        result = self.assessment(registry(rec))
+        self.assertFalse(result["deployment_proven"])
+        self.assertIn("BLACK_BOX_EVIDENCE_PREDATES_DEPLOYMENT", result["reasons"])
+
     def test_duplicate_runtime_id_is_rejected(self):
         payload = registry()
         payload["records"].append(copy.deepcopy(payload["records"][0]))
