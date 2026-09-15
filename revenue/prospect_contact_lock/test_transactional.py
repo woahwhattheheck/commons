@@ -2,10 +2,12 @@ from __future__ import annotations
 
 import base64
 import hashlib
+import inspect
 import json
 import unittest
 from urllib.parse import parse_qs, unquote, urlsplit
 
+from revenue.prospect_contact_lock import ProspectContactLock as package_lock
 from revenue.prospect_contact_lock import hardened
 from revenue.prospect_contact_lock import lock as core
 
@@ -152,16 +154,33 @@ class TransactionalTransport:
 class TransactionalAuthorityTests(unittest.TestCase):
     def setUp(self):
         self.transport = TransactionalTransport()
-        self.lock = hardened.ProspectContactLock("unit-test-token", self.transport)
+        self.lock = hardened._TestProspectContactLock("unit-test-token", self.transport)
         self.email = "Lead.Person+Pilot@Example.com"
         self.owner = dict(agent_id="ZRS-P8V3", operation_id="OP-PAID-POSTMERGE")
 
-    def test_direct_core_import_resolves_to_hardened_surface(self):
+    def test_every_supported_production_import_is_same_transport_free_class(self):
         self.assertIs(core.ProspectContactLock, hardened.ProspectContactLock)
+        self.assertIs(core.ProspectContactLock, package_lock)
+        params = list(inspect.signature(package_lock).parameters)
+        self.assertEqual(params, ["token"])
+        with self.assertRaises(TypeError):
+            package_lock("unit-test-token", self.transport)
+        with self.assertRaises(TypeError):
+            hardened.ProspectContactLock("unit-test-token", transport=self.transport)
+        with self.assertRaises(TypeError):
+            core.ProspectContactLock("unit-test-token", self.transport)
+
+    def test_private_test_transport_artifacts_cannot_verify_as_production(self):
+        receipt = self.lock.acquire("email", self.email, **self.owner)
+        self.assertIs(receipt["test_only_transport"], True)
+        with self.assertRaises(core.ValidationError):
+            core.verify_receipt(receipt)
+        status = self.lock.status("email", self.email)
+        self.assertIs(status["test_only_transport"], True)
 
     def test_unprotected_authority_fails_closed_before_contact_read(self):
         transport = TransactionalTransport(protected=False)
-        lock = hardened.ProspectContactLock("unit-test-token", transport)
+        lock = hardened._TestProspectContactLock("unit-test-token", transport)
         with self.assertRaises(core.RemoteError):
             lock.status("email", self.email)
         self.assertFalse(any("/contents/" in url for url in transport.urls))
@@ -170,6 +189,7 @@ class TransactionalAuthorityTests(unittest.TestCase):
         old_head = self.transport.head
         receipt = self.lock.acquire("email", self.email, **self.owner)
         self.assertEqual(receipt["state"], "ACTIVE")
+        self.assertIs(receipt["test_only_transport"], True)
         content_refs = [
             parse_qs(urlsplit(url).query).get("ref", [None])[0]
             for url in self.transport.urls
