@@ -526,6 +526,116 @@ class BuildOffline(TempGit):
             self.assertEqual(sh(self.root, "rev-parse", newer + "^"), older)
         self.assertEqual(len(result["push_lines"]), 10)
 
+    def test_git_verb_skips_config_prefix(self):
+        self.assertEqual(cs._git_verb(("fetch", "--no-tags", "origin")), "fetch")
+        self.assertEqual(cs._git_verb(("-c", "http.version=HTTP/1.1", "push", "--no-thin",
+                                       "origin", "abc:refs/heads/x")), "push")
+        self.assertEqual(cs._git_verb(("cat-file", "-e", "abc^{commit}")), "cat-file")
+
+    def test_publish_from_blobless_clone_pushes_without_parent_blobs(self):
+        """Hosted checkout is blob:none of main; state/coordination is an orphan.
+
+        Thin pack wants parent blob bytes; GIT_NO_LAZY_FETCH then prints
+        `not fetch … from promisor remote` and the remote hangs up
+        (coordination-state run 34997388057). Publish must still land.
+        """
+        env = dict(os.environ)
+        env.update(ENV)
+
+        def run(args, cwd=None, extra=None, check=True):
+            merged = dict(env)
+            if extra:
+                merged.update(extra)
+            done = subprocess.run(args, capture_output=True, text=True, env=merged, cwd=cwd)
+            if check and done.returncode != 0:
+                raise AssertionError("git %s failed: %s" % (args, done.stderr))
+            return done
+
+        base = tempfile.mkdtemp(prefix="coordination-blobless-")
+        self.addCleanup(shutil.rmtree, base, ignore_errors=True)
+        seed = os.path.join(base, "seed")
+        os.makedirs(seed)
+        run(["git", "init", "-q", "-b", "main"], cwd=seed)
+        run(["git", "config", "core.autocrlf", "false"], cwd=seed)
+        write(seed, "a.txt", "a0\n")
+        run(["git", "add", "-A"], cwd=seed)
+        run(["git", "commit", "-q", "-m", "base"], cwd=seed)
+        main_sha = run(["git", "rev-parse", "HEAD"], cwd=seed).stdout.strip()
+        run(["git", "checkout", "--orphan", "state/coordination"], cwd=seed)
+        run(["git", "rm", "-rf", "-q", "."], cwd=seed, check=False)
+        write(seed, "README.md", "readme\n")
+        write(seed, "coordination-head.json", '{"schema":"h"}\n')
+        write(seed, "coordination.json", '{"schema":"s","blob":"%s"}\n' % ("x" * 20000))
+        write(seed, "coordination-lanes.json", '{"schema":"l"}\n')
+        write(seed, "coordination-paths.json", '{"schema":"p"}\n')
+        run(["git", "add", "-A"], cwd=seed)
+        run(["git", "commit", "-q", "-m", "state"], cwd=seed)
+        parent_blob = run(["git", "rev-parse", "HEAD:coordination.json"], cwd=seed).stdout.strip()
+        remote = os.path.join(base, "remote.git")
+        run(["git", "init", "-q", "--bare", remote])
+        run(["git", "--git-dir", remote, "config", "uploadpack.allowFilter", "true"])
+        run(["git", "--git-dir", remote, "config", "uploadpack.allowAnySHA1InWant", "true"])
+        run(["git", "remote", "add", "origin", remote], cwd=seed)
+        run(["git", "push", "-q", "origin", "main:refs/heads/main"], cwd=seed)
+        run(["git", "push", "-q", "origin",
+             "state/coordination:refs/heads/state/coordination"], cwd=seed)
+        clone = os.path.join(base, "clone")
+        run(["git", "clone", "--filter=blob:none", "--branch", "main", "--depth", "1",
+             "-q", "file://" + remote, clone])
+        missing = run(["git", "cat-file", "-e", parent_blob], cwd=clone,
+                      extra={"GIT_NO_LAZY_FETCH": "1"}, check=False)
+        self.assertNotEqual(missing.returncode, 0, "parent blob must be absent locally")
+        payload = {"schema": cs.SCHEMA, "observed_at": "2026-09-11T11:00:00Z",
+                   "main": {"sha": main_sha}, "queue": {}, "counts": {"open_prs": 0},
+                   "lanes": [], "degraded": []}
+        result = cs.publish(cs.Git(clone), payload, "o/r", push=True, remote="origin")
+        self.assertTrue(result["pushed"], result.get("stderr"))
+        self.assertTrue(result["parent"])
+        tip = run(["git", "--git-dir", remote, "rev-parse",
+                   "refs/heads/state/coordination"]).stdout.strip()
+        self.assertEqual(tip, result["commit"])
+        names = run(["git", "--git-dir", remote, "ls-tree", "--name-only", tip]).stdout.split()
+        self.assertIn(cs.HEAD_FILE, names)
+        self.assertIn(cs.STATE_FILE, names)
+
+    def test_push_retries_promisor_hangup_then_lands(self):
+        remote = tempfile.mkdtemp(prefix="coordination-retry-remote-")
+        self.addCleanup(shutil.rmtree, remote, ignore_errors=True)
+        subprocess.run(["git", "init", "-q", "--bare", remote], check=True)
+        sh(self.root, "remote", "add", "origin", remote)
+        sleeps = []
+        real_sleep = cs._PUSH_RETRY_SLEEP
+        cs._PUSH_RETRY_SLEEP = sleeps.append
+        real_run = cs.Git.run
+        pushes = {"n": 0}
+
+        def flaky(self, *args, **kw):
+            if cs._git_verb(args) == "push":
+                pushes["n"] += 1
+                if pushes["n"] == 1:
+                    return cs._Done(
+                        1, "",
+                        "not fetch e3ee4c7252d2f6f8c2c9d75ede5e0d2f1ba7187d "
+                        "from promisor remote\n"
+                        "fatal: the remote end hung up unexpectedly\n"
+                        "send-pack: unexpected disconnect while reading sideband packet\n"
+                        "error: failed to push some refs to "
+                        "'https://github.com/woahwhattheheck/commons'")
+            return real_run(self, *args, **kw)
+
+        cs.Git.run = flaky
+        try:
+            payload = {"schema": cs.SCHEMA, "observed_at": "2026-09-11T11:00:00Z",
+                       "main": {"sha": self.base}, "queue": {}, "counts": {"open_prs": 0},
+                       "lanes": [], "degraded": []}
+            result = cs.publish(self.git, payload, "o/r", push=True)
+        finally:
+            cs.Git.run = real_run
+            cs._PUSH_RETRY_SLEEP = real_sleep
+        self.assertTrue(result["pushed"], result.get("stderr"))
+        self.assertEqual(pushes["n"], 2)
+        self.assertEqual(sleeps, [2])
+
     def test_rows_are_one_per_line_and_valid_json(self):
         doc = {"schema": "s", "prs": [{"number": 1}, {"number": 2}], "counts": {"a": 1}}
         text = cs._dump_rows(doc)

@@ -373,6 +373,26 @@ class _Done:
         self.stderr = stderr
 
 
+def _git_verb(args):
+    """The git subcommand, skipping `git -c key=value` prefixes used on push."""
+    i = 0
+    while i < len(args):
+        a = args[i]
+        if a in ("-c", "-C"):
+            i += 2
+            continue
+        if isinstance(a, str) and a.startswith("-"):
+            i += 1
+            continue
+        return a
+    return ""
+
+
+# fetch is batched on purpose. push must reach the network too: a blobless
+# checkout cannot form a thin pack without parent blob bytes.
+_NETWORK_VERBS = {"fetch", "push"}
+
+
 class Git:
     """git through exact bytes. Text-mode pipes translate newlines on Windows,
     which would change blob contents and tree entry names."""
@@ -384,8 +404,9 @@ class Git:
         merged = dict(os.environ)
         # In a partial clone, touching a missing object makes git fetch it on
         # the spot, one object and its whole tree at a time. Only the batched
-        # `fetch` below may go to the network; everything else reads locally.
-        if args and args[0] != "fetch":
+        # `fetch` below and `push` (which must read parent blobs or send a
+        # complete pack) may go to the network; everything else reads locally.
+        if _git_verb(args) not in _NETWORK_VERBS:
             merged["GIT_NO_LAZY_FETCH"] = "1"
         if env:
             merged.update(env)
@@ -1184,6 +1205,47 @@ def state_commit(git, files, branch, message, parent=None):
     return git.out(*args, env=_commit_env()).strip()
 
 
+# Hosted checkout is blob:none. A default thin pack wants parent blob contents
+# as delta bases; GIT_NO_LAZY_FETCH then prints
+# `not fetch … from promisor remote` and the remote hangs up
+# (Actions run 34997388057). `--no-thin` sends only objects we wrote.
+_PUSH_TRANSIENT = (
+    "from promisor remote",
+    "hung up unexpectedly",
+    "unexpected disconnect",
+    "eof before pack header",
+    "unpacker error",
+    "RPC failed",
+    "Could not read from remote repository",
+)
+_PUSH_RETRY_SLEEP = time.sleep
+
+
+def _push_transient(stderr):
+    text = stderr or ""
+    return any(n in text for n in _PUSH_TRANSIENT)
+
+
+def _push_ref(git, remote, commit, branch, attempts=3):
+    """Fast-forward `commit` onto `branch`. Complete pack, HTTP/1.1, hangup retry."""
+    refspec = "%s:refs/heads/%s" % (commit, branch)
+    last = None
+    tries = max(1, int(attempts))
+    for attempt in range(tries):
+        done = git.run("-c", "http.version=HTTP/1.1",
+                       "push", "--no-thin", remote, refspec, check=False)
+        last = done
+        if done.returncode == 0:
+            return done
+        err = done.stderr or ""
+        if "non-fast-forward" in err or "fetch first" in err:
+            return done
+        if not _push_transient(err) or attempt >= tries - 1:
+            return done
+        _PUSH_RETRY_SLEEP(2 * (attempt + 1))
+    return last
+
+
 def publish(git, payload, repo, push=True, remote="origin", branch=STATE_BRANCH, texts=None,
             split=False):
     """Commit the tiers to `branch` on top of its current tip. `texts` (from
@@ -1220,16 +1282,16 @@ def publish(git, payload, repo, push=True, remote="origin", branch=STATE_BRANCH,
         return {"commit": chain[-1] if chain else None, "parent": parent, "pushed": False,
                 "chain": chain, "push_lines": lines}
     commit = state_commit(git, files, branch, message, parent)
-    line = "git -C %s push %s %s:refs/heads/%s" % (git.root, remote, commit, branch)
+    line = "git -C %s push --no-thin %s %s:refs/heads/%s" % (git.root, remote, commit, branch)
     if not push:
         return {"commit": commit, "parent": parent, "pushed": False, "push_line": line}
-    done = git.run("push", remote, "%s:refs/heads/%s" % (commit, branch), check=False)
+    done = _push_ref(git, remote, commit, branch)
     if done.returncode != 0 and ("non-fast-forward" in done.stderr or "fetch first" in done.stderr):
         parent = _remote_tip(git, branch, remote)
         if parent:
             git.fetch([parent], remote)
         commit = state_commit(git, files, branch, message, parent)
-        done = git.run("push", remote, "%s:refs/heads/%s" % (commit, branch), check=False)
+        done = _push_ref(git, remote, commit, branch)
     return {"commit": commit, "parent": parent, "pushed": done.returncode == 0,
             "stderr": done.stderr.strip()[-300:]}
 
@@ -1346,7 +1408,7 @@ def holding_write(git, key, holder, action, ttl_s=1800, note="", now=None,
         if not push:
             return {"ok": True, "key": key, "commit": commit, "pushed": False,
                     "push_line": "git -C %s push %s %s:refs/heads/%s" % (git.root, remote, commit, branch)}
-        done = git.run("push", remote, "%s:refs/heads/%s" % (commit, branch), check=False)
+        done = _push_ref(git, remote, commit, branch)
         if done.returncode == 0:
             return {"ok": True, "key": key, "commit": commit, "pushed": True, "record": record}
         if "non-fast-forward" not in done.stderr and "fetch first" not in done.stderr:
