@@ -95,6 +95,21 @@ class CompilerTests(unittest.TestCase):
         self.assertEqual(row["state"], "blocker")
         self.assertEqual(report["contradiction_ledger"][0]["requirement_id"], "RM-001")
 
+    def test_unlinked_contradiction_cannot_be_hidden(self):
+        data = load_fixture()
+        data["evidence"].append({
+            "id": "EV-RM-UNLINKED-CONTRA",
+            "kind": "source",
+            "source_ref": "fixture://rm-unlinked-contra",
+            "statement": "Synthetic contradiction omitted from response linkage.",
+            "effects": [{"requirement_id": "RM-001", "effect": "contradiction"}],
+        })
+        report = self.compile(data)
+        row = next(x for x in report["compliance_matrix"] if x["requirement_id"] == "RM-001")
+        self.assertEqual(row["state"], "blocker")
+        self.assertIn("UNLINKED_CONTRADICTION", row["reason_codes"])
+        self.assertIn("EV-RM-UNLINKED-CONTRA", row["contradiction_evidence_ids"])
+
     def test_noncritical_contradiction_is_partial_but_visible(self):
         data = load_fixture()
         data["evidence"].append({
