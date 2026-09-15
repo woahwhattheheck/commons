@@ -8,8 +8,12 @@ stripped of contact, bid, production, or compliance-certification authority.
 from __future__ import annotations
 
 import argparse
+import base64
+import binascii
 import copy
+import gzip
 import hashlib
+import io
 import json
 import os
 import re
@@ -23,6 +27,10 @@ SCHEMA = 1
 OPERATION = "R-SD13365-PROBATION-AI-TEAMING-ZCAS913455-20260913"
 STRONGEST_STATE = "PUBLIC_EVIDENCE_GAPS_DOCUMENTED"
 REVIEWED_SOURCE_MATRIX_SHA256 = "e6e857e1df33a6b6d486252fd1e0f1f243fdf0818b48ebfe6a80525e5dc19f42"
+REVIEWED_PAYLOAD_NAME = "requirements.json.gz.b64"
+MAX_REVIEWED_ENCODED_BYTES = 32_768
+MAX_REVIEWED_COMPRESSED_BYTES = 16_384
+MAX_REVIEWED_MATRIX_BYTES = 65_536
 EXPECTED_REQUIREMENTS = (
     "fips-140-3",
     "sso-saml-oauth",
@@ -38,10 +46,6 @@ EXPECTED_REQUIREMENTS = (
     "prompt-injection-defenses",
     "data-poisoning-anomaly-detection",
 )
-# This is a static reviewed assessment, not a generic classifier. The reviewed
-# source generation above authorizes exactly these public classifications.
-# Changing PASS/UNKNOWN/RED requires a new reviewed source/code generation; a
-# caller-supplied matrix cannot promote its own status merely by self-hashing.
 REVIEWED_CLASSIFICATIONS = {requirement_id: "UNKNOWN" for requirement_id in EXPECTED_REQUIREMENTS}
 STATUSES = {"PASS", "UNKNOWN", "RED"}
 RELATIONSHIPS = {"direct_support", "adjacent_only", "direct_contradiction"}
@@ -165,6 +169,40 @@ def normalized_matrix(matrix: dict[str, Any]) -> dict[str, Any]:
         if isinstance(forbidden, list):
             forbidden.sort(key=str)
     return normalized
+
+
+def _load_reviewed_source_matrix() -> dict[str, Any]:
+    """Load the exact reviewed source generation without trusting caller bytes."""
+    payload_path = Path(__file__).resolve().parent / REVIEWED_PAYLOAD_NAME
+    try:
+        encoded = payload_path.read_bytes().strip()
+    except OSError as exc:
+        raise MatrixError(f"cannot read reviewed source payload: {exc}") from exc
+    if len(encoded) > MAX_REVIEWED_ENCODED_BYTES:
+        raise MatrixError("reviewed source payload exceeds encoded size bound")
+    try:
+        compressed = base64.b64decode(encoded, validate=True)
+    except (binascii.Error, ValueError) as exc:
+        raise MatrixError("reviewed source payload is not canonical base64") from exc
+    if len(compressed) > MAX_REVIEWED_COMPRESSED_BYTES:
+        raise MatrixError("reviewed source payload exceeds compressed size bound")
+    try:
+        with gzip.GzipFile(fileobj=io.BytesIO(compressed), mode="rb") as handle:
+            raw = handle.read(MAX_REVIEWED_MATRIX_BYTES + 1)
+    except (EOFError, OSError) as exc:
+        raise MatrixError("reviewed source payload is not a valid gzip stream") from exc
+    if len(raw) > MAX_REVIEWED_MATRIX_BYTES:
+        raise MatrixError("reviewed source matrix exceeds decoded size bound")
+    digest = hashlib.sha256(raw).hexdigest()
+    if digest != REVIEWED_SOURCE_MATRIX_SHA256:
+        raise MatrixError(
+            "reviewed source matrix SHA-256 mismatch: "
+            f"expected {REVIEWED_SOURCE_MATRIX_SHA256}, got {digest}"
+        )
+    try:
+        return loads_strict(raw.decode("utf-8"))
+    except UnicodeDecodeError as exc:
+        raise MatrixError("reviewed source matrix is not UTF-8") from exc
 
 
 def _require_type(value: Any, expected: type, path: str) -> Any:
@@ -408,6 +446,12 @@ def validate_matrix(matrix: dict[str, Any]) -> dict[str, Any]:
         if authority[field] is not False:
             raise MatrixError(f"authority.{field} must be false")
 
+    reviewed = _load_reviewed_source_matrix()
+    if normalized_matrix(matrix) != normalized_matrix(reviewed):
+        raise MatrixError(
+            "matrix differs from reviewed source generation "
+            f"{REVIEWED_SOURCE_MATRIX_SHA256}"
+        )
     return matrix
 
 
