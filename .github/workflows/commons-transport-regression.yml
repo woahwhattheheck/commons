@@ -1,7 +1,8 @@
 name: Commons transport regression
 on:
   push:
-    branches: [main, codex/deathstar-bounty-fixes-20260906, 'codex/command-center-*']
+    branches: [main]
+    
     paths:
       - integrations/shared_equipment/**
       - integrations/gemini_slack/**
