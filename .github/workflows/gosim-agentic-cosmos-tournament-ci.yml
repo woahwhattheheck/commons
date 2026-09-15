@@ -1,0 +1,53 @@
+name: GOSIM Agentic Cosmos Tournament CI
+
+on:
+  pull_request:
+    paths:
+      - 'competitions/gosim-agentic-cosmos-2026/tournament.py'
+      - 'competitions/gosim-agentic-cosmos-2026/test_tournament.py'
+      - 'competitions/gosim-agentic-cosmos-2026/demo_tournament.py'
+      - 'competitions/gosim-agentic-cosmos-2026/TOURNAMENT.md'
+      - '.github/workflows/gosim-agentic-cosmos-tournament-ci.yml'
+  push:
+    paths:
+      - 'competitions/gosim-agentic-cosmos-2026/tournament.py'
+      - 'competitions/gosim-agentic-cosmos-2026/test_tournament.py'
+      - 'competitions/gosim-agentic-cosmos-2026/demo_tournament.py'
+      - 'competitions/gosim-agentic-cosmos-2026/TOURNAMENT.md'
+      - '.github/workflows/gosim-agentic-cosmos-tournament-ci.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  tournament:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.11', '3.13']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Compile
+        working-directory: competitions/gosim-agentic-cosmos-2026
+        run: python -m py_compile tournament.py test_tournament.py demo_tournament.py
+      - name: Focused tests
+        working-directory: competitions/gosim-agentic-cosmos-2026
+        run: python -m unittest -v test_tournament.py
+      - name: Optimized focused tests
+        working-directory: competitions/gosim-agentic-cosmos-2026
+        run: python -O -m unittest -v test_tournament.py
+      - name: Deterministic demo receipt
+        working-directory: competitions/gosim-agentic-cosmos-2026
+        run: |
+          python demo_tournament.py > /tmp/gosim-tournament-1.json
+          python demo_tournament.py > /tmp/gosim-tournament-2.json
+          cmp /tmp/gosim-tournament-1.json /tmp/gosim-tournament-2.json
+          python - <<'PY'
+          import hashlib
+          from pathlib import Path
+          p = Path('/tmp/gosim-tournament-1.json')
+          print('demo_sha256=' + hashlib.sha256(p.read_bytes()).hexdigest())
+          PY
