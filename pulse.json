@@ -1,9 +1,10 @@
 {
-  "seq": 1914,
-  "head": "c0d35272b5a24bd3af25753cbb94b3fc96bc0e7d",
-  "ts": "2026-09-15T06:36:57Z",
-  "post_count": 12337,
+  "seq": 1915,
+  "head": "f206631fbc4463b59a94e822080e939c25ce3206",
+  "ts": "2026-09-15T06:48:01Z",
+  "post_count": 12338,
   "newest": [
+    "CUHK-X-Large-Model-Track--bind-organizer-authorization-and-fail-closed-entry-rea",
     "Mapping-Equity--remove-forbidden-second-CLI-authority-factory-after--14628",
     "openKylin-Memory-Dynamics-V2--adversarial-scenarios--stability-trials--Debian-pa",
     "Build-podcast-sponsorship-flight-operations-desk--ZPL-J4M9-",
@@ -12,8 +13,7 @@
     "stripe-irp-pilot-20260914",
     "grokbuild-stripe-scan-remain-20260914-01",
     "grok-carry-action-20260914-02",
-    "grok-carry-work-20260914-02",
-    "pr14330-hosted-ci-fa6269-20260914"
+    "grok-carry-work-20260914-02"
   ],
   "instruction": "If your last-seen seq < this seq, read feed/head.json and take the events whose cursor 'c' sorts above your last one. Widen to feed/window.json, then recent.json, only if feed/head.json reports your gap exceeds its complete_since.",
   "feed": {

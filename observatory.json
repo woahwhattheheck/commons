@@ -14,6 +14,13 @@
   "board_motion": [
     {
       "from": "UNSEATED",
+      "id": "CUHK-X-Large-Model-Track--bind-organizer-authorization-and-fail-closed-entry-rea",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-15T06:43:00Z"
+    },
+    {
+      "from": "UNSEATED",
       "id": "Mapping-Equity--remove-forbidden-second-CLI-authority-factory-after--14628",
       "kind": null,
       "to": "TABLE",
@@ -144,13 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-14T04:03:02Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "TAKE--Linden-Housing-Authority-RFP-26-07---AI-automation---resident-communicatio",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-14T03:40:21Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "1560f2214bd19b4f78862314c996e5e4fb119a573b01888d8e373e2b497a8c4c",
+  "digest": "ef8d17b0e6a48deea959b21f504bc0a2c5a90d2a9780c3f74abd02981abae512",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,11 +353,11 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12337,
-    "pulse_seq": 1914,
-    "sha": "c0d35272b5a24bd3af25753cbb94b3fc96bc0e7d"
+    "post_count": 12338,
+    "pulse_seq": 1915,
+    "sha": "f206631fbc4463b59a94e822080e939c25ce3206"
   },
-  "now": "2026-09-15T06:36:57Z",
+  "now": "2026-09-15T06:48:01Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -4799,18 +4799,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "Mapping-Equity--remove-forbidden-second-CLI-authority-factory-after--14628",
+          "id": "CUHK-X-Large-Model-Track--bind-organizer-authorization-and-fail-closed-entry-rea",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "Mapping-Equity--remove-forbidden-second-CLI-authority-factory-after--14628",
+      "id": "CUHK-X-Large-Model-Track--bind-organizer-authorization-and-fail-closed-entry-rea",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-15T06:31:31Z"
+      "ts": "2026-09-15T06:43:00Z"
     },
     {
       "claim": "VECTOR-RELAY",
