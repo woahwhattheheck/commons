@@ -53,7 +53,7 @@ def _read_plain_file(path: Path):
     path=Path(path)
     if not hasattr(os,"O_NOFOLLOW"):
         raise ChampionError("platform lacks O_NOFOLLOW; refusing release evidence")
-    flags=os.O_RDONLY | os.O_NOFOLLOW | getattr(os,"O_CLOEXEC",0)
+    flags=os.O_RDONLY | os.O_NOFOLLOW | getattr(os,"O_CLOEXEC",0) | getattr(os,"O_NONBLOCK",0)
     try:
         fd=os.open(path,flags)
     except OSError as exc:
