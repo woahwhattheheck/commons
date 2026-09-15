@@ -32,3 +32,7 @@ jobs:
         run: python -m unittest -v test_multisite test_multisite_security test_toolkit test_operator_auth test_workspace_copy
       - name: Optimized interpreter
         run: python -O -m unittest -v test_multisite test_multisite_security test_toolkit test_operator_auth test_workspace_copy
+      - name: Operator auth fetch contract
+        run: |
+          node --check operator_auth.js
+          node --test test_operator_auth_fetch.cjs
