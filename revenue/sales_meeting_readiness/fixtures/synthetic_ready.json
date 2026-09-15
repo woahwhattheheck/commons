@@ -12,6 +12,7 @@
       }
     ],
     "captured_at": "2026-09-13T15:55:00Z",
+    "owner_ref": "owner.bryce",
     "duration_minutes": 30,
     "observation_id": "calendar.synthetic.001",
     "opportunity_id": "op.synthetic.001",
