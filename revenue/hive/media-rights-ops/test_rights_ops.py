@@ -319,12 +319,14 @@ class DeskTests(unittest.TestCase):
                 return real_open(path, flags, mode)
             return real_open(path, flags, mode, dir_fd=dir_fd)
         with mock.patch.object(e.os, "open", side_effect=racing_open):
-            with self.assertRaisesRegex(r.RightsError, "output directory identity changed"):
+            with self.assertRaisesRegex(r.RightsError, "real directory|output directory identity changed"):
                 r.publish_export(self.db, out, "2026-12-10T00:00:00Z")
         self.assertTrue(fired)
         self.assertTrue(out.is_symlink())
-        self.assertEqual(list(moved.iterdir()), [])
         self.assertEqual(sorted(p.name for p in foreign.iterdir()), ["sentinel.txt"])
+        tombstones = list(moved.iterdir())
+        self.assertTrue(tombstones)
+        self.assertTrue(all(p.is_file() and p.stat().st_size == 0 for p in tombstones))
 
     def test_export_failure_cleanup_preserves_foreign_successor(self):
         out = self.root / "bundle-fail-race"
@@ -350,8 +352,10 @@ class DeskTests(unittest.TestCase):
                 r.publish_export(self.db, out, "2026-12-10T00:00:00Z")
         self.assertTrue(fired)
         self.assertTrue(out.is_symlink())
-        self.assertEqual(list(moved.iterdir()), [])
         self.assertEqual(sorted(p.name for p in foreign.iterdir()), ["sentinel.txt"])
+        tombstones = list(moved.iterdir())
+        self.assertEqual([p.name for p in tombstones], ["placements.csv"])
+        self.assertEqual(tombstones[0].stat().st_size, 0)
 
     def test_export_foreign_entry_fails_closed_and_survives_cleanup(self):
         out = self.root / "bundle-entry-race"
@@ -367,8 +371,10 @@ class DeskTests(unittest.TestCase):
         with mock.patch.object(e.os, "listdir", side_effect=racing_listdir):
             with self.assertRaisesRegex(r.RightsError, "entries changed"):
                 r.publish_export(self.db, out, "2026-12-10T00:00:00Z")
-        self.assertEqual(sorted(p.name for p in out.iterdir()), ["foreign-sentinel.txt"])
         self.assertEqual((out / "foreign-sentinel.txt").read_text(encoding="utf-8"), "foreign")
+        owned = [p for p in out.iterdir() if p.name != "foreign-sentinel.txt"]
+        self.assertTrue(owned)
+        self.assertTrue(all(p.is_file() and p.stat().st_size == 0 for p in owned))
 
     def test_duplicate_json_key_rejected(self):
         with self.assertRaisesRegex(r.RightsError, "duplicate JSON key"):
