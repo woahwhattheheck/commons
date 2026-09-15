@@ -51,26 +51,52 @@ def normalize_opportunity(raw: Any, field: str, as_of: datetime) -> tuple[dict[s
         "version": require_id(offer["version"], f"{field}.offer.version"),
         "source": validate_source(offer["source"], f"{field}.offer.source"),
     }
+    offer_source = source_key(offer_out["source"])
     raw_events = opp["events"]
     if not isinstance(raw_events, list) or len(raw_events) > MAX_EVENTS_PER_OPPORTUNITY:
         raise FunnelError(f"{field}.events must be array <= {MAX_EVENTS_PER_OPPORTUNITY}")
 
-    event_by_id: dict[str, dict[str, Any]] = {}
-    event_reasons: dict[str, list[str]] = defaultdict(list)
-    evidence_usage: dict[tuple[str, str, str, str], set[str]] = defaultdict(set)
+    # Validate every row first, then resolve event IDs from the full multiset.
+    # Exact replays collapse. If one ID has more than one distinct normalized
+    # meaning, fail closed by emitting *none* of those conflicting variants into
+    # positive funnel semantics. This makes packet meaning independent of caller
+    # row order while preserving the full evidence-source usage boundary.
+    event_groups: dict[str, dict[bytes, tuple[dict[str, Any], set[str]]]] = defaultdict(dict)
     for i, raw_event in enumerate(raw_events):
         normalized, reasons = validate_event(raw_event, f"{field}.events[{i}]", as_of)
         event_id = normalized["id"]
-        previous = event_by_id.get(event_id)
-        if previous is not None:
-            if canonical_json(previous) != canonical_json(normalized):
-                event_reasons[event_id].append("EVENT_ID_CONFLICT")
-            else:
-                event_reasons[event_id].extend(reasons)
-            continue
-        event_by_id[event_id] = normalized
-        event_reasons[event_id].extend(reasons)
-        evidence_usage[source_key(normalized["evidence"])].add(opp_id)
+        identity = canonical_json(normalized)
+        existing = event_groups[event_id].get(identity)
+        if existing is None:
+            event_groups[event_id][identity] = (normalized, set(reasons))
+        else:
+            existing[1].update(reasons)
+
+    event_by_id: dict[str, dict[str, Any]] = {}
+    event_reasons: dict[str, list[str]] = defaultdict(list)
+    source_event_ids: dict[tuple[str, str, str, str], set[str]] = defaultdict(set)
+    evidence_usage: dict[tuple[str, str, str, str], set[str]] = defaultdict(set)
+
+    for event_id in sorted(event_groups):
+        variants = event_groups[event_id]
+        variant_records = [variants[key] for key in sorted(variants)]
+        if len(variant_records) == 1:
+            event_by_id[event_id] = variant_records[0][0]
+        else:
+            event_reasons[event_id].append("EVENT_ID_CONFLICT")
+
+        for normalized, reasons in variant_records:
+            event_reasons[event_id].extend(sorted(reasons))
+            key = source_key(normalized["evidence"])
+            source_event_ids[key].add(event_id)
+            evidence_usage[key].add(opp_id)
+            if key == offer_source:
+                event_reasons[event_id].append("EVIDENCE_ROLE_CONFLICT")
+
+    for event_ids in source_event_ids.values():
+        if len(event_ids) > 1:
+            for event_id in sorted(event_ids):
+                event_reasons[event_id].append("EVIDENCE_REUSED_WITHIN_OPPORTUNITY")
 
     events = sorted(event_by_id.values(), key=lambda e: (e["observed_at"], e["stage"], e["id"]))
     reasons = sorted({reason for rs in event_reasons.values() for reason in rs})

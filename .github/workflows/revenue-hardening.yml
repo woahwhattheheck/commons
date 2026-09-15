@@ -18,6 +18,7 @@ on:
       - 'revenue/hive/fulfillment-desk/**'
       - 'revenue/hive/intake-crm-workflow/**'
       - 'revenue/cas_actuarial_llm_benchmark/**'
+      - 'revenue/commercial_funnel/**'
       - 'test_carrier_from_memory.js'
       - 'test_diagnostic_dlp.js'
       - 'test_dio_crlf.py'
@@ -40,6 +41,7 @@ on:
       - 'revenue/hive/fulfillment-desk/**'
       - 'revenue/hive/intake-crm-workflow/**'
       - 'revenue/cas_actuarial_llm_benchmark/**'
+      - 'revenue/commercial_funnel/**'
       - 'test_carrier_from_memory.js'
       - 'test_diagnostic_dlp.js'
       - 'test_dio_crlf.py'
@@ -83,6 +85,28 @@ jobs:
           snapshot="${RUNNER_TEMP}/cas-benchmark-snapshot.json"
           python -m revenue.cas_actuarial_llm_benchmark.cli fixture --output "${snapshot}"
           python -m revenue.cas_actuarial_llm_benchmark.cli verify "${snapshot}"
+      - name: Commercial funnel evidence authority
+        run: |
+          python -m py_compile \
+            revenue/commercial_funnel/common.py \
+            revenue/commercial_funnel/events.py \
+            revenue/commercial_funnel/model.py \
+            revenue/commercial_funnel/ledger.py \
+            revenue/commercial_funnel/cli.py \
+            revenue/commercial_funnel/test_ledger.py \
+            revenue/commercial_funnel/test_cli.py \
+            revenue/commercial_funnel/test_review_regressions.py \
+            revenue/commercial_funnel/test_casefold_identity.py
+          python -B -m unittest -v \
+            revenue.commercial_funnel.test_ledger \
+            revenue.commercial_funnel.test_cli \
+            revenue.commercial_funnel.test_review_regressions \
+            revenue.commercial_funnel.test_casefold_identity
+          python -O -B -m unittest -v \
+            revenue.commercial_funnel.test_ledger \
+            revenue.commercial_funnel.test_cli \
+            revenue.commercial_funnel.test_review_regressions \
+            revenue.commercial_funnel.test_casefold_identity
       - name: Parcel package integrity
         working-directory: revenue/hive/fulfillment-desk
         run: |
