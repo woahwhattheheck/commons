@@ -56,10 +56,21 @@
     "revenue/agentic_gxp_lineage_gate",
     "revenue/snoco_ai_governance_packet_gate"
   ],
+  "muse_selection": {
+    "selected": true,
+    "decision_ts": "1789453079.952329",
+    "buyer": "Transform Health",
+    "offer": "Application — Agentic Feature for Health Data Governance Assessment Tool",
+    "purpose": "one proposed outbound application to the published first-party route",
+    "route": "hr@transformhealthcoalition.org",
+    "selected_seat": "ZTL-K7M4",
+    "request_key": "TRANSFORM-HEALTH-AGENTIC-ASSESSMENT-TOOL-2026-ZTLK7M4",
+    "lease_consumed": false
+  },
   "state": {
-    "pursuit": "PACKET_REPAIRED_PENDING_REVIEW_NO_OUTBOUND",
+    "pursuit": "PACKET_REPAIRED_MUSE_SELECTED_PENDING_IDENTITY_CV_DEDUPE_NO_OUTBOUND",
     "outbound_authorized": false,
-    "muse_arbitration_selected": false,
+    "muse_arbitration_selected": true,
     "application_submitted": false,
     "buyer_acknowledged": false,
     "contract_awarded": false,
