@@ -3,7 +3,10 @@ import json
 import unittest
 from pathlib import Path
 
-from packet_gate import GateError, build_receipt, validate_matrix, validate_sources, verify_receipt
+try:
+    from .packet_gate import GateError, build_receipt, validate_matrix, validate_sources, verify_receipt
+except ImportError:  # direct-file execution compatibility
+    from packet_gate import GateError, build_receipt, validate_matrix, validate_sources, verify_receipt
 
 ROOT = Path(__file__).resolve().parent
 
