@@ -1165,6 +1165,22 @@ def _commit_env(when=None):
             "GIT_AUTHOR_DATE": stamp, "GIT_COMMITTER_DATE": stamp}
 
 
+def _push_ref(git, remote, commit, branch):
+    """Fast-forward `branch` to `commit`.
+
+    `--no-thin` is required from a blob:none clone: a thin pack wants parent
+    blobs as delta bases, GIT_NO_LAZY_FETCH blocks the promisor fetch, and
+    send-pack then hangs up. The new commit already holds every blob it
+    introduces, so a full pack does not need the parent file bytes.
+    """
+    return git.run("push", "--no-thin", remote, "%s:refs/heads/%s" % (commit, branch),
+                   check=False)
+
+
+def _push_line(root, remote, commit, branch):
+    return "git -C %s push --no-thin %s %s:refs/heads/%s" % (root, remote, commit, branch)
+
+
 def _remote_tip(git, branch, remote="origin"):
     done = git.run("ls-remote", remote, "refs/heads/" + branch, check=False)
     line = done.stdout.strip().split("\n")[0] if done.stdout.strip() else ""
@@ -1215,21 +1231,21 @@ def publish(git, payload, repo, push=True, remote="origin", branch=STATE_BRANCH,
                       % (git.root, remote, branch, remote, branch))
         lines = []
         for sha in chain:
-            lines.append("git -C %s push %s %s:refs/heads/%s" % (git.root, remote, sha, branch))
+            lines.append(_push_line(git.root, remote, sha, branch))
             lines.append(fetch_line)
         return {"commit": chain[-1] if chain else None, "parent": parent, "pushed": False,
                 "chain": chain, "push_lines": lines}
     commit = state_commit(git, files, branch, message, parent)
-    line = "git -C %s push %s %s:refs/heads/%s" % (git.root, remote, commit, branch)
+    line = _push_line(git.root, remote, commit, branch)
     if not push:
         return {"commit": commit, "parent": parent, "pushed": False, "push_line": line}
-    done = git.run("push", remote, "%s:refs/heads/%s" % (commit, branch), check=False)
+    done = _push_ref(git, remote, commit, branch)
     if done.returncode != 0 and ("non-fast-forward" in done.stderr or "fetch first" in done.stderr):
         parent = _remote_tip(git, branch, remote)
         if parent:
             git.fetch([parent], remote)
         commit = state_commit(git, files, branch, message, parent)
-        done = git.run("push", remote, "%s:refs/heads/%s" % (commit, branch), check=False)
+        done = _push_ref(git, remote, commit, branch)
     return {"commit": commit, "parent": parent, "pushed": done.returncode == 0,
             "stderr": done.stderr.strip()[-300:]}
 
@@ -1345,8 +1361,8 @@ def holding_write(git, key, holder, action, ttl_s=1800, note="", now=None,
         commit = _holdings_commit(git, tip, holdings, message, stamp_moment)
         if not push:
             return {"ok": True, "key": key, "commit": commit, "pushed": False,
-                    "push_line": "git -C %s push %s %s:refs/heads/%s" % (git.root, remote, commit, branch)}
-        done = git.run("push", remote, "%s:refs/heads/%s" % (commit, branch), check=False)
+                    "push_line": _push_line(git.root, remote, commit, branch)}
+        done = _push_ref(git, remote, commit, branch)
         if done.returncode == 0:
             return {"ok": True, "key": key, "commit": commit, "pushed": True, "record": record}
         if "non-fast-forward" not in done.stderr and "fetch first" not in done.stderr:
