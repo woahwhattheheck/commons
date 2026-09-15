@@ -4,6 +4,15 @@
   const STORAGE_KEY = 'creator-desk.operator.v1';
   const originalFetch = window.fetch.bind(window);
   const NativeRequest = window.Request;
+  const requestPrototype = typeof NativeRequest === 'function' ? NativeRequest.prototype : null;
+  const requestUrlDescriptor = requestPrototype ? Object.getOwnPropertyDescriptor(requestPrototype, 'url') : null;
+  const requestHeadersDescriptor = requestPrototype ? Object.getOwnPropertyDescriptor(requestPrototype, 'headers') : null;
+  const nativeRequestUrlGetter = requestUrlDescriptor && typeof requestUrlDescriptor.get === 'function'
+    ? requestUrlDescriptor.get
+    : null;
+  const nativeRequestHeadersGetter = requestHeadersDescriptor && typeof requestHeadersDescriptor.get === 'function'
+    ? requestHeadersDescriptor.get
+    : null;
   let operatorKey = '';
   let lockPanel = null;
 
@@ -43,16 +52,24 @@
     return typeof NativeRequest === 'function' && input instanceof NativeRequest;
   }
 
-  function fetchTarget(input) {
-    if (isNativeRequest(input)) return input.url;
-    return String(input);
+  function nativeRequestState(input) {
+    if (!isNativeRequest(input) || !nativeRequestUrlGetter || !nativeRequestHeadersGetter) return null;
+    try {
+      return {
+        url: nativeRequestUrlGetter.call(input),
+        headers: nativeRequestHeadersGetter.call(input),
+      };
+    } catch (_) {
+      return null;
+    }
   }
 
   window.fetch = async function(input, init) {
-    const resolved = new URL(fetchTarget(input), location.href);
+    const requestState = nativeRequestState(input);
+    const resolved = new URL(requestState ? requestState.url : String(input), location.href);
     const guarded = resolved.origin === location.origin && protectedPath(resolved.pathname);
-    const inheritedHeaders = (!init || !Object.prototype.hasOwnProperty.call(init, 'headers')) && isNativeRequest(input)
-      ? input.headers
+    const inheritedHeaders = (!init || !Object.prototype.hasOwnProperty.call(init, 'headers')) && requestState
+      ? requestState.headers
       : undefined;
     const response = await originalFetch(input, guarded ? withAuth(init || {}, inheritedHeaders) : init);
     if (guarded && response.status === 403 && readKey()) {
