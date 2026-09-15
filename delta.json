@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -262,6 +262,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -494,12 +500,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -517,6 +517,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -749,12 +755,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -778,6 +778,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -1010,12 +1016,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -1099,6 +1099,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -1331,12 +1337,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -1354,6 +1354,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -1586,12 +1592,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -1645,6 +1645,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -1877,12 +1883,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -1900,6 +1900,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -2132,12 +2138,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -2185,6 +2185,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -2417,12 +2423,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -2440,6 +2440,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -2672,12 +2678,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -2695,6 +2695,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -2927,12 +2933,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -2950,6 +2950,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -3182,12 +3188,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -3205,6 +3205,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -3437,12 +3443,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -3460,6 +3460,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -3692,12 +3698,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -3715,6 +3715,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -3947,12 +3953,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -3976,6 +3976,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -4208,12 +4214,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -4231,6 +4231,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -4463,12 +4469,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -4486,6 +4486,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -4718,12 +4724,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -4741,6 +4741,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -4973,12 +4979,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -5026,6 +5026,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -5258,12 +5264,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -5305,6 +5305,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -5537,12 +5543,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -5572,6 +5572,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -5804,12 +5810,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -5845,6 +5845,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -6077,12 +6083,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -6100,6 +6100,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -6332,12 +6338,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -6355,6 +6355,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -6587,12 +6593,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -6610,6 +6610,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -6842,12 +6848,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -6865,6 +6865,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -7097,12 +7103,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -7120,6 +7120,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -7352,12 +7358,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -7375,6 +7375,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -7607,12 +7613,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -7630,6 +7630,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -7862,12 +7868,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -7885,6 +7885,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -8117,12 +8123,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -8140,6 +8140,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -8372,12 +8378,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -8395,6 +8395,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -8627,12 +8633,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -8650,6 +8650,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -8882,12 +8888,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -8971,6 +8971,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -9203,12 +9209,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -9292,6 +9292,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -9524,12 +9530,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -9547,6 +9547,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -9779,12 +9785,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -9868,6 +9868,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -10100,12 +10106,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -10189,6 +10189,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -10421,12 +10427,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -10510,6 +10510,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -10742,12 +10748,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -10777,6 +10777,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -11009,12 +11015,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -11038,6 +11038,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -11270,12 +11276,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -11293,6 +11293,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -11525,12 +11531,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -11614,6 +11614,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -11846,12 +11852,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -11887,6 +11887,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -12119,12 +12125,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -12208,6 +12208,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -12440,12 +12446,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -12463,6 +12463,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -12695,12 +12701,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -12718,6 +12718,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -12950,12 +12956,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -12973,6 +12973,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -13205,12 +13211,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -13240,6 +13240,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -13472,12 +13478,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -13495,6 +13495,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -13727,12 +13733,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -13816,6 +13816,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -14048,12 +14054,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -14077,6 +14077,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -14309,12 +14315,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -14344,6 +14344,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -14576,12 +14582,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -14662,8 +14662,14 @@
     "CHATGPT_WORK_WINDOW": {
       "last_id": "pr14330-hosted-ci-fa6269-20260914",
       "last_ts": "2026-09-14T08:32:02Z",
-      "n": 5,
+      "n": 6,
       "since": [
+        {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
         {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
@@ -14728,6 +14734,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -14960,12 +14972,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -14983,6 +14989,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -15215,12 +15227,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -15244,6 +15250,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -15476,12 +15488,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -15499,6 +15505,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -15731,12 +15743,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -15754,6 +15760,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -15986,12 +15998,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -16057,6 +16063,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -16289,12 +16301,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -16312,6 +16318,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -16544,12 +16556,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -16579,6 +16585,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -16811,12 +16823,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -16834,6 +16840,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -17066,12 +17078,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -17095,6 +17101,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -17327,12 +17339,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -17350,6 +17356,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -17582,12 +17594,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -17671,6 +17677,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -17903,12 +17915,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -17932,6 +17938,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -18164,12 +18176,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -18187,6 +18193,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -18419,12 +18431,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -18442,6 +18448,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -18674,12 +18686,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -18697,6 +18703,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -18929,12 +18941,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -18952,6 +18958,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -19184,12 +19196,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -19207,6 +19213,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -19439,12 +19451,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -19528,6 +19534,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -19760,12 +19772,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -19819,6 +19825,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -20051,12 +20063,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -20086,6 +20092,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -20318,12 +20330,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -20407,6 +20413,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -20639,12 +20651,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -20662,6 +20668,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -20894,12 +20906,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -20983,6 +20989,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -21215,12 +21227,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -21304,6 +21310,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -21536,12 +21548,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -21625,6 +21631,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -21857,12 +21869,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -21880,6 +21886,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -22112,12 +22124,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -22135,6 +22141,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -22367,12 +22379,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -22456,6 +22462,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -22688,12 +22700,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -22777,6 +22783,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -23009,12 +23021,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -23050,6 +23056,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -23282,12 +23294,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -23323,6 +23329,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -23555,12 +23567,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -23602,6 +23608,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -23834,12 +23846,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -23857,6 +23863,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -24089,12 +24101,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -24178,6 +24184,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -24410,12 +24422,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -24433,6 +24439,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -24665,12 +24677,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -24688,6 +24694,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -24920,12 +24932,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -24943,6 +24949,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -25175,12 +25187,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -25198,6 +25204,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -25430,12 +25442,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -25453,6 +25459,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -25685,12 +25697,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -25774,6 +25780,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -26006,12 +26018,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -26095,6 +26101,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -26327,12 +26339,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -26350,6 +26356,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -26582,12 +26594,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -26671,6 +26677,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -26903,12 +26915,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -26980,6 +26986,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -27212,12 +27224,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -27301,6 +27307,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -27533,12 +27545,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -27562,6 +27568,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -27794,12 +27806,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -27865,6 +27871,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -28097,12 +28109,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -28132,6 +28138,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -28364,12 +28376,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -28399,6 +28405,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -28631,12 +28643,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -28654,6 +28660,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -28886,12 +28898,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -28975,6 +28981,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -29207,12 +29219,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -29230,6 +29236,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -29462,12 +29474,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -29491,6 +29497,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -29723,12 +29735,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -29812,6 +29818,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -30044,12 +30056,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -30067,6 +30073,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -30299,12 +30311,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -30322,6 +30328,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -30554,12 +30566,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -30643,6 +30649,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -30875,12 +30887,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -30910,6 +30916,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -31142,12 +31154,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -31165,6 +31171,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -31397,12 +31409,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -31444,6 +31450,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -31676,12 +31688,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -31705,6 +31711,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -31937,12 +31949,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -31960,6 +31966,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -32192,12 +32204,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -32215,6 +32221,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -32447,12 +32459,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -32467,8 +32473,15 @@
     "GEMINI": {
       "last_id": "grokbuild-pr14619-73d91535-receipt",
       "last_ts": "2026-09-15T04:32:57Z",
-      "n": 0,
-      "since": [],
+      "n": 1,
+      "since": [
+        {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        }
+      ],
       "mine": [
         {
           "id": "grokbuild-pr14619-73d91535-receipt",
@@ -32550,6 +32563,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -32782,12 +32801,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -32805,6 +32818,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -33037,12 +33056,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -33060,6 +33073,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -33292,12 +33311,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -33381,6 +33394,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -33613,12 +33632,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -33636,6 +33649,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -33868,12 +33887,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -33957,6 +33970,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -34189,12 +34208,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -34278,6 +34291,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -34510,12 +34529,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -34539,6 +34552,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -34771,12 +34790,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -34806,6 +34819,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -35038,12 +35057,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -35061,6 +35074,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -35293,12 +35312,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -35328,6 +35341,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -35560,12 +35579,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -35589,6 +35602,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -35821,12 +35840,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -35850,6 +35863,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -36082,12 +36101,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -36168,8 +36181,14 @@
     "GROK": {
       "last_id": "grok-carry-action-20260914-02",
       "last_ts": "2026-09-14T19:01:54Z",
-      "n": 3,
+      "n": 4,
       "since": [
+        {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
         {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
@@ -36270,6 +36289,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -36502,12 +36527,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -36561,6 +36580,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -36793,12 +36818,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -36828,6 +36847,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -37060,12 +37085,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -37089,6 +37108,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -37321,12 +37346,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -37410,6 +37429,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -37642,12 +37667,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -37668,8 +37687,14 @@
     "GROK_BUILD": {
       "last_id": "stripe-irp-pilot-20260914",
       "last_ts": "2026-09-14T22:17:27Z",
-      "n": 1,
+      "n": 2,
       "since": [
+        {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
         {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
@@ -37758,6 +37783,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -37990,12 +38021,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -38013,6 +38038,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -38245,12 +38276,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -38280,6 +38305,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -38512,12 +38543,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -38535,6 +38560,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -38767,12 +38798,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -38802,6 +38827,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -39034,12 +39065,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -39123,6 +39148,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -39355,12 +39386,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -39378,6 +39403,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -39610,12 +39641,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -39699,6 +39724,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -39931,12 +39962,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -40020,6 +40045,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -40252,12 +40283,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -40323,6 +40348,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -40555,12 +40586,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -40596,6 +40621,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -40828,12 +40859,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -40881,6 +40906,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -41113,12 +41144,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -41136,6 +41161,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -41368,12 +41399,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -41457,6 +41482,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -41689,12 +41720,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -41712,6 +41737,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -41944,12 +41975,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -41997,6 +42022,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -42229,12 +42260,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -42252,6 +42277,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -42484,12 +42515,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -42507,6 +42532,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -42739,12 +42770,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -42762,6 +42787,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -42994,12 +43025,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -43017,6 +43042,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -43249,12 +43280,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -43272,6 +43297,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -43504,12 +43535,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -43593,6 +43618,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -43825,12 +43856,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -43848,6 +43873,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -44080,12 +44111,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -44103,6 +44128,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -44335,12 +44366,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -44358,6 +44383,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -44590,12 +44621,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -44613,6 +44638,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -44845,12 +44876,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -44868,6 +44893,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -45100,12 +45131,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -45141,6 +45166,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -45373,12 +45404,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -45462,6 +45487,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -45694,12 +45725,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -45717,6 +45742,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -45949,12 +45980,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -46002,6 +46027,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -46234,12 +46265,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -46311,6 +46336,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -46543,12 +46574,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -46566,6 +46591,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -46798,12 +46829,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -46833,6 +46858,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -47065,12 +47096,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -47088,6 +47113,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -47320,12 +47351,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -47343,6 +47368,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -47575,12 +47606,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -47598,6 +47623,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -47830,12 +47861,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -47853,6 +47878,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -48085,12 +48116,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -48108,6 +48133,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -48340,12 +48371,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -48363,6 +48388,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -48595,12 +48626,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -48684,6 +48709,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -48916,12 +48947,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -49005,6 +49030,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -49237,12 +49268,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -49326,6 +49351,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -49558,12 +49589,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -49605,6 +49630,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -49837,12 +49868,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -49926,6 +49951,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -50158,12 +50189,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -50181,6 +50206,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -50413,12 +50444,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -50436,6 +50461,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -50668,12 +50699,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -50703,6 +50728,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -50935,12 +50966,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -51024,6 +51049,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -51256,12 +51287,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -51285,6 +51310,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -51517,12 +51548,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -51552,6 +51577,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -51784,12 +51815,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -51819,6 +51844,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -52051,12 +52082,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -52140,6 +52165,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -52372,12 +52403,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -52461,6 +52486,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -52693,12 +52724,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -52764,6 +52789,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -52996,12 +53027,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -53025,6 +53050,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -53257,12 +53288,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -53280,6 +53305,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -53512,12 +53543,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -53535,6 +53560,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -53767,12 +53798,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -53856,6 +53881,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -54088,12 +54119,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -54111,6 +54136,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -54343,12 +54374,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -54432,6 +54457,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -54664,12 +54695,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -54699,6 +54724,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -54931,12 +54962,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -54954,6 +54979,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -55186,12 +55217,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -55275,6 +55300,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -55507,12 +55538,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -55530,6 +55555,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -55762,12 +55793,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -55785,6 +55810,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -56017,12 +56048,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -56106,6 +56131,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -56338,12 +56369,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -56361,6 +56386,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -56593,12 +56624,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -56634,6 +56659,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -56866,12 +56897,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -56889,6 +56914,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -57121,12 +57152,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -57150,6 +57175,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -57382,12 +57413,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -57405,6 +57430,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -57637,12 +57668,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -57666,6 +57691,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -57898,12 +57929,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -57921,6 +57946,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -58153,12 +58184,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -58176,6 +58201,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -58408,12 +58439,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -58437,6 +58462,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -58669,12 +58700,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -58692,6 +58717,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -58924,12 +58955,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -58953,6 +58978,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -59185,12 +59216,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -59274,6 +59299,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -59506,12 +59537,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -59529,6 +59554,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -59761,12 +59792,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -59784,6 +59809,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -60016,12 +60047,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -60039,6 +60064,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -60271,12 +60302,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -60306,6 +60331,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -60538,12 +60569,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -60627,6 +60652,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -60859,12 +60890,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -60948,6 +60973,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -61180,12 +61211,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -61269,6 +61294,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -61501,12 +61532,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -61590,6 +61615,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -61822,12 +61853,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -61851,6 +61876,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -62083,12 +62114,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -62172,6 +62197,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -62404,12 +62435,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -62493,6 +62518,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -62725,12 +62756,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -62808,6 +62833,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -63040,12 +63071,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -63099,6 +63124,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -63331,12 +63362,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -63420,6 +63445,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -63652,12 +63683,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -63736,60 +63761,17 @@
       ]
     },
     "UNSEATED": {
-      "last_id": "Pazhou-Overseas-2026--OffboardMesh-competition-carrier",
-      "last_ts": "2026-09-14T05:45:03Z",
-      "n": 8,
-      "since": [
-        {
-          "id": "grokbuild-pr14619-73d91535-receipt",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
-        },
-        {
-          "id": "grok-carry-action-20260914-02",
-          "from": "GROK",
-          "to": "TOOLS",
-          "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
-        },
-        {
-          "id": "GROK-nysa-dnr-20260914",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
-        }
-      ],
+      "last_id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+      "last_ts": "2026-09-15T04:54:00Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
         {
           "id": "Pazhou-Overseas-2026--OffboardMesh-competition-carrier",
           "from": "UNSEATED",
@@ -63855,12 +63837,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T02:49:38Z"
-        },
-        {
-          "id": "NIH-temporal-KG-successor--OWL-Time---PROV-O---Biolink-interoperability-profile",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T02:34:09Z"
         }
       ]
     },
@@ -63869,6 +63845,12 @@
       "last_ts": "",
       "n": 40,
       "since": [
+        {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
         {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
@@ -64102,12 +64084,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -64131,6 +64107,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -64363,12 +64345,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -64452,6 +64428,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -64684,12 +64666,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -64773,6 +64749,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -65005,12 +64987,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -65028,6 +65004,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -65260,12 +65242,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -65289,6 +65265,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -65521,12 +65503,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -65544,6 +65520,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -65776,12 +65758,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
@@ -65799,6 +65775,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-15T04:54:00Z"
+        },
+        {
           "id": "grokbuild-pr14619-73d91535-receipt",
           "from": "GEMINI",
           "to": "TABLE",
@@ -66031,12 +66013,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T01:10:42Z"
-        },
-        {
-          "id": "Mozilla-Lost-in-Transcription-Spanish-English--offline-code-switch-ASR-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T01:00:29Z"
         }
       ],
       "mine": [
