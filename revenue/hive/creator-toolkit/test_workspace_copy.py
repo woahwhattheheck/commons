@@ -14,9 +14,10 @@ from contextlib import closing
 from pathlib import Path
 from unittest.mock import patch
 from urllib.error import HTTPError
-from urllib.request import urlopen
+from urllib.request import Request, urlopen
 
 from app import make_server
+from operator_auth import OperatorAuth
 from toolkit import Store
 from workspace_copy import CopyError, REQUIRED, copy_workspace, snapshot_bytes
 
@@ -213,11 +214,14 @@ class SnapshotTests(unittest.TestCase):
         self.assertEqual(self.destination.read_bytes(), before)
 
     def test_live_http_backup_restores_usable_workspace(self):
+        operator_key = OperatorAuth.initialize(self.source)
         server = make_server(self.store, port=0)
         thread = threading.Thread(target=server.serve_forever, kwargs={'poll_interval': .01}, daemon=True)
         thread.start()
+        backup_url = f'http://127.0.0.1:{server.server_port}/workspace.sqlite3'
+        backup_request = lambda: Request(backup_url, headers={'Authorization': f'Bearer {operator_key}'})
         try:
-            with urlopen(f'http://127.0.0.1:{server.server_port}/workspace.sqlite3', timeout=10) as response:
+            with urlopen(backup_request(), timeout=10) as response:
                 data, headers = response.read(), response.headers
             self.assertEqual(headers['X-Content-SHA256'], hashlib.sha256(data).hexdigest())
             self.assertEqual(headers['Cache-Control'], 'no-store')
@@ -232,7 +236,7 @@ class SnapshotTests(unittest.TestCase):
                 db.execute("UPDATE resources SET sha256='invalid'")
                 db.commit()
             with self.assertRaises(HTTPError) as caught:
-                urlopen(f'http://127.0.0.1:{server.server_port}/workspace.sqlite3', timeout=10)
+                urlopen(backup_request(), timeout=10)
             self.assertEqual(caught.exception.code, 409)
         finally:
             server.shutdown()
