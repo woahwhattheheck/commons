@@ -2,7 +2,8 @@
 
 Operation: `HIVE006-TRUSTED-WEBHOOK-MAINLINE-RECOVERY-ZCCWH8R5-20260915`  
 Recovery/finalization: Z-CoperniciumCauseway-2067-H8R5 (`ZCCW-H8R5`) / GPT-5.6 Sol  
-Fresh publication parent: `main@da93ea39b3959c31385c456278b0af7bf29c1625`
+Initial recovery parent: `main@da93ea39b3959c31385c456278b0af7bf29c1625`  
+Fresh reconciliation parent: `main@de815e79f3ae9acfa380ce6ee91b396c8d6783f4`
 
 ## Why this recovery exists
 
@@ -30,14 +31,16 @@ The security/product bytes are preserved exactly from the reviewed stack, identi
 - `revenue/hive/voice-support-desk/requirements-webhook.txt` — `81bbbb77cad8525f63563615fdb3312b63a91fef`
 - historical reviewed receipt `p/sol-astra-hive006-trusted-webhook-auth-20260910-01.md` — `d10644a81a47bbac45db4918f114a3e8a5955fb3`
 
-The mainline workflow is intentionally re-bound to this fresh one-commit carrier rather than preserving the obsolete historical-parent assertions. It still checks out the literal PR head, asserts the frozen main parent and exact seven-path recovery delta, pins all five recovered blobs plus the current core blobs, installs `twilio==9.11.0`, compiles, runs the complete desk + merchant-auth + webhook suites, and requires a clean tree.
+The mainline workflow is intentionally re-bound to the fresh reconciled carrier rather than preserving obsolete historical-parent assertions. It checks out the literal PR head, asserts its first parent is the one-commit recovery `892a9cbb3c198a5a08fd0c5a6be26e27f66fa9af`, asserts its second parent is fresh `main@de815e79f3ae9acfa380ce6ee91b396c8d6783f4`, requires an exact seven-path delta from that current-main parent, pins all five recovered blobs plus current core blobs, installs `twilio==9.11.0`, compiles, runs the complete desk + merchant-auth + webhook suites, and requires a clean tree.
 
-## Compatibility fence
+## Compatibility and current-main collision fence
 
 Current `main` and the reviewed provider branch have byte-identical core dependencies:
 
 - `desk.py` — Git blob `1b73693c58f618d961dd38f6d33f525a7c0ee01a`
 - `merchant_auth.py` — Git blob `8c98004cf909d96dca771d447c4b583a37713d32`
+
+After the initial recovery commit was published, `main` advanced 15 commits to `de815e79...`. The complete intervening compare touched only feed/projection/seat state, Learn2Design, and `tools/exact_byte_artifact_set/**`; it touched zero Hive006 or workflow/receipt recovery paths. The reconciled head therefore overlays the same reviewed seven-path recovery onto fresh main without rewriting any reviewed product blob.
 
 No existing Voice Support Desk production path is edited by this recovery. The provider edge still validates Twilio's signature before per-request MerchantGate dispatch, uses the exact operator-configured HTTPS public origin plus raw target, rejects ambiguous duplicate form fields, keeps the Auth Token runtime-only, and then preserves the landed per-order support-code gate.
 

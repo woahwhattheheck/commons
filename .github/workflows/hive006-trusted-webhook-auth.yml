@@ -14,27 +14,29 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     env:
-      PUBLICATION_PARENT_SHA: 'da93ea39b3959c31385c456278b0af7bf29c1625'
+      RECOVERY_COMMIT_SHA: '892a9cbb3c198a5a08fd0c5a6be26e27f66fa9af'
+      CURRENT_MAIN_SHA: 'de815e79f3ae9acfa380ce6ee91b396c8d6783f4'
       REVIEWED_STACK_SHA: '0186228c6b2a7d87c17692a3e1f1b3f7f2c8d8fd'
     steps:
       - name: Checkout literal event head
         uses: actions/checkout@v4
         with:
           ref: ${{ github.event.pull_request.head.sha || github.sha }}
-          fetch-depth: 2
+          fetch-depth: 3
           persist-credentials: false
 
       - uses: actions/setup-python@v5
         with:
           python-version: '3.13'
 
-      - name: Assert exact mainline recovery
+      - name: Assert exact reconciled mainline recovery
         shell: bash
         run: |
           set -euo pipefail
           expected='${{ github.event.pull_request.head.sha || github.sha }}'
           test "$(git rev-parse HEAD)" = "$expected"
-          test "$(git rev-parse HEAD^)" = "$PUBLICATION_PARENT_SHA"
+          test "$(git rev-parse HEAD^1)" = "$RECOVERY_COMMIT_SHA"
+          test "$(git rev-parse HEAD^2)" = "$CURRENT_MAIN_SHA"
 
           cat > "$RUNNER_TEMP/expected-paths" <<'EOF'
           .github/workflows/hive006-trusted-webhook-auth.yml
@@ -45,7 +47,7 @@ jobs:
           revenue/hive/voice-support-desk/test_twilio_webhook.py
           revenue/hive/voice-support-desk/twilio_webhook.py
           EOF
-          git diff --name-only "$PUBLICATION_PARENT_SHA" HEAD | LC_ALL=C sort > "$RUNNER_TEMP/actual-paths"
+          git diff --name-only "$CURRENT_MAIN_SHA" HEAD | LC_ALL=C sort > "$RUNNER_TEMP/actual-paths"
           LC_ALL=C sort -o "$RUNNER_TEMP/expected-paths" "$RUNNER_TEMP/expected-paths"
           diff -u "$RUNNER_TEMP/expected-paths" "$RUNNER_TEMP/actual-paths"
 
