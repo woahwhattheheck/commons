@@ -23,11 +23,27 @@ function makeHeaders(seed = {}) {
 function loadHarness(key = 'op-secret') {
   const calls = [];
   const storage = new Map([['creator-desk.operator.v1', key]]);
+
+  class BrowserRequest {
+    constructor(input, init = {}) {
+      if (input instanceof BrowserRequest) {
+        this.url = input.url;
+        this.headers = makeHeaders(
+          Object.prototype.hasOwnProperty.call(init, 'headers') ? init.headers : input.headers
+        );
+      } else {
+        this.url = new URL(String(input), 'https://creator.example/app').href;
+        this.headers = makeHeaders(init.headers || {});
+      }
+    }
+  }
+
   async function originalFetch(input, init) {
-    calls.push({input, init});
+    const outbound = new BrowserRequest(input, init || {});
+    calls.push({input, init, outbound});
     return {status: 200, ok: true, json: async () => ({operator: true})};
   }
-  const window = {fetch: originalFetch};
+  const window = {fetch: originalFetch, Request: BrowserRequest};
   const context = {
     window,
     location: {origin: 'https://creator.example', href: 'https://creator.example/app'},
@@ -48,7 +64,7 @@ function loadHarness(key = 'op-secret') {
   };
   vm.createContext(context);
   vm.runInContext(source, context, {filename: 'operator_auth.js'});
-  return {fetch: context.window.fetch, calls};
+  return {fetch: context.window.fetch, calls, Request: BrowserRequest};
 }
 
 function authHeader(call) {
@@ -84,9 +100,11 @@ test('same-origin public GET does not receive operator bearer auth', async () =>
   assert.equal(h.calls[0].init.headers['X-Public'], 'yes');
 });
 
-test('Request-like same-origin protected input keeps inherited headers', async () => {
+test('genuine same-origin protected Request keeps inherited headers', async () => {
   const h = loadHarness();
-  const request = {url: 'https://creator.example/api/dashboard', headers: makeHeaders({'X-Caller': 'kept'})};
+  const request = new h.Request('https://creator.example/api/dashboard', {
+    headers: {'X-Caller': 'kept'},
+  });
   await h.fetch(request);
   assert.equal(authHeader(h.calls[0]), 'Bearer op-secret');
   assert.equal(h.calls[0].init.headers.get('x-caller'), 'kept');
@@ -94,9 +112,24 @@ test('Request-like same-origin protected input keeps inherited headers', async (
 
 test('explicit init headers remain authoritative while auth is added', async () => {
   const h = loadHarness();
-  const request = {url: 'https://creator.example/api/dashboard', headers: makeHeaders({'X-Request': 'old'})};
+  const request = new h.Request('https://creator.example/api/dashboard', {
+    headers: {'X-Request': 'old'},
+  });
   await h.fetch(request, {headers: {'X-Init': 'new'}});
   assert.equal(authHeader(h.calls[0]), 'Bearer op-secret');
   assert.equal(h.calls[0].init.headers.get('x-init'), 'new');
   assert.equal(h.calls[0].init.headers.get('x-request'), null);
+});
+
+test('forged Request-like url cannot smuggle bearer to string-coerced hostile target', async () => {
+  const h = loadHarness();
+  const forged = {
+    url: 'https://creator.example/api/dashboard',
+    headers: makeHeaders({'X-Caller': 'forged'}),
+    toString() { return 'https://attacker.example/steal'; },
+  };
+  await h.fetch(forged);
+  assert.equal(h.calls[0].outbound.url, 'https://attacker.example/steal');
+  assert.equal(authHeader(h.calls[0]), null);
+  assert.equal(h.calls[0].outbound.headers.get('authorization'), null);
 });
