@@ -1,0 +1,32 @@
+name: swarm-channel-coverage
+
+on:
+  pull_request:
+    paths:
+      - 'host/swarm_channel_coverage/**'
+      - 'test_swarm_channel_coverage.py'
+      - '.github/workflows/swarm-channel-coverage.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'host/swarm_channel_coverage/**'
+      - 'test_swarm_channel_coverage.py'
+      - '.github/workflows/swarm-channel-coverage.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Normal hostile suite
+        run: python -m unittest -v test_swarm_channel_coverage.py
+      - name: Optimized hostile suite
+        run: python -O -m unittest -v test_swarm_channel_coverage.py
+      - name: Compile check
+        run: python -m py_compile host/swarm_channel_coverage/*.py test_swarm_channel_coverage.py
