@@ -22,7 +22,7 @@
       "category": "records_management",
       "critical": true,
       "id": "RM-001",
-      "source": "RFP §2 Project Goal",
+      "source": "RFP \u00a72 Project Goal",
       "title": "Unify records management citywide"
     },
     {
@@ -30,7 +30,7 @@
       "category": "retention_compliance",
       "critical": true,
       "id": "RET-001",
-      "source": "RFP §2; RCW 40.14",
+      "source": "RFP \u00a72; RCW 40.14",
       "title": "Identify records and apply Washington retention schedules"
     },
     {
@@ -38,7 +38,7 @@
       "category": "retention_compliance",
       "critical": true,
       "id": "RET-002",
-      "source": "RFP §2",
+      "source": "RFP \u00a72",
       "title": "Controlled disposal after retention period"
     },
     {
@@ -46,7 +46,7 @@
       "category": "public_records_requests",
       "critical": true,
       "id": "PRR-001",
-      "source": "RFP §2; RCW 42.56",
+      "source": "RFP \u00a72; RCW 42.56",
       "title": "Identify records responsive to public disclosure requests"
     },
     {
@@ -54,7 +54,7 @@
       "category": "public_records_requests",
       "critical": true,
       "id": "PRR-002",
-      "source": "RFP §2",
+      "source": "RFP \u00a72",
       "title": "Preserve responsive-record immutability"
     },
     {
@@ -62,7 +62,7 @@
       "category": "public_records_requests",
       "critical": true,
       "id": "PRR-003",
-      "source": "RFP §2",
+      "source": "RFP \u00a72",
       "title": "Support exempt-information redaction"
     },
     {
@@ -70,7 +70,7 @@
       "category": "public_records_requests",
       "critical": true,
       "id": "PRR-004",
-      "source": "RFP §2",
+      "source": "RFP \u00a72",
       "title": "Export responsive records in native format for GovQA"
     },
     {
@@ -78,7 +78,7 @@
       "category": "records_search",
       "critical": false,
       "id": "SRCH-001",
-      "source": "RFP §2 Project Goal",
+      "source": "RFP \u00a72 Project Goal",
       "title": "Improve document and records search"
     },
     {
@@ -86,7 +86,7 @@
       "category": "data_governance",
       "critical": false,
       "id": "CAT-001",
-      "source": "RFP §2 Project Goal",
+      "source": "RFP \u00a72 Project Goal",
       "title": "Organize and facilitate cataloging of records"
     },
     {
@@ -94,7 +94,7 @@
       "category": "technology",
       "critical": true,
       "id": "TEC-001",
-      "source": "RFP §4 Technology Overview",
+      "source": "RFP \u00a74 Technology Overview",
       "title": "Document deployment, data-center security, and SSO posture"
     },
     {
@@ -102,7 +102,7 @@
       "category": "security",
       "critical": true,
       "id": "TEC-002",
-      "source": "RFP §4 Technology Overview",
+      "source": "RFP \u00a74 Technology Overview",
       "title": "Document security compliance, disaster recovery, and SLA"
     },
     {
@@ -110,7 +110,7 @@
       "category": "integration",
       "critical": false,
       "id": "INT-001",
-      "source": "RFP §4 Technology Overview",
+      "source": "RFP \u00a74 Technology Overview",
       "title": "Describe interface and integration tools"
     },
     {
@@ -118,7 +118,7 @@
       "category": "ai_governance",
       "critical": false,
       "id": "AI-001",
-      "source": "RFP §4 Technology Overview",
+      "source": "RFP \u00a74 Technology Overview",
       "title": "Describe AI strategy and available/future functionality"
     },
     {
@@ -126,7 +126,7 @@
       "category": "implementation",
       "critical": true,
       "id": "IMP-001",
-      "source": "RFP §4 Implementation Methodology",
+      "source": "RFP \u00a74 Implementation Methodology",
       "title": "Provide implementation team, qualifications, methodology, timeframe, and phases"
     },
     {
@@ -134,7 +134,7 @@
       "category": "support",
       "critical": true,
       "id": "SUP-001",
-      "source": "RFP §4 Support",
+      "source": "RFP \u00a74 Support",
       "title": "Provide support hours, response times, resources, escalation, and post-go-live services"
     },
     {
@@ -142,7 +142,7 @@
       "category": "qualifications",
       "critical": true,
       "id": "REF-001",
-      "source": "RFP §4 Customer References and §6 Evaluation",
+      "source": "RFP \u00a74 Customer References and \u00a76 Evaluation",
       "title": "Provide similar-size/scope customer references"
     },
     {
@@ -150,7 +150,7 @@
       "category": "submission",
       "critical": true,
       "id": "SUB-001",
-      "source": "RFP §4 Submittal Requirements",
+      "source": "RFP \u00a74 Submittal Requirements",
       "title": "Complete required proposal PDF plus Exhibits A/C Word and Exhibit B Excel"
     }
   ],
