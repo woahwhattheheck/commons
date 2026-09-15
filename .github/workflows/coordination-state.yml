@@ -21,6 +21,8 @@ on:
       - "host/coordination_state.py"
       - "host/swarm_review.py"
       - "host/swarm_review_core.py"
+      - "host/swarm_review_cli.py"
+      - "ground/swarm_review_core_legacy.txt"
       - "test_swarm_review.py"
       - "test_swarm_review_pr_binding.py"
       - "ground/SWARM_ORDER.md"
@@ -49,6 +51,8 @@ jobs:
             /host/coordination_state.py
             /host/swarm_review.py
             /host/swarm_review_core.py
+            /host/swarm_review_cli.py
+            /ground/swarm_review_core_legacy.txt
             /test_swarm_review.py
             /test_swarm_review_pr_binding.py
             /test_coordination_state.py
@@ -76,6 +80,8 @@ jobs:
             /host/coordination_state.py
             /host/swarm_review.py
             /host/swarm_review_core.py
+            /host/swarm_review_cli.py
+            /ground/swarm_review_core_legacy.txt
             /ground/SWARM_ORDER.md
             /ground/SWARM_RELIABILITY.json
       - name: Publish coordination state to state/coordination
