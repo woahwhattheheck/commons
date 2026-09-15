@@ -1,10 +1,11 @@
-"""Loopback-only HTTP surface for the media-rights desk."""
+"""Read-only loopback HTTP surface for the media-rights desk."""
 import sqlite3,sys
 from http.server import BaseHTTPRequestHandler,ThreadingHTTPServer
 from pathlib import Path
 from urllib.parse import urlparse
 from rights_model import *
-from rights_store import evaluate,record_placement,revoke_grant,queues,snapshot
+from rights_store import evaluate,queues,snapshot
+HTTP_MUTATIONS=frozenset({'/api/place','/api/revoke'})
 class ApiHandler(BaseHTTPRequestHandler):
     server_version='MediaRightsDesk/1'
     @property
@@ -21,13 +22,13 @@ class ApiHandler(BaseHTTPRequestHandler):
         except RightsError as e: self.reply(400,{'error':str(e)})
     def do_POST(self):
         try:
-            body=self.body(); path=urlparse(self.path).path
+            path=urlparse(self.path).path
+            if path in HTTP_MUTATIONS: return self.reply(405,{'error':'HTTP state mutation is disabled; use the local CLI for place/revoke'})
+            body=self.body()
             if path=='/api/evaluate': return self.reply(200,evaluate(self.db,body))
-            if path=='/api/place': x=strict_object(body,{'intent','recorded_at'},'request'); return self.reply(200,record_placement(self.db,x['intent'],x['recorded_at']))
-            if path=='/api/revoke': x=strict_object(body,{'grant_id','revoked_at'},'request'); return self.reply(200,revoke_grant(self.db,x['grant_id'],x['revoked_at']))
             if path=='/api/queues': x=strict_object(body,{'as_of','horizon_days'},'request'); return self.reply(200,queues(self.db,x['as_of'],x['horizon_days']))
             self.reply(404,{'error':'not found'})
         except (RightsError,ValueError,sqlite3.Error) as e: self.reply(400,{'error':str(e)})
     def log_message(self,fmt,*args): print('media-rights-desk:',fmt%args,file=sys.stderr)
 def serve(path,ui_path,host,port):
-    require(host in {'127.0.0.1','::1','localhost'},'server is loopback-only'); require(type(port) is int and 1<=port<=65535,'port invalid'); ui=Path(ui_path); require(ui.is_file() and not ui.is_symlink(),'UI path must be a regular non-symlink file'); httpd=ThreadingHTTPServer((host,port),ApiHandler); httpd.db_path=Path(path); httpd.ui_bytes=ui.read_bytes(); print(f'Serving local desk on http://{host}:{port}',file=sys.stderr); httpd.serve_forever()
+    require(host in {'127.0.0.1','::1','localhost'},'server is loopback-only'); require(type(port) is int and 1<=port<=65535,'port invalid'); ui=Path(ui_path); require(ui.is_file() and not ui.is_symlink(),'UI path must be a regular non-symlink file'); httpd=ThreadingHTTPServer((host,port),ApiHandler); httpd.db_path=Path(path); httpd.ui_bytes=ui.read_bytes(); print(f'Serving read-only local desk on http://{host}:{port}',file=sys.stderr); httpd.serve_forever()
