@@ -75,6 +75,11 @@ def assess_record(
         reasons.append("NO_DEPLOYMENT_EVIDENCE")
     if not probe_evidence:
         reasons.append("NO_BLACK_BOX_EVIDENCE")
+    if deployment_at is not None:
+        if any(_parse_time(item["observed_at"], "deployment_evidence.observed_at") < deployment_at for item in deployment_evidence):
+            reasons.append("DEPLOYMENT_EVIDENCE_PREDATES_DEPLOYMENT")
+        if any(_parse_time(item["observed_at"], "probe_evidence.observed_at") < deployment_at for item in probe_evidence):
+            reasons.append("BLACK_BOX_EVIDENCE_PREDATES_DEPLOYMENT")
     if generation != UNKNOWN:
         if deployment_evidence and not any(item["generation"] == generation for item in deployment_evidence):
             reasons.append("DEPLOYMENT_EVIDENCE_GENERATION_MISMATCH")
