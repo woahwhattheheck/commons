@@ -9,6 +9,7 @@ import tempfile
 from datetime import datetime, timedelta, timezone
 
 from tools.outbound_send_guard import _muse_election_v2_tests_core as _core_tests
+from tools.outbound_send_guard import muse_current_authority_v2 as current_auth
 from tools.outbound_send_guard import muse_election_v2 as gate
 
 
@@ -23,10 +24,14 @@ class MuseElectionV2Tests(_core_tests.MuseElectionV2Tests):
         prior=(),
         complete=True,
     ):
+        # Test-only direct dependency rebinding keeps the frozen predecessor
+        # fixtures deterministic. Arbitrary same-process mutation is explicitly
+        # outside the production authority threat model; application callers
+        # have no supported observed_at API/CLI input.
         req = req or _core_tests.request()
         snapshot = snapshot or _core_tests.happy(req)
-        old = gate.current_auth._utc_now
-        gate.current_auth._utc_now = lambda: gate._utc(observed, "test.observed_at")
+        old = current_auth._utc_now
+        current_auth._utc_now = lambda: gate._utc(observed, "test.observed_at")
         try:
             return gate.compile_receipt(
                 req,
@@ -35,26 +40,17 @@ class MuseElectionV2Tests(_core_tests.MuseElectionV2Tests):
                 ledger_complete=complete,
             )
         finally:
-            gate.current_auth._utc_now = old
+            current_auth._utc_now = old
 
     def test_happy_selected_and_bound(self):
         req = _core_tests.request()
         receipt = self.compile(req)
         self.assertEqual(receipt["payload"]["decision"], "HOLD")
-        self.assertIn(
-            gate.current_auth.UNAUTHENTICATED_SNAPSHOT_REASON,
-            receipt["payload"]["reasons"],
-        )
-        self.assertIn(
-            gate.current_auth.CURRENT_POSITIVE_DISABLED_REASON,
-            receipt["payload"]["reasons"],
-        )
+        self.assertIn(current_auth.UNAUTHENTICATED_SNAPSHOT_REASON, receipt["payload"]["reasons"])
+        self.assertIn(current_auth.CURRENT_POSITIVE_DISABLED_REASON, receipt["payload"]["reasons"])
         self.assertTrue(gate.verify_receipt(receipt))
         self.assertFalse(gate.verify_selected_binding(req, receipt))
-        self.assertEqual(
-            receipt["payload"]["authority_mode"],
-            gate.current_auth.AUTHORITY_MODE,
-        )
+        self.assertEqual(receipt["payload"]["authority_mode"], current_auth.AUTHORITY_MODE)
         self.assertFalse(receipt["payload"]["snapshot_authenticated"])
         self.assertFalse(receipt["payload"]["external_send_authorized"])
         self.assertFalse(receipt["payload"]["side_effects_authorized"])
@@ -69,24 +65,49 @@ class MuseElectionV2Tests(_core_tests.MuseElectionV2Tests):
             [
                 _core_tests.msg(_core_tests.sts(5), _core_tests.SENDER, mine["message"]),
                 _core_tests.msg(_core_tests.sts(6), _core_tests.OTHER, other["message"]),
-                _core_tests.msg(
-                    _core_tests.sts(15),
-                    _core_tests.MUSE,
-                    _core_tests.selected_text(other),
-                ),
+                _core_tests.msg(_core_tests.sts(15), _core_tests.MUSE, _core_tests.selected_text(other)),
             ]
         )
         receipt = self.compile(mine, snapshot)
         self.assertEqual(receipt["payload"]["decision"], "NOT_SELECTED")
-        for name in (
-            gate.current_auth._SELECTION_FIELDS
-            + gate.current_auth._WINNER_FIELDS
-        ):
+        for name in current_auth._SELECTION_FIELDS + current_auth._WINNER_FIELDS:
             self.assertIsNone(receipt["payload"][name])
         self.assertTrue(gate.verify_receipt(receipt))
 
     def test_compile_signature_has_no_observed_at(self):
         self.assertNotIn("observed_at", inspect.signature(gate.compile_receipt).parameters)
+
+    def test_public_wrapper_has_no_core_escape(self):
+        with self.assertRaises(AttributeError):
+            getattr(gate, "_core")
+        self.assertNotIn("_core", dir(gate))
+
+    def test_legacy_core_is_not_importable(self):
+        proc = subprocess.run(
+            [
+                sys.executable,
+                "-c",
+                "import importlib; importlib.import_module('tools.outbound_send_guard._muse_election_v2_core')",
+            ],
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            check=False,
+        )
+        self.assertNotEqual(proc.returncode, 0)
+        self.assertIn(b"_muse_election_v2_core", proc.stderr)
+
+    def test_legacy_core_has_no_python_m_cli(self):
+        proc = subprocess.run(
+            [sys.executable, "-m", "tools.outbound_send_guard._muse_election_v2_core", "--help"],
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            check=False,
+        )
+        self.assertNotEqual(proc.returncode, 0)
+
+    def test_threat_model_does_not_claim_same_process_sandboxing(self):
+        self.assertIn("same-process", gate.AUTHORITY_THREAT_MODEL)
+        self.assertIn("out of scope", gate.AUTHORITY_THREAT_MODEL)
 
     def test_cli_selected_exit_zero(self):
         # Replacement for the predecessor CLI test: a fresh raw SELECTED
@@ -152,10 +173,7 @@ class MuseElectionV2Tests(_core_tests.MuseElectionV2Tests):
             self.assertEqual(proc.returncode, 4, proc.stderr.decode())
             out = json.loads(proc.stdout)
             self.assertEqual(out["payload"]["decision"], "HOLD")
-            self.assertIn(
-                gate.current_auth.CURRENT_POSITIVE_DISABLED_REASON,
-                out["payload"]["reasons"],
-            )
+            self.assertIn(current_auth.CURRENT_POSITIVE_DISABLED_REASON, out["payload"]["reasons"])
 
     def test_cli_rejects_caller_observed_at(self):
         proc = subprocess.run(
