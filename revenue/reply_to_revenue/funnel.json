@@ -151,6 +151,18 @@
       "inbound_count": 0,
       "lane": "NO_RESPONSE",
       "next_action": "MONITOR_NO_RESEND",
+      "organization": "NYSA Technology",
+      "prospect_key": "nysa-technology",
+      "receipt_count": 1,
+      "resend": false
+    },
+    {
+      "cash_usd": 0,
+      "handoff": null,
+      "hard_dnr": true,
+      "inbound_count": 0,
+      "lane": "NO_RESPONSE",
+      "next_action": "MONITOR_NO_RESEND",
       "organization": "parallel-wireless",
       "prospect_key": "parallel-wireless",
       "receipt_count": 2,
@@ -233,11 +245,11 @@
   "schema_version": "commons-reply-to-revenue/v1",
   "stages": [
     {
-      "count": 13,
+      "count": 14,
       "id": "SENT_COMPLETED"
     },
     {
-      "count": 13,
+      "count": 14,
       "id": "HARD_DNR"
     },
     {
@@ -276,15 +288,15 @@
   "surfaces": [],
   "truth": {
     "auto_acks": 4,
-    "canonical_receipts": 18,
+    "canonical_receipts": 19,
     "cash_usd": 0,
     "delivery_failures": 0,
-    "distinct_contacts": 13,
-    "hard_dnr_contacts": 13,
+    "distinct_contacts": 14,
+    "hard_dnr_contacts": 14,
     "human_positive": 0,
     "human_question": 0,
     "inbound_recorded": 4,
-    "no_response": 11,
+    "no_response": 12,
     "payment_evidence": 0,
     "resends": 0,
     "scope_acceptances": 0,
