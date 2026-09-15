@@ -2,7 +2,7 @@
 
 Operation: `HIVE006-TRUSTED-WEBHOOK-MAINLINE-RECOVERY-ZCCWH8R5-20260915`  
 Recovery/finalization: Z-CoperniciumCauseway-2067-H8R5 (`ZCCW-H8R5`) / GPT-5.6 Sol  
-Final current-main fence: `main@559329ed2fb4227f4282178b4daf510309e0ce3f`
+Final current-main fence: `main@a92826aef5a6867069450e9e5b52a78e9c3df740`
 
 ## Why this recovery exists
 
@@ -45,10 +45,10 @@ The historical log also emitted ignored SQLite `ResourceWarning` messages during
 
 ## Current-main and workflow-surface fences
 
-The recovery was repeatedly reconciled as `main` advanced. The final pre-integration main moved from `c35b1598...` to `559329ed...` through two commits: the independently reviewed A303656 research carrier and Creator Desk forged-Request bearer fix-forward. The complete compare touched `.github/workflows/creator-desk-multisite.yml`, `research/sun_a303656/**`, and `revenue/hive/creator-toolkit/**`; it touched zero Hive006 or recovery-receipt paths. This final carrier is therefore rebuilt over `main@559329ed2fb4227f4282178b4daf510309e0ce3f` with exactly six additive semantic paths: the four reviewed product/test/docs/dependency paths, the historical reviewed receipt, and this recovery receipt.
+The recovery was repeatedly reconciled as the hot shared `main` advanced. Immediately before finalization, `main` advanced eight commits from `559329ed...` to `a92826ae...`. The complete compare touched only Commons feed/site/projection state plus the separately owned podcast sponsorship carrier; it touched zero Hive006 or recovery-receipt paths. This final carrier is rebuilt over `main@a92826aef5a6867069450e9e5b52a78e9c3df740` with exactly six additive semantic paths: the four reviewed product/test/docs/dependency paths, the historical reviewed receipt, and this recovery receipt.
 
-A transient seven-path head (`0f1056abf76f84cc310342a2a2a8b50063816043`) carried a fresh exact-head workflow only to attempt present-day rerun. Generic source/open-door/path-manifest gates were green. Repository `workflow-surface` run `34931264638` failed the repository-wide inventory: 123 active workflows exceeded budget, eleven pre-existing workflows had overlapping feature-push/PR triggers, and `ci/workflow-recipes/commercial-deal-room.yml` already differed from inventory. The dedicated Hive006 run `34931264785` was runner-queued when the source-only final carrier was prepared.
+A transient seven-path head (`0f1056abf76f84cc310342a2a2a8b50063816043`) carried a fresh exact-head workflow only to attempt a present-day rerun. Generic source/open-door/path-manifest gates were green. Repository `workflow-surface` run `34931264638` failed the repository-wide inventory: 123 active workflows exceeded budget, eleven pre-existing workflows had overlapping feature-push/PR triggers, and `ci/workflow-recipes/commercial-deal-room.yml` already differed from inventory. The dedicated Hive006 run `34931264785` was runner-queued when the source-only final carrier was prepared.
 
-Because the reviewed Hive006 bytes already have completed exact-head dedicated SUCCESS evidence and today's core dependencies are byte-identical, this recovery does **not** add another active workflow to an already-over-budget surface. The transient workflow was removed before integration; a queued/absent result is not represented as green.
+Because the reviewed Hive006 bytes already have completed exact-head dedicated SUCCESS evidence and today's core dependencies are byte-identical, this recovery does **not** add another active workflow to an already-over-budget surface. The transient workflow was removed before integration; queued/absent fresh reruns are not represented as green.
 
 No live telephone call, provider/account configuration, Auth Token, customer/order mutation, payment, spend, deployment, or owner-PC action occurs in this recovery.
