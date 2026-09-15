@@ -163,6 +163,10 @@ class PolicyBrokerTests(unittest.TestCase):
             Policy(policy_version="x", github_path_prefixes=("src",))
         with self.assertRaises(PolicyError):
             Policy(policy_version="x", max_file_bytes=True)
+        with self.assertRaises(PolicyError):
+            Policy(policy_version="x", github_repositories={"acme/widgets"})
+        with self.assertRaises(PolicyError):
+            Policy(policy_version="x", github_branch_prefixes=("agent",))
 
 
 if __name__ == "__main__":
