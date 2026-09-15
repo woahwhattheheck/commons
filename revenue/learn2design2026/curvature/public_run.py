@@ -54,7 +54,7 @@ def feasible_statistics(loss_history, sensitivity_history, feasible_history, wid
     import numpy as np
     if not (len(loss_history) == len(sensitivity_history) == len(feasible_history)):
         raise ValueError("aux histories are absent or not aligned with losses")
-    if not loss_history:
+    if len(loss_history) == 0:
         raise ValueError("no result-producing evaluation history")
     losses, sensitivities, feasible = [], [], []
     for raw, sensitivity, flag in zip(loss_history, sensitivity_history, feasible_history):

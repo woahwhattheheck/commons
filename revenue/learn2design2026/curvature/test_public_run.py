@@ -17,6 +17,11 @@ class PublicHistoryTests(unittest.TestCase):
         self.assertEqual(result['feasible_finite_evaluations'], 2)
         self.assertIsNone(result['official_score'])
 
+    def test_numpy_outer_history_is_supported(self):
+        result = feasible_statistics(np.array([[1., 2.]]), np.array([[1., 2.]]),
+                                     np.array([[False, True]]), 2, 2)
+        self.assertEqual(result['best_feasible_objective_loss'], 2.)
+
     def test_no_feasible_point_remains_none(self):
         result = feasible_statistics([[1., 2.]], [[1., 2.]], [[False, False]], 2, 2)
         self.assertFalse(result['has_feasible_point'])

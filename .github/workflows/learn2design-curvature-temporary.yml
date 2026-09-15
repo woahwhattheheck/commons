@@ -47,6 +47,7 @@ jobs:
           python -m pip freeze > /tmp/curvature-public/pip-freeze.txt
       - name: Exact source and history-contract tests
         run: |
+          set -euo pipefail
           python -m unittest discover -s revenue/learn2design2026/curvature -v 2>&1 | tee /tmp/curvature-public/tests.txt
           python -m py_compile revenue/learn2design2026/curvature/*.py
       - name: Matched public cells with full batched feasibility
@@ -66,7 +67,7 @@ jobs:
                 2>&1 | tee "/tmp/curvature-public/$seed-$arm.log"
             done
           done
-          sha256sum /tmp/curvature-public/* > /tmp/curvature-public/SHA256SUMS
+          sha256sum /tmp/curvature-public/*.json /tmp/curvature-public/*.log /tmp/curvature-public/*.txt > /tmp/curvature-public/SHA256SUMS
       - name: Preserve terminal logs and observations
         if: always()
         uses: actions/upload-artifact@v4
