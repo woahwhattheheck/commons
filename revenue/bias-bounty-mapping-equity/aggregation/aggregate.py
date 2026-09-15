@@ -2,20 +2,23 @@
 """Sealed-generation authority wrapper for Mapping Equity aggregation.
 
 The exact runner merged by #14579 is preserved byte-for-byte in
-`_aggregate_unsealed.py`. This successor hardens two authority primitives while
+`_aggregate_unsealed.py`. This successor hardens three authority primitives while
 leaving the landed scorer/policy implementation frozen:
 
 * remote source bytes are retained in a kernel-sealed memfd so the public
   `/proc/self/fd/<n>` read path cannot be reopened and mutated between preflight
-  and scored aggregation; and
+  and scored aggregation;
 * response bytes become source authority only when the final resolved URL is
-  exactly the canonical registry URL that was requested.
+  exactly the canonical registry URL that was requested; and
+* the production receipt-minting entrypoint captures code-owned execution
+  dependencies and exposes no dependency-injection parameters.
 
 Primary implementation/source credit remains ZSA-D6P2. ZFS-R7 supplied
 alternate-carrier review evidence; ZHD-K8P3 recovered/finalized M1 and the
 first generation/policy fix; ZRH-H7N4 owns the sealed-generation fix-forward.
 Keystone / GPT-5.6 Sol identified the redirect-provenance defect; ZCE-J5V8 /
-GPT-5.6 Sol owns this exact-identity fix-forward.
+GPT-5.6 Sol owns the exact-identity fix-forward. ZPB-X4K8 identified the
+production dependency-injection receipt bypass; Z-Argent closes it here.
 """
 from __future__ import annotations
 
@@ -205,99 +208,129 @@ def _materialize_sources(region: str, _one=_materialize_one) -> _legacy._Materia
         raise
 
 
-def execute_region(
-    region: str,
-    output: Path,
-    receipt: Path,
-    _materializer=_materialize_sources,
-    _connector=_legacy._connect_duckdb,
-    _query_builder=_legacy._aggregate_query_for_registry,
-) -> dict[str, object]:
-    """Execute the frozen scorer while preserving resolved source provenance."""
-    region = _legacy._region(region)
-    if output.resolve() == receipt.resolve():
-        raise AggregationError("output and receipt must be different paths")
-    if output.exists() or receipt.exists():
-        raise AggregationError("run outputs are create-exclusive; choose fresh paths")
-    materialized = _materializer(region)
-    con = None
-    try:
-        con = _connector()
-        preflight = _legacy.run_preflight(
-            con,
-            region,
-            materialized.registry,
-            materialized.generations,
-        )
-        query = _query_builder(region, materialized.registry)
-        cursor = con.execute(query)
-        fieldnames = [str(desc[0]) for desc in cursor.description]
-        rows = cursor.fetchall()
-        cleaned = _legacy.validate_rows(region, fieldnames, rows)
-        csv_text = _legacy.render_csv(cleaned)
-        csv_sha = hashlib.sha256(csv_text.encode("utf-8")).hexdigest()
-        canonical_query = _legacy._canonicalize_bound_sql(
-            query,
-            materialized.registry,
-            materialized.generations,
-        )
-        generation_receipt = {
-            key: {
-                "uri": value["uri"],
-                "resolved_url": value.get("resolved_url", value["uri"]),
-                "sha256": value["sha256"],
-                "bytes": value["bytes"],
-                "generation": value["generation"],
+def _generation_receipt(
+    generations: dict[str, dict[str, object]],
+) -> dict[str, dict[str, object]]:
+    """Normalize admitted source-generation evidence without minting run truth."""
+    return {
+        key: {
+            "uri": value["uri"],
+            "resolved_url": value.get("resolved_url", value["uri"]),
+            "sha256": value["sha256"],
+            "bytes": value["bytes"],
+            "generation": value["generation"],
+        }
+        for key, value in generations.items()
+    }
+
+
+def _make_authoritative_execute_region(
+    materializer,
+    connector,
+    query_builder,
+    preflight_runner,
+    row_validator,
+    csv_renderer,
+    sql_canonicalizer,
+    plan_builder,
+    exclusive_writer,
+):
+    """Bind the complete authoritative execution path into an uninjectable closure."""
+
+    def execute_region(region: str, output: Path, receipt: Path) -> dict[str, object]:
+        """Execute only the code-owned public-data path and mint its bound receipt."""
+        region = _legacy._region(region)
+        if output.resolve() == receipt.resolve():
+            raise AggregationError("output and receipt must be different paths")
+        if output.exists() or receipt.exists():
+            raise AggregationError("run outputs are create-exclusive; choose fresh paths")
+        materialized = materializer(region)
+        con = None
+        try:
+            con = connector()
+            preflight = preflight_runner(
+                con,
+                region,
+                materialized.registry,
+                materialized.generations,
+            )
+            query = query_builder(region, materialized.registry)
+            cursor = con.execute(query)
+            fieldnames = [str(desc[0]) for desc in cursor.description]
+            rows = cursor.fetchall()
+            cleaned = row_validator(region, fieldnames, rows)
+            csv_text = csv_renderer(cleaned)
+            csv_sha = hashlib.sha256(csv_text.encode("utf-8")).hexdigest()
+            canonical_query = sql_canonicalizer(
+                query,
+                materialized.registry,
+                materialized.generations,
+            )
+            payload = {
+                "schema": "mapping-equity-public-aggregation/v2",
+                "region": region,
+                "duckdb_version": "1.5.4",
+                "overture_release": "2026-08-19.0",
+                "real_public_data_executed": True,
+                "row_count": len(cleaned),
+                "output_csv_sha256": csv_sha,
+                "input_generations": _generation_receipt(materialized.generations),
+                "bound_query_sha256": hashlib.sha256(canonical_query.encode("utf-8")).hexdigest(),
+                "preflight": preflight,
+                "plan": plan_builder(region),
+                "claims": {
+                    "zindi_registered": False,
+                    "submitted_to_zindi": False,
+                    "leaderboard_score_claimed": False,
+                    "award_claimed": False,
+                    "payment_claimed": False,
+                },
             }
-            for key, value in materialized.generations.items()
-        }
-        payload = {
-            "schema": "mapping-equity-public-aggregation/v2",
-            "region": region,
-            "duckdb_version": "1.5.4",
-            "overture_release": "2026-08-19.0",
-            "real_public_data_executed": True,
-            "row_count": len(cleaned),
-            "output_csv_sha256": csv_sha,
-            "input_generations": generation_receipt,
-            "bound_query_sha256": hashlib.sha256(canonical_query.encode("utf-8")).hexdigest(),
-            "preflight": preflight,
-            "plan": _legacy.build_plan(region),
-            "claims": {
-                "zindi_registered": False,
-                "submitted_to_zindi": False,
-                "leaderboard_score_claimed": False,
-                "award_claimed": False,
-                "payment_claimed": False,
-            },
-        }
-        body = json.dumps(
-            payload,
-            sort_keys=True,
-            separators=(",", ":"),
-            ensure_ascii=True,
-        )
-        envelope = {
-            "payload": payload,
-            "payload_sha256": hashlib.sha256(body.encode("utf-8")).hexdigest(),
-        }
-        receipt_text = json.dumps(
-            envelope,
-            sort_keys=True,
-            indent=2,
-            ensure_ascii=True,
-        ) + "\n"
-        _legacy._write_new(output, csv_text)
-        _legacy._write_new(receipt, receipt_text)
-        return {
-            "region": region,
-            "rows": len(cleaned),
-            "output_csv_sha256": csv_sha,
-        }
-    finally:
-        if con is not None:
-            con.close()
-        materialized.close()
+            body = json.dumps(
+                payload,
+                sort_keys=True,
+                separators=(",", ":"),
+                ensure_ascii=True,
+            )
+            envelope = {
+                "payload": payload,
+                "payload_sha256": hashlib.sha256(body.encode("utf-8")).hexdigest(),
+            }
+            receipt_text = json.dumps(
+                envelope,
+                sort_keys=True,
+                indent=2,
+                ensure_ascii=True,
+            ) + "\n"
+            exclusive_writer(output, csv_text)
+            exclusive_writer(receipt, receipt_text)
+            return {
+                "region": region,
+                "rows": len(cleaned),
+                "output_csv_sha256": csv_sha,
+            }
+        finally:
+            if con is not None:
+                con.close()
+            materialized.close()
+
+    return execute_region
+
+
+execute_region = _make_authoritative_execute_region(
+    _materialize_sources,
+    _legacy._connect_duckdb,
+    _legacy._aggregate_query_for_registry,
+    _legacy.run_preflight,
+    _legacy.validate_rows,
+    _legacy.render_csv,
+    _legacy._canonicalize_bound_sql,
+    _legacy.build_plan,
+    _legacy._write_new,
+)
+# Do not leave a callable factory that a direct-library caller could reuse with
+# substituted dependencies to manufacture an authoritative receipt entrypoint.
+del _make_authoritative_execute_region
 
 
 # Preserve `_aggregate_unsealed.py` byte-for-byte. Rebind only the live authority
