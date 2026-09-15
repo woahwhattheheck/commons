@@ -33,7 +33,10 @@ def base_record():
             "accepted_at": "2026-09-14T18:30:00-04:00",
             "evidence_refs": ["email:synthetic-acceptance-1"],
         },
-        "quote": {"text": "The bounded artifact met the requested acceptance checks.", "evidence_ref": "email:synthetic-quote-1"},
+        "quote": {
+            "text": "The bounded artifact met the requested acceptance checks.",
+            "evidence_ref": "email:synthetic-quote-1",
+        },
         "outcomes": [
             {
                 "claim": "Buyer confirmed the requested acceptance checks passed.",
@@ -89,7 +92,15 @@ class PaidProofTests(unittest.TestCase):
 
     def test_public_named_requires_independent_scopes(self):
         record = base_record()
-        for scope in ("public_proof", "payment_fact", "customer_identity", "logo", "exact_amount", "delivery_acceptance", "quote"):
+        for scope in (
+            "public_proof",
+            "payment_fact",
+            "customer_identity",
+            "logo",
+            "exact_amount",
+            "delivery_acceptance",
+            "quote",
+        ):
             record["permissions"][scope] = permission(True, f"email:permission:{scope}")
         record["outcomes"][0]["publication_permission"] = permission(True, "email:permission:outcome")
         compiled = compile_proof(record)
@@ -100,6 +111,32 @@ class PaidProofTests(unittest.TestCase):
         self.assertTrue(projection["delivery_accepted"])
         self.assertEqual(projection["quote"], record["quote"]["text"])
         self.assertEqual(len(projection["outcomes"]), 1)
+
+    def test_public_outcome_projection_omits_private_evidence_refs(self):
+        record = base_record()
+        record["permissions"]["public_proof"] = permission(True, "email:permission:public")
+        record["permissions"]["payment_fact"] = permission(True, "email:permission:payment")
+        record["outcomes"][0]["evidence_refs"] = [
+            "email:private-buyer@example.test/thread/123",
+            "stripe:private-payment-reference",
+        ]
+        record["outcomes"][0]["publication_permission"] = permission(
+            True,
+            "email:permission:outcome",
+        )
+
+        compiled = compile_proof(record)
+        projection = compiled.proof["public_projection"]
+        self.assertEqual(
+            projection["outcomes"],
+            [{"claim": record["outcomes"][0]["claim"]}],
+        )
+        public_blob = json.dumps(projection)
+        self.assertNotIn("private-buyer@example.test", public_blob)
+        self.assertNotIn("private-payment-reference", public_blob)
+        private_blob = json.dumps(compiled.proof["private_evidence"])
+        self.assertIn("private-buyer@example.test", private_blob)
+        self.assertIn("private-payment-reference", private_blob)
 
     def test_quote_requires_source_pair(self):
         record = base_record()
@@ -120,13 +157,79 @@ class PaidProofTests(unittest.TestCase):
         with self.assertRaises(ProofError):
             compile_proof(record)
 
-    def test_outcome_without_permission_is_withheld(self):
+    def test_outcome_without_permission_is_withheld_without_claim_leak(self):
         record = base_record()
+        private_claim = "PRIVATE BUYER OUTCOME MUST NOT SHIP"
+        record["outcomes"][0]["claim"] = private_claim
         record["permissions"]["public_proof"] = permission(True, "email:permission:public")
         record["permissions"]["payment_fact"] = permission(True, "email:permission:payment")
-        proof = compile_proof(record).proof
-        self.assertEqual(proof["public_projection"]["outcomes"], [])
-        self.assertTrue(any(item.startswith("outcome:") for item in proof["withheld"]))
+        compiled = compile_proof(record)
+        self.assertEqual(compiled.proof["public_projection"]["outcomes"], [])
+        self.assertIn("outcome_claim", compiled.proof["withheld"])
+        self.assertNotIn(private_claim, compiled.markdown)
+
+    def test_markdown_projection_neutralizes_structure_and_controls(self):
+        record = base_record()
+        record["customer"]["display_name"] = (
+            "Synthetic Buyer**\n\n# FORGED CUSTOMER CLAIM\n\n"
+            "[click](https://example.invalid)\u202e"
+        )
+        record["customer"]["logo_ref"] = "logo` **FORGED LOGO CLAIM** `"
+        record["quote"]["text"] = "Approved\n\n# FORGED QUOTE CLAIM"
+        record["outcomes"][0]["claim"] = "Permissioned fact\n\n# FORGED OUTCOME CLAIM"
+        for scope in (
+            "public_proof",
+            "payment_fact",
+            "customer_identity",
+            "logo",
+            "exact_amount",
+            "delivery_acceptance",
+            "quote",
+        ):
+            record["permissions"][scope] = permission(True, f"email:permission:{scope}")
+        record["outcomes"][0]["publication_permission"] = permission(
+            True,
+            "email:permission:outcome",
+        )
+
+        markdown = compile_proof(record).markdown
+        for forged_heading in (
+            "\n# FORGED CUSTOMER CLAIM",
+            "\n# FORGED QUOTE CLAIM",
+            "\n# FORGED OUTCOME CLAIM",
+        ):
+            self.assertNotIn(forged_heading, markdown)
+        self.assertNotIn("**FORGED LOGO CLAIM**", markdown)
+        self.assertNotIn("\u202e", markdown)
+        self.assertIn(r"\# FORGED CUSTOMER CLAIM", markdown)
+        self.assertIn(r"\# FORGED QUOTE CLAIM", markdown)
+        self.assertIn(r"\# FORGED OUTCOME CLAIM", markdown)
+        self.assertIn(r"\*\*FORGED LOGO CLAIM\*\*", markdown)
+
+    def test_markdown_projection_preserves_entities_and_breaks_autolinks(self):
+        record = base_record()
+        record["customer"]["display_name"] = (
+            "O'Connor https://example.invalid www.example.invalid user@example.invalid"
+        )
+        record["quote"] = {
+            "text": "Contact @buyer / see https://example.invalid/path.",
+            "evidence_ref": "email:synthetic-quote-1",
+        }
+        for scope in ("public_proof", "payment_fact", "customer_identity", "quote"):
+            record["permissions"][scope] = permission(True, f"email:permission:{scope}")
+
+        markdown = compile_proof(record).markdown
+        self.assertIn("O&#x27;Connor", markdown)
+        self.assertNotIn(r"&\#x27;", markdown)
+        for autolink_source in (
+            "https://",
+            "www.example",
+            "user@example",
+            "@buyer",
+        ):
+            self.assertNotIn(autolink_source, markdown)
+        self.assertIn("https&#58;&#47;&#47;example&#46;invalid", markdown)
+        self.assertIn("user&#64;example&#46;invalid", markdown)
 
     def test_revocation_forces_hold(self):
         record = base_record()
@@ -173,11 +276,13 @@ class PaidProofTests(unittest.TestCase):
     def test_irrelevant_input_order_is_deterministic(self):
         a = base_record()
         a["payment"]["evidence_refs"] = ["stripe:z", "stripe:a"]
-        a["outcomes"].append({
-            "claim": "A second synthetic verified fact.",
-            "evidence_refs": ["evidence:z", "evidence:a"],
-            "publication_permission": permission(False),
-        })
+        a["outcomes"].append(
+            {
+                "claim": "A second synthetic verified fact.",
+                "evidence_refs": ["evidence:z", "evidence:a"],
+                "publication_permission": permission(False),
+            }
+        )
         b = copy.deepcopy(a)
         b["payment"]["evidence_refs"].reverse()
         b["outcomes"].reverse()
@@ -200,8 +305,33 @@ class PaidProofTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp:
             input_path = Path(tmp) / "input.json"
             input_path.write_text(json.dumps(record), encoding="utf-8")
-            normal = subprocess.run([sys.executable, "-m", "revenue.verified_paid_proof.verified_paid_proof", str(input_path), "--json"], check=True, capture_output=True, text=True, cwd=ROOT)
-            optimized = subprocess.run([sys.executable, "-O", "-m", "revenue.verified_paid_proof.verified_paid_proof", str(input_path), "--json"], check=True, capture_output=True, text=True, cwd=ROOT)
+            normal = subprocess.run(
+                [
+                    sys.executable,
+                    "-m",
+                    "revenue.verified_paid_proof.verified_paid_proof",
+                    str(input_path),
+                    "--json",
+                ],
+                check=True,
+                capture_output=True,
+                text=True,
+                cwd=ROOT,
+            )
+            optimized = subprocess.run(
+                [
+                    sys.executable,
+                    "-O",
+                    "-m",
+                    "revenue.verified_paid_proof.verified_paid_proof",
+                    str(input_path),
+                    "--json",
+                ],
+                check=True,
+                capture_output=True,
+                text=True,
+                cwd=ROOT,
+            )
             self.assertEqual(normal.stdout, optimized.stdout)
 
 
