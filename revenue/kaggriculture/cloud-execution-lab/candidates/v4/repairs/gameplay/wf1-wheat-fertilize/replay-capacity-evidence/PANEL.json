@@ -1,0 +1,249 @@
+{
+  "arms": [
+    "recorded",
+    "off",
+    "on"
+  ],
+  "candidate_seat_source": "v31_seats.json (not v31_episode_seats.txt, which lists OPPONENT seats)",
+  "candidate_seat_source_sha256": "d4e5b9342533f9f2fb0c07791b271b5ca9ccd9116f116d460c5c4fde66476c0c",
+  "cells": [
+    {
+      "candidate_seat": 1,
+      "episode": 107941268,
+      "names": [
+        "Bryce Muhlnickel",
+        "Bryce Muhlnickel"
+      ],
+      "pinned_opponent_seat": 0,
+      "seed": 0,
+      "self_play": true,
+      "tape": "107941268.json",
+      "tape_sha256": "b0def4aaf17114364ecac8704f8445f9e52855ee24ce531f3db364a9e4384d36"
+    },
+    {
+      "candidate_seat": 1,
+      "episode": 107941371,
+      "names": [
+        "ADITYA BEECHA",
+        "Bryce Muhlnickel"
+      ],
+      "pinned_opponent_seat": 0,
+      "seed": 1736385211,
+      "self_play": false,
+      "tape": "107941371.json",
+      "tape_sha256": "f9370d66147e3c4fd5f28045cccf7aee23e8606eb4a2bea2cecc0082667af7da"
+    },
+    {
+      "candidate_seat": 1,
+      "episode": 107942349,
+      "names": [
+        "JeremyLIU858",
+        "Bryce Muhlnickel"
+      ],
+      "pinned_opponent_seat": 0,
+      "seed": 1878463740,
+      "self_play": false,
+      "tape": "107942349.json",
+      "tape_sha256": "e798de06a6d345c46efc8cf9fbfb6f76b8b83121e3aa6545d09edf36ee6f8d26"
+    },
+    {
+      "candidate_seat": 0,
+      "episode": 107943332,
+      "names": [
+        "Bryce Muhlnickel",
+        "Sujal Agarwal2301"
+      ],
+      "pinned_opponent_seat": 1,
+      "seed": 401162751,
+      "self_play": false,
+      "tape": "107943332.json",
+      "tape_sha256": "de1d96516d01c22501d909991ffe5be2fe6ca42d5ecebe9537b8d668e0403d13"
+    },
+    {
+      "candidate_seat": 0,
+      "episode": 107944317,
+      "names": [
+        "Bryce Muhlnickel",
+        "Abdillah Sagif"
+      ],
+      "pinned_opponent_seat": 1,
+      "seed": 760214858,
+      "self_play": false,
+      "tape": "107944317.json",
+      "tape_sha256": "65785ea39d987936e6e7fe9368d8e263e80e0a11fd5b7899cbe540d49ea7a0b6"
+    },
+    {
+      "candidate_seat": 1,
+      "episode": 107945303,
+      "names": [
+        "yuyinghuang",
+        "Bryce Muhlnickel"
+      ],
+      "pinned_opponent_seat": 0,
+      "seed": 382216214,
+      "self_play": false,
+      "tape": "107945303.json",
+      "tape_sha256": "834628a581169bbcb060083e482bf70d97c2e85493072603addc93daa885842d"
+    },
+    {
+      "candidate_seat": 1,
+      "episode": 107946286,
+      "names": [
+        "MarvinTMB",
+        "Bryce Muhlnickel"
+      ],
+      "pinned_opponent_seat": 0,
+      "seed": 1367091054,
+      "self_play": false,
+      "tape": "107946286.json",
+      "tape_sha256": "ebeee263961aa71641d03bde39e24922f168ac0bafb0e081d914e3095fe00988"
+    },
+    {
+      "candidate_seat": 1,
+      "episode": 107947270,
+      "names": [
+        "Mr.Frundles",
+        "Bryce Muhlnickel"
+      ],
+      "pinned_opponent_seat": 0,
+      "seed": 1913450718,
+      "self_play": false,
+      "tape": "107947270.json",
+      "tape_sha256": "df09ed19207ece9ef3f59fa12ca8612f3a38daef082ef00978ae6cde2e987336"
+    },
+    {
+      "candidate_seat": 0,
+      "episode": 107948252,
+      "names": [
+        "Bryce Muhlnickel",
+        "GO HIROSHIMA 2"
+      ],
+      "pinned_opponent_seat": 1,
+      "seed": 451009875,
+      "self_play": false,
+      "tape": "107948252.json",
+      "tape_sha256": "9cd3b4c6dfbcd463dcfd3ae8fa75d6218c5e4f7731d5ac67aa76f867d70e7165"
+    },
+    {
+      "candidate_seat": 0,
+      "episode": 107949236,
+      "names": [
+        "Bryce Muhlnickel",
+        "zyichi"
+      ],
+      "pinned_opponent_seat": 1,
+      "seed": 1209807063,
+      "self_play": false,
+      "tape": "107949236.json",
+      "tape_sha256": "21218307b05826a50a18606db458552c45677a5c6035dd995b29872020a980a5"
+    },
+    {
+      "candidate_seat": 0,
+      "episode": 107950220,
+      "names": [
+        "Bryce Muhlnickel",
+        "shenjj02"
+      ],
+      "pinned_opponent_seat": 1,
+      "seed": 248504394,
+      "self_play": false,
+      "tape": "107950220.json",
+      "tape_sha256": "014a03364f98a043427aedca74c530936c0105dd9c75e53bd9f52de1129b1e72"
+    },
+    {
+      "candidate_seat": 1,
+      "episode": 107951199,
+      "names": [
+        "Thành Toàn Vương",
+        "Bryce Muhlnickel"
+      ],
+      "pinned_opponent_seat": 0,
+      "seed": 1007670178,
+      "self_play": false,
+      "tape": "107951199.json",
+      "tape_sha256": "75d4a24e1d4e5339a40209f84db18e02f2aa89f67736d0d0c40165b8b9968e8f"
+    },
+    {
+      "candidate_seat": 1,
+      "episode": 107952194,
+      "names": [
+        "Ctrl+Code",
+        "Bryce Muhlnickel"
+      ],
+      "pinned_opponent_seat": 0,
+      "seed": 1673485849,
+      "self_play": false,
+      "tape": "107952194.json",
+      "tape_sha256": "fe0e576397950fe406f60a33e5773601ea45225cd7b8472fcb51cb1f4cb4e2d7"
+    },
+    {
+      "candidate_seat": 1,
+      "episode": 107952661,
+      "names": [
+        "Claude Fable 5.1",
+        "Bryce Muhlnickel"
+      ],
+      "pinned_opponent_seat": 0,
+      "seed": 1846780275,
+      "self_play": false,
+      "tape": "107952661.json",
+      "tape_sha256": "2efe1cb698cef3dcda59d39cf7b782491a99aa7ab5f2011139e8e9d0d690f477"
+    },
+    {
+      "candidate_seat": 0,
+      "episode": 107953186,
+      "names": [
+        "Bryce Muhlnickel",
+        "Yosef Zoabi"
+      ],
+      "pinned_opponent_seat": 1,
+      "seed": 3506964,
+      "self_play": false,
+      "tape": "107953186.json",
+      "tape_sha256": "f150ccbb48d16b6fed43fd2710d66b20161b0bcf8ef23148ee90ba5f5c908190"
+    },
+    {
+      "candidate_seat": 1,
+      "episode": 107954187,
+      "names": [
+        "hinemos",
+        "Bryce Muhlnickel"
+      ],
+      "pinned_opponent_seat": 0,
+      "seed": 34663925,
+      "self_play": false,
+      "tape": "107954187.json",
+      "tape_sha256": "19677daa2c82a865313ec086d7faf465e4c76e10f1db9b325be1c51d2adcc72d"
+    },
+    {
+      "candidate_seat": 1,
+      "episode": 107955174,
+      "names": [
+        "Sidharth Hulyalkar",
+        "Bryce Muhlnickel"
+      ],
+      "pinned_opponent_seat": 0,
+      "seed": 515458744,
+      "self_play": false,
+      "tape": "107955174.json",
+      "tape_sha256": "f8162aa36e82a397e4d28f85f8774267260cd94271fc1f206bdd909b7d5ed7f1"
+    },
+    {
+      "candidate_seat": 1,
+      "episode": 107956215,
+      "names": [
+        "masayoshi",
+        "Bryce Muhlnickel"
+      ],
+      "pinned_opponent_seat": 0,
+      "seed": 1945654586,
+      "self_play": false,
+      "tape": "107956215.json",
+      "tape_sha256": "f19be234fdcbe735dcb1844baaf9b738ea4c20973e898ab0e11a5b5f4c6d609e"
+    }
+  ],
+  "schema": "wf1-declared-replay-panel/v1",
+  "selection": "all 18 available tapes; self-play reported separately; no outcome filtering",
+  "source_kind": "18 V3.1 live compact tapes; separate from the 88-cell historical panel",
+  "source_slack_file": "F0C1D4ZKBGR"
+}
