@@ -98,10 +98,10 @@ def _validate_consortium(
     pi_evidence = None
     if raw_pi_evidence is not None:
         pi_evidence = normalize_coordinator_pi_evidence(raw_pi_evidence, "$.consortium.coordinator_pi_evidence")
-        if pi_evidence["other_coordinating_proposal_count"] != 0:
-            reasons.append(_reason("COORDINATOR_PI_ALREADY_COORDINATING_OTHER_PROPOSAL", "coordinating PI evidence shows another Water4All 2026 JTC/ECR coordinating role", [pi_evidence["pi_id"]]))
+        if pi_evidence["other_jtc_ecr_proposal_count"] != 0:
+            reasons.append(_reason("COORDINATOR_PI_OTHER_PROPOSAL_PARTICIPATION", "coordinating PI evidence shows participation in another Water4All 2026 JTC/ECR proposal, whether as coordinator or partner PI", [pi_evidence["pi_id"]]))
     elif current_mode:
-        reasons.append(_reason("COORDINATOR_PI_CROSS_PROPOSAL_EVIDENCE_MISSING", "CURRENT consortium lacks repository-trusted evidence that the coordinating PI is not coordinating another JTC/ECR proposal"))
+        reasons.append(_reason("COORDINATOR_PI_CROSS_PROPOSAL_EVIDENCE_MISSING", "CURRENT consortium lacks repository-trusted evidence that the coordinating PI does not participate in any other JTC/ECR proposal"))
 
     if current_mode and pi_evidence is not None:
         trusted_rows = trusted_coordinator_pi_evidence()
