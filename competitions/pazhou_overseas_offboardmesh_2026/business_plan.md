@@ -6,24 +6,24 @@
 
 ## 1. Executive summary
 
-OffboardMesh is an AI-assisted client-offboarding control plane for MSPs, agencies, consultancies, and other professional-services operators. The model proposes structured closeout work from owner-supplied evidence; deterministic code decides whether evidence is present and fresh, binds each proposed task to that evidence, and emits a tamper-evident owner-review packet. The software does not execute revocations, customer contact, billing changes, deletion/export, shipping, contract termination, legal conclusions, CRM mutations, or payments.
+OffboardMesh is an AI-assisted client-offboarding control plane for MSPs, agencies, consultancies, and other professional-services operators. The model proposes structured closeout work from caller-supplied evidence; deterministic code validates the evidence shape and request-time freshness, digest-binds each proposed task to that material, and emits a tamper-evident owner-review packet. The current verifier separately samples its own process clock before calling a packet current. Evidence provenance remains caller-asserted and unverified until a future integration binds it to an independent owner authority. The software does not execute revocations, customer contact, billing changes, deletion/export, shipping, contract termination, legal conclusions, CRM mutations, or payments.
 
-The wedge is deliberate: use models for interpretation and proposal generation, but keep authority, evidence, freshness, and replay deterministic.
+The wedge is deliberate: use models for interpretation and proposal generation, but keep execution authority, freshness semantics, replay and evidence digests deterministic without pretending a caller boolean proves provenance.
 
 ## 2. Problem
 
-Client offboarding crosses access, files, assets, billing, contracts, and documentation. Generic checklists lose source provenance. Generic agents can also blur a suggestion into an instruction with real side effects. Operators need a review surface that shows what the model proposed, what owner evidence supports it, what is stale or missing, and what still requires human execution.
+Client offboarding crosses access, files, assets, billing, contracts, and documentation. Generic checklists lose source provenance. Generic agents can also blur a suggestion into an instruction with real side effects. Operators need a review surface that shows what the model proposed, which evidence rows were supplied, whether those rows remain current, and what still requires human review and execution.
 
 ## 3. Product
 
 The competition carrier demonstrates:
 
-1. owner-supplied evidence with opaque references and content hashes;
+1. caller-supplied evidence with opaque references and content hashes, with provenance explicitly marked `CALLER_ASSERTED_UNVERIFIED`;
 2. a synthetic model adapter whose suggestions are required to remain `PROPOSAL_ONLY`;
-3. evidence/freshness validation before a task can become review-ready;
+3. request-time evidence validation plus verifier-owned present-time freshness before a packet can be called current;
 4. an authority firewall whose external/destructive/customer/payment/legal/CRM bits are all false;
-5. deterministic receipt hashing;
-6. current-vs-historical verification: an exact current plan validates as current, while an intact packet from an older explicit plan version can be recognized as historical rather than silently reused.
+5. deterministic receipt hashing and exact-source replay;
+6. separate current and historical semantics: an exact packet is historically replayable independent of wall clock, but is current only while verifier-owned time remains inside its evidence-age and requested closeout window.
 
 The shipped Client Offboarding Desk core is pinned in `submission_manifest.json`. This competition layer is additive and does not modify that product.
 
@@ -31,9 +31,9 @@ The shipped Client Offboarding Desk core is pinned in `submission_manifest.json`
 
 **Initial ICP:** MSPs, digital agencies, consultancies, and professional-services operations that repeatedly close client engagements and must coordinate work across technical and commercial owners.
 
-**Initial use case:** a bounded owner-review package for one legal entity and a limited set of engagement closeouts. OffboardMesh helps assemble and validate review evidence; owners continue to execute actions in their existing systems.
+**Initial use case:** a bounded owner-review package for one legal entity and a limited set of engagement closeouts. OffboardMesh helps assemble and validate review evidence; owners continue to establish provenance and execute actions in their existing systems.
 
-No customer adoption, accepted buyer intent, production deployment, or revenue is claimed by this repository.
+No customer adoption, accepted buyer intent, production deployment, independently authenticated owner-evidence integration, or revenue is claimed by this repository.
 
 ## 5. Commercial hypothesis
 
@@ -43,22 +43,24 @@ These are proposed prices, not booked, contracted, invoiced, collected, or recog
 
 ## 6. Why AI + deterministic control
 
-Models can interpret varied closeout notes and suggest structured tasks. They are not the source of authority. The deterministic layer rejects malformed or contact/secret-shaped references, requires owner-supplied evidence, enforces freshness, binds every task to known evidence, rejects non-proposal states, and produces a receipt that can be replayed and checked.
+Models can interpret varied closeout notes and suggest structured tasks. They are not the source of authority. The deterministic layer rejects malformed or contact/secret-shaped references, validates caller-supplied evidence, enforces request-time and current-time freshness on separate paths, binds every task to known evidence digests, rejects non-proposal states, and produces a receipt that can be replayed and checked.
 
-This design also makes model-provider substitution possible later without changing the authority boundary.
+The synthetic `ownerSupplied` input flag is only a caller assertion. It does not authenticate the caller or evidence source. A production design would need an independently retained owner-authority generation, signed ingest, or equivalent trusted boundary before claiming owner provenance.
+
+This design also makes model-provider substitution possible later without changing the execution-authority boundary.
 
 ## 7. Competitive wedge
 
 - **Authority separation:** model suggestions cannot mint execution permission.
-- **Evidence binding:** every proposed task cites explicit owner evidence.
-- **Freshness semantics:** old plan receipts are distinguishable from current review state.
+- **Truthful evidence binding:** every proposed task cites explicit supplied evidence, while provenance stays unverified unless independently established.
+- **Freshness semantics:** verifier-owned current time can expire a formerly fresh packet without destroying its historical replay integrity.
 - **Opaque references:** the synthetic review carrier does not expose durable customer contact routes or secrets.
 - **Replayability:** canonical JSON hashing makes the exact review packet tamper-evident.
-- **Incremental adoption:** operators can keep their existing provider/admin systems because OffboardMesh produces review evidence rather than controlling them.
+- **Incremental adoption:** operators can keep their existing provider/admin systems because OffboardMesh produces review material rather than controlling them.
 
 ## 8. Go-to-market hypothesis
 
-Phase 1 is consented design-partner discovery with service operators already doing recurring offboarding. The success criterion is not “agent autonomy”; it is a shorter, more auditable owner-review cycle with fewer missing-evidence surprises. Any outreach or pilot requires separate human authorization and must use a collision-safe outbound process.
+Phase 1 is consented design-partner discovery with service operators already doing recurring offboarding. The success criterion is not “agent autonomy”; it is a shorter, more auditable owner-review cycle with fewer missing-evidence and stale-packet surprises. Any outreach or pilot requires separate human authorization and must use a collision-safe outbound process.
 
 Possible acquisition channels to test after owner approval: founder-led design-partner outreach, MSP/operator communities, and bounded audits of existing offboarding procedures. This document does not claim those channels have produced leads or sales.
 
@@ -66,8 +68,9 @@ Possible acquisition channels to test after owner approval: founder-led design-p
 
 **Days 1–30**
 - complete one consented design-partner workflow map;
-- define baseline measures for review time, missing evidence, overrides, and stale-plan incidents;
-- integrate one owner-approved model adapter while retaining `PROPOSAL_ONLY`.
+- define baseline measures for review time, missing evidence, overrides, stale-plan incidents and provenance gaps;
+- integrate one owner-approved model adapter while retaining `PROPOSAL_ONLY`;
+- define an independently trusted owner-evidence ingest boundary before any provenance claim.
 
 **Days 31–60**
 - run a controlled pilot;
@@ -87,10 +90,11 @@ No future customer, pilot, or revenue is represented as already secured.
 | Risk | Deterministic response |
 | --- | --- |
 | Model hallucination | Proposal-only state; unknown evidence refs rejected |
-| Missing/stale evidence | Compile fails instead of filling gaps |
+| Missing/stale evidence | Compile or current verification fails instead of filling gaps |
+| Caller self-certifies provenance | Packet truth says `CALLER_ASSERTED_UNVERIFIED`; `ownerEvidenceBound` stays false |
 | Destructive action ambiguity | External execution authority stays false |
 | Packet tampering | Receipt verification fails |
-| Reuse of old plan | Explicit historical-plan result, not current validity |
+| Reuse of stale packet | Verifier-owned current clock expires it while historical exact replay remains available |
 | Secret/contact leakage through identifiers | Opaque-reference validation |
 | Privacy/legal ambiguity | Owner/legal review remains outside authority |
 | Commercial overclaim | Manifest explicitly leaves customer/revenue/award/payment false |
@@ -100,12 +104,13 @@ No future customer, pilot, or revenue is represented as already secured.
 Evidence presently available:
 - pinned shipped Client Offboarding Desk source;
 - pinned commercialization carrier;
-- runnable synthetic OffboardMesh compiler/verifier;
+- runnable synthetic OffboardMesh compiler/current verifier/historical verifier;
 - hostile tests in normal and optimized Python modes;
 - source-bound competition manifest and rubric-gap audit.
 
 Known gaps remain visible:
 - truthful team identity, biographies, and structure require owner input;
+- no independently authenticated owner-evidence ingest is claimed;
 - no customer case or accepted buyer intent is claimed;
 - no revenue is claimed;
 - no independent user evaluation is claimed;
