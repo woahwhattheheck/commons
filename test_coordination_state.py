@@ -609,6 +609,61 @@ class BloblessPublishPush(unittest.TestCase):
         self.assertEqual(result["parent"], first["commit"])
         self.assertEqual(cs._remote_tip(git, cs.STATE_BRANCH), result["commit"])
 
+    def test_materialize_blobs_fills_parent_files_in_blobless_clone(self):
+        first = cs.publish(cs.Git(self.seed), self._payload(0), "o/r", push=True)
+        self.assertTrue(first["pushed"])
+        clone = self._blobless_clone()
+        git = cs.Git(clone)
+        git.fetch([first["commit"]])
+        head_blob = None
+        for line in git.out("ls-tree", "-r", first["commit"]).splitlines():
+            if line.endswith("\t" + cs.HEAD_FILE):
+                head_blob = line.split()[2]
+        self.assertTrue(head_blob)
+        self.assertNotEqual(git.run("cat-file", "-e", head_blob, check=False).returncode, 0)
+        cs._materialize_blobs(git, first["commit"])
+        self.assertEqual(git.run("cat-file", "-e", head_blob, check=False).returncode, 0)
+
+    def test_push_retries_promisor_hangup_then_lands(self):
+        remote = tempfile.mkdtemp(prefix="coordination-retry-remote-")
+        self.addCleanup(shutil.rmtree, remote, ignore_errors=True)
+        subprocess.run(["git", "init", "-q", "--bare", remote], check=True)
+        seed = os.path.join(self.tmp, "retry-seed")
+        os.makedirs(seed)
+        sh(seed, "init", "-q", "-b", "main")
+        write(seed, "a.txt", "a\n")
+        commit_all(seed, "base")
+        sh(seed, "remote", "add", "origin", remote)
+        sleeps = []
+        real_sleep = cs._PUSH_RETRY_SLEEP
+        cs._PUSH_RETRY_SLEEP = sleeps.append
+        real_run = cs.Git.run
+        pushes = {"n": 0}
+
+        def flaky(self, *args, **kw):
+            if args and "push" in args:
+                pushes["n"] += 1
+                if pushes["n"] == 1:
+                    return cs._Done(
+                        1, "",
+                        "not fetch e3ee4c7252d2f6f8c2c9d75ede5e0d2f1ba7187d "
+                        "from promisor remote\n"
+                        "fatal: the remote end hung up unexpectedly\n"
+                        "send-pack: unexpected disconnect while reading sideband packet\n"
+                        "error: failed to push some refs to "
+                        "'https://github.com/woahwhattheheck/commons'")
+            return real_run(self, *args, **kw)
+
+        cs.Git.run = flaky
+        try:
+            result = cs.publish(cs.Git(seed), self._payload(0), "o/r", push=True)
+        finally:
+            cs.Git.run = real_run
+            cs._PUSH_RETRY_SLEEP = real_sleep
+        self.assertTrue(result["pushed"], result.get("stderr"))
+        self.assertEqual(pushes["n"], 2)
+        self.assertEqual(sleeps, [2])
+
 
 if __name__ == "__main__":
     unittest.main()

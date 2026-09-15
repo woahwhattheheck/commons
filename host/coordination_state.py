@@ -380,12 +380,15 @@ class Git:
     def __init__(self, root):
         self.root = root
 
-    def run(self, *args, env=None, check=True, input_text=None):
+    def run(self, *args, env=None, check=True, input_text=None, lazy=False):
         merged = dict(os.environ)
         # In a partial clone, touching a missing object makes git fetch it on
-        # the spot, one object and its whole tree at a time. Only the batched
-        # `fetch` below may go to the network; everything else reads locally.
-        if args and args[0] != "fetch":
+        # the spot, one object and its whole tree at a time. Batched `fetch`
+        # and explicit `lazy=True` (materialize parent blobs before push) may
+        # go to the network; push itself stays local after that.
+        if lazy:
+            merged.pop("GIT_NO_LAZY_FETCH", None)
+        elif args and args[0] != "fetch":
             merged["GIT_NO_LAZY_FETCH"] = "1"
         if env:
             merged.update(env)
@@ -1165,16 +1168,62 @@ def _commit_env(when=None):
             "GIT_AUTHOR_DATE": stamp, "GIT_COMMITTER_DATE": stamp}
 
 
-def _push_ref(git, remote, commit, branch):
+def _materialize_blobs(git, commit):
+    """Bring blob bytes of `commit` into a blob:none clone.
+
+    Hosted `--no-thin` push on landed 492e1376 still tried to read parent
+    blob e3ee4c72 (coordination-head.json) and GIT_NO_LAZY_FETCH blocked
+    it (run 34999623710). Fetch those blobs *before* send-pack so push
+    does not open a second connection on the same remote.
+    """
+    if not commit:
+        return
+    listing = git.run("ls-tree", "-r", commit, check=False)
+    if listing.returncode != 0 or not listing.stdout.strip():
+        return
+    for line in listing.stdout.splitlines():
+        parts = line.split()
+        if len(parts) < 3 or parts[1] != "blob":
+            continue
+        sha = parts[2].split("\t")[0]
+        if git.run("cat-file", "-e", sha, check=False).returncode != 0:
+            git.run("cat-file", "-e", sha, lazy=True, check=False)
+
+
+_PUSH_TRANSIENT = (
+    "from promisor remote",
+    "hung up unexpectedly",
+    "unexpected disconnect",
+    "eof before pack header",
+    "unpacker error",
+    "RPC failed",
+)
+_PUSH_RETRY_SLEEP = time.sleep
+
+
+def _push_ref(git, remote, commit, branch, attempts=3):
     """Fast-forward `branch` to `commit`.
 
-    `--no-thin` is required from a blob:none clone: a thin pack wants parent
-    blobs as delta bases, GIT_NO_LAZY_FETCH blocks the promisor fetch, and
-    send-pack then hangs up. The new commit already holds every blob it
-    introduces, so a full pack does not need the parent file bytes.
+    `--no-thin` avoids using parent blobs as thin-pack delta bases.
+    HTTP/1.1 plus a short hangup retry covers GitHub HTTPS disconnects
+    after the objects are already local.
     """
-    return git.run("push", "--no-thin", remote, "%s:refs/heads/%s" % (commit, branch),
-                   check=False)
+    refspec = "%s:refs/heads/%s" % (commit, branch)
+    last = None
+    tries = max(1, int(attempts))
+    for attempt in range(tries):
+        done = git.run("-c", "http.version=HTTP/1.1",
+                       "push", "--no-thin", remote, refspec, check=False)
+        last = done
+        if done.returncode == 0:
+            return done
+        err = done.stderr or ""
+        if "non-fast-forward" in err or "fetch first" in err:
+            return done
+        if not any(n in err for n in _PUSH_TRANSIENT) or attempt >= tries - 1:
+            return done
+        _PUSH_RETRY_SLEEP(2 * (attempt + 1))
+    return last
 
 
 def _push_line(root, remote, commit, branch):
@@ -1213,6 +1262,7 @@ def publish(git, payload, repo, push=True, remote="origin", branch=STATE_BRANCH,
     parent = _remote_tip(git, branch, remote)
     if parent:
         git.fetch([parent], remote)
+        _materialize_blobs(git, parent)
     message = "coordination state: main %s, %s open, observed %s" % (
         str((head.get("main") or {}).get("sha", ""))[:10],
         (head.get("counts") or {}).get("open_prs"), head.get("observed_at"))
@@ -1244,6 +1294,7 @@ def publish(git, payload, repo, push=True, remote="origin", branch=STATE_BRANCH,
         parent = _remote_tip(git, branch, remote)
         if parent:
             git.fetch([parent], remote)
+            _materialize_blobs(git, parent)
         commit = state_commit(git, files, branch, message, parent)
         done = _push_ref(git, remote, commit, branch)
     return {"commit": commit, "parent": parent, "pushed": done.returncode == 0,
