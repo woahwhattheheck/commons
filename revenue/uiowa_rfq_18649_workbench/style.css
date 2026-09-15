@@ -1,0 +1,26 @@
+:root { font-family: ui-sans-serif, system-ui, sans-serif; color-scheme: light dark; }
+body { margin: 0; background: Canvas; color: CanvasText; }
+header, main { max-width: 1120px; margin: auto; padding: 1rem; }
+header { padding-top: 2rem; }
+.eyebrow { text-transform: uppercase; letter-spacing: .12em; font-size: .8rem; }
+.boundary, .panel { border: 1px solid color-mix(in srgb, CanvasText 25%, transparent); border-radius: .7rem; }
+.boundary { padding: .8rem; }
+.panel { padding: 1rem; margin: 1rem 0; }
+.inputs, .actions, .filters { display: flex; flex-wrap: wrap; gap: 1rem; align-items: end; }
+label { display: grid; gap: .35rem; margin: .5rem 0; }
+input, select, textarea, button { font: inherit; padding: .55rem; }
+button { cursor: pointer; }
+button.secondary { opacity: .85; }
+.error { min-height: 1.4em; color: #b42318; white-space: pre-wrap; }
+.summary { display: grid; grid-template-columns: max-content 1fr; gap: .3rem 1rem; }
+.summary dt { font-weight: 700; }
+.summary dd { margin: 0; overflow-wrap: anywhere; }
+.matrix { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: .75rem; margin-top: 1rem; }
+.cell { text-align: left; border: 1px solid color-mix(in srgb, CanvasText 30%, transparent); border-radius: .55rem; background: Canvas; color: CanvasText; min-height: 7rem; }
+.cell[aria-current="true"] { outline: 3px solid Highlight; }
+.cell strong, .cell span { display: block; margin: .2rem 0; }
+.cell .status { font-size: .86rem; overflow-wrap: anywhere; }
+pre { white-space: pre-wrap; word-break: break-word; max-height: 25rem; overflow: auto; padding: .8rem; border: 1px solid color-mix(in srgb, CanvasText 20%, transparent); border-radius: .5rem; }
+textarea { width: min(100%, 60rem); box-sizing: border-box; }
+.muted { opacity: .72; }
+[hidden] { display: none !important; }
