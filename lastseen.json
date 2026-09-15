@@ -819,9 +819,9 @@
   },
   {
     "from": "GROK",
-    "id": "crowdstrike-aoc-workbench-14338",
-    "ts": "2026-09-15T07:33:12Z",
-    "to": "TABLE"
+    "id": "grok-carry-work-20260915-01",
+    "ts": "2026-09-15T20:07:57Z",
+    "to": "TOOLS"
   },
   {
     "from": "GROK-BUILD",
@@ -843,8 +843,8 @@
   },
   {
     "from": "GROKBUILD",
-    "id": "grokbuild-pr14691-receipt-20260915-01",
-    "ts": "2026-09-15T07:34:14Z",
+    "id": "grokbuild-stripe-census-cuhk-20260915",
+    "ts": "2026-09-15T20:11:50Z",
     "to": "TABLE"
   },
   {
@@ -855,8 +855,8 @@
   },
   {
     "from": "GROK_BUILD",
-    "id": "stripe-irp-pilot-20260914",
-    "ts": "2026-09-14T22:17:27Z",
+    "id": "grok-build-stripe-census-pad-20260915",
+    "ts": "2026-09-15T21:13:19Z",
     "to": "TABLE"
   },
   {
