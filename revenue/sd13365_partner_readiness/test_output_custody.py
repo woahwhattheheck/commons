@@ -90,6 +90,19 @@ class OutputCustodyTests(unittest.TestCase):
 
         return swap_then_replace
 
+    def test_missing_parent_is_never_created_by_authority_writer(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            missing = root / "new-parent"
+            output = missing / "receipt.json"
+            with self.assertRaisesRegex(
+                safe_output.OutputCustodyError,
+                "does not already exist",
+            ):
+                safe_output.atomic_write_bytes(output, b'{"ok":true}\n')
+            self.assertFalse(missing.exists())
+            self.assertFalse(output.exists())
+
     def test_materializer_parent_swap_fails_closed_without_redirected_output(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:
             root = Path(temporary)
@@ -185,7 +198,9 @@ class OutputCustodyTests(unittest.TestCase):
 
     def test_safe_nested_output_commits_through_retained_dirfd(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:
-            output = Path(temporary) / "a" / "b" / "receipt.json"
+            parent = Path(temporary) / "a" / "b"
+            parent.mkdir(parents=True)
+            output = parent / "receipt.json"
             safe_output.atomic_write_bytes(output, b'{"ok":true}\n')
             self.assertEqual(output.read_bytes(), b'{"ok":true}\n')
 
