@@ -69,6 +69,17 @@ class PublisherTests(unittest.TestCase):
                 publish_artifact_set(self.out, {bad: b"x"})
             self.assertFalse(self.out.exists())
 
+    def test_lexical_parent_traversal_is_rejected_before_normalization(self) -> None:
+        lexical_parent = self.tmp / "scope"
+        lexical_parent.mkdir()
+        escaped_parent = self.tmp / "escaped"
+        escaped_parent.mkdir()
+        output = lexical_parent / ".." / "escaped" / "out"
+        with self.assertRaises(PublicationError):
+            publish_artifact_set(output, {"x": b"owned"})
+        self.assertFalse((escaped_parent / "out").exists())
+        self.assertEqual(list(escaped_parent.iterdir()), [])
+
     def test_symlink_ancestor_rejected(self) -> None:
         real = self.tmp / "real"
         real.mkdir()
@@ -111,6 +122,32 @@ class PublisherTests(unittest.TestCase):
         stage = self.tmp / err.staging_name
         self.assertTrue(stage.is_dir())
         self.assertEqual((stage / "x").read_bytes(), b"a")
+
+    def test_stage_open_failure_preserves_and_identifies_staging_evidence(self) -> None:
+        import tools.exact_byte_artifact_set.publisher as publisher
+
+        original = os.open
+
+        def fail_stage_open(path, flags, mode=0o777, *, dir_fd=None):
+            if isinstance(path, str) and path.startswith(".exact-byte-stage-"):
+                raise OSError("injected stage open failure")
+            return original(path, flags, mode, dir_fd=dir_fd)
+
+        with (
+            mock.patch.object(
+                publisher,
+                "_required_platform_flags",
+                return_value=(os.O_DIRECTORY, os.O_NOFOLLOW),
+            ),
+            mock.patch.object(publisher.os, "open", side_effect=fail_stage_open),
+        ):
+            with self.assertRaises(PartialPublicationError) as caught:
+                publish_artifact_set(self.out, {"x": b"owned"})
+        err = caught.exception
+        self.assertFalse(err.publication_committed)
+        self.assertEqual(err.created_leaves, ())
+        self.assertFalse(self.out.exists())
+        self.assertTrue((self.tmp / err.staging_name).is_dir())
 
     def test_target_namespace_is_absent_until_one_directory_commit(self) -> None:
         import tools.exact_byte_artifact_set.publisher as publisher
