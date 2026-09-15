@@ -114,11 +114,18 @@ class CurrentAuthorityDonorTests(unittest.TestCase):
         raw = receipt("HOLD", [])
         with self.assertRaises(ValueError): auth.seal_untrusted_snapshot_receipt(raw)
 
-    def test_non_selected_cannot_smuggle_selection_fields(self):
-        out = auth.seal_untrusted_snapshot_receipt(receipt("NOT_SELECTED"))
-        out["payload"]["selected_at"] = "2026-09-15T01:34:50Z"
-        out["receipt_sha256"] = auth._digest(out["payload"])
-        self.assertFalse(auth.verify_untrusted_snapshot_receipt(out))
+    def test_non_selected_cannot_smuggle_selection_or_winner_fields(self):
+        authority_fields = auth._SELECTION_FIELDS + auth._WINNER_FIELDS
+        for field in authority_fields:
+            with self.subTest(field=field):
+                out = auth.seal_untrusted_snapshot_receipt(receipt("NOT_SELECTED"))
+                out["payload"][field] = (
+                    "2026-09-15T01:34:50Z" if field == "selected_at"
+                    else "1789440010.000002" if field.endswith("_ts")
+                    else "attacker-value"
+                )
+                out["receipt_sha256"] = auth._digest(out["payload"])
+                self.assertFalse(auth.verify_untrusted_snapshot_receipt(out))
 
 
 if __name__ == "__main__":
