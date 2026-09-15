@@ -48,37 +48,37 @@ class ReceiptTests(unittest.TestCase):
     def measured(self, label: str, loss: float, count: int):
         return receipts.make_measured_for_test(self.manifest, label, best_loss=loss, eval_count=count, runner=self.runner)
 
-    def test_measured_receipt_roundtrip(self):
+    def test_candidate_receipt_integrity_roundtrip(self):
         receipt = self.measured("serial_v1", 1.25, 44)
-        receipts.verify_receipt(receipt, self.manifest)
+        receipts.verify_receipt_integrity(receipt, self.manifest)
         self.assertFalse(receipt["authority"]["officialScoreClaimed"])
 
     def test_digest_tamper_rejected(self):
         receipt = self.measured("serial_v1", 1.25, 44)
         receipt["measurement"]["bestLoss"] = 0.0
         with self.assertRaises(contract.EvidenceError):
-            receipts.verify_receipt(receipt, self.manifest)
+            receipts.verify_receipt_integrity(receipt, self.manifest)
 
     def test_synthetic_evidence_class_rejected_even_if_resigned(self):
         receipt = self.measured("serial_v1", 1.25, 44)
         receipt["evidenceClass"] = "SYNTHETIC_LOCAL"
         receipt = receipts.sign(receipt)
         with self.assertRaises(contract.EvidenceError):
-            receipts.verify_receipt(receipt, self.manifest)
+            receipts.verify_receipt_integrity(receipt, self.manifest)
 
     def test_candidate_label_swap_rejected_even_if_resigned(self):
         receipt = self.measured("serial_v1", 1.25, 44)
         receipt["candidate"]["label"] = "vectorized_v2"
         receipt = receipts.sign(receipt)
         with self.assertRaises(contract.EvidenceError):
-            receipts.verify_receipt(receipt, self.manifest)
+            receipts.verify_receipt_integrity(receipt, self.manifest)
 
     def test_cell_drift_rejected_even_if_resigned(self):
         receipt = self.measured("serial_v1", 1.25, 44)
         receipt["cell"]["seed"] = 7
         receipt = receipts.sign(receipt)
         with self.assertRaises(contract.EvidenceError):
-            receipts.verify_receipt(receipt, self.manifest)
+            receipts.verify_receipt_integrity(receipt, self.manifest)
 
     def test_nonfinite_or_empty_measurement_rejected(self):
         for loss, count in [(float("inf"), 2), (1.0, 0)]:
@@ -87,7 +87,7 @@ class ReceiptTests(unittest.TestCase):
             receipt["measurement"]["evalCount"] = count
             receipt = receipts.sign(receipt)
             with self.assertRaises(contract.EvidenceError):
-                receipts.verify_receipt(receipt, self.manifest)
+                receipts.verify_receipt_integrity(receipt, self.manifest)
 
     def test_pending_cannot_be_compared(self):
         serial = self.measured("serial_v1", 1.0, 50)
@@ -97,24 +97,26 @@ class ReceiptTests(unittest.TestCase):
         vector["organizerSourceVerified"] = False
         vector["pendingReason"] = "dependency unavailable"
         vector = receipts.sign(vector)
-        receipts.verify_receipt(vector, self.manifest)
+        receipts.verify_receipt_integrity(vector, self.manifest)
         with self.assertRaises(contract.EvidenceError):
-            receipts.compare_receipts(serial, vector, self.manifest)
+            receipts.compare_candidate_receipts(serial, vector, self.manifest)
 
     def test_runner_mismatch_rejected(self):
         serial = self.measured("serial_v1", 1.0, 50)
         other = dict(self.runner); other["githubRunId"] = "124"
         vector = receipts.make_measured_for_test(self.manifest, "vectorized_v2", best_loss=.9, eval_count=70, runner=other)
         with self.assertRaises(contract.EvidenceError):
-            receipts.compare_receipts(serial, vector, self.manifest)
+            receipts.compare_candidate_receipts(serial, vector, self.manifest)
 
-    def test_matched_comparison_is_explicitly_development_only(self):
+    def test_supplied_comparison_is_explicitly_unverified(self):
         serial = self.measured("serial_v1", 1.0, 50)
         vector = self.measured("vectorized_v2", .9, 70)
-        out = receipts.compare_receipts(serial, vector, self.manifest)
+        out = receipts.compare_candidate_receipts(serial, vector, self.manifest)
         self.assertEqual(out["result"]["lowerBestLoss"], "vectorized_v2")
         self.assertEqual(out["result"]["evalCountDeltaVectorMinusSerial"], 20)
-        self.assertIn("development evidence only", out["interpretation"])
+        self.assertIn("execution provenance is unverified", out["interpretation"])
+        self.assertEqual(out["status"], "UNVERIFIED_CANDIDATE_COMPARISON")
+        self.assertIs(out["measurementProvenanceVerified"], False)
         self.assertTrue(all(v is False for v in out["authority"].values()))
         digest = out.pop("receiptSha256")
         self.assertEqual(digest, contract.canonical_sha256(out))

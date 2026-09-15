@@ -1,19 +1,12 @@
 name: Learn2Design public evidence
 
 on:
-  push:
-    branches:
-      - zsh-q6m4/learn2design-public-evidence-20260915
-    paths:
-      - 'revenue/learn2design2026/**'
-      - 'test_learn2design2026.py'
-      - 'test_learn2design2026_evidence.py'
-      - '.github/workflows/learn2design-public-evidence.yml'
   pull_request:
     paths:
       - 'revenue/learn2design2026/**'
       - 'test_learn2design2026.py'
       - 'test_learn2design2026_evidence.py'
+      - 'test_learn2design2026_provenance.py'
       - '.github/workflows/learn2design-public-evidence.yml'
   workflow_dispatch:
 
@@ -40,11 +33,16 @@ jobs:
           python-version: '3.12'
           cache: pip
 
-      - name: Verify fail-closed carrier before external install
+      - name: Verify integrity and recorded provenance before external install
         run: |
-          python -m unittest -v test_learn2design2026_evidence.py
+          python -m unittest -v test_learn2design2026_evidence.py test_learn2design2026_provenance.py
+          python -O -m unittest -v test_learn2design2026_evidence.py test_learn2design2026_provenance.py
           python -m unittest -v test_learn2design2026.py
           python revenue/learn2design2026/evidence.py verify-manifest
+          python revenue/learn2design2026/evidence.py compare \
+            revenue/learn2design2026/recorded_runs/34938483198/serial_v1.json \
+            revenue/learn2design2026/recorded_runs/34938483198/vectorized_v2.json \
+            --out /tmp/learn2design-recorded-comparison.json
 
       - name: Checkout pinned organizer source
         uses: actions/checkout@v4
@@ -75,16 +73,16 @@ jobs:
             --out revenue/learn2design2026/evidence_runs/vectorized_v2.json \
             --require-measured
 
-      - name: Verify and compare exact receipts
+      - name: Compare fresh candidates without self-attesting execution provenance
         run: |
-          python revenue/learn2design2026/evidence.py verify-receipt revenue/learn2design2026/evidence_runs/serial_v1.json
-          python revenue/learn2design2026/evidence.py verify-receipt revenue/learn2design2026/evidence_runs/vectorized_v2.json
-          python revenue/learn2design2026/evidence.py compare \
+          python revenue/learn2design2026/evidence.py verify-integrity revenue/learn2design2026/evidence_runs/serial_v1.json
+          python revenue/learn2design2026/evidence.py verify-integrity revenue/learn2design2026/evidence_runs/vectorized_v2.json
+          python revenue/learn2design2026/evidence.py compare-candidates \
             revenue/learn2design2026/evidence_runs/serial_v1.json \
             revenue/learn2design2026/evidence_runs/vectorized_v2.json \
-            --out revenue/learn2design2026/evidence_runs/comparison.json
+            --out revenue/learn2design2026/evidence_runs/comparison.candidate.json
 
-      - name: Upload exact public-development receipts
+      - name: Upload candidate receipts for independent provider retrieval
         if: always()
         uses: actions/upload-artifact@v4
         with:

@@ -5,7 +5,8 @@ import argparse,json,math,sys,time
 from pathlib import Path
 from evidence_contract import (AUTHORITY,EVIDENCE_CLASS,EXPECTED_CANDIDATES,SCHEMA,EvidenceError,
     candidate_spec,confined,git_blob_sha1_bytes,load_candidate,read_json,validate_manifest,verify_organizer_source)
-from evidence_receipts import base_receipt,compare_receipts,verify_receipt
+from evidence_receipts import (base_receipt,compare_receipts,verify_receipt,
+    verify_receipt_integrity,compare_candidate_receipts)
 
 def instantiate_candidate(cls):
     """Instantiate exact candidate code across dfbench API drift without editing candidate bytes.
@@ -49,22 +50,28 @@ def main(argv=None):
     sub.add_parser("verify-manifest")
     q=sub.add_parser("pending");q.add_argument("--candidate",choices=sorted(EXPECTED_CANDIDATES),required=True);q.add_argument("--reason",required=True);q.add_argument("--out",type=Path,required=True)
     q=sub.add_parser("measure");q.add_argument("--candidate",choices=sorted(EXPECTED_CANDIDATES),required=True);q.add_argument("--organizer-source",type=Path,required=True);q.add_argument("--out",type=Path,required=True);q.add_argument("--require-measured",action="store_true")
-    q=sub.add_parser("verify-receipt");q.add_argument("receipt",type=Path)
-    q=sub.add_parser("compare");q.add_argument("serial",type=Path);q.add_argument("vectorized",type=Path);q.add_argument("--out",type=Path,required=True)
+    for name in ("verify-receipt","verify-integrity"):
+        q=sub.add_parser(name);q.add_argument("receipt",type=Path)
+    for name in ("compare","compare-candidates"):
+        q=sub.add_parser(name);q.add_argument("serial",type=Path);q.add_argument("vectorized",type=Path);q.add_argument("--out",type=Path,required=True)
     a=p.parse_args(argv)
     try:
         m=validate_manifest(a.manifest,a.repo_root)
         if a.cmd=="verify-manifest":print("manifest: PASS");return 0
-        if a.cmd=="pending":r=pending(m,a.candidate,a.reason,a.repo_root);write(a.out,r);verify_receipt(r,m);print(r["receiptSha256"]);return 0
+        if a.cmd=="pending":r=pending(m,a.candidate,a.reason,a.repo_root);write(a.out,r);verify_receipt_integrity(r,m);print("candidate receipt (integrity only):",r["receiptSha256"]);return 0
         if a.cmd=="measure":
             try:r=measure(m,a.candidate,a.repo_root,a.organizer_source)
             except Exception as e:
                 r=pending(m,a.candidate,f"measurement unavailable: {e}",a.repo_root);write(a.out,r)
                 if a.require_measured:raise EvidenceError(r["pendingReason"]) from e
                 print(r["receiptSha256"]);return 0
-            write(a.out,r);verify_receipt(r,m);print(r["receiptSha256"]);return 0
-        if a.cmd=="verify-receipt":verify_receipt(read_json(a.receipt),m);print("receipt: PASS");return 0
-        if a.cmd=="compare":r=compare_receipts(read_json(a.serial),read_json(a.vectorized),m);write(a.out,r);print(json.dumps(r,indent=2,sort_keys=True));return 0
+            write(a.out,r);verify_receipt_integrity(r,m);print("candidate receipt (integrity only):",r["receiptSha256"]);return 0
+        if a.cmd=="verify-integrity":verify_receipt_integrity(read_json(a.receipt),m);print("receipt integrity: PASS; execution provenance NOT VERIFIED");return 0
+        if a.cmd=="verify-receipt":
+            provenance=verify_receipt(read_json(a.receipt),m);print(json.dumps(provenance,sort_keys=True));return 0
+        if a.cmd in ("compare","compare-candidates"):
+            compare=compare_receipts if a.cmd=="compare" else compare_candidate_receipts
+            r=compare(read_json(a.serial),read_json(a.vectorized),m);write(a.out,r);print(json.dumps(r,indent=2,sort_keys=True));return 0
     except EvidenceError as e:print(f"evidence error: {e}",file=sys.stderr);return 2
     return 2
 if __name__=="__main__":raise SystemExit(main())
