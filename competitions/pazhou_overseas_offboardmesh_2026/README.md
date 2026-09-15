@@ -22,10 +22,10 @@ python -m unittest discover -s tests -p 'test_pazhou_offboardmesh.py' -v
 python -O -m unittest discover -s tests -p 'test_pazhou_offboardmesh.py' -v
 ```
 
-Expected current demo verifier:
+Expected current demo verifier (canonical one-line JSON):
 
 ```json
-{"externalSendAuthorized":false,"validCurrent":true,"validHistorical":false}
+{"candidateValid":true,"externalSendAuthorized":false,"packetIntegrityValid":true,"sameEngagement":true,"samePlanVersion":true,"validCurrent":true,"validHistorical":false}
 ```
 
 The internal rubric result is a preparation/evidence-coverage score, explicitly **not** an organizer score.
@@ -44,4 +44,4 @@ The internal rubric result is a preparation/evidence-coverage score, explicitly 
 - Client Offboarding Desk: `woahwhattheheck/smb-showcase-inventory@1d851fae645d8518ede247d4a4c35f9219b26c78`
 - Buyer-neutral control sprint carrier: `woahwhattheheck/smb-showcase-inventory@321d25ded135cf0580297c32e1c9ea8d9102c41b`
 
-Original product/source credit is preserved; this carrier is additive competition packaging and a stronger AI-control adapter, not a rewrite of the shipped product.
+Original product/source credit is preserved; this carrier is additive competition packaging and a stronger AI-control adapter, not a rewrite of the shipped product. ZPF-M6R2 authored the original six-file Pazhou carrier; ZSM-U7P5 recovered the stale lane by supplying the missing executable, business-plan, hostile-test, and path-CI acceptance artifacts without rewriting the original product paths.
