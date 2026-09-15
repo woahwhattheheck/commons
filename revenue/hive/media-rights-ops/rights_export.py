@@ -28,60 +28,106 @@ def _same_identity(st,identity):
 # Capability is a platform/process property. Capture it before hostile tests (or
 # other instrumentation) monkey-patch individual os functions; the publication
 # path still invokes the current functions and therefore remains fully testable.
-_SECURE_EXPORT_SUPPORTED=(hasattr(os,'O_DIRECTORY') and hasattr(os,'O_NOFOLLOW') and all(fn in os.supports_dir_fd for fn in (os.open,os.stat,os.unlink)) and os.listdir in os.supports_fd)
+_SECURE_EXPORT_SUPPORTED=(hasattr(os,'O_DIRECTORY') and hasattr(os,'O_NOFOLLOW') and os.open in os.supports_dir_fd and os.stat in os.supports_dir_fd and os.stat in os.supports_follow_symlinks and os.listdir in os.supports_fd)
 def _secure_export_supported(): return _SECURE_EXPORT_SUPPORTED
 
 def _entry_stat(name,dir_fd):
     return os.stat(name,dir_fd=dir_fd,follow_symlinks=False)
 
+def _absolute_components(path):
+    absolute=os.path.abspath(os.fspath(path)); drive,tail=os.path.splitdrive(absolute)
+    require(not drive,'secure export publication does not support drive-qualified paths on this host')
+    parts=[p for p in tail.split(os.sep) if p and p!='.']
+    require(parts,'output path must name a directory')
+    require(all(p!='..' for p in parts),'output path traversal is not allowed')
+    return absolute,parts
+
+def _open_componentwise(path):
+    # Walk from the filesystem root and retain every generation transition long
+    # enough to prove that no path component is a symlink or replacement object.
+    _,parts=_absolute_components(path); flags=os.O_RDONLY|os.O_DIRECTORY|os.O_NOFOLLOW; fd=os.open(os.sep,flags)
+    try:
+        for part in parts:
+            before=os.stat(part,dir_fd=fd,follow_symlinks=False)
+            require(stat.S_ISDIR(before.st_mode),'output path component must be a real directory')
+            nxt=os.open(part,flags,dir_fd=fd)
+            current=os.fstat(nxt)
+            if not (stat.S_ISDIR(current.st_mode) and _same_identity(current,(before.st_dev,before.st_ino))):
+                os.close(nxt); raise RightsError('output directory identity changed during publication')
+            os.close(fd); fd=nxt
+        current=os.fstat(fd)
+        return fd,(current.st_dev,current.st_ino)
+    except Exception:
+        os.close(fd); raise
+
 def _open_retained_output(out_dir):
-    # Publication consumes an already-provisioned directory. Snapshot its exact
-    # generation before open, refuse a symlink/non-directory, then prove the
-    # opened descriptor is the same object. There is no mkdir->open adoption gap.
+    # Keep the old whole-path observation/open fence as an extra substitution
+    # check, then independently walk every component with dir_fd + O_NOFOLLOW.
+    # The component walk is what closes ancestor-symlink traversal.
     try: before=os.stat(out_dir,follow_symlinks=False)
     except FileNotFoundError as e: raise RightsError(f'output directory must already exist: {out_dir}') from e
     require(stat.S_ISDIR(before.st_mode),'output must be a real directory, not a symlink or other file')
-    identity=(before.st_dev,before.st_ino); fd=None
+    identity=(before.st_dev,before.st_ino); probe=None
     try:
-        fd=os.open(out_dir,os.O_RDONLY|os.O_DIRECTORY|os.O_NOFOLLOW)
-        current=os.fstat(fd); require(stat.S_ISDIR(current.st_mode) and _same_identity(current,identity),'output directory identity changed during publication')
+        probe=os.open(out_dir,os.O_RDONLY|os.O_DIRECTORY|os.O_NOFOLLOW)
+        current=os.fstat(probe); require(stat.S_ISDIR(current.st_mode) and _same_identity(current,identity),'output directory identity changed during publication')
+    finally:
+        if probe is not None: os.close(probe)
+    fd,walk_identity=_open_componentwise(out_dir)
+    try:
+        require(walk_identity==identity,'output directory identity changed during publication')
         require(os.listdir(fd)==[],'output directory must be empty before publication')
         return fd,identity
     except Exception:
-        if fd is not None: os.close(fd)
-        raise
+        os.close(fd); raise
 
 def _rollback_created(dir_fd,created):
-    # Remove only leaf identities created by this transaction. A replacement leaf
-    # or any foreign entry is deliberately preserved rather than followed by name.
-    for name,identity in reversed(created):
+    # There is no portable atomic unlink-if-inode operation. Never perform the
+    # unsafe stat(name)->unlink(name) sequence: an attacker could replace the
+    # name between those calls. Roll back only through retained owned FDs. This
+    # can leave zero-byte transaction tombstones, which is fail-visible and does
+    # not risk deleting a foreign successor.
+    for _,_,fd in reversed(created):
         try:
-            current=_entry_stat(name,dir_fd)
-            if stat.S_ISREG(current.st_mode) and _same_identity(current,identity): os.unlink(name,dir_fd=dir_fd)
-        except FileNotFoundError: pass
+            os.ftruncate(fd,0); os.fsync(fd)
+        except OSError: pass
+        try: os.close(fd)
         except OSError: pass
     try: os.fsync(dir_fd)
     except OSError: pass
 
+def _close_created(created):
+    for _,_,fd in created:
+        try: os.close(fd)
+        except OSError: pass
+
 def publish_export(path,out_dir,as_of,horizon_days=30):
     out_dir=Path(out_dir); require(out_dir.name not in {'','.','..'},'output path must name a directory'); files=export_files(path,as_of,horizon_days)
-    require(_secure_export_supported(),'secure export publication requires descriptor-relative no-follow filesystem support')
+    require(_secure_export_supported(),'secure export publication requires component-wise descriptor-relative no-follow filesystem support')
     dir_fd,dir_identity=_open_retained_output(out_dir); created=[]
     try:
         try:
             for name,raw in sorted(files.items()):
                 require('/' not in name and '\\' not in name and name not in {'','.','..'},'export leaf name invalid')
                 fd=os.open(name,os.O_WRONLY|os.O_CREAT|os.O_EXCL|os.O_NOFOLLOW,0o600,dir_fd=dir_fd)
-                fst=os.fstat(fd); identity=(fst.st_dev,fst.st_ino); created.append((name,identity))
-                with os.fdopen(fd,'wb') as f: f.write(raw); f.flush(); os.fsync(f.fileno())
+                fst=os.fstat(fd); identity=(fst.st_dev,fst.st_ino); created.append((name,identity,fd))
+                view=memoryview(raw)
+                while view:
+                    n=os.write(fd,view)
+                    if n<=0: raise OSError('short export write')
+                    view=view[n:]
+                os.fsync(fd)
             os.fsync(dir_fd)
-            visible=os.stat(out_dir,follow_symlinks=False)
-            require(stat.S_ISDIR(visible.st_mode) and _same_identity(visible,dir_identity),'output directory identity changed during publication')
-            expected=sorted(name for name,_ in created); require(sorted(os.listdir(dir_fd))==expected,'output directory entries changed during publication')
-            for name,identity in created:
+            visible_fd,visible_identity=_open_componentwise(out_dir)
+            try: require(visible_identity==dir_identity,'output directory identity changed during publication')
+            finally: os.close(visible_fd)
+            expected=sorted(name for name,_,_ in created); require(sorted(os.listdir(dir_fd))==expected,'output directory entries changed during publication')
+            for name,identity,_ in created:
                 current=_entry_stat(name,dir_fd)
                 require(stat.S_ISREG(current.st_mode) and _same_identity(current,identity),f'export leaf identity changed during publication: {name}')
+            _close_created(created); created.clear()
             return {'status':'EXPORTED','output':str(out_dir),'files':len(files),'receipt_sha256':sha256_bytes(files['receipt.json'])}
         except Exception:
-            _rollback_created(dir_fd,created); raise
-    finally: os.close(dir_fd)
+            _rollback_created(dir_fd,created); created.clear(); raise
+    finally:
+        _close_created(created); os.close(dir_fd)
