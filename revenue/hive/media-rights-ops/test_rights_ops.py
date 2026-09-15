@@ -6,7 +6,9 @@ import threading
 import unittest
 from http.server import ThreadingHTTPServer
 from pathlib import Path
+from unittest import mock
 
+import rights_export as e
 import rights_http as h
 import rights_ops as r
 
@@ -224,6 +226,57 @@ class DeskTests(unittest.TestCase):
         self.assertEqual(first["status"], "EXPORTED")
         with self.assertRaisesRegex(r.RightsError, "refusing to overwrite"):
             r.publish_export(self.db, out, "2026-12-10T00:00:00Z")
+
+    def test_export_path_swap_cannot_redirect_success(self):
+        out = self.root / "bundle-race"
+        moved = self.root / "bundle-race-retained"
+        foreign = self.root / "foreign-successor"
+        foreign.mkdir()
+        (foreign / "sentinel.txt").write_text("foreign", encoding="utf-8")
+        real_open = e.os.open
+        fired = False
+        def racing_open(path, flags, mode=0o777, *, dir_fd=None):
+            nonlocal fired
+            if dir_fd is not None and path == "placements.csv" and not fired:
+                fired = True
+                os.rename(out, moved)
+                os.symlink(foreign, out, target_is_directory=True)
+            if dir_fd is None:
+                return real_open(path, flags, mode)
+            return real_open(path, flags, mode, dir_fd=dir_fd)
+        with mock.patch.object(e.os, "open", side_effect=racing_open):
+            with self.assertRaisesRegex(r.RightsError, "output path identity changed"):
+                r.publish_export(self.db, out, "2026-12-10T00:00:00Z")
+        self.assertTrue(fired)
+        self.assertTrue(out.is_symlink())
+        self.assertEqual(list(moved.iterdir()), [])
+        self.assertEqual(sorted(p.name for p in foreign.iterdir()), ["sentinel.txt"])
+
+    def test_export_failure_cleanup_preserves_foreign_successor(self):
+        out = self.root / "bundle-fail-race"
+        moved = self.root / "bundle-fail-race-retained"
+        foreign = self.root / "foreign-successor-fail"
+        foreign.mkdir()
+        (foreign / "sentinel.txt").write_text("foreign", encoding="utf-8")
+        real_open = e.os.open
+        fired = False
+        def failing_open(path, flags, mode=0o777, *, dir_fd=None):
+            nonlocal fired
+            if dir_fd is not None and path == "queues.json" and not fired:
+                fired = True
+                os.rename(out, moved)
+                os.symlink(foreign, out, target_is_directory=True)
+                raise OSError("injected export write failure")
+            if dir_fd is None:
+                return real_open(path, flags, mode)
+            return real_open(path, flags, mode, dir_fd=dir_fd)
+        with mock.patch.object(e.os, "open", side_effect=failing_open):
+            with self.assertRaisesRegex(OSError, "injected export write failure"):
+                r.publish_export(self.db, out, "2026-12-10T00:00:00Z")
+        self.assertTrue(fired)
+        self.assertTrue(out.is_symlink())
+        self.assertEqual(list(moved.iterdir()), [])
+        self.assertEqual(sorted(p.name for p in foreign.iterdir()), ["sentinel.txt"])
 
     def test_duplicate_json_key_rejected(self):
         with self.assertRaisesRegex(r.RightsError, "duplicate JSON key"):
