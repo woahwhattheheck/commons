@@ -15,6 +15,7 @@
   "bid_model": "nvidia_prime_subcontract",
   "blockers": [
     "amendments_review_evidence_id",
+    "buyer_addendum:addendum_1:teaming_structure_not_affirmatively_permitted",
     "buyer_artifact:section_ix_references",
     "buyer_artifact:section_vii_item_12_requirements_matrix",
     "buyer_artifact:section_viii_cost_information",
@@ -45,7 +46,19 @@
   ],
   "present_buyer_artifacts": [],
   "reason": "teaming_gates_unproven",
-  "receipt_sha256": "d731e9e4343e1c6ed41380be88ab1eb3dda2f413e1c608ab27f9e8627875dec3",
+  "receipt_sha256": "fda908378ac5960aa6476b5f8ef6cd652d2de59f839a0f4595517322f2a900d7",
   "schema": "alcorn-rfp5588-qualification-result/v1",
+  "source_findings": {
+    "addendum_1": {
+      "document_date": "2026-09-10",
+      "filename": "Addendum1 RFP5588.docx",
+      "gmail_message_id": "1a0a703662d0e19f",
+      "normalized_effect": "AMBIGUOUS_NO_AFFIRMATIVE_PERMISSION",
+      "question_topic": "consulting_prime_with_disclosed_hardware_software_or_lab_delivery_partners",
+      "received_at": "2026-09-15T21:40:09+00:00",
+      "sha256": "82a26f82092e9de91f3e10f985bf9811983f122127fb15d35c9b2f746da72886",
+      "teaming_route_affirmatively_permitted": false
+    }
+  },
   "state": "HOLD"
 }
