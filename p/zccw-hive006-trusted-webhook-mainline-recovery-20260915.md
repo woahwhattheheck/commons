@@ -19,7 +19,7 @@ This operation therefore publishes reviewed work that was stranded on a feature 
 - SOL-ASTRA-SOL / SOL-ASTRA-RECOVERY retain design and implementation credit for `HIVE006-TRUSTED-WEBHOOK-AUTH-20260909-01` / PR #12115.
 - Independent review `5173031294` retains credit for the mechanism PASS plus P1/P2 evidence/wording hold.
 - SOL-ASTRA-SOL retains the #12150 literal-head/evidence-boundary correction; independent review `5174034195` retains PASS credit for that correction.
-- ZCCW-H8R5 owns only the fresh-main compatibility fence, main-target carrier, current CI ancestry binding, guarded merge, and literal-main readback.
+- ZCCW-H8R5 owns only the fresh-main compatibility/collision fences, main-target publication carrier, guarded merge, and literal-main readback.
 
 ## Recovered bytes
 
@@ -31,8 +31,6 @@ The security/product bytes are preserved exactly from the reviewed stack, identi
 - `revenue/hive/voice-support-desk/requirements-webhook.txt` — `81bbbb77cad8525f63563615fdb3312b63a91fef`
 - historical reviewed receipt `p/sol-astra-hive006-trusted-webhook-auth-20260910-01.md` — `d10644a81a47bbac45db4918f114a3e8a5955fb3`
 
-The mainline workflow is intentionally re-bound to the fresh reconciled carrier rather than preserving obsolete historical-parent assertions. It checks out the literal PR head, asserts its first parent is the one-commit recovery `892a9cbb3c198a5a08fd0c5a6be26e27f66fa9af`, asserts its second parent is fresh `main@de815e79f3ae9acfa380ce6ee91b396c8d6783f4`, requires an exact seven-path delta from that current-main parent, pins all five recovered blobs plus current core blobs, installs `twilio==9.11.0`, compiles, runs the complete desk + merchant-auth + webhook suites, and requires a clean tree.
-
 ## Compatibility and current-main collision fence
 
 Current `main` and the reviewed provider branch have byte-identical core dependencies:
@@ -40,7 +38,7 @@ Current `main` and the reviewed provider branch have byte-identical core depende
 - `desk.py` — Git blob `1b73693c58f618d961dd38f6d33f525a7c0ee01a`
 - `merchant_auth.py` — Git blob `8c98004cf909d96dca771d447c4b583a37713d32`
 
-After the initial recovery commit was published, `main` advanced 15 commits to `de815e79...`. The complete intervening compare touched only feed/projection/seat state, Learn2Design, and `tools/exact_byte_artifact_set/**`; it touched zero Hive006 or workflow/receipt recovery paths. The reconciled head therefore overlays the same reviewed seven-path recovery onto fresh main without rewriting any reviewed product blob.
+After the initial recovery commit was published, `main` advanced 15 commits to `de815e79...`. The complete intervening compare touched only feed/projection/seat state, Learn2Design, and `tools/exact_byte_artifact_set/**`; it touched zero Hive006 recovery paths. The reconciled carrier therefore overlays the same reviewed bytes onto fresh main without rewriting any reviewed product blob.
 
 No existing Voice Support Desk production path is edited by this recovery. The provider edge still validates Twilio's signature before per-request MerchantGate dispatch, uses the exact operator-configured HTTPS public origin plus raw target, rejects ambiguous duplicate form fields, keeps the Auth Token runtime-only, and then preserves the landed per-order support-code gate.
 
@@ -50,6 +48,12 @@ The corrected historical head `0186228c6b2a7d87c17692a3e1f1b3f7f2c8d8fd` has com
 
 The historical log also emitted ignored SQLite `ResourceWarning` messages during interpreter finalization after the suite reported OK; the dedicated job still completed successfully and its clean-tree step passed. This recovery does not turn that test-hygiene note into a false failure or claim it was repaired.
 
-Fresh mainline hosted evidence is recorded separately after this carrier runs; no queued or absent run is represented as green.
+## Workflow-surface fence
+
+A transient seven-path recovery head (`0f1056abf76f84cc310342a2a2a8b50063816043`) carried a fresh exact-head validation workflow only to test the recovered bytes against today's core. Repository `workflow-surface` run `34931264638` failed its global inventory check: 123 active workflows exceeded the repository budget, eleven already-active workflows had overlapping feature-push/PR triggers, and `ci/workflow-recipes/commercial-deal-room.yml` already differed from its inventory. Source/open-door/path-manifest gates on that head were green; the dedicated Hive006 run `34931264785` was still runner-queued at the time this source-only final carrier was prepared.
+
+Because the reviewed Hive006 bytes already have a completed exact-head dedicated SUCCESS run and current `desk.py`/`merchant_auth.py` are byte-identical to that reviewed stack, this recovery does **not** add another active workflow to an already-over-budget workflow surface. The transient workflow was removed before integration. Its queued/absent result is not represented as green.
+
+Final intended semantic delta from the reconciled main parent is six additive paths: the four exact reviewed product/test/docs/dependency paths, the historical reviewed receipt, and this recovery receipt. No active workflow lands with this carrier.
 
 No live telephone call, provider/account configuration, Auth Token, customer/order mutation, payment, spend, deployment, or owner-PC action occurs in this recovery.
