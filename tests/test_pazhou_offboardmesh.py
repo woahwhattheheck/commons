@@ -2,8 +2,9 @@ from __future__ import annotations
 
 from contextlib import redirect_stdout
 from copy import deepcopy
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 import importlib.util
+import inspect
 import io
 import json
 from pathlib import Path
@@ -20,17 +21,40 @@ assert spec and spec.loader
 offboardmesh = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(offboardmesh)
 
-FIXTURE_NOW = datetime(2026, 9, 14, 12, 0, 0, tzinfo=timezone.utc)
-STALE_NOW = datetime(2026, 10, 10, 12, 0, 0, tzinfo=timezone.utc)
-
 
 def candidate():
     return json.loads(EXAMPLE_PATH.read_text(encoding="utf-8"))
 
 
-def verify_current_at(value, packet, when=FIXTURE_NOW):
-    with patch.object(offboardmesh, "_now_utc", return_value=when):
-        return offboardmesh.verify_current(value, packet)
+def _iso(value: datetime) -> str:
+    return value.astimezone(timezone.utc).isoformat(timespec="milliseconds").replace("+00:00", "Z")
+
+
+def _windowed_candidate(requested: datetime, closeout: datetime):
+    value = candidate()
+    value["requestedAt"] = _iso(requested)
+    value["requestedCloseoutAt"] = _iso(closeout)
+    value["modelProposal"]["generatedAt"] = _iso(requested + timedelta(minutes=1))
+    for index, evidence in enumerate(value["evidence"], start=1):
+        evidence["observedAt"] = _iso(requested - timedelta(minutes=index))
+    return value
+
+
+def current_candidate():
+    now = datetime.now(timezone.utc)
+    return _windowed_candidate(now - timedelta(minutes=5), now + timedelta(hours=1))
+
+
+def historical_candidate():
+    requested = datetime(2000, 1, 10, 12, 0, 0, tzinfo=timezone.utc)
+    return _windowed_candidate(requested, requested + timedelta(days=10))
+
+
+class ForgedDateTime(datetime):
+    @classmethod
+    def now(cls, tz=None):
+        forged = datetime(2000, 1, 11, 12, 0, 0, tzinfo=timezone.utc)
+        return forged if tz is None else forged.astimezone(tz)
 
 
 class OffboardMeshTests(unittest.TestCase):
@@ -38,49 +62,85 @@ class OffboardMeshTests(unittest.TestCase):
         value = candidate()
         self.assertEqual(offboardmesh.compile_packet(value), offboardmesh.compile_packet(deepcopy(value)))
 
-    def test_current_packet_verifies_against_verifier_owned_now(self):
-        value = candidate()
-        result = verify_current_at(value, offboardmesh.compile_packet(value))
+    def test_current_packet_verifies_against_captured_process_clock(self):
+        value = current_candidate()
+        result = offboardmesh.verify_current(value, offboardmesh.compile_packet(value))
         self.assertTrue(result["validCurrent"])
         self.assertTrue(result["currentEvidenceFresh"])
         self.assertFalse(result["externalSendAuthorized"])
 
+    def test_public_current_verifier_has_no_evaluation_time_parameter(self):
+        self.assertEqual(list(inspect.signature(offboardmesh.verify_current).parameters), ["candidate", "packet"])
+
     def test_historical_replay_verifies_same_candidate_without_current_claim(self):
-        value = candidate()
+        value = historical_candidate()
         result = offboardmesh.verify_historical(value, offboardmesh.compile_packet(value))
         self.assertTrue(result["validHistorical"])
         self.assertFalse(result["externalSendAuthorized"])
 
     def test_stale_now_fresh_then_is_historical_not_current(self):
-        value = candidate()
+        value = historical_candidate()
         packet = offboardmesh.compile_packet(value)
-        current = verify_current_at(value, packet, STALE_NOW)
+        current = offboardmesh.verify_current(value, packet)
         historical = offboardmesh.verify_historical(value, packet)
         self.assertFalse(current["validCurrent"])
         self.assertFalse(current["currentEvidenceFresh"])
         self.assertTrue(historical["validHistorical"])
 
+    def test_rebinding_now_helper_cannot_regain_current(self):
+        value = historical_candidate()
+        packet = offboardmesh.compile_packet(value)
+        forged = datetime(2000, 1, 11, 12, 0, 0, tzinfo=timezone.utc)
+        with patch.object(offboardmesh, "_now_utc", return_value=forged, create=True):
+            result = offboardmesh.verify_current(value, packet)
+        self.assertFalse(result["validCurrent"])
+        self.assertFalse(result["currentEvidenceFresh"])
+
+    def test_rebinding_native_datetime_cannot_regain_current(self):
+        value = historical_candidate()
+        packet = offboardmesh.compile_packet(value)
+        with patch.object(offboardmesh, "_NATIVE_DATETIME", ForgedDateTime):
+            result = offboardmesh.verify_current(value, packet)
+        self.assertFalse(result["validCurrent"])
+        self.assertFalse(result["currentEvidenceFresh"])
+
+    def test_rebinding_max_evidence_age_cannot_regain_current(self):
+        value = historical_candidate()
+        packet = offboardmesh.compile_packet(value)
+        with patch.object(offboardmesh, "_MAX_EVIDENCE_AGE_SECONDS", 10**18):
+            result = offboardmesh.verify_current(value, packet)
+        self.assertFalse(result["validCurrent"])
+        self.assertFalse(result["currentEvidenceFresh"])
+
+    def test_rebinding_currentness_helper_cannot_regain_current(self):
+        value = historical_candidate()
+        packet = offboardmesh.compile_packet(value)
+        with patch.object(offboardmesh, "_is_current", return_value=True, create=True):
+            result = offboardmesh.verify_current(value, packet)
+        self.assertFalse(result["validCurrent"])
+        self.assertFalse(result["currentEvidenceFresh"])
+
     def test_prior_plan_candidate_is_not_exact_historical_replay(self):
-        old = candidate()
+        old = current_candidate()
         packet = offboardmesh.compile_packet(old)
         new = deepcopy(old)
         new["planVersion"] = "PLAN-V4"
-        self.assertFalse(verify_current_at(new, packet)["validCurrent"])
+        self.assertFalse(offboardmesh.verify_current(new, packet)["validCurrent"])
         self.assertFalse(offboardmesh.verify_historical(new, packet)["validHistorical"])
 
     def test_same_plan_mutation_is_neither_current_nor_historical(self):
-        value = candidate()
+        value = current_candidate()
         packet = offboardmesh.compile_packet(value)
         changed = deepcopy(value)
         changed["modelProposal"]["suggestions"][0]["summary"] = "Changed owner-review wording."
-        self.assertFalse(verify_current_at(changed, packet)["validCurrent"])
+        self.assertFalse(offboardmesh.verify_current(changed, packet)["validCurrent"])
         self.assertFalse(offboardmesh.verify_historical(changed, packet)["validHistorical"])
 
     def test_packet_tamper_fails_integrity(self):
-        value = candidate()
+        value = current_candidate()
         packet = offboardmesh.compile_packet(value)
         packet["tasks"][0]["executionAuthorized"] = True
-        result = verify_current_at(value, packet)
+        result = offboardmesh.verify_current(value, packet)
         self.assertFalse(result["packetIntegrityValid"])
         self.assertFalse(result["validCurrent"])
 
@@ -172,24 +232,28 @@ class OffboardMeshTests(unittest.TestCase):
             offboardmesh.compile_packet(value)
 
     def test_cli_current_round_trip(self):
-        value = candidate()
+        value = current_candidate()
         packet = offboardmesh.compile_packet(value)
         with tempfile.TemporaryDirectory() as td:
-            path = Path(td) / "packet.json"
-            path.write_text(json.dumps(packet), encoding="utf-8")
-            with patch.object(offboardmesh, "_now_utc", return_value=FIXTURE_NOW), redirect_stdout(io.StringIO()):
-                self.assertEqual(offboardmesh.main(["verify-current", str(EXAMPLE_PATH), str(path)]), 0)
+            candidate_path = Path(td) / "candidate.json"
+            packet_path = Path(td) / "packet.json"
+            candidate_path.write_text(json.dumps(value), encoding="utf-8")
+            packet_path.write_text(json.dumps(packet), encoding="utf-8")
+            with redirect_stdout(io.StringIO()):
+                self.assertEqual(offboardmesh.main(["verify-current", str(candidate_path), str(packet_path)]), 0)
 
     def test_cli_stale_now_fresh_then_fails_current_but_passes_historical(self):
-        value = candidate()
+        value = historical_candidate()
         packet = offboardmesh.compile_packet(value)
         with tempfile.TemporaryDirectory() as td:
-            path = Path(td) / "packet.json"
-            path.write_text(json.dumps(packet), encoding="utf-8")
-            with patch.object(offboardmesh, "_now_utc", return_value=STALE_NOW), redirect_stdout(io.StringIO()):
-                self.assertEqual(offboardmesh.main(["verify-current", str(EXAMPLE_PATH), str(path)]), 2)
+            candidate_path = Path(td) / "candidate.json"
+            packet_path = Path(td) / "packet.json"
+            candidate_path.write_text(json.dumps(value), encoding="utf-8")
+            packet_path.write_text(json.dumps(packet), encoding="utf-8")
             with redirect_stdout(io.StringIO()):
-                self.assertEqual(offboardmesh.main(["verify-historical", str(EXAMPLE_PATH), str(path)]), 0)
+                self.assertEqual(offboardmesh.main(["verify-current", str(candidate_path), str(packet_path)]), 2)
+            with redirect_stdout(io.StringIO()):
+                self.assertEqual(offboardmesh.main(["verify-historical", str(candidate_path), str(packet_path)]), 0)
 
 
 if __name__ == "__main__":
