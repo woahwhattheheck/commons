@@ -6,7 +6,7 @@
     "sha256": "107f0cc3ae880e4000ad89f0d6db6ad4908600afcdafcaf8d66ff4303170f688",
     "page_count": 41
   },
-  "current_time": "2026-09-14T21:05:00-04:00",
+  "current_time": "2026-09-15T17:40:09-04:00",
   "bid_model": "nvidia_prime_subcontract",
   "buyer_artifacts": {
     "section_viii_cost_information": {"state": "MISSING_BUYER_ARTIFACT"},
@@ -33,7 +33,7 @@
     "everify_evidence_id": "",
     "taxpayer_id_confirmation_evidence_id": "",
     "order_remit_address_evidence_id": "",
-    "amendments_review_evidence_id": "",
+    "amendments_review_evidence_id": "buyer:addendum_1:82a26f82092e9de91f3e10f985bf9811983f122127fb15d35c9b2f746da72886",
     "insurance_expires_date": "2026-09-14",
     "pricing_approved": false,
     "signature_officer_ready": false,
