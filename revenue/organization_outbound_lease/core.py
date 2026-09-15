@@ -8,6 +8,7 @@ from dataclasses import dataclass
 from datetime import datetime, timedelta, timezone
 from typing import Any, Mapping, Optional, Protocol, Tuple
 
+from .local_reference import _LOCAL_REFERENCE_CHECKER
 from .strict import parse_json_strict
 
 READY_STATE = "READY_FOR_SINGLE_WRITER_REVIEW"
@@ -318,9 +319,30 @@ def _retained_outcome_for_candidate(store: LeaseStore, lease: dict) -> Optional[
     return outcome, generation
 
 
-def acquire_lease(store: LeaseStore, request: Any, *, pressure_verifier: RsaPublicKey, lease_nonce_key: bytes) -> AcquireResult:
+def acquire_lease(
+    store: LeaseStore,
+    request: Any,
+    *,
+    pressure_verifier: Optional[RsaPublicKey] = None,
+    lease_nonce_key: bytes,
+) -> AcquireResult:
+    """Acquire under the pinned production verifier or explicit local test seam.
+
+    Caller-selected verifier material is accepted only for the frozen local/reference
+    FileLeaseStore implementation.  Production and unknown stores are rejected before
+    request parsing or store I/O.  This boundary lives in ``core`` itself, so reloading
+    this module cannot restore the old raw caller-verifier function.
+    """
+    if pressure_verifier is None:
+        from .trust import load_pressure_verifier
+        verifier = load_pressure_verifier()
+    else:
+        if not _LOCAL_REFERENCE_CHECKER(store):
+            raise ValueError("caller-supplied pressure verifier is forbidden for production stores")
+        verifier = pressure_verifier
+
     req = normalize_request(request)
-    pressure = verify_pressure_attestation(req["pressureAttestation"], pressure_verifier, organization_fingerprint=req["organizationFingerprint"])
+    pressure = verify_pressure_attestation(req["pressureAttestation"], verifier, organization_fingerprint=req["organizationFingerprint"])
     if _dt(pressure["verifiedAt"], "pressure verifiedAt") > _dt(req["requestedAt"], "requestedAt"):
         raise ValueError("pressure verification cannot postdate acquire request")
     if (_dt(req["requestedAt"], "requestedAt") - _dt(pressure["verifiedAt"], "pressure verifiedAt")).total_seconds() > MAX_PREFLIGHT_AGE_SECONDS:

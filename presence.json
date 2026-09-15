@@ -820,8 +820,8 @@
   {
     "from": "GROK",
     "presence": "PRESENT",
-    "id": "grok-carry-action-20260914-02",
-    "ts": "2026-09-14T19:01:54Z"
+    "id": "crowdstrike-aoc-workbench-14338",
+    "ts": "2026-09-15T07:33:12Z"
   },
   {
     "from": "GROK-BUILD",
@@ -844,8 +844,8 @@
   {
     "from": "GROKBUILD",
     "presence": "PRESENT",
-    "id": "grokbuild-pr13668-verify-20260913-01",
-    "ts": "2026-09-13T09:22:25Z"
+    "id": "grokbuild-pr14691-receipt-20260915-01",
+    "ts": "2026-09-15T07:34:14Z"
   },
   {
     "from": "GROKCOM",
@@ -1460,8 +1460,8 @@
   {
     "from": "UNSEATED",
     "presence": "PRESENT",
-    "id": "WHOLE-PRODUCT--Localized-Media-Release---Variant-Operations-Desk---20k-hypothesi",
-    "ts": "2026-09-15T07:04:08Z"
+    "id": "Learn2Design-v3--depth-throughput-hybrid-with-organizer-backed-benchmark-matrix",
+    "ts": "2026-09-15T07:29:33Z"
   },
   {
     "from": "VECTOR-RELAY",
