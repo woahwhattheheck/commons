@@ -3,6 +3,7 @@ from __future__ import annotations
 import importlib.util
 import os
 from pathlib import Path
+import threading
 import unittest
 from unittest import mock
 
@@ -51,6 +52,16 @@ class PlainFileCustodyTests(unittest.TestCase):
         with self.assertRaisesRegex(G.ChampionError,"ordinary non-symlink file"):
             G._read_json(self.f.root)
 
+    def test_missing_nofollow_fails_closed(self):
+        with mock.patch.object(G.os,"O_NOFOLLOW",None,create=True):
+            with self.assertRaisesRegex(G.ChampionError,"platform lacks O_NOFOLLOW"):
+                G._read_plain_file(self.f.manifest_path)
+
+    def test_missing_nonblocking_open_fails_closed(self):
+        with mock.patch.object(G.os,"O_NONBLOCK",None,create=True):
+            with self.assertRaisesRegex(G.ChampionError,"platform lacks O_NONBLOCK"):
+                G._read_plain_file(self.f.manifest_path)
+
     @unittest.skipUnless(hasattr(os,"O_NONBLOCK"), "requires O_NONBLOCK")
     def test_evidence_open_is_nonblocking_before_fstat(self):
         real_open=G.os.open
@@ -62,5 +73,26 @@ class PlainFileCustodyTests(unittest.TestCase):
             G._read_plain_file(self.f.manifest_path)
         self.assertTrue(seen_flags)
         self.assertTrue(seen_flags[0] & os.O_NONBLOCK)
+
+    @unittest.skipUnless(
+        hasattr(os,"mkfifo") and hasattr(os,"O_NOFOLLOW") and hasattr(os,"O_NONBLOCK"),
+        "requires POSIX FIFO + nofollow + nonblocking open",
+    )
+    def test_fifo_is_rejected_promptly_before_fstat_can_hang(self):
+        fifo=self.f.root/"evidence.fifo"
+        os.mkfifo(fifo)
+        result=[]
+        def read_fifo():
+            try:
+                G._read_plain_file(fifo)
+            except Exception as exc:
+                result.append(exc)
+        thread=threading.Thread(target=read_fifo,daemon=True)
+        thread.start()
+        thread.join(1.0)
+        self.assertFalse(thread.is_alive(),"evidence FIFO open blocked before type check")
+        self.assertEqual(len(result),1)
+        self.assertIsInstance(result[0],G.ChampionError)
+        self.assertRegex(str(result[0]),"ordinary non-symlink file")
 
 if __name__=="__main__": unittest.main()

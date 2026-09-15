@@ -48,13 +48,20 @@ def input_with(*prospects: dict) -> dict:
 
 
 class SmartOutreachTests(unittest.TestCase):
-    def test_checked_in_cohort_holds_collisions_and_requires_research(self) -> None:
+    def test_checked_in_cohort_holds_collisions_and_rejected_buyer(self) -> None:
         plan = smart.build_plan(smart.read_object(smart.DEFAULT_INPUT))
         decisions = {item["prospect_id"]: item["decision"] for item in plan["items"]}
         self.assertEqual(decisions["anythingllm-mintplex"], "HOLD_DO_NOT_RESEND")
         self.assertEqual(decisions["metaforms"], "HOLD_DO_NOT_RESEND")
-        self.assertEqual(decisions["signoz"], "RESEARCH_REQUIRED")
+        self.assertEqual(decisions["signoz"], "HOLD_DO_NOT_CONTACT")
         self.assertEqual(decisions["composio"], "HOLD_DO_NOT_RESEND")
+        signoz = next(item for item in plan["items"] if item["prospect_id"] == "signoz")
+        self.assertIn("REJECTED_AS_BUYER", " ".join(signoz["disqualifiers"]))
+        self.assertEqual(
+            signoz["next_action"],
+            "retain suppression; no draft and no transport handoff",
+        )
+        self.assertIsNone(signoz["draft"])
         composio = next(item for item in plan["items"] if item["prospect_id"] == "composio")
         self.assertEqual(composio["recipient_email"], "support@composio.dev")
         self.assertEqual(composio["score"], 85)
@@ -120,6 +127,33 @@ class SmartOutreachTests(unittest.TestCase):
         self.assertIn("a verified first-party route", item["missing"])
         self.assertIsNone(item["draft"])
 
+    def test_rejected_buyer_cannot_be_resurrected_by_complete_research(self) -> None:
+        source = smart.read_object(smart.DEFAULT_INPUT)
+        prospect = copy.deepcopy(
+            next(row for row in source["prospects"] if row["prospect_id"] == "signoz")
+        )
+        self.assertIs(prospect["do_not_contact"], True)
+        prospect["recipient_email"] = "buyer@example.test"
+        prospect["owner_role"] = "CTO"
+        prospect["route"] = {
+            "kind": "EMAIL",
+            "value": "buyer@example.test",
+            "state": "VERIFIED",
+        }
+        prospect["evidence"]["exact_quote"] = (
+            "A production failure timeout needs idempotent recovery, replay, and an exact audit trace."
+        )
+        with tempfile.TemporaryDirectory() as directory:
+            item = smart.build_plan(input_with(prospect), Path(directory))["items"][0]
+        self.assertGreaterEqual(item["score"], 70)
+        self.assertEqual(item["missing"], [])
+        self.assertEqual(item["decision"], "HOLD_DO_NOT_CONTACT")
+        self.assertEqual(
+            item["next_action"],
+            "retain suppression; no draft and no transport handoff",
+        )
+        self.assertIsNone(item["draft"])
+
     def test_duplicate_ids_and_unknown_fields_fail_closed(self) -> None:
         prospect = qualified_prospect()
         with self.assertRaises(smart.OutreachError):
@@ -134,7 +168,7 @@ class SmartOutreachTests(unittest.TestCase):
         prospect = qualified_prospect()
         # Keep the draft fixture attached to one real, live GTM subject so the
         # subprocess exercises the production occupancy lookup. The checked-in
-        # cohort itself now correctly contains no drafts after Composio's DNR.
+        # cohort itself correctly contains no drafts after suppression/collisions.
         prospect["prospect_id"] = "signoz"
         prospect["organization"] = "SigNoz"
         with tempfile.TemporaryDirectory() as directory:

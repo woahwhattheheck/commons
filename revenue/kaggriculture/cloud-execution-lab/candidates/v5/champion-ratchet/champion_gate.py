@@ -49,11 +49,15 @@ def _loads(raw: bytes, source: str):
         raise ChampionError(f"{source}: invalid UTF-8 JSON") from exc
 
 def _read_plain_file(path: Path):
-    """Read one ordinary file through one no-follow descriptor or fail closed."""
+    """Read one ordinary file through one no-follow, nonblocking descriptor or fail closed."""
     path=Path(path)
-    if not hasattr(os,"O_NOFOLLOW"):
+    nofollow=getattr(os,"O_NOFOLLOW",None)
+    nonblock=getattr(os,"O_NONBLOCK",None)
+    if type(nofollow) is not int or nofollow == 0:
         raise ChampionError("platform lacks O_NOFOLLOW; refusing release evidence")
-    flags=os.O_RDONLY | os.O_NOFOLLOW | getattr(os,"O_CLOEXEC",0) | getattr(os,"O_NONBLOCK",0)
+    if type(nonblock) is not int or nonblock == 0:
+        raise ChampionError("platform lacks O_NONBLOCK; refusing release evidence")
+    flags=os.O_RDONLY | nofollow | nonblock | getattr(os,"O_CLOEXEC",0)
     try:
         fd=os.open(path,flags)
     except OSError as exc:

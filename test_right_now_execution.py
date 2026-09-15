@@ -48,23 +48,70 @@ class RightNowExecutionTests(unittest.TestCase):
             )
             self.assertNotEqual(survival["start_route"], "agent-rescue.html")
 
-    def test_truth_never_promotes_internal_activity(self) -> None:
+    def test_truth_counts_only_settled_cash_and_never_converts_awards(self) -> None:
         value = control.build_control()
-        self.assertEqual(value["truth"]["collected_cash_usd"], 0)
+        self.assertEqual(value["truth"]["collected_cash_usd"], 1)
+        self.assertEqual(value["truth"]["settled_cash_receipts"], 1)
+        self.assertEqual(value["truth"]["settled_cash_usd"], "1")
+        self.assertIs(value["truth"]["cash_bank_availability_asserted"], False)
+        self.assertIs(value["truth"]["cash_withdrawability_asserted"], False)
         self.assertEqual(value["truth"]["verified_positive_replies"], 0)
         self.assertEqual(value["truth"]["accepted_scopes"], 0)
         self.assertEqual(value["truth"]["ready_to_draft"], 0)
         self.assertEqual(value["truth"]["transport_actions"], 0)
         self.assertTrue(value["truth"]["active_chargeable_checkout"])
+        self.assertEqual(value["truth"]["paid_awards"], 1)
+        self.assertEqual(
+            value["truth"]["settled_amounts_by_currency"],
+            [{"currency": "RTC", "amount": "25"}],
+        )
+        self.assertIs(value["truth"]["usd_conversion_asserted"], False)
+        self.assertIs(value["truth"]["award_bank_availability_asserted"], False)
+        self.assertIs(value["truth"]["award_withdrawability_asserted"], False)
 
-    def test_queue_reuses_collision_and_research_decisions(self) -> None:
+    def test_settled_cash_summary_is_public_safe_and_collection_suppressed(self) -> None:
+        summary = control.build_control()["settled_cash"]
+        self.assertEqual(summary["settled_receipts"], 1)
+        receipt = summary["receipts"][0]
+        self.assertEqual(receipt["payment_state"], "PAID")
+        self.assertEqual(receipt["amount_usd"], "1")
+        self.assertEqual(receipt["provider_receipt_id"], "r/ef2f247c")
+        self.assertEqual(receipt["collection_action"], "NONE_DO_NOT_RESEND")
+        self.assertNotIn("provider_claim_id", receipt)
+        self.assertNotIn("idempotency_key", receipt)
+        self.assertNotIn("payout_address", json.dumps(summary).lower())
+
+    def test_settled_award_summary_is_privacy_safe_and_collection_suppressed(self) -> None:
+        summary = control.build_control()["settled_awards"]
+        self.assertEqual(summary["paid_awards"], 1)
+        award = summary["awards"][0]
+        self.assertEqual(award["payment_state"], "PAID")
+        self.assertEqual(award["collection_action"], "NONE_DO_NOT_RESEND")
+        self.assertEqual(award["destination_reference"], "woahwhattheheck")
+        self.assertNotIn("receipt", award)
+        self.assertNotIn("idempotency_key", award)
+        self.assertNotIn("email", json.dumps(summary).lower())
+        self.assertNotIn("thread", json.dumps(summary).lower())
+
+    def test_offer_specific_receipt_does_not_override_global_cash(self) -> None:
+        value = control.build_control()
+        self.assertEqual(value["payment"]["offer_id"], "gguf-diagnostic-10d-12k")
+        self.assertEqual(value["payment"]["collected_cash_usd"], 0)
+        self.assertIs(value["payment"]["cash_claimed"], False)
+        self.assertEqual(value["truth"]["collected_cash_usd"], 1)
+
+    def test_queue_reuses_collision_and_suppression_decisions(self) -> None:
         value = control.build_control()
         queue = {row["prospect_id"]: row for row in value["execution_queue"]}
         self.assertEqual(queue["anythingllm-mintplex"]["decision"], "HOLD_DO_NOT_RESEND")
         self.assertEqual(queue["metaforms"]["decision"], "HOLD_DO_NOT_RESEND")
         self.assertEqual(queue["composio"]["decision"], "HOLD_DO_NOT_RESEND")
         self.assertEqual(queue["composio"]["collision_receipts"], [COMPOSIO_RECEIPT])
-        self.assertEqual(queue["signoz"]["decision"], "RESEARCH_REQUIRED")
+        self.assertEqual(queue["signoz"]["decision"], "HOLD_DO_NOT_CONTACT")
+        self.assertEqual(
+            queue["signoz"]["next_action"],
+            "retain suppression; no draft and no transport handoff",
+        )
         self.assertTrue(queue["anythingllm-mintplex"]["collision_receipts"])
         self.assertFalse(any(row["transport_authorized"] for row in queue.values()))
         demand_blocker = next(
@@ -95,6 +142,10 @@ class RightNowExecutionTests(unittest.TestCase):
                 "revenue/right_now/catalog.json",
                 "revenue/right_now/diagnostic_offer.json",
                 "revenue/right_now/autopsy_offer.json",
+                "revenue/agent_failure_autopsy/offer.json",
+                "agent-rescue.html",
+                "revenue/right_now/settled_awards.json",
+                "revenue/right_now/settled_cash.json",
                 "revenue/smart_outreach/candidates.json",
                 "revenue/payment_ready/current_receipt.json",
                 "revenue/human_outcomes/offers.json",
@@ -103,23 +154,27 @@ class RightNowExecutionTests(unittest.TestCase):
         )
         self.assertTrue(all(len(row["sha256"]) == 64 for row in receipts))
 
-    def test_cash_disagreement_fails_closed(self) -> None:
-        original = control.read_object
+    def test_global_cash_disagreement_fails_closed(self) -> None:
+        original = control.settled_cash.read_ledger
 
         def read_with_drift(path: Path):
             value = original(path)
-            if path == control.PAYMENT_PATH:
-                value = copy.deepcopy(value)
-                value["facts"]["collected_cash_usd"] = 1
-                value["cash_claimed"] = True
+            value = copy.deepcopy(value)
+            value["receipts"][0]["amount_usd"] = "2"
             return value
 
-        control.read_object = read_with_drift
+        control.settled_cash.read_ledger = read_with_drift
         try:
-            with self.assertRaises(control.ControlError):
+            with self.assertRaisesRegex(control.ControlError, "settled-cash ledger"):
                 control.build_control()
         finally:
-            control.read_object = original
+            control.settled_cash.read_ledger = original
+
+    def test_offer_specific_receipt_inconsistency_fails_closed(self) -> None:
+        receipt = control.read_object(control.PAYMENT_PATH)
+        receipt["cash_claimed"] = True
+        with self.assertRaisesRegex(control.ControlError, "offer-specific"):
+            control.payment_truth(receipt)
 
     def test_price_drift_fails_closed(self) -> None:
         catalog = control.read_object(control.CATALOG_PATH)
@@ -129,7 +184,7 @@ class RightNowExecutionTests(unittest.TestCase):
 
     def test_validate_detects_snapshot_drift(self) -> None:
         drift = control.build_control()
-        drift["truth"]["ready_to_draft"] = 99
+        drift["truth"]["paid_awards"] = 99
         with self.assertRaises(control.ControlError):
             control.validate_control(drift)
 
@@ -148,7 +203,11 @@ class RightNowExecutionTests(unittest.TestCase):
             capture_output=True,
             text=True,
         )
-        self.assertEqual(result.stdout.strip(), "VALID 6 offers 4 opportunities 0 transports USD 0 cash")
+        self.assertEqual(
+            result.stdout.strip(),
+            "VALID 6 offers 4 opportunities 0 transports USD 1 cash · "
+            "1 provider receipt · 1 paid award · 25 RTC settled",
+        )
 
     def test_cli_rejects_drifted_projection(self) -> None:
         drift = control.build_control()
@@ -185,10 +244,16 @@ class RightNowExecutionTests(unittest.TestCase):
         script = (ROOT / "right-now.js").read_text(encoding="utf-8")
         page = (ROOT / "right-now.html").read_text(encoding="utf-8")
         self.assertIn("./revenue/right_now/control.json", script)
+        self.assertIn("Verified provider cash", script)
+        self.assertIn("Provider-paid cash is counted only from PAID receipts", script)
+        self.assertIn("Verified paid awards", script)
+        self.assertIn("No USD conversion", script)
         self.assertIn('id="revenue-control"', page)
         self.assertIn("right-now.js", page)
         self.assertIn("JavaScript-off truth", page)
+        self.assertIn("25 RTC", page)
         self.assertIn("0 ready drafts", page)
+        self.assertIn("SigNoz remains suppressed", page)
         self.assertIn("Composio remains held", page)
 
     def test_catalog_live_cash_is_part_of_the_control_contract(self) -> None:

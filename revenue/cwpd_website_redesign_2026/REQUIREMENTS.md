@@ -26,7 +26,7 @@ Primary authority: https://cwpd.org/2026/09/01/public-notice-request-for-proposa
 | References available for contact | At least credible contactable references authorized for this procurement | **[REQUIRED:REFERENCES]** |
 | CWPD ownership / licensing limits | Deliver source/design/content/data; enumerate any third-party open-source/commercial licenses | Plan ready; final SBOM/license list at handoff |
 | Ongoing maintenance option | Monthly/annual service definition, patching, monitoring, accessibility and support SLA | **[REQUIRED:PRICING]** |
-| Submission by Oct 12 4:30 p.m. | Owner-controlled final send only after evidence/readiness review | **NOT AUTHORIZED** |
+| Submission by Oct 12 4:30 p.m. | Owner-controlled final send only after evidence/readiness review | **OWNER SEND PENDING** |
 
 ## Acceptance gates before any submission
 

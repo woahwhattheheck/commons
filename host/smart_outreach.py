@@ -2,11 +2,15 @@
 """Deterministic, evidence-bound outreach planning for Commons.
 
 The planner composes current first-party research, canonical outreach receipts,
-the existing offer catalog, and Swarm Mail's later transport seam.  It never
-contacts a prospect.  Its job is to make collision, qualification, and draft
+the existing offer catalog, and Swarm Mail's later transport seam. It never
+contacts a prospect. Its job is to make collision, qualification, and draft
 readiness explicit before any transport process can observe a message.
-"""
 
+Every email candidate is additionally bound to the durable outbound lease
+protocol in revenue/outbound_mutex/lease.py. A READY_TO_DRAFT result is not a
+send permission: the caller must win the canonical create-if-absent lease on
+current git main before handing the draft to transport.
+"""
 from __future__ import annotations
 
 import argparse
@@ -18,10 +22,10 @@ import sys
 from pathlib import Path
 from typing import Any
 
-
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_INPUT = ROOT / "revenue" / "smart_outreach" / "candidates.json"
 DEFAULT_RECEIPTS = ROOT / "revenue" / "payment_ready" / "outreach_receipts"
+OUTBOUND_LEASE_PATH = ROOT / "revenue" / "outbound_mutex" / "lease.py"
 SCHEMA_VERSION = "commons-smart-outreach/v1"
 DECISIONS = {
     "READY_TO_DRAFT",
@@ -32,22 +36,9 @@ DECISIONS = {
     "DISQUALIFIED",
 }
 PAIN_TERMS = {
-    "audit",
-    "disconnect",
-    "duplicate",
-    "failure",
-    "idempotent",
-    "incident",
-    "issue",
-    "observability",
-    "production",
-    "recovery",
-    "reliability",
-    "replay",
-    "reset",
-    "rollback",
-    "timeout",
-    "trace",
+    "audit", "disconnect", "duplicate", "failure", "idempotent", "incident",
+    "issue", "observability", "production", "recovery", "reliability", "replay",
+    "reset", "rollback", "timeout", "trace",
 }
 EMAIL_RE = re.compile(r"^[^@\s]+@[^@\s]+\.[^@\s]+$")
 IDENTIFIER_RE = re.compile(r"^[a-z0-9][a-z0-9._:-]{2,120}$")
@@ -101,6 +92,39 @@ def organization_key(value: str) -> str:
     return "".join(character for character in value.casefold() if character.isalnum())
 
 
+def _load_outbound_lease() -> Any:
+    name = "commons_outbound_lease"
+    if name in sys.modules:
+        return sys.modules[name]
+    spec = importlib.util.spec_from_file_location(name, OUTBOUND_LEASE_PATH)
+    if spec is None or spec.loader is None:
+        raise OutreachError("cannot load outbound lead lease protocol")
+    module = importlib.util.module_from_spec(spec)
+    sys.modules[name] = module
+    spec.loader.exec_module(module)
+    return module
+
+
+def outbound_lease_identity(prospect: dict[str, Any], offer: dict[str, Any]) -> dict[str, Any] | None:
+    recipient = prospect.get("recipient_email")
+    if not isinstance(recipient, str):
+        return None
+    normalized = normalize_email(recipient)
+    lease = _load_outbound_lease()
+    key = lease.lead_key(opportunity=str(offer["sku_id"]), channel="email", destination=normalized)
+    return {
+        "protocol": "revenue/outbound_mutex/lease.py",
+        "key": key,
+        "path": lease.lease_path(key),
+        "opportunity": str(offer["sku_id"]),
+        "channel": "email",
+        "destination_sha256": lease.fingerprint(normalized),
+        "remote_authority": "git-main",
+        "claim_required": True,
+        "state": "UNCLAIMED",
+    }
+
+
 def validate_input(value: dict[str, Any]) -> dict[str, Any]:
     _exact_keys(value, {"schema_version", "kind", "generated_at", "offer", "prospects"}, "input")
     if value["schema_version"] != SCHEMA_VERSION or value["kind"] != "SMART_OUTREACH_CANDIDATES":
@@ -109,11 +133,7 @@ def validate_input(value: dict[str, Any]) -> dict[str, Any]:
     offer = value["offer"]
     if not isinstance(offer, dict):
         raise OutreachError("offer must be an object")
-    _exact_keys(
-        offer,
-        {"sku_id", "name", "price_usd", "proof_url", "intake_url"},
-        "offer",
-    )
+    _exact_keys(offer, {"sku_id", "name", "price_usd", "proof_url", "intake_url"}, "offer")
     if not IDENTIFIER_RE.fullmatch(str(offer["sku_id"])):
         raise OutreachError("offer.sku_id is invalid")
     if type(offer["price_usd"]) is not int or offer["price_usd"] <= 0:
@@ -128,18 +148,11 @@ def validate_input(value: dict[str, Any]) -> dict[str, Any]:
     if not isinstance(prospects, list) or not prospects:
         raise OutreachError("prospects must be a non-empty array")
     fields = {
-        "prospect_id",
-        "organization",
-        "recipient_email",
-        "evidence",
-        "owner_role",
-        "route",
-        "proof_hypothesis",
-        "occupied_by",
-        "do_not_contact",
-        "disqualifiers",
+        "prospect_id", "organization", "recipient_email", "evidence", "owner_role",
+        "route", "proof_hypothesis", "occupied_by", "do_not_contact", "disqualifiers",
     }
-    seen: set[str] = set()
+    seen_ids: set[str] = set()
+    seen_leads: dict[str, str] = {}
     for index, prospect in enumerate(prospects):
         where = f"prospects[{index}]"
         if not isinstance(prospect, dict):
@@ -148,13 +161,23 @@ def validate_input(value: dict[str, Any]) -> dict[str, Any]:
         prospect_id = prospect["prospect_id"]
         if not isinstance(prospect_id, str) or not IDENTIFIER_RE.fullmatch(prospect_id):
             raise OutreachError(f"{where}.prospect_id is invalid")
-        if prospect_id in seen:
+        if prospect_id in seen_ids:
             raise OutreachError(f"duplicate prospect_id: {prospect_id}")
-        seen.add(prospect_id)
+        seen_ids.add(prospect_id)
         if not isinstance(prospect["organization"], str) or not prospect["organization"].strip():
             raise OutreachError(f"{where}.organization must be non-empty")
         if prospect["recipient_email"] is not None:
-            normalize_email(prospect["recipient_email"])
+            normalized = normalize_email(prospect["recipient_email"])
+            lease = _load_outbound_lease()
+            key = lease.lead_key(
+                opportunity=str(offer["sku_id"]), channel="email", destination=normalized
+            )
+            prior = seen_leads.get(key)
+            if prior is not None:
+                raise OutreachError(
+                    f"duplicate outbound lead identity: {prior} and {prospect_id} map to {key}"
+                )
+            seen_leads[key] = prospect_id
         evidence = prospect["evidence"]
         if not isinstance(evidence, dict):
             raise OutreachError(f"{where}.evidence must be an object")
@@ -208,8 +231,7 @@ def score_prospect(prospect: dict[str, Any]) -> tuple[int, list[str], list[str]]
     missing: list[str] = []
     words = set(re.findall(r"[a-z]+", prospect["evidence"]["exact_quote"].casefold()))
     pain_hits = sorted(words & PAIN_TERMS)
-    pain_score = min(25, len(pain_hits) * 5)
-    score += pain_score
+    score += min(25, len(pain_hits) * 5)
     if pain_hits:
         reasons.append("specific pain terms: " + ", ".join(pain_hits))
     else:
@@ -247,11 +269,7 @@ def _draft(prospect: dict[str, Any], offer: dict[str, Any]) -> dict[str, str]:
     return {"subject": subject, "body": body}
 
 
-def classify(
-    prospect: dict[str, Any],
-    offer: dict[str, Any],
-    receipts: dict[str, dict[str, list[str]]],
-) -> dict[str, Any]:
+def classify(prospect: dict[str, Any], offer: dict[str, Any], receipts: dict[str, dict[str, list[str]]]) -> dict[str, Any]:
     score, reasons, missing = score_prospect(prospect)
     collisions: list[str] = []
     recipient = prospect["recipient_email"]
@@ -259,6 +277,7 @@ def classify(
         collisions.extend(receipts["emails"].get(normalize_email(recipient), []))
     collisions.extend(receipts["organizations"].get(organization_key(prospect["organization"]), []))
     collisions = sorted(set(collisions))
+    lease_identity = outbound_lease_identity(prospect, offer)
 
     if prospect["do_not_contact"]:
         decision = "HOLD_DO_NOT_CONTACT"
@@ -277,7 +296,14 @@ def classify(
         next_action = "complete the listed research gaps, then rerun this planner"
     else:
         decision = "READY_TO_DRAFT"
-        next_action = "record the private draft in Swarm Mail; this planner does not dispatch"
+        if lease_identity is None:
+            next_action = "resolve a concrete recipient before private drafting; no transport handoff"
+            decision = "RESEARCH_REQUIRED"
+        else:
+            next_action = (
+                f"atomically create {lease_identity['path']} on current git main; only the winning "
+                "creator may record the private draft; re-read provider state before any send"
+            )
 
     return {
         "prospect_id": prospect["prospect_id"],
@@ -288,6 +314,7 @@ def classify(
         "reasons": reasons,
         "missing": missing,
         "collision_receipts": collisions,
+        "outbound_lease": lease_identity,
         "occupied_by": prospect["occupied_by"],
         "disqualifiers": list(prospect["disqualifiers"]),
         "evidence": dict(prospect["evidence"]),
@@ -316,6 +343,7 @@ def build_plan(value: dict[str, Any], receipt_directory: Path = DEFAULT_RECEIPTS
             "prospects_evaluated": len(items),
             "decision_counts": counts,
             "drafts_created": counts["READY_TO_DRAFT"],
+            "lease_claims_required": counts["READY_TO_DRAFT"],
             "transport_actions": 0,
             "contacts_claimed": 0,
             "cash_usd": 0,
@@ -343,11 +371,7 @@ def build_parser() -> argparse.ArgumentParser:
         child.add_argument("--receipts", type=Path, default=DEFAULT_RECEIPTS)
         if command == "plan":
             child.add_argument("--output", type=Path)
-            child.add_argument(
-                "--owner",
-                default="",
-                help="live occupant; staging a draft without a match exits 4",
-            )
+            child.add_argument("--owner", default="", help="live occupant; staging a draft without a match exits 4")
     return parser
 
 
@@ -373,10 +397,7 @@ def main(argv: list[str] | None = None) -> int:
             for item in plan["items"]:
                 if item.get("draft") is None:
                     continue
-                gtm.assert_sales_owner(
-                    subject_id=item["prospect_id"],
-                    owner=getattr(args, "owner", "") or "",
-                )
+                gtm.assert_sales_owner(subject_id=item["prospect_id"], owner=getattr(args, "owner", "") or "")
         except gtm.UnclaimedSales as error:
             print(str(error), file=sys.stderr)
             return 4

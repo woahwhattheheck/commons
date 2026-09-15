@@ -1,0 +1,82 @@
+{
+  "schema": "alcorn-rfp5588-qualification-spec/v1",
+  "opportunity": {
+    "buyer": "Alcorn State University",
+    "rfp": "5588",
+    "title": "AI Proficiency Labs",
+    "due_at": "2026-09-21T14:00:00-05:00",
+    "submission_mode": "sealed physical package plus searchable USB"
+  },
+  "source_packet": {
+    "gmail_message_id": "1a0a0186cbd89b53",
+    "filename": "RFP#5588 NVIDIA v3.pdf",
+    "sha256": "107f0cc3ae880e4000ad89f0d6db6ad4908600afcdafcaf8d66ff4303170f688",
+    "page_count": 41
+  },
+  "received_packet_structure": {
+    "present_sections": ["I", "II", "III", "IV", "V", "VI", "VII", "EXHIBIT_A_STANDARD_CONTRACT"],
+    "referenced_but_absent": [
+      {
+        "id": "section_viii_cost_information",
+        "reference": "response checklist item 9 and Section II cost instructions",
+        "status": "MISSING_BUYER_ARTIFACT"
+      },
+      {
+        "id": "section_ix_references",
+        "reference": "response checklist item 10",
+        "status": "MISSING_BUYER_ARTIFACT"
+      },
+      {
+        "id": "section_vii_item_12_requirements_matrix",
+        "reference": "Section VII 2.1.2",
+        "status": "MISSING_BUYER_ARTIFACT"
+      }
+    ],
+    "observed_transition": "Section VII item 7 is followed by Exhibit A; no Section VIII, Section IX, or Section VII item 12 occurs in the received 41-page packet"
+  },
+  "normalized_buyer_gates": [
+    {"id": "valid_nvidia_partner", "source": "Section VII 3.1.2", "kind": "mandatory_or_material"},
+    {"id": "ai_infrastructure_track_record", "source": "Section VII 3.1.4", "kind": "material"},
+    {"id": "training_sample", "source": "Section VII 3.2", "kind": "material"},
+    {"id": "dgx_spark_lab_design", "source": "Section VII 3.3-3.4", "kind": "material"},
+    {"id": "acceptance_and_facility_training", "source": "Section VII 3.5-3.7", "kind": "material"},
+    {"id": "one_year_hw_sw_warranty", "source": "Section VII 6.1", "kind": "material"},
+    {"id": "first_year_onsite_support_in_cost", "source": "Section VII 6.2", "kind": "material"},
+    {"id": "reference_site_on_request", "source": "Section VII 7.2.6", "kind": "material"},
+    {"id": "certificate_of_liability_insurance", "source": "Section VI item 73", "kind": "submission"},
+    {"id": "everify_documentation", "source": "Section VI item 74", "kind": "submission"},
+    {"id": "taxpayer_id", "source": "Section VI item 72", "kind": "submission_private"},
+    {"id": "order_and_remit_address", "source": "Section VI item 71", "kind": "submission_private"},
+    {"id": "amendments_review", "source": "Section VI item 70", "kind": "submission"},
+    {"id": "pricing_approval", "source": "Section II item 10 and scoring Section VII 7.2.3", "kind": "commercial"},
+    {"id": "blue_ink_officer_signature", "source": "Section II item 5 / Section I", "kind": "owner_authority"},
+    {"id": "sealed_physical_delivery", "source": "cover and Section II", "kind": "logistics"}
+  ],
+  "scoring": {
+    "solution_fit": 25,
+    "required_services": 20,
+    "value_added": 10,
+    "references": 10,
+    "lifecycle_cost": 35,
+    "non_cost_elimination_floor_percent": 80
+  },
+  "schedule_conflict": {
+    "project_schedule_question_deadline": "2026-09-03",
+    "project_schedule_answers_posted": "2026-09-07",
+    "section_vii_5_3_written_document_text_date": "2026-09-21T14:00:00-05:00",
+    "policy": "Do not infer that Section VII 5.3 reopens the expired written-question deadline. Treat the mismatch as buyer-controlled ambiguity."
+  },
+  "authority_ceiling": {
+    "buyer_contact_authorized": false,
+    "partner_contact_authorized": false,
+    "price_release_authorized": false,
+    "signature_authorized": false,
+    "certification_authorized": false,
+    "proposal_submission_authorized": false,
+    "contract_acceptance_authorized": false,
+    "payment_mutation_authorized": false,
+    "award_claimed": false,
+    "cash_claimed": false,
+    "revenue_claimed": false
+  }
+}
