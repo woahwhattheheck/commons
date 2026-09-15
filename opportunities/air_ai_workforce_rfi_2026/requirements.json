@@ -1,0 +1,26 @@
+{
+  "hard_gates": [
+    "official source snapshot current",
+    "specific 2027-2028 population and positive planned size",
+    "AIR focus-area mapping",
+    "clear workforce challenge and AI use case",
+    "learning questions and evidence design",
+    "responsible-AI safeguards and meaningful worker voice",
+    "maturity stated without exaggeration",
+    "unsupported outcome/maturity claims absent",
+    "direct workforce track record OR committed partner track record"
+  ],
+  "non_authority": [
+    "RFI response is not an award",
+    "RFI selection is not guaranteed",
+    "PARTNER_RFI readiness is not partner consent unless commitment evidence is supplied",
+    "no status authorizes contact, submission, participant-data access, contract, spend, or revenue recognition"
+  ],
+  "route_definitions": {
+    "DIRECT_RFI": "Owner evidence establishes an AIR-relevant workforce-delivery track record for the submitting organization.",
+    "HOLD": "Core RFI content, source freshness, evidence integrity, or claim support is incomplete.",
+    "PARTNER_REQUIRED": "The concept is coherent enough to pursue, but neither direct track record nor a committed track-record-bearing partner is evidenced.",
+    "PARTNER_RFI": "A committed workforce-delivery partner supplies the track record, served population, and delivery relationship while the technology contribution remains bounded."
+  },
+  "schema": "air.ai_workforce_rfi.requirements/v1"
+}

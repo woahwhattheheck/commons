@@ -1,0 +1,127 @@
+from __future__ import annotations
+
+import argparse
+import json
+import os
+import stat
+from pathlib import Path
+
+from .engine import DossierError, canonical_bytes, compile_dossier, render_markdown, strict_json_loads, verify_dossier
+
+MAX_INPUT = 1_048_576
+_READ_CHUNK = 64 * 1024
+
+
+def _timestamp_ns(st: os.stat_result, name: str) -> int:
+    ns_name = f"st_{name}_ns"
+    if hasattr(st, ns_name):
+        return int(getattr(st, ns_name))
+    return int(getattr(st, f"st_{name}") * 1_000_000_000)
+
+
+def _generation_fingerprint(st: os.stat_result) -> tuple[int, int, int, int, int, int]:
+    return (
+        int(st.st_dev),
+        int(st.st_ino),
+        int(stat.S_IFMT(st.st_mode)),
+        int(st.st_size),
+        _timestamp_ns(st, "mtime"),
+        _timestamp_ns(st, "ctime"),
+    )
+
+
+def read_regular(path: str) -> str:
+    p = Path(path)
+    inspected = os.lstat(p)
+    if not stat.S_ISREG(inspected.st_mode):
+        raise DossierError(f"not a regular input file: {path}")
+    if inspected.st_size > MAX_INPUT:
+        raise DossierError(f"input too large: {path}")
+
+    flags = os.O_RDONLY | getattr(os, "O_NONBLOCK", 0) | getattr(os, "O_CLOEXEC", 0)
+    nofollow = getattr(os, "O_NOFOLLOW", None)
+    if nofollow is None:
+        raise DossierError("platform does not provide O_NOFOLLOW for safe input reads")
+    fd = os.open(p, flags | nofollow)
+    try:
+        opened = os.fstat(fd)
+        if not stat.S_ISREG(opened.st_mode):
+            raise DossierError(f"not a regular input file: {path}")
+        if opened.st_size > MAX_INPUT:
+            raise DossierError(f"input too large: {path}")
+        opened_generation = _generation_fingerprint(opened)
+        if _generation_fingerprint(inspected) != opened_generation:
+            raise DossierError(f"input changed before open: {path}")
+
+        chunks: list[bytes] = []
+        total = 0
+        while True:
+            chunk = os.read(fd, min(_READ_CHUNK, MAX_INPUT + 1 - total))
+            if not chunk:
+                break
+            total += len(chunk)
+            if total > MAX_INPUT:
+                raise DossierError(f"input too large: {path}")
+            chunks.append(chunk)
+
+        finished = os.fstat(fd)
+        if _generation_fingerprint(finished) != opened_generation:
+            raise DossierError(f"input changed during read: {path}")
+        data = b"".join(chunks)
+        if len(data) != opened.st_size:
+            raise DossierError(f"input changed during read: {path}")
+    finally:
+        os.close(fd)
+    return data.decode("utf-8")
+
+
+def write_new(path: str, data: bytes) -> None:
+    fd = os.open(path, os.O_WRONLY | os.O_CREAT | os.O_EXCL | getattr(os, "O_NOFOLLOW", 0), 0o600)
+    try:
+        view = memoryview(data)
+        while view:
+            n = os.write(fd, view)
+            view = view[n:]
+    finally:
+        os.close(fd)
+
+
+def main(argv: list[str] | None = None) -> int:
+    """Compile/verify the unprivileged prospect-safe surface.
+
+    Deliberately no CLI flag accepts commercial-truth authority. A pathname supplied by
+    the same CLI caller is not independent buyer/payment/accounting provenance. Hosts
+    that have independently authenticated those provider facts must call the engine API
+    with their retained trust map; this CLI always compiles/verifies with an empty map.
+    """
+    ap = argparse.ArgumentParser(description="Compile and verify prospect-safe Commons SwarmOps evidence dossiers")
+    sub = ap.add_subparsers(dest="cmd", required=True)
+    cp = sub.add_parser("compile")
+    cp.add_argument("packet")
+    cp.add_argument("policy")
+    cp.add_argument("--as-of", required=True)
+    cp.add_argument("--json-out", required=True)
+    cp.add_argument("--markdown-out", required=True)
+    vp = sub.add_parser("verify")
+    vp.add_argument("packet")
+    vp.add_argument("policy")
+    vp.add_argument("candidate")
+    vp.add_argument("--as-of", required=True)
+    ns = ap.parse_args(argv)
+    try:
+        packet = strict_json_loads(read_regular(ns.packet))
+        policy = strict_json_loads(read_regular(ns.policy))
+        if ns.cmd == "compile":
+            dossier = compile_dossier(packet, policy, ns.as_of, {})
+            write_new(ns.json_out, canonical_bytes(dossier) + b"\n")
+            write_new(ns.markdown_out, render_markdown(dossier).encode("utf-8"))
+            return 0 if dossier["status"] == "READY_FOR_OWNER_REVIEW" else 2
+        candidate = strict_json_loads(read_regular(ns.candidate))
+        return 0 if verify_dossier(packet, policy, ns.as_of, candidate, {}) else 3
+    except (DossierError, OSError, UnicodeError, json.JSONDecodeError) as exc:
+        print(f"ERROR: {exc}", file=__import__("sys").stderr)
+        return 4
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

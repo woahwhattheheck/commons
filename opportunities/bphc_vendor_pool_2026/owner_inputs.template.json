@@ -1,0 +1,61 @@
+{
+  "deadline_time_label_reviewed": false,
+  "dei_approach": "OWNER_INPUT_REQUIRED",
+  "living_wage_obligation_reviewed": false,
+  "organization": {
+    "boston_community_knowledge": "OWNER_INPUT_REQUIRED",
+    "legal_name": "OWNER_INPUT_REQUIRED",
+    "mission": "OWNER_INPUT_REQUIRED",
+    "website": "OWNER_INPUT_REQUIRED"
+  },
+  "page_plan": {
+    "dei_approach": 0,
+    "experience_and_qualifications": 0,
+    "organizational_overview_and_mission": 0,
+    "pricing": 0,
+    "selected_track_answers": {},
+    "team_and_staffing": 0
+  },
+  "pricing": {
+    "basis": "OWNER_INPUT_REQUIRED",
+    "owner_approved": false,
+    "schedule": "OWNER_INPUT_REQUIRED"
+  },
+  "qualifying_experience": [
+    {
+      "category": "OWNER_INPUT_REQUIRED",
+      "client_type": "OWNER_INPUT_REQUIRED",
+      "engagement_name": "OWNER_INPUT_REQUIRED",
+      "evidence_ref": "OWNER_INPUT_REQUIRED",
+      "outcomes": "OWNER_INPUT_REQUIRED",
+      "scope": "OWNER_INPUT_REQUIRED"
+    }
+  ],
+  "references": [
+    {
+      "contact_delivery_plan": "OWNER_INPUT_REQUIRED",
+      "organization": "OWNER_INPUT_REQUIRED",
+      "reference_id": "ref-1",
+      "relationship": "OWNER_INPUT_REQUIRED"
+    },
+    {
+      "contact_delivery_plan": "OWNER_INPUT_REQUIRED",
+      "organization": "OWNER_INPUT_REQUIRED",
+      "reference_id": "ref-2",
+      "relationship": "OWNER_INPUT_REQUIRED"
+    }
+  ],
+  "sam_exclusion_requirement_reviewed": false,
+  "schema": "bphc.vendor_pool.owner_inputs/v1",
+  "selected_tracks": [],
+  "service_request_tracking": "OWNER_INPUT_REQUIRED",
+  "team": [
+    {
+      "evidence_ref": "OWNER_INPUT_REQUIRED",
+      "role": "OWNER_INPUT_REQUIRED",
+      "staffing_summary": "OWNER_INPUT_REQUIRED"
+    }
+  ],
+  "track_answers": {},
+  "track_count_ambiguity_reviewed": false
+}

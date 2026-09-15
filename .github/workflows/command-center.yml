@@ -1,7 +1,8 @@
 name: command-center
 on:
   push:
-    branches: [main, 'codex/command-center-*']
+    branches: [main]
+    
     paths: ['integrations/command_center/**', 'integrations/shared_equipment/services.py', 'command.html', '.github/workflows/command-center.yml']
   pull_request:
     paths: ['integrations/command_center/**', 'integrations/shared_equipment/services.py', 'command.html', '.github/workflows/command-center.yml']

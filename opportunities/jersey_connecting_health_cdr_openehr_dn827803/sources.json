@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "operation_id": "JERSEY-CDR-OPENEHR-DN827803-ZVHJ7P4-20260913",
+  "notice_id": "DN827803",
+  "buyer": "Government / States of Jersey",
+  "programme": "Connecting Health - Clinical Data Repository (CDR) and openEHR",
+  "checked_at": "2026-09-13T11:15:00Z",
+  "public_expression_start": "2026-08-28T14:00:00+01:00",
+  "response_deadline": "2026-09-29T23:30:00+01:00",
+  "response_deadline_basis": "ProContract public opportunity listing; confirm against controlling tender pack before any response action",
+  "public_contract_term": "5 years with option to extend by up to 2 years",
+  "tender_pack": {
+    "acquired": false,
+    "reviewed": false,
+    "sha256": null,
+    "state": "TENDER_PACK_NOT_ACQUIRED"
+  },
+  "sources": [
+    {
+      "kind": "official_procurement_portal_listing",
+      "url": "https://procontract.due-north.com/Opportunities/Index",
+      "access_state": "PUBLIC_LISTING_CONFIRMED_TENDER_PACK_NOT_ACQUIRED",
+      "authority": "ProContract / Due North opportunity feed for States of Jersey"
+    },
+    {
+      "kind": "public_notice_mirror",
+      "url": "https://www.stotles.com/explore/notices/59884035-c576-4a09-815d-f36384a29aec/connecting-health-clinical-data-repository-cdr-and-openehr",
+      "access_state": "READ_OK",
+      "authority": "Public notice mirror"
+    },
+    {
+      "kind": "public_notice_mirror",
+      "url": "https://www.tenderdetail.com/Global-Tenders/TenderNotice/117610492/d0d9a843-3877-496b-8c47-ba7684bc35d7",
+      "access_state": "READ_OK",
+      "authority": "Public notice mirror carrying DN827803"
+    }
+  ],
+  "public_scope_facts": [
+    "The procurement is for a centralised Clinical Data Repository and real-time data platform within Jersey's Connecting Health digital-transformation programme.",
+    "The requirement combines the Get Care Connected (IP2) and Get Smart (IP4) investment packages.",
+    "The successful supplier is expected to deliver a platform compliant with openEHR standards and architecture.",
+    "The public notice describes real-time access to clinical information and interoperability across health and care systems.",
+    "The solution is expected to support open standards, portability, supplier independence, and integration with existing Government of Jersey and healthcare technology environments.",
+    "Future analytics and digital capabilities are part of the stated outcome.",
+    "The buyer seeks a single supplier for the overall requirement while allowing joint bids, partnerships, and Special Purpose Vehicles where appropriate.",
+    "The anticipated public contract term is five years with an option to extend by up to two further years."
+  ]
+}

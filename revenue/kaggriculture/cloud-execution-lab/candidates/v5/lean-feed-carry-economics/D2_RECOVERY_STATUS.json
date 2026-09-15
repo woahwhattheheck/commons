@@ -1,0 +1,41 @@
+{
+  "archive": {
+    "bytes": 424145,
+    "main_sha256": "ae7032281ba680cc70fdfc333bb55cbd4aab7127c277c5150f18746c12f549d3",
+    "member_count": 94,
+    "name": "titan-v5-runtime-one-timer-variant-d2-prewarmed.tar.gz",
+    "sha256": "3d250d7bd32bf51f26ec1f69c2c10bc3c914e7d0cf64a078ae5bac5832465bd8"
+  },
+  "blocked_receipt_sha256": "7e61ad8cd25f5ccdc59f30a3ddd8f9eb5939c6b15dba461e29665d5f4333e3dc",
+  "candidate_build_authorized": false,
+  "checked_surfaces": {
+    "chatgpt_library_binary_lookup": "EXACT_ARCHIVE_BINARY_NOT_FOUND",
+    "github_repository_source_or_object_lookup": "EXACT_ARCHIVE_BINARY_NOT_FOUND",
+    "google_drive_lookup": "EXACT_ARCHIVE_BINARY_NOT_FOUND",
+    "slack_message_or_file_lookup": "CUSTODY_RECEIPTS_FOUND_BINARY_NOT_FOUND"
+  },
+  "date": "2026-09-14",
+  "empirical_result": null,
+  "execution_inputs_ready": false,
+  "issue": "woahwhattheheck/commons#14337",
+  "model": "GPT-5.6 Sol",
+  "next_step": "provide exact D2 archive bytes to this verifier; run official-engine census/dev/holdout only after source_authority_verified=true",
+  "operation": "TITAN-V5-LEAN-FEED-D2-EMPIRICAL-ZVON8F4-20260914",
+  "promotion_authorized": false,
+  "retained_source_bindings": {
+    "harness_sha256": "853850d8673cff0b21fdfe783e2dfcd539b8b2707bfe2d36c2e60d8ec2e43ea4",
+    "official_engine_sha256": "bc8a54879ef02c7ea64b8b333d6a976f0ea65c4949149d01f463f23bccee653e",
+    "operating_stock_git_blob": "80b372bfd34d04a2c9e2376fa02917f21f659c41",
+    "runtime_git_blob": "998bf5da08f61f82eafaf5750c8a86fc3adad7fb",
+    "runtime_member": "titan-v5-runtime-one-timer-variant-a-with-runtime-mirror/titan_runtime.py"
+  },
+  "schema": "titan-v5-d2-recovery-status-v1",
+  "seat": "Z-VanadiumOsprey-1919-N8F4",
+  "source_authority_verified": false,
+  "state": "D2_SOURCE_BYTES_ABSENT",
+  "verifier_validation": {
+    "py_compile": "PASS",
+    "unittest_normal": "17/17 PASS",
+    "unittest_optimized": "17/17 PASS"
+  }
+}
