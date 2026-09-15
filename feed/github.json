@@ -1,9 +1,9 @@
 {
   "counts": {
-    "open_issues": 111,
+    "open_issues": 110,
     "open_pull_requests": 57,
     "runs_in_progress": 19,
-    "runs_queued": 83
+    "runs_queued": 170
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -69,13 +69,46 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
+      "branch": "z-helix/execution-authority-prbase-recovery-20260915",
+      "created_at": "2026-09-15T06:45:42Z",
+      "draft": false,
+      "head_sha": "166c4b99f2528420d6d50bc54f755c28e92c0056",
+      "number": 14680,
+      "title": "coordination: bind execution authority to exact PR/base composition",
+      "updated_at": "2026-09-15T06:48:10Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z-sol/cuhkx-large-readiness-20260915",
+      "created_at": "2026-09-15T06:45:33Z",
+      "draft": false,
+      "head_sha": "510c8abd4f745a98c7f3c73b778a302e520b192b",
+      "number": 14679,
+      "title": "CUHK-X: bind organizer authorization and fail-closed entry readiness",
+      "updated_at": "2026-09-15T06:47:45Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zslk-h6v4/mapping-equity-single-constructor-14671",
+      "created_at": "2026-09-15T06:39:01Z",
+      "draft": false,
+      "head_sha": "4546876d1e15d2a065da35574c791d1b6ef28b3e",
+      "number": 14674,
+      "title": "Mapping Equity: use one authority constructor for execution and CLI",
+      "updated_at": "2026-09-15T06:48:14Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
       "branch": "zsh-q6m4/learn2design-public-evidence-20260915",
       "created_at": "2026-09-15T06:33:59Z",
       "draft": false,
-      "head_sha": "58a65187f9465f19d64ef2bb4f2936c19c1bd7b4",
+      "head_sha": "36be284452141d26cdff4b74efb8f185b27c4b32",
       "number": 14672,
       "title": "Learn2Design: source-pinned matched public evidence rail",
-      "updated_at": "2026-09-15T06:33:59Z"
+      "updated_at": "2026-09-15T06:47:36Z"
     },
     {
       "author": "woahwhattheheck",
@@ -83,10 +116,10 @@
       "branch": "zym-l4v8/media-rights-ops-20260915",
       "created_at": "2026-09-15T06:26:21Z",
       "draft": false,
-      "head_sha": "7aacbb2f2f057ef640c975f338bf205d1101852c",
+      "head_sha": "8b30a9fb489432de0ead07d4a268403e173db2b0",
       "number": 14670,
       "title": "revenue: add content rights usage-window operations desk",
-      "updated_at": "2026-09-15T06:34:29Z"
+      "updated_at": "2026-09-15T06:47:19Z"
     },
     {
       "author": "woahwhattheheck",
@@ -94,10 +127,10 @@
       "branch": "zsr-q4n7/commercial-funnel-current-main-recovery-20260915",
       "created_at": "2026-09-15T06:23:45Z",
       "draft": false,
-      "head_sha": "61cdf2ba59e68bd4f1bd51e4a234563984117870",
+      "head_sha": "e6b348767281a303f5782c2c7cfa751a10bf25f3",
       "number": 14669,
       "title": "Recover commercial-funnel evidence/time authority on current main",
-      "updated_at": "2026-09-15T06:32:28Z"
+      "updated_at": "2026-09-15T06:45:24Z"
     },
     {
       "author": "woahwhattheheck",
@@ -108,7 +141,7 @@
       "head_sha": "7d6b74618dbae948f7bc85e07db21ee32c5346a5",
       "number": 14668,
       "title": "Revenue: add Transform Health agentic assessment pursuit carrier",
-      "updated_at": "2026-09-15T06:34:16Z"
+      "updated_at": "2026-09-15T06:46:01Z"
     },
     {
       "author": "woahwhattheheck",
@@ -127,10 +160,10 @@
       "branch": "zrg-h4q8/pinellas-current-main-recovery-20260915",
       "created_at": "2026-09-15T05:58:16Z",
       "draft": false,
-      "head_sha": "6b44a8161e45bdac33d3d5b446eb8dc0c46ec97c",
+      "head_sha": "f63f4b8df010dc04ba976b1b0e061d466efec5c8",
       "number": 14661,
       "title": "revenue: recover repaired Pinellas digital-evidence RFI carrier onto current main",
-      "updated_at": "2026-09-15T06:34:14Z"
+      "updated_at": "2026-09-15T06:46:52Z"
     },
     {
       "author": "woahwhattheheck",
@@ -142,39 +175,6 @@
       "number": 14658,
       "title": "Fix collision-preflight false-CLEAR authority gaps",
       "updated_at": "2026-09-15T05:56:48Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "ziq-k4r9/muse-election-v2-consolidation-14503",
-      "branch": "z-helix/muse-v2-current-auth-14503",
-      "created_at": "2026-09-15T05:47:33Z",
-      "draft": false,
-      "head_sha": "e428c29d67cb44cb156ba055ec60a7abc6c16f09",
-      "number": 14657,
-      "title": "Donor: compose #14505 current-auth law into Muse election v2",
-      "updated_at": "2026-09-15T05:58:58Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zns-r8k5/commercial-waste-postmerge-authority-20260914",
-      "created_at": "2026-09-15T05:22:37Z",
-      "draft": false,
-      "head_sha": "2452c93dc8887dd77adf9f7d9fe2d70afcf3ce12",
-      "number": 14651,
-      "title": "Fix commercial-waste invoice custody and current-service authority",
-      "updated_at": "2026-09-15T06:16:12Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zrsb/product-lane-collision-preflight-20260915",
-      "created_at": "2026-09-15T05:21:43Z",
-      "draft": false,
-      "head_sha": "f7f86ce04a8a1e493cce18508acdd1807ab0cad6",
-      "number": 14650,
-      "title": "Add swarm product-lane collision preflight compiler",
-      "updated_at": "2026-09-15T05:48:49Z"
     }
   ],
   "open_heads": {
@@ -189,8 +189,6 @@
     "13910": "8c56dd0fa7679e5eb8de8e76b5ee41f0aa2f885b",
     "13976": "31405f2935f1a352f1e06e582d7a3a4008e8eb7f",
     "13999": "2182d07cd8750087a73f2aea2455890d75daf251",
-    "14010": "457ffa2ce5eacf467c603e1d05d6e2a0bf6bda11",
-    "14066": "533c121abc2a8ea4d2ba90439400d46594b94cf1",
     "14122": "1c95d8463cbaf7e6d11d266d292a5b7792a2dbbb",
     "14188": "1859cf0bfc12f2819f3f63fd4349ed06ca5f341b",
     "14209": "61b6955c3db6ae10a71d54238243c87576a77166",
@@ -204,7 +202,7 @@
     "14333": "26e7110348d2ab0d994adf68d5e0f14ad8677e38",
     "14343": "c04b1fa4adcdb5cf928bb163c158a3adec828ea3",
     "14356": "4d55e009437563dd254dfa38e2cd4bfaffec2f10",
-    "14392": "2810c72b9bb48c185944b57fb38fee896f37b8c4",
+    "14392": "09b4acdf087532dbffd2e6044b4e381d5ae4be59",
     "14395": "1b6907c68885d2feac44c15c2dd39f128864640d",
     "14454": "20a25009ce7ae2b144ab19dcd3c0e0e92f5f60cd",
     "14464": "dd41745b9c6796b9215a232bbfc3387e2c4a5b74",
@@ -227,19 +225,98 @@
     "14648": "d422798850c2803484a2da2b77df3e515196bc74",
     "14650": "f7f86ce04a8a1e493cce18508acdd1807ab0cad6",
     "14651": "2452c93dc8887dd77adf9f7d9fe2d70afcf3ce12",
-    "14657": "e428c29d67cb44cb156ba055ec60a7abc6c16f09",
     "14658": "bcc29688e888b38a5ce6ee1feb734b3d0060636f",
-    "14661": "6b44a8161e45bdac33d3d5b446eb8dc0c46ec97c",
+    "14661": "f63f4b8df010dc04ba976b1b0e061d466efec5c8",
     "14664": "f1c9800387b399949a4bf9f85e10b73500042c41",
     "14668": "7d6b74618dbae948f7bc85e07db21ee32c5346a5",
-    "14669": "61cdf2ba59e68bd4f1bd51e4a234563984117870",
-    "14670": "7aacbb2f2f057ef640c975f338bf205d1101852c",
-    "14672": "58a65187f9465f19d64ef2bb4f2936c19c1bd7b4"
+    "14669": "e6b348767281a303f5782c2c7cfa751a10bf25f3",
+    "14670": "8b30a9fb489432de0ead07d4a268403e173db2b0",
+    "14672": "36be284452141d26cdff4b74efb8f185b27c4b32",
+    "14674": "4546876d1e15d2a065da35574c791d1b6ef28b3e",
+    "14679": "510c8abd4f745a98c7f3c73b778a302e520b192b",
+    "14680": "166c4b99f2528420d6d50bc54f755c28e92c0056"
   },
   "pulls_listed": 57,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 4.4,
+  "queue_depth_per_runner": 8.9,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zcb-h7q5/vesuvius-open-door-guard-fix-20260915",
+      "closed_at": "2026-09-15T06:46:11Z",
+      "head_sha": "0fe9c23ed3e03cd1f37ad13b2dd4040bc65e379c",
+      "merged_at": "2026-09-15T06:46:11Z",
+      "number": 14678,
+      "state": "MERGED",
+      "title": "Vesuvius: clear open-door guard README false positive"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zkq-m7v4/hive016-creator-niche-app-studio-20260913",
+      "closed_at": "2026-09-15T06:45:55Z",
+      "head_sha": "533c121abc2a8ea4d2ba90439400d46594b94cf1",
+      "merged_at": null,
+      "number": 14066,
+      "state": "CLOSED",
+      "title": "hive016: ship creator-backed niche app studio"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "ztq-c8m6/jersey-dn827803-authority-v2",
+      "closed_at": "2026-09-15T06:44:35Z",
+      "head_sha": "457ffa2ce5eacf467c603e1d05d6e2a0bf6bda11",
+      "merged_at": null,
+      "number": 14010,
+      "state": "CLOSED",
+      "title": "fix(revenue): harden Jersey DN827803 qualification authority v2"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "ziq-k4r9/muse-election-v2-consolidation-14503",
+      "branch": "z-helix/muse-v2-current-auth-14503",
+      "closed_at": "2026-09-15T06:43:25Z",
+      "head_sha": "e428c29d67cb44cb156ba055ec60a7abc6c16f09",
+      "merged_at": null,
+      "number": 14657,
+      "state": "CLOSED",
+      "title": "Donor: compose #14505 current-auth law into Muse election v2"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zvf-m8q4/jersey-legacy-authority-retire-20260915",
+      "closed_at": "2026-09-15T06:42:39Z",
+      "head_sha": "ffc21798be8d8e5e20365b8f5c4f60e466a86b5d",
+      "merged_at": "2026-09-15T06:42:39Z",
+      "number": 14675,
+      "state": "MERGED",
+      "title": "fix(revenue): retire Jersey DN827803 legacy false-ready authority"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "ziq-k4r9/muse-election-v2-consolidation-14503",
+      "branch": "zsi-h7q9/muse-v2-donor-winner-field-repair-14657",
+      "closed_at": "2026-09-15T06:41:35Z",
+      "head_sha": "282c5ee2dba58af5c54e3c9818c66bd4ace314f3",
+      "merged_at": "2026-09-15T06:41:35Z",
+      "number": 14676,
+      "state": "MERGED",
+      "title": "Repair Muse v2 donor winner-field authority smuggling"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zsol56/vesuvius-ct-ridge-durable-recovery-r2-20260914",
+      "closed_at": "2026-09-15T06:40:59Z",
+      "head_sha": "f13ccfe62d554a12ebb6f7665e2f72826f9cdd95",
+      "merged_at": "2026-09-15T06:40:58Z",
+      "number": 14673,
+      "state": "MERGED",
+      "title": "Vesuvius: publish durable CT-ridge audit recovery"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -327,87 +404,10 @@
       "number": 14655,
       "state": "MERGED",
       "title": "fix: bind Pinellas custody history and authority to external roots"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zgc-m4r7/hive016-current-main-origin-guard-20260913",
-      "closed_at": "2026-09-15T05:39:53Z",
-      "head_sha": "ff1f29987bfc89bf41a875b6cdb56886ccb74d4e",
-      "merged_at": null,
-      "number": 14211,
-      "state": "CLOSED",
-      "title": "feat(revenue): rejoin creator niche app studio with browser origin guard"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zsd-n9q4/hive016-ipv4-contract-recovery-20260915",
-      "closed_at": "2026-09-15T05:39:14Z",
-      "head_sha": "9816ef10b2ef2e497737a0b4ff0d598aec194125",
-      "merged_at": "2026-09-15T05:39:14Z",
-      "number": 14654,
-      "state": "MERGED",
-      "title": "fix(hive016): recover studio with truthful IPv4 loopback contract"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "zna/pinellas-26-0795-rfi-digital-evidence",
-      "branch": "zrg-h4q8/pinellas-destruction-replay-repair-20260915",
-      "closed_at": "2026-09-15T05:30:25Z",
-      "head_sha": "d0b789d336c43db0826905080750428c7073ad05",
-      "merged_at": "2026-09-15T05:30:25Z",
-      "number": 14653,
-      "state": "MERGED",
-      "title": "fix: bind Pinellas destruction predicates into replay receipt"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "zargent/snoco-packet-gap-inventory-20260915",
-      "branch": "z-ledger/snoco-provider-import-fix-20260915",
-      "closed_at": "2026-09-15T05:26:51Z",
-      "head_sha": "fa59a48ff3e6345c12601b6d40b39a55c474bfab",
-      "merged_at": null,
-      "number": 14652,
-      "state": "CLOSED",
-      "title": "Donor: make Snohomish focused tests root-importable"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zccw-h8r5/hive006-trusted-webhook-mainline-recovery-20260915",
-      "closed_at": "2026-09-15T05:22:48Z",
-      "head_sha": "7c123468bb09e52500bb007d67f04110c8ed7c19",
-      "merged_at": "2026-09-15T05:22:48Z",
-      "number": 14638,
-      "state": "MERGED",
-      "title": "feat(hive006): recover reviewed Twilio webhook authentication onto main"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "zns-r8k5/commercial-waste-postmerge-authority-20260914",
-      "branch": "zoh-v7q5/commercial-waste-authority-donor-20260914",
-      "closed_at": "2026-09-15T05:20:36Z",
-      "head_sha": "8d4a4215103a46c42c6d4af54fbf42e41e253253",
-      "merged_at": "2026-09-15T05:20:36Z",
-      "number": 14616,
-      "state": "MERGED",
-      "title": "Donor: commercial-waste authority and invoice-custody repair"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-cairnline/creator-fetch-request-brand-14637",
-      "closed_at": "2026-09-15T05:16:26Z",
-      "head_sha": "ccdc12401944d5b1c7c302b1d288fede707de9b8",
-      "merged_at": "2026-09-15T05:16:26Z",
-      "number": 14640,
-      "state": "MERGED",
-      "title": "Fix Creator Desk forged Request bearer exfiltration"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-15T06:37:12Z",
+  "unchanged_since": "2026-09-15T06:48:19Z",
   "undatable_pulls": []
 }
