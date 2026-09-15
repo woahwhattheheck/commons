@@ -1,52 +1,129 @@
-# Terminal runtime recovery and composition
+# TITAN V4 terminal-fallback raw-slot completion
 
-This is one source-candidate packet inside `main:candidates/v4`, not a new V4 branch, controller, production package, or activation. Production `main.py`, `titan_runtime.py`, `deadline_adapter.py`, defaults, archive and Kaggle state are unchanged.
+**Status: built and tested locally; NOT published to GitHub or posted to Slack.**
+No merge, production update, feature-default change, branch, Actions run or Kaggle
+submission was performed. This session exposed read-only GitHub and Slack tools.
 
-## Recovered work and new build
+Operation: `V4-TERMINAL-FALLBACK-RAW-SLOT-COMPLETION-20260911-01`.
+The single intended custody destination is this directory on `main`, under the
+existing `revenue/kaggriculture/cloud-execution-lab/candidates/v4` workspace.
+This is not another V4 product or successor branch.
 
-The unpublished terminal-slot repair was recovered from `titan-v4-terminal-fallback-custody.patch` (SHA256 `c138c5aeca2c09476d127d81bc23ce1e4679c9951739945fc177729da46fe549`). Its transformer and 25-test engine suite are preserved byte-for-byte. The transformer matches the engine's minimum-one market-order clamp and fills otherwise-inert animal SELL slots with omitted products without moving any already-executable product SELL's raw row index.
+## Scope and findings
 
-Cross-channel review also recovered the distinct terminal-precedence donor #11913 and its outer-entrypoint evidence child #11927, both closed without merging. Their exact source files are preserved under `legacy/`; no old workflow or sibling V4 tree is revived. The legacy generator accepts pinned source blobs, not a particular checkout commit. Its `base_commit` field is historical provenance only. Do not run its in-place two-file writer on a production checkout.
+The current production-source `reference/titan-current/deadline_adapter.py` has
+two terminal-fallback boundary/representation-order defects:
 
-`test_terminal_composition.py` is new. It tests four arms: predecessor, slot-only, precedence-only, and composed. It executes the exact current `main.agent`, the real main-thread signal timer and worker-thread trace timer, and the pinned official interpreter. Only the producer is a test double. Tests cover both seats, preselection and post-selection cancellation, step-717 parity, successful-call parity, one producer call, foreign-sentinel identity, instance invalidation, observation non-mutation, and trace/context/signal-handler restoration. Worker tests reject all process-global signal writes.
+1. Its raw Python slice uses `int(maxMarketOrdersPerTurn)`, whereas the pinned
+   interpreter uses `max(1, int(maxMarketOrdersPerTurn))`. A configured zero or
+   negative value can therefore suppress a sale the engine will execute.
+2. The shed can contain three animal types as well as nine saleable products.
+   Animal SELL rows are invalid but consume raw market slots. With a reordered
+   shed mapping, such rows can crowd valid product lots out of a ten-slot queue.
 
-The important interaction is executable: fixing slots alone does not help when a post-selection timeout returns the raw producer action instead of liquidation. Conversely, fixing fallback precedence alone can still leave product lots crowded out. Both mechanisms are needed for the constructed combined witness.
+**This is not an observed ladder-strength gain.** The engine normally initializes
+shed keys with products before animals, and the standard order limit is positive.
+The reordered/default-limit and nonpositive-limit witnesses here are constructed
+observations/configurations. Natural hosted activation and full-episode payoff
+have not been measured.
 
-## Fresh execution, Python 3.13.5
+## Repair and composition invariant
 
-| Suite | Normal | `-O` | Scope |
-| --- | ---: | ---: | --- |
-| Recovered engine regressions | 25/25 | 25/25 | Exact adapter and full pinned interpreter; includes 704 constructed randomized cells per mode |
-| New real-timer composition | 6/6 | 6/6 | 80 entrypoint invocations per mode: 72 recorded cases plus 8 foreign-sentinel cases |
-| Existing compatibility checks | 11/11 | 11/11 | Older materialized runtime; worker deadline, entrypoint clock, module recovery |
+`deadline_adapter.py` is the complete, exact tested postimage. Only the bottom of
+`terminal_liquidation_fallback` changes. Timer code, deadline ownership, legal PASS,
+DROP actor ordering, shared-capacity accounting and entrypoint behavior are not
+changed.
 
-Total: 42 passed in each mode, zero failures or errors. Counts across modes repeat the same scenarios, not independent games. The compatibility artifact's other runtime files are older than current main; those 11 tests are not full-current-V4 evidence. The new six tests do not execute the full current `TitanAgent` implementation. No natural hosted activation or ladder-strength gain was measured.
+The repair matches the engine's minimum-one clamp. For animal rows inside the
+executable prefix, it fills only otherwise-inert slots from product SELL lots
+outside that prefix. Every already-executable valid SELL keeps its values and
+**the same raw row index**. It does not filter/compact the queue, which would move
+those orders relative to the rival's lockstep market rows. Extra animal rows with
+no omitted product to recover deliberately remain unchanged.
 
-Constructed finalization-timeout results, reproduced in both seats and both thread modes:
+Preserving row positions is not a theorem of economic dominance against every
+opponent. Added sales can affect a rival's later market behavior. The randomized
+paired test deliberately uses fixed SELL-only rivals and makes no broader claim.
 
-| Arm | Product-first fixture cash | Crowded fixture cash |
+## Exact provenance
+
+- Production source: `664aa4f8a21368c388dfa6714406519b6535ef7f`.
+- Source revalidated on main commit: `c0ec870bf6019cc9270a9f1cfb46c3f2676fb258`.
+- Repaired postimage: `8f36fbe5d05fb71731ef4b799a664189a6dae153`.
+- Postimage SHA256: `b52ec11648b235bccace7b298db85eb4f82428de4191c37876a395b1733772dc`.
+- Official engine: `3c202c7ee921da239356789e266b694635103fc4`.
+- Offline source/engine artifact: GitHub Actions artifact `10285621024`, checkout
+  `8250aec877974e9a1feba2b8e33fcd51000857d4`.
+
+The artifact's deadline adapter exactly matches the current source above. Its
+other runtime files are older; tests using those files are separately labeled
+compatibility evidence, not a validation of the whole current V4 assembly.
+See `SOURCE.json`, `receipt-*.json` and `MANIFEST.json` for complete byte identities.
+
+## Executed evidence
+
+Python 3.13.5: **25/25 focused tests normal + 25/25 optimized (`-O`)**.
+Both modes execute the full pinned engine interpreter, not a substitute market
+model. Each mode includes the same **704 constructed terminal-state cells**:
+512 paired predecessor/candidate cells and 192 market-limit boundary cells.
+This is 704 unique constructed cells repeated under the two interpreter modes,
+not 1,408 independent games.
+
+In the 512 paired fixed-SELL-rival cells, 198 margins strictly improved, 314
+returned identical actions, and the minimum margin delta was zero. The test also
+checks exact original valid-row positions, no observation mutation, both seats,
+post-unit DROP sales, shared capacity, off-shed actor exclusion, hash guards and
+unchanged AST outside the terminal function.
+
+Constructed actual-engine examples, both seats:
+
+| Fixture | Predecessor final cash | Repaired final cash |
 | --- | ---: | ---: |
-| Predecessor | 0 | 0 |
-| Slot-only | 0 | 0 |
-| Precedence-only | 730 | 700 |
-| Composed | 730 | 11,268 |
+| One MILK, configured limit 0 | 0 | 160 |
+| Reordered shed, animals first; WOOL/FERTILIZER overflow, limit 10 | 700 | 11,268 |
 
-These are fixture outcomes, not per-game gains. `validation.json.gz` contains all fresh logs, focused receipts, and complete composition rows. Its SHA256 is `739036806321c5f0e8b46ecf744bcb37044445e5751408df40614388e5840f57`.
+The 10,568 difference in the second fixture is **not** a measured per-game edge.
 
-## Reproduce
+An isolated copy of the older materialized runtime also passed its existing
+worker-deadline (6), entrypoint-clock (2) and module-recovery (3) tests:
+**11/11 normal + 11/11 optimized**. Only its deadline adapter was replaced.
 
-Use a source/package `LAB` containing the pinned adapter and offline engine/evaluator cache. `CURRENT_MAIN` must be current source blob `4a8cf7bcda1f0fea231a144692cb84a779a9e73e`, not the older artifact entrypoint. The source and donor checks reject drift.
+## Reproduce without changing production
+
+Let `LAB` be the root of the materialized `seed-retry-runtime` from artifact
+10285621024. It must contain the pinned original
+`reference/titan-current/deadline_adapter.py` and the complete offline
+`checks/reference/engine` and `checks/reference/evaluator` caches. Let `HERE` be
+this repair directory. The test verifies engine file hashes before execution and
+uses no network.
 
 ```sh
-HERE=revenue/kaggriculture/cloud-execution-lab/candidates/v4/repairs/runtime/terminal-fallback
-python "$HERE/test_terminal_fallback.py" --lab-root "$LAB" --receipt /tmp/terminal-normal.json
-python -O "$HERE/test_terminal_fallback.py" --lab-root "$LAB" --receipt /tmp/terminal-optimized.json
-python "$HERE/test_terminal_composition.py" --lab-root "$LAB" --main-source "$CURRENT_MAIN" --receipt /tmp/composition-normal.json
-python -O "$HERE/test_terminal_composition.py" --lab-root "$LAB" --main-source "$CURRENT_MAIN" --receipt /tmp/composition-optimized.json
+python "$HERE/test_terminal_fallback.py" --lab-root "$LAB" --receipt /tmp/normal.json
+python -O "$HERE/test_terminal_fallback.py" --lab-root "$LAB" --receipt /tmp/optimized.json
+python "$HERE/repair_terminal_fallback.py"   "$LAB/reference/titan-current/deadline_adapter.py"   --output /tmp/deadline_adapter_candidate.py
 ```
 
-The offline source/engine artifact used here is Actions artifact `10285621024`, SHA256 `5ff92183fedce1ff8071b35e8e97dc23dc1ea7762ee47260c7ff2be2d0d2bc94`. Its adapter matches current source exactly. Engine blobs are recorded in `RECOVERY.json`.
+The output path must not exist. The transformer refuses to overwrite its input,
+refuses a changed source blob, refuses a second application and verifies the
+complete expected postimage; these guards do not rely on `assert`.
 
-## Integration boundary
+To reproduce compatibility, make a separate copy of `LAB`, replace only its
+`reference/titan-current/deadline_adapter.py` with the shipped postimage, set
+`PYTHONPATH` to that copy and its `checks` directory, and run:
 
-Main source pins were rechecked at `c42f8bea0604ef4a37ced51105ffb9e6f3c84a32`. Keep this packet in the existing V4 workspace. Complete-current-runtime/packaged-entrypoint validation remains NOT_RUN. Before activation, compose against the current three source pins, rerun the actual current runtime and package, and reconcile the existing #11913/#11927 review lineage. A changed source or equivalent earlier repair must be reconciled, not overwritten. No production promotion is implied by preserving these sources or by the component-level test results.
+```sh
+python -m unittest -v test_worker_deadline.WorkerDeadline   test_entrypoint_clock.EntryClock test_module_recovery.ModuleRecovery
+python -O -m unittest -v test_worker_deadline.WorkerDeadline   test_entrypoint_clock.EntryClock test_module_recovery.ModuleRecovery
+```
+
+## Integration disposition
+
+The outer `titan-v4-terminal-fallback-custody.patch` adds this evidence directory
+only. The inner `terminal_fallback.patch` is the narrow proposed production diff,
+for review and independent current-assembly gates, not automatic promotion.
+
+Refresh main and the source blob before consuming. An equivalent earlier repair
+wins; do not overwrite concurrent work. Preserve these bytes under the one
+canonical V4 workspace, revalidate the current full runtime before activation,
+and leave unrelated gameplay/default/archives alone. The old r04 materializer is
+not involved. `SLACK-HANDOFF.md` is prepared text and was **not sent**.
