@@ -16,7 +16,7 @@
   {"canonical":14125,"chain":[14123,14125],"content_keys":["def25cd9e414194e"],"families":[],"lane":"lane-14123","open":[],"state":"MERGED","title":"research: Lost in Transcription all-three multitrack V2"}
  ],
  "note": "lanes with two or more members; an open pull request row without a lane field is a lane of its own",
- "observed_at": "2026-09-15T20:06:37Z",
+ "observed_at": "2026-09-15T22:51:43Z",
  "recent_closed": [
   {"closed_at":"2026-09-15T06:42:39Z","content_key":"UNKNOWN","created_at":"2026-09-15T06:39:44Z","head":"ffc21798be8d8e5e20365b8f5c4f60e466a86b5d","links":[],"markers":["JERSEY-DN827803-LEGACY-AUTHORITY-RETIRE-ZVF-M8Q4"],"number":14675,"state":"MERGED","title":"fix(revenue): retire Jersey DN827803 legacy false-ready authority"},
   {"closed_at":"2026-09-15T06:28:06Z","content_key":"6fb7b091ed306036","created_at":"2026-09-15T06:12:01Z","head":"383ed292faa4022862a54d4a2f18308d9177980d","links":[],"markers":["CAS-ACTUARIAL-SNAPSHOT-SELFVERIFY-RECOVERY-ZGBN7Q4"],"number":14666,"state":"MERGED","title":"revenue: make CAS benchmark snapshots independently self-verifying"},

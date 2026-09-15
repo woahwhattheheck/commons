@@ -1,7 +1,8 @@
 {
  "note": "paths each open pull request changes since its merge-base (first 40; drift --pr N prints all)",
- "observed_at": "2026-09-15T20:06:37Z",
+ "observed_at": "2026-09-15T22:51:43Z",
  "prs": [
+  {"number":14754,"path_count":2,"paths":["research/erdos64_garcia_audit/README.md","research/erdos64_garcia_audit/verify_garcia_construction.py"]},
   {"number":14748,"path_count":2,"paths":["revenue/kaggriculture/cloud-execution-lab/candidates/v4/check_integration_ledger.py","revenue/kaggriculture/cloud-execution-lab/candidates/v4/test_check_integration_ledger_descriptor_custody.py"]},
   {"number":14746,"path_count":1,"paths":["revenue/reply_to_revenue/funnel.json"]},
   {"number":14737,"path_count":1,"paths":["revenue/uiowa_rfq_18649_workshare/ACCEPTANCE_EXHIBIT.md"]},
