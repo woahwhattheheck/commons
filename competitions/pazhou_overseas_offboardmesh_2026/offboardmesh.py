@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 """Deterministic, side-effect-free OffboardMesh competition demo.
 
-Model output is proposal material only. This module binds each proposed task to
-owner-supplied evidence, evaluates freshness, emits a tamper-evident owner-review
-packet, and never grants authority for external/destructive/customer/payment
-actions.
+Model output is proposal material only. This module digest-binds caller-asserted
+evidence, evaluates historical/request-time shape separately from verifier-owned
+current freshness, emits a tamper-evident owner-review packet, and never grants
+authority for external/destructive/customer/payment actions.
 """
 from __future__ import annotations
 
@@ -16,6 +16,8 @@ from pathlib import Path
 import re
 from typing import Any, Sequence
 
+_NATIVE_DATETIME = datetime
+_NATIVE_UTC = timezone.utc
 INPUT_SCHEMA = "tjl.offboardmesh-demo-input/v1"
 PACKET_SCHEMA = "tjl.offboardmesh-review-packet/v1"
 _MAX_BYTES = 1024 * 1024
@@ -75,12 +77,17 @@ def _parse_time(value: Any, field: str) -> datetime:
     if type(value) is not str or not value.endswith("Z"):
         _fail("TIME_INVALID", field)
     try:
-        parsed = datetime.fromisoformat(value[:-1] + "+00:00")
+        parsed = _NATIVE_DATETIME.fromisoformat(value[:-1] + "+00:00")
     except ValueError as exc:
         raise OffboardMeshError("TIME_INVALID", field) from exc
     if parsed.tzinfo is None:
         _fail("TIME_INVALID", field)
-    return parsed.astimezone(timezone.utc)
+    return parsed.astimezone(_NATIVE_UTC)
+
+
+def _now_utc() -> datetime:
+    """Verifier-owned wall clock. Public verification has no caller time override."""
+    return _NATIVE_DATETIME.now(_NATIVE_UTC)
 
 
 def _safe_ref(value: Any, field: str) -> str:
@@ -141,12 +148,20 @@ def _validate_candidate(candidate: Any) -> dict[str, Any]:
         if observed > requested_at:
             _fail("FUTURE_EVIDENCE", evidence_id)
         if (requested_at - observed).total_seconds() > _MAX_EVIDENCE_AGE_SECONDS:
-            _fail("STALE_EVIDENCE", evidence_id)
+            _fail("STALE_EVIDENCE_AT_REQUEST", evidence_id)
         if type(ev["sha256"]) is not str or not _SHA256.fullmatch(ev["sha256"]):
             _fail("EVIDENCE_SHA256_INVALID", evidence_id)
-        if ev["ownerSupplied"] is not True:
-            _fail("OWNER_SUPPLIED_EVIDENCE_REQUIRED", evidence_id)
-        evidence_by_id[evidence_id] = {"evidenceId": evidence_id, "kind": kind, "observedAt": ev["observedAt"], "sha256": ev["sha256"], "sourceRef": source_ref, "ownerSupplied": True}
+        if type(ev["ownerSupplied"]) is not bool:
+            _fail("OWNER_SUPPLIED_ASSERTION_INVALID", evidence_id)
+        evidence_by_id[evidence_id] = {
+            "evidenceId": evidence_id,
+            "kind": kind,
+            "observedAt": ev["observedAt"],
+            "sha256": ev["sha256"],
+            "sourceRef": source_ref,
+            "ownerSupplied": ev["ownerSupplied"],
+            "provenance": "CALLER_ASSERTED_UNVERIFIED",
+        }
 
     tasks: list[dict[str, Any]] = []
     seen_tasks: set[str] = set()
@@ -176,20 +191,77 @@ def _validate_candidate(candidate: Any) -> dict[str, Any]:
             if evidence_ref not in evidence_by_id:
                 _fail("UNKNOWN_EVIDENCE_REF", evidence_ref)
             normalized_refs.append(evidence_ref)
-        tasks.append({"taskId": task_id, "actionClass": action, "summary": summary, "ownerRef": owner_ref, "evidenceRefs": sorted(normalized_refs), "modelState": "PROPOSAL_ONLY", "reviewState": "OWNER_REVIEW_READY" if action == "DOCUMENT_HANDOFF" else "OWNER_EXECUTION_REQUIRED", "executionAuthorized": False})
+        tasks.append({
+            "taskId": task_id,
+            "actionClass": action,
+            "summary": summary,
+            "ownerRef": owner_ref,
+            "evidenceRefs": sorted(normalized_refs),
+            "modelState": "PROPOSAL_ONLY",
+            "reviewState": "OWNER_REVIEW_REQUIRED",
+            "executionAuthorized": False,
+        })
 
-    return {"schema": INPUT_SCHEMA, "organizationRef": organization, "engagementId": engagement, "planVersion": plan_version, "requestedAt": root["requestedAt"], "requestedCloseoutAt": root["requestedCloseoutAt"], "modelProposal": {"sourceModelRef": source_model, "generatedAt": proposal["generatedAt"], "suggestions": tasks}, "evidence": [evidence_by_id[k] for k in sorted(evidence_by_id)]}
+    return {
+        "schema": INPUT_SCHEMA,
+        "organizationRef": organization,
+        "engagementId": engagement,
+        "planVersion": plan_version,
+        "requestedAt": root["requestedAt"],
+        "requestedCloseoutAt": root["requestedCloseoutAt"],
+        "modelProposal": {"sourceModelRef": source_model, "generatedAt": proposal["generatedAt"], "suggestions": tasks},
+        "evidence": [evidence_by_id[k] for k in sorted(evidence_by_id)],
+    }
+
+
+def _is_current(normalized: dict[str, Any], evaluated_at: datetime) -> bool:
+    requested = _parse_time(normalized["requestedAt"], "requestedAt")
+    closeout = _parse_time(normalized["requestedCloseoutAt"], "requestedCloseoutAt")
+    generated = _parse_time(normalized["modelProposal"]["generatedAt"], "modelProposal.generatedAt")
+    if evaluated_at < requested or evaluated_at > closeout or generated > evaluated_at:
+        return False
+    for evidence in normalized["evidence"]:
+        observed = _parse_time(evidence["observedAt"], f"{evidence['evidenceId']}.observedAt")
+        if observed > evaluated_at or (evaluated_at - observed).total_seconds() > _MAX_EVIDENCE_AGE_SECONDS:
+            return False
+    return True
 
 
 def compile_packet(candidate: Any) -> dict[str, Any]:
     normalized = _validate_candidate(candidate)
     core = {
         "schema": PACKET_SCHEMA,
-        "source": {"sourceSha256": _digest(candidate), "organizationRef": normalized["organizationRef"], "engagementId": normalized["engagementId"], "planVersion": normalized["planVersion"], "requestedAt": normalized["requestedAt"], "requestedCloseoutAt": normalized["requestedCloseoutAt"], "sourceModelRef": normalized["modelProposal"]["sourceModelRef"], "modelGeneratedAt": normalized["modelProposal"]["generatedAt"]},
-        "bindings": {"evidenceSha256": _digest(normalized["evidence"]), "tasksSha256": _digest(normalized["modelProposal"]["suggestions"]), "evidenceCount": len(normalized["evidence"]), "taskCount": len(normalized["modelProposal"]["suggestions"])},
+        "source": {
+            "sourceSha256": _digest(candidate),
+            "organizationRef": normalized["organizationRef"],
+            "engagementId": normalized["engagementId"],
+            "planVersion": normalized["planVersion"],
+            "requestedAt": normalized["requestedAt"],
+            "requestedCloseoutAt": normalized["requestedCloseoutAt"],
+            "sourceModelRef": normalized["modelProposal"]["sourceModelRef"],
+            "modelGeneratedAt": normalized["modelProposal"]["generatedAt"],
+        },
+        "bindings": {
+            "evidenceSha256": _digest(normalized["evidence"]),
+            "tasksSha256": _digest(normalized["modelProposal"]["suggestions"]),
+            "evidenceCount": len(normalized["evidence"]),
+            "taskCount": len(normalized["modelProposal"]["suggestions"]),
+        },
         "tasks": normalized["modelProposal"]["suggestions"],
         "authority": dict(AUTHORITY),
-        "truth": {"modelOutputsAreProposalOnly": True, "ownerEvidenceBound": True, "currentEvidenceRequired": True, "externalExecutionApiExposed": False, "customerContactRouteExposed": False, "productionModelProviderInferenceClaimed": False, "organizerRegistrationClaimed": False, "customerAdoptionClaimed": False, "revenueClaimed": False},
+        "truth": {
+            "modelOutputsAreProposalOnly": True,
+            "evidenceDigestBound": True,
+            "ownerEvidenceBound": False,
+            "evidenceProvenance": "CALLER_ASSERTED_UNVERIFIED",
+            "currentEvidenceRequired": True,
+            "externalExecutionApiExposed": False,
+            "customerContactRouteExposed": False,
+            "productionModelProviderInferenceClaimed": False,
+            "organizerRegistrationClaimed": False,
+            "customerAdoptionClaimed": False,
+            "revenueClaimed": False,
+        },
     }
     result = dict(core)
     result["receiptSha256"] = _digest(core)
@@ -205,11 +277,24 @@ def _packet_integrity(packet: Any) -> bool:
     unsigned = {k: v for k, v in packet.items() if k != "receiptSha256"}
     if _digest(unsigned) != receipt or packet.get("authority") != AUTHORITY:
         return False
+    truth = packet.get("truth")
+    if type(truth) is not dict or truth.get("ownerEvidenceBound") is not False or truth.get("evidenceProvenance") != "CALLER_ASSERTED_UNVERIFIED":
+        return False
     tasks = packet.get("tasks")
-    return bool(type(tasks) is list and tasks and all(type(task) is dict and task.get("modelState") == "PROPOSAL_ONLY" and task.get("executionAuthorized") is False for task in tasks))
+    return bool(
+        type(tasks) is list
+        and tasks
+        and all(
+            type(task) is dict
+            and task.get("modelState") == "PROPOSAL_ONLY"
+            and task.get("reviewState") == "OWNER_REVIEW_REQUIRED"
+            and task.get("executionAuthorized") is False
+            for task in tasks
+        )
+    )
 
 
-def verify_packet(candidate: Any, packet: Any) -> dict[str, Any]:
+def _verification_facts(candidate: Any, packet: Any) -> tuple[dict[str, bool], dict[str, Any] | None]:
     packet_valid = _packet_integrity(packet)
     source = packet.get("source") if type(packet) is dict else None
     same_work = same_plan = source_matches = False
@@ -223,13 +308,51 @@ def verify_packet(candidate: Any, packet: Any) -> dict[str, Any]:
         same_work = source.get("organizationRef") == normalized["organizationRef"] and source.get("engagementId") == normalized["engagementId"]
         same_plan = source.get("planVersion") == normalized["planVersion"]
         source_matches = source.get("sourceSha256") == _digest(candidate)
-    valid_current = bool(packet_valid and candidate_valid and same_work and same_plan and source_matches)
-    valid_historical = bool(packet_valid and candidate_valid and same_work and not same_plan and not source_matches)
-    return {"externalSendAuthorized": False, "validCurrent": valid_current, "validHistorical": valid_historical, "packetIntegrityValid": bool(packet_valid), "candidateValid": bool(candidate_valid), "sameEngagement": bool(same_work), "samePlanVersion": bool(same_plan)}
+    return {
+        "packetIntegrityValid": bool(packet_valid),
+        "candidateValid": bool(candidate_valid),
+        "sameEngagement": bool(same_work),
+        "samePlanVersion": bool(same_plan),
+        "sourceMatches": bool(source_matches),
+    }, normalized
+
+
+def verify_current(candidate: Any, packet: Any) -> dict[str, Any]:
+    """Verify exact replay plus freshness against verifier-owned current time."""
+    facts, normalized = _verification_facts(candidate, packet)
+    current_fresh = bool(normalized is not None and _is_current(normalized, _now_utc()))
+    valid = bool(
+        facts["packetIntegrityValid"]
+        and facts["candidateValid"]
+        and facts["sameEngagement"]
+        and facts["samePlanVersion"]
+        and facts["sourceMatches"]
+        and current_fresh
+    )
+    return {
+        "externalSendAuthorized": False,
+        "validCurrent": valid,
+        "currentEvidenceFresh": current_fresh,
+        **facts,
+    }
+
+
+def verify_historical(candidate: Any, packet: Any) -> dict[str, Any]:
+    """Verify exact candidate/packet integrity without asserting present freshness."""
+    facts, _ = _verification_facts(candidate, packet)
+    valid = bool(
+        facts["packetIntegrityValid"]
+        and facts["candidateValid"]
+        and facts["sameEngagement"]
+        and facts["samePlanVersion"]
+        and facts["sourceMatches"]
+    )
+    return {"externalSendAuthorized": False, "validHistorical": valid, **facts}
 
 
 def _strict_load(path: str | Path) -> Any:
     text = Path(path).read_text(encoding="utf-8")
+
     def hook(pairs: list[tuple[str, Any]]) -> dict[str, Any]:
         obj: dict[str, Any] = {}
         for key, value in pairs:
@@ -237,6 +360,7 @@ def _strict_load(path: str | Path) -> Any:
                 _fail("DUPLICATE_JSON_KEY", key)
             obj[key] = value
         return obj
+
     try:
         return json.loads(text, object_pairs_hook=hook)
     except OffboardMeshError:
@@ -250,17 +374,24 @@ def main(argv: Sequence[str] | None = None) -> int:
     sub = parser.add_subparsers(dest="command", required=True)
     compile_cmd = sub.add_parser("compile")
     compile_cmd.add_argument("candidate")
-    verify_cmd = sub.add_parser("verify")
-    verify_cmd.add_argument("candidate")
-    verify_cmd.add_argument("packet")
+    verify_current_cmd = sub.add_parser("verify-current")
+    verify_current_cmd.add_argument("candidate")
+    verify_current_cmd.add_argument("packet")
+    verify_historical_cmd = sub.add_parser("verify-historical")
+    verify_historical_cmd.add_argument("candidate")
+    verify_historical_cmd.add_argument("packet")
     args = parser.parse_args(argv)
     try:
         if args.command == "compile":
             print(json.dumps(compile_packet(_strict_load(args.candidate)), sort_keys=True, separators=(",", ":")))
             return 0
-        result = verify_packet(_strict_load(args.candidate), _strict_load(args.packet))
+        if args.command == "verify-current":
+            result = verify_current(_strict_load(args.candidate), _strict_load(args.packet))
+            print(json.dumps(result, sort_keys=True, separators=(",", ":")))
+            return 0 if result["validCurrent"] else 2
+        result = verify_historical(_strict_load(args.candidate), _strict_load(args.packet))
         print(json.dumps(result, sort_keys=True, separators=(",", ":")))
-        return 0 if result["validCurrent"] else 2
+        return 0 if result["validHistorical"] else 2
     except (OSError, OffboardMeshError) as exc:
         parser.error(str(exc))
         return 2
