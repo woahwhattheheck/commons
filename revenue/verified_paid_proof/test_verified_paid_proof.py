@@ -206,6 +206,31 @@ class PaidProofTests(unittest.TestCase):
         self.assertIn(r"\# FORGED OUTCOME CLAIM", markdown)
         self.assertIn(r"\*\*FORGED LOGO CLAIM\*\*", markdown)
 
+    def test_markdown_projection_preserves_entities_and_breaks_autolinks(self):
+        record = base_record()
+        record["customer"]["display_name"] = (
+            "O'Connor https://example.invalid www.example.invalid user@example.invalid"
+        )
+        record["quote"] = {
+            "text": "Contact @buyer / see https://example.invalid/path.",
+            "evidence_ref": "email:synthetic-quote-1",
+        }
+        for scope in ("public_proof", "payment_fact", "customer_identity", "quote"):
+            record["permissions"][scope] = permission(True, f"email:permission:{scope}")
+
+        markdown = compile_proof(record).markdown
+        self.assertIn("O&#x27;Connor", markdown)
+        self.assertNotIn(r"&\#x27;", markdown)
+        for autolink_source in (
+            "https://",
+            "www.example",
+            "user@example",
+            "@buyer",
+        ):
+            self.assertNotIn(autolink_source, markdown)
+        self.assertIn("https&#58;&#47;&#47;example&#46;invalid", markdown)
+        self.assertIn("user&#64;example&#46;invalid", markdown)
+
     def test_revocation_forces_hold(self):
         record = base_record()
         record["permissions"]["public_proof"] = permission(True, "email:permission:public")
