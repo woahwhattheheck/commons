@@ -163,8 +163,15 @@ CREATE TABLE IF NOT EXISTS requests(request_id TEXT PRIMARY KEY,op TEXT NOT NULL
             return {**p,"changed":changed}
         return self.mutate(rid,"approve_variant",p,f)
     def status(self,title):
+        """Project one committed generation, not a continuously valid release grant.
+
+        BEGIN retains the first SELECT's snapshot across variants, approvals and
+        audit reads. closing() rolls back any failed read before releasing the
+        connection; successful reads COMMIT before rendering/exporting bytes.
+        """
         title=_id("title_id",title)
         with closing(self.conn()) as c:
+            c.execute("BEGIN")
             tr=c.execute("SELECT * FROM titles WHERE title_id=?",(title,)).fetchone()
             if not tr: raise InvalidState(f"unknown title: {title}")
             req=strict_json_loads(tr["required_json"]); holds=[] if tr["rights_ready"] else ["OWNER_RIGHTS_NOT_READY"]; vs=[]
@@ -176,6 +183,7 @@ CREATE TABLE IF NOT EXISTS requests(request_id TEXT PRIMARY KEY,op TEXT NOT NULL
                 if not aps: holds.append("MISSING_CURRENT_APPROVAL:"+kt)
                 vs.append({**q,"revision":r["revision"],"artifact_name":r["artifact_name"],"content_sha256":r["content_sha256"],"content_size":r["content_size"],"source_sha256":r["source_sha256"],"source_current":cur,"approvals":aps,"status":"CURRENT_APPROVED" if cur and aps else "HOLD"})
             ev=[{"seq":r[0],"event_kind":r[1],"detail":strict_json_loads(r[2]),"at_utc":r[3]} for r in c.execute("SELECT seq,event_kind,detail_json,at_utc FROM events WHERE title_id=? ORDER BY seq",(title,))]
+            c.execute("COMMIT")
         holds=sorted(set(holds)); return {"schema_version":1,"title_id":title,"source":{"name":tr["source_name"],"sha256":tr["source_sha256"],"size":tr["source_size"]},"required_variants":req,"variants":vs,"owner_supplied_rights_ready":bool(tr["rights_ready"]),"external_publish_authorized":False,"created_at":tr["created_at"],"updated_at":tr["updated_at"],"holds":holds,"release_status":"READY_FOR_LOCAL_HANDOFF" if not holds else "HOLD","events":ev}
     def build_package(self,title):
         st=self.status(title)
