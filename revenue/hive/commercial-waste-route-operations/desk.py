@@ -2,7 +2,7 @@
 """Local-first commercial waste route, exception, and invoice-draft desk."""
 
 from desk_common import *
-from desk_billing import WasteRouteDesk
+from desk_migration import WasteRouteDesk
 
 
 def parser():
