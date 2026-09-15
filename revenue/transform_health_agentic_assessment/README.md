@@ -33,7 +33,7 @@ First-party terms rechecked on 2026-09-15:
 
 **PURSUE — technically aligned, qualification-sensitive.**
 
-This is not permission to submit. Submission remains blocked until identity/CV/contact details are complete, the final attachment set is reviewed, fresh provider dedupe is clean, and Muse arbitration selects exactly one outbound route.
+This carrier is preparation only. Before any external submission, complete the applicant/CV/contact fields, review the final attachment set, run a fresh provider dedupe, and obtain one-route Muse arbitration.
 
 ### Strong fit
 
