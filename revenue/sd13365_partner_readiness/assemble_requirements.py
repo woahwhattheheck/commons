@@ -7,10 +7,9 @@ import base64
 import binascii
 import gzip
 import hashlib
-import os
-import tempfile
 from pathlib import Path
 
+import _atomic_output
 import matrix
 
 EXPECTED_SHA256 = "e6e857e1df33a6b6d486252fd1e0f1f243fdf0818b48ebfe6a80525e5dc19f42"
@@ -55,26 +54,10 @@ def decode_payload(payload_path: Path) -> bytes:
 
 
 def write_atomic(output_path: Path, data: bytes) -> None:
-    if output_path.exists() and output_path.is_symlink():
-        raise AssemblyError("output must not be a symlink")
-    output_path.parent.mkdir(parents=True, exist_ok=True)
-    if output_path.parent.is_symlink():
-        raise AssemblyError("output directory must not be a symlink")
-    fd, temporary = tempfile.mkstemp(
-        prefix=f".{output_path.name}.", suffix=".tmp", dir=output_path.parent
-    )
-    temporary_path = Path(temporary)
     try:
-        with os.fdopen(fd, "wb") as handle:
-            handle.write(data)
-            handle.flush()
-            os.fsync(handle.fileno())
-        os.replace(temporary_path, output_path)
-    finally:
-        try:
-            temporary_path.unlink()
-        except FileNotFoundError:
-            pass
+        _atomic_output.write_atomic_bytes(output_path, data)
+    except _atomic_output.AtomicOutputError as exc:
+        raise AssemblyError(f"cannot publish matrix safely: {exc}") from exc
 
 
 def assemble(payload_path: Path, output_path: Path) -> str:
