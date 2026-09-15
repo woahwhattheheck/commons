@@ -12,9 +12,11 @@ def export_files(path,as_of,horizon_days=30):
 def _same_identity(st,identity):
     return (st.st_dev,st.st_ino)==identity
 
-def _secure_export_supported():
-    required=(os.open,os.stat,os.unlink)
-    return hasattr(os,'O_DIRECTORY') and hasattr(os,'O_NOFOLLOW') and all(fn in os.supports_dir_fd for fn in required) and os.listdir in os.supports_fd
+# Capability is a platform/process property. Capture it before hostile tests (or
+# other instrumentation) monkey-patch individual os functions; the publication
+# path still invokes the current functions and therefore remains fully testable.
+_SECURE_EXPORT_SUPPORTED=(hasattr(os,'O_DIRECTORY') and hasattr(os,'O_NOFOLLOW') and all(fn in os.supports_dir_fd for fn in (os.open,os.stat,os.unlink)) and os.listdir in os.supports_fd)
+def _secure_export_supported(): return _SECURE_EXPORT_SUPPORTED
 
 def _entry_stat(name,dir_fd):
     return os.stat(name,dir_fd=dir_fd,follow_symlinks=False)
