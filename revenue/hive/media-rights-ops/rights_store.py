@@ -33,7 +33,7 @@ def import_manifest(path,doc,imported_at):
         raise
     finally: con.close()
 def _evaluate(con,n):
-    ancestors=lineage(con,n['asset_id']); rows=con.execute(f"SELECT * FROM grants WHERE asset_id IN ({','.join('?' for _ in ancestors)}) ORDER BY grant_id",tuple(ancestors)).fetchall(); digest=sha256_bytes(canonical_bytes(n))
+    lineage(con,n['asset_id']); rows=con.execute("SELECT * FROM grants WHERE asset_id=? ORDER BY grant_id",(n['asset_id'],)).fetchall(); digest=sha256_bytes(canonical_bytes(n))
     if not rows: return {'status':'HOLD','selected_grant_id':None,'reasons':['MISSING_GRANT'],'intent_sha256':digest}
     good=[]; failures=set(); start=parse_time(n['starts_at'],'starts_at'); end=parse_time(n['ends_at'],'ends_at')
     for r in rows:
