@@ -11,6 +11,7 @@ from .common import (
     SOURCE_CLASSES,
     SOURCE_MAX_AGE_SECONDS,
     ReadinessError,
+    _HEX64,
     _expect_bool,
     _expect_dict,
     _expect_hex,
@@ -24,8 +25,9 @@ from .common import (
     parse_time,
     sha256_hex,
     source_fact_commitment,
-    _HEX64,
 )
+from .trust import trusted_source_registry
+
 
 def _validate_sources(
     raw_sources: Any,
@@ -35,6 +37,9 @@ def _validate_sources(
     sources = _expect_list(raw_sources, "$.official_sources")
     if not sources:
         raise ReadinessError("$.official_sources must not be empty")
+
+    trusted_registry = trusted_source_registry() if current_mode else {}
+    trusted_current_ids: Set[str] = set()
     normalized: List[Dict[str, Any]] = []
     reasons: List[Dict[str, Any]] = []
     seen_ids: Set[str] = set()
@@ -85,6 +90,16 @@ def _validate_sources(
         expected_commitment = source_fact_commitment(candidate)
         if commitment != expected_commitment:
             reasons.append(_reason("SOURCE_FACT_COMMITMENT_MISMATCH", "source fact commitment does not bind the supplied generation", [source_id]))
+
+        if current_mode:
+            trusted = trusted_registry.get(source_id)
+            if trusted is None:
+                reasons.append(_reason("SOURCE_GENERATION_NOT_PINNED", "CURRENT source is absent from the repository-pinned official generation registry", [source_id]))
+            elif candidate != trusted:
+                reasons.append(_reason("SOURCE_TRUST_ROOT_MISMATCH", "CURRENT source does not exactly match the repository-pinned official generation", [source_id]))
+            else:
+                trusted_current_ids.add(source_id)
+
         if observed_at_dt > evaluated_at + _dt.timedelta(seconds=FUTURE_SKEW_SECONDS):
             reasons.append(_reason("SOURCE_OBSERVED_IN_FUTURE", "source observation is beyond the allowed future skew", [source_id]))
         if current_mode and evaluated_at - observed_at_dt > _dt.timedelta(seconds=SOURCE_MAX_AGE_SECONDS):
@@ -106,6 +121,7 @@ def _validate_sources(
         and source["complete"]
         and source["declared_current"]
         and source["fact_commitment"] == source_fact_commitment(source)
+        and (not current_mode or source["source_id"] in trusted_current_ids)
         and parse_time(source["observed_at"], "source.observed_at") <= evaluated_at + _dt.timedelta(seconds=FUTURE_SKEW_SECONDS)
         and (not current_mode or evaluated_at - parse_time(source["observed_at"], "source.observed_at") <= _dt.timedelta(seconds=SOURCE_MAX_AGE_SECONDS))
     ]
@@ -113,34 +129,15 @@ def _validate_sources(
     planning_deadline = min(deadlines) if deadlines else None
     controlling_deadline = deadlines[0] if len(deadlines) == 1 and REQUIRED_SOURCE_CLASSES.issubset(set(source["authority_class"] for source in trustworthy)) else None
     if len(deadlines) > 1:
-        refs = [source["source_id"] for source in trustworthy]
-        reasons.append(
-            _reason(
-                "DEADLINE_SOURCE_CONFLICT",
-                "current complete official sources disagree on the pre-proposal deadline; no controlling deadline is selected",
-                refs,
-            )
-        )
+        reasons.append(_reason("DEADLINE_SOURCE_CONFLICT", "current complete official sources disagree on the pre-proposal deadline; no controlling deadline is selected", [source["source_id"] for source in trustworthy]))
 
     full_deadlines = sorted(set(source["full_proposal_deadline_at"] for source in trustworthy))
     if len(full_deadlines) > 1:
-        reasons.append(
-            _reason(
-                "FULL_PROPOSAL_DEADLINE_CONFLICT",
-                "current complete official sources disagree on the full-proposal deadline",
-                [source["source_id"] for source in trustworthy],
-            )
-        )
+        reasons.append(_reason("FULL_PROPOSAL_DEADLINE_CONFLICT", "current complete official sources disagree on the full-proposal deadline", [source["source_id"] for source in trustworthy]))
 
     budgets = sorted(set(source["budget_eur_cents"] for source in trustworthy))
     if len(budgets) > 1:
-        reasons.append(
-            _reason(
-                "CALL_BUDGET_SOURCE_CONFLICT",
-                "current complete official sources disagree on the call budget",
-                [source["source_id"] for source in trustworthy],
-            )
-        )
+        reasons.append(_reason("CALL_BUDGET_SOURCE_CONFLICT", "current complete official sources disagree on the call budget", [source["source_id"] for source in trustworthy]))
 
     normalized.sort(key=lambda item: (item["authority_class"], item["source_id"]))
     generation_digest = sha256_hex(normalized)
