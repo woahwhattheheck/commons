@@ -1,103 +1,99 @@
 # Muse publication selection gate
 
-`muse_selection_gate.py` binds one internal Muse arbitration decision to the exact outbound publication candidate that requested it. It composes with the existing outbound-send guard and connector-native v3 proof-of-possession lease; it does not replace either one.
+`muse_selection_gate.py` is the Commons-side coordination seam for the live operational rule: before outbound publication, workers ask the Muse assistant which exact candidate may proceed. It composes with the existing relationship/DNR/provider gates and connector-native outbound lease. It never replaces those controls and never authorizes a provider mutation by itself.
 
-The problem is a fleet race: two workers can independently pass ordinary relationship checks and reach the same prospect + offer + route within seconds. A human-readable Slack convention such as “ask Muse first” is useful, but it is not enough for a provider boundary unless the selected worker, exact candidate generation, exact lease public identity, and exact arbiter event can be checked mechanically.
+## Current authority state
 
-## Authority ceiling
+**Important current-main rule:** raw/caller-authored `muse-publication-arbitration-snapshot/v1` JSON is not an independently authenticated Slack/provider record. Therefore this module intentionally **cannot mint or verify a current-positive `SELECTED` authority receipt from raw snapshot JSON**.
 
-A `SELECTED` receipt is **selection evidence only**. It always contains:
+A syntactically coherent raw snapshot whose decision would otherwise be `SELECTED` is compiled as `HOLD` with:
 
-```json
-{
-  "requires_current_worker_lease_possession": true,
-  "requires_fresh_provider_preflight": true,
-  "side_effects_authorized": false
-}
-```
+- `SNAPSHOT_AUTHORITY_UNVERIFIED`
+- `CURRENT_SELECTED_REQUIRES_PROVIDER_AUTHENTICATED_SNAPSHOT`
 
-Immediately before an email/contact-form/direct-message/provider mutation, the caller still must independently:
+This is deliberate fail-closed behavior. Live operational Muse arbitration may still be performed through the actual Muse conversation; this module does not pretend that caller-authored JSON proves what the provider said. A future provider-authenticated adapter must establish an independent trust root before current-positive machine verification is re-enabled.
 
-1. validate the current relationship / route / cooldown / DNR / content policy gates;
-2. validate the exact public outbound v3 lease receipt bound into this candidate;
-3. re-read the live v3 lease branch/parent/metadata and call `connector_capability_lease.verify_possession(...)` with the privately retained current-worker capability;
-4. re-run the provider/mailbox preflight required by the sending adapter; and
-5. perform at most the one provider mutation authorized by the surrounding owner/application policy.
+Legacy `muse-publication-selection-receipt/v1` receipts are not current authority. Current receipts use `muse-publication-selection-receipt/v2` and are truth-labelled `authority_mode=UNAUTHENTICATED_SNAPSHOT_ANALYSIS`.
 
-The raw outbound lease capability must never be placed in Slack, GitHub, candidate JSON, snapshot JSON, Muse messages, provider metadata, or this gate's receipt.
+## Why the boundary changed
+
+The first landed implementation allowed three unsafe compositions:
+
+1. a direct importer could supply its own `now=` value and backdate freshness checks;
+2. a once-minted `SELECTED` receipt had no verifier-owned current expiry boundary; and
+3. snapshot conversation/arbiter/event fields and the expected IDs were supplied by the same caller, so a complete-looking Muse transcript could be fabricated locally.
+
+The fix-forward removes caller-selected time from the public current compiler, samples process UTC internally, rejects legacy v1 receipts as current, and keeps raw-snapshot positive selection fail-closed until independent provider authentication exists.
 
 ## Candidate identity
 
-The strict input schema is `muse-publication-candidate/v1`.
+The strict candidate schema remains `muse-publication-candidate/v1`.
 
-The privacy-preserving `publication_key` hashes only the collision domain:
+`publication_key` hashes the collision domain only:
 
 - `buyer_scope_sha256`
 - `recipient_fingerprint`
 - `offer_scope`
 - `route_kind`
 
-It intentionally excludes worker identity and message wording. Two workers pursuing the same buyer/recipient/offer/route therefore collide even if they drafted different text.
+It intentionally excludes worker identity and wording so two workers pursuing the same buyer/recipient/offer/route collide.
 
-The separate `candidate_digest` hashes the entire normalized candidate, including:
+`candidate_digest` separately binds candidate ID, worker, exact message SHA-256, request time, and the exact public v3 outbound-lease identity. The private lease capability must never enter Slack, GitHub, candidate JSON, snapshot JSON, or receipts.
 
-- `candidate_id`
-- `worker_id`
-- exact `message_sha256`
-- request time
-- exact public v3 lease identity (`claimant`, `claim_id`, `lease_ref`, capability commitment, receipt digest)
+## Raw Muse snapshot analysis
 
-The v3 lease claimant must equal the candidate worker. Only the commitment to the private capability is public; the capability itself is never accepted by this gate.
+The raw snapshot schema remains `muse-publication-arbitration-snapshot/v1`. The compiler still validates:
 
-## Muse DM snapshot
+- complete history declaration;
+- configured conversation and arbiter IDs;
+- canonical Slack timestamps and user IDs;
+- request / snapshot / event chronology;
+- freshness and future-skew bounds;
+- exact candidate request cardinality;
+- decision sender identity;
+- multiple-winner conflicts;
+- request-to-decision latency;
+- cancellation / rejection ordering; and
+- selection TTL during analysis.
 
-The adapter supplies one complete `muse-publication-arbitration-snapshot/v1` for the exact Muse DM conversation. It contains:
+Defaults remain short-lived: 120s snapshot freshness, 30s future skew, 600s decision latency, and 600s selection TTL.
 
-- exact `conversation_id` and `arbiter_user_id`;
-- `coverage_started_at` and `captured_at`;
-- `complete=true` only after the relevant DM history window was fully read; and
-- normalized events with canonical Slack message timestamps, sender user IDs, event type, publication key, candidate digest, candidate ID, and worker ID.
+Those checks are useful for denial and diagnostics, but **they are not provider authentication**. A raw snapshot that would be positive is therefore converted to `HOLD` before receipt publication.
 
-Supported event types are `CANDIDATE`, `SELECTED`, `NOT_SELECTED`, and `CANCELLED`.
+## Receipt and verification rules
 
-Decision events are authoritative only when they come from the configured Muse arbiter user ID. Conflicting reuse of one Slack message ID, partial history, wrong conversation/arbiter identity, stale/future snapshots, event chronology violations, multiple distinct winners, selection expiry, or a later exact cancellation all fail closed.
+Current receipts are `muse-publication-selection-receipt/v2` and always state:
 
-Defaults are deliberately short-lived:
+```json
+{
+  "authority_mode": "UNAUTHENTICATED_SNAPSHOT_ANALYSIS",
+  "snapshot_authenticated": false,
+  "snapshot_authentication_sha256": null,
+  "requires_current_worker_lease_possession": true,
+  "requires_fresh_provider_preflight": true,
+  "side_effects_authorized": false
+}
+```
 
-- snapshot freshness: 120 seconds;
-- future clock skew: 30 seconds;
-- request-to-decision latency limit: 600 seconds;
-- selection TTL: 600 seconds.
+`verify_receipt()` is a **current** verifier. It samples process UTC internally; there is no public caller-supplied verification clock. It rejects future-invalid compiled timestamps, legacy v1 receipts, malformed/tampered receipts, and every raw-snapshot `SELECTED` receipt.
 
-A downstream adapter may use stricter values, but should not extend them casually.
+`verify_selected_binding()` therefore remains fail-closed (`False`) until a separate provider-authenticated Muse adapter exists.
 
-## Structured Slack wire format
+The v2 structural selection binding includes `valid_until` so a future authenticated adapter cannot omit expiry from the exact candidate binding. The current raw-snapshot compiler never exposes that structural field as current positive authority.
 
-Human prose may accompany these records, but adapters should retain the machine record exactly. The examples below contain no raw recipient identity and no raw lease capability.
+## Operational Muse wire format
 
-Candidate request:
+Agents may still use the live Muse process. Candidate/decision machine records should retain exact IDs and digests, for example:
 
 ```text
 MUSE_PUBLICATION_CANDIDATE_V1 {"candidate_digest":"<sha256>","candidate_id":"<opaque-id>","publication_key":"<sha256>","worker_id":"<swarm-id>"}
 ```
 
-Muse selection:
-
 ```text
 MUSE_PUBLICATION_DECISION_V1 {"candidate_digest":"<sha256>","candidate_id":"<opaque-id>","decision":"SELECTED","publication_key":"<sha256>","worker_id":"<swarm-id>"}
 ```
 
-Muse rejection or revocation uses the same fields with `decision` equal to `NOT_SELECTED` or `CANCELLED`.
-
-The Slack adapter—not free-form model interpretation—must map the exact Slack event metadata into the snapshot. A missing or malformed machine record is `HOLD`, not an invitation to infer intent from nearby prose.
-
-## Decisions
-
-- `SELECTED`: exactly this candidate is the current unexpired winner and the snapshot is otherwise coherent.
-- `NOT_SELECTED`: another candidate won, or Muse explicitly rejected/cancelled this exact candidate.
-- `HOLD`: evidence is incomplete, stale, conflicting, malformed, ambiguous, or has no arbiter decision.
-
-For `SELECTED`, `selection_binding_sha256` commits to the publication key, exact candidate digest/ID/worker, Muse conversation + arbiter, exact selection message ID/time, and the public lease-binding digest. `verify_receipt()` recomputes this binding as well as the outer receipt digest. `verify_selected_binding(candidate, receipt)` additionally proves the selected receipt is for the supplied exact candidate.
+These records help collision matching; copying them into JSON does **not** authenticate them. The independent provider adapter is the missing trust boundary.
 
 ## CLI
 
@@ -112,12 +108,11 @@ python -m tools.outbound_send_guard.muse_selection_gate \
 
 Exit codes:
 
-- `0` — `SELECTED`
 - `3` — `NOT_SELECTED`
-- `4` — `HOLD`
+- `4` — `HOLD` (including every raw-snapshot would-be `SELECTED`)
 - `2` — invalid input or output-publication failure
 
-`--out` is create-exclusive; an existing path is never overwritten.
+Exit `0` is reserved for a future independently authenticated positive path and is not reachable from the present raw-snapshot compiler. `--out` is create-exclusive; an existing path is never overwritten.
 
 ## Regression gate
 
@@ -129,4 +124,8 @@ python -m unittest -v tools.outbound_send_guard.test_muse_selection_gate
 python -O -m unittest -v tools.outbound_send_guard.test_muse_selection_gate
 ```
 
-The focused hostile suite covers copied-winner replay, same-opportunity publication-key collision across workers and wording, multiple winners, non-arbiter decisions, wrong conversation, partial/stale/future snapshots, decision latency and TTL expiry, later cancellation, conflicting Slack message-ID reuse, canonical Slack event IDs, duplicate JSON keys, unknown fields, lease-claimant mismatch, receipt tampering, candidate rebinding, forged inner selection binding with a recomputed outer digest, and CLI execution.
+The focused suite covers caller-clock injection, fabricated two-event transcripts, legacy-v1 rejection, fail-closed selected verification, expiry binding, stale/future/incomplete snapshots, wrong conversation, non-arbiter decisions, multiple winners, cancellation, duplicate message IDs/JSON keys, candidate/lease integrity, tamper attempts, and real CLI behavior.
+
+## Provider-mutation ceiling
+
+Even after a future authenticated Muse adapter exists, a selected arbitration receipt will remain insufficient by itself. Immediately before any email/contact-form/direct-message/provider mutation, the sender must independently satisfy live relationship/DNR/content/provider checks, current-worker v3 lease possession, and fresh provider/mailbox preflight, and then perform at most the separately authorized mutation.
