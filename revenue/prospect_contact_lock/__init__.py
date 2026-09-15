@@ -22,13 +22,22 @@ from .lock import (
     verify_receipt,
 )
 
+_CoreProspectContactLock = _core.ProspectContactLock
 _InjectedProspectContactLock = _hardened.ProspectContactLock
+
+
+def _mark_test_artifact(doc: Mapping[str, Any]) -> dict[str, Any]:
+    marked = dict(doc)
+    # Deliberately do not reseal mutation receipts: production verify_receipt()
+    # must reject anything emitted through an injected transport seam.
+    marked["test_only_transport"] = True
+    return marked
 
 
 class ProspectContactLock(_InjectedProspectContactLock):
     """Only supported production mutation surface.
 
-    Production owns the canonical GitHub transport.  Arbitrary caller transport
+    Production owns the canonical GitHub transport. Arbitrary caller transport
     injection is intentionally absent from this constructor so a caller cannot
     synthesize authority-branch/ref/commit/content truth.
     """
@@ -37,19 +46,10 @@ class ProspectContactLock(_InjectedProspectContactLock):
         super().__init__(token, None)
 
 
-class _TestProspectContactLock(_InjectedProspectContactLock):
-    """Private deterministic transport seam for repository hostiles only.
-
-    Every status/receipt emitted by this seam is marked ``test_only_transport``.
-    Mutation receipts retain their original seal, so adding that marker makes
-    them deliberately fail production ``verify_receipt`` validation.  Test
-    transport output therefore cannot masquerade as a production authority
-    artifact even if this underscore class is imported deliberately.
-    """
+class _TestCoreProspectContactLock(_CoreProspectContactLock):
+    """Private legacy-state-machine test seam with non-production artifacts."""
 
     def __init__(self, token: str, transport: _core.Transport) -> None:
-        if not bool(getattr(transport, "supports_authority_transactions", False)):
-            raise ValidationError("test transport lacks transactional authority protocol")
         super().__init__(token, transport)
 
     @staticmethod
@@ -61,25 +61,60 @@ class _TestProspectContactLock(_InjectedProspectContactLock):
         blob_sha: str | None,
         commit_sha: str | None,
     ) -> dict[str, Any]:
-        doc = _InjectedProspectContactLock._receipt(
-            action, outcome, target, record, blob_sha, commit_sha
+        return _mark_test_artifact(
+            _CoreProspectContactLock._receipt(
+                action, outcome, target, record, blob_sha, commit_sha
+            )
         )
-        marked = dict(doc)
-        marked["test_only_transport"] = True
-        return marked
 
     def status(self, kind: str, raw_target: str) -> dict[str, Any]:
-        doc = dict(super().status(kind, raw_target))
-        doc["test_only_transport"] = True
-        return doc
+        return _mark_test_artifact(super().status(kind, raw_target))
 
 
-# One production class is installed onto every supported import path.  The
-# injected-transport implementation remains reachable only under an explicit
-# underscore test name and cannot emit production-verifiable receipts.
+class _TestProspectContactLock(_InjectedProspectContactLock):
+    """Private hardened deterministic-transport seam for repository hostiles.
+
+    Both the legacy marker fake and the transactional whole-ref fake are allowed
+    here because this class is test-only. Every status/receipt is marked; signed
+    mutation receipts retain the old seal and therefore fail production receipt
+    validation instead of masquerading as canonical authority output.
+    """
+
+    def __init__(self, token: str, transport: _core.Transport) -> None:
+        supported = bool(
+            getattr(transport, "supports_authority_transactions", False)
+            or hasattr(transport, "authority_available")
+        )
+        if not supported:
+            raise ValidationError("test transport lacks a recognized repository test protocol")
+        super().__init__(token, transport)
+
+    @staticmethod
+    def _receipt(
+        action: str,
+        outcome: str,
+        target: Target,
+        record: Mapping[str, Any],
+        blob_sha: str | None,
+        commit_sha: str | None,
+    ) -> dict[str, Any]:
+        return _mark_test_artifact(
+            _InjectedProspectContactLock._receipt(
+                action, outcome, target, record, blob_sha, commit_sha
+            )
+        )
+
+    def status(self, kind: str, raw_target: str) -> dict[str, Any]:
+        return _mark_test_artifact(super().status(kind, raw_target))
+
+
+# One production class is installed onto every ordinary mutation import path.
+# Captured pre-alias implementations survive only under explicit underscore test
+# names and cannot emit production-verifiable receipts.
 _hardened.ProspectContactLock = ProspectContactLock
 _hardened._TestProspectContactLock = _TestProspectContactLock
 _core.ProspectContactLock = ProspectContactLock
+_core._TestProspectContactLock = _TestCoreProspectContactLock
 
 __all__ = [
     "AUTHORITY_BRANCH", "AUTHORITY_DIGEST", "AUTHORITY_GENERATION",
