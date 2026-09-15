@@ -9,7 +9,28 @@ from .codec import now_utc
 from .constants import DB_SCHEMA
 from .errors import PacemakerError, StoreInvariantError
 
-_SQLITE_CONNECT = sqlite3.connect
+
+def _make_connect_method(sqlite_connect, sqlite_error, sqlite_row):
+    """Capture SQLite open authority once; never re-resolve it from module state."""
+    def _connect(self) -> sqlite3.Connection:
+        self._assert_db_identity()
+        try:
+            db = sqlite_connect(
+                self._db_uri, timeout=30, isolation_level=None, uri=True
+            )
+        except sqlite_error:
+            self._assert_db_identity()
+            raise
+        try:
+            self._assert_db_identity()
+            db.row_factory = sqlite_row
+            db.execute("PRAGMA busy_timeout=30000")
+            return db
+        except Exception:
+            db.close()
+            raise
+
+    return _connect
 
 
 def _owned(info) -> None:
@@ -175,23 +196,7 @@ class StoreBase:
         if (info.st_dev, info.st_ino) != self._db_identity:
             raise StoreInvariantError("database path generation changed")
 
-    def _connect(self) -> sqlite3.Connection:
-        self._assert_db_identity()
-        try:
-            db = _SQLITE_CONNECT(
-                self._db_uri, timeout=30, isolation_level=None, uri=True
-            )
-        except sqlite3.Error:
-            self._assert_db_identity()
-            raise
-        try:
-            self._assert_db_identity()
-            db.row_factory = sqlite3.Row
-            db.execute("PRAGMA busy_timeout=30000")
-            return db
-        except Exception:
-            db.close()
-            raise
+    _connect = _make_connect_method(sqlite3.connect, sqlite3.Error, sqlite3.Row)
 
     def _init(self) -> None:
         db = self._connect()
@@ -224,3 +229,6 @@ class StoreBase:
                 raise StoreInvariantError("database schema mismatch")
         finally:
             db.close()
+
+
+del _make_connect_method
