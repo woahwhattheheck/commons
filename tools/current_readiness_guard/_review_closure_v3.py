@@ -107,13 +107,44 @@ def _module_aliases(tree: ast.Module) -> tuple[dict[str, str], set[str]]:
     return aliases, ambiguous
 
 
+def _class_aliases(tree: ast.Module) -> tuple[dict[str, str], set[str]]:
+    candidates: dict[str, set[str]] = {}
+
+    def collect(statements: Sequence[ast.stmt], owner: str | None = None) -> None:
+        for statement in statements:
+            if not isinstance(statement, ast.ClassDef):
+                continue
+            class_key = f"{owner}.{statement.name}" if owner else statement.name
+            for member in statement.body:
+                if isinstance(member, (ast.Assign, ast.AnnAssign)):
+                    value = member.value
+                    if value is None:
+                        continue
+                    raw = _name(value)
+                    if not raw:
+                        continue
+                    if "." not in raw:
+                        raw = f"{class_key}.{raw}"
+                    targets = member.targets if isinstance(member, ast.Assign) else [member.target]
+                    for target in targets:
+                        if isinstance(target, ast.Name):
+                            candidates.setdefault(f"{class_key}.{target.id}", set()).add(raw)
+                elif isinstance(member, ast.ClassDef):
+                    collect([member], class_key)
+
+    collect(tree.body)
+    aliases = {name: next(iter(values)) for name, values in candidates.items() if len(values) == 1}
+    ambiguous = {name for name, values in candidates.items() if len(values) != 1}
+    return aliases, ambiguous
+
+
 def _aliases_for_function(
     fn: ast.FunctionDef | ast.AsyncFunctionDef,
-    module_aliases: Mapping[str, str],
-    module_ambiguous: set[str],
+    base_aliases: Mapping[str, str],
+    base_ambiguous: set[str],
 ) -> tuple[dict[str, str], set[str]]:
-    aliases = dict(module_aliases)
-    ambiguous = set(module_ambiguous)
+    aliases = dict(base_aliases)
+    ambiguous = set(base_ambiguous)
     defs = _local_defs(fn)
     for _ in range(max(1, len(defs) + 1)):
         changed = False
@@ -153,15 +184,30 @@ def _condition_facts_factory(
         refs = _authority_refs(node, authority_params)
         if not refs:
             return set()
-        if call_name in ambiguous:
+
+        canonical_call = call_name
+        if spec.owner is not None and (call_name.startswith("self.") or call_name.startswith("cls.")):
+            canonical_call = f"{spec.owner}.{call_name.split('.', 1)[1]}"
+        if call_name in ambiguous or canonical_call in ambiguous:
             return set()
-        target_name = aliases.get(call_name, call_name)
-        if not any(word in call_name.lower() or word in target_name.lower() for word in _GUARD_CALL_WORDS):
+
+        target_name = aliases.get(call_name, aliases.get(canonical_call, call_name))
+        if not any(
+            word in call_name.lower() or word in target_name.lower()
+            for word in _GUARD_CALL_WORDS
+        ):
             return set()
+
         resolved = _resolve_call(target_name, spec, specs_by_key)
         if resolved is None:
+            if canonical_call != call_name:
+                # self/cls validation is a same-module/class authority surface; if
+                # its binding cannot be proven, fail closed rather than treating it
+                # as a trusted opaque external validator.
+                return set()
             # Preserve the predecessor contract for a genuinely opaque external validator.
             return refs
+
         callee_spec = specs_by_key[resolved]
         callee_params = _function_params(callee_spec.node)
         controlled: set[str] = set()
@@ -196,6 +242,9 @@ def additional_findings(source: str | bytes, *, path: str = "<memory>") -> list[
     specs_by_key = {spec.key: spec for spec in specs}
     globals_ = _module_static_strings(tree)
     module_aliases, module_ambiguous = _module_aliases(tree)
+    class_aliases, class_ambiguous = _class_aliases(tree)
+    base_aliases = {**module_aliases, **class_aliases}
+    base_ambiguous = module_ambiguous | class_ambiguous
     out: list[Finding] = []
 
     for spec in specs:
@@ -204,7 +253,7 @@ def additional_findings(source: str | bytes, *, path: str = "<memory>") -> list[
             continue
         authority_params = {name for name in _function_params(fn) if _authority_name(name)}
         local_defs = _local_defs(fn)
-        aliases, ambiguous = _aliases_for_function(fn, module_aliases, module_ambiguous)
+        aliases, ambiguous = _aliases_for_function(fn, base_aliases, base_ambiguous)
         condition = _condition_facts_factory(spec, specs_by_key, aliases, ambiguous)
         paths = _direct_return_paths(fn.body, authority_params, condition_facts=condition)
 
