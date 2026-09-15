@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from . import guard as _guard
-from ._guard_overrides import analyze_source, read_source
+from ._guard_overrides_v3 import analyze_source, read_source
 
 # Keep the existing public module/API while installing the successor closure layer.
 # scan_paths resolves these globals at call time, so CLI/library callers share the
