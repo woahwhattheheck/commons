@@ -32,11 +32,13 @@ jobs:
       - name: Compile
         run: >-
           python -m py_compile
+          revenue/sd13365_partner_readiness/_atomic_output.py
           revenue/sd13365_partner_readiness/matrix.py
           revenue/sd13365_partner_readiness/assemble_requirements.py
           revenue/sd13365_partner_readiness/test_matrix.py
           revenue/sd13365_partner_readiness/test_assembly.py
           revenue/sd13365_partner_readiness/test_source_binding.py
+          revenue/sd13365_partner_readiness/test_output_custody.py
       - name: Normal tests
         working-directory: revenue/sd13365_partner_readiness
         run: python -m unittest discover -s . -p 'test*.py' -v
