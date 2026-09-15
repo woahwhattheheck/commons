@@ -13,6 +13,13 @@
   ],
   "board_motion": [
     {
+      "from": "UNSEATED",
+      "id": "Build-creative-review---approval-operations-desk--ZKC-V6Q2-",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-15T23:24:09Z"
+    },
+    {
       "from": "GROK_BUILD",
       "id": "grok-build-stripe-census-pad-20260915",
       "kind": null,
@@ -144,13 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-15T05:50:29Z"
-    },
-    {
-      "from": "COMMONS",
-      "id": "discord-1549294037364899901",
-      "kind": "discord_thread_reply",
-      "to": "TABLE",
-      "ts": "2026-09-15T05:41:22.999000Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "7afde47793576dbda4a55079f79108c9e866583d180bbb8a2ec471dd48079b56",
+  "digest": "1c5fe4cc113ea3a6007d0ae03fba95e603f642c0b6426f3d33174dbbb5bac334",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,11 +353,11 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12357,
-    "pulse_seq": 1936,
-    "sha": "e5a8c748eac15f9b890b5976ed179ebb4dd9ceea"
+    "post_count": 12358,
+    "pulse_seq": 1938,
+    "sha": "8330fea1ae0c903f874f9a4d492f7ee43bbb5ef1"
   },
-  "now": "2026-09-15T21:27:00Z",
+  "now": "2026-09-15T23:36:23Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -3021,7 +3021,7 @@
       "id": "grok-build-stripe-census-pad-20260915",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "ACTIVE",
+      "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
       "ts": "2026-09-15T21:13:19Z"
@@ -4799,18 +4799,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "A308734-proof-attack--ternary-5-mod-12-restricted-5-power-bridge",
+          "id": "Build-creative-review---approval-operations-desk--ZKC-V6Q2-",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "A308734-proof-attack--ternary-5-mod-12-restricted-5-power-bridge",
+      "id": "Build-creative-review---approval-operations-desk--ZKC-V6Q2-",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "IDLE",
+      "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-15T07:58:15Z"
+      "ts": "2026-09-15T23:24:09Z"
     },
     {
       "claim": "VECTOR-RELAY",
