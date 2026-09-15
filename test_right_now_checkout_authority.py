@@ -2,8 +2,11 @@ from __future__ import annotations
 
 import copy
 import importlib.util
+import json
 import unittest
+from datetime import datetime, timezone
 from pathlib import Path
+from unittest import mock
 
 
 ROOT = Path(__file__).resolve().parent
@@ -14,12 +17,29 @@ assert SPEC and SPEC.loader
 control = importlib.util.module_from_spec(SPEC)
 SPEC.loader.exec_module(control)
 
+FRESH_NOW = datetime(2026, 9, 14, 1, 40, 0, tzinfo=timezone.utc)
+
 
 class RightNowCheckoutAuthorityTests(unittest.TestCase):
     def setUp(self) -> None:
         self.catalog = control.read_object(control.CATALOG_PATH)
         self.offer = control.read_object(control.AUTOPSY_PROVIDER_PATH)
         self.page = control.AUTOPSY_PUBLIC_PAGE_PATH.read_text(encoding="utf-8")
+        self.current_readback = json.loads(
+            control.CHECKOUT_CURRENT_PATH.read_text(encoding="utf-8")
+        )
+        self.read_patch = mock.patch.object(
+            control,
+            "_credential_host_readback",
+            return_value=copy.deepcopy(self.current_readback),
+        )
+        self.clock_patch = mock.patch.object(
+            control, "_current_utc", return_value=FRESH_NOW
+        )
+        self.read_patch.start()
+        self.clock_patch.start()
+        self.addCleanup(self.read_patch.stop)
+        self.addCleanup(self.clock_patch.stop)
 
     def validate(self, offer=None, page=None):
         return control.validate_checkout_authority(
@@ -28,27 +48,20 @@ class RightNowCheckoutAuthorityTests(unittest.TestCase):
             self.catalog["as_of"],
         )
 
-    def test_exact_retained_provider_evidence_and_public_page_are_active(self) -> None:
+    def test_exact_retained_provider_evidence_and_public_page_are_historical_only(self) -> None:
         authority = self.validate()
         self.assertIs(authority["active"], True)
         self.assertEqual(authority["offer_id"], "agent-failure-autopsy-29")
         self.assertEqual(authority["provider"], "STRIPE")
-        self.assertEqual(
-            authority["provider_payment_link_id"],
-            "plink_1UCFbLATH4EDE7XDlTunr6iO",
-        )
-        self.assertEqual(
-            authority["provider_receipt_sha256"],
-            "39ce997a58fe256b11c82963559452ec167bb8c2c7f42c67ad7ce790052e7b42",
-        )
+        self.assertNotIn("current_authority_boundary", authority)
 
-    def test_catalog_truth_reconciles_to_retained_authority(self) -> None:
-        authority = self.validate()
+    def test_catalog_truth_requires_fresh_credential_host_authority(self) -> None:
+        control.validate_catalog(copy.deepcopy(self.catalog), self.validate())
+        current = control.build_checkout_authority(self.catalog["as_of"])
         self.assertEqual(
-            self.catalog["truth"]["active_chargeable_checkout"],
-            authority["active"],
+            current["current_authority_boundary"],
+            "CREDENTIAL_HOST_STRIPE_READ",
         )
-        control.validate_catalog(copy.deepcopy(self.catalog), authority)
 
     def test_repo_authored_catalog_boolean_cannot_hide_missing_live_row(self) -> None:
         catalog = copy.deepcopy(self.catalog)
