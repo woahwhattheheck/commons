@@ -14,7 +14,6 @@
   },
   "bid_model": "nvidia_prime_subcontract",
   "blockers": [
-    "amendments_review_evidence_id",
     "buyer_addendum:addendum_1:teaming_structure_not_affirmatively_permitted",
     "buyer_artifact:section_ix_references",
     "buyer_artifact:section_vii_item_12_requirements_matrix",
@@ -26,6 +25,7 @@
     "nvidia_prime.insurance_current_through_due_date",
     "nvidia_prime.nvidia_partner.active_nvidia_partner",
     "nvidia_prime.nvidia_partner.commitment_current",
+    "nvidia_prime.nvidia_partner.nvidia_authorization_current",
     "nvidia_prime.nvidia_partner.nvidia_scope_dgx_spark_lab_design",
     "nvidia_prime.references.reference_site_available_within_7_days",
     "order_remit_address_evidence_id",
@@ -38,7 +38,7 @@
     "warranty_support_ready"
   ],
   "due_at": "2026-09-21T14:00:00-05:00",
-  "evaluated_at": "2026-09-14T21:05:00-04:00",
+  "evaluated_at": "2026-09-15T17:40:09-04:00",
   "missing_buyer_artifacts": [
     "section_ix_references",
     "section_vii_item_12_requirements_matrix",
@@ -46,7 +46,7 @@
   ],
   "present_buyer_artifacts": [],
   "reason": "teaming_gates_unproven",
-  "receipt_sha256": "fda908378ac5960aa6476b5f8ef6cd652d2de59f839a0f4595517322f2a900d7",
+  "receipt_sha256": "70860bb3851d9f66ed09d3bf82eee965b650983198e3dbfc94e4a329ec5be24d",
   "schema": "alcorn-rfp5588-qualification-result/v1",
   "source_findings": {
     "addendum_1": {
