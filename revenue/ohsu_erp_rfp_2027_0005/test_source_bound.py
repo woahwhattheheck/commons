@@ -146,6 +146,46 @@ class SourceBoundTests(unittest.TestCase):
         f2 = copy.deepcopy(f1); f2["requirements"] = list(reversed(f2["requirements"]))
         self.assertEqual(s._compile_at(f1,self.before_intent()), s._compile_at(f2,self.before_intent()))
 
+    def test_verify_survives_clock_advance_when_operational_truth_is_unchanged(self):
+        f = facts()
+        bound = self.before_intent()
+        packet = s._compile_at(f, bound)
+        original = s._now_utc
+        s._now_utc = lambda: bound + dt.timedelta(seconds=1)
+        try:
+            self.assertTrue(s.verify_current(packet, f))
+        finally:
+            s._now_utc = original
+
+    def test_verify_stales_packet_when_deadline_crossing_changes_operational_truth(self):
+        f = facts()
+        just_before = dt.datetime(2026, 9, 16, 23, 59, 59, tzinfo=dt.timezone.utc)
+        packet = s._compile_at(f, just_before)
+        original = s._now_utc
+        s._now_utc = lambda: dt.datetime(2026, 9, 17, 0, 0, 0, tzinfo=dt.timezone.utc)
+        try:
+            with self.assertRaisesRegex(s.ContractError, "operational state is stale"):
+                s.verify_current(packet, f)
+        finally:
+            s._now_utc = original
+
+    def test_cli_compile_then_verify_does_not_self_stale_on_timestamp_only(self):
+        f = facts()
+        compile_input = json.dumps({"schema": s.SCHEMA_INPUT, "facts": f}).encode()
+        compiled = subprocess.run(
+            [sys.executable, "-m", "revenue.ohsu_erp_rfp_2027_0005.source_bound", "compile"],
+            input=compile_input, stdout=subprocess.PIPE, stderr=subprocess.PIPE, cwd=ROOT.parents[1])
+        self.assertEqual(compiled.returncode, 0, compiled.stderr.decode())
+        packet = json.loads(compiled.stdout)
+        verify_input = json.dumps({
+            "schema": s.SCHEMA_VERIFY_INPUT, "facts": f, "packet": packet
+        }).encode()
+        verified = subprocess.run(
+            [sys.executable, "-m", "revenue.ohsu_erp_rfp_2027_0005.source_bound", "verify"],
+            input=verify_input, stdout=subprocess.PIPE, stderr=subprocess.PIPE, cwd=ROOT.parents[1])
+        self.assertEqual(verified.returncode, 0, verified.stderr.decode())
+        self.assertTrue(json.loads(verified.stdout)["valid"])
+
     def test_bool_int_alias_rejected(self):
         f = facts(); f["owner_reviewed"] = 1
         with self.assertRaisesRegex(s.ContractError, "must be bool"):
