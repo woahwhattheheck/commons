@@ -120,6 +120,34 @@ class Gate:
         self.assertIn("CRG003", self.rules(ignored))
         self.assertNotIn("CRG003", self.rules(consumed))
 
+    def test_class_level_validator_alias_must_consume_authority(self):
+        ignored = '''
+class Gate:
+    def validate_authority(self, packet, authority_root):
+        return packet["verified"]
+
+    verify = validate_authority
+
+    def evaluate(self, packet, authority_root):
+        if self.verify(packet, authority_root):
+            return "PRIME_READY"
+        return "HOLD"
+'''
+        consumed = '''
+class Gate:
+    def validate_authority(self, packet, authority_root):
+        return bool(authority_root)
+
+    verify = validate_authority
+
+    def evaluate(self, packet, authority_root):
+        if self.verify(packet, authority_root):
+            return "PRIME_READY"
+        return "HOLD"
+'''
+        self.assertIn("CRG003", self.rules(ignored))
+        self.assertNotIn("CRG003", self.rules(consumed))
+
 
 if __name__ == "__main__":
     unittest.main()
