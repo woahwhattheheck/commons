@@ -154,7 +154,6 @@ class PublisherTests(unittest.TestCase):
                 publish_artifact_set(self.out, {"a": b"ORIGINAL"})
         self.assertEqual((self.out / "a").read_bytes(), b"MUTATED!")
 
-
     def test_mutation_after_first_byte_pass_is_caught_by_second_fence(self) -> None:
         import tools.exact_byte_artifact_set.publisher as publisher
 
@@ -176,6 +175,53 @@ class PublisherTests(unittest.TestCase):
             with self.assertRaises(PartialPublicationError):
                 publish_artifact_set(self.out, {"a": b"ORIGINAL"})
         self.assertEqual((self.out / "a").read_bytes(), b"CHANGED!")
+
+    def test_replacement_during_final_directory_fsync_fails_closed(self) -> None:
+        import tools.exact_byte_artifact_set.publisher as publisher
+
+        original = publisher._fsync_directory
+        calls = 0
+
+        def replace_after_second_fsync(dir_fd):
+            nonlocal calls
+            calls += 1
+            original(dir_fd)
+            if calls == 2:
+                path = self.out / "a"
+                path.unlink()
+                path.write_bytes(b"FOREIGN")
+
+        with mock.patch.object(
+            publisher, "_fsync_directory", side_effect=replace_after_second_fsync
+        ):
+            with self.assertRaises(PartialPublicationError) as caught:
+                publish_artifact_set(self.out, {"a": b"OWNED!!"})
+        self.assertEqual(caught.exception.created_leaves, ("a",))
+        self.assertEqual((self.out / "a").read_bytes(), b"FOREIGN")
+
+    def test_same_inode_mutation_during_final_directory_fsync_fails_closed(self) -> None:
+        import tools.exact_byte_artifact_set.publisher as publisher
+
+        original = publisher._fsync_directory
+        calls = 0
+
+        def mutate_after_second_fsync(dir_fd):
+            nonlocal calls
+            calls += 1
+            original(dir_fd)
+            if calls == 2:
+                path = self.out / "a"
+                with path.open("r+b", buffering=0) as handle:
+                    handle.write(b"MUTATED!")
+                    handle.flush()
+                    os.fsync(handle.fileno())
+
+        with mock.patch.object(
+            publisher, "_fsync_directory", side_effect=mutate_after_second_fsync
+        ):
+            with self.assertRaises(PartialPublicationError):
+                publish_artifact_set(self.out, {"a": b"ORIGINAL"})
+        self.assertEqual((self.out / "a").read_bytes(), b"MUTATED!")
 
     def test_parent_directory_path_replacement_never_redirects_writes(self) -> None:
         import tools.exact_byte_artifact_set.publisher as publisher

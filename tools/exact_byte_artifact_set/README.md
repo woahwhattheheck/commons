@@ -20,11 +20,19 @@ Checking only the first two is insufficient. A same-inode, same-length in-place 
 4. fsyncs files and the retained directory;
 5. verifies exact expected bytes from each retained descriptor with stable metadata;
 6. proves each visible leaf still names that retained regular-file generation;
-7. repeats the final byte/visibility fence, fsyncs the directory again, and returns a deterministic SHA-256 receipt.
+7. completes the final directory durability operation, then repeats the package-wide exact-byte/visible-name fence and returns a deterministic SHA-256 receipt without another blocking filesystem or namespace operation.
 
 If publication has begun and any later check fails, **nothing is pathname-deleted**. `PartialPublicationError.created_leaves` reports the invocation-created names so the caller can reconcile the partial truth. This is deliberate: a late cleanup that re-resolves a pathname can delete another actor's replacement.
 
 The primitive is intentionally conservative: safe single-component names only, existing leaves are refused, the output directory must already exist, payload sizes are bounded, and platforms without the required POSIX descriptor primitives fail closed.
+
+## Consistency boundary
+
+`publication_complete=true` means this invocation completed its writes, durability operations, retained-byte checks, and final visible-name checks without observing a contradiction. It is **not** an atomic multi-path namespace snapshot and it does not make the output directory immutable.
+
+The final leaf checks are necessarily sequential. An uncooperative same-authority writer can still modify an already-checked leaf after its individual check, including immediately after this function returns. Consumers that need stronger use-time assurance must verify the receipt hashes against the visible artifacts immediately before use, and systems that require an atomic package switch must add a higher-level generation/manifest or atomic-directory publication protocol rather than treating this helper as one.
+
+The retained-directory policy is also intentional: if the caller's original `output_dir` pathname is renamed or replaced while publication is running, this invocation continues against the directory generation it opened. The receipt proves only that retained-generation finalization contract; it does not claim the caller's original pathname still resolves to that generation.
 
 ## Example
 
