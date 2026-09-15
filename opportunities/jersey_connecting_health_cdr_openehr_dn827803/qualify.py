@@ -1,22 +1,37 @@
 #!/usr/bin/env python3
-"""Fail-closed qualification engine for Jersey procurement DN827803."""
+"""Legacy Jersey DN827803 compatibility gate backed by repo-pinned pursuit authority.
+
+The original v1 qualifier accepted caller-owned time, route, partner confirmation,
+and evidence declarations and could therefore self-mint READY after a future
+pack acquisition. Current readiness authority lives in the shared
+``revenue.pursuit_evidence_bridge`` binding. This module keeps the historical
+CLI/library surface usable for HOLD diagnostics, but it can never emit READY.
+"""
 from __future__ import annotations
 
 import argparse
-import hashlib
 import json
-import re
+import os
 import sys
 from dataclasses import dataclass
-from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Iterable
 
+REPO_ROOT = Path(__file__).resolve().parents[2]
+if str(REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(REPO_ROOT))
+
+from revenue.pursuit_evidence_bridge.bridge import (  # noqa: E402
+    BridgeError,
+    compile_bridge as _bridge_compile,
+)
+
+BINDING_ID = "jersey-dn827803-main-v1"
 NOTICE_ID = "DN827803"
-SCHEMA_VERSION = 1
-MAX_SOURCE_AGE_DAYS = 30
-SHA256_RE = re.compile(r"^[0-9a-f]{64}$")
-CAPABILITY_STATES = {"PROVEN", "PARTNER_CURABLE", "MISSING", "UNKNOWN", "NOT_APPLICABLE"}
+SCHEMA_VERSION = 2
+
+# Retained for compatibility with consumers that import the historical names.
+# These are advisory route vocabularies only; they no longer carry READY authority.
 AUTHORITY_FLAGS = {
     "portal_registration",
     "buyer_contact",
@@ -62,7 +77,7 @@ TEAMING_ROUTES = {"TEAMING_INTEROPERABILITY_SPECIALIST", "TEAMING_ACCEPTANCE_EVI
 
 
 class QualificationError(ValueError):
-    pass
+    """Malformed, stale, unbound, or self-authenticating legacy input."""
 
 
 def _unique_object(pairs: Iterable[tuple[str, Any]]) -> dict[str, Any]:
@@ -75,152 +90,17 @@ def _unique_object(pairs: Iterable[tuple[str, Any]]) -> dict[str, Any]:
 
 
 def load_json_bytes(raw: bytes, label: str) -> dict[str, Any]:
+    if not isinstance(raw, (bytes, bytearray)):
+        raise QualificationError(f"{label}:BYTES_REQUIRED")
     try:
-        value = json.loads(raw.decode("utf-8"), object_pairs_hook=_unique_object)
-    except UnicodeDecodeError as exc:
-        raise QualificationError(f"{label}:NOT_UTF8") from exc
-    except json.JSONDecodeError as exc:
-        raise QualificationError(f"{label}:INVALID_JSON:{exc.msg}") from exc
-    if not isinstance(value, dict):
+        value = json.loads(bytes(raw).decode("utf-8", "strict"), object_pairs_hook=_unique_object)
+    except QualificationError:
+        raise
+    except (UnicodeDecodeError, json.JSONDecodeError) as exc:
+        raise QualificationError(f"{label}:INVALID_JSON_OR_UTF8") from exc
+    if type(value) is not dict:
         raise QualificationError(f"{label}:ROOT_MUST_BE_OBJECT")
     return value
-
-
-def sha256_bytes(raw: bytes) -> str:
-    return hashlib.sha256(raw).hexdigest()
-
-
-def _require_str(obj: dict[str, Any], key: str) -> str:
-    value = obj.get(key)
-    if not isinstance(value, str) or not value.strip():
-        raise QualificationError(f"{key}:MUST_BE_STRING")
-    return value
-
-
-def _require_bool(obj: dict[str, Any], key: str) -> bool:
-    value = obj.get(key)
-    if type(value) is not bool:
-        raise QualificationError(f"{key}:MUST_BE_BOOL")
-    return value
-
-
-def _require_int(obj: dict[str, Any], key: str, *, minimum: int | None = None) -> int:
-    value = obj.get(key)
-    if type(value) is not int:
-        raise QualificationError(f"{key}:MUST_BE_INT_NOT_BOOL")
-    if minimum is not None and value < minimum:
-        raise QualificationError(f"{key}:BELOW_MINIMUM")
-    return value
-
-
-def _parse_dt(value: str, label: str) -> datetime:
-    try:
-        dt = datetime.fromisoformat(value.replace("Z", "+00:00"))
-    except ValueError as exc:
-        raise QualificationError(f"{label}:INVALID_DATETIME") from exc
-    if dt.tzinfo is None:
-        raise QualificationError(f"{label}:TIMEZONE_REQUIRED")
-    return dt
-
-
-def _validate_sha(value: Any, label: str) -> str:
-    if not isinstance(value, str) or not SHA256_RE.fullmatch(value):
-        raise QualificationError(f"{label}:INVALID_SHA256")
-    return value
-
-
-def validate_source(source: dict[str, Any], *, tender_pack_bytes: bytes | None) -> dict[str, Any]:
-    if _require_int(source, "schema_version", minimum=1) != SCHEMA_VERSION:
-        raise QualificationError("source.schema_version:UNSUPPORTED")
-    if _require_str(source, "notice_id") != NOTICE_ID:
-        raise QualificationError("source.notice_id:MISMATCH")
-    checked_at = _parse_dt(_require_str(source, "checked_at"), "source.checked_at")
-    _parse_dt(_require_str(source, "response_deadline"), "source.response_deadline")
-    pack = source.get("tender_pack")
-    if not isinstance(pack, dict):
-        raise QualificationError("source.tender_pack:MUST_BE_OBJECT")
-    acquired = _require_bool(pack, "acquired")
-    reviewed = _require_bool(pack, "reviewed")
-    declared_sha = pack.get("sha256")
-    state = _require_str(pack, "state")
-    actual_sha = None
-    if not acquired:
-        if reviewed:
-            raise QualificationError("source.tender_pack:REVIEWED_WITHOUT_ACQUISITION")
-        if declared_sha is not None:
-            raise QualificationError("source.tender_pack:SHA_WITHOUT_ACQUISITION")
-        if state != "TENDER_PACK_NOT_ACQUIRED":
-            raise QualificationError("source.tender_pack:STATE_MISMATCH")
-        if tender_pack_bytes is not None:
-            raise QualificationError("source.tender_pack:BYTES_PRESENT_BUT_NOT_ACQUIRED")
-    else:
-        declared = _validate_sha(declared_sha, "source.tender_pack.sha256")
-        if state not in {"TENDER_PACK_ACQUIRED_UNREVIEWED", "TENDER_PACK_ACQUIRED_REVIEWED"}:
-            raise QualificationError("source.tender_pack:STATE_MISMATCH")
-        if reviewed != (state == "TENDER_PACK_ACQUIRED_REVIEWED"):
-            raise QualificationError("source.tender_pack:REVIEW_STATE_MISMATCH")
-        if tender_pack_bytes is not None:
-            actual_sha = sha256_bytes(tender_pack_bytes)
-            if actual_sha != declared:
-                raise QualificationError("TENDER_PACK_DIGEST_MISMATCH")
-    return {
-        "checked_at": checked_at,
-        "pack_acquired": acquired,
-        "pack_reviewed": reviewed,
-        "pack_declared_sha256": declared_sha,
-        "pack_actual_sha256": actual_sha,
-    }
-
-
-def validate_manifest(manifest: dict[str, Any], source_raw: bytes) -> dict[str, Any]:
-    if _require_int(manifest, "schema_version", minimum=1) != SCHEMA_VERSION:
-        raise QualificationError("manifest.schema_version:UNSUPPORTED")
-    if _require_str(manifest, "notice_id") != NOTICE_ID:
-        raise QualificationError("manifest.notice_id:MISMATCH")
-    expected = _validate_sha(manifest.get("source_ledger_sha256"), "manifest.source_ledger_sha256")
-    actual = sha256_bytes(source_raw)
-    if expected != actual:
-        raise QualificationError("SOURCE_LEDGER_DIGEST_MISMATCH")
-    evaluated_at = _parse_dt(_require_str(manifest, "evaluated_at"), "manifest.evaluated_at")
-    route = _require_str(manifest, "route")
-    if route not in ROUTES:
-        raise QualificationError("manifest.route:UNSUPPORTED")
-    partner_prime_confirmed = _require_bool(manifest, "partner_prime_confirmed")
-    authority = manifest.get("authority")
-    if not isinstance(authority, dict):
-        raise QualificationError("manifest.authority:MUST_BE_OBJECT")
-    missing = AUTHORITY_FLAGS - authority.keys()
-    extra = authority.keys() - AUTHORITY_FLAGS
-    if missing:
-        raise QualificationError("manifest.authority:MISSING_FLAGS:" + ",".join(sorted(missing)))
-    if extra:
-        raise QualificationError("manifest.authority:UNKNOWN_FLAGS:" + ",".join(sorted(extra)))
-    escalated = [key for key in sorted(AUTHORITY_FLAGS) if _require_bool(authority, key)]
-    if escalated:
-        raise QualificationError("AUTHORITY_ESCALATION_FORBIDDEN:" + ",".join(escalated))
-    capabilities = manifest.get("capabilities")
-    if not isinstance(capabilities, dict):
-        raise QualificationError("manifest.capabilities:MUST_BE_OBJECT")
-    normalized: dict[str, dict[str, Any]] = {}
-    for name, record in capabilities.items():
-        if not isinstance(name, str) or not name or not isinstance(record, dict):
-            raise QualificationError("manifest.capabilities:INVALID_RECORD")
-        status = _require_str(record, "status")
-        if status not in CAPABILITY_STATES:
-            raise QualificationError(f"capability.{name}:INVALID_STATUS")
-        refs = record.get("evidence_refs")
-        if not isinstance(refs, list) or any(not isinstance(ref, str) or not ref.strip() for ref in refs):
-            raise QualificationError(f"capability.{name}:INVALID_EVIDENCE_REFS")
-        if status == "PROVEN" and not refs:
-            raise QualificationError(f"capability.{name}:PROVEN_REQUIRES_EVIDENCE")
-        normalized[name] = {"status": status, "evidence_refs": list(refs)}
-    return {
-        "evaluated_at": evaluated_at,
-        "route": route,
-        "partner_prime_confirmed": partner_prime_confirmed,
-        "capabilities": normalized,
-        "source_sha256": actual,
-    }
 
 
 @dataclass(frozen=True)
@@ -230,79 +110,141 @@ class Evaluation:
     payload: dict[str, Any]
 
     def bytes(self) -> bytes:
-        return (json.dumps(self.payload, sort_keys=True, separators=(",", ":")) + "\n").encode()
+        return (json.dumps(self.payload, sort_keys=True, separators=(",", ":")) + "\n").encode("utf-8")
 
 
-def evaluate(manifest: dict[str, Any], source: dict[str, Any], source_raw: bytes, *, tender_pack_bytes: bytes | None = None) -> Evaluation:
-    s = validate_source(source, tender_pack_bytes=tender_pack_bytes)
-    m = validate_manifest(manifest, source_raw)
-    age_seconds = (m["evaluated_at"] - s["checked_at"]).total_seconds()
-    if age_seconds < 0:
-        raise QualificationError("manifest.evaluated_at:BEFORE_SOURCE_CHECK")
-    age_days = age_seconds // 86400
-    missing_caps: list[dict[str, str]] = []
-    for gate in ROUTES[m["route"]]:
-        record = m["capabilities"].get(gate)
-        if record is None:
-            missing_caps.append({"gate": gate, "status": "UNDECLARED"})
-        elif record["status"] != "PROVEN":
-            missing_caps.append({"gate": gate, "status": record["status"]})
-    if age_days > MAX_SOURCE_AGE_DAYS:
-        state = "HOLD_SOURCE_STALE"
-    elif not s["pack_acquired"]:
-        state = "HOLD_TENDER_PACK_REQUIRED"
-    elif tender_pack_bytes is None:
-        state = "HOLD_TENDER_PACK_FILE_REQUIRED"
-    elif not s["pack_reviewed"]:
-        state = "HOLD_TENDER_PACK_REVIEW"
-    elif missing_caps:
-        state = "HOLD_EVIDENCE_GAPS"
-    elif m["route"] in TEAMING_ROUTES and not m["partner_prime_confirmed"]:
-        state = "HOLD_PARTNER_REQUIRED"
-    else:
-        state = "READY_FOR_OWNER_TENDER_REVIEW"
-    payload = {
-        "schema_version": SCHEMA_VERSION,
-        "notice_id": NOTICE_ID,
-        "route": m["route"],
-        "state": state,
-        "source_age_days": int(age_days),
-        "source_ledger_sha256": m["source_sha256"],
-        "tender_pack_acquired": s["pack_acquired"],
-        "tender_pack_reviewed": s["pack_reviewed"],
-        "tender_pack_sha256": s["pack_declared_sha256"],
-        "partner_prime_confirmed": m["partner_prime_confirmed"],
-        "missing_required_capabilities": missing_caps,
-        "authority": "INTERNAL_QUALIFICATION_ONLY",
-        "tender_submission_authorized": False,
-        "evaluated_at": m["evaluated_at"].astimezone(timezone.utc).isoformat().replace("+00:00", "Z"),
-    }
-    return Evaluation(state, 0 if state == "READY_FOR_OWNER_TENDER_REVIEW" else 3, payload)
+def _legacy_state(bridge_result: dict[str, Any]) -> str:
+    if type(bridge_result) is not dict:
+        raise QualificationError("BRIDGE_RESULT:MUST_BE_OBJECT")
+    status = bridge_result.get("status")
+    reasons = bridge_result.get("reason_codes")
+    if status not in {"HOLD", "OPPORTUNITY_EVIDENCE_READY"}:
+        raise QualificationError("BRIDGE_RESULT:UNKNOWN_STATUS")
+    if type(reasons) is not list or any(type(item) is not str for item in reasons):
+        raise QualificationError("BRIDGE_RESULT:INVALID_REASON_CODES")
+    if bridge_result.get("external_submission_authorized") is not False:
+        raise QualificationError("BRIDGE_RESULT:EXTERNAL_AUTHORITY_ESCALATION")
+    action_authority = bridge_result.get("authority")
+    if type(action_authority) is not dict or any(value is not False for value in action_authority.values()):
+        raise QualificationError("BRIDGE_RESULT:ACTION_AUTHORITY_ESCALATION")
+
+    # Even a future evidence-ready bridge generation cannot resurrect this
+    # historical route/partner READY surface. A separate reviewed route decision
+    # must consume the evidence-ready result.
+    if status == "OPPORTUNITY_EVIDENCE_READY":
+        return "HOLD_LEGACY_QUALIFIER_RETIRED"
+    if "PROPOSAL_DEADLINE_EXPIRED" in reasons:
+        return "HOLD_DEADLINE_EXPIRED"
+    if any("TENDER_PACK" in reason for reason in reasons):
+        return "HOLD_TENDER_PACK_REQUIRED"
+    return "HOLD_EVIDENCE_AUTHORITY_REQUIRED"
+
+
+def _bind_current_evaluate(bridge_compile: Any):
+    """Capture the reviewed bridge capability instead of a mutable module alias."""
+    def current_evaluate(
+        manifest: dict[str, Any],
+        source: dict[str, Any],
+        source_raw: bytes,
+        *,
+        tender_pack_bytes: bytes | None = None,
+    ) -> Evaluation:
+        if type(manifest) is not dict or type(source) is not dict:
+            raise QualificationError("manifest/source:MUST_BE_OBJECT")
+        if tender_pack_bytes is not None:
+            raise QualificationError(
+                "LEGACY_TENDER_PACK_BYTES_NOT_AUTHORITY:rotate the repo-pinned pursuit binding instead"
+            )
+
+        parsed_raw = load_json_bytes(source_raw, "source_raw")
+        if parsed_raw != source:
+            raise QualificationError("SOURCE_RAW_OBJECT_MISMATCH")
+
+        try:
+            bridge_result = bridge_compile(BINDING_ID, source, manifest, None)
+        except BridgeError as exc:
+            raise QualificationError(f"BRIDGE_AUTHORITY_REJECTED:{exc}") from exc
+
+        state = _legacy_state(bridge_result)
+        payload = {
+            "schema_version": SCHEMA_VERSION,
+            "notice_id": NOTICE_ID,
+            "state": state,
+            "binding_id": bridge_result["binding_id"],
+            "binding_registry_sha256": bridge_result["binding_registry_sha256"],
+            "bridge_status": bridge_result["status"],
+            "bridge_reason_codes": list(bridge_result["reason_codes"]),
+            "deadline_utc": bridge_result["deadline_utc"],
+            "evaluated_at": bridge_result["evaluated_at"],
+            "legacy_manifest_route_advisory": manifest.get("route"),
+            "legacy_partner_prime_confirmed_advisory": manifest.get("partner_prime_confirmed"),
+            "authority": "INTERNAL_QUALIFICATION_ONLY",
+            "action_authority": dict(bridge_result["authority"]),
+            "tender_submission_authorized": False,
+            "external_submission_authorized": False,
+            "legacy_ready_authority_retired": True,
+        }
+        # Compatibility gate is intentionally HOLD-only. Current evidence
+        # authority belongs to the shared bridge; route/commercial approval is a
+        # separate reviewed decision.
+        return Evaluation(state, 3, payload)
+
+    return current_evaluate
+
+
+evaluate = _bind_current_evaluate(_bridge_compile)
+del _bind_current_evaluate
+
+
+def _write_exclusive(path: Path, data: bytes) -> None:
+    """Create a diagnostic receipt without following/replacing a final symlink."""
+    flags = os.O_WRONLY | os.O_CREAT | os.O_EXCL
+    if hasattr(os, "O_NOFOLLOW"):
+        flags |= os.O_NOFOLLOW
+    fd = os.open(path, flags, 0o600)
+    try:
+        with os.fdopen(fd, "wb", closefd=False) as handle:
+            handle.write(data)
+            handle.flush()
+            os.fsync(handle.fileno())
+    finally:
+        os.close(fd)
 
 
 def main(argv: list[str] | None = None) -> int:
-    p = argparse.ArgumentParser(description=__doc__)
-    p.add_argument("manifest", type=Path)
-    p.add_argument("--source-ledger", type=Path, default=Path(__file__).with_name("sources.json"))
-    p.add_argument("--tender-pack", type=Path, default=None)
-    p.add_argument("--output", type=Path, default=None)
-    args = p.parse_args(argv)
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("manifest", type=Path)
+    parser.add_argument("--source-ledger", type=Path, default=Path(__file__).with_name("sources.json"))
+    parser.add_argument(
+        "--tender-pack",
+        type=Path,
+        default=None,
+        help="legacy compatibility option; supplying bytes now fails closed",
+    )
+    parser.add_argument("--output", type=Path, default=None)
+    args = parser.parse_args(argv)
+
     try:
         source_raw = args.source_ledger.read_bytes()
         source = load_json_bytes(source_raw, "source")
         manifest = load_json_bytes(args.manifest.read_bytes(), "manifest")
         pack_bytes = args.tender_pack.read_bytes() if args.tender_pack else None
         result = evaluate(manifest, source, source_raw, tender_pack_bytes=pack_bytes)
+        encoded = result.bytes()
+        if args.output is None:
+            sys.stdout.buffer.write(encoded)
+        else:
+            _write_exclusive(args.output, encoded)
+        return result.exit_code
     except (OSError, QualificationError) as exc:
-        payload = {"state": "INVALID_INPUT", "error": str(exc), "tender_submission_authorized": False}
+        payload = {
+            "state": "INVALID_INPUT",
+            "error": str(exc),
+            "tender_submission_authorized": False,
+            "external_submission_authorized": False,
+        }
         sys.stderr.write(json.dumps(payload, sort_keys=True, separators=(",", ":")) + "\n")
         return 2
-    encoded = result.bytes()
-    if args.output:
-        args.output.write_bytes(encoded)
-    else:
-        sys.stdout.buffer.write(encoded)
-    return result.exit_code
 
 
 if __name__ == "__main__":
