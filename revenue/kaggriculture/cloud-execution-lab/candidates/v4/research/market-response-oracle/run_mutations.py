@@ -21,7 +21,7 @@ MUTATIONS = [
   'OracleTests.test_named_green_witnesses_are_negative'),
  ('ignore_carry', "delta += model.single(inv_c, rem_c)[0] - model.single(inv_b, rem_b)[0]", 'delta += 0',
   'OracleTests.test_named_green_witnesses_are_negative'),
- ('omit_town_consumption', 'c_inv - consumption[step], b_inv - consumption[step]', 'c_inv, inv_b',
+ ('omit_town_consumption', 'c_inv - consumption[step], b_inv - consumption[step]', 'c_inv, b_inv',
   'OracleTests.test_named_green_witnesses_are_negative'),
  ('partial_search_false_certificate', 'return Audit(False, None, (), transitions, max_frontier,', 'return Audit(True, 0.0, (), transitions, max_frontier,',
   'OracleTests.test_partial_search_never_certifies'),
