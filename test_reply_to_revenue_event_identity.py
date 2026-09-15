@@ -5,7 +5,10 @@ import copy
 import importlib.util
 import io
 import json
+import subprocess
+import sys
 import tempfile
+import textwrap
 import unittest
 from pathlib import Path
 
@@ -172,9 +175,12 @@ class ReplyToRevenueEventIdentityTests(unittest.TestCase):
             [event["event_ref"] for event in generation_a["events"]],
         )
 
-    def test_wrapper_policy_is_installed_in_actual_implementation_globals(self) -> None:
+    def test_wrapper_and_direct_core_share_authoritative_policy_bindings(self) -> None:
         self.assertIs(r2r._core._impl._reduce_contact_state, r2r._reduce_contact_state)
         self.assertIs(r2r._core._impl.surface_positives, r2r.surface_positives)
+        core = load_direct_core()
+        self.assertIs(core._impl._reduce_contact_state, core._reduce_contact_state)
+        self.assertIs(core._impl.surface_positives, core.surface_positives)
 
     def test_build_funnel_preserves_equal_time_opt_out(self) -> None:
         events = [
@@ -182,6 +188,22 @@ class ReplyToRevenueEventIdentityTests(unittest.TestCase):
             self._event("opaque:question-0001", "QUESTION"),
         ]
         funnel = r2r.build_funnel(
+            receipts=[self._receipt()],
+            observations=self._observations(events),
+        )
+        contact = next(item for item in funnel["contacts"] if item["prospect_key"] == "buyer-one")
+        self.assertEqual(contact["lane"], "CLOSED")
+        self.assertEqual(contact["next_action"], "DNC/CLOSE")
+        self.assertEqual(funnel["truth"]["human_question"], 0)
+        self.assertEqual(funnel["truth"]["human_positive"], 0)
+
+    def test_direct_core_build_funnel_preserves_equal_time_opt_out(self) -> None:
+        core = load_direct_core()
+        events = [
+            self._event("opaque:direct-opt-out-0001", "OPT_OUT"),
+            self._event("opaque:direct-question-0001", "QUESTION"),
+        ]
+        funnel = core.build_funnel(
             receipts=[self._receipt()],
             observations=self._observations(events),
         )
@@ -212,6 +234,46 @@ class ReplyToRevenueEventIdentityTests(unittest.TestCase):
             impl.load_observations = original_load_observations
         self.assertEqual(result, 0)
         surfaces = json.loads(output.getvalue())
+        self.assertEqual(len(surfaces), 1)
+        context = surfaces[0]["context"]
+        self.assertIn("recorded machine observations (AUTO_RESPONSE)", context)
+        self.assertNotIn("were absent", context)
+
+    def test_fresh_process_direct_core_cli_uses_authoritative_surface_policy(self) -> None:
+        events = [
+            self._event("opaque:process-positive-0001", "POSITIVE_SCOPE", received_at="2026-09-14T20:00:00Z"),
+            self._event("opaque:process-auto-ack-0001", "AUTO_RESPONSE", received_at="2026-09-14T20:01:00Z"),
+        ]
+        receipts = [self._receipt()]
+        observations = self._observations(events)
+        core_path = ROOT / "host" / "reply_to_revenue_core.py"
+        script = textwrap.dedent(
+            f"""
+            import importlib.util
+            import json
+            from pathlib import Path
+
+            core_path = Path({str(core_path)!r})
+            spec = importlib.util.spec_from_file_location("fresh_direct_core_cli", core_path)
+            assert spec and spec.loader
+            core = importlib.util.module_from_spec(spec)
+            spec.loader.exec_module(core)
+            receipts = {receipts!r}
+            observations = {observations!r}
+            core._impl.load_receipts = lambda: receipts
+            core._impl.load_observations = lambda: observations
+            raise SystemExit(core._impl.main(["surface"]))
+            """
+        )
+        completed = subprocess.run(
+            [sys.executable, "-c", script],
+            cwd=ROOT,
+            check=False,
+            capture_output=True,
+            text=True,
+        )
+        self.assertEqual(completed.returncode, 0, completed.stderr)
+        surfaces = json.loads(completed.stdout)
         self.assertEqual(len(surfaces), 1)
         context = surfaces[0]["context"]
         self.assertIn("recorded machine observations (AUTO_RESPONSE)", context)
