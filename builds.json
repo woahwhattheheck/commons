@@ -1345,22 +1345,6 @@
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
   {
-   "number": 14757,
-   "author": "woahwhattheheck",
-   "title": "feat(uiowa): recover local RFQ 18649 analyst workbench",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/14757",
-   "base_freshness": {
-    "base_sha": "4b6d569b1eb550c6398831b9a605d0b219156f83",
-    "main_sha": "8330fea1ae0c903f874f9a4d492f7ee43bbb5ef1",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
    "number": 14758,
    "author": "woahwhattheheck",
    "title": "Revenue: source-bind Alcorn RFP 5588 Addendum 1 without inventing a teaming gate",
@@ -1371,6 +1355,22 @@
     "ahead_by": null,
     "behind_by": null,
     "label": "FRESH"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 14757,
+   "author": "woahwhattheheck",
+   "title": "feat(uiowa): recover local RFQ 18649 analyst workbench",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/14757",
+   "base_freshness": {
+    "base_sha": "4b6d569b1eb550c6398831b9a605d0b219156f83",
+    "main_sha": "8330fea1ae0c903f874f9a4d492f7ee43bbb5ef1",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
    },
    "status": "PR_OPEN",
    "road": "pr",
