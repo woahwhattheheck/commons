@@ -2,7 +2,7 @@
 
 Competition-grade source/evidence carrier for `PAZHOU-OVERSEAS-OFFBOARDMESH-ZPFM6R2-20260914`.
 
-OffboardMesh is an AI-assisted client-offboarding control plane. A model can emit `PROPOSAL_ONLY` tasks; the deterministic layer digest-binds caller-asserted evidence for owner review, rejects contact/secret-shaped identifiers, applies request-time structural checks, and keeps present-time freshness under verifier-owned clock authority. The carrier does **not** claim that evidence provenance is independently owner-authenticated and never exposes an external execution API.
+OffboardMesh is an AI-assisted client-offboarding control plane. A model can emit `PROPOSAL_ONLY` tasks; the deterministic layer digest-binds caller-asserted evidence for owner review, rejects contact/secret-shaped identifiers, applies request-time structural checks, and keeps present-time freshness under native UTC clock/currentness dependencies captured when the module initializes. The carrier does **not** claim that evidence provenance is independently owner-authenticated and never exposes an external execution API.
 
 ## Truth boundary
 
@@ -20,23 +20,23 @@ python competitions/pazhou_overseas_offboardmesh_2026/offboardmesh.py verify-cur
 python competitions/pazhou_overseas_offboardmesh_2026/offboardmesh.py verify-historical \
   competitions/pazhou_overseas_offboardmesh_2026/example-candidate.json /tmp/offboardmesh-packet.json
 python competitions/pazhou_overseas_offboardmesh_2026/rubric.py
-python -m unittest discover -s tests -p 'test_pazhou_offboardmesh.py' -v
-python -O -m unittest discover -s tests -p 'test_pazhou_offboardmesh.py' -v
+python -m unittest discover -s tests -p 'test_pazhou_offboardmesh*.py' -v
+python -O -m unittest discover -s tests -p 'test_pazhou_offboardmesh*.py' -v
 ```
 
 Expected current demo verifier while the synthetic request/evidence remains inside its freshness + closeout window (canonical one-line JSON):
 
 ```json
-{"candidateValid":true,"currentEvidenceFresh":true,"externalSendAuthorized":false,"packetIntegrityValid":true,"sameEngagement":true,"samePlanVersion":true,"sourceMatches":true,"validCurrent":true}
+{"candidateValid":true,"compilerProjectionMatches":true,"currentEvidenceFresh":true,"externalSendAuthorized":false,"packetIntegrityValid":true,"sameEngagement":true,"samePlanVersion":true,"sourceMatches":true,"validCurrent":true}
 ```
 
 Expected historical-integrity replay for the same exact candidate/packet bytes is independent of present freshness:
 
 ```json
-{"candidateValid":true,"externalSendAuthorized":false,"packetIntegrityValid":true,"sameEngagement":true,"samePlanVersion":true,"sourceMatches":true,"validHistorical":true}
+{"candidateValid":true,"compilerProjectionMatches":true,"externalSendAuthorized":false,"packetIntegrityValid":true,"sameEngagement":true,"samePlanVersion":true,"sourceMatches":true,"validHistorical":true}
 ```
 
-`validCurrent` samples the verifier's process clock; there is no public/CLI caller parameter for overriding evaluation time. A packet that was fresh when compiled becomes non-current when its evidence exceeds the 14-day window or its requested closeout window ends. `validHistorical` only establishes exact replay/integrity against the supplied historical candidate; it never asserts present freshness or execution authority.
+`validCurrent` samples a native UTC clock captured when the module initializes. Its supported signature is only `(candidate, packet)`; ordinary post-import rebinding of module helper names cannot change the evaluation clock or 14-day currentness policy. A packet that was fresh when compiled becomes non-current when its evidence exceeds that window or its requested closeout window ends. This is a correctness boundary for the supported verifier API, not a claim that arbitrary code execution inside the same Python process cannot replace Python objects or functions. `validHistorical` only establishes exact replay/integrity against the supplied historical candidate; it never asserts present freshness or execution authority.
 
 The internal rubric result is a preparation/evidence-coverage score, explicitly **not** an organizer score.
 
@@ -53,7 +53,7 @@ Every task is `OWNER_REVIEW_REQUIRED`, not execution-ready, and every external/d
 ## Files
 
 - `submission_manifest.json` — official-source/deadline/award/rubric snapshot, exact product pins, submission nonclaims, owner-input gates.
-- `offboardmesh.py` — model-proposal adapter contract, digest binding, authority firewall, verifier-owned current clock, explicit historical-integrity replay and CLI.
+- `offboardmesh.py` — model-proposal adapter contract, digest binding, authority firewall, captured verifier-owned current clock/currentness policy, explicit historical-integrity replay and CLI.
 - `example-candidate.json` — entirely synthetic demo input; `ownerSupplied` values are caller assertions only.
 - `rubric_evidence.json` / `rubric.py` — evidence-backed 100-point rubric gap audit with team/customer/revenue gaps left visible.
 - `business_plan.md` — submission-ready business-plan body pending truthful owner/team fields.
@@ -64,4 +64,4 @@ Every task is `OWNER_REVIEW_REQUIRED`, not execution-ready, and every external/d
 - Client Offboarding Desk: `woahwhattheheck/smb-showcase-inventory@1d851fae645d8518ede247d4a4c35f9219b26c78`
 - Buyer-neutral control sprint carrier: `woahwhattheheck/smb-showcase-inventory@321d25ded135cf0580297c32e1c9ea8d9102c41b`
 
-Original product/source credit is preserved; this carrier is additive competition packaging and a stronger AI-control adapter, not a rewrite of the shipped product. ZPF-M6R2 authored the original six-file Pazhou carrier; ZSM-U7P5 recovered the stale lane by supplying the missing executable, business-plan, hostile-test, and path-CI acceptance artifacts without rewriting the original product paths. Z-Sol later repaired the recovered verifier's current-time and evidence-provenance trust boundaries after exact-head source review; that repair does not change original product authorship.
+Original product/source credit is preserved; this carrier is additive competition packaging and a stronger AI-control adapter, not a rewrite of the shipped product. ZPF-M6R2 authored the original six-file Pazhou carrier; ZSM-U7P5 recovered the stale lane by supplying the missing executable, business-plan, hostile-test, and path-CI acceptance artifacts without rewriting the original product paths. Z-Sol later repaired the recovered verifier's current-time, compiler-correspondence, and evidence-provenance trust boundaries after exact-head source review. ZVM-Q5K8 hardened the production CURRENT callable against post-import module-global clock/currentness rebinding and converted the hostile suite to live-window/historical fixtures; those repairs do not change original product authorship.
