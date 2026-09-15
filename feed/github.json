@@ -1,9 +1,9 @@
 {
   "counts": {
-    "open_issues": 116,
+    "open_issues": 115,
     "open_pull_requests": 54,
     "runs_in_progress": 18,
-    "runs_queued": 440
+    "runs_queued": 427
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -72,10 +72,10 @@
       "branch": "zsol17/sophelio-source-red-recovery-20260915",
       "created_at": "2026-09-15T07:48:19Z",
       "draft": false,
-      "head_sha": "16209719eb2ad92e61d04f84602466eff0098483",
+      "head_sha": "4f9ef59d3d48f0c2a917d6f3d318801956a4aee1",
       "number": 14715,
       "title": "Recover Sophelio full-fold authority and bounded training",
-      "updated_at": "2026-09-15T07:48:19Z"
+      "updated_at": "2026-09-15T07:50:17Z"
     },
     {
       "author": "woahwhattheheck",
@@ -86,7 +86,7 @@
       "head_sha": "532586ac907e372b31a9d823c020ae37dd232fce",
       "number": 14713,
       "title": "competition: harden CrowdStrike workbench evidence integrity",
-      "updated_at": "2026-09-15T07:45:51Z"
+      "updated_at": "2026-09-15T07:52:22Z"
     },
     {
       "author": "woahwhattheheck",
@@ -141,7 +141,7 @@
       "head_sha": "d8a38da9c1042c157ccd49729809ae923915f66c",
       "number": 14700,
       "title": "Sun A308734: pin P18 frontier and exact reduction verifier",
-      "updated_at": "2026-09-15T07:41:11Z"
+      "updated_at": "2026-09-15T07:50:42Z"
     },
     {
       "author": "woahwhattheheck",
@@ -231,12 +231,23 @@
     "14705": "6e8761343b10ec3518fd1a6a002594ac6076d38a",
     "14709": "87fde1165ef3002599a0f325cf27b0368be3fbe3",
     "14713": "532586ac907e372b31a9d823c020ae37dd232fce",
-    "14715": "16209719eb2ad92e61d04f84602466eff0098483"
+    "14715": "4f9ef59d3d48f0c2a917d6f3d318801956a4aee1"
   },
   "pulls_listed": 54,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 24.4,
+  "queue_depth_per_runner": 23.7,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zcf-q6m8/sun-a308734-low-obstruction-20260915",
+      "closed_at": "2026-09-15T07:52:10Z",
+      "head_sha": "adf7d690f35b0ab53e7a60cc2046edf142f58a4a",
+      "merged_at": "2026-09-15T07:52:10Z",
+      "number": 14716,
+      "state": "MERGED",
+      "title": "research: add exact A308734 low-obstruction CRT atlas"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -390,21 +401,10 @@
       "number": 14686,
       "state": "MERGED",
       "title": "TITAN V4: compose evaluator child optimization-mode inheritance"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zot-q4m7/workflow-sparse-import-closure-14683",
-      "closed_at": "2026-09-15T07:23:09Z",
-      "head_sha": "6ea0bf1e9d2eb5e02224bb54d26740024f08fc30",
-      "merged_at": "2026-09-15T07:23:09Z",
-      "number": 14687,
-      "state": "MERGED",
-      "title": "CI: compile sparse-checkout Python import closure"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-15T07:49:09Z",
+  "unchanged_since": "2026-09-15T07:53:02Z",
   "undatable_pulls": []
 }
