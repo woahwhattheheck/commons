@@ -130,6 +130,11 @@ def _install_engine_guards(module: ModuleType) -> None:
     if missing:
         raise ImportError(f"{_ENGINE_NAME} missing guarded entrypoints: {missing}")
 
+    # Engine source defines a new exception class on every reload. Preserve the
+    # original exported identity so callers that imported ContractError before a
+    # reload continue to catch failures from the reloaded engine generation.
+    namespace["ContractError"] = globals()["ContractError"]
+
     current_normalize = namespace["normalize_packet"]
     if getattr(current_normalize, _GUARD_MARKER, False):
         return
@@ -137,9 +142,8 @@ def _install_engine_guards(module: ModuleType) -> None:
     core_normalize = current_normalize
     core_verify = namespace["verify_board"]
 
-    # Refresh guarded-module aliases after reload creates a new exception class
-    # and new helper function objects in the existing engine module dictionary.
-    globals()["ContractError"] = namespace["ContractError"]
+    # Refresh helper aliases after reload creates new function objects in the
+    # existing engine module dictionary.
     globals()["VERSION"] = namespace["VERSION"]
     globals()["canonical_json"] = namespace["canonical_json"]
     globals()["render_markdown"] = namespace["render_markdown"]
