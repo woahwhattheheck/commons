@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: Apache-2.0
 """Authenticate and score a full V5 champion panel against exact submitted V3.1."""
 from __future__ import annotations
-import argparse, hashlib, json, math, os, re, sys, uuid
+import argparse, hashlib, json, math, os, re, stat, sys, uuid
 from pathlib import Path
 from typing import Any, Iterable
 
@@ -48,10 +48,43 @@ def _loads(raw: bytes, source: str):
     except (UnicodeError, json.JSONDecodeError) as exc:
         raise ChampionError(f"{source}: invalid UTF-8 JSON") from exc
 
+def _read_plain_file(path: Path):
+    """Read one ordinary file through one no-follow, nonblocking descriptor or fail closed."""
+    path=Path(path)
+    nofollow=getattr(os,"O_NOFOLLOW",None)
+    nonblock=getattr(os,"O_NONBLOCK",None)
+    if type(nofollow) is not int or nofollow == 0:
+        raise ChampionError("platform lacks O_NOFOLLOW; refusing release evidence")
+    if type(nonblock) is not int or nonblock == 0:
+        raise ChampionError("platform lacks O_NONBLOCK; refusing release evidence")
+    flags=os.O_RDONLY | nofollow | nonblock | getattr(os,"O_CLOEXEC",0)
+    try:
+        fd=os.open(path,flags)
+    except OSError as exc:
+        raise ChampionError(f"{path}: evidence must be an ordinary non-symlink file") from exc
+    try:
+        try:
+            mode=os.fstat(fd).st_mode
+        except OSError as exc:
+            raise ChampionError(f"cannot stat evidence file {path}") from exc
+        if not stat.S_ISREG(mode):
+            raise ChampionError(f"{path}: evidence must be an ordinary non-symlink file")
+        chunks=[]
+        while True:
+            try:
+                chunk=os.read(fd,1024*1024)
+            except OSError as exc:
+                raise ChampionError(f"cannot read evidence file {path}") from exc
+            if not chunk: break
+            chunks.append(chunk)
+        return b"".join(chunks)
+    finally:
+        try: os.close(fd)
+        except OSError: pass
+
 def _read_json(path: Path):
     path=Path(path)
-    try: raw=path.read_bytes()
-    except OSError as exc: raise ChampionError(f"cannot read {path}") from exc
+    raw=_read_plain_file(path)
     return _loads(raw, str(path)), hashlib.sha256(raw).hexdigest()
 
 def _canon(v):
@@ -64,9 +97,7 @@ def _git_blob(data: bytes):
     return hashlib.sha1(b"blob "+str(len(data)).encode()+b"\0"+data).hexdigest()
 
 def _sha_file(path: Path):
-    try: data=Path(path).read_bytes()
-    except OSError as exc: raise ChampionError(f"cannot read {path}") from exc
-    return hashlib.sha256(data).hexdigest()
+    return hashlib.sha256(_read_plain_file(path)).hexdigest()
 
 def _plain_int(v, field, lo=0):
     if type(v) is not int or v < lo: raise ChampionError(f"{field} must be a plain int >= {lo}")
