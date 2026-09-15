@@ -2,12 +2,17 @@
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 
 from .core import PortfolioError, load_json_bytes
 from .current import MAX_AUTHORITY_BYTES, load_current_input, read_regular_bytes
 from .host import compile_current, verify_current
 from .publisher import publish_current, read_current
+
+
+def _digest(raw: bytes) -> str:
+    return hashlib.sha256(raw).hexdigest()
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -43,8 +48,10 @@ def main(argv: list[str] | None = None) -> int:
                 json.dumps(
                     {
                         "authority_sha256": authorized.current_receipt["authority_sha256"],
-                        "current_receipt_sha256": authorized.current_receipt["receipt_sha256"],
-                        "host_seal_sha256": value.host_seal["hmac_sha256"],
+                        "current_receipt_sha256": _digest(
+                            authorized.current_receipt_bytes
+                        ),
+                        "host_seal_sha256": _digest(value.host_seal_bytes),
                         "output_dir": args.output_dir,
                         "selected_opportunity_ids": authorized.compiled.result[
                             "selected_opportunity_ids"
