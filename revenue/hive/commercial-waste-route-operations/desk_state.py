@@ -166,18 +166,35 @@ class WasteRouteState:
             raise
 
     @staticmethod
+    def _closed_object(
+        value: Any, field: str, allowed: set[str]
+    ) -> dict[str, Any]:
+        if not isinstance(value, dict):
+            raise ValidationError(f"{field} must be an object")
+        unknown = [
+            repr(key)
+            for key in value
+            if not isinstance(key, str) or key not in allowed
+        ]
+        if unknown:
+            raise ValidationError(
+                f"{field} contains unknown fields: {', '.join(unknown)}"
+            )
+        return value
+
+    @staticmethod
     def _normalize_manifest(m: Any) -> dict[str, Any]:
-        if (
-            not isinstance(m, dict)
-            or not isinstance(m.get("customers"), list)
-            or not m["customers"]
-        ):
+        m = WasteRouteState._closed_object(
+            m, "manifest", {"business_timezone", "customers"}
+        )
+        if not isinstance(m.get("customers"), list) or not m["customers"]:
             raise ValidationError("manifest.customers must be a non-empty list")
         tz = business_timezone(m.get("business_timezone", SYSTEM_LOCAL_TIMEZONE))
         out, seen_cu, seen_s, seen_k, seen_p = [], set(), set(), set(), set()
         for c in m["customers"]:
-            if not isinstance(c, dict):
-                raise ValidationError("each customer must be an object")
+            c = WasteRouteState._closed_object(
+                c, "customer", {"id", "name", "currency", "sites"}
+            )
             cid = ident(c.get("id"), "customer.id")
             if cid in seen_cu:
                 raise ValidationError(f"duplicate customer id {cid}")
@@ -191,8 +208,9 @@ class WasteRouteState:
             if not isinstance(c.get("sites"), list) or not c["sites"]:
                 raise ValidationError(f"customer {cid} must have sites")
             for s in c["sites"]:
-                if not isinstance(s, dict):
-                    raise ValidationError("each site must be an object")
+                s = WasteRouteState._closed_object(
+                    s, "site", {"id", "name", "containers"}
+                )
                 sid = ident(s.get("id"), "site.id")
                 if sid in seen_s:
                     raise ValidationError(f"duplicate site id {sid}")
@@ -205,8 +223,11 @@ class WasteRouteState:
                 if not isinstance(s.get("containers"), list) or not s["containers"]:
                     raise ValidationError(f"site {sid} must have containers")
                 for k in s["containers"]:
-                    if not isinstance(k, dict):
-                        raise ValidationError("each container must be an object")
+                    k = WasteRouteState._closed_object(
+                        k,
+                        "container",
+                        {"id", "label", "container_type", "plans"},
+                    )
                     kid = ident(k.get("id"), "container.id")
                     if kid in seen_k:
                         raise ValidationError(f"duplicate container id {kid}")
@@ -222,8 +243,16 @@ class WasteRouteState:
                     if not isinstance(k.get("plans"), list) or not k["plans"]:
                         raise ValidationError(f"container {kid} must have plans")
                     for p in k["plans"]:
-                        if not isinstance(p, dict):
-                            raise ValidationError("each plan must be an object")
+                        p = WasteRouteState._closed_object(
+                            p,
+                            "plan",
+                            {
+                                "id",
+                                "weekday",
+                                "service_code",
+                                "price_minor",
+                            },
+                        )
                         pid = ident(p.get("id"), "plan.id")
                         if pid in seen_p:
                             raise ValidationError(f"duplicate plan id {pid}")
@@ -275,6 +304,7 @@ class WasteRouteState:
 
     def import_manifest(self, manifest: Any, op_key: str):
         m = self._normalize_manifest(manifest)
+        admitted_request = json.loads(canon(manifest))
 
         def mutate():
             if self.conn.execute("SELECT 1 FROM customers LIMIT 1").fetchone():
@@ -334,7 +364,7 @@ class WasteRouteState:
             }
             return out, "MANIFEST_IMPORTED", "workspace", "manifest", out
 
-        return self._op(op_key, "import_manifest", m, mutate)
+        return self._op(op_key, "import_manifest", admitted_request, mutate)
 
     def generate_route(self, service_date: str, op_key: str):
         service_date = iso(service_date, "service_date")

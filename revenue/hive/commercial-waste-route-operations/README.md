@@ -6,7 +6,7 @@ A local-first operations desk for regional commercial waste/container haulers th
 
 ## What it does
 
-- imports owner-authored customer → site → container → recurring plan data;
+- imports owner-authored customer → site → container → recurring plan data under a closed manifest grammar;
 - retains one immutable workspace business-timezone policy and derives the current business date from the host clock rather than caller input;
 - generates deterministic past, current, or future daily route plans from weekday schedules;
 - prevents future planned stops from being asserted as serviced, skipped, or billable facts;
@@ -18,7 +18,7 @@ A local-first operations desk for regional commercial waste/container haulers th
 - isolates invoice drafts by customer and period;
 - transactionally binds every settled stop to at most one retained invoice draft, so overlapping or concurrent windows cannot duplicate a service charge;
 - stores immutable invoice drafts, invoice-line custody rows, workspace settings, and event receipts;
-- makes mutating commands idempotent by operation key: identical retry returns the prior result, changed input under a used key fails;
+- makes mutating commands idempotent by operation key: identical admitted structured input returns the prior result, while aliases or other changed input under a used key fail;
 - survives process restart and serializes concurrent writers with `BEGIN IMMEDIATE`;
 - backfills single-use invoice-line custody from legacy retained draft payloads and fails closed if legacy drafts overlap;
 - exports deterministic JSON, CSV, and Markdown route views.
@@ -34,7 +34,7 @@ python demo.py
 python -m compileall -q .
 ```
 
-The current hostile suite covers route/export determinism, replay conflicts, cross-customer isolation, restart persistence, immutable evidence, concurrent stop races, missing-route and unresolved-state billing gates, future fact rejection, billable makeup-date authority, overlapping-period charge custody, concurrent invoice-claim racing, legacy custody backfill, and fail-closed legacy overlap detection.
+The current hostile suite covers route/export determinism, exact admitted-payload replay binding, closed manifest grammar, cross-customer isolation, restart persistence, immutable evidence, concurrent stop races, missing-route and unresolved-state billing gates, future fact rejection, billable makeup-date authority, overlapping-period charge custody, concurrent invoice-claim racing, legacy custody backfill, and fail-closed legacy overlap detection.
 
 The synthetic demo creates two customers / three sites, records one blocked-access exception, proves the unresolved invoice is blocked, resolves it as no-charge, and then produces separate ACME and BETA invoice drafts with three unique stop-custody rows.
 
@@ -163,7 +163,7 @@ A one-customer synthetic manifest is included as `sample_manifest.json`.
 }
 ```
 
-`weekday` is Python's weekday convention (`0` Monday … `6` Sunday). `price_minor` is a non-negative SQLite-safe integer such as cents for USD.
+`weekday` is Python's weekday convention (`0` Monday … `6` Sunday). `price_minor` is a non-negative SQLite-safe integer such as cents for USD. The manifest grammar is closed at every object level: unknown fields are rejected rather than silently ignored. Operation-key replay is bound to the exact admitted structured payload before state normalization, so aliases such as `usd` versus `USD` or trimmed versus untrimmed text cannot reuse the same key.
 
 ## Existing database migration
 
@@ -185,7 +185,7 @@ Migration is fail-closed. Invalid payloads, missing stop references, mismatched 
 5. **One stop, one retained draft.** `invoice_lines.stop_id` is unique and claimed in the same writer transaction as the draft; overlap and races fail closed.
 6. **Billable makeup is dated.** `MAKEUP_COMPLETED_BILLABLE` requires an elapsed makeup-service date no earlier than the original service date.
 7. **No float or oversized money.** Plan prices and invoice totals are bounded integer minor units safe for SQLite.
-8. **One operation key, one input.** Exact retry is stable; changed input with the same key raises `OperationConflict`.
+8. **One operation key, one admitted input.** Exact structured-payload retry is stable; a changed admitted alias with the same key raises `OperationConflict`, and unknown manifest fields fail validation instead of normalizing away.
 9. **Terminal-stop race safety.** The SQLite writer transaction checks current stop state before transition; concurrent terminal attempts yield one winner.
 10. **Immutable retained evidence.** Workspace settings, invoice drafts, invoice-line custody rows, and event rows reject update/delete through SQLite triggers.
 11. **No external side effects.** Provider calls, outreach, vehicle dispatch/navigation, and payment mutation are outside this product.

@@ -32,6 +32,48 @@ class CoreDeskTests(WasteRouteDeskTestBase):
         with self.assertRaises(StateConflict):
             self.desk.import_manifest(MANIFEST, "manifest-second-key")
 
+    def test_manifest_operation_key_binds_admitted_payload_before_normalization(self):
+        exact = self.desk.import_manifest(MANIFEST, "manifest-v2")
+        alias = json.loads(json.dumps(MANIFEST))
+        alias["customers"][0]["currency"] = "usd"
+        with self.assertRaises(OperationConflict):
+            self.desk.import_manifest(alias, "manifest-v2")
+        whitespace = json.loads(json.dumps(MANIFEST))
+        whitespace["customers"][0]["name"] = " Acme Coffee Group "
+        with self.assertRaises(OperationConflict):
+            self.desk.import_manifest(whitespace, "manifest-v2")
+        self.assertEqual(exact, self.desk.import_manifest(MANIFEST, "manifest-v2"))
+
+    def test_manifest_grammar_rejects_unknown_fields_at_every_level(self):
+        paths = [
+            ([], "unexpected"),
+            (["customers", 0], "unexpected"),
+            (["customers", 0, "sites", 0], "unexpected"),
+            (["customers", 0, "sites", 0, "containers", 0], "unexpected"),
+            (
+                [
+                    "customers",
+                    0,
+                    "sites",
+                    0,
+                    "containers",
+                    0,
+                    "plans",
+                    0,
+                ],
+                "unexpected",
+            ),
+        ]
+        for index, (path, key) in enumerate(paths):
+            bad = json.loads(json.dumps(MANIFEST))
+            target = bad
+            for part in path:
+                target = target[part]
+            target[key] = f"ignored-{index}"
+            with self.subTest(path=path):
+                with self.assertRaises(ValidationError):
+                    self.desk.import_manifest(bad, "manifest-v2")
+
     def test_operation_key_exact_retry_and_changed_input_conflict(self):
         route = self._monday_route()
         stop = route["stops"][0]["id"]
