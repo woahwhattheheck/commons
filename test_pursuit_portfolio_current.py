@@ -7,7 +7,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from revenue.pursuit_portfolio.core import PortfolioError
+from revenue.pursuit_portfolio.core import PortfolioError, normalize_upstream_authority
 from revenue.pursuit_portfolio.current import (
     AuthorityKey,
     CURRENT_RECEIPT_SCHEMA,
@@ -28,6 +28,19 @@ def portfolio_source(*, max_age: int = 86400 * 5):
     return source([opp("A", 7, {"proposal": 1})], max_age=max_age)
 
 
+def _resign(value: dict, key: AuthorityKey = KEY) -> dict:
+    unsigned = {
+        "schema": value["schema"],
+        "key_id": value["key_id"],
+        "issued_at": value["issued_at"],
+        "upstream_authority": value["upstream_authority"],
+    }
+    return {
+        **unsigned,
+        "hmac_sha256": hmac.new(key.key, _canonical(unsigned), hashlib.sha256).hexdigest(),
+    }
+
+
 def signed_authority_for(
     data,
     *,
@@ -36,17 +49,18 @@ def signed_authority_for(
     captured: str = "2026-09-13T13:00:00Z",
     issued_at: str = NOW,
 ):
-    inner = authority_rows(data["opportunities"], states=states, captured=captured)
-    unsigned = {
-        "schema": SIGNED_AUTHORITY_SCHEMA,
-        "key_id": key.key_id,
-        "issued_at": issued_at,
-        "upstream_authority": inner,
-    }
-    return {
-        **unsigned,
-        "hmac_sha256": hmac.new(key.key, _canonical(unsigned), hashlib.sha256).hexdigest(),
-    }
+    inner = normalize_upstream_authority(
+        authority_rows(data["opportunities"], states=states, captured=captured)
+    )
+    return _resign(
+        {
+            "schema": SIGNED_AUTHORITY_SCHEMA,
+            "key_id": key.key_id,
+            "issued_at": issued_at,
+            "upstream_authority": inner,
+        },
+        key,
+    )
 
 
 class CurrentAdapterTests(unittest.TestCase):
@@ -93,6 +107,16 @@ class CurrentAdapterTests(unittest.TestCase):
         )
         with self.assertRaisesRegex(PortfolioError, "predates authority generation"):
             _compile_authorized_at(data, inner_future, KEY, NOW)
+
+        impossible = signed_authority_for(
+            data,
+            captured="2026-09-13T13:30:00Z",
+            issued_at=NOW,
+        )
+        impossible["upstream_authority"]["generated_at"] = "2026-09-13T13:00:00Z"
+        impossible = _resign(impossible)
+        with self.assertRaisesRegex(PortfolioError, "evidence postdates authority generation"):
+            _compile_authorized_at(data, impossible, KEY, NOW)
 
     def test_roundtrip_binds_signed_wrapper_inner_authority_and_core_receipt(self):
         data = portfolio_source()

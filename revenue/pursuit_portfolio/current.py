@@ -1,10 +1,10 @@
 """Authenticated current-use adapter for the v2 pursuit-portfolio core.
 
 The deterministic core keeps owner planning input separate from upstream
-readiness authority.  This module adds a host-key signature around the exact
+readiness authority. This module adds a host-key signature around the exact
 normalized v2 authority generation, samples verifier-owned UTC, consumes files
 from retained no-follow descriptor generations, and binds the signed authority
-to a current-use receipt.  It does not move READY/CURABLE state back into the
+to a current-use receipt. It does not move READY/CURABLE state back into the
 portfolio source.
 """
 from __future__ import annotations
@@ -263,7 +263,10 @@ def _normalize_signed_authority(value: Mapping[str, Any]) -> dict[str, Any]:
     key_id = _token(value["key_id"], "signed upstream authority.key_id")
     issued_at = value["issued_at"]
     _dt(issued_at, "signed upstream authority.issued_at")
-    inner = normalize_upstream_authority(dict(value["upstream_authority"]))
+    inner_value = value["upstream_authority"]
+    if type(inner_value) is not dict:
+        raise PortfolioError("signed upstream authority.upstream_authority: object required")
+    inner = normalize_upstream_authority(dict(inner_value))
     return {
         "hmac_sha256": _sha(value["hmac_sha256"], "signed upstream authority.hmac_sha256"),
         "issued_at": issued_at,
@@ -293,12 +296,20 @@ def verify_upstream_authority(
     now = _dt(trusted_now, "trusted_now")
     if issued > now:
         raise PortfolioError("signed upstream authority: future-issued generation")
+    inner = normalized["upstream_authority"]
     generated = _dt(
-        normalized["upstream_authority"]["generated_at"],
+        inner["generated_at"],
         "signed upstream authority.upstream_authority.generated_at",
     )
     if generated > issued:
         raise PortfolioError("signed upstream authority: issued_at predates authority generation")
+    for index, row in enumerate(inner["rows"]):
+        evidence = _dt(
+            row["evidence_captured_at"],
+            f"signed upstream authority.upstream_authority.rows[{index}].evidence_captured_at",
+        )
+        if evidence > generated:
+            raise PortfolioError("signed upstream authority: evidence postdates authority generation")
     expected = hmac.new(
         key.key, _canonical(_authority_unsigned(normalized)), hashlib.sha256
     ).hexdigest()
@@ -452,8 +463,8 @@ def _verify_authorized_at(
     if current_receipt["evaluated_at"] != result.get("evaluated_at"):
         raise PortfolioError("current receipt: evaluation-time mismatch")
 
-    current = _compile_authorized_at(source, signed, key, trusted_now)
-    if _decision_fingerprint(result) != _decision_fingerprint(current.compiled.result):
+    current_value = _compile_authorized_at(source, signed, key, trusted_now)
+    if _decision_fingerprint(result) != _decision_fingerprint(current_value.compiled.result):
         raise PortfolioError("current verification: allocation decision is stale")
     return {
         "authority_sha256": _digest(authority_raw),
