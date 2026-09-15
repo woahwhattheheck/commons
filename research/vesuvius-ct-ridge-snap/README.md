@@ -41,7 +41,7 @@ Outputs are deterministic for the same bytes/configuration:
 
 - `evidence.npz`: normals, proposed offsets, confidence, accepted-review mask;
 - `metrics.csv`: one-row summary;
-- `report.json`: block receipts, calibration evidence, explicit claim ceiling;
+- `report.json`: per-region receipts, calibration evidence, explicit evidence boundary;
 - `receipt.json`: manifest/input/artifact digests and authority ceiling;
 - `vesuvius-review-bundle.zip`: deterministic, exact-membership review package.
 
