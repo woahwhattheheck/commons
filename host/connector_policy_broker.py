@@ -12,7 +12,7 @@ import hashlib
 import json
 import posixpath
 import re
-from typing import Any, Iterable, Mapping
+from typing import Any, Mapping
 
 SCHEMA = "commons.connector-policy-broker/v1"
 SUPPORTED_ACTIONS = frozenset(
@@ -46,6 +46,7 @@ class Policy:
     require_draft_pr: bool = True
     allow_workflow_writes: bool = False
     workflow_write_requires_human_approval: bool = True
+    workflow_approval_sha256s: frozenset[str] = field(default_factory=frozenset)
     max_files_per_commit: int = 32
     max_file_bytes: int = 512_000
     max_commit_bytes: int = 2_000_000
@@ -78,6 +79,9 @@ class Policy:
             value = getattr(self, name)
             if isinstance(value, bool) or not isinstance(value, int) or value <= 0:
                 raise PolicyError(f"{name} must be a positive integer")
+        for digest in self.workflow_approval_sha256s:
+            if not isinstance(digest, str) or not re.fullmatch(r"[0-9a-f]{64}", digest):
+                raise PolicyError("workflow_approval_sha256s contains an invalid digest")
         for name in (
             "require_draft_pr",
             "allow_workflow_writes",
@@ -132,7 +136,7 @@ def canary_policy(*, repository: str, slack_channel_id: str) -> Policy:
 
 def authorize(request: Mapping[str, Any], policy: Policy) -> Decision:
     """Validate *request* against *policy* and return a deterministic decision."""
-    if not isinstance(request, Mapping):
+    if type(request) is not dict:
         return _decision({}, policy, False, "REQUEST_NOT_OBJECT", "", None, None)
     try:
         req = _copy_json_object(request)
@@ -158,6 +162,22 @@ def authorize(request: Mapping[str, Any], policy: Policy) -> Decision:
     except (TypeError, ValueError, UnicodeError):
         allowed, code, resource = False, "INVALID_REQUEST", None
     return _decision(req, policy, allowed, code, action, resource, correlation)
+
+
+def workflow_approval_subject_sha256(request: Mapping[str, Any]) -> str:
+    """Hash the exact workflow-write request body excluding its approval proof.
+
+    A trusted approval service can retain this digest in Policy.workflow_approval_sha256s.
+    The caller cannot authorize itself by merely supplying a boolean or opaque token.
+    """
+    if type(request) is not dict:
+        raise TypeError("request must be a plain dict")
+    req = _copy_json_object(request)
+    if req.get("action") != "github.commit_files" or "workflow_approval_sha256" not in req:
+        raise ValueError("workflow approval is only defined for github.commit_files")
+    subject = dict(req)
+    subject["workflow_approval_sha256"] = None
+    return hashlib.sha256(canonical_json(subject)).hexdigest()
 
 
 def verify_decision(request: Mapping[str, Any], policy: Policy, receipt: Mapping[str, Any]) -> bool:
@@ -196,7 +216,7 @@ def _authorize_create_branch(req: dict[str, Any], policy: Policy) -> tuple[bool,
 
 
 def _authorize_commit_files(req: dict[str, Any], policy: Policy) -> tuple[bool, str, str | None]:
-    if set(req) != {"action", "correlation_id", "repository", "branch", "expected_head_sha", "force", "files", "human_approval"}:
+    if set(req) != {"action", "correlation_id", "repository", "branch", "expected_head_sha", "force", "files", "workflow_approval_sha256"}:
         return False, "SCHEMA_MISMATCH", None
     repo = req["repository"]
     branch = req["branch"]
@@ -212,8 +232,9 @@ def _authorize_commit_files(req: dict[str, Any], policy: Policy) -> tuple[bool, 
         return False, "EXPECTED_HEAD_SHA_REQUIRED", f"{repo}:{branch}"
     if req["force"] is not False:
         return False, "FORCE_UPDATE_DENIED", f"{repo}:{branch}"
-    if type(req["human_approval"]) is not bool:
-        return False, "HUMAN_APPROVAL_INVALID", f"{repo}:{branch}"
+    approval = req["workflow_approval_sha256"]
+    if approval is not None and (not isinstance(approval, str) or not re.fullmatch(r"[0-9a-f]{64}", approval)):
+        return False, "WORKFLOW_APPROVAL_INVALID", f"{repo}:{branch}"
     files = req["files"]
     if not isinstance(files, list) or not files or len(files) > policy.max_files_per_commit:
         return False, "FILE_COUNT_INVALID", f"{repo}:{branch}"
@@ -241,8 +262,12 @@ def _authorize_commit_files(req: dict[str, Any], policy: Policy) -> tuple[bool, 
         if path.startswith(".github/workflows/"):
             if not policy.allow_workflow_writes:
                 return False, "WORKFLOW_WRITE_DENIED", f"{repo}:{path}"
-            if policy.workflow_write_requires_human_approval and req["human_approval"] is not True:
-                return False, "WORKFLOW_HUMAN_APPROVAL_REQUIRED", f"{repo}:{path}"
+            if policy.workflow_write_requires_human_approval:
+                subject = workflow_approval_subject_sha256(req)
+                if approval != subject or subject not in policy.workflow_approval_sha256s:
+                    return False, "WORKFLOW_APPROVAL_REQUIRED", f"{repo}:{path}"
+    if approval is not None and not any(item["path"].startswith(".github/workflows/") for item in files):
+        return False, "UNEXPECTED_WORKFLOW_APPROVAL", f"{repo}:{branch}"
     return True, "ALLOW", f"{repo}:{branch}"
 
 
@@ -320,6 +345,7 @@ def _decision(
         "require_draft_pr": policy.require_draft_pr,
         "allow_workflow_writes": policy.allow_workflow_writes,
         "workflow_write_requires_human_approval": policy.workflow_write_requires_human_approval,
+        "workflow_approval_sha256s": sorted(policy.workflow_approval_sha256s),
         "max_files_per_commit": policy.max_files_per_commit,
         "max_file_bytes": policy.max_file_bytes,
         "max_commit_bytes": policy.max_commit_bytes,
@@ -403,7 +429,7 @@ def _copy_json_value(value: Any) -> Any:
         raise TypeError("floats are not admitted")
     if isinstance(value, list):
         return [_copy_json_value(v) for v in value]
-    if isinstance(value, Mapping):
+    if type(value) is dict:
         out: dict[str, Any] = {}
         for key, item in value.items():
             if not isinstance(key, str) or key in out:
