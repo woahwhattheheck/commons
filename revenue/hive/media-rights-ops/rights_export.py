@@ -1,4 +1,4 @@
-"""Deterministic create-exclusive exports with retained filesystem custody."""
+"""Deterministic exports into a retained, pre-provisioned directory generation."""
 import csv,io,os,stat
 from pathlib import Path
 from rights_model import *
@@ -13,32 +13,32 @@ def _same_identity(st,identity):
     return (st.st_dev,st.st_ino)==identity
 
 def _secure_export_supported():
-    required=(os.open,os.mkdir,os.stat,os.unlink,os.rmdir)
-    return hasattr(os,'O_DIRECTORY') and hasattr(os,'O_NOFOLLOW') and all(fn in os.supports_dir_fd for fn in required)
+    required=(os.open,os.stat,os.unlink)
+    return hasattr(os,'O_DIRECTORY') and hasattr(os,'O_NOFOLLOW') and all(fn in os.supports_dir_fd for fn in required) and os.listdir in os.supports_fd
 
 def _entry_stat(name,dir_fd):
     return os.stat(name,dir_fd=dir_fd,follow_symlinks=False)
 
-def _open_retained_parent(parent):
-    # The parent itself is part of the publication transaction boundary. Snapshot
-    # its identity before open, refuse symlinks/non-directories, then prove the
-    # opened descriptor is the same generation. Replacing the parent between
-    # those two observations therefore fails closed.
-    try: before=os.stat(parent,follow_symlinks=False)
-    except FileNotFoundError as e: raise RightsError(f'output parent must already exist: {parent}') from e
-    require(stat.S_ISDIR(before.st_mode),'output parent must be a real directory, not a symlink or other file')
+def _open_retained_output(out_dir):
+    # Publication consumes an already-provisioned directory. Snapshot its exact
+    # generation before open, refuse a symlink/non-directory, then prove the
+    # opened descriptor is the same object. There is no mkdir->open adoption gap.
+    try: before=os.stat(out_dir,follow_symlinks=False)
+    except FileNotFoundError as e: raise RightsError(f'output directory must already exist: {out_dir}') from e
+    require(stat.S_ISDIR(before.st_mode),'output must be a real directory, not a symlink or other file')
     identity=(before.st_dev,before.st_ino); fd=None
     try:
-        fd=os.open(parent,os.O_RDONLY|os.O_DIRECTORY|os.O_NOFOLLOW)
-        current=os.fstat(fd); require(stat.S_ISDIR(current.st_mode) and _same_identity(current,identity),'output parent identity changed during publication')
+        fd=os.open(out_dir,os.O_RDONLY|os.O_DIRECTORY|os.O_NOFOLLOW)
+        current=os.fstat(fd); require(stat.S_ISDIR(current.st_mode) and _same_identity(current,identity),'output directory identity changed during publication')
+        require(os.listdir(fd)==[],'output directory must be empty before publication')
         return fd,identity
     except Exception:
         if fd is not None: os.close(fd)
         raise
 
-def _rollback_created(parent_fd,dir_fd,dir_name,dir_identity,created):
-    # Every deletion is identity-checked. A renamed/replaced leaf or directory is
-    # foreign state and is deliberately preserved rather than followed by name.
+def _rollback_created(dir_fd,created):
+    # Remove only leaf identities created by this transaction. A replacement leaf
+    # or any foreign entry is deliberately preserved rather than followed by name.
     for name,identity in reversed(created):
         try:
             current=_entry_stat(name,dir_fd)
@@ -47,22 +47,12 @@ def _rollback_created(parent_fd,dir_fd,dir_name,dir_identity,created):
         except OSError: pass
     try: os.fsync(dir_fd)
     except OSError: pass
-    try:
-        current=_entry_stat(dir_name,parent_fd)
-        if stat.S_ISDIR(current.st_mode) and _same_identity(current,dir_identity): os.rmdir(dir_name,dir_fd=parent_fd)
-    except FileNotFoundError: pass
-    except OSError: pass
 
 def publish_export(path,out_dir,as_of,horizon_days=30):
     out_dir=Path(out_dir); require(out_dir.name not in {'','.','..'},'output path must name a directory'); files=export_files(path,as_of,horizon_days)
     require(_secure_export_supported(),'secure export publication requires descriptor-relative no-follow filesystem support')
-    parent_fd,parent_identity=_open_retained_parent(out_dir.parent)
-    dir_fd=None; created=[]; dir_identity=None
+    dir_fd,dir_identity=_open_retained_output(out_dir); created=[]
     try:
-        try: os.mkdir(out_dir.name,mode=0o700,dir_fd=parent_fd)
-        except FileExistsError as e: raise RightsError(f'refusing to overwrite existing output: {out_dir}') from e
-        dir_fd=os.open(out_dir.name,os.O_RDONLY|os.O_DIRECTORY|os.O_NOFOLLOW,dir_fd=parent_fd)
-        dst=os.fstat(dir_fd); require(stat.S_ISDIR(dst.st_mode),'created output is not a directory'); dir_identity=(dst.st_dev,dst.st_ino)
         try:
             for name,raw in sorted(files.items()):
                 require('/' not in name and '\\' not in name and name not in {'','.','..'},'export leaf name invalid')
@@ -70,18 +60,13 @@ def publish_export(path,out_dir,as_of,horizon_days=30):
                 fst=os.fstat(fd); identity=(fst.st_dev,fst.st_ino); created.append((name,identity))
                 with os.fdopen(fd,'wb') as f: f.write(raw); f.flush(); os.fsync(f.fileno())
             os.fsync(dir_fd)
-            # Success requires the caller-visible parent and child paths to still
-            # name the exact generations retained by this transaction.
-            visible_parent=os.stat(out_dir.parent,follow_symlinks=False)
-            require(stat.S_ISDIR(visible_parent.st_mode) and _same_identity(visible_parent,parent_identity),'output parent identity changed during publication')
             visible=os.stat(out_dir,follow_symlinks=False)
-            require(stat.S_ISDIR(visible.st_mode) and _same_identity(visible,dir_identity),'output path identity changed during publication')
+            require(stat.S_ISDIR(visible.st_mode) and _same_identity(visible,dir_identity),'output directory identity changed during publication')
+            expected=sorted(name for name,_ in created); require(sorted(os.listdir(dir_fd))==expected,'output directory entries changed during publication')
             for name,identity in created:
                 current=_entry_stat(name,dir_fd)
                 require(stat.S_ISREG(current.st_mode) and _same_identity(current,identity),f'export leaf identity changed during publication: {name}')
             return {'status':'EXPORTED','output':str(out_dir),'files':len(files),'receipt_sha256':sha256_bytes(files['receipt.json'])}
         except Exception:
-            _rollback_created(parent_fd,dir_fd,out_dir.name,dir_identity,created); raise
-    finally:
-        if dir_fd is not None: os.close(dir_fd)
-        os.close(parent_fd)
+            _rollback_created(dir_fd,created); raise
+    finally: os.close(dir_fd)
