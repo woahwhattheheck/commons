@@ -3,7 +3,6 @@ from __future__ import annotations
 import hashlib
 import hmac
 import json
-import math
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any, Mapping, Sequence
@@ -43,6 +42,7 @@ class DatasetReference:
     version: str
     source_role: str
     dataset_contract_sha256: str
+    dataset_manifest_sha256: str
     source_manifest_sha256: str
     selected_episodes: tuple[int, ...]
     required_features: tuple[str, ...]
@@ -53,6 +53,7 @@ class DatasetReference:
         return {
             "source_role": self.source_role,
             "dataset_contract_sha256": self.dataset_contract_sha256,
+            "dataset_manifest_sha256": self.dataset_manifest_sha256,
             "selected_episodes": list(self.selected_episodes),
             "required_features": list(self.required_features),
             "source_files": [row.as_dict() for row in self.source_files],
@@ -81,11 +82,12 @@ class DatasetReference:
         if len(files) != len(episodes) or tuple(row.episode_index for row in files) != episodes:
             raise ValueError("reference source-file episode manifest mismatch")
         contract = str(value.get("dataset_contract_sha256", ""))
+        dataset_manifest = str(value.get("dataset_manifest_sha256", ""))
         manifest = str(value.get("source_manifest_sha256", ""))
-        if not _valid_sha256(contract) or not _valid_sha256(manifest):
+        if not _valid_sha256(contract) or not _valid_sha256(dataset_manifest) or not _valid_sha256(manifest):
             raise ValueError("invalid reference provenance digest")
         profile = ReferenceProfile.from_dict(value["profile"])
-        ref = DatasetReference(REFERENCE_VERSION, role, contract, manifest, episodes, required, files, profile)
+        ref = DatasetReference(REFERENCE_VERSION, role, contract, dataset_manifest, manifest, episodes, required, files, profile)
         expected = _digest_json(ref._manifest_payload())
         if not hmac.compare_digest(expected, manifest):
             raise ValueError("reference source manifest digest mismatch")
@@ -185,6 +187,22 @@ def _dataset_contract_digest(root: Path) -> str:
     return _digest_json(rows)
 
 
+def _dataset_manifest_digest(root: Path, info: dict[str, Any], chunks: int, data_t: str) -> str:
+    episode_files = []
+    for ep in _episode_indices(root, info):
+        rel = _format_path(data_t, ep, chunks)
+        path = root / rel
+        row: dict[str, Any] = {"episode_index": ep, "relative_path": rel}
+        if path.exists():
+            row.update({"bytes": path.stat().st_size, "sha256": _sha256_file(path)})
+        else:
+            row["missing"] = True
+        episode_files.append(row)
+    if not episode_files:
+        raise ValueError("dataset episode manifest is empty")
+    return _digest_json({"metadata_contract_sha256": _dataset_contract_digest(root), "episode_files": episode_files})
+
+
 def _source_file(root: Path, path: Path, episode_index: int) -> SourceFile:
     resolved = path.resolve()
     try:
@@ -254,9 +272,17 @@ def fit_dataset_reference(root: Path, *, episodes: list[int] | None = None, sour
         raise ValueError("reference profile omitted one or more required modeled features")
     source_rows = tuple(source_files)
     contract_digest = _dataset_contract_digest(root)
-    skeleton = {"source_role": REFERENCE_ROLE, "dataset_contract_sha256": contract_digest, "selected_episodes": selected, "required_features": list(required), "source_files": [row.as_dict() for row in source_rows]}
+    dataset_manifest_digest = _dataset_manifest_digest(root, info, chunks, data_t)
+    skeleton = {
+        "source_role": REFERENCE_ROLE,
+        "dataset_contract_sha256": contract_digest,
+        "dataset_manifest_sha256": dataset_manifest_digest,
+        "selected_episodes": selected,
+        "required_features": list(required),
+        "source_files": [row.as_dict() for row in source_rows],
+    }
     manifest_digest = _digest_json(skeleton)
-    return DatasetReference(REFERENCE_VERSION, REFERENCE_ROLE, contract_digest, manifest_digest, tuple(selected), required, source_rows, profile)
+    return DatasetReference(REFERENCE_VERSION, REFERENCE_ROLE, contract_digest, dataset_manifest_digest, manifest_digest, tuple(selected), required, source_rows, profile)
 
 
 def _scan_source_files(root: Path, selected: Sequence[int], data_t: str, chunks: int) -> tuple[SourceFile, ...]:
@@ -268,7 +294,9 @@ def _scan_source_files(root: Path, selected: Sequence[int], data_t: str, chunks:
     return tuple(rows)
 
 
-def _assert_no_reference_overlap(reference: DatasetReference, scan_files: Sequence[SourceFile]) -> None:
+def _assert_no_reference_overlap(reference: DatasetReference, scan_dataset_manifest_sha256: str, scan_files: Sequence[SourceFile]) -> None:
+    if hmac.compare_digest(reference.dataset_manifest_sha256, scan_dataset_manifest_sha256):
+        raise ValueError("reference/test dataset identity overlap detected; refusing competition score for the same declared corpus")
     overlap = sorted({row.sha256 for row in reference.source_files} & {row.sha256 for row in scan_files})
     if overlap:
         raise ValueError(f"reference/test source overlap detected; refusing competition score for {len(overlap)} shared episode file digest(s)")
@@ -283,10 +311,11 @@ def scan_dataset(root: Path, out_dir: Path, *, episodes: list[int] | None = None
         raise ValueError("meta/info.json must declare positive fps")
     selected = _select_episodes(root, info, episodes)
     scan_files = _scan_source_files(root, selected, data_t, chunks)
+    scan_dataset_manifest_sha256 = _dataset_manifest_digest(root, info, chunks, data_t)
     if reference is not None:
         if reference.source_role != REFERENCE_ROLE:
             raise ValueError("reference provenance has invalid source role")
-        _assert_no_reference_overlap(reference, scan_files)
+        _assert_no_reference_overlap(reference, scan_dataset_manifest_sha256, scan_files)
 
     reports = []
     for ep in selected:
@@ -313,6 +342,7 @@ def scan_dataset(root: Path, out_dir: Path, *, episodes: list[int] | None = None
     payload["scan_provenance"] = {
         "role": SCAN_ROLE,
         "dataset_contract_sha256": _dataset_contract_digest(root),
+        "dataset_manifest_sha256": scan_dataset_manifest_sha256,
         "selected_episodes": selected,
         "source_files": [row.as_dict() for row in scan_files],
         "reference": reference.provenance_dict() if reference is not None else None,
