@@ -3,7 +3,10 @@ import json
 import unittest
 from pathlib import Path
 
-import packet_gate as gate
+try:
+    from . import packet_gate as gate
+except ImportError:  # direct-file execution compatibility
+    import packet_gate as gate
 
 ROOT = Path(__file__).resolve().parent
 
