@@ -2,10 +2,23 @@
 import csv,io,os,stat
 from pathlib import Path
 from rights_model import *
-from rights_store import snapshot,queues
+from rights_store import connect,snapshot,queues
 
 def export_files(path,as_of,horizon_days=30):
-    snap=snapshot(path); q=queues(path,as_of,horizon_days); out={'snapshot.json':canonical_bytes(snap),'queues.json':canonical_bytes(q)}; s=io.StringIO(newline=''); w=csv.writer(s,lineterminator='\n'); cols=('request_id','asset_id','channel','territory','starts_at','ends_at','grant_id','recorded_at'); w.writerow(cols)
+    # snapshot() and queues() each use their own read connection. Hold SQLite's
+    # single-writer reservation across both reads so no durable placement/revoke
+    # generation can commit between them. BEGIN IMMEDIATE waits out any prior
+    # writer first; the transaction performs no writes and is rolled back after
+    # the two deterministic reads have been captured.
+    guard=connect(path)
+    try:
+        guard.execute('BEGIN IMMEDIATE')
+        snap=snapshot(path)
+        q=queues(path,as_of,horizon_days)
+    finally:
+        if guard.in_transaction: guard.execute('ROLLBACK')
+        guard.close()
+    out={'snapshot.json':canonical_bytes(snap),'queues.json':canonical_bytes(q)}; s=io.StringIO(newline=''); w=csv.writer(s,lineterminator='\n'); cols=('request_id','asset_id','channel','territory','starts_at','ends_at','grant_id','recorded_at'); w.writerow(cols)
     for p in snap['placements']: w.writerow([p[k] for k in cols])
     out['placements.csv']=s.getvalue().encode(); lines=['# Content Rights & Usage-Window Operations Desk','',f"Snapshot SHA-256: `{snap['snapshot_sha256']}`",'',f"Assets: {len(snap['assets'])}",f"Grants: {len(snap['grants'])}",f"Placements: {len(snap['placements'])}",f"Renewal/expiry review rows: {len(q['renewal_review'])}",f"Retraction review rows: {len(q['retraction_review'])}",'','Operational gate only: supplied authority facts are not a legal rights determination.','']; out['summary.md']='\n'.join(lines).encode(); receipt={'schema':RECEIPT_SCHEMA,'snapshot_sha256':snap['snapshot_sha256'],'files':[{'path':n,'bytes':len(b),'sha256':sha256_bytes(b)} for n,b in sorted(out.items())]}; out['receipt.json']=canonical_bytes(receipt); return out
 
