@@ -64,8 +64,45 @@ changes first within a risk lane; runtime/release incidents get priority.
 
 `host/swarm_review.py` supplies the packet builder, deterministic reducer and
 merge command. The coordination producer and command-center API display its
-results. The Actions check is an additional consumer; a saturated Actions queue
-does not replace local, exact-change verification.
+results. GitHub Actions is an independently retained execution provider; its
+state is re-read at decision time rather than copied from review prose.
+
+Source/semantic review and execution authority are different facts. A source-only
+`PASS` may clear a semantic RED, but it does not authorize a code/config merge.
+The only execution exemption is an inert documentation-only change: every
+changed Git object must be a non-executable regular file in mode `100644` whose
+path ends in `.md`, `.rst` or `.adoc` (with `000000` permitted only on the absent
+side of an add/delete), and none of those paths may be a critical/control-plane
+path under the existing risk classifier. `AGENTS.md`, `CLAUDE.md`, `DIRECTIVES.md`,
+`START.md`, `ground/SWARM_ORDER.md`, `.github/**`, executable doc-suffix files,
+and doc-suffix symlink/gitlink changes therefore still require execution evidence.
+Generic text/data such as `requirements.txt` is not documentation-exempt.
+
+For every subject outside that narrow exemption, reviewer evidence is only a
+pointer to provider state. `live_pull()` independently re-reads successful,
+completed GitHub Actions jobs from `pull_request` runs whose provider `head_sha`
+equals the exact reviewed PR head. A reviewer may cite one of those authorities
+with a record shaped like:
+
+`{"result":"PASS","kind":"execution","provider":"github-actions","head":"<40-hex reviewed head>","run_id":123,"job_id":456,"workflow_path":".github/workflows/tests.yml","workflow_blob":"<40-hex trusted base/current-main blob>","steps":["<provider-reported successful step>"],"reference":"https://github.com/.../actions/runs/123"}`
+
+The reducer accepts that pointer only when the exact run and successful job are
+present in the fresh provider census, every cited step is provider-reported
+successful, the workflow path is a trusted `.github/workflows/**` file that the
+candidate itself did not modify, and the cited workflow blob is identical on the
+reviewed base and current main. Run/job ids, references, workflow blobs, steps,
+and head are matched mechanically. A free-form `kind:"execution"` label, a
+source-clean statement, a queued/failed/skipped provider job, stale-head run,
+candidate-modified workflow, or an unrun command therefore fails closed even if
+review prose calls it green.
+
+Reviewers still decide whether the selected successful provider job and cited
+steps are semantically applicable to the change; the machine proves that the
+claimed execution actually existed and succeeded on provider state bound to the
+reviewed head. Documentation-only changes still need ordinary passing evidence
+and GPT review but do not invent execution claims. Builders under
+independent-preflight scrutiny need the same provider-bound execution pointer in
+that preflight. No provider authority means `HOLD`, not "source clean => executed."
 
 PR body (ordinary JSON; replace example values with actual observations):
 
@@ -85,8 +122,9 @@ and actual `evidence`, and submits a COMMENT review on that exact head. A batch
 is one reasoning pass, not one blanket verdict. `HOLD` or `FAIL` supersedes an
 older pass; dismissal or movement of the head requires another pass. The
 template includes base objects for changed paths, declared dependencies and
-the standing policy. Unrelated main movement does not invalidate it; changed
-read dependencies do. A reviewer must add any additional dependencies found.
+the standing policy, plus the fresh provider execution-authority census.
+Unrelated main movement does not invalidate it; changed read dependencies do.
+A reviewer must add any additional dependencies found.
 
 ```sh
 python host/swarm_review.py merge --pr 123
