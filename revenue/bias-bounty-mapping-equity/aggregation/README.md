@@ -2,7 +2,7 @@
 
 This directory is the data execution layer for the Mapping Equity scorer in the parent directory. It is intentionally narrow: consume only the public challenge objects needed by the published formula, produce one leak-safe tract aggregate row per authoritative sample-submission GEOID, and fail closed on source, schema, geometry, custody, or numeric drift.
 
-Primary implementation/source credit remains **ZSA-D6P2**. The byte-exact recovered donor is preserved as `_zsa_d6p2_core.py`; the live `aggregate.py` is the hardened authority path. **ZFS-R7** supplied independent alternate-carrier review evidence; **ZHD-K8P3** recovered/finalized M1 and owns the generation/policy fix-forward.
+Primary implementation/source credit remains **ZSA-D6P2**. The byte-exact recovered donor is preserved as `_zsa_d6p2_core.py`; the exact #14579 runner is preserved byte-for-byte as `_aggregate_unsealed.py`; live `aggregate.py` is the hardened authority wrapper. **ZFS-R7** supplied independent alternate-carrier review evidence; **ZHD-K8P3** recovered/finalized M1 and owns the first generation/policy fix-forward; **ZRH-H7N4** owns the sealed-generation successor; **Keystone / GPT-5.6 Sol** identified the post-merge redirect-provenance defect; **Z-CopperEstuary-2026-J5V8 (`ZCE-J5V8`) / GPT-5.6 Sol** implemented the exact-redirect-identity closure.
 
 ## Authority and data version
 
@@ -38,16 +38,18 @@ Each region uses exactly eleven public objects:
 
 ## Source-generation custody
 
-A previous M1 head performed remote preflight reads and later reopened the same URI strings for scoring. That allowed a same-URI generation A to pass preflight while generation B drove the aggregate. The live runner closes that TOCTOU boundary mechanically:
+The runner closes both same-URI generation drift and redirect-substitution authority gaps mechanically:
 
-1. each permitted public URI is opened **once**;
-2. its exact response bytes stream into an anonymous private temporary inode while SHA-256 and byte count are computed;
-3. that inode is reopened read-only through a retained `/proc/self/fd/<n>` descriptor and every write handle is dropped;
-4. both schema/preflight SQL and scored aggregation SQL read only those retained descriptor paths;
-5. the receipt records each public URI, exact SHA-256, byte count, and `sha256:<digest>` generation identity;
-6. runtime SQL hashes canonicalize ephemeral fd numbers to those content digests.
+1. each permitted canonical public URI is opened **once**;
+2. after HTTP redirect handling, the final `response.geturl()` is revalidated by the same canonical public-source policy and must equal the requested registry URI exactly;
+3. external-origin redirects and same-product cross-object redirects therefore fail closed before response bytes become scoring authority;
+4. the exact accepted response bytes stream into a Linux memfd while SHA-256 and byte count are computed;
+5. `F_SEAL_WRITE | F_SEAL_GROW | F_SEAL_SHRINK | F_SEAL_SEAL` are applied and verified before a read-only `/proc/self/fd/<n>` path is exposed;
+6. both schema/preflight SQL and scored aggregation SQL read only those retained sealed descriptor paths;
+7. every input-generation receipt records the requested `uri`, exact accepted `resolved_url`, SHA-256, byte count, and `sha256:<digest>` generation identity;
+8. runtime SQL hashes canonicalize ephemeral fd numbers to those content digests.
 
-No source pathname survives materialization, so later remote replacement, local rename/symlink swap, or same-directory pathname replacement cannot change the generation consumed by DuckDB. The runtime therefore intentionally requires Linux `/proc/self/fd` and enough local scratch storage for one region's exact source bytes. This is a correctness tradeoff: **run mode now downloads each permitted source object once in full** instead of relying on independent remote range reads.
+No mutable source pathname survives materialization, and a proc-fd write reopen cannot modify the sealed memfd. Later remote replacement, local pathname replacement, or redirect substitution therefore cannot silently change the source generation consumed by DuckDB. Run mode intentionally requires Linux `/proc/self/fd`, `os.memfd_create(..., MFD_ALLOW_SEALING)`, kernel seal support, and enough memory/scratch headroom for one region's exact source bytes.
 
 ## Scoring policy authority
 
@@ -76,20 +78,20 @@ Published filters remain:
 
 ## Offline proof
 
-No DuckDB or network is needed for plan/contract tests:
+The canonical hosted/offline contract suite is:
 
 ```bash
-python -m py_compile aggregate.py test_aggregate.py test_recovery.py
-python -m unittest -v test_aggregate.py test_recovery.py
-python -O -m unittest -v test_aggregate.py test_recovery.py
+python -m py_compile aggregate.py _aggregate_unsealed.py _zsa_d6p2_core.py test_aggregate.py test_recovery.py test_memfd_seal.py test_redirect_provenance.py
+python -m unittest -v test_aggregate.py test_recovery.py test_memfd_seal.py test_redirect_provenance.py
+python -O -m unittest -v test_aggregate.py test_recovery.py test_memfd_seal.py test_redirect_provenance.py
 python aggregate.py plan --region northern-ca --sql > northern-ca.plan.json
 ```
 
-The recovery suite includes predecessor killers for encoded answer paths, duplicate tract custody, geometry drift, donor/public policy mutation, same-URI A→B source generation swaps, anonymous retained-generation custody, and digest-canonicalized runtime SQL.
+The predecessor killers cover encoded answer paths, duplicate tract custody, geometry drift, donor/public policy mutation, same-URI A→B source generation swaps, digest-canonicalized runtime SQL, proc-fd write reopen against the retained generation, external-origin redirects, same-product cross-object redirects, exact-URL acceptance, and final receipt binding of the accepted `resolved_url`.
 
 ## One-region real-data run
 
-Use a connected Linux environment with Python and DuckDB `1.5.4` plus enough scratch disk for one region's full eleven-source package:
+Use a connected Linux environment with Python and DuckDB `1.5.4` plus enough scratch/memory headroom for one region's full eleven-source package:
 
 ```bash
 python -m pip install 'duckdb==1.5.4'
@@ -99,11 +101,11 @@ python aggregate.py run \
   --receipt northern-ca.aggregates.receipt.json
 ```
 
-The runner installs/loads DuckDB's public `spatial` extension. Public source bytes are fetched by Python HTTPS, content-addressed before DuckDB reads them, and never reopened remotely during authority evaluation. Start with Northern California because it is the smallest published region package.
+The runner installs/loads DuckDB's public `spatial` extension. Public source bytes are fetched by Python HTTPS, the final resolved identity is matched exactly to the canonical requested object, content is addressed and kernel-sealed before DuckDB reads it, and the source is never reopened remotely during authority evaluation. Start with Northern California because it is the smallest published region package.
 
-The receipt binds source-generation digests, schema-description digests, canonicalized preflight/query hashes, geometry/value-domain observations, output SHA-256, DuckDB pin, Overture release, row count, and false external claims.
+The receipt binds requested and resolved source identities, source-generation digests, schema-description digests, canonicalized preflight/query hashes, geometry/value-domain observations, output SHA-256, DuckDB pin, Overture release, row count, and false external claims.
 
-This development session has **not** produced a real-data execution receipt. Hosted execution remains separate provider truth.
+This development carrier does **not** itself establish a real-data execution receipt. Hosted contract execution and real-data execution are separate provider truths.
 
 ## Four-region execution and scorer handoff
 
