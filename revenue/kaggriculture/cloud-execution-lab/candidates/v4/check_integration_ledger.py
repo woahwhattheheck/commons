@@ -9,6 +9,7 @@ one coherent main-line workspace.
 from __future__ import annotations
 
 import json
+import re
 import sys
 from pathlib import Path
 from typing import Any
@@ -42,6 +43,22 @@ def _strict_object(pairs: list[tuple[str, Any]]) -> dict[str, Any]:
 
 def _reject_nonfinite(value: str) -> Any:
     raise NonFiniteJson(f"non-finite JSON constant {value!r}")
+
+
+def _claims_activation(status: Any) -> bool:
+    """Return True only for an unnegated activation/promote/enable status token."""
+    if not isinstance(status, str):
+        return False
+    words = re.sub(r"[^a-z0-9]+", "_", status.casefold()).strip("_")
+    words = re.sub(
+        r"(?:^|_)not_(?:(?:runtime|production)_)?"
+        r"(?:promoted|active|enabled|activated)(?=_|$)",
+        "_",
+        words,
+    )
+    return bool(
+        re.search(r"(?:^|_)(?:promoted|active|enabled|activated)(?:_|$)", words)
+    )
 
 
 def _load(path: Path) -> dict[str, Any]:
@@ -248,11 +265,10 @@ def validate(root: Path = HERE) -> list[str]:
 
     # Prevent the most dangerous stale-ledger regression: a lane explicitly
     # retired/NO_BUILD must not simultaneously masquerade as active landed work.
-    active_status_tokens = ("default_off", "promoted", "active", "enabled")
     active_landed = {
         str(row["lane"])
         for row in landed
-        if any(token in str(row.get("status", "")).lower() for token in active_status_tokens)
+        if _claims_activation(row.get("status"))
     }
     for lane in sorted(active_landed & negative_lanes):
         disposition = next(
