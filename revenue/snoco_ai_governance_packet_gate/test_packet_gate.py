@@ -117,7 +117,7 @@ class PacketGateTests(unittest.TestCase):
         matrix = copy.deepcopy(self.matrix)
         req = next(r for r in matrix["requirements"] if r["id"] == "proposal_due")
         req["state"] = "PACKET_REQUIRED"
-        with self.assertRaisesRegex(GateError, "confirmed requirement set drift"):
+        with self.assertRaisesRegex(GateError, "untrusted packet-required requirement id: proposal_due"):
             validate_matrix(matrix, sources)
 
     def test_confirmed_requirement_cannot_have_no_source(self):
