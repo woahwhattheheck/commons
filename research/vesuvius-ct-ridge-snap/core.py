@@ -21,6 +21,7 @@ BUNDLE_FORMAT = "vesuvius-ct-ridge-bundle/v1"
 MAX_VOLUME_VOXELS = 512 * 1024 * 1024
 MAX_POINTS = 100_000
 MAX_OFFSET_VOXELS = 6
+MAX_BUNDLE_UNCOMPRESSED_BYTES = 512 * 1024 * 1024
 
 
 class ContractError(ValueError):
@@ -64,13 +65,7 @@ class AuditConfig:
 
 def canonical_json_bytes(value: Any) -> bytes:
     try:
-        return json.dumps(
-            value,
-            sort_keys=True,
-            separators=(",", ":"),
-            ensure_ascii=False,
-            allow_nan=False,
-        ).encode("utf-8")
+        return json.dumps(value, sort_keys=True, separators=(",", ":"), ensure_ascii=False, allow_nan=False).encode("utf-8")
     except (TypeError, ValueError) as exc:
         raise ContractError(f"value is not strict canonical JSON: {exc}") from exc
 
@@ -90,6 +85,8 @@ def sha256_file(path: os.PathLike[str] | str) -> str:
 def _safe_relpath(raw: str) -> Path:
     if type(raw) is not str or not raw or raw != raw.strip():
         raise ContractError("paths must be non-empty exact strings")
+    if "\\" in raw or "\x00" in raw:
+        raise ContractError("paths must use canonical POSIX separators without NUL")
     p = Path(raw)
     if p.is_absolute() or ".." in p.parts:
         raise ContractError("paths must be relative and traversal-free")
@@ -106,13 +103,7 @@ def sha256_tree(root: os.PathLike[str] | str) -> str:
         if stat.S_ISLNK(st.st_mode) or not (stat.S_ISREG(st.st_mode) or stat.S_ISDIR(st.st_mode)):
             raise ContractError("zarr trees may contain only directories and regular files")
         if path.is_file():
-            rows.append(
-                {
-                    "path": path.relative_to(root_p).as_posix(),
-                    "size": st.st_size,
-                    "sha256": sha256_file(path),
-                }
-            )
+            rows.append({"path": path.relative_to(root_p).as_posix(), "size": st.st_size, "sha256": sha256_file(path)})
     return sha256_bytes(canonical_json_bytes(rows))
 
 
@@ -130,7 +121,10 @@ def validate_volume_spec(spec: Mapping[str, Any], field: str) -> dict[str, str]:
     kind = spec["kind"]
     if kind not in ("npy", "zarr"):
         raise ContractError(f"{field}.kind must be npy or zarr")
-    path = _safe_relpath(spec["path"]).as_posix()
+    raw_path = spec["path"]
+    path = _safe_relpath(raw_path).as_posix()
+    if path != raw_path:
+        raise ContractError(f"{field}.path must be canonical POSIX relative form")
     digest = _require_digest(spec["sha256"], f"{field}.sha256")
     return {"kind": kind, "path": path, "sha256": digest}
 
@@ -174,13 +168,7 @@ def validate_manifest(manifest: Mapping[str, Any]) -> dict[str, Any]:
     if type(manifest["train_regions"]) is not list or type(manifest["eval_regions"]) is not list:
         raise ContractError("train_regions/eval_regions must be lists")
     assert_disjoint_regions(manifest["train_regions"], manifest["eval_regions"])
-    return {
-        "format": FORMAT,
-        "ct": ct,
-        "labels": labels,
-        "train_regions": manifest["train_regions"],
-        "eval_regions": manifest["eval_regions"],
-    }
+    return {"format": FORMAT, "ct": ct, "labels": labels, "train_regions": manifest["train_regions"], "eval_regions": manifest["eval_regions"]}
 
 
 def _verify_volume_digest(spec: Mapping[str, str], root: Path) -> Path:
@@ -201,18 +189,24 @@ def load_volume(spec: Mapping[str, str], root: os.PathLike[str] | str) -> np.nda
     path = _verify_volume_digest(spec, root_p)
     if spec["kind"] == "npy":
         arr = np.load(path, allow_pickle=False, mmap_mode="r")
-    else:
-        try:
-            import zarr  # type: ignore
-        except ImportError as exc:
-            raise ContractError("zarr input requires the optional zarr package") from exc
-        arr = zarr.open(str(path), mode="r")
-        arr = np.asarray(arr)
-    if arr.ndim != 3:
+        if arr.ndim != 3:
+            raise ContractError("volumes must be 3-D")
+        if int(np.prod(arr.shape, dtype=np.int64)) > MAX_VOLUME_VOXELS:
+            raise ContractError("volume exceeds bounded voxel ceiling")
+        return arr
+    try:
+        import zarr  # type: ignore
+    except ImportError as exc:
+        raise ContractError("zarr input requires the optional zarr package") from exc
+    z = zarr.open(str(path), mode="r")
+    if getattr(z, "ndim", None) != 3:
         raise ContractError("volumes must be 3-D")
-    if int(np.prod(arr.shape, dtype=np.int64)) > MAX_VOLUME_VOXELS:
+    shape = getattr(z, "shape", None)
+    if type(shape) not in (tuple, list) or len(shape) != 3 or any(type(x) is not int or x < 0 for x in shape):
+        raise ContractError("zarr volume shape is invalid")
+    if int(np.prod(shape, dtype=np.int64)) > MAX_VOLUME_VOXELS:
         raise ContractError("volume exceeds bounded voxel ceiling")
-    return arr
+    return np.asarray(z)
 
 
 def load_inputs(manifest: Mapping[str, Any], root: os.PathLike[str] | str) -> tuple[np.ndarray, np.ndarray, dict[str, str]]:
@@ -228,10 +222,7 @@ def load_inputs(manifest: Mapping[str, Any], root: os.PathLike[str] | str) -> tu
     unique = np.unique(labels)
     if unique.size > 2 or any(int(x) not in (0, 1) for x in unique.tolist()):
         raise ContractError("labels must contain only 0/1")
-    return ct.astype(np.float32, copy=False), labels.astype(bool, copy=False), {
-        "ct_sha256": clean["ct"]["sha256"],
-        "labels_sha256": clean["labels"]["sha256"],
-    }
+    return ct.astype(np.float32, copy=False), labels.astype(bool, copy=False), {"ct_sha256": clean["ct"]["sha256"], "labels_sha256": clean["labels"]["sha256"]}
 
 
 def _stable_normal(mask: np.ndarray, point: np.ndarray, radius: int) -> np.ndarray | None:
@@ -280,14 +271,33 @@ def _peak_candidate(profile: np.ndarray, offsets: np.ndarray) -> tuple[float, fl
 
 
 def _iter_points(mask: np.ndarray, stride: int, max_points: int) -> np.ndarray:
-    coords = np.argwhere(mask)
-    if coords.size == 0:
-        return coords.reshape((0, 3))
-    coords = coords[::stride]
-    if coords.shape[0] > max_points:
-        idx = np.linspace(0, coords.shape[0] - 1, num=max_points, dtype=np.int64)
-        coords = coords[idx]
-    return coords
+    total_positive = int(np.count_nonzero(mask))
+    if total_positive == 0:
+        return np.empty((0, 3), dtype=np.int64)
+    eligible = (total_positive + stride - 1) // stride
+    if eligible <= max_points:
+        target_ranks = np.arange(eligible, dtype=np.int64) * stride
+    else:
+        target_ranks = np.linspace(0, eligible - 1, num=max_points, dtype=np.int64) * stride
+    result = np.empty((target_ranks.size, 3), dtype=np.int64)
+    target_pos = 0
+    positive_seen = 0
+    flat_seen = 0
+    iterator = np.nditer(mask, flags=["external_loop", "buffered"], op_flags=["readonly"], order="C", buffersize=1 << 20)
+    for chunk in iterator:
+        chunk_arr = np.asarray(chunk)
+        local_positive = np.flatnonzero(chunk_arr)
+        next_positive = positive_seen + int(local_positive.size)
+        while target_pos < target_ranks.size and int(target_ranks[target_pos]) < next_positive:
+            rank_in_chunk = int(target_ranks[target_pos]) - positive_seen
+            flat_index = flat_seen + int(local_positive[rank_in_chunk])
+            result[target_pos] = np.unravel_index(flat_index, mask.shape, order="C")
+            target_pos += 1
+        positive_seen = next_positive
+        flat_seen += int(chunk_arr.size)
+    if target_pos != target_ranks.size:
+        raise ContractError("internal point-selection accounting mismatch")
+    return result
 
 
 def audit_surface(ct: np.ndarray, labels: np.ndarray, config: AuditConfig | None = None) -> dict[str, Any]:
@@ -306,12 +316,10 @@ def audit_surface(ct: np.ndarray, labels: np.ndarray, config: AuditConfig | None
     mask = labels.astype(bool, copy=False)
     points = _iter_points(mask, cfg.point_stride, cfg.max_points)
     offsets_axis = np.arange(-cfg.max_offset, cfg.max_offset + 1, dtype=np.float32)
-
     normals = np.zeros(ct.shape + (3,), dtype=np.float32)
     proposed = np.full(ct.shape, np.nan, dtype=np.float32)
     confidence = np.zeros(ct.shape, dtype=np.float32)
     preliminary = np.zeros(ct.shape, dtype=bool)
-
     rows: list[tuple[tuple[int, int, int], float, float]] = []
     for p in points:
         n = _stable_normal(mask, p, cfg.normal_radius)
@@ -329,13 +337,11 @@ def audit_surface(ct: np.ndarray, labels: np.ndarray, config: AuditConfig | None
         if peak_z >= cfg.min_peak_z and peak_delta >= cfg.min_peak_delta:
             preliminary[idx] = True
             rows.append((idx, offset, score))
-
     blocks: dict[tuple[int, int, int], list[tuple[tuple[int, int, int], float, float]]] = {}
     for row in rows:
         idx = row[0]
         key = tuple(v // cfg.block_size for v in idx)
         blocks.setdefault(key, []).append(row)
-
     accepted = np.zeros(ct.shape, dtype=bool)
     block_receipts: list[dict[str, Any]] = []
     for key in sorted(blocks):
@@ -344,56 +350,19 @@ def audit_surface(ct: np.ndarray, labels: np.ndarray, config: AuditConfig | None
         med = float(np.median(vals))
         agree = np.abs(vals - med) <= cfg.consensus_tolerance
         fraction = float(np.mean(agree)) if agree.size else 0.0
-        block_receipts.append({
-            "block": list(key),
-            "preliminary_points": len(block),
-            "median_offset": med,
-            "consensus_fraction": fraction,
-        })
+        block_receipts.append({"block": list(key), "preliminary_points": len(block), "median_offset": med, "consensus_fraction": fraction})
         if fraction >= cfg.min_consensus:
             for ok, row in zip(agree.tolist(), block):
                 if ok:
                     accepted[row[0]] = True
-
     audited = int(points.shape[0])
     accepted_count = int(accepted.sum())
     preliminary_count = int(preliminary.sum())
     accepted_fraction = float(accepted_count / audited) if audited else 0.0
     decision = "REVIEW" if accepted_count and accepted_fraction >= cfg.min_global_review_fraction else "ABSTAIN"
     accepted_values = proposed[accepted]
-    summary = {
-        "decision": decision,
-        "audited_points": audited,
-        "preliminary_points": preliminary_count,
-        "accepted_points": accepted_count,
-        "accepted_fraction": accepted_fraction,
-        "median_accepted_offset": float(np.median(accepted_values)) if accepted_count else None,
-        "max_abs_accepted_offset": float(np.max(np.abs(accepted_values))) if accepted_count else None,
-        "candidate_application_default": False,
-        "topology_preserved_claim": False,
-    }
-    return {
-        "format": FORMAT,
-        "config": {
-            "max_offset": cfg.max_offset,
-            "normal_radius": cfg.normal_radius,
-            "point_stride": cfg.point_stride,
-            "block_size": cfg.block_size,
-            "min_peak_z": float(cfg.min_peak_z),
-            "min_peak_delta": float(cfg.min_peak_delta),
-            "min_consensus": float(cfg.min_consensus),
-            "consensus_tolerance": float(cfg.consensus_tolerance),
-            "min_global_review_fraction": float(cfg.min_global_review_fraction),
-            "max_points": cfg.max_points,
-        },
-        "normals": normals,
-        "proposed_offset": proposed,
-        "confidence": confidence,
-        "preliminary": preliminary,
-        "accepted": accepted,
-        "blocks": block_receipts,
-        "summary": summary,
-    }
+    summary = {"decision": decision, "audited_points": audited, "preliminary_points": preliminary_count, "accepted_points": accepted_count, "accepted_fraction": accepted_fraction, "median_accepted_offset": float(np.median(accepted_values)) if accepted_count else None, "max_abs_accepted_offset": float(np.max(np.abs(accepted_values))) if accepted_count else None, "candidate_application_default": False, "topology_preserved_claim": False}
+    return {"format": FORMAT, "config": {"max_offset": cfg.max_offset, "normal_radius": cfg.normal_radius, "point_stride": cfg.point_stride, "block_size": cfg.block_size, "min_peak_z": float(cfg.min_peak_z), "min_peak_delta": float(cfg.min_peak_delta), "min_consensus": float(cfg.min_consensus), "consensus_tolerance": float(cfg.consensus_tolerance), "min_global_review_fraction": float(cfg.min_global_review_fraction), "max_points": cfg.max_points}, "normals": normals, "proposed_offset": proposed, "confidence": confidence, "preliminary": preliminary, "accepted": accepted, "blocks": block_receipts, "summary": summary}
 
 
 def apply_review_candidate(labels: np.ndarray, audit: Mapping[str, Any], *, enabled: bool = False) -> tuple[np.ndarray, dict[str, Any]]:
@@ -416,9 +385,8 @@ def apply_review_candidate(labels: np.ndarray, audit: Mapping[str, Any], *, enab
         if np.any(dest < 0) or any(int(dest[i]) >= mask.shape[i] for i in range(3)):
             continue
         dst = tuple(int(v) for v in dest)
-        if dst == idx:
-            continue
-        moves.append((idx, dst))
+        if dst != idx:
+            moves.append((idx, dst))
     for src, _ in moves:
         candidate[src] = False
     for _, dst in moves:
@@ -429,11 +397,7 @@ def apply_review_candidate(labels: np.ndarray, audit: Mapping[str, Any], *, enab
 def load_calibration(path: os.PathLike[str] | str) -> dict[str, Any]:
     with open(path, "r", encoding="utf-8") as fh:
         data = json.load(fh)
-    required = {
-        "format", "source_repository", "source_commit", "dataset", "sample_count",
-        "median_signed_offset_vox", "q10_signed_offset_vox", "q90_signed_offset_vox",
-        "local_review_flags", "default_decision", "evidence_boundary",
-    }
+    required = {"format", "source_repository", "source_commit", "dataset", "sample_count", "median_signed_offset_vox", "q10_signed_offset_vox", "q90_signed_offset_vox", "local_review_flags", "default_decision", "evidence_boundary"}
     if type(data) is not dict or set(data) != required:
         raise ContractError("calibration has unexpected schema")
     if data["format"] != CALIBRATION_FORMAT or data["default_decision"] != "ABSTAIN":
@@ -466,11 +430,7 @@ def deterministic_npz_bytes(arrays: Mapping[str, np.ndarray]) -> bytes:
 
 
 def write_metrics_csv(path: os.PathLike[str] | str, summary: Mapping[str, Any]) -> None:
-    fields = [
-        "decision", "audited_points", "preliminary_points", "accepted_points",
-        "accepted_fraction", "median_accepted_offset", "max_abs_accepted_offset",
-        "candidate_application_default", "topology_preserved_claim",
-    ]
+    fields = ["decision", "audited_points", "preliminary_points", "accepted_points", "accepted_fraction", "median_accepted_offset", "max_abs_accepted_offset", "candidate_application_default", "topology_preserved_claim"]
     with open(path, "w", encoding="utf-8", newline="") as fh:
         writer = csv.DictWriter(fh, fieldnames=fields, lineterminator="\n")
         writer.writeheader()
@@ -484,35 +444,68 @@ def build_receipt(*, manifest: Mapping[str, Any], input_digests: Mapping[str, st
     for path, digest in artifacts.items():
         _safe_relpath(path)
         _require_digest(digest, f"artifact {path}")
-    body = {
-        "format": RECEIPT_FORMAT,
-        "authority": "LOCAL_AUDIT_ONLY",
-        "manifest_sha256": sha256_bytes(canonical_json_bytes(clean)),
-        "input_digests": dict(sorted(input_digests.items())),
-        "audit_config": audit["config"],
-        "audit_summary": audit["summary"],
-        "calibration_sha256": sha256_bytes(canonical_json_bytes(calibration)),
-        "artifacts": dict(sorted(artifacts.items())),
-        "raw_dataset059_execution_claim": False,
-        "topology_preserved_claim": False,
-        "prize_or_submission_claim": False,
-    }
+    body = {"format": RECEIPT_FORMAT, "authority": "LOCAL_AUDIT_ONLY", "manifest_sha256": sha256_bytes(canonical_json_bytes(clean)), "input_digests": dict(sorted(input_digests.items())), "audit_config": audit["config"], "audit_summary": audit["summary"], "calibration_sha256": sha256_bytes(canonical_json_bytes(calibration)), "artifacts": dict(sorted(artifacts.items())), "raw_dataset059_execution_claim": False, "topology_preserved_claim": False, "prize_or_submission_claim": False}
     receipt = dict(body)
     receipt["receipt_sha256"] = sha256_bytes(canonical_json_bytes(body))
     return receipt
 
 
 def verify_receipt(receipt: Mapping[str, Any]) -> bool:
-    if type(receipt) is not dict or receipt.get("format") != RECEIPT_FORMAT:
+    required = {"format", "authority", "manifest_sha256", "input_digests", "audit_config", "audit_summary", "calibration_sha256", "artifacts", "raw_dataset059_execution_claim", "topology_preserved_claim", "prize_or_submission_claim", "receipt_sha256"}
+    if type(receipt) is not dict or set(receipt) != required or receipt.get("format") != RECEIPT_FORMAT:
         return False
-    digest = receipt.get("receipt_sha256")
-    if type(digest) is not str:
+    if receipt.get("authority") != "LOCAL_AUDIT_ONLY":
         return False
-    body = dict(receipt)
-    body.pop("receipt_sha256", None)
+    if any(receipt.get(key) is not False for key in ("raw_dataset059_execution_claim", "topology_preserved_claim", "prize_or_submission_claim")):
+        return False
     try:
-        return _require_digest(digest, "receipt_sha256") == sha256_bytes(canonical_json_bytes(body))
-    except ContractError:
+        _require_digest(receipt["manifest_sha256"], "manifest_sha256")
+        _require_digest(receipt["calibration_sha256"], "calibration_sha256")
+        inputs = receipt["input_digests"]
+        if type(inputs) is not dict or set(inputs) != {"ct_sha256", "labels_sha256"}:
+            return False
+        for key, value in inputs.items():
+            _require_digest(value, key)
+        config = receipt["audit_config"]
+        if type(config) is not dict:
+            return False
+        AuditConfig(**config).validate()
+        summary = receipt["audit_summary"]
+        summary_keys = {"decision", "audited_points", "preliminary_points", "accepted_points", "accepted_fraction", "median_accepted_offset", "max_abs_accepted_offset", "candidate_application_default", "topology_preserved_claim"}
+        if type(summary) is not dict or set(summary) != summary_keys:
+            return False
+        if summary["decision"] not in ("ABSTAIN", "REVIEW"):
+            return False
+        for key in ("audited_points", "preliminary_points", "accepted_points"):
+            if type(summary[key]) is not int or summary[key] < 0:
+                return False
+        if summary["preliminary_points"] > summary["audited_points"] or summary["accepted_points"] > summary["preliminary_points"]:
+            return False
+        fraction = summary["accepted_fraction"]
+        if type(fraction) not in (int, float) or not math.isfinite(float(fraction)) or not (0.0 <= float(fraction) <= 1.0):
+            return False
+        expected_fraction = (summary["accepted_points"] / summary["audited_points"]) if summary["audited_points"] else 0.0
+        if not math.isclose(float(fraction), float(expected_fraction), rel_tol=0.0, abs_tol=1e-12):
+            return False
+        if summary["candidate_application_default"] is not False or summary["topology_preserved_claim"] is not False:
+            return False
+        for key in ("median_accepted_offset", "max_abs_accepted_offset"):
+            value = summary[key]
+            if value is not None and (type(value) not in (int, float) or not math.isfinite(float(value))):
+                return False
+        artifacts = receipt["artifacts"]
+        if type(artifacts) is not dict or not artifacts:
+            return False
+        for raw_name, value in artifacts.items():
+            name = _safe_relpath(raw_name).as_posix()
+            if name != raw_name or name == "bundle-manifest.json":
+                return False
+            _require_digest(value, f"artifact {raw_name}")
+        digest = _require_digest(receipt["receipt_sha256"], "receipt_sha256")
+        body = dict(receipt)
+        body.pop("receipt_sha256")
+        return digest == sha256_bytes(canonical_json_bytes(body))
+    except (ContractError, TypeError, ValueError):
         return False
 
 
@@ -547,23 +540,60 @@ def verify_bundle_bytes(data: bytes) -> dict[str, Any]:
         names = [i.filename for i in infos]
         if len(names) != len(set(names)) or "bundle-manifest.json" not in names:
             raise ContractError("bundle has duplicate/missing manifest members")
+        total_uncompressed = 0
         for info in infos:
-            _safe_relpath(info.filename)
+            canonical = _safe_relpath(info.filename).as_posix()
+            if canonical != info.filename:
+                raise ContractError("bundle member path is not canonical")
             mode = (info.external_attr >> 16) & 0o170000
             if mode and mode != stat.S_IFREG:
                 raise ContractError("bundle contains non-regular member")
             if info.file_size > 256 * 1024 * 1024:
                 raise ContractError("bundle member exceeds size ceiling")
-        manifest = json.loads(zf.read("bundle-manifest.json"))
-        if type(manifest) is not dict or manifest.get("format") != BUNDLE_FORMAT or type(manifest.get("files")) is not list:
+            total_uncompressed += int(info.file_size)
+            if total_uncompressed > MAX_BUNDLE_UNCOMPRESSED_BYTES:
+                raise ContractError("bundle exceeds total uncompressed size ceiling")
+        manifest_bytes = zf.read("bundle-manifest.json")
+        try:
+            manifest = json.loads(manifest_bytes)
+        except (json.JSONDecodeError, UnicodeDecodeError) as exc:
+            raise ContractError("bundle manifest is not valid JSON") from exc
+        if type(manifest) is not dict or set(manifest) != {"format", "files"} or manifest.get("format") != BUNDLE_FORMAT or type(manifest.get("files")) is not list:
             raise ContractError("invalid bundle manifest")
-        expected = {row["path"]: row for row in manifest["files"]}
+        if manifest_bytes != canonical_json_bytes(manifest) + b"\n":
+            raise ContractError("bundle manifest is not canonical JSON")
+        expected: dict[str, dict[str, Any]] = {}
+        for i, row in enumerate(manifest["files"]):
+            if type(row) is not dict or set(row) != {"path", "size", "sha256"}:
+                raise ContractError(f"invalid bundle manifest row {i}")
+            raw_name = row["path"]
+            canonical = _safe_relpath(raw_name).as_posix()
+            if canonical != raw_name or raw_name == "bundle-manifest.json":
+                raise ContractError(f"invalid bundle manifest path at row {i}")
+            if raw_name in expected:
+                raise ContractError("bundle manifest contains duplicate file rows")
+            if type(row["size"]) is not int or not (0 <= row["size"] <= 256 * 1024 * 1024):
+                raise ContractError(f"invalid bundle manifest size at row {i}")
+            _require_digest(row["sha256"], f"bundle manifest row {i} sha256")
+            expected[raw_name] = row
         actual_names = set(names) - {"bundle-manifest.json"}
         if actual_names != set(expected):
             raise ContractError("bundle membership mismatch")
+        payloads: dict[str, bytes] = {}
         for name in sorted(actual_names):
             payload = zf.read(name)
             row = expected[name]
-            if row.get("size") != len(payload) or row.get("sha256") != sha256_bytes(payload):
+            if row["size"] != len(payload) or row["sha256"] != sha256_bytes(payload):
                 raise ContractError(f"bundle member mismatch: {name}")
+            payloads[name] = payload
+        if "receipt.json" in payloads:
+            try:
+                receipt = json.loads(payloads["receipt.json"])
+            except (json.JSONDecodeError, UnicodeDecodeError) as exc:
+                raise ContractError("receipt.json is not valid JSON") from exc
+            if payloads["receipt.json"] != canonical_json_bytes(receipt) + b"\n" or not verify_receipt(receipt):
+                raise ContractError("receipt.json failed semantic verification")
+            for artifact_name, digest in receipt["artifacts"].items():
+                if artifact_name not in payloads or sha256_bytes(payloads[artifact_name]) != digest:
+                    raise ContractError(f"receipt artifact binding mismatch: {artifact_name}")
         return manifest

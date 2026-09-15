@@ -2,7 +2,9 @@ from __future__ import annotations
 
 import sys
 import tempfile
+import types
 import unittest
+from unittest.mock import patch
 from pathlib import Path
 
 import numpy as np
@@ -13,6 +15,8 @@ sys.path.insert(0, str(ROOT))
 from core import (  # noqa: E402
     AuditConfig,
     ContractError,
+    MAX_VOLUME_VOXELS,
+    _iter_points,
     apply_review_candidate,
     assert_disjoint_regions,
     audit_surface,
@@ -22,7 +26,9 @@ from core import (  # noqa: E402
     deterministic_npz_bytes,
     load_calibration,
     load_inputs,
+    load_volume,
     sha256_file,
+    sha256_tree,
     validate_manifest,
     verify_bundle_bytes,
     verify_receipt,
@@ -99,6 +105,33 @@ class AuditTests(unittest.TestCase):
         labels[0, 0, 0] = 2
         with self.assertRaises(ContractError):
             audit_surface(ct, labels)
+
+    def test_point_selection_is_bounded_without_global_argwhere(self):
+        mask = np.ones((9, 11, 13), dtype=bool)
+        with patch("numpy.argwhere", side_effect=AssertionError("global argwhere forbidden")):
+            points = _iter_points(mask, stride=2, max_points=17)
+        self.assertEqual(points.shape, (17, 3))
+        self.assertEqual(tuple(points[0]), (0, 0, 0))
+        self.assertTrue(np.all(points >= 0))
+        self.assertTrue(np.all(points < np.array(mask.shape)))
+
+    def test_zarr_ceiling_checked_before_materialization(self):
+        class Oversized:
+            ndim = 3
+            shape = (MAX_VOLUME_VOXELS + 1, 1, 1)
+            def __array__(self, *args, **kwargs):
+                raise AssertionError("oversized zarr must not materialize")
+
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            zroot = root / "vol.zarr"
+            zroot.mkdir()
+            (zroot / "zarr.json").write_text("{}", encoding="utf-8")
+            spec = {"kind": "zarr", "path": "vol.zarr", "sha256": sha256_tree(zroot)}
+            fake = types.SimpleNamespace(open=lambda *args, **kwargs: Oversized())
+            with patch.dict(sys.modules, {"zarr": fake}):
+                with self.assertRaises(ContractError):
+                    load_volume(spec, root)
 
 
 class ContractTests(unittest.TestCase):
@@ -216,6 +249,50 @@ class ReceiptBundleTests(unittest.TestCase):
     def test_strict_json_rejects_nan(self):
         with self.assertRaises(ContractError):
             canonical_json_bytes({"x": float("nan")})
+
+    def test_receipt_authority_cannot_be_self_reminted(self):
+        receipt = build_receipt(
+            manifest=self.manifest,
+            input_digests={"ct_sha256": "1" * 64, "labels_sha256": "1" * 64},
+            audit=self.audit,
+            calibration=self.calibration,
+            artifacts={"report.json": "2" * 64},
+        )
+        receipt["authority"] = "AUTO_CORRECT"
+        body = dict(receipt)
+        body.pop("receipt_sha256")
+        import hashlib
+        receipt["receipt_sha256"] = hashlib.sha256(canonical_json_bytes(body)).hexdigest()
+        self.assertFalse(verify_receipt(receipt))
+
+    def test_bundle_duplicate_manifest_row_rejected(self):
+        import io, zipfile
+        payload = b"{}\n"
+        row = {"path": "report.json", "size": len(payload), "sha256": __import__("hashlib").sha256(payload).hexdigest()}
+        manifest = {"format": "vesuvius-ct-ridge-bundle/v1", "files": [row, dict(row)]}
+        out = io.BytesIO()
+        with zipfile.ZipFile(out, "w", compression=zipfile.ZIP_DEFLATED) as zf:
+            zf.writestr("report.json", payload)
+            zf.writestr("bundle-manifest.json", canonical_json_bytes(manifest) + b"\n")
+        with self.assertRaises(ContractError):
+            verify_bundle_bytes(out.getvalue())
+
+    def test_bundle_receipt_cross_binding_rejected(self):
+        receipt = build_receipt(
+            manifest=self.manifest,
+            input_digests={"ct_sha256": "1" * 64, "labels_sha256": "1" * 64},
+            audit=self.audit,
+            calibration=self.calibration,
+            artifacts={"report.json": "2" * 64},
+        )
+        receipt_bytes = canonical_json_bytes(receipt) + b"\n"
+        bundle, _ = build_bundle_bytes({"report.json": b"actual\n", "receipt.json": receipt_bytes})
+        with self.assertRaises(ContractError):
+            verify_bundle_bytes(bundle)
+
+    def test_backslash_member_path_rejected(self):
+        with self.assertRaises(ContractError):
+            build_bundle_bytes({"..\\evil.txt": b"x"})
 
 
 if __name__ == "__main__":
