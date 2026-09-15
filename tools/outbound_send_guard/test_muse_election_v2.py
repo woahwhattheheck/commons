@@ -69,10 +69,13 @@ class MuseElectionV2Tests(_core_tests.MuseElectionV2Tests):
             ]
         )
         receipt = self.compile(mine, snapshot)
-        self.assertEqual(receipt["payload"]["decision"], "NOT_SELECTED")
+        self.assertEqual(receipt["payload"]["decision"], "HOLD")
+        self.assertIn(current_auth.UNAUTHENTICATED_SNAPSHOT_REASON, receipt["payload"]["reasons"])
+        self.assertIn(current_auth.CURRENT_NEGATIVE_DISABLED_REASON, receipt["payload"]["reasons"])
         for name in current_auth._SELECTION_FIELDS + current_auth._WINNER_FIELDS:
             self.assertIsNone(receipt["payload"][name])
         self.assertTrue(gate.verify_receipt(receipt))
+        self.assertFalse(gate.verify_selected_binding(mine, receipt))
 
     def test_compile_signature_has_no_observed_at(self):
         self.assertNotIn("observed_at", inspect.signature(gate.compile_receipt).parameters)
