@@ -36,6 +36,9 @@ def parse_results(raw: bytes | None) -> tuple[str, list[dict], bool, list[str]]:
         fields.pop()
     else:
         problems.append("unterminated result stream")
+        # A trailing field can be a truncated exit (e.g. 123 cut to 12).
+        # Only NUL-terminated fields may contribute a completed record.
+        fields.pop()
     if len(fields) % 3:
         problems.append("partial result record")
     for index in range(0, len(fields) - len(fields) % 3, 3):
