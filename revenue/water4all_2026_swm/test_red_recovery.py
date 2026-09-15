@@ -50,13 +50,30 @@ class RedRecoveryTests(unittest.TestCase):
             "evidence_id": "caller-minted-pi-evidence",
             "coordinator_partner_id": coordinator_id,
             "pi_id": "synthetic-pi",
-            "other_coordinating_proposal_count": 0,
+            "other_jtc_ecr_proposal_count": 0,
             "source_url": "https://www.water4all-partnership.eu/joint-activities/water4all-2026-joint-transnational-call",
             "content_sha256": "0" * 64,
             "observed_at": "2026-09-14T03:50:00Z",
         }
         bundle = compile_current_at(value)
         self.assertIn("COORDINATOR_PI_CROSS_PROPOSAL_EVIDENCE_NOT_TRUSTED", reason_codes(bundle))
+
+    def test_coordinator_pi_cannot_participate_in_any_other_jtc_ecr_proposal(self):
+        value = load_json("example_input.json")
+        for member in value["consortium"]["members"]:
+            member["water4all_partnership_beneficiary"] = False
+        coordinator_id = next(m["partner_id"] for m in value["consortium"]["members"] if m["coordinator"])
+        value["consortium"]["coordinator_pi_evidence"] = {
+            "evidence_id": "other-proposal-participation",
+            "coordinator_partner_id": coordinator_id,
+            "pi_id": "synthetic-pi",
+            "other_jtc_ecr_proposal_count": 1,
+            "source_url": "https://www.water4all-partnership.eu/joint-activities/water4all-2026-joint-transnational-call",
+            "content_sha256": "1" * 64,
+            "observed_at": "2026-09-14T03:50:00Z",
+        }
+        bundle = compile_current_at(value)
+        self.assertIn("COORDINATOR_PI_OTHER_PROPOSAL_PARTICIPATION", reason_codes(bundle))
 
     def test_partner_profile_url_rejects_userinfo_query_and_encoded_path(self):
         bad_urls = [
