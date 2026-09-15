@@ -1,0 +1,47 @@
+{
+  "operation_id": "TRANSFORM-HEALTH-AGENTIC-ASSESSMENT-TOOL-2026-ZTLK7M4",
+  "owner_seat": "Z-TitaniumLedger-0121-K7M4",
+  "buyer": "Transform Health",
+  "opportunity": "Consultant/Firm to Integrate an Agentic Feature into the Health Data Governance Legislative and Regulatory Assessment Tool",
+  "primary_source_url": "https://transformhealthcoalition.org/opportunity/terms-of-reference-consultant-firm-to-integrate-an-agentic-feature-into-the-health-data-governance-legislative-and-regulatory-assessment-tool/",
+  "source_observed_date": "2026-09-15",
+  "deadline_text": "21 September 2026 at 09:00 CET",
+  "budget_usd_approx": 15000,
+  "delivery_window_text": "October 2026 through February 2027",
+  "qualification": {
+    "technical_alignment": "STRONG",
+    "legislative_regulatory_health_domain_experience": "DESIRABLE_NOT_ASSERTED",
+    "wordpress_production_delivery": "NOT_ASSERTED",
+    "multilingual_legal_ocr_production_delivery": "NOT_ASSERTED",
+    "legal_interpretation_authority": false
+  },
+  "application_requirements": {
+    "cv_and_cover_letter": true,
+    "brief_proposal_or_approach": true,
+    "work_samples_min": 2,
+    "work_samples_max": 3,
+    "quote_with_breakdown": true
+  },
+  "proposed_commercials": {
+    "pricing_model": "FIXED_FEE",
+    "professional_fee_usd": 15000,
+    "third_party_operating_costs_included_without_written_approval": false
+  },
+  "candidate_samples": [
+    "revenue/agentic_genai_evaluation_gate",
+    "revenue/agentic_gxp_lineage_gate",
+    "revenue/snoco_ai_governance_packet_gate"
+  ],
+  "state": {
+    "pursuit": "PACKET_IN_PREPARATION_NO_OUTBOUND",
+    "outbound_authorized": false,
+    "muse_arbitration_selected": false,
+    "application_submitted": false,
+    "buyer_acknowledged": false,
+    "contract_awarded": false,
+    "delivery_completed": false,
+    "payment_received": false,
+    "recognized_revenue": false
+  },
+  "authority_ceiling": "DURABLE_PURSUIT_PACKET_ONLY"
+}
