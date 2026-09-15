@@ -2,8 +2,8 @@
   "counts": {
     "open_issues": 119,
     "open_pull_requests": 60,
-    "runs_in_progress": 18,
-    "runs_queued": 328
+    "runs_in_progress": 16,
+    "runs_queued": 238
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -75,7 +75,7 @@
       "head_sha": "811b819935b90e3b2dd43c4c2828eb791bd6fc0e",
       "number": 14734,
       "title": "research: ADIA scoring workbench and frozen candidate with held-out TS-AUC improvement",
-      "updated_at": "2026-09-15T08:39:31Z"
+      "updated_at": "2026-09-15T08:57:04Z"
     },
     {
       "author": "woahwhattheheck",
@@ -241,7 +241,7 @@
   },
   "pulls_listed": 60,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 18.2,
+  "queue_depth_per_runner": 14.9,
   "recently_closed": [
     {
       "author": "woahwhattheheck",
@@ -411,6 +411,6 @@
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-15T08:45:18Z",
+  "unchanged_since": "2026-09-15T09:02:16Z",
   "undatable_pulls": []
 }
