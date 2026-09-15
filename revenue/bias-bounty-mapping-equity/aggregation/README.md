@@ -1,6 +1,8 @@
 # Mapping Equity public-data aggregation carrier
 
-This directory is the data execution layer for the merged Mapping Equity scorer in the parent directory. It is intentionally narrow: read only the public challenge objects needed for the scored formula, produce one leak-safe tract aggregate row per authoritative sample-submission GEOID, and stop hard on schema drift or non-finite geometry math.
+This directory is the data execution layer for the Mapping Equity scorer in the parent directory. It is intentionally narrow: consume only the public challenge objects needed by the published formula, produce one leak-safe tract aggregate row per authoritative sample-submission GEOID, and fail closed on source, schema, geometry, custody, or numeric drift.
+
+Primary implementation/source credit remains **ZSA-D6P2**. The byte-exact recovered donor is preserved as `_zsa_d6p2_core.py`; the exact #14579 runner is preserved byte-for-byte as `_aggregate_unsealed.py`; live `aggregate.py` is the hardened authority wrapper. **ZFS-R7** supplied independent alternate-carrier review evidence; **ZHD-K8P3** recovered/finalized M1 and owns the first generation/policy fix-forward; **ZRH-H7N4** owns the sealed-generation successor; **Keystone / GPT-5.6 Sol** identified the post-merge redirect-provenance defect; **Z-CopperEstuary-2026-J5V8 (`ZCE-J5V8`) / GPT-5.6 Sol** implemented the exact-redirect-identity closure.
 
 ## Authority and data version
 
@@ -8,66 +10,88 @@ Public product: `https://source.coop/humane-intelligence/bias-bounty-mapping-equ
 
 Challenge: `https://zindi.world/competitions/bias-bounty-mapping-equity-challenge`
 
-The current product pins Overture Maps release `2026-08-19.0`, GeoParquet CRS `OGC:CRS84`, and documents DuckDB `1.5.4` for its remote examples and geometry gotchas. This carrier pins the same DuckDB version.
+Pinned runtime/data contract:
 
-The four scored universes are fixed from each region's `*-sample-submission.csv`: `eastern-ok` 1,192; `maricopa-az` 1,593; `northern-ca` 591; `south-central-tx` 6,003. GEOID is always text. Maricopa's leading `04` must survive, and its one New Mexico member `35023970000` is intentional.
+- DuckDB `1.5.4`
+- Overture release `2026-08-19.0`
+- source CRS `OGC:CRS84`
+- metric CRS `EPSG:5070` with `always_xy := true`
+- authoritative scored rows: eastern-ok `1,192`; maricopa-az `1,593`; northern-ca `591`; south-central-tx `6,003`
+- GEOID remains 11-digit text.
 
 ## Leak boundary
 
-The product publicly contains Reliabl's `<region>-coverage-gap.csv` reference answers. **This runner will not read them.** Any source URI containing `coverage-gap`, `coverage_gap`, `reference-score`, or answer-key variants is rejected. The only submission-shaped input is `<region>-sample-submission.csv`, and the generated query projects **only `GEOID`** from it to establish the authoritative tract universe. The placeholder score column is ignored.
-
-No ACS layer or HIFLD hospital layer feeds the scored aggregates. ACS is contextual only; hospitals are explicitly excluded from the published POI formula.
+The public product also contains organizer/reference answer artifacts. The live runner rejects answer/reference source semantics, including repeated percent-encoded and case variants of `coverage-gap`, `reference-score`, `reference-answer`, and `answer-key`. The only submission-shaped source is `<region>-sample-submission.csv`; only `GEOID` is projected from it for scored-universe custody. No ACS layer or HIFLD hospital layer feeds the scored aggregate.
 
 ## Exact source objects
 
-For each region the runner permits only:
+Each region uses exactly eleven public objects:
 
-- `reference/<region>/<region>-sample-submission.csv` — authoritative scored GEOIDs only;
-- `strata/<region>/<region>-census-tracts.parquet` — tract geometry;
-- Overture `roads`, `buildings`, `pois`;
+- sample submission;
+- census tract geometry;
+- Overture roads, buildings, and POIs;
 - Census TIGER roads and CBP;
 - Microsoft buildings;
-- HIFLD fire stations, EMS stations, and schools.
+- HIFLD fire, EMS, and school points.
 
-`aggregate.py plan --region ...` emits the full URI registry, required source columns, source/data pins, query hash, geometry policy, and output contract without importing DuckDB or touching the network.
+`python aggregate.py plan --region ... --sql` is network-free and emits the canonical public URI registry, required columns, public query hash, scoring policy, preflight SQL, geometry contract, and exact 13-column output contract.
 
-## Geometry rules that must not be relaxed
+## Source-generation custody
 
-The publisher warns that DuckDB spatial operations can fail **silently** on this data:
+The runner closes both same-URI generation drift and redirect-substitution authority gaps mechanically:
 
-1. Every layer is lon/lat `OGC:CRS84`. `ST_Transform(..., 'EPSG:4326', 'EPSG:5070')` without `always_xy := true` can return infinite coordinates. The runner transforms with `always_xy := true` and executes a synthetic road-length smoke check before the real query.
-2. `ST_Length_Spheroid(geometry)` on lon/lat order can return `NaN`; the publisher requires coordinate flipping for that function. This runner avoids the trap entirely by transforming to EPSG:5070 with explicit XY order, clipping road geometry to each tract, then measuring projected intersection length.
-3. GeoParquet `bbox` filters use **all four overlap comparisons** before exact `ST_Intersects` / containment. Two-comparison corner tests silently drop edge-straddling features.
-4. Every final numeric value must be finite and nonnegative. A single `NaN`/`inf` aborts publication.
+1. each permitted canonical public URI is opened **once**;
+2. after HTTP redirect handling, the final `response.geturl()` is revalidated by the same canonical public-source policy and must equal the requested registry URI exactly;
+3. external-origin redirects and same-product cross-object redirects therefore fail closed before response bytes become scoring authority;
+4. the exact accepted response bytes stream into a Linux memfd while SHA-256 and byte count are computed;
+5. `F_SEAL_WRITE | F_SEAL_GROW | F_SEAL_SHRINK | F_SEAL_SEAL` are applied and verified before a read-only `/proc/self/fd/<n>` path is exposed;
+6. both schema/preflight SQL and scored aggregation SQL read only those retained sealed descriptor paths;
+7. every input-generation receipt records the requested `uri`, exact accepted `resolved_url`, SHA-256, byte count, and `sha256:<digest>` generation identity;
+8. runtime SQL hashes canonicalize ephemeral fd numbers to those content digests.
 
-Roads are clipped to tract geometry before length measurement, so a cross-tract segment contributes only its within-tract length. Buildings are assigned once by `ST_PointOnSurface(footprint)` strictly within a tract. Point POIs/facilities are assigned by strict containment. These policies are recorded in every plan/receipt rather than hidden in an implementation detail.
+No mutable source pathname survives materialization, and a proc-fd write reopen cannot modify the sealed memfd. Later remote replacement, local pathname replacement, or redirect substitution therefore cannot silently change the source generation consumed by DuckDB. Run mode intentionally requires Linux `/proc/self/fd`, `os.memfd_create(..., MFD_ALLOW_SEALING)`, kernel seal support, and enough memory/scratch headroom for one region's exact source bytes.
 
-## Published scoring filters
+## Scoring policy authority
 
-- Overture road classes: `motorway`, `trunk`, `primary`, `secondary`.
-- TIGER MTFCC: `S1100`, `S1200`.
-- Overture fire: `categories.primary = fire_department`.
-- Overture EMS: `ambulance_and_ems_services`.
-- Overture school categories: `elementary_school`, `middle_school`, `high_school`, `school`, `private_school`, `public_school`.
-- CBP denominator: `cbp_estab` (the package's default business-address weighting).
-- All Overture places count toward the CBP half.
+The live scored SQL is constructed from code-owned local literals. It does **not** delegate scored SQL or filter policy to mutable globals in `_zsa_d6p2_core.py`. Mutating donor/public `ROAD_CLASSES`, `TIGER_MTFCC`, or `SCHOOL_CATEGORIES` after import cannot alter the scored query.
+
+Published filters remain:
+
+- Overture roads: `motorway`, `trunk`, `primary`, `secondary`
+- TIGER MTFCC: `S1100`, `S1200`
+- Overture fire: `fire_department`
+- Overture EMS: `ambulance_and_ems_services`
+- Overture schools: `elementary_school`, `middle_school`, `high_school`, `school`, `private_school`, `public_school`
+- CBP denominator: `cbp_estab`
+- all Overture places count toward the CBP half.
+
+## Geometry and output rules
+
+- Roads are clipped to each tract before projected length.
+- All bbox joins use all four overlap comparisons before exact geometry predicates.
+- Buildings use `ST_PointOnSurface` and strict tract containment.
+- Point features use strict tract containment.
+- The synthetic axis-order smoke probe must remain finite and within its expected metric range.
+- Preflight rejects missing source columns, bad/duplicate/missing authoritative GEOIDs, unexpected geometry types, and answer-like non-sample columns.
+- Output is exactly 13 columns, exactly one lexicographically ordered row per authoritative GEOID, with finite nonnegative numeric values.
+- Output and receipt are create-exclusive.
 
 ## Offline proof
 
-No DuckDB or network is needed for the plan/contract suite:
+The canonical hosted/offline contract suite is:
 
 ```bash
-python -m py_compile aggregate.py test_aggregate.py
-python -m unittest -v test_aggregate.py
-python -O -m unittest -v test_aggregate.py
+python -m py_compile aggregate.py _aggregate_unsealed.py _zsa_d6p2_core.py test_aggregate.py test_recovery.py test_memfd_seal.py test_redirect_provenance.py
+python -m unittest -v test_aggregate.py test_recovery.py test_memfd_seal.py test_redirect_provenance.py
+python -O -m unittest -v test_aggregate.py test_recovery.py test_memfd_seal.py test_redirect_provenance.py
 python aggregate.py plan --region northern-ca --sql > northern-ca.plan.json
 ```
 
-The tests bind the current object layout, exact filters, all-four bbox comparisons, `always_xy`, clip-before-length behavior, nested POI category probe, output schema, tract counts, leading-zero custody, finite/nonnegative gates, answer-artifact denial, deterministic plans, and create-exclusive output publication.
+The predecessor killers cover encoded answer paths, duplicate tract custody, geometry drift, donor/public policy mutation, same-URI A→B source generation swaps, digest-canonicalized runtime SQL, proc-fd write reopen against the retained generation, external-origin redirects, same-product cross-object redirects, exact-URL acceptance, and final receipt binding of the accepted `resolved_url`.
 
 ## One-region real-data run
 
-Use an ordinary connected environment with Python and DuckDB `1.5.4`. DuckDB will install/load its public `httpfs` and `spatial` core extensions; the challenge bucket requires no account or credentials.
+Use a connected Linux environment with Python and DuckDB `1.5.4` plus enough scratch/memory headroom for one region's full eleven-source package:
 
 ```bash
 python -m pip install 'duckdb==1.5.4'
@@ -77,15 +101,15 @@ python aggregate.py run \
   --receipt northern-ca.aggregates.receipt.json
 ```
 
-Start with Northern California because its reference package is the smallest (~0.45 GB). The query range-reads cloud-native Parquet; it does not intentionally bulk-download the corpus.
+The runner installs/loads DuckDB's public `spatial` extension. Public source bytes are fetched by Python HTTPS, the final resolved identity is matched exactly to the canonical requested object, content is addressed and kernel-sealed before DuckDB reads it, and the source is never reopened remotely during authority evaluation. Start with Northern California because it is the smallest published region package.
 
-Before aggregation, the runner `DESCRIBE`s every current object and refuses missing required columns. It also probes the Overture nested `categories.primary` field and runs the axis-order metric smoke test. The receipt records the exact allowed URIs, schema descriptions/digests, query hash, DuckDB pin, Overture release, smoke-test length, row count and output SHA-256.
+The receipt binds requested and resolved source identities, source-generation digests, schema-description digests, canonicalized preflight/query hashes, geometry/value-domain observations, output SHA-256, DuckDB pin, Overture release, row count, and false external claims.
 
-This cloud development turn cannot resolve outbound DNS to install DuckDB, so it does **not** claim a real-data execution. That is a runtime/environment limitation, not a data-access or challenge-permission limitation.
+This development carrier does **not** itself establish a real-data execution receipt. Hosted contract execution and real-data execution are separate provider truths.
 
 ## Four-region execution and scorer handoff
 
-After one clean region receipt, run all four independently so a failure cannot contaminate the others:
+After one clean region receipt, run all four independently:
 
 ```bash
 for r in eastern-ok maricopa-az northern-ca south-central-tx; do
@@ -95,4 +119,6 @@ for r in eastern-ok maricopa-az northern-ca south-central-tx; do
 done
 ```
 
-Then feed each aggregate CSV into the already-merged parent `mapping_equity.py build` command together with the same region's sample submission as the authoritative GEOID universe. Do not convert a local aggregate/scorer success into a Zindi submission, leaderboard, prize, award, payment, or revenue claim without provider evidence.
+Then feed each aggregate CSV into the already-merged parent `mapping_equity.py build` command with the same region's sample submission as the authoritative GEOID universe.
+
+A local aggregate/scorer success is **not** a Zindi submission, leaderboard result, prize, award, payment, or revenue claim. Those require separate provider evidence.

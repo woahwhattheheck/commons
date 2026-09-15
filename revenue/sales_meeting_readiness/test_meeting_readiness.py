@@ -78,6 +78,7 @@ def ready_packet():
         "observation_id": "calendar.20260913.001",
         "provider_ref": "calendar.primary",
         "captured_at": "2026-09-13T15:55:00Z",
+        "owner_ref": packet["owner_ref"],
         "opportunity_id": packet["opportunity_id"],
         "thread_ref": packet["thread_ref"],
         "timezone": packet["request"]["timezone"],
@@ -152,6 +153,14 @@ class MeetingReadinessTests(unittest.TestCase):
         p = ready_packet(); p["availability"]["opportunity_id"] = "op.other"
         self.assertEqual(self.compile(p)["state"], HOLD)
 
+    def test_missing_owner_binding_fails_closed(self):
+        p = ready_packet(); p["availability"].pop("owner_ref")
+        self.assertEqual(self.compile(p)["state"], HOLD)
+
+    def test_cross_owner_transplant(self):
+        p = ready_packet(); p["owner_ref"] = "owner.other"
+        self.assertEqual(self.compile(p)["state"], HOLD)
+
     def test_wrong_duration_binding(self):
         p = ready_packet(); p["availability"]["duration_minutes"] = 45
         self.assertEqual(self.compile(p)["state"], HOLD)
@@ -163,6 +172,20 @@ class MeetingReadinessTests(unittest.TestCase):
     def test_slot_wrong_duration(self):
         p = ready_packet(); p["availability"]["proposed_slot"]["end"] = "2026-09-14T18:45:00Z"
         self.assertEqual(self.compile(p)["state"], HOLD)
+
+    def test_slot_already_started_is_stale(self):
+        p = ready_packet()
+        p["request"]["windows"] = [
+            {"start": "2026-09-13T15:30:00Z", "end": "2026-09-13T16:30:00Z"}
+        ]
+        p["availability"]["proposed_slot"] = {
+            "start": "2026-09-13T15:45:00Z",
+            "end": "2026-09-13T16:15:00Z",
+        }
+        p["availability"]["request_digest"] = request_digest(
+            p["opportunity_id"], p["thread_ref"], p["request"]
+        )
+        self.assertEqual(self.compile(p)["state"], REQUEST_STALE)
 
     def test_slot_outside_requested_window(self):
         p = ready_packet(); p["availability"]["proposed_slot"] = {"start": "2026-09-14T20:00:00Z", "end": "2026-09-14T20:30:00Z"}

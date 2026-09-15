@@ -3,6 +3,48 @@
 
   const STORAGE_KEY = 'creator-desk.operator.v1';
   const originalFetch = window.fetch.bind(window);
+  const nativeReflectApply = Reflect.apply;
+  const nativeGetOwnPropertyDescriptor = Object.getOwnPropertyDescriptor;
+  const nativeHasOwnProperty = Object.prototype.hasOwnProperty;
+  const nativeString = String;
+  const nativeStartsWith = String.prototype.startsWith;
+  const NativeRequest = window.Request;
+  const NativeURL = window.URL || URL;
+  const NativeHeaders = window.Headers || Headers;
+  const NativeNode = window.Node;
+  const baseOrigin = location.origin;
+  const requestPrototype = typeof NativeRequest === 'function' ? NativeRequest.prototype : null;
+  const urlPrototype = typeof NativeURL === 'function' ? NativeURL.prototype : null;
+  const headersPrototype = typeof NativeHeaders === 'function' ? NativeHeaders.prototype : null;
+  const nodePrototype = typeof NativeNode === 'function' ? NativeNode.prototype : null;
+  const requestUrlDescriptor = requestPrototype ? nativeGetOwnPropertyDescriptor(requestPrototype, 'url') : null;
+  const requestHeadersDescriptor = requestPrototype ? nativeGetOwnPropertyDescriptor(requestPrototype, 'headers') : null;
+  const urlHrefDescriptor = urlPrototype ? nativeGetOwnPropertyDescriptor(urlPrototype, 'href') : null;
+  const urlOriginDescriptor = urlPrototype ? nativeGetOwnPropertyDescriptor(urlPrototype, 'origin') : null;
+  const urlPathnameDescriptor = urlPrototype ? nativeGetOwnPropertyDescriptor(urlPrototype, 'pathname') : null;
+  const headersSetDescriptor = headersPrototype ? nativeGetOwnPropertyDescriptor(headersPrototype, 'set') : null;
+  const nodeBaseUriDescriptor = nodePrototype ? nativeGetOwnPropertyDescriptor(nodePrototype, 'baseURI') : null;
+  const nativeRequestUrlGetter = requestUrlDescriptor && typeof requestUrlDescriptor.get === 'function'
+    ? requestUrlDescriptor.get
+    : null;
+  const nativeRequestHeadersGetter = requestHeadersDescriptor && typeof requestHeadersDescriptor.get === 'function'
+    ? requestHeadersDescriptor.get
+    : null;
+  const nativeUrlHrefGetter = urlHrefDescriptor && typeof urlHrefDescriptor.get === 'function'
+    ? urlHrefDescriptor.get
+    : null;
+  const nativeUrlOriginGetter = urlOriginDescriptor && typeof urlOriginDescriptor.get === 'function'
+    ? urlOriginDescriptor.get
+    : null;
+  const nativeUrlPathnameGetter = urlPathnameDescriptor && typeof urlPathnameDescriptor.get === 'function'
+    ? urlPathnameDescriptor.get
+    : null;
+  const nativeHeadersSet = headersSetDescriptor && typeof headersSetDescriptor.value === 'function'
+    ? headersSetDescriptor.value
+    : null;
+  const nativeNodeBaseUriGetter = nodeBaseUriDescriptor && typeof nodeBaseUriDescriptor.get === 'function'
+    ? nodeBaseUriDescriptor.get
+    : null;
   let operatorKey = '';
   let lockPanel = null;
 
@@ -22,26 +64,71 @@
     try { localStorage.removeItem(STORAGE_KEY); } catch (_) {}
   }
 
-  function withAuth(init = {}) {
+  function hasOwn(object, name) {
+    return nativeReflectApply(nativeHasOwnProperty, object, [name]);
+  }
+
+  function withAuth(init = {}, inheritedHeaders) {
     const key = readKey();
     if (!key) return init;
+    if (typeof NativeHeaders !== 'function' || !nativeHeadersSet) return init;
     const next = {...init};
-    const headers = new Headers(init.headers || {});
-    headers.set('Authorization', 'Bearer ' + key);
+    const sourceHeaders = hasOwn(init, 'headers') ? init.headers : inheritedHeaders;
+    const headers = new NativeHeaders(sourceHeaders || {});
+    nativeReflectApply(nativeHeadersSet, headers, ['Authorization', 'Bearer ' + key]);
     next.headers = headers;
     return next;
   }
 
   function protectedPath(path) {
     return path === '/api/operator' || path === '/api/dashboard' ||
-      path === '/workspace.sqlite3' || path.startsWith('/draft.eml') || path === '/api/change';
+      path === '/workspace.sqlite3' || nativeReflectApply(nativeStartsWith, path, ['/draft.eml']) || path === '/api/change';
+  }
+
+  function isNativeRequest(input) {
+    return typeof NativeRequest === 'function' && input instanceof NativeRequest;
+  }
+
+  function nativeRequestState(input) {
+    if (!isNativeRequest(input) || !nativeRequestUrlGetter || !nativeRequestHeadersGetter) return null;
+    try {
+      return {
+        url: nativeReflectApply(nativeRequestUrlGetter, input, []),
+        headers: nativeReflectApply(nativeRequestHeadersGetter, input, []),
+      };
+    } catch (_) {
+      return null;
+    }
+  }
+
+  function documentBaseHref() {
+    if (!nativeNodeBaseUriGetter) throw new TypeError('Native document base URL accessor unavailable');
+    return nativeReflectApply(nativeNodeBaseUriGetter, document, []);
+  }
+
+  function parseTarget(raw) {
+    if (typeof NativeURL !== 'function' || !nativeUrlHrefGetter || !nativeUrlOriginGetter || !nativeUrlPathnameGetter) {
+      throw new TypeError('Native URL accessors unavailable');
+    }
+    const parsed = new NativeURL(raw, documentBaseHref());
+    return {
+      href: nativeReflectApply(nativeUrlHrefGetter, parsed, []),
+      origin: nativeReflectApply(nativeUrlOriginGetter, parsed, []),
+      pathname: nativeReflectApply(nativeUrlPathnameGetter, parsed, []),
+    };
   }
 
   window.fetch = async function(input, init) {
-    const url = typeof input === 'string' ? input : input.url;
-    const local = url.startsWith('/') || url.startsWith(location.origin + '/');
-    const response = await originalFetch(input, local ? withAuth(init || {}) : init);
-    if (local && protectedPath(new URL(url, location.href).pathname) && response.status === 403 && readKey()) {
+    const requestState = nativeRequestState(input);
+    const coercedInput = requestState ? null : nativeString(input);
+    const target = parseTarget(requestState ? requestState.url : coercedInput);
+    const guarded = target.origin === baseOrigin && protectedPath(target.pathname);
+    const inheritedHeaders = (!init || !hasOwn(init, 'headers')) && requestState
+      ? requestState.headers
+      : undefined;
+    const outboundInput = requestState ? input : target.href;
+    const response = await originalFetch(outboundInput, guarded ? withAuth(init || {}, inheritedHeaders) : init);
+    if (guarded && response.status === 403 && readKey()) {
       clearKey();
       setLocked(true, 'Operator key was rejected. Paste the current key to restore creator controls.');
     }

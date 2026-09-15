@@ -35,6 +35,15 @@ A direct-prime application must remain `HOLD` until the mandatory experience, re
 
 The most defensible recovery route, if direct-prime evidence remains unavailable, is **healthcare-prime teaming**: identify a genuinely qualified healthcare/FQHC/HCCN prime, obtain explicit relationship authority, bind that prime's eligibility and safety-net experience, and confine TJLabs to a support scope for which TJLabs can prove its own subject-matter and delivery track record. The code returns `TEAMING_READY` only when that named-prime evidence and support-scope proof are present; otherwise it remains `HOLD`.
 
+## Teaming recovery artifacts
+
+The direct-prime `HOLD` has a bounded follow-on that does not weaken the evidence gate:
+
+- [`teaming_shortlist.md`](./teaming_shortlist.md) ranks public-evidence healthcare-prime candidates by buyer-gate overlap, TJLabs complementarity, and competitor/self-sufficiency risk.
+- [`teaming_outreach_packets.md`](./teaming_outreach_packets.md) stages exact candidate-specific messages and a Muse single-writer arbitration template. Its state is **DRAFT ONLY / NOT SENT**.
+
+These files do not make any candidate a partner and do not authorize contact. Before any outbound email, re-run Slack + Gmail collision checks, obtain Muse `SELECT`, and re-fence again immediately before send. A positive response still does not satisfy `TEAMING_READY` until explicit relationship authority and source-bound prime/support evidence are entered into the qualification carrier.
+
 ## Use
 
 ```bash
