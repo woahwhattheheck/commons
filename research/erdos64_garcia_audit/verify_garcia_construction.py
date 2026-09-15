@@ -8,6 +8,11 @@ orientation, and the H15 gadget.
 from collections import Counter, deque
 
 
+def require(condition, message):
+    if not condition:
+        raise RuntimeError(message)
+
+
 def add_edge(g, a, b):
     g.setdefault(a, set()).add(b)
     g.setdefault(b, set()).add(a)
@@ -118,25 +123,25 @@ def simple_path_lengths(g, start, target):
 
 def main():
     tc = tutte_coxeter()
-    assert set(Counter(map(len, tc.values()))) == {3}
-    assert is_bipartite(tc)
+    require(set(Counter(map(len, tc.values()))) == {3}, "Tutte-Coxeter is not cubic")
+    require(is_bipartite(tc), "Tutte-Coxeter is not bipartite")
     for length in range(3, 8):
-        assert not cycles_exact(tc, length), length
+        require(not cycles_exact(tc, length), f"unexpected cycle length {length}")
     c8 = cycles_exact(tc, 8)
-    assert len(c8) == 90, len(c8)
+    require(len(c8) == 90, f"expected 90 8-cycles, got {len(c8)}")
 
     alternating = canonical_cycle([0, 17, 18, 5, 6, 23, 22, 1])
-    assert alternating in c8
+    require(alternating in c8, "paper alternating 8-cycle missing")
     outer = {frozenset((i, (i + 1) % 30)) for i in range(30)}
     chord_neighbor = {}
     for v in range(30):
         chords = [w for w in tc[v] if frozenset((v, w)) not in outer]
-        assert len(chords) == 1
+        require(len(chords) == 1, f"vertex {v} does not have one chord")
         chord_neighbor[v] = chords[0]
-    assert all(
+    require(all(
         chord_neighbor[v] in cycle_neighbors(list(alternating), v)
         for v in alternating
-    )
+    ), "paper 8-cycle does not alternate chord/outer edges")
 
     # Appendix A table: neighbor y whose edge xy faces attachment u.
     u_neighbor = {
@@ -146,8 +151,8 @@ def main():
         3: 2, 8: 7, 13: 4, 18: 19, 23: 6, 28: 7,
         4: 3, 9: 2, 14: 13, 19: 20, 24: 11, 29: 28,
     }
-    assert set(u_neighbor) == set(range(30))
-    assert all(u_neighbor[v] in tc[v] for v in range(30))
+    require(set(u_neighbor) == set(range(30)), "orientation table does not cover all vertices")
+    require(all(u_neighbor[v] in tc[v] for v in range(30)), "orientation names a non-edge")
     off_counts = []
     for cycle_tuple in c8:
         cycle = list(cycle_tuple)
@@ -155,20 +160,20 @@ def main():
             v for v in cycle
             if u_neighbor[v] not in cycle_neighbors(cycle, v)
         ]
-        assert off, cycle
+        require(bool(off), f"8-cycle has every u-edge on-cycle: {cycle}")
         off_counts.append(len(off))
 
     gadget, attachment = h15()
-    assert len(gadget) == 15
-    assert Counter(map(len, gadget.values())) == Counter({3: 12, 2: 3})
+    require(len(gadget) == 15, f"expected 15 gadget vertices, got {len(gadget)}")
+    require(Counter(map(len, gadget.values())) == Counter({3: 12, 2: 3}), "H15 degree profile mismatch")
     uv = simple_path_lengths(gadget, attachment["u"], attachment["v"])
     uw = simple_path_lengths(gadget, attachment["u"], attachment["w"])
     vw = simple_path_lengths(gadget, attachment["v"], attachment["w"])
-    assert uv == uw == set(range(3, 15))
-    assert vw == set(range(5, 15))
+    require(uv == uw == set(range(3, 15)), "H15 u-v/u-w path spectrum mismatch")
+    require(vw == set(range(5, 15)), "H15 v-w path spectrum mismatch")
     spectrum = {length for length in range(3, 16) if cycles_exact(gadget, length)}
-    assert spectrum == {3, 5, 6, 7, 9, 10, 11, 12, 13, 14, 15}
-    assert not ({4, 8} & spectrum)
+    require(spectrum == {3, 5, 6, 7, 9, 10, 11, 12, 13, 14, 15}, "H15 cycle spectrum mismatch")
+    require(not ({4, 8} & spectrum), "H15 contains a 4- or 8-cycle")
 
     print("PASS: paper-specified construction audit")
     print("Tutte-Coxeter: 30 vertices, cubic, bipartite, girth 8")
