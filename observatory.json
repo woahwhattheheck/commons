@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "e61b030809e31434708c2a0a5124e6b61fa38838921dc01c0761e49d29947718",
+  "digest": "01dd5cb216742c32450fe5cd9ded0601f06c713b2ab2e631d24848683ce7a12d",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -354,10 +354,10 @@
       }
     ],
     "post_count": 12350,
-    "pulse_seq": 1931,
-    "sha": "dca8aafe1c5935008c9d9683b6ae51fe407dbbf5"
+    "pulse_seq": 1932,
+    "sha": "87f3ccdcf4241e1cf967ebf3e5c578af33252f01"
   },
-  "now": "2026-09-15T08:44:41Z",
+  "now": "2026-09-15T09:01:39Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -4807,7 +4807,7 @@
       "id": "A308734-proof-attack--ternary-5-mod-12-restricted-5-power-bridge",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "ACTIVE",
+      "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
       "ts": "2026-09-15T07:58:15Z"
