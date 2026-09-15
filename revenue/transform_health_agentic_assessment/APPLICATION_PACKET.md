@@ -36,15 +36,15 @@ Dear Transform Health team,
 
 I am applying to support the design, development, integration, testing, and handover of the agentic feature for Transform Health's Health Data Governance Legislative and Regulatory Assessment Tool.
 
-My strongest fit is the technical problem at the center of the assignment: building model-assisted document workflows that remain evidence-grounded, inspectable, and fail closed rather than allowing a generative model to silently become an authority. I would approach the feature as a document-intelligence and evidence-extraction system: legislation is ingested and normalized; candidate text is retrieved for each fixed assessment element; verbatim source evidence is extracted into a closed schema; every citation is independently re-verified against the source; and Step 3 is derived from verified Step 2 state using versioned deterministic rules. Human reviewers retain interpretive and publication authority throughout.
+My strongest fit is the technical problem at the center of the assignment: building model-assisted document workflows that remain evidence-grounded, inspectable, and fail closed rather than allowing a generative model, parser, or OCR system to silently become an authority. I would approach the feature as a document-intelligence and evidence-extraction system: legislation is ingested and normalized; candidate text is retrieved for each fixed assessment element; verbatim source evidence is extracted into a closed schema; native-text citations are independently re-verified against the bound source; OCR-derived text remains a non-authoritative candidate until independently checked against the exact source image/page or visually confirmed by an authorized human; and Step 3 is derived only from verified Step 2 state using versioned deterministic rules. Human reviewers retain interpretive and publication authority throughout.
 
-I propose a provider-neutral backend behind a thin WordPress-facing workflow for registration, upload, status, and results. The design includes English/French/Spanish handling, explicit OCR and unprocessable-document paths, configurable token/API-cost ceilings, retained source provenance, benchmark-driven accuracy testing, and UAT before deployment. The attached technical approach maps these controls to the milestones in the Terms of Reference.
+I propose a provider-neutral backend behind a thin WordPress-facing workflow for registration, upload, status, and results. The design supports English, French, and Spanish inputs **and outputs**, including downloadable Step 2 and Step 3 worksheets and the summary report in the selected supported output language while preserving original-language source quotations. It also includes explicit scanned-document/OCR failure paths, configurable token/API-cost ceilings, retained source provenance, benchmark-driven accuracy testing, and UAT before deployment. The attached technical approach maps these controls to the milestones in the Terms of Reference.
 
-I am proposing a fixed professional fee of **USD 15,000**, allocated across design, implementation, WordPress-facing integration, benchmark/UAT, deployment, documentation, and handover. Any third-party model, OCR, hosting, storage, translation, or messaging costs would be made explicit and bounded by buyer-approved operating-cost limits rather than silently embedded in usage.
+I am proposing a total professional implementation fee of **USD 15,000** for the stated consultancy deliverables, allocated across design, implementation, WordPress-facing integration, benchmark/UAT, deployment, documentation, and handover. Any third-party model, OCR, hosting, storage, translation, or messaging service would be buyer-procured or treated as a separately approved pass-through operating service only if Transform Health agrees the service and a written cost cap/change order in advance. No uncapped or surprise operating cost is included or committed.
 
-The attached work samples demonstrate deterministic evidence verification, lineage/provenance binding, human-authority ceilings, and hostile-case testing for agentic systems. They are technical examples rather than claims of prior Transform Health, health-policy, or WordPress delivery. I would use the orientation milestone to bind the implementation to Transform Health's assessment framework, representative documents, hosting/data-handling constraints, and domain-review process.
+The attached work samples demonstrate deterministic evidence verification, lineage/provenance binding, human-authority ceilings, and hostile-case testing for agentic systems. They are technical examples rather than claims of prior Transform Health, health-policy, or WordPress delivery. I would use the orientation milestone to bind the implementation to Transform Health's assessment framework, representative documents, hosting/data-handling constraints, OCR/source-image verification policy, multilingual output requirements, and domain-review process.
 
-Thank you for considering the application. I would be glad to walk through the proposed evidence contract, benchmark plan, and deployment architecture with the Transform Health team.
+Thank you for considering the application. I would be glad to walk through the proposed evidence contract, benchmark plan, multilingual output behavior, and deployment architecture with the Transform Health team.
 
 Sincerely,
 
@@ -64,7 +64,7 @@ Sincerely,
 
 Deliver a low-volume, maintainable agentic document-intelligence feature that helps human reviewers populate Transform Health's Step 2 assessment with traceable source evidence and generates Step 3 through transparent deterministic rules.
 
-The system will **not** be represented as a legal interpreter or autonomous legal-finding engine.
+The system will **not** be represented as a legal interpreter or autonomous legal-finding engine. OCR output is also not treated as source authority merely because a model copies it exactly.
 
 ### Proposed architecture
 
@@ -73,11 +73,13 @@ The system will **not** be represented as a legal interpreter or autonomous lega
 - file validation, source digests, page-preserving normalization, and explicit OCR path;
 - lexical + semantic high-recall retrieval keyed to fixed assessment elements;
 - model/provider-neutral structured evidence extraction;
-- independent post-model verification that every quoted span is present in the claimed source/page;
+- independent post-model verification that every native-text quote is present in the claimed bound source/page;
+- for scanned pages, exact source-image/page binding plus a separate image-grounded check or authorized human visual confirmation before OCR-derived text can become `VERIFIED_EVIDENCE`;
 - deterministic, versioned Step 3 reducer consuming only verified Step 2 state;
-- immutable job/source/model/prompt/rule metadata sufficient to reproduce and audit each result;
+- English/French/Spanish input and output workflows, with original-language quotations preserved in evidence;
+- immutable job/source/model/prompt/rule/OCR-verification metadata sufficient to reproduce and audit each result;
 - configurable page, token, API-call, retry, OCR, runtime, and cost ceilings;
-- explicit `NOT_IDENTIFIED`, `UNPROCESSABLE`, `NEEDS_HUMAN_REVIEW`, and `COST_CAP_REACHED` states rather than forced completion;
+- explicit `NOT_IDENTIFIED`, `OCR_DERIVED_CANDIDATE`, `UNPROCESSABLE`, `NEEDS_HUMAN_REVIEW`, and `COST_CAP_REACHED` states rather than forced completion;
 - benchmark and UAT evidence before production deployment.
 
 Full design: `TECHNICAL_APPROACH.md`.
@@ -86,32 +88,38 @@ Full design: `TECHNICAL_APPROACH.md`.
 
 | Milestone | Timing | Fee | Output |
 | --- | --- | ---: | --- |
-| 1. Orientation + technical design | by 30 Oct 2026 | $2,500 | requirements, schemas, data-flow/threat model, hosting recommendation, benchmark plan, cost model |
-| 2. Agentic extraction system | by 30 Nov 2026 | $4,500 | ingestion, retrieval, evidence extraction, citation verifier, deterministic Step 3, cost controls |
-| 3. WordPress-facing integration | by 18 Dec 2026 | $3,000 | registration/access, upload/status/download, authenticated API integration, multilingual UX paths |
-| 4. Accuracy + UAT | by 31 Jan 2027 | $3,000 | frozen benchmark, language/OCR stratification, precision/recall/citation metrics, UAT remediation |
+| 1. Orientation + technical design | by 30 Oct 2026 | $2,500 | requirements, schemas, data-flow/threat model, hosting recommendation, benchmark plan, OCR/source-image verification contract, multilingual output contract, cost model |
+| 2. Agentic extraction system | by 30 Nov 2026 | $4,500 | ingestion, retrieval, evidence extraction, native-text citation verifier, scanned-page verification gate, deterministic Step 3, cost controls |
+| 3. WordPress-facing integration | by 18 Dec 2026 | $3,000 | registration/access, upload/status/download, authenticated API integration, English/French/Spanish input/output UX paths |
+| 4. Accuracy + UAT | by 31 Jan 2027 | $3,000 | frozen benchmark, language/OCR stratification, precision/recall/citation metrics, source-image/OCR authority tests, UAT remediation |
 | 5. Deployment + handover | by 26 Feb 2027 | $2,000 | production deployment, user guidance, runbook, technical documentation, maintenance recommendations |
-| **Total** | | **$15,000** | |
+| **Total professional implementation fee** | | **$15,000** | |
 
 The timing follows the buyer's published milestones. Final sequencing can be adjusted during orientation without changing the evidence/authority boundary.
 
+The $15,000 quote is the total professional implementation fee for the deliverables above. It does **not** authorize additional professional fees. Third-party operating services, if any, are outside that fee only when buyer-procured or separately approved by Transform Health under a written cap/change order before use.
+
 ### Accuracy and validation
 
-Before tuning, freeze a representative benchmark with exact input-document digests and reference evidence spans. Measure at minimum:
+Before tuning, freeze a representative benchmark with exact input-document digests, source-page/image digests for scanned cases, and reference evidence spans. Measure at minimum:
 
 - relevant-span recall;
 - evidence precision;
 - citation correctness;
 - unsupported-positive / hallucinated-evidence rate;
 - false `NOT_IDENTIFIED` rate;
+- OCR-derived candidate promotion errors, separately from native-text cases;
 - latency and cost by page count and language;
-- OCR-vs-native-text performance.
+- OCR-vs-native-text performance;
+- English/French/Spanish output correctness and artifact completeness.
 
-Performance thresholds should be agreed with Transform Health against representative data rather than invented before access to the buyer's corpus. A provider/model change should trigger the same benchmark before promotion.
+Performance thresholds should be agreed with Transform Health against representative data rather than invented before access to the buyer's corpus. A provider/model/OCR-engine change should trigger the same relevant benchmark before promotion.
 
 ### Data protection and operational controls
 
 The implementation baseline is least privilege, server-side secret custody, encryption in transit/at rest, explicit consent and retention controls, deletion workflows, rate/abuse limits, no document text in routine analytics logs, provider/data-reuse terms aligned with buyer policy, and a bounded audit trail for user/job/admin events.
+
+For scanned documents, any retained source images needed to verify OCR-derived candidates must follow the same agreed retention, access, and deletion policy as the uploaded source corpus.
 
 Final choices depend on Transform Health's hosting, residency, confidentiality, WordPress, and data-retention constraints and will be resolved in the orientation milestone.
 
@@ -183,7 +191,7 @@ The application should make the distinction below explicit rather than overclaim
 
 **Demonstrated technical fit:** agentic/LLM evaluation, deterministic verification, source/result lineage, hostile-case testing, fail-closed authority boundaries, structured evidence contracts, and software/API implementation.
 
-**To be bound during delivery:** Transform Health's legislative assessment taxonomy, representative health-policy documents, country/language edge cases, WordPress deployment specifics, hosting/data-retention policy, and domain-review protocol.
+**To be bound during delivery:** Transform Health's legislative assessment taxonomy, representative health-policy documents, country/language edge cases, WordPress deployment specifics, hosting/data-retention policy, acceptable OCR/source-image verification method, and domain-review protocol.
 
 **Not claimed unless separately evidenced:** prior health-data-governance consultancy, legal practice, prior Transform Health engagement, production multilingual legal-OCR deployment, or a specific public-health credential.
 
@@ -199,8 +207,10 @@ The Terms of Reference make legislative/regulatory/health-data-governance experi
 - [ ] 2–3 sample links resolve on public main and descriptions remain accurate.
 - [ ] No sample is described as buyer acceptance, production use, compliance certification, or paid delivery unless independently evidenced.
 - [ ] Proposal PDF/DOCX exported from the reviewed packet.
-- [ ] Fee remains $15,000 unless owner explicitly changes it.
-- [ ] Any exclusions/pass-through operating costs are stated clearly.
+- [ ] Fee remains **$15,000 total professional implementation fee** unless owner explicitly changes it.
+- [ ] Any buyer-procured / pass-through operating service is separately approved under a written cap/change order; no surprise operating costs.
+- [ ] English/French/Spanish input **and output** behavior is explicit in the proposal.
+- [ ] OCR-derived text cannot self-certify as source evidence; source-image/human verification boundary remains explicit.
 - [ ] Buyer deadline rechecked on first-party page immediately before submission.
 - [ ] Fresh Gmail + Slack hard-dedupe confirms no prior Transform Health submission/follow-up.
 - [ ] Muse arbitration selects exactly one outbound submission route.
