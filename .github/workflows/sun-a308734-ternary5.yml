@@ -1,0 +1,34 @@
+name: sun-a308734-ternary5
+
+on:
+  pull_request:
+    paths:
+      - "research/sun_a308734_ternary5/**"
+      - ".github/workflows/sun-a308734-ternary5.yml"
+  push:
+    branches:
+      - main
+    paths:
+      - "research/sun_a308734_ternary5/**"
+      - ".github/workflows/sun-a308734-ternary5.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  exact-checks:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout exact revision
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Compile verifier
+        run: python -m py_compile research/sun_a308734_ternary5/verify.py
+      - name: Run exact finite checks
+        run: python research/sun_a308734_ternary5/verify.py
+      - name: Run exact finite checks under optimized Python
+        run: python -O research/sun_a308734_ternary5/verify.py
