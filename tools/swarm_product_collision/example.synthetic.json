@@ -20,61 +20,142 @@
   "evaluation_time": "2026-09-15T05:15:30Z",
   "families": [
     {
-      "family_id": "royalty",
+      "family_id": "actor-franchisee",
       "terms": [
-        "royalty",
-        "franchise"
+        "franchise-owner",
+        "franchisee"
       ]
     },
     {
-      "family_id": "adfund",
+      "family_id": "object-royalty",
       "terms": [
-        "advertising",
-        "fund"
+        "license-fee",
+        "royalty"
+      ]
+    },
+    {
+      "family_id": "action-reconciliation",
+      "terms": [
+        "reconcile",
+        "reconciliation"
       ]
     }
   ],
   "max_age_seconds": 300,
   "required_providers": [
     "GITHUB_ISSUES",
+    "GITHUB_PRS",
+    "GITHUB_CODE",
     "SLACK"
   ],
   "schema": "swarm-product-collision-preflight/v1",
   "searches": [
     {
-      "family_id": "royalty",
+      "family_id": "actor-franchisee",
       "hits": [],
       "observed_at": "2026-09-15T05:15:00Z",
       "provider": "GITHUB_ISSUES",
-      "query": "royalty query",
-      "retained_root": "c717c60ede539a62982adf3acfb96bab3c6922a3f8a1587d82ae1fe9138526be",
+      "query": "franchise-owner franchisee",
+      "retained_root": "ab76960e5c5c2c5acda74a065330355eab05b0f93d6405a9c0b0c2a44015e0e6",
       "state": "COMPLETE"
     },
     {
-      "family_id": "royalty",
+      "family_id": "actor-franchisee",
+      "hits": [],
+      "observed_at": "2026-09-15T05:15:00Z",
+      "provider": "GITHUB_PRS",
+      "query": "franchise-owner franchisee",
+      "retained_root": "290454d7fef603adb4f161928bd40983e15ccef5383dede9e529e72f58ed34f1",
+      "state": "COMPLETE"
+    },
+    {
+      "family_id": "actor-franchisee",
+      "hits": [],
+      "observed_at": "2026-09-15T05:15:00Z",
+      "provider": "GITHUB_CODE",
+      "query": "franchise-owner franchisee",
+      "retained_root": "650140b074fb4c2d80f704ddf04ef3fa2e81533d2da44dee74818f6256603f92",
+      "state": "COMPLETE"
+    },
+    {
+      "family_id": "actor-franchisee",
       "hits": [],
       "observed_at": "2026-09-15T05:15:00Z",
       "provider": "SLACK",
-      "query": "royalty query",
-      "retained_root": "d99426c185b9a82cc5ab6c15dab8a6bd0a32903c13d4bd62716fad36f47c4d05",
+      "query": "franchise-owner franchisee",
+      "retained_root": "f76f949c37c3e4adae1a1483ba8415b0b158fc1470bee3b998c64edda208b6f3",
       "state": "COMPLETE"
     },
     {
-      "family_id": "adfund",
+      "family_id": "object-royalty",
       "hits": [],
       "observed_at": "2026-09-15T05:15:00Z",
       "provider": "GITHUB_ISSUES",
-      "query": "adfund query",
-      "retained_root": "09b30e968e0fd4655039f28b2774195c20a199576cd1deaff093719ba3c25964",
+      "query": "license-fee royalty",
+      "retained_root": "a507586b53ae08059ea300c2600c0625d8bc2606bd88baecfd8eb895eda98d5c",
       "state": "COMPLETE"
     },
     {
-      "family_id": "adfund",
+      "family_id": "object-royalty",
+      "hits": [],
+      "observed_at": "2026-09-15T05:15:00Z",
+      "provider": "GITHUB_PRS",
+      "query": "license-fee royalty",
+      "retained_root": "4e748e3046e6ac6e9dcbc7b516c5adaf02fa7c21bad0ea33f48fa2732140750f",
+      "state": "COMPLETE"
+    },
+    {
+      "family_id": "object-royalty",
+      "hits": [],
+      "observed_at": "2026-09-15T05:15:00Z",
+      "provider": "GITHUB_CODE",
+      "query": "license-fee royalty",
+      "retained_root": "cf909815c1dd8c3e4366b43841436dd85a67ca5a1833be09a8d72552784f2d4b",
+      "state": "COMPLETE"
+    },
+    {
+      "family_id": "object-royalty",
       "hits": [],
       "observed_at": "2026-09-15T05:15:00Z",
       "provider": "SLACK",
-      "query": "adfund query",
-      "retained_root": "fd6baec77b5d2e1b6abba3c6e7f68ffc829c2ab9e084f6b1039c4238c856a419",
+      "query": "license-fee royalty",
+      "retained_root": "c7a44f3c8e3d1e662f3b8976f6bb1bfc172548bfc40d6df6639b95ca5f22b5d8",
+      "state": "COMPLETE"
+    },
+    {
+      "family_id": "action-reconciliation",
+      "hits": [],
+      "observed_at": "2026-09-15T05:15:00Z",
+      "provider": "GITHUB_ISSUES",
+      "query": "reconcile reconciliation",
+      "retained_root": "44bd5444d080a5ab968cc19d19e2934af943ab03f3faa4d631f417058390abdf",
+      "state": "COMPLETE"
+    },
+    {
+      "family_id": "action-reconciliation",
+      "hits": [],
+      "observed_at": "2026-09-15T05:15:00Z",
+      "provider": "GITHUB_PRS",
+      "query": "reconcile reconciliation",
+      "retained_root": "7087144737c79e1d6e0dd9296eec188598e28c2da1f677d317e08c0627905f22",
+      "state": "COMPLETE"
+    },
+    {
+      "family_id": "action-reconciliation",
+      "hits": [],
+      "observed_at": "2026-09-15T05:15:00Z",
+      "provider": "GITHUB_CODE",
+      "query": "reconcile reconciliation",
+      "retained_root": "f87d83b1d1c298e4e8a100d2d10b938aa43a47ca972bbfb14f2ccba62eca30ee",
+      "state": "COMPLETE"
+    },
+    {
+      "family_id": "action-reconciliation",
+      "hits": [],
+      "observed_at": "2026-09-15T05:15:00Z",
+      "provider": "SLACK",
+      "query": "reconcile reconciliation",
+      "retained_root": "26debb0a7b9a8de44d79f6bb0d2402ab37e751e502f27453c8d25ce8f87b32fe",
       "state": "COMPLETE"
     }
   ]
