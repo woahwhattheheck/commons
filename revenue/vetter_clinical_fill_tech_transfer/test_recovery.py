@@ -1,14 +1,17 @@
 from __future__ import annotations
 
+import importlib.util
+import inspect
 import os
 import tempfile
+import time
 import unittest
-from argparse import Namespace
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from unittest import mock
 
 import engine
+import historical
 
 
 class RecoveryBoundaryTests(unittest.TestCase):
@@ -54,7 +57,9 @@ class RecoveryBoundaryTests(unittest.TestCase):
         }
 
     def _pair(
-        self, captured: datetime, updated: datetime | None = None
+        self,
+        captured: datetime,
+        updated: datetime | None = None,
     ) -> tuple[dict[str, object], dict[str, object]]:
         row = self._row(updated or captured)
         return (
@@ -62,96 +67,136 @@ class RecoveryBoundaryTests(unittest.TestCase):
             self._snapshot("RECEIVING_SITE", "SNAP-RECEIVING", row, captured),
         )
 
-    def test_row_after_snapshot_capture_fails_closed(self) -> None:
-        captured = datetime.now(timezone.utc).replace(microsecond=0) - timedelta(minutes=3)
-        source, receiving = self._pair(captured, captured + timedelta(minutes=1))
-        as_of = engine.format_utc(captured + timedelta(minutes=2))
+    def test_row_after_snapshot_capture_fails_closed_in_historical_lane(self) -> None:
+        captured = datetime(2026, 9, 13, 15, 0, tzinfo=timezone.utc)
+        source, receiving = self._pair(captured, captured + timedelta(seconds=1))
         with self.assertRaisesRegex(engine.TransferError, "later than snapshot capture"):
-            engine.compile_transfer(source, receiving, {"max_evidence_age_minutes": 60}, as_of=as_of)
-
-    def test_retained_compile_graph_uses_repaired_chronology_gate(self) -> None:
-        captured = datetime.now(timezone.utc).replace(microsecond=0) - timedelta(minutes=3)
-        source, receiving = self._pair(captured, captured + timedelta(minutes=1))
-        with self.assertRaisesRegex(engine.TransferError, "later than snapshot capture"):
-            engine._impl.compile_transfer(
+            historical.compile_transfer(
                 source,
                 receiving,
                 {"max_evidence_age_minutes": 60},
-                as_of=engine.format_utc(captured + timedelta(minutes=2)),
+                as_of=engine.format_utc(captured + timedelta(minutes=1)),
             )
 
-    def test_historical_replay_is_distinct_from_current_verification(self) -> None:
-        captured = datetime.now(timezone.utc).replace(microsecond=0) - timedelta(minutes=10)
+    def test_supported_current_compiler_has_no_as_of_parameter(self) -> None:
+        params = tuple(inspect.signature(engine.compile_transfer).parameters)
+        self.assertEqual(params, ("source", "receiving", "policy"))
+        captured = datetime.now(timezone.utc).replace(microsecond=0) - timedelta(seconds=2)
         source, receiving = self._pair(captured)
-        report = engine.compile_transfer(
+        with self.assertRaises(TypeError):
+            engine.compile_transfer(
+                source,
+                receiving,
+                {"max_evidence_age_minutes": 60},
+                as_of=engine.format_utc(captured),
+            )
+
+    def test_supported_current_verifier_has_report_only(self) -> None:
+        params = tuple(inspect.signature(engine.verify_report_current).parameters)
+        self.assertEqual(params, ("report",))
+
+    def test_current_module_does_not_expose_raw_core_or_authority_factory(self) -> None:
+        for name in (
+            "_impl",
+            "_core",
+            "_make_current_verifier",
+            "_build_current_capabilities",
+            "_load_private_core",
+            "_install_snapshot_chronology",
+        ):
+            with self.subTest(name=name):
+                self.assertFalse(hasattr(engine, name))
+        self.assertIsNone(importlib.util.find_spec("_engine_v1"))
+
+    def test_historical_explicit_time_is_distinct_noncurrent_authority(self) -> None:
+        captured = datetime(2026, 9, 13, 15, 0, tzinfo=timezone.utc)
+        source, receiving = self._pair(captured)
+        envelope = historical.compile_transfer(
             source,
             receiving,
-            {"max_evidence_age_minutes": 1},
-            as_of=engine.format_utc(captured + timedelta(seconds=30)),
+            {"max_evidence_age_minutes": 60},
+            as_of=engine.format_utc(captured + timedelta(seconds=1)),
         )
-        self.assertEqual(report["summary"]["state"], "TRANSFER_READY_FOR_OWNER_REVIEW")
-        self.assertTrue(engine.verify_report(report)["verified"])
-        with self.assertRaisesRegex(engine.TransferError, "report is no longer current"):
-            engine.verify_report_current(report)
-
-    def test_same_hold_state_with_changed_semantics_fails_current_verification(self) -> None:
-        captured = datetime.now(timezone.utc).replace(microsecond=0) - timedelta(minutes=10)
-        source, receiving = self._pair(captured)
-        report = engine.compile_transfer(
-            source,
-            receiving,
-            {"max_evidence_age_minutes": 1},
-            as_of=engine.format_utc(captured + timedelta(minutes=2)),
+        self.assertEqual(
+            envelope["schema"], historical.HISTORICAL_REPORT_SCHEMA
         )
-        self.assertEqual(report["summary"]["state"], "HOLD_FOR_OWNER_RECONCILIATION")
-        self.assertEqual(report["results"][0]["classification"], "STALE_EVIDENCE")
-        self.assertTrue(engine.verify_report(report)["verified"])
-        with self.assertRaisesRegex(engine.TransferError, "decision semantics changed"):
-            engine.verify_report_current(report)
+        self.assertEqual(
+            envelope["authority_mode"], "HISTORICAL_INTEGRITY_ONLY"
+        )
+        self.assertNotIn("state", envelope)
+        self.assertNotIn("current_receipt_sha256", envelope)
+        result = historical.verify_report(envelope)
+        self.assertEqual(
+            result["schema"], historical.HISTORICAL_VERIFY_SCHEMA
+        )
+        self.assertEqual(
+            result["authority_mode"], "HISTORICAL_INTEGRITY_ONLY"
+        )
+        self.assertNotIn("state", result)
+        self.assertIn("historical_decision_state", result)
 
-    def test_recent_report_passes_current_verification(self) -> None:
-        captured = datetime.now(timezone.utc).replace(microsecond=0) - timedelta(seconds=1)
+    def test_current_compiler_emits_current_envelope_only_from_process_clock(self) -> None:
+        captured = datetime.now(timezone.utc).replace(microsecond=0) - timedelta(seconds=2)
         source, receiving = self._pair(captured)
         report = engine.compile_transfer(
             source,
             receiving,
             {"max_evidence_age_minutes": 60},
-            as_of=engine.format_utc(datetime.now(timezone.utc).replace(microsecond=0)),
+        )
+        self.assertEqual(report["schema"], engine.CURRENT_REPORT_SCHEMA)
+        self.assertEqual(report["authority_mode"], "CURRENT_OWNER_REVIEW")
+        self.assertEqual(report["evaluated_at_utc"], report["decision"]["as_of"])
+        self.assertIn("current_receipt_sha256", report)
+        self.assertNotIn("historical_receipt_sha256", report)
+
+    def test_current_verifier_rejects_historical_envelope(self) -> None:
+        captured = datetime(2026, 9, 13, 15, 0, tzinfo=timezone.utc)
+        source, receiving = self._pair(captured)
+        envelope = historical.compile_transfer(
+            source,
+            receiving,
+            {"max_evidence_age_minutes": 60},
+            as_of=engine.format_utc(captured + timedelta(seconds=1)),
+        )
+        with self.assertRaisesRegex(engine.TransferError, "current report key set"):
+            engine.verify_report_current(envelope)
+
+    def test_recent_current_report_verifies(self) -> None:
+        captured = datetime.now(timezone.utc).replace(microsecond=0) - timedelta(seconds=2)
+        source, receiving = self._pair(captured)
+        report = engine.compile_transfer(
+            source,
+            receiving,
+            {"max_evidence_age_minutes": 60},
         )
         result = engine.verify_report_current(report)
         self.assertTrue(result["verified"])
-        self.assertTrue(result["historical_replay_verified"])
-        self.assertEqual(result["state"], "TRANSFER_READY_FOR_OWNER_REVIEW")
-        self.assertIn("current_as_of", result)
+        self.assertEqual(result["authority_mode"], "CURRENT_OWNER_REVIEW")
+        self.assertEqual(
+            result["decision_state"], "TRANSFER_READY_FOR_OWNER_REVIEW"
+        )
 
-    def test_current_verifier_clock_is_bound_against_module_global_rebind(self) -> None:
-        captured = datetime.now(timezone.utc).replace(microsecond=0) - timedelta(minutes=10)
-        source, receiving = self._pair(captured)
-        historical_as_of = engine.format_utc(captured + timedelta(seconds=30))
+    def test_current_verifier_resamples_process_time_and_expires_ready(self) -> None:
+        # 116 seconds old is still inside the inclusive 1-minute bucket because
+        # the retained classifier floors age to whole minutes.  Five seconds of
+        # real process time moves it past the >1-minute stale threshold without
+        # any injectable clock or caller-selected as_of.
+        now = datetime.now(timezone.utc).replace(microsecond=0)
+        captured = now - timedelta(seconds=2)
+        updated = now - timedelta(seconds=116)
+        source, receiving = self._pair(captured, updated)
         report = engine.compile_transfer(
             source,
             receiving,
             {"max_evidence_age_minutes": 1},
-            as_of=historical_as_of,
         )
-        with mock.patch.object(engine, "_process_utc_now", return_value=historical_as_of):
-            with self.assertRaisesRegex(engine.TransferError, "report is no longer current"):
-                engine.verify_report_current(report)
-
-    def test_production_verify_cli_rechecks_freshness(self) -> None:
-        captured = datetime.now(timezone.utc).replace(microsecond=0) - timedelta(minutes=10)
-        source, receiving = self._pair(captured)
-        report = engine.compile_transfer(
-            source,
-            receiving,
-            {"max_evidence_age_minutes": 1},
-            as_of=engine.format_utc(captured + timedelta(seconds=30)),
+        self.assertEqual(
+            report["decision"]["summary"]["state"],
+            "TRANSFER_READY_FOR_OWNER_REVIEW",
         )
-        with tempfile.TemporaryDirectory() as td:
-            path = Path(td) / "report.json"
-            path.write_bytes(engine.canonical_json_bytes(report))
-            with self.assertRaisesRegex(engine.TransferError, "report is no longer current"):
-                engine._verify_cli(Namespace(report=str(path), markdown=None))
+        time.sleep(5)
+        with self.assertRaisesRegex(engine.TransferError, "no longer current"):
+            engine.verify_report_current(report)
 
     @unittest.skipUnless(hasattr(os, "O_NOFOLLOW"), "platform lacks O_NOFOLLOW")
     def test_final_input_symlink_is_rejected(self) -> None:

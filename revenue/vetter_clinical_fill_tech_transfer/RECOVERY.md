@@ -1,45 +1,62 @@
 # Vetter Tech-Transfer Recovery Boundary
 
-This recovery preserves the predecessor classifier byte-for-byte as `_engine_v1.py` and moves production authority into `engine.py`. The split is deliberate: the 144-packet comparison logic stays auditable against the original reviewed source while the three stop-merge boundary defects are closed in one small authority layer.
+This successor closes the three original #13976 stop-merge families **and** the independent Z-Helix exact-head RED on #14471.
 
-## Closed predecessor defects
-
-### 1. Snapshot chronology is now part of normalization
+## 1. Snapshot chronology
 
 Every source and receiving row must satisfy:
 
-`last_updated_utc <= snapshot.captured_at_utc <= compile as_of`
+`last_updated_utc <= snapshot.captured_at_utc <= evaluation time`
 
-The repaired `normalize_snapshot()` is installed into the retained implementation module itself, so direct retained `compile_transfer()` calls cannot bypass the chronology gate.
+The chronology repair is installed into each private retained-core namespace before either current or historical compilation can occur.
 
-### 2. Production input reads one retained generation
+## 2. Descriptor-bound production ingress
 
-`_read_bounded()` now:
+Production `_read_bounded()`:
 
-- requires platform `O_NOFOLLOW` support and refuses final-component symlinks;
-- opens once with `O_RDONLY | O_NOFOLLOW` plus close-on-exec/nonblocking flags where available;
-- `fstat()`s that retained descriptor and accepts only a bounded regular file;
-- enforces `MAX_JSON_BYTES` while consuming bytes, not after an unbounded allocation;
-- re-`fstat()`s the same descriptor and rejects in-place generation/size changes;
+- requires `O_NOFOLLOW` and rejects final-component symlinks;
+- opens once and retains that descriptor;
+- accepts only a regular file;
+- enforces `MAX_JSON_BYTES` during consumption, before unbounded allocation;
+- re-`fstat()`s the same descriptor and rejects in-place generation/size drift;
 - remains bound to the opened inode if the pathname is replaced after open.
 
-The hostile suite covers final symlink rejection, same-size pathname replacement after open, and hard-cap enforcement during consumption.
+Hostiles cover final symlinks, same-size pathname replacement after open, and in-read byte-cap enforcement.
 
-### 3. Historical replay and current verification are mechanically distinct
+## 3. Current verification actually means current
 
-`verify_report(report)` is deterministic historical integrity replay. It proves that the sealed report recompiles byte-identically at its bound historical `as_of`.
+The supported current surface is `engine.py`:
 
-`verify_report_current(report)` first proves historical integrity, then recompiles the bound snapshots and policy at process-owned current UTC. If the owner-review state has changed—for example because formerly fresh evidence is now stale—it fails closed.
+- `compile_transfer(source, receiving, policy)` has no `as_of` argument;
+- `verify_report_current(report)` has only `report`;
+- both sample process UTC through lexical capabilities constructed once at import;
+- the construction factory and retained raw core namespace are deleted from the current module after binding;
+- verification compares the full decision projection after resampling current UTC, excluding only evaluation time and receipt bytes.
 
-The production `verify` CLI uses only `verify_report_current`; it accepts no caller `as_of` override. A historical READY artifact therefore cannot remain “currently verified” after freshness expires.
+A READY result that ages past the declared evidence freshness therefore fails current verification even if historical integrity remains valid.
 
-## Authority ceiling
+## 4. Explicit time is historical/test-only
 
-This remains a read-only synthetic/non-production evidence handoff aid. It does not contact Vetter, mutate provider/manufacturing systems, recommend process parameters, disposition deviations, make GMP/quality/scientific/regulatory decisions, release batches, deploy anything, send outreach, accept contracts, collect payment, or recognize revenue.
+The independent review of `cdeded7f705394b4263e0fa002a4256e3a13ff82` correctly found that an importable clock-injectable verifier factory and a package-exported `compile_transfer(..., as_of=...)` could still mint current-looking artifacts.
+
+That surface is removed.
+
+- Explicit-time replay exists only in `historical.py`.
+- Historical reports use schema `vetter-clinical-fill-tech-transfer-historical/v1` and authority mode `HISTORICAL_INTEGRITY_ONLY`.
+- Historical verification uses a distinct historical-verification schema and exposes only `historical_decision_state`, never the current verification schema.
+- Package `__init__.py` exports only current compilation/current verification.
+- The retained predecessor source is remapped byte-for-byte from importable `_engine_v1.py` to inert `_engine_v1.txt`.
+- `engine.py` and `historical.py` evaluate the trusted retained text into private namespaces, bind only their intended capabilities, then delete the raw namespace/factories from their importable surfaces.
+
+The recovery tests inspect signatures and module attributes, reject a caller `as_of` on the current compiler, prove a historical envelope cannot pass the current verifier, and prove no importable `_engine_v1` Python module remains.
+
+## Frozen predecessor behavior
+
+The 144-packet synthetic corpus still executes the retained classifier through a test-local historical adapter: 120 READY plus four packets in each of six named HOLD families, deterministic receipts, order invariance, strict custody/type checks, replay/tamper checks, and output exclusivity. Deterministic fixture time is therefore preserved without being confused with current authority.
 
 ## Exact execution gate
 
-The dedicated recovery workflow runs from the product directory and gates:
+The dedicated workflow is intended to run from this product directory:
 
 ```bash
 python -m compileall -q .
@@ -48,6 +65,8 @@ python -O -m unittest -v test_engine.py test_recovery.py
 python synthetic_acceptance.py
 ```
 
-The recovery branch is also updated through the repository contents API after the workflow exists so GitHub receives an ordinary push/synchronize event for the exact published bytes; zero workflow runs are never represented as green.
+GitHub had scheduled **zero** runs for the predecessor recovery heads despite push/PR events. Zero runs are UNKNOWN/no-run, never represented as green. Any later hosted result must bind the exact semantic head it executed.
 
-Any semantic head movement voids prior review evidence and requires a new exact-head gate.
+## Authority ceiling
+
+Read-only synthetic/non-production handoff evidence only. No Vetter/provider outreach, live manufacturing write, process recommendation, deviation disposition, GMP/quality/scientific/regulatory decision, batch release, deployment, contract, payment, cash, or recognized revenue mutation is performed by this carrier.

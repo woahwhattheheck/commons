@@ -4,9 +4,11 @@ from datetime import datetime, timedelta, timezone
 from typing import Any
 
 try:
-    from .engine import canonical_sha256, compile_transfer
+    from .engine import canonical_sha256
+    from .historical import compile_transfer
 except ImportError:
-    from engine import canonical_sha256, compile_transfer
+    from engine import canonical_sha256
+    from historical import compile_transfer
 
 
 def _fmt(dt: datetime) -> str:
@@ -42,11 +44,22 @@ def _row(i: int, updated: str) -> dict[str, Any]:
 
 
 def _rows_sha(rows: list[dict[str, Any]]) -> str:
-    ordered = sorted(rows, key=lambda r: (r["project_id"], r["molecule_id"], r["batch_id"], r["site_id"], canonical_sha256(r)))
+    ordered = sorted(
+        rows,
+        key=lambda r: (
+            r["project_id"],
+            r["molecule_id"],
+            r["batch_id"],
+            r["site_id"],
+            canonical_sha256(r),
+        ),
+    )
     return canonical_sha256(ordered)
 
 
-def make_acceptance(as_of: str = "2026-09-13T15:00:00Z") -> tuple[dict[str, Any], dict[str, Any], dict[str, Any]]:
+def make_acceptance(
+    as_of: str = "2026-09-13T15:00:00Z",
+) -> tuple[dict[str, Any], dict[str, Any], dict[str, Any]]:
     now = datetime.strptime(as_of, "%Y-%m-%dT%H:%M:%SZ").replace(tzinfo=timezone.utc)
     captured = _fmt(now - timedelta(minutes=5))
     fresh = _fmt(now - timedelta(minutes=15))
@@ -91,12 +104,16 @@ def make_acceptance(as_of: str = "2026-09-13T15:00:00Z") -> tuple[dict[str, Any]
     return source, receiving, {"max_evidence_age_minutes": 180}
 
 
-def run_acceptance(as_of: str = "2026-09-13T15:00:00Z") -> dict[str, Any]:
+def run_acceptance(
+    as_of: str = "2026-09-13T15:00:00Z",
+) -> dict[str, Any]:
+    """Return an explicitly historical, non-current acceptance envelope."""
     source, receiving, policy = make_acceptance(as_of)
     return compile_transfer(source, receiving, policy, as_of=as_of)
 
 
 if __name__ == "__main__":
-    report = run_acceptance()
-    print(report["summary"])
-    print(report["receipt_sha256"])
+    envelope = run_acceptance()
+    print(envelope["authority_mode"])
+    print(envelope["decision"]["summary"])
+    print(envelope["historical_receipt_sha256"])
