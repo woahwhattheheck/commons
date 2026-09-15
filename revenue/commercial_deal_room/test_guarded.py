@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import copy
+import importlib
 import unittest
 from collections.abc import Mapping
 from typing import Any, Iterator
@@ -26,6 +27,30 @@ class FlippingProviderPayload(Mapping[str, Any]):
             if self._provider_reads <= self._canonical_reads:
                 return "gmail"
             return "gmail-api"
+        return self._payload[key]
+
+    def __iter__(self) -> Iterator[str]:
+        return iter(self._payload)
+
+    def __len__(self) -> int:
+        return len(self._payload)
+
+
+class SharedFlippingProviderPayload(Mapping[str, Any]):
+    """One aliased payload that returns a different canonical provider per read."""
+
+    def __init__(self) -> None:
+        self._payload = {
+            "provider": "gmail",
+            "provider_message_id": "m-shared",
+            "reply_to_event_id": "send-1",
+        }
+        self.provider_reads = 0
+
+    def __getitem__(self, key: str) -> Any:
+        if key == "provider":
+            self.provider_reads += 1
+            return "gmail" if self.provider_reads == 1 else "github"
         return self._payload[key]
 
     def __iter__(self) -> Iterator[str]:
@@ -61,6 +86,25 @@ def conflict_packet(name: str) -> dict[str, Any]:
         },
     )
     return packet
+
+
+def shared_alias_packet(
+    name: str, *, stateful: bool
+) -> tuple[dict[str, Any], Mapping[str, Any]]:
+    packet = base_packet(name)
+    offer_sent(packet)
+    shared: Mapping[str, Any]
+    if stateful:
+        shared = SharedFlippingProviderPayload()
+    else:
+        shared = {
+            "provider": "gmail",
+            "provider_message_id": "m-shared",
+            "reply_to_event_id": "send-1",
+        }
+    add(packet, "interest-1", "BUYER_INTEREST", "2026-09-13T12:20:00Z", shared)
+    add(packet, "interest-2", "BUYER_INTEREST", "2026-09-13T12:21:00Z", shared)
+    return packet, shared
 
 
 class GuardedProviderTests(unittest.TestCase):
@@ -117,9 +161,9 @@ class GuardedProviderTests(unittest.TestCase):
     def test_package_compile_consumes_same_snapshot_it_validates(self):
         packet = conflict_packet("package-flip")
         original = packet["events"][0]["payload"]
-        # The RED predecessor performed two guard reads before the core read.
-        # That head therefore consumed gmail-api here and missed the collision.
-        packet["events"][0]["payload"] = FlippingProviderPayload(original, canonical_reads=2)
+        packet["events"][0]["payload"] = FlippingProviderPayload(
+            original, canonical_reads=2
+        )
         board = compile_board(packet, now=NOW)
         self.assertEqual(board["stage"], "HOLD")
         self.assertIn("PROVIDER_MESSAGE_ID_CONFLICT", board["reasons"])
@@ -127,9 +171,9 @@ class GuardedProviderTests(unittest.TestCase):
     def test_direct_engine_compile_consumes_same_snapshot_it_validates(self):
         packet = conflict_packet("direct-flip")
         original = packet["events"][0]["payload"]
-        # The RED predecessor's direct-engine path had one guard read before the
-        # core read. The repaired path performs one detached read total.
-        packet["events"][0]["payload"] = FlippingProviderPayload(original, canonical_reads=1)
+        packet["events"][0]["payload"] = FlippingProviderPayload(
+            original, canonical_reads=1
+        )
         board = direct_engine.compile_board(packet, now=NOW)
         self.assertEqual(board["stage"], "HOLD")
         self.assertIn("PROVIDER_MESSAGE_ID_CONFLICT", board["reasons"])
@@ -139,9 +183,9 @@ class GuardedProviderTests(unittest.TestCase):
         board = compile_board(canonical, now=NOW)
         hostile = copy.deepcopy(canonical)
         original = hostile["events"][0]["payload"]
-        # Old package verify read the live payload once outside core, then again
-        # during historical normalization, then again during current evaluation.
-        hostile["events"][0]["payload"] = FlippingProviderPayload(original, canonical_reads=2)
+        hostile["events"][0]["payload"] = FlippingProviderPayload(
+            original, canonical_reads=2
+        )
         result = verify_board(hostile, board, now=NOW)
         self.assertTrue(result["historical_valid"])
         self.assertEqual(result["current_stage"], "HOLD")
@@ -152,7 +196,9 @@ class GuardedProviderTests(unittest.TestCase):
         board = compile_board(canonical, now=NOW)
         hostile = copy.deepcopy(canonical)
         original = hostile["events"][0]["payload"]
-        hostile["events"][0]["payload"] = FlippingProviderPayload(original, canonical_reads=1)
+        hostile["events"][0]["payload"] = FlippingProviderPayload(
+            original, canonical_reads=1
+        )
         result = direct_engine.verify_board(hostile, board, now=NOW)
         self.assertTrue(result["historical_valid"])
         self.assertEqual(result["current_stage"], "HOLD")
@@ -166,6 +212,88 @@ class GuardedProviderTests(unittest.TestCase):
         aliased["events"][0]["payload"]["provider"] = "gmail-api"
         with self.assertRaises(ContractError):
             verify_board(aliased, board, now=NOW)
+
+    def test_shared_payload_alias_is_read_once_by_package_compile(self):
+        packet, shared = shared_alias_packet("shared-package", stateful=True)
+        board = compile_board(packet, now=NOW)
+        self.assertEqual(shared.provider_reads, 1)
+        self.assertEqual(board["stage"], "HOLD")
+        self.assertIn("PROVIDER_MESSAGE_ID_CONFLICT", board["reasons"])
+
+    def test_shared_payload_alias_is_read_once_by_direct_compile(self):
+        packet, shared = shared_alias_packet("shared-direct", stateful=True)
+        board = direct_engine.compile_board(packet, now=NOW)
+        self.assertEqual(shared.provider_reads, 1)
+        self.assertEqual(board["stage"], "HOLD")
+        self.assertIn("PROVIDER_MESSAGE_ID_CONFLICT", board["reasons"])
+
+    def test_shared_payload_alias_is_read_once_by_package_verify(self):
+        canonical, _ = shared_alias_packet("shared-verify", stateful=False)
+        board = compile_board(canonical, now=NOW)
+        hostile, shared = shared_alias_packet("shared-verify", stateful=True)
+        result = verify_board(hostile, board, now=NOW)
+        self.assertEqual(shared.provider_reads, 1)
+        self.assertTrue(result["historical_valid"])
+        self.assertEqual(result["current_stage"], "HOLD")
+        self.assertIn("PROVIDER_MESSAGE_ID_CONFLICT", result["current_reasons"])
+
+    def test_shared_payload_alias_is_read_once_by_direct_verify(self):
+        canonical, _ = shared_alias_packet("shared-direct-verify", stateful=False)
+        board = compile_board(canonical, now=NOW)
+        hostile, shared = shared_alias_packet("shared-direct-verify", stateful=True)
+        result = direct_engine.verify_board(hostile, board, now=NOW)
+        self.assertEqual(shared.provider_reads, 1)
+        self.assertTrue(result["historical_valid"])
+        self.assertEqual(result["current_stage"], "HOLD")
+        self.assertIn("PROVIDER_MESSAGE_ID_CONFLICT", result["current_reasons"])
+
+    def test_cyclic_mapping_fails_closed_before_core_recursion(self):
+        packet = base_packet("mapping-cycle")
+        packet["cycle"] = packet
+        with self.assertRaisesRegex(ContractError, "cyclic mapping"):
+            compile_board(packet, now=NOW)
+
+    def test_cyclic_sequence_fails_closed_before_core_recursion(self):
+        packet = base_packet("sequence-cycle")
+        loop: list[Any] = []
+        loop.append(loop)
+        packet["cycle"] = loop
+        with self.assertRaisesRegex(ContractError, "cyclic sequence"):
+            compile_board(packet, now=NOW)
+
+    def test_snapshot_depth_is_bounded(self):
+        packet = base_packet("depth")
+        cursor: dict[str, Any] = {}
+        packet["padding"] = cursor
+        for _ in range(70):
+            child: dict[str, Any] = {}
+            cursor["next"] = child
+            cursor = child
+        with self.assertRaisesRegex(ContractError, "depth limit"):
+            compile_board(packet, now=NOW)
+
+    def test_snapshot_nodes_are_bounded(self):
+        packet = base_packet("nodes")
+        packet["padding"] = [None] * 250_001
+        with self.assertRaisesRegex(ContractError, "node limit"):
+            compile_board(packet, now=NOW)
+
+    def test_engine_reload_reinstalls_direct_guards(self):
+        reloaded = importlib.reload(direct_engine)
+        self.assertIs(reloaded.compile_board, compile_board)
+        self.assertIs(reloaded.verify_board, verify_board)
+
+        packet = base_packet("reload-alias")
+        offer_sent(packet)
+        packet["events"][0]["payload"]["provider"] = "gmail-api"
+        with self.assertRaises(ContractError):
+            reloaded.compile_board(packet, now=NOW)
+
+        shared_packet, shared = shared_alias_packet("reload-shared", stateful=True)
+        board = reloaded.compile_board(shared_packet, now=NOW)
+        self.assertEqual(shared.provider_reads, 1)
+        self.assertEqual(board["stage"], "HOLD")
+        self.assertIn("PROVIDER_MESSAGE_ID_CONFLICT", board["reasons"])
 
 
 if __name__ == "__main__":
