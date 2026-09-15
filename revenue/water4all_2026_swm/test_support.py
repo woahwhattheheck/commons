@@ -7,12 +7,14 @@ import os
 import tempfile
 import unittest
 from pathlib import Path
+from unittest import mock
 
 from revenue.water4all_2026_swm import cli
 from revenue.water4all_2026_swm.engine import (
     ReadinessError,
     canonical_bytes,
     compile_at,
+    compile_current,
     compile_historical,
     render_owner_markdown,
     seal_source,
@@ -60,6 +62,7 @@ def base_valid():
                 "coordinator": coordinator,
                 "person_months_milli": 10000,
                 "synthetic_placeholder": False,
+                "water4all_partnership_beneficiary": False,
             }
         )
     evidence = [
@@ -116,7 +119,14 @@ def base_valid():
 
 
 def compile_valid(value=None, mode="HISTORICAL", when=T0):
-    return compile_at(base_valid() if value is None else value, when, mode)
+    if mode != "HISTORICAL":
+        raise ValueError("compile_valid is historical-only; use compile_current_at")
+    return compile_at(base_valid() if value is None else value, when, "HISTORICAL")
+
+
+def compile_current_at(value=None, when=T0):
+    with mock.patch("revenue.water4all_2026_swm.engine.utc_now", return_value=when):
+        return compile_current(base_valid() if value is None else value)
 
 
 def reason_codes(bundle):
