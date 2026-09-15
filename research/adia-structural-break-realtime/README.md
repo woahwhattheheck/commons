@@ -43,9 +43,9 @@ Historical normalization uses a median/MAD scale with a conservative standard
 deviation floor. Online normalized residuals are clipped before feature updates.
 Each family requires support from more than one timescale where possible, then a
 decaying persistence accumulator converts evidence into a soft probability-like
-score. This design was chosen after a first local hostile run exposed a real
-false-alarm defect: a max-only variance channel let one extreme outlier feed the
-alarm for an entire long window. The shipped version removes that path.
+score. This design was chosen after hostile review exposed false-alarm and
+historical-scale sensitivity paths; the repaired detector requires corroboration
+across windows and uses a robust historical scale floor.
 
 ## Strict causality and bounded state
 
@@ -83,27 +83,45 @@ python -m py_compile detector.py submission.py synthetic.py tests/test_detector.
 python -c "import json; from synthetic import benchmark; print(json.dumps(benchmark(32), indent=2, sort_keys=True))"
 ```
 
-Exact local authored-byte result before publication:
+### Historical pre-hardening receipt
 
-- focused tests: **17/17 PASS**;
+The original authored carrier recorded **17/17 PASS** plus a 32-seed synthetic
+receipt with trend median delay **41.5** and persistence median delay **38.0**.
+Those values describe that earlier source generation only. Detector hardening in
+`bd6b45abe92c563360cd02a2cd138dd55ff9f413` changed corroboration / robust-scale
+semantics, so reusing the old exact delay receipt for the repaired detector would
+be stale evidence.
+
+### Current repaired exact-head hosted proof
+
+GitHub Actions dedicated run `34933981146`, job `104267862275`, on the repaired
+receipt donor merge ref completed successfully under Python **3.11.16**:
+
 - `py_compile`: **PASS**;
+- detector + robustness tests: **20/20 PASS**;
+- exact `synthetic_benchmark_receipt.json` replay: **PASS**;
 - 32-seed synthetic smoke at alarm threshold `0.5`:
   - null false-alarm rate: **0/32**;
+  - null max-score median: **0.012953727530695859**;
   - mean-shift hit rate: **32/32**, median delay **8.0** points;
   - variance-shift hit rate: **32/32**, median delay **10.5**;
-  - trend-shift hit rate: **32/32**, median delay **41.5**;
-  - persistence-shift hit rate: **32/32**, median delay **38.0**.
+  - trend-shift hit rate: **32/32**, median delay **42.5**;
+  - persistence-shift hit rate: **32/32**, median delay **42.0**.
 
 These are deliberately labeled **synthetic engineering regressions**. They are
-not organizer TS-AUC, not a challenge score, and not a rank/prize claim.
+not organizer TS-AUC, not a challenge score, and not a leaderboard/rank/prize or
+payout claim.
 
 ## Hostiles covered
 
-`tests/test_detector.py` checks:
+`tests/test_detector.py` and `tests/test_detector_robustness.py` check:
 
 - mean and variance change detection;
 - dependence change with approximately preserved marginal variance;
 - one-outlier false-alarm resistance;
+- exact warmup-impulse rejection;
+- long-horizon single-impulse alias rejection;
+- historical-tail outlier resistance without erasing a later true mean break;
 - null false-alarm resistance;
 - prefix invariance under an adversarial future suffix;
 - byte-deterministic repeat replay;
