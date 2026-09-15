@@ -34,6 +34,7 @@ jobs:
           tools.current_readiness_guard.test_guard_compatibility
           tools.current_readiness_guard.test_guard_review_closure
           tools.current_readiness_guard.test_guard_review_closure_v2
+          tools.current_readiness_guard.test_guard_review_closure_v3
       - name: Optimized hostile and safe corpus
         run: >-
           python -O -m unittest -v
@@ -42,6 +43,7 @@ jobs:
           tools.current_readiness_guard.test_guard_compatibility
           tools.current_readiness_guard.test_guard_review_closure
           tools.current_readiness_guard.test_guard_review_closure_v2
+          tools.current_readiness_guard.test_guard_review_closure_v3
       - name: Scan changed revenue Python
         run: >-
           python -m tools.current_readiness_guard.cli changed
