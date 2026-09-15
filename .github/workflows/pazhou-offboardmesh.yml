@@ -4,12 +4,12 @@ on:
   push:
     paths:
       - "competitions/pazhou_overseas_offboardmesh_2026/**"
-      - "tests/test_pazhou_offboardmesh.py"
+      - "tests/test_pazhou_offboardmesh*.py"
       - ".github/workflows/pazhou-offboardmesh.yml"
   pull_request:
     paths:
       - "competitions/pazhou_overseas_offboardmesh_2026/**"
-      - "tests/test_pazhou_offboardmesh.py"
+      - "tests/test_pazhou_offboardmesh*.py"
       - ".github/workflows/pazhou-offboardmesh.yml"
   workflow_dispatch:
 
@@ -31,8 +31,8 @@ jobs:
       - name: Compile source
         run: python -m py_compile competitions/pazhou_overseas_offboardmesh_2026/offboardmesh.py competitions/pazhou_overseas_offboardmesh_2026/rubric.py
       - name: Run hostile tests
-        run: python -m unittest discover -s tests -p 'test_pazhou_offboardmesh.py' -v
+        run: python -m unittest discover -s tests -p 'test_pazhou_offboardmesh*.py' -v
       - name: Run hostile tests optimized
-        run: python -O -m unittest discover -s tests -p 'test_pazhou_offboardmesh.py' -v
+        run: python -O -m unittest discover -s tests -p 'test_pazhou_offboardmesh*.py' -v
       - name: Run rubric audit
         run: python competitions/pazhou_overseas_offboardmesh_2026/rubric.py
