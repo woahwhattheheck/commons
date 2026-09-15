@@ -26,8 +26,8 @@ jobs:
           python-version: '3.12'
       - name: Syntax
         run: python -m py_compile competitions/cuhk_x_large_model_track/check_readiness.py tests/test_cuhkx_large_model_readiness.py
-      - name: Regression tests
-        run: python -m unittest tests.test_cuhkx_large_model_readiness -v
+      - name: Focused regression tests
+        run: python -m unittest discover -s tests -p 'test_cuhkx_large_model_readiness.py' -v
       - name: Default entry must remain blocked
         run: |
           set +e
