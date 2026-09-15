@@ -1,0 +1,73 @@
+{
+  "as_of": "2026-09-14T00:00:00Z",
+  "assumptions": [
+    {
+      "id": "a1",
+      "status": "ACCEPTED",
+      "text": "Synthetic interface demand remains below the stated ceiling."
+    }
+  ],
+  "bias_checks": [
+    {
+      "id": "b1",
+      "status": "PASS",
+      "text": "Vendor identity is excluded from scoring."
+    }
+  ],
+  "criteria": [
+    {
+      "evidence_ids": ["cyber"],
+      "id": "cyber",
+      "weight_bps": 4000
+    },
+    {
+      "evidence_ids": ["compat"],
+      "id": "compat",
+      "weight_bps": 3500
+    },
+    {
+      "evidence_ids": ["availability"],
+      "id": "availability",
+      "weight_bps": 2500
+    }
+  ],
+  "episode_id": "synthetic-vehicle-compute-refresh",
+  "evidence": [
+    {
+      "id": "cyber",
+      "observed_at": "2026-09-01T00:00:00Z",
+      "payload": {"class": "synthetic", "generation": 1},
+      "payload_sha256": "ebab19b939d68aa0e59b25230cb69701b2d7fd4c0dc4406632da4fde9d11c53a",
+      "source": "synthetic://cyber",
+      "status": "ACTIVE",
+      "valid_until": "2027-01-01T00:00:00Z"
+    },
+    {
+      "id": "compat",
+      "observed_at": "2026-09-01T00:00:00Z",
+      "payload": {"class": "synthetic", "generation": 1},
+      "payload_sha256": "ebab19b939d68aa0e59b25230cb69701b2d7fd4c0dc4406632da4fde9d11c53a",
+      "source": "synthetic://compat",
+      "status": "ACTIVE",
+      "valid_until": "2027-01-01T00:00:00Z"
+    },
+    {
+      "id": "availability",
+      "observed_at": "2026-09-01T00:00:00Z",
+      "payload": {"class": "synthetic", "generation": 1},
+      "payload_sha256": "ebab19b939d68aa0e59b25230cb69701b2d7fd4c0dc4406632da4fde9d11c53a",
+      "source": "synthetic://availability",
+      "status": "ACTIVE",
+      "valid_until": "2027-01-01T00:00:00Z"
+    }
+  ],
+  "generation": 1,
+  "objectives": ["Select a synthetic vehicle compute architecture under current evidence."],
+  "options": [
+    {"criterion_scores": {"availability": 7000, "compat": 7600, "cyber": 8200}, "id": "compute-a"},
+    {"criterion_scores": {"availability": 6200, "compat": 8000, "cyber": 7800}, "id": "compute-b"}
+  ],
+  "risks": [
+    {"disposition": "MITIGATE", "id": "r1", "text": "Component availability may change next quarter."}
+  ]
+}
