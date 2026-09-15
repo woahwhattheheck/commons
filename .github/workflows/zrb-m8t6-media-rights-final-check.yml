@@ -36,5 +36,5 @@ jobs:
           python rights_ops.py import "$tmp/desk.sqlite3" example_manifest.json --at 2026-09-15T06:00:00Z
           printf '%s\n' '{"asset_id":"cut-a-15s","channel":"instagram","territory":"US","starts_at":"2026-10-01T12:00:00Z","ends_at":"2026-10-15T12:00:00Z"}' > "$tmp/intent.json"
           python rights_ops.py evaluate "$tmp/desk.sqlite3" "$tmp/intent.json" | grep 'READY_ON_SUPPLIED_AUTHORITY'
-          mkdir "$tmp/export-parent"
-          python rights_ops.py export "$tmp/desk.sqlite3" "$tmp/export-parent/bundle" --as-of 2026-12-10T00:00:00Z | grep 'EXPORTED'
+          mkdir -m 700 "$tmp/bundle"
+          python rights_ops.py export "$tmp/desk.sqlite3" "$tmp/bundle" --as-of 2026-12-10T00:00:00Z | grep 'EXPORTED'
