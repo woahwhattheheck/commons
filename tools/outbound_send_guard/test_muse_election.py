@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-import copy
 import unittest
 from datetime import datetime, timezone
 
@@ -61,16 +60,52 @@ class MuseElectionTests(unittest.TestCase):
             ledger_complete=kw.get("ledger_complete", True),
         )
 
-    def test_selected_exact_candidate_satisfies_only_election_prerequisite(self):
+    def test_selected_local_snapshot_holds_without_authenticated_provenance(self):
         receipt = self.compile()
         payload = receipt["payload"]
-        self.assertEqual(payload["decision"], "MUSE_SELECTED")
-        self.assertTrue(payload["muse_selected"])
-        self.assertTrue(payload["election_prerequisite_satisfied"])
-        self.assertIs(payload["external_send_authorized"], False)
-        self.assertIs(payload["side_effects_authorized"], False)
-        self.assertEqual(payload["reasons"], [])
+        self.assertEqual(payload["outcome"], "SELECTED")
+        self.assertEqual(payload["decision"], "HOLD")
+        self.assertFalse(payload["muse_selected"])
+        self.assertFalse(payload["election_prerequisite_satisfied"])
+        self.assertIn(muse.UNVERIFIED_PROVENANCE_REASON, payload["reasons"])
+        self.assertFalse(payload["external_send_authorized"])
+        self.assertFalse(payload["side_effects_authorized"])
         self.assertTrue(muse.verify_receipt(receipt))
+
+    def test_exact_pinned_forgery_cannot_self_elect(self):
+        req = request()
+        forged = {
+            "channel_id": "D0C1U7TUZEC",
+            "request_message_ts": REQ_TS,
+            "request_author_user_id": "U0AGENTZANV",
+            "request_text": req["message"],
+            "response_message_ts": RESP_TS,
+            "response_author_user_id": "U0C0TKRTQHZ",
+            "response_text": f"SELECTED {req['payload']['request_id']} {req['payload']['candidate_sha256']}",
+        }
+        receipt = self.compile(req, forged)
+        self.assertEqual("HOLD", receipt["payload"]["decision"])
+        self.assertFalse(receipt["payload"]["election_prerequisite_satisfied"])
+        self.assertIn(muse.UNVERIFIED_PROVENANCE_REASON, receipt["payload"]["reasons"])
+
+    def test_legacy_selected_receipt_rejected_even_with_recomputed_hash(self):
+        receipt = self.compile()
+        p = receipt["payload"]
+        p["decision"] = "MUSE_SELECTED"
+        p["reasons"] = []
+        p["muse_selected"] = True
+        p["election_prerequisite_satisfied"] = True
+        receipt["receipt_sha256"] = muse._digest(p)
+        self.assertFalse(muse.verify_receipt(receipt))
+
+    def test_selected_receipt_missing_provenance_reason_is_invalid(self):
+        receipt = self.compile()
+        p = receipt["payload"]
+        p["reasons"].remove(muse.UNVERIFIED_PROVENANCE_REASON)
+        p["reasons"].append("OTHER_HOLD")
+        p["reasons"] = sorted(p["reasons"])
+        receipt["receipt_sha256"] = muse._digest(p)
+        self.assertFalse(muse.verify_receipt(receipt))
 
     def test_not_selected_holds(self):
         req = request()
@@ -91,13 +126,10 @@ class MuseElectionTests(unittest.TestCase):
 
     def test_self_authored_response_holds(self):
         req = request()
-        receipt = self.compile(
-            req,
-            evidence(req, request_author_user_id=muse.MUSE_USER_ID),
-        )
+        receipt = self.compile(req, evidence(req, request_author_user_id=muse.MUSE_USER_ID))
         self.assertIn("SELF_AUTHORED_RESPONSE", receipt["payload"]["reasons"])
 
-    def test_request_message_must_be_exactly_the_compiled_message(self):
+    def test_request_message_must_be_exact(self):
         req = request()
         receipt = self.compile(req, evidence(req, request_text=req["message"] + " "))
         self.assertIn("REQUEST_TEXT_MISMATCH", receipt["payload"]["reasons"])
@@ -112,7 +144,7 @@ class MuseElectionTests(unittest.TestCase):
         receipt = self.compile(req, evidence(req, candidate_sha="9" * 64))
         self.assertIn("RESPONSE_CANDIDATE_DIGEST_MISMATCH", receipt["payload"]["reasons"])
 
-    def test_body_change_changes_candidate_and_invalidates_old_selection(self):
+    def test_body_change_invalidates_old_selection(self):
         req_a = request(body_sha256="4" * 64)
         req_b = request(body_sha256="5" * 64)
         ev = evidence(req_a)
@@ -120,7 +152,7 @@ class MuseElectionTests(unittest.TestCase):
         receipt = self.compile(req_b, ev)
         self.assertIn("RESPONSE_CANDIDATE_DIGEST_MISMATCH", receipt["payload"]["reasons"])
 
-    def test_claimant_change_changes_candidate_and_invalidates_old_selection(self):
+    def test_claimant_change_invalidates_old_selection(self):
         req_a = request(claimant="Z-Anvil")
         req_b = request(claimant="Z-Other")
         ev = evidence(req_a)
@@ -128,7 +160,7 @@ class MuseElectionTests(unittest.TestCase):
         receipt = self.compile(req_b, ev)
         self.assertIn("RESPONSE_CANDIDATE_DIGEST_MISMATCH", receipt["payload"]["reasons"])
 
-    def test_response_after_ten_minute_deadline_holds(self):
+    def test_response_after_deadline_holds(self):
         req = request()
         late = f"{BASE + 601:.6f}"
         receipt = self.compile(req, evidence(req, response_message_ts=late), observed_at="2026-09-15T00:40:02Z")
@@ -145,11 +177,12 @@ class MuseElectionTests(unittest.TestCase):
         receipt = self.compile(req, evidence(req, response_message_ts=early))
         self.assertIn("RESPONSE_NOT_AFTER_REQUEST", receipt["payload"]["reasons"])
 
-    def test_request_transport_time_must_track_compiled_request(self):
+    def test_request_transport_time_tracks_request(self):
         req = request()
-        late_request = f"{BASE + 90:.6f}"
-        later_response = f"{BASE + 100:.6f}"
-        receipt = self.compile(req, evidence(req, request_message_ts=late_request, response_message_ts=later_response))
+        receipt = self.compile(
+            req,
+            evidence(req, request_message_ts=f"{BASE + 90:.6f}", response_message_ts=f"{BASE + 100:.6f}"),
+        )
         self.assertIn("REQUEST_TRANSPORT_TIME_MISMATCH", receipt["payload"]["reasons"])
 
     def test_observation_cannot_precede_response(self):
@@ -161,10 +194,21 @@ class MuseElectionTests(unittest.TestCase):
         receipt = self.compile(ledger_complete=False)
         self.assertIn("PRIOR_ELECTION_LEDGER_INCOMPLETE", receipt["payload"]["reasons"])
 
-    def test_same_election_evidence_cannot_be_replayed_from_complete_ledger(self):
+    def test_same_election_evidence_cannot_be_replayed(self):
         first = self.compile()
         second = self.compile(prior=[first])
         self.assertIn("ELECTION_EVIDENCE_REPLAY", second["payload"]["reasons"])
+
+    def test_legacy_selected_prior_is_invalid_ledger_evidence(self):
+        first = self.compile()
+        p = first["payload"]
+        p["decision"] = "MUSE_SELECTED"
+        p["reasons"] = []
+        p["muse_selected"] = True
+        p["election_prerequisite_satisfied"] = True
+        first["receipt_sha256"] = muse._digest(p)
+        second = self.compile(prior=[first])
+        self.assertIn("PRIOR_ELECTION_LEDGER_INVALID", second["payload"]["reasons"])
 
     def test_invalid_prior_ledger_entry_holds(self):
         second = self.compile(prior=[{"garbage": True}])
@@ -196,7 +240,7 @@ class MuseElectionTests(unittest.TestCase):
 
     def test_receipt_tamper_fails_verification(self):
         receipt = self.compile()
-        receipt["payload"]["muse_selected"] = False
+        receipt["payload"]["operation_id"] = "tampered-operation"
         self.assertFalse(muse.verify_receipt(receipt))
 
     def test_receipt_can_never_claim_send_authority(self):
