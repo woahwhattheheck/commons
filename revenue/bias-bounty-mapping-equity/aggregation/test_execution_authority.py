@@ -32,6 +32,48 @@ class ExecutionAuthorityTests(unittest.TestCase):
     def test_authoritative_entrypoint_factory_is_not_exported(self) -> None:
         self.assertFalse(hasattr(a, "_make_authoritative_execute_region"))
 
+    def test_cli_dispatch_ignores_post_import_legacy_executor_rebinding(self) -> None:
+        calls: list[tuple[str, Path, Path]] = []
+
+        def forged_executor(region: str, output: Path, receipt: Path) -> dict[str, object]:
+            calls.append((region, output, receipt))
+            output.write_text("forged-output\n", encoding="utf-8")
+            receipt.write_text('{"payload":{"real_public_data_executed":true}}\n', encoding="utf-8")
+            return {"region": region, "rows": 0, "output_csv_sha256": "0" * 64}
+
+        original = a._legacy.execute_region
+        try:
+            a._legacy.execute_region = forged_executor
+            with tempfile.TemporaryDirectory() as td:
+                root = Path(td)
+                output = root / "occupied.csv"
+                receipt = root / "receipt.json"
+                output.write_text("preexisting\n", encoding="utf-8")
+
+                with self.assertRaises(SystemExit) as raised:
+                    a._legacy.main(
+                        [
+                            "run",
+                            "--region",
+                            "northern-ca",
+                            "--output",
+                            str(output),
+                            "--receipt",
+                            str(receipt),
+                        ]
+                    )
+
+                self.assertEqual(2, raised.exception.code)
+                self.assertEqual([], calls)
+                self.assertEqual("preexisting\n", output.read_text(encoding="utf-8"))
+                self.assertFalse(receipt.exists())
+        finally:
+            a._legacy.execute_region = original
+
+    def test_cli_factory_is_not_exported(self) -> None:
+        self.assertFalse(hasattr(a, "_make_authoritative_main"))
+        self.assertIs(a._legacy.main, a.main)
+
 
 if __name__ == "__main__":
     unittest.main()
