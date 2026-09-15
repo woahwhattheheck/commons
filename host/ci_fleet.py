@@ -25,9 +25,10 @@ try:
 except ImportError:
     import _ci_fleet_observed as _core
 
-# Re-export the source/attempt planner contract while replacing aggregate/main.
+# Re-export the source/attempt planner contract while replacing authoritative
+# aggregate/main/attempt-inspection boundaries.
 for _name in dir(_core):
-    if not _name.startswith("_") and _name not in {"aggregate", "main"}:
+    if not _name.startswith("_") and _name not in {"aggregate", "inspect_attempt", "main"}:
         globals()[_name] = getattr(_core, _name)
 
 AUTHORITY_SCHEMA = "commons-ci-fleet-execution-authority/v1"
@@ -37,6 +38,30 @@ AUTHORITY_KEYS = frozenset({
     "runner_inputs_sha256", "raw_results_sha256", "report_sha256",
     "authority_sha256",
 })
+
+
+def _validate_execution_preflight(attempt: Any) -> None:
+    """Require the runner's complete clean-source preflight observation."""
+    require(isinstance(attempt, dict), "attempt must be an object")
+    report = attempt.get("report")
+    require(isinstance(report, dict), "attempt report must be an object")
+    execution = report.get("execution")
+    require(isinstance(execution, dict), "battery execution identity must be an object")
+    ignored = execution.get("ignored_worktree_entries_at_start")
+    require(
+        type(ignored) is int and ignored == 0,
+        "ignored working-tree inputs were present or not measured at execution start",
+    )
+
+
+def inspect_attempt(
+    plan: dict[str, Any],
+    attempt: Any,
+) -> tuple[str, list[str]]:
+    """Inspect one attempt without dropping the runner's ignored-input preflight."""
+    state, paths = _core.inspect_attempt(plan, attempt)
+    _validate_execution_preflight(attempt)
+    return state, paths
 
 
 def _validate_execution_authority(
@@ -100,6 +125,17 @@ def aggregate(
             "expected plan digest must be SHA-256 hex",
         )
 
+    preflight_findings: list[dict[str, Any]] = []
+    for position, attempt in enumerate(attempts):
+        try:
+            _validate_execution_preflight(attempt)
+        except (FleetError, TypeError, KeyError, ValueError) as exc:
+            preflight_findings.append({
+                "code": "INVALID_EXECUTION_PREFLIGHT",
+                "position": position,
+                "detail": str(exc),
+            })
+
     # Never give the observed core a source authority input: its historical
     # PASSED state means internally coherent worker observations, not provider
     # readback. We add the two independent authority dimensions below.
@@ -112,7 +148,7 @@ def aggregate(
             "execution_binding", "execution_authenticity", "runtime_binding",
         }
     }
-    findings = list(payload.get("findings") or [])
+    findings = list(payload.get("findings") or []) + preflight_findings
 
     source_bound = expected_plan_sha256 == plan["plan_sha256"]
     status = observed["status"]
