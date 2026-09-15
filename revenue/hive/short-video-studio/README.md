@@ -31,13 +31,35 @@ python3 demo/make_demos.py
 
 This creates three original 30-second videos in vertical, square, and landscape formats. Each has H.264 video, AAC audio, an MP4 subtitle track, and a sibling SRT source file.
 
+## Resumable multi-video production
+
+`production_queue.py` layers a durable campaign queue over the existing renderer without changing `studio.py`. A production manifest binds each job to an exact project revision and a unique MP4/SRT target. Successful jobs are skipped on retry only when the campaign definition, job spec, project bytes, MP4 bytes, and SRT bytes all still match their recorded SHA-256 values; changed or missing artifacts are rendered again.
+
+Start with the three-format example:
+
+```bash
+python3 production_queue.py validate production.example.json
+python3 production_queue.py run production.example.json --state production-state.json
+python3 production_queue.py delivery production.example.json \
+  --state production-state.json \
+  --output delivery-manifest.json
+```
+
+Production state schema v2 binds a canonical campaign-definition digest over `campaign_id` plus `brand_id`/`preset_id`, both at the state root and in every job record. Changing only brand or preset therefore cannot relabel previously rendered bytes as a new campaign. Job-spec digests remain independent, so adding a job under the same campaign definition can reuse already verified jobs while the delivery manifest separately binds the complete current manifest digest. Legacy v1 state fails closed and must be reset explicitly because it never carried campaign-definition custody.
+
+The state file is written atomically after each attempted job, so a later retry can preserve verified successful renders after a partial failure. Project mutation during rendering fails closed. Duplicate job IDs or output targets, path traversal, symlink targets, and source/output aliases are rejected. Output and caption uniqueness is checked by file identity as well as canonical path, including hard-link aliases created during rendering. Before `run` reports `all_rendered=true`, every current job is revalidated against its exact project/spec/MP4/SRT custody so later-job mutation of an earlier artifact cannot leave a false-green campaign result.
+
+A delivery manifest reaches `DELIVERY_READY` only when every listed MP4 and SRT still matches the exact bound campaign definition, project revision, job spec, and recorded digests. It also carries the campaign's `brand_id`/`preset_id` planning metadata and the renderer project's actual format preset. `DELIVERY_READY` is local artifact integrity only: the manifest explicitly records that no customer delivery, external publication, provider action, payment verification, or revenue recognition occurred.
+
 ## Tests
 
 ```bash
 python3 test_studio.py
+python3 -m unittest -v test_production_queue.py test_production_queue_custody.py
+python3 -O -m unittest -v test_production_queue.py test_production_queue_custody.py
 ```
 
-The integration test performs a real 30-second FFmpeg render and verifies video/audio/subtitle streams with `ffprobe`.
+The original integration test performs a real 30-second FFmpeg render and verifies video/audio/subtitle streams with `ffprobe`. The production-queue suites exercise resume, stale revisions, tampered outputs, partial failures, deterministic delivery, path and alias guards, mutation-during-render fail-closed behavior, campaign brand/preset custody, safe manifest evolution, legacy-state rejection, same-inode output denial, and final whole-campaign revalidation.
 
 ## Rights and delivery boundary
 

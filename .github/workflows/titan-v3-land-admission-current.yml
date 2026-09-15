@@ -1,12 +1,6 @@
 name: titan-v3-land-admission-current
 
 on:
-  push:
-    branches:
-      - "sol-plumbline/titan-v3-land-admission-*"
-    paths:
-      - ".github/workflows/titan-v3-land-admission-current.yml"
-      - "revenue/kaggriculture/cloud-execution-lab/candidates/v3-l01-land-admission-current/**"
   pull_request:
     paths:
       - ".github/workflows/titan-v3-land-admission-current.yml"

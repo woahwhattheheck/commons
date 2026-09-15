@@ -1,0 +1,81 @@
+{
+  "authority": {
+    "buyer_contact": false,
+    "clinical_certification_claim": false,
+    "contract_acceptance": false,
+    "portal_registration": false,
+    "pricing_commitment": false,
+    "questionnaire_submission": false,
+    "revenue_claim": false,
+    "spend": false,
+    "staffing_commitment": false
+  },
+  "capabilities": {
+    "clinical_pathology_lims_product": {
+      "evidence_refs": [],
+      "status": "UNKNOWN"
+    },
+    "clinical_safety_case": {
+      "evidence_refs": [],
+      "status": "UNKNOWN"
+    },
+    "commercial_delivery_capacity": {
+      "evidence_refs": [],
+      "status": "UNKNOWN"
+    },
+    "data_lineage_evidence": {
+      "evidence_refs": [],
+      "status": "UNKNOWN"
+    },
+    "deterministic_acceptance": {
+      "evidence_refs": [],
+      "status": "UNKNOWN"
+    },
+    "epr_national_system_integrations": {
+      "evidence_refs": [],
+      "status": "UNKNOWN"
+    },
+    "human_release_controls": {
+      "evidence_refs": [],
+      "status": "UNKNOWN"
+    },
+    "implementation_training_support": {
+      "evidence_refs": [],
+      "status": "UNKNOWN"
+    },
+    "integration_engineering": {
+      "evidence_refs": [],
+      "status": "UNKNOWN"
+    },
+    "interface_test_harness": {
+      "evidence_refs": [],
+      "status": "UNKNOWN"
+    },
+    "migration_at_scale": {
+      "evidence_refs": [],
+      "status": "UNKNOWN"
+    },
+    "migration_reconciliation": {
+      "evidence_refs": [],
+      "status": "UNKNOWN"
+    },
+    "nhs_pathology_scale": {
+      "evidence_refs": [],
+      "status": "UNKNOWN"
+    },
+    "regulatory_pathology_compliance": {
+      "evidence_refs": [],
+      "status": "UNKNOWN"
+    },
+    "security_data_governance": {
+      "evidence_refs": [],
+      "status": "UNKNOWN"
+    }
+  },
+  "evaluated_at": "2026-09-13T11:05:00Z",
+  "notice_id": "080252-2026",
+  "partner_prime_confirmed": false,
+  "route": "TEAMING_VALIDATION_EVIDENCE",
+  "schema_version": 1,
+  "source_ledger_sha256": "f8e6dfddf3d9e92e2b039eff3b916d1691515fb65f42751fc10da3fe3f0e4925"
+}

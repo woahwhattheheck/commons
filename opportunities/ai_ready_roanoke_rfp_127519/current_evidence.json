@@ -1,0 +1,33 @@
+{
+  "schema": "commons.ai-ready-roanoke/current-evidence-v1",
+  "posture": "PARTNER_FIRST_PRIME_HOLD",
+  "prime_candidate": {
+    "name": "Camoin Associates",
+    "public_fit": [
+      "economic development strategic planning",
+      "workforce development and talent retention",
+      "business engagement and primary employer outreach",
+      "real estate feasibility and financial modeling",
+      "Richmond Virginia office and public Southwest Virginia work"
+    ],
+    "confirmation_state": "SENT_NOT_ACCEPTED",
+    "provider_receipt_id": "gmail-1a09b2684d2a2040"
+  },
+  "tjlabs_bounded_specialist_scope": [
+    "AI adoption readiness and target-cluster use-case framework",
+    "AI workforce and program-design analysis",
+    "applied AI ecosystem and technical assessment",
+    "reproducible analysis and evidence tooling"
+  ],
+  "not_claimed": [
+    "Camoin partnership or consent",
+    "economic-development prime experience for Token Junkie Labs",
+    "buyer acceptance or award",
+    "approved external price or subcontract split",
+    "Virginia SCC status or legal eligibility",
+    "required insurance",
+    "similar client references",
+    "signature authority",
+    "payment or revenue"
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "schema": "commons.service-deal-economics.input/v1",
+  "policy": {
+    "policy_id": "owner-quote-policy",
+    "generation": 1,
+    "currency": "USD",
+    "minimum_gross_margin_bps": 3000,
+    "risk_reserve_bps": 1000,
+    "snapshot_max_age_hours": 24,
+    "quote_validity_hours": 72,
+    "source_ref": "policy-gen-1",
+    "source_sha256": "1111111111111111111111111111111111111111111111111111111111111111",
+    "observed_at": "2026-09-13T20:30:00Z"
+  },
+  "deal": {
+    "deal_id": "example-deal",
+    "scope_id": "migration-sprint-v1",
+    "scope_revision": 1,
+    "currency": "USD",
+    "target_price_cents": 700000,
+    "delivery_start": "2026-09-15T00:00:00Z",
+    "delivery_end": "2026-09-25T00:00:00Z",
+    "source_ref": "scope-gen-1",
+    "source_sha256": "2222222222222222222222222222222222222222222222222222222222222222",
+    "observed_at": "2026-09-13T20:30:00Z",
+    "items": [
+      {
+        "item_id": "implementation",
+        "planned_minutes": 600,
+        "internal_rate_cents_per_hour": 12000,
+        "external_cost_cents": 30000,
+        "source_ref": "costbook-implementation-v1",
+        "source_sha256": "3333333333333333333333333333333333333333333333333333333333333333",
+        "observed_at": "2026-09-13T20:30:00Z"
+      },
+      {
+        "item_id": "acceptance",
+        "planned_minutes": 900,
+        "internal_rate_cents_per_hour": 10000,
+        "external_cost_cents": 50000,
+        "source_ref": "costbook-acceptance-v1",
+        "source_sha256": "4444444444444444444444444444444444444444444444444444444444444444",
+        "observed_at": "2026-09-13T20:30:00Z"
+      }
+    ]
+  },
+  "capacity": {
+    "snapshot_id": "delivery-capacity-v1",
+    "window_start": "2026-09-15T00:00:00Z",
+    "window_end": "2026-09-25T00:00:00Z",
+    "total_minutes": 3000,
+    "reserved_minutes": 1000,
+    "source_ref": "capacity-snapshot-v1",
+    "source_sha256": "5555555555555555555555555555555555555555555555555555555555555555",
+    "observed_at": "2026-09-13T20:30:00Z"
+  }
+}
