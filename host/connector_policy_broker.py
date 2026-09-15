@@ -54,19 +54,27 @@ class Policy:
     max_slack_file_bytes: int = 2_000_000
 
     def __post_init__(self) -> None:
-        if not isinstance(self.policy_version, str) or not self.policy_version.strip():
+        if type(self.policy_version) is not str or not self.policy_version.strip():
             raise PolicyError("policy_version must be a non-empty string")
-        if not isinstance(self.default_branch, str) or not _valid_branch(self.default_branch):
+        if type(self.default_branch) is not str or not _valid_branch(self.default_branch):
             raise PolicyError("default_branch is invalid")
+        if type(self.github_repositories) is not frozenset:
+            raise PolicyError("github_repositories must be a frozenset")
+        if type(self.slack_channel_ids) is not frozenset:
+            raise PolicyError("slack_channel_ids must be a frozenset")
+        if type(self.workflow_approval_sha256s) is not frozenset:
+            raise PolicyError("workflow_approval_sha256s must be a frozenset")
+        if type(self.github_branch_prefixes) is not tuple or type(self.github_path_prefixes) is not tuple:
+            raise PolicyError("github prefix collections must be tuples")
         for repo in self.github_repositories:
-            if not isinstance(repo, str) or not _GITHUB_REPO_RE.fullmatch(repo):
+            if type(repo) is not str or not _GITHUB_REPO_RE.fullmatch(repo):
                 raise PolicyError("github_repositories contains an invalid repository")
         for channel in self.slack_channel_ids:
-            if not isinstance(channel, str) or not _CHANNEL_RE.fullmatch(channel):
+            if type(channel) is not str or not _CHANNEL_RE.fullmatch(channel):
                 raise PolicyError("slack_channel_ids contains an invalid channel id")
         for prefix in self.github_branch_prefixes:
-            if not isinstance(prefix, str) or not prefix or prefix.startswith("/") or ".." in prefix:
-                raise PolicyError("github_branch_prefixes contains an invalid prefix")
+            if type(prefix) is not str or not prefix.endswith("/") or not _valid_branch(prefix + "x"):
+                raise PolicyError("github_branch_prefixes contains an invalid directory prefix")
         for prefix in self.github_path_prefixes:
             _normalize_repo_prefix(prefix)
         for name in (
@@ -80,7 +88,7 @@ class Policy:
             if isinstance(value, bool) or not isinstance(value, int) or value <= 0:
                 raise PolicyError(f"{name} must be a positive integer")
         for digest in self.workflow_approval_sha256s:
-            if not isinstance(digest, str) or not re.fullmatch(r"[0-9a-f]{64}", digest):
+            if type(digest) is not str or not re.fullmatch(r"[0-9a-f]{64}", digest):
                 raise PolicyError("workflow_approval_sha256s contains an invalid digest")
         for name in (
             "require_draft_pr",
