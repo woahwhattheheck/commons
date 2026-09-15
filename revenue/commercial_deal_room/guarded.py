@@ -32,21 +32,22 @@ _MESSAGE_EVENT_TYPES = frozenset(
     }
 )
 
-# Capture the core normalizer before installing the package-level guard below.
-# Normal Python imports execute commercial_deal_room.__init__ before exposing a
-# submodule, so patching this one normalization seam also protects callers that
-# import commercial_deal_room.engine.compile_board directly.
+# Capture core entrypoints before installing package-level guards. Normal Python
+# imports execute commercial_deal_room.__init__ before exposing a submodule, so
+# patching these seams also protects callers that import engine directly.
 _CORE_NORMALIZE_PACKET = _engine.normalize_packet
+_CORE_VERIFY_BOARD = _engine.verify_board
 
 
 def _detach(value: Any, *, path: str = "packet") -> Any:
     """Capture caller-owned containers once into plain dict/list values.
 
-    The compiler intentionally accepts Mapping/Sequence inputs.  A preflight
+    The compiler intentionally accepts Mapping/Sequence inputs. A preflight
     validator must therefore not authorize one observation and let the core
     compiler consume a later observation from a stateful or concurrently-mutated
-    object.  This function establishes the single retained snapshot consumed by
-    both provider validation and v1 normalization.
+    object. This function establishes the retained snapshot consumed by provider
+    validation and v1 normalization. verify_board captures once for both its
+    historical and current evaluations.
     """
 
     if isinstance(value, Mapping):
@@ -107,10 +108,8 @@ def normalize_packet(packet: Any):
     return _CORE_NORMALIZE_PACKET(snapshot)
 
 
-# Close the direct-engine import seam without rewriting the large v1 compiler.
-# Existing compile_board()/verify_board() resolve normalize_packet from their
-# module globals at call time, so all supported package/submodule entrypoints now
-# consume exactly the detached snapshot validated above.
+# Existing compile_board() resolves normalize_packet from engine globals at call
+# time. One patched normalizer therefore protects package and direct-engine compile.
 _engine.normalize_packet = normalize_packet
 
 
@@ -119,4 +118,11 @@ def compile_board(packet: Any, *, now: Optional[datetime] = None):
 
 
 def verify_board(packet: Any, board: Any, *, now: Optional[datetime] = None):
-    return _engine.verify_board(packet, board, now=now)
+    # Core verification compiles historical and current views separately. Give
+    # both evaluations the exact same detached packet generation.
+    snapshot = _detach(packet)
+    return _CORE_VERIFY_BOARD(snapshot, board, now=now)
+
+
+# Normal direct-engine imports must get the same single-generation verify seam.
+_engine.verify_board = verify_board

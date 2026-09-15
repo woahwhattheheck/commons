@@ -134,21 +134,29 @@ class GuardedProviderTests(unittest.TestCase):
         self.assertEqual(board["stage"], "HOLD")
         self.assertIn("PROVIDER_MESSAGE_ID_CONFLICT", board["reasons"])
 
-    def test_package_verify_is_stable_on_the_validated_snapshot(self):
+    def test_package_verify_uses_one_generation_for_both_evaluations(self):
         canonical = conflict_packet("verify-flip")
         board = compile_board(canonical, now=NOW)
         hostile = copy.deepcopy(canonical)
         original = hostile["events"][0]["payload"]
+        # Old package verify read the live payload once outside core, then again
+        # during historical normalization, then again during current evaluation.
         hostile["events"][0]["payload"] = FlippingProviderPayload(original, canonical_reads=2)
-        self.assertTrue(verify_board(hostile, board, now=NOW)["historical_valid"])
+        result = verify_board(hostile, board, now=NOW)
+        self.assertTrue(result["historical_valid"])
+        self.assertEqual(result["current_stage"], "HOLD")
+        self.assertIn("PROVIDER_MESSAGE_ID_CONFLICT", result["current_reasons"])
 
-    def test_direct_engine_verify_is_stable_on_the_validated_snapshot(self):
+    def test_direct_engine_verify_uses_one_generation_for_both_evaluations(self):
         canonical = conflict_packet("direct-verify-flip")
         board = compile_board(canonical, now=NOW)
         hostile = copy.deepcopy(canonical)
         original = hostile["events"][0]["payload"]
         hostile["events"][0]["payload"] = FlippingProviderPayload(original, canonical_reads=1)
-        self.assertTrue(direct_engine.verify_board(hostile, board, now=NOW)["historical_valid"])
+        result = direct_engine.verify_board(hostile, board, now=NOW)
+        self.assertTrue(result["historical_valid"])
+        self.assertEqual(result["current_stage"], "HOLD")
+        self.assertIn("PROVIDER_MESSAGE_ID_CONFLICT", result["current_reasons"])
 
     def test_verify_rejects_plain_alias_even_for_preexisting_board(self):
         packet = base_packet("verify-alias")
