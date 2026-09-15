@@ -92,7 +92,7 @@ def base():
                     "provider": provider,
                     "family_id": fam["family_id"],
                     "query": term,
-                    "observed_at": "2026-09-15T05:15:00Z",
+                    "observed_at": "2026-09-15T05:15:20Z",
                     "state": "COMPLETE",
                     "hits": [],
                 }
@@ -384,6 +384,23 @@ class Tests(unittest.TestCase):
         with self.assertRaises(CollisionError):
             compile_preflight(d)
 
+    def test_search_before_candidate_holds(self):
+        d = base()
+        s = find_search(
+            d,
+            "GITHUB_ISSUES",
+            "actor-franchisee",
+            "franchisee",
+        )
+        s["observed_at"] = "2026-09-15T05:15:10Z"
+        s["retained_root"] = root(s)
+        p = packet(d)
+        self.assertEqual(p["status"], "UNKNOWN_HOLD")
+        self.assertIn(
+            "SEARCH_BEFORE_CANDIDATE:GITHUB_ISSUES:actor-franchisee:franchisee",
+            p["reasons"],
+        )
+
     def test_future_hit_holds(self):
         d = base()
         s = find_search(
@@ -406,7 +423,7 @@ class Tests(unittest.TestCase):
             "actor-franchisee",
             "franchisee",
         )
-        s["hits"] = [hit(created="2026-09-15T05:15:10Z")]
+        s["hits"] = [hit(created="2026-09-15T05:15:25Z")]
         s["retained_root"] = root(s)
         p = packet(d)
         self.assertEqual(p["status"], "UNKNOWN_HOLD")
