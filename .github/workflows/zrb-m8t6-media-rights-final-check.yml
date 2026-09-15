@@ -1,0 +1,40 @@
+name: zrb-m8t6-media-rights-final-check
+
+on:
+  push:
+    branches:
+      - zym-l4v8/media-rights-ops-20260915
+    paths:
+      - 'revenue/hive/media-rights-ops/**'
+      - '.github/workflows/zrb-m8t6-media-rights-final-check.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  media-rights-final:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11', '3.13']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Full hostile acceptance
+        working-directory: revenue/hive/media-rights-ops
+        run: |
+          python -m unittest -v test_rights_ops.py
+          python -O -m unittest -v test_rights_ops.py
+          python -m py_compile rights_model.py rights_store.py rights_export.py rights_http.py rights_ops.py test_rights_ops.py
+      - name: CLI contract smoke
+        working-directory: revenue/hive/media-rights-ops
+        run: |
+          tmp="$(mktemp -d)"
+          python rights_ops.py import "$tmp/desk.sqlite3" example_manifest.json --at 2026-09-15T06:00:00Z
+          printf '%s\n' '{"asset_id":"cut-a-15s","channel":"instagram","territory":"US","starts_at":"2026-10-01T12:00:00Z","ends_at":"2026-10-15T12:00:00Z"}' > "$tmp/intent.json"
+          python rights_ops.py evaluate "$tmp/desk.sqlite3" "$tmp/intent.json" | grep 'READY_ON_SUPPLIED_AUTHORITY'
+          mkdir "$tmp/export-parent"
+          python rights_ops.py export "$tmp/desk.sqlite3" "$tmp/export-parent/bundle" --as-of 2026-12-10T00:00:00Z | grep 'EXPORTED'
