@@ -1,0 +1,193 @@
+ ""))
++    parser.add_argument("--token-env", default="GITHUB_TOKEN")
++    parser.add_argument("--stale-minutes", type=int, default=30)
++    parser.add_argument("--max-cancel", type=int, default=1000)
++    parser.add_argument(
++        "--cancel-delay-seconds",
++        type=float,
++        default=0.5,
++        help="minimum pause after each cancellation request (secondary-rate-limit guard)",
++    )
++    parser.add_argument("--protect-run-ids", default="")
++    parser.add_argument("--protect-workflow", action="append", default=[])
++    parser.add_argument("--protect-branch", action="append", default=[])
++    parser.add_argument("--report", type=Path, required=True)
++    parser.add_argument("--apply", action="store_true")
++    return parser
++
++
++def main(argv: Sequence[str] | None = None) -> int:
++    args = build_parser().parse_args(argv)
++    if args.stale_minutes < 0:
++        raise SheriffError("--stale-minutes must be nonnegative")
++    if args.max_cancel < 0:
++        raise SheriffError("--max-cancel must be nonnegative")
++    if args.cancel_delay_seconds < 0:
++        raise SheriffError("--cancel-delay-seconds must be nonnegative")
++    token = os.environ.get(args.token_env, "")
++    if not token:
++        raise SheriffError(f"missing token in ${args.token_env}")
++
++    started = dt.datetime.now(UTC)
++    client = GitHubClient(args.repository, token)
++    open_pulls = client.open_pulls()
++    branches = client.branches()
++    runs, api_total = client.queued_runs()
++    decisions = classify_runs(
++        runs,
++        open_pulls,
++        branches,
++        stale_before=started - dt.timedelta(minutes=args.stale_minutes),
++        protected_run_ids=parse_ids(args.protect_run_ids),
++        protected_workflow_globs=args.protect_workflow,
++        protected_branch_globs=args.protect_branch,
++    )
++    cancellable = [item for item in decisions if item.action == "cancel"]
++    selected = cancellable[: args.max_cancel]
++    cancellations: list[dict[str, Any]] = []
++
++    counts: dict[str, int] = defaultdict(int)
++    for decision in decisions:
++        counts[f"{decision.action}:{decision.reason}"] += 1
++
++    report = {
++        "schema": "commons.actions-queue-sheriff.v1",
++        "repository": args.repository,
++        "started_at": format_time(started),
++        "mode": "apply" if args.apply else "dry-run",
++        "stale_minutes": args.stale_minutes,
++        "cancel_delay_seconds": args.cancel_delay_seconds,
++        "api_total_queued": api_total,
++        "visible_queued": len(runs),
++        "api_search_truncated": api_total > len(runs),
++        "open_pull_count": len(open_pulls),
++        "existing_branch_count": len(branches),
++        "cancellable_visible": len(cancellable),
++        "selected_for_cancellation": len(selected),
++        "cancellable_not_selected": len(cancellable) - len(selected),
++        "counts": dict(sorted(counts.items())),
++        "cancellations": cancellations,
++        "decisions": [item.to_json() for item in decisions],
++    }
++
++    def write_report() -> None:
++        args.report.parent.mkdir(parents=True, exist_ok=True)
++        args.report.write_text(json.dumps(report, indent=2, sort_keys=True) + "\n", encoding="utf-8")
++
++    # Persist the complete mutation plan before the first write request.
++    write_report()
++    if args.apply:
++        for index, decision in enumerate(selected, start=1):
++            try:
++                status = client.cancel(decision.run.id)
++            except SheriffError as exc:
++                cancellations.append({"run_id": decision.run.id, "status": "error", "error": str(exc)})
++                report["aborted_at_run_id"] = decision.run.id
++                report["completed_at"] = format_time(dt.datetime.now(UTC))
++                write_report()
++                raise
++            cancellations.append({
++                "run_id": decision.run.id,
++                "status": status,
++                "outcome": "accepted" if status == 202 else "already_terminal",
++            })
++            if index % 25 == 0:
++                write_report()
++            if index < len(selected) and args.cancel_delay_seconds:
++                # Cancellation is a mutating REST request. Keep the sustained
++                # request rate below GitHub secondary-limit pressure instead of
++                # turning a large cleanup into another fail/retry storm.
++                time.sleep(args.cancel_delay_seconds)
++    report["completed_at"] = format_time(dt.datetime.now(UTC))
++    write_report()
++    print(json.dumps({key: report[key] for key in (
++        "mode", "api_total_queued", "visible_queued", "api_search_truncated",
++        "open_pull_count", "cancellable_visible", "selected_for_cancellation",
++    )}, sort_keys=True))
++    return 0
++
++
++if __name__ == "__main__":
++    try:
++        raise SystemExit(main())
++    except SheriffError as exc:
++        print(f"queue-sheriff: {exc}", file=sys.stderr)
++        raise SystemExit(2)
++diff --git a/.github/scripts/test_queue_sheriff.py b/.github/scripts/test_queue_sheriff.py
++new file mode 100644
++--- /dev/null
+++++ b/.github/scripts/test_queue_sheriff.py
++@@ -0,0 +1,251 @@
+++from __future__ import annotations
+++
+++import datetime as dt
+++import io
+++import json
+++import os
+++import tempfile
+++import unittest
+++from pathlib import Path
+++from unittest import mock
+++
+++from queue_sheriff import (
+++    GitHubClient,
+++    GitHubHTTPError,
+++    OpenPull,
+++    Run,
+++    SheriffError,
+++    classify_runs,
+++    main,
+++    parse_ids,
+++)
+++
+++UTC = dt.timezone.utc
+++NOW = dt.datetime(2026, 9, 10, 19, 30, tzinfo=UTC)
+++OLD = NOW - dt.timedelta(hours=2)
+++NEW = NOW - dt.timedelta(minutes=5)
+++
+++
+++def run(
+++    ident: int,
+++    *,
+++    event: str = "pull_request",
+++    branch: str | None = "feature/a",
+++    sha: str = "a" * 40,
+++    created: dt.datetime = OLD,
+++    pulls: tuple[int, ...] = (),
+++    workflow_id: int = 7,
+++    name: str = "tests",
+++    status: str = "queued",
+++) -> Run:
+++    return Run(
+++        id=ident,
+++        name=name,
+++        workflow_id=workflow_id,
+++        event=event,
+++        status=status,
+++        head_branch=branch,
+++        head_sha=sha,
+++        created_at=created,
+++        html_url=f"https://example.invalid/runs/{ident}",
+++        pull_numbers=pulls,
+++    )
+++
+++
+++class ClassifierTests(unittest.TestCase):
+++    def classify(self, runs, pulls=(), branches=(), **kwargs):
+++        return classify_runs(
+++            runs,
+++            pulls,
+++            set(branches),
+++            stale_before=NOW - dt.timedelta(minutes=30),
+++            **kwargs,
+++        )
+++
+++    def test_closed_pr_is_cancelled_after_grace(self):
+++        [decision] = self.classify([run(1)])
+++        self.assertEqual((decision.action, decision.reason), ("cancel", "closed_or_missing_pr"))
+++
+++    def test_recent_unresolved_pr_is_kept(self):
+++        [decision] = self.classify([run(1, created=NEW)])
+++        self.assertEqual((decision.action, decision.reason), ("keep", "recent_unresolved_pr"))
+++
+++    def 
