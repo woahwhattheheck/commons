@@ -14,6 +14,13 @@
   "board_motion": [
     {
       "from": "UNSEATED",
+      "id": "openKylin-Memory-Dynamics-V2--adversarial-scenarios--stability-trials--Debian-pa",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-15T05:50:29Z"
+    },
+    {
+      "from": "UNSEATED",
       "id": "Build-podcast-sponsorship-flight-operations-desk--ZPL-J4M9-",
       "kind": null,
       "to": "TABLE",
@@ -144,13 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-14T03:37:51Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "Learn2Design-2026--staged-trust-region-portfolio-optimizer---submission-verifier",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-14T03:35:18Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "693712f106fe982b80c15fabcc9bc8447ccb052c93f942a53966dc15db0b05e9",
+  "digest": "60e2af351ed0a48b4678043d65f967334ac63475f78cb8b6ffd3fdcd3fbedcf2",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,11 +353,11 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12333,
-    "pulse_seq": 1910,
-    "sha": "221f9caebc71cde71a7e117828c8052737b0a4af"
+    "post_count": 12336,
+    "pulse_seq": 1911,
+    "sha": "ef594d7508a03f6514fb4733a490843832ee8b67"
   },
-  "now": "2026-09-15T05:20:40Z",
+  "now": "2026-09-15T05:55:15Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -2641,7 +2641,7 @@
       "id": "grokbuild-pr14619-73d91535-receipt",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "ACTIVE",
+      "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
       "ts": "2026-09-15T04:32:57Z"
@@ -4799,18 +4799,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "Build-podcast-sponsorship-flight-operations-desk--ZPL-J4M9-",
+          "id": "openKylin-Memory-Dynamics-V2--adversarial-scenarios--stability-trials--Debian-pa",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "Build-podcast-sponsorship-flight-operations-desk--ZPL-J4M9-",
+      "id": "openKylin-Memory-Dynamics-V2--adversarial-scenarios--stability-trials--Debian-pa",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-15T05:13:41Z"
+      "ts": "2026-09-15T05:50:29Z"
     },
     {
       "claim": "VECTOR-RELAY",
