@@ -86,6 +86,7 @@ def audit_plan(model: Any, *, quantity: int, reference: Plan, candidate: Plan,
     consumption = {t: _int(absorb(t), "absorption", 0, 10**6)
                    for t in range(now, end + 1)}
     initial = _int(model.inventory, "inventory", -10**9, 10**9)
+    # Values contain accumulated candidate-minus-reference margin, and a witness.
     layer = {(0, initial, initial): (0.0, ())}
     transitions, max_frontier = 0, 1
     for step in range(now, end + 1):
@@ -106,6 +107,7 @@ def audit_plan(model: Any, *, quantity: int, reference: Plan, candidate: Plan,
                         raise ValueError("non-finite market transition")
                     key = (used + rival, c_inv - consumption[step], b_inv - consumption[step])
                     old = next_layer.get(key)
+                    # Strict comparison leaves deterministic first witness on ties.
                     if old is None or updated < old[0]:
                         witness = trace + ((step, rival, alignment),) if rival else trace
                         next_layer[key] = (updated, witness)
