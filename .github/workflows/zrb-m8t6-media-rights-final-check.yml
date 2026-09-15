@@ -27,9 +27,9 @@ jobs:
       - name: Full hostile acceptance
         working-directory: revenue/hive/media-rights-ops
         run: |
-          python -m unittest -v test_rights_ops.py test_export_generation.py
-          python -O -m unittest -v test_rights_ops.py test_export_generation.py
-          python -m py_compile rights_model.py rights_store.py rights_export.py rights_http.py rights_ops.py test_rights_ops.py test_export_generation.py
+          python -m unittest -v test_rights_ops.py test_export_generation.py test_export_custody.py
+          python -O -m unittest -v test_rights_ops.py test_export_generation.py test_export_custody.py
+          python -m py_compile rights_model.py rights_store.py rights_export.py rights_http.py rights_ops.py test_rights_ops.py test_export_generation.py test_export_custody.py
       - name: CLI contract smoke
         working-directory: revenue/hive/media-rights-ops
         run: |
