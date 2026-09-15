@@ -1,5 +1,14 @@
 [
   {
+    "id": "Hive-media--content-rights---usage-window-operations-desk",
+    "reason": "commons_publication_terms",
+    "code": "commons_publication_terms",
+    "state": "PUBLICATION_TERMS_REJECTED",
+    "policy_rule": "unfavorable_finding",
+    "ts": "2026-09-15T06:10:52Z",
+    "body": ""
+  },
+  {
     "id": "BUILD-DEMAND--Paid-discovery-offer-compiler---verified-inbound-to-bounded-owner-",
     "reason": "commons_publication_terms",
     "code": "commons_publication_terms",
