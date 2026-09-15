@@ -111,7 +111,7 @@ subcontractor, the packet must include:
 
 Raw taxpayer IDs are not emitted into the receipt. The digest/reference pair is
 intended to bind an owner-held private artifact without publishing the TIN. If
-any required identity component is absent, the result holds with
+the required subcontractor control tuple is incomplete, the result holds with
 `SUBCONTRACTOR_IDENTIFICATION_INCOMPLETE`. Even when every privacy-safe evidence
 component is assembled, the offline carrier still emits
 `SUBCONTRACTOR_IDENTIFICATION_REVIEW_REQUIRED`: caller-authored evidence cannot
