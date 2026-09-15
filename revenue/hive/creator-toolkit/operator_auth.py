@@ -11,6 +11,7 @@ import hashlib
 import hmac
 import secrets
 import sqlite3
+from contextlib import closing
 from pathlib import Path
 
 KEY_BYTES = 32
@@ -32,7 +33,7 @@ class OperatorAuth:
     def __init__(self, database: str | Path):
         self.database = str(database)
         Path(self.database).parent.mkdir(parents=True, exist_ok=True)
-        with self._connect() as db:
+        with closing(self._connect()) as db, db:
             db.execute("""CREATE TABLE IF NOT EXISTS creator_security(
                 name TEXT PRIMARY KEY,
                 value TEXT NOT NULL
@@ -49,7 +50,7 @@ class OperatorAuth:
         database = str(database)
         Path(database).parent.mkdir(parents=True, exist_ok=True)
         key = secrets.token_urlsafe(KEY_BYTES)
-        with sqlite3.connect(database, timeout=15) as db:
+        with closing(sqlite3.connect(database, timeout=15)) as db, db:
             db.execute("BEGIN IMMEDIATE")
             db.execute("""CREATE TABLE IF NOT EXISTS creator_security(
                 name TEXT PRIMARY KEY,
@@ -66,7 +67,7 @@ class OperatorAuth:
         return sqlite3.connect(self.database, timeout=15)
 
     def _expected(self) -> str:
-        with self._connect() as db:
+        with closing(self._connect()) as db:
             row = db.execute("SELECT value FROM creator_security WHERE name='operator_sha256'").fetchone()
         if row is None:
             raise OperatorSetupRequired("Creator Desk operator capability is not initialized")
@@ -87,7 +88,7 @@ class OperatorAuth:
     def rotate(self) -> str:
         """Invalidate the prior key and return one replacement to this caller."""
         key = secrets.token_urlsafe(KEY_BYTES)
-        with self._connect() as db:
+        with closing(self._connect()) as db, db:
             db.execute("BEGIN IMMEDIATE")
             cursor = db.execute("UPDATE creator_security SET value=? WHERE name='operator_sha256'", (_digest(key),))
             if cursor.rowcount != 1:
