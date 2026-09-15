@@ -27,6 +27,6 @@ jobs:
       - name: Compile
         run: python -m py_compile tools/swarm_work_router/*.py
       - name: Normal
-        run: python -m unittest -v tools.swarm_work_router.test_router
+        run: python -m unittest -v tools.swarm_work_router.test_router tools.swarm_work_router.test_drift
       - name: Optimized
-        run: python -O -m unittest -v tools.swarm_work_router.test_router
+        run: python -O -m unittest -v tools.swarm_work_router.test_router tools.swarm_work_router.test_drift
