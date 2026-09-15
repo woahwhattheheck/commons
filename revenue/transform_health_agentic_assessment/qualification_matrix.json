@@ -16,6 +16,16 @@
     "multilingual_legal_ocr_production_delivery": "NOT_ASSERTED",
     "legal_interpretation_authority": false
   },
+  "required_profile_experience_evidence": {
+    "agentic_system_experience": "PARTIAL_PUBLIC_TECHNICAL_SAMPLE_REQUIRES_CV_PORTFOLIO_BINDING",
+    "ai_document_intelligence_nlp_ir_long_documents": "NOT_YET_EVIDENCED",
+    "secure_web_application_experience": "NOT_YET_EVIDENCED",
+    "document_processing_structured_extraction_scanned_documents": "NOT_YET_EVIDENCED",
+    "cms_website_integration": "NOT_YET_EVIDENCED",
+    "ai_tool_benchmarking_uat": "PARTIAL_PUBLIC_TECHNICAL_SAMPLE_REQUIRES_CV_PORTFOLIO_BINDING",
+    "all_required_profile_experience_evidenced": false,
+    "application_submission_ready": false
+  },
   "application_requirements": {
     "cv_and_cover_letter": true,
     "brief_proposal_or_approach": true,
