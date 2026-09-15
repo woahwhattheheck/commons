@@ -1,9 +1,9 @@
 {
   "counts": {
-    "open_issues": 113,
-    "open_pull_requests": 52,
+    "open_issues": 115,
+    "open_pull_requests": 53,
     "runs_in_progress": 17,
-    "runs_queued": 417
+    "runs_queued": 428
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -68,14 +68,25 @@
   "newest_pulls": [
     {
       "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zcr-j7m4/crowdstrike-evidence-integrity-20260915",
+      "created_at": "2026-09-15T07:45:51Z",
+      "draft": false,
+      "head_sha": "532586ac907e372b31a9d823c020ae37dd232fce",
+      "number": 14713,
+      "title": "competition: harden CrowdStrike workbench evidence integrity",
+      "updated_at": "2026-09-15T07:45:51Z"
+    },
+    {
+      "author": "woahwhattheheck",
       "base": "zym-l4v8/media-rights-ops-20260915",
       "branch": "z-sol/media-rights-export-generation-20260915",
       "created_at": "2026-09-15T07:40:14Z",
       "draft": false,
-      "head_sha": "a6f84ed401d74f7c825c45980b1b554ab1c39186",
+      "head_sha": "30ebc0686031228e07a93be3dbc074efb978ef70",
       "number": 14709,
       "title": "Donor: make media-rights export generation atomic",
-      "updated_at": "2026-09-15T07:40:14Z"
+      "updated_at": "2026-09-15T07:46:15Z"
     },
     {
       "author": "woahwhattheheck",
@@ -97,7 +108,7 @@
       "head_sha": "e956cbf230cfe13f151820baf84a62089383b6e4",
       "number": 14704,
       "title": "TITAN V4: close evaluator authority chain after #14686",
-      "updated_at": "2026-09-15T07:37:25Z"
+      "updated_at": "2026-09-15T07:42:54Z"
     },
     {
       "author": "woahwhattheheck",
@@ -108,7 +119,7 @@
       "head_sha": "f1f7120a0b55ba33b1852c8402d8e5d9e04dfe31",
       "number": 14701,
       "title": "feat(uiowa): add RFQ 18649 prime acceptance exhibit",
-      "updated_at": "2026-09-15T07:40:42Z"
+      "updated_at": "2026-09-15T07:42:08Z"
     },
     {
       "author": "woahwhattheheck",
@@ -163,18 +174,7 @@
       "head_sha": "6e3b3fe0f15b6d067712af533a27bff8f80c8390",
       "number": 14670,
       "title": "revenue: add content rights usage-window operations desk",
-      "updated_at": "2026-09-15T07:33:13Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zsr-q4n7/commercial-funnel-current-main-recovery-20260915",
-      "created_at": "2026-09-15T06:23:45Z",
-      "draft": false,
-      "head_sha": "877b07a41f1b13b5d3cdeec635e9b4dcec75ac47",
-      "number": 14669,
-      "title": "Recover commercial-funnel evidence/time authority on current main",
-      "updated_at": "2026-09-15T07:41:11Z"
+      "updated_at": "2026-09-15T07:46:30Z"
     }
   ],
   "open_heads": {
@@ -193,7 +193,7 @@
     "14270": "86c47a9e32a67eece1382899a898d9ccf40e26da",
     "14299": "cd6a66435851b57f61c5a68c4ab7f8356701f910",
     "14314": "742aeafae8c258759c435bf6758e1546ff258c56",
-    "14317": "95f36375babbd8cf608f408b986dfc06fde7c222",
+    "14317": "096eacc001a7fae16f06ee3790590f07ec8b3c18",
     "14321": "1810cbac9e1fc9a0beddfcb13af37f6aa60726aa",
     "14333": "26e7110348d2ab0d994adf68d5e0f14ad8677e38",
     "14343": "c04b1fa4adcdb5cf928bb163c158a3adec828ea3",
@@ -229,11 +229,12 @@
     "14701": "f1f7120a0b55ba33b1852c8402d8e5d9e04dfe31",
     "14704": "e956cbf230cfe13f151820baf84a62089383b6e4",
     "14705": "6e8761343b10ec3518fd1a6a002594ac6076d38a",
-    "14709": "a6f84ed401d74f7c825c45980b1b554ab1c39186"
+    "14709": "30ebc0686031228e07a93be3dbc074efb978ef70",
+    "14713": "532586ac907e372b31a9d823c020ae37dd232fce"
   },
-  "pulls_listed": 52,
+  "pulls_listed": 53,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 24.5,
+  "queue_depth_per_runner": 25.2,
   "recently_closed": [
     {
       "author": "woahwhattheheck",
@@ -403,6 +404,6 @@
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-15T07:42:19Z",
+  "unchanged_since": "2026-09-15T07:46:33Z",
   "undatable_pulls": []
 }
