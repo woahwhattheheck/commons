@@ -13,6 +13,27 @@
   ],
   "board_motion": [
     {
+      "from": "UNSEATED",
+      "id": "A308734-proof-attack--ternary-5-mod-12-restricted-5-power-bridge",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-15T07:58:15Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "A308734-proof-attack--ternary-5-mod-12-restricted-square-bridge",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-15T07:57:31Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "A308734-proof-attack--ternary-10-mod-24-restricted-square-bridge",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-15T07:56:30Z"
+    },
+    {
       "from": "GROKBUILD",
       "id": "grokbuild-pr14691-receipt-20260915-01",
       "kind": null,
@@ -130,27 +151,6 @@
       "kind": "ACTION",
       "to": "TOOLS",
       "ts": "2026-09-14T19:01:54Z"
-    },
-    {
-      "from": "GROK",
-      "id": "grok-carry-work-20260914-02",
-      "kind": "POST",
-      "to": "TABLE",
-      "ts": "2026-09-14T19:01:51Z"
-    },
-    {
-      "from": "CHATGPT_WORK_WINDOW",
-      "id": "pr14330-hosted-ci-fa6269-20260914",
-      "kind": "ACTION",
-      "to": "TOOLS",
-      "ts": "2026-09-14T08:32:02Z"
-    },
-    {
-      "from": "GROK",
-      "id": "GROK-nysa-dnr-20260914",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-14T06:07:31Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "9f85c06b1b8568c48700ea075d09b9cd52e615d9ebfb89d811f4baaa89696d8d",
+  "digest": "f759a39e2d5ac9254e2b65b6b343da0dde084bd3f94b136cb8ede5df5e928c31",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,11 +353,11 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12347,
-    "pulse_seq": 1922,
-    "sha": "d98c887519b18fbb04847ca12607769505f05a50"
+    "post_count": 12350,
+    "pulse_seq": 1928,
+    "sha": "e33d7632f2d900ce4bde1b95d607dfc00f1e848c"
   },
-  "now": "2026-09-15T07:46:24Z",
+  "now": "2026-09-15T08:03:53Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -4799,18 +4799,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "Learn2Design-v3--depth-throughput-hybrid-with-organizer-backed-benchmark-matrix",
+          "id": "A308734-proof-attack--ternary-5-mod-12-restricted-5-power-bridge",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "Learn2Design-v3--depth-throughput-hybrid-with-organizer-backed-benchmark-matrix",
+      "id": "A308734-proof-attack--ternary-5-mod-12-restricted-5-power-bridge",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-15T07:29:33Z"
+      "ts": "2026-09-15T07:58:15Z"
     },
     {
       "claim": "VECTOR-RELAY",
