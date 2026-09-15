@@ -1,9 +1,9 @@
 {
   "counts": {
-    "open_issues": 121,
-    "open_pull_requests": 65,
+    "open_issues": 120,
+    "open_pull_requests": 62,
     "runs_in_progress": 19,
-    "runs_queued": 74
+    "runs_queued": 76
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -69,28 +69,6 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "zna-q5m8/cuhkx-lineage-recovery-20260915",
-      "created_at": "2026-09-15T23:39:33Z",
-      "draft": false,
-      "head_sha": "1f04845731e897f295de41f6636d4fe93881649c",
-      "number": 14761,
-      "title": "CUHK-X: bind Top-15 lineage to evidenced submission",
-      "updated_at": "2026-09-15T23:39:50Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zsf-n6q8/alcorn-rfp5588-addendum1",
-      "created_at": "2026-09-15T23:32:18Z",
-      "draft": false,
-      "head_sha": "f3fc0ecdab143ce78bc050a80ccf64355c0ae92c",
-      "number": 14758,
-      "title": "Revenue: source-bind Alcorn RFP 5588 Addendum 1 without inventing a teaming gate",
-      "updated_at": "2026-09-15T23:39:24Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
       "branch": "zik-m7q4/uiowa-workbench-recovery-20260915",
       "created_at": "2026-09-15T23:26:16Z",
       "draft": false,
@@ -105,10 +83,10 @@
       "branch": "zph-l6q8/ci-execution-truth-recovery-14335",
       "created_at": "2026-09-15T23:18:41Z",
       "draft": false,
-      "head_sha": "1cd03d5987cc84d8e05ffb7943c342e47305d709",
+      "head_sha": "b7b236c18daf94652f7e1be5416bacac74735aa6",
       "number": 14755,
       "title": "Add Fleet CI execution-truth classifier",
-      "updated_at": "2026-09-15T23:40:25Z"
+      "updated_at": "2026-09-15T23:43:56Z"
     },
     {
       "author": "woahwhattheheck",
@@ -156,17 +134,6 @@
     },
     {
       "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-forge/cuhkx-readiness-dag-fix-14727",
-      "created_at": "2026-09-15T08:04:47Z",
-      "draft": false,
-      "head_sha": "9d122532364cc625cd0f7eddf26643bb58fc4391",
-      "number": 14729,
-      "title": "CUHK-X: fail closed contradictory readiness generations",
-      "updated_at": "2026-09-15T17:37:36Z"
-    },
-    {
-      "author": "woahwhattheheck",
       "base": "zsh-q6m4/learn2design-public-evidence-20260915",
       "branch": "z-quorum/learn2design-provenance-20260915",
       "created_at": "2026-09-15T08:02:25Z",
@@ -174,7 +141,40 @@
       "head_sha": "33e117064c336cefc947c52b38dee311e8ca0818",
       "number": 14728,
       "title": "Learn2Design: independent recorded-run provenance repair for #14672",
-      "updated_at": "2026-09-15T23:40:12Z"
+      "updated_at": "2026-09-15T23:43:06Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zida7k5/sun-a308734-analytic-bridge-14714",
+      "created_at": "2026-09-15T07:57:46Z",
+      "draft": false,
+      "head_sha": "b97d2acc3f8839fd41e70631f6f782a6dab1e67b",
+      "number": 14724,
+      "title": "A308734: quantify P18-to-3-power analytic obstruction",
+      "updated_at": "2026-09-15T14:53:19Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "zzq-n4p8/muse-v2-current-auth-integration-14503",
+      "branch": "z-forge/muse-v2-negative-authority-donor-14684",
+      "created_at": "2026-09-15T07:56:11Z",
+      "draft": false,
+      "head_sha": "4b52d0529fcf5d658267b06144b0da153275a562",
+      "number": 14720,
+      "title": "Donor: fail closed unauthenticated Muse negative election outcomes",
+      "updated_at": "2026-09-15T09:21:10Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zsol17/sophelio-source-red-recovery-20260915",
+      "created_at": "2026-09-15T07:48:19Z",
+      "draft": false,
+      "head_sha": "d21e068298412497d04c86225747d640af59b5e6",
+      "number": 14715,
+      "title": "Recover Sophelio full-fold authority and bounded training",
+      "updated_at": "2026-09-15T09:03:58Z"
     }
   ],
   "open_heads": {
@@ -226,7 +226,7 @@
     "14680": "3c801971265381a084d19eb064839ff74747015e",
     "14684": "5804490ae2a883bc492f7fe975921b62fdc25216",
     "14700": "d8a38da9c1042c157ccd49729809ae923915f66c",
-    "14704": "3fa5edd3994bb1c32c059bd74abc441f8d949ce8",
+    "14704": "681a46decf6d580e5fccb29938cf058d4cb7fba4",
     "14705": "6e8761343b10ec3518fd1a6a002594ac6076d38a",
     "14709": "87fde1165ef3002599a0f325cf27b0368be3fbe3",
     "14713": "532586ac907e372b31a9d823c020ae37dd232fce",
@@ -234,20 +234,50 @@
     "14720": "4b52d0529fcf5d658267b06144b0da153275a562",
     "14724": "b97d2acc3f8839fd41e70631f6f782a6dab1e67b",
     "14728": "33e117064c336cefc947c52b38dee311e8ca0818",
-    "14729": "9d122532364cc625cd0f7eddf26643bb58fc4391",
     "14733": "bfbcfc259177fca2e916af77dc12495fe8df7618",
     "14734": "811b819935b90e3b2dd43c4c2828eb791bd6fc0e",
     "14746": "6261fbdf220f6c57313d75645029e4f238f64cb7",
     "14748": "0696ff901df8505944dd54b52b9be36d15e28d6c",
-    "14755": "1cd03d5987cc84d8e05ffb7943c342e47305d709",
-    "14757": "ee474ce046917b3963ef18622915021ca2845def",
-    "14758": "f3fc0ecdab143ce78bc050a80ccf64355c0ae92c",
-    "14761": "1f04845731e897f295de41f6636d4fe93881649c"
+    "14755": "b7b236c18daf94652f7e1be5416bacac74735aa6",
+    "14757": "ee474ce046917b3963ef18622915021ca2845def"
   },
-  "pulls_listed": 65,
+  "pulls_listed": 62,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 3.9,
+  "queue_depth_per_runner": 4.0,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zsf-n6q8/alcorn-rfp5588-addendum1",
+      "closed_at": "2026-09-15T23:45:11Z",
+      "head_sha": "f3fc0ecdab143ce78bc050a80ccf64355c0ae92c",
+      "merged_at": "2026-09-15T23:45:11Z",
+      "number": 14758,
+      "state": "MERGED",
+      "title": "Revenue: source-bind Alcorn RFP 5588 Addendum 1 without inventing a teaming gate"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z-forge/cuhkx-readiness-dag-fix-14727",
+      "closed_at": "2026-09-15T23:45:06Z",
+      "head_sha": "9d122532364cc625cd0f7eddf26643bb58fc4391",
+      "merged_at": null,
+      "number": 14729,
+      "state": "CLOSED",
+      "title": "CUHK-X: fail closed contradictory readiness generations"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zna-q5m8/cuhkx-lineage-recovery-20260915",
+      "closed_at": "2026-09-15T23:44:32Z",
+      "head_sha": "1f04845731e897f295de41f6636d4fe93881649c",
+      "merged_at": "2026-09-15T23:44:32Z",
+      "number": 14761,
+      "state": "MERGED",
+      "title": "CUHK-X: bind Top-15 lineage to evidenced submission"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -379,43 +409,10 @@
       "number": 14743,
       "state": "MERGED",
       "title": "TITAN V4: recover hire-cost kernel research carrier"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "gpt/connector-policy-broker-20260915",
-      "closed_at": "2026-09-15T10:56:53Z",
-      "head_sha": "45a6d8c1c9c98acc75b2c836f67c9648e419fece",
-      "merged_at": "2026-09-15T10:56:53Z",
-      "number": 14742,
-      "state": "MERGED",
-      "title": "Add fail-closed GitHub/Slack connector policy broker"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "repair/sun-ternary5-valid-17-target",
-      "closed_at": "2026-09-15T10:39:57Z",
-      "head_sha": "609d8805e67b0beb128510b05cf45ae7c8b93618",
-      "merged_at": "2026-09-15T10:39:57Z",
-      "number": 14741,
-      "state": "MERGED",
-      "title": "Fix ternary5 reject list: 17 is a legal 5 mod 12 target"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zbs-r5q9/sun-a308734-ternary5-primitive-descent",
-      "closed_at": "2026-09-15T10:34:16Z",
-      "head_sha": "a8eccd2b800ae57929e8a1fa694c750032735570",
-      "merged_at": "2026-09-15T10:34:16Z",
-      "number": 14736,
-      "state": "MERGED",
-      "title": "research: 25-adic primitive reduction for Sun ternary-5 bridge"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-15T23:41:01Z",
+  "unchanged_since": "2026-09-15T23:46:31Z",
   "undatable_pulls": []
 }
