@@ -41,12 +41,12 @@ class PacketGateTests(unittest.TestCase):
         with self.assertRaises(GateError):
             validate_sources(data)
 
-    def test_confirmed_requirement_rejects_mirror_authority(self):
+    def test_packet_gap_cannot_be_promoted_to_confirmed(self):
         sources = validate_sources(self.sources)
         matrix = copy.deepcopy(self.matrix)
         req = next(r for r in matrix["requirements"] if r["id"] == "clarification_deadline")
         req["state"] = "CONFIRMED_OFFICIAL"
-        with self.assertRaisesRegex(GateError, "cites non-official authority"):
+        with self.assertRaisesRegex(GateError, "untrusted confirmed requirement id"):
             validate_matrix(matrix, sources)
 
     def test_unrelated_official_source_cannot_launder_mirror_claim(self):
@@ -70,12 +70,59 @@ class PacketGateTests(unittest.TestCase):
         with self.assertRaisesRegex(GateError, "does not support requirement clarification_deadline"):
             validate_matrix(matrix, sources)
 
+    def test_forged_official_source_is_rejected(self):
+        data = copy.deepcopy(self.sources)
+        data["sources"].append(
+            {
+                "id": "forged",
+                "authority": "OFFICIAL_COUNTY_GUIDANCE",
+                "url": "https://attacker.example/fake",
+                "assertable": True,
+                "raw_bytes_sha256": None,
+                "raw_hash_status": "UNAVAILABLE_WEB_TEXT_ONLY",
+                "supports_requirement_ids": ["clarification_deadline"],
+                "facts": ["Fabricated solicitation-specific deadline."],
+            }
+        )
+        with self.assertRaisesRegex(GateError, "untrusted official source id: forged"):
+            validate_sources(data)
+
+    def test_existing_official_support_list_is_code_pinned(self):
+        data = copy.deepcopy(self.sources)
+        source = next(s for s in data["sources"] if s["id"] == "snoco_supplier_info")
+        source["supports_requirement_ids"].append("clarification_deadline")
+        with self.assertRaisesRegex(GateError, "official source identity drift: snoco_supplier_info"):
+            validate_sources(data)
+
+    def test_existing_official_url_is_code_pinned(self):
+        data = copy.deepcopy(self.sources)
+        source = next(s for s in data["sources"] if s["id"] == "snoco_supplier_info")
+        source["url"] = "https://attacker.example/looks-official"
+        with self.assertRaisesRegex(GateError, "official source identity drift: snoco_supplier_info"):
+            validate_sources(data)
+
+    def test_confirmed_requirement_text_is_code_pinned(self):
+        sources = validate_sources(self.sources)
+        matrix = copy.deepcopy(self.matrix)
+        req = next(r for r in matrix["requirements"] if r["id"] == "proposal_due")
+        req["requirement"] = "Proposal due tomorrow at noon."
+        with self.assertRaisesRegex(GateError, "confirmed requirement identity drift: proposal_due"):
+            validate_matrix(matrix, sources)
+
+    def test_trusted_confirmed_requirement_cannot_be_silently_downgraded(self):
+        sources = validate_sources(self.sources)
+        matrix = copy.deepcopy(self.matrix)
+        req = next(r for r in matrix["requirements"] if r["id"] == "proposal_due")
+        req["state"] = "PACKET_REQUIRED"
+        with self.assertRaisesRegex(GateError, "confirmed requirement set drift"):
+            validate_matrix(matrix, sources)
+
     def test_confirmed_requirement_cannot_have_no_source(self):
         sources = validate_sources(self.sources)
         matrix = copy.deepcopy(self.matrix)
         req = next(r for r in matrix["requirements"] if r["id"] == "proposal_due")
         req["source_ids"] = []
-        with self.assertRaisesRegex(GateError, "must cite official evidence"):
+        with self.assertRaisesRegex(GateError, "confirmed requirement identity drift"):
             validate_matrix(matrix, sources)
 
     def test_unknown_source_fails(self):
@@ -87,9 +134,8 @@ class PacketGateTests(unittest.TestCase):
 
     def test_source_support_ids_must_be_unique(self):
         data = copy.deepcopy(self.sources)
-        data["sources"][0]["supports_requirement_ids"].append(
-            data["sources"][0]["supports_requirement_ids"][0]
-        )
+        mirror = next(s for s in data["sources"] if s["authority"] == "THIRD_PARTY_MIRROR")
+        mirror["supports_requirement_ids"].append(mirror["supports_requirement_ids"][0])
         with self.assertRaisesRegex(GateError, "must not contain duplicates"):
             validate_sources(data)
 
