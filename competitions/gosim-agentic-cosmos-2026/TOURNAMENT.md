@@ -12,9 +12,10 @@ This is deliberately generic. Realized outcomes can later come from an authorize
 
 ## Run it
 
-From `competitions/gosim-agentic-cosmos-2026`:
+Run this same focused contract under supported compatible Python environments, including Python 3.11 and Python 3.13 when available:
 
 ```bash
+cd competitions/gosim-agentic-cosmos-2026
 python -m py_compile tournament.py test_tournament.py demo_tournament.py
 python -m unittest -v test_tournament.py
 python -O -m unittest -v test_tournament.py
@@ -33,6 +34,8 @@ Exact pre-publication recovery evidence on 2026-09-14:
 - `tournament.py` SHA-256: `d1d71986967d5cf14fd93cd062bdb7d5309439aeddb12734496a87db2e456d13`.
 - `test_tournament.py` SHA-256: `b7445118ee48bb29f2bcaf28621b3fc8aa9557758c7196fb34cbdabf1b6b68e4`.
 - `demo_tournament.py` SHA-256: `a5171a9728525b070add39f5dc55ef9edf45f4c9f7545702abdc798f1cef666f`.
+
+The focused commands above are the retained execution contract. Commons' current workflow-surface policy bounds active `.github/workflows` and directs competition/product-specific coverage away from ad-hoc live workflows. No hosted Actions run is claimed for this tournament unless an actual run/status object exists for the exact source head. The short-lived workflow introduced by PR #14539 was removed by the post-merge structural fix because its unrestricted `push` plus `pull_request` triggers violated the repository's duplicate-branch-event preflight; its original bytes remain available in Git history at merge commit `074802175f6691ba352ac985103160a5236254ef`.
 
 The receipt also binds the copied current foundation default policy bytes. If the foundation policy changes later, update this layer deliberately rather than silently treating a new base policy as the same tournament generation.
 
