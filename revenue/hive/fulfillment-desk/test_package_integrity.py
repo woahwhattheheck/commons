@@ -5,6 +5,8 @@ import importlib.util
 import json
 import os
 from pathlib import Path
+import subprocess
+import sys
 import tempfile
 import unittest
 from unittest import mock
@@ -100,7 +102,6 @@ class PackageIntegrityTests(unittest.TestCase):
                 (self.package / name).write_bytes(original)
                 launcher.verify_package(self.package)
 
-
     def test_verified_workflow_generation_is_not_reopened(self):
         _, launcher = self.build_unpack()
         config, verified = launcher.verify_package(self.package, include_bytes=True)
@@ -112,6 +113,31 @@ class PackageIntegrityTests(unittest.TestCase):
         module = launcher._load_workflow_bytes(original, self.package / 'workflow.py')
         self.assertTrue(callable(module.main))
         self.assertEqual(config['agency'], 'Synthetic Agency')
+
+    def test_packaged_launcher_does_not_import_unmanifested_sidecars(self):
+        self.build_unpack()
+        markers = []
+        for name in ('html.py', 'sqlite3.py'):
+            marker = self.package / f'{name}.executed'
+            markers.append(marker)
+            (self.package / name).write_text(
+                'from pathlib import Path\n'
+                f'Path({os.fspath(marker)!r}).write_text("executed", encoding="utf-8")\n'
+                'raise RuntimeError("unmanifested sidecar executed")\n',
+                encoding='utf-8',
+            )
+
+        completed = subprocess.run(
+            [sys.executable, os.fspath(self.package / 'run.py'), '--help'],
+            cwd=self.package,
+            capture_output=True,
+            text=True,
+            check=False,
+        )
+        self.assertEqual(completed.returncode, 0, completed.stdout + completed.stderr)
+        self.assertIn('usage:', completed.stdout)
+        self.assertNotIn('unmanifested sidecar executed', completed.stdout + completed.stderr)
+        self.assertTrue(all(not marker.exists() for marker in markers))
 
     def test_operator_config_remains_editable(self):
         _, launcher = self.build_unpack()
@@ -209,6 +235,25 @@ class PackageIntegrityTests(unittest.TestCase):
             with self.assertRaisesRegex(RuntimeError, 'no longer names'):
                 bundle.build(self.input, RUNNER, output)
         self.assertEqual(output.read_bytes(), b'foreign replacement')
+
+    def test_same_inode_output_mutation_after_hash_is_rejected(self):
+        real_hash = bundle._hash_stream
+        output = self.output
+
+        def mutate_after_hash(stream):
+            result = real_hash(stream)
+            with output.open('r+b') as other:
+                first = other.read(1)
+                other.seek(0)
+                other.write(b'X' if first != b'X' else b'Y')
+                other.flush()
+                os.fsync(other.fileno())
+            return result
+
+        with mock.patch.object(bundle, '_hash_stream', side_effect=mutate_after_hash):
+            with self.assertRaisesRegex(RuntimeError, 'changed while it was being hashed'):
+                bundle.build(self.input, RUNNER, output)
+        self.assertFalse(output.exists())
 
     def test_result_hash_is_from_created_inode(self):
         result, _ = self.build_unpack()
