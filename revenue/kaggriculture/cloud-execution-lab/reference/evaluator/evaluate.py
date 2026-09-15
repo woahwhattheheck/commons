@@ -131,7 +131,8 @@ def worker(agent_spec, cache, loader, rng_seed):
             except TypeError:
                 inspect.signature(function).bind({})
                 takes_config = False
-            send({"kind": "ready", **usage()})
+            send({"kind": "ready", "python_optimize": sys.flags.optimize,
+                  "python_debug": __debug__, **usage()})
         except BaseException as exc:
             send({"kind": "load_error", "error": f"{type(exc).__name__}: {exc}"[:1000], **usage()})
             return
@@ -165,7 +166,7 @@ class Actor:
         env = {"PATH": os.defpath, "HOME": self.directory.name, "LANG": "C.UTF-8",
                "PYTHONHASHSEED": str(rng_seed % (2**32)), "PYTHONDONTWRITEBYTECODE": "1"}
         self.proc = subprocess.Popen(
-            [sys.executable, "-B", "-u", str(Path(__file__).resolve()), "--worker", spec,
+            [sys.executable, *(["-O"] * sys.flags.optimize), "-B", "-u", str(Path(__file__).resolve()), "--worker", spec,
              str(Path(cache).resolve()), str(Path(loader).resolve()), str(rng_seed)],
             stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.DEVNULL,
             cwd=self.directory.name, env=env, start_new_session=True)
@@ -173,6 +174,16 @@ class Actor:
         os.set_blocking(self.proc.stdout.fileno(), False)
         started = time.perf_counter()
         self.ready = self.exchange(None, startup_timeout)
+        if self.ready.get("kind") == "ready":
+            mode = self.ready.get("python_optimize")
+            debug = self.ready.get("python_debug")
+            if (type(mode) is not int or mode != sys.flags.optimize
+                    or type(debug) is not bool or debug != (sys.flags.optimize == 0)):
+                self.ready = {**self.ready, "kind": "protocol_error",
+                              "error": "Worker optimization mode mismatch"}
+            else:
+                self.stats["python_optimize"] = mode
+                self.stats["python_debug"] = debug
         self.stats["startup_seconds"] = time.perf_counter() - started
         self._measure(self.ready)
 
