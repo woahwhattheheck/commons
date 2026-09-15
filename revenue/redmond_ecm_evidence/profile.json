@@ -1,0 +1,167 @@
+{
+  "evaluation_weights": {
+    "cost_proposal": 10,
+    "customer_references": 5,
+    "functional_and_technical_fit": 35,
+    "implementation_approach_and_project_execution": 20,
+    "qualifications_and_experience": 15,
+    "vendor_support_and_customer_service": 15
+  },
+  "profile_version": 1,
+  "rating_legend": {
+    "3P": "Supported with third-party software",
+    "C": "Customization required",
+    "F": "Future functionality on roadmap within 1-2 years",
+    "N": "Not supported",
+    "NA": "Not applicable to proposed scope",
+    "Y": "Fully supported by the current release"
+  },
+  "requirements": [
+    {
+      "acceptance": "Demonstrate a governed citywide record model across at least two departments with retained provenance and access boundaries.",
+      "category": "records_management",
+      "critical": true,
+      "id": "RM-001",
+      "source": "RFP §2 Project Goal",
+      "title": "Unify records management citywide"
+    },
+    {
+      "acceptance": "Show policy selection, retention calculation, hold handling, and disposition eligibility with an auditable decision trail.",
+      "category": "retention_compliance",
+      "critical": true,
+      "id": "RET-001",
+      "source": "RFP §2; RCW 40.14",
+      "title": "Identify records and apply Washington retention schedules"
+    },
+    {
+      "acceptance": "Demonstrate disposition approval and immutable destruction-log evidence without allowing silent deletion.",
+      "category": "retention_compliance",
+      "critical": true,
+      "id": "RET-002",
+      "source": "RFP §2",
+      "title": "Controlled disposal after retention period"
+    },
+    {
+      "acceptance": "Run a scripted request across representative repositories and produce a reproducible responsive-record set.",
+      "category": "public_records_requests",
+      "critical": true,
+      "id": "PRR-001",
+      "source": "RFP §2; RCW 42.56",
+      "title": "Identify records responsive to public disclosure requests"
+    },
+    {
+      "acceptance": "Prove export-set integrity using immutable identifiers or checksums and an auditable chain of custody.",
+      "category": "public_records_requests",
+      "critical": true,
+      "id": "PRR-002",
+      "source": "RFP §2",
+      "title": "Preserve responsive-record immutability"
+    },
+    {
+      "acceptance": "Demonstrate reversible review workflow, irreversible released-copy redaction, and retained redaction rationale.",
+      "category": "public_records_requests",
+      "critical": true,
+      "id": "PRR-003",
+      "source": "RFP §2",
+      "title": "Support exempt-information redaction"
+    },
+    {
+      "acceptance": "Export a mixed-format responsive set in native formats with manifest metadata suitable for GovQA handoff.",
+      "category": "public_records_requests",
+      "critical": true,
+      "id": "PRR-004",
+      "source": "RFP §2",
+      "title": "Export responsive records in native format for GovQA"
+    },
+    {
+      "acceptance": "Execute agreed findability scenarios across indexed repositories and record precision, recall, latency, and permission filtering.",
+      "category": "records_search",
+      "critical": false,
+      "id": "SRCH-001",
+      "source": "RFP §2 Project Goal",
+      "title": "Improve document and records search"
+    },
+    {
+      "acceptance": "Create and query a controlled metadata/catalog model while preserving source provenance and lifecycle fields.",
+      "category": "data_governance",
+      "critical": false,
+      "id": "CAT-001",
+      "source": "RFP §2 Project Goal",
+      "title": "Organize and facilitate cataloging of records"
+    },
+    {
+      "acceptance": "Provide architecture evidence covering deployment boundaries, identity flow, administrative roles, and data residency.",
+      "category": "technology",
+      "critical": true,
+      "id": "TEC-001",
+      "source": "RFP §4 Technology Overview",
+      "title": "Document deployment, data-center security, and SSO posture"
+    },
+    {
+      "acceptance": "Map current certifications and controls, RPO/RTO evidence, support commitments, and exceptions to source artifacts.",
+      "category": "security",
+      "critical": true,
+      "id": "TEC-002",
+      "source": "RFP §4 Technology Overview",
+      "title": "Document security compliance, disaster recovery, and SLA"
+    },
+    {
+      "acceptance": "Demonstrate authenticated integration for a representative source and export target with retry and audit behavior.",
+      "category": "integration",
+      "critical": false,
+      "id": "INT-001",
+      "source": "RFP §4 Technology Overview",
+      "title": "Describe interface and integration tools"
+    },
+    {
+      "acceptance": "Inventory AI-enabled functions, model/data boundaries, human review, logging, opt-out controls, and roadmap claims.",
+      "category": "ai_governance",
+      "critical": false,
+      "id": "AI-001",
+      "source": "RFP §4 Technology Overview",
+      "title": "Describe AI strategy and available/future functionality"
+    },
+    {
+      "acceptance": "Produce a phased plan with named roles, dependencies, migration gates, acceptance criteria, and schedule assumptions.",
+      "category": "implementation",
+      "critical": true,
+      "id": "IMP-001",
+      "source": "RFP §4 Implementation Methodology",
+      "title": "Provide implementation team, qualifications, methodology, timeframe, and phases"
+    },
+    {
+      "acceptance": "Map support tiers and escalation paths to contractual response targets and test the escalation handoff.",
+      "category": "support",
+      "critical": true,
+      "id": "SUP-001",
+      "source": "RFP §4 Support",
+      "title": "Provide support hours, response times, resources, escalation, and post-go-live services"
+    },
+    {
+      "acceptance": "Validate reference consent, comparable scope, implementation status, and contactability without fabricating credentials.",
+      "category": "qualifications",
+      "critical": true,
+      "id": "REF-001",
+      "source": "RFP §4 Customer References and §6 Evaluation",
+      "title": "Provide similar-size/scope customer references"
+    },
+    {
+      "acceptance": "Run a pre-submission manifest check for required files, original template formats, page limit, and nonblank Exhibit A responses.",
+      "category": "submission",
+      "critical": true,
+      "id": "SUB-001",
+      "source": "RFP §4 Submittal Requirements",
+      "title": "Complete required proposal PDF plus Exhibits A/C Word and Exhibit B Excel"
+    }
+  ],
+  "solicitation": {
+    "buyer": "City of Redmond, Washington",
+    "id": "RFP 10915-26",
+    "official_posting": "https://www.redmond.gov/bids.aspx?bidID=354",
+    "official_rfp": "https://www.redmond.gov/DocumentCenter/View/43368",
+    "proposal_due": "2026-10-02T16:00:00-07:00",
+    "scope_note": "Profile covers explicit requirements in the RFP body; Exhibit A remains the authoritative line-item key-requirements form.",
+    "status_checked": "OPEN",
+    "title": "Enterprise Content Management Software and Implementation Services"
+  }
+}
