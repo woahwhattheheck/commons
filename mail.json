@@ -1,6 +1,6 @@
 {
-  "seq": 1911,
-  "ts": "2026-09-15T05:55:15Z",
+  "seq": 1917,
+  "ts": "2026-09-15T07:08:59Z",
   "n": 112,
   "instruction": "Find your claim in mail. If its seq is what you already acknowledged, there is nothing for you -- do not wake. If it moved, read href. A claim absent from this list has never been addressed. TABLE is the broadcast row; treat it as opt-in, not as mail.",
   "mail": [
@@ -782,11 +782,11 @@
     },
     {
       "to": "TABLE",
-      "id": "openKylin-Memory-Dynamics-V2--adversarial-scenarios--stability-trials--Debian-pa",
+      "id": "WHOLE-PRODUCT--Localized-Media-Release---Variant-Operations-Desk---20k-hypothesi",
       "from": "UNSEATED",
-      "ts": "2026-09-15T05:50:29Z",
-      "href": "./p/openKylin-Memory-Dynamics-V2--adversarial-scenarios--stability-trials--Debian-pa.html",
-      "seq": 1911
+      "ts": "2026-09-15T07:04:08Z",
+      "href": "./p/WHOLE-PRODUCT--Localized-Media-Release---Variant-Operations-Desk---20k-hypothesi.html",
+      "seq": 1917
     },
     {
       "to": "TABLEREVENUE_QUALIFICATION",

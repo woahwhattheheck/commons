@@ -238,8 +238,14 @@ def _make_authoritative_execute_region(
     sql_canonicalizer,
     plan_builder,
     exclusive_writer,
+    parser_factory,
+    region_choices,
+    aggregate_query_builder,
+    path_type,
+    json_dumps,
+    error_types,
 ):
-    """Bind the complete authoritative execution path into an uninjectable closure."""
+    """Bind the complete authoritative execution + CLI path in one temporary constructor."""
 
     def execute_region(region: str, output: Path, receipt: Path) -> dict[str, object]:
         """Execute only the code-owned public-data path and mint its bound receipt."""
@@ -318,38 +324,8 @@ def _make_authoritative_execute_region(
                 con.close()
             materialized.close()
 
-    return execute_region
-
-
-execute_region = _make_authoritative_execute_region(
-    _materialize_sources,
-    _legacy._connect_duckdb,
-    _legacy._aggregate_query_for_registry,
-    _legacy.run_preflight,
-    _legacy.validate_rows,
-    _legacy.render_csv,
-    _legacy._canonicalize_bound_sql,
-    _legacy.build_plan,
-    _legacy._write_new,
-)
-# Do not leave a callable factory that a direct-library caller could reuse with
-# substituted dependencies to manufacture an authoritative receipt entrypoint.
-del _make_authoritative_execute_region
-
-
-def _make_authoritative_main(
-    parser_factory,
-    region_choices,
-    plan_builder,
-    aggregate_query_builder,
-    executor,
-    path_type,
-    json_dumps,
-    error_types,
-):
-    """Bind CLI run dispatch to the captured authoritative executor."""
-
     def main(argv=None) -> int:
+        """Dispatch plan/run with the same captured execution authority."""
         parser = parser_factory(description=__doc__)
         sub = parser.add_subparsers(dest="command", required=True)
         plan_cmd = sub.add_parser("plan", help="emit deterministic no-download plan + preflight SQL")
@@ -367,28 +343,38 @@ def _make_authoritative_main(
                     payload["sql"] = aggregate_query_builder(args.region)
                 print(json_dumps(payload, sort_keys=True, indent=2))
             else:
-                result = executor(args.region, path_type(args.output), path_type(args.receipt))
+                result = execute_region(args.region, path_type(args.output), path_type(args.receipt))
                 print(json_dumps(result, sort_keys=True))
         except error_types as exc:
             parser.error(str(exc))
         return 0
 
-    return main
+    return execute_region, main
 
 
-main = _make_authoritative_main(
+# One temporary constructor binds both receipt-minting execution and CLI dispatch.
+# Keeping the two closures in the same lexical authority boundary satisfies the
+# no-second-factory contract while preserving the #14628 rebinding hardening.
+execute_region, main = _make_authoritative_execute_region(
+    _materialize_sources,
+    _legacy._connect_duckdb,
+    _legacy._aggregate_query_for_registry,
+    _legacy.run_preflight,
+    _legacy.validate_rows,
+    _legacy.render_csv,
+    _legacy._canonicalize_bound_sql,
+    _legacy.build_plan,
+    _legacy._write_new,
     _legacy.argparse.ArgumentParser,
     tuple(_legacy.REGIONS),
-    _legacy.build_plan,
     _legacy.aggregate_query,
-    execute_region,
     Path,
     json.dumps,
     (AggregationError, OSError),
 )
-# As with the authoritative executor factory, do not export a second callable
-# constructor that a direct-library caller could reuse with substituted dispatch.
-del _make_authoritative_main
+# Do not leave a callable factory that a direct-library caller could reuse with
+# substituted dependencies to manufacture authoritative execution or CLI entrypoints.
+del _make_authoritative_execute_region
 
 
 # Preserve `_aggregate_unsealed.py` byte-for-byte. Rebind only the live authority

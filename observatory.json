@@ -14,6 +14,27 @@
   "board_motion": [
     {
       "from": "UNSEATED",
+      "id": "WHOLE-PRODUCT--Localized-Media-Release---Variant-Operations-Desk---20k-hypothesi",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-15T07:04:08Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "CUHK-X-Large-Model-Track--bind-organizer-authorization-and-fail-closed-entry-rea",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-15T06:43:00Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "Mapping-Equity--remove-forbidden-second-CLI-authority-factory-after--14628",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-15T06:31:31Z"
+    },
+    {
+      "from": "UNSEATED",
       "id": "openKylin-Memory-Dynamics-V2--adversarial-scenarios--stability-trials--Debian-pa",
       "kind": null,
       "to": "TABLE",
@@ -130,27 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-14T04:33:21Z"
-    },
-    {
-      "from": "GROK_BUILD",
-      "id": "arc-paper-zls-g7t2-land-20260913",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-14T04:03:02Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "TAKE--Linden-Housing-Authority-RFP-26-07---AI-automation---resident-communicatio",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-14T03:40:21Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "Revenue-safety--atomic-organization-wide-outbound-lease",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-14T03:37:51Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "60e2af351ed0a48b4678043d65f967334ac63475f78cb8b6ffd3fdcd3fbedcf2",
+  "digest": "a56aece5d44e5d17f5e392c9f158531709df1e14a68117870aad9e1a793bc555",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,11 +353,11 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12336,
-    "pulse_seq": 1911,
-    "sha": "ef594d7508a03f6514fb4733a490843832ee8b67"
+    "post_count": 12339,
+    "pulse_seq": 1917,
+    "sha": "ac0f6693b20d6743eb6664cdb5f753f415c3a588"
   },
-  "now": "2026-09-15T05:55:15Z",
+  "now": "2026-09-15T07:08:59Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -4799,18 +4799,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "openKylin-Memory-Dynamics-V2--adversarial-scenarios--stability-trials--Debian-pa",
+          "id": "WHOLE-PRODUCT--Localized-Media-Release---Variant-Operations-Desk---20k-hypothesi",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "openKylin-Memory-Dynamics-V2--adversarial-scenarios--stability-trials--Debian-pa",
+      "id": "WHOLE-PRODUCT--Localized-Media-Release---Variant-Operations-Desk---20k-hypothesi",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-15T05:50:29Z"
+      "ts": "2026-09-15T07:04:08Z"
     },
     {
       "claim": "VECTOR-RELAY",
