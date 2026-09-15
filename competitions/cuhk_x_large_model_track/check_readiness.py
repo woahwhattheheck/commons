@@ -21,6 +21,15 @@ class InvalidState(ValueError):
     pass
 
 
+def _reject_duplicate_object(pairs: list[tuple[str, Any]]) -> dict[str, Any]:
+    obj: dict[str, Any] = {}
+    for key, value in pairs:
+        if key in obj:
+            raise InvalidState(f"duplicate JSON key: {key}")
+        obj[key] = value
+    return obj
+
+
 def _require_bool(obj: dict[str, Any], key: str, label: str) -> bool:
     if key not in obj or type(obj[key]) is not bool:
         raise InvalidState(f"{label}.{key} must be boolean")
@@ -32,9 +41,47 @@ def _receipt_present(receipts: dict[str, Any], key: str) -> bool:
     return isinstance(value, str) and bool(value.strip())
 
 
+def _entry_gate_complete(state: dict[str, Any]) -> bool:
+    gates, team = state["gates"], state["team"]
+    return all(
+        (
+            gates["official_site_registered"],
+            gates["kaggle_large_model_track_joined"],
+            gates["kaggle_rules_accepted"],
+            gates["cuhkx_data_use_terms_accepted"],
+            team["team_name_match_verified"],
+        )
+    )
+
+
+def _entry_evidenced(state: dict[str, Any]) -> bool:
+    receipts = state["receipts"]
+    return (
+        _entry_gate_complete(state)
+        and _receipt_present(receipts, "official_site_registration")
+        and _receipt_present(receipts, "kaggle_join_and_terms")
+    )
+
+
+def _submission_evidenced(state: dict[str, Any]) -> bool:
+    gates, receipts, authority = state["gates"], state["receipts"], state["authority"]
+    return (
+        _entry_evidenced(state)
+        and gates["dataset_accessed_from_official_mirror"]
+        and _receipt_present(receipts, "dataset_access")
+        and gates["valid_submission_made"]
+        and _receipt_present(receipts, "submission")
+        and authority["dataset_access_claimed"]
+        and authority["submission_claimed"]
+    )
+
+
 def load_state(path: Path) -> dict[str, Any]:
     try:
-        payload = json.loads(path.read_text(encoding="utf-8"))
+        payload = json.loads(
+            path.read_text(encoding="utf-8"),
+            object_pairs_hook=_reject_duplicate_object,
+        )
     except (OSError, json.JSONDecodeError) as exc:
         raise InvalidState(f"cannot load readiness state: {exc}") from exc
     if not isinstance(payload, dict):
@@ -90,12 +137,30 @@ def load_state(path: Path) -> dict[str, Any]:
         if official_name != kaggle_name:
             raise InvalidState("team_name_match_verified contradicts actual team names")
 
+    if gates["dataset_accessed_from_official_mirror"] and not _entry_gate_complete(payload):
+        raise InvalidState(
+            "official-mirror dataset access requires completed registration/rules/join/team-name gates"
+        )
+    if gates["valid_submission_made"] and not gates["dataset_accessed_from_official_mirror"]:
+        raise InvalidState("valid submission requires prior official-mirror dataset access")
+    if gates["final_submission_selected"] and not gates["valid_submission_made"]:
+        raise InvalidState("final submission selection requires a valid submission")
+
     if authority["prize_or_award_claimed"]:
         raise InvalidState("this packet is not permitted to claim a prize or award")
     if authority["dataset_access_claimed"] and not gates["dataset_accessed_from_official_mirror"]:
         raise InvalidState("dataset access claim lacks official-mirror access gate")
     if authority["submission_claimed"] and not gates["valid_submission_made"]:
         raise InvalidState("submission claim lacks valid-submission gate")
+
+    derived_submission_ready = _submission_evidenced(payload)
+    if authority["submission_ready"] != derived_submission_ready:
+        raise InvalidState(
+            "authority.submission_ready must equal mechanically evidenced submission readiness"
+        )
+    if gates["final_submission_selected"] and not derived_submission_ready:
+        raise InvalidState("final submission selection requires evidenced submission readiness")
+
     if gates["top15_notified"] and not _receipt_present(receipts, "top15_notification"):
         raise InvalidState("Top-15 notification requires a receipt")
     if gates["verification_deadline_rechecked_after_top15"]:
