@@ -474,6 +474,7 @@ def _validate_input(raw: Any) -> dict:
 def _packet(raw: Any) -> dict:
     data = _validate_input(raw)
     reasons: list[str] = []
+    candidate = data["candidate"]
 
     by_key = {
         (s["provider"], s["family_id"], s["query"]): s
@@ -494,6 +495,8 @@ def _packet(raw: Any) -> dict:
                 age = (data["evaluation"] - s["observed_at"]).total_seconds()
                 if age > data["max_age"]:
                     reasons.append(f"STALE_SEARCH:{provider}:{fid}:{term}")
+                if s["observed_at"] < candidate["created_at"]:
+                    reasons.append(f"SEARCH_BEFORE_CANDIDATE:{provider}:{fid}:{term}")
                 for hit in s["hits"]:
                     if hit["created_at"] > data["evaluation"]:
                         reasons.append(f"FUTURE_HIT:{hit['hit_id']}")
@@ -502,6 +505,9 @@ def _packet(raw: Any) -> dict:
                             f"HIT_AFTER_SEARCH_OBSERVATION:{hit['hit_id']}"
                         )
 
+    # Reconcile provider-exported identity before any durable/semantic filtering.
+    # A same-ID row with changed bytes/metadata is ambiguous evidence and cannot
+    # participate in a CLEAR.
     identities: dict[str, bytes] = {}
     for s in data["searches"]:
         for hit in s["hits"]:
@@ -512,7 +518,6 @@ def _packet(raw: Any) -> dict:
             elif prior != identity:
                 reasons.append(f"CONFLICTING_HIT_METADATA:{hit['hit_id']}")
 
-    candidate = data["candidate"]
     matches = {}
     for s in data["searches"]:
         for hit in s["hits"]:
