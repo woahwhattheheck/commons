@@ -130,9 +130,9 @@ def _validate_concept_and_evidence(
     required = _required_capabilities(topic_ids)
     missing = sorted(required - verified_tags)
     if any(topic not in _TOPIC_REQUIREMENTS for topic in topic_ids):
-        reasons.append(_reason("TOPIC_CAPABILITY_MODEL_UNSUPPORTED", "v1 has no fixed capability model for one or more selected topics", [str(topic) for topic in topic_ids if topic not in _TOPIC_REQUIREMENTS]))
+        reasons.append(_reason("TOPIC_CAPABILITY_MODEL_UNSUPPORTED", "v1 has no fixed technical requirement model for one or more selected topics", [str(topic) for topic in topic_ids if topic not in _TOPIC_REQUIREMENTS]))
     if missing:
-        reasons.append(_reason("TECHNICAL_CAPABILITY_GAPS", "required capability evidence is missing", missing))
+        reasons.append(_reason("TECHNICAL_CAPABILITY_GAPS", "required technical evidence is missing", missing))
 
     normalized_evidence.sort(key=lambda item: item["evidence_id"])
     summary = {
