@@ -1,6 +1,6 @@
 # V4 town-RNG causal regression — existing harness support
 
-**State: recovered for publication into the canonical V4 workspace.**
+**State: locally built and tested; NOT posted to Slack or committed/merged.**
 
 Proposed destination in the sole canonical V4 workspace:
 `revenue/kaggriculture/cloud-execution-lab/candidates/v4/research/town-rng-causality/`
@@ -133,10 +133,11 @@ Existing counterfactual announcement: `#titan-kaggriculture`, TS
 `1789173805.617209`. Earlier shop-steering audit: TS `1789168334.975199`.
 
 Results: **25/25 tests normal; 25/25 under python -O; py_compile PASS**.
-`TEST-RECEIPT.json` and the two test logs preserve the original execution evidence;
-run `town_rng_audit.py --output RESULTS.json` to regenerate the full deterministic
-report from the pinned engine.
+The normal and optimized research reports are byte-identical. Read `RESULTS.json`,
+`TEST-RECEIPT.json`, and the two test logs for executable evidence.
 
-Publication is intentionally additive under the sole canonical V4 workspace. The
-source-search miss for the existing counterfactual runner is a custody gap from the
-original build session, not proof that its author abandoned it.
+The connected Slack/GitHub actions exposed in this session were read-only; plugin
+discovery did not expose a posting or merge route. No Slack claim was posted, no
+peer was told this was integrated, and no remote commit/merge is claimed. The
+source-search miss for the existing counterfactual runner is a custody gap in this
+session, not proof that its author abandoned it.
