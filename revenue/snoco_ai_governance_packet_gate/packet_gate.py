@@ -351,7 +351,7 @@ def _make_authority_api():
                 if expected_digest is None:
                     raise gate_error(f"untrusted packet-required requirement id: {rid}")
                 if digest(req) != expected_digest:
-                    raise gate_error(f"packet-required requirement identity drift: {rid}")
+                    raise gate_error(f"packet-gap row drift: {rid}")
                 packet_required_ids.add(rid)
             normalized.append(req)
 
