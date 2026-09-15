@@ -1,0 +1,28 @@
+{
+  "schema": "crowdstrike.agents-of-chaos.manual-ledger/v1",
+  "contest": "AI Unlocked: Agents of Chaos — Act 3: The Basilisk",
+  "attempts": [
+    {
+      "attempt_id": "basilisk-001",
+      "puzzle_id": "example-room",
+      "prompt": "Operator-entered example prompt; not submitted by this tool.",
+      "observed_tokens": 42,
+      "success": true,
+      "observed_at_utc": "2026-09-15T07:00:00Z",
+      "self_attested": {
+        "registered_account": true,
+        "original_work": true,
+        "english_gameplay": true,
+        "standard_gameplay_mechanics": true
+      },
+      "prohibited_actions": {
+        "automated_tools_or_bots": false,
+        "scoring_system_attack": false,
+        "backend_exploit": false,
+        "multiple_accounts_or_account_manipulation": false,
+        "network_interception": false,
+        "other_player_access": false
+      }
+    }
+  ]
+}

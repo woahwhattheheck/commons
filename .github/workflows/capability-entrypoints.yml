@@ -26,6 +26,7 @@ on:
       - 'revenue/organization_outbound_lease/**'
       - 'tests/test_organization_outbound_lease.py'
       - 'tests/test_organization_outbound_lease_trust.py'
+      - 'competitions/crowdstrike-agents-of-chaos-2026/**'
   pull_request:
     paths: *entrypoint_paths
   workflow_dispatch:
@@ -147,3 +148,37 @@ jobs:
         run: python -m unittest -q tests.test_organization_outbound_lease tests.test_organization_outbound_lease_trust
       - name: Organization outbound lease optimized Python tests
         run: python -O -m unittest -q tests.test_organization_outbound_lease tests.test_organization_outbound_lease_trust
+
+  crowdstrike-agents-of-chaos:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11', '3.13']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Compile offline workbench
+        run: >-
+          python -m py_compile
+          competitions/crowdstrike-agents-of-chaos-2026/workbench.py
+          competitions/crowdstrike-agents-of-chaos-2026/cli.py
+          competitions/crowdstrike-agents-of-chaos-2026/test_workbench.py
+      - name: Manual-observation hostile suite
+        run: python -B -m unittest -q competitions/crowdstrike-agents-of-chaos-2026/test_workbench.py
+      - name: Optimized manual-observation hostile suite
+        run: python -O -B -m unittest -q competitions/crowdstrike-agents-of-chaos-2026/test_workbench.py
+      - name: CLI compile and verify proof
+        shell: bash
+        run: |
+          set -eu
+          root="$(mktemp -d)"
+          out="$root/bundle"
+          python competitions/crowdstrike-agents-of-chaos-2026/cli.py compile \
+            competitions/crowdstrike-agents-of-chaos-2026/example-ledger.json \
+            --out-dir "$out"
+          python competitions/crowdstrike-agents-of-chaos-2026/cli.py verify \
+            competitions/crowdstrike-agents-of-chaos-2026/example-ledger.json \
+            "$out/frontier.json"
