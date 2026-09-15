@@ -21,20 +21,33 @@ from .core import (
 )
 from .validation import validate_and_normalize
 
-_MARKDOWN_CONTROL_RE = re.compile(r"([\\`*_{}\[\]()#+\-.!|>])")
+_MARKDOWN_CONTROL_RE = re.compile(r"([\\`*_{}\[\]()#+\-!|>])")
 
 
 def _markdown_inline(value: str) -> str:
-    """Project external text into one Markdown-safe visual line."""
+    """Project external text into one non-linking Markdown-safe visual line."""
 
+    # Replace controls with spacing rather than deleting them so hostile bidi/newline input cannot
+    # join two otherwise separate tokens into a different visible claim.
     without_controls = "".join(
-        character
+        " " if unicodedata.category(character) in {"Cc", "Cf", "Cs", "Zl", "Zp"} else character
         for character in value
-        if unicodedata.category(character) not in {"Cc", "Cf", "Cs", "Zl", "Zp"}
     )
     single_line = " ".join(without_controls.split())
-    html_safe = html.escape(single_line, quote=True)
-    return _MARKDOWN_CONTROL_RE.sub(r"\\\1", html_safe)
+
+    # Escape Markdown before HTML. Reversing this order would backslash the `#` inside numeric
+    # entities such as `&#x27;`, changing the visible customer text.
+    markdown_safe = _MARKDOWN_CONTROL_RE.sub(r"\\\1", single_line)
+    html_safe = html.escape(markdown_safe, quote=True)
+
+    # Break common automatic-link/mention recognizers at source-token time while preserving the
+    # rendered characters. This covers URLs, bare domains, email addresses, and @-mentions.
+    return (
+        html_safe.replace("@", "&#64;")
+        .replace(":", "&#58;")
+        .replace("/", "&#47;")
+        .replace(".", "&#46;")
+    )
 
 
 def compile_proof(raw: dict[str, Any]) -> CompiledProof:
