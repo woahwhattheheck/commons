@@ -67,13 +67,17 @@ def _exists(root, rel):
 
 
 def load_catalog(text):
-    """Parse the finder-zero catalog. Empty or invalid is measured empty."""
+    """Parse the catalog; malformed collection shapes return explicit errors."""
     try:
         data = json.loads(str(text or "") or "{}")
     except ValueError:
         return {"error": "catalog is not JSON"}
     if not isinstance(data, dict):
         return {"error": "catalog is not an object"}
+    for field in ("defects", "hands_off"):
+        value = data.get(field)
+        if value is not None and not isinstance(value, list):
+            return {"error": "catalog %s is not an array" % field}
     defects = []
     for item in data.get("defects") or []:
         if not isinstance(item, dict):
