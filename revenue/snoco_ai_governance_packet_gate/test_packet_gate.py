@@ -1,7 +1,10 @@
 import copy
 import json
+import sys
 import unittest
 from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 from packet_gate import GateError, build_receipt, validate_matrix, validate_sources, verify_receipt
 
