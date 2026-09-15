@@ -314,10 +314,45 @@ def _make_authoritative_execute_region(
                 con.close()
             materialized.close()
 
-    return execute_region
+    def main(argv=None) -> int:
+        """Dispatch CLI run through the captured authoritative executor."""
+        parser = _legacy.argparse.ArgumentParser(description=_legacy.__doc__)
+        sub = parser.add_subparsers(dest="command", required=True)
+        plan_cmd = sub.add_parser(
+            "plan",
+            help="emit deterministic no-download plan + preflight SQL",
+        )
+        plan_cmd.add_argument("--region", required=True, choices=tuple(_legacy.REGIONS))
+        plan_cmd.add_argument("--sql", action="store_true", help="include aggregate SQL")
+        run_cmd = sub.add_parser(
+            "run",
+            help="materialize + execute one public region with DuckDB 1.5.4",
+        )
+        run_cmd.add_argument("--region", required=True, choices=tuple(_legacy.REGIONS))
+        run_cmd.add_argument("--output", required=True)
+        run_cmd.add_argument("--receipt", required=True)
+        args = parser.parse_args(argv)
+        try:
+            if args.command == "plan":
+                payload = _legacy.build_plan(args.region)
+                if args.sql:
+                    payload["sql"] = _legacy.aggregate_query(args.region)
+                print(json.dumps(payload, sort_keys=True, indent=2))
+            else:
+                result = execute_region(
+                    args.region,
+                    Path(args.output),
+                    Path(args.receipt),
+                )
+                print(json.dumps(result, sort_keys=True))
+        except (AggregationError, OSError) as exc:
+            parser.error(str(exc))
+        return 0
+
+    return execute_region, main
 
 
-execute_region = _make_authoritative_execute_region(
+execute_region, main = _make_authoritative_execute_region(
     _materialize_sources,
     _legacy._connect_duckdb,
     _legacy._aggregate_query_for_registry,
@@ -339,7 +374,8 @@ _legacy._stream_response_to_retained_fd = _stream_response_to_retained_fd
 _legacy._materialize_one = _materialize_one
 _legacy._materialize_sources = _materialize_sources
 _legacy.execute_region = execute_region
+_legacy.main = main
 
 
 if __name__ == "__main__":
-    raise SystemExit(_legacy.main())
+    raise SystemExit(main())
