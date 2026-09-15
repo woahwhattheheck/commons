@@ -1,7 +1,9 @@
 import hashlib
 import unittest
 
-from host.connector_policy_broker import Policy, PolicyError, authorize, canary_policy, verify_decision
+from host.connector_policy_broker import (
+    Policy, PolicyError, authorize, canary_policy, verify_decision, workflow_approval_subject_sha256,
+)
 
 
 class PolicyBrokerTests(unittest.TestCase):
@@ -32,7 +34,7 @@ class PolicyBrokerTests(unittest.TestCase):
             expected_head_sha="b" * 40,
             force=False,
             files=[{"path": "src/a.py", "content_utf8": "print('ok')\n"}],
-            human_approval=False,
+            workflow_approval_sha256=None,
         )
         self.assertTrue(authorize(good, self.policy).allowed)
         self.assertEqual("FORCE_UPDATE_DENIED", authorize({**good, "force": True}, self.policy).code)
@@ -47,7 +49,7 @@ class PolicyBrokerTests(unittest.TestCase):
             branch="agent/fix",
             expected_head_sha="b" * 40,
             force=False,
-            human_approval=False,
+            workflow_approval_sha256=None,
         )
         traversal = {**base, "files": [{"path": "src/../secret", "content_utf8": "x"}]}
         self.assertEqual("INVALID_REQUEST", authorize(traversal, self.policy).code)
@@ -65,7 +67,7 @@ class PolicyBrokerTests(unittest.TestCase):
             expected_head_sha="b" * 40,
             force=False,
             files=[{"path": ".github/workflows/x.yml", "content_utf8": "name: x\n"}],
-            human_approval=False,
+            workflow_approval_sha256=None,
         )
         self.assertEqual("WORKFLOW_WRITE_DENIED", authorize(req, self.policy).code)
         elevated = Policy(
@@ -75,8 +77,19 @@ class PolicyBrokerTests(unittest.TestCase):
             github_path_prefixes=(".github/workflows/",),
             allow_workflow_writes=True,
         )
-        self.assertEqual("WORKFLOW_HUMAN_APPROVAL_REQUIRED", authorize(req, elevated).code)
-        self.assertTrue(authorize({**req, "human_approval": True}, elevated).allowed)
+        self.assertEqual("WORKFLOW_APPROVAL_REQUIRED", authorize(req, elevated).code)
+        approval = workflow_approval_subject_sha256(req)
+        approved = Policy(
+            policy_version="elevated/v2",
+            github_repositories=frozenset({"acme/widgets"}),
+            github_branch_prefixes=("agent/",),
+            github_path_prefixes=(".github/workflows/",),
+            allow_workflow_writes=True,
+            workflow_approval_sha256s=frozenset({approval}),
+        )
+        self.assertTrue(authorize({**req, "workflow_approval_sha256": approval}, approved).allowed)
+        tampered = {**req, "workflow_approval_sha256": approval, "files": [{"path": ".github/workflows/x.yml", "content_utf8": "name: evil\n"}]}
+        self.assertEqual("WORKFLOW_APPROVAL_REQUIRED", authorize(tampered, approved).code)
 
     def test_pull_request_can_be_forced_to_draft_default_base(self):
         req = self.req("github.create_pull_request", repository="acme/widgets", head="agent/fix", base="main", draft=True)
@@ -131,11 +144,17 @@ class PolicyBrokerTests(unittest.TestCase):
         good = {
             "action": "github.commit_files", "correlation_id": "canary-1",
             "repository": "acme/canary", "branch": "agent-canary/1", "expected_head_sha": "c" * 40,
-            "force": False, "human_approval": False,
+            "force": False, "workflow_approval_sha256": None,
             "files": [{"path": ".connector-canary/1.txt", "content_utf8": "ok"}],
         }
         self.assertTrue(authorize(good, policy).allowed)
         self.assertEqual("PATH_PREFIX_NOT_ALLOWED", authorize({**good, "files": [{"path": "README.md", "content_utf8": "x"}]}, policy).code)
+
+    def test_mapping_subclasses_are_not_admitted_as_json(self):
+        class HookedDict(dict):
+            pass
+        req = HookedDict(self.req("github.create_branch", repository="acme/widgets", branch="agent/x", base_sha="a" * 40))
+        self.assertEqual("REQUEST_NOT_OBJECT", authorize(req, self.policy).code)
 
     def test_policy_rejects_malformed_configuration(self):
         with self.assertRaises(PolicyError):
