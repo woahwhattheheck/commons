@@ -33,6 +33,39 @@ class GithubUrlDelimiterResidualTests(unittest.TestCase):
                 self.assertIsNone(GITHUB_ITEM_RE.fullmatch(bad))
                 self.assertEqual([], github_urls(f"see {bad} now"))
 
+    def test_path_confusable_slash_tails_never_bind_issue_prefix(self):
+        base = "https://github.com/acme/widget/issues/42"
+        for suffix in (
+            "/../pull/99",
+            "/./comments",
+            "/%2e%2e/pull/99",
+            "/x.css",
+            "/~name",
+            "//comments",
+            "/comments/../pull/99",
+            "/comments%2Fmore",
+        ):
+            bad = base + suffix
+            with self.subTest(bad=bad):
+                self.assertIsNone(GITHUB_ITEM_RE.fullmatch(bad))
+                self.assertEqual([], github_urls(f"see {bad} now"))
+
+    def test_safe_slash_path_segments_remain_supported(self):
+        base = "https://github.com/acme/widget/issues/42"
+        for continuation in (
+            "/",
+            "/comments/",
+            "/comments/page_2",
+            "/commits/abcdef123",
+            "/files?diff=split",
+            "/#frag",
+            "/?tab=foo",
+        ):
+            url = base + continuation
+            with self.subTest(url=url):
+                self.assertIsNotNone(GITHUB_ITEM_RE.fullmatch(url))
+                self.assertEqual([base], github_urls(url))
+
     def test_legitimate_continuations_and_terminal_punctuation_still_bind(self):
         base = "https://github.com/acme/widget/issues/42"
         for continuation in (
