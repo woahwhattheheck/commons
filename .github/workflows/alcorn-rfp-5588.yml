@@ -43,10 +43,13 @@ jobs:
               'section_ix_references',
               'section_vii_item_12_requirements_matrix',
           }
-          assert 'buyer_addendum:addendum_1:teaming_structure_not_affirmatively_permitted' in r['blockers'], r
+          assert 'amendments_review_evidence_id' not in r['blockers'], r
           a=r['source_findings']['addendum_1']
           assert a['sha256']=='82a26f82092e9de91f3e10f985bf9811983f122127fb15d35c9b2f746da72886', a
-          assert a['teaming_route_affirmatively_permitted'] is False, a
+          assert a['vendor_proposal_structure_discretion'] is True, a
+          assert a['minimum_specifications_still_required'] is True, a
+          assert a['nvidia_oem_authority_granted'] is False, a
+          assert a['partner_credentials_inherited'] is False, a
           assert all(v is False for v in r['authority'].values()), r['authority']
           print(r['receipt_sha256'])
           PY

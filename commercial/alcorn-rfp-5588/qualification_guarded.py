@@ -2,9 +2,8 @@
 """Canonical Addendum-aware qualification entrypoint for Alcorn State RFP #5588.
 
 The original qualification engine remains the low-level evidence evaluator. This layer
-source-binds buyer Addendum #1 and prevents an otherwise-green teaming fixture from
-becoming TEAMING_READY when the buyer's answer did not affirm the proposed
-consulting-prime/subcontract structure.
+source-binds buyer Addendum #1 and records its bounded semantic effect without inventing
+new buyer requirements or inheriting NVIDIA/OEM authority.
 """
 from __future__ import annotations
 
@@ -25,8 +24,7 @@ ADDENDUM_SHA256 = "82a26f82092e9de91f3e10f985bf9811983f122127fb15d35c9b2f746da72
 ADDENDUM_DOCUMENT_DATE = "2026-09-10"
 ADDENDUM_RECEIVED_AT = "2026-09-15T21:40:09+00:00"
 ADDENDUM_TOPIC = "consulting_prime_with_disclosed_hardware_software_or_lab_delivery_partners"
-ADDENDUM_EFFECT = "AMBIGUOUS_NO_AFFIRMATIVE_PERMISSION"
-TEAMING_ROUTE_BLOCKER = "buyer_addendum:addendum_1:teaming_structure_not_affirmatively_permitted"
+ADDENDUM_EFFECT = "PROPOSAL_STRUCTURE_DISCRETION_MINIMUM_SPEC_FLOOR"
 
 
 def _validated_addendum(spec: Mapping[str, Any]) -> dict[str, Any]:
@@ -81,7 +79,10 @@ def _with_source_finding(result: dict[str, Any], addendum: Mapping[str, Any]) ->
             "received_at": addendum["received_at"],
             "question_topic": addendum["question_topic"],
             "normalized_effect": addendum["normalized_effect"],
-            "teaming_route_affirmatively_permitted": False,
+            "vendor_proposal_structure_discretion": True,
+            "minimum_specifications_still_required": True,
+            "nvidia_oem_authority_granted": False,
+            "partner_credentials_inherited": False,
         }
     }
 
@@ -90,16 +91,6 @@ def evaluate(spec: dict[str, Any], evidence: dict[str, Any]) -> dict[str, Any]:
     addendum = _validated_addendum(spec)
     result = base.evaluate(spec, evidence)
     _with_source_finding(result, addendum)
-
-    bid_model = evidence.get("bid_model")
-    if bid_model == "nvidia_prime_subcontract" and result["state"] != "NO_BID":
-        blockers = set(result.get("blockers", []))
-        blockers.add(TEAMING_ROUTE_BLOCKER)
-        result["blockers"] = sorted(blockers)
-        if result["state"] == "TEAMING_READY":
-            result["state"] = "HOLD"
-        result["reason"] = "teaming_gates_unproven"
-
     return result
 
 

@@ -22,8 +22,8 @@
       "document_date": "2026-09-10",
       "received_at": "2026-09-15T21:40:09+00:00",
       "question_topic": "consulting_prime_with_disclosed_hardware_software_or_lab_delivery_partners",
-      "normalized_effect": "AMBIGUOUS_NO_AFFIRMATIVE_PERMISSION",
-      "policy": "The buyer reiterated the requested equipment and minimum specifications and left proposal presentation to the vendor; do not treat this answer as affirmative permission for a consulting-prime/subcontract structure or as NVIDIA/OEM authority."
+      "normalized_effect": "PROPOSAL_STRUCTURE_DISCRETION_MINIMUM_SPEC_FLOOR",
+      "policy": "The buyer reiterated the requested equipment and minimum specifications and stated that each prospective vendor may submit a proposal in the manner it feels appropriately addresses the RFP. Record proposal-structure discretion without inventing a separate affirmative-permission gate; do not infer NVIDIA/OEM authority, partner credential inheritance, buyer acceptance, or waiver of any minimum specification."
     }
   ],
   "received_packet_structure": {
@@ -56,7 +56,6 @@
     {"id": "one_year_hw_sw_warranty", "source": "Section VII 6.1", "kind": "material"},
     {"id": "first_year_onsite_support_in_cost", "source": "Section VII 6.2", "kind": "material"},
     {"id": "reference_site_on_request", "source": "Section VII 7.2.6", "kind": "material"},
-    {"id": "teaming_structure_affirmatively_permitted", "source": "Addendum #1 dated 2026-09-10", "kind": "route_authority"},
     {"id": "certificate_of_liability_insurance", "source": "Section VI item 73", "kind": "submission"},
     {"id": "everify_documentation", "source": "Section VI item 74", "kind": "submission"},
     {"id": "taxpayer_id", "source": "Section VI item 72", "kind": "submission_private"},

@@ -32,26 +32,31 @@ class AddendumGuardTests(unittest.TestCase):
         evidence = base.load_json_strict(HERE / "current_evidence.json")
         result = guard.evaluate(SPEC, evidence)
         self.assertEqual(result["state"], "HOLD")
-        self.assertIn(guard.TEAMING_ROUTE_BLOCKER, result["blockers"])
         finding = result["source_findings"][guard.ADDENDUM_ID]
         self.assertEqual(finding["sha256"], guard.ADDENDUM_SHA256)
-        self.assertFalse(finding["teaming_route_affirmatively_permitted"])
+        self.assertTrue(finding["vendor_proposal_structure_discretion"])
+        self.assertTrue(finding["minimum_specifications_still_required"])
+        self.assertFalse(finding["nvidia_oem_authority_granted"])
+        self.assertFalse(finding["partner_credentials_inherited"])
+        self.assertNotIn("amendments_review_evidence_id", result["blockers"])
         self.assertTrue(all(v is False for v in result["authority"].values()))
 
-    def test_predecessor_false_green_team_fixture_is_killed(self):
+    def test_addendum_does_not_invent_a_new_teaming_permission_gate(self):
         evidence = fixtures.team_ready()
         predecessor = base.evaluate(SPEC, evidence)
         self.assertEqual(predecessor["state"], "TEAMING_READY")
         guarded = guard.evaluate(SPEC, evidence)
-        self.assertEqual(guarded["state"], "HOLD")
-        self.assertIn(guard.TEAMING_ROUTE_BLOCKER, guarded["blockers"])
+        self.assertEqual(guarded["state"], "TEAMING_READY")
+        self.assertEqual(guarded["blockers"], predecessor["blockers"])
+        self.assertFalse(guarded["source_findings"][guard.ADDENDUM_ID]["nvidia_oem_authority_granted"])
 
-    def test_direct_prime_route_is_not_blocked_by_partner_structure_question(self):
+    def test_direct_prime_route_is_unchanged(self):
         evidence = fixtures.direct_ready()
+        predecessor = base.evaluate(SPEC, evidence)
         result = guard.evaluate(SPEC, evidence)
         self.assertEqual(result["state"], "PRIME_READY")
-        self.assertNotIn(guard.TEAMING_ROUTE_BLOCKER, result["blockers"])
-        self.assertFalse(result["source_findings"][guard.ADDENDUM_ID]["teaming_route_affirmatively_permitted"])
+        self.assertEqual(result["blockers"], predecessor["blockers"])
+        self.assertTrue(result["source_findings"][guard.ADDENDUM_ID]["vendor_proposal_structure_discretion"])
 
     def test_addendum_digest_is_source_bound(self):
         spec = copy.deepcopy(SPEC)
@@ -65,9 +70,9 @@ class AddendumGuardTests(unittest.TestCase):
         with self.assertRaisesRegex(base.EvidenceError, "source binding mismatch for gmail_message_id"):
             guard.evaluate(spec, fixtures.team_ready())
 
-    def test_addendum_semantic_effect_cannot_be_promoted_by_editing_spec(self):
+    def test_addendum_semantic_effect_cannot_be_rewritten_by_editing_spec(self):
         spec = copy.deepcopy(SPEC)
-        spec["buyer_addenda"][0]["normalized_effect"] = "AFFIRMATIVELY_PERMITTED"
+        spec["buyer_addenda"][0]["normalized_effect"] = "NVIDIA_AUTHORITY_GRANTED"
         with self.assertRaisesRegex(base.EvidenceError, "source binding mismatch for normalized_effect"):
             guard.evaluate(spec, fixtures.team_ready())
 
@@ -77,7 +82,7 @@ class AddendumGuardTests(unittest.TestCase):
         with self.assertRaisesRegex(base.EvidenceError, "exactly one"):
             guard.evaluate(spec, fixtures.team_ready())
 
-    def test_explicit_no_bid_stays_no_bid_without_route_rewrite(self):
+    def test_explicit_no_bid_stays_no_bid(self):
         evidence = fixtures.team_ready()
         evidence["explicit_disqualifier"] = {
             "fact": "buyer cancelled solicitation",
@@ -85,7 +90,7 @@ class AddendumGuardTests(unittest.TestCase):
         }
         result = guard.evaluate(SPEC, evidence)
         self.assertEqual(result["state"], "NO_BID")
-        self.assertNotIn(guard.TEAMING_ROUTE_BLOCKER, result["blockers"])
+        self.assertEqual(result["reason"], "source_bound_explicit_disqualifier")
 
 
 if __name__ == "__main__":
