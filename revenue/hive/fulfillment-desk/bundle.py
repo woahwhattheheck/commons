@@ -198,6 +198,8 @@ def build(deployment: Path, runner_dir: Path, output: Path, source_revision='not
         '  python run.py --db client.sqlite3 serve\n\n'
         'The launcher checks MANIFEST.json against its immutable packaged runtime files before\n'
         'loading workflow.py. config.local.json is intentionally editable operator configuration.\n'
+        'The launcher removes the package directory from Python import search before loading\n'
+        'shadowable standard-library modules or the verified workflow generation.\n'
         'This internal integrity check is not a signed provenance or authenticity guarantee.\n\n'
         'Open http://127.0.0.1:8789 in that environment. This is a trusted single-workspace\n'
         'operator service, not an internet-facing or multi-tenant deployment.\n\n'
@@ -256,17 +258,21 @@ def build(deployment: Path, runner_dir: Path, output: Path, source_revision='not
                     archive.writestr(info, data)
             stream.flush()
             os.fsync(stream.fileno())
-            built = os.fstat(stream.fileno())
+            before_hash = os.fstat(stream.fileno())
             byte_count, bundle_sha256 = _hash_stream(stream)
-            if byte_count != built.st_size:
-                raise RuntimeError('Created package size changed before publication')
+            after_hash = os.fstat(stream.fileno())
+            if (
+                _fingerprint(before_hash) != _fingerprint(after_hash)
+                or byte_count != after_hash.st_size
+            ):
+                raise RuntimeError('Created package changed while it was being hashed')
             visible = os.stat(output, follow_symlinks=False)
             if (
                 not stat.S_ISREG(visible.st_mode)
                 or _inode_key(visible) != created_key
-                or visible.st_size != built.st_size
+                or _fingerprint(visible) != _fingerprint(after_hash)
             ):
-                raise RuntimeError('Output path no longer names the package inode that was created')
+                raise RuntimeError('Output path no longer names the hashed package generation')
             return {
                 'output': str(output),
                 'bytes': byte_count,
