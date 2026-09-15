@@ -5,6 +5,7 @@ import sys
 import tempfile
 import unittest
 from pathlib import Path
+from unittest import mock
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
@@ -45,10 +46,46 @@ class WorkbenchTests(unittest.TestCase):
         with self.assertRaises(LedgerError):
             load_strict_json(raw)
 
+    def test_nonfinite_json_constants_rejected(self):
+        for raw in ('{"x":NaN}', '{"x":Infinity}', '{"x":-Infinity}'):
+            with self.subTest(raw=raw), self.assertRaises(LedgerError):
+                load_strict_json(raw)
+
+    def test_invalid_json_is_ledger_error(self):
+        with self.assertRaises(LedgerError):
+            load_strict_json('{"x":')
+
     def test_malformed_token_count_rejected(self):
         for bad in (True, 3.5, "12", -1):
             with self.assertRaises(LedgerError):
                 evaluate_ledger(ledger(attempt(observed_token_count=bad)))
+
+    def test_identity_and_text_types_are_not_coerced(self):
+        cases = (
+            {"attempt_id": 7},
+            {"puzzle_id": ["basilisk"]},
+            {"prompt_text": {"prompt": "x"}},
+            {"notes": 123},
+            {"outcome": ["success"]},
+            {"entry_mode": True},
+        )
+        for kwargs in cases:
+            with self.subTest(kwargs=kwargs), self.assertRaises(LedgerError):
+                evaluate_ledger(ledger(attempt(**kwargs)))
+
+    def test_declared_action_types_are_not_coerced_or_leaked(self):
+        for actions in ([{}], [7], [None], "human_paste"):
+            with self.subTest(actions=actions), self.assertRaises(LedgerError):
+                evaluate_ledger(ledger(attempt(declared_actions=actions)))
+
+    def test_unknown_attempt_and_ledger_fields_are_rejected(self):
+        row = attempt(extra="not-bound")
+        with self.assertRaises(LedgerError):
+            evaluate_ledger(ledger(row))
+        top = ledger(attempt())
+        top["extra"] = "not-bound"
+        with self.assertRaises(LedgerError):
+            evaluate_ledger(top)
 
     def test_prohibited_automation_flag_rejected(self):
         with self.assertRaises(LedgerError):
@@ -95,7 +132,44 @@ class WorkbenchTests(unittest.TestCase):
         r1 = evaluate_ledger(ledger(a, b))
         r2 = evaluate_ledger(ledger(b, a))
         self.assertEqual(r1["receipt"]["receipt_sha256"], r2["receipt"]["receipt_sha256"])
+        self.assertEqual(r1["receipt"]["normalized_ledger_sha256"], r2["receipt"]["normalized_ledger_sha256"])
         self.assertEqual(r1["frontiers"], r2["frontiers"])
+        self.assertEqual(r1["attempts"], r2["attempts"])
+
+    def test_receipt_binds_non_frontier_evidence(self):
+        one = evaluate_ledger(
+            ledger(
+                attempt(attempt_id="best", observed_token_count=10),
+                attempt(
+                    attempt_id="failed",
+                    outcome="failure",
+                    observed_token_count=5,
+                    prompt_text="failed evidence one",
+                    notes="manual note one",
+                ),
+            )
+        )
+        two = evaluate_ledger(
+            ledger(
+                attempt(attempt_id="best", observed_token_count=10),
+                attempt(
+                    attempt_id="failed",
+                    outcome="failure",
+                    observed_token_count=5,
+                    prompt_text="failed evidence two",
+                    notes="manual note two",
+                ),
+            )
+        )
+        self.assertEqual(one["frontiers"], two["frontiers"])
+        self.assertNotEqual(
+            one["receipt"]["normalized_ledger_sha256"],
+            two["receipt"]["normalized_ledger_sha256"],
+        )
+        self.assertNotEqual(
+            one["receipt"]["receipt_sha256"],
+            two["receipt"]["receipt_sha256"],
+        )
 
     def test_receipt_recompute_detects_tamper(self):
         result = evaluate_ledger(ledger(attempt()))
@@ -128,8 +202,36 @@ class WorkbenchTests(unittest.TestCase):
             publish(result, js, md)
             self.assertTrue(js.exists())
             self.assertIn("SELF_ATTESTED_ONLY", md.read_text(encoding="utf-8"))
+            self.assertIn("normalized_ledger_sha256", md.read_text(encoding="utf-8"))
             with self.assertRaises(LedgerError):
                 publish(result, js, md)
+
+    def test_publish_rejects_same_target_without_writing(self):
+        result = evaluate_ledger(ledger(attempt()))
+        with tempfile.TemporaryDirectory() as tmp:
+            target = Path(tmp) / "same"
+            with self.assertRaises(LedgerError):
+                publish(result, target, target)
+            self.assertFalse(target.exists())
+
+    def test_publish_rolls_back_first_file_when_second_write_fails(self):
+        result = evaluate_ledger(ledger(attempt()))
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            js = root / "out.json"
+            md = root / "out.md"
+            real_open = Path.open
+
+            def failing_open(path_self, *args, **kwargs):
+                if path_self == md:
+                    raise OSError("synthetic second-write failure")
+                return real_open(path_self, *args, **kwargs)
+
+            with mock.patch.object(Path, "open", new=failing_open):
+                with self.assertRaises(LedgerError):
+                    publish(result, js, md)
+            self.assertFalse(js.exists())
+            self.assertFalse(md.exists())
 
     def test_cli_fixture(self):
         fixture = ROOT / "fixtures" / "sample_ledger.json"

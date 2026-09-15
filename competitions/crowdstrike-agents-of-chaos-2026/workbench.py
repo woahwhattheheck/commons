@@ -16,6 +16,12 @@ from typing import Any
 
 SCHEMA = "crowdstrike-aoc-manual-ledger-v1"
 COMPLIANCE_KIND = "SELF_ATTESTED_ONLY"
+MAX_ATTEMPTS = 10_000
+MAX_ID_BYTES = 128
+MAX_PROMPT_BYTES = 20_000
+MAX_NOTES_BYTES = 20_000
+MAX_ACTIONS = 64
+MAX_ACTION_BYTES = 128
 REQUIRED_ATTEMPT_KEYS = (
     "attempt_id",
     "puzzle_id",
@@ -25,6 +31,7 @@ REQUIRED_ATTEMPT_KEYS = (
     "entry_mode",
     "declared_actions",
 )
+ALLOWED_ATTEMPT_KEYS = frozenset((*REQUIRED_ATTEMPT_KEYS, "notes"))
 PROHIBITED_ACTIONS = frozenset(
     {
         "bot_live_interaction",
@@ -60,16 +67,36 @@ def _reject_duplicate_keys(pairs: list[tuple[str, Any]]) -> dict[str, Any]:
     return out
 
 
+def _reject_nonfinite(value: str) -> None:
+    raise LedgerError(f"non-finite JSON constant is forbidden: {value}")
+
+
 def load_strict_json(text: str) -> Any:
-    return json.loads(text, object_pairs_hook=_reject_duplicate_keys)
+    if not isinstance(text, str):
+        raise LedgerError("JSON input must be text")
+    try:
+        return json.loads(
+            text,
+            object_pairs_hook=_reject_duplicate_keys,
+            parse_constant=_reject_nonfinite,
+        )
+    except LedgerError:
+        raise
+    except json.JSONDecodeError as exc:
+        raise LedgerError(f"invalid JSON: {exc.msg}") from exc
 
 
 def load_strict_json_path(path: Path) -> Any:
-    return load_strict_json(path.read_text(encoding="utf-8"))
+    try:
+        return load_strict_json(path.read_text(encoding="utf-8"))
+    except LedgerError:
+        raise
+    except (OSError, UnicodeError) as exc:
+        raise LedgerError(f"cannot read ledger: {exc}") from exc
 
 
 def _norm_prompt(text: str) -> str:
-    return " ".join(str(text).split())
+    return " ".join(text.split())
 
 
 def _prompt_digest(text: str) -> str:
@@ -82,6 +109,24 @@ def _require_keys(obj: dict[str, Any], keys: tuple[str, ...], where: str) -> Non
         raise LedgerError(f"{where} missing keys: {missing}")
 
 
+def _require_string(
+    raw: Any,
+    field: str,
+    *,
+    max_bytes: int,
+    allow_empty: bool = False,
+    strip: bool = False,
+) -> str:
+    if not isinstance(raw, str):
+        raise LedgerError(f"{field} must be a JSON string")
+    value = raw.strip() if strip else raw
+    if not allow_empty and not value:
+        raise LedgerError(f"{field} must be non-empty")
+    if len(value.encode("utf-8")) > max_bytes:
+        raise LedgerError(f"{field} exceeds {max_bytes} UTF-8 bytes")
+    return value
+
+
 def _parse_token_count(raw: Any) -> int:
     if isinstance(raw, bool) or not isinstance(raw, int):
         raise LedgerError(f"observed_token_count must be a JSON integer, got {type(raw).__name__}")
@@ -90,22 +135,26 @@ def _parse_token_count(raw: Any) -> int:
     return raw
 
 
-def _scan_prohibited(attempt: dict[str, Any]) -> list[str]:
-    hits: list[str] = []
-    declared = attempt.get("declared_actions") or []
-    if not isinstance(declared, list):
+def _parse_declared_actions(raw: Any) -> list[str]:
+    if not isinstance(raw, list):
         raise LedgerError("declared_actions must be a list")
-    for action in declared:
-        if action in PROHIBITED_ACTIONS:
-            hits.append(str(action))
-    blob = " ".join(
-        [
-            str(attempt.get("prompt_text", "")),
-            str(attempt.get("notes", "")),
-            str(attempt.get("entry_mode", "")),
-            " ".join(str(x) for x in declared),
-        ]
-    )
+    if len(raw) > MAX_ACTIONS:
+        raise LedgerError(f"declared_actions exceeds {MAX_ACTIONS} entries")
+    actions: list[str] = []
+    for index, action in enumerate(raw):
+        actions.append(
+            _require_string(
+                action,
+                f"declared_actions[{index}]",
+                max_bytes=MAX_ACTION_BYTES,
+            )
+        )
+    return actions
+
+
+def _scan_prohibited(prompt: str, notes: str, entry_mode: str, declared: list[str]) -> list[str]:
+    hits = [action for action in declared if action in PROHIBITED_ACTIONS]
+    blob = " ".join([prompt, notes, entry_mode, " ".join(declared)])
     if PROHIBITED_RE.search(blob):
         hits.append("prohibited_text_pattern")
     return sorted(set(hits))
@@ -115,29 +164,52 @@ def validate_attempt(attempt: dict[str, Any]) -> dict[str, Any]:
     if not isinstance(attempt, dict):
         raise LedgerError("attempt must be an object")
     _require_keys(attempt, REQUIRED_ATTEMPT_KEYS, "attempt")
-    if attempt.get("entry_mode") != "manual":
+    unknown = sorted(set(attempt) - ALLOWED_ATTEMPT_KEYS)
+    if unknown:
+        raise LedgerError(f"attempt has unsupported keys: {unknown}")
+
+    attempt_id = _require_string(
+        attempt["attempt_id"], "attempt_id", max_bytes=MAX_ID_BYTES, strip=True
+    )
+    puzzle = _require_string(
+        attempt["puzzle_id"], "puzzle_id", max_bytes=MAX_ID_BYTES, strip=True
+    )
+    prompt = _require_string(
+        attempt["prompt_text"],
+        "prompt_text",
+        max_bytes=MAX_PROMPT_BYTES,
+        allow_empty=True,
+    )
+    notes = _require_string(
+        attempt.get("notes", ""),
+        "notes",
+        max_bytes=MAX_NOTES_BYTES,
+        allow_empty=True,
+    )
+    entry_mode = _require_string(
+        attempt["entry_mode"], "entry_mode", max_bytes=32
+    )
+    if entry_mode != "manual":
         raise LedgerError("entry_mode must be 'manual'")
-    outcome = attempt["outcome"]
+    outcome = _require_string(attempt["outcome"], "outcome", max_bytes=32)
     if outcome not in {"success", "failure", "incomplete"}:
         raise LedgerError("outcome must be success|failure|incomplete")
     tokens = _parse_token_count(attempt["observed_token_count"])
-    hits = _scan_prohibited(attempt)
+    declared = _parse_declared_actions(attempt["declared_actions"])
+    hits = _scan_prohibited(prompt, notes, entry_mode, declared)
     if hits:
         raise LedgerError(f"prohibited action declared or implied: {hits}")
-    puzzle = str(attempt["puzzle_id"]).strip()
-    if not puzzle:
-        raise LedgerError("puzzle_id must be non-empty")
-    prompt = str(attempt["prompt_text"])
+
     return {
-        "attempt_id": str(attempt["attempt_id"]),
+        "attempt_id": attempt_id,
         "puzzle_id": puzzle,
         "prompt_text": prompt,
         "prompt_digest": _prompt_digest(prompt),
         "observed_token_count": tokens,
         "outcome": outcome,
         "entry_mode": "manual",
-        "declared_actions": list(attempt["declared_actions"]),
-        "notes": str(attempt.get("notes", "")),
+        "declared_actions": declared,
+        "notes": notes,
     }
 
 
@@ -172,7 +244,37 @@ def frontier_for_puzzle(attempts: list[dict[str, Any]]) -> dict[str, Any]:
     }
 
 
+def _normalized_evidence(attempts: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    fields = (
+        "attempt_id",
+        "puzzle_id",
+        "prompt_text",
+        "prompt_digest",
+        "observed_token_count",
+        "outcome",
+        "entry_mode",
+        "declared_actions",
+        "notes",
+    )
+    return [
+        {field: attempt[field] for field in fields}
+        for attempt in sorted(attempts, key=lambda item: item["attempt_id"])
+    ]
+
+
+def _canonical_sha256(value: Any) -> str:
+    canonical = json.dumps(
+        value,
+        sort_keys=True,
+        separators=(",", ":"),
+        ensure_ascii=True,
+        allow_nan=False,
+    )
+    return hashlib.sha256(canonical.encode("utf-8")).hexdigest()
+
+
 def build_receipt(ledger: dict[str, Any], frontiers: list[dict[str, Any]]) -> dict[str, Any]:
+    normalized_evidence = _normalized_evidence(ledger.get("attempts", []))
     payload = {
         "schema": SCHEMA,
         "compliance_kind": COMPLIANCE_KIND,
@@ -180,22 +282,29 @@ def build_receipt(ledger: dict[str, Any], frontiers: list[dict[str, Any]]) -> di
         "sponsor_compliance_certificate": False,
         "live_contest_interaction": False,
         "tokenizer": "operator_entered_observation_only",
-        "attempt_count": len(ledger.get("attempts", [])),
+        "attempt_count": len(normalized_evidence),
+        "normalized_ledger_sha256": _canonical_sha256(
+            {"schema": SCHEMA, "attempts": normalized_evidence}
+        ),
         "frontiers": frontiers,
     }
-    canonical = json.dumps(payload, sort_keys=True, separators=(",", ":"), ensure_ascii=True)
-    payload["receipt_sha256"] = hashlib.sha256(canonical.encode("utf-8")).hexdigest()
+    payload["receipt_sha256"] = _canonical_sha256(payload)
     return payload
 
 
 def evaluate_ledger(raw: dict[str, Any]) -> dict[str, Any]:
     if not isinstance(raw, dict):
         raise LedgerError("ledger must be an object")
+    if set(raw) != {"schema", "attempts"}:
+        raise LedgerError("ledger must contain exactly schema and attempts")
     if raw.get("schema") != SCHEMA:
         raise LedgerError(f"unsupported schema: {raw.get('schema')}")
     attempts_raw = raw.get("attempts")
     if not isinstance(attempts_raw, list):
         raise LedgerError("attempts must be a list")
+    if len(attempts_raw) > MAX_ATTEMPTS:
+        raise LedgerError(f"attempts exceeds {MAX_ATTEMPTS} entries")
+
     seen_ids: set[str] = set()
     attempts: list[dict[str, Any]] = []
     for item in attempts_raw:
@@ -204,19 +313,21 @@ def evaluate_ledger(raw: dict[str, Any]) -> dict[str, Any]:
             raise LedgerError(f"duplicate attempt_id: {parsed['attempt_id']}")
         seen_ids.add(parsed["attempt_id"])
         attempts.append(parsed)
+    attempts.sort(key=lambda item: item["attempt_id"])
+
     by_puzzle: dict[str, list[dict[str, Any]]] = {}
-    for a in attempts:
-        by_puzzle.setdefault(a["puzzle_id"], []).append(a)
+    for attempt in attempts:
+        by_puzzle.setdefault(attempt["puzzle_id"], []).append(attempt)
     frontiers = [frontier_for_puzzle(group) for _, group in sorted(by_puzzle.items())]
     for front in frontiers:
         best = front["best_observed_token_count"]
         if best is None:
             continue
-        for a in by_puzzle[front["puzzle_id"]]:
-            if a["outcome"] == "success":
-                a["delta_from_best"] = a["observed_token_count"] - best
+        for attempt in by_puzzle[front["puzzle_id"]]:
+            if attempt["outcome"] == "success":
+                attempt["delta_from_best"] = attempt["observed_token_count"] - best
             else:
-                a["delta_from_best"] = None
+                attempt["delta_from_best"] = None
     receipt = build_receipt({"attempts": attempts}, frontiers)
     return {
         "attempts": attempts,
@@ -235,6 +346,7 @@ def render_markdown(result: dict[str, Any]) -> str:
         f"- compliance: `{rec['compliance_kind']}` (not an eligibility certificate)",
         f"- live contest interaction: `{rec['live_contest_interaction']}`",
         f"- tokenizer: `{rec['tokenizer']}`",
+        f"- normalized_ledger_sha256: `{rec['normalized_ledger_sha256']}`",
         f"- receipt_sha256: `{rec['receipt_sha256']}`",
         "",
         "## Frontiers",
@@ -249,8 +361,10 @@ def render_markdown(result: dict[str, Any]) -> str:
         lines.append(f"- successful count: `{front['successful_count']}`")
         if front["duplicate_prompt_groups"]:
             lines.append("- duplicate successful prompts:")
-            for g in front["duplicate_prompt_groups"]:
-                lines.append(f"  - `{g['prompt_digest'][:12]}` → {', '.join(g['attempt_ids'])}")
+            for group in front["duplicate_prompt_groups"]:
+                lines.append(
+                    f"  - `{group['prompt_digest'][:12]}` → {', '.join(group['attempt_ids'])}"
+                )
         lines.append("")
     lines.extend(
         [
@@ -267,12 +381,45 @@ def render_markdown(result: dict[str, Any]) -> str:
 
 
 def publish(result: dict[str, Any], out_json: Path, out_md: Path) -> None:
+    out_json = Path(out_json)
+    out_md = Path(out_md)
+    if out_json.resolve(strict=False) == out_md.resolve(strict=False):
+        raise LedgerError("JSON and Markdown outputs must be different paths")
     if out_json.exists() or out_md.exists():
         raise LedgerError("publication is create-exclusive; refuse overwrite")
-    out_json.parent.mkdir(parents=True, exist_ok=True)
-    out_md.parent.mkdir(parents=True, exist_ok=True)
-    out_json.write_text(json.dumps(result, indent=2, sort_keys=True) + "\n", encoding="utf-8")
-    out_md.write_text(render_markdown(result), encoding="utf-8")
+
+    try:
+        json_text = json.dumps(
+            result,
+            indent=2,
+            sort_keys=True,
+            allow_nan=False,
+        ) + "\n"
+        markdown_text = render_markdown(result)
+    except (TypeError, ValueError) as exc:
+        raise LedgerError(f"cannot serialize publication: {exc}") from exc
+
+    try:
+        out_json.parent.mkdir(parents=True, exist_ok=True)
+        out_md.parent.mkdir(parents=True, exist_ok=True)
+    except OSError as exc:
+        raise LedgerError(f"cannot prepare publication directories: {exc}") from exc
+
+    created: list[Path] = []
+    try:
+        with out_json.open("x", encoding="utf-8") as handle:
+            handle.write(json_text)
+        created.append(out_json)
+        with out_md.open("x", encoding="utf-8") as handle:
+            handle.write(markdown_text)
+        created.append(out_md)
+    except OSError as exc:
+        for path in reversed(created):
+            try:
+                path.unlink()
+            except OSError:
+                pass
+        raise LedgerError(f"publication failed without commit: {exc}") from exc
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -289,7 +436,7 @@ def main(argv: list[str] | None = None) -> int:
                 raise LedgerError("both --out-json and --out-md are required to publish")
             publish(result, args.out_json, args.out_md)
         else:
-            print(json.dumps(result["receipt"], indent=2, sort_keys=True))
+            print(json.dumps(result["receipt"], indent=2, sort_keys=True, allow_nan=False))
         return 0
     except LedgerError as exc:
         print(f"LEDGER_ERROR: {exc}", file=sys.stderr)
