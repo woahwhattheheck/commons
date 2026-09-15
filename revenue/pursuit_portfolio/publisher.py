@@ -22,7 +22,29 @@ from .current import (
 from .host import HostAuthorizedPortfolio
 
 
-def _write_owned_relative(dir_fd: int, name: str, data: bytes) -> None:
+_FileIdentity = tuple[int, int]
+
+
+def _identity(info: os.stat_result) -> _FileIdentity:
+    return (int(info.st_dev), int(info.st_ino))
+
+
+def _require_visible_identity(
+    dir_fd: int, name: str, expected: _FileIdentity
+) -> None:
+    try:
+        visible = os.stat(name, dir_fd=dir_fd, follow_symlinks=False)
+    except OSError as exc:
+        raise PortfolioError(f"publication: visible output disappeared: {name}") from exc
+    if _identity(visible) != expected:
+        raise PortfolioError(f"publication: visible output ownership changed: {name}")
+    if not stat.S_ISREG(visible.st_mode):
+        raise PortfolioError(f"publication: visible output is not regular: {name}")
+
+
+def _write_owned_relative(
+    dir_fd: int, name: str, data: bytes
+) -> _FileIdentity:
     flags = os.O_WRONLY | os.O_CREAT | os.O_EXCL | os.O_NOFOLLOW
     fd = os.open(name, flags, 0o600, dir_fd=dir_fd)
     try:
@@ -37,35 +59,41 @@ def _write_owned_relative(dir_fd: int, name: str, data: bytes) -> None:
             view = view[written:]
         os.fsync(fd)
         final = os.fstat(fd)
-        try:
-            visible = os.stat(name, dir_fd=dir_fd, follow_symlinks=False)
-        except OSError as exc:
-            raise PortfolioError(f"publication: visible output disappeared: {name}") from exc
-        if (int(final.st_dev), int(final.st_ino)) != (
-            int(visible.st_dev),
-            int(visible.st_ino),
-        ):
-            raise PortfolioError(f"publication: visible output ownership changed: {name}")
-        if not stat.S_ISREG(visible.st_mode):
-            raise PortfolioError(f"publication: visible output is not regular: {name}")
+        identity = _identity(final)
+        _require_visible_identity(dir_fd, name, identity)
+        return identity
     finally:
         os.close(fd)
 
 
+def _published_names(published: list[tuple[str, _FileIdentity]]) -> str:
+    return ",".join(name for name, _ in published) or "none"
+
+
 def _publish_files(out_dir: str | Path, files: tuple[tuple[str, bytes], ...]) -> None:
     dir_fd = _open_dir_chain(out_dir)
-    published: list[str] = []
+    published: list[tuple[str, _FileIdentity]] = []
     try:
-        for filename, raw in files:
-            try:
-                _write_owned_relative(dir_fd, filename, raw)
-            except Exception as exc:
-                raise PortfolioError(
-                    "publication failed; retained output generation preserved; "
-                    f"already-published files: {','.join(published) or 'none'}"
-                ) from exc
-            published.append(filename)
-        os.fsync(dir_fd)
+        try:
+            for filename, raw in files:
+                identity = _write_owned_relative(dir_fd, filename, raw)
+                published.append((filename, identity))
+            os.fsync(dir_fd)
+
+            # Each write validates its own pathname immediately, but that is not
+            # sufficient for a multi-file package: an earlier pathname can be
+            # replaced while later artifacts are still being written. Revalidate
+            # the complete visible generation at one final publication boundary.
+            for filename, identity in published:
+                _require_visible_identity(dir_fd, filename, identity)
+        except Exception as exc:
+            message = (
+                "publication failed; retained output generation preserved; "
+                f"already-published files: {_published_names(published)}"
+            )
+            if isinstance(exc, PortfolioError):
+                message = f"{message}; {exc}"
+            raise PortfolioError(message) from exc
     finally:
         os.close(dir_fd)
 
