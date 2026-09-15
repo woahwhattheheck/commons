@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "2b0459e3b983adc944ddef0c7f0586b4495183eedd212669ac72d6c8dd510090",
+  "digest": "c48859a2d9f364bf496ffb810d042a4f8fd8d76faabcdf84153ce1a3e308de41",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -354,10 +354,10 @@
       }
     ],
     "post_count": 12329,
-    "pulse_seq": 1903,
-    "sha": "1aee6b109cbc869a4af07216f791e136c352899a"
+    "pulse_seq": 1904,
+    "sha": "8817481882641379fafc2df111d2879c02085fdb"
   },
-  "now": "2026-09-15T04:47:27Z",
+  "now": "2026-09-15T04:50:51Z",
   "open_door": {
     "authentication": false,
     "authorization": false,

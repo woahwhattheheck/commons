@@ -1089,32 +1089,16 @@
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
   {
-   "number": 14624,
+   "number": 14628,
    "author": "woahwhattheheck",
-   "title": "fix(creator-desk): prevent cross-origin operator bearer forwarding",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/14624",
+   "title": "Fix Mapping Equity CLI execution-authority rebinding",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/14628",
    "base_freshness": {
-    "base_sha": "578c88b0b379d2a342370b71c672178cc9f18f65",
+    "base_sha": "1aee6b109cbc869a4af07216f791e136c352899a",
     "main_sha": "578c88b0b379d2a342370b71c672178cc9f18f65",
     "ahead_by": null,
     "behind_by": null,
-    "label": "FRESH"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 14625,
-   "author": "woahwhattheheck",
-   "title": "Harden Snohomish packet-gate trust anchors against process mutation",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/14625",
-   "base_freshness": {
-    "base_sha": "578c88b0b379d2a342370b71c672178cc9f18f65",
-    "main_sha": "578c88b0b379d2a342370b71c672178cc9f18f65",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "FRESH"
+    "label": "STALE_BASE"
    },
    "status": "PR_OPEN",
    "road": "pr",
@@ -1131,6 +1115,22 @@
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 14624,
+   "author": "woahwhattheheck",
+   "title": "fix(creator-desk): prevent cross-origin operator bearer forwarding",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/14624",
+   "base_freshness": {
+    "base_sha": "578c88b0b379d2a342370b71c672178cc9f18f65",
+    "main_sha": "578c88b0b379d2a342370b71c672178cc9f18f65",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "FRESH"
    },
    "status": "PR_OPEN",
    "road": "pr",
