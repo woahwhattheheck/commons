@@ -18,6 +18,7 @@ from typing import Any
 HERE = Path(__file__).resolve().parent
 EXPECTED_SCHEMA = "titan-v4-integration-ledger/v1"
 EXPECTED_WORKSPACE = "revenue/kaggriculture/cloud-execution-lab/candidates/v4"
+BLOB_ID = re.compile(r"[0-9a-f]{40}\Z")
 
 
 class LedgerError(RuntimeError):
@@ -68,7 +69,7 @@ def _load(path: Path) -> dict[str, Any]:
             object_pairs_hook=_strict_object,
             parse_constant=_reject_nonfinite,
         )
-    except (OSError, json.JSONDecodeError, DuplicateJsonKey, NonFiniteJson) as exc:
+    except (OSError, UnicodeError, json.JSONDecodeError, DuplicateJsonKey, NonFiniteJson) as exc:
         raise LedgerError(f"cannot load {path}: {exc}") from exc
     if not isinstance(value, dict):
         raise LedgerError(f"{path} must contain a JSON object")
@@ -117,6 +118,41 @@ def _require_nonempty_text(
     value = row.get(field)
     if not isinstance(value, str) or not value.strip():
         errors.append(f"{label} lane {lane!r} lacks {field}")
+
+
+def _historical_gap_errors(
+    row: dict[str, Any], landed: list[dict[str, Any]]
+) -> list[str]:
+    """Bind a non-blocking historical gap to one current landed source package."""
+    lane = str(row["lane"])
+    custody_path = row.get("custody_path")
+    matches = [item for item in landed if item.get("repair_path") == custody_path]
+    if len(matches) != 1:
+        return [
+            f"historical evidence gap lane {lane!r} requires exactly one landed "
+            "component in its custody_path"
+        ]
+
+    component = matches[0]
+    errors: list[str] = []
+    source_blob = component.get("source_blob")
+    if not isinstance(source_blob, str) or not BLOB_ID.fullmatch(source_blob):
+        errors.append(
+            f"historical evidence gap lane {lane!r} landed component lacks a valid source_blob"
+        )
+
+    test_blobs = component.get("test_blobs")
+    if test_blobs is None:
+        test_blobs = [component.get("test_blob")]
+    if (
+        not isinstance(test_blobs, list)
+        or not test_blobs
+        or any(not isinstance(blob, str) or not BLOB_ID.fullmatch(blob) for blob in test_blobs)
+    ):
+        errors.append(
+            f"historical evidence gap lane {lane!r} landed component lacks valid test blob references"
+        )
+    return errors
 
 
 def _resolve_within_root(root: Path, relative: str | Path, *, label: str) -> Path:
@@ -233,6 +269,7 @@ def validate(root: Path = HERE) -> list[str]:
                     errors,
                     label="historical evidence gap",
                 )
+            errors.extend(_historical_gap_errors(row, landed))
             continue
 
         if status != "awaiting_raw_payload":
@@ -274,7 +311,12 @@ def validate(root: Path = HERE) -> list[str]:
         disposition = next(
             str(row.get("disposition", "")) for row in negative if row["lane"] == lane
         ).lower()
-        if "no_build" in disposition or "rejected" in disposition or "do_not_promote" in disposition:
+        if (
+            "no_build" in disposition
+            or "rejected" in disposition
+            or "do_not_promote" in disposition
+            or ("do_not_" in disposition and "activate" in disposition)
+        ):
             errors.append(f"retired/NO_BUILD lane {lane!r} is also represented as active landed work")
 
     return errors
