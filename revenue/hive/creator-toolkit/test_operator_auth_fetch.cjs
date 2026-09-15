@@ -12,10 +12,11 @@ if (typeof NativeRequest !== 'function' || typeof NativeHeaders !== 'function') 
   throw new Error('WHATWG Request/Headers globals are required for operator auth transport tests');
 }
 
-function loadHarness(key = 'op-secret') {
+function loadHarness(key = 'op-secret', options = {}) {
   const calls = [];
   const storage = new Map([['creator-desk.operator.v1', key]]);
   const baseUrl = 'https://creator.example/app';
+  const documentBaseUrl = options.documentBaseUrl || baseUrl;
 
   class BrowserNode {
     constructor(baseURI) { this._baseURI = baseURI; }
@@ -33,7 +34,7 @@ function loadHarness(key = 'op-secret') {
     return {status: 200, ok: true, json: async () => ({operator: true})};
   }
 
-  const document = new BrowserNode(baseUrl);
+  const document = new BrowserNode(documentBaseUrl);
   document.addEventListener = () => {};
   document.querySelectorAll = () => [];
   document.getElementById = () => null;
@@ -69,6 +70,14 @@ test('same-origin protected relative and absolute requests receive bearer auth',
   await h.fetch('https://creator.example/workspace.sqlite3');
   assert.equal(authHeader(h.calls[0]), 'Bearer op-secret');
   assert.equal(authHeader(h.calls[1]), 'Bearer op-secret');
+});
+
+test('relative target resolves against document baseURI rather than location href', async () => {
+  const h = loadHarness('op-secret', {documentBaseUrl: 'https://attacker.example/base/'});
+  await h.fetch('../api/dashboard');
+  assert.equal(h.calls[0].outbound.url, 'https://attacker.example/api/dashboard');
+  assert.equal(authHeader(h.calls[0]), null);
+  assert.equal(h.calls[0].outbound.headers.get('authorization'), null);
 });
 
 test('protocol-relative hostile origin never receives bearer auth', async () => {
