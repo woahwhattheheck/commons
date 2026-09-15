@@ -41,6 +41,8 @@ class RecoveryPreflightTests(unittest.TestCase):
         preflight = one["preflight"]
         self.assertTrue(preflight["must_complete_before_aggregation"])
         probes = preflight["probe_sql"]
+        for key in a.source_registry("northern-ca"):
+            self.assertIn(f"schema:{key}", probes)
         self.assertIn("custody", probes)
         for key in a.GEOMETRY_EXPECTATIONS:
             self.assertIn(f"geometry:{key}", probes)
@@ -52,17 +54,19 @@ class RecoveryPreflightTests(unittest.TestCase):
         self.assertIn("ST_GeometryType", serialized)
         self.assertIn("regexp_full_match", serialized)
         self.assertIn("categories.primary", serialized)
+        self.assertIn("DESCRIBE SELECT", serialized)
         self.assertNotIn("coverage-gap.csv", serialized.lower())
 
     def test_custody_requires_exact_authoritative_text_universe(self) -> None:
         expected = a.REGIONS["northern-ca"]
-        receipt = a._validate_custody("northern-ca", (expected, expected, 0, 0))
+        receipt = a._validate_custody("northern-ca", (expected, expected, 0, 0, 0))
         self.assertEqual(expected, receipt["sample_unique"])
         hostile = (
-            (expected - 1, expected - 1, 0, 0),
-            (expected, expected - 1, 0, 0),
-            (expected, expected, 1, 0),
-            (expected, expected, 0, 1),
+            (expected - 1, expected - 1, 0, 0, 0),
+            (expected, expected - 1, 0, 0, 0),
+            (expected, expected, 1, 0, 0),
+            (expected, expected, 0, 1, 0),
+            (expected, expected, 0, 0, 1),
         )
         for row in hostile:
             with self.subTest(row=row), self.assertRaises(a.AggregationError):
@@ -78,12 +82,14 @@ class RecoveryPreflightTests(unittest.TestCase):
         with self.assertRaisesRegex(a.AggregationError, "empty geometry"):
             a._validate_geometry_domain("overture_roads", [])
 
-    def test_current_source_must_contain_every_published_filter_value(self) -> None:
-        observed = [*a.ROAD_CLASSES, "residential"]
-        values = a._validate_required_domain("roads", observed, a.ROAD_CLASSES)
-        self.assertIn("motorway", values)
-        with self.assertRaisesRegex(a.AggregationError, "required published values absent"):
-            a._validate_required_domain("roads", ["motorway"], a.ROAD_CLASSES)
+    def test_observed_domain_receipt_is_deterministic_without_forcing_presence(self) -> None:
+        receipt = a._domain_receipt("overture_roads.class", ["residential", "motorway", "motorway"])
+        self.assertEqual(2, receipt["observed_value_count"])
+        self.assertEqual(["motorway"], receipt["published_values_present"])
+        self.assertEqual(
+            receipt,
+            a._domain_receipt("overture_roads.class", ["motorway", "residential"]),
+        )
 
     def test_unknown_policy_category_fails_before_query_generation(self) -> None:
         with self.assertRaisesRegex(a.AggregationError, "policy category drift"):

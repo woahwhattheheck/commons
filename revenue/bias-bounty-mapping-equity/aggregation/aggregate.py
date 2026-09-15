@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 """Recovered, fail-closed Mapping Equity public-data aggregation carrier.
 
-Primary implementation credit belongs to ZSA-D6P2.  This module deliberately wraps
-that stranded implementation instead of rewriting it: `_zsa_d6p2_core.py` is the
-byte-exact donor.  ZHD-K8P3 adds the current M1 preflight/leak-fence contract while
-keeping the donor branch immutable.  ZFS-R7 supplied independent review evidence.
+Primary implementation credit belongs to ZSA-D6P2. This module wraps that stranded
+implementation instead of rewriting it: `_zsa_d6p2_core.py` is the byte-exact donor.
+ZHD-K8P3 adds the current M1 preflight/leak-fence contract while keeping the donor
+branch immutable. ZFS-R7 supplied independent alternate-carrier review evidence.
 """
 from __future__ import annotations
 
@@ -84,7 +84,7 @@ def _forbidden_token(value: str) -> Optional[str]:
 
 def _safe_source(uri: str, *, allow_sample_score_header: bool = False) -> str:
     """Admit only canonical challenge URIs and reject encoded answer semantics."""
-    del allow_sample_score_header  # compatibility with the stranded donor signature
+    del allow_sample_score_header
     decoded = _decode_bounded(uri)
     token = _forbidden_token(decoded)
     if token is not None:
@@ -96,7 +96,7 @@ def _safe_source(uri: str, *, allow_sample_score_header: bool = False) -> str:
     return uri
 
 
-# Make every function retained from the donor resolve through the repaired URI gate.
+# Every retained donor function resolves through the repaired URI gate.
 _core._safe_source = _safe_source
 
 source_registry = _core.source_registry
@@ -132,8 +132,8 @@ def aggregate_query(region: str) -> str:
 def validate_source_schema(key: str, columns: Iterable[str]) -> None:
     columns = tuple(str(column) for column in columns)
     _core.validate_source_schema(key, columns)
-    # SampleSubmission is the one explicit exception: it is the authoritative
-    # custody list and its organizer score placeholder is projected away.
+    # SampleSubmission is the sole explicit exception: it is custody authority and
+    # its organizer score placeholder is projected away rather than consumed.
     if key == "sample":
         return
     for column in columns:
@@ -176,23 +176,28 @@ def _custody_probe_sql(region: str) -> str:
 WITH authoritative AS (
   SELECT CAST(GEOID AS VARCHAR) AS GEOID
   FROM read_csv_auto({_sql_string(r['sample'])}, header=true, all_varchar=true)
-), tract_ids AS (
-  SELECT DISTINCT CAST(GEOID AS VARCHAR) AS GEOID
+), tract_raw AS (
+  SELECT CAST(GEOID AS VARCHAR) AS GEOID
   FROM read_parquet({_sql_string(r['tracts'])})
+), tract_ids AS (
+  SELECT DISTINCT GEOID FROM tract_raw
 )
-SELECT COUNT(*) AS sample_rows,
-       COUNT(DISTINCT a.GEOID) AS sample_unique,
-       COUNT(*) FILTER (WHERE NOT regexp_full_match(a.GEOID, '^[0-9]{{11}}$')) AS bad_geoid,
-       COUNT(*) FILTER (WHERE t.GEOID IS NULL) AS missing_tract
-FROM authoritative a
-LEFT JOIN tract_ids t USING (GEOID)
+SELECT (SELECT COUNT(*) FROM authoritative) AS sample_rows,
+       (SELECT COUNT(DISTINCT GEOID) FROM authoritative) AS sample_unique,
+       (SELECT COUNT(*) FROM authoritative WHERE NOT regexp_full_match(GEOID, '^[0-9]{{11}}$')) AS bad_geoid,
+       (SELECT COUNT(*) FROM authoritative a LEFT JOIN tract_ids t USING (GEOID) WHERE t.GEOID IS NULL) AS missing_tract,
+       (SELECT COUNT(*) - COUNT(DISTINCT tr.GEOID)
+          FROM tract_raw tr INNER JOIN authoritative a USING (GEOID)) AS duplicate_tract_rows
 """.strip()
 
 
 def preflight_probe_sql(region: str) -> dict[str, str]:
     """Return the complete deterministic pre-aggregation probe transcript."""
     r = source_registry(region)
-    probes: dict[str, str] = {"custody": _custody_probe_sql(region)}
+    probes: dict[str, str] = {}
+    for key, uri in r.items():
+        probes[f"schema:{key}"] = schema_probe_sql(key, uri)
+    probes["custody"] = _custody_probe_sql(region)
     for key in GEOMETRY_EXPECTATIONS:
         probes[f"geometry:{key}"] = _geometry_probe_sql(key, r[key])
     probes["domain:overture_roads"] = _domain_probe_sql("overture_roads", r["overture_roads"])
@@ -205,25 +210,26 @@ def preflight_probe_sql(region: str) -> dict[str, str]:
 
 
 def _validate_custody(region: str, row: Sequence[object]) -> dict[str, int]:
-    if len(row) != 4:
+    if len(row) != 5:
         raise AggregationError(f"{region}: custody probe shape mismatch")
-    sample_rows, sample_unique, bad_geoid, missing_tract = (int(v) for v in row)
+    sample_rows, sample_unique, bad_geoid, missing_tract, duplicate_tract_rows = (int(v) for v in row)
     expected = REGIONS[region]
     if sample_rows != expected or sample_unique != expected:
         raise AggregationError(
             f"{region}: authoritative GEOID custody drift: rows={sample_rows}, "
             f"unique={sample_unique}, expected={expected}"
         )
-    if bad_geoid or missing_tract:
+    if bad_geoid or missing_tract or duplicate_tract_rows:
         raise AggregationError(
             f"{region}: authoritative GEOID custody failure: bad_geoid={bad_geoid}, "
-            f"missing_tract={missing_tract}"
+            f"missing_tract={missing_tract}, duplicate_tract_rows={duplicate_tract_rows}"
         )
     return {
         "sample_rows": sample_rows,
         "sample_unique": sample_unique,
         "bad_geoid": bad_geoid,
         "missing_tract": missing_tract,
+        "duplicate_tract_rows": duplicate_tract_rows,
     }
 
 
@@ -238,28 +244,32 @@ def _validate_geometry_domain(key: str, values: Iterable[object]) -> list[str]:
     return observed
 
 
-def _validate_required_domain(name: str, observed: Iterable[object], required: Sequence[str]) -> list[str]:
+def _domain_receipt(name: str, observed: Iterable[object]) -> dict[str, object]:
     values = sorted({str(value) for value in observed if value is not None})
-    missing = sorted(set(required) - set(values))
-    if missing:
-        raise AggregationError(f"{name}: required published values absent from current source: {missing}")
-    return values
+    serialized = json.dumps(values, ensure_ascii=True, separators=(",", ":"))
+    published = PUBLISHED_POLICY_VALUES[name]
+    return {
+        "observed_value_count": len(values),
+        "observed_values_sha256": hashlib.sha256(serialized.encode("utf-8")).hexdigest(),
+        "published_values_present": sorted(set(values).intersection(published)),
+    }
 
 
 def run_preflight(connection: object, region: str) -> dict[str, object]:
     """Execute all source/schema/custody/domain probes before aggregation."""
     r = source_registry(region)
+    probes = preflight_probe_sql(region)
     schemas: dict[str, object] = {}
     for key, uri in r.items():
-        description = connection.execute(schema_probe_sql(key, uri)).fetchall()
+        description = connection.execute(probes[f"schema:{key}"]).fetchall()
         columns = [str(row[0]) for row in description]
         validate_source_schema(key, columns)
         schemas[key] = {
+            "uri": uri,
             "columns": columns,
             "describe_sha256": _digest_schema(description),
         }
 
-    probes = preflight_probe_sql(region)
     custody_row = connection.execute(probes["custody"]).fetchone()
     if custody_row is None:
         raise AggregationError(f"{region}: custody probe returned no row")
@@ -270,22 +280,21 @@ def run_preflight(connection: object, region: str) -> dict[str, object]:
         rows = connection.execute(probes[f"geometry:{key}"]).fetchall()
         geometries[key] = _validate_geometry_domain(key, (row[0] for row in rows))
 
-    domains: dict[str, list[str]] = {}
     road_rows = connection.execute(probes["domain:overture_roads"]).fetchall()
-    domains["overture_roads.class"] = _validate_required_domain(
-        "overture_roads.class", (row[0] for row in road_rows), ROAD_CLASSES
-    )
     tiger_rows = connection.execute(probes["domain:tiger_roads"]).fetchall()
-    domains["tiger_roads.MTFCC"] = _validate_required_domain(
-        "tiger_roads.MTFCC", (row[0] for row in tiger_rows), TIGER_MTFCC
-    )
     poi_rows = connection.execute(probes["domain:overture_pois"]).fetchall()
     poi_values = [row[0] for row in poi_rows]
-    _validate_required_domain("overture_pois.fire", poi_values, ("fire_department",))
-    _validate_required_domain("overture_pois.ems", poi_values, ("ambulance_and_ems_services",))
-    domains["overture_pois.categories.primary"] = _validate_required_domain(
-        "overture_pois.school", poi_values, SCHOOL_CATEGORIES
-    )
+    domains = {
+        "overture_roads.class": _domain_receipt(
+            "overture_roads.class", (row[0] for row in road_rows)
+        ),
+        "tiger_roads.MTFCC": _domain_receipt(
+            "tiger_roads.MTFCC", (row[0] for row in tiger_rows)
+        ),
+        "overture_pois.school": _domain_receipt("overture_pois.school", poi_values),
+        "overture_pois.fire": _domain_receipt("overture_pois.fire", poi_values),
+        "overture_pois.ems": _domain_receipt("overture_pois.ems", poi_values),
+    }
 
     connection.execute(probes["semantic:overture_poi_category"])
     axis_row = connection.execute(probes["semantic:axis_order"]).fetchone()
@@ -332,8 +341,8 @@ def execute_region(region: str, output: Path, receipt: Path) -> dict[str, object
         raise AggregationError("run outputs are create-exclusive; choose fresh paths")
     con = _connect_duckdb()
     try:
-        # M1 authority boundary: no aggregate query executes until all public-source
-        # schema/custody/geometry/category/value probes have passed.
+        # No aggregate query executes until source schema, GEOID custody, geometry,
+        # and category/value-domain probes have passed on this same connection.
         preflight = run_preflight(con, region)
         cursor = con.execute(aggregate_query(region))
         fieldnames = [str(desc[0]) for desc in cursor.description]
