@@ -1,54 +1,55 @@
-# Learn2Design 2026 — staged trust portfolio
+# Learn2Design 2026 — vectorized trust portfolio
 
-Operation: `LEARN2DESIGN-STAGED-TRUST-PORTFOLIO-ZPSK4N7-20260913`  
-Owner/finalizer: Z-PoincareSlipway-2308-K4N7 (`ZPS-K4N7`) / GPT-5.6 Sol
+Current successor operation: `LEARN2DESIGN-VECTORIZED-PORTFOLIO-ZSOL17-20260915`  
+Successor builder/finalizer: Z-Sol-17 / GPT-5.6 Sol  
+Baseline/original product credit: Z-PoincareSlipway-2308-K4N7 (`LEARN2DESIGN-STAGED-TRUST-PORTFOLIO-ZPSK4N7-20260913`)
 
-This directory is an **engineering candidate**, not an official competition entry or score claim. It targets the Learn2Design 2026 contract as publicly documented by the organizer: optimize a continuous UIFO parameterization under a four-hour-per-topology logged wall-clock budget; final evaluation averages the best feasible loss over ten hidden topologies; JAX gradients/Hessians and batched evaluation are supported; the final ZIP requires root-level `submission.py` with exactly one `OptimizationAlgorithm` subclass and a mandatory `requirements.txt`.
+This directory remains an **engineering candidate**, not an official competition entry or score claim. The successor preserves the merged packaging/control foundation and changes the competition-facing optimizer along one material seam: accelerator utilization. The organizer's current Objective API documents `vmap_value_and_grad`, batched warmup before `start_logging()`, and batched evaluation accounting; the prior candidate used serial `value_and_grad` calls.
 
-## Thesis
+## Successor thesis
 
-The reference table published by the organizer currently favors noisy Adam over plain Adam and population-only baselines. The candidate therefore deliberately avoids a giant learned stack and instead composes a small robust portfolio:
+`StagedTrustPortfolio` keeps its public class name so existing packaging contracts remain stable, but `algorithm_str` is now `tjlabs_vectorized_trust_portfolio_v2`.
 
-1. Use dfbench's smooth unbounded coordinate mode so box edges do not zero gradients.
-2. Materialize a bounded number of independent organizer-seeded random starts before the clock.
-3. Warm `value_and_grad` before `start_logging()`; make **zero result-producing calls before logging**.
-4. Run clipped Adam from each start with an annealed noise term, bounded trust-step norm, and deterministic restart patience.
-5. Expand the trust radius on improvement, shrink it on stalls, and weakly re-anchor late stalled restarts toward the best basin discovered so far.
-6. Never apply an update after NaN/Inf loss or gradient.
+1. Prepare the Objective in smooth unbounded coordinates.
+2. Materialize a deterministic organizer-seeded population before the clock; an explicit `init_params` occupies lane zero.
+3. Compile the algorithm-owned JAX update/noise kernels and `warmup_vmap_value_and_grad(batch_size=population_size)` before `start_logging()`.
+4. Evaluate all lanes with one documented `obj.vmap_value_and_grad(params)` call per generation.
+5. Maintain independent Adam first/second moments, age, stall count, historical best point and trust radius per lane.
+6. Clip gradients and update norms per lane; anneal exploration noise instead of coupling lanes through one global norm.
+7. Every bounded reseed interval, recycle the historically weakest quarter around historical elite anchors and reset only those lanes' Adam moments.
+8. Treat non-finite loss/gradient rows as invalid: they receive no gradient step and can be recycled rather than contaminating the whole batch.
+9. Re-check `obj.budget_exceeded` immediately after every logged batch; a batch that consumes the final budget is evidence, but it is never followed by another update/evaluation.
 
-This is intentionally closer to the organizer's strongest public baseline than an unvalidated novelty stack while still testing a distinct multi-start / trust-radius seam. It is also simple enough to target the special-prize criterion for a strong, understandable solution if real organizer evidence later supports that claim.
+The vectorized candidate is meant to test a large hardware-efficiency hypothesis, not to assert a hidden-topology gain without measurement.
 
 ## Files
 
-- `submission.py` — competition-facing single optimizer class; imports only dfbench/JAX/Optax.
-- `requirements.txt` — explicit extra dependency for the submission archive.
-- `core.py` — dependency-free deterministic ranking, low-discrepancy starts, trust radius, budget and receipt primitives.
-- `synthetic.py` — two constrained synthetic problems, including an infeasible unconstrained optimum trap.
-- `benchmark.py` — deterministic policy-level benchmark. It is **not** a UIFO simulator proxy.
-- `pack.py` — deterministic ZIP builder + hostile verifier; rejects traversal, duplicate names, symlink/special members, source symlinks, malformed requirements, wrong class count and oversized payloads.
-- `METHOD.md` — experiment plan / technical-report skeleton.
+- `submission.py` — competition-facing vectorized optimizer; imports only dfbench and JAX.
+- `requirements.txt` — explicit JAX compatibility declaration required by the submission package contract.
+- `core.py` — dependency-free deterministic ranking, low-discrepancy starts, trust radius, budget and receipt primitives retained from the baseline.
+- `synthetic.py` / `benchmark.py` — policy-level synthetic controls retained from the baseline; **not** a UIFO score proxy.
+- `pack.py` — deterministic ZIP builder and hostile verifier retained from the baseline.
+- `METHOD.md` — successor ablation/evidence plan.
 
-## Local evidence contract
+## Evidence produced for this successor
 
-Run from the repository root:
+Before publication, the exact authored `submission.py` passed:
 
-```bash
-python -m unittest -v test_learn2design2026.py
-python revenue/learn2design2026/benchmark.py --seed 17 --evaluations 320
-```
+- `python -m py_compile`;
+- AST lifecycle fence: exactly one `OptimizationAlgorithm` subclass and no result-producing Objective call before `start_logging()`;
+- fake-dfbench runtime using real installed JAX, 8-lane batches, 15 generations, seeds 0 and 7;
+- hostile runtime where one lane returns NaN loss/gradient on the first batch and optimization continues without contaminating the population.
 
-Synthetic evidence can prove only control properties: determinism, feasibility-first ranking, budget partitioning, finite-state handling, trust-radius adaptation and archive integrity. It **cannot** establish UIFO quality, H100 runtime, hidden-topology score, rank or prize eligibility.
+Those checks validate control flow and JAX execution only. They **cannot** establish UIFO quality, H100 throughput, hidden-topology score, rank, prize eligibility, or payment.
 
 ## Real validation ladder
 
-The next distinct evidence stages are deliberately fail closed:
-
-- **Stage A — public ConstrainedVoyager:** install the organizer's current repository / dfbench version, run the exact submission class on ConstrainedVoyager at several seeds, record wall time and best feasible loss.
-- **Stage B — public UIFO:** run a declared seed set on public UIFO topologies, compare against organizer Adam / NAAdam under an identical time budget. Record all seeds, package SHA and environment.
-- **Stage C — ablation:** multi-start vs one-start; trust radius on/off; annealed noise on/off; restart re-anchor on/off. Promote only effects that repeat across topologies.
-- **Stage D — optional September 29 public evaluation:** separate account/terms/submission authority event. Do not infer it from source readiness.
-- **Stage E — October 15 final:** separate human/provider event, only after package/readiness evidence is current.
+- **Stage A — public dfbench smoke:** install the organizer's current environment and run the exact package on a documented public constrained problem. Record package SHA, environment, wall time, batch size, evaluation count and best feasible loss.
+- **Stage B — serial-vs-vectorized ablation:** same topology/seeds/wall budget, v1 serial candidate vs v2 vectorized candidate. Promote only measured best-feasible and throughput evidence.
+- **Stage C — population ablation:** 8/16/32 lanes; measure compilation, memory, eval throughput and tail quality before increasing default size.
+- **Stage D — recycle ablation:** disable elite recycling, change interval, and compare diversity/tail results on held-out public topology/seed combinations.
+- **Stage E — official portal events:** registration, public evaluation and final submission are separate authority events and must have provider receipts.
 
 ## Authority ceiling
 
-This source does not register, accept terms, submit, spend, contact organizers, access hidden topologies, or assert official score/rank/prize/payment/revenue. `pack.py` receipts hard-code those authority flags false.
+This source does **not** register, accept terms, submit, spend, contact organizers, access hidden topologies, or assert official score/rank/prize/payment/revenue. Existing `pack.py` receipts keep those authority flags false. A structurally valid package cannot by itself prove competitive readiness.

@@ -8,7 +8,11 @@ one coherent main-line workspace.
 """
 from __future__ import annotations
 
+import hashlib
 import json
+import os
+import re
+import stat
 import sys
 from pathlib import Path
 from typing import Any
@@ -17,6 +21,7 @@ from typing import Any
 HERE = Path(__file__).resolve().parent
 EXPECTED_SCHEMA = "titan-v4-integration-ledger/v1"
 EXPECTED_WORKSPACE = "revenue/kaggriculture/cloud-execution-lab/candidates/v4"
+BLOB_ID = re.compile(r"[0-9a-f]{40}\Z")
 
 
 class LedgerError(RuntimeError):
@@ -44,6 +49,22 @@ def _reject_nonfinite(value: str) -> Any:
     raise NonFiniteJson(f"non-finite JSON constant {value!r}")
 
 
+def _claims_activation(status: Any) -> bool:
+    """Return True only for an unnegated activation/promote/enable status token."""
+    if not isinstance(status, str):
+        return False
+    words = re.sub(r"[^a-z0-9]+", "_", status.casefold()).strip("_")
+    words = re.sub(
+        r"(?:^|_)not_(?:(?:runtime|production)_)?"
+        r"(?:promoted|active|enabled|activated)(?=_|$)",
+        "_",
+        words,
+    )
+    return bool(
+        re.search(r"(?:^|_)(?:promoted|active|enabled|activated)(?:_|$)", words)
+    )
+
+
 def _load(path: Path) -> dict[str, Any]:
     try:
         value = json.loads(
@@ -51,7 +72,13 @@ def _load(path: Path) -> dict[str, Any]:
             object_pairs_hook=_strict_object,
             parse_constant=_reject_nonfinite,
         )
-    except (OSError, json.JSONDecodeError, DuplicateJsonKey, NonFiniteJson) as exc:
+    except (
+        OSError,
+        UnicodeError,
+        json.JSONDecodeError,
+        DuplicateJsonKey,
+        NonFiniteJson,
+    ) as exc:
         raise LedgerError(f"cannot load {path}: {exc}") from exc
     if not isinstance(value, dict):
         raise LedgerError(f"{path} must contain a JSON object")
@@ -102,10 +129,196 @@ def _require_nonempty_text(
         errors.append(f"{label} lane {lane!r} lacks {field}")
 
 
+def _regular_git_blob_id(path: Path) -> str | None:
+    """Return one descriptor-bound regular file's Git blob ID.
+
+    Symlinks and non-regular files never satisfy custody.  The descriptor and
+    pathname generation must remain stable while bytes are read so a replace or
+    in-place mutation cannot bind a different generation under a recorded ID.
+    """
+
+    try:
+        pathname_before = path.stat(follow_symlinks=False)
+    except OSError as exc:
+        raise LedgerError(f"cannot inspect custody file {path}: {exc}") from exc
+    if not stat.S_ISREG(pathname_before.st_mode):
+        return None
+
+    flags = os.O_RDONLY | getattr(os, "O_CLOEXEC", 0) | getattr(os, "O_NOFOLLOW", 0)
+    try:
+        descriptor = os.open(path, flags)
+    except OSError as exc:
+        raise LedgerError(f"cannot open custody file {path}: {exc}") from exc
+
+    try:
+        opened = os.fstat(descriptor)
+        if not stat.S_ISREG(opened.st_mode):
+            return None
+        if (opened.st_dev, opened.st_ino) != (
+            pathname_before.st_dev,
+            pathname_before.st_ino,
+        ):
+            raise LedgerError(f"custody file changed before read: {path}")
+
+        # SHA-1 is required here only to reproduce Git's content-addressed blob ID.
+        digest = hashlib.sha1()
+        digest.update(f"blob {opened.st_size}\0".encode("ascii"))
+        consumed = 0
+        while True:
+            chunk = os.read(descriptor, 1024 * 1024)
+            if not chunk:
+                break
+            digest.update(chunk)
+            consumed += len(chunk)
+        after = os.fstat(descriptor)
+    except OSError as exc:
+        raise LedgerError(f"cannot read custody file {path}: {exc}") from exc
+    finally:
+        os.close(descriptor)
+
+    try:
+        pathname_after = path.stat(follow_symlinks=False)
+    except OSError as exc:
+        raise LedgerError(f"cannot re-inspect custody file {path}: {exc}") from exc
+
+    stable_fields = (
+        "st_dev",
+        "st_ino",
+        "st_mode",
+        "st_nlink",
+        "st_size",
+        "st_mtime_ns",
+        "st_ctime_ns",
+    )
+    if (
+        consumed != opened.st_size
+        or any(getattr(opened, field) != getattr(after, field) for field in stable_fields)
+        or any(
+            getattr(opened, field) != getattr(pathname_after, field)
+            for field in stable_fields
+        )
+    ):
+        raise LedgerError(f"custody file changed while hashing: {path}")
+    return digest.hexdigest()
+
+
+def _custody_blob_ids(custody_dir: Path, wanted: set[str]) -> set[str]:
+    """Resolve wanted Git blob IDs only from regular files below custody_dir."""
+
+    found: set[str] = set()
+
+    def fail_walk(exc: OSError) -> None:
+        raise LedgerError(f"cannot traverse custody directory {custody_dir}: {exc}")
+
+    try:
+        for directory, dirnames, filenames in os.walk(
+            custody_dir,
+            topdown=True,
+            followlinks=False,
+            onerror=fail_walk,
+        ):
+            base = Path(directory)
+            dirnames[:] = sorted(
+                name for name in dirnames if not (base / name).is_symlink()
+            )
+            for name in sorted(filenames):
+                path = base / name
+                if path.is_symlink():
+                    continue
+                blob_id = _regular_git_blob_id(path)
+                if blob_id in wanted:
+                    found.add(blob_id)
+            if found == wanted:
+                break
+    except LedgerError:
+        raise
+    except OSError as exc:
+        raise LedgerError(f"cannot traverse custody directory {custody_dir}: {exc}") from exc
+    return found
+
+
+def _historical_gap_errors(
+    row: dict[str, Any],
+    landed: list[dict[str, Any]],
+    custody_dir: Path,
+) -> list[str]:
+    """Bind a non-blocking historical gap to one current landed source package."""
+
+    lane = str(row["lane"])
+    custody_path = row.get("custody_path")
+    matches = [item for item in landed if item.get("repair_path") == custody_path]
+    if len(matches) != 1:
+        return [
+            f"historical evidence gap lane {lane!r} requires exactly one landed "
+            "component in its custody_path"
+        ]
+
+    component = matches[0]
+    errors: list[str] = []
+    source_blob = component.get("source_blob")
+    source_valid = isinstance(source_blob, str) and bool(BLOB_ID.fullmatch(source_blob))
+    if not source_valid:
+        errors.append(
+            f"historical evidence gap lane {lane!r} landed component lacks a valid source_blob"
+        )
+
+    test_blobs = component.get("test_blobs")
+    if test_blobs is None:
+        test_blobs = [component.get("test_blob")]
+    tests_valid = (
+        isinstance(test_blobs, list)
+        and bool(test_blobs)
+        and all(
+            isinstance(blob, str) and bool(BLOB_ID.fullmatch(blob))
+            for blob in test_blobs
+        )
+    )
+    if not tests_valid:
+        errors.append(
+            f"historical evidence gap lane {lane!r} landed component lacks valid test blob references"
+        )
+
+    wanted: set[str] = set()
+    if source_valid:
+        wanted.add(source_blob)
+    if isinstance(test_blobs, list):
+        wanted.update(
+            blob
+            for blob in test_blobs
+            if isinstance(blob, str) and BLOB_ID.fullmatch(blob)
+        )
+    if not wanted:
+        return errors
+
+    try:
+        present = _custody_blob_ids(custody_dir, wanted)
+    except LedgerError as exc:
+        errors.append(
+            f"historical evidence gap lane {lane!r} cannot verify current custody bytes: {exc}"
+        )
+        return errors
+
+    if source_valid and source_blob not in present:
+        errors.append(
+            f"historical evidence gap lane {lane!r} source_blob {source_blob!r} "
+            "does not identify a regular file beneath custody_path"
+        )
+    if tests_valid:
+        missing_tests = [blob for blob in test_blobs if blob not in present]
+        for blob in missing_tests:
+            errors.append(
+                f"historical evidence gap lane {lane!r} test blob {blob!r} "
+                "does not identify a regular file beneath custody_path"
+            )
+    return errors
+
+
 def _resolve_within_root(root: Path, relative: str | Path, *, label: str) -> Path:
     candidate = Path(relative)
     if candidate.is_absolute():
-        raise LedgerError(f"{label} must be relative to the integration root, got {str(candidate)!r}")
+        raise LedgerError(
+            f"{label} must be relative to the integration root, got {str(candidate)!r}"
+        )
     root_resolved = root.resolve()
     resolved = (root_resolved / candidate).resolve(strict=False)
     try:
@@ -204,7 +417,9 @@ def validate(root: Path = HERE) -> list[str]:
             errors.append(str(exc))
             continue
         if not path.is_dir():
-            errors.append(f"custody lane {lane!r} missing custody directory {custody_path!r}")
+            errors.append(
+                f"custody lane {lane!r} missing custody directory {custody_path!r}"
+            )
             continue
 
         if status == "historical_evidence_gap_not_source_blocker":
@@ -216,6 +431,7 @@ def validate(root: Path = HERE) -> list[str]:
                     errors,
                     label="historical evidence gap",
                 )
+            errors.extend(_historical_gap_errors(row, landed, path))
             continue
 
         if status != "awaiting_raw_payload":
@@ -248,18 +464,26 @@ def validate(root: Path = HERE) -> list[str]:
 
     # Prevent the most dangerous stale-ledger regression: a lane explicitly
     # retired/NO_BUILD must not simultaneously masquerade as active landed work.
-    active_status_tokens = ("default_off", "promoted", "active", "enabled")
     active_landed = {
         str(row["lane"])
         for row in landed
-        if any(token in str(row.get("status", "")).lower() for token in active_status_tokens)
+        if _claims_activation(row.get("status"))
     }
     for lane in sorted(active_landed & negative_lanes):
         disposition = next(
-            str(row.get("disposition", "")) for row in negative if row["lane"] == lane
+            str(row.get("disposition", ""))
+            for row in negative
+            if row["lane"] == lane
         ).lower()
-        if "no_build" in disposition or "rejected" in disposition or "do_not_promote" in disposition:
-            errors.append(f"retired/NO_BUILD lane {lane!r} is also represented as active landed work")
+        if (
+            "no_build" in disposition
+            or "rejected" in disposition
+            or "do_not_promote" in disposition
+            or ("do_not_" in disposition and "activate" in disposition)
+        ):
+            errors.append(
+                f"retired/NO_BUILD lane {lane!r} is also represented as active landed work"
+            )
 
     return errors
 
@@ -269,7 +493,10 @@ def main() -> int:
     if errors:
         for error in errors:
             print(f"ERROR: {error}", file=sys.stderr)
-        print(f"TITAN V4 integration ledger INVALID ({len(errors)} error(s))", file=sys.stderr)
+        print(
+            f"TITAN V4 integration ledger INVALID ({len(errors)} error(s))",
+            file=sys.stderr,
+        )
         return 1
     print("TITAN V4 integration ledger OK")
     return 0

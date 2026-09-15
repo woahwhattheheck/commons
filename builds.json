@@ -350,7 +350,7 @@
   }
  ],
  "pr_note": "Open GitHub PRs from public unauthenticated /pulls. PR-road work sits beside ntfy-road posts. Descriptive only. Not a merge gate. A PR is not main.",
- "n_open_prs": 56,
+ "n_open_prs": 60,
  "open_prs": [
   {
    "number": 13533,
@@ -359,55 +359,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/13533",
    "base_freshness": {
     "base_sha": "bfddf33e924ee684cf76964b770eafbc51f89ebb",
-    "main_sha": "aeaf1400a81140c486a4933cd96c51b04004acf8",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 13676,
-   "author": "woahwhattheheck",
-   "title": "fix(revenue): require trusted time for Port QC verification",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/13676",
-   "base_freshness": {
-    "base_sha": "5080da9ec1e02169c0c8580f0f128d4af92c4014",
-    "main_sha": "aeaf1400a81140c486a4933cd96c51b04004acf8",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 13683,
-   "author": "woahwhattheheck",
-   "title": "revenue: add OHSU digital pathology qualification evidence gate",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/13683",
-   "base_freshness": {
-    "base_sha": "0d8b723377c2d626ae63207d1409830e6c5220ed",
-    "main_sha": "aeaf1400a81140c486a4933cd96c51b04004acf8",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 13756,
-   "author": "woahwhattheheck",
-   "title": "Harden Commercial Decision Relay trust boundaries",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/13756",
-   "base_freshness": {
-    "base_sha": "557a353163a433af2f09440097b09bd79168b5ca",
-    "main_sha": "aeaf1400a81140c486a4933cd96c51b04004acf8",
+    "main_sha": "d22160eb49343027af867f6f292f68362a1683c1",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -423,7 +375,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/13740",
    "base_freshness": {
     "base_sha": "42fcfd3ea270c1aff7420755e2f0d21a22326a83",
-    "main_sha": "aeaf1400a81140c486a4933cd96c51b04004acf8",
+    "main_sha": "d22160eb49343027af867f6f292f68362a1683c1",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -439,39 +391,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/13782",
    "base_freshness": {
     "base_sha": "856ca26a229f469732205d1f9dcf097984ff77aa",
-    "main_sha": "aeaf1400a81140c486a4933cd96c51b04004acf8",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 13712,
-   "author": "woahwhattheheck",
-   "title": "revenue: add San Diego RFP 13365 partner-readiness gate",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/13712",
-   "base_freshness": {
-    "base_sha": "b2901bb690b95a9fb96c9d80f9e245d3572b640e",
-    "main_sha": "aeaf1400a81140c486a4933cd96c51b04004acf8",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 13695,
-   "author": "woahwhattheheck",
-   "title": "competition: add Wuhu LeRobot trajectory QC engine",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/13695",
-   "base_freshness": {
-    "base_sha": "c0df613c6df75a8ab967e2b193f2e0cedeaa9911",
-    "main_sha": "aeaf1400a81140c486a4933cd96c51b04004acf8",
+    "main_sha": "d22160eb49343027af867f6f292f68362a1683c1",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -487,135 +407,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/13741",
    "base_freshness": {
     "base_sha": "cb553c1692fada76b72f69b72ab5509860182013",
-    "main_sha": "aeaf1400a81140c486a4933cd96c51b04004acf8",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 13812,
-   "author": "woahwhattheheck",
-   "title": "ci: add source-bound portable CI fleet coordinator",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/13812",
-   "base_freshness": {
-    "base_sha": "c652701cfa92753235429506d9ec42bb3b82d9f6",
-    "main_sha": "aeaf1400a81140c486a4933cd96c51b04004acf8",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 13821,
-   "author": "woahwhattheheck",
-   "title": "revenue: qualify NASPO SW1045 with packet-gated teaming lane",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/13821",
-   "base_freshness": {
-    "base_sha": "a86684b0dab264aa181e6b7b54793b0c306f02df",
-    "main_sha": "aeaf1400a81140c486a4933cd96c51b04004acf8",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 13811,
-   "author": "woahwhattheheck",
-   "title": "fix: bind PCI readiness to complete trusted evidence",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/13811",
-   "base_freshness": {
-    "base_sha": "a6453d8d7e3d26d4c13491299fc9baf769ddda2e",
-    "main_sha": "aeaf1400a81140c486a4933cd96c51b04004acf8",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 13692,
-   "author": "woahwhattheheck",
-   "title": "TITAN V5: exact-head reject symlinked champion evidence inputs",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/13692",
-   "base_freshness": {
-    "base_sha": "dc2868f8c6ae7520b53c36934eef7ff84e3873c7",
-    "main_sha": "aeaf1400a81140c486a4933cd96c51b04004acf8",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 13587,
-   "author": "woahwhattheheck",
-   "title": "ci: reject ignored runtime inputs before battery execution",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/13587",
-   "base_freshness": {
-    "base_sha": "82457b4fbc99a64a5fa10203814ab6c3729c9de3",
-    "main_sha": "aeaf1400a81140c486a4933cd96c51b04004acf8",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 13857,
-   "author": "woahwhattheheck",
-   "title": "fix(afh): fail closed on invalid demo video proof",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/13857",
-   "base_freshness": {
-    "base_sha": "5b34f2ba09430e28b9f5b675c4e6a5ceba5d707d",
-    "main_sha": "aeaf1400a81140c486a4933cd96c51b04004acf8",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 13863,
-   "author": "woahwhattheheck",
-   "title": "titan: add F45 productive HARVEST/COLLECT protection",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/13863",
-   "base_freshness": {
-    "base_sha": "5090647c10ba49e881ace047a402034146e0d5ea",
-    "main_sha": "aeaf1400a81140c486a4933cd96c51b04004acf8",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 13842,
-   "author": "woahwhattheheck",
-   "title": "Add fail-closed SCDHHS MCDE qualification gate",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/13842",
-   "base_freshness": {
-    "base_sha": "5375e674fdf5fc8b9f7616fc0a5b2b0ec55424a3",
-    "main_sha": "aeaf1400a81140c486a4933cd96c51b04004acf8",
+    "main_sha": "d22160eb49343027af867f6f292f68362a1683c1",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -631,23 +423,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/13844",
    "base_freshness": {
     "base_sha": "19830aa7e34e9ffe3e2156ee1878bdd179e5a3f6",
-    "main_sha": "aeaf1400a81140c486a4933cd96c51b04004acf8",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 13877,
-   "author": "woahwhattheheck",
-   "title": "revenue: add source-bound commercial terms exception lineage",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/13877",
-   "base_freshness": {
-    "base_sha": "a3e49285a21ca1e8e4dac6471fbbbe839f9f6108",
-    "main_sha": "aeaf1400a81140c486a4933cd96c51b04004acf8",
+    "main_sha": "d22160eb49343027af867f6f292f68362a1683c1",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -663,55 +439,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/13779",
    "base_freshness": {
     "base_sha": "bf7fb8209b03bc7497307249aeb97ce51d7daa5e",
-    "main_sha": "aeaf1400a81140c486a4933cd96c51b04004acf8",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 13874,
-   "author": "woahwhattheheck",
-   "title": "Revenue: add evidence-bound reference authority registry",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/13874",
-   "base_freshness": {
-    "base_sha": "9af45e80105c5d37fee80f483cd9d2ce86a85f65",
-    "main_sha": "aeaf1400a81140c486a4933cd96c51b04004acf8",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 13818,
-   "author": "woahwhattheheck",
-   "title": "fix(mcp): close post-merge FIFO and Decimal fail-closed gaps",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/13818",
-   "base_freshness": {
-    "base_sha": "a86684b0dab264aa181e6b7b54793b0c306f02df",
-    "main_sha": "aeaf1400a81140c486a4933cd96c51b04004acf8",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 13910,
-   "author": "woahwhattheheck",
-   "title": "Revenue: authenticate pursuit portfolio authority and file custody",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/13910",
-   "base_freshness": {
-    "base_sha": "02692d0c18b4f8b3a4f129866ce764be52433503",
-    "main_sha": "aeaf1400a81140c486a4933cd96c51b04004acf8",
+    "main_sha": "d22160eb49343027af867f6f292f68362a1683c1",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -727,151 +455,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/13976",
    "base_freshness": {
     "base_sha": "39159bc99b830e3bf57740be75b353768654590f",
-    "main_sha": "aeaf1400a81140c486a4933cd96c51b04004acf8",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 13701,
-   "author": "woahwhattheheck",
-   "title": "revenue: add CAS actuarial LLM benchmark reproducibility core",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/13701",
-   "base_freshness": {
-    "base_sha": "aaa67ddc9c4f4cfd4d8d68f9a77de5b3b1cb8107",
-    "main_sha": "aeaf1400a81140c486a4933cd96c51b04004acf8",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 13997,
-   "author": "woahwhattheheck",
-   "title": "Add Diversey rapid proof-of-clean submission carrier",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/13997",
-   "base_freshness": {
-    "base_sha": "301d4400037a448ee5af956ef947369faa041942",
-    "main_sha": "aeaf1400a81140c486a4933cd96c51b04004acf8",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 13999,
-   "author": "woahwhattheheck",
-   "title": "CALL-E RouteScout: approval-gated procurement routing agent",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/13999",
-   "base_freshness": {
-    "base_sha": "c9e095811ee7aa76f7c0720f9ea538e2f0abfad3",
-    "main_sha": "aeaf1400a81140c486a4933cd96c51b04004acf8",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 13902,
-   "author": "woahwhattheheck",
-   "title": "Ship Warranty & RMA Operations Desk",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/13902",
-   "base_freshness": {
-    "base_sha": "925ec28e9110e976eda64c42eaedacf3f97371db",
-    "main_sha": "aeaf1400a81140c486a4933cd96c51b04004acf8",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 14010,
-   "author": "woahwhattheheck",
-   "title": "fix(revenue): harden Jersey DN827803 qualification authority v2",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/14010",
-   "base_freshness": {
-    "base_sha": "46c66e19806e84aac130065d69630f16ba3e5083",
-    "main_sha": "aeaf1400a81140c486a4933cd96c51b04004acf8",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 14076,
-   "author": "woahwhattheheck",
-   "title": "feat: add Fire TV SpoilerShield competition carrier",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/14076",
-   "base_freshness": {
-    "base_sha": "d43ce8cfc63ef6dd5b8e3387e9ea9ccf717a208d",
-    "main_sha": "aeaf1400a81140c486a4933cd96c51b04004acf8",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 14086,
-   "author": "woahwhattheheck",
-   "title": "Add commercial portfolio allocation authority",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/14086",
-   "base_freshness": {
-    "base_sha": "28c136f9338169279a401f126a6319329eb626f2",
-    "main_sha": "aeaf1400a81140c486a4933cd96c51b04004acf8",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 14054,
-   "author": "woahwhattheheck",
-   "title": "revenue: land $2,500 hotel room-turn evidence pilot fulfillment",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/14054",
-   "base_freshness": {
-    "base_sha": "5c5d4cce562afdceefa6f17746ee00a78f042458",
-    "main_sha": "aeaf1400a81140c486a4933cd96c51b04004acf8",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 14105,
-   "author": "woahwhattheheck",
-   "title": "fix(revenue): canonicalize Commercial Deal Room provider identity",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/14105",
-   "base_freshness": {
-    "base_sha": "a92115e7e0a8bc4406ce8f4093d05591ca5ad81f",
-    "main_sha": "aeaf1400a81140c486a4933cd96c51b04004acf8",
+    "main_sha": "d22160eb49343027af867f6f292f68362a1683c1",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -887,23 +471,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/14122",
    "base_freshness": {
     "base_sha": "736343b63a2a94686bf4e293a071f0aa547e40cb",
-    "main_sha": "aeaf1400a81140c486a4933cd96c51b04004acf8",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 14151,
-   "author": "woahwhattheheck",
-   "title": "Revenue: add WRI Open Timber Portal proposal carrier",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/14151",
-   "base_freshness": {
-    "base_sha": "256eddd0b593c3b636c16a4db1397bae36b619c9",
-    "main_sha": "aeaf1400a81140c486a4933cd96c51b04004acf8",
+    "main_sha": "d22160eb49343027af867f6f292f68362a1683c1",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -919,7 +487,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/14188",
    "base_freshness": {
     "base_sha": "e2b97a0483a2d93794616216795770701cc2e698",
-    "main_sha": "aeaf1400a81140c486a4933cd96c51b04004acf8",
+    "main_sha": "d22160eb49343027af867f6f292f68362a1683c1",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -929,13 +497,13 @@
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
   {
-   "number": 14147,
+   "number": 14270,
    "author": "woahwhattheheck",
-   "title": "build(shipaton): add ProofPocket Android RevenueCat carrier",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/14147",
+   "title": "feat(proposal-gate): model submission and award readiness",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/14270",
    "base_freshness": {
-    "base_sha": "5df8a648fb165feef48446f324dc72b200754abd",
-    "main_sha": "aeaf1400a81140c486a4933cd96c51b04004acf8",
+    "base_sha": "27ad0e824af0c3e1fb738de233915f684876edde",
+    "main_sha": "d22160eb49343027af867f6f292f68362a1683c1",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -945,13 +513,13 @@
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
   {
-   "number": 14066,
+   "number": 14299,
    "author": "woahwhattheheck",
-   "title": "hive016: ship creator-backed niche app studio",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/14066",
+   "title": "ARM26BX06-NV012: decision-as-program Phase I qualification + demo carrier",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/14299",
    "base_freshness": {
-    "base_sha": "022b15744c94615fbc63d48d227305d6a794f89d",
-    "main_sha": "aeaf1400a81140c486a4933cd96c51b04004acf8",
+    "base_sha": "303537cb200151a24c5597eea744be352e3337ba",
+    "main_sha": "d22160eb49343027af867f6f292f68362a1683c1",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -961,13 +529,13 @@
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
   {
-   "number": 14173,
+   "number": 14314,
    "author": "woahwhattheheck",
-   "title": "fix(forensics): bind lease evidence to canonical Commons repo",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/14173",
+   "title": "Revenue: harden bidder qualification vault with entity-bound v2",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/14314",
    "base_freshness": {
-    "base_sha": "c36e9b1aef5e156100d29788266619ba24184649",
-    "main_sha": "aeaf1400a81140c486a4933cd96c51b04004acf8",
+    "base_sha": "0e8e3e0f9bdc0cf3f1c253c3b76310f8d2b1ca98",
+    "main_sha": "d22160eb49343027af867f6f292f68362a1683c1",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -977,13 +545,589 @@
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
   {
-   "number": 14211,
+   "number": 14333,
    "author": "woahwhattheheck",
-   "title": "feat(revenue): rejoin creator niche app studio with browser origin guard",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/14211",
+   "title": "fix(outbound): bind current preflight to verifier-owned time",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/14333",
    "base_freshness": {
-    "base_sha": "8ae4119221b15bbe014565b055f930d63d7d08c4",
-    "main_sha": "aeaf1400a81140c486a4933cd96c51b04004acf8",
+    "base_sha": "1efc6813a5f6dff0b3f8c97f27f2caa2eea95e88",
+    "main_sha": "d22160eb49343027af867f6f292f68362a1683c1",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 14343,
+   "author": "woahwhattheheck",
+   "title": "Donor: bind reply event refs to the full observation envelope",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/14343",
+   "base_freshness": {
+    "base_sha": "05f6f1775a5762ffa18c5c19da1d94d35bc45bb0",
+    "main_sha": "d22160eb49343027af867f6f292f68362a1683c1",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 14356,
+   "author": "woahwhattheheck",
+   "title": "donor: enforce monotonic contact-pressure floor (r2)",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/14356",
+   "base_freshness": {
+    "base_sha": "cd7560c64f7cde184a67b73fd218499d34edbf05",
+    "main_sha": "d22160eb49343027af867f6f292f68362a1683c1",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 14395,
+   "author": "woahwhattheheck",
+   "title": "Fix organization lease verifier store-type laundering",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/14395",
+   "base_freshness": {
+    "base_sha": "b53c8e6bf1aa770ca41c47bb5fa6558cb27ed4e5",
+    "main_sha": "d22160eb49343027af867f6f292f68362a1683c1",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 13999,
+   "author": "woahwhattheheck",
+   "title": "CALL-E RouteScout: approval-gated procurement routing agent",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/13999",
+   "base_freshness": {
+    "base_sha": "c9e095811ee7aa76f7c0720f9ea538e2f0abfad3",
+    "main_sha": "d22160eb49343027af867f6f292f68362a1683c1",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 14454,
+   "author": "woahwhattheheck",
+   "title": "CALL-E RouteScout: bind terminal evidence to exact inquiry generation",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/14454",
+   "base_freshness": {
+    "base_sha": "233b75a5c9741f56fa2c1dd737ce82663ac4d05e",
+    "main_sha": "d22160eb49343027af867f6f292f68362a1683c1",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 14477,
+   "author": "woahwhattheheck",
+   "title": "coordination: recover exact-head execution evidence gate",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/14477",
+   "base_freshness": {
+    "base_sha": "928e7bc4e8d5772b5cebbfeee797cd5b706e3655",
+    "main_sha": "d22160eb49343027af867f6f292f68362a1683c1",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 14524,
+   "author": "woahwhattheheck",
+   "title": "coordination: bind execution review to GitHub Actions authority",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/14524",
+   "base_freshness": {
+    "base_sha": "63ab0295d724eee76b5a0bfa5b5151a07b8245ab",
+    "main_sha": "d22160eb49343027af867f6f292f68362a1683c1",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 14527,
+   "author": "woahwhattheheck",
+   "title": "fix(revenue): fail closed paid-proof public artifacts v3",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/14527",
+   "base_freshness": {
+    "base_sha": "f2bead868ea081e5e968b90a865df7807f6aa3a7",
+    "main_sha": "d22160eb49343027af867f6f292f68362a1683c1",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 14548,
+   "author": "woahwhattheheck",
+   "title": "fix: bind Lawrence document authority semantics",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/14548",
+   "base_freshness": {
+    "base_sha": "c90ea59e8d01dbbf2ec030a29e52f4f9ff987685",
+    "main_sha": "d22160eb49343027af867f6f292f68362a1683c1",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 14553,
+   "author": "woahwhattheheck",
+   "title": "Fix UArk RFP 09112026 currentness authority",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/14553",
+   "base_freshness": {
+    "base_sha": "44172a86d8561948b3cfa043f4e316769a8d1409",
+    "main_sha": "d22160eb49343027af867f6f292f68362a1683c1",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 14471,
+   "author": "woahwhattheheck",
+   "title": "Revenue: recover Vetter current tech-transfer evidence gate",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/14471",
+   "base_freshness": {
+    "base_sha": "033c2eae1bd7fda05d90689a0c48d1f09e92b468",
+    "main_sha": "d22160eb49343027af867f6f292f68362a1683c1",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 14568,
+   "author": "woahwhattheheck",
+   "title": "revenue: bind OHSU current qualification to verifier-retained root",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/14568",
+   "base_freshness": {
+    "base_sha": "f88907355a23e505ab6c43af6504485c2c79bb25",
+    "main_sha": "d22160eb49343027af867f6f292f68362a1683c1",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 14578,
+   "author": "woahwhattheheck",
+   "title": "NUMIH AI SAD: compile partner/admission readiness evidence",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/14578",
+   "base_freshness": {
+    "base_sha": "41088c39cbcfb1e45b01d68fde408e0a224935e7",
+    "main_sha": "d22160eb49343027af867f6f292f68362a1683c1",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 13910,
+   "author": "woahwhattheheck",
+   "title": "Revenue: authenticate pursuit portfolio authority and file custody",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/13910",
+   "base_freshness": {
+    "base_sha": "02692d0c18b4f8b3a4f129866ce764be52433503",
+    "main_sha": "d22160eb49343027af867f6f292f68362a1683c1",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 14530,
+   "author": "woahwhattheheck",
+   "title": "research: add ADIA real-time structural-break carrier",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/14530",
+   "base_freshness": {
+    "base_sha": "fb5daf649f5ab312036c3f86770bfd4975500ef4",
+    "main_sha": "d22160eb49343027af867f6f292f68362a1683c1",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 14589,
+   "author": "woahwhattheheck",
+   "title": "Harden Mapping Equity redirect and descriptor custody",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/14589",
+   "base_freshness": {
+    "base_sha": "58be28ca7c4500a3a2e49cbd94f22c5665a149f1",
+    "main_sha": "d22160eb49343027af867f6f292f68362a1683c1",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "CANDIDATE",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 14612,
+   "author": "woahwhattheheck",
+   "title": "NIH SPARK: preserve retrieval authority across baseline reloads",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/14612",
+   "base_freshness": {
+    "base_sha": "d2d733593ef6068557d3fc21add6fec2b2dbbf5c",
+    "main_sha": "d22160eb49343027af867f6f292f68362a1683c1",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 14641,
+   "author": "woahwhattheheck",
+   "title": "Water4All 2026: repair live authority trust roots",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/14641",
+   "base_freshness": {
+    "base_sha": "c35b159817de42e79e2c29b267d7d8122c2baa05",
+    "main_sha": "d22160eb49343027af867f6f292f68362a1683c1",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 14650,
+   "author": "woahwhattheheck",
+   "title": "Add swarm product-lane collision preflight compiler",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/14650",
+   "base_freshness": {
+    "base_sha": "a92826aef5a6867069450e9e5b52a78e9c3df740",
+    "main_sha": "d22160eb49343027af867f6f292f68362a1683c1",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 14632,
+   "author": "woahwhattheheck",
+   "title": "Pin Snohomish packet-required gap inventory",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/14632",
+   "base_freshness": {
+    "base_sha": "c13b16c3cee2d49e3cb314caeaf924f6864a2f20",
+    "main_sha": "d22160eb49343027af867f6f292f68362a1683c1",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 14321,
+   "author": "woahwhattheheck",
+   "title": "revenue: build Pinellas digital-evidence RFI response carrier",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/14321",
+   "base_freshness": {
+    "base_sha": "68072c17506170958bb5ff48d52494c33a76496e",
+    "main_sha": "d22160eb49343027af867f6f292f68362a1683c1",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 14658,
+   "author": "woahwhattheheck",
+   "title": "Fix collision-preflight false-CLEAR authority gaps",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/14658",
+   "base_freshness": {
+    "base_sha": "f7f86ce04a8a1e493cce18508acdd1807ab0cad6",
+    "main_sha": "d22160eb49343027af867f6f292f68362a1683c1",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 14648,
+   "author": "woahwhattheheck",
+   "title": "research: recover and re-verify ADIA structural-break carrier on current main",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/14648",
+   "base_freshness": {
+    "base_sha": "a92826aef5a6867069450e9e5b52a78e9c3df740",
+    "main_sha": "d22160eb49343027af867f6f292f68362a1683c1",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 14664,
+   "author": "woahwhattheheck",
+   "title": "Fix collision preflight query authority and same-hit ambiguity",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/14664",
+   "base_freshness": {
+    "base_sha": "bcc29688e888b38a5ce6ee1feb734b3d0060636f",
+    "main_sha": "d22160eb49343027af867f6f292f68362a1683c1",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 14464,
+   "author": "woahwhattheheck",
+   "title": "Fix reply-event identity at the core boundary",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/14464",
+   "base_freshness": {
+    "base_sha": "3953757d45636832c0985f8772a419873c926158",
+    "main_sha": "d22160eb49343027af867f6f292f68362a1683c1",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 14651,
+   "author": "woahwhattheheck",
+   "title": "Fix commercial-waste invoice custody and current-service authority",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/14651",
+   "base_freshness": {
+    "base_sha": "a92826aef5a6867069450e9e5b52a78e9c3df740",
+    "main_sha": "d22160eb49343027af867f6f292f68362a1683c1",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 14680,
+   "author": "woahwhattheheck",
+   "title": "coordination: bind execution authority to exact PR/base composition",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/14680",
+   "base_freshness": {
+    "base_sha": "a664101b94d95840e8b7440d3a45ea9d307dd656",
+    "main_sha": "d22160eb49343027af867f6f292f68362a1683c1",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 14669,
+   "author": "woahwhattheheck",
+   "title": "Recover commercial-funnel evidence/time authority on current main",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/14669",
+   "base_freshness": {
+    "base_sha": "38e9cf6d6fdcbd6107d8d4bc52b5638c7e2e5d77",
+    "main_sha": "d22160eb49343027af867f6f292f68362a1683c1",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 14533,
+   "author": "woahwhattheheck",
+   "title": "Revenue: fail closed on self-attested paid-proof provenance",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/14533",
+   "base_freshness": {
+    "base_sha": "268e03e4b80b47c6f0125e31678437343f28bd61",
+    "main_sha": "d22160eb49343027af867f6f292f68362a1683c1",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 14670,
+   "author": "woahwhattheheck",
+   "title": "revenue: add content rights usage-window operations desk",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/14670",
+   "base_freshness": {
+    "base_sha": "6d2b871dc6f257293ec3f49e3b32fb80603632a8",
+    "main_sha": "d22160eb49343027af867f6f292f68362a1683c1",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 14705,
+   "author": "woahwhattheheck",
+   "title": "Learn2Design: v3 depth/throughput hybrid + matched public matrix",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/14705",
+   "base_freshness": {
+    "base_sha": "e3170922572a541823049e78b2f0b3d7edeee6f0",
+    "main_sha": "d22160eb49343027af867f6f292f68362a1683c1",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "CANDIDATE",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 14704,
+   "author": "woahwhattheheck",
+   "title": "TITAN V4: close evaluator authority chain after #14686",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/14704",
+   "base_freshness": {
+    "base_sha": "c1f4d0bddef13f55f6d72cdf41d136674dcb381e",
+    "main_sha": "d22160eb49343027af867f6f292f68362a1683c1",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 14709,
+   "author": "woahwhattheheck",
+   "title": "Donor: make media-rights export generation + path custody atomic",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/14709",
+   "base_freshness": {
+    "base_sha": "6e3b3fe0f15b6d067712af533a27bff8f80c8390",
+    "main_sha": "d22160eb49343027af867f6f292f68362a1683c1",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 14317,
+   "author": "woahwhattheheck",
+   "title": "fix(forensics): require host-attested outbound evidence",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/14317",
+   "base_freshness": {
+    "base_sha": "3031df0ef1cd1986b9b8999b8d170c400040e8b8",
+    "main_sha": "d22160eb49343027af867f6f292f68362a1683c1",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 14700,
+   "author": "woahwhattheheck",
+   "title": "Sun A308734: pin P18 frontier and exact reduction verifier",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/14700",
+   "base_freshness": {
+    "base_sha": "e3170922572a541823049e78b2f0b3d7edeee6f0",
+    "main_sha": "d22160eb49343027af867f6f292f68362a1683c1",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 14713,
+   "author": "woahwhattheheck",
+   "title": "competition: harden CrowdStrike workbench evidence integrity",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/14713",
+   "base_freshness": {
+    "base_sha": "d98c887519b18fbb04847ca12607769505f05a50",
+    "main_sha": "d22160eb49343027af867f6f292f68362a1683c1",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -999,7 +1143,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/14209",
    "base_freshness": {
     "base_sha": "89f00414857442e54565bdecba76f77cfba47150",
-    "main_sha": "aeaf1400a81140c486a4933cd96c51b04004acf8",
+    "main_sha": "d22160eb49343027af867f6f292f68362a1683c1",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -1009,13 +1153,13 @@
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
   {
-   "number": 14159,
+   "number": 14715,
    "author": "woahwhattheheck",
-   "title": "Revenue: require fresh Stripe readback for right-now checkout truth",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/14159",
+   "title": "Recover Sophelio full-fold authority and bounded training",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/14715",
    "base_freshness": {
-    "base_sha": "2916c90736a058a90f64a985af01efdc3d409a8e",
-    "main_sha": "aeaf1400a81140c486a4933cd96c51b04004acf8",
+    "base_sha": "3031df0ef1cd1986b9b8999b8d170c400040e8b8",
+    "main_sha": "d22160eb49343027af867f6f292f68362a1683c1",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -1025,13 +1169,13 @@
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
   {
-   "number": 14057,
+   "number": 14684,
    "author": "woahwhattheheck",
-   "title": "Make reply-to-revenue contact state chronology-safe",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/14057",
+   "title": "Compose Muse v2 current-authority boundary",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/14684",
    "base_freshness": {
-    "base_sha": "ae0dfda77f8cfa59b73ade957f38386f81d38d23",
-    "main_sha": "aeaf1400a81140c486a4933cd96c51b04004acf8",
+    "base_sha": "1459189112ecdb3da9178cb18d6cc4ac18f678e3",
+    "main_sha": "d22160eb49343027af867f6f292f68362a1683c1",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -1041,13 +1185,13 @@
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
   {
-   "number": 14221,
+   "number": 14720,
    "author": "woahwhattheheck",
-   "title": "revenue: qualify SigNoz for bounded survival-proof outreach",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/14221",
+   "title": "Donor: fail closed unauthenticated Muse negative election outcomes",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/14720",
    "base_freshness": {
-    "base_sha": "066078ccac2bebf11a9a31c800e6be66a730c42a",
-    "main_sha": "aeaf1400a81140c486a4933cd96c51b04004acf8",
+    "base_sha": "5804490ae2a883bc492f7fe975921b62fdc25216",
+    "main_sha": "d22160eb49343027af867f6f292f68362a1683c1",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -1057,13 +1201,13 @@
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
   {
-   "number": 14228,
+   "number": 14728,
    "author": "woahwhattheheck",
-   "title": "repair: bind Commercial Portfolio Allocator to current authority",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/14228",
+   "title": "Learn2Design: independent recorded-run provenance repair for #14672",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/14728",
    "base_freshness": {
-    "base_sha": "1b8eac32a29dbd37a3497040bef602c45cfe87ab",
-    "main_sha": "aeaf1400a81140c486a4933cd96c51b04004acf8",
+    "base_sha": "36be284452141d26cdff4b74efb8f185b27c4b32",
+    "main_sha": "d22160eb49343027af867f6f292f68362a1683c1",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -1073,13 +1217,13 @@
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
   {
-   "number": 13865,
+   "number": 14672,
    "author": "woahwhattheheck",
-   "title": "feat: embed exact Git source capsules in context dispatch packets",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/13865",
+   "title": "Learn2Design: source-pinned matched public evidence rail",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/14672",
    "base_freshness": {
-    "base_sha": "94766b107d4d3712ee0a9e338844d783f171a9f5",
-    "main_sha": "aeaf1400a81140c486a4933cd96c51b04004acf8",
+    "base_sha": "7a26c3392f8e65e737ae80e47fd8000917730da1",
+    "main_sha": "d22160eb49343027af867f6f292f68362a1683c1",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -1089,13 +1233,13 @@
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
   {
-   "number": 13901,
+   "number": 14724,
    "author": "woahwhattheheck",
-   "title": "Build evidence-bound security questionnaire fulfillment desk",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/13901",
+   "title": "A308734: quantify P18-to-3-power analytic obstruction",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/14724",
    "base_freshness": {
-    "base_sha": "0f0cd03f5ca51b9da54b84d3a21d9bb02dd51e62",
-    "main_sha": "aeaf1400a81140c486a4933cd96c51b04004acf8",
+    "base_sha": "4ceefeaa66ea6618da36a03055ab8474798dafa7",
+    "main_sha": "d22160eb49343027af867f6f292f68362a1683c1",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -1105,13 +1249,13 @@
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
   {
-   "number": 14218,
+   "number": 14701,
    "author": "woahwhattheheck",
-   "title": "fix(revenue): bind CAS benchmark runs to one evaluation universe",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/14218",
+   "title": "feat(uiowa): add RFQ 18649 prime acceptance exhibit",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/14701",
    "base_freshness": {
-    "base_sha": "89f00414857442e54565bdecba76f77cfba47150",
-    "main_sha": "aeaf1400a81140c486a4933cd96c51b04004acf8",
+    "base_sha": "e3170922572a541823049e78b2f0b3d7edeee6f0",
+    "main_sha": "d22160eb49343027af867f6f292f68362a1683c1",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -1121,13 +1265,13 @@
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
   {
-   "number": 13862,
+   "number": 14729,
    "author": "woahwhattheheck",
-   "title": "funded-work: resolve latest authoritative reward amount",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/13862",
+   "title": "CUHK-X: fail closed contradictory readiness generations",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/14729",
    "base_freshness": {
-    "base_sha": "2327b5a5bf3f141df38e3953c7be7c25f4a1ecd3",
-    "main_sha": "aeaf1400a81140c486a4933cd96c51b04004acf8",
+    "base_sha": "2a5af86f204de1eaa6fc723d6cd67f40280ed675",
+    "main_sha": "d22160eb49343027af867f6f292f68362a1683c1",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -1137,13 +1281,13 @@
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
   {
-   "number": 14235,
+   "number": 14730,
    "author": "woahwhattheheck",
-   "title": "fix(outbound): snapshot buyer-scope parsed inputs",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/14235",
+   "title": "fix(titan): bind historical ledger blobs to custody bytes",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/14730",
    "base_freshness": {
-    "base_sha": "31dc93eb18c667a3314017d10eb2beadf3de5014",
-    "main_sha": "aeaf1400a81140c486a4933cd96c51b04004acf8",
+    "base_sha": "2a5af86f204de1eaa6fc723d6cd67f40280ed675",
+    "main_sha": "d22160eb49343027af867f6f292f68362a1683c1",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -1153,93 +1297,13 @@
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
   {
-   "number": 14246,
+   "number": 14722,
    "author": "woahwhattheheck",
-   "title": "fix(revenue): close questionnaire authority and publication gaps",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/14246",
+   "title": "Build evidence-bound Massachusetts DDS IPMS RFI response compiler",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/14722",
    "base_freshness": {
-    "base_sha": "db68118423bef95d0971fb320d83ffabec802abc",
-    "main_sha": "aeaf1400a81140c486a4933cd96c51b04004acf8",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 14258,
-   "author": "woahwhattheheck",
-   "title": "Fix organization-pressure proposed event ID admission",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/14258",
-   "base_freshness": {
-    "base_sha": "f0a1eba3ac83614e8303d4108dd6ec82abd2e05c",
-    "main_sha": "aeaf1400a81140c486a4933cd96c51b04004acf8",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 14260,
-   "author": "woahwhattheheck",
-   "title": "YPF wet-gas challenge: FusionMeter AGA-3 PLR correction carrier",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/14260",
-   "base_freshness": {
-    "base_sha": "de6e3385e1c2477dbde74c30da18f31cd58a2725",
-    "main_sha": "aeaf1400a81140c486a4933cd96c51b04004acf8",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 14254,
-   "author": "woahwhattheheck",
-   "title": "Revenue: gate organization-level cross-contact pressure",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/14254",
-   "base_freshness": {
-    "base_sha": "8e6cbd02d3f247a8ca906018c7344c65bd48e3ce",
-    "main_sha": "aeaf1400a81140c486a4933cd96c51b04004acf8",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 14264,
-   "author": "woahwhattheheck",
-   "title": "Learn2Design 2026 staged trust portfolio optimizer",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/14264",
-   "base_freshness": {
-    "base_sha": "7dccaa5187630a9b4784fa02ad4b847d021941b4",
-    "main_sha": "aeaf1400a81140c486a4933cd96c51b04004acf8",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 14256,
-   "author": "woahwhattheheck",
-   "title": "feat(revenue): exact RFP/Addenda Delta Desk",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/14256",
-   "base_freshness": {
-    "base_sha": "c86f4036fa793eb26f9d50d77d972e7798ce6f18",
-    "main_sha": "aeaf1400a81140c486a4933cd96c51b04004acf8",
+    "base_sha": "0f08e3a5daa4ad9c63e8c43ed399c2039b5bbdeb",
+    "main_sha": "d22160eb49343027af867f6f292f68362a1683c1",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"

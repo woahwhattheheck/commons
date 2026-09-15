@@ -25,25 +25,6 @@
   ],
   "execution_queue": [
     {
-      "collision_receipts": [],
-      "decision": "RESEARCH_REQUIRED",
-      "fit_score": 40,
-      "missing": [
-        "an observable production failure phrase",
-        "a relevant owner role",
-        "a verified first-party route"
-      ],
-      "next_action": "complete the listed research gaps, then rerun this planner",
-      "observed_at": "2026-08-27T00:40:00Z",
-      "offer_id": "same-day-agent-survival-proof",
-      "organization": "SigNoz",
-      "prospect_id": "signoz",
-      "rank": 1,
-      "route_state": "UNVERIFIED",
-      "source_url": "https://signoz.io/blog/introducing-agent-native-observability/",
-      "transport_authorized": false
-    },
-    {
       "collision_receipts": [
         "revenue/payment_ready/outreach_receipts/20260830-composio-1a053aa4f8a0014a.json"
       ],
@@ -55,7 +36,7 @@
       "offer_id": "same-day-agent-survival-proof",
       "organization": "Composio",
       "prospect_id": "composio",
-      "rank": 2,
+      "rank": 1,
       "route_state": "VERIFIED",
       "source_url": "https://docs.composio.dev/reference/changelog",
       "transport_authorized": false
@@ -72,7 +53,7 @@
       "offer_id": "same-day-agent-survival-proof",
       "organization": "Metaforms",
       "prospect_id": "metaforms",
-      "rank": 3,
+      "rank": 2,
       "route_state": "VERIFIED",
       "source_url": "https://www.metaforms.ai/",
       "transport_authorized": false
@@ -92,9 +73,28 @@
       "offer_id": "same-day-agent-survival-proof",
       "organization": "AnythingLLM / Mintplex Labs",
       "prospect_id": "anythingllm-mintplex",
-      "rank": 4,
+      "rank": 3,
       "route_state": "VERIFIED",
       "source_url": "https://anythingllm.com/",
+      "transport_authorized": false
+    },
+    {
+      "collision_receipts": [],
+      "decision": "HOLD_DO_NOT_CONTACT",
+      "fit_score": 40,
+      "missing": [
+        "an observable production failure phrase",
+        "a relevant owner role",
+        "a verified first-party route"
+      ],
+      "next_action": "retain suppression; no draft and no transport handoff",
+      "observed_at": "2026-08-27T00:40:00Z",
+      "offer_id": "same-day-agent-survival-proof",
+      "organization": "SigNoz",
+      "prospect_id": "signoz",
+      "rank": 4,
+      "route_state": "UNVERIFIED",
+      "source_url": "https://signoz.io/blog/introducing-agent-native-observability/",
       "transport_authorized": false
     }
   ],
@@ -283,7 +283,7 @@
     },
     {
       "path": "revenue/smart_outreach/candidates.json",
-      "sha256": "39718f93d18ef789f9dba49aca7f84d47659554789a3ba4d40265ec6596394ba"
+      "sha256": "35431a4b2f2eeb6453f1da773286f919958d717bba8e0401793f0e451fb89f8b"
     },
     {
       "path": "revenue/payment_ready/current_receipt.json",

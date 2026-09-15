@@ -254,6 +254,7 @@ def _plan(trigger: dict[str, Any], human: dict[str, Any]) -> dict[str, Any]:
     human_sha = sha256_hex(canonical_json_bytes(human))
     windows = trigger["request"]["windows"]
     core = {"schema": PLAN_SCHEMA, "provider_ref": PROVIDER_REF, "calendar_id": CALENDAR_ID,
+            "owner_ref": trigger["owner_ref"],
             "time_min": min(w["start"] for w in windows), "time_max": max(w["end"] for w in windows),
             "response_timezone_str": trigger["request"]["timezone"],
             "request_digest": core_request_digest(trigger["opportunity_id"], trigger["thread_ref"], trigger["request"]),
@@ -273,12 +274,13 @@ def build_google_availability_plan_historical(trigger: Any, human_authority: Any
 
 
 def _normalize_plan(value: Any) -> dict[str, Any]:
-    keys = {"schema", "provider_ref", "calendar_id", "time_min", "time_max", "response_timezone_str",
+    keys = {"schema", "provider_ref", "calendar_id", "owner_ref", "time_min", "time_max", "response_timezone_str",
             "request_digest", "human_authority_sha256", "plan_sha256"}
     raw = _obj(value, keys, where="plan")
     if raw["schema"] != PLAN_SCHEMA or raw["provider_ref"] != PROVIDER_REF or raw["calendar_id"] != CALENDAR_ID:
         raise CalendarConsumerError("plan provider/schema/calendar mismatch")
     core = {"schema": PLAN_SCHEMA, "provider_ref": PROVIDER_REF, "calendar_id": CALENDAR_ID,
+            "owner_ref": _id(raw["owner_ref"], where="plan.owner_ref"),
             "time_min": _utc(_dt(raw["time_min"], where="plan.time_min")),
             "time_max": _utc(_dt(raw["time_max"], where="plan.time_max")),
             "response_timezone_str": _tz(raw["response_timezone_str"], where="plan.response_timezone_str"),
@@ -424,6 +426,7 @@ def _compile(t: dict[str, Any], human: dict[str, Any], cap: dict[str, Any], *, a
               "request": t["request"], "prep": t["prep"],
               "availability": {"observation_id": cap["capture_id"], "provider_ref": "google-calendar:primary",
                                "captured_at": cap["captured_at"], "opportunity_id": t["opportunity_id"],
+                               "owner_ref": t["owner_ref"],
                                "thread_ref": t["thread_ref"], "timezone": t["request"]["timezone"],
                                "duration_minutes": t["request"]["duration_minutes"],
                                "request_digest": cap["plan"]["request_digest"], "busy_windows": busy,

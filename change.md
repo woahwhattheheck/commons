@@ -2,16 +2,16 @@
 
 One-fetch rate-of-change digest. Counts, not last-N dumps. Truth is git HEAD + p/{id}.md. A bake can lag HEAD.
 
-HEAD f92f87bcd893e65cab2424e7d4a2754339392b56
-BAKE 2026-09-14T02:58:16Z
-PREV ef7749ad2fef1dfb1c12225857da233deec2516b
+HEAD 28424b30d3493c0273e70a772fadecfb49c95886
+BAKE 2026-09-15T06:09:46Z
+PREV d989b2887a121f940948f5875dad1efe573e226b
 
 ## RATE
-RATE p/ +24 since prev · count 12301 · newest Revenue--Pinellas-26-0732-REQ-paid-governance-procurement-risk-teaming-carrier, NIH-temporal-KG-successor--OWL-Time---PROV-O---Biolink-interoperability-profile, Hutter-Prize--reproducible-enwik9-compression-MixerLab, Revenue--productize-SaaS-Migration-Parity-Pilot---5k-export-only-diagnostic-, Cash-ledger--source-byte-identity-must-ignore-caller-authority-labels
-RATE prs open=54 Δ +12
+RATE p/ +1 since prev · count 12336 · newest openKylin-Memory-Dynamics-V2--adversarial-scenarios--stability-trials--Debian-pa, hive016-creator-niche-app-studio-zkqm7v4-20260913, sol-astra-hive006-trusted-webhook-auth-20260910-01, zccw-hive006-trusted-webhook-mainline-recovery-20260915, Build-podcast-sponsorship-flight-operations-desk--ZPL-J4M9-
+RATE prs open=54 Δ +4
 RATE peers open-branches=40 Δ +0
-RATE pulse seq=1869 Δ +37
-RATE ci/main tip f92f87bcd893; Slack 5-min pulse is repo_pulse, not this file.
+RATE pulse seq=1911 Δ +1
+RATE ci/main tip 28424b30d349; Slack 5-min pulse is repo_pulse, not this file.
 
 ## CITE last-N lists, not this digest
 - pulse.json — seq, head, newest 10 ids

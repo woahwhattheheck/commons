@@ -182,6 +182,13 @@ def takeover(
     now: dt.datetime | None = None,
     ttl_seconds: int = DEFAULT_TTL_SECONDS,
 ) -> Lease:
+    """Take over an expired/released lease only if provider truth is unchanged.
+
+    ``provider_snapshot`` must come from a fresh provider read.  A changed provider
+    generation is ambiguous: the prior holder may have sent successfully and then
+    crashed before persisting ``state=sent``.  Treat that as reconciliation work,
+    never as permission to establish a new baseline and send again.
+    """
     now = _utc(now)
     if lease.state in TERMINAL_STATES:
         raise LeaseHeld("sent leases are terminal and cannot be taken over")
@@ -189,13 +196,18 @@ def takeover(
         raise LeaseHeld(f"live lease held by {lease.holder}")
     if ttl_seconds <= 0:
         raise LeaseError("ttl_seconds must be positive")
+    current_provider_snapshot = fingerprint(provider_snapshot)
+    if current_provider_snapshot != lease.provider_snapshot:
+        raise PreflightFailed(
+            "provider state changed since lease capture; reconcile before takeover"
+        )
     return dataclasses.replace(
         lease,
         holder=holder.strip(),
         state=ACTIVE,
         acquired_at=_iso(now),
         expires_at=_iso(now + dt.timedelta(seconds=ttl_seconds)),
-        provider_snapshot=fingerprint(provider_snapshot),
+        provider_snapshot=lease.provider_snapshot,
         generation=lease.generation + 1,
         released_at=None,
         release_reason=None,
@@ -466,7 +478,7 @@ def _parser() -> argparse.ArgumentParser:
     preflight.add_argument("--provider-snapshot", required=True)
     preflight.set_defaults(func=_cmd_preflight)
 
-    take = sub.add_parser("takeover", help="emit a takeover document for an expired/released lease")
+    take = sub.add_parser("takeover", help="emit a takeover document only if provider state is unchanged")
     take.add_argument("--lease", required=True, help="lease JSON file, or - for stdin")
     take.add_argument("--holder", required=True)
     take.add_argument("--provider-snapshot", required=True)

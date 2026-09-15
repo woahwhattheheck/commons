@@ -42,13 +42,24 @@ def _workflow_path(value: Any, label: str) -> str:
 def _base_ref(value: Any, label: str) -> str:
     ref = _require_text(value, label, maximum=256)
     prefix = "refs/heads/"
-    if not ref.startswith(prefix):
-        raise EvidenceError(f"{label} must be a refs/heads/* ref")
+    if ref != value or not ref.startswith(prefix):
+        raise EvidenceError(f"{label} must be a canonical refs/heads/* ref")
     suffix = ref[len(prefix):]
-    if not suffix or suffix.startswith("/") or suffix.endswith("/"):
-        raise EvidenceError(f"{label} is not canonical")
-    if ".." in suffix or "//" in suffix or "\\" in suffix or any(ch.isspace() for ch in suffix):
-        raise EvidenceError(f"{label} is not canonical")
+    forbidden = "~^:?*[\\"
+    if (
+        not suffix
+        or suffix.startswith("/")
+        or suffix.endswith("/")
+        or ref.endswith(".")
+        or ".." in suffix
+        or "@{" in suffix
+        or "//" in suffix
+        or any(ord(ch) <= 32 or ord(ch) == 127 or ch in forbidden for ch in suffix)
+    ):
+        raise EvidenceError(f"{label} is not a canonical Git branch ref")
+    parts = suffix.split("/")
+    if any(not part or part.startswith(".") or part.endswith(".lock") for part in parts):
+        raise EvidenceError(f"{label} is not a canonical Git branch ref")
     return ref
 
 

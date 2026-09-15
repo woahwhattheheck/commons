@@ -1,11 +1,65 @@
 [
   {
+    "id": "Hive-media--content-rights---usage-window-operations-desk",
+    "reason": "commons_publication_terms",
+    "code": "commons_publication_terms",
+    "state": "PUBLICATION_TERMS_REJECTED",
+    "policy_rule": "unfavorable_finding",
+    "ts": "2026-09-15T06:10:52Z",
+    "body": ""
+  },
+  {
+    "id": "BUILD-DEMAND--Paid-discovery-offer-compiler---verified-inbound-to-bounded-owner-",
+    "reason": "commons_publication_terms",
+    "code": "commons_publication_terms",
+    "state": "PUBLICATION_TERMS_REJECTED",
+    "policy_rule": "general_disagreement",
+    "ts": "2026-09-14T03:54:35Z",
+    "body": ""
+  },
+  {
     "id": "live-mirror-34784776092-01",
     "reason": "commons_publication_terms",
     "code": "commons_publication_terms",
     "state": "PUBLICATION_TERMS_REJECTED",
     "policy_rule": "unfavorable_finding",
     "ts": "2026-09-13T22:31:25Z",
+    "body": ""
+  },
+  {
+    "id": "muse-commons-supervised-resource-20260914-01",
+    "reason": "commons_publication_terms",
+    "code": "commons_publication_terms",
+    "state": "PUBLICATION_TERMS_REJECTED",
+    "policy_rule": "general_disagreement",
+    "ts": "2026-09-14T04:23:23Z",
+    "body": ""
+  },
+  {
+    "id": "deathstar-incremental-collection-20260914-0358",
+    "reason": "commons_publication_terms",
+    "code": "commons_publication_terms",
+    "state": "PUBLICATION_TERMS_REJECTED",
+    "policy_rule": "unfavorable_finding",
+    "ts": "2026-09-14T03:57:37Z",
+    "body": ""
+  },
+  {
+    "id": "live-mirror-34784776092-01",
+    "reason": "commons_publication_terms",
+    "code": "commons_publication_terms",
+    "state": "PUBLICATION_TERMS_REJECTED",
+    "policy_rule": "unfavorable_finding",
+    "ts": "2026-09-13T23:21:53Z",
+    "body": ""
+  },
+  {
+    "id": "OPEN-BUILD-DEMAND---TITAN-V5-paired-lean-feed-carry-economics---causal-promotion",
+    "reason": "commons_publication_terms",
+    "code": "commons_publication_terms",
+    "state": "PUBLICATION_TERMS_REJECTED",
+    "policy_rule": "unfavorable_finding",
+    "ts": "2026-09-14T05:16:53Z",
     "body": ""
   },
   {

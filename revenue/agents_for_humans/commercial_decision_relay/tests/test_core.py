@@ -166,7 +166,6 @@ class RelayTests(unittest.TestCase):
     def test_receipt_deterministic_under_event_reordering(self):
         a = batch(); b = batch(); b["events"] = list(reversed(b["events"]))
         ra, rb = reconcile(a), reconcile(b)
-        # source digest intentionally commits to input event order; semantic output must still match.
         self.assertEqual(ra["series"], rb["series"])
         self.assertEqual(ra["decision_queue"], rb["decision_queue"])
 
@@ -222,7 +221,7 @@ class RelayTests(unittest.TestCase):
         engine = RelayEngine(); info = engine.ingest(batch()); receipt = engine.reconcile()
         self.assertEqual(info["event_count"], 7)
         self.assertEqual(len(engine.decisions()), 2)
-        self.assertTrue(engine.verify(receipt["receipt_sha256"]))
+        self.assertTrue(engine.verify(receipt["receipt_sha256"], evaluated_at=receipt["evaluated_at"]))
 
 
 if __name__ == "__main__":

@@ -6,7 +6,7 @@ from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 import json
 from pathlib import Path
 
-from .core import reconcile
+from .current import reconcile_current
 
 
 def render_dashboard(receipt: dict) -> str:
@@ -40,14 +40,15 @@ main{{padding:2rem 4vw}}.grid{{display:grid;grid-template-columns:repeat(auto-fi
 .card{{background:#151b23;border:1px solid #2c3542;border-radius:14px;padding:1rem}}.ready{{border-color:#66d9a8}}.decision{{border-color:#e8b86d}}.danger{{border-color:#f07b7b}}.routine{{opacity:.72}}
 .status{{font-weight:700;margin:.5rem 0}}.interrupt{{font-size:.72rem;letter-spacing:.08em;opacity:.8}}dl{{display:grid;grid-template-columns:auto 1fr;gap:.25rem .75rem}}dd{{margin:0}}code{{word-break:break-all}}footer{{padding:2rem 4vw;color:#9aa9bc}}
 </style></head><body><header><h1>Commercial Decision Relay</h1><p>Quietly processes routine commercial evidence. Interrupts humans only for real decisions.</p>
+<p>Trusted evaluation instant: <strong>{escape(receipt['evaluated_at'])}</strong></p>
 <p><strong>{receipt['summary']['decision_count']}</strong> decisions · <strong>{receipt['summary']['routine_count']}</strong> routine · <strong>{receipt['summary']['quarantine_count']}</strong> quarantined</p></header>
 <main><div class='grid'>{''.join(cards)}</div><h3>Deterministic receipt</h3><code>{escape(receipt['receipt_sha256'])}</code></main>
 <footer>Authority boundary: {escape(authority)}</footer></body></html>"""
 
 
-def serve(batch_path: str, port: int) -> None:
+def serve(batch_path: str, port: int, evaluated_at: str) -> None:
     batch = json.loads(Path(batch_path).read_text(encoding="utf-8"))
-    receipt = reconcile(batch)
+    receipt = reconcile_current(batch, evaluated_at=evaluated_at)
     page = render_dashboard(receipt).encode("utf-8")
 
     class Handler(BaseHTTPRequestHandler):
@@ -72,8 +73,13 @@ def main(argv=None):
     parser = argparse.ArgumentParser()
     parser.add_argument("--batch", default="fixtures/demo-batch.json")
     parser.add_argument("--port", type=int, default=8080)
+    parser.add_argument(
+        "--evaluated-at",
+        required=True,
+        help="trusted current ISO-8601 UTC instant supplied out-of-band",
+    )
     args = parser.parse_args(argv)
-    serve(args.batch, args.port)
+    serve(args.batch, args.port, args.evaluated_at)
 
 
 if __name__ == "__main__":
