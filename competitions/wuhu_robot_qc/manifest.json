@@ -9,38 +9,14 @@
   "competition_reference_contract": "wuhu-dataset-reference/v2",
   "test_cohort_statistics_used": false,
   "current_source_blobs": [
-    {
-      "path": ".github/workflows/wuhu-robot-qc.yml",
-      "git_blob": "b32a51a2d8f476b1e36501f972e8c8b257556fda"
-    },
-    {
-      "path": "competitions/wuhu_robot_qc/README.md",
-      "git_blob": "7dbe3c1380b7015011cb8b8ac9f24da944743969"
-    },
-    {
-      "path": "competitions/wuhu_robot_qc/requirements.txt",
-      "git_blob": "f4c45a3f8027bd0798978c8dd2a506df92f45839"
-    },
-    {
-      "path": "competitions/wuhu_robot_qc/tests/test_core.py",
-      "git_blob": "7b6c8157f9b874a0fae04cd981d4450fc429cb24"
-    },
-    {
-      "path": "competitions/wuhu_robot_qc/wuhu_qc/__init__.py",
-      "git_blob": "27f311d8bbc34aad9b3a75e46f524eca5be19825"
-    },
-    {
-      "path": "competitions/wuhu_robot_qc/wuhu_qc/cli.py",
-      "git_blob": "dc6f4d20bc09de672be023bc5ff14eb90e8bdab8"
-    },
-    {
-      "path": "competitions/wuhu_robot_qc/wuhu_qc/core.py",
-      "git_blob": "061bde52a1f10253b51ae91de25c5d94a917be00"
-    },
-    {
-      "path": "competitions/wuhu_robot_qc/wuhu_qc/lerobot_v21.py",
-      "git_blob": "240ddac63a06a7043e20fe50a3ccc895238e5cf7"
-    }
+    {"path": ".github/workflows/wuhu-robot-qc.yml", "git_blob": "b32a51a2d8f476b1e36501f972e8c8b257556fda"},
+    {"path": "competitions/wuhu_robot_qc/README.md", "git_blob": "5690cbb6a8d5a1d86e6c137721bd7a3cc6aff808"},
+    {"path": "competitions/wuhu_robot_qc/requirements.txt", "git_blob": "f4c45a3f8027bd0798978c8dd2a506df92f45839"},
+    {"path": "competitions/wuhu_robot_qc/tests/test_core.py", "git_blob": "f56c7ea63c31b8947ef3e606870d470af9cbbf37"},
+    {"path": "competitions/wuhu_robot_qc/wuhu_qc/__init__.py", "git_blob": "27f311d8bbc34aad9b3a75e46f524eca5be19825"},
+    {"path": "competitions/wuhu_robot_qc/wuhu_qc/cli.py", "git_blob": "dc6f4d20bc09de672be023bc5ff14eb90e8bdab8"},
+    {"path": "competitions/wuhu_robot_qc/wuhu_qc/core.py", "git_blob": "061bde52a1f10253b51ae91de25c5d94a917be00"},
+    {"path": "competitions/wuhu_robot_qc/wuhu_qc/lerobot_v21.py", "git_blob": "fd37b9f9329122c901dcbdda7d47d3e527c4d6bb"}
   ],
   "validation_authority": "Exact-head GitHub Actions or separately recorded executed evidence; this manifest does not self-attest test success."
 }
