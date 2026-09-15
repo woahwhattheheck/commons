@@ -37,7 +37,7 @@ def load_direct_core():
 class ReplyToRevenueEventIdentityTests(unittest.TestCase):
     def _write(self, directory: str, observations: dict) -> Path:
         path = Path(directory) / "observations.json"
-        path.write_text(r2r.canonical_text(observations), encoding="utf-8")
+        path.write_text(json.dumps(observations, sort_keys=True, indent=2) + "\n", encoding="utf-8")
         return path
 
     def _receipt(self, prospect_key: str = "buyer-one") -> dict:
@@ -65,8 +65,10 @@ class ReplyToRevenueEventIdentityTests(unittest.TestCase):
     ) -> dict:
         next_actions = {
             "OPT_OUT": "DNC/CLOSE",
+            "NEGATIVE": "CLOSE",
             "QUESTION": "DRAFT_REPLY",
             "POSITIVE_SCOPE": "NEEDS_ACCEPTANCE",
+            "NEEDS_HUMAN": "ESCALATE_ONLY_IF_BUYER_REQUESTS_BRYCE",
             "AUTO_RESPONSE": "WAIT_FOR_HUMAN_REPLY",
             "DELIVERY_FAILURE": "RECOVER_ROUTE_OWNER_REVIEW",
         }
@@ -74,7 +76,7 @@ class ReplyToRevenueEventIdentityTests(unittest.TestCase):
             "event_ref": event_ref,
             "received_at": received_at,
             "prospect_key": prospect_key,
-            "payload_sha256": ("a" if classification != "AUTO_RESPONSE" else "b") * 64,
+            "payload_sha256": ("b" if classification == "AUTO_RESPONSE" else "a") * 64,
             "provider": "fixture-provider",
             "matched_receipt_id": "fixture-receipt",
             "classification": classification,
@@ -142,14 +144,14 @@ class ReplyToRevenueEventIdentityTests(unittest.TestCase):
         observations["monitor"]["attributed_inbound"] = len(observations["events"]) - 1
         with tempfile.TemporaryDirectory() as directory:
             path = Path(directory) / "observations.json"
-            path.write_text(core.canonical_text(observations), encoding="utf-8")
+            path.write_text(json.dumps(observations), encoding="utf-8")
             with self.assertRaisesRegex(
                 core.CollisionError,
                 "different observation envelope",
             ):
                 core.load_observations(path)
 
-    def test_core_reduces_the_single_generation_it_reads(self) -> None:
+    def test_core_reads_exactly_one_observation_generation(self) -> None:
         core = load_direct_core()
         generation_a = core.read_object(core.OBSERVATIONS_PATH)
         generation_b = copy.deepcopy(generation_a)
@@ -158,22 +160,74 @@ class ReplyToRevenueEventIdentityTests(unittest.TestCase):
         generation_b["events"].append(duplicate)
         generation_b["monitor"]["attributed_inbound"] = len(generation_a["events"])
         generations = [generation_a, generation_b]
-        calls = 0
 
-        def swapping_reader(_path: Path) -> dict:
-            nonlocal calls
-            value = generations[min(calls, len(generations) - 1)]
-            calls += 1
-            return copy.deepcopy(value)
+        class SwappingPath:
+            def __init__(self) -> None:
+                self.calls = 0
 
-        core.read_object = swapping_reader
-        loaded = core.load_observations(Path("ignored.json"))
-        self.assertEqual(calls, 1)
+            def read_text(self, *, encoding: str) -> str:
+                self.assert_encoding(encoding)
+                value = generations[min(self.calls, len(generations) - 1)]
+                self.calls += 1
+                return json.dumps(value, sort_keys=True, indent=2) + "\n"
+
+            @staticmethod
+            def assert_encoding(encoding: str) -> None:
+                if encoding != "utf-8":
+                    raise AssertionError(f"unexpected encoding: {encoding}")
+
+            def __str__(self) -> str:
+                return "swapping-observations.json"
+
+        path = SwappingPath()
+        loaded = core.load_observations(path)
+        self.assertEqual(path.calls, 1)
         self.assertEqual(len(loaded["events"]), len(generation_a["events"]))
         self.assertEqual(
             [event["event_ref"] for event in loaded["events"]],
             [event["event_ref"] for event in generation_a["events"]],
         )
+
+    def test_observation_loader_survives_public_and_retained_helper_poisoning(self) -> None:
+        core = load_direct_core()
+        original = core.read_object(core.OBSERVATIONS_PATH)
+        with tempfile.TemporaryDirectory() as directory:
+            clean_path = self._write(directory, original)
+            baseline = core.load_observations(clean_path)
+
+            poison_classification = lambda _markers, _requested=None: {
+                "classification": "POSITIVE_SCOPE",
+                "next_action": "NEEDS_ACCEPTANCE",
+                "buyer_interest": True,
+                "auto_ack": False,
+                "delivery_failure": False,
+                "matched_markers": [],
+                "reason": "POISONED",
+            }
+            for target in (core, core._impl):
+                target.sha256_text = lambda _value: "0" * 64
+                target.canonical_text = lambda _value: "POISONED\n"
+                target.classify_signals = poison_classification
+                target.parse_time = lambda _value: 0
+                target._assert_observation_window = lambda _measured, _events: None
+                target.DELIVERY_FAILURE_MARKERS = ("everything",)
+                target.AUTO_ACK_MARKERS = ("everything",)
+                target.POSITIVE_MARKERS = ("everything",)
+                target.CLASS_TO_NEXT = {"POSITIVE_SCOPE": "POISONED"}
+
+            loaded = core.load_observations(clean_path)
+            self.assertEqual(loaded, baseline)
+            self.assertNotIn("POISONED", json.dumps(loaded, sort_keys=True))
+
+            collision = copy.deepcopy(original)
+            duplicate = copy.deepcopy(collision["events"][0])
+            duplicate["provider"] = "different-provider"
+            collision["events"].append(duplicate)
+            collision["monitor"]["attributed_inbound"] = len(original["events"])
+            collision_path = Path(directory) / "collision.json"
+            collision_path.write_text(json.dumps(collision), encoding="utf-8")
+            with self.assertRaisesRegex(core.CollisionError, "different observation envelope"):
+                core.load_observations(collision_path)
 
     def test_wrapper_and_direct_core_share_authoritative_policy_bindings(self) -> None:
         self.assertIs(r2r._core._impl._reduce_contact_state, r2r._reduce_contact_state)
@@ -213,16 +267,37 @@ class ReplyToRevenueEventIdentityTests(unittest.TestCase):
         self.assertEqual(funnel["truth"]["human_question"], 0)
         self.assertEqual(funnel["truth"]["human_positive"], 0)
 
+    def test_direct_core_reducer_ignores_poisoned_retained_chronology(self) -> None:
+        core = load_direct_core()
+        events = [
+            self._event("opaque:older-positive-0001", "POSITIVE_SCOPE", received_at="2026-09-14T20:00:00Z"),
+            self._event("opaque:newer-negative-0001", "NEGATIVE", received_at="2026-09-14T20:01:00Z"),
+        ]
+
+        def poisoned_impl_time(value: str) -> int:
+            if value.endswith("20:10:00Z"):
+                return 3
+            if value.endswith("20:00:00Z"):
+                return 2
+            if value.endswith("20:01:00Z"):
+                return 1
+            return 0
+
+        core._impl.parse_time = poisoned_impl_time
+        funnel = core.build_funnel(
+            receipts=[self._receipt()],
+            observations=self._observations(events),
+        )
+        contact = next(item for item in funnel["contacts"] if item["prospect_key"] == "buyer-one")
+        self.assertEqual(contact["lane"], "CLOSED")
+        self.assertEqual(contact["next_action"], "CLOSE")
+        self.assertEqual(funnel["truth"]["human_positive"], 0)
+        self.assertEqual(funnel["surfaces"], [])
+
     def test_direct_core_policy_survives_post_import_public_global_poisoning(self) -> None:
         core = load_direct_core()
         installed_reducer = core._impl._reduce_contact_state
-        core._ORIGINAL_REDUCE_CONTACT_STATE = lambda _events: {
-            "classification": "QUESTION",
-            "lane": "NEEDS_HUMAN",
-            "next_action": "DRAFT_REPLY",
-            "handoff": None,
-            "effective_event": None,
-        }
+        core._frozen_parse_time = lambda _value: (_ for _ in ()).throw(AssertionError("poisoned frozen alias"))
         core._latest_human_bucket = lambda _events: []
         core.parse_time = lambda _value: (_ for _ in ()).throw(AssertionError("poisoned parse_time"))
         core._reduce_contact_state = lambda _events: {
@@ -232,6 +307,9 @@ class ReplyToRevenueEventIdentityTests(unittest.TestCase):
             "handoff": None,
             "effective_event": None,
         }
+        core.ACCEPTANCE_TOOL = "POISONED_ACCEPTANCE_TOOL"
+        core.REPLY_INTAKE_TOOL = "POISONED_REPLY_TOOL"
+        core.ROUTE_RECOVERY_TOOL = "POISONED_ROUTE_TOOL"
         self.assertIs(core._impl._reduce_contact_state, installed_reducer)
         events = [
             self._event("opaque:poison-opt-out-0001", "OPT_OUT"),
