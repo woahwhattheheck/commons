@@ -8,7 +8,6 @@ normalizer so every public compile path enforces snapshot chronology.
 """
 
 import errno
-from types import SimpleNamespace
 
 try:  # package import
     from . import _engine_v1 as _impl
@@ -62,8 +61,8 @@ def normalize_snapshot(
 
 
 # The retained compile function resolves normalize_snapshot through its module
-# globals at call time. Install the repaired authority there so direct callers,
-# package callers, and CLI callers all traverse the same chronology gate.
+# globals at call time. Install the repaired authority there so direct retained
+# callers, package callers, and CLI callers traverse the same chronology gate.
 _impl.normalize_snapshot = normalize_snapshot
 
 
@@ -95,39 +94,53 @@ def _process_utc_now(
     return _impl.format_utc(_datetime.now(_timezone.utc))
 
 
-def verify_report_current(report: object) -> dict[str, object]:
-    """Verify receipt integrity and re-evaluate semantics at process UTC.
-
-    Historical ``verify_report`` remains available for deterministic replay.
-    This function is the current-authority check used by the production CLI.
-    A report whose current owner-review state differs from its historical state
-    fails closed rather than being presented as durably current.
-    """
-    historical = verify_report(report)
+def _semantic_projection(report: object) -> dict[str, object]:
     if type(report) is not dict:
         raise _impl.TransferError("report must be an object")
-    now = _process_utc_now()
-    current = compile_transfer(
-        _plain_report_snapshot(report["source"], "source"),
-        _plain_report_snapshot(report["receiving"], "receiving"),
-        report["policy"],
-        as_of=now,
-    )
-    historical_state = report["summary"]["state"]
-    current_state = current["summary"]["state"]
-    if current_state != historical_state:
-        raise _impl.TransferError(
-            "report is no longer current: "
-            f"historical_state={historical_state} current_state={current_state}"
-        )
     return {
-        "verified": True,
-        "historical_replay_verified": bool(historical["verified"]),
-        "state": current_state,
-        "receipt_sha256": historical["receipt_sha256"],
-        "current_as_of": now,
-        "current_receipt_sha256": current["receipt_sha256"],
+        key: value
+        for key, value in report.items()
+        if key not in {"as_of", "receipt_sha256"}
     }
+
+
+def _make_current_verifier(
+    _clock=_process_utc_now,
+    _historical=_HISTORICAL_VERIFY_REPORT,
+    _compile=_impl.compile_transfer,
+    _plain=_plain_report_snapshot,
+    _project=_semantic_projection,
+):
+    # Binding authority objects into this closure prevents ordinary post-import
+    # module-global rebinding from changing the production currentness path.
+    def current(report: object) -> dict[str, object]:
+        historical = _historical(report)
+        if type(report) is not dict:
+            raise _impl.TransferError("report must be an object")
+        now = _clock()
+        rebuilt = _compile(
+            _plain(report["source"], "source"),
+            _plain(report["receiving"], "receiving"),
+            report["policy"],
+            as_of=now,
+        )
+        if _project(rebuilt) != _project(report):
+            raise _impl.TransferError(
+                "report is no longer current: decision semantics changed at process UTC"
+            )
+        return {
+            "verified": True,
+            "historical_replay_verified": bool(historical["verified"]),
+            "state": rebuilt["summary"]["state"],
+            "receipt_sha256": historical["receipt_sha256"],
+            "current_as_of": now,
+            "current_receipt_sha256": rebuilt["receipt_sha256"],
+        }
+
+    return current
+
+
+verify_report_current = _make_current_verifier()
 
 
 def _fd_fingerprint(st: object) -> tuple[int, int, int, int, int, int]:
@@ -155,7 +168,9 @@ def _read_bounded(path: str | _impl.os.PathLike[str]) -> bytes:
     except OSError as exc:
         if exc.errno in {errno.ELOOP, errno.EMLINK}:
             raise _impl.TransferError("input final symlink is forbidden") from None
-        raise _impl.TransferError(f"unable to open input safely: {exc.strerror or exc}") from None
+        raise _impl.TransferError(
+            f"unable to open input safely: {exc.strerror or exc}"
+        ) from None
 
     try:
         before = _impl.os.fstat(fd)
@@ -194,61 +209,94 @@ def _read_bounded(path: str | _impl.os.PathLike[str]) -> bytes:
 _impl._read_bounded = _read_bounded
 
 
-def _compile_cli(args: object) -> int:
-    request = _impl._exact_object(
-        _impl.load_json_bytes(_read_bounded(args.input)),
-        _impl.COMPILE_INPUT_KEYS,
-        "compile input",
-    )
-    report = compile_transfer(
-        request["source"], request["receiving"], request["policy"], as_of=_process_utc_now()
-    )
-    _impl.write_new_bytes(args.report, _impl.canonical_json_bytes(report))
-    _impl.write_new_text(args.markdown, _impl.render_markdown(report))
-    print(
-        _impl.json.dumps(
-            {
-                "state": report["summary"]["state"],
-                "receipt_sha256": report["receipt_sha256"],
-            },
-            sort_keys=True,
+def _make_compile_cli(
+    _reader=_read_bounded,
+    _clock=_process_utc_now,
+    _compile=_impl.compile_transfer,
+    _load=_impl.load_json_bytes,
+    _write_bytes=_impl.write_new_bytes,
+    _write_text=_impl.write_new_text,
+    _render=_impl.render_markdown,
+    _canonical=_impl.canonical_json_bytes,
+):
+    def run(args: object) -> int:
+        request = _impl._exact_object(
+            _load(_reader(args.input)), _impl.COMPILE_INPUT_KEYS, "compile input"
         )
-    )
-    return 0
+        report = _compile(
+            request["source"],
+            request["receiving"],
+            request["policy"],
+            as_of=_clock(),
+        )
+        _write_bytes(args.report, _canonical(report))
+        _write_text(args.markdown, _render(report))
+        print(
+            _impl.json.dumps(
+                {
+                    "state": report["summary"]["state"],
+                    "receipt_sha256": report["receipt_sha256"],
+                },
+                sort_keys=True,
+            )
+        )
+        return 0
+
+    return run
 
 
-def _verify_cli(args: object) -> int:
-    report = _impl.load_json_bytes(_read_bounded(args.report))
-    result = verify_report_current(report)
-    if args.markdown:
-        actual = _read_bounded(args.markdown).decode("utf-8")
-        if actual != _impl.render_markdown(report):
-            raise _impl.TransferError("Markdown projection mismatch")
-    print(_impl.json.dumps(result, sort_keys=True))
-    return 0
+def _make_verify_cli(
+    _reader=_read_bounded,
+    _load=_impl.load_json_bytes,
+    _verify=verify_report_current,
+    _render=_impl.render_markdown,
+):
+    def run(args: object) -> int:
+        report = _load(_reader(args.report))
+        result = _verify(report)
+        if args.markdown:
+            actual = _reader(args.markdown).decode("utf-8")
+            if actual != _render(report):
+                raise _impl.TransferError("Markdown projection mismatch")
+        print(_impl.json.dumps(result, sort_keys=True))
+        return 0
+
+    return run
 
 
-def main(argv: list[str] | None = None) -> int:
-    parser = _impl.argparse.ArgumentParser(
-        description="Read-only cross-site clinical fill tech-transfer evidence compiler"
-    )
-    subs = parser.add_subparsers(dest="command", required=True)
-    cp = subs.add_parser("compile")
-    cp.add_argument("--input", required=True)
-    cp.add_argument("--report", required=True)
-    cp.add_argument("--markdown", required=True)
-    cp.set_defaults(func=_compile_cli)
-    vp = subs.add_parser("verify")
-    vp.add_argument("--report", required=True)
-    vp.add_argument("--markdown")
-    vp.set_defaults(func=_verify_cli)
-    args = parser.parse_args(argv)
-    try:
-        return args.func(args)
-    except _impl.TransferError as exc:
-        parser.error(str(exc))
-    return 2
+_compile_cli = _make_compile_cli()
+_verify_cli = _make_verify_cli()
 
+
+def _make_main(
+    _compile_cli_bound=_compile_cli,
+    _verify_cli_bound=_verify_cli,
+):
+    def run(argv: list[str] | None = None) -> int:
+        parser = _impl.argparse.ArgumentParser(
+            description="Read-only cross-site clinical fill tech-transfer evidence compiler"
+        )
+        subs = parser.add_subparsers(dest="command", required=True)
+        cp = subs.add_parser("compile")
+        cp.add_argument("--input", required=True)
+        cp.add_argument("--report", required=True)
+        cp.add_argument("--markdown", required=True)
+        cp.set_defaults(func=_compile_cli_bound)
+        vp = subs.add_parser("verify")
+        vp.add_argument("--report", required=True)
+        vp.add_argument("--markdown")
+        vp.set_defaults(func=_verify_cli_bound)
+        args = parser.parse_args(argv)
+        try:
+            return args.func(args)
+        except _impl.TransferError as exc:
+            parser.error(str(exc))
+        return 2
+
+    return run
+
+
+main = _make_main()
 
 TransferError = _impl.TransferError
 render_markdown = _impl.render_markdown
