@@ -130,7 +130,7 @@ def verify_untrusted_snapshot_receipt(receipt: Mapping[str, Any]) -> bool:
             return False
         if payload.get("valid_until") is not None:
             return False
-        if any(payload.get(name) is not None for name in _SELECTION_FIELDS):
+        if any(payload.get(name) is not None for name in _SELECTION_FIELDS + _WINNER_FIELDS):
             return False
         reasons = payload.get("reasons")
         if type(reasons) is not list or reasons != sorted(set(reasons)) or any(type(x) is not str or not x for x in reasons):
