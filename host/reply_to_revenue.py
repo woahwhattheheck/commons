@@ -130,10 +130,26 @@ def surface_positives(
     return positives
 
 
-# Core functions resolve globals in the core module. Install the corrected
-# reducers there before re-exporting the public surface from this wrapper.
+# The core is a proxy over a retained implementation module. Functions copied
+# out of that module keep the retained module dictionary as ``__globals__``.
+# Installing these policy functions only on ``_core`` therefore does not change
+# what ``_contact_rows`` / ``build_funnel`` / ``main`` resolve at runtime. Patch
+# the actual implementation-global authority first, then mirror the public core
+# surface so direct helper imports and structural introspection agree.
+_policy_impl = getattr(_core, "_impl", None)
+if _policy_impl is None:
+    raise ImportError("reply-to-revenue core is missing retained implementation authority")
+_policy_impl._reduce_contact_state = _reduce_contact_state
+_policy_impl.surface_positives = surface_positives
 _core._reduce_contact_state = _reduce_contact_state
 _core.surface_positives = surface_positives
+
+# Fail closed if a future proxy refactor stops the production global graph from
+# pointing at the corrected policy functions.
+if _policy_impl._reduce_contact_state is not _reduce_contact_state:
+    raise ImportError("reply-to-revenue reducer policy was not installed into implementation globals")
+if _policy_impl.surface_positives is not surface_positives:
+    raise ImportError("reply-to-revenue positive-surface policy was not installed into implementation globals")
 
 for _name, _value in vars(_core).items():
     if not _name.startswith("__"):
