@@ -2,19 +2,29 @@
 """Sealed-generation authority wrapper for Mapping Equity aggregation.
 
 The exact runner merged by #14579 is preserved byte-for-byte in
-`_aggregate_unsealed.py`. This successor changes one authority primitive only:
-remote source bytes are retained in a kernel-sealed memfd so the public
-`/proc/self/fd/<n>` read path cannot be reopened and mutated between preflight
-and scored aggregation.
+`_aggregate_unsealed.py`. This successor hardens three authority primitives while
+leaving the landed scorer/policy implementation frozen:
+
+* remote source bytes are retained in a kernel-sealed memfd so the public
+  `/proc/self/fd/<n>` read path cannot be reopened and mutated between preflight
+  and scored aggregation;
+* response bytes become source authority only when the final resolved URL is
+  exactly the canonical registry URL that was requested; and
+* the production receipt-minting entrypoint captures code-owned execution
+  dependencies and exposes no dependency-injection parameters.
 
 Primary implementation/source credit remains ZSA-D6P2. ZFS-R7 supplied
 alternate-carrier review evidence; ZHD-K8P3 recovered/finalized M1 and the
 first generation/policy fix; ZRH-H7N4 owns the sealed-generation fix-forward.
+Keystone / GPT-5.6 Sol identified the redirect-provenance defect; ZCE-J5V8 /
+GPT-5.6 Sol owns the exact-identity fix-forward. ZPB-X4K8 identified the
+production dependency-injection receipt bypass; Z-Argent closes it here.
 """
 from __future__ import annotations
 
 import fcntl
 import hashlib
+import json
 import os
 from pathlib import Path
 from typing import BinaryIO
@@ -48,14 +58,20 @@ def _stream_response_to_retained_fd(
     uri: str,
     response: BinaryIO,
     temp_root: Path,
+    *,
+    resolved_url: str | None = None,
 ) -> tuple[int, str, dict[str, object]]:
-    """Stream one response into a sealed memfd and retain it read-only.
+    """Stream one admitted response into a sealed memfd and retain it read-only.
 
     A plain anonymous tempfile is still mutable through `/proc/self/fd/<n>`:
     reopening that proc magic path with `O_WRONLY` creates a new writable file
     description whenever inode permissions allow it. Linux memfd seals make the
     generation invariant kernel-enforced instead of depending on pathname
     absence or on dropping the original write handle.
+
+    `resolved_url` is authority evidence from `_materialize_one`. It is optional
+    only for predecessor-compatible direct helper calls; real materialization
+    always supplies the exact accepted final URL.
     """
     del temp_root  # retained for the predecessor-compatible call signature
     if not hasattr(os, "memfd_create") or not hasattr(os, "MFD_ALLOW_SEALING"):
@@ -112,6 +128,7 @@ def _stream_response_to_retained_fd(
         retained_fd = None
         return result_fd, f"/proc/self/fd/{result_fd}", {
             "uri": uri,
+            "resolved_url": uri if resolved_url is None else resolved_url,
             "sha256": digest,
             "bytes": byte_count,
             "generation": f"sha256:{digest}",
@@ -128,11 +145,200 @@ def _stream_response_to_retained_fd(
             pass
 
 
-# The landed `_materialize_one` resolves this helper through its module globals
-# at call time. Patching that one global therefore preserves its URL/open/redirect
-# policy and every higher-level default-bound function while replacing only the
-# generation-retention primitive.
+def _materialize_one(
+    key: str,
+    uri: str,
+    temp_root: Path,
+    _opener=_legacy._URL_OPEN,
+) -> tuple[int, str, dict[str, object]]:
+    """Admit exactly one canonical public object response as source authority."""
+    requested_url = _legacy._safe_source(uri)
+    try:
+        response = _opener(uri, timeout=300)
+    except Exception as exc:
+        raise AggregationError(f"{key}: public source download failed") from exc
+    try:
+        final_url = str(getattr(response, "geturl", lambda: requested_url)())
+        resolved_url = _legacy._safe_source(final_url)
+        if resolved_url != requested_url:
+            raise AggregationError(
+                f"{key}: source redirect changed canonical source identity: "
+                f"requested={requested_url!r}, resolved={resolved_url!r}"
+            )
+        return _stream_response_to_retained_fd(
+            key,
+            uri,
+            response,
+            temp_root,
+            resolved_url=resolved_url,
+        )
+    finally:
+        close = getattr(response, "close", None)
+        if callable(close):
+            close()
+
+
+def _materialize_sources(region: str, _one=_materialize_one) -> _legacy._MaterializedSources:
+    """Materialize every registry object through the exact-identity gate."""
+    region = _legacy._region(region)
+    if not Path("/proc/self/fd").is_dir():
+        raise AggregationError(
+            "run requires Linux /proc/self/fd so DuckDB can consume retained exact source generations"
+        )
+    tempdir = _legacy.tempfile.TemporaryDirectory(prefix=f"mapping-equity-{region}-")
+    root = Path(tempdir.name)
+    os.chmod(root, 0o700)
+    registry: dict[str, str] = {}
+    generations: dict[str, dict[str, object]] = {}
+    fds: list[int] = []
+    try:
+        for key, uri in _legacy.source_registry(region).items():
+            fd, fd_path, generation = _one(key, uri, root)
+            fds.append(fd)
+            registry[key] = fd_path
+            generations[key] = generation
+        return _legacy._MaterializedSources(tempdir, registry, generations, fds)
+    except Exception:
+        for fd in fds:
+            try:
+                os.close(fd)
+            except OSError:
+                pass
+        tempdir.cleanup()
+        raise
+
+
+def _generation_receipt(
+    generations: dict[str, dict[str, object]],
+) -> dict[str, dict[str, object]]:
+    """Normalize admitted source-generation evidence without minting run truth."""
+    return {
+        key: {
+            "uri": value["uri"],
+            "resolved_url": value.get("resolved_url", value["uri"]),
+            "sha256": value["sha256"],
+            "bytes": value["bytes"],
+            "generation": value["generation"],
+        }
+        for key, value in generations.items()
+    }
+
+
+def _make_authoritative_execute_region(
+    materializer,
+    connector,
+    query_builder,
+    preflight_runner,
+    row_validator,
+    csv_renderer,
+    sql_canonicalizer,
+    plan_builder,
+    exclusive_writer,
+):
+    """Bind the complete authoritative execution path into an uninjectable closure."""
+
+    def execute_region(region: str, output: Path, receipt: Path) -> dict[str, object]:
+        """Execute only the code-owned public-data path and mint its bound receipt."""
+        region = _legacy._region(region)
+        if output.resolve() == receipt.resolve():
+            raise AggregationError("output and receipt must be different paths")
+        if output.exists() or receipt.exists():
+            raise AggregationError("run outputs are create-exclusive; choose fresh paths")
+        materialized = materializer(region)
+        con = None
+        try:
+            con = connector()
+            preflight = preflight_runner(
+                con,
+                region,
+                materialized.registry,
+                materialized.generations,
+            )
+            query = query_builder(region, materialized.registry)
+            cursor = con.execute(query)
+            fieldnames = [str(desc[0]) for desc in cursor.description]
+            rows = cursor.fetchall()
+            cleaned = row_validator(region, fieldnames, rows)
+            csv_text = csv_renderer(cleaned)
+            csv_sha = hashlib.sha256(csv_text.encode("utf-8")).hexdigest()
+            canonical_query = sql_canonicalizer(
+                query,
+                materialized.registry,
+                materialized.generations,
+            )
+            payload = {
+                "schema": "mapping-equity-public-aggregation/v2",
+                "region": region,
+                "duckdb_version": "1.5.4",
+                "overture_release": "2026-08-19.0",
+                "real_public_data_executed": True,
+                "row_count": len(cleaned),
+                "output_csv_sha256": csv_sha,
+                "input_generations": _generation_receipt(materialized.generations),
+                "bound_query_sha256": hashlib.sha256(canonical_query.encode("utf-8")).hexdigest(),
+                "preflight": preflight,
+                "plan": plan_builder(region),
+                "claims": {
+                    "zindi_registered": False,
+                    "submitted_to_zindi": False,
+                    "leaderboard_score_claimed": False,
+                    "award_claimed": False,
+                    "payment_claimed": False,
+                },
+            }
+            body = json.dumps(
+                payload,
+                sort_keys=True,
+                separators=(",", ":"),
+                ensure_ascii=True,
+            )
+            envelope = {
+                "payload": payload,
+                "payload_sha256": hashlib.sha256(body.encode("utf-8")).hexdigest(),
+            }
+            receipt_text = json.dumps(
+                envelope,
+                sort_keys=True,
+                indent=2,
+                ensure_ascii=True,
+            ) + "\n"
+            exclusive_writer(output, csv_text)
+            exclusive_writer(receipt, receipt_text)
+            return {
+                "region": region,
+                "rows": len(cleaned),
+                "output_csv_sha256": csv_sha,
+            }
+        finally:
+            if con is not None:
+                con.close()
+            materialized.close()
+
+    return execute_region
+
+
+execute_region = _make_authoritative_execute_region(
+    _materialize_sources,
+    _legacy._connect_duckdb,
+    _legacy._aggregate_query_for_registry,
+    _legacy.run_preflight,
+    _legacy.validate_rows,
+    _legacy.render_csv,
+    _legacy._canonicalize_bound_sql,
+    _legacy.build_plan,
+    _legacy._write_new,
+)
+# Do not leave a callable factory that a direct-library caller could reuse with
+# substituted dependencies to manufacture an authoritative receipt entrypoint.
+del _make_authoritative_execute_region
+
+
+# Preserve `_aggregate_unsealed.py` byte-for-byte. Rebind only the live authority
+# surfaces whose defaults would otherwise still point at the frozen predecessor.
 _legacy._stream_response_to_retained_fd = _stream_response_to_retained_fd
+_legacy._materialize_one = _materialize_one
+_legacy._materialize_sources = _materialize_sources
+_legacy.execute_region = execute_region
 
 
 if __name__ == "__main__":
