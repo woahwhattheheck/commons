@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import importlib.abc
 import importlib.machinery
+import math
 import sys
 from collections.abc import Mapping, Sequence
 from datetime import datetime
@@ -41,83 +42,107 @@ _MESSAGE_EVENT_TYPES = frozenset(
 _ENGINE_NAME = _engine.__name__
 _GUARD_MARKER = "__commercial_deal_room_guarded__"
 _FINDER_MARKER = "__commercial_deal_room_reload_finder__"
+
+# Public diagnostics only. The production snapshotter binds the actual limits
+# into a private closure below, so later rebinding of these module names cannot
+# weaken or tighten the installed product boundary.
 _MAX_SNAPSHOT_DEPTH = 64
 _MAX_SNAPSHOT_NODES = 250_000
 
 
-def _detach(
-    value: Any,
-    *,
-    path: str = "packet",
-    _memo: Optional[dict[int, tuple[Any, Any]]] = None,
-    _active: Optional[set[int]] = None,
-    _nodes: Optional[list[int]] = None,
-    _depth: int = 0,
-) -> Any:
-    """Capture a bounded caller-owned object graph exactly once by identity.
+def _make_detacher(*, max_depth: int, max_nodes: int):
+    """Build one snapshotter with limits captured by value in closure cells."""
 
-    Mapping/Sequence inputs may be stateful or concurrently mutated. Shared
-    object identities therefore reuse one completed snapshot instead of being
-    traversed again. The memo retains a strong identity witness alongside each
-    snapshot for the lifetime of the capture, so a later short-lived container
-    can never inherit a stale snapshot through recycled ``id()`` state.
-    Back-edges fail closed as cycles, and every container edge consumes a global
-    budget before the referenced child is read. This prevents alias splits,
-    recursion blowups, and unbounded tuple materialization before provider
-    validation or v1 normalization.
-    """
+    if type(max_depth) is not int or max_depth < 0:
+        raise ValueError("max_depth must be a non-negative exact int")
+    if type(max_nodes) is not int or max_nodes < 1:
+        raise ValueError("max_nodes must be a positive exact int")
 
-    if _depth > _MAX_SNAPSHOT_DEPTH:
-        raise ContractError(f"{path} exceeds snapshot depth limit")
-    if _memo is None:
-        _memo = {}
-    if _active is None:
-        _active = set()
-    if _nodes is None:
-        _nodes = [0]
+    def detach(
+        value: Any,
+        *,
+        path: str = "packet",
+        _memo: Optional[dict[int, tuple[Any, Any]]] = None,
+        _active: Optional[set[int]] = None,
+        _nodes: Optional[list[int]] = None,
+        _depth: int = 0,
+    ) -> Any:
+        """Capture a bounded caller-owned JSON-shaped graph once by identity.
 
-    is_mapping = isinstance(value, Mapping)
-    is_sequence = isinstance(value, Sequence) and not isinstance(
-        value, (str, bytes, bytearray)
-    )
-    if not (is_mapping or is_sequence):
-        return value
+        Container aliases reuse one completed plain snapshot. Active back-edges
+        fail closed as cycles. The identity memo retains each source object so an
+        integer ``id()`` cannot be recycled during capture. Scalar leaves and
+        mapping keys must be exact JSON builtin types; subclasses are rejected
+        rather than carrying attacker-controlled equality/hash semantics across
+        the trust boundary.
+        """
 
-    identity = id(value)
-    if identity in _active:
-        raise ContractError(f"{path} contains a cyclic input graph")
-    memo_entry = _memo.get(identity)
-    if memo_entry is not None:
-        witness, snapshot = memo_entry
-        if witness is value:
-            return snapshot
-        # A strong witness makes this unreachable for ordinary Python objects,
-        # but fail closed rather than alias distinct objects if an exotic runtime
-        # violates live-object identity uniqueness.
-        raise ContractError(f"{path} contains a snapshot identity collision")
+        if _depth > max_depth:
+            raise ContractError(f"{path} exceeds snapshot depth limit")
+        if _memo is None:
+            _memo = {}
+        if _active is None:
+            _active = set()
+        if _nodes is None:
+            _nodes = [0]
 
-    _nodes[0] += 1
-    if _nodes[0] > _MAX_SNAPSHOT_NODES:
-        raise ContractError("input graph exceeds snapshot node limit")
-    _active.add(identity)
+        value_type = type(value)
+        if value_type in (type(None), bool, int, str):
+            return value
+        if value_type is float:
+            if not math.isfinite(value):
+                raise ContractError(f"{path} contains a non-finite JSON number")
+            return value
 
-    try:
-        if is_mapping:
-            out: dict[Any, Any] = {}
-            _memo[identity] = (value, out)
-            try:
-                for key in value:
-                    _nodes[0] += 1
-                    if _nodes[0] > _MAX_SNAPSHOT_NODES:
-                        raise ContractError("input graph exceeds snapshot node limit")
-                    try:
-                        child = value[key]
-                    except Exception as exc:
-                        raise ContractError(
-                            f"{path} changed while being snapshotted"
-                        ) from exc
-                    try:
-                        out[key] = _detach(
+        # Reject scalar subclasses before container classification. In
+        # particular, a str/int subclass may serialize one wire value while
+        # overriding equality/hash to route as another semantic value.
+        if isinstance(value, (str, bytes, bytearray, bool, int, float)):
+            raise ContractError(f"{path} scalar must use an exact JSON builtin type")
+
+        is_mapping = isinstance(value, Mapping)
+        is_sequence = isinstance(value, Sequence)
+        if not (is_mapping or is_sequence):
+            raise ContractError(f"{path} contains an unsupported value type")
+
+        identity = id(value)
+        if identity in _active:
+            raise ContractError(f"{path} contains a cyclic input graph")
+        memo_entry = _memo.get(identity)
+        if memo_entry is not None:
+            witness, snapshot = memo_entry
+            if witness is value:
+                return snapshot
+            # A strong witness makes this unreachable for ordinary Python
+            # objects, but fail closed if a runtime violates live identity
+            # uniqueness rather than aliasing two distinct objects.
+            raise ContractError(f"{path} contains a snapshot identity collision")
+
+        _nodes[0] += 1
+        if _nodes[0] > max_nodes:
+            raise ContractError("input graph exceeds snapshot node limit")
+        _active.add(identity)
+
+        try:
+            if is_mapping:
+                out: dict[str, Any] = {}
+                _memo[identity] = (value, out)
+                try:
+                    for key in value:
+                        _nodes[0] += 1
+                        if _nodes[0] > max_nodes:
+                            raise ContractError("input graph exceeds snapshot node limit")
+                        if type(key) is not str:
+                            raise ContractError(
+                                f"{path} mapping key must use exact str type"
+                            )
+                        try:
+                            child = value[key]
+                        except Exception as exc:
+                            raise ContractError(
+                                f"{path} changed while being snapshotted"
+                            ) from exc
+                        out[key] = detach(
                             child,
                             path=f"{path}[{key!r}]",
                             _memo=_memo,
@@ -125,43 +150,49 @@ def _detach(
                             _nodes=_nodes,
                             _depth=_depth + 1,
                         )
-                    except TypeError as exc:
-                        raise ContractError(
-                            f"{path} contains an invalid mapping key"
-                        ) from exc
+                except ContractError:
+                    raise
+                except Exception as exc:
+                    raise ContractError(f"{path} could not be snapshotted") from exc
+                return out
+
+            out_list: list[Any] = []
+            _memo[identity] = (value, out_list)
+            try:
+                for index, child in enumerate(value):
+                    _nodes[0] += 1
+                    if _nodes[0] > max_nodes:
+                        raise ContractError("input graph exceeds snapshot node limit")
+                    out_list.append(
+                        detach(
+                            child,
+                            path=f"{path}[{index}]",
+                            _memo=_memo,
+                            _active=_active,
+                            _nodes=_nodes,
+                            _depth=_depth + 1,
+                        )
+                    )
             except ContractError:
                 raise
             except Exception as exc:
                 raise ContractError(f"{path} could not be snapshotted") from exc
-            return out
-
-        out_list: list[Any] = []
-        _memo[identity] = (value, out_list)
-        try:
-            for index, child in enumerate(value):
-                _nodes[0] += 1
-                if _nodes[0] > _MAX_SNAPSHOT_NODES:
-                    raise ContractError("input graph exceeds snapshot node limit")
-                out_list.append(
-                    _detach(
-                        child,
-                        path=f"{path}[{index}]",
-                        _memo=_memo,
-                        _active=_active,
-                        _nodes=_nodes,
-                        _depth=_depth + 1,
-                    )
-                )
-        except ContractError:
+            return out_list
+        except Exception:
+            _memo.pop(identity, None)
             raise
-        except Exception as exc:
-            raise ContractError(f"{path} could not be snapshotted") from exc
-        return out_list
-    except Exception:
-        _memo.pop(identity, None)
-        raise
-    finally:
-        _active.discard(identity)
+        finally:
+            _active.discard(identity)
+
+    return detach
+
+
+# Bind the safety policy once. Rebinding _MAX_SNAPSHOT_* later changes only the
+# diagnostic names above; the installed product snapshotter retains 64/250000.
+_detach = _make_detacher(
+    max_depth=_MAX_SNAPSHOT_DEPTH,
+    max_nodes=_MAX_SNAPSHOT_NODES,
+)
 
 
 def validate_message_providers(packet: Any) -> None:
