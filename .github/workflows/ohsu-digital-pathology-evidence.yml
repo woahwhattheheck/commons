@@ -30,16 +30,16 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
       - name: Compile
-        run: python -m py_compile qualification.py integration_contract.py cli.py test_qualification.py test_integration_contract.py test_cli.py
+        run: python -m py_compile qualification.py current_authority.py integration_contract.py cli.py test_qualification.py test_current_authority.py test_integration_contract.py test_cli.py
       - name: Unit tests
         run: python -m unittest -v
       - name: Optimized-mode unit tests
         run: python -O -m unittest -v
-      - name: Public listing remains HOLD
+      - name: Public listing remains HOLD under current authority
         shell: bash
         run: |
           set +e
-          python cli.py fixtures/public_listing_only.json --evaluated-at 2026-09-13T09:30:00Z > /tmp/ohsu-digital-pathology-receipt.json
+          python cli.py fixtures/public_listing_only.json > /tmp/ohsu-digital-pathology-receipt.json
           code=$?
           set -e
           test "$code" -eq 3
@@ -50,5 +50,16 @@ jobs:
           assert receipt['decision'] == 'HOLD'
           assert 'FULL_RFP_PACKAGE_NOT_CAPTURED' in receipt['holds']
           assert 'MINIMUM_QUALIFICATIONS_NOT_CAPTURED' in receipt['holds']
+          assert 'TRUSTED_COMPLETENESS_ROOT_MISSING_OR_INVALID' in receipt['holds']
+          assert receipt['current_authority'] is False
           assert receipt['proposal_submission_authorized'] is False
           PY
+      - name: Current CLI has no caller clock override
+        shell: bash
+        run: |
+          set +e
+          python cli.py fixtures/public_listing_only.json --evaluated-at 2026-09-13T09:30:00Z >/tmp/clock.out 2>/tmp/clock.err
+          code=$?
+          set -e
+          test "$code" -eq 2
+          grep -q 'unrecognized arguments: --evaluated-at' /tmp/clock.err
