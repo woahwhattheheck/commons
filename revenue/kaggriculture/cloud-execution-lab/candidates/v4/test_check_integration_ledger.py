@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 from __future__ import annotations
 
+import hashlib
 import json
 import os
 import tempfile
@@ -8,6 +9,18 @@ import unittest
 from pathlib import Path
 
 import check_integration_ledger as ledger
+
+
+SOURCE_BYTES = b"def current_component(value):\n    return value + 1\n"
+TEST_BYTES = b"def test_current_component():\n    assert 2 == 1 + 1\n"
+SECOND_TEST_BYTES = b"def test_current_component_zero():\n    assert 1 == 0 + 1\n"
+
+
+def _git_blob_id(payload: bytes) -> str:
+    digest = hashlib.sha1()
+    digest.update(f"blob {len(payload)}\0".encode("ascii"))
+    digest.update(payload)
+    return digest.hexdigest()
 
 
 def _write_json(path: Path, value: object) -> None:
@@ -31,18 +44,37 @@ def _base() -> tuple[dict[str, object], dict[str, object]]:
     return canonical, integration
 
 
-def _write_root(root: Path, canonical: dict[str, object], integration: dict[str, object]) -> None:
+def _write_root(
+    root: Path,
+    canonical: dict[str, object],
+    integration: dict[str, object],
+) -> None:
     _write_json(root / "CANONICAL.json", canonical)
     _write_json(root / "INTEGRATION.json", integration)
 
 
-def _landed_component(path: str = "repairs/gameplay/current-component") -> dict[str, object]:
+def _landed_component(
+    path: str = "repairs/gameplay/current-component",
+) -> dict[str, object]:
     return {
         "lane": "current component",
         "repair_path": path,
-        "source_blob": "1" * 40,
-        "test_blob": "2" * 40,
+        "source_blob": _git_blob_id(SOURCE_BYTES),
+        "test_blob": _git_blob_id(TEST_BYTES),
         "status": "source_component_tested_not_runtime_promoted",
+    }
+
+
+def _historical_row(
+    path: str = "repairs/gameplay/current-component",
+) -> dict[str, object]:
+    return {
+        "lane": "historical packet",
+        "custody_path": path,
+        "status": "historical_evidence_gap_not_source_blocker",
+        "available": "exact current source and tests",
+        "missing": "old benchmark receipt",
+        "required": "archive exact old bytes if recovered; do not reconstruct",
     }
 
 
@@ -53,7 +85,8 @@ class IntegrationLedgerCustodyContractTests(unittest.TestCase):
         *,
         manifest: dict[str, object] | None = None,
         landed: list[dict[str, object]] | None = None,
-    ):
+        custody_files: dict[str, bytes] | None = None,
+    ) -> list[str]:
         with tempfile.TemporaryDirectory() as td:
             root = Path(td)
             canonical, integration = _base()
@@ -65,6 +98,15 @@ class IntegrationLedgerCustodyContractTests(unittest.TestCase):
             if isinstance(custody_path, str) and not Path(custody_path).is_absolute():
                 directory = root / custody_path
                 directory.mkdir(parents=True)
+                if custody_files is None and landed:
+                    custody_files = {
+                        "current_component.py": SOURCE_BYTES,
+                        "test_current_component.py": TEST_BYTES,
+                    }
+                for relative, payload in (custody_files or {}).items():
+                    target = directory / relative
+                    target.parent.mkdir(parents=True, exist_ok=True)
+                    target.write_bytes(payload)
                 if manifest is not None:
                     _write_json(directory / "MANIFEST.json", manifest)
 
@@ -93,62 +135,154 @@ class IntegrationLedgerCustodyContractTests(unittest.TestCase):
         self.assertTrue(any("MANIFEST.json" in error for error in errors), errors)
 
     def test_nonblocking_historical_gap_does_not_require_awaiting_manifest(self):
-        row = {
-            "lane": "historical packet",
-            "custody_path": "repairs/gameplay/current-component",
-            "status": "historical_evidence_gap_not_source_blocker",
-            "available": "exact current source and tests",
-            "missing": "old benchmark receipt",
-            "required": "archive exact old bytes if recovered; do not reconstruct",
-        }
-        self.assertEqual([], self.validate_with(row, landed=[_landed_component()]))
+        self.assertEqual(
+            [],
+            self.validate_with(_historical_row(), landed=[_landed_component()]),
+        )
 
     def test_nonblocking_historical_gap_requires_explicit_missing_scope(self):
-        row = {
-            "lane": "historical packet",
-            "custody_path": "repairs/gameplay/current-component",
-            "status": "historical_evidence_gap_not_source_blocker",
-            "available": "exact current source and tests",
-            "missing": "",
-            "required": "archive exact old bytes if recovered",
-        }
+        row = _historical_row()
+        row["missing"] = ""
         errors = self.validate_with(row, landed=[_landed_component()])
-        self.assertIn("historical evidence gap lane 'historical packet' lacks missing", errors)
+        self.assertIn(
+            "historical evidence gap lane 'historical packet' lacks missing",
+            errors,
+        )
 
     def test_historical_gap_requires_exactly_one_landed_component_binding(self):
-        row = {
-            "lane": "historical packet",
-            "custody_path": "repairs/gameplay/current-component",
-            "status": "historical_evidence_gap_not_source_blocker",
-            "available": "exact current source and tests",
-            "missing": "old benchmark receipt",
-            "required": "archive exact old bytes if recovered",
-        }
-        errors = self.validate_with(row)
+        errors = self.validate_with(_historical_row())
         self.assertIn(
             "historical evidence gap lane 'historical packet' requires exactly one landed component in its custody_path",
             errors,
         )
 
     def test_historical_gap_requires_valid_landed_source_and_test_blob_refs(self):
-        row = {
-            "lane": "historical packet",
-            "custody_path": "repairs/gameplay/current-component",
-            "status": "historical_evidence_gap_not_source_blocker",
-            "available": "exact current source and tests",
-            "missing": "old benchmark receipt",
-            "required": "archive exact old bytes if recovered",
-        }
         landed = [_landed_component()]
         landed[0]["source_blob"] = "not-a-git-object"
         landed[0]["test_blob"] = "also-not-a-git-object"
-        errors = self.validate_with(row, landed=landed)
+        errors = self.validate_with(_historical_row(), landed=landed)
         self.assertIn(
             "historical evidence gap lane 'historical packet' landed component lacks a valid source_blob",
             errors,
         )
         self.assertIn(
             "historical evidence gap lane 'historical packet' landed component lacks valid test blob references",
+            errors,
+        )
+
+    def test_shape_valid_but_nonexistent_blob_ids_fail_closed(self):
+        landed = [_landed_component()]
+        landed[0]["source_blob"] = "1" * 40
+        landed[0]["test_blob"] = "2" * 40
+        errors = self.validate_with(_historical_row(), landed=landed)
+        self.assertTrue(
+            any("source_blob" in error and "does not identify" in error for error in errors),
+            errors,
+        )
+        self.assertTrue(
+            any("test blob" in error and "does not identify" in error for error in errors),
+            errors,
+        )
+
+    def test_content_drift_invalidates_recorded_source_blob(self):
+        errors = self.validate_with(
+            _historical_row(),
+            landed=[_landed_component()],
+            custody_files={
+                "current_component.py": SOURCE_BYTES + b"# changed generation\n",
+                "test_current_component.py": TEST_BYTES,
+            },
+        )
+        self.assertTrue(
+            any("source_blob" in error and "does not identify" in error for error in errors),
+            errors,
+        )
+
+    def test_blob_elsewhere_in_root_cannot_satisfy_custody_path(self):
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            canonical, integration = _base()
+            row = _historical_row()
+            integration["landed"] = [_landed_component()]
+            integration["custody_blocked"] = [row]
+            custody = root / str(row["custody_path"])
+            custody.mkdir(parents=True)
+            (custody / "test_current_component.py").write_bytes(TEST_BYTES)
+            elsewhere = root / "elsewhere"
+            elsewhere.mkdir()
+            (elsewhere / "current_component.py").write_bytes(SOURCE_BYTES)
+            _write_root(root, canonical, integration)
+            errors = ledger.validate(root)
+        self.assertTrue(
+            any("source_blob" in error and "does not identify" in error for error in errors),
+            errors,
+        )
+
+    def test_all_declared_test_blobs_must_bind_beneath_custody_path(self):
+        landed = [_landed_component()]
+        landed[0].pop("test_blob")
+        landed[0]["test_blobs"] = [
+            _git_blob_id(TEST_BYTES),
+            _git_blob_id(SECOND_TEST_BYTES),
+        ]
+        errors = self.validate_with(
+            _historical_row(),
+            landed=landed,
+            custody_files={
+                "current_component.py": SOURCE_BYTES,
+                "test_current_component.py": TEST_BYTES,
+            },
+        )
+        missing = _git_blob_id(SECOND_TEST_BYTES)
+        self.assertTrue(
+            any(missing in error and "does not identify" in error for error in errors),
+            errors,
+        )
+
+    @unittest.skipUnless(hasattr(os, "symlink"), "symlink unavailable")
+    def test_symlinked_file_cannot_import_outside_blob_custody(self):
+        with tempfile.TemporaryDirectory() as parent_td:
+            parent = Path(parent_td)
+            root = parent / "v4"
+            root.mkdir()
+            canonical, integration = _base()
+            row = _historical_row()
+            integration["landed"] = [_landed_component()]
+            integration["custody_blocked"] = [row]
+            custody = root / str(row["custody_path"])
+            custody.mkdir(parents=True)
+            (custody / "test_current_component.py").write_bytes(TEST_BYTES)
+            outside = parent / "outside_source.py"
+            outside.write_bytes(SOURCE_BYTES)
+            os.symlink(outside, custody / "current_component.py")
+            _write_root(root, canonical, integration)
+            errors = ledger.validate(root)
+        self.assertTrue(
+            any("source_blob" in error and "does not identify" in error for error in errors),
+            errors,
+        )
+
+    @unittest.skipUnless(hasattr(os, "symlink"), "symlink unavailable")
+    def test_symlinked_directory_cannot_import_outside_blob_custody(self):
+        with tempfile.TemporaryDirectory() as parent_td:
+            parent = Path(parent_td)
+            root = parent / "v4"
+            root.mkdir()
+            canonical, integration = _base()
+            row = _historical_row()
+            integration["landed"] = [_landed_component()]
+            integration["custody_blocked"] = [row]
+            custody = root / str(row["custody_path"])
+            custody.mkdir(parents=True)
+            (custody / "test_current_component.py").write_bytes(TEST_BYTES)
+            outside = parent / "outside_tree"
+            outside.mkdir()
+            (outside / "current_component.py").write_bytes(SOURCE_BYTES)
+            os.symlink(outside, custody / "linked")
+            _write_root(root, canonical, integration)
+            errors = ledger.validate(root)
+        self.assertTrue(
+            any("source_blob" in error and "does not identify" in error for error in errors),
             errors,
         )
 
@@ -159,7 +293,10 @@ class IntegrationLedgerCustodyContractTests(unittest.TestCase):
             "status": "maybe_blocked",
         }
         errors = self.validate_with(row)
-        self.assertIn("custody lane 'mystery packet' has unsupported status 'maybe_blocked'", errors)
+        self.assertIn(
+            "custody lane 'mystery packet' has unsupported status 'maybe_blocked'",
+            errors,
+        )
 
     def test_duplicate_lane_in_same_section_fails_closed(self):
         with tempfile.TemporaryDirectory() as td:
@@ -255,7 +392,10 @@ class IntegrationLedgerCustodyContractTests(unittest.TestCase):
                 },
             )
             errors = ledger.validate(root)
-        self.assertTrue(any("escapes integration root" in error for error in errors), errors)
+        self.assertTrue(
+            any("escapes integration root" in error for error in errors),
+            errors,
+        )
 
     def test_absolute_custody_path_is_rejected(self):
         with tempfile.TemporaryDirectory() as td:
@@ -268,13 +408,19 @@ class IntegrationLedgerCustodyContractTests(unittest.TestCase):
             }]
             _write_root(root, canonical, integration)
             errors = ledger.validate(root)
-        self.assertTrue(any("must be relative to the integration root" in error for error in errors), errors)
+        self.assertTrue(
+            any("must be relative to the integration root" in error for error in errors),
+            errors,
+        )
 
     def test_do_not_activate_retirement_conflicts_with_active_landed_status(self):
         with tempfile.TemporaryDirectory() as td:
             root = Path(td)
             canonical, integration = _base()
-            integration["landed"] = [{"lane": "retired", "status": "runtime_enabled"}]
+            integration["landed"] = [{
+                "lane": "retired",
+                "status": "runtime_enabled",
+            }]
             integration["negative_or_parked"] = [{
                 "lane": "retired",
                 "disposition": "KILL_bad_economics_do_not_stack_or_activate",
@@ -312,7 +458,10 @@ class IntegrationLedgerCustodyContractTests(unittest.TestCase):
                 },
             )
             errors = ledger.validate(root)
-        self.assertTrue(any("escapes integration root" in error for error in errors), errors)
+        self.assertTrue(
+            any("escapes integration root" in error for error in errors),
+            errors,
+        )
 
 
 if __name__ == "__main__":
