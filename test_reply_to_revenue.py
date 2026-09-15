@@ -169,6 +169,39 @@ class ReplyToRevenueTests(unittest.TestCase):
         self.assertFalse(receipt["facts"]["cash_claimed"])
         self.assertEqual(receipt["provider_state"], "COMPLETED")
 
+    def test_nysa_technology_is_hard_dnr_zero_cash(self) -> None:
+        funnel = r2r.validate_funnel()
+        nysa = next(c for c in funnel["contacts"] if c["prospect_key"] == "nysa-technology")
+        self.assertTrue(nysa["hard_dnr"])
+        self.assertFalse(nysa["resend"])
+        self.assertEqual(nysa["cash_usd"], 0)
+        self.assertEqual(nysa["organization"], "NYSA Technology")
+        self.assertEqual(nysa["lane"], "NO_RESPONSE")
+        self.assertEqual(nysa["next_action"], "MONITOR_NO_RESEND")
+        self.assertEqual(nysa["receipt_count"], 1)
+        self.assertEqual(nysa["inbound_count"], 0)
+        self.assertIsNone(nysa["handoff"])
+        receipt = r2r.read_object(
+            ROOT
+            / "revenue"
+            / "payment_ready"
+            / "outreach_receipts"
+            / "20260914-nysa-technology-do-not-resend.json"
+        )
+        self.assertTrue(receipt["dedupe"]["do_not_resend"])
+        self.assertEqual(receipt["facts"]["collected_cash_usd"], 0)
+        self.assertFalse(receipt["facts"]["cash_claimed"])
+        self.assertEqual(receipt["decision"], "HOLD_DO_NOT_RESEND")
+
+    def test_committed_funnel_tracks_all_receipt_contacts(self) -> None:
+        receipts = r2r.load_receipts()
+        snapshot = r2r.read_object(r2r.FUNNEL_PATH)
+        snapshot_keys = {contact["prospect_key"] for contact in snapshot["contacts"]}
+        receipt_keys = {receipt["prospect_key"] for receipt in receipts}
+        self.assertEqual(snapshot_keys, receipt_keys)
+        self.assertEqual(len(receipts), snapshot["truth"]["canonical_receipts"])
+        self.assertEqual(len(snapshot_keys), snapshot["truth"]["distinct_contacts"])
+
     def test_checked_in_funnel_is_all_dnr_auto_acks_and_zero_cash(self) -> None:
         funnel = r2r.validate_funnel()
         self.assertEqual(funnel["truth"]["cash_usd"], 0)
