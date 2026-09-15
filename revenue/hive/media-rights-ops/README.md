@@ -8,7 +8,9 @@ The desk stores immutable asset fingerprints and derivative lineage, normalized 
 
 This is **not** a copyright, contract, licensing, fair-use, or ownership determination engine. `READY_ON_SUPPLIED_AUTHORITY` means only that a requested placement fits the owner-normalized facts currently stored in the desk. It never infers rights, parses legal language, creates a grant, contacts a creator/licensor, uploads/publishes/removes media, logs in to a platform, or moves money.
 
-All production mutations are local SQLite writes. The optional HTTP desk binds to loopback only.
+Derivative lineage is provenance only, not authority inheritance. A grant authorizes only its exact `asset_id`; a grant on a parent/master does **not** authorize a child/derivative unless the owner supplies a separate grant fact for that exact child asset.
+
+All production mutations are local SQLite writes through the CLI. The optional HTTP desk binds to loopback and is read-only with respect to state: it exposes snapshot/evaluation/queue reads, while HTTP `/api/place` and `/api/revoke` fail closed with `405`. Use CLI `place` / `revoke` for mutations.
 
 ## Commercial hypothesis
 
@@ -28,11 +30,11 @@ python rights_ops.py export desk.sqlite3 bundle --as-of 2026-12-10T00:00:00Z
 python rights_ops.py serve desk.sqlite3 --host 127.0.0.1 --port 8765
 ```
 
-To record a placement, add a stable `request_id` to the intent and use `place --at ...`. The same request and content replay without duplication; the same request ID with changed content fails closed. `revoke <grant_id> --at ...` is immutable: a revocation can be replayed exactly but not silently rewritten. A recorded placement affected by revocation enters the retraction-review queue; the desk does not remove it from any provider.
+To record a placement, add a stable `request_id` to the intent and use CLI `place --at ...`. The same request and content replay without duplication; the same request ID with changed content fails closed. CLI `revoke <grant_id> --at ...` is immutable: a revocation can be replayed exactly but not silently rewritten. A recorded placement affected by revocation enters the retraction-review queue; the desk does not remove it from any provider.
 
 ## Acceptance surface
 
-The hostile suite covers exact derivative lineage; allowed placement; wrong channel and territory; future/expired/revoked grants; unlicensed/unknown assets; request replay mutation; HOLD-without-write; immutable revocation; renewal/expiry queues; concurrent duplicate placement -> exactly one durable row; restart behavior; deterministic exports; create-exclusive publication; duplicate-key, floating-point, non-finite, cyclic/missing-lineage, duplicate authority rows, and naive-time failures.
+The hostile suite covers exact-asset authority; parent-grant/child-derivative non-inheritance; HTTP mutation fail-closure with unchanged durable state; allowed placement; wrong channel and territory; future/expired/revoked grants; unlicensed/unknown assets; request replay mutation; HOLD-without-write; immutable revocation; renewal/expiry queues; concurrent duplicate placement -> exactly one durable row; restart behavior; deterministic exports; create-exclusive publication; duplicate-key, floating-point, non-finite, cyclic/missing-lineage, duplicate authority rows, and naive-time failures.
 
 Run both ordinary and optimized modes:
 
