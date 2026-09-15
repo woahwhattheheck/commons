@@ -94,6 +94,21 @@ class RecoveryBoundaryTests(unittest.TestCase):
         with self.assertRaisesRegex(engine.TransferError, "report is no longer current"):
             engine.verify_report_current(report)
 
+    def test_same_hold_state_with_changed_semantics_fails_current_verification(self) -> None:
+        captured = datetime.now(timezone.utc).replace(microsecond=0) - timedelta(minutes=10)
+        source, receiving = self._pair(captured)
+        report = engine.compile_transfer(
+            source,
+            receiving,
+            {"max_evidence_age_minutes": 1},
+            as_of=engine.format_utc(captured + timedelta(minutes=2)),
+        )
+        self.assertEqual(report["summary"]["state"], "HOLD_FOR_OWNER_RECONCILIATION")
+        self.assertEqual(report["results"][0]["classification"], "STALE_EVIDENCE")
+        self.assertTrue(engine.verify_report(report)["verified"])
+        with self.assertRaisesRegex(engine.TransferError, "decision semantics changed"):
+            engine.verify_report_current(report)
+
     def test_recent_report_passes_current_verification(self) -> None:
         captured = datetime.now(timezone.utc).replace(microsecond=0) - timedelta(seconds=1)
         source, receiving = self._pair(captured)
@@ -108,6 +123,20 @@ class RecoveryBoundaryTests(unittest.TestCase):
         self.assertTrue(result["historical_replay_verified"])
         self.assertEqual(result["state"], "TRANSFER_READY_FOR_OWNER_REVIEW")
         self.assertIn("current_as_of", result)
+
+    def test_current_verifier_clock_is_bound_against_module_global_rebind(self) -> None:
+        captured = datetime.now(timezone.utc).replace(microsecond=0) - timedelta(minutes=10)
+        source, receiving = self._pair(captured)
+        historical_as_of = engine.format_utc(captured + timedelta(seconds=30))
+        report = engine.compile_transfer(
+            source,
+            receiving,
+            {"max_evidence_age_minutes": 1},
+            as_of=historical_as_of,
+        )
+        with mock.patch.object(engine, "_process_utc_now", return_value=historical_as_of):
+            with self.assertRaisesRegex(engine.TransferError, "report is no longer current"):
+                engine.verify_report_current(report)
 
     def test_production_verify_cli_rechecks_freshness(self) -> None:
         captured = datetime.now(timezone.utc).replace(microsecond=0) - timedelta(minutes=10)
