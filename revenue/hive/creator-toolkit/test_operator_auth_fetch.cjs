@@ -5,54 +5,39 @@ const test = require('node:test');
 const vm = require('node:vm');
 
 const source = fs.readFileSync(process.argv[2] || 'operator_auth.js', 'utf8');
+const NativeRequest = globalThis.Request;
+const NativeHeaders = globalThis.Headers;
 
-function makeHeaders(seed = {}) {
-  const pairs = new Map();
-  const add = (key, value) => pairs.set(String(key).toLowerCase(), String(value));
-  if (seed && typeof seed.forEach === 'function') seed.forEach((value, key) => add(key, value));
-  else if (Array.isArray(seed)) seed.forEach(([key, value]) => add(key, value));
-  else Object.entries(seed || {}).forEach(([key, value]) => add(key, value));
-  return {
-    set: add,
-    get(key) { return pairs.get(String(key).toLowerCase()) || null; },
-    has(key) { return pairs.has(String(key).toLowerCase()); },
-    forEach(fn) { pairs.forEach((value, key) => fn(value, key)); },
-  };
+if (typeof NativeRequest !== 'function' || typeof NativeHeaders !== 'function') {
+  throw new Error('WHATWG Request/Headers globals are required for operator auth transport tests');
 }
 
 function loadHarness(key = 'op-secret') {
   const calls = [];
   const storage = new Map([['creator-desk.operator.v1', key]]);
+  const baseUrl = 'https://creator.example/app';
 
-  class BrowserRequest {
-    constructor(input, init = {}) {
-      if (input instanceof BrowserRequest) {
-        this.url = input.url;
-        this.headers = makeHeaders(
-          Object.prototype.hasOwnProperty.call(init, 'headers') ? init.headers : input.headers
-        );
-      } else {
-        this.url = new URL(String(input), 'https://creator.example/app').href;
-        this.headers = makeHeaders(init.headers || {});
-      }
-    }
+  function outboundRequest(input, init) {
+    if (input instanceof NativeRequest) return new NativeRequest(input, init);
+    return new NativeRequest(new URL(String(input), baseUrl), init);
   }
 
   async function originalFetch(input, init) {
-    const outbound = new BrowserRequest(input, init || {});
+    const outbound = outboundRequest(input, init);
     calls.push({input, init, outbound});
     return {status: 200, ok: true, json: async () => ({operator: true})};
   }
-  const window = {fetch: originalFetch, Request: BrowserRequest};
+
+  const window = {fetch: originalFetch, Request: NativeRequest};
   const context = {
     window,
-    location: {origin: 'https://creator.example', href: 'https://creator.example/app'},
+    location: {origin: 'https://creator.example', href: baseUrl},
     localStorage: {
       getItem(name) { return storage.has(name) ? storage.get(name) : null; },
       setItem(name, value) { storage.set(name, value); },
       removeItem(name) { storage.delete(name); },
     },
-    Headers: function Headers(seed) { return makeHeaders(seed); },
+    Headers: NativeHeaders,
     URL,
     document: {
       addEventListener() {},
@@ -64,7 +49,7 @@ function loadHarness(key = 'op-secret') {
   };
   vm.createContext(context);
   vm.runInContext(source, context, {filename: 'operator_auth.js'});
-  return {fetch: context.window.fetch, calls, Request: BrowserRequest};
+  return {fetch: context.window.fetch, calls, Request: NativeRequest, Headers: NativeHeaders};
 }
 
 function authHeader(call) {
@@ -100,14 +85,14 @@ test('same-origin public GET does not receive operator bearer auth', async () =>
   assert.equal(h.calls[0].init.headers['X-Public'], 'yes');
 });
 
-test('genuine same-origin protected Request keeps inherited headers', async () => {
+test('genuine same-origin protected Request keeps inherited native headers', async () => {
   const h = loadHarness();
   const request = new h.Request('https://creator.example/api/dashboard', {
     headers: {'X-Caller': 'kept'},
   });
   await h.fetch(request);
   assert.equal(authHeader(h.calls[0]), 'Bearer op-secret');
-  assert.equal(h.calls[0].init.headers.get('x-caller'), 'kept');
+  assert.equal(h.calls[0].outbound.headers.get('x-caller'), 'kept');
 });
 
 test('explicit init headers remain authoritative while auth is added', async () => {
@@ -117,19 +102,55 @@ test('explicit init headers remain authoritative while auth is added', async () 
   });
   await h.fetch(request, {headers: {'X-Init': 'new'}});
   assert.equal(authHeader(h.calls[0]), 'Bearer op-secret');
-  assert.equal(h.calls[0].init.headers.get('x-init'), 'new');
-  assert.equal(h.calls[0].init.headers.get('x-request'), null);
+  assert.equal(h.calls[0].outbound.headers.get('x-init'), 'new');
+  assert.equal(h.calls[0].outbound.headers.get('x-request'), null);
 });
 
 test('forged Request-like url cannot smuggle bearer to string-coerced hostile target', async () => {
   const h = loadHarness();
   const forged = {
     url: 'https://creator.example/api/dashboard',
-    headers: makeHeaders({'X-Caller': 'forged'}),
+    headers: new h.Headers({'X-Caller': 'forged'}),
     toString() { return 'https://attacker.example/steal'; },
   };
   await h.fetch(forged);
   assert.equal(h.calls[0].outbound.url, 'https://attacker.example/steal');
   assert.equal(authHeader(h.calls[0]), null);
   assert.equal(h.calls[0].outbound.headers.get('authorization'), null);
+});
+
+test('native Request own url shadow cannot smuggle bearer across its internal target', async () => {
+  const h = loadHarness();
+  const request = new h.Request('https://attacker.example/steal', {
+    headers: {'X-Internal': 'kept'},
+  });
+  Object.defineProperty(request, 'url', {
+    value: 'https://creator.example/api/dashboard',
+    configurable: true,
+  });
+
+  assert.equal(request.url, 'https://creator.example/api/dashboard');
+  await h.fetch(request);
+
+  assert.equal(h.calls[0].outbound.url, 'https://attacker.example/steal');
+  assert.equal(authHeader(h.calls[0]), null);
+  assert.equal(h.calls[0].outbound.headers.get('authorization'), null);
+  assert.equal(h.calls[0].outbound.headers.get('x-internal'), 'kept');
+});
+
+test('native Request own headers shadow cannot replace inherited internal headers', async () => {
+  const h = loadHarness();
+  const request = new h.Request('https://creator.example/api/dashboard', {
+    headers: {'X-Internal': 'kept'},
+  });
+  Object.defineProperty(request, 'headers', {
+    value: new h.Headers({'X-Shadow': 'forged'}),
+    configurable: true,
+  });
+
+  await h.fetch(request);
+
+  assert.equal(authHeader(h.calls[0]), 'Bearer op-secret');
+  assert.equal(h.calls[0].outbound.headers.get('x-internal'), 'kept');
+  assert.equal(h.calls[0].outbound.headers.get('x-shadow'), null);
 });
