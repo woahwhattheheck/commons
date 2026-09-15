@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 """Chronology-safe reply-to-revenue entrypoint.
 
-All observation identity, contact-state, and positive-surface authority lives in
-``reply_to_revenue_core.py``. This wrapper intentionally contains no policy of
-its own: wrapper imports, direct-core imports, and both CLI paths must execute
-the same retained implementation graph.
+All evidence identity, contact-state, and surface authority lives in
+``reply_to_revenue_core.py``. This wrapper captures that runtime once, re-exports
+its public surface for compatibility, then drops the private core module handle
+so wrapper callers do not gain a second mutable dispatch namespace.
 """
 
 from __future__ import annotations
@@ -20,13 +20,24 @@ _SPEC = importlib.util.spec_from_file_location(
 )
 if _SPEC is None or _SPEC.loader is None:
     raise ImportError(f"cannot load reply-to-revenue core from {_CORE_PATH}")
-_core = importlib.util.module_from_spec(_SPEC)
-_SPEC.loader.exec_module(_core)
 
-for _name, _value in vars(_core).items():
+_loaded_core = importlib.util.module_from_spec(_SPEC)
+_SPEC.loader.exec_module(_loaded_core)
+
+_cli_entrypoint = _loaded_core.main
+for _name, _value in vars(_loaded_core).items():
     if not _name.startswith("__"):
         globals()[_name] = _value
 
+del _name, _value, _loaded_core, _SPEC
+
+
+def _run_cli(_entrypoint=_cli_entrypoint) -> int:
+    return _entrypoint()
+
+
+del _cli_entrypoint
+
 
 if __name__ == "__main__":
-    raise SystemExit(_core.main())
+    raise SystemExit(_run_cli())
