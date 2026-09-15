@@ -25,8 +25,47 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python }}
-      - run: python -m py_compile opportunities/naspo_sw1045_qualification_2026/qualification.py opportunities/naspo_sw1045_qualification_2026/test_qualification.py
-      - run: python -B -m unittest -v opportunities.naspo_sw1045_qualification_2026.test_qualification
-      - run: python -O -B -m unittest -v opportunities.naspo_sw1045_qualification_2026.test_qualification
-      - run: |
-          python opportunities/naspo_sw1045_qualification_2026/qualification.py verify             --source opportunities/naspo_sw1045_qualification_2026/source_snapshot.json             --attachments opportunities/naspo_sw1045_qualification_2026/attachment_manifest.json             --requirements opportunities/naspo_sw1045_qualification_2026/requirements.json             --owner opportunities/naspo_sw1045_qualification_2026/repo_evidence_candidate.json             --receipt opportunities/naspo_sw1045_qualification_2026/current_qualification_receipt.json             --trusted-now 2026-09-13T11:15:00Z
+      - name: Compile executable authority and tests
+        run: >-
+          python -m py_compile
+          opportunities/naspo_sw1045_qualification_2026/qualification.py
+          opportunities/naspo_sw1045_qualification_2026/qualification_core.py
+          opportunities/naspo_sw1045_qualification_2026/test_qualification.py
+          opportunities/naspo_sw1045_qualification_2026/test_qualification_core_boundary.py
+      - name: Regression suite
+        run: >-
+          python -B -m unittest -v
+          opportunities.naspo_sw1045_qualification_2026.test_qualification
+          opportunities.naspo_sw1045_qualification_2026.test_qualification_core_boundary
+      - name: Optimized regression suite
+        run: >-
+          python -O -B -m unittest -v
+          opportunities.naspo_sw1045_qualification_2026.test_qualification
+          opportunities.naspo_sw1045_qualification_2026.test_qualification_core_boundary
+      - name: Verify current truthful receipt through public entrypoint
+        run: >-
+          python opportunities/naspo_sw1045_qualification_2026/qualification.py verify
+          --source opportunities/naspo_sw1045_qualification_2026/source_snapshot.json
+          --attachments opportunities/naspo_sw1045_qualification_2026/attachment_manifest.json
+          --requirements opportunities/naspo_sw1045_qualification_2026/requirements.json
+          --owner opportunities/naspo_sw1045_qualification_2026/repo_evidence_candidate.json
+          --receipt opportunities/naspo_sw1045_qualification_2026/current_qualification_receipt.json
+          --trusted-now 2026-09-13T11:15:00Z
+      - name: Verify same receipt through direct core CLI
+        run: >-
+          python opportunities/naspo_sw1045_qualification_2026/qualification_core.py verify
+          --source opportunities/naspo_sw1045_qualification_2026/source_snapshot.json
+          --attachments opportunities/naspo_sw1045_qualification_2026/attachment_manifest.json
+          --requirements opportunities/naspo_sw1045_qualification_2026/requirements.json
+          --owner opportunities/naspo_sw1045_qualification_2026/repo_evidence_candidate.json
+          --receipt opportunities/naspo_sw1045_qualification_2026/current_qualification_receipt.json
+          --trusted-now 2026-09-13T11:15:00Z
+      - name: Verify same receipt through optimized direct core CLI
+        run: >-
+          python -O opportunities/naspo_sw1045_qualification_2026/qualification_core.py verify
+          --source opportunities/naspo_sw1045_qualification_2026/source_snapshot.json
+          --attachments opportunities/naspo_sw1045_qualification_2026/attachment_manifest.json
+          --requirements opportunities/naspo_sw1045_qualification_2026/requirements.json
+          --owner opportunities/naspo_sw1045_qualification_2026/repo_evidence_candidate.json
+          --receipt opportunities/naspo_sw1045_qualification_2026/current_qualification_receipt.json
+          --trusted-now 2026-09-13T11:15:00Z
