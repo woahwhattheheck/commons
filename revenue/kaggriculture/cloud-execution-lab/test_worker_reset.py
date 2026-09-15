@@ -159,6 +159,12 @@ def _load_official(root: Path):
             raise AssertionError(f"raw-loader helper mismatch in {path}")
         exec(compile(ast.Module(body=nodes, type_ignores=[]), str(path), "exec"), namespace)
     candidate, _ = namespace["build_agent"](str(root / "main.py"), {}, "kaggriculture")
+    try:
+        _entrypoint(candidate)
+    except AssertionError:
+        pass
+    else:
+        raise AssertionError("official lazy loader exposed main.py::agent before first invocation")
     return EngineSemantics, candidate
 
 
@@ -218,7 +224,7 @@ def _run_game(
     engine.interpreter(state, env)
 
     trace = hashlib.sha256()
-    loaded_entrypoint = _entrypoint(candidate)
+    loaded_entrypoint = None
     active_instance = None
     replacement_verified = False
     calls = 0
@@ -230,6 +236,8 @@ def _run_game(
         action = executor.submit(
             _call_candidate, candidate, copy.deepcopy(state[seat].observation), cfg
         ).result(timeout=2)
+        if loaded_entrypoint is None:
+            loaded_entrypoint = _entrypoint(candidate)
         encoded = json.dumps(action, sort_keys=True, separators=(",", ":"), allow_nan=False)
         current = loaded_entrypoint.__globals__.get("_INSTANCE")
         if current is None:
