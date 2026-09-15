@@ -67,6 +67,26 @@ def read_file(path):
         if len(data)!=st.st_size: raise InvalidState("file changed/truncated while reading")
         return data,sha(data),len(data),os.path.basename(os.fspath(path))
     finally: os.close(fd)
+def _open_dir_nofollow(path):
+    """Open an absolute directory by walking every component without symlink traversal."""
+    nofollow=getattr(os,"O_NOFOLLOW",0); odir=getattr(os,"O_DIRECTORY",0)
+    if not nofollow or os.open not in getattr(os,"supports_dir_fd",()):
+        raise InvalidState("safe no-follow directory traversal unsupported on this host")
+    full=os.path.abspath(os.fspath(path)); drive,tail=os.path.splitdrive(full)
+    if drive:
+        raise InvalidState("safe no-follow directory traversal unsupported for drive paths")
+    flags=os.O_RDONLY|odir|nofollow|getattr(os,"O_CLOEXEC",0)
+    fd=os.open(os.sep,os.O_RDONLY|odir|getattr(os,"O_CLOEXEC",0))
+    try:
+        for part in (p for p in tail.split(os.sep) if p and p!="."):
+            if part=="..": raise InvalidState("parent traversal is not allowed")
+            nxt=os.open(part,flags,dir_fd=fd)
+            st=os.fstat(nxt)
+            if not stat.S_ISDIR(st.st_mode): os.close(nxt); raise InvalidState("output parent component is not a directory")
+            os.close(fd); fd=nxt
+        return fd
+    except Exception:
+        os.close(fd); raise
 
 class ReleaseDesk:
     def __init__(self,db_path): self.db_path=os.fspath(db_path); self._init()
@@ -171,7 +191,7 @@ CREATE TABLE IF NOT EXISTS requests(request_id TEXT PRIMARY KEY,op TEXT NOT NULL
     def export_package(self,title,out_path):
         data,rec=self.build_package(title); out=os.path.abspath(os.fspath(out_path)); parent,leaf=os.path.split(out)
         if not leaf or leaf in {".",".."}: raise InvalidState("output must name a file")
-        pfd=os.open(parent or ".",os.O_RDONLY|getattr(os,"O_DIRECTORY",0)|getattr(os,"O_NOFOLLOW",0)); identity=None; fd=None
+        pfd=_open_dir_nofollow(parent or "."); fd=None
         try:
             ps=os.fstat(pfd)
             if not stat.S_ISDIR(ps.st_mode): raise InvalidState("output parent is not a directory")
@@ -182,18 +202,23 @@ CREATE TABLE IF NOT EXISTS requests(request_id TEXT PRIMARY KEY,op TEXT NOT NULL
                 n=os.write(fd,view)
                 if n<=0: raise OSError("short write")
                 view=view[n:]
-            os.fsync(fd); os.close(fd); fd=None
-            vp=os.stat(parent or ".",follow_symlinks=False); ls=os.stat(leaf,dir_fd=pfd,follow_symlinks=False)
-            if (vp.st_dev,vp.st_ino)!=(ps.st_dev,ps.st_ino): raise InvalidState("output parent identity changed during publication")
+            os.fsync(fd)
+            ls=os.stat(leaf,dir_fd=pfd,follow_symlinks=False)
             if not stat.S_ISREG(ls.st_mode) or (ls.st_dev,ls.st_ino)!=identity: raise InvalidState("output leaf identity changed during publication")
-            os.fsync(pfd); return {"path":out,**rec,"bytes":len(data)}
+            visible=_open_dir_nofollow(parent or ".")
+            try:
+                vp=os.fstat(visible)
+                if (vp.st_dev,vp.st_ino)!=(ps.st_dev,ps.st_ino): raise InvalidState("output parent identity changed during publication")
+            finally: os.close(visible)
+            os.fsync(pfd); os.close(fd); fd=None
+            return {"path":out,**rec,"bytes":len(data)}
         except Exception:
-            if fd is not None: os.close(fd)
-            if identity:
+            if fd is not None:
                 try:
-                    x=os.stat(leaf,dir_fd=pfd,follow_symlinks=False)
-                    if stat.S_ISREG(x.st_mode) and (x.st_dev,x.st_ino)==identity: os.unlink(leaf,dir_fd=pfd)
-                except FileNotFoundError: pass
+                    os.ftruncate(fd,0); os.fsync(fd)
+                except OSError:
+                    pass
+                os.close(fd)
             raise
         finally: os.close(pfd)
     def verify_package(self,title,path):
