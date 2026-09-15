@@ -1,9 +1,9 @@
 {
   "counts": {
     "open_issues": 116,
-    "open_pull_requests": 54,
-    "runs_in_progress": 18,
-    "runs_queued": 440
+    "open_pull_requests": 55,
+    "runs_in_progress": 19,
+    "runs_queued": 437
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -69,13 +69,24 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
+      "branch": "zcf-q6m8/sun-a308734-low-obstruction-20260915",
+      "created_at": "2026-09-15T07:50:38Z",
+      "draft": false,
+      "head_sha": "adf7d690f35b0ab53e7a60cc2046edf142f58a4a",
+      "number": 14716,
+      "title": "research: add exact A308734 low-obstruction CRT atlas",
+      "updated_at": "2026-09-15T07:50:38Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
       "branch": "zsol17/sophelio-source-red-recovery-20260915",
       "created_at": "2026-09-15T07:48:19Z",
       "draft": false,
-      "head_sha": "16209719eb2ad92e61d04f84602466eff0098483",
+      "head_sha": "4f9ef59d3d48f0c2a917d6f3d318801956a4aee1",
       "number": 14715,
       "title": "Recover Sophelio full-fold authority and bounded training",
-      "updated_at": "2026-09-15T07:48:19Z"
+      "updated_at": "2026-09-15T07:50:17Z"
     },
     {
       "author": "woahwhattheheck",
@@ -141,7 +152,7 @@
       "head_sha": "d8a38da9c1042c157ccd49729809ae923915f66c",
       "number": 14700,
       "title": "Sun A308734: pin P18 frontier and exact reduction verifier",
-      "updated_at": "2026-09-15T07:41:11Z"
+      "updated_at": "2026-09-15T07:50:42Z"
     },
     {
       "author": "woahwhattheheck",
@@ -164,17 +175,6 @@
       "number": 14680,
       "title": "coordination: bind execution authority to exact PR/base composition",
       "updated_at": "2026-09-15T07:34:40Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zsh-q6m4/learn2design-public-evidence-20260915",
-      "created_at": "2026-09-15T06:33:59Z",
-      "draft": false,
-      "head_sha": "36be284452141d26cdff4b74efb8f185b27c4b32",
-      "number": 14672,
-      "title": "Learn2Design: source-pinned matched public evidence rail",
-      "updated_at": "2026-09-15T07:36:13Z"
     }
   ],
   "open_heads": {
@@ -231,11 +231,12 @@
     "14705": "6e8761343b10ec3518fd1a6a002594ac6076d38a",
     "14709": "87fde1165ef3002599a0f325cf27b0368be3fbe3",
     "14713": "532586ac907e372b31a9d823c020ae37dd232fce",
-    "14715": "16209719eb2ad92e61d04f84602466eff0098483"
+    "14715": "4f9ef59d3d48f0c2a917d6f3d318801956a4aee1",
+    "14716": "adf7d690f35b0ab53e7a60cc2046edf142f58a4a"
   },
-  "pulls_listed": 54,
+  "pulls_listed": 55,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 24.4,
+  "queue_depth_per_runner": 23.0,
   "recently_closed": [
     {
       "author": "woahwhattheheck",
@@ -405,6 +406,6 @@
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-15T07:49:09Z",
+  "unchanged_since": "2026-09-15T07:51:31Z",
   "undatable_pulls": []
 }
