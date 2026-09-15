@@ -11,10 +11,16 @@ from __future__ import annotations
 from . import _baseline_core as _core
 
 # Preserve the complete historical direct-baseline surface, including private
-# helpers used by repository tests, while keeping this module's import metadata.
+# helpers used by repository tests. Objects defined by the core keep their code
+# and globals but report the historical public module for introspection/pickling.
 for _name, _value in vars(_core).items():
     if _name.startswith("__") and _name.endswith("__"):
         continue
+    if getattr(_value, "__module__", None) == _core.__name__:
+        try:
+            _value.__module__ = __name__
+        except (AttributeError, TypeError):
+            pass
     globals()[_name] = _value
 
 # These three public entrypoints are intentionally resolved after the core copy on
