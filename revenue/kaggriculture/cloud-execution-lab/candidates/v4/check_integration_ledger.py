@@ -129,26 +129,71 @@ def _require_nonempty_text(
         errors.append(f"{label} lane {lane!r} lacks {field}")
 
 
-def _regular_git_blob_id(path: Path) -> str | None:
-    """Return one descriptor-bound regular file's Git blob ID.
+_FILE_STABLE_FIELDS = (
+    "st_dev",
+    "st_ino",
+    "st_mode",
+    "st_nlink",
+    "st_size",
+    "st_mtime_ns",
+    "st_ctime_ns",
+)
+_DIR_STABLE_FIELDS = (
+    "st_dev",
+    "st_ino",
+    "st_mode",
+    "st_nlink",
+    "st_mtime_ns",
+    "st_ctime_ns",
+)
 
-    Symlinks and non-regular files never satisfy custody.  The descriptor and
-    pathname generation must remain stable while bytes are read so a replace or
-    in-place mutation cannot bind a different generation under a recorded ID.
-    """
+
+def _same_stat_generation(
+    before: os.stat_result,
+    after: os.stat_result,
+    fields: tuple[str, ...],
+) -> bool:
+    return all(getattr(before, field) == getattr(after, field) for field in fields)
+
+
+def _require_descriptor_relative_custody() -> None:
+    """Fail closed unless this host supports safe descriptor-relative traversal."""
+
+    supports_dir_fd = getattr(os, "supports_dir_fd", set())
+    supports_fd = getattr(os, "supports_fd", set())
+    supports_follow_symlinks = getattr(os, "supports_follow_symlinks", set())
+    if (
+        not hasattr(os, "O_NOFOLLOW")
+        or not hasattr(os, "O_DIRECTORY")
+        or os.open not in supports_dir_fd
+        or os.stat not in supports_dir_fd
+        or os.stat not in supports_follow_symlinks
+        or os.listdir not in supports_fd
+    ):
+        raise LedgerError(
+            "descriptor-relative custody traversal is unavailable on this platform"
+        )
+
+
+def _regular_git_blob_id_at(
+    parent_fd: int,
+    name: str,
+    display_path: Path,
+) -> str | None:
+    """Hash one regular file without ever reopening its pathname ancestors."""
 
     try:
-        pathname_before = path.stat(follow_symlinks=False)
+        pathname_before = os.stat(name, dir_fd=parent_fd, follow_symlinks=False)
     except OSError as exc:
-        raise LedgerError(f"cannot inspect custody file {path}: {exc}") from exc
+        raise LedgerError(f"cannot inspect custody file {display_path}: {exc}") from exc
     if not stat.S_ISREG(pathname_before.st_mode):
         return None
 
-    flags = os.O_RDONLY | getattr(os, "O_CLOEXEC", 0) | getattr(os, "O_NOFOLLOW", 0)
+    flags = os.O_RDONLY | getattr(os, "O_CLOEXEC", 0) | os.O_NOFOLLOW
     try:
-        descriptor = os.open(path, flags)
+        descriptor = os.open(name, flags, dir_fd=parent_fd)
     except OSError as exc:
-        raise LedgerError(f"cannot open custody file {path}: {exc}") from exc
+        raise LedgerError(f"cannot open custody file {display_path}: {exc}") from exc
 
     try:
         opened = os.fstat(descriptor)
@@ -158,7 +203,7 @@ def _regular_git_blob_id(path: Path) -> str | None:
             pathname_before.st_dev,
             pathname_before.st_ino,
         ):
-            raise LedgerError(f"custody file changed before read: {path}")
+            raise LedgerError(f"custody file changed before read: {display_path}")
 
         # SHA-1 is required here only to reproduce Git's content-addressed blob ID.
         digest = hashlib.sha1()
@@ -170,70 +215,148 @@ def _regular_git_blob_id(path: Path) -> str | None:
                 break
             digest.update(chunk)
             consumed += len(chunk)
-        after = os.fstat(descriptor)
+        descriptor_after = os.fstat(descriptor)
+        pathname_after = os.stat(name, dir_fd=parent_fd, follow_symlinks=False)
     except OSError as exc:
-        raise LedgerError(f"cannot read custody file {path}: {exc}") from exc
+        raise LedgerError(f"cannot read custody file {display_path}: {exc}") from exc
     finally:
         os.close(descriptor)
 
-    try:
-        pathname_after = path.stat(follow_symlinks=False)
-    except OSError as exc:
-        raise LedgerError(f"cannot re-inspect custody file {path}: {exc}") from exc
-
-    stable_fields = (
-        "st_dev",
-        "st_ino",
-        "st_mode",
-        "st_nlink",
-        "st_size",
-        "st_mtime_ns",
-        "st_ctime_ns",
-    )
     if (
         consumed != opened.st_size
-        or any(getattr(opened, field) != getattr(after, field) for field in stable_fields)
-        or any(
-            getattr(opened, field) != getattr(pathname_after, field)
-            for field in stable_fields
-        )
+        or not _same_stat_generation(opened, descriptor_after, _FILE_STABLE_FIELDS)
+        or not _same_stat_generation(opened, pathname_after, _FILE_STABLE_FIELDS)
     ):
-        raise LedgerError(f"custody file changed while hashing: {path}")
+        raise LedgerError(f"custody file changed while hashing: {display_path}")
     return digest.hexdigest()
 
 
-def _custody_blob_ids(custody_dir: Path, wanted: set[str]) -> set[str]:
-    """Resolve wanted Git blob IDs only from regular files below custody_dir."""
-
-    found: set[str] = set()
-
-    def fail_walk(exc: OSError) -> None:
-        raise LedgerError(f"cannot traverse custody directory {custody_dir}: {exc}")
+def _walk_custody_dir(
+    directory_fd: int,
+    display_path: Path,
+    wanted: set[str],
+    found: set[str],
+) -> None:
+    """Walk one retained directory descriptor without following namespace swaps."""
 
     try:
-        for directory, dirnames, filenames in os.walk(
-            custody_dir,
-            topdown=True,
-            followlinks=False,
-            onerror=fail_walk,
-        ):
-            base = Path(directory)
-            dirnames[:] = sorted(
-                name for name in dirnames if not (base / name).is_symlink()
-            )
-            for name in sorted(filenames):
-                path = base / name
-                if path.is_symlink():
-                    continue
-                blob_id = _regular_git_blob_id(path)
-                if blob_id in wanted:
-                    found.add(blob_id)
-            if found == wanted:
-                break
-    except LedgerError:
-        raise
+        names = sorted(os.listdir(directory_fd))
     except OSError as exc:
-        raise LedgerError(f"cannot traverse custody directory {custody_dir}: {exc}") from exc
+        raise LedgerError(f"cannot list custody directory {display_path}: {exc}") from exc
+
+    for name in names:
+        if found == wanted:
+            return
+        try:
+            before = os.stat(name, dir_fd=directory_fd, follow_symlinks=False)
+        except OSError as exc:
+            raise LedgerError(
+                f"cannot inspect custody entry {display_path / name}: {exc}"
+            ) from exc
+
+        entry_path = display_path / name
+        if stat.S_ISREG(before.st_mode):
+            blob_id = _regular_git_blob_id_at(directory_fd, name, entry_path)
+            if blob_id in wanted:
+                found.add(blob_id)
+            continue
+        if not stat.S_ISDIR(before.st_mode):
+            continue
+
+        flags = (
+            os.O_RDONLY
+            | getattr(os, "O_CLOEXEC", 0)
+            | os.O_DIRECTORY
+            | os.O_NOFOLLOW
+        )
+        try:
+            child_fd = os.open(name, flags, dir_fd=directory_fd)
+        except OSError as exc:
+            raise LedgerError(
+                f"cannot open custody directory {entry_path}: {exc}"
+            ) from exc
+        try:
+            opened = os.fstat(child_fd)
+            if not stat.S_ISDIR(opened.st_mode):
+                raise LedgerError(f"custody entry is no longer a directory: {entry_path}")
+            if (opened.st_dev, opened.st_ino) != (before.st_dev, before.st_ino):
+                raise LedgerError(f"custody directory changed before traversal: {entry_path}")
+
+            _walk_custody_dir(child_fd, entry_path, wanted, found)
+
+            descriptor_after = os.fstat(child_fd)
+            pathname_after = os.stat(
+                name,
+                dir_fd=directory_fd,
+                follow_symlinks=False,
+            )
+            if (
+                not _same_stat_generation(opened, descriptor_after, _DIR_STABLE_FIELDS)
+                or not _same_stat_generation(opened, pathname_after, _DIR_STABLE_FIELDS)
+            ):
+                raise LedgerError(
+                    f"custody directory changed while traversing: {entry_path}"
+                )
+        except OSError as exc:
+            raise LedgerError(
+                f"cannot re-inspect custody directory {entry_path}: {exc}"
+            ) from exc
+        finally:
+            os.close(child_fd)
+
+
+def _custody_blob_ids(custody_dir: Path, wanted: set[str]) -> set[str]:
+    """Resolve wanted Git blobs only through retained descriptor-relative custody."""
+
+    _require_descriptor_relative_custody()
+    try:
+        pathname_before = custody_dir.stat(follow_symlinks=False)
+    except OSError as exc:
+        raise LedgerError(
+            f"cannot inspect custody directory {custody_dir}: {exc}"
+        ) from exc
+    if not stat.S_ISDIR(pathname_before.st_mode):
+        raise LedgerError(f"custody path is not a directory: {custody_dir}")
+
+    flags = (
+        os.O_RDONLY
+        | getattr(os, "O_CLOEXEC", 0)
+        | os.O_DIRECTORY
+        | os.O_NOFOLLOW
+    )
+    try:
+        root_fd = os.open(custody_dir, flags)
+    except OSError as exc:
+        raise LedgerError(f"cannot open custody directory {custody_dir}: {exc}") from exc
+
+    found: set[str] = set()
+    try:
+        opened = os.fstat(root_fd)
+        if not stat.S_ISDIR(opened.st_mode):
+            raise LedgerError(f"custody path is no longer a directory: {custody_dir}")
+        if (opened.st_dev, opened.st_ino) != (
+            pathname_before.st_dev,
+            pathname_before.st_ino,
+        ):
+            raise LedgerError(f"custody directory changed before traversal: {custody_dir}")
+
+        _walk_custody_dir(root_fd, custody_dir, wanted, found)
+
+        descriptor_after = os.fstat(root_fd)
+        pathname_after = custody_dir.stat(follow_symlinks=False)
+        if (
+            not _same_stat_generation(opened, descriptor_after, _DIR_STABLE_FIELDS)
+            or not _same_stat_generation(opened, pathname_after, _DIR_STABLE_FIELDS)
+        ):
+            raise LedgerError(
+                f"custody directory changed while traversing: {custody_dir}"
+            )
+    except OSError as exc:
+        raise LedgerError(
+            f"cannot re-inspect custody directory {custody_dir}: {exc}"
+        ) from exc
+    finally:
+        os.close(root_fd)
     return found
 
 
