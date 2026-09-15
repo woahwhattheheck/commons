@@ -4,7 +4,6 @@ import csv
 import hashlib
 import io
 import json
-import math
 import re
 import unicodedata
 from datetime import datetime, timezone
@@ -12,15 +11,20 @@ from typing import Any
 
 SCHEMA = "swarm-product-collision-preflight/v1"
 PROVIDERS = {"GITHUB_ISSUES", "GITHUB_PRS", "GITHUB_CODE", "SLACK"}
+REQUIRED_PROVIDERS = tuple(sorted(PROVIDERS))
 SEARCH_STATES = {"COMPLETE", "RATE_LIMITED", "TRUNCATED", "ERROR"}
 DURABLE_KINDS = {"GITHUB_ISSUE", "GITHUB_PR", "SLACK_MESSAGE"}
 DURABLE_CLAIMS = {"TAKE", "CLAIM"}
+SIGNATURE_AXES = ("actors", "objects", "actions")
 HEX64 = re.compile(r"^[0-9a-f]{64}$")
 TOKEN = re.compile(r"^[a-z0-9][a-z0-9._:/+-]{0,79}$")
 REF = re.compile(r"^[A-Za-z0-9][A-Za-z0-9._:/+-]{0,159}$")
+TOKEN_BOUNDARY = r"a-z0-9._:/+\-"
+
 
 class CollisionError(ValueError):
     pass
+
 
 def _pairs_no_dupes(pairs):
     out = {}
@@ -30,6 +34,7 @@ def _pairs_no_dupes(pairs):
         out[k] = v
     return out
 
+
 def load_json_strict(text: str) -> Any:
     def bad_constant(value):
         raise CollisionError(f"non-finite JSON number: {value}")
@@ -38,16 +43,20 @@ def load_json_strict(text: str) -> Any:
     except (json.JSONDecodeError, TypeError) as exc:
         raise CollisionError(str(exc)) from exc
 
+
 def _canon(value: Any) -> bytes:
     return json.dumps(value, ensure_ascii=False, sort_keys=True, separators=(",", ":"), allow_nan=False).encode("utf-8")
 
+
 def _sha(value: Any) -> str:
     return hashlib.sha256(_canon(value)).hexdigest()
+
 
 def _exact(obj: dict, keys: set[str], where: str) -> None:
     if not isinstance(obj, dict) or set(obj) != keys:
         got = sorted(obj) if isinstance(obj, dict) else type(obj).__name__
         raise CollisionError(f"{where}: exact keys required {sorted(keys)}; got {got}")
+
 
 def _string(value: Any, where: str, *, max_len: int = 300, pattern=None) -> str:
     if not isinstance(value, str) or not value or len(value) > max_len:
@@ -59,20 +68,22 @@ def _string(value: Any, where: str, *, max_len: int = 300, pattern=None) -> str:
         raise CollisionError(f"{where}: invalid format")
     return value
 
+
 def _int(value: Any, where: str, lo: int, hi: int) -> int:
     if isinstance(value, bool) or not isinstance(value, int) or not lo <= value <= hi:
         raise CollisionError(f"{where}: invalid integer")
     return value
+
 
 def _time(value: Any, where: str) -> datetime:
     s = _string(value, where, max_len=30)
     if not s.endswith("Z"):
         raise CollisionError(f"{where}: whole-second UTC Z timestamp required")
     try:
-        dt = datetime.strptime(s, "%Y-%m-%dT%H:%M:%SZ").replace(tzinfo=timezone.utc)
+        return datetime.strptime(s, "%Y-%m-%dT%H:%M:%SZ").replace(tzinfo=timezone.utc)
     except ValueError as exc:
         raise CollisionError(f"{where}: invalid timestamp") from exc
-    return dt
+
 
 def _tokens(value: Any, where: str) -> tuple[str, ...]:
     if not isinstance(value, list) or not 1 <= len(value) <= 32:
@@ -87,16 +98,57 @@ def _tokens(value: Any, where: str) -> tuple[str, ...]:
         raise CollisionError(f"{where}: duplicate token")
     return tuple(sorted(vals))
 
-def _signature(obj: Any, where: str) -> dict[str, tuple[str, ...]]:
-    _exact(obj, {"actors", "objects", "actions"}, where)
-    return {k: _tokens(obj[k], f"{where}.{k}") for k in ("actors", "objects", "actions")}
 
-def _semantic_match(candidate: dict, hit: dict) -> bool:
+def _signature(obj: Any, where: str) -> dict[str, tuple[str, ...]]:
+    _exact(obj, set(SIGNATURE_AXES), where)
+    return {k: _tokens(obj[k], f"{where}.{k}") for k in SIGNATURE_AXES}
+
+
+def _query_covers_terms(query: str, terms: tuple[str, ...]) -> bool:
+    lowered = query.lower()
+    for term in terms:
+        if re.search(rf"(?<![{TOKEN_BOUNDARY}]){re.escape(term)}(?![{TOKEN_BOUNDARY}])", lowered) is None:
+            return False
+    return True
+
+
+def _validate_family_policy(candidate: dict, families: dict[str, tuple[str, ...]]) -> dict[str, str]:
+    candidate_tokens = [token for axis in SIGNATURE_AXES for token in candidate["signature"][axis]]
+    if len(candidate_tokens) != len(set(candidate_tokens)):
+        raise CollisionError("candidate.signature tokens must be unique across axes")
+    candidate_set = set(candidate_tokens)
+
+    anchor_to_family: dict[str, str] = {}
+    term_to_family: dict[str, str] = {}
+    for fid, terms in families.items():
+        anchors = candidate_set.intersection(terms)
+        if len(anchors) != 1:
+            raise CollisionError(f"families.{fid}: exactly one candidate signature anchor term required")
+        anchor = next(iter(anchors))
+        if anchor in anchor_to_family:
+            raise CollisionError(f"candidate signature anchor mapped by multiple families: {anchor}")
+        anchor_to_family[anchor] = fid
+        for term in terms:
+            prior = term_to_family.get(term)
+            if prior is not None and prior != fid:
+                raise CollisionError(f"family term appears in multiple families: {term}")
+            term_to_family[term] = fid
+
+    missing = sorted(candidate_set - set(anchor_to_family))
+    if missing:
+        raise CollisionError(f"candidate signature tokens missing semantic families: {','.join(missing)}")
+    return term_to_family
+
+
+def _semantic_match(candidate: dict, hit: dict, term_to_family: dict[str, str]) -> bool:
     if hit["operation_id"] == candidate["operation_id"]:
         return True
-    a = candidate["signature"]
-    b = hit["signature"]
-    return all(set(a[k]).intersection(b[k]) for k in ("actors", "objects", "actions"))
+
+    def canonical(sig: dict, axis: str) -> set[str]:
+        return {term_to_family.get(token, f"literal:{token}") for token in sig[axis]}
+
+    return all(canonical(candidate["signature"], axis).intersection(canonical(hit["signature"], axis)) for axis in SIGNATURE_AXES)
+
 
 def _validate_input(raw: Any) -> dict:
     _exact(raw, {"schema", "evaluation_time", "max_age_seconds", "required_providers", "candidate", "families", "searches"}, "root")
@@ -104,12 +156,13 @@ def _validate_input(raw: Any) -> dict:
         raise CollisionError("unsupported schema")
     evaluation = _time(raw["evaluation_time"], "evaluation_time")
     max_age = _int(raw["max_age_seconds"], "max_age_seconds", 1, 86400)
+
     providers = raw["required_providers"]
-    if not isinstance(providers, list) or not providers or len(providers) > len(PROVIDERS):
-        raise CollisionError("required_providers: invalid list")
-    if any(p not in PROVIDERS for p in providers) or len(set(providers)) != len(providers):
-        raise CollisionError("required_providers: invalid/duplicate provider")
-    providers = tuple(sorted(providers))
+    if not isinstance(providers, list) or len(providers) != len(PROVIDERS) or set(providers) != PROVIDERS:
+        raise CollisionError(f"required_providers must equal code-owned provider universe {list(REQUIRED_PROVIDERS)}")
+    if len(set(providers)) != len(providers):
+        raise CollisionError("required_providers: duplicate provider")
+    providers = REQUIRED_PROVIDERS
 
     c = raw["candidate"]
     _exact(c, {"operation_id", "seat_id", "project", "title", "created_at", "signature"}, "candidate")
@@ -127,13 +180,14 @@ def _validate_input(raw: Any) -> dict:
     fams = raw["families"]
     if not isinstance(fams, list) or not 1 <= len(fams) <= 32:
         raise CollisionError("families: 1..32 required")
-    families = {}
+    families: dict[str, tuple[str, ...]] = {}
     for i, fam in enumerate(fams):
         _exact(fam, {"family_id", "terms"}, f"families[{i}]")
         fid = _string(fam["family_id"], f"families[{i}].family_id", max_len=80, pattern=TOKEN)
         if fid in families:
             raise CollisionError("duplicate family_id")
         families[fid] = _tokens(fam["terms"], f"families[{i}].terms")
+    term_to_family = _validate_family_policy(candidate, families)
 
     searches_raw = raw["searches"]
     if not isinstance(searches_raw, list) or len(searches_raw) > 256:
@@ -150,6 +204,8 @@ def _validate_input(raw: Any) -> dict:
         if fid not in families:
             raise CollisionError(f"{where}.family_id: unknown")
         query = _string(search["query"], f"{where}.query", max_len=500)
+        if not _query_covers_terms(query, families[fid]):
+            raise CollisionError(f"{where}.query: must contain every declared term for family {fid}")
         observed_dt = _time(search["observed_at"], f"{where}.observed_at")
         if observed_dt > evaluation:
             raise CollisionError(f"{where}.observed_at: future")
@@ -175,19 +231,16 @@ def _validate_input(raw: Any) -> dict:
             url = _string(hit["url"], f"{hw}.url", max_len=500)
             if not url.startswith("https://"):
                 raise CollisionError(f"{hw}.url: https required")
-            kind = _string(hit["kind"], f"{hw}.kind", max_len=40, pattern=REF)
-            claim_state = _string(hit["claim_state"], f"{hw}.claim_state", max_len=40, pattern=REF)
-            digest = _string(hit["evidence_sha256"], f"{hw}.evidence_sha256", max_len=64, pattern=HEX64)
             hits.append({
                 "hit_id": hid,
                 "url": url,
                 "created_at": _time(hit["created_at"], f"{hw}.created_at"),
-                "kind": kind,
-                "claim_state": claim_state,
+                "kind": _string(hit["kind"], f"{hw}.kind", max_len=40, pattern=REF),
+                "claim_state": _string(hit["claim_state"], f"{hw}.claim_state", max_len=40, pattern=REF),
                 "operation_id": _string(hit["operation_id"], f"{hw}.operation_id", max_len=160, pattern=REF),
                 "owner": _string(hit["owner"], f"{hw}.owner", max_len=120, pattern=REF),
                 "signature": _signature(hit["signature"], f"{hw}.signature"),
-                "evidence_sha256": digest,
+                "evidence_sha256": _string(hit["evidence_sha256"], f"{hw}.evidence_sha256", max_len=64, pattern=HEX64),
             })
         root_payload = {
             "provider": provider,
@@ -201,12 +254,30 @@ def _validate_input(raw: Any) -> dict:
         retained_root = _string(search["retained_root"], f"{where}.retained_root", max_len=64, pattern=HEX64)
         if retained_root != expected_root:
             raise CollisionError(f"{where}.retained_root mismatch")
-        searches.append({"provider": provider, "family_id": fid, "query": query, "observed_at": observed_dt, "state": state, "hits": hits, "retained_root": retained_root})
+        searches.append({
+            "provider": provider,
+            "family_id": fid,
+            "query": query,
+            "observed_at": observed_dt,
+            "state": state,
+            "hits": hits,
+            "retained_root": retained_root,
+        })
 
-    return {"evaluation": evaluation, "max_age": max_age, "providers": providers, "candidate": candidate, "families": families, "searches": searches}
+    return {
+        "evaluation": evaluation,
+        "max_age": max_age,
+        "providers": providers,
+        "candidate": candidate,
+        "families": families,
+        "term_to_family": term_to_family,
+        "searches": searches,
+    }
+
 
 def _fmt_time(dt: datetime) -> str:
     return dt.astimezone(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+
 
 def _packet(raw: Any) -> dict:
     data = _validate_input(raw)
@@ -223,6 +294,11 @@ def _packet(raw: Any) -> dict:
             age = (data["evaluation"] - s["observed_at"]).total_seconds()
             if age > data["max_age"]:
                 reasons.append(f"STALE_SEARCH:{provider}:{fid}")
+            for hit in s["hits"]:
+                if hit["created_at"] > data["evaluation"]:
+                    reasons.append(f"FUTURE_HIT:{hit['hit_id']}")
+                if hit["created_at"] > s["observed_at"]:
+                    reasons.append(f"HIT_AFTER_SEARCH_OBSERVATION:{hit['hit_id']}")
 
     candidate = data["candidate"]
     matches = {}
@@ -230,11 +306,15 @@ def _packet(raw: Any) -> dict:
         for hit in s["hits"]:
             if hit["kind"] not in DURABLE_KINDS or hit["claim_state"] not in DURABLE_CLAIMS:
                 continue
-            if not _semantic_match(candidate, hit):
+            if not _semantic_match(candidate, hit, data["term_to_family"]):
                 continue
             core = {
-                "hitId": hit["hit_id"], "url": hit["url"], "createdAt": _fmt_time(hit["created_at"]),
-                "kind": hit["kind"], "claimState": hit["claim_state"], "operationId": hit["operation_id"],
+                "hitId": hit["hit_id"],
+                "url": hit["url"],
+                "createdAt": _fmt_time(hit["created_at"]),
+                "kind": hit["kind"],
+                "claimState": hit["claim_state"],
+                "operationId": hit["operation_id"],
                 "owner": hit["owner"],
                 "relation": "EARLIER_OR_EQUAL" if hit["created_at"] <= candidate["created_at"] else "LATER",
             }
@@ -252,8 +332,14 @@ def _packet(raw: Any) -> dict:
                 row["evidenceOrigins"] = [origin]
                 matches[hit["hit_id"]] = row
 
-    earlier = sorted((r for r in matches.values() if r["relation"] == "EARLIER_OR_EQUAL"), key=lambda r: (r["createdAt"], r["hitId"]))
-    later = sorted((r for r in matches.values() if r["relation"] == "LATER"), key=lambda r: (r["createdAt"], r["hitId"]))
+    earlier = sorted(
+        (r for r in matches.values() if r["relation"] == "EARLIER_OR_EQUAL"),
+        key=lambda r: (r["createdAt"], r["hitId"]),
+    )
+    later = sorted(
+        (r for r in matches.values() if r["relation"] == "LATER"),
+        key=lambda r: (r["createdAt"], r["hitId"]),
+    )
     if reasons:
         status = "UNKNOWN_HOLD"
     elif earlier:
@@ -267,10 +353,17 @@ def _packet(raw: Any) -> dict:
         "authority": "EVIDENCE_PREFLIGHT_ONLY_NO_TAKE_OR_SEND_AUTHORITY",
         "evaluationTime": _fmt_time(data["evaluation"]),
         "candidate": {
-            "operationId": candidate["operation_id"], "seatId": candidate["seat_id"], "project": candidate["project"],
-            "title": candidate["title"], "createdAt": _fmt_time(candidate["created_at"]),
+            "operationId": candidate["operation_id"],
+            "seatId": candidate["seat_id"],
+            "project": candidate["project"],
+            "title": candidate["title"],
+            "createdAt": _fmt_time(candidate["created_at"]),
         },
-        "coverage": {"requiredProviders": list(data["providers"]), "familyIds": sorted(data["families"]), "maxAgeSeconds": data["max_age"]},
+        "coverage": {
+            "requiredProviders": list(data["providers"]),
+            "familyIds": sorted(data["families"]),
+            "maxAgeSeconds": data["max_age"],
+        },
         "reasons": sorted(set(reasons)),
         "canonicalPriorCarrier": earlier[0] if earlier else None,
         "earlierCollisions": earlier,
@@ -281,51 +374,101 @@ def _packet(raw: Any) -> dict:
             "max_age_seconds": data["max_age"],
             "required_providers": list(data["providers"]),
             "candidate": {
-                "operation_id": candidate["operation_id"], "seat_id": candidate["seat_id"],
-                "project": candidate["project"], "title": candidate["title"],
+                "operation_id": candidate["operation_id"],
+                "seat_id": candidate["seat_id"],
+                "project": candidate["project"],
+                "title": candidate["title"],
                 "created_at": _fmt_time(candidate["created_at"]),
-                "signature": {k: list(candidate["signature"][k]) for k in ("actors", "objects", "actions")},
+                "signature": {k: list(candidate["signature"][k]) for k in SIGNATURE_AXES},
             },
-            "families": [{"family_id": fid, "terms": list(data["families"][fid])} for fid in sorted(data["families"])],
+            "families": [
+                {"family_id": fid, "terms": list(data["families"][fid])}
+                for fid in sorted(data["families"])
+            ],
             "searches": sorted([
                 {
-                    "provider": s["provider"], "family_id": s["family_id"], "query": s["query"],
-                    "observed_at": _fmt_time(s["observed_at"]), "state": s["state"],
+                    "provider": s["provider"],
+                    "family_id": s["family_id"],
+                    "query": s["query"],
+                    "observed_at": _fmt_time(s["observed_at"]),
+                    "state": s["state"],
                     "retained_root": s["retained_root"],
-                    "hits": sorted([{
-                        "hit_id": h["hit_id"], "url": h["url"], "created_at": _fmt_time(h["created_at"]),
-                        "kind": h["kind"], "claim_state": h["claim_state"], "operation_id": h["operation_id"],
-                        "owner": h["owner"], "signature": {k: list(h["signature"][k]) for k in ("actors", "objects", "actions")},
-                        "evidence_sha256": h["evidence_sha256"],
-                    } for h in s["hits"]], key=lambda h: h["hit_id"]),
-                } for s in data["searches"]
+                    "hits": sorted([
+                        {
+                            "hit_id": h["hit_id"],
+                            "url": h["url"],
+                            "created_at": _fmt_time(h["created_at"]),
+                            "kind": h["kind"],
+                            "claim_state": h["claim_state"],
+                            "operation_id": h["operation_id"],
+                            "owner": h["owner"],
+                            "signature": {k: list(h["signature"][k]) for k in SIGNATURE_AXES},
+                            "evidence_sha256": h["evidence_sha256"],
+                        }
+                        for h in s["hits"]
+                    ], key=lambda h: h["hit_id"]),
+                }
+                for s in data["searches"]
             ], key=lambda s: (s["provider"], s["family_id"])),
         }),
     }
     return packet
 
+
 def _markdown(packet: dict) -> str:
-    def esc(s): return str(s).replace("`", "'").replace("|", "\\|")
-    lines = ["# Product-Lane Collision Preflight", "", f"- Status: **{esc(packet['status'])}**", f"- Candidate: `{esc(packet['candidate']['operationId'])}`", f"- Authority: `{packet['authority']}`", f"- Evaluation: `{packet['evaluationTime']}`", ""]
+    def esc(s):
+        return str(s).replace("`", "'").replace("|", "\\|")
+
+    lines = [
+        "# Product-Lane Collision Preflight",
+        "",
+        f"- Status: **{esc(packet['status'])}**",
+        f"- Candidate: `{esc(packet['candidate']['operationId'])}`",
+        f"- Authority: `{packet['authority']}`",
+        f"- Evaluation: `{packet['evaluationTime']}`",
+        "",
+    ]
     if packet["reasons"]:
         lines += ["## Hold reasons"] + [f"- `{esc(r)}`" for r in packet["reasons"]] + [""]
-    lines += ["## Durable semantic matches", "", "| Relation | Evidence origins | Owner | Operation | Created | URL |", "|---|---|---|---|---|---|"]
+    lines += [
+        "## Durable semantic matches",
+        "",
+        "| Relation | Evidence origins | Owner | Operation | Created | URL |",
+        "|---|---|---|---|---|---|",
+    ]
     rows = packet["earlierCollisions"] + packet["laterDuplicates"]
     if not rows:
         lines.append("| none | - | - | - | - | - |")
     else:
         for r in rows:
-            lines.append(f"| {r['relation']} | {esc(','.join(r['evidenceOrigins']))} | {esc(r['owner'])} | {esc(r['operationId'])} | {r['createdAt']} | {esc(r['url'])} |")
-    lines += ["", "> CLEAR means only that the supplied provider census was complete and collision-free. It is not TAKE, send, merge, revenue, or payment authority.", ""]
+            lines.append(
+                f"| {r['relation']} | {esc(','.join(r['evidenceOrigins']))} | {esc(r['owner'])} | "
+                f"{esc(r['operationId'])} | {r['createdAt']} | {esc(r['url'])} |"
+            )
+    lines += [
+        "",
+        "> CLEAR means only that the supplied provider census was complete and collision-free. "
+        "It is not TAKE, send, merge, revenue, or payment authority.",
+        "",
+    ]
     return "\n".join(lines)
+
 
 def _csv(packet: dict) -> str:
     out = io.StringIO(newline="")
     w = csv.writer(out, lineterminator="\n")
     w.writerow(["relation", "evidence_origins", "owner", "operation_id", "created_at", "url"])
     for r in packet["earlierCollisions"] + packet["laterDuplicates"]:
-        w.writerow([r["relation"], ";".join(r["evidenceOrigins"]), r["owner"], r["operationId"], r["createdAt"], r["url"]])
+        w.writerow([
+            r["relation"],
+            ";".join(r["evidenceOrigins"]),
+            r["owner"],
+            r["operationId"],
+            r["createdAt"],
+            r["url"],
+        ])
     return out.getvalue()
+
 
 def compile_preflight(raw: Any) -> dict[str, bytes]:
     packet = _packet(raw)
@@ -338,7 +481,13 @@ def compile_preflight(raw: Any) -> dict[str, bytes]:
         "markdownSha256": hashlib.sha256(md).hexdigest(),
         "csvSha256": hashlib.sha256(table).hexdigest(),
     }
-    return {"packet.json": packet_bytes, "review.md": md, "collisions.csv": table, "receipt.json": _canon(receipt) + b"\n"}
+    return {
+        "packet.json": packet_bytes,
+        "review.md": md,
+        "collisions.csv": table,
+        "receipt.json": _canon(receipt) + b"\n",
+    }
+
 
 def verify_bundle(raw: Any, bundle: dict[str, bytes]) -> bool:
     expected = compile_preflight(raw)
