@@ -37,6 +37,7 @@ Hostile coverage includes exact derivative lineage, wrong channel/territory, fut
 - `README.md` — `b421b3ff795eaa1c7e22651af61b4ade20e641608f12d62aac151e5542f09d8a`
 - `desk.html` — `a8d8834e746d6885400e4d5becdbc176e273eb774662667d9c5115e4a4615b34`
 - `example_manifest.json` — `f75d7f87063942def74242625dfe2385935b2f8ae63a2629379ad7c8ddbc3ce0`
-- `.github/workflows/hive-media-rights-ops.yml` — `5d6bbe03732b02bf544d0fdfe069260c17490a1303f009c29253d0b9f831209a`
 
-Hosted CI is not asserted here. Exact-head workflow/status state must be read after publication. PR, guarded merge, and literal-main readback receipts are added to #14665 / the resulting PR after connector writes.
+## Hosted validation note
+
+A branch-only path-scoped workflow run on head `093c7b9dec4a1f7144a3c6b21ed310d2fea1019a` completed successfully on Python 3.11 and 3.13, including syntax, the 27-test suite in normal and `-O` modes, and the CLI smoke. The product/test blobs in that run are the exact frozen blobs listed above. Before integration, the added workflow file was intentionally removed because Commons' repository-level `workflow-surface` guard reported the active-workflow inventory already over budget; this shipment therefore does **not** add another active workflow. Final-head repository status, guarded merge, and literal-main readback receipts are recorded on #14665 / PR #14670.
