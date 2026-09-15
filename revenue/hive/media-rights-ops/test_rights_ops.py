@@ -237,6 +237,44 @@ class DeskTests(unittest.TestCase):
             r.publish_export(self.db, out, "2026-12-10T00:00:00Z")
         self.assertEqual(list(real.iterdir()), [])
 
+    def test_export_open_failure_leaves_empty_directory_and_clean_retry(self):
+        out = self.root / "bundle-open-fail"
+        out.mkdir()
+        real_open = e.os.open
+        fired = False
+        def failing_open(path, flags, mode=0o777, *, dir_fd=None):
+            nonlocal fired
+            if dir_fd is None and Path(path) == out and not fired:
+                fired = True
+                raise OSError("injected directory open failure")
+            if dir_fd is None:
+                return real_open(path, flags, mode)
+            return real_open(path, flags, mode, dir_fd=dir_fd)
+        with mock.patch.object(e.os, "open", side_effect=failing_open):
+            with self.assertRaisesRegex(OSError, "injected directory open failure"):
+                r.publish_export(self.db, out, "2026-12-10T00:00:00Z")
+        self.assertTrue(fired)
+        self.assertEqual(list(out.iterdir()), [])
+        self.assertEqual(r.publish_export(self.db, out, "2026-12-10T00:00:00Z")["status"], "EXPORTED")
+
+    def test_export_fstat_failure_closes_descriptor_and_clean_retry(self):
+        out = self.root / "bundle-fstat-fail"
+        out.mkdir()
+        real_fstat = e.os.fstat
+        fired = False
+        def failing_fstat(fd):
+            nonlocal fired
+            if not fired:
+                fired = True
+                raise OSError("injected directory fstat failure")
+            return real_fstat(fd)
+        with mock.patch.object(e.os, "fstat", side_effect=failing_fstat):
+            with self.assertRaisesRegex(OSError, "injected directory fstat failure"):
+                r.publish_export(self.db, out, "2026-12-10T00:00:00Z")
+        self.assertTrue(fired)
+        self.assertEqual(list(out.iterdir()), [])
+        self.assertEqual(r.publish_export(self.db, out, "2026-12-10T00:00:00Z")["status"], "EXPORTED")
+
     def test_export_directory_swap_before_open_cannot_redirect(self):
         out = self.root / "bundle-preopen-race"
         retained = self.root / "bundle-preopen-retained"
