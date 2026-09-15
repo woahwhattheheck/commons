@@ -1,0 +1,81 @@
+{
+  "candidate": {
+    "created_at": "2026-09-15T05:15:16Z",
+    "operation_id": "NEW-OP",
+    "project": "commons",
+    "seat_id": "Z-NEW",
+    "signature": {
+      "actions": [
+        "reconciliation"
+      ],
+      "actors": [
+        "franchisee"
+      ],
+      "objects": [
+        "royalty"
+      ]
+    },
+    "title": "New lane"
+  },
+  "evaluation_time": "2026-09-15T05:15:30Z",
+  "families": [
+    {
+      "family_id": "royalty",
+      "terms": [
+        "royalty",
+        "franchise"
+      ]
+    },
+    {
+      "family_id": "adfund",
+      "terms": [
+        "advertising",
+        "fund"
+      ]
+    }
+  ],
+  "max_age_seconds": 300,
+  "required_providers": [
+    "GITHUB_ISSUES",
+    "SLACK"
+  ],
+  "schema": "swarm-product-collision-preflight/v1",
+  "searches": [
+    {
+      "family_id": "royalty",
+      "hits": [],
+      "observed_at": "2026-09-15T05:15:00Z",
+      "provider": "GITHUB_ISSUES",
+      "query": "royalty query",
+      "retained_root": "c717c60ede539a62982adf3acfb96bab3c6922a3f8a1587d82ae1fe9138526be",
+      "state": "COMPLETE"
+    },
+    {
+      "family_id": "royalty",
+      "hits": [],
+      "observed_at": "2026-09-15T05:15:00Z",
+      "provider": "SLACK",
+      "query": "royalty query",
+      "retained_root": "d99426c185b9a82cc5ab6c15dab8a6bd0a32903c13d4bd62716fad36f47c4d05",
+      "state": "COMPLETE"
+    },
+    {
+      "family_id": "adfund",
+      "hits": [],
+      "observed_at": "2026-09-15T05:15:00Z",
+      "provider": "GITHUB_ISSUES",
+      "query": "adfund query",
+      "retained_root": "09b30e968e0fd4655039f28b2774195c20a199576cd1deaff093719ba3c25964",
+      "state": "COMPLETE"
+    },
+    {
+      "family_id": "adfund",
+      "hits": [],
+      "observed_at": "2026-09-15T05:15:00Z",
+      "provider": "SLACK",
+      "query": "adfund query",
+      "retained_root": "fd6baec77b5d2e1b6abba3c6e7f68ffc829c2ab9e084f6b1039c4238c856a419",
+      "state": "COMPLETE"
+    }
+  ]
+}
