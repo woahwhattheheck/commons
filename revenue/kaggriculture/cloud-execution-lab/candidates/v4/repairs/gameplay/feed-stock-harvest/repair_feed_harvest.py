@@ -10,7 +10,7 @@ import ast
 import hashlib
 
 ORIGINAL_FUNCTION_SHA256 = 'c77803fb4ee1f9113c2a6105a103db2ef8332d1bf02c07549329debc6efc1956'
-REPAIRED_FUNCTION_SHA256 = 'a9b431161b6b9e619f0ce1c645a3a406300b6c4c720dea445c150c5cd03d2d91'
+REPAIRED_FUNCTION_SHA256 = 'b5b9d01c7d14a5ba3844bad1b48acd866ff29b7ab47944f831038a3638afa4fb'
 REASON = 'protected_feed_has_uncredited_wheat_harvest'
 
 EDITS = (
@@ -22,7 +22,9 @@ EDITS = (
      '                    observed_tile = farm[\'tiles\'][pos[1]][pos[0]]\n'
      '                    if (isinstance(observed_tile, dict)\n'
      "                            and observed_tile.get('kind') == 'PLANT'\n"
-     "                            and observed_tile.get('crop') == 'WHEAT'):\n"
+     "                            and observed_tile.get('crop') == 'WHEAT'\n"
+     "                            and step // 24 - _whole(observed_tile['planted_day'])\n"
+     "                            >= _whole(mechanics.CROPS['WHEAT']['first_yield_day'])):\n"
      '                        wheat_harvests.append((actor, step))\n'),
     ('        if not deficit:continue\n',
      '        if not deficit:continue\n'
