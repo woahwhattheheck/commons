@@ -235,9 +235,15 @@ def validate_supplier(raw: Any, requirement_ids: set[str]) -> dict[str, Any]:
 
 def _effects_for(req_id: str, evidence_ids: Sequence[str], evidence: Mapping[str, Mapping[str, Any]]) -> dict[str, list[str]]:
     grouped = {"support": [], "constraint": [], "contradiction": []}
-    for eid in evidence_ids:
+    linked = set(evidence_ids)
+    for eid in sorted(evidence):
         for effect in evidence[eid]["effects"]:
-            if effect["requirement_id"] == req_id:
+            if effect["requirement_id"] != req_id:
+                continue
+            # Supporting/constraint evidence must be explicitly linked by the response,
+            # but contradictory evidence is globally material and cannot be hidden by
+            # omitting its ID from a response.
+            if eid in linked or effect["effect"] == "contradiction":
                 grouped[effect["effect"]].append(eid)
     for values in grouped.values():
         values.sort()
@@ -275,6 +281,8 @@ def compile_report(profile: Mapping[str, Any], profile_sha256: str, supplier_raw
             if effects["contradiction"]:
                 state = "blocker" if req["critical"] else "partial"
                 reason_codes.append("CONTRADICTORY_EVIDENCE")
+                if any(eid not in evidence_ids for eid in effects["contradiction"]):
+                    reason_codes.append("UNLINKED_CONTRADICTION")
                 contradictions.append({
                     "requirement_id": rid,
                     "evidence_ids": effects["contradiction"],
