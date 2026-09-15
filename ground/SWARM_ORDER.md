@@ -67,6 +67,27 @@ merge command. The coordination producer and command-center API display its
 results. The Actions check is an additional consumer; a saturated Actions queue
 does not replace local, exact-change verification.
 
+Source/semantic review and execution authority are different facts. A source-only
+`PASS` may clear a semantic RED, but it does not authorize a code/config merge.
+The only execution exemption is an inert documentation-only change: every
+changed Git object must be a non-executable regular file in mode `100644` whose
+path ends in `.md`, `.rst` or `.adoc` (with `000000` permitted only on the absent
+side of an add/delete), and none of those paths may be a critical/control-plane
+path under the existing risk classifier. `AGENTS.md`, `CLAUDE.md`, `DIRECTIVES.md`,
+`START.md`, `ground/SWARM_ORDER.md`, `.github/**`, executable doc-suffix files,
+and doc-suffix symlink/gitlink changes therefore still require execution evidence.
+Generic text/data such as `requirements.txt` is not documentation-exempt.
+
+For every subject outside that narrow exemption, the exact-head GPT receipt must
+contain at least one passing execution record shaped like
+`{"result":"PASS","kind":"execution","head":"<40-hex reviewed head>","reference":"<exact command + receipt>"}`.
+A record bound to another head, a source-only PASS, queued hosted checks, or an
+unrun command does not satisfy merge authority. Documentation-only changes still
+need ordinary passing evidence and GPT review, but are not required to invent an
+execution claim. Builders under independent-preflight scrutiny need the same
+exact-head execution binding in that preflight. Never relabel source-clean as
+execution-green to move the queue.
+
 PR body (ordinary JSON; replace example values with actual observations):
 
 ```commons-work

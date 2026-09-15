@@ -23,6 +23,8 @@ POLICY = "ground/SWARM_ORDER.md"
 RELIABILITY = "ground/SWARM_RELIABILITY.json"
 GPT = "gpt"
 SHA = re.compile(r"^[0-9a-f]{40}$")
+DOC_ONLY_SUFFIXES = frozenset({".md", ".rst", ".adoc"})
+DOC_ONLY_FILE_MODES = frozenset({"100644"})
 
 
 def block(text, fence):
@@ -81,6 +83,33 @@ def evidence_pass(items):
                     for e in items))
 
 
+def execution_required(changes):
+    """Only inert non-executable documentation changes may omit execution evidence."""
+    paths = [change[1] for change in changes if len(change) > 1]
+    if not paths or risk(paths) == "critical":
+        return True
+    for change in changes:
+        if len(change) < 4:
+            return True
+        _, path, old_mode, new_mode = change[:4]
+        if Path(path).suffix.lower() not in DOC_ONLY_SUFFIXES:
+            return True
+        for mode in (old_mode, new_mode):
+            if mode != "000000" and mode not in DOC_ONLY_FILE_MODES:
+                return True
+    return False
+
+
+def exact_execution_pass(items, head):
+    """Whether evidence contains a passing execution receipt for these exact bytes."""
+    return (SHA.fullmatch(head or "") is not None
+            and isinstance(items, list)
+            and any(isinstance(e, dict) and e.get("result") == "PASS"
+                    and e.get("kind") == "execution" and e.get("head") == head
+                    and isinstance(e.get("reference"), str) and e["reference"].strip()
+                    for e in items))
+
+
 def change(git, main, pull):
     head = pull.get("headRefOid") or (pull.get("head") or {}).get("sha")
     base_ref = pull.get("baseRefName") or (pull.get("base") or {}).get("ref")
@@ -100,6 +129,7 @@ def change(git, main, pull):
     return {
         "number": pull["number"], "head": head, "main": main, "merge_base": base,
         "content_key": key, "paths": paths, "risk": risk(paths), "work": metadata,
+        "execution_required": execution_required(changes),
         "read_set": {p: object_at(git, main, p) for p in reads},
         "base_ref": base_ref,
         "draft": bool(pull.get("isDraft", pull.get("draft", False))),
@@ -114,6 +144,7 @@ def review_template(subject):
             "operation": subject["work"].get("operation"),
             "work_sha256": work_digest(subject["work"]),
             "risk": subject["risk"], "read_set": subject["read_set"],
+            "execution_required": subject["execution_required"],
             "reviewer": {"seat": "", "family": GPT, "session_ref": ""},
             "summary": "", "evidence": []}
 
@@ -174,11 +205,18 @@ def decision(git, subject, reviews):
             return result("HOLD", "review subject changed: " + field)
     if not evidence_pass(receipt.get("evidence")):
         return result("HOLD", "GPT receipt lacks passing verification evidence")
+    needs_execution = subject["execution_required"]
+    if receipt.get("execution_required", needs_execution) != needs_execution:
+        return result("HOLD", "review execution requirement does not match changed objects")
+    if needs_execution and not exact_execution_pass(receipt.get("evidence"), subject["head"]):
+        return result("HOLD", "non-document change lacks exact-head execution evidence")
     tier = scrutiny(work["seat"], read_outcomes(git, subject["main"]))
     if tier == "individual":
         preflight = receipt.get("preflight") or {}
         if (not preflight.get("seat") or preflight["seat"].casefold() == work["seat"].casefold()
-                or not evidence_pass(preflight.get("evidence"))):
+                or not evidence_pass(preflight.get("evidence"))
+                or (needs_execution
+                    and not exact_execution_pass(preflight.get("evidence"), subject["head"]))):
             return result("HOLD", "recent evidenced regression requires independent preflight")
     base = receipt.get("reviewed_base")
     if not SHA.fullmatch(base or "") or git.merge_base(base, subject["main"]) != base:
