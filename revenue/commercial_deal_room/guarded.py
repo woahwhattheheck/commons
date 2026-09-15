@@ -39,7 +39,6 @@ _MESSAGE_EVENT_TYPES = frozenset(
 # cannot consume unbounded recursion or memory before normal packet caps run.
 _MAX_SNAPSHOT_DEPTH = 64
 _MAX_SNAPSHOT_NODES = 250_000
-_MISSING = object()
 
 
 class _SnapshotState:
@@ -47,7 +46,7 @@ class _SnapshotState:
 
     def __init__(self) -> None:
         self.active: set[int] = set()
-        self.memo: dict[int, Any] = {}
+        self.memo: dict[int, tuple[Any, Any]] = {}
         self.nodes = 0
 
 
@@ -82,9 +81,12 @@ def _detach_inner(value: Any, *, path: str, depth: int, state: _SnapshotState) -
         identity = id(value)
         if identity in state.active:
             raise ContractError(f"{path} contains a cyclic mapping")
-        cached = state.memo.get(identity, _MISSING)
-        if cached is not _MISSING:
-            return cached
+        cached = state.memo.get(identity)
+        if cached is not None:
+            source, detached = cached
+            if source is not value:
+                raise ContractError(f"{path} snapshot identity collision")
+            return detached
 
         try:
             keys = tuple(value.keys())
@@ -92,7 +94,7 @@ def _detach_inner(value: Any, *, path: str, depth: int, state: _SnapshotState) -
             raise ContractError(f"{path} could not be snapshotted") from exc
 
         out: dict[Any, Any] = {}
-        state.memo[identity] = out
+        state.memo[identity] = (value, out)
         state.active.add(identity)
         try:
             for key in keys:
@@ -119,9 +121,12 @@ def _detach_inner(value: Any, *, path: str, depth: int, state: _SnapshotState) -
         identity = id(value)
         if identity in state.active:
             raise ContractError(f"{path} contains a cyclic sequence")
-        cached = state.memo.get(identity, _MISSING)
-        if cached is not _MISSING:
-            return cached
+        cached = state.memo.get(identity)
+        if cached is not None:
+            source, detached = cached
+            if source is not value:
+                raise ContractError(f"{path} snapshot identity collision")
+            return detached
 
         try:
             items = tuple(value)
@@ -129,7 +134,7 @@ def _detach_inner(value: Any, *, path: str, depth: int, state: _SnapshotState) -
             raise ContractError(f"{path} could not be snapshotted") from exc
 
         out: list[Any] = []
-        state.memo[identity] = out
+        state.memo[identity] = (value, out)
         state.active.add(identity)
         try:
             for index, item in enumerate(items):
