@@ -1,3 +1,4 @@
+import hashlib
 import json
 import tempfile
 import unittest
@@ -26,6 +27,32 @@ def row(qa, user, category="single", answer="A", d="four", question="What action
         "qa_id": str(qa), "source": "HARn", "path": f"HARn/a/user{user}/trial",
         "category": category, "question": question,
         "A": "one", "B": "two", "C": "three", "D": d, "answer": answer,
+    }
+
+
+def authorization(scope="conditional_after_registration_and_rule_acceptance"):
+    return {
+        "received": True,
+        "received_date": "2026-09-14",
+        "source": "CUHK-X Challenge Organizing Committee",
+        "scope": scope,
+        "official_mirrors_only": True,
+        "noncommercial_competition_use_only": True,
+    }
+
+
+def ready_state(artifact: Path):
+    return {
+        "written_dataset_authorization": authorization(),
+        "official_registration_complete": True,
+        "kaggle_rules_accepted": True,
+        "dataset_terms_accepted": True,
+        "submission_authorized": True,
+        "validation": {"subject_disjoint": True, "exact_accuracy": 0.9},
+        "submission": {
+            "path": str(artifact),
+            "sha256": hashlib.sha256(artifact.read_bytes()).hexdigest(),
+        },
     }
 
 
@@ -123,6 +150,7 @@ class ContractTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as td:
             p = Path(td) / "readiness.json"
             p.write_text(json.dumps({
+                "written_dataset_authorization": authorization(),
                 "official_registration_complete": False,
                 "kaggle_rules_accepted": False,
                 "dataset_terms_accepted": False,
@@ -134,22 +162,39 @@ class ContractTests(unittest.TestCase):
             self.assertFalse(ready)
             self.assertGreaterEqual(len(reasons), 6)
 
+    def test_readiness_rejects_missing_written_authorization(self):
+        with tempfile.TemporaryDirectory() as td:
+            td = Path(td)
+            artifact = td / "submission.csv"
+            artifact.write_text("qa_id,prediction\n1,A\n")
+            state_data = ready_state(artifact)
+            state_data.pop("written_dataset_authorization")
+            state = td / "state.json"
+            state.write_text(json.dumps(state_data))
+            ready, reasons = check(state)
+            self.assertFalse(ready)
+            self.assertIn("written dataset authorization missing", reasons)
+
+    def test_readiness_rejects_broadened_authorization_scope(self):
+        with tempfile.TemporaryDirectory() as td:
+            td = Path(td)
+            artifact = td / "submission.csv"
+            artifact.write_text("qa_id,prediction\n1,A\n")
+            state_data = ready_state(artifact)
+            state_data["written_dataset_authorization"] = authorization(scope="unconditional")
+            state = td / "state.json"
+            state.write_text(json.dumps(state_data))
+            ready, reasons = check(state)
+            self.assertFalse(ready)
+            self.assertIn("written dataset authorization scope missing/invalid", reasons)
+
     def test_readiness_accepts_exact_hashed_artifact(self):
         with tempfile.TemporaryDirectory() as td:
             td = Path(td)
             artifact = td / "submission.csv"
             artifact.write_text("qa_id,prediction\n1,A\n")
-            import hashlib
-            digest = hashlib.sha256(artifact.read_bytes()).hexdigest()
             state = td / "state.json"
-            state.write_text(json.dumps({
-                "official_registration_complete": True,
-                "kaggle_rules_accepted": True,
-                "dataset_terms_accepted": True,
-                "submission_authorized": True,
-                "validation": {"subject_disjoint": True, "exact_accuracy": 0.9},
-                "submission": {"path": str(artifact), "sha256": digest},
-            }))
+            state.write_text(json.dumps(ready_state(artifact)))
             ready, reasons = check(state)
             self.assertTrue(ready)
             self.assertEqual(reasons, [])

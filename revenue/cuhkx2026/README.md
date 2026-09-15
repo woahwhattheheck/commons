@@ -14,6 +14,12 @@ The Large Model Track is multiple-choice VQA over privacy-preserving non-RGB act
 
 The data are gated by participant terms. **Do not bypass that gate.** The owner/account lane must register, accept the applicable rules, and provide lawful local paths before model work can consume the 8GB dataset.
 
+## Written authorization status — 2026-09-14
+
+A direct organizer reply now provides written authorization for the team to use the official CUHK-X competition dataset **only after** official challenge registration and Kaggle/rule/data-term acceptance are completed. The authorization is limited to official competition mirrors and non-commercial competition / related research development. Dataset privacy, no-redistribution, and no test-ground-truth/manual-test-labeling boundaries remain in force.
+
+This new receipt does **not** prove that registration, Kaggle rule acceptance, dataset-term acceptance, data download, validation, submission authorization, or submission itself has occurred. The email receipt stays private; the public carrier stores only the bounded status needed to prevent later agents from broadening its meaning. `readiness_gate.py` now fails closed if this authorization record or its scope boundaries are absent.
+
 ## Why this carrier exists
 
 The public leaderboard is already extremely strong; a toy majority-class notebook is not a serious prize strategy. This carrier instead makes every later experiment falsifiable and reproducible:
@@ -25,7 +31,7 @@ The public leaderboard is already extremely strong; a toy majority-class noteboo
 - confidence-weighted deterministic ensembling with exact test-ID coverage checks;
 - exact-match and category-sliced validation reports;
 - deterministic submission and prediction-evidence files with SHA-256 receipts;
-- a fail-closed readiness gate that refuses release without real registration/terms/validation/artifact receipts.
+- a fail-closed readiness gate that refuses release without written authorization, real registration/terms/validation/artifact receipts, and exact submission authorization.
 
 ## Recommended winning experiment order once lawful data access exists
 
@@ -62,11 +68,11 @@ A component must contain exactly one row for every test `qa_id`; extra/missing/d
 
 ## Truth boundary / next owner action
 
-Checked-in `readiness.json` is intentionally BLOCKED. A real competition owner must separately:
+Checked-in `readiness.json` is intentionally BLOCKED. Written organizer authorization is recorded, but a real competition owner must still separately:
 
 - complete the official challenge registration and Kaggle entry;
 - accept the dataset/rules using the owner account;
-- download data through the authorized route;
+- download data through the authorized official route;
 - run subject-disjoint validation and record the resulting score/provenance;
 - authorize the exact hashed submission artifact before upload.
 
