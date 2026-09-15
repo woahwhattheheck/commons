@@ -1,0 +1,47 @@
+name: ADIA structural break real-time
+
+on:
+  pull_request:
+    paths:
+      - "research/adia-structural-break-realtime/**"
+      - ".github/workflows/adia-structural-break-realtime.yml"
+  push:
+    branches: [main]
+    paths:
+      - "research/adia-structural-break-realtime/**"
+      - ".github/workflows/adia-structural-break-realtime.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  focused:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Compile
+        run: |
+          python -m py_compile \
+            research/adia-structural-break-realtime/detector.py \
+            research/adia-structural-break-realtime/submission.py \
+            research/adia-structural-break-realtime/synthetic.py \
+            research/adia-structural-break-realtime/tests/test_detector.py
+      - name: Focused hostiles
+        working-directory: research/adia-structural-break-realtime
+        run: python -m unittest discover -s tests -p 'test_*.py' -v
+      - name: Synthetic receipt replay
+        working-directory: research/adia-structural-break-realtime
+        run: |
+          python - <<'PY'
+          import json
+          from synthetic import benchmark
+          expected = json.load(open("synthetic_benchmark_receipt.json", encoding="utf-8"))
+          actual = benchmark(expected["seedCount"])
+          if actual != expected["results"]:
+              raise SystemExit(f"synthetic receipt drift\nexpected={expected['results']}\nactual={actual}")
+          print(json.dumps(actual, sort_keys=True, indent=2))
+          PY
