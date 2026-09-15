@@ -16,17 +16,23 @@
   ],
   "criteria": [
     {
-      "evidence_ids": ["mass"],
+      "evidence_ids": [
+        "mass"
+      ],
       "id": "mass",
       "weight_bps": 2500
     },
     {
-      "evidence_ids": ["thermal"],
+      "evidence_ids": [
+        "thermal"
+      ],
       "id": "thermal",
       "weight_bps": 5000
     },
     {
-      "evidence_ids": ["lead"],
+      "evidence_ids": [
+        "lead"
+      ],
       "id": "lead",
       "weight_bps": 2500
     }
@@ -36,8 +42,11 @@
     {
       "id": "mass",
       "observed_at": "2026-09-01T00:00:00Z",
-      "payload": {"source_class": "synthetic", "unit": "kg"},
-      "payload_sha256": "c2735252adf4a8a60dd67d2a16f5fbc518331a69e94466daf78475f92060460e",
+      "payload": {
+        "source_class": "synthetic",
+        "unit": "kg"
+      },
+      "payload_sha256": "14a91f0d9ba92c343d343e6daeba233c069a6b9e2745988df4641dc35d2cff5f",
       "source": "synthetic://mass",
       "status": "ACTIVE",
       "valid_until": "2027-01-01T00:00:00Z"
@@ -45,8 +54,11 @@
     {
       "id": "thermal",
       "observed_at": "2026-09-01T00:00:00Z",
-      "payload": {"source_class": "synthetic", "unit": "normalized"},
-      "payload_sha256": "52386e1c62d351b242c7cd678a4a2fdf8d69264cd8774710b2c698a98424832f",
+      "payload": {
+        "source_class": "synthetic",
+        "unit": "normalized"
+      },
+      "payload_sha256": "355f9256f545762da6e72590cf7c4d8fd3c362da377d75d2bc48de688f43755d",
       "source": "synthetic://thermal",
       "status": "ACTIVE",
       "valid_until": "2027-01-01T00:00:00Z"
@@ -54,20 +66,43 @@
     {
       "id": "lead",
       "observed_at": "2026-09-01T00:00:00Z",
-      "payload": {"source_class": "synthetic", "unit": "days"},
-      "payload_sha256": "d2c52bcc6758283351c88ea5c86ea495f64baa8f9a36df3dbabca54da9abb585",
+      "payload": {
+        "source_class": "synthetic",
+        "unit": "days"
+      },
+      "payload_sha256": "12b2a419df62250a659219ab09212cc557e1c33720c05136172dc3fb6936a7c8",
       "source": "synthetic://lead",
       "status": "ACTIVE",
       "valid_until": "2027-01-01T00:00:00Z"
     }
   ],
   "generation": 1,
-  "objectives": ["Select a synthetic power/thermal architecture for demonstration only."],
+  "objectives": [
+    "Select a synthetic power/thermal architecture for demonstration only."
+  ],
   "options": [
-    {"criterion_scores": {"lead": 7000, "mass": 8000, "thermal": 7600}, "id": "architecture-a"},
-    {"criterion_scores": {"lead": 6000, "mass": 6500, "thermal": 8600}, "id": "architecture-b"}
+    {
+      "criterion_scores": {
+        "lead": 7000,
+        "mass": 8000,
+        "thermal": 7600
+      },
+      "id": "architecture-a"
+    },
+    {
+      "criterion_scores": {
+        "lead": 6000,
+        "mass": 6500,
+        "thermal": 8600
+      },
+      "id": "architecture-b"
+    }
   ],
   "risks": [
-    {"disposition": "MITIGATE", "id": "r1", "text": "Supplier lead-time uncertainty."}
+    {
+      "disposition": "MITIGATE",
+      "id": "r1",
+      "text": "Supplier lead-time uncertainty."
+    }
   ]
 }
