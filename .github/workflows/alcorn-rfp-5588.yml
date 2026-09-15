@@ -24,12 +24,16 @@ jobs:
         with:
           python-version: '3.12'
       - name: Normal hostile suite
-        run: python -m unittest commercial/alcorn-rfp-5588/test_qualification.py -v
-      - name: Optimized hostile suite
-        run: python -O -m unittest commercial/alcorn-rfp-5588/test_qualification.py -v
-      - name: Current evidence must remain HOLD
         run: |
-          python commercial/alcorn-rfp-5588/qualification.py commercial/alcorn-rfp-5588/current_evidence.json > /tmp/result.json
+          python -m unittest commercial/alcorn-rfp-5588/test_qualification.py -v
+          python -m unittest commercial/alcorn-rfp-5588/test_addendum_guard.py -v
+      - name: Optimized hostile suite
+        run: |
+          python -O -m unittest commercial/alcorn-rfp-5588/test_qualification.py -v
+          python -O -m unittest commercial/alcorn-rfp-5588/test_addendum_guard.py -v
+      - name: Current evidence must remain Addendum-aware HOLD
+        run: |
+          python commercial/alcorn-rfp-5588/qualification_guarded.py commercial/alcorn-rfp-5588/current_evidence.json > /tmp/result.json
           python - <<'PY'
           import json
           r=json.load(open('/tmp/result.json'))
@@ -39,6 +43,13 @@ jobs:
               'section_ix_references',
               'section_vii_item_12_requirements_matrix',
           }
+          assert 'amendments_review_evidence_id' not in r['blockers'], r
+          a=r['source_findings']['addendum_1']
+          assert a['sha256']=='82a26f82092e9de91f3e10f985bf9811983f122127fb15d35c9b2f746da72886', a
+          assert a['vendor_proposal_structure_discretion'] is True, a
+          assert a['minimum_specifications_still_required'] is True, a
+          assert a['nvidia_oem_authority_granted'] is False, a
+          assert a['partner_credentials_inherited'] is False, a
           assert all(v is False for v in r['authority'].values()), r['authority']
           print(r['receipt_sha256'])
           PY

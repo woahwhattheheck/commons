@@ -13,6 +13,19 @@
     "sha256": "107f0cc3ae880e4000ad89f0d6db6ad4908600afcdafcaf8d66ff4303170f688",
     "page_count": 41
   },
+  "buyer_addenda": [
+    {
+      "id": "addendum_1",
+      "gmail_message_id": "1a0a703662d0e19f",
+      "filename": "Addendum1 RFP5588.docx",
+      "sha256": "82a26f82092e9de91f3e10f985bf9811983f122127fb15d35c9b2f746da72886",
+      "document_date": "2026-09-10",
+      "received_at": "2026-09-15T21:40:09+00:00",
+      "question_topic": "consulting_prime_with_disclosed_hardware_software_or_lab_delivery_partners",
+      "normalized_effect": "PROPOSAL_STRUCTURE_DISCRETION_MINIMUM_SPEC_FLOOR",
+      "policy": "The buyer reiterated the requested equipment and minimum specifications and stated that each prospective vendor may submit a proposal in the manner it feels appropriately addresses the RFP. Record proposal-structure discretion without inventing a separate affirmative-permission gate; do not infer NVIDIA/OEM authority, partner credential inheritance, buyer acceptance, or waiver of any minimum specification."
+    }
+  ],
   "received_packet_structure": {
     "present_sections": ["I", "II", "III", "IV", "V", "VI", "VII", "EXHIBIT_A_STANDARD_CONTRACT"],
     "referenced_but_absent": [
