@@ -5,6 +5,7 @@ on:
     paths:
       - 'host/swarm_channel_dispatch.py'
       - 'tests/test_swarm_channel_dispatch.py'
+      - 'tests/test_swarm_channel_dispatch_target_cardinality.py'
       - 'ground/SWARM_CHANNEL_DISPATCH.md'
       - '.github/workflows/swarm-channel-dispatch.yml'
   push:
@@ -12,6 +13,7 @@ on:
     paths:
       - 'host/swarm_channel_dispatch.py'
       - 'tests/test_swarm_channel_dispatch.py'
+      - 'tests/test_swarm_channel_dispatch_target_cardinality.py'
       - 'ground/SWARM_CHANNEL_DISPATCH.md'
       - '.github/workflows/swarm-channel-dispatch.yml'
 
@@ -32,4 +34,8 @@ jobs:
       - name: Run dispatcher tests
         env:
           PYTHONOPTIMIZE_FLAG: ${{ matrix.optimize }}
-        run: python $PYTHONOPTIMIZE_FLAG -m unittest tests.test_swarm_channel_dispatch -v
+        run: >-
+          python $PYTHONOPTIMIZE_FLAG -m unittest
+          tests.test_swarm_channel_dispatch
+          tests.test_swarm_channel_dispatch_target_cardinality
+          -v
