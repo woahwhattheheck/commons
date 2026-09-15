@@ -1,0 +1,33 @@
+[
+  {
+    "book_on_minus_off": {
+      "cash_BUY_PRODUCT_FERTILIZER": 3.0,
+      "cash_SELL_CARROT": 15.0,
+      "cash_SELL_FERTILIZER": -3.0,
+      "cash_SELL_MILK": -6.0,
+      "cash_SELL_WHEAT": -1.0
+    },
+    "reconciled_cash_delta": 8.0,
+    "role": "opponent",
+    "seat": 0
+  },
+  {
+    "book_on_minus_off": {
+      "bought_FERTILIZER": -3,
+      "cash_BUY_PRODUCT_FERTILIZER": 11.0,
+      "cash_SELL_CARROT": -215.0,
+      "cash_SELL_FERTILIZER": -10.0,
+      "cash_SELL_MILK": 10.0,
+      "cash_SELL_WHEAT": 160.0,
+      "fertilizer_spent": -1,
+      "harvest_CARROT": -3,
+      "harvest_WHEAT": 4,
+      "sold_CARROT": -3,
+      "sold_FERTILIZER": -2,
+      "sold_WHEAT": 4
+    },
+    "reconciled_cash_delta": -44.0,
+    "role": "candidate",
+    "seat": 1
+  }
+]
