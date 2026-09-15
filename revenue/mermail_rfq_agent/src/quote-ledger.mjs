@@ -49,14 +49,65 @@ const currency = (value) => {
   if (!/^[A-Z]{3}$/.test(code)) throw new RFQError('invalid_currency', 'currency must be an explicit ISO-style 3-letter code');
   return code;
 };
-const canonicalize = (value) => {
-  if (Array.isArray(value)) return value.map(canonicalize);
-  if (value && typeof value === 'object') {
-    return Object.fromEntries(Object.keys(value).sort().map((key) => [key, canonicalize(value[key])]));
+
+const strictJsonClone = (value, field = 'value', seen = new Set()) => {
+  if (value === null || typeof value === 'string' || typeof value === 'boolean') return value;
+  if (typeof value === 'number') {
+    if (!Number.isFinite(value)) throw new RFQError('invalid_requirements', `${field} must contain only finite JSON numbers`);
+    return Object.is(value, -0) ? 0 : value;
   }
-  return value;
+  if (typeof value !== 'object') {
+    throw new RFQError('invalid_requirements', `${field} contains a value that JSON would erase or coerce`);
+  }
+  if (seen.has(value)) throw new RFQError('invalid_requirements', `${field} must not contain cycles`);
+  seen.add(value);
+  try {
+    const descriptors = Object.getOwnPropertyDescriptors(value);
+    if (Array.isArray(value)) {
+      for (const key of Reflect.ownKeys(descriptors)) {
+        if (typeof key !== 'string') throw new RFQError('invalid_requirements', `${field} must not contain symbol properties`);
+        if (key === 'length') continue;
+        if (!/^(0|[1-9]\d*)$/.test(key) || Number(key) >= value.length) {
+          throw new RFQError('invalid_requirements', `${field} arrays must not contain extra properties`);
+        }
+        const descriptor = descriptors[key];
+        if (!descriptor.enumerable || !Object.hasOwn(descriptor, 'value')) {
+          throw new RFQError('invalid_requirements', `${field}[${key}] must be an enumerable data value`);
+        }
+      }
+      const result = [];
+      for (let index = 0; index < value.length; index += 1) {
+        const descriptor = descriptors[String(index)];
+        if (!descriptor || !descriptor.enumerable || !Object.hasOwn(descriptor, 'value')) {
+          throw new RFQError('invalid_requirements', `${field} arrays must not be sparse`);
+        }
+        result.push(strictJsonClone(descriptor.value, `${field}[${index}]`, seen));
+      }
+      return result;
+    }
+
+    const prototype = Object.getPrototypeOf(value);
+    if (prototype !== Object.prototype && prototype !== null) {
+      throw new RFQError('invalid_requirements', `${field} must contain only plain JSON objects`);
+    }
+    const keys = Reflect.ownKeys(descriptors);
+    if (keys.some((key) => typeof key !== 'string')) {
+      throw new RFQError('invalid_requirements', `${field} must not contain symbol properties`);
+    }
+    const entries = [];
+    for (const key of keys.sort()) {
+      const descriptor = descriptors[key];
+      if (!descriptor.enumerable || !Object.hasOwn(descriptor, 'value')) {
+        throw new RFQError('invalid_requirements', `${field}.${key} must be an enumerable data value`);
+      }
+      entries.push([key, strictJsonClone(descriptor.value, `${field}.${key}`, seen)]);
+    }
+    return Object.fromEntries(entries);
+  } finally {
+    seen.delete(value);
+  }
 };
-const canonicalJson = (value) => JSON.stringify(canonicalize(value));
+const canonicalJson = (value) => JSON.stringify(strictJsonClone(value));
 const digest = (value) => createHash('sha256').update(canonicalJson(value)).digest('hex');
 const nullableBoolean = (value, field) => {
   if (value == null) return null;
@@ -69,11 +120,12 @@ export class RFQLedger {
   #vendors = new Map();
   #quotes = new Map();
   #quoteIds = new Map();
+  #sourceEmailIds = new Map();
 
   constructor({ rfqId, requirements, requestedQuantity = null, createdAt }) {
-    const cleanRequirements = clone(requirements);
+    const cleanRequirements = strictJsonClone(requirements, 'requirements');
     if (!cleanRequirements || typeof cleanRequirements !== 'object' || Array.isArray(cleanRequirements)) {
-      throw new RFQError('invalid_requirements', 'requirements must be an object');
+      throw new RFQError('invalid_requirements', 'requirements must be a plain JSON object');
     }
     this.#round = Object.freeze({
       rfqId: text(rfqId, 'rfqId'),
@@ -146,6 +198,13 @@ export class RFQLedger {
       if (existingId.fingerprint !== fingerprint) throw new RFQError('quote_id_conflict', 'quoteId was reused with different commercial facts');
       return clone(existingId.quote);
     }
+    const existingSource = this.#sourceEmailIds.get(quote.sourceEmailId);
+    if (existingSource) {
+      throw new RFQError(
+        'source_email_conflict',
+        `sourceEmailId ${quote.sourceEmailId} is already bound to quote ${existingSource.quoteId}`,
+      );
+    }
 
     const vendorQuotes = this.#quotes.get(vendorId);
     const latest = vendorQuotes.at(-1);
@@ -158,6 +217,7 @@ export class RFQLedger {
 
     vendorQuotes.push(quote);
     this.#quoteIds.set(quote.quoteId, { fingerprint, quote });
+    this.#sourceEmailIds.set(quote.sourceEmailId, { quoteId: quote.quoteId, fingerprint });
     return clone(quote);
   }
 
