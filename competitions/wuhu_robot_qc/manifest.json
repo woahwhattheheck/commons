@@ -1,43 +1,46 @@
 {
-  "files": [
+  "format": "LeRobot v2.1",
+  "manifest_version": "wuhu-recovery-manifest/v2",
+  "original_operation": "WUHU-LEROBOT-QC-ZRAM913455-20260913",
+  "original_publication_manifest_sha256": "2cd48dbf195f11e3a3d8d2b56cfd86e8b2a97af3daae09d5f6554774d9af638f",
+  "original_owner": "Z-Ramanujan-913455-X9Q7",
+  "recovery_operation": "WUHU-LEROBOT-QC-REFERENCE-PROVENANCE-RECOVERY-ZIBN5Q3-20260914",
+  "recovery_owner": "Z-IridiumBreakwater-2147-N5Q3",
+  "competition_reference_contract": "wuhu-dataset-reference/v2",
+  "test_cohort_statistics_used": false,
+  "current_source_blobs": [
     {
-      "bytes": 3255,
-      "path": "README.md",
-      "sha256": "92bb4d519e78a49ef536c92437b42724439f54c7d6930d5b4493e8645dec4a1e"
+      "path": ".github/workflows/wuhu-robot-qc.yml",
+      "git_blob": "b32a51a2d8f476b1e36501f972e8c8b257556fda"
     },
     {
-      "bytes": 64,
-      "path": "requirements.txt",
-      "sha256": "88c5666408085f913bf7e406ce0f004d0c9238ed429d8424e26230ff8c6700ab"
+      "path": "competitions/wuhu_robot_qc/README.md",
+      "git_blob": "7dbe3c1380b7015011cb8b8ac9f24da944743969"
     },
     {
-      "bytes": 4628,
-      "path": "tests/test_core.py",
-      "sha256": "d4b74b036cdfc4915375b9c6b40017b0cd4ab5f6d9a263e29d0ccf22f11192db"
+      "path": "competitions/wuhu_robot_qc/requirements.txt",
+      "git_blob": "f4c45a3f8027bd0798978c8dd2a506df92f45839"
     },
     {
-      "bytes": 244,
-      "path": "wuhu_qc/__init__.py",
-      "sha256": "c51d571f6c0474f4360c45be758d0598dda7320114af28c3dfd4a766f23c940f"
+      "path": "competitions/wuhu_robot_qc/tests/test_core.py",
+      "git_blob": "7b6c8157f9b874a0fae04cd981d4450fc429cb24"
     },
     {
-      "bytes": 1446,
-      "path": "wuhu_qc/cli.py",
-      "sha256": "9ec72073cb24d9b40f75528a87d87da0a9191e8523eef360d2ff20b9b9442cdb"
+      "path": "competitions/wuhu_robot_qc/wuhu_qc/__init__.py",
+      "git_blob": "27f311d8bbc34aad9b3a75e46f524eca5be19825"
     },
     {
-      "bytes": 19360,
-      "path": "wuhu_qc/core.py",
-      "sha256": "e4195f93466f9daec77c19180105eedef6eff299f974833adff193f647f82b03"
+      "path": "competitions/wuhu_robot_qc/wuhu_qc/cli.py",
+      "git_blob": "dc6f4d20bc09de672be023bc5ff14eb90e8bdab8"
     },
     {
-      "bytes": 4001,
-      "path": "wuhu_qc/lerobot_v21.py",
-      "sha256": "3507f751ce920b81ac58a1001ce720e5239538eeda81e8365b12cd31fb77e399"
+      "path": "competitions/wuhu_robot_qc/wuhu_qc/core.py",
+      "git_blob": "061bde52a1f10253b51ae91de25c5d94a917be00"
+    },
+    {
+      "path": "competitions/wuhu_robot_qc/wuhu_qc/lerobot_v21.py",
+      "git_blob": "240ddac63a06a7043e20fe50a3ccc895238e5cf7"
     }
   ],
-  "format": "LeRobot v2.1",
-  "manifest_sha256": "2cd48dbf195f11e3a3d8d2b56cfd86e8b2a97af3daae09d5f6554774d9af638f",
-  "operation": "WUHU-LEROBOT-QC-ZRAM913455-20260913",
-  "test_cohort_statistics_used": false
+  "validation_authority": "Exact-head GitHub Actions or separately recorded executed evidence; this manifest does not self-attest test success."
 }
