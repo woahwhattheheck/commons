@@ -48,12 +48,29 @@ def main() -> int:
             assert page.locator("#note").input_value().startswith("Need primary source")
             assert page.locator("#disposition").input_value() == "NEEDS_EVIDENCE"
 
-            # A new import must never silently inherit notes from the previous generation.
+            # A successful new import must never silently inherit notes from the previous generation.
             page.get_by_role("button", name="Load synthetic UI demo").click()
             page.locator(".cell").first.click()
             assert page.locator("#note").input_value() == ""
             assert page.locator("#disposition").input_value() == "UNREVIEWED"
 
+            # A FAILED replacement import is also a generation boundary: stale report,
+            # notes and export controls must be killed before parsing or transport.
+            page.locator("#note").fill("THIS MUST NOT SURVIVE A FAILED REPLACEMENT")
+            malformed = td_path / "malformed-candidate.json"
+            malformed.write_text("{not-json")
+            page.locator("#candidateFile").set_input_files(str(malformed))
+            # Deliberately leave authorityFile empty; either local validation failure is
+            # sufficient, but the prior generation must already be gone.
+            page.get_by_role("button", name="Inspect with parent compiler").click()
+            assert page.locator("#matrix").get_attribute("data-rendered-cells") == "0"
+            assert page.locator("#exportBtn").is_disabled()
+            assert page.locator("#note").is_disabled()
+            assert page.locator("#note").input_value() == ""
+            assert page.locator("#error").text_content().strip()
+
+            # Continue from a fresh synthetic generation after the negative regression.
+            page.get_by_role("button", name="Load synthetic UI demo").click()
             page.locator("#search").fill("security")
             assert page.locator("#matrix").get_attribute("data-rendered-cells") == "3"
             page.locator("#search").fill("")

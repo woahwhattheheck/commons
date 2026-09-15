@@ -43,7 +43,7 @@ function installReport(report) {
     throw new Error("Expected a 12-cell compiler report.");
   }
   if (report.mode !== "UNTRUSTED_INSPECTION") throw new Error("Workbench accepts untrusted inspection reports only.");
-  if (report.trust?.current_evidence_review_authority !== false) throw new Error("Report unexpectedly carries current review authority.");
+  if (report.trust?.current_evidence_review_authority !== false) throw new Error("Report unexpectly carries current review authority.");
   state.report = report;
   state.cells = report.assessment_matrix.slice();
   state.selectedKey = null;
@@ -163,6 +163,10 @@ async function readJsonFile(input, label) {
 }
 
 async function inspectFiles() {
+  // A replacement attempt invalidates the prior generation immediately. If file
+  // parsing, transport, or compiler inspection fails, stale notes/export authority
+  // must not remain actionable under the guise of the attempted new import.
+  resetWorkbench();
   setError("");
   el.inspectBtn.disabled = true;
   try {
@@ -213,7 +217,7 @@ function exportDraft() {
       recognized_revenue: false
     }
   };
-  const blob = new Blob([JSON.stringify(handoff, null, 2) + "\n"], { type: "application/json" });
+  const blob = new Blob([JSON.stringify(o handoff, null, 2) + "\n"], { type: "application/json" });
   const url = URL.createObjectURL(blob);
   const a = document.createElement("a");
   a.href = url;
