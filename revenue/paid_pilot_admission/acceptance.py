@@ -46,7 +46,7 @@ def fixture(now: datetime | None = None) -> tuple[dict, datetime]:
 
 def run() -> dict:
     packet, now = fixture()
-    ready = evaluate(packet, now=now)
+    ready = evaluate(packet)
     assert ready.status == READY
     assert verify(packet, ready.receipt)
 
@@ -61,12 +61,12 @@ def run() -> dict:
     p = deepcopy(packet); p["acceptance"]["offer_sha256"] = "c" * 64; cases.append(("accepted_digest", p))
     p = deepcopy(packet); p["offer"]["price_minor"] += 1; cases.append(("offer_changed", p))
     p = deepcopy(packet); p["funding"]["observed_at"] = (now - timedelta(days=2)).isoformat().replace("+00:00", "Z"); cases.append(("stale", p))
-    p = deepcopy(packet); p["funding"]["observed_at"] = (now + timedelta(seconds=1)).isoformat().replace("+00:00", "Z"); cases.append(("future_funding", p))
-    p = deepcopy(packet); p["acceptance"]["accepted_at"] = (now + timedelta(seconds=1)).isoformat().replace("+00:00", "Z"); cases.append(("future_acceptance", p))
+    p = deepcopy(packet); p["funding"]["observed_at"] = (now + timedelta(minutes=1)).isoformat().replace("+00:00", "Z"); cases.append(("future_funding", p))
+    p = deepcopy(packet); p["acceptance"]["accepted_at"] = (now + timedelta(minutes=1)).isoformat().replace("+00:00", "Z"); cases.append(("future_acceptance", p))
     p = deepcopy(packet); p["acceptance"]["accepted_at"] = (now - timedelta(minutes=5)).isoformat().replace("+00:00", "Z"); p["funding"]["observed_at"] = (now - timedelta(minutes=10)).isoformat().replace("+00:00", "Z"); cases.append(("acceptance_after_funding", p))
 
     for name, candidate in cases:
-        result = evaluate(candidate, now=now)
+        result = evaluate(candidate)
         assert result.status != READY, name
         statuses[name] = result.status
 

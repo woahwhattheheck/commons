@@ -31,6 +31,33 @@ test('hashes nested requirements independent of object key order', () => {
   assert.equal(a.round.requirementsDigest, b.round.requirementsDigest);
 });
 
+test('rejects requirement values that JSON would silently erase or coerce', () => {
+  const cyclic = { item: 'gasket' };
+  cyclic.self = cyclic;
+  const sparse = [];
+  sparse.length = 1;
+  const invalid = [
+    { item: undefined },
+    { item: NaN },
+    { item: Infinity },
+    { item: new Date('2026-09-13T00:00:00Z') },
+    { item: sparse },
+    cyclic,
+  ];
+  for (const requirements of invalid) {
+    rejects(
+      () => new RFQLedger({ rfqId: 'strict-json', requirements, createdAt: '2026-09-13T00:00:00Z' }),
+      'invalid_requirements',
+    );
+  }
+});
+
+test('keeps distinct supported JSON requirements on distinct digests', () => {
+  const a = new RFQLedger({ rfqId: 'x', requirements: { spec: null }, createdAt: '2026-09-13T00:00:00Z' });
+  const b = new RFQLedger({ rfqId: 'x', requirements: { spec: 'null' }, createdAt: '2026-09-13T00:00:00Z' });
+  assert.notEqual(a.round.requirementsDigest, b.round.requirementsDigest);
+});
+
 test('rejects vendor solicitation before RFQ round creation', () => {
   const l = ledger();
   rejects(() => vendor(l, 'alpha', 'quotes@alpha.example', 'thread-alpha', '2026-09-13T08:29:59Z'), 'solicitation_before_round');
@@ -83,6 +110,42 @@ test('idempotently accepts an exact quote replay', () => {
 test('rejects quote id reuse with changed terms', () => {
   const l = ledger(); vendor(l); l.recordQuote(quote());
   rejects(() => l.recordQuote(quote({ unitPrice: 3.99 })), 'quote_id_conflict');
+});
+
+test('reserves one source email to one immutable quote evidence identity', () => {
+  const l = ledger(); vendor(l); l.recordQuote(quote());
+  rejects(
+    () => l.recordQuote(quote({
+      quoteId: 'q-alpha-v2',
+      version: 2,
+      unitPrice: 0.01,
+      totalPrice: 10,
+      receivedAt: '2026-09-13T10:00:00Z',
+      sourceEmailId: 'email-alpha-v1',
+    })),
+    'source_email_conflict',
+  );
+  const report = l.comparison({ at: '2026-09-13T11:00:00Z' });
+  assert.equal(report.rows[0].quoteId, 'q-alpha-v1');
+  assert.equal(report.rows[0].unitPrice, 4.25);
+});
+
+test('source email reservation is global across vendors', () => {
+  const l = ledger();
+  vendor(l);
+  vendor(l, 'beta', 'quotes@beta.example', 'thread-beta');
+  l.recordQuote(quote());
+  rejects(
+    () => l.recordQuote(quote({
+      vendorId: 'beta',
+      senderEmail: 'quotes@beta.example',
+      threadId: 'thread-beta',
+      quoteId: 'q-beta-v1',
+      version: 1,
+      sourceEmailId: 'email-alpha-v1',
+    })),
+    'source_email_conflict',
+  );
 });
 
 test('requires strictly increasing amendment versions', () => {

@@ -36,11 +36,28 @@ def _write_root(root: Path, canonical: dict[str, object], integration: dict[str,
     _write_json(root / "INTEGRATION.json", integration)
 
 
+def _landed_component(path: str = "repairs/gameplay/current-component") -> dict[str, object]:
+    return {
+        "lane": "current component",
+        "repair_path": path,
+        "source_blob": "1" * 40,
+        "test_blob": "2" * 40,
+        "status": "source_component_tested_not_runtime_promoted",
+    }
+
+
 class IntegrationLedgerCustodyContractTests(unittest.TestCase):
-    def validate_with(self, row: dict[str, object], *, manifest: dict[str, object] | None = None):
+    def validate_with(
+        self,
+        row: dict[str, object],
+        *,
+        manifest: dict[str, object] | None = None,
+        landed: list[dict[str, object]] | None = None,
+    ):
         with tempfile.TemporaryDirectory() as td:
             root = Path(td)
             canonical, integration = _base()
+            integration["landed"] = landed or []
             integration["custody_blocked"] = [row]
             _write_root(root, canonical, integration)
 
@@ -84,7 +101,7 @@ class IntegrationLedgerCustodyContractTests(unittest.TestCase):
             "missing": "old benchmark receipt",
             "required": "archive exact old bytes if recovered; do not reconstruct",
         }
-        self.assertEqual([], self.validate_with(row))
+        self.assertEqual([], self.validate_with(row, landed=[_landed_component()]))
 
     def test_nonblocking_historical_gap_requires_explicit_missing_scope(self):
         row = {
@@ -95,8 +112,45 @@ class IntegrationLedgerCustodyContractTests(unittest.TestCase):
             "missing": "",
             "required": "archive exact old bytes if recovered",
         }
-        errors = self.validate_with(row)
+        errors = self.validate_with(row, landed=[_landed_component()])
         self.assertIn("historical evidence gap lane 'historical packet' lacks missing", errors)
+
+    def test_historical_gap_requires_exactly_one_landed_component_binding(self):
+        row = {
+            "lane": "historical packet",
+            "custody_path": "repairs/gameplay/current-component",
+            "status": "historical_evidence_gap_not_source_blocker",
+            "available": "exact current source and tests",
+            "missing": "old benchmark receipt",
+            "required": "archive exact old bytes if recovered",
+        }
+        errors = self.validate_with(row)
+        self.assertIn(
+            "historical evidence gap lane 'historical packet' requires exactly one landed component in its custody_path",
+            errors,
+        )
+
+    def test_historical_gap_requires_valid_landed_source_and_test_blob_refs(self):
+        row = {
+            "lane": "historical packet",
+            "custody_path": "repairs/gameplay/current-component",
+            "status": "historical_evidence_gap_not_source_blocker",
+            "available": "exact current source and tests",
+            "missing": "old benchmark receipt",
+            "required": "archive exact old bytes if recovered",
+        }
+        landed = [_landed_component()]
+        landed[0]["source_blob"] = "not-a-git-object"
+        landed[0]["test_blob"] = "also-not-a-git-object"
+        errors = self.validate_with(row, landed=landed)
+        self.assertIn(
+            "historical evidence gap lane 'historical packet' landed component lacks a valid source_blob",
+            errors,
+        )
+        self.assertIn(
+            "historical evidence gap lane 'historical packet' landed component lacks valid test blob references",
+            errors,
+        )
 
     def test_unknown_custody_status_is_rejected(self):
         row = {
@@ -128,6 +182,17 @@ class IntegrationLedgerCustodyContractTests(unittest.TestCase):
             canonical, _ = _base()
             _write_json(root / "CANONICAL.json", canonical)
             (root / "INTEGRATION.json").write_text("{not-json", encoding="utf-8")
+            errors = ledger.validate(root)
+        self.assertEqual(1, len(errors))
+        self.assertIn("cannot load", errors[0])
+        self.assertIn("INTEGRATION.json", errors[0])
+
+    def test_malformed_utf8_returns_invalid_result_not_traceback(self):
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            canonical, _ = _base()
+            _write_json(root / "CANONICAL.json", canonical)
+            (root / "INTEGRATION.json").write_bytes(b"\xff\xfe\x80")
             errors = ledger.validate(root)
         self.assertEqual(1, len(errors))
         self.assertIn("cannot load", errors[0])
@@ -204,6 +269,22 @@ class IntegrationLedgerCustodyContractTests(unittest.TestCase):
             _write_root(root, canonical, integration)
             errors = ledger.validate(root)
         self.assertTrue(any("must be relative to the integration root" in error for error in errors), errors)
+
+    def test_do_not_activate_retirement_conflicts_with_active_landed_status(self):
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            canonical, integration = _base()
+            integration["landed"] = [{"lane": "retired", "status": "runtime_enabled"}]
+            integration["negative_or_parked"] = [{
+                "lane": "retired",
+                "disposition": "KILL_bad_economics_do_not_stack_or_activate",
+            }]
+            _write_root(root, canonical, integration)
+            errors = ledger.validate(root)
+        self.assertIn(
+            "retired/NO_BUILD lane 'retired' is also represented as active landed work",
+            errors,
+        )
 
     @unittest.skipUnless(hasattr(os, "symlink"), "symlink unavailable")
     def test_symlinked_custody_directory_cannot_escape_root(self):

@@ -22,7 +22,7 @@ A PASS receipt proves, for the supplied capture bytes:
 
 - strict UTF-8/JSON parsing with duplicate-key and NaN/Infinity rejection;
 - JSON-RPC 2.0 request/notification/response envelope shape;
-- string or finite-number request IDs (bool/null/non-finite are rejected), with exact numeric-value correlation and no ID reuse;
+- string or integer request IDs (bool/null/non-integral/non-finite values are rejected), with exact integral numeric-value correlation and no ID reuse;
 - response correlation to the opposite direction with no orphan, duplicate, or unresolved response/request;
 - `initialize` as the first interaction;
 - required initialize fields and exact `2025-11-25` request/negotiated version;

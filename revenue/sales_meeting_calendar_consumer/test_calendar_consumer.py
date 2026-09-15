@@ -133,6 +133,7 @@ class ConsumerTests(unittest.TestCase):
     def test_plan_matches_exact_trigger_window_and_timezone(self):
         t, auth, store, plan, _ = self.plan_and_capture()
         self.assertEqual(plan["calendar_id"], "primary")
+        self.assertEqual(plan["owner_ref"], "owner/bryce")
         self.assertEqual(plan["time_min"], "2026-09-14T17:00:00Z")
         self.assertEqual(plan["time_max"], "2026-09-14T19:00:00Z")
         self.assertEqual(plan["response_timezone_str"], "America/Kentucky/Louisville")
@@ -166,6 +167,26 @@ class ConsumerTests(unittest.TestCase):
             self.assertFalse(receipt["authority"][key])
         with patch("revenue.sales_meeting_calendar_consumer.calendar_consumer._process_now_utc", return_value=NOW):
             self.assertTrue(is_ready_for_owner_review(receipt, t, authority_store=store))
+
+    def test_capture_from_other_owner_cannot_be_reused(self):
+        t, _, store, _, _ = self.plan_and_capture()
+        other = deepcopy(t)
+        other["owner_ref"] = "owner/other"
+        with self.assertRaisesRegex(CalendarConsumerError, "capture plan does not match"):
+            self.compile_current(other, store)
+
+    def test_started_slot_is_stale_in_current_mode(self):
+        t = trigger(
+            windows=[
+                {"start": "2026-09-13T16:20:00Z", "end": "2026-09-13T17:20:00Z"}
+            ],
+            inbound_at="2026-09-13T15:50:00Z",
+        )
+        t, _, store, _, _ = self.plan_and_capture(
+            t=t,
+            captured_at=NOW - timedelta(minutes=1),
+        )
+        self.assertEqual(self.compile_current(t, store)["state"], "REQUEST_STALE")
 
     def test_self_authenticating_candidate_hash_attack_cannot_reach_current_ready(self):
         t = trigger()

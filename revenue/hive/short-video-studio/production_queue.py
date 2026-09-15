@@ -19,8 +19,8 @@ from typing import Any, Callable
 from studio import ProjectError, render_project, validate_project
 
 MANIFEST_SCHEMA = "short-video-production-manifest/v1"
-STATE_SCHEMA = "short-video-production-state/v1"
-DELIVERY_SCHEMA = "short-video-production-delivery/v1"
+STATE_SCHEMA = "short-video-production-state/v2"
+DELIVERY_SCHEMA = "short-video-production-delivery/v2"
 _ID_RE = re.compile(r"^[A-Za-z0-9][A-Za-z0-9._:-]{0,95}$")
 _SHA_RE = re.compile(r"^[0-9a-f]{64}$")
 _AUTHORITY = {
@@ -145,6 +145,15 @@ def _file_sha(path: pathlib.Path) -> str:
         raise ProductionError(f"cannot read artifact {path}: {exc}") from exc
 
 
+def _same_existing_file(left: pathlib.Path, right: pathlib.Path) -> bool:
+    if left.resolve() == right.resolve():
+        return True
+    try:
+        return left.exists() and right.exists() and left.samefile(right)
+    except OSError:
+        return False
+
+
 def validate_manifest(manifest: Any, *, root: pathlib.Path) -> dict[str, Any]:
     root = root.resolve()
     obj = _plain_dict(manifest, "manifest")
@@ -208,19 +217,17 @@ def validate_manifest(manifest: Any, *, root: pathlib.Path) -> dict[str, Any]:
     if len(set(canonical_outputs)) != len(canonical_outputs):
         raise ProductionError("output/caption targets must be globally unique")
 
-    for artifact in all_outputs:
+    for index, artifact in enumerate(all_outputs):
+        for other in all_outputs[index + 1 :]:
+            if _same_existing_file(artifact, other):
+                raise ProductionError(
+                    "output/caption targets must be globally unique by file identity"
+                )
         for project in project_paths:
-            if artifact.resolve() == project.resolve():
+            if _same_existing_file(artifact, project):
                 raise ProductionError(
                     f"output/caption target aliases project source: {artifact}"
                 )
-            try:
-                if artifact.exists() and project.exists() and artifact.samefile(project):
-                    raise ProductionError(
-                        f"output/caption target aliases project source: {artifact}"
-                    )
-            except OSError:
-                pass
 
     return {
         "schema": MANIFEST_SCHEMA,
@@ -249,17 +256,51 @@ def _job_spec_sha(job: dict[str, str]) -> str:
     return sha256_json(job)
 
 
-def _empty_state(campaign_id: str) -> dict[str, Any]:
-    return {"schema": STATE_SCHEMA, "campaign_id": campaign_id, "jobs": {}}
+def _campaign_definition_sha(manifest: dict[str, Any]) -> str:
+    return sha256_json(
+        {
+            "campaign_id": manifest["campaign_id"],
+            "brand": manifest["brand"],
+        }
+    )
 
 
-def _validate_state(value: Any, campaign_id: str) -> dict[str, Any]:
+def _empty_state(campaign_id: str, campaign_definition_sha256: str) -> dict[str, Any]:
+    return {
+        "schema": STATE_SCHEMA,
+        "campaign_id": campaign_id,
+        "campaign_definition_sha256": campaign_definition_sha256,
+        "jobs": {},
+    }
+
+
+def _validate_state(
+    value: Any,
+    campaign_id: str,
+    campaign_definition_sha256: str,
+) -> dict[str, Any]:
     state = _plain_dict(value, "state")
-    _exact_keys(state, {"schema", "campaign_id", "jobs"}, "state")
-    if state.get("schema") != STATE_SCHEMA:
+    schema = state.get("schema")
+    if schema != STATE_SCHEMA:
+        if schema == "short-video-production-state/v1":
+            raise ProductionError(
+                "legacy v1 state must be reset before v2 campaign custody"
+            )
         raise ProductionError("state schema mismatch")
+    _exact_keys(
+        state,
+        {"schema", "campaign_id", "campaign_definition_sha256", "jobs"},
+        "state",
+    )
     if state.get("campaign_id") != campaign_id:
         raise ProductionError("state campaign_id mismatch")
+    state_definition_sha = state.get("campaign_definition_sha256")
+    if type(state_definition_sha) is not str or not _SHA_RE.fullmatch(state_definition_sha):
+        raise ProductionError("state campaign_definition_sha256 is invalid")
+    if state_definition_sha != campaign_definition_sha256:
+        raise ProductionError(
+            "state campaign definition mismatch; brand/preset identity changed"
+        )
     jobs = _plain_dict(state.get("jobs"), "state.jobs")
     normalized_jobs: dict[str, Any] = {}
     for job_id, raw in jobs.items():
@@ -269,6 +310,7 @@ def _validate_state(value: Any, campaign_id: str) -> dict[str, Any]:
             record,
             {
                 "status",
+                "campaign_definition_sha256",
                 "job_spec_sha256",
                 "project_sha256",
                 "output_sha256",
@@ -277,6 +319,15 @@ def _validate_state(value: Any, campaign_id: str) -> dict[str, Any]:
             },
             f"state.jobs.{job_id}",
         )
+        record_definition_sha = record.get("campaign_definition_sha256")
+        if type(record_definition_sha) is not str or not _SHA_RE.fullmatch(record_definition_sha):
+            raise ProductionError(
+                f"state.jobs.{job_id}.campaign_definition_sha256 is invalid"
+            )
+        if record_definition_sha != campaign_definition_sha256:
+            raise ProductionError(
+                f"state.jobs.{job_id}.campaign definition mismatch"
+            )
         status = record.get("status")
         if status not in {"RENDERED", "FAILED"}:
             raise ProductionError(f"state.jobs.{job_id}.status is invalid")
@@ -306,16 +357,12 @@ def _validate_state(value: Any, campaign_id: str) -> dict[str, Any]:
             if type(error) is not str or not error:
                 raise ProductionError(f"failed state job {job_id} requires error text")
         normalized_jobs[job_id] = dict(record)
-    return {"schema": STATE_SCHEMA, "campaign_id": campaign_id, "jobs": normalized_jobs}
-
-
-def _same_existing_file(left: pathlib.Path, right: pathlib.Path) -> bool:
-    if left.resolve() == right.resolve():
-        return True
-    try:
-        return left.exists() and right.exists() and left.samefile(right)
-    except OSError:
-        return False
+    return {
+        "schema": STATE_SCHEMA,
+        "campaign_id": campaign_id,
+        "campaign_definition_sha256": campaign_definition_sha256,
+        "jobs": normalized_jobs,
+    }
 
 
 def _safe_operational_path(
@@ -346,12 +393,16 @@ def _safe_operational_path(
     return resolved
 
 
-def _load_state(path: pathlib.Path, campaign_id: str) -> dict[str, Any]:
+def _load_state(
+    path: pathlib.Path,
+    campaign_id: str,
+    campaign_definition_sha256: str,
+) -> dict[str, Any]:
     if not path.exists():
-        return _empty_state(campaign_id)
+        return _empty_state(campaign_id, campaign_definition_sha256)
     if path.is_symlink() or not path.is_file():
         raise ProductionError("state path must be an ordinary file")
-    return _validate_state(_read_json(path), campaign_id)
+    return _validate_state(_read_json(path), campaign_id, campaign_definition_sha256)
 
 
 def _atomic_json(path: pathlib.Path, value: Any) -> None:
@@ -380,8 +431,11 @@ def _rendered_record_valid(
     job: dict[str, str],
     project_sha: str,
     root: pathlib.Path,
+    campaign_definition_sha256: str,
 ) -> bool:
     if type(record) is not dict or record.get("status") != "RENDERED":
+        return False
+    if record.get("campaign_definition_sha256") != campaign_definition_sha256:
         return False
     if record.get("job_spec_sha256") != _job_spec_sha(job):
         return False
@@ -400,6 +454,29 @@ def _rendered_record_valid(
         return False
 
 
+def _all_current_records_valid(
+    state: dict[str, Any],
+    manifest: dict[str, Any],
+    root: pathlib.Path,
+    campaign_definition_sha256: str,
+) -> bool:
+    for job in manifest["jobs"]:
+        project_path = (root / job["project"]).resolve()
+        try:
+            project_sha, _ = _project_info(project_path)
+        except ProductionError:
+            return False
+        if not _rendered_record_valid(
+            state["jobs"].get(job["job_id"]),
+            job=job,
+            project_sha=project_sha,
+            root=root,
+            campaign_definition_sha256=campaign_definition_sha256,
+        ):
+            return False
+    return True
+
+
 def run_campaign(
     manifest_path: pathlib.Path,
     state_path: pathlib.Path | None = None,
@@ -409,6 +486,7 @@ def run_campaign(
 ) -> dict[str, Any]:
     manifest_path = manifest_path.resolve()
     manifest, root = load_manifest(manifest_path)
+    campaign_definition_sha256 = _campaign_definition_sha(manifest)
     state_candidate = state_path or pathlib.Path("production-state.json")
     state_path = _safe_operational_path(
         root,
@@ -417,7 +495,11 @@ def run_campaign(
         manifest_path=manifest_path,
         manifest=manifest,
     )
-    state = _load_state(state_path, manifest["campaign_id"])
+    state = _load_state(
+        state_path,
+        manifest["campaign_id"],
+        campaign_definition_sha256,
+    )
     render = renderer or render_project
     actions: list[dict[str, Any]] = []
 
@@ -427,7 +509,11 @@ def run_campaign(
         project_sha, _ = _project_info(project_path)
         prior = state["jobs"].get(job["job_id"])
         if _rendered_record_valid(
-            prior, job=job, project_sha=project_sha, root=root
+            prior,
+            job=job,
+            project_sha=project_sha,
+            root=root,
+            campaign_definition_sha256=campaign_definition_sha256,
         ):
             actions.append({"job_id": job["job_id"], "action": "SKIPPED_VERIFIED"})
             continue
@@ -447,6 +533,7 @@ def run_campaign(
                 )
             state["jobs"][job["job_id"]] = {
                 "status": "RENDERED",
+                "campaign_definition_sha256": campaign_definition_sha256,
                 "job_spec_sha256": spec_sha,
                 "project_sha256": project_sha,
                 "output_sha256": _file_sha(output_path),
@@ -457,6 +544,7 @@ def run_campaign(
         except Exception as exc:
             state["jobs"][job["job_id"]] = {
                 "status": "FAILED",
+                "campaign_definition_sha256": campaign_definition_sha256,
                 "job_spec_sha256": spec_sha,
                 "project_sha256": project_sha,
                 "output_sha256": None,
@@ -472,14 +560,21 @@ def run_campaign(
             continue
         _atomic_json(state_path, state)
 
+    # Re-run structural custody after render now that output/caption targets exist.
+    # This catches hard-link aliases created by a renderer after the initial manifest check.
+    validate_manifest(manifest, root=root)
+    all_rendered = _all_current_records_valid(
+        state,
+        manifest,
+        root,
+        campaign_definition_sha256,
+    )
     return {
         "campaign_id": manifest["campaign_id"],
+        "campaign_definition_sha256": campaign_definition_sha256,
         "state_path": str(state_path),
         "actions": actions,
-        "all_rendered": all(
-            state["jobs"].get(job["job_id"], {}).get("status") == "RENDERED"
-            for job in manifest["jobs"]
-        ),
+        "all_rendered": all_rendered,
     }
 
 
@@ -489,6 +584,7 @@ def compile_delivery(
 ) -> dict[str, Any]:
     manifest_path = manifest_path.resolve()
     manifest, root = load_manifest(manifest_path)
+    campaign_definition_sha256 = _campaign_definition_sha(manifest)
     state_candidate = state_path or pathlib.Path("production-state.json")
     state_path = _safe_operational_path(
         root,
@@ -497,7 +593,11 @@ def compile_delivery(
         manifest_path=manifest_path,
         manifest=manifest,
     )
-    state = _load_state(state_path, manifest["campaign_id"])
+    state = _load_state(
+        state_path,
+        manifest["campaign_id"],
+        campaign_definition_sha256,
+    )
     jobs: list[dict[str, Any]] = []
 
     for job in manifest["jobs"]:
@@ -507,7 +607,11 @@ def compile_delivery(
         project_sha, normalized_project = _project_info(project_path)
         record = state["jobs"].get(job["job_id"])
         ready = _rendered_record_valid(
-            record, job=job, project_sha=project_sha, root=root
+            record,
+            job=job,
+            project_sha=project_sha,
+            root=root,
+            campaign_definition_sha256=campaign_definition_sha256,
         )
         if ready:
             status = "READY_FOR_DELIVERY"
@@ -517,6 +621,7 @@ def compile_delivery(
         elif (
             type(record) is dict
             and record.get("status") == "FAILED"
+            and record.get("campaign_definition_sha256") == campaign_definition_sha256
             and record.get("job_spec_sha256") == _job_spec_sha(job)
             and record.get("project_sha256") == project_sha
         ):
@@ -540,6 +645,7 @@ def compile_delivery(
                 "project": job["project"],
                 "output": job["output"],
                 "captions": captions_path.relative_to(root).as_posix(),
+                "campaign_definition_sha256": campaign_definition_sha256,
                 "project_sha256": project_sha,
                 "job_spec_sha256": _job_spec_sha(job),
                 "project_preset": normalized_project["preset"],
@@ -554,6 +660,7 @@ def compile_delivery(
         "schema": DELIVERY_SCHEMA,
         "campaign_id": manifest["campaign_id"],
         "brand": manifest["brand"],
+        "campaign_definition_sha256": campaign_definition_sha256,
         "manifest_sha256": sha256_json(manifest),
         "state": (
             "DELIVERY_READY"
@@ -589,7 +696,7 @@ def write_delivery(
         manifest_path=manifest_path,
         manifest=manifest,
     )
-    if safe_output == safe_state:
+    if _same_existing_file(safe_output, safe_state):
         raise ProductionError("delivery path may not alias state path")
     if safe_output.exists():
         raise ProductionError(f"refusing to overwrite existing delivery: {safe_output}")
@@ -644,7 +751,11 @@ def main() -> int:
             )
             print(
                 canonical_json(
-                    {"ok": True, "manifest_sha256": sha256_json(manifest)}
+                    {
+                        "ok": True,
+                        "manifest_sha256": sha256_json(manifest),
+                        "campaign_definition_sha256": _campaign_definition_sha(manifest),
+                    }
                 )
             )
             return 0

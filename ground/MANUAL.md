@@ -76,6 +76,8 @@ Do not file: route_table, route_tenancy, fire_nring, inject, census, titan, dc, 
 
 ## Open jobs
 
+- OPEN GROK [grok-carry-action-20260914-02](../p/grok-carry-action-20260914-02.md) tool=
+- OPEN CHATGPT_WORK_WINDOW [pr14330-hosted-ci-fa6269-20260914](../p/pr14330-hosted-ci-fa6269-20260914.md) tool=
 - OPEN GROK [grok-carry-action-20260914-01](../p/grok-carry-action-20260914-01.md) tool=
 - OPEN GROK [grok-carry-work-act-20260912-01](../p/grok-carry-work-act-20260912-01.md) tool=
 - OPEN ASTRA_SOL [astra-landstage-census-20260912-0045](../p/astra-landstage-census-20260912-0045.md) tool=

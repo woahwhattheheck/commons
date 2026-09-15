@@ -6,6 +6,9 @@ import json
 from pathlib import Path
 
 
+AUTH_SCOPE = "conditional_after_registration_and_rule_acceptance"
+
+
 def sha256(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
@@ -13,6 +16,17 @@ def sha256(path: Path) -> str:
 def check(state_path: Path) -> tuple[bool, list[str]]:
     state = json.loads(state_path.read_text(encoding="utf-8"))
     reasons: list[str] = []
+
+    auth = state.get("written_dataset_authorization") or {}
+    if auth.get("received") is not True:
+        reasons.append("written dataset authorization missing")
+    if auth.get("scope") != AUTH_SCOPE:
+        reasons.append("written dataset authorization scope missing/invalid")
+    if auth.get("official_mirrors_only") is not True:
+        reasons.append("official-mirrors-only authorization boundary missing")
+    if auth.get("noncommercial_competition_use_only") is not True:
+        reasons.append("noncommercial competition-use authorization boundary missing")
+
     for key in ("official_registration_complete", "kaggle_rules_accepted", "dataset_terms_accepted", "submission_authorized"):
         if state.get(key) is not True:
             reasons.append(f"{key}=false")

@@ -17,8 +17,10 @@ AUTO_RESOLVE_SOURCE_HOSTS = (
     "gitcoin.co",
 )
 USER_AGENT = "commons-funded-work-freshness/1.0"
+# Query/fragment tails may contain reserved characters. Slash tails are limited to
+# unreserved path segments so dot-segments and encoded delimiters cannot prefix-bind.
 GITHUB_ITEM_RE = re.compile(
-    r"https?://(?:www\.)?github\.com/([A-Za-z0-9_.-]+)/([A-Za-z0-9_.-]+)/(issues|pull)/(\d+)(?!\w)(?:[/?#][^\s\"'<>]*)?",
+    r"https?://(?:www\.)?github\.com/([A-Za-z0-9_.-]+)/([A-Za-z0-9_.-]+)/(issues|pull)/(\d+)(?:[?#][^\s\"'<>]*|/(?:[A-Za-z0-9_-]+(?:/[A-Za-z0-9_-]+)*/?)?(?:[?#][^\s\"'<>]*)?(?=$|[\s\"'<>]|[.,;:!?)\]}]+(?=$|\s))|(?=$|[\s\"'<>]|[.,;:!?)\]}]+(?=$|\s)))",
     re.IGNORECASE,
 )
 STRICT_CLAIM_RE = re.compile(
