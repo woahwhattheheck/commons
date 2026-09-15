@@ -26,9 +26,16 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-      - name: Compile verifier
-        run: python -m py_compile research/sun_a308734_ternary5/verify.py
+      - name: Compile verifiers
+        run: |
+          python -m py_compile research/sun_a308734_ternary5/verify.py research/sun_a308734_ternary5/verify_recurrence.py
       - name: Run exact finite checks
-        run: python research/sun_a308734_ternary5/verify.py
+        run: |
+          cd research/sun_a308734_ternary5
+          python verify.py
+          python verify_recurrence.py
       - name: Run exact finite checks under optimized Python
-        run: python -O research/sun_a308734_ternary5/verify.py
+        run: |
+          cd research/sun_a308734_ternary5
+          python -O verify.py
+          python -O verify_recurrence.py
