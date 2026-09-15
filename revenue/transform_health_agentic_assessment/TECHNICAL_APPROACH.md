@@ -2,7 +2,7 @@
 
 ## 1. Design objective
 
-Build a low-volume, maintainable document-intelligence service that helps a human reviewer populate Transform Health's existing Step 2 assessment and derive Step 3 summaries without turning an LLM into a legal decision-maker.
+Build a low-volume, maintainable document-intelligence service that helps a human reviewer populate Transform Health's existing Step 2 assessment and derive Step 3 summaries without turning an LLM, parser, or OCR system into a legal decision-maker or source authority.
 
 The system should answer one mechanical question reliably:
 
@@ -48,9 +48,10 @@ A deliberately small service boundary:
 2. **Document normalizer**
    - extracts machine-readable text when available;
    - detects scanned / non-machine-readable pages;
-   - routes those pages through the approved OCR path or marks them unprocessable with an explicit reason;
-   - preserves page boundaries and original-language text;
-   - records parser/OCR version and source-page coordinates.
+   - preserves the original source page or image identity, page boundaries, original-language content, parser/OCR version, and source coordinates;
+   - routes scanned pages through the approved OCR path only as a derived representation;
+   - records a separate digest for OCR output and never treats OCR text as self-authenticating source text;
+   - if the source image cannot be retained or reviewed under the agreed environment, marks the page `UNPROCESSABLE` rather than manufacturing source fidelity.
 
 3. **Retrieval / candidate-evidence service**
    - segments documents with page-aware boundaries;
@@ -64,28 +65,35 @@ A deliberately small service boundary:
    - structured output schema only;
    - may return candidate verbatim evidence spans plus source coordinates and extraction confidence;
    - may return `NOT_IDENTIFIED` when no support is found;
-   - must not create or paraphrase legislative provisions.
+   - must not create or paraphrase legislative provisions;
+   - labels candidates from OCR-derived text as `OCR_DERIVED_CANDIDATE`, never directly as verified source evidence.
 
 5. **Evidence verifier**
-   - independently checks that every quoted span exists byte/text-normalization-equivalently in the named normalized source page;
-   - rejects missing, altered, cross-document, or out-of-range citations;
+   - for native machine-readable text, independently checks that every quoted span exists text-normalization-equivalently in the named source page;
+   - for scanned/image pages, binds the candidate to the exact source-image/page digest and requires a separate image-grounded verification step or explicit human visual confirmation against the source image before promotion;
+   - an OCR span that only matches OCR output remains `OCR_DERIVED_CANDIDATE` / `NEEDS_HUMAN_REVIEW`; OCR confidence alone is never promotion authority;
+   - if image-grounded verification or human confirmation cannot be obtained, the candidate remains non-authoritative or the page becomes `UNPROCESSABLE` rather than `VERIFIED_EVIDENCE`;
+   - rejects missing, altered, cross-document, cross-page, or out-of-range citations;
    - rejects unrecognized assessment IDs and unknown schema fields;
-   - requires every positive Step 2 entry to carry at least one verified evidence span;
+   - requires every positive Step 2 entry to carry at least one source-verified evidence span;
    - preserves the exact source-language quotation even when a translated reviewer aid is also shown.
 
 6. **Deterministic Step 3 reducer**
-   - consumes only verified Step 2 states;
+   - consumes only Step 2 states whose evidence reached `VERIFIED_EVIDENCE` under the native-text or image/human verification path;
+   - never consumes a bare OCR-derived candidate;
    - applies Transform Health-approved, versioned deterministic rules;
    - does not ask the generative model to decide the final summary state;
    - includes the rule-set version/digest in generated outputs.
 
 7. **Artifact renderer**
    - creates the draft Step 2 worksheet, Step 3 worksheet, and human-readable summary report;
-   - includes source IDs, page references, and evidence quotations;
+   - supports English, French, and Spanish input **and output** workflows in the initial version;
+   - preserves original-language source quotations while localizing framework labels, status text, instructions, and generated report structure into the selected output language;
+   - includes source IDs, page references, source-representation type (`NATIVE_TEXT` or `SOURCE_IMAGE_WITH_VERIFICATION`), and evidence quotations;
    - marks draft / human-verification status prominently.
 
 8. **Job ledger**
-   - records state transitions, model/provider/version, prompt/rule version, source digests, processing time, token counts, estimated/actual API cost, errors, retry count, and deletion state;
+   - records state transitions, model/provider/version, prompt/rule version, source digests, page/image digests, OCR-derived digests where applicable, verification method, processing time, token counts, estimated/actual API cost, errors, retry count, and deletion state;
    - stores no more document content than the approved retention policy requires.
 
 ### 2.3 Storage and queues
@@ -110,6 +118,7 @@ A positive extraction should be impossible to persist without a citation object 
   "source_id": "sha256-bound-document-id",
   "source_digest": "sha256:...",
   "page": 12,
+  "source_representation": "NATIVE_TEXT",
   "normalized_span_start": 3812,
   "normalized_span_end": 4094,
   "verbatim_quote": "...",
@@ -119,9 +128,11 @@ A positive extraction should be impossible to persist without a citation object 
 }
 ```
 
-Before the entry can become `VERIFIED_EVIDENCE`, the verifier re-opens the normalized source by digest and proves the quoted span and coordinates agree.
+For native text, promotion to `VERIFIED_EVIDENCE` requires the verifier to re-open the source bound by digest and prove the quote and coordinates agree.
 
-A model-produced paraphrase can be displayed only as a clearly separate reviewer aid if Transform Health wants it; it must never replace the source quotation or satisfy the evidence requirement.
+For a scanned page, the candidate additionally binds the exact source-image/page digest and OCR derivation metadata. A mere match against OCR text is insufficient. The candidate stays `OCR_DERIVED_CANDIDATE` until either (a) a separately designed image-grounded verifier validates the cited source image under the agreed acceptance criteria, or (b) an authorized human visually confirms the quote against that exact image/page. The verification method and actor/system evidence are retained. Without one of those paths, the candidate cannot feed positive Step 2 or Step 3 state.
+
+A model-produced paraphrase or machine translation can be displayed only as a clearly separate reviewer aid if Transform Health wants it; it must never replace the source quotation or satisfy the evidence requirement.
 
 ## 4. Hallucination and unsupported-output controls
 
@@ -132,9 +143,10 @@ Layer controls rather than relying on one prompt:
 - source-aware retrieval and bounded context;
 - exact/verifiable quotation requirement;
 - independent post-model citation verification;
+- OCR provenance gate that prevents OCR output from self-certifying source fidelity;
 - deterministic Step 3 reducer;
-- fail-closed handling for unknown IDs, malformed citations, missing source spans, parser failures, and quota exhaustion;
-- reviewer-visible `NOT_IDENTIFIED`, `UNPROCESSABLE`, and `NEEDS_HUMAN_REVIEW` states instead of forced completion;
+- fail-closed handling for unknown IDs, malformed citations, missing source spans, unverified OCR spans, parser failures, and quota exhaustion;
+- reviewer-visible `NOT_IDENTIFIED`, `OCR_DERIVED_CANDIDATE`, `UNPROCESSABLE`, and `NEEDS_HUMAN_REVIEW` states instead of forced completion;
 - no autonomous publication of a country assessment;
 - explicit human verification before a draft can be treated as reviewed.
 
@@ -172,13 +184,14 @@ On a gold set of existing country assessments, measure:
 - citation correctness;
 - unsupported-positive rate;
 - false `NOT_IDENTIFIED` rate;
+- OCR/image-verification error rate separately from native-text extraction;
 - cost and latency by page count/language.
 
 The proposal should not promise a numeric target before Transform Health supplies representative assessment data. Targets should be agreed at design stage, measured against the same frozen benchmark, and reported with confidence intervals where useful.
 
 ## 6. Multilingual handling
 
-Initial languages: English, French, Spanish.
+Initial languages: English, French, Spanish for both inputs and outputs.
 
 Rules:
 
@@ -187,6 +200,7 @@ Rules:
 - use multilingual retrieval or language-specific query expansion;
 - keep any translated reviewer aid separate from the evidentiary quote;
 - version prompts/rules per language when they diverge;
+- render downloadable Step 2, Step 3, and summary-report labels/instructions in the selected supported output language while preserving original-source quotations;
 - include language-stratified benchmark results so acceptable aggregate performance cannot hide one failing language.
 
 ## 7. Scanned / non-machine-readable documents
@@ -194,13 +208,15 @@ Rules:
 A scanned-document pathway must be explicit rather than magical:
 
 1. detect text insufficiency per page;
-2. route to the approved OCR engine if OCR is enabled for that tenant/job;
-3. retain page-level OCR confidence / engine metadata;
-4. flag low-confidence pages for human review;
-5. preserve page image / source coordinates where the environment permits;
-6. if OCR is unavailable or fails policy, return `UNPROCESSABLE` with the page range and reason.
+2. bind the exact source-image/page bytes to a digest before OCR;
+3. route to the approved OCR engine if OCR is enabled for that tenant/job;
+4. retain page-level OCR confidence, OCR-engine/version metadata, OCR-output digest, and source-image digest;
+5. classify extracted OCR spans as `OCR_DERIVED_CANDIDATE`, regardless of OCR confidence;
+6. require independent image-grounded verification or authorized human visual confirmation against the exact bound source image before `VERIFIED_EVIDENCE`;
+7. flag low-confidence or structurally ambiguous pages for human review even if an automated image-grounded check exists;
+8. if OCR is unavailable, the source image cannot be retained/verified, or verification fails policy, return `UNPROCESSABLE` / `NEEDS_HUMAN_REVIEW` with page range and reason.
 
-OCR text is evidence *derived from* a source image, so the renderer should distinguish native text extraction from OCR-derived extraction.
+OCR confidence is routing metadata, not source-fidelity authority. The renderer must distinguish native text from OCR-derived candidate text, and Step 3 must never consume unverified OCR-derived evidence.
 
 ## 8. Cost controls
 
@@ -218,6 +234,8 @@ Every assessment receives a configurable budget envelope:
 The orchestrator checks projected and consumed cost before each expensive stage. Crossing the cap produces a durable `COST_CAP_REACHED` job state with completed partial stages preserved for diagnostics; it does not continue charging or fabricate a complete assessment.
 
 Where provider capabilities allow it, use prompt caching and asynchronous/batch execution only when they measurably reduce cost without weakening isolation or traceability.
+
+Commercially, the proposed **USD 15,000** is the total professional implementation fee for the stated consultancy deliverables. Any buyer-procured or buyer-approved third-party model, OCR, hosting, storage, translation, or messaging service is outside that professional fee only if Transform Health agrees the service and a written operating-cost cap/change order in advance. No uncapped or surprise operating cost is committed.
 
 ## 9. Provider-neutral model interface
 
@@ -256,6 +274,7 @@ Freeze a benchmark set with Transform Health before tuning.
 Each benchmark case should bind:
 
 - exact input document digests;
+- exact source-image/page digests for scanned cases;
 - reference Step 2 evidence spans;
 - expected Step 3 deterministic output;
 - language and scan/native-text category;
@@ -264,17 +283,18 @@ Each benchmark case should bind:
 Test classes:
 
 1. happy-path native text;
-2. scanned/OCR cases;
-3. multilingual cases;
+2. scanned/OCR cases, including deliberately high-confidence OCR substitutions that must not self-certify as source evidence;
+3. multilingual input and output cases;
 4. long-document retrieval misses;
 5. semantically similar but irrelevant text;
 6. missing evidence / legitimate `NOT_IDENTIFIED`;
 7. malformed or unsupported files;
 8. citation transplantation/tamper attempts;
 9. cost-cap termination;
-10. provider/model version change regression.
+10. provider/model version change regression;
+11. OCR candidate without image/human verification, which must remain non-authoritative.
 
-Report at minimum precision, recall, citation correctness, unsupported-positive rate, processing time, token consumption, and cost per assessment. UAT feedback is tracked separately from benchmark scoring so user preference does not silently rewrite accuracy criteria.
+Report at minimum precision, recall, citation correctness, unsupported-positive rate, processing time, token consumption, and cost per assessment, stratified by language and native-text/OCR path. UAT feedback is tracked separately from benchmark scoring so user preference does not silently rewrite accuracy criteria.
 
 ## 12. Milestone plan
 
@@ -287,6 +307,8 @@ Report at minimum precision, recall, citation correctness, unsupported-positive 
 - provider-neutral architecture;
 - hosting recommendation;
 - benchmark/test-plan agreement;
+- OCR source-fidelity verification design;
+- multilingual input/output contract;
 - cost model.
 
 ### By 30 November 2026
@@ -294,7 +316,8 @@ Report at minimum precision, recall, citation correctness, unsupported-positive 
 - ingestion/normalization;
 - retrieval;
 - structured evidence extraction;
-- citation verifier;
+- native-text citation verifier;
+- scanned-page OCR candidate + image/human verification gate;
 - deterministic Step 3 reducer;
 - cost-cap enforcement;
 - command/API-level acceptance tests.
@@ -303,7 +326,7 @@ Report at minimum precision, recall, citation correctness, unsupported-positive 
 
 - WordPress-facing registration/upload/status/download flows;
 - authenticated API integration;
-- English/French/Spanish UX paths;
+- English/French/Spanish input and output UX paths;
 - administrative job visibility and error handling.
 
 ### By 31 January 2027
@@ -328,7 +351,7 @@ Report at minimum precision, recall, citation correctness, unsupported-positive 
 
 1. What file formats and maximum corpus sizes occur in real country assessments?
 2. Are uploaded laws/regulations always public, or can drafts/confidential documents appear?
-3. What retention/deletion window is acceptable?
+3. What retention/deletion window is acceptable, including for source-page images needed to verify OCR-derived candidates?
 4. What is the current WordPress host and can it run a custom plugin / outbound API calls?
 5. Is a separate cloud account/project available for document processing?
 6. What existing Step 2/Step 3 file formats must be preserved exactly?
@@ -338,5 +361,7 @@ Report at minimum precision, recall, citation correctness, unsupported-positive 
 10. What registration approval and publication-consent workflow does Transform Health want?
 11. Which providers/regions are disallowed for uploaded documents?
 12. What operating-cost ceiling per country assessment should terminate a job?
+13. What source-image review or image-grounded verification method is acceptable before OCR-derived text can become verified Step 2 evidence?
+14. Should users choose one output language per assessment, or should the system emit parallel English/French/Spanish Step 2, Step 3, and report artifacts?
 
 These are design inputs, not reasons to delay the application. The proposal can state explicit assumptions and bind final implementation choices to the orientation milestone.
