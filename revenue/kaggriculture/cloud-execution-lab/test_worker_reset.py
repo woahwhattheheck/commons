@@ -226,7 +226,9 @@ def _run_game(
     trace = hashlib.sha256()
     loaded_entrypoint = None
     active_instance = None
+    last_instance = None
     replacement_verified = False
+    within_episode_discards = 0
     calls = 0
     last_step = None
 
@@ -241,17 +243,32 @@ def _run_game(
         encoded = json.dumps(action, sort_keys=True, separators=(",", ":"), allow_nan=False)
         current = loaded_entrypoint.__globals__.get("_INSTANCE")
         if current is None:
-            raise AssertionError(("missing canonical singleton", scenario, step))
-        diagnostics = dict(current.diagnostics)
-        if diagnostics.get("parent_calls") != 1 or diagnostics.get("status") != "completed":
-            raise AssertionError(("non-completed action", scenario, step, diagnostics))
-        if step == 0:
-            if prior_instance is not None and current is prior_instance:
-                raise AssertionError(("step zero reused prior TitanAgent", scenario))
-            active_instance = current
-            replacement_verified = True
-        elif current is not active_instance:
-            raise AssertionError(("singleton changed inside completed episode", scenario, step))
+            if active_instance is None:
+                raise AssertionError(("canonical singleton absent without prior live instance", scenario, step))
+            diagnostics = dict(active_instance.diagnostics)
+            if (diagnostics.get("status") != "deadline_fallback"
+                    or diagnostics.get("entrypoint_guard") is not True):
+                raise AssertionError(("unaccounted singleton discard", scenario, step, diagnostics))
+            last_instance = active_instance
+            active_instance = None
+            within_episode_discards += 1
+        else:
+            diagnostics = dict(current.diagnostics)
+            if (diagnostics.get("parent_calls") != 1
+                    or diagnostics.get("status") not in ("completed", "deadline_fallback")):
+                raise AssertionError(("non-returned action", scenario, step, diagnostics))
+            if step == 0:
+                if prior_instance is not None and current is prior_instance:
+                    raise AssertionError(("step zero reused prior TitanAgent", scenario))
+                active_instance = current
+                replacement_verified = True
+            elif active_instance is None:
+                if last_instance is not None and current is last_instance:
+                    raise AssertionError(("deadline-discarded TitanAgent was reused", scenario, step))
+                active_instance = current
+            elif current is not active_instance:
+                raise AssertionError(("singleton changed without certified discard", scenario, step))
+            last_instance = current
 
         trace.update(encoded.encode("utf-8") + b"\n")
         state[seat].action = json.loads(encoded)
@@ -262,7 +279,7 @@ def _run_game(
         if any(player.status == "DONE" for player in state):
             break
 
-    if not replacement_verified or active_instance is None:
+    if not replacement_verified or last_instance is None:
         raise AssertionError(("episode never verified singleton replacement", scenario))
     return {
         "seed": scenario["seed"],
@@ -273,8 +290,9 @@ def _run_game(
         "status": [player.status for player in state],
         "rewards": [player.reward for player in state],
         "singleton_replaced": True,
+        "within_episode_instance_discards": within_episode_discards,
         "deadline_guard_clean_after_every_call": True,
-    }, active_instance
+    }, last_instance
 
 
 def worker(root: Path, order: list[str]) -> dict[str, Any]:
@@ -342,6 +360,7 @@ def _scenario_projection(result: dict[str, Any], name: str):
             "action_sha256",
             "status",
             "rewards",
+            "within_episode_instance_discards",
             "deadline_guard_clean_after_every_call",
         )
     }
@@ -391,7 +410,8 @@ def verify() -> dict[str, Any]:
             "For these two full official-interpreter games on one persistent worker thread, "
             "action trace and terminal result are identical whether the game runs first in a "
             "fresh process or second after the other game; step zero replaces the prior "
-            "TitanAgent singleton and deadline guard state is clean after every call."
+            "TitanAgent singleton, certified outer-deadline discards reconstruct a fresh "
+            "instance, and deadline guard state is clean after every call."
         ),
     }
 
