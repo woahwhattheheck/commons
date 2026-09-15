@@ -429,12 +429,54 @@ def compile_current(facts_obj: Any) -> dict[str, Any]:
     return _compile_at(facts_obj, _now_utc())
 
 
+def _packet_evaluation_instant(packet_obj: dict[str, Any]) -> _dt.datetime:
+    evaluation = _require_utc_instant(packet_obj.get("evaluation_utc"), "packet.evaluation_utc")
+    return _dt.datetime.fromisoformat(evaluation.replace("Z", "+00:00"))
+
+
+def _operational_projection(packet_obj: dict[str, Any]) -> dict[str, Any]:
+    keys = (
+        "schema",
+        "opportunity_id",
+        "deadlines",
+        "source_binding",
+        "source_policy",
+        "route",
+        "status",
+        "blockers",
+        "next_actions",
+        "requirements",
+        "qualification_basis_counts",
+        "teaming_commitment",
+        "facts_sha256",
+        "workshare",
+        "authority",
+        "truth_boundary",
+    )
+    try:
+        return {key: packet_obj[key] for key in keys}
+    except KeyError as exc:
+        raise ContractError(f"packet missing operational field: {exc.args[0]}") from exc
+
+
 def verify_current(packet_obj: Any, facts_obj: Any) -> bool:
     if not isinstance(packet_obj, dict):
         raise ContractError("packet must be object")
-    expected = compile_current(facts_obj)
-    if _canonical(packet_obj) != _canonical(expected):
-        raise ContractError("packet does not match current source-bound compilation")
+
+    # First prove exact package integrity at the packet's own bound evaluation
+    # instant. This prevents a fresh wall-clock sample from invalidating a
+    # packet solely because evaluation_utc advanced by milliseconds.
+    bound_instant = _packet_evaluation_instant(packet_obj)
+    expected_at_bound = _compile_at(facts_obj, bound_instant)
+    if _canonical(packet_obj) != _canonical(expected_at_bound):
+        raise ContractError("packet integrity does not match bound source compilation")
+
+    # Then ask whether the packet still represents current operational truth.
+    # Only currentness-sensitive fields are compared; evaluation_utc and the
+    # receipt digest are intentionally excluded after bound-integrity proof.
+    current = compile_current(facts_obj)
+    if _canonical(_operational_projection(packet_obj)) != _canonical(_operational_projection(current)):
+        raise ContractError("packet operational state is stale")
     return True
 
 
