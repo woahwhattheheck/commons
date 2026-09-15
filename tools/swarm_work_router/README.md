@@ -47,11 +47,43 @@ python -m tools.swarm_work_router.router scratch-clear work.json scratch-open.js
 
 The scratch compiler models the owner-directed `#todo` lifecycle. `CLEAR` requires the exact valid preceding `OPEN` receipt for the same work identity; reopening requires a valid preceding `CLEARED` receipt. The tool emits evidence only; the Slack message itself must still be created/deleted through Slack.
 
+## Channel-registry drift audit
+
+`tools.swarm_work_router.drift` verifies that the static routing policy still resolves against an owner/export-supplied Slack conversation census. It never calls or mutates Slack. A census has this exact shape:
+
+```json
+{
+  "schema": "swarm-slack-channel-census/v1",
+  "generation": "20260915T044600Z",
+  "source": "slack_list_user_channels",
+  "channels": [
+    {
+      "id": "C0BTRNE6Y58",
+      "name": "build-demand",
+      "archived": false,
+      "is_member": true,
+      "conversation_type": "public_channel"
+    }
+  ]
+}
+```
+
+The audit checks every expected route primary/mirror plus `#todo`, the Muse DM, expected IDs/names, membership/archive state, duplicate IDs/names, and the anti-dogpile policy that keeps `#delegations` and `#awaiting-merge` out of ordinary primary routing. Missing, inaccessible, archived, duplicate-ID, or structurally ambiguous routes produce `HOLD`; name drift produces `REVIEW`; a clean census produces `PASS`. The tool does **not** automatically replace a dead route.
+
+```bash
+python -m tools.swarm_work_router.drift expected > expected.json
+python -m tools.swarm_work_router.drift audit census.json > audit.json
+python -m tools.swarm_work_router.drift audit census.json --format markdown > audit.md
+python -m tools.swarm_work_router.drift verify audit.json
+```
+
+The audit is input-order invariant. JSON rejects duplicate keys recursively, unknown schema fields, invalid types, and over-large census inputs. Audit receipts carry canonical SHA-256 digests, `side_effects_authorized=false`, and a semantic verifier that rejects digest/state/count tamper.
+
 ## Verification
 
 ```bash
-python -m unittest -v tools.swarm_work_router.test_router
-python -O -m unittest -v tools.swarm_work_router.test_router
+python -m unittest -v tools.swarm_work_router.test_router tools.swarm_work_router.test_drift
+python -O -m unittest -v tools.swarm_work_router.test_router tools.swarm_work_router.test_drift
 ```
 
-Receipts are canonical JSON and carry a SHA-256 over every field except `receipt_sha256`. `verify_receipt()` recomputes the digest and enforces the no-side-effects ceiling.
+Receipts are canonical JSON and carry a SHA-256 over every field except `receipt_sha256`. `verify_receipt()` recomputes the router digest and enforces the no-side-effects ceiling; `verify_audit_receipt()` does the same for channel-drift receipts plus semantic state/count checks.
