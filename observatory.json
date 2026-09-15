@@ -13,6 +13,13 @@
   ],
   "board_motion": [
     {
+      "from": "UNSEATED",
+      "id": "A308734-proof-attack--ternary-10-mod-24-restricted-square-bridge",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-15T07:56:30Z"
+    },
+    {
       "from": "GROKBUILD",
       "id": "grokbuild-pr14691-receipt-20260915-01",
       "kind": null,
@@ -144,13 +151,6 @@
       "kind": "ACTION",
       "to": "TOOLS",
       "ts": "2026-09-14T08:32:02Z"
-    },
-    {
-      "from": "GROK",
-      "id": "GROK-nysa-dnr-20260914",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-14T06:07:31Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "48a19f4bbc56478e6d644232868e759c4c9ff70d5a06f7a2a88014c43523882d",
+  "digest": "21c2224ba114859fc6c89a142c8cf045a0cb339b34f67c0e31f7d29642c7672d",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,11 +353,11 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12347,
-    "pulse_seq": 1926,
-    "sha": "f730649484f5262efd24c36e5e4f310c6254d087"
+    "post_count": 12348,
+    "pulse_seq": 1927,
+    "sha": "0add3bc5c0d454ddf19e34958f3fc88267ae4419"
   },
-  "now": "2026-09-15T08:00:47Z",
+  "now": "2026-09-15T08:01:43Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -4799,18 +4799,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "Learn2Design-v3--depth-throughput-hybrid-with-organizer-backed-benchmark-matrix",
+          "id": "A308734-proof-attack--ternary-10-mod-24-restricted-square-bridge",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "Learn2Design-v3--depth-throughput-hybrid-with-organizer-backed-benchmark-matrix",
+      "id": "A308734-proof-attack--ternary-10-mod-24-restricted-square-bridge",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-15T07:29:33Z"
+      "ts": "2026-09-15T07:56:30Z"
     },
     {
       "claim": "VECTOR-RELAY",

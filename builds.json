@@ -350,7 +350,7 @@
   }
  ],
  "pr_note": "Open GitHub PRs from public unauthenticated /pulls. PR-road work sits beside ntfy-road posts. Descriptive only. Not a merge gate. A PR is not main.",
- "n_open_prs": 58,
+ "n_open_prs": 57,
  "open_prs": [
   {
    "number": 13533,
@@ -1185,22 +1185,6 @@
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
   {
-   "number": 14718,
-   "author": "woahwhattheheck",
-   "title": "Fix localized media release snapshots across readiness, audit and packages",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/14718",
-   "base_freshness": {
-    "base_sha": "4ceefeaa66ea6618da36a03055ab8474798dafa7",
-    "main_sha": "4ceefeaa66ea6618da36a03055ab8474798dafa7",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "FRESH"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
    "number": 14720,
    "author": "woahwhattheheck",
    "title": "Donor: fail closed unauthenticated Muse negative election outcomes",
@@ -1254,11 +1238,11 @@
    "title": "Build evidence-bound Massachusetts DDS IPMS RFI response compiler",
    "html_url": "https://github.com/woahwhattheheck/commons/pull/14722",
    "base_freshness": {
-    "base_sha": "4ceefeaa66ea6618da36a03055ab8474798dafa7",
+    "base_sha": "d1788f1f3d74e2ea4713ce698118ab2cd8890d62",
     "main_sha": "4ceefeaa66ea6618da36a03055ab8474798dafa7",
     "ahead_by": null,
     "behind_by": null,
-    "label": "FRESH"
+    "label": "STALE_BASE"
    },
    "status": "PR_OPEN",
    "road": "pr",

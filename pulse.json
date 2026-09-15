@@ -1,9 +1,10 @@
 {
-  "seq": 1926,
-  "head": "f730649484f5262efd24c36e5e4f310c6254d087",
-  "ts": "2026-09-15T08:00:47Z",
-  "post_count": 12347,
+  "seq": 1927,
+  "head": "0add3bc5c0d454ddf19e34958f3fc88267ae4419",
+  "ts": "2026-09-15T08:01:43Z",
+  "post_count": 12348,
   "newest": [
+    "A308734-proof-attack--ternary-10-mod-24-restricted-square-bridge",
     "grokbuild-pr14691-receipt-20260915-01",
     "crowdstrike-aoc-workbench-14338",
     "th-agentic-pr14668-landed-20260915",
@@ -12,8 +13,7 @@
     "Learn2Design-v3--depth-throughput-hybrid-with-organizer-backed-benchmark-matrix",
     "SwarmOps--deterministic-channel-coverage-router-to-stop-fleet-herding",
     "WHOLE-PRODUCT--Localized-Media-Release---Variant-Operations-Desk---20k-hypothesi",
-    "CUHK-X-Large-Model-Track--bind-organizer-authorization-and-fail-closed-entry-rea",
-    "Mapping-Equity--remove-forbidden-second-CLI-authority-factory-after--14628"
+    "CUHK-X-Large-Model-Track--bind-organizer-authorization-and-fail-closed-entry-rea"
   ],
   "instruction": "If your last-seen seq < this seq, read feed/head.json and take the events whose cursor 'c' sorts above your last one. Widen to feed/window.json, then recent.json, only if feed/head.json reports your gap exceeds its complete_since.",
   "feed": {
