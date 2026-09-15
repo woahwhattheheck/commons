@@ -3,23 +3,40 @@ from __future__ import annotations
 """Explicit historical/test replay namespace.
 
 Every explicit-time result is wrapped in a non-current schema with
-``HISTORICAL_INTEGRITY_ONLY`` authority.  Nothing in this module can emit the
+``HISTORICAL_INTEGRITY_ONLY`` authority. Nothing in this module can emit the
 current report or current-verification schema used by ``engine.py``.
 """
 
 from pathlib import Path
 from typing import Any
 
+try:
+    from .engine import (
+        TransferError,
+        canonical_json_bytes,
+        canonical_sha256,
+        format_utc,
+    )
+except ImportError:
+    from engine import (
+        TransferError,
+        canonical_json_bytes,
+        canonical_sha256,
+        format_utc,
+    )
+
 HISTORICAL_REPORT_SCHEMA = "vetter-clinical-fill-tech-transfer-historical/v1"
 HISTORICAL_VERIFY_SCHEMA = "vetter-clinical-fill-tech-transfer-historical-verification/v1"
 HISTORICAL_AUTHORITY_MODE = "HISTORICAL_INTEGRITY_ONLY"
-HISTORICAL_REPORT_KEYS = {
-    "schema",
-    "authority_mode",
-    "historical_as_of_utc",
-    "decision",
-    "historical_receipt_sha256",
-}
+HISTORICAL_REPORT_KEYS = frozenset(
+    {
+        "schema",
+        "authority_mode",
+        "historical_as_of_utc",
+        "decision",
+        "historical_receipt_sha256",
+    }
+)
 
 
 def _load_private_core() -> dict[str, Any]:
@@ -30,13 +47,15 @@ def _load_private_core() -> dict[str, Any]:
         "__file__": str(source_path),
     }
     exec(compile(source, str(source_path), "exec"), namespace, namespace)
+    # All historical/current failures share the supported package exception
+    # class, even though the retained source is evaluated in a separate arena.
+    namespace["TransferError"] = TransferError
     return namespace
 
 
 def _install_snapshot_chronology(core: dict[str, Any]) -> None:
     original = core["normalize_snapshot"]
     parse_utc = core["parse_utc"]
-    transfer_error = core["TransferError"]
 
     def repaired(
         value: object,
@@ -58,7 +77,7 @@ def _install_snapshot_chronology(core: dict[str, Any]) -> None:
                         f"{name}.rows[{idx}].last_updated_utc",
                     )
                     if updated > captured:
-                        raise transfer_error(
+                        raise TransferError(
                             f"{name}.rows[{idx}].last_updated_utc is later than snapshot capture"
                         )
         return original(value, name, expected_role=expected_role, as_of=as_of)
@@ -69,39 +88,36 @@ def _install_snapshot_chronology(core: dict[str, Any]) -> None:
 _core = _load_private_core()
 _install_snapshot_chronology(_core)
 
-TransferError = _core["TransferError"]
-canonical_json_bytes = _core["canonical_json_bytes"]
-canonical_sha256 = _core["canonical_sha256"]
-format_utc = _core["format_utc"]
-
 
 def _build_historical_capabilities(core: dict[str, Any]):
     raw_compile = core["compile_transfer"]
     raw_verify = core["verify_report"]
     raw_render = core["render_markdown"]
-    canonical = core["canonical_sha256"]
-    transfer_error = core["TransferError"]
+    raw_canonical = core["canonical_sha256"]
+    transfer_error = TransferError
+    historical_schema = HISTORICAL_REPORT_SCHEMA
+    historical_verify_schema = HISTORICAL_VERIFY_SCHEMA
+    historical_mode = HISTORICAL_AUTHORITY_MODE
+    historical_keys = frozenset(HISTORICAL_REPORT_KEYS)
 
     def seal(decision: dict[str, Any]) -> dict[str, Any]:
-        # Raw decisions are first proven internally.  Historical wrapping never
-        # upgrades their authority; it only binds replay provenance.
         raw_verify(decision)
         core_value = {
-            "schema": HISTORICAL_REPORT_SCHEMA,
-            "authority_mode": HISTORICAL_AUTHORITY_MODE,
+            "schema": historical_schema,
+            "authority_mode": historical_mode,
             "historical_as_of_utc": decision["as_of"],
             "decision": decision,
         }
         wrapped = dict(core_value)
-        wrapped["historical_receipt_sha256"] = canonical(core_value)
+        wrapped["historical_receipt_sha256"] = raw_canonical(core_value)
         return wrapped
 
     def validate(report: object) -> dict[str, Any]:
-        if type(report) is not dict or set(report) != HISTORICAL_REPORT_KEYS:
+        if type(report) is not dict or set(report) != set(historical_keys):
             raise transfer_error("historical report key set is invalid")
-        if report["schema"] != HISTORICAL_REPORT_SCHEMA:
+        if report["schema"] != historical_schema:
             raise transfer_error("historical report schema mismatch")
-        if report["authority_mode"] != HISTORICAL_AUTHORITY_MODE:
+        if report["authority_mode"] != historical_mode:
             raise transfer_error("historical report authority mode mismatch")
         receipt = report["historical_receipt_sha256"]
         if type(receipt) is not str or len(receipt) != 64:
@@ -111,7 +127,7 @@ def _build_historical_capabilities(core: dict[str, Any]):
             for key in report
             if key != "historical_receipt_sha256"
         }
-        if canonical(without) != receipt:
+        if raw_canonical(without) != receipt:
             raise transfer_error("historical report receipt mismatch")
         decision = report["decision"]
         raw_verify(decision)
@@ -131,8 +147,8 @@ def _build_historical_capabilities(core: dict[str, Any]):
     def verify_historical(report: object) -> dict[str, Any]:
         decision = validate(report)
         return {
-            "schema": HISTORICAL_VERIFY_SCHEMA,
-            "authority_mode": HISTORICAL_AUTHORITY_MODE,
+            "schema": historical_verify_schema,
+            "authority_mode": historical_mode,
             "verified": True,
             "historical_as_of_utc": decision["as_of"],
             "historical_decision_state": decision["summary"]["state"],
@@ -151,8 +167,8 @@ def _build_historical_capabilities(core: dict[str, Any]):
         prefix = [
             "# Historical Replay Envelope",
             "",
-            f"- Schema: `{HISTORICAL_REPORT_SCHEMA}`",
-            f"- Authority mode: `{HISTORICAL_AUTHORITY_MODE}`",
+            f"- Schema: `{historical_schema}`",
+            f"- Authority mode: `{historical_mode}`",
             f"- Historical as-of: `{report['historical_as_of_utc']}`",
             f"- Historical envelope receipt: `{report['historical_receipt_sha256']}`",
             "",

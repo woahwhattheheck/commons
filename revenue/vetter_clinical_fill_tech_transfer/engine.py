@@ -3,14 +3,14 @@ from __future__ import annotations
 """Current-authority facade for the Vetter tech-transfer evidence gate.
 
 The deterministic 2026-09-13 classifier is retained as inert source text in
-``_engine_v1.txt``.  It is evaluated into a private namespace at import time,
-then only current, process-clock-owned capabilities are exported from this
-module.  Explicit-time replay lives in ``historical.py`` and has a distinct
-schema and authority mode.
+``_engine_v1.txt``. It is evaluated into a private namespace at import time,
+then only current, process-clock-owned capabilities are exported. Explicit-time
+replay lives in ``historical.py`` under a distinct non-current authority.
 """
 
 import argparse
 import errno
+import hashlib
 import json
 import os
 import stat
@@ -21,13 +21,15 @@ from typing import Any
 CURRENT_REPORT_SCHEMA = "vetter-clinical-fill-tech-transfer-current/v2"
 CURRENT_VERIFY_SCHEMA = "vetter-clinical-fill-tech-transfer-current-verification/v2"
 CURRENT_AUTHORITY_MODE = "CURRENT_OWNER_REVIEW"
-CURRENT_REPORT_KEYS = {
-    "schema",
-    "authority_mode",
-    "evaluated_at_utc",
-    "decision",
-    "current_receipt_sha256",
-}
+CURRENT_REPORT_KEYS = frozenset(
+    {
+        "schema",
+        "authority_mode",
+        "evaluated_at_utc",
+        "decision",
+        "current_receipt_sha256",
+    }
+)
 
 
 def _load_private_core() -> dict[str, Any]:
@@ -76,17 +78,105 @@ def _install_snapshot_chronology(core: dict[str, Any]) -> None:
 
 _core = _load_private_core()
 _install_snapshot_chronology(_core)
-
 TransferError = _core["TransferError"]
-canonical_json_bytes = _core["canonical_json_bytes"]
-canonical_sha256 = _core["canonical_sha256"]
-format_utc = _core["format_utc"]
-load_json_bytes = _core["load_json_bytes"]
-write_new_bytes = _core["write_new_bytes"]
-write_new_text = _core["write_new_text"]
 MAX_JSON_BYTES = int(_core["MAX_JSON_BYTES"])
 _COMPILE_INPUT_KEYS = frozenset(_core["COMPILE_INPUT_KEYS"])
-_SNAPSHOT_KEYS = frozenset(_core["SNAPSHOT_KEYS"])
+
+# Safe public utilities are implemented in this module rather than re-exporting
+# retained-core function objects. That prevents ordinary ``fn.__globals__``
+# access from revealing the private explicit-time compiler namespace.
+def _reject_constant(value: str) -> None:
+    raise TransferError(f"non-finite JSON value is forbidden: {value}")
+
+
+def _reject_duplicate_pairs(pairs: list[tuple[str, Any]]) -> dict[str, Any]:
+    out: dict[str, Any] = {}
+    for key, value in pairs:
+        if key in out:
+            raise TransferError(f"duplicate JSON key: {key}")
+        out[key] = value
+    return out
+
+
+def load_json_bytes(raw: bytes) -> Any:
+    if type(raw) is not bytes:
+        raise TransferError("JSON input must be exact bytes")
+    if len(raw) > MAX_JSON_BYTES:
+        raise TransferError("JSON input exceeds byte limit")
+    try:
+        text = raw.decode("utf-8")
+    except UnicodeDecodeError as exc:
+        raise TransferError("JSON input must be UTF-8") from exc
+    try:
+        return json.loads(
+            text,
+            object_pairs_hook=_reject_duplicate_pairs,
+            parse_constant=_reject_constant,
+        )
+    except TransferError:
+        raise
+    except json.JSONDecodeError as exc:
+        raise TransferError(f"invalid JSON: {exc.msg}") from exc
+
+
+def canonical_json_bytes(value: Any) -> bytes:
+    return (
+        json.dumps(
+            value,
+            sort_keys=True,
+            separators=(",", ":"),
+            ensure_ascii=False,
+        )
+        + "\n"
+    ).encode("utf-8")
+
+
+def canonical_sha256(value: Any) -> str:
+    return hashlib.sha256(canonical_json_bytes(value)).hexdigest()
+
+
+def format_utc(dt: datetime) -> str:
+    if dt.tzinfo is None:
+        raise TransferError("trusted time must be timezone-aware")
+    return (
+        dt.astimezone(timezone.utc)
+        .replace(microsecond=0)
+        .strftime("%Y-%m-%dT%H:%M:%SZ")
+    )
+
+
+def write_new_bytes(path: str | os.PathLike[str], data: bytes) -> None:
+    if type(data) is not bytes:
+        raise TransferError("output data must be bytes")
+    p = Path(path)
+    if p.exists() or p.is_symlink():
+        raise TransferError(f"refusing to overwrite existing output: {p}")
+    flags = os.O_WRONLY | os.O_CREAT | os.O_EXCL
+    if hasattr(os, "O_NOFOLLOW"):
+        flags |= os.O_NOFOLLOW
+    fd = None
+    try:
+        fd = os.open(p, flags, 0o600)
+        if not stat.S_ISREG(os.fstat(fd).st_mode):
+            raise TransferError("output must be a regular file")
+        view = memoryview(data)
+        while view:
+            written = os.write(fd, view)
+            if written <= 0:
+                raise OSError("short output write")
+            view = view[written:]
+        os.fsync(fd)
+    except FileExistsError as exc:
+        raise TransferError(f"refusing to overwrite existing output: {p}") from exc
+    finally:
+        if fd is not None:
+            os.close(fd)
+
+
+def write_new_text(path: str | os.PathLike[str], text: str) -> None:
+    if type(text) is not str:
+        raise TransferError("output text must be str")
+    write_new_bytes(path, text.encode("utf-8"))
 
 
 def _build_current_capabilities(
@@ -98,31 +188,35 @@ def _build_current_capabilities(
     raw_compile = core["compile_transfer"]
     raw_verify = core["verify_report"]
     raw_render = core["render_markdown"]
-    canonical = core["canonical_sha256"]
-    formatter = core["format_utc"]
+    raw_canonical = core["canonical_sha256"]
+    raw_formatter = core["format_utc"]
     transfer_error = core["TransferError"]
     snapshot_keys = frozenset(core["SNAPSHOT_KEYS"])
+    current_schema = CURRENT_REPORT_SCHEMA
+    current_verify_schema = CURRENT_VERIFY_SCHEMA
+    current_mode = CURRENT_AUTHORITY_MODE
+    current_keys = frozenset(CURRENT_REPORT_KEYS)
 
     def clock() -> str:
-        return formatter(datetime_type.now(timezone_value))
+        return raw_formatter(datetime_type.now(timezone_value))
 
     def seal(decision: dict[str, Any]) -> dict[str, Any]:
         core_value = {
-            "schema": CURRENT_REPORT_SCHEMA,
-            "authority_mode": CURRENT_AUTHORITY_MODE,
+            "schema": current_schema,
+            "authority_mode": current_mode,
             "evaluated_at_utc": decision["as_of"],
             "decision": decision,
         }
         sealed = dict(core_value)
-        sealed["current_receipt_sha256"] = canonical(core_value)
+        sealed["current_receipt_sha256"] = raw_canonical(core_value)
         return sealed
 
     def validate(report: object) -> dict[str, Any]:
-        if type(report) is not dict or set(report) != CURRENT_REPORT_KEYS:
+        if type(report) is not dict or set(report) != set(current_keys):
             raise transfer_error("current report key set is invalid")
-        if report["schema"] != CURRENT_REPORT_SCHEMA:
+        if report["schema"] != current_schema:
             raise transfer_error("current report schema mismatch")
-        if report["authority_mode"] != CURRENT_AUTHORITY_MODE:
+        if report["authority_mode"] != current_mode:
             raise transfer_error("current report authority mode mismatch")
         receipt = report["current_receipt_sha256"]
         if type(receipt) is not str or len(receipt) != 64:
@@ -132,7 +226,7 @@ def _build_current_capabilities(
             for key in report
             if key != "current_receipt_sha256"
         }
-        if canonical(without) != receipt:
+        if raw_canonical(without) != receipt:
             raise transfer_error("current report receipt mismatch")
         decision = report["decision"]
         raw_verify(decision)
@@ -160,8 +254,7 @@ def _build_current_capabilities(
         receiving: object,
         policy: object,
     ) -> dict[str, Any]:
-        decision = raw_compile(source, receiving, policy, as_of=clock())
-        return seal(decision)
+        return seal(raw_compile(source, receiving, policy, as_of=clock()))
 
     def verify_current(report: object) -> dict[str, Any]:
         decision = validate(report)
@@ -177,8 +270,8 @@ def _build_current_capabilities(
                 "current report is no longer current: decision semantics changed at process UTC"
             )
         return {
-            "schema": CURRENT_VERIFY_SCHEMA,
-            "authority_mode": CURRENT_AUTHORITY_MODE,
+            "schema": current_verify_schema,
+            "authority_mode": current_mode,
             "verified": True,
             "current_as_of_utc": now,
             "decision_state": rebuilt["summary"]["state"],
@@ -193,8 +286,8 @@ def _build_current_capabilities(
         prefix = [
             "# Current Authority Envelope",
             "",
-            f"- Schema: `{CURRENT_REPORT_SCHEMA}`",
-            f"- Authority mode: `{CURRENT_AUTHORITY_MODE}`",
+            f"- Schema: `{current_schema}`",
+            f"- Authority mode: `{current_mode}`",
             f"- Evaluated at process UTC: `{report['evaluated_at_utc']}`",
             f"- Current envelope receipt: `{report['current_receipt_sha256']}`",
             "",
@@ -246,7 +339,6 @@ def _read_bounded(path: str | os.PathLike[str]) -> bytes:
         raise TransferError(
             f"unable to open input safely: {exc.strerror or exc}"
         ) from None
-
     try:
         before = os.fstat(fd)
         if not stat.S_ISREG(before.st_mode):
@@ -276,60 +368,89 @@ def _read_bounded(path: str | os.PathLike[str]) -> bytes:
         os.close(fd)
 
 
-def _compile_cli(args: argparse.Namespace) -> int:
-    request = load_json_bytes(_read_bounded(args.input))
-    if type(request) is not dict or set(request) != set(_COMPILE_INPUT_KEYS):
-        raise TransferError("compile input key set is invalid")
-    report = compile_transfer(
-        request["source"], request["receiving"], request["policy"]
-    )
-    write_new_bytes(args.report, canonical_json_bytes(report))
-    write_new_text(args.markdown, render_markdown(report))
-    print(
-        json.dumps(
-            {
-                "authority_mode": report["authority_mode"],
-                "state": report["decision"]["summary"]["state"],
-                "current_receipt_sha256": report["current_receipt_sha256"],
-            },
-            sort_keys=True,
+def _build_cli(
+    current_compile,
+    current_verify,
+    current_render,
+    reader,
+    loader,
+    writer_bytes,
+    writer_text,
+    canonical_bytes,
+    transfer_error,
+    compile_input_keys,
+):
+    keys = frozenset(compile_input_keys)
+
+    def compile_cli(args: argparse.Namespace) -> int:
+        request = loader(reader(args.input))
+        if type(request) is not dict or set(request) != set(keys):
+            raise transfer_error("compile input key set is invalid")
+        report = current_compile(
+            request["source"], request["receiving"], request["policy"]
         )
-    )
-    return 0
+        writer_bytes(args.report, canonical_bytes(report))
+        writer_text(args.markdown, current_render(report))
+        print(
+            json.dumps(
+                {
+                    "authority_mode": report["authority_mode"],
+                    "state": report["decision"]["summary"]["state"],
+                    "current_receipt_sha256": report["current_receipt_sha256"],
+                },
+                sort_keys=True,
+            )
+        )
+        return 0
+
+    def verify_cli(args: argparse.Namespace) -> int:
+        report = loader(reader(args.report))
+        result = current_verify(report)
+        if args.markdown:
+            actual = reader(args.markdown).decode("utf-8")
+            if actual != current_render(report):
+                raise transfer_error("Markdown projection mismatch")
+        print(json.dumps(result, sort_keys=True))
+        return 0
+
+    def run(argv: list[str] | None = None) -> int:
+        parser = argparse.ArgumentParser(
+            description="Read-only cross-site clinical fill tech-transfer current evidence compiler"
+        )
+        subs = parser.add_subparsers(dest="command", required=True)
+        cp = subs.add_parser("compile")
+        cp.add_argument("--input", required=True)
+        cp.add_argument("--report", required=True)
+        cp.add_argument("--markdown", required=True)
+        cp.set_defaults(func=compile_cli)
+        vp = subs.add_parser("verify")
+        vp.add_argument("--report", required=True)
+        vp.add_argument("--markdown")
+        vp.set_defaults(func=verify_cli)
+        args = parser.parse_args(argv)
+        try:
+            return args.func(args)
+        except transfer_error as exc:
+            parser.error(str(exc))
+        return 2
+
+    return run, compile_cli, verify_cli
 
 
-def _verify_cli(args: argparse.Namespace) -> int:
-    report = load_json_bytes(_read_bounded(args.report))
-    result = verify_report_current(report)
-    if args.markdown:
-        actual = _read_bounded(args.markdown).decode("utf-8")
-        if actual != render_markdown(report):
-            raise TransferError("Markdown projection mismatch")
-    print(json.dumps(result, sort_keys=True))
-    return 0
-
-
-def main(argv: list[str] | None = None) -> int:
-    parser = argparse.ArgumentParser(
-        description="Read-only cross-site clinical fill tech-transfer current evidence compiler"
-    )
-    subs = parser.add_subparsers(dest="command", required=True)
-    cp = subs.add_parser("compile")
-    cp.add_argument("--input", required=True)
-    cp.add_argument("--report", required=True)
-    cp.add_argument("--markdown", required=True)
-    cp.set_defaults(func=_compile_cli)
-    vp = subs.add_parser("verify")
-    vp.add_argument("--report", required=True)
-    vp.add_argument("--markdown")
-    vp.set_defaults(func=_verify_cli)
-    args = parser.parse_args(argv)
-    try:
-        return args.func(args)
-    except TransferError as exc:
-        parser.error(str(exc))
-    return 2
-
+main, _compile_cli, _verify_cli = _build_cli(
+    compile_transfer,
+    verify_report_current,
+    render_markdown,
+    _read_bounded,
+    load_json_bytes,
+    write_new_bytes,
+    write_new_text,
+    canonical_json_bytes,
+    TransferError,
+    _COMPILE_INPUT_KEYS,
+)
+del _build_cli
+del _COMPILE_INPUT_KEYS
 
 __all__ = [
     "TransferError",
