@@ -27,6 +27,6 @@ jobs:
       - name: Syntax
         run: python -m py_compile research/nih_spark_pubmed_2026/*.py
       - name: Tests
-        run: python -m unittest research.nih_spark_pubmed_2026.test_baseline -v
+        run: python -m unittest research.nih_spark_pubmed_2026.test_baseline research.nih_spark_pubmed_2026.test_retrieval_authority -v
       - name: Optimized tests
-        run: python -O -m unittest research.nih_spark_pubmed_2026.test_baseline -v
+        run: python -O -m unittest research.nih_spark_pubmed_2026.test_baseline research.nih_spark_pubmed_2026.test_retrieval_authority -v
