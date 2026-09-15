@@ -1,6 +1,10 @@
 name: ZFK 14589 Exact Runner
 
 on:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/zfk-14589-exact-runner.yml
   issue_comment:
     types: [created]
 
@@ -16,13 +20,14 @@ concurrency:
 jobs:
   patch-test-publish:
     if: >-
-      github.event.issue.pull_request &&
+      github.event_name == 'push' ||
+      (github.event.issue.pull_request &&
       github.event.issue.number == 14589 &&
-      github.event.comment.body == 'ZFK_RUN_14589_E786'
+      github.event.comment.body == 'ZFK_RUN_14589_E786')
     runs-on: ubuntu-latest
     timeout-minutes: 15
     outputs:
-      tested_head: ${{ steps.receipt.outputs.tested_head }}
+      tested_head: ${{ steps.publish.outputs.tested_head }}
       normal_count: ${{ steps.receipt.outputs.normal_count }}
       optimized_count: ${{ steps.receipt.outputs.optimized_count }}
       aggregate_sha: ${{ steps.receipt.outputs.aggregate_sha }}
@@ -109,7 +114,12 @@ Published tested head: \`$tested_head\`
 The temporary branch patch driver and both branch workflows are absent from the published tree. This receipt is execution evidence only; exact-head source review and merge remain with ZFK-K4R8."
 
   cleanup-default-runner:
-    if: always() && github.event.issue.pull_request && github.event.issue.number == 14589 && github.event.comment.body == 'ZFK_RUN_14589_E786'
+    if: >-
+      always() &&
+      (github.event_name == 'push' ||
+      (github.event.issue.pull_request &&
+      github.event.issue.number == 14589 &&
+      github.event.comment.body == 'ZFK_RUN_14589_E786'))
     needs: [patch-test-publish]
     runs-on: ubuntu-latest
     timeout-minutes: 5
