@@ -2,6 +2,7 @@
 
 from .test_support import *  # noqa: F401,F403
 
+
 class ReadyPathTests(unittest.TestCase):
     def test_valid_packet_reaches_owner_review(self):
         bundle = compile_valid()
@@ -21,36 +22,38 @@ class ReadyPathTests(unittest.TestCase):
     def test_historical_verify_is_integrity_only(self):
         value = base_valid()
         bundle = compile_valid(value)
-        result = verify_bundle(value, bundle, T0 + dt.timedelta(days=300))
+        result = verify_bundle(value, bundle)
         self.assertTrue(result["valid"])
         self.assertTrue(result["historical_integrity_only"])
         self.assertFalse(result["current_semantics"])
 
     def test_current_verify_recompiles_live_semantics(self):
-        value = base_valid()
-        bundle = compile_at(value, T0, "CURRENT")
-        result = verify_bundle(value, bundle, T0 + dt.timedelta(seconds=60))
+        value = load_json("example_input.json")
+        with mock.patch("revenue.water4all_2026_swm.engine.utc_now", side_effect=[T0, T0 + dt.timedelta(seconds=60)]):
+            bundle = compile_current(value)
+            result = verify_bundle(value, bundle)
         self.assertTrue(result["current_semantics"])
 
     def test_current_verify_rejects_stale_packet(self):
-        value = base_valid()
-        bundle = compile_at(value, T0, "CURRENT")
-        with self.assertRaisesRegex(ReadinessError, "freshness"):
-            verify_bundle(value, bundle, T0 + dt.timedelta(seconds=301))
+        value = load_json("example_input.json")
+        with mock.patch("revenue.water4all_2026_swm.engine.utc_now", side_effect=[T0, T0 + dt.timedelta(seconds=301)]):
+            bundle = compile_current(value)
+            with self.assertRaisesRegex(ReadinessError, "freshness"):
+                verify_bundle(value, bundle)
 
     def test_receipt_tamper_is_rejected(self):
         value = base_valid()
         bundle = compile_valid(value)
         bundle["packet"]["decision"]["status"] = "READY_FOR_SUBMISSION"
         with self.assertRaisesRegex(ReadinessError, "receipt mismatch"):
-            verify_bundle(value, bundle, T0)
+            verify_bundle(value, bundle)
 
     def test_input_generation_drift_is_rejected(self):
         value = base_valid()
         bundle = compile_valid(value)
         value["concept"]["concept_title"] = "changed"
         with self.assertRaisesRegex(ReadinessError, "exactly replay"):
-            verify_bundle(value, bundle, T0)
+            verify_bundle(value, bundle)
 
     def test_markdown_is_explicitly_non_authoritative(self):
         text = render_owner_markdown(compile_valid())
@@ -62,7 +65,7 @@ class ReadyPathTests(unittest.TestCase):
 class SourceAuthorityTests(unittest.TestCase):
     def test_live_official_deadline_conflict_holds(self):
         value = load_json("example_input.json")
-        bundle = compile_at(value, T0, "CURRENT")
+        bundle = compile_current_at(value)
         self.assertEqual(bundle["packet"]["decision"]["status"], "HOLD_DEADLINE_SOURCE_CONFLICT")
         self.assertIn("DEADLINE_SOURCE_CONFLICT", reason_codes(bundle))
         self.assertIsNone(bundle["packet"]["deadline_authority"]["controlling_preproposal_deadline_at"])
@@ -71,7 +74,7 @@ class SourceAuthorityTests(unittest.TestCase):
     def test_reversing_sources_cannot_select_later_deadline(self):
         value = load_json("example_input.json")
         value["official_sources"].reverse()
-        bundle = compile_at(value, T0, "CURRENT")
+        bundle = compile_current_at(value)
         self.assertIsNone(bundle["packet"]["deadline_authority"]["controlling_preproposal_deadline_at"])
         self.assertEqual(bundle["packet"]["deadline_authority"]["planning_only_earliest_deadline_at"], "2026-11-10T14:00:00Z")
 
@@ -88,19 +91,20 @@ class SourceAuthorityTests(unittest.TestCase):
         self.assertIn("SOURCE_FACT_COMMITMENT_MISMATCH", reason_codes(bundle))
 
     def test_source_stale_in_current_mode(self):
-        value = base_valid()
+        value = load_json("example_input.json")
         for source in value["official_sources"]:
             source["observed_at"] = "2026-08-01T00:00:00Z"
             reseal(source)
-        bundle = compile_at(value, T0, "CURRENT")
+        bundle = compile_current_at(value)
         self.assertIn("SOURCE_OBSERVATION_STALE", reason_codes(bundle))
+        self.assertIn("SOURCE_TRUST_ROOT_MISMATCH", reason_codes(bundle))
 
     def test_source_stale_allowed_for_historical_replay(self):
         value = base_valid()
         for source in value["official_sources"]:
             source["observed_at"] = "2026-08-01T00:00:00Z"
             reseal(source)
-        bundle = compile_at(value, T0, "HISTORICAL")
+        bundle = compile_valid(value)
         self.assertNotIn("SOURCE_OBSERVATION_STALE", reason_codes(bundle))
         self.assertEqual(bundle["packet"]["decision"]["status"], "READY_FOR_OWNER_REVIEW")
 
