@@ -23,9 +23,11 @@ jobs:
         run: python -m pip install numpy==2.3.5 pandas==2.2.3 scikit-learn==1.8.0
       - name: Normal and optimized regressions
         run: |
-          python -m py_compile evaluation.py stress.py parity.py test_evaluation.py
+          python -m py_compile evaluation.py stress.py parity.py test_evaluation.py candidates/calibrated.py candidates/test_calibrated.py candidates/replay_ablation.py
           python -m unittest -v test_evaluation
           python -O -m unittest -v test_evaluation
+          python -m unittest discover -s candidates -p test_calibrated.py -v
+          python -O -m unittest discover -s candidates -p test_calibrated.py -v
       - name: Fetch pinned public source only
         run: |
           mkdir "$RUNNER_TEMP/adia-evaluation-sources"
@@ -45,3 +47,20 @@ jobs:
               raise SystemExit('synthetic metric/trace/corpus diagnostic differs from retained report')
           print('PASS: exact candidate diagnostic replay; timing intentionally excluded')
           PY
+      - name: Reproduce frozen held-out candidate comparison
+        run: |
+          python stress.py --detector candidates/calibrated.py --expected-sha256 24b3afcb5e096de264dab9889512375fa935f13481fa3dd7922e95be5abef8f1 --reference "$RUNNER_TEMP/adia-evaluation-sources/detector.py" --reference-sha256 1f4c94475e91fc76905b4ad0351d4391c35f7b20f1a1c26eba89ad828a386ae7 --seed-start 30000 --seeds 64 --bootstrap 500 --out "$RUNNER_TEMP/adia-candidate-run" > "$RUNNER_TEMP/adia-candidate-log.json"
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          actual = json.loads((Path(os.environ['RUNNER_TEMP']) / 'adia-candidate-run/summary.json').read_text())
+          expected = json.loads(Path('candidates/heldout_report.json').read_text())
+          for name in ('candidate', 'reference'):
+              if actual[name]['summary_sha256'] != expected[name]['summary_sha256']:
+                  raise SystemExit(name + ': complete deterministic summary differs')
+          if actual['paired_comparison'] != expected['paired_comparison']:
+              raise SystemExit('paired comparison differs')
+          print('PASS: frozen candidate/reference/full summaries and paired comparison')
+          PY
+      - name: Reproduce development-only attribution
+        run: python candidates/replay_ablation.py
