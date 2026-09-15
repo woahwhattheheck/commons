@@ -7,6 +7,29 @@ from evidence_contract import (AUTHORITY,EVIDENCE_CLASS,EXPECTED_CANDIDATES,SCHE
     candidate_spec,confined,git_blob_sha1_bytes,load_candidate,read_json,validate_manifest,verify_organizer_source)
 from evidence_receipts import base_receipt,compare_receipts,verify_receipt
 
+def instantiate_candidate(cls):
+    """Instantiate exact candidate code across dfbench API drift without editing candidate bytes.
+
+    The pinned organizer revision makes OptimizationAlgorithm.__init__ abstract, while
+    both already-merged candidates predate that no-op requirement. Official examples at
+    the same revision implement ``def __init__(self): pass``. Permit only that single
+    abstract-method gap and inherit the candidate optimize method unchanged.
+    """
+    abstract = set(getattr(cls, "__abstractmethods__", ()))
+    if not abstract:
+        return cls()
+    if abstract != {"__init__"}:
+        raise EvidenceError(f"candidate has unsupported abstract methods: {sorted(abstract)}")
+    def _evidence_init(self):
+        pass
+    adapter = type(f"{cls.__name__}EvidenceInitAdapter", (cls,), {"__init__": _evidence_init, "__module__": cls.__module__})
+    obj = adapter()
+    if getattr(adapter, "algorithm_str", None) != getattr(cls, "algorithm_str", None):
+        raise EvidenceError("evidence init adapter changed algorithm identity")
+    if getattr(adapter, "optimize", None) is not getattr(cls, "optimize", None):
+        raise EvidenceError("evidence init adapter changed optimize implementation")
+    return obj
+
 def pending(m,label,reason,root):
     s=candidate_spec(m,label);ok=git_blob_sha1_bytes(confined(root,s["path"]).read_bytes())==s["gitBlobSha1"]
     return base_receipt(m,label,"MEASUREMENT_PENDING",ok,False,None,str(reason)[:1000])
@@ -16,7 +39,7 @@ def measure(m,label,root,organizer):
         from dfbench import Objective
         from dfbench.problems import ConstrainedVoyagerProblem
     except Exception as e:raise EvidenceError(f"organizer-backed dfbench unavailable: {e}") from e
-    cell=m["cell"];obj=Objective(ConstrainedVoyagerProblem(),max_time=cell["maxTimeSeconds"],verbose=0);opt=cls();t=time.monotonic()
+    cell=m["cell"];obj=Objective(ConstrainedVoyagerProblem(),max_time=cell["maxTimeSeconds"],verbose=0);opt=instantiate_candidate(cls);t=time.monotonic()
     opt.optimize(obj,random_seed=cell["seed"]);elapsed=time.monotonic()-t;loss=float(obj.best_loss);count=int(obj.eval_count)
     if not math.isfinite(loss) or count<=0:raise EvidenceError(f"invalid measurement best_loss={loss!r} eval_count={count!r}")
     return base_receipt(m,label,"MEASURED",True,True,{"bestLoss":loss,"evalCount":count,"budgetExceeded":bool(obj.budget_exceeded),"elapsedSeconds":round(elapsed,6)},None)

@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import abc
 import copy
 import json
 from pathlib import Path
@@ -11,6 +12,7 @@ EVIDENCE_ROOT = REPO_ROOT / "revenue" / "learn2design2026"
 sys.path.insert(0, str(EVIDENCE_ROOT))
 import evidence_contract as contract
 import evidence_receipts as receipts
+import evidence
 
 
 class SourceIdentityTests(unittest.TestCase):
@@ -116,6 +118,45 @@ class ReceiptTests(unittest.TestCase):
         self.assertTrue(all(v is False for v in out["authority"].values()))
         digest = out.pop("receiptSha256")
         self.assertEqual(digest, contract.canonical_sha256(out))
+
+
+class EvidenceInitAdapterTests(unittest.TestCase):
+    def test_only_abstract_init_is_adapted_without_changing_optimize(self):
+        class Legacy(abc.ABC):
+            algorithm_str = "legacy"
+            @abc.abstractmethod
+            def __init__(self):
+                raise NotImplementedError
+            def optimize(self, objective=None, random_seed=None):
+                return (objective, random_seed)
+        original_optimize = Legacy.optimize
+        instance = evidence.instantiate_candidate(Legacy)
+        self.assertEqual(instance.algorithm_str, "legacy")
+        self.assertIs(type(instance).optimize, original_optimize)
+        self.assertEqual(instance.optimize("obj", 42), ("obj", 42))
+
+    def test_extra_abstract_method_is_rejected(self):
+        class Broken(abc.ABC):
+            algorithm_str = "broken"
+            @abc.abstractmethod
+            def __init__(self):
+                raise NotImplementedError
+            @abc.abstractmethod
+            def optimize(self, objective=None, random_seed=None):
+                raise NotImplementedError
+        with self.assertRaises(contract.EvidenceError):
+            evidence.instantiate_candidate(Broken)
+
+    def test_nonabstract_candidate_instantiates_normally(self):
+        class Current:
+            algorithm_str = "current"
+            def __init__(self):
+                self.ready = True
+            def optimize(self, objective=None, random_seed=None):
+                return None
+        instance = evidence.instantiate_candidate(Current)
+        self.assertTrue(instance.ready)
+        self.assertIs(type(instance), Current)
 
 
 class ContractMutationTests(unittest.TestCase):
