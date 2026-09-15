@@ -1,10 +1,13 @@
+import http.client
 import json
 import os
 import tempfile
 import threading
 import unittest
+from http.server import ThreadingHTTPServer
 from pathlib import Path
 
+import rights_http as h
 import rights_ops as r
 
 MASTER_SHA = "a" * 64
@@ -23,7 +26,7 @@ def manifest():
         "grants": [
             {
                 "grant_id": "grant-q4-social",
-                "asset_id": "master-a",
+                "asset_id": "cut-a-15s",
                 "authority_ref": "owner-normalized/licensor-sheet-row-17",
                 "valid_from": "2026-09-01T00:00:00Z",
                 "valid_until": "2026-12-31T23:59:59Z",
@@ -62,6 +65,27 @@ class DeskTests(unittest.TestCase):
     def tearDown(self):
         self.tmp.cleanup()
 
+    def _http_post(self, path, payload):
+        httpd = ThreadingHTTPServer(("127.0.0.1", 0), h.ApiHandler)
+        httpd.db_path = self.db
+        httpd.ui_bytes = b"<!doctype html><title>test</title>"
+        thread = threading.Thread(target=httpd.serve_forever, daemon=True)
+        thread.start()
+        try:
+            conn = http.client.HTTPConnection("127.0.0.1", httpd.server_port, timeout=5)
+            try:
+                raw = json.dumps(payload, separators=(",", ":")).encode()
+                conn.request("POST", path, body=raw, headers={"Content-Type": "application/json"})
+                response = conn.getresponse()
+                body = json.loads(response.read())
+                return response.status, body
+            finally:
+                conn.close()
+        finally:
+            httpd.shutdown()
+            httpd.server_close()
+            thread.join(timeout=5)
+
     def test_import_receipt_and_snapshot(self):
         self.assertEqual(self.imported["status"], "IMPORTED")
         snap = r.snapshot(self.db)
@@ -69,10 +93,33 @@ class DeskTests(unittest.TestCase):
         self.assertEqual(len(snap["grants"]), 1)
         self.assertRegex(snap["snapshot_sha256"], r"^[0-9a-f]{64}$")
 
-    def test_exact_derivative_lineage_ready(self):
+    def test_exact_asset_grant_ready(self):
         out = r.evaluate(self.db, intent())
         self.assertEqual(out["status"], "READY_ON_SUPPLIED_AUTHORITY")
         self.assertEqual(out["selected_grant_id"], "grant-q4-social")
+
+    def test_parent_grant_does_not_authorize_derivative(self):
+        parent_only = manifest()
+        parent_only["grants"][0]["asset_id"] = "master-a"
+        db = self.root / "parent-only.sqlite3"
+        r.import_manifest(db, parent_only, "2026-09-15T06:00:01Z")
+        out = r.evaluate(db, intent())
+        self.assertEqual(out["status"], "HOLD")
+        self.assertEqual(out["reasons"], ["MISSING_GRANT"])
+        self.assertIsNone(out["selected_grant_id"])
+
+    def test_http_mutations_are_disabled_and_do_not_write(self):
+        before = r.snapshot(self.db)
+        status, body = self._http_post("/api/place", {"intent": placement(), "recorded_at": "2026-09-15T06:01:00Z"})
+        self.assertEqual(status, 405)
+        self.assertIn("CLI", body["error"])
+        status, body = self._http_post("/api/revoke", {"grant_id": "grant-q4-social", "revoked_at": "2026-10-05T00:00:00Z"})
+        self.assertEqual(status, 405)
+        self.assertIn("CLI", body["error"])
+        after = r.snapshot(self.db)
+        self.assertEqual(after["placements"], [])
+        self.assertIsNone(after["grants"][0]["revoked_at"])
+        self.assertEqual(before["snapshot_sha256"], after["snapshot_sha256"])
 
     def test_wrong_channel_holds(self):
         out = r.evaluate(self.db, intent(channel="tiktok"))
