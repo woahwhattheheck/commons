@@ -380,12 +380,15 @@ class Git:
     def __init__(self, root):
         self.root = root
 
-    def run(self, *args, env=None, check=True, input_text=None):
+    def run(self, *args, env=None, check=True, input_text=None, lazy=False):
         merged = dict(os.environ)
         # In a partial clone, touching a missing object makes git fetch it on
-        # the spot, one object and its whole tree at a time. Only the batched
-        # `fetch` below may go to the network; everything else reads locally.
-        if args and args[0] != "fetch":
+        # the spot, one object and its whole tree at a time. Batched `fetch`
+        # and explicit `lazy=True` (materialize parent blobs before push) may
+        # go to the network; push itself stays local after that.
+        if lazy:
+            merged.pop("GIT_NO_LAZY_FETCH", None)
+        elif args and args[0] != "fetch":
             merged["GIT_NO_LAZY_FETCH"] = "1"
         if env:
             merged.update(env)
@@ -1165,6 +1168,68 @@ def _commit_env(when=None):
             "GIT_AUTHOR_DATE": stamp, "GIT_COMMITTER_DATE": stamp}
 
 
+def _materialize_blobs(git, commit):
+    """Bring blob bytes of `commit` into a blob:none clone.
+
+    Hosted `--no-thin` push on landed 492e1376 still tried to read parent
+    blob e3ee4c72 (coordination-head.json) and GIT_NO_LAZY_FETCH blocked
+    it (run 34999623710). Fetch those blobs *before* send-pack so push
+    does not open a second connection on the same remote.
+    """
+    if not commit:
+        return
+    listing = git.run("ls-tree", "-r", commit, check=False)
+    if listing.returncode != 0 or not listing.stdout.strip():
+        return
+    for line in listing.stdout.splitlines():
+        parts = line.split()
+        if len(parts) < 3 or parts[1] != "blob":
+            continue
+        sha = parts[2].split("\t")[0]
+        if git.run("cat-file", "-e", sha, check=False).returncode != 0:
+            git.run("cat-file", "-e", sha, lazy=True, check=False)
+
+
+_PUSH_TRANSIENT = (
+    "from promisor remote",
+    "hung up unexpectedly",
+    "unexpected disconnect",
+    "eof before pack header",
+    "unpacker error",
+    "RPC failed",
+)
+_PUSH_RETRY_SLEEP = time.sleep
+
+
+def _push_ref(git, remote, commit, branch, attempts=3):
+    """Fast-forward `branch` to `commit`.
+
+    `--no-thin` avoids using parent blobs as thin-pack delta bases.
+    HTTP/1.1 plus a short hangup retry covers GitHub HTTPS disconnects
+    after the objects are already local.
+    """
+    refspec = "%s:refs/heads/%s" % (commit, branch)
+    last = None
+    tries = max(1, int(attempts))
+    for attempt in range(tries):
+        done = git.run("-c", "http.version=HTTP/1.1",
+                       "push", "--no-thin", remote, refspec, check=False)
+        last = done
+        if done.returncode == 0:
+            return done
+        err = done.stderr or ""
+        if "non-fast-forward" in err or "fetch first" in err:
+            return done
+        if not any(n in err for n in _PUSH_TRANSIENT) or attempt >= tries - 1:
+            return done
+        _PUSH_RETRY_SLEEP(2 * (attempt + 1))
+    return last
+
+
+def _push_line(root, remote, commit, branch):
+    return "git -C %s push --no-thin %s %s:refs/heads/%s" % (root, remote, commit, branch)
+
+
 def _remote_tip(git, branch, remote="origin"):
     done = git.run("ls-remote", remote, "refs/heads/" + branch, check=False)
     line = done.stdout.strip().split("\n")[0] if done.stdout.strip() else ""
@@ -1197,6 +1262,7 @@ def publish(git, payload, repo, push=True, remote="origin", branch=STATE_BRANCH,
     parent = _remote_tip(git, branch, remote)
     if parent:
         git.fetch([parent], remote)
+        _materialize_blobs(git, parent)
     message = "coordination state: main %s, %s open, observed %s" % (
         str((head.get("main") or {}).get("sha", ""))[:10],
         (head.get("counts") or {}).get("open_prs"), head.get("observed_at"))
@@ -1215,21 +1281,22 @@ def publish(git, payload, repo, push=True, remote="origin", branch=STATE_BRANCH,
                       % (git.root, remote, branch, remote, branch))
         lines = []
         for sha in chain:
-            lines.append("git -C %s push %s %s:refs/heads/%s" % (git.root, remote, sha, branch))
+            lines.append(_push_line(git.root, remote, sha, branch))
             lines.append(fetch_line)
         return {"commit": chain[-1] if chain else None, "parent": parent, "pushed": False,
                 "chain": chain, "push_lines": lines}
     commit = state_commit(git, files, branch, message, parent)
-    line = "git -C %s push %s %s:refs/heads/%s" % (git.root, remote, commit, branch)
+    line = _push_line(git.root, remote, commit, branch)
     if not push:
         return {"commit": commit, "parent": parent, "pushed": False, "push_line": line}
-    done = git.run("push", remote, "%s:refs/heads/%s" % (commit, branch), check=False)
+    done = _push_ref(git, remote, commit, branch)
     if done.returncode != 0 and ("non-fast-forward" in done.stderr or "fetch first" in done.stderr):
         parent = _remote_tip(git, branch, remote)
         if parent:
             git.fetch([parent], remote)
+            _materialize_blobs(git, parent)
         commit = state_commit(git, files, branch, message, parent)
-        done = git.run("push", remote, "%s:refs/heads/%s" % (commit, branch), check=False)
+        done = _push_ref(git, remote, commit, branch)
     return {"commit": commit, "parent": parent, "pushed": done.returncode == 0,
             "stderr": done.stderr.strip()[-300:]}
 
@@ -1345,8 +1412,8 @@ def holding_write(git, key, holder, action, ttl_s=1800, note="", now=None,
         commit = _holdings_commit(git, tip, holdings, message, stamp_moment)
         if not push:
             return {"ok": True, "key": key, "commit": commit, "pushed": False,
-                    "push_line": "git -C %s push %s %s:refs/heads/%s" % (git.root, remote, commit, branch)}
-        done = git.run("push", remote, "%s:refs/heads/%s" % (commit, branch), check=False)
+                    "push_line": _push_line(git.root, remote, commit, branch)}
+        done = _push_ref(git, remote, commit, branch)
         if done.returncode == 0:
             return {"ok": True, "key": key, "commit": commit, "pushed": True, "record": record}
         if "non-fast-forward" not in done.stderr and "fetch first" not in done.stderr:

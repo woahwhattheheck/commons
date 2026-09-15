@@ -525,12 +525,144 @@ class BuildOffline(TempGit):
         for older, newer in zip(chain, chain[1:]):
             self.assertEqual(sh(self.root, "rev-parse", newer + "^"), older)
         self.assertEqual(len(result["push_lines"]), 10)
+        self.assertIn("push --no-thin", result["push_lines"][0])
 
     def test_rows_are_one_per_line_and_valid_json(self):
         doc = {"schema": "s", "prs": [{"number": 1}, {"number": 2}], "counts": {"a": 1}}
         text = cs._dump_rows(doc)
         self.assertEqual(json.loads(text), doc)
         self.assertIn('\n  {"number":1},\n  {"number":2}\n', text)
+
+
+class BloblessPublishPush(unittest.TestCase):
+    """Hosted coordination-state publish checks out blob:none, then pushes
+    onto state/coordination. A thin pack asks for parent blobs the clone
+    never fetched; GIT_NO_LAZY_FETCH blocks the promisor read and send-pack
+    hangs up. --no-thin sends only the new objects."""
+
+    def setUp(self):
+        self.tmp = tempfile.mkdtemp(prefix="coordination-blobless-")
+        self.addCleanup(shutil.rmtree, self.tmp, ignore_errors=True)
+        self.remote = os.path.join(self.tmp, "remote.git")
+        subprocess.run(["git", "init", "-q", "--bare", self.remote], check=True)
+        sh(self.remote, "config", "uploadpack.allowFilter", "true")
+        sh(self.remote, "config", "uploadpack.allowAnySHA1InWant", "true")
+        self.seed = os.path.join(self.tmp, "seed")
+        os.makedirs(self.seed)
+        sh(self.seed, "init", "-q", "-b", "main")
+        sh(self.seed, "config", "core.autocrlf", "false")
+        write(self.seed, "a.txt", "a\n")
+        commit_all(self.seed, "base")
+        sh(self.seed, "remote", "add", "origin", "file://" + self.remote)
+        sh(self.seed, "push", "-q", "origin", "HEAD:refs/heads/main")
+
+    def _payload(self, n):
+        return {"schema": cs.SCHEMA, "observed_at": "2026-09-11T11:00:0%dZ" % n,
+                "main": {"sha": "a" * 40}, "queue": {}, "counts": {"open_prs": n},
+                "lanes": [], "degraded": []}
+
+    def _blobless_clone(self):
+        clone = os.path.join(self.tmp, "clone")
+        os.makedirs(clone)
+        sh(clone, "init", "-q", "-b", "main")
+        sh(clone, "remote", "add", "origin", "file://" + self.remote)
+        done = subprocess.run(
+            ["git", "-C", clone, "fetch", "--filter=blob:none", "--depth=20",
+             "origin", "+refs/heads/main:refs/remotes/origin/main"],
+            capture_output=True, text=True)
+        if done.returncode != 0:
+            raise AssertionError("blob:none fetch failed: %s" % done.stderr)
+        sh(clone, "checkout", "-q", "-B", "main", "origin/main")
+        return clone
+
+    def test_thin_push_from_blobless_clone_misses_parent_blobs(self):
+        first = cs.publish(cs.Git(self.seed), self._payload(0), "o/r", push=True)
+        self.assertTrue(first["pushed"])
+        clone = self._blobless_clone()
+        git = cs.Git(clone)
+        git.fetch([first["commit"]])
+        tree = git.out("ls-tree", "-r", first["commit"])
+        missing = []
+        for line in tree.splitlines():
+            sha = line.split()[2]
+            if git.run("cat-file", "-e", sha, check=False).returncode != 0:
+                missing.append(sha)
+        self.assertTrue(missing, "parent blobs should be absent in a blob:none clone")
+        commit = cs.state_commit(git, {"README.md": "x\n"}, cs.STATE_BRANCH, "x",
+                                 first["commit"])
+        thin = git.run("push", "origin",
+                       "%s:refs/heads/%s" % (commit, cs.STATE_BRANCH), check=False)
+        self.assertNotEqual(thin.returncode, 0, thin.stderr)
+        joined = (thin.stderr or "") + (thin.stdout or "")
+        self.assertTrue(
+            "promisor" in joined or "unpack" in joined or "hung up" in joined
+            or "failed to push" in joined,
+            joined)
+
+    def test_publish_from_blobless_clone_pushes_without_parent_blobs(self):
+        first = cs.publish(cs.Git(self.seed), self._payload(0), "o/r", push=True)
+        self.assertTrue(first["pushed"])
+        clone = self._blobless_clone()
+        git = cs.Git(clone)
+        result = cs.publish(git, self._payload(1), "o/r", push=True)
+        self.assertTrue(result["pushed"], result.get("stderr"))
+        self.assertEqual(result["parent"], first["commit"])
+        self.assertEqual(cs._remote_tip(git, cs.STATE_BRANCH), result["commit"])
+
+    def test_materialize_blobs_fills_parent_files_in_blobless_clone(self):
+        first = cs.publish(cs.Git(self.seed), self._payload(0), "o/r", push=True)
+        self.assertTrue(first["pushed"])
+        clone = self._blobless_clone()
+        git = cs.Git(clone)
+        git.fetch([first["commit"]])
+        head_blob = None
+        for line in git.out("ls-tree", "-r", first["commit"]).splitlines():
+            if line.endswith("\t" + cs.HEAD_FILE):
+                head_blob = line.split()[2]
+        self.assertTrue(head_blob)
+        self.assertNotEqual(git.run("cat-file", "-e", head_blob, check=False).returncode, 0)
+        cs._materialize_blobs(git, first["commit"])
+        self.assertEqual(git.run("cat-file", "-e", head_blob, check=False).returncode, 0)
+
+    def test_push_retries_promisor_hangup_then_lands(self):
+        remote = tempfile.mkdtemp(prefix="coordination-retry-remote-")
+        self.addCleanup(shutil.rmtree, remote, ignore_errors=True)
+        subprocess.run(["git", "init", "-q", "--bare", remote], check=True)
+        seed = os.path.join(self.tmp, "retry-seed")
+        os.makedirs(seed)
+        sh(seed, "init", "-q", "-b", "main")
+        write(seed, "a.txt", "a\n")
+        commit_all(seed, "base")
+        sh(seed, "remote", "add", "origin", remote)
+        sleeps = []
+        real_sleep = cs._PUSH_RETRY_SLEEP
+        cs._PUSH_RETRY_SLEEP = sleeps.append
+        real_run = cs.Git.run
+        pushes = {"n": 0}
+
+        def flaky(self, *args, **kw):
+            if args and "push" in args:
+                pushes["n"] += 1
+                if pushes["n"] == 1:
+                    return cs._Done(
+                        1, "",
+                        "not fetch e3ee4c7252d2f6f8c2c9d75ede5e0d2f1ba7187d "
+                        "from promisor remote\n"
+                        "fatal: the remote end hung up unexpectedly\n"
+                        "send-pack: unexpected disconnect while reading sideband packet\n"
+                        "error: failed to push some refs to "
+                        "'https://github.com/woahwhattheheck/commons'")
+            return real_run(self, *args, **kw)
+
+        cs.Git.run = flaky
+        try:
+            result = cs.publish(cs.Git(seed), self._payload(0), "o/r", push=True)
+        finally:
+            cs.Git.run = real_run
+            cs._PUSH_RETRY_SLEEP = real_sleep
+        self.assertTrue(result["pushed"], result.get("stderr"))
+        self.assertEqual(pushes["n"], 2)
+        self.assertEqual(sleeps, [2])
 
 
 if __name__ == "__main__":
