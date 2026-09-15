@@ -29,16 +29,22 @@ SQLite reopens that exact generation through a verified `/proc/self/fd/<n>` or
 `/dev/fd/<n>` descriptor URI with `mode=rw`; if the runtime cannot provide an
 alias resolving to the acquired `(device, inode)`, initialization fails closed.
 The retained descriptor and the visible pathname are checked around each SQLite
-open. The SQLite open callable, its exception type, and row factory are captured
-once in the `StoreBase._connect` closure when the module is defined; later
-rebinding of `sqlite3.connect` or creation/rebinding of the predecessor's
-`_SQLITE_CONNECT` module global cannot substitute a foreign returned connection.
+open. On the first `store_base` module generation, the SQLite open callable, its
+exception type, and row factory are captured in the `StoreBase._connect` closure.
+An ordinary `importlib.reload` carries that already-trusted closure into the new
+`StoreBase` class instead of recapturing mutable shared `sqlite3` module state;
+the temporary handoff and closure factory are deleted after class construction.
+Later rebinding of `sqlite3.connect` or creation/rebinding of the predecessor's
+`_SQLITE_CONNECT` module global therefore cannot substitute a foreign returned
+connection in either the current or an ordinarily reloaded class generation.
 Consequently, a path that is swapped to a foreign database only for the open and
 restored before return cannot redirect SQLite, while the race hostiles no longer
 need a writable production connection authority. A contested generation fails
 closed rather than unlinking, replacing, chmodding, or schema-writing a foreign
 successor. These checks protect cooperative pacemaker state only; they do not
-turn the pacemaker into caller admission or provider authorization.
+turn the pacemaker into caller admission, provider authorization, or a Python
+sandbox against direct replacement of `StoreBase._connect` or compromise before
+the first trusted module generation.
 
 ## Example
 
@@ -63,13 +69,17 @@ file descriptor. SQLite integrity and all semantic digests are rechecked by
 python -m py_compile tools/github_content_write_pacemaker/*.py
 python -m unittest -q \
   tools.github_content_write_pacemaker.test_queue \
-  tools.github_content_write_pacemaker.test_integrity
+  tools.github_content_write_pacemaker.test_integrity \
+  tools.github_content_write_pacemaker.test_reload_generation
 python -O -m unittest -q \
   tools.github_content_write_pacemaker.test_queue \
-  tools.github_content_write_pacemaker.test_integrity
+  tools.github_content_write_pacemaker.test_integrity \
+  tools.github_content_write_pacemaker.test_reload_generation
 ```
 
-The package deliberately contains no direct HTTP client, token discovery,
-credential transport, provider login, or hidden retry loop. The caller must
-read back uncertain mutations and explicitly reconcile them before another
-claim can be issued.
+The reload-generation hostile runs its import mutation in a child interpreter,
+so it proves a fresh public `store.PacemakerStore` generation without leaving
+stale class objects in the surrounding test process. The package deliberately
+contains no direct HTTP client, token discovery, credential transport, provider
+login, or hidden retry loop. The caller must read back uncertain mutations and
+explicitly reconcile them before another claim can be issued.

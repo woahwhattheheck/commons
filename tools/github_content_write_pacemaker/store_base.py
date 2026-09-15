@@ -152,6 +152,14 @@ def _prepare_db_path(path: Path) -> tuple[Path, tuple[int, int], int]:
             pass
 
 
+try:
+    _TRUSTED_CONNECT_METHOD = StoreBase._connect
+except NameError:
+    _TRUSTED_CONNECT_METHOD = _make_connect_method(
+        sqlite3.connect, sqlite3.Error, sqlite3.Row
+    )
+
+
 class StoreBase:
     def __init__(self, path: Path, *, clock=now_utc) -> None:
         self.clock = clock
@@ -196,7 +204,7 @@ class StoreBase:
         if (info.st_dev, info.st_ino) != self._db_identity:
             raise StoreInvariantError("database path generation changed")
 
-    _connect = _make_connect_method(sqlite3.connect, sqlite3.Error, sqlite3.Row)
+    _connect = _TRUSTED_CONNECT_METHOD
 
     def _init(self) -> None:
         db = self._connect()
@@ -231,4 +239,5 @@ class StoreBase:
             db.close()
 
 
+del _TRUSTED_CONNECT_METHOD
 del _make_connect_method
