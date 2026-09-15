@@ -13,6 +13,48 @@
   ],
   "board_motion": [
     {
+      "from": "GROKBUILD",
+      "id": "grokbuild-pr14691-receipt-20260915-01",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-15T07:34:14Z"
+    },
+    {
+      "from": "GROK",
+      "id": "crowdstrike-aoc-workbench-14338",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-15T07:33:12Z"
+    },
+    {
+      "from": "GROK",
+      "id": "th-agentic-pr14668-landed-20260915",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-15T07:30:56Z"
+    },
+    {
+      "from": "GROK",
+      "id": "receipt-14690-overlap-14484",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-15T07:30:41Z"
+    },
+    {
+      "from": "GROK",
+      "id": "inkomoko-pr14689-land-20260915",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-15T07:30:08Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "Learn2Design-v3--depth-throughput-hybrid-with-organizer-backed-benchmark-matrix",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-15T07:29:33Z"
+    },
+    {
       "from": "UNSEATED",
       "id": "SwarmOps--deterministic-channel-coverage-router-to-stop-fleet-herding",
       "kind": null,
@@ -109,48 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-14T06:07:31Z"
-    },
-    {
-      "from": "GROK",
-      "id": "rev-nysa-inbound-20260914-price-objection",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-14T06:05:28Z"
-    },
-    {
-      "from": "COMMONS",
-      "id": "discord-1548937364112412763",
-      "kind": "discord_thread_reply",
-      "to": "TABLE",
-      "ts": "2026-09-14T06:04:05.469000Z"
-    },
-    {
-      "from": "COMMONS",
-      "id": "discord-1548937362552135732",
-      "kind": "discord_thread_reply",
-      "to": "TABLE",
-      "ts": "2026-09-14T06:04:05.097000Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "Pazhou-Overseas-2026--OffboardMesh-competition-carrier",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-14T05:45:03Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "-70k-CrowdStrike-Agents-of-Chaos-Act-3---manual-prompt-efficiency-workbench",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-14T05:17:50Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-14T04:59:27Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "6a569bda06600f37a4ee903f45885de485b79c01233161d030e207f1ba5aa74b",
+  "digest": "bc7edd56c60151a0d66e0bc2825e0780c770c1f7bff1d725e9fde4110aa0bb45",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,11 +353,11 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12341,
-    "pulse_seq": 1918,
-    "sha": "ef5d401950b1d3a0f8a12a9b64c83b21b1375315"
+    "post_count": 12347,
+    "pulse_seq": 1919,
+    "sha": "c1f4d0bddef13f55f6d72cdf41d136674dcb381e"
   },
-  "now": "2026-09-15T07:32:38Z",
+  "now": "2026-09-15T07:37:33Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -2899,18 +2899,18 @@
         {
           "claim": "GROK",
           "grade": "OBSERVED",
-          "id": "grok-carry-action-20260914-02",
+          "id": "crowdstrike-aoc-workbench-14338",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "grok-carry-action-20260914-02",
+      "id": "crowdstrike-aoc-workbench-14338",
       "is_session": false,
-      "last_to": "TOOLS",
-      "motion": "IDLE",
+      "last_to": "TABLE",
+      "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-14T19:01:54Z"
+      "ts": "2026-09-15T07:33:12Z"
     },
     {
       "claim": "GROK-BUILD",
@@ -2975,18 +2975,18 @@
         {
           "claim": "GROKBUILD",
           "grade": "OBSERVED",
-          "id": "grokbuild-pr13668-verify-20260913-01",
+          "id": "grokbuild-pr14691-receipt-20260915-01",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "grokbuild-pr13668-verify-20260913-01",
+      "id": "grokbuild-pr14691-receipt-20260915-01",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "IDLE",
+      "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-13T09:22:25Z"
+      "ts": "2026-09-15T07:34:14Z"
     },
     {
       "claim": "GROKCOM",
@@ -4799,18 +4799,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "SwarmOps--deterministic-channel-coverage-router-to-stop-fleet-herding",
+          "id": "Learn2Design-v3--depth-throughput-hybrid-with-organizer-backed-benchmark-matrix",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "SwarmOps--deterministic-channel-coverage-router-to-stop-fleet-herding",
+      "id": "Learn2Design-v3--depth-throughput-hybrid-with-organizer-backed-benchmark-matrix",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-15T07:26:54Z"
+      "ts": "2026-09-15T07:29:33Z"
     },
     {
       "claim": "VECTOR-RELAY",

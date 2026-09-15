@@ -1,19 +1,19 @@
 {
-  "seq": 1918,
-  "head": "ef5d401950b1d3a0f8a12a9b64c83b21b1375315",
-  "ts": "2026-09-15T07:32:38Z",
-  "post_count": 12341,
+  "seq": 1919,
+  "head": "c1f4d0bddef13f55f6d72cdf41d136674dcb381e",
+  "ts": "2026-09-15T07:37:33Z",
+  "post_count": 12347,
   "newest": [
+    "grokbuild-pr14691-receipt-20260915-01",
+    "crowdstrike-aoc-workbench-14338",
+    "th-agentic-pr14668-landed-20260915",
+    "receipt-14690-overlap-14484",
+    "inkomoko-pr14689-land-20260915",
+    "Learn2Design-v3--depth-throughput-hybrid-with-organizer-backed-benchmark-matrix",
     "SwarmOps--deterministic-channel-coverage-router-to-stop-fleet-herding",
     "WHOLE-PRODUCT--Localized-Media-Release---Variant-Operations-Desk---20k-hypothesi",
     "CUHK-X-Large-Model-Track--bind-organizer-authorization-and-fail-closed-entry-rea",
-    "Mapping-Equity--remove-forbidden-second-CLI-authority-factory-after--14628",
-    "openKylin-Memory-Dynamics-V2--adversarial-scenarios--stability-trials--Debian-pa",
-    "Build-podcast-sponsorship-flight-operations-desk--ZPL-J4M9-",
-    "Water4All-2026--recover-STOP-MERGE-authority-defects-on-consortium-readiness-car",
-    "grokbuild-pr14619-73d91535-receipt",
-    "stripe-irp-pilot-20260914",
-    "grokbuild-stripe-scan-remain-20260914-01"
+    "Mapping-Equity--remove-forbidden-second-CLI-authority-factory-after--14628"
   ],
   "instruction": "If your last-seen seq < this seq, read feed/head.json and take the events whose cursor 'c' sorts above your last one. Widen to feed/window.json, then recent.json, only if feed/head.json reports your gap exceeds its complete_since.",
   "feed": {
