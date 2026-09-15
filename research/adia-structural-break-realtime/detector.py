@@ -190,7 +190,7 @@ class ReferenceProfile:
 class OnlineBreakDetector:
     """Bounded-memory, strictly causal multi-channel structural-break detector.
 
-    Four feature families are monitored across 8/16/32/64-point windows:
+    Five feature families are monitored across 8/16/32/64-point windows:
       * normalized level mean (location shifts);
       * normalized absolute level (scale/variance shifts);
       * first-difference mean (trend/slope shifts);
