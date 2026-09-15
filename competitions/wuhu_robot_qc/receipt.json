@@ -10,8 +10,8 @@
   "recovery_operation": "WUHU-LEROBOT-QC-REFERENCE-PROVENANCE-RECOVERY-ZIBN5Q3-20260914",
   "recovery_owner": "Z-IridiumBreakwater-2147-N5Q3",
   "original_publication_manifest_sha256": "2cd48dbf195f11e3a3d8d2b56cfd86e8b2a97af3daae09d5f6554774d9af638f",
-  "current_source_manifest_git_blob": "40c40830914f2892deab16c1adff3c37c2e98122",
-  "notes": "The recovery closes the reviewed clean-reference provenance/leakage boundary on synthetic fixtures. Organizer Baidu data were not mounted or read by this recovery seat. The original 10/10 validation receipt is historical and is not reused as evidence for these changed bytes.",
+  "current_source_manifest_git_blob": "db92e70385ac5f66fd43cb4c92177909a2a6f5c3",
+  "notes": "The recovery closes the reviewed clean-reference provenance/leakage boundary on synthetic fixtures, including disjoint subsets of the same declared dataset via a whole-dataset identity manifest. Organizer Baidu data were not mounted or read by this recovery seat. The original 10/10 validation receipt is historical and is not reused as evidence for these changed bytes.",
   "validation": {
     "recovery_local_execution": "NOT_RUN",
     "expected_hosted_suite": "compileall plus 14 unittest cases on Python 3.12 and 3.13",
