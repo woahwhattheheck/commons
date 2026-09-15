@@ -19,6 +19,23 @@ def _secure_export_supported():
 def _entry_stat(name,dir_fd):
     return os.stat(name,dir_fd=dir_fd,follow_symlinks=False)
 
+def _open_retained_parent(parent):
+    # The parent itself is part of the publication transaction boundary. Snapshot
+    # its identity before open, refuse symlinks/non-directories, then prove the
+    # opened descriptor is the same generation. Replacing the parent between
+    # those two observations therefore fails closed.
+    try: before=os.stat(parent,follow_symlinks=False)
+    except FileNotFoundError as e: raise RightsError(f'output parent must already exist: {parent}') from e
+    require(stat.S_ISDIR(before.st_mode),'output parent must be a real directory, not a symlink or other file')
+    identity=(before.st_dev,before.st_ino); fd=None
+    try:
+        fd=os.open(parent,os.O_RDONLY|os.O_DIRECTORY|os.O_NOFOLLOW)
+        current=os.fstat(fd); require(stat.S_ISDIR(current.st_mode) and _same_identity(current,identity),'output parent identity changed during publication')
+        return fd,identity
+    except Exception:
+        if fd is not None: os.close(fd)
+        raise
+
 def _rollback_created(parent_fd,dir_fd,dir_name,dir_identity,created):
     # Every deletion is identity-checked. A renamed/replaced leaf or directory is
     # foreign state and is deliberately preserved rather than followed by name.
@@ -37,10 +54,9 @@ def _rollback_created(parent_fd,dir_fd,dir_name,dir_identity,created):
     except OSError: pass
 
 def publish_export(path,out_dir,as_of,horizon_days=30):
-    out_dir=Path(out_dir); require(out_dir.name not in {'','.','..'},'output path must name a directory'); out_dir.parent.mkdir(parents=True,exist_ok=True); files=export_files(path,as_of,horizon_days)
+    out_dir=Path(out_dir); require(out_dir.name not in {'','.','..'},'output path must name a directory'); files=export_files(path,as_of,horizon_days)
     require(_secure_export_supported(),'secure export publication requires descriptor-relative no-follow filesystem support')
-    parent_flags=os.O_RDONLY|os.O_DIRECTORY
-    parent_fd=os.open(out_dir.parent,parent_flags)
+    parent_fd,parent_identity=_open_retained_parent(out_dir.parent)
     dir_fd=None; created=[]; dir_identity=None
     try:
         try: os.mkdir(out_dir.name,mode=0o700,dir_fd=parent_fd)
@@ -54,8 +70,10 @@ def publish_export(path,out_dir,as_of,horizon_days=30):
                 fst=os.fstat(fd); identity=(fst.st_dev,fst.st_ino); created.append((name,identity))
                 with os.fdopen(fd,'wb') as f: f.write(raw); f.flush(); os.fsync(f.fileno())
             os.fsync(dir_fd)
-            # The transaction succeeds only if every retained object is still the
-            # object visible through the caller's output path. Path swaps fail closed.
+            # Success requires the caller-visible parent and child paths to still
+            # name the exact generations retained by this transaction.
+            visible_parent=os.stat(out_dir.parent,follow_symlinks=False)
+            require(stat.S_ISDIR(visible_parent.st_mode) and _same_identity(visible_parent,parent_identity),'output parent identity changed during publication')
             visible=os.stat(out_dir,follow_symlinks=False)
             require(stat.S_ISDIR(visible.st_mode) and _same_identity(visible,dir_identity),'output path identity changed during publication')
             for name,identity in created:
