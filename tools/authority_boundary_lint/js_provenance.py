@@ -34,9 +34,16 @@ def _param_names(raw: str) -> set[str]:
     return names
 
 
-def _function_context(source: str, offset: int) -> tuple[str, set[str]]:
-    """Best-effort nearest function name and its direct parameter set."""
-    prefix = source[:offset]
+def _function_context(
+    source: str,
+    offset: int,
+    find_matching,
+) -> tuple[str, set[str]]:
+    """Best-effort enclosing function name and its direct parameter set.
+
+    Merely being the nearest prior function is insufficient: a closed sibling
+    must not donate its receipt/source parameters to a later module-level gate.
+    """
     patterns = [
         re.compile(r"\bfunction\s+([A-Za-z_$][\w$]*)\s*\(([^)]*)\)\s*\{", re.M),
         re.compile(
@@ -52,9 +59,17 @@ def _function_context(source: str, offset: int) -> tuple[str, set[str]]:
     controls = {"if", "for", "while", "switch", "catch", "with"}
     candidates: list[tuple[int, str, set[str]]] = []
     for regex in patterns:
-        for match in regex.finditer(prefix):
+        for match in regex.finditer(source):
+            if match.start() >= offset:
+                continue
             name = match.group(1)
             if name in controls:
+                continue
+            open_brace = source.rfind("{", match.start(), match.end())
+            if open_brace < 0:
+                continue
+            close_brace = find_matching(source, open_brace, "{", "}")
+            if close_brace is None or not (open_brace < offset < close_brace):
                 continue
             candidates.append((match.start(), name, _param_names(match.group(2))))
     if not candidates:
@@ -82,7 +97,11 @@ def install(base: ModuleType) -> None:
                 continue
             condition = source[open_paren + 1:close_paren]
             accesses = base._js_accesses(condition)
-            function, params = _function_context(source, match.start())
+            function, params = _function_context(
+                source,
+                match.start(),
+                base._find_matching,
+            )
             if not accesses or has_independent_authority(condition, params):
                 continue
 
