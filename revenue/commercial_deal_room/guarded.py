@@ -1,12 +1,18 @@
 from __future__ import annotations
 
+import importlib.abc
+import importlib.machinery
+import sys
 from collections.abc import Mapping, Sequence
 from datetime import datetime
+from functools import wraps
+from types import ModuleType
 from typing import Any, Optional
 
 from revenue.outbound_connector_lease.key import SUPPORTED_REPLY_PROVIDERS
 
 from . import engine as _engine
+
 
 ContractError = _engine.ContractError
 VERSION = _engine.VERSION
@@ -32,11 +38,9 @@ _MESSAGE_EVENT_TYPES = frozenset(
     }
 )
 
-# Capture core entrypoints before installing package-level guards. Normal Python
-# imports execute commercial_deal_room.__init__ before exposing a submodule, so
-# patching these seams also protects callers that import engine directly.
-_CORE_NORMALIZE_PACKET = _engine.normalize_packet
-_CORE_VERIFY_BOARD = _engine.verify_board
+_ENGINE_NAME = _engine.__name__
+_GUARD_MARKER = "__commercial_deal_room_guarded__"
+_FINDER_MARKER = "__commercial_deal_room_reload_finder__"
 
 
 def _detach(value: Any, *, path: str = "packet") -> Any:
@@ -102,15 +106,113 @@ def validate_message_providers(packet: Any) -> None:
             )
 
 
+def _install_engine_guards(module: ModuleType) -> None:
+    """Install guarded entrypoints into one live engine module generation.
+
+    ``importlib.reload`` executes source into the existing module dictionary.
+    That preserves references held by callers but replaces monkey-patched
+    functions. Reinstalling before reload returns protects both fresh attribute
+    lookups and stale pre-reload function references, whose globals still point
+    at this same dictionary.
+    """
+
+    namespace = ModuleType.__getattribute__(module, "__dict__")
+    required = {
+        "ContractError",
+        "VERSION",
+        "canonical_json",
+        "render_markdown",
+        "sha256_hex",
+        "normalize_packet",
+        "verify_board",
+    }
+    missing = sorted(required - set(namespace))
+    if missing:
+        raise ImportError(f"{_ENGINE_NAME} missing guarded entrypoints: {missing}")
+
+    current_normalize = namespace["normalize_packet"]
+    if getattr(current_normalize, _GUARD_MARKER, False):
+        return
+
+    core_normalize = current_normalize
+    core_verify = namespace["verify_board"]
+
+    # Refresh guarded-module aliases after reload creates a new exception class
+    # and new helper function objects in the existing engine module dictionary.
+    globals()["ContractError"] = namespace["ContractError"]
+    globals()["VERSION"] = namespace["VERSION"]
+    globals()["canonical_json"] = namespace["canonical_json"]
+    globals()["render_markdown"] = namespace["render_markdown"]
+    globals()["sha256_hex"] = namespace["sha256_hex"]
+
+    @wraps(core_normalize)
+    def guarded_normalize_packet(packet: Any):
+        snapshot = _detach(packet)
+        validate_message_providers(snapshot)
+        return core_normalize(snapshot)
+
+    setattr(guarded_normalize_packet, _GUARD_MARKER, True)
+
+    @wraps(core_verify)
+    def guarded_verify_board(packet: Any, board: Any, *, now: Optional[datetime] = None):
+        # Core verification compiles historical and current views separately.
+        # Give both evaluations the exact same detached packet generation.
+        snapshot = _detach(packet)
+        return core_verify(snapshot, board, now=now)
+
+    setattr(guarded_verify_board, _GUARD_MARKER, True)
+
+    # Existing compile_board() resolves normalize_packet from engine globals at
+    # call time. One patched normalizer therefore protects package entrypoints,
+    # direct-engine entrypoints, and function references captured before reload.
+    namespace["normalize_packet"] = guarded_normalize_packet
+    namespace["verify_board"] = guarded_verify_board
+
+
+class _ReloadGuardLoader(importlib.abc.Loader):
+    """Delegate source execution, then restore guards before import returns."""
+
+    def __init__(self, wrapped: Any) -> None:
+        self._wrapped = wrapped
+
+    def create_module(self, spec: Any):
+        create = getattr(self._wrapped, "create_module", None)
+        return create(spec) if create is not None else None
+
+    def exec_module(self, module: ModuleType) -> None:
+        self._wrapped.exec_module(module)
+        _install_engine_guards(module)
+
+    def __getattr__(self, name: str) -> Any:
+        return getattr(self._wrapped, name)
+
+
+class _ReloadGuardFinder(importlib.abc.MetaPathFinder):
+    """Wrap only Commercial Deal Room engine loads/reloads."""
+
+    __commercial_deal_room_reload_finder__ = True
+
+    def find_spec(self, fullname: str, path: Any, target: Optional[ModuleType] = None):
+        if fullname != _ENGINE_NAME:
+            return None
+        # Delegate directly to PathFinder so this finder never recurses through
+        # sys.meta_path while resolving the engine's real loader.
+        spec = importlib.machinery.PathFinder.find_spec(fullname, path, target)
+        if spec is not None and spec.loader is not None:
+            spec.loader = _ReloadGuardLoader(spec.loader)
+        return spec
+
+
+_install_engine_guards(_engine)
+
+# guarded.py may itself be reloaded. Keep exactly one finder; an older finder
+# still resolves current functions because its globals share this module dict.
+if not any(getattr(finder, _FINDER_MARKER, False) for finder in sys.meta_path):
+    sys.meta_path.insert(0, _ReloadGuardFinder())
+
+
 def normalize_packet(packet: Any):
-    snapshot = _detach(packet)
-    validate_message_providers(snapshot)
-    return _CORE_NORMALIZE_PACKET(snapshot)
-
-
-# Existing compile_board() resolves normalize_packet from engine globals at call
-# time. One patched normalizer therefore protects package and direct-engine compile.
-_engine.normalize_packet = normalize_packet
+    return _engine.normalize_packet(packet)
 
 
 def compile_board(packet: Any, *, now: Optional[datetime] = None):
@@ -118,11 +220,4 @@ def compile_board(packet: Any, *, now: Optional[datetime] = None):
 
 
 def verify_board(packet: Any, board: Any, *, now: Optional[datetime] = None):
-    # Core verification compiles historical and current views separately. Give
-    # both evaluations the exact same detached packet generation.
-    snapshot = _detach(packet)
-    return _CORE_VERIFY_BOARD(snapshot, board, now=now)
-
-
-# Normal direct-engine imports must get the same single-generation verify seam.
-_engine.verify_board = verify_board
+    return _engine.verify_board(packet, board, now=now)
