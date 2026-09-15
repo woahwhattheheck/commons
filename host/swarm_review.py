@@ -2,8 +2,9 @@
 """GPT review packets and merge decisions for the existing Commons command center.
 
 No model calls, scheduler, PR-code execution, or new queue. GitHub reviews are
-the receipts; state/coordination is their derived view. Family is attested, not
-authenticated: shared GitHub credentials cannot establish model identity.
+semantic receipts; exact-head execution authority is re-read from GitHub Actions.
+State/coordination is the derived view. Family is attested, not authenticated:
+shared GitHub credentials cannot establish model identity.
 """
 from __future__ import annotations
 
@@ -23,6 +24,11 @@ POLICY = "ground/SWARM_ORDER.md"
 RELIABILITY = "ground/SWARM_RELIABILITY.json"
 GPT = "gpt"
 SHA = re.compile(r"^[0-9a-f]{40}$")
+DOC_ONLY_SUFFIXES = frozenset({".md", ".rst", ".adoc"})
+DOC_ONLY_FILE_MODES = frozenset({"100644"})
+ACTIONS_PROVIDER = "github-actions"
+ACTIONS_WORKFLOW_PREFIX = ".github/workflows/"
+BOILERPLATE_ACTION_STEPS = frozenset({"Set up job", "Complete job"})
 
 
 def block(text, fence):
@@ -81,6 +87,132 @@ def evidence_pass(items):
                     for e in items))
 
 
+def execution_required(changes):
+    """Only inert non-executable documentation changes may omit execution evidence."""
+    paths = [change[1] for change in changes if len(change) > 1]
+    if not paths or risk(paths) == "critical":
+        return True
+    for change in changes:
+        if len(change) < 4:
+            return True
+        _, path, old_mode, new_mode = change[:4]
+        if Path(path).suffix.lower() not in DOC_ONLY_SUFFIXES:
+            return True
+        for mode in (old_mode, new_mode):
+            if mode != "000000" and mode not in DOC_ONLY_FILE_MODES:
+                return True
+    return False
+
+
+def actions_authorities(github, head):
+    """Re-read exact-head successful PR jobs from GitHub, never from review prose."""
+    if not SHA.fullmatch(head or ""):
+        raise ValueError("invalid execution head")
+    root = "/repos/" + github.repo
+    runs = []
+    for page in range(1, 11):
+        reply = github.rest(root + "/actions/runs", {
+            "head_sha": head, "event": "pull_request", "per_page": 100, "page": page})
+        part = reply.get("workflow_runs") or []
+        if not isinstance(part, list):
+            raise ValueError("malformed GitHub Actions run census")
+        runs.extend(r for r in part if isinstance(r, dict))
+        if len(part) < 100:
+            break
+    else:
+        raise ValueError("exact-head GitHub Actions run census truncated")
+
+    result = []
+    for run in runs:
+        path = run.get("path")
+        run_id = run.get("id")
+        if (run.get("head_sha") != head or run.get("event") != "pull_request"
+                or run.get("status") != "completed" or run.get("conclusion") != "success"
+                or type(run_id) is not int or not isinstance(path, str)
+                or not path.startswith(ACTIONS_WORKFLOW_PREFIX) or not paths_valid([path])):
+            continue
+        jobs = []
+        for page in range(1, 11):
+            reply = github.rest(root + "/actions/runs/" + str(run_id) + "/jobs",
+                                {"filter": "latest", "per_page": 100, "page": page})
+            part = reply.get("jobs") or []
+            if not isinstance(part, list):
+                raise ValueError("malformed GitHub Actions job census")
+            jobs.extend(j for j in part if isinstance(j, dict))
+            if len(part) < 100:
+                break
+        else:
+            raise ValueError("exact-head GitHub Actions job census truncated")
+        for job in jobs:
+            job_id = job.get("id")
+            if (type(job_id) is not int or job.get("status") != "completed"
+                    or job.get("conclusion") != "success"
+                    or not isinstance(job.get("name"), str) or not job["name"].strip()):
+                continue
+            steps = {}
+            for step in job.get("steps") or []:
+                if (isinstance(step, dict) and isinstance(step.get("name"), str)
+                        and step["name"] not in BOILERPLATE_ACTION_STEPS):
+                    steps[step["name"]] = step.get("conclusion")
+            successful = sorted(name for name, conclusion in steps.items()
+                                if conclusion == "success")
+            if not successful:
+                continue
+            result.append({
+                "provider": ACTIONS_PROVIDER,
+                "head": head,
+                "run_id": run_id,
+                "job_id": job_id,
+                "job_name": job["name"],
+                "workflow_path": path,
+                "reference": run.get("html_url") or run.get("url") or "",
+                "steps": successful,
+            })
+    return result
+
+
+def exact_execution_pass(git, items, subject, base):
+    """Require a review pointer to an independently re-read exact-head provider job."""
+    if not SHA.fullmatch(subject.get("head") or "") or not SHA.fullmatch(base or ""):
+        return False
+    authorities = subject.get("execution_authority")
+    if not isinstance(authorities, list):
+        return False
+    for evidence in items if isinstance(items, list) else ():
+        if (not isinstance(evidence, dict) or evidence.get("result") != "PASS"
+                or evidence.get("kind") != "execution"
+                or evidence.get("provider") != ACTIONS_PROVIDER
+                or evidence.get("head") != subject["head"]
+                or type(evidence.get("run_id")) is not int
+                or type(evidence.get("job_id")) is not int
+                or not isinstance(evidence.get("workflow_path"), str)
+                or not isinstance(evidence.get("workflow_blob"), str)
+                or not isinstance(evidence.get("steps"), list)
+                or not evidence["steps"]
+                or not all(isinstance(step, str) and step.strip() for step in evidence["steps"])
+                or not isinstance(evidence.get("reference"), str) or not evidence["reference"].strip()):
+            continue
+        path = evidence["workflow_path"]
+        if (not paths_valid([path]) or not path.startswith(ACTIONS_WORKFLOW_PREFIX)
+                or path in subject["paths"] or not SHA.fullmatch(evidence["workflow_blob"])):
+            continue
+        if (object_at(git, base, path) != evidence["workflow_blob"]
+                or object_at(git, subject["main"], path) != evidence["workflow_blob"]):
+            continue
+        wanted_steps = set(evidence["steps"])
+        for authority in authorities:
+            if (isinstance(authority, dict)
+                    and authority.get("provider") == ACTIONS_PROVIDER
+                    and authority.get("head") == subject["head"]
+                    and authority.get("run_id") == evidence["run_id"]
+                    and authority.get("job_id") == evidence["job_id"]
+                    and authority.get("workflow_path") == path
+                    and authority.get("reference") == evidence["reference"]
+                    and wanted_steps.issubset(set(authority.get("steps") or []))):
+                return True
+    return False
+
+
 def change(git, main, pull):
     head = pull.get("headRefOid") or (pull.get("head") or {}).get("sha")
     base_ref = pull.get("baseRefName") or (pull.get("base") or {}).get("ref")
@@ -96,10 +228,15 @@ def change(git, main, pull):
     if not isinstance(reads, list) or (reads and not paths_valid(reads)):
         raise ValueError("invalid declared dependencies")
     reads = sorted(set(paths + reads + [POLICY, "AGENTS.md"]))
+    authority = pull.get("_execution_authority", [])
+    if not isinstance(authority, list) or not all(isinstance(row, dict) for row in authority):
+        raise ValueError("malformed provider execution authority")
     key = cs.content_key(changes)
     return {
         "number": pull["number"], "head": head, "main": main, "merge_base": base,
         "content_key": key, "paths": paths, "risk": risk(paths), "work": metadata,
+        "execution_required": execution_required(changes),
+        "execution_authority": authority,
         "read_set": {p: object_at(git, main, p) for p in reads},
         "base_ref": base_ref,
         "draft": bool(pull.get("isDraft", pull.get("draft", False))),
@@ -114,6 +251,8 @@ def review_template(subject):
             "operation": subject["work"].get("operation"),
             "work_sha256": work_digest(subject["work"]),
             "risk": subject["risk"], "read_set": subject["read_set"],
+            "execution_required": subject["execution_required"],
+            "execution_authority": subject["execution_authority"],
             "reviewer": {"seat": "", "family": GPT, "session_ref": ""},
             "summary": "", "evidence": []}
 
@@ -174,15 +313,23 @@ def decision(git, subject, reviews):
             return result("HOLD", "review subject changed: " + field)
     if not evidence_pass(receipt.get("evidence")):
         return result("HOLD", "GPT receipt lacks passing verification evidence")
+    needs_execution = subject["execution_required"]
+    if receipt.get("execution_required", needs_execution) != needs_execution:
+        return result("HOLD", "review execution requirement does not match changed objects")
+    base = receipt.get("reviewed_base")
+    if not SHA.fullmatch(base or "") or git.merge_base(base, subject["main"]) != base:
+        return result("HOLD", "reviewed base is not an ancestor of current main")
+    if needs_execution and not exact_execution_pass(
+            git, receipt.get("evidence"), subject, base):
+        return result("HOLD", "non-document change lacks provider-verified exact-head execution")
     tier = scrutiny(work["seat"], read_outcomes(git, subject["main"]))
     if tier == "individual":
         preflight = receipt.get("preflight") or {}
         if (not preflight.get("seat") or preflight["seat"].casefold() == work["seat"].casefold()
-                or not evidence_pass(preflight.get("evidence"))):
+                or not evidence_pass(preflight.get("evidence"))
+                or (needs_execution and not exact_execution_pass(
+                    git, preflight.get("evidence"), subject, base))):
             return result("HOLD", "recent evidenced regression requires independent preflight")
-    base = receipt.get("reviewed_base")
-    if not SHA.fullmatch(base or "") or git.merge_base(base, subject["main"]) != base:
-        return result("HOLD", "reviewed base is not an ancestor of current main")
     reads = receipt.get("read_set")
     if not isinstance(reads, dict) or not paths_valid(list(reads)):
         return result("HOLD", "missing or malformed dependency read set")
@@ -191,7 +338,7 @@ def decision(git, subject, reviews):
     for path, oid in reads.items():
         if oid != object_at(git, base, path) or oid != object_at(git, subject["main"], path):
             return result("WAIT_GPT", "review dependency changed: " + path)
-    return result("READY", "GPT reviewed these bytes; base dependencies unchanged",
+    return result("READY", "GPT reviewed these bytes; provider execution and base dependencies are current",
                   {"id": record.get("databaseId") or record.get("id"),
                    "url": record.get("url") or record.get("html_url"),
                    "reviewer": reviewer["seat"]})
@@ -279,6 +426,8 @@ def live_pull(github, number):
     else:
         raise ValueError("review history truncated; cannot authorize integration")
     pull["reviews"] = reviews
+    head = (pull.get("head") or {}).get("sha")
+    pull["_execution_authority"] = actions_authorities(github, head)
     return pull
 
 
