@@ -16,7 +16,7 @@ Everything else fails closed. Requests use exact schemas: unknown fields are rej
 
 A `Policy` is an application-layer boundary in addition to the provider's own OAuth/App permissions. It can restrict exact GitHub repositories, branch prefixes, repository path prefixes, Slack channel IDs, file counts/sizes, commit size, Slack message size, and Slack file size.
 
-GitHub writes require a branch under an admitted prefix. Direct writes to the configured default branch are denied. Commit requests must carry an exact 40-hex `expected_head_sha` and `force` must be `false`, so the connector consumer can use optimistic concurrency instead of overwriting a moving ref. Workflow paths are denied unless a separately constructed policy explicitly enables them; that elevated policy can additionally require `human_approval=true`.
+GitHub writes require a branch under an admitted prefix. Direct writes to the configured default branch are denied. Commit requests must carry an exact 40-hex `expected_head_sha` and `force` must be `false`, so the connector consumer can use optimistic concurrency instead of overwriting a moving ref. Workflow paths are denied unless a separately constructed trusted policy explicitly enables them. Approval is not a caller boolean: `workflow_approval_subject_sha256()` hashes the exact commit request (with its proof field cleared), and an elevated policy must retain that exact digest in `workflow_approval_sha256s`; changing the files, branch, head SHA, or correlation ID invalidates the approval.
 
 Pull requests can be required to target the configured default branch and to remain drafts. Repository paths reject absolute paths, traversal, normalization ambiguity, backslashes, NULs, and duplicates.
 
