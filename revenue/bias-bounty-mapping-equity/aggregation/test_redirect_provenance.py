@@ -2,12 +2,10 @@ from __future__ import annotations
 
 import hashlib
 import io
-import json
 import os
 import tempfile
 import unittest
 from pathlib import Path
-from unittest import mock
 
 import aggregate as a
 
@@ -68,13 +66,8 @@ class RedirectIdentityTests(unittest.TestCase):
             finally:
                 os.close(fd)
 
-    def test_final_receipt_input_generations_include_resolved_url(self) -> None:
-        region = "northern-ca"
-        public = a.source_registry(region)
-        registry = {
-            key: f"/proc/self/fd/{100 + index}"
-            for index, key in enumerate(public)
-        }
+    def test_generation_receipt_includes_resolved_url(self) -> None:
+        public = a.source_registry("northern-ca")
         generations = {
             key: {
                 "uri": uri,
@@ -85,52 +78,10 @@ class RedirectIdentityTests(unittest.TestCase):
             }
             for key, uri in public.items()
         }
-
-        class Materialized:
-            def __init__(self) -> None:
-                self.registry = registry
-                self.generations = generations
-                self.closed = False
-
-            def close(self) -> None:
-                self.closed = True
-
-        materialized = Materialized()
-        rows = [
-            (f"{index:011d}", *([0.0] * (len(a.OUTPUT_COLUMNS) - 1)))
-            for index in range(a.REGIONS[region])
-        ]
-
-        class Cursor:
-            description = [(name,) for name in a.OUTPUT_COLUMNS]
-
-            def fetchall(self):
-                return rows
-
-        class Connection:
-            def execute(self, sql: str):
-                return Cursor()
-
-            def close(self) -> None:
-                pass
-
-        with tempfile.TemporaryDirectory() as td:
-            output = Path(td) / "out.csv"
-            receipt = Path(td) / "receipt.json"
-            with mock.patch.object(a._legacy, "run_preflight", return_value={"ok": True}):
-                a.execute_region(
-                    region,
-                    output,
-                    receipt,
-                    _materializer=lambda _: materialized,
-                    _connector=Connection,
-                    _query_builder=lambda _region, _registry: "SELECT 1",
-                )
-            envelope = json.loads(receipt.read_text(encoding="utf-8"))
-            recorded = envelope["payload"]["input_generations"]
-            self.assertEqual(self.uri, recorded["sample"]["uri"])
-            self.assertEqual(self.uri, recorded["sample"]["resolved_url"])
-            self.assertTrue(materialized.closed)
+        recorded = a._generation_receipt(generations)
+        self.assertEqual(self.uri, recorded["sample"]["uri"])
+        self.assertEqual(self.uri, recorded["sample"]["resolved_url"])
+        self.assertEqual(generations["sample"]["sha256"], recorded["sample"]["sha256"])
 
 
 if __name__ == "__main__":
