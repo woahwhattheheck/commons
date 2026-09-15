@@ -73,6 +73,20 @@ def _fingerprint(info):
     )
 
 
+def _read_bounded(fd, maximum: int, label: str):
+    chunks = []
+    total = 0
+    while True:
+        chunk = os.read(fd, min(65536, maximum + 1 - total))
+        if not chunk:
+            break
+        chunks.append(chunk)
+        total += len(chunk)
+        if total > maximum:
+            raise ValueError(f'{label} exceeds {maximum} bytes')
+    return b''.join(chunks), total
+
+
 def read_regular(path: Path, label: str, maximum: int) -> bytes:
     flags = os.O_RDONLY | getattr(os, 'O_BINARY', 0) | getattr(os, 'O_NONBLOCK', 0)
     flags |= getattr(os, 'O_NOFOLLOW', 0)
@@ -83,20 +97,16 @@ def read_regular(path: Path, label: str, maximum: int) -> bytes:
             raise ValueError(f'{label} must be a regular file')
         if before.st_size > maximum:
             raise ValueError(f'{label} exceeds {maximum} bytes')
-        chunks = []
-        total = 0
-        while True:
-            chunk = os.read(fd, min(65536, maximum + 1 - total))
-            if not chunk:
-                break
-            chunks.append(chunk)
-            total += len(chunk)
-            if total > maximum:
-                raise ValueError(f'{label} exceeds {maximum} bytes')
+        data, total = _read_bounded(fd, maximum, label)
         after = os.fstat(fd)
         if _fingerprint(before) != _fingerprint(after) or total != after.st_size:
             raise ValueError(f'{label} changed while it was being read')
-        return b''.join(chunks)
+        os.lseek(fd, 0, os.SEEK_SET)
+        again, total2 = _read_bounded(fd, maximum, label)
+        after2 = os.fstat(fd)
+        if again != data or total2 != total or _fingerprint(after) != _fingerprint(after2):
+            raise ValueError(f'{label} changed while it was being read')
+        return data
     finally:
         os.close(fd)
 
