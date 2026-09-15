@@ -2,8 +2,8 @@
   "counts": {
     "open_issues": 118,
     "open_pull_requests": 58,
-    "runs_in_progress": 17,
-    "runs_queued": 438
+    "runs_in_progress": 18,
+    "runs_queued": 434
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -97,7 +97,7 @@
       "head_sha": "8f8ab1770a2e0aad4908e4e2f67820442edb6c3a",
       "number": 14722,
       "title": "Build evidence-bound Massachusetts DDS IPMS RFI response compiler",
-      "updated_at": "2026-09-15T08:02:21Z"
+      "updated_at": "2026-09-15T08:04:17Z"
     },
     {
       "author": "woahwhattheheck",
@@ -174,7 +174,7 @@
       "head_sha": "f1f7120a0b55ba33b1852c8402d8e5d9e04dfe31",
       "number": 14701,
       "title": "feat(uiowa): add RFQ 18649 prime acceptance exhibit",
-      "updated_at": "2026-09-15T07:42:08Z"
+      "updated_at": "2026-09-15T08:04:18Z"
     }
   ],
   "open_heads": {
@@ -239,7 +239,7 @@
   },
   "pulls_listed": 58,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 25.8,
+  "queue_depth_per_runner": 24.1,
   "recently_closed": [
     {
       "author": "woahwhattheheck",
@@ -409,6 +409,6 @@
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-15T08:04:09Z",
+  "unchanged_since": "2026-09-15T08:04:36Z",
   "undatable_pulls": []
 }
