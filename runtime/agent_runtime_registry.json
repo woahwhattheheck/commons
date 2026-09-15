@@ -1,0 +1,43 @@
+{
+  "schema": "fleet-runtime-provenance/v1",
+  "registry_generation": "commons-14717-seed-20260915",
+  "records": [
+    {
+      "runtime_id": "muse.slack.production",
+      "provider_ids": {
+        "slack_conversation_id": "D0C1U7TUZEC",
+        "slack_user_id": "U0C0TKRTQHZ"
+      },
+      "custodian": "UNKNOWN",
+      "runtime_surface": "UNKNOWN",
+      "config_location": "UNKNOWN",
+      "deployed_generation": "UNKNOWN",
+      "source_commitment": {
+        "kind": "UNKNOWN",
+        "value": "UNKNOWN"
+      },
+      "config_commitment": {
+        "kind": "UNKNOWN",
+        "value": "UNKNOWN"
+      },
+      "trigger": {
+        "mechanism": "UNKNOWN",
+        "cadence": "UNKNOWN"
+      },
+      "authority_surfaces": [
+        "UNKNOWN"
+      ],
+      "decision_contract": "UNKNOWN",
+      "deployment_at": "UNKNOWN",
+      "evidence_at": "UNKNOWN",
+      "probe": {
+        "suite": "UNKNOWN",
+        "generation": "UNKNOWN",
+        "observed_at": null,
+        "result": "UNKNOWN"
+      },
+      "lifecycle": "UNKNOWN",
+      "evidence": []
+    }
+  ]
+}
