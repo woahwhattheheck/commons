@@ -1,9 +1,9 @@
 {
   "counts": {
     "open_issues": 117,
-    "open_pull_requests": 57,
+    "open_pull_requests": 58,
     "runs_in_progress": 15,
-    "runs_queued": 436
+    "runs_queued": 440
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -69,6 +69,17 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
+      "branch": "recovery/astra-sedge-battery-truncation-20260914",
+      "created_at": "2026-09-15T08:01:24Z",
+      "draft": false,
+      "head_sha": "8d4ddbe6c6091e95b6e9aebe707168d05ecceb68",
+      "number": 14726,
+      "title": "fix: reject truncated battery result records",
+      "updated_at": "2026-09-15T08:01:24Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
       "branch": "zida7k5/sun-a308734-analytic-bridge-14714",
       "created_at": "2026-09-15T07:57:46Z",
       "draft": false,
@@ -97,7 +108,7 @@
       "head_sha": "4b52d0529fcf5d658267b06144b0da153275a562",
       "number": 14720,
       "title": "Donor: fail closed unauthenticated Muse negative election outcomes",
-      "updated_at": "2026-09-15T07:56:11Z"
+      "updated_at": "2026-09-15T08:01:41Z"
     },
     {
       "author": "woahwhattheheck",
@@ -164,17 +175,6 @@
       "number": 14701,
       "title": "feat(uiowa): add RFQ 18649 prime acceptance exhibit",
       "updated_at": "2026-09-15T07:42:08Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zsol15k/sun-a308734-p18-frontier-14694",
-      "created_at": "2026-09-15T07:35:11Z",
-      "draft": false,
-      "head_sha": "d8a38da9c1042c157ccd49729809ae923915f66c",
-      "number": 14700,
-      "title": "Sun A308734: pin P18 frontier and exact reduction verifier",
-      "updated_at": "2026-09-15T07:50:42Z"
     }
   ],
   "open_heads": {
@@ -234,11 +234,12 @@
     "14715": "d21e068298412497d04c86225747d640af59b5e6",
     "14720": "4b52d0529fcf5d658267b06144b0da153275a562",
     "14722": "445d363300914491079794114ca7a000cf0b47c2",
-    "14724": "b97d2acc3f8839fd41e70631f6f782a6dab1e67b"
+    "14724": "b97d2acc3f8839fd41e70631f6f782a6dab1e67b",
+    "14726": "8d4ddbe6c6091e95b6e9aebe707168d05ecceb68"
   },
-  "pulls_listed": 57,
+  "pulls_listed": 58,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 29.1,
+  "queue_depth_per_runner": 29.3,
   "recently_closed": [
     {
       "author": "woahwhattheheck",
@@ -408,6 +409,6 @@
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-15T08:00:57Z",
+  "unchanged_since": "2026-09-15T08:01:58Z",
   "undatable_pulls": []
 }
