@@ -15,6 +15,8 @@ from typing import Deque, Iterable, Sequence
 DETECTOR_VERSION = "zvk-r6m8-v1"
 WINDOWS = (8, 16, 32, 64)
 _CLIP_Z = 4.0
+_CURRENT_CORROBORATION_Z = 0.50
+_WINSOR_FRACTION = 0.05
 
 
 def _as_finite_float(value: float) -> float:
@@ -30,6 +32,18 @@ def _safe_sample_std(values: Sequence[float]) -> float:
     return float(statistics.stdev(values))
 
 
+def _winsorized_sample_std(values: Sequence[float]) -> float:
+    """Return deterministic central dispersion with finite-tail resistance."""
+    if len(values) < 2:
+        return 0.0
+    ordered = sorted(values)
+    last = len(ordered) - 1
+    low = ordered[int(_WINSOR_FRACTION * last)]
+    high = ordered[int((1.0 - _WINSOR_FRACTION) * last)]
+    winsorized = [min(high, max(low, value)) for value in values]
+    return _safe_sample_std(winsorized)
+
+
 def _moments(values: Sequence[float]) -> tuple[float, float]:
     mean = float(statistics.fmean(values))
     variance = max(
@@ -40,17 +54,10 @@ def _moments(values: Sequence[float]) -> tuple[float, float]:
 
 
 def _supported_evidence(values: Sequence[float]) -> float:
-    """Require support from >1 timescale when possible.
-
-    A single extreme point dominates the shortest rolling window. Taking the
-    second-largest timescale statistic makes persistent shifts survive while a
-    one-point spike is strongly downweighted.
-    """
-    if not values:
+    """Require two genuinely distinct populated timescales."""
+    if len(values) < 2:
         return 0.0
     ordered = sorted(values, reverse=True)
-    if len(ordered) == 1:
-        return 0.5 * ordered[0]
     return ordered[1]
 
 
@@ -143,11 +150,12 @@ class ReferenceProfile:
 
         center = float(statistics.median(values))
         mad = float(statistics.median(abs(value - center) for value in values))
-        standard = _safe_sample_std(values)
+        robust_standard = _winsorized_sample_std(values)
 
-        # MAD gives resistance to historical outliers; the std floor avoids a pathologically
-        # tiny scale for discrete/nearly constant but not actually constant references.
-        scale = max(1.4826 * mad, 0.35 * standard, 1e-8)
+        # MAD anchors the robust scale. A central winsorized dispersion floor keeps
+        # discrete/nearly-constant references numerically useful without letting a
+        # finite historical tail outlier erase a real later break.
+        scale = max(1.4826 * mad, 0.35 * robust_standard, 1e-8)
 
         normalized = [
             max(-_CLIP_Z, min(_CLIP_Z, (value - center) / scale))
@@ -197,10 +205,11 @@ class OnlineBreakDetector:
       * absolute first difference (volatility shifts);
       * lag-one normalized product (dependence/persistence shifts).
 
-    Each family requires support across timescales. The persistence accumulator
-    prevents one-point spikes from minting a high alarm. Scores depend only on the
-    currently released prefix and may decline when later observations contradict a
-    soft alarm; no future online horizon or suffix is inspected.
+    Each family requires support across two fully populated timescales and current
+    per-step corroboration. The persistence accumulator therefore cannot keep
+    consuming stale rolling-window evidence from one isolated point. Scores depend
+    only on the currently released prefix and may decline when later observations
+    contradict a soft alarm; no future online horizon or suffix is inspected.
     """
 
     __slots__ = (
@@ -263,7 +272,9 @@ class OnlineBreakDetector:
     ) -> list[float]:
         values = []
         for window in windows:
-            if window.n < max(6, window.size // 2):
+            # Partial windows can alias the same retained prefix and must not count
+            # as independent timescale votes.
+            if window.n < window.size:
                 continue
             standardized = (
                 abs(window.mean() - reference_mean)
@@ -272,6 +283,17 @@ class OnlineBreakDetector:
             )
             values.append(standardized)
         return values
+
+    @staticmethod
+    def _current_corroborates(
+        value: float | None,
+        reference_mean: float,
+        reference_variance: float,
+    ) -> bool:
+        if value is None:
+            return False
+        standardized = abs(value - reference_mean) / math.sqrt(reference_variance)
+        return standardized >= _CURRENT_CORROBORATION_Z
 
     def update(self, observation: float) -> float:
         x = _as_finite_float(observation)
@@ -299,44 +321,52 @@ class OnlineBreakDetector:
             for window in self._lag_products:
                 window.push(lag_product)
 
-        families = (
-            self._family_evidence(
-                self._levels,
-                self.reference.z_mean,
-                self.reference.z_variance,
-            ),
-            self._family_evidence(
+        family_specs = (
+            (self._levels, z, self.reference.z_mean, self.reference.z_variance),
+            (
                 self._magnitudes,
+                abs(z),
                 self.reference.abs_z_mean,
                 self.reference.abs_z_variance,
             ),
-            self._family_evidence(
+            (
                 self._diffs,
+                difference,
                 self.reference.diff_mean,
                 self.reference.diff_variance,
             ),
-            self._family_evidence(
+            (
                 self._diff_magnitudes,
+                abs(difference) if difference is not None else None,
                 self.reference.abs_diff_mean,
                 self.reference.abs_diff_variance,
             ),
-            self._family_evidence(
+            (
                 self._lag_products,
+                lag_product,
                 self.reference.lag_product_mean,
                 self.reference.lag_product_variance,
             ),
         )
 
-        if not any(families):
-            self._last_raw_evidence = 0.0
-            self._step += 1
-            return 0.0
+        supported = []
+        for windows, current_value, reference_mean, reference_variance in family_specs:
+            evidence = _supported_evidence(
+                self._family_evidence(windows, reference_mean, reference_variance)
+            )
+            if self._current_corroborates(
+                current_value, reference_mean, reference_variance
+            ):
+                supported.append(evidence)
+            else:
+                supported.append(0.0)
 
-        raw_evidence = max(_supported_evidence(values) for values in families)
+        raw_evidence = max(supported, default=0.0)
         self._last_raw_evidence = raw_evidence
 
-        # Bounded per-step contribution + decay: strong persistent evidence crosses
-        # quickly, while a single clipped point cannot keep feeding the accumulator.
+        # Bounded per-step contribution + decay: persistent corroborated evidence
+        # crosses quickly, while stale evidence from one clipped point cannot keep
+        # feeding the accumulator after the stream returns to its reference regime.
         increment = max(-0.60, min(1.50, raw_evidence - 3.50))
         self._evidence_state = max(
             0.0,
