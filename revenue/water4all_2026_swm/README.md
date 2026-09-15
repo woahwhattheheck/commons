@@ -46,7 +46,7 @@ The compiler validates:
 - at most seven formal partners, or eight only when a funded undersubscribed-FPO flag is present;
 - at most one self-funded partner;
 - Water4All Partnership-beneficiary entity caps: at most two beneficiary entities for consortia with up to five partners, and at most three for larger consortia;
-- repository-trusted evidence that the coordinating PI is not coordinating another Water4All 2026 JTC/ECR proposal;
+- repository-trusted evidence that the coordinating PI does **not participate in any other Water4All 2026 JTC/ECR proposal**, whether there as coordinator or as partner PI;
 - no partner and no country group above 50% of total person-months (exactly 50% is allowed);
 - legal-entity, PIC, participating-FPO, eligibility, and self-funding evidence;
 - exact repository/commit/path/content-digest technical descriptors against `trusted_technical_evidence.json`; caller `verified=true` alone never establishes live capability evidence;
@@ -84,7 +84,7 @@ Even `READY_FOR_OWNER_REVIEW` keeps every external authority bit false.
 - `cli.py` — strict JSON, bounded retained-fd reads, create-exclusive output, current/historical compile, verify.
 - `official_sources.json` — repository-pinned normalized source generation and commitments.
 - `trusted_technical_evidence.json` — reviewed live technical-evidence descriptor registry; fail-closed when empty.
-- `trusted_coordinator_pi_evidence.json` — reviewed coordinating-PI cross-proposal evidence registry; fail-closed when empty.
+- `trusted_coordinator_pi_evidence.json` — reviewed coordinating-PI cross-proposal participation evidence registry; fail-closed when empty.
 - `partner_shortlist.json` — public official partner-search profile URLs only; no contact routes.
 - `example_input.json` — deliberately blocked, synthetic-placeholder owner-review input.
 - `qualification_matrix.json` — present blockers and exact cure conditions.
