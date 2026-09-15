@@ -100,6 +100,8 @@ def replay_plan(engine: Any, Struct: Any, spec: dict[str, Any], plan: Any,
                   for k, v in engine.specification['configuration'].items()})
     cfg.update(spec.get('config', {}))
     cfg.weedSpawnChance = 0
+    # Use an actual future episode end so terminal reward shaping does not
+    # contaminate isolated cash/market measurements of a finite planning window.
     cfg.episodeSteps = max(int(cfg.get('episodeSteps', 720)), end + 4)
     farms = [engine._new_farm(10, 10000), engine._new_farm(10, 10000)]
     market = engine._new_market(spec.get('params'))
