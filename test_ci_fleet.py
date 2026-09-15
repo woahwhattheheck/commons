@@ -14,6 +14,11 @@ from host import ci_fleet as fleet
 
 
 class FleetTests(support.FleetTests):
+    def attempt(self, *args, **kwargs) -> dict:
+        row = super().attempt(*args, **kwargs)
+        row["report"]["execution"]["ignored_worktree_entries_at_start"] = 0
+        return fleet.seal(row, "attempt_sha256")
+
     def authority(self, attempt: dict, *, plan: dict | None = None, changes=None) -> dict:
         plan = plan or self.plan
         row = {
@@ -67,6 +72,32 @@ class FleetTests(support.FleetTests):
         self.assertEqual(result["source_binding"], "coordinator-anchored")
         self.assertEqual(result["execution_binding"], "unverified")
         self.assertIn("cannot authorize PASSED", result["execution_authenticity"])
+
+    def test_ignored_worktree_preflight_cannot_be_omitted_or_nonzero(self):
+        anchor = fleet.verify_plan_source(self.root, self.plan)
+        for defect in ("missing", "nonzero"):
+            with self.subTest(defect=defect):
+                attempts = [self.attempt(0), self.attempt(1)]
+                execution = attempts[0]["report"]["execution"]
+                if defect == "missing":
+                    execution.pop("ignored_worktree_entries_at_start")
+                else:
+                    execution["ignored_worktree_entries_at_start"] = 1
+                attempts[0] = fleet.seal(attempts[0], "attempt_sha256")
+                authorities = [self.authority(row) for row in attempts]
+                result = fleet.aggregate(
+                    self.plan,
+                    attempts,
+                    expected_plan_sha256=anchor,
+                    trusted_execution_authorities=authorities,
+                )
+                self.assertEqual(result["status"], "INVALID", result)
+                self.assertTrue(any(
+                    row["code"] == "INVALID_EXECUTION_PREFLIGHT"
+                    for row in result["findings"]
+                ))
+                with self.assertRaises(fleet.FleetError):
+                    fleet.inspect_attempt(self.plan, attempts[0])
 
     def test_authority_mismatches_fail_closed(self):
         attempts = [self.attempt(0), self.attempt(1)]
