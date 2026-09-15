@@ -27,7 +27,10 @@ class IdentityNormalizationTests(unittest.TestCase):
         self.assertNotEqual(a, b)
 
     def test_display_name_rejects_empty_controls_and_oversize(self):
-        for bad in ("", "   ", "abc\nxyz", "abc\n", "\tabc", "x" * 121):
+        for bad in (
+            "", "   ", "abc\nxyz", "abc\n", "\tabc",
+            "agent\u202eone", "agent\u200done", "x" * 121,
+        ):
             with self.subTest(bad=repr(bad)[:30]):
                 with self.assertRaises(ValueError):
                     ci.normalize_display_name(bad)
