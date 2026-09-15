@@ -168,13 +168,13 @@ class ProvenanceBoundaryTests(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, "missing required modeled feature action"):
                 fit_dataset_reference(root)
 
-    def test_same_dataset_and_subset_to_superset_overlap_are_rejected(self):
+    def test_same_dataset_disjoint_subset_is_rejected(self):
         with tempfile.TemporaryDirectory() as td:
             root = Path(td) / "dataset"
             write_dataset(root)
             reference = fit_dataset_reference(root, episodes=[0])
-            with self.assertRaisesRegex(ValueError, "reference/test source overlap"):
-                scan_dataset(root, Path(td) / "out", episodes=[0, 1], reference=reference)
+            with self.assertRaisesRegex(ValueError, "dataset identity overlap"):
+                scan_dataset(root, Path(td) / "out", episodes=[1], reference=reference)
 
     def test_copied_reference_bytes_are_rejected_and_manifest_tamper_fails(self):
         with tempfile.TemporaryDirectory() as td:
