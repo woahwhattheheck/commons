@@ -2,7 +2,7 @@
 
 Operation: `TRANSFORM-HEALTH-AGENTIC-ASSESSMENT-TOOL-2026-ZTLK7M4`
 
-**Status:** packet draft for owner review / outbound arbitration. This file is not evidence that an application was sent.
+**Status:** packet draft for owner review. A retained Muse decision has selected the single Transform Health application route, but that lease is not consumed and does not by itself authorize outbound. This file is not evidence that an application was sent.
 
 ## Submission route
 
@@ -191,7 +191,7 @@ The application should make the distinction below explicit rather than overclaim
 
 **Demonstrated technical fit:** agentic/LLM evaluation, deterministic verification, source/result lineage, hostile-case testing, fail-closed authority boundaries, structured evidence contracts, and software/API implementation.
 
-**To be bound during delivery:** Transform Health's legislative assessment taxonomy, representative health-policy documents, country/language edge cases, WordPress deployment specifics, hosting/data-retention policy, acceptable OCR/source-image verification method, and domain-review protocol.
+**To be bound during delivery:** Transform Health's legislative assessment taxonomy, representative health-policy documents, country/language edge cases, WordPress deployment specifics, hosting/data-retention policy, acceptable OCR/source-image verification method, multilingual output requirements, and domain-review protocol.
 
 **Not claimed unless separately evidenced:** prior health-data-governance consultancy, legal practice, prior Transform Health engagement, production multilingual legal-OCR deployment, or a specific public-health credential.
 
@@ -199,11 +199,26 @@ The Terms of Reference make legislative/regulatory/health-data-governance experi
 
 ---
 
+## Retained Muse selection
+
+The buyer-bound Muse decision is already selected and must not be treated as an unresolved prerequisite:
+
+- decision timestamp: `1789453079.952329`;
+- buyer: `Transform Health`;
+- offer: `Application — Agentic Feature for Health Data Governance Assessment Tool`;
+- route: `hr@transformhealthcoalition.org`;
+- selected seat: `ZTL-K7M4`;
+- request key: `TRANSFORM-HEALTH-AGENTIC-ASSESSMENT-TOOL-2026-ZTLK7M4`;
+- lease consumed: **false**.
+
+This selection establishes one-route coordination only. It does **not** make the packet submission-ready, authorize outbound, prove an application was sent, or relax the identity/CV/profile-evidence and last-inch dedupe gates below.
+
 ## Pre-send checklist
 
 - [ ] Applicant legal name / firm name filled with verified identity.
 - [ ] CV(s) attached and current.
 - [ ] Contact details verified.
+- [ ] Required profile/experience criteria are bound to CV/portfolio/sample evidence; unsupported criteria remain explicit and `application_submission_ready` remains false until all required evidence is complete.
 - [ ] 2–3 sample links resolve on public main and descriptions remain accurate.
 - [ ] No sample is described as buyer acceptance, production use, compliance certification, or paid delivery unless independently evidenced.
 - [ ] Proposal PDF/DOCX exported from the reviewed packet.
@@ -213,6 +228,6 @@ The Terms of Reference make legislative/regulatory/health-data-governance experi
 - [ ] OCR-derived text cannot self-certify as source evidence; source-image/human verification boundary remains explicit.
 - [ ] Buyer deadline rechecked on first-party page immediately before submission.
 - [ ] Fresh Gmail + Slack hard-dedupe confirms no prior Transform Health submission/follow-up.
-- [ ] Muse arbitration selects exactly one outbound submission route.
+- [x] Muse arbitration selected exactly one outbound route at `1789453079.952329` for buyer `Transform Health`, route `hr@transformhealthcoalition.org`, selected seat `ZTL-K7M4`, request key `TRANSFORM-HEALTH-AGENTIC-ASSESSMENT-TOOL-2026-ZTLK7M4`; lease remains unconsumed and selection alone is not send authority.
 - [ ] One send only; record exact provider receipt.
 - [ ] After send, state is `SUBMITTED / ACKNOWLEDGMENT_PENDING`, never `AWARDED` or `REVENUE` without buyer/payment evidence.
