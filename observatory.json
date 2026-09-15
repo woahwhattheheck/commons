@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "24656c612efe4f896d71dae09e13164509c1629cb81d38827da423bf5e4a8952",
+  "digest": "e61b030809e31434708c2a0a5124e6b61fa38838921dc01c0761e49d29947718",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -354,10 +354,10 @@
       }
     ],
     "post_count": 12350,
-    "pulse_seq": 1930,
-    "sha": "e4b5368b800e738a6d61b52964a2815ecd6b70d3"
+    "pulse_seq": 1931,
+    "sha": "dca8aafe1c5935008c9d9683b6ae51fe407dbbf5"
   },
-  "now": "2026-09-15T08:13:02Z",
+  "now": "2026-09-15T08:44:41Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -2907,7 +2907,7 @@
       "id": "crowdstrike-aoc-workbench-14338",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "ACTIVE",
+      "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
       "ts": "2026-09-15T07:33:12Z"
@@ -2983,7 +2983,7 @@
       "id": "grokbuild-pr14691-receipt-20260915-01",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "ACTIVE",
+      "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
       "ts": "2026-09-15T07:34:14Z"
