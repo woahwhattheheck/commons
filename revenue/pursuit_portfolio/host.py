@@ -11,6 +11,9 @@ is historical evidence only once the retained floor advances.
 
 On POSIX the trust root is derived from the effective account database entry,
 never from HOME/Path.home() or another caller-controlled environment selector.
+Each key/floor acquisition retains the exact validated parent directory descriptor
+through final-leaf consumption, so a pathname swap cannot substitute another host
+generation after validation.
 """
 from __future__ import annotations
 
@@ -27,13 +30,27 @@ from .core import PortfolioError, load_json_bytes
 from .current import (
     AuthorizedPortfolio,
     AuthorityKey,
+    KEY_SCHEMA,
+    MAX_KEY_BYTES,
+    _KEY_KEYS,
     _canonical,
+    _dt,
+    _exact,
+    _now,
     _open_dir_chain,
+    _read_fd_twice,
+    _sha,
+    _token,
     compile_authorized_current,
-    load_authority_key,
     verify_authorized_current,
 )
-from .floor import AuthorityFloor, load_authority_floor, require_current_authority
+from .floor import (
+    AuthorityFloor,
+    MAX_FLOOR_BYTES,
+    _normalize as _normalize_floor,
+    _unsigned as _floor_unsigned,
+    require_current_authority,
+)
 
 
 def _effective_account_home() -> Path:
@@ -103,33 +120,127 @@ def _digest(raw: bytes) -> str:
     return hashlib.sha256(raw).hexdigest()
 
 
-def _validate_host_parent(path: Path, where: str) -> None:
-    """Validate the retained parent generation used for one fixed host file."""
+def _open_validated_host_parent(path: Path, where: str) -> int:
+    """Retain and validate the exact parent generation used for one trust leaf."""
     try:
         fd = _open_dir_chain(path.parent)
+    except PortfolioError:
+        raise
     except OSError as exc:
         raise PortfolioError(f"{where}: retained host directory unavailable") from exc
     try:
         info = os.fstat(fd)
-    finally:
-        os.close(fd)
-    if os.name == "posix":
+        if not stat.S_ISDIR(info.st_mode):
+            raise PortfolioError(f"{where}: retained host parent must be a directory")
+        if os.name != "posix":
+            raise PortfolioError(f"{where}: POSIX retained host authority required")
         if int(info.st_uid) != int(os.geteuid()):
             raise PortfolioError(f"{where}: retained host directory ownership mismatch")
         if stat.S_IMODE(info.st_mode) & 0o022:
             raise PortfolioError(
                 f"{where}: retained host directory must not be group/world writable"
             )
+    except Exception:
+        os.close(fd)
+        raise
+    return fd
+
+
+def _validate_private_leaf(info: os.stat_result, where: str) -> None:
+    if not stat.S_ISREG(info.st_mode):
+        raise PortfolioError(f"{where}: regular file required")
+    if os.name != "posix":
+        raise PortfolioError(f"{where}: POSIX retained host authority required")
+    if int(info.st_uid) != int(os.geteuid()):
+        raise PortfolioError(f"{where}: effective-UID ownership required")
+    if stat.S_IMODE(info.st_mode) & 0o077:
+        raise PortfolioError(f"{where}: owner-only permissions required")
+    if int(info.st_nlink) != 1:
+        raise PortfolioError(f"{where}: single-link retained file required")
+
+
+def _read_validated_host_leaf(path: Path, dir_fd: int, maximum: int, where: str) -> bytes:
+    """Read a trust leaf relative to the already-validated retained parent fd."""
+    name = path.name
+    if not name or os.sep in name or (os.altsep and os.altsep in name) or name in (".", ".."):
+        raise PortfolioError(f"{where}: invalid final path component")
+    flags = os.O_RDONLY | os.O_NOFOLLOW
+    try:
+        fd = os.open(name, flags, dir_fd=dir_fd)
+    except OSError as exc:
+        raise PortfolioError(f"{where}: retained host file unavailable") from exc
+    try:
+        before = os.fstat(fd)
+        _validate_private_leaf(before, where)
+        raw = _read_fd_twice(fd, maximum, where)
+        after = os.fstat(fd)
+        _validate_private_leaf(after, where)
+        if (int(before.st_dev), int(before.st_ino)) != (
+            int(after.st_dev),
+            int(after.st_ino),
+        ):
+            raise PortfolioError(f"{where}: retained file generation changed while reading")
+        return raw
+    finally:
+        os.close(fd)
+
+
+def _parse_host_key(raw: bytes) -> AuthorityKey:
+    value = _exact(load_json_bytes(raw, "authority key"), _KEY_KEYS, "authority key")
+    if raw != _canonical(value):
+        raise PortfolioError("authority key: persisted bytes must be canonical JSON")
+    if value["schema"] != KEY_SCHEMA:
+        raise PortfolioError("authority key: unsupported schema")
+    key_id = _token(value["key_id"], "authority key.key_id")
+    key_hex = _sha(value["key_hex"], "authority key.key_hex")
+    key = bytes.fromhex(key_hex)
+    if len(key) != 32:
+        raise PortfolioError("authority key: exactly 32 bytes required")
+    return AuthorityKey(key_id=key_id, key=key)
+
+
+def _parse_host_floor(raw: bytes, key: AuthorityKey) -> AuthorityFloor:
+    value = _normalize_floor(load_json_bytes(raw, "authority floor"))
+    if raw != _canonical(value):
+        raise PortfolioError("authority floor: persisted bytes must be canonical JSON")
+    if value["key_id"] != key.key_id:
+        raise PortfolioError("authority floor: key_id mismatch")
+    trusted_now = _now()
+    if _dt(value["updated_at"], "authority floor.updated_at") > _dt(trusted_now, "trusted_now"):
+        raise PortfolioError("authority floor: future-updated generation")
+    expected = hmac.new(key.key, _canonical(_floor_unsigned(value)), hashlib.sha256).hexdigest()
+    if not hmac.compare_digest(value["hmac_sha256"], expected):
+        raise PortfolioError("authority floor: HMAC mismatch")
+    return AuthorityFloor(
+        authority_sha256=value["authority_sha256"],
+        generation=value["generation"],
+        key_id=value["key_id"],
+        updated_at=value["updated_at"],
+        value=value,
+        raw=raw,
+    )
 
 
 def _load_host_key() -> AuthorityKey:
-    _validate_host_parent(HOST_KEY_PATH, "authority key")
-    return load_authority_key(HOST_KEY_PATH)
+    parent_fd = _open_validated_host_parent(HOST_KEY_PATH, "authority key")
+    try:
+        raw = _read_validated_host_leaf(
+            HOST_KEY_PATH, parent_fd, MAX_KEY_BYTES, "authority key"
+        )
+    finally:
+        os.close(parent_fd)
+    return _parse_host_key(raw)
 
 
 def _load_host_floor(key: AuthorityKey) -> AuthorityFloor:
-    _validate_host_parent(HOST_FLOOR_PATH, "authority floor")
-    return load_authority_floor(HOST_FLOOR_PATH, key)
+    parent_fd = _open_validated_host_parent(HOST_FLOOR_PATH, "authority floor")
+    try:
+        raw = _read_validated_host_leaf(
+            HOST_FLOOR_PATH, parent_fd, MAX_FLOOR_BYTES, "authority floor"
+        )
+    finally:
+        os.close(parent_fd)
+    return _parse_host_floor(raw, key)
 
 
 def _seal_base(
