@@ -149,13 +149,18 @@ class RetrievalAuthorityTests(unittest.TestCase):
             self.assertIs(reloaded.build_run_receipt, authority.build_run_receipt)
             self.assertIs(reloaded.verify_run_receipt, authority.verify_run_receipt)
 
-            # Package aliases must advance with the direct submodule generation.
+            # Package aliases must remain coherent with the direct submodule
+            # generation, including historical public module identity used by
+            # introspection and pickle lookup.
             self.assertIs(nih_package.ContractError, reloaded.ContractError)
             self.assertIs(nih_package.bm25_retrieve, reloaded.bm25_retrieve)
             self.assertIs(nih_package.load_cases, reloaded.load_cases)
             self.assertIs(nih_package.evaluate_bundle, authority.evaluate_bundle)
             self.assertIs(nih_package.build_run_receipt, authority.build_run_receipt)
             self.assertIs(nih_package.verify_run_receipt, authority.verify_run_receipt)
+            self.assertEqual(reloaded.ContractError.__module__, reloaded.__name__)
+            self.assertEqual(reloaded.bm25_retrieve.__module__, reloaded.__name__)
+            self.assertEqual(reloaded.load_cases.__module__, reloaded.__name__)
 
             forged = {
                 "Q-DEPTH": [
