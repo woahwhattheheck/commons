@@ -15,7 +15,12 @@ from revenue.pursuit_portfolio import cli
 from revenue.pursuit_portfolio.core import PortfolioError
 from revenue.pursuit_portfolio.current import _compile_authorized_at
 import revenue.pursuit_portfolio.publisher as publisher
-from test_pursuit_portfolio_current import KEY, NOW, authority_for, source
+from test_pursuit_portfolio_current import (
+    KEY,
+    NOW,
+    portfolio_source,
+    signed_authority_for,
+)
 
 
 @unittest.skipUnless(
@@ -24,8 +29,8 @@ from test_pursuit_portfolio_current import KEY, NOW, authority_for, source
 )
 class PublicationGenerationTests(unittest.TestCase):
     def test_final_boundary_revalidates_every_visible_artifact(self):
-        value = source(max_age=86400 * 5)
-        compiled = _compile_authorized_at(value, authority_for(value), KEY, NOW)
+        value = portfolio_source(max_age=86400 * 5)
+        compiled = _compile_authorized_at(value, signed_authority_for(value), KEY, NOW)
 
         with tempfile.TemporaryDirectory() as tmp:
             out = Path(tmp) / "out"
