@@ -148,6 +148,48 @@ class Gate:
         self.assertIn("CRG003", self.rules(ignored))
         self.assertNotIn("CRG003", self.rules(consumed))
 
+    def test_dynamic_rebinding_aliases_fail_closed(self):
+        local_dynamic = '''
+def validate_authority(packet, authority_root):
+    return bool(authority_root)
+
+def evaluate(packet, authority_root):
+    verify = validate_authority
+    if packet["use_custom"]:
+        verify = packet["validator"]
+    if verify(packet, authority_root):
+        return "PRIME_READY"
+    return "HOLD"
+'''
+        module_dynamic = '''
+def validate_authority(packet, authority_root):
+    return bool(authority_root)
+
+verify = validate_authority
+verify = incoming["validator"]
+
+def evaluate(packet, authority_root):
+    if verify(packet, authority_root):
+        return "PRIME_READY"
+    return "HOLD"
+'''
+        class_dynamic = '''
+class Gate:
+    def validate_authority(self, packet, authority_root):
+        return bool(authority_root)
+
+    verify = validate_authority
+    verify = incoming["validator"]
+
+    def evaluate(self, packet, authority_root):
+        if self.verify(packet, authority_root):
+            return "PRIME_READY"
+        return "HOLD"
+'''
+        for source in (local_dynamic, module_dynamic, class_dynamic):
+            with self.subTest(source=source):
+                self.assertIn("CRG003", self.rules(source))
+
 
 if __name__ == "__main__":
     unittest.main()

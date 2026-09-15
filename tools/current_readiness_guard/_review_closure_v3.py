@@ -87,6 +87,29 @@ def _alias_target(node: ast.AST, aliases: Mapping[str, str]) -> str | None:
     return raw
 
 
+_UNRESOLVED_ALIAS = "<unresolved>"
+
+
+def _record_alias_candidate(candidates: dict[str, set[str]], name: str, value: ast.AST) -> None:
+    raw = _name(value)
+    candidates.setdefault(name, set()).add(raw if raw else _UNRESOLVED_ALIAS)
+
+
+def _finalize_aliases(candidates: Mapping[str, set[str]]) -> tuple[dict[str, str], set[str]]:
+    aliases: dict[str, str] = {}
+    ambiguous: set[str] = set()
+    for name, values in candidates.items():
+        if len(values) == 1:
+            only = next(iter(values))
+            if only == _UNRESOLVED_ALIAS:
+                ambiguous.add(name)
+            else:
+                aliases[name] = only
+        else:
+            ambiguous.add(name)
+    return aliases, ambiguous
+
+
 def _module_aliases(tree: ast.Module) -> tuple[dict[str, str], set[str]]:
     candidates: dict[str, set[str]] = {}
     for statement in tree.body:
@@ -96,15 +119,10 @@ def _module_aliases(tree: ast.Module) -> tuple[dict[str, str], set[str]]:
         if value is None:
             continue
         targets = statement.targets if isinstance(statement, ast.Assign) else [statement.target]
-        raw = _name(value)
-        if not raw:
-            continue
         for target in targets:
             if isinstance(target, ast.Name):
-                candidates.setdefault(target.id, set()).add(raw)
-    aliases = {name: next(iter(values)) for name, values in candidates.items() if len(values) == 1}
-    ambiguous = {name for name, values in candidates.items() if len(values) != 1}
-    return aliases, ambiguous
+                _record_alias_candidate(candidates, target.id, value)
+    return _finalize_aliases(candidates)
 
 
 def _class_aliases(tree: ast.Module) -> tuple[dict[str, str], set[str]]:
@@ -120,22 +138,20 @@ def _class_aliases(tree: ast.Module) -> tuple[dict[str, str], set[str]]:
                     value = member.value
                     if value is None:
                         continue
-                    raw = _name(value)
-                    if not raw:
-                        continue
-                    if "." not in raw:
-                        raw = f"{class_key}.{raw}"
                     targets = member.targets if isinstance(member, ast.Assign) else [member.target]
                     for target in targets:
                         if isinstance(target, ast.Name):
+                            raw = _name(value)
+                            if raw and "." not in raw:
+                                raw = f"{class_key}.{raw}"
+                            elif not raw:
+                                raw = _UNRESOLVED_ALIAS
                             candidates.setdefault(f"{class_key}.{target.id}", set()).add(raw)
                 elif isinstance(member, ast.ClassDef):
                     collect([member], class_key)
 
     collect(tree.body)
-    aliases = {name: next(iter(values)) for name, values in candidates.items() if len(values) == 1}
-    ambiguous = {name for name, values in candidates.items() if len(values) != 1}
-    return aliases, ambiguous
+    return _finalize_aliases(candidates)
 
 
 def _aliases_for_function(
@@ -149,21 +165,24 @@ def _aliases_for_function(
     for _ in range(max(1, len(defs) + 1)):
         changed = False
         for name, values in defs.items():
-            targets = {
-                target
-                for value in values
-                if (target := _alias_target(value, aliases)) is not None
-            }
-            if len(targets) == 1:
-                target = next(iter(targets))
-                if aliases.get(name) != target or name in ambiguous:
-                    aliases[name] = target
-                    ambiguous.discard(name)
-                    changed = True
-            elif len(targets) > 1:
+            resolved: set[str] = set()
+            unresolved = False
+            for value in values:
+                target = _alias_target(value, aliases)
+                if target is None:
+                    unresolved = True
+                else:
+                    resolved.add(target)
+            if unresolved or len(resolved) != 1:
                 if name not in ambiguous or name in aliases:
                     aliases.pop(name, None)
                     ambiguous.add(name)
+                    changed = True
+            else:
+                target = next(iter(resolved))
+                if aliases.get(name) != target or name in ambiguous:
+                    aliases[name] = target
+                    ambiguous.discard(name)
                     changed = True
         if not changed:
             break
@@ -201,11 +220,7 @@ def _condition_facts_factory(
         resolved = _resolve_call(target_name, spec, specs_by_key)
         if resolved is None:
             if canonical_call != call_name:
-                # self/cls validation is a same-module/class authority surface; if
-                # its binding cannot be proven, fail closed rather than treating it
-                # as a trusted opaque external validator.
                 return set()
-            # Preserve the predecessor contract for a genuinely opaque external validator.
             return refs
 
         callee_spec = specs_by_key[resolved]
