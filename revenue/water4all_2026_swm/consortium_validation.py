@@ -2,11 +2,14 @@
 
 from __future__ import annotations
 
-from typing import Any, Dict, List, Mapping, Tuple
+import datetime as _dt
+from typing import Any, Dict, List, Mapping, Optional, Tuple
 
 from .common import (
     APPLICANT_ROLES,
+    EVIDENCE_MAX_AGE_SECONDS,
     FORMAL_ROLES,
+    FUTURE_SKEW_SECONDS,
     KNOWN_NONPARTICIPATING_FUNDED_COUNTRIES,
     ReadinessError,
     _expect_bool,
@@ -17,9 +20,16 @@ from .common import (
     _expect_list,
     _expect_str,
     _reason,
+    parse_time,
 )
+from .trust import normalize_coordinator_pi_evidence, trusted_coordinator_pi_evidence
 
-def _validate_consortium(raw_consortium: Any) -> Tuple[Dict[str, Any], List[Dict[str, Any]], Dict[str, Dict[str, Any]]]:
+
+def _validate_consortium(
+    raw_consortium: Any,
+    evaluated_at: Optional[_dt.datetime] = None,
+    current_mode: bool = False,
+) -> Tuple[Dict[str, Any], List[Dict[str, Any]], Dict[str, Dict[str, Any]]]:
     consortium = _expect_dict(raw_consortium, "$.consortium")
     raw_members = _expect_list(consortium.get("members"), "$.consortium.members")
     reasons: List[Dict[str, Any]] = []
@@ -35,6 +45,7 @@ def _validate_consortium(raw_consortium: Any) -> Tuple[Dict[str, Any], List[Dict
         role = _expect_str(member.get("role"), path + ".role")
         if role not in FORMAL_ROLES:
             raise ReadinessError("consortium member role must be FUNDED_PARTNER or SELF_FUNDED_PARTNER")
+        beneficiary_present = "water4all_partnership_beneficiary" in member
         normalized = {
             "partner_id": partner_id,
             "organization_label": _expect_str(member.get("organization_label"), path + ".organization_label"),
@@ -50,7 +61,10 @@ def _validate_consortium(raw_consortium: Any) -> Tuple[Dict[str, Any], List[Dict
             "coordinator": _expect_bool(member.get("coordinator"), path + ".coordinator"),
             "person_months_milli": _expect_int(member.get("person_months_milli"), path + ".person_months_milli", 0),
             "synthetic_placeholder": _expect_bool(member.get("synthetic_placeholder", False), path + ".synthetic_placeholder"),
+            "water4all_partnership_beneficiary": _expect_bool(member.get("water4all_partnership_beneficiary", False), path + ".water4all_partnership_beneficiary"),
         }
+        if current_mode and not beneficiary_present:
+            reasons.append(_reason("WATER4ALL_BENEFICIARY_STATUS_MISSING", "CURRENT consortium member lacks explicit Water4All Partnership-beneficiary classification", [partner_id]))
         members.append(normalized)
         by_id[partner_id] = normalized
 
@@ -74,6 +88,35 @@ def _validate_consortium(raw_consortium: Any) -> Tuple[Dict[str, Any], List[Dict
     max_members = 8 if any(member["role"] == "FUNDED_PARTNER" and member["undersubscribed_fpo"] for member in members) else 7
     if len(members) > max_members:
         reasons.append(_reason("CONSORTIUM_PARTNER_MAXIMUM", "consortium exceeds the applicable partner maximum"))
+
+    beneficiary_cap = 2 if len(members) <= 5 else 3
+    beneficiaries = [member for member in members if member["water4all_partnership_beneficiary"]]
+    if len(beneficiaries) > beneficiary_cap:
+        reasons.append(_reason("WATER4ALL_BENEFICIARY_ENTITY_CAP", "Water4All Partnership beneficiaries exceed the official entity cap for this consortium size", [member["partner_id"] for member in beneficiaries]))
+
+    raw_pi_evidence = consortium.get("coordinator_pi_evidence")
+    pi_evidence = None
+    if raw_pi_evidence is not None:
+        pi_evidence = normalize_coordinator_pi_evidence(raw_pi_evidence, "$.consortium.coordinator_pi_evidence")
+        if pi_evidence["other_coordinating_proposal_count"] != 0:
+            reasons.append(_reason("COORDINATOR_PI_ALREADY_COORDINATING_OTHER_PROPOSAL", "coordinating PI evidence shows another Water4All 2026 JTC/ECR coordinating role", [pi_evidence["pi_id"]]))
+    elif current_mode:
+        reasons.append(_reason("COORDINATOR_PI_CROSS_PROPOSAL_EVIDENCE_MISSING", "CURRENT consortium lacks repository-trusted evidence that the coordinating PI is not coordinating another JTC/ECR proposal"))
+
+    if current_mode and pi_evidence is not None:
+        trusted_rows = trusted_coordinator_pi_evidence()
+        if pi_evidence not in trusted_rows:
+            reasons.append(_reason("COORDINATOR_PI_CROSS_PROPOSAL_EVIDENCE_NOT_TRUSTED", "coordinating PI cross-proposal evidence is absent from the repository-pinned evidence registry", [pi_evidence["evidence_id"]]))
+        else:
+            if len(coordinators) == 1 and pi_evidence["coordinator_partner_id"] != coordinators[0]["partner_id"]:
+                reasons.append(_reason("COORDINATOR_PI_EVIDENCE_PARTNER_MISMATCH", "trusted coordinating PI evidence does not bind the selected coordinator", [pi_evidence["evidence_id"]]))
+            observed_at = parse_time(pi_evidence["observed_at"], "$.consortium.coordinator_pi_evidence.observed_at")
+            if evaluated_at is None:
+                raise ReadinessError("CURRENT consortium validation requires evaluation time")
+            if observed_at > evaluated_at + _dt.timedelta(seconds=FUTURE_SKEW_SECONDS):
+                reasons.append(_reason("COORDINATOR_PI_EVIDENCE_FUTURE", "coordinating PI evidence observation is beyond future skew", [pi_evidence["evidence_id"]]))
+            if evaluated_at - observed_at > _dt.timedelta(seconds=EVIDENCE_MAX_AGE_SECONDS):
+                reasons.append(_reason("COORDINATOR_PI_EVIDENCE_STALE", "coordinating PI cross-proposal evidence exceeds the currentness window", [pi_evidence["evidence_id"]]))
 
     for member in members:
         refs = [member["partner_id"]]
@@ -118,6 +161,9 @@ def _validate_consortium(raw_consortium: Any) -> Tuple[Dict[str, Any], List[Dict
         "funded_country_count": len(set(member["country_code"] for member in funded)),
         "eu_or_associated_funded_count": sum(1 for member in funded if member["eu_or_associated"]),
         "partner_limit": max_members,
+        "water4all_beneficiary_count": len(beneficiaries),
+        "water4all_beneficiary_cap": beneficiary_cap,
+        "coordinator_pi_evidence": pi_evidence,
         "total_person_months_milli": total_pm,
     }
     return summary, reasons, by_id
@@ -153,9 +199,8 @@ def _validate_applicant(raw_applicant: Any, consortium_by_id: Mapping[str, Dict[
         member = consortium_by_id.get(applicant_id)
         if member is None:
             reasons.append(_reason("APPLICANT_NOT_IN_CONSORTIUM", "formal applicant role requires a matching consortium member", refs))
-        else:
-            if member["role"] != role or member["country_code"] != normalized["country_code"]:
-                reasons.append(_reason("APPLICANT_CONSORTIUM_ROLE_MISMATCH", "applicant role or country does not match consortium generation", refs))
+        elif member["role"] != role or member["country_code"] != normalized["country_code"]:
+            reasons.append(_reason("APPLICANT_CONSORTIUM_ROLE_MISMATCH", "applicant role or country does not match consortium generation", refs))
     else:
         if applicant_id in consortium_by_id:
             reasons.append(_reason("SUBCONTRACT_CANDIDATE_COUNTED_AS_PARTNER", "paid subcontract candidate must not be counted as a formal consortium partner", refs))
@@ -163,8 +208,6 @@ def _validate_applicant(raw_applicant: Any, consortium_by_id: Mapping[str, Dict[
             reasons.append(_reason("PAID_ROLE_AUTHORITY_UNVERIFIED", "paid technical role has not been accepted or authorized", refs))
         if not normalized["subcontract_rule_verified"]:
             reasons.append(_reason("SUBCONTRACT_RULE_UNVERIFIED", "specific call/national/consortium subcontract eligibility is not verified", refs))
-        # V1 never promotes a subcontract candidate to READY because a buyer-specific,
-        # national-rule-specific contract must be reviewed outside this generic tool.
         reasons.append(_reason("SUBCONTRACT_CANDIDATE_OWNER_REVIEW_REQUIRED", "v1 cannot authorize a paid subcontract role; buyer-specific owner review remains mandatory", refs))
 
     return normalized, reasons
