@@ -200,7 +200,7 @@ class PackageIntegrityTests(unittest.TestCase):
             if data and not touched:
                 touched = True
                 with target.open('r+b') as stream:
-                    stream.seek(100000)
+                    stream.seek(0)
                     stream.write(b'b')
                     stream.flush()
                     os.fsync(stream.fileno())

@@ -1,0 +1,493 @@
+#!/usr/bin/env python3
+"""Fail-closed compliance gate for Snohomish County RFP-26-0791BC.
+
+This package does not submit, contact, price, sign, or log into procurement
+systems. It only verifies that requirement claims are backed by code-pinned,
+requirement-bound source authority and reports whether the official packet is
+still required.
+"""
+from __future__ import annotations
+
+import argparse
+import hashlib
+import json
+from pathlib import Path
+from typing import Any
+
+SOURCE_SCHEMA = "snoco-rfp-source-registry/v2"
+MATRIX_SCHEMA = "snoco-rfp-compliance-matrix/v1"
+RECEIPT_SCHEMA = "snoco-rfp-packet-gate-receipt/v1"
+SOLICITATION_ID = "RFP-26-0791BC"
+
+OFFICIAL_AUTHORITIES = {
+    "OFFICIAL_PUBLIC_NOTICE",
+    "OFFICIAL_COUNTY_GUIDANCE",
+    "OFFICIAL_PORTAL",
+}
+ALLOWED_AUTHORITIES = OFFICIAL_AUTHORITIES | {"THIRD_PARTY_MIRROR"}
+ALLOWED_STATES = {"CONFIRMED_OFFICIAL", "PACKET_REQUIRED"}
+ALLOWED_CLASSIFICATIONS = {
+    "MANDATORY",
+    "SUBMISSION",
+    "CONTROL",
+    "INFORMATIONAL",
+    "SCOREABLE",
+    "SCOREABLE_OR_MANDATORY",
+}
+BOUNDARY_KEYS = {
+    "portal_login_authorized",
+    "vendor_registration_authorized",
+    "county_contact_authorized",
+    "question_submission_authorized",
+    "pricing_commitment_authorized",
+    "signature_authorized",
+    "proposal_submission_authorized",
+    "award_claim_authorized",
+    "recognized_revenue",
+}
+
+# Trust is deliberately outside the caller-supplied registry.  Official source
+# identity, authority class, canonical URL, support bindings, and the exact
+# public facts used by this carrier are code-pinned.  A future packet-ingestion
+# change must therefore change this executable under review; the registry cannot
+# mint its own OFFICIAL_* authority.
+TRUSTED_OFFICIAL_SOURCES: dict[str, dict[str, Any]] = {
+    "snoco_legal_notice": {
+        "id": "snoco_legal_notice",
+        "authority": "OFFICIAL_PUBLIC_NOTICE",
+        "url": "https://sound.ipublishmarketplace.com/washington/advert/-general_18078",
+        "assertable": True,
+        "raw_bytes_sha256": None,
+        "raw_hash_status": "UNAVAILABLE_WEB_TEXT_ONLY",
+        "supports_requirement_ids": [
+            "identity",
+            "proposal_due",
+            "late_submittals",
+            "electronic_preferred",
+            "electronic_signature",
+            "email_subject",
+            "hardcopy_signature",
+            "hand_delivery_location",
+        ],
+        "facts": [
+            "Snohomish County Purchasing Division is soliciting RFP-26-0791BC, AI Governance Solution.",
+            "Proposals are due October 1, 2026 no later than 1:00 p.m. Pacific Local Time; late submittals are not accepted.",
+            "Electronic submittal is preferred and its first page must be digitally signed by an authorized representative.",
+            "The RFP number should be listed in the email subject line for identification.",
+            "Hard-copy submittals require an original signature on the first page; hand delivery is accepted only at the County Purchasing Division.",
+        ],
+    },
+    "snoco_supplier_info": {
+        "id": "snoco_supplier_info",
+        "authority": "OFFICIAL_COUNTY_GUIDANCE",
+        "url": "https://snohomishcountywa.gov/6004/Info-for-Suppliers",
+        "assertable": True,
+        "raw_bytes_sha256": None,
+        "raw_hash_status": "UNAVAILABLE_WEB_TEXT_ONLY",
+        "supports_requirement_ids": ["official_document_source"],
+        "facts": [
+            "The Snohomish County Purchasing Portal is the only official source for active bid/RFP/RFQ documents, except Public Works projects.",
+            "Vendor registration in the portal provides notifications of addenda and current solicitation information.",
+        ],
+    },
+    "snoco_purchasing_portal_page": {
+        "id": "snoco_purchasing_portal_page",
+        "authority": "OFFICIAL_COUNTY_GUIDANCE",
+        "url": "https://snohomishcountywa.gov/3706/Purchasing-Portal",
+        "assertable": True,
+        "raw_bytes_sha256": None,
+        "raw_hash_status": "UNAVAILABLE_WEB_TEXT_ONLY",
+        "supports_requirement_ids": ["clarification_channel_general"],
+        "facts": [
+            "No oral solicitation interpretations are made.",
+            "Questions must be submitted through ProcureWare clarifications or in writing by email to Purchasing.",
+            "Answers and clarifications are distributed to plan holders via addendum.",
+        ],
+    },
+    "snoco_procureware_guide": {
+        "id": "snoco_procureware_guide",
+        "authority": "OFFICIAL_COUNTY_GUIDANCE",
+        "url": "https://www.snohomishcountywa.gov/DocumentCenter/View/142331/Finding-Available-Bid-or-RF-Documents-in-ProcureWare",
+        "assertable": True,
+        "raw_bytes_sha256": None,
+        "raw_hash_status": "DOWNLOAD_NOT_AVAILABLE_IN_CURRENT_HARNESS",
+        "supports_requirement_ids": ["official_document_source", "addenda_acknowledgement"],
+        "facts": [
+            "Users must be logged in to view and download bid or RFP documents.",
+            "Addenda are posted in the same bid-document area.",
+        ],
+    },
+    "procureware_public_portal": {
+        "id": "procureware_public_portal",
+        "authority": "OFFICIAL_PORTAL",
+        "url": "https://snoco.procureware.com/Bids",
+        "assertable": True,
+        "raw_bytes_sha256": None,
+        "raw_hash_status": "UNAVAILABLE_DYNAMIC_PORTAL",
+        "supports_requirement_ids": ["official_document_source"],
+        "facts": [
+            "The public portal exposes Log In and Register controls; the solicitation-document tabs are not anonymously available in the retrieved surface."
+        ],
+    },
+}
+
+# The text and citation set of each currently-confirmed claim are also pinned.
+# Without this second anchor a caller could keep a trusted source ID but rewrite
+# the requirement text (for example, change the proposal deadline) and still
+# obtain a current-looking CONFIRMED_OFFICIAL receipt.
+TRUSTED_CONFIRMED_REQUIREMENTS: dict[str, dict[str, Any]] = {
+    "identity": {
+        "id": "identity",
+        "classification": "MANDATORY",
+        "state": "CONFIRMED_OFFICIAL",
+        "source_ids": ["snoco_legal_notice"],
+        "requirement": "RFP-26-0791BC is titled AI Governance Solution.",
+    },
+    "proposal_due": {
+        "id": "proposal_due",
+        "classification": "MANDATORY",
+        "state": "CONFIRMED_OFFICIAL",
+        "source_ids": ["snoco_legal_notice"],
+        "requirement": "Proposal due October 1, 2026 no later than 1:00 p.m. Pacific Local Time.",
+    },
+    "late_submittals": {
+        "id": "late_submittals",
+        "classification": "MANDATORY",
+        "state": "CONFIRMED_OFFICIAL",
+        "source_ids": ["snoco_legal_notice"],
+        "requirement": "Late submittals are not accepted.",
+    },
+    "electronic_preferred": {
+        "id": "electronic_preferred",
+        "classification": "SUBMISSION",
+        "state": "CONFIRMED_OFFICIAL",
+        "source_ids": ["snoco_legal_notice"],
+        "requirement": "Electronic submittal is preferred.",
+    },
+    "electronic_signature": {
+        "id": "electronic_signature",
+        "classification": "MANDATORY",
+        "state": "CONFIRMED_OFFICIAL",
+        "source_ids": ["snoco_legal_notice"],
+        "requirement": "Electronic proposal first page must be digitally signed by an authorized representative.",
+    },
+    "email_subject": {
+        "id": "email_subject",
+        "classification": "SUBMISSION",
+        "state": "CONFIRMED_OFFICIAL",
+        "source_ids": ["snoco_legal_notice"],
+        "requirement": "List the RFP number in the email subject line for identification.",
+    },
+    "hardcopy_signature": {
+        "id": "hardcopy_signature",
+        "classification": "MANDATORY",
+        "state": "CONFIRMED_OFFICIAL",
+        "source_ids": ["snoco_legal_notice"],
+        "requirement": "Hard-copy first page must carry an original signature by an authorized representative.",
+    },
+    "hand_delivery_location": {
+        "id": "hand_delivery_location",
+        "classification": "SUBMISSION",
+        "state": "CONFIRMED_OFFICIAL",
+        "source_ids": ["snoco_legal_notice"],
+        "requirement": "Hand-delivered proposals are accepted only at the County Purchasing Division.",
+    },
+    "official_document_source": {
+        "id": "official_document_source",
+        "classification": "CONTROL",
+        "state": "CONFIRMED_OFFICIAL",
+        "source_ids": ["snoco_supplier_info", "snoco_procureware_guide"],
+        "requirement": "Active RFP documents and addenda are controlled through the County Purchasing Portal; viewing/downloading requires login.",
+    },
+    "clarification_channel_general": {
+        "id": "clarification_channel_general",
+        "classification": "INFORMATIONAL",
+        "state": "CONFIRMED_OFFICIAL",
+        "source_ids": ["snoco_purchasing_portal_page"],
+        "requirement": "County general guidance requires written questions via ProcureWare clarification or Purchasing email; answers are issued by addendum.",
+    },
+}
+
+
+class GateError(ValueError):
+    pass
+
+
+class DuplicateKeyError(ValueError):
+    pass
+
+
+def _unique_object(pairs: list[tuple[str, Any]]) -> dict[str, Any]:
+    out: dict[str, Any] = {}
+    for key, value in pairs:
+        if key in out:
+            raise DuplicateKeyError(f"duplicate JSON key: {key}")
+        out[key] = value
+    return out
+
+
+def _canonical(value: Any) -> bytes:
+    return json.dumps(value, sort_keys=True, separators=(",", ":"), ensure_ascii=False).encode("utf-8")
+
+
+def _sha256(value: Any) -> str:
+    return hashlib.sha256(_canonical(value)).hexdigest()
+
+
+def _exact_keys(obj: Any, expected: set[str], label: str) -> None:
+    if not isinstance(obj, dict):
+        raise GateError(f"{label} must be an object")
+    actual = set(obj)
+    if actual != expected:
+        missing = sorted(expected - actual)
+        extra = sorted(actual - expected)
+        raise GateError(f"{label} keys mismatch: missing={missing} extra={extra}")
+
+
+def _bounded_text(value: Any, label: str, *, maximum: int = 1000) -> str:
+    if not isinstance(value, str):
+        raise GateError(f"{label} must be text")
+    clean = " ".join(value.split())
+    if not clean or len(clean) > maximum or any(ord(c) < 32 for c in clean):
+        raise GateError(f"{label} must be bounded printable text")
+    return clean
+
+
+def _bounded_unique_text_list(value: Any, label: str, *, maximum: int = 120) -> list[str]:
+    if not isinstance(value, list):
+        raise GateError(f"{label} must be a list")
+    normalized = [
+        _bounded_text(item, f"{label}[{index}]", maximum=maximum)
+        for index, item in enumerate(value)
+    ]
+    if len(set(normalized)) != len(normalized):
+        raise GateError(f"{label} must not contain duplicates")
+    return normalized
+
+
+def validate_sources(registry: Any) -> dict[str, dict[str, Any]]:
+    _exact_keys(
+        registry,
+        {"schema", "solicitation_id", "title", "retrieved_at", "sources"},
+        "source registry",
+    )
+    if registry["schema"] != SOURCE_SCHEMA or registry["solicitation_id"] != SOLICITATION_ID:
+        raise GateError("wrong source registry identity")
+    _bounded_text(registry["title"], "title", maximum=200)
+    if not isinstance(registry["retrieved_at"], str) or not registry["retrieved_at"].endswith("Z"):
+        raise GateError("retrieved_at must be a UTC string")
+    if not isinstance(registry["sources"], list) or not registry["sources"]:
+        raise GateError("sources must be a non-empty list")
+
+    by_id: dict[str, dict[str, Any]] = {}
+    for index, source in enumerate(registry["sources"]):
+        _exact_keys(
+            source,
+            {
+                "id",
+                "authority",
+                "url",
+                "assertable",
+                "raw_bytes_sha256",
+                "raw_hash_status",
+                "supports_requirement_ids",
+                "facts",
+            },
+            f"source[{index}]",
+        )
+        sid = _bounded_text(source["id"], f"source[{index}].id", maximum=120)
+        if sid in by_id:
+            raise GateError(f"duplicate source id: {sid}")
+        if source["authority"] not in ALLOWED_AUTHORITIES:
+            raise GateError(f"unsupported authority: {source['authority']}")
+        if not isinstance(source["url"], str) or not source["url"].startswith("https://"):
+            raise GateError(f"source {sid} must use https")
+
+        if source["authority"] in OFFICIAL_AUTHORITIES:
+            expected = TRUSTED_OFFICIAL_SOURCES.get(sid)
+            if expected is None:
+                raise GateError(f"untrusted official source id: {sid}")
+            if source != expected:
+                raise GateError(f"official source identity drift: {sid}")
+        elif source["assertable"] is not False:
+            raise GateError(f"third-party source {sid} must be non-assertable")
+
+        digest = source["raw_bytes_sha256"]
+        if digest is not None and (
+            not isinstance(digest, str)
+            or len(digest) != 64
+            or any(c not in "0123456789abcdef" for c in digest)
+        ):
+            raise GateError(f"source {sid} raw_bytes_sha256 is invalid")
+        _bounded_text(source["raw_hash_status"], f"source {sid} hash status", maximum=120)
+        supports = _bounded_unique_text_list(
+            source["supports_requirement_ids"],
+            f"source {sid} supports_requirement_ids",
+        )
+        if not supports:
+            raise GateError(f"source {sid} must bind at least one requirement id")
+        if not isinstance(source["facts"], list) or not source["facts"]:
+            raise GateError(f"source {sid} needs at least one fact")
+        for fact_index, fact in enumerate(source["facts"]):
+            _bounded_text(fact, f"source {sid} fact[{fact_index}]", maximum=600)
+        by_id[sid] = source
+
+    missing_official = sorted(set(TRUSTED_OFFICIAL_SOURCES) - set(by_id))
+    if missing_official:
+        raise GateError(f"trusted official source(s) missing: {missing_official}")
+    return by_id
+
+
+def validate_matrix(matrix: Any, sources: dict[str, dict[str, Any]]) -> list[dict[str, Any]]:
+    _exact_keys(
+        matrix,
+        {"schema", "solicitation_id", "packet_state", "requirements", "boundaries"},
+        "matrix",
+    )
+    if matrix["schema"] != MATRIX_SCHEMA or matrix["solicitation_id"] != SOLICITATION_ID:
+        raise GateError("wrong matrix identity")
+    if matrix["packet_state"] != "LOGIN_REQUIRED_NOT_RETRIEVED":
+        raise GateError("packet_state must fail closed until the official packet is actually retrieved")
+    if not isinstance(matrix["requirements"], list) or not matrix["requirements"]:
+        raise GateError("requirements must be a non-empty list")
+    ids: set[str] = set()
+    normalized: list[dict[str, Any]] = []
+    confirmed_ids: set[str] = set()
+    for index, req in enumerate(matrix["requirements"]):
+        _exact_keys(
+            req,
+            {"id", "classification", "state", "source_ids", "requirement"},
+            f"requirement[{index}]",
+        )
+        rid = _bounded_text(req["id"], f"requirement[{index}].id", maximum=120)
+        if rid in ids:
+            raise GateError(f"duplicate requirement id: {rid}")
+        ids.add(rid)
+        if req["classification"] not in ALLOWED_CLASSIFICATIONS:
+            raise GateError(f"unsupported classification for {rid}")
+        if req["state"] not in ALLOWED_STATES:
+            raise GateError(f"unsupported state for {rid}")
+        if not isinstance(req["source_ids"], list):
+            raise GateError(f"source_ids for {rid} must be a list")
+        if len(set(req["source_ids"])) != len(req["source_ids"]):
+            raise GateError(f"duplicate source ids for {rid}")
+        cited: list[dict[str, Any]] = []
+        for sid in req["source_ids"]:
+            if sid not in sources:
+                raise GateError(f"unknown source {sid} for {rid}")
+            source = sources[sid]
+            if rid not in source["supports_requirement_ids"]:
+                raise GateError(f"source {sid} does not support requirement {rid}")
+            cited.append(source)
+        _bounded_text(req["requirement"], f"requirement {rid}", maximum=1200)
+
+        if req["state"] == "CONFIRMED_OFFICIAL":
+            expected_req = TRUSTED_CONFIRMED_REQUIREMENTS.get(rid)
+            if expected_req is None:
+                raise GateError(f"untrusted confirmed requirement id: {rid}")
+            if req != expected_req:
+                raise GateError(f"confirmed requirement identity drift: {rid}")
+            if not cited:
+                raise GateError(f"confirmed requirement {rid} must cite official evidence")
+            if any(
+                source["authority"] not in OFFICIAL_AUTHORITIES or source["assertable"] is not True
+                for source in cited
+            ):
+                raise GateError(f"confirmed requirement {rid} cites non-official authority")
+            confirmed_ids.add(rid)
+        normalized.append(req)
+
+    expected_confirmed_ids = set(TRUSTED_CONFIRMED_REQUIREMENTS)
+    if confirmed_ids != expected_confirmed_ids:
+        missing = sorted(expected_confirmed_ids - confirmed_ids)
+        extra = sorted(confirmed_ids - expected_confirmed_ids)
+        raise GateError(f"confirmed requirement set drift: missing={missing} extra={extra}")
+
+    _exact_keys(matrix["boundaries"], BOUNDARY_KEYS, "boundaries")
+    for key in BOUNDARY_KEYS:
+        if matrix["boundaries"][key] is not False:
+            raise GateError(f"authority boundary escalated: {key}")
+    return normalized
+
+
+def build_receipt(registry: Any, matrix: Any) -> dict[str, Any]:
+    sources = validate_sources(registry)
+    requirements = validate_matrix(matrix, sources)
+    confirmed = [req["id"] for req in requirements if req["state"] == "CONFIRMED_OFFICIAL"]
+    packet_required = [req["id"] for req in requirements if req["state"] == "PACKET_REQUIRED"]
+    scoreable_packet_required = [
+        req["id"]
+        for req in requirements
+        if req["state"] == "PACKET_REQUIRED"
+        and req["classification"] in {"SCOREABLE", "SCOREABLE_OR_MANDATORY"}
+    ]
+    mandatory_packet_required = [
+        req["id"]
+        for req in requirements
+        if req["state"] == "PACKET_REQUIRED"
+        and req["classification"] in {"MANDATORY", "SCOREABLE_OR_MANDATORY"}
+    ]
+    if not packet_required:
+        raise GateError("this receipt must not claim packet completeness without official packet ingestion")
+
+    core = {
+        "schema": RECEIPT_SCHEMA,
+        "solicitation_id": SOLICITATION_ID,
+        "source_registry_sha256": _sha256(registry),
+        "matrix_sha256": _sha256(matrix),
+        "official_source_count": sum(
+            source["authority"] in OFFICIAL_AUTHORITIES for source in sources.values()
+        ),
+        "mirror_source_count": sum(
+            source["authority"] == "THIRD_PARTY_MIRROR" for source in sources.values()
+        ),
+        "confirmed_official_ids": confirmed,
+        "packet_required_ids": packet_required,
+        "mandatory_packet_required_ids": mandatory_packet_required,
+        "scoreable_packet_required_ids": scoreable_packet_required,
+        "decision": "HOLD_PACKET_REQUIRED",
+        "state": "EVIDENCE_MATRIX_READY_PACKET_BLOCKED",
+        "authorities": dict(matrix["boundaries"]),
+    }
+    return {**core, "receipt_sha256": _sha256(core)}
+
+
+def verify_receipt(receipt: Any, registry: Any, matrix: Any) -> bool:
+    try:
+        rebuilt = build_receipt(registry, matrix)
+    except (GateError, TypeError, ValueError):
+        return False
+    return receipt == rebuilt
+
+
+def _load(path: Path) -> Any:
+    try:
+        with path.open("r", encoding="utf-8") as handle:
+            return json.load(handle, object_pairs_hook=_unique_object)
+    except (json.JSONDecodeError, DuplicateKeyError) as exc:
+        raise GateError(f"invalid JSON in {path}: {exc}") from exc
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--sources", type=Path, default=Path(__file__).with_name("sources.json"))
+    parser.add_argument("--matrix", type=Path, default=Path(__file__).with_name("matrix.json"))
+    parser.add_argument("--receipt", type=Path)
+    parser.add_argument("--verify", action="store_true")
+    args = parser.parse_args()
+    registry = _load(args.sources)
+    matrix = _load(args.matrix)
+    receipt = build_receipt(registry, matrix)
+    if args.verify:
+        if args.receipt is None:
+            raise SystemExit("--verify requires --receipt")
+        supplied = _load(args.receipt)
+        ok = verify_receipt(supplied, registry, matrix)
+        print(json.dumps({"ok": ok}, sort_keys=True))
+        return 0 if ok else 1
+    print(json.dumps(receipt, indent=2, sort_keys=True))
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
