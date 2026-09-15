@@ -14,6 +14,23 @@ It is not caller admission, permission, approval, or distributed consensus.
 Raw GitHub writers remain open and can bypass the queue. Cooperating callers
 must share one SQLite generation; one database per worker is split brain.
 
+## SQLite generation custody
+
+The pacemaker database is persistent coordination authority, so initialization
+first acquires a concrete local file generation before SQLite may schema-write.
+The final parent is opened without following a final symlink and must be owned by
+the current user and not group/other writable. A fresh database is reserved
+create-exclusively at `0600`; an existing database must be a same-owner regular
+single-link file opened without following a final symlink. Permission hardening
+uses the verified file descriptor, never a path-following `chmod`.
+
+The acquired `(device, inode)` generation is then checked immediately before and
+after each SQLite open. SQLite uses `mode=rw`, so a path rebound to a missing
+replacement cannot silently create a new database. A contested generation fails
+closed rather than unlinking, replacing, chmodding, or schema-writing a foreign
+successor. These checks protect cooperative pacemaker state only; they do not
+turn the pacemaker into caller admission or provider authorization.
+
 ## Example
 
 ```bash
