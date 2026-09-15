@@ -296,14 +296,19 @@ def publish_artifact_set(
 
         _assert_dir_generation(dir_fd, dir_generation)
 
-        # A second byte/visibility pass narrows the finalization race: mutation after
-        # first visibility validation cannot inherit a stale success verdict.
+        # Complete the final directory durability step *before* the last leaf fence.
+        # No mutating/durability filesystem operation may occur after the final
+        # exact-byte + visible-generation verification and inherit a stale verdict.
+        _fsync_directory(dir_fd)
+        _assert_dir_generation(dir_fd, dir_generation)
+
+        # Final exact-byte/visibility pass. From here to the success receipt, only
+        # non-mutating metadata/read checks remain inside the transaction.
         for name in names:
             fd, payload, generation = retained[name]
             _assert_retained_bytes(fd, payload, generation)
             _assert_visible_identity(dir_fd, name, generation, len(payload))
 
-        _fsync_directory(dir_fd)
         _assert_dir_generation(dir_fd, dir_generation)
         return _receipt(normalized)
     except BaseException as exc:
