@@ -3,6 +3,7 @@
 
   const STORAGE_KEY = 'creator-desk.operator.v1';
   const originalFetch = window.fetch.bind(window);
+  const NativeRequest = window.Request;
   let operatorKey = '';
   let lockPanel = null;
 
@@ -38,17 +39,20 @@
       path === '/workspace.sqlite3' || path.startsWith('/draft.eml') || path === '/api/change';
   }
 
+  function isNativeRequest(input) {
+    return typeof NativeRequest === 'function' && input instanceof NativeRequest;
+  }
+
   function fetchTarget(input) {
-    if (typeof input === 'string') return input;
-    if (input && typeof input.url === 'string') return input.url;
+    if (isNativeRequest(input)) return input.url;
     return String(input);
   }
 
   window.fetch = async function(input, init) {
     const resolved = new URL(fetchTarget(input), location.href);
     const guarded = resolved.origin === location.origin && protectedPath(resolved.pathname);
-    const inheritedHeaders = !init || !Object.prototype.hasOwnProperty.call(init, 'headers')
-      ? (input && typeof input !== 'string' ? input.headers : undefined)
+    const inheritedHeaders = (!init || !Object.prototype.hasOwnProperty.call(init, 'headers')) && isNativeRequest(input)
+      ? input.headers
       : undefined;
     const response = await originalFetch(input, guarded ? withAuth(init || {}, inheritedHeaders) : init);
     if (guarded && response.status === 403 && readKey()) {
