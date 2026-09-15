@@ -46,7 +46,7 @@ This closes a dangerous false-CLEAR class where contradictory versions of the sa
 
 ## Time contract
 
-`search.observed_at` cannot be future-dated. A hit created after `evaluation_time`, or after the exact search row that allegedly observed it, yields `UNKNOWN_HOLD`; it is never treated as a harmless later duplicate. A legitimate later duplicate may still be reported when it postdates the candidate but predates its provider observation and evaluation.
+`search.observed_at` cannot be future-dated **or predate `candidate.created_at`**. Every required provider/family/term observation must occur at or after the candidate intent epoch, closing the gap where an earlier competing TAKE could appear after a stale census but before candidate creation. A hit created after `evaluation_time`, or after the exact search row that allegedly observed it, yields `UNKNOWN_HOLD`; it is never treated as a harmless later duplicate. A legitimate later duplicate may still be reported when it postdates the candidate but predates its provider observation and evaluation.
 
 ## Root contract
 
