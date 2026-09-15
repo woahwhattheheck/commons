@@ -30,6 +30,9 @@ class T(unittest.TestCase):
         p=packet(); p["evidence"]=[e for e in p["evidence"] if e["kind"]!="category_fit_4"]
         r=compile_packet(p)
         self.assertEqual(next(x for x in r["categories"] if x["category"]==4)["state"],"HOLD")
+    def test_original_fr_language_mismatch_rejected(self):
+        p=packet(); p["evidence"][6]["language"]="en"
+        with self.assertRaisesRegex(ValidationError,"ORIGINAL_FR requires language=fr"): compile_packet(p)
     def test_translation_queue(self):
         p=packet(); p["evidence"][6]["language"]="en"; p["evidence"][6]["translation_status"]="WORKING_TRANSLATION"
         r=compile_packet(p); self.assertEqual(r["translation_queue"][0]["evidence_id"],"e7")
