@@ -20,6 +20,7 @@ on:
     paths:
       - "host/coordination_state.py"
       - "host/swarm_review.py"
+      - "host/swarm_review_core.py"
       - "test_swarm_review.py"
       - "ground/SWARM_ORDER.md"
       - "test_coordination_state.py"
@@ -45,6 +46,7 @@ jobs:
           sparse-checkout: |
             /host/coordination_state.py
             /host/swarm_review.py
+            /host/swarm_review_core.py
             /test_swarm_review.py
             /test_coordination_state.py
       - name: Contract tests
@@ -70,6 +72,7 @@ jobs:
           sparse-checkout: |
             /host/coordination_state.py
             /host/swarm_review.py
+            /host/swarm_review_core.py
             /ground/SWARM_ORDER.md
             /ground/SWARM_RELIABILITY.json
       - name: Publish coordination state to state/coordination
