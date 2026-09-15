@@ -16,7 +16,9 @@ on:
       - "ci/workflow-recipes/pursuit-portfolio.yml"
       - ".github/workflows/pursuit-portfolio.yml"
   push:
-    branches: [main]
+    branches:
+      - main
+      - "lantern-z/pursuit-portfolio-postmerge-authority-20260914"
     paths:
       - "revenue/pursuit_portfolio/**"
       - "test_pursuit_portfolio.py"
