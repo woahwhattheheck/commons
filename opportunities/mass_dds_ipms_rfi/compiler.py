@@ -196,6 +196,8 @@ def _normalize(doc: Any) -> tuple[dict[str, Any], dict[str, dict[str, Any]], dat
         source_id = _id(row["source_id"], f"evidence[{i}].source_id")
         if source_id not in source_by_id:
             raise CompileError(f"evidence[{i}]:unknown_source")
+        if not source_by_id[source_id]["current"]:
+            raise CompileError(f"evidence[{i}]:stale_source:{source_id}")
         _str(row["claim"], f"evidence[{i}].claim")
         observed = _time(row["observed_at"], f"evidence[{i}].observed_at")
         if observed > evaluation_time:
