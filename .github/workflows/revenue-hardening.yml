@@ -18,6 +18,7 @@ on:
       - 'revenue/payment_ready/**'
       - 'revenue/hive/fulfillment-desk/**'
       - 'revenue/hive/intake-crm-workflow/**'
+      - 'revenue/cas_actuarial_llm_benchmark/**'
       - 'test_carrier_from_memory.js'
       - 'test_diagnostic_dlp.js'
       - 'test_dio_crlf.py'
@@ -40,6 +41,7 @@ on:
       - 'revenue/payment_ready/**'
       - 'revenue/hive/fulfillment-desk/**'
       - 'revenue/hive/intake-crm-workflow/**'
+      - 'revenue/cas_actuarial_llm_benchmark/**'
       - 'test_carrier_from_memory.js'
       - 'test_diagnostic_dlp.js'
       - 'test_dio_crlf.py'
@@ -65,6 +67,24 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
+      - name: CAS actuarial benchmark reproducibility core
+        run: |
+          python -m py_compile \
+            revenue/cas_actuarial_llm_benchmark/_schema.py \
+            revenue/cas_actuarial_llm_benchmark/core.py \
+            revenue/cas_actuarial_llm_benchmark/fixture.py \
+            revenue/cas_actuarial_llm_benchmark/cli.py \
+            revenue/cas_actuarial_llm_benchmark/test_core.py \
+            revenue/cas_actuarial_llm_benchmark/test_core_hardening.py
+          python -m unittest \
+            revenue.cas_actuarial_llm_benchmark.test_core \
+            revenue.cas_actuarial_llm_benchmark.test_core_hardening -v
+          python -O -m unittest \
+            revenue.cas_actuarial_llm_benchmark.test_core \
+            revenue.cas_actuarial_llm_benchmark.test_core_hardening -v
+          snapshot="${RUNNER_TEMP}/cas-benchmark-snapshot.json"
+          python -m revenue.cas_actuarial_llm_benchmark.cli fixture --output "${snapshot}"
+          python -m revenue.cas_actuarial_llm_benchmark.cli verify "${snapshot}"
       - name: Parcel package integrity
         working-directory: revenue/hive/fulfillment-desk
         run: |
