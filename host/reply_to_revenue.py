@@ -2,11 +2,11 @@
 """Chronology-safe reply-to-revenue entrypoint.
 
 The implementation inherited from the original chronology carrier lives in
-``reply_to_revenue_core.py``.  This entrypoint applies three narrow policy fixes:
-explicit opt-out evidence keeps the DNC boundary during equal-time conflicts,
-positive surfaces describe recorded machine observations truthfully, and an
-opaque provider event reference may collapse only an identical observation
-envelope.
+``reply_to_revenue_core.py``. The core owns single-read observation validation
+and full-envelope event identity. This entrypoint applies two narrow policy
+fixes: explicit opt-out evidence keeps the DNC boundary during equal-time
+conflicts, and positive surfaces describe recorded machine observations
+truthfully.
 """
 
 from __future__ import annotations
@@ -26,42 +26,8 @@ if _SPEC is None or _SPEC.loader is None:
 _core = importlib.util.module_from_spec(_SPEC)
 _SPEC.loader.exec_module(_core)
 
-_ORIGINAL_LOAD_OBSERVATIONS = _core.load_observations
 _ORIGINAL_REDUCE_CONTACT_STATE = _core._reduce_contact_state
 _MACHINE_CLASSIFICATIONS = frozenset({"DELIVERY_FAILURE", "AUTO_RESPONSE"})
-
-
-def load_observations(path: Path = _core.OBSERVATIONS_PATH) -> dict[str, Any]:
-    """Reject same-ref retries whose complete observation envelopes differ.
-
-    The historical core deduplicates an ``event_ref`` using only
-    ``payload_sha256``.  That is insufficient because timestamp, prospect and
-    receipt binding, markers, provider, and requested classification all affect
-    chronology or semantics.  Preflight the parsed source generation here and
-    permit collapse only when the canonical full event object is identical.
-    The inherited loader remains authoritative for every schema and signal
-    validation after this additional collision fence.
-    """
-    raw = _core.read_object(path)
-    events = raw.get("events")
-    if isinstance(events, list):
-        seen_refs: dict[str, str] = {}
-        for event in events:
-            # Preserve inherited validation/error ownership for malformed rows.
-            if not isinstance(event, dict):
-                continue
-            event_ref = event.get("event_ref")
-            if not isinstance(event_ref, str):
-                continue
-            identity = _core.sha256_text(_core.canonical_text(event))
-            previous = seen_refs.get(event_ref)
-            if previous is not None and previous != identity:
-                raise _core.CollisionError(
-                    f"duplicate event_ref with different observation envelope: {event_ref}"
-                )
-            if previous is None:
-                seen_refs[event_ref] = identity
-    return _ORIGINAL_LOAD_OBSERVATIONS(path)
 
 
 def _latest_human_bucket(events: list[dict[str, Any]]) -> list[dict[str, Any]]:
@@ -165,8 +131,7 @@ def surface_positives(
 
 
 # Core functions resolve globals in the core module. Install the corrected
-# entrypoints there before re-exporting the public surface from this wrapper.
-_core.load_observations = load_observations
+# reducers there before re-exporting the public surface from this wrapper.
 _core._reduce_contact_state = _reduce_contact_state
 _core.surface_positives = surface_positives
 
