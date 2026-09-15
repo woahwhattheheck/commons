@@ -17,11 +17,11 @@
     "nullMaxMedian": 0.012953727530695859,
     "persistence": {
       "hitRate": 1.0,
-      "medianDelay": 38.0
+      "medianDelay": 42.0
     },
     "trend": {
       "hitRate": 1.0,
-      "medianDelay": 41.5
+      "medianDelay": 42.5
     },
     "variance": {
       "hitRate": 1.0,
