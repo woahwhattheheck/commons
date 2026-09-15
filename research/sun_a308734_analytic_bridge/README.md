@@ -60,9 +60,9 @@ This is stronger than saying the sieve is merely quantitatively too weak to pref
 
 The logical reduction in #14694 remains valid: if one could prove `z=3^d`, A308734 would follow for the large-`m` range. What fails is the idea that the present surviving set can be continuously sharpened to nontrivial `3^d` without redesigning which primes are sifted.
 
-Source coordinates: arXiv:2606.04744v1, Lemma 2.2 and the proof of Theorem 1.3, especially equations (2.9), (3.15) and the final `Omega(z)` estimate.
+Source coordinates: arXiv:2606.04744v1, Lemma 2.2 and the proof of Theorem 1.3, especially equations (2.9), (3.15) and (3.17).
 
-## Result 2: a 17x exponent gap blocks complete sifting
+## Result 2: a 17x exponent gap blocks complete sifting with the same input
 
 A natural redesign is to **exempt 3** (or factor a chosen `3^b` into the ternary-form coefficient) and then try to sieve the remaining odd cofactor all the way to `1`.
 
@@ -74,36 +74,34 @@ Lemma 2.2 supplies a level of distribution
 D < m^(1/34)
 ```
 
-(up to the fixed epsilon loss). The ternary coordinate itself can be as large as `m^(1/2)`. To certify by complete prime sifting alone that an integer of size at most `m^(1/2)` has **no odd prime factor**, one must remove possible odd prime divisors through the square-root scale of that coordinate; in the worst case that is an `m^(1/2)` threshold.
-
-The exponent ratio is exactly
+(up to the fixed epsilon loss). The ternary coordinate itself can be as large as `m^(1/2)`. To certify **by complete prime sifting alone** that an odd cofactor of size at most `m^(1/2)` equals `1`, the excluded-prime set must cover every possible prime divisor of that cofactor through its full possible range: the cofactor itself can be a prime close to `m^(1/2)`. Even granting the optimistic fiction that one could sieve all the way to the distribution level `D`, the necessary exponent ratio is already
 
 ```
 (1/2) / (1/34) = 17.
 ```
 
-So the available distribution exponent is a factor **17** below the naive complete-sifting scale.
+So the available distribution exponent is a factor **17** below the full cofactor scale required by that naive complete-sifting strategy. The actual usable sieve thresholds are smaller still.
 
-The actual Richert parameters make the same obstruction visible internally. With epsilon suppressed,
+The paper's Richert parameters make the same bounded-almost-prime scale visible internally. With epsilon suppressed,
 
 ```
 z_2 exponent = (1/34)*(10/51) = 5/867,
 y_2 exponent = (1/34)*(54/55) = 27/935.
 ```
 
-An odd cofactor of size `m^(1/2)` can therefore still require
+Equation (3.17) uses `z <= m^(1/2)` and therefore contributes
 
 ```
 (1/2) / (27/935) = 935/54 ~= 17.3148
 ```
 
-prime factors at the `y_2` scale. The final weighted-sieve bookkeeping is designed to land just below 18.5 factors, hence `P_18`; it is not close to forcing zero odd factors. Even replacing the paper's `theta_2 = 0.89540` by the idealized value `theta_2 = 1` leaves
+to the logarithmic factor-count bound. The final weighted-sieve bookkeeping is designed to land just below 18.5 factors, hence `P_18`; it is not close to forcing zero odd factors. Even replacing the paper's `theta_2 = 0.89540` by the idealized value `theta_2 = 1` leaves
 
 ```
 1 + 935/54 = 989/54 > 18.
 ```
 
-This does **not** prove that no more sophisticated analytic argument can reach a pure power. It proves the present level-of-distribution + Richert architecture cannot obtain exact smoothness merely by tuning its existing constants.
+This does **not** prove that no more sophisticated analytic argument can reach a pure power. It proves that complete sifting or mere retuning of the present level-of-distribution + Richert constants cannot turn the published argument into an exact-cofactor theorem.
 
 ## Result 3: abundance cannot be inherited by density/pigeonhole
 
