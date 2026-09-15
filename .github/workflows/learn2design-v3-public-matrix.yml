@@ -1,0 +1,77 @@
+name: Learn2Design v3 temporary public matrix
+
+on:
+  pull_request:
+    paths:
+      - 'revenue/learn2design2026/submission_v3.py'
+      - 'revenue/learn2design2026/public_matrix_v3.py'
+      - 'test_learn2design2026_v3.py'
+      - '.github/workflows/learn2design-v3-public-matrix.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  public-development-matrix:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      JAX_PLATFORM_NAME: cpu
+      JAX_ENABLE_X64: 'true'
+      OMP_NUM_THREADS: '2'
+      OPENBLAS_NUM_THREADS: '2'
+      MKL_NUM_THREADS: '2'
+    steps:
+      - name: Checkout Commons candidate
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+
+      - name: Verify source contracts before installing external code
+        run: |
+          python -m unittest -v test_learn2design2026_v3.py
+          python -m py_compile revenue/learn2design2026/submission_v3.py revenue/learn2design2026/public_matrix_v3.py
+
+      - name: Checkout pinned organizer source
+        uses: actions/checkout@v4
+        with:
+          repository: artificial-scientist-lab/Learn2Design-2026
+          ref: 84a4b0a4c7e0f3b702459ffc8ba6a1d84d34cefa
+          path: _organizer_learn2design
+          persist-credentials: false
+
+      - name: Checkout frozen v1 evidence source
+        uses: actions/checkout@v4
+        with:
+          repository: woahwhattheheck/commons
+          ref: 36be284452141d26cdff4b74efb8f185b27c4b32
+          path: _frozen_v1
+          persist-credentials: false
+
+      - name: Install organizer CPU stack and v1 dependency
+        run: |
+          python -m pip install --disable-pip-version-check -e ./_organizer_learn2design 'optax>=0.2.3,<1'
+
+      - name: Run three-seed matched public matrix
+        run: |
+          mkdir -p revenue/learn2design2026/v3_evidence
+          python revenue/learn2design2026/public_matrix_v3.py \
+            --v1 _frozen_v1/revenue/learn2design2026/submission_v1.py \
+            --v2 revenue/learn2design2026/submission.py \
+            --v3 revenue/learn2design2026/submission_v3.py \
+            --seed 7 --seed 42 --seed 73 --seconds 30 \
+            --out revenue/learn2design2026/v3_evidence/public_matrix.json
+
+      - name: Upload exact public-development matrix
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: learn2design-v3-public-matrix
+          path: revenue/learn2design2026/v3_evidence/public_matrix.json
+          if-no-files-found: warn
+          retention-days: 14
