@@ -2,7 +2,7 @@
 
 `revenue.prospect_contact_lock` is the canonical **contact-level single-writer coordination primitive** for paid/prospective outbound work.
 
-It exists because Slack-only TAKE messages are not atomic: two workers can discover the same hot lead, both see no claim, and send seconds apart. This package moves the collision point into one GitHub Contents compare-and-swap record keyed only by a privacy-minimized normalized contact fingerprint.
+It exists because Slack-only TAKE messages are not atomic: two workers can discover the same hot lead, both see no claim, and send seconds apart. This package moves the collision point into one canonical Git authority log keyed only by a privacy-minimized normalized contact fingerprint.
 
 It does **not** send email/DM/provider traffic. It never emits `external_send_authorized=true`, never proves buyer acceptance/payment/revenue, and is only one prerequisite in the broader outbound safety chain.
 
@@ -17,7 +17,13 @@ Production authority is code-pinned. Ordinary callers cannot select an alternate
 - generation: `prospect-contact-lock/v1/2026-09-14`
 - installed marker: `.coordination/prospect-contact-lock/v1/AUTHORITY.json`
 
-The canonical public/CLI surface verifies that exact marker before every contact-record read. A missing branch, missing marker, malformed marker, or marker whose generation/repository/branch/root/digest differs from the compiled authority fails closed; record-level `404` is interpreted as ABSENT only after the marker has been proven readable and exact. The bearer token is sent only to the pinned HTTPS API/repository URL family. Redirects are refused rather than forwarding Authorization.
+The production surface requires the canonical authority branch to report protected before any record read. It resolves that branch to one immutable commit, verifies the exact authority marker at that commit, and reads the contact record from the same commit. A missing/unprotected branch, missing marker, malformed marker, or marker whose generation/repository/branch/root/digest differs from the compiled authority fails closed; record-level `404` is interpreted as ABSENT only after the marker has been proven readable and exact.
+
+Mutations do not use independent per-path Contents CAS. They create the replacement record blob, derive a tree from the observed authority tree, create a commit whose parent is the observed authority head, and advance the canonical authority ref with `force=false`. A concurrent head move therefore loses at the whole-authority boundary instead of letting two independent path writes both proceed from incompatible snapshots. The landed record is read back from the new immutable commit before a receipt is returned.
+
+Branch protection is part of the deployment invariant, not optional documentation. The authority ref must forbid force-push/rewind or equivalent fleet-writer bypass. If that invariant is absent, the production lock intentionally authorizes nothing.
+
+The bearer token is sent only to the pinned HTTPS API/repository URL family. Redirects are refused rather than forwarding Authorization.
 
 ## Lifecycle
 
@@ -25,7 +31,7 @@ This is deliberately stricter than a lease. There is no ordinary timeout takeove
 
 ### `ACTIVE`
 
-`acquire` creates one record with GitHub Contents create semantics. Concurrent creates for the same normalized contact race the same path; one wins and the other fails closed.
+`acquire` creates one authority generation containing the contact record. Concurrent writers start from one observed authority head; only a non-force fast-forward from that head may land.
 
 An `ACTIVE` record has **no timeout**. A dead/crashed/stale worker does not silently turn ambiguity into new outreach authority.
 
@@ -37,7 +43,7 @@ Because provider mutation has not yet been attempted, the exact owner may still 
 
 ### `OUTCOME_UNKNOWN`
 
-Immediately before the external provider call, the exact owner must `dispatch`. That CAS consumes the replayable attempt slot and transitions `ARMED -> OUTCOME_UNKNOWN`.
+Immediately before the external provider call, the exact owner must `dispatch`. That authority generation consumes the replayable attempt slot and transitions `ARMED -> OUTCOME_UNKNOWN`.
 
 `OUTCOME_UNKNOWN` is fail-closed and has no timeout. Ordinary `acquire`, `release`, or a second `dispatch` all fail. This closes the crash/restart seam: if the provider accepted a message but the process dies before finalization, the same owner and every other worker are blocked from sending a second first contact.
 
@@ -79,7 +85,7 @@ Supported target kinds:
 
 ## Paid-path requirement
 
-`arm` requires a concrete compensation path such as a fixed-price pilot, bounty/prize, bid/contract/subcontract, invoice/fee/retainer, or explicit positive amount. Canonical validation uses token/phrase boundaries rather than substring matching, so negative/larger-token prose such as `unpaid`, `repaid`, `uncontracted`, `not paid`, `no fee`, and `$0` cannot self-promote into a paid path. The plaintext is not retained. This proves only that the operator declared a path to compensation; it is not evidence of acceptance or payment.
+`arm` requires a concrete compensation path such as a fixed-price pilot, bounty/prize, bid/contract/subcontract, invoice/fee/retainer, or explicit positive amount. Canonical validation uses token/phrase boundaries rather than substring matching, so negative/larger-token prose such as `unpaid`, `repaid`, `uncontracted`, `not paid`, and `no fee` cannot self-promote. Explicit zero-value composites such as `$0 invoice`, `0 USD fee`, `bounty $0`, and `paid 0 EUR` also fail unless a distinct positive compensation amount is independently present. The plaintext is not retained. This proves only that the operator declared a path to compensation; it is not evidence of acceptance or payment.
 
 ## CLI
 
@@ -90,7 +96,7 @@ python -m revenue.prospect_contact_lock fingerprint \
   --kind email --target lead@example.com
 ```
 
-Remote operations require `GITHUB_TOKEN` with write access to the canonical coordination branch:
+Remote operations require `GITHUB_TOKEN` with write access to the protected canonical coordination branch:
 
 ```bash
 python -m revenue.prospect_contact_lock acquire \
@@ -146,7 +152,7 @@ There is intentionally no `--repo`, `--branch`, `--root`, `--api-url`, timeout, 
 2. Establish the canonical contact route and paid path.
 3. `acquire` this contact lock.
 4. `arm` the exact message/channel/paid-path binding.
-5. Re-read provider history and satisfy every higher/lower outbound control in force.
+5. Re-read provider history and satisfy every higher/lower outbound control in force, including Muse election where required.
 6. `dispatch` to durably consume this coordination layer's one-shot attempt slot.
 7. Only then perform at most the separately authorized provider action.
 8. If provider acceptance is confirmed, `finalize` immediately.
@@ -163,14 +169,15 @@ python -m py_compile \
   revenue/prospect_contact_lock/hardened.py \
   revenue/prospect_contact_lock/cli.py \
   revenue/prospect_contact_lock/test_lock.py \
-  revenue/prospect_contact_lock/test_hardened.py
+  revenue/prospect_contact_lock/test_hardened.py \
+  revenue/prospect_contact_lock/test_transactional.py
 
-python -m unittest -v revenue.prospect_contact_lock.test_lock revenue.prospect_contact_lock.test_hardened
-python -O -m unittest -v revenue.prospect_contact_lock.test_lock revenue.prospect_contact_lock.test_hardened
+python -m unittest -v revenue.prospect_contact_lock.test_lock revenue.prospect_contact_lock.test_hardened revenue.prospect_contact_lock.test_transactional
+python -O -m unittest -v revenue.prospect_contact_lock.test_lock revenue.prospect_contact_lock.test_hardened revenue.prospect_contact_lock.test_transactional
 ```
 
-The combined suite currently contains **47 hostile tests**. It covers same-contact contention, no-timeout stale blocking, exact-owner release/finalize, ARMED payload immutability, explicit ARMED release, one-shot dispatch consumption, same-owner replay after dispatch, OUTCOME_UNKNOWN no-release/no-reacquire, exact payload binding at finalization, permanent CONTACTED suppression, CAS loss, canonical namespace binding, missing/tampered authority-marker fail-closed behavior before record reads, paid-path token-boundary/negative regressions, raw-contact non-retention, digest-only evidence, server-Date fail-closed behavior, token-bearing URL origin pinning, duplicate-key/tampered-record rejection, receipt tamper detection, message-file bounds, and history-chain advancement.
+The hostile suites cover same-contact contention, no-timeout stale blocking, exact-owner release/finalize, ARMED payload immutability, one-shot dispatch consumption, same-owner replay after dispatch, OUTCOME_UNKNOWN no-release/no-reacquire, permanent CONTACTED suppression, canonical namespace binding, marker fail-closed behavior, protected-authority enforcement, immutable same-head marker/record reads, whole-ref non-force CAS, losing-head races, direct raw-core import closure, zero-value paid-path composites, raw-contact non-retention, digest-only evidence, server-Date fail-closed behavior, token-bearing URL origin pinning, duplicate-key/tampered-record rejection, receipt tamper detection, message-file bounds, and history-chain advancement.
 
 ## Lineage
 
-This lands canonical issue **#14220**. Closed/unmerged PR **#14273** is donor evidence only; it surfaced useful lessons around GitHub server time, canonical namespace binding, token-egress/redirect safety, digest-only evidence, monotonic suppression, and provider-ambiguity handling. This implementation does not revive its stale branch history. It combines #14220's strict no-auto-expiry requirement with a pre-send `ARMED -> OUTCOME_UNKNOWN` consume boundary so same-owner crash/restart cannot silently replay an ambiguous first contact.
+Canonical issue **#14220** established the no-auto-expiry contact lock. PR **#14434** recovered and merged its implementation. Issue **#14474** / PR **#14497** close the post-merge whole-authority rollback, raw-core bypass, and zero-value compensation seams while preserving the fail-closed lifecycle and no-send receipt ceiling.
