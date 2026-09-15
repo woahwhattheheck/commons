@@ -48,10 +48,17 @@ jobs:
             revenue/prospect_contact_lock/cli.py \
             revenue/prospect_contact_lock/test_lock.py \
             revenue/prospect_contact_lock/test_hardened.py \
+            revenue/prospect_contact_lock/test_private_transport.py \
             revenue/prospect_contact_lock/test_transactional.py
-      - name: Hostile suite
+      - name: Legacy state-machine hostiles through private marked seams
         if: steps.package.outputs.present == 'true'
-        run: python -m unittest -v revenue.prospect_contact_lock.test_lock revenue.prospect_contact_lock.test_hardened revenue.prospect_contact_lock.test_transactional
-      - name: Hostile suite under optimized Python
+        run: python -m unittest -v revenue.prospect_contact_lock.test_private_transport
+      - name: Legacy hostiles under optimized Python
         if: steps.package.outputs.present == 'true'
-        run: python -O -m unittest -v revenue.prospect_contact_lock.test_lock revenue.prospect_contact_lock.test_hardened revenue.prospect_contact_lock.test_transactional
+        run: python -O -m unittest -v revenue.prospect_contact_lock.test_private_transport
+      - name: Fresh-process production authority and injection hostiles
+        if: steps.package.outputs.present == 'true'
+        run: python -m unittest -v revenue.prospect_contact_lock.test_transactional
+      - name: Production authority hostiles under optimized Python
+        if: steps.package.outputs.present == 'true'
+        run: python -O -m unittest -v revenue.prospect_contact_lock.test_transactional
