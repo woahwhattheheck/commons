@@ -1,41 +1,55 @@
-"""Exact-byte, retained-descriptor publication for small artifact sets.
+"""Atomic exact-byte publication for small artifact sets.
 
-This module intentionally solves only filesystem custody.  It grants no business,
-provider, publication-policy, or external-send authority.
+The canonical publication event is one no-clobber directory rename. This module
+proves exact bytes for the staged directory generation at that commit point; it
+does not claim that an equivalent-authority actor cannot mutate the committed
+generation later.
 """
 
 from __future__ import annotations
 
+import ctypes
+import errno
 import hashlib
 import json
 import os
 import re
+import secrets
 import stat
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Mapping
 
-RECEIPT_SCHEMA = "exact-byte-artifact-set-receipt/v1"
+RECEIPT_SCHEMA = "exact-byte-artifact-set-receipt/v2"
 MAX_FILES = 64
 MAX_LEAF_BYTES = 8 * 1024 * 1024
 MAX_TOTAL_BYTES = 32 * 1024 * 1024
+RENAME_NOREPLACE = 1
 _SAFE_LEAF = re.compile(r"[A-Za-z0-9][A-Za-z0-9._-]{0,127}\Z")
 
 
 class PublicationError(RuntimeError):
-    """Publication failed before a complete artifact set was proven."""
+    """Publication failed before a success receipt could be issued."""
 
 
 class PartialPublicationError(PublicationError):
-    """Publication failed after at least one leaf was created.
+    """Publication failed after a staging generation was allocated.
 
-    Created leaves are deliberately *not* unlinked.  Their names are reported so
-    an operator can reconcile the retained evidence without a pathname-delete race.
+    No pathname cleanup is attempted. ``publication_committed`` tells callers
+    whether the atomic target-directory rename had already succeeded.
     """
 
-    def __init__(self, message: str, created_leaves: tuple[str, ...]):
+    def __init__(
+        self,
+        message: str,
+        created_leaves: tuple[str, ...],
+        staging_name: str,
+        publication_committed: bool,
+    ):
         super().__init__(message)
         self.created_leaves = created_leaves
+        self.staging_name = staging_name
+        self.publication_committed = publication_committed
 
 
 @dataclass(frozen=True)
@@ -80,9 +94,9 @@ def _required_platform_flags() -> tuple[int, int]:
 
 def _safe_leaf_name(name: object) -> str:
     if not isinstance(name, str) or not _SAFE_LEAF.fullmatch(name):
-        raise PublicationError(f"unsafe artifact leaf name: {name!r}")
+        raise PublicationError(f"unsafe leaf name: {name!r}")
     if name in {".", ".."} or "/" in name or "\\" in name or "\x00" in name:
-        raise PublicationError(f"unsafe artifact leaf name: {name!r}")
+        raise PublicationError(f"unsafe leaf name: {name!r}")
     return name
 
 
@@ -117,7 +131,10 @@ def _normalize_artifacts(artifacts: Mapping[str, bytes]) -> tuple[tuple[str, byt
 def _split_path(path: Path) -> tuple[bool, tuple[str, ...]]:
     text = os.fspath(path)
     if not isinstance(text, str) or not text:
-        raise PublicationError("output directory path must be non-empty text")
+        raise PublicationError("directory path must be non-empty text")
+    raw_parts = Path(text).parts
+    if any(part == os.pardir for part in raw_parts):
+        raise PublicationError("directory path may not contain '..'")
     absolute = os.path.isabs(text)
     norm = os.path.normpath(text)
     if norm == os.curdir:
@@ -126,17 +143,14 @@ def _split_path(path: Path) -> tuple[bool, tuple[str, ...]]:
         parts = tuple(part for part in Path(norm).parts if part not in (os.sep, ""))
     else:
         parts = tuple(part for part in Path(norm).parts if part not in ("", os.curdir))
-    if any(part == os.pardir for part in parts):
-        raise PublicationError("output directory path may not contain '..'")
     return absolute, parts
 
 
 def _open_retained_directory(path: Path) -> tuple[int, _DirGeneration]:
     o_directory, o_nofollow = _required_platform_flags()
     absolute, parts = _split_path(path)
-    base = os.sep if absolute else os.curdir
-    flags = os.O_RDONLY | o_directory | o_nofollow
-    current_fd = os.open(base, flags)
+    flags = os.O_RDONLY | o_directory | o_nofollow | getattr(os, "O_CLOEXEC", 0)
+    current_fd = os.open(os.sep if absolute else os.curdir, flags)
     try:
         for component in parts:
             next_fd = os.open(component, flags, dir_fd=current_fd)
@@ -144,7 +158,7 @@ def _open_retained_directory(path: Path) -> tuple[int, _DirGeneration]:
             current_fd = next_fd
         st = os.fstat(current_fd)
         if not stat.S_ISDIR(st.st_mode):
-            raise PublicationError("retained output generation is not a directory")
+            raise PublicationError("retained generation is not a directory")
         return current_fd, _DirGeneration.from_stat(st)
     except BaseException:
         os.close(current_fd)
@@ -154,16 +168,54 @@ def _open_retained_directory(path: Path) -> tuple[int, _DirGeneration]:
 def _assert_dir_generation(fd: int, expected: _DirGeneration) -> None:
     actual = _DirGeneration.from_stat(os.fstat(fd))
     if actual != expected or not stat.S_ISDIR(actual.mode):
-        raise PublicationError("retained output directory generation changed")
+        raise PublicationError("retained directory generation changed")
 
 
-def _preflight_absent(dir_fd: int, names: tuple[str, ...]) -> None:
-    for name in names:
+def _assert_directory_path(path: Path, fd: int, expected: _DirGeneration) -> None:
+    try:
+        visible = os.lstat(path)
+    except OSError as exc:
+        raise PublicationError(f"directory path changed before publication: {path}") from exc
+    held = _DirGeneration.from_stat(os.fstat(fd))
+    current = _DirGeneration.from_stat(visible)
+    if stat.S_ISLNK(visible.st_mode) or held != expected or current != expected:
+        raise PublicationError(f"directory path changed before publication: {path}")
+
+
+def _require_absent_at(parent_fd: int, name: str, label: str) -> None:
+    try:
+        current = os.stat(name, dir_fd=parent_fd, follow_symlinks=False)
+    except FileNotFoundError:
+        return
+    kind = "symlink" if stat.S_ISLNK(current.st_mode) else "entry"
+    raise FileExistsError(f"refusing existing {kind} at {label}: {name}")
+
+
+def _create_stage(parent_fd: int) -> tuple[str, int, _DirGeneration]:
+    o_directory, o_nofollow = _required_platform_flags()
+    flags = os.O_RDONLY | o_directory | o_nofollow | getattr(os, "O_CLOEXEC", 0)
+    for _ in range(32):
+        name = f".exact-byte-stage-{secrets.token_hex(16)}"
         try:
-            os.stat(name, dir_fd=dir_fd, follow_symlinks=False)
-        except FileNotFoundError:
+            os.mkdir(name, 0o700, dir_fd=parent_fd)
+        except FileExistsError:
             continue
-        raise PublicationError(f"artifact leaf already exists: {name}")
+        try:
+            fd = os.open(name, flags, dir_fd=parent_fd)
+            try:
+                held = _DirGeneration.from_stat(os.fstat(fd))
+                visible = _DirGeneration.from_stat(
+                    os.stat(name, dir_fd=parent_fd, follow_symlinks=False)
+                )
+                if held != visible or not stat.S_ISDIR(held.mode):
+                    raise PublicationError("staging directory changed during acquisition")
+                return name, fd, held
+            except BaseException:
+                os.close(fd)
+                raise
+        except BaseException as exc:
+            raise PartialPublicationError(str(exc), (), name, False) from exc
+    raise FileExistsError("could not allocate unique staging directory")
 
 
 def _write_all(fd: int, payload: bytes) -> None:
@@ -202,25 +254,56 @@ def _assert_retained_bytes(fd: int, expected: bytes, final_generation: _FileGene
 
 
 def _assert_visible_identity(
-    dir_fd: int, name: str, expected: _FileGeneration, expected_size: int
+    directory_fd: int, name: str, expected: _FileGeneration, expected_size: int
 ) -> None:
     try:
-        visible = os.stat(name, dir_fd=dir_fd, follow_symlinks=False)
+        visible = os.stat(name, dir_fd=directory_fd, follow_symlinks=False)
     except FileNotFoundError as exc:
-        raise PublicationError(f"visible artifact disappeared: {name}") from exc
+        raise PublicationError(f"artifact disappeared from staging generation: {name}") from exc
     if not stat.S_ISREG(visible.st_mode):
-        raise PublicationError(f"visible artifact is not a regular file: {name}")
+        raise PublicationError(f"staged artifact is not a regular file: {name}")
     if (visible.st_dev, visible.st_ino, visible.st_mode, visible.st_size) != (
         expected.dev,
         expected.ino,
         expected.mode,
         expected_size,
     ):
-        raise PublicationError(f"visible artifact no longer names retained generation: {name}")
+        raise PublicationError(f"staged artifact no longer names retained generation: {name}")
+
+
+def _assert_visible_directory_identity(
+    parent_fd: int, name: str, held_fd: int, expected: _DirGeneration
+) -> None:
+    try:
+        visible = _DirGeneration.from_stat(os.stat(name, dir_fd=parent_fd, follow_symlinks=False))
+    except OSError as exc:
+        raise PublicationError(f"published directory generation is not visible: {name}") from exc
+    held = _DirGeneration.from_stat(os.fstat(held_fd))
+    if visible != expected or held != expected or not stat.S_ISDIR(visible.mode):
+        raise PublicationError(f"published directory generation changed: {name}")
 
 
 def _fsync_directory(dir_fd: int) -> None:
     os.fsync(dir_fd)
+
+
+def _rename_noreplace(src_dir_fd: int, src_name: str, dst_dir_fd: int, dst_name: str) -> None:
+    libc = ctypes.CDLL(None, use_errno=True)
+    renameat2 = getattr(libc, "renameat2", None)
+    if renameat2 is None:
+        raise OSError(errno.ENOSYS, "renameat2(RENAME_NOREPLACE) unavailable")
+    renameat2.argtypes = [ctypes.c_int, ctypes.c_char_p, ctypes.c_int, ctypes.c_char_p, ctypes.c_uint]
+    renameat2.restype = ctypes.c_int
+    rc = renameat2(
+        src_dir_fd,
+        os.fsencode(src_name),
+        dst_dir_fd,
+        os.fsencode(dst_name),
+        RENAME_NOREPLACE,
+    )
+    if rc != 0:
+        err = ctypes.get_errno()
+        raise OSError(err, os.strerror(err), dst_name)
 
 
 def _receipt(normalized: tuple[tuple[str, bytes], ...]) -> dict[str, object]:
@@ -232,14 +315,18 @@ def _receipt(normalized: tuple[tuple[str, bytes], ...]) -> dict[str, object]:
         }
         for name, payload in normalized
     ]
-    projection = {"schema": RECEIPT_SCHEMA, "artifacts": artifact_rows}
+    projection = {
+        "schema": RECEIPT_SCHEMA,
+        "linearization": "RENAME_NOREPLACE_DIRECTORY_GENERATION",
+        "post_commit_stability_proven": False,
+        "artifacts": artifact_rows,
+    }
     canonical = json.dumps(
         projection, sort_keys=True, separators=(",", ":"), ensure_ascii=False
     ).encode("utf-8")
     return {
-        "schema": RECEIPT_SCHEMA,
-        "publication_complete": True,
-        "artifacts": artifact_rows,
+        **projection,
+        "publication_committed": True,
         "artifact_set_sha256": hashlib.sha256(canonical).hexdigest(),
     }
 
@@ -247,27 +334,40 @@ def _receipt(normalized: tuple[tuple[str, bytes], ...]) -> dict[str, object]:
 def publish_artifact_set(
     output_dir: str | os.PathLike[str], artifacts: Mapping[str, bytes]
 ) -> dict[str, object]:
-    """Publish a create-exclusive artifact set into one retained directory generation.
+    """Atomically commit one exact staged directory generation at ``output_dir``.
 
-    On any failure after the first leaf is created, no visible leaf is removed.  The
-    raised :class:`PartialPublicationError` reports only names created by this call.
+    ``output_dir`` must be absent and its parent must already exist. The parent
+    generation is a trust boundary: a same-authority actor able to substitute the
+    parent or staging entries during this transaction is outside the claimed
+    authority. No pathname cleanup is attempted after staging begins.
     """
 
     normalized = _normalize_artifacts(artifacts)
-    names = tuple(name for name, _ in normalized)
-    dir_fd = -1
+    target = Path(output_dir)
+    target_name = _safe_leaf_name(target.name)
+    parent = target.parent
+
+    parent_fd = -1
+    stage_fd = -1
+    stage_name = ""
     retained: dict[str, tuple[int, bytes, _FileGeneration]] = {}
     created: list[str] = []
+    committed = False
     try:
-        dir_fd, dir_generation = _open_retained_directory(Path(output_dir))
-        _assert_dir_generation(dir_fd, dir_generation)
-        _preflight_absent(dir_fd, names)
-        _assert_dir_generation(dir_fd, dir_generation)
+        parent_fd, parent_generation = _open_retained_directory(parent)
+        _assert_directory_path(parent, parent_fd, parent_generation)
+        _require_absent_at(parent_fd, target_name, "output directory")
 
-        o_nofollow = os.O_NOFOLLOW
-        flags = os.O_CREAT | os.O_EXCL | os.O_RDWR | o_nofollow
+        stage_name, stage_fd, stage_generation = _create_stage(parent_fd)
+        flags = (
+            os.O_CREAT
+            | os.O_EXCL
+            | os.O_RDWR
+            | os.O_NOFOLLOW
+            | getattr(os, "O_CLOEXEC", 0)
+        )
         for name, payload in normalized:
-            fd = os.open(name, flags, 0o600, dir_fd=dir_fd)
+            fd = os.open(name, flags, 0o600, dir_fd=stage_fd)
             created.append(name)
             try:
                 _write_all(fd, payload)
@@ -280,35 +380,34 @@ def publish_artifact_set(
                 os.close(fd)
                 raise
 
-        _fsync_directory(dir_fd)
-        _assert_dir_generation(dir_fd, dir_generation)
-
-        # First exact-byte pass proves each retained descriptor contains exactly the
-        # intended bytes after the package-wide write and directory durability step.
-        for name in names:
+        _fsync_directory(stage_fd)
+        _assert_dir_generation(stage_fd, stage_generation)
+        for name in (name for name, _payload in normalized):
             fd, payload, generation = retained[name]
             _assert_retained_bytes(fd, payload, generation)
+            _assert_visible_identity(stage_fd, name, generation, len(payload))
+        _assert_dir_generation(stage_fd, stage_generation)
 
-        # Visible names must still resolve to those same retained file generations.
-        for name in names:
-            _fd, payload, generation = retained[name]
-            _assert_visible_identity(dir_fd, name, generation, len(payload))
+        # The trusted parent + one no-clobber directory rename provide the
+        # set-level linearization point that finite per-leaf verification cannot.
+        _assert_directory_path(parent, parent_fd, parent_generation)
+        _require_absent_at(parent_fd, target_name, "output directory")
+        _assert_visible_directory_identity(parent_fd, stage_name, stage_fd, stage_generation)
+        _rename_noreplace(parent_fd, stage_name, parent_fd, target_name)
+        committed = True
 
-        _assert_dir_generation(dir_fd, dir_generation)
-
-        # A second byte/visibility pass narrows the finalization race: mutation after
-        # first visibility validation cannot inherit a stale success verdict.
-        for name in names:
-            fd, payload, generation = retained[name]
-            _assert_retained_bytes(fd, payload, generation)
-            _assert_visible_identity(dir_fd, name, generation, len(payload))
-
-        _fsync_directory(dir_fd)
-        _assert_dir_generation(dir_fd, dir_generation)
+        # Durability/readback after the linearization point may fail closed, but
+        # the committed generation is never destructively rolled back.
+        _fsync_directory(parent_fd)
+        _assert_dir_generation(parent_fd, parent_generation)
+        _assert_directory_path(parent, parent_fd, parent_generation)
+        _assert_visible_directory_identity(parent_fd, target_name, stage_fd, stage_generation)
         return _receipt(normalized)
     except BaseException as exc:
-        if created and not isinstance(exc, PartialPublicationError):
-            raise PartialPublicationError(str(exc), tuple(created)) from exc
+        if stage_name and not isinstance(exc, PartialPublicationError):
+            raise PartialPublicationError(
+                str(exc), tuple(created), stage_name, committed
+            ) from exc
         raise
     finally:
         for fd, _payload, _generation in retained.values():
@@ -316,8 +415,13 @@ def publish_artifact_set(
                 os.close(fd)
             except OSError:
                 pass
-        if dir_fd >= 0:
+        if stage_fd >= 0:
             try:
-                os.close(dir_fd)
+                os.close(stage_fd)
+            except OSError:
+                pass
+        if parent_fd >= 0:
+            try:
+                os.close(parent_fd)
             except OSError:
                 pass
