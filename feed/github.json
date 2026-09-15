@@ -1,9 +1,9 @@
 {
   "counts": {
-    "open_issues": 108,
-    "open_pull_requests": 50,
-    "runs_in_progress": 19,
-    "runs_queued": 359
+    "open_issues": 109,
+    "open_pull_requests": 53,
+    "runs_in_progress": 20,
+    "runs_queued": 378
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -66,6 +66,39 @@
     }
   ],
   "newest_pulls": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zrs-v8m2/titan-v4-evaluator-child-mode-compose",
+      "created_at": "2026-09-15T07:37:25Z",
+      "draft": false,
+      "head_sha": "e956cbf230cfe13f151820baf84a62089383b6e4",
+      "number": 14704,
+      "title": "TITAN V4: close evaluator authority chain after #14686",
+      "updated_at": "2026-09-15T07:37:25Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "pasture/feed-harvest-maturity-refinement-20260915",
+      "created_at": "2026-09-15T07:37:14Z",
+      "draft": false,
+      "head_sha": "a002ad312c4ad5814368f1751124b82569061f43",
+      "number": 14703,
+      "title": "TITAN V4 PASTURE: make feed-harvest veto maturity-aware",
+      "updated_at": "2026-09-15T07:37:14Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zic-k8r3/uiowa-acceptance-exhibit-20260915",
+      "created_at": "2026-09-15T07:36:41Z",
+      "draft": false,
+      "head_sha": "216dffc60dd9655288a40e26b8bc41597ddbe89e",
+      "number": 14701,
+      "title": "feat(uiowa): add RFQ 18649 prime acceptance exhibit",
+      "updated_at": "2026-09-15T07:36:41Z"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -142,39 +175,6 @@
       "number": 14669,
       "title": "Recover commercial-funnel evidence/time authority on current main",
       "updated_at": "2026-09-15T07:07:08Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "zne-k7m4/collision-preflight-red-closure-20260915",
-      "branch": "zod-a5k9/collision-query-authority-20260915",
-      "created_at": "2026-09-15T06:04:17Z",
-      "draft": false,
-      "head_sha": "f1c9800387b399949a4bf9f85e10b73500042c41",
-      "number": 14664,
-      "title": "Fix collision preflight query authority and same-hit ambiguity",
-      "updated_at": "2026-09-15T06:31:52Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "zrsb/product-lane-collision-preflight-20260915",
-      "branch": "zne-k7m4/collision-preflight-red-closure-20260915",
-      "created_at": "2026-09-15T05:48:13Z",
-      "draft": false,
-      "head_sha": "bcc29688e888b38a5ce6ee1feb734b3d0060636f",
-      "number": 14658,
-      "title": "Fix collision-preflight false-CLEAR authority gaps",
-      "updated_at": "2026-09-15T05:56:48Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zns-r8k5/commercial-waste-postmerge-authority-20260914",
-      "created_at": "2026-09-15T05:22:37Z",
-      "draft": false,
-      "head_sha": "576e256cada30f206de9ebb8d37b5e9327768c1c",
-      "number": 14651,
-      "title": "Fix commercial-waste invoice custody and current-service authority",
-      "updated_at": "2026-09-15T07:29:25Z"
     }
   ],
   "open_heads": {
@@ -227,9 +227,12 @@
     "14680": "3c801971265381a084d19eb064839ff74747015e",
     "14684": "5804490ae2a883bc492f7fe975921b62fdc25216",
     "14699": "40bf9f497c8fedf828eebcfeaad91bc52acabe21",
-    "14700": "4c6cdef8e7020dbba7f25299c9e57c893a8df73b"
+    "14700": "4c6cdef8e7020dbba7f25299c9e57c893a8df73b",
+    "14701": "216dffc60dd9655288a40e26b8bc41597ddbe89e",
+    "14703": "a002ad312c4ad5814368f1751124b82569061f43",
+    "14704": "e956cbf230cfe13f151820baf84a62089383b6e4"
   },
-  "pulls_listed": 50,
+  "pulls_listed": 53,
   "pulls_listing": "COMPLETE",
   "queue_depth_per_runner": 18.9,
   "recently_closed": [
@@ -401,6 +404,6 @@
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-15T07:36:41Z",
+  "unchanged_since": "2026-09-15T07:37:50Z",
   "undatable_pulls": []
 }
