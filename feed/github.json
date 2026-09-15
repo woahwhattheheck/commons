@@ -1,9 +1,9 @@
 {
   "counts": {
-    "open_issues": 118,
-    "open_pull_requests": 58,
-    "runs_in_progress": 18,
-    "runs_queued": 434
+    "open_issues": 117,
+    "open_pull_requests": 59,
+    "runs_in_progress": 17,
+    "runs_queued": 455
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -68,6 +68,28 @@
   "newest_pulls": [
     {
       "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zklr-h5m8/outreach-claim-fence-20260913",
+      "created_at": "2026-09-15T08:06:00Z",
+      "draft": false,
+      "head_sha": "8abc059422a7456d070a0716a5d2407ba295f0d7",
+      "number": 14731,
+      "title": "Recover reviewed outreach claim fence v2",
+      "updated_at": "2026-09-15T08:06:00Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z-forge/cuhkx-readiness-dag-fix-14727",
+      "created_at": "2026-09-15T08:04:47Z",
+      "draft": false,
+      "head_sha": "9d122532364cc625cd0f7eddf26643bb58fc4391",
+      "number": 14729,
+      "title": "CUHK-X: fail closed contradictory readiness generations",
+      "updated_at": "2026-09-15T08:04:47Z"
+    },
+    {
+      "author": "woahwhattheheck",
       "base": "zsh-q6m4/learn2design-public-evidence-20260915",
       "branch": "z-quorum/learn2design-provenance-20260915",
       "created_at": "2026-09-15T08:02:25Z",
@@ -87,17 +109,6 @@
       "number": 14724,
       "title": "A308734: quantify P18-to-3-power analytic obstruction",
       "updated_at": "2026-09-15T08:03:49Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zsb-t8q6/mass-dds-ipms-rfi-recovery-20260915",
-      "created_at": "2026-09-15T07:56:39Z",
-      "draft": false,
-      "head_sha": "8f8ab1770a2e0aad4908e4e2f67820442edb6c3a",
-      "number": 14722,
-      "title": "Build evidence-bound Massachusetts DDS IPMS RFI response compiler",
-      "updated_at": "2026-09-15T08:04:17Z"
     },
     {
       "author": "woahwhattheheck",
@@ -164,17 +175,6 @@
       "number": 14704,
       "title": "TITAN V4: close evaluator authority chain after #14686",
       "updated_at": "2026-09-15T07:47:39Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zic-k8r3/uiowa-acceptance-exhibit-20260915",
-      "created_at": "2026-09-15T07:36:41Z",
-      "draft": false,
-      "head_sha": "f1f7120a0b55ba33b1852c8402d8e5d9e04dfe31",
-      "number": 14701,
-      "title": "feat(uiowa): add RFQ 18649 prime acceptance exhibit",
-      "updated_at": "2026-09-15T08:04:18Z"
     }
   ],
   "open_heads": {
@@ -217,7 +217,7 @@
     "14641": "ada6bccd3ec08da69b0572b08943c35ea0c0c5a4",
     "14648": "d422798850c2803484a2da2b77df3e515196bc74",
     "14650": "f7f86ce04a8a1e493cce18508acdd1807ab0cad6",
-    "14651": "576e256cada30f206de9ebb8d37b5e9327768c1c",
+    "14651": "c4e8daff6208b96d9a24dc18d6dfcebcdf516e17",
     "14658": "bcc29688e888b38a5ce6ee1feb734b3d0060636f",
     "14664": "f1c9800387b399949a4bf9f85e10b73500042c41",
     "14669": "877b07a41f1b13b5d3cdeec635e9b4dcec75ac47",
@@ -233,14 +233,37 @@
     "14713": "532586ac907e372b31a9d823c020ae37dd232fce",
     "14715": "d21e068298412497d04c86225747d640af59b5e6",
     "14720": "4b52d0529fcf5d658267b06144b0da153275a562",
-    "14722": "8f8ab1770a2e0aad4908e4e2f67820442edb6c3a",
     "14724": "b97d2acc3f8839fd41e70631f6f782a6dab1e67b",
-    "14728": "33e117064c336cefc947c52b38dee311e8ca0818"
+    "14728": "33e117064c336cefc947c52b38dee311e8ca0818",
+    "14729": "9d122532364cc625cd0f7eddf26643bb58fc4391",
+    "14731": "8abc059422a7456d070a0716a5d2407ba295f0d7"
   },
-  "pulls_listed": 58,
+  "pulls_listed": 59,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 24.1,
+  "queue_depth_per_runner": 26.8,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zsb-t8q6/mass-dds-ipms-rfi-recovery-20260915",
+      "closed_at": "2026-09-15T08:06:46Z",
+      "head_sha": "a326762f513eff2ba790e9285debb436841b2d25",
+      "merged_at": "2026-09-15T08:06:46Z",
+      "number": 14722,
+      "state": "MERGED",
+      "title": "Build evidence-bound Massachusetts DDS IPMS RFI response compiler"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "fix/custody-source-test-binding-20260915",
+      "closed_at": "2026-09-15T08:05:45Z",
+      "head_sha": "0800b88e9cf98eee8a849589e268dfe0d40c807c",
+      "merged_at": "2026-09-15T08:05:45Z",
+      "number": 14730,
+      "state": "MERGED",
+      "title": "fix(titan): bind historical ledger blobs to custody bytes"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -383,32 +406,10 @@
       "number": 14689,
       "state": "MERGED",
       "title": "Recover Inkomoko AI response-readiness carrier"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zsol27/hive047-catalog-browser-recovery-20260914",
-      "closed_at": "2026-09-15T07:29:01Z",
-      "head_sha": "6f05d48ff1078fa04c13c6dfcbaef60d0c4af284",
-      "merged_at": "2026-09-15T07:29:01Z",
-      "number": 14691,
-      "state": "MERGED",
-      "title": "HIVE047: recover multilingual catalog browser desk"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "zml-a7q2/reply-event-single-read-core-20260914",
-      "branch": "zhl-u4c9/reply-event-globals-donor-20260914",
-      "closed_at": "2026-09-15T07:27:27Z",
-      "head_sha": "07beff6a84a15a8dd4e34e98738dd9eba445c626",
-      "merged_at": "2026-09-15T07:27:27Z",
-      "number": 14470,
-      "state": "MERGED",
-      "title": "donor: remove mutable reply-revenue dispatch authority"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-15T08:04:36Z",
+  "unchanged_since": "2026-09-15T08:07:33Z",
   "undatable_pulls": []
 }
