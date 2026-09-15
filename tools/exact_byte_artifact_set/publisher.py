@@ -132,6 +132,9 @@ def _split_path(path: Path) -> tuple[bool, tuple[str, ...]]:
     text = os.fspath(path)
     if not isinstance(text, str) or not text:
         raise PublicationError("directory path must be non-empty text")
+    raw_parts = Path(text).parts
+    if any(part == os.pardir for part in raw_parts):
+        raise PublicationError("directory path may not contain '..'")
     absolute = os.path.isabs(text)
     norm = os.path.normpath(text)
     if norm == os.curdir:
@@ -140,8 +143,6 @@ def _split_path(path: Path) -> tuple[bool, tuple[str, ...]]:
         parts = tuple(part for part in Path(norm).parts if part not in (os.sep, ""))
     else:
         parts = tuple(part for part in Path(norm).parts if part not in ("", os.curdir))
-    if any(part == os.pardir for part in parts):
-        raise PublicationError("directory path may not contain '..'")
     return absolute, parts
 
 
@@ -201,17 +202,19 @@ def _create_stage(parent_fd: int) -> tuple[str, int, _DirGeneration]:
             continue
         try:
             fd = os.open(name, flags, dir_fd=parent_fd)
-        except BaseException:
-            raise
-        try:
-            held = _DirGeneration.from_stat(os.fstat(fd))
-            visible = _DirGeneration.from_stat(os.stat(name, dir_fd=parent_fd, follow_symlinks=False))
-            if held != visible or not stat.S_ISDIR(held.mode):
-                raise PublicationError("staging directory changed during acquisition")
-            return name, fd, held
-        except BaseException:
-            os.close(fd)
-            raise
+            try:
+                held = _DirGeneration.from_stat(os.fstat(fd))
+                visible = _DirGeneration.from_stat(
+                    os.stat(name, dir_fd=parent_fd, follow_symlinks=False)
+                )
+                if held != visible or not stat.S_ISDIR(held.mode):
+                    raise PublicationError("staging directory changed during acquisition")
+                return name, fd, held
+            except BaseException:
+                os.close(fd)
+                raise
+        except BaseException as exc:
+            raise PartialPublicationError(str(exc), (), name, False) from exc
     raise FileExistsError("could not allocate unique staging directory")
 
 
