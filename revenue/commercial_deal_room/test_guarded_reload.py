@@ -6,6 +6,7 @@ import unittest
 from collections.abc import Mapping
 from typing import Any, Iterator
 
+from . import ContractError as exported_contract_error
 from . import engine as direct_engine
 from .acceptance import D, E, NOW, add, base_packet, offer_sent
 from .guarded import compile_board as package_compile_board
@@ -74,6 +75,12 @@ class ReloadGuardTests(unittest.TestCase):
         reloaded = importlib.reload(direct_engine)
         with self.assertRaises(reloaded.ContractError):
             reloaded.compile_board(alias_packet("reload-direct"), now=NOW)
+
+    def test_reload_preserves_exported_contract_error_identity(self):
+        reloaded = importlib.reload(direct_engine)
+        self.assertIs(reloaded.ContractError, exported_contract_error)
+        with self.assertRaises(exported_contract_error):
+            reloaded.compile_board(alias_packet("reload-contract-error"), now=NOW)
 
     def test_reload_preserves_package_alias_guard(self):
         reloaded = importlib.reload(direct_engine)
