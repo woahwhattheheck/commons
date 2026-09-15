@@ -70,6 +70,14 @@ python -O -m unittest revenue.verified_paid_proof.test_verified_paid_proof -v
 
 Outputs are `proof.json`, `proof.md`, and `receipt.sha256`. The receipt binds normalized input, policy version, compiled proof, and Markdown projection.
 
+## Public/private output boundary
+
+`proof.json` is the internal evidence bundle. It intentionally retains the engagement identifier, private evidence, source references, and permission evidence and must not be published as collateral.
+
+Only the `public_projection` object and `proof.md` are designed for public reuse, and only when the resulting state is `PUBLIC_ANONYMOUS` or `PUBLIC_NAMED`. Public outcome entries contain the permissioned claim only; their evidence/source locators remain in `private_evidence`. Withheld reasons are content-free and never echo a non-public claim.
+
+Policy `verified-paid-proof/v2` projects every external string into one visual line, removes Unicode control/format characters, HTML-escapes it, and escapes Markdown structural punctuation before rendering. This keeps permissioned text from creating extra headings, links, emphasis, HTML, or claims outside the structured public projection.
+
 ## Authority boundary
 
 This compiler has no network or publishing capability. It does not contact customers, request permissions, send collateral, publish case studies, recognize revenue, or bypass the current single-writer/Muse arbitration system. A public-safe compiler result is evidence that the *content* is permission-safe under the supplied record; it is not an authorization to choose a channel or send it.
