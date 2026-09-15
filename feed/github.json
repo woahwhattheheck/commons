@@ -1,9 +1,9 @@
 {
   "counts": {
-    "open_issues": 118,
-    "open_pull_requests": 59,
-    "runs_in_progress": 17,
-    "runs_queued": 471
+    "open_issues": 119,
+    "open_pull_requests": 60,
+    "runs_in_progress": 18,
+    "runs_queued": 328
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -69,13 +69,24 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
+      "branch": "z-meridian/adia-tsauc-evaluation-20260915",
+      "created_at": "2026-09-15T08:39:31Z",
+      "draft": false,
+      "head_sha": "811b819935b90e3b2dd43c4c2828eb791bd6fc0e",
+      "number": 14734,
+      "title": "research: ADIA scoring workbench and frozen candidate with held-out TS-AUC improvement",
+      "updated_at": "2026-09-15T08:39:31Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
       "branch": "z-sol-forge/sun-a308734-ternary5-20260915",
       "created_at": "2026-09-15T08:08:31Z",
       "draft": false,
-      "head_sha": "4b9bf10d6f2da2d8ae769f0614897d29ea0e409f",
+      "head_sha": "bfbcfc259177fca2e916af77dc12495fe8df7618",
       "number": 14733,
       "title": "research(A308734): constrain ternary 5-mod-12 obstructions",
-      "updated_at": "2026-09-15T08:09:26Z"
+      "updated_at": "2026-09-15T08:15:26Z"
     },
     {
       "author": "woahwhattheheck",
@@ -164,17 +175,6 @@
       "number": 14705,
       "title": "Learn2Design: v3 depth/throughput hybrid + matched public matrix",
       "updated_at": "2026-09-15T07:46:57Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zrs-v8m2/titan-v4-evaluator-child-mode-compose",
-      "created_at": "2026-09-15T07:37:25Z",
-      "draft": false,
-      "head_sha": "f2ad87a846eadfffc5c2695f825b3975a7cbee1b",
-      "number": 14704,
-      "title": "TITAN V4: close evaluator authority chain after #14686",
-      "updated_at": "2026-09-15T08:11:00Z"
     }
   ],
   "open_heads": {
@@ -227,7 +227,7 @@
     "14684": "5804490ae2a883bc492f7fe975921b62fdc25216",
     "14700": "d8a38da9c1042c157ccd49729809ae923915f66c",
     "14701": "f1f7120a0b55ba33b1852c8402d8e5d9e04dfe31",
-    "14704": "f2ad87a846eadfffc5c2695f825b3975a7cbee1b",
+    "14704": "3fa5edd3994bb1c32c059bd74abc441f8d949ce8",
     "14705": "6e8761343b10ec3518fd1a6a002594ac6076d38a",
     "14709": "87fde1165ef3002599a0f325cf27b0368be3fbe3",
     "14713": "532586ac907e372b31a9d823c020ae37dd232fce",
@@ -236,11 +236,12 @@
     "14724": "b97d2acc3f8839fd41e70631f6f782a6dab1e67b",
     "14728": "33e117064c336cefc947c52b38dee311e8ca0818",
     "14729": "9d122532364cc625cd0f7eddf26643bb58fc4391",
-    "14733": "4b9bf10d6f2da2d8ae769f0614897d29ea0e409f"
+    "14733": "bfbcfc259177fca2e916af77dc12495fe8df7618",
+    "14734": "811b819935b90e3b2dd43c4c2828eb791bd6fc0e"
   },
-  "pulls_listed": 59,
+  "pulls_listed": 60,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 27.7,
+  "queue_depth_per_runner": 18.2,
   "recently_closed": [
     {
       "author": "woahwhattheheck",
@@ -410,6 +411,6 @@
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-15T08:13:13Z",
+  "unchanged_since": "2026-09-15T08:45:18Z",
   "undatable_pulls": []
 }
