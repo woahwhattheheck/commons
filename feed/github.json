@@ -1,9 +1,9 @@
 {
   "counts": {
     "open_issues": 121,
-    "open_pull_requests": 64,
-    "runs_in_progress": 17,
-    "runs_queued": 72
+    "open_pull_requests": 65,
+    "runs_in_progress": 19,
+    "runs_queued": 75
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -69,13 +69,24 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
+      "branch": "zna-q5m8/cuhkx-lineage-recovery-20260915",
+      "created_at": "2026-09-15T23:39:33Z",
+      "draft": false,
+      "head_sha": "1f04845731e897f295de41f6636d4fe93881649c",
+      "number": 14761,
+      "title": "CUHK-X: bind Top-15 lineage to evidenced submission",
+      "updated_at": "2026-09-15T23:39:50Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
       "branch": "zsf-n6q8/alcorn-rfp5588-addendum1",
       "created_at": "2026-09-15T23:32:18Z",
       "draft": false,
-      "head_sha": "7994f6eb04a2d453d461e9b97716b4a8f58bff62",
+      "head_sha": "f3fc0ecdab143ce78bc050a80ccf64355c0ae92c",
       "number": 14758,
       "title": "Revenue: source-bind Alcorn RFP 5588 Addendum 1 without inventing a teaming gate",
-      "updated_at": "2026-09-15T23:35:46Z"
+      "updated_at": "2026-09-15T23:39:24Z"
     },
     {
       "author": "woahwhattheheck",
@@ -86,7 +97,7 @@
       "head_sha": "ee474ce046917b3963ef18622915021ca2845def",
       "number": 14757,
       "title": "feat(uiowa): recover local RFQ 18649 analyst workbench",
-      "updated_at": "2026-09-15T23:36:27Z"
+      "updated_at": "2026-09-15T23:38:11Z"
     },
     {
       "author": "woahwhattheheck",
@@ -163,18 +174,7 @@
       "head_sha": "33e117064c336cefc947c52b38dee311e8ca0818",
       "number": 14728,
       "title": "Learn2Design: independent recorded-run provenance repair for #14672",
-      "updated_at": "2026-09-15T09:28:58Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zida7k5/sun-a308734-analytic-bridge-14714",
-      "created_at": "2026-09-15T07:57:46Z",
-      "draft": false,
-      "head_sha": "b97d2acc3f8839fd41e70631f6f782a6dab1e67b",
-      "number": 14724,
-      "title": "A308734: quantify P18-to-3-power analytic obstruction",
-      "updated_at": "2026-09-15T14:53:19Z"
+      "updated_at": "2026-09-15T23:40:12Z"
     }
   ],
   "open_heads": {
@@ -241,11 +241,12 @@
     "14748": "0696ff901df8505944dd54b52b9be36d15e28d6c",
     "14755": "bf1d2cab61803beeaf6548952e17953578392018",
     "14757": "ee474ce046917b3963ef18622915021ca2845def",
-    "14758": "7994f6eb04a2d453d461e9b97716b4a8f58bff62"
+    "14758": "f3fc0ecdab143ce78bc050a80ccf64355c0ae92c",
+    "14761": "1f04845731e897f295de41f6636d4fe93881649c"
   },
-  "pulls_listed": 64,
+  "pulls_listed": 65,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 4.2,
+  "queue_depth_per_runner": 3.9,
   "recently_closed": [
     {
       "author": "woahwhattheheck",
@@ -415,6 +416,6 @@
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-15T23:37:02Z",
+  "unchanged_since": "2026-09-15T23:40:15Z",
   "undatable_pulls": []
 }
