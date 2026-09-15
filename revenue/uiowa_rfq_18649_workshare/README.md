@@ -21,6 +21,10 @@ The proposed TJLabs subcontract workshare is **$24,000 fixed** for bounded techn
 
 Travel is excluded. Any travel requires separate written authorization. No contract, award, buyer acceptance, invoice, payment, cash, or recognized revenue is represented by this repository.
 
+## Prime-facing handoff
+
+[`ACCEPTANCE_EXHIBIT.md`](./ACCEPTANCE_EXHIBIT.md) is the buyer-facing deliverable and acceptance exhibit for a prospective prime reviewing this workshare. It maps the existing $24,000 base / optional $4,000 readout proposal to concrete kickoff, draft, and final artifacts; artifact-level acceptance criteria; prime inputs/dependencies; evidence/privacy rules; and explicit change-control / authority boundaries. It remains **PROPOSED / NOT ACCEPTED** and does not create buyer-contact, bid-submission, signature, invoice, payment, cash, or revenue authority.
+
 ## Evidence authority: three deliberately separate things
 
 Version 2 removes maturity, confidence, claim text, observation time, and evidence digests from the candidate packet. The boundary now has three parts:
