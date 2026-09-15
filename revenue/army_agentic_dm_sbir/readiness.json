@@ -1,0 +1,72 @@
+{
+  "buyer_contact_authorized": false,
+  "controlled_data_authorized": false,
+  "prototype": {
+    "demos": [
+      "demo_point_trade_study.json",
+      "demo_refresh_generation_1.json",
+      "demo_refresh_generation_2.json"
+    ],
+    "evaluator": "prototype.py",
+    "local_test_receipt": {
+      "py_compile": "PASS",
+      "unittest": {
+        "failed": 0,
+        "passed": 11
+      }
+    },
+    "tests": "test_prototype.py"
+  },
+  "schema_version": "army-sbir-readiness/v1",
+  "state": "ADMIN_READINESS_HOLD",
+  "submission_authorized": false,
+  "technical_build": "READY",
+  "topic": {
+    "official_topic_url": "https://armysbir.army.mil/topics/agentic-ai-schema-driven-decision-management/",
+    "sbir": "ARM26BX06-NV012",
+    "sttr": "ARM26TX06-NV003",
+    "title": "Agentic-AI, Schema-Driven Decision Management for Auditable Studies and Acquisition Decisions"
+  },
+  "truth_gates": [
+    {
+      "id": "exact_solicitation",
+      "reason": "Capture controlling Release-6/DSIP instructions before submission claims.",
+      "state": "HOLD"
+    },
+    {
+      "id": "topic_cost_limit",
+      "reason": "Exact public topic page lacks a captured ceiling; current Army generic pages conflict at $250K vs $300K.",
+      "state": "HOLD"
+    },
+    {
+      "id": "business_eligibility",
+      "reason": "Owner-controlled entity, ownership, employee-count and U.S. status not verified by this carrier.",
+      "state": "HOLD"
+    },
+    {
+      "id": "pi_eligibility",
+      "reason": "PI primary-employment fact not verified by this carrier.",
+      "state": "HOLD"
+    },
+    {
+      "id": "sam_registration",
+      "reason": "Registration evidence not verified by this carrier.",
+      "state": "HOLD"
+    },
+    {
+      "id": "sbir_company_registry",
+      "reason": "Company Registry/SBIR ID evidence not verified by this carrier.",
+      "state": "HOLD"
+    },
+    {
+      "id": "submission_account",
+      "reason": "DoW/DSIP submission-account readiness not verified by this carrier.",
+      "state": "HOLD"
+    },
+    {
+      "id": "technical_reuse_map",
+      "reason": "Delegated to an independent swarm slice; accept only real repository blob/commit receipts.",
+      "state": "IN_PROGRESS"
+    }
+  ]
+}
