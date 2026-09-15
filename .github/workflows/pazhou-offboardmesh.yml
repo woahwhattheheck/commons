@@ -1,6 +1,11 @@
 name: pazhou-offboardmesh
 
 on:
+  push:
+    paths:
+      - "competitions/pazhou_overseas_offboardmesh_2026/**"
+      - "tests/test_pazhou_offboardmesh.py"
+      - ".github/workflows/pazhou-offboardmesh.yml"
   pull_request:
     paths:
       - "competitions/pazhou_overseas_offboardmesh_2026/**"
