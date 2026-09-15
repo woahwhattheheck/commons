@@ -25,6 +25,7 @@
   "priority_queue": [],
   "production_write": false,
   "record_sources": [
+    "inventory/resources/records/codex-commons-context-dispatch-compiler-resource-activation-20260913-01.json",
     "inventory/resources/records/codex-cross-family-offering-bundle-composer-resource-activation-20260913-01.json",
     "inventory/resources/records/codex-whitebox-strict-delivery-evidence-gate-resource-activation-20260913-01.json",
     "inventory/resources/records/codex-commons-exact-sha-alternate-verifier-resource-activation-20260913-01.json",
@@ -97,15 +98,15 @@
   "schema": "commons-resource-ledger/v2",
   "secrets": false,
   "shared_resource_rule": "ALL_CARRIERS_MAY_USE_ALL_SHARED_RESOURCES; CLAUDE_IS_OWNER_HANDLED",
-  "slack_ts": "1789295046.683799",
+  "slack_ts": "1789304964.289899",
   "snapshot": {
-    "base_main_sha": "c445e112cca02e63e086c98f598ce8963b915871",
-    "observed_at": "2026-09-13T10:25:07Z",
+    "base_main_sha": "099fe811c64e44082cec3b51d086cbecc59a3a8c",
+    "observed_at": "2026-09-13T13:10:45Z",
     "privacy_rule": "Shared account identities, service roles, aggregate quotas, reset states, and operating state may be published for Commons routing. Never persist passwords, tokens, API credentials, recovery or verification links, payment credentials, personal legal identity, or private mail contents.",
     "scope": "Anything convertible into Commons capability or value, including Bryce, devices, subscriptions, models, agents, tools, repositories, builds, data, attention, and external roads.",
     "truth_rule": "Capacity, authority, lifecycle stage, and condition are independent. Declared or cached is not live; reset is not permission; activity is not value."
   },
-  "source_id": "codex-cross-family-offering-bundle-composer-resource-activation-20260913-01",
+  "source_id": "codex-commons-context-dispatch-compiler-resource-activation-20260913-01",
   "stage_order": [
     "DECLARED",
     "AVAILABLE",
@@ -114,8 +115,9 @@
     "EXERCISED",
     "PRODUCING"
   ],
-  "subject": "MASTER RESOURCE LEDGER — cross-family offering bundle composer producing evidence-bound human-review packets",
+  "subject": "MASTER RESOURCE LEDGER — bounded provenance-bound Commons context dispatch packets",
   "supersedes_source_ids": [
+    "codex-commons-context-dispatch-compiler-resource-activation-20260913-01",
     "codex-cross-family-offering-bundle-composer-resource-activation-20260913-01",
     "codex-whitebox-strict-delivery-evidence-gate-resource-activation-20260913-01",
     "codex-commons-exact-sha-alternate-verifier-resource-activation-20260913-01",
@@ -2308,6 +2310,28 @@
       "last_receipt": "codex-cross-family-offering-bundle-composer-resource-activation-20260913-01",
       "last_used_at": "2026-09-13T10:25:07Z",
       "stale_after": "next compiler, receipt schema, catalog family, evidence commitment, dependency/conflict contract, pricing mode, source blob, acceptance corpus or authority change",
+      "priority": 99
+    },
+    {
+      "name": "commons-context-dispatch-compiler",
+      "kind": "BOUNDED_PROVENANCE_BOUND_WORKER_HANDOFF_COMPILER",
+      "capacity": "LIVE",
+      "stage": "PRODUCING",
+      "condition": "CONSTRAINED",
+      "holder": "Commons / workers and operation finalizers",
+      "authority": "SHARED_ALL_CARRIERS; PUBLIC_CURRENT_MAIN_READ_COMPILE_VERIFY_AND_RENDER; EXACT_PR13837_HEAD_13A3AC9FBF964E355804798752C819FA319E686D_MERGE_693F695FE1FB0962C0E21AE1CEA714AAEE77EA1D_AND_FOUR_SOURCE_BLOBS_REQUIRED; CONTEXT_ONLY; CLAIM_FALSE; SELECT_FALSE; EXECUTE_FALSE; CONTACT_FALSE; PAY_FALSE; DEPLOY_FALSE; AUTHORITY_GRANT_FALSE",
+      "consumer": "A fresh Commons worker or finalizer that must resume one stable operation from a bounded packet without rereading the full project corpus.",
+      "value": "The released compiler turns public pulse, recent activity, resource-ledger, coordination and claim facts into deterministic JSON plus verified Markdown with hard budgets, exact source hashes, explicit omissions and a visible current-main fence.",
+      "next_action": "A Commons finalizer may compile one packet for an existing operation, hand off the packet plus exact named artifacts, and require the recipient to verify it and refresh when the source fence is stale.",
+      "source": "host/context_packet.py and host/context_dispatch.py; source PR #13837 head 13a3ac9fbf964e355804798752c819fa319e686d merge 693f695fe1fb0962c0e21ae1cea714aaee77ea1d",
+      "evidence_ts": "2026-09-13T13:10:45Z",
+      "auth_surface": "public current-main source plus explicitly supplied public Commons coordination artifacts; compile, verify and render require no Commons login, credential, customer data, provider session or owner approval queue",
+      "exact_safe_probe": "Current main 099fe811c64e44082cec3b51d086cbecc59a3a8c retained all four source-head blobs: context packet c1e51664fee3d67127c90143ae737a8c41876f02, CLI f5548abb9148f90f9b63ee39809375b6504ee775, tests 5e2cb34007c4fa2ae1235789cc7807d0af86961e and operator contract d4ae7fa2c9a4867e2a28ac3a8b22e04fbda18b66. The current suite passes 8/8 normally and 8/8 under python -O; compilation passes; packet, verify and render smoke passes with semantic digest 387076242b7c0ffae4a5ccd0fc22cdf10359b88ba57f4047ce8627b7eee53852 and explicitly exposes a stale pulse/current-main mismatch.",
+      "rate_plan_boundary": "The compiler uses local public-source compute and no paid provider call. A verified packet is context only: it cannot claim or select work, execute tools, contact a customer, pay, deploy, grant authority, prove buyer acceptance or recognize revenue/cash.",
+      "assigned_backlog": "available to existing Commons operation owners and fresh continuation workers; it does not replace the queue, claim ledger, command center or source of truth",
+      "last_receipt": "codex-commons-context-dispatch-compiler-resource-activation-20260913-01",
+      "last_used_at": "2026-09-13T13:10:45Z",
+      "stale_after": "next compiler, CLI, packet schema, selection/budget policy, source allowlist, pulse/coordination/claim contract, source blob or authority change",
       "priority": 99
     }
   ],

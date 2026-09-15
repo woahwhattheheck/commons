@@ -55,15 +55,18 @@
       "operational": false,
       "purchasing_ability": "missing",
       "contact_route": "missing",
-      "deliverable": "same-day agent survival proof if a failure sentence appears",
+      "deliverable": "none while canonical buyer state remains REJECTED_AS_BUYER",
       "price_fit": "same-day-agent-survival-proof",
-      "time_to_cash": "unknown",
+      "time_to_cash": "not a buyer lane while rejected",
       "reproduction_path": "blog URL already in smart outreach",
-      "disqualifiers": ["owner role missing", "first-party route unverified"],
-      "collision": "already queued as RESEARCH_REQUIRED",
+      "disqualifiers": [
+        "canonical CRM record recAejCRStalFim0K is REJECTED_AS_BUYER",
+        "no buyer, funding, or purchase-authority evidence"
+      ],
+      "collision": "canonical buyer rejection suppresses outreach",
       "confidence": "low",
-      "next_action": "complete research gaps inside the existing planner",
-      "status": "ALREADY_IN_RIGHT_NOW_QUEUE"
+      "next_action": "do not contact; preserve REJECTED_AS_BUYER unless an explicit authoritative reopen event is recorded",
+      "status": "REJECTED_AS_BUYER"
     }
   ]
 }

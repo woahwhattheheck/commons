@@ -1,0 +1,37 @@
+{
+  "schema": "commons.mmsd-ai-governance/current-evidence-v1",
+  "posture": "SOURCE_REFRESH_REQUIRED_BUYER_REMOVED_OR_UNAVAILABLE",
+  "prime_posture": "HOLD",
+  "team_posture": "OPEN_FOR_PAID_TEAMING_IF_PRIME_GATES_DO_NOT_CLOSE",
+  "outreach": {
+    "state": "NOT_CONTACTED",
+    "provider_receipt_id": null,
+    "note": "No buyer or partner outreach is represented as sent. Recipient/provider history must be deduplicated immediately before any later send."
+  },
+  "tjlabs_bounded_specialist_scope": [
+    "AI-system and shadow-AI inventory methodology",
+    "GenAI and Operational-AI risk taxonomy/control mapping",
+    "data-governance, public-records and model/vendor evidence tooling",
+    "AI procurement/vendor questionnaire and incident-response control design",
+    "AI literacy and human-oversight operating procedures",
+    "reproducible policy-control traceability tooling"
+  ],
+  "not_claimed": [
+    "current RFP availability or buyer confirmation",
+    "cancellation, withdrawal, replacement or continued active status of the RFP",
+    "MMSD cancellation or continuation of the procurement",
+    "prime eligibility",
+    "utility or wastewater client references for Token Junkie Labs",
+    "required insurance or legal compliance",
+    "approved external price",
+    "partner consent or commercial workshare",
+    "proposal submission",
+    "award, contract, payment or revenue"
+  ],
+  "status_evidence": {
+    "live_buyer_contracting_center": "AI governance RFP absent from current Professional Services list",
+    "former_buyer_solicitation_page": "404 in current research harness",
+    "secondary_indexes": "still describe opportunity as active with 2026-10-16 deadline",
+    "decision": "do not contact or submit until current buyer-controlled status is resolved"
+  }
+}

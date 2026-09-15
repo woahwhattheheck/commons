@@ -18,6 +18,10 @@ No credential retrieval, tool discovery, peer admission, or service operation po
 
 Regression entry point: `.github/workflows/commons-transport-regression.yml`. The suite covers real loopback HTTP connections, SQLite replay/interleaving, native failure envelopes, and the existing gateway/client/equipment behavior.
 
+## Action Pad transport
+
+[Action Pad ntfy transport contract](action-pad-ntfy-transport.md) pins the current browser producer, manifest-driven relay failover, id-preserving home reconciliation, canonical ingest, and executor receipt ladder. `commons-ntfy-relay-v1` is a browser-local failover-state key rather than a serialized packet protocol. An ntfy SMTP acceptance is not represented as Action Pad carrier acceptance, Git durability, or execution without an adapter fixture and the ordinary repository receipts.
+
 ## Contest product (titanmcp)
 
 Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../titanmcp.html). Cite Latch Pad KEEP. Submit/YouTube wait Bryce exact go.

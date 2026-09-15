@@ -2,6 +2,7 @@ name: titan-v3-l02-ledger-tranche
 
 on:
   push:
+    branches: [main]
     paths:
       - '.github/workflows/titan-v3-l02-ledger-tranche.yml'
       - 'revenue/kaggriculture/cloud-execution-lab/candidates/v3-l02-ledger-tranche/**'

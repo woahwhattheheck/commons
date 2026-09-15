@@ -1,0 +1,30 @@
+test_01_wrong_source_is_rejected (__main__.TownRngTests.test_01_wrong_source_is_rejected) ... ok
+test_02_exact_pass_plant_witness (__main__.TownRngTests.test_02_exact_pass_plant_witness) ... ok
+test_03_both_seats_can_shift_shared_shop_rng (__main__.TownRngTests.test_03_both_seats_can_shift_shared_shop_rng) ... ok
+test_04_zero_and_standard_weed_chance_same_current_choice (__main__.TownRngTests.test_04_zero_and_standard_weed_chance_same_current_choice) ... ok
+test_05_rng_offset_is_real_not_only_an_empty_counter (__main__.TownRngTests.test_05_rng_offset_is_real_not_only_an_empty_counter) ... ok
+test_06_skipping_zero_chance_weed_loop_is_not_semantics_preserving (__main__.TownRngTests.test_06_skipping_zero_chance_weed_loop_is_not_semantics_preserving) ... ok
+test_07_geometry_does_not_change_choice_when_total_empty_count_equal (__main__.TownRngTests.test_07_geometry_does_not_change_choice_when_total_empty_count_equal) ... ok
+test_08_distribution_across_farms_not_just_own_farm_count (__main__.TownRngTests.test_08_distribution_across_farms_not_just_own_farm_count) ... ok
+test_09_audit_is_observational_not_a_rng_intervention (__main__.TownRngTests.test_09_audit_is_observational_not_a_rng_intervention) ... ok
+test_10_audit_restores_functions_after_exception (__main__.TownRngTests.test_10_audit_restores_functions_after_exception) ... ok
+test_11_nested_audits_are_rejected (__main__.TownRngTests.test_11_nested_audits_are_rejected) ... ok
+test_12_a_vs_a_passes_exact_comparison (__main__.TownRngTests.test_12_a_vs_a_passes_exact_comparison) ... ok
+test_13_no_silent_truncation_of_trace_lengths (__main__.TownRngTests.test_13_no_silent_truncation_of_trace_lengths) ... ok
+test_14_empty_trace_is_not_a_false_green_control (__main__.TownRngTests.test_14_empty_trace_is_not_a_false_green_control) ... ok
+test_15_seed_and_step_alignment_are_required (__main__.TownRngTests.test_15_seed_and_step_alignment_are_required) ... ok
+test_16_duplicate_or_skipped_days_are_rejected (__main__.TownRngTests.test_16_duplicate_or_skipped_days_are_rejected) ... ok
+test_17_incomplete_evidence_is_rejected (__main__.TownRngTests.test_17_incomplete_evidence_is_rejected) ... ok
+test_18_shop_cap_leaves_rng_activity_but_no_new_shop (__main__.TownRngTests.test_18_shop_cap_leaves_rng_activity_but_no_new_shop) ... ok
+test_19_nonunlock_day_has_no_immediate_shop_delta (__main__.TownRngTests.test_19_nonunlock_day_has_no_immediate_shop_delta) ... ok
+test_20_all_occupied_tiles_consume_zero_weed_draws (__main__.TownRngTests.test_20_all_occupied_tiles_consume_zero_weed_draws) ... ok
+test_21_buy_land_changes_rng_exposure (__main__.TownRngTests.test_21_buy_land_changes_rng_exposure) ... ok
+test_22_natural_default_pass_game_reaches_large_tomato_quote (__main__.TownRngTests.test_22_natural_default_pass_game_reaches_large_tomato_quote) ... ok
+test_23_pin_engine_shim_never_initializes_an_episode (__main__.TownRngTests.test_23_pin_engine_shim_never_initializes_an_episode) ... ok
+test_24_panel_uses_256_unique_seeds_not_1024_independent_games (__main__.TownRngTests.test_24_panel_uses_256_unique_seeds_not_1024_independent_games) ... ok
+test_25_loader_restores_import_environment (__main__.TownRngTests.test_25_loader_restores_import_environment) ... ok
+
+----------------------------------------------------------------------
+Ran 25 tests in 0.145s
+
+OK

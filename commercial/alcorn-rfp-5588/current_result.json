@@ -1,0 +1,51 @@
+{
+  "authority": {
+    "award_claimed": false,
+    "buyer_contact_authorized": false,
+    "cash_claimed": false,
+    "certification_authorized": false,
+    "contract_acceptance_authorized": false,
+    "partner_contact_authorized": false,
+    "payment_mutation_authorized": false,
+    "price_release_authorized": false,
+    "proposal_submission_authorized": false,
+    "revenue_claimed": false,
+    "signature_authorized": false
+  },
+  "bid_model": "nvidia_prime_subcontract",
+  "blockers": [
+    "amendments_review_evidence_id",
+    "buyer_artifact:section_ix_references",
+    "buyer_artifact:section_vii_item_12_requirements_matrix",
+    "buyer_artifact:section_viii_cost_information",
+    "certificate_of_liability_insurance_evidence_id",
+    "everify_evidence_id",
+    "legal_entity_evidence_id",
+    "nvidia_prime.ai_infrastructure_engagements.architect_deploy_rollout_track_record",
+    "nvidia_prime.insurance_current_through_due_date",
+    "nvidia_prime.nvidia_partner.active_nvidia_partner",
+    "nvidia_prime.nvidia_partner.commitment_current",
+    "nvidia_prime.nvidia_partner.nvidia_scope_dgx_spark_lab_design",
+    "nvidia_prime.references.reference_site_available_within_7_days",
+    "order_remit_address_evidence_id",
+    "pricing_approved",
+    "sealed_delivery_plan_ready",
+    "signature_officer_ready",
+    "taxpayer_id_confirmation_evidence_id",
+    "tjlabs_support.commitment_current",
+    "training_sample_ready",
+    "warranty_support_ready"
+  ],
+  "due_at": "2026-09-21T14:00:00-05:00",
+  "evaluated_at": "2026-09-14T21:05:00-04:00",
+  "missing_buyer_artifacts": [
+    "section_ix_references",
+    "section_vii_item_12_requirements_matrix",
+    "section_viii_cost_information"
+  ],
+  "present_buyer_artifacts": [],
+  "reason": "teaming_gates_unproven",
+  "receipt_sha256": "d731e9e4343e1c6ed41380be88ab1eb3dda2f413e1c608ab27f9e8627875dec3",
+  "schema": "alcorn-rfp5588-qualification-result/v1",
+  "state": "HOLD"
+}

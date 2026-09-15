@@ -122,3 +122,33 @@ owners, members, collaborators, or recognized sponsor bots; merely creating the 
 does not grant funding authority. External issue text remains visible to security
 classification and occupancy logic, but cannot manufacture sponsor, amount, or
 acceptance evidence.
+
+Freshness uses the same authority boundary after creation. The immutable canonical
+issue `created_at` value is the baseline; issue `updated_at` is deliberately not a
+freshness clock because GitHub advances it for ordinary comment activity. Only comments
+from repository owners, members, collaborators, or recognized sponsor bots may refresh
+the qualification timestamp. External comments still participate in claim/occupancy
+and security checks, but cannot resurrect an old funded item merely by adding chatter.
+
+Funding state also follows authoritative chronology. An explicit trusted statement that
+a bounty, reward, or funding has been withdrawn/revoked/cancelled makes the candidate
+fail closed even if older authoritative prose still contains a matching sponsor, amount,
+and acceptance criteria. External cancellation chatter cannot revoke funding. After a
+withdrawal, a later trusted restoration must restate sponsor mechanism, exact advertised
+amount, and acceptance evidence in the restoration event itself; phrases such as
+"restored, same terms as before" do not silently reactivate stale pre-withdrawal terms.
+The resolved state is exposed as `checks.authoritative_funding_state`.
+
+Advertised amount is versioned independently from the cumulative sponsor/acceptance
+text. The gate starts from an authoritative issue body's explicit `reward`, `bounty`, or
+`funding` amount and then applies later trusted amount events in timestamp order. A newer
+explicit amount supersedes the old one, including a currency change; the gate never
+performs FX conversion. External comments and unrelated monetary prose such as test
+budgets do not change the reward amount. `from X to Y` and `X, now Y` transitions resolve
+to the destination only when the commercial bridge is unambiguous; additional or
+cross-subject monetary prose fails closed. Conflicting adjacent symbol/code notation
+such as `$200 CAD`, `CAD $200`, or `€200 USD` is ambiguous, while consistent forms such
+as `$200 USD` and `USD $200` remain valid. Receipts expose
+`checks.authoritative_amount_state`, `checks.canonical_current_reward_currency`, and
+`checks.canonical_current_reward_amount`; a stale aggregator amount is rejected as
+`advertised_amount_superseded_by_newer_canonical_evidence`.

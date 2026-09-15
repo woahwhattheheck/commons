@@ -145,10 +145,14 @@ class TestResourceLedger(unittest.TestCase):
             text = handle.read()
         catalog = load_catalog(text)
         raw = json.loads(text)
-        self.assertEqual(catalog["slack_ts"], "1789295046.683799")
+        self.assertEqual(catalog["slack_ts"], "1789304964.289899")
         self.assertEqual(
             catalog["source_id"],
-            "codex-cross-family-offering-bundle-composer-resource-activation-20260913-01",
+            "codex-commons-context-dispatch-compiler-resource-activation-20260913-01",
+        )
+        self.assertIn(
+            "codex-commons-context-dispatch-compiler-resource-activation-20260913-01",
+            raw.get("supersedes_source_ids") or [],
         )
         self.assertIn(
             "codex-cross-family-offering-bundle-composer-resource-activation-20260913-01",
@@ -347,10 +351,10 @@ class TestResourceLedger(unittest.TestCase):
             "inventory",
             "resources",
             "records",
-            "codex-cross-family-offering-bundle-composer-resource-activation-20260913-01.json",
+            "codex-commons-context-dispatch-compiler-resource-activation-20260913-01.json",
         )
         self.assertIn(
-            "inventory/resources/records/codex-cross-family-offering-bundle-composer-resource-activation-20260913-01.json",
+            "inventory/resources/records/codex-commons-context-dispatch-compiler-resource-activation-20260913-01.json",
             raw.get("record_sources") or [],
         )
         with open(current_activation_path, encoding="utf-8") as handle:
@@ -362,58 +366,61 @@ class TestResourceLedger(unittest.TestCase):
         )
         self.assertEqual(
             current_activation["selected_resource"],
-            "cross-family-offering-bundle-composer",
+            "commons-context-dispatch-compiler",
         )
-        self.assertEqual(current_activation["projection"]["resources"], 98)
-        self.assertEqual(current_activation["projection"]["producing"], 70)
-        self.assertEqual(current_activation["projection"]["inventory_records"], 60)
+        self.assertEqual(current_activation["projection"]["resources"], 99)
+        self.assertEqual(current_activation["projection"]["producing"], 71)
+        self.assertEqual(current_activation["projection"]["inventory_records"], 61)
         self.assertEqual(
             current_activation["production_truth"]["source_repository"],
             "woahwhattheheck/commons",
         )
-        self.assertEqual(current_activation["production_truth"]["source_pr"], 13738)
+        self.assertEqual(current_activation["production_truth"]["source_pr"], 13837)
         self.assertEqual(
             current_activation["production_truth"]["source_merge_sha"],
-            "c9c8515217c127c811fe96dcf4e71272c83095a2",
+            "693f695fe1fb0962c0e21ae1cea714aaee77ea1d",
         )
         self.assertEqual(
             current_activation["production_truth"]["source_head_sha"],
-            "5f149eec9d3b95e3cecf1a7335365b3999db0f43",
+            "13a3ac9fbf964e355804798752c819fa319e686d",
         )
         self.assertEqual(
             set(current_activation["production_truth"]["source_paths"]),
             {
-                ".github/workflows/offering-bundle-composer.yml",
-                "revenue/offering_bundle_composer/README.md",
-                "revenue/offering_bundle_composer/__init__.py",
-                "revenue/offering_bundle_composer/acceptance.py",
-                "revenue/offering_bundle_composer/cli.py",
-                "revenue/offering_bundle_composer/composer.py",
-                "revenue/offering_bundle_composer/tests/test_composer.py",
+                "ground/CONTEXT_DISPATCH.md",
+                "host/context_dispatch.py",
+                "host/context_packet.py",
+                "tests/test_context_dispatch.py",
             },
         )
         self.assertEqual(
             current_activation["production_truth"]["source_paths"]
-            ["revenue/offering_bundle_composer/composer.py"],
-            "4a824a83c483b29a4ee663441f65d0abe63bc2b8",
+            ["host/context_packet.py"],
+            "c1e51664fee3d67127c90143ae737a8c41876f02",
         )
         self.assertEqual(
             current_activation["production_truth"]["maximum_state"],
-            "READY_FOR_HUMAN_BUNDLE_REVIEW",
+            "VERIFIED_CONTEXT_PACKET",
         )
-        self.assertEqual(current_activation["production_truth"]["acceptance"]["cases"], 160)
-        self.assertEqual(current_activation["production_truth"]["acceptance"]["ready"], 120)
-        self.assertEqual(current_activation["production_truth"]["acceptance"]["deliberate_hold"], 40)
+        self.assertEqual(
+            current_activation["production_truth"]["focused_tests"]["normal"],
+            "8/8 PASS",
+        )
+        self.assertEqual(
+            current_activation["production_truth"]["focused_tests"]["optimized"],
+            "8/8 PASS",
+        )
         self.assertTrue(
-            current_activation["production_truth"]["acceptance"]["normal_optimized_byte_identical"]
+            current_activation["production_truth"]["smoke"]["explicit_omissions"]
         )
         self.assertEqual(current_activation["production_truth"]["provider_writes"], 0)
-        self.assertFalse(current_activation["production_truth"]["buyer_contact"])
-        self.assertFalse(current_activation["production_truth"]["external_send"])
-        self.assertFalse(current_activation["production_truth"]["contract_execution"])
+        self.assertFalse(current_activation["production_truth"]["claim_work"])
+        self.assertFalse(current_activation["production_truth"]["select_work"])
+        self.assertFalse(current_activation["production_truth"]["execute_tools"])
+        self.assertFalse(current_activation["production_truth"]["customer_contact"])
+        self.assertFalse(current_activation["production_truth"]["payment"])
+        self.assertFalse(current_activation["production_truth"]["authority_grant"])
         self.assertFalse(current_activation["production_truth"]["buyer_acceptance"])
-        self.assertFalse(current_activation["production_truth"]["checkout_or_payment"])
-        self.assertFalse(current_activation["production_truth"]["fulfillment"])
         self.assertFalse(current_activation["production_truth"]["revenue_recognition"])
         self.assertFalse(current_activation["production_truth"]["deployment"])
         self.assertEqual(current_activation["build_orders"], [])
@@ -579,6 +586,21 @@ class TestResourceLedger(unittest.TestCase):
         self.assertIn(
             "does not contact a buyer",
             rows["cross-family-offering-bundle-composer"]["rate_plan_boundary"].lower(),
+        )
+        self.assertEqual(rows["commons-context-dispatch-compiler"]["capacity"], "LIVE")
+        self.assertEqual(rows["commons-context-dispatch-compiler"]["stage"], "PRODUCING")
+        self.assertEqual(rows["commons-context-dispatch-compiler"]["condition"], "CONSTRAINED")
+        self.assertIn(
+            "AUTHORITY_GRANT_FALSE",
+            rows["commons-context-dispatch-compiler"]["authority"],
+        )
+        self.assertIn(
+            "c1e51664fee3d67127c90143ae737a8c41876f02",
+            rows["commons-context-dispatch-compiler"]["exact_safe_probe"],
+        )
+        self.assertIn(
+            "context only",
+            rows["commons-context-dispatch-compiler"]["rate_plan_boundary"].lower(),
         )
         self.assertIn("September 7 global reset", rows["gpt-6-astra-codex-carrier"]["next_action"])
         self.assertEqual(rows["google-ai-mode-browser-mesh"]["capacity"], "LIVE")

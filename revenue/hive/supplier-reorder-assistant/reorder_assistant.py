@@ -396,6 +396,8 @@ def apply_receipts(
     pipeline_includes_draft: bool = False,
     prior_log: dict[str, object] | None = None,
 ) -> tuple[dict[str, Stock], dict[str, object]]:
+    if type(pipeline_includes_draft) is not bool:
+        raise ReorderError("pipeline_includes_draft must be a boolean")
     drafted = _drafted_quantities(plan)
 
     plan_sha256 = _plan_sha256(plan)
@@ -411,6 +413,11 @@ def apply_receipts(
             raise ReorderError("prior log must contain versioned receipt history")
         if prior_log.get("plan_sha256") != plan_sha256:
             raise ReorderError("prior log belongs to a different saved plan")
+        prior_mode = prior_log.get("pipeline_includes_draft")
+        if type(prior_mode) is not bool:
+            raise ReorderError("prior log pipeline_includes_draft must be a boolean")
+        if prior_mode != pipeline_includes_draft:
+            raise ReorderError("prior log pipeline mode does not match this receipt run")
         prior_rows = prior_log.get("applied_receipts")
         if not isinstance(prior_rows, list):
             raise ReorderError("prior log applied_receipts must be a list")
@@ -499,7 +506,12 @@ def command_receive(args: argparse.Namespace) -> None:
         raise ReorderError("receipt stock and log outputs must refer to different files")
     plan = json.loads(args.plan.read_text(encoding="utf-8"))
     prior_path = getattr(args, "prior_log", None)
-    prior_log = json.loads(prior_path.read_text(encoding="utf-8")) if prior_path is not None else None
+    try:
+        prior_log = json.loads(prior_path.read_text(encoding="utf-8")) if prior_path is not None else None
+    except UnicodeError as exc:
+        raise ReorderError(f"cannot read prior log {prior_path}: {exc}") from exc
+    if prior_path is not None and not isinstance(prior_log, dict):
+        raise ReorderError("prior log must be a JSON object")
     receipts = _read_csv(
         args.receipts,
         {"receipt_id", "received_at", "supplier_id", "supplier_sku", "sku", "quantity"},

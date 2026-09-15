@@ -19,6 +19,33 @@ FAILED_PUSH = (
     "`workflows` permission)\n"
     "error: failed to push some refs to 'https://github.com/woahwhattheheck/commons-backup.git'\n"
 )
+FAILED_SOURCE_REF_PUSH = (
+    "To https://github.com/woahwhattheheck/commons-backup.git\n"
+    " ! [remote rejected]       ae68c9b82a87a9972a59052d031b6e4a9b6ff0e8 -> "
+    "refs/backup/source-main (refusing to allow a GitHub App to create or "
+    "update workflow `.github/workflows/affordable-housing-compliance-demo.yml` "
+    "without `workflows` permission)\n"
+    "error: failed to push some refs to 'https://github.com/woahwhattheheck/commons-backup.git'\n"
+)
+FAILED_TAG_PUSH = (
+    "To https://github.com/woahwhattheheck/commons-backup.git\n"
+    " ! [remote rejected]       commons-apk-debug-20260827 -> "
+    "commons-apk-debug-20260827 (refusing to allow a GitHub App to create or "
+    "update workflow `.github/workflows/capability-entrypoints.yml` without "
+    "`workflows` permission)\n"
+    " ! [remote rejected]       titan-kaggriculture-gauntlet-20260912 -> "
+    "titan-kaggriculture-gauntlet-20260912 (refusing to allow a GitHub App to "
+    "create or update workflow `.github/workflows/astra-kag-study.yml` without "
+    "`workflows` permission)\n"
+    "error: failed to push some refs to 'https://github.com/woahwhattheheck/commons-backup.git'\n"
+)
+FAILED_WORKFLOW_TIMEOUT_PUSH = (
+    "To https://github.com/woahwhattheheck/commons-backup.git\n"
+    " ! [remote rejected]       b50f793dc0dfc8ba7e10d3528840ca5bc1fa6208 -> "
+    "refs/backup/source-main (Unable to determine if workflow can be created "
+    "or updated due to timeout; `workflows` scope may be required.)\n"
+    "error: failed to push some refs to 'https://github.com/woahwhattheheck/commons-backup.git'\n"
+)
 
 
 def git(repo: Path, *args: str, check: bool = True) -> str:
@@ -53,6 +80,13 @@ def commit_tree(path: Path, files: dict[str, str], message: str) -> str:
     return git(path, "rev-parse", "HEAD")
 
 
+class _FakeReject:
+    def __init__(self, stderr: str) -> None:
+        self.returncode = 1
+        self.stdout = b""
+        self.stderr = stderr.encode("utf-8")
+
+
 class LiveMirrorTests(unittest.TestCase):
     def setUp(self) -> None:
         self.temp = tempfile.TemporaryDirectory()
@@ -64,6 +98,19 @@ class LiveMirrorTests(unittest.TestCase):
     def test_classify_failed_run_33201665650(self) -> None:
         self.assertEqual(live_mirror.classify_push_error(FAILED_PUSH), "WORKFLOWS_PERMISSION")
         self.assertEqual(live_mirror.classify_push_error("rejected: stale info"), "OTHER")
+
+    def test_classify_failed_run_34784776092_source_ref(self) -> None:
+        self.assertEqual(
+            live_mirror.classify_push_error(FAILED_SOURCE_REF_PUSH),
+            "WORKFLOWS_PERMISSION",
+        )
+
+    def test_classify_failed_run_34786015195_workflow_timeout(self) -> None:
+        self.assertEqual(
+            live_mirror.classify_push_error(FAILED_WORKFLOW_TIMEOUT_PUSH),
+            "WORKFLOWS_PERMISSION",
+        )
+        self.assertEqual(live_mirror.classify_push_error("error: remote hung up"), "OTHER")
 
     def test_plan_exact_and_recorded_source(self) -> None:
         sha = "a" * 40
@@ -188,12 +235,7 @@ class LiveMirrorTests(unittest.TestCase):
         def fake_push(git_dir: str, url: str, refspec: str):
             spec = refspec[1:] if refspec.startswith("+") else refspec
             if spec.endswith(":refs/heads/main") and spec.startswith(second):
-                class Fake:
-                    returncode = 1
-                    stdout = b""
-                    stderr = FAILED_PUSH.encode("utf-8")
-
-                return Fake()
+                return _FakeReject(FAILED_PUSH)
             return original_push(git_dir, url, refspec)
 
         live_mirror._push = fake_push  # type: ignore[method-assign]
@@ -244,12 +286,7 @@ class LiveMirrorTests(unittest.TestCase):
             def fake_push(git_dir: str, url: str, refspec: str):
                 spec = refspec[1:] if refspec.startswith("+") else refspec
                 if spec.endswith(":refs/heads/main") and spec.startswith(block_sha):
-                    class Fake:
-                        returncode = 1
-                        stdout = b""
-                        stderr = FAILED_PUSH.encode("utf-8")
-
-                    return Fake()
+                    return _FakeReject(FAILED_PUSH)
                 return original_push(git_dir, url, refspec)
 
             return fake_push
@@ -302,6 +339,120 @@ class LiveMirrorTests(unittest.TestCase):
             third,
         )
 
+    def test_source_ref_receipt_when_workflows_rejected(self) -> None:
+        """Run 34784776092: grafted main landed; source-main exact SHA was rejected."""
+        src = self.root / "src"
+        dest = self.root / "dest.git"
+        init_repo(src)
+        commit_tree(
+            src,
+            {
+                "readme.md": "one\n",
+                ".github/workflows/board-label.yml": "name: v1\n",
+            },
+            "first",
+        )
+        git(src, "clone", "--bare", str(src), str(dest))
+        first = git(src, "rev-parse", "HEAD")
+        commit_tree(
+            src,
+            {
+                "readme.md": "two\n",
+                ".github/workflows/board-label.yml": "name: v2\n",
+                ".github/workflows/affordable-housing-compliance-demo.yml": "name: housing\n",
+            },
+            "second with new workflow",
+        )
+        second = git(src, "rev-parse", "HEAD")
+        original_push = live_mirror._push
+
+        def fake_push(git_dir: str, url: str, refspec: str):
+            spec = refspec[1:] if refspec.startswith("+") else refspec
+            if spec.endswith(":refs/heads/main") and spec.startswith(second):
+                return _FakeReject(FAILED_PUSH)
+            if spec.endswith(":" + live_mirror.SOURCE_REF) and spec.startswith(second):
+                return _FakeReject(FAILED_SOURCE_REF_PUSH)
+            return original_push(git_dir, url, refspec)
+
+        live_mirror._push = fake_push  # type: ignore[method-assign]
+        try:
+            grafted = live_mirror.push_mirror(
+                str(src / ".git"),
+                second,
+                str(dest),
+                dst_ref=first,
+            )
+        finally:
+            live_mirror._push = original_push  # type: ignore[method-assign]
+
+        self.assertEqual(grafted["state"], "GRAFTED")
+        self.assertEqual(grafted["source_ref_state"], "RECEIPT_REF")
+        self.assertEqual(grafted["src_sha"], second)
+        self.assertNotEqual(grafted["source_ref_sha"], second)
+        dest_git = str(dest)
+        recorded = live_mirror.read_source_receipt(dest_git, live_mirror.SOURCE_REF)
+        self.assertEqual(recorded, second)
+        receipt_sha = git(dest, "rev-parse", live_mirror.SOURCE_REF)
+        self.assertEqual(receipt_sha, grafted["source_ref_sha"])
+        self.assertEqual(
+            git(dest, "show", f"{receipt_sha}:{live_mirror.SOURCE_RECEIPT_NAME}"),
+            second,
+        )
+        ls = git(dest, "ls-tree", "--name-only", receipt_sha)
+        self.assertEqual(ls, live_mirror.SOURCE_RECEIPT_NAME)
+        missing = subprocess.run(
+            ["git", "rev-parse", "--verify", f"{receipt_sha}:{live_mirror.WORKFLOWS_DIR}"],
+            cwd=dest,
+            capture_output=True,
+            text=True,
+        )
+        self.assertNotEqual(missing.returncode, 0)
+        self.assertEqual(git(dest, "rev-parse", live_mirror.DEST_REF), grafted["pushed_sha"])
+        planned = live_mirror.plan(second, grafted["pushed_sha"], recorded)
+        self.assertEqual(planned["action"], "already_in_sync")
+        self.assertEqual(planned["reason"], "recorded_source")
+        live_mirror._push = fake_push  # type: ignore[method-assign]
+        try:
+            again = live_mirror.record_receipts(
+                str(src / ".git"),
+                str(dest),
+                second,
+                grafted["pushed_sha"],
+            )
+        finally:
+            live_mirror._push = original_push  # type: ignore[method-assign]
+        self.assertEqual(again["source_ref_state"], "ALREADY_RECORDED")
+        self.assertEqual(again["src_sha"], second)
+
+    def test_record_receipts_skips_when_already_recorded(self) -> None:
+        src = self.root / "src"
+        dest = self.root / "dest.git"
+        init_repo(src)
+        first = commit_tree(
+            src,
+            {
+                "readme.md": "one\n",
+                ".github/workflows/board-label.yml": "name: v1\n",
+            },
+            "first",
+        )
+        git(src, "clone", "--bare", str(src), str(dest))
+        first_record = live_mirror.record_receipts(str(src / ".git"), str(dest), first, first)
+        self.assertEqual(first_record["source_ref_state"], "EXACT_REF")
+        git(src, "fetch", str(dest), f"+{live_mirror.SOURCE_REF}:{live_mirror.SOURCE_REF}")
+        second_record = live_mirror.record_receipts(str(src / ".git"), str(dest), first, first)
+        self.assertEqual(second_record["source_ref_state"], "ALREADY_RECORDED")
+        self.assertEqual(live_mirror.read_source_receipt(str(dest), live_mirror.SOURCE_REF), first)
+
+    def test_read_source_receipt_legacy_commit(self) -> None:
+        src = self.root / "src"
+        dest = self.root / "dest.git"
+        init_repo(src)
+        first = commit_tree(src, {"readme.md": "one\n"}, "first")
+        git(src, "clone", "--bare", str(src), str(dest))
+        git(src, "push", str(dest), f"{first}:{live_mirror.SOURCE_REF}")
+        self.assertEqual(live_mirror.read_source_receipt(str(dest)), first)
+
     def test_cli_classify_and_plan(self) -> None:
         tool = ROOT / "host" / "live_mirror.py"
         classify = subprocess.run(
@@ -311,6 +462,20 @@ class LiveMirrorTests(unittest.TestCase):
             capture_output=True,
         )
         self.assertEqual(json.loads(classify.stdout)["kind"], "WORKFLOWS_PERMISSION")
+        classify_src = subprocess.run(
+            [sys.executable, str(tool), "classify-error", "--stderr", FAILED_SOURCE_REF_PUSH],
+            check=True,
+            text=True,
+            capture_output=True,
+        )
+        self.assertEqual(json.loads(classify_src.stdout)["kind"], "WORKFLOWS_PERMISSION")
+        classify_timeout = subprocess.run(
+            [sys.executable, str(tool), "classify-error", "--stderr", FAILED_WORKFLOW_TIMEOUT_PUSH],
+            check=True,
+            text=True,
+            capture_output=True,
+        )
+        self.assertEqual(json.loads(classify_timeout.stdout)["kind"], "WORKFLOWS_PERMISSION")
         sha = "c" * 40
         planned = subprocess.run(
             [sys.executable, str(tool), "plan", "--src", sha, "--dst", sha],
@@ -319,6 +484,135 @@ class LiveMirrorTests(unittest.TestCase):
             capture_output=True,
         )
         self.assertEqual(json.loads(planned.stdout)["action"], "already_in_sync")
+
+    def test_cli_read_source_receipt(self) -> None:
+        src = self.root / "src"
+        dest = self.root / "dest.git"
+        init_repo(src)
+        first = commit_tree(
+            src,
+            {".github/workflows/board-label.yml": "name: v1\n", "readme.md": "one\n"},
+            "first",
+        )
+        git(src, "clone", "--bare", str(src), str(dest))
+        original_push = live_mirror._push
+
+        def reject_source(git_dir: str, url: str, refspec: str):
+            spec = refspec[1:] if refspec.startswith("+") else refspec
+            if spec.endswith(":" + live_mirror.SOURCE_REF) and spec.startswith(first):
+                return _FakeReject(FAILED_SOURCE_REF_PUSH)
+            return original_push(git_dir, url, refspec)
+
+        live_mirror._push = reject_source  # type: ignore[method-assign]
+        try:
+            recorded = live_mirror.record_receipts(str(src / ".git"), str(dest), first, first)
+        finally:
+            live_mirror._push = original_push  # type: ignore[method-assign]
+        self.assertEqual(recorded["source_ref_state"], "RECEIPT_REF")
+        tool = ROOT / "host" / "live_mirror.py"
+        read = subprocess.run(
+            [
+                sys.executable,
+                str(tool),
+                "read-source",
+                "--git-dir",
+                str(dest),
+                "--ref",
+                live_mirror.SOURCE_REF,
+            ],
+            check=True,
+            text=True,
+            capture_output=True,
+        )
+        self.assertEqual(json.loads(read.stdout)["src_sha"], first)
+
+    def test_source_ref_receipt_when_workflow_timeout(self) -> None:
+        """Run 34786015195: GitHub timed out whether a workflow could be created."""
+        src = self.root / "src"
+        dest = self.root / "dest.git"
+        init_repo(src)
+        first = commit_tree(
+            src,
+            {".github/workflows/board-label.yml": "name: v1\n", "readme.md": "one\n"},
+            "first",
+        )
+        git(src, "clone", "--bare", str(src), str(dest))
+        original_push = live_mirror._push
+
+        def reject_source(git_dir: str, url: str, refspec: str):
+            spec = refspec[1:] if refspec.startswith("+") else refspec
+            if spec.endswith(":" + live_mirror.SOURCE_REF) and spec.startswith(first):
+                return _FakeReject(FAILED_WORKFLOW_TIMEOUT_PUSH)
+            return original_push(git_dir, url, refspec)
+
+        live_mirror._push = reject_source  # type: ignore[method-assign]
+        try:
+            recorded = live_mirror.record_receipts(str(src / ".git"), str(dest), first, first)
+        finally:
+            live_mirror._push = original_push  # type: ignore[method-assign]
+        self.assertEqual(recorded["source_ref_state"], "RECEIPT_REF")
+        self.assertEqual(live_mirror.read_source_receipt(str(dest), live_mirror.SOURCE_REF), first)
+        self.assertNotEqual(recorded["source_ref_sha"], first)
+
+    def test_classify_failed_run_34785478675_tags(self) -> None:
+        self.assertEqual(live_mirror.classify_push_error(FAILED_TAG_PUSH), "WORKFLOWS_PERMISSION")
+
+    def test_push_tags_skips_workflows_rejected_tags(self) -> None:
+        src = self.root / "src"
+        dest = self.root / "dest.git"
+        init_repo(src)
+        first = commit_tree(src, {"readme.md": "one\n"}, "first")
+        git(src, "tag", "safe-tag")
+        git(
+            src,
+            "tag",
+            "commons-apk-debug-20260827",
+        )
+        git(src, "clone", "--bare", str(src), str(dest))
+        git(dest, "symbolic-ref", "HEAD", "refs/heads/main")
+        original_namespace = live_mirror._push_tag_namespace
+        original_push = live_mirror._push
+
+        def reject_namespace(git_dir: str, dest_url: str):
+            return _FakeReject(FAILED_TAG_PUSH)
+
+        def fake_push(git_dir: str, url: str, refspec: str):
+            spec = refspec[1:] if refspec.startswith("+") else refspec
+            if spec.endswith(":refs/tags/commons-apk-debug-20260827"):
+                return _FakeReject(FAILED_TAG_PUSH)
+            return original_push(git_dir, url, refspec)
+
+        live_mirror._push_tag_namespace = reject_namespace  # type: ignore[method-assign]
+        live_mirror._push = fake_push  # type: ignore[method-assign]
+        try:
+            result = live_mirror.push_tags(str(src / ".git"), str(dest))
+        finally:
+            live_mirror._push_tag_namespace = original_namespace  # type: ignore[method-assign]
+            live_mirror._push = original_push  # type: ignore[method-assign]
+        self.assertEqual(result["state"], "TAGS_WORKFLOWS_SKIPPED")
+        self.assertIn("refs/tags/safe-tag", result["pushed"])
+        skipped_refs = [row["ref"] for row in result["skipped"]]
+        self.assertEqual(skipped_refs, ["refs/tags/commons-apk-debug-20260827"])
+        self.assertEqual(git(dest, "rev-parse", "refs/tags/safe-tag"), first)
+
+    def test_push_tags_other_error_fail_closed(self) -> None:
+        src = self.root / "src"
+        dest = self.root / "dest.git"
+        init_repo(src)
+        commit_tree(src, {"readme.md": "one\n"}, "first")
+        git(src, "tag", "safe-tag")
+        git(src, "clone", "--bare", str(src), str(dest))
+
+        def reject_namespace(git_dir: str, dest_url: str):
+            return _FakeReject("error: failed to push some refs (remote hung up)\n")
+
+        original = live_mirror._push_tag_namespace
+        live_mirror._push_tag_namespace = reject_namespace  # type: ignore[method-assign]
+        try:
+            with self.assertRaises(live_mirror.MirrorError):
+                live_mirror.push_tags(str(src / ".git"), str(dest))
+        finally:
+            live_mirror._push_tag_namespace = original  # type: ignore[method-assign]
 
 
 if __name__ == "__main__":

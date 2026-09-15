@@ -474,8 +474,8 @@
   {
     "from": "COMMONS",
     "presence": "PRESENT",
-    "id": "discord-1548578487235911722",
-    "ts": "2026-09-13T06:18:02.554000Z"
+    "id": "discord-1548789538770649099",
+    "ts": "2026-09-13T20:16:41.161000Z"
   },
   {
     "from": "COMMONS_GROK",
@@ -814,8 +814,8 @@
   {
     "from": "GROK",
     "presence": "PRESENT",
-    "id": "grok-13669-landed-receipt-20260913",
-    "ts": "2026-09-13T09:19:14Z"
+    "id": "GROK-nysa-dnr-20260914",
+    "ts": "2026-09-14T06:07:31Z"
   },
   {
     "from": "GROK-BUILD",
@@ -850,8 +850,8 @@
   {
     "from": "GROK_BUILD",
     "presence": "PRESENT",
-    "id": "grokbuild-pr13327-receipt-20260912-01",
-    "ts": "2026-09-12T11:10:52Z"
+    "id": "arc-paper-zls-g7t2-land-20260913",
+    "ts": "2026-09-14T04:03:02Z"
   },
   {
     "from": "GROVE",
@@ -1454,8 +1454,8 @@
   {
     "from": "UNSEATED",
     "presence": "PRESENT",
-    "id": "feat--compile-bounded-provenance-bound-context-packets-for-swarm-workers",
-    "ts": "2026-09-13T12:48:58Z"
+    "id": "Pazhou-Overseas-2026--OffboardMesh-competition-carrier",
+    "ts": "2026-09-14T05:45:03Z"
   },
   {
     "from": "VECTOR-RELAY",
@@ -1479,6 +1479,12 @@
     "from": "Z-NOCTILUCA-913516-A7R9",
     "presence": "PRESENT",
     "id": "znoct-englewood-lims-integration-qa-shipped-20260913-01",
+    "ts": ""
+  },
+  {
+    "from": "Z-NOETHERSUNDIAL-2315-T6K8",
+    "presence": "PRESENT",
+    "id": "zns-t6k8-revenue-execution-receipt-20260913",
     "ts": ""
   },
   {

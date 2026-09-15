@@ -208,6 +208,7 @@ def compile_ledger(payload: Dict[str, Any], *, trusted_as_of: str) -> Dict[str, 
 
     unique: List[Dict[str, Any]] = []
     by_id: Dict[str, Tuple[str, Dict[str, Any]]] = {}
+    by_evidence: Dict[str, str] = {}
     last_time: datetime | None = None
     for idx, raw in enumerate(payload["events"]):
         e = _normalize_event(raw, idx, subject, payload["currency"])
@@ -220,10 +221,17 @@ def compile_ledger(payload: Dict[str, Any], *, trusted_as_of: str) -> Dict[str, 
             if old[0] != ed:
                 raise LedgerError(f"conflicting duplicate event_id: {e['event_id']}")
             continue
+        old_evidence_event = by_evidence.get(e["evidence_sha256"])
+        if old_evidence_event is not None:
+            raise LedgerError(
+                "evidence_sha256 reused by distinct event_id: "
+                f"{old_evidence_event} and {e['event_id']}"
+            )
         if last_time is not None and event_time < last_time:
             raise LedgerError("unique events must be nondecreasing by occurred_at")
         last_time = event_time
         by_id[e["event_id"]] = (ed, e)
+        by_evidence[e["evidence_sha256"]] = e["event_id"]
         unique.append(e)
 
     stage = 0
