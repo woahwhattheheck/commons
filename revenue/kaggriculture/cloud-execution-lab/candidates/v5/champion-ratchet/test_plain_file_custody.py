@@ -1,8 +1,10 @@
 #!/usr/bin/env python3
 from __future__ import annotations
 import importlib.util
+import os
 from pathlib import Path
 import unittest
+from unittest import mock
 
 HERE=Path(__file__).resolve().parent
 SPEC=importlib.util.spec_from_file_location("champion_gate_tests", HERE/"test_champion_gate.py")
@@ -48,5 +50,17 @@ class PlainFileCustodyTests(unittest.TestCase):
     def test_directory_is_not_evidence_file(self):
         with self.assertRaisesRegex(G.ChampionError,"ordinary non-symlink file"):
             G._read_json(self.f.root)
+
+    @unittest.skipUnless(hasattr(os,"O_NONBLOCK"), "requires O_NONBLOCK")
+    def test_evidence_open_is_nonblocking_before_fstat(self):
+        real_open=G.os.open
+        seen_flags=[]
+        def recording_open(path, flags, *args, **kwargs):
+            seen_flags.append(flags)
+            return real_open(path, flags, *args, **kwargs)
+        with mock.patch.object(G.os,"open",side_effect=recording_open):
+            G._read_plain_file(self.f.manifest_path)
+        self.assertTrue(seen_flags)
+        self.assertTrue(seen_flags[0] & os.O_NONBLOCK)
 
 if __name__=="__main__": unittest.main()
