@@ -55,8 +55,8 @@
       "hits": [],
       "observed_at": "2026-09-15T05:15:00Z",
       "provider": "GITHUB_ISSUES",
-      "query": "franchise-owner franchisee",
-      "retained_root": "ab76960e5c5c2c5acda74a065330355eab05b0f93d6405a9c0b0c2a44015e0e6",
+      "query": "franchise-owner",
+      "retained_root": "905010397feb210f9bcffd02bb0d08cc09fa851feb4a8e0d164bf5a4061cd17c",
       "state": "COMPLETE"
     },
     {
@@ -64,8 +64,8 @@
       "hits": [],
       "observed_at": "2026-09-15T05:15:00Z",
       "provider": "GITHUB_PRS",
-      "query": "franchise-owner franchisee",
-      "retained_root": "290454d7fef603adb4f161928bd40983e15ccef5383dede9e529e72f58ed34f1",
+      "query": "franchise-owner",
+      "retained_root": "e74a9551f3a6bbc5a206829c11d3e02f713c8191d587546f0c60c917807f7c3f",
       "state": "COMPLETE"
     },
     {
@@ -73,8 +73,8 @@
       "hits": [],
       "observed_at": "2026-09-15T05:15:00Z",
       "provider": "GITHUB_CODE",
-      "query": "franchise-owner franchisee",
-      "retained_root": "650140b074fb4c2d80f704ddf04ef3fa2e81533d2da44dee74818f6256603f92",
+      "query": "franchise-owner",
+      "retained_root": "d5a976be66460d2ae87b2f66adf6f90d91a3ef83a6ae939c0d26c9ade0093dc5",
       "state": "COMPLETE"
     },
     {
@@ -82,8 +82,44 @@
       "hits": [],
       "observed_at": "2026-09-15T05:15:00Z",
       "provider": "SLACK",
-      "query": "franchise-owner franchisee",
-      "retained_root": "f76f949c37c3e4adae1a1483ba8415b0b158fc1470bee3b998c64edda208b6f3",
+      "query": "franchise-owner",
+      "retained_root": "9ab1f1f08416722064af8a2b28affb6fc8e7bfc2f697345f68c2dbfb48ff757e",
+      "state": "COMPLETE"
+    },
+    {
+      "family_id": "actor-franchisee",
+      "hits": [],
+      "observed_at": "2026-09-15T05:15:00Z",
+      "provider": "GITHUB_ISSUES",
+      "query": "franchisee",
+      "retained_root": "62eb916173612ea29a166d766edadaeef8f8c594e4686618610a41ea7c2bbb03",
+      "state": "COMPLETE"
+    },
+    {
+      "family_id": "actor-franchisee",
+      "hits": [],
+      "observed_at": "2026-09-15T05:15:00Z",
+      "provider": "GITHUB_PRS",
+      "query": "franchisee",
+      "retained_root": "7019a2a73997f85e37ddb9c3d8506b2bd25b6589e054558f778b330091bdcbb8",
+      "state": "COMPLETE"
+    },
+    {
+      "family_id": "actor-franchisee",
+      "hits": [],
+      "observed_at": "2026-09-15T05:15:00Z",
+      "provider": "GITHUB_CODE",
+      "query": "franchisee",
+      "retained_root": "07d317fbd958bbdedbd73081e629c7a749438a796c5e160dd423f4785b6703ba",
+      "state": "COMPLETE"
+    },
+    {
+      "family_id": "actor-franchisee",
+      "hits": [],
+      "observed_at": "2026-09-15T05:15:00Z",
+      "provider": "SLACK",
+      "query": "franchisee",
+      "retained_root": "bc1327c993f72e921679b2f613ba7ba566316e6db67960034cdd49f42bb85dbb",
       "state": "COMPLETE"
     },
     {
@@ -91,8 +127,8 @@
       "hits": [],
       "observed_at": "2026-09-15T05:15:00Z",
       "provider": "GITHUB_ISSUES",
-      "query": "license-fee royalty",
-      "retained_root": "a507586b53ae08059ea300c2600c0625d8bc2606bd88baecfd8eb895eda98d5c",
+      "query": "license-fee",
+      "retained_root": "c7aac1dc23500d2cd497fa5c4a6306a839888e65e4591f13caeaa3551ecb71fd",
       "state": "COMPLETE"
     },
     {
@@ -100,8 +136,8 @@
       "hits": [],
       "observed_at": "2026-09-15T05:15:00Z",
       "provider": "GITHUB_PRS",
-      "query": "license-fee royalty",
-      "retained_root": "4e748e3046e6ac6e9dcbc7b516c5adaf02fa7c21bad0ea33f48fa2732140750f",
+      "query": "license-fee",
+      "retained_root": "af90c0024b62e2feeb63bc1935276d1fadb5976920e477cb2dfaf6db1e7d8e01",
       "state": "COMPLETE"
     },
     {
@@ -109,8 +145,8 @@
       "hits": [],
       "observed_at": "2026-09-15T05:15:00Z",
       "provider": "GITHUB_CODE",
-      "query": "license-fee royalty",
-      "retained_root": "cf909815c1dd8c3e4366b43841436dd85a67ca5a1833be09a8d72552784f2d4b",
+      "query": "license-fee",
+      "retained_root": "2eca6d475243b1625f00dbab40319956ee74ee5ca38219a2d4d1f15425a969b4",
       "state": "COMPLETE"
     },
     {
@@ -118,8 +154,44 @@
       "hits": [],
       "observed_at": "2026-09-15T05:15:00Z",
       "provider": "SLACK",
-      "query": "license-fee royalty",
-      "retained_root": "c7a44f3c8e3d1e662f3b8976f6bb1bfc172548bfc40d6df6639b95ca5f22b5d8",
+      "query": "license-fee",
+      "retained_root": "9bb342bfebcfef4ba40f8145aa565f1b83a59d82efaeb56b9fba13015e65e542",
+      "state": "COMPLETE"
+    },
+    {
+      "family_id": "object-royalty",
+      "hits": [],
+      "observed_at": "2026-09-15T05:15:00Z",
+      "provider": "GITHUB_ISSUES",
+      "query": "royalty",
+      "retained_root": "f35bf38df1bf82d3997ef0e8d7a4c757ad743c8258a0e77df8d1132d03fb4195",
+      "state": "COMPLETE"
+    },
+    {
+      "family_id": "object-royalty",
+      "hits": [],
+      "observed_at": "2026-09-15T05:15:00Z",
+      "provider": "GITHUB_PRS",
+      "query": "royalty",
+      "retained_root": "5841883dca8ea746da874cf6d446777d143f2439243b1fc7f74157e4f7752f67",
+      "state": "COMPLETE"
+    },
+    {
+      "family_id": "object-royalty",
+      "hits": [],
+      "observed_at": "2026-09-15T05:15:00Z",
+      "provider": "GITHUB_CODE",
+      "query": "royalty",
+      "retained_root": "2f082ad1a3d78fcb29d0becc275dc84085891124bb0fbc5d0440aa71b76e4a13",
+      "state": "COMPLETE"
+    },
+    {
+      "family_id": "object-royalty",
+      "hits": [],
+      "observed_at": "2026-09-15T05:15:00Z",
+      "provider": "SLACK",
+      "query": "royalty",
+      "retained_root": "ff6d02ebe09fa10c7ce8cd3d3350bed564eac382ecc1d17fd35b09d0f986b973",
       "state": "COMPLETE"
     },
     {
@@ -127,8 +199,8 @@
       "hits": [],
       "observed_at": "2026-09-15T05:15:00Z",
       "provider": "GITHUB_ISSUES",
-      "query": "reconcile reconciliation",
-      "retained_root": "44bd5444d080a5ab968cc19d19e2934af943ab03f3faa4d631f417058390abdf",
+      "query": "reconcile",
+      "retained_root": "bc99677f19b1998a36236b6f79cde22483289d9d611927c200011b4e246fabdf",
       "state": "COMPLETE"
     },
     {
@@ -136,8 +208,8 @@
       "hits": [],
       "observed_at": "2026-09-15T05:15:00Z",
       "provider": "GITHUB_PRS",
-      "query": "reconcile reconciliation",
-      "retained_root": "7087144737c79e1d6e0dd9296eec188598e28c2da1f677d317e08c0627905f22",
+      "query": "reconcile",
+      "retained_root": "917aa63d7a11f971ae357aa394dbcfe36ffeefd9823467e613e147246898f6a8",
       "state": "COMPLETE"
     },
     {
@@ -145,8 +217,8 @@
       "hits": [],
       "observed_at": "2026-09-15T05:15:00Z",
       "provider": "GITHUB_CODE",
-      "query": "reconcile reconciliation",
-      "retained_root": "f87d83b1d1c298e4e8a100d2d10b938aa43a47ca972bbfb14f2ccba62eca30ee",
+      "query": "reconcile",
+      "retained_root": "ad48dae4839e28274f0fa860f81a996124657c1b834271d9533bd1b520c99402",
       "state": "COMPLETE"
     },
     {
@@ -154,8 +226,44 @@
       "hits": [],
       "observed_at": "2026-09-15T05:15:00Z",
       "provider": "SLACK",
-      "query": "reconcile reconciliation",
-      "retained_root": "26debb0a7b9a8de44d79f6bb0d2402ab37e751e502f27453c8d25ce8f87b32fe",
+      "query": "reconcile",
+      "retained_root": "2314428358744461c01741c317837aa25e53dd70ccb4e940b3b7e86d4066743a",
+      "state": "COMPLETE"
+    },
+    {
+      "family_id": "action-reconciliation",
+      "hits": [],
+      "observed_at": "2026-09-15T05:15:00Z",
+      "provider": "GITHUB_ISSUES",
+      "query": "reconciliation",
+      "retained_root": "242908c31de7142e818d251e9bc20a6eabfd1c18bb24515f374c7cf40b9feb2a",
+      "state": "COMPLETE"
+    },
+    {
+      "family_id": "action-reconciliation",
+      "hits": [],
+      "observed_at": "2026-09-15T05:15:00Z",
+      "provider": "GITHUB_PRS",
+      "query": "reconciliation",
+      "retained_root": "080584835738cce8ae7d5740a52dc1b8e51c2ddca61d988936c6264310e00867",
+      "state": "COMPLETE"
+    },
+    {
+      "family_id": "action-reconciliation",
+      "hits": [],
+      "observed_at": "2026-09-15T05:15:00Z",
+      "provider": "GITHUB_CODE",
+      "query": "reconciliation",
+      "retained_root": "3066c60e74422c951d57e461a380c62978ab038f0261a1fccb9d53e4caf1d692",
+      "state": "COMPLETE"
+    },
+    {
+      "family_id": "action-reconciliation",
+      "hits": [],
+      "observed_at": "2026-09-15T05:15:00Z",
+      "provider": "SLACK",
+      "query": "reconciliation",
+      "retained_root": "c6bf8c96d4332c7ec3241a515292774b67cf4d35358aaee04221c62feea95dec",
       "state": "COMPLETE"
     }
   ]
