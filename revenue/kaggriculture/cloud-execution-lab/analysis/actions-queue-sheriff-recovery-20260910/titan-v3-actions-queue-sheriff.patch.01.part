@@ -144,4 +144,4 @@ p" if run.created_at > stale_before else "cancel"
 +
 +def build_parser() -> argparse.ArgumentParser:
 +    parser = argparse.ArgumentParser(description=__doc__)
-+    parser.add_argument("--repository", default=os.environ.get("GITHUB_REPOSITORY", 
++    parser.add_argument("--repository", default=os.environ.get("GITHUB_REPOSITORY",
