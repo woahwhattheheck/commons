@@ -1,11 +1,13 @@
 #!/usr/bin/env python3
-"""Compile and verify a fail-closed Muse outbound-election receipt.
+"""Compile fail-closed Muse election observations without self-authenticating Slack.
 
-This module is a coordination-evidence compiler, not a sender and not a Slack
-authenticator. A trusted adapter must populate the message evidence from live
-Slack readback. Even a valid SELECTED receipt does not authorize external send;
-existing buyer/contact, owner-policy, and provider-capability gates remain
-independent prerequisites.
+Version 1 request/evidence artifacts are caller-supplied JSON.  They can prove
+internal consistency, chronology, replay state, and candidate binding, but they
+cannot authenticate that a Slack message was actually returned by the pinned
+Muse identity.  Consequently this module never turns v1 caller evidence into a
+satisfied election prerequisite.  A future provider/harness-authenticated
+adapter must use a versioned attestation contract rather than a caller-settable
+flag or arbitrary digest.
 """
 from __future__ import annotations
 
@@ -25,6 +27,7 @@ MUSE_DM_CONVERSATION_ID = "D0C1U7TUZEC"
 RESPONSE_WINDOW_SECONDS = 600
 REQUEST_TRANSPORT_SKEW_SECONDS = 60
 RECEIPT_FRESHNESS_SECONDS = 600
+UNVERIFIED_PROVENANCE_REASON = "SLACK_EVIDENCE_PROVENANCE_UNVERIFIED"
 _HEX = frozenset("0123456789abcdef")
 _REQUEST_ID_RE = re.compile(r"^[A-Za-z0-9][A-Za-z0-9._:-]{7,159}$")
 _SLACK_TS_RE = re.compile(r"^[0-9]{10,}(?:\.[0-9]{1,6})?$")
@@ -145,22 +148,17 @@ def _slack_epoch(value: Any, label: str) -> Decimal:
 
 
 def _slack_dt(value: Any, label: str) -> datetime:
-    parsed = _slack_epoch(value, label)
-    return datetime.fromtimestamp(float(parsed), tz=timezone.utc)
+    return datetime.fromtimestamp(float(_slack_epoch(value, label)), tz=timezone.utc)
 
 
 def _validate_candidate(raw: Mapping[str, Any]) -> dict[str, Any]:
     candidate = _obj(raw, "candidate")
     fields = {
-        "buyer_scope_sha256",
-        "offer_scope_sha256",
-        "intent_sha256",
-        "body_sha256",
-        "claimant",
-        "operation_id",
+        "buyer_scope_sha256", "offer_scope_sha256", "intent_sha256", "body_sha256",
+        "claimant", "operation_id",
     }
     _exact(candidate, fields, "candidate")
-    out = {
+    return {
         "buyer_scope_sha256": _hex64(candidate["buyer_scope_sha256"], "candidate.buyer_scope_sha256"),
         "offer_scope_sha256": _hex64(candidate["offer_scope_sha256"], "candidate.offer_scope_sha256"),
         "intent_sha256": _hex64(candidate["intent_sha256"], "candidate.intent_sha256"),
@@ -168,7 +166,6 @@ def _validate_candidate(raw: Mapping[str, Any]) -> dict[str, Any]:
         "claimant": _text(candidate["claimant"], "candidate.claimant", max_len=120),
         "operation_id": _text(candidate["operation_id"], "candidate.operation_id", max_len=200),
     }
-    return out
 
 
 def _validate_request_id(value: Any) -> str:
@@ -191,10 +188,7 @@ def _request_message(*, request_id: str, candidate_sha256: str, claimant: str, o
     )
 
 
-def prepare_request(
-    candidate: Mapping[str, Any], *, request_id: str, requested_at: str
-) -> dict[str, Any]:
-    """Create the exact Muse-DM election request artifact for one candidate."""
+def prepare_request(candidate: Mapping[str, Any], *, request_id: str, requested_at: str) -> dict[str, Any]:
     normalized = _validate_candidate(candidate)
     rid = _validate_request_id(request_id)
     requested = _utc(requested_at, "requested_at")
@@ -246,16 +240,15 @@ def _validate_request(raw: Mapping[str, Any]) -> tuple[dict[str, Any], str, str]
     if payload["external_send_authorized"] is not False:
         raise MuseElectionError("request may never authorize external send")
     message = _message_text(request["message"], "request.message", max_len=2048)
-    expected_message = _request_message(
+    expected = _request_message(
         request_id=rid,
         candidate_sha256=candidate_sha,
         claimant=candidate["claimant"],
         operation_id=candidate["operation_id"],
     )
-    if message != expected_message:
+    if message != expected:
         raise MuseElectionError("request: exact message mismatch")
-    message_sha = _hex64(payload["message_sha256"], "request.message_sha256")
-    if hashlib.sha256(message.encode("utf-8")).hexdigest() != message_sha:
+    if hashlib.sha256(message.encode("utf-8")).hexdigest() != _hex64(payload["message_sha256"], "request.message_sha256"):
         raise MuseElectionError("request: message digest mismatch")
     request_sha = _hex64(request["request_sha256"], "request.request_sha256")
     if _digest(payload) != request_sha:
@@ -285,20 +278,9 @@ def _validate_evidence(raw: Mapping[str, Any]) -> dict[str, str]:
 
 
 def _receipt_payload(prior: Mapping[str, Any]) -> Mapping[str, Any] | None:
-    if type(prior) is not dict:
+    if not verify_receipt(prior):
         return None
-    if set(prior) != {"payload", "receipt_sha256"}:
-        return None
-    payload = prior.get("payload")
-    if type(payload) is not dict or payload.get("schema_version") != RECEIPT_SCHEMA:
-        return None
-    try:
-        claimed = _hex64(prior.get("receipt_sha256"), "prior receipt digest")
-        if _digest(payload) != claimed:
-            return None
-    except MuseElectionError:
-        return None
-    return payload
+    return prior["payload"]
 
 
 def compile_receipt(
@@ -309,10 +291,11 @@ def compile_receipt(
     prior_receipts: Iterable[Mapping[str, Any]] = (),
     ledger_complete: bool,
 ) -> dict[str, Any]:
-    """Compile a Muse election result, failing closed on any coordination doubt.
+    """Compile a v1 observation receipt.
 
-    ``evidence`` must come from live connector readback supplied by a trusted
-    adapter. This function intentionally cannot authenticate Slack by itself.
+    V1 evidence is a caller-supplied dictionary.  The compiler can validate the
+    observation's internal consistency but cannot authenticate Slack provenance,
+    so a reported SELECTED response is always held.
     """
     req, request_sha, request_message = _validate_request(request)
     ev = _validate_evidence(evidence)
@@ -356,6 +339,8 @@ def compile_receipt(
             reasons.append("RESPONSE_CANDIDATE_DIGEST_MISMATCH")
         if outcome == "NOT_SELECTED":
             reasons.append("MUSE_NOT_SELECTED")
+        elif outcome == "SELECTED":
+            reasons.append(UNVERIFIED_PROVENANCE_REASON)
 
     evidence_sha = _digest(ev)
     for prior in prior_receipts:
@@ -371,7 +356,6 @@ def compile_receipt(
             reasons.append("ELECTION_EVIDENCE_REPLAY")
 
     reasons = sorted(set(reasons))
-    selected = not reasons and outcome == "SELECTED"
     payload = {
         "schema_version": RECEIPT_SCHEMA,
         "request_sha256": request_sha,
@@ -383,11 +367,11 @@ def compile_receipt(
         "response_message_ts": ev["response_message_ts"],
         "response_author_user_id": ev["response_author_user_id"],
         "outcome": outcome,
-        "decision": "MUSE_SELECTED" if selected else "HOLD",
+        "decision": "HOLD",
         "reasons": reasons,
         "observed_at": _fmt(observed),
-        "muse_selected": selected,
-        "election_prerequisite_satisfied": selected,
+        "muse_selected": False,
+        "election_prerequisite_satisfied": False,
         "external_send_authorized": False,
         "side_effects_authorized": False,
     }
@@ -395,6 +379,7 @@ def compile_receipt(
 
 
 def verify_receipt(raw: Mapping[str, Any]) -> bool:
+    """Verify a v1 receipt, rejecting legacy self-authenticating SELECTED shape."""
     try:
         receipt = _obj(raw, "receipt")
         _exact(receipt, {"payload", "receipt_sha256"}, "receipt")
@@ -424,29 +409,24 @@ def verify_receipt(raw: Mapping[str, Any]) -> bool:
         if payload["reasons"] != sorted(set(payload["reasons"])):
             return False
         _utc(payload["observed_at"], "receipt.observed_at")
-        for key in ("muse_selected", "election_prerequisite_satisfied", "external_send_authorized", "side_effects_authorized"):
+        for key in (
+            "muse_selected", "election_prerequisite_satisfied",
+            "external_send_authorized", "side_effects_authorized",
+        ):
             if type(payload[key]) is not bool:
                 return False
+        if payload["decision"] != "HOLD":
+            return False
+        if payload["muse_selected"] is not False or payload["election_prerequisite_satisfied"] is not False:
+            return False
         if payload["external_send_authorized"] is not False or payload["side_effects_authorized"] is not False:
             return False
-        selected_shape = (
-            payload["decision"] == "MUSE_SELECTED"
-            and payload["outcome"] == "SELECTED"
-            and payload["muse_selected"] is True
-            and payload["election_prerequisite_satisfied"] is True
-            and payload["reasons"] == []
-            and payload["response_author_user_id"] == MUSE_USER_ID
-        )
-        hold_shape = (
-            payload["decision"] == "HOLD"
-            and payload["muse_selected"] is False
-            and payload["election_prerequisite_satisfied"] is False
-            and len(payload["reasons"]) > 0
-        )
-        if not (selected_shape or hold_shape):
+        if len(payload["reasons"]) == 0:
             return False
-        receipt_sha = _hex64(receipt["receipt_sha256"], "receipt.receipt_sha256")
-        return _digest(payload) == receipt_sha
+        if payload["outcome"] == "SELECTED" and UNVERIFIED_PROVENANCE_REASON not in payload["reasons"]:
+            return False
+        claimed = _hex64(receipt["receipt_sha256"], "receipt.receipt_sha256")
+        return _digest(payload) == claimed
     except (MuseElectionError, TypeError, ValueError):
         return False
 
@@ -465,7 +445,6 @@ def _write_json(value: Any) -> None:
 def _build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description=__doc__)
     sub = parser.add_subparsers(dest="command", required=True)
-
     prep = sub.add_parser("prepare", help="build an exact Muse election request")
     prep.add_argument("--buyer-scope-sha256", required=True)
     prep.add_argument("--offer-scope-sha256", required=True)
@@ -475,15 +454,13 @@ def _build_parser() -> argparse.ArgumentParser:
     prep.add_argument("--operation-id", required=True)
     prep.add_argument("--request-id", required=True)
     prep.add_argument("--requested-at", required=True)
-
-    comp = sub.add_parser("compile", help="compile connector-readback evidence")
+    comp = sub.add_parser("compile", help="compile caller-supplied Slack observation evidence")
     comp.add_argument("--request", required=True)
     comp.add_argument("--evidence", required=True)
     comp.add_argument("--observed-at", required=True)
     comp.add_argument("--prior-ledger")
     comp.add_argument("--ledger-complete", action="store_true")
-
-    verify = sub.add_parser("verify", help="verify a compiled receipt")
+    verify = sub.add_parser("verify", help="verify a compiled v1 receipt")
     verify.add_argument("--receipt", required=True)
     return parser
 
@@ -520,7 +497,7 @@ def main(argv: list[str] | None = None) -> int:
                     ledger_complete=args.ledger_complete,
                 )
             )
-            return 0
+            return 2
         receipt = _read_json(args.receipt, "receipt")
         ok = verify_receipt(receipt)
         _write_json({"valid": ok})
