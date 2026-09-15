@@ -1,9 +1,9 @@
 {
   "counts": {
-    "open_issues": 108,
-    "open_pull_requests": 50,
-    "runs_in_progress": 18,
-    "runs_queued": 89
+    "open_issues": 109,
+    "open_pull_requests": 51,
+    "runs_in_progress": 19,
+    "runs_queued": 88
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -69,13 +69,24 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
+      "branch": "lattice/mapping-equity-cli-authority-14623",
+      "created_at": "2026-09-15T04:50:15Z",
+      "draft": false,
+      "head_sha": "64ae3af82954e1afe8f2a3c1698d71ef136e3b19",
+      "number": 14630,
+      "title": "Fix Mapping Equity CLI execution-authority rebinding",
+      "updated_at": "2026-09-15T04:50:15Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
       "branch": "zyp-v5q9/mapping-equity-cli-authority-14623",
       "created_at": "2026-09-15T04:47:07Z",
       "draft": false,
       "head_sha": "f82fd376c2396cdeff337514de1108c1b3271659",
       "number": 14628,
       "title": "Fix Mapping Equity CLI execution-authority rebinding",
-      "updated_at": "2026-09-15T04:47:07Z"
+      "updated_at": "2026-09-15T04:50:55Z"
     },
     {
       "author": "woahwhattheheck",
@@ -86,7 +97,7 @@
       "head_sha": "ea6f736fe49fe3d6f17c0208f9371511306ff1cc",
       "number": 14627,
       "title": "Fix exact-byte artifact sets with atomic directory commit",
-      "updated_at": "2026-09-15T04:46:16Z"
+      "updated_at": "2026-09-15T04:49:32Z"
     },
     {
       "author": "woahwhattheheck",
@@ -94,10 +105,10 @@
       "branch": "zccw-h8r5/creator-desk-operator-fetch-origin-repair-20260915",
       "created_at": "2026-09-15T04:44:31Z",
       "draft": false,
-      "head_sha": "39edbb9c64f6995c41a3f7bb952e062d0495b31b",
+      "head_sha": "1ad25e7f1d9f0df8f1fc2ad7be1ac28d62969336",
       "number": 14624,
       "title": "fix(creator-desk): prevent cross-origin operator bearer forwarding",
-      "updated_at": "2026-09-15T04:47:08Z"
+      "updated_at": "2026-09-15T04:49:30Z"
     },
     {
       "author": "woahwhattheheck",
@@ -164,17 +175,6 @@
       "number": 14568,
       "title": "revenue: bind OHSU current qualification to verifier-retained root",
       "updated_at": "2026-09-15T02:57:18Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zvl-p8r6/uark-currentness-fixforward-20260914",
-      "created_at": "2026-09-15T02:20:35Z",
-      "draft": false,
-      "head_sha": "a04ac7399fba7ba8906ba63732a72af5f440b475",
-      "number": 14553,
-      "title": "Fix UArk RFP 09112026 currentness authority",
-      "updated_at": "2026-09-15T02:23:23Z"
     }
   ],
   "open_heads": {
@@ -206,7 +206,7 @@
     "14333": "26e7110348d2ab0d994adf68d5e0f14ad8677e38",
     "14343": "c04b1fa4adcdb5cf928bb163c158a3adec828ea3",
     "14356": "4d55e009437563dd254dfa38e2cd4bfaffec2f10",
-    "14392": "2750eeb57c3758a4aa6261b20bf7a0a2f53a5fda",
+    "14392": "a7a44ad309247a9758ca8c17cd014b5b7877b84c",
     "14395": "1b6907c68885d2feac44c15c2dd39f128864640d",
     "14454": "20a25009ce7ae2b144ab19dcd3c0e0e92f5f60cd",
     "14464": "dd41745b9c6796b9215a232bbfc3387e2c4a5b74",
@@ -225,13 +225,14 @@
     "14600": "734c70a6a15235e7e8b157e1397e0850f7badd28",
     "14612": "a46937dbeaa21caa72c30cbb03b8d535163ccc13",
     "14616": "8d4a4215103a46c42c6d4af54fbf42e41e253253",
-    "14624": "39edbb9c64f6995c41a3f7bb952e062d0495b31b",
+    "14624": "1ad25e7f1d9f0df8f1fc2ad7be1ac28d62969336",
     "14627": "ea6f736fe49fe3d6f17c0208f9371511306ff1cc",
-    "14628": "f82fd376c2396cdeff337514de1108c1b3271659"
+    "14628": "f82fd376c2396cdeff337514de1108c1b3271659",
+    "14630": "64ae3af82954e1afe8f2a3c1698d71ef136e3b19"
   },
-  "pulls_listed": 50,
+  "pulls_listed": 51,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 4.9,
+  "queue_depth_per_runner": 4.6,
   "recently_closed": [
     {
       "author": "woahwhattheheck",
@@ -401,6 +402,6 @@
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-15T04:47:35Z",
+  "unchanged_since": "2026-09-15T04:51:01Z",
   "undatable_pulls": []
 }
