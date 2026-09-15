@@ -1,9 +1,9 @@
 {
   "counts": {
-    "open_issues": 117,
+    "open_issues": 118,
     "open_pull_requests": 59,
     "runs_in_progress": 17,
-    "runs_queued": 455
+    "runs_queued": 471
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -69,13 +69,13 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "zklr-h5m8/outreach-claim-fence-20260913",
-      "created_at": "2026-09-15T08:06:00Z",
+      "branch": "z-sol-forge/sun-a308734-ternary5-20260915",
+      "created_at": "2026-09-15T08:08:31Z",
       "draft": false,
-      "head_sha": "8abc059422a7456d070a0716a5d2407ba295f0d7",
-      "number": 14731,
-      "title": "Recover reviewed outreach claim fence v2",
-      "updated_at": "2026-09-15T08:06:00Z"
+      "head_sha": "4b9bf10d6f2da2d8ae769f0614897d29ea0e409f",
+      "number": 14733,
+      "title": "research(A308734): constrain ternary 5-mod-12 obstructions",
+      "updated_at": "2026-09-15T08:09:26Z"
     },
     {
       "author": "woahwhattheheck",
@@ -171,10 +171,10 @@
       "branch": "zrs-v8m2/titan-v4-evaluator-child-mode-compose",
       "created_at": "2026-09-15T07:37:25Z",
       "draft": false,
-      "head_sha": "e956cbf230cfe13f151820baf84a62089383b6e4",
+      "head_sha": "f2ad87a846eadfffc5c2695f825b3975a7cbee1b",
       "number": 14704,
       "title": "TITAN V4: close evaluator authority chain after #14686",
-      "updated_at": "2026-09-15T07:47:39Z"
+      "updated_at": "2026-09-15T08:11:00Z"
     }
   ],
   "open_heads": {
@@ -193,7 +193,7 @@
     "14270": "86c47a9e32a67eece1382899a898d9ccf40e26da",
     "14299": "cd6a66435851b57f61c5a68c4ab7f8356701f910",
     "14314": "742aeafae8c258759c435bf6758e1546ff258c56",
-    "14317": "f7dbeadbeecbd7deeeab28c06d86048bbb4f6b5f",
+    "14317": "ddea86b16dd83c020c0422a3232851b78e1063e9",
     "14321": "1810cbac9e1fc9a0beddfcb13af37f6aa60726aa",
     "14333": "26e7110348d2ab0d994adf68d5e0f14ad8677e38",
     "14343": "c04b1fa4adcdb5cf928bb163c158a3adec828ea3",
@@ -217,7 +217,7 @@
     "14641": "ada6bccd3ec08da69b0572b08943c35ea0c0c5a4",
     "14648": "d422798850c2803484a2da2b77df3e515196bc74",
     "14650": "f7f86ce04a8a1e493cce18508acdd1807ab0cad6",
-    "14651": "c4e8daff6208b96d9a24dc18d6dfcebcdf516e17",
+    "14651": "b885c2f402f77efa02ff46f8ba1738345bd388fb",
     "14658": "bcc29688e888b38a5ce6ee1feb734b3d0060636f",
     "14664": "f1c9800387b399949a4bf9f85e10b73500042c41",
     "14669": "877b07a41f1b13b5d3cdeec635e9b4dcec75ac47",
@@ -227,7 +227,7 @@
     "14684": "5804490ae2a883bc492f7fe975921b62fdc25216",
     "14700": "d8a38da9c1042c157ccd49729809ae923915f66c",
     "14701": "f1f7120a0b55ba33b1852c8402d8e5d9e04dfe31",
-    "14704": "e956cbf230cfe13f151820baf84a62089383b6e4",
+    "14704": "f2ad87a846eadfffc5c2695f825b3975a7cbee1b",
     "14705": "6e8761343b10ec3518fd1a6a002594ac6076d38a",
     "14709": "87fde1165ef3002599a0f325cf27b0368be3fbe3",
     "14713": "532586ac907e372b31a9d823c020ae37dd232fce",
@@ -236,12 +236,23 @@
     "14724": "b97d2acc3f8839fd41e70631f6f782a6dab1e67b",
     "14728": "33e117064c336cefc947c52b38dee311e8ca0818",
     "14729": "9d122532364cc625cd0f7eddf26643bb58fc4391",
-    "14731": "8abc059422a7456d070a0716a5d2407ba295f0d7"
+    "14733": "4b9bf10d6f2da2d8ae769f0614897d29ea0e409f"
   },
   "pulls_listed": 59,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 26.8,
+  "queue_depth_per_runner": 27.7,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zklr-h5m8/outreach-claim-fence-20260913",
+      "closed_at": "2026-09-15T08:11:39Z",
+      "head_sha": "d87b74692c5f12d50615dcc8191a1b7ac9a3a6c0",
+      "merged_at": null,
+      "number": 14731,
+      "state": "CLOSED",
+      "title": "Recover reviewed outreach claim fence v2"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -395,21 +406,10 @@
       "number": 14668,
       "state": "MERGED",
       "title": "Revenue: add Transform Health agentic assessment pursuit carrier"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-sol-45/inkomoko-recovery-20260915",
-      "closed_at": "2026-09-15T07:29:40Z",
-      "head_sha": "55689cb381ee68192139e4abcae902df17add2dc",
-      "merged_at": "2026-09-15T07:29:40Z",
-      "number": 14689,
-      "state": "MERGED",
-      "title": "Recover Inkomoko AI response-readiness carrier"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-15T08:07:33Z",
+  "unchanged_since": "2026-09-15T08:13:13Z",
   "undatable_pulls": []
 }
