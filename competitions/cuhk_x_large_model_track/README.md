@@ -1,7 +1,9 @@
 # CUHK-X Large Model Track — entry/readiness handoff
 
 Operation: `CUHKX-LARGE-READINESS-ZSOL-20260915`  
-Tracker: Commons #14677
+Tracker: Commons #14677  
+Post-merge semantic fix-forward: Commons #14727  
+Lineage recovery: `CUHKX-READINESS-LINEAGE-RECOVERY-ZNAQ5M8-20260915`
 
 This directory is an **evidence gate**, not an entrant, browser, Kaggle client, dataset mirror, or prize claim. It intentionally starts blocked.
 
@@ -48,6 +50,8 @@ Exit codes:
 - `2`: blocked because required evidence is missing.
 
 `0` never means organizer acceptance, Top-15 status, finalist status, prize, or award.
+
+The state file is strict evidence input, not a bag of independent booleans. The checker rejects duplicate JSON keys and rejects impossible generations before stage evaluation. In particular, official-mirror dataset access requires the completed registration/rules/Kaggle-join/team-name gate sequence; a valid submission requires official-mirror data access; final-submission selection requires a valid, fully evidenced submission generation; and `authority.submission_ready` must exactly equal the mechanically evidenced `submission-complete` state. A Top-15 notification and any subsequent verification-deadline recheck must descend from that same evidenced submission lineage. Missing evidence may produce `BLOCKED_MISSING_EVIDENCE`; contradictory chronology or caller-minted readiness is `INVALID`.
 
 ## Browser/Kaggle owner handoff
 
