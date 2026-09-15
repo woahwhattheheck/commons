@@ -17,6 +17,11 @@ function loadHarness(key = 'op-secret') {
   const storage = new Map([['creator-desk.operator.v1', key]]);
   const baseUrl = 'https://creator.example/app';
 
+  class BrowserNode {
+    constructor(baseURI) { this._baseURI = baseURI; }
+    get baseURI() { return this._baseURI; }
+  }
+
   function outboundRequest(input, init) {
     if (input instanceof NativeRequest) return new NativeRequest(input, init);
     return new NativeRequest(new URL(String(input), baseUrl), init);
@@ -28,7 +33,13 @@ function loadHarness(key = 'op-secret') {
     return {status: 200, ok: true, json: async () => ({operator: true})};
   }
 
-  const window = {fetch: originalFetch, Request: NativeRequest, Headers: NativeHeaders, URL};
+  const document = new BrowserNode(baseUrl);
+  document.addEventListener = () => {};
+  document.querySelectorAll = () => [];
+  document.getElementById = () => null;
+  document.createElement = () => { throw new Error('DOM creation not expected in transport tests'); };
+
+  const window = {fetch: originalFetch, Request: NativeRequest, Headers: NativeHeaders, URL, Node: BrowserNode};
   const context = {
     window,
     location: {origin: 'https://creator.example', href: baseUrl},
@@ -39,12 +50,7 @@ function loadHarness(key = 'op-secret') {
     },
     Headers: NativeHeaders,
     URL,
-    document: {
-      addEventListener() {},
-      querySelectorAll() { return []; },
-      getElementById() { return null; },
-      createElement() { throw new Error('DOM creation not expected in transport tests'); },
-    },
+    document,
     console,
   };
   vm.createContext(context);
