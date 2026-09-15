@@ -86,9 +86,10 @@ def compile_operation(request: dict[str, Any]) -> dict[str, Any]:
         raise PortfolioError("worker compile source and authority must be objects")
 
     trusted_now = now_utc()
-    key = host.load_host_key()
+    host_before = host.load_host_authority(trusted_now)
+    key = host_before.key
+    floor_before = host_before.floor
     normalized_authority, authority_bytes = current.canonical_authority(authority)
-    floor_before = host.load_host_floor(key, trusted_now)
     require_current_authority(floor_before, authority_bytes)
     require_authority_chronology(normalized_authority, floor_before, trusted_now)
     authorized = current.compile_authorized_at(
@@ -98,10 +99,12 @@ def compile_operation(request: dict[str, Any]) -> dict[str, Any]:
         raise PortfolioError("worker authority canonicalization changed generation")
     host_seal = host.seal(authorized, key, floor_before)
     host_seal_bytes = current._canonical(host_seal)
-    floor_after = host.load_host_floor(key, trusted_now)
-    host.same_floor(floor_before, floor_after)
-    require_current_authority(floor_after, authorized.authority_bytes)
-    require_authority_chronology(normalized_authority, floor_after, trusted_now)
+    host_after = host.load_host_authority(trusted_now)
+    host.same_host_authority(host_before, host_after)
+    require_current_authority(host_after.floor, authorized.authority_bytes)
+    require_authority_chronology(
+        normalized_authority, host_after.floor, trusted_now
+    )
 
     return {
         "ok": True,
@@ -140,8 +143,9 @@ def verify_operation(request: dict[str, Any]) -> dict[str, Any]:
             "upstream authority: noncanonical persisted bytes"
         )
 
-    key = host.load_host_key()
-    floor_before = host.load_host_floor(key, trusted_now)
+    host_before = host.load_host_authority(trusted_now)
+    key = host_before.key
+    floor_before = host_before.floor
     require_current_authority(floor_before, artifacts["authority"])
     require_authority_chronology(normalized_authority, floor_before, trusted_now)
     seal = host.parse_host_seal(artifacts["host_seal"])
@@ -181,16 +185,18 @@ def verify_operation(request: dict[str, Any]) -> dict[str, Any]:
         key,
         trusted_now,
     )
-    floor_after = host.load_host_floor(key, trusted_now)
-    host.same_floor(floor_before, floor_after)
-    require_current_authority(floor_after, artifacts["authority"])
-    require_authority_chronology(normalized_authority, floor_after, trusted_now)
+    host_after = host.load_host_authority(trusted_now)
+    host.same_host_authority(host_before, host_after)
+    require_current_authority(host_after.floor, artifacts["authority"])
+    require_authority_chronology(
+        normalized_authority, host_after.floor, trusted_now
+    )
     return {
         "ok": True,
         "verified": {
             **verified,
-            "authority_floor_generation": floor_after.generation,
-            "authority_floor_sha256": host._digest(floor_after.raw),
+            "authority_floor_generation": host_after.floor.generation,
+            "authority_floor_sha256": host._digest(host_after.floor.raw),
             "host_seal_sha256": host._digest(artifacts["host_seal"]),
             "host_seal_verified": True,
         },

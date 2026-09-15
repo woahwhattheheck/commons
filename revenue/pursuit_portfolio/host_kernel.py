@@ -1,8 +1,10 @@
 """Fixed-host trust components used by the isolated current worker.
 
 Every production acquisition derives the POSIX effective-account root inside the
-fresh process, retains the validated parent directory descriptor through leaf
-consumption, and checks owner/mode/link-count/stable-generation properties.
+fresh process, retains one validated authority-root directory descriptor through
+both key and floor consumption, and checks owner/mode/link-count/stable-generation
+properties for every leaf.  The complete key+floor pair is fenced across each
+current compile or verify operation.
 """
 from __future__ import annotations
 
@@ -56,6 +58,13 @@ class HostAuthorizedPortfolio:
     authorized: AuthorizedPortfolio
     host_seal: dict[str, Any]
     host_seal_bytes: bytes
+
+
+@dataclass(frozen=True)
+class HostAuthoritySnapshot:
+    key: AuthorityKey
+    key_raw: bytes
+    floor: AuthorityFloor
 
 
 def _digest(raw: bytes) -> str:
@@ -209,6 +218,32 @@ def load_host_floor_from(
     )
 
 
+def load_host_authority_from(
+    root: str | Path, trusted_now: str
+) -> HostAuthoritySnapshot:
+    """Read key and floor through one retained authority-root generation."""
+    authority_root = Path(root)
+    key_path = authority_root / "authority-key.json"
+    floor_path = authority_root / "authority-floor.json"
+    root_fd = _open_validated_host_parent(key_path, "host authority root")
+    try:
+        key_raw = _read_validated_host_leaf(
+            key_path, root_fd, MAX_KEY_BYTES, "authority key"
+        )
+        key = parse_authority_key(key_raw)
+        floor_raw = _read_validated_host_leaf(
+            floor_path, root_fd, MAX_FLOOR_BYTES, "authority floor"
+        )
+        floor = parse_authority_floor(floor_raw, key, trusted_now)
+        return HostAuthoritySnapshot(key=key, key_raw=key_raw, floor=floor)
+    finally:
+        os.close(root_fd)
+
+
+def load_host_authority(trusted_now: str) -> HostAuthoritySnapshot:
+    return load_host_authority_from(fixed_host_root(), trusted_now)
+
+
 def load_host_key() -> AuthorityKey:
     return load_host_key_from(fixed_host_root() / "authority-key.json")
 
@@ -290,6 +325,16 @@ def same_floor(before: AuthorityFloor, after: AuthorityFloor) -> None:
         )
 
 
+def same_host_authority(
+    before: HostAuthoritySnapshot, after: HostAuthoritySnapshot
+) -> None:
+    if not hmac.compare_digest(before.key_raw, after.key_raw):
+        raise PortfolioError(
+            "authority key: generation changed during current-use operation"
+        )
+    same_floor(before.floor, after.floor)
+
+
 # Compatibility aliases used by focused tests and the worker.
 _digest = _digest
 _effective_account_home = effective_account_home
@@ -299,7 +344,10 @@ _load_host_key = load_host_key
 _load_host_floor = load_host_floor
 _load_host_key_from = load_host_key_from
 _load_host_floor_from = load_host_floor_from
+_load_host_authority = load_host_authority
+_load_host_authority_from = load_host_authority_from
 _seal_base = seal_base
 _seal = seal
 _parse_host_seal = parse_host_seal
 _same_floor = same_floor
+_same_host_authority = same_host_authority
