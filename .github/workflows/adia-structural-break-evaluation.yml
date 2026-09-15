@@ -1,0 +1,47 @@
+name: adia-structural-break-evaluation
+on:
+  pull_request:
+    paths:
+      - 'research/adia-structural-break-evaluation/**'
+      - '.github/workflows/adia-structural-break-evaluation.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  evaluation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    defaults:
+      run:
+        working-directory: research/adia-structural-break-evaluation
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13.5'
+      - name: Install tested numerical dependencies
+        run: python -m pip install numpy==2.3.5 pandas==2.2.3 scikit-learn==1.8.0
+      - name: Normal and optimized regressions
+        run: |
+          python -m py_compile evaluation.py stress.py parity.py test_evaluation.py
+          python -m unittest -v test_evaluation
+          python -O -m unittest -v test_evaluation
+      - name: Fetch pinned public source only
+        run: |
+          mkdir "$RUNNER_TEMP/adia-evaluation-sources"
+          curl --fail --location --retry 2 'https://raw.githubusercontent.com/woahwhattheheck/commons/d422798850c2803484a2da2b77df3e515196bc74/research/adia-structural-break-realtime/detector.py' -o "$RUNNER_TEMP/adia-evaluation-sources/detector.py"
+          curl --fail --location --retry 2 'https://raw.githubusercontent.com/crunchdao/competitions/5a24c2413122942eae97b6bad376ef0ec143ce22/competitions/structural-break-real-time/scoring/scoring.py' -o "$RUNNER_TEMP/adia-evaluation-sources/scoring.py"
+      - name: Exact public score function parity
+        run: python parity.py "$RUNNER_TEMP/adia-evaluation-sources/scoring.py"
+      - name: Reproduce retained 64-seed synthetic diagnostic
+        run: |
+          python stress.py --detector "$RUNNER_TEMP/adia-evaluation-sources/detector.py" --expected-sha256 1f4c94475e91fc76905b4ad0351d4391c35f7b20f1a1c26eba89ad828a386ae7 --seed-start 20000 --seeds 64 --out "$RUNNER_TEMP/adia-evaluation-run" > "$RUNNER_TEMP/adia-evaluation-log.json"
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          actual = json.loads((Path(os.environ['RUNNER_TEMP']) / 'adia-evaluation-run/summary.json').read_text())
+          expected = json.loads(Path('measured_report.json').read_text())
+          if actual['candidate'] != expected['candidate']:
+              raise SystemExit('synthetic metric/trace/corpus diagnostic differs from retained report')
+          print('PASS: exact candidate diagnostic replay; timing intentionally excluded')
+          PY
