@@ -144,7 +144,7 @@ class IntegrityTests(unittest.TestCase):
         victim = self._victim(root)
         snapshot = self._victim_snapshot(victim)
         moved = root / "state-old.db"
-        real_connect = store_base_module.sqlite3.connect
+        real_connect = store_base_module._SQLITE_CONNECT
         swapped = False
 
         def racing_connect(*args, **kwargs):
@@ -156,10 +156,47 @@ class IntegrityTests(unittest.TestCase):
             return real_connect(*args, **kwargs)
 
         with mock.patch.object(
-            store_base_module.sqlite3, "connect", side_effect=racing_connect
+            store_base_module, "_SQLITE_CONNECT", side_effect=racing_connect
         ):
             with self.assertRaises(StoreInvariantError):
                 PacemakerStore(requested, clock=Clock())
+        self._assert_victim_unchanged(victim, snapshot)
+
+    @unittest.skipIf(os.name == "nt", "POSIX swap-open-restore hostile")
+    def test_swap_open_restore_cannot_redirect_sqlite_generation(self):
+        root = Path(self.tmp.name) / "swap-open-restore"
+        root.mkdir(mode=0o700)
+        requested = root / "state.db"
+        initial = PacemakerStore(requested, clock=Clock())
+        initial.close()
+        victim = self._victim(root)
+        snapshot = self._victim_snapshot(victim)
+        moved = root / "state-old.db"
+        real_connect = store_base_module._SQLITE_CONNECT
+        swapped = False
+
+        def racing_connect(*args, **kwargs):
+            nonlocal swapped
+            if swapped:
+                return real_connect(*args, **kwargs)
+            os.replace(requested, moved)
+            requested.symlink_to(victim)
+            try:
+                db = real_connect(*args, **kwargs)
+            finally:
+                requested.unlink()
+                os.replace(moved, requested)
+            swapped = True
+            return db
+
+        with mock.patch.object(
+            store_base_module, "_SQLITE_CONNECT", side_effect=racing_connect
+        ):
+            repaired = PacemakerStore(requested, clock=Clock())
+            self.assertEqual(repaired.verify()["integrity"], "VALID")
+            repaired.close()
+
+        self.assertTrue(swapped)
         self._assert_victim_unchanged(victim, snapshot)
 
 

@@ -24,12 +24,17 @@ create-exclusively at `0600`; an existing database must be a same-owner regular
 single-link file opened without following a final symlink. Permission hardening
 uses the verified file descriptor, never a path-following `chmod`.
 
-The acquired `(device, inode)` generation is then checked immediately before and
-after each SQLite open. SQLite uses `mode=rw`, so a path rebound to a missing
-replacement cannot silently create a new database. A contested generation fails
-closed rather than unlinking, replacing, chmodding, or schema-writing a foreign
-successor. These checks protect cooperative pacemaker state only; they do not
-turn the pacemaker into caller admission or provider authorization.
+The acquired database descriptor remains open as the lifetime generation anchor.
+SQLite reopens that exact generation through a verified `/proc/self/fd/<n>` or
+`/dev/fd/<n>` descriptor URI with `mode=rw`; if the runtime cannot provide an
+alias resolving to the acquired `(device, inode)`, initialization fails closed.
+The retained descriptor and the visible pathname are checked around each SQLite
+open. Consequently, a path that is swapped to a foreign database only for the
+open and restored before return cannot redirect the SQLite connection. A
+contested generation fails closed rather than unlinking, replacing, chmodding,
+or schema-writing a foreign successor. These checks protect cooperative
+pacemaker state only; they do not turn the pacemaker into caller admission or
+provider authorization.
 
 ## Example
 
