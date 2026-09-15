@@ -4,7 +4,10 @@ on:
   push:
     paths:
       - 'revenue/ohsu_erp_rfp_2027_0005/source_bound.py'
+      - 'revenue/ohsu_erp_rfp_2027_0005/_source_bound_engine_source.txt'
       - 'revenue/ohsu_erp_rfp_2027_0005/test_source_bound.py'
+      - 'revenue/ohsu_erp_rfp_2027_0005/test_intent_receipt_provenance.py'
+      - 'revenue/ohsu_erp_rfp_2027_0005/INTENT_RECEIPT_PROVENANCE.md'
       - 'revenue/ohsu_erp_rfp_2027_0005/source_manifest.json'
       - 'revenue/ohsu_erp_rfp_2027_0005/current_position.json'
       - 'revenue/ohsu_erp_rfp_2027_0005/README.md'
@@ -13,7 +16,10 @@ on:
   pull_request:
     paths:
       - 'revenue/ohsu_erp_rfp_2027_0005/source_bound.py'
+      - 'revenue/ohsu_erp_rfp_2027_0005/_source_bound_engine_source.txt'
       - 'revenue/ohsu_erp_rfp_2027_0005/test_source_bound.py'
+      - 'revenue/ohsu_erp_rfp_2027_0005/test_intent_receipt_provenance.py'
+      - 'revenue/ohsu_erp_rfp_2027_0005/INTENT_RECEIPT_PROVENANCE.md'
       - 'revenue/ohsu_erp_rfp_2027_0005/source_manifest.json'
       - 'revenue/ohsu_erp_rfp_2027_0005/current_position.json'
       - 'revenue/ohsu_erp_rfp_2027_0005/README.md'
@@ -36,12 +42,23 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
       - name: Compile
-        run: python -m py_compile revenue/ohsu_erp_rfp_2027_0005/qualification.py revenue/ohsu_erp_rfp_2027_0005/source_bound.py revenue/ohsu_erp_rfp_2027_0005/test_source_bound.py
+        run: >-
+          python -m py_compile
+          revenue/ohsu_erp_rfp_2027_0005/qualification.py
+          revenue/ohsu_erp_rfp_2027_0005/source_bound.py
+          revenue/ohsu_erp_rfp_2027_0005/test_source_bound.py
+          revenue/ohsu_erp_rfp_2027_0005/test_intent_receipt_provenance.py
       - name: Original carrier regression
         run: python -m unittest revenue.ohsu_erp_rfp_2027_0005.test_qualification
       - name: Source-bound tests
-        run: python -m unittest revenue.ohsu_erp_rfp_2027_0005.test_source_bound
+        run: >-
+          python -m unittest
+          revenue.ohsu_erp_rfp_2027_0005.test_source_bound
+          revenue.ohsu_erp_rfp_2027_0005.test_intent_receipt_provenance
       - name: Original optimized regression
         run: python -O -m unittest revenue.ohsu_erp_rfp_2027_0005.test_qualification
       - name: Source-bound optimized tests
-        run: python -O -m unittest revenue.ohsu_erp_rfp_2027_0005.test_source_bound
+        run: >-
+          python -O -m unittest
+          revenue.ohsu_erp_rfp_2027_0005.test_source_bound
+          revenue.ohsu_erp_rfp_2027_0005.test_intent_receipt_provenance
