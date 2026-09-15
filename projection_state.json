@@ -4,7 +4,7 @@
   "projection": {
     "bytes": 190336871,
     "files": 16563,
-    "sha256": "abf51f8245ad8f27e958bf9f2daec2d07184a4aca5c71801fb96e5de0b147e86"
+    "sha256": "3acc09a42149ca71228bd60de75572d94a660704037cf4854b42cffa2dc60cf7"
   },
   "protocol": "v1",
   "schema": "commons-projection-v1",
