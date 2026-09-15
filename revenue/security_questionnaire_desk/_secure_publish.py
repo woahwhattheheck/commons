@@ -14,7 +14,9 @@ except ImportError:
 DeskError = core.DeskError
 
 
-def _open_output_directory(path: str | os.PathLike[str]) -> tuple[int, Path]:
+def _walk_output_directory(
+    path: str | os.PathLike[str], *, create_final: bool
+) -> tuple[int, Path]:
     if os.name == "nt" or not hasattr(os, "O_DIRECTORY"):
         raise DeskError("descriptor-bound publication requires a POSIX directory API")
     display = Path(path)
@@ -33,8 +35,8 @@ def _open_output_directory(path: str | os.PathLike[str]) -> tuple[int, Path]:
             try:
                 next_fd = os.open(component, flags, dir_fd=current_fd)
             except FileNotFoundError:
-                if not final:
-                    raise DeskError("output parent directory does not exist") from None
+                if not final or not create_final:
+                    raise DeskError("output directory is no longer visible at its admitted pathname") from None
                 try:
                     os.mkdir(component, mode=0o700, dir_fd=current_fd)
                     next_fd = os.open(component, flags, dir_fd=current_fd)
@@ -52,6 +54,47 @@ def _open_output_directory(path: str | os.PathLike[str]) -> tuple[int, Path]:
         raise
 
 
+def _open_output_directory(path: str | os.PathLike[str]) -> tuple[int, Path]:
+    return _walk_output_directory(path, create_final=True)
+
+
+def _open_visible_output_directory(path: str | os.PathLike[str]) -> int:
+    directory_fd, _ = _walk_output_directory(path, create_final=False)
+    return directory_fd
+
+
+def _same_generation(left: os.stat_result, right: os.stat_result) -> bool:
+    return left.st_dev == right.st_dev and left.st_ino == right.st_ino
+
+
+def _verify_visible_publication(
+    output_dir: str | os.PathLike[str],
+    directory_fd: int,
+    published_fds: Mapping[str, int],
+) -> None:
+    visible_fd = _open_visible_output_directory(output_dir)
+    try:
+        if not _same_generation(os.fstat(directory_fd), os.fstat(visible_fd)):
+            raise DeskError("output pathname detached from admitted directory generation")
+        flags = os.O_RDONLY | getattr(os, "O_NOFOLLOW", 0) | getattr(os, "O_CLOEXEC", 0)
+        if hasattr(os, "O_BINARY"):
+            flags |= os.O_BINARY
+        for name, retained_fd in published_fds.items():
+            try:
+                visible_file_fd = os.open(name, flags, dir_fd=visible_fd)
+            except OSError as exc:
+                raise DeskError(f"published pathname is no longer visible for {name}: {exc}") from exc
+            try:
+                retained = os.fstat(retained_fd)
+                visible = os.fstat(visible_file_fd)
+                if not stat.S_ISREG(visible.st_mode) or not _same_generation(retained, visible):
+                    raise DeskError(f"published pathname detached from created file generation: {name}")
+            finally:
+                os.close(visible_file_fd)
+    finally:
+        os.close(visible_fd)
+
+
 def publish_artifacts(
     packet: Mapping[str, Any],
     output_dir: str | os.PathLike[str],
@@ -59,6 +102,7 @@ def publish_artifacts(
 ) -> list[str]:
     directory_fd, display = _open_output_directory(output_dir)
     artifacts = artifact_builder(packet)
+    published_fds: dict[str, int] = {}
     try:
         for name in artifacts:
             try:
@@ -81,20 +125,24 @@ def publish_artifacts(
                 fd = os.open(name, flags, 0o600, dir_fd=directory_fd)
             except OSError as exc:
                 raise DeskError(f"failed create-exclusive publication for {name}: {exc}") from exc
-            try:
-                total = 0
-                while total < len(payload):
-                    written = os.write(fd, payload[total:])
-                    if written <= 0:
-                        raise DeskError(f"short write while publishing {name}")
-                    total += written
-                os.fsync(fd)
-                if not stat.S_ISREG(os.fstat(fd).st_mode):
-                    raise DeskError(f"published target is not regular: {name}")
-            finally:
-                os.close(fd)
+            published_fds[name] = fd
+            total = 0
+            while total < len(payload):
+                written = os.write(fd, payload[total:])
+                if written <= 0:
+                    raise DeskError(f"short write while publishing {name}")
+                total += written
+            os.fsync(fd)
+            if not stat.S_ISREG(os.fstat(fd).st_mode):
+                raise DeskError(f"published target is not regular: {name}")
             published.append(str(display / name))
         os.fsync(directory_fd)
+        _verify_visible_publication(output_dir, directory_fd, published_fds)
         return published
     finally:
+        for fd in published_fds.values():
+            try:
+                os.close(fd)
+            except OSError:
+                pass
         os.close(directory_fd)
