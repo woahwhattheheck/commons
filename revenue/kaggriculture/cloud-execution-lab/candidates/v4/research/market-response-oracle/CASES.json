@@ -16,8 +16,16 @@
         ],
         "config": {},
         "now": 604,
-        "dates": [604, 605],
-        "reference": [[604, 24]],
+        "dates": [
+          604,
+          605
+        ],
+        "reference": [
+          [
+            604,
+            24
+          ]
+        ],
         "rival_quantity": 48,
         "last": 718
       },
@@ -38,8 +46,16 @@
         ],
         "config": {},
         "now": 604,
-        "dates": [604, 605],
-        "reference": [[604, 8]],
+        "dates": [
+          604,
+          605
+        ],
+        "reference": [
+          [
+            604,
+            8
+          ]
+        ],
         "rival_quantity": 3,
         "last": 718
       },
@@ -60,8 +76,18 @@
         ],
         "config": {},
         "now": 700,
-        "dates": [700, 701, 705, 708],
-        "reference": [[700, 24]],
+        "dates": [
+          700,
+          701,
+          705,
+          708
+        ],
+        "reference": [
+          [
+            700,
+            24
+          ]
+        ],
         "rival_quantity": 6,
         "last": 718
       },
