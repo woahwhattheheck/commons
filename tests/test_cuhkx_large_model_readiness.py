@@ -20,6 +20,13 @@ class CuhkxReadinessTests(unittest.TestCase):
     def setUp(self):
         self.state = mod.load_state(STATE)
 
+    def _write(self, state):
+        td = tempfile.TemporaryDirectory()
+        self.addCleanup(td.cleanup)
+        path = Path(td.name) / "state.json"
+        path.write_text(json.dumps(state), encoding="utf-8")
+        return path
+
     def test_default_state_fails_every_stage_closed(self):
         for stage in mod.STAGES:
             ready, missing = mod.evaluate(self.state, stage)
@@ -50,8 +57,25 @@ class CuhkxReadinessTests(unittest.TestCase):
             official_site_registration="receipt:example-registration",
             kaggle_join_and_terms="receipt:example-kaggle-terms",
         )
-        self.assertTrue(mod.evaluate(state, "entry-ready")[0])
-        self.assertFalse(mod.evaluate(state, "submission-complete")[0])
+        loaded = mod.load_state(self._write(state))
+        self.assertTrue(mod.evaluate(loaded, "entry-ready")[0])
+        self.assertFalse(mod.evaluate(loaded, "submission-complete")[0])
+
+    def test_match_flag_cannot_override_mismatched_names(self):
+        state = copy.deepcopy(self.state)
+        state["team"].update(
+            official_site_team_name="TokenJunkieLabs",
+            kaggle_team_name="TokenJunkieLabs-Other",
+            team_name_match_verified=True,
+        )
+        with self.assertRaisesRegex(mod.InvalidState, "contradicts actual team names"):
+            mod.load_state(self._write(state))
+
+    def test_schema_boolean_cannot_masquerade_as_version_one(self):
+        state = copy.deepcopy(self.state)
+        state["schema_version"] = True
+        with self.assertRaisesRegex(mod.InvalidState, "integer 1"):
+            mod.load_state(self._write(state))
 
     def test_submission_requires_provider_receipts_and_claim_binding(self):
         state = copy.deepcopy(self.state)
@@ -75,14 +99,16 @@ class CuhkxReadinessTests(unittest.TestCase):
             submission="receipt:kaggle-submission",
         )
         state["authority"].update(dataset_access_claimed=True, submission_claimed=True)
-        self.assertTrue(mod.evaluate(state, "submission-complete")[0])
-        self.assertFalse(mod.evaluate(state, "verification-ready")[0])
+        loaded = mod.load_state(self._write(state))
+        self.assertTrue(mod.evaluate(loaded, "submission-complete")[0])
+        self.assertFalse(mod.evaluate(loaded, "verification-ready")[0])
 
     def test_top15_cannot_clear_without_deadline_recheck(self):
         state = copy.deepcopy(self.state)
         state["gates"]["top15_notified"] = True
         state["receipts"]["top15_notification"] = "receipt:top15"
-        ready, missing = mod.evaluate(state, "verification-ready")
+        loaded = mod.load_state(self._write(state))
+        ready, missing = mod.evaluate(loaded, "verification-ready")
         self.assertFalse(ready)
         self.assertIn("verification_deadline_rechecked_after_top15", missing)
         self.assertIn("controlling verification deadline", missing)
@@ -90,11 +116,8 @@ class CuhkxReadinessTests(unittest.TestCase):
     def test_prize_claim_is_invalid(self):
         state = copy.deepcopy(self.state)
         state["authority"]["prize_or_award_claimed"] = True
-        with tempfile.TemporaryDirectory() as td:
-            path = Path(td) / "state.json"
-            path.write_text(json.dumps(state), encoding="utf-8")
-            with self.assertRaisesRegex(mod.InvalidState, "not permitted to claim"):
-                mod.load_state(path)
+        with self.assertRaisesRegex(mod.InvalidState, "not permitted to claim"):
+            mod.load_state(self._write(state))
 
 
 if __name__ == "__main__":
