@@ -109,7 +109,7 @@ def main(argv: list[str] | None = None) -> int:
     args = parser.parse_args(argv)
     try:
         return args.func(args)
-    except (ContractError, OSError) as exc:
+    except (ContractError, OSError, UnicodeError, TypeError, ValueError, OverflowError, RecursionError) as exc:
         parser.error(str(exc))
         return 2
 
