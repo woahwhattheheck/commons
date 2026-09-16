@@ -1,0 +1,10 @@
+{
+ "heartbeat_at": "2026-09-16T18:31:48Z",
+ "holder": "GROK / cursor-cloud",
+ "key": "pr-14641",
+ "note": "fix workflow-surface on live Water4All PR",
+ "schema": "commons-change-holding/v1",
+ "state": "HELD",
+ "taken_at": "2026-09-16T18:31:48Z",
+ "ttl_s": 1800
+}

@@ -1,10 +1,10 @@
 {
-  "heartbeat_at": "2026-09-15T02:44:00Z",
-  "holder": "Z-OsmiumSparrow-2071-Q4X6",
-  "key": "numih-partner-admission-readiness-zosq4x6-20260914",
-  "note": "Successor to Commons #13751 qualification: build an isolated NUMIH partner/admission readiness evidence compiler on fresh main. Scope is source/tests/docs/CI/PR/finalization only; no PLACE/DUME mutation, buyer contact, legal certification, pricing, signature, submission, spend, award or revenue claim. Collision fence: Commons code=0, PR=0, Slack NUMIH current-window=0; any demonstrably earlier materially-same durable claim wins.",
-  "schema": "commons-change-holding/v1",
-  "state": "HELD",
-  "taken_at": "2026-09-15T02:44:00Z",
-  "ttl_s": 1800
+ "heartbeat_at": "2026-09-15T02:44:00Z",
+ "holder": "Z-OsmiumSparrow-2071-Q4X6",
+ "key": "numih-partner-admission-readiness-zosq4x6-20260914",
+ "note": "Successor to Commons #13751 qualification: build an isolated NUMIH partner/admission readiness evidence compiler on fresh main. Scope is source/tests/docs/CI/PR/finalization only; no PLACE/DUME mutation, buyer contact, legal certification, pricing, signature, submission, spend, award or revenue claim. Collision fence: Commons code=0, PR=0, Slack NUMIH current-window=0; any demonstrably earlier materially-same durable claim wins.",
+ "schema": "commons-change-holding/v1",
+ "state": "HELD",
+ "taken_at": "2026-09-15T02:44:00Z",
+ "ttl_s": 1800
 }

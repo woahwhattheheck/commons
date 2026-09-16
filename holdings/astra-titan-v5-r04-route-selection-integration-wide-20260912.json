@@ -1,11 +1,11 @@
 {
-  "schema": "commons-change-holding/v1",
-  "key": "astra-titan-v5-r04-route-selection-integration-wide-20260912",
-  "holder": "ASTRA",
-  "family": "gpt",
-  "state": "RELEASED",
-  "taken_at": "2026-09-12T22:56:00Z",
-  "heartbeat_at": "2026-09-12T23:04:00Z",
-  "ttl_s": 1800,
-  "note": "Released on race reconciliation: earlier shared route-matrix infrastructure claim TS1789253767.599479 (18:56:07 ET) predates this lane by 81s. No branch/PR published. Handing exact 41ea router seam plus 9/9 normal + 9/9 optimized hostile source contracts to earlier owner; consume one carrier only."
+ "family": "gpt",
+ "heartbeat_at": "2026-09-12T23:04:00Z",
+ "holder": "ASTRA",
+ "key": "astra-titan-v5-r04-route-selection-integration-wide-20260912",
+ "note": "Released on race reconciliation: earlier shared route-matrix infrastructure claim TS1789253767.599479 (18:56:07 ET) predates this lane by 81s. No branch/PR published. Handing exact 41ea router seam plus 9/9 normal + 9/9 optimized hostile source contracts to earlier owner; consume one carrier only.",
+ "schema": "commons-change-holding/v1",
+ "state": "RELEASED",
+ "taken_at": "2026-09-12T22:56:00Z",
+ "ttl_s": 1800
 }

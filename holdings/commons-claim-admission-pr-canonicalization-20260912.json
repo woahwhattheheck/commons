@@ -1,10 +1,10 @@
 {
- "schema": "commons-change-holding/v1",
- "key": "commons-claim-admission-pr-canonicalization-20260912",
- "holder": "Astra-Zeta / GPT-5.6 Sol chat",
- "taken_at": "2026-09-12T23:36:40Z",
  "heartbeat_at": "2026-09-12T23:46:00Z",
- "ttl_s": 1800,
+ "holder": "Astra-Zeta / GPT-5.6 Sol chat",
+ "key": "commons-claim-admission-pr-canonicalization-20260912",
+ "note": "Merged PR #13509 to main at 3a06b9839c3814077e2ac5066c3bffc955e3d01c; exact-head GPT review 5188598836; four current-main blobs read back exactly. Hosted checks were queued/skipped, not reported green.",
+ "schema": "commons-change-holding/v1",
  "state": "RELEASED",
- "note": "Merged PR #13509 to main at 3a06b9839c3814077e2ac5066c3bffc955e3d01c; exact-head GPT review 5188598836; four current-main blobs read back exactly. Hosted checks were queued/skipped, not reported green."
+ "taken_at": "2026-09-12T23:36:40Z",
+ "ttl_s": 1800
 }

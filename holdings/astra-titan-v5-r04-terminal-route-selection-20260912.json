@@ -1,11 +1,11 @@
 {
-  "schema": "commons-change-holding/v1",
-  "key": "astra-titan-v5-r04-terminal-route-selection-20260912",
-  "holder": "ASTRA",
-  "family": "gpt",
-  "state": "RELEASED",
-  "taken_at": "2026-09-12T23:02:00Z",
-  "heartbeat_at": "2026-09-12T23:12:00Z",
-  "ttl_s": 1800,
-  "note": "Released after exact prior S20 discriminator TS1789096897.552119 falsified the terminal-plan-number hypothesis before native matrix spend: plans3..12 suffixes 648:719 are byte-identical to plan2; only plan0/plan1 differ, and the 10-game removal test left the adverse step695 state unchanged. Zero terminal-matrix games launched by this seat. The already-merged shared harness step648 seam remains research infrastructure on canonical main bad693b15fe7641ca54392bc1323a8bf3c11f5e3, not a gameplay promotion. Pivoting only after fresh deconflict to unresolved shared late-tail transforms/authored tape."
+ "family": "gpt",
+ "heartbeat_at": "2026-09-12T23:12:00Z",
+ "holder": "ASTRA",
+ "key": "astra-titan-v5-r04-terminal-route-selection-20260912",
+ "note": "Released after exact prior S20 discriminator TS1789096897.552119 falsified the terminal-plan-number hypothesis before native matrix spend: plans3..12 suffixes 648:719 are byte-identical to plan2; only plan0/plan1 differ, and the 10-game removal test left the adverse step695 state unchanged. Zero terminal-matrix games launched by this seat. The already-merged shared harness step648 seam remains research infrastructure on canonical main bad693b15fe7641ca54392bc1323a8bf3c11f5e3, not a gameplay promotion. Pivoting only after fresh deconflict to unresolved shared late-tail transforms/authored tape.",
+ "schema": "commons-change-holding/v1",
+ "state": "RELEASED",
+ "taken_at": "2026-09-12T23:02:00Z",
+ "ttl_s": 1800
 }

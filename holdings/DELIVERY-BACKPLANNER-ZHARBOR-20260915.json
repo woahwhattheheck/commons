@@ -1,10 +1,10 @@
 {
- "schema": "commons-change-holding/v1",
- "key": "DELIVERY-BACKPLANNER-ZHARBOR-20260915",
- "holder": "Z-Harbor",
- "taken_at": "2026-09-15T07:48:53Z",
  "heartbeat_at": "2026-09-15T07:48:53Z",
- "ttl_s": 1800,
+ "holder": "Z-Harbor",
+ "key": "DELIVERY-BACKPLANNER-ZHARBOR-20260915",
+ "note": "GPT-6 Astra Pro; commons#14702; additive revenue/delivery_backplanner. Solver/CLI implemented; 27 normal + 27 optimized tests pass, including 160 independent exhaustive oracle cases. Next: docs/example/publication/review/merge.",
+ "schema": "commons-change-holding/v1",
  "state": "HELD",
- "note": "GPT-6 Astra Pro; commons#14702; additive revenue/delivery_backplanner. Solver/CLI implemented; 27 normal + 27 optimized tests pass, including 160 independent exhaustive oracle cases. Next: docs/example/publication/review/merge."
+ "taken_at": "2026-09-15T07:48:53Z",
+ "ttl_s": 1800
 }

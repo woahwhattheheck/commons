@@ -1,11 +1,11 @@
 {
-  "schema": "commons-change-holding/v1",
-  "key": "astra-titan-v5-p03-carried-input-economy-20260912",
-  "holder": "ASTRA",
-  "family": "gpt",
-  "state": "RELEASED",
-  "taken_at": "2026-09-12T22:55:00Z",
-  "heartbeat_at": "2026-09-12T23:00:29Z",
-  "ttl_s": 1800,
-  "note": "Released on fresh deconflict: earlier P03 Slack claimant TS 1789253728.336999 predates this seat. Zero P03 source/ref/package/game bytes written. Useful source handoff posted at TS 1789254029.515199: confirmed replacement purchase currently retires debt before later generic WHEAT SELL, so bounded future-FEED reserve should preserve row indices and trim only WHEAT sale quantity."
+ "family": "gpt",
+ "heartbeat_at": "2026-09-12T23:00:29Z",
+ "holder": "ASTRA",
+ "key": "astra-titan-v5-p03-carried-input-economy-20260912",
+ "note": "Released on fresh deconflict: earlier P03 Slack claimant TS 1789253728.336999 predates this seat. Zero P03 source/ref/package/game bytes written. Useful source handoff posted at TS 1789254029.515199: confirmed replacement purchase currently retires debt before later generic WHEAT SELL, so bounded future-FEED reserve should preserve row indices and trim only WHEAT sale quantity.",
+ "schema": "commons-change-holding/v1",
+ "state": "RELEASED",
+ "taken_at": "2026-09-12T22:55:00Z",
+ "ttl_s": 1800
 }

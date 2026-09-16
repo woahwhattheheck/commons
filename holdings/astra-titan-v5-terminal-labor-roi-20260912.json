@@ -1,11 +1,11 @@
 {
-  "schema": "commons-change-holding/v1",
-  "key": "astra-titan-v5-terminal-labor-roi-20260912",
-  "holder": "ASTRA",
-  "family": "gpt",
-  "state": "RELEASED",
-  "taken_at": "2026-09-12T23:29:52Z",
-  "heartbeat_at": "2026-09-12T23:31:30Z",
-  "ttl_s": 1800,
-  "note": "Released NO_BUILD after exact source theorem. Official engine cost/reset + default config: 11 universal late hires across steps672..673 cost fib(0..10)=232 total at farmHandCostMult1, persist only through step695, and create 251 available hand-turns. Exact p2..12 authored tape fills all 251 hand slots (16 PASS total). Marginal hire10 costs55 and has 6 WATER+3 HARVEST; hire11 costs89 and has 6 COLLECT_FERTILIZER+5 FEED+5 CARE+1 PICKUP, zero PASS. These downstream effects can exceed hire cost and depend on live owned crops/animals, so no observation-public one-sided non-amortization bound exists without re-solving production value; suppressor would not be reject-safe. Durable Slack result TS1789255890.122739. Zero candidate/game spend. Future late-labor work requires trace evidence that these actions no-op, not a source-only guard."
+ "family": "gpt",
+ "heartbeat_at": "2026-09-12T23:31:30Z",
+ "holder": "ASTRA",
+ "key": "astra-titan-v5-terminal-labor-roi-20260912",
+ "note": "Released NO_BUILD after exact source theorem. Official engine cost/reset + default config: 11 universal late hires across steps672..673 cost fib(0..10)=232 total at farmHandCostMult1, persist only through step695, and create 251 available hand-turns. Exact p2..12 authored tape fills all 251 hand slots (16 PASS total). Marginal hire10 costs55 and has 6 WATER+3 HARVEST; hire11 costs89 and has 6 COLLECT_FERTILIZER+5 FEED+5 CARE+1 PICKUP, zero PASS. These downstream effects can exceed hire cost and depend on live owned crops/animals, so no observation-public one-sided non-amortization bound exists without re-solving production value; suppressor would not be reject-safe. Durable Slack result TS1789255890.122739. Zero candidate/game spend. Future late-labor work requires trace evidence that these actions no-op, not a source-only guard.",
+ "schema": "commons-change-holding/v1",
+ "state": "RELEASED",
+ "taken_at": "2026-09-12T23:29:52Z",
+ "ttl_s": 1800
 }

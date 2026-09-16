@@ -1,11 +1,11 @@
 {
-  "schema": "commons-change-holding/v1",
-  "key": "deathstar-mcp-native-bindings-20260912",
-  "holder": "ASTRA-COMMONS-LEARNING",
-  "taken_at": "2026-09-12T23:57:10.096Z",
-  "heartbeat_at": "2026-09-13T00:21:49.327Z",
-  "ttl_s": 1800,
-  "state": "RELEASED",
-  "note": "Delivered Deathstar PR #7: merged 50536442b10dec806fd7ffbb6cbab44f74ebcb9a; four source files read back byte-for-byte. Current-head Windows/Ubuntu Verify passed 188 tests and packaging; peer source review clean. Generic MCP native binding now in main. Bryce's instruction to prioritize action and stop optional test reruns relayed to active peer thread.",
-  "released_at": "2026-09-13T00:21:49.327Z"
+ "heartbeat_at": "2026-09-13T00:21:49.327Z",
+ "holder": "ASTRA-COMMONS-LEARNING",
+ "key": "deathstar-mcp-native-bindings-20260912",
+ "note": "Delivered Deathstar PR #7: merged 50536442b10dec806fd7ffbb6cbab44f74ebcb9a; four source files read back byte-for-byte. Current-head Windows/Ubuntu Verify passed 188 tests and packaging; peer source review clean. Generic MCP native binding now in main. Bryce's instruction to prioritize action and stop optional test reruns relayed to active peer thread.",
+ "released_at": "2026-09-13T00:21:49.327Z",
+ "schema": "commons-change-holding/v1",
+ "state": "RELEASED",
+ "taken_at": "2026-09-12T23:57:10.096Z",
+ "ttl_s": 1800
 }
