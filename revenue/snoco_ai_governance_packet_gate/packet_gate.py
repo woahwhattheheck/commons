@@ -136,6 +136,29 @@ def _make_authority_api():
         ("clarification_channel_general", "010d1711594bb8aa1a1df9a6c687ac40ed48f4f6f384cf00eef2df5fe31b2fee"),
     ))
 
+    # Canonical SHA-256 identities of the complete currently-known packet gap
+    # inventory. These rows are authority too: allowing callers to delete,
+    # reclassify, or rewrite them would understate the mandatory/scoreable work
+    # still blocked on official packet retrieval while leaving a valid HOLD
+    # receipt. Keep the reviewed gap catalog closure-held for the same reason as
+    # the confirmed and official-source identities above.
+    trusted_packet_requirement_hashes = dict((
+        ("clarification_deadline", "30549e9fdfab89f141b0712c84c80a040539307b8c6bceaf7e780a45a29cd451"),
+        ("submission_email", "9ebd25d98db6c16e7cb97d5b3b66571c6bee3757a3e5523e7b9beb49e753da1a"),
+        ("required_forms", "7f5cccae5f264f680a2b6b2ec00c8a91a24e570e4fc5f69247a51926ebaad70b"),
+        ("minimum_qualifications", "3e3eea0ee373256b940e10b3e10eede82d8ccd170c262eade2dc60dde59f55a3"),
+        ("references", "e3685d733dcfc9b264b902f97b82556664e2b0a3d91429886ff72071c8ac4771"),
+        ("evaluation_scoring", "104ba58f7533a7083938b1955d91c46b7b903a6318f42905dfaa04e07a82926c"),
+        ("technical_requirements", "551a6c9f79a0eb5097fdce0c8c7445d7ea3186e940d973403a48d04b5be39618"),
+        ("security_privacy", "114200c31bd4de4c02fbe9f6042b0e127aecffdeeeadc746e4cb812dd3778bb2"),
+        ("pricing_form", "9ad820e65bd797ed2923006e3b1d87d25b01691c8296c98f825465dda8d3cd2a"),
+        ("insurance", "0771d1eba719f7d70cacef2daaa1121954f7f7fe54f9df5c9495266979be35ea"),
+        ("contract_terms", "0d0dfb4ddb3fc73f0e213c96df4c2b87a1740b47c624f52b40a8b8f48e844efd"),
+        ("teaming_subcontract", "a750b53527ca7bbe11ad68e1eba415829ca5c914cf2c5ceddebab9dec4f7fb8d"),
+        ("proposal_format", "f9d99760418d127ee0a5726da63da34632160a48b4b42594f123399c658a1b06"),
+        ("addenda_acknowledgement", "24c6f94e572ffaf4d318d879d93e986ba04b03c82635fce192ad9cbc9e04ff8c"),
+    ))
+
     def canonical(value: Any) -> bytes:
         return json_dumps(
             value,
@@ -270,6 +293,7 @@ def _make_authority_api():
         ids: set[str] = set()
         normalized: list[dict[str, Any]] = []
         confirmed_ids: set[str] = set()
+        packet_required_ids: set[str] = set()
 
         for index, req in enumerate(matrix["requirements"]):
             exact_keys(
@@ -322,6 +346,13 @@ def _make_authority_api():
                     # validate_matrix cannot bypass validate_sources.
                     validate_official_source(source, sid)
                 confirmed_ids.add(rid)
+            elif req["state"] == "PACKET_REQUIRED":
+                expected_digest = trusted_packet_requirement_hashes.get(rid)
+                if expected_digest is None:
+                    raise gate_error(f"untrusted packet-required requirement id: {rid}")
+                if digest(req) != expected_digest:
+                    raise gate_error(f"packet-gap row drift: {rid}")
+                packet_required_ids.add(rid)
             normalized.append(req)
 
         expected_confirmed_ids = set(trusted_requirement_hashes)
@@ -329,6 +360,12 @@ def _make_authority_api():
             missing = sorted(expected_confirmed_ids - confirmed_ids)
             extra = sorted(confirmed_ids - expected_confirmed_ids)
             raise gate_error(f"confirmed requirement set drift: missing={missing} extra={extra}")
+
+        expected_packet_required_ids = set(trusted_packet_requirement_hashes)
+        if packet_required_ids != expected_packet_required_ids:
+            missing = sorted(expected_packet_required_ids - packet_required_ids)
+            extra = sorted(packet_required_ids - expected_packet_required_ids)
+            raise gate_error(f"packet-required requirement set drift: missing={missing} extra={extra}")
 
         exact_keys(matrix["boundaries"], boundary_keys, "boundaries")
         for key in boundary_keys:
