@@ -217,6 +217,7 @@ class EvaluationCase:
         if not observed_result:
             blockers.append("missing_observed_result")
         blockers.sort()
+        recorded_scores = {dim: self.scores[dim] for dim in RUBRIC_DIMENSIONS if dim in self.scores}
         return {
             "case_id": self.case_id.strip(),
             "status": "PASS" if not blockers else "HOLD",
@@ -224,6 +225,7 @@ class EvaluationCase:
             "missing_dimensions": sorted(missing),
             "invalid_scores": {k: invalid[k] for k in sorted(invalid)},
             "below_threshold": {k: below[k] for k in sorted(below)},
+            "scores": {k: recorded_scores[k] for k in sorted(recorded_scores)},
             "evidence_refs": evidence_refs,
             "observed_result": observed_result,
         }

@@ -12,7 +12,9 @@ from commercial.legal_aid_copilot_agents import (
     PartnerEvidence,
     Reference,
     Trainer,
+    compile_delivery_pack,
 )
+from test_legal_aid_copilot_agents import good_adoption, good_eval, good_governance, good_partner
 
 
 class DuplicateEvidenceRegressionTests(unittest.TestCase):
@@ -151,6 +153,25 @@ class CliFailClosedRegressionTests(unittest.TestCase):
             for optimized in (False, True):
                 with self.subTest(optimized=optimized):
                     self._assert_controlled_hold(self._run_path(missing, optimized))
+
+
+class ReceiptEvidenceBindingTests(unittest.TestCase):
+    def test_passing_score_change_changes_receipt(self):
+        first = compile_delivery_pack(
+            partner=good_partner(),
+            governance=good_governance(),
+            evaluations=(good_eval(),),
+            adoption=good_adoption(),
+        )
+        changed = compile_delivery_pack(
+            partner=good_partner(),
+            governance=good_governance(),
+            evaluations=(good_eval(task_success=5),),
+            adoption=good_adoption(),
+        )
+        self.assertEqual(first["evaluations"][0]["scores"]["task_success"], 4)
+        self.assertEqual(changed["evaluations"][0]["scores"]["task_success"], 5)
+        self.assertNotEqual(first["receipt_sha256"], changed["receipt_sha256"])
 
 
 if __name__ == "__main__":
