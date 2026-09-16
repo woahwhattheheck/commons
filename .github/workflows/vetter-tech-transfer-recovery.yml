@@ -1,0 +1,35 @@
+name: Vetter tech-transfer recovery
+
+on:
+  pull_request:
+    paths:
+      - 'revenue/vetter_clinical_fill_tech_transfer/**'
+      - '.github/workflows/vetter-tech-transfer-recovery.yml'
+  push:
+    branches:
+      - 'zvh-q9x7/vetter-tech-transfer-recovery-20260914'
+    paths:
+      - 'revenue/vetter_clinical_fill_tech_transfer/**'
+      - '.github/workflows/vetter-tech-transfer-recovery.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  exact-published-bytes:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout exact commit
+        uses: actions/checkout@v4
+      - name: Python 3.13
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Compile and test recovery corpus
+        working-directory: revenue/vetter_clinical_fill_tech_transfer
+        run: |
+          python -m compileall -q .
+          python -m unittest -v test_engine.py test_recovery.py
+          python -O -m unittest -v test_engine.py test_recovery.py
+          python synthetic_acceptance.py
