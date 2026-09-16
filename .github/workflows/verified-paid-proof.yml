@@ -23,13 +23,44 @@ jobs:
         with:
           python-version: '3.12'
       - name: Normal interpreter
-        run: python -m unittest revenue.verified_paid_proof.test_verified_paid_proof -v
+        run: >-
+          python -W error::SyntaxWarning -m unittest
+          revenue.verified_paid_proof.test_verified_paid_proof
+          revenue.verified_paid_proof.test_public_release_boundary
+          -v
       - name: Optimized interpreter
-        run: python -O -m unittest revenue.verified_paid_proof.test_verified_paid_proof -v
-      - name: Synthetic compile smoke
+        run: >-
+          python -O -W error::SyntaxWarning -m unittest
+          revenue.verified_paid_proof.test_verified_paid_proof
+          revenue.verified_paid_proof.test_public_release_boundary
+          -v
+      - name: Compile all modules
+        run: python -W error::SyntaxWarning -m compileall -q revenue/verified_paid_proof
+      - name: Synthetic public-boundary smoke
         run: |
           rm -rf /tmp/verified-paid-proof
-          python -m revenue.verified_paid_proof.verified_paid_proof revenue/verified_paid_proof/example.synthetic.json --out-dir /tmp/verified-paid-proof
+          python -W error::SyntaxWarning -m revenue.verified_paid_proof.verified_paid_proof revenue/verified_paid_proof/example.synthetic.json --out-dir /tmp/verified-paid-proof
           test -s /tmp/verified-paid-proof/proof.json
+          test -s /tmp/verified-paid-proof/public.json
           test -s /tmp/verified-paid-proof/proof.md
           test -s /tmp/verified-paid-proof/receipt.sha256
+          ! grep -q 'private_evidence' /tmp/verified-paid-proof/public.json
+          ! grep -q 'engagement_id' /tmp/verified-paid-proof/public.json
+          python -W error::SyntaxWarning -m revenue.verified_paid_proof.verified_paid_proof revenue/verified_paid_proof/example.synthetic.json --public-json > /tmp/public.stdout.json
+          cmp /tmp/verified-paid-proof/public.json /tmp/public.stdout.json
+          python - <<'PY'
+          import hashlib
+          import json
+          from pathlib import Path
+          from revenue.verified_paid_proof.core import _canonical_json
+
+          payload = json.loads(Path('/tmp/verified-paid-proof/public.json').read_text())
+          receipt = payload.pop('public_receipt_sha256')
+          assert receipt == hashlib.sha256(_canonical_json(payload).encode('utf-8')).hexdigest()
+          assert set(payload) == {
+              'schema_version',
+              'policy_version',
+              'release_state',
+              'public_projection',
+          }
+          PY

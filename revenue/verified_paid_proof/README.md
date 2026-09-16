@@ -64,22 +64,30 @@ Run:
 
 ```bash
 python -m revenue.verified_paid_proof.verified_paid_proof input.json --out-dir out
-python -m unittest revenue.verified_paid_proof.test_verified_paid_proof -v
-python -O -m unittest revenue.verified_paid_proof.test_verified_paid_proof -v
+python -m revenue.verified_paid_proof.verified_paid_proof input.json --public-json
+python -m unittest \
+  revenue.verified_paid_proof.test_verified_paid_proof \
+  revenue.verified_paid_proof.test_public_release_boundary -v
+python -O -m unittest \
+  revenue.verified_paid_proof.test_verified_paid_proof \
+  revenue.verified_paid_proof.test_public_release_boundary -v
 ```
-
-Outputs are `proof.json`, `proof.md`, and `receipt.sha256`. The receipt binds normalized input, policy version, compiled proof, and Markdown projection.
 
 ## Public/private output boundary
 
-`proof.json` is the internal evidence bundle. It intentionally retains the engagement identifier, private evidence, source references, and permission evidence and must not be published as collateral.
+The output directory contains four artifacts with intentionally different authority:
 
-Only the `public_projection` object and `proof.md` are designed for public reuse, and only when the resulting state is `PUBLIC_ANONYMOUS` or `PUBLIC_NAMED`. Public outcome entries contain the permissioned claim only; their evidence/source locators remain in `private_evidence`. Withheld reasons are content-free and never echo a non-public claim.
+- `proof.json` is the **internal audit envelope**. It intentionally retains the engagement identifier, private evidence, source references, blockers, withheld facts, and permission evidence. Never publish it as collateral. The `--json` switch prints this internal envelope.
+- `public.json` is the allowlisted, fail-closed machine-readable public artifact. `HOLD` and `PRIVATE_VERIFIED` collapse to the same `NO_PUBLIC_CLAIM` envelope. Public states contain only the fixed public projection schema and a `public_receipt_sha256` computed solely from that public envelope. Use `--public-json` at public or outbound automation boundaries.
+- `proof.md` is the publication-safe human-readable artifact in **every** state. Non-public states collapse to one neutral no-claim statement. Public states omit blockers, withheld-inventory metadata, private source locators, and every unpermissioned fact.
+- `receipt.sha256` is the internal audit receipt binding normalized input, policy version, internal proof, and Markdown. It is deliberately distinct from the public-only receipt inside `public.json`.
 
-Policy `verified-paid-proof/v2` projects every external string into one visual line, replaces Unicode control/format characters with spacing, escapes Markdown structure before HTML encoding, and entity-encodes URL/email delimiters that common renderers auto-link. This keeps permissioned text from creating extra headings, links, mentions, emphasis, HTML, or claims outside the structured public projection while preserving ordinary punctuation such as apostrophes.
+Public outcome entries contain the permissioned claim only; their evidence/source locators remain in `private_evidence`. Withheld reasons are content-free and never echo a non-public claim.
+
+Policy `verified-paid-proof/v3` preserves the v2 rendering defenses and closes the artifact-authority gap. Every external string is projected into one visual line, Unicode control/format characters become spacing, Markdown structure is escaped before HTML encoding, and URL/email/mention delimiters are entity-encoded to prevent automatic linking. V3 additionally escapes common extension delimiters, makes Markdown fail closed for non-public states, omits withholding inventory from public Markdown, and introduces the allowlisted public JSON envelope.
 
 ## Authority boundary
 
-This compiler has no network or publishing capability. It does not contact customers, request permissions, send collateral, publish case studies, recognize revenue, or bypass the current single-writer/Muse arbitration system. A public-safe compiler result is evidence that the *content* is permission-safe under the supplied record; it is not an authorization to choose a channel or send it.
+This compiler has no network or publishing capability. It does not contact customers, request permissions, send collateral, publish case studies, recognize revenue, or bypass the current single-writer/Muse arbitration system. A public-safe compiler result is evidence that the *content* is permission-safe under the supplied record; it is not authorization to choose a channel or send it.
 
 Never put real customer names, private email/thread contents, Stripe identifiers, quotes, logos, payment evidence, or generated private proof into this public repository unless separate authorization already makes that material public.

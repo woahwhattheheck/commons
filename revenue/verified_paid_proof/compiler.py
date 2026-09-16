@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import hashlib
 import html
+import json
 import re
 import unicodedata
 from pathlib import Path
@@ -21,7 +22,19 @@ from .core import (
 )
 from .validation import validate_and_normalize
 
-_MARKDOWN_CONTROL_RE = re.compile(r"([\\`*_{}\[\]()#+\-!|>])")
+_MARKDOWN_CONTROL_RE = re.compile(r"([\\`*_{}\[\]()#+\-!|>~$^])")
+_PUBLIC_STATUSES = frozenset({"PUBLIC_ANONYMOUS", "PUBLIC_NAMED"})
+_PUBLIC_PROJECTION_KEYS = (
+    "status",
+    "proof_id",
+    "customer",
+    "paid_engagement",
+    "exact_amount",
+    "delivery_accepted",
+    "quote",
+    "logo_ref",
+    "outcomes",
+)
 
 
 def _markdown_inline(value: str) -> str:
@@ -83,7 +96,7 @@ def compile_proof(raw: dict[str, Any]) -> CompiledProof:
     if status not in STATUSES:
         raise ProofError("internal status invariant failed")
 
-    public_enabled = status in {"PUBLIC_ANONYMOUS", "PUBLIC_NAMED"}
+    public_enabled = status in _PUBLIC_STATUSES
     named = status == "PUBLIC_NAMED"
 
     if named:
@@ -191,51 +204,37 @@ def compile_proof(raw: dict[str, Any]) -> CompiledProof:
 
 
 def render_markdown(proof: dict[str, Any]) -> str:
+    """Render a publication-safe artifact in every state."""
+
     status = proof["status"]
     public = proof["public_projection"]
-    lines = ["# Verified Paid Proof", "", f"**Status:** `{status}`", f"**Policy:** `{proof['policy_version']}`"]
+    lines = ["# Verified Paid Proof", "", f"**Policy:** `{proof['policy_version']}`"]
 
-    if status == "HOLD":
-        lines += ["", "No public or private paid-proof claim is releasable from this record."]
-    elif status == "PRIVATE_VERIFIED":
-        lines += [
-            "",
-            "Settled payment is verified internally. No public sales claim is authorized by this record.",
-            "",
-            "**Important:** payment does not imply satisfaction, endorsement, delivery acceptance, or outcome success.",
-        ]
-    else:
-        lines += ["", "## Sales-safe public projection", ""]
-        lines.append(f"- Customer: **{_markdown_inline(public['customer'])}**")
-        lines.append("- Commercial fact: **Paid engagement verified**")
-        if public["exact_amount"] is not None:
-            lines.append(f"- Settled amount: **{_markdown_inline(public['exact_amount'])}**")
-        else:
-            lines.append("- Settled amount: withheld")
-        if public["delivery_accepted"]:
-            lines.append("- Delivery: **explicit acceptance verified**")
-        if public["outcomes"]:
-            lines.append("- Permissioned outcome facts:")
-            for outcome in public["outcomes"]:
-                lines.append(f"  - {_markdown_inline(outcome['claim'])}")
-        if public["quote"] is not None:
-            lines.append(f"- Permissioned customer quote: “{_markdown_inline(public['quote'])}”")
-        if public["logo_ref"] is not None:
-            lines.append(f"- Permissioned logo reference: {_markdown_inline(public['logo_ref'])}")
-        lines += [
-            "",
-            "Payment is represented only as payment. No unstated satisfaction, endorsement, recommendation, recurring-customer, or performance claim is implied.",
-        ]
+    if status not in _PUBLIC_STATUSES:
+        lines += ["", "No public paid-work claim is authorized by this record.", ""]
+        return "\n".join(lines)
 
-    if proof["withheld"]:
-        lines += ["", "## Withheld from public projection", ""]
-        for item in proof["withheld"]:
-            lines.append(f"- {_markdown_inline(item)}")
-    if proof["blockers"]:
-        lines += ["", "## Blockers", ""]
-        for item in proof["blockers"]:
-            lines.append(f"- {_markdown_inline(item)}")
-    lines.append("")
+    lines += ["", "## Sales-safe public projection", ""]
+    lines.append(f"- Proof ID: `{public['proof_id']}`")
+    lines.append(f"- Customer: **{_markdown_inline(public['customer'])}**")
+    lines.append("- Commercial fact: **Paid engagement verified**")
+    if public["exact_amount"] is not None:
+        lines.append(f"- Settled amount: **{_markdown_inline(public['exact_amount'])}**")
+    if public["delivery_accepted"]:
+        lines.append("- Delivery: **explicit acceptance verified**")
+    if public["outcomes"]:
+        lines.append("- Permissioned outcome facts:")
+        for outcome in public["outcomes"]:
+            lines.append(f"  - {_markdown_inline(outcome['claim'])}")
+    if public["quote"] is not None:
+        lines.append(f"- Permissioned customer quote: “{_markdown_inline(public['quote'])}”")
+    if public["logo_ref"] is not None:
+        lines.append(f"- Permissioned logo reference: {_markdown_inline(public['logo_ref'])}")
+    lines += [
+        "",
+        "Payment is represented only as payment. No unstated satisfaction, endorsement, recommendation, recurring-customer, or performance claim is implied.",
+        "",
+    ]
     return "\n".join(lines)
 
 
@@ -243,8 +242,44 @@ def compile_text(text: str) -> CompiledProof:
     return compile_proof(strict_json_loads(text))
 
 
+def public_payload(compiled: CompiledProof) -> dict[str, Any]:
+    """Return an allowlisted, fail-closed envelope containing only public facts."""
+
+    status = compiled.proof["status"]
+    if status not in _PUBLIC_STATUSES:
+        return {
+            "schema_version": compiled.proof["schema_version"],
+            "policy_version": compiled.proof["policy_version"],
+            "release_state": "NO_PUBLIC_CLAIM",
+            "public_projection": None,
+        }
+
+    source = compiled.proof["public_projection"]
+    if source.get("status") != status:
+        raise ProofError("public projection status invariant failed")
+    projection = {key: source[key] for key in _PUBLIC_PROJECTION_KEYS if key != "outcomes"}
+    projection["outcomes"] = [{"claim": outcome["claim"]} for outcome in source["outcomes"]]
+    payload = {
+        "schema_version": compiled.proof["schema_version"],
+        "policy_version": compiled.proof["policy_version"],
+        "release_state": status,
+        "public_projection": projection,
+    }
+    payload["public_receipt_sha256"] = hashlib.sha256(
+        _canonical_json(payload).encode("utf-8")
+    ).hexdigest()
+    return payload
+
+
+def public_json(compiled: CompiledProof) -> str:
+    return json.dumps(
+        public_payload(compiled), sort_keys=True, ensure_ascii=False, indent=2
+    ) + "\n"
+
+
 def write_outputs(compiled: CompiledProof, out_dir: Path) -> None:
     out_dir.mkdir(parents=True, exist_ok=True)
     (out_dir / "proof.json").write_text(compiled.proof_json(), encoding="utf-8")
+    (out_dir / "public.json").write_text(public_json(compiled), encoding="utf-8")
     (out_dir / "proof.md").write_text(compiled.markdown, encoding="utf-8")
     (out_dir / "receipt.sha256").write_text(compiled.receipt_sha256 + "\n", encoding="utf-8")
