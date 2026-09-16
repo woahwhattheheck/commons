@@ -65,7 +65,7 @@ def load_strict_json(data: bytes | str) -> Any:
         )
     except ValidationError:
         raise
-    except (TypeError, ValueError, json.JSONDecodeError) as exc:
+    except (TypeError, ValueError, json.JSONDecodeError, RecursionError) as exc:
         raise ValidationError(f"invalid JSON: {exc}") from exc
 
 
@@ -78,7 +78,7 @@ def canonical_bytes(value: Any) -> bytes:
             ensure_ascii=False,
             allow_nan=False,
         ).encode("utf-8", "strict")
-    except (UnicodeEncodeError, TypeError, ValueError) as exc:
+    except (UnicodeEncodeError, TypeError, ValueError, RecursionError) as exc:
         raise ValidationError("value is not canonicalizable strict UTF-8 JSON") from exc
 
 
