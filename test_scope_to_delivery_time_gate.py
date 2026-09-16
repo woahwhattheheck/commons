@@ -136,7 +136,7 @@ class TemporalGateTests(unittest.TestCase):
         out = gate.evaluate_current_bytes(raw(doc), None, canonical_project=p)
         self.assertEqual(out["state"], "TEMPORAL_PREREQUISITE_READY")
         self.assertTrue(out["current_work_authorized"])
-        self.assertEqual(out["clock_authority"], "VERIFIER_PROCESS_UTC")
+        self.assertEqual(out["clock_authority"], "VERIFIER_PROCESS_UTC_CLOSURE_BOUND")
         self.assertTrue(out["raw_byte_provenance_verified"])
         self.assertTrue(out["canonical_scope_validated"])
         self.assertTrue(out["canonical_project_bound"])
@@ -154,7 +154,7 @@ class TemporalGateTests(unittest.TestCase):
         verdict = gate.verify_current_work_authority(raw(doc), None, canonical_project=p)
         self.assertTrue(verdict["valid"])
         self.assertTrue(verdict["current_work_authorized"])
-        self.assertEqual(verdict["clock_authority"], "VERIFIER_PROCESS_UTC")
+        self.assertEqual(verdict["clock_authority"], "VERIFIER_PROCESS_UTC_CLOSURE_BOUND")
 
     def test_explicit_as_of_exact_bytes_is_historical_only(self):
         doc = agreement()
@@ -453,6 +453,52 @@ class TemporalGateTests(unittest.TestCase):
         params = inspect.signature(gate.verify_current_work_authority).parameters
         self.assertEqual(set(params), {"agreement_raw", "observations_raw", "canonical_project"})
 
+    def test_module_datetime_rebinding_cannot_redirect_current_clock(self):
+        doc = dynamic_agreement("ready")
+        p = project(doc)
+        original = gate.datetime
+
+        class PoisonDateTime:
+            @classmethod
+            def now(cls, tz=None):
+                return z("1900-01-01T00:00:00Z")
+
+        try:
+            gate.datetime = PoisonDateTime
+            out = gate.evaluate_current_bytes(raw(doc), None, canonical_project=p)
+        finally:
+            gate.datetime = original
+        self.assertTrue(out["current_work_authorized"])
+        self.assertEqual(out["clock_authority"], "VERIFIER_PROCESS_UTC_CLOSURE_BOUND")
+
+    def test_verifier_rebinding_public_evaluator_cannot_promote_expired_source(self):
+        doc = dynamic_agreement("expired")
+        p = project(doc)
+        original = gate.evaluate_current_bytes
+
+        def fake(*args, **kwargs):
+            return {
+                "state": "TEMPORAL_PREREQUISITE_READY",
+                "current_work_authorized": True,
+                "raw_byte_provenance_verified": True,
+                "provenance_mode": "EXACT_RAW_BYTES_VERIFIED",
+                "canonical_scope_validated": True,
+                "canonical_project_bound": True,
+                "clock_authority": "VERIFIER_PROCESS_UTC_CLOSURE_BOUND",
+                "receipt_sha256": "0" * 64,
+                "canonical_project_sha256": gate.digest(p),
+            }
+
+        try:
+            gate.evaluate_current_bytes = fake
+            verdict = gate.verify_current_work_authority(
+                raw(doc), None, canonical_project=p
+            )
+        finally:
+            gate.evaluate_current_bytes = original
+        self.assertFalse(verdict["valid"])
+        self.assertEqual(verdict["state"], "HOLD_WINDOW_EXPIRED")
+
     @unittest.skipUnless(hasattr(os, "O_NOFOLLOW"), "requires O_NOFOLLOW")
     def test_cli_uses_process_clock_and_requires_matching_project(self):
         doc = dynamic_agreement("ready")
@@ -478,7 +524,7 @@ class TemporalGateTests(unittest.TestCase):
             self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
             payload = json.loads(result.stdout)
             self.assertTrue(payload["current_work_authorized"])
-            self.assertEqual(payload["clock_authority"], "VERIFIER_PROCESS_UTC")
+            self.assertEqual(payload["clock_authority"], "VERIFIER_PROCESS_UTC_CLOSURE_BOUND")
 
 
 if __name__ == "__main__":
