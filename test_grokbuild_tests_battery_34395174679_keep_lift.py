@@ -73,7 +73,10 @@ class TestGrokbuildTestsBattery34395174679KeepLift(unittest.TestCase):
         self.assertIn(POINTER, manual)
         self.assertIn("builds.html", manual)
         self.assertIn("wire.html", manual)
-        self.assertTrue(git_blob("ground/MANUAL.md").startswith("60235e5d"))
+        # Living MANUAL.md rebakes from tools.json/share.json. Frozen prefix
+        # 60235e5d failed the battery after Open jobs moved (run 35143510019 /
+        # SHA 9a91148f). Content KEEP is POINTER / builds.html / wire.html.
+        # Do not restore a positive git-blob pin on this living file.
         self.assertFalse(git_blob("ground/MANUAL.md").startswith("79a93583"))
 
     def test_rebuild_is_byte_identical_to_live_manual(self) -> None:
