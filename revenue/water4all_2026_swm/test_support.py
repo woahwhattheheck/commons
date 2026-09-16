@@ -3,23 +3,19 @@ from __future__ import annotations
 import copy
 import datetime as dt
 import json
-import os
-import tempfile
 import unittest
 from pathlib import Path
 
-from revenue.water4all_2026_swm import cli
+from revenue.water4all_2026_swm import authority_registry, cli
 from revenue.water4all_2026_swm.engine import (
     ReadinessError,
     canonical_bytes,
     compile_at,
     compile_historical,
     render_owner_markdown,
-    seal_source,
-    sha256_hex,
-    strict_json_loads,
     verify_bundle,
 )
+from revenue.water4all_2026_swm.common import seal_source, sha256_hex, strict_json_loads
 
 UTC = dt.timezone.utc
 T0 = dt.datetime(2026, 9, 14, 4, 0, 0, tzinfo=UTC)
@@ -30,10 +26,28 @@ def load_json(name):
     return json.loads((HERE / name).read_text(encoding="utf-8"))
 
 
+def _install_test_authority(value):
+    authority_registry.TEST_ONLY_OFFICIAL_SOURCE_GENERATIONS.clear()
+    authority_registry.TEST_ONLY_OFFICIAL_SOURCE_GENERATIONS.update(
+        {source["source_id"]: copy.deepcopy(source) for source in value["official_sources"]}
+    )
+    authority_registry.TEST_ONLY_TECHNICAL_EVIDENCE.clear()
+    for evidence in value["technical_evidence"]:
+        authority_registry.TEST_ONLY_TECHNICAL_EVIDENCE[evidence["evidence_id"]] = {
+            "repo_full_name": evidence["repo_full_name"],
+            "commit_sha": evidence["commit_sha"],
+            "path": evidence["path"],
+            "content_sha256": evidence["content_sha256"],
+            "publicability": evidence["publicability"],
+            "capability_tags": sorted(set(evidence["capability_tags"])),
+        }
+
+
 def base_valid():
     example = load_json("example_input.json")
     sources = copy.deepcopy(example["official_sources"])
     for source in sources:
+        source["source_id"] = "test-" + source["source_id"]
         source["observed_at"] = "2026-09-14T03:40:00Z"
         source["preproposal_deadline_at"] = "2026-11-10T14:00:00Z"
         source.update(seal_source(source))
@@ -60,6 +74,7 @@ def base_valid():
                 "coordinator": coordinator,
                 "person_months_milli": 10000,
                 "synthetic_placeholder": False,
+                "water4all_partnership_beneficiary": False,
             }
         )
     evidence = [
@@ -81,10 +96,18 @@ def base_valid():
             ],
         }
     ]
-    return {
+    value = {
         "schema": "water4all-2026-readiness-input/v1",
         "official_sources": sources,
-        "consortium": {"members": members},
+        "consortium": {
+            "members": members,
+            "coordinator_pi_cross_proposal_evidence": {
+                "pi_id": "pi-1",
+                "evidence_id": "pi-cross-proposal-check-1",
+                "participates_in_other_jtc_or_ecr_proposal": False,
+                "verified": True,
+            },
+        },
         "applicant": {
             "applicant_id": "p1",
             "organization_label": "Verified p1 entity",
@@ -113,6 +136,8 @@ def base_valid():
             "consortium_commitment_authorized": False,
         },
     }
+    _install_test_authority(value)
+    return value
 
 
 def compile_valid(value=None, mode="HISTORICAL", when=T0):
