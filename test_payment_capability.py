@@ -57,6 +57,37 @@ class PaymentCapability(unittest.TestCase):
         self.assertEqual(public_skus, set(capability.catalog_checkouts(self._catalog())))
         self.assertIn("agent-failure-autopsy-29", public_skus)
 
+    def test_catalog_checkout_evidence_timestamps_parse(self):
+        """7-digit fractional seconds made fromisoformat fail and dropped autopsy."""
+        registry = json.loads(
+            (ROOT / "revenue" / "payment_capability" / "registry.json").read_text(
+                encoding="utf-8"
+            )
+        )
+        stripe = next(
+            rail
+            for rail in registry["rails"]
+            if rail["id"] == "stripe-livemode-acct_1U6HI9ATH4EDE7XD"
+        )
+        rail_evidence = (
+            stripe.get("evidence") if isinstance(stripe.get("evidence"), dict) else {}
+        )
+        by_sku = {
+            link.get("sku"): link
+            for link in stripe.get("canonical_links") or []
+            if isinstance(link, dict)
+        }
+        for sku in capability.catalog_checkouts(self._catalog()):
+            link = by_sku[sku]
+            evidence = (
+                link.get("evidence")
+                if isinstance(link.get("evidence"), dict)
+                else rail_evidence
+            )
+            capability._timestamp(
+                evidence.get("observed_at"), "%s.evidence.observed_at" % sku
+            )
+
     def test_stripe_fail_closed_does_not_activate_kyc_rails(self):
         registry = json.loads(
             (ROOT / "revenue" / "payment_capability" / "registry.json").read_text(
