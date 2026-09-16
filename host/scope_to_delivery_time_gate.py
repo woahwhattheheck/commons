@@ -480,52 +480,68 @@ def evaluate_bytes(
     )
 
 
-def _process_utc_now() -> datetime:
-    return datetime.now(timezone.utc)
-
-
-def evaluate_current_bytes(
-    agreement_raw: bytes,
-    observations_raw: bytes | None,
+def _build_current_evaluator(
     *,
-    canonical_project: Any | None = None,
-) -> dict[str, Any]:
-    """Current-work prerequisite using verifier-owned process UTC.
+    now_callable=datetime.now,
+    utc=timezone.utc,
+    exact_facts=_exact_facts,
+    receipt_base=_receipt_base,
+    seal_receipt=_seal,
+):
+    """Bind the production clock and semantic helpers once at import time.
 
-    There is intentionally no caller clock parameter.
+    This is an application input-authority boundary, not a Python sandbox. Ordinary
+    rebinding of module globals after import cannot redirect the supported current
+    evaluator's clock or semantic compiler.
     """
-    observed_now = _process_utc_now()
-    facts, agreement_sha, observations_sha, project_bound, project_sha = _exact_facts(
-        agreement_raw,
-        observations_raw,
-        as_of=observed_now,
-        canonical_project=canonical_project,
-    )
-    state = facts["state"]
-    if facts["temporal_ready"] and not project_bound:
-        state = "HOLD_CANONICAL_PROJECT_UNBOUND"
-    current_work_authorized = facts["temporal_ready"] and project_bound
-    return _seal(
-        {
-            **_receipt_base(facts, state=state),
-            "clock_authority": "VERIFIER_PROCESS_UTC",
-            "agreement_raw_sha256": agreement_sha,
-            "observations_raw_sha256": observations_sha,
-            "raw_byte_provenance_verified": True,
-            "provenance_mode": "EXACT_RAW_BYTES_VERIFIED",
-            "canonical_scope_validated": True,
-            "canonical_project_bound": project_bound,
-            "canonical_project_sha256": project_sha,
-            "canonical_binding_required": True,
-            "current_work_authorized": current_work_authorized,
-            "authority_boundary": (
-                "Current-work prerequisite requires verifier-owned process UTC, exact "
-                "source bytes, same-input canonical scope validation and exact canonical "
-                "project binding. Buyer, delivery, payment, provider and cash gates "
-                "remain independently mandatory."
-            ),
-        }
-    )
+    def evaluate_current_bytes(
+        agreement_raw: bytes,
+        observations_raw: bytes | None,
+        *,
+        canonical_project: Any | None = None,
+    ) -> dict[str, Any]:
+        """Current-work prerequisite using closure-bound process UTC.
+
+        There is intentionally no caller clock parameter.
+        """
+        observed_now = now_callable(utc)
+        facts, agreement_sha, observations_sha, project_bound, project_sha = exact_facts(
+            agreement_raw,
+            observations_raw,
+            as_of=observed_now,
+            canonical_project=canonical_project,
+        )
+        state = facts["state"]
+        if facts["temporal_ready"] and not project_bound:
+            state = "HOLD_CANONICAL_PROJECT_UNBOUND"
+        current_work_authorized = facts["temporal_ready"] and project_bound
+        return seal_receipt(
+            {
+                **receipt_base(facts, state=state),
+                "clock_authority": "VERIFIER_PROCESS_UTC_CLOSURE_BOUND",
+                "agreement_raw_sha256": agreement_sha,
+                "observations_raw_sha256": observations_sha,
+                "raw_byte_provenance_verified": True,
+                "provenance_mode": "EXACT_RAW_BYTES_VERIFIED",
+                "canonical_scope_validated": True,
+                "canonical_project_bound": project_bound,
+                "canonical_project_sha256": project_sha,
+                "canonical_binding_required": True,
+                "current_work_authorized": current_work_authorized,
+                "authority_boundary": (
+                    "Current-work prerequisite requires closure-bound process UTC, exact "
+                    "source bytes, same-input canonical scope validation and exact canonical "
+                    "project binding. Buyer, delivery, payment, provider and cash gates "
+                    "remain independently mandatory."
+                ),
+            }
+        )
+
+    return evaluate_current_bytes
+
+
+evaluate_current_bytes = _build_current_evaluator()
+del _build_current_evaluator
 
 
 def verify_project_binding_integrity(project: Any, receipt: Any) -> dict[str, Any]:
@@ -576,39 +592,47 @@ def verify_project_binding(project: Any, receipt: Any) -> dict[str, Any]:
     return {**out, "deprecated_name": "verify_project_binding"}
 
 
-def verify_current_work_authority(
-    agreement_raw: bytes,
-    observations_raw: bytes | None,
-    *,
-    canonical_project: Any,
-) -> dict[str, Any]:
-    """Re-consume exact bytes and re-run the current process-time authority path.
+def _build_current_verifier(current_evaluator=evaluate_current_bytes):
+    """Closure-bind the reviewed current evaluator into downstream verification."""
+    def verify_current_work_authority(
+        agreement_raw: bytes,
+        observations_raw: bytes | None,
+        *,
+        canonical_project: Any,
+    ) -> dict[str, Any]:
+        """Re-consume exact bytes and re-run current process-time authority.
 
-    No receipt object is accepted, so stale, historical or fabricated receipts
-    cannot be promoted by this verifier.
-    """
-    receipt = evaluate_current_bytes(
-        agreement_raw,
-        observations_raw,
-        canonical_project=canonical_project,
-    )
-    valid = bool(
-        receipt["state"] == "TEMPORAL_PREREQUISITE_READY"
-        and receipt["current_work_authorized"] is True
-        and receipt["raw_byte_provenance_verified"] is True
-        and receipt["provenance_mode"] == "EXACT_RAW_BYTES_VERIFIED"
-        and receipt["canonical_scope_validated"] is True
-        and receipt["canonical_project_bound"] is True
-        and receipt["clock_authority"] == "VERIFIER_PROCESS_UTC"
-    )
-    return {
-        "valid": valid,
-        "state": receipt["state"],
-        "current_work_authorized": valid,
-        "receipt_sha256": receipt["receipt_sha256"],
-        "canonical_project_sha256": receipt["canonical_project_sha256"],
-        "clock_authority": receipt["clock_authority"],
-    }
+        No receipt object is accepted, so stale, historical or fabricated receipts
+        cannot be promoted by this verifier.
+        """
+        receipt = current_evaluator(
+            agreement_raw,
+            observations_raw,
+            canonical_project=canonical_project,
+        )
+        valid = bool(
+            receipt["state"] == "TEMPORAL_PREREQUISITE_READY"
+            and receipt["current_work_authorized"] is True
+            and receipt["raw_byte_provenance_verified"] is True
+            and receipt["provenance_mode"] == "EXACT_RAW_BYTES_VERIFIED"
+            and receipt["canonical_scope_validated"] is True
+            and receipt["canonical_project_bound"] is True
+            and receipt["clock_authority"] == "VERIFIER_PROCESS_UTC_CLOSURE_BOUND"
+        )
+        return {
+            "valid": valid,
+            "state": receipt["state"],
+            "current_work_authorized": valid,
+            "receipt_sha256": receipt["receipt_sha256"],
+            "canonical_project_sha256": receipt["canonical_project_sha256"],
+            "clock_authority": receipt["clock_authority"],
+        }
+
+    return verify_current_work_authority
+
+
+verify_current_work_authority = _build_current_verifier()
+del _build_current_verifier
 
 
 def main(argv: list[str] | None = None) -> int:
