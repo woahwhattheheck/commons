@@ -1,0 +1,93 @@
+{
+  "schema": "tjlabs.gguf-12k-operating-manifest/v1",
+  "offer_id": "gguf-diagnostic-10d-12k",
+  "commercial_terms": {
+    "fixed_amount_usd": 12000,
+    "term_calendar_days": 10,
+    "m1_amount_usd": 6000,
+    "m1_due": "before customer file exchange; after NDA and SOW signing",
+    "m2_amount_usd": 6000,
+    "m2_due": "on AT1-AT6 acceptance",
+    "acceptance_rule": "rollback evidence, not metric lift",
+    "public_surface": "diagnostic.html",
+    "public_surface_kind": "PURCHASE_INTENT_ONLY"
+  },
+  "responsibilities": {
+    "customer": [
+      "control the supplied GGUF and have authority to provide it for the engagement",
+      "provide a runnable evaluation harness and frozen evaluation-suite identity",
+      "provide a public HTTPS contact surface for non-confidential routing only",
+      "review the SOW and NDA through an owner-private channel",
+      "review AT1-AT6 evidence and make the acceptance decision"
+    ],
+    "tjlabs": [
+      "record the original GGUF SHA-256 before modification",
+      "perform only the bounded diagnostic intervention in the signed SOW",
+      "produce baseline, ablation and restore harness receipts",
+      "restore byte-exact identity or stop and report HOLD",
+      "deliver a concise finding, limitations and artifact-hash receipt",
+      "avoid public release of customer model bytes, private method-leaking binary diffs and credentials"
+    ]
+  },
+  "days": [
+    {"day": 1, "objective": "Owner-private prerequisites and intake", "required_exit": "NDA/SOW/M1 evidence receipts + GGUF control + harness readiness; otherwise HOLD before file transfer"},
+    {"day": 2, "objective": "Immutable baseline", "required_exit": "AT1 original hash/size + frozen harness command/eval-suite identities"},
+    {"day": 3, "objective": "Baseline execution", "required_exit": "baseline harness receipt and reproducibility notes"},
+    {"day": 4, "objective": "Diagnostic localization", "required_exit": "bounded intervention plan inside signed scope; no metric guarantee"},
+    {"day": 5, "objective": "Ablation", "required_exit": "AT2 distinct artifact hash + ablation harness receipt"},
+    {"day": 6, "objective": "Bounded intervention evidence", "required_exit": "customer-evaluable evidence linked to frozen harness; no public model bytes"},
+    {"day": 7, "objective": "Rollback", "required_exit": "AT3 restored SHA-256 and byte count exactly equal AT1"},
+    {"day": 8, "objective": "Restore execution", "required_exit": "AT4 baseline/ablation/restore run-receipt set complete"},
+    {"day": 9, "objective": "Finding and limitations", "required_exit": "AT5 concise report receipt + explicit limitations"},
+    {"day": 10, "objective": "Delivery and acceptance handoff", "required_exit": "AT6 delivery receipt names required hashes; customer acceptance remains external"}
+  ],
+  "hard_stops": [
+    {"id": "STOP_NO_CONTROL", "when": "customer cannot attest legal/control authority for the GGUF", "state": "HOLD_GGUF_CONTROL"},
+    {"id": "STOP_NO_HARNESS", "when": "customer harness is unavailable or cannot be frozen reproducibly", "state": "HOLD_HARNESS_NOT_READY"},
+    {"id": "STOP_NO_NDA_SOW_M1", "when": "owner-private NDA, SOW or M1 evidence is absent", "state": "HOLD_BEFORE_PRIVATE_FILE_TRANSFER"},
+    {"id": "STOP_SCOPE", "when": "requested work exceeds the bounded intervention in the signed SOW", "state": "HOLD_CHANGE_ORDER"},
+    {"id": "STOP_ROLLBACK", "when": "restored SHA-256 or byte count differs from the original", "state": "HOLD_AT3_ROLLBACK"},
+    {"id": "STOP_METHOD_LEAK", "when": "delivery would require public original/ablated/restored binaries or a method-leaking binary diff", "state": "HOLD_PRIVATE_DELIVERY_REQUIRED"},
+    {"id": "STOP_CREDENTIALS", "when": "customer requests credential transfer through Commons", "state": "HOLD_OWNER_PRIVATE_EXTERNAL"},
+    {"id": "STOP_METRIC_PROMISE", "when": "acceptance is conditioned on guaranteed metric lift instead of AT1-AT6 rollback evidence", "state": "HOLD_TERM_CONFLICT"}
+  ],
+  "security": {
+    "allowed_in_commons": [
+      "opaque engagement/customer references",
+      "SHA-256 digests",
+      "byte counts",
+      "tool/version labels",
+      "public HTTPS contact URL without query or fragment",
+      "redacted finding and limitations",
+      "non-secret deterministic receipts"
+    ],
+    "never_in_commons": [
+      "GGUF/model bytes",
+      "private evaluation cases",
+      "credentials or tokens",
+      "signed NDA/SOW bytes",
+      "bank/card/routing/account/tax values",
+      "private buyer contact data",
+      "method-leaking original/ablated/restored binary diff"
+    ],
+    "retention_default_days": 10,
+    "retention_max_days": 30,
+    "private_transfer": "OWNER_PRIVATE_EXTERNAL"
+  },
+  "expansion": {
+    "next_offer": "white-box-gguf-pilot-30d",
+    "condition": "only after real customer AT1-AT6 acceptance on the same GGUF",
+    "license_condition": "only after paid delivery; never inferred from diagnostic completion"
+  },
+  "authority": {
+    "buyer_contact_authorized": false,
+    "private_file_transfer_authorized": false,
+    "nda_signed": false,
+    "sow_signed": false,
+    "m1_payment_received": false,
+    "customer_acceptance_recorded": false,
+    "invoice_authorized": false,
+    "payment_mutation_authorized": false,
+    "revenue_recognized": false
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "schema": "tjlabs.gguf-12k-delivery-evidence/v1",
+  "engagement_id": "synthetic-gguf-001",
+  "artifacts": {
+    "original": {
+      "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "size_bytes": 4294967296
+    },
+    "ablated": {
+      "sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "size_bytes": 4294967296
+    },
+    "restored": {
+      "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "size_bytes": 4294967296
+    }
+  },
+  "harness_runs": {
+    "baseline_receipt_sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+    "ablation_receipt_sha256": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+    "restore_receipt_sha256": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+  },
+  "finding": {
+    "report_sha256": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+    "statement": "Synthetic rehearsal demonstrates a bounded ablation and byte-exact restore. No metric-lift claim is made; customer harness results remain customer-evaluable evidence.",
+    "limitations": [
+      "Synthetic fixture only; no customer model bytes were processed.",
+      "The evidence proves rollback mechanics and receipt linkage, not a performance guarantee."
+    ]
+  },
+  "delivery_receipt": {
+    "receipt_sha256": "311e41ea115ffa5d2d46c15be1b35c3706ad06d3aafe81acdf5273b73669a3f4",
+    "artifact_hashes": [
+      "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+      "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+      "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+      "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+      "8888888888888888888888888888888888888888888888888888888888888888"
+    ]
+  },
+  "payment_reference_sha256": "NONE"
+}

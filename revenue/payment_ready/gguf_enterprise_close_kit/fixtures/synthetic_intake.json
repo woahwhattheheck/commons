@@ -1,0 +1,35 @@
+{
+  "schema": "tjlabs.gguf-12k-intake/v1",
+  "engagement_id": "synthetic-gguf-001",
+  "customer_reference": "synthetic-customer-001",
+  "gguf": {
+    "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "size_bytes": 4294967296,
+    "control_attested": true
+  },
+  "harness": {
+    "name": "synthetic-eval-harness",
+    "version": "1.0",
+    "reproducible_command_sha256": "1111111111111111111111111111111111111111111111111111111111111111",
+    "eval_suite_sha256": "2222222222222222222222222222222222222222222222222222222222222222",
+    "ready": true
+  },
+  "scope": {
+    "objective": "Demonstrate a bounded, reversible diagnostic intervention and byte-exact rollback using a synthetic customer-controlled fixture.",
+    "bounded_intervention": true,
+    "metric_lift_guaranteed": false
+  },
+  "security": {
+    "data_classification": "CONFIDENTIAL_CUSTOMER_CONTROLLED",
+    "transfer_channel": "OWNER_PRIVATE_EXTERNAL",
+    "retention_days": 10,
+    "raw_model_public_allowed": false,
+    "credentials_required": false,
+    "public_contact_url": "https://example.com"
+  },
+  "external_evidence": {
+    "nda_receipt_sha256": "3333333333333333333333333333333333333333333333333333333333333333",
+    "sow_receipt_sha256": "4444444444444444444444444444444444444444444444444444444444444444",
+    "m1_payment_receipt_sha256": "5555555555555555555555555555555555555555555555555555555555555555"
+  }
+}
