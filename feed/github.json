@@ -2,8 +2,8 @@
   "counts": {
     "open_issues": 127,
     "open_pull_requests": 80,
-    "runs_in_progress": 16,
-    "runs_queued": 662
+    "runs_in_progress": 19,
+    "runs_queued": 611
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -70,12 +70,23 @@
       "author": "woahwhattheheck",
       "base": "main",
       "branch": "zsd-k7q3/muse-arbitration-liveness-20260916",
-      "created_at": "2026-09-16T14:48:10Z",
+      "created_at": "2026-09-16T15:14:47Z",
       "draft": false,
-      "head_sha": "aa3148bf3a33fc15f1cb683185ca8e4e93fdacf4",
-      "number": 14895,
-      "title": "Muse arbitration liveness ledger: exact retry, binding, stale-selection evidence",
-      "updated_at": "2026-09-16T14:48:10Z"
+      "head_sha": "c2caef8e9bf4a847438651c70ac975d456b82936",
+      "number": 14898,
+      "title": "Muse liveness: reconcile explicit decision corrections",
+      "updated_at": "2026-09-16T15:14:47Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z-rhenium-breakwater/20260916-outbound-current-direct-boundary",
+      "created_at": "2026-09-16T15:10:23Z",
+      "draft": false,
+      "head_sha": "227fa62a6c9936fc21e03e9e33b18a1e83b63d6d",
+      "number": 14896,
+      "title": "harden(outbound): require direct isolated CURRENT boundary",
+      "updated_at": "2026-09-16T15:14:09Z"
     },
     {
       "author": "woahwhattheheck",
@@ -87,17 +98,6 @@
       "number": 14894,
       "title": "Revenue: GTRI Sunflower migration acceptance workshare",
       "updated_at": "2026-09-16T14:45:54Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-rhenium-breakwater/20260916-outbound-guard-compat-recovery",
-      "created_at": "2026-09-16T14:33:38Z",
-      "draft": false,
-      "head_sha": "9ff1ac9a6cd77ef0863ddb5edf27b75f6b379622",
-      "number": 14891,
-      "title": "recover(outbound): close compatibility caller-clock authority",
-      "updated_at": "2026-09-16T14:37:38Z"
     },
     {
       "author": "woahwhattheheck",
@@ -235,7 +235,7 @@
     "14838": "4b2b2d40246e45e2ef84b637dc5a6c28e4e66707",
     "14842": "8603597d72d08f537c8df01dadb505c6d2d9385e",
     "14849": "8a77929b833d93ce052ebbdbd35a7625afd50d35",
-    "14851": "7693bb7d89a18d5ea98d0a74830da0aab1301efe",
+    "14851": "351ab8253d26022378f968c92b5a5258b4ba9325",
     "14853": "a38ba906140557b32bb2c618bb0b942a2becc605",
     "14855": "e733ef5fb004c1d14e5a6cb5c01c4a531f83520c",
     "14856": "90db7d58103130638f27ba62778151ec41775d61",
@@ -255,14 +255,36 @@
     "14888": "7f8c6c06f7ac89ff65a1c20c16537e64056fdd85",
     "14889": "ecc576d3de46a50ef3ea55c7aa9bd0f019692c46",
     "14890": "059027345fa93c5bcdaccc7a1d26dfc53b8b6727",
-    "14891": "9ff1ac9a6cd77ef0863ddb5edf27b75f6b379622",
     "14894": "8f7753643fe0a45e82cbf6be81946e33efc9fe13",
-    "14895": "aa3148bf3a33fc15f1cb683185ca8e4e93fdacf4"
+    "14896": "227fa62a6c9936fc21e03e9e33b18a1e83b63d6d",
+    "14898": "c2caef8e9bf4a847438651c70ac975d456b82936"
   },
   "pulls_listed": 80,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 41.4,
+  "queue_depth_per_runner": 32.2,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z-rhenium-breakwater/20260916-outbound-guard-compat-recovery",
+      "closed_at": "2026-09-16T15:04:56Z",
+      "head_sha": "f915152ef5d8c400b7284c49ea2ebe5ad7978c4c",
+      "merged_at": "2026-09-16T15:04:56Z",
+      "number": 14891,
+      "state": "MERGED",
+      "title": "recover(outbound): close compatibility caller-clock authority"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zsd-k7q3/muse-arbitration-liveness-20260916",
+      "closed_at": "2026-09-16T15:00:13Z",
+      "head_sha": "c0b5a139a3798a5ebe99410230aeaad80a872d14",
+      "merged_at": "2026-09-16T15:00:13Z",
+      "number": 14895,
+      "state": "MERGED",
+      "title": "Muse arbitration liveness ledger: exact retry, binding, stale-selection evidence"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -405,32 +427,10 @@
       "number": 14343,
       "state": "CLOSED",
       "title": "Donor: bind reply event refs to the full observation envelope"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-ah-p4w7/learn2design-curvature-finalize-20260916",
-      "closed_at": "2026-09-16T14:14:22Z",
-      "head_sha": "51c392a01dc58605687795ad2a6da01c82955b51",
-      "merged_at": "2026-09-16T14:14:22Z",
-      "number": 14875,
-      "state": "MERGED",
-      "title": "Finalize Learn2Design curvature sidecar from Z-Cairn donor"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "zym-l4v8/media-rights-ops-20260915",
-      "branch": "z-sol/media-rights-export-generation-20260915",
-      "closed_at": "2026-09-16T14:13:49Z",
-      "head_sha": "f032b45d7dda0ddca9a8436636bbcd8de6c7d972",
-      "merged_at": null,
-      "number": 14709,
-      "state": "CLOSED",
-      "title": "Donor: make media-rights export generation + path custody atomic"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-16T14:48:42Z",
+  "unchanged_since": "2026-09-16T15:21:18Z",
   "undatable_pulls": []
 }
