@@ -1,3 +1,4 @@
+# coil-fix-tracked-manual-battery-20260916-01: keep_lift must not dirty tracked MANUAL (tempfile OUT).
 #!/usr/bin/env python3
 """Restore MANUAL.md builds.html cite after tests battery 34395174679.
 
